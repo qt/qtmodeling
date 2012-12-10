@@ -81,12 +81,12 @@ QActivityPrivate::~QActivityPrivate()
     \brief An activity is the specification of parameterized behavior as the coordinated sequencing of subordinate units whose individual elements are actions.
  */
 
-QActivity::QActivity(QUmlObject *parent, QUmlObject *wrapper) :
+QActivity::QActivity(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QBehavior(*new QActivityPrivate, parent, wrapper)
 {
 }
 
-QActivity::QActivity(QActivityPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QActivity::QActivity(QActivityPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QBehavior(dd, parent, wrapper)
 {
 }
@@ -165,7 +165,7 @@ void QActivity::addPartition(QActivityPartition *partition)
         d->partitions->insert(partition);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QActivity *>(this))->addGroup(qumlobject_cast<QActivityGroup *>(partition));
+        (qmofobject_cast<QActivity *>(this))->addGroup(qmofobject_cast<QActivityGroup *>(partition));
     }
 }
 
@@ -178,7 +178,7 @@ void QActivity::removePartition(QActivityPartition *partition)
         d->partitions->remove(partition);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QActivity *>(this))->removeGroup(qumlobject_cast<QActivityGroup *>(partition));
+        (qmofobject_cast<QActivity *>(this))->removeGroup(qmofobject_cast<QActivityGroup *>(partition));
     }
 }
 
@@ -202,7 +202,7 @@ void QActivity::addNode(QActivityNode *node)
         d->nodes->insert(node);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(node));
+        (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(node));
 
         // Adjust opposite property
         node->setActivity(this);
@@ -218,7 +218,7 @@ void QActivity::removeNode(QActivityNode *node)
         d->nodes->remove(node);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(node));
+        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(node));
 
         // Adjust opposite property
         node->setActivity(0);
@@ -245,7 +245,7 @@ void QActivity::addVariable(QVariable *variable)
         d->variables->insert(variable);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qumlobject_cast<QNamedElement *>(variable));
+        (qmofobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qmofobject_cast<QNamedElement *>(variable));
 
         // Adjust opposite property
         variable->setActivityScope(this);
@@ -261,7 +261,7 @@ void QActivity::removeVariable(QVariable *variable)
         d->variables->remove(variable);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(variable));
+        (qmofobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qmofobject_cast<QNamedElement *>(variable));
 
         // Adjust opposite property
         variable->setActivityScope(0);
@@ -288,8 +288,8 @@ void QActivity::addStructuredNode(QStructuredActivityNode *structuredNode)
         d->structuredNodes->insert(structuredNode);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QActivity *>(this))->addGroup(qumlobject_cast<QActivityGroup *>(structuredNode));
-        (qumlobject_cast<QActivity *>(this))->addNode(qumlobject_cast<QActivityNode *>(structuredNode));
+        (qmofobject_cast<QActivity *>(this))->addGroup(qmofobject_cast<QActivityGroup *>(structuredNode));
+        (qmofobject_cast<QActivity *>(this))->addNode(qmofobject_cast<QActivityNode *>(structuredNode));
 
         // Adjust opposite property
         structuredNode->setActivity(this);
@@ -305,8 +305,8 @@ void QActivity::removeStructuredNode(QStructuredActivityNode *structuredNode)
         d->structuredNodes->remove(structuredNode);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QActivity *>(this))->removeGroup(qumlobject_cast<QActivityGroup *>(structuredNode));
-        (qumlobject_cast<QActivity *>(this))->removeNode(qumlobject_cast<QActivityNode *>(structuredNode));
+        (qmofobject_cast<QActivity *>(this))->removeGroup(qmofobject_cast<QActivityGroup *>(structuredNode));
+        (qmofobject_cast<QActivity *>(this))->removeNode(qmofobject_cast<QActivityNode *>(structuredNode));
 
         // Adjust opposite property
         structuredNode->setActivity(0);
@@ -333,7 +333,7 @@ void QActivity::addGroup(QActivityGroup *group)
         d->groups->insert(group);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(group));
+        (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(group));
 
         // Adjust opposite property
         group->setInActivity(this);
@@ -349,7 +349,7 @@ void QActivity::removeGroup(QActivityGroup *group)
         d->groups->remove(group);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(group));
+        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(group));
 
         // Adjust opposite property
         group->setInActivity(0);
@@ -376,7 +376,7 @@ void QActivity::addEdge(QActivityEdge *edge)
         d->edges->insert(edge);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(edge));
+        (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(edge));
 
         // Adjust opposite property
         edge->setActivity(this);
@@ -392,7 +392,7 @@ void QActivity::removeEdge(QActivityEdge *edge)
         d->edges->remove(edge);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(edge));
+        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(edge));
 
         // Adjust opposite property
         edge->setActivity(0);
@@ -401,32 +401,32 @@ void QActivity::removeEdge(QActivityEdge *edge)
 
 // Overriden methods for subsetted properties
 
-void QActivity::addGroup(QUmlPointer<QActivityPartition> partition)
+void QActivity::addGroup(QtMof::QMofPointer<QActivityPartition> partition)
 {
     addPartition(partition);
 }
 
-void QActivity::removeGroup(QUmlPointer<QActivityPartition> partition)
+void QActivity::removeGroup(QtMof::QMofPointer<QActivityPartition> partition)
 {
     removePartition(partition);
 }
 
-void QActivity::addGroup(QUmlPointer<QStructuredActivityNode> structuredNode)
+void QActivity::addGroup(QtMof::QMofPointer<QStructuredActivityNode> structuredNode)
 {
     addStructuredNode(structuredNode);
 }
 
-void QActivity::removeGroup(QUmlPointer<QStructuredActivityNode> structuredNode)
+void QActivity::removeGroup(QtMof::QMofPointer<QStructuredActivityNode> structuredNode)
 {
     removeStructuredNode(structuredNode);
 }
 
-void QActivity::addNode(QUmlPointer<QStructuredActivityNode> structuredNode)
+void QActivity::addNode(QtMof::QMofPointer<QStructuredActivityNode> structuredNode)
 {
     addStructuredNode(structuredNode);
 }
 
-void QActivity::removeNode(QUmlPointer<QStructuredActivityNode> structuredNode)
+void QActivity::removeNode(QtMof::QMofPointer<QStructuredActivityNode> structuredNode)
 {
     removeStructuredNode(structuredNode);
 }

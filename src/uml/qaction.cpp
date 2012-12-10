@@ -74,7 +74,7 @@ void QActionPrivate::addInput(QInputPin *input)
         this->inputs->append(input);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(this))->addOwnedElement(qumlobject_cast<QElement *>(input));
+        (qmofobject_cast<QElementPrivate *>(this))->addOwnedElement(qmofobject_cast<QElement *>(input));
     }
 }
 
@@ -86,7 +86,7 @@ void QActionPrivate::removeInput(QInputPin *input)
         this->inputs->removeAll(input);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(this))->removeOwnedElement(qumlobject_cast<QElement *>(input));
+        (qmofobject_cast<QElementPrivate *>(this))->removeOwnedElement(qmofobject_cast<QElement *>(input));
     }
 }
 
@@ -98,7 +98,7 @@ void QActionPrivate::addOutput(QOutputPin *output)
         this->outputs->append(output);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(this))->addOwnedElement(qumlobject_cast<QElement *>(output));
+        (qmofobject_cast<QElementPrivate *>(this))->addOwnedElement(qmofobject_cast<QElement *>(output));
     }
 }
 
@@ -110,7 +110,7 @@ void QActionPrivate::removeOutput(QOutputPin *output)
         this->outputs->removeAll(output);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(this))->removeOwnedElement(qumlobject_cast<QElement *>(output));
+        (qmofobject_cast<QElementPrivate *>(this))->removeOwnedElement(qmofobject_cast<QElement *>(output));
     }
 }
 
@@ -122,12 +122,12 @@ void QActionPrivate::removeOutput(QOutputPin *output)
     \brief An action has pre- and post-conditions.An action represents a single step within an activity, that is, one that is not further decomposed within the activity.An action is a named element that is the fundamental unit of executable functionality. The execution of an action represents some transformation or processing in the modeled system, be it a computer system or otherwise.
  */
 
-QAction::QAction(QUmlObject *parent, QUmlObject *wrapper) :
+QAction::QAction(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QExecutableNode(*new QActionPrivate, parent, wrapper)
 {
 }
 
-QAction::QAction(QActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QAction::QAction(QActionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QExecutableNode(dd, parent, wrapper)
 {
 }
@@ -197,7 +197,7 @@ void QAction::addLocalPostcondition(QConstraint *localPostcondition)
         d->localPostconditions->insert(localPostcondition);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(localPostcondition));
+        (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(localPostcondition));
     }
 }
 
@@ -210,7 +210,7 @@ void QAction::removeLocalPostcondition(QConstraint *localPostcondition)
         d->localPostconditions->remove(localPostcondition);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(localPostcondition));
+        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(localPostcondition));
     }
 }
 
@@ -234,7 +234,7 @@ void QAction::addLocalPrecondition(QConstraint *localPrecondition)
         d->localPreconditions->insert(localPrecondition);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(localPrecondition));
+        (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(localPrecondition));
     }
 }
 
@@ -247,7 +247,7 @@ void QAction::removeLocalPrecondition(QConstraint *localPrecondition)
         d->localPreconditions->remove(localPrecondition);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(localPrecondition));
+        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(localPrecondition));
     }
 }
 

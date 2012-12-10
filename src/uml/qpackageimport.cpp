@@ -66,12 +66,12 @@ QPackageImportPrivate::~QPackageImportPrivate()
     \brief A package import is a relationship that allows the use of unqualified names to refer to package members from other namespaces.
  */
 
-QPackageImport::QPackageImport(QUmlObject *parent, QUmlObject *wrapper) :
+QPackageImport::QPackageImport(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QDirectedRelationship(*new QPackageImportPrivate, parent, wrapper)
 {
 }
 
-QPackageImport::QPackageImport(QPackageImportPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QPackageImport::QPackageImport(QPackageImportPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QDirectedRelationship(dd, parent, wrapper)
 {
 }
@@ -131,14 +131,14 @@ void QPackageImport::setImportingNamespace(QNamespace *importingNamespace)
             d->importingNamespace->removePackageImport(this);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QDirectedRelationshipPrivate *>(d))->removeSource(qumlobject_cast<QElement *>(d->importingNamespace));
+        (qmofobject_cast<QDirectedRelationshipPrivate *>(d))->removeSource(qmofobject_cast<QElement *>(d->importingNamespace));
 
         d->importingNamespace = importingNamespace;
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->setOwner(qumlobject_cast<QElement *>(importingNamespace));
+        (qmofobject_cast<QElementPrivate *>(d))->setOwner(qmofobject_cast<QElement *>(importingNamespace));
         if (importingNamespace) {
-            (qumlobject_cast<QDirectedRelationshipPrivate *>(d))->addSource(qumlobject_cast<QElement *>(importingNamespace));
+            (qmofobject_cast<QDirectedRelationshipPrivate *>(d))->addSource(qmofobject_cast<QElement *>(importingNamespace));
         }
 
         // Adjust opposite property
@@ -165,13 +165,13 @@ void QPackageImport::setImportedPackage(QPackage *importedPackage)
     Q_D(QPackageImport);
     if (d->importedPackage != importedPackage) {
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QDirectedRelationshipPrivate *>(d))->removeTarget(qumlobject_cast<QElement *>(d->importedPackage));
+        (qmofobject_cast<QDirectedRelationshipPrivate *>(d))->removeTarget(qmofobject_cast<QElement *>(d->importedPackage));
 
         d->importedPackage = importedPackage;
 
         // Adjust subsetted property(ies)
         if (importedPackage) {
-            (qumlobject_cast<QDirectedRelationshipPrivate *>(d))->addTarget(qumlobject_cast<QElement *>(importedPackage));
+            (qmofobject_cast<QDirectedRelationshipPrivate *>(d))->addTarget(qmofobject_cast<QElement *>(importedPackage));
         }
     }
 }

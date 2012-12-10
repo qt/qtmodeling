@@ -60,12 +60,12 @@ QFlowFinalNodePrivate::~QFlowFinalNodePrivate()
     \brief A flow final node is a final node that terminates a flow.
  */
 
-QFlowFinalNode::QFlowFinalNode(QUmlObject *parent, QUmlObject *wrapper) :
+QFlowFinalNode::QFlowFinalNode(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QFinalNode(*new QFlowFinalNodePrivate, parent, wrapper)
 {
 }
 
-QFlowFinalNode::QFlowFinalNode(QFlowFinalNodePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QFlowFinalNode::QFlowFinalNode(QFlowFinalNodePrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QFinalNode(dd, parent, wrapper)
 {
 }

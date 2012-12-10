@@ -66,12 +66,12 @@ QTestIdentityActionPrivate::~QTestIdentityActionPrivate()
     \brief A test identity action is an action that tests if two values are identical objects.
  */
 
-QTestIdentityAction::QTestIdentityAction(QUmlObject *parent, QUmlObject *wrapper) :
+QTestIdentityAction::QTestIdentityAction(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QAction(*new QTestIdentityActionPrivate, parent, wrapper)
 {
 }
 
-QTestIdentityAction::QTestIdentityAction(QTestIdentityActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QTestIdentityAction::QTestIdentityAction(QTestIdentityActionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QAction(dd, parent, wrapper)
 {
 }
@@ -102,13 +102,13 @@ void QTestIdentityAction::setSecond(QInputPin *second)
     Q_D(QTestIdentityAction);
     if (d->second != second) {
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QActionPrivate *>(d))->removeInput(qumlobject_cast<QInputPin *>(d->second));
+        (qmofobject_cast<QActionPrivate *>(d))->removeInput(qmofobject_cast<QInputPin *>(d->second));
 
         d->second = second;
 
         // Adjust subsetted property(ies)
         if (second) {
-            (qumlobject_cast<QActionPrivate *>(d))->addInput(qumlobject_cast<QInputPin *>(second));
+            (qmofobject_cast<QActionPrivate *>(d))->addInput(qmofobject_cast<QInputPin *>(second));
         }
     }
 }
@@ -131,13 +131,13 @@ void QTestIdentityAction::setResult(QOutputPin *result)
     Q_D(QTestIdentityAction);
     if (d->result != result) {
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QActionPrivate *>(d))->removeOutput(qumlobject_cast<QOutputPin *>(d->result));
+        (qmofobject_cast<QActionPrivate *>(d))->removeOutput(qmofobject_cast<QOutputPin *>(d->result));
 
         d->result = result;
 
         // Adjust subsetted property(ies)
         if (result) {
-            (qumlobject_cast<QActionPrivate *>(d))->addOutput(qumlobject_cast<QOutputPin *>(result));
+            (qmofobject_cast<QActionPrivate *>(d))->addOutput(qmofobject_cast<QOutputPin *>(result));
         }
     }
 }
@@ -160,13 +160,13 @@ void QTestIdentityAction::setFirst(QInputPin *first)
     Q_D(QTestIdentityAction);
     if (d->first != first) {
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QActionPrivate *>(d))->removeInput(qumlobject_cast<QInputPin *>(d->first));
+        (qmofobject_cast<QActionPrivate *>(d))->removeInput(qmofobject_cast<QInputPin *>(d->first));
 
         d->first = first;
 
         // Adjust subsetted property(ies)
         if (first) {
-            (qumlobject_cast<QActionPrivate *>(d))->addInput(qumlobject_cast<QInputPin *>(first));
+            (qmofobject_cast<QActionPrivate *>(d))->addInput(qmofobject_cast<QInputPin *>(first));
         }
     }
 }

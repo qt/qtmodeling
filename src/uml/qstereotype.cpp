@@ -65,12 +65,12 @@ QStereotypePrivate::~QStereotypePrivate()
     \brief A stereotype defines how an existing metaclass may be extended, and enables the use of platform or domain specific terminology or notation in place of, or in addition to, the ones used for the extended metaclass.
  */
 
-QStereotype::QStereotype(QUmlObject *parent, QUmlObject *wrapper) :
+QStereotype::QStereotype(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QClass(*new QStereotypePrivate, parent, wrapper)
 {
 }
 
-QStereotype::QStereotype(QStereotypePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QStereotype::QStereotype(QStereotypePrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QClass(dd, parent, wrapper)
 {
 }
@@ -103,7 +103,7 @@ void QStereotype::addIcon(QImage *icon)
         d->icons->insert(icon);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(icon));
+        (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(icon));
     }
 }
 
@@ -116,7 +116,7 @@ void QStereotype::removeIcon(QImage *icon)
         d->icons->remove(icon);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(icon));
+        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(icon));
     }
 }
 

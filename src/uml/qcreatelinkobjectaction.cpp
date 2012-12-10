@@ -63,12 +63,12 @@ QCreateLinkObjectActionPrivate::~QCreateLinkObjectActionPrivate()
     \brief A create link object action creates a link object.
  */
 
-QCreateLinkObjectAction::QCreateLinkObjectAction(QUmlObject *parent, QUmlObject *wrapper) :
+QCreateLinkObjectAction::QCreateLinkObjectAction(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QCreateLinkAction(*new QCreateLinkObjectActionPrivate, parent, wrapper)
 {
 }
 
-QCreateLinkObjectAction::QCreateLinkObjectAction(QCreateLinkObjectActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QCreateLinkObjectAction::QCreateLinkObjectAction(QCreateLinkObjectActionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QCreateLinkAction(dd, parent, wrapper)
 {
 }
@@ -99,13 +99,13 @@ void QCreateLinkObjectAction::setResult(QOutputPin *result)
     Q_D(QCreateLinkObjectAction);
     if (d->result != result) {
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QActionPrivate *>(d))->removeOutput(qumlobject_cast<QOutputPin *>(d->result));
+        (qmofobject_cast<QActionPrivate *>(d))->removeOutput(qmofobject_cast<QOutputPin *>(d->result));
 
         d->result = result;
 
         // Adjust subsetted property(ies)
         if (result) {
-            (qumlobject_cast<QActionPrivate *>(d))->addOutput(qumlobject_cast<QOutputPin *>(result));
+            (qmofobject_cast<QActionPrivate *>(d))->addOutput(qmofobject_cast<QOutputPin *>(result));
         }
     }
 }

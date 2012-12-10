@@ -44,7 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtUml/QUmlObject>
+#include <QtMof/QMofObject>
 #include <QtUml/QTemplateableElement>
 #include <QtUml/QBehavioralFeature>
 #include <QtUml/QParameterableElement>
@@ -71,7 +71,7 @@ class QClass;
 
 class QOperationPrivate;
 
-class Q_UML_EXPORT QOperation : public QUmlObject
+class Q_UML_EXPORT QOperation : public QtMof::QMofObject
 {
     Q_OBJECT
 
@@ -96,7 +96,7 @@ class Q_UML_EXPORT QOperation : public QUmlObject
     Q_DECLARE_PRIVATE(QOperation)
 
 public:
-    Q_INVOKABLE explicit QOperation(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    Q_INVOKABLE explicit QOperation(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
     virtual ~QOperation();
 
     // Association ends from aggregated QElement
@@ -216,7 +216,7 @@ public:
     Q_INVOKABLE const QSet<QParameter *> *returnResult() const;
 
 protected:
-    explicit QOperation(QOperationPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    explicit QOperation(QOperationPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
 
 private:
     QTemplateableElement *_wrappedTemplateableElement;

@@ -68,12 +68,12 @@ QReduceActionPrivate::~QReduceActionPrivate()
     \brief A reduce action is an action that reduces a collection to a single value by combining the elements of the collection.
  */
 
-QReduceAction::QReduceAction(QUmlObject *parent, QUmlObject *wrapper) :
+QReduceAction::QReduceAction(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QAction(*new QReduceActionPrivate, parent, wrapper)
 {
 }
 
-QReduceAction::QReduceAction(QReduceActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QReduceAction::QReduceAction(QReduceActionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QAction(dd, parent, wrapper)
 {
 }
@@ -129,13 +129,13 @@ void QReduceAction::setResult(QOutputPin *result)
     Q_D(QReduceAction);
     if (d->result != result) {
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QActionPrivate *>(d))->removeOutput(qumlobject_cast<QOutputPin *>(d->result));
+        (qmofobject_cast<QActionPrivate *>(d))->removeOutput(qmofobject_cast<QOutputPin *>(d->result));
 
         d->result = result;
 
         // Adjust subsetted property(ies)
         if (result) {
-            (qumlobject_cast<QActionPrivate *>(d))->addOutput(qumlobject_cast<QOutputPin *>(result));
+            (qmofobject_cast<QActionPrivate *>(d))->addOutput(qmofobject_cast<QOutputPin *>(result));
         }
     }
 }
@@ -158,13 +158,13 @@ void QReduceAction::setCollection(QInputPin *collection)
     Q_D(QReduceAction);
     if (d->collection != collection) {
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QActionPrivate *>(d))->removeInput(qumlobject_cast<QInputPin *>(d->collection));
+        (qmofobject_cast<QActionPrivate *>(d))->removeInput(qmofobject_cast<QInputPin *>(d->collection));
 
         d->collection = collection;
 
         // Adjust subsetted property(ies)
         if (collection) {
-            (qumlobject_cast<QActionPrivate *>(d))->addInput(qumlobject_cast<QInputPin *>(collection));
+            (qmofobject_cast<QActionPrivate *>(d))->addInput(qmofobject_cast<QInputPin *>(collection));
         }
     }
 }

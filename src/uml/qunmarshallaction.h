@@ -74,7 +74,7 @@ class Q_UML_EXPORT QUnmarshallAction : public QAction
     Q_DECLARE_PRIVATE(QUnmarshallAction)
 
 public:
-    Q_INVOKABLE explicit QUnmarshallAction(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    Q_INVOKABLE explicit QUnmarshallAction(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
     virtual ~QUnmarshallAction();
 
     // Association ends from QUnmarshallAction
@@ -87,7 +87,7 @@ public:
     Q_INVOKABLE void setUnmarshallType(QClassifier *unmarshallType);
 
 protected:
-    explicit QUnmarshallAction(QUnmarshallActionPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    explicit QUnmarshallAction(QUnmarshallActionPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -62,12 +62,12 @@ QCommentPrivate::~QCommentPrivate()
     \brief A comment is a textual annotation that can be attached to a set of elements.
  */
 
-QComment::QComment(QUmlObject *parent, QUmlObject *wrapper) :
+QComment::QComment(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QElement(*new QCommentPrivate, parent, wrapper)
 {
 }
 
-QComment::QComment(QCommentPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QComment::QComment(QCommentPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QElement(dd, parent, wrapper)
 {
 }

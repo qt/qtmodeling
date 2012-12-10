@@ -66,15 +66,15 @@ QRedefinableTemplateSignaturePrivate::~QRedefinableTemplateSignaturePrivate()
     \brief A redefinable template signature supports the addition of formal template parameters in a specialization of a template classifier.
  */
 
-QRedefinableTemplateSignature::QRedefinableTemplateSignature(QUmlObject *parent, QUmlObject *wrapper) :
-    QUmlObject(*new QRedefinableTemplateSignaturePrivate, parent, wrapper),
+QRedefinableTemplateSignature::QRedefinableTemplateSignature(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+    QtMof::QMofObject(*new QRedefinableTemplateSignaturePrivate, parent, wrapper),
     _wrappedTemplateSignature(new QTemplateSignature(this, this)),
     _wrappedRedefinableElement(new QRedefinableElement(this, this))
 {
 }
 
-QRedefinableTemplateSignature::QRedefinableTemplateSignature(QRedefinableTemplateSignaturePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
-    QUmlObject(dd, parent, wrapper),
+QRedefinableTemplateSignature::QRedefinableTemplateSignature(QRedefinableTemplateSignaturePrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+    QtMof::QMofObject(dd, parent, wrapper),
     _wrappedTemplateSignature(new QTemplateSignature(this, this)),
     _wrappedRedefinableElement(new QRedefinableElement(this, this))
 {
@@ -93,7 +93,7 @@ QRedefinableTemplateSignature::~QRedefinableTemplateSignature()
  */
 const QSet<QElement *> *QRedefinableTemplateSignature::ownedElements() const
 {
-    return (qumlobject_cast<const QElement *>(this))->ownedElements();
+    return (qmofobject_cast<const QElement *>(this))->ownedElements();
 }
 
 /*!
@@ -101,7 +101,7 @@ const QSet<QElement *> *QRedefinableTemplateSignature::ownedElements() const
  */
 QElement *QRedefinableTemplateSignature::owner() const
 {
-    return (qumlobject_cast<const QElement *>(this))->owner();
+    return (qmofobject_cast<const QElement *>(this))->owner();
 }
 
 /*!
@@ -109,17 +109,17 @@ QElement *QRedefinableTemplateSignature::owner() const
  */
 const QSet<QComment *> *QRedefinableTemplateSignature::ownedComments() const
 {
-    return (qumlobject_cast<const QElement *>(this))->ownedComments();
+    return (qmofobject_cast<const QElement *>(this))->ownedComments();
 }
 
 void QRedefinableTemplateSignature::addOwnedComment(QComment *ownedComment)
 {
-    (qumlobject_cast<QElement *>(this))->addOwnedComment(ownedComment);
+    (qmofobject_cast<QElement *>(this))->addOwnedComment(ownedComment);
 }
 
 void QRedefinableTemplateSignature::removeOwnedComment(QComment *ownedComment)
 {
-    (qumlobject_cast<QElement *>(this))->removeOwnedComment(ownedComment);
+    (qmofobject_cast<QElement *>(this))->removeOwnedComment(ownedComment);
 }
 
 // ---------------------------------------------------------------
@@ -131,12 +131,12 @@ void QRedefinableTemplateSignature::removeOwnedComment(QComment *ownedComment)
  */
 QString QRedefinableTemplateSignature::name() const
 {
-    return (qumlobject_cast<const QNamedElement *>(this))->name();
+    return (qmofobject_cast<const QNamedElement *>(this))->name();
 }
 
 void QRedefinableTemplateSignature::setName(QString name)
 {
-    (qumlobject_cast<QNamedElement *>(this))->setName(name);
+    (qmofobject_cast<QNamedElement *>(this))->setName(name);
 }
 
 /*!
@@ -144,12 +144,12 @@ void QRedefinableTemplateSignature::setName(QString name)
  */
 QtUml::VisibilityKind QRedefinableTemplateSignature::visibility() const
 {
-    return (qumlobject_cast<const QNamedElement *>(this))->visibility();
+    return (qmofobject_cast<const QNamedElement *>(this))->visibility();
 }
 
 void QRedefinableTemplateSignature::setVisibility(QtUml::VisibilityKind visibility)
 {
-    (qumlobject_cast<QNamedElement *>(this))->setVisibility(visibility);
+    (qmofobject_cast<QNamedElement *>(this))->setVisibility(visibility);
 }
 
 /*!
@@ -157,7 +157,7 @@ void QRedefinableTemplateSignature::setVisibility(QtUml::VisibilityKind visibili
  */
 QString QRedefinableTemplateSignature::qualifiedName() const
 {
-    return (qumlobject_cast<const QNamedElement *>(this))->qualifiedName();
+    return (qmofobject_cast<const QNamedElement *>(this))->qualifiedName();
 }
 
 // ---------------------------------------------------------------
@@ -169,12 +169,12 @@ QString QRedefinableTemplateSignature::qualifiedName() const
  */
 QStringExpression *QRedefinableTemplateSignature::nameExpression() const
 {
-    return (qumlobject_cast<const QNamedElement *>(this))->nameExpression();
+    return (qmofobject_cast<const QNamedElement *>(this))->nameExpression();
 }
 
 void QRedefinableTemplateSignature::setNameExpression(QStringExpression *nameExpression)
 {
-    (qumlobject_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
+    (qmofobject_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
 }
 
 /*!
@@ -182,7 +182,7 @@ void QRedefinableTemplateSignature::setNameExpression(QStringExpression *nameExp
  */
 QNamespace *QRedefinableTemplateSignature::namespace_() const
 {
-    return (qumlobject_cast<const QNamedElement *>(this))->namespace_();
+    return (qmofobject_cast<const QNamedElement *>(this))->namespace_();
 }
 
 /*!
@@ -190,17 +190,17 @@ QNamespace *QRedefinableTemplateSignature::namespace_() const
  */
 const QSet<QDependency *> *QRedefinableTemplateSignature::clientDependencies() const
 {
-    return (qumlobject_cast<const QNamedElement *>(this))->clientDependencies();
+    return (qmofobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
 
 void QRedefinableTemplateSignature::addClientDependency(QDependency *clientDependency)
 {
-    (qumlobject_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
+    (qmofobject_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
 }
 
 void QRedefinableTemplateSignature::removeClientDependency(QDependency *clientDependency)
 {
-    (qumlobject_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
+    (qmofobject_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
 }
 
 // ---------------------------------------------------------------
@@ -212,12 +212,12 @@ void QRedefinableTemplateSignature::removeClientDependency(QDependency *clientDe
  */
 bool QRedefinableTemplateSignature::isLeaf() const
 {
-    return (qumlobject_cast<const QRedefinableElement *>(this))->isLeaf();
+    return (qmofobject_cast<const QRedefinableElement *>(this))->isLeaf();
 }
 
 void QRedefinableTemplateSignature::setLeaf(bool isLeaf)
 {
-    (qumlobject_cast<QRedefinableElement *>(this))->setLeaf(isLeaf);
+    (qmofobject_cast<QRedefinableElement *>(this))->setLeaf(isLeaf);
 }
 
 // ---------------------------------------------------------------
@@ -229,7 +229,7 @@ void QRedefinableTemplateSignature::setLeaf(bool isLeaf)
  */
 const QSet<QRedefinableElement *> *QRedefinableTemplateSignature::redefinedElements() const
 {
-    return (qumlobject_cast<const QRedefinableElement *>(this))->redefinedElements();
+    return (qmofobject_cast<const QRedefinableElement *>(this))->redefinedElements();
 }
 
 /*!
@@ -237,7 +237,7 @@ const QSet<QRedefinableElement *> *QRedefinableTemplateSignature::redefinedEleme
  */
 const QSet<QClassifier *> *QRedefinableTemplateSignature::redefinitionContexts() const
 {
-    return (qumlobject_cast<const QRedefinableElement *>(this))->redefinitionContexts();
+    return (qmofobject_cast<const QRedefinableElement *>(this))->redefinitionContexts();
 }
 
 // ---------------------------------------------------------------
@@ -276,13 +276,13 @@ void QRedefinableTemplateSignature::setClassifier(QClassifier *classifier)
         // Adjust opposite property
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QRedefinableElementPrivate *>(d))->removeRedefinitionContext(qumlobject_cast<QClassifier *>(d->classifier));
+        (qmofobject_cast<QRedefinableElementPrivate *>(d))->removeRedefinitionContext(qmofobject_cast<QClassifier *>(d->classifier));
 
         d->classifier = classifier;
 
         // Adjust subsetted property(ies)
         if (classifier) {
-            (qumlobject_cast<QRedefinableElementPrivate *>(d))->addRedefinitionContext(qumlobject_cast<QClassifier *>(classifier));
+            (qmofobject_cast<QRedefinableElementPrivate *>(d))->addRedefinitionContext(qmofobject_cast<QClassifier *>(classifier));
         }
 
         // Adjust opposite property
@@ -310,7 +310,7 @@ void QRedefinableTemplateSignature::addExtendedSignature(QRedefinableTemplateSig
         d->extendedSignatures->insert(extendedSignature);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QRedefinableElementPrivate *>(d))->addRedefinedElement(qumlobject_cast<QRedefinableElement *>(extendedSignature));
+        (qmofobject_cast<QRedefinableElementPrivate *>(d))->addRedefinedElement(qmofobject_cast<QRedefinableElement *>(extendedSignature));
     }
 }
 
@@ -323,7 +323,7 @@ void QRedefinableTemplateSignature::removeExtendedSignature(QRedefinableTemplate
         d->extendedSignatures->remove(extendedSignature);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QRedefinableElementPrivate *>(d))->removeRedefinedElement(qumlobject_cast<QRedefinableElement *>(extendedSignature));
+        (qmofobject_cast<QRedefinableElementPrivate *>(d))->removeRedefinedElement(qmofobject_cast<QRedefinableElement *>(extendedSignature));
     }
 }
 

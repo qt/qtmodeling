@@ -72,12 +72,12 @@ QLifelinePrivate::~QLifelinePrivate()
     \brief A lifeline represents an individual participant in the interaction. While parts and structural features may have multiplicity greater than 1, lifelines represent only one interacting entity.
  */
 
-QLifeline::QLifeline(QUmlObject *parent, QUmlObject *wrapper) :
+QLifeline::QLifeline(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QNamedElement(*new QLifelinePrivate, parent, wrapper)
 {
 }
 
-QLifeline::QLifeline(QLifelinePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QLifeline::QLifeline(QLifelinePrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QNamedElement(dd, parent, wrapper)
 {
 }
@@ -194,7 +194,7 @@ void QLifeline::setInteraction(QInteraction *interaction)
         d->interaction = interaction;
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qumlobject_cast<QNamespace *>(interaction));
+        (qmofobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qmofobject_cast<QNamespace *>(interaction));
 
         // Adjust opposite property
         if (interaction)
@@ -220,13 +220,13 @@ void QLifeline::setSelector(QValueSpecification *selector)
     Q_D(QLifeline);
     if (d->selector != selector) {
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(d->selector));
+        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(d->selector));
 
         d->selector = selector;
 
         // Adjust subsetted property(ies)
         if (selector) {
-            (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(selector));
+            (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(selector));
         }
     }
 }

@@ -42,7 +42,7 @@
 #define QTUML_QOBJECTNODE_P_H
 
 // Base class includes
-#include "private/qumlobject_p.h"
+#include "private/qmofobject_p.h"
 #include "private/qactivitynode_p.h"
 #include "private/qtypedelement_p.h"
 
@@ -65,7 +65,7 @@ class QState;
 class QBehavior;
 class QValueSpecification;
 
-class Q_UML_EXPORT QObjectNodePrivate : public QUmlObjectPrivate
+class Q_UML_EXPORT QObjectNodePrivate : public QtMof::QMofObjectPrivate
 {
     Q_DECLARE_PUBLIC(QObjectNode)
 

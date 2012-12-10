@@ -67,7 +67,7 @@ class Q_UML_EXPORT QWriteVariableAction : public QVariableAction
     Q_DECLARE_PRIVATE(QWriteVariableAction)
 
 public:
-    Q_INVOKABLE explicit QWriteVariableAction(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    Q_INVOKABLE explicit QWriteVariableAction(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
     virtual ~QWriteVariableAction();
 
     // Association ends from QWriteVariableAction
@@ -75,7 +75,7 @@ public:
     Q_INVOKABLE void setValue(QInputPin *value);
 
 protected:
-    explicit QWriteVariableAction(QWriteVariableActionPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    explicit QWriteVariableAction(QWriteVariableActionPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

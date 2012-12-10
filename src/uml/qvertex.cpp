@@ -127,12 +127,12 @@ void QVertexPrivate::removeOutgoing(QTransition *outgoing)
     \brief A vertex is an abstraction of a node in a state machine graph. In general, it can be the source or destination of any number of transitions.
  */
 
-QVertex::QVertex(QUmlObject *parent, QUmlObject *wrapper) :
+QVertex::QVertex(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QNamedElement(*new QVertexPrivate, parent, wrapper)
 {
 }
 
-QVertex::QVertex(QVertexPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QVertex::QVertex(QVertexPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QNamedElement(dd, parent, wrapper)
 {
 }
@@ -181,7 +181,7 @@ void QVertex::setContainer(QRegion *container)
         d->container = container;
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qumlobject_cast<QNamespace *>(container));
+        (qmofobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qmofobject_cast<QNamespace *>(container));
 
         // Adjust opposite property
         if (container)

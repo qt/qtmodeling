@@ -65,12 +65,12 @@ QSendObjectActionPrivate::~QSendObjectActionPrivate()
     \brief A send object action is an action that transmits an object to the target object, where it may invoke behavior such as the firing of state machine transitions or the execution of an activity. The value of the object is available to the execution of invoked behaviors. The requestor continues execution immediately. Any reply message is ignored and is not transmitted to the requestor.
  */
 
-QSendObjectAction::QSendObjectAction(QUmlObject *parent, QUmlObject *wrapper) :
+QSendObjectAction::QSendObjectAction(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QInvocationAction(*new QSendObjectActionPrivate, parent, wrapper)
 {
 }
 
-QSendObjectAction::QSendObjectAction(QSendObjectActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QSendObjectAction::QSendObjectAction(QSendObjectActionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QInvocationAction(dd, parent, wrapper)
 {
 }
@@ -122,13 +122,13 @@ void QSendObjectAction::setTarget(QInputPin *target)
     Q_D(QSendObjectAction);
     if (d->target != target) {
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QActionPrivate *>(d))->removeInput(qumlobject_cast<QInputPin *>(d->target));
+        (qmofobject_cast<QActionPrivate *>(d))->removeInput(qmofobject_cast<QInputPin *>(d->target));
 
         d->target = target;
 
         // Adjust subsetted property(ies)
         if (target) {
-            (qumlobject_cast<QActionPrivate *>(d))->addInput(qumlobject_cast<QInputPin *>(target));
+            (qmofobject_cast<QActionPrivate *>(d))->addInput(qmofobject_cast<QInputPin *>(target));
         }
     }
 }

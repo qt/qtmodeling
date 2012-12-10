@@ -87,16 +87,16 @@ QPropertyPrivate::~QPropertyPrivate()
     \brief Property represents a declared state of one or more instances in terms of a named relationship to a value or values. When a property is an attribute of a classifier, the value or values are related to the instance of the classifier by being held in slots of the instance. When a property is an association end, the value or values are related to the instance or instances at the other end(s) of the association. The range of valid values represented by the property can be controlled by setting the property's type.A property is a structural feature of a classifier that characterizes instances of the classifier. A property related by ownedAttribute to a classifier (other than an association) represents an attribute and might also represent an association end. It relates an instance of the class to a value or set of values of the type of the attribute. A property related by memberEnd or its specializations to an association represents an end of the association. The type of the property is the type of the end of the association.A property has the capability of being a deployment target in a deployment relationship. This enables modeling the deployment to hierarchical nodes that have properties functioning as internal parts.Property specializes ParameterableElement to specify that a property can be exposed as a formal template parameter, and provided as an actual parameter in a binding of a template.A property represents a set of instances that are owned by a containing classifier instance.
  */
 
-QProperty::QProperty(QUmlObject *parent, QUmlObject *wrapper) :
-    QUmlObject(*new QPropertyPrivate, parent, wrapper),
+QProperty::QProperty(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+    QtMof::QMofObject(*new QPropertyPrivate, parent, wrapper),
     _wrappedStructuralFeature(new QStructuralFeature(this, this)),
     _wrappedConnectableElement(new QConnectableElement(this, this)),
     _wrappedDeploymentTarget(new QDeploymentTarget(this, this))
 {
 }
 
-QProperty::QProperty(QPropertyPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
-    QUmlObject(dd, parent, wrapper),
+QProperty::QProperty(QPropertyPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+    QtMof::QMofObject(dd, parent, wrapper),
     _wrappedStructuralFeature(new QStructuralFeature(this, this)),
     _wrappedConnectableElement(new QConnectableElement(this, this)),
     _wrappedDeploymentTarget(new QDeploymentTarget(this, this))
@@ -116,7 +116,7 @@ QProperty::~QProperty()
  */
 const QSet<QElement *> *QProperty::ownedElements() const
 {
-    return (qumlobject_cast<const QElement *>(this))->ownedElements();
+    return (qmofobject_cast<const QElement *>(this))->ownedElements();
 }
 
 /*!
@@ -124,7 +124,7 @@ const QSet<QElement *> *QProperty::ownedElements() const
  */
 QElement *QProperty::owner() const
 {
-    return (qumlobject_cast<const QElement *>(this))->owner();
+    return (qmofobject_cast<const QElement *>(this))->owner();
 }
 
 /*!
@@ -132,17 +132,17 @@ QElement *QProperty::owner() const
  */
 const QSet<QComment *> *QProperty::ownedComments() const
 {
-    return (qumlobject_cast<const QElement *>(this))->ownedComments();
+    return (qmofobject_cast<const QElement *>(this))->ownedComments();
 }
 
 void QProperty::addOwnedComment(QComment *ownedComment)
 {
-    (qumlobject_cast<QElement *>(this))->addOwnedComment(ownedComment);
+    (qmofobject_cast<QElement *>(this))->addOwnedComment(ownedComment);
 }
 
 void QProperty::removeOwnedComment(QComment *ownedComment)
 {
-    (qumlobject_cast<QElement *>(this))->removeOwnedComment(ownedComment);
+    (qmofobject_cast<QElement *>(this))->removeOwnedComment(ownedComment);
 }
 
 // ---------------------------------------------------------------
@@ -154,12 +154,12 @@ void QProperty::removeOwnedComment(QComment *ownedComment)
  */
 QString QProperty::name() const
 {
-    return (qumlobject_cast<const QNamedElement *>(this))->name();
+    return (qmofobject_cast<const QNamedElement *>(this))->name();
 }
 
 void QProperty::setName(QString name)
 {
-    (qumlobject_cast<QNamedElement *>(this))->setName(name);
+    (qmofobject_cast<QNamedElement *>(this))->setName(name);
 }
 
 /*!
@@ -167,12 +167,12 @@ void QProperty::setName(QString name)
  */
 QtUml::VisibilityKind QProperty::visibility() const
 {
-    return (qumlobject_cast<const QNamedElement *>(this))->visibility();
+    return (qmofobject_cast<const QNamedElement *>(this))->visibility();
 }
 
 void QProperty::setVisibility(QtUml::VisibilityKind visibility)
 {
-    (qumlobject_cast<QNamedElement *>(this))->setVisibility(visibility);
+    (qmofobject_cast<QNamedElement *>(this))->setVisibility(visibility);
 }
 
 /*!
@@ -180,7 +180,7 @@ void QProperty::setVisibility(QtUml::VisibilityKind visibility)
  */
 QString QProperty::qualifiedName() const
 {
-    return (qumlobject_cast<const QNamedElement *>(this))->qualifiedName();
+    return (qmofobject_cast<const QNamedElement *>(this))->qualifiedName();
 }
 
 // ---------------------------------------------------------------
@@ -192,12 +192,12 @@ QString QProperty::qualifiedName() const
  */
 QStringExpression *QProperty::nameExpression() const
 {
-    return (qumlobject_cast<const QNamedElement *>(this))->nameExpression();
+    return (qmofobject_cast<const QNamedElement *>(this))->nameExpression();
 }
 
 void QProperty::setNameExpression(QStringExpression *nameExpression)
 {
-    (qumlobject_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
+    (qmofobject_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
 }
 
 /*!
@@ -205,7 +205,7 @@ void QProperty::setNameExpression(QStringExpression *nameExpression)
  */
 QNamespace *QProperty::namespace_() const
 {
-    return (qumlobject_cast<const QNamedElement *>(this))->namespace_();
+    return (qmofobject_cast<const QNamedElement *>(this))->namespace_();
 }
 
 /*!
@@ -213,17 +213,17 @@ QNamespace *QProperty::namespace_() const
  */
 const QSet<QDependency *> *QProperty::clientDependencies() const
 {
-    return (qumlobject_cast<const QNamedElement *>(this))->clientDependencies();
+    return (qmofobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
 
 void QProperty::addClientDependency(QDependency *clientDependency)
 {
-    (qumlobject_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
+    (qmofobject_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
 }
 
 void QProperty::removeClientDependency(QDependency *clientDependency)
 {
-    (qumlobject_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
+    (qmofobject_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
 }
 
 // ---------------------------------------------------------------
@@ -235,12 +235,12 @@ void QProperty::removeClientDependency(QDependency *clientDependency)
  */
 QType *QProperty::type() const
 {
-    return (qumlobject_cast<const QTypedElement *>(this))->type();
+    return (qmofobject_cast<const QTypedElement *>(this))->type();
 }
 
 void QProperty::setType(QType *type)
 {
-    (qumlobject_cast<QTypedElement *>(this))->setType(type);
+    (qmofobject_cast<QTypedElement *>(this))->setType(type);
 }
 
 // ---------------------------------------------------------------
@@ -252,12 +252,12 @@ void QProperty::setType(QType *type)
  */
 qint32 QProperty::upper() const
 {
-    return (qumlobject_cast<const QMultiplicityElement *>(this))->upper();
+    return (qmofobject_cast<const QMultiplicityElement *>(this))->upper();
 }
 
 void QProperty::setUpper(qint32 upper)
 {
-    (qumlobject_cast<QMultiplicityElement *>(this))->setUpper(upper);
+    (qmofobject_cast<QMultiplicityElement *>(this))->setUpper(upper);
 }
 
 /*!
@@ -265,12 +265,12 @@ void QProperty::setUpper(qint32 upper)
  */
 bool QProperty::isUnique() const
 {
-    return (qumlobject_cast<const QMultiplicityElement *>(this))->isUnique();
+    return (qmofobject_cast<const QMultiplicityElement *>(this))->isUnique();
 }
 
 void QProperty::setUnique(bool isUnique)
 {
-    (qumlobject_cast<QMultiplicityElement *>(this))->setUnique(isUnique);
+    (qmofobject_cast<QMultiplicityElement *>(this))->setUnique(isUnique);
 }
 
 /*!
@@ -278,12 +278,12 @@ void QProperty::setUnique(bool isUnique)
  */
 bool QProperty::isOrdered() const
 {
-    return (qumlobject_cast<const QMultiplicityElement *>(this))->isOrdered();
+    return (qmofobject_cast<const QMultiplicityElement *>(this))->isOrdered();
 }
 
 void QProperty::setOrdered(bool isOrdered)
 {
-    (qumlobject_cast<QMultiplicityElement *>(this))->setOrdered(isOrdered);
+    (qmofobject_cast<QMultiplicityElement *>(this))->setOrdered(isOrdered);
 }
 
 /*!
@@ -291,12 +291,12 @@ void QProperty::setOrdered(bool isOrdered)
  */
 qint32 QProperty::lower() const
 {
-    return (qumlobject_cast<const QMultiplicityElement *>(this))->lower();
+    return (qmofobject_cast<const QMultiplicityElement *>(this))->lower();
 }
 
 void QProperty::setLower(qint32 lower)
 {
-    (qumlobject_cast<QMultiplicityElement *>(this))->setLower(lower);
+    (qmofobject_cast<QMultiplicityElement *>(this))->setLower(lower);
 }
 
 // ---------------------------------------------------------------
@@ -308,12 +308,12 @@ void QProperty::setLower(qint32 lower)
  */
 QValueSpecification *QProperty::upperValue() const
 {
-    return (qumlobject_cast<const QMultiplicityElement *>(this))->upperValue();
+    return (qmofobject_cast<const QMultiplicityElement *>(this))->upperValue();
 }
 
 void QProperty::setUpperValue(QValueSpecification *upperValue)
 {
-    (qumlobject_cast<QMultiplicityElement *>(this))->setUpperValue(upperValue);
+    (qmofobject_cast<QMultiplicityElement *>(this))->setUpperValue(upperValue);
 }
 
 /*!
@@ -321,12 +321,12 @@ void QProperty::setUpperValue(QValueSpecification *upperValue)
  */
 QValueSpecification *QProperty::lowerValue() const
 {
-    return (qumlobject_cast<const QMultiplicityElement *>(this))->lowerValue();
+    return (qmofobject_cast<const QMultiplicityElement *>(this))->lowerValue();
 }
 
 void QProperty::setLowerValue(QValueSpecification *lowerValue)
 {
-    (qumlobject_cast<QMultiplicityElement *>(this))->setLowerValue(lowerValue);
+    (qmofobject_cast<QMultiplicityElement *>(this))->setLowerValue(lowerValue);
 }
 
 // ---------------------------------------------------------------
@@ -338,12 +338,12 @@ void QProperty::setLowerValue(QValueSpecification *lowerValue)
  */
 bool QProperty::isLeaf() const
 {
-    return (qumlobject_cast<const QRedefinableElement *>(this))->isLeaf();
+    return (qmofobject_cast<const QRedefinableElement *>(this))->isLeaf();
 }
 
 void QProperty::setLeaf(bool isLeaf)
 {
-    (qumlobject_cast<QRedefinableElement *>(this))->setLeaf(isLeaf);
+    (qmofobject_cast<QRedefinableElement *>(this))->setLeaf(isLeaf);
 }
 
 // ---------------------------------------------------------------
@@ -355,7 +355,7 @@ void QProperty::setLeaf(bool isLeaf)
  */
 const QSet<QRedefinableElement *> *QProperty::redefinedElements() const
 {
-    return (qumlobject_cast<const QRedefinableElement *>(this))->redefinedElements();
+    return (qmofobject_cast<const QRedefinableElement *>(this))->redefinedElements();
 }
 
 /*!
@@ -363,7 +363,7 @@ const QSet<QRedefinableElement *> *QProperty::redefinedElements() const
  */
 const QSet<QClassifier *> *QProperty::redefinitionContexts() const
 {
-    return (qumlobject_cast<const QRedefinableElement *>(this))->redefinitionContexts();
+    return (qmofobject_cast<const QRedefinableElement *>(this))->redefinitionContexts();
 }
 
 // ---------------------------------------------------------------
@@ -375,12 +375,12 @@ const QSet<QClassifier *> *QProperty::redefinitionContexts() const
  */
 bool QProperty::isStatic() const
 {
-    return (qumlobject_cast<const QFeature *>(this))->isStatic();
+    return (qmofobject_cast<const QFeature *>(this))->isStatic();
 }
 
 void QProperty::setStatic(bool isStatic)
 {
-    (qumlobject_cast<QFeature *>(this))->setStatic(isStatic);
+    (qmofobject_cast<QFeature *>(this))->setStatic(isStatic);
 }
 
 // ---------------------------------------------------------------
@@ -392,7 +392,7 @@ void QProperty::setStatic(bool isStatic)
  */
 const QSet<QClassifier *> *QProperty::featuringClassifiers() const
 {
-    return (qumlobject_cast<const QFeature *>(this))->featuringClassifiers();
+    return (qmofobject_cast<const QFeature *>(this))->featuringClassifiers();
 }
 
 // ---------------------------------------------------------------
@@ -404,12 +404,12 @@ const QSet<QClassifier *> *QProperty::featuringClassifiers() const
  */
 QTemplateParameter *QProperty::owningTemplateParameter() const
 {
-    return (qumlobject_cast<const QParameterableElement *>(this))->owningTemplateParameter();
+    return (qmofobject_cast<const QParameterableElement *>(this))->owningTemplateParameter();
 }
 
 void QProperty::setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter)
 {
-    (qumlobject_cast<QParameterableElement *>(this))->setOwningTemplateParameter(owningTemplateParameter);
+    (qmofobject_cast<QParameterableElement *>(this))->setOwningTemplateParameter(owningTemplateParameter);
 }
 
 // ---------------------------------------------------------------
@@ -421,7 +421,7 @@ void QProperty::setOwningTemplateParameter(QTemplateParameter *owningTemplatePar
  */
 const QList<QConnectorEnd *> *QProperty::ends() const
 {
-    return (qumlobject_cast<const QConnectableElement *>(this))->ends();
+    return (qmofobject_cast<const QConnectableElement *>(this))->ends();
 }
 
 /*!
@@ -429,12 +429,12 @@ const QList<QConnectorEnd *> *QProperty::ends() const
  */
 QConnectableElementTemplateParameter *QProperty::templateParameter() const
 {
-    return (qumlobject_cast<const QConnectableElement *>(this))->templateParameter();
+    return (qmofobject_cast<const QConnectableElement *>(this))->templateParameter();
 }
 
 void QProperty::setTemplateParameter(QConnectableElementTemplateParameter *templateParameter)
 {
-    (qumlobject_cast<QConnectableElement *>(this))->setTemplateParameter(templateParameter);
+    (qmofobject_cast<QConnectableElement *>(this))->setTemplateParameter(templateParameter);
 }
 
 // ---------------------------------------------------------------
@@ -446,7 +446,7 @@ void QProperty::setTemplateParameter(QConnectableElementTemplateParameter *templ
  */
 const QSet<QPackageableElement *> *QProperty::deployedElements() const
 {
-    return (qumlobject_cast<const QDeploymentTarget *>(this))->deployedElements();
+    return (qmofobject_cast<const QDeploymentTarget *>(this))->deployedElements();
 }
 
 /*!
@@ -454,17 +454,17 @@ const QSet<QPackageableElement *> *QProperty::deployedElements() const
  */
 const QSet<QDeployment *> *QProperty::deployments() const
 {
-    return (qumlobject_cast<const QDeploymentTarget *>(this))->deployments();
+    return (qmofobject_cast<const QDeploymentTarget *>(this))->deployments();
 }
 
 void QProperty::addDeployment(QDeployment *deployment)
 {
-    (qumlobject_cast<QDeploymentTarget *>(this))->addDeployment(deployment);
+    (qmofobject_cast<QDeploymentTarget *>(this))->addDeployment(deployment);
 }
 
 void QProperty::removeDeployment(QDeployment *deployment)
 {
-    (qumlobject_cast<QDeploymentTarget *>(this))->removeDeployment(deployment);
+    (qmofobject_cast<QDeploymentTarget *>(this))->removeDeployment(deployment);
 }
 
 // ---------------------------------------------------------------
@@ -681,20 +681,20 @@ void QProperty::setOwningAssociation(QAssociation *owningAssociation)
             d->owningAssociation->removeOwnedEnd(this);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QFeaturePrivate *>(d))->removeFeaturingClassifier(qumlobject_cast<QClassifier *>(d->owningAssociation));
-        (qumlobject_cast<QRedefinableElementPrivate *>(d))->removeRedefinitionContext(qumlobject_cast<QClassifier *>(d->owningAssociation));
+        (qmofobject_cast<QFeaturePrivate *>(d))->removeFeaturingClassifier(qmofobject_cast<QClassifier *>(d->owningAssociation));
+        (qmofobject_cast<QRedefinableElementPrivate *>(d))->removeRedefinitionContext(qmofobject_cast<QClassifier *>(d->owningAssociation));
 
         d->owningAssociation = owningAssociation;
 
         // Adjust subsetted property(ies)
         if (owningAssociation) {
-            (qumlobject_cast<QFeaturePrivate *>(d))->addFeaturingClassifier(qumlobject_cast<QClassifier *>(owningAssociation));
+            (qmofobject_cast<QFeaturePrivate *>(d))->addFeaturingClassifier(qmofobject_cast<QClassifier *>(owningAssociation));
         }
         if (owningAssociation) {
-            (qumlobject_cast<QRedefinableElementPrivate *>(d))->addRedefinitionContext(qumlobject_cast<QClassifier *>(owningAssociation));
+            (qmofobject_cast<QRedefinableElementPrivate *>(d))->addRedefinitionContext(qmofobject_cast<QClassifier *>(owningAssociation));
         }
-        (qumlobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qumlobject_cast<QNamespace *>(owningAssociation));
-        (qumlobject_cast<QProperty *>(this))->setAssociation(qumlobject_cast<QAssociation *>(owningAssociation));
+        (qmofobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qmofobject_cast<QNamespace *>(owningAssociation));
+        (qmofobject_cast<QProperty *>(this))->setAssociation(qmofobject_cast<QAssociation *>(owningAssociation));
 
         // Adjust opposite property
         if (owningAssociation)
@@ -722,7 +722,7 @@ void QProperty::addQualifier(QProperty *qualifier)
         d->qualifiers->append(qualifier);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(qualifier));
+        (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(qualifier));
 
         // Adjust opposite property
         qualifier->setAssociationEnd(this);
@@ -738,7 +738,7 @@ void QProperty::removeQualifier(QProperty *qualifier)
         d->qualifiers->removeAll(qualifier);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(qualifier));
+        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(qualifier));
 
         // Adjust opposite property
         qualifier->setAssociationEnd(0);
@@ -763,13 +763,13 @@ void QProperty::setDefaultValue(QValueSpecification *defaultValue)
     Q_D(QProperty);
     if (d->defaultValue != defaultValue) {
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(d->defaultValue));
+        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(d->defaultValue));
 
         d->defaultValue = defaultValue;
 
         // Adjust subsetted property(ies)
         if (defaultValue) {
-            (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(defaultValue));
+            (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(defaultValue));
         }
     }
 }
@@ -796,18 +796,18 @@ void QProperty::setClass_(QClass *class_)
             d->class_->removeOwnedAttribute(this);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QFeaturePrivate *>(d))->removeFeaturingClassifier(qumlobject_cast<QClassifier *>(d->class_));
-        (qumlobject_cast<QRedefinableElementPrivate *>(d))->removeRedefinitionContext(qumlobject_cast<QClassifier *>(d->class_));
+        (qmofobject_cast<QFeaturePrivate *>(d))->removeFeaturingClassifier(qmofobject_cast<QClassifier *>(d->class_));
+        (qmofobject_cast<QRedefinableElementPrivate *>(d))->removeRedefinitionContext(qmofobject_cast<QClassifier *>(d->class_));
 
         d->class_ = class_;
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qumlobject_cast<QNamespace *>(class_));
+        (qmofobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qmofobject_cast<QNamespace *>(class_));
         if (class_) {
-            (qumlobject_cast<QFeaturePrivate *>(d))->addFeaturingClassifier(qumlobject_cast<QClassifier *>(class_));
+            (qmofobject_cast<QFeaturePrivate *>(d))->addFeaturingClassifier(qmofobject_cast<QClassifier *>(class_));
         }
         if (class_) {
-            (qumlobject_cast<QRedefinableElementPrivate *>(d))->addRedefinitionContext(qumlobject_cast<QClassifier *>(class_));
+            (qmofobject_cast<QRedefinableElementPrivate *>(d))->addRedefinitionContext(qmofobject_cast<QClassifier *>(class_));
         }
 
         // Adjust opposite property
@@ -864,7 +864,7 @@ void QProperty::setAssociationEnd(QProperty *associationEnd)
         d->associationEnd = associationEnd;
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->setOwner(qumlobject_cast<QElement *>(associationEnd));
+        (qmofobject_cast<QElementPrivate *>(d))->setOwner(qmofobject_cast<QElement *>(associationEnd));
 
         // Adjust opposite property
         if (associationEnd)
@@ -894,18 +894,18 @@ void QProperty::setDatatype(QDataType *datatype)
             d->datatype->removeOwnedAttribute(this);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QFeaturePrivate *>(d))->removeFeaturingClassifier(qumlobject_cast<QClassifier *>(d->datatype));
-        (qumlobject_cast<QRedefinableElementPrivate *>(d))->removeRedefinitionContext(qumlobject_cast<QClassifier *>(d->datatype));
+        (qmofobject_cast<QFeaturePrivate *>(d))->removeFeaturingClassifier(qmofobject_cast<QClassifier *>(d->datatype));
+        (qmofobject_cast<QRedefinableElementPrivate *>(d))->removeRedefinitionContext(qmofobject_cast<QClassifier *>(d->datatype));
 
         d->datatype = datatype;
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qumlobject_cast<QNamespace *>(datatype));
+        (qmofobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qmofobject_cast<QNamespace *>(datatype));
         if (datatype) {
-            (qumlobject_cast<QFeaturePrivate *>(d))->addFeaturingClassifier(qumlobject_cast<QClassifier *>(datatype));
+            (qmofobject_cast<QFeaturePrivate *>(d))->addFeaturingClassifier(qmofobject_cast<QClassifier *>(datatype));
         }
         if (datatype) {
-            (qumlobject_cast<QRedefinableElementPrivate *>(d))->addRedefinitionContext(qumlobject_cast<QClassifier *>(datatype));
+            (qmofobject_cast<QRedefinableElementPrivate *>(d))->addRedefinitionContext(qmofobject_cast<QClassifier *>(datatype));
         }
 
         // Adjust opposite property
@@ -934,7 +934,7 @@ void QProperty::addRedefinedProperty(QProperty *redefinedProperty)
         d->redefinedProperties->insert(redefinedProperty);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QRedefinableElementPrivate *>(d))->addRedefinedElement(qumlobject_cast<QRedefinableElement *>(redefinedProperty));
+        (qmofobject_cast<QRedefinableElementPrivate *>(d))->addRedefinedElement(qmofobject_cast<QRedefinableElement *>(redefinedProperty));
     }
 }
 
@@ -947,7 +947,7 @@ void QProperty::removeRedefinedProperty(QProperty *redefinedProperty)
         d->redefinedProperties->remove(redefinedProperty);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QRedefinableElementPrivate *>(d))->removeRedefinedElement(qumlobject_cast<QRedefinableElement *>(redefinedProperty));
+        (qmofobject_cast<QRedefinableElementPrivate *>(d))->removeRedefinedElement(qmofobject_cast<QRedefinableElement *>(redefinedProperty));
     }
 }
 
@@ -1002,18 +1002,18 @@ void QProperty::setInterface(QInterface *interface)
             d->interface->removeOwnedAttribute(this);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QFeaturePrivate *>(d))->removeFeaturingClassifier(qumlobject_cast<QClassifier *>(d->interface));
-        (qumlobject_cast<QRedefinableElementPrivate *>(d))->removeRedefinitionContext(qumlobject_cast<QClassifier *>(d->interface));
+        (qmofobject_cast<QFeaturePrivate *>(d))->removeFeaturingClassifier(qmofobject_cast<QClassifier *>(d->interface));
+        (qmofobject_cast<QRedefinableElementPrivate *>(d))->removeRedefinitionContext(qmofobject_cast<QClassifier *>(d->interface));
 
         d->interface = interface;
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qumlobject_cast<QNamespace *>(interface));
+        (qmofobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qmofobject_cast<QNamespace *>(interface));
         if (interface) {
-            (qumlobject_cast<QFeaturePrivate *>(d))->addFeaturingClassifier(qumlobject_cast<QClassifier *>(interface));
+            (qmofobject_cast<QFeaturePrivate *>(d))->addFeaturingClassifier(qmofobject_cast<QClassifier *>(interface));
         }
         if (interface) {
-            (qumlobject_cast<QRedefinableElementPrivate *>(d))->addRedefinitionContext(qumlobject_cast<QClassifier *>(interface));
+            (qmofobject_cast<QRedefinableElementPrivate *>(d))->addRedefinitionContext(qmofobject_cast<QClassifier *>(interface));
         }
 
         // Adjust opposite property

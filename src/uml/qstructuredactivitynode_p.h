@@ -42,7 +42,7 @@
 #define QTUML_QSTRUCTUREDACTIVITYNODE_P_H
 
 // Base class includes
-#include "private/qumlobject_p.h"
+#include "private/qmofobject_p.h"
 #include "private/qaction_p.h"
 #include "private/qnamespace_p.h"
 #include "private/qactivitygroup_p.h"
@@ -67,7 +67,7 @@ class QActivity;
 class QActivityNode;
 class QStructuredActivityNode;
 
-class Q_UML_EXPORT QStructuredActivityNodePrivate : public QUmlObjectPrivate
+class Q_UML_EXPORT QStructuredActivityNodePrivate : public QtMof::QMofObjectPrivate
 {
     Q_DECLARE_PUBLIC(QStructuredActivityNode)
 

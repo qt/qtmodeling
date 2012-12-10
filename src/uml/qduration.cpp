@@ -65,12 +65,12 @@ QDurationPrivate::~QDurationPrivate()
     \brief Duration defines a value specification that specifies the temporal distance between two time instants.
  */
 
-QDuration::QDuration(QUmlObject *parent, QUmlObject *wrapper) :
+QDuration::QDuration(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QValueSpecification(*new QDurationPrivate, parent, wrapper)
 {
 }
 
-QDuration::QDuration(QDurationPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QDuration::QDuration(QDurationPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QValueSpecification(dd, parent, wrapper)
 {
 }
@@ -101,13 +101,13 @@ void QDuration::setExpr(QValueSpecification *expr)
     Q_D(QDuration);
     if (d->expr != expr) {
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(d->expr));
+        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(d->expr));
 
         d->expr = expr;
 
         // Adjust subsetted property(ies)
         if (expr) {
-            (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(expr));
+            (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(expr));
         }
     }
 }

@@ -72,7 +72,7 @@ class Q_UML_EXPORT QDeploymentSpecification : public QArtifact
     Q_DECLARE_PRIVATE(QDeploymentSpecification)
 
 public:
-    Q_INVOKABLE explicit QDeploymentSpecification(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    Q_INVOKABLE explicit QDeploymentSpecification(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
     virtual ~QDeploymentSpecification();
 
     // Attributes from QDeploymentSpecification
@@ -86,7 +86,7 @@ public:
     Q_INVOKABLE void setDeployment(QDeployment *deployment);
 
 protected:
-    explicit QDeploymentSpecification(QDeploymentSpecificationPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    explicit QDeploymentSpecification(QDeploymentSpecificationPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

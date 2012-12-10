@@ -63,12 +63,12 @@ QReadLinkActionPrivate::~QReadLinkActionPrivate()
     \brief A read link action is a link action that navigates across associations to retrieve objects on one end.
  */
 
-QReadLinkAction::QReadLinkAction(QUmlObject *parent, QUmlObject *wrapper) :
+QReadLinkAction::QReadLinkAction(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QLinkAction(*new QReadLinkActionPrivate, parent, wrapper)
 {
 }
 
-QReadLinkAction::QReadLinkAction(QReadLinkActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QReadLinkAction::QReadLinkAction(QReadLinkActionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QLinkAction(dd, parent, wrapper)
 {
 }
@@ -99,13 +99,13 @@ void QReadLinkAction::setResult(QOutputPin *result)
     Q_D(QReadLinkAction);
     if (d->result != result) {
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QActionPrivate *>(d))->removeOutput(qumlobject_cast<QOutputPin *>(d->result));
+        (qmofobject_cast<QActionPrivate *>(d))->removeOutput(qmofobject_cast<QOutputPin *>(d->result));
 
         d->result = result;
 
         // Adjust subsetted property(ies)
         if (result) {
-            (qumlobject_cast<QActionPrivate *>(d))->addOutput(qumlobject_cast<QOutputPin *>(result));
+            (qmofobject_cast<QActionPrivate *>(d))->addOutput(qmofobject_cast<QOutputPin *>(result));
         }
     }
 }

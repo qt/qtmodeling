@@ -68,12 +68,12 @@ QTemplateParameterSubstitutionPrivate::~QTemplateParameterSubstitutionPrivate()
     \brief A template parameter substitution relates the actual parameter to a formal template parameter as part of a template binding.
  */
 
-QTemplateParameterSubstitution::QTemplateParameterSubstitution(QUmlObject *parent, QUmlObject *wrapper) :
+QTemplateParameterSubstitution::QTemplateParameterSubstitution(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QElement(*new QTemplateParameterSubstitutionPrivate, parent, wrapper)
 {
 }
 
-QTemplateParameterSubstitution::QTemplateParameterSubstitution(QTemplateParameterSubstitutionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QTemplateParameterSubstitution::QTemplateParameterSubstitution(QTemplateParameterSubstitutionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QElement(dd, parent, wrapper)
 {
 }
@@ -104,15 +104,15 @@ void QTemplateParameterSubstitution::setOwnedActual(QParameterableElement *owned
     Q_D(QTemplateParameterSubstitution);
     if (d->ownedActual != ownedActual) {
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(d->ownedActual));
+        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(d->ownedActual));
 
         d->ownedActual = ownedActual;
 
         // Adjust subsetted property(ies)
         if (ownedActual) {
-            (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(ownedActual));
+            (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(ownedActual));
         }
-        (qumlobject_cast<QTemplateParameterSubstitution *>(this))->setActual(qumlobject_cast<QParameterableElement *>(ownedActual));
+        (qmofobject_cast<QTemplateParameterSubstitution *>(this))->setActual(qmofobject_cast<QParameterableElement *>(ownedActual));
     }
 }
 
@@ -182,7 +182,7 @@ void QTemplateParameterSubstitution::setTemplateBinding(QTemplateBinding *templa
         d->templateBinding = templateBinding;
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->setOwner(qumlobject_cast<QElement *>(templateBinding));
+        (qmofobject_cast<QElementPrivate *>(d))->setOwner(qmofobject_cast<QElement *>(templateBinding));
 
         // Adjust opposite property
         if (templateBinding)

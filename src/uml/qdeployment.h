@@ -49,7 +49,7 @@
 // Qt includes
 #include <QtCore/QSet>
 
-#include <QtUml/QUmlPointer>
+#include <QtMof/QMofPointer>
 
 QT_BEGIN_HEADER
 
@@ -76,7 +76,7 @@ class Q_UML_EXPORT QDeployment : public QDependency
     Q_DECLARE_PRIVATE(QDeployment)
 
 public:
-    Q_INVOKABLE explicit QDeployment(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    Q_INVOKABLE explicit QDeployment(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
     virtual ~QDeployment();
 
     // Association ends from QDeployment
@@ -90,13 +90,13 @@ public:
     Q_INVOKABLE void removeDeployedArtifact(QDeployedArtifact *deployedArtifact);
 
     // Overriden methods for subsetted properties
-    Q_INVOKABLE void addClient(QUmlPointer<QDeploymentTarget> location);
-    Q_INVOKABLE void removeClient(QUmlPointer<QDeploymentTarget> location);
-    Q_INVOKABLE void addSupplier(QUmlPointer<QDeployedArtifact> deployedArtifact);
-    Q_INVOKABLE void removeSupplier(QUmlPointer<QDeployedArtifact> deployedArtifact);
+    Q_INVOKABLE void addClient(QtMof::QMofPointer<QDeploymentTarget> location);
+    Q_INVOKABLE void removeClient(QtMof::QMofPointer<QDeploymentTarget> location);
+    Q_INVOKABLE void addSupplier(QtMof::QMofPointer<QDeployedArtifact> deployedArtifact);
+    Q_INVOKABLE void removeSupplier(QtMof::QMofPointer<QDeployedArtifact> deployedArtifact);
 
 protected:
-    explicit QDeployment(QDeploymentPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    explicit QDeployment(QDeploymentPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

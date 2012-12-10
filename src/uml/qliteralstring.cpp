@@ -60,12 +60,12 @@ QLiteralStringPrivate::~QLiteralStringPrivate()
     \brief A literal string is a specification of a string value.
  */
 
-QLiteralString::QLiteralString(QUmlObject *parent, QUmlObject *wrapper) :
+QLiteralString::QLiteralString(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QLiteralSpecification(*new QLiteralStringPrivate, parent, wrapper)
 {
 }
 
-QLiteralString::QLiteralString(QLiteralStringPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QLiteralString::QLiteralString(QLiteralStringPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QLiteralSpecification(dd, parent, wrapper)
 {
 }

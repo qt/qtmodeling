@@ -42,7 +42,7 @@
 #define QTUML_QCLASS_P_H
 
 // Base class includes
-#include "private/qumlobject_p.h"
+#include "private/qmofobject_p.h"
 #include "private/qencapsulatedclassifier_p.h"
 #include "private/qbehavioredclassifier_p.h"
 
@@ -67,7 +67,7 @@ class QClassifier;
 class QExtension;
 class QProperty;
 
-class Q_UML_EXPORT QClassPrivate : public QUmlObjectPrivate
+class Q_UML_EXPORT QClassPrivate : public QtMof::QMofObjectPrivate
 {
     Q_DECLARE_PUBLIC(QClass)
 

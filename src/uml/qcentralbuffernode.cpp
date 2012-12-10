@@ -60,12 +60,12 @@ QCentralBufferNodePrivate::~QCentralBufferNodePrivate()
     \brief A central buffer node is an object node for managing flows from multiple sources and destinations.
  */
 
-QCentralBufferNode::QCentralBufferNode(QUmlObject *parent, QUmlObject *wrapper) :
+QCentralBufferNode::QCentralBufferNode(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QObjectNode(*new QCentralBufferNodePrivate, parent, wrapper)
 {
 }
 
-QCentralBufferNode::QCentralBufferNode(QCentralBufferNodePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QCentralBufferNode::QCentralBufferNode(QCentralBufferNodePrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QObjectNode(dd, parent, wrapper)
 {
 }

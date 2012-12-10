@@ -63,12 +63,12 @@ QInstanceValuePrivate::~QInstanceValuePrivate()
     \brief An instance value is a value specification that identifies an instance.
  */
 
-QInstanceValue::QInstanceValue(QUmlObject *parent, QUmlObject *wrapper) :
+QInstanceValue::QInstanceValue(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QValueSpecification(*new QInstanceValuePrivate, parent, wrapper)
 {
 }
 
-QInstanceValue::QInstanceValue(QInstanceValuePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QInstanceValue::QInstanceValue(QInstanceValuePrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QValueSpecification(dd, parent, wrapper)
 {
 }

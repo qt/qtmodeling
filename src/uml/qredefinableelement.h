@@ -72,7 +72,7 @@ class Q_UML_EXPORT QRedefinableElement : public QNamedElement
     Q_DECLARE_PRIVATE(QRedefinableElement)
 
 public:
-    Q_INVOKABLE explicit QRedefinableElement(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    Q_INVOKABLE explicit QRedefinableElement(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
     virtual ~QRedefinableElement();
 
     // Attributes from QRedefinableElement
@@ -88,7 +88,7 @@ public:
     Q_INVOKABLE bool isRedefinitionContextValid(const QRedefinableElement *redefined) const;
 
 protected:
-    explicit QRedefinableElement(QRedefinableElementPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    explicit QRedefinableElement(QRedefinableElementPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

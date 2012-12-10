@@ -65,12 +65,12 @@ QValueSpecificationActionPrivate::~QValueSpecificationActionPrivate()
     \brief A value specification action is an action that evaluates a value specification.
  */
 
-QValueSpecificationAction::QValueSpecificationAction(QUmlObject *parent, QUmlObject *wrapper) :
+QValueSpecificationAction::QValueSpecificationAction(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QAction(*new QValueSpecificationActionPrivate, parent, wrapper)
 {
 }
 
-QValueSpecificationAction::QValueSpecificationAction(QValueSpecificationActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QValueSpecificationAction::QValueSpecificationAction(QValueSpecificationActionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QAction(dd, parent, wrapper)
 {
 }
@@ -101,13 +101,13 @@ void QValueSpecificationAction::setValue(QValueSpecification *value)
     Q_D(QValueSpecificationAction);
     if (d->value != value) {
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(d->value));
+        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(d->value));
 
         d->value = value;
 
         // Adjust subsetted property(ies)
         if (value) {
-            (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(value));
+            (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(value));
         }
     }
 }
@@ -130,13 +130,13 @@ void QValueSpecificationAction::setResult(QOutputPin *result)
     Q_D(QValueSpecificationAction);
     if (d->result != result) {
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QActionPrivate *>(d))->removeOutput(qumlobject_cast<QOutputPin *>(d->result));
+        (qmofobject_cast<QActionPrivate *>(d))->removeOutput(qmofobject_cast<QOutputPin *>(d->result));
 
         d->result = result;
 
         // Adjust subsetted property(ies)
         if (result) {
-            (qumlobject_cast<QActionPrivate *>(d))->addOutput(qumlobject_cast<QOutputPin *>(result));
+            (qmofobject_cast<QActionPrivate *>(d))->addOutput(qmofobject_cast<QOutputPin *>(result));
         }
     }
 }

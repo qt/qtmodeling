@@ -63,12 +63,12 @@ QExtensionPointPrivate::~QExtensionPointPrivate()
     \brief An extension point identifies a point in the behavior of a use case where that behavior can be extended by the behavior of some other (extending) use case, as specified by an extend relationship.
  */
 
-QExtensionPoint::QExtensionPoint(QUmlObject *parent, QUmlObject *wrapper) :
+QExtensionPoint::QExtensionPoint(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QRedefinableElement(*new QExtensionPointPrivate, parent, wrapper)
 {
 }
 
-QExtensionPoint::QExtensionPoint(QExtensionPointPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QExtensionPoint::QExtensionPoint(QExtensionPointPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QRedefinableElement(dd, parent, wrapper)
 {
 }
@@ -105,7 +105,7 @@ void QExtensionPoint::setUseCase(QUseCase *useCase)
         d->useCase = useCase;
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qumlobject_cast<QNamespace *>(useCase));
+        (qmofobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qmofobject_cast<QNamespace *>(useCase));
 
         // Adjust opposite property
         if (useCase)

@@ -73,7 +73,7 @@ class Q_UML_EXPORT QProtocolTransition : public QTransition
     Q_DECLARE_PRIVATE(QProtocolTransition)
 
 public:
-    Q_INVOKABLE explicit QProtocolTransition(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    Q_INVOKABLE explicit QProtocolTransition(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
     virtual ~QProtocolTransition();
 
     // Association ends from QProtocolTransition
@@ -84,7 +84,7 @@ public:
     Q_INVOKABLE void setPreCondition(QConstraint *preCondition);
 
 protected:
-    explicit QProtocolTransition(QProtocolTransitionPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    explicit QProtocolTransition(QProtocolTransitionPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -67,7 +67,7 @@ class Q_UML_EXPORT QExecutionOccurrenceSpecification : public QOccurrenceSpecifi
     Q_DECLARE_PRIVATE(QExecutionOccurrenceSpecification)
 
 public:
-    Q_INVOKABLE explicit QExecutionOccurrenceSpecification(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    Q_INVOKABLE explicit QExecutionOccurrenceSpecification(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
     virtual ~QExecutionOccurrenceSpecification();
 
     // Association ends from QExecutionOccurrenceSpecification
@@ -75,7 +75,7 @@ public:
     Q_INVOKABLE void setExecution(QExecutionSpecification *execution);
 
 protected:
-    explicit QExecutionOccurrenceSpecification(QExecutionOccurrenceSpecificationPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    explicit QExecutionOccurrenceSpecification(QExecutionOccurrenceSpecificationPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -68,7 +68,7 @@ void QFeaturePrivate::addFeaturingClassifier(QClassifier *featuringClassifier)
 
         // Adjust opposite property
         Q_Q(QFeature);
-        (qumlobject_cast<QClassifierPrivate *>(featuringClassifier->d_func()))->addFeature(q);
+        (qmofobject_cast<QClassifierPrivate *>(featuringClassifier->d_func()))->addFeature(q);
     }
 }
 
@@ -82,7 +82,7 @@ void QFeaturePrivate::removeFeaturingClassifier(QClassifier *featuringClassifier
         // Adjust opposite property
         Q_Q(QFeature);
         if (featuringClassifier)
-            (qumlobject_cast<QClassifierPrivate *>(featuringClassifier->d_func()))->removeFeature(q);
+            (qmofobject_cast<QClassifierPrivate *>(featuringClassifier->d_func()))->removeFeature(q);
     }
 }
 
@@ -94,12 +94,12 @@ void QFeaturePrivate::removeFeaturingClassifier(QClassifier *featuringClassifier
     \brief A feature declares a behavioral or structural characteristic of instances of classifiers.
  */
 
-QFeature::QFeature(QUmlObject *parent, QUmlObject *wrapper) :
+QFeature::QFeature(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QRedefinableElement(*new QFeaturePrivate, parent, wrapper)
 {
 }
 
-QFeature::QFeature(QFeaturePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QFeature::QFeature(QFeaturePrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QRedefinableElement(dd, parent, wrapper)
 {
 }

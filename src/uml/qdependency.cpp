@@ -66,15 +66,15 @@ QDependencyPrivate::~QDependencyPrivate()
     \brief A dependency is a relationship that signifies that a single or a set of model elements requires other model elements for their specification or implementation. This means that the complete semantics of the depending elements is either semantically or structurally dependent on the definition of the supplier element(s).
  */
 
-QDependency::QDependency(QUmlObject *parent, QUmlObject *wrapper) :
-    QUmlObject(*new QDependencyPrivate, parent, wrapper),
+QDependency::QDependency(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+    QtMof::QMofObject(*new QDependencyPrivate, parent, wrapper),
     _wrappedPackageableElement(new QPackageableElement(this, this)),
     _wrappedDirectedRelationship(new QDirectedRelationship(this, this))
 {
 }
 
-QDependency::QDependency(QDependencyPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
-    QUmlObject(dd, parent, wrapper),
+QDependency::QDependency(QDependencyPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+    QtMof::QMofObject(dd, parent, wrapper),
     _wrappedPackageableElement(new QPackageableElement(this, this)),
     _wrappedDirectedRelationship(new QDirectedRelationship(this, this))
 {
@@ -93,7 +93,7 @@ QDependency::~QDependency()
  */
 const QSet<QElement *> *QDependency::ownedElements() const
 {
-    return (qumlobject_cast<const QElement *>(this))->ownedElements();
+    return (qmofobject_cast<const QElement *>(this))->ownedElements();
 }
 
 /*!
@@ -101,7 +101,7 @@ const QSet<QElement *> *QDependency::ownedElements() const
  */
 QElement *QDependency::owner() const
 {
-    return (qumlobject_cast<const QElement *>(this))->owner();
+    return (qmofobject_cast<const QElement *>(this))->owner();
 }
 
 /*!
@@ -109,17 +109,17 @@ QElement *QDependency::owner() const
  */
 const QSet<QComment *> *QDependency::ownedComments() const
 {
-    return (qumlobject_cast<const QElement *>(this))->ownedComments();
+    return (qmofobject_cast<const QElement *>(this))->ownedComments();
 }
 
 void QDependency::addOwnedComment(QComment *ownedComment)
 {
-    (qumlobject_cast<QElement *>(this))->addOwnedComment(ownedComment);
+    (qmofobject_cast<QElement *>(this))->addOwnedComment(ownedComment);
 }
 
 void QDependency::removeOwnedComment(QComment *ownedComment)
 {
-    (qumlobject_cast<QElement *>(this))->removeOwnedComment(ownedComment);
+    (qmofobject_cast<QElement *>(this))->removeOwnedComment(ownedComment);
 }
 
 // ---------------------------------------------------------------
@@ -131,12 +131,12 @@ void QDependency::removeOwnedComment(QComment *ownedComment)
  */
 QTemplateParameter *QDependency::owningTemplateParameter() const
 {
-    return (qumlobject_cast<const QParameterableElement *>(this))->owningTemplateParameter();
+    return (qmofobject_cast<const QParameterableElement *>(this))->owningTemplateParameter();
 }
 
 void QDependency::setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter)
 {
-    (qumlobject_cast<QParameterableElement *>(this))->setOwningTemplateParameter(owningTemplateParameter);
+    (qmofobject_cast<QParameterableElement *>(this))->setOwningTemplateParameter(owningTemplateParameter);
 }
 
 /*!
@@ -144,12 +144,12 @@ void QDependency::setOwningTemplateParameter(QTemplateParameter *owningTemplateP
  */
 QTemplateParameter *QDependency::templateParameter() const
 {
-    return (qumlobject_cast<const QParameterableElement *>(this))->templateParameter();
+    return (qmofobject_cast<const QParameterableElement *>(this))->templateParameter();
 }
 
 void QDependency::setTemplateParameter(QTemplateParameter *templateParameter)
 {
-    (qumlobject_cast<QParameterableElement *>(this))->setTemplateParameter(templateParameter);
+    (qmofobject_cast<QParameterableElement *>(this))->setTemplateParameter(templateParameter);
 }
 
 // ---------------------------------------------------------------
@@ -161,12 +161,12 @@ void QDependency::setTemplateParameter(QTemplateParameter *templateParameter)
  */
 QString QDependency::name() const
 {
-    return (qumlobject_cast<const QNamedElement *>(this))->name();
+    return (qmofobject_cast<const QNamedElement *>(this))->name();
 }
 
 void QDependency::setName(QString name)
 {
-    (qumlobject_cast<QNamedElement *>(this))->setName(name);
+    (qmofobject_cast<QNamedElement *>(this))->setName(name);
 }
 
 /*!
@@ -174,7 +174,7 @@ void QDependency::setName(QString name)
  */
 QString QDependency::qualifiedName() const
 {
-    return (qumlobject_cast<const QNamedElement *>(this))->qualifiedName();
+    return (qmofobject_cast<const QNamedElement *>(this))->qualifiedName();
 }
 
 // ---------------------------------------------------------------
@@ -186,12 +186,12 @@ QString QDependency::qualifiedName() const
  */
 QStringExpression *QDependency::nameExpression() const
 {
-    return (qumlobject_cast<const QNamedElement *>(this))->nameExpression();
+    return (qmofobject_cast<const QNamedElement *>(this))->nameExpression();
 }
 
 void QDependency::setNameExpression(QStringExpression *nameExpression)
 {
-    (qumlobject_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
+    (qmofobject_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
 }
 
 /*!
@@ -199,7 +199,7 @@ void QDependency::setNameExpression(QStringExpression *nameExpression)
  */
 QNamespace *QDependency::namespace_() const
 {
-    return (qumlobject_cast<const QNamedElement *>(this))->namespace_();
+    return (qmofobject_cast<const QNamedElement *>(this))->namespace_();
 }
 
 /*!
@@ -207,17 +207,17 @@ QNamespace *QDependency::namespace_() const
  */
 const QSet<QDependency *> *QDependency::clientDependencies() const
 {
-    return (qumlobject_cast<const QNamedElement *>(this))->clientDependencies();
+    return (qmofobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
 
 void QDependency::addClientDependency(QDependency *clientDependency)
 {
-    (qumlobject_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
+    (qmofobject_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
 }
 
 void QDependency::removeClientDependency(QDependency *clientDependency)
 {
-    (qumlobject_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
+    (qmofobject_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
 }
 
 // ---------------------------------------------------------------
@@ -229,12 +229,12 @@ void QDependency::removeClientDependency(QDependency *clientDependency)
  */
 QtUml::VisibilityKind QDependency::visibility() const
 {
-    return (qumlobject_cast<const QPackageableElement *>(this))->visibility();
+    return (qmofobject_cast<const QPackageableElement *>(this))->visibility();
 }
 
 void QDependency::setVisibility(QtUml::VisibilityKind visibility)
 {
-    (qumlobject_cast<QPackageableElement *>(this))->setVisibility(visibility);
+    (qmofobject_cast<QPackageableElement *>(this))->setVisibility(visibility);
 }
 
 // ---------------------------------------------------------------
@@ -246,7 +246,7 @@ void QDependency::setVisibility(QtUml::VisibilityKind visibility)
  */
 const QSet<QElement *> *QDependency::relatedElements() const
 {
-    return (qumlobject_cast<const QRelationship *>(this))->relatedElements();
+    return (qmofobject_cast<const QRelationship *>(this))->relatedElements();
 }
 
 // ---------------------------------------------------------------
@@ -258,7 +258,7 @@ const QSet<QElement *> *QDependency::relatedElements() const
  */
 const QSet<QElement *> *QDependency::sources() const
 {
-    return (qumlobject_cast<const QDirectedRelationship *>(this))->sources();
+    return (qmofobject_cast<const QDirectedRelationship *>(this))->sources();
 }
 
 /*!
@@ -266,7 +266,7 @@ const QSet<QElement *> *QDependency::sources() const
  */
 const QSet<QElement *> *QDependency::targets() const
 {
-    return (qumlobject_cast<const QDirectedRelationship *>(this))->targets();
+    return (qmofobject_cast<const QDirectedRelationship *>(this))->targets();
 }
 
 // ---------------------------------------------------------------
@@ -293,7 +293,7 @@ void QDependency::addClient(QNamedElement *client)
         d->clients->insert(client);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QDirectedRelationshipPrivate *>(d))->addSource(qumlobject_cast<QElement *>(client));
+        (qmofobject_cast<QDirectedRelationshipPrivate *>(d))->addSource(qmofobject_cast<QElement *>(client));
 
         // Adjust opposite property
         client->addClientDependency(this);
@@ -309,7 +309,7 @@ void QDependency::removeClient(QNamedElement *client)
         d->clients->remove(client);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QDirectedRelationshipPrivate *>(d))->removeSource(qumlobject_cast<QElement *>(client));
+        (qmofobject_cast<QDirectedRelationshipPrivate *>(d))->removeSource(qmofobject_cast<QElement *>(client));
 
         // Adjust opposite property
         if (client)
@@ -337,7 +337,7 @@ void QDependency::addSupplier(QNamedElement *supplier)
         d->suppliers->insert(supplier);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QDirectedRelationshipPrivate *>(d))->addTarget(qumlobject_cast<QElement *>(supplier));
+        (qmofobject_cast<QDirectedRelationshipPrivate *>(d))->addTarget(qmofobject_cast<QElement *>(supplier));
     }
 }
 
@@ -350,7 +350,7 @@ void QDependency::removeSupplier(QNamedElement *supplier)
         d->suppliers->remove(supplier);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QDirectedRelationshipPrivate *>(d))->removeTarget(qumlobject_cast<QElement *>(supplier));
+        (qmofobject_cast<QDirectedRelationshipPrivate *>(d))->removeTarget(qmofobject_cast<QElement *>(supplier));
     }
 }
 

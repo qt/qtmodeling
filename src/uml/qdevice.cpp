@@ -60,12 +60,12 @@ QDevicePrivate::~QDevicePrivate()
     \brief A device is a physical computational resource with processing capability upon which artifacts may be deployed for execution. Devices may be complex (i.e., they may consist of other devices).
  */
 
-QDevice::QDevice(QUmlObject *parent, QUmlObject *wrapper) :
+QDevice::QDevice(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QNode(*new QDevicePrivate, parent, wrapper)
 {
 }
 
-QDevice::QDevice(QDevicePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QDevice::QDevice(QDevicePrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QNode(dd, parent, wrapper)
 {
 }

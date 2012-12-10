@@ -72,7 +72,7 @@ class Q_UML_EXPORT QInvocationAction : public QAction
     Q_DECLARE_PRIVATE(QInvocationAction)
 
 public:
-    Q_INVOKABLE explicit QInvocationAction(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    Q_INVOKABLE explicit QInvocationAction(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
     virtual ~QInvocationAction();
 
     // Association ends from QInvocationAction
@@ -83,7 +83,7 @@ public:
     Q_INVOKABLE void setOnPort(QPort *onPort);
 
 protected:
-    explicit QInvocationAction(QInvocationActionPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    explicit QInvocationAction(QInvocationActionPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

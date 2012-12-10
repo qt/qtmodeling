@@ -62,11 +62,11 @@ class Q_UML_EXPORT QFunctionBehavior : public QOpaqueBehavior
     Q_DECLARE_PRIVATE(QFunctionBehavior)
 
 public:
-    Q_INVOKABLE explicit QFunctionBehavior(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    Q_INVOKABLE explicit QFunctionBehavior(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
     virtual ~QFunctionBehavior();
 
 protected:
-    explicit QFunctionBehavior(QFunctionBehaviorPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    explicit QFunctionBehavior(QFunctionBehaviorPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

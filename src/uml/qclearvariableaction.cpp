@@ -60,12 +60,12 @@ QClearVariableActionPrivate::~QClearVariableActionPrivate()
     \brief A clear variable action is a variable action that removes all values of a variable.
  */
 
-QClearVariableAction::QClearVariableAction(QUmlObject *parent, QUmlObject *wrapper) :
+QClearVariableAction::QClearVariableAction(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QVariableAction(*new QClearVariableActionPrivate, parent, wrapper)
 {
 }
 
-QClearVariableAction::QClearVariableAction(QClearVariableActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QClearVariableAction::QClearVariableAction(QClearVariableActionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QVariableAction(dd, parent, wrapper)
 {
 }

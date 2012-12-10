@@ -62,11 +62,11 @@ class Q_UML_EXPORT QRealization : public QAbstraction
     Q_DECLARE_PRIVATE(QRealization)
 
 public:
-    Q_INVOKABLE explicit QRealization(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    Q_INVOKABLE explicit QRealization(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
     virtual ~QRealization();
 
 protected:
-    explicit QRealization(QRealizationPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    explicit QRealization(QRealizationPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

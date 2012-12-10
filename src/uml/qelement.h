@@ -44,7 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtUml/QUmlObject>
+#include <QtMof/QMofObject>
 
 // Qt includes
 #include <QtCore/QSet>
@@ -60,7 +60,7 @@ class QComment;
 
 class QElementPrivate;
 
-class Q_UML_EXPORT QElement : public QUmlObject
+class Q_UML_EXPORT QElement : public QtMof::QMofObject
 {
     Q_OBJECT
 
@@ -72,7 +72,7 @@ class Q_UML_EXPORT QElement : public QUmlObject
     Q_DECLARE_PRIVATE(QElement)
 
 public:
-    Q_INVOKABLE explicit QElement(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    Q_INVOKABLE explicit QElement(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
     virtual ~QElement();
 
     // Association ends from QElement
@@ -87,7 +87,7 @@ public:
     Q_INVOKABLE bool mustBeOwned() const;
 
 protected:
-    explicit QElement(QElementPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    explicit QElement(QElementPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
 
 private:
     void allOwnedElements(QSet<QElement *> *allOwnedElements_) const;

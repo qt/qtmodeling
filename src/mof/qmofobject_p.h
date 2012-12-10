@@ -66,7 +66,7 @@ class Q_MOF_EXPORT QMofObjectPrivate : public QObjectPrivate
     Q_DECLARE_PUBLIC(QMofObject)
 
 public:
-    explicit QMofObjectPrivate();
+    explicit QMofObjectPrivate(int version = QObjectPrivateVersion);
     virtual ~QMofObjectPrivate();
 
     static QMofObjectPrivate *get(QMofObject *o)

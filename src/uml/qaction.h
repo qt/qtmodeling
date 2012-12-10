@@ -79,7 +79,7 @@ class Q_UML_EXPORT QAction : public QExecutableNode
     Q_DECLARE_PRIVATE(QAction)
 
 public:
-    Q_INVOKABLE explicit QAction(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    Q_INVOKABLE explicit QAction(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
     virtual ~QAction();
 
     // Attributes from QAction
@@ -98,7 +98,7 @@ public:
     Q_INVOKABLE const QList<QOutputPin *> *outputs() const;
 
 protected:
-    explicit QAction(QActionPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    explicit QAction(QActionPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

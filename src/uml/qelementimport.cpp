@@ -66,12 +66,12 @@ QElementImportPrivate::~QElementImportPrivate()
     \brief An element import identifies an element in another package, and allows the element to be referenced using its name without a qualifier.
  */
 
-QElementImport::QElementImport(QUmlObject *parent, QUmlObject *wrapper) :
+QElementImport::QElementImport(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QDirectedRelationship(*new QElementImportPrivate, parent, wrapper)
 {
 }
 
-QElementImport::QElementImport(QElementImportPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QElementImport::QElementImport(QElementImportPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QDirectedRelationship(dd, parent, wrapper)
 {
 }
@@ -148,13 +148,13 @@ void QElementImport::setImportedElement(QPackageableElement *importedElement)
     Q_D(QElementImport);
     if (d->importedElement != importedElement) {
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QDirectedRelationshipPrivate *>(d))->removeTarget(qumlobject_cast<QElement *>(d->importedElement));
+        (qmofobject_cast<QDirectedRelationshipPrivate *>(d))->removeTarget(qmofobject_cast<QElement *>(d->importedElement));
 
         d->importedElement = importedElement;
 
         // Adjust subsetted property(ies)
         if (importedElement) {
-            (qumlobject_cast<QDirectedRelationshipPrivate *>(d))->addTarget(qumlobject_cast<QElement *>(importedElement));
+            (qmofobject_cast<QDirectedRelationshipPrivate *>(d))->addTarget(qmofobject_cast<QElement *>(importedElement));
         }
     }
 }
@@ -181,14 +181,14 @@ void QElementImport::setImportingNamespace(QNamespace *importingNamespace)
             d->importingNamespace->removeElementImport(this);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QDirectedRelationshipPrivate *>(d))->removeSource(qumlobject_cast<QElement *>(d->importingNamespace));
+        (qmofobject_cast<QDirectedRelationshipPrivate *>(d))->removeSource(qmofobject_cast<QElement *>(d->importingNamespace));
 
         d->importingNamespace = importingNamespace;
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->setOwner(qumlobject_cast<QElement *>(importingNamespace));
+        (qmofobject_cast<QElementPrivate *>(d))->setOwner(qmofobject_cast<QElement *>(importingNamespace));
         if (importingNamespace) {
-            (qumlobject_cast<QDirectedRelationshipPrivate *>(d))->addSource(qumlobject_cast<QElement *>(importingNamespace));
+            (qmofobject_cast<QDirectedRelationshipPrivate *>(d))->addSource(qmofobject_cast<QElement *>(importingNamespace));
         }
 
         // Adjust opposite property

@@ -44,7 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtUml/QUmlObject>
+#include <QtMof/QMofObject>
 #include <QtUml/QMultiplicityElement>
 #include <QtUml/QConnectableElement>
 
@@ -61,7 +61,7 @@ class QAction;
 
 class QVariablePrivate;
 
-class Q_UML_EXPORT QVariable : public QUmlObject
+class Q_UML_EXPORT QVariable : public QtMof::QMofObject
 {
     Q_OBJECT
 
@@ -72,7 +72,7 @@ class Q_UML_EXPORT QVariable : public QUmlObject
     Q_DECLARE_PRIVATE(QVariable)
 
 public:
-    Q_INVOKABLE explicit QVariable(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    Q_INVOKABLE explicit QVariable(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
     virtual ~QVariable();
 
     // Association ends from aggregated QElement
@@ -136,7 +136,7 @@ public:
     Q_INVOKABLE bool isAccessibleBy(const QAction *a) const;
 
 protected:
-    explicit QVariable(QVariablePrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    explicit QVariable(QVariablePrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
 
 private:
     QMultiplicityElement *_wrappedMultiplicityElement;

@@ -67,12 +67,12 @@ QReadLinkObjectEndQualifierActionPrivate::~QReadLinkObjectEndQualifierActionPriv
     \brief A read link object end qualifier action is an action that retrieves a qualifier end value from a link object.
  */
 
-QReadLinkObjectEndQualifierAction::QReadLinkObjectEndQualifierAction(QUmlObject *parent, QUmlObject *wrapper) :
+QReadLinkObjectEndQualifierAction::QReadLinkObjectEndQualifierAction(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QAction(*new QReadLinkObjectEndQualifierActionPrivate, parent, wrapper)
 {
 }
 
-QReadLinkObjectEndQualifierAction::QReadLinkObjectEndQualifierAction(QReadLinkObjectEndQualifierActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QReadLinkObjectEndQualifierAction::QReadLinkObjectEndQualifierAction(QReadLinkObjectEndQualifierActionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QAction(dd, parent, wrapper)
 {
 }
@@ -103,13 +103,13 @@ void QReadLinkObjectEndQualifierAction::setResult(QOutputPin *result)
     Q_D(QReadLinkObjectEndQualifierAction);
     if (d->result != result) {
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QActionPrivate *>(d))->removeOutput(qumlobject_cast<QOutputPin *>(d->result));
+        (qmofobject_cast<QActionPrivate *>(d))->removeOutput(qmofobject_cast<QOutputPin *>(d->result));
 
         d->result = result;
 
         // Adjust subsetted property(ies)
         if (result) {
-            (qumlobject_cast<QActionPrivate *>(d))->addOutput(qumlobject_cast<QOutputPin *>(result));
+            (qmofobject_cast<QActionPrivate *>(d))->addOutput(qmofobject_cast<QOutputPin *>(result));
         }
     }
 }
@@ -132,13 +132,13 @@ void QReadLinkObjectEndQualifierAction::setObject(QInputPin *object)
     Q_D(QReadLinkObjectEndQualifierAction);
     if (d->object != object) {
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QActionPrivate *>(d))->removeInput(qumlobject_cast<QInputPin *>(d->object));
+        (qmofobject_cast<QActionPrivate *>(d))->removeInput(qmofobject_cast<QInputPin *>(d->object));
 
         d->object = object;
 
         // Adjust subsetted property(ies)
         if (object) {
-            (qumlobject_cast<QActionPrivate *>(d))->addInput(qumlobject_cast<QInputPin *>(object));
+            (qmofobject_cast<QActionPrivate *>(d))->addInput(qmofobject_cast<QInputPin *>(object));
         }
     }
 }

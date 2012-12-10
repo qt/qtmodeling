@@ -71,13 +71,13 @@ void QExtensionPrivate::setMetaclass(QClass *metaclass)
         Q_Q(QExtension);
         // Adjust opposite property
         // if (this->metaclass)
-        //     (qumlobject_cast<QClassPrivate *>(this->metaclass->d_func()))->removeExtension(q);
+        //     (qmofobject_cast<QClassPrivate *>(this->metaclass->d_func()))->removeExtension(q);
 
         // <derived-code>
 
         // Adjust opposite property
         if (metaclass)
-            (qumlobject_cast<QClassPrivate *>(metaclass->d_func()))->addExtension(q);
+            (qmofobject_cast<QClassPrivate *>(metaclass->d_func()))->addExtension(q);
     }
 }
 
@@ -89,12 +89,12 @@ void QExtensionPrivate::setMetaclass(QClass *metaclass)
     \brief An extension is used to indicate that the properties of a metaclass are extended through a stereotype, and gives the ability to flexibly add (and later remove) stereotypes to classes.
  */
 
-QExtension::QExtension(QUmlObject *parent, QUmlObject *wrapper) :
+QExtension::QExtension(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QAssociation(*new QExtensionPrivate, parent, wrapper)
 {
 }
 
-QExtension::QExtension(QExtensionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QExtension::QExtension(QExtensionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QAssociation(dd, parent, wrapper)
 {
 }

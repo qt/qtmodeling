@@ -80,12 +80,12 @@ QLoopNodePrivate::~QLoopNodePrivate()
     \brief A loop node is a structured activity node that represents a loop with setup, test, and body sections.
  */
 
-QLoopNode::QLoopNode(QUmlObject *parent, QUmlObject *wrapper) :
+QLoopNode::QLoopNode(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QStructuredActivityNode(*new QLoopNodePrivate, parent, wrapper)
 {
 }
 
-QLoopNode::QLoopNode(QLoopNodePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QLoopNode::QLoopNode(QLoopNodePrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QStructuredActivityNode(dd, parent, wrapper)
 {
 }
@@ -141,7 +141,7 @@ void QLoopNode::addLoopVariableInput(QInputPin *loopVariableInput)
     Q_D(QLoopNode);
     if (!d->loopVariableInputs->contains(loopVariableInput)) {
         d->loopVariableInputs->append(loopVariableInput);
-        quml_topLevelWrapper(loopVariableInput)->setParent(quml_topLevelWrapper(this));
+        qmof_topLevelWrapper(loopVariableInput)->setParent(qmof_topLevelWrapper(this));
     }
 }
 
@@ -152,7 +152,7 @@ void QLoopNode::removeLoopVariableInput(QInputPin *loopVariableInput)
     Q_D(QLoopNode);
     if (d->loopVariableInputs->contains(loopVariableInput)) {
         d->loopVariableInputs->removeAll(loopVariableInput);
-        quml_topLevelWrapper(loopVariableInput)->setParent(0);
+        qmof_topLevelWrapper(loopVariableInput)->setParent(0);
     }
 }
 
@@ -257,7 +257,7 @@ void QLoopNode::addResult(QOutputPin *result)
     Q_D(QLoopNode);
     if (!d->results->contains(result)) {
         d->results->append(result);
-        quml_topLevelWrapper(result)->setParent(quml_topLevelWrapper(this));
+        qmof_topLevelWrapper(result)->setParent(qmof_topLevelWrapper(this));
     }
 }
 
@@ -268,7 +268,7 @@ void QLoopNode::removeResult(QOutputPin *result)
     Q_D(QLoopNode);
     if (d->results->contains(result)) {
         d->results->removeAll(result);
-        quml_topLevelWrapper(result)->setParent(0);
+        qmof_topLevelWrapper(result)->setParent(0);
     }
 }
 

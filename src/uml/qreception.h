@@ -67,7 +67,7 @@ class Q_UML_EXPORT QReception : public QBehavioralFeature
     Q_DECLARE_PRIVATE(QReception)
 
 public:
-    Q_INVOKABLE explicit QReception(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    Q_INVOKABLE explicit QReception(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
     virtual ~QReception();
 
     // Association ends from QReception
@@ -75,7 +75,7 @@ public:
     Q_INVOKABLE void setSignal(QSignal *signal);
 
 protected:
-    explicit QReception(QReceptionPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    explicit QReception(QReceptionPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

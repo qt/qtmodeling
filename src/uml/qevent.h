@@ -62,11 +62,11 @@ class Q_UML_EXPORT QEvent : public QPackageableElement
     Q_DECLARE_PRIVATE(QEvent)
 
 public:
-    Q_INVOKABLE explicit QEvent(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    Q_INVOKABLE explicit QEvent(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
     virtual ~QEvent();
 
 protected:
-    explicit QEvent(QEventPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    explicit QEvent(QEventPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

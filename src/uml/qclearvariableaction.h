@@ -62,11 +62,11 @@ class Q_UML_EXPORT QClearVariableAction : public QVariableAction
     Q_DECLARE_PRIVATE(QClearVariableAction)
 
 public:
-    Q_INVOKABLE explicit QClearVariableAction(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    Q_INVOKABLE explicit QClearVariableAction(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
     virtual ~QClearVariableAction();
 
 protected:
-    explicit QClearVariableAction(QClearVariableActionPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    explicit QClearVariableAction(QClearVariableActionPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -64,12 +64,12 @@ QLinkEndDestructionDataPrivate::~QLinkEndDestructionDataPrivate()
     \brief A link end destruction data is not an action. It is an element that identifies links. It identifies one end of a link to be destroyed by destroy link action.
  */
 
-QLinkEndDestructionData::QLinkEndDestructionData(QUmlObject *parent, QUmlObject *wrapper) :
+QLinkEndDestructionData::QLinkEndDestructionData(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QLinkEndData(*new QLinkEndDestructionDataPrivate, parent, wrapper)
 {
 }
 
-QLinkEndDestructionData::QLinkEndDestructionData(QLinkEndDestructionDataPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QLinkEndDestructionData::QLinkEndDestructionData(QLinkEndDestructionDataPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QLinkEndData(dd, parent, wrapper)
 {
 }

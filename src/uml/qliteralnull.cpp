@@ -60,12 +60,12 @@ QLiteralNullPrivate::~QLiteralNullPrivate()
     \brief A literal null specifies the lack of a value.
  */
 
-QLiteralNull::QLiteralNull(QUmlObject *parent, QUmlObject *wrapper) :
+QLiteralNull::QLiteralNull(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QLiteralSpecification(*new QLiteralNullPrivate, parent, wrapper)
 {
 }
 
-QLiteralNull::QLiteralNull(QLiteralNullPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QLiteralNull::QLiteralNull(QLiteralNullPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QLiteralSpecification(dd, parent, wrapper)
 {
 }

@@ -64,12 +64,12 @@ QExecutableNodePrivate::~QExecutableNodePrivate()
     \brief An executable node is an abstract class for activity nodes that may be executed. It is used as an attachment point for exception handlers.An executable node is an abstract class for activity nodes that may be executed. It is used as an attachment point for exception handlers.
  */
 
-QExecutableNode::QExecutableNode(QUmlObject *parent, QUmlObject *wrapper) :
+QExecutableNode::QExecutableNode(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QActivityNode(*new QExecutableNodePrivate, parent, wrapper)
 {
 }
 
-QExecutableNode::QExecutableNode(QExecutableNodePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QExecutableNode::QExecutableNode(QExecutableNodePrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QActivityNode(dd, parent, wrapper)
 {
 }
@@ -102,7 +102,7 @@ void QExecutableNode::addHandler(QExceptionHandler *handler)
         d->handlers->insert(handler);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(handler));
+        (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(handler));
 
         // Adjust opposite property
         handler->setProtectedNode(this);
@@ -118,7 +118,7 @@ void QExecutableNode::removeHandler(QExceptionHandler *handler)
         d->handlers->remove(handler);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(handler));
+        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(handler));
 
         // Adjust opposite property
         handler->setProtectedNode(0);

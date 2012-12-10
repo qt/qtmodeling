@@ -66,12 +66,12 @@ QObjectFlowPrivate::~QObjectFlowPrivate()
     \brief An object flow is an activity edge that can have objects or data passing along it.Object flows have support for multicast/receive, token selection from object nodes, and transformation of tokens.
  */
 
-QObjectFlow::QObjectFlow(QUmlObject *parent, QUmlObject *wrapper) :
+QObjectFlow::QObjectFlow(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QActivityEdge(*new QObjectFlowPrivate, parent, wrapper)
 {
 }
 
-QObjectFlow::QObjectFlow(QObjectFlowPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QObjectFlow::QObjectFlow(QObjectFlowPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QActivityEdge(dd, parent, wrapper)
 {
 }

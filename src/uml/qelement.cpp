@@ -66,10 +66,10 @@ void QElementPrivate::addOwnedElement(QElement *ownedElement)
     if (!this->ownedElements->contains(ownedElement)) {
         this->ownedElements->insert(ownedElement);
         Q_Q(QElement);
-        quml_topLevelWrapper(ownedElement)->setParent(quml_topLevelWrapper(q));
+        qmof_topLevelWrapper(ownedElement)->setParent(qmof_topLevelWrapper(q));
 
         // Adjust opposite property
-        (qumlobject_cast<QElementPrivate *>(ownedElement->d_func()))->setOwner(q);
+        (qmofobject_cast<QElementPrivate *>(ownedElement->d_func()))->setOwner(q);
     }
 }
 
@@ -79,10 +79,10 @@ void QElementPrivate::removeOwnedElement(QElement *ownedElement)
 
     if (this->ownedElements->contains(ownedElement)) {
         this->ownedElements->remove(ownedElement);
-        quml_topLevelWrapper(ownedElement)->setParent(0);
+        qmof_topLevelWrapper(ownedElement)->setParent(0);
 
         // Adjust opposite property
-        (qumlobject_cast<QElementPrivate *>(ownedElement->d_func()))->setOwner(0);
+        (qmofobject_cast<QElementPrivate *>(ownedElement->d_func()))->setOwner(0);
     }
 }
 
@@ -94,13 +94,13 @@ void QElementPrivate::setOwner(QElement *owner)
         Q_Q(QElement);
         // Adjust opposite property
         if (this->owner)
-            (qumlobject_cast<QElementPrivate *>(this->owner->d_func()))->removeOwnedElement(q);
+            (qmofobject_cast<QElementPrivate *>(this->owner->d_func()))->removeOwnedElement(q);
 
         this->owner = owner;
 
         // Adjust opposite property
         if (owner)
-            (qumlobject_cast<QElementPrivate *>(owner->d_func()))->addOwnedElement(q);
+            (qmofobject_cast<QElementPrivate *>(owner->d_func()))->addOwnedElement(q);
     }
 }
 
@@ -112,13 +112,13 @@ void QElementPrivate::setOwner(QElement *owner)
     \brief An element is a constituent of a model. As such, it has the capability of owning other elements.
  */
 
-QElement::QElement(QUmlObject *parent, QUmlObject *wrapper) :
-    QUmlObject(*new QElementPrivate, parent, wrapper)
+QElement::QElement(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+    QtMof::QMofObject(*new QElementPrivate, parent, wrapper)
 {
 }
 
-QElement::QElement(QElementPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
-    QUmlObject(dd, parent, wrapper)
+QElement::QElement(QElementPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+    QtMof::QMofObject(dd, parent, wrapper)
 {
 }
 
@@ -172,7 +172,7 @@ void QElement::addOwnedComment(QComment *ownedComment)
         d->ownedComments->insert(ownedComment);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(ownedComment));
+        (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(ownedComment));
     }
 }
 
@@ -185,7 +185,7 @@ void QElement::removeOwnedComment(QComment *ownedComment)
         d->ownedComments->remove(ownedComment);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(ownedComment));
+        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(ownedComment));
     }
 }
 

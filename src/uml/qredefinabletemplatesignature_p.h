@@ -42,7 +42,7 @@
 #define QTUML_QREDEFINABLETEMPLATESIGNATURE_P_H
 
 // Base class includes
-#include "private/qumlobject_p.h"
+#include "private/qmofobject_p.h"
 #include "private/qtemplatesignature_p.h"
 #include "private/qredefinableelement_p.h"
 
@@ -62,7 +62,7 @@ class QClassifier;
 class QRedefinableTemplateSignature;
 class QTemplateParameter;
 
-class Q_UML_EXPORT QRedefinableTemplateSignaturePrivate : public QUmlObjectPrivate
+class Q_UML_EXPORT QRedefinableTemplateSignaturePrivate : public QtMof::QMofObjectPrivate
 {
     Q_DECLARE_PUBLIC(QRedefinableTemplateSignature)
 

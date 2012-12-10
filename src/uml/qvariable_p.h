@@ -42,7 +42,7 @@
 #define QTUML_QVARIABLE_P_H
 
 // Base class includes
-#include "private/qumlobject_p.h"
+#include "private/qmofobject_p.h"
 #include "private/qmultiplicityelement_p.h"
 #include "private/qconnectableelement_p.h"
 
@@ -60,7 +60,7 @@ class QStructuredActivityNode;
 class QAction;
 class QVariable;
 
-class Q_UML_EXPORT QVariablePrivate : public QUmlObjectPrivate
+class Q_UML_EXPORT QVariablePrivate : public QtMof::QMofObjectPrivate
 {
     Q_DECLARE_PUBLIC(QVariable)
 

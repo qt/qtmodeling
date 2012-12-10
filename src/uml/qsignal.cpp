@@ -64,12 +64,12 @@ QSignalPrivate::~QSignalPrivate()
     \brief A signal is a specification of send request instances communicated between objects. The receiving object handles the received request instances as specified by its receptions. The data carried by a send request (which was passed to it by the send invocation occurrence that caused that request) are represented as attributes of the signal. A signal is defined independently of the classifiers handling the signal occurrence.
  */
 
-QSignal::QSignal(QUmlObject *parent, QUmlObject *wrapper) :
+QSignal::QSignal(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QClassifier(*new QSignalPrivate, parent, wrapper)
 {
 }
 
-QSignal::QSignal(QSignalPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QSignal::QSignal(QSignalPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QClassifier(dd, parent, wrapper)
 {
 }
@@ -102,8 +102,8 @@ void QSignal::addOwnedAttribute(QProperty *ownedAttribute)
         d->ownedAttributes->append(ownedAttribute);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qumlobject_cast<QNamedElement *>(ownedAttribute));
-        (qumlobject_cast<QClassifierPrivate *>(d))->addAttribute(qumlobject_cast<QProperty *>(ownedAttribute));
+        (qmofobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qmofobject_cast<QNamedElement *>(ownedAttribute));
+        (qmofobject_cast<QClassifierPrivate *>(d))->addAttribute(qmofobject_cast<QProperty *>(ownedAttribute));
     }
 }
 
@@ -116,8 +116,8 @@ void QSignal::removeOwnedAttribute(QProperty *ownedAttribute)
         d->ownedAttributes->removeAll(ownedAttribute);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(ownedAttribute));
-        (qumlobject_cast<QClassifierPrivate *>(d))->removeAttribute(qumlobject_cast<QProperty *>(ownedAttribute));
+        (qmofobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qmofobject_cast<QNamedElement *>(ownedAttribute));
+        (qmofobject_cast<QClassifierPrivate *>(d))->removeAttribute(qmofobject_cast<QProperty *>(ownedAttribute));
     }
 }
 

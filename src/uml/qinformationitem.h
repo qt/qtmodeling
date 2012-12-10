@@ -67,7 +67,7 @@ class Q_UML_EXPORT QInformationItem : public QClassifier
     Q_DECLARE_PRIVATE(QInformationItem)
 
 public:
-    Q_INVOKABLE explicit QInformationItem(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    Q_INVOKABLE explicit QInformationItem(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
     virtual ~QInformationItem();
 
     // Association ends from QInformationItem
@@ -76,7 +76,7 @@ public:
     Q_INVOKABLE void removeRepresented(QClassifier *represented);
 
 protected:
-    explicit QInformationItem(QInformationItemPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    explicit QInformationItem(QInformationItemPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -44,7 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtUml/QUmlObject>
+#include <QtMof/QMofObject>
 #include <QtUml/QNamespace>
 #include <QtUml/QFeature>
 
@@ -70,7 +70,7 @@ class QParameter;
 
 class QBehavioralFeaturePrivate;
 
-class Q_UML_EXPORT QBehavioralFeature : public QUmlObject
+class Q_UML_EXPORT QBehavioralFeature : public QtMof::QMofObject
 {
     Q_OBJECT
 
@@ -85,7 +85,7 @@ class Q_UML_EXPORT QBehavioralFeature : public QUmlObject
     Q_DECLARE_PRIVATE(QBehavioralFeature)
 
 public:
-    Q_INVOKABLE explicit QBehavioralFeature(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    Q_INVOKABLE explicit QBehavioralFeature(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
     virtual ~QBehavioralFeature();
 
     // Association ends from aggregated QElement
@@ -163,7 +163,7 @@ public:
     Q_INVOKABLE bool isDistinguishableFrom(const QNamedElement *n, const QNamespace *ns) const;
 
 protected:
-    explicit QBehavioralFeature(QBehavioralFeaturePrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    explicit QBehavioralFeature(QBehavioralFeaturePrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
 
 private:
     QNamespace *_wrappedNamespace;

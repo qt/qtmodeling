@@ -60,12 +60,12 @@ QActivityFinalNodePrivate::~QActivityFinalNodePrivate()
     \brief An activity final node is a final node that stops all flows in an activity.
  */
 
-QActivityFinalNode::QActivityFinalNode(QUmlObject *parent, QUmlObject *wrapper) :
+QActivityFinalNode::QActivityFinalNode(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QFinalNode(*new QActivityFinalNodePrivate, parent, wrapper)
 {
 }
 
-QActivityFinalNode::QActivityFinalNode(QActivityFinalNodePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QActivityFinalNode::QActivityFinalNode(QActivityFinalNodePrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QFinalNode(dd, parent, wrapper)
 {
 }

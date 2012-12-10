@@ -68,7 +68,7 @@ class Q_UML_EXPORT QLinkEndDestructionData : public QLinkEndData
     Q_DECLARE_PRIVATE(QLinkEndDestructionData)
 
 public:
-    Q_INVOKABLE explicit QLinkEndDestructionData(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    Q_INVOKABLE explicit QLinkEndDestructionData(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
     virtual ~QLinkEndDestructionData();
 
     // Attributes from QLinkEndDestructionData
@@ -80,7 +80,7 @@ public:
     Q_INVOKABLE void setDestroyAt(QInputPin *destroyAt);
 
 protected:
-    explicit QLinkEndDestructionData(QLinkEndDestructionDataPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    explicit QLinkEndDestructionData(QLinkEndDestructionDataPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

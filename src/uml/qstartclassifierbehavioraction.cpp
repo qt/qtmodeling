@@ -63,12 +63,12 @@ QStartClassifierBehaviorActionPrivate::~QStartClassifierBehaviorActionPrivate()
     \brief A start classifier behavior action is an action that starts the classifier behavior of the input.
  */
 
-QStartClassifierBehaviorAction::QStartClassifierBehaviorAction(QUmlObject *parent, QUmlObject *wrapper) :
+QStartClassifierBehaviorAction::QStartClassifierBehaviorAction(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QAction(*new QStartClassifierBehaviorActionPrivate, parent, wrapper)
 {
 }
 
-QStartClassifierBehaviorAction::QStartClassifierBehaviorAction(QStartClassifierBehaviorActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QStartClassifierBehaviorAction::QStartClassifierBehaviorAction(QStartClassifierBehaviorActionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QAction(dd, parent, wrapper)
 {
 }
@@ -99,13 +99,13 @@ void QStartClassifierBehaviorAction::setObject(QInputPin *object)
     Q_D(QStartClassifierBehaviorAction);
     if (d->object != object) {
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QActionPrivate *>(d))->removeInput(qumlobject_cast<QInputPin *>(d->object));
+        (qmofobject_cast<QActionPrivate *>(d))->removeInput(qmofobject_cast<QInputPin *>(d->object));
 
         d->object = object;
 
         // Adjust subsetted property(ies)
         if (object) {
-            (qumlobject_cast<QActionPrivate *>(d))->addInput(qumlobject_cast<QInputPin *>(object));
+            (qmofobject_cast<QActionPrivate *>(d))->addInput(qmofobject_cast<QInputPin *>(object));
         }
     }
 }

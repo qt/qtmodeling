@@ -42,7 +42,7 @@
 #define QTUML_QPROPERTY_P_H
 
 // Base class includes
-#include "private/qumlobject_p.h"
+#include "private/qmofobject_p.h"
 #include "private/qstructuralfeature_p.h"
 #include "private/qconnectableelement_p.h"
 #include "private/qdeploymenttarget_p.h"
@@ -74,7 +74,7 @@ class QAssociation;
 class QClass;
 class QProperty;
 
-class Q_UML_EXPORT QPropertyPrivate : public QUmlObjectPrivate
+class Q_UML_EXPORT QPropertyPrivate : public QtMof::QMofObjectPrivate
 {
     Q_DECLARE_PUBLIC(QProperty)
 

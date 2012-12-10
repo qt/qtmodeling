@@ -69,12 +69,12 @@ QDeploymentPrivate::~QDeploymentPrivate()
     \brief A deployment is the allocation of an artifact or artifact instance to a deployment target.A component deployment is the deployment of one or more artifacts or artifact instances to a deployment target, optionally parameterized by a deployment specification. Examples are executables and configuration files.
  */
 
-QDeployment::QDeployment(QUmlObject *parent, QUmlObject *wrapper) :
+QDeployment::QDeployment(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QDependency(*new QDeploymentPrivate, parent, wrapper)
 {
 }
 
-QDeployment::QDeployment(QDeploymentPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QDeployment::QDeployment(QDeploymentPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QDependency(dd, parent, wrapper)
 {
 }
@@ -109,14 +109,14 @@ void QDeployment::setLocation(QDeploymentTarget *location)
             d->location->removeDeployment(this);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QDependency *>(this))->removeClient(qumlobject_cast<QNamedElement *>(d->location));
+        (qmofobject_cast<QDependency *>(this))->removeClient(qmofobject_cast<QNamedElement *>(d->location));
 
         d->location = location;
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->setOwner(qumlobject_cast<QElement *>(location));
+        (qmofobject_cast<QElementPrivate *>(d))->setOwner(qmofobject_cast<QElement *>(location));
         if (location) {
-            (qumlobject_cast<QDependency *>(this))->addClient(qumlobject_cast<QNamedElement *>(location));
+            (qmofobject_cast<QDependency *>(this))->addClient(qmofobject_cast<QNamedElement *>(location));
         }
 
         // Adjust opposite property
@@ -145,7 +145,7 @@ void QDeployment::addConfiguration(QDeploymentSpecification *configuration)
         d->configurations->insert(configuration);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(configuration));
+        (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(configuration));
 
         // Adjust opposite property
         configuration->setDeployment(this);
@@ -161,7 +161,7 @@ void QDeployment::removeConfiguration(QDeploymentSpecification *configuration)
         d->configurations->remove(configuration);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(configuration));
+        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(configuration));
 
         // Adjust opposite property
         configuration->setDeployment(0);
@@ -188,7 +188,7 @@ void QDeployment::addDeployedArtifact(QDeployedArtifact *deployedArtifact)
         d->deployedArtifacts->insert(deployedArtifact);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QDependency *>(this))->addSupplier(qumlobject_cast<QNamedElement *>(deployedArtifact));
+        (qmofobject_cast<QDependency *>(this))->addSupplier(qmofobject_cast<QNamedElement *>(deployedArtifact));
     }
 }
 
@@ -201,29 +201,29 @@ void QDeployment::removeDeployedArtifact(QDeployedArtifact *deployedArtifact)
         d->deployedArtifacts->remove(deployedArtifact);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QDependency *>(this))->removeSupplier(qumlobject_cast<QNamedElement *>(deployedArtifact));
+        (qmofobject_cast<QDependency *>(this))->removeSupplier(qmofobject_cast<QNamedElement *>(deployedArtifact));
     }
 }
 
 // Overriden methods for subsetted properties
 
-void QDeployment::addClient(QUmlPointer<QDeploymentTarget> location)
+void QDeployment::addClient(QtMof::QMofPointer<QDeploymentTarget> location)
 {
     setLocation(location);
 }
 
-void QDeployment::removeClient(QUmlPointer<QDeploymentTarget> location)
+void QDeployment::removeClient(QtMof::QMofPointer<QDeploymentTarget> location)
 {
     Q_UNUSED(location);
     setLocation(0);
 }
 
-void QDeployment::addSupplier(QUmlPointer<QDeployedArtifact> deployedArtifact)
+void QDeployment::addSupplier(QtMof::QMofPointer<QDeployedArtifact> deployedArtifact)
 {
     addDeployedArtifact(deployedArtifact);
 }
 
-void QDeployment::removeSupplier(QUmlPointer<QDeployedArtifact> deployedArtifact)
+void QDeployment::removeSupplier(QtMof::QMofPointer<QDeployedArtifact> deployedArtifact)
 {
     removeDeployedArtifact(deployedArtifact);
 }

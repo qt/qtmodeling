@@ -68,7 +68,7 @@ class Q_UML_EXPORT QAddVariableValueAction : public QWriteVariableAction
     Q_DECLARE_PRIVATE(QAddVariableValueAction)
 
 public:
-    Q_INVOKABLE explicit QAddVariableValueAction(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    Q_INVOKABLE explicit QAddVariableValueAction(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
     virtual ~QAddVariableValueAction();
 
     // Attributes from QAddVariableValueAction
@@ -80,7 +80,7 @@ public:
     Q_INVOKABLE void setInsertAt(QInputPin *insertAt);
 
 protected:
-    explicit QAddVariableValueAction(QAddVariableValueActionPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    explicit QAddVariableValueAction(QAddVariableValueActionPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

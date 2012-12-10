@@ -66,12 +66,12 @@ QDurationObservationPrivate::~QDurationObservationPrivate()
     \brief A duration observation is a reference to a duration during an execution. It points out the element(s) in the model to observe and whether the observations are when this model element is entered or when it is exited.
  */
 
-QDurationObservation::QDurationObservation(QUmlObject *parent, QUmlObject *wrapper) :
+QDurationObservation::QDurationObservation(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QObservation(*new QDurationObservationPrivate, parent, wrapper)
 {
 }
 
-QDurationObservation::QDurationObservation(QDurationObservationPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QDurationObservation::QDurationObservation(QDurationObservationPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QObservation(dd, parent, wrapper)
 {
 }

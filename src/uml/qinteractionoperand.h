@@ -44,7 +44,7 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtUml/QUmlObject>
+#include <QtMof/QMofObject>
 #include <QtUml/QInteractionFragment>
 #include <QtUml/QNamespace>
 
@@ -62,7 +62,7 @@ class QInteractionConstraint;
 
 class QInteractionOperandPrivate;
 
-class Q_UML_EXPORT QInteractionOperand : public QUmlObject
+class Q_UML_EXPORT QInteractionOperand : public QtMof::QMofObject
 {
     Q_OBJECT
 
@@ -73,7 +73,7 @@ class Q_UML_EXPORT QInteractionOperand : public QUmlObject
     Q_DECLARE_PRIVATE(QInteractionOperand)
 
 public:
-    Q_INVOKABLE explicit QInteractionOperand(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    Q_INVOKABLE explicit QInteractionOperand(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
     virtual ~QInteractionOperand();
 
     // Association ends from aggregated QElement
@@ -132,7 +132,7 @@ public:
     Q_INVOKABLE void setGuard(QInteractionConstraint *guard);
 
 protected:
-    explicit QInteractionOperand(QInteractionOperandPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    explicit QInteractionOperand(QInteractionOperandPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
 
 private:
     QInteractionFragment *_wrappedInteractionFragment;

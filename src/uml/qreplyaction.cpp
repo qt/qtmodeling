@@ -67,12 +67,12 @@ QReplyActionPrivate::~QReplyActionPrivate()
     \brief A reply action is an action that accepts a set of return values and a value containing return information produced by a previous accept call action. The reply action returns the values to the caller of the previous call, completing execution of the call.
  */
 
-QReplyAction::QReplyAction(QUmlObject *parent, QUmlObject *wrapper) :
+QReplyAction::QReplyAction(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QAction(*new QReplyActionPrivate, parent, wrapper)
 {
 }
 
-QReplyAction::QReplyAction(QReplyActionPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QReplyAction::QReplyAction(QReplyActionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QAction(dd, parent, wrapper)
 {
 }
@@ -124,13 +124,13 @@ void QReplyAction::setReturnInformation(QInputPin *returnInformation)
     Q_D(QReplyAction);
     if (d->returnInformation != returnInformation) {
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QActionPrivate *>(d))->removeInput(qumlobject_cast<QInputPin *>(d->returnInformation));
+        (qmofobject_cast<QActionPrivate *>(d))->removeInput(qmofobject_cast<QInputPin *>(d->returnInformation));
 
         d->returnInformation = returnInformation;
 
         // Adjust subsetted property(ies)
         if (returnInformation) {
-            (qumlobject_cast<QActionPrivate *>(d))->addInput(qumlobject_cast<QInputPin *>(returnInformation));
+            (qmofobject_cast<QActionPrivate *>(d))->addInput(qmofobject_cast<QInputPin *>(returnInformation));
         }
     }
 }
@@ -155,7 +155,7 @@ void QReplyAction::addReplyValue(QInputPin *replyValue)
         d->replyValues->insert(replyValue);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QActionPrivate *>(d))->addInput(qumlobject_cast<QInputPin *>(replyValue));
+        (qmofobject_cast<QActionPrivate *>(d))->addInput(qmofobject_cast<QInputPin *>(replyValue));
     }
 }
 
@@ -168,7 +168,7 @@ void QReplyAction::removeReplyValue(QInputPin *replyValue)
         d->replyValues->remove(replyValue);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QActionPrivate *>(d))->removeInput(qumlobject_cast<QInputPin *>(replyValue));
+        (qmofobject_cast<QActionPrivate *>(d))->removeInput(qmofobject_cast<QInputPin *>(replyValue));
     }
 }
 

@@ -68,12 +68,12 @@ QGeneralizationPrivate::~QGeneralizationPrivate()
     \brief A generalization is a taxonomic relationship between a more general classifier and a more specific classifier. Each instance of the specific classifier is also an indirect instance of the general classifier. Thus, the specific classifier inherits the features of the more general classifier.A generalization relates a specific classifier to a more general classifier, and is owned by the specific classifier.
  */
 
-QGeneralization::QGeneralization(QUmlObject *parent, QUmlObject *wrapper) :
+QGeneralization::QGeneralization(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QDirectedRelationship(*new QGeneralizationPrivate, parent, wrapper)
 {
 }
 
-QGeneralization::QGeneralization(QGeneralizationPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QGeneralization::QGeneralization(QGeneralizationPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QDirectedRelationship(dd, parent, wrapper)
 {
 }
@@ -133,14 +133,14 @@ void QGeneralization::setSpecific(QClassifier *specific)
             d->specific->removeGeneralization(this);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QDirectedRelationshipPrivate *>(d))->removeSource(qumlobject_cast<QElement *>(d->specific));
+        (qmofobject_cast<QDirectedRelationshipPrivate *>(d))->removeSource(qmofobject_cast<QElement *>(d->specific));
 
         d->specific = specific;
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->setOwner(qumlobject_cast<QElement *>(specific));
+        (qmofobject_cast<QElementPrivate *>(d))->setOwner(qmofobject_cast<QElement *>(specific));
         if (specific) {
-            (qumlobject_cast<QDirectedRelationshipPrivate *>(d))->addSource(qumlobject_cast<QElement *>(specific));
+            (qmofobject_cast<QDirectedRelationshipPrivate *>(d))->addSource(qmofobject_cast<QElement *>(specific));
         }
 
         // Adjust opposite property
@@ -205,13 +205,13 @@ void QGeneralization::setGeneral(QClassifier *general)
     Q_D(QGeneralization);
     if (d->general != general) {
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QDirectedRelationshipPrivate *>(d))->removeTarget(qumlobject_cast<QElement *>(d->general));
+        (qmofobject_cast<QDirectedRelationshipPrivate *>(d))->removeTarget(qmofobject_cast<QElement *>(d->general));
 
         d->general = general;
 
         // Adjust subsetted property(ies)
         if (general) {
-            (qumlobject_cast<QDirectedRelationshipPrivate *>(d))->addTarget(qumlobject_cast<QElement *>(general));
+            (qmofobject_cast<QDirectedRelationshipPrivate *>(d))->addTarget(qmofobject_cast<QElement *>(general));
         }
     }
 }

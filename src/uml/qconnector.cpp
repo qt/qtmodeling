@@ -71,12 +71,12 @@ QConnectorPrivate::~QConnectorPrivate()
     \brief A delegation connector is a connector that links the external contract of a component (as specified by its ports) to the realization of that behavior. It represents the forwarding of events (operation requests and events): a signal that arrives at a port that has a delegation connector to one or more parts or ports on parts will be passed on to those targets for handling. An assembly connector is a connector between two or more parts or ports on parts that defines that one or more parts provide the services that other parts use.Specifies a link that enables communication between two or more instances. This link may be an instance of an association, or it may represent the possibility of the instances being able to communicate because their identities are known by virtue of being passed in as parameters, held in variables or slots, or because the communicating instances are the same instance. The link may be realized by something as simple as a pointer or by something as complex as a network connection. In contrast to associations, which specify links between any instance of the associated classifiers, connectors specify links between instances playing the connected parts only.
  */
 
-QConnector::QConnector(QUmlObject *parent, QUmlObject *wrapper) :
+QConnector::QConnector(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QFeature(*new QConnectorPrivate, parent, wrapper)
 {
 }
 
-QConnector::QConnector(QConnectorPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QConnector::QConnector(QConnectorPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QFeature(dd, parent, wrapper)
 {
 }
@@ -125,7 +125,7 @@ void QConnector::addRedefinedConnector(QConnector *redefinedConnector)
         d->redefinedConnectors->insert(redefinedConnector);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QRedefinableElementPrivate *>(d))->addRedefinedElement(qumlobject_cast<QRedefinableElement *>(redefinedConnector));
+        (qmofobject_cast<QRedefinableElementPrivate *>(d))->addRedefinedElement(qmofobject_cast<QRedefinableElement *>(redefinedConnector));
     }
 }
 
@@ -138,7 +138,7 @@ void QConnector::removeRedefinedConnector(QConnector *redefinedConnector)
         d->redefinedConnectors->remove(redefinedConnector);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QRedefinableElementPrivate *>(d))->removeRedefinedElement(qumlobject_cast<QRedefinableElement *>(redefinedConnector));
+        (qmofobject_cast<QRedefinableElementPrivate *>(d))->removeRedefinedElement(qmofobject_cast<QRedefinableElement *>(redefinedConnector));
     }
 }
 
@@ -214,7 +214,7 @@ void QConnector::addEnd(QConnectorEnd *end)
         d->ends->append(end);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->addOwnedElement(qumlobject_cast<QElement *>(end));
+        (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(end));
     }
 }
 
@@ -227,7 +227,7 @@ void QConnector::removeEnd(QConnectorEnd *end)
         d->ends->removeAll(end);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QElementPrivate *>(d))->removeOwnedElement(qumlobject_cast<QElement *>(end));
+        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(end));
     }
 }
 

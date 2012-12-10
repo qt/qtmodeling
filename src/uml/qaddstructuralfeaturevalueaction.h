@@ -68,7 +68,7 @@ class Q_UML_EXPORT QAddStructuralFeatureValueAction : public QWriteStructuralFea
     Q_DECLARE_PRIVATE(QAddStructuralFeatureValueAction)
 
 public:
-    Q_INVOKABLE explicit QAddStructuralFeatureValueAction(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    Q_INVOKABLE explicit QAddStructuralFeatureValueAction(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
     virtual ~QAddStructuralFeatureValueAction();
 
     // Attributes from QAddStructuralFeatureValueAction
@@ -80,7 +80,7 @@ public:
     Q_INVOKABLE void setInsertAt(QInputPin *insertAt);
 
 protected:
-    explicit QAddStructuralFeatureValueAction(QAddStructuralFeatureValueActionPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    explicit QAddStructuralFeatureValueAction(QAddStructuralFeatureValueActionPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

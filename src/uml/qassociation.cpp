@@ -70,15 +70,15 @@ QAssociationPrivate::~QAssociationPrivate()
     \brief An association describes a set of tuples whose values refer to typed instances. An instance of an association is called a link.A link is a tuple with one value for each end of the association, where each value is an instance of the type of the end.An association describes a set of tuples whose values refer to typed instances. An instance of an association is called a link. A link is a tuple with one value for each end of the association, where each value is an instance of the type of the end.
  */
 
-QAssociation::QAssociation(QUmlObject *parent, QUmlObject *wrapper) :
-    QUmlObject(*new QAssociationPrivate, parent, wrapper),
+QAssociation::QAssociation(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+    QtMof::QMofObject(*new QAssociationPrivate, parent, wrapper),
     _wrappedClassifier(new QClassifier(this, this)),
     _wrappedRelationship(new QRelationship(this, this))
 {
 }
 
-QAssociation::QAssociation(QAssociationPrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
-    QUmlObject(dd, parent, wrapper),
+QAssociation::QAssociation(QAssociationPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+    QtMof::QMofObject(dd, parent, wrapper),
     _wrappedClassifier(new QClassifier(this, this)),
     _wrappedRelationship(new QRelationship(this, this))
 {
@@ -97,7 +97,7 @@ QAssociation::~QAssociation()
  */
 const QSet<QElement *> *QAssociation::ownedElements() const
 {
-    return (qumlobject_cast<const QElement *>(this))->ownedElements();
+    return (qmofobject_cast<const QElement *>(this))->ownedElements();
 }
 
 /*!
@@ -105,7 +105,7 @@ const QSet<QElement *> *QAssociation::ownedElements() const
  */
 QElement *QAssociation::owner() const
 {
-    return (qumlobject_cast<const QElement *>(this))->owner();
+    return (qmofobject_cast<const QElement *>(this))->owner();
 }
 
 /*!
@@ -113,17 +113,17 @@ QElement *QAssociation::owner() const
  */
 const QSet<QComment *> *QAssociation::ownedComments() const
 {
-    return (qumlobject_cast<const QElement *>(this))->ownedComments();
+    return (qmofobject_cast<const QElement *>(this))->ownedComments();
 }
 
 void QAssociation::addOwnedComment(QComment *ownedComment)
 {
-    (qumlobject_cast<QElement *>(this))->addOwnedComment(ownedComment);
+    (qmofobject_cast<QElement *>(this))->addOwnedComment(ownedComment);
 }
 
 void QAssociation::removeOwnedComment(QComment *ownedComment)
 {
-    (qumlobject_cast<QElement *>(this))->removeOwnedComment(ownedComment);
+    (qmofobject_cast<QElement *>(this))->removeOwnedComment(ownedComment);
 }
 
 // ---------------------------------------------------------------
@@ -135,12 +135,12 @@ void QAssociation::removeOwnedComment(QComment *ownedComment)
  */
 QString QAssociation::name() const
 {
-    return (qumlobject_cast<const QNamedElement *>(this))->name();
+    return (qmofobject_cast<const QNamedElement *>(this))->name();
 }
 
 void QAssociation::setName(QString name)
 {
-    (qumlobject_cast<QNamedElement *>(this))->setName(name);
+    (qmofobject_cast<QNamedElement *>(this))->setName(name);
 }
 
 /*!
@@ -148,7 +148,7 @@ void QAssociation::setName(QString name)
  */
 QString QAssociation::qualifiedName() const
 {
-    return (qumlobject_cast<const QNamedElement *>(this))->qualifiedName();
+    return (qmofobject_cast<const QNamedElement *>(this))->qualifiedName();
 }
 
 // ---------------------------------------------------------------
@@ -160,12 +160,12 @@ QString QAssociation::qualifiedName() const
  */
 QStringExpression *QAssociation::nameExpression() const
 {
-    return (qumlobject_cast<const QNamedElement *>(this))->nameExpression();
+    return (qmofobject_cast<const QNamedElement *>(this))->nameExpression();
 }
 
 void QAssociation::setNameExpression(QStringExpression *nameExpression)
 {
-    (qumlobject_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
+    (qmofobject_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
 }
 
 /*!
@@ -173,7 +173,7 @@ void QAssociation::setNameExpression(QStringExpression *nameExpression)
  */
 QNamespace *QAssociation::namespace_() const
 {
-    return (qumlobject_cast<const QNamedElement *>(this))->namespace_();
+    return (qmofobject_cast<const QNamedElement *>(this))->namespace_();
 }
 
 /*!
@@ -181,17 +181,17 @@ QNamespace *QAssociation::namespace_() const
  */
 const QSet<QDependency *> *QAssociation::clientDependencies() const
 {
-    return (qumlobject_cast<const QNamedElement *>(this))->clientDependencies();
+    return (qmofobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
 
 void QAssociation::addClientDependency(QDependency *clientDependency)
 {
-    (qumlobject_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
+    (qmofobject_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
 }
 
 void QAssociation::removeClientDependency(QDependency *clientDependency)
 {
-    (qumlobject_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
+    (qmofobject_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
 }
 
 // ---------------------------------------------------------------
@@ -203,17 +203,17 @@ void QAssociation::removeClientDependency(QDependency *clientDependency)
  */
 const QSet<QPackageImport *> *QAssociation::packageImports() const
 {
-    return (qumlobject_cast<const QNamespace *>(this))->packageImports();
+    return (qmofobject_cast<const QNamespace *>(this))->packageImports();
 }
 
 void QAssociation::addPackageImport(QPackageImport *packageImport)
 {
-    (qumlobject_cast<QNamespace *>(this))->addPackageImport(packageImport);
+    (qmofobject_cast<QNamespace *>(this))->addPackageImport(packageImport);
 }
 
 void QAssociation::removePackageImport(QPackageImport *packageImport)
 {
-    (qumlobject_cast<QNamespace *>(this))->removePackageImport(packageImport);
+    (qmofobject_cast<QNamespace *>(this))->removePackageImport(packageImport);
 }
 
 /*!
@@ -221,7 +221,7 @@ void QAssociation::removePackageImport(QPackageImport *packageImport)
  */
 const QSet<QNamedElement *> *QAssociation::members() const
 {
-    return (qumlobject_cast<const QNamespace *>(this))->members();
+    return (qmofobject_cast<const QNamespace *>(this))->members();
 }
 
 /*!
@@ -229,7 +229,7 @@ const QSet<QNamedElement *> *QAssociation::members() const
  */
 const QSet<QPackageableElement *> *QAssociation::importedMembers() const
 {
-    return (qumlobject_cast<const QNamespace *>(this))->importedMembers();
+    return (qmofobject_cast<const QNamespace *>(this))->importedMembers();
 }
 
 /*!
@@ -237,17 +237,17 @@ const QSet<QPackageableElement *> *QAssociation::importedMembers() const
  */
 const QSet<QElementImport *> *QAssociation::elementImports() const
 {
-    return (qumlobject_cast<const QNamespace *>(this))->elementImports();
+    return (qmofobject_cast<const QNamespace *>(this))->elementImports();
 }
 
 void QAssociation::addElementImport(QElementImport *elementImport)
 {
-    (qumlobject_cast<QNamespace *>(this))->addElementImport(elementImport);
+    (qmofobject_cast<QNamespace *>(this))->addElementImport(elementImport);
 }
 
 void QAssociation::removeElementImport(QElementImport *elementImport)
 {
-    (qumlobject_cast<QNamespace *>(this))->removeElementImport(elementImport);
+    (qmofobject_cast<QNamespace *>(this))->removeElementImport(elementImport);
 }
 
 /*!
@@ -255,17 +255,17 @@ void QAssociation::removeElementImport(QElementImport *elementImport)
  */
 const QSet<QConstraint *> *QAssociation::ownedRules() const
 {
-    return (qumlobject_cast<const QNamespace *>(this))->ownedRules();
+    return (qmofobject_cast<const QNamespace *>(this))->ownedRules();
 }
 
 void QAssociation::addOwnedRule(QConstraint *ownedRule)
 {
-    (qumlobject_cast<QNamespace *>(this))->addOwnedRule(ownedRule);
+    (qmofobject_cast<QNamespace *>(this))->addOwnedRule(ownedRule);
 }
 
 void QAssociation::removeOwnedRule(QConstraint *ownedRule)
 {
-    (qumlobject_cast<QNamespace *>(this))->removeOwnedRule(ownedRule);
+    (qmofobject_cast<QNamespace *>(this))->removeOwnedRule(ownedRule);
 }
 
 /*!
@@ -273,7 +273,7 @@ void QAssociation::removeOwnedRule(QConstraint *ownedRule)
  */
 const QSet<QNamedElement *> *QAssociation::ownedMembers() const
 {
-    return (qumlobject_cast<const QNamespace *>(this))->ownedMembers();
+    return (qmofobject_cast<const QNamespace *>(this))->ownedMembers();
 }
 
 // ---------------------------------------------------------------
@@ -285,12 +285,12 @@ const QSet<QNamedElement *> *QAssociation::ownedMembers() const
  */
 QTemplateParameter *QAssociation::owningTemplateParameter() const
 {
-    return (qumlobject_cast<const QParameterableElement *>(this))->owningTemplateParameter();
+    return (qmofobject_cast<const QParameterableElement *>(this))->owningTemplateParameter();
 }
 
 void QAssociation::setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter)
 {
-    (qumlobject_cast<QParameterableElement *>(this))->setOwningTemplateParameter(owningTemplateParameter);
+    (qmofobject_cast<QParameterableElement *>(this))->setOwningTemplateParameter(owningTemplateParameter);
 }
 
 // ---------------------------------------------------------------
@@ -302,12 +302,12 @@ void QAssociation::setOwningTemplateParameter(QTemplateParameter *owningTemplate
  */
 QtUml::VisibilityKind QAssociation::visibility() const
 {
-    return (qumlobject_cast<const QPackageableElement *>(this))->visibility();
+    return (qmofobject_cast<const QPackageableElement *>(this))->visibility();
 }
 
 void QAssociation::setVisibility(QtUml::VisibilityKind visibility)
 {
-    (qumlobject_cast<QPackageableElement *>(this))->setVisibility(visibility);
+    (qmofobject_cast<QPackageableElement *>(this))->setVisibility(visibility);
 }
 
 // ---------------------------------------------------------------
@@ -319,12 +319,12 @@ void QAssociation::setVisibility(QtUml::VisibilityKind visibility)
  */
 QPackage *QAssociation::package() const
 {
-    return (qumlobject_cast<const QType *>(this))->package();
+    return (qmofobject_cast<const QType *>(this))->package();
 }
 
 void QAssociation::setPackage(QPackage *package)
 {
-    (qumlobject_cast<QType *>(this))->setPackage(package);
+    (qmofobject_cast<QType *>(this))->setPackage(package);
 }
 
 // ---------------------------------------------------------------
@@ -336,12 +336,12 @@ void QAssociation::setPackage(QPackage *package)
  */
 bool QAssociation::isLeaf() const
 {
-    return (qumlobject_cast<const QRedefinableElement *>(this))->isLeaf();
+    return (qmofobject_cast<const QRedefinableElement *>(this))->isLeaf();
 }
 
 void QAssociation::setLeaf(bool isLeaf)
 {
-    (qumlobject_cast<QRedefinableElement *>(this))->setLeaf(isLeaf);
+    (qmofobject_cast<QRedefinableElement *>(this))->setLeaf(isLeaf);
 }
 
 // ---------------------------------------------------------------
@@ -353,7 +353,7 @@ void QAssociation::setLeaf(bool isLeaf)
  */
 const QSet<QRedefinableElement *> *QAssociation::redefinedElements() const
 {
-    return (qumlobject_cast<const QRedefinableElement *>(this))->redefinedElements();
+    return (qmofobject_cast<const QRedefinableElement *>(this))->redefinedElements();
 }
 
 /*!
@@ -361,7 +361,7 @@ const QSet<QRedefinableElement *> *QAssociation::redefinedElements() const
  */
 const QSet<QClassifier *> *QAssociation::redefinitionContexts() const
 {
-    return (qumlobject_cast<const QRedefinableElement *>(this))->redefinitionContexts();
+    return (qmofobject_cast<const QRedefinableElement *>(this))->redefinitionContexts();
 }
 
 // ---------------------------------------------------------------
@@ -373,17 +373,17 @@ const QSet<QClassifier *> *QAssociation::redefinitionContexts() const
  */
 const QSet<QTemplateBinding *> *QAssociation::templateBindings() const
 {
-    return (qumlobject_cast<const QTemplateableElement *>(this))->templateBindings();
+    return (qmofobject_cast<const QTemplateableElement *>(this))->templateBindings();
 }
 
 void QAssociation::addTemplateBinding(QTemplateBinding *templateBinding)
 {
-    (qumlobject_cast<QTemplateableElement *>(this))->addTemplateBinding(templateBinding);
+    (qmofobject_cast<QTemplateableElement *>(this))->addTemplateBinding(templateBinding);
 }
 
 void QAssociation::removeTemplateBinding(QTemplateBinding *templateBinding)
 {
-    (qumlobject_cast<QTemplateableElement *>(this))->removeTemplateBinding(templateBinding);
+    (qmofobject_cast<QTemplateableElement *>(this))->removeTemplateBinding(templateBinding);
 }
 
 // ---------------------------------------------------------------
@@ -395,12 +395,12 @@ void QAssociation::removeTemplateBinding(QTemplateBinding *templateBinding)
  */
 bool QAssociation::isAbstract() const
 {
-    return (qumlobject_cast<const QClassifier *>(this))->isAbstract();
+    return (qmofobject_cast<const QClassifier *>(this))->isAbstract();
 }
 
 void QAssociation::setAbstract(bool isAbstract)
 {
-    (qumlobject_cast<QClassifier *>(this))->setAbstract(isAbstract);
+    (qmofobject_cast<QClassifier *>(this))->setAbstract(isAbstract);
 }
 
 /*!
@@ -408,12 +408,12 @@ void QAssociation::setAbstract(bool isAbstract)
  */
 bool QAssociation::isFinalSpecialization() const
 {
-    return (qumlobject_cast<const QClassifier *>(this))->isFinalSpecialization();
+    return (qmofobject_cast<const QClassifier *>(this))->isFinalSpecialization();
 }
 
 void QAssociation::setFinalSpecialization(bool isFinalSpecialization)
 {
-    (qumlobject_cast<QClassifier *>(this))->setFinalSpecialization(isFinalSpecialization);
+    (qmofobject_cast<QClassifier *>(this))->setFinalSpecialization(isFinalSpecialization);
 }
 
 // ---------------------------------------------------------------
@@ -425,17 +425,17 @@ void QAssociation::setFinalSpecialization(bool isFinalSpecialization)
  */
 const QSet<QUseCase *> *QAssociation::ownedUseCases() const
 {
-    return (qumlobject_cast<const QClassifier *>(this))->ownedUseCases();
+    return (qmofobject_cast<const QClassifier *>(this))->ownedUseCases();
 }
 
 void QAssociation::addOwnedUseCase(QUseCase *ownedUseCase)
 {
-    (qumlobject_cast<QClassifier *>(this))->addOwnedUseCase(ownedUseCase);
+    (qmofobject_cast<QClassifier *>(this))->addOwnedUseCase(ownedUseCase);
 }
 
 void QAssociation::removeOwnedUseCase(QUseCase *ownedUseCase)
 {
-    (qumlobject_cast<QClassifier *>(this))->removeOwnedUseCase(ownedUseCase);
+    (qmofobject_cast<QClassifier *>(this))->removeOwnedUseCase(ownedUseCase);
 }
 
 /*!
@@ -443,17 +443,17 @@ void QAssociation::removeOwnedUseCase(QUseCase *ownedUseCase)
  */
 const QSet<QGeneralizationSet *> *QAssociation::powertypeExtents() const
 {
-    return (qumlobject_cast<const QClassifier *>(this))->powertypeExtents();
+    return (qmofobject_cast<const QClassifier *>(this))->powertypeExtents();
 }
 
 void QAssociation::addPowertypeExtent(QGeneralizationSet *powertypeExtent)
 {
-    (qumlobject_cast<QClassifier *>(this))->addPowertypeExtent(powertypeExtent);
+    (qmofobject_cast<QClassifier *>(this))->addPowertypeExtent(powertypeExtent);
 }
 
 void QAssociation::removePowertypeExtent(QGeneralizationSet *powertypeExtent)
 {
-    (qumlobject_cast<QClassifier *>(this))->removePowertypeExtent(powertypeExtent);
+    (qmofobject_cast<QClassifier *>(this))->removePowertypeExtent(powertypeExtent);
 }
 
 /*!
@@ -461,17 +461,17 @@ void QAssociation::removePowertypeExtent(QGeneralizationSet *powertypeExtent)
  */
 const QSet<QUseCase *> *QAssociation::useCases() const
 {
-    return (qumlobject_cast<const QClassifier *>(this))->useCases();
+    return (qmofobject_cast<const QClassifier *>(this))->useCases();
 }
 
 void QAssociation::addUseCase(QUseCase *useCase)
 {
-    (qumlobject_cast<QClassifier *>(this))->addUseCase(useCase);
+    (qmofobject_cast<QClassifier *>(this))->addUseCase(useCase);
 }
 
 void QAssociation::removeUseCase(QUseCase *useCase)
 {
-    (qumlobject_cast<QClassifier *>(this))->removeUseCase(useCase);
+    (qmofobject_cast<QClassifier *>(this))->removeUseCase(useCase);
 }
 
 /*!
@@ -479,12 +479,12 @@ void QAssociation::removeUseCase(QUseCase *useCase)
  */
 QClassifierTemplateParameter *QAssociation::templateParameter() const
 {
-    return (qumlobject_cast<const QClassifier *>(this))->templateParameter();
+    return (qmofobject_cast<const QClassifier *>(this))->templateParameter();
 }
 
 void QAssociation::setTemplateParameter(QClassifierTemplateParameter *templateParameter)
 {
-    (qumlobject_cast<QClassifier *>(this))->setTemplateParameter(templateParameter);
+    (qmofobject_cast<QClassifier *>(this))->setTemplateParameter(templateParameter);
 }
 
 /*!
@@ -492,17 +492,17 @@ void QAssociation::setTemplateParameter(QClassifierTemplateParameter *templatePa
  */
 const QSet<QClassifier *> *QAssociation::redefinedClassifiers() const
 {
-    return (qumlobject_cast<const QClassifier *>(this))->redefinedClassifiers();
+    return (qmofobject_cast<const QClassifier *>(this))->redefinedClassifiers();
 }
 
 void QAssociation::addRedefinedClassifier(QClassifier *redefinedClassifier)
 {
-    (qumlobject_cast<QClassifier *>(this))->addRedefinedClassifier(redefinedClassifier);
+    (qmofobject_cast<QClassifier *>(this))->addRedefinedClassifier(redefinedClassifier);
 }
 
 void QAssociation::removeRedefinedClassifier(QClassifier *redefinedClassifier)
 {
-    (qumlobject_cast<QClassifier *>(this))->removeRedefinedClassifier(redefinedClassifier);
+    (qmofobject_cast<QClassifier *>(this))->removeRedefinedClassifier(redefinedClassifier);
 }
 
 /*!
@@ -510,12 +510,12 @@ void QAssociation::removeRedefinedClassifier(QClassifier *redefinedClassifier)
  */
 QRedefinableTemplateSignature *QAssociation::ownedTemplateSignature() const
 {
-    return (qumlobject_cast<const QClassifier *>(this))->ownedTemplateSignature();
+    return (qmofobject_cast<const QClassifier *>(this))->ownedTemplateSignature();
 }
 
 void QAssociation::setOwnedTemplateSignature(QRedefinableTemplateSignature *ownedTemplateSignature)
 {
-    (qumlobject_cast<QClassifier *>(this))->setOwnedTemplateSignature(ownedTemplateSignature);
+    (qmofobject_cast<QClassifier *>(this))->setOwnedTemplateSignature(ownedTemplateSignature);
 }
 
 /*!
@@ -523,17 +523,17 @@ void QAssociation::setOwnedTemplateSignature(QRedefinableTemplateSignature *owne
  */
 const QSet<QCollaborationUse *> *QAssociation::collaborationUses() const
 {
-    return (qumlobject_cast<const QClassifier *>(this))->collaborationUses();
+    return (qmofobject_cast<const QClassifier *>(this))->collaborationUses();
 }
 
 void QAssociation::addCollaborationUse(QCollaborationUse *collaborationUse)
 {
-    (qumlobject_cast<QClassifier *>(this))->addCollaborationUse(collaborationUse);
+    (qmofobject_cast<QClassifier *>(this))->addCollaborationUse(collaborationUse);
 }
 
 void QAssociation::removeCollaborationUse(QCollaborationUse *collaborationUse)
 {
-    (qumlobject_cast<QClassifier *>(this))->removeCollaborationUse(collaborationUse);
+    (qmofobject_cast<QClassifier *>(this))->removeCollaborationUse(collaborationUse);
 }
 
 /*!
@@ -541,7 +541,7 @@ void QAssociation::removeCollaborationUse(QCollaborationUse *collaborationUse)
  */
 const QSet<QProperty *> *QAssociation::attributes() const
 {
-    return (qumlobject_cast<const QClassifier *>(this))->attributes();
+    return (qmofobject_cast<const QClassifier *>(this))->attributes();
 }
 
 /*!
@@ -549,7 +549,7 @@ const QSet<QProperty *> *QAssociation::attributes() const
  */
 const QSet<QFeature *> *QAssociation::features() const
 {
-    return (qumlobject_cast<const QClassifier *>(this))->features();
+    return (qmofobject_cast<const QClassifier *>(this))->features();
 }
 
 /*!
@@ -557,17 +557,17 @@ const QSet<QFeature *> *QAssociation::features() const
  */
 const QSet<QClassifier *> *QAssociation::generals() const
 {
-    return (qumlobject_cast<const QClassifier *>(this))->generals();
+    return (qmofobject_cast<const QClassifier *>(this))->generals();
 }
 
 void QAssociation::addGeneral(QClassifier *general)
 {
-    (qumlobject_cast<QClassifier *>(this))->addGeneral(general);
+    (qmofobject_cast<QClassifier *>(this))->addGeneral(general);
 }
 
 void QAssociation::removeGeneral(QClassifier *general)
 {
-    (qumlobject_cast<QClassifier *>(this))->removeGeneral(general);
+    (qmofobject_cast<QClassifier *>(this))->removeGeneral(general);
 }
 
 /*!
@@ -575,12 +575,12 @@ void QAssociation::removeGeneral(QClassifier *general)
  */
 QCollaborationUse *QAssociation::representation() const
 {
-    return (qumlobject_cast<const QClassifier *>(this))->representation();
+    return (qmofobject_cast<const QClassifier *>(this))->representation();
 }
 
 void QAssociation::setRepresentation(QCollaborationUse *representation)
 {
-    (qumlobject_cast<QClassifier *>(this))->setRepresentation(representation);
+    (qmofobject_cast<QClassifier *>(this))->setRepresentation(representation);
 }
 
 /*!
@@ -588,17 +588,17 @@ void QAssociation::setRepresentation(QCollaborationUse *representation)
  */
 const QSet<QGeneralization *> *QAssociation::generalizations() const
 {
-    return (qumlobject_cast<const QClassifier *>(this))->generalizations();
+    return (qmofobject_cast<const QClassifier *>(this))->generalizations();
 }
 
 void QAssociation::addGeneralization(QGeneralization *generalization)
 {
-    (qumlobject_cast<QClassifier *>(this))->addGeneralization(generalization);
+    (qmofobject_cast<QClassifier *>(this))->addGeneralization(generalization);
 }
 
 void QAssociation::removeGeneralization(QGeneralization *generalization)
 {
-    (qumlobject_cast<QClassifier *>(this))->removeGeneralization(generalization);
+    (qmofobject_cast<QClassifier *>(this))->removeGeneralization(generalization);
 }
 
 /*!
@@ -606,7 +606,7 @@ void QAssociation::removeGeneralization(QGeneralization *generalization)
  */
 const QSet<QNamedElement *> *QAssociation::inheritedMembers() const
 {
-    return (qumlobject_cast<const QClassifier *>(this))->inheritedMembers();
+    return (qmofobject_cast<const QClassifier *>(this))->inheritedMembers();
 }
 
 /*!
@@ -614,17 +614,17 @@ const QSet<QNamedElement *> *QAssociation::inheritedMembers() const
  */
 const QSet<QSubstitution *> *QAssociation::substitutions() const
 {
-    return (qumlobject_cast<const QClassifier *>(this))->substitutions();
+    return (qmofobject_cast<const QClassifier *>(this))->substitutions();
 }
 
 void QAssociation::addSubstitution(QSubstitution *substitution)
 {
-    (qumlobject_cast<QClassifier *>(this))->addSubstitution(substitution);
+    (qmofobject_cast<QClassifier *>(this))->addSubstitution(substitution);
 }
 
 void QAssociation::removeSubstitution(QSubstitution *substitution)
 {
-    (qumlobject_cast<QClassifier *>(this))->removeSubstitution(substitution);
+    (qmofobject_cast<QClassifier *>(this))->removeSubstitution(substitution);
 }
 
 // ---------------------------------------------------------------
@@ -636,7 +636,7 @@ void QAssociation::removeSubstitution(QSubstitution *substitution)
  */
 const QSet<QElement *> *QAssociation::relatedElements() const
 {
-    return (qumlobject_cast<const QRelationship *>(this))->relatedElements();
+    return (qmofobject_cast<const QRelationship *>(this))->relatedElements();
 }
 
 // ---------------------------------------------------------------
@@ -700,7 +700,7 @@ void QAssociation::addNavigableOwnedEnd(QProperty *navigableOwnedEnd)
         d->navigableOwnedEnds->insert(navigableOwnedEnd);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QAssociation *>(this))->addOwnedEnd(qumlobject_cast<QProperty *>(navigableOwnedEnd));
+        (qmofobject_cast<QAssociation *>(this))->addOwnedEnd(qmofobject_cast<QProperty *>(navigableOwnedEnd));
     }
 }
 
@@ -713,7 +713,7 @@ void QAssociation::removeNavigableOwnedEnd(QProperty *navigableOwnedEnd)
         d->navigableOwnedEnds->remove(navigableOwnedEnd);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QAssociation *>(this))->removeOwnedEnd(qumlobject_cast<QProperty *>(navigableOwnedEnd));
+        (qmofobject_cast<QAssociation *>(this))->removeOwnedEnd(qmofobject_cast<QProperty *>(navigableOwnedEnd));
     }
 }
 
@@ -737,9 +737,9 @@ void QAssociation::addOwnedEnd(QProperty *ownedEnd)
         d->ownedEnds->append(ownedEnd);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QAssociation *>(this))->addMemberEnd(qumlobject_cast<QProperty *>(ownedEnd));
-        (qumlobject_cast<QClassifierPrivate *>(d))->addFeature(qumlobject_cast<QFeature *>(ownedEnd));
-        (qumlobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qumlobject_cast<QNamedElement *>(ownedEnd));
+        (qmofobject_cast<QAssociation *>(this))->addMemberEnd(qmofobject_cast<QProperty *>(ownedEnd));
+        (qmofobject_cast<QClassifierPrivate *>(d))->addFeature(qmofobject_cast<QFeature *>(ownedEnd));
+        (qmofobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qmofobject_cast<QNamedElement *>(ownedEnd));
 
         // Adjust opposite property
         ownedEnd->setOwningAssociation(this);
@@ -755,9 +755,9 @@ void QAssociation::removeOwnedEnd(QProperty *ownedEnd)
         d->ownedEnds->removeAll(ownedEnd);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QAssociation *>(this))->removeMemberEnd(qumlobject_cast<QProperty *>(ownedEnd));
-        (qumlobject_cast<QClassifierPrivate *>(d))->removeFeature(qumlobject_cast<QFeature *>(ownedEnd));
-        (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(ownedEnd));
+        (qmofobject_cast<QAssociation *>(this))->removeMemberEnd(qmofobject_cast<QProperty *>(ownedEnd));
+        (qmofobject_cast<QClassifierPrivate *>(d))->removeFeature(qmofobject_cast<QFeature *>(ownedEnd));
+        (qmofobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qmofobject_cast<QNamedElement *>(ownedEnd));
 
         // Adjust opposite property
         ownedEnd->setOwningAssociation(0);
@@ -784,7 +784,7 @@ void QAssociation::addMemberEnd(QProperty *memberEnd)
         d->memberEnds->append(memberEnd);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QNamespacePrivate *>(d))->addMember(qumlobject_cast<QNamedElement *>(memberEnd));
+        (qmofobject_cast<QNamespacePrivate *>(d))->addMember(qmofobject_cast<QNamedElement *>(memberEnd));
 
         // Adjust opposite property
         memberEnd->setAssociation(this);
@@ -800,7 +800,7 @@ void QAssociation::removeMemberEnd(QProperty *memberEnd)
         d->memberEnds->removeAll(memberEnd);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QNamespacePrivate *>(d))->removeMember(qumlobject_cast<QNamedElement *>(memberEnd));
+        (qmofobject_cast<QNamespacePrivate *>(d))->removeMember(qmofobject_cast<QNamedElement *>(memberEnd));
 
         // Adjust opposite property
         memberEnd->setAssociation(0);

@@ -74,12 +74,12 @@ QStateMachinePrivate::~QStateMachinePrivate()
     \brief State machines can be used to express the behavior of part of a system. Behavior is modeled as a traversal of a graph of state nodes interconnected by one or more joined transition arcs that are triggered by the dispatching of series of (event) occurrences. During this traversal, the state machine executes a series of activities associated with various elements of the state machine.
  */
 
-QStateMachine::QStateMachine(QUmlObject *parent, QUmlObject *wrapper) :
+QStateMachine::QStateMachine(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QBehavior(*new QStateMachinePrivate, parent, wrapper)
 {
 }
 
-QStateMachine::QStateMachine(QStateMachinePrivate &dd, QUmlObject *parent, QUmlObject *wrapper) :
+QStateMachine::QStateMachine(QStateMachinePrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
     QBehavior(dd, parent, wrapper)
 {
 }
@@ -143,7 +143,7 @@ void QStateMachine::addConnectionPoint(QPseudostate *connectionPoint)
         d->connectionPoints->insert(connectionPoint);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qumlobject_cast<QNamedElement *>(connectionPoint));
+        (qmofobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qmofobject_cast<QNamedElement *>(connectionPoint));
 
         // Adjust opposite property
         connectionPoint->setStateMachine(this);
@@ -159,7 +159,7 @@ void QStateMachine::removeConnectionPoint(QPseudostate *connectionPoint)
         d->connectionPoints->remove(connectionPoint);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(connectionPoint));
+        (qmofobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qmofobject_cast<QNamedElement *>(connectionPoint));
 
         // Adjust opposite property
         connectionPoint->setStateMachine(0);
@@ -223,7 +223,7 @@ void QStateMachine::addRegion(QRegion *region)
         d->regions->insert(region);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qumlobject_cast<QNamedElement *>(region));
+        (qmofobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qmofobject_cast<QNamedElement *>(region));
 
         // Adjust opposite property
         region->setStateMachine(this);
@@ -239,7 +239,7 @@ void QStateMachine::removeRegion(QRegion *region)
         d->regions->remove(region);
 
         // Adjust subsetted property(ies)
-        (qumlobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qumlobject_cast<QNamedElement *>(region));
+        (qmofobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qmofobject_cast<QNamedElement *>(region));
 
         // Adjust opposite property
         region->setStateMachine(0);

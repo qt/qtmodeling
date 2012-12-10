@@ -76,7 +76,7 @@ class Q_UML_EXPORT QOpaqueAction : public QAction
     Q_DECLARE_PRIVATE(QOpaqueAction)
 
 public:
-    Q_INVOKABLE explicit QOpaqueAction(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    Q_INVOKABLE explicit QOpaqueAction(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
     virtual ~QOpaqueAction();
 
     // Attributes from QOpaqueAction
@@ -96,7 +96,7 @@ public:
     Q_INVOKABLE void removeOutputValue(QOutputPin *outputValue);
 
 protected:
-    explicit QOpaqueAction(QOpaqueActionPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    explicit QOpaqueAction(QOpaqueActionPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

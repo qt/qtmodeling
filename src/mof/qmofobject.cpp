@@ -48,7 +48,8 @@
 
 QT_BEGIN_NAMESPACE_QTMOF
 
-QMofObjectPrivate::QMofObjectPrivate()
+QMofObjectPrivate::QMofObjectPrivate(int version)
+    : QObjectPrivate(version), wrapper(0)
 {
 }
 

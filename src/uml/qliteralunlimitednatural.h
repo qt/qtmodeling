@@ -64,7 +64,7 @@ class Q_UML_EXPORT QLiteralUnlimitedNatural : public QLiteralSpecification
     Q_DECLARE_PRIVATE(QLiteralUnlimitedNatural)
 
 public:
-    Q_INVOKABLE explicit QLiteralUnlimitedNatural(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    Q_INVOKABLE explicit QLiteralUnlimitedNatural(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
     virtual ~QLiteralUnlimitedNatural();
 
     // Attributes from QLiteralUnlimitedNatural
@@ -76,7 +76,7 @@ public:
     Q_INVOKABLE qint32 unlimitedValue() const;
 
 protected:
-    explicit QLiteralUnlimitedNatural(QLiteralUnlimitedNaturalPrivate &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    explicit QLiteralUnlimitedNatural(QLiteralUnlimitedNaturalPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
