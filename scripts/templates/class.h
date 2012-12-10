@@ -173,7 +173,7 @@
 
 // Base class includes
 [%- IF !class.superclass || class.superclass.size > 1 %]
-#include <QtUml/QUmlObject>
+#include <QtMof/QMofObject>
 [%- END -%]
 [%- FOREACH superClass IN class.superclass %]
 #include <${superClass.include}>
@@ -276,7 +276,7 @@ class ${forwarddecl.content};
 
 class ${class.name}Private;
 
-class Q_[% namespace.split('/').0.substr(2).upper %]_EXPORT ${class.name} : [% IF class.superclass.size == 1 %]public ${class.superclass.0.name.split('/').last}[% ELSE %]public QUmlObject[% END %]
+class Q_[% namespace.split('/').0.substr(2).upper %]_EXPORT ${class.name} : [% IF class.superclass.size == 1 %]public ${class.superclass.0.name.split('/').last}[% ELSE %]public [% IF namespace != "QtMof" %]QtMof::[% END %]QMofObject[% END %]
 {
     Q_OBJECT
     [%- GENERATEPROPERTIES(class, 'false') %]
@@ -285,7 +285,7 @@ class Q_[% namespace.split('/').0.substr(2).upper %]_EXPORT ${class.name} : [% I
     Q_DECLARE_PRIVATE(${class.name})
 
 public:
-    Q_INVOKABLE explicit ${class.name}(QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    Q_INVOKABLE explicit ${class.name}([% IF namespace != "QtMof" %]QtMof::[% END %]QMofObject *parent = 0, [% IF namespace != "QtMof" %]QtMof::[% END %]QMofObject *wrapper = 0);
     virtual ~${class.name}();
 [%- IF class.superclass and class.superclass.size > 1 -%]
     [%- GENERATEFUNCTIONS(class, 'true') -%]
@@ -371,7 +371,7 @@ public:
 [%- END %]
 
 protected:
-    explicit ${class.name}(${class.name}Private &dd, QUmlObject *parent = 0, QUmlObject *wrapper = 0);
+    explicit ${class.name}(${class.name}Private &dd, [% IF namespace != "QtMof" %]QtMof::[% END %]QMofObject *parent = 0, [% IF namespace != "QtMof" %]QtMof::[% END %]QMofObject *wrapper = 0);
 [%- IF class.superclass and class.superclass.size > 1 %]
 
 private:

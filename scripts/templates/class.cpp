@@ -669,8 +669,8 @@ ${accessor.return}${class.name}Private::${accessor.name}([%- FOREACH parameter I
  */
 [%- END %]
 
-${class.name}::${class.name}(QUmlObject *parent, QUmlObject *wrapper) :
-[% IF class.superclass.size == 1-%]    ${class.superclass.0.name}[%- ELSE -%]    QUmlObject[% END %](*new ${class.name}Private, parent, wrapper)
+${class.name}::${class.name}([% IF namespace != "QtMof" %]QtMof::[% END %]QMofObject *parent, [% IF namespace != "QtMof" %]QtMof::[% END %]QMofObject *wrapper) :
+[% IF class.superclass.size == 1-%]    ${class.superclass.0.name}[%- ELSE -%]    [% IF namespace != "QtMof" %]QtMof::[% END %]QMofObject[% END %](*new ${class.name}Private, parent, wrapper)
 [%- IF class.superclass and class.superclass.size > 1 -%]
 [%- FOREACH parentClass IN class.superclass -%]
 ,
@@ -680,8 +680,8 @@ ${class.name}::${class.name}(QUmlObject *parent, QUmlObject *wrapper) :
 {
 }
 
-${class.name}::${class.name}(${class.name}Private &dd, QUmlObject *parent, QUmlObject *wrapper) :
-[% IF class.superclass.size == 1-%]    ${class.superclass.0.name}(dd, parent, wrapper)[%- ELSE -%]    QUmlObject(dd, parent, wrapper)[%- END -%]
+${class.name}::${class.name}(${class.name}Private &dd, [% IF namespace != "QtMof" %]QtMof::[% END %]QMofObject *parent, [% IF namespace != "QtMof" %]QtMof::[% END %]QMofObject *wrapper) :
+[% IF class.superclass.size == 1-%]    ${class.superclass.0.name}(dd, parent, wrapper)[%- ELSE -%]    [% IF namespace != "QtMof" %]QtMof::[% END %]QMofObject(dd, parent, wrapper)[%- END -%]
 [%- IF class.superclass and class.superclass.size > 1 -%]
 [%- FOREACH parentClass IN class.superclass -%]
 ,

@@ -44,7 +44,7 @@
 // Base class includes
 [%- IF !class.superclass || class.superclass.size > 1 -%]
 
-#include "private/qumlobject_p.h"
+#include "private/qmofobject_p.h"
 [%- END -%]
 [%- FOREACH superclass IN class.superclass -%]
 
@@ -114,7 +114,7 @@ class ${forwarddecl.content};
 class ${class.name};
 
 [%- END %]
-class Q_[% namespace.split('/').0.substr(2).upper %]_EXPORT ${class.name}Private : [% IF class.superclass.size == 1 %]public ${class.superclass.0.name.split('/').last}Private[% ELSE %]public QUmlObjectPrivate[% END %]
+class Q_[% namespace.split('/').0.substr(2).upper %]_EXPORT ${class.name}Private : [% IF class.superclass.size == 1 %]public ${class.superclass.0.name.split('/').last}Private[% ELSE %]public [% IF namespace != "QtMof" %]QtMof::[% END %]QMofObjectPrivate[% END %]
 {
     Q_DECLARE_PUBLIC(${class.name})
 
