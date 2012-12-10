@@ -233,7 +233,7 @@
 [%- END %]
 [%- IF found == 'true' %]
 
-#include <QtUml/QUmlPointer>
+#include <QtMof/QMofPointer>
 [%- END %]
 
 QT_BEGIN_HEADER
@@ -316,7 +316,7 @@ public:
     [%- END -%]
     [%- FOREACH accessor IN property.accessor -%]
     [%- NEXT IF loop.first %]
-    Q_INVOKABLE ${accessor.return}${accessor.name}([%- FOREACH parameter IN attribute.accessor.1.parameter -%]QUmlPointer<${parameter.type.remove(' \*$')}> ${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness};
+    Q_INVOKABLE ${accessor.return}${accessor.name}([%- FOREACH parameter IN attribute.accessor.1.parameter -%][% IF namespace != "QtMof" %]QtMof::[% END %]<${parameter.type.remove(' \*$')}> ${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness};
     [%- END -%]
     [%- END -%]
     [%- END -%]
@@ -340,7 +340,7 @@ public:
     [%- END -%]
     [%- FOREACH accessor IN property.accessor -%]
     [%- NEXT IF loop.first %]
-    Q_INVOKABLE ${accessor.return}${accessor.name}([%- FOREACH parameter IN associationend.accessor.1.parameter -%]QUmlPointer<${parameter.type.remove(' \*$')}> ${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness};
+    Q_INVOKABLE ${accessor.return}${accessor.name}([%- FOREACH parameter IN associationend.accessor.1.parameter -%][% IF namespace != "QtMof" %]QtMof::[% END %]QMofPointer<${parameter.type.remove(' \*$')}> ${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness};
     [%- END -%]
     [%- END -%]
     [%- END -%]

@@ -3,7 +3,7 @@
 ** Copyright (C) 2012 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/
 **
-** This file is part of the QtUml module of the Qt Toolkit.
+** This file is part of the [% namespace.split('/').0 %] module of the Qt Toolkit.
 **
 ** [% GET '$QT_BEGIN_LICENSE:LGPL$' %]
 ** GNU Lesser General Public License Usage
@@ -41,7 +41,7 @@
 
 #include "${namespace.split('/').0.lower}enumerations.h"
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE_${namespace.replace('/', '_').upper}
 
 ${namespace.split('/').0}::${namespace.split('/').0}()
 {
@@ -63,5 +63,5 @@ ${namespace.split('/').0}::${namespace.split('/').0}()
 
 #include "moc_${namespace.split('/').0.lower}enumerations.cpp"
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE_${namespace.replace('/', '_').upper}
 

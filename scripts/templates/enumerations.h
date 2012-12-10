@@ -3,7 +3,7 @@
 ** Copyright (C) 2012 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/
 **
-** This file is part of the QtUml module of the Qt Toolkit.
+** This file is part of the [% namespace.split('/').0 %] module of the Qt Toolkit.
 **
 ** [% GET '$QT_BEGIN_LICENSE:LGPL$' %]
 ** GNU Lesser General Public License Usage
@@ -47,11 +47,11 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE_${namespace.replace('/', '_').upper}
 
-QT_MODULE(QtUml)
+QT_MODULE([% namespace.split('/').0 %])
 
-class Q_UML_EXPORT ${namespace.split('::').0} : public QObject
+class Q_[% namespace.split('/').0.substr(2).upper %]_EXPORT ${namespace.split('::').0} : public QObject
 {
     Q_OBJECT
 
@@ -71,7 +71,7 @@ private:
     explicit ${namespace.split('/').0}();
 };
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE_${namespace.replace('/', '_').upper}
 
 QT_END_HEADER
 
