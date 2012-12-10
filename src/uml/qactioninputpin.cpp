@@ -63,12 +63,12 @@ QActionInputPinPrivate::~QActionInputPinPrivate()
     \brief An action input pin is a kind of pin that executes an action to determine the values to input to another.
  */
 
-QActionInputPin::QActionInputPin(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QActionInputPin::QActionInputPin(QWrappedObject *parent, QWrappedObject *wrapper) :
     QInputPin(*new QActionInputPinPrivate, parent, wrapper)
 {
 }
 
-QActionInputPin::QActionInputPin(QActionInputPinPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QActionInputPin::QActionInputPin(QActionInputPinPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QInputPin(dd, parent, wrapper)
 {
 }
@@ -99,13 +99,13 @@ void QActionInputPin::setFromAction(QAction *fromAction)
     Q_D(QActionInputPin);
     if (d->fromAction != fromAction) {
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(d->fromAction));
+        (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(d->fromAction));
 
         d->fromAction = fromAction;
 
         // Adjust subsetted property(ies)
         if (fromAction) {
-            (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(fromAction));
+            (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(fromAction));
         }
     }
 }

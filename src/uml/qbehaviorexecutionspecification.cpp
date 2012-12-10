@@ -63,12 +63,12 @@ QBehaviorExecutionSpecificationPrivate::~QBehaviorExecutionSpecificationPrivate(
     \brief A behavior execution specification is a kind of execution specification representing the execution of a behavior.
  */
 
-QBehaviorExecutionSpecification::QBehaviorExecutionSpecification(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QBehaviorExecutionSpecification::QBehaviorExecutionSpecification(QWrappedObject *parent, QWrappedObject *wrapper) :
     QExecutionSpecification(*new QBehaviorExecutionSpecificationPrivate, parent, wrapper)
 {
 }
 
-QBehaviorExecutionSpecification::QBehaviorExecutionSpecification(QBehaviorExecutionSpecificationPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QBehaviorExecutionSpecification::QBehaviorExecutionSpecification(QBehaviorExecutionSpecificationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QExecutionSpecification(dd, parent, wrapper)
 {
 }

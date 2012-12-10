@@ -74,7 +74,7 @@ class Q_MOF_EXPORT QSlot : public QElement
     Q_DECLARE_PRIVATE(QSlot)
 
 public:
-    Q_INVOKABLE explicit QSlot(QMofObject *parent = 0, QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QSlot(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QSlot();
 
     // Association ends from QSlot
@@ -87,7 +87,7 @@ public:
     Q_INVOKABLE void setOwningInstance(QInstanceSpecification *owningInstance);
 
 protected:
-    explicit QSlot(QSlotPrivate &dd, QMofObject *parent = 0, QMofObject *wrapper = 0);
+    explicit QSlot(QSlotPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTMOF

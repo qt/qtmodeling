@@ -55,12 +55,12 @@ QURIExtentPrivate::~QURIExtentPrivate()
 }
 
 
-QURIExtent::QURIExtent(QMofObject *parent, QMofObject *wrapper) :
+QURIExtent::QURIExtent(QWrappedObject *parent, QWrappedObject *wrapper) :
     QExtent(*new QURIExtentPrivate, parent, wrapper)
 {
 }
 
-QURIExtent::QURIExtent(QURIExtentPrivate &dd, QMofObject *parent, QMofObject *wrapper) :
+QURIExtent::QURIExtent(QURIExtentPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QExtent(dd, parent, wrapper)
 {
 }

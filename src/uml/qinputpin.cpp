@@ -60,12 +60,12 @@ QInputPinPrivate::~QInputPinPrivate()
     \brief An input pin is a pin that holds input values to be consumed by an action.
  */
 
-QInputPin::QInputPin(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QInputPin::QInputPin(QWrappedObject *parent, QWrappedObject *wrapper) :
     QPin(*new QInputPinPrivate, parent, wrapper)
 {
 }
 
-QInputPin::QInputPin(QInputPinPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QInputPin::QInputPin(QInputPinPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QPin(dd, parent, wrapper)
 {
 }

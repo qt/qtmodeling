@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtMof/QMofObject>
+#include <QtWrappedObjects/QWrappedObject>
+using QtWrappedObjects::QWrappedObject;
 #include <QtUml/QDirectedRelationship>
 #include <QtUml/QNamedElement>
 
@@ -59,7 +60,7 @@ class QUseCase;
 
 class QIncludePrivate;
 
-class Q_UML_EXPORT QInclude : public QtMof::QMofObject
+class Q_UML_EXPORT QInclude : public QWrappedObject
 {
     Q_OBJECT
 
@@ -70,7 +71,7 @@ class Q_UML_EXPORT QInclude : public QtMof::QMofObject
     Q_DECLARE_PRIVATE(QInclude)
 
 public:
-    Q_INVOKABLE explicit QInclude(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QInclude(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QInclude();
 
     // Association ends from aggregated QElement
@@ -109,7 +110,7 @@ public:
     Q_INVOKABLE void setAddition(QUseCase *addition);
 
 protected:
-    explicit QInclude(QIncludePrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QInclude(QIncludePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 
 private:
     QDirectedRelationship *_wrappedDirectedRelationship;

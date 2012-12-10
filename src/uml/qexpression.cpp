@@ -62,12 +62,12 @@ QExpressionPrivate::~QExpressionPrivate()
     \brief An expression is a structured tree of symbols that denotes a (possibly empty) set of values when evaluated in a context.An expression represents a node in an expression tree, which may be non-terminal or terminal. It defines a symbol, and has a possibly empty sequence of operands which are value specifications.
  */
 
-QExpression::QExpression(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QExpression::QExpression(QWrappedObject *parent, QWrappedObject *wrapper) :
     QValueSpecification(*new QExpressionPrivate, parent, wrapper)
 {
 }
 
-QExpression::QExpression(QExpressionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QExpression::QExpression(QExpressionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QValueSpecification(dd, parent, wrapper)
 {
 }
@@ -125,7 +125,7 @@ void QExpression::addOperand(QValueSpecification *operand)
         d->operands->append(operand);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(operand));
+        (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(operand));
     }
 }
 
@@ -138,7 +138,7 @@ void QExpression::removeOperand(QValueSpecification *operand)
         d->operands->removeAll(operand);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(operand));
+        (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(operand));
     }
 }
 

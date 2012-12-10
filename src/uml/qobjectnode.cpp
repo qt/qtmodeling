@@ -70,15 +70,15 @@ QObjectNodePrivate::~QObjectNodePrivate()
     \brief An object node is an abstract activity node that is part of defining object flow in an activity.Object nodes have support for token selection, limitation on the number of tokens, specifying the state required for tokens, and carrying control values.
  */
 
-QObjectNode::QObjectNode(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
-    QtMof::QMofObject(*new QObjectNodePrivate, parent, wrapper),
+QObjectNode::QObjectNode(QWrappedObject *parent, QWrappedObject *wrapper) :
+    QWrappedObject(*new QObjectNodePrivate, parent, wrapper),
     _wrappedActivityNode(new QActivityNode(this, this)),
     _wrappedTypedElement(new QTypedElement(this, this))
 {
 }
 
-QObjectNode::QObjectNode(QObjectNodePrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
-    QtMof::QMofObject(dd, parent, wrapper),
+QObjectNode::QObjectNode(QObjectNodePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
+    QWrappedObject(dd, parent, wrapper),
     _wrappedActivityNode(new QActivityNode(this, this)),
     _wrappedTypedElement(new QTypedElement(this, this))
 {
@@ -97,7 +97,7 @@ QObjectNode::~QObjectNode()
  */
 const QSet<QElement *> *QObjectNode::ownedElements() const
 {
-    return (qmofobject_cast<const QElement *>(this))->ownedElements();
+    return (qwrappedobject_cast<const QElement *>(this))->ownedElements();
 }
 
 /*!
@@ -105,7 +105,7 @@ const QSet<QElement *> *QObjectNode::ownedElements() const
  */
 QElement *QObjectNode::owner() const
 {
-    return (qmofobject_cast<const QElement *>(this))->owner();
+    return (qwrappedobject_cast<const QElement *>(this))->owner();
 }
 
 /*!
@@ -113,17 +113,17 @@ QElement *QObjectNode::owner() const
  */
 const QSet<QComment *> *QObjectNode::ownedComments() const
 {
-    return (qmofobject_cast<const QElement *>(this))->ownedComments();
+    return (qwrappedobject_cast<const QElement *>(this))->ownedComments();
 }
 
 void QObjectNode::addOwnedComment(QComment *ownedComment)
 {
-    (qmofobject_cast<QElement *>(this))->addOwnedComment(ownedComment);
+    (qwrappedobject_cast<QElement *>(this))->addOwnedComment(ownedComment);
 }
 
 void QObjectNode::removeOwnedComment(QComment *ownedComment)
 {
-    (qmofobject_cast<QElement *>(this))->removeOwnedComment(ownedComment);
+    (qwrappedobject_cast<QElement *>(this))->removeOwnedComment(ownedComment);
 }
 
 // ---------------------------------------------------------------
@@ -135,12 +135,12 @@ void QObjectNode::removeOwnedComment(QComment *ownedComment)
  */
 QString QObjectNode::name() const
 {
-    return (qmofobject_cast<const QNamedElement *>(this))->name();
+    return (qwrappedobject_cast<const QNamedElement *>(this))->name();
 }
 
 void QObjectNode::setName(QString name)
 {
-    (qmofobject_cast<QNamedElement *>(this))->setName(name);
+    (qwrappedobject_cast<QNamedElement *>(this))->setName(name);
 }
 
 /*!
@@ -148,12 +148,12 @@ void QObjectNode::setName(QString name)
  */
 QtUml::VisibilityKind QObjectNode::visibility() const
 {
-    return (qmofobject_cast<const QNamedElement *>(this))->visibility();
+    return (qwrappedobject_cast<const QNamedElement *>(this))->visibility();
 }
 
 void QObjectNode::setVisibility(QtUml::VisibilityKind visibility)
 {
-    (qmofobject_cast<QNamedElement *>(this))->setVisibility(visibility);
+    (qwrappedobject_cast<QNamedElement *>(this))->setVisibility(visibility);
 }
 
 /*!
@@ -161,7 +161,7 @@ void QObjectNode::setVisibility(QtUml::VisibilityKind visibility)
  */
 QString QObjectNode::qualifiedName() const
 {
-    return (qmofobject_cast<const QNamedElement *>(this))->qualifiedName();
+    return (qwrappedobject_cast<const QNamedElement *>(this))->qualifiedName();
 }
 
 // ---------------------------------------------------------------
@@ -173,12 +173,12 @@ QString QObjectNode::qualifiedName() const
  */
 QStringExpression *QObjectNode::nameExpression() const
 {
-    return (qmofobject_cast<const QNamedElement *>(this))->nameExpression();
+    return (qwrappedobject_cast<const QNamedElement *>(this))->nameExpression();
 }
 
 void QObjectNode::setNameExpression(QStringExpression *nameExpression)
 {
-    (qmofobject_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
+    (qwrappedobject_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
 }
 
 /*!
@@ -186,7 +186,7 @@ void QObjectNode::setNameExpression(QStringExpression *nameExpression)
  */
 QNamespace *QObjectNode::namespace_() const
 {
-    return (qmofobject_cast<const QNamedElement *>(this))->namespace_();
+    return (qwrappedobject_cast<const QNamedElement *>(this))->namespace_();
 }
 
 /*!
@@ -194,17 +194,17 @@ QNamespace *QObjectNode::namespace_() const
  */
 const QSet<QDependency *> *QObjectNode::clientDependencies() const
 {
-    return (qmofobject_cast<const QNamedElement *>(this))->clientDependencies();
+    return (qwrappedobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
 
 void QObjectNode::addClientDependency(QDependency *clientDependency)
 {
-    (qmofobject_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
+    (qwrappedobject_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
 }
 
 void QObjectNode::removeClientDependency(QDependency *clientDependency)
 {
-    (qmofobject_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
+    (qwrappedobject_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
 }
 
 // ---------------------------------------------------------------
@@ -216,12 +216,12 @@ void QObjectNode::removeClientDependency(QDependency *clientDependency)
  */
 bool QObjectNode::isLeaf() const
 {
-    return (qmofobject_cast<const QRedefinableElement *>(this))->isLeaf();
+    return (qwrappedobject_cast<const QRedefinableElement *>(this))->isLeaf();
 }
 
 void QObjectNode::setLeaf(bool isLeaf)
 {
-    (qmofobject_cast<QRedefinableElement *>(this))->setLeaf(isLeaf);
+    (qwrappedobject_cast<QRedefinableElement *>(this))->setLeaf(isLeaf);
 }
 
 // ---------------------------------------------------------------
@@ -233,7 +233,7 @@ void QObjectNode::setLeaf(bool isLeaf)
  */
 const QSet<QRedefinableElement *> *QObjectNode::redefinedElements() const
 {
-    return (qmofobject_cast<const QRedefinableElement *>(this))->redefinedElements();
+    return (qwrappedobject_cast<const QRedefinableElement *>(this))->redefinedElements();
 }
 
 /*!
@@ -241,7 +241,7 @@ const QSet<QRedefinableElement *> *QObjectNode::redefinedElements() const
  */
 const QSet<QClassifier *> *QObjectNode::redefinitionContexts() const
 {
-    return (qmofobject_cast<const QRedefinableElement *>(this))->redefinitionContexts();
+    return (qwrappedobject_cast<const QRedefinableElement *>(this))->redefinitionContexts();
 }
 
 // ---------------------------------------------------------------
@@ -253,17 +253,17 @@ const QSet<QClassifier *> *QObjectNode::redefinitionContexts() const
  */
 const QSet<QActivityNode *> *QObjectNode::redefinedNodes() const
 {
-    return (qmofobject_cast<const QActivityNode *>(this))->redefinedNodes();
+    return (qwrappedobject_cast<const QActivityNode *>(this))->redefinedNodes();
 }
 
 void QObjectNode::addRedefinedNode(QActivityNode *redefinedNode)
 {
-    (qmofobject_cast<QActivityNode *>(this))->addRedefinedNode(redefinedNode);
+    (qwrappedobject_cast<QActivityNode *>(this))->addRedefinedNode(redefinedNode);
 }
 
 void QObjectNode::removeRedefinedNode(QActivityNode *redefinedNode)
 {
-    (qmofobject_cast<QActivityNode *>(this))->removeRedefinedNode(redefinedNode);
+    (qwrappedobject_cast<QActivityNode *>(this))->removeRedefinedNode(redefinedNode);
 }
 
 /*!
@@ -271,17 +271,17 @@ void QObjectNode::removeRedefinedNode(QActivityNode *redefinedNode)
  */
 const QSet<QActivityEdge *> *QObjectNode::incomings() const
 {
-    return (qmofobject_cast<const QActivityNode *>(this))->incomings();
+    return (qwrappedobject_cast<const QActivityNode *>(this))->incomings();
 }
 
 void QObjectNode::addIncoming(QActivityEdge *incoming)
 {
-    (qmofobject_cast<QActivityNode *>(this))->addIncoming(incoming);
+    (qwrappedobject_cast<QActivityNode *>(this))->addIncoming(incoming);
 }
 
 void QObjectNode::removeIncoming(QActivityEdge *incoming)
 {
-    (qmofobject_cast<QActivityNode *>(this))->removeIncoming(incoming);
+    (qwrappedobject_cast<QActivityNode *>(this))->removeIncoming(incoming);
 }
 
 /*!
@@ -289,12 +289,12 @@ void QObjectNode::removeIncoming(QActivityEdge *incoming)
  */
 QActivity *QObjectNode::activity() const
 {
-    return (qmofobject_cast<const QActivityNode *>(this))->activity();
+    return (qwrappedobject_cast<const QActivityNode *>(this))->activity();
 }
 
 void QObjectNode::setActivity(QActivity *activity)
 {
-    (qmofobject_cast<QActivityNode *>(this))->setActivity(activity);
+    (qwrappedobject_cast<QActivityNode *>(this))->setActivity(activity);
 }
 
 /*!
@@ -302,7 +302,7 @@ void QObjectNode::setActivity(QActivity *activity)
  */
 const QSet<QActivityGroup *> *QObjectNode::inGroup() const
 {
-    return (qmofobject_cast<const QActivityNode *>(this))->inGroup();
+    return (qwrappedobject_cast<const QActivityNode *>(this))->inGroup();
 }
 
 /*!
@@ -310,12 +310,12 @@ const QSet<QActivityGroup *> *QObjectNode::inGroup() const
  */
 QStructuredActivityNode *QObjectNode::inStructuredNode() const
 {
-    return (qmofobject_cast<const QActivityNode *>(this))->inStructuredNode();
+    return (qwrappedobject_cast<const QActivityNode *>(this))->inStructuredNode();
 }
 
 void QObjectNode::setInStructuredNode(QStructuredActivityNode *inStructuredNode)
 {
-    (qmofobject_cast<QActivityNode *>(this))->setInStructuredNode(inStructuredNode);
+    (qwrappedobject_cast<QActivityNode *>(this))->setInStructuredNode(inStructuredNode);
 }
 
 /*!
@@ -323,17 +323,17 @@ void QObjectNode::setInStructuredNode(QStructuredActivityNode *inStructuredNode)
  */
 const QSet<QActivityPartition *> *QObjectNode::inPartition() const
 {
-    return (qmofobject_cast<const QActivityNode *>(this))->inPartition();
+    return (qwrappedobject_cast<const QActivityNode *>(this))->inPartition();
 }
 
 void QObjectNode::addInPartition(QActivityPartition *inPartition)
 {
-    (qmofobject_cast<QActivityNode *>(this))->addInPartition(inPartition);
+    (qwrappedobject_cast<QActivityNode *>(this))->addInPartition(inPartition);
 }
 
 void QObjectNode::removeInPartition(QActivityPartition *inPartition)
 {
-    (qmofobject_cast<QActivityNode *>(this))->removeInPartition(inPartition);
+    (qwrappedobject_cast<QActivityNode *>(this))->removeInPartition(inPartition);
 }
 
 /*!
@@ -341,17 +341,17 @@ void QObjectNode::removeInPartition(QActivityPartition *inPartition)
  */
 const QSet<QInterruptibleActivityRegion *> *QObjectNode::inInterruptibleRegion() const
 {
-    return (qmofobject_cast<const QActivityNode *>(this))->inInterruptibleRegion();
+    return (qwrappedobject_cast<const QActivityNode *>(this))->inInterruptibleRegion();
 }
 
 void QObjectNode::addInInterruptibleRegion(QInterruptibleActivityRegion *inInterruptibleRegion)
 {
-    (qmofobject_cast<QActivityNode *>(this))->addInInterruptibleRegion(inInterruptibleRegion);
+    (qwrappedobject_cast<QActivityNode *>(this))->addInInterruptibleRegion(inInterruptibleRegion);
 }
 
 void QObjectNode::removeInInterruptibleRegion(QInterruptibleActivityRegion *inInterruptibleRegion)
 {
-    (qmofobject_cast<QActivityNode *>(this))->removeInInterruptibleRegion(inInterruptibleRegion);
+    (qwrappedobject_cast<QActivityNode *>(this))->removeInInterruptibleRegion(inInterruptibleRegion);
 }
 
 /*!
@@ -359,17 +359,17 @@ void QObjectNode::removeInInterruptibleRegion(QInterruptibleActivityRegion *inIn
  */
 const QSet<QActivityEdge *> *QObjectNode::outgoings() const
 {
-    return (qmofobject_cast<const QActivityNode *>(this))->outgoings();
+    return (qwrappedobject_cast<const QActivityNode *>(this))->outgoings();
 }
 
 void QObjectNode::addOutgoing(QActivityEdge *outgoing)
 {
-    (qmofobject_cast<QActivityNode *>(this))->addOutgoing(outgoing);
+    (qwrappedobject_cast<QActivityNode *>(this))->addOutgoing(outgoing);
 }
 
 void QObjectNode::removeOutgoing(QActivityEdge *outgoing)
 {
-    (qmofobject_cast<QActivityNode *>(this))->removeOutgoing(outgoing);
+    (qwrappedobject_cast<QActivityNode *>(this))->removeOutgoing(outgoing);
 }
 
 // ---------------------------------------------------------------
@@ -381,12 +381,12 @@ void QObjectNode::removeOutgoing(QActivityEdge *outgoing)
  */
 QType *QObjectNode::type() const
 {
-    return (qmofobject_cast<const QTypedElement *>(this))->type();
+    return (qwrappedobject_cast<const QTypedElement *>(this))->type();
 }
 
 void QObjectNode::setType(QType *type)
 {
-    (qmofobject_cast<QTypedElement *>(this))->setType(type);
+    (qwrappedobject_cast<QTypedElement *>(this))->setType(type);
 }
 
 // ---------------------------------------------------------------
@@ -457,13 +457,13 @@ void QObjectNode::setUpperBound(QValueSpecification *upperBound)
     Q_D(QObjectNode);
     if (d->upperBound != upperBound) {
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(d->upperBound));
+        (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(d->upperBound));
 
         d->upperBound = upperBound;
 
         // Adjust subsetted property(ies)
         if (upperBound) {
-            (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(upperBound));
+            (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(upperBound));
         }
     }
 }

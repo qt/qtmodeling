@@ -44,7 +44,8 @@
 #include <QtMof/QtMofGlobal>
 
 // Base class includes
-#include <QtMof/QMofObject>
+#include <QtWrappedObjects/QWrappedObject>
+using QtWrappedObjects::QWrappedObject;
 #include <QtMof/QPackageableElement>
 #include <QtMof/QTypedElement>
 
@@ -59,7 +60,7 @@ QT_MODULE(QtMof)
 
 class QValueSpecificationPrivate;
 
-class Q_MOF_EXPORT QValueSpecification : public QMofObject
+class Q_MOF_EXPORT QValueSpecification : public QWrappedObject
 {
     Q_OBJECT
 
@@ -67,7 +68,7 @@ class Q_MOF_EXPORT QValueSpecification : public QMofObject
     Q_DECLARE_PRIVATE(QValueSpecification)
 
 public:
-    Q_INVOKABLE explicit QValueSpecification(QMofObject *parent = 0, QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QValueSpecification(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QValueSpecification();
 
     // Association ends from aggregated QElement
@@ -103,7 +104,7 @@ public:
     Q_INVOKABLE qint32 unlimitedValue() const;
 
 protected:
-    explicit QValueSpecification(QValueSpecificationPrivate &dd, QMofObject *parent = 0, QMofObject *wrapper = 0);
+    explicit QValueSpecification(QValueSpecificationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 
 private:
     QPackageableElement *_wrappedPackageableElement;

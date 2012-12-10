@@ -64,12 +64,12 @@ QCreateLinkActionPrivate::~QCreateLinkActionPrivate()
     \brief A create link action is a write link action for creating links.
  */
 
-QCreateLinkAction::QCreateLinkAction(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QCreateLinkAction::QCreateLinkAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QWriteLinkAction(*new QCreateLinkActionPrivate, parent, wrapper)
 {
 }
 
-QCreateLinkAction::QCreateLinkAction(QCreateLinkActionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QCreateLinkAction::QCreateLinkAction(QCreateLinkActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QWriteLinkAction(dd, parent, wrapper)
 {
 }
@@ -100,7 +100,7 @@ void QCreateLinkAction::addEndData(QLinkEndCreationData *endData)
     Q_D(QCreateLinkAction);
     if (!d->endData->contains(endData)) {
         d->endData->insert(endData);
-        qmof_topLevelWrapper(endData)->setParent(qmof_topLevelWrapper(this));
+        qTopLevelWrapper(endData)->setParent(qTopLevelWrapper(this));
     }
 }
 
@@ -111,7 +111,7 @@ void QCreateLinkAction::removeEndData(QLinkEndCreationData *endData)
     Q_D(QCreateLinkAction);
     if (d->endData->contains(endData)) {
         d->endData->remove(endData);
-        qmof_topLevelWrapper(endData)->setParent(0);
+        qTopLevelWrapper(endData)->setParent(0);
     }
 }
 

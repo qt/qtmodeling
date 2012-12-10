@@ -64,12 +64,12 @@ QOpaqueExpressionPrivate::~QOpaqueExpressionPrivate()
     \brief An opaque expression is an uninterpreted textual statement that denotes a (possibly empty) set of values when evaluated in a context.
  */
 
-QOpaqueExpression::QOpaqueExpression(QMofObject *parent, QMofObject *wrapper) :
+QOpaqueExpression::QOpaqueExpression(QWrappedObject *parent, QWrappedObject *wrapper) :
     QValueSpecification(*new QOpaqueExpressionPrivate, parent, wrapper)
 {
 }
 
-QOpaqueExpression::QOpaqueExpression(QOpaqueExpressionPrivate &dd, QMofObject *parent, QMofObject *wrapper) :
+QOpaqueExpression::QOpaqueExpression(QOpaqueExpressionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QValueSpecification(dd, parent, wrapper)
 {
 }

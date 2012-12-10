@@ -64,12 +64,12 @@ QPackageMergePrivate::~QPackageMergePrivate()
     \brief A package merge defines how the contents of one package are extended by the contents of another package.
  */
 
-QPackageMerge::QPackageMerge(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QPackageMerge::QPackageMerge(QWrappedObject *parent, QWrappedObject *wrapper) :
     QDirectedRelationship(*new QPackageMergePrivate, parent, wrapper)
 {
 }
 
-QPackageMerge::QPackageMerge(QPackageMergePrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QPackageMerge::QPackageMerge(QPackageMergePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QDirectedRelationship(dd, parent, wrapper)
 {
 }
@@ -100,13 +100,13 @@ void QPackageMerge::setMergedPackage(QPackage *mergedPackage)
     Q_D(QPackageMerge);
     if (d->mergedPackage != mergedPackage) {
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QDirectedRelationshipPrivate *>(d))->removeTarget(qmofobject_cast<QElement *>(d->mergedPackage));
+        (qwrappedobject_cast<QDirectedRelationshipPrivate *>(d))->removeTarget(qwrappedobject_cast<QElement *>(d->mergedPackage));
 
         d->mergedPackage = mergedPackage;
 
         // Adjust subsetted property(ies)
         if (mergedPackage) {
-            (qmofobject_cast<QDirectedRelationshipPrivate *>(d))->addTarget(qmofobject_cast<QElement *>(mergedPackage));
+            (qwrappedobject_cast<QDirectedRelationshipPrivate *>(d))->addTarget(qwrappedobject_cast<QElement *>(mergedPackage));
         }
     }
 }
@@ -133,14 +133,14 @@ void QPackageMerge::setReceivingPackage(QPackage *receivingPackage)
             d->receivingPackage->removePackageMerge(this);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QDirectedRelationshipPrivate *>(d))->removeSource(qmofobject_cast<QElement *>(d->receivingPackage));
+        (qwrappedobject_cast<QDirectedRelationshipPrivate *>(d))->removeSource(qwrappedobject_cast<QElement *>(d->receivingPackage));
 
         d->receivingPackage = receivingPackage;
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->setOwner(qmofobject_cast<QElement *>(receivingPackage));
+        (qwrappedobject_cast<QElementPrivate *>(d))->setOwner(qwrappedobject_cast<QElement *>(receivingPackage));
         if (receivingPackage) {
-            (qmofobject_cast<QDirectedRelationshipPrivate *>(d))->addSource(qmofobject_cast<QElement *>(receivingPackage));
+            (qwrappedobject_cast<QDirectedRelationshipPrivate *>(d))->addSource(qwrappedobject_cast<QElement *>(receivingPackage));
         }
 
         // Adjust opposite property

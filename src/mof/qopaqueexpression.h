@@ -69,7 +69,7 @@ class Q_MOF_EXPORT QOpaqueExpression : public QValueSpecification
     Q_DECLARE_PRIVATE(QOpaqueExpression)
 
 public:
-    Q_INVOKABLE explicit QOpaqueExpression(QMofObject *parent = 0, QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QOpaqueExpression(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QOpaqueExpression();
 
     // Attributes from QOpaqueExpression
@@ -87,7 +87,7 @@ public:
     Q_INVOKABLE qint32 value() const;
 
 protected:
-    explicit QOpaqueExpression(QOpaqueExpressionPrivate &dd, QMofObject *parent = 0, QMofObject *wrapper = 0);
+    explicit QOpaqueExpression(QOpaqueExpressionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTMOF

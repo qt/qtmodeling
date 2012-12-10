@@ -48,8 +48,7 @@
 
 QT_BEGIN_NAMESPACE_QTMOF
 
-QMofObjectPrivate::QMofObjectPrivate(int version)
-    : QObjectPrivate(version), wrapper(0)
+QMofObjectPrivate::QMofObjectPrivate()
 {
 }
 
@@ -58,16 +57,14 @@ QMofObjectPrivate::~QMofObjectPrivate()
 }
 
 
-QMofObject::QMofObject(QMofObject *parent, QMofObject *wrapper) :
-    QObject(*new QMofObjectPrivate, parent)
+QMofObject::QMofObject(QWrappedObject *parent, QWrappedObject *wrapper) :
+    QWrappedObject(*new QMofObjectPrivate, parent, wrapper)
 {
-    setWrapper(wrapper);
 }
 
-QMofObject::QMofObject(QMofObjectPrivate &dd, QMofObject *parent, QMofObject *wrapper) :
-    QObject(dd, parent)
+QMofObject::QMofObject(QMofObjectPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
+    QWrappedObject(dd, parent, wrapper)
 {
-    setWrapper(wrapper);
 }
 
 QMofObject::~QMofObject()
@@ -118,33 +115,6 @@ QMofObject *QMofObject::invoke(const QOperation *op, const QSet<QArgument *> *ar
     Q_UNUSED(arguments);
 
     return 0; // change here to your derived return
-}
-
-const QList<QMofObject *> &QMofObject::wrappedObjects() const
-{
-    Q_D(const QMofObject);
-    return d->wrappedObjects;
-}
-
-void QMofObject::setWrapper(QMofObject *wrapper)
-{
-    Q_D(QMofObject);
-    if (wrapper == d->wrapper)
-        return;
-
-    if (d->wrapper)
-        d->wrapper->d_func()->wrappedObjects.removeAll(this);
-
-    d->wrapper = wrapper;
-
-    if (wrapper)
-        wrapper->d_func()->wrappedObjects.append(this);
-}
-
-QMofObject *QMofObject::wrapper() const
-{
-    Q_D(const QMofObject);
-    return d->wrapper;
 }
 
 #include "moc_qmofobject.cpp"

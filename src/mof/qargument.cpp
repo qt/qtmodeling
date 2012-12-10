@@ -56,13 +56,13 @@ QArgumentPrivate::~QArgumentPrivate()
 }
 
 
-QArgument::QArgument(QMofObject *parent, QMofObject *wrapper) :
-    QMofObject(*new QArgumentPrivate, parent, wrapper)
+QArgument::QArgument(QWrappedObject *parent, QWrappedObject *wrapper) :
+    QWrappedObject(*new QArgumentPrivate, parent, wrapper)
 {
 }
 
-QArgument::QArgument(QArgumentPrivate &dd, QMofObject *parent, QMofObject *wrapper) :
-    QMofObject(dd, parent, wrapper)
+QArgument::QArgument(QArgumentPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
+    QWrappedObject(dd, parent, wrapper)
 {
 }
 

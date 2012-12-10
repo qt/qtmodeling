@@ -49,7 +49,8 @@
 // Qt includes
 #include <QtCore/QSet>
 
-#include <QtMof/QMofPointer>
+#include <QtWrappedObjects/QWrappedObjectPointer>
+using QtWrappedObjects::QWrappedObjectPointer;
 
 QT_BEGIN_HEADER
 
@@ -84,7 +85,7 @@ class Q_UML_EXPORT QActivity : public QBehavior
     Q_DECLARE_PRIVATE(QActivity)
 
 public:
-    Q_INVOKABLE explicit QActivity(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QActivity(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QActivity();
 
     // Attributes from QActivity
@@ -114,15 +115,15 @@ public:
     Q_INVOKABLE void removeEdge(QActivityEdge *edge);
 
     // Overriden methods for subsetted properties
-    Q_INVOKABLE void addGroup(QtMof::QMofPointer<QActivityPartition> partition);
-    Q_INVOKABLE void removeGroup(QtMof::QMofPointer<QActivityPartition> partition);
-    Q_INVOKABLE void addGroup(QtMof::QMofPointer<QStructuredActivityNode> structuredNode);
-    Q_INVOKABLE void removeGroup(QtMof::QMofPointer<QStructuredActivityNode> structuredNode);
-    Q_INVOKABLE void addNode(QtMof::QMofPointer<QStructuredActivityNode> structuredNode);
-    Q_INVOKABLE void removeNode(QtMof::QMofPointer<QStructuredActivityNode> structuredNode);
+    Q_INVOKABLE void addGroup(QWrappedObjectPointer<QActivityPartition> partition);
+    Q_INVOKABLE void removeGroup(QWrappedObjectPointer<QActivityPartition> partition);
+    Q_INVOKABLE void addGroup(QWrappedObjectPointer<QStructuredActivityNode> structuredNode);
+    Q_INVOKABLE void removeGroup(QWrappedObjectPointer<QStructuredActivityNode> structuredNode);
+    Q_INVOKABLE void addNode(QWrappedObjectPointer<QStructuredActivityNode> structuredNode);
+    Q_INVOKABLE void removeNode(QWrappedObjectPointer<QStructuredActivityNode> structuredNode);
 
 protected:
-    explicit QActivity(QActivityPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QActivity(QActivityPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

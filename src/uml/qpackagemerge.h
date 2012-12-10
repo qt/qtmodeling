@@ -68,7 +68,7 @@ class Q_UML_EXPORT QPackageMerge : public QDirectedRelationship
     Q_DECLARE_PRIVATE(QPackageMerge)
 
 public:
-    Q_INVOKABLE explicit QPackageMerge(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QPackageMerge(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QPackageMerge();
 
     // Association ends from QPackageMerge
@@ -78,7 +78,7 @@ public:
     Q_INVOKABLE void setReceivingPackage(QPackage *receivingPackage);
 
 protected:
-    explicit QPackageMerge(QPackageMergePrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QPackageMerge(QPackageMergePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

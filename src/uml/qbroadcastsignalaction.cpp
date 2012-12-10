@@ -63,12 +63,12 @@ QBroadcastSignalActionPrivate::~QBroadcastSignalActionPrivate()
     \brief A broadcast signal action is an action that transmits a signal instance to all the potential target objects in the system, which may cause the firing of a state machine transitions or the execution of associated activities of a target object. The argument values are available to the execution of associated behaviors. The requestor continues execution immediately after the signals are sent out. It does not wait for receipt. Any reply messages are ignored and are not transmitted to the requestor.
  */
 
-QBroadcastSignalAction::QBroadcastSignalAction(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QBroadcastSignalAction::QBroadcastSignalAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QInvocationAction(*new QBroadcastSignalActionPrivate, parent, wrapper)
 {
 }
 
-QBroadcastSignalAction::QBroadcastSignalAction(QBroadcastSignalActionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QBroadcastSignalAction::QBroadcastSignalAction(QBroadcastSignalActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QInvocationAction(dd, parent, wrapper)
 {
 }

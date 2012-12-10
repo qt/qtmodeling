@@ -62,12 +62,12 @@ QIntervalPrivate::~QIntervalPrivate()
     \brief An interval defines the range between two value specifications.
  */
 
-QInterval::QInterval(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QInterval::QInterval(QWrappedObject *parent, QWrappedObject *wrapper) :
     QValueSpecification(*new QIntervalPrivate, parent, wrapper)
 {
 }
 
-QInterval::QInterval(QIntervalPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QInterval::QInterval(QIntervalPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QValueSpecification(dd, parent, wrapper)
 {
 }

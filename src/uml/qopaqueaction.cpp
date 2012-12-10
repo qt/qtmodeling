@@ -71,12 +71,12 @@ QOpaqueActionPrivate::~QOpaqueActionPrivate()
     \brief An action with implementation-specific semantics.
  */
 
-QOpaqueAction::QOpaqueAction(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QOpaqueAction::QOpaqueAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(*new QOpaqueActionPrivate, parent, wrapper)
 {
 }
 
-QOpaqueAction::QOpaqueAction(QOpaqueActionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QOpaqueAction::QOpaqueAction(QOpaqueActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(dd, parent, wrapper)
 {
 }
@@ -175,7 +175,7 @@ void QOpaqueAction::addInputValue(QInputPin *inputValue)
         d->inputValues->insert(inputValue);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QActionPrivate *>(d))->addInput(qmofobject_cast<QInputPin *>(inputValue));
+        (qwrappedobject_cast<QActionPrivate *>(d))->addInput(qwrappedobject_cast<QInputPin *>(inputValue));
     }
 }
 
@@ -188,7 +188,7 @@ void QOpaqueAction::removeInputValue(QInputPin *inputValue)
         d->inputValues->remove(inputValue);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QActionPrivate *>(d))->removeInput(qmofobject_cast<QInputPin *>(inputValue));
+        (qwrappedobject_cast<QActionPrivate *>(d))->removeInput(qwrappedobject_cast<QInputPin *>(inputValue));
     }
 }
 
@@ -212,7 +212,7 @@ void QOpaqueAction::addOutputValue(QOutputPin *outputValue)
         d->outputValues->insert(outputValue);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QActionPrivate *>(d))->addOutput(qmofobject_cast<QOutputPin *>(outputValue));
+        (qwrappedobject_cast<QActionPrivate *>(d))->addOutput(qwrappedobject_cast<QOutputPin *>(outputValue));
     }
 }
 
@@ -225,7 +225,7 @@ void QOpaqueAction::removeOutputValue(QOutputPin *outputValue)
         d->outputValues->remove(outputValue);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QActionPrivate *>(d))->removeOutput(qmofobject_cast<QOutputPin *>(outputValue));
+        (qwrappedobject_cast<QActionPrivate *>(d))->removeOutput(qwrappedobject_cast<QOutputPin *>(outputValue));
     }
 }
 

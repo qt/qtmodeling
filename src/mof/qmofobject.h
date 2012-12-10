@@ -44,7 +44,8 @@
 #include <QtMof/QtMofGlobal>
 
 // Base class includes
-#include <QtCore/QObject>
+#include <QtWrappedObjects/QWrappedObject>
+using QtWrappedObjects::QWrappedObject;
 
 // Qt includes
 #include <QtCore/QSet>
@@ -62,7 +63,7 @@ class QProperty;
 
 class QMofObjectPrivate;
 
-class Q_MOF_EXPORT QMofObject : public QObject
+class Q_MOF_EXPORT QMofObject : public QWrappedObject
 {
     Q_OBJECT
 
@@ -70,13 +71,8 @@ class Q_MOF_EXPORT QMofObject : public QObject
     Q_DECLARE_PRIVATE(QMofObject)
 
 public:
-    Q_INVOKABLE explicit QMofObject(QMofObject *parent = 0, QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QMofObject(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QMofObject();
-
-    const QList<QMofObject *> &wrappedObjects() const;
-
-    void setWrapper(QMofObject *wrapper);
-    QMofObject *wrapper() const;
 
     // Operations
     Q_INVOKABLE QMofObject *get(const QProperty *property) const;
@@ -87,7 +83,7 @@ public:
     Q_INVOKABLE QMofObject *invoke(const QOperation *op, const QSet<QArgument *> *arguments);
 
 protected:
-    explicit QMofObject(QMofObjectPrivate &dd, QMofObject *parent = 0, QMofObject *wrapper = 0);
+    explicit QMofObject(QMofObjectPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTMOF
@@ -95,36 +91,6 @@ QT_END_NAMESPACE_QTMOF
 Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTMOF(QMofObject) *)
 Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTMOF(QMofObject) *> *)
 Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTMOF(QMofObject) *> *)
-
-template <class T>
-inline T qmofobject_cast(QT_PREPEND_NAMESPACE_QTMOF(QMofObject) *base, bool restoreToWrapper = true)
-{
-    if (!base)
-        return T();
-    while (restoreToWrapper && base->wrapper())
-        base = base->wrapper();
-    if (dynamic_cast<T>(base))
-        return dynamic_cast<T>(base);
-    foreach (QT_PREPEND_NAMESPACE_QTMOF(QMofObject) *wrappedObject, base->wrappedObjects()) {
-        T returnValue = qmofobject_cast<T>(wrappedObject, false);
-        if (returnValue != T())
-            return returnValue;
-    }
-    return T(); // not found
-}
-
-template <class T>
-inline T qmofobject_cast(const QT_PREPEND_NAMESPACE_QTMOF(QMofObject) *base, bool restoreToWrapper = true)
-{
-    return qmofobject_cast<T>(const_cast<QT_PREPEND_NAMESPACE_QTMOF(QMofObject) *>(base), restoreToWrapper);
-}
-
-inline QT_PREPEND_NAMESPACE_QTMOF(QMofObject) *qmof_topLevelWrapper(QT_PREPEND_NAMESPACE_QTMOF(QMofObject) *wrapped)
-{
-    while (wrapped->wrapper())
-        wrapped = wrapped->wrapper();
-    return wrapped;
-}
 
 QT_END_HEADER
 

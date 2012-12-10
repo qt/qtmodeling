@@ -71,7 +71,7 @@ class Q_UML_EXPORT QReadLinkObjectEndQualifierAction : public QAction
     Q_DECLARE_PRIVATE(QReadLinkObjectEndQualifierAction)
 
 public:
-    Q_INVOKABLE explicit QReadLinkObjectEndQualifierAction(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QReadLinkObjectEndQualifierAction(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QReadLinkObjectEndQualifierAction();
 
     // Association ends from QReadLinkObjectEndQualifierAction
@@ -83,7 +83,7 @@ public:
     Q_INVOKABLE void setQualifier(QProperty *qualifier);
 
 protected:
-    explicit QReadLinkObjectEndQualifierAction(QReadLinkObjectEndQualifierActionPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QReadLinkObjectEndQualifierAction(QReadLinkObjectEndQualifierActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

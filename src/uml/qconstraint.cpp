@@ -68,12 +68,12 @@ QConstraintPrivate::~QConstraintPrivate()
     \brief A constraint is a condition or restriction expressed in natural language text or in a machine readable language for the purpose of declaring some of the semantics of an element.
  */
 
-QConstraint::QConstraint(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QConstraint::QConstraint(QWrappedObject *parent, QWrappedObject *wrapper) :
     QPackageableElement(*new QConstraintPrivate, parent, wrapper)
 {
 }
 
-QConstraint::QConstraint(QConstraintPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QConstraint::QConstraint(QConstraintPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QPackageableElement(dd, parent, wrapper)
 {
 }
@@ -110,7 +110,7 @@ void QConstraint::setContext(QNamespace *context)
         d->context = context;
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qmofobject_cast<QNamespace *>(context));
+        (qwrappedobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qwrappedobject_cast<QNamespace *>(context));
 
         // Adjust opposite property
         if (context)
@@ -136,13 +136,13 @@ void QConstraint::setSpecification(QValueSpecification *specification)
     Q_D(QConstraint);
     if (d->specification != specification) {
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(d->specification));
+        (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(d->specification));
 
         d->specification = specification;
 
         // Adjust subsetted property(ies)
         if (specification) {
-            (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(specification));
+            (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(specification));
         }
     }
 }

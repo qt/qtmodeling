@@ -81,12 +81,12 @@ QOperationPrivate::~QOperationPrivate()
     \brief An operation is a behavioral feature of a classifier that specifies the name, type, parameters, and constraints for invoking an associated behavior.
  */
 
-QOperation::QOperation(QMofObject *parent, QMofObject *wrapper) :
+QOperation::QOperation(QWrappedObject *parent, QWrappedObject *wrapper) :
     QBehavioralFeature(*new QOperationPrivate, parent, wrapper)
 {
 }
 
-QOperation::QOperation(QOperationPrivate &dd, QMofObject *parent, QMofObject *wrapper) :
+QOperation::QOperation(QOperationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QBehavioralFeature(dd, parent, wrapper)
 {
 }
@@ -190,7 +190,7 @@ void QOperation::addOwnedParameter(QParameter *ownedParameter)
     Q_D(QOperation);
     if (!d->ownedParameters->contains(ownedParameter)) {
         d->ownedParameters->append(ownedParameter);
-        qmof_topLevelWrapper(ownedParameter)->setParent(qmof_topLevelWrapper(this));
+        qTopLevelWrapper(ownedParameter)->setParent(qTopLevelWrapper(this));
 
         // Adjust opposite property
         ownedParameter->setOperation(this);
@@ -204,7 +204,7 @@ void QOperation::removeOwnedParameter(QParameter *ownedParameter)
     Q_D(QOperation);
     if (d->ownedParameters->contains(ownedParameter)) {
         d->ownedParameters->removeAll(ownedParameter);
-        qmof_topLevelWrapper(ownedParameter)->setParent(0);
+        qTopLevelWrapper(ownedParameter)->setParent(0);
 
         // Adjust opposite property
         ownedParameter->setOperation(0);
@@ -229,13 +229,13 @@ void QOperation::setBodyCondition(QConstraint *bodyCondition)
     Q_D(QOperation);
     if (d->bodyCondition != bodyCondition) {
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QNamespace *>(this))->removeOwnedRule(qmofobject_cast<QConstraint *>(d->bodyCondition));
+        (qwrappedobject_cast<QNamespace *>(this))->removeOwnedRule(qwrappedobject_cast<QConstraint *>(d->bodyCondition));
 
         d->bodyCondition = bodyCondition;
 
         // Adjust subsetted property(ies)
         if (bodyCondition) {
-            (qmofobject_cast<QNamespace *>(this))->addOwnedRule(qmofobject_cast<QConstraint *>(bodyCondition));
+            (qwrappedobject_cast<QNamespace *>(this))->addOwnedRule(qwrappedobject_cast<QConstraint *>(bodyCondition));
         }
     }
 }
@@ -260,7 +260,7 @@ void QOperation::addRedefinedOperation(QOperation *redefinedOperation)
         d->redefinedOperations->insert(redefinedOperation);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QRedefinableElementPrivate *>(d))->addRedefinedElement(qmofobject_cast<QRedefinableElement *>(redefinedOperation));
+        (qwrappedobject_cast<QRedefinableElementPrivate *>(d))->addRedefinedElement(qwrappedobject_cast<QRedefinableElement *>(redefinedOperation));
     }
 }
 
@@ -273,7 +273,7 @@ void QOperation::removeRedefinedOperation(QOperation *redefinedOperation)
         d->redefinedOperations->remove(redefinedOperation);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QRedefinableElementPrivate *>(d))->removeRedefinedElement(qmofobject_cast<QRedefinableElement *>(redefinedOperation));
+        (qwrappedobject_cast<QRedefinableElementPrivate *>(d))->removeRedefinedElement(qwrappedobject_cast<QRedefinableElement *>(redefinedOperation));
     }
 }
 
@@ -297,7 +297,7 @@ void QOperation::addPostcondition(QConstraint *postcondition)
         d->postconditions->insert(postcondition);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QNamespace *>(this))->addOwnedRule(qmofobject_cast<QConstraint *>(postcondition));
+        (qwrappedobject_cast<QNamespace *>(this))->addOwnedRule(qwrappedobject_cast<QConstraint *>(postcondition));
     }
 }
 
@@ -310,7 +310,7 @@ void QOperation::removePostcondition(QConstraint *postcondition)
         d->postconditions->remove(postcondition);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QNamespace *>(this))->removeOwnedRule(qmofobject_cast<QConstraint *>(postcondition));
+        (qwrappedobject_cast<QNamespace *>(this))->removeOwnedRule(qwrappedobject_cast<QConstraint *>(postcondition));
     }
 }
 
@@ -336,18 +336,18 @@ void QOperation::setDatatype(QDataType *datatype)
             d->datatype->removeOwnedOperation(this);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QFeaturePrivate *>(d))->removeFeaturingClassifier(qmofobject_cast<QClassifier *>(d->datatype));
-        (qmofobject_cast<QRedefinableElementPrivate *>(d))->removeRedefinitionContext(qmofobject_cast<QClassifier *>(d->datatype));
+        (qwrappedobject_cast<QFeaturePrivate *>(d))->removeFeaturingClassifier(qwrappedobject_cast<QClassifier *>(d->datatype));
+        (qwrappedobject_cast<QRedefinableElementPrivate *>(d))->removeRedefinitionContext(qwrappedobject_cast<QClassifier *>(d->datatype));
 
         d->datatype = datatype;
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qmofobject_cast<QNamespace *>(datatype));
+        (qwrappedobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qwrappedobject_cast<QNamespace *>(datatype));
         if (datatype) {
-            (qmofobject_cast<QFeaturePrivate *>(d))->addFeaturingClassifier(qmofobject_cast<QClassifier *>(datatype));
+            (qwrappedobject_cast<QFeaturePrivate *>(d))->addFeaturingClassifier(qwrappedobject_cast<QClassifier *>(datatype));
         }
         if (datatype) {
-            (qmofobject_cast<QRedefinableElementPrivate *>(d))->addRedefinitionContext(qmofobject_cast<QClassifier *>(datatype));
+            (qwrappedobject_cast<QRedefinableElementPrivate *>(d))->addRedefinitionContext(qwrappedobject_cast<QClassifier *>(datatype));
         }
 
         // Adjust opposite property
@@ -388,7 +388,7 @@ void QOperation::addPrecondition(QConstraint *precondition)
         d->preconditions->insert(precondition);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QNamespace *>(this))->addOwnedRule(qmofobject_cast<QConstraint *>(precondition));
+        (qwrappedobject_cast<QNamespace *>(this))->addOwnedRule(qwrappedobject_cast<QConstraint *>(precondition));
     }
 }
 
@@ -401,7 +401,7 @@ void QOperation::removePrecondition(QConstraint *precondition)
         d->preconditions->remove(precondition);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QNamespace *>(this))->removeOwnedRule(qmofobject_cast<QConstraint *>(precondition));
+        (qwrappedobject_cast<QNamespace *>(this))->removeOwnedRule(qwrappedobject_cast<QConstraint *>(precondition));
     }
 }
 
@@ -427,18 +427,18 @@ void QOperation::setClass_(QClass *class_)
             d->class_->removeOwnedOperation(this);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QFeaturePrivate *>(d))->removeFeaturingClassifier(qmofobject_cast<QClassifier *>(d->class_));
-        (qmofobject_cast<QRedefinableElementPrivate *>(d))->removeRedefinitionContext(qmofobject_cast<QClassifier *>(d->class_));
+        (qwrappedobject_cast<QFeaturePrivate *>(d))->removeFeaturingClassifier(qwrappedobject_cast<QClassifier *>(d->class_));
+        (qwrappedobject_cast<QRedefinableElementPrivate *>(d))->removeRedefinitionContext(qwrappedobject_cast<QClassifier *>(d->class_));
 
         d->class_ = class_;
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qmofobject_cast<QNamespace *>(class_));
+        (qwrappedobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qwrappedobject_cast<QNamespace *>(class_));
         if (class_) {
-            (qmofobject_cast<QFeaturePrivate *>(d))->addFeaturingClassifier(qmofobject_cast<QClassifier *>(class_));
+            (qwrappedobject_cast<QFeaturePrivate *>(d))->addFeaturingClassifier(qwrappedobject_cast<QClassifier *>(class_));
         }
         if (class_) {
-            (qmofobject_cast<QRedefinableElementPrivate *>(d))->addRedefinitionContext(qmofobject_cast<QClassifier *>(class_));
+            (qwrappedobject_cast<QRedefinableElementPrivate *>(d))->addRedefinitionContext(qwrappedobject_cast<QClassifier *>(class_));
         }
 
         // Adjust opposite property

@@ -68,7 +68,7 @@ class Q_MOF_EXPORT QType : public QPackageableElement
     Q_DECLARE_PRIVATE(QType)
 
 public:
-    Q_INVOKABLE explicit QType(QMofObject *parent = 0, QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QType(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QType();
 
     // Association ends from QType
@@ -80,7 +80,7 @@ public:
     Q_INVOKABLE bool isInstance(const QMofObject *object) const;
 
 protected:
-    explicit QType(QTypePrivate &dd, QMofObject *parent = 0, QMofObject *wrapper = 0);
+    explicit QType(QTypePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTMOF

@@ -70,7 +70,7 @@ class Q_MOF_EXPORT QEnumeration : public QDataType
     Q_DECLARE_PRIVATE(QEnumeration)
 
 public:
-    Q_INVOKABLE explicit QEnumeration(QMofObject *parent = 0, QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QEnumeration(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QEnumeration();
 
     // Association ends from QEnumeration
@@ -79,7 +79,7 @@ public:
     Q_INVOKABLE void removeOwnedLiteral(QEnumerationLiteral *ownedLiteral);
 
 protected:
-    explicit QEnumeration(QEnumerationPrivate &dd, QMofObject *parent = 0, QMofObject *wrapper = 0);
+    explicit QEnumeration(QEnumerationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTMOF

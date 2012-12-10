@@ -68,7 +68,7 @@ class Q_UML_EXPORT QExpansionNode : public QObjectNode
     Q_DECLARE_PRIVATE(QExpansionNode)
 
 public:
-    Q_INVOKABLE explicit QExpansionNode(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QExpansionNode(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QExpansionNode();
 
     // Association ends from QExpansionNode
@@ -78,7 +78,7 @@ public:
     Q_INVOKABLE void setRegionAsInput(QExpansionRegion *regionAsInput);
 
 protected:
-    explicit QExpansionNode(QExpansionNodePrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QExpansionNode(QExpansionNodePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

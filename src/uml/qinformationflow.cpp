@@ -81,15 +81,15 @@ QInformationFlowPrivate::~QInformationFlowPrivate()
     \brief An information flow specifies that one or more information items circulates from its sources to its targets. Information flows require some kind of information channel for transmitting information items from the source to the destination. An information channel is represented in various ways depending on the nature of its sources and targets. It may be represented by connectors, links, associations, or even dependencies. For example, if the source and destination are parts in some composite structure such as a collaboration, then the information channel is likely to be represented by a connector between them. Or, if the source and target are objects (which are a kind of instance specification), they may be represented by a link that joins the two, and so on.
  */
 
-QInformationFlow::QInformationFlow(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
-    QtMof::QMofObject(*new QInformationFlowPrivate, parent, wrapper),
+QInformationFlow::QInformationFlow(QWrappedObject *parent, QWrappedObject *wrapper) :
+    QWrappedObject(*new QInformationFlowPrivate, parent, wrapper),
     _wrappedDirectedRelationship(new QDirectedRelationship(this, this)),
     _wrappedPackageableElement(new QPackageableElement(this, this))
 {
 }
 
-QInformationFlow::QInformationFlow(QInformationFlowPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
-    QtMof::QMofObject(dd, parent, wrapper),
+QInformationFlow::QInformationFlow(QInformationFlowPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
+    QWrappedObject(dd, parent, wrapper),
     _wrappedDirectedRelationship(new QDirectedRelationship(this, this)),
     _wrappedPackageableElement(new QPackageableElement(this, this))
 {
@@ -108,7 +108,7 @@ QInformationFlow::~QInformationFlow()
  */
 const QSet<QElement *> *QInformationFlow::ownedElements() const
 {
-    return (qmofobject_cast<const QElement *>(this))->ownedElements();
+    return (qwrappedobject_cast<const QElement *>(this))->ownedElements();
 }
 
 /*!
@@ -116,7 +116,7 @@ const QSet<QElement *> *QInformationFlow::ownedElements() const
  */
 QElement *QInformationFlow::owner() const
 {
-    return (qmofobject_cast<const QElement *>(this))->owner();
+    return (qwrappedobject_cast<const QElement *>(this))->owner();
 }
 
 /*!
@@ -124,17 +124,17 @@ QElement *QInformationFlow::owner() const
  */
 const QSet<QComment *> *QInformationFlow::ownedComments() const
 {
-    return (qmofobject_cast<const QElement *>(this))->ownedComments();
+    return (qwrappedobject_cast<const QElement *>(this))->ownedComments();
 }
 
 void QInformationFlow::addOwnedComment(QComment *ownedComment)
 {
-    (qmofobject_cast<QElement *>(this))->addOwnedComment(ownedComment);
+    (qwrappedobject_cast<QElement *>(this))->addOwnedComment(ownedComment);
 }
 
 void QInformationFlow::removeOwnedComment(QComment *ownedComment)
 {
-    (qmofobject_cast<QElement *>(this))->removeOwnedComment(ownedComment);
+    (qwrappedobject_cast<QElement *>(this))->removeOwnedComment(ownedComment);
 }
 
 // ---------------------------------------------------------------
@@ -146,7 +146,7 @@ void QInformationFlow::removeOwnedComment(QComment *ownedComment)
  */
 const QSet<QElement *> *QInformationFlow::relatedElements() const
 {
-    return (qmofobject_cast<const QRelationship *>(this))->relatedElements();
+    return (qwrappedobject_cast<const QRelationship *>(this))->relatedElements();
 }
 
 // ---------------------------------------------------------------
@@ -158,7 +158,7 @@ const QSet<QElement *> *QInformationFlow::relatedElements() const
  */
 const QSet<QElement *> *QInformationFlow::sources() const
 {
-    return (qmofobject_cast<const QDirectedRelationship *>(this))->sources();
+    return (qwrappedobject_cast<const QDirectedRelationship *>(this))->sources();
 }
 
 /*!
@@ -166,7 +166,7 @@ const QSet<QElement *> *QInformationFlow::sources() const
  */
 const QSet<QElement *> *QInformationFlow::targets() const
 {
-    return (qmofobject_cast<const QDirectedRelationship *>(this))->targets();
+    return (qwrappedobject_cast<const QDirectedRelationship *>(this))->targets();
 }
 
 // ---------------------------------------------------------------
@@ -178,12 +178,12 @@ const QSet<QElement *> *QInformationFlow::targets() const
  */
 QTemplateParameter *QInformationFlow::owningTemplateParameter() const
 {
-    return (qmofobject_cast<const QParameterableElement *>(this))->owningTemplateParameter();
+    return (qwrappedobject_cast<const QParameterableElement *>(this))->owningTemplateParameter();
 }
 
 void QInformationFlow::setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter)
 {
-    (qmofobject_cast<QParameterableElement *>(this))->setOwningTemplateParameter(owningTemplateParameter);
+    (qwrappedobject_cast<QParameterableElement *>(this))->setOwningTemplateParameter(owningTemplateParameter);
 }
 
 /*!
@@ -191,12 +191,12 @@ void QInformationFlow::setOwningTemplateParameter(QTemplateParameter *owningTemp
  */
 QTemplateParameter *QInformationFlow::templateParameter() const
 {
-    return (qmofobject_cast<const QParameterableElement *>(this))->templateParameter();
+    return (qwrappedobject_cast<const QParameterableElement *>(this))->templateParameter();
 }
 
 void QInformationFlow::setTemplateParameter(QTemplateParameter *templateParameter)
 {
-    (qmofobject_cast<QParameterableElement *>(this))->setTemplateParameter(templateParameter);
+    (qwrappedobject_cast<QParameterableElement *>(this))->setTemplateParameter(templateParameter);
 }
 
 // ---------------------------------------------------------------
@@ -208,12 +208,12 @@ void QInformationFlow::setTemplateParameter(QTemplateParameter *templateParamete
  */
 QString QInformationFlow::name() const
 {
-    return (qmofobject_cast<const QNamedElement *>(this))->name();
+    return (qwrappedobject_cast<const QNamedElement *>(this))->name();
 }
 
 void QInformationFlow::setName(QString name)
 {
-    (qmofobject_cast<QNamedElement *>(this))->setName(name);
+    (qwrappedobject_cast<QNamedElement *>(this))->setName(name);
 }
 
 /*!
@@ -221,7 +221,7 @@ void QInformationFlow::setName(QString name)
  */
 QString QInformationFlow::qualifiedName() const
 {
-    return (qmofobject_cast<const QNamedElement *>(this))->qualifiedName();
+    return (qwrappedobject_cast<const QNamedElement *>(this))->qualifiedName();
 }
 
 // ---------------------------------------------------------------
@@ -233,12 +233,12 @@ QString QInformationFlow::qualifiedName() const
  */
 QStringExpression *QInformationFlow::nameExpression() const
 {
-    return (qmofobject_cast<const QNamedElement *>(this))->nameExpression();
+    return (qwrappedobject_cast<const QNamedElement *>(this))->nameExpression();
 }
 
 void QInformationFlow::setNameExpression(QStringExpression *nameExpression)
 {
-    (qmofobject_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
+    (qwrappedobject_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
 }
 
 /*!
@@ -246,7 +246,7 @@ void QInformationFlow::setNameExpression(QStringExpression *nameExpression)
  */
 QNamespace *QInformationFlow::namespace_() const
 {
-    return (qmofobject_cast<const QNamedElement *>(this))->namespace_();
+    return (qwrappedobject_cast<const QNamedElement *>(this))->namespace_();
 }
 
 /*!
@@ -254,17 +254,17 @@ QNamespace *QInformationFlow::namespace_() const
  */
 const QSet<QDependency *> *QInformationFlow::clientDependencies() const
 {
-    return (qmofobject_cast<const QNamedElement *>(this))->clientDependencies();
+    return (qwrappedobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
 
 void QInformationFlow::addClientDependency(QDependency *clientDependency)
 {
-    (qmofobject_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
+    (qwrappedobject_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
 }
 
 void QInformationFlow::removeClientDependency(QDependency *clientDependency)
 {
-    (qmofobject_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
+    (qwrappedobject_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
 }
 
 // ---------------------------------------------------------------
@@ -276,12 +276,12 @@ void QInformationFlow::removeClientDependency(QDependency *clientDependency)
  */
 QtUml::VisibilityKind QInformationFlow::visibility() const
 {
-    return (qmofobject_cast<const QPackageableElement *>(this))->visibility();
+    return (qwrappedobject_cast<const QPackageableElement *>(this))->visibility();
 }
 
 void QInformationFlow::setVisibility(QtUml::VisibilityKind visibility)
 {
-    (qmofobject_cast<QPackageableElement *>(this))->setVisibility(visibility);
+    (qwrappedobject_cast<QPackageableElement *>(this))->setVisibility(visibility);
 }
 
 // ---------------------------------------------------------------
@@ -308,7 +308,7 @@ void QInformationFlow::addInformationTarget(QNamedElement *informationTarget)
         d->informationTargets->insert(informationTarget);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QDirectedRelationshipPrivate *>(d))->addTarget(qmofobject_cast<QElement *>(informationTarget));
+        (qwrappedobject_cast<QDirectedRelationshipPrivate *>(d))->addTarget(qwrappedobject_cast<QElement *>(informationTarget));
     }
 }
 
@@ -321,7 +321,7 @@ void QInformationFlow::removeInformationTarget(QNamedElement *informationTarget)
         d->informationTargets->remove(informationTarget);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QDirectedRelationshipPrivate *>(d))->removeTarget(qmofobject_cast<QElement *>(informationTarget));
+        (qwrappedobject_cast<QDirectedRelationshipPrivate *>(d))->removeTarget(qwrappedobject_cast<QElement *>(informationTarget));
     }
 }
 
@@ -407,7 +407,7 @@ void QInformationFlow::addInformationSource(QNamedElement *informationSource)
         d->informationSources->insert(informationSource);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QDirectedRelationshipPrivate *>(d))->addSource(qmofobject_cast<QElement *>(informationSource));
+        (qwrappedobject_cast<QDirectedRelationshipPrivate *>(d))->addSource(qwrappedobject_cast<QElement *>(informationSource));
     }
 }
 
@@ -420,7 +420,7 @@ void QInformationFlow::removeInformationSource(QNamedElement *informationSource)
         d->informationSources->remove(informationSource);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QDirectedRelationshipPrivate *>(d))->removeSource(qmofobject_cast<QElement *>(informationSource));
+        (qwrappedobject_cast<QDirectedRelationshipPrivate *>(d))->removeSource(qwrappedobject_cast<QElement *>(informationSource));
     }
 }
 

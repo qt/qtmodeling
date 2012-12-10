@@ -46,7 +46,8 @@
 // Base class includes
 #include <QtUml/QRealization>
 
-#include <QtMof/QMofPointer>
+#include <QtWrappedObjects/QWrappedObjectPointer>
+using QtWrappedObjects::QWrappedObjectPointer;
 
 QT_BEGIN_HEADER
 
@@ -70,7 +71,7 @@ class Q_UML_EXPORT QSubstitution : public QRealization
     Q_DECLARE_PRIVATE(QSubstitution)
 
 public:
-    Q_INVOKABLE explicit QSubstitution(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QSubstitution(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QSubstitution();
 
     // Association ends from QSubstitution
@@ -80,13 +81,13 @@ public:
     Q_INVOKABLE void setSubstitutingClassifier(QClassifier *substitutingClassifier);
 
     // Overriden methods for subsetted properties
-    Q_INVOKABLE void addSupplier(QtMof::QMofPointer<QClassifier> contract);
-    Q_INVOKABLE void removeSupplier(QtMof::QMofPointer<QClassifier> contract);
-    Q_INVOKABLE void addClient(QtMof::QMofPointer<QClassifier> substitutingClassifier);
-    Q_INVOKABLE void removeClient(QtMof::QMofPointer<QClassifier> substitutingClassifier);
+    Q_INVOKABLE void addSupplier(QWrappedObjectPointer<QClassifier> contract);
+    Q_INVOKABLE void removeSupplier(QWrappedObjectPointer<QClassifier> contract);
+    Q_INVOKABLE void addClient(QWrappedObjectPointer<QClassifier> substitutingClassifier);
+    Q_INVOKABLE void removeClient(QWrappedObjectPointer<QClassifier> substitutingClassifier);
 
 protected:
-    explicit QSubstitution(QSubstitutionPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QSubstitution(QSubstitutionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

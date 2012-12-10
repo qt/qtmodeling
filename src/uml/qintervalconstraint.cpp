@@ -64,12 +64,12 @@ QIntervalConstraintPrivate::~QIntervalConstraintPrivate()
     \brief An interval constraint is a constraint that refers to an interval.
  */
 
-QIntervalConstraint::QIntervalConstraint(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QIntervalConstraint::QIntervalConstraint(QWrappedObject *parent, QWrappedObject *wrapper) :
     QConstraint(*new QIntervalConstraintPrivate, parent, wrapper)
 {
 }
 
-QIntervalConstraint::QIntervalConstraint(QIntervalConstraintPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QIntervalConstraint::QIntervalConstraint(QIntervalConstraintPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QConstraint(dd, parent, wrapper)
 {
 }

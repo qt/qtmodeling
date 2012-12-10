@@ -65,12 +65,12 @@ QTimeConstraintPrivate::~QTimeConstraintPrivate()
     \brief A time constraint is a constraint that refers to a time interval.
  */
 
-QTimeConstraint::QTimeConstraint(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QTimeConstraint::QTimeConstraint(QWrappedObject *parent, QWrappedObject *wrapper) :
     QIntervalConstraint(*new QTimeConstraintPrivate, parent, wrapper)
 {
 }
 
-QTimeConstraint::QTimeConstraint(QTimeConstraintPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QTimeConstraint::QTimeConstraint(QTimeConstraintPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QIntervalConstraint(dd, parent, wrapper)
 {
 }

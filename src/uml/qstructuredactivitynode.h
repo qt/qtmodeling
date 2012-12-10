@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtMof/QMofObject>
+#include <QtWrappedObjects/QWrappedObject>
+using QtWrappedObjects::QWrappedObject;
 #include <QtUml/QAction>
 #include <QtUml/QNamespace>
 #include <QtUml/QActivityGroup>
@@ -68,7 +69,7 @@ class QActivityNode;
 
 class QStructuredActivityNodePrivate;
 
-class Q_UML_EXPORT QStructuredActivityNode : public QtMof::QMofObject
+class Q_UML_EXPORT QStructuredActivityNode : public QWrappedObject
 {
     Q_OBJECT
 
@@ -84,7 +85,7 @@ class Q_UML_EXPORT QStructuredActivityNode : public QtMof::QMofObject
     Q_DECLARE_PRIVATE(QStructuredActivityNode)
 
 public:
-    Q_INVOKABLE explicit QStructuredActivityNode(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QStructuredActivityNode(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QStructuredActivityNode();
 
     // Association ends from aggregated QElement
@@ -201,7 +202,7 @@ public:
     Q_INVOKABLE void setActivity(QActivity *activity);
 
 protected:
-    explicit QStructuredActivityNode(QStructuredActivityNodePrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QStructuredActivityNode(QStructuredActivityNodePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 
 private:
     QAction *_wrappedAction;

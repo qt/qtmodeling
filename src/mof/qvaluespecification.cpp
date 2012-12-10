@@ -60,15 +60,15 @@ QValueSpecificationPrivate::~QValueSpecificationPrivate()
     \brief A value specification is the specification of a (possibly empty) set of instances, including both objects and data values.
  */
 
-QValueSpecification::QValueSpecification(QMofObject *parent, QMofObject *wrapper) :
-    QMofObject(*new QValueSpecificationPrivate, parent, wrapper),
+QValueSpecification::QValueSpecification(QWrappedObject *parent, QWrappedObject *wrapper) :
+    QWrappedObject(*new QValueSpecificationPrivate, parent, wrapper),
     _wrappedPackageableElement(new QPackageableElement(this, this)),
     _wrappedTypedElement(new QTypedElement(this, this))
 {
 }
 
-QValueSpecification::QValueSpecification(QValueSpecificationPrivate &dd, QMofObject *parent, QMofObject *wrapper) :
-    QMofObject(dd, parent, wrapper),
+QValueSpecification::QValueSpecification(QValueSpecificationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
+    QWrappedObject(dd, parent, wrapper),
     _wrappedPackageableElement(new QPackageableElement(this, this)),
     _wrappedTypedElement(new QTypedElement(this, this))
 {
@@ -87,7 +87,7 @@ QValueSpecification::~QValueSpecification()
  */
 const QSet<QElement *> *QValueSpecification::ownedElements() const
 {
-    return (qmofobject_cast<const QElement *>(this))->ownedElements();
+    return (qwrappedobject_cast<const QElement *>(this))->ownedElements();
 }
 
 /*!
@@ -95,7 +95,7 @@ const QSet<QElement *> *QValueSpecification::ownedElements() const
  */
 QElement *QValueSpecification::owner() const
 {
-    return (qmofobject_cast<const QElement *>(this))->owner();
+    return (qwrappedobject_cast<const QElement *>(this))->owner();
 }
 
 /*!
@@ -103,17 +103,17 @@ QElement *QValueSpecification::owner() const
  */
 const QSet<QComment *> *QValueSpecification::ownedComments() const
 {
-    return (qmofobject_cast<const QElement *>(this))->ownedComments();
+    return (qwrappedobject_cast<const QElement *>(this))->ownedComments();
 }
 
 void QValueSpecification::addOwnedComment(QComment *ownedComment)
 {
-    (qmofobject_cast<QElement *>(this))->addOwnedComment(ownedComment);
+    (qwrappedobject_cast<QElement *>(this))->addOwnedComment(ownedComment);
 }
 
 void QValueSpecification::removeOwnedComment(QComment *ownedComment)
 {
-    (qmofobject_cast<QElement *>(this))->removeOwnedComment(ownedComment);
+    (qwrappedobject_cast<QElement *>(this))->removeOwnedComment(ownedComment);
 }
 
 // ---------------------------------------------------------------
@@ -125,12 +125,12 @@ void QValueSpecification::removeOwnedComment(QComment *ownedComment)
  */
 QString QValueSpecification::name() const
 {
-    return (qmofobject_cast<const QNamedElement *>(this))->name();
+    return (qwrappedobject_cast<const QNamedElement *>(this))->name();
 }
 
 void QValueSpecification::setName(QString name)
 {
-    (qmofobject_cast<QNamedElement *>(this))->setName(name);
+    (qwrappedobject_cast<QNamedElement *>(this))->setName(name);
 }
 
 /*!
@@ -138,7 +138,7 @@ void QValueSpecification::setName(QString name)
  */
 QString QValueSpecification::qualifiedName() const
 {
-    return (qmofobject_cast<const QNamedElement *>(this))->qualifiedName();
+    return (qwrappedobject_cast<const QNamedElement *>(this))->qualifiedName();
 }
 
 // ---------------------------------------------------------------
@@ -150,7 +150,7 @@ QString QValueSpecification::qualifiedName() const
  */
 QNamespace *QValueSpecification::namespace_() const
 {
-    return (qmofobject_cast<const QNamedElement *>(this))->namespace_();
+    return (qwrappedobject_cast<const QNamedElement *>(this))->namespace_();
 }
 
 // ---------------------------------------------------------------
@@ -162,12 +162,12 @@ QNamespace *QValueSpecification::namespace_() const
  */
 QtMof::VisibilityKind QValueSpecification::visibility() const
 {
-    return (qmofobject_cast<const QPackageableElement *>(this))->visibility();
+    return (qwrappedobject_cast<const QPackageableElement *>(this))->visibility();
 }
 
 void QValueSpecification::setVisibility(QtMof::VisibilityKind visibility)
 {
-    (qmofobject_cast<QPackageableElement *>(this))->setVisibility(visibility);
+    (qwrappedobject_cast<QPackageableElement *>(this))->setVisibility(visibility);
 }
 
 // ---------------------------------------------------------------
@@ -179,12 +179,12 @@ void QValueSpecification::setVisibility(QtMof::VisibilityKind visibility)
  */
 QType *QValueSpecification::type() const
 {
-    return (qmofobject_cast<const QTypedElement *>(this))->type();
+    return (qwrappedobject_cast<const QTypedElement *>(this))->type();
 }
 
 void QValueSpecification::setType(QType *type)
 {
-    (qmofobject_cast<QTypedElement *>(this))->setType(type);
+    (qwrappedobject_cast<QTypedElement *>(this))->setType(type);
 }
 
 /*!

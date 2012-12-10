@@ -63,12 +63,12 @@ QConnectableElementTemplateParameterPrivate::~QConnectableElementTemplateParamet
     \brief A connectable element template parameter exposes a connectable element as a formal parameter for a template.
  */
 
-QConnectableElementTemplateParameter::QConnectableElementTemplateParameter(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QConnectableElementTemplateParameter::QConnectableElementTemplateParameter(QWrappedObject *parent, QWrappedObject *wrapper) :
     QTemplateParameter(*new QConnectableElementTemplateParameterPrivate, parent, wrapper)
 {
 }
 
-QConnectableElementTemplateParameter::QConnectableElementTemplateParameter(QConnectableElementTemplateParameterPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QConnectableElementTemplateParameter::QConnectableElementTemplateParameter(QConnectableElementTemplateParameterPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QTemplateParameter(dd, parent, wrapper)
 {
 }

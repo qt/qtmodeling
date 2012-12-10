@@ -65,12 +65,12 @@ QReadExtentActionPrivate::~QReadExtentActionPrivate()
     \brief A read extent action is an action that retrieves the current instances of a classifier.
  */
 
-QReadExtentAction::QReadExtentAction(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QReadExtentAction::QReadExtentAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(*new QReadExtentActionPrivate, parent, wrapper)
 {
 }
 
-QReadExtentAction::QReadExtentAction(QReadExtentActionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QReadExtentAction::QReadExtentAction(QReadExtentActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(dd, parent, wrapper)
 {
 }
@@ -122,13 +122,13 @@ void QReadExtentAction::setResult(QOutputPin *result)
     Q_D(QReadExtentAction);
     if (d->result != result) {
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QActionPrivate *>(d))->removeOutput(qmofobject_cast<QOutputPin *>(d->result));
+        (qwrappedobject_cast<QActionPrivate *>(d))->removeOutput(qwrappedobject_cast<QOutputPin *>(d->result));
 
         d->result = result;
 
         // Adjust subsetted property(ies)
         if (result) {
-            (qmofobject_cast<QActionPrivate *>(d))->addOutput(qmofobject_cast<QOutputPin *>(result));
+            (qwrappedobject_cast<QActionPrivate *>(d))->addOutput(qwrappedobject_cast<QOutputPin *>(result));
         }
     }
 }

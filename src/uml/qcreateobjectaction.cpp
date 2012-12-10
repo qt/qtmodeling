@@ -65,12 +65,12 @@ QCreateObjectActionPrivate::~QCreateObjectActionPrivate()
     \brief A create object action is an action that creates an object that conforms to a statically specified classifier and puts it on an output pin at runtime.
  */
 
-QCreateObjectAction::QCreateObjectAction(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QCreateObjectAction::QCreateObjectAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(*new QCreateObjectActionPrivate, parent, wrapper)
 {
 }
 
-QCreateObjectAction::QCreateObjectAction(QCreateObjectActionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QCreateObjectAction::QCreateObjectAction(QCreateObjectActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(dd, parent, wrapper)
 {
 }
@@ -122,13 +122,13 @@ void QCreateObjectAction::setResult(QOutputPin *result)
     Q_D(QCreateObjectAction);
     if (d->result != result) {
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QActionPrivate *>(d))->removeOutput(qmofobject_cast<QOutputPin *>(d->result));
+        (qwrappedobject_cast<QActionPrivate *>(d))->removeOutput(qwrappedobject_cast<QOutputPin *>(d->result));
 
         d->result = result;
 
         // Adjust subsetted property(ies)
         if (result) {
-            (qmofobject_cast<QActionPrivate *>(d))->addOutput(qmofobject_cast<QOutputPin *>(result));
+            (qwrappedobject_cast<QActionPrivate *>(d))->addOutput(qwrappedobject_cast<QOutputPin *>(result));
         }
     }
 }

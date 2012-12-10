@@ -60,12 +60,12 @@ QExecutionEnvironmentPrivate::~QExecutionEnvironmentPrivate()
     \brief An execution environment is a node that offers an execution environment for specific types of components that are deployed on it in the form of executable artifacts.
  */
 
-QExecutionEnvironment::QExecutionEnvironment(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QExecutionEnvironment::QExecutionEnvironment(QWrappedObject *parent, QWrappedObject *wrapper) :
     QNode(*new QExecutionEnvironmentPrivate, parent, wrapper)
 {
 }
 
-QExecutionEnvironment::QExecutionEnvironment(QExecutionEnvironmentPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QExecutionEnvironment::QExecutionEnvironment(QExecutionEnvironmentPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QNode(dd, parent, wrapper)
 {
 }

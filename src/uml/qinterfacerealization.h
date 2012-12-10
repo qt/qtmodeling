@@ -46,7 +46,8 @@
 // Base class includes
 #include <QtUml/QRealization>
 
-#include <QtMof/QMofPointer>
+#include <QtWrappedObjects/QWrappedObjectPointer>
+using QtWrappedObjects::QWrappedObjectPointer;
 
 QT_BEGIN_HEADER
 
@@ -71,7 +72,7 @@ class Q_UML_EXPORT QInterfaceRealization : public QRealization
     Q_DECLARE_PRIVATE(QInterfaceRealization)
 
 public:
-    Q_INVOKABLE explicit QInterfaceRealization(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QInterfaceRealization(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QInterfaceRealization();
 
     // Association ends from QInterfaceRealization
@@ -81,13 +82,13 @@ public:
     Q_INVOKABLE void setContract(QInterface *contract);
 
     // Overriden methods for subsetted properties
-    Q_INVOKABLE void addClient(QtMof::QMofPointer<QBehavioredClassifier> implementingClassifier);
-    Q_INVOKABLE void removeClient(QtMof::QMofPointer<QBehavioredClassifier> implementingClassifier);
-    Q_INVOKABLE void addSupplier(QtMof::QMofPointer<QInterface> contract);
-    Q_INVOKABLE void removeSupplier(QtMof::QMofPointer<QInterface> contract);
+    Q_INVOKABLE void addClient(QWrappedObjectPointer<QBehavioredClassifier> implementingClassifier);
+    Q_INVOKABLE void removeClient(QWrappedObjectPointer<QBehavioredClassifier> implementingClassifier);
+    Q_INVOKABLE void addSupplier(QWrappedObjectPointer<QInterface> contract);
+    Q_INVOKABLE void removeSupplier(QWrappedObjectPointer<QInterface> contract);
 
 protected:
-    explicit QInterfaceRealization(QInterfaceRealizationPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QInterfaceRealization(QInterfaceRealizationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

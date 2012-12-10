@@ -42,7 +42,8 @@
 #define QTUML_QINFORMATIONFLOW_P_H
 
 // Base class includes
-#include "private/qmofobject_p.h"
+#include "private/qwrappedobject_p.h"
+using QtWrappedObjects::QWrappedObjectPrivate;
 #include "private/qdirectedrelationship_p.h"
 #include "private/qpackageableelement_p.h"
 
@@ -66,7 +67,7 @@ class QClassifier;
 class QRelationship;
 class QInformationFlow;
 
-class Q_UML_EXPORT QInformationFlowPrivate : public QtMof::QMofObjectPrivate
+class Q_UML_EXPORT QInformationFlowPrivate : public QWrappedObjectPrivate
 {
     Q_DECLARE_PUBLIC(QInformationFlow)
 

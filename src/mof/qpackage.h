@@ -44,7 +44,8 @@
 #include <QtMof/QtMofGlobal>
 
 // Base class includes
-#include <QtMof/QMofObject>
+#include <QtWrappedObjects/QWrappedObject>
+using QtWrappedObjects::QWrappedObject;
 #include <QtMof/QNamespace>
 #include <QtMof/QPackageableElement>
 
@@ -52,7 +53,8 @@
 #include <QtCore/QString>
 #include <QtCore/QSet>
 
-#include <QtMof/QMofPointer>
+#include <QtWrappedObjects/QWrappedObjectPointer>
+using QtWrappedObjects::QWrappedObjectPointer;
 
 QT_BEGIN_HEADER
 
@@ -67,7 +69,7 @@ class QType;
 
 class QPackagePrivate;
 
-class Q_MOF_EXPORT QPackage : public QMofObject
+class Q_MOF_EXPORT QPackage : public QWrappedObject
 {
     Q_OBJECT
 
@@ -82,7 +84,7 @@ class Q_MOF_EXPORT QPackage : public QMofObject
     Q_DECLARE_PRIVATE(QPackage)
 
 public:
-    Q_INVOKABLE explicit QPackage(QMofObject *parent = 0, QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QPackage(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QPackage();
 
     // Association ends from aggregated QElement
@@ -144,13 +146,13 @@ public:
     Q_INVOKABLE const QSet<QPackageableElement *> *visibleMembers() const;
 
     // Overriden methods for subsetted properties
-    Q_INVOKABLE void addPackagedElement(QMofPointer<QType> ownedType);
-    Q_INVOKABLE void removePackagedElement(QMofPointer<QType> ownedType);
-    Q_INVOKABLE void addPackagedElement(QMofPointer<QPackage> nestedPackage);
-    Q_INVOKABLE void removePackagedElement(QMofPointer<QPackage> nestedPackage);
+    Q_INVOKABLE void addPackagedElement(QWrappedObjectPointer<QType> ownedType);
+    Q_INVOKABLE void removePackagedElement(QWrappedObjectPointer<QType> ownedType);
+    Q_INVOKABLE void addPackagedElement(QWrappedObjectPointer<QPackage> nestedPackage);
+    Q_INVOKABLE void removePackagedElement(QWrappedObjectPointer<QPackage> nestedPackage);
 
 protected:
-    explicit QPackage(QPackagePrivate &dd, QMofObject *parent = 0, QMofObject *wrapper = 0);
+    explicit QPackage(QPackagePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 
 private:
     QNamespace *_wrappedNamespace;

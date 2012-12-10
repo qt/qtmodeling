@@ -67,12 +67,12 @@ QReadLinkObjectEndActionPrivate::~QReadLinkObjectEndActionPrivate()
     \brief A read link object end action is an action that retrieves an end object from a link object.
  */
 
-QReadLinkObjectEndAction::QReadLinkObjectEndAction(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QReadLinkObjectEndAction::QReadLinkObjectEndAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(*new QReadLinkObjectEndActionPrivate, parent, wrapper)
 {
 }
 
-QReadLinkObjectEndAction::QReadLinkObjectEndAction(QReadLinkObjectEndActionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QReadLinkObjectEndAction::QReadLinkObjectEndAction(QReadLinkObjectEndActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(dd, parent, wrapper)
 {
 }
@@ -124,13 +124,13 @@ void QReadLinkObjectEndAction::setObject(QInputPin *object)
     Q_D(QReadLinkObjectEndAction);
     if (d->object != object) {
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QActionPrivate *>(d))->removeInput(qmofobject_cast<QInputPin *>(d->object));
+        (qwrappedobject_cast<QActionPrivate *>(d))->removeInput(qwrappedobject_cast<QInputPin *>(d->object));
 
         d->object = object;
 
         // Adjust subsetted property(ies)
         if (object) {
-            (qmofobject_cast<QActionPrivate *>(d))->addInput(qmofobject_cast<QInputPin *>(object));
+            (qwrappedobject_cast<QActionPrivate *>(d))->addInput(qwrappedobject_cast<QInputPin *>(object));
         }
     }
 }
@@ -153,13 +153,13 @@ void QReadLinkObjectEndAction::setResult(QOutputPin *result)
     Q_D(QReadLinkObjectEndAction);
     if (d->result != result) {
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QActionPrivate *>(d))->removeOutput(qmofobject_cast<QOutputPin *>(d->result));
+        (qwrappedobject_cast<QActionPrivate *>(d))->removeOutput(qwrappedobject_cast<QOutputPin *>(d->result));
 
         d->result = result;
 
         // Adjust subsetted property(ies)
         if (result) {
-            (qmofobject_cast<QActionPrivate *>(d))->addOutput(qmofobject_cast<QOutputPin *>(result));
+            (qwrappedobject_cast<QActionPrivate *>(d))->addOutput(qwrappedobject_cast<QOutputPin *>(result));
         }
     }
 }

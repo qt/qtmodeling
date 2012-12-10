@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtMof/QMofObject>
+#include <QtWrappedObjects/QWrappedObject>
+using QtWrappedObjects::QWrappedObject;
 #include <QtUml/QPackageableElement>
 #include <QtUml/QDirectedRelationship>
 
@@ -62,7 +63,7 @@ class QNamedElement;
 
 class QDependencyPrivate;
 
-class Q_UML_EXPORT QDependency : public QtMof::QMofObject
+class Q_UML_EXPORT QDependency : public QWrappedObject
 {
     Q_OBJECT
 
@@ -73,7 +74,7 @@ class Q_UML_EXPORT QDependency : public QtMof::QMofObject
     Q_DECLARE_PRIVATE(QDependency)
 
 public:
-    Q_INVOKABLE explicit QDependency(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QDependency(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QDependency();
 
     // Association ends from aggregated QElement
@@ -122,7 +123,7 @@ public:
     Q_INVOKABLE void removeSupplier(QNamedElement *supplier);
 
 protected:
-    explicit QDependency(QDependencyPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QDependency(QDependencyPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 
 private:
     QPackageableElement *_wrappedPackageableElement;

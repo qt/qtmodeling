@@ -44,7 +44,8 @@
 #include <QtMof/QtMofGlobal>
 
 // Base class includes
-#include <QtMof/QMofObject>
+#include <QtWrappedObjects/QWrappedObject>
+using QtWrappedObjects::QWrappedObject;
 
 // Qt includes
 #include <QtCore/QString>
@@ -60,7 +61,7 @@ class QElement;
 
 class QExceptionPrivate;
 
-class Q_MOF_EXPORT QException : public QMofObject
+class Q_MOF_EXPORT QException : public QWrappedObject
 {
     Q_OBJECT
 
@@ -72,7 +73,7 @@ class Q_MOF_EXPORT QException : public QMofObject
     Q_DECLARE_PRIVATE(QException)
 
 public:
-    Q_INVOKABLE explicit QException(QMofObject *parent = 0, QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QException(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QException();
 
     // Attributes from QException
@@ -84,7 +85,7 @@ public:
     Q_INVOKABLE void setObjectInError(QElement *objectInError);
 
 protected:
-    explicit QException(QExceptionPrivate &dd, QMofObject *parent = 0, QMofObject *wrapper = 0);
+    explicit QException(QExceptionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTMOF

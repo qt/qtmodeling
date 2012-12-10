@@ -173,7 +173,8 @@
 
 // Base class includes
 [%- IF !class.superclass || class.superclass.size > 1 %]
-#include <QtMof/QMofObject>
+#include <QtWrappedObjects/QWrappedObject>
+using QtWrappedObjects::QWrappedObject;
 [%- END -%]
 [%- FOREACH superClass IN class.superclass %]
 #include <${superClass.include}>
@@ -233,7 +234,8 @@
 [%- END %]
 [%- IF found == 'true' %]
 
-#include <QtMof/QMofPointer>
+#include <QtWrappedObjects/QWrappedObjectPointer>
+using QtWrappedObjects::QWrappedObjectPointer;
 [%- END %]
 
 QT_BEGIN_HEADER
@@ -276,7 +278,7 @@ class ${forwarddecl.content};
 
 class ${class.name}Private;
 
-class Q_[% namespace.split('/').0.substr(2).upper %]_EXPORT ${class.name} : [% IF class.superclass.size == 1 %]public ${class.superclass.0.name.split('/').last}[% ELSE %]public [% IF namespace != "QtMof" %]QtMof::[% END %]QMofObject[% END %]
+class Q_[% namespace.split('/').0.substr(2).upper %]_EXPORT ${class.name} : [% IF class.superclass.size == 1 %]public ${class.superclass.0.name.split('/').last}[% ELSE %]public QWrappedObject[% END %]
 {
     Q_OBJECT
     [%- GENERATEPROPERTIES(class, 'false') %]
@@ -285,7 +287,7 @@ class Q_[% namespace.split('/').0.substr(2).upper %]_EXPORT ${class.name} : [% I
     Q_DECLARE_PRIVATE(${class.name})
 
 public:
-    Q_INVOKABLE explicit ${class.name}([% IF namespace != "QtMof" %]QtMof::[% END %]QMofObject *parent = 0, [% IF namespace != "QtMof" %]QtMof::[% END %]QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit ${class.name}(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~${class.name}();
 [%- IF class.superclass and class.superclass.size > 1 -%]
     [%- GENERATEFUNCTIONS(class, 'true') -%]
@@ -316,7 +318,7 @@ public:
     [%- END -%]
     [%- FOREACH accessor IN property.accessor -%]
     [%- NEXT IF loop.first %]
-    Q_INVOKABLE ${accessor.return}${accessor.name}([%- FOREACH parameter IN attribute.accessor.1.parameter -%][% IF namespace != "QtMof" %]QtMof::[% END %]<${parameter.type.remove(' \*$')}> ${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness};
+    Q_INVOKABLE ${accessor.return}${accessor.name}([%- FOREACH parameter IN attribute.accessor.1.parameter -%]<${parameter.type.remove(' \*$')}> ${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness};
     [%- END -%]
     [%- END -%]
     [%- END -%]
@@ -340,7 +342,7 @@ public:
     [%- END -%]
     [%- FOREACH accessor IN property.accessor -%]
     [%- NEXT IF loop.first %]
-    Q_INVOKABLE ${accessor.return}${accessor.name}([%- FOREACH parameter IN associationend.accessor.1.parameter -%][% IF namespace != "QtMof" %]QtMof::[% END %]QMofPointer<${parameter.type.remove(' \*$')}> ${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness};
+    Q_INVOKABLE ${accessor.return}${accessor.name}([%- FOREACH parameter IN associationend.accessor.1.parameter -%]QWrappedObjectPointer<${parameter.type.remove(' \*$')}> ${parameter.name}[% IF !loop.last %], [% END %][%- END -%])${accessor.constness};
     [%- END -%]
     [%- END -%]
     [%- END -%]
@@ -371,7 +373,7 @@ public:
 [%- END %]
 
 protected:
-    explicit ${class.name}(${class.name}Private &dd, [% IF namespace != "QtMof" %]QtMof::[% END %]QMofObject *parent = 0, [% IF namespace != "QtMof" %]QtMof::[% END %]QMofObject *wrapper = 0);
+    explicit ${class.name}(${class.name}Private &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 [%- IF class.superclass and class.superclass.size > 1 %]
 
 private:

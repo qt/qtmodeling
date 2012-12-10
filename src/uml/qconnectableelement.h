@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtMof/QMofObject>
+#include <QtWrappedObjects/QWrappedObject>
+using QtWrappedObjects::QWrappedObject;
 #include <QtUml/QTypedElement>
 #include <QtUml/QParameterableElement>
 
@@ -63,7 +64,7 @@ class QConnectableElementTemplateParameter;
 
 class QConnectableElementPrivate;
 
-class Q_UML_EXPORT QConnectableElement : public QtMof::QMofObject
+class Q_UML_EXPORT QConnectableElement : public QWrappedObject
 {
     Q_OBJECT
 
@@ -74,7 +75,7 @@ class Q_UML_EXPORT QConnectableElement : public QtMof::QMofObject
     Q_DECLARE_PRIVATE(QConnectableElement)
 
 public:
-    Q_INVOKABLE explicit QConnectableElement(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QConnectableElement(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QConnectableElement();
 
     // Association ends from aggregated QElement
@@ -116,7 +117,7 @@ public:
     friend class QConnectorEnd;
 
 protected:
-    explicit QConnectableElement(QConnectableElementPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QConnectableElement(QConnectableElementPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 
 private:
     QTypedElement *_wrappedTypedElement;

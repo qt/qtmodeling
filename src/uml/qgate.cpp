@@ -60,12 +60,12 @@ QGatePrivate::~QGatePrivate()
     \brief A gate is a connection point for relating a message outside an interaction fragment with a message inside the interaction fragment.
  */
 
-QGate::QGate(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QGate::QGate(QWrappedObject *parent, QWrappedObject *wrapper) :
     QMessageEnd(*new QGatePrivate, parent, wrapper)
 {
 }
 
-QGate::QGate(QGatePrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QGate::QGate(QGatePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QMessageEnd(dd, parent, wrapper)
 {
 }

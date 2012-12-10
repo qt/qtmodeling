@@ -60,12 +60,12 @@ QImagePrivate::~QImagePrivate()
     \brief Physical definition of a graphical image.
  */
 
-QImage::QImage(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QImage::QImage(QWrappedObject *parent, QWrappedObject *wrapper) :
     QElement(*new QImagePrivate, parent, wrapper)
 {
 }
 
-QImage::QImage(QImagePrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QImage::QImage(QImagePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QElement(dd, parent, wrapper)
 {
 }

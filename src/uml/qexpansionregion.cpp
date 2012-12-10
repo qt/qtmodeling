@@ -67,12 +67,12 @@ QExpansionRegionPrivate::~QExpansionRegionPrivate()
     \brief An expansion region is a structured activity region that executes multiple times corresponding to elements of an input collection.
  */
 
-QExpansionRegion::QExpansionRegion(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QExpansionRegion::QExpansionRegion(QWrappedObject *parent, QWrappedObject *wrapper) :
     QStructuredActivityNode(*new QExpansionRegionPrivate, parent, wrapper)
 {
 }
 
-QExpansionRegion::QExpansionRegion(QExpansionRegionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QExpansionRegion::QExpansionRegion(QExpansionRegionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QStructuredActivityNode(dd, parent, wrapper)
 {
 }

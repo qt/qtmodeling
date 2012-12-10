@@ -63,12 +63,12 @@ QDeploymentSpecificationPrivate::~QDeploymentSpecificationPrivate()
     \brief A deployment specification specifies a set of properties that determine execution parameters of a component artifact that is deployed on a node. A deployment specification can be aimed at a specific type of container. An artifact that reifies or implements deployment specification properties is a deployment descriptor.
  */
 
-QDeploymentSpecification::QDeploymentSpecification(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QDeploymentSpecification::QDeploymentSpecification(QWrappedObject *parent, QWrappedObject *wrapper) :
     QArtifact(*new QDeploymentSpecificationPrivate, parent, wrapper)
 {
 }
 
-QDeploymentSpecification::QDeploymentSpecification(QDeploymentSpecificationPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QDeploymentSpecification::QDeploymentSpecification(QDeploymentSpecificationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QArtifact(dd, parent, wrapper)
 {
 }
@@ -151,7 +151,7 @@ void QDeploymentSpecification::setDeployment(QDeployment *deployment)
         d->deployment = deployment;
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->setOwner(qmofobject_cast<QElement *>(deployment));
+        (qwrappedobject_cast<QElementPrivate *>(d))->setOwner(qwrappedobject_cast<QElement *>(deployment));
 
         // Adjust opposite property
         if (deployment)

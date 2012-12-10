@@ -60,12 +60,12 @@ QDestructionOccurrenceSpecificationPrivate::~QDestructionOccurrenceSpecification
     \brief A destruction event models the destruction of an object.
  */
 
-QDestructionOccurrenceSpecification::QDestructionOccurrenceSpecification(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QDestructionOccurrenceSpecification::QDestructionOccurrenceSpecification(QWrappedObject *parent, QWrappedObject *wrapper) :
     QMessageOccurrenceSpecification(*new QDestructionOccurrenceSpecificationPrivate, parent, wrapper)
 {
 }
 
-QDestructionOccurrenceSpecification::QDestructionOccurrenceSpecification(QDestructionOccurrenceSpecificationPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QDestructionOccurrenceSpecification::QDestructionOccurrenceSpecification(QDestructionOccurrenceSpecificationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QMessageOccurrenceSpecification(dd, parent, wrapper)
 {
 }

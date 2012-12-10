@@ -68,12 +68,12 @@ QCombinedFragmentPrivate::~QCombinedFragmentPrivate()
     \brief A combined fragment defines an expression of interaction fragments. A combined fragment is defined by an interaction operator and corresponding interaction operands. Through the use of combined fragments the user will be able to describe a number of traces in a compact and concise manner.
  */
 
-QCombinedFragment::QCombinedFragment(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QCombinedFragment::QCombinedFragment(QWrappedObject *parent, QWrappedObject *wrapper) :
     QInteractionFragment(*new QCombinedFragmentPrivate, parent, wrapper)
 {
 }
 
-QCombinedFragment::QCombinedFragment(QCombinedFragmentPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QCombinedFragment::QCombinedFragment(QCombinedFragmentPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QInteractionFragment(dd, parent, wrapper)
 {
 }
@@ -131,7 +131,7 @@ void QCombinedFragment::addCfragmentGate(QGate *cfragmentGate)
         d->cfragmentGates->insert(cfragmentGate);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(cfragmentGate));
+        (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(cfragmentGate));
     }
 }
 
@@ -144,7 +144,7 @@ void QCombinedFragment::removeCfragmentGate(QGate *cfragmentGate)
         d->cfragmentGates->remove(cfragmentGate);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(cfragmentGate));
+        (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(cfragmentGate));
     }
 }
 
@@ -168,7 +168,7 @@ void QCombinedFragment::addOperand(QInteractionOperand *operand)
         d->operands->append(operand);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(operand));
+        (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(operand));
     }
 }
 
@@ -181,7 +181,7 @@ void QCombinedFragment::removeOperand(QInteractionOperand *operand)
         d->operands->removeAll(operand);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(operand));
+        (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(operand));
     }
 }
 

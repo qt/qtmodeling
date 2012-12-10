@@ -68,12 +68,12 @@ QReadIsClassifiedObjectActionPrivate::~QReadIsClassifiedObjectActionPrivate()
     \brief A read is classified object action is an action that determines whether a runtime object is classified by a given classifier.
  */
 
-QReadIsClassifiedObjectAction::QReadIsClassifiedObjectAction(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QReadIsClassifiedObjectAction::QReadIsClassifiedObjectAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(*new QReadIsClassifiedObjectActionPrivate, parent, wrapper)
 {
 }
 
-QReadIsClassifiedObjectAction::QReadIsClassifiedObjectAction(QReadIsClassifiedObjectActionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QReadIsClassifiedObjectAction::QReadIsClassifiedObjectAction(QReadIsClassifiedObjectActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(dd, parent, wrapper)
 {
 }
@@ -129,13 +129,13 @@ void QReadIsClassifiedObjectAction::setResult(QOutputPin *result)
     Q_D(QReadIsClassifiedObjectAction);
     if (d->result != result) {
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QActionPrivate *>(d))->removeOutput(qmofobject_cast<QOutputPin *>(d->result));
+        (qwrappedobject_cast<QActionPrivate *>(d))->removeOutput(qwrappedobject_cast<QOutputPin *>(d->result));
 
         d->result = result;
 
         // Adjust subsetted property(ies)
         if (result) {
-            (qmofobject_cast<QActionPrivate *>(d))->addOutput(qmofobject_cast<QOutputPin *>(result));
+            (qwrappedobject_cast<QActionPrivate *>(d))->addOutput(qwrappedobject_cast<QOutputPin *>(result));
         }
     }
 }
@@ -158,13 +158,13 @@ void QReadIsClassifiedObjectAction::setObject(QInputPin *object)
     Q_D(QReadIsClassifiedObjectAction);
     if (d->object != object) {
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QActionPrivate *>(d))->removeInput(qmofobject_cast<QInputPin *>(d->object));
+        (qwrappedobject_cast<QActionPrivate *>(d))->removeInput(qwrappedobject_cast<QInputPin *>(d->object));
 
         d->object = object;
 
         // Adjust subsetted property(ies)
         if (object) {
-            (qmofobject_cast<QActionPrivate *>(d))->addInput(qmofobject_cast<QInputPin *>(object));
+            (qwrappedobject_cast<QActionPrivate *>(d))->addInput(qwrappedobject_cast<QInputPin *>(object));
         }
     }
 }

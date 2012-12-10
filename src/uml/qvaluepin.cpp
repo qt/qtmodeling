@@ -63,12 +63,12 @@ QValuePinPrivate::~QValuePinPrivate()
     \brief A value pin is an input pin that provides a value by evaluating a value specification.
  */
 
-QValuePin::QValuePin(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QValuePin::QValuePin(QWrappedObject *parent, QWrappedObject *wrapper) :
     QInputPin(*new QValuePinPrivate, parent, wrapper)
 {
 }
 
-QValuePin::QValuePin(QValuePinPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QValuePin::QValuePin(QValuePinPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QInputPin(dd, parent, wrapper)
 {
 }
@@ -99,13 +99,13 @@ void QValuePin::setValue(QValueSpecification *value)
     Q_D(QValuePin);
     if (d->value != value) {
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(d->value));
+        (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(d->value));
 
         d->value = value;
 
         // Adjust subsetted property(ies)
         if (value) {
-            (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(value));
+            (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(value));
         }
     }
 }

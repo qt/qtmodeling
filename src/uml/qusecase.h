@@ -76,7 +76,7 @@ class Q_UML_EXPORT QUseCase : public QBehavioredClassifier
     Q_DECLARE_PRIVATE(QUseCase)
 
 public:
-    Q_INVOKABLE explicit QUseCase(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QUseCase(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QUseCase();
 
     // Association ends from QUseCase
@@ -97,7 +97,7 @@ public:
     Q_INVOKABLE const QSet<QUseCase *> *allIncludedUseCases() const;
 
 protected:
-    explicit QUseCase(QUseCasePrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QUseCase(QUseCasePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

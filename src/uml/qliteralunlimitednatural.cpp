@@ -61,12 +61,12 @@ QLiteralUnlimitedNaturalPrivate::~QLiteralUnlimitedNaturalPrivate()
     \brief A literal unlimited natural is a specification of an unlimited natural number.
  */
 
-QLiteralUnlimitedNatural::QLiteralUnlimitedNatural(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QLiteralUnlimitedNatural::QLiteralUnlimitedNatural(QWrappedObject *parent, QWrappedObject *wrapper) :
     QLiteralSpecification(*new QLiteralUnlimitedNaturalPrivate, parent, wrapper)
 {
 }
 
-QLiteralUnlimitedNatural::QLiteralUnlimitedNatural(QLiteralUnlimitedNaturalPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QLiteralUnlimitedNatural::QLiteralUnlimitedNatural(QLiteralUnlimitedNaturalPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QLiteralSpecification(dd, parent, wrapper)
 {
 }

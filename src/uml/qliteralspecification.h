@@ -62,11 +62,11 @@ class Q_UML_EXPORT QLiteralSpecification : public QValueSpecification
     Q_DECLARE_PRIVATE(QLiteralSpecification)
 
 public:
-    Q_INVOKABLE explicit QLiteralSpecification(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QLiteralSpecification(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QLiteralSpecification();
 
 protected:
-    explicit QLiteralSpecification(QLiteralSpecificationPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QLiteralSpecification(QLiteralSpecificationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

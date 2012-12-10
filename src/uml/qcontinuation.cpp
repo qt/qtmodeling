@@ -61,12 +61,12 @@ QContinuationPrivate::~QContinuationPrivate()
     \brief A continuation is a syntactic way to define continuations of different branches of an alternative combined fragment. Continuations is intuitively similar to labels representing intermediate points in a flow of control.
  */
 
-QContinuation::QContinuation(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QContinuation::QContinuation(QWrappedObject *parent, QWrappedObject *wrapper) :
     QInteractionFragment(*new QContinuationPrivate, parent, wrapper)
 {
 }
 
-QContinuation::QContinuation(QContinuationPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QContinuation::QContinuation(QContinuationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QInteractionFragment(dd, parent, wrapper)
 {
 }

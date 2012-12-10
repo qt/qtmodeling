@@ -63,12 +63,12 @@ QRaiseExceptionActionPrivate::~QRaiseExceptionActionPrivate()
     \brief A raise exception action is an action that causes an exception to occur. The input value becomes the exception object.
  */
 
-QRaiseExceptionAction::QRaiseExceptionAction(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QRaiseExceptionAction::QRaiseExceptionAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(*new QRaiseExceptionActionPrivate, parent, wrapper)
 {
 }
 
-QRaiseExceptionAction::QRaiseExceptionAction(QRaiseExceptionActionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QRaiseExceptionAction::QRaiseExceptionAction(QRaiseExceptionActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(dd, parent, wrapper)
 {
 }
@@ -99,13 +99,13 @@ void QRaiseExceptionAction::setException(QInputPin *exception)
     Q_D(QRaiseExceptionAction);
     if (d->exception != exception) {
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QActionPrivate *>(d))->removeInput(qmofobject_cast<QInputPin *>(d->exception));
+        (qwrappedobject_cast<QActionPrivate *>(d))->removeInput(qwrappedobject_cast<QInputPin *>(d->exception));
 
         d->exception = exception;
 
         // Adjust subsetted property(ies)
         if (exception) {
-            (qmofobject_cast<QActionPrivate *>(d))->addInput(qmofobject_cast<QInputPin *>(exception));
+            (qwrappedobject_cast<QActionPrivate *>(d))->addInput(qwrappedobject_cast<QInputPin *>(exception));
         }
     }
 }

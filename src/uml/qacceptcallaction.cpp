@@ -63,12 +63,12 @@ QAcceptCallActionPrivate::~QAcceptCallActionPrivate()
     \brief An accept call action is an accept event action representing the receipt of a synchronous call request. In addition to the normal operation parameters, the action produces an output that is needed later to supply the information to the reply action necessary to return control to the caller. This action is for synchronous calls. If it is used to handle an asynchronous call, execution of the subsequent reply action will complete immediately with no effects.
  */
 
-QAcceptCallAction::QAcceptCallAction(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QAcceptCallAction::QAcceptCallAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QAcceptEventAction(*new QAcceptCallActionPrivate, parent, wrapper)
 {
 }
 
-QAcceptCallAction::QAcceptCallAction(QAcceptCallActionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QAcceptCallAction::QAcceptCallAction(QAcceptCallActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QAcceptEventAction(dd, parent, wrapper)
 {
 }
@@ -99,13 +99,13 @@ void QAcceptCallAction::setReturnInformation(QOutputPin *returnInformation)
     Q_D(QAcceptCallAction);
     if (d->returnInformation != returnInformation) {
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QActionPrivate *>(d))->removeOutput(qmofobject_cast<QOutputPin *>(d->returnInformation));
+        (qwrappedobject_cast<QActionPrivate *>(d))->removeOutput(qwrappedobject_cast<QOutputPin *>(d->returnInformation));
 
         d->returnInformation = returnInformation;
 
         // Adjust subsetted property(ies)
         if (returnInformation) {
-            (qmofobject_cast<QActionPrivate *>(d))->addOutput(qmofobject_cast<QOutputPin *>(returnInformation));
+            (qwrappedobject_cast<QActionPrivate *>(d))->addOutput(qwrappedobject_cast<QOutputPin *>(returnInformation));
         }
     }
 }

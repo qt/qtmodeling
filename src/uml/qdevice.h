@@ -62,11 +62,11 @@ class Q_UML_EXPORT QDevice : public QNode
     Q_DECLARE_PRIVATE(QDevice)
 
 public:
-    Q_INVOKABLE explicit QDevice(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QDevice(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QDevice();
 
 protected:
-    explicit QDevice(QDevicePrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QDevice(QDevicePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

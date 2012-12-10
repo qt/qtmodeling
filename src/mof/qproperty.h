@@ -93,7 +93,7 @@ class Q_MOF_EXPORT QProperty : public QStructuralFeature
     Q_DECLARE_PRIVATE(QProperty)
 
 public:
-    Q_INVOKABLE explicit QProperty(QMofObject *parent = 0, QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QProperty(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QProperty();
 
     // Attributes from QProperty
@@ -139,7 +139,7 @@ public:
     Q_INVOKABLE const QSet<QType *> *subsettingContext() const;
 
 protected:
-    explicit QProperty(QPropertyPrivate &dd, QMofObject *parent = 0, QMofObject *wrapper = 0);
+    explicit QProperty(QPropertyPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTMOF

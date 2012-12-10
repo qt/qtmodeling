@@ -42,7 +42,8 @@
 #define QTMOF_QASSOCIATION_P_H
 
 // Base class includes
-#include "private/qmofobject_p.h"
+#include "private/qwrappedobject_p.h"
+using QtWrappedObjects::QWrappedObjectPrivate;
 #include "private/qrelationship_p.h"
 #include "private/qclassifier_p.h"
 
@@ -63,7 +64,7 @@ class QType;
 class QProperty;
 class QAssociation;
 
-class Q_MOF_EXPORT QAssociationPrivate : public QMofObjectPrivate
+class Q_MOF_EXPORT QAssociationPrivate : public QWrappedObjectPrivate
 {
     Q_DECLARE_PUBLIC(QAssociation)
 

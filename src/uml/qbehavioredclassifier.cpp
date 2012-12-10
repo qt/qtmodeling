@@ -68,12 +68,12 @@ QBehavioredClassifierPrivate::~QBehavioredClassifierPrivate()
     \brief A behaviored classifier may have an interface realization.A classifier can have behavior specifications defined in its namespace. One of these may specify the behavior of the classifier itself.
  */
 
-QBehavioredClassifier::QBehavioredClassifier(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QBehavioredClassifier::QBehavioredClassifier(QWrappedObject *parent, QWrappedObject *wrapper) :
     QClassifier(*new QBehavioredClassifierPrivate, parent, wrapper)
 {
 }
 
-QBehavioredClassifier::QBehavioredClassifier(QBehavioredClassifierPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QBehavioredClassifier::QBehavioredClassifier(QBehavioredClassifierPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QClassifier(dd, parent, wrapper)
 {
 }
@@ -106,7 +106,7 @@ void QBehavioredClassifier::addOwnedBehavior(QBehavior *ownedBehavior)
         d->ownedBehaviors->insert(ownedBehavior);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qmofobject_cast<QNamedElement *>(ownedBehavior));
+        (qwrappedobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qwrappedobject_cast<QNamedElement *>(ownedBehavior));
     }
 }
 
@@ -119,7 +119,7 @@ void QBehavioredClassifier::removeOwnedBehavior(QBehavior *ownedBehavior)
         d->ownedBehaviors->remove(ownedBehavior);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qmofobject_cast<QNamedElement *>(ownedBehavior));
+        (qwrappedobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qwrappedobject_cast<QNamedElement *>(ownedBehavior));
     }
 }
 
@@ -143,8 +143,8 @@ void QBehavioredClassifier::addInterfaceRealization(QInterfaceRealization *inter
         d->interfaceRealizations->insert(interfaceRealization);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(interfaceRealization));
-        (qmofobject_cast<QNamedElement *>(this))->addClientDependency(qmofobject_cast<QDependency *>(interfaceRealization));
+        (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(interfaceRealization));
+        (qwrappedobject_cast<QNamedElement *>(this))->addClientDependency(qwrappedobject_cast<QDependency *>(interfaceRealization));
 
         // Adjust opposite property
         interfaceRealization->setImplementingClassifier(this);
@@ -160,8 +160,8 @@ void QBehavioredClassifier::removeInterfaceRealization(QInterfaceRealization *in
         d->interfaceRealizations->remove(interfaceRealization);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(interfaceRealization));
-        (qmofobject_cast<QNamedElement *>(this))->removeClientDependency(qmofobject_cast<QDependency *>(interfaceRealization));
+        (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(interfaceRealization));
+        (qwrappedobject_cast<QNamedElement *>(this))->removeClientDependency(qwrappedobject_cast<QDependency *>(interfaceRealization));
 
         // Adjust opposite property
         interfaceRealization->setImplementingClassifier(0);
@@ -186,25 +186,25 @@ void QBehavioredClassifier::setClassifierBehavior(QBehavior *classifierBehavior)
     Q_D(QBehavioredClassifier);
     if (d->classifierBehavior != classifierBehavior) {
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QBehavioredClassifier *>(this))->removeOwnedBehavior(qmofobject_cast<QBehavior *>(d->classifierBehavior));
+        (qwrappedobject_cast<QBehavioredClassifier *>(this))->removeOwnedBehavior(qwrappedobject_cast<QBehavior *>(d->classifierBehavior));
 
         d->classifierBehavior = classifierBehavior;
 
         // Adjust subsetted property(ies)
         if (classifierBehavior) {
-            (qmofobject_cast<QBehavioredClassifier *>(this))->addOwnedBehavior(qmofobject_cast<QBehavior *>(classifierBehavior));
+            (qwrappedobject_cast<QBehavioredClassifier *>(this))->addOwnedBehavior(qwrappedobject_cast<QBehavior *>(classifierBehavior));
         }
     }
 }
 
 // Overriden methods for subsetted properties
 
-void QBehavioredClassifier::addClientDependency(QtMof::QMofPointer<QInterfaceRealization> interfaceRealization)
+void QBehavioredClassifier::addClientDependency(QWrappedObjectPointer<QInterfaceRealization> interfaceRealization)
 {
     addInterfaceRealization(interfaceRealization);
 }
 
-void QBehavioredClassifier::removeClientDependency(QtMof::QMofPointer<QInterfaceRealization> interfaceRealization)
+void QBehavioredClassifier::removeClientDependency(QWrappedObjectPointer<QInterfaceRealization> interfaceRealization)
 {
     removeInterfaceRealization(interfaceRealization);
 }

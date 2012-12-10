@@ -71,12 +71,12 @@ QInteractionFragmentPrivate::~QInteractionFragmentPrivate()
     \brief InteractionFragment is an abstract notion of the most general interaction unit. An interaction fragment is a piece of an interaction. Each interaction fragment is conceptually like an interaction by itself.
  */
 
-QInteractionFragment::QInteractionFragment(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QInteractionFragment::QInteractionFragment(QWrappedObject *parent, QWrappedObject *wrapper) :
     QNamedElement(*new QInteractionFragmentPrivate, parent, wrapper)
 {
 }
 
-QInteractionFragment::QInteractionFragment(QInteractionFragmentPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QInteractionFragment::QInteractionFragment(QInteractionFragmentPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QNamedElement(dd, parent, wrapper)
 {
 }
@@ -109,7 +109,7 @@ void QInteractionFragment::addGeneralOrdering(QGeneralOrdering *generalOrdering)
         d->generalOrderings->insert(generalOrdering);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(generalOrdering));
+        (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(generalOrdering));
     }
 }
 
@@ -122,7 +122,7 @@ void QInteractionFragment::removeGeneralOrdering(QGeneralOrdering *generalOrderi
         d->generalOrderings->remove(generalOrdering);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(generalOrdering));
+        (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(generalOrdering));
     }
 }
 
@@ -150,7 +150,7 @@ void QInteractionFragment::setEnclosingInteraction(QInteraction *enclosingIntera
         d->enclosingInteraction = enclosingInteraction;
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qmofobject_cast<QNamespace *>(enclosingInteraction));
+        (qwrappedobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qwrappedobject_cast<QNamespace *>(enclosingInteraction));
 
         // Adjust opposite property
         if (enclosingInteraction)
@@ -220,7 +220,7 @@ void QInteractionFragment::setEnclosingOperand(QInteractionOperand *enclosingOpe
         d->enclosingOperand = enclosingOperand;
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qmofobject_cast<QNamespace *>(enclosingOperand));
+        (qwrappedobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qwrappedobject_cast<QNamespace *>(enclosingOperand));
 
         // Adjust opposite property
         if (enclosingOperand)

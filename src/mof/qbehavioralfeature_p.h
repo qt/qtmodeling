@@ -42,7 +42,8 @@
 #define QTMOF_QBEHAVIORALFEATURE_P_H
 
 // Base class includes
-#include "private/qmofobject_p.h"
+#include "private/qwrappedobject_p.h"
+using QtWrappedObjects::QWrappedObjectPrivate;
 #include "private/qfeature_p.h"
 #include "private/qnamespace_p.h"
 
@@ -63,7 +64,7 @@ class QParameter;
 class QType;
 class QNamedElement;
 
-class Q_MOF_EXPORT QBehavioralFeaturePrivate : public QMofObjectPrivate
+class Q_MOF_EXPORT QBehavioralFeaturePrivate : public QWrappedObjectPrivate
 {
     Q_DECLARE_PUBLIC(QBehavioralFeature)
 

@@ -42,7 +42,8 @@
 #define QTMOF_QMOFOBJECT_P_H
 
 // Base class includes
-#include "private/qobject_p.h"
+#include "private/qwrappedobject_p.h"
+using QtWrappedObjects::QWrappedObjectPrivate;
 
 #include "QtMof/QMofObject"
 
@@ -61,39 +62,17 @@ class QOperation;
 class QMofObject;
 class QProperty;
 
-class Q_MOF_EXPORT QMofObjectPrivate : public QObjectPrivate
+class Q_MOF_EXPORT QMofObjectPrivate : public QWrappedObjectPrivate
 {
     Q_DECLARE_PUBLIC(QMofObject)
 
 public:
-    explicit QMofObjectPrivate(int version = QObjectPrivateVersion);
+    explicit QMofObjectPrivate();
     virtual ~QMofObjectPrivate();
 
-    static QMofObjectPrivate *get(QMofObject *o)
-    {
-        return dynamic_cast<QMofObjectPrivate *>(o->d_func());
-    }
-
-    QList<QMofObject *> wrappedObjects;
-    QMofObject *wrapper;
 };
 
 QT_END_NAMESPACE_QTMOF
-
-template <class T>
-inline T qmofobject_cast(QT_PREPEND_NAMESPACE_QTMOF(QMofObjectPrivate) *base, bool restoreToWrapper = true)
-{
-    while (restoreToWrapper && base->wrapper)
-        base = base->get(base->wrapper);
-    if (dynamic_cast<T>(base))
-        return dynamic_cast<T>(base);
-    foreach (QT_PREPEND_NAMESPACE_QTMOF(QMofObject) *wrappedObject, base->wrappedObjects) {
-        T returnValue = qmofobject_cast<T>(base->get(wrappedObject), false);
-        if (returnValue != T())
-            return returnValue;
-    }
-    return T(); // not found
-}
 
 QT_END_HEADER
 

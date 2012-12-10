@@ -49,7 +49,8 @@
 // Qt includes
 #include <QtCore/QSet>
 
-#include <QtMof/QMofPointer>
+#include <QtWrappedObjects/QWrappedObjectPointer>
+using QtWrappedObjects::QWrappedObjectPointer;
 
 QT_BEGIN_HEADER
 
@@ -74,7 +75,7 @@ class Q_UML_EXPORT QComponentRealization : public QRealization
     Q_DECLARE_PRIVATE(QComponentRealization)
 
 public:
-    Q_INVOKABLE explicit QComponentRealization(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QComponentRealization(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QComponentRealization();
 
     // Association ends from QComponentRealization
@@ -85,13 +86,13 @@ public:
     Q_INVOKABLE void removeRealizingClassifier(QClassifier *realizingClassifier);
 
     // Overriden methods for subsetted properties
-    Q_INVOKABLE void addSupplier(QtMof::QMofPointer<QComponent> abstraction);
-    Q_INVOKABLE void removeSupplier(QtMof::QMofPointer<QComponent> abstraction);
-    Q_INVOKABLE void addClient(QtMof::QMofPointer<QClassifier> realizingClassifier);
-    Q_INVOKABLE void removeClient(QtMof::QMofPointer<QClassifier> realizingClassifier);
+    Q_INVOKABLE void addSupplier(QWrappedObjectPointer<QComponent> abstraction);
+    Q_INVOKABLE void removeSupplier(QWrappedObjectPointer<QComponent> abstraction);
+    Q_INVOKABLE void addClient(QWrappedObjectPointer<QClassifier> realizingClassifier);
+    Q_INVOKABLE void removeClient(QWrappedObjectPointer<QClassifier> realizingClassifier);
 
 protected:
-    explicit QComponentRealization(QComponentRealizationPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QComponentRealization(QComponentRealizationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

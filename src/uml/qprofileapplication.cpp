@@ -66,12 +66,12 @@ QProfileApplicationPrivate::~QProfileApplicationPrivate()
     \brief A profile application is used to show which profiles have been applied to a package.
  */
 
-QProfileApplication::QProfileApplication(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QProfileApplication::QProfileApplication(QWrappedObject *parent, QWrappedObject *wrapper) :
     QDirectedRelationship(*new QProfileApplicationPrivate, parent, wrapper)
 {
 }
 
-QProfileApplication::QProfileApplication(QProfileApplicationPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QProfileApplication::QProfileApplication(QProfileApplicationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QDirectedRelationship(dd, parent, wrapper)
 {
 }
@@ -131,14 +131,14 @@ void QProfileApplication::setApplyingPackage(QPackage *applyingPackage)
             d->applyingPackage->removeProfileApplication(this);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QDirectedRelationshipPrivate *>(d))->removeSource(qmofobject_cast<QElement *>(d->applyingPackage));
+        (qwrappedobject_cast<QDirectedRelationshipPrivate *>(d))->removeSource(qwrappedobject_cast<QElement *>(d->applyingPackage));
 
         d->applyingPackage = applyingPackage;
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->setOwner(qmofobject_cast<QElement *>(applyingPackage));
+        (qwrappedobject_cast<QElementPrivate *>(d))->setOwner(qwrappedobject_cast<QElement *>(applyingPackage));
         if (applyingPackage) {
-            (qmofobject_cast<QDirectedRelationshipPrivate *>(d))->addSource(qmofobject_cast<QElement *>(applyingPackage));
+            (qwrappedobject_cast<QDirectedRelationshipPrivate *>(d))->addSource(qwrappedobject_cast<QElement *>(applyingPackage));
         }
 
         // Adjust opposite property
@@ -165,13 +165,13 @@ void QProfileApplication::setAppliedProfile(QProfile *appliedProfile)
     Q_D(QProfileApplication);
     if (d->appliedProfile != appliedProfile) {
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QDirectedRelationshipPrivate *>(d))->removeTarget(qmofobject_cast<QElement *>(d->appliedProfile));
+        (qwrappedobject_cast<QDirectedRelationshipPrivate *>(d))->removeTarget(qwrappedobject_cast<QElement *>(d->appliedProfile));
 
         d->appliedProfile = appliedProfile;
 
         // Adjust subsetted property(ies)
         if (appliedProfile) {
-            (qmofobject_cast<QDirectedRelationshipPrivate *>(d))->addTarget(qmofobject_cast<QElement *>(appliedProfile));
+            (qwrappedobject_cast<QDirectedRelationshipPrivate *>(d))->addTarget(qwrappedobject_cast<QElement *>(appliedProfile));
         }
     }
 }

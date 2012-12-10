@@ -63,12 +63,12 @@ QReadStructuralFeatureActionPrivate::~QReadStructuralFeatureActionPrivate()
     \brief A read structural feature action is a structural feature action that retrieves the values of a structural feature.
  */
 
-QReadStructuralFeatureAction::QReadStructuralFeatureAction(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QReadStructuralFeatureAction::QReadStructuralFeatureAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QStructuralFeatureAction(*new QReadStructuralFeatureActionPrivate, parent, wrapper)
 {
 }
 
-QReadStructuralFeatureAction::QReadStructuralFeatureAction(QReadStructuralFeatureActionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QReadStructuralFeatureAction::QReadStructuralFeatureAction(QReadStructuralFeatureActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QStructuralFeatureAction(dd, parent, wrapper)
 {
 }
@@ -99,13 +99,13 @@ void QReadStructuralFeatureAction::setResult(QOutputPin *result)
     Q_D(QReadStructuralFeatureAction);
     if (d->result != result) {
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QActionPrivate *>(d))->removeOutput(qmofobject_cast<QOutputPin *>(d->result));
+        (qwrappedobject_cast<QActionPrivate *>(d))->removeOutput(qwrappedobject_cast<QOutputPin *>(d->result));
 
         d->result = result;
 
         // Adjust subsetted property(ies)
         if (result) {
-            (qmofobject_cast<QActionPrivate *>(d))->addOutput(qmofobject_cast<QOutputPin *>(result));
+            (qwrappedobject_cast<QActionPrivate *>(d))->addOutput(qwrappedobject_cast<QOutputPin *>(result));
         }
     }
 }

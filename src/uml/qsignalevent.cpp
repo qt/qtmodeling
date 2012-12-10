@@ -63,12 +63,12 @@ QSignalEventPrivate::~QSignalEventPrivate()
     \brief A signal event represents the receipt of an asynchronous signal instance. A signal event may, for example, cause a state machine to trigger a transition.
  */
 
-QSignalEvent::QSignalEvent(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QSignalEvent::QSignalEvent(QWrappedObject *parent, QWrappedObject *wrapper) :
     QMessageEvent(*new QSignalEventPrivate, parent, wrapper)
 {
 }
 
-QSignalEvent::QSignalEvent(QSignalEventPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QSignalEvent::QSignalEvent(QSignalEventPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QMessageEvent(dd, parent, wrapper)
 {
 }

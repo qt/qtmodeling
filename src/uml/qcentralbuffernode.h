@@ -62,11 +62,11 @@ class Q_UML_EXPORT QCentralBufferNode : public QObjectNode
     Q_DECLARE_PRIVATE(QCentralBufferNode)
 
 public:
-    Q_INVOKABLE explicit QCentralBufferNode(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QCentralBufferNode(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QCentralBufferNode();
 
 protected:
-    explicit QCentralBufferNode(QCentralBufferNodePrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QCentralBufferNode(QCentralBufferNodePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

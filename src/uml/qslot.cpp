@@ -68,12 +68,12 @@ QSlotPrivate::~QSlotPrivate()
     \brief A slot specifies that an entity modeled by an instance specification has a value or values for a specific structural feature.
  */
 
-QSlot::QSlot(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QSlot::QSlot(QWrappedObject *parent, QWrappedObject *wrapper) :
     QElement(*new QSlotPrivate, parent, wrapper)
 {
 }
 
-QSlot::QSlot(QSlotPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QSlot::QSlot(QSlotPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QElement(dd, parent, wrapper)
 {
 }
@@ -106,7 +106,7 @@ void QSlot::addValue(QValueSpecification *value)
         d->values->append(value);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(value));
+        (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(value));
     }
 }
 
@@ -119,7 +119,7 @@ void QSlot::removeValue(QValueSpecification *value)
         d->values->removeAll(value);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(value));
+        (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(value));
     }
 }
 
@@ -168,7 +168,7 @@ void QSlot::setOwningInstance(QInstanceSpecification *owningInstance)
         d->owningInstance = owningInstance;
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->setOwner(qmofobject_cast<QElement *>(owningInstance));
+        (qwrappedobject_cast<QElementPrivate *>(d))->setOwner(qwrappedobject_cast<QElement *>(owningInstance));
 
         // Adjust opposite property
         if (owningInstance)

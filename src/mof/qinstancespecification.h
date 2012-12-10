@@ -74,7 +74,7 @@ class Q_MOF_EXPORT QInstanceSpecification : public QPackageableElement
     Q_DECLARE_PRIVATE(QInstanceSpecification)
 
 public:
-    Q_INVOKABLE explicit QInstanceSpecification(QMofObject *parent = 0, QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QInstanceSpecification(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QInstanceSpecification();
 
     // Association ends from QInstanceSpecification
@@ -88,7 +88,7 @@ public:
     Q_INVOKABLE void removeSlot_(QSlot *slot_);
 
 protected:
-    explicit QInstanceSpecification(QInstanceSpecificationPrivate &dd, QMofObject *parent = 0, QMofObject *wrapper = 0);
+    explicit QInstanceSpecification(QInstanceSpecificationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTMOF

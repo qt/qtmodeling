@@ -62,11 +62,11 @@ class Q_UML_EXPORT QControlFlow : public QActivityEdge
     Q_DECLARE_PRIVATE(QControlFlow)
 
 public:
-    Q_INVOKABLE explicit QControlFlow(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QControlFlow(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QControlFlow();
 
 protected:
-    explicit QControlFlow(QControlFlowPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QControlFlow(QControlFlowPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

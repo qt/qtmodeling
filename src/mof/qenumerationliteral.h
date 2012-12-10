@@ -68,7 +68,7 @@ class Q_MOF_EXPORT QEnumerationLiteral : public QInstanceSpecification
     Q_DECLARE_PRIVATE(QEnumerationLiteral)
 
 public:
-    Q_INVOKABLE explicit QEnumerationLiteral(QMofObject *parent = 0, QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QEnumerationLiteral(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QEnumerationLiteral();
 
     // Association ends from QEnumerationLiteral
@@ -77,7 +77,7 @@ public:
     Q_INVOKABLE void setEnumeration(QEnumeration *enumeration);
 
 protected:
-    explicit QEnumerationLiteral(QEnumerationLiteralPrivate &dd, QMofObject *parent = 0, QMofObject *wrapper = 0);
+    explicit QEnumerationLiteral(QEnumerationLiteralPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTMOF

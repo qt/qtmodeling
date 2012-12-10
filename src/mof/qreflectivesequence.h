@@ -65,7 +65,7 @@ class Q_MOF_EXPORT QReflectiveSequence : public QReflectiveCollection
     Q_DECLARE_PRIVATE(QReflectiveSequence)
 
 public:
-    Q_INVOKABLE explicit QReflectiveSequence(QMofObject *parent = 0, QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QReflectiveSequence(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QReflectiveSequence();
 
     // Operations
@@ -75,7 +75,7 @@ public:
     Q_INVOKABLE QMofObject *set(qint32 index, const QMofObject *object);
 
 protected:
-    explicit QReflectiveSequence(QReflectiveSequencePrivate &dd, QMofObject *parent = 0, QMofObject *wrapper = 0);
+    explicit QReflectiveSequence(QReflectiveSequencePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTMOF

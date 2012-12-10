@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtMof/QMofObject>
+#include <QtWrappedObjects/QWrappedObject>
+using QtWrappedObjects::QWrappedObject;
 #include <QtUml/QStructuralFeature>
 #include <QtUml/QConnectableElement>
 #include <QtUml/QDeploymentTarget>
@@ -75,7 +76,7 @@ class QClass;
 
 class QPropertyPrivate;
 
-class Q_UML_EXPORT QProperty : public QtMof::QMofObject
+class Q_UML_EXPORT QProperty : public QWrappedObject
 {
     Q_OBJECT
 
@@ -102,7 +103,7 @@ class Q_UML_EXPORT QProperty : public QtMof::QMofObject
     Q_DECLARE_PRIVATE(QProperty)
 
 public:
-    Q_INVOKABLE explicit QProperty(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QProperty(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QProperty();
 
     // Association ends from aggregated QElement
@@ -228,7 +229,7 @@ public:
     Q_INVOKABLE const QSet<QType *> *subsettingContext() const;
 
 protected:
-    explicit QProperty(QPropertyPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QProperty(QPropertyPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 
 private:
     QStructuralFeature *_wrappedStructuralFeature;

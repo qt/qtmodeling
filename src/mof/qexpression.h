@@ -69,7 +69,7 @@ class Q_MOF_EXPORT QExpression : public QValueSpecification
     Q_DECLARE_PRIVATE(QExpression)
 
 public:
-    Q_INVOKABLE explicit QExpression(QMofObject *parent = 0, QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QExpression(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QExpression();
 
     // Attributes from QExpression
@@ -82,7 +82,7 @@ public:
     Q_INVOKABLE void removeOperand(QValueSpecification *operand);
 
 protected:
-    explicit QExpression(QExpressionPrivate &dd, QMofObject *parent = 0, QMofObject *wrapper = 0);
+    explicit QExpression(QExpressionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTMOF

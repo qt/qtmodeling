@@ -75,7 +75,7 @@ class Q_UML_EXPORT QOpaqueExpression : public QValueSpecification
     Q_DECLARE_PRIVATE(QOpaqueExpression)
 
 public:
-    Q_INVOKABLE explicit QOpaqueExpression(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QOpaqueExpression(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QOpaqueExpression();
 
     // Attributes from QOpaqueExpression
@@ -98,7 +98,7 @@ public:
     Q_INVOKABLE qint32 value() const;
 
 protected:
-    explicit QOpaqueExpression(QOpaqueExpressionPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QOpaqueExpression(QOpaqueExpressionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

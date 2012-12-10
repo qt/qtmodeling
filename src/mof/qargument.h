@@ -44,7 +44,8 @@
 #include <QtMof/QtMofGlobal>
 
 // Base class includes
-#include <QtMof/QMofObject>
+#include <QtWrappedObjects/QWrappedObject>
+using QtWrappedObjects::QWrappedObject;
 
 // Qt includes
 #include <QtCore/QString>
@@ -60,7 +61,7 @@ class QMofObject;
 
 class QArgumentPrivate;
 
-class Q_MOF_EXPORT QArgument : public QMofObject
+class Q_MOF_EXPORT QArgument : public QWrappedObject
 {
     Q_OBJECT
 
@@ -71,7 +72,7 @@ class Q_MOF_EXPORT QArgument : public QMofObject
     Q_DECLARE_PRIVATE(QArgument)
 
 public:
-    Q_INVOKABLE explicit QArgument(QMofObject *parent = 0, QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QArgument(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QArgument();
 
     // Attributes from QArgument
@@ -81,7 +82,7 @@ public:
     Q_INVOKABLE void setValue(QMofObject *value);
 
 protected:
-    explicit QArgument(QArgumentPrivate &dd, QMofObject *parent = 0, QMofObject *wrapper = 0);
+    explicit QArgument(QArgumentPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTMOF

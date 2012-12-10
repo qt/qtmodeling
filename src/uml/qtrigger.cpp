@@ -66,12 +66,12 @@ QTriggerPrivate::~QTriggerPrivate()
     \brief A trigger specification may be qualified by the port on which the event occurred.A trigger relates an event to a behavior that may affect an instance of the classifier.
  */
 
-QTrigger::QTrigger(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QTrigger::QTrigger(QWrappedObject *parent, QWrappedObject *wrapper) :
     QNamedElement(*new QTriggerPrivate, parent, wrapper)
 {
 }
 
-QTrigger::QTrigger(QTriggerPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QTrigger::QTrigger(QTriggerPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QNamedElement(dd, parent, wrapper)
 {
 }

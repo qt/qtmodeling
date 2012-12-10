@@ -64,12 +64,12 @@ QAddStructuralFeatureValueActionPrivate::~QAddStructuralFeatureValueActionPrivat
     \brief An add structural feature value action is a write structural feature action for adding values to a structural feature.
  */
 
-QAddStructuralFeatureValueAction::QAddStructuralFeatureValueAction(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QAddStructuralFeatureValueAction::QAddStructuralFeatureValueAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QWriteStructuralFeatureAction(*new QAddStructuralFeatureValueActionPrivate, parent, wrapper)
 {
 }
 
-QAddStructuralFeatureValueAction::QAddStructuralFeatureValueAction(QAddStructuralFeatureValueActionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QAddStructuralFeatureValueAction::QAddStructuralFeatureValueAction(QAddStructuralFeatureValueActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QWriteStructuralFeatureAction(dd, parent, wrapper)
 {
 }
@@ -125,13 +125,13 @@ void QAddStructuralFeatureValueAction::setInsertAt(QInputPin *insertAt)
     Q_D(QAddStructuralFeatureValueAction);
     if (d->insertAt != insertAt) {
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QActionPrivate *>(d))->removeInput(qmofobject_cast<QInputPin *>(d->insertAt));
+        (qwrappedobject_cast<QActionPrivate *>(d))->removeInput(qwrappedobject_cast<QInputPin *>(d->insertAt));
 
         d->insertAt = insertAt;
 
         // Adjust subsetted property(ies)
         if (insertAt) {
-            (qmofobject_cast<QActionPrivate *>(d))->addInput(qmofobject_cast<QInputPin *>(insertAt));
+            (qwrappedobject_cast<QActionPrivate *>(d))->addInput(qwrappedobject_cast<QInputPin *>(insertAt));
         }
     }
 }

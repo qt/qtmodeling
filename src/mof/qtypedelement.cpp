@@ -63,12 +63,12 @@ QTypedElementPrivate::~QTypedElementPrivate()
     \brief A typed element has a type.
  */
 
-QTypedElement::QTypedElement(QMofObject *parent, QMofObject *wrapper) :
+QTypedElement::QTypedElement(QWrappedObject *parent, QWrappedObject *wrapper) :
     QNamedElement(*new QTypedElementPrivate, parent, wrapper)
 {
 }
 
-QTypedElement::QTypedElement(QTypedElementPrivate &dd, QMofObject *parent, QMofObject *wrapper) :
+QTypedElement::QTypedElement(QTypedElementPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QNamedElement(dd, parent, wrapper)
 {
 }

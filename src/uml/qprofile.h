@@ -72,7 +72,7 @@ class Q_UML_EXPORT QProfile : public QPackage
     Q_DECLARE_PRIVATE(QProfile)
 
 public:
-    Q_INVOKABLE explicit QProfile(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QProfile(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QProfile();
 
     // Association ends from QProfile
@@ -84,7 +84,7 @@ public:
     Q_INVOKABLE void removeMetaclassReference(QElementImport *metaclassReference);
 
 protected:
-    explicit QProfile(QProfilePrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QProfile(QProfilePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

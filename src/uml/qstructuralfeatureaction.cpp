@@ -65,12 +65,12 @@ QStructuralFeatureActionPrivate::~QStructuralFeatureActionPrivate()
     \brief StructuralFeatureAction is an abstract class for all structural feature actions.
  */
 
-QStructuralFeatureAction::QStructuralFeatureAction(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QStructuralFeatureAction::QStructuralFeatureAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(*new QStructuralFeatureActionPrivate, parent, wrapper)
 {
 }
 
-QStructuralFeatureAction::QStructuralFeatureAction(QStructuralFeatureActionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QStructuralFeatureAction::QStructuralFeatureAction(QStructuralFeatureActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(dd, parent, wrapper)
 {
 }
@@ -101,13 +101,13 @@ void QStructuralFeatureAction::setObject(QInputPin *object)
     Q_D(QStructuralFeatureAction);
     if (d->object != object) {
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QActionPrivate *>(d))->removeInput(qmofobject_cast<QInputPin *>(d->object));
+        (qwrappedobject_cast<QActionPrivate *>(d))->removeInput(qwrappedobject_cast<QInputPin *>(d->object));
 
         d->object = object;
 
         // Adjust subsetted property(ies)
         if (object) {
-            (qmofobject_cast<QActionPrivate *>(d))->addInput(qmofobject_cast<QInputPin *>(object));
+            (qwrappedobject_cast<QActionPrivate *>(d))->addInput(qwrappedobject_cast<QInputPin *>(object));
         }
     }
 }

@@ -66,12 +66,12 @@ QClassifierTemplateParameterPrivate::~QClassifierTemplateParameterPrivate()
     \brief A classifier template parameter exposes a classifier as a formal template parameter.
  */
 
-QClassifierTemplateParameter::QClassifierTemplateParameter(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QClassifierTemplateParameter::QClassifierTemplateParameter(QWrappedObject *parent, QWrappedObject *wrapper) :
     QTemplateParameter(*new QClassifierTemplateParameterPrivate, parent, wrapper)
 {
 }
 
-QClassifierTemplateParameter::QClassifierTemplateParameter(QClassifierTemplateParameterPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QClassifierTemplateParameter::QClassifierTemplateParameter(QClassifierTemplateParameterPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QTemplateParameter(dd, parent, wrapper)
 {
 }

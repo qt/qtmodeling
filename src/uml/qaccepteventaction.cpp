@@ -68,12 +68,12 @@ QAcceptEventActionPrivate::~QAcceptEventActionPrivate()
     \brief A accept event action is an action that waits for the occurrence of an event meeting specified conditions.
  */
 
-QAcceptEventAction::QAcceptEventAction(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QAcceptEventAction::QAcceptEventAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(*new QAcceptEventActionPrivate, parent, wrapper)
 {
 }
 
-QAcceptEventAction::QAcceptEventAction(QAcceptEventActionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QAcceptEventAction::QAcceptEventAction(QAcceptEventActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(dd, parent, wrapper)
 {
 }
@@ -131,7 +131,7 @@ void QAcceptEventAction::addTrigger(QTrigger *trigger)
         d->triggers->insert(trigger);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(trigger));
+        (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(trigger));
     }
 }
 
@@ -144,7 +144,7 @@ void QAcceptEventAction::removeTrigger(QTrigger *trigger)
         d->triggers->remove(trigger);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(trigger));
+        (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(trigger));
     }
 }
 
@@ -168,7 +168,7 @@ void QAcceptEventAction::addResult(QOutputPin *result)
         d->results->insert(result);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QActionPrivate *>(d))->addOutput(qmofobject_cast<QOutputPin *>(result));
+        (qwrappedobject_cast<QActionPrivate *>(d))->addOutput(qwrappedobject_cast<QOutputPin *>(result));
     }
 }
 
@@ -181,7 +181,7 @@ void QAcceptEventAction::removeResult(QOutputPin *result)
         d->results->remove(result);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QActionPrivate *>(d))->removeOutput(qmofobject_cast<QOutputPin *>(result));
+        (qwrappedobject_cast<QActionPrivate *>(d))->removeOutput(qwrappedobject_cast<QOutputPin *>(result));
     }
 }
 

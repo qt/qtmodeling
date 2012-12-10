@@ -42,7 +42,8 @@
 #define QTUML_QINSTANCESPECIFICATION_P_H
 
 // Base class includes
-#include "private/qmofobject_p.h"
+#include "private/qwrappedobject_p.h"
+using QtWrappedObjects::QWrappedObjectPrivate;
 #include "private/qdeployedartifact_p.h"
 #include "private/qpackageableelement_p.h"
 #include "private/qdeploymenttarget_p.h"
@@ -64,7 +65,7 @@ class QSlot;
 class QValueSpecification;
 class QInstanceSpecification;
 
-class Q_UML_EXPORT QInstanceSpecificationPrivate : public QtMof::QMofObjectPrivate
+class Q_UML_EXPORT QInstanceSpecificationPrivate : public QWrappedObjectPrivate
 {
     Q_DECLARE_PUBLIC(QInstanceSpecification)
 

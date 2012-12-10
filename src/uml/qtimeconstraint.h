@@ -68,7 +68,7 @@ class Q_UML_EXPORT QTimeConstraint : public QIntervalConstraint
     Q_DECLARE_PRIVATE(QTimeConstraint)
 
 public:
-    Q_INVOKABLE explicit QTimeConstraint(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QTimeConstraint(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QTimeConstraint();
 
     // Attributes from QTimeConstraint
@@ -80,7 +80,7 @@ public:
     Q_INVOKABLE void setSpecification(QTimeInterval *specification);
 
 protected:
-    explicit QTimeConstraint(QTimeConstraintPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QTimeConstraint(QTimeConstraintPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

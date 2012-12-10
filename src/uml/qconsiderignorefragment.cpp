@@ -64,12 +64,12 @@ QConsiderIgnoreFragmentPrivate::~QConsiderIgnoreFragmentPrivate()
     \brief A consider ignore fragment is a kind of combined fragment that is used for the consider and ignore cases, which require lists of pertinent messages to be specified.
  */
 
-QConsiderIgnoreFragment::QConsiderIgnoreFragment(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QConsiderIgnoreFragment::QConsiderIgnoreFragment(QWrappedObject *parent, QWrappedObject *wrapper) :
     QCombinedFragment(*new QConsiderIgnoreFragmentPrivate, parent, wrapper)
 {
 }
 
-QConsiderIgnoreFragment::QConsiderIgnoreFragment(QConsiderIgnoreFragmentPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QConsiderIgnoreFragment::QConsiderIgnoreFragment(QConsiderIgnoreFragmentPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QCombinedFragment(dd, parent, wrapper)
 {
 }

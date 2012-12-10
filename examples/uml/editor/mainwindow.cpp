@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-#include <QtMof/QMofPointer>
+#include <QtWrappedObjects/QWrappedObjectPointer>
 
 #include <QtUml/QModel>
 #include <QtUml/QPrimitiveType>
@@ -20,7 +20,7 @@
 #include <QContextMenuEvent>
 
 using namespace QtUml;
-using QtMof::QMofPointer;
+using QtWrappedObjects::QWrappedObjectPointer;
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -40,22 +40,22 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->propertyEditor->setSelectionMode(QAbstractItemView::SingleSelection);
     ui->propertyEditor->setSelectionBehavior(QAbstractItemView::SelectRows);
 
-    QMofPointer<QModel> model = new QModel;
+    QWrappedObjectPointer<QModel> model = new QModel;
     model->setName("MyModel");
 
-    QMofPointer<QPackage> package = new QPackage;
+    QWrappedObjectPointer<QPackage> package = new QPackage;
     package->setName("Package1");
 
-    QMofPointer<QPrimitiveType> primitiveType = new QPrimitiveType;
+    QWrappedObjectPointer<QPrimitiveType> primitiveType = new QPrimitiveType;
     primitiveType->setName("String");
 
-    QMofPointer<QEnumeration> enumeration = new QEnumeration;
+    QWrappedObjectPointer<QEnumeration> enumeration = new QEnumeration;
     enumeration->setName("DirectionKind");
-    QMofPointer<QEnumerationLiteral> directionIn = new QEnumerationLiteral;
+    QWrappedObjectPointer<QEnumerationLiteral> directionIn = new QEnumerationLiteral;
     directionIn->setName("DirectionIn");
     enumeration->addOwnedLiteral(directionIn);
 
-    QMofPointer<QClass> class_ = new QClass;
+    QWrappedObjectPointer<QClass> class_ = new QClass;
     class_->setName("Student");
     class_->setAbstract(true);
     class_->setVisibility(QtUml::QtUml::VisibilityPackage);
@@ -111,7 +111,7 @@ void MainWindow::populateContextMenu(QMenu &menu, QObject *element)
     }
 }
 
-void MainWindow::handleMetaObjectProperties(QtMof::QMofObject *element, const QMetaObject *metaObject, int level)
+void MainWindow::handleMetaObjectProperties(QtWrappedObjects::QWrappedObject *element, const QMetaObject *metaObject, int level)
 {
     if (metaObject->superClass() && !_visitedParents.contains(metaObject->superClass()->className()))
         handleMetaObjectProperties(element, metaObject->superClass(), level+1);
@@ -184,7 +184,7 @@ void MainWindow::handleMetaObjectProperties(QtMof::QMofObject *element, const QM
         if (property.type() == QVariant::String) {
             QObject *rootElement = element;
             if (QString(property.name()) == "objectName")
-                rootElement = qmofobject_cast<QObject *>(element);
+                rootElement = qwrappedobject_cast<QObject *>(element);
             item->setText(1, property.read(rootElement).toString());
         }
 
@@ -197,11 +197,11 @@ void MainWindow::handleMetaObjectProperties(QtMof::QMofObject *element, const QM
         }
 
         if (typeName.endsWith('*') && typeName.contains("QSet") && property.read(element).isValid()) {
-            if (QSet<QtMof::QMofObject *> *elements = reinterpret_cast<QSet<QtMof::QMofObject *> *>(*((QSet<QObject *> **) property.read(element).data()))) {
+            if (QSet<QtWrappedObjects::QWrappedObject *> *elements = reinterpret_cast<QSet<QtWrappedObjects::QWrappedObject *> *>(*((QSet<QObject *> **) property.read(element).data()))) {
                 if (elements->size() > 0) {
                     QString str = "[";
-                    foreach (QtMof::QMofObject *object, *elements)
-                        str.append((qmofobject_cast<QtMof::QMofObject *>(object))->objectName().append(", "));
+                    foreach (QtWrappedObjects::QWrappedObject *object, *elements)
+                        str.append((qwrappedobject_cast<QtWrappedObjects::QWrappedObject *>(object))->objectName().append(", "));
                     str.chop(2);
                     str.append("]");
                     item->setText(1, str);
@@ -212,11 +212,11 @@ void MainWindow::handleMetaObjectProperties(QtMof::QMofObject *element, const QM
         }
 
         if (typeName.endsWith('*') && typeName.contains("QList") && property.read(element).isValid()) {
-            if (QList<QtMof::QMofObject *> *elements = reinterpret_cast<QList<QtMof::QMofObject *> *>(*((QList<QObject *> **) property.read(element).data()))) {
+            if (QList<QtWrappedObjects::QWrappedObject *> *elements = reinterpret_cast<QList<QtWrappedObjects::QWrappedObject *> *>(*((QList<QObject *> **) property.read(element).data()))) {
                 if (elements->size() > 0) {
                     QString str = "[";
-                    foreach (QtMof::QMofObject *object, *elements)
-                        str.append((qmofobject_cast<QtMof::QMofObject *>(object))->objectName().append(", "));
+                    foreach (QtWrappedObjects::QWrappedObject *object, *elements)
+                        str.append((qwrappedobject_cast<QtWrappedObjects::QWrappedObject *>(object))->objectName().append(", "));
                     str.chop(2);
                     str.append("]");
                     item->setText(1, str);
@@ -231,10 +231,10 @@ void MainWindow::handleMetaObjectProperties(QtMof::QMofObject *element, const QM
     }
 }
 
-void MainWindow::handleObjectProperties(QtMof::QMofObject *element, int level)
+void MainWindow::handleObjectProperties(QtWrappedObjects::QWrappedObject *element, int level)
 {
     foreach (QObject *child, element->children())
-            handleObjectProperties(dynamic_cast<QtMof::QMofObject *>(child), level+1);
+            handleObjectProperties(dynamic_cast<QtWrappedObjects::QWrappedObject *>(child), level+1);
 
     handleMetaObjectProperties(element, element->metaObject(), level);
 }
@@ -247,7 +247,7 @@ void MainWindow::on_modelExplorer_currentItemChanged(QTreeWidgetItem *current, Q
         return;
 
     ui->propertyEditor->blockSignals(true);
-    QtMof::QMofObject *element = qmofobject_cast<QtMof::QMofObject *>(current->data(0, Qt::UserRole).value<QtMof::QMofObject *>());
+    QtWrappedObjects::QWrappedObject *element = qwrappedobject_cast<QtWrappedObjects::QWrappedObject *>(current->data(0, Qt::UserRole).value<QtWrappedObjects::QWrappedObject *>());
     ui->propertyEditor->clear();
 
     _visitedParents.clear();
@@ -284,7 +284,7 @@ void MainWindow::currentIndexChanged(int index)
     }
 }
 
-void MainWindow::populateModelExplorer(QtMof::QMofObject *element, QTreeWidgetItem *parent)
+void MainWindow::populateModelExplorer(QtWrappedObjects::QWrappedObject *element, QTreeWidgetItem *parent)
 {
     if (!element)
         return;
@@ -299,7 +299,7 @@ void MainWindow::populateModelExplorer(QtMof::QMofObject *element, QTreeWidgetIt
     if (!parent)
         ui->modelExplorer->addTopLevelItem(item);
 
-    if (QElement *umlElement = qmofobject_cast<QElement *>(element))
+    if (QElement *umlElement = qwrappedobject_cast<QElement *>(element))
         foreach (QElement *ownedElement, *umlElement->ownedElements())
             populateModelExplorer(ownedElement, item);
     ui->modelExplorer->blockSignals(false);
@@ -340,7 +340,7 @@ void MainWindow::handleAddMethod()
 
 void MainWindow::refreshModel()
 {
-    QtMof::QMofObject *rootElement = qmofobject_cast<QtMof::QMofObject *>(ui->modelExplorer->topLevelItem(0)->data(0, Qt::UserRole).value<QtMof::QMofObject *>());
+    QtWrappedObjects::QWrappedObject *rootElement = qwrappedobject_cast<QtWrappedObjects::QWrappedObject *>(ui->modelExplorer->topLevelItem(0)->data(0, Qt::UserRole).value<QtWrappedObjects::QWrappedObject *>());
     ui->modelExplorer->clear();
     populateModelExplorer(rootElement);
 }

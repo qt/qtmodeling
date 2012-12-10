@@ -42,7 +42,8 @@
 #define QTUML_QARTIFACT_P_H
 
 // Base class includes
-#include "private/qmofobject_p.h"
+#include "private/qwrappedobject_p.h"
+using QtWrappedObjects::QWrappedObjectPrivate;
 #include "private/qdeployedartifact_p.h"
 #include "private/qclassifier_p.h"
 
@@ -65,7 +66,7 @@ class QProperty;
 class QManifestation;
 class QArtifact;
 
-class Q_UML_EXPORT QArtifactPrivate : public QtMof::QMofObjectPrivate
+class Q_UML_EXPORT QArtifactPrivate : public QWrappedObjectPrivate
 {
     Q_DECLARE_PUBLIC(QArtifact)
 

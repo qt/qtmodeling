@@ -49,7 +49,8 @@
 // Qt includes
 #include <QtCore/QSet>
 
-#include <QtMof/QMofPointer>
+#include <QtWrappedObjects/QWrappedObjectPointer>
+using QtWrappedObjects::QWrappedObjectPointer;
 
 QT_BEGIN_HEADER
 
@@ -79,7 +80,7 @@ class Q_UML_EXPORT QPort : public QProperty
     Q_DECLARE_PRIVATE(QPort)
 
 public:
-    Q_INVOKABLE explicit QPort(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QPort(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QPort();
 
     // Attributes from QPort
@@ -100,11 +101,11 @@ public:
     Q_INVOKABLE void removeRedefinedPort(QPort *redefinedPort);
 
     // Overriden methods for subsetted properties
-    Q_INVOKABLE void addRedefinedProperty(QtMof::QMofPointer<QPort> redefinedPort);
-    Q_INVOKABLE void removeRedefinedProperty(QtMof::QMofPointer<QPort> redefinedPort);
+    Q_INVOKABLE void addRedefinedProperty(QWrappedObjectPointer<QPort> redefinedPort);
+    Q_INVOKABLE void removeRedefinedProperty(QWrappedObjectPointer<QPort> redefinedPort);
 
 protected:
-    explicit QPort(QPortPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QPort(QPortPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

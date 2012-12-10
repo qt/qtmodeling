@@ -42,7 +42,8 @@
 #define QTUML_QELEMENT_P_H
 
 // Base class includes
-#include "private/qmofobject_p.h"
+#include "private/qwrappedobject_p.h"
+using QtWrappedObjects::QWrappedObjectPrivate;
 
 #include "QtUml/QElement"
 
@@ -59,7 +60,7 @@ QT_MODULE(QtUml)
 class QComment;
 class QElement;
 
-class Q_UML_EXPORT QElementPrivate : public QtMof::QMofObjectPrivate
+class Q_UML_EXPORT QElementPrivate : public QWrappedObjectPrivate
 {
     Q_DECLARE_PUBLIC(QElement)
 

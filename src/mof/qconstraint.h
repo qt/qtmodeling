@@ -74,7 +74,7 @@ class Q_MOF_EXPORT QConstraint : public QPackageableElement
     Q_DECLARE_PRIVATE(QConstraint)
 
 public:
-    Q_INVOKABLE explicit QConstraint(QMofObject *parent = 0, QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QConstraint(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QConstraint();
 
     // Association ends from QConstraint
@@ -87,7 +87,7 @@ public:
     Q_INVOKABLE void removeConstrainedElement(QElement *constrainedElement);
 
 protected:
-    explicit QConstraint(QConstraintPrivate &dd, QMofObject *parent = 0, QMofObject *wrapper = 0);
+    explicit QConstraint(QConstraintPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTMOF

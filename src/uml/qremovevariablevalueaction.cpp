@@ -64,12 +64,12 @@ QRemoveVariableValueActionPrivate::~QRemoveVariableValueActionPrivate()
     \brief A remove variable value action is a write variable action that removes values from variables.
  */
 
-QRemoveVariableValueAction::QRemoveVariableValueAction(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QRemoveVariableValueAction::QRemoveVariableValueAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QWriteVariableAction(*new QRemoveVariableValueActionPrivate, parent, wrapper)
 {
 }
 
-QRemoveVariableValueAction::QRemoveVariableValueAction(QRemoveVariableValueActionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QRemoveVariableValueAction::QRemoveVariableValueAction(QRemoveVariableValueActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QWriteVariableAction(dd, parent, wrapper)
 {
 }
@@ -125,13 +125,13 @@ void QRemoveVariableValueAction::setRemoveAt(QInputPin *removeAt)
     Q_D(QRemoveVariableValueAction);
     if (d->removeAt != removeAt) {
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QActionPrivate *>(d))->removeInput(qmofobject_cast<QInputPin *>(d->removeAt));
+        (qwrappedobject_cast<QActionPrivate *>(d))->removeInput(qwrappedobject_cast<QInputPin *>(d->removeAt));
 
         d->removeAt = removeAt;
 
         // Adjust subsetted property(ies)
         if (removeAt) {
-            (qmofobject_cast<QActionPrivate *>(d))->addInput(qmofobject_cast<QInputPin *>(removeAt));
+            (qwrappedobject_cast<QActionPrivate *>(d))->addInput(qwrappedobject_cast<QInputPin *>(removeAt));
         }
     }
 }

@@ -1,4 +1,4 @@
-#include <QtMof/QMofPointer>
+#include <QtWrappedObjects/QWrappedObjectPointer>
 
 #include <QtUml/QPrimitiveType>
 #include <QtUml/QProfile>
@@ -13,7 +13,7 @@
 #include <QtCore/QDebug>
 
 using namespace QtUml;
-using QtMof::QMofPointer;
+using QtWrappedObjects::QWrappedObjectPointer;
 
 typedef const QSet<QStereotype *> QStereotypeList;
 typedef const QSet<QPackageableElement *> QPackageableElementList;
@@ -21,18 +21,18 @@ typedef const QSet<QPackageableElement *> QPackageableElementList;
 int main ()
 {
     // Create a "dymmy" UML meta-model
-    QMofPointer<QModel> umlModel = new QModel;
+    QWrappedObjectPointer<QModel> umlModel = new QModel;
     umlModel->setName("UML Meta-Model");
-    QMofPointer<QClass> class_ = new QClass;
+    QWrappedObjectPointer<QClass> class_ = new QClass;
     class_->setName("Class");
     umlModel->addOwnedType(class_);
 
     // Create a profile
-    QMofPointer<QProfile> profile = new QProfile;
+    QWrappedObjectPointer<QProfile> profile = new QProfile;
     profile->setName("MyProfile");
 
     // Add a stereotype to profile
-    QMofPointer<QStereotype> stereotype = new QStereotype;
+    QWrappedObjectPointer<QStereotype> stereotype = new QStereotype;
     stereotype->setName("MyStereotype");
     profile->addPackagedElement(stereotype);
 
@@ -43,15 +43,15 @@ int main ()
         qDebug() << "    " << ownedStereotype->name();
 
     // Adding attribute to stereotype
-    QMofPointer<QPrimitiveType> booleanPrimitiveType = new QPrimitiveType;
+    QWrappedObjectPointer<QPrimitiveType> booleanPrimitiveType = new QPrimitiveType;
     booleanPrimitiveType->setName("boolean");
-    QMofPointer<QProperty> property = new QProperty;
+    QWrappedObjectPointer<QProperty> property = new QProperty;
     property->setName("isTransient");
     property->setType(booleanPrimitiveType);
     stereotype->addOwnedAttribute(property);
 
     // Create UML meta-model element import
-    QMofPointer<QElementImport> elementImport = new QElementImport;
+    QWrappedObjectPointer<QElementImport> elementImport = new QElementImport;
     elementImport->setImportedElement(umlModel->packagedElements()->toList().first());
 
     // Add meta-class reference to profile
@@ -71,14 +71,14 @@ int main ()
         qDebug() << "    " << importedMember->name();
 
     // Create extension
-    QMofPointer<QExtension> extension = new QExtension;
+    QWrappedObjectPointer<QExtension> extension = new QExtension;
     extension->setName("class_stereotype");
 
-    QMofPointer<QProperty> stereotypeProperty = new QProperty;
+    QWrappedObjectPointer<QProperty> stereotypeProperty = new QProperty;
     stereotypeProperty->setName("base_class");
     stereotypeProperty->setType(class_);
 
-    QMofPointer<QExtensionEnd> extensionEnd = new QExtensionEnd;
+    QWrappedObjectPointer<QExtensionEnd> extensionEnd = new QExtensionEnd;
     extensionEnd->setName("extension_stereotype");
     extensionEnd->setType(stereotype);
 

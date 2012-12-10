@@ -70,7 +70,7 @@ class Q_UML_EXPORT QProfileApplication : public QDirectedRelationship
     Q_DECLARE_PRIVATE(QProfileApplication)
 
 public:
-    Q_INVOKABLE explicit QProfileApplication(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QProfileApplication(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QProfileApplication();
 
     // Attributes from QProfileApplication
@@ -84,7 +84,7 @@ public:
     Q_INVOKABLE void setAppliedProfile(QProfile *appliedProfile);
 
 protected:
-    explicit QProfileApplication(QProfileApplicationPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QProfileApplication(QProfileApplicationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

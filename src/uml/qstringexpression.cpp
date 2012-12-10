@@ -63,15 +63,15 @@ QStringExpressionPrivate::~QStringExpressionPrivate()
     \brief An expression that specifies a string value that is derived by concatenating a set of sub string expressions, some of which might be template parameters.
  */
 
-QStringExpression::QStringExpression(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
-    QtMof::QMofObject(*new QStringExpressionPrivate, parent, wrapper),
+QStringExpression::QStringExpression(QWrappedObject *parent, QWrappedObject *wrapper) :
+    QWrappedObject(*new QStringExpressionPrivate, parent, wrapper),
     _wrappedExpression(new QExpression(this, this)),
     _wrappedTemplateableElement(new QTemplateableElement(this, this))
 {
 }
 
-QStringExpression::QStringExpression(QStringExpressionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
-    QtMof::QMofObject(dd, parent, wrapper),
+QStringExpression::QStringExpression(QStringExpressionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
+    QWrappedObject(dd, parent, wrapper),
     _wrappedExpression(new QExpression(this, this)),
     _wrappedTemplateableElement(new QTemplateableElement(this, this))
 {
@@ -90,7 +90,7 @@ QStringExpression::~QStringExpression()
  */
 const QSet<QElement *> *QStringExpression::ownedElements() const
 {
-    return (qmofobject_cast<const QElement *>(this))->ownedElements();
+    return (qwrappedobject_cast<const QElement *>(this))->ownedElements();
 }
 
 /*!
@@ -98,7 +98,7 @@ const QSet<QElement *> *QStringExpression::ownedElements() const
  */
 QElement *QStringExpression::owner() const
 {
-    return (qmofobject_cast<const QElement *>(this))->owner();
+    return (qwrappedobject_cast<const QElement *>(this))->owner();
 }
 
 /*!
@@ -106,17 +106,17 @@ QElement *QStringExpression::owner() const
  */
 const QSet<QComment *> *QStringExpression::ownedComments() const
 {
-    return (qmofobject_cast<const QElement *>(this))->ownedComments();
+    return (qwrappedobject_cast<const QElement *>(this))->ownedComments();
 }
 
 void QStringExpression::addOwnedComment(QComment *ownedComment)
 {
-    (qmofobject_cast<QElement *>(this))->addOwnedComment(ownedComment);
+    (qwrappedobject_cast<QElement *>(this))->addOwnedComment(ownedComment);
 }
 
 void QStringExpression::removeOwnedComment(QComment *ownedComment)
 {
-    (qmofobject_cast<QElement *>(this))->removeOwnedComment(ownedComment);
+    (qwrappedobject_cast<QElement *>(this))->removeOwnedComment(ownedComment);
 }
 
 // ---------------------------------------------------------------
@@ -128,12 +128,12 @@ void QStringExpression::removeOwnedComment(QComment *ownedComment)
  */
 QTemplateSignature *QStringExpression::ownedTemplateSignature() const
 {
-    return (qmofobject_cast<const QTemplateableElement *>(this))->ownedTemplateSignature();
+    return (qwrappedobject_cast<const QTemplateableElement *>(this))->ownedTemplateSignature();
 }
 
 void QStringExpression::setOwnedTemplateSignature(QTemplateSignature *ownedTemplateSignature)
 {
-    (qmofobject_cast<QTemplateableElement *>(this))->setOwnedTemplateSignature(ownedTemplateSignature);
+    (qwrappedobject_cast<QTemplateableElement *>(this))->setOwnedTemplateSignature(ownedTemplateSignature);
 }
 
 /*!
@@ -141,17 +141,17 @@ void QStringExpression::setOwnedTemplateSignature(QTemplateSignature *ownedTempl
  */
 const QSet<QTemplateBinding *> *QStringExpression::templateBindings() const
 {
-    return (qmofobject_cast<const QTemplateableElement *>(this))->templateBindings();
+    return (qwrappedobject_cast<const QTemplateableElement *>(this))->templateBindings();
 }
 
 void QStringExpression::addTemplateBinding(QTemplateBinding *templateBinding)
 {
-    (qmofobject_cast<QTemplateableElement *>(this))->addTemplateBinding(templateBinding);
+    (qwrappedobject_cast<QTemplateableElement *>(this))->addTemplateBinding(templateBinding);
 }
 
 void QStringExpression::removeTemplateBinding(QTemplateBinding *templateBinding)
 {
-    (qmofobject_cast<QTemplateableElement *>(this))->removeTemplateBinding(templateBinding);
+    (qwrappedobject_cast<QTemplateableElement *>(this))->removeTemplateBinding(templateBinding);
 }
 
 // ---------------------------------------------------------------
@@ -182,7 +182,7 @@ void QStringExpression::setOwningExpression(QStringExpression *owningExpression)
         d->owningExpression = owningExpression;
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->setOwner(qmofobject_cast<QElement *>(owningExpression));
+        (qwrappedobject_cast<QElementPrivate *>(d))->setOwner(qwrappedobject_cast<QElement *>(owningExpression));
 
         // Adjust opposite property
         if (owningExpression)
@@ -210,7 +210,7 @@ void QStringExpression::addSubExpression(QStringExpression *subExpression)
         d->subExpressions->insert(subExpression);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(subExpression));
+        (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(subExpression));
 
         // Adjust opposite property
         subExpression->setOwningExpression(this);
@@ -226,7 +226,7 @@ void QStringExpression::removeSubExpression(QStringExpression *subExpression)
         d->subExpressions->remove(subExpression);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(subExpression));
+        (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(subExpression));
 
         // Adjust opposite property
         subExpression->setOwningExpression(0);

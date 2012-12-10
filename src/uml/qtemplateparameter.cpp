@@ -68,12 +68,12 @@ QTemplateParameterPrivate::~QTemplateParameterPrivate()
     \brief A template parameter exposes a parameterable element as a formal template parameter of a template.
  */
 
-QTemplateParameter::QTemplateParameter(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QTemplateParameter::QTemplateParameter(QWrappedObject *parent, QWrappedObject *wrapper) :
     QElement(*new QTemplateParameterPrivate, parent, wrapper)
 {
 }
 
-QTemplateParameter::QTemplateParameter(QTemplateParameterPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QTemplateParameter::QTemplateParameter(QTemplateParameterPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QElement(dd, parent, wrapper)
 {
 }
@@ -153,14 +153,14 @@ void QTemplateParameter::setOwnedParameteredElement(QParameterableElement *owned
         // Adjust opposite property
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(d->ownedParameteredElement));
+        (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(d->ownedParameteredElement));
 
         d->ownedParameteredElement = ownedParameteredElement;
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QTemplateParameter *>(this))->setParameteredElement(qmofobject_cast<QParameterableElement *>(ownedParameteredElement));
+        (qwrappedobject_cast<QTemplateParameter *>(this))->setParameteredElement(qwrappedobject_cast<QParameterableElement *>(ownedParameteredElement));
         if (ownedParameteredElement) {
-            (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(ownedParameteredElement));
+            (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(ownedParameteredElement));
         }
 
         // Adjust opposite property
@@ -186,15 +186,15 @@ void QTemplateParameter::setOwnedDefault(QParameterableElement *ownedDefault)
     Q_D(QTemplateParameter);
     if (d->ownedDefault != ownedDefault) {
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(d->ownedDefault));
+        (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(d->ownedDefault));
 
         d->ownedDefault = ownedDefault;
 
         // Adjust subsetted property(ies)
         if (ownedDefault) {
-            (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(ownedDefault));
+            (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(ownedDefault));
         }
-        (qmofobject_cast<QTemplateParameter *>(this))->setDefault_(qmofobject_cast<QParameterableElement *>(ownedDefault));
+        (qwrappedobject_cast<QTemplateParameter *>(this))->setDefault_(qwrappedobject_cast<QParameterableElement *>(ownedDefault));
     }
 }
 
@@ -222,7 +222,7 @@ void QTemplateParameter::setSignature(QTemplateSignature *signature)
         d->signature = signature;
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->setOwner(qmofobject_cast<QElement *>(signature));
+        (qwrappedobject_cast<QElementPrivate *>(d))->setOwner(qwrappedobject_cast<QElement *>(signature));
 
         // Adjust opposite property
         if (signature)

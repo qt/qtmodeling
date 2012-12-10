@@ -62,11 +62,11 @@ class Q_UML_EXPORT QFlowFinalNode : public QFinalNode
     Q_DECLARE_PRIVATE(QFlowFinalNode)
 
 public:
-    Q_INVOKABLE explicit QFlowFinalNode(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QFlowFinalNode(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QFlowFinalNode();
 
 protected:
-    explicit QFlowFinalNode(QFlowFinalNodePrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QFlowFinalNode(QFlowFinalNodePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

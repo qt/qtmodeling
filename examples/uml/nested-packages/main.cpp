@@ -1,4 +1,4 @@
-#include <QtMof/QMofPointer>
+#include <QtWrappedObjects/QWrappedObjectPointer>
 
 #include <QtUml/QModel>
 #include <QtUml/QPackage>
@@ -14,7 +14,7 @@
 #include <QtCore/QMetaProperty>
 
 using namespace QtUml;
-using QtMof::QMofPointer;
+using QtWrappedObjects::QWrappedObjectPointer;
 
 typedef const QSet<QPackage *> QPackageList;
 typedef const QSet<QStereotype *> QStereotypeList;
@@ -31,22 +31,22 @@ void checkProperties(QObject *object)
 
 int main ()
 {
-    QMofPointer<QModel> model = new QModel;
+    QWrappedObjectPointer<QModel> model = new QModel;
     model->setName("MyModel");
 
-    QMofPointer<QPackage> package = new QPackage;
+    QWrappedObjectPointer<QPackage> package = new QPackage;
     package->setName("Package1");
 
-    QMofPointer<QPrimitiveType> primitiveType = new QPrimitiveType;
+    QWrappedObjectPointer<QPrimitiveType> primitiveType = new QPrimitiveType;
     primitiveType->setName("String");
 
-    QMofPointer<QEnumeration> enumeration = new QEnumeration;
+    QWrappedObjectPointer<QEnumeration> enumeration = new QEnumeration;
     enumeration->setName("DirectionKind");
-    QMofPointer<QEnumerationLiteral> directionIn = new QEnumerationLiteral;
+    QWrappedObjectPointer<QEnumerationLiteral> directionIn = new QEnumerationLiteral;
     directionIn->setName("DirectionIn");
     enumeration->addOwnedLiteral(directionIn);
 
-    QMofPointer<QClass> class_ = new QClass;
+    QWrappedObjectPointer<QClass> class_ = new QClass;
     class_->setName("Student");
     class_->setAbstract(false);
 
@@ -100,9 +100,9 @@ int main ()
 
     checkProperties(model);
 
-    QMofPointer<QComponent> c1 = new QComponent;
-    QMofPointer<QComponent> c2 = new QComponent;
-    QMofPointer<QComponentRealization> cr = new QComponentRealization;
+    QWrappedObjectPointer<QComponent> c1 = new QComponent;
+    QWrappedObjectPointer<QComponent> c2 = new QComponent;
+    QWrappedObjectPointer<QComponentRealization> cr = new QComponentRealization;
     cr->setAbstraction(c1);
     qDebug();
     qDebug() << "cr->suppliers()->size():" << cr->suppliers()->size();

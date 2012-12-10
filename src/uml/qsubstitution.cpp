@@ -64,12 +64,12 @@ QSubstitutionPrivate::~QSubstitutionPrivate()
     \brief A substitution is a relationship between two classifiers signifies that the substituting classifier complies with the contract specified by the contract classifier. This implies that instances of the substituting classifier are runtime substitutable where instances of the contract classifier are expected.
  */
 
-QSubstitution::QSubstitution(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QSubstitution::QSubstitution(QWrappedObject *parent, QWrappedObject *wrapper) :
     QRealization(*new QSubstitutionPrivate, parent, wrapper)
 {
 }
 
-QSubstitution::QSubstitution(QSubstitutionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QSubstitution::QSubstitution(QSubstitutionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QRealization(dd, parent, wrapper)
 {
 }
@@ -100,13 +100,13 @@ void QSubstitution::setContract(QClassifier *contract)
     Q_D(QSubstitution);
     if (d->contract != contract) {
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QDependency *>(this))->removeSupplier(qmofobject_cast<QNamedElement *>(d->contract));
+        (qwrappedobject_cast<QDependency *>(this))->removeSupplier(qwrappedobject_cast<QNamedElement *>(d->contract));
 
         d->contract = contract;
 
         // Adjust subsetted property(ies)
         if (contract) {
-            (qmofobject_cast<QDependency *>(this))->addSupplier(qmofobject_cast<QNamedElement *>(contract));
+            (qwrappedobject_cast<QDependency *>(this))->addSupplier(qwrappedobject_cast<QNamedElement *>(contract));
         }
     }
 }
@@ -133,14 +133,14 @@ void QSubstitution::setSubstitutingClassifier(QClassifier *substitutingClassifie
             d->substitutingClassifier->removeSubstitution(this);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QDependency *>(this))->removeClient(qmofobject_cast<QNamedElement *>(d->substitutingClassifier));
+        (qwrappedobject_cast<QDependency *>(this))->removeClient(qwrappedobject_cast<QNamedElement *>(d->substitutingClassifier));
 
         d->substitutingClassifier = substitutingClassifier;
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->setOwner(qmofobject_cast<QElement *>(substitutingClassifier));
+        (qwrappedobject_cast<QElementPrivate *>(d))->setOwner(qwrappedobject_cast<QElement *>(substitutingClassifier));
         if (substitutingClassifier) {
-            (qmofobject_cast<QDependency *>(this))->addClient(qmofobject_cast<QNamedElement *>(substitutingClassifier));
+            (qwrappedobject_cast<QDependency *>(this))->addClient(qwrappedobject_cast<QNamedElement *>(substitutingClassifier));
         }
 
         // Adjust opposite property
@@ -151,23 +151,23 @@ void QSubstitution::setSubstitutingClassifier(QClassifier *substitutingClassifie
 
 // Overriden methods for subsetted properties
 
-void QSubstitution::addSupplier(QtMof::QMofPointer<QClassifier> contract)
+void QSubstitution::addSupplier(QWrappedObjectPointer<QClassifier> contract)
 {
     setContract(contract);
 }
 
-void QSubstitution::removeSupplier(QtMof::QMofPointer<QClassifier> contract)
+void QSubstitution::removeSupplier(QWrappedObjectPointer<QClassifier> contract)
 {
     Q_UNUSED(contract);
     setContract(0);
 }
 
-void QSubstitution::addClient(QtMof::QMofPointer<QClassifier> substitutingClassifier)
+void QSubstitution::addClient(QWrappedObjectPointer<QClassifier> substitutingClassifier)
 {
     setSubstitutingClassifier(substitutingClassifier);
 }
 
-void QSubstitution::removeClient(QtMof::QMofPointer<QClassifier> substitutingClassifier)
+void QSubstitution::removeClient(QWrappedObjectPointer<QClassifier> substitutingClassifier)
 {
     Q_UNUSED(substitutingClassifier);
     setSubstitutingClassifier(0);

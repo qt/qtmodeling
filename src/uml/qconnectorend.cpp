@@ -67,12 +67,12 @@ QConnectorEndPrivate::~QConnectorEndPrivate()
     \brief A connector end is an endpoint of a connector, which attaches the connector to a connectable element. Each connector end is part of one connector.
  */
 
-QConnectorEnd::QConnectorEnd(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QConnectorEnd::QConnectorEnd(QWrappedObject *parent, QWrappedObject *wrapper) :
     QMultiplicityElement(*new QConnectorEndPrivate, parent, wrapper)
 {
 }
 
-QConnectorEnd::QConnectorEnd(QConnectorEndPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QConnectorEnd::QConnectorEnd(QConnectorEndPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QMultiplicityElement(dd, parent, wrapper)
 {
 }
@@ -104,13 +104,13 @@ void QConnectorEnd::setRole(QConnectableElement *role)
     if (d->role != role) {
         // Adjust opposite property
         if (d->role)
-            (qmofobject_cast<QConnectableElementPrivate *>(d->role->d_func()))->removeEnd(this);
+            (qwrappedobject_cast<QConnectableElementPrivate *>(d->role->d_func()))->removeEnd(this);
 
         d->role = role;
 
         // Adjust opposite property
         if (role)
-            (qmofobject_cast<QConnectableElementPrivate *>(role->d_func()))->addEnd(this);
+            (qwrappedobject_cast<QConnectableElementPrivate *>(role->d_func()))->addEnd(this);
     }
 }
 

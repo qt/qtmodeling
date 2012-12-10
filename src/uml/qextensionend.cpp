@@ -63,12 +63,12 @@ QExtensionEndPrivate::~QExtensionEndPrivate()
     \brief An extension end is used to tie an extension to a stereotype when extending a metaclass.The default multiplicity of an extension end is 0..1.
  */
 
-QExtensionEnd::QExtensionEnd(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QExtensionEnd::QExtensionEnd(QWrappedObject *parent, QWrappedObject *wrapper) :
     QProperty(*new QExtensionEndPrivate, parent, wrapper)
 {
 }
 
-QExtensionEnd::QExtensionEnd(QExtensionEndPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QExtensionEnd::QExtensionEnd(QExtensionEndPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QProperty(dd, parent, wrapper)
 {
 }

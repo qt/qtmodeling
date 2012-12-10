@@ -65,12 +65,12 @@ QTimeExpressionPrivate::~QTimeExpressionPrivate()
     \brief A time expression defines a value specification that represents a time value.
  */
 
-QTimeExpression::QTimeExpression(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QTimeExpression::QTimeExpression(QWrappedObject *parent, QWrappedObject *wrapper) :
     QValueSpecification(*new QTimeExpressionPrivate, parent, wrapper)
 {
 }
 
-QTimeExpression::QTimeExpression(QTimeExpressionPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QTimeExpression::QTimeExpression(QTimeExpressionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QValueSpecification(dd, parent, wrapper)
 {
 }
@@ -132,13 +132,13 @@ void QTimeExpression::setExpr(QValueSpecification *expr)
     Q_D(QTimeExpression);
     if (d->expr != expr) {
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(d->expr));
+        (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(d->expr));
 
         d->expr = expr;
 
         // Adjust subsetted property(ies)
         if (expr) {
-            (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(expr));
+            (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(expr));
         }
     }
 }

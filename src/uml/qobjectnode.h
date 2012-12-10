@@ -44,7 +44,8 @@
 #include <QtUml/QtUmlGlobal>
 
 // Base class includes
-#include <QtMof/QMofObject>
+#include <QtWrappedObjects/QWrappedObject>
+using QtWrappedObjects::QWrappedObject;
 #include <QtUml/QActivityNode>
 #include <QtUml/QTypedElement>
 
@@ -67,7 +68,7 @@ class QValueSpecification;
 
 class QObjectNodePrivate;
 
-class Q_UML_EXPORT QObjectNode : public QtMof::QMofObject
+class Q_UML_EXPORT QObjectNode : public QWrappedObject
 {
     Q_OBJECT
 
@@ -81,7 +82,7 @@ class Q_UML_EXPORT QObjectNode : public QtMof::QMofObject
     Q_DECLARE_PRIVATE(QObjectNode)
 
 public:
-    Q_INVOKABLE explicit QObjectNode(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QObjectNode(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QObjectNode();
 
     // Association ends from aggregated QElement
@@ -156,7 +157,7 @@ public:
     Q_INVOKABLE void removeInState(QState *inState);
 
 protected:
-    explicit QObjectNode(QObjectNodePrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QObjectNode(QObjectNodePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 
 private:
     QActivityNode *_wrappedActivityNode;

@@ -62,12 +62,12 @@ QInformationItemPrivate::~QInformationItemPrivate()
     \brief An information item is an abstraction of all kinds of information that can be exchanged between objects. It is a kind of classifier intended for representing information in a very abstract way, one which cannot be instantiated.
  */
 
-QInformationItem::QInformationItem(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QInformationItem::QInformationItem(QWrappedObject *parent, QWrappedObject *wrapper) :
     QClassifier(*new QInformationItemPrivate, parent, wrapper)
 {
 }
 
-QInformationItem::QInformationItem(QInformationItemPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QInformationItem::QInformationItem(QInformationItemPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QClassifier(dd, parent, wrapper)
 {
 }

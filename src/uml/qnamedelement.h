@@ -83,7 +83,7 @@ class Q_UML_EXPORT QNamedElement : public QElement
     Q_DECLARE_PRIVATE(QNamedElement)
 
 public:
-    Q_INVOKABLE explicit QNamedElement(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QNamedElement(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QNamedElement();
 
     // Attributes from QNamedElement
@@ -111,7 +111,7 @@ public:
     friend class QNamespacePrivate;
 
 protected:
-    explicit QNamedElement(QNamedElementPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QNamedElement(QNamedElementPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

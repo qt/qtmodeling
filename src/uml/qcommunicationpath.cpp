@@ -60,12 +60,12 @@ QCommunicationPathPrivate::~QCommunicationPathPrivate()
     \brief A communication path is an association between two deployment targets, through which they are able to exchange signals and messages.
  */
 
-QCommunicationPath::QCommunicationPath(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QCommunicationPath::QCommunicationPath(QWrappedObject *parent, QWrappedObject *wrapper) :
     QAssociation(*new QCommunicationPathPrivate, parent, wrapper)
 {
 }
 
-QCommunicationPath::QCommunicationPath(QCommunicationPathPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QCommunicationPath::QCommunicationPath(QCommunicationPathPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QAssociation(dd, parent, wrapper)
 {
 }

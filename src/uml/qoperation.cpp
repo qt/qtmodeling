@@ -85,16 +85,16 @@ QOperationPrivate::~QOperationPrivate()
     \brief An operation is a behavioral feature of a classifier that specifies the name, type, parameters, and constraints for invoking an associated behavior.An operation may invoke both the execution of method behaviors as well as other behavioral responses.Operation specializes TemplateableElement in order to support specification of template operations and bound operations. Operation specializes ParameterableElement to specify that an operation can be exposed as a formal template parameter, and provided as an actual parameter in a binding of a template.
  */
 
-QOperation::QOperation(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
-    QtMof::QMofObject(*new QOperationPrivate, parent, wrapper),
+QOperation::QOperation(QWrappedObject *parent, QWrappedObject *wrapper) :
+    QWrappedObject(*new QOperationPrivate, parent, wrapper),
     _wrappedTemplateableElement(new QTemplateableElement(this, this)),
     _wrappedBehavioralFeature(new QBehavioralFeature(this, this)),
     _wrappedParameterableElement(new QParameterableElement(this, this))
 {
 }
 
-QOperation::QOperation(QOperationPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
-    QtMof::QMofObject(dd, parent, wrapper),
+QOperation::QOperation(QOperationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
+    QWrappedObject(dd, parent, wrapper),
     _wrappedTemplateableElement(new QTemplateableElement(this, this)),
     _wrappedBehavioralFeature(new QBehavioralFeature(this, this)),
     _wrappedParameterableElement(new QParameterableElement(this, this))
@@ -114,7 +114,7 @@ QOperation::~QOperation()
  */
 const QSet<QElement *> *QOperation::ownedElements() const
 {
-    return (qmofobject_cast<const QElement *>(this))->ownedElements();
+    return (qwrappedobject_cast<const QElement *>(this))->ownedElements();
 }
 
 /*!
@@ -122,7 +122,7 @@ const QSet<QElement *> *QOperation::ownedElements() const
  */
 QElement *QOperation::owner() const
 {
-    return (qmofobject_cast<const QElement *>(this))->owner();
+    return (qwrappedobject_cast<const QElement *>(this))->owner();
 }
 
 /*!
@@ -130,17 +130,17 @@ QElement *QOperation::owner() const
  */
 const QSet<QComment *> *QOperation::ownedComments() const
 {
-    return (qmofobject_cast<const QElement *>(this))->ownedComments();
+    return (qwrappedobject_cast<const QElement *>(this))->ownedComments();
 }
 
 void QOperation::addOwnedComment(QComment *ownedComment)
 {
-    (qmofobject_cast<QElement *>(this))->addOwnedComment(ownedComment);
+    (qwrappedobject_cast<QElement *>(this))->addOwnedComment(ownedComment);
 }
 
 void QOperation::removeOwnedComment(QComment *ownedComment)
 {
-    (qmofobject_cast<QElement *>(this))->removeOwnedComment(ownedComment);
+    (qwrappedobject_cast<QElement *>(this))->removeOwnedComment(ownedComment);
 }
 
 // ---------------------------------------------------------------
@@ -152,12 +152,12 @@ void QOperation::removeOwnedComment(QComment *ownedComment)
  */
 QTemplateSignature *QOperation::ownedTemplateSignature() const
 {
-    return (qmofobject_cast<const QTemplateableElement *>(this))->ownedTemplateSignature();
+    return (qwrappedobject_cast<const QTemplateableElement *>(this))->ownedTemplateSignature();
 }
 
 void QOperation::setOwnedTemplateSignature(QTemplateSignature *ownedTemplateSignature)
 {
-    (qmofobject_cast<QTemplateableElement *>(this))->setOwnedTemplateSignature(ownedTemplateSignature);
+    (qwrappedobject_cast<QTemplateableElement *>(this))->setOwnedTemplateSignature(ownedTemplateSignature);
 }
 
 /*!
@@ -165,17 +165,17 @@ void QOperation::setOwnedTemplateSignature(QTemplateSignature *ownedTemplateSign
  */
 const QSet<QTemplateBinding *> *QOperation::templateBindings() const
 {
-    return (qmofobject_cast<const QTemplateableElement *>(this))->templateBindings();
+    return (qwrappedobject_cast<const QTemplateableElement *>(this))->templateBindings();
 }
 
 void QOperation::addTemplateBinding(QTemplateBinding *templateBinding)
 {
-    (qmofobject_cast<QTemplateableElement *>(this))->addTemplateBinding(templateBinding);
+    (qwrappedobject_cast<QTemplateableElement *>(this))->addTemplateBinding(templateBinding);
 }
 
 void QOperation::removeTemplateBinding(QTemplateBinding *templateBinding)
 {
-    (qmofobject_cast<QTemplateableElement *>(this))->removeTemplateBinding(templateBinding);
+    (qwrappedobject_cast<QTemplateableElement *>(this))->removeTemplateBinding(templateBinding);
 }
 
 // ---------------------------------------------------------------
@@ -187,12 +187,12 @@ void QOperation::removeTemplateBinding(QTemplateBinding *templateBinding)
  */
 QString QOperation::name() const
 {
-    return (qmofobject_cast<const QNamedElement *>(this))->name();
+    return (qwrappedobject_cast<const QNamedElement *>(this))->name();
 }
 
 void QOperation::setName(QString name)
 {
-    (qmofobject_cast<QNamedElement *>(this))->setName(name);
+    (qwrappedobject_cast<QNamedElement *>(this))->setName(name);
 }
 
 /*!
@@ -200,12 +200,12 @@ void QOperation::setName(QString name)
  */
 QtUml::VisibilityKind QOperation::visibility() const
 {
-    return (qmofobject_cast<const QNamedElement *>(this))->visibility();
+    return (qwrappedobject_cast<const QNamedElement *>(this))->visibility();
 }
 
 void QOperation::setVisibility(QtUml::VisibilityKind visibility)
 {
-    (qmofobject_cast<QNamedElement *>(this))->setVisibility(visibility);
+    (qwrappedobject_cast<QNamedElement *>(this))->setVisibility(visibility);
 }
 
 /*!
@@ -213,7 +213,7 @@ void QOperation::setVisibility(QtUml::VisibilityKind visibility)
  */
 QString QOperation::qualifiedName() const
 {
-    return (qmofobject_cast<const QNamedElement *>(this))->qualifiedName();
+    return (qwrappedobject_cast<const QNamedElement *>(this))->qualifiedName();
 }
 
 // ---------------------------------------------------------------
@@ -225,12 +225,12 @@ QString QOperation::qualifiedName() const
  */
 QStringExpression *QOperation::nameExpression() const
 {
-    return (qmofobject_cast<const QNamedElement *>(this))->nameExpression();
+    return (qwrappedobject_cast<const QNamedElement *>(this))->nameExpression();
 }
 
 void QOperation::setNameExpression(QStringExpression *nameExpression)
 {
-    (qmofobject_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
+    (qwrappedobject_cast<QNamedElement *>(this))->setNameExpression(nameExpression);
 }
 
 /*!
@@ -238,7 +238,7 @@ void QOperation::setNameExpression(QStringExpression *nameExpression)
  */
 QNamespace *QOperation::namespace_() const
 {
-    return (qmofobject_cast<const QNamedElement *>(this))->namespace_();
+    return (qwrappedobject_cast<const QNamedElement *>(this))->namespace_();
 }
 
 /*!
@@ -246,17 +246,17 @@ QNamespace *QOperation::namespace_() const
  */
 const QSet<QDependency *> *QOperation::clientDependencies() const
 {
-    return (qmofobject_cast<const QNamedElement *>(this))->clientDependencies();
+    return (qwrappedobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
 
 void QOperation::addClientDependency(QDependency *clientDependency)
 {
-    (qmofobject_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
+    (qwrappedobject_cast<QNamedElement *>(this))->addClientDependency(clientDependency);
 }
 
 void QOperation::removeClientDependency(QDependency *clientDependency)
 {
-    (qmofobject_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
+    (qwrappedobject_cast<QNamedElement *>(this))->removeClientDependency(clientDependency);
 }
 
 // ---------------------------------------------------------------
@@ -268,17 +268,17 @@ void QOperation::removeClientDependency(QDependency *clientDependency)
  */
 const QSet<QPackageImport *> *QOperation::packageImports() const
 {
-    return (qmofobject_cast<const QNamespace *>(this))->packageImports();
+    return (qwrappedobject_cast<const QNamespace *>(this))->packageImports();
 }
 
 void QOperation::addPackageImport(QPackageImport *packageImport)
 {
-    (qmofobject_cast<QNamespace *>(this))->addPackageImport(packageImport);
+    (qwrappedobject_cast<QNamespace *>(this))->addPackageImport(packageImport);
 }
 
 void QOperation::removePackageImport(QPackageImport *packageImport)
 {
-    (qmofobject_cast<QNamespace *>(this))->removePackageImport(packageImport);
+    (qwrappedobject_cast<QNamespace *>(this))->removePackageImport(packageImport);
 }
 
 /*!
@@ -286,7 +286,7 @@ void QOperation::removePackageImport(QPackageImport *packageImport)
  */
 const QSet<QNamedElement *> *QOperation::members() const
 {
-    return (qmofobject_cast<const QNamespace *>(this))->members();
+    return (qwrappedobject_cast<const QNamespace *>(this))->members();
 }
 
 /*!
@@ -294,7 +294,7 @@ const QSet<QNamedElement *> *QOperation::members() const
  */
 const QSet<QPackageableElement *> *QOperation::importedMembers() const
 {
-    return (qmofobject_cast<const QNamespace *>(this))->importedMembers();
+    return (qwrappedobject_cast<const QNamespace *>(this))->importedMembers();
 }
 
 /*!
@@ -302,17 +302,17 @@ const QSet<QPackageableElement *> *QOperation::importedMembers() const
  */
 const QSet<QElementImport *> *QOperation::elementImports() const
 {
-    return (qmofobject_cast<const QNamespace *>(this))->elementImports();
+    return (qwrappedobject_cast<const QNamespace *>(this))->elementImports();
 }
 
 void QOperation::addElementImport(QElementImport *elementImport)
 {
-    (qmofobject_cast<QNamespace *>(this))->addElementImport(elementImport);
+    (qwrappedobject_cast<QNamespace *>(this))->addElementImport(elementImport);
 }
 
 void QOperation::removeElementImport(QElementImport *elementImport)
 {
-    (qmofobject_cast<QNamespace *>(this))->removeElementImport(elementImport);
+    (qwrappedobject_cast<QNamespace *>(this))->removeElementImport(elementImport);
 }
 
 /*!
@@ -320,17 +320,17 @@ void QOperation::removeElementImport(QElementImport *elementImport)
  */
 const QSet<QConstraint *> *QOperation::ownedRules() const
 {
-    return (qmofobject_cast<const QNamespace *>(this))->ownedRules();
+    return (qwrappedobject_cast<const QNamespace *>(this))->ownedRules();
 }
 
 void QOperation::addOwnedRule(QConstraint *ownedRule)
 {
-    (qmofobject_cast<QNamespace *>(this))->addOwnedRule(ownedRule);
+    (qwrappedobject_cast<QNamespace *>(this))->addOwnedRule(ownedRule);
 }
 
 void QOperation::removeOwnedRule(QConstraint *ownedRule)
 {
-    (qmofobject_cast<QNamespace *>(this))->removeOwnedRule(ownedRule);
+    (qwrappedobject_cast<QNamespace *>(this))->removeOwnedRule(ownedRule);
 }
 
 /*!
@@ -338,7 +338,7 @@ void QOperation::removeOwnedRule(QConstraint *ownedRule)
  */
 const QSet<QNamedElement *> *QOperation::ownedMembers() const
 {
-    return (qmofobject_cast<const QNamespace *>(this))->ownedMembers();
+    return (qwrappedobject_cast<const QNamespace *>(this))->ownedMembers();
 }
 
 // ---------------------------------------------------------------
@@ -350,12 +350,12 @@ const QSet<QNamedElement *> *QOperation::ownedMembers() const
  */
 bool QOperation::isLeaf() const
 {
-    return (qmofobject_cast<const QRedefinableElement *>(this))->isLeaf();
+    return (qwrappedobject_cast<const QRedefinableElement *>(this))->isLeaf();
 }
 
 void QOperation::setLeaf(bool isLeaf)
 {
-    (qmofobject_cast<QRedefinableElement *>(this))->setLeaf(isLeaf);
+    (qwrappedobject_cast<QRedefinableElement *>(this))->setLeaf(isLeaf);
 }
 
 // ---------------------------------------------------------------
@@ -367,7 +367,7 @@ void QOperation::setLeaf(bool isLeaf)
  */
 const QSet<QRedefinableElement *> *QOperation::redefinedElements() const
 {
-    return (qmofobject_cast<const QRedefinableElement *>(this))->redefinedElements();
+    return (qwrappedobject_cast<const QRedefinableElement *>(this))->redefinedElements();
 }
 
 /*!
@@ -375,7 +375,7 @@ const QSet<QRedefinableElement *> *QOperation::redefinedElements() const
  */
 const QSet<QClassifier *> *QOperation::redefinitionContexts() const
 {
-    return (qmofobject_cast<const QRedefinableElement *>(this))->redefinitionContexts();
+    return (qwrappedobject_cast<const QRedefinableElement *>(this))->redefinitionContexts();
 }
 
 // ---------------------------------------------------------------
@@ -387,12 +387,12 @@ const QSet<QClassifier *> *QOperation::redefinitionContexts() const
  */
 bool QOperation::isStatic() const
 {
-    return (qmofobject_cast<const QFeature *>(this))->isStatic();
+    return (qwrappedobject_cast<const QFeature *>(this))->isStatic();
 }
 
 void QOperation::setStatic(bool isStatic)
 {
-    (qmofobject_cast<QFeature *>(this))->setStatic(isStatic);
+    (qwrappedobject_cast<QFeature *>(this))->setStatic(isStatic);
 }
 
 // ---------------------------------------------------------------
@@ -404,7 +404,7 @@ void QOperation::setStatic(bool isStatic)
  */
 const QSet<QClassifier *> *QOperation::featuringClassifiers() const
 {
-    return (qmofobject_cast<const QFeature *>(this))->featuringClassifiers();
+    return (qwrappedobject_cast<const QFeature *>(this))->featuringClassifiers();
 }
 
 // ---------------------------------------------------------------
@@ -416,12 +416,12 @@ const QSet<QClassifier *> *QOperation::featuringClassifiers() const
  */
 QtUml::CallConcurrencyKind QOperation::concurrency() const
 {
-    return (qmofobject_cast<const QBehavioralFeature *>(this))->concurrency();
+    return (qwrappedobject_cast<const QBehavioralFeature *>(this))->concurrency();
 }
 
 void QOperation::setConcurrency(QtUml::CallConcurrencyKind concurrency)
 {
-    (qmofobject_cast<QBehavioralFeature *>(this))->setConcurrency(concurrency);
+    (qwrappedobject_cast<QBehavioralFeature *>(this))->setConcurrency(concurrency);
 }
 
 /*!
@@ -429,12 +429,12 @@ void QOperation::setConcurrency(QtUml::CallConcurrencyKind concurrency)
  */
 bool QOperation::isAbstract() const
 {
-    return (qmofobject_cast<const QBehavioralFeature *>(this))->isAbstract();
+    return (qwrappedobject_cast<const QBehavioralFeature *>(this))->isAbstract();
 }
 
 void QOperation::setAbstract(bool isAbstract)
 {
-    (qmofobject_cast<QBehavioralFeature *>(this))->setAbstract(isAbstract);
+    (qwrappedobject_cast<QBehavioralFeature *>(this))->setAbstract(isAbstract);
 }
 
 // ---------------------------------------------------------------
@@ -446,17 +446,17 @@ void QOperation::setAbstract(bool isAbstract)
  */
 const QSet<QParameterSet *> *QOperation::ownedParameterSets() const
 {
-    return (qmofobject_cast<const QBehavioralFeature *>(this))->ownedParameterSets();
+    return (qwrappedobject_cast<const QBehavioralFeature *>(this))->ownedParameterSets();
 }
 
 void QOperation::addOwnedParameterSet(QParameterSet *ownedParameterSet)
 {
-    (qmofobject_cast<QBehavioralFeature *>(this))->addOwnedParameterSet(ownedParameterSet);
+    (qwrappedobject_cast<QBehavioralFeature *>(this))->addOwnedParameterSet(ownedParameterSet);
 }
 
 void QOperation::removeOwnedParameterSet(QParameterSet *ownedParameterSet)
 {
-    (qmofobject_cast<QBehavioralFeature *>(this))->removeOwnedParameterSet(ownedParameterSet);
+    (qwrappedobject_cast<QBehavioralFeature *>(this))->removeOwnedParameterSet(ownedParameterSet);
 }
 
 /*!
@@ -464,17 +464,17 @@ void QOperation::removeOwnedParameterSet(QParameterSet *ownedParameterSet)
  */
 const QSet<QBehavior *> *QOperation::methods() const
 {
-    return (qmofobject_cast<const QBehavioralFeature *>(this))->methods();
+    return (qwrappedobject_cast<const QBehavioralFeature *>(this))->methods();
 }
 
 void QOperation::addMethod(QBehavior *method)
 {
-    (qmofobject_cast<QBehavioralFeature *>(this))->addMethod(method);
+    (qwrappedobject_cast<QBehavioralFeature *>(this))->addMethod(method);
 }
 
 void QOperation::removeMethod(QBehavior *method)
 {
-    (qmofobject_cast<QBehavioralFeature *>(this))->removeMethod(method);
+    (qwrappedobject_cast<QBehavioralFeature *>(this))->removeMethod(method);
 }
 
 // ---------------------------------------------------------------
@@ -486,12 +486,12 @@ void QOperation::removeMethod(QBehavior *method)
  */
 QTemplateParameter *QOperation::owningTemplateParameter() const
 {
-    return (qmofobject_cast<const QParameterableElement *>(this))->owningTemplateParameter();
+    return (qwrappedobject_cast<const QParameterableElement *>(this))->owningTemplateParameter();
 }
 
 void QOperation::setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter)
 {
-    (qmofobject_cast<QParameterableElement *>(this))->setOwningTemplateParameter(owningTemplateParameter);
+    (qwrappedobject_cast<QParameterableElement *>(this))->setOwningTemplateParameter(owningTemplateParameter);
 }
 
 // ---------------------------------------------------------------
@@ -589,7 +589,7 @@ void QOperation::addOwnedParameter(QParameter *ownedParameter)
     Q_D(QOperation);
     if (!d->ownedParameters->contains(ownedParameter)) {
         d->ownedParameters->append(ownedParameter);
-        qmof_topLevelWrapper(ownedParameter)->setParent(qmof_topLevelWrapper(this));
+        qTopLevelWrapper(ownedParameter)->setParent(qTopLevelWrapper(this));
 
         // Adjust opposite property
         ownedParameter->setOperation(this);
@@ -603,7 +603,7 @@ void QOperation::removeOwnedParameter(QParameter *ownedParameter)
     Q_D(QOperation);
     if (d->ownedParameters->contains(ownedParameter)) {
         d->ownedParameters->removeAll(ownedParameter);
-        qmof_topLevelWrapper(ownedParameter)->setParent(0);
+        qTopLevelWrapper(ownedParameter)->setParent(0);
 
         // Adjust opposite property
         ownedParameter->setOperation(0);
@@ -628,13 +628,13 @@ void QOperation::setBodyCondition(QConstraint *bodyCondition)
     Q_D(QOperation);
     if (d->bodyCondition != bodyCondition) {
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QNamespace *>(this))->removeOwnedRule(qmofobject_cast<QConstraint *>(d->bodyCondition));
+        (qwrappedobject_cast<QNamespace *>(this))->removeOwnedRule(qwrappedobject_cast<QConstraint *>(d->bodyCondition));
 
         d->bodyCondition = bodyCondition;
 
         // Adjust subsetted property(ies)
         if (bodyCondition) {
-            (qmofobject_cast<QNamespace *>(this))->addOwnedRule(qmofobject_cast<QConstraint *>(bodyCondition));
+            (qwrappedobject_cast<QNamespace *>(this))->addOwnedRule(qwrappedobject_cast<QConstraint *>(bodyCondition));
         }
     }
 }
@@ -659,7 +659,7 @@ void QOperation::addRedefinedOperation(QOperation *redefinedOperation)
         d->redefinedOperations->insert(redefinedOperation);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QRedefinableElementPrivate *>(d))->addRedefinedElement(qmofobject_cast<QRedefinableElement *>(redefinedOperation));
+        (qwrappedobject_cast<QRedefinableElementPrivate *>(d))->addRedefinedElement(qwrappedobject_cast<QRedefinableElement *>(redefinedOperation));
     }
 }
 
@@ -672,7 +672,7 @@ void QOperation::removeRedefinedOperation(QOperation *redefinedOperation)
         d->redefinedOperations->remove(redefinedOperation);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QRedefinableElementPrivate *>(d))->removeRedefinedElement(qmofobject_cast<QRedefinableElement *>(redefinedOperation));
+        (qwrappedobject_cast<QRedefinableElementPrivate *>(d))->removeRedefinedElement(qwrappedobject_cast<QRedefinableElement *>(redefinedOperation));
     }
 }
 
@@ -696,7 +696,7 @@ void QOperation::addPostcondition(QConstraint *postcondition)
         d->postconditions->insert(postcondition);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QNamespace *>(this))->addOwnedRule(qmofobject_cast<QConstraint *>(postcondition));
+        (qwrappedobject_cast<QNamespace *>(this))->addOwnedRule(qwrappedobject_cast<QConstraint *>(postcondition));
     }
 }
 
@@ -709,7 +709,7 @@ void QOperation::removePostcondition(QConstraint *postcondition)
         d->postconditions->remove(postcondition);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QNamespace *>(this))->removeOwnedRule(qmofobject_cast<QConstraint *>(postcondition));
+        (qwrappedobject_cast<QNamespace *>(this))->removeOwnedRule(qwrappedobject_cast<QConstraint *>(postcondition));
     }
 }
 
@@ -735,19 +735,19 @@ void QOperation::setDatatype(QDataType *datatype)
             d->datatype->removeOwnedOperation(this);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QFeaturePrivate *>(d))->removeFeaturingClassifier(qmofobject_cast<QClassifier *>(d->datatype));
-        (qmofobject_cast<QRedefinableElementPrivate *>(d))->removeRedefinitionContext(qmofobject_cast<QClassifier *>(d->datatype));
+        (qwrappedobject_cast<QFeaturePrivate *>(d))->removeFeaturingClassifier(qwrappedobject_cast<QClassifier *>(d->datatype));
+        (qwrappedobject_cast<QRedefinableElementPrivate *>(d))->removeRedefinitionContext(qwrappedobject_cast<QClassifier *>(d->datatype));
 
         d->datatype = datatype;
 
         // Adjust subsetted property(ies)
         if (datatype) {
-            (qmofobject_cast<QFeaturePrivate *>(d))->addFeaturingClassifier(qmofobject_cast<QClassifier *>(datatype));
+            (qwrappedobject_cast<QFeaturePrivate *>(d))->addFeaturingClassifier(qwrappedobject_cast<QClassifier *>(datatype));
         }
         if (datatype) {
-            (qmofobject_cast<QRedefinableElementPrivate *>(d))->addRedefinitionContext(qmofobject_cast<QClassifier *>(datatype));
+            (qwrappedobject_cast<QRedefinableElementPrivate *>(d))->addRedefinitionContext(qwrappedobject_cast<QClassifier *>(datatype));
         }
-        (qmofobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qmofobject_cast<QNamespace *>(datatype));
+        (qwrappedobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qwrappedobject_cast<QNamespace *>(datatype));
 
         // Adjust opposite property
         if (datatype)
@@ -803,19 +803,19 @@ void QOperation::setInterface(QInterface *interface)
             d->interface->removeOwnedOperation(this);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QFeaturePrivate *>(d))->removeFeaturingClassifier(qmofobject_cast<QClassifier *>(d->interface));
-        (qmofobject_cast<QRedefinableElementPrivate *>(d))->removeRedefinitionContext(qmofobject_cast<QClassifier *>(d->interface));
+        (qwrappedobject_cast<QFeaturePrivate *>(d))->removeFeaturingClassifier(qwrappedobject_cast<QClassifier *>(d->interface));
+        (qwrappedobject_cast<QRedefinableElementPrivate *>(d))->removeRedefinitionContext(qwrappedobject_cast<QClassifier *>(d->interface));
 
         d->interface = interface;
 
         // Adjust subsetted property(ies)
         if (interface) {
-            (qmofobject_cast<QFeaturePrivate *>(d))->addFeaturingClassifier(qmofobject_cast<QClassifier *>(interface));
+            (qwrappedobject_cast<QFeaturePrivate *>(d))->addFeaturingClassifier(qwrappedobject_cast<QClassifier *>(interface));
         }
         if (interface) {
-            (qmofobject_cast<QRedefinableElementPrivate *>(d))->addRedefinitionContext(qmofobject_cast<QClassifier *>(interface));
+            (qwrappedobject_cast<QRedefinableElementPrivate *>(d))->addRedefinitionContext(qwrappedobject_cast<QClassifier *>(interface));
         }
-        (qmofobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qmofobject_cast<QNamespace *>(interface));
+        (qwrappedobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qwrappedobject_cast<QNamespace *>(interface));
 
         // Adjust opposite property
         if (interface)
@@ -855,7 +855,7 @@ void QOperation::addPrecondition(QConstraint *precondition)
         d->preconditions->insert(precondition);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QNamespace *>(this))->addOwnedRule(qmofobject_cast<QConstraint *>(precondition));
+        (qwrappedobject_cast<QNamespace *>(this))->addOwnedRule(qwrappedobject_cast<QConstraint *>(precondition));
     }
 }
 
@@ -868,7 +868,7 @@ void QOperation::removePrecondition(QConstraint *precondition)
         d->preconditions->remove(precondition);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QNamespace *>(this))->removeOwnedRule(qmofobject_cast<QConstraint *>(precondition));
+        (qwrappedobject_cast<QNamespace *>(this))->removeOwnedRule(qwrappedobject_cast<QConstraint *>(precondition));
     }
 }
 
@@ -894,19 +894,19 @@ void QOperation::setClass_(QClass *class_)
             d->class_->removeOwnedOperation(this);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QFeaturePrivate *>(d))->removeFeaturingClassifier(qmofobject_cast<QClassifier *>(d->class_));
-        (qmofobject_cast<QRedefinableElementPrivate *>(d))->removeRedefinitionContext(qmofobject_cast<QClassifier *>(d->class_));
+        (qwrappedobject_cast<QFeaturePrivate *>(d))->removeFeaturingClassifier(qwrappedobject_cast<QClassifier *>(d->class_));
+        (qwrappedobject_cast<QRedefinableElementPrivate *>(d))->removeRedefinitionContext(qwrappedobject_cast<QClassifier *>(d->class_));
 
         d->class_ = class_;
 
         // Adjust subsetted property(ies)
         if (class_) {
-            (qmofobject_cast<QFeaturePrivate *>(d))->addFeaturingClassifier(qmofobject_cast<QClassifier *>(class_));
+            (qwrappedobject_cast<QFeaturePrivate *>(d))->addFeaturingClassifier(qwrappedobject_cast<QClassifier *>(class_));
         }
         if (class_) {
-            (qmofobject_cast<QRedefinableElementPrivate *>(d))->addRedefinitionContext(qmofobject_cast<QClassifier *>(class_));
+            (qwrappedobject_cast<QRedefinableElementPrivate *>(d))->addRedefinitionContext(qwrappedobject_cast<QClassifier *>(class_));
         }
-        (qmofobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qmofobject_cast<QNamespace *>(class_));
+        (qwrappedobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qwrappedobject_cast<QNamespace *>(class_));
 
         // Adjust opposite property
         if (class_)

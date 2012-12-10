@@ -60,12 +60,12 @@ QModelPrivate::~QModelPrivate()
     \brief A model captures a view of a physical system. It is an abstraction of the physical system, with a certain purpose. This purpose determines what is to be included in the model and what is irrelevant. Thus the model completely describes those aspects of the physical system that are relevant to the purpose of the model, at the appropriate level of detail.
  */
 
-QModel::QModel(QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QModel::QModel(QWrappedObject *parent, QWrappedObject *wrapper) :
     QPackage(*new QModelPrivate, parent, wrapper)
 {
 }
 
-QModel::QModel(QModelPrivate &dd, QtMof::QMofObject *parent, QtMof::QMofObject *wrapper) :
+QModel::QModel(QModelPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QPackage(dd, parent, wrapper)
 {
 }

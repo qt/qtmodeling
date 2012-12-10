@@ -65,16 +65,16 @@ void QNamedElementPrivate::setNamespace_(QNamespace *namespace_)
         Q_Q(QNamedElement);
         // Adjust opposite property
         if (this->namespace_)
-            (qmofobject_cast<QNamespacePrivate *>(this->namespace_->d_func()))->removeOwnedMember(q);
+            (qwrappedobject_cast<QNamespacePrivate *>(this->namespace_->d_func()))->removeOwnedMember(q);
 
         this->namespace_ = namespace_;
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(this))->setOwner(qmofobject_cast<QElement *>(namespace_));
+        (qwrappedobject_cast<QElementPrivate *>(this))->setOwner(qwrappedobject_cast<QElement *>(namespace_));
 
         // Adjust opposite property
         if (namespace_)
-            (qmofobject_cast<QNamespacePrivate *>(namespace_->d_func()))->addOwnedMember(q);
+            (qwrappedobject_cast<QNamespacePrivate *>(namespace_->d_func()))->addOwnedMember(q);
     }
 }
 
@@ -86,12 +86,12 @@ void QNamedElementPrivate::setNamespace_(QNamespace *namespace_)
     \brief A named element is an element in a model that may have a name.
  */
 
-QNamedElement::QNamedElement(QMofObject *parent, QMofObject *wrapper) :
+QNamedElement::QNamedElement(QWrappedObject *parent, QWrappedObject *wrapper) :
     QElement(*new QNamedElementPrivate, parent, wrapper)
 {
 }
 
-QNamedElement::QNamedElement(QNamedElementPrivate &dd, QMofObject *parent, QMofObject *wrapper) :
+QNamedElement::QNamedElement(QNamedElementPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QElement(dd, parent, wrapper)
 {
 }

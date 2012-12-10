@@ -72,7 +72,7 @@ class Q_UML_EXPORT QInterruptibleActivityRegion : public QActivityGroup
     Q_DECLARE_PRIVATE(QInterruptibleActivityRegion)
 
 public:
-    Q_INVOKABLE explicit QInterruptibleActivityRegion(QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    Q_INVOKABLE explicit QInterruptibleActivityRegion(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QInterruptibleActivityRegion();
 
     // Association ends from QInterruptibleActivityRegion
@@ -84,7 +84,7 @@ public:
     Q_INVOKABLE void removeNode(QActivityNode *node);
 
 protected:
-    explicit QInterruptibleActivityRegion(QInterruptibleActivityRegionPrivate &dd, QtMof::QMofObject *parent = 0, QtMof::QMofObject *wrapper = 0);
+    explicit QInterruptibleActivityRegion(QInterruptibleActivityRegionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML

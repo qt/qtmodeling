@@ -69,15 +69,15 @@ QPackagePrivate::~QPackagePrivate()
     \brief A package is used to group elements, and provides a namespace for the grouped elements.
  */
 
-QPackage::QPackage(QMofObject *parent, QMofObject *wrapper) :
-    QMofObject(*new QPackagePrivate, parent, wrapper),
+QPackage::QPackage(QWrappedObject *parent, QWrappedObject *wrapper) :
+    QWrappedObject(*new QPackagePrivate, parent, wrapper),
     _wrappedNamespace(new QNamespace(this, this)),
     _wrappedPackageableElement(new QPackageableElement(this, this))
 {
 }
 
-QPackage::QPackage(QPackagePrivate &dd, QMofObject *parent, QMofObject *wrapper) :
-    QMofObject(dd, parent, wrapper),
+QPackage::QPackage(QPackagePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
+    QWrappedObject(dd, parent, wrapper),
     _wrappedNamespace(new QNamespace(this, this)),
     _wrappedPackageableElement(new QPackageableElement(this, this))
 {
@@ -96,7 +96,7 @@ QPackage::~QPackage()
  */
 const QSet<QElement *> *QPackage::ownedElements() const
 {
-    return (qmofobject_cast<const QElement *>(this))->ownedElements();
+    return (qwrappedobject_cast<const QElement *>(this))->ownedElements();
 }
 
 /*!
@@ -104,7 +104,7 @@ const QSet<QElement *> *QPackage::ownedElements() const
  */
 QElement *QPackage::owner() const
 {
-    return (qmofobject_cast<const QElement *>(this))->owner();
+    return (qwrappedobject_cast<const QElement *>(this))->owner();
 }
 
 /*!
@@ -112,17 +112,17 @@ QElement *QPackage::owner() const
  */
 const QSet<QComment *> *QPackage::ownedComments() const
 {
-    return (qmofobject_cast<const QElement *>(this))->ownedComments();
+    return (qwrappedobject_cast<const QElement *>(this))->ownedComments();
 }
 
 void QPackage::addOwnedComment(QComment *ownedComment)
 {
-    (qmofobject_cast<QElement *>(this))->addOwnedComment(ownedComment);
+    (qwrappedobject_cast<QElement *>(this))->addOwnedComment(ownedComment);
 }
 
 void QPackage::removeOwnedComment(QComment *ownedComment)
 {
-    (qmofobject_cast<QElement *>(this))->removeOwnedComment(ownedComment);
+    (qwrappedobject_cast<QElement *>(this))->removeOwnedComment(ownedComment);
 }
 
 // ---------------------------------------------------------------
@@ -134,12 +134,12 @@ void QPackage::removeOwnedComment(QComment *ownedComment)
  */
 QString QPackage::name() const
 {
-    return (qmofobject_cast<const QNamedElement *>(this))->name();
+    return (qwrappedobject_cast<const QNamedElement *>(this))->name();
 }
 
 void QPackage::setName(QString name)
 {
-    (qmofobject_cast<QNamedElement *>(this))->setName(name);
+    (qwrappedobject_cast<QNamedElement *>(this))->setName(name);
 }
 
 /*!
@@ -147,7 +147,7 @@ void QPackage::setName(QString name)
  */
 QString QPackage::qualifiedName() const
 {
-    return (qmofobject_cast<const QNamedElement *>(this))->qualifiedName();
+    return (qwrappedobject_cast<const QNamedElement *>(this))->qualifiedName();
 }
 
 // ---------------------------------------------------------------
@@ -159,7 +159,7 @@ QString QPackage::qualifiedName() const
  */
 QNamespace *QPackage::namespace_() const
 {
-    return (qmofobject_cast<const QNamedElement *>(this))->namespace_();
+    return (qwrappedobject_cast<const QNamedElement *>(this))->namespace_();
 }
 
 // ---------------------------------------------------------------
@@ -171,17 +171,17 @@ QNamespace *QPackage::namespace_() const
  */
 const QSet<QPackageImport *> *QPackage::packageImports() const
 {
-    return (qmofobject_cast<const QNamespace *>(this))->packageImports();
+    return (qwrappedobject_cast<const QNamespace *>(this))->packageImports();
 }
 
 void QPackage::addPackageImport(QPackageImport *packageImport)
 {
-    (qmofobject_cast<QNamespace *>(this))->addPackageImport(packageImport);
+    (qwrappedobject_cast<QNamespace *>(this))->addPackageImport(packageImport);
 }
 
 void QPackage::removePackageImport(QPackageImport *packageImport)
 {
-    (qmofobject_cast<QNamespace *>(this))->removePackageImport(packageImport);
+    (qwrappedobject_cast<QNamespace *>(this))->removePackageImport(packageImport);
 }
 
 /*!
@@ -189,7 +189,7 @@ void QPackage::removePackageImport(QPackageImport *packageImport)
  */
 const QSet<QNamedElement *> *QPackage::members() const
 {
-    return (qmofobject_cast<const QNamespace *>(this))->members();
+    return (qwrappedobject_cast<const QNamespace *>(this))->members();
 }
 
 /*!
@@ -197,7 +197,7 @@ const QSet<QNamedElement *> *QPackage::members() const
  */
 const QSet<QPackageableElement *> *QPackage::importedMembers() const
 {
-    return (qmofobject_cast<const QNamespace *>(this))->importedMembers();
+    return (qwrappedobject_cast<const QNamespace *>(this))->importedMembers();
 }
 
 /*!
@@ -205,17 +205,17 @@ const QSet<QPackageableElement *> *QPackage::importedMembers() const
  */
 const QSet<QElementImport *> *QPackage::elementImports() const
 {
-    return (qmofobject_cast<const QNamespace *>(this))->elementImports();
+    return (qwrappedobject_cast<const QNamespace *>(this))->elementImports();
 }
 
 void QPackage::addElementImport(QElementImport *elementImport)
 {
-    (qmofobject_cast<QNamespace *>(this))->addElementImport(elementImport);
+    (qwrappedobject_cast<QNamespace *>(this))->addElementImport(elementImport);
 }
 
 void QPackage::removeElementImport(QElementImport *elementImport)
 {
-    (qmofobject_cast<QNamespace *>(this))->removeElementImport(elementImport);
+    (qwrappedobject_cast<QNamespace *>(this))->removeElementImport(elementImport);
 }
 
 /*!
@@ -223,17 +223,17 @@ void QPackage::removeElementImport(QElementImport *elementImport)
  */
 const QSet<QConstraint *> *QPackage::ownedRules() const
 {
-    return (qmofobject_cast<const QNamespace *>(this))->ownedRules();
+    return (qwrappedobject_cast<const QNamespace *>(this))->ownedRules();
 }
 
 void QPackage::addOwnedRule(QConstraint *ownedRule)
 {
-    (qmofobject_cast<QNamespace *>(this))->addOwnedRule(ownedRule);
+    (qwrappedobject_cast<QNamespace *>(this))->addOwnedRule(ownedRule);
 }
 
 void QPackage::removeOwnedRule(QConstraint *ownedRule)
 {
-    (qmofobject_cast<QNamespace *>(this))->removeOwnedRule(ownedRule);
+    (qwrappedobject_cast<QNamespace *>(this))->removeOwnedRule(ownedRule);
 }
 
 /*!
@@ -241,7 +241,7 @@ void QPackage::removeOwnedRule(QConstraint *ownedRule)
  */
 const QSet<QNamedElement *> *QPackage::ownedMembers() const
 {
-    return (qmofobject_cast<const QNamespace *>(this))->ownedMembers();
+    return (qwrappedobject_cast<const QNamespace *>(this))->ownedMembers();
 }
 
 // ---------------------------------------------------------------
@@ -253,12 +253,12 @@ const QSet<QNamedElement *> *QPackage::ownedMembers() const
  */
 QtMof::VisibilityKind QPackage::visibility() const
 {
-    return (qmofobject_cast<const QPackageableElement *>(this))->visibility();
+    return (qwrappedobject_cast<const QPackageableElement *>(this))->visibility();
 }
 
 void QPackage::setVisibility(QtMof::VisibilityKind visibility)
 {
-    (qmofobject_cast<QPackageableElement *>(this))->setVisibility(visibility);
+    (qwrappedobject_cast<QPackageableElement *>(this))->setVisibility(visibility);
 }
 
 // ---------------------------------------------------------------
@@ -313,7 +313,7 @@ void QPackage::addOwnedType(QType *ownedType)
         // change to your derived code
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QPackage *>(this))->addPackagedElement(qmofobject_cast<QPackageableElement *>(ownedType));
+        (qwrappedobject_cast<QPackage *>(this))->addPackagedElement(qwrappedobject_cast<QPackageableElement *>(ownedType));
 
         // Adjust opposite property
         ownedType->setPackage(this);
@@ -331,7 +331,7 @@ void QPackage::removeOwnedType(QType *ownedType)
         // change to your derived code
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QPackage *>(this))->removePackagedElement(qmofobject_cast<QPackageableElement *>(ownedType));
+        (qwrappedobject_cast<QPackage *>(this))->removePackagedElement(qwrappedobject_cast<QPackageableElement *>(ownedType));
 
         // Adjust opposite property
         ownedType->setPackage(0);
@@ -358,7 +358,7 @@ void QPackage::addPackagedElement(QPackageableElement *packagedElement)
         d->packagedElements->insert(packagedElement);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qmofobject_cast<QNamedElement *>(packagedElement));
+        (qwrappedobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qwrappedobject_cast<QNamedElement *>(packagedElement));
     }
 }
 
@@ -371,7 +371,7 @@ void QPackage::removePackagedElement(QPackageableElement *packagedElement)
         d->packagedElements->remove(packagedElement);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qmofobject_cast<QNamedElement *>(packagedElement));
+        (qwrappedobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qwrappedobject_cast<QNamedElement *>(packagedElement));
     }
 }
 
@@ -399,7 +399,7 @@ void QPackage::setNestingPackage(QPackage *nestingPackage)
         d->nestingPackage = nestingPackage;
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qmofobject_cast<QNamespace *>(nestingPackage));
+        (qwrappedobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qwrappedobject_cast<QNamespace *>(nestingPackage));
 
         // Adjust opposite property
         if (nestingPackage)
@@ -427,7 +427,7 @@ void QPackage::addPackageMerge(QPackageMerge *packageMerge)
         d->packageMerges->insert(packageMerge);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->addOwnedElement(qmofobject_cast<QElement *>(packageMerge));
+        (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(packageMerge));
 
         // Adjust opposite property
         packageMerge->setReceivingPackage(this);
@@ -443,7 +443,7 @@ void QPackage::removePackageMerge(QPackageMerge *packageMerge)
         d->packageMerges->remove(packageMerge);
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QElementPrivate *>(d))->removeOwnedElement(qmofobject_cast<QElement *>(packageMerge));
+        (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(packageMerge));
 
         // Adjust opposite property
         packageMerge->setReceivingPackage(0);
@@ -473,7 +473,7 @@ void QPackage::addNestedPackage(QPackage *nestedPackage)
         // change to your derived code
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QPackage *>(this))->addPackagedElement(qmofobject_cast<QPackageableElement *>(nestedPackage));
+        (qwrappedobject_cast<QPackage *>(this))->addPackagedElement(qwrappedobject_cast<QPackageableElement *>(nestedPackage));
 
         // Adjust opposite property
         nestedPackage->setNestingPackage(this);
@@ -491,7 +491,7 @@ void QPackage::removeNestedPackage(QPackage *nestedPackage)
         // change to your derived code
 
         // Adjust subsetted property(ies)
-        (qmofobject_cast<QPackage *>(this))->removePackagedElement(qmofobject_cast<QPackageableElement *>(nestedPackage));
+        (qwrappedobject_cast<QPackage *>(this))->removePackagedElement(qwrappedobject_cast<QPackageableElement *>(nestedPackage));
 
         // Adjust opposite property
         nestedPackage->setNestingPackage(0);
@@ -531,22 +531,22 @@ const QSet<QPackageableElement *> *QPackage::visibleMembers() const
 
 // Overriden methods for subsetted properties
 
-void QPackage::addPackagedElement(QMofPointer<QType> ownedType)
+void QPackage::addPackagedElement(QWrappedObjectPointer<QType> ownedType)
 {
     addOwnedType(ownedType);
 }
 
-void QPackage::removePackagedElement(QMofPointer<QType> ownedType)
+void QPackage::removePackagedElement(QWrappedObjectPointer<QType> ownedType)
 {
     removeOwnedType(ownedType);
 }
 
-void QPackage::addPackagedElement(QMofPointer<QPackage> nestedPackage)
+void QPackage::addPackagedElement(QWrappedObjectPointer<QPackage> nestedPackage)
 {
     addNestedPackage(nestedPackage);
 }
 
-void QPackage::removePackagedElement(QMofPointer<QPackage> nestedPackage)
+void QPackage::removePackagedElement(QWrappedObjectPointer<QPackage> nestedPackage)
 {
     removeNestedPackage(nestedPackage);
 }
