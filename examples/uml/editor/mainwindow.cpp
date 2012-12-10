@@ -111,7 +111,7 @@ void MainWindow::populateContextMenu(QMenu &menu, QObject *element)
     }
 }
 
-void MainWindow::handleMetaObjectProperties(QtWrappedObjects::QWrappedObject *element, const QMetaObject *metaObject, int level)
+void MainWindow::handleMetaObjectProperties(QWrappedObject *element, const QMetaObject *metaObject, int level)
 {
     if (metaObject->superClass() && !_visitedParents.contains(metaObject->superClass()->className()))
         handleMetaObjectProperties(element, metaObject->superClass(), level+1);
@@ -197,11 +197,11 @@ void MainWindow::handleMetaObjectProperties(QtWrappedObjects::QWrappedObject *el
         }
 
         if (typeName.endsWith('*') && typeName.contains("QSet") && property.read(element).isValid()) {
-            if (QSet<QtWrappedObjects::QWrappedObject *> *elements = reinterpret_cast<QSet<QtWrappedObjects::QWrappedObject *> *>(*((QSet<QObject *> **) property.read(element).data()))) {
+            if (QSet<QWrappedObject *> *elements = reinterpret_cast<QSet<QWrappedObject *> *>(*((QSet<QObject *> **) property.read(element).data()))) {
                 if (elements->size() > 0) {
                     QString str = "[";
-                    foreach (QtWrappedObjects::QWrappedObject *object, *elements)
-                        str.append((qwrappedobject_cast<QtWrappedObjects::QWrappedObject *>(object))->objectName().append(", "));
+                    foreach (QWrappedObject *object, *elements)
+                        str.append((qwrappedobject_cast<QWrappedObject *>(object))->objectName().append(", "));
                     str.chop(2);
                     str.append("]");
                     item->setText(1, str);
@@ -212,11 +212,11 @@ void MainWindow::handleMetaObjectProperties(QtWrappedObjects::QWrappedObject *el
         }
 
         if (typeName.endsWith('*') && typeName.contains("QList") && property.read(element).isValid()) {
-            if (QList<QtWrappedObjects::QWrappedObject *> *elements = reinterpret_cast<QList<QtWrappedObjects::QWrappedObject *> *>(*((QList<QObject *> **) property.read(element).data()))) {
+            if (QList<QWrappedObject *> *elements = reinterpret_cast<QList<QWrappedObject *> *>(*((QList<QObject *> **) property.read(element).data()))) {
                 if (elements->size() > 0) {
                     QString str = "[";
-                    foreach (QtWrappedObjects::QWrappedObject *object, *elements)
-                        str.append((qwrappedobject_cast<QtWrappedObjects::QWrappedObject *>(object))->objectName().append(", "));
+                    foreach (QWrappedObject *object, *elements)
+                        str.append((qwrappedobject_cast<QWrappedObject *>(object))->objectName().append(", "));
                     str.chop(2);
                     str.append("]");
                     item->setText(1, str);
@@ -231,10 +231,10 @@ void MainWindow::handleMetaObjectProperties(QtWrappedObjects::QWrappedObject *el
     }
 }
 
-void MainWindow::handleObjectProperties(QtWrappedObjects::QWrappedObject *element, int level)
+void MainWindow::handleObjectProperties(QWrappedObject *element, int level)
 {
     foreach (QObject *child, element->children())
-            handleObjectProperties(dynamic_cast<QtWrappedObjects::QWrappedObject *>(child), level+1);
+            handleObjectProperties(dynamic_cast<QWrappedObject *>(child), level+1);
 
     handleMetaObjectProperties(element, element->metaObject(), level);
 }
@@ -247,7 +247,7 @@ void MainWindow::on_modelExplorer_currentItemChanged(QTreeWidgetItem *current, Q
         return;
 
     ui->propertyEditor->blockSignals(true);
-    QtWrappedObjects::QWrappedObject *element = qwrappedobject_cast<QtWrappedObjects::QWrappedObject *>(current->data(0, Qt::UserRole).value<QtWrappedObjects::QWrappedObject *>());
+    QWrappedObject *element = qwrappedobject_cast<QWrappedObject *>(current->data(0, Qt::UserRole).value<QWrappedObject *>());
     ui->propertyEditor->clear();
 
     _visitedParents.clear();
@@ -284,7 +284,7 @@ void MainWindow::currentIndexChanged(int index)
     }
 }
 
-void MainWindow::populateModelExplorer(QtWrappedObjects::QWrappedObject *element, QTreeWidgetItem *parent)
+void MainWindow::populateModelExplorer(QWrappedObject *element, QTreeWidgetItem *parent)
 {
     if (!element)
         return;
@@ -340,7 +340,7 @@ void MainWindow::handleAddMethod()
 
 void MainWindow::refreshModel()
 {
-    QtWrappedObjects::QWrappedObject *rootElement = qwrappedobject_cast<QtWrappedObjects::QWrappedObject *>(ui->modelExplorer->topLevelItem(0)->data(0, Qt::UserRole).value<QtWrappedObjects::QWrappedObject *>());
+    QWrappedObject *rootElement = qwrappedobject_cast<QWrappedObject *>(ui->modelExplorer->topLevelItem(0)->data(0, Qt::UserRole).value<QWrappedObject *>());
     ui->modelExplorer->clear();
     populateModelExplorer(rootElement);
 }
