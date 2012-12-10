@@ -1,6 +1,6 @@
 load(qt_build_config)
 
-TARGET = QtUml
+TARGET = [% namespace.split('/').0 %]
 QT = core-private
 
 load(qt_module)

@@ -12,6 +12,7 @@
     "qtumlversion.h" => "QtUmlVersion",
     "qtumlglobal.h"  => "QtUmlGlobal",
     "qtumlenumerations.h"  => "QtUmlEnumerations",
+    "qtmofenumerations.h"  => "QtMofEnumerations",
 );
 
 %modulepris = (

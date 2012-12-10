@@ -89,6 +89,7 @@ declare function qtxmi:mappedFunctionName ($name as xs:string*) as xs:string* {
     else if ($name = "default") then "default_"
     else if ($name = "template") then "template_"
     else if ($name = "slot") then "slot_"
+    else if ($name = "delete") then "delete_"
     else $name
 };
 
