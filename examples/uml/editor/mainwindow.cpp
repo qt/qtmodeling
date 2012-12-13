@@ -290,11 +290,11 @@ void MainWindow::populateModelExplorer(QWrappedObject *element, QTreeWidgetItem 
         return;
 
     ui->modelExplorer->blockSignals(true);
-    QObject *parentObject = element;
-    while (parentObject->parent())
-        parentObject = parentObject->parent();
-    QTreeWidgetItem *item = new QTreeWidgetItem(parent, QStringList() << QString("%1 (%2)").arg(parentObject->objectName()).arg(parentObject->metaObject()->className()));
-    item->setData(0, Qt::UserRole, qVariantFromValue(parentObject));
+    QWrappedObject *wrappingObject = element;
+    while (wrappingObject->wrapper())
+        wrappingObject = wrappingObject->wrapper();
+    QTreeWidgetItem *item = new QTreeWidgetItem(parent, QStringList() << QString("%1 (%2)").arg(wrappingObject->objectName()).arg(wrappingObject->metaObject()->className()));
+    item->setData(0, Qt::UserRole, qVariantFromValue(wrappingObject));
 
     if (!parent)
         ui->modelExplorer->addTopLevelItem(item);
