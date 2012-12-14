@@ -15,7 +15,7 @@
 ** http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
 **
 ** In addition, as a special exception, Nokia gives you certain additional
-** rights. These rights are described in the Nokia Qt LGPL Exception
+** rights. These rights are described in the Nokia  LGPL Exception
 ** version 1.1, included in the file LGPL_EXCEPTION.txt in this package.
 **
 ** GNU General Public License Usage
@@ -38,81 +38,46 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
+#ifndef QTWRAPPEDOBJECTS_QMETAWRAPPEDOBJECT_H
+#define QTWRAPPEDOBJECTS_QMETAWRAPPEDOBJECT_H
 
-#include "qwrappedobject.h"
-#include "qwrappedobject_p.h"
+#include <QtWrappedObjects/QtWrappedObjectsGlobal>
 
-#include <QtWrappedObjects/QMetaWrappedObject>
+QT_BEGIN_HEADER
+
+class QStringList;
 
 QT_BEGIN_NAMESPACE_QTWRAPPEDOBJECTS
 
-QWrappedObjectPrivate::QWrappedObjectPrivate(int version)
-    : QObjectPrivate(version), wrapper(0)
+QT_MODULE(QtWrappedObjects)
+
+class QWrappedObject;
+class QMetaWrappedObjectPrivate;
+
+class Q_WRAPPEDOBJECTS_EXPORT QMetaWrappedObject
 {
-}
+    Q_DISABLE_COPY(QMetaWrappedObject)
+    Q_DECLARE_PRIVATE(QMetaWrappedObject)
 
-QWrappedObjectPrivate::~QWrappedObjectPrivate()
-{
-    delete metaWrappedObject;
-}
+public:
+    virtual ~QMetaWrappedObject();
 
-QWrappedObject::QWrappedObject(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QObject(*new QWrappedObjectPrivate, parent)
-{
-    initialize(wrapper);
-}
+    int propertyCount() const;
 
-QWrappedObject::QWrappedObject(QWrappedObjectPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QObject(dd, parent)
-{
-    initialize(wrapper);
-}
+protected:
+    explicit QMetaWrappedObject(QWrappedObject *wrappedObject);
+    explicit QMetaWrappedObject(QMetaWrappedObjectPrivate &dd, QWrappedObject *wrappedObject);
+    void initialize(QWrappedObject *wrappedObject);
+    void handleWrappedObjectProperties(const QWrappedObject *wrappingObject, QStringList &visitedClasses) const;
 
-QWrappedObject::~QWrappedObject()
-{
-}
+    QMetaWrappedObjectPrivate *d_ptr;
 
-void QWrappedObject::initialize(QWrappedObject *wrapper)
-{
-    setWrapper(wrapper);
-    Q_D(QWrappedObject);
-    d->metaWrappedObject = new QMetaWrappedObject(qTopLevelWrapper(this));
-}
-
-const QList<QWrappedObject *> &QWrappedObject::wrappedObjects() const
-{
-    Q_D(const QWrappedObject);
-    return d->wrappedObjects;
-}
-
-void QWrappedObject::setWrapper(QWrappedObject *wrapper)
-{
-    Q_D(QWrappedObject);
-    if (wrapper == d->wrapper)
-        return;
-
-    if (d->wrapper)
-        d->wrapper->d_func()->wrappedObjects.removeAll(this);
-
-    d->wrapper = wrapper;
-
-    if (wrapper)
-        wrapper->d_func()->wrappedObjects.append(this);
-}
-
-QWrappedObject *QWrappedObject::wrapper() const
-{
-    Q_D(const QWrappedObject);
-    return d->wrapper;
-}
-
-const QMetaWrappedObject *QWrappedObject::metaWrappedObject() const
-{
-    Q_D(const QWrappedObject);
-    return d->metaWrappedObject;
-}
-
-#include "moc_qwrappedobject.cpp"
+    friend class QWrappedObject;
+};
 
 QT_END_NAMESPACE_QTWRAPPEDOBJECTS
+
+QT_END_HEADER
+
+#endif // QTWRAPPEDOBJECTS_QMETAWRAPPEDOBJECT_H
 
