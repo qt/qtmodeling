@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 
 #include <QtWrappedObjects/QWrappedObjectPointer>
+#include <QtWrappedObjects/QMetaWrappedObject>
 
 #include <QtUml/QModel>
 #include <QtUml/QPrimitiveType>
@@ -249,6 +250,9 @@ void MainWindow::on_modelExplorer_currentItemChanged(QTreeWidgetItem *current, Q
     ui->propertyEditor->blockSignals(true);
     QWrappedObject *element = qwrappedobject_cast<QWrappedObject *>(current->data(0, Qt::UserRole).value<QWrappedObject *>());
     ui->propertyEditor->clear();
+
+    const QtWrappedObjects::QMetaWrappedObject *metaWrappedObject = element->metaWrappedObject();
+    qDebug() << "MetaWrapped: property count: " << metaWrappedObject->propertyCount();
 
     _visitedParents.clear();
     _visitedProperties.clear();

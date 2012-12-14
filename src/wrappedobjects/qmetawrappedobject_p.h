@@ -38,13 +38,12 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QTWRAPPEDOBJECTS_QWRAPPEDOBJECT_P_H
-#define QTWRAPPEDOBJECTS_QWRAPPEDOBJECT_P_H
+#ifndef QTWRAPPEDOBJECTS_QMETAWRAPPEDOBJECT_P_H
+#define QTWRAPPEDOBJECTS_QMETAWRAPPEDOBJECT_P_H
 
-// Base class includes
-#include "private/qobject_p.h"
+#include "QtWrappedObjects/QMetaWrappedObject"
 
-#include "QtWrappedObjects/QWrappedObject"
+#include <QtCore/QMetaProperty>
 
 QT_BEGIN_HEADER
 
@@ -52,42 +51,29 @@ QT_BEGIN_NAMESPACE_QTWRAPPEDOBJECTS
 
 QT_MODULE(QtWrappedObjects)
 
-class Q_WRAPPEDOBJECTS_EXPORT QWrappedObjectPrivate : public QObjectPrivate
+class Q_WRAPPEDOBJECTS_EXPORT QMetaWrappedObjectPrivate
 {
-    Q_DECLARE_PUBLIC(QWrappedObject)
+    Q_DECLARE_PUBLIC(QMetaWrappedObject)
 
 public:
-    explicit QWrappedObjectPrivate(int version = QObjectPrivateVersion);
-    virtual ~QWrappedObjectPrivate();
+    explicit QMetaWrappedObjectPrivate();
+    virtual ~QMetaWrappedObjectPrivate();
 
-    static QWrappedObjectPrivate *get(QWrappedObject *o)
+    struct PropertyInfo
     {
-        return dynamic_cast<QWrappedObjectPrivate *>(o->d_func());
-    }
+        QMetaProperty metaProperty;
+        const QWrappedObject *propertyWrappedObject;
+        bool wasChanged;
+    };
 
-    QList<QWrappedObject *> wrappedObjects;
-    QWrappedObject *wrapper;
-    QMetaWrappedObject *metaWrappedObject;
+    QMetaWrappedObject *q_ptr;
+    const QWrappedObject *wrappedObject;
+    QList<PropertyInfo> propertyInfos;
 };
 
 QT_END_NAMESPACE_QTWRAPPEDOBJECTS
 
-template <class T>
-inline T qwrappedobject_cast(QT_PREPEND_NAMESPACE_QTWRAPPEDOBJECTS(QWrappedObjectPrivate) *base, bool restoreToWrapper = true)
-{
-    while (restoreToWrapper && base->wrapper)
-        base = base->get(base->wrapper);
-    if (dynamic_cast<T>(base))
-        return dynamic_cast<T>(base);
-    foreach (QT_PREPEND_NAMESPACE_QTWRAPPEDOBJECTS(QWrappedObject) *wrappedObject, base->wrappedObjects) {
-        T returnValue = qwrappedobject_cast<T>(base->get(wrappedObject), false);
-        if (returnValue != T())
-            return returnValue;
-    }
-    return T(); // not found
-}
-
 QT_END_HEADER
 
-#endif // QTWRAPPEDOBJECTS_QWRAPPEDOBJECT_P_H
+#endif // QTWRAPPEDOBJECTS_QMETAWRAPPEDOBJECT_P_H
 

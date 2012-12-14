@@ -38,8 +38,8 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QTWRAPPEDOBJECTS_QWRAPPEDOBJECTSOBJECT_H
-#define QTWRAPPEDOBJECTS_QWRAPPEDOBJECTSOBJECT_H
+#ifndef QTWRAPPEDOBJECTS_QWRAPPEDOBJECT_H
+#define QTWRAPPEDOBJECTS_QWRAPPEDOBJECT_H
 
 #include <QtWrappedObjects/QtWrappedObjectsGlobal>
 
@@ -56,6 +56,7 @@ QT_BEGIN_NAMESPACE_QTWRAPPEDOBJECTS
 
 QT_MODULE(QtWrappedObjects)
 
+class QMetaWrappedObject;
 class QWrappedObjectPrivate;
 
 class Q_WRAPPEDOBJECTS_EXPORT QWrappedObject : public QObject
@@ -74,8 +75,11 @@ public:
     void setWrapper(QWrappedObject *wrapper);
     QWrappedObject *wrapper() const;
 
+    const QMetaWrappedObject *metaWrappedObject() const;
+
 protected:
     explicit QWrappedObject(QWrappedObjectPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    void initialize(QWrappedObject *wrapper);
 };
 
 QT_END_NAMESPACE_QTWRAPPEDOBJECTS
@@ -109,6 +113,8 @@ inline T qwrappedobject_cast(const QT_PREPEND_NAMESPACE_QTWRAPPEDOBJECTS(QWrappe
 
 inline QT_PREPEND_NAMESPACE_QTWRAPPEDOBJECTS(QWrappedObject) *qTopLevelWrapper(QT_PREPEND_NAMESPACE_QTWRAPPEDOBJECTS(QWrappedObject) *wrapped)
 {
+    if (!wrapped)
+        return 0;
     while (wrapped->wrapper())
         wrapped = wrapped->wrapper();
     return wrapped;
@@ -116,5 +122,5 @@ inline QT_PREPEND_NAMESPACE_QTWRAPPEDOBJECTS(QWrappedObject) *qTopLevelWrapper(Q
 
 QT_END_HEADER
 
-#endif // QTWRAPPEDOBJECTS_QWRAPPEDOBJECTSOBJECT_H
+#endif // QTWRAPPEDOBJECTS_QWRAPPEDOBJECT_H
 
