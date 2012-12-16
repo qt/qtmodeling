@@ -34,10 +34,6 @@ int main ()
     QWrappedObjectPointer<QModel> model = new QModel;
     model->setName("MyModel");
 
-    const QMetaWrappedObject *metaWrappedObject = model->metaWrappedObject();
-    qDebug() << "MetaWrappedObject property count: " << metaWrappedObject->propertyCount();
-    return 0;
-
     QWrappedObjectPointer<QPackage> package = new QPackage;
     package->setName("Package1");
 

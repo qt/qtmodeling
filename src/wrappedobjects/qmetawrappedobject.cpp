@@ -92,6 +92,17 @@ QMetaPropertyInfo QMetaWrappedObject::property(int index) const
     return d_ptr->propertyInfos.at(index);
 }
 
+int QMetaWrappedObject::indexOfProperty(const char *name) const
+{
+    int i = 0;
+    foreach (const QMetaPropertyInfo &propertyInfo, d_ptr->propertyInfos) {
+        if (propertyInfo == name)
+            return i;
+        ++i;
+    }
+    return -1;
+}
+
 void QMetaWrappedObject::handleWrappedObjectProperties(const QWrappedObject *wrappingObject, QStringList &visitedClasses) const
 {
     foreach (QWrappedObject *wrappedObject, wrappingObject->wrappedObjects())

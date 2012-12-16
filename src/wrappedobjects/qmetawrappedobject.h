@@ -67,6 +67,11 @@ struct Q_WRAPPEDOBJECTS_EXPORT QMetaPropertyInfo
     {
         return qstrcmp(metaProperty.name(), other.metaProperty.name()) == 0 ? true:false;
     }
+
+    inline bool operator==(const char *name) const
+    {
+        return qstrcmp(metaProperty.name(), name) == 0 ? true:false;
+    }
 };
 
 class Q_WRAPPEDOBJECTS_EXPORT QMetaWrappedObject
@@ -79,6 +84,7 @@ public:
 
     int propertyCount() const;
     QMetaPropertyInfo property(int index) const;
+    int indexOfProperty(const char *name) const;
 
 protected:
     explicit QMetaWrappedObject(QWrappedObject *wrappedObject);
