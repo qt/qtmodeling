@@ -154,6 +154,30 @@ const QSet<QElement *> *QDirectedRelationship::targets() const
     return d->targets;
 }
 
+void QDirectedRelationship::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QDirectedRelationship) *>("QT_PREPEND_NAMESPACE_QTUML(QDirectedRelationship) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QDirectedRelationship) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QDirectedRelationship) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QDirectedRelationship) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QDirectedRelationship) *> *");
+    qRegisterMetaType<QDirectedRelationship *>("QDirectedRelationship *");
+    qRegisterMetaType<const QSet<QDirectedRelationship *> *>("const QSet<QDirectedRelationship *> *");
+    qRegisterMetaType<const QList<QDirectedRelationship *> *>("const QList<QDirectedRelationship *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QElement) *>("QT_PREPEND_NAMESPACE_QTUML(QElement) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QElement) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QElement) *> *");
+    qRegisterMetaType<QElement *>("QElement *");
+    qRegisterMetaType<const QSet<QElement *> *>("const QSet<QElement *> *");
+    qRegisterMetaType<const QList<QElement *> *>("const QList<QElement *> *");
+
+
+    QRelationship::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qdirectedrelationship.cpp"
 
 QT_END_NAMESPACE_QTUML

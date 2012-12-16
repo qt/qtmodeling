@@ -426,6 +426,30 @@ void QInteractionOperand::setGuard(QInteractionConstraint *guard)
     }
 }
 
+void QInteractionOperand::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInteractionOperand) *>("QT_PREPEND_NAMESPACE_QTUML(QInteractionOperand) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInteractionOperand) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInteractionOperand) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInteractionOperand) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInteractionOperand) *> *");
+    qRegisterMetaType<QInteractionOperand *>("QInteractionOperand *");
+    qRegisterMetaType<const QSet<QInteractionOperand *> *>("const QSet<QInteractionOperand *> *");
+    qRegisterMetaType<const QList<QInteractionOperand *> *>("const QList<QInteractionOperand *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInteractionConstraint) *>("QT_PREPEND_NAMESPACE_QTUML(QInteractionConstraint) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInteractionConstraint) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInteractionConstraint) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInteractionConstraint) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInteractionConstraint) *> *");
+    qRegisterMetaType<QInteractionConstraint *>("QInteractionConstraint *");
+    qRegisterMetaType<const QSet<QInteractionConstraint *> *>("const QSet<QInteractionConstraint *> *");
+    qRegisterMetaType<const QList<QInteractionConstraint *> *>("const QList<QInteractionConstraint *> *");
+
+
+    QWrappedObject::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qinteractionoperand.cpp"
 
 QT_END_NAMESPACE_QTUML

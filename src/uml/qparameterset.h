@@ -82,6 +82,7 @@ public:
     Q_INVOKABLE const QSet<QConstraint *> *conditions() const;
     Q_INVOKABLE void addCondition(QConstraint *condition);
     Q_INVOKABLE void removeCondition(QConstraint *condition);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QParameterSet(QParameterSetPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

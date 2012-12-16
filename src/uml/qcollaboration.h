@@ -200,6 +200,7 @@ public:
     Q_INVOKABLE const QSet<QConnectableElement *> *collaborationRoles() const;
     Q_INVOKABLE void addCollaborationRole(QConnectableElement *collaborationRole);
     Q_INVOKABLE void removeCollaborationRole(QConnectableElement *collaborationRole);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QCollaboration(QCollaborationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

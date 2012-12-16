@@ -185,6 +185,38 @@ void QAcceptEventAction::removeResult(QOutputPin *result)
     }
 }
 
+void QAcceptEventAction::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QAcceptEventAction) *>("QT_PREPEND_NAMESPACE_QTUML(QAcceptEventAction) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QAcceptEventAction) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QAcceptEventAction) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QAcceptEventAction) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QAcceptEventAction) *> *");
+    qRegisterMetaType<QAcceptEventAction *>("QAcceptEventAction *");
+    qRegisterMetaType<const QSet<QAcceptEventAction *> *>("const QSet<QAcceptEventAction *> *");
+    qRegisterMetaType<const QList<QAcceptEventAction *> *>("const QList<QAcceptEventAction *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *");
+    qRegisterMetaType<QOutputPin *>("QOutputPin *");
+    qRegisterMetaType<const QSet<QOutputPin *> *>("const QSet<QOutputPin *> *");
+    qRegisterMetaType<const QList<QOutputPin *> *>("const QList<QOutputPin *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QTrigger) *>("QT_PREPEND_NAMESPACE_QTUML(QTrigger) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QTrigger) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QTrigger) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QTrigger) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QTrigger) *> *");
+    qRegisterMetaType<QTrigger *>("QTrigger *");
+    qRegisterMetaType<const QSet<QTrigger *> *>("const QSet<QTrigger *> *");
+    qRegisterMetaType<const QList<QTrigger *> *>("const QList<QTrigger *> *");
+
+
+    QAction::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qaccepteventaction.cpp"
 
 QT_END_NAMESPACE_QTUML

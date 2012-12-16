@@ -176,6 +176,38 @@ void QPackageImport::setImportedPackage(QPackage *importedPackage)
     }
 }
 
+void QPackageImport::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QPackageImport) *>("QT_PREPEND_NAMESPACE_QTUML(QPackageImport) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QPackageImport) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QPackageImport) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QPackageImport) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QPackageImport) *> *");
+    qRegisterMetaType<QPackageImport *>("QPackageImport *");
+    qRegisterMetaType<const QSet<QPackageImport *> *>("const QSet<QPackageImport *> *");
+    qRegisterMetaType<const QList<QPackageImport *> *>("const QList<QPackageImport *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QPackage) *>("QT_PREPEND_NAMESPACE_QTUML(QPackage) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QPackage) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QPackage) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QPackage) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QPackage) *> *");
+    qRegisterMetaType<QPackage *>("QPackage *");
+    qRegisterMetaType<const QSet<QPackage *> *>("const QSet<QPackage *> *");
+    qRegisterMetaType<const QList<QPackage *> *>("const QList<QPackage *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QNamespace) *>("QT_PREPEND_NAMESPACE_QTUML(QNamespace) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QNamespace) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QNamespace) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QNamespace) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QNamespace) *> *");
+    qRegisterMetaType<QNamespace *>("QNamespace *");
+    qRegisterMetaType<const QSet<QNamespace *> *>("const QSet<QNamespace *> *");
+    qRegisterMetaType<const QList<QNamespace *> *>("const QList<QNamespace *> *");
+
+
+    QDirectedRelationship::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qpackageimport.cpp"
 
 QT_END_NAMESPACE_QTUML

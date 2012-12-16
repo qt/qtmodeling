@@ -282,6 +282,38 @@ void QClause::removeTest(QExecutableNode *test)
     }
 }
 
+void QClause::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QClause) *>("QT_PREPEND_NAMESPACE_QTUML(QClause) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QClause) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QClause) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QClause) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QClause) *> *");
+    qRegisterMetaType<QClause *>("QClause *");
+    qRegisterMetaType<const QSet<QClause *> *>("const QSet<QClause *> *");
+    qRegisterMetaType<const QList<QClause *> *>("const QList<QClause *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *>("QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *> *");
+    qRegisterMetaType<QExecutableNode *>("QExecutableNode *");
+    qRegisterMetaType<const QSet<QExecutableNode *> *>("const QSet<QExecutableNode *> *");
+    qRegisterMetaType<const QList<QExecutableNode *> *>("const QList<QExecutableNode *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *");
+    qRegisterMetaType<QOutputPin *>("QOutputPin *");
+    qRegisterMetaType<const QSet<QOutputPin *> *>("const QSet<QOutputPin *> *");
+    qRegisterMetaType<const QList<QOutputPin *> *>("const QList<QOutputPin *> *");
+
+
+    QElement::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qclause.cpp"
 
 QT_END_NAMESPACE_QTUML

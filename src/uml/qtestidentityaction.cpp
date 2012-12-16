@@ -171,6 +171,38 @@ void QTestIdentityAction::setFirst(QInputPin *first)
     }
 }
 
+void QTestIdentityAction::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QTestIdentityAction) *>("QT_PREPEND_NAMESPACE_QTUML(QTestIdentityAction) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QTestIdentityAction) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QTestIdentityAction) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QTestIdentityAction) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QTestIdentityAction) *> *");
+    qRegisterMetaType<QTestIdentityAction *>("QTestIdentityAction *");
+    qRegisterMetaType<const QSet<QTestIdentityAction *> *>("const QSet<QTestIdentityAction *> *");
+    qRegisterMetaType<const QList<QTestIdentityAction *> *>("const QList<QTestIdentityAction *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QInputPin) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
+    qRegisterMetaType<QInputPin *>("QInputPin *");
+    qRegisterMetaType<const QSet<QInputPin *> *>("const QSet<QInputPin *> *");
+    qRegisterMetaType<const QList<QInputPin *> *>("const QList<QInputPin *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *");
+    qRegisterMetaType<QOutputPin *>("QOutputPin *");
+    qRegisterMetaType<const QSet<QOutputPin *> *>("const QSet<QOutputPin *> *");
+    qRegisterMetaType<const QList<QOutputPin *> *>("const QList<QOutputPin *> *");
+
+
+    QAction::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qtestidentityaction.cpp"
 
 QT_END_NAMESPACE_QTUML

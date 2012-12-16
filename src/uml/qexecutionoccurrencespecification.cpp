@@ -102,6 +102,30 @@ void QExecutionOccurrenceSpecification::setExecution(QExecutionSpecification *ex
     }
 }
 
+void QExecutionOccurrenceSpecification::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QExecutionOccurrenceSpecification) *>("QT_PREPEND_NAMESPACE_QTUML(QExecutionOccurrenceSpecification) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QExecutionOccurrenceSpecification) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QExecutionOccurrenceSpecification) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QExecutionOccurrenceSpecification) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QExecutionOccurrenceSpecification) *> *");
+    qRegisterMetaType<QExecutionOccurrenceSpecification *>("QExecutionOccurrenceSpecification *");
+    qRegisterMetaType<const QSet<QExecutionOccurrenceSpecification *> *>("const QSet<QExecutionOccurrenceSpecification *> *");
+    qRegisterMetaType<const QList<QExecutionOccurrenceSpecification *> *>("const QList<QExecutionOccurrenceSpecification *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QExecutionSpecification) *>("QT_PREPEND_NAMESPACE_QTUML(QExecutionSpecification) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QExecutionSpecification) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QExecutionSpecification) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QExecutionSpecification) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QExecutionSpecification) *> *");
+    qRegisterMetaType<QExecutionSpecification *>("QExecutionSpecification *");
+    qRegisterMetaType<const QSet<QExecutionSpecification *> *>("const QSet<QExecutionSpecification *> *");
+    qRegisterMetaType<const QList<QExecutionSpecification *> *>("const QList<QExecutionSpecification *> *");
+
+
+    QOccurrenceSpecification::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qexecutionoccurrencespecification.cpp"
 
 QT_END_NAMESPACE_QTUML

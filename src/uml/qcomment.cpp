@@ -136,6 +136,22 @@ void QComment::removeAnnotatedElement(QElement *annotatedElement)
     }
 }
 
+void QComment::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QComment) *>("QT_PREPEND_NAMESPACE_QTUML(QComment) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QComment) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QComment) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QComment) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QComment) *> *");
+    qRegisterMetaType<QComment *>("QComment *");
+    qRegisterMetaType<const QSet<QComment *> *>("const QSet<QComment *> *");
+    qRegisterMetaType<const QList<QComment *> *>("const QList<QComment *> *");
+
+
+    QElement::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qcomment.cpp"
 
 QT_END_NAMESPACE_QTUML

@@ -107,6 +107,7 @@ public:
     // Overriden methods for subsetted properties
     Q_INVOKABLE void addRedefinedClassifier(QWrappedObjectPointer<QInterface> redefinedInterface);
     Q_INVOKABLE void removeRedefinedClassifier(QWrappedObjectPointer<QInterface> redefinedInterface);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QInterface(QInterfacePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

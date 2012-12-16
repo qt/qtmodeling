@@ -128,6 +128,30 @@ void QTimeObservation::setEvent(QNamedElement *event)
     }
 }
 
+void QTimeObservation::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QTimeObservation) *>("QT_PREPEND_NAMESPACE_QTUML(QTimeObservation) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QTimeObservation) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QTimeObservation) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QTimeObservation) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QTimeObservation) *> *");
+    qRegisterMetaType<QTimeObservation *>("QTimeObservation *");
+    qRegisterMetaType<const QSet<QTimeObservation *> *>("const QSet<QTimeObservation *> *");
+    qRegisterMetaType<const QList<QTimeObservation *> *>("const QList<QTimeObservation *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *>("QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *> *");
+    qRegisterMetaType<QNamedElement *>("QNamedElement *");
+    qRegisterMetaType<const QSet<QNamedElement *> *>("const QSet<QNamedElement *> *");
+    qRegisterMetaType<const QList<QNamedElement *> *>("const QList<QNamedElement *> *");
+
+
+    QObservation::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qtimeobservation.cpp"
 
 QT_END_NAMESPACE_QTUML

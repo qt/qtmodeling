@@ -308,6 +308,38 @@ void QConnectableElement::setTemplateParameter(QConnectableElementTemplateParame
     }
 }
 
+void QConnectableElement::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QConnectableElement) *>("QT_PREPEND_NAMESPACE_QTUML(QConnectableElement) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QConnectableElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QConnectableElement) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QConnectableElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QConnectableElement) *> *");
+    qRegisterMetaType<QConnectableElement *>("QConnectableElement *");
+    qRegisterMetaType<const QSet<QConnectableElement *> *>("const QSet<QConnectableElement *> *");
+    qRegisterMetaType<const QList<QConnectableElement *> *>("const QList<QConnectableElement *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QConnectorEnd) *>("QT_PREPEND_NAMESPACE_QTUML(QConnectorEnd) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QConnectorEnd) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QConnectorEnd) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QConnectorEnd) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QConnectorEnd) *> *");
+    qRegisterMetaType<QConnectorEnd *>("QConnectorEnd *");
+    qRegisterMetaType<const QSet<QConnectorEnd *> *>("const QSet<QConnectorEnd *> *");
+    qRegisterMetaType<const QList<QConnectorEnd *> *>("const QList<QConnectorEnd *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QConnectableElementTemplateParameter) *>("QT_PREPEND_NAMESPACE_QTUML(QConnectableElementTemplateParameter) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QConnectableElementTemplateParameter) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QConnectableElementTemplateParameter) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QConnectableElementTemplateParameter) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QConnectableElementTemplateParameter) *> *");
+    qRegisterMetaType<QConnectableElementTemplateParameter *>("QConnectableElementTemplateParameter *");
+    qRegisterMetaType<const QSet<QConnectableElementTemplateParameter *> *>("const QSet<QConnectableElementTemplateParameter *> *");
+    qRegisterMetaType<const QList<QConnectableElementTemplateParameter *> *>("const QList<QConnectableElementTemplateParameter *> *");
+
+
+    QWrappedObject::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qconnectableelement.cpp"
 
 QT_END_NAMESPACE_QTUML

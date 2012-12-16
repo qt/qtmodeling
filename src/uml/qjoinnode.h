@@ -78,6 +78,7 @@ public:
     // Association ends from QJoinNode
     Q_INVOKABLE QValueSpecification *joinSpec() const;
     Q_INVOKABLE void setJoinSpec(QValueSpecification *joinSpec);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QJoinNode(QJoinNodePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

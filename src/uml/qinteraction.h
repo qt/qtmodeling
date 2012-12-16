@@ -158,6 +158,7 @@ public:
     Q_INVOKABLE const QSet<QLifeline *> *lifelines() const;
     Q_INVOKABLE void addLifeline(QLifeline *lifeline);
     Q_INVOKABLE void removeLifeline(QLifeline *lifeline);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QInteraction(QInteractionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

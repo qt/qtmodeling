@@ -77,6 +77,7 @@ public:
     Q_INVOKABLE const QSet<QLinkEndDestructionData *> *endData() const;
     Q_INVOKABLE void addEndData(QLinkEndDestructionData *endData);
     Q_INVOKABLE void removeEndData(QLinkEndDestructionData *endData);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QDestroyLinkAction(QDestroyLinkActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

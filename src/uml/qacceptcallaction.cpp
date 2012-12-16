@@ -110,6 +110,30 @@ void QAcceptCallAction::setReturnInformation(QOutputPin *returnInformation)
     }
 }
 
+void QAcceptCallAction::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QAcceptCallAction) *>("QT_PREPEND_NAMESPACE_QTUML(QAcceptCallAction) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QAcceptCallAction) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QAcceptCallAction) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QAcceptCallAction) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QAcceptCallAction) *> *");
+    qRegisterMetaType<QAcceptCallAction *>("QAcceptCallAction *");
+    qRegisterMetaType<const QSet<QAcceptCallAction *> *>("const QSet<QAcceptCallAction *> *");
+    qRegisterMetaType<const QList<QAcceptCallAction *> *>("const QList<QAcceptCallAction *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *");
+    qRegisterMetaType<QOutputPin *>("QOutputPin *");
+    qRegisterMetaType<const QSet<QOutputPin *> *>("const QSet<QOutputPin *> *");
+    qRegisterMetaType<const QList<QOutputPin *> *>("const QList<QOutputPin *> *");
+
+
+    QAcceptEventAction::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qacceptcallaction.cpp"
 
 QT_END_NAMESPACE_QTUML

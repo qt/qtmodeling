@@ -73,6 +73,7 @@ public:
     // Association ends from QIntervalConstraint
     Q_INVOKABLE QInterval *specification() const;
     Q_INVOKABLE void setSpecification(QInterval *specification);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QIntervalConstraint(QIntervalConstraintPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

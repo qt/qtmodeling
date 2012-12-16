@@ -73,6 +73,7 @@ public:
     // Association ends from QReadLinkAction
     Q_INVOKABLE QOutputPin *result() const;
     Q_INVOKABLE void setResult(QOutputPin *result);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QReadLinkAction(QReadLinkActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

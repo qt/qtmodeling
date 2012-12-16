@@ -74,6 +74,22 @@ QDestructionOccurrenceSpecification::~QDestructionOccurrenceSpecification()
 {
 }
 
+void QDestructionOccurrenceSpecification::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QDestructionOccurrenceSpecification) *>("QT_PREPEND_NAMESPACE_QTUML(QDestructionOccurrenceSpecification) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QDestructionOccurrenceSpecification) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QDestructionOccurrenceSpecification) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QDestructionOccurrenceSpecification) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QDestructionOccurrenceSpecification) *> *");
+    qRegisterMetaType<QDestructionOccurrenceSpecification *>("QDestructionOccurrenceSpecification *");
+    qRegisterMetaType<const QSet<QDestructionOccurrenceSpecification *> *>("const QSet<QDestructionOccurrenceSpecification *> *");
+    qRegisterMetaType<const QList<QDestructionOccurrenceSpecification *> *>("const QList<QDestructionOccurrenceSpecification *> *");
+
+
+    QMessageOccurrenceSpecification::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qdestructionoccurrencespecification.cpp"
 
 QT_END_NAMESPACE_QTUML

@@ -74,6 +74,22 @@ QCommunicationPath::~QCommunicationPath()
 {
 }
 
+void QCommunicationPath::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QCommunicationPath) *>("QT_PREPEND_NAMESPACE_QTUML(QCommunicationPath) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QCommunicationPath) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QCommunicationPath) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QCommunicationPath) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QCommunicationPath) *> *");
+    qRegisterMetaType<QCommunicationPath *>("QCommunicationPath *");
+    qRegisterMetaType<const QSet<QCommunicationPath *> *>("const QSet<QCommunicationPath *> *");
+    qRegisterMetaType<const QList<QCommunicationPath *> *>("const QList<QCommunicationPath *> *");
+
+
+    QAssociation::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qcommunicationpath.cpp"
 
 QT_END_NAMESPACE_QTUML

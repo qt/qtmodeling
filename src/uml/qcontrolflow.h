@@ -64,6 +64,7 @@ class Q_UML_EXPORT QControlFlow : public QActivityEdge
 public:
     Q_INVOKABLE explicit QControlFlow(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QControlFlow();
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QControlFlow(QControlFlowPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

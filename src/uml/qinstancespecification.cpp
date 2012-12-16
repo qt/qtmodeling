@@ -379,6 +379,46 @@ void QInstanceSpecification::removeSlot_(QSlot *slot_)
     }
 }
 
+void QInstanceSpecification::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInstanceSpecification) *>("QT_PREPEND_NAMESPACE_QTUML(QInstanceSpecification) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInstanceSpecification) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInstanceSpecification) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInstanceSpecification) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInstanceSpecification) *> *");
+    qRegisterMetaType<QInstanceSpecification *>("QInstanceSpecification *");
+    qRegisterMetaType<const QSet<QInstanceSpecification *> *>("const QSet<QInstanceSpecification *> *");
+    qRegisterMetaType<const QList<QInstanceSpecification *> *>("const QList<QInstanceSpecification *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *>("QT_PREPEND_NAMESPACE_QTUML(QClassifier) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *");
+    qRegisterMetaType<QClassifier *>("QClassifier *");
+    qRegisterMetaType<const QSet<QClassifier *> *>("const QSet<QClassifier *> *");
+    qRegisterMetaType<const QList<QClassifier *> *>("const QList<QClassifier *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QSlot) *>("QT_PREPEND_NAMESPACE_QTUML(QSlot) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QSlot) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QSlot) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QSlot) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QSlot) *> *");
+    qRegisterMetaType<QSlot *>("QSlot *");
+    qRegisterMetaType<const QSet<QSlot *> *>("const QSet<QSlot *> *");
+    qRegisterMetaType<const QList<QSlot *> *>("const QList<QSlot *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *>("QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *");
+    qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
+    qRegisterMetaType<const QSet<QValueSpecification *> *>("const QSet<QValueSpecification *> *");
+    qRegisterMetaType<const QList<QValueSpecification *> *>("const QList<QValueSpecification *> *");
+
+
+    QWrappedObject::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qinstancespecification.cpp"
 
 QT_END_NAMESPACE_QTUML

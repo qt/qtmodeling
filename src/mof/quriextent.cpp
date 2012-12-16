@@ -92,6 +92,30 @@ QElement *QURIExtent::element(QString uri) const
     return 0; // change here to your derived return
 }
 
+void QURIExtent::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QURIExtent) *>("QT_PREPEND_NAMESPACE_QTMOF(QURIExtent) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QURIExtent) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QURIExtent) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QURIExtent) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QURIExtent) *> *");
+    qRegisterMetaType<QURIExtent *>("QURIExtent *");
+    qRegisterMetaType<const QSet<QURIExtent *> *>("const QSet<QURIExtent *> *");
+    qRegisterMetaType<const QList<QURIExtent *> *>("const QList<QURIExtent *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QElement) *>("QT_PREPEND_NAMESPACE_QTMOF(QElement) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QElement) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QElement) *> *");
+    qRegisterMetaType<QElement *>("QElement *");
+    qRegisterMetaType<const QSet<QElement *> *>("const QSet<QElement *> *");
+    qRegisterMetaType<const QList<QElement *> *>("const QList<QElement *> *");
+
+
+    QExtent::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_quriextent.cpp"
 
 QT_END_NAMESPACE_QTMOF

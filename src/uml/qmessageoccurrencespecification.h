@@ -93,6 +93,7 @@ public:
     // Association ends from aggregated QMessageEnd
     Q_INVOKABLE QMessage *message() const;
     Q_INVOKABLE void setMessage(QMessage *message);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QMessageOccurrenceSpecification(QMessageOccurrenceSpecificationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

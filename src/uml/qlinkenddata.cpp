@@ -165,6 +165,46 @@ void QLinkEndData::removeQualifier(QQualifierValue *qualifier)
     }
 }
 
+void QLinkEndData::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QLinkEndData) *>("QT_PREPEND_NAMESPACE_QTUML(QLinkEndData) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QLinkEndData) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QLinkEndData) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QLinkEndData) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QLinkEndData) *> *");
+    qRegisterMetaType<QLinkEndData *>("QLinkEndData *");
+    qRegisterMetaType<const QSet<QLinkEndData *> *>("const QSet<QLinkEndData *> *");
+    qRegisterMetaType<const QList<QLinkEndData *> *>("const QList<QLinkEndData *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QProperty) *>("QT_PREPEND_NAMESPACE_QTUML(QProperty) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QProperty) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QProperty) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QProperty) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QProperty) *> *");
+    qRegisterMetaType<QProperty *>("QProperty *");
+    qRegisterMetaType<const QSet<QProperty *> *>("const QSet<QProperty *> *");
+    qRegisterMetaType<const QList<QProperty *> *>("const QList<QProperty *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QQualifierValue) *>("QT_PREPEND_NAMESPACE_QTUML(QQualifierValue) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QQualifierValue) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QQualifierValue) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QQualifierValue) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QQualifierValue) *> *");
+    qRegisterMetaType<QQualifierValue *>("QQualifierValue *");
+    qRegisterMetaType<const QSet<QQualifierValue *> *>("const QSet<QQualifierValue *> *");
+    qRegisterMetaType<const QList<QQualifierValue *> *>("const QList<QQualifierValue *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QInputPin) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
+    qRegisterMetaType<QInputPin *>("QInputPin *");
+    qRegisterMetaType<const QSet<QInputPin *> *>("const QSet<QInputPin *> *");
+    qRegisterMetaType<const QList<QInputPin *> *>("const QList<QInputPin *> *");
+
+
+    QElement::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qlinkenddata.cpp"
 
 QT_END_NAMESPACE_QTUML

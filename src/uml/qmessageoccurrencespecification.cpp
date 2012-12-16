@@ -214,6 +214,22 @@ void QMessageOccurrenceSpecification::setMessage(QMessage *message)
     (qwrappedobject_cast<QMessageEnd *>(this))->setMessage(message);
 }
 
+void QMessageOccurrenceSpecification::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QMessageOccurrenceSpecification) *>("QT_PREPEND_NAMESPACE_QTUML(QMessageOccurrenceSpecification) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QMessageOccurrenceSpecification) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QMessageOccurrenceSpecification) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QMessageOccurrenceSpecification) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QMessageOccurrenceSpecification) *> *");
+    qRegisterMetaType<QMessageOccurrenceSpecification *>("QMessageOccurrenceSpecification *");
+    qRegisterMetaType<const QSet<QMessageOccurrenceSpecification *> *>("const QSet<QMessageOccurrenceSpecification *> *");
+    qRegisterMetaType<const QList<QMessageOccurrenceSpecification *> *>("const QList<QMessageOccurrenceSpecification *> *");
+
+
+    QWrappedObject::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qmessageoccurrencespecification.cpp"
 
 QT_END_NAMESPACE_QTUML

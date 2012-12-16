@@ -76,6 +76,7 @@ public:
     Q_INVOKABLE void setRequest(QInputPin *request);
     Q_INVOKABLE QInputPin *target() const;
     Q_INVOKABLE void setTarget(QInputPin *target);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QSendObjectAction(QSendObjectActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

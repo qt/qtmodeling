@@ -77,6 +77,7 @@ public:
     Q_INVOKABLE const QSet<QLinkEndCreationData *> *endData() const;
     Q_INVOKABLE void addEndData(QLinkEndCreationData *endData);
     Q_INVOKABLE void removeEndData(QLinkEndCreationData *endData);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QCreateLinkAction(QCreateLinkActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

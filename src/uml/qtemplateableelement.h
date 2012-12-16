@@ -86,6 +86,7 @@ public:
     // Operations
     Q_INVOKABLE bool isTemplate() const;
     Q_INVOKABLE const QSet<QParameterableElement *> *parameterableElements() const;
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QTemplateableElement(QTemplateableElementPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

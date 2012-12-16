@@ -111,6 +111,22 @@ void QInformationItem::removeRepresented(QClassifier *represented)
     }
 }
 
+void QInformationItem::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInformationItem) *>("QT_PREPEND_NAMESPACE_QTUML(QInformationItem) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInformationItem) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInformationItem) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInformationItem) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInformationItem) *> *");
+    qRegisterMetaType<QInformationItem *>("QInformationItem *");
+    qRegisterMetaType<const QSet<QInformationItem *> *>("const QSet<QInformationItem *> *");
+    qRegisterMetaType<const QList<QInformationItem *> *>("const QList<QInformationItem *> *");
+
+
+    QClassifier::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qinformationitem.cpp"
 
 QT_END_NAMESPACE_QTUML

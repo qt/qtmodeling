@@ -74,6 +74,22 @@ QExecutionEnvironment::~QExecutionEnvironment()
 {
 }
 
+void QExecutionEnvironment::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QExecutionEnvironment) *>("QT_PREPEND_NAMESPACE_QTUML(QExecutionEnvironment) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QExecutionEnvironment) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QExecutionEnvironment) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QExecutionEnvironment) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QExecutionEnvironment) *> *");
+    qRegisterMetaType<QExecutionEnvironment *>("QExecutionEnvironment *");
+    qRegisterMetaType<const QSet<QExecutionEnvironment *> *>("const QSet<QExecutionEnvironment *> *");
+    qRegisterMetaType<const QList<QExecutionEnvironment *> *>("const QList<QExecutionEnvironment *> *");
+
+
+    QNode::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qexecutionenvironment.cpp"
 
 QT_END_NAMESPACE_QTUML

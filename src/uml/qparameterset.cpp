@@ -160,6 +160,38 @@ void QParameterSet::removeCondition(QConstraint *condition)
     }
 }
 
+void QParameterSet::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QParameterSet) *>("QT_PREPEND_NAMESPACE_QTUML(QParameterSet) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QParameterSet) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QParameterSet) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QParameterSet) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QParameterSet) *> *");
+    qRegisterMetaType<QParameterSet *>("QParameterSet *");
+    qRegisterMetaType<const QSet<QParameterSet *> *>("const QSet<QParameterSet *> *");
+    qRegisterMetaType<const QList<QParameterSet *> *>("const QList<QParameterSet *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QConstraint) *>("QT_PREPEND_NAMESPACE_QTUML(QConstraint) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QConstraint) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QConstraint) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QConstraint) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QConstraint) *> *");
+    qRegisterMetaType<QConstraint *>("QConstraint *");
+    qRegisterMetaType<const QSet<QConstraint *> *>("const QSet<QConstraint *> *");
+    qRegisterMetaType<const QList<QConstraint *> *>("const QList<QConstraint *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QParameter) *>("QT_PREPEND_NAMESPACE_QTUML(QParameter) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QParameter) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QParameter) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QParameter) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QParameter) *> *");
+    qRegisterMetaType<QParameter *>("QParameter *");
+    qRegisterMetaType<const QSet<QParameter *> *>("const QSet<QParameter *> *");
+    qRegisterMetaType<const QList<QParameter *> *>("const QList<QParameter *> *");
+
+
+    QNamedElement::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qparameterset.cpp"
 
 QT_END_NAMESPACE_QTUML

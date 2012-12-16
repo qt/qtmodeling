@@ -77,6 +77,7 @@ public:
     Q_INVOKABLE const QSet<QProtocolConformance *> *conformance() const;
     Q_INVOKABLE void addConformance(QProtocolConformance *conformance);
     Q_INVOKABLE void removeConformance(QProtocolConformance *conformance);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QProtocolStateMachine(QProtocolStateMachinePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

@@ -130,6 +130,7 @@ public:
     Q_INVOKABLE void setOperation(QOperation *operation);
     Q_INVOKABLE QValueSpecification *defaultValue() const;
     Q_INVOKABLE void setDefaultValue(QValueSpecification *defaultValue);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QParameter(QParameterPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

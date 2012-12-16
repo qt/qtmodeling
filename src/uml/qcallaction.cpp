@@ -145,6 +145,30 @@ void QCallAction::removeResult(QOutputPin *result)
     }
 }
 
+void QCallAction::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QCallAction) *>("QT_PREPEND_NAMESPACE_QTUML(QCallAction) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QCallAction) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QCallAction) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QCallAction) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QCallAction) *> *");
+    qRegisterMetaType<QCallAction *>("QCallAction *");
+    qRegisterMetaType<const QSet<QCallAction *> *>("const QSet<QCallAction *> *");
+    qRegisterMetaType<const QList<QCallAction *> *>("const QList<QCallAction *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *");
+    qRegisterMetaType<QOutputPin *>("QOutputPin *");
+    qRegisterMetaType<const QSet<QOutputPin *> *>("const QSet<QOutputPin *> *");
+    qRegisterMetaType<const QList<QOutputPin *> *>("const QList<QOutputPin *> *");
+
+
+    QInvocationAction::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qcallaction.cpp"
 
 QT_END_NAMESPACE_QTUML

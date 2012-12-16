@@ -87,6 +87,7 @@ public:
 
     // Operations
     Q_INVOKABLE const QSet<QNamedElement *> *inherit(const QSet<QNamedElement *> *inhs) const;
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QDataType(QDataTypePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

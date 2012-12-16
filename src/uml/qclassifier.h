@@ -219,6 +219,7 @@ public:
     // Overriden methods for subsetted properties
     Q_INVOKABLE void addClientDependency(QWrappedObjectPointer<QSubstitution> substitution);
     Q_INVOKABLE void removeClientDependency(QWrappedObjectPointer<QSubstitution> substitution);
+    virtual void registerMetaTypes() const;
 
     // Classes which access read-only opposite properties should be friend
     friend class QFeaturePrivate;

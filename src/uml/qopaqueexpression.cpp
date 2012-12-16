@@ -225,6 +225,38 @@ qint32 QOpaqueExpression::value() const
     return qint32(); // change here to your derived return
 }
 
+void QOpaqueExpression::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QOpaqueExpression) *>("QT_PREPEND_NAMESPACE_QTUML(QOpaqueExpression) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QOpaqueExpression) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QOpaqueExpression) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QOpaqueExpression) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QOpaqueExpression) *> *");
+    qRegisterMetaType<QOpaqueExpression *>("QOpaqueExpression *");
+    qRegisterMetaType<const QSet<QOpaqueExpression *> *>("const QSet<QOpaqueExpression *> *");
+    qRegisterMetaType<const QList<QOpaqueExpression *> *>("const QList<QOpaqueExpression *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *>("QT_PREPEND_NAMESPACE_QTUML(QBehavior) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *");
+    qRegisterMetaType<QBehavior *>("QBehavior *");
+    qRegisterMetaType<const QSet<QBehavior *> *>("const QSet<QBehavior *> *");
+    qRegisterMetaType<const QList<QBehavior *> *>("const QList<QBehavior *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QParameter) *>("QT_PREPEND_NAMESPACE_QTUML(QParameter) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QParameter) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QParameter) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QParameter) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QParameter) *> *");
+    qRegisterMetaType<QParameter *>("QParameter *");
+    qRegisterMetaType<const QSet<QParameter *> *>("const QSet<QParameter *> *");
+    qRegisterMetaType<const QList<QParameter *> *>("const QList<QParameter *> *");
+
+
+    QValueSpecification::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qopaqueexpression.cpp"
 
 QT_END_NAMESPACE_QTUML

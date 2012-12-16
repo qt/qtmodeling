@@ -71,6 +71,7 @@ public:
     Q_INVOKABLE void clear();
     Q_INVOKABLE bool remove(const QMofObject *object);
     Q_INVOKABLE qint32 size() const;
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QReflectiveCollection(QReflectiveCollectionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

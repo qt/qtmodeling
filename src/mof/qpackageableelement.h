@@ -73,6 +73,7 @@ public:
     // Attributes from QPackageableElement
     Q_INVOKABLE QtMof::VisibilityKind visibility() const;
     Q_INVOKABLE void setVisibility(QtMof::VisibilityKind visibility);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QPackageableElement(QPackageableElementPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

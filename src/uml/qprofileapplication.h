@@ -82,6 +82,7 @@ public:
     Q_INVOKABLE void setApplyingPackage(QPackage *applyingPackage);
     Q_INVOKABLE QProfile *appliedProfile() const;
     Q_INVOKABLE void setAppliedProfile(QProfile *appliedProfile);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QProfileApplication(QProfileApplicationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

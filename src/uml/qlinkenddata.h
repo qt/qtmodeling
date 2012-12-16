@@ -85,6 +85,7 @@ public:
     Q_INVOKABLE const QSet<QQualifierValue *> *qualifiers() const;
     Q_INVOKABLE void addQualifier(QQualifierValue *qualifier);
     Q_INVOKABLE void removeQualifier(QQualifierValue *qualifier);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QLinkEndData(QLinkEndDataPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

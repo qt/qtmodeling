@@ -74,6 +74,22 @@ QMergeNode::~QMergeNode()
 {
 }
 
+void QMergeNode::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QMergeNode) *>("QT_PREPEND_NAMESPACE_QTUML(QMergeNode) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QMergeNode) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QMergeNode) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QMergeNode) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QMergeNode) *> *");
+    qRegisterMetaType<QMergeNode *>("QMergeNode *");
+    qRegisterMetaType<const QSet<QMergeNode *> *>("const QSet<QMergeNode *> *");
+    qRegisterMetaType<const QList<QMergeNode *> *>("const QList<QMergeNode *> *");
+
+
+    QControlNode::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qmergenode.cpp"
 
 QT_END_NAMESPACE_QTUML

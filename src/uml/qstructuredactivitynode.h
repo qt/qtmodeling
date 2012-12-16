@@ -200,6 +200,7 @@ public:
     Q_INVOKABLE void removeVariable(QVariable *variable);
     Q_INVOKABLE QActivity *activity() const;
     Q_INVOKABLE void setActivity(QActivity *activity);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QStructuredActivityNode(QStructuredActivityNodePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

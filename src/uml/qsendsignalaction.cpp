@@ -133,6 +133,38 @@ void QSendSignalAction::setSignal(QSignal *signal)
     }
 }
 
+void QSendSignalAction::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QSendSignalAction) *>("QT_PREPEND_NAMESPACE_QTUML(QSendSignalAction) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QSendSignalAction) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QSendSignalAction) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QSendSignalAction) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QSendSignalAction) *> *");
+    qRegisterMetaType<QSendSignalAction *>("QSendSignalAction *");
+    qRegisterMetaType<const QSet<QSendSignalAction *> *>("const QSet<QSendSignalAction *> *");
+    qRegisterMetaType<const QList<QSendSignalAction *> *>("const QList<QSendSignalAction *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QSignal) *>("QT_PREPEND_NAMESPACE_QTUML(QSignal) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QSignal) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QSignal) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QSignal) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QSignal) *> *");
+    qRegisterMetaType<QSignal *>("QSignal *");
+    qRegisterMetaType<const QSet<QSignal *> *>("const QSet<QSignal *> *");
+    qRegisterMetaType<const QList<QSignal *> *>("const QList<QSignal *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QInputPin) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
+    qRegisterMetaType<QInputPin *>("QInputPin *");
+    qRegisterMetaType<const QSet<QInputPin *> *>("const QSet<QInputPin *> *");
+    qRegisterMetaType<const QList<QInputPin *> *>("const QList<QInputPin *> *");
+
+
+    QInvocationAction::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qsendsignalaction.cpp"
 
 QT_END_NAMESPACE_QTUML

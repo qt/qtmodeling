@@ -270,6 +270,22 @@ void QNode::removeNestedNode(QNode *nestedNode)
     }
 }
 
+void QNode::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QNode) *>("QT_PREPEND_NAMESPACE_QTUML(QNode) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QNode) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QNode) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QNode) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QNode) *> *");
+    qRegisterMetaType<QNode *>("QNode *");
+    qRegisterMetaType<const QSet<QNode *> *>("const QSet<QNode *> *");
+    qRegisterMetaType<const QList<QNode *> *>("const QList<QNode *> *");
+
+
+    QWrappedObject::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qnode.cpp"
 
 QT_END_NAMESPACE_QTUML

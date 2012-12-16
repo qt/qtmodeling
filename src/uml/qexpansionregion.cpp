@@ -184,6 +184,30 @@ void QExpansionRegion::removeOutputElement(QExpansionNode *outputElement)
     }
 }
 
+void QExpansionRegion::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QExpansionRegion) *>("QT_PREPEND_NAMESPACE_QTUML(QExpansionRegion) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QExpansionRegion) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QExpansionRegion) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QExpansionRegion) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QExpansionRegion) *> *");
+    qRegisterMetaType<QExpansionRegion *>("QExpansionRegion *");
+    qRegisterMetaType<const QSet<QExpansionRegion *> *>("const QSet<QExpansionRegion *> *");
+    qRegisterMetaType<const QList<QExpansionRegion *> *>("const QList<QExpansionRegion *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QExpansionNode) *>("QT_PREPEND_NAMESPACE_QTUML(QExpansionNode) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QExpansionNode) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QExpansionNode) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QExpansionNode) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QExpansionNode) *> *");
+    qRegisterMetaType<QExpansionNode *>("QExpansionNode *");
+    qRegisterMetaType<const QSet<QExpansionNode *> *>("const QSet<QExpansionNode *> *");
+    qRegisterMetaType<const QList<QExpansionNode *> *>("const QList<QExpansionNode *> *");
+
+
+    QStructuredActivityNode::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qexpansionregion.cpp"
 
 QT_END_NAMESPACE_QTUML

@@ -79,6 +79,8 @@ public:
     bool setProperty(const char *name, const QVariant &value);
     QVariant property(const char *name) const;
 
+    virtual void registerMetaTypes() const;
+
 protected:
     explicit QWrappedObject(QWrappedObjectPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     void initialize(QWrappedObject *wrapper);

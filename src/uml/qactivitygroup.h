@@ -86,6 +86,7 @@ public:
     Q_INVOKABLE const QSet<QActivityGroup *> *subgroups() const;
     Q_INVOKABLE const QSet<QActivityEdge *> *containedEdges() const;
     Q_INVOKABLE QActivityGroup *superGroup() const;
+    virtual void registerMetaTypes() const;
 
     // Classes which access read-only opposite properties should be friend
     friend class QActivityEdgePrivate;

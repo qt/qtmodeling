@@ -78,6 +78,7 @@ public:
     // Association ends from QAddVariableValueAction
     Q_INVOKABLE QInputPin *insertAt() const;
     Q_INVOKABLE void setInsertAt(QInputPin *insertAt);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QAddVariableValueAction(QAddVariableValueActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

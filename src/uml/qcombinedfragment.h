@@ -91,6 +91,7 @@ public:
     Q_INVOKABLE const QList<QInteractionOperand *> *operands() const;
     Q_INVOKABLE void addOperand(QInteractionOperand *operand);
     Q_INVOKABLE void removeOperand(QInteractionOperand *operand);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QCombinedFragment(QCombinedFragmentPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

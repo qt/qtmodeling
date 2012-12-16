@@ -102,6 +102,30 @@ void QSignalEvent::setSignal(QSignal *signal)
     }
 }
 
+void QSignalEvent::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QSignalEvent) *>("QT_PREPEND_NAMESPACE_QTUML(QSignalEvent) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QSignalEvent) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QSignalEvent) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QSignalEvent) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QSignalEvent) *> *");
+    qRegisterMetaType<QSignalEvent *>("QSignalEvent *");
+    qRegisterMetaType<const QSet<QSignalEvent *> *>("const QSet<QSignalEvent *> *");
+    qRegisterMetaType<const QList<QSignalEvent *> *>("const QList<QSignalEvent *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QSignal) *>("QT_PREPEND_NAMESPACE_QTUML(QSignal) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QSignal) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QSignal) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QSignal) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QSignal) *> *");
+    qRegisterMetaType<QSignal *>("QSignal *");
+    qRegisterMetaType<const QSet<QSignal *> *>("const QSet<QSignal *> *");
+    qRegisterMetaType<const QList<QSignal *> *>("const QList<QSignal *> *");
+
+
+    QMessageEvent::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qsignalevent.cpp"
 
 QT_END_NAMESPACE_QTUML

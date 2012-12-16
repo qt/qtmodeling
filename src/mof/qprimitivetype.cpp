@@ -74,6 +74,22 @@ QPrimitiveType::~QPrimitiveType()
 {
 }
 
+void QPrimitiveType::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QPrimitiveType) *>("QT_PREPEND_NAMESPACE_QTMOF(QPrimitiveType) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QPrimitiveType) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QPrimitiveType) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QPrimitiveType) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QPrimitiveType) *> *");
+    qRegisterMetaType<QPrimitiveType *>("QPrimitiveType *");
+    qRegisterMetaType<const QSet<QPrimitiveType *> *>("const QSet<QPrimitiveType *> *");
+    qRegisterMetaType<const QList<QPrimitiveType *> *>("const QList<QPrimitiveType *> *");
+
+
+    QDataType::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qprimitivetype.cpp"
 
 QT_END_NAMESPACE_QTMOF

@@ -161,6 +161,7 @@ public:
     // Operations
     Q_INVOKABLE QStateMachine *containingStateMachine() const;
     Q_INVOKABLE bool isConsistentWith(const QRedefinableElement *redefinee) const;
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QTransition(QTransitionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

@@ -77,6 +77,7 @@ public:
     Q_INVOKABLE const QSet<QExceptionHandler *> *handlers() const;
     Q_INVOKABLE void addHandler(QExceptionHandler *handler);
     Q_INVOKABLE void removeHandler(QExceptionHandler *handler);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QExecutableNode(QExecutableNodePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

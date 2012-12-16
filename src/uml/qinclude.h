@@ -108,6 +108,7 @@ public:
     Q_INVOKABLE void setIncludingCase(QUseCase *includingCase);
     Q_INVOKABLE QUseCase *addition() const;
     Q_INVOKABLE void setAddition(QUseCase *addition);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QInclude(QIncludePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

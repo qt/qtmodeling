@@ -79,6 +79,7 @@ public:
     Q_INVOKABLE void setLocation(QString location);
     Q_INVOKABLE QString content() const;
     Q_INVOKABLE void setContent(QString content);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QImage(QImagePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

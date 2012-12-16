@@ -76,6 +76,7 @@ public:
     Q_INVOKABLE void setRegionAsOutput(QExpansionRegion *regionAsOutput);
     Q_INVOKABLE QExpansionRegion *regionAsInput() const;
     Q_INVOKABLE void setRegionAsInput(QExpansionRegion *regionAsInput);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QExpansionNode(QExpansionNodePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

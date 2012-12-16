@@ -89,6 +89,7 @@ public:
     Q_INVOKABLE const QSet<QExpansionNode *> *outputElements() const;
     Q_INVOKABLE void addOutputElement(QExpansionNode *outputElement);
     Q_INVOKABLE void removeOutputElement(QExpansionNode *outputElement);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QExpansionRegion(QExpansionRegionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

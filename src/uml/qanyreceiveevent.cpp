@@ -74,6 +74,22 @@ QAnyReceiveEvent::~QAnyReceiveEvent()
 {
 }
 
+void QAnyReceiveEvent::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QAnyReceiveEvent) *>("QT_PREPEND_NAMESPACE_QTUML(QAnyReceiveEvent) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QAnyReceiveEvent) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QAnyReceiveEvent) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QAnyReceiveEvent) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QAnyReceiveEvent) *> *");
+    qRegisterMetaType<QAnyReceiveEvent *>("QAnyReceiveEvent *");
+    qRegisterMetaType<const QSet<QAnyReceiveEvent *> *>("const QSet<QAnyReceiveEvent *> *");
+    qRegisterMetaType<const QList<QAnyReceiveEvent *> *>("const QList<QAnyReceiveEvent *> *");
+
+
+    QMessageEvent::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qanyreceiveevent.cpp"
 
 QT_END_NAMESPACE_QTUML

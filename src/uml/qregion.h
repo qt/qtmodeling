@@ -148,6 +148,7 @@ public:
     Q_INVOKABLE QStateMachine *containingStateMachine() const;
     Q_INVOKABLE bool isConsistentWith(const QRedefinableElement *redefinee) const;
     Q_INVOKABLE bool isRedefinitionContextValid(const QRegion *redefined) const;
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QRegion(QRegionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

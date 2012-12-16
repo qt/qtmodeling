@@ -85,6 +85,7 @@ public:
     Q_INVOKABLE const QSet<QGeneralOrdering *> *toBefore() const;
     Q_INVOKABLE void addToBefore(QGeneralOrdering *toBefore);
     Q_INVOKABLE void removeToBefore(QGeneralOrdering *toBefore);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QOccurrenceSpecification(QOccurrenceSpecificationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

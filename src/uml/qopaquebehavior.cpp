@@ -144,6 +144,22 @@ void QOpaqueBehavior::removeBody(QString body)
     }
 }
 
+void QOpaqueBehavior::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QOpaqueBehavior) *>("QT_PREPEND_NAMESPACE_QTUML(QOpaqueBehavior) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QOpaqueBehavior) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QOpaqueBehavior) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QOpaqueBehavior) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QOpaqueBehavior) *> *");
+    qRegisterMetaType<QOpaqueBehavior *>("QOpaqueBehavior *");
+    qRegisterMetaType<const QSet<QOpaqueBehavior *> *>("const QSet<QOpaqueBehavior *> *");
+    qRegisterMetaType<const QList<QOpaqueBehavior *> *>("const QList<QOpaqueBehavior *> *");
+
+
+    QBehavior::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qopaquebehavior.cpp"
 
 QT_END_NAMESPACE_QTUML

@@ -82,6 +82,7 @@ public:
     Q_INVOKABLE const QSet<QElementImport *> *metaclassReferences() const;
     Q_INVOKABLE void addMetaclassReference(QElementImport *metaclassReference);
     Q_INVOKABLE void removeMetaclassReference(QElementImport *metaclassReference);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QProfile(QProfilePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

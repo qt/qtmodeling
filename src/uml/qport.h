@@ -103,6 +103,7 @@ public:
     // Overriden methods for subsetted properties
     Q_INVOKABLE void addRedefinedProperty(QWrappedObjectPointer<QPort> redefinedPort);
     Q_INVOKABLE void removeRedefinedProperty(QWrappedObjectPointer<QPort> redefinedPort);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QPort(QPortPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

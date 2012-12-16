@@ -74,6 +74,22 @@ QObservation::~QObservation()
 {
 }
 
+void QObservation::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QObservation) *>("QT_PREPEND_NAMESPACE_QTUML(QObservation) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QObservation) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QObservation) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QObservation) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QObservation) *> *");
+    qRegisterMetaType<QObservation *>("QObservation *");
+    qRegisterMetaType<const QSet<QObservation *> *>("const QSet<QObservation *> *");
+    qRegisterMetaType<const QList<QObservation *> *>("const QList<QObservation *> *");
+
+
+    QPackageableElement::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qobservation.cpp"
 
 QT_END_NAMESPACE_QTUML

@@ -771,6 +771,30 @@ void QCollaboration::removeCollaborationRole(QConnectableElement *collaborationR
     }
 }
 
+void QCollaboration::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QCollaboration) *>("QT_PREPEND_NAMESPACE_QTUML(QCollaboration) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QCollaboration) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QCollaboration) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QCollaboration) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QCollaboration) *> *");
+    qRegisterMetaType<QCollaboration *>("QCollaboration *");
+    qRegisterMetaType<const QSet<QCollaboration *> *>("const QSet<QCollaboration *> *");
+    qRegisterMetaType<const QList<QCollaboration *> *>("const QList<QCollaboration *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QConnectableElement) *>("QT_PREPEND_NAMESPACE_QTUML(QConnectableElement) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QConnectableElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QConnectableElement) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QConnectableElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QConnectableElement) *> *");
+    qRegisterMetaType<QConnectableElement *>("QConnectableElement *");
+    qRegisterMetaType<const QSet<QConnectableElement *> *>("const QSet<QConnectableElement *> *");
+    qRegisterMetaType<const QList<QConnectableElement *> *>("const QList<QConnectableElement *> *");
+
+
+    QWrappedObject::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qcollaboration.cpp"
 
 QT_END_NAMESPACE_QTUML

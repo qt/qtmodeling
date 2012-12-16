@@ -369,6 +369,46 @@ void QExtend::setCondition(QConstraint *condition)
     }
 }
 
+void QExtend::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QExtend) *>("QT_PREPEND_NAMESPACE_QTUML(QExtend) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QExtend) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QExtend) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QExtend) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QExtend) *> *");
+    qRegisterMetaType<QExtend *>("QExtend *");
+    qRegisterMetaType<const QSet<QExtend *> *>("const QSet<QExtend *> *");
+    qRegisterMetaType<const QList<QExtend *> *>("const QList<QExtend *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QConstraint) *>("QT_PREPEND_NAMESPACE_QTUML(QConstraint) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QConstraint) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QConstraint) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QConstraint) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QConstraint) *> *");
+    qRegisterMetaType<QConstraint *>("QConstraint *");
+    qRegisterMetaType<const QSet<QConstraint *> *>("const QSet<QConstraint *> *");
+    qRegisterMetaType<const QList<QConstraint *> *>("const QList<QConstraint *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QUseCase) *>("QT_PREPEND_NAMESPACE_QTUML(QUseCase) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QUseCase) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QUseCase) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QUseCase) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QUseCase) *> *");
+    qRegisterMetaType<QUseCase *>("QUseCase *");
+    qRegisterMetaType<const QSet<QUseCase *> *>("const QSet<QUseCase *> *");
+    qRegisterMetaType<const QList<QUseCase *> *>("const QList<QUseCase *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QExtensionPoint) *>("QT_PREPEND_NAMESPACE_QTUML(QExtensionPoint) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QExtensionPoint) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QExtensionPoint) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QExtensionPoint) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QExtensionPoint) *> *");
+    qRegisterMetaType<QExtensionPoint *>("QExtensionPoint *");
+    qRegisterMetaType<const QSet<QExtensionPoint *> *>("const QSet<QExtensionPoint *> *");
+    qRegisterMetaType<const QList<QExtensionPoint *> *>("const QList<QExtensionPoint *> *");
+
+
+    QWrappedObject::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qextend.cpp"
 
 QT_END_NAMESPACE_QTUML

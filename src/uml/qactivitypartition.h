@@ -101,6 +101,7 @@ public:
     Q_INVOKABLE const QSet<QActivityEdge *> *edges() const;
     Q_INVOKABLE void addEdge(QActivityEdge *edge);
     Q_INVOKABLE void removeEdge(QActivityEdge *edge);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QActivityPartition(QActivityPartitionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

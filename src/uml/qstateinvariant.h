@@ -77,6 +77,7 @@ public:
     Q_INVOKABLE void setInvariant(QConstraint *invariant);
     Q_INVOKABLE QLifeline *covered() const;
     Q_INVOKABLE void setCovered(QLifeline *covered);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QStateInvariant(QStateInvariantPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

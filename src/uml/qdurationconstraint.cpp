@@ -140,6 +140,30 @@ void QDurationConstraint::setSpecification(QDurationInterval *specification)
     }
 }
 
+void QDurationConstraint::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QDurationConstraint) *>("QT_PREPEND_NAMESPACE_QTUML(QDurationConstraint) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QDurationConstraint) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QDurationConstraint) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QDurationConstraint) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QDurationConstraint) *> *");
+    qRegisterMetaType<QDurationConstraint *>("QDurationConstraint *");
+    qRegisterMetaType<const QSet<QDurationConstraint *> *>("const QSet<QDurationConstraint *> *");
+    qRegisterMetaType<const QList<QDurationConstraint *> *>("const QList<QDurationConstraint *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QDurationInterval) *>("QT_PREPEND_NAMESPACE_QTUML(QDurationInterval) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QDurationInterval) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QDurationInterval) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QDurationInterval) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QDurationInterval) *> *");
+    qRegisterMetaType<QDurationInterval *>("QDurationInterval *");
+    qRegisterMetaType<const QSet<QDurationInterval *> *>("const QSet<QDurationInterval *> *");
+    qRegisterMetaType<const QList<QDurationInterval *> *>("const QList<QDurationInterval *> *");
+
+
+    QIntervalConstraint::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qdurationconstraint.cpp"
 
 QT_END_NAMESPACE_QTUML

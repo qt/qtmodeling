@@ -77,6 +77,7 @@ public:
     Q_INVOKABLE void setTarget(QInputPin *target);
     Q_INVOKABLE QSignal *signal() const;
     Q_INVOKABLE void setSignal(QSignal *signal);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QSendSignalAction(QSendSignalActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

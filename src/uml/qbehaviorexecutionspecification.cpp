@@ -102,6 +102,30 @@ void QBehaviorExecutionSpecification::setBehavior(QBehavior *behavior)
     }
 }
 
+void QBehaviorExecutionSpecification::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QBehaviorExecutionSpecification) *>("QT_PREPEND_NAMESPACE_QTUML(QBehaviorExecutionSpecification) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QBehaviorExecutionSpecification) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QBehaviorExecutionSpecification) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QBehaviorExecutionSpecification) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QBehaviorExecutionSpecification) *> *");
+    qRegisterMetaType<QBehaviorExecutionSpecification *>("QBehaviorExecutionSpecification *");
+    qRegisterMetaType<const QSet<QBehaviorExecutionSpecification *> *>("const QSet<QBehaviorExecutionSpecification *> *");
+    qRegisterMetaType<const QList<QBehaviorExecutionSpecification *> *>("const QList<QBehaviorExecutionSpecification *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *>("QT_PREPEND_NAMESPACE_QTUML(QBehavior) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *");
+    qRegisterMetaType<QBehavior *>("QBehavior *");
+    qRegisterMetaType<const QSet<QBehavior *> *>("const QSet<QBehavior *> *");
+    qRegisterMetaType<const QList<QBehavior *> *>("const QList<QBehavior *> *");
+
+
+    QExecutionSpecification::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qbehaviorexecutionspecification.cpp"
 
 QT_END_NAMESPACE_QTUML

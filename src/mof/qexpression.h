@@ -80,6 +80,7 @@ public:
     Q_INVOKABLE const QList<QValueSpecification *> *operands() const;
     Q_INVOKABLE void addOperand(QValueSpecification *operand);
     Q_INVOKABLE void removeOperand(QValueSpecification *operand);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QExpression(QExpressionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

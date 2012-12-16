@@ -281,6 +281,54 @@ void QMessage::setConnector(QConnector *connector)
     }
 }
 
+void QMessage::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QMessage) *>("QT_PREPEND_NAMESPACE_QTUML(QMessage) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QMessage) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QMessage) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QMessage) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QMessage) *> *");
+    qRegisterMetaType<QMessage *>("QMessage *");
+    qRegisterMetaType<const QSet<QMessage *> *>("const QSet<QMessage *> *");
+    qRegisterMetaType<const QList<QMessage *> *>("const QList<QMessage *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QMessageEnd) *>("QT_PREPEND_NAMESPACE_QTUML(QMessageEnd) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QMessageEnd) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QMessageEnd) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QMessageEnd) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QMessageEnd) *> *");
+    qRegisterMetaType<QMessageEnd *>("QMessageEnd *");
+    qRegisterMetaType<const QSet<QMessageEnd *> *>("const QSet<QMessageEnd *> *");
+    qRegisterMetaType<const QList<QMessageEnd *> *>("const QList<QMessageEnd *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInteraction) *>("QT_PREPEND_NAMESPACE_QTUML(QInteraction) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInteraction) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInteraction) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInteraction) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInteraction) *> *");
+    qRegisterMetaType<QInteraction *>("QInteraction *");
+    qRegisterMetaType<const QSet<QInteraction *> *>("const QSet<QInteraction *> *");
+    qRegisterMetaType<const QList<QInteraction *> *>("const QList<QInteraction *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *>("QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *");
+    qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
+    qRegisterMetaType<const QSet<QValueSpecification *> *>("const QSet<QValueSpecification *> *");
+    qRegisterMetaType<const QList<QValueSpecification *> *>("const QList<QValueSpecification *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QConnector) *>("QT_PREPEND_NAMESPACE_QTUML(QConnector) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QConnector) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QConnector) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QConnector) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QConnector) *> *");
+    qRegisterMetaType<QConnector *>("QConnector *");
+    qRegisterMetaType<const QSet<QConnector *> *>("const QSet<QConnector *> *");
+    qRegisterMetaType<const QList<QConnector *> *>("const QList<QConnector *> *");
+
+
+    QNamedElement::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qmessage.cpp"
 
 QT_END_NAMESPACE_QTUML

@@ -78,6 +78,22 @@ QAssociationClass::~QAssociationClass()
 {
 }
 
+void QAssociationClass::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QAssociationClass) *>("QT_PREPEND_NAMESPACE_QTUML(QAssociationClass) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QAssociationClass) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QAssociationClass) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QAssociationClass) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QAssociationClass) *> *");
+    qRegisterMetaType<QAssociationClass *>("QAssociationClass *");
+    qRegisterMetaType<const QSet<QAssociationClass *> *>("const QSet<QAssociationClass *> *");
+    qRegisterMetaType<const QList<QAssociationClass *> *>("const QList<QAssociationClass *> *");
+
+
+    QWrappedObject::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qassociationclass.cpp"
 
 QT_END_NAMESPACE_QTUML

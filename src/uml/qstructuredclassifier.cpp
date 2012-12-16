@@ -215,6 +215,46 @@ void QStructuredClassifier::removeOwnedConnector(QConnector *ownedConnector)
     }
 }
 
+void QStructuredClassifier::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QStructuredClassifier) *>("QT_PREPEND_NAMESPACE_QTUML(QStructuredClassifier) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QStructuredClassifier) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QStructuredClassifier) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QStructuredClassifier) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QStructuredClassifier) *> *");
+    qRegisterMetaType<QStructuredClassifier *>("QStructuredClassifier *");
+    qRegisterMetaType<const QSet<QStructuredClassifier *> *>("const QSet<QStructuredClassifier *> *");
+    qRegisterMetaType<const QList<QStructuredClassifier *> *>("const QList<QStructuredClassifier *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QProperty) *>("QT_PREPEND_NAMESPACE_QTUML(QProperty) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QProperty) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QProperty) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QProperty) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QProperty) *> *");
+    qRegisterMetaType<QProperty *>("QProperty *");
+    qRegisterMetaType<const QSet<QProperty *> *>("const QSet<QProperty *> *");
+    qRegisterMetaType<const QList<QProperty *> *>("const QList<QProperty *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QConnector) *>("QT_PREPEND_NAMESPACE_QTUML(QConnector) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QConnector) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QConnector) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QConnector) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QConnector) *> *");
+    qRegisterMetaType<QConnector *>("QConnector *");
+    qRegisterMetaType<const QSet<QConnector *> *>("const QSet<QConnector *> *");
+    qRegisterMetaType<const QList<QConnector *> *>("const QList<QConnector *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QConnectableElement) *>("QT_PREPEND_NAMESPACE_QTUML(QConnectableElement) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QConnectableElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QConnectableElement) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QConnectableElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QConnectableElement) *> *");
+    qRegisterMetaType<QConnectableElement *>("QConnectableElement *");
+    qRegisterMetaType<const QSet<QConnectableElement *> *>("const QSet<QConnectableElement *> *");
+    qRegisterMetaType<const QList<QConnectableElement *> *>("const QList<QConnectableElement *> *");
+
+
+    QClassifier::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qstructuredclassifier.cpp"
 
 QT_END_NAMESPACE_QTUML

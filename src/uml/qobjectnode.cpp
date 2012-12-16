@@ -520,6 +520,46 @@ void QObjectNode::removeInState(QState *inState)
     }
 }
 
+void QObjectNode::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QObjectNode) *>("QT_PREPEND_NAMESPACE_QTUML(QObjectNode) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QObjectNode) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QObjectNode) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QObjectNode) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QObjectNode) *> *");
+    qRegisterMetaType<QObjectNode *>("QObjectNode *");
+    qRegisterMetaType<const QSet<QObjectNode *> *>("const QSet<QObjectNode *> *");
+    qRegisterMetaType<const QList<QObjectNode *> *>("const QList<QObjectNode *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QState) *>("QT_PREPEND_NAMESPACE_QTUML(QState) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QState) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QState) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QState) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QState) *> *");
+    qRegisterMetaType<QState *>("QState *");
+    qRegisterMetaType<const QSet<QState *> *>("const QSet<QState *> *");
+    qRegisterMetaType<const QList<QState *> *>("const QList<QState *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *>("QT_PREPEND_NAMESPACE_QTUML(QBehavior) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *");
+    qRegisterMetaType<QBehavior *>("QBehavior *");
+    qRegisterMetaType<const QSet<QBehavior *> *>("const QSet<QBehavior *> *");
+    qRegisterMetaType<const QList<QBehavior *> *>("const QList<QBehavior *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *>("QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *");
+    qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
+    qRegisterMetaType<const QSet<QValueSpecification *> *>("const QSet<QValueSpecification *> *");
+    qRegisterMetaType<const QList<QValueSpecification *> *>("const QList<QValueSpecification *> *");
+
+
+    QWrappedObject::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qobjectnode.cpp"
 
 QT_END_NAMESPACE_QTUML

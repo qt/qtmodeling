@@ -136,6 +136,30 @@ void QJoinNode::setJoinSpec(QValueSpecification *joinSpec)
     }
 }
 
+void QJoinNode::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QJoinNode) *>("QT_PREPEND_NAMESPACE_QTUML(QJoinNode) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QJoinNode) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QJoinNode) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QJoinNode) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QJoinNode) *> *");
+    qRegisterMetaType<QJoinNode *>("QJoinNode *");
+    qRegisterMetaType<const QSet<QJoinNode *> *>("const QSet<QJoinNode *> *");
+    qRegisterMetaType<const QList<QJoinNode *> *>("const QList<QJoinNode *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *>("QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *");
+    qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
+    qRegisterMetaType<const QSet<QValueSpecification *> *>("const QSet<QValueSpecification *> *");
+    qRegisterMetaType<const QList<QValueSpecification *> *>("const QList<QValueSpecification *> *");
+
+
+    QControlNode::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qjoinnode.cpp"
 
 QT_END_NAMESPACE_QTUML

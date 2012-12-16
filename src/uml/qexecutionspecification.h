@@ -76,6 +76,7 @@ public:
     Q_INVOKABLE void setStart(QOccurrenceSpecification *start);
     Q_INVOKABLE QOccurrenceSpecification *finish() const;
     Q_INVOKABLE void setFinish(QOccurrenceSpecification *finish);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QExecutionSpecification(QExecutionSpecificationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

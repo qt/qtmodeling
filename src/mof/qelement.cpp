@@ -238,6 +238,38 @@ void QElement::delete_()
     qWarning("QElement::delete_: operation to be implemented");
 }
 
+void QElement::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QElement) *>("QT_PREPEND_NAMESPACE_QTMOF(QElement) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QElement) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QElement) *> *");
+    qRegisterMetaType<QElement *>("QElement *");
+    qRegisterMetaType<const QSet<QElement *> *>("const QSet<QElement *> *");
+    qRegisterMetaType<const QList<QElement *> *>("const QList<QElement *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QComment) *>("QT_PREPEND_NAMESPACE_QTMOF(QComment) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QComment) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QComment) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QComment) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QComment) *> *");
+    qRegisterMetaType<QComment *>("QComment *");
+    qRegisterMetaType<const QSet<QComment *> *>("const QSet<QComment *> *");
+    qRegisterMetaType<const QList<QComment *> *>("const QList<QComment *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QClass) *>("QT_PREPEND_NAMESPACE_QTMOF(QClass) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QClass) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QClass) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QClass) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QClass) *> *");
+    qRegisterMetaType<QClass *>("QClass *");
+    qRegisterMetaType<const QSet<QClass *> *>("const QSet<QClass *> *");
+    qRegisterMetaType<const QList<QClass *> *>("const QList<QClass *> *");
+
+
+    QMofObject::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qelement.cpp"
 
 QT_END_NAMESPACE_QTMOF

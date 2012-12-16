@@ -124,6 +124,62 @@ bool QExtent::linkExists(const QAssociation *association, const QElement *firstE
     return bool(); // change here to your derived return
 }
 
+void QExtent::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QExtent) *>("QT_PREPEND_NAMESPACE_QTMOF(QExtent) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QExtent) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QExtent) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QExtent) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QExtent) *> *");
+    qRegisterMetaType<QExtent *>("QExtent *");
+    qRegisterMetaType<const QSet<QExtent *> *>("const QSet<QExtent *> *");
+    qRegisterMetaType<const QList<QExtent *> *>("const QList<QExtent *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QLink) *>("QT_PREPEND_NAMESPACE_QTMOF(QLink) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QLink) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QLink) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QLink) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QLink) *> *");
+    qRegisterMetaType<QLink *>("QLink *");
+    qRegisterMetaType<const QSet<QLink *> *>("const QSet<QLink *> *");
+    qRegisterMetaType<const QList<QLink *> *>("const QList<QLink *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QAssociation) *>("QT_PREPEND_NAMESPACE_QTMOF(QAssociation) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QAssociation) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QAssociation) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QAssociation) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QAssociation) *> *");
+    qRegisterMetaType<QAssociation *>("QAssociation *");
+    qRegisterMetaType<const QSet<QAssociation *> *>("const QSet<QAssociation *> *");
+    qRegisterMetaType<const QList<QAssociation *> *>("const QList<QAssociation *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QClass) *>("QT_PREPEND_NAMESPACE_QTMOF(QClass) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QClass) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QClass) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QClass) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QClass) *> *");
+    qRegisterMetaType<QClass *>("QClass *");
+    qRegisterMetaType<const QSet<QClass *> *>("const QSet<QClass *> *");
+    qRegisterMetaType<const QList<QClass *> *>("const QList<QClass *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QReflectiveSequence) *>("QT_PREPEND_NAMESPACE_QTMOF(QReflectiveSequence) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QReflectiveSequence) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QReflectiveSequence) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QReflectiveSequence) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QReflectiveSequence) *> *");
+    qRegisterMetaType<QReflectiveSequence *>("QReflectiveSequence *");
+    qRegisterMetaType<const QSet<QReflectiveSequence *> *>("const QSet<QReflectiveSequence *> *");
+    qRegisterMetaType<const QList<QReflectiveSequence *> *>("const QList<QReflectiveSequence *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QElement) *>("QT_PREPEND_NAMESPACE_QTMOF(QElement) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QElement) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QElement) *> *");
+    qRegisterMetaType<QElement *>("QElement *");
+    qRegisterMetaType<const QSet<QElement *> *>("const QSet<QElement *> *");
+    qRegisterMetaType<const QList<QElement *> *>("const QList<QElement *> *");
+
+
+    QMofObject::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qextent.cpp"
 
 QT_END_NAMESPACE_QTMOF

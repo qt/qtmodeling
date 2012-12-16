@@ -122,6 +122,22 @@ void QInterval::setMax(QValueSpecification *max)
     }
 }
 
+void QInterval::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInterval) *>("QT_PREPEND_NAMESPACE_QTUML(QInterval) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInterval) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInterval) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInterval) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInterval) *> *");
+    qRegisterMetaType<QInterval *>("QInterval *");
+    qRegisterMetaType<const QSet<QInterval *> *>("const QSet<QInterval *> *");
+    qRegisterMetaType<const QList<QInterval *> *>("const QList<QInterval *> *");
+
+
+    QValueSpecification::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qinterval.cpp"
 
 QT_END_NAMESPACE_QTUML

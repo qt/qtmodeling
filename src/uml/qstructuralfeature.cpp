@@ -394,6 +394,22 @@ void QStructuralFeature::setReadOnly(bool isReadOnly)
     }
 }
 
+void QStructuralFeature::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QStructuralFeature) *>("QT_PREPEND_NAMESPACE_QTUML(QStructuralFeature) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QStructuralFeature) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QStructuralFeature) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QStructuralFeature) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QStructuralFeature) *> *");
+    qRegisterMetaType<QStructuralFeature *>("QStructuralFeature *");
+    qRegisterMetaType<const QSet<QStructuralFeature *> *>("const QSet<QStructuralFeature *> *");
+    qRegisterMetaType<const QList<QStructuralFeature *> *>("const QList<QStructuralFeature *> *");
+
+
+    QWrappedObject::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qstructuralfeature.cpp"
 
 QT_END_NAMESPACE_QTUML

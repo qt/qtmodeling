@@ -85,6 +85,7 @@ public:
     Q_INVOKABLE void setDefiningFeature(QStructuralFeature *definingFeature);
     Q_INVOKABLE QInstanceSpecification *owningInstance() const;
     Q_INVOKABLE void setOwningInstance(QInstanceSpecification *owningInstance);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QSlot(QSlotPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

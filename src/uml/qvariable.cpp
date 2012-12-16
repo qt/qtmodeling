@@ -427,6 +427,46 @@ bool QVariable::isAccessibleBy(const QAction *a) const
     return bool(); // change here to your derived return
 }
 
+void QVariable::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QVariable) *>("QT_PREPEND_NAMESPACE_QTUML(QVariable) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QVariable) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QVariable) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QVariable) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QVariable) *> *");
+    qRegisterMetaType<QVariable *>("QVariable *");
+    qRegisterMetaType<const QSet<QVariable *> *>("const QSet<QVariable *> *");
+    qRegisterMetaType<const QList<QVariable *> *>("const QList<QVariable *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QActivity) *>("QT_PREPEND_NAMESPACE_QTUML(QActivity) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QActivity) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QActivity) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QActivity) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QActivity) *> *");
+    qRegisterMetaType<QActivity *>("QActivity *");
+    qRegisterMetaType<const QSet<QActivity *> *>("const QSet<QActivity *> *");
+    qRegisterMetaType<const QList<QActivity *> *>("const QList<QActivity *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QStructuredActivityNode) *>("QT_PREPEND_NAMESPACE_QTUML(QStructuredActivityNode) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QStructuredActivityNode) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QStructuredActivityNode) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QStructuredActivityNode) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QStructuredActivityNode) *> *");
+    qRegisterMetaType<QStructuredActivityNode *>("QStructuredActivityNode *");
+    qRegisterMetaType<const QSet<QStructuredActivityNode *> *>("const QSet<QStructuredActivityNode *> *");
+    qRegisterMetaType<const QList<QStructuredActivityNode *> *>("const QList<QStructuredActivityNode *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QAction) *>("QT_PREPEND_NAMESPACE_QTUML(QAction) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QAction) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QAction) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QAction) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QAction) *> *");
+    qRegisterMetaType<QAction *>("QAction *");
+    qRegisterMetaType<const QSet<QAction *> *>("const QSet<QAction *> *");
+    qRegisterMetaType<const QList<QAction *> *>("const QList<QAction *> *");
+
+
+    QWrappedObject::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qvariable.cpp"
 
 QT_END_NAMESPACE_QTUML

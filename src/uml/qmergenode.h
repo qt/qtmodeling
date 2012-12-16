@@ -64,6 +64,7 @@ class Q_UML_EXPORT QMergeNode : public QControlNode
 public:
     Q_INVOKABLE explicit QMergeNode(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QMergeNode();
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QMergeNode(QMergeNodePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

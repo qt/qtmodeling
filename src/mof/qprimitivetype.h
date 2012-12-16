@@ -64,6 +64,7 @@ class Q_MOF_EXPORT QPrimitiveType : public QDataType
 public:
     Q_INVOKABLE explicit QPrimitiveType(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QPrimitiveType();
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QPrimitiveType(QPrimitiveTypePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

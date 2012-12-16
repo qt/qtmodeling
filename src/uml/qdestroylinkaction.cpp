@@ -115,6 +115,30 @@ void QDestroyLinkAction::removeEndData(QLinkEndDestructionData *endData)
     }
 }
 
+void QDestroyLinkAction::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QDestroyLinkAction) *>("QT_PREPEND_NAMESPACE_QTUML(QDestroyLinkAction) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QDestroyLinkAction) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QDestroyLinkAction) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QDestroyLinkAction) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QDestroyLinkAction) *> *");
+    qRegisterMetaType<QDestroyLinkAction *>("QDestroyLinkAction *");
+    qRegisterMetaType<const QSet<QDestroyLinkAction *> *>("const QSet<QDestroyLinkAction *> *");
+    qRegisterMetaType<const QList<QDestroyLinkAction *> *>("const QList<QDestroyLinkAction *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QLinkEndDestructionData) *>("QT_PREPEND_NAMESPACE_QTUML(QLinkEndDestructionData) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QLinkEndDestructionData) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QLinkEndDestructionData) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QLinkEndDestructionData) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QLinkEndDestructionData) *> *");
+    qRegisterMetaType<QLinkEndDestructionData *>("QLinkEndDestructionData *");
+    qRegisterMetaType<const QSet<QLinkEndDestructionData *> *>("const QSet<QLinkEndDestructionData *> *");
+    qRegisterMetaType<const QList<QLinkEndDestructionData *> *>("const QList<QLinkEndDestructionData *> *");
+
+
+    QWriteLinkAction::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qdestroylinkaction.cpp"
 
 QT_END_NAMESPACE_QTUML

@@ -338,6 +338,38 @@ bool QRedefinableTemplateSignature::isConsistentWith(const QRedefinableElement *
     return bool(); // change here to your derived return
 }
 
+void QRedefinableTemplateSignature::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QRedefinableTemplateSignature) *>("QT_PREPEND_NAMESPACE_QTUML(QRedefinableTemplateSignature) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QRedefinableTemplateSignature) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QRedefinableTemplateSignature) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QRedefinableTemplateSignature) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QRedefinableTemplateSignature) *> *");
+    qRegisterMetaType<QRedefinableTemplateSignature *>("QRedefinableTemplateSignature *");
+    qRegisterMetaType<const QSet<QRedefinableTemplateSignature *> *>("const QSet<QRedefinableTemplateSignature *> *");
+    qRegisterMetaType<const QList<QRedefinableTemplateSignature *> *>("const QList<QRedefinableTemplateSignature *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *>("QT_PREPEND_NAMESPACE_QTUML(QClassifier) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *");
+    qRegisterMetaType<QClassifier *>("QClassifier *");
+    qRegisterMetaType<const QSet<QClassifier *> *>("const QSet<QClassifier *> *");
+    qRegisterMetaType<const QList<QClassifier *> *>("const QList<QClassifier *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QTemplateParameter) *>("QT_PREPEND_NAMESPACE_QTUML(QTemplateParameter) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QTemplateParameter) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QTemplateParameter) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QTemplateParameter) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QTemplateParameter) *> *");
+    qRegisterMetaType<QTemplateParameter *>("QTemplateParameter *");
+    qRegisterMetaType<const QSet<QTemplateParameter *> *>("const QSet<QTemplateParameter *> *");
+    qRegisterMetaType<const QList<QTemplateParameter *> *>("const QList<QTemplateParameter *> *");
+
+
+    QWrappedObject::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qredefinabletemplatesignature.cpp"
 
 QT_END_NAMESPACE_QTUML

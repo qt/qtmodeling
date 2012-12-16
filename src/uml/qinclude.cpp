@@ -304,6 +304,30 @@ void QInclude::setAddition(QUseCase *addition)
     }
 }
 
+void QInclude::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInclude) *>("QT_PREPEND_NAMESPACE_QTUML(QInclude) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInclude) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInclude) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInclude) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInclude) *> *");
+    qRegisterMetaType<QInclude *>("QInclude *");
+    qRegisterMetaType<const QSet<QInclude *> *>("const QSet<QInclude *> *");
+    qRegisterMetaType<const QList<QInclude *> *>("const QList<QInclude *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QUseCase) *>("QT_PREPEND_NAMESPACE_QTUML(QUseCase) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QUseCase) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QUseCase) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QUseCase) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QUseCase) *> *");
+    qRegisterMetaType<QUseCase *>("QUseCase *");
+    qRegisterMetaType<const QSet<QUseCase *> *>("const QSet<QUseCase *> *");
+    qRegisterMetaType<const QList<QUseCase *> *>("const QList<QUseCase *> *");
+
+
+    QWrappedObject::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qinclude.cpp"
 
 QT_END_NAMESPACE_QTUML

@@ -73,6 +73,7 @@ public:
     // Association ends from QBroadcastSignalAction
     Q_INVOKABLE QSignal *signal() const;
     Q_INVOKABLE void setSignal(QSignal *signal);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QBroadcastSignalAction(QBroadcastSignalActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

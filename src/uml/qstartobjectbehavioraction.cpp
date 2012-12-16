@@ -110,6 +110,30 @@ void QStartObjectBehaviorAction::setObject(QInputPin *object)
     }
 }
 
+void QStartObjectBehaviorAction::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QStartObjectBehaviorAction) *>("QT_PREPEND_NAMESPACE_QTUML(QStartObjectBehaviorAction) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QStartObjectBehaviorAction) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QStartObjectBehaviorAction) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QStartObjectBehaviorAction) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QStartObjectBehaviorAction) *> *");
+    qRegisterMetaType<QStartObjectBehaviorAction *>("QStartObjectBehaviorAction *");
+    qRegisterMetaType<const QSet<QStartObjectBehaviorAction *> *>("const QSet<QStartObjectBehaviorAction *> *");
+    qRegisterMetaType<const QList<QStartObjectBehaviorAction *> *>("const QList<QStartObjectBehaviorAction *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QInputPin) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
+    qRegisterMetaType<QInputPin *>("QInputPin *");
+    qRegisterMetaType<const QSet<QInputPin *> *>("const QSet<QInputPin *> *");
+    qRegisterMetaType<const QList<QInputPin *> *>("const QList<QInputPin *> *");
+
+
+    QCallAction::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qstartobjectbehavioraction.cpp"
 
 QT_END_NAMESPACE_QTUML

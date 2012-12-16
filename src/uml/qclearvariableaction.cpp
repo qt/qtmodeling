@@ -74,6 +74,22 @@ QClearVariableAction::~QClearVariableAction()
 {
 }
 
+void QClearVariableAction::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QClearVariableAction) *>("QT_PREPEND_NAMESPACE_QTUML(QClearVariableAction) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QClearVariableAction) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QClearVariableAction) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QClearVariableAction) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QClearVariableAction) *> *");
+    qRegisterMetaType<QClearVariableAction *>("QClearVariableAction *");
+    qRegisterMetaType<const QSet<QClearVariableAction *> *>("const QSet<QClearVariableAction *> *");
+    qRegisterMetaType<const QList<QClearVariableAction *> *>("const QList<QClearVariableAction *> *");
+
+
+    QVariableAction::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qclearvariableaction.cpp"
 
 QT_END_NAMESPACE_QTUML

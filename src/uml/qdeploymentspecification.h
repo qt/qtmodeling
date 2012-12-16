@@ -84,6 +84,7 @@ public:
     // Association ends from QDeploymentSpecification
     Q_INVOKABLE QDeployment *deployment() const;
     Q_INVOKABLE void setDeployment(QDeployment *deployment);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QDeploymentSpecification(QDeploymentSpecificationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
