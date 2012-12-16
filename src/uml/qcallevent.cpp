@@ -102,6 +102,30 @@ void QCallEvent::setOperation(QOperation *operation)
     }
 }
 
+void QCallEvent::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QCallEvent) *>("QT_PREPEND_NAMESPACE_QTUML(QCallEvent) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QCallEvent) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QCallEvent) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QCallEvent) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QCallEvent) *> *");
+    qRegisterMetaType<QCallEvent *>("QCallEvent *");
+    qRegisterMetaType<const QSet<QCallEvent *> *>("const QSet<QCallEvent *> *");
+    qRegisterMetaType<const QList<QCallEvent *> *>("const QList<QCallEvent *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QOperation) *>("QT_PREPEND_NAMESPACE_QTUML(QOperation) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *");
+    qRegisterMetaType<QOperation *>("QOperation *");
+    qRegisterMetaType<const QSet<QOperation *> *>("const QSet<QOperation *> *");
+    qRegisterMetaType<const QList<QOperation *> *>("const QList<QOperation *> *");
+
+
+    QMessageEvent::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qcallevent.cpp"
 
 QT_END_NAMESPACE_QTUML

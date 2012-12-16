@@ -137,6 +137,7 @@ public:
     Q_INVOKABLE bool isConsistentWith(const QRedefinableElement *redefinee) const;
     Q_INVOKABLE bool isNavigable() const;
     Q_INVOKABLE const QSet<QType *> *subsettingContext() const;
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QProperty(QPropertyPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

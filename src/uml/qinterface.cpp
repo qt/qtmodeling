@@ -326,6 +326,54 @@ void QInterface::removeOwnedAttribute(QProperty *ownedAttribute)
     }
 }
 
+void QInterface::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInterface) *>("QT_PREPEND_NAMESPACE_QTUML(QInterface) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInterface) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInterface) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInterface) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInterface) *> *");
+    qRegisterMetaType<QInterface *>("QInterface *");
+    qRegisterMetaType<const QSet<QInterface *> *>("const QSet<QInterface *> *");
+    qRegisterMetaType<const QList<QInterface *> *>("const QList<QInterface *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QProtocolStateMachine) *>("QT_PREPEND_NAMESPACE_QTUML(QProtocolStateMachine) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QProtocolStateMachine) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QProtocolStateMachine) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QProtocolStateMachine) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QProtocolStateMachine) *> *");
+    qRegisterMetaType<QProtocolStateMachine *>("QProtocolStateMachine *");
+    qRegisterMetaType<const QSet<QProtocolStateMachine *> *>("const QSet<QProtocolStateMachine *> *");
+    qRegisterMetaType<const QList<QProtocolStateMachine *> *>("const QList<QProtocolStateMachine *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QReception) *>("QT_PREPEND_NAMESPACE_QTUML(QReception) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QReception) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QReception) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QReception) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QReception) *> *");
+    qRegisterMetaType<QReception *>("QReception *");
+    qRegisterMetaType<const QSet<QReception *> *>("const QSet<QReception *> *");
+    qRegisterMetaType<const QList<QReception *> *>("const QList<QReception *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QProperty) *>("QT_PREPEND_NAMESPACE_QTUML(QProperty) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QProperty) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QProperty) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QProperty) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QProperty) *> *");
+    qRegisterMetaType<QProperty *>("QProperty *");
+    qRegisterMetaType<const QSet<QProperty *> *>("const QSet<QProperty *> *");
+    qRegisterMetaType<const QList<QProperty *> *>("const QList<QProperty *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QOperation) *>("QT_PREPEND_NAMESPACE_QTUML(QOperation) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *");
+    qRegisterMetaType<QOperation *>("QOperation *");
+    qRegisterMetaType<const QSet<QOperation *> *>("const QSet<QOperation *> *");
+    qRegisterMetaType<const QList<QOperation *> *>("const QList<QOperation *> *");
+
+
+    QClassifier::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 // Overriden methods for subsetted properties
 
 void QInterface::addRedefinedClassifier(QWrappedObjectPointer<QInterface> redefinedInterface)

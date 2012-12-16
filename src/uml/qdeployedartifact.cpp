@@ -74,6 +74,22 @@ QDeployedArtifact::~QDeployedArtifact()
 {
 }
 
+void QDeployedArtifact::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QDeployedArtifact) *>("QT_PREPEND_NAMESPACE_QTUML(QDeployedArtifact) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QDeployedArtifact) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QDeployedArtifact) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QDeployedArtifact) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QDeployedArtifact) *> *");
+    qRegisterMetaType<QDeployedArtifact *>("QDeployedArtifact *");
+    qRegisterMetaType<const QSet<QDeployedArtifact *> *>("const QSet<QDeployedArtifact *> *");
+    qRegisterMetaType<const QList<QDeployedArtifact *> *>("const QList<QDeployedArtifact *> *");
+
+
+    QNamedElement::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qdeployedartifact.cpp"
 
 QT_END_NAMESPACE_QTUML

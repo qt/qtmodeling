@@ -354,6 +354,30 @@ void QDependency::removeSupplier(QNamedElement *supplier)
     }
 }
 
+void QDependency::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QDependency) *>("QT_PREPEND_NAMESPACE_QTUML(QDependency) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QDependency) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QDependency) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QDependency) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QDependency) *> *");
+    qRegisterMetaType<QDependency *>("QDependency *");
+    qRegisterMetaType<const QSet<QDependency *> *>("const QSet<QDependency *> *");
+    qRegisterMetaType<const QList<QDependency *> *>("const QList<QDependency *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *>("QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *> *");
+    qRegisterMetaType<QNamedElement *>("QNamedElement *");
+    qRegisterMetaType<const QSet<QNamedElement *> *>("const QSet<QNamedElement *> *");
+    qRegisterMetaType<const QList<QNamedElement *> *>("const QList<QNamedElement *> *");
+
+
+    QWrappedObject::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qdependency.cpp"
 
 QT_END_NAMESPACE_QTUML

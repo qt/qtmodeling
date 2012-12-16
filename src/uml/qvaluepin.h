@@ -73,6 +73,7 @@ public:
     // Association ends from QValuePin
     Q_INVOKABLE QValueSpecification *value() const;
     Q_INVOKABLE void setValue(QValueSpecification *value);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QValuePin(QValuePinPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

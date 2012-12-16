@@ -529,6 +529,46 @@ const QSet<QPackageableElement *> *QPackage::visibleMembers() const
     return 0; // change here to your derived return
 }
 
+void QPackage::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QPackage) *>("QT_PREPEND_NAMESPACE_QTMOF(QPackage) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QPackage) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QPackage) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QPackage) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QPackage) *> *");
+    qRegisterMetaType<QPackage *>("QPackage *");
+    qRegisterMetaType<const QSet<QPackage *> *>("const QSet<QPackage *> *");
+    qRegisterMetaType<const QList<QPackage *> *>("const QList<QPackage *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QNamedElement) *>("QT_PREPEND_NAMESPACE_QTMOF(QNamedElement) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QNamedElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QNamedElement) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QNamedElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QNamedElement) *> *");
+    qRegisterMetaType<QNamedElement *>("QNamedElement *");
+    qRegisterMetaType<const QSet<QNamedElement *> *>("const QSet<QNamedElement *> *");
+    qRegisterMetaType<const QList<QNamedElement *> *>("const QList<QNamedElement *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QPackageMerge) *>("QT_PREPEND_NAMESPACE_QTMOF(QPackageMerge) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QPackageMerge) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QPackageMerge) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QPackageMerge) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QPackageMerge) *> *");
+    qRegisterMetaType<QPackageMerge *>("QPackageMerge *");
+    qRegisterMetaType<const QSet<QPackageMerge *> *>("const QSet<QPackageMerge *> *");
+    qRegisterMetaType<const QList<QPackageMerge *> *>("const QList<QPackageMerge *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QType) *>("QT_PREPEND_NAMESPACE_QTMOF(QType) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QType) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QType) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QType) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QType) *> *");
+    qRegisterMetaType<QType *>("QType *");
+    qRegisterMetaType<const QSet<QType *> *>("const QSet<QType *> *");
+    qRegisterMetaType<const QList<QType *> *>("const QList<QType *> *");
+
+
+    QWrappedObject::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 // Overriden methods for subsetted properties
 
 void QPackage::addPackagedElement(QWrappedObjectPointer<QType> ownedType)

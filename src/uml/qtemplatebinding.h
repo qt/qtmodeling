@@ -85,6 +85,7 @@ public:
     Q_INVOKABLE const QSet<QTemplateParameterSubstitution *> *parameterSubstitutions() const;
     Q_INVOKABLE void addParameterSubstitution(QTemplateParameterSubstitution *parameterSubstitution);
     Q_INVOKABLE void removeParameterSubstitution(QTemplateParameterSubstitution *parameterSubstitution);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QTemplateBinding(QTemplateBindingPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

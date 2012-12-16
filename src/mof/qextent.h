@@ -82,6 +82,7 @@ public:
     Q_INVOKABLE const QSet<QLink *> *linksOfType(const QAssociation *type) const;
     Q_INVOKABLE const QSet<QElement *> *linkedElements(const QAssociation *association, const QElement *endElement, bool end1ToEnd2Direction) const;
     Q_INVOKABLE bool linkExists(const QAssociation *association, const QElement *firstElement, const QElement *secondElement) const;
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QExtent(QExtentPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

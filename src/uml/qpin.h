@@ -160,6 +160,7 @@ public:
     // Attributes from QPin
     Q_INVOKABLE bool isControl() const;
     Q_INVOKABLE void setControl(bool isControl);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QPin(QPinPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

@@ -68,6 +68,7 @@ public:
     // Operations
     Q_INVOKABLE bool isComputable() const;
     Q_INVOKABLE bool isNull() const;
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QLiteralNull(QLiteralNullPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

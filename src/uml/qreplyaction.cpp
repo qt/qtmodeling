@@ -172,6 +172,38 @@ void QReplyAction::removeReplyValue(QInputPin *replyValue)
     }
 }
 
+void QReplyAction::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QReplyAction) *>("QT_PREPEND_NAMESPACE_QTUML(QReplyAction) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QReplyAction) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QReplyAction) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QReplyAction) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QReplyAction) *> *");
+    qRegisterMetaType<QReplyAction *>("QReplyAction *");
+    qRegisterMetaType<const QSet<QReplyAction *> *>("const QSet<QReplyAction *> *");
+    qRegisterMetaType<const QList<QReplyAction *> *>("const QList<QReplyAction *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QTrigger) *>("QT_PREPEND_NAMESPACE_QTUML(QTrigger) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QTrigger) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QTrigger) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QTrigger) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QTrigger) *> *");
+    qRegisterMetaType<QTrigger *>("QTrigger *");
+    qRegisterMetaType<const QSet<QTrigger *> *>("const QSet<QTrigger *> *");
+    qRegisterMetaType<const QList<QTrigger *> *>("const QList<QTrigger *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QInputPin) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
+    qRegisterMetaType<QInputPin *>("QInputPin *");
+    qRegisterMetaType<const QSet<QInputPin *> *>("const QSet<QInputPin *> *");
+    qRegisterMetaType<const QList<QInputPin *> *>("const QList<QInputPin *> *");
+
+
+    QAction::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qreplyaction.cpp"
 
 QT_END_NAMESPACE_QTUML

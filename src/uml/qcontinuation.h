@@ -70,6 +70,7 @@ public:
     // Attributes from QContinuation
     Q_INVOKABLE bool setting() const;
     Q_INVOKABLE void setSetting(bool setting);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QContinuation(QContinuationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

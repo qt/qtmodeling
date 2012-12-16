@@ -235,6 +235,54 @@ void QInteractionUse::setReturnValueRecipient(QProperty *returnValueRecipient)
     }
 }
 
+void QInteractionUse::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInteractionUse) *>("QT_PREPEND_NAMESPACE_QTUML(QInteractionUse) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInteractionUse) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInteractionUse) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInteractionUse) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInteractionUse) *> *");
+    qRegisterMetaType<QInteractionUse *>("QInteractionUse *");
+    qRegisterMetaType<const QSet<QInteractionUse *> *>("const QSet<QInteractionUse *> *");
+    qRegisterMetaType<const QList<QInteractionUse *> *>("const QList<QInteractionUse *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QProperty) *>("QT_PREPEND_NAMESPACE_QTUML(QProperty) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QProperty) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QProperty) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QProperty) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QProperty) *> *");
+    qRegisterMetaType<QProperty *>("QProperty *");
+    qRegisterMetaType<const QSet<QProperty *> *>("const QSet<QProperty *> *");
+    qRegisterMetaType<const QList<QProperty *> *>("const QList<QProperty *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInteraction) *>("QT_PREPEND_NAMESPACE_QTUML(QInteraction) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInteraction) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInteraction) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInteraction) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInteraction) *> *");
+    qRegisterMetaType<QInteraction *>("QInteraction *");
+    qRegisterMetaType<const QSet<QInteraction *> *>("const QSet<QInteraction *> *");
+    qRegisterMetaType<const QList<QInteraction *> *>("const QList<QInteraction *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QGate) *>("QT_PREPEND_NAMESPACE_QTUML(QGate) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QGate) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QGate) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QGate) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QGate) *> *");
+    qRegisterMetaType<QGate *>("QGate *");
+    qRegisterMetaType<const QSet<QGate *> *>("const QSet<QGate *> *");
+    qRegisterMetaType<const QList<QGate *> *>("const QList<QGate *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *>("QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *");
+    qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
+    qRegisterMetaType<const QSet<QValueSpecification *> *>("const QSet<QValueSpecification *> *");
+    qRegisterMetaType<const QList<QValueSpecification *> *>("const QList<QValueSpecification *> *");
+
+
+    QInteractionFragment::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qinteractionuse.cpp"
 
 QT_END_NAMESPACE_QTUML

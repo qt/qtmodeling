@@ -144,6 +144,38 @@ void QLink::delete_()
     qWarning("QLink::delete_: operation to be implemented");
 }
 
+void QLink::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QLink) *>("QT_PREPEND_NAMESPACE_QTMOF(QLink) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QLink) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QLink) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QLink) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QLink) *> *");
+    qRegisterMetaType<QLink *>("QLink *");
+    qRegisterMetaType<const QSet<QLink *> *>("const QSet<QLink *> *");
+    qRegisterMetaType<const QList<QLink *> *>("const QList<QLink *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QElement) *>("QT_PREPEND_NAMESPACE_QTMOF(QElement) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QElement) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QElement) *> *");
+    qRegisterMetaType<QElement *>("QElement *");
+    qRegisterMetaType<const QSet<QElement *> *>("const QSet<QElement *> *");
+    qRegisterMetaType<const QList<QElement *> *>("const QList<QElement *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QAssociation) *>("QT_PREPEND_NAMESPACE_QTMOF(QAssociation) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QAssociation) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QAssociation) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QAssociation) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QAssociation) *> *");
+    qRegisterMetaType<QAssociation *>("QAssociation *");
+    qRegisterMetaType<const QSet<QAssociation *> *>("const QSet<QAssociation *> *");
+    qRegisterMetaType<const QList<QAssociation *> *>("const QList<QAssociation *> *");
+
+
+    QMofObject::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qlink.cpp"
 
 QT_END_NAMESPACE_QTMOF

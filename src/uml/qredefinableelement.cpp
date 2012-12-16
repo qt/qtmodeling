@@ -190,6 +190,30 @@ bool QRedefinableElement::isRedefinitionContextValid(const QRedefinableElement *
     return bool(); // change here to your derived return
 }
 
+void QRedefinableElement::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QRedefinableElement) *>("QT_PREPEND_NAMESPACE_QTUML(QRedefinableElement) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QRedefinableElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QRedefinableElement) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QRedefinableElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QRedefinableElement) *> *");
+    qRegisterMetaType<QRedefinableElement *>("QRedefinableElement *");
+    qRegisterMetaType<const QSet<QRedefinableElement *> *>("const QSet<QRedefinableElement *> *");
+    qRegisterMetaType<const QList<QRedefinableElement *> *>("const QList<QRedefinableElement *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *>("QT_PREPEND_NAMESPACE_QTUML(QClassifier) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *");
+    qRegisterMetaType<QClassifier *>("QClassifier *");
+    qRegisterMetaType<const QSet<QClassifier *> *>("const QSet<QClassifier *> *");
+    qRegisterMetaType<const QList<QClassifier *> *>("const QList<QClassifier *> *");
+
+
+    QNamedElement::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qredefinableelement.cpp"
 
 QT_END_NAMESPACE_QTUML

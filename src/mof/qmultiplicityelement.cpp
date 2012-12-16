@@ -288,6 +288,30 @@ qint32 QMultiplicityElement::upperBound() const
     return qint32(); // change here to your derived return
 }
 
+void QMultiplicityElement::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QMultiplicityElement) *>("QT_PREPEND_NAMESPACE_QTMOF(QMultiplicityElement) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QMultiplicityElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QMultiplicityElement) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QMultiplicityElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QMultiplicityElement) *> *");
+    qRegisterMetaType<QMultiplicityElement *>("QMultiplicityElement *");
+    qRegisterMetaType<const QSet<QMultiplicityElement *> *>("const QSet<QMultiplicityElement *> *");
+    qRegisterMetaType<const QList<QMultiplicityElement *> *>("const QList<QMultiplicityElement *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QValueSpecification) *>("QT_PREPEND_NAMESPACE_QTMOF(QValueSpecification) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QValueSpecification) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QValueSpecification) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QValueSpecification) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QValueSpecification) *> *");
+    qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
+    qRegisterMetaType<const QSet<QValueSpecification *> *>("const QSet<QValueSpecification *> *");
+    qRegisterMetaType<const QList<QValueSpecification *> *>("const QList<QValueSpecification *> *");
+
+
+    QElement::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qmultiplicityelement.cpp"
 
 QT_END_NAMESPACE_QTMOF

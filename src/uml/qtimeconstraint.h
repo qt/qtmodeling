@@ -78,6 +78,7 @@ public:
     // Association ends from QTimeConstraint
     Q_INVOKABLE QTimeInterval *specification() const;
     Q_INVOKABLE void setSpecification(QTimeInterval *specification);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QTimeConstraint(QTimeConstraintPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

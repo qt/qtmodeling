@@ -102,6 +102,30 @@ void QReception::setSignal(QSignal *signal)
     }
 }
 
+void QReception::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QReception) *>("QT_PREPEND_NAMESPACE_QTUML(QReception) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QReception) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QReception) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QReception) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QReception) *> *");
+    qRegisterMetaType<QReception *>("QReception *");
+    qRegisterMetaType<const QSet<QReception *> *>("const QSet<QReception *> *");
+    qRegisterMetaType<const QList<QReception *> *>("const QList<QReception *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QSignal) *>("QT_PREPEND_NAMESPACE_QTUML(QSignal) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QSignal) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QSignal) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QSignal) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QSignal) *> *");
+    qRegisterMetaType<QSignal *>("QSignal *");
+    qRegisterMetaType<const QSet<QSignal *> *>("const QSet<QSignal *> *");
+    qRegisterMetaType<const QList<QSignal *> *>("const QList<QSignal *> *");
+
+
+    QBehavioralFeature::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qreception.cpp"
 
 QT_END_NAMESPACE_QTUML

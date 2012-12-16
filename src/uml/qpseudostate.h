@@ -85,6 +85,7 @@ public:
     Q_INVOKABLE void setState(QState *state);
     Q_INVOKABLE QStateMachine *stateMachine() const;
     Q_INVOKABLE void setStateMachine(QStateMachine *stateMachine);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QPseudostate(QPseudostatePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

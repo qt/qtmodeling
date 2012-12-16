@@ -74,6 +74,22 @@ QEvent::~QEvent()
 {
 }
 
+void QEvent::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QEvent) *>("QT_PREPEND_NAMESPACE_QTUML(QEvent) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QEvent) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QEvent) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QEvent) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QEvent) *> *");
+    qRegisterMetaType<QEvent *>("QEvent *");
+    qRegisterMetaType<const QSet<QEvent *> *>("const QSet<QEvent *> *");
+    qRegisterMetaType<const QList<QEvent *> *>("const QList<QEvent *> *");
+
+
+    QPackageableElement::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qevent.cpp"
 
 QT_END_NAMESPACE_QTUML

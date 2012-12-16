@@ -94,6 +94,7 @@ public:
     Q_INVOKABLE void removeArgument(QValueSpecification *argument);
     Q_INVOKABLE QProperty *returnValueRecipient() const;
     Q_INVOKABLE void setReturnValueRecipient(QProperty *returnValueRecipient);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QInteractionUse(QInteractionUsePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

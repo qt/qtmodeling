@@ -149,6 +149,30 @@ void QProtocolConformance::setGeneralMachine(QProtocolStateMachine *generalMachi
     }
 }
 
+void QProtocolConformance::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QProtocolConformance) *>("QT_PREPEND_NAMESPACE_QTUML(QProtocolConformance) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QProtocolConformance) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QProtocolConformance) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QProtocolConformance) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QProtocolConformance) *> *");
+    qRegisterMetaType<QProtocolConformance *>("QProtocolConformance *");
+    qRegisterMetaType<const QSet<QProtocolConformance *> *>("const QSet<QProtocolConformance *> *");
+    qRegisterMetaType<const QList<QProtocolConformance *> *>("const QList<QProtocolConformance *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QProtocolStateMachine) *>("QT_PREPEND_NAMESPACE_QTUML(QProtocolStateMachine) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QProtocolStateMachine) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QProtocolStateMachine) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QProtocolStateMachine) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QProtocolStateMachine) *> *");
+    qRegisterMetaType<QProtocolStateMachine *>("QProtocolStateMachine *");
+    qRegisterMetaType<const QSet<QProtocolStateMachine *> *>("const QSet<QProtocolStateMachine *> *");
+    qRegisterMetaType<const QList<QProtocolStateMachine *> *>("const QList<QProtocolStateMachine *> *");
+
+
+    QDirectedRelationship::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qprotocolconformance.cpp"
 
 QT_END_NAMESPACE_QTUML

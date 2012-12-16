@@ -124,6 +124,30 @@ void QExecutionSpecification::setFinish(QOccurrenceSpecification *finish)
     }
 }
 
+void QExecutionSpecification::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QExecutionSpecification) *>("QT_PREPEND_NAMESPACE_QTUML(QExecutionSpecification) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QExecutionSpecification) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QExecutionSpecification) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QExecutionSpecification) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QExecutionSpecification) *> *");
+    qRegisterMetaType<QExecutionSpecification *>("QExecutionSpecification *");
+    qRegisterMetaType<const QSet<QExecutionSpecification *> *>("const QSet<QExecutionSpecification *> *");
+    qRegisterMetaType<const QList<QExecutionSpecification *> *>("const QList<QExecutionSpecification *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QOccurrenceSpecification) *>("QT_PREPEND_NAMESPACE_QTUML(QOccurrenceSpecification) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QOccurrenceSpecification) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QOccurrenceSpecification) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QOccurrenceSpecification) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QOccurrenceSpecification) *> *");
+    qRegisterMetaType<QOccurrenceSpecification *>("QOccurrenceSpecification *");
+    qRegisterMetaType<const QSet<QOccurrenceSpecification *> *>("const QSet<QOccurrenceSpecification *> *");
+    qRegisterMetaType<const QList<QOccurrenceSpecification *> *>("const QList<QOccurrenceSpecification *> *");
+
+
+    QInteractionFragment::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qexecutionspecification.cpp"
 
 QT_END_NAMESPACE_QTUML

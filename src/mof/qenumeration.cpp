@@ -125,6 +125,30 @@ void QEnumeration::removeOwnedLiteral(QEnumerationLiteral *ownedLiteral)
     }
 }
 
+void QEnumeration::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QEnumeration) *>("QT_PREPEND_NAMESPACE_QTMOF(QEnumeration) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QEnumeration) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QEnumeration) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QEnumeration) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QEnumeration) *> *");
+    qRegisterMetaType<QEnumeration *>("QEnumeration *");
+    qRegisterMetaType<const QSet<QEnumeration *> *>("const QSet<QEnumeration *> *");
+    qRegisterMetaType<const QList<QEnumeration *> *>("const QList<QEnumeration *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QEnumerationLiteral) *>("QT_PREPEND_NAMESPACE_QTMOF(QEnumerationLiteral) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QEnumerationLiteral) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QEnumerationLiteral) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QEnumerationLiteral) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QEnumerationLiteral) *> *");
+    qRegisterMetaType<QEnumerationLiteral *>("QEnumerationLiteral *");
+    qRegisterMetaType<const QSet<QEnumerationLiteral *> *>("const QSet<QEnumerationLiteral *> *");
+    qRegisterMetaType<const QList<QEnumerationLiteral *> *>("const QList<QEnumerationLiteral *> *");
+
+
+    QDataType::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qenumeration.cpp"
 
 QT_END_NAMESPACE_QTMOF

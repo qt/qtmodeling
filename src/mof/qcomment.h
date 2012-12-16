@@ -80,6 +80,7 @@ public:
     Q_INVOKABLE const QSet<QElement *> *annotatedElements() const;
     Q_INVOKABLE void addAnnotatedElement(QElement *annotatedElement);
     Q_INVOKABLE void removeAnnotatedElement(QElement *annotatedElement);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QComment(QCommentPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

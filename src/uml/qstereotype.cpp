@@ -142,6 +142,38 @@ QProfile *QStereotype::containingProfile() const
     return 0; // change here to your derived return
 }
 
+void QStereotype::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QStereotype) *>("QT_PREPEND_NAMESPACE_QTUML(QStereotype) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QStereotype) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QStereotype) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QStereotype) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QStereotype) *> *");
+    qRegisterMetaType<QStereotype *>("QStereotype *");
+    qRegisterMetaType<const QSet<QStereotype *> *>("const QSet<QStereotype *> *");
+    qRegisterMetaType<const QList<QStereotype *> *>("const QList<QStereotype *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QImage) *>("QT_PREPEND_NAMESPACE_QTUML(QImage) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QImage) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QImage) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QImage) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QImage) *> *");
+    qRegisterMetaType<QImage *>("QImage *");
+    qRegisterMetaType<const QSet<QImage *> *>("const QSet<QImage *> *");
+    qRegisterMetaType<const QList<QImage *> *>("const QList<QImage *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QProfile) *>("QT_PREPEND_NAMESPACE_QTUML(QProfile) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QProfile) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QProfile) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QProfile) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QProfile) *> *");
+    qRegisterMetaType<QProfile *>("QProfile *");
+    qRegisterMetaType<const QSet<QProfile *> *>("const QSet<QProfile *> *");
+    qRegisterMetaType<const QList<QProfile *> *>("const QList<QProfile *> *");
+
+
+    QClass::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qstereotype.cpp"
 
 QT_END_NAMESPACE_QTUML

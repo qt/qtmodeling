@@ -92,6 +92,30 @@ const QSet<QPort *> *QEncapsulatedClassifier::ownedPorts() const
     return 0; // change here to your derived return
 }
 
+void QEncapsulatedClassifier::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QEncapsulatedClassifier) *>("QT_PREPEND_NAMESPACE_QTUML(QEncapsulatedClassifier) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QEncapsulatedClassifier) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QEncapsulatedClassifier) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QEncapsulatedClassifier) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QEncapsulatedClassifier) *> *");
+    qRegisterMetaType<QEncapsulatedClassifier *>("QEncapsulatedClassifier *");
+    qRegisterMetaType<const QSet<QEncapsulatedClassifier *> *>("const QSet<QEncapsulatedClassifier *> *");
+    qRegisterMetaType<const QList<QEncapsulatedClassifier *> *>("const QList<QEncapsulatedClassifier *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QPort) *>("QT_PREPEND_NAMESPACE_QTUML(QPort) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QPort) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QPort) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QPort) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QPort) *> *");
+    qRegisterMetaType<QPort *>("QPort *");
+    qRegisterMetaType<const QSet<QPort *> *>("const QSet<QPort *> *");
+    qRegisterMetaType<const QList<QPort *> *>("const QList<QPort *> *");
+
+
+    QStructuredClassifier::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qencapsulatedclassifier.cpp"
 
 QT_END_NAMESPACE_QTUML

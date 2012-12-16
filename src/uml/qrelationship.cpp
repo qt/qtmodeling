@@ -109,6 +109,22 @@ const QSet<QElement *> *QRelationship::relatedElements() const
     return d->relatedElements;
 }
 
+void QRelationship::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QRelationship) *>("QT_PREPEND_NAMESPACE_QTUML(QRelationship) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QRelationship) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QRelationship) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QRelationship) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QRelationship) *> *");
+    qRegisterMetaType<QRelationship *>("QRelationship *");
+    qRegisterMetaType<const QSet<QRelationship *> *>("const QSet<QRelationship *> *");
+    qRegisterMetaType<const QList<QRelationship *> *>("const QList<QRelationship *> *");
+
+
+    QElement::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qrelationship.cpp"
 
 QT_END_NAMESPACE_QTUML

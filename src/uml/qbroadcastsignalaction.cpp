@@ -102,6 +102,30 @@ void QBroadcastSignalAction::setSignal(QSignal *signal)
     }
 }
 
+void QBroadcastSignalAction::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QBroadcastSignalAction) *>("QT_PREPEND_NAMESPACE_QTUML(QBroadcastSignalAction) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QBroadcastSignalAction) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QBroadcastSignalAction) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QBroadcastSignalAction) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QBroadcastSignalAction) *> *");
+    qRegisterMetaType<QBroadcastSignalAction *>("QBroadcastSignalAction *");
+    qRegisterMetaType<const QSet<QBroadcastSignalAction *> *>("const QSet<QBroadcastSignalAction *> *");
+    qRegisterMetaType<const QList<QBroadcastSignalAction *> *>("const QList<QBroadcastSignalAction *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QSignal) *>("QT_PREPEND_NAMESPACE_QTUML(QSignal) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QSignal) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QSignal) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QSignal) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QSignal) *> *");
+    qRegisterMetaType<QSignal *>("QSignal *");
+    qRegisterMetaType<const QSet<QSignal *> *>("const QSet<QSignal *> *");
+    qRegisterMetaType<const QList<QSignal *> *>("const QList<QSignal *> *");
+
+
+    QInvocationAction::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qbroadcastsignalaction.cpp"
 
 QT_END_NAMESPACE_QTUML

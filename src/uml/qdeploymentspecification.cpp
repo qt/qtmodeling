@@ -159,6 +159,30 @@ void QDeploymentSpecification::setDeployment(QDeployment *deployment)
     }
 }
 
+void QDeploymentSpecification::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QDeploymentSpecification) *>("QT_PREPEND_NAMESPACE_QTUML(QDeploymentSpecification) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QDeploymentSpecification) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QDeploymentSpecification) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QDeploymentSpecification) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QDeploymentSpecification) *> *");
+    qRegisterMetaType<QDeploymentSpecification *>("QDeploymentSpecification *");
+    qRegisterMetaType<const QSet<QDeploymentSpecification *> *>("const QSet<QDeploymentSpecification *> *");
+    qRegisterMetaType<const QList<QDeploymentSpecification *> *>("const QList<QDeploymentSpecification *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QDeployment) *>("QT_PREPEND_NAMESPACE_QTUML(QDeployment) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QDeployment) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QDeployment) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QDeployment) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QDeployment) *> *");
+    qRegisterMetaType<QDeployment *>("QDeployment *");
+    qRegisterMetaType<const QSet<QDeployment *> *>("const QSet<QDeployment *> *");
+    qRegisterMetaType<const QList<QDeployment *> *>("const QList<QDeployment *> *");
+
+
+    QArtifact::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qdeploymentspecification.cpp"
 
 QT_END_NAMESPACE_QTUML

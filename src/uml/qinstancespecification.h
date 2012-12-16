@@ -126,6 +126,7 @@ public:
     Q_INVOKABLE const QSet<QSlot *> *slots_() const;
     Q_INVOKABLE void addSlot_(QSlot *slot_);
     Q_INVOKABLE void removeSlot_(QSlot *slot_);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QInstanceSpecification(QInstanceSpecificationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

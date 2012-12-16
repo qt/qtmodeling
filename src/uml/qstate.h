@@ -184,6 +184,7 @@ public:
     Q_INVOKABLE QStateMachine *containingStateMachine() const;
     Q_INVOKABLE bool isConsistentWith(const QRedefinableElement *redefinee) const;
     Q_INVOKABLE bool isRedefinitionContextValid(const QState *redefined) const;
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QState(QStatePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

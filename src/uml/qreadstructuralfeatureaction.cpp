@@ -110,6 +110,30 @@ void QReadStructuralFeatureAction::setResult(QOutputPin *result)
     }
 }
 
+void QReadStructuralFeatureAction::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QReadStructuralFeatureAction) *>("QT_PREPEND_NAMESPACE_QTUML(QReadStructuralFeatureAction) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QReadStructuralFeatureAction) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QReadStructuralFeatureAction) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QReadStructuralFeatureAction) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QReadStructuralFeatureAction) *> *");
+    qRegisterMetaType<QReadStructuralFeatureAction *>("QReadStructuralFeatureAction *");
+    qRegisterMetaType<const QSet<QReadStructuralFeatureAction *> *>("const QSet<QReadStructuralFeatureAction *> *");
+    qRegisterMetaType<const QList<QReadStructuralFeatureAction *> *>("const QList<QReadStructuralFeatureAction *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *");
+    qRegisterMetaType<QOutputPin *>("QOutputPin *");
+    qRegisterMetaType<const QSet<QOutputPin *> *>("const QSet<QOutputPin *> *");
+    qRegisterMetaType<const QList<QOutputPin *> *>("const QList<QOutputPin *> *");
+
+
+    QStructuralFeatureAction::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qreadstructuralfeatureaction.cpp"
 
 QT_END_NAMESPACE_QTUML

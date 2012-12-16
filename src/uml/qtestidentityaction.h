@@ -80,6 +80,7 @@ public:
     Q_INVOKABLE void setResult(QOutputPin *result);
     Q_INVOKABLE QInputPin *first() const;
     Q_INVOKABLE void setFirst(QInputPin *first);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QTestIdentityAction(QTestIdentityActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

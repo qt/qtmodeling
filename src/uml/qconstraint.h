@@ -85,6 +85,7 @@ public:
     Q_INVOKABLE const QList<QElement *> *constrainedElements() const;
     Q_INVOKABLE void addConstrainedElement(QElement *constrainedElement);
     Q_INVOKABLE void removeConstrainedElement(QElement *constrainedElement);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QConstraint(QConstraintPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

@@ -64,6 +64,7 @@ class Q_UML_EXPORT QLiteralSpecification : public QValueSpecification
 public:
     Q_INVOKABLE explicit QLiteralSpecification(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QLiteralSpecification();
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QLiteralSpecification(QLiteralSpecificationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

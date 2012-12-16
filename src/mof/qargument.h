@@ -80,6 +80,7 @@ public:
     Q_INVOKABLE void setName(QString name);
     Q_INVOKABLE QMofObject *value() const;
     Q_INVOKABLE void setValue(QMofObject *value);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QArgument(QArgumentPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

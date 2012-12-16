@@ -64,6 +64,7 @@ class Q_UML_EXPORT QObservation : public QPackageableElement
 public:
     Q_INVOKABLE explicit QObservation(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QObservation();
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QObservation(QObservationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

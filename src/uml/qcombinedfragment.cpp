@@ -185,6 +185,38 @@ void QCombinedFragment::removeOperand(QInteractionOperand *operand)
     }
 }
 
+void QCombinedFragment::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QCombinedFragment) *>("QT_PREPEND_NAMESPACE_QTUML(QCombinedFragment) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QCombinedFragment) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QCombinedFragment) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QCombinedFragment) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QCombinedFragment) *> *");
+    qRegisterMetaType<QCombinedFragment *>("QCombinedFragment *");
+    qRegisterMetaType<const QSet<QCombinedFragment *> *>("const QSet<QCombinedFragment *> *");
+    qRegisterMetaType<const QList<QCombinedFragment *> *>("const QList<QCombinedFragment *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QGate) *>("QT_PREPEND_NAMESPACE_QTUML(QGate) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QGate) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QGate) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QGate) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QGate) *> *");
+    qRegisterMetaType<QGate *>("QGate *");
+    qRegisterMetaType<const QSet<QGate *> *>("const QSet<QGate *> *");
+    qRegisterMetaType<const QList<QGate *> *>("const QList<QGate *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInteractionOperand) *>("QT_PREPEND_NAMESPACE_QTUML(QInteractionOperand) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInteractionOperand) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInteractionOperand) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInteractionOperand) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInteractionOperand) *> *");
+    qRegisterMetaType<QInteractionOperand *>("QInteractionOperand *");
+    qRegisterMetaType<const QSet<QInteractionOperand *> *>("const QSet<QInteractionOperand *> *");
+    qRegisterMetaType<const QList<QInteractionOperand *> *>("const QList<QInteractionOperand *> *");
+
+
+    QInteractionFragment::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qcombinedfragment.cpp"
 
 QT_END_NAMESPACE_QTUML

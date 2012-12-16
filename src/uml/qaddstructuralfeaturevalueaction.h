@@ -78,6 +78,7 @@ public:
     // Association ends from QAddStructuralFeatureValueAction
     Q_INVOKABLE QInputPin *insertAt() const;
     Q_INVOKABLE void setInsertAt(QInputPin *insertAt);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QAddStructuralFeatureValueAction(QAddStructuralFeatureValueActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

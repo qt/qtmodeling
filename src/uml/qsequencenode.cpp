@@ -115,6 +115,30 @@ void QSequenceNode::removeExecutableNode(QExecutableNode *executableNode)
     }
 }
 
+void QSequenceNode::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QSequenceNode) *>("QT_PREPEND_NAMESPACE_QTUML(QSequenceNode) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QSequenceNode) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QSequenceNode) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QSequenceNode) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QSequenceNode) *> *");
+    qRegisterMetaType<QSequenceNode *>("QSequenceNode *");
+    qRegisterMetaType<const QSet<QSequenceNode *> *>("const QSet<QSequenceNode *> *");
+    qRegisterMetaType<const QList<QSequenceNode *> *>("const QList<QSequenceNode *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *>("QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *> *");
+    qRegisterMetaType<QExecutableNode *>("QExecutableNode *");
+    qRegisterMetaType<const QSet<QExecutableNode *> *>("const QSet<QExecutableNode *> *");
+    qRegisterMetaType<const QList<QExecutableNode *> *>("const QList<QExecutableNode *> *");
+
+
+    QStructuredActivityNode::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qsequencenode.cpp"
 
 QT_END_NAMESPACE_QTUML

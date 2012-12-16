@@ -148,6 +148,38 @@ void QProtocolTransition::setPreCondition(QConstraint *preCondition)
     }
 }
 
+void QProtocolTransition::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QProtocolTransition) *>("QT_PREPEND_NAMESPACE_QTUML(QProtocolTransition) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QProtocolTransition) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QProtocolTransition) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QProtocolTransition) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QProtocolTransition) *> *");
+    qRegisterMetaType<QProtocolTransition *>("QProtocolTransition *");
+    qRegisterMetaType<const QSet<QProtocolTransition *> *>("const QSet<QProtocolTransition *> *");
+    qRegisterMetaType<const QList<QProtocolTransition *> *>("const QList<QProtocolTransition *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QConstraint) *>("QT_PREPEND_NAMESPACE_QTUML(QConstraint) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QConstraint) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QConstraint) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QConstraint) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QConstraint) *> *");
+    qRegisterMetaType<QConstraint *>("QConstraint *");
+    qRegisterMetaType<const QSet<QConstraint *> *>("const QSet<QConstraint *> *");
+    qRegisterMetaType<const QList<QConstraint *> *>("const QList<QConstraint *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QOperation) *>("QT_PREPEND_NAMESPACE_QTUML(QOperation) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *");
+    qRegisterMetaType<QOperation *>("QOperation *");
+    qRegisterMetaType<const QSet<QOperation *> *>("const QSet<QOperation *> *");
+    qRegisterMetaType<const QList<QOperation *> *>("const QList<QOperation *> *");
+
+
+    QTransition::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qprotocoltransition.cpp"
 
 QT_END_NAMESPACE_QTUML

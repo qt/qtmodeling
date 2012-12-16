@@ -105,6 +105,7 @@ public:
     Q_INVOKABLE const QSet<QNode *> *nestedNodes() const;
     Q_INVOKABLE void addNestedNode(QNode *nestedNode);
     Q_INVOKABLE void removeNestedNode(QNode *nestedNode);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QNode(QNodePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

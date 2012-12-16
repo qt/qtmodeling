@@ -73,6 +73,7 @@ public:
     // Association ends from QTypedElement
     Q_INVOKABLE QType *type() const;
     Q_INVOKABLE void setType(QType *type);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QTypedElement(QTypedElementPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

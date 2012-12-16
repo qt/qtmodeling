@@ -94,6 +94,7 @@ public:
     Q_INVOKABLE const QSet<QOutputPin *> *outputValues() const;
     Q_INVOKABLE void addOutputValue(QOutputPin *outputValue);
     Q_INVOKABLE void removeOutputValue(QOutputPin *outputValue);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QOpaqueAction(QOpaqueActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

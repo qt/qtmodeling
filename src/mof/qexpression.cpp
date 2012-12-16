@@ -142,6 +142,22 @@ void QExpression::removeOperand(QValueSpecification *operand)
     }
 }
 
+void QExpression::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QExpression) *>("QT_PREPEND_NAMESPACE_QTMOF(QExpression) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QExpression) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QExpression) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QExpression) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QExpression) *> *");
+    qRegisterMetaType<QExpression *>("QExpression *");
+    qRegisterMetaType<const QSet<QExpression *> *>("const QSet<QExpression *> *");
+    qRegisterMetaType<const QList<QExpression *> *>("const QList<QExpression *> *");
+
+
+    QValueSpecification::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qexpression.cpp"
 
 QT_END_NAMESPACE_QTMOF

@@ -184,6 +184,22 @@ qint32 QOpaqueExpression::value() const
     return qint32(); // change here to your derived return
 }
 
+void QOpaqueExpression::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QOpaqueExpression) *>("QT_PREPEND_NAMESPACE_QTMOF(QOpaqueExpression) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QOpaqueExpression) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QOpaqueExpression) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QOpaqueExpression) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QOpaqueExpression) *> *");
+    qRegisterMetaType<QOpaqueExpression *>("QOpaqueExpression *");
+    qRegisterMetaType<const QSet<QOpaqueExpression *> *>("const QSet<QOpaqueExpression *> *");
+    qRegisterMetaType<const QList<QOpaqueExpression *> *>("const QList<QOpaqueExpression *> *");
+
+
+    QValueSpecification::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qopaqueexpression.cpp"
 
 QT_END_NAMESPACE_QTMOF

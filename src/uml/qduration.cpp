@@ -143,6 +143,30 @@ void QDuration::removeObservation(QObservation *observation)
     }
 }
 
+void QDuration::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QDuration) *>("QT_PREPEND_NAMESPACE_QTUML(QDuration) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QDuration) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QDuration) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QDuration) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QDuration) *> *");
+    qRegisterMetaType<QDuration *>("QDuration *");
+    qRegisterMetaType<const QSet<QDuration *> *>("const QSet<QDuration *> *");
+    qRegisterMetaType<const QList<QDuration *> *>("const QList<QDuration *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QObservation) *>("QT_PREPEND_NAMESPACE_QTUML(QObservation) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QObservation) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QObservation) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QObservation) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QObservation) *> *");
+    qRegisterMetaType<QObservation *>("QObservation *");
+    qRegisterMetaType<const QSet<QObservation *> *>("const QSet<QObservation *> *");
+    qRegisterMetaType<const QList<QObservation *> *>("const QList<QObservation *> *");
+
+
+    QValueSpecification::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qduration.cpp"
 
 QT_END_NAMESPACE_QTUML

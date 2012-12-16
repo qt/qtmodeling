@@ -102,6 +102,30 @@ void QActivityParameterNode::setParameter(QParameter *parameter)
     }
 }
 
+void QActivityParameterNode::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QActivityParameterNode) *>("QT_PREPEND_NAMESPACE_QTUML(QActivityParameterNode) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QActivityParameterNode) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QActivityParameterNode) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QActivityParameterNode) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QActivityParameterNode) *> *");
+    qRegisterMetaType<QActivityParameterNode *>("QActivityParameterNode *");
+    qRegisterMetaType<const QSet<QActivityParameterNode *> *>("const QSet<QActivityParameterNode *> *");
+    qRegisterMetaType<const QList<QActivityParameterNode *> *>("const QList<QActivityParameterNode *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QParameter) *>("QT_PREPEND_NAMESPACE_QTUML(QParameter) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QParameter) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QParameter) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QParameter) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QParameter) *> *");
+    qRegisterMetaType<QParameter *>("QParameter *");
+    qRegisterMetaType<const QSet<QParameter *> *>("const QSet<QParameter *> *");
+    qRegisterMetaType<const QList<QParameter *> *>("const QList<QParameter *> *");
+
+
+    QObjectNode::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qactivityparameternode.cpp"
 
 QT_END_NAMESPACE_QTUML

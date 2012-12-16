@@ -116,6 +116,22 @@ qreal QLiteralReal::realValue() const
     return qreal(); // change here to your derived return
 }
 
+void QLiteralReal::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QLiteralReal) *>("QT_PREPEND_NAMESPACE_QTMOF(QLiteralReal) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QLiteralReal) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QLiteralReal) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QLiteralReal) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QLiteralReal) *> *");
+    qRegisterMetaType<QLiteralReal *>("QLiteralReal *");
+    qRegisterMetaType<const QSet<QLiteralReal *> *>("const QSet<QLiteralReal *> *");
+    qRegisterMetaType<const QList<QLiteralReal *> *>("const QList<QLiteralReal *> *");
+
+
+    QLiteralSpecification::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qliteralreal.cpp"
 
 QT_END_NAMESPACE_QTMOF

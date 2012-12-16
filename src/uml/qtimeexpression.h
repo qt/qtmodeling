@@ -80,6 +80,7 @@ public:
     Q_INVOKABLE void removeObservation(QObservation *observation);
     Q_INVOKABLE QValueSpecification *expr() const;
     Q_INVOKABLE void setExpr(QValueSpecification *expr);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QTimeExpression(QTimeExpressionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

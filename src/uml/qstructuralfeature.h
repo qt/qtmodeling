@@ -131,6 +131,7 @@ public:
     // Attributes from QStructuralFeature
     Q_INVOKABLE bool isReadOnly() const;
     Q_INVOKABLE void setReadOnly(bool isReadOnly);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QStructuralFeature(QStructuralFeaturePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

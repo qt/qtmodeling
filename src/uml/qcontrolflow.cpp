@@ -74,6 +74,22 @@ QControlFlow::~QControlFlow()
 {
 }
 
+void QControlFlow::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QControlFlow) *>("QT_PREPEND_NAMESPACE_QTUML(QControlFlow) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QControlFlow) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QControlFlow) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QControlFlow) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QControlFlow) *> *");
+    qRegisterMetaType<QControlFlow *>("QControlFlow *");
+    qRegisterMetaType<const QSet<QControlFlow *> *>("const QSet<QControlFlow *> *");
+    qRegisterMetaType<const QList<QControlFlow *> *>("const QList<QControlFlow *> *");
+
+
+    QActivityEdge::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qcontrolflow.cpp"
 
 QT_END_NAMESPACE_QTUML

@@ -156,6 +156,22 @@ void QTag::setTagOwner(QElement *tagOwner)
     }
 }
 
+void QTag::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QTag) *>("QT_PREPEND_NAMESPACE_QTMOF(QTag) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QTag) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QTag) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QTag) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QTag) *> *");
+    qRegisterMetaType<QTag *>("QTag *");
+    qRegisterMetaType<const QSet<QTag *> *>("const QSet<QTag *> *");
+    qRegisterMetaType<const QList<QTag *> *>("const QList<QTag *> *");
+
+
+    QElement::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qtag.cpp"
 
 QT_END_NAMESPACE_QTMOF

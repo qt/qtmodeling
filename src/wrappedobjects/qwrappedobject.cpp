@@ -137,6 +137,10 @@ QVariant QWrappedObject::property(const char *name) const
         return QVariant();
 }
 
+void QWrappedObject::registerMetaTypes() const
+{
+}
+
 #include "moc_qwrappedobject.cpp"
 
 QT_END_NAMESPACE_QTWRAPPEDOBJECTS

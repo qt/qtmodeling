@@ -94,6 +94,22 @@ bool QLiteralNull::isNull() const
     return bool(); // change here to your derived return
 }
 
+void QLiteralNull::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QLiteralNull) *>("QT_PREPEND_NAMESPACE_QTMOF(QLiteralNull) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QLiteralNull) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QLiteralNull) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QLiteralNull) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QLiteralNull) *> *");
+    qRegisterMetaType<QLiteralNull *>("QLiteralNull *");
+    qRegisterMetaType<const QSet<QLiteralNull *> *>("const QSet<QLiteralNull *> *");
+    qRegisterMetaType<const QList<QLiteralNull *> *>("const QList<QLiteralNull *> *");
+
+
+    QLiteralSpecification::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qliteralnull.cpp"
 
 QT_END_NAMESPACE_QTMOF

@@ -435,6 +435,78 @@ void QActivityEdge::setTarget(QActivityNode *target)
     }
 }
 
+void QActivityEdge::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QActivityEdge) *>("QT_PREPEND_NAMESPACE_QTUML(QActivityEdge) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QActivityEdge) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QActivityEdge) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QActivityEdge) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QActivityEdge) *> *");
+    qRegisterMetaType<QActivityEdge *>("QActivityEdge *");
+    qRegisterMetaType<const QSet<QActivityEdge *> *>("const QSet<QActivityEdge *> *");
+    qRegisterMetaType<const QList<QActivityEdge *> *>("const QList<QActivityEdge *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInterruptibleActivityRegion) *>("QT_PREPEND_NAMESPACE_QTUML(QInterruptibleActivityRegion) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInterruptibleActivityRegion) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInterruptibleActivityRegion) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInterruptibleActivityRegion) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInterruptibleActivityRegion) *> *");
+    qRegisterMetaType<QInterruptibleActivityRegion *>("QInterruptibleActivityRegion *");
+    qRegisterMetaType<const QSet<QInterruptibleActivityRegion *> *>("const QSet<QInterruptibleActivityRegion *> *");
+    qRegisterMetaType<const QList<QInterruptibleActivityRegion *> *>("const QList<QInterruptibleActivityRegion *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QActivityNode) *>("QT_PREPEND_NAMESPACE_QTUML(QActivityNode) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QActivityNode) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QActivityNode) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QActivityNode) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QActivityNode) *> *");
+    qRegisterMetaType<QActivityNode *>("QActivityNode *");
+    qRegisterMetaType<const QSet<QActivityNode *> *>("const QSet<QActivityNode *> *");
+    qRegisterMetaType<const QList<QActivityNode *> *>("const QList<QActivityNode *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QStructuredActivityNode) *>("QT_PREPEND_NAMESPACE_QTUML(QStructuredActivityNode) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QStructuredActivityNode) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QStructuredActivityNode) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QStructuredActivityNode) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QStructuredActivityNode) *> *");
+    qRegisterMetaType<QStructuredActivityNode *>("QStructuredActivityNode *");
+    qRegisterMetaType<const QSet<QStructuredActivityNode *> *>("const QSet<QStructuredActivityNode *> *");
+    qRegisterMetaType<const QList<QStructuredActivityNode *> *>("const QList<QStructuredActivityNode *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QActivityPartition) *>("QT_PREPEND_NAMESPACE_QTUML(QActivityPartition) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QActivityPartition) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QActivityPartition) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QActivityPartition) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QActivityPartition) *> *");
+    qRegisterMetaType<QActivityPartition *>("QActivityPartition *");
+    qRegisterMetaType<const QSet<QActivityPartition *> *>("const QSet<QActivityPartition *> *");
+    qRegisterMetaType<const QList<QActivityPartition *> *>("const QList<QActivityPartition *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QActivity) *>("QT_PREPEND_NAMESPACE_QTUML(QActivity) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QActivity) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QActivity) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QActivity) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QActivity) *> *");
+    qRegisterMetaType<QActivity *>("QActivity *");
+    qRegisterMetaType<const QSet<QActivity *> *>("const QSet<QActivity *> *");
+    qRegisterMetaType<const QList<QActivity *> *>("const QList<QActivity *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QActivityGroup) *>("QT_PREPEND_NAMESPACE_QTUML(QActivityGroup) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QActivityGroup) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QActivityGroup) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QActivityGroup) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QActivityGroup) *> *");
+    qRegisterMetaType<QActivityGroup *>("QActivityGroup *");
+    qRegisterMetaType<const QSet<QActivityGroup *> *>("const QSet<QActivityGroup *> *");
+    qRegisterMetaType<const QList<QActivityGroup *> *>("const QList<QActivityGroup *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *>("QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *");
+    qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
+    qRegisterMetaType<const QSet<QValueSpecification *> *>("const QSet<QValueSpecification *> *");
+    qRegisterMetaType<const QList<QValueSpecification *> *>("const QList<QValueSpecification *> *");
+
+
+    QRedefinableElement::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qactivityedge.cpp"
 
 QT_END_NAMESPACE_QTUML

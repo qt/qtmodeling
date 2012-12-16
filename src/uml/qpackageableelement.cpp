@@ -240,6 +240,22 @@ void QPackageableElement::setVisibility(QtUml::VisibilityKind visibility)
     }
 }
 
+void QPackageableElement::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QPackageableElement) *>("QT_PREPEND_NAMESPACE_QTUML(QPackageableElement) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QPackageableElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QPackageableElement) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QPackageableElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QPackageableElement) *> *");
+    qRegisterMetaType<QPackageableElement *>("QPackageableElement *");
+    qRegisterMetaType<const QSet<QPackageableElement *> *>("const QSet<QPackageableElement *> *");
+    qRegisterMetaType<const QList<QPackageableElement *> *>("const QList<QPackageableElement *> *");
+
+
+    QWrappedObject::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qpackageableelement.cpp"
 
 QT_END_NAMESPACE_QTUML

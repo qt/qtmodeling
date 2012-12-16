@@ -98,6 +98,7 @@ public:
     Q_INVOKABLE const QSet<QExecutableNode *> *tests() const;
     Q_INVOKABLE void addTest(QExecutableNode *test);
     Q_INVOKABLE void removeTest(QExecutableNode *test);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QClause(QClausePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

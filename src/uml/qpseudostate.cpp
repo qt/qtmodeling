@@ -173,6 +173,38 @@ void QPseudostate::setStateMachine(QStateMachine *stateMachine)
     }
 }
 
+void QPseudostate::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QPseudostate) *>("QT_PREPEND_NAMESPACE_QTUML(QPseudostate) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QPseudostate) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QPseudostate) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QPseudostate) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QPseudostate) *> *");
+    qRegisterMetaType<QPseudostate *>("QPseudostate *");
+    qRegisterMetaType<const QSet<QPseudostate *> *>("const QSet<QPseudostate *> *");
+    qRegisterMetaType<const QList<QPseudostate *> *>("const QList<QPseudostate *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QState) *>("QT_PREPEND_NAMESPACE_QTUML(QState) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QState) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QState) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QState) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QState) *> *");
+    qRegisterMetaType<QState *>("QState *");
+    qRegisterMetaType<const QSet<QState *> *>("const QSet<QState *> *");
+    qRegisterMetaType<const QList<QState *> *>("const QList<QState *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QStateMachine) *>("QT_PREPEND_NAMESPACE_QTUML(QStateMachine) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QStateMachine) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QStateMachine) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QStateMachine) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QStateMachine) *> *");
+    qRegisterMetaType<QStateMachine *>("QStateMachine *");
+    qRegisterMetaType<const QSet<QStateMachine *> *>("const QSet<QStateMachine *> *");
+    qRegisterMetaType<const QList<QStateMachine *> *>("const QList<QStateMachine *> *");
+
+
+    QVertex::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qpseudostate.cpp"
 
 QT_END_NAMESPACE_QTUML

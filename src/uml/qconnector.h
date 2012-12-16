@@ -98,6 +98,7 @@ public:
     Q_INVOKABLE const QList<QConnectorEnd *> *ends() const;
     Q_INVOKABLE void addEnd(QConnectorEnd *end);
     Q_INVOKABLE void removeEnd(QConnectorEnd *end);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QConnector(QConnectorPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

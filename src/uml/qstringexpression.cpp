@@ -243,6 +243,22 @@ QString QStringExpression::stringValue() const
     return QString(); // change here to your derived return
 }
 
+void QStringExpression::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QStringExpression) *>("QT_PREPEND_NAMESPACE_QTUML(QStringExpression) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QStringExpression) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QStringExpression) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QStringExpression) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QStringExpression) *> *");
+    qRegisterMetaType<QStringExpression *>("QStringExpression *");
+    qRegisterMetaType<const QSet<QStringExpression *> *>("const QSet<QStringExpression *> *");
+    qRegisterMetaType<const QList<QStringExpression *> *>("const QList<QStringExpression *> *");
+
+
+    QWrappedObject::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qstringexpression.cpp"
 
 QT_END_NAMESPACE_QTUML

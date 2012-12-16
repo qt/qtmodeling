@@ -81,6 +81,7 @@ public:
     // Association ends from QDestroyObjectAction
     Q_INVOKABLE QInputPin *target() const;
     Q_INVOKABLE void setTarget(QInputPin *target);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QDestroyObjectAction(QDestroyObjectActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

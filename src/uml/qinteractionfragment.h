@@ -90,6 +90,7 @@ public:
     Q_INVOKABLE void removeCovered(QLifeline *covered);
     Q_INVOKABLE QInteractionOperand *enclosingOperand() const;
     Q_INVOKABLE void setEnclosingOperand(QInteractionOperand *enclosingOperand);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QInteractionFragment(QInteractionFragmentPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

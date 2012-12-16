@@ -125,6 +125,30 @@ void QExecutableNode::removeHandler(QExceptionHandler *handler)
     }
 }
 
+void QExecutableNode::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *>("QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *> *");
+    qRegisterMetaType<QExecutableNode *>("QExecutableNode *");
+    qRegisterMetaType<const QSet<QExecutableNode *> *>("const QSet<QExecutableNode *> *");
+    qRegisterMetaType<const QList<QExecutableNode *> *>("const QList<QExecutableNode *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QExceptionHandler) *>("QT_PREPEND_NAMESPACE_QTUML(QExceptionHandler) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QExceptionHandler) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QExceptionHandler) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QExceptionHandler) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QExceptionHandler) *> *");
+    qRegisterMetaType<QExceptionHandler *>("QExceptionHandler *");
+    qRegisterMetaType<const QSet<QExceptionHandler *> *>("const QSet<QExceptionHandler *> *");
+    qRegisterMetaType<const QList<QExceptionHandler *> *>("const QList<QExceptionHandler *> *");
+
+
+    QActivityNode::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qexecutablenode.cpp"
 
 QT_END_NAMESPACE_QTUML

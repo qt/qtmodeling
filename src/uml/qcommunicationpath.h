@@ -64,6 +64,7 @@ class Q_UML_EXPORT QCommunicationPath : public QAssociation
 public:
     Q_INVOKABLE explicit QCommunicationPath(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QCommunicationPath();
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QCommunicationPath(QCommunicationPathPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

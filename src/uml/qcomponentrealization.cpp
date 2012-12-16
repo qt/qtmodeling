@@ -159,6 +159,38 @@ void QComponentRealization::removeRealizingClassifier(QClassifier *realizingClas
     }
 }
 
+void QComponentRealization::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QComponentRealization) *>("QT_PREPEND_NAMESPACE_QTUML(QComponentRealization) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QComponentRealization) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QComponentRealization) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QComponentRealization) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QComponentRealization) *> *");
+    qRegisterMetaType<QComponentRealization *>("QComponentRealization *");
+    qRegisterMetaType<const QSet<QComponentRealization *> *>("const QSet<QComponentRealization *> *");
+    qRegisterMetaType<const QList<QComponentRealization *> *>("const QList<QComponentRealization *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QComponent) *>("QT_PREPEND_NAMESPACE_QTUML(QComponent) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QComponent) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QComponent) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QComponent) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QComponent) *> *");
+    qRegisterMetaType<QComponent *>("QComponent *");
+    qRegisterMetaType<const QSet<QComponent *> *>("const QSet<QComponent *> *");
+    qRegisterMetaType<const QList<QComponent *> *>("const QList<QComponent *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *>("QT_PREPEND_NAMESPACE_QTUML(QClassifier) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *");
+    qRegisterMetaType<QClassifier *>("QClassifier *");
+    qRegisterMetaType<const QSet<QClassifier *> *>("const QSet<QClassifier *> *");
+    qRegisterMetaType<const QList<QClassifier *> *>("const QList<QClassifier *> *");
+
+
+    QRealization::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 // Overriden methods for subsetted properties
 
 void QComponentRealization::addSupplier(QWrappedObjectPointer<QComponent> abstraction)

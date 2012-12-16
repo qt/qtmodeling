@@ -120,6 +120,22 @@ bool QLiteralBoolean::isComputable() const
     return bool(); // change here to your derived return
 }
 
+void QLiteralBoolean::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QLiteralBoolean) *>("QT_PREPEND_NAMESPACE_QTUML(QLiteralBoolean) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QLiteralBoolean) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QLiteralBoolean) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QLiteralBoolean) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QLiteralBoolean) *> *");
+    qRegisterMetaType<QLiteralBoolean *>("QLiteralBoolean *");
+    qRegisterMetaType<const QSet<QLiteralBoolean *> *>("const QSet<QLiteralBoolean *> *");
+    qRegisterMetaType<const QList<QLiteralBoolean *> *>("const QList<QLiteralBoolean *> *");
+
+
+    QLiteralSpecification::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qliteralboolean.cpp"
 
 QT_END_NAMESPACE_QTUML

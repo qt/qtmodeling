@@ -812,6 +812,46 @@ void QArtifact::removeNestedArtifact(QArtifact *nestedArtifact)
     }
 }
 
+void QArtifact::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QArtifact) *>("QT_PREPEND_NAMESPACE_QTUML(QArtifact) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QArtifact) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QArtifact) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QArtifact) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QArtifact) *> *");
+    qRegisterMetaType<QArtifact *>("QArtifact *");
+    qRegisterMetaType<const QSet<QArtifact *> *>("const QSet<QArtifact *> *");
+    qRegisterMetaType<const QList<QArtifact *> *>("const QList<QArtifact *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QOperation) *>("QT_PREPEND_NAMESPACE_QTUML(QOperation) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *");
+    qRegisterMetaType<QOperation *>("QOperation *");
+    qRegisterMetaType<const QSet<QOperation *> *>("const QSet<QOperation *> *");
+    qRegisterMetaType<const QList<QOperation *> *>("const QList<QOperation *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QProperty) *>("QT_PREPEND_NAMESPACE_QTUML(QProperty) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QProperty) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QProperty) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QProperty) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QProperty) *> *");
+    qRegisterMetaType<QProperty *>("QProperty *");
+    qRegisterMetaType<const QSet<QProperty *> *>("const QSet<QProperty *> *");
+    qRegisterMetaType<const QList<QProperty *> *>("const QList<QProperty *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QManifestation) *>("QT_PREPEND_NAMESPACE_QTUML(QManifestation) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QManifestation) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QManifestation) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QManifestation) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QManifestation) *> *");
+    qRegisterMetaType<QManifestation *>("QManifestation *");
+    qRegisterMetaType<const QSet<QManifestation *> *>("const QSet<QManifestation *> *");
+    qRegisterMetaType<const QList<QManifestation *> *>("const QList<QManifestation *> *");
+
+
+    QWrappedObject::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 // Overriden methods for subsetted properties
 
 void QArtifact::addClientDependency(QWrappedObjectPointer<QManifestation> manifestation)

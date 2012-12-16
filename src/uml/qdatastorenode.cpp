@@ -74,6 +74,22 @@ QDataStoreNode::~QDataStoreNode()
 {
 }
 
+void QDataStoreNode::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QDataStoreNode) *>("QT_PREPEND_NAMESPACE_QTUML(QDataStoreNode) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QDataStoreNode) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QDataStoreNode) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QDataStoreNode) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QDataStoreNode) *> *");
+    qRegisterMetaType<QDataStoreNode *>("QDataStoreNode *");
+    qRegisterMetaType<const QSet<QDataStoreNode *> *>("const QSet<QDataStoreNode *> *");
+    qRegisterMetaType<const QList<QDataStoreNode *> *>("const QList<QDataStoreNode *> *");
+
+
+    QCentralBufferNode::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qdatastorenode.cpp"
 
 QT_END_NAMESPACE_QTUML

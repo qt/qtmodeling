@@ -187,6 +187,46 @@ const QSet<QNamedElement *> *QDataType::inherit(const QSet<QNamedElement *> *inh
     return 0; // change here to your derived return
 }
 
+void QDataType::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QDataType) *>("QT_PREPEND_NAMESPACE_QTUML(QDataType) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QDataType) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QDataType) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QDataType) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QDataType) *> *");
+    qRegisterMetaType<QDataType *>("QDataType *");
+    qRegisterMetaType<const QSet<QDataType *> *>("const QSet<QDataType *> *");
+    qRegisterMetaType<const QList<QDataType *> *>("const QList<QDataType *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QProperty) *>("QT_PREPEND_NAMESPACE_QTUML(QProperty) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QProperty) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QProperty) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QProperty) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QProperty) *> *");
+    qRegisterMetaType<QProperty *>("QProperty *");
+    qRegisterMetaType<const QSet<QProperty *> *>("const QSet<QProperty *> *");
+    qRegisterMetaType<const QList<QProperty *> *>("const QList<QProperty *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QOperation) *>("QT_PREPEND_NAMESPACE_QTUML(QOperation) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *");
+    qRegisterMetaType<QOperation *>("QOperation *");
+    qRegisterMetaType<const QSet<QOperation *> *>("const QSet<QOperation *> *");
+    qRegisterMetaType<const QList<QOperation *> *>("const QList<QOperation *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *>("QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *> *");
+    qRegisterMetaType<QNamedElement *>("QNamedElement *");
+    qRegisterMetaType<const QSet<QNamedElement *> *>("const QSet<QNamedElement *> *");
+    qRegisterMetaType<const QList<QNamedElement *> *>("const QList<QNamedElement *> *");
+
+
+    QClassifier::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qdatatype.cpp"
 
 QT_END_NAMESPACE_QTUML

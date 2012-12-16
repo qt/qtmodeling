@@ -74,6 +74,22 @@ QRealization::~QRealization()
 {
 }
 
+void QRealization::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QRealization) *>("QT_PREPEND_NAMESPACE_QTUML(QRealization) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QRealization) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QRealization) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QRealization) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QRealization) *> *");
+    qRegisterMetaType<QRealization *>("QRealization *");
+    qRegisterMetaType<const QSet<QRealization *> *>("const QSet<QRealization *> *");
+    qRegisterMetaType<const QList<QRealization *> *>("const QList<QRealization *> *");
+
+
+    QAbstraction::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qrealization.cpp"
 
 QT_END_NAMESPACE_QTUML

@@ -148,6 +148,30 @@ const QSet<QClassifier *> *QFeature::featuringClassifiers() const
     return d->featuringClassifiers;
 }
 
+void QFeature::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QFeature) *>("QT_PREPEND_NAMESPACE_QTUML(QFeature) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QFeature) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QFeature) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QFeature) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QFeature) *> *");
+    qRegisterMetaType<QFeature *>("QFeature *");
+    qRegisterMetaType<const QSet<QFeature *> *>("const QSet<QFeature *> *");
+    qRegisterMetaType<const QList<QFeature *> *>("const QList<QFeature *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *>("QT_PREPEND_NAMESPACE_QTUML(QClassifier) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *");
+    qRegisterMetaType<QClassifier *>("QClassifier *");
+    qRegisterMetaType<const QSet<QClassifier *> *>("const QSet<QClassifier *> *");
+    qRegisterMetaType<const QList<QClassifier *> *>("const QList<QClassifier *> *");
+
+
+    QRedefinableElement::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qfeature.cpp"
 
 QT_END_NAMESPACE_QTUML

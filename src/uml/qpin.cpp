@@ -569,6 +569,22 @@ void QPin::setControl(bool isControl)
     }
 }
 
+void QPin::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QPin) *>("QT_PREPEND_NAMESPACE_QTUML(QPin) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QPin) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QPin) *> *");
+    qRegisterMetaType<QPin *>("QPin *");
+    qRegisterMetaType<const QSet<QPin *> *>("const QSet<QPin *> *");
+    qRegisterMetaType<const QList<QPin *> *>("const QList<QPin *> *");
+
+
+    QWrappedObject::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qpin.cpp"
 
 QT_END_NAMESPACE_QTUML

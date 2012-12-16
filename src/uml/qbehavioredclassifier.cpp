@@ -197,6 +197,38 @@ void QBehavioredClassifier::setClassifierBehavior(QBehavior *classifierBehavior)
     }
 }
 
+void QBehavioredClassifier::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QBehavioredClassifier) *>("QT_PREPEND_NAMESPACE_QTUML(QBehavioredClassifier) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QBehavioredClassifier) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QBehavioredClassifier) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QBehavioredClassifier) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QBehavioredClassifier) *> *");
+    qRegisterMetaType<QBehavioredClassifier *>("QBehavioredClassifier *");
+    qRegisterMetaType<const QSet<QBehavioredClassifier *> *>("const QSet<QBehavioredClassifier *> *");
+    qRegisterMetaType<const QList<QBehavioredClassifier *> *>("const QList<QBehavioredClassifier *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *>("QT_PREPEND_NAMESPACE_QTUML(QBehavior) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *");
+    qRegisterMetaType<QBehavior *>("QBehavior *");
+    qRegisterMetaType<const QSet<QBehavior *> *>("const QSet<QBehavior *> *");
+    qRegisterMetaType<const QList<QBehavior *> *>("const QList<QBehavior *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInterfaceRealization) *>("QT_PREPEND_NAMESPACE_QTUML(QInterfaceRealization) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInterfaceRealization) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInterfaceRealization) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInterfaceRealization) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInterfaceRealization) *> *");
+    qRegisterMetaType<QInterfaceRealization *>("QInterfaceRealization *");
+    qRegisterMetaType<const QSet<QInterfaceRealization *> *>("const QSet<QInterfaceRealization *> *");
+    qRegisterMetaType<const QList<QInterfaceRealization *> *>("const QList<QInterfaceRealization *> *");
+
+
+    QClassifier::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 // Overriden methods for subsetted properties
 
 void QBehavioredClassifier::addClientDependency(QWrappedObjectPointer<QInterfaceRealization> interfaceRealization)

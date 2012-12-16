@@ -77,6 +77,7 @@ public:
     Q_INVOKABLE const QList<QProperty *> *ownedAttributes() const;
     Q_INVOKABLE void addOwnedAttribute(QProperty *ownedAttribute);
     Q_INVOKABLE void removeOwnedAttribute(QProperty *ownedAttribute);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QSignal(QSignalPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

@@ -617,6 +617,54 @@ void QInteraction::removeLifeline(QLifeline *lifeline)
     }
 }
 
+void QInteraction::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInteraction) *>("QT_PREPEND_NAMESPACE_QTUML(QInteraction) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInteraction) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInteraction) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInteraction) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInteraction) *> *");
+    qRegisterMetaType<QInteraction *>("QInteraction *");
+    qRegisterMetaType<const QSet<QInteraction *> *>("const QSet<QInteraction *> *");
+    qRegisterMetaType<const QList<QInteraction *> *>("const QList<QInteraction *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QMessage) *>("QT_PREPEND_NAMESPACE_QTUML(QMessage) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QMessage) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QMessage) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QMessage) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QMessage) *> *");
+    qRegisterMetaType<QMessage *>("QMessage *");
+    qRegisterMetaType<const QSet<QMessage *> *>("const QSet<QMessage *> *");
+    qRegisterMetaType<const QList<QMessage *> *>("const QList<QMessage *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QLifeline) *>("QT_PREPEND_NAMESPACE_QTUML(QLifeline) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QLifeline) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QLifeline) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QLifeline) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QLifeline) *> *");
+    qRegisterMetaType<QLifeline *>("QLifeline *");
+    qRegisterMetaType<const QSet<QLifeline *> *>("const QSet<QLifeline *> *");
+    qRegisterMetaType<const QList<QLifeline *> *>("const QList<QLifeline *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QAction) *>("QT_PREPEND_NAMESPACE_QTUML(QAction) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QAction) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QAction) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QAction) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QAction) *> *");
+    qRegisterMetaType<QAction *>("QAction *");
+    qRegisterMetaType<const QSet<QAction *> *>("const QSet<QAction *> *");
+    qRegisterMetaType<const QList<QAction *> *>("const QList<QAction *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QGate) *>("QT_PREPEND_NAMESPACE_QTUML(QGate) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QGate) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QGate) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QGate) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QGate) *> *");
+    qRegisterMetaType<QGate *>("QGate *");
+    qRegisterMetaType<const QSet<QGate *> *>("const QSet<QGate *> *");
+    qRegisterMetaType<const QList<QGate *> *>("const QList<QGate *> *");
+
+
+    QWrappedObject::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qinteraction.cpp"
 
 QT_END_NAMESPACE_QTUML

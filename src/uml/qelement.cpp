@@ -208,6 +208,30 @@ bool QElement::mustBeOwned() const
     return true;
 }
 
+void QElement::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QElement) *>("QT_PREPEND_NAMESPACE_QTUML(QElement) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QElement) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QElement) *> *");
+    qRegisterMetaType<QElement *>("QElement *");
+    qRegisterMetaType<const QSet<QElement *> *>("const QSet<QElement *> *");
+    qRegisterMetaType<const QList<QElement *> *>("const QList<QElement *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QComment) *>("QT_PREPEND_NAMESPACE_QTUML(QComment) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QComment) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QComment) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QComment) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QComment) *> *");
+    qRegisterMetaType<QComment *>("QComment *");
+    qRegisterMetaType<const QSet<QComment *> *>("const QSet<QComment *> *");
+    qRegisterMetaType<const QList<QComment *> *>("const QList<QComment *> *");
+
+
+    QWrappedObject::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 void QElement::allOwnedElements(QSet<QElement *> *allOwnedElements_) const
 {
     Q_D(const QElement);

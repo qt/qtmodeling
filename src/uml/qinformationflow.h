@@ -146,6 +146,7 @@ public:
     Q_INVOKABLE const QSet<QRelationship *> *realizations() const;
     Q_INVOKABLE void addRealization(QRelationship *realization);
     Q_INVOKABLE void removeRealization(QRelationship *realization);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QInformationFlow(QInformationFlowPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

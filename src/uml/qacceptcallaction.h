@@ -73,6 +73,7 @@ public:
     // Association ends from QAcceptCallAction
     Q_INVOKABLE QOutputPin *returnInformation() const;
     Q_INVOKABLE void setReturnInformation(QOutputPin *returnInformation);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QAcceptCallAction(QAcceptCallActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

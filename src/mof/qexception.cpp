@@ -129,6 +129,30 @@ void QException::setObjectInError(QElement *objectInError)
     }
 }
 
+void QException::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QException) *>("QT_PREPEND_NAMESPACE_QTMOF(QException) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QException) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QException) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QException) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QException) *> *");
+    qRegisterMetaType<QException *>("QException *");
+    qRegisterMetaType<const QSet<QException *> *>("const QSet<QException *> *");
+    qRegisterMetaType<const QList<QException *> *>("const QList<QException *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QElement) *>("QT_PREPEND_NAMESPACE_QTMOF(QElement) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QElement) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QElement) *> *");
+    qRegisterMetaType<QElement *>("QElement *");
+    qRegisterMetaType<const QSet<QElement *> *>("const QSet<QElement *> *");
+    qRegisterMetaType<const QList<QElement *> *>("const QList<QElement *> *");
+
+
+    QWrappedObject::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qexception.cpp"
 
 QT_END_NAMESPACE_QTMOF

@@ -84,6 +84,7 @@ public:
     Q_INVOKABLE void setSelection(QBehavior *selection);
     Q_INVOKABLE QBehavior *transformation() const;
     Q_INVOKABLE void setTransformation(QBehavior *transformation);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QObjectFlow(QObjectFlowPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

@@ -85,6 +85,7 @@ public:
     Q_INVOKABLE const QSet<QClassifier *> *constrainingClassifiers() const;
     Q_INVOKABLE void addConstrainingClassifier(QClassifier *constrainingClassifier);
     Q_INVOKABLE void removeConstrainingClassifier(QClassifier *constrainingClassifier);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QClassifierTemplateParameter(QClassifierTemplateParameterPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

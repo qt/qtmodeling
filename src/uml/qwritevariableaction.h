@@ -73,6 +73,7 @@ public:
     // Association ends from QWriteVariableAction
     Q_INVOKABLE QInputPin *value() const;
     Q_INVOKABLE void setValue(QInputPin *value);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QWriteVariableAction(QWriteVariableActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

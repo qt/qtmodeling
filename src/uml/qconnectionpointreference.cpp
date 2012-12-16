@@ -180,6 +180,38 @@ void QConnectionPointReference::removeEntry(QPseudostate *entry)
     }
 }
 
+void QConnectionPointReference::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QConnectionPointReference) *>("QT_PREPEND_NAMESPACE_QTUML(QConnectionPointReference) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QConnectionPointReference) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QConnectionPointReference) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QConnectionPointReference) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QConnectionPointReference) *> *");
+    qRegisterMetaType<QConnectionPointReference *>("QConnectionPointReference *");
+    qRegisterMetaType<const QSet<QConnectionPointReference *> *>("const QSet<QConnectionPointReference *> *");
+    qRegisterMetaType<const QList<QConnectionPointReference *> *>("const QList<QConnectionPointReference *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QPseudostate) *>("QT_PREPEND_NAMESPACE_QTUML(QPseudostate) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QPseudostate) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QPseudostate) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QPseudostate) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QPseudostate) *> *");
+    qRegisterMetaType<QPseudostate *>("QPseudostate *");
+    qRegisterMetaType<const QSet<QPseudostate *> *>("const QSet<QPseudostate *> *");
+    qRegisterMetaType<const QList<QPseudostate *> *>("const QList<QPseudostate *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QState) *>("QT_PREPEND_NAMESPACE_QTUML(QState) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QState) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QState) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QState) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QState) *> *");
+    qRegisterMetaType<QState *>("QState *");
+    qRegisterMetaType<const QSet<QState *> *>("const QSet<QState *> *");
+    qRegisterMetaType<const QList<QState *> *>("const QList<QState *> *");
+
+
+    QVertex::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qconnectionpointreference.cpp"
 
 QT_END_NAMESPACE_QTUML

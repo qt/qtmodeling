@@ -121,6 +121,7 @@ public:
     Q_INVOKABLE void removeGroup(QWrappedObjectPointer<QStructuredActivityNode> structuredNode);
     Q_INVOKABLE void addNode(QWrappedObjectPointer<QStructuredActivityNode> structuredNode);
     Q_INVOKABLE void removeNode(QWrappedObjectPointer<QStructuredActivityNode> structuredNode);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QActivity(QActivityPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

@@ -141,6 +141,38 @@ void QWriteStructuralFeatureAction::setValue(QInputPin *value)
     }
 }
 
+void QWriteStructuralFeatureAction::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QWriteStructuralFeatureAction) *>("QT_PREPEND_NAMESPACE_QTUML(QWriteStructuralFeatureAction) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QWriteStructuralFeatureAction) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QWriteStructuralFeatureAction) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QWriteStructuralFeatureAction) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QWriteStructuralFeatureAction) *> *");
+    qRegisterMetaType<QWriteStructuralFeatureAction *>("QWriteStructuralFeatureAction *");
+    qRegisterMetaType<const QSet<QWriteStructuralFeatureAction *> *>("const QSet<QWriteStructuralFeatureAction *> *");
+    qRegisterMetaType<const QList<QWriteStructuralFeatureAction *> *>("const QList<QWriteStructuralFeatureAction *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *");
+    qRegisterMetaType<QOutputPin *>("QOutputPin *");
+    qRegisterMetaType<const QSet<QOutputPin *> *>("const QSet<QOutputPin *> *");
+    qRegisterMetaType<const QList<QOutputPin *> *>("const QList<QOutputPin *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QInputPin) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
+    qRegisterMetaType<QInputPin *>("QInputPin *");
+    qRegisterMetaType<const QSet<QInputPin *> *>("const QSet<QInputPin *> *");
+    qRegisterMetaType<const QList<QInputPin *> *>("const QList<QInputPin *> *");
+
+
+    QStructuralFeatureAction::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qwritestructuralfeatureaction.cpp"
 
 QT_END_NAMESPACE_QTUML

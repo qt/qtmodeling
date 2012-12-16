@@ -720,6 +720,34 @@ ${operation.return}${class.name}::${operation.name}([%- FOREACH parameter IN ope
     [%- END %]
 }
 [% END -%]
+
+void ${class.name}::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_${namespace.split('/').0.upper}(${class.name}) *>("QT_PREPEND_NAMESPACE_${namespace.split('/').0.upper}(${class.name}) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_${namespace.split('/').0.upper}(${class.name}) *> *>("const QSet<QT_PREPEND_NAMESPACE_${namespace.split('/').0.upper}(${class.name}) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_${namespace.split('/').0.upper}(${class.name}) *> *>("const QList<QT_PREPEND_NAMESPACE_${namespace.split('/').0.upper}(${class.name}) *> *");
+    qRegisterMetaType<${class.name} *>("${class.name} *");
+    qRegisterMetaType<const QSet<${class.name} *> *>("const QSet<${class.name} *> *");
+    qRegisterMetaType<const QList<${class.name} *> *>("const QList<${class.name} *> *");
+[% FOREACH forwarddecl IN class.forwarddecl -%]
+[%- IF forwarddecl.content != class.name %]
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_${namespace.split('/').0.upper}(${forwarddecl.content}) *>("QT_PREPEND_NAMESPACE_${namespace.split('/').0.upper}(${forwarddecl.content}) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_${namespace.split('/').0.upper}(${forwarddecl.content}) *> *>("const QSet<QT_PREPEND_NAMESPACE_${namespace.split('/').0.upper}(${forwarddecl.content}) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_${namespace.split('/').0.upper}(${forwarddecl.content}) *> *>("const QList<QT_PREPEND_NAMESPACE_${namespace.split('/').0.upper}(${forwarddecl.content}) *> *");
+    qRegisterMetaType<${forwarddecl.content} *>("${forwarddecl.content} *");
+    qRegisterMetaType<const QSet<${forwarddecl.content} *> *>("const QSet<${forwarddecl.content} *> *");
+    qRegisterMetaType<const QList<${forwarddecl.content} *> *>("const QList<${forwarddecl.content} *> *");
+
+[%- END -%]
+[% END %]
+
+    [% IF class.superclass.size == 1 %]${class.superclass.0.name.split('/').last}[% ELSE %]QWrappedObject[% END %]::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 [%- found = 'false' -%]
 [%- IF class.item('attribute') %]
 [%- FOREACH attribute IN class.attribute.values -%]

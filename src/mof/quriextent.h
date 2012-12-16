@@ -75,6 +75,7 @@ public:
     Q_INVOKABLE QString contextURI() const;
     Q_INVOKABLE QString uri(const QElement *object) const;
     Q_INVOKABLE QElement *element(QString uri) const;
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QURIExtent(QURIExtentPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

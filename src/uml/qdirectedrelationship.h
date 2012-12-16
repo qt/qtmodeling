@@ -77,6 +77,7 @@ public:
     // Association ends from QDirectedRelationship
     Q_INVOKABLE const QSet<QElement *> *sources() const;
     Q_INVOKABLE const QSet<QElement *> *targets() const;
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QDirectedRelationship(QDirectedRelationshipPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

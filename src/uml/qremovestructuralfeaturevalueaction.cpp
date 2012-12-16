@@ -136,6 +136,30 @@ void QRemoveStructuralFeatureValueAction::setRemoveAt(QInputPin *removeAt)
     }
 }
 
+void QRemoveStructuralFeatureValueAction::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QRemoveStructuralFeatureValueAction) *>("QT_PREPEND_NAMESPACE_QTUML(QRemoveStructuralFeatureValueAction) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QRemoveStructuralFeatureValueAction) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QRemoveStructuralFeatureValueAction) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QRemoveStructuralFeatureValueAction) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QRemoveStructuralFeatureValueAction) *> *");
+    qRegisterMetaType<QRemoveStructuralFeatureValueAction *>("QRemoveStructuralFeatureValueAction *");
+    qRegisterMetaType<const QSet<QRemoveStructuralFeatureValueAction *> *>("const QSet<QRemoveStructuralFeatureValueAction *> *");
+    qRegisterMetaType<const QList<QRemoveStructuralFeatureValueAction *> *>("const QList<QRemoveStructuralFeatureValueAction *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QInputPin) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
+    qRegisterMetaType<QInputPin *>("QInputPin *");
+    qRegisterMetaType<const QSet<QInputPin *> *>("const QSet<QInputPin *> *");
+    qRegisterMetaType<const QList<QInputPin *> *>("const QList<QInputPin *> *");
+
+
+    QWriteStructuralFeatureAction::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qremovestructuralfeaturevalueaction.cpp"
 
 QT_END_NAMESPACE_QTUML

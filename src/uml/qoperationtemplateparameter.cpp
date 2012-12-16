@@ -107,6 +107,30 @@ void QOperationTemplateParameter::setParameteredElement(QOperation *parameteredE
     }
 }
 
+void QOperationTemplateParameter::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QOperationTemplateParameter) *>("QT_PREPEND_NAMESPACE_QTUML(QOperationTemplateParameter) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QOperationTemplateParameter) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QOperationTemplateParameter) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QOperationTemplateParameter) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QOperationTemplateParameter) *> *");
+    qRegisterMetaType<QOperationTemplateParameter *>("QOperationTemplateParameter *");
+    qRegisterMetaType<const QSet<QOperationTemplateParameter *> *>("const QSet<QOperationTemplateParameter *> *");
+    qRegisterMetaType<const QList<QOperationTemplateParameter *> *>("const QList<QOperationTemplateParameter *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QOperation) *>("QT_PREPEND_NAMESPACE_QTUML(QOperation) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *");
+    qRegisterMetaType<QOperation *>("QOperation *");
+    qRegisterMetaType<const QSet<QOperation *> *>("const QSet<QOperation *> *");
+    qRegisterMetaType<const QList<QOperation *> *>("const QList<QOperation *> *");
+
+
+    QTemplateParameter::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qoperationtemplateparameter.cpp"
 
 QT_END_NAMESPACE_QTUML

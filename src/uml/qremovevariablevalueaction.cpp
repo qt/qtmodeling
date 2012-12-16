@@ -136,6 +136,30 @@ void QRemoveVariableValueAction::setRemoveAt(QInputPin *removeAt)
     }
 }
 
+void QRemoveVariableValueAction::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QRemoveVariableValueAction) *>("QT_PREPEND_NAMESPACE_QTUML(QRemoveVariableValueAction) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QRemoveVariableValueAction) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QRemoveVariableValueAction) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QRemoveVariableValueAction) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QRemoveVariableValueAction) *> *");
+    qRegisterMetaType<QRemoveVariableValueAction *>("QRemoveVariableValueAction *");
+    qRegisterMetaType<const QSet<QRemoveVariableValueAction *> *>("const QSet<QRemoveVariableValueAction *> *");
+    qRegisterMetaType<const QList<QRemoveVariableValueAction *> *>("const QList<QRemoveVariableValueAction *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QInputPin) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
+    qRegisterMetaType<QInputPin *>("QInputPin *");
+    qRegisterMetaType<const QSet<QInputPin *> *>("const QSet<QInputPin *> *");
+    qRegisterMetaType<const QList<QInputPin *> *>("const QList<QInputPin *> *");
+
+
+    QWriteVariableAction::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qremovevariablevalueaction.cpp"
 
 QT_END_NAMESPACE_QTUML

@@ -96,6 +96,7 @@ public:
     Q_INVOKABLE void removeLocalPrecondition(QConstraint *localPrecondition);
     Q_INVOKABLE const QList<QInputPin *> *inputs() const;
     Q_INVOKABLE const QList<QOutputPin *> *outputs() const;
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QAction(QActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

@@ -149,6 +149,30 @@ void QPackageMerge::setReceivingPackage(QPackage *receivingPackage)
     }
 }
 
+void QPackageMerge::registerMetaTypes() const
+{
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QPackageMerge) *>("QT_PREPEND_NAMESPACE_QTMOF(QPackageMerge) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QPackageMerge) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QPackageMerge) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QPackageMerge) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QPackageMerge) *> *");
+    qRegisterMetaType<QPackageMerge *>("QPackageMerge *");
+    qRegisterMetaType<const QSet<QPackageMerge *> *>("const QSet<QPackageMerge *> *");
+    qRegisterMetaType<const QList<QPackageMerge *> *>("const QList<QPackageMerge *> *");
+
+
+    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QPackage) *>("QT_PREPEND_NAMESPACE_QTMOF(QPackage) *");
+    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QPackage) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QPackage) *> *");
+    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QPackage) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QPackage) *> *");
+    qRegisterMetaType<QPackage *>("QPackage *");
+    qRegisterMetaType<const QSet<QPackage *> *>("const QSet<QPackage *> *");
+    qRegisterMetaType<const QList<QPackage *> *>("const QList<QPackage *> *");
+
+
+    QDirectedRelationship::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qpackagemerge.cpp"
 
 QT_END_NAMESPACE_QTMOF

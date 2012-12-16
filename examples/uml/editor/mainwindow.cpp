@@ -173,20 +173,20 @@ void MainWindow::handleWrappedObjectProperties(QWrappedObject *element)
         if (property.type() == QVariant::String) {
             QObject *rootElement = propertyWrappedObject;
             if (QString(property.name()) == "objectName")
-                rootElement = qwrappedobject_cast<QObject *>(element);
+                rootElement = qTopLevelWrapper(element);
             item->setText(1, property.read(rootElement).toString());
         }
 
         QString typeName = property.typeName();
-        if (typeName.endsWith('*') && !typeName.contains(QRegularExpression ("QSet|QList")) && property.read(propertyWrappedObject).value<QObject *>()) {
-            QObject *objectElement = property.read(propertyWrappedObject).value<QObject *>();
-            item->setText(1, objectElement->objectName());
+        if (typeName.endsWith('*') && !typeName.contains(QRegularExpression ("QSet|QList")) && property.read(propertyWrappedObject).value<QWrappedObject *>()) {
+            QWrappedObject *objectElement = property.read(propertyWrappedObject).value<QWrappedObject *>();
+            item->setText(1, qTopLevelWrapper(objectElement)->objectName());
             if (!property.isStored())
                 delete objectElement;
         }
 
         if (typeName.endsWith('*') && typeName.contains("QSet") && property.read(propertyWrappedObject).isValid()) {
-            if (QSet<QWrappedObject *> *elements = reinterpret_cast<QSet<QWrappedObject *> *>(*((QSet<QObject *> **) property.read(propertyWrappedObject).data()))) {
+            if (QSet<QWrappedObject *> *elements = *(static_cast<QSet<QWrappedObject *> **>(property.read(propertyWrappedObject).data()))) {
                 if (elements->size() > 0) {
                     QString str = "[";
                     foreach (QWrappedObject *object, *elements)
@@ -201,7 +201,7 @@ void MainWindow::handleWrappedObjectProperties(QWrappedObject *element)
         }
 
         if (typeName.endsWith('*') && typeName.contains("QList") && property.read(propertyWrappedObject).isValid()) {
-            if (QList<QWrappedObject *> *elements = reinterpret_cast<QList<QWrappedObject *> *>(*((QList<QObject *> **) property.read(propertyWrappedObject).data()))) {
+            if (QList<QWrappedObject *> *elements = *(static_cast<QList<QWrappedObject *> **>(property.read(propertyWrappedObject).data()))) {
                 if (elements->size() > 0) {
                     QString str = "[";
                     foreach (QWrappedObject *object, *elements)
@@ -267,9 +267,8 @@ void MainWindow::populateModelExplorer(QWrappedObject *element, QTreeWidgetItem 
         return;
 
     ui->modelExplorer->blockSignals(true);
-    QWrappedObject *wrappingObject = element;
-    while (wrappingObject->wrapper())
-        wrappingObject = wrappingObject->wrapper();
+    QWrappedObject *wrappingObject = qTopLevelWrapper(element);
+    wrappingObject->registerMetaTypes();
     QTreeWidgetItem *item = new QTreeWidgetItem(parent, QStringList() << QString("%1 (%2)").arg(wrappingObject->objectName()).arg(wrappingObject->metaObject()->className()));
     item->setData(0, Qt::UserRole, qVariantFromValue(wrappingObject));
 
