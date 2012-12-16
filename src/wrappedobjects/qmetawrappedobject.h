@@ -43,6 +43,8 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsGlobal>
 
+#include <QtCore/QMetaProperty>
+
 QT_BEGIN_HEADER
 
 class QStringList;
@@ -54,6 +56,19 @@ QT_MODULE(QtWrappedObjects)
 class QWrappedObject;
 class QMetaWrappedObjectPrivate;
 
+struct Q_WRAPPEDOBJECTS_EXPORT QMetaPropertyInfo
+{
+    QMetaProperty metaProperty;
+    const QMetaObject *propertyMetaObject;
+    QWrappedObject *propertyWrappedObject;
+    bool wasChanged;
+
+    inline bool operator==(const QMetaPropertyInfo &other) const
+    {
+        return qstrcmp(metaProperty.name(), other.metaProperty.name()) == 0 ? true:false;
+    }
+};
+
 class Q_WRAPPEDOBJECTS_EXPORT QMetaWrappedObject
 {
     Q_DISABLE_COPY(QMetaWrappedObject)
@@ -63,6 +78,7 @@ public:
     virtual ~QMetaWrappedObject();
 
     int propertyCount() const;
+    QMetaPropertyInfo property(int index) const;
 
 protected:
     explicit QMetaWrappedObject(QWrappedObject *wrappedObject);
@@ -76,6 +92,8 @@ protected:
 };
 
 QT_END_NAMESPACE_QTWRAPPEDOBJECTS
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTWRAPPEDOBJECTS(QMetaPropertyInfo))
 
 QT_END_HEADER
 

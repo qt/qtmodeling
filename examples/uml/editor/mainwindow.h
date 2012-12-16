@@ -41,12 +41,9 @@ private Q_SLOTS:
 
 private:
     Ui::MainWindow *ui;
-    QStringList _visitedParents;
-    QMap< QString, QPair<int, QTreeWidgetItem *> > _visitedProperties;
     QMap< QString, QPair<QObject *, QMetaMethod> > _visitedAddMethods;
 
-    void handleObjectProperties(QWrappedObject *element, int level = 0);
-    void handleMetaObjectProperties(QWrappedObject *element, const QMetaObject *metaObject, int level = 0);
+    void handleWrappedObjectProperties(QWrappedObject *element);
     void populateContextMenu(QMenu &menu, QObject *element);
 };
 

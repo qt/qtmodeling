@@ -75,7 +75,9 @@ public:
     void setWrapper(QWrappedObject *wrapper);
     QWrappedObject *wrapper() const;
 
-    const QMetaWrappedObject *metaWrappedObject() const;
+    const QMetaWrappedObject *metaWrappedObject();
+    bool setProperty(const char *name, const QVariant &value);
+    QVariant property(const char *name) const;
 
 protected:
     explicit QWrappedObject(QWrappedObjectPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
