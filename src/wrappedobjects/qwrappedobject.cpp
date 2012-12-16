@@ -114,10 +114,27 @@ const QMetaWrappedObject *QWrappedObject::metaWrappedObject()
 
 bool QWrappedObject::setProperty(const char *name, const QVariant &value)
 {
+    Q_D(QWrappedObject);
+    int index;
+    if ((index = d->metaWrappedObject->indexOfProperty(name)) != -1) {
+        QMetaPropertyInfo metaPropertyInfo = d->metaWrappedObject->property(index);
+        metaPropertyInfo.metaProperty.write(metaPropertyInfo.propertyWrappedObject, value);
+        return true;
+    }
+    else
+        return false;
 }
 
 QVariant QWrappedObject::property(const char *name) const
 {
+    Q_D(const QWrappedObject);
+    int index;
+    if ((index = d->metaWrappedObject->indexOfProperty(name)) != -1) {
+        QMetaPropertyInfo metaPropertyInfo = d->metaWrappedObject->property(index);
+        return metaPropertyInfo.metaProperty.read(metaPropertyInfo.propertyWrappedObject);
+    }
+    else
+        return QVariant();
 }
 
 #include "moc_qwrappedobject.cpp"
