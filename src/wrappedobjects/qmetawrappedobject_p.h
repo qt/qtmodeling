@@ -43,8 +43,6 @@
 
 #include "QtWrappedObjects/QMetaWrappedObject"
 
-#include <QtCore/QMetaProperty>
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTWRAPPEDOBJECTS
@@ -59,16 +57,9 @@ public:
     explicit QMetaWrappedObjectPrivate();
     virtual ~QMetaWrappedObjectPrivate();
 
-    struct PropertyInfo
-    {
-        QMetaProperty metaProperty;
-        const QWrappedObject *propertyWrappedObject;
-        bool wasChanged;
-    };
-
     QMetaWrappedObject *q_ptr;
     const QWrappedObject *wrappedObject;
-    QList<PropertyInfo> propertyInfos;
+    QList<QMetaPropertyInfo> propertyInfos;
 };
 
 QT_END_NAMESPACE_QTWRAPPEDOBJECTS

@@ -45,6 +45,7 @@
 #include <QtWrappedObjects/QWrappedObject>
 #include <QtCore/QMetaObject>
 #include <QtCore/QStringList>
+#include <QtCore/QStack>
 
 QT_BEGIN_NAMESPACE_QTWRAPPEDOBJECTS
 
@@ -86,23 +87,40 @@ int QMetaWrappedObject::propertyCount() const
     return d_ptr->propertyInfos.size();
 }
 
+QMetaPropertyInfo QMetaWrappedObject::property(int index) const
+{
+    return d_ptr->propertyInfos.at(index);
+}
+
 void QMetaWrappedObject::handleWrappedObjectProperties(const QWrappedObject *wrappingObject, QStringList &visitedClasses) const
 {
+    foreach (QWrappedObject *wrappedObject, wrappingObject->wrappedObjects())
+        handleWrappedObjectProperties(wrappedObject, visitedClasses);
+
     const QMetaObject *metaObject = wrappingObject->metaObject();
-    QMetaWrappedObjectPrivate::PropertyInfo propertyInfo;
-    while (metaObject && !visitedClasses.contains(QString::fromLatin1(metaObject->className()))) {
+    QStack<const QMetaObject *> metaObjects;
+    while (metaObject) {
+        metaObjects.push(metaObject);
+        metaObject = metaObject->superClass();
+    }
+    QMetaPropertyInfo propertyInfo;
+    while (!metaObjects.isEmpty()) {
+        metaObject = metaObjects.pop();
+        if (visitedClasses.contains(QString::fromLatin1(metaObject->className())))
+            continue;
         visitedClasses << QString::fromLatin1(metaObject->className());
-        propertyInfo.propertyWrappedObject = wrappingObject;
+        propertyInfo.propertyMetaObject = metaObject;
+        propertyInfo.propertyWrappedObject = const_cast<QWrappedObject *>(wrappingObject);
         propertyInfo.wasChanged = false;
         int propertyCount = metaObject->propertyCount();
         for (int i = metaObject->propertyOffset(); i < propertyCount; ++i) {
             propertyInfo.metaProperty = metaObject->property(i);
+            int index;
+            if ((index = d_ptr->propertyInfos.indexOf(propertyInfo)) != -1)
+                d_ptr->propertyInfos.removeAt(index);
             d_ptr->propertyInfos << propertyInfo;
         }
-        metaObject = metaObject->superClass();
     }
-    foreach (QWrappedObject *wrappedObject, wrappingObject->wrappedObjects())
-        handleWrappedObjectProperties(wrappedObject, visitedClasses);
 }
 
 QT_END_NAMESPACE_QTWRAPPEDOBJECTS

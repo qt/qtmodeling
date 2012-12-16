@@ -47,7 +47,7 @@
 QT_BEGIN_NAMESPACE_QTWRAPPEDOBJECTS
 
 QWrappedObjectPrivate::QWrappedObjectPrivate(int version)
-    : QObjectPrivate(version), wrapper(0)
+    : QObjectPrivate(version), wrapper(0), metaWrappedObject(0)
 {
 }
 
@@ -75,8 +75,6 @@ QWrappedObject::~QWrappedObject()
 void QWrappedObject::initialize(QWrappedObject *wrapper)
 {
     setWrapper(wrapper);
-    Q_D(QWrappedObject);
-    d->metaWrappedObject = new QMetaWrappedObject(qTopLevelWrapper(this));
 }
 
 const QList<QWrappedObject *> &QWrappedObject::wrappedObjects() const
@@ -106,10 +104,20 @@ QWrappedObject *QWrappedObject::wrapper() const
     return d->wrapper;
 }
 
-const QMetaWrappedObject *QWrappedObject::metaWrappedObject() const
+const QMetaWrappedObject *QWrappedObject::metaWrappedObject()
 {
-    Q_D(const QWrappedObject);
+    Q_D(QWrappedObject);
+    if (!d->metaWrappedObject)
+        d->metaWrappedObject = new QMetaWrappedObject(qTopLevelWrapper(this));
     return d->metaWrappedObject;
+}
+
+bool QWrappedObject::setProperty(const char *name, const QVariant &value)
+{
+}
+
+QVariant QWrappedObject::property(const char *name) const
+{
 }
 
 #include "moc_qwrappedobject.cpp"
