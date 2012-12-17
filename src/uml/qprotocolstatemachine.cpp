@@ -134,14 +134,12 @@ void QProtocolStateMachine::registerMetaTypes() const
     qRegisterMetaType<const QSet<QProtocolStateMachine *> *>("const QSet<QProtocolStateMachine *> *");
     qRegisterMetaType<const QList<QProtocolStateMachine *> *>("const QList<QProtocolStateMachine *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QProtocolConformance) *>("QT_PREPEND_NAMESPACE_QTUML(QProtocolConformance) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QProtocolConformance) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QProtocolConformance) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QProtocolConformance) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QProtocolConformance) *> *");
     qRegisterMetaType<QProtocolConformance *>("QProtocolConformance *");
     qRegisterMetaType<const QSet<QProtocolConformance *> *>("const QSet<QProtocolConformance *> *");
     qRegisterMetaType<const QList<QProtocolConformance *> *>("const QList<QProtocolConformance *> *");
-
 
     QStateMachine::registerMetaTypes();
 

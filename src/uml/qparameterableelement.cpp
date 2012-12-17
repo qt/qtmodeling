@@ -168,14 +168,12 @@ void QParameterableElement::registerMetaTypes() const
     qRegisterMetaType<const QSet<QParameterableElement *> *>("const QSet<QParameterableElement *> *");
     qRegisterMetaType<const QList<QParameterableElement *> *>("const QList<QParameterableElement *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QTemplateParameter) *>("QT_PREPEND_NAMESPACE_QTUML(QTemplateParameter) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QTemplateParameter) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QTemplateParameter) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QTemplateParameter) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QTemplateParameter) *> *");
     qRegisterMetaType<QTemplateParameter *>("QTemplateParameter *");
     qRegisterMetaType<const QSet<QTemplateParameter *> *>("const QSet<QTemplateParameter *> *");
     qRegisterMetaType<const QList<QTemplateParameter *> *>("const QList<QTemplateParameter *> *");
-
 
     QElement::registerMetaTypes();
 

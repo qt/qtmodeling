@@ -131,7 +131,6 @@ void QInterval::registerMetaTypes() const
     qRegisterMetaType<const QSet<QInterval *> *>("const QSet<QInterval *> *");
     qRegisterMetaType<const QList<QInterval *> *>("const QList<QInterval *> *");
 
-
     QValueSpecification::registerMetaTypes();
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())

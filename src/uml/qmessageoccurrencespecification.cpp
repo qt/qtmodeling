@@ -223,7 +223,6 @@ void QMessageOccurrenceSpecification::registerMetaTypes() const
     qRegisterMetaType<const QSet<QMessageOccurrenceSpecification *> *>("const QSet<QMessageOccurrenceSpecification *> *");
     qRegisterMetaType<const QList<QMessageOccurrenceSpecification *> *>("const QList<QMessageOccurrenceSpecification *> *");
 
-
     QWrappedObject::registerMetaTypes();
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())

@@ -83,7 +83,6 @@ void QUsage::registerMetaTypes() const
     qRegisterMetaType<const QSet<QUsage *> *>("const QSet<QUsage *> *");
     qRegisterMetaType<const QList<QUsage *> *>("const QList<QUsage *> *");
 
-
     QDependency::registerMetaTypes();
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())

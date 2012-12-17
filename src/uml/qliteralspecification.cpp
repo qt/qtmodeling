@@ -83,7 +83,6 @@ void QLiteralSpecification::registerMetaTypes() const
     qRegisterMetaType<const QSet<QLiteralSpecification *> *>("const QSet<QLiteralSpecification *> *");
     qRegisterMetaType<const QList<QLiteralSpecification *> *>("const QList<QLiteralSpecification *> *");
 
-
     QValueSpecification::registerMetaTypes();
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())

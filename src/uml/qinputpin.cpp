@@ -83,7 +83,6 @@ void QInputPin::registerMetaTypes() const
     qRegisterMetaType<const QSet<QInputPin *> *>("const QSet<QInputPin *> *");
     qRegisterMetaType<const QList<QInputPin *> *>("const QList<QInputPin *> *");
 
-
     QPin::registerMetaTypes();
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())

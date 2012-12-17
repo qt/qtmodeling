@@ -83,7 +83,6 @@ void QCommunicationPath::registerMetaTypes() const
     qRegisterMetaType<const QSet<QCommunicationPath *> *>("const QSet<QCommunicationPath *> *");
     qRegisterMetaType<const QList<QCommunicationPath *> *>("const QList<QCommunicationPath *> *");
 
-
     QAssociation::registerMetaTypes();
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())

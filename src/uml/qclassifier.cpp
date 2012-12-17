@@ -398,6 +398,11 @@ void QClassifier::setVisibility(QtUml::VisibilityKind visibility)
     (qwrappedobject_cast<QPackageableElement *>(this))->setVisibility(visibility);
 }
 
+void QClassifier::unsetVisibility()
+{
+    setVisibility(QtUml::VisibilityPublic);
+}
+
 // ---------------------------------------------------------------
 // ASSOCIATION ENDS FROM AGGREGATED QType
 // ---------------------------------------------------------------
@@ -430,6 +435,11 @@ bool QClassifier::isLeaf() const
 void QClassifier::setLeaf(bool isLeaf)
 {
     (qwrappedobject_cast<QRedefinableElement *>(this))->setLeaf(isLeaf);
+}
+
+void QClassifier::unsetLeaf()
+{
+    setLeaf(false);
 }
 
 // ---------------------------------------------------------------
@@ -499,6 +509,11 @@ void QClassifier::setAbstract(bool isAbstract)
     }
 }
 
+void QClassifier::unsetAbstract()
+{
+    setAbstract(false);
+}
+
 /*!
     If true, the Classifier cannot be specialized by generalization. Note that this property is preserved through package merge operations; that is, the capability to specialize a Classifier (i.e., isFinalSpecialization =false) must be preserved in the resulting Classifier of a package merge operation where a Classifier with isFinalSpecialization =false is merged with a matching Classifier with isFinalSpecialization =true: the resulting Classifier will have isFinalSpecialization =false.
  */
@@ -518,6 +533,11 @@ void QClassifier::setFinalSpecialization(bool isFinalSpecialization)
     if (d->isFinalSpecialization != isFinalSpecialization) {
         d->isFinalSpecialization = isFinalSpecialization;
     }
+}
+
+void QClassifier::unsetFinalSpecialization()
+{
+    setFinalSpecialization(false);
 }
 
 // ---------------------------------------------------------------
@@ -1053,14 +1073,12 @@ void QClassifier::registerMetaTypes() const
     qRegisterMetaType<const QSet<QClassifier *> *>("const QSet<QClassifier *> *");
     qRegisterMetaType<const QList<QClassifier *> *>("const QList<QClassifier *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QRedefinableTemplateSignature) *>("QT_PREPEND_NAMESPACE_QTUML(QRedefinableTemplateSignature) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QRedefinableTemplateSignature) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QRedefinableTemplateSignature) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QRedefinableTemplateSignature) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QRedefinableTemplateSignature) *> *");
     qRegisterMetaType<QRedefinableTemplateSignature *>("QRedefinableTemplateSignature *");
     qRegisterMetaType<const QSet<QRedefinableTemplateSignature *> *>("const QSet<QRedefinableTemplateSignature *> *");
     qRegisterMetaType<const QList<QRedefinableTemplateSignature *> *>("const QList<QRedefinableTemplateSignature *> *");
-
 
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QClassifierTemplateParameter) *>("QT_PREPEND_NAMESPACE_QTUML(QClassifierTemplateParameter) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifierTemplateParameter) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifierTemplateParameter) *> *");
@@ -1069,14 +1087,12 @@ void QClassifier::registerMetaTypes() const
     qRegisterMetaType<const QSet<QClassifierTemplateParameter *> *>("const QSet<QClassifierTemplateParameter *> *");
     qRegisterMetaType<const QList<QClassifierTemplateParameter *> *>("const QList<QClassifierTemplateParameter *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QUseCase) *>("QT_PREPEND_NAMESPACE_QTUML(QUseCase) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QUseCase) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QUseCase) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QUseCase) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QUseCase) *> *");
     qRegisterMetaType<QUseCase *>("QUseCase *");
     qRegisterMetaType<const QSet<QUseCase *> *>("const QSet<QUseCase *> *");
     qRegisterMetaType<const QList<QUseCase *> *>("const QList<QUseCase *> *");
-
 
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QSubstitution) *>("QT_PREPEND_NAMESPACE_QTUML(QSubstitution) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QSubstitution) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QSubstitution) *> *");
@@ -1085,14 +1101,12 @@ void QClassifier::registerMetaTypes() const
     qRegisterMetaType<const QSet<QSubstitution *> *>("const QSet<QSubstitution *> *");
     qRegisterMetaType<const QList<QSubstitution *> *>("const QList<QSubstitution *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QGeneralizationSet) *>("QT_PREPEND_NAMESPACE_QTUML(QGeneralizationSet) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QGeneralizationSet) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QGeneralizationSet) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QGeneralizationSet) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QGeneralizationSet) *> *");
     qRegisterMetaType<QGeneralizationSet *>("QGeneralizationSet *");
     qRegisterMetaType<const QSet<QGeneralizationSet *> *>("const QSet<QGeneralizationSet *> *");
     qRegisterMetaType<const QList<QGeneralizationSet *> *>("const QList<QGeneralizationSet *> *");
-
 
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *>("QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *> *");
@@ -1101,14 +1115,12 @@ void QClassifier::registerMetaTypes() const
     qRegisterMetaType<const QSet<QNamedElement *> *>("const QSet<QNamedElement *> *");
     qRegisterMetaType<const QList<QNamedElement *> *>("const QList<QNamedElement *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QProperty) *>("QT_PREPEND_NAMESPACE_QTUML(QProperty) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QProperty) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QProperty) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QProperty) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QProperty) *> *");
     qRegisterMetaType<QProperty *>("QProperty *");
     qRegisterMetaType<const QSet<QProperty *> *>("const QSet<QProperty *> *");
     qRegisterMetaType<const QList<QProperty *> *>("const QList<QProperty *> *");
-
 
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QGeneralization) *>("QT_PREPEND_NAMESPACE_QTUML(QGeneralization) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QGeneralization) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QGeneralization) *> *");
@@ -1117,7 +1129,6 @@ void QClassifier::registerMetaTypes() const
     qRegisterMetaType<const QSet<QGeneralization *> *>("const QSet<QGeneralization *> *");
     qRegisterMetaType<const QList<QGeneralization *> *>("const QList<QGeneralization *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QCollaborationUse) *>("QT_PREPEND_NAMESPACE_QTUML(QCollaborationUse) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QCollaborationUse) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QCollaborationUse) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QCollaborationUse) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QCollaborationUse) *> *");
@@ -1125,14 +1136,12 @@ void QClassifier::registerMetaTypes() const
     qRegisterMetaType<const QSet<QCollaborationUse *> *>("const QSet<QCollaborationUse *> *");
     qRegisterMetaType<const QList<QCollaborationUse *> *>("const QList<QCollaborationUse *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QFeature) *>("QT_PREPEND_NAMESPACE_QTUML(QFeature) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QFeature) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QFeature) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QFeature) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QFeature) *> *");
     qRegisterMetaType<QFeature *>("QFeature *");
     qRegisterMetaType<const QSet<QFeature *> *>("const QSet<QFeature *> *");
     qRegisterMetaType<const QList<QFeature *> *>("const QList<QFeature *> *");
-
 
     QWrappedObject::registerMetaTypes();
 

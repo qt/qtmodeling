@@ -89,6 +89,7 @@ public:
     // Attributes from aggregated QPackageableElement
     Q_INVOKABLE QtMof::VisibilityKind visibility() const;
     Q_INVOKABLE void setVisibility(QtMof::VisibilityKind visibility);
+    Q_INVOKABLE void unsetVisibility();
 
     // Association ends from aggregated QTypedElement
     Q_INVOKABLE QType *type() const;

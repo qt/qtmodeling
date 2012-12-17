@@ -165,7 +165,6 @@ void QTag::registerMetaTypes() const
     qRegisterMetaType<const QSet<QTag *> *>("const QSet<QTag *> *");
     qRegisterMetaType<const QList<QTag *> *>("const QList<QTag *> *");
 
-
     QElement::registerMetaTypes();
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())

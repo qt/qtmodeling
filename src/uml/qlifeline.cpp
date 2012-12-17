@@ -240,14 +240,12 @@ void QLifeline::registerMetaTypes() const
     qRegisterMetaType<const QSet<QLifeline *> *>("const QSet<QLifeline *> *");
     qRegisterMetaType<const QList<QLifeline *> *>("const QList<QLifeline *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QConnectableElement) *>("QT_PREPEND_NAMESPACE_QTUML(QConnectableElement) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QConnectableElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QConnectableElement) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QConnectableElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QConnectableElement) *> *");
     qRegisterMetaType<QConnectableElement *>("QConnectableElement *");
     qRegisterMetaType<const QSet<QConnectableElement *> *>("const QSet<QConnectableElement *> *");
     qRegisterMetaType<const QList<QConnectableElement *> *>("const QList<QConnectableElement *> *");
-
 
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *>("QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *");
@@ -256,14 +254,12 @@ void QLifeline::registerMetaTypes() const
     qRegisterMetaType<const QSet<QValueSpecification *> *>("const QSet<QValueSpecification *> *");
     qRegisterMetaType<const QList<QValueSpecification *> *>("const QList<QValueSpecification *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInteraction) *>("QT_PREPEND_NAMESPACE_QTUML(QInteraction) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInteraction) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInteraction) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInteraction) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInteraction) *> *");
     qRegisterMetaType<QInteraction *>("QInteraction *");
     qRegisterMetaType<const QSet<QInteraction *> *>("const QSet<QInteraction *> *");
     qRegisterMetaType<const QList<QInteraction *> *>("const QList<QInteraction *> *");
-
 
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInteractionFragment) *>("QT_PREPEND_NAMESPACE_QTUML(QInteractionFragment) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInteractionFragment) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInteractionFragment) *> *");
@@ -272,14 +268,12 @@ void QLifeline::registerMetaTypes() const
     qRegisterMetaType<const QSet<QInteractionFragment *> *>("const QSet<QInteractionFragment *> *");
     qRegisterMetaType<const QList<QInteractionFragment *> *>("const QList<QInteractionFragment *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QPartDecomposition) *>("QT_PREPEND_NAMESPACE_QTUML(QPartDecomposition) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QPartDecomposition) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QPartDecomposition) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QPartDecomposition) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QPartDecomposition) *> *");
     qRegisterMetaType<QPartDecomposition *>("QPartDecomposition *");
     qRegisterMetaType<const QSet<QPartDecomposition *> *>("const QSet<QPartDecomposition *> *");
     qRegisterMetaType<const QList<QPartDecomposition *> *>("const QList<QPartDecomposition *> *");
-
 
     QNamedElement::registerMetaTypes();
 

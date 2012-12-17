@@ -108,6 +108,11 @@ void QConditionalNode::setAssured(bool isAssured)
     }
 }
 
+void QConditionalNode::unsetAssured()
+{
+    setAssured(false);
+}
+
 /*!
     If true, the modeler asserts that at most one test will succeed.
  */
@@ -127,6 +132,11 @@ void QConditionalNode::setDeterminate(bool isDeterminate)
     if (d->isDeterminate != isDeterminate) {
         d->isDeterminate = isDeterminate;
     }
+}
+
+void QConditionalNode::unsetDeterminate()
+{
+    setDeterminate(false);
 }
 
 // ---------------------------------------------------------------
@@ -212,7 +222,6 @@ void QConditionalNode::registerMetaTypes() const
     qRegisterMetaType<const QSet<QConditionalNode *> *>("const QSet<QConditionalNode *> *");
     qRegisterMetaType<const QList<QConditionalNode *> *>("const QList<QConditionalNode *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QClause) *>("QT_PREPEND_NAMESPACE_QTUML(QClause) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QClause) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QClause) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QClause) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QClause) *> *");
@@ -220,14 +229,12 @@ void QConditionalNode::registerMetaTypes() const
     qRegisterMetaType<const QSet<QClause *> *>("const QSet<QClause *> *");
     qRegisterMetaType<const QList<QClause *> *>("const QList<QClause *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *");
     qRegisterMetaType<QOutputPin *>("QOutputPin *");
     qRegisterMetaType<const QSet<QOutputPin *> *>("const QSet<QOutputPin *> *");
     qRegisterMetaType<const QList<QOutputPin *> *>("const QList<QOutputPin *> *");
-
 
     QStructuredActivityNode::registerMetaTypes();
 

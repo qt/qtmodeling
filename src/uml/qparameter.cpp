@@ -144,6 +144,11 @@ void QParameter::setUpper(qint32 upper)
     (qwrappedobject_cast<QMultiplicityElement *>(this))->setUpper(upper);
 }
 
+void QParameter::unsetUpper()
+{
+    setUpper(1);
+}
+
 /*!
     For a multivalued multiplicity, this attributes specifies whether the values in an instantiation of this element are unique.
  */
@@ -157,6 +162,11 @@ void QParameter::setUnique(bool isUnique)
     (qwrappedobject_cast<QMultiplicityElement *>(this))->setUnique(isUnique);
 }
 
+void QParameter::unsetUnique()
+{
+    setUnique(true);
+}
+
 /*!
     For a multivalued multiplicity, this attribute specifies whether the values in an instantiation of this element are sequentially ordered.
  */
@@ -168,6 +178,11 @@ bool QParameter::isOrdered() const
 void QParameter::setOrdered(bool isOrdered)
 {
     (qwrappedobject_cast<QMultiplicityElement *>(this))->setOrdered(isOrdered);
+}
+
+void QParameter::unsetOrdered()
+{
+    setOrdered(false);
 }
 
 /*!
@@ -378,6 +393,11 @@ void QParameter::setException(bool isException)
     }
 }
 
+void QParameter::unsetException()
+{
+    setException(false);
+}
+
 /*!
     Specifies a String that represents a value to be used when no argument is supplied for the Parameter.
  */
@@ -423,6 +443,11 @@ void QParameter::setDirection(QtUml::ParameterDirectionKind direction)
     }
 }
 
+void QParameter::unsetDirection()
+{
+    setDirection(QtUml::ParameterDirectionIn);
+}
+
 /*!
     Tells whether an input parameter may accept values while its behavior is executing, or whether an output parameter post values while the behavior is executing.
  */
@@ -442,6 +467,11 @@ void QParameter::setStream(bool isStream)
     if (d->isStream != isStream) {
         d->isStream = isStream;
     }
+}
+
+void QParameter::unsetStream()
+{
+    setStream(false);
 }
 
 /*!
@@ -577,14 +607,12 @@ void QParameter::registerMetaTypes() const
     qRegisterMetaType<const QSet<QParameter *> *>("const QSet<QParameter *> *");
     qRegisterMetaType<const QList<QParameter *> *>("const QList<QParameter *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *>("QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *");
     qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
     qRegisterMetaType<const QSet<QValueSpecification *> *>("const QSet<QValueSpecification *> *");
     qRegisterMetaType<const QList<QValueSpecification *> *>("const QList<QValueSpecification *> *");
-
 
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QOperation) *>("QT_PREPEND_NAMESPACE_QTUML(QOperation) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *");
@@ -593,14 +621,12 @@ void QParameter::registerMetaTypes() const
     qRegisterMetaType<const QSet<QOperation *> *>("const QSet<QOperation *> *");
     qRegisterMetaType<const QList<QOperation *> *>("const QList<QOperation *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QParameterSet) *>("QT_PREPEND_NAMESPACE_QTUML(QParameterSet) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QParameterSet) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QParameterSet) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QParameterSet) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QParameterSet) *> *");
     qRegisterMetaType<QParameterSet *>("QParameterSet *");
     qRegisterMetaType<const QSet<QParameterSet *> *>("const QSet<QParameterSet *> *");
     qRegisterMetaType<const QList<QParameterSet *> *>("const QList<QParameterSet *> *");
-
 
     QWrappedObject::registerMetaTypes();
 

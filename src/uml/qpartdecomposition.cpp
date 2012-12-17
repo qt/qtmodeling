@@ -83,7 +83,6 @@ void QPartDecomposition::registerMetaTypes() const
     qRegisterMetaType<const QSet<QPartDecomposition *> *>("const QSet<QPartDecomposition *> *");
     qRegisterMetaType<const QList<QPartDecomposition *> *>("const QList<QPartDecomposition *> *");
 
-
     QInteractionUse::registerMetaTypes();
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())

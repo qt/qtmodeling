@@ -149,14 +149,12 @@ void QExtensionEnd::registerMetaTypes() const
     qRegisterMetaType<const QSet<QExtensionEnd *> *>("const QSet<QExtensionEnd *> *");
     qRegisterMetaType<const QList<QExtensionEnd *> *>("const QList<QExtensionEnd *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QStereotype) *>("QT_PREPEND_NAMESPACE_QTUML(QStereotype) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QStereotype) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QStereotype) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QStereotype) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QStereotype) *> *");
     qRegisterMetaType<QStereotype *>("QStereotype *");
     qRegisterMetaType<const QSet<QStereotype *> *>("const QSet<QStereotype *> *");
     qRegisterMetaType<const QList<QStereotype *> *>("const QList<QStereotype *> *");
-
 
     QProperty::registerMetaTypes();
 

@@ -110,14 +110,12 @@ void QReflectiveSequence::registerMetaTypes() const
     qRegisterMetaType<const QSet<QReflectiveSequence *> *>("const QSet<QReflectiveSequence *> *");
     qRegisterMetaType<const QList<QReflectiveSequence *> *>("const QList<QReflectiveSequence *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QMofObject) *>("QT_PREPEND_NAMESPACE_QTMOF(QMofObject) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QMofObject) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QMofObject) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QMofObject) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QMofObject) *> *");
     qRegisterMetaType<QMofObject *>("QMofObject *");
     qRegisterMetaType<const QSet<QMofObject *> *>("const QSet<QMofObject *> *");
     qRegisterMetaType<const QList<QMofObject *> *>("const QList<QMofObject *> *");
-
 
     QReflectiveCollection::registerMetaTypes();
 

@@ -234,6 +234,11 @@ void QStructuralFeature::setUpper(qint32 upper)
     (qwrappedobject_cast<QMultiplicityElement *>(this))->setUpper(upper);
 }
 
+void QStructuralFeature::unsetUpper()
+{
+    setUpper(1);
+}
+
 /*!
     For a multivalued multiplicity, this attributes specifies whether the values in an instantiation of this element are unique.
  */
@@ -247,6 +252,11 @@ void QStructuralFeature::setUnique(bool isUnique)
     (qwrappedobject_cast<QMultiplicityElement *>(this))->setUnique(isUnique);
 }
 
+void QStructuralFeature::unsetUnique()
+{
+    setUnique(true);
+}
+
 /*!
     For a multivalued multiplicity, this attribute specifies whether the values in an instantiation of this element are sequentially ordered.
  */
@@ -258,6 +268,11 @@ bool QStructuralFeature::isOrdered() const
 void QStructuralFeature::setOrdered(bool isOrdered)
 {
     (qwrappedobject_cast<QMultiplicityElement *>(this))->setOrdered(isOrdered);
+}
+
+void QStructuralFeature::unsetOrdered()
+{
+    setOrdered(false);
 }
 
 /*!
@@ -320,6 +335,11 @@ void QStructuralFeature::setLeaf(bool isLeaf)
     (qwrappedobject_cast<QRedefinableElement *>(this))->setLeaf(isLeaf);
 }
 
+void QStructuralFeature::unsetLeaf()
+{
+    setLeaf(false);
+}
+
 // ---------------------------------------------------------------
 // ASSOCIATION ENDS FROM AGGREGATED QRedefinableElement
 // ---------------------------------------------------------------
@@ -355,6 +375,11 @@ bool QStructuralFeature::isStatic() const
 void QStructuralFeature::setStatic(bool isStatic)
 {
     (qwrappedobject_cast<QFeature *>(this))->setStatic(isStatic);
+}
+
+void QStructuralFeature::unsetStatic()
+{
+    setStatic(false);
 }
 
 // ---------------------------------------------------------------
@@ -394,6 +419,11 @@ void QStructuralFeature::setReadOnly(bool isReadOnly)
     }
 }
 
+void QStructuralFeature::unsetReadOnly()
+{
+    setReadOnly(false);
+}
+
 void QStructuralFeature::registerMetaTypes() const
 {
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QStructuralFeature) *>("QT_PREPEND_NAMESPACE_QTUML(QStructuralFeature) *");
@@ -402,7 +432,6 @@ void QStructuralFeature::registerMetaTypes() const
     qRegisterMetaType<QStructuralFeature *>("QStructuralFeature *");
     qRegisterMetaType<const QSet<QStructuralFeature *> *>("const QSet<QStructuralFeature *> *");
     qRegisterMetaType<const QList<QStructuralFeature *> *>("const QList<QStructuralFeature *> *");
-
 
     QWrappedObject::registerMetaTypes();
 

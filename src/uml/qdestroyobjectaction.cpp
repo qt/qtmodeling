@@ -104,6 +104,11 @@ void QDestroyObjectAction::setDestroyLinks(bool isDestroyLinks)
     }
 }
 
+void QDestroyObjectAction::unsetDestroyLinks()
+{
+    setDestroyLinks(false);
+}
+
 /*!
     Specifies whether objects owned by the object are destroyed along with the object.
  */
@@ -123,6 +128,11 @@ void QDestroyObjectAction::setDestroyOwnedObjects(bool isDestroyOwnedObjects)
     if (d->isDestroyOwnedObjects != isDestroyOwnedObjects) {
         d->isDestroyOwnedObjects = isDestroyOwnedObjects;
     }
+}
+
+void QDestroyObjectAction::unsetDestroyOwnedObjects()
+{
+    setDestroyOwnedObjects(false);
 }
 
 // ---------------------------------------------------------------
@@ -167,14 +177,12 @@ void QDestroyObjectAction::registerMetaTypes() const
     qRegisterMetaType<const QSet<QDestroyObjectAction *> *>("const QSet<QDestroyObjectAction *> *");
     qRegisterMetaType<const QList<QDestroyObjectAction *> *>("const QList<QDestroyObjectAction *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QInputPin) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
     qRegisterMetaType<QInputPin *>("QInputPin *");
     qRegisterMetaType<const QSet<QInputPin *> *>("const QSet<QInputPin *> *");
     qRegisterMetaType<const QList<QInputPin *> *>("const QList<QInputPin *> *");
-
 
     QAction::registerMetaTypes();
 

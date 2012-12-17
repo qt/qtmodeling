@@ -1,7 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QtCore/QMap>
+#include <QtCore/QHash>
 #include <QtWidgets/QMainWindow>
 
 namespace Ui {
@@ -32,8 +32,8 @@ protected:
 
 private Q_SLOTS:
     void on_modelExplorer_currentItemChanged(QTreeWidgetItem *current, QTreeWidgetItem *previous);
-    void on_propertyEditor_itemChanged(QTreeWidgetItem *item, int column);
-    void currentIndexChanged(int index);
+    void on_propertyEditor_itemClicked(QTreeWidgetItem *item, int column);
+    void on_propertyEditor_currentItemChanged(QTreeWidgetItem *current,QTreeWidgetItem *previous);
     void populateModelExplorer(QWrappedObject *element, QTreeWidgetItem *parent = 0);
     QTreeWidgetItem *parentItemForProperty(QString propertyGroup);
     void handleAddMethod();
@@ -41,7 +41,8 @@ private Q_SLOTS:
 
 private:
     Ui::MainWindow *ui;
-    QMap< QString, QPair<QObject *, QMetaMethod> > _visitedAddMethods;
+    QHash< QString, QPair<QObject *, QMetaMethod> > _visitedAddMethods;
+    QList<QWrappedObject *> _visitedObjects;
 
     void handleWrappedObjectProperties(QWrappedObject *element);
     void populateContextMenu(QMenu &menu, QObject *element);

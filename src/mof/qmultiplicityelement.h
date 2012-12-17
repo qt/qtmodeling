@@ -61,9 +61,9 @@ class Q_MOF_EXPORT QMultiplicityElement : public QElement
 {
     Q_OBJECT
 
-    Q_PROPERTY(qint32 upper READ upper WRITE setUpper STORED false)
-    Q_PROPERTY(bool isUnique READ isUnique WRITE setUnique)
-    Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered)
+    Q_PROPERTY(qint32 upper READ upper WRITE setUpper RESET unsetUpper STORED false)
+    Q_PROPERTY(bool isUnique READ isUnique WRITE setUnique RESET unsetUnique)
+    Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered RESET unsetOrdered)
     Q_PROPERTY(qint32 lower READ lower WRITE setLower STORED false)
     Q_PROPERTY(QValueSpecification * upperValue READ upperValue WRITE setUpperValue)
     Q_PROPERTY(QValueSpecification * lowerValue READ lowerValue WRITE setLowerValue)
@@ -78,10 +78,13 @@ public:
     // Attributes from QMultiplicityElement
     Q_INVOKABLE qint32 upper() const;
     Q_INVOKABLE void setUpper(qint32 upper);
+    Q_INVOKABLE void unsetUpper();
     Q_INVOKABLE bool isUnique() const;
     Q_INVOKABLE void setUnique(bool isUnique);
+    Q_INVOKABLE void unsetUnique();
     Q_INVOKABLE bool isOrdered() const;
     Q_INVOKABLE void setOrdered(bool isOrdered);
+    Q_INVOKABLE void unsetOrdered();
     Q_INVOKABLE qint32 lower() const;
     Q_INVOKABLE void setLower(qint32 lower);
 

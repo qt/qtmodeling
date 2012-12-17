@@ -149,14 +149,12 @@ void QGeneralOrdering::registerMetaTypes() const
     qRegisterMetaType<const QSet<QGeneralOrdering *> *>("const QSet<QGeneralOrdering *> *");
     qRegisterMetaType<const QList<QGeneralOrdering *> *>("const QList<QGeneralOrdering *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QOccurrenceSpecification) *>("QT_PREPEND_NAMESPACE_QTUML(QOccurrenceSpecification) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QOccurrenceSpecification) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QOccurrenceSpecification) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QOccurrenceSpecification) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QOccurrenceSpecification) *> *");
     qRegisterMetaType<QOccurrenceSpecification *>("QOccurrenceSpecification *");
     qRegisterMetaType<const QSet<QOccurrenceSpecification *> *>("const QSet<QOccurrenceSpecification *> *");
     qRegisterMetaType<const QList<QOccurrenceSpecification *> *>("const QList<QOccurrenceSpecification *> *");
-
 
     QNamedElement::registerMetaTypes();
 

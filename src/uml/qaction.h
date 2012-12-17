@@ -68,7 +68,7 @@ class Q_UML_EXPORT QAction : public QExecutableNode
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool isLocallyReentrant READ isLocallyReentrant WRITE setLocallyReentrant)
+    Q_PROPERTY(bool isLocallyReentrant READ isLocallyReentrant WRITE setLocallyReentrant RESET unsetLocallyReentrant)
     Q_PROPERTY(QClassifier * context READ context STORED false)
     Q_PROPERTY(const QSet<QConstraint *> * localPostconditions READ localPostconditions)
     Q_PROPERTY(const QSet<QConstraint *> * localPreconditions READ localPreconditions)
@@ -85,6 +85,7 @@ public:
     // Attributes from QAction
     Q_INVOKABLE bool isLocallyReentrant() const;
     Q_INVOKABLE void setLocallyReentrant(bool isLocallyReentrant);
+    Q_INVOKABLE void unsetLocallyReentrant();
 
     // Association ends from QAction
     Q_INVOKABLE QClassifier *context() const;

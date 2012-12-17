@@ -58,7 +58,7 @@ class Q_UML_EXPORT QLiteralBoolean : public QLiteralSpecification
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool value READ value WRITE setValue)
+    Q_PROPERTY(bool value READ value WRITE setValue RESET unsetValue)
 
     Q_DISABLE_COPY(QLiteralBoolean)
     Q_DECLARE_PRIVATE(QLiteralBoolean)
@@ -70,6 +70,7 @@ public:
     // Attributes from QLiteralBoolean
     Q_INVOKABLE bool value() const;
     Q_INVOKABLE void setValue(bool value);
+    Q_INVOKABLE void unsetValue();
 
     // Operations
     Q_INVOKABLE bool booleanValue() const;

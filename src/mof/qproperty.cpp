@@ -120,6 +120,11 @@ void QProperty::setDerived(bool isDerived)
     }
 }
 
+void QProperty::unsetDerived()
+{
+    setDerived(false);
+}
+
 /*!
     A String that is evaluated to give a default value for the Property when an object of the owning Classifier is instantiated.
  */
@@ -189,6 +194,11 @@ void QProperty::setReadOnly(bool isReadOnly)
     }
 }
 
+void QProperty::unsetReadOnly()
+{
+    setReadOnly(false);
+}
+
 /*!
     True indicates this property can be used to uniquely identify an instance of the containing Class.
  */
@@ -208,6 +218,11 @@ void QProperty::setID(bool isID)
     if (d->isID != isID) {
         d->isID = isID;
     }
+}
+
+void QProperty::unsetID()
+{
+    setID(false);
 }
 
 /*!
@@ -231,6 +246,11 @@ void QProperty::setDerivedUnion(bool isDerivedUnion)
     }
 }
 
+void QProperty::unsetDerivedUnion()
+{
+    setDerivedUnion(false);
+}
+
 /*!
     Specifies the kind of aggregation that applies to the Property.
  */
@@ -250,6 +270,11 @@ void QProperty::setAggregation(QtMof::AggregationKind aggregation)
     if (d->aggregation != aggregation) {
         d->aggregation = aggregation;
     }
+}
+
+void QProperty::unsetAggregation()
+{
+    setAggregation(QtMof::AggregationNone);
 }
 
 // ---------------------------------------------------------------
@@ -584,14 +609,12 @@ void QProperty::registerMetaTypes() const
     qRegisterMetaType<const QSet<QProperty *> *>("const QSet<QProperty *> *");
     qRegisterMetaType<const QList<QProperty *> *>("const QList<QProperty *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QRedefinableElement) *>("QT_PREPEND_NAMESPACE_QTMOF(QRedefinableElement) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QRedefinableElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QRedefinableElement) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QRedefinableElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QRedefinableElement) *> *");
     qRegisterMetaType<QRedefinableElement *>("QRedefinableElement *");
     qRegisterMetaType<const QSet<QRedefinableElement *> *>("const QSet<QRedefinableElement *> *");
     qRegisterMetaType<const QList<QRedefinableElement *> *>("const QList<QRedefinableElement *> *");
-
 
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QType) *>("QT_PREPEND_NAMESPACE_QTMOF(QType) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QType) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QType) *> *");
@@ -600,14 +623,12 @@ void QProperty::registerMetaTypes() const
     qRegisterMetaType<const QSet<QType *> *>("const QSet<QType *> *");
     qRegisterMetaType<const QList<QType *> *>("const QList<QType *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QValueSpecification) *>("QT_PREPEND_NAMESPACE_QTMOF(QValueSpecification) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QValueSpecification) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QValueSpecification) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QValueSpecification) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QValueSpecification) *> *");
     qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
     qRegisterMetaType<const QSet<QValueSpecification *> *>("const QSet<QValueSpecification *> *");
     qRegisterMetaType<const QList<QValueSpecification *> *>("const QList<QValueSpecification *> *");
-
 
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QClass) *>("QT_PREPEND_NAMESPACE_QTMOF(QClass) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QClass) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QClass) *> *");
@@ -616,7 +637,6 @@ void QProperty::registerMetaTypes() const
     qRegisterMetaType<const QSet<QClass *> *>("const QSet<QClass *> *");
     qRegisterMetaType<const QList<QClass *> *>("const QList<QClass *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QAssociation) *>("QT_PREPEND_NAMESPACE_QTMOF(QAssociation) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QAssociation) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QAssociation) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QAssociation) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QAssociation) *> *");
@@ -624,14 +644,12 @@ void QProperty::registerMetaTypes() const
     qRegisterMetaType<const QSet<QAssociation *> *>("const QSet<QAssociation *> *");
     qRegisterMetaType<const QList<QAssociation *> *>("const QList<QAssociation *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QDataType) *>("QT_PREPEND_NAMESPACE_QTMOF(QDataType) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QDataType) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QDataType) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QDataType) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QDataType) *> *");
     qRegisterMetaType<QDataType *>("QDataType *");
     qRegisterMetaType<const QSet<QDataType *> *>("const QSet<QDataType *> *");
     qRegisterMetaType<const QList<QDataType *> *>("const QList<QDataType *> *");
-
 
     QStructuralFeature::registerMetaTypes();
 

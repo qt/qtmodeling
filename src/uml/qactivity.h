@@ -72,8 +72,8 @@ class Q_UML_EXPORT QActivity : public QBehavior
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool isReadOnly READ isReadOnly WRITE setReadOnly)
-    Q_PROPERTY(bool isSingleExecution READ isSingleExecution WRITE setSingleExecution)
+    Q_PROPERTY(bool isReadOnly READ isReadOnly WRITE setReadOnly RESET unsetReadOnly)
+    Q_PROPERTY(bool isSingleExecution READ isSingleExecution WRITE setSingleExecution RESET unsetSingleExecution)
     Q_PROPERTY(const QSet<QActivityPartition *> * partitions READ partitions)
     Q_PROPERTY(const QSet<QActivityNode *> * nodes READ nodes)
     Q_PROPERTY(const QSet<QVariable *> * variables READ variables)
@@ -91,8 +91,10 @@ public:
     // Attributes from QActivity
     Q_INVOKABLE bool isReadOnly() const;
     Q_INVOKABLE void setReadOnly(bool isReadOnly);
+    Q_INVOKABLE void unsetReadOnly();
     Q_INVOKABLE bool isSingleExecution() const;
     Q_INVOKABLE void setSingleExecution(bool isSingleExecution);
+    Q_INVOKABLE void unsetSingleExecution();
 
     // Association ends from QActivity
     Q_INVOKABLE const QSet<QActivityPartition *> *partitions() const;

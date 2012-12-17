@@ -67,7 +67,7 @@ class Q_UML_EXPORT QComponent : public QClass
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool isIndirectlyInstantiated READ isIndirectlyInstantiated WRITE setIndirectlyInstantiated)
+    Q_PROPERTY(bool isIndirectlyInstantiated READ isIndirectlyInstantiated WRITE setIndirectlyInstantiated RESET unsetIndirectlyInstantiated)
     Q_PROPERTY(const QSet<QComponentRealization *> * realizations READ realizations)
     Q_PROPERTY(const QSet<QInterface *> * required READ required STORED false)
     Q_PROPERTY(const QSet<QInterface *> * provided READ provided STORED false)
@@ -83,6 +83,7 @@ public:
     // Attributes from QComponent
     Q_INVOKABLE bool isIndirectlyInstantiated() const;
     Q_INVOKABLE void setIndirectlyInstantiated(bool isIndirectlyInstantiated);
+    Q_INVOKABLE void unsetIndirectlyInstantiated();
 
     // Association ends from QComponent
     Q_INVOKABLE const QSet<QComponentRealization *> *realizations() const;

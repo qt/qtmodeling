@@ -83,7 +83,6 @@ void QFinalState::registerMetaTypes() const
     qRegisterMetaType<const QSet<QFinalState *> *>("const QSet<QFinalState *> *");
     qRegisterMetaType<const QList<QFinalState *> *>("const QList<QFinalState *> *");
 
-
     QState::registerMetaTypes();
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())

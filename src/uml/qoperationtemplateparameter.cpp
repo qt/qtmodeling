@@ -116,14 +116,12 @@ void QOperationTemplateParameter::registerMetaTypes() const
     qRegisterMetaType<const QSet<QOperationTemplateParameter *> *>("const QSet<QOperationTemplateParameter *> *");
     qRegisterMetaType<const QList<QOperationTemplateParameter *> *>("const QList<QOperationTemplateParameter *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QOperation) *>("QT_PREPEND_NAMESPACE_QTUML(QOperation) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *");
     qRegisterMetaType<QOperation *>("QOperation *");
     qRegisterMetaType<const QSet<QOperation *> *>("const QSet<QOperation *> *");
     qRegisterMetaType<const QList<QOperation *> *>("const QList<QOperation *> *");
-
 
     QTemplateParameter::registerMetaTypes();
 

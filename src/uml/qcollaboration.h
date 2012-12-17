@@ -117,6 +117,7 @@ public:
     // Attributes from aggregated QPackageableElement
     Q_INVOKABLE QtUml::VisibilityKind visibility() const;
     Q_INVOKABLE void setVisibility(QtUml::VisibilityKind visibility);
+    Q_INVOKABLE void unsetVisibility();
 
     // Association ends from aggregated QType
     Q_INVOKABLE QPackage *package() const;
@@ -125,6 +126,7 @@ public:
     // Attributes from aggregated QRedefinableElement
     Q_INVOKABLE bool isLeaf() const;
     Q_INVOKABLE void setLeaf(bool isLeaf);
+    Q_INVOKABLE void unsetLeaf();
 
     // Association ends from aggregated QRedefinableElement
     Q_INVOKABLE const QSet<QRedefinableElement *> *redefinedElements() const;
@@ -138,8 +140,10 @@ public:
     // Attributes from aggregated QClassifier
     Q_INVOKABLE bool isAbstract() const;
     Q_INVOKABLE void setAbstract(bool isAbstract);
+    Q_INVOKABLE void unsetAbstract();
     Q_INVOKABLE bool isFinalSpecialization() const;
     Q_INVOKABLE void setFinalSpecialization(bool isFinalSpecialization);
+    Q_INVOKABLE void unsetFinalSpecialization();
 
     // Association ends from aggregated QClassifier
     Q_INVOKABLE const QSet<QUseCase *> *ownedUseCases() const;

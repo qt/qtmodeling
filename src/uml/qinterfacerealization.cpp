@@ -159,7 +159,6 @@ void QInterfaceRealization::registerMetaTypes() const
     qRegisterMetaType<const QSet<QInterfaceRealization *> *>("const QSet<QInterfaceRealization *> *");
     qRegisterMetaType<const QList<QInterfaceRealization *> *>("const QList<QInterfaceRealization *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInterface) *>("QT_PREPEND_NAMESPACE_QTUML(QInterface) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInterface) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInterface) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInterface) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInterface) *> *");
@@ -167,14 +166,12 @@ void QInterfaceRealization::registerMetaTypes() const
     qRegisterMetaType<const QSet<QInterface *> *>("const QSet<QInterface *> *");
     qRegisterMetaType<const QList<QInterface *> *>("const QList<QInterface *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QBehavioredClassifier) *>("QT_PREPEND_NAMESPACE_QTUML(QBehavioredClassifier) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QBehavioredClassifier) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QBehavioredClassifier) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QBehavioredClassifier) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QBehavioredClassifier) *> *");
     qRegisterMetaType<QBehavioredClassifier *>("QBehavioredClassifier *");
     qRegisterMetaType<const QSet<QBehavioredClassifier *> *>("const QSet<QBehavioredClassifier *> *");
     qRegisterMetaType<const QList<QBehavioredClassifier *> *>("const QList<QBehavioredClassifier *> *");
-
 
     QRealization::registerMetaTypes();
 

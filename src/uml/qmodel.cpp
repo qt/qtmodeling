@@ -108,7 +108,6 @@ void QModel::registerMetaTypes() const
     qRegisterMetaType<const QSet<QModel *> *>("const QSet<QModel *> *");
     qRegisterMetaType<const QList<QModel *> *>("const QList<QModel *> *");
 
-
     QPackage::registerMetaTypes();
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())

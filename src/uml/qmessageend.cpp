@@ -111,14 +111,12 @@ void QMessageEnd::registerMetaTypes() const
     qRegisterMetaType<const QSet<QMessageEnd *> *>("const QSet<QMessageEnd *> *");
     qRegisterMetaType<const QList<QMessageEnd *> *>("const QList<QMessageEnd *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QMessage) *>("QT_PREPEND_NAMESPACE_QTUML(QMessage) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QMessage) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QMessage) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QMessage) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QMessage) *> *");
     qRegisterMetaType<QMessage *>("QMessage *");
     qRegisterMetaType<const QSet<QMessage *> *>("const QSet<QMessage *> *");
     qRegisterMetaType<const QList<QMessage *> *>("const QList<QMessage *> *");
-
 
     QNamedElement::registerMetaTypes();
 

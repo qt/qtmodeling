@@ -151,7 +151,6 @@ void QExpression::registerMetaTypes() const
     qRegisterMetaType<const QSet<QExpression *> *>("const QSet<QExpression *> *");
     qRegisterMetaType<const QList<QExpression *> *>("const QList<QExpression *> *");
 
-
     QValueSpecification::registerMetaTypes();
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())

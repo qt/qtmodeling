@@ -83,7 +83,6 @@ void QMergeNode::registerMetaTypes() const
     qRegisterMetaType<const QSet<QMergeNode *> *>("const QSet<QMergeNode *> *");
     qRegisterMetaType<const QList<QMergeNode *> *>("const QList<QMergeNode *> *");
 
-
     QControlNode::registerMetaTypes();
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())

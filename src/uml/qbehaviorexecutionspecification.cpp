@@ -111,14 +111,12 @@ void QBehaviorExecutionSpecification::registerMetaTypes() const
     qRegisterMetaType<const QSet<QBehaviorExecutionSpecification *> *>("const QSet<QBehaviorExecutionSpecification *> *");
     qRegisterMetaType<const QList<QBehaviorExecutionSpecification *> *>("const QList<QBehaviorExecutionSpecification *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *>("QT_PREPEND_NAMESPACE_QTUML(QBehavior) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *");
     qRegisterMetaType<QBehavior *>("QBehavior *");
     qRegisterMetaType<const QSet<QBehavior *> *>("const QSet<QBehavior *> *");
     qRegisterMetaType<const QList<QBehavior *> *>("const QList<QBehavior *> *");
-
 
     QExecutionSpecification::registerMetaTypes();
 

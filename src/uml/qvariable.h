@@ -86,10 +86,13 @@ public:
     // Attributes from aggregated QMultiplicityElement
     Q_INVOKABLE qint32 upper() const;
     Q_INVOKABLE void setUpper(qint32 upper);
+    Q_INVOKABLE void unsetUpper();
     Q_INVOKABLE bool isUnique() const;
     Q_INVOKABLE void setUnique(bool isUnique);
+    Q_INVOKABLE void unsetUnique();
     Q_INVOKABLE bool isOrdered() const;
     Q_INVOKABLE void setOrdered(bool isOrdered);
+    Q_INVOKABLE void unsetOrdered();
     Q_INVOKABLE qint32 lower() const;
     Q_INVOKABLE void setLower(qint32 lower);
 

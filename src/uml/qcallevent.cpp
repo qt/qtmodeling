@@ -111,14 +111,12 @@ void QCallEvent::registerMetaTypes() const
     qRegisterMetaType<const QSet<QCallEvent *> *>("const QSet<QCallEvent *> *");
     qRegisterMetaType<const QList<QCallEvent *> *>("const QList<QCallEvent *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QOperation) *>("QT_PREPEND_NAMESPACE_QTUML(QOperation) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *");
     qRegisterMetaType<QOperation *>("QOperation *");
     qRegisterMetaType<const QSet<QOperation *> *>("const QSet<QOperation *> *");
     qRegisterMetaType<const QList<QOperation *> *>("const QList<QOperation *> *");
-
 
     QMessageEvent::registerMetaTypes();
 

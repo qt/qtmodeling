@@ -11,10 +11,18 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = editor
 TEMPLATE = app
 
+CONFIG += c++11
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    propertyeditoritemdelegate.cpp \
+    propertyeditor.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    propertyeditoritemdelegate.h \
+    propertyeditor.h
 
 FORMS    += mainwindow.ui
+
+RESOURCES += \
+    editor.qrc

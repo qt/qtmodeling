@@ -201,14 +201,12 @@ void QExceptionHandler::registerMetaTypes() const
     qRegisterMetaType<const QSet<QExceptionHandler *> *>("const QSet<QExceptionHandler *> *");
     qRegisterMetaType<const QList<QExceptionHandler *> *>("const QList<QExceptionHandler *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QObjectNode) *>("QT_PREPEND_NAMESPACE_QTUML(QObjectNode) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QObjectNode) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QObjectNode) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QObjectNode) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QObjectNode) *> *");
     qRegisterMetaType<QObjectNode *>("QObjectNode *");
     qRegisterMetaType<const QSet<QObjectNode *> *>("const QSet<QObjectNode *> *");
     qRegisterMetaType<const QList<QObjectNode *> *>("const QList<QObjectNode *> *");
-
 
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *>("QT_PREPEND_NAMESPACE_QTUML(QClassifier) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *");
@@ -217,14 +215,12 @@ void QExceptionHandler::registerMetaTypes() const
     qRegisterMetaType<const QSet<QClassifier *> *>("const QSet<QClassifier *> *");
     qRegisterMetaType<const QList<QClassifier *> *>("const QList<QClassifier *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *>("QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *> *");
     qRegisterMetaType<QExecutableNode *>("QExecutableNode *");
     qRegisterMetaType<const QSet<QExecutableNode *> *>("const QSet<QExecutableNode *> *");
     qRegisterMetaType<const QList<QExecutableNode *> *>("const QList<QExecutableNode *> *");
-
 
     QElement::registerMetaTypes();
 

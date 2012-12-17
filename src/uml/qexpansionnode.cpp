@@ -149,14 +149,12 @@ void QExpansionNode::registerMetaTypes() const
     qRegisterMetaType<const QSet<QExpansionNode *> *>("const QSet<QExpansionNode *> *");
     qRegisterMetaType<const QList<QExpansionNode *> *>("const QList<QExpansionNode *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QExpansionRegion) *>("QT_PREPEND_NAMESPACE_QTUML(QExpansionRegion) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QExpansionRegion) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QExpansionRegion) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QExpansionRegion) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QExpansionRegion) *> *");
     qRegisterMetaType<QExpansionRegion *>("QExpansionRegion *");
     qRegisterMetaType<const QSet<QExpansionRegion *> *>("const QSet<QExpansionRegion *> *");
     qRegisterMetaType<const QList<QExpansionRegion *> *>("const QList<QExpansionRegion *> *");
-
 
     QObjectNode::registerMetaTypes();
 

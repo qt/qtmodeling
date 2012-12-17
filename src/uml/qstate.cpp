@@ -321,6 +321,11 @@ void QState::setLeaf(bool isLeaf)
     (qwrappedobject_cast<QRedefinableElement *>(this))->setLeaf(isLeaf);
 }
 
+void QState::unsetLeaf()
+{
+    setLeaf(false);
+}
+
 // ---------------------------------------------------------------
 // ASSOCIATION ENDS FROM AGGREGATED QRedefinableElement
 // ---------------------------------------------------------------
@@ -815,14 +820,12 @@ void QState::registerMetaTypes() const
     qRegisterMetaType<const QSet<QState *> *>("const QSet<QState *> *");
     qRegisterMetaType<const QList<QState *> *>("const QList<QState *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QStateMachine) *>("QT_PREPEND_NAMESPACE_QTUML(QStateMachine) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QStateMachine) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QStateMachine) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QStateMachine) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QStateMachine) *> *");
     qRegisterMetaType<QStateMachine *>("QStateMachine *");
     qRegisterMetaType<const QSet<QStateMachine *> *>("const QSet<QStateMachine *> *");
     qRegisterMetaType<const QList<QStateMachine *> *>("const QList<QStateMachine *> *");
-
 
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *>("QT_PREPEND_NAMESPACE_QTUML(QClassifier) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *");
@@ -831,14 +834,12 @@ void QState::registerMetaTypes() const
     qRegisterMetaType<const QSet<QClassifier *> *>("const QSet<QClassifier *> *");
     qRegisterMetaType<const QList<QClassifier *> *>("const QList<QClassifier *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QConstraint) *>("QT_PREPEND_NAMESPACE_QTUML(QConstraint) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QConstraint) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QConstraint) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QConstraint) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QConstraint) *> *");
     qRegisterMetaType<QConstraint *>("QConstraint *");
     qRegisterMetaType<const QSet<QConstraint *> *>("const QSet<QConstraint *> *");
     qRegisterMetaType<const QList<QConstraint *> *>("const QList<QConstraint *> *");
-
 
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QRegion) *>("QT_PREPEND_NAMESPACE_QTUML(QRegion) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QRegion) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QRegion) *> *");
@@ -847,14 +848,12 @@ void QState::registerMetaTypes() const
     qRegisterMetaType<const QSet<QRegion *> *>("const QSet<QRegion *> *");
     qRegisterMetaType<const QList<QRegion *> *>("const QList<QRegion *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *>("QT_PREPEND_NAMESPACE_QTUML(QBehavior) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *");
     qRegisterMetaType<QBehavior *>("QBehavior *");
     qRegisterMetaType<const QSet<QBehavior *> *>("const QSet<QBehavior *> *");
     qRegisterMetaType<const QList<QBehavior *> *>("const QList<QBehavior *> *");
-
 
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QConnectionPointReference) *>("QT_PREPEND_NAMESPACE_QTUML(QConnectionPointReference) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QConnectionPointReference) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QConnectionPointReference) *> *");
@@ -863,7 +862,6 @@ void QState::registerMetaTypes() const
     qRegisterMetaType<const QSet<QConnectionPointReference *> *>("const QSet<QConnectionPointReference *> *");
     qRegisterMetaType<const QList<QConnectionPointReference *> *>("const QList<QConnectionPointReference *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QTrigger) *>("QT_PREPEND_NAMESPACE_QTUML(QTrigger) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QTrigger) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QTrigger) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QTrigger) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QTrigger) *> *");
@@ -871,14 +869,12 @@ void QState::registerMetaTypes() const
     qRegisterMetaType<const QSet<QTrigger *> *>("const QSet<QTrigger *> *");
     qRegisterMetaType<const QList<QTrigger *> *>("const QList<QTrigger *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QPseudostate) *>("QT_PREPEND_NAMESPACE_QTUML(QPseudostate) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QPseudostate) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QPseudostate) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QPseudostate) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QPseudostate) *> *");
     qRegisterMetaType<QPseudostate *>("QPseudostate *");
     qRegisterMetaType<const QSet<QPseudostate *> *>("const QSet<QPseudostate *> *");
     qRegisterMetaType<const QList<QPseudostate *> *>("const QList<QPseudostate *> *");
-
 
     QWrappedObject::registerMetaTypes();
 

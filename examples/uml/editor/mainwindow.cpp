@@ -18,7 +18,16 @@
 #include <QtCore/QTimer>
 
 #include <QtWidgets/QComboBox>
-#include <QContextMenuEvent>
+#include <QtWidgets/QCheckBox>
+#include <QtWidgets/QToolButton>
+#include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QStyledItemDelegate>
+#include <QtWidgets/QItemEditorCreatorBase>
+
+#include <QtGui/QContextMenuEvent>
+#include <QtGui/QPixmap>
+
+#include "propertyeditoritemdelegate.h"
 
 using namespace QtUml;
 using namespace QtWrappedObjects;
@@ -41,6 +50,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->propertyEditor->setSelectionMode(QAbstractItemView::SingleSelection);
     ui->propertyEditor->setSelectionBehavior(QAbstractItemView::SelectRows);
 
+    ui->propertyEditor->setItemDelegate(new PropertyEditorItemDelegate(this));
+    ui->propertyEditor->setEditTriggers(QAbstractItemView::CurrentChanged);
+
     QWrappedObjectPointer<QModel> model = new QModel;
     model->setName("MyModel");
 
@@ -61,8 +73,12 @@ MainWindow::MainWindow(QWidget *parent) :
     class_->setAbstract(true);
     class_->setVisibility(QtUml::QtUml::VisibilityPackage);
 
+    QWrappedObjectPointer<QClass> class2_ = new QClass;
+    class2_->setName("InterStudent");
+
     package->addOwnedType(enumeration);
     package->addOwnedType(class_);
+    package->addOwnedType(class2_);
 
     model->addNestedPackage(package);
     model->addOwnedType(primitiveType);
@@ -114,20 +130,12 @@ void MainWindow::populateContextMenu(QMenu &menu, QObject *element)
 
 void MainWindow::handleWrappedObjectProperties(QWrappedObject *element)
 {
-    const QMetaObject enumMetaObject = QtUml::QtUml::staticMetaObject;
-    QMap<QString, QMetaEnum> enums;
-    int enumeratorCount = enumMetaObject.enumeratorCount();
-    for (int i = 0; i < enumeratorCount; ++i) {
-        QMetaEnum metaEnum = enumMetaObject.enumerator(i);
-        enums[QString(metaEnum.name())] = metaEnum;
-    }
-
     const QMetaWrappedObject *metaWrappedObject = element->metaWrappedObject();
     int propertyCount = metaWrappedObject->propertyCount();
 
     for (int i = 0; i < propertyCount; ++i) {
         QMetaPropertyInfo metaPropertyInfo = metaWrappedObject->property(i);
-        QMetaProperty property = metaPropertyInfo.metaProperty;
+        QMetaProperty metaProperty = metaPropertyInfo.metaProperty;
         QWrappedObject *propertyWrappedObject = metaPropertyInfo.propertyWrappedObject;
 
         QTreeWidgetItem *parentItem = parentItemForProperty(metaPropertyInfo.propertyMetaObject->className());
@@ -138,55 +146,37 @@ void MainWindow::handleWrappedObjectProperties(QWrappedObject *element)
             font.setBold(true);
             parentItem->setFont(0, font);
         }
-        parentItem->setSizeHint(1, QSize(0, 19));
+        parentItem->setSizeHint(1, QSize(0, 22));
 
         QTreeWidgetItem *item = new QTreeWidgetItem(parentItem);
-        item->setSizeHint(1, QSize(0, 19));
-        item->setText(0, QString(property.name()).remove(QRegularExpression("_$")) + ((property.isWritable() == false) ? " (RO)":""));
+        item->setSizeHint(1, QSize(0, 22));
+        QString propertyName = QString(metaProperty.name()).remove(QRegularExpression("_$")).remove(QRegularExpression("^is"));
+        if (propertyName.toUpper() != propertyName)
+            propertyName = propertyName.left(1).toLower() + propertyName.mid(1);
+        item->setData(0, Qt::DisplayRole, propertyName + ((metaProperty.isWritable() == false) ? " (RO)":""));
         item->setData(1, Qt::UserRole, qVariantFromValue(metaPropertyInfo));
 
-        if (property.isEnumType()) {
-            if (enums.contains(QString(property.typeName()).split("::").last())) {
-                QMetaEnum metaEnum = enums[QString(property.typeName()).split("::").last()];
-                QComboBox *comboBox = new QComboBox;
-                int keyCount = metaEnum.keyCount();
-                for (int j = 0; j < keyCount; ++j)
-                    comboBox->addItem(QString(metaEnum.key(j)).toLower().remove(QString(property.name())), qVariantFromValue(metaPropertyInfo));
-                comboBox->setCurrentIndex(property.read(propertyWrappedObject).toInt());
-                comboBox->setMaximumHeight(19);
-                connect(comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(currentIndexChanged(int)));
-                ui->propertyEditor->setItemWidget(item, 1, comboBox);
-            }
-        }
+        QString typeName = metaProperty.typeName();
 
-        if (property.type() == QVariant::Bool) {
-            QComboBox *comboBox = new QComboBox;
-            comboBox->addItem("false", qVariantFromValue(metaPropertyInfo));
-            comboBox->addItem("true", qVariantFromValue(metaPropertyInfo));
-            comboBox->setCurrentIndex(property.read(propertyWrappedObject).toBool() ? 1:0);
-            comboBox->setMaximumHeight(19);
-            connect(comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(currentIndexChanged(int)));
-            ui->propertyEditor->setItemWidget(item, 1, comboBox);
-            continue;
+        if (metaProperty.isEnumType()) {
+            QMetaEnum metaEnum = metaProperty.enumerator();
+            QString enumKey = metaEnum.valueToKey(metaProperty.read(propertyWrappedObject).toInt());
+            item->setData(1, Qt::DisplayRole, enumKey.toLower().remove(metaProperty.name()));
         }
-
-        if (property.type() == QVariant::String) {
+        else if (metaProperty.type() == QVariant::String) {
             QObject *rootElement = propertyWrappedObject;
-            if (QString(property.name()) == "objectName")
+            if (QString(metaProperty.name()) == "objectName")
                 rootElement = qTopLevelWrapper(element);
-            item->setText(1, property.read(rootElement).toString());
+            item->setData(1, Qt::DisplayRole, metaProperty.read(rootElement).toString());
         }
-
-        QString typeName = property.typeName();
-        if (typeName.endsWith('*') && !typeName.contains(QRegularExpression ("QSet|QList")) && property.read(propertyWrappedObject).value<QWrappedObject *>()) {
-            QWrappedObject *objectElement = property.read(propertyWrappedObject).value<QWrappedObject *>();
+        else if (typeName.endsWith('*') && !typeName.contains(QRegularExpression ("QSet|QList")) && metaProperty.read(propertyWrappedObject).value<QWrappedObject *>()) {
+            QWrappedObject *objectElement = metaProperty.read(propertyWrappedObject).value<QWrappedObject *>();
             item->setText(1, qTopLevelWrapper(objectElement)->objectName());
-            if (!property.isStored())
+            if (!metaProperty.isStored())
                 delete objectElement;
         }
-
-        if (typeName.endsWith('*') && typeName.contains("QSet") && property.read(propertyWrappedObject).isValid()) {
-            if (QSet<QWrappedObject *> *elements = *(static_cast<QSet<QWrappedObject *> **>(property.read(propertyWrappedObject).data()))) {
+        else if (typeName.endsWith('*') && typeName.contains("QSet") && metaProperty.read(propertyWrappedObject).isValid()) {
+            if (QSet<QWrappedObject *> *elements = *(static_cast<QSet<QWrappedObject *> **>(metaProperty.read(propertyWrappedObject).data()))) {
                 if (elements->size() > 0) {
                     QString str = "[";
                     foreach (QWrappedObject *object, *elements)
@@ -195,13 +185,12 @@ void MainWindow::handleWrappedObjectProperties(QWrappedObject *element)
                     str.append("]");
                     item->setText(1, str);
                 }
-                if (!property.isStored())
+                if (!metaProperty.isStored())
                     delete elements;
             }
         }
-
-        if (typeName.endsWith('*') && typeName.contains("QList") && property.read(propertyWrappedObject).isValid()) {
-            if (QList<QWrappedObject *> *elements = *(static_cast<QList<QWrappedObject *> **>(property.read(propertyWrappedObject).data()))) {
+        else if (typeName.endsWith('*') && typeName.contains("QList") && metaProperty.read(propertyWrappedObject).isValid()) {
+            if (QList<QWrappedObject *> *elements = *(static_cast<QList<QWrappedObject *> **>(metaProperty.read(propertyWrappedObject).data()))) {
                 if (elements->size() > 0) {
                     QString str = "[";
                     foreach (QWrappedObject *object, *elements)
@@ -210,13 +199,10 @@ void MainWindow::handleWrappedObjectProperties(QWrappedObject *element)
                     str.append("]");
                     item->setText(1, str);
                 }
-                if (!property.isStored())
+                if (!metaProperty.isStored())
                     delete elements;
             }
         }
-
-        if (property.isWritable() == true)
-            item->setFlags(item->flags() | Qt::ItemIsEditable);
     }
 }
 
@@ -238,27 +224,17 @@ void MainWindow::on_modelExplorer_currentItemChanged(QTreeWidgetItem *current, Q
     ui->propertyEditor->blockSignals(false);
 }
 
-void MainWindow::on_propertyEditor_itemChanged(QTreeWidgetItem *item, int column)
+void MainWindow::on_propertyEditor_itemClicked(QTreeWidgetItem *item, int column)
 {
-    if (column == 1) {
-        QMetaPropertyInfo metaPropertyInfo = item->data(1, Qt::UserRole).value<QMetaPropertyInfo>();
-        if (metaPropertyInfo.metaProperty.type() == QVariant::String) {
-            metaPropertyInfo.metaProperty.write(metaPropertyInfo.propertyWrappedObject, item->text(1));
-            QTimer::singleShot(0, this, SLOT(refreshModel()));
-        }
-    }
+    QMetaPropertyInfo metaPropertyInfo = item->data(1, Qt::UserRole).value<QMetaPropertyInfo>();
+    if (column == 1 && metaPropertyInfo.metaProperty.isWritable())
+        ui->propertyEditor->openPersistentEditor(item, 1);
 }
 
-void MainWindow::currentIndexChanged(int index)
+void MainWindow::on_propertyEditor_currentItemChanged(QTreeWidgetItem *current, QTreeWidgetItem *previous)
 {
-    QComboBox *comboBox = qobject_cast<QComboBox *>(sender());
-    if (comboBox) {
-        QMetaPropertyInfo metaPropertyInfo = comboBox->itemData(index).value<QMetaPropertyInfo>();
-        if (comboBox->itemText(0) == "false")
-            metaPropertyInfo.metaProperty.write(metaPropertyInfo.propertyWrappedObject, (index == 0) ? false:true);
-        else
-            metaPropertyInfo.metaProperty.write(metaPropertyInfo.propertyWrappedObject, index);
-    }
+    Q_UNUSED(current)
+    ui->propertyEditor->closePersistentEditor(previous, 1);
 }
 
 void MainWindow::populateModelExplorer(QWrappedObject *element, QTreeWidgetItem *parent)
@@ -268,6 +244,7 @@ void MainWindow::populateModelExplorer(QWrappedObject *element, QTreeWidgetItem 
 
     ui->modelExplorer->blockSignals(true);
     QWrappedObject *wrappingObject = qTopLevelWrapper(element);
+    _visitedObjects << wrappingObject;
     wrappingObject->registerMetaTypes();
     QTreeWidgetItem *item = new QTreeWidgetItem(parent, QStringList() << QString("%1 (%2)").arg(wrappingObject->objectName()).arg(wrappingObject->metaObject()->className()));
     item->setData(0, Qt::UserRole, qVariantFromValue(wrappingObject));
@@ -275,9 +252,42 @@ void MainWindow::populateModelExplorer(QWrappedObject *element, QTreeWidgetItem 
     if (!parent)
         ui->modelExplorer->addTopLevelItem(item);
 
-    if (QElement *umlElement = qwrappedobject_cast<QElement *>(element))
-        foreach (QElement *ownedElement, *umlElement->ownedElements())
-            populateModelExplorer(ownedElement, item);
+    const QMetaWrappedObject *metaWrappedObject = element->metaWrappedObject();
+    int propertyCount = metaWrappedObject->propertyCount();
+
+    for (int i = 0; i < propertyCount; ++i) {
+        QMetaPropertyInfo metaPropertyInfo = metaWrappedObject->property(i);
+        QMetaProperty metaProperty = metaPropertyInfo.metaProperty;
+        QWrappedObject *propertyWrappedObject = metaPropertyInfo.propertyWrappedObject;
+        QString typeName = metaProperty.typeName();
+
+        if (typeName.endsWith('*') && !typeName.contains(QRegularExpression ("QSet|QList")) && metaProperty.read(propertyWrappedObject).value<QWrappedObject *>()) {
+            QWrappedObject *wrappedObject = metaProperty.read(propertyWrappedObject).value<QWrappedObject *>();
+            if (!_visitedObjects.contains(qTopLevelWrapper(wrappedObject)))
+                populateModelExplorer(wrappedObject, item);
+            if (!metaProperty.isStored())
+                delete wrappedObject;
+        }
+        else if (typeName.endsWith('*') && typeName.contains("QSet") && metaProperty.read(propertyWrappedObject).isValid()) {
+            if (QSet<QWrappedObject *> *elements = *(static_cast<QSet<QWrappedObject *> **>(metaProperty.read(propertyWrappedObject).data()))) {
+                foreach (QWrappedObject *wrappedObject, *elements)
+                    if (!_visitedObjects.contains(qTopLevelWrapper(wrappedObject)))
+                        populateModelExplorer(wrappedObject, item);
+                if (!metaProperty.isStored())
+                    delete elements;
+            }
+        }
+        else if (typeName.endsWith('*') && typeName.contains("QList") && metaProperty.read(propertyWrappedObject).isValid()) {
+            if (QList<QWrappedObject *> *elements = *(static_cast<QList<QWrappedObject *> **>(metaProperty.read(propertyWrappedObject).data()))) {
+                foreach (QWrappedObject *wrappedObject, *elements)
+                    if (!_visitedObjects.contains(qTopLevelWrapper(wrappedObject)))
+                        populateModelExplorer(wrappedObject, item);
+                if (!metaProperty.isStored())
+                    delete elements;
+            }
+        }
+    }
+
     ui->modelExplorer->blockSignals(false);
     ui->modelExplorer->setCurrentItem(ui->modelExplorer->topLevelItem(0));
 }
@@ -300,7 +310,6 @@ void MainWindow::handleAddMethod()
         QMetaMethod metaMethod = _visitedAddMethods[action->text()].second;
         QString elementType = action->data().toString();
         int type;
-        qRegisterMetaType<QComment *>("QComment *");
         if ((type = QMetaType::type(elementType.toLatin1())) != QMetaType::UnknownType) {
             const QMetaObject *metaObject = QMetaType::metaObjectForType(type);
             if (metaObject) {
@@ -318,5 +327,6 @@ void MainWindow::refreshModel()
 {
     QWrappedObject *rootElement = ui->modelExplorer->topLevelItem(0)->data(0, Qt::UserRole).value<QWrappedObject *>();
     ui->modelExplorer->clear();
+    _visitedObjects.clear();
     populateModelExplorer(rootElement);
 }

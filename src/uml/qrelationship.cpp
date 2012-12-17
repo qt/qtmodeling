@@ -118,7 +118,6 @@ void QRelationship::registerMetaTypes() const
     qRegisterMetaType<const QSet<QRelationship *> *>("const QSet<QRelationship *> *");
     qRegisterMetaType<const QList<QRelationship *> *>("const QList<QRelationship *> *");
 
-
     QElement::registerMetaTypes();
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())

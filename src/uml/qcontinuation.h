@@ -58,7 +58,7 @@ class Q_UML_EXPORT QContinuation : public QInteractionFragment
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool setting READ setting WRITE setSetting)
+    Q_PROPERTY(bool setting READ setting WRITE setSetting RESET unsetSetting)
 
     Q_DISABLE_COPY(QContinuation)
     Q_DECLARE_PRIVATE(QContinuation)
@@ -70,6 +70,7 @@ public:
     // Attributes from QContinuation
     Q_INVOKABLE bool setting() const;
     Q_INVOKABLE void setSetting(bool setting);
+    Q_INVOKABLE void unsetSetting();
     virtual void registerMetaTypes() const;
 
 protected:

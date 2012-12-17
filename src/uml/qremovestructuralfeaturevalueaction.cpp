@@ -103,6 +103,11 @@ void QRemoveStructuralFeatureValueAction::setRemoveDuplicates(bool isRemoveDupli
     }
 }
 
+void QRemoveStructuralFeatureValueAction::unsetRemoveDuplicates()
+{
+    setRemoveDuplicates(false);
+}
+
 // ---------------------------------------------------------------
 // ASSOCIATION ENDS FROM QRemoveStructuralFeatureValueAction
 // ---------------------------------------------------------------
@@ -145,14 +150,12 @@ void QRemoveStructuralFeatureValueAction::registerMetaTypes() const
     qRegisterMetaType<const QSet<QRemoveStructuralFeatureValueAction *> *>("const QSet<QRemoveStructuralFeatureValueAction *> *");
     qRegisterMetaType<const QList<QRemoveStructuralFeatureValueAction *> *>("const QList<QRemoveStructuralFeatureValueAction *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QInputPin) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
     qRegisterMetaType<QInputPin *>("QInputPin *");
     qRegisterMetaType<const QSet<QInputPin *> *>("const QSet<QInputPin *> *");
     qRegisterMetaType<const QList<QInputPin *> *>("const QList<QInputPin *> *");
-
 
     QWriteStructuralFeatureAction::registerMetaTypes();
 

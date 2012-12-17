@@ -237,6 +237,11 @@ void QDependency::setVisibility(QtUml::VisibilityKind visibility)
     (qwrappedobject_cast<QPackageableElement *>(this))->setVisibility(visibility);
 }
 
+void QDependency::unsetVisibility()
+{
+    setVisibility(QtUml::VisibilityPublic);
+}
+
 // ---------------------------------------------------------------
 // ASSOCIATION ENDS FROM AGGREGATED QRelationship
 // ---------------------------------------------------------------
@@ -363,14 +368,12 @@ void QDependency::registerMetaTypes() const
     qRegisterMetaType<const QSet<QDependency *> *>("const QSet<QDependency *> *");
     qRegisterMetaType<const QList<QDependency *> *>("const QList<QDependency *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *>("QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *> *");
     qRegisterMetaType<QNamedElement *>("QNamedElement *");
     qRegisterMetaType<const QSet<QNamedElement *> *>("const QSet<QNamedElement *> *");
     qRegisterMetaType<const QList<QNamedElement *> *>("const QList<QNamedElement *> *");
-
 
     QWrappedObject::registerMetaTypes();
 

@@ -66,8 +66,8 @@ class Q_UML_EXPORT QConditionalNode : public QStructuredActivityNode
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool isAssured READ isAssured WRITE setAssured)
-    Q_PROPERTY(bool isDeterminate READ isDeterminate WRITE setDeterminate)
+    Q_PROPERTY(bool isAssured READ isAssured WRITE setAssured RESET unsetAssured)
+    Q_PROPERTY(bool isDeterminate READ isDeterminate WRITE setDeterminate RESET unsetDeterminate)
     Q_PROPERTY(const QSet<QClause *> * clauses READ clauses)
     Q_PROPERTY(const QList<QOutputPin *> * results READ results)
 
@@ -81,8 +81,10 @@ public:
     // Attributes from QConditionalNode
     Q_INVOKABLE bool isAssured() const;
     Q_INVOKABLE void setAssured(bool isAssured);
+    Q_INVOKABLE void unsetAssured();
     Q_INVOKABLE bool isDeterminate() const;
     Q_INVOKABLE void setDeterminate(bool isDeterminate);
+    Q_INVOKABLE void unsetDeterminate();
 
     // Association ends from QConditionalNode
     Q_INVOKABLE const QSet<QClause *> *clauses() const;

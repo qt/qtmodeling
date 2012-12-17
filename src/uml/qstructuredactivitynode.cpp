@@ -235,6 +235,11 @@ void QStructuredActivityNode::setLeaf(bool isLeaf)
     (qwrappedobject_cast<QRedefinableElement *>(this))->setLeaf(isLeaf);
 }
 
+void QStructuredActivityNode::unsetLeaf()
+{
+    setLeaf(false);
+}
+
 // ---------------------------------------------------------------
 // ASSOCIATION ENDS FROM AGGREGATED QRedefinableElement
 // ---------------------------------------------------------------
@@ -407,6 +412,11 @@ bool QStructuredActivityNode::isLocallyReentrant() const
 void QStructuredActivityNode::setLocallyReentrant(bool isLocallyReentrant)
 {
     (qwrappedobject_cast<QAction *>(this))->setLocallyReentrant(isLocallyReentrant);
+}
+
+void QStructuredActivityNode::unsetLocallyReentrant()
+{
+    setLocallyReentrant(false);
 }
 
 // ---------------------------------------------------------------
@@ -614,6 +624,11 @@ void QStructuredActivityNode::setMustIsolate(bool mustIsolate)
     if (d->mustIsolate != mustIsolate) {
         d->mustIsolate = mustIsolate;
     }
+}
+
+void QStructuredActivityNode::unsetMustIsolate()
+{
+    setMustIsolate(false);
 }
 
 // ---------------------------------------------------------------
@@ -859,14 +874,12 @@ void QStructuredActivityNode::registerMetaTypes() const
     qRegisterMetaType<const QSet<QStructuredActivityNode *> *>("const QSet<QStructuredActivityNode *> *");
     qRegisterMetaType<const QList<QStructuredActivityNode *> *>("const QList<QStructuredActivityNode *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *");
     qRegisterMetaType<QOutputPin *>("QOutputPin *");
     qRegisterMetaType<const QSet<QOutputPin *> *>("const QSet<QOutputPin *> *");
     qRegisterMetaType<const QList<QOutputPin *> *>("const QList<QOutputPin *> *");
-
 
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QVariable) *>("QT_PREPEND_NAMESPACE_QTUML(QVariable) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QVariable) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QVariable) *> *");
@@ -875,14 +888,12 @@ void QStructuredActivityNode::registerMetaTypes() const
     qRegisterMetaType<const QSet<QVariable *> *>("const QSet<QVariable *> *");
     qRegisterMetaType<const QList<QVariable *> *>("const QList<QVariable *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QInputPin) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
     qRegisterMetaType<QInputPin *>("QInputPin *");
     qRegisterMetaType<const QSet<QInputPin *> *>("const QSet<QInputPin *> *");
     qRegisterMetaType<const QList<QInputPin *> *>("const QList<QInputPin *> *");
-
 
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QActivityEdge) *>("QT_PREPEND_NAMESPACE_QTUML(QActivityEdge) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QActivityEdge) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QActivityEdge) *> *");
@@ -891,7 +902,6 @@ void QStructuredActivityNode::registerMetaTypes() const
     qRegisterMetaType<const QSet<QActivityEdge *> *>("const QSet<QActivityEdge *> *");
     qRegisterMetaType<const QList<QActivityEdge *> *>("const QList<QActivityEdge *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QActivity) *>("QT_PREPEND_NAMESPACE_QTUML(QActivity) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QActivity) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QActivity) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QActivity) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QActivity) *> *");
@@ -899,14 +909,12 @@ void QStructuredActivityNode::registerMetaTypes() const
     qRegisterMetaType<const QSet<QActivity *> *>("const QSet<QActivity *> *");
     qRegisterMetaType<const QList<QActivity *> *>("const QList<QActivity *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QActivityNode) *>("QT_PREPEND_NAMESPACE_QTUML(QActivityNode) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QActivityNode) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QActivityNode) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QActivityNode) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QActivityNode) *> *");
     qRegisterMetaType<QActivityNode *>("QActivityNode *");
     qRegisterMetaType<const QSet<QActivityNode *> *>("const QSet<QActivityNode *> *");
     qRegisterMetaType<const QList<QActivityNode *> *>("const QList<QActivityNode *> *");
-
 
     QWrappedObject::registerMetaTypes();
 

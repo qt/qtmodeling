@@ -65,8 +65,8 @@ class Q_UML_EXPORT QGeneralizationSet : public QPackageableElement
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool isCovering READ isCovering WRITE setCovering)
-    Q_PROPERTY(bool isDisjoint READ isDisjoint WRITE setDisjoint)
+    Q_PROPERTY(bool isCovering READ isCovering WRITE setCovering RESET unsetCovering)
+    Q_PROPERTY(bool isDisjoint READ isDisjoint WRITE setDisjoint RESET unsetDisjoint)
     Q_PROPERTY(QClassifier * powertype READ powertype WRITE setPowertype)
     Q_PROPERTY(const QSet<QGeneralization *> * generalizations READ generalizations)
 
@@ -80,8 +80,10 @@ public:
     // Attributes from QGeneralizationSet
     Q_INVOKABLE bool isCovering() const;
     Q_INVOKABLE void setCovering(bool isCovering);
+    Q_INVOKABLE void unsetCovering();
     Q_INVOKABLE bool isDisjoint() const;
     Q_INVOKABLE void setDisjoint(bool isDisjoint);
+    Q_INVOKABLE void unsetDisjoint();
 
     // Association ends from QGeneralizationSet
     Q_INVOKABLE QClassifier *powertype() const;

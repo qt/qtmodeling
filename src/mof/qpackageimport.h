@@ -65,7 +65,7 @@ class Q_MOF_EXPORT QPackageImport : public QDirectedRelationship
 {
     Q_OBJECT
 
-    Q_PROPERTY(QtMof::VisibilityKind visibility READ visibility WRITE setVisibility)
+    Q_PROPERTY(QtMof::VisibilityKind visibility READ visibility WRITE setVisibility RESET unsetVisibility)
     Q_PROPERTY(QNamespace * importingNamespace READ importingNamespace WRITE setImportingNamespace)
     Q_PROPERTY(QPackage * importedPackage READ importedPackage WRITE setImportedPackage)
 
@@ -79,6 +79,7 @@ public:
     // Attributes from QPackageImport
     Q_INVOKABLE QtMof::VisibilityKind visibility() const;
     Q_INVOKABLE void setVisibility(QtMof::VisibilityKind visibility);
+    Q_INVOKABLE void unsetVisibility();
 
     // Association ends from QPackageImport
     Q_INVOKABLE QNamespace *importingNamespace() const;

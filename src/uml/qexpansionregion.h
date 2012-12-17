@@ -67,7 +67,7 @@ class Q_UML_EXPORT QExpansionRegion : public QStructuredActivityNode
 {
     Q_OBJECT
 
-    Q_PROPERTY(QtUml::ExpansionKind mode READ mode WRITE setMode)
+    Q_PROPERTY(QtUml::ExpansionKind mode READ mode WRITE setMode RESET unsetMode)
     Q_PROPERTY(const QSet<QExpansionNode *> * inputElements READ inputElements)
     Q_PROPERTY(const QSet<QExpansionNode *> * outputElements READ outputElements)
 
@@ -81,6 +81,7 @@ public:
     // Attributes from QExpansionRegion
     Q_INVOKABLE QtUml::ExpansionKind mode() const;
     Q_INVOKABLE void setMode(QtUml::ExpansionKind mode);
+    Q_INVOKABLE void unsetMode();
 
     // Association ends from QExpansionRegion
     Q_INVOKABLE const QSet<QExpansionNode *> *inputElements() const;

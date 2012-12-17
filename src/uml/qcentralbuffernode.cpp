@@ -83,7 +83,6 @@ void QCentralBufferNode::registerMetaTypes() const
     qRegisterMetaType<const QSet<QCentralBufferNode *> *>("const QSet<QCentralBufferNode *> *");
     qRegisterMetaType<const QList<QCentralBufferNode *> *>("const QList<QCentralBufferNode *> *");
 
-
     QObjectNode::registerMetaTypes();
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())

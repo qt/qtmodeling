@@ -318,14 +318,12 @@ void QNamedElement::registerMetaTypes() const
     qRegisterMetaType<const QSet<QNamedElement *> *>("const QSet<QNamedElement *> *");
     qRegisterMetaType<const QList<QNamedElement *> *>("const QList<QNamedElement *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QPackage) *>("QT_PREPEND_NAMESPACE_QTUML(QPackage) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QPackage) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QPackage) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QPackage) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QPackage) *> *");
     qRegisterMetaType<QPackage *>("QPackage *");
     qRegisterMetaType<const QSet<QPackage *> *>("const QSet<QPackage *> *");
     qRegisterMetaType<const QList<QPackage *> *>("const QList<QPackage *> *");
-
 
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QNamespace) *>("QT_PREPEND_NAMESPACE_QTUML(QNamespace) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QNamespace) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QNamespace) *> *");
@@ -334,7 +332,6 @@ void QNamedElement::registerMetaTypes() const
     qRegisterMetaType<const QSet<QNamespace *> *>("const QSet<QNamespace *> *");
     qRegisterMetaType<const QList<QNamespace *> *>("const QList<QNamespace *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QDependency) *>("QT_PREPEND_NAMESPACE_QTUML(QDependency) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QDependency) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QDependency) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QDependency) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QDependency) *> *");
@@ -342,14 +339,12 @@ void QNamedElement::registerMetaTypes() const
     qRegisterMetaType<const QSet<QDependency *> *>("const QSet<QDependency *> *");
     qRegisterMetaType<const QList<QDependency *> *>("const QList<QDependency *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QStringExpression) *>("QT_PREPEND_NAMESPACE_QTUML(QStringExpression) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QStringExpression) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QStringExpression) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QStringExpression) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QStringExpression) *> *");
     qRegisterMetaType<QStringExpression *>("QStringExpression *");
     qRegisterMetaType<const QSet<QStringExpression *> *>("const QSet<QStringExpression *> *");
     qRegisterMetaType<const QList<QStringExpression *> *>("const QList<QStringExpression *> *");
-
 
     QElement::registerMetaTypes();
 

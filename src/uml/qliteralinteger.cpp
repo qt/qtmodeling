@@ -128,7 +128,6 @@ void QLiteralInteger::registerMetaTypes() const
     qRegisterMetaType<const QSet<QLiteralInteger *> *>("const QSet<QLiteralInteger *> *");
     qRegisterMetaType<const QList<QLiteralInteger *> *>("const QList<QLiteralInteger *> *");
 
-
     QLiteralSpecification::registerMetaTypes();
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())

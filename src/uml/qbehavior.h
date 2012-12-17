@@ -72,7 +72,7 @@ class Q_UML_EXPORT QBehavior : public QClass
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool isReentrant READ isReentrant WRITE setReentrant)
+    Q_PROPERTY(bool isReentrant READ isReentrant WRITE setReentrant RESET unsetReentrant)
     Q_PROPERTY(QBehavioralFeature * specification READ specification WRITE setSpecification)
     Q_PROPERTY(const QSet<QConstraint *> * postconditions READ postconditions)
     Q_PROPERTY(const QSet<QConstraint *> * preconditions READ preconditions)
@@ -91,6 +91,7 @@ public:
     // Attributes from QBehavior
     Q_INVOKABLE bool isReentrant() const;
     Q_INVOKABLE void setReentrant(bool isReentrant);
+    Q_INVOKABLE void unsetReentrant();
 
     // Association ends from QBehavior
     Q_INVOKABLE QBehavioralFeature *specification() const;

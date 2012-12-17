@@ -83,7 +83,6 @@ void QActor::registerMetaTypes() const
     qRegisterMetaType<const QSet<QActor *> *>("const QSet<QActor *> *");
     qRegisterMetaType<const QList<QActor *> *>("const QList<QActor *> *");
 
-
     QBehavioredClassifier::registerMetaTypes();
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())

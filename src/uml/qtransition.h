@@ -76,7 +76,7 @@ class Q_UML_EXPORT QTransition : public QWrappedObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(QtUml::TransitionKind kind READ kind WRITE setKind)
+    Q_PROPERTY(QtUml::TransitionKind kind READ kind WRITE setKind RESET unsetKind)
     Q_PROPERTY(QConstraint * guard READ guard WRITE setGuard)
     Q_PROPERTY(QVertex * target READ target WRITE setTarget)
     Q_PROPERTY(QBehavior * effect READ effect WRITE setEffect)
@@ -118,6 +118,7 @@ public:
     // Attributes from aggregated QRedefinableElement
     Q_INVOKABLE bool isLeaf() const;
     Q_INVOKABLE void setLeaf(bool isLeaf);
+    Q_INVOKABLE void unsetLeaf();
 
     // Association ends from aggregated QRedefinableElement
     Q_INVOKABLE const QSet<QRedefinableElement *> *redefinedElements() const;
@@ -139,6 +140,7 @@ public:
     // Attributes from QTransition
     Q_INVOKABLE QtUml::TransitionKind kind() const;
     Q_INVOKABLE void setKind(QtUml::TransitionKind kind);
+    Q_INVOKABLE void unsetKind();
 
     // Association ends from QTransition
     Q_INVOKABLE QConstraint *guard() const;

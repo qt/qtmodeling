@@ -65,7 +65,7 @@ class Q_UML_EXPORT QPseudostate : public QVertex
 {
     Q_OBJECT
 
-    Q_PROPERTY(QtUml::PseudostateKind kind READ kind WRITE setKind)
+    Q_PROPERTY(QtUml::PseudostateKind kind READ kind WRITE setKind RESET unsetKind)
     Q_PROPERTY(QState * state READ state WRITE setState)
     Q_PROPERTY(QStateMachine * stateMachine READ stateMachine WRITE setStateMachine)
 
@@ -79,6 +79,7 @@ public:
     // Attributes from QPseudostate
     Q_INVOKABLE QtUml::PseudostateKind kind() const;
     Q_INVOKABLE void setKind(QtUml::PseudostateKind kind);
+    Q_INVOKABLE void unsetKind();
 
     // Association ends from QPseudostate
     Q_INVOKABLE QState *state() const;

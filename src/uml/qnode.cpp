@@ -279,7 +279,6 @@ void QNode::registerMetaTypes() const
     qRegisterMetaType<const QSet<QNode *> *>("const QSet<QNode *> *");
     qRegisterMetaType<const QList<QNode *> *>("const QList<QNode *> *");
 
-
     QWrappedObject::registerMetaTypes();
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())

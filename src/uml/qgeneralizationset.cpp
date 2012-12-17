@@ -107,6 +107,11 @@ void QGeneralizationSet::setCovering(bool isCovering)
     }
 }
 
+void QGeneralizationSet::unsetCovering()
+{
+    setCovering(false);
+}
+
 /*!
     Indicates whether or not the set of specific Classifiers in a Generalization relationship have instance in common. If isDisjoint is true, the specific Classifiers for a particular GeneralizationSet have no members in common; that is, their intersection is empty. If isDisjoint is false, the specific Classifiers in a particular GeneralizationSet have one or more members in common; that is, their intersection is not empty. For example, Person could have two Generalization relationships, each with the different specific Classifier: Manager or Staff. This would be disjoint because every instance of Person must either be a Manager or Staff. In contrast, Person could have two Generalization relationships involving two specific (and non-covering) Classifiers: Sales Person and Manager. This GeneralizationSet would not be disjoint because there are instances of Person which can be a Sales Person and a Manager.
  */
@@ -126,6 +131,11 @@ void QGeneralizationSet::setDisjoint(bool isDisjoint)
     if (d->isDisjoint != isDisjoint) {
         d->isDisjoint = isDisjoint;
     }
+}
+
+void QGeneralizationSet::unsetDisjoint()
+{
+    setDisjoint(false);
 }
 
 // ---------------------------------------------------------------
@@ -208,7 +218,6 @@ void QGeneralizationSet::registerMetaTypes() const
     qRegisterMetaType<const QSet<QGeneralizationSet *> *>("const QSet<QGeneralizationSet *> *");
     qRegisterMetaType<const QList<QGeneralizationSet *> *>("const QList<QGeneralizationSet *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QGeneralization) *>("QT_PREPEND_NAMESPACE_QTUML(QGeneralization) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QGeneralization) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QGeneralization) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QGeneralization) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QGeneralization) *> *");
@@ -216,14 +225,12 @@ void QGeneralizationSet::registerMetaTypes() const
     qRegisterMetaType<const QSet<QGeneralization *> *>("const QSet<QGeneralization *> *");
     qRegisterMetaType<const QList<QGeneralization *> *>("const QList<QGeneralization *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *>("QT_PREPEND_NAMESPACE_QTUML(QClassifier) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *");
     qRegisterMetaType<QClassifier *>("QClassifier *");
     qRegisterMetaType<const QSet<QClassifier *> *>("const QSet<QClassifier *> *");
     qRegisterMetaType<const QList<QClassifier *> *>("const QList<QClassifier *> *");
-
 
     QPackageableElement::registerMetaTypes();
 

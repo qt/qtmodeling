@@ -73,6 +73,7 @@ void QMetaWrappedObject::initialize(QWrappedObject *wrappedObject)
 {
     d_ptr->q_ptr = this;
     d_ptr->wrappedObject = wrappedObject;
+
     QStringList visitedClasses;
     handleWrappedObjectProperties(d_ptr->wrappedObject, visitedClasses);
 }

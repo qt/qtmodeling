@@ -220,14 +220,12 @@ void QVertex::registerMetaTypes() const
     qRegisterMetaType<const QSet<QVertex *> *>("const QSet<QVertex *> *");
     qRegisterMetaType<const QList<QVertex *> *>("const QList<QVertex *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QRegion) *>("QT_PREPEND_NAMESPACE_QTUML(QRegion) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QRegion) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QRegion) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QRegion) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QRegion) *> *");
     qRegisterMetaType<QRegion *>("QRegion *");
     qRegisterMetaType<const QSet<QRegion *> *>("const QSet<QRegion *> *");
     qRegisterMetaType<const QList<QRegion *> *>("const QList<QRegion *> *");
-
 
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QTransition) *>("QT_PREPEND_NAMESPACE_QTUML(QTransition) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QTransition) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QTransition) *> *");
@@ -236,14 +234,12 @@ void QVertex::registerMetaTypes() const
     qRegisterMetaType<const QSet<QTransition *> *>("const QSet<QTransition *> *");
     qRegisterMetaType<const QList<QTransition *> *>("const QList<QTransition *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QStateMachine) *>("QT_PREPEND_NAMESPACE_QTUML(QStateMachine) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QStateMachine) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QStateMachine) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QStateMachine) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QStateMachine) *> *");
     qRegisterMetaType<QStateMachine *>("QStateMachine *");
     qRegisterMetaType<const QSet<QStateMachine *> *>("const QSet<QStateMachine *> *");
     qRegisterMetaType<const QList<QStateMachine *> *>("const QList<QStateMachine *> *");
-
 
     QNamedElement::registerMetaTypes();
 

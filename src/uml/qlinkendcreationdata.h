@@ -61,7 +61,7 @@ class Q_UML_EXPORT QLinkEndCreationData : public QLinkEndData
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool isReplaceAll READ isReplaceAll WRITE setReplaceAll)
+    Q_PROPERTY(bool isReplaceAll READ isReplaceAll WRITE setReplaceAll RESET unsetReplaceAll)
     Q_PROPERTY(QInputPin * insertAt READ insertAt WRITE setInsertAt)
 
     Q_DISABLE_COPY(QLinkEndCreationData)
@@ -74,6 +74,7 @@ public:
     // Attributes from QLinkEndCreationData
     Q_INVOKABLE bool isReplaceAll() const;
     Q_INVOKABLE void setReplaceAll(bool isReplaceAll);
+    Q_INVOKABLE void unsetReplaceAll();
 
     // Association ends from QLinkEndCreationData
     Q_INVOKABLE QInputPin *insertAt() const;

@@ -163,14 +163,12 @@ void QDirectedRelationship::registerMetaTypes() const
     qRegisterMetaType<const QSet<QDirectedRelationship *> *>("const QSet<QDirectedRelationship *> *");
     qRegisterMetaType<const QList<QDirectedRelationship *> *>("const QList<QDirectedRelationship *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QElement) *>("QT_PREPEND_NAMESPACE_QTMOF(QElement) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QElement) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QElement) *> *");
     qRegisterMetaType<QElement *>("QElement *");
     qRegisterMetaType<const QSet<QElement *> *>("const QSet<QElement *> *");
     qRegisterMetaType<const QList<QElement *> *>("const QList<QElement *> *");
-
 
     QRelationship::registerMetaTypes();
 

@@ -139,6 +139,11 @@ void QVariable::setUpper(qint32 upper)
     (qwrappedobject_cast<QMultiplicityElement *>(this))->setUpper(upper);
 }
 
+void QVariable::unsetUpper()
+{
+    setUpper(1);
+}
+
 /*!
     For a multivalued multiplicity, this attributes specifies whether the values in an instantiation of this element are unique.
  */
@@ -152,6 +157,11 @@ void QVariable::setUnique(bool isUnique)
     (qwrappedobject_cast<QMultiplicityElement *>(this))->setUnique(isUnique);
 }
 
+void QVariable::unsetUnique()
+{
+    setUnique(true);
+}
+
 /*!
     For a multivalued multiplicity, this attribute specifies whether the values in an instantiation of this element are sequentially ordered.
  */
@@ -163,6 +173,11 @@ bool QVariable::isOrdered() const
 void QVariable::setOrdered(bool isOrdered)
 {
     (qwrappedobject_cast<QMultiplicityElement *>(this))->setOrdered(isOrdered);
+}
+
+void QVariable::unsetOrdered()
+{
+    setOrdered(false);
 }
 
 /*!
@@ -436,14 +451,12 @@ void QVariable::registerMetaTypes() const
     qRegisterMetaType<const QSet<QVariable *> *>("const QSet<QVariable *> *");
     qRegisterMetaType<const QList<QVariable *> *>("const QList<QVariable *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QActivity) *>("QT_PREPEND_NAMESPACE_QTUML(QActivity) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QActivity) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QActivity) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QActivity) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QActivity) *> *");
     qRegisterMetaType<QActivity *>("QActivity *");
     qRegisterMetaType<const QSet<QActivity *> *>("const QSet<QActivity *> *");
     qRegisterMetaType<const QList<QActivity *> *>("const QList<QActivity *> *");
-
 
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QStructuredActivityNode) *>("QT_PREPEND_NAMESPACE_QTUML(QStructuredActivityNode) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QStructuredActivityNode) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QStructuredActivityNode) *> *");
@@ -452,14 +465,12 @@ void QVariable::registerMetaTypes() const
     qRegisterMetaType<const QSet<QStructuredActivityNode *> *>("const QSet<QStructuredActivityNode *> *");
     qRegisterMetaType<const QList<QStructuredActivityNode *> *>("const QList<QStructuredActivityNode *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QAction) *>("QT_PREPEND_NAMESPACE_QTUML(QAction) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QAction) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QAction) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QAction) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QAction) *> *");
     qRegisterMetaType<QAction *>("QAction *");
     qRegisterMetaType<const QSet<QAction *> *>("const QSet<QAction *> *");
     qRegisterMetaType<const QList<QAction *> *>("const QList<QAction *> *");
-
 
     QWrappedObject::registerMetaTypes();
 

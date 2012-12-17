@@ -111,14 +111,12 @@ void QActivityParameterNode::registerMetaTypes() const
     qRegisterMetaType<const QSet<QActivityParameterNode *> *>("const QSet<QActivityParameterNode *> *");
     qRegisterMetaType<const QList<QActivityParameterNode *> *>("const QList<QActivityParameterNode *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QParameter) *>("QT_PREPEND_NAMESPACE_QTUML(QParameter) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QParameter) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QParameter) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QParameter) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QParameter) *> *");
     qRegisterMetaType<QParameter *>("QParameter *");
     qRegisterMetaType<const QSet<QParameter *> *>("const QSet<QParameter *> *");
     qRegisterMetaType<const QList<QParameter *> *>("const QList<QParameter *> *");
-
 
     QObjectNode::registerMetaTypes();
 

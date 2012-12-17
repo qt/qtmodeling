@@ -103,7 +103,6 @@ void QLiteralNull::registerMetaTypes() const
     qRegisterMetaType<const QSet<QLiteralNull *> *>("const QSet<QLiteralNull *> *");
     qRegisterMetaType<const QList<QLiteralNull *> *>("const QList<QLiteralNull *> *");
 
-
     QLiteralSpecification::registerMetaTypes();
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())

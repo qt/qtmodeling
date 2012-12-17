@@ -304,6 +304,11 @@ void QCollaboration::setVisibility(QtUml::VisibilityKind visibility)
     (qwrappedobject_cast<QPackageableElement *>(this))->setVisibility(visibility);
 }
 
+void QCollaboration::unsetVisibility()
+{
+    setVisibility(QtUml::VisibilityPublic);
+}
+
 // ---------------------------------------------------------------
 // ASSOCIATION ENDS FROM AGGREGATED QType
 // ---------------------------------------------------------------
@@ -336,6 +341,11 @@ bool QCollaboration::isLeaf() const
 void QCollaboration::setLeaf(bool isLeaf)
 {
     (qwrappedobject_cast<QRedefinableElement *>(this))->setLeaf(isLeaf);
+}
+
+void QCollaboration::unsetLeaf()
+{
+    setLeaf(false);
 }
 
 // ---------------------------------------------------------------
@@ -397,6 +407,11 @@ void QCollaboration::setAbstract(bool isAbstract)
     (qwrappedobject_cast<QClassifier *>(this))->setAbstract(isAbstract);
 }
 
+void QCollaboration::unsetAbstract()
+{
+    setAbstract(false);
+}
+
 /*!
     If true, the Classifier cannot be specialized by generalization. Note that this property is preserved through package merge operations; that is, the capability to specialize a Classifier (i.e., isFinalSpecialization =false) must be preserved in the resulting Classifier of a package merge operation where a Classifier with isFinalSpecialization =false is merged with a matching Classifier with isFinalSpecialization =true: the resulting Classifier will have isFinalSpecialization =false.
  */
@@ -408,6 +423,11 @@ bool QCollaboration::isFinalSpecialization() const
 void QCollaboration::setFinalSpecialization(bool isFinalSpecialization)
 {
     (qwrappedobject_cast<QClassifier *>(this))->setFinalSpecialization(isFinalSpecialization);
+}
+
+void QCollaboration::unsetFinalSpecialization()
+{
+    setFinalSpecialization(false);
 }
 
 // ---------------------------------------------------------------
@@ -780,14 +800,12 @@ void QCollaboration::registerMetaTypes() const
     qRegisterMetaType<const QSet<QCollaboration *> *>("const QSet<QCollaboration *> *");
     qRegisterMetaType<const QList<QCollaboration *> *>("const QList<QCollaboration *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QConnectableElement) *>("QT_PREPEND_NAMESPACE_QTUML(QConnectableElement) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QConnectableElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QConnectableElement) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QConnectableElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QConnectableElement) *> *");
     qRegisterMetaType<QConnectableElement *>("QConnectableElement *");
     qRegisterMetaType<const QSet<QConnectableElement *> *>("const QSet<QConnectableElement *> *");
     qRegisterMetaType<const QList<QConnectableElement *> *>("const QList<QConnectableElement *> *");
-
 
     QWrappedObject::registerMetaTypes();
 

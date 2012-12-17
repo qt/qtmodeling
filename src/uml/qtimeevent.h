@@ -61,7 +61,7 @@ class Q_UML_EXPORT QTimeEvent : public QEvent
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool isRelative READ isRelative WRITE setRelative)
+    Q_PROPERTY(bool isRelative READ isRelative WRITE setRelative RESET unsetRelative)
     Q_PROPERTY(QTimeExpression * when READ when WRITE setWhen)
 
     Q_DISABLE_COPY(QTimeEvent)
@@ -74,6 +74,7 @@ public:
     // Attributes from QTimeEvent
     Q_INVOKABLE bool isRelative() const;
     Q_INVOKABLE void setRelative(bool isRelative);
+    Q_INVOKABLE void unsetRelative();
 
     // Association ends from QTimeEvent
     Q_INVOKABLE QTimeExpression *when() const;

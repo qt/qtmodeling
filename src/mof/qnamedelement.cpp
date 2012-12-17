@@ -214,14 +214,12 @@ void QNamedElement::registerMetaTypes() const
     qRegisterMetaType<const QSet<QNamedElement *> *>("const QSet<QNamedElement *> *");
     qRegisterMetaType<const QList<QNamedElement *> *>("const QList<QNamedElement *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QNamespace) *>("QT_PREPEND_NAMESPACE_QTMOF(QNamespace) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QNamespace) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QNamespace) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QNamespace) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QNamespace) *> *");
     qRegisterMetaType<QNamespace *>("QNamespace *");
     qRegisterMetaType<const QSet<QNamespace *> *>("const QSet<QNamespace *> *");
     qRegisterMetaType<const QList<QNamespace *> *>("const QList<QNamespace *> *");
-
 
     QElement::registerMetaTypes();
 

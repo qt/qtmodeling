@@ -277,14 +277,12 @@ void QUseCase::registerMetaTypes() const
     qRegisterMetaType<const QSet<QUseCase *> *>("const QSet<QUseCase *> *");
     qRegisterMetaType<const QList<QUseCase *> *>("const QList<QUseCase *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *>("QT_PREPEND_NAMESPACE_QTUML(QClassifier) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *");
     qRegisterMetaType<QClassifier *>("QClassifier *");
     qRegisterMetaType<const QSet<QClassifier *> *>("const QSet<QClassifier *> *");
     qRegisterMetaType<const QList<QClassifier *> *>("const QList<QClassifier *> *");
-
 
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInclude) *>("QT_PREPEND_NAMESPACE_QTUML(QInclude) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInclude) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInclude) *> *");
@@ -293,7 +291,6 @@ void QUseCase::registerMetaTypes() const
     qRegisterMetaType<const QSet<QInclude *> *>("const QSet<QInclude *> *");
     qRegisterMetaType<const QList<QInclude *> *>("const QList<QInclude *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QExtend) *>("QT_PREPEND_NAMESPACE_QTUML(QExtend) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QExtend) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QExtend) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QExtend) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QExtend) *> *");
@@ -301,14 +298,12 @@ void QUseCase::registerMetaTypes() const
     qRegisterMetaType<const QSet<QExtend *> *>("const QSet<QExtend *> *");
     qRegisterMetaType<const QList<QExtend *> *>("const QList<QExtend *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QExtensionPoint) *>("QT_PREPEND_NAMESPACE_QTUML(QExtensionPoint) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QExtensionPoint) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QExtensionPoint) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QExtensionPoint) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QExtensionPoint) *> *");
     qRegisterMetaType<QExtensionPoint *>("QExtensionPoint *");
     qRegisterMetaType<const QSet<QExtensionPoint *> *>("const QSet<QExtensionPoint *> *");
     qRegisterMetaType<const QList<QExtensionPoint *> *>("const QList<QExtensionPoint *> *");
-
 
     QBehavioredClassifier::registerMetaTypes();
 

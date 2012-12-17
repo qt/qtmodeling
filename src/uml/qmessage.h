@@ -71,7 +71,7 @@ class Q_UML_EXPORT QMessage : public QNamedElement
 {
     Q_OBJECT
 
-    Q_PROPERTY(QtUml::MessageSort messageSort READ messageSort WRITE setMessageSort)
+    Q_PROPERTY(QtUml::MessageSort messageSort READ messageSort WRITE setMessageSort RESET unsetMessageSort)
     Q_PROPERTY(QtUml::MessageKind messageKind READ messageKind STORED false)
     Q_PROPERTY(QNamedElement * signature READ signature WRITE setSignature)
     Q_PROPERTY(const QList<QValueSpecification *> * arguments READ arguments)
@@ -90,6 +90,7 @@ public:
     // Attributes from QMessage
     Q_INVOKABLE QtUml::MessageSort messageSort() const;
     Q_INVOKABLE void setMessageSort(QtUml::MessageSort messageSort);
+    Q_INVOKABLE void unsetMessageSort();
     Q_INVOKABLE QtUml::MessageKind messageKind() const;
 
     // Association ends from QMessage

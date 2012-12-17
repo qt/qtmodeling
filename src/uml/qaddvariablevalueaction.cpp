@@ -103,6 +103,11 @@ void QAddVariableValueAction::setReplaceAll(bool isReplaceAll)
     }
 }
 
+void QAddVariableValueAction::unsetReplaceAll()
+{
+    setReplaceAll(false);
+}
+
 // ---------------------------------------------------------------
 // ASSOCIATION ENDS FROM QAddVariableValueAction
 // ---------------------------------------------------------------
@@ -145,14 +150,12 @@ void QAddVariableValueAction::registerMetaTypes() const
     qRegisterMetaType<const QSet<QAddVariableValueAction *> *>("const QSet<QAddVariableValueAction *> *");
     qRegisterMetaType<const QList<QAddVariableValueAction *> *>("const QList<QAddVariableValueAction *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QInputPin) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
     qRegisterMetaType<QInputPin *>("QInputPin *");
     qRegisterMetaType<const QSet<QInputPin *> *>("const QSet<QInputPin *> *");
     qRegisterMetaType<const QList<QInputPin *> *>("const QList<QInputPin *> *");
-
 
     QWriteVariableAction::registerMetaTypes();
 

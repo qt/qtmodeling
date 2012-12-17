@@ -74,10 +74,10 @@ class Q_UML_EXPORT QParameter : public QWrappedObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool isException READ isException WRITE setException)
+    Q_PROPERTY(bool isException READ isException WRITE setException RESET unsetException)
     Q_PROPERTY(QString default_ READ default_ WRITE setDefault_ STORED false)
-    Q_PROPERTY(QtUml::ParameterDirectionKind direction READ direction WRITE setDirection)
-    Q_PROPERTY(bool isStream READ isStream WRITE setStream)
+    Q_PROPERTY(QtUml::ParameterDirectionKind direction READ direction WRITE setDirection RESET unsetDirection)
+    Q_PROPERTY(bool isStream READ isStream WRITE setStream RESET unsetStream)
     Q_PROPERTY(QtUml::ParameterEffectKind effect READ effect WRITE setEffect)
     Q_PROPERTY(QOperation * operation READ operation WRITE setOperation)
     Q_PROPERTY(QValueSpecification * defaultValue READ defaultValue WRITE setDefaultValue)
@@ -100,10 +100,13 @@ public:
     // Attributes from aggregated QMultiplicityElement
     Q_INVOKABLE qint32 upper() const;
     Q_INVOKABLE void setUpper(qint32 upper);
+    Q_INVOKABLE void unsetUpper();
     Q_INVOKABLE bool isUnique() const;
     Q_INVOKABLE void setUnique(bool isUnique);
+    Q_INVOKABLE void unsetUnique();
     Q_INVOKABLE bool isOrdered() const;
     Q_INVOKABLE void setOrdered(bool isOrdered);
+    Q_INVOKABLE void unsetOrdered();
     Q_INVOKABLE qint32 lower() const;
     Q_INVOKABLE void setLower(qint32 lower);
 
@@ -144,12 +147,15 @@ public:
     // Attributes from QParameter
     Q_INVOKABLE bool isException() const;
     Q_INVOKABLE void setException(bool isException);
+    Q_INVOKABLE void unsetException();
     Q_INVOKABLE QString default_() const;
     Q_INVOKABLE void setDefault_(QString default_);
     Q_INVOKABLE QtUml::ParameterDirectionKind direction() const;
     Q_INVOKABLE void setDirection(QtUml::ParameterDirectionKind direction);
+    Q_INVOKABLE void unsetDirection();
     Q_INVOKABLE bool isStream() const;
     Q_INVOKABLE void setStream(bool isStream);
+    Q_INVOKABLE void unsetStream();
     Q_INVOKABLE QtUml::ParameterEffectKind effect() const;
     Q_INVOKABLE void setEffect(QtUml::ParameterEffectKind effect);
 

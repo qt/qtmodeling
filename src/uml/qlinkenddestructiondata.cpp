@@ -103,6 +103,11 @@ void QLinkEndDestructionData::setDestroyDuplicates(bool isDestroyDuplicates)
     }
 }
 
+void QLinkEndDestructionData::unsetDestroyDuplicates()
+{
+    setDestroyDuplicates(false);
+}
+
 // ---------------------------------------------------------------
 // ASSOCIATION ENDS FROM QLinkEndDestructionData
 // ---------------------------------------------------------------
@@ -137,14 +142,12 @@ void QLinkEndDestructionData::registerMetaTypes() const
     qRegisterMetaType<const QSet<QLinkEndDestructionData *> *>("const QSet<QLinkEndDestructionData *> *");
     qRegisterMetaType<const QList<QLinkEndDestructionData *> *>("const QList<QLinkEndDestructionData *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QInputPin) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
     qRegisterMetaType<QInputPin *>("QInputPin *");
     qRegisterMetaType<const QSet<QInputPin *> *>("const QSet<QInputPin *> *");
     qRegisterMetaType<const QList<QInputPin *> *>("const QList<QInputPin *> *");
-
 
     QLinkEndData::registerMetaTypes();
 

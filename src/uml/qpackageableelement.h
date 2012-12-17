@@ -64,7 +64,7 @@ class Q_UML_EXPORT QPackageableElement : public QWrappedObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility RESET unsetVisibility)
 
     Q_DISABLE_COPY(QPackageableElement)
     Q_DECLARE_PRIVATE(QPackageableElement)
@@ -102,6 +102,7 @@ public:
     // Attributes from QPackageableElement
     Q_INVOKABLE QtUml::VisibilityKind visibility() const;
     Q_INVOKABLE void setVisibility(QtUml::VisibilityKind visibility);
+    Q_INVOKABLE void unsetVisibility();
     virtual void registerMetaTypes() const;
 
 protected:

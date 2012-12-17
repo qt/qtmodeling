@@ -105,6 +105,11 @@ void QPackageImport::setVisibility(QtMof::VisibilityKind visibility)
     }
 }
 
+void QPackageImport::unsetVisibility()
+{
+    setVisibility(QtMof::VisibilityPublic);
+}
+
 // ---------------------------------------------------------------
 // ASSOCIATION ENDS FROM QPackageImport
 // ---------------------------------------------------------------
@@ -185,7 +190,6 @@ void QPackageImport::registerMetaTypes() const
     qRegisterMetaType<const QSet<QPackageImport *> *>("const QSet<QPackageImport *> *");
     qRegisterMetaType<const QList<QPackageImport *> *>("const QList<QPackageImport *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QPackage) *>("QT_PREPEND_NAMESPACE_QTMOF(QPackage) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QPackage) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QPackage) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QPackage) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QPackage) *> *");
@@ -193,14 +197,12 @@ void QPackageImport::registerMetaTypes() const
     qRegisterMetaType<const QSet<QPackage *> *>("const QSet<QPackage *> *");
     qRegisterMetaType<const QList<QPackage *> *>("const QList<QPackage *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QNamespace) *>("QT_PREPEND_NAMESPACE_QTMOF(QNamespace) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QNamespace) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QNamespace) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QNamespace) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QNamespace) *> *");
     qRegisterMetaType<QNamespace *>("QNamespace *");
     qRegisterMetaType<const QSet<QNamespace *> *>("const QSet<QNamespace *> *");
     qRegisterMetaType<const QList<QNamespace *> *>("const QList<QNamespace *> *");
-
 
     QDirectedRelationship::registerMetaTypes();
 

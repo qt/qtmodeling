@@ -65,7 +65,7 @@ class Q_UML_EXPORT QReclassifyObjectAction : public QAction
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool isReplaceAll READ isReplaceAll WRITE setReplaceAll)
+    Q_PROPERTY(bool isReplaceAll READ isReplaceAll WRITE setReplaceAll RESET unsetReplaceAll)
     Q_PROPERTY(const QSet<QClassifier *> * oldClassifiers READ oldClassifiers)
     Q_PROPERTY(QInputPin * object READ object WRITE setObject)
     Q_PROPERTY(const QSet<QClassifier *> * newClassifiers READ newClassifiers)
@@ -80,6 +80,7 @@ public:
     // Attributes from QReclassifyObjectAction
     Q_INVOKABLE bool isReplaceAll() const;
     Q_INVOKABLE void setReplaceAll(bool isReplaceAll);
+    Q_INVOKABLE void unsetReplaceAll();
 
     // Association ends from QReclassifyObjectAction
     Q_INVOKABLE const QSet<QClassifier *> *oldClassifiers() const;

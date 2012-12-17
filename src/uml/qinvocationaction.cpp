@@ -151,7 +151,6 @@ void QInvocationAction::registerMetaTypes() const
     qRegisterMetaType<const QSet<QInvocationAction *> *>("const QSet<QInvocationAction *> *");
     qRegisterMetaType<const QList<QInvocationAction *> *>("const QList<QInvocationAction *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QInputPin) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
@@ -159,14 +158,12 @@ void QInvocationAction::registerMetaTypes() const
     qRegisterMetaType<const QSet<QInputPin *> *>("const QSet<QInputPin *> *");
     qRegisterMetaType<const QList<QInputPin *> *>("const QList<QInputPin *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QPort) *>("QT_PREPEND_NAMESPACE_QTUML(QPort) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QPort) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QPort) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QPort) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QPort) *> *");
     qRegisterMetaType<QPort *>("QPort *");
     qRegisterMetaType<const QSet<QPort *> *>("const QSet<QPort *> *");
     qRegisterMetaType<const QList<QPort *> *>("const QList<QPort *> *");
-
 
     QAction::registerMetaTypes();
 

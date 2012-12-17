@@ -61,7 +61,7 @@ class Q_UML_EXPORT QTimeObservation : public QObservation
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool firstEvent READ firstEvent WRITE setFirstEvent)
+    Q_PROPERTY(bool firstEvent READ firstEvent WRITE setFirstEvent RESET unsetFirstEvent)
     Q_PROPERTY(QNamedElement * event READ event WRITE setEvent)
 
     Q_DISABLE_COPY(QTimeObservation)
@@ -74,6 +74,7 @@ public:
     // Attributes from QTimeObservation
     Q_INVOKABLE bool firstEvent() const;
     Q_INVOKABLE void setFirstEvent(bool firstEvent);
+    Q_INVOKABLE void unsetFirstEvent();
 
     // Association ends from QTimeObservation
     Q_INVOKABLE QNamedElement *event() const;

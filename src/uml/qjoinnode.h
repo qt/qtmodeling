@@ -61,7 +61,7 @@ class Q_UML_EXPORT QJoinNode : public QControlNode
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool isCombineDuplicate READ isCombineDuplicate WRITE setCombineDuplicate)
+    Q_PROPERTY(bool isCombineDuplicate READ isCombineDuplicate WRITE setCombineDuplicate RESET unsetCombineDuplicate)
     Q_PROPERTY(QValueSpecification * joinSpec READ joinSpec WRITE setJoinSpec)
 
     Q_DISABLE_COPY(QJoinNode)
@@ -74,6 +74,7 @@ public:
     // Attributes from QJoinNode
     Q_INVOKABLE bool isCombineDuplicate() const;
     Q_INVOKABLE void setCombineDuplicate(bool isCombineDuplicate);
+    Q_INVOKABLE void unsetCombineDuplicate();
 
     // Association ends from QJoinNode
     Q_INVOKABLE QValueSpecification *joinSpec() const;

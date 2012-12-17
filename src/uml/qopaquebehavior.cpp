@@ -153,7 +153,6 @@ void QOpaqueBehavior::registerMetaTypes() const
     qRegisterMetaType<const QSet<QOpaqueBehavior *> *>("const QSet<QOpaqueBehavior *> *");
     qRegisterMetaType<const QList<QOpaqueBehavior *> *>("const QList<QOpaqueBehavior *> *");
 
-
     QBehavior::registerMetaTypes();
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())

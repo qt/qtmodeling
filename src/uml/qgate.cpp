@@ -83,7 +83,6 @@ void QGate::registerMetaTypes() const
     qRegisterMetaType<const QSet<QGate *> *>("const QSet<QGate *> *");
     qRegisterMetaType<const QList<QGate *> *>("const QList<QGate *> *");
 
-
     QMessageEnd::registerMetaTypes();
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())

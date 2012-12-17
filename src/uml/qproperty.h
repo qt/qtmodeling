@@ -80,13 +80,13 @@ class Q_UML_EXPORT QProperty : public QWrappedObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool isDerived READ isDerived WRITE setDerived)
+    Q_PROPERTY(bool isDerived READ isDerived WRITE setDerived RESET unsetDerived)
     Q_PROPERTY(QString default_ READ default_ WRITE setDefault_ STORED false)
-    Q_PROPERTY(bool isComposite READ isComposite WRITE setComposite STORED false)
-    Q_PROPERTY(bool isReadOnly READ isReadOnly WRITE setReadOnly)
-    Q_PROPERTY(bool isID READ isID WRITE setID)
-    Q_PROPERTY(bool isDerivedUnion READ isDerivedUnion WRITE setDerivedUnion)
-    Q_PROPERTY(QtUml::AggregationKind aggregation READ aggregation WRITE setAggregation)
+    Q_PROPERTY(bool isComposite READ isComposite WRITE setComposite RESET unsetComposite STORED false)
+    Q_PROPERTY(bool isReadOnly READ isReadOnly WRITE setReadOnly RESET unsetReadOnly)
+    Q_PROPERTY(bool isID READ isID WRITE setID RESET unsetID)
+    Q_PROPERTY(bool isDerivedUnion READ isDerivedUnion WRITE setDerivedUnion RESET unsetDerivedUnion)
+    Q_PROPERTY(QtUml::AggregationKind aggregation READ aggregation WRITE setAggregation RESET unsetAggregation)
     Q_PROPERTY(const QSet<QProperty *> * subsettedProperties READ subsettedProperties)
     Q_PROPERTY(QAssociation * owningAssociation READ owningAssociation WRITE setOwningAssociation)
     Q_PROPERTY(const QList<QProperty *> * qualifiers READ qualifiers)
@@ -135,10 +135,13 @@ public:
     // Attributes from aggregated QMultiplicityElement
     Q_INVOKABLE qint32 upper() const;
     Q_INVOKABLE void setUpper(qint32 upper);
+    Q_INVOKABLE void unsetUpper();
     Q_INVOKABLE bool isUnique() const;
     Q_INVOKABLE void setUnique(bool isUnique);
+    Q_INVOKABLE void unsetUnique();
     Q_INVOKABLE bool isOrdered() const;
     Q_INVOKABLE void setOrdered(bool isOrdered);
+    Q_INVOKABLE void unsetOrdered();
     Q_INVOKABLE qint32 lower() const;
     Q_INVOKABLE void setLower(qint32 lower);
 
@@ -151,6 +154,7 @@ public:
     // Attributes from aggregated QRedefinableElement
     Q_INVOKABLE bool isLeaf() const;
     Q_INVOKABLE void setLeaf(bool isLeaf);
+    Q_INVOKABLE void unsetLeaf();
 
     // Association ends from aggregated QRedefinableElement
     Q_INVOKABLE const QSet<QRedefinableElement *> *redefinedElements() const;
@@ -159,6 +163,7 @@ public:
     // Attributes from aggregated QFeature
     Q_INVOKABLE bool isStatic() const;
     Q_INVOKABLE void setStatic(bool isStatic);
+    Q_INVOKABLE void unsetStatic();
 
     // Association ends from aggregated QFeature
     Q_INVOKABLE const QSet<QClassifier *> *featuringClassifiers() const;
@@ -181,18 +186,24 @@ public:
     // Attributes from QProperty
     Q_INVOKABLE bool isDerived() const;
     Q_INVOKABLE void setDerived(bool isDerived);
+    Q_INVOKABLE void unsetDerived();
     Q_INVOKABLE QString default_() const;
     Q_INVOKABLE void setDefault_(QString default_);
     Q_INVOKABLE bool isComposite() const;
     Q_INVOKABLE void setComposite(bool isComposite);
+    Q_INVOKABLE void unsetComposite();
     Q_INVOKABLE bool isReadOnly() const;
     Q_INVOKABLE void setReadOnly(bool isReadOnly);
+    Q_INVOKABLE void unsetReadOnly();
     Q_INVOKABLE bool isID() const;
     Q_INVOKABLE void setID(bool isID);
+    Q_INVOKABLE void unsetID();
     Q_INVOKABLE bool isDerivedUnion() const;
     Q_INVOKABLE void setDerivedUnion(bool isDerivedUnion);
+    Q_INVOKABLE void unsetDerivedUnion();
     Q_INVOKABLE QtUml::AggregationKind aggregation() const;
     Q_INVOKABLE void setAggregation(QtUml::AggregationKind aggregation);
+    Q_INVOKABLE void unsetAggregation();
 
     // Association ends from QProperty
     Q_INVOKABLE const QSet<QProperty *> *subsettedProperties() const;

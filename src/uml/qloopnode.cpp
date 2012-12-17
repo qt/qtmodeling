@@ -119,6 +119,11 @@ void QLoopNode::setTestedFirst(bool isTestedFirst)
     }
 }
 
+void QLoopNode::unsetTestedFirst()
+{
+    setTestedFirst(false);
+}
+
 // ---------------------------------------------------------------
 // ASSOCIATION ENDS FROM QLoopNode
 // ---------------------------------------------------------------
@@ -374,14 +379,12 @@ void QLoopNode::registerMetaTypes() const
     qRegisterMetaType<const QSet<QLoopNode *> *>("const QSet<QLoopNode *> *");
     qRegisterMetaType<const QList<QLoopNode *> *>("const QList<QLoopNode *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *");
     qRegisterMetaType<QOutputPin *>("QOutputPin *");
     qRegisterMetaType<const QSet<QOutputPin *> *>("const QSet<QOutputPin *> *");
     qRegisterMetaType<const QList<QOutputPin *> *>("const QList<QOutputPin *> *");
-
 
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *>("QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *> *");
@@ -390,14 +393,12 @@ void QLoopNode::registerMetaTypes() const
     qRegisterMetaType<const QSet<QExecutableNode *> *>("const QSet<QExecutableNode *> *");
     qRegisterMetaType<const QList<QExecutableNode *> *>("const QList<QExecutableNode *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QInputPin) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
     qRegisterMetaType<QInputPin *>("QInputPin *");
     qRegisterMetaType<const QSet<QInputPin *> *>("const QSet<QInputPin *> *");
     qRegisterMetaType<const QList<QInputPin *> *>("const QList<QInputPin *> *");
-
 
     QStructuredActivityNode::registerMetaTypes();
 

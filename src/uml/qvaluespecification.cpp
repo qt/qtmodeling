@@ -250,6 +250,11 @@ void QValueSpecification::setVisibility(QtUml::VisibilityKind visibility)
     (qwrappedobject_cast<QPackageableElement *>(this))->setVisibility(visibility);
 }
 
+void QValueSpecification::unsetVisibility()
+{
+    setVisibility(QtUml::VisibilityPublic);
+}
+
 /*!
     The query booleanValue() gives a single Boolean value when one can be computed.
  */
@@ -340,14 +345,12 @@ void QValueSpecification::registerMetaTypes() const
     qRegisterMetaType<const QSet<QValueSpecification *> *>("const QSet<QValueSpecification *> *");
     qRegisterMetaType<const QList<QValueSpecification *> *>("const QList<QValueSpecification *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QParameterableElement) *>("QT_PREPEND_NAMESPACE_QTUML(QParameterableElement) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QParameterableElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QParameterableElement) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QParameterableElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QParameterableElement) *> *");
     qRegisterMetaType<QParameterableElement *>("QParameterableElement *");
     qRegisterMetaType<const QSet<QParameterableElement *> *>("const QSet<QParameterableElement *> *");
     qRegisterMetaType<const QList<QParameterableElement *> *>("const QList<QParameterableElement *> *");
-
 
     QWrappedObject::registerMetaTypes();
 

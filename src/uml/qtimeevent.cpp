@@ -103,6 +103,11 @@ void QTimeEvent::setRelative(bool isRelative)
     }
 }
 
+void QTimeEvent::unsetRelative()
+{
+    setRelative(false);
+}
+
 // ---------------------------------------------------------------
 // ASSOCIATION ENDS FROM QTimeEvent
 // ---------------------------------------------------------------
@@ -145,14 +150,12 @@ void QTimeEvent::registerMetaTypes() const
     qRegisterMetaType<const QSet<QTimeEvent *> *>("const QSet<QTimeEvent *> *");
     qRegisterMetaType<const QList<QTimeEvent *> *>("const QList<QTimeEvent *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QTimeExpression) *>("QT_PREPEND_NAMESPACE_QTUML(QTimeExpression) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QTimeExpression) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QTimeExpression) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QTimeExpression) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QTimeExpression) *> *");
     qRegisterMetaType<QTimeExpression *>("QTimeExpression *");
     qRegisterMetaType<const QSet<QTimeExpression *> *>("const QSet<QTimeExpression *> *");
     qRegisterMetaType<const QList<QTimeExpression *> *>("const QList<QTimeExpression *> *");
-
 
     QEvent::registerMetaTypes();
 

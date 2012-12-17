@@ -61,7 +61,7 @@ class Q_UML_EXPORT QTimeConstraint : public QIntervalConstraint
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool firstEvent READ firstEvent WRITE setFirstEvent)
+    Q_PROPERTY(bool firstEvent READ firstEvent WRITE setFirstEvent RESET unsetFirstEvent)
     Q_PROPERTY(QTimeInterval * specification READ specification WRITE setSpecification)
 
     Q_DISABLE_COPY(QTimeConstraint)
@@ -74,6 +74,7 @@ public:
     // Attributes from QTimeConstraint
     Q_INVOKABLE bool firstEvent() const;
     Q_INVOKABLE void setFirstEvent(bool firstEvent);
+    Q_INVOKABLE void unsetFirstEvent();
 
     // Association ends from QTimeConstraint
     Q_INVOKABLE QTimeInterval *specification() const;

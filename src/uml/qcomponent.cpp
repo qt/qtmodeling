@@ -109,6 +109,11 @@ void QComponent::setIndirectlyInstantiated(bool isIndirectlyInstantiated)
     }
 }
 
+void QComponent::unsetIndirectlyInstantiated()
+{
+    setIndirectlyInstantiated(true);
+}
+
 // ---------------------------------------------------------------
 // ASSOCIATION ENDS FROM QComponent
 // ---------------------------------------------------------------
@@ -248,14 +253,12 @@ void QComponent::registerMetaTypes() const
     qRegisterMetaType<const QSet<QComponent *> *>("const QSet<QComponent *> *");
     qRegisterMetaType<const QList<QComponent *> *>("const QList<QComponent *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *>("QT_PREPEND_NAMESPACE_QTUML(QClassifier) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *");
     qRegisterMetaType<QClassifier *>("QClassifier *");
     qRegisterMetaType<const QSet<QClassifier *> *>("const QSet<QClassifier *> *");
     qRegisterMetaType<const QList<QClassifier *> *>("const QList<QClassifier *> *");
-
 
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QComponentRealization) *>("QT_PREPEND_NAMESPACE_QTUML(QComponentRealization) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QComponentRealization) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QComponentRealization) *> *");
@@ -264,7 +267,6 @@ void QComponent::registerMetaTypes() const
     qRegisterMetaType<const QSet<QComponentRealization *> *>("const QSet<QComponentRealization *> *");
     qRegisterMetaType<const QList<QComponentRealization *> *>("const QList<QComponentRealization *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QPackageableElement) *>("QT_PREPEND_NAMESPACE_QTUML(QPackageableElement) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QPackageableElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QPackageableElement) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QPackageableElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QPackageableElement) *> *");
@@ -272,14 +274,12 @@ void QComponent::registerMetaTypes() const
     qRegisterMetaType<const QSet<QPackageableElement *> *>("const QSet<QPackageableElement *> *");
     qRegisterMetaType<const QList<QPackageableElement *> *>("const QList<QPackageableElement *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInterface) *>("QT_PREPEND_NAMESPACE_QTUML(QInterface) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInterface) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInterface) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInterface) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInterface) *> *");
     qRegisterMetaType<QInterface *>("QInterface *");
     qRegisterMetaType<const QSet<QInterface *> *>("const QSet<QInterface *> *");
     qRegisterMetaType<const QList<QInterface *> *>("const QList<QInterface *> *");
-
 
     QClass::registerMetaTypes();
 

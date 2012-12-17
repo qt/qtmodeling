@@ -83,7 +83,6 @@ void QMessageEvent::registerMetaTypes() const
     qRegisterMetaType<const QSet<QMessageEvent *> *>("const QSet<QMessageEvent *> *");
     qRegisterMetaType<const QList<QMessageEvent *> *>("const QList<QMessageEvent *> *");
 
-
     QEvent::registerMetaTypes();
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())

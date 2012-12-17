@@ -104,6 +104,11 @@ void QTimeConstraint::setFirstEvent(bool firstEvent)
     }
 }
 
+void QTimeConstraint::unsetFirstEvent()
+{
+    setFirstEvent(true);
+}
+
 // ---------------------------------------------------------------
 // ASSOCIATION ENDS FROM QTimeConstraint
 // ---------------------------------------------------------------
@@ -138,14 +143,12 @@ void QTimeConstraint::registerMetaTypes() const
     qRegisterMetaType<const QSet<QTimeConstraint *> *>("const QSet<QTimeConstraint *> *");
     qRegisterMetaType<const QList<QTimeConstraint *> *>("const QList<QTimeConstraint *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QTimeInterval) *>("QT_PREPEND_NAMESPACE_QTUML(QTimeInterval) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QTimeInterval) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QTimeInterval) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QTimeInterval) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QTimeInterval) *> *");
     qRegisterMetaType<QTimeInterval *>("QTimeInterval *");
     qRegisterMetaType<const QSet<QTimeInterval *> *>("const QSet<QTimeInterval *> *");
     qRegisterMetaType<const QList<QTimeInterval *> *>("const QList<QTimeInterval *> *");
-
 
     QIntervalConstraint::registerMetaTypes();
 

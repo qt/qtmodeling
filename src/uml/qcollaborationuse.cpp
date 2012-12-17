@@ -151,7 +151,6 @@ void QCollaborationUse::registerMetaTypes() const
     qRegisterMetaType<const QSet<QCollaborationUse *> *>("const QSet<QCollaborationUse *> *");
     qRegisterMetaType<const QList<QCollaborationUse *> *>("const QList<QCollaborationUse *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QDependency) *>("QT_PREPEND_NAMESPACE_QTUML(QDependency) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QDependency) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QDependency) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QDependency) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QDependency) *> *");
@@ -159,14 +158,12 @@ void QCollaborationUse::registerMetaTypes() const
     qRegisterMetaType<const QSet<QDependency *> *>("const QSet<QDependency *> *");
     qRegisterMetaType<const QList<QDependency *> *>("const QList<QDependency *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QCollaboration) *>("QT_PREPEND_NAMESPACE_QTUML(QCollaboration) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QCollaboration) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QCollaboration) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QCollaboration) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QCollaboration) *> *");
     qRegisterMetaType<QCollaboration *>("QCollaboration *");
     qRegisterMetaType<const QSet<QCollaboration *> *>("const QSet<QCollaboration *> *");
     qRegisterMetaType<const QList<QCollaboration *> *>("const QList<QCollaboration *> *");
-
 
     QNamedElement::registerMetaTypes();
 

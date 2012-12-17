@@ -83,7 +83,6 @@ void QDestructionOccurrenceSpecification::registerMetaTypes() const
     qRegisterMetaType<const QSet<QDestructionOccurrenceSpecification *> *>("const QSet<QDestructionOccurrenceSpecification *> *");
     qRegisterMetaType<const QList<QDestructionOccurrenceSpecification *> *>("const QList<QDestructionOccurrenceSpecification *> *");
 
-
     QMessageOccurrenceSpecification::registerMetaTypes();
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())

@@ -317,7 +317,6 @@ void QConnectableElement::registerMetaTypes() const
     qRegisterMetaType<const QSet<QConnectableElement *> *>("const QSet<QConnectableElement *> *");
     qRegisterMetaType<const QList<QConnectableElement *> *>("const QList<QConnectableElement *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QConnectorEnd) *>("QT_PREPEND_NAMESPACE_QTUML(QConnectorEnd) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QConnectorEnd) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QConnectorEnd) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QConnectorEnd) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QConnectorEnd) *> *");
@@ -325,14 +324,12 @@ void QConnectableElement::registerMetaTypes() const
     qRegisterMetaType<const QSet<QConnectorEnd *> *>("const QSet<QConnectorEnd *> *");
     qRegisterMetaType<const QList<QConnectorEnd *> *>("const QList<QConnectorEnd *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QConnectableElementTemplateParameter) *>("QT_PREPEND_NAMESPACE_QTUML(QConnectableElementTemplateParameter) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QConnectableElementTemplateParameter) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QConnectableElementTemplateParameter) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QConnectableElementTemplateParameter) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QConnectableElementTemplateParameter) *> *");
     qRegisterMetaType<QConnectableElementTemplateParameter *>("QConnectableElementTemplateParameter *");
     qRegisterMetaType<const QSet<QConnectableElementTemplateParameter *> *>("const QSet<QConnectableElementTemplateParameter *> *");
     qRegisterMetaType<const QList<QConnectableElementTemplateParameter *> *>("const QList<QConnectableElementTemplateParameter *> *");
-
 
     QWrappedObject::registerMetaTypes();
 

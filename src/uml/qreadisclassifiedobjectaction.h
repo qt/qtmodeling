@@ -63,7 +63,7 @@ class Q_UML_EXPORT QReadIsClassifiedObjectAction : public QAction
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool isDirect READ isDirect WRITE setDirect)
+    Q_PROPERTY(bool isDirect READ isDirect WRITE setDirect RESET unsetDirect)
     Q_PROPERTY(QOutputPin * result READ result WRITE setResult)
     Q_PROPERTY(QInputPin * object READ object WRITE setObject)
     Q_PROPERTY(QClassifier * classifier READ classifier WRITE setClassifier)
@@ -78,6 +78,7 @@ public:
     // Attributes from QReadIsClassifiedObjectAction
     Q_INVOKABLE bool isDirect() const;
     Q_INVOKABLE void setDirect(bool isDirect);
+    Q_INVOKABLE void unsetDirect();
 
     // Association ends from QReadIsClassifiedObjectAction
     Q_INVOKABLE QOutputPin *result() const;

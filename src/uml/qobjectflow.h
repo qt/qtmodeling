@@ -61,8 +61,8 @@ class Q_UML_EXPORT QObjectFlow : public QActivityEdge
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool isMultireceive READ isMultireceive WRITE setMultireceive)
-    Q_PROPERTY(bool isMulticast READ isMulticast WRITE setMulticast)
+    Q_PROPERTY(bool isMultireceive READ isMultireceive WRITE setMultireceive RESET unsetMultireceive)
+    Q_PROPERTY(bool isMulticast READ isMulticast WRITE setMulticast RESET unsetMulticast)
     Q_PROPERTY(QBehavior * selection READ selection WRITE setSelection)
     Q_PROPERTY(QBehavior * transformation READ transformation WRITE setTransformation)
 
@@ -76,8 +76,10 @@ public:
     // Attributes from QObjectFlow
     Q_INVOKABLE bool isMultireceive() const;
     Q_INVOKABLE void setMultireceive(bool isMultireceive);
+    Q_INVOKABLE void unsetMultireceive();
     Q_INVOKABLE bool isMulticast() const;
     Q_INVOKABLE void setMulticast(bool isMulticast);
+    Q_INVOKABLE void unsetMulticast();
 
     // Association ends from QObjectFlow
     Q_INVOKABLE QBehavior *selection() const;

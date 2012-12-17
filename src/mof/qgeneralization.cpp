@@ -104,6 +104,11 @@ void QGeneralization::setSubstitutable(bool isSubstitutable)
     }
 }
 
+void QGeneralization::unsetSubstitutable()
+{
+    setSubstitutable(true);
+}
+
 // ---------------------------------------------------------------
 // ASSOCIATION ENDS FROM QGeneralization
 // ---------------------------------------------------------------
@@ -184,14 +189,12 @@ void QGeneralization::registerMetaTypes() const
     qRegisterMetaType<const QSet<QGeneralization *> *>("const QSet<QGeneralization *> *");
     qRegisterMetaType<const QList<QGeneralization *> *>("const QList<QGeneralization *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QClassifier) *>("QT_PREPEND_NAMESPACE_QTMOF(QClassifier) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QClassifier) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QClassifier) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QClassifier) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QClassifier) *> *");
     qRegisterMetaType<QClassifier *>("QClassifier *");
     qRegisterMetaType<const QSet<QClassifier *> *>("const QSet<QClassifier *> *");
     qRegisterMetaType<const QList<QClassifier *> *>("const QList<QClassifier *> *");
-
 
     QDirectedRelationship::registerMetaTypes();
 

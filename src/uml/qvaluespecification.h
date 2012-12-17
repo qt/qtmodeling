@@ -107,6 +107,7 @@ public:
     // Attributes from aggregated QPackageableElement
     Q_INVOKABLE QtUml::VisibilityKind visibility() const;
     Q_INVOKABLE void setVisibility(QtUml::VisibilityKind visibility);
+    Q_INVOKABLE void unsetVisibility();
 
     // Operations
     Q_INVOKABLE bool booleanValue() const;

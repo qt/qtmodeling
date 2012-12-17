@@ -149,7 +149,6 @@ void QDeploymentTarget::registerMetaTypes() const
     qRegisterMetaType<const QSet<QDeploymentTarget *> *>("const QSet<QDeploymentTarget *> *");
     qRegisterMetaType<const QList<QDeploymentTarget *> *>("const QList<QDeploymentTarget *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QPackageableElement) *>("QT_PREPEND_NAMESPACE_QTUML(QPackageableElement) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QPackageableElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QPackageableElement) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QPackageableElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QPackageableElement) *> *");
@@ -157,14 +156,12 @@ void QDeploymentTarget::registerMetaTypes() const
     qRegisterMetaType<const QSet<QPackageableElement *> *>("const QSet<QPackageableElement *> *");
     qRegisterMetaType<const QList<QPackageableElement *> *>("const QList<QPackageableElement *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QDeployment) *>("QT_PREPEND_NAMESPACE_QTUML(QDeployment) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QDeployment) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QDeployment) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QDeployment) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QDeployment) *> *");
     qRegisterMetaType<QDeployment *>("QDeployment *");
     qRegisterMetaType<const QSet<QDeployment *> *>("const QSet<QDeployment *> *");
     qRegisterMetaType<const QList<QDeployment *> *>("const QList<QDeployment *> *");
-
 
     QNamedElement::registerMetaTypes();
 

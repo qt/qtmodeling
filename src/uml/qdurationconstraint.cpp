@@ -149,14 +149,12 @@ void QDurationConstraint::registerMetaTypes() const
     qRegisterMetaType<const QSet<QDurationConstraint *> *>("const QSet<QDurationConstraint *> *");
     qRegisterMetaType<const QList<QDurationConstraint *> *>("const QList<QDurationConstraint *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QDurationInterval) *>("QT_PREPEND_NAMESPACE_QTUML(QDurationInterval) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QDurationInterval) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QDurationInterval) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QDurationInterval) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QDurationInterval) *> *");
     qRegisterMetaType<QDurationInterval *>("QDurationInterval *");
     qRegisterMetaType<const QSet<QDurationInterval *> *>("const QSet<QDurationInterval *> *");
     qRegisterMetaType<const QList<QDurationInterval *> *>("const QList<QDurationInterval *> *");
-
 
     QIntervalConstraint::registerMetaTypes();
 

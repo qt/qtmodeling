@@ -247,7 +247,6 @@ void QElement::registerMetaTypes() const
     qRegisterMetaType<const QSet<QElement *> *>("const QSet<QElement *> *");
     qRegisterMetaType<const QList<QElement *> *>("const QList<QElement *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QComment) *>("QT_PREPEND_NAMESPACE_QTMOF(QComment) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QComment) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QComment) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QComment) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QComment) *> *");
@@ -255,14 +254,12 @@ void QElement::registerMetaTypes() const
     qRegisterMetaType<const QSet<QComment *> *>("const QSet<QComment *> *");
     qRegisterMetaType<const QList<QComment *> *>("const QList<QComment *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QClass) *>("QT_PREPEND_NAMESPACE_QTMOF(QClass) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QClass) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QClass) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QClass) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QClass) *> *");
     qRegisterMetaType<QClass *>("QClass *");
     qRegisterMetaType<const QSet<QClass *> *>("const QSet<QClass *> *");
     qRegisterMetaType<const QList<QClass *> *>("const QList<QClass *> *");
-
 
     QMofObject::registerMetaTypes();
 

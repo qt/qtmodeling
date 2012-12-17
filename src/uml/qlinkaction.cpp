@@ -179,14 +179,12 @@ void QLinkAction::registerMetaTypes() const
     qRegisterMetaType<const QSet<QLinkAction *> *>("const QSet<QLinkAction *> *");
     qRegisterMetaType<const QList<QLinkAction *> *>("const QList<QLinkAction *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QLinkEndData) *>("QT_PREPEND_NAMESPACE_QTUML(QLinkEndData) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QLinkEndData) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QLinkEndData) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QLinkEndData) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QLinkEndData) *> *");
     qRegisterMetaType<QLinkEndData *>("QLinkEndData *");
     qRegisterMetaType<const QSet<QLinkEndData *> *>("const QSet<QLinkEndData *> *");
     qRegisterMetaType<const QList<QLinkEndData *> *>("const QList<QLinkEndData *> *");
-
 
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QInputPin) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
@@ -195,14 +193,12 @@ void QLinkAction::registerMetaTypes() const
     qRegisterMetaType<const QSet<QInputPin *> *>("const QSet<QInputPin *> *");
     qRegisterMetaType<const QList<QInputPin *> *>("const QList<QInputPin *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QAssociation) *>("QT_PREPEND_NAMESPACE_QTUML(QAssociation) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QAssociation) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QAssociation) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QAssociation) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QAssociation) *> *");
     qRegisterMetaType<QAssociation *>("QAssociation *");
     qRegisterMetaType<const QSet<QAssociation *> *>("const QSet<QAssociation *> *");
     qRegisterMetaType<const QList<QAssociation *> *>("const QList<QAssociation *> *");
-
 
     QAction::registerMetaTypes();
 

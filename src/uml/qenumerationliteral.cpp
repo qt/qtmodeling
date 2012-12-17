@@ -134,14 +134,12 @@ void QEnumerationLiteral::registerMetaTypes() const
     qRegisterMetaType<const QSet<QEnumerationLiteral *> *>("const QSet<QEnumerationLiteral *> *");
     qRegisterMetaType<const QList<QEnumerationLiteral *> *>("const QList<QEnumerationLiteral *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QEnumeration) *>("QT_PREPEND_NAMESPACE_QTUML(QEnumeration) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QEnumeration) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QEnumeration) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QEnumeration) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QEnumeration) *> *");
     qRegisterMetaType<QEnumeration *>("QEnumeration *");
     qRegisterMetaType<const QSet<QEnumeration *> *>("const QSet<QEnumeration *> *");
     qRegisterMetaType<const QList<QEnumeration *> *>("const QList<QEnumeration *> *");
-
 
     QInstanceSpecification::registerMetaTypes();
 

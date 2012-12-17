@@ -61,7 +61,7 @@ class Q_UML_EXPORT QPin : public QWrappedObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool isControl READ isControl WRITE setControl)
+    Q_PROPERTY(bool isControl READ isControl WRITE setControl RESET unsetControl)
 
     Q_DISABLE_COPY(QPin)
     Q_DECLARE_PRIVATE(QPin)
@@ -80,10 +80,13 @@ public:
     // Attributes from aggregated QMultiplicityElement
     Q_INVOKABLE qint32 upper() const;
     Q_INVOKABLE void setUpper(qint32 upper);
+    Q_INVOKABLE void unsetUpper();
     Q_INVOKABLE bool isUnique() const;
     Q_INVOKABLE void setUnique(bool isUnique);
+    Q_INVOKABLE void unsetUnique();
     Q_INVOKABLE bool isOrdered() const;
     Q_INVOKABLE void setOrdered(bool isOrdered);
+    Q_INVOKABLE void unsetOrdered();
     Q_INVOKABLE qint32 lower() const;
     Q_INVOKABLE void setLower(qint32 lower);
 
@@ -111,6 +114,7 @@ public:
     // Attributes from aggregated QRedefinableElement
     Q_INVOKABLE bool isLeaf() const;
     Q_INVOKABLE void setLeaf(bool isLeaf);
+    Q_INVOKABLE void unsetLeaf();
 
     // Association ends from aggregated QRedefinableElement
     Q_INVOKABLE const QSet<QRedefinableElement *> *redefinedElements() const;
@@ -145,8 +149,10 @@ public:
     // Attributes from aggregated QObjectNode
     Q_INVOKABLE bool isControlType() const;
     Q_INVOKABLE void setControlType(bool isControlType);
+    Q_INVOKABLE void unsetControlType();
     Q_INVOKABLE QtUml::ObjectNodeOrderingKind ordering() const;
     Q_INVOKABLE void setOrdering(QtUml::ObjectNodeOrderingKind ordering);
+    Q_INVOKABLE void unsetOrdering();
 
     // Association ends from aggregated QObjectNode
     Q_INVOKABLE QValueSpecification *upperBound() const;
@@ -160,6 +166,7 @@ public:
     // Attributes from QPin
     Q_INVOKABLE bool isControl() const;
     Q_INVOKABLE void setControl(bool isControl);
+    Q_INVOKABLE void unsetControl();
     virtual void registerMetaTypes() const;
 
 protected:

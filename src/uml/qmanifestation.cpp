@@ -119,14 +119,12 @@ void QManifestation::registerMetaTypes() const
     qRegisterMetaType<const QSet<QManifestation *> *>("const QSet<QManifestation *> *");
     qRegisterMetaType<const QList<QManifestation *> *>("const QList<QManifestation *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QPackageableElement) *>("QT_PREPEND_NAMESPACE_QTUML(QPackageableElement) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QPackageableElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QPackageableElement) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QPackageableElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QPackageableElement) *> *");
     qRegisterMetaType<QPackageableElement *>("QPackageableElement *");
     qRegisterMetaType<const QSet<QPackageableElement *> *>("const QSet<QPackageableElement *> *");
     qRegisterMetaType<const QList<QPackageableElement *> *>("const QList<QPackageableElement *> *");
-
 
     QAbstraction::registerMetaTypes();
 

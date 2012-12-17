@@ -312,6 +312,11 @@ void QBehavioralFeature::setLeaf(bool isLeaf)
     (qwrappedobject_cast<QRedefinableElement *>(this))->setLeaf(isLeaf);
 }
 
+void QBehavioralFeature::unsetLeaf()
+{
+    setLeaf(false);
+}
+
 // ---------------------------------------------------------------
 // ASSOCIATION ENDS FROM AGGREGATED QRedefinableElement
 // ---------------------------------------------------------------
@@ -347,6 +352,11 @@ bool QBehavioralFeature::isStatic() const
 void QBehavioralFeature::setStatic(bool isStatic)
 {
     (qwrappedobject_cast<QFeature *>(this))->setStatic(isStatic);
+}
+
+void QBehavioralFeature::unsetStatic()
+{
+    setStatic(false);
 }
 
 // ---------------------------------------------------------------
@@ -386,6 +396,11 @@ void QBehavioralFeature::setConcurrency(QtUml::CallConcurrencyKind concurrency)
     }
 }
 
+void QBehavioralFeature::unsetConcurrency()
+{
+    setConcurrency(QtUml::CallConcurrencySequential);
+}
+
 /*!
     If true, then the behavioral feature does not have an implementation, and one must be supplied by a more specific element. If false, the behavioral feature must have an implementation in the classifier or one must be inherited from a more general element.
  */
@@ -405,6 +420,11 @@ void QBehavioralFeature::setAbstract(bool isAbstract)
     if (d->isAbstract != isAbstract) {
         d->isAbstract = isAbstract;
     }
+}
+
+void QBehavioralFeature::unsetAbstract()
+{
+    setAbstract(false);
 }
 
 // ---------------------------------------------------------------
@@ -574,14 +594,12 @@ void QBehavioralFeature::registerMetaTypes() const
     qRegisterMetaType<const QSet<QBehavioralFeature *> *>("const QSet<QBehavioralFeature *> *");
     qRegisterMetaType<const QList<QBehavioralFeature *> *>("const QList<QBehavioralFeature *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QType) *>("QT_PREPEND_NAMESPACE_QTUML(QType) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QType) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QType) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QType) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QType) *> *");
     qRegisterMetaType<QType *>("QType *");
     qRegisterMetaType<const QSet<QType *> *>("const QSet<QType *> *");
     qRegisterMetaType<const QList<QType *> *>("const QList<QType *> *");
-
 
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *>("QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *> *");
@@ -590,14 +608,12 @@ void QBehavioralFeature::registerMetaTypes() const
     qRegisterMetaType<const QSet<QNamedElement *> *>("const QSet<QNamedElement *> *");
     qRegisterMetaType<const QList<QNamedElement *> *>("const QList<QNamedElement *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QParameterSet) *>("QT_PREPEND_NAMESPACE_QTUML(QParameterSet) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QParameterSet) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QParameterSet) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QParameterSet) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QParameterSet) *> *");
     qRegisterMetaType<QParameterSet *>("QParameterSet *");
     qRegisterMetaType<const QSet<QParameterSet *> *>("const QSet<QParameterSet *> *");
     qRegisterMetaType<const QList<QParameterSet *> *>("const QList<QParameterSet *> *");
-
 
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *>("QT_PREPEND_NAMESPACE_QTUML(QBehavior) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *");
@@ -606,14 +622,12 @@ void QBehavioralFeature::registerMetaTypes() const
     qRegisterMetaType<const QSet<QBehavior *> *>("const QSet<QBehavior *> *");
     qRegisterMetaType<const QList<QBehavior *> *>("const QList<QBehavior *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QParameter) *>("QT_PREPEND_NAMESPACE_QTUML(QParameter) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QParameter) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QParameter) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QParameter) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QParameter) *> *");
     qRegisterMetaType<QParameter *>("QParameter *");
     qRegisterMetaType<const QSet<QParameter *> *>("const QSet<QParameter *> *");
     qRegisterMetaType<const QList<QParameter *> *>("const QList<QParameter *> *");
-
 
     QWrappedObject::registerMetaTypes();
 

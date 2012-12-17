@@ -120,7 +120,6 @@ void QInformationItem::registerMetaTypes() const
     qRegisterMetaType<const QSet<QInformationItem *> *>("const QSet<QInformationItem *> *");
     qRegisterMetaType<const QList<QInformationItem *> *>("const QList<QInformationItem *> *");
 
-
     QClassifier::registerMetaTypes();
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())

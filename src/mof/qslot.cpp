@@ -185,14 +185,12 @@ void QSlot::registerMetaTypes() const
     qRegisterMetaType<const QSet<QSlot *> *>("const QSet<QSlot *> *");
     qRegisterMetaType<const QList<QSlot *> *>("const QList<QSlot *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QStructuralFeature) *>("QT_PREPEND_NAMESPACE_QTMOF(QStructuralFeature) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QStructuralFeature) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QStructuralFeature) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QStructuralFeature) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QStructuralFeature) *> *");
     qRegisterMetaType<QStructuralFeature *>("QStructuralFeature *");
     qRegisterMetaType<const QSet<QStructuralFeature *> *>("const QSet<QStructuralFeature *> *");
     qRegisterMetaType<const QList<QStructuralFeature *> *>("const QList<QStructuralFeature *> *");
-
 
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QInstanceSpecification) *>("QT_PREPEND_NAMESPACE_QTMOF(QInstanceSpecification) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QInstanceSpecification) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QInstanceSpecification) *> *");
@@ -201,14 +199,12 @@ void QSlot::registerMetaTypes() const
     qRegisterMetaType<const QSet<QInstanceSpecification *> *>("const QSet<QInstanceSpecification *> *");
     qRegisterMetaType<const QList<QInstanceSpecification *> *>("const QList<QInstanceSpecification *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QValueSpecification) *>("QT_PREPEND_NAMESPACE_QTMOF(QValueSpecification) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QValueSpecification) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QValueSpecification) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QValueSpecification) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QValueSpecification) *> *");
     qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
     qRegisterMetaType<const QSet<QValueSpecification *> *>("const QSet<QValueSpecification *> *");
     qRegisterMetaType<const QList<QValueSpecification *> *>("const QList<QValueSpecification *> *");
-
 
     QElement::registerMetaTypes();
 

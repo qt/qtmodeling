@@ -111,14 +111,12 @@ void QTypedElement::registerMetaTypes() const
     qRegisterMetaType<const QSet<QTypedElement *> *>("const QSet<QTypedElement *> *");
     qRegisterMetaType<const QList<QTypedElement *> *>("const QList<QTypedElement *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QType) *>("QT_PREPEND_NAMESPACE_QTUML(QType) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QType) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QType) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QType) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QType) *> *");
     qRegisterMetaType<QType *>("QType *");
     qRegisterMetaType<const QSet<QType *> *>("const QSet<QType *> *");
     qRegisterMetaType<const QList<QType *> *>("const QList<QType *> *");
-
 
     QNamedElement::registerMetaTypes();
 

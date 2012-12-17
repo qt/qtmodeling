@@ -111,14 +111,12 @@ void QCallBehaviorAction::registerMetaTypes() const
     qRegisterMetaType<const QSet<QCallBehaviorAction *> *>("const QSet<QCallBehaviorAction *> *");
     qRegisterMetaType<const QList<QCallBehaviorAction *> *>("const QList<QCallBehaviorAction *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *>("QT_PREPEND_NAMESPACE_QTUML(QBehavior) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *");
     qRegisterMetaType<QBehavior *>("QBehavior *");
     qRegisterMetaType<const QSet<QBehavior *> *>("const QSet<QBehavior *> *");
     qRegisterMetaType<const QList<QBehavior *> *>("const QList<QBehavior *> *");
-
 
     QCallAction::registerMetaTypes();
 

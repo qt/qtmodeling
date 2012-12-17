@@ -122,14 +122,12 @@ void QConsiderIgnoreFragment::registerMetaTypes() const
     qRegisterMetaType<const QSet<QConsiderIgnoreFragment *> *>("const QSet<QConsiderIgnoreFragment *> *");
     qRegisterMetaType<const QList<QConsiderIgnoreFragment *> *>("const QList<QConsiderIgnoreFragment *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *>("QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *> *");
     qRegisterMetaType<QNamedElement *>("QNamedElement *");
     qRegisterMetaType<const QSet<QNamedElement *> *>("const QSet<QNamedElement *> *");
     qRegisterMetaType<const QList<QNamedElement *> *>("const QList<QNamedElement *> *");
-
 
     QCombinedFragment::registerMetaTypes();
 

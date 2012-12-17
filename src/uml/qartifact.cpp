@@ -312,6 +312,11 @@ void QArtifact::setVisibility(QtUml::VisibilityKind visibility)
     (qwrappedobject_cast<QPackageableElement *>(this))->setVisibility(visibility);
 }
 
+void QArtifact::unsetVisibility()
+{
+    setVisibility(QtUml::VisibilityPublic);
+}
+
 // ---------------------------------------------------------------
 // ASSOCIATION ENDS FROM AGGREGATED QType
 // ---------------------------------------------------------------
@@ -344,6 +349,11 @@ bool QArtifact::isLeaf() const
 void QArtifact::setLeaf(bool isLeaf)
 {
     (qwrappedobject_cast<QRedefinableElement *>(this))->setLeaf(isLeaf);
+}
+
+void QArtifact::unsetLeaf()
+{
+    setLeaf(false);
 }
 
 // ---------------------------------------------------------------
@@ -405,6 +415,11 @@ void QArtifact::setAbstract(bool isAbstract)
     (qwrappedobject_cast<QClassifier *>(this))->setAbstract(isAbstract);
 }
 
+void QArtifact::unsetAbstract()
+{
+    setAbstract(false);
+}
+
 /*!
     If true, the Classifier cannot be specialized by generalization. Note that this property is preserved through package merge operations; that is, the capability to specialize a Classifier (i.e., isFinalSpecialization =false) must be preserved in the resulting Classifier of a package merge operation where a Classifier with isFinalSpecialization =false is merged with a matching Classifier with isFinalSpecialization =true: the resulting Classifier will have isFinalSpecialization =false.
  */
@@ -416,6 +431,11 @@ bool QArtifact::isFinalSpecialization() const
 void QArtifact::setFinalSpecialization(bool isFinalSpecialization)
 {
     (qwrappedobject_cast<QClassifier *>(this))->setFinalSpecialization(isFinalSpecialization);
+}
+
+void QArtifact::unsetFinalSpecialization()
+{
+    setFinalSpecialization(false);
 }
 
 // ---------------------------------------------------------------
@@ -821,14 +841,12 @@ void QArtifact::registerMetaTypes() const
     qRegisterMetaType<const QSet<QArtifact *> *>("const QSet<QArtifact *> *");
     qRegisterMetaType<const QList<QArtifact *> *>("const QList<QArtifact *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QOperation) *>("QT_PREPEND_NAMESPACE_QTUML(QOperation) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *");
     qRegisterMetaType<QOperation *>("QOperation *");
     qRegisterMetaType<const QSet<QOperation *> *>("const QSet<QOperation *> *");
     qRegisterMetaType<const QList<QOperation *> *>("const QList<QOperation *> *");
-
 
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QProperty) *>("QT_PREPEND_NAMESPACE_QTUML(QProperty) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QProperty) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QProperty) *> *");
@@ -837,14 +855,12 @@ void QArtifact::registerMetaTypes() const
     qRegisterMetaType<const QSet<QProperty *> *>("const QSet<QProperty *> *");
     qRegisterMetaType<const QList<QProperty *> *>("const QList<QProperty *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QManifestation) *>("QT_PREPEND_NAMESPACE_QTUML(QManifestation) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QManifestation) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QManifestation) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QManifestation) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QManifestation) *> *");
     qRegisterMetaType<QManifestation *>("QManifestation *");
     qRegisterMetaType<const QSet<QManifestation *> *>("const QSet<QManifestation *> *");
     qRegisterMetaType<const QList<QManifestation *> *>("const QList<QManifestation *> *");
-
 
     QWrappedObject::registerMetaTypes();
 
