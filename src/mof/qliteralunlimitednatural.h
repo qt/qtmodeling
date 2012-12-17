@@ -58,7 +58,7 @@ class Q_MOF_EXPORT QLiteralUnlimitedNatural : public QLiteralSpecification
 {
     Q_OBJECT
 
-    Q_PROPERTY(qint32 value READ value WRITE setValue)
+    Q_PROPERTY(qint32 value READ value WRITE setValue RESET unsetValue)
 
     Q_DISABLE_COPY(QLiteralUnlimitedNatural)
     Q_DECLARE_PRIVATE(QLiteralUnlimitedNatural)
@@ -70,6 +70,7 @@ public:
     // Attributes from QLiteralUnlimitedNatural
     Q_INVOKABLE qint32 value() const;
     Q_INVOKABLE void setValue(qint32 value);
+    Q_INVOKABLE void unsetValue();
 
     // Operations
     Q_INVOKABLE bool isComputable() const;

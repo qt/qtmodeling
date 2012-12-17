@@ -191,14 +191,12 @@ void QTemplateableElement::registerMetaTypes() const
     qRegisterMetaType<const QSet<QTemplateableElement *> *>("const QSet<QTemplateableElement *> *");
     qRegisterMetaType<const QList<QTemplateableElement *> *>("const QList<QTemplateableElement *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QTemplateSignature) *>("QT_PREPEND_NAMESPACE_QTUML(QTemplateSignature) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QTemplateSignature) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QTemplateSignature) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QTemplateSignature) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QTemplateSignature) *> *");
     qRegisterMetaType<QTemplateSignature *>("QTemplateSignature *");
     qRegisterMetaType<const QSet<QTemplateSignature *> *>("const QSet<QTemplateSignature *> *");
     qRegisterMetaType<const QList<QTemplateSignature *> *>("const QList<QTemplateSignature *> *");
-
 
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QTemplateBinding) *>("QT_PREPEND_NAMESPACE_QTUML(QTemplateBinding) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QTemplateBinding) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QTemplateBinding) *> *");
@@ -207,14 +205,12 @@ void QTemplateableElement::registerMetaTypes() const
     qRegisterMetaType<const QSet<QTemplateBinding *> *>("const QSet<QTemplateBinding *> *");
     qRegisterMetaType<const QList<QTemplateBinding *> *>("const QList<QTemplateBinding *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QParameterableElement) *>("QT_PREPEND_NAMESPACE_QTUML(QParameterableElement) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QParameterableElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QParameterableElement) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QParameterableElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QParameterableElement) *> *");
     qRegisterMetaType<QParameterableElement *>("QParameterableElement *");
     qRegisterMetaType<const QSet<QParameterableElement *> *>("const QSet<QParameterableElement *> *");
     qRegisterMetaType<const QList<QParameterableElement *> *>("const QList<QParameterableElement *> *");
-
 
     QElement::registerMetaTypes();
 

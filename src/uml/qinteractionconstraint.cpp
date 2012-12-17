@@ -149,14 +149,12 @@ void QInteractionConstraint::registerMetaTypes() const
     qRegisterMetaType<const QSet<QInteractionConstraint *> *>("const QSet<QInteractionConstraint *> *");
     qRegisterMetaType<const QList<QInteractionConstraint *> *>("const QList<QInteractionConstraint *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *>("QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *");
     qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
     qRegisterMetaType<const QSet<QValueSpecification *> *>("const QSet<QValueSpecification *> *");
     qRegisterMetaType<const QList<QValueSpecification *> *>("const QList<QValueSpecification *> *");
-
 
     QConstraint::registerMetaTypes();
 

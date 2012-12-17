@@ -105,6 +105,11 @@ void QPseudostate::setKind(QtUml::PseudostateKind kind)
     }
 }
 
+void QPseudostate::unsetKind()
+{
+    setKind(QtUml::PseudostateInitial);
+}
+
 // ---------------------------------------------------------------
 // ASSOCIATION ENDS FROM QPseudostate
 // ---------------------------------------------------------------
@@ -182,7 +187,6 @@ void QPseudostate::registerMetaTypes() const
     qRegisterMetaType<const QSet<QPseudostate *> *>("const QSet<QPseudostate *> *");
     qRegisterMetaType<const QList<QPseudostate *> *>("const QList<QPseudostate *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QState) *>("QT_PREPEND_NAMESPACE_QTUML(QState) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QState) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QState) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QState) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QState) *> *");
@@ -190,14 +194,12 @@ void QPseudostate::registerMetaTypes() const
     qRegisterMetaType<const QSet<QState *> *>("const QSet<QState *> *");
     qRegisterMetaType<const QList<QState *> *>("const QList<QState *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QStateMachine) *>("QT_PREPEND_NAMESPACE_QTUML(QStateMachine) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QStateMachine) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QStateMachine) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QStateMachine) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QStateMachine) *> *");
     qRegisterMetaType<QStateMachine *>("QStateMachine *");
     qRegisterMetaType<const QSet<QStateMachine *> *>("const QSet<QStateMachine *> *");
     qRegisterMetaType<const QList<QStateMachine *> *>("const QList<QStateMachine *> *");
-
 
     QVertex::registerMetaTypes();
 

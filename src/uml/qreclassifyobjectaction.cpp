@@ -108,6 +108,11 @@ void QReclassifyObjectAction::setReplaceAll(bool isReplaceAll)
     }
 }
 
+void QReclassifyObjectAction::unsetReplaceAll()
+{
+    setReplaceAll(false);
+}
+
 // ---------------------------------------------------------------
 // ASSOCIATION ENDS FROM QReclassifyObjectAction
 // ---------------------------------------------------------------
@@ -212,7 +217,6 @@ void QReclassifyObjectAction::registerMetaTypes() const
     qRegisterMetaType<const QSet<QReclassifyObjectAction *> *>("const QSet<QReclassifyObjectAction *> *");
     qRegisterMetaType<const QList<QReclassifyObjectAction *> *>("const QList<QReclassifyObjectAction *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *>("QT_PREPEND_NAMESPACE_QTUML(QClassifier) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *");
@@ -220,14 +224,12 @@ void QReclassifyObjectAction::registerMetaTypes() const
     qRegisterMetaType<const QSet<QClassifier *> *>("const QSet<QClassifier *> *");
     qRegisterMetaType<const QList<QClassifier *> *>("const QList<QClassifier *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QInputPin) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
     qRegisterMetaType<QInputPin *>("QInputPin *");
     qRegisterMetaType<const QSet<QInputPin *> *>("const QSet<QInputPin *> *");
     qRegisterMetaType<const QList<QInputPin *> *>("const QList<QInputPin *> *");
-
 
     QAction::registerMetaTypes();
 

@@ -133,14 +133,12 @@ void QTimeInterval::registerMetaTypes() const
     qRegisterMetaType<const QSet<QTimeInterval *> *>("const QSet<QTimeInterval *> *");
     qRegisterMetaType<const QList<QTimeInterval *> *>("const QList<QTimeInterval *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QTimeExpression) *>("QT_PREPEND_NAMESPACE_QTUML(QTimeExpression) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QTimeExpression) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QTimeExpression) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QTimeExpression) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QTimeExpression) *> *");
     qRegisterMetaType<QTimeExpression *>("QTimeExpression *");
     qRegisterMetaType<const QSet<QTimeExpression *> *>("const QSet<QTimeExpression *> *");
     qRegisterMetaType<const QList<QTimeExpression *> *>("const QList<QTimeExpression *> *");
-
 
     QInterval::registerMetaTypes();
 

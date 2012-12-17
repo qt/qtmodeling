@@ -83,7 +83,6 @@ void QRealization::registerMetaTypes() const
     qRegisterMetaType<const QSet<QRealization *> *>("const QSet<QRealization *> *");
     qRegisterMetaType<const QList<QRealization *> *>("const QList<QRealization *> *");
 
-
     QAbstraction::registerMetaTypes();
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())

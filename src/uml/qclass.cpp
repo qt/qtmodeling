@@ -350,6 +350,11 @@ void QClass::setVisibility(QtUml::VisibilityKind visibility)
     (qwrappedobject_cast<QPackageableElement *>(this))->setVisibility(visibility);
 }
 
+void QClass::unsetVisibility()
+{
+    setVisibility(QtUml::VisibilityPublic);
+}
+
 // ---------------------------------------------------------------
 // ASSOCIATION ENDS FROM AGGREGATED QType
 // ---------------------------------------------------------------
@@ -382,6 +387,11 @@ bool QClass::isLeaf() const
 void QClass::setLeaf(bool isLeaf)
 {
     (qwrappedobject_cast<QRedefinableElement *>(this))->setLeaf(isLeaf);
+}
+
+void QClass::unsetLeaf()
+{
+    setLeaf(false);
 }
 
 // ---------------------------------------------------------------
@@ -441,6 +451,11 @@ bool QClass::isFinalSpecialization() const
 void QClass::setFinalSpecialization(bool isFinalSpecialization)
 {
     (qwrappedobject_cast<QClassifier *>(this))->setFinalSpecialization(isFinalSpecialization);
+}
+
+void QClass::unsetFinalSpecialization()
+{
+    setFinalSpecialization(false);
 }
 
 // ---------------------------------------------------------------
@@ -764,6 +779,11 @@ void QClass::setAbstract(bool isAbstract)
     }
 }
 
+void QClass::unsetAbstract()
+{
+    setAbstract(false);
+}
+
 /*!
     Determines whether an object specified by this class is active or not. If true, then the owning class is referred to as an active class. If false, then such a class is referred to as a passive class.
  */
@@ -783,6 +803,11 @@ void QClass::setActive(bool isActive)
     if (d->isActive != isActive) {
         d->isActive = isActive;
     }
+}
+
+void QClass::unsetActive()
+{
+    setActive(false);
 }
 
 // ---------------------------------------------------------------
@@ -1023,14 +1048,12 @@ void QClass::registerMetaTypes() const
     qRegisterMetaType<const QSet<QClass *> *>("const QSet<QClass *> *");
     qRegisterMetaType<const QList<QClass *> *>("const QList<QClass *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QReception) *>("QT_PREPEND_NAMESPACE_QTUML(QReception) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QReception) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QReception) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QReception) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QReception) *> *");
     qRegisterMetaType<QReception *>("QReception *");
     qRegisterMetaType<const QSet<QReception *> *>("const QSet<QReception *> *");
     qRegisterMetaType<const QList<QReception *> *>("const QList<QReception *> *");
-
 
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *>("QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *> *");
@@ -1039,14 +1062,12 @@ void QClass::registerMetaTypes() const
     qRegisterMetaType<const QSet<QNamedElement *> *>("const QSet<QNamedElement *> *");
     qRegisterMetaType<const QList<QNamedElement *> *>("const QList<QNamedElement *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QOperation) *>("QT_PREPEND_NAMESPACE_QTUML(QOperation) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *");
     qRegisterMetaType<QOperation *>("QOperation *");
     qRegisterMetaType<const QSet<QOperation *> *>("const QSet<QOperation *> *");
     qRegisterMetaType<const QList<QOperation *> *>("const QList<QOperation *> *");
-
 
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *>("QT_PREPEND_NAMESPACE_QTUML(QClassifier) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *");
@@ -1055,7 +1076,6 @@ void QClass::registerMetaTypes() const
     qRegisterMetaType<const QSet<QClassifier *> *>("const QSet<QClassifier *> *");
     qRegisterMetaType<const QList<QClassifier *> *>("const QList<QClassifier *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QExtension) *>("QT_PREPEND_NAMESPACE_QTUML(QExtension) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QExtension) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QExtension) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QExtension) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QExtension) *> *");
@@ -1063,14 +1083,12 @@ void QClass::registerMetaTypes() const
     qRegisterMetaType<const QSet<QExtension *> *>("const QSet<QExtension *> *");
     qRegisterMetaType<const QList<QExtension *> *>("const QList<QExtension *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QProperty) *>("QT_PREPEND_NAMESPACE_QTUML(QProperty) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QProperty) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QProperty) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QProperty) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QProperty) *> *");
     qRegisterMetaType<QProperty *>("QProperty *");
     qRegisterMetaType<const QSet<QProperty *> *>("const QSet<QProperty *> *");
     qRegisterMetaType<const QList<QProperty *> *>("const QList<QProperty *> *");
-
 
     QWrappedObject::registerMetaTypes();
 

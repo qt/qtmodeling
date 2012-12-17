@@ -187,14 +187,12 @@ void QConstraint::registerMetaTypes() const
     qRegisterMetaType<const QSet<QConstraint *> *>("const QSet<QConstraint *> *");
     qRegisterMetaType<const QList<QConstraint *> *>("const QList<QConstraint *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QElement) *>("QT_PREPEND_NAMESPACE_QTUML(QElement) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QElement) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QElement) *> *");
     qRegisterMetaType<QElement *>("QElement *");
     qRegisterMetaType<const QSet<QElement *> *>("const QSet<QElement *> *");
     qRegisterMetaType<const QList<QElement *> *>("const QList<QElement *> *");
-
 
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QNamespace) *>("QT_PREPEND_NAMESPACE_QTUML(QNamespace) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QNamespace) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QNamespace) *> *");
@@ -203,14 +201,12 @@ void QConstraint::registerMetaTypes() const
     qRegisterMetaType<const QSet<QNamespace *> *>("const QSet<QNamespace *> *");
     qRegisterMetaType<const QList<QNamespace *> *>("const QList<QNamespace *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *>("QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *");
     qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
     qRegisterMetaType<const QSet<QValueSpecification *> *>("const QSet<QValueSpecification *> *");
     qRegisterMetaType<const QList<QValueSpecification *> *>("const QList<QValueSpecification *> *");
-
 
     QPackageableElement::registerMetaTypes();
 

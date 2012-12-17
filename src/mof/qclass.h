@@ -67,7 +67,7 @@ class Q_MOF_EXPORT QClass : public QClassifier
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool isAbstract READ isAbstract WRITE setAbstract)
+    Q_PROPERTY(bool isAbstract READ isAbstract WRITE setAbstract RESET unsetAbstract)
     Q_PROPERTY(const QList<QClassifier *> * nestedClassifiers READ nestedClassifiers)
     Q_PROPERTY(const QList<QOperation *> * ownedOperations READ ownedOperations)
     Q_PROPERTY(const QList<QProperty *> * ownedAttributes READ ownedAttributes)
@@ -83,6 +83,7 @@ public:
     // Attributes from QClass
     Q_INVOKABLE bool isAbstract() const;
     Q_INVOKABLE void setAbstract(bool isAbstract);
+    Q_INVOKABLE void unsetAbstract();
 
     // Association ends from QClass
     Q_INVOKABLE const QList<QClassifier *> *nestedClassifiers() const;

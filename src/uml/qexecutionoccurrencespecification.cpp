@@ -111,14 +111,12 @@ void QExecutionOccurrenceSpecification::registerMetaTypes() const
     qRegisterMetaType<const QSet<QExecutionOccurrenceSpecification *> *>("const QSet<QExecutionOccurrenceSpecification *> *");
     qRegisterMetaType<const QList<QExecutionOccurrenceSpecification *> *>("const QList<QExecutionOccurrenceSpecification *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QExecutionSpecification) *>("QT_PREPEND_NAMESPACE_QTUML(QExecutionSpecification) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QExecutionSpecification) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QExecutionSpecification) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QExecutionSpecification) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QExecutionSpecification) *> *");
     qRegisterMetaType<QExecutionSpecification *>("QExecutionSpecification *");
     qRegisterMetaType<const QSet<QExecutionSpecification *> *>("const QSet<QExecutionSpecification *> *");
     qRegisterMetaType<const QList<QExecutionSpecification *> *>("const QList<QExecutionSpecification *> *");
-
 
     QOccurrenceSpecification::registerMetaTypes();
 

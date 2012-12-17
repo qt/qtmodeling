@@ -152,14 +152,12 @@ void QDuration::registerMetaTypes() const
     qRegisterMetaType<const QSet<QDuration *> *>("const QSet<QDuration *> *");
     qRegisterMetaType<const QList<QDuration *> *>("const QList<QDuration *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QObservation) *>("QT_PREPEND_NAMESPACE_QTUML(QObservation) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QObservation) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QObservation) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QObservation) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QObservation) *> *");
     qRegisterMetaType<QObservation *>("QObservation *");
     qRegisterMetaType<const QSet<QObservation *> *>("const QSet<QObservation *> *");
     qRegisterMetaType<const QList<QObservation *> *>("const QList<QObservation *> *");
-
 
     QValueSpecification::registerMetaTypes();
 

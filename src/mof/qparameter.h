@@ -72,7 +72,7 @@ class Q_MOF_EXPORT QParameter : public QWrappedObject
     Q_OBJECT
 
     Q_PROPERTY(QString default_ READ default_ STORED false)
-    Q_PROPERTY(QtMof::ParameterDirectionKind direction READ direction WRITE setDirection)
+    Q_PROPERTY(QtMof::ParameterDirectionKind direction READ direction WRITE setDirection RESET unsetDirection)
     Q_PROPERTY(QOperation * operation READ operation WRITE setOperation)
     Q_PROPERTY(QValueSpecification * defaultValue READ defaultValue WRITE setDefaultValue)
 
@@ -107,10 +107,13 @@ public:
     // Attributes from aggregated QMultiplicityElement
     Q_INVOKABLE qint32 upper() const;
     Q_INVOKABLE void setUpper(qint32 upper);
+    Q_INVOKABLE void unsetUpper();
     Q_INVOKABLE bool isUnique() const;
     Q_INVOKABLE void setUnique(bool isUnique);
+    Q_INVOKABLE void unsetUnique();
     Q_INVOKABLE bool isOrdered() const;
     Q_INVOKABLE void setOrdered(bool isOrdered);
+    Q_INVOKABLE void unsetOrdered();
     Q_INVOKABLE qint32 lower() const;
     Q_INVOKABLE void setLower(qint32 lower);
 
@@ -124,6 +127,7 @@ public:
     Q_INVOKABLE QString default_() const;
     Q_INVOKABLE QtMof::ParameterDirectionKind direction() const;
     Q_INVOKABLE void setDirection(QtMof::ParameterDirectionKind direction);
+    Q_INVOKABLE void unsetDirection();
 
     // Association ends from QParameter
     Q_INVOKABLE QOperation *operation() const;

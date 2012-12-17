@@ -69,7 +69,7 @@ class Q_MOF_EXPORT QAssociation : public QWrappedObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool isDerived READ isDerived WRITE setDerived)
+    Q_PROPERTY(bool isDerived READ isDerived WRITE setDerived RESET unsetDerived)
     Q_PROPERTY(const QList<QType *> * endTypes READ endTypes STORED false)
     Q_PROPERTY(const QSet<QProperty *> * navigableOwnedEnds READ navigableOwnedEnds)
     Q_PROPERTY(const QList<QProperty *> * ownedEnds READ ownedEnds)
@@ -103,6 +103,7 @@ public:
     // Attributes from aggregated QPackageableElement
     Q_INVOKABLE QtMof::VisibilityKind visibility() const;
     Q_INVOKABLE void setVisibility(QtMof::VisibilityKind visibility);
+    Q_INVOKABLE void unsetVisibility();
 
     // Association ends from aggregated QType
     Q_INVOKABLE QPackage *package() const;
@@ -111,6 +112,7 @@ public:
     // Attributes from aggregated QRedefinableElement
     Q_INVOKABLE bool isLeaf() const;
     Q_INVOKABLE void setLeaf(bool isLeaf);
+    Q_INVOKABLE void unsetLeaf();
 
     // Association ends from aggregated QRedefinableElement
     Q_INVOKABLE const QSet<QRedefinableElement *> *redefinedElements() const;
@@ -133,8 +135,10 @@ public:
     // Attributes from aggregated QClassifier
     Q_INVOKABLE bool isAbstract() const;
     Q_INVOKABLE void setAbstract(bool isAbstract);
+    Q_INVOKABLE void unsetAbstract();
     Q_INVOKABLE bool isFinalSpecialization() const;
     Q_INVOKABLE void setFinalSpecialization(bool isFinalSpecialization);
+    Q_INVOKABLE void unsetFinalSpecialization();
 
     // Association ends from aggregated QClassifier
     Q_INVOKABLE const QSet<QProperty *> *attributes() const;
@@ -153,6 +157,7 @@ public:
     // Attributes from QAssociation
     Q_INVOKABLE bool isDerived() const;
     Q_INVOKABLE void setDerived(bool isDerived);
+    Q_INVOKABLE void unsetDerived();
 
     // Association ends from QAssociation
     Q_INVOKABLE const QList<QType *> *endTypes() const;

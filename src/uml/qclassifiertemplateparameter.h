@@ -64,7 +64,7 @@ class Q_UML_EXPORT QClassifierTemplateParameter : public QTemplateParameter
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool allowSubstitutable READ allowSubstitutable WRITE setAllowSubstitutable)
+    Q_PROPERTY(bool allowSubstitutable READ allowSubstitutable WRITE setAllowSubstitutable RESET unsetAllowSubstitutable)
     Q_PROPERTY(QClassifier * parameteredElement READ parameteredElement WRITE setParameteredElement)
     Q_PROPERTY(const QSet<QClassifier *> * constrainingClassifiers READ constrainingClassifiers)
 
@@ -78,6 +78,7 @@ public:
     // Attributes from QClassifierTemplateParameter
     Q_INVOKABLE bool allowSubstitutable() const;
     Q_INVOKABLE void setAllowSubstitutable(bool allowSubstitutable);
+    Q_INVOKABLE void unsetAllowSubstitutable();
 
     // Association ends from QClassifierTemplateParameter
     Q_INVOKABLE QClassifier *parameteredElement() const;

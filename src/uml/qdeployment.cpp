@@ -214,14 +214,12 @@ void QDeployment::registerMetaTypes() const
     qRegisterMetaType<const QSet<QDeployment *> *>("const QSet<QDeployment *> *");
     qRegisterMetaType<const QList<QDeployment *> *>("const QList<QDeployment *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QDeploymentSpecification) *>("QT_PREPEND_NAMESPACE_QTUML(QDeploymentSpecification) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QDeploymentSpecification) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QDeploymentSpecification) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QDeploymentSpecification) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QDeploymentSpecification) *> *");
     qRegisterMetaType<QDeploymentSpecification *>("QDeploymentSpecification *");
     qRegisterMetaType<const QSet<QDeploymentSpecification *> *>("const QSet<QDeploymentSpecification *> *");
     qRegisterMetaType<const QList<QDeploymentSpecification *> *>("const QList<QDeploymentSpecification *> *");
-
 
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QDeployedArtifact) *>("QT_PREPEND_NAMESPACE_QTUML(QDeployedArtifact) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QDeployedArtifact) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QDeployedArtifact) *> *");
@@ -230,14 +228,12 @@ void QDeployment::registerMetaTypes() const
     qRegisterMetaType<const QSet<QDeployedArtifact *> *>("const QSet<QDeployedArtifact *> *");
     qRegisterMetaType<const QList<QDeployedArtifact *> *>("const QList<QDeployedArtifact *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QDeploymentTarget) *>("QT_PREPEND_NAMESPACE_QTUML(QDeploymentTarget) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QDeploymentTarget) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QDeploymentTarget) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QDeploymentTarget) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QDeploymentTarget) *> *");
     qRegisterMetaType<QDeploymentTarget *>("QDeploymentTarget *");
     qRegisterMetaType<const QSet<QDeploymentTarget *> *>("const QSet<QDeploymentTarget *> *");
     qRegisterMetaType<const QList<QDeploymentTarget *> *>("const QList<QDeploymentTarget *> *");
-
 
     QDependency::registerMetaTypes();
 

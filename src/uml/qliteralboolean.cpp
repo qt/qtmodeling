@@ -100,6 +100,11 @@ void QLiteralBoolean::setValue(bool value)
     }
 }
 
+void QLiteralBoolean::unsetValue()
+{
+    setValue(false);
+}
+
 /*!
     The query booleanValue() gives the value.
  */
@@ -128,7 +133,6 @@ void QLiteralBoolean::registerMetaTypes() const
     qRegisterMetaType<QLiteralBoolean *>("QLiteralBoolean *");
     qRegisterMetaType<const QSet<QLiteralBoolean *> *>("const QSet<QLiteralBoolean *> *");
     qRegisterMetaType<const QList<QLiteralBoolean *> *>("const QList<QLiteralBoolean *> *");
-
 
     QLiteralSpecification::registerMetaTypes();
 

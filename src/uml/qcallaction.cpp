@@ -104,6 +104,11 @@ void QCallAction::setSynchronous(bool isSynchronous)
     }
 }
 
+void QCallAction::unsetSynchronous()
+{
+    setSynchronous(true);
+}
+
 // ---------------------------------------------------------------
 // ASSOCIATION ENDS FROM QCallAction
 // ---------------------------------------------------------------
@@ -154,14 +159,12 @@ void QCallAction::registerMetaTypes() const
     qRegisterMetaType<const QSet<QCallAction *> *>("const QSet<QCallAction *> *");
     qRegisterMetaType<const QList<QCallAction *> *>("const QList<QCallAction *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *");
     qRegisterMetaType<QOutputPin *>("QOutputPin *");
     qRegisterMetaType<const QSet<QOutputPin *> *>("const QSet<QOutputPin *> *");
     qRegisterMetaType<const QList<QOutputPin *> *>("const QList<QOutputPin *> *");
-
 
     QInvocationAction::registerMetaTypes();
 

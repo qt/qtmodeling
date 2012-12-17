@@ -83,7 +83,6 @@ void QDeployedArtifact::registerMetaTypes() const
     qRegisterMetaType<const QSet<QDeployedArtifact *> *>("const QSet<QDeployedArtifact *> *");
     qRegisterMetaType<const QList<QDeployedArtifact *> *>("const QList<QDeployedArtifact *> *");
 
-
     QNamedElement::registerMetaTypes();
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())

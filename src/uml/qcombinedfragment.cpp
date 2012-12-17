@@ -107,6 +107,11 @@ void QCombinedFragment::setInteractionOperator(QtUml::InteractionOperatorKind in
     }
 }
 
+void QCombinedFragment::unsetInteractionOperator()
+{
+    setInteractionOperator(QtUml::InteractionOperatorSeq);
+}
+
 // ---------------------------------------------------------------
 // ASSOCIATION ENDS FROM QCombinedFragment
 // ---------------------------------------------------------------
@@ -194,7 +199,6 @@ void QCombinedFragment::registerMetaTypes() const
     qRegisterMetaType<const QSet<QCombinedFragment *> *>("const QSet<QCombinedFragment *> *");
     qRegisterMetaType<const QList<QCombinedFragment *> *>("const QList<QCombinedFragment *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QGate) *>("QT_PREPEND_NAMESPACE_QTUML(QGate) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QGate) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QGate) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QGate) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QGate) *> *");
@@ -202,14 +206,12 @@ void QCombinedFragment::registerMetaTypes() const
     qRegisterMetaType<const QSet<QGate *> *>("const QSet<QGate *> *");
     qRegisterMetaType<const QList<QGate *> *>("const QList<QGate *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInteractionOperand) *>("QT_PREPEND_NAMESPACE_QTUML(QInteractionOperand) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInteractionOperand) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInteractionOperand) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInteractionOperand) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInteractionOperand) *> *");
     qRegisterMetaType<QInteractionOperand *>("QInteractionOperand *");
     qRegisterMetaType<const QSet<QInteractionOperand *> *>("const QSet<QInteractionOperand *> *");
     qRegisterMetaType<const QList<QInteractionOperand *> *>("const QList<QInteractionOperand *> *");
-
 
     QInteractionFragment::registerMetaTypes();
 

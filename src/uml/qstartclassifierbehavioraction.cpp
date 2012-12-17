@@ -119,14 +119,12 @@ void QStartClassifierBehaviorAction::registerMetaTypes() const
     qRegisterMetaType<const QSet<QStartClassifierBehaviorAction *> *>("const QSet<QStartClassifierBehaviorAction *> *");
     qRegisterMetaType<const QList<QStartClassifierBehaviorAction *> *>("const QList<QStartClassifierBehaviorAction *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QInputPin) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
     qRegisterMetaType<QInputPin *>("QInputPin *");
     qRegisterMetaType<const QSet<QInputPin *> *>("const QSet<QInputPin *> *");
     qRegisterMetaType<const QList<QInputPin *> *>("const QList<QInputPin *> *");
-
 
     QAction::registerMetaTypes();
 

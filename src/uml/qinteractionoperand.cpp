@@ -435,14 +435,12 @@ void QInteractionOperand::registerMetaTypes() const
     qRegisterMetaType<const QSet<QInteractionOperand *> *>("const QSet<QInteractionOperand *> *");
     qRegisterMetaType<const QList<QInteractionOperand *> *>("const QList<QInteractionOperand *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInteractionConstraint) *>("QT_PREPEND_NAMESPACE_QTUML(QInteractionConstraint) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInteractionConstraint) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInteractionConstraint) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInteractionConstraint) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInteractionConstraint) *> *");
     qRegisterMetaType<QInteractionConstraint *>("QInteractionConstraint *");
     qRegisterMetaType<const QSet<QInteractionConstraint *> *>("const QSet<QInteractionConstraint *> *");
     qRegisterMetaType<const QList<QInteractionConstraint *> *>("const QList<QInteractionConstraint *> *");
-
 
     QWrappedObject::registerMetaTypes();
 

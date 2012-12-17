@@ -83,7 +83,6 @@ void QExecutionEnvironment::registerMetaTypes() const
     qRegisterMetaType<const QSet<QExecutionEnvironment *> *>("const QSet<QExecutionEnvironment *> *");
     qRegisterMetaType<const QList<QExecutionEnvironment *> *>("const QList<QExecutionEnvironment *> *");
 
-
     QNode::registerMetaTypes();
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())

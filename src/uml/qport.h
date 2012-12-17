@@ -68,9 +68,9 @@ class Q_UML_EXPORT QPort : public QProperty
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool isConjugated READ isConjugated WRITE setConjugated)
-    Q_PROPERTY(bool isBehavior READ isBehavior WRITE setBehavior)
-    Q_PROPERTY(bool isService READ isService WRITE setService)
+    Q_PROPERTY(bool isConjugated READ isConjugated WRITE setConjugated RESET unsetConjugated)
+    Q_PROPERTY(bool isBehavior READ isBehavior WRITE setBehavior RESET unsetBehavior)
+    Q_PROPERTY(bool isService READ isService WRITE setService RESET unsetService)
     Q_PROPERTY(QProtocolStateMachine * protocol READ protocol WRITE setProtocol)
     Q_PROPERTY(const QSet<QInterface *> * required READ required STORED false)
     Q_PROPERTY(const QSet<QInterface *> * provided READ provided STORED false)
@@ -86,10 +86,13 @@ public:
     // Attributes from QPort
     Q_INVOKABLE bool isConjugated() const;
     Q_INVOKABLE void setConjugated(bool isConjugated);
+    Q_INVOKABLE void unsetConjugated();
     Q_INVOKABLE bool isBehavior() const;
     Q_INVOKABLE void setBehavior(bool isBehavior);
+    Q_INVOKABLE void unsetBehavior();
     Q_INVOKABLE bool isService() const;
     Q_INVOKABLE void setService(bool isService);
+    Q_INVOKABLE void unsetService();
 
     // Association ends from QPort
     Q_INVOKABLE QProtocolStateMachine *protocol() const;

@@ -63,7 +63,7 @@ class Q_UML_EXPORT QReduceAction : public QAction
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered)
+    Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered RESET unsetOrdered)
     Q_PROPERTY(QOutputPin * result READ result WRITE setResult)
     Q_PROPERTY(QInputPin * collection READ collection WRITE setCollection)
     Q_PROPERTY(QBehavior * reducer READ reducer WRITE setReducer)
@@ -78,6 +78,7 @@ public:
     // Attributes from QReduceAction
     Q_INVOKABLE bool isOrdered() const;
     Q_INVOKABLE void setOrdered(bool isOrdered);
+    Q_INVOKABLE void unsetOrdered();
 
     // Association ends from QReduceAction
     Q_INVOKABLE QOutputPin *result() const;

@@ -191,6 +191,11 @@ void QBehavioralFeature::setLeaf(bool isLeaf)
     (qwrappedobject_cast<QRedefinableElement *>(this))->setLeaf(isLeaf);
 }
 
+void QBehavioralFeature::unsetLeaf()
+{
+    setLeaf(false);
+}
+
 // ---------------------------------------------------------------
 // ASSOCIATION ENDS FROM AGGREGATED QRedefinableElement
 // ---------------------------------------------------------------
@@ -226,6 +231,11 @@ bool QBehavioralFeature::isStatic() const
 void QBehavioralFeature::setStatic(bool isStatic)
 {
     (qwrappedobject_cast<QFeature *>(this))->setStatic(isStatic);
+}
+
+void QBehavioralFeature::unsetStatic()
+{
+    setStatic(false);
 }
 
 // ---------------------------------------------------------------
@@ -415,14 +425,12 @@ void QBehavioralFeature::registerMetaTypes() const
     qRegisterMetaType<const QSet<QBehavioralFeature *> *>("const QSet<QBehavioralFeature *> *");
     qRegisterMetaType<const QList<QBehavioralFeature *> *>("const QList<QBehavioralFeature *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QParameter) *>("QT_PREPEND_NAMESPACE_QTMOF(QParameter) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QParameter) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QParameter) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QParameter) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QParameter) *> *");
     qRegisterMetaType<QParameter *>("QParameter *");
     qRegisterMetaType<const QSet<QParameter *> *>("const QSet<QParameter *> *");
     qRegisterMetaType<const QList<QParameter *> *>("const QList<QParameter *> *");
-
 
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QType) *>("QT_PREPEND_NAMESPACE_QTMOF(QType) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QType) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QType) *> *");
@@ -431,14 +439,12 @@ void QBehavioralFeature::registerMetaTypes() const
     qRegisterMetaType<const QSet<QType *> *>("const QSet<QType *> *");
     qRegisterMetaType<const QList<QType *> *>("const QList<QType *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QNamedElement) *>("QT_PREPEND_NAMESPACE_QTMOF(QNamedElement) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QNamedElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QNamedElement) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QNamedElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QNamedElement) *> *");
     qRegisterMetaType<QNamedElement *>("QNamedElement *");
     qRegisterMetaType<const QSet<QNamedElement *> *>("const QSet<QNamedElement *> *");
     qRegisterMetaType<const QList<QNamedElement *> *>("const QList<QNamedElement *> *");
-
 
     QWrappedObject::registerMetaTypes();
 

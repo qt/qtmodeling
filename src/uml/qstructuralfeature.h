@@ -62,7 +62,7 @@ class Q_UML_EXPORT QStructuralFeature : public QWrappedObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool isReadOnly READ isReadOnly WRITE setReadOnly)
+    Q_PROPERTY(bool isReadOnly READ isReadOnly WRITE setReadOnly RESET unsetReadOnly)
 
     Q_DISABLE_COPY(QStructuralFeature)
     Q_DECLARE_PRIVATE(QStructuralFeature)
@@ -100,10 +100,13 @@ public:
     // Attributes from aggregated QMultiplicityElement
     Q_INVOKABLE qint32 upper() const;
     Q_INVOKABLE void setUpper(qint32 upper);
+    Q_INVOKABLE void unsetUpper();
     Q_INVOKABLE bool isUnique() const;
     Q_INVOKABLE void setUnique(bool isUnique);
+    Q_INVOKABLE void unsetUnique();
     Q_INVOKABLE bool isOrdered() const;
     Q_INVOKABLE void setOrdered(bool isOrdered);
+    Q_INVOKABLE void unsetOrdered();
     Q_INVOKABLE qint32 lower() const;
     Q_INVOKABLE void setLower(qint32 lower);
 
@@ -116,6 +119,7 @@ public:
     // Attributes from aggregated QRedefinableElement
     Q_INVOKABLE bool isLeaf() const;
     Q_INVOKABLE void setLeaf(bool isLeaf);
+    Q_INVOKABLE void unsetLeaf();
 
     // Association ends from aggregated QRedefinableElement
     Q_INVOKABLE const QSet<QRedefinableElement *> *redefinedElements() const;
@@ -124,6 +128,7 @@ public:
     // Attributes from aggregated QFeature
     Q_INVOKABLE bool isStatic() const;
     Q_INVOKABLE void setStatic(bool isStatic);
+    Q_INVOKABLE void unsetStatic();
 
     // Association ends from aggregated QFeature
     Q_INVOKABLE const QSet<QClassifier *> *featuringClassifiers() const;
@@ -131,6 +136,7 @@ public:
     // Attributes from QStructuralFeature
     Q_INVOKABLE bool isReadOnly() const;
     Q_INVOKABLE void setReadOnly(bool isReadOnly);
+    Q_INVOKABLE void unsetReadOnly();
     virtual void registerMetaTypes() const;
 
 protected:

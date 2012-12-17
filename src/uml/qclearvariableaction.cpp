@@ -83,7 +83,6 @@ void QClearVariableAction::registerMetaTypes() const
     qRegisterMetaType<const QSet<QClearVariableAction *> *>("const QSet<QClearVariableAction *> *");
     qRegisterMetaType<const QList<QClearVariableAction *> *>("const QList<QClearVariableAction *> *");
 
-
     QVariableAction::registerMetaTypes();
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())

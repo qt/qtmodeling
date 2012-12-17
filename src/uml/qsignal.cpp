@@ -130,14 +130,12 @@ void QSignal::registerMetaTypes() const
     qRegisterMetaType<const QSet<QSignal *> *>("const QSet<QSignal *> *");
     qRegisterMetaType<const QList<QSignal *> *>("const QList<QSignal *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QProperty) *>("QT_PREPEND_NAMESPACE_QTUML(QProperty) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QProperty) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QProperty) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QProperty) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QProperty) *> *");
     qRegisterMetaType<QProperty *>("QProperty *");
     qRegisterMetaType<const QSet<QProperty *> *>("const QSet<QProperty *> *");
     qRegisterMetaType<const QList<QProperty *> *>("const QList<QProperty *> *");
-
 
     QClassifier::registerMetaTypes();
 

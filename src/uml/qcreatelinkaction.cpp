@@ -124,14 +124,12 @@ void QCreateLinkAction::registerMetaTypes() const
     qRegisterMetaType<const QSet<QCreateLinkAction *> *>("const QSet<QCreateLinkAction *> *");
     qRegisterMetaType<const QList<QCreateLinkAction *> *>("const QList<QCreateLinkAction *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QLinkEndCreationData) *>("QT_PREPEND_NAMESPACE_QTUML(QLinkEndCreationData) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QLinkEndCreationData) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QLinkEndCreationData) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QLinkEndCreationData) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QLinkEndCreationData) *> *");
     qRegisterMetaType<QLinkEndCreationData *>("QLinkEndCreationData *");
     qRegisterMetaType<const QSet<QLinkEndCreationData *> *>("const QSet<QLinkEndCreationData *> *");
     qRegisterMetaType<const QList<QLinkEndCreationData *> *>("const QList<QLinkEndCreationData *> *");
-
 
     QWriteLinkAction::registerMetaTypes();
 

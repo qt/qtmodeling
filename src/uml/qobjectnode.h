@@ -72,8 +72,8 @@ class Q_UML_EXPORT QObjectNode : public QWrappedObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool isControlType READ isControlType WRITE setControlType)
-    Q_PROPERTY(QtUml::ObjectNodeOrderingKind ordering READ ordering WRITE setOrdering)
+    Q_PROPERTY(bool isControlType READ isControlType WRITE setControlType RESET unsetControlType)
+    Q_PROPERTY(QtUml::ObjectNodeOrderingKind ordering READ ordering WRITE setOrdering RESET unsetOrdering)
     Q_PROPERTY(QValueSpecification * upperBound READ upperBound WRITE setUpperBound)
     Q_PROPERTY(QBehavior * selection READ selection WRITE setSelection)
     Q_PROPERTY(const QSet<QState *> * inState READ inState)
@@ -110,6 +110,7 @@ public:
     // Attributes from aggregated QRedefinableElement
     Q_INVOKABLE bool isLeaf() const;
     Q_INVOKABLE void setLeaf(bool isLeaf);
+    Q_INVOKABLE void unsetLeaf();
 
     // Association ends from aggregated QRedefinableElement
     Q_INVOKABLE const QSet<QRedefinableElement *> *redefinedElements() const;
@@ -144,8 +145,10 @@ public:
     // Attributes from QObjectNode
     Q_INVOKABLE bool isControlType() const;
     Q_INVOKABLE void setControlType(bool isControlType);
+    Q_INVOKABLE void unsetControlType();
     Q_INVOKABLE QtUml::ObjectNodeOrderingKind ordering() const;
     Q_INVOKABLE void setOrdering(QtUml::ObjectNodeOrderingKind ordering);
+    Q_INVOKABLE void unsetOrdering();
 
     // Association ends from QObjectNode
     Q_INVOKABLE QValueSpecification *upperBound() const;

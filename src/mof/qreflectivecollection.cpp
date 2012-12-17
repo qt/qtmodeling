@@ -112,7 +112,6 @@ void QReflectiveCollection::registerMetaTypes() const
     qRegisterMetaType<const QSet<QReflectiveCollection *> *>("const QSet<QReflectiveCollection *> *");
     qRegisterMetaType<const QList<QReflectiveCollection *> *>("const QList<QReflectiveCollection *> *");
 
-
     QMofObject::registerMetaTypes();
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())

@@ -83,7 +83,6 @@ void QControlFlow::registerMetaTypes() const
     qRegisterMetaType<const QSet<QControlFlow *> *>("const QSet<QControlFlow *> *");
     qRegisterMetaType<const QList<QControlFlow *> *>("const QList<QControlFlow *> *");
 
-
     QActivityEdge::registerMetaTypes();
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())

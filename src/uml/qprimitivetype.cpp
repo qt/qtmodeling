@@ -83,7 +83,6 @@ void QPrimitiveType::registerMetaTypes() const
     qRegisterMetaType<const QSet<QPrimitiveType *> *>("const QSet<QPrimitiveType *> *");
     qRegisterMetaType<const QList<QPrimitiveType *> *>("const QList<QPrimitiveType *> *");
 
-
     QDataType::registerMetaTypes();
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())

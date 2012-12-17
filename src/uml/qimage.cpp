@@ -150,7 +150,6 @@ void QImage::registerMetaTypes() const
     qRegisterMetaType<const QSet<QImage *> *>("const QSet<QImage *> *");
     qRegisterMetaType<const QList<QImage *> *>("const QList<QImage *> *");
 
-
     QElement::registerMetaTypes();
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())

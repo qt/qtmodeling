@@ -133,14 +133,12 @@ void QType::registerMetaTypes() const
     qRegisterMetaType<const QSet<QType *> *>("const QSet<QType *> *");
     qRegisterMetaType<const QList<QType *> *>("const QList<QType *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QPackage) *>("QT_PREPEND_NAMESPACE_QTUML(QPackage) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QPackage) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QPackage) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QPackage) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QPackage) *> *");
     qRegisterMetaType<QPackage *>("QPackage *");
     qRegisterMetaType<const QSet<QPackage *> *>("const QSet<QPackage *> *");
     qRegisterMetaType<const QList<QPackage *> *>("const QList<QPackage *> *");
-
 
     QPackageableElement::registerMetaTypes();
 

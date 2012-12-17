@@ -103,6 +103,11 @@ void QRemoveVariableValueAction::setRemoveDuplicates(bool isRemoveDuplicates)
     }
 }
 
+void QRemoveVariableValueAction::unsetRemoveDuplicates()
+{
+    setRemoveDuplicates(false);
+}
+
 // ---------------------------------------------------------------
 // ASSOCIATION ENDS FROM QRemoveVariableValueAction
 // ---------------------------------------------------------------
@@ -145,14 +150,12 @@ void QRemoveVariableValueAction::registerMetaTypes() const
     qRegisterMetaType<const QSet<QRemoveVariableValueAction *> *>("const QSet<QRemoveVariableValueAction *> *");
     qRegisterMetaType<const QList<QRemoveVariableValueAction *> *>("const QList<QRemoveVariableValueAction *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QInputPin) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
     qRegisterMetaType<QInputPin *>("QInputPin *");
     qRegisterMetaType<const QSet<QInputPin *> *>("const QSet<QInputPin *> *");
     qRegisterMetaType<const QList<QInputPin *> *>("const QList<QInputPin *> *");
-
 
     QWriteVariableAction::registerMetaTypes();
 

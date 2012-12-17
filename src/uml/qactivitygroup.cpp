@@ -284,14 +284,12 @@ void QActivityGroup::registerMetaTypes() const
     qRegisterMetaType<const QSet<QActivityGroup *> *>("const QSet<QActivityGroup *> *");
     qRegisterMetaType<const QList<QActivityGroup *> *>("const QList<QActivityGroup *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QActivity) *>("QT_PREPEND_NAMESPACE_QTUML(QActivity) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QActivity) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QActivity) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QActivity) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QActivity) *> *");
     qRegisterMetaType<QActivity *>("QActivity *");
     qRegisterMetaType<const QSet<QActivity *> *>("const QSet<QActivity *> *");
     qRegisterMetaType<const QList<QActivity *> *>("const QList<QActivity *> *");
-
 
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QActivityEdge) *>("QT_PREPEND_NAMESPACE_QTUML(QActivityEdge) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QActivityEdge) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QActivityEdge) *> *");
@@ -300,14 +298,12 @@ void QActivityGroup::registerMetaTypes() const
     qRegisterMetaType<const QSet<QActivityEdge *> *>("const QSet<QActivityEdge *> *");
     qRegisterMetaType<const QList<QActivityEdge *> *>("const QList<QActivityEdge *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QActivityNode) *>("QT_PREPEND_NAMESPACE_QTUML(QActivityNode) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QActivityNode) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QActivityNode) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QActivityNode) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QActivityNode) *> *");
     qRegisterMetaType<QActivityNode *>("QActivityNode *");
     qRegisterMetaType<const QSet<QActivityNode *> *>("const QSet<QActivityNode *> *");
     qRegisterMetaType<const QList<QActivityNode *> *>("const QList<QActivityNode *> *");
-
 
     QNamedElement::registerMetaTypes();
 

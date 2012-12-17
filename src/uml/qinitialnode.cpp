@@ -83,7 +83,6 @@ void QInitialNode::registerMetaTypes() const
     qRegisterMetaType<const QSet<QInitialNode *> *>("const QSet<QInitialNode *> *");
     qRegisterMetaType<const QList<QInitialNode *> *>("const QList<QInitialNode *> *");
 
-
     QControlNode::registerMetaTypes();
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())

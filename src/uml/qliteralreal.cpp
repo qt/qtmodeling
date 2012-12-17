@@ -125,7 +125,6 @@ void QLiteralReal::registerMetaTypes() const
     qRegisterMetaType<const QSet<QLiteralReal *> *>("const QSet<QLiteralReal *> *");
     qRegisterMetaType<const QList<QLiteralReal *> *>("const QList<QLiteralReal *> *");
 
-
     QLiteralSpecification::registerMetaTypes();
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())

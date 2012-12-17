@@ -241,6 +241,13 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
 
             [%- LAST IF attribute.isReadOnly == 'true' -%]
             [%- END -%]
+            [%- IF attribute.defaultValue != '' and attribute.isReadOnly == 'false' %]
+void ${class.name}::unset${attribute.accessor.0.name.ucfirst.replace('^Is', '')}()
+{
+    ${attribute.accessor.1.name}(${attribute.defaultValue});
+}
+
+            [%- END %]
         [%- END -%]
         [%- END -%]
         [%- found = 'false' -%]
@@ -354,6 +361,13 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
             [%- LAST IF associationend.isReadOnly == 'true' -%]
             [%- END -%]
         [%- END -%]
+        [%- IF associationend.defaultValue != '' and associationend.isReadOnly == 'false' %]
+void ${class.name}::unset${associationend.accessor.0.name.ucfirst.replace('^Is', '')}()
+{
+    ${associationend.accessor.1.name}(${associationend.defaultValue});
+}
+
+        [%- END %]
         [%- END %]
     [%- END -%]
     [%- END -%]
@@ -729,9 +743,9 @@ void ${class.name}::registerMetaTypes() const
     qRegisterMetaType<${class.name} *>("${class.name} *");
     qRegisterMetaType<const QSet<${class.name} *> *>("const QSet<${class.name} *> *");
     qRegisterMetaType<const QList<${class.name} *> *>("const QList<${class.name} *> *");
-[% FOREACH forwarddecl IN class.forwarddecl -%]
-[%- IF forwarddecl.content != class.name %]
 
+[% FOREACH forwarddecl IN class.forwarddecl -%]
+[%- IF forwarddecl.content != class.name -%]
     qRegisterMetaType<QT_PREPEND_NAMESPACE_${namespace.split('/').0.upper}(${forwarddecl.content}) *>("QT_PREPEND_NAMESPACE_${namespace.split('/').0.upper}(${forwarddecl.content}) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_${namespace.split('/').0.upper}(${forwarddecl.content}) *> *>("const QSet<QT_PREPEND_NAMESPACE_${namespace.split('/').0.upper}(${forwarddecl.content}) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_${namespace.split('/').0.upper}(${forwarddecl.content}) *> *>("const QList<QT_PREPEND_NAMESPACE_${namespace.split('/').0.upper}(${forwarddecl.content}) *> *");
@@ -739,9 +753,8 @@ void ${class.name}::registerMetaTypes() const
     qRegisterMetaType<const QSet<${forwarddecl.content} *> *>("const QSet<${forwarddecl.content} *> *");
     qRegisterMetaType<const QList<${forwarddecl.content} *> *>("const QList<${forwarddecl.content} *> *");
 
+[% END -%]
 [%- END -%]
-[% END %]
-
     [% IF class.superclass.size == 1 %]${class.superclass.0.name.split('/').last}[% ELSE %]QWrappedObject[% END %]::registerMetaTypes();
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())

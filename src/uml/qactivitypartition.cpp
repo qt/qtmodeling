@@ -113,6 +113,11 @@ void QActivityPartition::setDimension(bool isDimension)
     }
 }
 
+void QActivityPartition::unsetDimension()
+{
+    setDimension(false);
+}
+
 /*!
     Tells whether the partition represents an entity to which the partitioning structure does not apply.
  */
@@ -132,6 +137,11 @@ void QActivityPartition::setExternal(bool isExternal)
     if (d->isExternal != isExternal) {
         d->isExternal = isExternal;
     }
+}
+
+void QActivityPartition::unsetExternal()
+{
+    setExternal(false);
 }
 
 // ---------------------------------------------------------------
@@ -331,14 +341,12 @@ void QActivityPartition::registerMetaTypes() const
     qRegisterMetaType<const QSet<QActivityPartition *> *>("const QSet<QActivityPartition *> *");
     qRegisterMetaType<const QList<QActivityPartition *> *>("const QList<QActivityPartition *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QElement) *>("QT_PREPEND_NAMESPACE_QTUML(QElement) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QElement) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QElement) *> *");
     qRegisterMetaType<QElement *>("QElement *");
     qRegisterMetaType<const QSet<QElement *> *>("const QSet<QElement *> *");
     qRegisterMetaType<const QList<QElement *> *>("const QList<QElement *> *");
-
 
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QActivityEdge) *>("QT_PREPEND_NAMESPACE_QTUML(QActivityEdge) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QActivityEdge) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QActivityEdge) *> *");
@@ -347,14 +355,12 @@ void QActivityPartition::registerMetaTypes() const
     qRegisterMetaType<const QSet<QActivityEdge *> *>("const QSet<QActivityEdge *> *");
     qRegisterMetaType<const QList<QActivityEdge *> *>("const QList<QActivityEdge *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QActivityNode) *>("QT_PREPEND_NAMESPACE_QTUML(QActivityNode) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QActivityNode) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QActivityNode) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QActivityNode) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QActivityNode) *> *");
     qRegisterMetaType<QActivityNode *>("QActivityNode *");
     qRegisterMetaType<const QSet<QActivityNode *> *>("const QSet<QActivityNode *> *");
     qRegisterMetaType<const QList<QActivityNode *> *>("const QList<QActivityNode *> *");
-
 
     QActivityGroup::registerMetaTypes();
 

@@ -67,7 +67,7 @@ class Q_UML_EXPORT QLoopNode : public QStructuredActivityNode
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool isTestedFirst READ isTestedFirst WRITE setTestedFirst)
+    Q_PROPERTY(bool isTestedFirst READ isTestedFirst WRITE setTestedFirst RESET unsetTestedFirst)
     Q_PROPERTY(const QList<QInputPin *> * loopVariableInputs READ loopVariableInputs)
     Q_PROPERTY(QOutputPin * decider READ decider WRITE setDecider)
     Q_PROPERTY(const QList<QOutputPin *> * bodyOutputs READ bodyOutputs)
@@ -87,6 +87,7 @@ public:
     // Attributes from QLoopNode
     Q_INVOKABLE bool isTestedFirst() const;
     Q_INVOKABLE void setTestedFirst(bool isTestedFirst);
+    Q_INVOKABLE void unsetTestedFirst();
 
     // Association ends from QLoopNode
     Q_INVOKABLE const QList<QInputPin *> *loopVariableInputs() const;

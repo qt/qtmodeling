@@ -62,7 +62,7 @@ class Q_UML_EXPORT QProfileApplication : public QDirectedRelationship
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool isStrict READ isStrict WRITE setStrict)
+    Q_PROPERTY(bool isStrict READ isStrict WRITE setStrict RESET unsetStrict)
     Q_PROPERTY(QPackage * applyingPackage READ applyingPackage WRITE setApplyingPackage)
     Q_PROPERTY(QProfile * appliedProfile READ appliedProfile WRITE setAppliedProfile)
 
@@ -76,6 +76,7 @@ public:
     // Attributes from QProfileApplication
     Q_INVOKABLE bool isStrict() const;
     Q_INVOKABLE void setStrict(bool isStrict);
+    Q_INVOKABLE void unsetStrict();
 
     // Association ends from QProfileApplication
     Q_INVOKABLE QPackage *applyingPackage() const;

@@ -83,7 +83,6 @@ void QControlNode::registerMetaTypes() const
     qRegisterMetaType<const QSet<QControlNode *> *>("const QSet<QControlNode *> *");
     qRegisterMetaType<const QList<QControlNode *> *>("const QList<QControlNode *> *");
 
-
     QActivityNode::registerMetaTypes();
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())

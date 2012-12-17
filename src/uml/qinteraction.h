@@ -87,6 +87,7 @@ public:
     // Attributes from aggregated QBehavior
     Q_INVOKABLE bool isReentrant() const;
     Q_INVOKABLE void setReentrant(bool isReentrant);
+    Q_INVOKABLE void unsetReentrant();
 
     // Association ends from aggregated QBehavior
     Q_INVOKABLE QBehavioralFeature *specification() const;

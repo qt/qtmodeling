@@ -81,8 +81,8 @@ class Q_UML_EXPORT QClassifier : public QWrappedObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool isAbstract READ isAbstract WRITE setAbstract)
-    Q_PROPERTY(bool isFinalSpecialization READ isFinalSpecialization WRITE setFinalSpecialization)
+    Q_PROPERTY(bool isAbstract READ isAbstract WRITE setAbstract RESET unsetAbstract)
+    Q_PROPERTY(bool isFinalSpecialization READ isFinalSpecialization WRITE setFinalSpecialization RESET unsetFinalSpecialization)
     Q_PROPERTY(const QSet<QUseCase *> * ownedUseCases READ ownedUseCases)
     Q_PROPERTY(const QSet<QGeneralizationSet *> * powertypeExtents READ powertypeExtents)
     Q_PROPERTY(const QSet<QUseCase *> * useCases READ useCases)
@@ -146,6 +146,7 @@ public:
     // Attributes from aggregated QPackageableElement
     Q_INVOKABLE QtUml::VisibilityKind visibility() const;
     Q_INVOKABLE void setVisibility(QtUml::VisibilityKind visibility);
+    Q_INVOKABLE void unsetVisibility();
 
     // Association ends from aggregated QType
     Q_INVOKABLE QPackage *package() const;
@@ -154,6 +155,7 @@ public:
     // Attributes from aggregated QRedefinableElement
     Q_INVOKABLE bool isLeaf() const;
     Q_INVOKABLE void setLeaf(bool isLeaf);
+    Q_INVOKABLE void unsetLeaf();
 
     // Association ends from aggregated QRedefinableElement
     Q_INVOKABLE const QSet<QRedefinableElement *> *redefinedElements() const;
@@ -167,8 +169,10 @@ public:
     // Attributes from QClassifier
     Q_INVOKABLE bool isAbstract() const;
     Q_INVOKABLE void setAbstract(bool isAbstract);
+    Q_INVOKABLE void unsetAbstract();
     Q_INVOKABLE bool isFinalSpecialization() const;
     Q_INVOKABLE void setFinalSpecialization(bool isFinalSpecialization);
+    Q_INVOKABLE void unsetFinalSpecialization();
 
     // Association ends from QClassifier
     Q_INVOKABLE const QSet<QUseCase *> *ownedUseCases() const;

@@ -224,6 +224,11 @@ void QObjectNode::setLeaf(bool isLeaf)
     (qwrappedobject_cast<QRedefinableElement *>(this))->setLeaf(isLeaf);
 }
 
+void QObjectNode::unsetLeaf()
+{
+    setLeaf(false);
+}
+
 // ---------------------------------------------------------------
 // ASSOCIATION ENDS FROM AGGREGATED QRedefinableElement
 // ---------------------------------------------------------------
@@ -414,6 +419,11 @@ void QObjectNode::setControlType(bool isControlType)
     }
 }
 
+void QObjectNode::unsetControlType()
+{
+    setControlType(false);
+}
+
 /*!
     Tells whether and how the tokens in the object node are ordered for selection to traverse edges outgoing from the object node.
  */
@@ -433,6 +443,11 @@ void QObjectNode::setOrdering(QtUml::ObjectNodeOrderingKind ordering)
     if (d->ordering != ordering) {
         d->ordering = ordering;
     }
+}
+
+void QObjectNode::unsetOrdering()
+{
+    setOrdering(QtUml::ObjectNodeOrderingFIFO);
 }
 
 // ---------------------------------------------------------------
@@ -529,14 +544,12 @@ void QObjectNode::registerMetaTypes() const
     qRegisterMetaType<const QSet<QObjectNode *> *>("const QSet<QObjectNode *> *");
     qRegisterMetaType<const QList<QObjectNode *> *>("const QList<QObjectNode *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QState) *>("QT_PREPEND_NAMESPACE_QTUML(QState) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QState) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QState) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QState) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QState) *> *");
     qRegisterMetaType<QState *>("QState *");
     qRegisterMetaType<const QSet<QState *> *>("const QSet<QState *> *");
     qRegisterMetaType<const QList<QState *> *>("const QList<QState *> *");
-
 
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *>("QT_PREPEND_NAMESPACE_QTUML(QBehavior) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *");
@@ -545,14 +558,12 @@ void QObjectNode::registerMetaTypes() const
     qRegisterMetaType<const QSet<QBehavior *> *>("const QSet<QBehavior *> *");
     qRegisterMetaType<const QList<QBehavior *> *>("const QList<QBehavior *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *>("QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *");
     qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
     qRegisterMetaType<const QSet<QValueSpecification *> *>("const QSet<QValueSpecification *> *");
     qRegisterMetaType<const QList<QValueSpecification *> *>("const QList<QValueSpecification *> *");
-
 
     QWrappedObject::registerMetaTypes();
 

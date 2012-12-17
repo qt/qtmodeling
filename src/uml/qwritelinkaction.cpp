@@ -83,7 +83,6 @@ void QWriteLinkAction::registerMetaTypes() const
     qRegisterMetaType<const QSet<QWriteLinkAction *> *>("const QSet<QWriteLinkAction *> *");
     qRegisterMetaType<const QList<QWriteLinkAction *> *>("const QList<QWriteLinkAction *> *");
 
-
     QLinkAction::registerMetaTypes();
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())

@@ -105,6 +105,11 @@ void QProfileApplication::setStrict(bool isStrict)
     }
 }
 
+void QProfileApplication::unsetStrict()
+{
+    setStrict(false);
+}
+
 // ---------------------------------------------------------------
 // ASSOCIATION ENDS FROM QProfileApplication
 // ---------------------------------------------------------------
@@ -185,7 +190,6 @@ void QProfileApplication::registerMetaTypes() const
     qRegisterMetaType<const QSet<QProfileApplication *> *>("const QSet<QProfileApplication *> *");
     qRegisterMetaType<const QList<QProfileApplication *> *>("const QList<QProfileApplication *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QProfile) *>("QT_PREPEND_NAMESPACE_QTUML(QProfile) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QProfile) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QProfile) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QProfile) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QProfile) *> *");
@@ -193,14 +197,12 @@ void QProfileApplication::registerMetaTypes() const
     qRegisterMetaType<const QSet<QProfile *> *>("const QSet<QProfile *> *");
     qRegisterMetaType<const QList<QProfile *> *>("const QList<QProfile *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QPackage) *>("QT_PREPEND_NAMESPACE_QTUML(QPackage) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QPackage) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QPackage) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QPackage) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QPackage) *> *");
     qRegisterMetaType<QPackage *>("QPackage *");
     qRegisterMetaType<const QSet<QPackage *> *>("const QSet<QPackage *> *");
     qRegisterMetaType<const QList<QPackage *> *>("const QList<QPackage *> *");
-
 
     QDirectedRelationship::registerMetaTypes();
 

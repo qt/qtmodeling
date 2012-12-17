@@ -103,6 +103,11 @@ void QLinkEndCreationData::setReplaceAll(bool isReplaceAll)
     }
 }
 
+void QLinkEndCreationData::unsetReplaceAll()
+{
+    setReplaceAll(false);
+}
+
 // ---------------------------------------------------------------
 // ASSOCIATION ENDS FROM QLinkEndCreationData
 // ---------------------------------------------------------------
@@ -137,14 +142,12 @@ void QLinkEndCreationData::registerMetaTypes() const
     qRegisterMetaType<const QSet<QLinkEndCreationData *> *>("const QSet<QLinkEndCreationData *> *");
     qRegisterMetaType<const QList<QLinkEndCreationData *> *>("const QList<QLinkEndCreationData *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QInputPin) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
     qRegisterMetaType<QInputPin *>("QInputPin *");
     qRegisterMetaType<const QSet<QInputPin *> *>("const QSet<QInputPin *> *");
     qRegisterMetaType<const QList<QInputPin *> *>("const QList<QInputPin *> *");
-
 
     QLinkEndData::registerMetaTypes();
 

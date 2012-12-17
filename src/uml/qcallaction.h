@@ -64,7 +64,7 @@ class Q_UML_EXPORT QCallAction : public QInvocationAction
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool isSynchronous READ isSynchronous WRITE setSynchronous)
+    Q_PROPERTY(bool isSynchronous READ isSynchronous WRITE setSynchronous RESET unsetSynchronous)
     Q_PROPERTY(const QList<QOutputPin *> * results READ results)
 
     Q_DISABLE_COPY(QCallAction)
@@ -77,6 +77,7 @@ public:
     // Attributes from QCallAction
     Q_INVOKABLE bool isSynchronous() const;
     Q_INVOKABLE void setSynchronous(bool isSynchronous);
+    Q_INVOKABLE void unsetSynchronous();
 
     // Association ends from QCallAction
     Q_INVOKABLE const QList<QOutputPin *> *results() const;

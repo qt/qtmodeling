@@ -111,14 +111,12 @@ void QVariableAction::registerMetaTypes() const
     qRegisterMetaType<const QSet<QVariableAction *> *>("const QSet<QVariableAction *> *");
     qRegisterMetaType<const QList<QVariableAction *> *>("const QList<QVariableAction *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QVariable) *>("QT_PREPEND_NAMESPACE_QTUML(QVariable) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QVariable) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QVariable) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QVariable) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QVariable) *> *");
     qRegisterMetaType<QVariable *>("QVariable *");
     qRegisterMetaType<const QSet<QVariable *> *>("const QSet<QVariable *> *");
     qRegisterMetaType<const QList<QVariable *> *>("const QList<QVariable *> *");
-
 
     QAction::registerMetaTypes();
 

@@ -142,7 +142,6 @@ void QStructuralFeatureAction::registerMetaTypes() const
     qRegisterMetaType<const QSet<QStructuralFeatureAction *> *>("const QSet<QStructuralFeatureAction *> *");
     qRegisterMetaType<const QList<QStructuralFeatureAction *> *>("const QList<QStructuralFeatureAction *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QInputPin) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
@@ -150,14 +149,12 @@ void QStructuralFeatureAction::registerMetaTypes() const
     qRegisterMetaType<const QSet<QInputPin *> *>("const QSet<QInputPin *> *");
     qRegisterMetaType<const QList<QInputPin *> *>("const QList<QInputPin *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QStructuralFeature) *>("QT_PREPEND_NAMESPACE_QTUML(QStructuralFeature) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QStructuralFeature) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QStructuralFeature) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QStructuralFeature) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QStructuralFeature) *> *");
     qRegisterMetaType<QStructuralFeature *>("QStructuralFeature *");
     qRegisterMetaType<const QSet<QStructuralFeature *> *>("const QSet<QStructuralFeature *> *");
     qRegisterMetaType<const QList<QStructuralFeature *> *>("const QList<QStructuralFeature *> *");
-
 
     QAction::registerMetaTypes();
 

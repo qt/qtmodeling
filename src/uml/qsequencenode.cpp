@@ -124,14 +124,12 @@ void QSequenceNode::registerMetaTypes() const
     qRegisterMetaType<const QSet<QSequenceNode *> *>("const QSet<QSequenceNode *> *");
     qRegisterMetaType<const QList<QSequenceNode *> *>("const QList<QSequenceNode *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *>("QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *> *");
     qRegisterMetaType<QExecutableNode *>("QExecutableNode *");
     qRegisterMetaType<const QSet<QExecutableNode *> *>("const QSet<QExecutableNode *> *");
     qRegisterMetaType<const QList<QExecutableNode *> *>("const QList<QExecutableNode *> *");
-
 
     QStructuredActivityNode::registerMetaTypes();
 

@@ -260,6 +260,11 @@ void QProperty::setUpper(qint32 upper)
     (qwrappedobject_cast<QMultiplicityElement *>(this))->setUpper(upper);
 }
 
+void QProperty::unsetUpper()
+{
+    setUpper(1);
+}
+
 /*!
     For a multivalued multiplicity, this attributes specifies whether the values in an instantiation of this element are unique.
  */
@@ -273,6 +278,11 @@ void QProperty::setUnique(bool isUnique)
     (qwrappedobject_cast<QMultiplicityElement *>(this))->setUnique(isUnique);
 }
 
+void QProperty::unsetUnique()
+{
+    setUnique(true);
+}
+
 /*!
     For a multivalued multiplicity, this attribute specifies whether the values in an instantiation of this element are sequentially ordered.
  */
@@ -284,6 +294,11 @@ bool QProperty::isOrdered() const
 void QProperty::setOrdered(bool isOrdered)
 {
     (qwrappedobject_cast<QMultiplicityElement *>(this))->setOrdered(isOrdered);
+}
+
+void QProperty::unsetOrdered()
+{
+    setOrdered(false);
 }
 
 /*!
@@ -346,6 +361,11 @@ void QProperty::setLeaf(bool isLeaf)
     (qwrappedobject_cast<QRedefinableElement *>(this))->setLeaf(isLeaf);
 }
 
+void QProperty::unsetLeaf()
+{
+    setLeaf(false);
+}
+
 // ---------------------------------------------------------------
 // ASSOCIATION ENDS FROM AGGREGATED QRedefinableElement
 // ---------------------------------------------------------------
@@ -381,6 +401,11 @@ bool QProperty::isStatic() const
 void QProperty::setStatic(bool isStatic)
 {
     (qwrappedobject_cast<QFeature *>(this))->setStatic(isStatic);
+}
+
+void QProperty::unsetStatic()
+{
+    setStatic(false);
 }
 
 // ---------------------------------------------------------------
@@ -492,6 +517,11 @@ void QProperty::setDerived(bool isDerived)
     }
 }
 
+void QProperty::unsetDerived()
+{
+    setDerived(false);
+}
+
 /*!
     Specifies a String that represents a value to be used when no argument is supplied for the Property.A String that is evaluated to give a default value for the Property when an object of the owning Classifier is instantiated.
  */
@@ -540,6 +570,11 @@ void QProperty::setComposite(bool isComposite)
     }
 }
 
+void QProperty::unsetComposite()
+{
+    setComposite(false);
+}
+
 /*!
     If true, the attribute may only be read, and not written.If isReadOnly is true, the attribute may not be written to after initialization.
  */
@@ -559,6 +594,11 @@ void QProperty::setReadOnly(bool isReadOnly)
     if (d->isReadOnly != isReadOnly) {
         d->isReadOnly = isReadOnly;
     }
+}
+
+void QProperty::unsetReadOnly()
+{
+    setReadOnly(false);
 }
 
 /*!
@@ -582,6 +622,11 @@ void QProperty::setID(bool isID)
     }
 }
 
+void QProperty::unsetID()
+{
+    setID(false);
+}
+
 /*!
     Specifies whether the property is derived as the union of all of the properties that are constrained to subset it.
  */
@@ -603,6 +648,11 @@ void QProperty::setDerivedUnion(bool isDerivedUnion)
     }
 }
 
+void QProperty::unsetDerivedUnion()
+{
+    setDerivedUnion(false);
+}
+
 /*!
     Specifies the kind of aggregation that applies to the Property.
  */
@@ -622,6 +672,11 @@ void QProperty::setAggregation(QtUml::AggregationKind aggregation)
     if (d->aggregation != aggregation) {
         d->aggregation = aggregation;
     }
+}
+
+void QProperty::unsetAggregation()
+{
+    setAggregation(QtUml::AggregationNone);
 }
 
 // ---------------------------------------------------------------
@@ -1084,14 +1139,12 @@ void QProperty::registerMetaTypes() const
     qRegisterMetaType<const QSet<QProperty *> *>("const QSet<QProperty *> *");
     qRegisterMetaType<const QList<QProperty *> *>("const QList<QProperty *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QType) *>("QT_PREPEND_NAMESPACE_QTUML(QType) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QType) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QType) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QType) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QType) *> *");
     qRegisterMetaType<QType *>("QType *");
     qRegisterMetaType<const QSet<QType *> *>("const QSet<QType *> *");
     qRegisterMetaType<const QList<QType *> *>("const QList<QType *> *");
-
 
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInterface) *>("QT_PREPEND_NAMESPACE_QTUML(QInterface) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInterface) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInterface) *> *");
@@ -1100,14 +1153,12 @@ void QProperty::registerMetaTypes() const
     qRegisterMetaType<const QSet<QInterface *> *>("const QSet<QInterface *> *");
     qRegisterMetaType<const QList<QInterface *> *>("const QList<QInterface *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QRedefinableElement) *>("QT_PREPEND_NAMESPACE_QTUML(QRedefinableElement) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QRedefinableElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QRedefinableElement) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QRedefinableElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QRedefinableElement) *> *");
     qRegisterMetaType<QRedefinableElement *>("QRedefinableElement *");
     qRegisterMetaType<const QSet<QRedefinableElement *> *>("const QSet<QRedefinableElement *> *");
     qRegisterMetaType<const QList<QRedefinableElement *> *>("const QList<QRedefinableElement *> *");
-
 
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QParameterableElement) *>("QT_PREPEND_NAMESPACE_QTUML(QParameterableElement) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QParameterableElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QParameterableElement) *> *");
@@ -1116,14 +1167,12 @@ void QProperty::registerMetaTypes() const
     qRegisterMetaType<const QSet<QParameterableElement *> *>("const QSet<QParameterableElement *> *");
     qRegisterMetaType<const QList<QParameterableElement *> *>("const QList<QParameterableElement *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *>("QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *");
     qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
     qRegisterMetaType<const QSet<QValueSpecification *> *>("const QSet<QValueSpecification *> *");
     qRegisterMetaType<const QList<QValueSpecification *> *>("const QList<QValueSpecification *> *");
-
 
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QDataType) *>("QT_PREPEND_NAMESPACE_QTUML(QDataType) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QDataType) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QDataType) *> *");
@@ -1132,7 +1181,6 @@ void QProperty::registerMetaTypes() const
     qRegisterMetaType<const QSet<QDataType *> *>("const QSet<QDataType *> *");
     qRegisterMetaType<const QList<QDataType *> *>("const QList<QDataType *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QAssociation) *>("QT_PREPEND_NAMESPACE_QTUML(QAssociation) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QAssociation) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QAssociation) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QAssociation) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QAssociation) *> *");
@@ -1140,14 +1188,12 @@ void QProperty::registerMetaTypes() const
     qRegisterMetaType<const QSet<QAssociation *> *>("const QSet<QAssociation *> *");
     qRegisterMetaType<const QList<QAssociation *> *>("const QList<QAssociation *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QClass) *>("QT_PREPEND_NAMESPACE_QTUML(QClass) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QClass) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QClass) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QClass) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QClass) *> *");
     qRegisterMetaType<QClass *>("QClass *");
     qRegisterMetaType<const QSet<QClass *> *>("const QSet<QClass *> *");
     qRegisterMetaType<const QList<QClass *> *>("const QList<QClass *> *");
-
 
     QWrappedObject::registerMetaTypes();
 

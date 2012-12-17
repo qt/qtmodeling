@@ -119,14 +119,12 @@ void QReadVariableAction::registerMetaTypes() const
     qRegisterMetaType<const QSet<QReadVariableAction *> *>("const QSet<QReadVariableAction *> *");
     qRegisterMetaType<const QList<QReadVariableAction *> *>("const QList<QReadVariableAction *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *");
     qRegisterMetaType<QOutputPin *>("QOutputPin *");
     qRegisterMetaType<const QSet<QOutputPin *> *>("const QSet<QOutputPin *> *");
     qRegisterMetaType<const QList<QOutputPin *> *>("const QList<QOutputPin *> *");
-
 
     QVariableAction::registerMetaTypes();
 

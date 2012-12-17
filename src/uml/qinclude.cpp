@@ -313,14 +313,12 @@ void QInclude::registerMetaTypes() const
     qRegisterMetaType<const QSet<QInclude *> *>("const QSet<QInclude *> *");
     qRegisterMetaType<const QList<QInclude *> *>("const QList<QInclude *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QUseCase) *>("QT_PREPEND_NAMESPACE_QTUML(QUseCase) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QUseCase) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QUseCase) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QUseCase) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QUseCase) *> *");
     qRegisterMetaType<QUseCase *>("QUseCase *");
     qRegisterMetaType<const QSet<QUseCase *> *>("const QSet<QUseCase *> *");
     qRegisterMetaType<const QList<QUseCase *> *>("const QList<QUseCase *> *");
-
 
     QWrappedObject::registerMetaTypes();
 

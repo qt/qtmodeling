@@ -61,7 +61,7 @@ class Q_UML_EXPORT QRemoveVariableValueAction : public QWriteVariableAction
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool isRemoveDuplicates READ isRemoveDuplicates WRITE setRemoveDuplicates)
+    Q_PROPERTY(bool isRemoveDuplicates READ isRemoveDuplicates WRITE setRemoveDuplicates RESET unsetRemoveDuplicates)
     Q_PROPERTY(QInputPin * removeAt READ removeAt WRITE setRemoveAt)
 
     Q_DISABLE_COPY(QRemoveVariableValueAction)
@@ -74,6 +74,7 @@ public:
     // Attributes from QRemoveVariableValueAction
     Q_INVOKABLE bool isRemoveDuplicates() const;
     Q_INVOKABLE void setRemoveDuplicates(bool isRemoveDuplicates);
+    Q_INVOKABLE void unsetRemoveDuplicates();
 
     // Association ends from QRemoveVariableValueAction
     Q_INVOKABLE QInputPin *removeAt() const;

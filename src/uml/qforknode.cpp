@@ -83,7 +83,6 @@ void QForkNode::registerMetaTypes() const
     qRegisterMetaType<const QSet<QForkNode *> *>("const QSet<QForkNode *> *");
     qRegisterMetaType<const QList<QForkNode *> *>("const QList<QForkNode *> *");
 
-
     QControlNode::registerMetaTypes();
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())

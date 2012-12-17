@@ -100,6 +100,11 @@ void QLiteralUnlimitedNatural::setValue(qint32 value)
     }
 }
 
+void QLiteralUnlimitedNatural::unsetValue()
+{
+    setValue(0);
+}
+
 /*!
     The query isComputable() is redefined to be true.
  */
@@ -128,7 +133,6 @@ void QLiteralUnlimitedNatural::registerMetaTypes() const
     qRegisterMetaType<QLiteralUnlimitedNatural *>("QLiteralUnlimitedNatural *");
     qRegisterMetaType<const QSet<QLiteralUnlimitedNatural *> *>("const QSet<QLiteralUnlimitedNatural *> *");
     qRegisterMetaType<const QList<QLiteralUnlimitedNatural *> *>("const QList<QLiteralUnlimitedNatural *> *");
-
 
     QLiteralSpecification::registerMetaTypes();
 

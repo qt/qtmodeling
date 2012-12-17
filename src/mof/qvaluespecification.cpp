@@ -170,6 +170,11 @@ void QValueSpecification::setVisibility(QtMof::VisibilityKind visibility)
     (qwrappedobject_cast<QPackageableElement *>(this))->setVisibility(visibility);
 }
 
+void QValueSpecification::unsetVisibility()
+{
+    setVisibility(QtMof::VisibilityPublic);
+}
+
 // ---------------------------------------------------------------
 // ASSOCIATION ENDS FROM AGGREGATED QTypedElement
 // ---------------------------------------------------------------
@@ -265,7 +270,6 @@ void QValueSpecification::registerMetaTypes() const
     qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
     qRegisterMetaType<const QSet<QValueSpecification *> *>("const QSet<QValueSpecification *> *");
     qRegisterMetaType<const QList<QValueSpecification *> *>("const QList<QValueSpecification *> *");
-
 
     QWrappedObject::registerMetaTypes();
 

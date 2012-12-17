@@ -134,6 +134,11 @@ void QPin::setUpper(qint32 upper)
     (qwrappedobject_cast<QMultiplicityElement *>(this))->setUpper(upper);
 }
 
+void QPin::unsetUpper()
+{
+    setUpper(1);
+}
+
 /*!
     For a multivalued multiplicity, this attributes specifies whether the values in an instantiation of this element are unique.
  */
@@ -147,6 +152,11 @@ void QPin::setUnique(bool isUnique)
     (qwrappedobject_cast<QMultiplicityElement *>(this))->setUnique(isUnique);
 }
 
+void QPin::unsetUnique()
+{
+    setUnique(true);
+}
+
 /*!
     For a multivalued multiplicity, this attribute specifies whether the values in an instantiation of this element are sequentially ordered.
  */
@@ -158,6 +168,11 @@ bool QPin::isOrdered() const
 void QPin::setOrdered(bool isOrdered)
 {
     (qwrappedobject_cast<QMultiplicityElement *>(this))->setOrdered(isOrdered);
+}
+
+void QPin::unsetOrdered()
+{
+    setOrdered(false);
 }
 
 /*!
@@ -299,6 +314,11 @@ bool QPin::isLeaf() const
 void QPin::setLeaf(bool isLeaf)
 {
     (qwrappedobject_cast<QRedefinableElement *>(this))->setLeaf(isLeaf);
+}
+
+void QPin::unsetLeaf()
+{
+    setLeaf(false);
 }
 
 // ---------------------------------------------------------------
@@ -483,6 +503,11 @@ void QPin::setControlType(bool isControlType)
     (qwrappedobject_cast<QObjectNode *>(this))->setControlType(isControlType);
 }
 
+void QPin::unsetControlType()
+{
+    setControlType(false);
+}
+
 /*!
     Tells whether and how the tokens in the object node are ordered for selection to traverse edges outgoing from the object node.
  */
@@ -494,6 +519,11 @@ QtUml::ObjectNodeOrderingKind QPin::ordering() const
 void QPin::setOrdering(QtUml::ObjectNodeOrderingKind ordering)
 {
     (qwrappedobject_cast<QObjectNode *>(this))->setOrdering(ordering);
+}
+
+void QPin::unsetOrdering()
+{
+    setOrdering(QtUml::ObjectNodeOrderingFIFO);
 }
 
 // ---------------------------------------------------------------
@@ -569,6 +599,11 @@ void QPin::setControl(bool isControl)
     }
 }
 
+void QPin::unsetControl()
+{
+    setControl(false);
+}
+
 void QPin::registerMetaTypes() const
 {
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QPin) *>("QT_PREPEND_NAMESPACE_QTUML(QPin) *");
@@ -577,7 +612,6 @@ void QPin::registerMetaTypes() const
     qRegisterMetaType<QPin *>("QPin *");
     qRegisterMetaType<const QSet<QPin *> *>("const QSet<QPin *> *");
     qRegisterMetaType<const QList<QPin *> *>("const QList<QPin *> *");
-
 
     QWrappedObject::registerMetaTypes();
 

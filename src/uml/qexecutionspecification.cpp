@@ -133,14 +133,12 @@ void QExecutionSpecification::registerMetaTypes() const
     qRegisterMetaType<const QSet<QExecutionSpecification *> *>("const QSet<QExecutionSpecification *> *");
     qRegisterMetaType<const QList<QExecutionSpecification *> *>("const QList<QExecutionSpecification *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QOccurrenceSpecification) *>("QT_PREPEND_NAMESPACE_QTUML(QOccurrenceSpecification) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QOccurrenceSpecification) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QOccurrenceSpecification) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QOccurrenceSpecification) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QOccurrenceSpecification) *> *");
     qRegisterMetaType<QOccurrenceSpecification *>("QOccurrenceSpecification *");
     qRegisterMetaType<const QSet<QOccurrenceSpecification *> *>("const QSet<QOccurrenceSpecification *> *");
     qRegisterMetaType<const QList<QOccurrenceSpecification *> *>("const QList<QOccurrenceSpecification *> *");
-
 
     QInteractionFragment::registerMetaTypes();
 

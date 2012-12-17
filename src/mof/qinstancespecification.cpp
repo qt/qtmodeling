@@ -199,14 +199,12 @@ void QInstanceSpecification::registerMetaTypes() const
     qRegisterMetaType<const QSet<QInstanceSpecification *> *>("const QSet<QInstanceSpecification *> *");
     qRegisterMetaType<const QList<QInstanceSpecification *> *>("const QList<QInstanceSpecification *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QClassifier) *>("QT_PREPEND_NAMESPACE_QTMOF(QClassifier) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QClassifier) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QClassifier) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QClassifier) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QClassifier) *> *");
     qRegisterMetaType<QClassifier *>("QClassifier *");
     qRegisterMetaType<const QSet<QClassifier *> *>("const QSet<QClassifier *> *");
     qRegisterMetaType<const QList<QClassifier *> *>("const QList<QClassifier *> *");
-
 
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QSlot) *>("QT_PREPEND_NAMESPACE_QTMOF(QSlot) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QSlot) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QSlot) *> *");
@@ -215,14 +213,12 @@ void QInstanceSpecification::registerMetaTypes() const
     qRegisterMetaType<const QSet<QSlot *> *>("const QSet<QSlot *> *");
     qRegisterMetaType<const QList<QSlot *> *>("const QList<QSlot *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QValueSpecification) *>("QT_PREPEND_NAMESPACE_QTMOF(QValueSpecification) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QValueSpecification) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QValueSpecification) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QValueSpecification) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QValueSpecification) *> *");
     qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
     qRegisterMetaType<const QSet<QValueSpecification *> *>("const QSet<QValueSpecification *> *");
     qRegisterMetaType<const QList<QValueSpecification *> *>("const QList<QValueSpecification *> *");
-
 
     QPackageableElement::registerMetaTypes();
 

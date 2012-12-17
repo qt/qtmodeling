@@ -103,6 +103,11 @@ void QTimeObservation::setFirstEvent(bool firstEvent)
     }
 }
 
+void QTimeObservation::unsetFirstEvent()
+{
+    setFirstEvent(true);
+}
+
 // ---------------------------------------------------------------
 // ASSOCIATION ENDS FROM QTimeObservation
 // ---------------------------------------------------------------
@@ -137,14 +142,12 @@ void QTimeObservation::registerMetaTypes() const
     qRegisterMetaType<const QSet<QTimeObservation *> *>("const QSet<QTimeObservation *> *");
     qRegisterMetaType<const QList<QTimeObservation *> *>("const QList<QTimeObservation *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *>("QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *> *");
     qRegisterMetaType<QNamedElement *>("QNamedElement *");
     qRegisterMetaType<const QSet<QNamedElement *> *>("const QSet<QNamedElement *> *");
     qRegisterMetaType<const QList<QNamedElement *> *>("const QList<QNamedElement *> *");
-
 
     QObservation::registerMetaTypes();
 

@@ -119,14 +119,12 @@ void QAbstraction::registerMetaTypes() const
     qRegisterMetaType<const QSet<QAbstraction *> *>("const QSet<QAbstraction *> *");
     qRegisterMetaType<const QList<QAbstraction *> *>("const QList<QAbstraction *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QOpaqueExpression) *>("QT_PREPEND_NAMESPACE_QTUML(QOpaqueExpression) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QOpaqueExpression) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QOpaqueExpression) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QOpaqueExpression) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QOpaqueExpression) *> *");
     qRegisterMetaType<QOpaqueExpression *>("QOpaqueExpression *");
     qRegisterMetaType<const QSet<QOpaqueExpression *> *>("const QSet<QOpaqueExpression *> *");
     qRegisterMetaType<const QList<QOpaqueExpression *> *>("const QList<QOpaqueExpression *> *");
-
 
     QDependency::registerMetaTypes();
 

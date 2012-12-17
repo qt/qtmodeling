@@ -252,7 +252,6 @@ void QStringExpression::registerMetaTypes() const
     qRegisterMetaType<const QSet<QStringExpression *> *>("const QSet<QStringExpression *> *");
     qRegisterMetaType<const QList<QStringExpression *> *>("const QList<QStringExpression *> *");
 
-
     QWrappedObject::registerMetaTypes();
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())

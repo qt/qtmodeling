@@ -108,6 +108,11 @@ void QMultiplicityElement::setUpper(qint32 upper)
     }
 }
 
+void QMultiplicityElement::unsetUpper()
+{
+    setUpper(1);
+}
+
 /*!
     For a multivalued multiplicity, this attributes specifies whether the values in an instantiation of this element are unique.
  */
@@ -129,6 +134,11 @@ void QMultiplicityElement::setUnique(bool isUnique)
     }
 }
 
+void QMultiplicityElement::unsetUnique()
+{
+    setUnique(true);
+}
+
 /*!
     For a multivalued multiplicity, this attribute specifies whether the values in an instantiation of this element are sequentially ordered.
  */
@@ -148,6 +158,11 @@ void QMultiplicityElement::setOrdered(bool isOrdered)
     if (d->isOrdered != isOrdered) {
         d->isOrdered = isOrdered;
     }
+}
+
+void QMultiplicityElement::unsetOrdered()
+{
+    setOrdered(false);
 }
 
 /*!
@@ -297,14 +312,12 @@ void QMultiplicityElement::registerMetaTypes() const
     qRegisterMetaType<const QSet<QMultiplicityElement *> *>("const QSet<QMultiplicityElement *> *");
     qRegisterMetaType<const QList<QMultiplicityElement *> *>("const QList<QMultiplicityElement *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QValueSpecification) *>("QT_PREPEND_NAMESPACE_QTMOF(QValueSpecification) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QValueSpecification) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QValueSpecification) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QValueSpecification) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QValueSpecification) *> *");
     qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
     qRegisterMetaType<const QSet<QValueSpecification *> *>("const QSet<QValueSpecification *> *");
     qRegisterMetaType<const QList<QValueSpecification *> *>("const QList<QValueSpecification *> *");
-
 
     QElement::registerMetaTypes();
 

@@ -103,6 +103,11 @@ void QAddStructuralFeatureValueAction::setReplaceAll(bool isReplaceAll)
     }
 }
 
+void QAddStructuralFeatureValueAction::unsetReplaceAll()
+{
+    setReplaceAll(false);
+}
+
 // ---------------------------------------------------------------
 // ASSOCIATION ENDS FROM QAddStructuralFeatureValueAction
 // ---------------------------------------------------------------
@@ -145,14 +150,12 @@ void QAddStructuralFeatureValueAction::registerMetaTypes() const
     qRegisterMetaType<const QSet<QAddStructuralFeatureValueAction *> *>("const QSet<QAddStructuralFeatureValueAction *> *");
     qRegisterMetaType<const QList<QAddStructuralFeatureValueAction *> *>("const QList<QAddStructuralFeatureValueAction *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QInputPin) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
     qRegisterMetaType<QInputPin *>("QInputPin *");
     qRegisterMetaType<const QSet<QInputPin *> *>("const QSet<QInputPin *> *");
     qRegisterMetaType<const QList<QInputPin *> *>("const QList<QInputPin *> *");
-
 
     QWriteStructuralFeatureAction::registerMetaTypes();
 

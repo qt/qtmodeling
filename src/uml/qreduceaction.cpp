@@ -107,6 +107,11 @@ void QReduceAction::setOrdered(bool isOrdered)
     }
 }
 
+void QReduceAction::unsetOrdered()
+{
+    setOrdered(false);
+}
+
 // ---------------------------------------------------------------
 // ASSOCIATION ENDS FROM QReduceAction
 // ---------------------------------------------------------------
@@ -199,14 +204,12 @@ void QReduceAction::registerMetaTypes() const
     qRegisterMetaType<const QSet<QReduceAction *> *>("const QSet<QReduceAction *> *");
     qRegisterMetaType<const QList<QReduceAction *> *>("const QList<QReduceAction *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QInputPin) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
     qRegisterMetaType<QInputPin *>("QInputPin *");
     qRegisterMetaType<const QSet<QInputPin *> *>("const QSet<QInputPin *> *");
     qRegisterMetaType<const QList<QInputPin *> *>("const QList<QInputPin *> *");
-
 
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *>("QT_PREPEND_NAMESPACE_QTUML(QBehavior) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *");
@@ -215,14 +218,12 @@ void QReduceAction::registerMetaTypes() const
     qRegisterMetaType<const QSet<QBehavior *> *>("const QSet<QBehavior *> *");
     qRegisterMetaType<const QList<QBehavior *> *>("const QList<QBehavior *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *");
     qRegisterMetaType<QOutputPin *>("QOutputPin *");
     qRegisterMetaType<const QSet<QOutputPin *> *>("const QSet<QOutputPin *> *");
     qRegisterMetaType<const QList<QOutputPin *> *>("const QList<QOutputPin *> *");
-
 
     QAction::registerMetaTypes();
 

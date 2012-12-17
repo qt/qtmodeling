@@ -145,7 +145,6 @@ void QComment::registerMetaTypes() const
     qRegisterMetaType<const QSet<QComment *> *>("const QSet<QComment *> *");
     qRegisterMetaType<const QList<QComment *> *>("const QList<QComment *> *");
 
-
     QElement::registerMetaTypes();
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())

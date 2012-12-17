@@ -100,6 +100,11 @@ void QPackageableElement::setVisibility(QtMof::VisibilityKind visibility)
     }
 }
 
+void QPackageableElement::unsetVisibility()
+{
+    setVisibility(QtMof::VisibilityPublic);
+}
+
 void QPackageableElement::registerMetaTypes() const
 {
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QPackageableElement) *>("QT_PREPEND_NAMESPACE_QTMOF(QPackageableElement) *");
@@ -108,7 +113,6 @@ void QPackageableElement::registerMetaTypes() const
     qRegisterMetaType<QPackageableElement *>("QPackageableElement *");
     qRegisterMetaType<const QSet<QPackageableElement *> *>("const QSet<QPackageableElement *> *");
     qRegisterMetaType<const QList<QPackageableElement *> *>("const QList<QPackageableElement *> *");
-
 
     QNamedElement::registerMetaTypes();
 

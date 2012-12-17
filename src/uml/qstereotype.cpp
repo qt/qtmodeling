@@ -151,7 +151,6 @@ void QStereotype::registerMetaTypes() const
     qRegisterMetaType<const QSet<QStereotype *> *>("const QSet<QStereotype *> *");
     qRegisterMetaType<const QList<QStereotype *> *>("const QList<QStereotype *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QImage) *>("QT_PREPEND_NAMESPACE_QTUML(QImage) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QImage) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QImage) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QImage) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QImage) *> *");
@@ -159,14 +158,12 @@ void QStereotype::registerMetaTypes() const
     qRegisterMetaType<const QSet<QImage *> *>("const QSet<QImage *> *");
     qRegisterMetaType<const QList<QImage *> *>("const QList<QImage *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QProfile) *>("QT_PREPEND_NAMESPACE_QTUML(QProfile) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QProfile) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QProfile) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QProfile) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QProfile) *> *");
     qRegisterMetaType<QProfile *>("QProfile *");
     qRegisterMetaType<const QSet<QProfile *> *>("const QSet<QProfile *> *");
     qRegisterMetaType<const QList<QProfile *> *>("const QList<QProfile *> *");
-
 
     QClass::registerMetaTypes();
 

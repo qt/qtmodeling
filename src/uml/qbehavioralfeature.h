@@ -75,8 +75,8 @@ class Q_UML_EXPORT QBehavioralFeature : public QWrappedObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(QtUml::CallConcurrencyKind concurrency READ concurrency WRITE setConcurrency)
-    Q_PROPERTY(bool isAbstract READ isAbstract WRITE setAbstract)
+    Q_PROPERTY(QtUml::CallConcurrencyKind concurrency READ concurrency WRITE setConcurrency RESET unsetConcurrency)
+    Q_PROPERTY(bool isAbstract READ isAbstract WRITE setAbstract RESET unsetAbstract)
     Q_PROPERTY(const QSet<QType *> * raisedExceptions READ raisedExceptions)
     Q_PROPERTY(const QList<QParameter *> * ownedParameters READ ownedParameters)
     Q_PROPERTY(const QSet<QParameterSet *> * ownedParameterSets READ ownedParameterSets)
@@ -128,6 +128,7 @@ public:
     // Attributes from aggregated QRedefinableElement
     Q_INVOKABLE bool isLeaf() const;
     Q_INVOKABLE void setLeaf(bool isLeaf);
+    Q_INVOKABLE void unsetLeaf();
 
     // Association ends from aggregated QRedefinableElement
     Q_INVOKABLE const QSet<QRedefinableElement *> *redefinedElements() const;
@@ -136,6 +137,7 @@ public:
     // Attributes from aggregated QFeature
     Q_INVOKABLE bool isStatic() const;
     Q_INVOKABLE void setStatic(bool isStatic);
+    Q_INVOKABLE void unsetStatic();
 
     // Association ends from aggregated QFeature
     Q_INVOKABLE const QSet<QClassifier *> *featuringClassifiers() const;
@@ -143,8 +145,10 @@ public:
     // Attributes from QBehavioralFeature
     Q_INVOKABLE QtUml::CallConcurrencyKind concurrency() const;
     Q_INVOKABLE void setConcurrency(QtUml::CallConcurrencyKind concurrency);
+    Q_INVOKABLE void unsetConcurrency();
     Q_INVOKABLE bool isAbstract() const;
     Q_INVOKABLE void setAbstract(bool isAbstract);
+    Q_INVOKABLE void unsetAbstract();
 
     // Association ends from QBehavioralFeature
     Q_INVOKABLE const QSet<QType *> *raisedExceptions() const;

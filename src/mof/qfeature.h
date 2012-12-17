@@ -64,7 +64,7 @@ class Q_MOF_EXPORT QFeature : public QRedefinableElement
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool isStatic READ isStatic WRITE setStatic)
+    Q_PROPERTY(bool isStatic READ isStatic WRITE setStatic RESET unsetStatic)
     Q_PROPERTY(const QSet<QClassifier *> * featuringClassifiers READ featuringClassifiers)
 
     Q_DISABLE_COPY(QFeature)
@@ -77,6 +77,7 @@ public:
     // Attributes from QFeature
     Q_INVOKABLE bool isStatic() const;
     Q_INVOKABLE void setStatic(bool isStatic);
+    Q_INVOKABLE void unsetStatic();
 
     // Association ends from QFeature
     Q_INVOKABLE const QSet<QClassifier *> *featuringClassifiers() const;

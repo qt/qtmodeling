@@ -106,6 +106,11 @@ void QExpansionRegion::setMode(QtUml::ExpansionKind mode)
     }
 }
 
+void QExpansionRegion::unsetMode()
+{
+    setMode(QtUml::ExpansionIterative);
+}
+
 // ---------------------------------------------------------------
 // ASSOCIATION ENDS FROM QExpansionRegion
 // ---------------------------------------------------------------
@@ -193,14 +198,12 @@ void QExpansionRegion::registerMetaTypes() const
     qRegisterMetaType<const QSet<QExpansionRegion *> *>("const QSet<QExpansionRegion *> *");
     qRegisterMetaType<const QList<QExpansionRegion *> *>("const QList<QExpansionRegion *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QExpansionNode) *>("QT_PREPEND_NAMESPACE_QTUML(QExpansionNode) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QExpansionNode) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QExpansionNode) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QExpansionNode) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QExpansionNode) *> *");
     qRegisterMetaType<QExpansionNode *>("QExpansionNode *");
     qRegisterMetaType<const QSet<QExpansionNode *> *>("const QSet<QExpansionNode *> *");
     qRegisterMetaType<const QList<QExpansionNode *> *>("const QList<QExpansionNode *> *");
-
 
     QStructuredActivityNode::registerMetaTypes();
 

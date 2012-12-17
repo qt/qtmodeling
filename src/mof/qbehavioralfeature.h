@@ -100,6 +100,7 @@ public:
     // Attributes from aggregated QRedefinableElement
     Q_INVOKABLE bool isLeaf() const;
     Q_INVOKABLE void setLeaf(bool isLeaf);
+    Q_INVOKABLE void unsetLeaf();
 
     // Association ends from aggregated QRedefinableElement
     Q_INVOKABLE const QSet<QRedefinableElement *> *redefinedElements() const;
@@ -108,6 +109,7 @@ public:
     // Attributes from aggregated QFeature
     Q_INVOKABLE bool isStatic() const;
     Q_INVOKABLE void setStatic(bool isStatic);
+    Q_INVOKABLE void unsetStatic();
 
     // Association ends from aggregated QFeature
     Q_INVOKABLE const QSet<QClassifier *> *featuringClassifiers() const;

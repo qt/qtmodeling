@@ -107,6 +107,11 @@ void QAcceptEventAction::setUnmarshall(bool isUnmarshall)
     }
 }
 
+void QAcceptEventAction::unsetUnmarshall()
+{
+    setUnmarshall(false);
+}
+
 // ---------------------------------------------------------------
 // ASSOCIATION ENDS FROM QAcceptEventAction
 // ---------------------------------------------------------------
@@ -194,7 +199,6 @@ void QAcceptEventAction::registerMetaTypes() const
     qRegisterMetaType<const QSet<QAcceptEventAction *> *>("const QSet<QAcceptEventAction *> *");
     qRegisterMetaType<const QList<QAcceptEventAction *> *>("const QList<QAcceptEventAction *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *");
@@ -202,14 +206,12 @@ void QAcceptEventAction::registerMetaTypes() const
     qRegisterMetaType<const QSet<QOutputPin *> *>("const QSet<QOutputPin *> *");
     qRegisterMetaType<const QList<QOutputPin *> *>("const QList<QOutputPin *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QTrigger) *>("QT_PREPEND_NAMESPACE_QTUML(QTrigger) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QTrigger) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QTrigger) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QTrigger) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QTrigger) *> *");
     qRegisterMetaType<QTrigger *>("QTrigger *");
     qRegisterMetaType<const QSet<QTrigger *> *>("const QSet<QTrigger *> *");
     qRegisterMetaType<const QList<QTrigger *> *>("const QList<QTrigger *> *");
-
 
     QAction::registerMetaTypes();
 

@@ -112,14 +112,12 @@ void QIntervalConstraint::registerMetaTypes() const
     qRegisterMetaType<const QSet<QIntervalConstraint *> *>("const QSet<QIntervalConstraint *> *");
     qRegisterMetaType<const QList<QIntervalConstraint *> *>("const QList<QIntervalConstraint *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInterval) *>("QT_PREPEND_NAMESPACE_QTUML(QInterval) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInterval) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInterval) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInterval) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInterval) *> *");
     qRegisterMetaType<QInterval *>("QInterval *");
     qRegisterMetaType<const QSet<QInterval *> *>("const QSet<QInterval *> *");
     qRegisterMetaType<const QList<QInterval *> *>("const QList<QInterval *> *");
-
 
     QConstraint::registerMetaTypes();
 

@@ -69,7 +69,7 @@ class Q_UML_EXPORT QElementImport : public QDirectedRelationship
     Q_OBJECT
 
     Q_PROPERTY(QString alias READ alias WRITE setAlias)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility RESET unsetVisibility)
     Q_PROPERTY(QPackageableElement * importedElement READ importedElement WRITE setImportedElement)
     Q_PROPERTY(QNamespace * importingNamespace READ importingNamespace WRITE setImportingNamespace)
 
@@ -85,6 +85,7 @@ public:
     Q_INVOKABLE void setAlias(QString alias);
     Q_INVOKABLE QtUml::VisibilityKind visibility() const;
     Q_INVOKABLE void setVisibility(QtUml::VisibilityKind visibility);
+    Q_INVOKABLE void unsetVisibility();
 
     // Association ends from QElementImport
     Q_INVOKABLE QPackageableElement *importedElement() const;

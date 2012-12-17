@@ -73,13 +73,13 @@ class Q_MOF_EXPORT QProperty : public QStructuralFeature
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool isDerived READ isDerived WRITE setDerived)
+    Q_PROPERTY(bool isDerived READ isDerived WRITE setDerived RESET unsetDerived)
     Q_PROPERTY(QString default_ READ default_ WRITE setDefault_ STORED false)
     Q_PROPERTY(bool isComposite READ isComposite WRITE setComposite STORED false)
-    Q_PROPERTY(bool isReadOnly READ isReadOnly WRITE setReadOnly)
-    Q_PROPERTY(bool isID READ isID WRITE setID)
-    Q_PROPERTY(bool isDerivedUnion READ isDerivedUnion WRITE setDerivedUnion)
-    Q_PROPERTY(QtMof::AggregationKind aggregation READ aggregation WRITE setAggregation)
+    Q_PROPERTY(bool isReadOnly READ isReadOnly WRITE setReadOnly RESET unsetReadOnly)
+    Q_PROPERTY(bool isID READ isID WRITE setID RESET unsetID)
+    Q_PROPERTY(bool isDerivedUnion READ isDerivedUnion WRITE setDerivedUnion RESET unsetDerivedUnion)
+    Q_PROPERTY(QtMof::AggregationKind aggregation READ aggregation WRITE setAggregation RESET unsetAggregation)
     Q_PROPERTY(const QSet<QProperty *> * subsettedProperties READ subsettedProperties)
     Q_PROPERTY(QAssociation * owningAssociation READ owningAssociation WRITE setOwningAssociation)
     Q_PROPERTY(QValueSpecification * defaultValue READ defaultValue WRITE setDefaultValue)
@@ -99,18 +99,23 @@ public:
     // Attributes from QProperty
     Q_INVOKABLE bool isDerived() const;
     Q_INVOKABLE void setDerived(bool isDerived);
+    Q_INVOKABLE void unsetDerived();
     Q_INVOKABLE QString default_() const;
     Q_INVOKABLE void setDefault_(QString default_);
     Q_INVOKABLE bool isComposite() const;
     Q_INVOKABLE void setComposite(bool isComposite);
     Q_INVOKABLE bool isReadOnly() const;
     Q_INVOKABLE void setReadOnly(bool isReadOnly);
+    Q_INVOKABLE void unsetReadOnly();
     Q_INVOKABLE bool isID() const;
     Q_INVOKABLE void setID(bool isID);
+    Q_INVOKABLE void unsetID();
     Q_INVOKABLE bool isDerivedUnion() const;
     Q_INVOKABLE void setDerivedUnion(bool isDerivedUnion);
+    Q_INVOKABLE void unsetDerivedUnion();
     Q_INVOKABLE QtMof::AggregationKind aggregation() const;
     Q_INVOKABLE void setAggregation(QtMof::AggregationKind aggregation);
+    Q_INVOKABLE void unsetAggregation();
 
     // Association ends from QProperty
     Q_INVOKABLE const QSet<QProperty *> *subsettedProperties() const;

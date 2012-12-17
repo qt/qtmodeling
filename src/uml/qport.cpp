@@ -108,6 +108,11 @@ void QPort::setConjugated(bool isConjugated)
     }
 }
 
+void QPort::unsetConjugated()
+{
+    setConjugated(false);
+}
+
 /*!
     Specifies whether requests arriving at this port are sent to the classifier behavior of this classifier. Such ports are referred to as behavior port. Any invocation of a behavioral feature targeted at a behavior port will be handled by the instance of the owning classifier itself, rather than by any instances that this classifier may contain.
  */
@@ -129,6 +134,11 @@ void QPort::setBehavior(bool isBehavior)
     }
 }
 
+void QPort::unsetBehavior()
+{
+    setBehavior(false);
+}
+
 /*!
     If true indicates that this port is used to provide the published functionality of a classifier; if false, this port is used to implement the classifier but is not part of the essential externally-visible functionality of the classifier and can, therefore, be altered or deleted along with the internal implementation of the classifier and other properties that are considered part of its implementation.
  */
@@ -148,6 +158,11 @@ void QPort::setService(bool isService)
     if (d->isService != isService) {
         d->isService = isService;
     }
+}
+
+void QPort::unsetService()
+{
+    setService(true);
 }
 
 // ---------------------------------------------------------------
@@ -245,7 +260,6 @@ void QPort::registerMetaTypes() const
     qRegisterMetaType<const QSet<QPort *> *>("const QSet<QPort *> *");
     qRegisterMetaType<const QList<QPort *> *>("const QList<QPort *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QProtocolStateMachine) *>("QT_PREPEND_NAMESPACE_QTUML(QProtocolStateMachine) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QProtocolStateMachine) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QProtocolStateMachine) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QProtocolStateMachine) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QProtocolStateMachine) *> *");
@@ -253,14 +267,12 @@ void QPort::registerMetaTypes() const
     qRegisterMetaType<const QSet<QProtocolStateMachine *> *>("const QSet<QProtocolStateMachine *> *");
     qRegisterMetaType<const QList<QProtocolStateMachine *> *>("const QList<QProtocolStateMachine *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInterface) *>("QT_PREPEND_NAMESPACE_QTUML(QInterface) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInterface) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInterface) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInterface) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInterface) *> *");
     qRegisterMetaType<QInterface *>("QInterface *");
     qRegisterMetaType<const QSet<QInterface *> *>("const QSet<QInterface *> *");
     qRegisterMetaType<const QList<QInterface *> *>("const QList<QInterface *> *");
-
 
     QProperty::registerMetaTypes();
 

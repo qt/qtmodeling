@@ -237,14 +237,12 @@ void QInteractionFragment::registerMetaTypes() const
     qRegisterMetaType<const QSet<QInteractionFragment *> *>("const QSet<QInteractionFragment *> *");
     qRegisterMetaType<const QList<QInteractionFragment *> *>("const QList<QInteractionFragment *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QGeneralOrdering) *>("QT_PREPEND_NAMESPACE_QTUML(QGeneralOrdering) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QGeneralOrdering) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QGeneralOrdering) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QGeneralOrdering) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QGeneralOrdering) *> *");
     qRegisterMetaType<QGeneralOrdering *>("QGeneralOrdering *");
     qRegisterMetaType<const QSet<QGeneralOrdering *> *>("const QSet<QGeneralOrdering *> *");
     qRegisterMetaType<const QList<QGeneralOrdering *> *>("const QList<QGeneralOrdering *> *");
-
 
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInteractionOperand) *>("QT_PREPEND_NAMESPACE_QTUML(QInteractionOperand) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInteractionOperand) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInteractionOperand) *> *");
@@ -253,7 +251,6 @@ void QInteractionFragment::registerMetaTypes() const
     qRegisterMetaType<const QSet<QInteractionOperand *> *>("const QSet<QInteractionOperand *> *");
     qRegisterMetaType<const QList<QInteractionOperand *> *>("const QList<QInteractionOperand *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QLifeline) *>("QT_PREPEND_NAMESPACE_QTUML(QLifeline) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QLifeline) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QLifeline) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QLifeline) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QLifeline) *> *");
@@ -261,14 +258,12 @@ void QInteractionFragment::registerMetaTypes() const
     qRegisterMetaType<const QSet<QLifeline *> *>("const QSet<QLifeline *> *");
     qRegisterMetaType<const QList<QLifeline *> *>("const QList<QLifeline *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInteraction) *>("QT_PREPEND_NAMESPACE_QTUML(QInteraction) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInteraction) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInteraction) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInteraction) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInteraction) *> *");
     qRegisterMetaType<QInteraction *>("QInteraction *");
     qRegisterMetaType<const QSet<QInteraction *> *>("const QSet<QInteraction *> *");
     qRegisterMetaType<const QList<QInteraction *> *>("const QList<QInteraction *> *");
-
 
     QNamedElement::registerMetaTypes();
 

@@ -193,7 +193,6 @@ void QOpaqueExpression::registerMetaTypes() const
     qRegisterMetaType<const QSet<QOpaqueExpression *> *>("const QSet<QOpaqueExpression *> *");
     qRegisterMetaType<const QList<QOpaqueExpression *> *>("const QList<QOpaqueExpression *> *");
 
-
     QValueSpecification::registerMetaTypes();
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())

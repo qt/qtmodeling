@@ -134,7 +134,6 @@ void QDecisionNode::registerMetaTypes() const
     qRegisterMetaType<const QSet<QDecisionNode *> *>("const QSet<QDecisionNode *> *");
     qRegisterMetaType<const QList<QDecisionNode *> *>("const QList<QDecisionNode *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *>("QT_PREPEND_NAMESPACE_QTUML(QBehavior) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *");
@@ -142,14 +141,12 @@ void QDecisionNode::registerMetaTypes() const
     qRegisterMetaType<const QSet<QBehavior *> *>("const QSet<QBehavior *> *");
     qRegisterMetaType<const QList<QBehavior *> *>("const QList<QBehavior *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QObjectFlow) *>("QT_PREPEND_NAMESPACE_QTUML(QObjectFlow) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QObjectFlow) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QObjectFlow) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QObjectFlow) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QObjectFlow) *> *");
     qRegisterMetaType<QObjectFlow *>("QObjectFlow *");
     qRegisterMetaType<const QSet<QObjectFlow *> *>("const QSet<QObjectFlow *> *");
     qRegisterMetaType<const QList<QObjectFlow *> *>("const QList<QObjectFlow *> *");
-
 
     QControlNode::registerMetaTypes();
 

@@ -190,7 +190,6 @@ void QOccurrenceSpecification::registerMetaTypes() const
     qRegisterMetaType<const QSet<QOccurrenceSpecification *> *>("const QSet<QOccurrenceSpecification *> *");
     qRegisterMetaType<const QList<QOccurrenceSpecification *> *>("const QList<QOccurrenceSpecification *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QLifeline) *>("QT_PREPEND_NAMESPACE_QTUML(QLifeline) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QLifeline) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QLifeline) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QLifeline) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QLifeline) *> *");
@@ -198,14 +197,12 @@ void QOccurrenceSpecification::registerMetaTypes() const
     qRegisterMetaType<const QSet<QLifeline *> *>("const QSet<QLifeline *> *");
     qRegisterMetaType<const QList<QLifeline *> *>("const QList<QLifeline *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QGeneralOrdering) *>("QT_PREPEND_NAMESPACE_QTUML(QGeneralOrdering) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QGeneralOrdering) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QGeneralOrdering) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QGeneralOrdering) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QGeneralOrdering) *> *");
     qRegisterMetaType<QGeneralOrdering *>("QGeneralOrdering *");
     qRegisterMetaType<const QSet<QGeneralOrdering *> *>("const QSet<QGeneralOrdering *> *");
     qRegisterMetaType<const QList<QGeneralOrdering *> *>("const QList<QGeneralOrdering *> *");
-
 
     QInteractionFragment::registerMetaTypes();
 

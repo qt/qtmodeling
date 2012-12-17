@@ -134,14 +134,12 @@ void QExecutableNode::registerMetaTypes() const
     qRegisterMetaType<const QSet<QExecutableNode *> *>("const QSet<QExecutableNode *> *");
     qRegisterMetaType<const QList<QExecutableNode *> *>("const QList<QExecutableNode *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QExceptionHandler) *>("QT_PREPEND_NAMESPACE_QTUML(QExceptionHandler) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QExceptionHandler) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QExceptionHandler) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QExceptionHandler) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QExceptionHandler) *> *");
     qRegisterMetaType<QExceptionHandler *>("QExceptionHandler *");
     qRegisterMetaType<const QSet<QExceptionHandler *> *>("const QSet<QExceptionHandler *> *");
     qRegisterMetaType<const QList<QExceptionHandler *> *>("const QList<QExceptionHandler *> *");
-
 
     QActivityNode::registerMetaTypes();
 

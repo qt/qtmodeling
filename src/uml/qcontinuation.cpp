@@ -100,6 +100,11 @@ void QContinuation::setSetting(bool setting)
     }
 }
 
+void QContinuation::unsetSetting()
+{
+    setSetting(true);
+}
+
 void QContinuation::registerMetaTypes() const
 {
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QContinuation) *>("QT_PREPEND_NAMESPACE_QTUML(QContinuation) *");
@@ -108,7 +113,6 @@ void QContinuation::registerMetaTypes() const
     qRegisterMetaType<QContinuation *>("QContinuation *");
     qRegisterMetaType<const QSet<QContinuation *> *>("const QSet<QContinuation *> *");
     qRegisterMetaType<const QList<QContinuation *> *>("const QList<QContinuation *> *");
-
 
     QInteractionFragment::registerMetaTypes();
 

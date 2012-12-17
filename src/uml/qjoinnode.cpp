@@ -103,6 +103,11 @@ void QJoinNode::setCombineDuplicate(bool isCombineDuplicate)
     }
 }
 
+void QJoinNode::unsetCombineDuplicate()
+{
+    setCombineDuplicate(true);
+}
+
 // ---------------------------------------------------------------
 // ASSOCIATION ENDS FROM QJoinNode
 // ---------------------------------------------------------------
@@ -145,14 +150,12 @@ void QJoinNode::registerMetaTypes() const
     qRegisterMetaType<const QSet<QJoinNode *> *>("const QSet<QJoinNode *> *");
     qRegisterMetaType<const QList<QJoinNode *> *>("const QList<QJoinNode *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *>("QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *");
     qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
     qRegisterMetaType<const QSet<QValueSpecification *> *>("const QSet<QValueSpecification *> *");
     qRegisterMetaType<const QList<QValueSpecification *> *>("const QList<QValueSpecification *> *");
-
 
     QControlNode::registerMetaTypes();
 

@@ -105,6 +105,11 @@ void QObjectFlow::setMultireceive(bool isMultireceive)
     }
 }
 
+void QObjectFlow::unsetMultireceive()
+{
+    setMultireceive(false);
+}
+
 /*!
     Tells whether the objects in the flow are passed by multicasting.
  */
@@ -124,6 +129,11 @@ void QObjectFlow::setMulticast(bool isMulticast)
     if (d->isMulticast != isMulticast) {
         d->isMulticast = isMulticast;
     }
+}
+
+void QObjectFlow::unsetMulticast()
+{
+    setMulticast(false);
 }
 
 // ---------------------------------------------------------------
@@ -181,14 +191,12 @@ void QObjectFlow::registerMetaTypes() const
     qRegisterMetaType<const QSet<QObjectFlow *> *>("const QSet<QObjectFlow *> *");
     qRegisterMetaType<const QList<QObjectFlow *> *>("const QList<QObjectFlow *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *>("QT_PREPEND_NAMESPACE_QTUML(QBehavior) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *");
     qRegisterMetaType<QBehavior *>("QBehavior *");
     qRegisterMetaType<const QSet<QBehavior *> *>("const QSet<QBehavior *> *");
     qRegisterMetaType<const QList<QBehavior *> *>("const QList<QBehavior *> *");
-
 
     QActivityEdge::registerMetaTypes();
 

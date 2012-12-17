@@ -77,7 +77,7 @@ class Q_UML_EXPORT QOperation : public QWrappedObject
     Q_OBJECT
 
     Q_PROPERTY(qint32 lower READ lower STORED false)
-    Q_PROPERTY(bool isQuery READ isQuery WRITE setQuery)
+    Q_PROPERTY(bool isQuery READ isQuery WRITE setQuery RESET unsetQuery)
     Q_PROPERTY(bool isUnique READ isUnique STORED false)
     Q_PROPERTY(qint32 upper READ upper STORED false)
     Q_PROPERTY(bool isOrdered READ isOrdered STORED false)
@@ -146,6 +146,7 @@ public:
     // Attributes from aggregated QRedefinableElement
     Q_INVOKABLE bool isLeaf() const;
     Q_INVOKABLE void setLeaf(bool isLeaf);
+    Q_INVOKABLE void unsetLeaf();
 
     // Association ends from aggregated QRedefinableElement
     Q_INVOKABLE const QSet<QRedefinableElement *> *redefinedElements() const;
@@ -154,6 +155,7 @@ public:
     // Attributes from aggregated QFeature
     Q_INVOKABLE bool isStatic() const;
     Q_INVOKABLE void setStatic(bool isStatic);
+    Q_INVOKABLE void unsetStatic();
 
     // Association ends from aggregated QFeature
     Q_INVOKABLE const QSet<QClassifier *> *featuringClassifiers() const;
@@ -161,8 +163,10 @@ public:
     // Attributes from aggregated QBehavioralFeature
     Q_INVOKABLE QtUml::CallConcurrencyKind concurrency() const;
     Q_INVOKABLE void setConcurrency(QtUml::CallConcurrencyKind concurrency);
+    Q_INVOKABLE void unsetConcurrency();
     Q_INVOKABLE bool isAbstract() const;
     Q_INVOKABLE void setAbstract(bool isAbstract);
+    Q_INVOKABLE void unsetAbstract();
 
     // Association ends from aggregated QBehavioralFeature
     Q_INVOKABLE const QSet<QParameterSet *> *ownedParameterSets() const;
@@ -180,6 +184,7 @@ public:
     Q_INVOKABLE qint32 lower() const;
     Q_INVOKABLE bool isQuery() const;
     Q_INVOKABLE void setQuery(bool isQuery);
+    Q_INVOKABLE void unsetQuery();
     Q_INVOKABLE bool isUnique() const;
     Q_INVOKABLE qint32 upper() const;
     Q_INVOKABLE bool isOrdered() const;

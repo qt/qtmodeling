@@ -239,7 +239,6 @@ void QTemplateParameter::registerMetaTypes() const
     qRegisterMetaType<const QSet<QTemplateParameter *> *>("const QSet<QTemplateParameter *> *");
     qRegisterMetaType<const QList<QTemplateParameter *> *>("const QList<QTemplateParameter *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QParameterableElement) *>("QT_PREPEND_NAMESPACE_QTUML(QParameterableElement) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QParameterableElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QParameterableElement) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QParameterableElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QParameterableElement) *> *");
@@ -247,14 +246,12 @@ void QTemplateParameter::registerMetaTypes() const
     qRegisterMetaType<const QSet<QParameterableElement *> *>("const QSet<QParameterableElement *> *");
     qRegisterMetaType<const QList<QParameterableElement *> *>("const QList<QParameterableElement *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QTemplateSignature) *>("QT_PREPEND_NAMESPACE_QTUML(QTemplateSignature) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QTemplateSignature) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QTemplateSignature) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QTemplateSignature) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QTemplateSignature) *> *");
     qRegisterMetaType<QTemplateSignature *>("QTemplateSignature *");
     qRegisterMetaType<const QSet<QTemplateSignature *> *>("const QSet<QTemplateSignature *> *");
     qRegisterMetaType<const QList<QTemplateSignature *> *>("const QList<QTemplateSignature *> *");
-
 
     QElement::registerMetaTypes();
 

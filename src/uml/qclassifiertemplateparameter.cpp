@@ -105,6 +105,11 @@ void QClassifierTemplateParameter::setAllowSubstitutable(bool allowSubstitutable
     }
 }
 
+void QClassifierTemplateParameter::unsetAllowSubstitutable()
+{
+    setAllowSubstitutable(true);
+}
+
 // ---------------------------------------------------------------
 // ASSOCIATION ENDS FROM QClassifierTemplateParameter
 // ---------------------------------------------------------------
@@ -175,14 +180,12 @@ void QClassifierTemplateParameter::registerMetaTypes() const
     qRegisterMetaType<const QSet<QClassifierTemplateParameter *> *>("const QSet<QClassifierTemplateParameter *> *");
     qRegisterMetaType<const QList<QClassifierTemplateParameter *> *>("const QList<QClassifierTemplateParameter *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *>("QT_PREPEND_NAMESPACE_QTUML(QClassifier) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *");
     qRegisterMetaType<QClassifier *>("QClassifier *");
     qRegisterMetaType<const QSet<QClassifier *> *>("const QSet<QClassifier *> *");
     qRegisterMetaType<const QList<QClassifier *> *>("const QList<QClassifier *> *");
-
 
     QTemplateParameter::registerMetaTypes();
 

@@ -83,7 +83,6 @@ void QDevice::registerMetaTypes() const
     qRegisterMetaType<const QSet<QDevice *> *>("const QSet<QDevice *> *");
     qRegisterMetaType<const QList<QDevice *> *>("const QList<QDevice *> *");
 
-
     QNode::registerMetaTypes();
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())

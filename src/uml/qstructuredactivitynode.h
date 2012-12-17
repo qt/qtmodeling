@@ -73,7 +73,7 @@ class Q_UML_EXPORT QStructuredActivityNode : public QWrappedObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool mustIsolate READ mustIsolate WRITE setMustIsolate)
+    Q_PROPERTY(bool mustIsolate READ mustIsolate WRITE setMustIsolate RESET unsetMustIsolate)
     Q_PROPERTY(const QSet<QInputPin *> * structuredNodeInputs READ structuredNodeInputs)
     Q_PROPERTY(const QSet<QActivityNode *> * nodes READ nodes)
     Q_PROPERTY(const QSet<QOutputPin *> * structuredNodeOutputs READ structuredNodeOutputs)
@@ -113,6 +113,7 @@ public:
     // Attributes from aggregated QRedefinableElement
     Q_INVOKABLE bool isLeaf() const;
     Q_INVOKABLE void setLeaf(bool isLeaf);
+    Q_INVOKABLE void unsetLeaf();
 
     // Association ends from aggregated QRedefinableElement
     Q_INVOKABLE const QSet<QRedefinableElement *> *redefinedElements() const;
@@ -146,6 +147,7 @@ public:
     // Attributes from aggregated QAction
     Q_INVOKABLE bool isLocallyReentrant() const;
     Q_INVOKABLE void setLocallyReentrant(bool isLocallyReentrant);
+    Q_INVOKABLE void unsetLocallyReentrant();
 
     // Association ends from aggregated QAction
     Q_INVOKABLE QClassifier *context() const;
@@ -181,6 +183,7 @@ public:
     // Attributes from QStructuredActivityNode
     Q_INVOKABLE bool mustIsolate() const;
     Q_INVOKABLE void setMustIsolate(bool mustIsolate);
+    Q_INVOKABLE void unsetMustIsolate();
 
     // Association ends from QStructuredActivityNode
     Q_INVOKABLE const QSet<QInputPin *> *structuredNodeInputs() const;

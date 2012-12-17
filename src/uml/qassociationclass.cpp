@@ -87,7 +87,6 @@ void QAssociationClass::registerMetaTypes() const
     qRegisterMetaType<const QSet<QAssociationClass *> *>("const QSet<QAssociationClass *> *");
     qRegisterMetaType<const QList<QAssociationClass *> *>("const QList<QAssociationClass *> *");
 
-
     QWrappedObject::registerMetaTypes();
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())

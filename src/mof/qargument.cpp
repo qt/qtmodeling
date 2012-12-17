@@ -119,14 +119,12 @@ void QArgument::registerMetaTypes() const
     qRegisterMetaType<const QSet<QArgument *> *>("const QSet<QArgument *> *");
     qRegisterMetaType<const QList<QArgument *> *>("const QList<QArgument *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QMofObject) *>("QT_PREPEND_NAMESPACE_QTMOF(QMofObject) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QMofObject) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QMofObject) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QMofObject) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QMofObject) *> *");
     qRegisterMetaType<QMofObject *>("QMofObject *");
     qRegisterMetaType<const QSet<QMofObject *> *>("const QSet<QMofObject *> *");
     qRegisterMetaType<const QList<QMofObject *> *>("const QList<QMofObject *> *");
-
 
     QWrappedObject::registerMetaTypes();
 

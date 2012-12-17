@@ -117,6 +117,11 @@ void QBehavior::setReentrant(bool isReentrant)
     }
 }
 
+void QBehavior::unsetReentrant()
+{
+    setReentrant(true);
+}
+
 // ---------------------------------------------------------------
 // ASSOCIATION ENDS FROM QBehavior
 // ---------------------------------------------------------------
@@ -356,14 +361,12 @@ void QBehavior::registerMetaTypes() const
     qRegisterMetaType<const QSet<QBehavior *> *>("const QSet<QBehavior *> *");
     qRegisterMetaType<const QList<QBehavior *> *>("const QList<QBehavior *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QBehavioralFeature) *>("QT_PREPEND_NAMESPACE_QTUML(QBehavioralFeature) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QBehavioralFeature) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QBehavioralFeature) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QBehavioralFeature) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QBehavioralFeature) *> *");
     qRegisterMetaType<QBehavioralFeature *>("QBehavioralFeature *");
     qRegisterMetaType<const QSet<QBehavioralFeature *> *>("const QSet<QBehavioralFeature *> *");
     qRegisterMetaType<const QList<QBehavioralFeature *> *>("const QList<QBehavioralFeature *> *");
-
 
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QConstraint) *>("QT_PREPEND_NAMESPACE_QTUML(QConstraint) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QConstraint) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QConstraint) *> *");
@@ -372,14 +375,12 @@ void QBehavior::registerMetaTypes() const
     qRegisterMetaType<const QSet<QConstraint *> *>("const QSet<QConstraint *> *");
     qRegisterMetaType<const QList<QConstraint *> *>("const QList<QConstraint *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QParameter) *>("QT_PREPEND_NAMESPACE_QTUML(QParameter) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QParameter) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QParameter) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QParameter) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QParameter) *> *");
     qRegisterMetaType<QParameter *>("QParameter *");
     qRegisterMetaType<const QSet<QParameter *> *>("const QSet<QParameter *> *");
     qRegisterMetaType<const QList<QParameter *> *>("const QList<QParameter *> *");
-
 
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QBehavioredClassifier) *>("QT_PREPEND_NAMESPACE_QTUML(QBehavioredClassifier) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QBehavioredClassifier) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QBehavioredClassifier) *> *");
@@ -388,14 +389,12 @@ void QBehavior::registerMetaTypes() const
     qRegisterMetaType<const QSet<QBehavioredClassifier *> *>("const QSet<QBehavioredClassifier *> *");
     qRegisterMetaType<const QList<QBehavioredClassifier *> *>("const QList<QBehavioredClassifier *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QParameterSet) *>("QT_PREPEND_NAMESPACE_QTUML(QParameterSet) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QParameterSet) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QParameterSet) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QParameterSet) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QParameterSet) *> *");
     qRegisterMetaType<QParameterSet *>("QParameterSet *");
     qRegisterMetaType<const QSet<QParameterSet *> *>("const QSet<QParameterSet *> *");
     qRegisterMetaType<const QList<QParameterSet *> *>("const QList<QParameterSet *> *");
-
 
     QClass::registerMetaTypes();
 

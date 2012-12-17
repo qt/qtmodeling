@@ -61,7 +61,7 @@ class Q_UML_EXPORT QLinkEndDestructionData : public QLinkEndData
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool isDestroyDuplicates READ isDestroyDuplicates WRITE setDestroyDuplicates)
+    Q_PROPERTY(bool isDestroyDuplicates READ isDestroyDuplicates WRITE setDestroyDuplicates RESET unsetDestroyDuplicates)
     Q_PROPERTY(QInputPin * destroyAt READ destroyAt WRITE setDestroyAt)
 
     Q_DISABLE_COPY(QLinkEndDestructionData)
@@ -74,6 +74,7 @@ public:
     // Attributes from QLinkEndDestructionData
     Q_INVOKABLE bool isDestroyDuplicates() const;
     Q_INVOKABLE void setDestroyDuplicates(bool isDestroyDuplicates);
+    Q_INVOKABLE void unsetDestroyDuplicates();
 
     // Association ends from QLinkEndDestructionData
     Q_INVOKABLE QInputPin *destroyAt() const;

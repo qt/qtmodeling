@@ -61,8 +61,8 @@ class Q_UML_EXPORT QDestroyObjectAction : public QAction
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool isDestroyLinks READ isDestroyLinks WRITE setDestroyLinks)
-    Q_PROPERTY(bool isDestroyOwnedObjects READ isDestroyOwnedObjects WRITE setDestroyOwnedObjects)
+    Q_PROPERTY(bool isDestroyLinks READ isDestroyLinks WRITE setDestroyLinks RESET unsetDestroyLinks)
+    Q_PROPERTY(bool isDestroyOwnedObjects READ isDestroyOwnedObjects WRITE setDestroyOwnedObjects RESET unsetDestroyOwnedObjects)
     Q_PROPERTY(QInputPin * target READ target WRITE setTarget)
 
     Q_DISABLE_COPY(QDestroyObjectAction)
@@ -75,8 +75,10 @@ public:
     // Attributes from QDestroyObjectAction
     Q_INVOKABLE bool isDestroyLinks() const;
     Q_INVOKABLE void setDestroyLinks(bool isDestroyLinks);
+    Q_INVOKABLE void unsetDestroyLinks();
     Q_INVOKABLE bool isDestroyOwnedObjects() const;
     Q_INVOKABLE void setDestroyOwnedObjects(bool isDestroyOwnedObjects);
+    Q_INVOKABLE void unsetDestroyOwnedObjects();
 
     // Association ends from QDestroyObjectAction
     Q_INVOKABLE QInputPin *target() const;

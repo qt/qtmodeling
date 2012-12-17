@@ -122,14 +122,12 @@ void QExtensionPoint::registerMetaTypes() const
     qRegisterMetaType<const QSet<QExtensionPoint *> *>("const QSet<QExtensionPoint *> *");
     qRegisterMetaType<const QList<QExtensionPoint *> *>("const QList<QExtensionPoint *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QUseCase) *>("QT_PREPEND_NAMESPACE_QTUML(QUseCase) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QUseCase) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QUseCase) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QUseCase) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QUseCase) *> *");
     qRegisterMetaType<QUseCase *>("QUseCase *");
     qRegisterMetaType<const QSet<QUseCase *> *>("const QSet<QUseCase *> *");
     qRegisterMetaType<const QList<QUseCase *> *>("const QList<QUseCase *> *");
-
 
     QRedefinableElement::registerMetaTypes();
 

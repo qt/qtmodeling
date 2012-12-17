@@ -83,7 +83,6 @@ void QObservation::registerMetaTypes() const
     qRegisterMetaType<const QSet<QObservation *> *>("const QSet<QObservation *> *");
     qRegisterMetaType<const QList<QObservation *> *>("const QList<QObservation *> *");
 
-
     QPackageableElement::registerMetaTypes();
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())

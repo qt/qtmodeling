@@ -192,6 +192,11 @@ void QAssociation::setVisibility(QtMof::VisibilityKind visibility)
     (qwrappedobject_cast<QPackageableElement *>(this))->setVisibility(visibility);
 }
 
+void QAssociation::unsetVisibility()
+{
+    setVisibility(QtMof::VisibilityPublic);
+}
+
 // ---------------------------------------------------------------
 // ASSOCIATION ENDS FROM AGGREGATED QType
 // ---------------------------------------------------------------
@@ -224,6 +229,11 @@ bool QAssociation::isLeaf() const
 void QAssociation::setLeaf(bool isLeaf)
 {
     (qwrappedobject_cast<QRedefinableElement *>(this))->setLeaf(isLeaf);
+}
+
+void QAssociation::unsetLeaf()
+{
+    setLeaf(false);
 }
 
 // ---------------------------------------------------------------
@@ -345,6 +355,11 @@ void QAssociation::setAbstract(bool isAbstract)
     (qwrappedobject_cast<QClassifier *>(this))->setAbstract(isAbstract);
 }
 
+void QAssociation::unsetAbstract()
+{
+    setAbstract(false);
+}
+
 /*!
     If true, the Classifier cannot be specialized by generalization. Note that this property is preserved through package merge operations; that is, the capability to specialize a Classifier (i.e., isFinalSpecialization =false) must be preserved in the resulting Classifier of a package merge operation where a Classifier with isFinalSpecialization =false is merged with a matching Classifier with isFinalSpecialization =true: the resulting Classifier will have isFinalSpecialization =false.
  */
@@ -356,6 +371,11 @@ bool QAssociation::isFinalSpecialization() const
 void QAssociation::setFinalSpecialization(bool isFinalSpecialization)
 {
     (qwrappedobject_cast<QClassifier *>(this))->setFinalSpecialization(isFinalSpecialization);
+}
+
+void QAssociation::unsetFinalSpecialization()
+{
+    setFinalSpecialization(false);
 }
 
 // ---------------------------------------------------------------
@@ -463,6 +483,11 @@ void QAssociation::setDerived(bool isDerived)
     if (d->isDerived != isDerived) {
         d->isDerived = isDerived;
     }
+}
+
+void QAssociation::unsetDerived()
+{
+    setDerived(false);
 }
 
 // ---------------------------------------------------------------
@@ -617,7 +642,6 @@ void QAssociation::registerMetaTypes() const
     qRegisterMetaType<const QSet<QAssociation *> *>("const QSet<QAssociation *> *");
     qRegisterMetaType<const QList<QAssociation *> *>("const QList<QAssociation *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QType) *>("QT_PREPEND_NAMESPACE_QTMOF(QType) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QType) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QType) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QType) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QType) *> *");
@@ -625,14 +649,12 @@ void QAssociation::registerMetaTypes() const
     qRegisterMetaType<const QSet<QType *> *>("const QSet<QType *> *");
     qRegisterMetaType<const QList<QType *> *>("const QList<QType *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QProperty) *>("QT_PREPEND_NAMESPACE_QTMOF(QProperty) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QProperty) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QProperty) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QProperty) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QProperty) *> *");
     qRegisterMetaType<QProperty *>("QProperty *");
     qRegisterMetaType<const QSet<QProperty *> *>("const QSet<QProperty *> *");
     qRegisterMetaType<const QList<QProperty *> *>("const QList<QProperty *> *");
-
 
     QWrappedObject::registerMetaTypes();
 

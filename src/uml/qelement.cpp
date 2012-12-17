@@ -217,14 +217,12 @@ void QElement::registerMetaTypes() const
     qRegisterMetaType<const QSet<QElement *> *>("const QSet<QElement *> *");
     qRegisterMetaType<const QList<QElement *> *>("const QList<QElement *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QComment) *>("QT_PREPEND_NAMESPACE_QTUML(QComment) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QComment) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QComment) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QComment) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QComment) *> *");
     qRegisterMetaType<QComment *>("QComment *");
     qRegisterMetaType<const QSet<QComment *> *>("const QSet<QComment *> *");
     qRegisterMetaType<const QList<QComment *> *>("const QList<QComment *> *");
-
 
     QWrappedObject::registerMetaTypes();
 

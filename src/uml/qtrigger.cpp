@@ -145,7 +145,6 @@ void QTrigger::registerMetaTypes() const
     qRegisterMetaType<const QSet<QTrigger *> *>("const QSet<QTrigger *> *");
     qRegisterMetaType<const QList<QTrigger *> *>("const QList<QTrigger *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QEvent) *>("QT_PREPEND_NAMESPACE_QTUML(QEvent) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QEvent) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QEvent) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QEvent) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QEvent) *> *");
@@ -153,14 +152,12 @@ void QTrigger::registerMetaTypes() const
     qRegisterMetaType<const QSet<QEvent *> *>("const QSet<QEvent *> *");
     qRegisterMetaType<const QList<QEvent *> *>("const QList<QEvent *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QPort) *>("QT_PREPEND_NAMESPACE_QTUML(QPort) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QPort) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QPort) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QPort) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QPort) *> *");
     qRegisterMetaType<QPort *>("QPort *");
     qRegisterMetaType<const QSet<QPort *> *>("const QSet<QPort *> *");
     qRegisterMetaType<const QList<QPort *> *>("const QList<QPort *> *");
-
 
     QNamedElement::registerMetaTypes();
 

@@ -111,14 +111,12 @@ void QInstanceValue::registerMetaTypes() const
     qRegisterMetaType<const QSet<QInstanceValue *> *>("const QSet<QInstanceValue *> *");
     qRegisterMetaType<const QList<QInstanceValue *> *>("const QList<QInstanceValue *> *");
 
-
     qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInstanceSpecification) *>("QT_PREPEND_NAMESPACE_QTUML(QInstanceSpecification) *");
     qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInstanceSpecification) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInstanceSpecification) *> *");
     qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInstanceSpecification) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInstanceSpecification) *> *");
     qRegisterMetaType<QInstanceSpecification *>("QInstanceSpecification *");
     qRegisterMetaType<const QSet<QInstanceSpecification *> *>("const QSet<QInstanceSpecification *> *");
     qRegisterMetaType<const QList<QInstanceSpecification *> *>("const QList<QInstanceSpecification *> *");
-
 
     QValueSpecification::registerMetaTypes();
 
