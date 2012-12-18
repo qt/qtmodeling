@@ -72,6 +72,15 @@ QWrappedObject::~QWrappedObject()
 {
 }
 
+void QWrappedObject::setObjectName(const QString &name)
+{
+    QWrappedObject *topLevelWrapperObject = qTopLevelWrapper(this);
+    if (topLevelWrapperObject->metaObject()->indexOfProperty("name") != -1)
+        topLevelWrapperObject->setProperty("name", name);
+
+    QObject::setObjectName(name);
+}
+
 void QWrappedObject::initialize(QWrappedObject *wrapper)
 {
     setWrapper(wrapper);

@@ -83,25 +83,47 @@ QMetaWrappedObject::~QMetaWrappedObject()
     delete d_ptr;
 }
 
-int QMetaWrappedObject::propertyCount() const
+int QMetaWrappedObject::propertyGroupCount() const
 {
-    return d_ptr->propertyInfos.size();
+    return d_ptr->propertyInfos.uniqueKeys().size();
 }
 
-QMetaPropertyInfo QMetaWrappedObject::property(int index) const
+int QMetaWrappedObject::propertyCount() const
 {
-    return d_ptr->propertyInfos.at(index);
+    return d_ptr->propertyInfos.count();
+}
+
+int QMetaWrappedObject::propertyCount(int groupIndex) const
+{
+    return d_ptr->propertyInfos.count(d_ptr->propertyInfos.uniqueKeys().at(groupIndex));
+}
+
+const QMetaPropertyInfo &QMetaWrappedObject::property(int index) const
+{
+    QMultiMap<QString, QMetaPropertyInfo>::const_iterator i = d_ptr->propertyInfos.constBegin();
+    return *(i+index);
+}
+
+const QMetaPropertyInfo &QMetaWrappedObject::property(int groupIndex, int index) const
+{
+    QMultiMap<QString, QMetaPropertyInfo>::const_iterator i = d_ptr->propertyInfos.find(d_ptr->propertyInfos.uniqueKeys().at(groupIndex));
+    return *(i+index);
 }
 
 int QMetaWrappedObject::indexOfProperty(const char *name) const
 {
     int i = 0;
-    foreach (const QMetaPropertyInfo &propertyInfo, d_ptr->propertyInfos) {
+    foreach (const QMetaPropertyInfo &propertyInfo, d_ptr->propertyInfos.values()) {
         if (propertyInfo == name)
             return i;
         ++i;
     }
     return -1;
+}
+
+int QMetaWrappedObject::indexOfGroup(const char *name) const
+{
+    return d_ptr->propertyInfos.uniqueKeys().lastIndexOf(QString::fromLatin1(name));
 }
 
 void QMetaWrappedObject::handleWrappedObjectProperties(const QWrappedObject *wrappingObject, QStringList &visitedClasses) const
@@ -128,9 +150,9 @@ void QMetaWrappedObject::handleWrappedObjectProperties(const QWrappedObject *wra
         for (int i = metaObject->propertyOffset(); i < propertyCount; ++i) {
             propertyInfo.metaProperty = metaObject->property(i);
             int index;
-            if ((index = d_ptr->propertyInfos.indexOf(propertyInfo)) != -1)
-                d_ptr->propertyInfos.removeAt(index);
-            d_ptr->propertyInfos << propertyInfo;
+            if ((index = d_ptr->propertyInfos.values().indexOf(propertyInfo)) != -1)
+                d_ptr->propertyInfos.remove(QString::fromLatin1(metaObject->className()), propertyInfo);
+            d_ptr->propertyInfos.insertMulti(QString::fromLatin1(metaObject->className()), propertyInfo);
         }
     }
 }

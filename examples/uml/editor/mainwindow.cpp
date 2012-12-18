@@ -28,6 +28,7 @@
 #include <QtGui/QPixmap>
 
 #include "propertyeditoritemdelegate.h"
+#include "wrappedobjectpropertymodel.h"
 
 using namespace QtUml;
 using namespace QtWrappedObjects;
@@ -37,6 +38,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    WrappedObjectPropertyModel m;
 
     QPalette palette = ui->propertyEditor->palette();
 

@@ -82,9 +82,13 @@ class Q_WRAPPEDOBJECTS_EXPORT QMetaWrappedObject
 public:
     virtual ~QMetaWrappedObject();
 
+    int propertyGroupCount() const;
     int propertyCount() const;
-    QMetaPropertyInfo property(int index) const;
+    int propertyCount(int groupIndex) const;
+    const QMetaPropertyInfo &property(int index) const;
+    const QMetaPropertyInfo &property(int groupIndex, int index) const;
     int indexOfProperty(const char *name) const;
+    int indexOfGroup(const char *name) const;
 
 protected:
     explicit QMetaWrappedObject(QWrappedObject *wrappedObject);
