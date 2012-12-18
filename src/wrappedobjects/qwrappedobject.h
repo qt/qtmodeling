@@ -70,6 +70,8 @@ public:
     Q_INVOKABLE explicit QWrappedObject(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QWrappedObject();
 
+    void setObjectName(const QString &name);
+
     const QList<QWrappedObject *> &wrappedObjects() const;
 
     void setWrapper(QWrappedObject *wrapper);

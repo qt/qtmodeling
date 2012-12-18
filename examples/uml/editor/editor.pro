@@ -16,11 +16,13 @@ CONFIG += c++11
 SOURCES += main.cpp\
         mainwindow.cpp \
     propertyeditoritemdelegate.cpp \
-    propertyeditor.cpp
+    propertyeditor.cpp \
+    wrappedobjectpropertymodel.cpp
 
 HEADERS  += mainwindow.h \
     propertyeditoritemdelegate.h \
-    propertyeditor.h
+    propertyeditor.h \
+    wrappedobjectpropertymodel.h
 
 FORMS    += mainwindow.ui
 
