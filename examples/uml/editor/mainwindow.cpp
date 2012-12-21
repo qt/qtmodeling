@@ -39,8 +39,6 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    WrappedObjectPropertyModel m;
-
     QPalette palette = ui->propertyEditor->palette();
 
     palette.setColor(QPalette::Active, QPalette::Base, QColor(255, 242, 222));
@@ -85,6 +83,14 @@ MainWindow::MainWindow(QWidget *parent) :
 
     model->addNestedPackage(package);
     model->addOwnedType(primitiveType);
+
+    WrappedObjectPropertyModel *m = new WrappedObjectPropertyModel;
+    m->setWrappedObject(model);
+    ui->treeView->setPalette(palette);
+    ui->treeView->setAlternatingRowColors(true);
+    ui->treeView->setSelectionMode(QAbstractItemView::SingleSelection);
+    ui->treeView->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui->treeView->setModel(m);
 
     populateModelExplorer(model);
     ui->modelExplorer->setCurrentItem(ui->modelExplorer->topLevelItem(0));

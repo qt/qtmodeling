@@ -101,15 +101,15 @@ int QMetaWrappedObject::propertyCount(int groupIndex) const
                d_ptr->propertyInfos.count() - d_ptr->propertyGroupInfos[groupIndex].second;
 }
 
-const QMetaPropertyInfo &QMetaWrappedObject::property(int index) const
+QMetaPropertyInfo &QMetaWrappedObject::property(int index) const
 {
-    QList<QMetaPropertyInfo>::const_iterator i = d_ptr->propertyInfos.constBegin();
+    QList<QMetaPropertyInfo>::iterator i = d_ptr->propertyInfos.begin();
     return *(i+index);
 }
 
-const QMetaPropertyInfo &QMetaWrappedObject::property(int groupIndex, int index) const
+QMetaPropertyInfo &QMetaWrappedObject::property(int groupIndex, int index) const
 {
-    QList<QMetaPropertyInfo>::const_iterator i = d_ptr->propertyInfos.constBegin();
+    QList<QMetaPropertyInfo>::iterator i = d_ptr->propertyInfos.begin();
     return *(i+d_ptr->propertyGroupInfos[groupIndex].second+index);
 }
 
