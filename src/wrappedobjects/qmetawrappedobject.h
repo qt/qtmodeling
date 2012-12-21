@@ -85,8 +85,8 @@ public:
     int propertyGroupCount() const;
     int propertyCount() const;
     int propertyCount(int groupIndex) const;
-    const QMetaPropertyInfo &property(int index) const;
-    const QMetaPropertyInfo &property(int groupIndex, int index) const;
+    QMetaPropertyInfo &property(int index) const;
+    QMetaPropertyInfo &property(int groupIndex, int index) const;
     int indexOfProperty(const char *name) const;
     int indexOfGroup(const char *name) const;
 
