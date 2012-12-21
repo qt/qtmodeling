@@ -59,7 +59,8 @@ public:
 
     QMetaWrappedObject *q_ptr;
     const QWrappedObject *wrappedObject;
-    QMultiMap<QString, QMetaPropertyInfo> propertyInfos;
+    QList<QMetaPropertyInfo> propertyInfos;
+    QList<QPair<QString, int>> propertyGroupInfos;
 };
 
 QT_END_NAMESPACE_QTWRAPPEDOBJECTS
