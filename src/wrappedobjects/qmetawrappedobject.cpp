@@ -85,7 +85,7 @@ QMetaWrappedObject::~QMetaWrappedObject()
 
 int QMetaWrappedObject::propertyGroupCount() const
 {
-    return d_ptr->propertyInfos.uniqueKeys().size();
+    return d_ptr->propertyGroupInfos.count();
 }
 
 int QMetaWrappedObject::propertyCount() const
@@ -95,35 +95,40 @@ int QMetaWrappedObject::propertyCount() const
 
 int QMetaWrappedObject::propertyCount(int groupIndex) const
 {
-    return d_ptr->propertyInfos.count(d_ptr->propertyInfos.uniqueKeys().at(groupIndex));
+    return (groupIndex < d_ptr->propertyGroupInfos.count() - 1) ?
+               d_ptr->propertyGroupInfos[groupIndex+1].second - d_ptr->propertyGroupInfos[groupIndex].second
+               :
+               d_ptr->propertyInfos.count() - d_ptr->propertyGroupInfos[groupIndex].second;
 }
 
 const QMetaPropertyInfo &QMetaWrappedObject::property(int index) const
 {
-    QMultiMap<QString, QMetaPropertyInfo>::const_iterator i = d_ptr->propertyInfos.constBegin();
+    QList<QMetaPropertyInfo>::const_iterator i = d_ptr->propertyInfos.constBegin();
     return *(i+index);
 }
 
 const QMetaPropertyInfo &QMetaWrappedObject::property(int groupIndex, int index) const
 {
-    QMultiMap<QString, QMetaPropertyInfo>::const_iterator i = d_ptr->propertyInfos.find(d_ptr->propertyInfos.uniqueKeys().at(groupIndex));
-    return *(i+index);
+    QList<QMetaPropertyInfo>::const_iterator i = d_ptr->propertyInfos.constBegin();
+    return *(i+groupIndex+index);
 }
 
 int QMetaWrappedObject::indexOfProperty(const char *name) const
 {
-    int i = 0;
-    foreach (const QMetaPropertyInfo &propertyInfo, d_ptr->propertyInfos.values()) {
-        if (propertyInfo == name)
-            return i;
-        ++i;
-    }
+    QList<QMetaPropertyInfo>::const_iterator iend = d_ptr->propertyInfos.constEnd();
+    for (QList<QMetaPropertyInfo>::const_iterator i = d_ptr->propertyInfos.constBegin(); i < iend; ++i)
+        if (*i == name)
+            return i-d_ptr->propertyInfos.constBegin();
     return -1;
 }
 
 int QMetaWrappedObject::indexOfGroup(const char *name) const
 {
-    return d_ptr->propertyInfos.uniqueKeys().lastIndexOf(QString::fromLatin1(name));
+    QList<QPair<QString, int>>::const_iterator iend = d_ptr->propertyGroupInfos.constEnd();
+    for (QList<QPair<QString, int>>::const_iterator i = d_ptr->propertyGroupInfos.constBegin(); i < iend; ++i)
+        if (i->first == QString::fromLatin1(name))
+            return i->second;
+    return -1;
 }
 
 void QMetaWrappedObject::handleWrappedObjectProperties(const QWrappedObject *wrappingObject, QStringList &visitedClasses) const
@@ -146,13 +151,14 @@ void QMetaWrappedObject::handleWrappedObjectProperties(const QWrappedObject *wra
         propertyInfo.propertyMetaObject = metaObject;
         propertyInfo.propertyWrappedObject = const_cast<QWrappedObject *>(wrappingObject);
         propertyInfo.wasChanged = false;
+        d_ptr->propertyGroupInfos << QPair<QString, int>(QString::fromLatin1(metaObject->className()), d_ptr->propertyInfos.count());
         int propertyCount = metaObject->propertyCount();
         for (int i = metaObject->propertyOffset(); i < propertyCount; ++i) {
             propertyInfo.metaProperty = metaObject->property(i);
             int index;
-            if ((index = d_ptr->propertyInfos.values().indexOf(propertyInfo)) != -1)
-                d_ptr->propertyInfos.remove(QString::fromLatin1(metaObject->className()), propertyInfo);
-            d_ptr->propertyInfos.insertMulti(QString::fromLatin1(metaObject->className()), propertyInfo);
+            if ((index = d_ptr->propertyInfos.indexOf(propertyInfo)) != -1)
+                d_ptr->propertyInfos.removeAll(propertyInfo);
+            d_ptr->propertyInfos << propertyInfo;
         }
     }
 }
