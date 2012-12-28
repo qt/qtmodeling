@@ -1,7 +1,13 @@
 #include "wrappedobjectpropertymodel.h"
 
 #include <QtWrappedObjects/QMetaPropertyInfo>
+
+#include <QtCore/QRegularExpression>
+#include <QtCore/QSize>
 #include <QtCore/QDebug>
+
+#include <QtGui/QFontMetrics>
+#include <QtGui/QBrush>
 
 using QtWrappedObjects::QMetaPropertyInfo;
 
@@ -12,28 +18,20 @@ WrappedObjectPropertyModel::WrappedObjectPropertyModel(QObject *parent) :
 
 void WrappedObjectPropertyModel::setWrappedObject(QWrappedObject *wrappedObject)
 {
+    beginResetModel();
     _metaWrappedObject = wrappedObject->metaWrappedObject();
+    endResetModel();
 }
 
 QModelIndex WrappedObjectPropertyModel::index(int row, int column, const QModelIndex &parent) const
 {
-    qDebug() << "INDEX";
-    qDebug() << "row: " << row;
-    qDebug() << "column: " << column;
-    qDebug() << "parent is valid ? " << parent.isValid();
-    qDebug() << "parent row: " << parent.row();
-    qDebug() << "parent column: " << parent.column();
     if (row < 0 || column < 0 || column >= 2 || (parent.isValid() && parent.column() != 0))
         return QModelIndex();
-    return createIndex(row, column, (parent.row() != -1) ? static_cast<void *>(&_metaWrappedObject->property(parent.row(), row)):0);
+    return createIndex(row, column, (parent.isValid()) ? static_cast<void *>(&_metaWrappedObject->property(parent.row(), row)):0);
 }
 
 QModelIndex WrappedObjectPropertyModel::parent(const QModelIndex &child) const
 {
-    qDebug() << "PARENT";
-    qDebug() << "child is valid ? " << child.isValid();
-    qDebug() << "child row: " << child.row();
-    qDebug() << "child column: " << child.column();
     QMetaPropertyInfo *metaPropertyInfo = static_cast<QMetaPropertyInfo *>(child.internalPointer());
     if (!child.isValid() || !metaPropertyInfo)
         return QModelIndex();
@@ -42,40 +40,143 @@ QModelIndex WrappedObjectPropertyModel::parent(const QModelIndex &child) const
 
 int WrappedObjectPropertyModel::rowCount(const QModelIndex &parent) const
 {
-    qDebug() << "ROWCOUNT";
-    qDebug() << "parent is valid ? " << parent.isValid();
-    qDebug() << "parent row: " << parent.row();
-    qDebug() << "parent column: " << parent.column();
     if (parent.isValid() && parent.column() != 0)
         return 0;
-    qDebug() << "ROWCOUNT retornando " << ((parent.row() == -1) ? _metaWrappedObject->propertyGroupCount():_metaWrappedObject->propertyCount(parent.row()));
-    return (parent.row() == -1) ? _metaWrappedObject->propertyGroupCount():_metaWrappedObject->propertyCount(parent.row());
+    return (parent.row() == -1) ? _metaWrappedObject->propertyGroupCount():
+                                  (!parent.internalPointer()) ? _metaWrappedObject->propertyCount(parent.row()):0;
 }
 
 int WrappedObjectPropertyModel::columnCount(const QModelIndex &parent) const
 {
-    qDebug() << "COLUMNCOUNT";
-    qDebug() << "parent is valid ? " << parent.isValid();
-    qDebug() << "parent row: " << parent.row();
-    qDebug() << "parent column: " << parent.column();
     return (parent.isValid() && parent.column() != 0) ? 0:2;
 }
 
 QVariant WrappedObjectPropertyModel::data(const QModelIndex &index, int role) const
 {
-    qDebug() << "DATA";
-    qDebug() << "index is valid ? " << index.isValid();
-    qDebug() << "index row: " << index.row();
-    qDebug() << "index column: " << index.column();
     if (_metaWrappedObject->propertyCount() == 0 || index.column() < 0 || index.column() >= 2)
         return QVariant();
-    QMetaPropertyInfo *metaPropertyInfo = static_cast<QMetaPropertyInfo *>(index.internalPointer());
-    if (role == Qt::DisplayRole || role == Qt::EditRole) {
-        switch (index.column()) {
-            case 0: return (metaPropertyInfo) ? metaPropertyInfo->propertyMetaObject->className():_metaWrappedObject->property(index.row(), 0).propertyMetaObject->className();
-            case 1: return (index.parent().row() != -1) ? metaPropertyInfo->metaProperty.read(metaPropertyInfo->propertyWrappedObject):QVariant();
-            default:  Q_ASSERT(false);
+    switch (role) {
+        case Qt::DisplayRole:
+        case Qt::EditRole: {
+            QMetaPropertyInfo *metaPropertyInfo = static_cast<QMetaPropertyInfo *>(index.internalPointer());
+            switch (index.column()) {
+                case 0: {
+                    if (metaPropertyInfo) {
+                        QMetaProperty metaProperty = metaPropertyInfo->metaProperty;
+                        QString propertyName = QString(metaProperty.name()).remove(QRegularExpression("_$")).remove(QRegularExpression("^is"));
+                        if (propertyName != propertyName.toUpper())
+                            propertyName = propertyName.replace(0, 1, propertyName.left(1).toLower());
+                        return propertyName + (!metaProperty.isWritable() ? " (RO)":"");
+                    }
+                    return _metaWrappedObject->property(index.row(), 0).propertyMetaObject->className();
+                }
+                case 1: {
+                    if (index.parent().row() != -1 && metaPropertyInfo) {
+                        QMetaProperty metaProperty = metaPropertyInfo->metaProperty;
+                        QWrappedObject *propertyWrappedObject = metaPropertyInfo->propertyWrappedObject;
+                        QString typeName = metaProperty.typeName();
+                        QVariant variant = metaProperty.read(propertyWrappedObject);
+                        if (metaProperty.type() == QVariant::String) {
+                            if (QString::fromLatin1(metaProperty.name()) == "objectName")
+                                propertyWrappedObject = qTopLevelWrapper(propertyWrappedObject);
+                            return metaProperty.read(propertyWrappedObject);
+                        }
+                        else if (metaProperty.type() == QVariant::Bool) {
+                            return variant;
+                        }
+                        else if (metaProperty.isEnumType())
+                            return QString::fromLatin1(metaProperty.enumerator().valueToKey(variant.toInt())).toLower().remove(metaProperty.name());
+                        else if (typeName.endsWith('*') && !typeName.contains(QRegularExpression ("QSet|QList")) && variant.canConvert<QWrappedObject *>()) {
+                            QWrappedObject *objectElement = variant.value<QWrappedObject *>();
+                            if (objectElement) {
+                                QString returnedValue = qTopLevelWrapper(objectElement)->objectName();
+                                if (!metaProperty.isStored())
+                                    delete objectElement;
+                                return returnedValue;
+                            }
+                            else
+                                return QVariant();
+                        }
+                        else if (typeName.endsWith('*') && typeName.contains("QSet") && variant.isValid()) {
+                            if (QSet<QWrappedObject *> *elements = *(static_cast<QSet<QWrappedObject *> **>(variant.data()))) {
+                                QString str;
+                                if (elements->size() > 0) {
+                                    str.append("[");
+                                    foreach (QWrappedObject *object, *elements)
+                                        str.append((qwrappedobject_cast<QWrappedObject *>(object))->objectName().append(", "));
+                                    str.chop(2);
+                                    str.append("]");
+                                }
+                                if (!metaProperty.isStored())
+                                    delete elements;
+                                return !str.isEmpty() ? str:QVariant();
+                            }
+                        }
+                        else if (typeName.endsWith('*') && typeName.contains("QList") && variant.isValid()) {
+                            if (QList<QWrappedObject *> *elements = *(static_cast<QList<QWrappedObject *> **>(variant.data()))) {
+                                QString str;
+                                if (elements->size() > 0) {
+                                    str.append("[");
+                                    foreach (QWrappedObject *object, *elements)
+                                        str.append((qwrappedobject_cast<QWrappedObject *>(object))->objectName().append(", "));
+                                    str.chop(2);
+                                    str.append("]");
+                                }
+                                if (!metaProperty.isStored())
+                                    delete elements;
+                                return !str.isEmpty() ? str:QVariant();
+                            }
+                        }
+                    }
+                    return QVariant();
+                }
+                default:
+                    Q_ASSERT(false);
+            }
+        }
+        case Qt::SizeHintRole: {
+            QFont font;
+            QFontMetrics fontMetrics(font);
+            return QSize(fontMetrics.width(data(index, Qt::DisplayRole).toString()) + 10, 22);
+        }
+        case Qt::UserRole: {
+            return qVariantFromValue(static_cast<QMetaPropertyInfo *>(index.internalPointer()));
         }
     }
     return QVariant();
+}
+
+bool WrappedObjectPropertyModel::setData(const QModelIndex &index, const QVariant &value, int role)
+{
+    if (_metaWrappedObject->propertyCount() == 0 || index.column() < 0 || index.column() >= 2)
+        return false;
+    switch (role) {
+        case Qt::DisplayRole: {
+            QMetaPropertyInfo *metaPropertyInfo = static_cast<QMetaPropertyInfo *>(index.internalPointer());
+            QMetaProperty metaProperty = metaPropertyInfo->metaProperty;
+            QWrappedObject *propertyWrappedObject = metaPropertyInfo->propertyWrappedObject;
+            if (QString::fromLatin1(metaProperty.name()) == "objectName") {
+                    propertyWrappedObject = qTopLevelWrapper(propertyWrappedObject);
+                    propertyWrappedObject->setProperty("name", value);
+            }
+            metaProperty.write(propertyWrappedObject, value);
+            return true;
+        }
+    }
+    return false;
+}
+
+QVariant WrappedObjectPropertyModel::headerData(int section, Qt::Orientation orientation, int role) const
+{
+    if ((section == 0 || section == 1) && orientation == Qt::Horizontal && role == Qt::DisplayRole)
+        return section == 0 ? "Property":"Value";
+    return QAbstractItemModel::headerData(section, orientation, role);
+}
+
+Qt::ItemFlags WrappedObjectPropertyModel::flags(const QModelIndex &index) const
+{
+    QMetaPropertyInfo *metaPropertyInfo = static_cast<QMetaPropertyInfo *>(index.internalPointer());
+    if (metaPropertyInfo && metaPropertyInfo->metaProperty.isWritable() && index.column() == 1)
+        return Qt::ItemIsEnabled | Qt::ItemIsSelectable | Qt::ItemIsEditable;
+    return QAbstractItemModel::flags(index);
 }

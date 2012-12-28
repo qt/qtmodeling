@@ -32,10 +32,7 @@ protected:
 
 private Q_SLOTS:
     void on_modelExplorer_currentItemChanged(QTreeWidgetItem *current, QTreeWidgetItem *previous);
-    void on_propertyEditor_itemClicked(QTreeWidgetItem *item, int column);
-    void on_propertyEditor_currentItemChanged(QTreeWidgetItem *current,QTreeWidgetItem *previous);
     void populateModelExplorer(QWrappedObject *element, QTreeWidgetItem *parent = 0);
-    QTreeWidgetItem *parentItemForProperty(QString propertyGroup);
     void handleAddMethod();
     void refreshModel();
 
@@ -44,7 +41,6 @@ private:
     QHash< QString, QPair<QObject *, QMetaMethod> > _visitedAddMethods;
     QList<QWrappedObject *> _visitedObjects;
 
-    void handleWrappedObjectProperties(QWrappedObject *element);
     void populateContextMenu(QMenu &menu, QObject *element);
 };
 
