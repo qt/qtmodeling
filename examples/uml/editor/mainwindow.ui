@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>673</width>
+    <width>690</width>
     <height>447</height>
    </rect>
   </property>
@@ -14,18 +14,14 @@
    <string>QtUml Editor</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QGridLayout" name="gridLayout_3">
-    <item row="0" column="0">
-     <widget class="QTreeView" name="treeView"/>
-    </item>
-   </layout>
+   <layout class="QGridLayout" name="gridLayout_3"/>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>673</width>
+     <width>690</width>
      <height>20</height>
     </rect>
    </property>
@@ -70,26 +66,19 @@
    <widget class="QWidget" name="dockWidgetContents_2">
     <layout class="QGridLayout" name="gridLayout_2">
      <item row="0" column="0">
-      <widget class="QTreeWidget" name="propertyEditor">
-       <property name="minimumSize">
-        <size>
-         <width>500</width>
-         <height>0</height>
-        </size>
+      <widget class="QTreeView" name="propertyEditor">
+       <property name="editTriggers">
+        <set>QAbstractItemView::AllEditTriggers</set>
        </property>
-       <property name="styleSheet">
-        <string notr="true"/>
+       <property name="defaultDropAction">
+        <enum>Qt::TargetMoveAction</enum>
        </property>
-       <column>
-        <property name="text">
-         <string notr="true">Property</string>
-        </property>
-       </column>
-       <column>
-        <property name="text">
-         <string>Value</string>
-        </property>
-       </column>
+       <property name="alternatingRowColors">
+        <bool>true</bool>
+       </property>
+       <property name="uniformRowHeights">
+        <bool>true</bool>
+       </property>
       </widget>
      </item>
     </layout>

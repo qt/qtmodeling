@@ -127,7 +127,7 @@ int QMetaWrappedObject::indexOfGroup(const char *name) const
     QList<QPair<QString, int>>::const_iterator iend = d_ptr->propertyGroupInfos.constEnd();
     for (QList<QPair<QString, int>>::const_iterator i = d_ptr->propertyGroupInfos.constBegin(); i < iend; ++i)
         if (i->first == QString::fromLatin1(name))
-            return i->second;
+            return i-d_ptr->propertyGroupInfos.constBegin();
     return -1;
 }
 

@@ -27,9 +27,9 @@ PropertyEditorItemDelegate::~PropertyEditorItemDelegate()
 
 QWidget *PropertyEditorItemDelegate::createEditor(QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
-    if (index.data(Qt::UserRole).canConvert<QMetaPropertyInfo>()) {
-        QMetaPropertyInfo metaPropertyInfo = index.data(Qt::UserRole).value<QMetaPropertyInfo>();
-        QMetaProperty metaProperty = metaPropertyInfo.metaProperty;
+    if (index.data(Qt::UserRole).canConvert<QMetaPropertyInfo *>()) {
+        QMetaPropertyInfo *metaPropertyInfo = index.data(Qt::UserRole).value<QMetaPropertyInfo *>();
+        QMetaProperty metaProperty = metaPropertyInfo->metaProperty;
 
         if (metaProperty.type() == QVariant::Bool) {
             PropertyEditor *propertyEditor = new PropertyEditor(new QCheckBox, metaProperty.isResettable(), parent);
@@ -47,13 +47,6 @@ QWidget *PropertyEditorItemDelegate::createEditor(QWidget *parent, const QStyleO
             connect(propertyEditor, SIGNAL(intValueChanged(int)), SLOT(editorChanged()));
             return propertyEditor;
         }
-        if (metaProperty.type() == QVariant::String) {
-            QLineEdit *lineEdit = new QLineEdit;
-            lineEdit->setMaximumHeight(22);
-            PropertyEditor *propertyEditor = new PropertyEditor(lineEdit, metaProperty.isResettable(), parent);
-            connect(propertyEditor, SIGNAL(stringValueChanged(QString)), SLOT(editorChanged()));
-            return propertyEditor;
-        }
         return QStyledItemDelegate::createEditor(parent, option, index);
     }
     return QStyledItemDelegate::createEditor(parent, option, index);
@@ -61,16 +54,14 @@ QWidget *PropertyEditorItemDelegate::createEditor(QWidget *parent, const QStyleO
 
 void PropertyEditorItemDelegate::setEditorData(QWidget *editor, const QModelIndex &index) const
 {
-    if (index.data(Qt::UserRole).canConvert<QMetaPropertyInfo>()) {
-        QMetaPropertyInfo metaPropertyInfo = index.data(Qt::UserRole).value<QMetaPropertyInfo>();
-        QMetaProperty metaProperty = metaPropertyInfo.metaProperty;
+    if (index.data(Qt::UserRole).canConvert<QMetaPropertyInfo *>()) {
+        QMetaPropertyInfo *metaPropertyInfo = index.data(Qt::UserRole).value<QMetaPropertyInfo *>();
+        QMetaProperty metaProperty = metaPropertyInfo->metaProperty;
         PropertyEditor *propertyEditor = qobject_cast<PropertyEditor *>(editor);
         if (metaProperty.type() == QVariant::Bool)
-            propertyEditor->setIntValue(metaProperty.read(metaPropertyInfo.propertyWrappedObject).toBool() == true ? 1:0);
+            propertyEditor->setIntValue(metaProperty.read(metaPropertyInfo->propertyWrappedObject).toBool() == true ? 1:0);
         else if (metaProperty.isEnumType())
-            propertyEditor->setIntValue(metaProperty.read(metaPropertyInfo.propertyWrappedObject).toInt());
-        else if (metaProperty.type() == QVariant::String)
-            propertyEditor->setStringValue(metaProperty.read(metaPropertyInfo.propertyWrappedObject).toString());
+            propertyEditor->setIntValue(metaProperty.read(metaPropertyInfo->propertyWrappedObject).toInt());
         else
             QStyledItemDelegate::setEditorData(editor, index);
     }
@@ -80,19 +71,16 @@ void PropertyEditorItemDelegate::setEditorData(QWidget *editor, const QModelInde
 
 void PropertyEditorItemDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
-    if (index.data(Qt::UserRole).canConvert<QMetaPropertyInfo>()) {
-        QMetaPropertyInfo metaPropertyInfo = index.data(Qt::UserRole).value<QMetaPropertyInfo>();
-        QMetaProperty metaProperty = metaPropertyInfo.metaProperty;
-        if (metaProperty.type() == QVariant::Bool) {
+    if (index.column() == 1 && index.isValid()) {
+        QVariant variant = index.data(Qt::DisplayRole);
+        if (variant.isValid() && variant.type() == QVariant::Bool) {
+            bool checked = variant.toBool();
             QStyleOptionButton opt;
             opt.state = QStyle::State_Enabled;
-            if (metaProperty.read(metaPropertyInfo.propertyWrappedObject).toBool())
-                opt.state |= QStyle::State_On;
-            else
-            opt.state |= QStyle::State_Off;
+            opt.state |= (checked) ? QStyle::State_On:QStyle::State_Off;
             opt.direction = QApplication::layoutDirection();
             opt.rect = option.rect;
-            QApplication::style()->drawControl(QStyle::CE_CheckBox,&opt,painter);
+            QApplication::style()->drawControl(QStyle::CE_CheckBox, &opt, painter);
         }
         else QStyledItemDelegate::paint(painter, option, index);
     }
@@ -102,20 +90,16 @@ void PropertyEditorItemDelegate::paint(QPainter *painter, const QStyleOptionView
 
 void PropertyEditorItemDelegate::setModelData(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index) const
 {
-    if (index.data(Qt::UserRole).canConvert<QMetaPropertyInfo>()) {
-        QMetaPropertyInfo metaPropertyInfo = index.data(Qt::UserRole).value<QMetaPropertyInfo>();
-        QMetaProperty metaProperty = metaPropertyInfo.metaProperty;
-        PropertyEditor *propertyEditor = qobject_cast<PropertyEditor *>(editor);
-        if (metaProperty.type() == QVariant::Bool)
-            metaProperty.write(metaPropertyInfo.propertyWrappedObject, propertyEditor->intValue() == 1 ? true:false);
-        else if (metaProperty.isEnumType()) {
-            metaProperty.write(metaPropertyInfo.propertyWrappedObject, propertyEditor->intValue());
-            QString enumKey = metaProperty.enumerator().valueToKey(propertyEditor->intValue());
-            model->setData(index, enumKey.toLower().remove(metaProperty.name()), Qt::DisplayRole);
+    if (index.data(Qt::UserRole).canConvert<QMetaPropertyInfo *>()) {
+        QMetaPropertyInfo *metaPropertyInfo = index.data(Qt::UserRole).value<QMetaPropertyInfo *>();
+        QMetaProperty metaProperty = metaPropertyInfo->metaProperty;
+        if (metaProperty.type() == QVariant::Bool || metaProperty.isEnumType()) {
+            PropertyEditor *propertyEditor = qobject_cast<PropertyEditor *>(editor);
+            model->setData(index, propertyEditor->intValue(), Qt::DisplayRole);
         }
         else if (metaProperty.type() == QVariant::String) {
-            metaProperty.write(metaPropertyInfo.propertyWrappedObject, propertyEditor->stringValue());
-            model->setData(index, propertyEditor->stringValue(), Qt::DisplayRole);
+            QLineEdit *lineEdit = qobject_cast<QLineEdit *>(editor);
+            model->setData(index, lineEdit->text(), Qt::DisplayRole);
         }
         else
             QStyledItemDelegate::setModelData(editor, model, index);

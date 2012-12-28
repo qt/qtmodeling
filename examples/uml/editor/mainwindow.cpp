@@ -30,6 +30,8 @@
 #include "propertyeditoritemdelegate.h"
 #include "wrappedobjectpropertymodel.h"
 
+#include <QFileSystemModel>
+
 using namespace QtUml;
 using namespace QtWrappedObjects;
 
@@ -40,19 +42,16 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     QPalette palette = ui->propertyEditor->palette();
-
     palette.setColor(QPalette::Active, QPalette::Base, QColor(255, 242, 222));
     palette.setColor(QPalette::Inactive, QPalette::Base, QColor(255, 242, 222));
     palette.setColor(QPalette::Active, QPalette::AlternateBase, QColor(255, 255, 191));
     palette.setColor(QPalette::Inactive, QPalette::AlternateBase, QColor(255, 255, 191));
     ui->propertyEditor->setPalette(palette);
-    ui->propertyEditor->setAlternatingRowColors(true);
-    ui->propertyEditor->setColumnCount(2);
-    ui->propertyEditor->setSelectionMode(QAbstractItemView::SingleSelection);
-    ui->propertyEditor->setSelectionBehavior(QAbstractItemView::SelectRows);
 
-    ui->propertyEditor->setItemDelegate(new PropertyEditorItemDelegate(this));
-    ui->propertyEditor->setEditTriggers(QAbstractItemView::CurrentChanged);
+    ui->propertyEditor->setItemDelegateForColumn(1, new PropertyEditorItemDelegate(ui->propertyEditor));
+
+    WrappedObjectPropertyModel *m = new WrappedObjectPropertyModel;
+    ui->propertyEditor->setModel(m);
 
     QWrappedObjectPointer<QModel> model = new QModel;
     model->setName("MyModel");
@@ -83,14 +82,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     model->addNestedPackage(package);
     model->addOwnedType(primitiveType);
-
-    WrappedObjectPropertyModel *m = new WrappedObjectPropertyModel;
-    m->setWrappedObject(model);
-    ui->treeView->setPalette(palette);
-    ui->treeView->setAlternatingRowColors(true);
-    ui->treeView->setSelectionMode(QAbstractItemView::SingleSelection);
-    ui->treeView->setSelectionBehavior(QAbstractItemView::SelectRows);
-    ui->treeView->setModel(m);
 
     populateModelExplorer(model);
     ui->modelExplorer->setCurrentItem(ui->modelExplorer->topLevelItem(0));
@@ -137,84 +128,6 @@ void MainWindow::populateContextMenu(QMenu &menu, QObject *element)
     }
 }
 
-void MainWindow::handleWrappedObjectProperties(QWrappedObject *element)
-{
-    const QMetaWrappedObject *metaWrappedObject = element->metaWrappedObject();
-    int propertyCount = metaWrappedObject->propertyCount();
-
-    for (int i = 0; i < propertyCount; ++i) {
-        QMetaPropertyInfo metaPropertyInfo = metaWrappedObject->property(i);
-        QMetaProperty metaProperty = metaPropertyInfo.metaProperty;
-        QWrappedObject *propertyWrappedObject = metaPropertyInfo.propertyWrappedObject;
-
-        QTreeWidgetItem *parentItem = parentItemForProperty(metaPropertyInfo.propertyMetaObject->className());
-        if (!parentItem) {
-            parentItem = new QTreeWidgetItem(ui->propertyEditor, QStringList() << metaPropertyInfo.propertyMetaObject->className());
-            parentItem->setExpanded(true);
-            QFont font = parentItem->font(0);
-            font.setBold(true);
-            parentItem->setFont(0, font);
-        }
-        parentItem->setSizeHint(1, QSize(0, 22));
-
-        QTreeWidgetItem *item = new QTreeWidgetItem(parentItem);
-        item->setSizeHint(1, QSize(0, 22));
-        QString propertyName = QString(metaProperty.name()).remove(QRegularExpression("_$")).remove(QRegularExpression("^is"));
-        if (propertyName.toUpper() != propertyName)
-            propertyName = propertyName.left(1).toLower() + propertyName.mid(1);
-        item->setData(0, Qt::DisplayRole, propertyName + ((metaProperty.isWritable() == false) ? " (RO)":""));
-        item->setData(1, Qt::UserRole, qVariantFromValue(metaPropertyInfo));
-
-        QString typeName = metaProperty.typeName();
-
-        if (metaProperty.isEnumType()) {
-            QMetaEnum metaEnum = metaProperty.enumerator();
-            QString enumKey = metaEnum.valueToKey(metaProperty.read(propertyWrappedObject).toInt());
-            item->setData(1, Qt::DisplayRole, enumKey.toLower().remove(metaProperty.name()));
-        }
-        else if (metaProperty.type() == QVariant::String) {
-            QObject *rootElement = propertyWrappedObject;
-            if (QString(metaProperty.name()) == "objectName")
-                rootElement = qTopLevelWrapper(element);
-            item->setData(1, Qt::DisplayRole, metaProperty.read(rootElement).toString());
-        }
-        else if (typeName.endsWith('*') && !typeName.contains(QRegularExpression ("QSet|QList")) && metaProperty.read(propertyWrappedObject).value<QWrappedObject *>()) {
-            QWrappedObject *objectElement = metaProperty.read(propertyWrappedObject).value<QWrappedObject *>();
-            item->setText(1, qTopLevelWrapper(objectElement)->objectName());
-            if (!metaProperty.isStored())
-                delete objectElement;
-        }
-        else if (typeName.endsWith('*') && typeName.contains("QSet") && metaProperty.read(propertyWrappedObject).isValid()) {
-            if (QSet<QWrappedObject *> *elements = *(static_cast<QSet<QWrappedObject *> **>(metaProperty.read(propertyWrappedObject).data()))) {
-                if (elements->size() > 0) {
-                    QString str = "[";
-                    foreach (QWrappedObject *object, *elements)
-                        str.append((qwrappedobject_cast<QWrappedObject *>(object))->objectName().append(", "));
-                    str.chop(2);
-                    str.append("]");
-                    item->setText(1, str);
-                }
-                if (!metaProperty.isStored())
-                    delete elements;
-            }
-        }
-        else if (typeName.endsWith('*') && typeName.contains("QList") && metaProperty.read(propertyWrappedObject).isValid()) {
-            if (QList<QWrappedObject *> *elements = *(static_cast<QList<QWrappedObject *> **>(metaProperty.read(propertyWrappedObject).data()))) {
-                if (elements->size() > 0) {
-                    QString str = "[";
-                    foreach (QWrappedObject *object, *elements)
-                        str.append((qwrappedobject_cast<QWrappedObject *>(object))->objectName().append(", "));
-                    str.chop(2);
-                    str.append("]");
-                    item->setText(1, str);
-                }
-                if (!metaProperty.isStored())
-                    delete elements;
-            }
-        }
-    }
-}
-
 void MainWindow::on_modelExplorer_currentItemChanged(QTreeWidgetItem *current, QTreeWidgetItem *previous)
 {
     Q_UNUSED(previous)
@@ -222,28 +135,14 @@ void MainWindow::on_modelExplorer_currentItemChanged(QTreeWidgetItem *current, Q
     if (!current)
         return;
 
-    ui->propertyEditor->blockSignals(true);
     QWrappedObject *element = current->data(0, Qt::UserRole).value<QWrappedObject *>();
-    ui->propertyEditor->clear();
-
-    handleWrappedObjectProperties(element);
-
-    ui->propertyEditor->resizeColumnToContents(0);
-    ui->propertyEditor->resizeColumnToContents(1);
-    ui->propertyEditor->blockSignals(false);
-}
-
-void MainWindow::on_propertyEditor_itemClicked(QTreeWidgetItem *item, int column)
-{
-    QMetaPropertyInfo metaPropertyInfo = item->data(1, Qt::UserRole).value<QMetaPropertyInfo>();
-    if (column == 1 && metaPropertyInfo.metaProperty.isWritable())
-        ui->propertyEditor->openPersistentEditor(item, 1);
-}
-
-void MainWindow::on_propertyEditor_currentItemChanged(QTreeWidgetItem *current, QTreeWidgetItem *previous)
-{
-    Q_UNUSED(current)
-    ui->propertyEditor->closePersistentEditor(previous, 1);
+    WrappedObjectPropertyModel *model = qobject_cast<WrappedObjectPropertyModel *>(ui->propertyEditor->model());
+    if (element && model) {
+        model->setWrappedObject(element);
+        ui->propertyEditor->expandAll();
+        ui->propertyEditor->resizeColumnToContents(0);
+        ui->propertyEditor->resizeColumnToContents(1);
+    }
 }
 
 void MainWindow::populateModelExplorer(QWrappedObject *element, QTreeWidgetItem *parent)
@@ -299,16 +198,6 @@ void MainWindow::populateModelExplorer(QWrappedObject *element, QTreeWidgetItem 
 
     ui->modelExplorer->blockSignals(false);
     ui->modelExplorer->setCurrentItem(ui->modelExplorer->topLevelItem(0));
-}
-
-QTreeWidgetItem *MainWindow::parentItemForProperty(QString propertyGroup)
-{
-    int topLevelItemCount = ui->propertyEditor->topLevelItemCount();
-    QTreeWidgetItem *parentItem = 0;
-    for (int i = 0; i < topLevelItemCount; ++i)
-        if (ui->propertyEditor->topLevelItem(i)->text(0) == propertyGroup)
-            parentItem = ui->propertyEditor->topLevelItem(i);
-    return parentItem;
 }
 
 void MainWindow::handleAddMethod()
