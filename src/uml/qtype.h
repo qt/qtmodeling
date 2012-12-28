@@ -76,17 +76,12 @@ public:
 
     // Operations
     Q_INVOKABLE bool conformsTo(const QType *other) const;
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QType(QTypePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QType) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QType) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QType) *> *)
 
 QT_END_HEADER
 

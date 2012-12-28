@@ -74,7 +74,7 @@ public:
 
     QUseCase *extendedCase;
     QUseCase *extension;
-    QList<QExtensionPoint *> *extensionLocations;
+    QList<QExtensionPoint *> extensionLocations;
     QConstraint *condition;
 };
 

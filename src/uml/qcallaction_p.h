@@ -67,7 +67,7 @@ public:
     virtual ~QCallActionPrivate();
 
     bool isSynchronous;
-    QList<QOutputPin *> *results;
+    QList<QOutputPin *> results;
 };
 
 QT_END_NAMESPACE_QTUML

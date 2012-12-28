@@ -70,7 +70,7 @@ public:
     virtual ~QUnmarshallActionPrivate();
 
     QInputPin *object;
-    QSet<QOutputPin *> *results;
+    QSet<QOutputPin *> results;
     QClassifier *unmarshallType;
 };
 

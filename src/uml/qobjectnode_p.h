@@ -78,7 +78,7 @@ public:
     QtUml::ObjectNodeOrderingKind ordering;
     QValueSpecification *upperBound;
     QBehavior *selection;
-    QSet<QState *> *inState;
+    QSet<QState *> inState;
 };
 
 QT_END_NAMESPACE_QTUML

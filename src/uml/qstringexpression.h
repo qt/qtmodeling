@@ -66,7 +66,7 @@ class Q_UML_EXPORT QStringExpression : public QWrappedObject
     Q_OBJECT
 
     Q_PROPERTY(QStringExpression * owningExpression READ owningExpression WRITE setOwningExpression)
-    Q_PROPERTY(const QSet<QStringExpression *> * subExpressions READ subExpressions)
+    Q_PROPERTY(QSet<QStringExpression *> subExpressions READ subExpressions)
 
     Q_DISABLE_COPY(QStringExpression)
     Q_DECLARE_PRIVATE(QStringExpression)
@@ -76,29 +76,28 @@ public:
     virtual ~QStringExpression();
 
     // Association ends from aggregated QElement
-    Q_INVOKABLE const QSet<QElement *> *ownedElements() const;
+    Q_INVOKABLE const QSet<QElement *> &ownedElements() const;
     Q_INVOKABLE QElement *owner() const;
-    Q_INVOKABLE const QSet<QComment *> *ownedComments() const;
+    Q_INVOKABLE const QSet<QComment *> &ownedComments() const;
     Q_INVOKABLE void addOwnedComment(QComment *ownedComment);
     Q_INVOKABLE void removeOwnedComment(QComment *ownedComment);
 
     // Association ends from aggregated QTemplateableElement
     Q_INVOKABLE QTemplateSignature *ownedTemplateSignature() const;
     Q_INVOKABLE void setOwnedTemplateSignature(QTemplateSignature *ownedTemplateSignature);
-    Q_INVOKABLE const QSet<QTemplateBinding *> *templateBindings() const;
+    Q_INVOKABLE const QSet<QTemplateBinding *> &templateBindings() const;
     Q_INVOKABLE void addTemplateBinding(QTemplateBinding *templateBinding);
     Q_INVOKABLE void removeTemplateBinding(QTemplateBinding *templateBinding);
 
     // Association ends from QStringExpression
     Q_INVOKABLE QStringExpression *owningExpression() const;
     Q_INVOKABLE void setOwningExpression(QStringExpression *owningExpression);
-    Q_INVOKABLE const QSet<QStringExpression *> *subExpressions() const;
+    Q_INVOKABLE const QSet<QStringExpression *> &subExpressions() const;
     Q_INVOKABLE void addSubExpression(QStringExpression *subExpression);
     Q_INVOKABLE void removeSubExpression(QStringExpression *subExpression);
 
     // Operations
     Q_INVOKABLE QString stringValue() const;
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QStringExpression(QStringExpressionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
@@ -109,10 +108,6 @@ private:
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QStringExpression) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QStringExpression) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QStringExpression) *> *)
 
 QT_END_HEADER
 

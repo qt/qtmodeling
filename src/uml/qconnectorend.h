@@ -79,17 +79,12 @@ public:
     Q_INVOKABLE QProperty *partWithPort() const;
     Q_INVOKABLE void setPartWithPort(QProperty *partWithPort);
     Q_INVOKABLE QProperty *definingEnd() const;
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QConnectorEnd(QConnectorEndPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QConnectorEnd) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QConnectorEnd) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QConnectorEnd) *> *)
 
 QT_END_HEADER
 

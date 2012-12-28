@@ -72,7 +72,7 @@ public:
     bool isBehavior;
     bool isService;
     QProtocolStateMachine *protocol;
-    QSet<QPort *> *redefinedPorts;
+    QSet<QPort *> redefinedPorts;
 };
 
 QT_END_NAMESPACE_QTUML

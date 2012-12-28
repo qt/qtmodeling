@@ -64,17 +64,12 @@ class Q_UML_EXPORT QFlowFinalNode : public QFinalNode
 public:
     Q_INVOKABLE explicit QFlowFinalNode(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QFlowFinalNode();
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QFlowFinalNode(QFlowFinalNodePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QFlowFinalNode) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QFlowFinalNode) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QFlowFinalNode) *> *)
 
 QT_END_HEADER
 

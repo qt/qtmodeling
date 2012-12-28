@@ -69,7 +69,7 @@ public:
     virtual ~QTemplateableElementPrivate();
 
     QTemplateSignature *ownedTemplateSignature;
-    QSet<QTemplateBinding *> *templateBindings;
+    QSet<QTemplateBinding *> templateBindings;
 };
 
 QT_END_NAMESPACE_QTUML

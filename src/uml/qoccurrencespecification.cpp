@@ -48,16 +48,12 @@
 QT_BEGIN_NAMESPACE_QTUML
 
 QOccurrenceSpecificationPrivate::QOccurrenceSpecificationPrivate() :
-    covered(0),
-    toAfter(new QSet<QGeneralOrdering *>),
-    toBefore(new QSet<QGeneralOrdering *>)
+    covered(0)
 {
 }
 
 QOccurrenceSpecificationPrivate::~QOccurrenceSpecificationPrivate()
 {
-    delete toAfter;
-    delete toBefore;
 }
 
 /*!
@@ -110,7 +106,7 @@ void QOccurrenceSpecification::setCovered(QLifeline *covered)
 /*!
     References the GeneralOrderings that specify EventOcurrences that must occur after this OccurrenceSpecification
  */
-const QSet<QGeneralOrdering *> *QOccurrenceSpecification::toAfter() const
+const QSet<QGeneralOrdering *> &QOccurrenceSpecification::toAfter() const
 {
     // This is a read-write association end
 
@@ -123,8 +119,8 @@ void QOccurrenceSpecification::addToAfter(QGeneralOrdering *toAfter)
     // This is a read-write association end
 
     Q_D(QOccurrenceSpecification);
-    if (!d->toAfter->contains(toAfter)) {
-        d->toAfter->insert(toAfter);
+    if (!d->toAfter.contains(toAfter)) {
+        d->toAfter.insert(toAfter);
 
         // Adjust opposite property
         toAfter->setBefore(this);
@@ -136,8 +132,8 @@ void QOccurrenceSpecification::removeToAfter(QGeneralOrdering *toAfter)
     // This is a read-write association end
 
     Q_D(QOccurrenceSpecification);
-    if (d->toAfter->contains(toAfter)) {
-        d->toAfter->remove(toAfter);
+    if (d->toAfter.contains(toAfter)) {
+        d->toAfter.remove(toAfter);
 
         // Adjust opposite property
         toAfter->setBefore(0);
@@ -147,7 +143,7 @@ void QOccurrenceSpecification::removeToAfter(QGeneralOrdering *toAfter)
 /*!
     References the GeneralOrderings that specify EventOcurrences that must occur before this OccurrenceSpecification
  */
-const QSet<QGeneralOrdering *> *QOccurrenceSpecification::toBefore() const
+const QSet<QGeneralOrdering *> &QOccurrenceSpecification::toBefore() const
 {
     // This is a read-write association end
 
@@ -160,8 +156,8 @@ void QOccurrenceSpecification::addToBefore(QGeneralOrdering *toBefore)
     // This is a read-write association end
 
     Q_D(QOccurrenceSpecification);
-    if (!d->toBefore->contains(toBefore)) {
-        d->toBefore->insert(toBefore);
+    if (!d->toBefore.contains(toBefore)) {
+        d->toBefore.insert(toBefore);
 
         // Adjust opposite property
         toBefore->setAfter(this);
@@ -173,41 +169,12 @@ void QOccurrenceSpecification::removeToBefore(QGeneralOrdering *toBefore)
     // This is a read-write association end
 
     Q_D(QOccurrenceSpecification);
-    if (d->toBefore->contains(toBefore)) {
-        d->toBefore->remove(toBefore);
+    if (d->toBefore.contains(toBefore)) {
+        d->toBefore.remove(toBefore);
 
         // Adjust opposite property
         toBefore->setAfter(0);
     }
-}
-
-void QOccurrenceSpecification::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QOccurrenceSpecification) *>("QT_PREPEND_NAMESPACE_QTUML(QOccurrenceSpecification) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QOccurrenceSpecification) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QOccurrenceSpecification) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QOccurrenceSpecification) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QOccurrenceSpecification) *> *");
-    qRegisterMetaType<QOccurrenceSpecification *>("QOccurrenceSpecification *");
-    qRegisterMetaType<const QSet<QOccurrenceSpecification *> *>("const QSet<QOccurrenceSpecification *> *");
-    qRegisterMetaType<const QList<QOccurrenceSpecification *> *>("const QList<QOccurrenceSpecification *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QLifeline) *>("QT_PREPEND_NAMESPACE_QTUML(QLifeline) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QLifeline) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QLifeline) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QLifeline) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QLifeline) *> *");
-    qRegisterMetaType<QLifeline *>("QLifeline *");
-    qRegisterMetaType<const QSet<QLifeline *> *>("const QSet<QLifeline *> *");
-    qRegisterMetaType<const QList<QLifeline *> *>("const QList<QLifeline *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QGeneralOrdering) *>("QT_PREPEND_NAMESPACE_QTUML(QGeneralOrdering) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QGeneralOrdering) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QGeneralOrdering) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QGeneralOrdering) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QGeneralOrdering) *> *");
-    qRegisterMetaType<QGeneralOrdering *>("QGeneralOrdering *");
-    qRegisterMetaType<const QSet<QGeneralOrdering *> *>("const QSet<QGeneralOrdering *> *");
-    qRegisterMetaType<const QList<QGeneralOrdering *> *>("const QList<QGeneralOrdering *> *");
-
-    QInteractionFragment::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qoccurrencespecification.cpp"

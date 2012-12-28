@@ -83,17 +83,12 @@ public:
     Q_INVOKABLE void setElementInError(QElement *elementInError);
     Q_INVOKABLE QElement *objectInError() const;
     Q_INVOKABLE void setObjectInError(QElement *objectInError);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QException(QExceptionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTMOF
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTMOF(QException) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTMOF(QException) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTMOF(QException) *> *)
 
 QT_END_HEADER
 

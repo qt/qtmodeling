@@ -46,24 +46,20 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QDirectedRelationshipPrivate::QDirectedRelationshipPrivate() :
-    sources(new QSet<QElement *>),
-    targets(new QSet<QElement *>)
+QDirectedRelationshipPrivate::QDirectedRelationshipPrivate()
 {
 }
 
 QDirectedRelationshipPrivate::~QDirectedRelationshipPrivate()
 {
-    delete sources;
-    delete targets;
 }
 
 void QDirectedRelationshipPrivate::addSource(QElement *source)
 {
     // This is a read-only derived-union association end
 
-    if (!this->sources->contains(source)) {
-        this->sources->insert(source);
+    if (!this->sources.contains(source)) {
+        this->sources.insert(source);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QRelationshipPrivate *>(this))->addRelatedElement(qwrappedobject_cast<QElement *>(source));
@@ -74,8 +70,8 @@ void QDirectedRelationshipPrivate::removeSource(QElement *source)
 {
     // This is a read-only derived-union association end
 
-    if (this->sources->contains(source)) {
-        this->sources->remove(source);
+    if (this->sources.contains(source)) {
+        this->sources.remove(source);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QRelationshipPrivate *>(this))->removeRelatedElement(qwrappedobject_cast<QElement *>(source));
@@ -86,8 +82,8 @@ void QDirectedRelationshipPrivate::addTarget(QElement *target)
 {
     // This is a read-only derived-union association end
 
-    if (!this->targets->contains(target)) {
-        this->targets->insert(target);
+    if (!this->targets.contains(target)) {
+        this->targets.insert(target);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QRelationshipPrivate *>(this))->addRelatedElement(qwrappedobject_cast<QElement *>(target));
@@ -98,8 +94,8 @@ void QDirectedRelationshipPrivate::removeTarget(QElement *target)
 {
     // This is a read-only derived-union association end
 
-    if (this->targets->contains(target)) {
-        this->targets->remove(target);
+    if (this->targets.contains(target)) {
+        this->targets.remove(target);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QRelationshipPrivate *>(this))->removeRelatedElement(qwrappedobject_cast<QElement *>(target));
@@ -135,7 +131,7 @@ QDirectedRelationship::~QDirectedRelationship()
 /*!
     Specifies the sources of the DirectedRelationship.
  */
-const QSet<QElement *> *QDirectedRelationship::sources() const
+const QSet<QElement *> &QDirectedRelationship::sources() const
 {
     // This is a read-only derived-union association end
 
@@ -146,34 +142,12 @@ const QSet<QElement *> *QDirectedRelationship::sources() const
 /*!
     Specifies the targets of the DirectedRelationship.
  */
-const QSet<QElement *> *QDirectedRelationship::targets() const
+const QSet<QElement *> &QDirectedRelationship::targets() const
 {
     // This is a read-only derived-union association end
 
     Q_D(const QDirectedRelationship);
     return d->targets;
-}
-
-void QDirectedRelationship::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QDirectedRelationship) *>("QT_PREPEND_NAMESPACE_QTUML(QDirectedRelationship) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QDirectedRelationship) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QDirectedRelationship) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QDirectedRelationship) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QDirectedRelationship) *> *");
-    qRegisterMetaType<QDirectedRelationship *>("QDirectedRelationship *");
-    qRegisterMetaType<const QSet<QDirectedRelationship *> *>("const QSet<QDirectedRelationship *> *");
-    qRegisterMetaType<const QList<QDirectedRelationship *> *>("const QList<QDirectedRelationship *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QElement) *>("QT_PREPEND_NAMESPACE_QTUML(QElement) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QElement) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QElement) *> *");
-    qRegisterMetaType<QElement *>("QElement *");
-    qRegisterMetaType<const QSet<QElement *> *>("const QSet<QElement *> *");
-    qRegisterMetaType<const QList<QElement *> *>("const QList<QElement *> *");
-
-    QRelationship::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qdirectedrelationship.cpp"

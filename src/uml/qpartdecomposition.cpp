@@ -74,21 +74,6 @@ QPartDecomposition::~QPartDecomposition()
 {
 }
 
-void QPartDecomposition::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QPartDecomposition) *>("QT_PREPEND_NAMESPACE_QTUML(QPartDecomposition) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QPartDecomposition) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QPartDecomposition) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QPartDecomposition) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QPartDecomposition) *> *");
-    qRegisterMetaType<QPartDecomposition *>("QPartDecomposition *");
-    qRegisterMetaType<const QSet<QPartDecomposition *> *>("const QSet<QPartDecomposition *> *");
-    qRegisterMetaType<const QList<QPartDecomposition *> *>("const QList<QPartDecomposition *> *");
-
-    QInteractionUse::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 #include "moc_qpartdecomposition.cpp"
 
 QT_END_NAMESPACE_QTUML

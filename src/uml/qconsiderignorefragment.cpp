@@ -46,14 +46,12 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QConsiderIgnoreFragmentPrivate::QConsiderIgnoreFragmentPrivate() :
-    messages(new QSet<QNamedElement *>)
+QConsiderIgnoreFragmentPrivate::QConsiderIgnoreFragmentPrivate()
 {
 }
 
 QConsiderIgnoreFragmentPrivate::~QConsiderIgnoreFragmentPrivate()
 {
-    delete messages;
 }
 
 /*!
@@ -85,7 +83,7 @@ QConsiderIgnoreFragment::~QConsiderIgnoreFragment()
 /*!
     The set of messages that apply to this fragment
  */
-const QSet<QNamedElement *> *QConsiderIgnoreFragment::messages() const
+const QSet<QNamedElement *> &QConsiderIgnoreFragment::messages() const
 {
     // This is a read-write association end
 
@@ -98,8 +96,8 @@ void QConsiderIgnoreFragment::addMessage(QNamedElement *message)
     // This is a read-write association end
 
     Q_D(QConsiderIgnoreFragment);
-    if (!d->messages->contains(message)) {
-        d->messages->insert(message);
+    if (!d->messages.contains(message)) {
+        d->messages.insert(message);
     }
 }
 
@@ -108,31 +106,9 @@ void QConsiderIgnoreFragment::removeMessage(QNamedElement *message)
     // This is a read-write association end
 
     Q_D(QConsiderIgnoreFragment);
-    if (d->messages->contains(message)) {
-        d->messages->remove(message);
+    if (d->messages.contains(message)) {
+        d->messages.remove(message);
     }
-}
-
-void QConsiderIgnoreFragment::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QConsiderIgnoreFragment) *>("QT_PREPEND_NAMESPACE_QTUML(QConsiderIgnoreFragment) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QConsiderIgnoreFragment) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QConsiderIgnoreFragment) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QConsiderIgnoreFragment) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QConsiderIgnoreFragment) *> *");
-    qRegisterMetaType<QConsiderIgnoreFragment *>("QConsiderIgnoreFragment *");
-    qRegisterMetaType<const QSet<QConsiderIgnoreFragment *> *>("const QSet<QConsiderIgnoreFragment *> *");
-    qRegisterMetaType<const QList<QConsiderIgnoreFragment *> *>("const QList<QConsiderIgnoreFragment *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *>("QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *> *");
-    qRegisterMetaType<QNamedElement *>("QNamedElement *");
-    qRegisterMetaType<const QSet<QNamedElement *> *>("const QSet<QNamedElement *> *");
-    qRegisterMetaType<const QList<QNamedElement *> *>("const QList<QNamedElement *> *");
-
-    QCombinedFragment::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qconsiderignorefragment.cpp"

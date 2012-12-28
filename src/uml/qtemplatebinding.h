@@ -68,7 +68,7 @@ class Q_UML_EXPORT QTemplateBinding : public QDirectedRelationship
 
     Q_PROPERTY(QTemplateSignature * signature READ signature WRITE setSignature)
     Q_PROPERTY(QTemplateableElement * boundElement READ boundElement WRITE setBoundElement)
-    Q_PROPERTY(const QSet<QTemplateParameterSubstitution *> * parameterSubstitutions READ parameterSubstitutions)
+    Q_PROPERTY(QSet<QTemplateParameterSubstitution *> parameterSubstitutions READ parameterSubstitutions)
 
     Q_DISABLE_COPY(QTemplateBinding)
     Q_DECLARE_PRIVATE(QTemplateBinding)
@@ -82,20 +82,15 @@ public:
     Q_INVOKABLE void setSignature(QTemplateSignature *signature);
     Q_INVOKABLE QTemplateableElement *boundElement() const;
     Q_INVOKABLE void setBoundElement(QTemplateableElement *boundElement);
-    Q_INVOKABLE const QSet<QTemplateParameterSubstitution *> *parameterSubstitutions() const;
+    Q_INVOKABLE const QSet<QTemplateParameterSubstitution *> &parameterSubstitutions() const;
     Q_INVOKABLE void addParameterSubstitution(QTemplateParameterSubstitution *parameterSubstitution);
     Q_INVOKABLE void removeParameterSubstitution(QTemplateParameterSubstitution *parameterSubstitution);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QTemplateBinding(QTemplateBindingPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QTemplateBinding) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QTemplateBinding) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QTemplateBinding) *> *)
 
 QT_END_HEADER
 

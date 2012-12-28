@@ -68,7 +68,7 @@ class Q_MOF_EXPORT QConstraint : public QPackageableElement
 
     Q_PROPERTY(QNamespace * context READ context WRITE setContext)
     Q_PROPERTY(QValueSpecification * specification READ specification WRITE setSpecification)
-    Q_PROPERTY(const QList<QElement *> * constrainedElements READ constrainedElements)
+    Q_PROPERTY(QList<QElement *> constrainedElements READ constrainedElements)
 
     Q_DISABLE_COPY(QConstraint)
     Q_DECLARE_PRIVATE(QConstraint)
@@ -82,20 +82,15 @@ public:
     Q_INVOKABLE void setContext(QNamespace *context);
     Q_INVOKABLE QValueSpecification *specification() const;
     Q_INVOKABLE void setSpecification(QValueSpecification *specification);
-    Q_INVOKABLE const QList<QElement *> *constrainedElements() const;
+    Q_INVOKABLE const QList<QElement *> &constrainedElements() const;
     Q_INVOKABLE void addConstrainedElement(QElement *constrainedElement);
     Q_INVOKABLE void removeConstrainedElement(QElement *constrainedElement);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QConstraint(QConstraintPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTMOF
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTMOF(QConstraint) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTMOF(QConstraint) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTMOF(QConstraint) *> *)
 
 QT_END_HEADER
 

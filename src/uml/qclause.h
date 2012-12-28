@@ -66,12 +66,12 @@ class Q_UML_EXPORT QClause : public QElement
 {
     Q_OBJECT
 
-    Q_PROPERTY(const QSet<QClause *> * successorClauses READ successorClauses)
+    Q_PROPERTY(QSet<QClause *> successorClauses READ successorClauses)
     Q_PROPERTY(QOutputPin * decider READ decider WRITE setDecider)
-    Q_PROPERTY(const QSet<QClause *> * predecessorClauses READ predecessorClauses)
-    Q_PROPERTY(const QList<QOutputPin *> * bodyOutputs READ bodyOutputs)
-    Q_PROPERTY(const QSet<QExecutableNode *> * bodies READ bodies)
-    Q_PROPERTY(const QSet<QExecutableNode *> * tests READ tests)
+    Q_PROPERTY(QSet<QClause *> predecessorClauses READ predecessorClauses)
+    Q_PROPERTY(QList<QOutputPin *> bodyOutputs READ bodyOutputs)
+    Q_PROPERTY(QSet<QExecutableNode *> bodies READ bodies)
+    Q_PROPERTY(QSet<QExecutableNode *> tests READ tests)
 
     Q_DISABLE_COPY(QClause)
     Q_DECLARE_PRIVATE(QClause)
@@ -81,34 +81,29 @@ public:
     virtual ~QClause();
 
     // Association ends from QClause
-    Q_INVOKABLE const QSet<QClause *> *successorClauses() const;
+    Q_INVOKABLE const QSet<QClause *> &successorClauses() const;
     Q_INVOKABLE void addSuccessorClause(QClause *successorClause);
     Q_INVOKABLE void removeSuccessorClause(QClause *successorClause);
     Q_INVOKABLE QOutputPin *decider() const;
     Q_INVOKABLE void setDecider(QOutputPin *decider);
-    Q_INVOKABLE const QSet<QClause *> *predecessorClauses() const;
+    Q_INVOKABLE const QSet<QClause *> &predecessorClauses() const;
     Q_INVOKABLE void addPredecessorClause(QClause *predecessorClause);
     Q_INVOKABLE void removePredecessorClause(QClause *predecessorClause);
-    Q_INVOKABLE const QList<QOutputPin *> *bodyOutputs() const;
+    Q_INVOKABLE const QList<QOutputPin *> &bodyOutputs() const;
     Q_INVOKABLE void addBodyOutput(QOutputPin *bodyOutput);
     Q_INVOKABLE void removeBodyOutput(QOutputPin *bodyOutput);
-    Q_INVOKABLE const QSet<QExecutableNode *> *bodies() const;
+    Q_INVOKABLE const QSet<QExecutableNode *> &bodies() const;
     Q_INVOKABLE void addBody(QExecutableNode *body);
     Q_INVOKABLE void removeBody(QExecutableNode *body);
-    Q_INVOKABLE const QSet<QExecutableNode *> *tests() const;
+    Q_INVOKABLE const QSet<QExecutableNode *> &tests() const;
     Q_INVOKABLE void addTest(QExecutableNode *test);
     Q_INVOKABLE void removeTest(QExecutableNode *test);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QClause(QClausePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QClause) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QClause) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QClause) *> *)
 
 QT_END_HEADER
 

@@ -74,21 +74,6 @@ QFinalState::~QFinalState()
 {
 }
 
-void QFinalState::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QFinalState) *>("QT_PREPEND_NAMESPACE_QTUML(QFinalState) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QFinalState) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QFinalState) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QFinalState) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QFinalState) *> *");
-    qRegisterMetaType<QFinalState *>("QFinalState *");
-    qRegisterMetaType<const QSet<QFinalState *> *>("const QSet<QFinalState *> *");
-    qRegisterMetaType<const QList<QFinalState *> *>("const QList<QFinalState *> *");
-
-    QState::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 #include "moc_qfinalstate.cpp"
 
 QT_END_NAMESPACE_QTUML

@@ -67,7 +67,7 @@ public:
     explicit QTimeExpressionPrivate();
     virtual ~QTimeExpressionPrivate();
 
-    QSet<QObservation *> *observations;
+    QSet<QObservation *> observations;
     QValueSpecification *expr;
 };
 

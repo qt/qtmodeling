@@ -74,21 +74,6 @@ QInitialNode::~QInitialNode()
 {
 }
 
-void QInitialNode::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInitialNode) *>("QT_PREPEND_NAMESPACE_QTUML(QInitialNode) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInitialNode) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInitialNode) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInitialNode) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInitialNode) *> *");
-    qRegisterMetaType<QInitialNode *>("QInitialNode *");
-    qRegisterMetaType<const QSet<QInitialNode *> *>("const QSet<QInitialNode *> *");
-    qRegisterMetaType<const QList<QInitialNode *> *>("const QList<QInitialNode *> *");
-
-    QControlNode::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 #include "moc_qinitialnode.cpp"
 
 QT_END_NAMESPACE_QTUML

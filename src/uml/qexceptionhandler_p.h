@@ -70,7 +70,7 @@ public:
     virtual ~QExceptionHandlerPrivate();
 
     QExecutableNode *handlerBody;
-    QSet<QClassifier *> *exceptionTypes;
+    QSet<QClassifier *> exceptionTypes;
     QExecutableNode *protectedNode;
     QObjectNode *exceptionInput;
 };

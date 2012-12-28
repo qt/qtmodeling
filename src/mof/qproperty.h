@@ -80,13 +80,13 @@ class Q_MOF_EXPORT QProperty : public QStructuralFeature
     Q_PROPERTY(bool isID READ isID WRITE setID RESET unsetID)
     Q_PROPERTY(bool isDerivedUnion READ isDerivedUnion WRITE setDerivedUnion RESET unsetDerivedUnion)
     Q_PROPERTY(QtMof::AggregationKind aggregation READ aggregation WRITE setAggregation RESET unsetAggregation)
-    Q_PROPERTY(const QSet<QProperty *> * subsettedProperties READ subsettedProperties)
+    Q_PROPERTY(QSet<QProperty *> subsettedProperties READ subsettedProperties)
     Q_PROPERTY(QAssociation * owningAssociation READ owningAssociation WRITE setOwningAssociation)
     Q_PROPERTY(QValueSpecification * defaultValue READ defaultValue WRITE setDefaultValue)
     Q_PROPERTY(QClass * class_ READ class_ WRITE setClass_)
     Q_PROPERTY(QProperty * opposite READ opposite WRITE setOpposite STORED false)
     Q_PROPERTY(QDataType * datatype READ datatype WRITE setDatatype)
-    Q_PROPERTY(const QSet<QProperty *> * redefinedProperties READ redefinedProperties)
+    Q_PROPERTY(QSet<QProperty *> redefinedProperties READ redefinedProperties)
     Q_PROPERTY(QAssociation * association READ association WRITE setAssociation)
 
     Q_DISABLE_COPY(QProperty)
@@ -118,7 +118,7 @@ public:
     Q_INVOKABLE void unsetAggregation();
 
     // Association ends from QProperty
-    Q_INVOKABLE const QSet<QProperty *> *subsettedProperties() const;
+    Q_INVOKABLE const QSet<QProperty *> &subsettedProperties() const;
     Q_INVOKABLE void addSubsettedProperty(QProperty *subsettedProperty);
     Q_INVOKABLE void removeSubsettedProperty(QProperty *subsettedProperty);
     Q_INVOKABLE QAssociation *owningAssociation() const;
@@ -131,7 +131,7 @@ public:
     Q_INVOKABLE void setOpposite(QProperty *opposite);
     Q_INVOKABLE QDataType *datatype() const;
     Q_INVOKABLE void setDatatype(QDataType *datatype);
-    Q_INVOKABLE const QSet<QProperty *> *redefinedProperties() const;
+    Q_INVOKABLE const QSet<QProperty *> &redefinedProperties() const;
     Q_INVOKABLE void addRedefinedProperty(QProperty *redefinedProperty);
     Q_INVOKABLE void removeRedefinedProperty(QProperty *redefinedProperty);
     Q_INVOKABLE QAssociation *association() const;
@@ -141,18 +141,13 @@ public:
     Q_INVOKABLE bool isAttribute(const QProperty *p) const;
     Q_INVOKABLE bool isConsistentWith(const QRedefinableElement *redefinee) const;
     Q_INVOKABLE bool isNavigable() const;
-    Q_INVOKABLE const QSet<QType *> *subsettingContext() const;
-    virtual void registerMetaTypes() const;
+    Q_INVOKABLE const QSet<QType *> &subsettingContext() const;
 
 protected:
     explicit QProperty(QPropertyPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTMOF
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTMOF(QProperty) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTMOF(QProperty) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTMOF(QProperty) *> *)
 
 QT_END_HEADER
 

@@ -86,17 +86,12 @@ public:
     Q_INVOKABLE void setSelection(QBehavior *selection);
     Q_INVOKABLE QBehavior *transformation() const;
     Q_INVOKABLE void setTransformation(QBehavior *transformation);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QObjectFlow(QObjectFlowPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QObjectFlow) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QObjectFlow) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QObjectFlow) *> *)
 
 QT_END_HEADER
 

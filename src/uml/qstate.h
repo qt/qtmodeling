@@ -79,13 +79,13 @@ class Q_UML_EXPORT QState : public QWrappedObject
     Q_PROPERTY(bool isComposite READ isComposite STORED false)
     Q_PROPERTY(bool isOrthogonal READ isOrthogonal STORED false)
     Q_PROPERTY(bool isSubmachineState READ isSubmachineState STORED false)
-    Q_PROPERTY(const QSet<QRegion *> * regions READ regions)
+    Q_PROPERTY(QSet<QRegion *> regions READ regions)
     Q_PROPERTY(QBehavior * exit READ exit WRITE setExit)
-    Q_PROPERTY(const QSet<QConnectionPointReference *> * connections READ connections)
+    Q_PROPERTY(QSet<QConnectionPointReference *> connections READ connections)
     Q_PROPERTY(QClassifier * redefinitionContext READ redefinitionContext STORED false)
     Q_PROPERTY(QState * redefinedState READ redefinedState WRITE setRedefinedState)
-    Q_PROPERTY(const QSet<QTrigger *> * deferrableTriggers READ deferrableTriggers)
-    Q_PROPERTY(const QSet<QPseudostate *> * connectionPoints READ connectionPoints)
+    Q_PROPERTY(QSet<QTrigger *> deferrableTriggers READ deferrableTriggers)
+    Q_PROPERTY(QSet<QPseudostate *> connectionPoints READ connectionPoints)
     Q_PROPERTY(QBehavior * entry READ entry WRITE setEntry)
     Q_PROPERTY(QBehavior * doActivity READ doActivity WRITE setDoActivity)
     Q_PROPERTY(QStateMachine * submachine READ submachine WRITE setSubmachine)
@@ -99,9 +99,9 @@ public:
     virtual ~QState();
 
     // Association ends from aggregated QElement
-    Q_INVOKABLE const QSet<QElement *> *ownedElements() const;
+    Q_INVOKABLE const QSet<QElement *> &ownedElements() const;
     Q_INVOKABLE QElement *owner() const;
-    Q_INVOKABLE const QSet<QComment *> *ownedComments() const;
+    Q_INVOKABLE const QSet<QComment *> &ownedComments() const;
     Q_INVOKABLE void addOwnedComment(QComment *ownedComment);
     Q_INVOKABLE void removeOwnedComment(QComment *ownedComment);
 
@@ -116,23 +116,23 @@ public:
     Q_INVOKABLE QStringExpression *nameExpression() const;
     Q_INVOKABLE void setNameExpression(QStringExpression *nameExpression);
     Q_INVOKABLE QNamespace *namespace_() const;
-    Q_INVOKABLE const QSet<QDependency *> *clientDependencies() const;
+    Q_INVOKABLE const QSet<QDependency *> &clientDependencies() const;
     Q_INVOKABLE void addClientDependency(QDependency *clientDependency);
     Q_INVOKABLE void removeClientDependency(QDependency *clientDependency);
 
     // Association ends from aggregated QNamespace
-    Q_INVOKABLE const QSet<QPackageImport *> *packageImports() const;
+    Q_INVOKABLE const QSet<QPackageImport *> &packageImports() const;
     Q_INVOKABLE void addPackageImport(QPackageImport *packageImport);
     Q_INVOKABLE void removePackageImport(QPackageImport *packageImport);
-    Q_INVOKABLE const QSet<QNamedElement *> *members() const;
-    Q_INVOKABLE const QSet<QPackageableElement *> *importedMembers() const;
-    Q_INVOKABLE const QSet<QElementImport *> *elementImports() const;
+    Q_INVOKABLE const QSet<QNamedElement *> &members() const;
+    Q_INVOKABLE const QSet<QPackageableElement *> &importedMembers() const;
+    Q_INVOKABLE const QSet<QElementImport *> &elementImports() const;
     Q_INVOKABLE void addElementImport(QElementImport *elementImport);
     Q_INVOKABLE void removeElementImport(QElementImport *elementImport);
-    Q_INVOKABLE const QSet<QConstraint *> *ownedRules() const;
+    Q_INVOKABLE const QSet<QConstraint *> &ownedRules() const;
     Q_INVOKABLE void addOwnedRule(QConstraint *ownedRule);
     Q_INVOKABLE void removeOwnedRule(QConstraint *ownedRule);
-    Q_INVOKABLE const QSet<QNamedElement *> *ownedMembers() const;
+    Q_INVOKABLE const QSet<QNamedElement *> &ownedMembers() const;
 
     // Attributes from aggregated QRedefinableElement
     Q_INVOKABLE bool isLeaf() const;
@@ -140,13 +140,13 @@ public:
     Q_INVOKABLE void unsetLeaf();
 
     // Association ends from aggregated QRedefinableElement
-    Q_INVOKABLE const QSet<QRedefinableElement *> *redefinedElements() const;
+    Q_INVOKABLE const QSet<QRedefinableElement *> &redefinedElements() const;
 
     // Association ends from aggregated QVertex
-    Q_INVOKABLE const QSet<QTransition *> *incomings() const;
+    Q_INVOKABLE const QSet<QTransition *> &incomings() const;
     Q_INVOKABLE QRegion *container() const;
     Q_INVOKABLE void setContainer(QRegion *container);
-    Q_INVOKABLE const QSet<QTransition *> *outgoings() const;
+    Q_INVOKABLE const QSet<QTransition *> &outgoings() const;
 
     // Attributes from QState
     Q_INVOKABLE bool isSimple() const;
@@ -155,21 +155,21 @@ public:
     Q_INVOKABLE bool isSubmachineState() const;
 
     // Association ends from QState
-    Q_INVOKABLE const QSet<QRegion *> *regions() const;
+    Q_INVOKABLE const QSet<QRegion *> &regions() const;
     Q_INVOKABLE void addRegion(QRegion *region);
     Q_INVOKABLE void removeRegion(QRegion *region);
     Q_INVOKABLE QBehavior *exit() const;
     Q_INVOKABLE void setExit(QBehavior *exit);
-    Q_INVOKABLE const QSet<QConnectionPointReference *> *connections() const;
+    Q_INVOKABLE const QSet<QConnectionPointReference *> &connections() const;
     Q_INVOKABLE void addConnection(QConnectionPointReference *connection);
     Q_INVOKABLE void removeConnection(QConnectionPointReference *connection);
     Q_INVOKABLE QClassifier *redefinitionContext() const;
     Q_INVOKABLE QState *redefinedState() const;
     Q_INVOKABLE void setRedefinedState(QState *redefinedState);
-    Q_INVOKABLE const QSet<QTrigger *> *deferrableTriggers() const;
+    Q_INVOKABLE const QSet<QTrigger *> &deferrableTriggers() const;
     Q_INVOKABLE void addDeferrableTrigger(QTrigger *deferrableTrigger);
     Q_INVOKABLE void removeDeferrableTrigger(QTrigger *deferrableTrigger);
-    Q_INVOKABLE const QSet<QPseudostate *> *connectionPoints() const;
+    Q_INVOKABLE const QSet<QPseudostate *> &connectionPoints() const;
     Q_INVOKABLE void addConnectionPoint(QPseudostate *connectionPoint);
     Q_INVOKABLE void removeConnectionPoint(QPseudostate *connectionPoint);
     Q_INVOKABLE QBehavior *entry() const;
@@ -185,7 +185,6 @@ public:
     Q_INVOKABLE QStateMachine *containingStateMachine() const;
     Q_INVOKABLE bool isConsistentWith(const QRedefinableElement *redefinee) const;
     Q_INVOKABLE bool isRedefinitionContextValid(const QState *redefined) const;
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QState(QStatePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
@@ -197,10 +196,6 @@ private:
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QState) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QState) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QState) *> *)
 
 QT_END_HEADER
 

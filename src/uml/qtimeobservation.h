@@ -79,17 +79,12 @@ public:
     // Association ends from QTimeObservation
     Q_INVOKABLE QNamedElement *event() const;
     Q_INVOKABLE void setEvent(QNamedElement *event);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QTimeObservation(QTimeObservationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QTimeObservation) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QTimeObservation) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QTimeObservation) *> *)
 
 QT_END_HEADER
 

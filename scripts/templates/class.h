@@ -56,7 +56,7 @@
             [%- found = 'true' -%]
             [%- END -%]
             [%- IF attribute.isReadOnly == 'true' or attribute.accessor.size == 3 %]
-    Q_PROPERTY(${attribute.accessor.0.return}[%- IF attribute.accessor.0.return.substr(attribute.accessor.0.return.length - 1, 1) == '*' -%] [% END -%]${attribute.accessor.0.name} READ ${attribute.accessor.0.name}[% IF attribute.isDerived == 'true' and attribute.isDerivedUnion == 'false' %] STORED false[% END %])
+    Q_PROPERTY(${attribute.accessor.0.return.remove('^const ').remove('&$')}[%- IF attribute.accessor.0.return.substr(attribute.accessor.0.return.length - 1, 1) == '*' -%] [% END -%]${attribute.accessor.0.name} READ ${attribute.accessor.0.name}[% IF attribute.isDerived == 'true' and attribute.isDerivedUnion == 'false' %] STORED false[% END %])
             [%- ELSE %]
     Q_PROPERTY(${attribute.accessor.0.return}[%- IF attribute.accessor.0.return.substr(attribute.accessor.0.return.length - 1, 1) == '*' -%] [% END -%]${attribute.accessor.0.name} READ ${attribute.accessor.0.name} WRITE ${attribute.accessor.1.name}[% IF attribute.defaultValue != '' %] RESET unset${attribute.accessor.0.name.ucfirst.replace('^Is', '')}[% END %][% IF attribute.isDerived == 'true' and attribute.isDerivedUnion == 'false' %] STORED false[% END %])
             [%- END -%]
@@ -72,7 +72,7 @@
             [%- found = 'true' -%]
             [%- END -%]
             [%- IF associationend.isReadOnly == 'true' or associationend.accessor.size == 3 %]
-    Q_PROPERTY(${associationend.accessor.0.return}[%- IF associationend.accessor.0.return.substr(associationend.accessor.0.return.length - 1, 1) == '*' -%] [% END -%]${associationend.accessor.0.name} READ ${associationend.accessor.0.name}[% IF associationend.isDerived == 'true' and associationend.isDerivedUnion == 'false' %] STORED false[% END %])
+    Q_PROPERTY(${associationend.accessor.0.return.remove('^const ').remove('&$')}[%- IF associationend.accessor.0.return.substr(associationend.accessor.0.return.length - 1, 1) == '*' -%] [% END -%]${associationend.accessor.0.name} READ ${associationend.accessor.0.name}[% IF associationend.isDerived == 'true' and associationend.isDerivedUnion == 'false' %] STORED false[% END %])
             [%- ELSE %]
     Q_PROPERTY(${associationend.accessor.0.return}[%- IF associationend.accessor.0.return.substr(associationend.accessor.0.return.length - 1, 1) == '*' -%] [% END -%]${associationend.accessor.0.name} READ ${associationend.accessor.0.name} WRITE ${associationend.accessor.1.name}[% IF associationend.defaultValue != '' %] RESET unset${associationend.accessor.0.name.ucfirst.replace('^Is', '')}[% END %][% IF associationend.isDerived == 'true' and associationend.isDerivedUnion == 'false' %] STORED false[% END %])
             [%- END -%]
@@ -355,7 +355,6 @@ public:
     [%- END -%]
     [%- END -%]
     [%- END %]
-    virtual void registerMetaTypes() const;
 [%- friendClasses = [] -%]
 [%- FOREACH friendClass IN classes.values -%]
 [%- FOREACH associationend IN friendClass.associationend.values -%]
@@ -391,10 +390,6 @@ private:
 };
 
 QT_END_NAMESPACE_${namespace.replace('/', '_').upper}
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_${namespace.split('/').0.upper}(${class.name}) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_${namespace.split('/').0.upper}(${class.name}) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_${namespace.split('/').0.upper}(${class.name}) *> *)
 
 QT_END_HEADER
 

@@ -88,14 +88,14 @@ public:
     bool isID;
     bool isDerivedUnion;
     QtUml::AggregationKind aggregation;
-    QSet<QProperty *> *subsettedProperties;
+    QSet<QProperty *> subsettedProperties;
     QAssociation *owningAssociation;
-    QList<QProperty *> *qualifiers;
+    QList<QProperty *> qualifiers;
     QValueSpecification *defaultValue;
     QClass *class_;
     QProperty *associationEnd;
     QDataType *datatype;
-    QSet<QProperty *> *redefinedProperties;
+    QSet<QProperty *> redefinedProperties;
     QAssociation *association;
     QInterface *interface;
 };

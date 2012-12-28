@@ -67,7 +67,7 @@ public:
     explicit QSequenceNodePrivate();
     virtual ~QSequenceNodePrivate();
 
-    QList<QExecutableNode *> *executableNodes;
+    QList<QExecutableNode *> executableNodes;
 };
 
 QT_END_NAMESPACE_QTUML

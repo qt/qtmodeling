@@ -67,7 +67,7 @@ class Q_UML_EXPORT QGeneralization : public QDirectedRelationship
 
     Q_PROPERTY(bool isSubstitutable READ isSubstitutable WRITE setSubstitutable RESET unsetSubstitutable)
     Q_PROPERTY(QClassifier * specific READ specific WRITE setSpecific)
-    Q_PROPERTY(const QSet<QGeneralizationSet *> * generalizationSets READ generalizationSets)
+    Q_PROPERTY(QSet<QGeneralizationSet *> generalizationSets READ generalizationSets)
     Q_PROPERTY(QClassifier * general READ general WRITE setGeneral)
 
     Q_DISABLE_COPY(QGeneralization)
@@ -85,22 +85,17 @@ public:
     // Association ends from QGeneralization
     Q_INVOKABLE QClassifier *specific() const;
     Q_INVOKABLE void setSpecific(QClassifier *specific);
-    Q_INVOKABLE const QSet<QGeneralizationSet *> *generalizationSets() const;
+    Q_INVOKABLE const QSet<QGeneralizationSet *> &generalizationSets() const;
     Q_INVOKABLE void addGeneralizationSet(QGeneralizationSet *generalizationSet);
     Q_INVOKABLE void removeGeneralizationSet(QGeneralizationSet *generalizationSet);
     Q_INVOKABLE QClassifier *general() const;
     Q_INVOKABLE void setGeneral(QClassifier *general);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QGeneralization(QGeneralizationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QGeneralization) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QGeneralization) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QGeneralization) *> *)
 
 QT_END_HEADER
 

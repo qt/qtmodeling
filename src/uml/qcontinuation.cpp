@@ -105,21 +105,6 @@ void QContinuation::unsetSetting()
     setSetting(true);
 }
 
-void QContinuation::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QContinuation) *>("QT_PREPEND_NAMESPACE_QTUML(QContinuation) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QContinuation) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QContinuation) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QContinuation) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QContinuation) *> *");
-    qRegisterMetaType<QContinuation *>("QContinuation *");
-    qRegisterMetaType<const QSet<QContinuation *> *>("const QSet<QContinuation *> *");
-    qRegisterMetaType<const QList<QContinuation *> *>("const QList<QContinuation *> *");
-
-    QInteractionFragment::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 #include "moc_qcontinuation.cpp"
 
 QT_END_NAMESPACE_QTUML

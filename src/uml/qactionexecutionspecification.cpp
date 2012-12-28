@@ -102,28 +102,6 @@ void QActionExecutionSpecification::setAction(QAction *action)
     }
 }
 
-void QActionExecutionSpecification::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QActionExecutionSpecification) *>("QT_PREPEND_NAMESPACE_QTUML(QActionExecutionSpecification) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QActionExecutionSpecification) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QActionExecutionSpecification) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QActionExecutionSpecification) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QActionExecutionSpecification) *> *");
-    qRegisterMetaType<QActionExecutionSpecification *>("QActionExecutionSpecification *");
-    qRegisterMetaType<const QSet<QActionExecutionSpecification *> *>("const QSet<QActionExecutionSpecification *> *");
-    qRegisterMetaType<const QList<QActionExecutionSpecification *> *>("const QList<QActionExecutionSpecification *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QAction) *>("QT_PREPEND_NAMESPACE_QTUML(QAction) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QAction) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QAction) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QAction) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QAction) *> *");
-    qRegisterMetaType<QAction *>("QAction *");
-    qRegisterMetaType<const QSet<QAction *> *>("const QSet<QAction *> *");
-    qRegisterMetaType<const QList<QAction *> *>("const QList<QAction *> *");
-
-    QExecutionSpecification::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 #include "moc_qactionexecutionspecification.cpp"
 
 QT_END_NAMESPACE_QTUML

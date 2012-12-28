@@ -75,17 +75,12 @@ public:
     // Operations
     Q_INVOKABLE bool booleanValue() const;
     Q_INVOKABLE bool isComputable() const;
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QLiteralBoolean(QLiteralBooleanPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTMOF
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTMOF(QLiteralBoolean) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTMOF(QLiteralBoolean) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTMOF(QLiteralBoolean) *> *)
 
 QT_END_HEADER
 

@@ -68,7 +68,7 @@ public:
     virtual ~QDurationPrivate();
 
     QValueSpecification *expr;
-    QSet<QObservation *> *observations;
+    QSet<QObservation *> observations;
 };
 
 QT_END_NAMESPACE_QTUML

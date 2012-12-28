@@ -66,7 +66,7 @@ class Q_UML_EXPORT QCollaborationUse : public QNamedElement
     Q_OBJECT
 
     Q_PROPERTY(QCollaboration * type READ type WRITE setType)
-    Q_PROPERTY(const QSet<QDependency *> * roleBindings READ roleBindings)
+    Q_PROPERTY(QSet<QDependency *> roleBindings READ roleBindings)
 
     Q_DISABLE_COPY(QCollaborationUse)
     Q_DECLARE_PRIVATE(QCollaborationUse)
@@ -78,20 +78,15 @@ public:
     // Association ends from QCollaborationUse
     Q_INVOKABLE QCollaboration *type() const;
     Q_INVOKABLE void setType(QCollaboration *type);
-    Q_INVOKABLE const QSet<QDependency *> *roleBindings() const;
+    Q_INVOKABLE const QSet<QDependency *> &roleBindings() const;
     Q_INVOKABLE void addRoleBinding(QDependency *roleBinding);
     Q_INVOKABLE void removeRoleBinding(QDependency *roleBinding);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QCollaborationUse(QCollaborationUsePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QCollaborationUse) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QCollaborationUse) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QCollaborationUse) *> *)
 
 QT_END_HEADER
 

@@ -70,11 +70,11 @@ public:
     explicit QNamespacePrivate();
     virtual ~QNamespacePrivate();
 
-    QSet<QPackageImport *> *packageImports;
-    QSet<QNamedElement *> *members;
-    QSet<QElementImport *> *elementImports;
-    QSet<QConstraint *> *ownedRules;
-    QSet<QNamedElement *> *ownedMembers;
+    QSet<QPackageImport *> packageImports;
+    QSet<QNamedElement *> members;
+    QSet<QElementImport *> elementImports;
+    QSet<QConstraint *> ownedRules;
+    QSet<QNamedElement *> ownedMembers;
 
     // Internal functions for read-only subsetted association ends
     void addMember(QNamedElement *member);

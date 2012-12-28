@@ -76,7 +76,7 @@ class Q_UML_EXPORT QObjectNode : public QWrappedObject
     Q_PROPERTY(QtUml::ObjectNodeOrderingKind ordering READ ordering WRITE setOrdering RESET unsetOrdering)
     Q_PROPERTY(QValueSpecification * upperBound READ upperBound WRITE setUpperBound)
     Q_PROPERTY(QBehavior * selection READ selection WRITE setSelection)
-    Q_PROPERTY(const QSet<QState *> * inState READ inState)
+    Q_PROPERTY(QSet<QState *> inState READ inState)
 
     Q_DISABLE_COPY(QObjectNode)
     Q_DECLARE_PRIVATE(QObjectNode)
@@ -86,9 +86,9 @@ public:
     virtual ~QObjectNode();
 
     // Association ends from aggregated QElement
-    Q_INVOKABLE const QSet<QElement *> *ownedElements() const;
+    Q_INVOKABLE const QSet<QElement *> &ownedElements() const;
     Q_INVOKABLE QElement *owner() const;
-    Q_INVOKABLE const QSet<QComment *> *ownedComments() const;
+    Q_INVOKABLE const QSet<QComment *> &ownedComments() const;
     Q_INVOKABLE void addOwnedComment(QComment *ownedComment);
     Q_INVOKABLE void removeOwnedComment(QComment *ownedComment);
 
@@ -103,7 +103,7 @@ public:
     Q_INVOKABLE QStringExpression *nameExpression() const;
     Q_INVOKABLE void setNameExpression(QStringExpression *nameExpression);
     Q_INVOKABLE QNamespace *namespace_() const;
-    Q_INVOKABLE const QSet<QDependency *> *clientDependencies() const;
+    Q_INVOKABLE const QSet<QDependency *> &clientDependencies() const;
     Q_INVOKABLE void addClientDependency(QDependency *clientDependency);
     Q_INVOKABLE void removeClientDependency(QDependency *clientDependency);
 
@@ -113,28 +113,28 @@ public:
     Q_INVOKABLE void unsetLeaf();
 
     // Association ends from aggregated QRedefinableElement
-    Q_INVOKABLE const QSet<QRedefinableElement *> *redefinedElements() const;
-    Q_INVOKABLE const QSet<QClassifier *> *redefinitionContexts() const;
+    Q_INVOKABLE const QSet<QRedefinableElement *> &redefinedElements() const;
+    Q_INVOKABLE const QSet<QClassifier *> &redefinitionContexts() const;
 
     // Association ends from aggregated QActivityNode
-    Q_INVOKABLE const QSet<QActivityNode *> *redefinedNodes() const;
+    Q_INVOKABLE const QSet<QActivityNode *> &redefinedNodes() const;
     Q_INVOKABLE void addRedefinedNode(QActivityNode *redefinedNode);
     Q_INVOKABLE void removeRedefinedNode(QActivityNode *redefinedNode);
-    Q_INVOKABLE const QSet<QActivityEdge *> *incomings() const;
+    Q_INVOKABLE const QSet<QActivityEdge *> &incomings() const;
     Q_INVOKABLE void addIncoming(QActivityEdge *incoming);
     Q_INVOKABLE void removeIncoming(QActivityEdge *incoming);
     Q_INVOKABLE QActivity *activity() const;
     Q_INVOKABLE void setActivity(QActivity *activity);
-    Q_INVOKABLE const QSet<QActivityGroup *> *inGroup() const;
+    Q_INVOKABLE const QSet<QActivityGroup *> &inGroup() const;
     Q_INVOKABLE QStructuredActivityNode *inStructuredNode() const;
     Q_INVOKABLE void setInStructuredNode(QStructuredActivityNode *inStructuredNode);
-    Q_INVOKABLE const QSet<QActivityPartition *> *inPartition() const;
+    Q_INVOKABLE const QSet<QActivityPartition *> &inPartition() const;
     Q_INVOKABLE void addInPartition(QActivityPartition *inPartition);
     Q_INVOKABLE void removeInPartition(QActivityPartition *inPartition);
-    Q_INVOKABLE const QSet<QInterruptibleActivityRegion *> *inInterruptibleRegion() const;
+    Q_INVOKABLE const QSet<QInterruptibleActivityRegion *> &inInterruptibleRegion() const;
     Q_INVOKABLE void addInInterruptibleRegion(QInterruptibleActivityRegion *inInterruptibleRegion);
     Q_INVOKABLE void removeInInterruptibleRegion(QInterruptibleActivityRegion *inInterruptibleRegion);
-    Q_INVOKABLE const QSet<QActivityEdge *> *outgoings() const;
+    Q_INVOKABLE const QSet<QActivityEdge *> &outgoings() const;
     Q_INVOKABLE void addOutgoing(QActivityEdge *outgoing);
     Q_INVOKABLE void removeOutgoing(QActivityEdge *outgoing);
 
@@ -155,10 +155,9 @@ public:
     Q_INVOKABLE void setUpperBound(QValueSpecification *upperBound);
     Q_INVOKABLE QBehavior *selection() const;
     Q_INVOKABLE void setSelection(QBehavior *selection);
-    Q_INVOKABLE const QSet<QState *> *inState() const;
+    Q_INVOKABLE const QSet<QState *> &inState() const;
     Q_INVOKABLE void addInState(QState *inState);
     Q_INVOKABLE void removeInState(QState *inState);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QObjectNode(QObjectNodePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
@@ -169,10 +168,6 @@ private:
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QObjectNode) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QObjectNode) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QObjectNode) *> *)
 
 QT_END_HEADER
 

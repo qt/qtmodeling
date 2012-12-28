@@ -79,7 +79,7 @@ public:
     QtUml::VisibilityKind visibility;
     QStringExpression *nameExpression;
     QNamespace *namespace_;
-    QSet<QDependency *> *clientDependencies;
+    QSet<QDependency *> clientDependencies;
 
     // Internal functions for read-only subsetted association ends
     void setNamespace_(QNamespace *namespace_);

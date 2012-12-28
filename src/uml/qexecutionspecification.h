@@ -76,17 +76,12 @@ public:
     Q_INVOKABLE void setStart(QOccurrenceSpecification *start);
     Q_INVOKABLE QOccurrenceSpecification *finish() const;
     Q_INVOKABLE void setFinish(QOccurrenceSpecification *finish);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QExecutionSpecification(QExecutionSpecificationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QExecutionSpecification) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QExecutionSpecification) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QExecutionSpecification) *> *)
 
 QT_END_HEADER
 

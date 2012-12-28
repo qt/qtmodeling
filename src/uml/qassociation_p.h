@@ -73,9 +73,9 @@ public:
     virtual ~QAssociationPrivate();
 
     bool isDerived;
-    QSet<QProperty *> *navigableOwnedEnds;
-    QList<QProperty *> *ownedEnds;
-    QList<QProperty *> *memberEnds;
+    QSet<QProperty *> navigableOwnedEnds;
+    QList<QProperty *> ownedEnds;
+    QList<QProperty *> memberEnds;
 };
 
 QT_END_NAMESPACE_QTUML

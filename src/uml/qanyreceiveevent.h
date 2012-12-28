@@ -64,17 +64,12 @@ class Q_UML_EXPORT QAnyReceiveEvent : public QMessageEvent
 public:
     Q_INVOKABLE explicit QAnyReceiveEvent(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QAnyReceiveEvent();
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QAnyReceiveEvent(QAnyReceiveEventPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QAnyReceiveEvent) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QAnyReceiveEvent) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QAnyReceiveEvent) *> *)
 
 QT_END_HEADER
 

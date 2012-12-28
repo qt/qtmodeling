@@ -73,10 +73,10 @@ public:
     explicit QConnectorPrivate();
     virtual ~QConnectorPrivate();
 
-    QSet<QConnector *> *redefinedConnectors;
-    QSet<QBehavior *> *contracts;
+    QSet<QConnector *> redefinedConnectors;
+    QSet<QBehavior *> contracts;
     QAssociation *type;
-    QList<QConnectorEnd *> *ends;
+    QList<QConnectorEnd *> ends;
 };
 
 QT_END_NAMESPACE_QTUML

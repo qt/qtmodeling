@@ -67,7 +67,7 @@ class Q_UML_EXPORT QUnmarshallAction : public QAction
     Q_OBJECT
 
     Q_PROPERTY(QInputPin * object READ object WRITE setObject)
-    Q_PROPERTY(const QSet<QOutputPin *> * results READ results)
+    Q_PROPERTY(QSet<QOutputPin *> results READ results)
     Q_PROPERTY(QClassifier * unmarshallType READ unmarshallType WRITE setUnmarshallType)
 
     Q_DISABLE_COPY(QUnmarshallAction)
@@ -80,22 +80,17 @@ public:
     // Association ends from QUnmarshallAction
     Q_INVOKABLE QInputPin *object() const;
     Q_INVOKABLE void setObject(QInputPin *object);
-    Q_INVOKABLE const QSet<QOutputPin *> *results() const;
+    Q_INVOKABLE const QSet<QOutputPin *> &results() const;
     Q_INVOKABLE void addResult(QOutputPin *result);
     Q_INVOKABLE void removeResult(QOutputPin *result);
     Q_INVOKABLE QClassifier *unmarshallType() const;
     Q_INVOKABLE void setUnmarshallType(QClassifier *unmarshallType);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QUnmarshallAction(QUnmarshallActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QUnmarshallAction) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QUnmarshallAction) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QUnmarshallAction) *> *)
 
 QT_END_HEADER
 

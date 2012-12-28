@@ -74,11 +74,11 @@ class Q_UML_EXPORT QBehavior : public QClass
 
     Q_PROPERTY(bool isReentrant READ isReentrant WRITE setReentrant RESET unsetReentrant)
     Q_PROPERTY(QBehavioralFeature * specification READ specification WRITE setSpecification)
-    Q_PROPERTY(const QSet<QConstraint *> * postconditions READ postconditions)
-    Q_PROPERTY(const QSet<QConstraint *> * preconditions READ preconditions)
-    Q_PROPERTY(const QSet<QBehavior *> * redefinedBehaviors READ redefinedBehaviors)
-    Q_PROPERTY(const QList<QParameter *> * ownedParameters READ ownedParameters)
-    Q_PROPERTY(const QSet<QParameterSet *> * ownedParameterSets READ ownedParameterSets)
+    Q_PROPERTY(QSet<QConstraint *> postconditions READ postconditions)
+    Q_PROPERTY(QSet<QConstraint *> preconditions READ preconditions)
+    Q_PROPERTY(QSet<QBehavior *> redefinedBehaviors READ redefinedBehaviors)
+    Q_PROPERTY(QList<QParameter *> ownedParameters READ ownedParameters)
+    Q_PROPERTY(QSet<QParameterSet *> ownedParameterSets READ ownedParameterSets)
     Q_PROPERTY(QBehavioredClassifier * context READ context STORED false)
 
     Q_DISABLE_COPY(QBehavior)
@@ -96,19 +96,19 @@ public:
     // Association ends from QBehavior
     Q_INVOKABLE QBehavioralFeature *specification() const;
     Q_INVOKABLE void setSpecification(QBehavioralFeature *specification);
-    Q_INVOKABLE const QSet<QConstraint *> *postconditions() const;
+    Q_INVOKABLE const QSet<QConstraint *> &postconditions() const;
     Q_INVOKABLE void addPostcondition(QConstraint *postcondition);
     Q_INVOKABLE void removePostcondition(QConstraint *postcondition);
-    Q_INVOKABLE const QSet<QConstraint *> *preconditions() const;
+    Q_INVOKABLE const QSet<QConstraint *> &preconditions() const;
     Q_INVOKABLE void addPrecondition(QConstraint *precondition);
     Q_INVOKABLE void removePrecondition(QConstraint *precondition);
-    Q_INVOKABLE const QSet<QBehavior *> *redefinedBehaviors() const;
+    Q_INVOKABLE const QSet<QBehavior *> &redefinedBehaviors() const;
     Q_INVOKABLE void addRedefinedBehavior(QBehavior *redefinedBehavior);
     Q_INVOKABLE void removeRedefinedBehavior(QBehavior *redefinedBehavior);
-    Q_INVOKABLE const QList<QParameter *> *ownedParameters() const;
+    Q_INVOKABLE const QList<QParameter *> &ownedParameters() const;
     Q_INVOKABLE void addOwnedParameter(QParameter *ownedParameter);
     Q_INVOKABLE void removeOwnedParameter(QParameter *ownedParameter);
-    Q_INVOKABLE const QSet<QParameterSet *> *ownedParameterSets() const;
+    Q_INVOKABLE const QSet<QParameterSet *> &ownedParameterSets() const;
     Q_INVOKABLE void addOwnedParameterSet(QParameterSet *ownedParameterSet);
     Q_INVOKABLE void removeOwnedParameterSet(QParameterSet *ownedParameterSet);
     Q_INVOKABLE QBehavioredClassifier *context() const;
@@ -116,17 +116,12 @@ public:
     // Overriden methods for subsetted properties
     Q_INVOKABLE void addRedefinedClassifier(QWrappedObjectPointer<QBehavior> redefinedBehavior);
     Q_INVOKABLE void removeRedefinedClassifier(QWrappedObjectPointer<QBehavior> redefinedBehavior);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QBehavior(QBehaviorPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QBehavior) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *)
 
 QT_END_HEADER
 

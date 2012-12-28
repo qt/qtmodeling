@@ -101,28 +101,6 @@ QMofObject *QReflectiveSequence::set(qint32 index, const QMofObject *object)
     return 0; // change here to your derived return
 }
 
-void QReflectiveSequence::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QReflectiveSequence) *>("QT_PREPEND_NAMESPACE_QTMOF(QReflectiveSequence) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QReflectiveSequence) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QReflectiveSequence) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QReflectiveSequence) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QReflectiveSequence) *> *");
-    qRegisterMetaType<QReflectiveSequence *>("QReflectiveSequence *");
-    qRegisterMetaType<const QSet<QReflectiveSequence *> *>("const QSet<QReflectiveSequence *> *");
-    qRegisterMetaType<const QList<QReflectiveSequence *> *>("const QList<QReflectiveSequence *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QMofObject) *>("QT_PREPEND_NAMESPACE_QTMOF(QMofObject) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QMofObject) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QMofObject) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QMofObject) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QMofObject) *> *");
-    qRegisterMetaType<QMofObject *>("QMofObject *");
-    qRegisterMetaType<const QSet<QMofObject *> *>("const QSet<QMofObject *> *");
-    qRegisterMetaType<const QList<QMofObject *> *>("const QList<QMofObject *> *");
-
-    QReflectiveCollection::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 #include "moc_qreflectivesequence.cpp"
 
 QT_END_NAMESPACE_QTMOF

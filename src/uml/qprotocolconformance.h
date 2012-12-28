@@ -76,17 +76,12 @@ public:
     Q_INVOKABLE void setSpecificMachine(QProtocolStateMachine *specificMachine);
     Q_INVOKABLE QProtocolStateMachine *generalMachine() const;
     Q_INVOKABLE void setGeneralMachine(QProtocolStateMachine *generalMachine);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QProtocolConformance(QProtocolConformancePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QProtocolConformance) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QProtocolConformance) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QProtocolConformance) *> *)
 
 QT_END_HEADER
 

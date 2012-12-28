@@ -83,17 +83,12 @@ public:
     // Association ends from QDestroyObjectAction
     Q_INVOKABLE QInputPin *target() const;
     Q_INVOKABLE void setTarget(QInputPin *target);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QDestroyObjectAction(QDestroyObjectActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QDestroyObjectAction) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QDestroyObjectAction) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QDestroyObjectAction) *> *)
 
 QT_END_HEADER
 

@@ -48,16 +48,12 @@
 QT_BEGIN_NAMESPACE_QTUML
 
 QCombinedFragmentPrivate::QCombinedFragmentPrivate() :
-    interactionOperator(QtUml::InteractionOperatorSeq),
-    cfragmentGates(new QSet<QGate *>),
-    operands(new QList<QInteractionOperand *>)
+    interactionOperator(QtUml::InteractionOperatorSeq)
 {
 }
 
 QCombinedFragmentPrivate::~QCombinedFragmentPrivate()
 {
-    delete cfragmentGates;
-    delete operands;
 }
 
 /*!
@@ -119,7 +115,7 @@ void QCombinedFragment::unsetInteractionOperator()
 /*!
     Specifies the gates that form the interface between this CombinedFragment and its surroundings
  */
-const QSet<QGate *> *QCombinedFragment::cfragmentGates() const
+const QSet<QGate *> &QCombinedFragment::cfragmentGates() const
 {
     // This is a read-write association end
 
@@ -132,8 +128,8 @@ void QCombinedFragment::addCfragmentGate(QGate *cfragmentGate)
     // This is a read-write association end
 
     Q_D(QCombinedFragment);
-    if (!d->cfragmentGates->contains(cfragmentGate)) {
-        d->cfragmentGates->insert(cfragmentGate);
+    if (!d->cfragmentGates.contains(cfragmentGate)) {
+        d->cfragmentGates.insert(cfragmentGate);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(cfragmentGate));
@@ -145,8 +141,8 @@ void QCombinedFragment::removeCfragmentGate(QGate *cfragmentGate)
     // This is a read-write association end
 
     Q_D(QCombinedFragment);
-    if (d->cfragmentGates->contains(cfragmentGate)) {
-        d->cfragmentGates->remove(cfragmentGate);
+    if (d->cfragmentGates.contains(cfragmentGate)) {
+        d->cfragmentGates.remove(cfragmentGate);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(cfragmentGate));
@@ -156,7 +152,7 @@ void QCombinedFragment::removeCfragmentGate(QGate *cfragmentGate)
 /*!
     The set of operands of the combined fragment.
  */
-const QList<QInteractionOperand *> *QCombinedFragment::operands() const
+const QList<QInteractionOperand *> &QCombinedFragment::operands() const
 {
     // This is a read-write association end
 
@@ -169,8 +165,8 @@ void QCombinedFragment::addOperand(QInteractionOperand *operand)
     // This is a read-write association end
 
     Q_D(QCombinedFragment);
-    if (!d->operands->contains(operand)) {
-        d->operands->append(operand);
+    if (!d->operands.contains(operand)) {
+        d->operands.append(operand);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(operand));
@@ -182,41 +178,12 @@ void QCombinedFragment::removeOperand(QInteractionOperand *operand)
     // This is a read-write association end
 
     Q_D(QCombinedFragment);
-    if (d->operands->contains(operand)) {
-        d->operands->removeAll(operand);
+    if (d->operands.contains(operand)) {
+        d->operands.removeAll(operand);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(operand));
     }
-}
-
-void QCombinedFragment::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QCombinedFragment) *>("QT_PREPEND_NAMESPACE_QTUML(QCombinedFragment) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QCombinedFragment) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QCombinedFragment) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QCombinedFragment) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QCombinedFragment) *> *");
-    qRegisterMetaType<QCombinedFragment *>("QCombinedFragment *");
-    qRegisterMetaType<const QSet<QCombinedFragment *> *>("const QSet<QCombinedFragment *> *");
-    qRegisterMetaType<const QList<QCombinedFragment *> *>("const QList<QCombinedFragment *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QGate) *>("QT_PREPEND_NAMESPACE_QTUML(QGate) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QGate) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QGate) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QGate) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QGate) *> *");
-    qRegisterMetaType<QGate *>("QGate *");
-    qRegisterMetaType<const QSet<QGate *> *>("const QSet<QGate *> *");
-    qRegisterMetaType<const QList<QGate *> *>("const QList<QGate *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInteractionOperand) *>("QT_PREPEND_NAMESPACE_QTUML(QInteractionOperand) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInteractionOperand) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInteractionOperand) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInteractionOperand) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInteractionOperand) *> *");
-    qRegisterMetaType<QInteractionOperand *>("QInteractionOperand *");
-    qRegisterMetaType<const QSet<QInteractionOperand *> *>("const QSet<QInteractionOperand *> *");
-    qRegisterMetaType<const QList<QInteractionOperand *> *>("const QList<QInteractionOperand *> *");
-
-    QInteractionFragment::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qcombinedfragment.cpp"

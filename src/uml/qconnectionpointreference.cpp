@@ -48,16 +48,12 @@
 QT_BEGIN_NAMESPACE_QTUML
 
 QConnectionPointReferencePrivate::QConnectionPointReferencePrivate() :
-    exits(new QSet<QPseudostate *>),
-    state(0),
-    entries(new QSet<QPseudostate *>)
+    state(0)
 {
 }
 
 QConnectionPointReferencePrivate::~QConnectionPointReferencePrivate()
 {
-    delete exits;
-    delete entries;
 }
 
 /*!
@@ -89,7 +85,7 @@ QConnectionPointReference::~QConnectionPointReference()
 /*!
     The exitPoints kind pseudo states corresponding to this connection point.
  */
-const QSet<QPseudostate *> *QConnectionPointReference::exits() const
+const QSet<QPseudostate *> &QConnectionPointReference::exits() const
 {
     // This is a read-write association end
 
@@ -102,8 +98,8 @@ void QConnectionPointReference::addExit(QPseudostate *exit)
     // This is a read-write association end
 
     Q_D(QConnectionPointReference);
-    if (!d->exits->contains(exit)) {
-        d->exits->insert(exit);
+    if (!d->exits.contains(exit)) {
+        d->exits.insert(exit);
     }
 }
 
@@ -112,8 +108,8 @@ void QConnectionPointReference::removeExit(QPseudostate *exit)
     // This is a read-write association end
 
     Q_D(QConnectionPointReference);
-    if (d->exits->contains(exit)) {
-        d->exits->remove(exit);
+    if (d->exits.contains(exit)) {
+        d->exits.remove(exit);
     }
 }
 
@@ -152,7 +148,7 @@ void QConnectionPointReference::setState(QState *state)
 /*!
     The entryPoint kind pseudo states corresponding to this connection point.
  */
-const QSet<QPseudostate *> *QConnectionPointReference::entries() const
+const QSet<QPseudostate *> &QConnectionPointReference::entries() const
 {
     // This is a read-write association end
 
@@ -165,8 +161,8 @@ void QConnectionPointReference::addEntry(QPseudostate *entry)
     // This is a read-write association end
 
     Q_D(QConnectionPointReference);
-    if (!d->entries->contains(entry)) {
-        d->entries->insert(entry);
+    if (!d->entries.contains(entry)) {
+        d->entries.insert(entry);
     }
 }
 
@@ -175,38 +171,9 @@ void QConnectionPointReference::removeEntry(QPseudostate *entry)
     // This is a read-write association end
 
     Q_D(QConnectionPointReference);
-    if (d->entries->contains(entry)) {
-        d->entries->remove(entry);
+    if (d->entries.contains(entry)) {
+        d->entries.remove(entry);
     }
-}
-
-void QConnectionPointReference::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QConnectionPointReference) *>("QT_PREPEND_NAMESPACE_QTUML(QConnectionPointReference) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QConnectionPointReference) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QConnectionPointReference) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QConnectionPointReference) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QConnectionPointReference) *> *");
-    qRegisterMetaType<QConnectionPointReference *>("QConnectionPointReference *");
-    qRegisterMetaType<const QSet<QConnectionPointReference *> *>("const QSet<QConnectionPointReference *> *");
-    qRegisterMetaType<const QList<QConnectionPointReference *> *>("const QList<QConnectionPointReference *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QPseudostate) *>("QT_PREPEND_NAMESPACE_QTUML(QPseudostate) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QPseudostate) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QPseudostate) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QPseudostate) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QPseudostate) *> *");
-    qRegisterMetaType<QPseudostate *>("QPseudostate *");
-    qRegisterMetaType<const QSet<QPseudostate *> *>("const QSet<QPseudostate *> *");
-    qRegisterMetaType<const QList<QPseudostate *> *>("const QList<QPseudostate *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QState) *>("QT_PREPEND_NAMESPACE_QTUML(QState) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QState) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QState) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QState) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QState) *> *");
-    qRegisterMetaType<QState *>("QState *");
-    qRegisterMetaType<const QSet<QState *> *>("const QSet<QState *> *");
-    qRegisterMetaType<const QList<QState *> *>("const QList<QState *> *");
-
-    QVertex::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qconnectionpointreference.cpp"

@@ -50,28 +50,20 @@
 QT_BEGIN_NAMESPACE_QTUML
 
 QActionPrivate::QActionPrivate() :
-    isLocallyReentrant(false),
-    localPostconditions(new QSet<QConstraint *>),
-    localPreconditions(new QSet<QConstraint *>),
-    inputs(new QList<QInputPin *>),
-    outputs(new QList<QOutputPin *>)
+    isLocallyReentrant(false)
 {
 }
 
 QActionPrivate::~QActionPrivate()
 {
-    delete localPostconditions;
-    delete localPreconditions;
-    delete inputs;
-    delete outputs;
 }
 
 void QActionPrivate::addInput(QInputPin *input)
 {
     // This is a read-only derived-union association end
 
-    if (!this->inputs->contains(input)) {
-        this->inputs->append(input);
+    if (!this->inputs.contains(input)) {
+        this->inputs.append(input);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(this))->addOwnedElement(qwrappedobject_cast<QElement *>(input));
@@ -82,8 +74,8 @@ void QActionPrivate::removeInput(QInputPin *input)
 {
     // This is a read-only derived-union association end
 
-    if (this->inputs->contains(input)) {
-        this->inputs->removeAll(input);
+    if (this->inputs.contains(input)) {
+        this->inputs.removeAll(input);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(this))->removeOwnedElement(qwrappedobject_cast<QElement *>(input));
@@ -94,8 +86,8 @@ void QActionPrivate::addOutput(QOutputPin *output)
 {
     // This is a read-only derived-union association end
 
-    if (!this->outputs->contains(output)) {
-        this->outputs->append(output);
+    if (!this->outputs.contains(output)) {
+        this->outputs.append(output);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(this))->addOwnedElement(qwrappedobject_cast<QElement *>(output));
@@ -106,8 +98,8 @@ void QActionPrivate::removeOutput(QOutputPin *output)
 {
     // This is a read-only derived-union association end
 
-    if (this->outputs->contains(output)) {
-        this->outputs->removeAll(output);
+    if (this->outputs.contains(output)) {
+        this->outputs.removeAll(output);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(this))->removeOwnedElement(qwrappedobject_cast<QElement *>(output));
@@ -185,7 +177,7 @@ QClassifier *QAction::context() const
 /*!
     Constraint that must be satisfied when executed is completed.
  */
-const QSet<QConstraint *> *QAction::localPostconditions() const
+const QSet<QConstraint *> &QAction::localPostconditions() const
 {
     // This is a read-write association end
 
@@ -198,8 +190,8 @@ void QAction::addLocalPostcondition(QConstraint *localPostcondition)
     // This is a read-write association end
 
     Q_D(QAction);
-    if (!d->localPostconditions->contains(localPostcondition)) {
-        d->localPostconditions->insert(localPostcondition);
+    if (!d->localPostconditions.contains(localPostcondition)) {
+        d->localPostconditions.insert(localPostcondition);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(localPostcondition));
@@ -211,8 +203,8 @@ void QAction::removeLocalPostcondition(QConstraint *localPostcondition)
     // This is a read-write association end
 
     Q_D(QAction);
-    if (d->localPostconditions->contains(localPostcondition)) {
-        d->localPostconditions->remove(localPostcondition);
+    if (d->localPostconditions.contains(localPostcondition)) {
+        d->localPostconditions.remove(localPostcondition);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(localPostcondition));
@@ -222,7 +214,7 @@ void QAction::removeLocalPostcondition(QConstraint *localPostcondition)
 /*!
     Constraint that must be satisfied when execution is started.
  */
-const QSet<QConstraint *> *QAction::localPreconditions() const
+const QSet<QConstraint *> &QAction::localPreconditions() const
 {
     // This is a read-write association end
 
@@ -235,8 +227,8 @@ void QAction::addLocalPrecondition(QConstraint *localPrecondition)
     // This is a read-write association end
 
     Q_D(QAction);
-    if (!d->localPreconditions->contains(localPrecondition)) {
-        d->localPreconditions->insert(localPrecondition);
+    if (!d->localPreconditions.contains(localPrecondition)) {
+        d->localPreconditions.insert(localPrecondition);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(localPrecondition));
@@ -248,8 +240,8 @@ void QAction::removeLocalPrecondition(QConstraint *localPrecondition)
     // This is a read-write association end
 
     Q_D(QAction);
-    if (d->localPreconditions->contains(localPrecondition)) {
-        d->localPreconditions->remove(localPrecondition);
+    if (d->localPreconditions.contains(localPrecondition)) {
+        d->localPreconditions.remove(localPrecondition);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(localPrecondition));
@@ -259,7 +251,7 @@ void QAction::removeLocalPrecondition(QConstraint *localPrecondition)
 /*!
     The ordered set of input pins connected to the Action. These are among the total set of inputs.
  */
-const QList<QInputPin *> *QAction::inputs() const
+const QList<QInputPin *> &QAction::inputs() const
 {
     // This is a read-only derived-union association end
 
@@ -270,55 +262,12 @@ const QList<QInputPin *> *QAction::inputs() const
 /*!
     The ordered set of output pins connected to the Action. The action places its results onto pins in this set.
  */
-const QList<QOutputPin *> *QAction::outputs() const
+const QList<QOutputPin *> &QAction::outputs() const
 {
     // This is a read-only derived-union association end
 
     Q_D(const QAction);
     return d->outputs;
-}
-
-void QAction::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QAction) *>("QT_PREPEND_NAMESPACE_QTUML(QAction) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QAction) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QAction) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QAction) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QAction) *> *");
-    qRegisterMetaType<QAction *>("QAction *");
-    qRegisterMetaType<const QSet<QAction *> *>("const QSet<QAction *> *");
-    qRegisterMetaType<const QList<QAction *> *>("const QList<QAction *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *");
-    qRegisterMetaType<QOutputPin *>("QOutputPin *");
-    qRegisterMetaType<const QSet<QOutputPin *> *>("const QSet<QOutputPin *> *");
-    qRegisterMetaType<const QList<QOutputPin *> *>("const QList<QOutputPin *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QConstraint) *>("QT_PREPEND_NAMESPACE_QTUML(QConstraint) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QConstraint) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QConstraint) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QConstraint) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QConstraint) *> *");
-    qRegisterMetaType<QConstraint *>("QConstraint *");
-    qRegisterMetaType<const QSet<QConstraint *> *>("const QSet<QConstraint *> *");
-    qRegisterMetaType<const QList<QConstraint *> *>("const QList<QConstraint *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *>("QT_PREPEND_NAMESPACE_QTUML(QClassifier) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *");
-    qRegisterMetaType<QClassifier *>("QClassifier *");
-    qRegisterMetaType<const QSet<QClassifier *> *>("const QSet<QClassifier *> *");
-    qRegisterMetaType<const QList<QClassifier *> *>("const QList<QClassifier *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QInputPin) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
-    qRegisterMetaType<QInputPin *>("QInputPin *");
-    qRegisterMetaType<const QSet<QInputPin *> *>("const QSet<QInputPin *> *");
-    qRegisterMetaType<const QList<QInputPin *> *>("const QList<QInputPin *> *");
-
-    QExecutableNode::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qaction.cpp"

@@ -64,17 +64,12 @@ class Q_UML_EXPORT QDevice : public QNode
 public:
     Q_INVOKABLE explicit QDevice(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QDevice();
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QDevice(QDevicePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QDevice) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QDevice) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QDevice) *> *)
 
 QT_END_HEADER
 

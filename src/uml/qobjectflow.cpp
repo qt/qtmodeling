@@ -182,28 +182,6 @@ void QObjectFlow::setTransformation(QBehavior *transformation)
     }
 }
 
-void QObjectFlow::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QObjectFlow) *>("QT_PREPEND_NAMESPACE_QTUML(QObjectFlow) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QObjectFlow) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QObjectFlow) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QObjectFlow) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QObjectFlow) *> *");
-    qRegisterMetaType<QObjectFlow *>("QObjectFlow *");
-    qRegisterMetaType<const QSet<QObjectFlow *> *>("const QSet<QObjectFlow *> *");
-    qRegisterMetaType<const QList<QObjectFlow *> *>("const QList<QObjectFlow *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *>("QT_PREPEND_NAMESPACE_QTUML(QBehavior) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *");
-    qRegisterMetaType<QBehavior *>("QBehavior *");
-    qRegisterMetaType<const QSet<QBehavior *> *>("const QSet<QBehavior *> *");
-    qRegisterMetaType<const QList<QBehavior *> *>("const QList<QBehavior *> *");
-
-    QActivityEdge::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 #include "moc_qobjectflow.cpp"
 
 QT_END_NAMESPACE_QTUML

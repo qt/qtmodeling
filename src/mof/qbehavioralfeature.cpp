@@ -48,16 +48,12 @@
 
 QT_BEGIN_NAMESPACE_QTMOF
 
-QBehavioralFeaturePrivate::QBehavioralFeaturePrivate() :
-    raisedExceptions(new QSet<QType *>),
-    ownedParameters(new QList<QParameter *>)
+QBehavioralFeaturePrivate::QBehavioralFeaturePrivate()
 {
 }
 
 QBehavioralFeaturePrivate::~QBehavioralFeaturePrivate()
 {
-    delete raisedExceptions;
-    delete ownedParameters;
 }
 
 /*!
@@ -93,7 +89,7 @@ QBehavioralFeature::~QBehavioralFeature()
 /*!
     The Elements owned by this element.
  */
-const QSet<QElement *> *QBehavioralFeature::ownedElements() const
+const QSet<QElement *> &QBehavioralFeature::ownedElements() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedElements();
 }
@@ -109,7 +105,7 @@ QElement *QBehavioralFeature::owner() const
 /*!
     The Comments owned by this element.
  */
-const QSet<QComment *> *QBehavioralFeature::ownedComments() const
+const QSet<QComment *> &QBehavioralFeature::ownedComments() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedComments();
 }
@@ -203,7 +199,7 @@ void QBehavioralFeature::unsetLeaf()
 /*!
     The redefinable element that is being redefined by this element.
  */
-const QSet<QRedefinableElement *> *QBehavioralFeature::redefinedElements() const
+const QSet<QRedefinableElement *> &QBehavioralFeature::redefinedElements() const
 {
     return (qwrappedobject_cast<const QRedefinableElement *>(this))->redefinedElements();
 }
@@ -211,7 +207,7 @@ const QSet<QRedefinableElement *> *QBehavioralFeature::redefinedElements() const
 /*!
     References the contexts that this element may be redefined from.
  */
-const QSet<QClassifier *> *QBehavioralFeature::redefinitionContexts() const
+const QSet<QClassifier *> &QBehavioralFeature::redefinitionContexts() const
 {
     return (qwrappedobject_cast<const QRedefinableElement *>(this))->redefinitionContexts();
 }
@@ -245,7 +241,7 @@ void QBehavioralFeature::unsetStatic()
 /*!
     The Classifiers that have this Feature as a feature.
  */
-const QSet<QClassifier *> *QBehavioralFeature::featuringClassifiers() const
+const QSet<QClassifier *> &QBehavioralFeature::featuringClassifiers() const
 {
     return (qwrappedobject_cast<const QFeature *>(this))->featuringClassifiers();
 }
@@ -257,7 +253,7 @@ const QSet<QClassifier *> *QBehavioralFeature::featuringClassifiers() const
 /*!
     References the PackageImports owned by the Namespace.
  */
-const QSet<QPackageImport *> *QBehavioralFeature::packageImports() const
+const QSet<QPackageImport *> &QBehavioralFeature::packageImports() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->packageImports();
 }
@@ -275,7 +271,7 @@ void QBehavioralFeature::removePackageImport(QPackageImport *packageImport)
 /*!
     A collection of NamedElements identifiable within the Namespace, either by being owned or by being introduced by importing or inheritance.
  */
-const QSet<QNamedElement *> *QBehavioralFeature::members() const
+const QSet<QNamedElement *> &QBehavioralFeature::members() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->members();
 }
@@ -283,7 +279,7 @@ const QSet<QNamedElement *> *QBehavioralFeature::members() const
 /*!
     References the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports.
  */
-const QSet<QPackageableElement *> *QBehavioralFeature::importedMembers() const
+const QSet<QPackageableElement *> &QBehavioralFeature::importedMembers() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->importedMembers();
 }
@@ -291,7 +287,7 @@ const QSet<QPackageableElement *> *QBehavioralFeature::importedMembers() const
 /*!
     References the ElementImports owned by the Namespace.
  */
-const QSet<QElementImport *> *QBehavioralFeature::elementImports() const
+const QSet<QElementImport *> &QBehavioralFeature::elementImports() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->elementImports();
 }
@@ -309,7 +305,7 @@ void QBehavioralFeature::removeElementImport(QElementImport *elementImport)
 /*!
     Specifies a set of Constraints owned by this Namespace.
  */
-const QSet<QConstraint *> *QBehavioralFeature::ownedRules() const
+const QSet<QConstraint *> &QBehavioralFeature::ownedRules() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->ownedRules();
 }
@@ -327,7 +323,7 @@ void QBehavioralFeature::removeOwnedRule(QConstraint *ownedRule)
 /*!
     A collection of NamedElements owned by the Namespace.
  */
-const QSet<QNamedElement *> *QBehavioralFeature::ownedMembers() const
+const QSet<QNamedElement *> &QBehavioralFeature::ownedMembers() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->ownedMembers();
 }
@@ -339,7 +335,7 @@ const QSet<QNamedElement *> *QBehavioralFeature::ownedMembers() const
 /*!
     References the Types representing exceptions that may be raised during an invocation of this feature.
  */
-const QSet<QType *> *QBehavioralFeature::raisedExceptions() const
+const QSet<QType *> &QBehavioralFeature::raisedExceptions() const
 {
     // This is a read-write association end
 
@@ -352,8 +348,8 @@ void QBehavioralFeature::addRaisedException(QType *raisedException)
     // This is a read-write association end
 
     Q_D(QBehavioralFeature);
-    if (!d->raisedExceptions->contains(raisedException)) {
-        d->raisedExceptions->insert(raisedException);
+    if (!d->raisedExceptions.contains(raisedException)) {
+        d->raisedExceptions.insert(raisedException);
     }
 }
 
@@ -362,15 +358,15 @@ void QBehavioralFeature::removeRaisedException(QType *raisedException)
     // This is a read-write association end
 
     Q_D(QBehavioralFeature);
-    if (d->raisedExceptions->contains(raisedException)) {
-        d->raisedExceptions->remove(raisedException);
+    if (d->raisedExceptions.contains(raisedException)) {
+        d->raisedExceptions.remove(raisedException);
     }
 }
 
 /*!
     Specifies the ordered set of formal parameters of this BehavioralFeature.
  */
-const QList<QParameter *> *QBehavioralFeature::ownedParameters() const
+const QList<QParameter *> &QBehavioralFeature::ownedParameters() const
 {
     // This is a read-write association end
 
@@ -383,8 +379,8 @@ void QBehavioralFeature::addOwnedParameter(QParameter *ownedParameter)
     // This is a read-write association end
 
     Q_D(QBehavioralFeature);
-    if (!d->ownedParameters->contains(ownedParameter)) {
-        d->ownedParameters->append(ownedParameter);
+    if (!d->ownedParameters.contains(ownedParameter)) {
+        d->ownedParameters.append(ownedParameter);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qwrappedobject_cast<QNamedElement *>(ownedParameter));
@@ -396,8 +392,8 @@ void QBehavioralFeature::removeOwnedParameter(QParameter *ownedParameter)
     // This is a read-write association end
 
     Q_D(QBehavioralFeature);
-    if (d->ownedParameters->contains(ownedParameter)) {
-        d->ownedParameters->removeAll(ownedParameter);
+    if (d->ownedParameters.contains(ownedParameter)) {
+        d->ownedParameters.removeAll(ownedParameter);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qwrappedobject_cast<QNamedElement *>(ownedParameter));
@@ -414,42 +410,6 @@ bool QBehavioralFeature::isDistinguishableFrom(const QNamedElement *n, const QNa
     Q_UNUSED(ns);
 
     return bool(); // change here to your derived return
-}
-
-void QBehavioralFeature::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QBehavioralFeature) *>("QT_PREPEND_NAMESPACE_QTMOF(QBehavioralFeature) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QBehavioralFeature) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QBehavioralFeature) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QBehavioralFeature) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QBehavioralFeature) *> *");
-    qRegisterMetaType<QBehavioralFeature *>("QBehavioralFeature *");
-    qRegisterMetaType<const QSet<QBehavioralFeature *> *>("const QSet<QBehavioralFeature *> *");
-    qRegisterMetaType<const QList<QBehavioralFeature *> *>("const QList<QBehavioralFeature *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QParameter) *>("QT_PREPEND_NAMESPACE_QTMOF(QParameter) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QParameter) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QParameter) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QParameter) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QParameter) *> *");
-    qRegisterMetaType<QParameter *>("QParameter *");
-    qRegisterMetaType<const QSet<QParameter *> *>("const QSet<QParameter *> *");
-    qRegisterMetaType<const QList<QParameter *> *>("const QList<QParameter *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QType) *>("QT_PREPEND_NAMESPACE_QTMOF(QType) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QType) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QType) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QType) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QType) *> *");
-    qRegisterMetaType<QType *>("QType *");
-    qRegisterMetaType<const QSet<QType *> *>("const QSet<QType *> *");
-    qRegisterMetaType<const QList<QType *> *>("const QList<QType *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QNamedElement) *>("QT_PREPEND_NAMESPACE_QTMOF(QNamedElement) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QNamedElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QNamedElement) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QNamedElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QNamedElement) *> *");
-    qRegisterMetaType<QNamedElement *>("QNamedElement *");
-    qRegisterMetaType<const QSet<QNamedElement *> *>("const QSet<QNamedElement *> *");
-    qRegisterMetaType<const QList<QNamedElement *> *>("const QList<QNamedElement *> *");
-
-    QWrappedObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qbehavioralfeature.cpp"

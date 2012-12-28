@@ -74,21 +74,6 @@ QUsage::~QUsage()
 {
 }
 
-void QUsage::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QUsage) *>("QT_PREPEND_NAMESPACE_QTUML(QUsage) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QUsage) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QUsage) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QUsage) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QUsage) *> *");
-    qRegisterMetaType<QUsage *>("QUsage *");
-    qRegisterMetaType<const QSet<QUsage *> *>("const QSet<QUsage *> *");
-    qRegisterMetaType<const QList<QUsage *> *>("const QList<QUsage *> *");
-
-    QDependency::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 #include "moc_qusage.cpp"
 
 QT_END_NAMESPACE_QTUML

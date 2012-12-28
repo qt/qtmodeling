@@ -72,10 +72,10 @@ public:
     bool isDimension;
     bool isExternal;
     QElement *represents;
-    QSet<QActivityPartition *> *subpartitions;
+    QSet<QActivityPartition *> subpartitions;
     QActivityPartition *superPartition;
-    QSet<QActivityNode *> *nodes;
-    QSet<QActivityEdge *> *edges;
+    QSet<QActivityNode *> nodes;
+    QSet<QActivityEdge *> edges;
 };
 
 QT_END_NAMESPACE_QTUML

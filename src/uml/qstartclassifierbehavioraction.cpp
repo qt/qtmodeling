@@ -110,28 +110,6 @@ void QStartClassifierBehaviorAction::setObject(QInputPin *object)
     }
 }
 
-void QStartClassifierBehaviorAction::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QStartClassifierBehaviorAction) *>("QT_PREPEND_NAMESPACE_QTUML(QStartClassifierBehaviorAction) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QStartClassifierBehaviorAction) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QStartClassifierBehaviorAction) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QStartClassifierBehaviorAction) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QStartClassifierBehaviorAction) *> *");
-    qRegisterMetaType<QStartClassifierBehaviorAction *>("QStartClassifierBehaviorAction *");
-    qRegisterMetaType<const QSet<QStartClassifierBehaviorAction *> *>("const QSet<QStartClassifierBehaviorAction *> *");
-    qRegisterMetaType<const QList<QStartClassifierBehaviorAction *> *>("const QList<QStartClassifierBehaviorAction *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QInputPin) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
-    qRegisterMetaType<QInputPin *>("QInputPin *");
-    qRegisterMetaType<const QSet<QInputPin *> *>("const QSet<QInputPin *> *");
-    qRegisterMetaType<const QList<QInputPin *> *>("const QList<QInputPin *> *");
-
-    QAction::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 #include "moc_qstartclassifierbehavioraction.cpp"
 
 QT_END_NAMESPACE_QTUML

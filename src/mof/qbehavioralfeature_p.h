@@ -72,8 +72,8 @@ public:
     explicit QBehavioralFeaturePrivate();
     virtual ~QBehavioralFeaturePrivate();
 
-    QSet<QType *> *raisedExceptions;
-    QList<QParameter *> *ownedParameters;
+    QSet<QType *> raisedExceptions;
+    QList<QParameter *> ownedParameters;
 };
 
 QT_END_NAMESPACE_QTMOF

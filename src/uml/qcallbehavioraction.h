@@ -73,17 +73,12 @@ public:
     // Association ends from QCallBehaviorAction
     Q_INVOKABLE QBehavior *behavior() const;
     Q_INVOKABLE void setBehavior(QBehavior *behavior);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QCallBehaviorAction(QCallBehaviorActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QCallBehaviorAction) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QCallBehaviorAction) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QCallBehaviorAction) *> *)
 
 QT_END_HEADER
 

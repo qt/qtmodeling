@@ -74,21 +74,6 @@ QControlNode::~QControlNode()
 {
 }
 
-void QControlNode::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QControlNode) *>("QT_PREPEND_NAMESPACE_QTUML(QControlNode) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QControlNode) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QControlNode) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QControlNode) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QControlNode) *> *");
-    qRegisterMetaType<QControlNode *>("QControlNode *");
-    qRegisterMetaType<const QSet<QControlNode *> *>("const QSet<QControlNode *> *");
-    qRegisterMetaType<const QList<QControlNode *> *>("const QList<QControlNode *> *");
-
-    QActivityNode::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 #include "moc_qcontrolnode.cpp"
 
 QT_END_NAMESPACE_QTUML

@@ -37,7 +37,7 @@ int main ()
     profile->addPackagedElement(stereotype);
 
     // Show profile's owned stereotypes
-    QScopedPointer<QStereotypeList> ownedStereotypes (profile->ownedStereotypes());
+    QScopedPointer<QStereotypeList> ownedStereotypes (&profile->ownedStereotypes());
     qDebug() << "Owned stereotypes:";
     foreach (QStereotype *ownedStereotype, *ownedStereotypes)
         qDebug() << "    " << ownedStereotype->name();
@@ -52,7 +52,7 @@ int main ()
 
     // Create UML meta-model element import
     QWrappedObjectPointer<QElementImport> elementImport = new QElementImport;
-    elementImport->setImportedElement(umlModel->packagedElements()->toList().first());
+    elementImport->setImportedElement(umlModel->packagedElements().toList().first());
 
     // Add meta-class reference to profile
     profile->addMetaclassReference(elementImport);
@@ -60,12 +60,12 @@ int main ()
 
     // Show profile's data
     qDebug() << "Profile members:";
-    foreach (QNamedElement *namedElement, *profile->members())
+    foreach (QNamedElement *namedElement, profile->members())
         qDebug() << "    " << namedElement->name();
     qDebug() << "Profile owned members:";
-    foreach (QNamedElement *namedElement, *profile->ownedMembers())
+    foreach (QNamedElement *namedElement, profile->ownedMembers())
         qDebug() << "    " << namedElement->name();
-    QScopedPointer<QPackageableElementList> importedMembers (profile->importedMembers());
+    QScopedPointer<QPackageableElementList> importedMembers (&profile->importedMembers());
     qDebug() << "Profile imported members:";
     foreach (QPackageableElement *importedMember, *importedMembers)
         qDebug() << "    " << importedMember->name();

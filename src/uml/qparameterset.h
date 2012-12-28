@@ -65,8 +65,8 @@ class Q_UML_EXPORT QParameterSet : public QNamedElement
 {
     Q_OBJECT
 
-    Q_PROPERTY(const QSet<QParameter *> * parameters READ parameters)
-    Q_PROPERTY(const QSet<QConstraint *> * conditions READ conditions)
+    Q_PROPERTY(QSet<QParameter *> parameters READ parameters)
+    Q_PROPERTY(QSet<QConstraint *> conditions READ conditions)
 
     Q_DISABLE_COPY(QParameterSet)
     Q_DECLARE_PRIVATE(QParameterSet)
@@ -76,23 +76,18 @@ public:
     virtual ~QParameterSet();
 
     // Association ends from QParameterSet
-    Q_INVOKABLE const QSet<QParameter *> *parameters() const;
+    Q_INVOKABLE const QSet<QParameter *> &parameters() const;
     Q_INVOKABLE void addParameter(QParameter *parameter);
     Q_INVOKABLE void removeParameter(QParameter *parameter);
-    Q_INVOKABLE const QSet<QConstraint *> *conditions() const;
+    Q_INVOKABLE const QSet<QConstraint *> &conditions() const;
     Q_INVOKABLE void addCondition(QConstraint *condition);
     Q_INVOKABLE void removeCondition(QConstraint *condition);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QParameterSet(QParameterSetPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QParameterSet) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QParameterSet) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QParameterSet) *> *)
 
 QT_END_HEADER
 

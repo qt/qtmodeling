@@ -52,14 +52,12 @@ QObjectNodePrivate::QObjectNodePrivate() :
     isControlType(false),
     ordering(QtUml::ObjectNodeOrderingFIFO),
     upperBound(0),
-    selection(0),
-    inState(new QSet<QState *>)
+    selection(0)
 {
 }
 
 QObjectNodePrivate::~QObjectNodePrivate()
 {
-    delete inState;
 }
 
 /*!
@@ -95,7 +93,7 @@ QObjectNode::~QObjectNode()
 /*!
     The Elements owned by this element.
  */
-const QSet<QElement *> *QObjectNode::ownedElements() const
+const QSet<QElement *> &QObjectNode::ownedElements() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedElements();
 }
@@ -111,7 +109,7 @@ QElement *QObjectNode::owner() const
 /*!
     The Comments owned by this element.
  */
-const QSet<QComment *> *QObjectNode::ownedComments() const
+const QSet<QComment *> &QObjectNode::ownedComments() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedComments();
 }
@@ -192,7 +190,7 @@ QNamespace *QObjectNode::namespace_() const
 /*!
     Indicates the dependencies that reference the client.
  */
-const QSet<QDependency *> *QObjectNode::clientDependencies() const
+const QSet<QDependency *> &QObjectNode::clientDependencies() const
 {
     return (qwrappedobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
@@ -236,7 +234,7 @@ void QObjectNode::unsetLeaf()
 /*!
     The redefinable element that is being redefined by this element.
  */
-const QSet<QRedefinableElement *> *QObjectNode::redefinedElements() const
+const QSet<QRedefinableElement *> &QObjectNode::redefinedElements() const
 {
     return (qwrappedobject_cast<const QRedefinableElement *>(this))->redefinedElements();
 }
@@ -244,7 +242,7 @@ const QSet<QRedefinableElement *> *QObjectNode::redefinedElements() const
 /*!
     References the contexts that this element may be redefined from.
  */
-const QSet<QClassifier *> *QObjectNode::redefinitionContexts() const
+const QSet<QClassifier *> &QObjectNode::redefinitionContexts() const
 {
     return (qwrappedobject_cast<const QRedefinableElement *>(this))->redefinitionContexts();
 }
@@ -256,7 +254,7 @@ const QSet<QClassifier *> *QObjectNode::redefinitionContexts() const
 /*!
     Inherited nodes replaced by this node in a specialization of the activity.
  */
-const QSet<QActivityNode *> *QObjectNode::redefinedNodes() const
+const QSet<QActivityNode *> &QObjectNode::redefinedNodes() const
 {
     return (qwrappedobject_cast<const QActivityNode *>(this))->redefinedNodes();
 }
@@ -274,7 +272,7 @@ void QObjectNode::removeRedefinedNode(QActivityNode *redefinedNode)
 /*!
     Edges that have the node as target.
  */
-const QSet<QActivityEdge *> *QObjectNode::incomings() const
+const QSet<QActivityEdge *> &QObjectNode::incomings() const
 {
     return (qwrappedobject_cast<const QActivityNode *>(this))->incomings();
 }
@@ -305,7 +303,7 @@ void QObjectNode::setActivity(QActivity *activity)
 /*!
     Groups containing the node.
  */
-const QSet<QActivityGroup *> *QObjectNode::inGroup() const
+const QSet<QActivityGroup *> &QObjectNode::inGroup() const
 {
     return (qwrappedobject_cast<const QActivityNode *>(this))->inGroup();
 }
@@ -326,7 +324,7 @@ void QObjectNode::setInStructuredNode(QStructuredActivityNode *inStructuredNode)
 /*!
     Partitions containing the node.
  */
-const QSet<QActivityPartition *> *QObjectNode::inPartition() const
+const QSet<QActivityPartition *> &QObjectNode::inPartition() const
 {
     return (qwrappedobject_cast<const QActivityNode *>(this))->inPartition();
 }
@@ -344,7 +342,7 @@ void QObjectNode::removeInPartition(QActivityPartition *inPartition)
 /*!
     Interruptible regions containing the node.
  */
-const QSet<QInterruptibleActivityRegion *> *QObjectNode::inInterruptibleRegion() const
+const QSet<QInterruptibleActivityRegion *> &QObjectNode::inInterruptibleRegion() const
 {
     return (qwrappedobject_cast<const QActivityNode *>(this))->inInterruptibleRegion();
 }
@@ -362,7 +360,7 @@ void QObjectNode::removeInInterruptibleRegion(QInterruptibleActivityRegion *inIn
 /*!
     Edges that have the node as source.
  */
-const QSet<QActivityEdge *> *QObjectNode::outgoings() const
+const QSet<QActivityEdge *> &QObjectNode::outgoings() const
 {
     return (qwrappedobject_cast<const QActivityNode *>(this))->outgoings();
 }
@@ -507,7 +505,7 @@ void QObjectNode::setSelection(QBehavior *selection)
 /*!
     The required states of the object available at this point in the activity.
  */
-const QSet<QState *> *QObjectNode::inState() const
+const QSet<QState *> &QObjectNode::inState() const
 {
     // This is a read-write association end
 
@@ -520,8 +518,8 @@ void QObjectNode::addInState(QState *inState)
     // This is a read-write association end
 
     Q_D(QObjectNode);
-    if (!d->inState->contains(inState)) {
-        d->inState->insert(inState);
+    if (!d->inState.contains(inState)) {
+        d->inState.insert(inState);
     }
 }
 
@@ -530,45 +528,9 @@ void QObjectNode::removeInState(QState *inState)
     // This is a read-write association end
 
     Q_D(QObjectNode);
-    if (d->inState->contains(inState)) {
-        d->inState->remove(inState);
+    if (d->inState.contains(inState)) {
+        d->inState.remove(inState);
     }
-}
-
-void QObjectNode::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QObjectNode) *>("QT_PREPEND_NAMESPACE_QTUML(QObjectNode) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QObjectNode) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QObjectNode) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QObjectNode) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QObjectNode) *> *");
-    qRegisterMetaType<QObjectNode *>("QObjectNode *");
-    qRegisterMetaType<const QSet<QObjectNode *> *>("const QSet<QObjectNode *> *");
-    qRegisterMetaType<const QList<QObjectNode *> *>("const QList<QObjectNode *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QState) *>("QT_PREPEND_NAMESPACE_QTUML(QState) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QState) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QState) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QState) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QState) *> *");
-    qRegisterMetaType<QState *>("QState *");
-    qRegisterMetaType<const QSet<QState *> *>("const QSet<QState *> *");
-    qRegisterMetaType<const QList<QState *> *>("const QList<QState *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *>("QT_PREPEND_NAMESPACE_QTUML(QBehavior) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *");
-    qRegisterMetaType<QBehavior *>("QBehavior *");
-    qRegisterMetaType<const QSet<QBehavior *> *>("const QSet<QBehavior *> *");
-    qRegisterMetaType<const QList<QBehavior *> *>("const QList<QBehavior *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *>("QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *");
-    qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
-    qRegisterMetaType<const QSet<QValueSpecification *> *>("const QSet<QValueSpecification *> *");
-    qRegisterMetaType<const QList<QValueSpecification *> *>("const QList<QValueSpecification *> *");
-
-    QWrappedObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qobjectnode.cpp"

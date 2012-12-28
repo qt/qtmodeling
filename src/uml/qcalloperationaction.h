@@ -77,17 +77,12 @@ public:
     Q_INVOKABLE void setOperation(QOperation *operation);
     Q_INVOKABLE QInputPin *target() const;
     Q_INVOKABLE void setTarget(QInputPin *target);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QCallOperationAction(QCallOperationActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QCallOperationAction) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QCallOperationAction) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QCallOperationAction) *> *)
 
 QT_END_HEADER
 

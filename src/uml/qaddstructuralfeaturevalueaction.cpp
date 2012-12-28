@@ -141,28 +141,6 @@ void QAddStructuralFeatureValueAction::setInsertAt(QInputPin *insertAt)
     }
 }
 
-void QAddStructuralFeatureValueAction::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QAddStructuralFeatureValueAction) *>("QT_PREPEND_NAMESPACE_QTUML(QAddStructuralFeatureValueAction) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QAddStructuralFeatureValueAction) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QAddStructuralFeatureValueAction) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QAddStructuralFeatureValueAction) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QAddStructuralFeatureValueAction) *> *");
-    qRegisterMetaType<QAddStructuralFeatureValueAction *>("QAddStructuralFeatureValueAction *");
-    qRegisterMetaType<const QSet<QAddStructuralFeatureValueAction *> *>("const QSet<QAddStructuralFeatureValueAction *> *");
-    qRegisterMetaType<const QList<QAddStructuralFeatureValueAction *> *>("const QList<QAddStructuralFeatureValueAction *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QInputPin) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
-    qRegisterMetaType<QInputPin *>("QInputPin *");
-    qRegisterMetaType<const QSet<QInputPin *> *>("const QSet<QInputPin *> *");
-    qRegisterMetaType<const QList<QInputPin *> *>("const QList<QInputPin *> *");
-
-    QWriteStructuralFeatureAction::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 #include "moc_qaddstructuralfeaturevalueaction.cpp"
 
 QT_END_NAMESPACE_QTUML

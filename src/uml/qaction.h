@@ -70,10 +70,10 @@ class Q_UML_EXPORT QAction : public QExecutableNode
 
     Q_PROPERTY(bool isLocallyReentrant READ isLocallyReentrant WRITE setLocallyReentrant RESET unsetLocallyReentrant)
     Q_PROPERTY(QClassifier * context READ context STORED false)
-    Q_PROPERTY(const QSet<QConstraint *> * localPostconditions READ localPostconditions)
-    Q_PROPERTY(const QSet<QConstraint *> * localPreconditions READ localPreconditions)
-    Q_PROPERTY(const QList<QInputPin *> * inputs READ inputs)
-    Q_PROPERTY(const QList<QOutputPin *> * outputs READ outputs)
+    Q_PROPERTY(QSet<QConstraint *> localPostconditions READ localPostconditions)
+    Q_PROPERTY(QSet<QConstraint *> localPreconditions READ localPreconditions)
+    Q_PROPERTY(QList<QInputPin *> inputs READ inputs)
+    Q_PROPERTY(QList<QOutputPin *> outputs READ outputs)
 
     Q_DISABLE_COPY(QAction)
     Q_DECLARE_PRIVATE(QAction)
@@ -89,25 +89,20 @@ public:
 
     // Association ends from QAction
     Q_INVOKABLE QClassifier *context() const;
-    Q_INVOKABLE const QSet<QConstraint *> *localPostconditions() const;
+    Q_INVOKABLE const QSet<QConstraint *> &localPostconditions() const;
     Q_INVOKABLE void addLocalPostcondition(QConstraint *localPostcondition);
     Q_INVOKABLE void removeLocalPostcondition(QConstraint *localPostcondition);
-    Q_INVOKABLE const QSet<QConstraint *> *localPreconditions() const;
+    Q_INVOKABLE const QSet<QConstraint *> &localPreconditions() const;
     Q_INVOKABLE void addLocalPrecondition(QConstraint *localPrecondition);
     Q_INVOKABLE void removeLocalPrecondition(QConstraint *localPrecondition);
-    Q_INVOKABLE const QList<QInputPin *> *inputs() const;
-    Q_INVOKABLE const QList<QOutputPin *> *outputs() const;
-    virtual void registerMetaTypes() const;
+    Q_INVOKABLE const QList<QInputPin *> &inputs() const;
+    Q_INVOKABLE const QList<QOutputPin *> &outputs() const;
 
 protected:
     explicit QAction(QActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QAction) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QAction) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QAction) *> *)
 
 QT_END_HEADER
 

@@ -64,7 +64,7 @@ class Q_UML_EXPORT QExecutableNode : public QActivityNode
 {
     Q_OBJECT
 
-    Q_PROPERTY(const QSet<QExceptionHandler *> * handlers READ handlers)
+    Q_PROPERTY(QSet<QExceptionHandler *> handlers READ handlers)
 
     Q_DISABLE_COPY(QExecutableNode)
     Q_DECLARE_PRIVATE(QExecutableNode)
@@ -74,20 +74,15 @@ public:
     virtual ~QExecutableNode();
 
     // Association ends from QExecutableNode
-    Q_INVOKABLE const QSet<QExceptionHandler *> *handlers() const;
+    Q_INVOKABLE const QSet<QExceptionHandler *> &handlers() const;
     Q_INVOKABLE void addHandler(QExceptionHandler *handler);
     Q_INVOKABLE void removeHandler(QExceptionHandler *handler);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QExecutableNode(QExecutableNodePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *> *)
 
 QT_END_HEADER
 

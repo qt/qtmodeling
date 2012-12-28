@@ -64,7 +64,7 @@ class Q_UML_EXPORT QDurationConstraint : public QIntervalConstraint
 {
     Q_OBJECT
 
-    Q_PROPERTY(const QSet<bool> * firstEvents READ firstEvents)
+    Q_PROPERTY(QSet<bool> firstEvents READ firstEvents)
     Q_PROPERTY(QDurationInterval * specification READ specification WRITE setSpecification)
 
     Q_DISABLE_COPY(QDurationConstraint)
@@ -75,24 +75,19 @@ public:
     virtual ~QDurationConstraint();
 
     // Attributes from QDurationConstraint
-    Q_INVOKABLE const QSet<bool> *firstEvents() const;
+    Q_INVOKABLE const QSet<bool> firstEvents() const;
     Q_INVOKABLE void addFirstEvent(bool firstEvent);
     Q_INVOKABLE void removeFirstEvent(bool firstEvent);
 
     // Association ends from QDurationConstraint
     Q_INVOKABLE QDurationInterval *specification() const;
     Q_INVOKABLE void setSpecification(QDurationInterval *specification);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QDurationConstraint(QDurationConstraintPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QDurationConstraint) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QDurationConstraint) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QDurationConstraint) *> *)
 
 QT_END_HEADER
 

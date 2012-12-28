@@ -70,7 +70,7 @@ class Q_UML_EXPORT QLifeline : public QNamedElement
 
     Q_PROPERTY(QConnectableElement * represents READ represents WRITE setRepresents)
     Q_PROPERTY(QPartDecomposition * decomposedAs READ decomposedAs WRITE setDecomposedAs)
-    Q_PROPERTY(const QSet<QInteractionFragment *> * coveredBy READ coveredBy)
+    Q_PROPERTY(QSet<QInteractionFragment *> coveredBy READ coveredBy)
     Q_PROPERTY(QInteraction * interaction READ interaction WRITE setInteraction)
     Q_PROPERTY(QValueSpecification * selector READ selector WRITE setSelector)
 
@@ -86,24 +86,19 @@ public:
     Q_INVOKABLE void setRepresents(QConnectableElement *represents);
     Q_INVOKABLE QPartDecomposition *decomposedAs() const;
     Q_INVOKABLE void setDecomposedAs(QPartDecomposition *decomposedAs);
-    Q_INVOKABLE const QSet<QInteractionFragment *> *coveredBy() const;
+    Q_INVOKABLE const QSet<QInteractionFragment *> &coveredBy() const;
     Q_INVOKABLE void addCoveredBy(QInteractionFragment *coveredBy);
     Q_INVOKABLE void removeCoveredBy(QInteractionFragment *coveredBy);
     Q_INVOKABLE QInteraction *interaction() const;
     Q_INVOKABLE void setInteraction(QInteraction *interaction);
     Q_INVOKABLE QValueSpecification *selector() const;
     Q_INVOKABLE void setSelector(QValueSpecification *selector);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QLifeline(QLifelinePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QLifeline) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QLifeline) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QLifeline) *> *)
 
 QT_END_HEADER
 

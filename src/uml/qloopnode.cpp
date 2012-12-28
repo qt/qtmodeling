@@ -50,26 +50,14 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QLoopNodePrivate::QLoopNodePrivate() :
     isTestedFirst(false),
-    loopVariableInputs(new QList<QInputPin *>),
-    decider(0),
-    bodyOutputs(new QList<QOutputPin *>),
-    loopVariables(new QList<QOutputPin *>),
-    results(new QList<QOutputPin *>),
-    setupParts(new QSet<QExecutableNode *>),
-    bodyParts(new QSet<QExecutableNode *>),
-    tests(new QSet<QExecutableNode *>)
+    decider(0)
 {
 }
 
 QLoopNodePrivate::~QLoopNodePrivate()
 {
-    delete loopVariableInputs;
-    delete bodyOutputs;
-    delete loopVariables;
-    delete results;
-    delete setupParts;
-    delete bodyParts;
-    delete tests;
+    qDeleteAll(loopVariableInputs);
+    qDeleteAll(results);
 }
 
 /*!
@@ -131,7 +119,7 @@ void QLoopNode::unsetTestedFirst()
 /*!
     A list of values that are moved into the loop variable pins before the first iteration of the loop.
  */
-const QList<QInputPin *> *QLoopNode::loopVariableInputs() const
+const QList<QInputPin *> &QLoopNode::loopVariableInputs() const
 {
     // This is a read-write association end
 
@@ -144,8 +132,8 @@ void QLoopNode::addLoopVariableInput(QInputPin *loopVariableInput)
     // This is a read-write association end
 
     Q_D(QLoopNode);
-    if (!d->loopVariableInputs->contains(loopVariableInput)) {
-        d->loopVariableInputs->append(loopVariableInput);
+    if (!d->loopVariableInputs.contains(loopVariableInput)) {
+        d->loopVariableInputs.append(loopVariableInput);
         qTopLevelWrapper(loopVariableInput)->setParent(qTopLevelWrapper(this));
     }
 }
@@ -155,8 +143,8 @@ void QLoopNode::removeLoopVariableInput(QInputPin *loopVariableInput)
     // This is a read-write association end
 
     Q_D(QLoopNode);
-    if (d->loopVariableInputs->contains(loopVariableInput)) {
-        d->loopVariableInputs->removeAll(loopVariableInput);
+    if (d->loopVariableInputs.contains(loopVariableInput)) {
+        d->loopVariableInputs.removeAll(loopVariableInput);
         qTopLevelWrapper(loopVariableInput)->setParent(0);
     }
 }
@@ -185,7 +173,7 @@ void QLoopNode::setDecider(QOutputPin *decider)
 /*!
     A list of output pins within the body fragment the values of which are moved to the loop variable pins after completion of execution of the body, before the next iteration of the loop begins or before the loop exits.
  */
-const QList<QOutputPin *> *QLoopNode::bodyOutputs() const
+const QList<QOutputPin *> &QLoopNode::bodyOutputs() const
 {
     // This is a read-write association end
 
@@ -198,8 +186,8 @@ void QLoopNode::addBodyOutput(QOutputPin *bodyOutput)
     // This is a read-write association end
 
     Q_D(QLoopNode);
-    if (!d->bodyOutputs->contains(bodyOutput)) {
-        d->bodyOutputs->append(bodyOutput);
+    if (!d->bodyOutputs.contains(bodyOutput)) {
+        d->bodyOutputs.append(bodyOutput);
     }
 }
 
@@ -208,15 +196,15 @@ void QLoopNode::removeBodyOutput(QOutputPin *bodyOutput)
     // This is a read-write association end
 
     Q_D(QLoopNode);
-    if (d->bodyOutputs->contains(bodyOutput)) {
-        d->bodyOutputs->removeAll(bodyOutput);
+    if (d->bodyOutputs.contains(bodyOutput)) {
+        d->bodyOutputs.removeAll(bodyOutput);
     }
 }
 
 /*!
     A list of output pins that hold the values of the loop variables during an execution of the loop. When the test fails, the values are movied to the result pins of the loop.
  */
-const QList<QOutputPin *> *QLoopNode::loopVariables() const
+const QList<QOutputPin *> &QLoopNode::loopVariables() const
 {
     // This is a read-write association end
 
@@ -229,8 +217,8 @@ void QLoopNode::addLoopVariable(QOutputPin *loopVariable)
     // This is a read-write association end
 
     Q_D(QLoopNode);
-    if (!d->loopVariables->contains(loopVariable)) {
-        d->loopVariables->append(loopVariable);
+    if (!d->loopVariables.contains(loopVariable)) {
+        d->loopVariables.append(loopVariable);
     }
 }
 
@@ -239,15 +227,15 @@ void QLoopNode::removeLoopVariable(QOutputPin *loopVariable)
     // This is a read-write association end
 
     Q_D(QLoopNode);
-    if (d->loopVariables->contains(loopVariable)) {
-        d->loopVariables->removeAll(loopVariable);
+    if (d->loopVariables.contains(loopVariable)) {
+        d->loopVariables.removeAll(loopVariable);
     }
 }
 
 /*!
     A list of output pins that constitute the data flow output of the entire loop.
  */
-const QList<QOutputPin *> *QLoopNode::results() const
+const QList<QOutputPin *> &QLoopNode::results() const
 {
     // This is a read-write association end
 
@@ -260,8 +248,8 @@ void QLoopNode::addResult(QOutputPin *result)
     // This is a read-write association end
 
     Q_D(QLoopNode);
-    if (!d->results->contains(result)) {
-        d->results->append(result);
+    if (!d->results.contains(result)) {
+        d->results.append(result);
         qTopLevelWrapper(result)->setParent(qTopLevelWrapper(this));
     }
 }
@@ -271,8 +259,8 @@ void QLoopNode::removeResult(QOutputPin *result)
     // This is a read-write association end
 
     Q_D(QLoopNode);
-    if (d->results->contains(result)) {
-        d->results->removeAll(result);
+    if (d->results.contains(result)) {
+        d->results.removeAll(result);
         qTopLevelWrapper(result)->setParent(0);
     }
 }
@@ -280,7 +268,7 @@ void QLoopNode::removeResult(QOutputPin *result)
 /*!
     The set of nodes and edges that initialize values or perform other setup computations for the loop.
  */
-const QSet<QExecutableNode *> *QLoopNode::setupParts() const
+const QSet<QExecutableNode *> &QLoopNode::setupParts() const
 {
     // This is a read-write association end
 
@@ -293,8 +281,8 @@ void QLoopNode::addSetupPart(QExecutableNode *setupPart)
     // This is a read-write association end
 
     Q_D(QLoopNode);
-    if (!d->setupParts->contains(setupPart)) {
-        d->setupParts->insert(setupPart);
+    if (!d->setupParts.contains(setupPart)) {
+        d->setupParts.insert(setupPart);
     }
 }
 
@@ -303,15 +291,15 @@ void QLoopNode::removeSetupPart(QExecutableNode *setupPart)
     // This is a read-write association end
 
     Q_D(QLoopNode);
-    if (d->setupParts->contains(setupPart)) {
-        d->setupParts->remove(setupPart);
+    if (d->setupParts.contains(setupPart)) {
+        d->setupParts.remove(setupPart);
     }
 }
 
 /*!
     The set of nodes and edges that perform the repetitive computations of the loop. The body section is executed as long as the test section produces a true value.
  */
-const QSet<QExecutableNode *> *QLoopNode::bodyParts() const
+const QSet<QExecutableNode *> &QLoopNode::bodyParts() const
 {
     // This is a read-write association end
 
@@ -324,8 +312,8 @@ void QLoopNode::addBodyPart(QExecutableNode *bodyPart)
     // This is a read-write association end
 
     Q_D(QLoopNode);
-    if (!d->bodyParts->contains(bodyPart)) {
-        d->bodyParts->insert(bodyPart);
+    if (!d->bodyParts.contains(bodyPart)) {
+        d->bodyParts.insert(bodyPart);
     }
 }
 
@@ -334,15 +322,15 @@ void QLoopNode::removeBodyPart(QExecutableNode *bodyPart)
     // This is a read-write association end
 
     Q_D(QLoopNode);
-    if (d->bodyParts->contains(bodyPart)) {
-        d->bodyParts->remove(bodyPart);
+    if (d->bodyParts.contains(bodyPart)) {
+        d->bodyParts.remove(bodyPart);
     }
 }
 
 /*!
     The set of nodes, edges, and designated value that compute a Boolean value to determine if another execution of the body will be performed.
  */
-const QSet<QExecutableNode *> *QLoopNode::tests() const
+const QSet<QExecutableNode *> &QLoopNode::tests() const
 {
     // This is a read-write association end
 
@@ -355,8 +343,8 @@ void QLoopNode::addTest(QExecutableNode *test)
     // This is a read-write association end
 
     Q_D(QLoopNode);
-    if (!d->tests->contains(test)) {
-        d->tests->insert(test);
+    if (!d->tests.contains(test)) {
+        d->tests.insert(test);
     }
 }
 
@@ -365,45 +353,9 @@ void QLoopNode::removeTest(QExecutableNode *test)
     // This is a read-write association end
 
     Q_D(QLoopNode);
-    if (d->tests->contains(test)) {
-        d->tests->remove(test);
+    if (d->tests.contains(test)) {
+        d->tests.remove(test);
     }
-}
-
-void QLoopNode::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QLoopNode) *>("QT_PREPEND_NAMESPACE_QTUML(QLoopNode) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QLoopNode) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QLoopNode) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QLoopNode) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QLoopNode) *> *");
-    qRegisterMetaType<QLoopNode *>("QLoopNode *");
-    qRegisterMetaType<const QSet<QLoopNode *> *>("const QSet<QLoopNode *> *");
-    qRegisterMetaType<const QList<QLoopNode *> *>("const QList<QLoopNode *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *");
-    qRegisterMetaType<QOutputPin *>("QOutputPin *");
-    qRegisterMetaType<const QSet<QOutputPin *> *>("const QSet<QOutputPin *> *");
-    qRegisterMetaType<const QList<QOutputPin *> *>("const QList<QOutputPin *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *>("QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *> *");
-    qRegisterMetaType<QExecutableNode *>("QExecutableNode *");
-    qRegisterMetaType<const QSet<QExecutableNode *> *>("const QSet<QExecutableNode *> *");
-    qRegisterMetaType<const QList<QExecutableNode *> *>("const QList<QExecutableNode *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QInputPin) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
-    qRegisterMetaType<QInputPin *>("QInputPin *");
-    qRegisterMetaType<const QSet<QInputPin *> *>("const QSet<QInputPin *> *");
-    qRegisterMetaType<const QList<QInputPin *> *>("const QList<QInputPin *> *");
-
-    QStructuredActivityNode::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qloopnode.cpp"

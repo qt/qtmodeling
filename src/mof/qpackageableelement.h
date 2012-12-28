@@ -74,17 +74,12 @@ public:
     Q_INVOKABLE QtMof::VisibilityKind visibility() const;
     Q_INVOKABLE void setVisibility(QtMof::VisibilityKind visibility);
     Q_INVOKABLE void unsetVisibility();
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QPackageableElement(QPackageableElementPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTMOF
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTMOF(QPackageableElement) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTMOF(QPackageableElement) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTMOF(QPackageableElement) *> *)
 
 QT_END_HEADER
 

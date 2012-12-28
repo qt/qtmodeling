@@ -91,10 +91,9 @@ public:
     Q_INVOKABLE QNamespace *namespace_() const;
 
     // Operations
-    Q_INVOKABLE const QList<QNamespace *> *allNamespaces() const;
+    Q_INVOKABLE const QList<QNamespace *> &allNamespaces() const;
     Q_INVOKABLE bool isDistinguishableFrom(const QNamedElement *n, const QNamespace *ns) const;
     Q_INVOKABLE QString separator() const;
-    virtual void registerMetaTypes() const;
 
     // Classes which access read-only opposite properties should be friend
     friend class QNamespacePrivate;
@@ -104,10 +103,6 @@ protected:
 };
 
 QT_END_NAMESPACE_QTMOF
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTMOF(QNamedElement) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTMOF(QNamedElement) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTMOF(QNamedElement) *> *)
 
 QT_END_HEADER
 

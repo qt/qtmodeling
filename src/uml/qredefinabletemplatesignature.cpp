@@ -48,14 +48,12 @@
 QT_BEGIN_NAMESPACE_QTUML
 
 QRedefinableTemplateSignaturePrivate::QRedefinableTemplateSignaturePrivate() :
-    classifier(0),
-    extendedSignatures(new QSet<QRedefinableTemplateSignature *>)
+    classifier(0)
 {
 }
 
 QRedefinableTemplateSignaturePrivate::~QRedefinableTemplateSignaturePrivate()
 {
-    delete extendedSignatures;
 }
 
 /*!
@@ -91,7 +89,7 @@ QRedefinableTemplateSignature::~QRedefinableTemplateSignature()
 /*!
     The Elements owned by this element.
  */
-const QSet<QElement *> *QRedefinableTemplateSignature::ownedElements() const
+const QSet<QElement *> &QRedefinableTemplateSignature::ownedElements() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedElements();
 }
@@ -107,7 +105,7 @@ QElement *QRedefinableTemplateSignature::owner() const
 /*!
     The Comments owned by this element.
  */
-const QSet<QComment *> *QRedefinableTemplateSignature::ownedComments() const
+const QSet<QComment *> &QRedefinableTemplateSignature::ownedComments() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedComments();
 }
@@ -188,7 +186,7 @@ QNamespace *QRedefinableTemplateSignature::namespace_() const
 /*!
     Indicates the dependencies that reference the client.
  */
-const QSet<QDependency *> *QRedefinableTemplateSignature::clientDependencies() const
+const QSet<QDependency *> &QRedefinableTemplateSignature::clientDependencies() const
 {
     return (qwrappedobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
@@ -232,7 +230,7 @@ void QRedefinableTemplateSignature::unsetLeaf()
 /*!
     The redefinable element that is being redefined by this element.
  */
-const QSet<QRedefinableElement *> *QRedefinableTemplateSignature::redefinedElements() const
+const QSet<QRedefinableElement *> &QRedefinableTemplateSignature::redefinedElements() const
 {
     return (qwrappedobject_cast<const QRedefinableElement *>(this))->redefinedElements();
 }
@@ -240,7 +238,7 @@ const QSet<QRedefinableElement *> *QRedefinableTemplateSignature::redefinedEleme
 /*!
     References the contexts that this element may be redefined from.
  */
-const QSet<QClassifier *> *QRedefinableTemplateSignature::redefinitionContexts() const
+const QSet<QClassifier *> &QRedefinableTemplateSignature::redefinitionContexts() const
 {
     return (qwrappedobject_cast<const QRedefinableElement *>(this))->redefinitionContexts();
 }
@@ -252,13 +250,13 @@ const QSet<QClassifier *> *QRedefinableTemplateSignature::redefinitionContexts()
 /*!
     The formal template parameters of the extendedSignature.
  */
-const QSet<QTemplateParameter *> *QRedefinableTemplateSignature::inheritedParameters() const
+const QSet<QTemplateParameter *> &QRedefinableTemplateSignature::inheritedParameters() const
 {
     // This is a read-only derived association end
 
     qWarning("QRedefinableTemplateSignature::inheritedParameters: to be implemented (this is a derived associationend)");
 
-    return 0; // change here to your derived return
+    return *(new QSet<QTemplateParameter *>); // change here to your derived return
 }
 
 /*!
@@ -298,7 +296,7 @@ void QRedefinableTemplateSignature::setClassifier(QClassifier *classifier)
 /*!
     The template signature that is extended by this template signature.
  */
-const QSet<QRedefinableTemplateSignature *> *QRedefinableTemplateSignature::extendedSignatures() const
+const QSet<QRedefinableTemplateSignature *> &QRedefinableTemplateSignature::extendedSignatures() const
 {
     // This is a read-write association end
 
@@ -311,8 +309,8 @@ void QRedefinableTemplateSignature::addExtendedSignature(QRedefinableTemplateSig
     // This is a read-write association end
 
     Q_D(QRedefinableTemplateSignature);
-    if (!d->extendedSignatures->contains(extendedSignature)) {
-        d->extendedSignatures->insert(extendedSignature);
+    if (!d->extendedSignatures.contains(extendedSignature)) {
+        d->extendedSignatures.insert(extendedSignature);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QRedefinableElementPrivate *>(d))->addRedefinedElement(qwrappedobject_cast<QRedefinableElement *>(extendedSignature));
@@ -324,8 +322,8 @@ void QRedefinableTemplateSignature::removeExtendedSignature(QRedefinableTemplate
     // This is a read-write association end
 
     Q_D(QRedefinableTemplateSignature);
-    if (d->extendedSignatures->contains(extendedSignature)) {
-        d->extendedSignatures->remove(extendedSignature);
+    if (d->extendedSignatures.contains(extendedSignature)) {
+        d->extendedSignatures.remove(extendedSignature);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QRedefinableElementPrivate *>(d))->removeRedefinedElement(qwrappedobject_cast<QRedefinableElement *>(extendedSignature));
@@ -341,35 +339,6 @@ bool QRedefinableTemplateSignature::isConsistentWith(const QRedefinableElement *
     Q_UNUSED(redefinee);
 
     return bool(); // change here to your derived return
-}
-
-void QRedefinableTemplateSignature::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QRedefinableTemplateSignature) *>("QT_PREPEND_NAMESPACE_QTUML(QRedefinableTemplateSignature) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QRedefinableTemplateSignature) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QRedefinableTemplateSignature) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QRedefinableTemplateSignature) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QRedefinableTemplateSignature) *> *");
-    qRegisterMetaType<QRedefinableTemplateSignature *>("QRedefinableTemplateSignature *");
-    qRegisterMetaType<const QSet<QRedefinableTemplateSignature *> *>("const QSet<QRedefinableTemplateSignature *> *");
-    qRegisterMetaType<const QList<QRedefinableTemplateSignature *> *>("const QList<QRedefinableTemplateSignature *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *>("QT_PREPEND_NAMESPACE_QTUML(QClassifier) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *");
-    qRegisterMetaType<QClassifier *>("QClassifier *");
-    qRegisterMetaType<const QSet<QClassifier *> *>("const QSet<QClassifier *> *");
-    qRegisterMetaType<const QList<QClassifier *> *>("const QList<QClassifier *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QTemplateParameter) *>("QT_PREPEND_NAMESPACE_QTUML(QTemplateParameter) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QTemplateParameter) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QTemplateParameter) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QTemplateParameter) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QTemplateParameter) *> *");
-    qRegisterMetaType<QTemplateParameter *>("QTemplateParameter *");
-    qRegisterMetaType<const QSet<QTemplateParameter *> *>("const QSet<QTemplateParameter *> *");
-    qRegisterMetaType<const QList<QTemplateParameter *> *>("const QList<QTemplateParameter *> *");
-
-    QWrappedObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qredefinabletemplatesignature.cpp"

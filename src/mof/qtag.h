@@ -62,7 +62,7 @@ class Q_MOF_EXPORT QTag : public QElement
 {
     Q_OBJECT
 
-    Q_PROPERTY(const QSet<QElement *> * elements READ elements)
+    Q_PROPERTY(QSet<QElement *> elements READ elements)
     Q_PROPERTY(QString value READ value WRITE setValue)
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QElement * tagOwner READ tagOwner WRITE setTagOwner)
@@ -75,7 +75,7 @@ public:
     virtual ~QTag();
 
     // Attributes from QTag
-    Q_INVOKABLE const QSet<QElement *> *elements() const;
+    Q_INVOKABLE const QSet<QElement *> &elements() const;
     Q_INVOKABLE void addElement(QElement *element);
     Q_INVOKABLE void removeElement(QElement *element);
     Q_INVOKABLE QString value() const;
@@ -84,17 +84,12 @@ public:
     Q_INVOKABLE void setName(QString name);
     Q_INVOKABLE QElement *tagOwner() const;
     Q_INVOKABLE void setTagOwner(QElement *tagOwner);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QTag(QTagPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTMOF
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTMOF(QTag) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTMOF(QTag) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTMOF(QTag) *> *)
 
 QT_END_HEADER
 

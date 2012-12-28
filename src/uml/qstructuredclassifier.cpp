@@ -48,26 +48,20 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QStructuredClassifierPrivate::QStructuredClassifierPrivate() :
-    roles(new QSet<QConnectableElement *>),
-    ownedAttributes(new QList<QProperty *>),
-    ownedConnectors(new QSet<QConnector *>)
+QStructuredClassifierPrivate::QStructuredClassifierPrivate()
 {
 }
 
 QStructuredClassifierPrivate::~QStructuredClassifierPrivate()
 {
-    delete roles;
-    delete ownedAttributes;
-    delete ownedConnectors;
 }
 
 void QStructuredClassifierPrivate::addRole(QConnectableElement *role)
 {
     // This is a read-only derived-union association end
 
-    if (!this->roles->contains(role)) {
-        this->roles->insert(role);
+    if (!this->roles.contains(role)) {
+        this->roles.insert(role);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QNamespacePrivate *>(this))->addMember(qwrappedobject_cast<QNamedElement *>(role));
@@ -78,8 +72,8 @@ void QStructuredClassifierPrivate::removeRole(QConnectableElement *role)
 {
     // This is a read-only derived-union association end
 
-    if (this->roles->contains(role)) {
-        this->roles->remove(role);
+    if (this->roles.contains(role)) {
+        this->roles.remove(role);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QNamespacePrivate *>(this))->removeMember(qwrappedobject_cast<QNamedElement *>(role));
@@ -115,7 +109,7 @@ QStructuredClassifier::~QStructuredClassifier()
 /*!
     References the roles that instances may play in this classifier.
  */
-const QSet<QConnectableElement *> *QStructuredClassifier::roles() const
+const QSet<QConnectableElement *> &QStructuredClassifier::roles() const
 {
     // This is a read-only derived-union association end
 
@@ -126,7 +120,7 @@ const QSet<QConnectableElement *> *QStructuredClassifier::roles() const
 /*!
     References the properties owned by the classifier.
  */
-const QList<QProperty *> *QStructuredClassifier::ownedAttributes() const
+const QList<QProperty *> &QStructuredClassifier::ownedAttributes() const
 {
     // This is a read-write association end
 
@@ -139,8 +133,8 @@ void QStructuredClassifier::addOwnedAttribute(QProperty *ownedAttribute)
     // This is a read-write association end
 
     Q_D(QStructuredClassifier);
-    if (!d->ownedAttributes->contains(ownedAttribute)) {
-        d->ownedAttributes->append(ownedAttribute);
+    if (!d->ownedAttributes.contains(ownedAttribute)) {
+        d->ownedAttributes.append(ownedAttribute);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QClassifierPrivate *>(d))->addAttribute(qwrappedobject_cast<QProperty *>(ownedAttribute));
@@ -154,8 +148,8 @@ void QStructuredClassifier::removeOwnedAttribute(QProperty *ownedAttribute)
     // This is a read-write association end
 
     Q_D(QStructuredClassifier);
-    if (d->ownedAttributes->contains(ownedAttribute)) {
-        d->ownedAttributes->removeAll(ownedAttribute);
+    if (d->ownedAttributes.contains(ownedAttribute)) {
+        d->ownedAttributes.removeAll(ownedAttribute);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QClassifierPrivate *>(d))->removeAttribute(qwrappedobject_cast<QProperty *>(ownedAttribute));
@@ -167,19 +161,19 @@ void QStructuredClassifier::removeOwnedAttribute(QProperty *ownedAttribute)
 /*!
     References the properties specifying instances that the classifier owns by composition. This association is derived, selecting those owned properties where isComposite is true.
  */
-const QSet<QProperty *> *QStructuredClassifier::parts() const
+const QSet<QProperty *> &QStructuredClassifier::parts() const
 {
     // This is a read-only derived association end
 
     qWarning("QStructuredClassifier::parts: to be implemented (this is a derived associationend)");
 
-    return 0; // change here to your derived return
+    return *(new QSet<QProperty *>); // change here to your derived return
 }
 
 /*!
     References the connectors owned by the classifier.
  */
-const QSet<QConnector *> *QStructuredClassifier::ownedConnectors() const
+const QSet<QConnector *> &QStructuredClassifier::ownedConnectors() const
 {
     // This is a read-write association end
 
@@ -192,8 +186,8 @@ void QStructuredClassifier::addOwnedConnector(QConnector *ownedConnector)
     // This is a read-write association end
 
     Q_D(QStructuredClassifier);
-    if (!d->ownedConnectors->contains(ownedConnector)) {
-        d->ownedConnectors->insert(ownedConnector);
+    if (!d->ownedConnectors.contains(ownedConnector)) {
+        d->ownedConnectors.insert(ownedConnector);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QClassifierPrivate *>(d))->addFeature(qwrappedobject_cast<QFeature *>(ownedConnector));
@@ -206,49 +200,13 @@ void QStructuredClassifier::removeOwnedConnector(QConnector *ownedConnector)
     // This is a read-write association end
 
     Q_D(QStructuredClassifier);
-    if (d->ownedConnectors->contains(ownedConnector)) {
-        d->ownedConnectors->remove(ownedConnector);
+    if (d->ownedConnectors.contains(ownedConnector)) {
+        d->ownedConnectors.remove(ownedConnector);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QClassifierPrivate *>(d))->removeFeature(qwrappedobject_cast<QFeature *>(ownedConnector));
         (qwrappedobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qwrappedobject_cast<QNamedElement *>(ownedConnector));
     }
-}
-
-void QStructuredClassifier::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QStructuredClassifier) *>("QT_PREPEND_NAMESPACE_QTUML(QStructuredClassifier) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QStructuredClassifier) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QStructuredClassifier) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QStructuredClassifier) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QStructuredClassifier) *> *");
-    qRegisterMetaType<QStructuredClassifier *>("QStructuredClassifier *");
-    qRegisterMetaType<const QSet<QStructuredClassifier *> *>("const QSet<QStructuredClassifier *> *");
-    qRegisterMetaType<const QList<QStructuredClassifier *> *>("const QList<QStructuredClassifier *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QProperty) *>("QT_PREPEND_NAMESPACE_QTUML(QProperty) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QProperty) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QProperty) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QProperty) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QProperty) *> *");
-    qRegisterMetaType<QProperty *>("QProperty *");
-    qRegisterMetaType<const QSet<QProperty *> *>("const QSet<QProperty *> *");
-    qRegisterMetaType<const QList<QProperty *> *>("const QList<QProperty *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QConnector) *>("QT_PREPEND_NAMESPACE_QTUML(QConnector) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QConnector) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QConnector) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QConnector) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QConnector) *> *");
-    qRegisterMetaType<QConnector *>("QConnector *");
-    qRegisterMetaType<const QSet<QConnector *> *>("const QSet<QConnector *> *");
-    qRegisterMetaType<const QList<QConnector *> *>("const QList<QConnector *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QConnectableElement) *>("QT_PREPEND_NAMESPACE_QTUML(QConnectableElement) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QConnectableElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QConnectableElement) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QConnectableElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QConnectableElement) *> *");
-    qRegisterMetaType<QConnectableElement *>("QConnectableElement *");
-    qRegisterMetaType<const QSet<QConnectableElement *> *>("const QSet<QConnectableElement *> *");
-    qRegisterMetaType<const QList<QConnectableElement *> *>("const QList<QConnectableElement *> *");
-
-    QClassifier::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qstructuredclassifier.cpp"

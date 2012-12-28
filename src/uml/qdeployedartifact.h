@@ -64,17 +64,12 @@ class Q_UML_EXPORT QDeployedArtifact : public QNamedElement
 public:
     Q_INVOKABLE explicit QDeployedArtifact(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QDeployedArtifact();
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QDeployedArtifact(QDeployedArtifactPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QDeployedArtifact) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QDeployedArtifact) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QDeployedArtifact) *> *)
 
 QT_END_HEADER
 

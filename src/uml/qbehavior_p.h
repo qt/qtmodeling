@@ -74,11 +74,11 @@ public:
 
     bool isReentrant;
     QBehavioralFeature *specification;
-    QSet<QConstraint *> *postconditions;
-    QSet<QConstraint *> *preconditions;
-    QSet<QBehavior *> *redefinedBehaviors;
-    QList<QParameter *> *ownedParameters;
-    QSet<QParameterSet *> *ownedParameterSets;
+    QSet<QConstraint *> postconditions;
+    QSet<QConstraint *> preconditions;
+    QSet<QBehavior *> redefinedBehaviors;
+    QList<QParameter *> ownedParameters;
+    QSet<QParameterSet *> ownedParameterSets;
 };
 
 QT_END_NAMESPACE_QTUML

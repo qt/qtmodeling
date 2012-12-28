@@ -86,7 +86,7 @@ QPackageableElement::~QPackageableElement()
 /*!
     The Elements owned by this element.
  */
-const QSet<QElement *> *QPackageableElement::ownedElements() const
+const QSet<QElement *> &QPackageableElement::ownedElements() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedElements();
 }
@@ -102,7 +102,7 @@ QElement *QPackageableElement::owner() const
 /*!
     The Comments owned by this element.
  */
-const QSet<QComment *> *QPackageableElement::ownedComments() const
+const QSet<QComment *> &QPackageableElement::ownedComments() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedComments();
 }
@@ -200,7 +200,7 @@ QNamespace *QPackageableElement::namespace_() const
 /*!
     Indicates the dependencies that reference the client.
  */
-const QSet<QDependency *> *QPackageableElement::clientDependencies() const
+const QSet<QDependency *> &QPackageableElement::clientDependencies() const
 {
     return (qwrappedobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
@@ -243,21 +243,6 @@ void QPackageableElement::setVisibility(QtUml::VisibilityKind visibility)
 void QPackageableElement::unsetVisibility()
 {
     setVisibility(QtUml::VisibilityPublic);
-}
-
-void QPackageableElement::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QPackageableElement) *>("QT_PREPEND_NAMESPACE_QTUML(QPackageableElement) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QPackageableElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QPackageableElement) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QPackageableElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QPackageableElement) *> *");
-    qRegisterMetaType<QPackageableElement *>("QPackageableElement *");
-    qRegisterMetaType<const QSet<QPackageableElement *> *>("const QSet<QPackageableElement *> *");
-    qRegisterMetaType<const QList<QPackageableElement *> *>("const QList<QPackageableElement *> *");
-
-    QWrappedObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qpackageableelement.cpp"

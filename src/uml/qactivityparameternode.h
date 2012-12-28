@@ -73,17 +73,12 @@ public:
     // Association ends from QActivityParameterNode
     Q_INVOKABLE QParameter *parameter() const;
     Q_INVOKABLE void setParameter(QParameter *parameter);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QActivityParameterNode(QActivityParameterNodePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QActivityParameterNode) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QActivityParameterNode) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QActivityParameterNode) *> *)
 
 QT_END_HEADER
 

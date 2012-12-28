@@ -51,26 +51,12 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QInformationFlowPrivate::QInformationFlowPrivate() :
-    informationTargets(new QSet<QNamedElement *>),
-    realizingConnectors(new QSet<QConnector *>),
-    conveyed(new QSet<QClassifier *>),
-    informationSources(new QSet<QNamedElement *>),
-    realizingMessages(new QSet<QMessage *>),
-    realizingActivityEdges(new QSet<QActivityEdge *>),
-    realizations(new QSet<QRelationship *>)
+QInformationFlowPrivate::QInformationFlowPrivate()
 {
 }
 
 QInformationFlowPrivate::~QInformationFlowPrivate()
 {
-    delete informationTargets;
-    delete realizingConnectors;
-    delete conveyed;
-    delete informationSources;
-    delete realizingMessages;
-    delete realizingActivityEdges;
-    delete realizations;
 }
 
 /*!
@@ -106,7 +92,7 @@ QInformationFlow::~QInformationFlow()
 /*!
     The Elements owned by this element.
  */
-const QSet<QElement *> *QInformationFlow::ownedElements() const
+const QSet<QElement *> &QInformationFlow::ownedElements() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedElements();
 }
@@ -122,7 +108,7 @@ QElement *QInformationFlow::owner() const
 /*!
     The Comments owned by this element.
  */
-const QSet<QComment *> *QInformationFlow::ownedComments() const
+const QSet<QComment *> &QInformationFlow::ownedComments() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedComments();
 }
@@ -144,7 +130,7 @@ void QInformationFlow::removeOwnedComment(QComment *ownedComment)
 /*!
     Specifies the elements related by the Relationship.
  */
-const QSet<QElement *> *QInformationFlow::relatedElements() const
+const QSet<QElement *> &QInformationFlow::relatedElements() const
 {
     return (qwrappedobject_cast<const QRelationship *>(this))->relatedElements();
 }
@@ -156,7 +142,7 @@ const QSet<QElement *> *QInformationFlow::relatedElements() const
 /*!
     Specifies the sources of the DirectedRelationship.
  */
-const QSet<QElement *> *QInformationFlow::sources() const
+const QSet<QElement *> &QInformationFlow::sources() const
 {
     return (qwrappedobject_cast<const QDirectedRelationship *>(this))->sources();
 }
@@ -164,7 +150,7 @@ const QSet<QElement *> *QInformationFlow::sources() const
 /*!
     Specifies the targets of the DirectedRelationship.
  */
-const QSet<QElement *> *QInformationFlow::targets() const
+const QSet<QElement *> &QInformationFlow::targets() const
 {
     return (qwrappedobject_cast<const QDirectedRelationship *>(this))->targets();
 }
@@ -252,7 +238,7 @@ QNamespace *QInformationFlow::namespace_() const
 /*!
     Indicates the dependencies that reference the client.
  */
-const QSet<QDependency *> *QInformationFlow::clientDependencies() const
+const QSet<QDependency *> &QInformationFlow::clientDependencies() const
 {
     return (qwrappedobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
@@ -296,7 +282,7 @@ void QInformationFlow::unsetVisibility()
 /*!
     Defines to which target the conveyed InformationItems are directed.
  */
-const QSet<QNamedElement *> *QInformationFlow::informationTargets() const
+const QSet<QNamedElement *> &QInformationFlow::informationTargets() const
 {
     // This is a read-write association end
 
@@ -309,8 +295,8 @@ void QInformationFlow::addInformationTarget(QNamedElement *informationTarget)
     // This is a read-write association end
 
     Q_D(QInformationFlow);
-    if (!d->informationTargets->contains(informationTarget)) {
-        d->informationTargets->insert(informationTarget);
+    if (!d->informationTargets.contains(informationTarget)) {
+        d->informationTargets.insert(informationTarget);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QDirectedRelationshipPrivate *>(d))->addTarget(qwrappedobject_cast<QElement *>(informationTarget));
@@ -322,8 +308,8 @@ void QInformationFlow::removeInformationTarget(QNamedElement *informationTarget)
     // This is a read-write association end
 
     Q_D(QInformationFlow);
-    if (d->informationTargets->contains(informationTarget)) {
-        d->informationTargets->remove(informationTarget);
+    if (d->informationTargets.contains(informationTarget)) {
+        d->informationTargets.remove(informationTarget);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QDirectedRelationshipPrivate *>(d))->removeTarget(qwrappedobject_cast<QElement *>(informationTarget));
@@ -333,7 +319,7 @@ void QInformationFlow::removeInformationTarget(QNamedElement *informationTarget)
 /*!
     Determines which Connectors will realize the specified flow.
  */
-const QSet<QConnector *> *QInformationFlow::realizingConnectors() const
+const QSet<QConnector *> &QInformationFlow::realizingConnectors() const
 {
     // This is a read-write association end
 
@@ -346,8 +332,8 @@ void QInformationFlow::addRealizingConnector(QConnector *realizingConnector)
     // This is a read-write association end
 
     Q_D(QInformationFlow);
-    if (!d->realizingConnectors->contains(realizingConnector)) {
-        d->realizingConnectors->insert(realizingConnector);
+    if (!d->realizingConnectors.contains(realizingConnector)) {
+        d->realizingConnectors.insert(realizingConnector);
     }
 }
 
@@ -356,15 +342,15 @@ void QInformationFlow::removeRealizingConnector(QConnector *realizingConnector)
     // This is a read-write association end
 
     Q_D(QInformationFlow);
-    if (d->realizingConnectors->contains(realizingConnector)) {
-        d->realizingConnectors->remove(realizingConnector);
+    if (d->realizingConnectors.contains(realizingConnector)) {
+        d->realizingConnectors.remove(realizingConnector);
     }
 }
 
 /*!
     Specifies the information items that may circulate on this information flow.
  */
-const QSet<QClassifier *> *QInformationFlow::conveyed() const
+const QSet<QClassifier *> &QInformationFlow::conveyed() const
 {
     // This is a read-write association end
 
@@ -377,8 +363,8 @@ void QInformationFlow::addConveyed(QClassifier *conveyed)
     // This is a read-write association end
 
     Q_D(QInformationFlow);
-    if (!d->conveyed->contains(conveyed)) {
-        d->conveyed->insert(conveyed);
+    if (!d->conveyed.contains(conveyed)) {
+        d->conveyed.insert(conveyed);
     }
 }
 
@@ -387,15 +373,15 @@ void QInformationFlow::removeConveyed(QClassifier *conveyed)
     // This is a read-write association end
 
     Q_D(QInformationFlow);
-    if (d->conveyed->contains(conveyed)) {
-        d->conveyed->remove(conveyed);
+    if (d->conveyed.contains(conveyed)) {
+        d->conveyed.remove(conveyed);
     }
 }
 
 /*!
     Defines from which source the conveyed InformationItems are initiated.
  */
-const QSet<QNamedElement *> *QInformationFlow::informationSources() const
+const QSet<QNamedElement *> &QInformationFlow::informationSources() const
 {
     // This is a read-write association end
 
@@ -408,8 +394,8 @@ void QInformationFlow::addInformationSource(QNamedElement *informationSource)
     // This is a read-write association end
 
     Q_D(QInformationFlow);
-    if (!d->informationSources->contains(informationSource)) {
-        d->informationSources->insert(informationSource);
+    if (!d->informationSources.contains(informationSource)) {
+        d->informationSources.insert(informationSource);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QDirectedRelationshipPrivate *>(d))->addSource(qwrappedobject_cast<QElement *>(informationSource));
@@ -421,8 +407,8 @@ void QInformationFlow::removeInformationSource(QNamedElement *informationSource)
     // This is a read-write association end
 
     Q_D(QInformationFlow);
-    if (d->informationSources->contains(informationSource)) {
-        d->informationSources->remove(informationSource);
+    if (d->informationSources.contains(informationSource)) {
+        d->informationSources.remove(informationSource);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QDirectedRelationshipPrivate *>(d))->removeSource(qwrappedobject_cast<QElement *>(informationSource));
@@ -432,7 +418,7 @@ void QInformationFlow::removeInformationSource(QNamedElement *informationSource)
 /*!
     Determines which Messages will realize the specified flow.
  */
-const QSet<QMessage *> *QInformationFlow::realizingMessages() const
+const QSet<QMessage *> &QInformationFlow::realizingMessages() const
 {
     // This is a read-write association end
 
@@ -445,8 +431,8 @@ void QInformationFlow::addRealizingMessage(QMessage *realizingMessage)
     // This is a read-write association end
 
     Q_D(QInformationFlow);
-    if (!d->realizingMessages->contains(realizingMessage)) {
-        d->realizingMessages->insert(realizingMessage);
+    if (!d->realizingMessages.contains(realizingMessage)) {
+        d->realizingMessages.insert(realizingMessage);
     }
 }
 
@@ -455,15 +441,15 @@ void QInformationFlow::removeRealizingMessage(QMessage *realizingMessage)
     // This is a read-write association end
 
     Q_D(QInformationFlow);
-    if (d->realizingMessages->contains(realizingMessage)) {
-        d->realizingMessages->remove(realizingMessage);
+    if (d->realizingMessages.contains(realizingMessage)) {
+        d->realizingMessages.remove(realizingMessage);
     }
 }
 
 /*!
     Determines which ActivityEdges will realize the specified flow.
  */
-const QSet<QActivityEdge *> *QInformationFlow::realizingActivityEdges() const
+const QSet<QActivityEdge *> &QInformationFlow::realizingActivityEdges() const
 {
     // This is a read-write association end
 
@@ -476,8 +462,8 @@ void QInformationFlow::addRealizingActivityEdge(QActivityEdge *realizingActivity
     // This is a read-write association end
 
     Q_D(QInformationFlow);
-    if (!d->realizingActivityEdges->contains(realizingActivityEdge)) {
-        d->realizingActivityEdges->insert(realizingActivityEdge);
+    if (!d->realizingActivityEdges.contains(realizingActivityEdge)) {
+        d->realizingActivityEdges.insert(realizingActivityEdge);
     }
 }
 
@@ -486,15 +472,15 @@ void QInformationFlow::removeRealizingActivityEdge(QActivityEdge *realizingActiv
     // This is a read-write association end
 
     Q_D(QInformationFlow);
-    if (d->realizingActivityEdges->contains(realizingActivityEdge)) {
-        d->realizingActivityEdges->remove(realizingActivityEdge);
+    if (d->realizingActivityEdges.contains(realizingActivityEdge)) {
+        d->realizingActivityEdges.remove(realizingActivityEdge);
     }
 }
 
 /*!
     Determines which Relationship will realize the specified flow
  */
-const QSet<QRelationship *> *QInformationFlow::realizations() const
+const QSet<QRelationship *> &QInformationFlow::realizations() const
 {
     // This is a read-write association end
 
@@ -507,8 +493,8 @@ void QInformationFlow::addRealization(QRelationship *realization)
     // This is a read-write association end
 
     Q_D(QInformationFlow);
-    if (!d->realizations->contains(realization)) {
-        d->realizations->insert(realization);
+    if (!d->realizations.contains(realization)) {
+        d->realizations.insert(realization);
     }
 }
 
@@ -517,66 +503,9 @@ void QInformationFlow::removeRealization(QRelationship *realization)
     // This is a read-write association end
 
     Q_D(QInformationFlow);
-    if (d->realizations->contains(realization)) {
-        d->realizations->remove(realization);
+    if (d->realizations.contains(realization)) {
+        d->realizations.remove(realization);
     }
-}
-
-void QInformationFlow::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInformationFlow) *>("QT_PREPEND_NAMESPACE_QTUML(QInformationFlow) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInformationFlow) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInformationFlow) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInformationFlow) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInformationFlow) *> *");
-    qRegisterMetaType<QInformationFlow *>("QInformationFlow *");
-    qRegisterMetaType<const QSet<QInformationFlow *> *>("const QSet<QInformationFlow *> *");
-    qRegisterMetaType<const QList<QInformationFlow *> *>("const QList<QInformationFlow *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QConnector) *>("QT_PREPEND_NAMESPACE_QTUML(QConnector) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QConnector) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QConnector) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QConnector) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QConnector) *> *");
-    qRegisterMetaType<QConnector *>("QConnector *");
-    qRegisterMetaType<const QSet<QConnector *> *>("const QSet<QConnector *> *");
-    qRegisterMetaType<const QList<QConnector *> *>("const QList<QConnector *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QMessage) *>("QT_PREPEND_NAMESPACE_QTUML(QMessage) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QMessage) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QMessage) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QMessage) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QMessage) *> *");
-    qRegisterMetaType<QMessage *>("QMessage *");
-    qRegisterMetaType<const QSet<QMessage *> *>("const QSet<QMessage *> *");
-    qRegisterMetaType<const QList<QMessage *> *>("const QList<QMessage *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QActivityEdge) *>("QT_PREPEND_NAMESPACE_QTUML(QActivityEdge) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QActivityEdge) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QActivityEdge) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QActivityEdge) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QActivityEdge) *> *");
-    qRegisterMetaType<QActivityEdge *>("QActivityEdge *");
-    qRegisterMetaType<const QSet<QActivityEdge *> *>("const QSet<QActivityEdge *> *");
-    qRegisterMetaType<const QList<QActivityEdge *> *>("const QList<QActivityEdge *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *>("QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *> *");
-    qRegisterMetaType<QNamedElement *>("QNamedElement *");
-    qRegisterMetaType<const QSet<QNamedElement *> *>("const QSet<QNamedElement *> *");
-    qRegisterMetaType<const QList<QNamedElement *> *>("const QList<QNamedElement *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *>("QT_PREPEND_NAMESPACE_QTUML(QClassifier) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *");
-    qRegisterMetaType<QClassifier *>("QClassifier *");
-    qRegisterMetaType<const QSet<QClassifier *> *>("const QSet<QClassifier *> *");
-    qRegisterMetaType<const QList<QClassifier *> *>("const QList<QClassifier *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QRelationship) *>("QT_PREPEND_NAMESPACE_QTUML(QRelationship) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QRelationship) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QRelationship) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QRelationship) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QRelationship) *> *");
-    qRegisterMetaType<QRelationship *>("QRelationship *");
-    qRegisterMetaType<const QSet<QRelationship *> *>("const QSet<QRelationship *> *");
-    qRegisterMetaType<const QList<QRelationship *> *>("const QList<QRelationship *> *");
-
-    QWrappedObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qinformationflow.cpp"

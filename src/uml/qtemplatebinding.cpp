@@ -50,14 +50,12 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QTemplateBindingPrivate::QTemplateBindingPrivate() :
     signature(0),
-    boundElement(0),
-    parameterSubstitutions(new QSet<QTemplateParameterSubstitution *>)
+    boundElement(0)
 {
 }
 
 QTemplateBindingPrivate::~QTemplateBindingPrivate()
 {
-    delete parameterSubstitutions;
 }
 
 /*!
@@ -156,7 +154,7 @@ void QTemplateBinding::setBoundElement(QTemplateableElement *boundElement)
 /*!
     The parameter substitutions owned by this template binding.
  */
-const QSet<QTemplateParameterSubstitution *> *QTemplateBinding::parameterSubstitutions() const
+const QSet<QTemplateParameterSubstitution *> &QTemplateBinding::parameterSubstitutions() const
 {
     // This is a read-write association end
 
@@ -169,8 +167,8 @@ void QTemplateBinding::addParameterSubstitution(QTemplateParameterSubstitution *
     // This is a read-write association end
 
     Q_D(QTemplateBinding);
-    if (!d->parameterSubstitutions->contains(parameterSubstitution)) {
-        d->parameterSubstitutions->insert(parameterSubstitution);
+    if (!d->parameterSubstitutions.contains(parameterSubstitution)) {
+        d->parameterSubstitutions.insert(parameterSubstitution);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(parameterSubstitution));
@@ -185,8 +183,8 @@ void QTemplateBinding::removeParameterSubstitution(QTemplateParameterSubstitutio
     // This is a read-write association end
 
     Q_D(QTemplateBinding);
-    if (d->parameterSubstitutions->contains(parameterSubstitution)) {
-        d->parameterSubstitutions->remove(parameterSubstitution);
+    if (d->parameterSubstitutions.contains(parameterSubstitution)) {
+        d->parameterSubstitutions.remove(parameterSubstitution);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(parameterSubstitution));
@@ -194,42 +192,6 @@ void QTemplateBinding::removeParameterSubstitution(QTemplateParameterSubstitutio
         // Adjust opposite property
         parameterSubstitution->setTemplateBinding(0);
     }
-}
-
-void QTemplateBinding::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QTemplateBinding) *>("QT_PREPEND_NAMESPACE_QTUML(QTemplateBinding) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QTemplateBinding) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QTemplateBinding) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QTemplateBinding) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QTemplateBinding) *> *");
-    qRegisterMetaType<QTemplateBinding *>("QTemplateBinding *");
-    qRegisterMetaType<const QSet<QTemplateBinding *> *>("const QSet<QTemplateBinding *> *");
-    qRegisterMetaType<const QList<QTemplateBinding *> *>("const QList<QTemplateBinding *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QTemplateableElement) *>("QT_PREPEND_NAMESPACE_QTUML(QTemplateableElement) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QTemplateableElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QTemplateableElement) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QTemplateableElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QTemplateableElement) *> *");
-    qRegisterMetaType<QTemplateableElement *>("QTemplateableElement *");
-    qRegisterMetaType<const QSet<QTemplateableElement *> *>("const QSet<QTemplateableElement *> *");
-    qRegisterMetaType<const QList<QTemplateableElement *> *>("const QList<QTemplateableElement *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QTemplateParameterSubstitution) *>("QT_PREPEND_NAMESPACE_QTUML(QTemplateParameterSubstitution) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QTemplateParameterSubstitution) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QTemplateParameterSubstitution) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QTemplateParameterSubstitution) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QTemplateParameterSubstitution) *> *");
-    qRegisterMetaType<QTemplateParameterSubstitution *>("QTemplateParameterSubstitution *");
-    qRegisterMetaType<const QSet<QTemplateParameterSubstitution *> *>("const QSet<QTemplateParameterSubstitution *> *");
-    qRegisterMetaType<const QList<QTemplateParameterSubstitution *> *>("const QList<QTemplateParameterSubstitution *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QTemplateSignature) *>("QT_PREPEND_NAMESPACE_QTUML(QTemplateSignature) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QTemplateSignature) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QTemplateSignature) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QTemplateSignature) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QTemplateSignature) *> *");
-    qRegisterMetaType<QTemplateSignature *>("QTemplateSignature *");
-    qRegisterMetaType<const QSet<QTemplateSignature *> *>("const QSet<QTemplateSignature *> *");
-    qRegisterMetaType<const QList<QTemplateSignature *> *>("const QList<QTemplateSignature *> *");
-
-    QDirectedRelationship::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qtemplatebinding.cpp"

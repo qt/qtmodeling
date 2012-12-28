@@ -44,16 +44,12 @@
 
 QT_BEGIN_NAMESPACE_QTMOF
 
-QOpaqueExpressionPrivate::QOpaqueExpressionPrivate() :
-    bodies(new QList<QString>),
-    languages(new QList<QString>)
+QOpaqueExpressionPrivate::QOpaqueExpressionPrivate()
 {
 }
 
 QOpaqueExpressionPrivate::~QOpaqueExpressionPrivate()
 {
-    delete bodies;
-    delete languages;
 }
 
 /*!
@@ -85,7 +81,7 @@ QOpaqueExpression::~QOpaqueExpression()
 /*!
     The text of the expression, possibly in multiple languages.
  */
-const QList<QString> *QOpaqueExpression::bodies() const
+const QList<QString> QOpaqueExpression::bodies() const
 {
     // This is a read-write attribute
 
@@ -98,8 +94,8 @@ void QOpaqueExpression::addBody(QString body)
     // This is a read-write attribute
 
     Q_D(QOpaqueExpression);
-    if (!d->bodies->contains(body)) {
-        d->bodies->append(body);
+    if (!d->bodies.contains(body)) {
+        d->bodies.append(body);
     }
 }
 
@@ -108,15 +104,15 @@ void QOpaqueExpression::removeBody(QString body)
     // This is a read-write attribute
 
     Q_D(QOpaqueExpression);
-    if (d->bodies->contains(body)) {
-        d->bodies->removeAll(body);
+    if (d->bodies.contains(body)) {
+        d->bodies.removeAll(body);
     }
 }
 
 /*!
     Specifies the languages in which the expression is stated. The interpretation of the expression body depends on the languages. If the languages are unspecified, they might be implicit from the expression body or the context. Languages are matched to body strings by order.
  */
-const QList<QString> *QOpaqueExpression::languages() const
+const QList<QString> QOpaqueExpression::languages() const
 {
     // This is a read-write attribute
 
@@ -129,8 +125,8 @@ void QOpaqueExpression::addLanguage(QString language)
     // This is a read-write attribute
 
     Q_D(QOpaqueExpression);
-    if (!d->languages->contains(language)) {
-        d->languages->append(language);
+    if (!d->languages.contains(language)) {
+        d->languages.append(language);
     }
 }
 
@@ -139,8 +135,8 @@ void QOpaqueExpression::removeLanguage(QString language)
     // This is a read-write attribute
 
     Q_D(QOpaqueExpression);
-    if (d->languages->contains(language)) {
-        d->languages->removeAll(language);
+    if (d->languages.contains(language)) {
+        d->languages.removeAll(language);
     }
 }
 
@@ -182,21 +178,6 @@ qint32 QOpaqueExpression::value() const
     qWarning("QOpaqueExpression::value: operation to be implemented");
 
     return qint32(); // change here to your derived return
-}
-
-void QOpaqueExpression::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QOpaqueExpression) *>("QT_PREPEND_NAMESPACE_QTMOF(QOpaqueExpression) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QOpaqueExpression) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QOpaqueExpression) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QOpaqueExpression) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QOpaqueExpression) *> *");
-    qRegisterMetaType<QOpaqueExpression *>("QOpaqueExpression *");
-    qRegisterMetaType<const QSet<QOpaqueExpression *> *>("const QSet<QOpaqueExpression *> *");
-    qRegisterMetaType<const QList<QOpaqueExpression *> *>("const QList<QOpaqueExpression *> *");
-
-    QValueSpecification::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qopaqueexpression.cpp"

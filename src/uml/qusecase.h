@@ -67,10 +67,10 @@ class Q_UML_EXPORT QUseCase : public QBehavioredClassifier
 {
     Q_OBJECT
 
-    Q_PROPERTY(const QSet<QExtensionPoint *> * extensionPoints READ extensionPoints)
-    Q_PROPERTY(const QSet<QInclude *> * includes READ includes)
-    Q_PROPERTY(const QSet<QClassifier *> * subjects READ subjects)
-    Q_PROPERTY(const QSet<QExtend *> * extends READ extends)
+    Q_PROPERTY(QSet<QExtensionPoint *> extensionPoints READ extensionPoints)
+    Q_PROPERTY(QSet<QInclude *> includes READ includes)
+    Q_PROPERTY(QSet<QClassifier *> subjects READ subjects)
+    Q_PROPERTY(QSet<QExtend *> extends READ extends)
 
     Q_DISABLE_COPY(QUseCase)
     Q_DECLARE_PRIVATE(QUseCase)
@@ -80,32 +80,27 @@ public:
     virtual ~QUseCase();
 
     // Association ends from QUseCase
-    Q_INVOKABLE const QSet<QExtensionPoint *> *extensionPoints() const;
+    Q_INVOKABLE const QSet<QExtensionPoint *> &extensionPoints() const;
     Q_INVOKABLE void addExtensionPoint(QExtensionPoint *extensionPoint);
     Q_INVOKABLE void removeExtensionPoint(QExtensionPoint *extensionPoint);
-    Q_INVOKABLE const QSet<QInclude *> *includes() const;
+    Q_INVOKABLE const QSet<QInclude *> &includes() const;
     Q_INVOKABLE void addInclude(QInclude *include);
     Q_INVOKABLE void removeInclude(QInclude *include);
-    Q_INVOKABLE const QSet<QClassifier *> *subjects() const;
+    Q_INVOKABLE const QSet<QClassifier *> &subjects() const;
     Q_INVOKABLE void addSubject(QClassifier *subject);
     Q_INVOKABLE void removeSubject(QClassifier *subject);
-    Q_INVOKABLE const QSet<QExtend *> *extends() const;
+    Q_INVOKABLE const QSet<QExtend *> &extends() const;
     Q_INVOKABLE void addExtend(QExtend *extend);
     Q_INVOKABLE void removeExtend(QExtend *extend);
 
     // Operations
-    Q_INVOKABLE const QSet<QUseCase *> *allIncludedUseCases() const;
-    virtual void registerMetaTypes() const;
+    Q_INVOKABLE const QSet<QUseCase *> &allIncludedUseCases() const;
 
 protected:
     explicit QUseCase(QUseCasePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QUseCase) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QUseCase) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QUseCase) *> *)
 
 QT_END_HEADER
 

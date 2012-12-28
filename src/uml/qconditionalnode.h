@@ -68,8 +68,8 @@ class Q_UML_EXPORT QConditionalNode : public QStructuredActivityNode
 
     Q_PROPERTY(bool isAssured READ isAssured WRITE setAssured RESET unsetAssured)
     Q_PROPERTY(bool isDeterminate READ isDeterminate WRITE setDeterminate RESET unsetDeterminate)
-    Q_PROPERTY(const QSet<QClause *> * clauses READ clauses)
-    Q_PROPERTY(const QList<QOutputPin *> * results READ results)
+    Q_PROPERTY(QSet<QClause *> clauses READ clauses)
+    Q_PROPERTY(QList<QOutputPin *> results READ results)
 
     Q_DISABLE_COPY(QConditionalNode)
     Q_DECLARE_PRIVATE(QConditionalNode)
@@ -87,23 +87,18 @@ public:
     Q_INVOKABLE void unsetDeterminate();
 
     // Association ends from QConditionalNode
-    Q_INVOKABLE const QSet<QClause *> *clauses() const;
+    Q_INVOKABLE const QSet<QClause *> &clauses() const;
     Q_INVOKABLE void addClause(QClause *clause);
     Q_INVOKABLE void removeClause(QClause *clause);
-    Q_INVOKABLE const QList<QOutputPin *> *results() const;
+    Q_INVOKABLE const QList<QOutputPin *> &results() const;
     Q_INVOKABLE void addResult(QOutputPin *result);
     Q_INVOKABLE void removeResult(QOutputPin *result);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QConditionalNode(QConditionalNodePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QConditionalNode) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QConditionalNode) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QConditionalNode) *> *)
 
 QT_END_HEADER
 

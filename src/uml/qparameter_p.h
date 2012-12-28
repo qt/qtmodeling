@@ -83,7 +83,7 @@ public:
     QtUml::ParameterEffectKind effect;
     QOperation *operation;
     QValueSpecification *defaultValue;
-    QSet<QParameterSet *> *parameterSets;
+    QSet<QParameterSet *> parameterSets;
 };
 
 QT_END_NAMESPACE_QTUML

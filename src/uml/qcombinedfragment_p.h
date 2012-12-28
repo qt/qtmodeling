@@ -73,8 +73,8 @@ public:
     virtual ~QCombinedFragmentPrivate();
 
     QtUml::InteractionOperatorKind interactionOperator;
-    QSet<QGate *> *cfragmentGates;
-    QList<QInteractionOperand *> *operands;
+    QSet<QGate *> cfragmentGates;
+    QList<QInteractionOperand *> operands;
 };
 
 QT_END_NAMESPACE_QTUML

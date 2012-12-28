@@ -69,7 +69,7 @@ public:
     virtual ~QComponentRealizationPrivate();
 
     QComponent *abstraction;
-    QSet<QClassifier *> *realizingClassifiers;
+    QSet<QClassifier *> realizingClassifiers;
 };
 
 QT_END_NAMESPACE_QTUML

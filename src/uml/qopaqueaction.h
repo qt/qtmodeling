@@ -67,10 +67,10 @@ class Q_UML_EXPORT QOpaqueAction : public QAction
 {
     Q_OBJECT
 
-    Q_PROPERTY(const QList<QString> * bodies READ bodies)
-    Q_PROPERTY(const QList<QString> * languages READ languages)
-    Q_PROPERTY(const QSet<QInputPin *> * inputValues READ inputValues)
-    Q_PROPERTY(const QSet<QOutputPin *> * outputValues READ outputValues)
+    Q_PROPERTY(QList<QString> bodies READ bodies)
+    Q_PROPERTY(QList<QString> languages READ languages)
+    Q_PROPERTY(QSet<QInputPin *> inputValues READ inputValues)
+    Q_PROPERTY(QSet<QOutputPin *> outputValues READ outputValues)
 
     Q_DISABLE_COPY(QOpaqueAction)
     Q_DECLARE_PRIVATE(QOpaqueAction)
@@ -80,31 +80,26 @@ public:
     virtual ~QOpaqueAction();
 
     // Attributes from QOpaqueAction
-    Q_INVOKABLE const QList<QString> *bodies() const;
+    Q_INVOKABLE const QList<QString> bodies() const;
     Q_INVOKABLE void addBody(QString body);
     Q_INVOKABLE void removeBody(QString body);
-    Q_INVOKABLE const QList<QString> *languages() const;
+    Q_INVOKABLE const QList<QString> languages() const;
     Q_INVOKABLE void addLanguage(QString language);
     Q_INVOKABLE void removeLanguage(QString language);
 
     // Association ends from QOpaqueAction
-    Q_INVOKABLE const QSet<QInputPin *> *inputValues() const;
+    Q_INVOKABLE const QSet<QInputPin *> &inputValues() const;
     Q_INVOKABLE void addInputValue(QInputPin *inputValue);
     Q_INVOKABLE void removeInputValue(QInputPin *inputValue);
-    Q_INVOKABLE const QSet<QOutputPin *> *outputValues() const;
+    Q_INVOKABLE const QSet<QOutputPin *> &outputValues() const;
     Q_INVOKABLE void addOutputValue(QOutputPin *outputValue);
     Q_INVOKABLE void removeOutputValue(QOutputPin *outputValue);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QOpaqueAction(QOpaqueActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QOpaqueAction) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QOpaqueAction) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QOpaqueAction) *> *)
 
 QT_END_HEADER
 

@@ -47,14 +47,12 @@
 QT_BEGIN_NAMESPACE_QTUML
 
 QTimeExpressionPrivate::QTimeExpressionPrivate() :
-    observations(new QSet<QObservation *>),
     expr(0)
 {
 }
 
 QTimeExpressionPrivate::~QTimeExpressionPrivate()
 {
-    delete observations;
 }
 
 /*!
@@ -86,7 +84,7 @@ QTimeExpression::~QTimeExpression()
 /*!
     Refers to the time and duration observations that are involved in expr.
  */
-const QSet<QObservation *> *QTimeExpression::observations() const
+const QSet<QObservation *> &QTimeExpression::observations() const
 {
     // This is a read-write association end
 
@@ -99,8 +97,8 @@ void QTimeExpression::addObservation(QObservation *observation)
     // This is a read-write association end
 
     Q_D(QTimeExpression);
-    if (!d->observations->contains(observation)) {
-        d->observations->insert(observation);
+    if (!d->observations.contains(observation)) {
+        d->observations.insert(observation);
     }
 }
 
@@ -109,8 +107,8 @@ void QTimeExpression::removeObservation(QObservation *observation)
     // This is a read-write association end
 
     Q_D(QTimeExpression);
-    if (d->observations->contains(observation)) {
-        d->observations->remove(observation);
+    if (d->observations.contains(observation)) {
+        d->observations.remove(observation);
     }
 }
 
@@ -141,28 +139,6 @@ void QTimeExpression::setExpr(QValueSpecification *expr)
             (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(expr));
         }
     }
-}
-
-void QTimeExpression::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QTimeExpression) *>("QT_PREPEND_NAMESPACE_QTUML(QTimeExpression) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QTimeExpression) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QTimeExpression) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QTimeExpression) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QTimeExpression) *> *");
-    qRegisterMetaType<QTimeExpression *>("QTimeExpression *");
-    qRegisterMetaType<const QSet<QTimeExpression *> *>("const QSet<QTimeExpression *> *");
-    qRegisterMetaType<const QList<QTimeExpression *> *>("const QList<QTimeExpression *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QObservation) *>("QT_PREPEND_NAMESPACE_QTUML(QObservation) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QObservation) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QObservation) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QObservation) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QObservation) *> *");
-    qRegisterMetaType<QObservation *>("QObservation *");
-    qRegisterMetaType<const QSet<QObservation *> *>("const QSet<QObservation *> *");
-    qRegisterMetaType<const QList<QObservation *> *>("const QList<QObservation *> *");
-
-    QValueSpecification::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qtimeexpression.cpp"

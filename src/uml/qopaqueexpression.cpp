@@ -48,16 +48,12 @@
 QT_BEGIN_NAMESPACE_QTUML
 
 QOpaqueExpressionPrivate::QOpaqueExpressionPrivate() :
-    bodies(new QList<QString>),
-    languages(new QList<QString>),
     behavior(0)
 {
 }
 
 QOpaqueExpressionPrivate::~QOpaqueExpressionPrivate()
 {
-    delete bodies;
-    delete languages;
 }
 
 /*!
@@ -89,7 +85,7 @@ QOpaqueExpression::~QOpaqueExpression()
 /*!
     The text of the expression, possibly in multiple languages.
  */
-const QList<QString> *QOpaqueExpression::bodies() const
+const QList<QString> QOpaqueExpression::bodies() const
 {
     // This is a read-write attribute
 
@@ -102,8 +98,8 @@ void QOpaqueExpression::addBody(QString body)
     // This is a read-write attribute
 
     Q_D(QOpaqueExpression);
-    if (!d->bodies->contains(body)) {
-        d->bodies->append(body);
+    if (!d->bodies.contains(body)) {
+        d->bodies.append(body);
     }
 }
 
@@ -112,15 +108,15 @@ void QOpaqueExpression::removeBody(QString body)
     // This is a read-write attribute
 
     Q_D(QOpaqueExpression);
-    if (d->bodies->contains(body)) {
-        d->bodies->removeAll(body);
+    if (d->bodies.contains(body)) {
+        d->bodies.removeAll(body);
     }
 }
 
 /*!
     Specifies the languages in which the expression is stated. The interpretation of the expression body depends on the languages. If the languages are unspecified, they might be implicit from the expression body or the context. Languages are matched to body strings by order.
  */
-const QList<QString> *QOpaqueExpression::languages() const
+const QList<QString> QOpaqueExpression::languages() const
 {
     // This is a read-write attribute
 
@@ -133,8 +129,8 @@ void QOpaqueExpression::addLanguage(QString language)
     // This is a read-write attribute
 
     Q_D(QOpaqueExpression);
-    if (!d->languages->contains(language)) {
-        d->languages->append(language);
+    if (!d->languages.contains(language)) {
+        d->languages.append(language);
     }
 }
 
@@ -143,8 +139,8 @@ void QOpaqueExpression::removeLanguage(QString language)
     // This is a read-write attribute
 
     Q_D(QOpaqueExpression);
-    if (d->languages->contains(language)) {
-        d->languages->removeAll(language);
+    if (d->languages.contains(language)) {
+        d->languages.removeAll(language);
     }
 }
 
@@ -223,35 +219,6 @@ qint32 QOpaqueExpression::value() const
     qWarning("QOpaqueExpression::value: operation to be implemented");
 
     return qint32(); // change here to your derived return
-}
-
-void QOpaqueExpression::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QOpaqueExpression) *>("QT_PREPEND_NAMESPACE_QTUML(QOpaqueExpression) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QOpaqueExpression) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QOpaqueExpression) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QOpaqueExpression) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QOpaqueExpression) *> *");
-    qRegisterMetaType<QOpaqueExpression *>("QOpaqueExpression *");
-    qRegisterMetaType<const QSet<QOpaqueExpression *> *>("const QSet<QOpaqueExpression *> *");
-    qRegisterMetaType<const QList<QOpaqueExpression *> *>("const QList<QOpaqueExpression *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *>("QT_PREPEND_NAMESPACE_QTUML(QBehavior) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *");
-    qRegisterMetaType<QBehavior *>("QBehavior *");
-    qRegisterMetaType<const QSet<QBehavior *> *>("const QSet<QBehavior *> *");
-    qRegisterMetaType<const QList<QBehavior *> *>("const QList<QBehavior *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QParameter) *>("QT_PREPEND_NAMESPACE_QTUML(QParameter) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QParameter) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QParameter) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QParameter) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QParameter) *> *");
-    qRegisterMetaType<QParameter *>("QParameter *");
-    qRegisterMetaType<const QSet<QParameter *> *>("const QSet<QParameter *> *");
-    qRegisterMetaType<const QList<QParameter *> *>("const QList<QParameter *> *");
-
-    QValueSpecification::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qopaqueexpression.cpp"

@@ -53,7 +53,6 @@ QT_BEGIN_NAMESPACE_QTUML
 QLifelinePrivate::QLifelinePrivate() :
     represents(0),
     decomposedAs(0),
-    coveredBy(new QSet<QInteractionFragment *>),
     interaction(0),
     selector(0)
 {
@@ -61,7 +60,6 @@ QLifelinePrivate::QLifelinePrivate() :
 
 QLifelinePrivate::~QLifelinePrivate()
 {
-    delete coveredBy;
 }
 
 /*!
@@ -135,7 +133,7 @@ void QLifeline::setDecomposedAs(QPartDecomposition *decomposedAs)
 /*!
     References the InteractionFragments in which this Lifeline takes part.
  */
-const QSet<QInteractionFragment *> *QLifeline::coveredBy() const
+const QSet<QInteractionFragment *> &QLifeline::coveredBy() const
 {
     // This is a read-write association end
 
@@ -148,8 +146,8 @@ void QLifeline::addCoveredBy(QInteractionFragment *coveredBy)
     // This is a read-write association end
 
     Q_D(QLifeline);
-    if (!d->coveredBy->contains(coveredBy)) {
-        d->coveredBy->insert(coveredBy);
+    if (!d->coveredBy.contains(coveredBy)) {
+        d->coveredBy.insert(coveredBy);
 
         // Adjust opposite property
         coveredBy->addCovered(this);
@@ -161,8 +159,8 @@ void QLifeline::removeCoveredBy(QInteractionFragment *coveredBy)
     // This is a read-write association end
 
     Q_D(QLifeline);
-    if (d->coveredBy->contains(coveredBy)) {
-        d->coveredBy->remove(coveredBy);
+    if (d->coveredBy.contains(coveredBy)) {
+        d->coveredBy.remove(coveredBy);
 
         // Adjust opposite property
         if (coveredBy)
@@ -229,56 +227,6 @@ void QLifeline::setSelector(QValueSpecification *selector)
             (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(selector));
         }
     }
-}
-
-void QLifeline::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QLifeline) *>("QT_PREPEND_NAMESPACE_QTUML(QLifeline) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QLifeline) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QLifeline) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QLifeline) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QLifeline) *> *");
-    qRegisterMetaType<QLifeline *>("QLifeline *");
-    qRegisterMetaType<const QSet<QLifeline *> *>("const QSet<QLifeline *> *");
-    qRegisterMetaType<const QList<QLifeline *> *>("const QList<QLifeline *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QConnectableElement) *>("QT_PREPEND_NAMESPACE_QTUML(QConnectableElement) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QConnectableElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QConnectableElement) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QConnectableElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QConnectableElement) *> *");
-    qRegisterMetaType<QConnectableElement *>("QConnectableElement *");
-    qRegisterMetaType<const QSet<QConnectableElement *> *>("const QSet<QConnectableElement *> *");
-    qRegisterMetaType<const QList<QConnectableElement *> *>("const QList<QConnectableElement *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *>("QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *");
-    qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
-    qRegisterMetaType<const QSet<QValueSpecification *> *>("const QSet<QValueSpecification *> *");
-    qRegisterMetaType<const QList<QValueSpecification *> *>("const QList<QValueSpecification *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInteraction) *>("QT_PREPEND_NAMESPACE_QTUML(QInteraction) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInteraction) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInteraction) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInteraction) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInteraction) *> *");
-    qRegisterMetaType<QInteraction *>("QInteraction *");
-    qRegisterMetaType<const QSet<QInteraction *> *>("const QSet<QInteraction *> *");
-    qRegisterMetaType<const QList<QInteraction *> *>("const QList<QInteraction *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInteractionFragment) *>("QT_PREPEND_NAMESPACE_QTUML(QInteractionFragment) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInteractionFragment) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInteractionFragment) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInteractionFragment) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInteractionFragment) *> *");
-    qRegisterMetaType<QInteractionFragment *>("QInteractionFragment *");
-    qRegisterMetaType<const QSet<QInteractionFragment *> *>("const QSet<QInteractionFragment *> *");
-    qRegisterMetaType<const QList<QInteractionFragment *> *>("const QList<QInteractionFragment *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QPartDecomposition) *>("QT_PREPEND_NAMESPACE_QTUML(QPartDecomposition) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QPartDecomposition) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QPartDecomposition) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QPartDecomposition) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QPartDecomposition) *> *");
-    qRegisterMetaType<QPartDecomposition *>("QPartDecomposition *");
-    qRegisterMetaType<const QSet<QPartDecomposition *> *>("const QSet<QPartDecomposition *> *");
-    qRegisterMetaType<const QList<QPartDecomposition *> *>("const QList<QPartDecomposition *> *");
-
-    QNamedElement::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qlifeline.cpp"

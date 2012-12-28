@@ -88,19 +88,14 @@ public:
     Q_INVOKABLE QMofObject *createFromString(const QDataType *dataType, QString string);
     Q_INVOKABLE QString convertToString(const QDataType *dataType, const QMofObject *object);
     Q_INVOKABLE QElement *create(const QClass *metaClass);
-    Q_INVOKABLE QElement *createElement(const QClass *class_, const QSet<QArgument *> *arguments);
+    Q_INVOKABLE QElement *createElement(const QClass *class_, const QSet<QArgument *> &arguments);
     Q_INVOKABLE QLink *createLink(const QAssociation *association, const QElement *firstElement, const QElement *secondElement);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QFactory(QFactoryPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTMOF
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTMOF(QFactory) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTMOF(QFactory) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTMOF(QFactory) *> *)
 
 QT_END_HEADER
 

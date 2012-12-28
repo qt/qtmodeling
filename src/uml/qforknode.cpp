@@ -74,21 +74,6 @@ QForkNode::~QForkNode()
 {
 }
 
-void QForkNode::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QForkNode) *>("QT_PREPEND_NAMESPACE_QTUML(QForkNode) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QForkNode) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QForkNode) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QForkNode) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QForkNode) *> *");
-    qRegisterMetaType<QForkNode *>("QForkNode *");
-    qRegisterMetaType<const QSet<QForkNode *> *>("const QSet<QForkNode *> *");
-    qRegisterMetaType<const QList<QForkNode *> *>("const QList<QForkNode *> *");
-
-    QControlNode::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 #include "moc_qforknode.cpp"
 
 QT_END_NAMESPACE_QTUML

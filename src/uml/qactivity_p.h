@@ -74,12 +74,12 @@ public:
 
     bool isReadOnly;
     bool isSingleExecution;
-    QSet<QActivityPartition *> *partitions;
-    QSet<QActivityNode *> *nodes;
-    QSet<QVariable *> *variables;
-    QSet<QStructuredActivityNode *> *structuredNodes;
-    QSet<QActivityGroup *> *groups;
-    QSet<QActivityEdge *> *edges;
+    QSet<QActivityPartition *> partitions;
+    QSet<QActivityNode *> nodes;
+    QSet<QVariable *> variables;
+    QSet<QStructuredActivityNode *> structuredNodes;
+    QSet<QActivityGroup *> groups;
+    QSet<QActivityEdge *> edges;
 };
 
 QT_END_NAMESPACE_QTUML

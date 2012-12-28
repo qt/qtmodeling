@@ -49,16 +49,12 @@
 QT_BEGIN_NAMESPACE_QTMOF
 
 QInstanceSpecificationPrivate::QInstanceSpecificationPrivate() :
-    classifiers(new QSet<QClassifier *>),
-    specification(0),
-    slots_(new QSet<QSlot *>)
+    specification(0)
 {
 }
 
 QInstanceSpecificationPrivate::~QInstanceSpecificationPrivate()
 {
-    delete classifiers;
-    delete slots_;
 }
 
 /*!
@@ -90,7 +86,7 @@ QInstanceSpecification::~QInstanceSpecification()
 /*!
     The classifier or classifiers of the represented instance. If multiple classifiers are specified, the instance is classified by all of them.
  */
-const QSet<QClassifier *> *QInstanceSpecification::classifiers() const
+const QSet<QClassifier *> &QInstanceSpecification::classifiers() const
 {
     // This is a read-write association end
 
@@ -103,8 +99,8 @@ void QInstanceSpecification::addClassifier(QClassifier *classifier)
     // This is a read-write association end
 
     Q_D(QInstanceSpecification);
-    if (!d->classifiers->contains(classifier)) {
-        d->classifiers->insert(classifier);
+    if (!d->classifiers.contains(classifier)) {
+        d->classifiers.insert(classifier);
     }
 }
 
@@ -113,8 +109,8 @@ void QInstanceSpecification::removeClassifier(QClassifier *classifier)
     // This is a read-write association end
 
     Q_D(QInstanceSpecification);
-    if (d->classifiers->contains(classifier)) {
-        d->classifiers->remove(classifier);
+    if (d->classifiers.contains(classifier)) {
+        d->classifiers.remove(classifier);
     }
 }
 
@@ -150,7 +146,7 @@ void QInstanceSpecification::setSpecification(QValueSpecification *specification
 /*!
     A slot giving the value or values of a structural feature of the instance. An instance specification can have one slot per structural feature of its classifiers, including inherited features. It is not necessary to model a slot for each structural feature, in which case the instance specification is a partial description.
  */
-const QSet<QSlot *> *QInstanceSpecification::slots_() const
+const QSet<QSlot *> &QInstanceSpecification::slots_() const
 {
     // This is a read-write association end
 
@@ -163,8 +159,8 @@ void QInstanceSpecification::addSlot_(QSlot *slot_)
     // This is a read-write association end
 
     Q_D(QInstanceSpecification);
-    if (!d->slots_->contains(slot_)) {
-        d->slots_->insert(slot_);
+    if (!d->slots_.contains(slot_)) {
+        d->slots_.insert(slot_);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(slot_));
@@ -179,8 +175,8 @@ void QInstanceSpecification::removeSlot_(QSlot *slot_)
     // This is a read-write association end
 
     Q_D(QInstanceSpecification);
-    if (d->slots_->contains(slot_)) {
-        d->slots_->remove(slot_);
+    if (d->slots_.contains(slot_)) {
+        d->slots_.remove(slot_);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(slot_));
@@ -188,42 +184,6 @@ void QInstanceSpecification::removeSlot_(QSlot *slot_)
         // Adjust opposite property
         slot_->setOwningInstance(0);
     }
-}
-
-void QInstanceSpecification::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QInstanceSpecification) *>("QT_PREPEND_NAMESPACE_QTMOF(QInstanceSpecification) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QInstanceSpecification) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QInstanceSpecification) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QInstanceSpecification) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QInstanceSpecification) *> *");
-    qRegisterMetaType<QInstanceSpecification *>("QInstanceSpecification *");
-    qRegisterMetaType<const QSet<QInstanceSpecification *> *>("const QSet<QInstanceSpecification *> *");
-    qRegisterMetaType<const QList<QInstanceSpecification *> *>("const QList<QInstanceSpecification *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QClassifier) *>("QT_PREPEND_NAMESPACE_QTMOF(QClassifier) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QClassifier) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QClassifier) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QClassifier) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QClassifier) *> *");
-    qRegisterMetaType<QClassifier *>("QClassifier *");
-    qRegisterMetaType<const QSet<QClassifier *> *>("const QSet<QClassifier *> *");
-    qRegisterMetaType<const QList<QClassifier *> *>("const QList<QClassifier *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QSlot) *>("QT_PREPEND_NAMESPACE_QTMOF(QSlot) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QSlot) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QSlot) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QSlot) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QSlot) *> *");
-    qRegisterMetaType<QSlot *>("QSlot *");
-    qRegisterMetaType<const QSet<QSlot *> *>("const QSet<QSlot *> *");
-    qRegisterMetaType<const QList<QSlot *> *>("const QList<QSlot *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QValueSpecification) *>("QT_PREPEND_NAMESPACE_QTMOF(QValueSpecification) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QValueSpecification) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QValueSpecification) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QValueSpecification) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QValueSpecification) *> *");
-    qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
-    qRegisterMetaType<const QSet<QValueSpecification *> *>("const QSet<QValueSpecification *> *");
-    qRegisterMetaType<const QList<QValueSpecification *> *>("const QList<QValueSpecification *> *");
-
-    QPackageableElement::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qinstancespecification.cpp"

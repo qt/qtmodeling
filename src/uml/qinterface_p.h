@@ -72,11 +72,11 @@ public:
     virtual ~QInterfacePrivate();
 
     QProtocolStateMachine *protocol;
-    QSet<QInterface *> *redefinedInterfaces;
-    QSet<QReception *> *ownedReceptions;
-    QList<QOperation *> *ownedOperations;
-    QList<QClassifier *> *nestedClassifiers;
-    QList<QProperty *> *ownedAttributes;
+    QSet<QInterface *> redefinedInterfaces;
+    QSet<QReception *> ownedReceptions;
+    QList<QOperation *> ownedOperations;
+    QList<QClassifier *> nestedClassifiers;
+    QList<QProperty *> ownedAttributes;
 };
 
 QT_END_NAMESPACE_QTUML

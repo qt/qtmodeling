@@ -46,14 +46,12 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QSignalPrivate::QSignalPrivate() :
-    ownedAttributes(new QList<QProperty *>)
+QSignalPrivate::QSignalPrivate()
 {
 }
 
 QSignalPrivate::~QSignalPrivate()
 {
-    delete ownedAttributes;
 }
 
 /*!
@@ -85,7 +83,7 @@ QSignal::~QSignal()
 /*!
     The attributes owned by the signal.
  */
-const QList<QProperty *> *QSignal::ownedAttributes() const
+const QList<QProperty *> &QSignal::ownedAttributes() const
 {
     // This is a read-write association end
 
@@ -98,8 +96,8 @@ void QSignal::addOwnedAttribute(QProperty *ownedAttribute)
     // This is a read-write association end
 
     Q_D(QSignal);
-    if (!d->ownedAttributes->contains(ownedAttribute)) {
-        d->ownedAttributes->append(ownedAttribute);
+    if (!d->ownedAttributes.contains(ownedAttribute)) {
+        d->ownedAttributes.append(ownedAttribute);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qwrappedobject_cast<QNamedElement *>(ownedAttribute));
@@ -112,35 +110,13 @@ void QSignal::removeOwnedAttribute(QProperty *ownedAttribute)
     // This is a read-write association end
 
     Q_D(QSignal);
-    if (d->ownedAttributes->contains(ownedAttribute)) {
-        d->ownedAttributes->removeAll(ownedAttribute);
+    if (d->ownedAttributes.contains(ownedAttribute)) {
+        d->ownedAttributes.removeAll(ownedAttribute);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qwrappedobject_cast<QNamedElement *>(ownedAttribute));
         (qwrappedobject_cast<QClassifierPrivate *>(d))->removeAttribute(qwrappedobject_cast<QProperty *>(ownedAttribute));
     }
-}
-
-void QSignal::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QSignal) *>("QT_PREPEND_NAMESPACE_QTUML(QSignal) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QSignal) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QSignal) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QSignal) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QSignal) *> *");
-    qRegisterMetaType<QSignal *>("QSignal *");
-    qRegisterMetaType<const QSet<QSignal *> *>("const QSet<QSignal *> *");
-    qRegisterMetaType<const QList<QSignal *> *>("const QList<QSignal *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QProperty) *>("QT_PREPEND_NAMESPACE_QTUML(QProperty) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QProperty) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QProperty) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QProperty) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QProperty) *> *");
-    qRegisterMetaType<QProperty *>("QProperty *");
-    qRegisterMetaType<const QSet<QProperty *> *>("const QSet<QProperty *> *");
-    qRegisterMetaType<const QList<QProperty *> *>("const QList<QProperty *> *");
-
-    QClassifier::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qsignal.cpp"

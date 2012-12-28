@@ -74,21 +74,6 @@ QCentralBufferNode::~QCentralBufferNode()
 {
 }
 
-void QCentralBufferNode::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QCentralBufferNode) *>("QT_PREPEND_NAMESPACE_QTUML(QCentralBufferNode) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QCentralBufferNode) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QCentralBufferNode) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QCentralBufferNode) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QCentralBufferNode) *> *");
-    qRegisterMetaType<QCentralBufferNode *>("QCentralBufferNode *");
-    qRegisterMetaType<const QSet<QCentralBufferNode *> *>("const QSet<QCentralBufferNode *> *");
-    qRegisterMetaType<const QList<QCentralBufferNode *> *>("const QList<QCentralBufferNode *> *");
-
-    QObjectNode::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 #include "moc_qcentralbuffernode.cpp"
 
 QT_END_NAMESPACE_QTUML

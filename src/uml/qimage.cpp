@@ -141,21 +141,6 @@ void QImage::setContent(QString content)
     }
 }
 
-void QImage::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QImage) *>("QT_PREPEND_NAMESPACE_QTUML(QImage) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QImage) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QImage) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QImage) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QImage) *> *");
-    qRegisterMetaType<QImage *>("QImage *");
-    qRegisterMetaType<const QSet<QImage *> *>("const QSet<QImage *> *");
-    qRegisterMetaType<const QList<QImage *> *>("const QList<QImage *> *");
-
-    QElement::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 #include "moc_qimage.cpp"
 
 QT_END_NAMESPACE_QTUML

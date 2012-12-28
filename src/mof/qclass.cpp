@@ -49,18 +49,12 @@
 QT_BEGIN_NAMESPACE_QTMOF
 
 QClassPrivate::QClassPrivate() :
-    isAbstract(false),
-    nestedClassifiers(new QList<QClassifier *>),
-    ownedOperations(new QList<QOperation *>),
-    ownedAttributes(new QList<QProperty *>)
+    isAbstract(false)
 {
 }
 
 QClassPrivate::~QClassPrivate()
 {
-    delete nestedClassifiers;
-    delete ownedOperations;
-    delete ownedAttributes;
 }
 
 /*!
@@ -122,7 +116,7 @@ void QClass::unsetAbstract()
 /*!
     References all the Classifiers that are defined (nested) within the Class.
  */
-const QList<QClassifier *> *QClass::nestedClassifiers() const
+const QList<QClassifier *> &QClass::nestedClassifiers() const
 {
     // This is a read-write association end
 
@@ -135,8 +129,8 @@ void QClass::addNestedClassifier(QClassifier *nestedClassifier)
     // This is a read-write association end
 
     Q_D(QClass);
-    if (!d->nestedClassifiers->contains(nestedClassifier)) {
-        d->nestedClassifiers->append(nestedClassifier);
+    if (!d->nestedClassifiers.contains(nestedClassifier)) {
+        d->nestedClassifiers.append(nestedClassifier);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qwrappedobject_cast<QNamedElement *>(nestedClassifier));
@@ -148,8 +142,8 @@ void QClass::removeNestedClassifier(QClassifier *nestedClassifier)
     // This is a read-write association end
 
     Q_D(QClass);
-    if (d->nestedClassifiers->contains(nestedClassifier)) {
-        d->nestedClassifiers->removeAll(nestedClassifier);
+    if (d->nestedClassifiers.contains(nestedClassifier)) {
+        d->nestedClassifiers.removeAll(nestedClassifier);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qwrappedobject_cast<QNamedElement *>(nestedClassifier));
@@ -159,7 +153,7 @@ void QClass::removeNestedClassifier(QClassifier *nestedClassifier)
 /*!
     The operations owned by the class.
  */
-const QList<QOperation *> *QClass::ownedOperations() const
+const QList<QOperation *> &QClass::ownedOperations() const
 {
     // This is a read-write association end
 
@@ -172,8 +166,8 @@ void QClass::addOwnedOperation(QOperation *ownedOperation)
     // This is a read-write association end
 
     Q_D(QClass);
-    if (!d->ownedOperations->contains(ownedOperation)) {
-        d->ownedOperations->append(ownedOperation);
+    if (!d->ownedOperations.contains(ownedOperation)) {
+        d->ownedOperations.append(ownedOperation);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QClassifierPrivate *>(d))->addFeature(qwrappedobject_cast<QFeature *>(ownedOperation));
@@ -189,8 +183,8 @@ void QClass::removeOwnedOperation(QOperation *ownedOperation)
     // This is a read-write association end
 
     Q_D(QClass);
-    if (d->ownedOperations->contains(ownedOperation)) {
-        d->ownedOperations->removeAll(ownedOperation);
+    if (d->ownedOperations.contains(ownedOperation)) {
+        d->ownedOperations.removeAll(ownedOperation);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QClassifierPrivate *>(d))->removeFeature(qwrappedobject_cast<QFeature *>(ownedOperation));
@@ -204,7 +198,7 @@ void QClass::removeOwnedOperation(QOperation *ownedOperation)
 /*!
     The attributes (i.e. the properties) owned by the class.
  */
-const QList<QProperty *> *QClass::ownedAttributes() const
+const QList<QProperty *> &QClass::ownedAttributes() const
 {
     // This is a read-write association end
 
@@ -217,8 +211,8 @@ void QClass::addOwnedAttribute(QProperty *ownedAttribute)
     // This is a read-write association end
 
     Q_D(QClass);
-    if (!d->ownedAttributes->contains(ownedAttribute)) {
-        d->ownedAttributes->append(ownedAttribute);
+    if (!d->ownedAttributes.contains(ownedAttribute)) {
+        d->ownedAttributes.append(ownedAttribute);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QClassifierPrivate *>(d))->addAttribute(qwrappedobject_cast<QProperty *>(ownedAttribute));
@@ -234,8 +228,8 @@ void QClass::removeOwnedAttribute(QProperty *ownedAttribute)
     // This is a read-write association end
 
     Q_D(QClass);
-    if (d->ownedAttributes->contains(ownedAttribute)) {
-        d->ownedAttributes->removeAll(ownedAttribute);
+    if (d->ownedAttributes.contains(ownedAttribute)) {
+        d->ownedAttributes.removeAll(ownedAttribute);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QClassifierPrivate *>(d))->removeAttribute(qwrappedobject_cast<QProperty *>(ownedAttribute));
@@ -249,13 +243,13 @@ void QClass::removeOwnedAttribute(QProperty *ownedAttribute)
 /*!
     This gives the superclasses of a class.
  */
-const QSet<QClass *> *QClass::superClasses() const
+const QSet<QClass *> &QClass::superClasses() const
 {
     // This is a read-write derived association end
 
     qWarning("QClass::superClasses: to be implemented (this is a derived associationend)");
 
-    return 0; // change here to your derived return
+    return *(new QSet<QClass *>); // change here to your derived return
 }
 
 void QClass::addSuperClass(QClass *superClass)
@@ -285,48 +279,12 @@ void QClass::removeSuperClass(QClass *superClass)
 /*!
     The inherit operation is overridden to exclude redefined properties.
  */
-const QSet<QNamedElement *> *QClass::inherit(const QSet<QNamedElement *> *inhs) const
+const QSet<QNamedElement *> &QClass::inherit(const QSet<QNamedElement *> &inhs) const
 {
     qWarning("QClass::inherit: operation to be implemented");
     Q_UNUSED(inhs);
 
-    return 0; // change here to your derived return
-}
-
-void QClass::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QClass) *>("QT_PREPEND_NAMESPACE_QTMOF(QClass) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QClass) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QClass) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QClass) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QClass) *> *");
-    qRegisterMetaType<QClass *>("QClass *");
-    qRegisterMetaType<const QSet<QClass *> *>("const QSet<QClass *> *");
-    qRegisterMetaType<const QList<QClass *> *>("const QList<QClass *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QNamedElement) *>("QT_PREPEND_NAMESPACE_QTMOF(QNamedElement) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QNamedElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QNamedElement) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QNamedElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QNamedElement) *> *");
-    qRegisterMetaType<QNamedElement *>("QNamedElement *");
-    qRegisterMetaType<const QSet<QNamedElement *> *>("const QSet<QNamedElement *> *");
-    qRegisterMetaType<const QList<QNamedElement *> *>("const QList<QNamedElement *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QProperty) *>("QT_PREPEND_NAMESPACE_QTMOF(QProperty) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QProperty) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QProperty) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QProperty) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QProperty) *> *");
-    qRegisterMetaType<QProperty *>("QProperty *");
-    qRegisterMetaType<const QSet<QProperty *> *>("const QSet<QProperty *> *");
-    qRegisterMetaType<const QList<QProperty *> *>("const QList<QProperty *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QOperation) *>("QT_PREPEND_NAMESPACE_QTMOF(QOperation) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QOperation) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QOperation) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QOperation) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QOperation) *> *");
-    qRegisterMetaType<QOperation *>("QOperation *");
-    qRegisterMetaType<const QSet<QOperation *> *>("const QSet<QOperation *> *");
-    qRegisterMetaType<const QList<QOperation *> *>("const QList<QOperation *> *");
-
-    QClassifier::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
+    return *(new QSet<QNamedElement *>); // change here to your derived return
 }
 
 #include "moc_qclass.cpp"

@@ -49,14 +49,12 @@
 QT_BEGIN_NAMESPACE_QTUML
 
 QTemplateableElementPrivate::QTemplateableElementPrivate() :
-    ownedTemplateSignature(0),
-    templateBindings(new QSet<QTemplateBinding *>)
+    ownedTemplateSignature(0)
 {
 }
 
 QTemplateableElementPrivate::~QTemplateableElementPrivate()
 {
-    delete templateBindings;
 }
 
 /*!
@@ -122,7 +120,7 @@ void QTemplateableElement::setOwnedTemplateSignature(QTemplateSignature *ownedTe
 /*!
     The optional bindings from this element to templates.
  */
-const QSet<QTemplateBinding *> *QTemplateableElement::templateBindings() const
+const QSet<QTemplateBinding *> &QTemplateableElement::templateBindings() const
 {
     // This is a read-write association end
 
@@ -135,8 +133,8 @@ void QTemplateableElement::addTemplateBinding(QTemplateBinding *templateBinding)
     // This is a read-write association end
 
     Q_D(QTemplateableElement);
-    if (!d->templateBindings->contains(templateBinding)) {
-        d->templateBindings->insert(templateBinding);
+    if (!d->templateBindings.contains(templateBinding)) {
+        d->templateBindings.insert(templateBinding);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(templateBinding));
@@ -151,8 +149,8 @@ void QTemplateableElement::removeTemplateBinding(QTemplateBinding *templateBindi
     // This is a read-write association end
 
     Q_D(QTemplateableElement);
-    if (d->templateBindings->contains(templateBinding)) {
-        d->templateBindings->remove(templateBinding);
+    if (d->templateBindings.contains(templateBinding)) {
+        d->templateBindings.remove(templateBinding);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(templateBinding));
@@ -175,47 +173,11 @@ bool QTemplateableElement::isTemplate() const
 /*!
     The query parameterableElements() returns the set of elements that may be used as the parametered elements for a template parameter of this templateable element. By default, this set includes all the owned elements. Subclasses may override this operation if they choose to restrict the set of parameterable elements.
  */
-const QSet<QParameterableElement *> *QTemplateableElement::parameterableElements() const
+const QSet<QParameterableElement *> &QTemplateableElement::parameterableElements() const
 {
     qWarning("QTemplateableElement::parameterableElements: operation to be implemented");
 
-    return 0; // change here to your derived return
-}
-
-void QTemplateableElement::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QTemplateableElement) *>("QT_PREPEND_NAMESPACE_QTUML(QTemplateableElement) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QTemplateableElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QTemplateableElement) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QTemplateableElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QTemplateableElement) *> *");
-    qRegisterMetaType<QTemplateableElement *>("QTemplateableElement *");
-    qRegisterMetaType<const QSet<QTemplateableElement *> *>("const QSet<QTemplateableElement *> *");
-    qRegisterMetaType<const QList<QTemplateableElement *> *>("const QList<QTemplateableElement *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QTemplateSignature) *>("QT_PREPEND_NAMESPACE_QTUML(QTemplateSignature) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QTemplateSignature) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QTemplateSignature) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QTemplateSignature) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QTemplateSignature) *> *");
-    qRegisterMetaType<QTemplateSignature *>("QTemplateSignature *");
-    qRegisterMetaType<const QSet<QTemplateSignature *> *>("const QSet<QTemplateSignature *> *");
-    qRegisterMetaType<const QList<QTemplateSignature *> *>("const QList<QTemplateSignature *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QTemplateBinding) *>("QT_PREPEND_NAMESPACE_QTUML(QTemplateBinding) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QTemplateBinding) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QTemplateBinding) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QTemplateBinding) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QTemplateBinding) *> *");
-    qRegisterMetaType<QTemplateBinding *>("QTemplateBinding *");
-    qRegisterMetaType<const QSet<QTemplateBinding *> *>("const QSet<QTemplateBinding *> *");
-    qRegisterMetaType<const QList<QTemplateBinding *> *>("const QList<QTemplateBinding *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QParameterableElement) *>("QT_PREPEND_NAMESPACE_QTUML(QParameterableElement) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QParameterableElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QParameterableElement) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QParameterableElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QParameterableElement) *> *");
-    qRegisterMetaType<QParameterableElement *>("QParameterableElement *");
-    qRegisterMetaType<const QSet<QParameterableElement *> *>("const QSet<QParameterableElement *> *");
-    qRegisterMetaType<const QList<QParameterableElement *> *>("const QList<QParameterableElement *> *");
-
-    QElement::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
+    return *(new QSet<QParameterableElement *>); // change here to your derived return
 }
 
 #include "moc_qtemplateableelement.cpp"

@@ -79,10 +79,10 @@ public:
 
     QtUml::CallConcurrencyKind concurrency;
     bool isAbstract;
-    QSet<QType *> *raisedExceptions;
-    QList<QParameter *> *ownedParameters;
-    QSet<QParameterSet *> *ownedParameterSets;
-    QSet<QBehavior *> *methods;
+    QSet<QType *> raisedExceptions;
+    QList<QParameter *> ownedParameters;
+    QSet<QParameterSet *> ownedParameterSets;
+    QSet<QBehavior *> methods;
 };
 
 QT_END_NAMESPACE_QTUML

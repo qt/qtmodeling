@@ -73,17 +73,12 @@ public:
     // Association ends from QTypedElement
     Q_INVOKABLE QType *type() const;
     Q_INVOKABLE void setType(QType *type);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QTypedElement(QTypedElementPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QTypedElement) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QTypedElement) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QTypedElement) *> *)
 
 QT_END_HEADER
 

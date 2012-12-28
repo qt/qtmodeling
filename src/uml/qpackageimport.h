@@ -86,17 +86,12 @@ public:
     Q_INVOKABLE void setImportingNamespace(QNamespace *importingNamespace);
     Q_INVOKABLE QPackage *importedPackage() const;
     Q_INVOKABLE void setImportedPackage(QPackage *importedPackage);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QPackageImport(QPackageImportPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QPackageImport) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QPackageImport) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QPackageImport) *> *)
 
 QT_END_HEADER
 

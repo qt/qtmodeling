@@ -64,7 +64,7 @@ class Q_UML_EXPORT QEncapsulatedClassifier : public QStructuredClassifier
 {
     Q_OBJECT
 
-    Q_PROPERTY(const QSet<QPort *> * ownedPorts READ ownedPorts STORED false)
+    Q_PROPERTY(QSet<QPort *> ownedPorts READ ownedPorts STORED false)
 
     Q_DISABLE_COPY(QEncapsulatedClassifier)
     Q_DECLARE_PRIVATE(QEncapsulatedClassifier)
@@ -74,18 +74,13 @@ public:
     virtual ~QEncapsulatedClassifier();
 
     // Association ends from QEncapsulatedClassifier
-    Q_INVOKABLE const QSet<QPort *> *ownedPorts() const;
-    virtual void registerMetaTypes() const;
+    Q_INVOKABLE const QSet<QPort *> &ownedPorts() const;
 
 protected:
     explicit QEncapsulatedClassifier(QEncapsulatedClassifierPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QEncapsulatedClassifier) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QEncapsulatedClassifier) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QEncapsulatedClassifier) *> *)
 
 QT_END_HEADER
 

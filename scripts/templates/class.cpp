@@ -167,7 +167,7 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
     [%- ELSE %]
     Q_D(${class.name});
     [%- IF attribute.accessor.0.return.search('<') %]
-    if ([% IF loop.count == 2 %]![% END %]d->${attribute.accessor.0.name}->contains(${accessor.parameter.0.name})) {
+    if ([% IF loop.count == 2 %]![% END %]d->${attribute.accessor.0.name}.contains(${accessor.parameter.0.name})) {
     [%- ELSE %]
     if (d->${attribute.accessor.0.name} != ${accessor.parameter.0.name}) {
     [%- END %]
@@ -180,14 +180,14 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
             [%- HANDLESUBSETTEDPROPERTY(attribute, 1, 'true') -%]
             [%- END -%]
             [%- IF accessor.name.search('^add') %]
-        d->${attribute.accessor.0.name}->[% IF attribute.accessor.0.return.search('QSet') %]insert[% ELSE %]append[% END %](${accessor.parameter.0.name});
+        d->${attribute.accessor.0.name}.[% IF attribute.accessor.0.return.search('QSet') %]insert[% ELSE %]append[% END %](${accessor.parameter.0.name});
 [%- IF attribute.aggregation == 'composite' and attribute.accessor.0.return.search('<') and attribute.subsettedProperty == '' %]
         qTopLevelWrapper(${accessor.parameter.0.name})->setParent(qTopLevelWrapper(this));
 [%- END %]
             [%- HANDLESUBSETTEDPROPERTY(attribute, 1, 'false') -%]
     [%- END -%]
             [%- IF accessor.name.search('^remove') %]
-        d->${attribute.accessor.0.name}->[% IF attribute.accessor.0.return.search('QSet') %]remove[% ELSE %]removeAll[% END %](${accessor.parameter.0.name});
+        d->${attribute.accessor.0.name}.[% IF attribute.accessor.0.return.search('QSet') %]remove[% ELSE %]removeAll[% END %](${accessor.parameter.0.name});
 [%- IF attribute.aggregation == 'composite' and attribute.accessor.0.return.search('<') and attribute.subsettedProperty == '' %]
         qTopLevelWrapper(${accessor.parameter.0.name})->setParent(0);
 [%- END %]
@@ -203,10 +203,10 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
     [%- END %]
 
     [%- IF loop.first %]
-    [%- IF accessor.return.search('\*') %]
+    [%- IF accessor.return.search('\*$') %]
     return 0; // change to your derived return
     [%- ELSIF accessor.return != 'void ' %]
-    return ${accessor.return.remove(' $')}(); // change here to your derived return
+    return [% IF accessor.return.search('&') %]*(new [% END %]${accessor.return.remove(' $').remove('^const ').remove(' &$')}[% IF accessor.return.search('&') %])[% ELSE %]()[% END %]; // change here to your derived return
     [%- END -%]
     [%- ELSE %]
     [%- IF attribute.accessor.0.return.search('<') %]
@@ -277,7 +277,7 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
     [%- ELSE %]
     Q_D(${class.name});
     [%- IF associationend.accessor.0.return.search('<') %]
-    if ([% IF loop.count == 2 %]![% END %]d->${associationend.accessor.0.name}->contains(${accessor.parameter.0.name})) {
+    if ([% IF loop.count == 2 %]![% END %]d->${associationend.accessor.0.name}.contains(${accessor.parameter.0.name})) {
     [%- ELSE %]
     if (d->${associationend.accessor.0.name} != ${accessor.parameter.0.name}) {
     [%- END %]
@@ -292,7 +292,7 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
             [%- HANDLEOPPOSITEEND(associationend, accessor, 1, 'true') %]
             [%- END -%]
             [%- IF accessor.name.search('^add') %]
-        d->${associationend.accessor.0.name}->[% IF associationend.accessor.0.return.search('QSet') %]insert[% ELSE %]append[% END %](${accessor.parameter.0.name});
+        d->${associationend.accessor.0.name}.[% IF associationend.accessor.0.return.search('QSet') %]insert[% ELSE %]append[% END %](${accessor.parameter.0.name});
 [%- IF associationend.aggregation == 'composite' and associationend.accessor.0.return.search('<') and associationend.subsettedProperty == '' %]
         qTopLevelWrapper(${accessor.parameter.0.name})->setParent(qTopLevelWrapper(this));
 [%- END %]
@@ -300,7 +300,7 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
             [%- HANDLEOPPOSITEEND(associationend, accessor, 1, 'false') -%]
             [%- END -%]
             [%- IF accessor.name.search('^remove') %]
-        d->${associationend.accessor.0.name}->[% IF associationend.accessor.0.return.search('QSet') %]remove[% ELSE %]removeAll[% END %](${accessor.parameter.0.name});
+        d->${associationend.accessor.0.name}.[% IF associationend.accessor.0.return.search('QSet') %]remove[% ELSE %]removeAll[% END %](${accessor.parameter.0.name});
 [%- IF associationend.aggregation == 'composite' and associationend.accessor.0.return.search('<') and associationend.subsettedProperty == '' %]
         qTopLevelWrapper(${accessor.parameter.0.name})->setParent(0);
 [%- END %]
@@ -316,10 +316,10 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
     [%- END %]
 
     [%- IF loop.first %]
-    [%- IF accessor.return.search('\*') %]
+    [%- IF accessor.return.search('\*$') %]
     return 0; // change here to your derived return
     [%- ELSIF accessor.return != 'void ' %]
-    return ${accessor.return.remove(' $')}(); // change here to your derived return
+    return [% IF accessor.return.search('&') %]*(new [% END %]${accessor.return.remove(' $').remove('^const ').remove(' &$')}[% IF accessor.return.search('&') %])[% ELSE %]()[% END %]; // change here to your derived return
     [%- END -%]
     [%- ELSE %]
     [%- IF associationend.accessor.0.return.search('<') %]
@@ -444,16 +444,7 @@ ${class.name}Private::${class.name}Private()
 [%- found = 'false' -%]
 [%- FOREACH attribute IN class.attribute.values -%]
 [%- IF attribute.isDerived == 'false' or attribute.isDerivedUnion == 'true' -%]
-[%- IF attribute.accessor.0.return.search('<') -%]
-[%- IF found == 'true' -%]
-,
-[% ELSE -%]
- :
-    [%- found = 'true' %]
-[% END -%]
-    ${attribute.accessor.0.name}(new ${attribute.accessor.0.return.remove(' \*$').remove('^const ')})
-[%- ELSE -%]
-[%- IF attribute.accessor.0.return.search('\*') -%]
+[%- IF attribute.accessor.0.return.search('\*$') -%]
 [%- IF found == 'true' -%]
 ,
 [% ELSE -%]
@@ -474,19 +465,9 @@ ${class.name}Private::${class.name}Private()
 [%- END -%]
 [%- END -%]
 [%- END -%]
-[%- END -%]
 [%- FOREACH associationend IN class.associationend.values %]
 [%- IF associationend.isDerived == 'false' or associationend.isDerivedUnion == 'true' -%]
-[%- IF associationend.accessor.0.return.search('<') -%]
-[%- IF found == 'true' -%]
-,
-[% ELSE -%]
- :
-    [%- found = 'true' %]
-[% END -%]
-    ${associationend.accessor.0.name}(new ${associationend.accessor.0.return.remove(' \*$').remove('^const ')})
-[%- ELSE -%]
-[%- IF associationend.accessor.0.return.search('\*') -%]
+[%- IF associationend.accessor.0.return.search('\*$') -%]
 [%- IF found == 'true' -%]
 ,
 [% ELSE -%]
@@ -506,7 +487,6 @@ ${class.name}Private::${class.name}Private()
 [%- END -%]
 [%- END -%]
 [%- END -%]
-[%- END -%]
 [%- END %]
 {
 }
@@ -514,15 +494,25 @@ ${class.name}Private::${class.name}Private()
 ${class.name}Private::~${class.name}Private()
 {
 [% FOREACH attribute IN class.attribute.values -%]
-[%- IF ((attribute.isDerived == 'false' or attribute.isDerivedUnion == 'true') and attribute.accessor.0.return.search('<')) or (attribute.accessor.0.return.search('\*$') and attribute.aggregation == 'composite' and attribute.subsettedProperty == '') -%]
+[%- IF (attribute.isDerived == 'false' or attribute.isDerivedUnion == 'true') and attribute.aggregation == 'composite' and attribute.subsettedProperty == '' -%]
+    [%- IF attribute.accessor.0.return.search('\*$') -%]
     delete ${attribute.accessor.0.name};
 
+    [%- ELSIF attribute.accessor.0.return.search('\&$') -%]
+    qDeleteAll(${attribute.accessor.0.name});
+
+    [%- END -%]
 [%- END -%]
 [%- END -%]
 [%- FOREACH associationend IN class.associationend.values -%]
-[%- IF ((associationend.isDerived == 'false' or associationend.isDerivedUnion == 'true') and associationend.accessor.0.return.search('<')) or (associationend.accessor.0.return.search('\*$') and associationend.aggregation == 'composite' and associationend.subsettedProperty == '') -%]
+[%- IF (associationend.isDerived == 'false' or associationend.isDerivedUnion == 'true') and associationend.aggregation == 'composite' and associationend.subsettedProperty == '' -%]
+    [%- IF associationend.accessor.0.return.search('\*$') -%]
     delete ${associationend.accessor.0.name};
 
+    [%- ELSIF associationend.accessor.0.return.search('\&$') -%]
+    qDeleteAll(${associationend.accessor.0.name});
+
+    [%- END -%]
 [%- END -%]
 [%- END -%]
 }
@@ -537,7 +527,7 @@ ${accessor.return}${class.name}Private::${accessor.name}([%- FOREACH parameter I
 
 [%- IF attribute.isDerived == 'false' or attribute.isDerivedUnion == 'true' %]
     [%- IF attribute.accessor.0.return.search('<') %]
-    if ([% IF loop.count == 2 %]![% END %]this->${attribute.accessor.0.name}->contains(${accessor.parameter.0.name})) {
+    if ([% IF loop.count == 2 %]![% END %]this->${attribute.accessor.0.name}.contains(${accessor.parameter.0.name})) {
     [%- ELSE %]
     if (this->${attribute.accessor.0.name} != ${accessor.parameter.0.name}) {
     [%- END %]
@@ -547,7 +537,7 @@ ${accessor.return}${class.name}Private::${accessor.name}([%- FOREACH parameter I
     [%- HANDLESUBSETTEDPROPERTY(attribute, 1, 'true') -%]
     [%- END -%]
     [%- IF accessor.name.search('^add') %]
-        this->${attribute.accessor.0.name}->[% IF attribute.accessor.0.return.search('QSet') %]insert[% ELSE %]append[% END %](${accessor.parameter.0.name});
+        this->${attribute.accessor.0.name}.[% IF attribute.accessor.0.return.search('QSet') %]insert[% ELSE %]append[% END %](${accessor.parameter.0.name});
 [%- IF attribute.aggregation == 'composite' and attribute.accessor.0.return.search('<') and attribute.subsettedProperty == '' %]
         Q_Q(${class.name});
         qTopLevelWrapper(${accessor.parameter.0.name})->setParent(qTopLevelWrapper(q));
@@ -555,7 +545,7 @@ ${accessor.return}${class.name}Private::${accessor.name}([%- FOREACH parameter I
     [%- HANDLESUBSETTEDPROPERTY(attribute, 1, 'false') -%]
     [%- END -%]
     [%- IF accessor.name.search('^remove') %]
-        this->${attribute.accessor.0.name}->[% IF attribute.accessor.0.return.search('QSet') %]remove[% ELSE %]removeAll[% END %](${accessor.parameter.0.name});
+        this->${attribute.accessor.0.name}.[% IF attribute.accessor.0.return.search('QSet') %]remove[% ELSE %]removeAll[% END %](${accessor.parameter.0.name});
 [%- IF attribute.aggregation == 'composite' and attribute.accessor.0.return.search('<') and attribute.subsettedProperty == '' %]
         qTopLevelWrapper(${accessor.parameter.0.name})->setParent(0);
 [%- END %]
@@ -603,7 +593,7 @@ ${accessor.return}${class.name}Private::${accessor.name}([%- FOREACH parameter I
 
 [%- IF associationend.isDerived == 'false' or associationend.isDerivedUnion == 'true' %]
     [%- IF associationend.accessor.0.return.search('<') %]
-    if ([% IF loop.count == 2 %]![% END %]this->${associationend.accessor.0.name}->contains(${accessor.parameter.0.name})) {
+    if ([% IF loop.count == 2 %]![% END %]this->${associationend.accessor.0.name}.contains(${accessor.parameter.0.name})) {
     [%- ELSE %]
     if (this->${associationend.accessor.0.name} != ${accessor.parameter.0.name}) {
     [%- END -%]
@@ -618,7 +608,7 @@ ${accessor.return}${class.name}Private::${accessor.name}([%- FOREACH parameter I
     [%- HANDLEOPPOSITEEND(associationend, accessor, 1, 'true') %]
     [%- END -%]
     [%- IF accessor.name.search('^add') %]
-        this->${associationend.accessor.0.name}->[% IF associationend.accessor.0.return.search('QSet') %]insert[% ELSE %]append[% END %](${accessor.parameter.0.name});
+        this->${associationend.accessor.0.name}.[% IF associationend.accessor.0.return.search('QSet') %]insert[% ELSE %]append[% END %](${accessor.parameter.0.name});
 [%- IF associationend.aggregation == 'composite' and associationend.accessor.0.return.search('<') and associationend.subsettedProperty == '' %]
         Q_Q(${class.name});
         qTopLevelWrapper(${accessor.parameter.0.name})->setParent(qTopLevelWrapper(q));
@@ -627,7 +617,7 @@ ${accessor.return}${class.name}Private::${accessor.name}([%- FOREACH parameter I
     [%- HANDLEOPPOSITEEND(associationend, accessor, 1, 'false') -%]
     [%- END -%]
     [%- IF accessor.name.search('^remove') %]
-        this->${associationend.accessor.0.name}->[% IF associationend.accessor.0.return.search('QSet') %]remove[% ELSE %]removeAll[% END %](${accessor.parameter.0.name});
+        this->${associationend.accessor.0.name}.[% IF associationend.accessor.0.return.search('QSet') %]remove[% ELSE %]removeAll[% END %](${accessor.parameter.0.name});
 [%- IF associationend.aggregation == 'composite' and associationend.accessor.0.return.search('<') and associationend.subsettedProperty == '' %]
         qTopLevelWrapper(${accessor.parameter.0.name})->setParent(0);
 [%- END %]
@@ -725,41 +715,15 @@ ${operation.return}${class.name}::${operation.name}([%- FOREACH parameter IN ope
     [%- FOREACH parameter IN operation.parameter %]
     Q_UNUSED(${parameter.name});
     [%- END %]
-    [%- IF operation.return.search('\*') %]
+    [%- IF operation.return.search('\*$') %]
 
     return 0; // change here to your derived return
     [%- ELSIF operation.return != 'void ' %]
 
-    return ${operation.return.remove(' $')}(); // change here to your derived return
+    return [% IF operation.return.search('&') %]*(new [% END %]${operation.return.remove(' $').remove('^const ').remove(' &$')}[% IF operation.return.search('&') %])[% ELSE %]()[% END %]; // change here to your derived return
     [%- END %]
 }
 [% END -%]
-
-void ${class.name}::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_${namespace.split('/').0.upper}(${class.name}) *>("QT_PREPEND_NAMESPACE_${namespace.split('/').0.upper}(${class.name}) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_${namespace.split('/').0.upper}(${class.name}) *> *>("const QSet<QT_PREPEND_NAMESPACE_${namespace.split('/').0.upper}(${class.name}) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_${namespace.split('/').0.upper}(${class.name}) *> *>("const QList<QT_PREPEND_NAMESPACE_${namespace.split('/').0.upper}(${class.name}) *> *");
-    qRegisterMetaType<${class.name} *>("${class.name} *");
-    qRegisterMetaType<const QSet<${class.name} *> *>("const QSet<${class.name} *> *");
-    qRegisterMetaType<const QList<${class.name} *> *>("const QList<${class.name} *> *");
-
-[% FOREACH forwarddecl IN class.forwarddecl -%]
-[%- IF forwarddecl.content != class.name -%]
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_${namespace.split('/').0.upper}(${forwarddecl.content}) *>("QT_PREPEND_NAMESPACE_${namespace.split('/').0.upper}(${forwarddecl.content}) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_${namespace.split('/').0.upper}(${forwarddecl.content}) *> *>("const QSet<QT_PREPEND_NAMESPACE_${namespace.split('/').0.upper}(${forwarddecl.content}) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_${namespace.split('/').0.upper}(${forwarddecl.content}) *> *>("const QList<QT_PREPEND_NAMESPACE_${namespace.split('/').0.upper}(${forwarddecl.content}) *> *");
-    qRegisterMetaType<${forwarddecl.content} *>("${forwarddecl.content} *");
-    qRegisterMetaType<const QSet<${forwarddecl.content} *> *>("const QSet<${forwarddecl.content} *> *");
-    qRegisterMetaType<const QList<${forwarddecl.content} *> *>("const QList<${forwarddecl.content} *> *");
-
-[% END -%]
-[%- END -%]
-    [% IF class.superclass.size == 1 %]${class.superclass.0.name.split('/').last}[% ELSE %]QWrappedObject[% END %]::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
 
 [%- found = 'false' -%]
 [%- IF class.item('attribute') %]

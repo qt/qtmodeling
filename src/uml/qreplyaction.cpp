@@ -49,14 +49,12 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QReplyActionPrivate::QReplyActionPrivate() :
     replyToCall(0),
-    returnInformation(0),
-    replyValues(new QSet<QInputPin *>)
+    returnInformation(0)
 {
 }
 
 QReplyActionPrivate::~QReplyActionPrivate()
 {
-    delete replyValues;
 }
 
 /*!
@@ -138,7 +136,7 @@ void QReplyAction::setReturnInformation(QInputPin *returnInformation)
 /*!
     A list of pins containing the reply values of the operation. These values are returned to the caller.
  */
-const QSet<QInputPin *> *QReplyAction::replyValues() const
+const QSet<QInputPin *> &QReplyAction::replyValues() const
 {
     // This is a read-write association end
 
@@ -151,8 +149,8 @@ void QReplyAction::addReplyValue(QInputPin *replyValue)
     // This is a read-write association end
 
     Q_D(QReplyAction);
-    if (!d->replyValues->contains(replyValue)) {
-        d->replyValues->insert(replyValue);
+    if (!d->replyValues.contains(replyValue)) {
+        d->replyValues.insert(replyValue);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QActionPrivate *>(d))->addInput(qwrappedobject_cast<QInputPin *>(replyValue));
@@ -164,41 +162,12 @@ void QReplyAction::removeReplyValue(QInputPin *replyValue)
     // This is a read-write association end
 
     Q_D(QReplyAction);
-    if (d->replyValues->contains(replyValue)) {
-        d->replyValues->remove(replyValue);
+    if (d->replyValues.contains(replyValue)) {
+        d->replyValues.remove(replyValue);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QActionPrivate *>(d))->removeInput(qwrappedobject_cast<QInputPin *>(replyValue));
     }
-}
-
-void QReplyAction::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QReplyAction) *>("QT_PREPEND_NAMESPACE_QTUML(QReplyAction) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QReplyAction) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QReplyAction) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QReplyAction) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QReplyAction) *> *");
-    qRegisterMetaType<QReplyAction *>("QReplyAction *");
-    qRegisterMetaType<const QSet<QReplyAction *> *>("const QSet<QReplyAction *> *");
-    qRegisterMetaType<const QList<QReplyAction *> *>("const QList<QReplyAction *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QTrigger) *>("QT_PREPEND_NAMESPACE_QTUML(QTrigger) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QTrigger) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QTrigger) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QTrigger) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QTrigger) *> *");
-    qRegisterMetaType<QTrigger *>("QTrigger *");
-    qRegisterMetaType<const QSet<QTrigger *> *>("const QSet<QTrigger *> *");
-    qRegisterMetaType<const QList<QTrigger *> *>("const QList<QTrigger *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QInputPin) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
-    qRegisterMetaType<QInputPin *>("QInputPin *");
-    qRegisterMetaType<const QSet<QInputPin *> *>("const QSet<QInputPin *> *");
-    qRegisterMetaType<const QList<QInputPin *> *>("const QList<QInputPin *> *");
-
-    QAction::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qreplyaction.cpp"

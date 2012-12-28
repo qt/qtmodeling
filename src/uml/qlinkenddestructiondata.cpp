@@ -133,28 +133,6 @@ void QLinkEndDestructionData::setDestroyAt(QInputPin *destroyAt)
     }
 }
 
-void QLinkEndDestructionData::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QLinkEndDestructionData) *>("QT_PREPEND_NAMESPACE_QTUML(QLinkEndDestructionData) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QLinkEndDestructionData) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QLinkEndDestructionData) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QLinkEndDestructionData) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QLinkEndDestructionData) *> *");
-    qRegisterMetaType<QLinkEndDestructionData *>("QLinkEndDestructionData *");
-    qRegisterMetaType<const QSet<QLinkEndDestructionData *> *>("const QSet<QLinkEndDestructionData *> *");
-    qRegisterMetaType<const QList<QLinkEndDestructionData *> *>("const QList<QLinkEndDestructionData *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QInputPin) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
-    qRegisterMetaType<QInputPin *>("QInputPin *");
-    qRegisterMetaType<const QSet<QInputPin *> *>("const QSet<QInputPin *> *");
-    qRegisterMetaType<const QList<QInputPin *> *>("const QList<QInputPin *> *");
-
-    QLinkEndData::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 #include "moc_qlinkenddestructiondata.cpp"
 
 QT_END_NAMESPACE_QTUML

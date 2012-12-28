@@ -110,28 +110,6 @@ void QAbstraction::setMapping(QOpaqueExpression *mapping)
     }
 }
 
-void QAbstraction::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QAbstraction) *>("QT_PREPEND_NAMESPACE_QTUML(QAbstraction) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QAbstraction) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QAbstraction) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QAbstraction) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QAbstraction) *> *");
-    qRegisterMetaType<QAbstraction *>("QAbstraction *");
-    qRegisterMetaType<const QSet<QAbstraction *> *>("const QSet<QAbstraction *> *");
-    qRegisterMetaType<const QList<QAbstraction *> *>("const QList<QAbstraction *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QOpaqueExpression) *>("QT_PREPEND_NAMESPACE_QTUML(QOpaqueExpression) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QOpaqueExpression) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QOpaqueExpression) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QOpaqueExpression) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QOpaqueExpression) *> *");
-    qRegisterMetaType<QOpaqueExpression *>("QOpaqueExpression *");
-    qRegisterMetaType<const QSet<QOpaqueExpression *> *>("const QSet<QOpaqueExpression *> *");
-    qRegisterMetaType<const QList<QOpaqueExpression *> *>("const QList<QOpaqueExpression *> *");
-
-    QDependency::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 #include "moc_qabstraction.cpp"
 
 QT_END_NAMESPACE_QTUML

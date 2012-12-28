@@ -67,7 +67,7 @@ class Q_UML_EXPORT QReplyAction : public QAction
 
     Q_PROPERTY(QTrigger * replyToCall READ replyToCall WRITE setReplyToCall)
     Q_PROPERTY(QInputPin * returnInformation READ returnInformation WRITE setReturnInformation)
-    Q_PROPERTY(const QSet<QInputPin *> * replyValues READ replyValues)
+    Q_PROPERTY(QSet<QInputPin *> replyValues READ replyValues)
 
     Q_DISABLE_COPY(QReplyAction)
     Q_DECLARE_PRIVATE(QReplyAction)
@@ -81,20 +81,15 @@ public:
     Q_INVOKABLE void setReplyToCall(QTrigger *replyToCall);
     Q_INVOKABLE QInputPin *returnInformation() const;
     Q_INVOKABLE void setReturnInformation(QInputPin *returnInformation);
-    Q_INVOKABLE const QSet<QInputPin *> *replyValues() const;
+    Q_INVOKABLE const QSet<QInputPin *> &replyValues() const;
     Q_INVOKABLE void addReplyValue(QInputPin *replyValue);
     Q_INVOKABLE void removeReplyValue(QInputPin *replyValue);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QReplyAction(QReplyActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QReplyAction) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QReplyAction) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QReplyAction) *> *)
 
 QT_END_HEADER
 

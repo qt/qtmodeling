@@ -49,16 +49,12 @@
 QT_BEGIN_NAMESPACE_QTUML
 
 QDeploymentPrivate::QDeploymentPrivate() :
-    location(0),
-    configurations(new QSet<QDeploymentSpecification *>),
-    deployedArtifacts(new QSet<QDeployedArtifact *>)
+    location(0)
 {
 }
 
 QDeploymentPrivate::~QDeploymentPrivate()
 {
-    delete configurations;
-    delete deployedArtifacts;
 }
 
 /*!
@@ -128,7 +124,7 @@ void QDeployment::setLocation(QDeploymentTarget *location)
 /*!
     The specification of properties that parameterize the deployment and execution of one or more Artifacts.
  */
-const QSet<QDeploymentSpecification *> *QDeployment::configurations() const
+const QSet<QDeploymentSpecification *> &QDeployment::configurations() const
 {
     // This is a read-write association end
 
@@ -141,8 +137,8 @@ void QDeployment::addConfiguration(QDeploymentSpecification *configuration)
     // This is a read-write association end
 
     Q_D(QDeployment);
-    if (!d->configurations->contains(configuration)) {
-        d->configurations->insert(configuration);
+    if (!d->configurations.contains(configuration)) {
+        d->configurations.insert(configuration);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(configuration));
@@ -157,8 +153,8 @@ void QDeployment::removeConfiguration(QDeploymentSpecification *configuration)
     // This is a read-write association end
 
     Q_D(QDeployment);
-    if (d->configurations->contains(configuration)) {
-        d->configurations->remove(configuration);
+    if (d->configurations.contains(configuration)) {
+        d->configurations.remove(configuration);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(configuration));
@@ -171,7 +167,7 @@ void QDeployment::removeConfiguration(QDeploymentSpecification *configuration)
 /*!
     The Artifacts that are deployed onto a Node. This association specializes the supplier association.
  */
-const QSet<QDeployedArtifact *> *QDeployment::deployedArtifacts() const
+const QSet<QDeployedArtifact *> &QDeployment::deployedArtifacts() const
 {
     // This is a read-write association end
 
@@ -184,8 +180,8 @@ void QDeployment::addDeployedArtifact(QDeployedArtifact *deployedArtifact)
     // This is a read-write association end
 
     Q_D(QDeployment);
-    if (!d->deployedArtifacts->contains(deployedArtifact)) {
-        d->deployedArtifacts->insert(deployedArtifact);
+    if (!d->deployedArtifacts.contains(deployedArtifact)) {
+        d->deployedArtifacts.insert(deployedArtifact);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QDependency *>(this))->addSupplier(qwrappedobject_cast<QNamedElement *>(deployedArtifact));
@@ -197,48 +193,12 @@ void QDeployment::removeDeployedArtifact(QDeployedArtifact *deployedArtifact)
     // This is a read-write association end
 
     Q_D(QDeployment);
-    if (d->deployedArtifacts->contains(deployedArtifact)) {
-        d->deployedArtifacts->remove(deployedArtifact);
+    if (d->deployedArtifacts.contains(deployedArtifact)) {
+        d->deployedArtifacts.remove(deployedArtifact);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QDependency *>(this))->removeSupplier(qwrappedobject_cast<QNamedElement *>(deployedArtifact));
     }
-}
-
-void QDeployment::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QDeployment) *>("QT_PREPEND_NAMESPACE_QTUML(QDeployment) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QDeployment) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QDeployment) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QDeployment) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QDeployment) *> *");
-    qRegisterMetaType<QDeployment *>("QDeployment *");
-    qRegisterMetaType<const QSet<QDeployment *> *>("const QSet<QDeployment *> *");
-    qRegisterMetaType<const QList<QDeployment *> *>("const QList<QDeployment *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QDeploymentSpecification) *>("QT_PREPEND_NAMESPACE_QTUML(QDeploymentSpecification) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QDeploymentSpecification) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QDeploymentSpecification) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QDeploymentSpecification) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QDeploymentSpecification) *> *");
-    qRegisterMetaType<QDeploymentSpecification *>("QDeploymentSpecification *");
-    qRegisterMetaType<const QSet<QDeploymentSpecification *> *>("const QSet<QDeploymentSpecification *> *");
-    qRegisterMetaType<const QList<QDeploymentSpecification *> *>("const QList<QDeploymentSpecification *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QDeployedArtifact) *>("QT_PREPEND_NAMESPACE_QTUML(QDeployedArtifact) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QDeployedArtifact) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QDeployedArtifact) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QDeployedArtifact) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QDeployedArtifact) *> *");
-    qRegisterMetaType<QDeployedArtifact *>("QDeployedArtifact *");
-    qRegisterMetaType<const QSet<QDeployedArtifact *> *>("const QSet<QDeployedArtifact *> *");
-    qRegisterMetaType<const QList<QDeployedArtifact *> *>("const QList<QDeployedArtifact *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QDeploymentTarget) *>("QT_PREPEND_NAMESPACE_QTUML(QDeploymentTarget) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QDeploymentTarget) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QDeploymentTarget) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QDeploymentTarget) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QDeploymentTarget) *> *");
-    qRegisterMetaType<QDeploymentTarget *>("QDeploymentTarget *");
-    qRegisterMetaType<const QSet<QDeploymentTarget *> *>("const QSet<QDeploymentTarget *> *");
-    qRegisterMetaType<const QList<QDeploymentTarget *> *>("const QList<QDeploymentTarget *> *");
-
-    QDependency::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 // Overriden methods for subsetted properties

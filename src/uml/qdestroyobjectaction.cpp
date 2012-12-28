@@ -168,28 +168,6 @@ void QDestroyObjectAction::setTarget(QInputPin *target)
     }
 }
 
-void QDestroyObjectAction::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QDestroyObjectAction) *>("QT_PREPEND_NAMESPACE_QTUML(QDestroyObjectAction) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QDestroyObjectAction) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QDestroyObjectAction) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QDestroyObjectAction) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QDestroyObjectAction) *> *");
-    qRegisterMetaType<QDestroyObjectAction *>("QDestroyObjectAction *");
-    qRegisterMetaType<const QSet<QDestroyObjectAction *> *>("const QSet<QDestroyObjectAction *> *");
-    qRegisterMetaType<const QList<QDestroyObjectAction *> *>("const QList<QDestroyObjectAction *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QInputPin) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
-    qRegisterMetaType<QInputPin *>("QInputPin *");
-    qRegisterMetaType<const QSet<QInputPin *> *>("const QSet<QInputPin *> *");
-    qRegisterMetaType<const QList<QInputPin *> *>("const QList<QInputPin *> *");
-
-    QAction::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 #include "moc_qdestroyobjectaction.cpp"
 
 QT_END_NAMESPACE_QTUML

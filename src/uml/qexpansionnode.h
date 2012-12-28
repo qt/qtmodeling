@@ -76,17 +76,12 @@ public:
     Q_INVOKABLE void setRegionAsOutput(QExpansionRegion *regionAsOutput);
     Q_INVOKABLE QExpansionRegion *regionAsInput() const;
     Q_INVOKABLE void setRegionAsInput(QExpansionRegion *regionAsInput);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QExpansionNode(QExpansionNodePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QExpansionNode) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QExpansionNode) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QExpansionNode) *> *)
 
 QT_END_HEADER
 

@@ -66,7 +66,7 @@ class Q_UML_EXPORT QSlot : public QElement
 {
     Q_OBJECT
 
-    Q_PROPERTY(const QList<QValueSpecification *> * values READ values)
+    Q_PROPERTY(QList<QValueSpecification *> values READ values)
     Q_PROPERTY(QStructuralFeature * definingFeature READ definingFeature WRITE setDefiningFeature)
     Q_PROPERTY(QInstanceSpecification * owningInstance READ owningInstance WRITE setOwningInstance)
 
@@ -78,24 +78,19 @@ public:
     virtual ~QSlot();
 
     // Association ends from QSlot
-    Q_INVOKABLE const QList<QValueSpecification *> *values() const;
+    Q_INVOKABLE const QList<QValueSpecification *> &values() const;
     Q_INVOKABLE void addValue(QValueSpecification *value);
     Q_INVOKABLE void removeValue(QValueSpecification *value);
     Q_INVOKABLE QStructuralFeature *definingFeature() const;
     Q_INVOKABLE void setDefiningFeature(QStructuralFeature *definingFeature);
     Q_INVOKABLE QInstanceSpecification *owningInstance() const;
     Q_INVOKABLE void setOwningInstance(QInstanceSpecification *owningInstance);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QSlot(QSlotPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QSlot) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QSlot) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QSlot) *> *)
 
 QT_END_HEADER
 

@@ -74,21 +74,6 @@ QWriteLinkAction::~QWriteLinkAction()
 {
 }
 
-void QWriteLinkAction::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QWriteLinkAction) *>("QT_PREPEND_NAMESPACE_QTUML(QWriteLinkAction) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QWriteLinkAction) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QWriteLinkAction) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QWriteLinkAction) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QWriteLinkAction) *> *");
-    qRegisterMetaType<QWriteLinkAction *>("QWriteLinkAction *");
-    qRegisterMetaType<const QSet<QWriteLinkAction *> *>("const QSet<QWriteLinkAction *> *");
-    qRegisterMetaType<const QList<QWriteLinkAction *> *>("const QList<QWriteLinkAction *> *");
-
-    QLinkAction::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 #include "moc_qwritelinkaction.cpp"
 
 QT_END_NAMESPACE_QTUML

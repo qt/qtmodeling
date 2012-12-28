@@ -87,17 +87,12 @@ public:
     Q_INVOKABLE void setCollection(QInputPin *collection);
     Q_INVOKABLE QBehavior *reducer() const;
     Q_INVOKABLE void setReducer(QBehavior *reducer);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QReduceAction(QReduceActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QReduceAction) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QReduceAction) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QReduceAction) *> *)
 
 QT_END_HEADER
 

@@ -49,22 +49,12 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QInteractionPrivate::QInteractionPrivate() :
-    actions(new QSet<QAction *>),
-    messages(new QSet<QMessage *>),
-    formalGates(new QSet<QGate *>),
-    fragments(new QList<QInteractionFragment *>),
-    lifelines(new QSet<QLifeline *>)
+QInteractionPrivate::QInteractionPrivate()
 {
 }
 
 QInteractionPrivate::~QInteractionPrivate()
 {
-    delete actions;
-    delete messages;
-    delete formalGates;
-    delete fragments;
-    delete lifelines;
 }
 
 /*!
@@ -135,7 +125,7 @@ void QInteraction::setSpecification(QBehavioralFeature *specification)
 /*!
     An optional set of Constraints specifying what is fulfilled after the execution of the behavior is completed, if its precondition was fulfilled before its invocation.
  */
-const QSet<QConstraint *> *QInteraction::postconditions() const
+const QSet<QConstraint *> &QInteraction::postconditions() const
 {
     return (qwrappedobject_cast<const QBehavior *>(this))->postconditions();
 }
@@ -153,7 +143,7 @@ void QInteraction::removePostcondition(QConstraint *postcondition)
 /*!
     An optional set of Constraints specifying what must be fulfilled when the behavior is invoked.
  */
-const QSet<QConstraint *> *QInteraction::preconditions() const
+const QSet<QConstraint *> &QInteraction::preconditions() const
 {
     return (qwrappedobject_cast<const QBehavior *>(this))->preconditions();
 }
@@ -171,7 +161,7 @@ void QInteraction::removePrecondition(QConstraint *precondition)
 /*!
     References a behavior that this behavior redefines. A subtype of Behavior may redefine any other subtype of Behavior. If the behavior implements a behavioral feature, it replaces the redefined behavior. If the behavior is a classifier behavior, it extends the redefined behavior.
  */
-const QSet<QBehavior *> *QInteraction::redefinedBehaviors() const
+const QSet<QBehavior *> &QInteraction::redefinedBehaviors() const
 {
     return (qwrappedobject_cast<const QBehavior *>(this))->redefinedBehaviors();
 }
@@ -189,7 +179,7 @@ void QInteraction::removeRedefinedBehavior(QBehavior *redefinedBehavior)
 /*!
     References a list of parameters to the behavior which describes the order and type of arguments that can be given when the behavior is invoked and of the values which will be returned when the behavior completes its execution.
  */
-const QList<QParameter *> *QInteraction::ownedParameters() const
+const QList<QParameter *> &QInteraction::ownedParameters() const
 {
     return (qwrappedobject_cast<const QBehavior *>(this))->ownedParameters();
 }
@@ -207,7 +197,7 @@ void QInteraction::removeOwnedParameter(QParameter *ownedParameter)
 /*!
     The ParameterSets owned by this Behavior.
  */
-const QSet<QParameterSet *> *QInteraction::ownedParameterSets() const
+const QSet<QParameterSet *> &QInteraction::ownedParameterSets() const
 {
     return (qwrappedobject_cast<const QBehavior *>(this))->ownedParameterSets();
 }
@@ -237,7 +227,7 @@ QBehavioredClassifier *QInteraction::context() const
 /*!
     The Elements owned by this element.
  */
-const QSet<QElement *> *QInteraction::ownedElements() const
+const QSet<QElement *> &QInteraction::ownedElements() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedElements();
 }
@@ -253,7 +243,7 @@ QElement *QInteraction::owner() const
 /*!
     The Comments owned by this element.
  */
-const QSet<QComment *> *QInteraction::ownedComments() const
+const QSet<QComment *> &QInteraction::ownedComments() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedComments();
 }
@@ -334,7 +324,7 @@ QNamespace *QInteraction::namespace_() const
 /*!
     Indicates the dependencies that reference the client.
  */
-const QSet<QDependency *> *QInteraction::clientDependencies() const
+const QSet<QDependency *> &QInteraction::clientDependencies() const
 {
     return (qwrappedobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
@@ -356,7 +346,7 @@ void QInteraction::removeClientDependency(QDependency *clientDependency)
 /*!
     The general ordering relationships contained in this fragment.
  */
-const QSet<QGeneralOrdering *> *QInteraction::generalOrderings() const
+const QSet<QGeneralOrdering *> &QInteraction::generalOrderings() const
 {
     return (qwrappedobject_cast<const QInteractionFragment *>(this))->generalOrderings();
 }
@@ -387,7 +377,7 @@ void QInteraction::setEnclosingInteraction(QInteraction *enclosingInteraction)
 /*!
     References the Lifelines that the InteractionFragment involves.
  */
-const QSet<QLifeline *> *QInteraction::covered() const
+const QSet<QLifeline *> &QInteraction::covered() const
 {
     return (qwrappedobject_cast<const QInteractionFragment *>(this))->covered();
 }
@@ -422,7 +412,7 @@ void QInteraction::setEnclosingOperand(QInteractionOperand *enclosingOperand)
 /*!
     Actions owned by the Interaction.
  */
-const QSet<QAction *> *QInteraction::actions() const
+const QSet<QAction *> &QInteraction::actions() const
 {
     // This is a read-write association end
 
@@ -435,8 +425,8 @@ void QInteraction::addAction(QAction *action)
     // This is a read-write association end
 
     Q_D(QInteraction);
-    if (!d->actions->contains(action)) {
-        d->actions->insert(action);
+    if (!d->actions.contains(action)) {
+        d->actions.insert(action);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(action));
@@ -448,8 +438,8 @@ void QInteraction::removeAction(QAction *action)
     // This is a read-write association end
 
     Q_D(QInteraction);
-    if (d->actions->contains(action)) {
-        d->actions->remove(action);
+    if (d->actions.contains(action)) {
+        d->actions.remove(action);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(action));
@@ -459,7 +449,7 @@ void QInteraction::removeAction(QAction *action)
 /*!
     The Messages contained in this Interaction.
  */
-const QSet<QMessage *> *QInteraction::messages() const
+const QSet<QMessage *> &QInteraction::messages() const
 {
     // This is a read-write association end
 
@@ -472,8 +462,8 @@ void QInteraction::addMessage(QMessage *message)
     // This is a read-write association end
 
     Q_D(QInteraction);
-    if (!d->messages->contains(message)) {
-        d->messages->insert(message);
+    if (!d->messages.contains(message)) {
+        d->messages.insert(message);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qwrappedobject_cast<QNamedElement *>(message));
@@ -488,8 +478,8 @@ void QInteraction::removeMessage(QMessage *message)
     // This is a read-write association end
 
     Q_D(QInteraction);
-    if (d->messages->contains(message)) {
-        d->messages->remove(message);
+    if (d->messages.contains(message)) {
+        d->messages.remove(message);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qwrappedobject_cast<QNamedElement *>(message));
@@ -502,7 +492,7 @@ void QInteraction::removeMessage(QMessage *message)
 /*!
     Specifies the gates that form the message interface between this Interaction and any InteractionUses which reference it.
  */
-const QSet<QGate *> *QInteraction::formalGates() const
+const QSet<QGate *> &QInteraction::formalGates() const
 {
     // This is a read-write association end
 
@@ -515,8 +505,8 @@ void QInteraction::addFormalGate(QGate *formalGate)
     // This is a read-write association end
 
     Q_D(QInteraction);
-    if (!d->formalGates->contains(formalGate)) {
-        d->formalGates->insert(formalGate);
+    if (!d->formalGates.contains(formalGate)) {
+        d->formalGates.insert(formalGate);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qwrappedobject_cast<QNamedElement *>(formalGate));
@@ -528,8 +518,8 @@ void QInteraction::removeFormalGate(QGate *formalGate)
     // This is a read-write association end
 
     Q_D(QInteraction);
-    if (d->formalGates->contains(formalGate)) {
-        d->formalGates->remove(formalGate);
+    if (d->formalGates.contains(formalGate)) {
+        d->formalGates.remove(formalGate);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qwrappedobject_cast<QNamedElement *>(formalGate));
@@ -539,7 +529,7 @@ void QInteraction::removeFormalGate(QGate *formalGate)
 /*!
     The ordered set of fragments in the Interaction.
  */
-const QList<QInteractionFragment *> *QInteraction::fragments() const
+const QList<QInteractionFragment *> &QInteraction::fragments() const
 {
     // This is a read-write association end
 
@@ -552,8 +542,8 @@ void QInteraction::addFragment(QInteractionFragment *fragment)
     // This is a read-write association end
 
     Q_D(QInteraction);
-    if (!d->fragments->contains(fragment)) {
-        d->fragments->append(fragment);
+    if (!d->fragments.contains(fragment)) {
+        d->fragments.append(fragment);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qwrappedobject_cast<QNamedElement *>(fragment));
@@ -568,8 +558,8 @@ void QInteraction::removeFragment(QInteractionFragment *fragment)
     // This is a read-write association end
 
     Q_D(QInteraction);
-    if (d->fragments->contains(fragment)) {
-        d->fragments->removeAll(fragment);
+    if (d->fragments.contains(fragment)) {
+        d->fragments.removeAll(fragment);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qwrappedobject_cast<QNamedElement *>(fragment));
@@ -582,7 +572,7 @@ void QInteraction::removeFragment(QInteractionFragment *fragment)
 /*!
     Specifies the participants in this Interaction.
  */
-const QSet<QLifeline *> *QInteraction::lifelines() const
+const QSet<QLifeline *> &QInteraction::lifelines() const
 {
     // This is a read-write association end
 
@@ -595,8 +585,8 @@ void QInteraction::addLifeline(QLifeline *lifeline)
     // This is a read-write association end
 
     Q_D(QInteraction);
-    if (!d->lifelines->contains(lifeline)) {
-        d->lifelines->insert(lifeline);
+    if (!d->lifelines.contains(lifeline)) {
+        d->lifelines.insert(lifeline);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qwrappedobject_cast<QNamedElement *>(lifeline));
@@ -611,8 +601,8 @@ void QInteraction::removeLifeline(QLifeline *lifeline)
     // This is a read-write association end
 
     Q_D(QInteraction);
-    if (d->lifelines->contains(lifeline)) {
-        d->lifelines->remove(lifeline);
+    if (d->lifelines.contains(lifeline)) {
+        d->lifelines.remove(lifeline);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qwrappedobject_cast<QNamedElement *>(lifeline));
@@ -620,49 +610,6 @@ void QInteraction::removeLifeline(QLifeline *lifeline)
         // Adjust opposite property
         lifeline->setInteraction(0);
     }
-}
-
-void QInteraction::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInteraction) *>("QT_PREPEND_NAMESPACE_QTUML(QInteraction) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInteraction) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInteraction) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInteraction) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInteraction) *> *");
-    qRegisterMetaType<QInteraction *>("QInteraction *");
-    qRegisterMetaType<const QSet<QInteraction *> *>("const QSet<QInteraction *> *");
-    qRegisterMetaType<const QList<QInteraction *> *>("const QList<QInteraction *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QMessage) *>("QT_PREPEND_NAMESPACE_QTUML(QMessage) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QMessage) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QMessage) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QMessage) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QMessage) *> *");
-    qRegisterMetaType<QMessage *>("QMessage *");
-    qRegisterMetaType<const QSet<QMessage *> *>("const QSet<QMessage *> *");
-    qRegisterMetaType<const QList<QMessage *> *>("const QList<QMessage *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QLifeline) *>("QT_PREPEND_NAMESPACE_QTUML(QLifeline) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QLifeline) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QLifeline) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QLifeline) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QLifeline) *> *");
-    qRegisterMetaType<QLifeline *>("QLifeline *");
-    qRegisterMetaType<const QSet<QLifeline *> *>("const QSet<QLifeline *> *");
-    qRegisterMetaType<const QList<QLifeline *> *>("const QList<QLifeline *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QAction) *>("QT_PREPEND_NAMESPACE_QTUML(QAction) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QAction) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QAction) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QAction) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QAction) *> *");
-    qRegisterMetaType<QAction *>("QAction *");
-    qRegisterMetaType<const QSet<QAction *> *>("const QSet<QAction *> *");
-    qRegisterMetaType<const QList<QAction *> *>("const QList<QAction *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QGate) *>("QT_PREPEND_NAMESPACE_QTUML(QGate) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QGate) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QGate) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QGate) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QGate) *> *");
-    qRegisterMetaType<QGate *>("QGate *");
-    qRegisterMetaType<const QSet<QGate *> *>("const QSet<QGate *> *");
-    qRegisterMetaType<const QList<QGate *> *>("const QList<QGate *> *");
-
-    QWrappedObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qinteraction.cpp"

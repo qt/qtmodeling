@@ -71,7 +71,7 @@ public:
     virtual ~QStringExpressionPrivate();
 
     QStringExpression *owningExpression;
-    QSet<QStringExpression *> *subExpressions;
+    QSet<QStringExpression *> subExpressions;
 };
 
 QT_END_NAMESPACE_QTUML

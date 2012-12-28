@@ -48,16 +48,12 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QLinkActionPrivate::QLinkActionPrivate() :
-    inputValues(new QSet<QInputPin *>),
-    endData(new QSet<QLinkEndData *>)
+QLinkActionPrivate::QLinkActionPrivate()
 {
 }
 
 QLinkActionPrivate::~QLinkActionPrivate()
 {
-    delete inputValues;
-    delete endData;
 }
 
 /*!
@@ -89,7 +85,7 @@ QLinkAction::~QLinkAction()
 /*!
     Pins taking end objects and qualifier values as input.
  */
-const QSet<QInputPin *> *QLinkAction::inputValues() const
+const QSet<QInputPin *> &QLinkAction::inputValues() const
 {
     // This is a read-write association end
 
@@ -102,8 +98,8 @@ void QLinkAction::addInputValue(QInputPin *inputValue)
     // This is a read-write association end
 
     Q_D(QLinkAction);
-    if (!d->inputValues->contains(inputValue)) {
-        d->inputValues->insert(inputValue);
+    if (!d->inputValues.contains(inputValue)) {
+        d->inputValues.insert(inputValue);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QActionPrivate *>(d))->addInput(qwrappedobject_cast<QInputPin *>(inputValue));
@@ -115,8 +111,8 @@ void QLinkAction::removeInputValue(QInputPin *inputValue)
     // This is a read-write association end
 
     Q_D(QLinkAction);
-    if (d->inputValues->contains(inputValue)) {
-        d->inputValues->remove(inputValue);
+    if (d->inputValues.contains(inputValue)) {
+        d->inputValues.remove(inputValue);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QActionPrivate *>(d))->removeInput(qwrappedobject_cast<QInputPin *>(inputValue));
@@ -126,7 +122,7 @@ void QLinkAction::removeInputValue(QInputPin *inputValue)
 /*!
     Data identifying one end of a link by the objects on its ends and qualifiers.
  */
-const QSet<QLinkEndData *> *QLinkAction::endData() const
+const QSet<QLinkEndData *> &QLinkAction::endData() const
 {
     // This is a read-write association end
 
@@ -139,8 +135,8 @@ void QLinkAction::addEndData(QLinkEndData *endData)
     // This is a read-write association end
 
     Q_D(QLinkAction);
-    if (!d->endData->contains(endData)) {
-        d->endData->insert(endData);
+    if (!d->endData.contains(endData)) {
+        d->endData.insert(endData);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(endData));
@@ -152,8 +148,8 @@ void QLinkAction::removeEndData(QLinkEndData *endData)
     // This is a read-write association end
 
     Q_D(QLinkAction);
-    if (d->endData->contains(endData)) {
-        d->endData->remove(endData);
+    if (d->endData.contains(endData)) {
+        d->endData.remove(endData);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(endData));
@@ -168,42 +164,6 @@ QAssociation *QLinkAction::association() const
     qWarning("QLinkAction::association: operation to be implemented");
 
     return 0; // change here to your derived return
-}
-
-void QLinkAction::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QLinkAction) *>("QT_PREPEND_NAMESPACE_QTUML(QLinkAction) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QLinkAction) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QLinkAction) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QLinkAction) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QLinkAction) *> *");
-    qRegisterMetaType<QLinkAction *>("QLinkAction *");
-    qRegisterMetaType<const QSet<QLinkAction *> *>("const QSet<QLinkAction *> *");
-    qRegisterMetaType<const QList<QLinkAction *> *>("const QList<QLinkAction *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QLinkEndData) *>("QT_PREPEND_NAMESPACE_QTUML(QLinkEndData) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QLinkEndData) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QLinkEndData) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QLinkEndData) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QLinkEndData) *> *");
-    qRegisterMetaType<QLinkEndData *>("QLinkEndData *");
-    qRegisterMetaType<const QSet<QLinkEndData *> *>("const QSet<QLinkEndData *> *");
-    qRegisterMetaType<const QList<QLinkEndData *> *>("const QList<QLinkEndData *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QInputPin) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
-    qRegisterMetaType<QInputPin *>("QInputPin *");
-    qRegisterMetaType<const QSet<QInputPin *> *>("const QSet<QInputPin *> *");
-    qRegisterMetaType<const QList<QInputPin *> *>("const QList<QInputPin *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QAssociation) *>("QT_PREPEND_NAMESPACE_QTUML(QAssociation) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QAssociation) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QAssociation) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QAssociation) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QAssociation) *> *");
-    qRegisterMetaType<QAssociation *>("QAssociation *");
-    qRegisterMetaType<const QSet<QAssociation *> *>("const QSet<QAssociation *> *");
-    qRegisterMetaType<const QList<QAssociation *> *>("const QList<QAssociation *> *");
-
-    QAction::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qlinkaction.cpp"

@@ -64,7 +64,7 @@ class Q_UML_EXPORT QSequenceNode : public QStructuredActivityNode
 {
     Q_OBJECT
 
-    Q_PROPERTY(const QList<QExecutableNode *> * executableNodes READ executableNodes)
+    Q_PROPERTY(QList<QExecutableNode *> executableNodes READ executableNodes)
 
     Q_DISABLE_COPY(QSequenceNode)
     Q_DECLARE_PRIVATE(QSequenceNode)
@@ -74,20 +74,15 @@ public:
     virtual ~QSequenceNode();
 
     // Association ends from QSequenceNode
-    Q_INVOKABLE const QList<QExecutableNode *> *executableNodes() const;
+    Q_INVOKABLE const QList<QExecutableNode *> &executableNodes() const;
     Q_INVOKABLE void addExecutableNode(QExecutableNode *executableNode);
     Q_INVOKABLE void removeExecutableNode(QExecutableNode *executableNode);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QSequenceNode(QSequenceNodePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QSequenceNode) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QSequenceNode) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QSequenceNode) *> *)
 
 QT_END_HEADER
 

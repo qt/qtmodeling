@@ -74,10 +74,10 @@ public:
     virtual ~QActivityEdgePrivate();
 
     QActivityNode *source;
-    QSet<QActivityEdge *> *redefinedEdges;
-    QSet<QActivityGroup *> *inGroup;
+    QSet<QActivityEdge *> redefinedEdges;
+    QSet<QActivityGroup *> inGroup;
     QValueSpecification *guard;
-    QSet<QActivityPartition *> *inPartition;
+    QSet<QActivityPartition *> inPartition;
     QActivity *activity;
     QInterruptibleActivityRegion *interrupts;
     QValueSpecification *weight;

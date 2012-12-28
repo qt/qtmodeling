@@ -65,8 +65,8 @@ class Q_UML_EXPORT QRedefinableElement : public QNamedElement
     Q_OBJECT
 
     Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
-    Q_PROPERTY(const QSet<QRedefinableElement *> * redefinedElements READ redefinedElements)
-    Q_PROPERTY(const QSet<QClassifier *> * redefinitionContexts READ redefinitionContexts)
+    Q_PROPERTY(QSet<QRedefinableElement *> redefinedElements READ redefinedElements)
+    Q_PROPERTY(QSet<QClassifier *> redefinitionContexts READ redefinitionContexts)
 
     Q_DISABLE_COPY(QRedefinableElement)
     Q_DECLARE_PRIVATE(QRedefinableElement)
@@ -81,23 +81,18 @@ public:
     Q_INVOKABLE void unsetLeaf();
 
     // Association ends from QRedefinableElement
-    Q_INVOKABLE const QSet<QRedefinableElement *> *redefinedElements() const;
-    Q_INVOKABLE const QSet<QClassifier *> *redefinitionContexts() const;
+    Q_INVOKABLE const QSet<QRedefinableElement *> &redefinedElements() const;
+    Q_INVOKABLE const QSet<QClassifier *> &redefinitionContexts() const;
 
     // Operations
     Q_INVOKABLE bool isConsistentWith(const QRedefinableElement *redefinee) const;
     Q_INVOKABLE bool isRedefinitionContextValid(const QRedefinableElement *redefined) const;
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QRedefinableElement(QRedefinableElementPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QRedefinableElement) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QRedefinableElement) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QRedefinableElement) *> *)
 
 QT_END_HEADER
 

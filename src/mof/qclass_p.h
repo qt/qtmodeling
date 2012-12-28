@@ -71,9 +71,9 @@ public:
     virtual ~QClassPrivate();
 
     bool isAbstract;
-    QList<QClassifier *> *nestedClassifiers;
-    QList<QOperation *> *ownedOperations;
-    QList<QProperty *> *ownedAttributes;
+    QList<QClassifier *> nestedClassifiers;
+    QList<QOperation *> ownedOperations;
+    QList<QProperty *> ownedAttributes;
 };
 
 QT_END_NAMESPACE_QTMOF

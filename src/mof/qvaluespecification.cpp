@@ -85,7 +85,7 @@ QValueSpecification::~QValueSpecification()
 /*!
     The Elements owned by this element.
  */
-const QSet<QElement *> *QValueSpecification::ownedElements() const
+const QSet<QElement *> &QValueSpecification::ownedElements() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedElements();
 }
@@ -101,7 +101,7 @@ QElement *QValueSpecification::owner() const
 /*!
     The Comments owned by this element.
  */
-const QSet<QComment *> *QValueSpecification::ownedComments() const
+const QSet<QComment *> &QValueSpecification::ownedComments() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedComments();
 }
@@ -260,21 +260,6 @@ qint32 QValueSpecification::unlimitedValue() const
     qWarning("QValueSpecification::unlimitedValue: operation to be implemented");
 
     return qint32(); // change here to your derived return
-}
-
-void QValueSpecification::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QValueSpecification) *>("QT_PREPEND_NAMESPACE_QTMOF(QValueSpecification) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QValueSpecification) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QValueSpecification) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QValueSpecification) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QValueSpecification) *> *");
-    qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
-    qRegisterMetaType<const QSet<QValueSpecification *> *>("const QSet<QValueSpecification *> *");
-    qRegisterMetaType<const QList<QValueSpecification *> *>("const QList<QValueSpecification *> *");
-
-    QWrappedObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qvaluespecification.cpp"

@@ -65,7 +65,7 @@ class Q_UML_EXPORT QInvocationAction : public QAction
 {
     Q_OBJECT
 
-    Q_PROPERTY(const QList<QInputPin *> * arguments READ arguments)
+    Q_PROPERTY(QList<QInputPin *> arguments READ arguments)
     Q_PROPERTY(QPort * onPort READ onPort WRITE setOnPort)
 
     Q_DISABLE_COPY(QInvocationAction)
@@ -76,22 +76,17 @@ public:
     virtual ~QInvocationAction();
 
     // Association ends from QInvocationAction
-    Q_INVOKABLE const QList<QInputPin *> *arguments() const;
+    Q_INVOKABLE const QList<QInputPin *> &arguments() const;
     Q_INVOKABLE void addArgument(QInputPin *argument);
     Q_INVOKABLE void removeArgument(QInputPin *argument);
     Q_INVOKABLE QPort *onPort() const;
     Q_INVOKABLE void setOnPort(QPort *onPort);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QInvocationAction(QInvocationActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QInvocationAction) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QInvocationAction) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QInvocationAction) *> *)
 
 QT_END_HEADER
 

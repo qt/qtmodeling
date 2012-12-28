@@ -61,7 +61,7 @@ class Q_MOF_EXPORT QRelationship : public QElement
 {
     Q_OBJECT
 
-    Q_PROPERTY(const QSet<QElement *> * relatedElements READ relatedElements)
+    Q_PROPERTY(QSet<QElement *> relatedElements READ relatedElements)
 
     Q_DISABLE_COPY(QRelationship)
     Q_DECLARE_PRIVATE(QRelationship)
@@ -71,18 +71,13 @@ public:
     virtual ~QRelationship();
 
     // Association ends from QRelationship
-    Q_INVOKABLE const QSet<QElement *> *relatedElements() const;
-    virtual void registerMetaTypes() const;
+    Q_INVOKABLE const QSet<QElement *> &relatedElements() const;
 
 protected:
     explicit QRelationship(QRelationshipPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTMOF
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTMOF(QRelationship) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTMOF(QRelationship) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTMOF(QRelationship) *> *)
 
 QT_END_HEADER
 

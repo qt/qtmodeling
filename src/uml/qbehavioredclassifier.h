@@ -68,8 +68,8 @@ class Q_UML_EXPORT QBehavioredClassifier : public QClassifier
 {
     Q_OBJECT
 
-    Q_PROPERTY(const QSet<QBehavior *> * ownedBehaviors READ ownedBehaviors)
-    Q_PROPERTY(const QSet<QInterfaceRealization *> * interfaceRealizations READ interfaceRealizations)
+    Q_PROPERTY(QSet<QBehavior *> ownedBehaviors READ ownedBehaviors)
+    Q_PROPERTY(QSet<QInterfaceRealization *> interfaceRealizations READ interfaceRealizations)
     Q_PROPERTY(QBehavior * classifierBehavior READ classifierBehavior WRITE setClassifierBehavior)
 
     Q_DISABLE_COPY(QBehavioredClassifier)
@@ -80,10 +80,10 @@ public:
     virtual ~QBehavioredClassifier();
 
     // Association ends from QBehavioredClassifier
-    Q_INVOKABLE const QSet<QBehavior *> *ownedBehaviors() const;
+    Q_INVOKABLE const QSet<QBehavior *> &ownedBehaviors() const;
     Q_INVOKABLE void addOwnedBehavior(QBehavior *ownedBehavior);
     Q_INVOKABLE void removeOwnedBehavior(QBehavior *ownedBehavior);
-    Q_INVOKABLE const QSet<QInterfaceRealization *> *interfaceRealizations() const;
+    Q_INVOKABLE const QSet<QInterfaceRealization *> &interfaceRealizations() const;
     Q_INVOKABLE void addInterfaceRealization(QInterfaceRealization *interfaceRealization);
     Q_INVOKABLE void removeInterfaceRealization(QInterfaceRealization *interfaceRealization);
     Q_INVOKABLE QBehavior *classifierBehavior() const;
@@ -92,17 +92,12 @@ public:
     // Overriden methods for subsetted properties
     Q_INVOKABLE void addClientDependency(QWrappedObjectPointer<QInterfaceRealization> interfaceRealization);
     Q_INVOKABLE void removeClientDependency(QWrappedObjectPointer<QInterfaceRealization> interfaceRealization);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QBehavioredClassifier(QBehavioredClassifierPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QBehavioredClassifier) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QBehavioredClassifier) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QBehavioredClassifier) *> *)
 
 QT_END_HEADER
 

@@ -76,7 +76,7 @@ public:
 
     QtUml::MessageSort messageSort;
     QNamedElement *signature;
-    QList<QValueSpecification *> *arguments;
+    QList<QValueSpecification *> arguments;
     QMessageEnd *receiveEvent;
     QInteraction *interaction;
     QMessageEnd *sendEvent;

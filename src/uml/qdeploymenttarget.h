@@ -68,8 +68,8 @@ class Q_UML_EXPORT QDeploymentTarget : public QNamedElement
 {
     Q_OBJECT
 
-    Q_PROPERTY(const QSet<QPackageableElement *> * deployedElements READ deployedElements STORED false)
-    Q_PROPERTY(const QSet<QDeployment *> * deployments READ deployments)
+    Q_PROPERTY(QSet<QPackageableElement *> deployedElements READ deployedElements STORED false)
+    Q_PROPERTY(QSet<QDeployment *> deployments READ deployments)
 
     Q_DISABLE_COPY(QDeploymentTarget)
     Q_DECLARE_PRIVATE(QDeploymentTarget)
@@ -79,25 +79,20 @@ public:
     virtual ~QDeploymentTarget();
 
     // Association ends from QDeploymentTarget
-    Q_INVOKABLE const QSet<QPackageableElement *> *deployedElements() const;
-    Q_INVOKABLE const QSet<QDeployment *> *deployments() const;
+    Q_INVOKABLE const QSet<QPackageableElement *> &deployedElements() const;
+    Q_INVOKABLE const QSet<QDeployment *> &deployments() const;
     Q_INVOKABLE void addDeployment(QDeployment *deployment);
     Q_INVOKABLE void removeDeployment(QDeployment *deployment);
 
     // Overriden methods for subsetted properties
     Q_INVOKABLE void addClientDependency(QWrappedObjectPointer<QDeployment> deployment);
     Q_INVOKABLE void removeClientDependency(QWrappedObjectPointer<QDeployment> deployment);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QDeploymentTarget(QDeploymentTargetPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QDeploymentTarget) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QDeploymentTarget) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QDeploymentTarget) *> *)
 
 QT_END_HEADER
 

@@ -50,14 +50,12 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QUnmarshallActionPrivate::QUnmarshallActionPrivate() :
     object(0),
-    results(new QSet<QOutputPin *>),
     unmarshallType(0)
 {
 }
 
 QUnmarshallActionPrivate::~QUnmarshallActionPrivate()
 {
-    delete results;
 }
 
 /*!
@@ -118,7 +116,7 @@ void QUnmarshallAction::setObject(QInputPin *object)
 /*!
     The values of the structural features of the input object.
  */
-const QSet<QOutputPin *> *QUnmarshallAction::results() const
+const QSet<QOutputPin *> &QUnmarshallAction::results() const
 {
     // This is a read-write association end
 
@@ -131,8 +129,8 @@ void QUnmarshallAction::addResult(QOutputPin *result)
     // This is a read-write association end
 
     Q_D(QUnmarshallAction);
-    if (!d->results->contains(result)) {
-        d->results->insert(result);
+    if (!d->results.contains(result)) {
+        d->results.insert(result);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QActionPrivate *>(d))->addOutput(qwrappedobject_cast<QOutputPin *>(result));
@@ -144,8 +142,8 @@ void QUnmarshallAction::removeResult(QOutputPin *result)
     // This is a read-write association end
 
     Q_D(QUnmarshallAction);
-    if (d->results->contains(result)) {
-        d->results->remove(result);
+    if (d->results.contains(result)) {
+        d->results.remove(result);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QActionPrivate *>(d))->removeOutput(qwrappedobject_cast<QOutputPin *>(result));
@@ -171,42 +169,6 @@ void QUnmarshallAction::setUnmarshallType(QClassifier *unmarshallType)
     if (d->unmarshallType != unmarshallType) {
         d->unmarshallType = unmarshallType;
     }
-}
-
-void QUnmarshallAction::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QUnmarshallAction) *>("QT_PREPEND_NAMESPACE_QTUML(QUnmarshallAction) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QUnmarshallAction) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QUnmarshallAction) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QUnmarshallAction) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QUnmarshallAction) *> *");
-    qRegisterMetaType<QUnmarshallAction *>("QUnmarshallAction *");
-    qRegisterMetaType<const QSet<QUnmarshallAction *> *>("const QSet<QUnmarshallAction *> *");
-    qRegisterMetaType<const QList<QUnmarshallAction *> *>("const QList<QUnmarshallAction *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QInputPin) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
-    qRegisterMetaType<QInputPin *>("QInputPin *");
-    qRegisterMetaType<const QSet<QInputPin *> *>("const QSet<QInputPin *> *");
-    qRegisterMetaType<const QList<QInputPin *> *>("const QList<QInputPin *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *");
-    qRegisterMetaType<QOutputPin *>("QOutputPin *");
-    qRegisterMetaType<const QSet<QOutputPin *> *>("const QSet<QOutputPin *> *");
-    qRegisterMetaType<const QList<QOutputPin *> *>("const QList<QOutputPin *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *>("QT_PREPEND_NAMESPACE_QTUML(QClassifier) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *");
-    qRegisterMetaType<QClassifier *>("QClassifier *");
-    qRegisterMetaType<const QSet<QClassifier *> *>("const QSet<QClassifier *> *");
-    qRegisterMetaType<const QList<QClassifier *> *>("const QList<QClassifier *> *");
-
-    QAction::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qunmarshallaction.cpp"

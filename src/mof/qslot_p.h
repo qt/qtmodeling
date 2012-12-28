@@ -69,7 +69,7 @@ public:
     explicit QSlotPrivate();
     virtual ~QSlotPrivate();
 
-    QList<QValueSpecification *> *values;
+    QList<QValueSpecification *> values;
     QStructuralFeature *definingFeature;
     QInstanceSpecification *owningInstance;
 };

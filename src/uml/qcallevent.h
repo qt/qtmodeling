@@ -73,17 +73,12 @@ public:
     // Association ends from QCallEvent
     Q_INVOKABLE QOperation *operation() const;
     Q_INVOKABLE void setOperation(QOperation *operation);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QCallEvent(QCallEventPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QCallEvent) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QCallEvent) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QCallEvent) *> *)
 
 QT_END_HEADER
 

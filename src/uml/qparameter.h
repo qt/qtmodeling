@@ -81,7 +81,7 @@ class Q_UML_EXPORT QParameter : public QWrappedObject
     Q_PROPERTY(QtUml::ParameterEffectKind effect READ effect WRITE setEffect)
     Q_PROPERTY(QOperation * operation READ operation WRITE setOperation)
     Q_PROPERTY(QValueSpecification * defaultValue READ defaultValue WRITE setDefaultValue)
-    Q_PROPERTY(const QSet<QParameterSet *> * parameterSets READ parameterSets)
+    Q_PROPERTY(QSet<QParameterSet *> parameterSets READ parameterSets)
 
     Q_DISABLE_COPY(QParameter)
     Q_DECLARE_PRIVATE(QParameter)
@@ -91,9 +91,9 @@ public:
     virtual ~QParameter();
 
     // Association ends from aggregated QElement
-    Q_INVOKABLE const QSet<QElement *> *ownedElements() const;
+    Q_INVOKABLE const QSet<QElement *> &ownedElements() const;
     Q_INVOKABLE QElement *owner() const;
-    Q_INVOKABLE const QSet<QComment *> *ownedComments() const;
+    Q_INVOKABLE const QSet<QComment *> &ownedComments() const;
     Q_INVOKABLE void addOwnedComment(QComment *ownedComment);
     Q_INVOKABLE void removeOwnedComment(QComment *ownedComment);
 
@@ -127,7 +127,7 @@ public:
     Q_INVOKABLE QStringExpression *nameExpression() const;
     Q_INVOKABLE void setNameExpression(QStringExpression *nameExpression);
     Q_INVOKABLE QNamespace *namespace_() const;
-    Q_INVOKABLE const QSet<QDependency *> *clientDependencies() const;
+    Q_INVOKABLE const QSet<QDependency *> &clientDependencies() const;
     Q_INVOKABLE void addClientDependency(QDependency *clientDependency);
     Q_INVOKABLE void removeClientDependency(QDependency *clientDependency);
 
@@ -140,7 +140,7 @@ public:
     Q_INVOKABLE void setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter);
 
     // Association ends from aggregated QConnectableElement
-    Q_INVOKABLE const QList<QConnectorEnd *> *ends() const;
+    Q_INVOKABLE const QList<QConnectorEnd *> &ends() const;
     Q_INVOKABLE QConnectableElementTemplateParameter *templateParameter() const;
     Q_INVOKABLE void setTemplateParameter(QConnectableElementTemplateParameter *templateParameter);
 
@@ -164,10 +164,9 @@ public:
     Q_INVOKABLE void setOperation(QOperation *operation);
     Q_INVOKABLE QValueSpecification *defaultValue() const;
     Q_INVOKABLE void setDefaultValue(QValueSpecification *defaultValue);
-    Q_INVOKABLE const QSet<QParameterSet *> *parameterSets() const;
+    Q_INVOKABLE const QSet<QParameterSet *> &parameterSets() const;
     Q_INVOKABLE void addParameterSet(QParameterSet *parameterSet);
     Q_INVOKABLE void removeParameterSet(QParameterSet *parameterSet);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QParameter(QParameterPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
@@ -178,10 +177,6 @@ private:
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QParameter) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QParameter) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QParameter) *> *)
 
 QT_END_HEADER
 

@@ -64,8 +64,8 @@ class Q_UML_EXPORT QDurationObservation : public QObservation
 {
     Q_OBJECT
 
-    Q_PROPERTY(const QSet<bool> * firstEvents READ firstEvents)
-    Q_PROPERTY(const QSet<QNamedElement *> * events READ events)
+    Q_PROPERTY(QSet<bool> firstEvents READ firstEvents)
+    Q_PROPERTY(QSet<QNamedElement *> events READ events)
 
     Q_DISABLE_COPY(QDurationObservation)
     Q_DECLARE_PRIVATE(QDurationObservation)
@@ -75,25 +75,20 @@ public:
     virtual ~QDurationObservation();
 
     // Attributes from QDurationObservation
-    Q_INVOKABLE const QSet<bool> *firstEvents() const;
+    Q_INVOKABLE const QSet<bool> firstEvents() const;
     Q_INVOKABLE void addFirstEvent(bool firstEvent);
     Q_INVOKABLE void removeFirstEvent(bool firstEvent);
 
     // Association ends from QDurationObservation
-    Q_INVOKABLE const QSet<QNamedElement *> *events() const;
+    Q_INVOKABLE const QSet<QNamedElement *> &events() const;
     Q_INVOKABLE void addEvent(QNamedElement *event);
     Q_INVOKABLE void removeEvent(QNamedElement *event);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QDurationObservation(QDurationObservationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QDurationObservation) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QDurationObservation) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QDurationObservation) *> *)
 
 QT_END_HEADER
 

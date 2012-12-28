@@ -69,7 +69,7 @@ public:
 
     bool allowSubstitutable;
     QClassifier *parameteredElement;
-    QSet<QClassifier *> *constrainingClassifiers;
+    QSet<QClassifier *> constrainingClassifiers;
 };
 
 QT_END_NAMESPACE_QTUML

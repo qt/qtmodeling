@@ -73,17 +73,12 @@ public:
     // Association ends from QVariableAction
     Q_INVOKABLE QVariable *variable() const;
     Q_INVOKABLE void setVariable(QVariable *variable);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QVariableAction(QVariableActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QVariableAction) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QVariableAction) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QVariableAction) *> *)
 
 QT_END_HEADER
 

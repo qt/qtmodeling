@@ -72,14 +72,14 @@ public:
     explicit QActivityNodePrivate();
     virtual ~QActivityNodePrivate();
 
-    QSet<QActivityNode *> *redefinedNodes;
-    QSet<QActivityEdge *> *incomings;
+    QSet<QActivityNode *> redefinedNodes;
+    QSet<QActivityEdge *> incomings;
     QActivity *activity;
-    QSet<QActivityGroup *> *inGroup;
+    QSet<QActivityGroup *> inGroup;
     QStructuredActivityNode *inStructuredNode;
-    QSet<QActivityPartition *> *inPartition;
-    QSet<QInterruptibleActivityRegion *> *inInterruptibleRegion;
-    QSet<QActivityEdge *> *outgoings;
+    QSet<QActivityPartition *> inPartition;
+    QSet<QInterruptibleActivityRegion *> inInterruptibleRegion;
+    QSet<QActivityEdge *> outgoings;
 
     // Internal functions for read-only subsetted association ends
     void addInGroup(QActivityGroup *inGroup);

@@ -78,21 +78,16 @@ public:
     // Operations
     Q_INVOKABLE bool useContainment() const;
     Q_INVOKABLE QReflectiveSequence *elements() const;
-    Q_INVOKABLE const QSet<QElement *> *elementsOfType(const QClass *type, bool includesSubtypes) const;
-    Q_INVOKABLE const QSet<QLink *> *linksOfType(const QAssociation *type) const;
-    Q_INVOKABLE const QSet<QElement *> *linkedElements(const QAssociation *association, const QElement *endElement, bool end1ToEnd2Direction) const;
+    Q_INVOKABLE const QSet<QElement *> &elementsOfType(const QClass *type, bool includesSubtypes) const;
+    Q_INVOKABLE const QSet<QLink *> &linksOfType(const QAssociation *type) const;
+    Q_INVOKABLE const QSet<QElement *> &linkedElements(const QAssociation *association, const QElement *endElement, bool end1ToEnd2Direction) const;
     Q_INVOKABLE bool linkExists(const QAssociation *association, const QElement *firstElement, const QElement *secondElement) const;
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QExtent(QExtentPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTMOF
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTMOF(QExtent) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTMOF(QExtent) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTMOF(QExtent) *> *)
 
 QT_END_HEADER
 

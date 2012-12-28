@@ -68,9 +68,9 @@ public:
     explicit QConnectionPointReferencePrivate();
     virtual ~QConnectionPointReferencePrivate();
 
-    QSet<QPseudostate *> *exits;
+    QSet<QPseudostate *> exits;
     QState *state;
-    QSet<QPseudostate *> *entries;
+    QSet<QPseudostate *> entries;
 };
 
 QT_END_NAMESPACE_QTUML

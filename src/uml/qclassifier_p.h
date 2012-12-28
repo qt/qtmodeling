@@ -83,18 +83,18 @@ public:
 
     bool isAbstract;
     bool isFinalSpecialization;
-    QSet<QUseCase *> *ownedUseCases;
-    QSet<QGeneralizationSet *> *powertypeExtents;
-    QSet<QUseCase *> *useCases;
+    QSet<QUseCase *> ownedUseCases;
+    QSet<QGeneralizationSet *> powertypeExtents;
+    QSet<QUseCase *> useCases;
     QClassifierTemplateParameter *templateParameter;
-    QSet<QClassifier *> *redefinedClassifiers;
+    QSet<QClassifier *> redefinedClassifiers;
     QRedefinableTemplateSignature *ownedTemplateSignature;
-    QSet<QCollaborationUse *> *collaborationUses;
-    QSet<QProperty *> *attributes;
-    QSet<QFeature *> *features;
+    QSet<QCollaborationUse *> collaborationUses;
+    QSet<QProperty *> attributes;
+    QSet<QFeature *> features;
     QCollaborationUse *representation;
-    QSet<QGeneralization *> *generalizations;
-    QSet<QSubstitution *> *substitutions;
+    QSet<QGeneralization *> generalizations;
+    QSet<QSubstitution *> substitutions;
 
     // Internal functions for read-only subsetted association ends
     void addAttribute(QProperty *attribute);

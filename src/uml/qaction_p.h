@@ -71,10 +71,10 @@ public:
     virtual ~QActionPrivate();
 
     bool isLocallyReentrant;
-    QSet<QConstraint *> *localPostconditions;
-    QSet<QConstraint *> *localPreconditions;
-    QList<QInputPin *> *inputs;
-    QList<QOutputPin *> *outputs;
+    QSet<QConstraint *> localPostconditions;
+    QSet<QConstraint *> localPreconditions;
+    QList<QInputPin *> inputs;
+    QList<QOutputPin *> outputs;
 
     // Internal functions for read-only subsetted association ends
     void addInput(QInputPin *input);

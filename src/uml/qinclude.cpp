@@ -89,7 +89,7 @@ QInclude::~QInclude()
 /*!
     The Elements owned by this element.
  */
-const QSet<QElement *> *QInclude::ownedElements() const
+const QSet<QElement *> &QInclude::ownedElements() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedElements();
 }
@@ -105,7 +105,7 @@ QElement *QInclude::owner() const
 /*!
     The Comments owned by this element.
  */
-const QSet<QComment *> *QInclude::ownedComments() const
+const QSet<QComment *> &QInclude::ownedComments() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedComments();
 }
@@ -127,7 +127,7 @@ void QInclude::removeOwnedComment(QComment *ownedComment)
 /*!
     Specifies the elements related by the Relationship.
  */
-const QSet<QElement *> *QInclude::relatedElements() const
+const QSet<QElement *> &QInclude::relatedElements() const
 {
     return (qwrappedobject_cast<const QRelationship *>(this))->relatedElements();
 }
@@ -139,7 +139,7 @@ const QSet<QElement *> *QInclude::relatedElements() const
 /*!
     Specifies the sources of the DirectedRelationship.
  */
-const QSet<QElement *> *QInclude::sources() const
+const QSet<QElement *> &QInclude::sources() const
 {
     return (qwrappedobject_cast<const QDirectedRelationship *>(this))->sources();
 }
@@ -147,7 +147,7 @@ const QSet<QElement *> *QInclude::sources() const
 /*!
     Specifies the targets of the DirectedRelationship.
  */
-const QSet<QElement *> *QInclude::targets() const
+const QSet<QElement *> &QInclude::targets() const
 {
     return (qwrappedobject_cast<const QDirectedRelationship *>(this))->targets();
 }
@@ -218,7 +218,7 @@ QNamespace *QInclude::namespace_() const
 /*!
     Indicates the dependencies that reference the client.
  */
-const QSet<QDependency *> *QInclude::clientDependencies() const
+const QSet<QDependency *> &QInclude::clientDependencies() const
 {
     return (qwrappedobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
@@ -302,28 +302,6 @@ void QInclude::setAddition(QUseCase *addition)
             (qwrappedobject_cast<QDirectedRelationshipPrivate *>(d))->addTarget(qwrappedobject_cast<QElement *>(addition));
         }
     }
-}
-
-void QInclude::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInclude) *>("QT_PREPEND_NAMESPACE_QTUML(QInclude) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInclude) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInclude) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInclude) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInclude) *> *");
-    qRegisterMetaType<QInclude *>("QInclude *");
-    qRegisterMetaType<const QSet<QInclude *> *>("const QSet<QInclude *> *");
-    qRegisterMetaType<const QList<QInclude *> *>("const QList<QInclude *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QUseCase) *>("QT_PREPEND_NAMESPACE_QTUML(QUseCase) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QUseCase) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QUseCase) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QUseCase) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QUseCase) *> *");
-    qRegisterMetaType<QUseCase *>("QUseCase *");
-    qRegisterMetaType<const QSet<QUseCase *> *>("const QSet<QUseCase *> *");
-    qRegisterMetaType<const QList<QUseCase *> *>("const QList<QUseCase *> *");
-
-    QWrappedObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qinclude.cpp"

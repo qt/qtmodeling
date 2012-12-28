@@ -46,14 +46,12 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QProtocolStateMachinePrivate::QProtocolStateMachinePrivate() :
-    conformance(new QSet<QProtocolConformance *>)
+QProtocolStateMachinePrivate::QProtocolStateMachinePrivate()
 {
 }
 
 QProtocolStateMachinePrivate::~QProtocolStateMachinePrivate()
 {
-    delete conformance;
 }
 
 /*!
@@ -85,7 +83,7 @@ QProtocolStateMachine::~QProtocolStateMachine()
 /*!
     Conformance between protocol state machines.
  */
-const QSet<QProtocolConformance *> *QProtocolStateMachine::conformance() const
+const QSet<QProtocolConformance *> &QProtocolStateMachine::conformance() const
 {
     // This is a read-write association end
 
@@ -98,8 +96,8 @@ void QProtocolStateMachine::addConformance(QProtocolConformance *conformance)
     // This is a read-write association end
 
     Q_D(QProtocolStateMachine);
-    if (!d->conformance->contains(conformance)) {
-        d->conformance->insert(conformance);
+    if (!d->conformance.contains(conformance)) {
+        d->conformance.insert(conformance);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(conformance));
@@ -114,8 +112,8 @@ void QProtocolStateMachine::removeConformance(QProtocolConformance *conformance)
     // This is a read-write association end
 
     Q_D(QProtocolStateMachine);
-    if (d->conformance->contains(conformance)) {
-        d->conformance->remove(conformance);
+    if (d->conformance.contains(conformance)) {
+        d->conformance.remove(conformance);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(conformance));
@@ -123,28 +121,6 @@ void QProtocolStateMachine::removeConformance(QProtocolConformance *conformance)
         // Adjust opposite property
         conformance->setSpecificMachine(0);
     }
-}
-
-void QProtocolStateMachine::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QProtocolStateMachine) *>("QT_PREPEND_NAMESPACE_QTUML(QProtocolStateMachine) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QProtocolStateMachine) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QProtocolStateMachine) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QProtocolStateMachine) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QProtocolStateMachine) *> *");
-    qRegisterMetaType<QProtocolStateMachine *>("QProtocolStateMachine *");
-    qRegisterMetaType<const QSet<QProtocolStateMachine *> *>("const QSet<QProtocolStateMachine *> *");
-    qRegisterMetaType<const QList<QProtocolStateMachine *> *>("const QList<QProtocolStateMachine *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QProtocolConformance) *>("QT_PREPEND_NAMESPACE_QTUML(QProtocolConformance) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QProtocolConformance) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QProtocolConformance) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QProtocolConformance) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QProtocolConformance) *> *");
-    qRegisterMetaType<QProtocolConformance *>("QProtocolConformance *");
-    qRegisterMetaType<const QSet<QProtocolConformance *> *>("const QSet<QProtocolConformance *> *");
-    qRegisterMetaType<const QList<QProtocolConformance *> *>("const QList<QProtocolConformance *> *");
-
-    QStateMachine::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qprotocolstatemachine.cpp"

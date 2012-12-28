@@ -70,7 +70,7 @@ public:
     explicit QInteractionOperandPrivate();
     virtual ~QInteractionOperandPrivate();
 
-    QList<QInteractionFragment *> *fragments;
+    QList<QInteractionFragment *> fragments;
     QInteractionConstraint *guard;
 };
 

@@ -67,10 +67,10 @@ class Q_UML_EXPORT QStructuredClassifier : public QClassifier
 {
     Q_OBJECT
 
-    Q_PROPERTY(const QSet<QConnectableElement *> * roles READ roles)
-    Q_PROPERTY(const QList<QProperty *> * ownedAttributes READ ownedAttributes)
-    Q_PROPERTY(const QSet<QProperty *> * parts READ parts STORED false)
-    Q_PROPERTY(const QSet<QConnector *> * ownedConnectors READ ownedConnectors)
+    Q_PROPERTY(QSet<QConnectableElement *> roles READ roles)
+    Q_PROPERTY(QList<QProperty *> ownedAttributes READ ownedAttributes)
+    Q_PROPERTY(QSet<QProperty *> parts READ parts STORED false)
+    Q_PROPERTY(QSet<QConnector *> ownedConnectors READ ownedConnectors)
 
     Q_DISABLE_COPY(QStructuredClassifier)
     Q_DECLARE_PRIVATE(QStructuredClassifier)
@@ -80,25 +80,20 @@ public:
     virtual ~QStructuredClassifier();
 
     // Association ends from QStructuredClassifier
-    Q_INVOKABLE const QSet<QConnectableElement *> *roles() const;
-    Q_INVOKABLE const QList<QProperty *> *ownedAttributes() const;
+    Q_INVOKABLE const QSet<QConnectableElement *> &roles() const;
+    Q_INVOKABLE const QList<QProperty *> &ownedAttributes() const;
     Q_INVOKABLE void addOwnedAttribute(QProperty *ownedAttribute);
     Q_INVOKABLE void removeOwnedAttribute(QProperty *ownedAttribute);
-    Q_INVOKABLE const QSet<QProperty *> *parts() const;
-    Q_INVOKABLE const QSet<QConnector *> *ownedConnectors() const;
+    Q_INVOKABLE const QSet<QProperty *> &parts() const;
+    Q_INVOKABLE const QSet<QConnector *> &ownedConnectors() const;
     Q_INVOKABLE void addOwnedConnector(QConnector *ownedConnector);
     Q_INVOKABLE void removeOwnedConnector(QConnector *ownedConnector);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QStructuredClassifier(QStructuredClassifierPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QStructuredClassifier) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QStructuredClassifier) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QStructuredClassifier) *> *)
 
 QT_END_HEADER
 

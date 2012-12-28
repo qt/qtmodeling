@@ -119,21 +119,6 @@ QString QLiteralString::stringValue() const
     return QString(); // change here to your derived return
 }
 
-void QLiteralString::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QLiteralString) *>("QT_PREPEND_NAMESPACE_QTUML(QLiteralString) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QLiteralString) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QLiteralString) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QLiteralString) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QLiteralString) *> *");
-    qRegisterMetaType<QLiteralString *>("QLiteralString *");
-    qRegisterMetaType<const QSet<QLiteralString *> *>("const QSet<QLiteralString *> *");
-    qRegisterMetaType<const QList<QLiteralString *> *>("const QList<QLiteralString *> *");
-
-    QLiteralSpecification::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 #include "moc_qliteralstring.cpp"
 
 QT_END_NAMESPACE_QTUML

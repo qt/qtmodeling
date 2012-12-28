@@ -74,21 +74,6 @@ QFunctionBehavior::~QFunctionBehavior()
 {
 }
 
-void QFunctionBehavior::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QFunctionBehavior) *>("QT_PREPEND_NAMESPACE_QTUML(QFunctionBehavior) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QFunctionBehavior) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QFunctionBehavior) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QFunctionBehavior) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QFunctionBehavior) *> *");
-    qRegisterMetaType<QFunctionBehavior *>("QFunctionBehavior *");
-    qRegisterMetaType<const QSet<QFunctionBehavior *> *>("const QSet<QFunctionBehavior *> *");
-    qRegisterMetaType<const QList<QFunctionBehavior *> *>("const QList<QFunctionBehavior *> *");
-
-    QOpaqueBehavior::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 #include "moc_qfunctionbehavior.cpp"
 
 QT_END_NAMESPACE_QTUML

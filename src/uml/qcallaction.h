@@ -65,7 +65,7 @@ class Q_UML_EXPORT QCallAction : public QInvocationAction
     Q_OBJECT
 
     Q_PROPERTY(bool isSynchronous READ isSynchronous WRITE setSynchronous RESET unsetSynchronous)
-    Q_PROPERTY(const QList<QOutputPin *> * results READ results)
+    Q_PROPERTY(QList<QOutputPin *> results READ results)
 
     Q_DISABLE_COPY(QCallAction)
     Q_DECLARE_PRIVATE(QCallAction)
@@ -80,20 +80,15 @@ public:
     Q_INVOKABLE void unsetSynchronous();
 
     // Association ends from QCallAction
-    Q_INVOKABLE const QList<QOutputPin *> *results() const;
+    Q_INVOKABLE const QList<QOutputPin *> &results() const;
     Q_INVOKABLE void addResult(QOutputPin *result);
     Q_INVOKABLE void removeResult(QOutputPin *result);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QCallAction(QCallActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QCallAction) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QCallAction) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QCallAction) *> *)
 
 QT_END_HEADER
 

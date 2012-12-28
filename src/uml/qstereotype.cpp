@@ -47,14 +47,12 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QStereotypePrivate::QStereotypePrivate() :
-    icons(new QSet<QImage *>)
+QStereotypePrivate::QStereotypePrivate()
 {
 }
 
 QStereotypePrivate::~QStereotypePrivate()
 {
-    delete icons;
 }
 
 /*!
@@ -86,7 +84,7 @@ QStereotype::~QStereotype()
 /*!
     Stereotype can change the graphical appearance of the extended model element by using attached icons. When this association is not null, it references the location of the icon content to be displayed within diagrams presenting the extended model elements.
  */
-const QSet<QImage *> *QStereotype::icons() const
+const QSet<QImage *> &QStereotype::icons() const
 {
     // This is a read-write association end
 
@@ -99,8 +97,8 @@ void QStereotype::addIcon(QImage *icon)
     // This is a read-write association end
 
     Q_D(QStereotype);
-    if (!d->icons->contains(icon)) {
-        d->icons->insert(icon);
+    if (!d->icons.contains(icon)) {
+        d->icons.insert(icon);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(icon));
@@ -112,8 +110,8 @@ void QStereotype::removeIcon(QImage *icon)
     // This is a read-write association end
 
     Q_D(QStereotype);
-    if (d->icons->contains(icon)) {
-        d->icons->remove(icon);
+    if (d->icons.contains(icon)) {
+        d->icons.remove(icon);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(icon));
@@ -140,35 +138,6 @@ QProfile *QStereotype::containingProfile() const
     qWarning("QStereotype::containingProfile: operation to be implemented");
 
     return 0; // change here to your derived return
-}
-
-void QStereotype::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QStereotype) *>("QT_PREPEND_NAMESPACE_QTUML(QStereotype) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QStereotype) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QStereotype) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QStereotype) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QStereotype) *> *");
-    qRegisterMetaType<QStereotype *>("QStereotype *");
-    qRegisterMetaType<const QSet<QStereotype *> *>("const QSet<QStereotype *> *");
-    qRegisterMetaType<const QList<QStereotype *> *>("const QList<QStereotype *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QImage) *>("QT_PREPEND_NAMESPACE_QTUML(QImage) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QImage) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QImage) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QImage) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QImage) *> *");
-    qRegisterMetaType<QImage *>("QImage *");
-    qRegisterMetaType<const QSet<QImage *> *>("const QSet<QImage *> *");
-    qRegisterMetaType<const QList<QImage *> *>("const QList<QImage *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QProfile) *>("QT_PREPEND_NAMESPACE_QTUML(QProfile) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QProfile) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QProfile) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QProfile) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QProfile) *> *");
-    qRegisterMetaType<QProfile *>("QProfile *");
-    qRegisterMetaType<const QSet<QProfile *> *>("const QSet<QProfile *> *");
-    qRegisterMetaType<const QList<QProfile *> *>("const QList<QProfile *> *");
-
-    QClass::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qstereotype.cpp"

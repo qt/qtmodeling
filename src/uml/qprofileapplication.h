@@ -83,17 +83,12 @@ public:
     Q_INVOKABLE void setApplyingPackage(QPackage *applyingPackage);
     Q_INVOKABLE QProfile *appliedProfile() const;
     Q_INVOKABLE void setAppliedProfile(QProfile *appliedProfile);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QProfileApplication(QProfileApplicationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QProfileApplication) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QProfileApplication) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QProfileApplication) *> *)
 
 QT_END_HEADER
 

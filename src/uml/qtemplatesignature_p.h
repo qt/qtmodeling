@@ -68,9 +68,9 @@ public:
     explicit QTemplateSignaturePrivate();
     virtual ~QTemplateSignaturePrivate();
 
-    QList<QTemplateParameter *> *parameters;
+    QList<QTemplateParameter *> parameters;
     QTemplateableElement *template_;
-    QList<QTemplateParameter *> *ownedParameters;
+    QList<QTemplateParameter *> ownedParameters;
 };
 
 QT_END_NAMESPACE_QTUML

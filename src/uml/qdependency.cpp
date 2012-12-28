@@ -46,16 +46,12 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QDependencyPrivate::QDependencyPrivate() :
-    clients(new QSet<QNamedElement *>),
-    suppliers(new QSet<QNamedElement *>)
+QDependencyPrivate::QDependencyPrivate()
 {
 }
 
 QDependencyPrivate::~QDependencyPrivate()
 {
-    delete clients;
-    delete suppliers;
 }
 
 /*!
@@ -91,7 +87,7 @@ QDependency::~QDependency()
 /*!
     The Elements owned by this element.
  */
-const QSet<QElement *> *QDependency::ownedElements() const
+const QSet<QElement *> &QDependency::ownedElements() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedElements();
 }
@@ -107,7 +103,7 @@ QElement *QDependency::owner() const
 /*!
     The Comments owned by this element.
  */
-const QSet<QComment *> *QDependency::ownedComments() const
+const QSet<QComment *> &QDependency::ownedComments() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedComments();
 }
@@ -205,7 +201,7 @@ QNamespace *QDependency::namespace_() const
 /*!
     Indicates the dependencies that reference the client.
  */
-const QSet<QDependency *> *QDependency::clientDependencies() const
+const QSet<QDependency *> &QDependency::clientDependencies() const
 {
     return (qwrappedobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
@@ -249,7 +245,7 @@ void QDependency::unsetVisibility()
 /*!
     Specifies the elements related by the Relationship.
  */
-const QSet<QElement *> *QDependency::relatedElements() const
+const QSet<QElement *> &QDependency::relatedElements() const
 {
     return (qwrappedobject_cast<const QRelationship *>(this))->relatedElements();
 }
@@ -261,7 +257,7 @@ const QSet<QElement *> *QDependency::relatedElements() const
 /*!
     Specifies the sources of the DirectedRelationship.
  */
-const QSet<QElement *> *QDependency::sources() const
+const QSet<QElement *> &QDependency::sources() const
 {
     return (qwrappedobject_cast<const QDirectedRelationship *>(this))->sources();
 }
@@ -269,7 +265,7 @@ const QSet<QElement *> *QDependency::sources() const
 /*!
     Specifies the targets of the DirectedRelationship.
  */
-const QSet<QElement *> *QDependency::targets() const
+const QSet<QElement *> &QDependency::targets() const
 {
     return (qwrappedobject_cast<const QDirectedRelationship *>(this))->targets();
 }
@@ -281,7 +277,7 @@ const QSet<QElement *> *QDependency::targets() const
 /*!
     The element(s) dependent on the supplier element(s). In some cases (such as a Trace Abstraction) the assignment of direction (that is, the designation of the client element) is at the discretion of the modeler, and is a stipulation.
  */
-const QSet<QNamedElement *> *QDependency::clients() const
+const QSet<QNamedElement *> &QDependency::clients() const
 {
     // This is a read-write association end
 
@@ -294,8 +290,8 @@ void QDependency::addClient(QNamedElement *client)
     // This is a read-write association end
 
     Q_D(QDependency);
-    if (!d->clients->contains(client)) {
-        d->clients->insert(client);
+    if (!d->clients.contains(client)) {
+        d->clients.insert(client);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QDirectedRelationshipPrivate *>(d))->addSource(qwrappedobject_cast<QElement *>(client));
@@ -310,8 +306,8 @@ void QDependency::removeClient(QNamedElement *client)
     // This is a read-write association end
 
     Q_D(QDependency);
-    if (d->clients->contains(client)) {
-        d->clients->remove(client);
+    if (d->clients.contains(client)) {
+        d->clients.remove(client);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QDirectedRelationshipPrivate *>(d))->removeSource(qwrappedobject_cast<QElement *>(client));
@@ -325,7 +321,7 @@ void QDependency::removeClient(QNamedElement *client)
 /*!
     The element(s) independent of the client element(s), in the same respect and the same dependency relationship. In some directed dependency relationships (such as Refinement Abstractions), a common convention in the domain of class-based OO software is to put the more abstract element in this role. Despite this convention, users of UML may stipulate a sense of dependency suitable for their domain, which makes a more abstract element dependent on that which is more specific.
  */
-const QSet<QNamedElement *> *QDependency::suppliers() const
+const QSet<QNamedElement *> &QDependency::suppliers() const
 {
     // This is a read-write association end
 
@@ -338,8 +334,8 @@ void QDependency::addSupplier(QNamedElement *supplier)
     // This is a read-write association end
 
     Q_D(QDependency);
-    if (!d->suppliers->contains(supplier)) {
-        d->suppliers->insert(supplier);
+    if (!d->suppliers.contains(supplier)) {
+        d->suppliers.insert(supplier);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QDirectedRelationshipPrivate *>(d))->addTarget(qwrappedobject_cast<QElement *>(supplier));
@@ -351,34 +347,12 @@ void QDependency::removeSupplier(QNamedElement *supplier)
     // This is a read-write association end
 
     Q_D(QDependency);
-    if (d->suppliers->contains(supplier)) {
-        d->suppliers->remove(supplier);
+    if (d->suppliers.contains(supplier)) {
+        d->suppliers.remove(supplier);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QDirectedRelationshipPrivate *>(d))->removeTarget(qwrappedobject_cast<QElement *>(supplier));
     }
-}
-
-void QDependency::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QDependency) *>("QT_PREPEND_NAMESPACE_QTUML(QDependency) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QDependency) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QDependency) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QDependency) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QDependency) *> *");
-    qRegisterMetaType<QDependency *>("QDependency *");
-    qRegisterMetaType<const QSet<QDependency *> *>("const QSet<QDependency *> *");
-    qRegisterMetaType<const QList<QDependency *> *>("const QList<QDependency *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *>("QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *> *");
-    qRegisterMetaType<QNamedElement *>("QNamedElement *");
-    qRegisterMetaType<const QSet<QNamedElement *> *>("const QSet<QNamedElement *> *");
-    qRegisterMetaType<const QList<QNamedElement *> *>("const QList<QNamedElement *> *");
-
-    QWrappedObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qdependency.cpp"

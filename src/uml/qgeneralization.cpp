@@ -50,14 +50,12 @@ QT_BEGIN_NAMESPACE_QTUML
 QGeneralizationPrivate::QGeneralizationPrivate() :
     isSubstitutable(true),
     specific(0),
-    generalizationSets(new QSet<QGeneralizationSet *>),
     general(0)
 {
 }
 
 QGeneralizationPrivate::~QGeneralizationPrivate()
 {
-    delete generalizationSets;
 }
 
 /*!
@@ -157,7 +155,7 @@ void QGeneralization::setSpecific(QClassifier *specific)
 /*!
     Designates a set in which instances of Generalization is considered members.
  */
-const QSet<QGeneralizationSet *> *QGeneralization::generalizationSets() const
+const QSet<QGeneralizationSet *> &QGeneralization::generalizationSets() const
 {
     // This is a read-write association end
 
@@ -170,8 +168,8 @@ void QGeneralization::addGeneralizationSet(QGeneralizationSet *generalizationSet
     // This is a read-write association end
 
     Q_D(QGeneralization);
-    if (!d->generalizationSets->contains(generalizationSet)) {
-        d->generalizationSets->insert(generalizationSet);
+    if (!d->generalizationSets.contains(generalizationSet)) {
+        d->generalizationSets.insert(generalizationSet);
 
         // Adjust opposite property
         generalizationSet->addGeneralization(this);
@@ -183,8 +181,8 @@ void QGeneralization::removeGeneralizationSet(QGeneralizationSet *generalization
     // This is a read-write association end
 
     Q_D(QGeneralization);
-    if (d->generalizationSets->contains(generalizationSet)) {
-        d->generalizationSets->remove(generalizationSet);
+    if (d->generalizationSets.contains(generalizationSet)) {
+        d->generalizationSets.remove(generalizationSet);
 
         // Adjust opposite property
         if (generalizationSet)
@@ -219,35 +217,6 @@ void QGeneralization::setGeneral(QClassifier *general)
             (qwrappedobject_cast<QDirectedRelationshipPrivate *>(d))->addTarget(qwrappedobject_cast<QElement *>(general));
         }
     }
-}
-
-void QGeneralization::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QGeneralization) *>("QT_PREPEND_NAMESPACE_QTUML(QGeneralization) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QGeneralization) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QGeneralization) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QGeneralization) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QGeneralization) *> *");
-    qRegisterMetaType<QGeneralization *>("QGeneralization *");
-    qRegisterMetaType<const QSet<QGeneralization *> *>("const QSet<QGeneralization *> *");
-    qRegisterMetaType<const QList<QGeneralization *> *>("const QList<QGeneralization *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *>("QT_PREPEND_NAMESPACE_QTUML(QClassifier) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *");
-    qRegisterMetaType<QClassifier *>("QClassifier *");
-    qRegisterMetaType<const QSet<QClassifier *> *>("const QSet<QClassifier *> *");
-    qRegisterMetaType<const QList<QClassifier *> *>("const QList<QClassifier *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QGeneralizationSet) *>("QT_PREPEND_NAMESPACE_QTUML(QGeneralizationSet) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QGeneralizationSet) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QGeneralizationSet) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QGeneralizationSet) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QGeneralizationSet) *> *");
-    qRegisterMetaType<QGeneralizationSet *>("QGeneralizationSet *");
-    qRegisterMetaType<const QSet<QGeneralizationSet *> *>("const QSet<QGeneralizationSet *> *");
-    qRegisterMetaType<const QList<QGeneralizationSet *> *>("const QList<QGeneralizationSet *> *");
-
-    QDirectedRelationship::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qgeneralization.cpp"

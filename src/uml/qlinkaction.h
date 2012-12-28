@@ -66,8 +66,8 @@ class Q_UML_EXPORT QLinkAction : public QAction
 {
     Q_OBJECT
 
-    Q_PROPERTY(const QSet<QInputPin *> * inputValues READ inputValues)
-    Q_PROPERTY(const QSet<QLinkEndData *> * endData READ endData)
+    Q_PROPERTY(QSet<QInputPin *> inputValues READ inputValues)
+    Q_PROPERTY(QSet<QLinkEndData *> endData READ endData)
 
     Q_DISABLE_COPY(QLinkAction)
     Q_DECLARE_PRIVATE(QLinkAction)
@@ -77,26 +77,21 @@ public:
     virtual ~QLinkAction();
 
     // Association ends from QLinkAction
-    Q_INVOKABLE const QSet<QInputPin *> *inputValues() const;
+    Q_INVOKABLE const QSet<QInputPin *> &inputValues() const;
     Q_INVOKABLE void addInputValue(QInputPin *inputValue);
     Q_INVOKABLE void removeInputValue(QInputPin *inputValue);
-    Q_INVOKABLE const QSet<QLinkEndData *> *endData() const;
+    Q_INVOKABLE const QSet<QLinkEndData *> &endData() const;
     Q_INVOKABLE void addEndData(QLinkEndData *endData);
     Q_INVOKABLE void removeEndData(QLinkEndData *endData);
 
     // Operations
     Q_INVOKABLE QAssociation *association() const;
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QLinkAction(QLinkActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QLinkAction) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QLinkAction) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QLinkAction) *> *)
 
 QT_END_HEADER
 

@@ -69,9 +69,9 @@ public:
     virtual ~QReclassifyObjectActionPrivate();
 
     bool isReplaceAll;
-    QSet<QClassifier *> *oldClassifiers;
+    QSet<QClassifier *> oldClassifiers;
     QInputPin *object;
-    QSet<QClassifier *> *newClassifiers;
+    QSet<QClassifier *> newClassifiers;
 };
 
 QT_END_NAMESPACE_QTUML

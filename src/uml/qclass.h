@@ -75,12 +75,12 @@ class Q_UML_EXPORT QClass : public QWrappedObject
 
     Q_PROPERTY(bool isAbstract READ isAbstract WRITE setAbstract RESET unsetAbstract)
     Q_PROPERTY(bool isActive READ isActive WRITE setActive RESET unsetActive)
-    Q_PROPERTY(const QList<QClassifier *> * nestedClassifiers READ nestedClassifiers)
-    Q_PROPERTY(const QSet<QReception *> * ownedReceptions READ ownedReceptions)
-    Q_PROPERTY(const QSet<QExtension *> * extensions READ extensions STORED false)
-    Q_PROPERTY(const QList<QOperation *> * ownedOperations READ ownedOperations)
-    Q_PROPERTY(const QList<QProperty *> * ownedAttributes READ ownedAttributes)
-    Q_PROPERTY(const QSet<QClass *> * superClasses READ superClasses STORED false)
+    Q_PROPERTY(QList<QClassifier *> nestedClassifiers READ nestedClassifiers)
+    Q_PROPERTY(QSet<QReception *> ownedReceptions READ ownedReceptions)
+    Q_PROPERTY(QSet<QExtension *> extensions READ extensions STORED false)
+    Q_PROPERTY(QList<QOperation *> ownedOperations READ ownedOperations)
+    Q_PROPERTY(QList<QProperty *> ownedAttributes READ ownedAttributes)
+    Q_PROPERTY(QSet<QClass *> superClasses READ superClasses STORED false)
 
     Q_DISABLE_COPY(QClass)
     Q_DECLARE_PRIVATE(QClass)
@@ -90,9 +90,9 @@ public:
     virtual ~QClass();
 
     // Association ends from aggregated QElement
-    Q_INVOKABLE const QSet<QElement *> *ownedElements() const;
+    Q_INVOKABLE const QSet<QElement *> &ownedElements() const;
     Q_INVOKABLE QElement *owner() const;
-    Q_INVOKABLE const QSet<QComment *> *ownedComments() const;
+    Q_INVOKABLE const QSet<QComment *> &ownedComments() const;
     Q_INVOKABLE void addOwnedComment(QComment *ownedComment);
     Q_INVOKABLE void removeOwnedComment(QComment *ownedComment);
 
@@ -105,23 +105,23 @@ public:
     Q_INVOKABLE QStringExpression *nameExpression() const;
     Q_INVOKABLE void setNameExpression(QStringExpression *nameExpression);
     Q_INVOKABLE QNamespace *namespace_() const;
-    Q_INVOKABLE const QSet<QDependency *> *clientDependencies() const;
+    Q_INVOKABLE const QSet<QDependency *> &clientDependencies() const;
     Q_INVOKABLE void addClientDependency(QDependency *clientDependency);
     Q_INVOKABLE void removeClientDependency(QDependency *clientDependency);
 
     // Association ends from aggregated QNamespace
-    Q_INVOKABLE const QSet<QPackageImport *> *packageImports() const;
+    Q_INVOKABLE const QSet<QPackageImport *> &packageImports() const;
     Q_INVOKABLE void addPackageImport(QPackageImport *packageImport);
     Q_INVOKABLE void removePackageImport(QPackageImport *packageImport);
-    Q_INVOKABLE const QSet<QNamedElement *> *members() const;
-    Q_INVOKABLE const QSet<QPackageableElement *> *importedMembers() const;
-    Q_INVOKABLE const QSet<QElementImport *> *elementImports() const;
+    Q_INVOKABLE const QSet<QNamedElement *> &members() const;
+    Q_INVOKABLE const QSet<QPackageableElement *> &importedMembers() const;
+    Q_INVOKABLE const QSet<QElementImport *> &elementImports() const;
     Q_INVOKABLE void addElementImport(QElementImport *elementImport);
     Q_INVOKABLE void removeElementImport(QElementImport *elementImport);
-    Q_INVOKABLE const QSet<QConstraint *> *ownedRules() const;
+    Q_INVOKABLE const QSet<QConstraint *> &ownedRules() const;
     Q_INVOKABLE void addOwnedRule(QConstraint *ownedRule);
     Q_INVOKABLE void removeOwnedRule(QConstraint *ownedRule);
-    Q_INVOKABLE const QSet<QNamedElement *> *ownedMembers() const;
+    Q_INVOKABLE const QSet<QNamedElement *> &ownedMembers() const;
 
     // Association ends from aggregated QParameterableElement
     Q_INVOKABLE QTemplateParameter *owningTemplateParameter() const;
@@ -142,11 +142,11 @@ public:
     Q_INVOKABLE void unsetLeaf();
 
     // Association ends from aggregated QRedefinableElement
-    Q_INVOKABLE const QSet<QRedefinableElement *> *redefinedElements() const;
-    Q_INVOKABLE const QSet<QClassifier *> *redefinitionContexts() const;
+    Q_INVOKABLE const QSet<QRedefinableElement *> &redefinedElements() const;
+    Q_INVOKABLE const QSet<QClassifier *> &redefinitionContexts() const;
 
     // Association ends from aggregated QTemplateableElement
-    Q_INVOKABLE const QSet<QTemplateBinding *> *templateBindings() const;
+    Q_INVOKABLE const QSet<QTemplateBinding *> &templateBindings() const;
     Q_INVOKABLE void addTemplateBinding(QTemplateBinding *templateBinding);
     Q_INVOKABLE void removeTemplateBinding(QTemplateBinding *templateBinding);
 
@@ -156,52 +156,52 @@ public:
     Q_INVOKABLE void unsetFinalSpecialization();
 
     // Association ends from aggregated QClassifier
-    Q_INVOKABLE const QSet<QUseCase *> *ownedUseCases() const;
+    Q_INVOKABLE const QSet<QUseCase *> &ownedUseCases() const;
     Q_INVOKABLE void addOwnedUseCase(QUseCase *ownedUseCase);
     Q_INVOKABLE void removeOwnedUseCase(QUseCase *ownedUseCase);
-    Q_INVOKABLE const QSet<QGeneralizationSet *> *powertypeExtents() const;
+    Q_INVOKABLE const QSet<QGeneralizationSet *> &powertypeExtents() const;
     Q_INVOKABLE void addPowertypeExtent(QGeneralizationSet *powertypeExtent);
     Q_INVOKABLE void removePowertypeExtent(QGeneralizationSet *powertypeExtent);
-    Q_INVOKABLE const QSet<QUseCase *> *useCases() const;
+    Q_INVOKABLE const QSet<QUseCase *> &useCases() const;
     Q_INVOKABLE void addUseCase(QUseCase *useCase);
     Q_INVOKABLE void removeUseCase(QUseCase *useCase);
     Q_INVOKABLE QClassifierTemplateParameter *templateParameter() const;
     Q_INVOKABLE void setTemplateParameter(QClassifierTemplateParameter *templateParameter);
-    Q_INVOKABLE const QSet<QClassifier *> *redefinedClassifiers() const;
+    Q_INVOKABLE const QSet<QClassifier *> &redefinedClassifiers() const;
     Q_INVOKABLE void addRedefinedClassifier(QClassifier *redefinedClassifier);
     Q_INVOKABLE void removeRedefinedClassifier(QClassifier *redefinedClassifier);
     Q_INVOKABLE QRedefinableTemplateSignature *ownedTemplateSignature() const;
     Q_INVOKABLE void setOwnedTemplateSignature(QRedefinableTemplateSignature *ownedTemplateSignature);
-    Q_INVOKABLE const QSet<QCollaborationUse *> *collaborationUses() const;
+    Q_INVOKABLE const QSet<QCollaborationUse *> &collaborationUses() const;
     Q_INVOKABLE void addCollaborationUse(QCollaborationUse *collaborationUse);
     Q_INVOKABLE void removeCollaborationUse(QCollaborationUse *collaborationUse);
-    Q_INVOKABLE const QSet<QProperty *> *attributes() const;
-    Q_INVOKABLE const QSet<QFeature *> *features() const;
+    Q_INVOKABLE const QSet<QProperty *> &attributes() const;
+    Q_INVOKABLE const QSet<QFeature *> &features() const;
     Q_INVOKABLE QCollaborationUse *representation() const;
     Q_INVOKABLE void setRepresentation(QCollaborationUse *representation);
-    Q_INVOKABLE const QSet<QGeneralization *> *generalizations() const;
+    Q_INVOKABLE const QSet<QGeneralization *> &generalizations() const;
     Q_INVOKABLE void addGeneralization(QGeneralization *generalization);
     Q_INVOKABLE void removeGeneralization(QGeneralization *generalization);
-    Q_INVOKABLE const QSet<QNamedElement *> *inheritedMembers() const;
-    Q_INVOKABLE const QSet<QSubstitution *> *substitutions() const;
+    Q_INVOKABLE const QSet<QNamedElement *> &inheritedMembers() const;
+    Q_INVOKABLE const QSet<QSubstitution *> &substitutions() const;
     Q_INVOKABLE void addSubstitution(QSubstitution *substitution);
     Q_INVOKABLE void removeSubstitution(QSubstitution *substitution);
 
     // Association ends from aggregated QStructuredClassifier
-    Q_INVOKABLE const QSet<QConnectableElement *> *roles() const;
-    Q_INVOKABLE const QSet<QProperty *> *parts() const;
-    Q_INVOKABLE const QSet<QConnector *> *ownedConnectors() const;
+    Q_INVOKABLE const QSet<QConnectableElement *> &roles() const;
+    Q_INVOKABLE const QSet<QProperty *> &parts() const;
+    Q_INVOKABLE const QSet<QConnector *> &ownedConnectors() const;
     Q_INVOKABLE void addOwnedConnector(QConnector *ownedConnector);
     Q_INVOKABLE void removeOwnedConnector(QConnector *ownedConnector);
 
     // Association ends from aggregated QEncapsulatedClassifier
-    Q_INVOKABLE const QSet<QPort *> *ownedPorts() const;
+    Q_INVOKABLE const QSet<QPort *> &ownedPorts() const;
 
     // Association ends from aggregated QBehavioredClassifier
-    Q_INVOKABLE const QSet<QBehavior *> *ownedBehaviors() const;
+    Q_INVOKABLE const QSet<QBehavior *> &ownedBehaviors() const;
     Q_INVOKABLE void addOwnedBehavior(QBehavior *ownedBehavior);
     Q_INVOKABLE void removeOwnedBehavior(QBehavior *ownedBehavior);
-    Q_INVOKABLE const QSet<QInterfaceRealization *> *interfaceRealizations() const;
+    Q_INVOKABLE const QSet<QInterfaceRealization *> &interfaceRealizations() const;
     Q_INVOKABLE void addInterfaceRealization(QInterfaceRealization *interfaceRealization);
     Q_INVOKABLE void removeInterfaceRealization(QInterfaceRealization *interfaceRealization);
     Q_INVOKABLE QBehavior *classifierBehavior() const;
@@ -216,26 +216,25 @@ public:
     Q_INVOKABLE void unsetActive();
 
     // Association ends from QClass
-    Q_INVOKABLE const QList<QClassifier *> *nestedClassifiers() const;
+    Q_INVOKABLE const QList<QClassifier *> &nestedClassifiers() const;
     Q_INVOKABLE void addNestedClassifier(QClassifier *nestedClassifier);
     Q_INVOKABLE void removeNestedClassifier(QClassifier *nestedClassifier);
-    Q_INVOKABLE const QSet<QReception *> *ownedReceptions() const;
+    Q_INVOKABLE const QSet<QReception *> &ownedReceptions() const;
     Q_INVOKABLE void addOwnedReception(QReception *ownedReception);
     Q_INVOKABLE void removeOwnedReception(QReception *ownedReception);
-    Q_INVOKABLE const QSet<QExtension *> *extensions() const;
-    Q_INVOKABLE const QList<QOperation *> *ownedOperations() const;
+    Q_INVOKABLE const QSet<QExtension *> &extensions() const;
+    Q_INVOKABLE const QList<QOperation *> &ownedOperations() const;
     Q_INVOKABLE void addOwnedOperation(QOperation *ownedOperation);
     Q_INVOKABLE void removeOwnedOperation(QOperation *ownedOperation);
-    Q_INVOKABLE const QList<QProperty *> *ownedAttributes() const;
+    Q_INVOKABLE const QList<QProperty *> &ownedAttributes() const;
     Q_INVOKABLE void addOwnedAttribute(QProperty *ownedAttribute);
     Q_INVOKABLE void removeOwnedAttribute(QProperty *ownedAttribute);
-    Q_INVOKABLE const QSet<QClass *> *superClasses() const;
+    Q_INVOKABLE const QSet<QClass *> &superClasses() const;
     Q_INVOKABLE void addSuperClass(QClass *superClass);
     Q_INVOKABLE void removeSuperClass(QClass *superClass);
 
     // Operations
-    Q_INVOKABLE const QSet<QNamedElement *> *inherit(const QSet<QNamedElement *> *inhs) const;
-    virtual void registerMetaTypes() const;
+    Q_INVOKABLE const QSet<QNamedElement *> &inherit(const QSet<QNamedElement *> &inhs) const;
 
     // Classes which access read-only opposite properties should be friend
     friend class QExtensionPrivate;
@@ -249,10 +248,6 @@ private:
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QClass) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QClass) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QClass) *> *)
 
 QT_END_HEADER
 

@@ -74,21 +74,6 @@ QActor::~QActor()
 {
 }
 
-void QActor::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QActor) *>("QT_PREPEND_NAMESPACE_QTUML(QActor) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QActor) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QActor) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QActor) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QActor) *> *");
-    qRegisterMetaType<QActor *>("QActor *");
-    qRegisterMetaType<const QSet<QActor *> *>("const QSet<QActor *> *");
-    qRegisterMetaType<const QList<QActor *> *>("const QList<QActor *> *");
-
-    QBehavioredClassifier::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 #include "moc_qactor.cpp"
 
 QT_END_NAMESPACE_QTUML

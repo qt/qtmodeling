@@ -113,28 +113,6 @@ void QExtensionPoint::setUseCase(QUseCase *useCase)
     }
 }
 
-void QExtensionPoint::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QExtensionPoint) *>("QT_PREPEND_NAMESPACE_QTUML(QExtensionPoint) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QExtensionPoint) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QExtensionPoint) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QExtensionPoint) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QExtensionPoint) *> *");
-    qRegisterMetaType<QExtensionPoint *>("QExtensionPoint *");
-    qRegisterMetaType<const QSet<QExtensionPoint *> *>("const QSet<QExtensionPoint *> *");
-    qRegisterMetaType<const QList<QExtensionPoint *> *>("const QList<QExtensionPoint *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QUseCase) *>("QT_PREPEND_NAMESPACE_QTUML(QUseCase) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QUseCase) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QUseCase) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QUseCase) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QUseCase) *> *");
-    qRegisterMetaType<QUseCase *>("QUseCase *");
-    qRegisterMetaType<const QSet<QUseCase *> *>("const QSet<QUseCase *> *");
-    qRegisterMetaType<const QList<QUseCase *> *>("const QList<QUseCase *> *");
-
-    QRedefinableElement::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 #include "moc_qextensionpoint.cpp"
 
 QT_END_NAMESPACE_QTUML

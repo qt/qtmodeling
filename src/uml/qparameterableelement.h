@@ -80,17 +80,12 @@ public:
     // Operations
     Q_INVOKABLE bool isCompatibleWith(const QParameterableElement *p) const;
     Q_INVOKABLE bool isTemplateParameter() const;
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QParameterableElement(QParameterableElementPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QParameterableElement) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QParameterableElement) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QParameterableElement) *> *)
 
 QT_END_HEADER
 

@@ -74,9 +74,9 @@ public:
     virtual ~QPackagePrivate();
 
     QString URI;
-    QSet<QPackageableElement *> *packagedElements;
+    QSet<QPackageableElement *> packagedElements;
     QPackage *nestingPackage;
-    QSet<QPackageMerge *> *packageMerges;
+    QSet<QPackageMerge *> packageMerges;
 };
 
 QT_END_NAMESPACE_QTMOF

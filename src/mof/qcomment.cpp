@@ -44,14 +44,12 @@
 
 QT_BEGIN_NAMESPACE_QTMOF
 
-QCommentPrivate::QCommentPrivate() :
-    annotatedElements(new QSet<QElement *>)
+QCommentPrivate::QCommentPrivate()
 {
 }
 
 QCommentPrivate::~QCommentPrivate()
 {
-    delete annotatedElements;
 }
 
 /*!
@@ -108,7 +106,7 @@ void QComment::setBody(QString body)
 /*!
     References the Element(s) being commented.
  */
-const QSet<QElement *> *QComment::annotatedElements() const
+const QSet<QElement *> &QComment::annotatedElements() const
 {
     // This is a read-write association end
 
@@ -121,8 +119,8 @@ void QComment::addAnnotatedElement(QElement *annotatedElement)
     // This is a read-write association end
 
     Q_D(QComment);
-    if (!d->annotatedElements->contains(annotatedElement)) {
-        d->annotatedElements->insert(annotatedElement);
+    if (!d->annotatedElements.contains(annotatedElement)) {
+        d->annotatedElements.insert(annotatedElement);
     }
 }
 
@@ -131,24 +129,9 @@ void QComment::removeAnnotatedElement(QElement *annotatedElement)
     // This is a read-write association end
 
     Q_D(QComment);
-    if (d->annotatedElements->contains(annotatedElement)) {
-        d->annotatedElements->remove(annotatedElement);
+    if (d->annotatedElements.contains(annotatedElement)) {
+        d->annotatedElements.remove(annotatedElement);
     }
-}
-
-void QComment::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QComment) *>("QT_PREPEND_NAMESPACE_QTMOF(QComment) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QComment) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QComment) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QComment) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QComment) *> *");
-    qRegisterMetaType<QComment *>("QComment *");
-    qRegisterMetaType<const QSet<QComment *> *>("const QSet<QComment *> *");
-    qRegisterMetaType<const QList<QComment *> *>("const QList<QComment *> *");
-
-    QElement::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qcomment.cpp"

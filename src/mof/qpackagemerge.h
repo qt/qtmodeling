@@ -76,17 +76,12 @@ public:
     Q_INVOKABLE void setMergedPackage(QPackage *mergedPackage);
     Q_INVOKABLE QPackage *receivingPackage() const;
     Q_INVOKABLE void setReceivingPackage(QPackage *receivingPackage);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QPackageMerge(QPackageMergePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTMOF
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTMOF(QPackageMerge) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTMOF(QPackageMerge) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTMOF(QPackageMerge) *> *)
 
 QT_END_HEADER
 

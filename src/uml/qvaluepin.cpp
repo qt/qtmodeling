@@ -110,28 +110,6 @@ void QValuePin::setValue(QValueSpecification *value)
     }
 }
 
-void QValuePin::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QValuePin) *>("QT_PREPEND_NAMESPACE_QTUML(QValuePin) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QValuePin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QValuePin) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QValuePin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QValuePin) *> *");
-    qRegisterMetaType<QValuePin *>("QValuePin *");
-    qRegisterMetaType<const QSet<QValuePin *> *>("const QSet<QValuePin *> *");
-    qRegisterMetaType<const QList<QValuePin *> *>("const QList<QValuePin *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *>("QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *");
-    qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
-    qRegisterMetaType<const QSet<QValueSpecification *> *>("const QSet<QValueSpecification *> *");
-    qRegisterMetaType<const QList<QValueSpecification *> *>("const QList<QValueSpecification *> *");
-
-    QInputPin::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 #include "moc_qvaluepin.cpp"
 
 QT_END_NAMESPACE_QTUML

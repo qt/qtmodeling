@@ -62,8 +62,8 @@ class Q_UML_EXPORT QOpaqueBehavior : public QBehavior
 {
     Q_OBJECT
 
-    Q_PROPERTY(const QList<QString> * languages READ languages)
-    Q_PROPERTY(const QList<QString> * bodies READ bodies)
+    Q_PROPERTY(QList<QString> languages READ languages)
+    Q_PROPERTY(QList<QString> bodies READ bodies)
 
     Q_DISABLE_COPY(QOpaqueBehavior)
     Q_DECLARE_PRIVATE(QOpaqueBehavior)
@@ -73,23 +73,18 @@ public:
     virtual ~QOpaqueBehavior();
 
     // Attributes from QOpaqueBehavior
-    Q_INVOKABLE const QList<QString> *languages() const;
+    Q_INVOKABLE const QList<QString> languages() const;
     Q_INVOKABLE void addLanguage(QString language);
     Q_INVOKABLE void removeLanguage(QString language);
-    Q_INVOKABLE const QList<QString> *bodies() const;
+    Q_INVOKABLE const QList<QString> bodies() const;
     Q_INVOKABLE void addBody(QString body);
     Q_INVOKABLE void removeBody(QString body);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QOpaqueBehavior(QOpaqueBehaviorPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QOpaqueBehavior) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QOpaqueBehavior) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QOpaqueBehavior) *> *)
 
 QT_END_HEADER
 

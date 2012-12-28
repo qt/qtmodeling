@@ -80,17 +80,12 @@ public:
     Q_INVOKABLE void setResult(QOutputPin *result);
     Q_INVOKABLE QInputPin *first() const;
     Q_INVOKABLE void setFirst(QInputPin *first);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QTestIdentityAction(QTestIdentityActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QTestIdentityAction) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QTestIdentityAction) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QTestIdentityAction) *> *)
 
 QT_END_HEADER
 

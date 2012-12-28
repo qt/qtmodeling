@@ -115,13 +115,13 @@ void QProtocolTransition::setPostCondition(QConstraint *postCondition)
 /*!
     This association refers to the associated operation. It is derived from the operation of the call trigger when applicable.
  */
-const QSet<QOperation *> *QProtocolTransition::referred() const
+const QSet<QOperation *> &QProtocolTransition::referred() const
 {
     // This is a read-only derived association end
 
     qWarning("QProtocolTransition::referred: to be implemented (this is a derived associationend)");
 
-    return 0; // change here to your derived return
+    return *(new QSet<QOperation *>); // change here to your derived return
 }
 
 /*!
@@ -146,35 +146,6 @@ void QProtocolTransition::setPreCondition(QConstraint *preCondition)
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QTransition *>(this))->setGuard(qwrappedobject_cast<QConstraint *>(preCondition));
     }
-}
-
-void QProtocolTransition::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QProtocolTransition) *>("QT_PREPEND_NAMESPACE_QTUML(QProtocolTransition) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QProtocolTransition) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QProtocolTransition) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QProtocolTransition) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QProtocolTransition) *> *");
-    qRegisterMetaType<QProtocolTransition *>("QProtocolTransition *");
-    qRegisterMetaType<const QSet<QProtocolTransition *> *>("const QSet<QProtocolTransition *> *");
-    qRegisterMetaType<const QList<QProtocolTransition *> *>("const QList<QProtocolTransition *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QConstraint) *>("QT_PREPEND_NAMESPACE_QTUML(QConstraint) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QConstraint) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QConstraint) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QConstraint) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QConstraint) *> *");
-    qRegisterMetaType<QConstraint *>("QConstraint *");
-    qRegisterMetaType<const QSet<QConstraint *> *>("const QSet<QConstraint *> *");
-    qRegisterMetaType<const QList<QConstraint *> *>("const QList<QConstraint *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QOperation) *>("QT_PREPEND_NAMESPACE_QTUML(QOperation) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *");
-    qRegisterMetaType<QOperation *>("QOperation *");
-    qRegisterMetaType<const QSet<QOperation *> *>("const QSet<QOperation *> *");
-    qRegisterMetaType<const QList<QOperation *> *>("const QList<QOperation *> *");
-
-    QTransition::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qprotocoltransition.cpp"

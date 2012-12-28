@@ -47,14 +47,12 @@
 QT_BEGIN_NAMESPACE_QTUML
 
 QCallActionPrivate::QCallActionPrivate() :
-    isSynchronous(true),
-    results(new QList<QOutputPin *>)
+    isSynchronous(true)
 {
 }
 
 QCallActionPrivate::~QCallActionPrivate()
 {
-    delete results;
 }
 
 /*!
@@ -116,7 +114,7 @@ void QCallAction::unsetSynchronous()
 /*!
     A list of output pins where the results of performing the invocation are placed.
  */
-const QList<QOutputPin *> *QCallAction::results() const
+const QList<QOutputPin *> &QCallAction::results() const
 {
     // This is a read-write association end
 
@@ -129,8 +127,8 @@ void QCallAction::addResult(QOutputPin *result)
     // This is a read-write association end
 
     Q_D(QCallAction);
-    if (!d->results->contains(result)) {
-        d->results->append(result);
+    if (!d->results.contains(result)) {
+        d->results.append(result);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QActionPrivate *>(d))->addOutput(qwrappedobject_cast<QOutputPin *>(result));
@@ -142,34 +140,12 @@ void QCallAction::removeResult(QOutputPin *result)
     // This is a read-write association end
 
     Q_D(QCallAction);
-    if (d->results->contains(result)) {
-        d->results->removeAll(result);
+    if (d->results.contains(result)) {
+        d->results.removeAll(result);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QActionPrivate *>(d))->removeOutput(qwrappedobject_cast<QOutputPin *>(result));
     }
-}
-
-void QCallAction::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QCallAction) *>("QT_PREPEND_NAMESPACE_QTUML(QCallAction) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QCallAction) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QCallAction) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QCallAction) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QCallAction) *> *");
-    qRegisterMetaType<QCallAction *>("QCallAction *");
-    qRegisterMetaType<const QSet<QCallAction *> *>("const QSet<QCallAction *> *");
-    qRegisterMetaType<const QList<QCallAction *> *>("const QList<QCallAction *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *");
-    qRegisterMetaType<QOutputPin *>("QOutputPin *");
-    qRegisterMetaType<const QSet<QOutputPin *> *>("const QSet<QOutputPin *> *");
-    qRegisterMetaType<const QList<QOutputPin *> *>("const QList<QOutputPin *> *");
-
-    QInvocationAction::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qcallaction.cpp"

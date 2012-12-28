@@ -67,7 +67,7 @@ public:
     explicit QSignalPrivate();
     virtual ~QSignalPrivate();
 
-    QList<QProperty *> *ownedAttributes;
+    QList<QProperty *> ownedAttributes;
 };
 
 QT_END_NAMESPACE_QTUML

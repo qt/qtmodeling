@@ -69,7 +69,7 @@ public:
     explicit QNodePrivate();
     virtual ~QNodePrivate();
 
-    QSet<QNode *> *nestedNodes;
+    QSet<QNode *> nestedNodes;
 };
 
 QT_END_NAMESPACE_QTUML

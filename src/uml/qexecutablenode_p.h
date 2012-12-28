@@ -66,7 +66,7 @@ public:
     explicit QExecutableNodePrivate();
     virtual ~QExecutableNodePrivate();
 
-    QSet<QExceptionHandler *> *handlers;
+    QSet<QExceptionHandler *> handlers;
 };
 
 QT_END_NAMESPACE_QTUML

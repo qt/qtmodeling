@@ -51,14 +51,12 @@ QPortPrivate::QPortPrivate() :
     isConjugated(false),
     isBehavior(false),
     isService(true),
-    protocol(0),
-    redefinedPorts(new QSet<QPort *>)
+    protocol(0)
 {
 }
 
 QPortPrivate::~QPortPrivate()
 {
-    delete redefinedPorts;
 }
 
 /*!
@@ -193,31 +191,31 @@ void QPort::setProtocol(QProtocolStateMachine *protocol)
 /*!
     References the interfaces specifying the set of operations and receptions that the classifier expects its environment to handle via this port. This association is derived according to the value of isConjugated. If isConjugated is false, required is derived as the union of the sets of interfaces used by the type of the port and its supertypes. If isConjugated is true, it is derived as the union of the sets of interfaces realized by the type of the port and its supertypes, or directly from the type of the port if the port is typed by an interface.
  */
-const QSet<QInterface *> *QPort::required() const
+const QSet<QInterface *> &QPort::required() const
 {
     // This is a read-only derived association end
 
     qWarning("QPort::required: to be implemented (this is a derived associationend)");
 
-    return 0; // change here to your derived return
+    return *(new QSet<QInterface *>); // change here to your derived return
 }
 
 /*!
     References the interfaces specifying the set of operations and receptions that the classifier offers to its environment via this port, and which it will handle either directly or by forwarding it to a part of its internal structure. This association is derived according to the value of isConjugated. If isConjugated is false, provided is derived as the union of the sets of interfaces realized by the type of the port and its supertypes, or directly from the type of the port if the port is typed by an interface. If isConjugated is true, it is derived as the union of the sets of interfaces used by the type of the port and its supertypes.
  */
-const QSet<QInterface *> *QPort::provided() const
+const QSet<QInterface *> &QPort::provided() const
 {
     // This is a read-only derived association end
 
     qWarning("QPort::provided: to be implemented (this is a derived associationend)");
 
-    return 0; // change here to your derived return
+    return *(new QSet<QInterface *>); // change here to your derived return
 }
 
 /*!
     A port may be redefined when its containing classifier is specialized. The redefining port may have additional interfaces to those that are associated with the redefined port or it may replace an interface by one of its subtypes.
  */
-const QSet<QPort *> *QPort::redefinedPorts() const
+const QSet<QPort *> &QPort::redefinedPorts() const
 {
     // This is a read-write association end
 
@@ -230,8 +228,8 @@ void QPort::addRedefinedPort(QPort *redefinedPort)
     // This is a read-write association end
 
     Q_D(QPort);
-    if (!d->redefinedPorts->contains(redefinedPort)) {
-        d->redefinedPorts->insert(redefinedPort);
+    if (!d->redefinedPorts.contains(redefinedPort)) {
+        d->redefinedPorts.insert(redefinedPort);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QProperty *>(this))->addRedefinedProperty(qwrappedobject_cast<QProperty *>(redefinedPort));
@@ -243,41 +241,12 @@ void QPort::removeRedefinedPort(QPort *redefinedPort)
     // This is a read-write association end
 
     Q_D(QPort);
-    if (d->redefinedPorts->contains(redefinedPort)) {
-        d->redefinedPorts->remove(redefinedPort);
+    if (d->redefinedPorts.contains(redefinedPort)) {
+        d->redefinedPorts.remove(redefinedPort);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QProperty *>(this))->removeRedefinedProperty(qwrappedobject_cast<QProperty *>(redefinedPort));
     }
-}
-
-void QPort::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QPort) *>("QT_PREPEND_NAMESPACE_QTUML(QPort) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QPort) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QPort) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QPort) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QPort) *> *");
-    qRegisterMetaType<QPort *>("QPort *");
-    qRegisterMetaType<const QSet<QPort *> *>("const QSet<QPort *> *");
-    qRegisterMetaType<const QList<QPort *> *>("const QList<QPort *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QProtocolStateMachine) *>("QT_PREPEND_NAMESPACE_QTUML(QProtocolStateMachine) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QProtocolStateMachine) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QProtocolStateMachine) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QProtocolStateMachine) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QProtocolStateMachine) *> *");
-    qRegisterMetaType<QProtocolStateMachine *>("QProtocolStateMachine *");
-    qRegisterMetaType<const QSet<QProtocolStateMachine *> *>("const QSet<QProtocolStateMachine *> *");
-    qRegisterMetaType<const QList<QProtocolStateMachine *> *>("const QList<QProtocolStateMachine *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInterface) *>("QT_PREPEND_NAMESPACE_QTUML(QInterface) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInterface) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInterface) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInterface) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInterface) *> *");
-    qRegisterMetaType<QInterface *>("QInterface *");
-    qRegisterMetaType<const QSet<QInterface *> *>("const QSet<QInterface *> *");
-    qRegisterMetaType<const QList<QInterface *> *>("const QList<QInterface *> *");
-
-    QProperty::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 // Overriden methods for subsetted properties

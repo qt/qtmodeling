@@ -64,17 +64,12 @@ class Q_UML_EXPORT QClearVariableAction : public QVariableAction
 public:
     Q_INVOKABLE explicit QClearVariableAction(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QClearVariableAction();
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QClearVariableAction(QClearVariableActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QClearVariableAction) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QClearVariableAction) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QClearVariableAction) *> *)
 
 QT_END_HEADER
 

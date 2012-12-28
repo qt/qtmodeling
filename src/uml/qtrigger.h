@@ -65,7 +65,7 @@ class Q_UML_EXPORT QTrigger : public QNamedElement
 {
     Q_OBJECT
 
-    Q_PROPERTY(const QSet<QPort *> * ports READ ports)
+    Q_PROPERTY(QSet<QPort *> ports READ ports)
     Q_PROPERTY(QEvent * event READ event WRITE setEvent)
 
     Q_DISABLE_COPY(QTrigger)
@@ -76,22 +76,17 @@ public:
     virtual ~QTrigger();
 
     // Association ends from QTrigger
-    Q_INVOKABLE const QSet<QPort *> *ports() const;
+    Q_INVOKABLE const QSet<QPort *> &ports() const;
     Q_INVOKABLE void addPort(QPort *port);
     Q_INVOKABLE void removePort(QPort *port);
     Q_INVOKABLE QEvent *event() const;
     Q_INVOKABLE void setEvent(QEvent *event);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QTrigger(QTriggerPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QTrigger) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QTrigger) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QTrigger) *> *)
 
 QT_END_HEADER
 

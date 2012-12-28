@@ -64,7 +64,7 @@ public:
     explicit QInformationItemPrivate();
     virtual ~QInformationItemPrivate();
 
-    QSet<QClassifier *> *represented;
+    QSet<QClassifier *> represented;
 };
 
 QT_END_NAMESPACE_QTUML

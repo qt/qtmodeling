@@ -67,7 +67,7 @@ class Q_UML_EXPORT QTemplateableElement : public QElement
     Q_OBJECT
 
     Q_PROPERTY(QTemplateSignature * ownedTemplateSignature READ ownedTemplateSignature WRITE setOwnedTemplateSignature)
-    Q_PROPERTY(const QSet<QTemplateBinding *> * templateBindings READ templateBindings)
+    Q_PROPERTY(QSet<QTemplateBinding *> templateBindings READ templateBindings)
 
     Q_DISABLE_COPY(QTemplateableElement)
     Q_DECLARE_PRIVATE(QTemplateableElement)
@@ -79,24 +79,19 @@ public:
     // Association ends from QTemplateableElement
     Q_INVOKABLE QTemplateSignature *ownedTemplateSignature() const;
     Q_INVOKABLE void setOwnedTemplateSignature(QTemplateSignature *ownedTemplateSignature);
-    Q_INVOKABLE const QSet<QTemplateBinding *> *templateBindings() const;
+    Q_INVOKABLE const QSet<QTemplateBinding *> &templateBindings() const;
     Q_INVOKABLE void addTemplateBinding(QTemplateBinding *templateBinding);
     Q_INVOKABLE void removeTemplateBinding(QTemplateBinding *templateBinding);
 
     // Operations
     Q_INVOKABLE bool isTemplate() const;
-    Q_INVOKABLE const QSet<QParameterableElement *> *parameterableElements() const;
-    virtual void registerMetaTypes() const;
+    Q_INVOKABLE const QSet<QParameterableElement *> &parameterableElements() const;
 
 protected:
     explicit QTemplateableElement(QTemplateableElementPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QTemplateableElement) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QTemplateableElement) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QTemplateableElement) *> *)
 
 QT_END_HEADER
 

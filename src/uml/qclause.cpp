@@ -48,22 +48,12 @@
 QT_BEGIN_NAMESPACE_QTUML
 
 QClausePrivate::QClausePrivate() :
-    successorClauses(new QSet<QClause *>),
-    decider(0),
-    predecessorClauses(new QSet<QClause *>),
-    bodyOutputs(new QList<QOutputPin *>),
-    bodies(new QSet<QExecutableNode *>),
-    tests(new QSet<QExecutableNode *>)
+    decider(0)
 {
 }
 
 QClausePrivate::~QClausePrivate()
 {
-    delete successorClauses;
-    delete predecessorClauses;
-    delete bodyOutputs;
-    delete bodies;
-    delete tests;
 }
 
 /*!
@@ -95,7 +85,7 @@ QClause::~QClause()
 /*!
     A set of clauses which may not be tested unless the current clause tests false.
  */
-const QSet<QClause *> *QClause::successorClauses() const
+const QSet<QClause *> &QClause::successorClauses() const
 {
     // This is a read-write association end
 
@@ -108,8 +98,8 @@ void QClause::addSuccessorClause(QClause *successorClause)
     // This is a read-write association end
 
     Q_D(QClause);
-    if (!d->successorClauses->contains(successorClause)) {
-        d->successorClauses->insert(successorClause);
+    if (!d->successorClauses.contains(successorClause)) {
+        d->successorClauses.insert(successorClause);
 
         // Adjust opposite property
         successorClause->addPredecessorClause(this);
@@ -121,8 +111,8 @@ void QClause::removeSuccessorClause(QClause *successorClause)
     // This is a read-write association end
 
     Q_D(QClause);
-    if (d->successorClauses->contains(successorClause)) {
-        d->successorClauses->remove(successorClause);
+    if (d->successorClauses.contains(successorClause)) {
+        d->successorClauses.remove(successorClause);
 
         // Adjust opposite property
         if (successorClause)
@@ -154,7 +144,7 @@ void QClause::setDecider(QOutputPin *decider)
 /*!
     A set of clauses whose tests must all evaluate false before the current clause can be tested.
  */
-const QSet<QClause *> *QClause::predecessorClauses() const
+const QSet<QClause *> &QClause::predecessorClauses() const
 {
     // This is a read-write association end
 
@@ -167,8 +157,8 @@ void QClause::addPredecessorClause(QClause *predecessorClause)
     // This is a read-write association end
 
     Q_D(QClause);
-    if (!d->predecessorClauses->contains(predecessorClause)) {
-        d->predecessorClauses->insert(predecessorClause);
+    if (!d->predecessorClauses.contains(predecessorClause)) {
+        d->predecessorClauses.insert(predecessorClause);
 
         // Adjust opposite property
         predecessorClause->addSuccessorClause(this);
@@ -180,8 +170,8 @@ void QClause::removePredecessorClause(QClause *predecessorClause)
     // This is a read-write association end
 
     Q_D(QClause);
-    if (d->predecessorClauses->contains(predecessorClause)) {
-        d->predecessorClauses->remove(predecessorClause);
+    if (d->predecessorClauses.contains(predecessorClause)) {
+        d->predecessorClauses.remove(predecessorClause);
 
         // Adjust opposite property
         if (predecessorClause)
@@ -192,7 +182,7 @@ void QClause::removePredecessorClause(QClause *predecessorClause)
 /*!
     A list of output pins within the body fragment whose values are moved to the result pins of the containing conditional node after execution of the clause body.
  */
-const QList<QOutputPin *> *QClause::bodyOutputs() const
+const QList<QOutputPin *> &QClause::bodyOutputs() const
 {
     // This is a read-write association end
 
@@ -205,8 +195,8 @@ void QClause::addBodyOutput(QOutputPin *bodyOutput)
     // This is a read-write association end
 
     Q_D(QClause);
-    if (!d->bodyOutputs->contains(bodyOutput)) {
-        d->bodyOutputs->append(bodyOutput);
+    if (!d->bodyOutputs.contains(bodyOutput)) {
+        d->bodyOutputs.append(bodyOutput);
     }
 }
 
@@ -215,15 +205,15 @@ void QClause::removeBodyOutput(QOutputPin *bodyOutput)
     // This is a read-write association end
 
     Q_D(QClause);
-    if (d->bodyOutputs->contains(bodyOutput)) {
-        d->bodyOutputs->removeAll(bodyOutput);
+    if (d->bodyOutputs.contains(bodyOutput)) {
+        d->bodyOutputs.removeAll(bodyOutput);
     }
 }
 
 /*!
     A nested activity fragment that is executed if the test evaluates to true and the clause is chosen over any concurrent clauses that also evaluate to true.
  */
-const QSet<QExecutableNode *> *QClause::bodies() const
+const QSet<QExecutableNode *> &QClause::bodies() const
 {
     // This is a read-write association end
 
@@ -236,8 +226,8 @@ void QClause::addBody(QExecutableNode *body)
     // This is a read-write association end
 
     Q_D(QClause);
-    if (!d->bodies->contains(body)) {
-        d->bodies->insert(body);
+    if (!d->bodies.contains(body)) {
+        d->bodies.insert(body);
     }
 }
 
@@ -246,15 +236,15 @@ void QClause::removeBody(QExecutableNode *body)
     // This is a read-write association end
 
     Q_D(QClause);
-    if (d->bodies->contains(body)) {
-        d->bodies->remove(body);
+    if (d->bodies.contains(body)) {
+        d->bodies.remove(body);
     }
 }
 
 /*!
     A nested activity fragment with a designated output pin that specifies the result of the test.
  */
-const QSet<QExecutableNode *> *QClause::tests() const
+const QSet<QExecutableNode *> &QClause::tests() const
 {
     // This is a read-write association end
 
@@ -267,8 +257,8 @@ void QClause::addTest(QExecutableNode *test)
     // This is a read-write association end
 
     Q_D(QClause);
-    if (!d->tests->contains(test)) {
-        d->tests->insert(test);
+    if (!d->tests.contains(test)) {
+        d->tests.insert(test);
     }
 }
 
@@ -277,38 +267,9 @@ void QClause::removeTest(QExecutableNode *test)
     // This is a read-write association end
 
     Q_D(QClause);
-    if (d->tests->contains(test)) {
-        d->tests->remove(test);
+    if (d->tests.contains(test)) {
+        d->tests.remove(test);
     }
-}
-
-void QClause::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QClause) *>("QT_PREPEND_NAMESPACE_QTUML(QClause) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QClause) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QClause) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QClause) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QClause) *> *");
-    qRegisterMetaType<QClause *>("QClause *");
-    qRegisterMetaType<const QSet<QClause *> *>("const QSet<QClause *> *");
-    qRegisterMetaType<const QList<QClause *> *>("const QList<QClause *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *>("QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *> *");
-    qRegisterMetaType<QExecutableNode *>("QExecutableNode *");
-    qRegisterMetaType<const QSet<QExecutableNode *> *>("const QSet<QExecutableNode *> *");
-    qRegisterMetaType<const QList<QExecutableNode *> *>("const QList<QExecutableNode *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *");
-    qRegisterMetaType<QOutputPin *>("QOutputPin *");
-    qRegisterMetaType<const QSet<QOutputPin *> *>("const QSet<QOutputPin *> *");
-    qRegisterMetaType<const QList<QOutputPin *> *>("const QList<QOutputPin *> *");
-
-    QElement::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qclause.cpp"

@@ -67,8 +67,8 @@ class Q_UML_EXPORT QDependency : public QWrappedObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(const QSet<QNamedElement *> * clients READ clients)
-    Q_PROPERTY(const QSet<QNamedElement *> * suppliers READ suppliers)
+    Q_PROPERTY(QSet<QNamedElement *> clients READ clients)
+    Q_PROPERTY(QSet<QNamedElement *> suppliers READ suppliers)
 
     Q_DISABLE_COPY(QDependency)
     Q_DECLARE_PRIVATE(QDependency)
@@ -78,9 +78,9 @@ public:
     virtual ~QDependency();
 
     // Association ends from aggregated QElement
-    Q_INVOKABLE const QSet<QElement *> *ownedElements() const;
+    Q_INVOKABLE const QSet<QElement *> &ownedElements() const;
     Q_INVOKABLE QElement *owner() const;
-    Q_INVOKABLE const QSet<QComment *> *ownedComments() const;
+    Q_INVOKABLE const QSet<QComment *> &ownedComments() const;
     Q_INVOKABLE void addOwnedComment(QComment *ownedComment);
     Q_INVOKABLE void removeOwnedComment(QComment *ownedComment);
 
@@ -99,7 +99,7 @@ public:
     Q_INVOKABLE QStringExpression *nameExpression() const;
     Q_INVOKABLE void setNameExpression(QStringExpression *nameExpression);
     Q_INVOKABLE QNamespace *namespace_() const;
-    Q_INVOKABLE const QSet<QDependency *> *clientDependencies() const;
+    Q_INVOKABLE const QSet<QDependency *> &clientDependencies() const;
     Q_INVOKABLE void addClientDependency(QDependency *clientDependency);
     Q_INVOKABLE void removeClientDependency(QDependency *clientDependency);
 
@@ -109,20 +109,19 @@ public:
     Q_INVOKABLE void unsetVisibility();
 
     // Association ends from aggregated QRelationship
-    Q_INVOKABLE const QSet<QElement *> *relatedElements() const;
+    Q_INVOKABLE const QSet<QElement *> &relatedElements() const;
 
     // Association ends from aggregated QDirectedRelationship
-    Q_INVOKABLE const QSet<QElement *> *sources() const;
-    Q_INVOKABLE const QSet<QElement *> *targets() const;
+    Q_INVOKABLE const QSet<QElement *> &sources() const;
+    Q_INVOKABLE const QSet<QElement *> &targets() const;
 
     // Association ends from QDependency
-    Q_INVOKABLE const QSet<QNamedElement *> *clients() const;
+    Q_INVOKABLE const QSet<QNamedElement *> &clients() const;
     Q_INVOKABLE void addClient(QNamedElement *client);
     Q_INVOKABLE void removeClient(QNamedElement *client);
-    Q_INVOKABLE const QSet<QNamedElement *> *suppliers() const;
+    Q_INVOKABLE const QSet<QNamedElement *> &suppliers() const;
     Q_INVOKABLE void addSupplier(QNamedElement *supplier);
     Q_INVOKABLE void removeSupplier(QNamedElement *supplier);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QDependency(QDependencyPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
@@ -133,10 +132,6 @@ private:
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QDependency) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QDependency) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QDependency) *> *)
 
 QT_END_HEADER
 

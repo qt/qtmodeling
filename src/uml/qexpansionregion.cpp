@@ -47,16 +47,12 @@
 QT_BEGIN_NAMESPACE_QTUML
 
 QExpansionRegionPrivate::QExpansionRegionPrivate() :
-    mode(QtUml::ExpansionIterative),
-    inputElements(new QSet<QExpansionNode *>),
-    outputElements(new QSet<QExpansionNode *>)
+    mode(QtUml::ExpansionIterative)
 {
 }
 
 QExpansionRegionPrivate::~QExpansionRegionPrivate()
 {
-    delete inputElements;
-    delete outputElements;
 }
 
 /*!
@@ -118,7 +114,7 @@ void QExpansionRegion::unsetMode()
 /*!
     An object node that holds a separate element of the input collection during each of the multiple executions of the region.
  */
-const QSet<QExpansionNode *> *QExpansionRegion::inputElements() const
+const QSet<QExpansionNode *> &QExpansionRegion::inputElements() const
 {
     // This is a read-write association end
 
@@ -131,8 +127,8 @@ void QExpansionRegion::addInputElement(QExpansionNode *inputElement)
     // This is a read-write association end
 
     Q_D(QExpansionRegion);
-    if (!d->inputElements->contains(inputElement)) {
-        d->inputElements->insert(inputElement);
+    if (!d->inputElements.contains(inputElement)) {
+        d->inputElements.insert(inputElement);
 
         // Adjust opposite property
         inputElement->setRegionAsInput(this);
@@ -144,8 +140,8 @@ void QExpansionRegion::removeInputElement(QExpansionNode *inputElement)
     // This is a read-write association end
 
     Q_D(QExpansionRegion);
-    if (d->inputElements->contains(inputElement)) {
-        d->inputElements->remove(inputElement);
+    if (d->inputElements.contains(inputElement)) {
+        d->inputElements.remove(inputElement);
 
         // Adjust opposite property
         inputElement->setRegionAsInput(0);
@@ -155,7 +151,7 @@ void QExpansionRegion::removeInputElement(QExpansionNode *inputElement)
 /*!
     An object node that accepts a separate element of the output collection during each of the multiple executions of the region. The values are formed into a collection that is available when the execution of the region is complete.
  */
-const QSet<QExpansionNode *> *QExpansionRegion::outputElements() const
+const QSet<QExpansionNode *> &QExpansionRegion::outputElements() const
 {
     // This is a read-write association end
 
@@ -168,8 +164,8 @@ void QExpansionRegion::addOutputElement(QExpansionNode *outputElement)
     // This is a read-write association end
 
     Q_D(QExpansionRegion);
-    if (!d->outputElements->contains(outputElement)) {
-        d->outputElements->insert(outputElement);
+    if (!d->outputElements.contains(outputElement)) {
+        d->outputElements.insert(outputElement);
 
         // Adjust opposite property
         outputElement->setRegionAsOutput(this);
@@ -181,34 +177,12 @@ void QExpansionRegion::removeOutputElement(QExpansionNode *outputElement)
     // This is a read-write association end
 
     Q_D(QExpansionRegion);
-    if (d->outputElements->contains(outputElement)) {
-        d->outputElements->remove(outputElement);
+    if (d->outputElements.contains(outputElement)) {
+        d->outputElements.remove(outputElement);
 
         // Adjust opposite property
         outputElement->setRegionAsOutput(0);
     }
-}
-
-void QExpansionRegion::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QExpansionRegion) *>("QT_PREPEND_NAMESPACE_QTUML(QExpansionRegion) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QExpansionRegion) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QExpansionRegion) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QExpansionRegion) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QExpansionRegion) *> *");
-    qRegisterMetaType<QExpansionRegion *>("QExpansionRegion *");
-    qRegisterMetaType<const QSet<QExpansionRegion *> *>("const QSet<QExpansionRegion *> *");
-    qRegisterMetaType<const QList<QExpansionRegion *> *>("const QList<QExpansionRegion *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QExpansionNode) *>("QT_PREPEND_NAMESPACE_QTUML(QExpansionNode) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QExpansionNode) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QExpansionNode) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QExpansionNode) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QExpansionNode) *> *");
-    qRegisterMetaType<QExpansionNode *>("QExpansionNode *");
-    qRegisterMetaType<const QSet<QExpansionNode *> *>("const QSet<QExpansionNode *> *");
-    qRegisterMetaType<const QList<QExpansionNode *> *>("const QList<QExpansionNode *> *");
-
-    QStructuredActivityNode::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qexpansionregion.cpp"

@@ -67,8 +67,8 @@ public:
     explicit QDurationObservationPrivate();
     virtual ~QDurationObservationPrivate();
 
-    QSet<bool> *firstEvents;
-    QSet<QNamedElement *> *events;
+    QSet<bool> firstEvents;
+    QSet<QNamedElement *> events;
 };
 
 QT_END_NAMESPACE_QTUML

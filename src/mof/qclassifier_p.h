@@ -76,10 +76,10 @@ public:
 
     bool isAbstract;
     bool isFinalSpecialization;
-    QSet<QProperty *> *attributes;
-    QSet<QFeature *> *features;
-    QSet<QClassifier *> *redefinedClassifiers;
-    QSet<QGeneralization *> *generalizations;
+    QSet<QProperty *> attributes;
+    QSet<QFeature *> features;
+    QSet<QClassifier *> redefinedClassifiers;
+    QSet<QGeneralization *> generalizations;
 
     // Internal functions for read-only subsetted association ends
     void addAttribute(QProperty *attribute);

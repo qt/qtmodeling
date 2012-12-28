@@ -110,28 +110,6 @@ void QWriteVariableAction::setValue(QInputPin *value)
     }
 }
 
-void QWriteVariableAction::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QWriteVariableAction) *>("QT_PREPEND_NAMESPACE_QTUML(QWriteVariableAction) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QWriteVariableAction) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QWriteVariableAction) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QWriteVariableAction) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QWriteVariableAction) *> *");
-    qRegisterMetaType<QWriteVariableAction *>("QWriteVariableAction *");
-    qRegisterMetaType<const QSet<QWriteVariableAction *> *>("const QSet<QWriteVariableAction *> *");
-    qRegisterMetaType<const QList<QWriteVariableAction *> *>("const QList<QWriteVariableAction *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QInputPin) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
-    qRegisterMetaType<QInputPin *>("QInputPin *");
-    qRegisterMetaType<const QSet<QInputPin *> *>("const QSet<QInputPin *> *");
-    qRegisterMetaType<const QList<QInputPin *> *>("const QList<QInputPin *> *");
-
-    QVariableAction::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 #include "moc_qwritevariableaction.cpp"
 
 QT_END_NAMESPACE_QTUML

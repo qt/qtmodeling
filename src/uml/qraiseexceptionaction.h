@@ -73,17 +73,12 @@ public:
     // Association ends from QRaiseExceptionAction
     Q_INVOKABLE QInputPin *exception() const;
     Q_INVOKABLE void setException(QInputPin *exception);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QRaiseExceptionAction(QRaiseExceptionActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QRaiseExceptionAction) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QRaiseExceptionAction) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QRaiseExceptionAction) *> *)
 
 QT_END_HEADER
 

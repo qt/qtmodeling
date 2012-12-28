@@ -64,17 +64,12 @@ class Q_UML_EXPORT QEvent : public QPackageableElement
 public:
     Q_INVOKABLE explicit QEvent(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QEvent();
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QEvent(QEventPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QEvent) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QEvent) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QEvent) *> *)
 
 QT_END_HEADER
 

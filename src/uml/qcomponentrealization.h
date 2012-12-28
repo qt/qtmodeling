@@ -69,7 +69,7 @@ class Q_UML_EXPORT QComponentRealization : public QRealization
     Q_OBJECT
 
     Q_PROPERTY(QComponent * abstraction READ abstraction WRITE setAbstraction)
-    Q_PROPERTY(const QSet<QClassifier *> * realizingClassifiers READ realizingClassifiers)
+    Q_PROPERTY(QSet<QClassifier *> realizingClassifiers READ realizingClassifiers)
 
     Q_DISABLE_COPY(QComponentRealization)
     Q_DECLARE_PRIVATE(QComponentRealization)
@@ -81,7 +81,7 @@ public:
     // Association ends from QComponentRealization
     Q_INVOKABLE QComponent *abstraction() const;
     Q_INVOKABLE void setAbstraction(QComponent *abstraction);
-    Q_INVOKABLE const QSet<QClassifier *> *realizingClassifiers() const;
+    Q_INVOKABLE const QSet<QClassifier *> &realizingClassifiers() const;
     Q_INVOKABLE void addRealizingClassifier(QClassifier *realizingClassifier);
     Q_INVOKABLE void removeRealizingClassifier(QClassifier *realizingClassifier);
 
@@ -90,17 +90,12 @@ public:
     Q_INVOKABLE void removeSupplier(QWrappedObjectPointer<QComponent> abstraction);
     Q_INVOKABLE void addClient(QWrappedObjectPointer<QClassifier> realizingClassifier);
     Q_INVOKABLE void removeClient(QWrappedObjectPointer<QClassifier> realizingClassifier);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QComponentRealization(QComponentRealizationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QComponentRealization) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QComponentRealization) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QComponentRealization) *> *)
 
 QT_END_HEADER
 

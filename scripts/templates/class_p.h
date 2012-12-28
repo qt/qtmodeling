@@ -125,12 +125,12 @@ public:
 
 [%- FOREACH attribute IN class.attribute.values %]
 [%- IF (attribute.isDerived == 'false' or attribute.isDerivedUnion == 'true') %]
-    ${attribute.accessor.0.return.remove('^const ')}${attribute.accessor.0.name};
+    ${attribute.accessor.0.return.remove('^const ').remove('&$')}${attribute.accessor.0.name};
 [%- END -%]
 [%- END -%]
 [%- FOREACH associationend IN class.associationend.values %]
 [%- IF (associationend.isDerived == 'false' or associationend.isDerivedUnion == 'true') %]
-    ${associationend.accessor.0.return.remove('^const ')}${associationend.accessor.0.name};
+    ${associationend.accessor.0.return.remove('^const ').remove('&$')}${associationend.accessor.0.name};
 [%- END -%]
 [%- END -%]
 [%- IF class.item('attribute') -%]

@@ -77,17 +77,12 @@ public:
     Q_INVOKABLE void setValue(QInputPin *value);
     Q_INVOKABLE QProperty *qualifier() const;
     Q_INVOKABLE void setQualifier(QProperty *qualifier);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QQualifierValue(QQualifierValuePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QQualifierValue) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QQualifierValue) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QQualifierValue) *> *)
 
 QT_END_HEADER
 

@@ -149,28 +149,6 @@ void QSubstitution::setSubstitutingClassifier(QClassifier *substitutingClassifie
     }
 }
 
-void QSubstitution::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QSubstitution) *>("QT_PREPEND_NAMESPACE_QTUML(QSubstitution) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QSubstitution) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QSubstitution) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QSubstitution) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QSubstitution) *> *");
-    qRegisterMetaType<QSubstitution *>("QSubstitution *");
-    qRegisterMetaType<const QSet<QSubstitution *> *>("const QSet<QSubstitution *> *");
-    qRegisterMetaType<const QList<QSubstitution *> *>("const QList<QSubstitution *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *>("QT_PREPEND_NAMESPACE_QTUML(QClassifier) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *");
-    qRegisterMetaType<QClassifier *>("QClassifier *");
-    qRegisterMetaType<const QSet<QClassifier *> *>("const QSet<QClassifier *> *");
-    qRegisterMetaType<const QList<QClassifier *> *>("const QList<QClassifier *> *");
-
-    QRealization::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 // Overriden methods for subsetted properties
 
 void QSubstitution::addSupplier(QWrappedObjectPointer<QClassifier> contract)

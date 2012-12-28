@@ -140,28 +140,6 @@ qint32 QExtensionEnd::lowerBound() const
     return qint32(); // change here to your derived return
 }
 
-void QExtensionEnd::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QExtensionEnd) *>("QT_PREPEND_NAMESPACE_QTUML(QExtensionEnd) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QExtensionEnd) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QExtensionEnd) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QExtensionEnd) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QExtensionEnd) *> *");
-    qRegisterMetaType<QExtensionEnd *>("QExtensionEnd *");
-    qRegisterMetaType<const QSet<QExtensionEnd *> *>("const QSet<QExtensionEnd *> *");
-    qRegisterMetaType<const QList<QExtensionEnd *> *>("const QList<QExtensionEnd *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QStereotype) *>("QT_PREPEND_NAMESPACE_QTUML(QStereotype) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QStereotype) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QStereotype) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QStereotype) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QStereotype) *> *");
-    qRegisterMetaType<QStereotype *>("QStereotype *");
-    qRegisterMetaType<const QSet<QStereotype *> *>("const QSet<QStereotype *> *");
-    qRegisterMetaType<const QList<QStereotype *> *>("const QList<QStereotype *> *");
-
-    QProperty::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 #include "moc_qextensionend.cpp"
 
 QT_END_NAMESPACE_QTUML

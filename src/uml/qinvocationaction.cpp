@@ -48,14 +48,12 @@
 QT_BEGIN_NAMESPACE_QTUML
 
 QInvocationActionPrivate::QInvocationActionPrivate() :
-    arguments(new QList<QInputPin *>),
     onPort(0)
 {
 }
 
 QInvocationActionPrivate::~QInvocationActionPrivate()
 {
-    delete arguments;
 }
 
 /*!
@@ -87,7 +85,7 @@ QInvocationAction::~QInvocationAction()
 /*!
     Specification of the ordered set of argument values that appears during execution.
  */
-const QList<QInputPin *> *QInvocationAction::arguments() const
+const QList<QInputPin *> &QInvocationAction::arguments() const
 {
     // This is a read-write association end
 
@@ -100,8 +98,8 @@ void QInvocationAction::addArgument(QInputPin *argument)
     // This is a read-write association end
 
     Q_D(QInvocationAction);
-    if (!d->arguments->contains(argument)) {
-        d->arguments->append(argument);
+    if (!d->arguments.contains(argument)) {
+        d->arguments.append(argument);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QActionPrivate *>(d))->addInput(qwrappedobject_cast<QInputPin *>(argument));
@@ -113,8 +111,8 @@ void QInvocationAction::removeArgument(QInputPin *argument)
     // This is a read-write association end
 
     Q_D(QInvocationAction);
-    if (d->arguments->contains(argument)) {
-        d->arguments->removeAll(argument);
+    if (d->arguments.contains(argument)) {
+        d->arguments.removeAll(argument);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QActionPrivate *>(d))->removeInput(qwrappedobject_cast<QInputPin *>(argument));
@@ -140,35 +138,6 @@ void QInvocationAction::setOnPort(QPort *onPort)
     if (d->onPort != onPort) {
         d->onPort = onPort;
     }
-}
-
-void QInvocationAction::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInvocationAction) *>("QT_PREPEND_NAMESPACE_QTUML(QInvocationAction) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInvocationAction) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInvocationAction) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInvocationAction) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInvocationAction) *> *");
-    qRegisterMetaType<QInvocationAction *>("QInvocationAction *");
-    qRegisterMetaType<const QSet<QInvocationAction *> *>("const QSet<QInvocationAction *> *");
-    qRegisterMetaType<const QList<QInvocationAction *> *>("const QList<QInvocationAction *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QInputPin) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
-    qRegisterMetaType<QInputPin *>("QInputPin *");
-    qRegisterMetaType<const QSet<QInputPin *> *>("const QSet<QInputPin *> *");
-    qRegisterMetaType<const QList<QInputPin *> *>("const QList<QInputPin *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QPort) *>("QT_PREPEND_NAMESPACE_QTUML(QPort) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QPort) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QPort) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QPort) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QPort) *> *");
-    qRegisterMetaType<QPort *>("QPort *");
-    qRegisterMetaType<const QSet<QPort *> *>("const QSet<QPort *> *");
-    qRegisterMetaType<const QList<QPort *> *>("const QList<QPort *> *");
-
-    QAction::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qinvocationaction.cpp"

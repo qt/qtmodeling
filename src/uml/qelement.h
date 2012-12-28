@@ -65,9 +65,9 @@ class Q_UML_EXPORT QElement : public QWrappedObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(const QSet<QElement *> * ownedElements READ ownedElements)
+    Q_PROPERTY(QSet<QElement *> ownedElements READ ownedElements)
     Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(const QSet<QComment *> * ownedComments READ ownedComments)
+    Q_PROPERTY(QSet<QComment *> ownedComments READ ownedComments)
 
     Q_DISABLE_COPY(QElement)
     Q_DECLARE_PRIVATE(QElement)
@@ -77,16 +77,15 @@ public:
     virtual ~QElement();
 
     // Association ends from QElement
-    Q_INVOKABLE const QSet<QElement *> *ownedElements() const;
+    Q_INVOKABLE const QSet<QElement *> &ownedElements() const;
     Q_INVOKABLE QElement *owner() const;
-    Q_INVOKABLE const QSet<QComment *> *ownedComments() const;
+    Q_INVOKABLE const QSet<QComment *> &ownedComments() const;
     Q_INVOKABLE void addOwnedComment(QComment *ownedComment);
     Q_INVOKABLE void removeOwnedComment(QComment *ownedComment);
 
     // Operations
-    Q_INVOKABLE const QSet<QElement *> *allOwnedElements() const;
+    Q_INVOKABLE const QSet<QElement *> &allOwnedElements() const;
     Q_INVOKABLE bool mustBeOwned() const;
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QElement(QElementPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
@@ -96,10 +95,6 @@ private:
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QElement) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QElement) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QElement) *> *)
 
 QT_END_HEADER
 

@@ -67,8 +67,8 @@ class Q_MOF_EXPORT QDataType : public QClassifier
 {
     Q_OBJECT
 
-    Q_PROPERTY(const QList<QOperation *> * ownedOperations READ ownedOperations)
-    Q_PROPERTY(const QList<QProperty *> * ownedAttributes READ ownedAttributes)
+    Q_PROPERTY(QList<QOperation *> ownedOperations READ ownedOperations)
+    Q_PROPERTY(QList<QProperty *> ownedAttributes READ ownedAttributes)
 
     Q_DISABLE_COPY(QDataType)
     Q_DECLARE_PRIVATE(QDataType)
@@ -78,26 +78,21 @@ public:
     virtual ~QDataType();
 
     // Association ends from QDataType
-    Q_INVOKABLE const QList<QOperation *> *ownedOperations() const;
+    Q_INVOKABLE const QList<QOperation *> &ownedOperations() const;
     Q_INVOKABLE void addOwnedOperation(QOperation *ownedOperation);
     Q_INVOKABLE void removeOwnedOperation(QOperation *ownedOperation);
-    Q_INVOKABLE const QList<QProperty *> *ownedAttributes() const;
+    Q_INVOKABLE const QList<QProperty *> &ownedAttributes() const;
     Q_INVOKABLE void addOwnedAttribute(QProperty *ownedAttribute);
     Q_INVOKABLE void removeOwnedAttribute(QProperty *ownedAttribute);
 
     // Operations
-    Q_INVOKABLE const QSet<QNamedElement *> *inherit(const QSet<QNamedElement *> *inhs) const;
-    virtual void registerMetaTypes() const;
+    Q_INVOKABLE const QSet<QNamedElement *> &inherit(const QSet<QNamedElement *> &inhs) const;
 
 protected:
     explicit QDataType(QDataTypePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTMOF
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTMOF(QDataType) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTMOF(QDataType) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTMOF(QDataType) *> *)
 
 QT_END_HEADER
 

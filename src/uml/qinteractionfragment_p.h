@@ -69,9 +69,9 @@ public:
     explicit QInteractionFragmentPrivate();
     virtual ~QInteractionFragmentPrivate();
 
-    QSet<QGeneralOrdering *> *generalOrderings;
+    QSet<QGeneralOrdering *> generalOrderings;
     QInteraction *enclosingInteraction;
-    QSet<QLifeline *> *covered;
+    QSet<QLifeline *> covered;
     QInteractionOperand *enclosingOperand;
 };
 

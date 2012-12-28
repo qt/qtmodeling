@@ -47,24 +47,20 @@
 QT_BEGIN_NAMESPACE_QTUML
 
 QRedefinableElementPrivate::QRedefinableElementPrivate() :
-    isLeaf(false),
-    redefinedElements(new QSet<QRedefinableElement *>),
-    redefinitionContexts(new QSet<QClassifier *>)
+    isLeaf(false)
 {
 }
 
 QRedefinableElementPrivate::~QRedefinableElementPrivate()
 {
-    delete redefinedElements;
-    delete redefinitionContexts;
 }
 
 void QRedefinableElementPrivate::addRedefinedElement(QRedefinableElement *redefinedElement)
 {
     // This is a read-only derived-union association end
 
-    if (!this->redefinedElements->contains(redefinedElement)) {
-        this->redefinedElements->insert(redefinedElement);
+    if (!this->redefinedElements.contains(redefinedElement)) {
+        this->redefinedElements.insert(redefinedElement);
     }
 }
 
@@ -72,8 +68,8 @@ void QRedefinableElementPrivate::removeRedefinedElement(QRedefinableElement *red
 {
     // This is a read-only derived-union association end
 
-    if (this->redefinedElements->contains(redefinedElement)) {
-        this->redefinedElements->remove(redefinedElement);
+    if (this->redefinedElements.contains(redefinedElement)) {
+        this->redefinedElements.remove(redefinedElement);
     }
 }
 
@@ -81,8 +77,8 @@ void QRedefinableElementPrivate::addRedefinitionContext(QClassifier *redefinitio
 {
     // This is a read-only derived-union association end
 
-    if (!this->redefinitionContexts->contains(redefinitionContext)) {
-        this->redefinitionContexts->insert(redefinitionContext);
+    if (!this->redefinitionContexts.contains(redefinitionContext)) {
+        this->redefinitionContexts.insert(redefinitionContext);
     }
 }
 
@@ -90,8 +86,8 @@ void QRedefinableElementPrivate::removeRedefinitionContext(QClassifier *redefini
 {
     // This is a read-only derived-union association end
 
-    if (this->redefinitionContexts->contains(redefinitionContext)) {
-        this->redefinitionContexts->remove(redefinitionContext);
+    if (this->redefinitionContexts.contains(redefinitionContext)) {
+        this->redefinitionContexts.remove(redefinitionContext);
     }
 }
 
@@ -154,7 +150,7 @@ void QRedefinableElement::unsetLeaf()
 /*!
     The redefinable element that is being redefined by this element.
  */
-const QSet<QRedefinableElement *> *QRedefinableElement::redefinedElements() const
+const QSet<QRedefinableElement *> &QRedefinableElement::redefinedElements() const
 {
     // This is a read-only derived-union association end
 
@@ -165,7 +161,7 @@ const QSet<QRedefinableElement *> *QRedefinableElement::redefinedElements() cons
 /*!
     References the contexts that this element may be redefined from.
  */
-const QSet<QClassifier *> *QRedefinableElement::redefinitionContexts() const
+const QSet<QClassifier *> &QRedefinableElement::redefinitionContexts() const
 {
     // This is a read-only derived-union association end
 
@@ -193,28 +189,6 @@ bool QRedefinableElement::isRedefinitionContextValid(const QRedefinableElement *
     Q_UNUSED(redefined);
 
     return bool(); // change here to your derived return
-}
-
-void QRedefinableElement::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QRedefinableElement) *>("QT_PREPEND_NAMESPACE_QTUML(QRedefinableElement) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QRedefinableElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QRedefinableElement) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QRedefinableElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QRedefinableElement) *> *");
-    qRegisterMetaType<QRedefinableElement *>("QRedefinableElement *");
-    qRegisterMetaType<const QSet<QRedefinableElement *> *>("const QSet<QRedefinableElement *> *");
-    qRegisterMetaType<const QList<QRedefinableElement *> *>("const QList<QRedefinableElement *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *>("QT_PREPEND_NAMESPACE_QTUML(QClassifier) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *");
-    qRegisterMetaType<QClassifier *>("QClassifier *");
-    qRegisterMetaType<const QSet<QClassifier *> *>("const QSet<QClassifier *> *");
-    qRegisterMetaType<const QList<QClassifier *> *>("const QList<QClassifier *> *");
-
-    QNamedElement::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qredefinableelement.cpp"

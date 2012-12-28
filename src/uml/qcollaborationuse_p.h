@@ -69,7 +69,7 @@ public:
     virtual ~QCollaborationUsePrivate();
 
     QCollaboration *type;
-    QSet<QDependency *> *roleBindings;
+    QSet<QDependency *> roleBindings;
 };
 
 QT_END_NAMESPACE_QTUML
