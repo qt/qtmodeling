@@ -63,7 +63,7 @@ public:
     explicit QRelationshipPrivate();
     virtual ~QRelationshipPrivate();
 
-    QSet<QElement *> *relatedElements;
+    QSet<QElement *> relatedElements;
 
     // Internal functions for read-only subsetted association ends
     void addRelatedElement(QElement *relatedElement);

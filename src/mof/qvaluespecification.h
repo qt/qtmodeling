@@ -72,9 +72,9 @@ public:
     virtual ~QValueSpecification();
 
     // Association ends from aggregated QElement
-    Q_INVOKABLE const QSet<QElement *> *ownedElements() const;
+    Q_INVOKABLE const QSet<QElement *> &ownedElements() const;
     Q_INVOKABLE QElement *owner() const;
-    Q_INVOKABLE const QSet<QComment *> *ownedComments() const;
+    Q_INVOKABLE const QSet<QComment *> &ownedComments() const;
     Q_INVOKABLE void addOwnedComment(QComment *ownedComment);
     Q_INVOKABLE void removeOwnedComment(QComment *ownedComment);
 
@@ -103,7 +103,6 @@ public:
     Q_INVOKABLE qreal realValue();
     Q_INVOKABLE QString stringValue() const;
     Q_INVOKABLE qint32 unlimitedValue() const;
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QValueSpecification(QValueSpecificationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
@@ -114,10 +113,6 @@ private:
 };
 
 QT_END_NAMESPACE_QTMOF
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTMOF(QValueSpecification) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTMOF(QValueSpecification) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTMOF(QValueSpecification) *> *)
 
 QT_END_HEADER
 

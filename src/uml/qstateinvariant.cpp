@@ -133,35 +133,6 @@ void QStateInvariant::setCovered(QLifeline *covered)
     }
 }
 
-void QStateInvariant::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QStateInvariant) *>("QT_PREPEND_NAMESPACE_QTUML(QStateInvariant) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QStateInvariant) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QStateInvariant) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QStateInvariant) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QStateInvariant) *> *");
-    qRegisterMetaType<QStateInvariant *>("QStateInvariant *");
-    qRegisterMetaType<const QSet<QStateInvariant *> *>("const QSet<QStateInvariant *> *");
-    qRegisterMetaType<const QList<QStateInvariant *> *>("const QList<QStateInvariant *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QLifeline) *>("QT_PREPEND_NAMESPACE_QTUML(QLifeline) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QLifeline) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QLifeline) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QLifeline) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QLifeline) *> *");
-    qRegisterMetaType<QLifeline *>("QLifeline *");
-    qRegisterMetaType<const QSet<QLifeline *> *>("const QSet<QLifeline *> *");
-    qRegisterMetaType<const QList<QLifeline *> *>("const QList<QLifeline *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QConstraint) *>("QT_PREPEND_NAMESPACE_QTUML(QConstraint) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QConstraint) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QConstraint) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QConstraint) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QConstraint) *> *");
-    qRegisterMetaType<QConstraint *>("QConstraint *");
-    qRegisterMetaType<const QSet<QConstraint *> *>("const QSet<QConstraint *> *");
-    qRegisterMetaType<const QList<QConstraint *> *>("const QList<QConstraint *> *");
-
-    QInteractionFragment::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 #include "moc_qstateinvariant.cpp"
 
 QT_END_NAMESPACE_QTUML

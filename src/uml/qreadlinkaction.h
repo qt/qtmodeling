@@ -73,17 +73,12 @@ public:
     // Association ends from QReadLinkAction
     Q_INVOKABLE QOutputPin *result() const;
     Q_INVOKABLE void setResult(QOutputPin *result);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QReadLinkAction(QReadLinkActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QReadLinkAction) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QReadLinkAction) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QReadLinkAction) *> *)
 
 QT_END_HEADER
 

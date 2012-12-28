@@ -68,10 +68,10 @@ class Q_UML_EXPORT QComponent : public QClass
     Q_OBJECT
 
     Q_PROPERTY(bool isIndirectlyInstantiated READ isIndirectlyInstantiated WRITE setIndirectlyInstantiated RESET unsetIndirectlyInstantiated)
-    Q_PROPERTY(const QSet<QComponentRealization *> * realizations READ realizations)
-    Q_PROPERTY(const QSet<QInterface *> * required READ required STORED false)
-    Q_PROPERTY(const QSet<QInterface *> * provided READ provided STORED false)
-    Q_PROPERTY(const QSet<QPackageableElement *> * packagedElements READ packagedElements)
+    Q_PROPERTY(QSet<QComponentRealization *> realizations READ realizations)
+    Q_PROPERTY(QSet<QInterface *> required READ required STORED false)
+    Q_PROPERTY(QSet<QInterface *> provided READ provided STORED false)
+    Q_PROPERTY(QSet<QPackageableElement *> packagedElements READ packagedElements)
 
     Q_DISABLE_COPY(QComponent)
     Q_DECLARE_PRIVATE(QComponent)
@@ -86,29 +86,24 @@ public:
     Q_INVOKABLE void unsetIndirectlyInstantiated();
 
     // Association ends from QComponent
-    Q_INVOKABLE const QSet<QComponentRealization *> *realizations() const;
+    Q_INVOKABLE const QSet<QComponentRealization *> &realizations() const;
     Q_INVOKABLE void addRealization(QComponentRealization *realization);
     Q_INVOKABLE void removeRealization(QComponentRealization *realization);
-    Q_INVOKABLE const QSet<QInterface *> *required() const;
-    Q_INVOKABLE const QSet<QInterface *> *provided() const;
-    Q_INVOKABLE const QSet<QPackageableElement *> *packagedElements() const;
+    Q_INVOKABLE const QSet<QInterface *> &required() const;
+    Q_INVOKABLE const QSet<QInterface *> &provided() const;
+    Q_INVOKABLE const QSet<QPackageableElement *> &packagedElements() const;
     Q_INVOKABLE void addPackagedElement(QPackageableElement *packagedElement);
     Q_INVOKABLE void removePackagedElement(QPackageableElement *packagedElement);
 
     // Operations
-    Q_INVOKABLE const QSet<QInterface *> *realizedInterfaces(const QClassifier *classifier) const;
-    Q_INVOKABLE const QSet<QInterface *> *usedInterfaces(const QClassifier *classifier) const;
-    virtual void registerMetaTypes() const;
+    Q_INVOKABLE const QSet<QInterface *> &realizedInterfaces(const QClassifier *classifier) const;
+    Q_INVOKABLE const QSet<QInterface *> &usedInterfaces(const QClassifier *classifier) const;
 
 protected:
     explicit QComponent(QComponentPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QComponent) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QComponent) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QComponent) *> *)
 
 QT_END_HEADER
 

@@ -64,17 +64,12 @@ class Q_UML_EXPORT QDestructionOccurrenceSpecification : public QMessageOccurren
 public:
     Q_INVOKABLE explicit QDestructionOccurrenceSpecification(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QDestructionOccurrenceSpecification();
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QDestructionOccurrenceSpecification(QDestructionOccurrenceSpecificationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QDestructionOccurrenceSpecification) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QDestructionOccurrenceSpecification) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QDestructionOccurrenceSpecification) *> *)
 
 QT_END_HEADER
 

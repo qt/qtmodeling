@@ -71,8 +71,8 @@ public:
 
     bool isAssured;
     bool isDeterminate;
-    QSet<QClause *> *clauses;
-    QList<QOutputPin *> *results;
+    QSet<QClause *> clauses;
+    QList<QOutputPin *> results;
 };
 
 QT_END_NAMESPACE_QTUML

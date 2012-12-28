@@ -50,14 +50,12 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QConstraintPrivate::QConstraintPrivate() :
     context(0),
-    specification(0),
-    constrainedElements(new QList<QElement *>)
+    specification(0)
 {
 }
 
 QConstraintPrivate::~QConstraintPrivate()
 {
-    delete constrainedElements;
 }
 
 /*!
@@ -150,7 +148,7 @@ void QConstraint::setSpecification(QValueSpecification *specification)
 /*!
     The ordered set of Elements referenced by this Constraint.
  */
-const QList<QElement *> *QConstraint::constrainedElements() const
+const QList<QElement *> &QConstraint::constrainedElements() const
 {
     // This is a read-write association end
 
@@ -163,8 +161,8 @@ void QConstraint::addConstrainedElement(QElement *constrainedElement)
     // This is a read-write association end
 
     Q_D(QConstraint);
-    if (!d->constrainedElements->contains(constrainedElement)) {
-        d->constrainedElements->append(constrainedElement);
+    if (!d->constrainedElements.contains(constrainedElement)) {
+        d->constrainedElements.append(constrainedElement);
     }
 }
 
@@ -173,45 +171,9 @@ void QConstraint::removeConstrainedElement(QElement *constrainedElement)
     // This is a read-write association end
 
     Q_D(QConstraint);
-    if (d->constrainedElements->contains(constrainedElement)) {
-        d->constrainedElements->removeAll(constrainedElement);
+    if (d->constrainedElements.contains(constrainedElement)) {
+        d->constrainedElements.removeAll(constrainedElement);
     }
-}
-
-void QConstraint::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QConstraint) *>("QT_PREPEND_NAMESPACE_QTUML(QConstraint) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QConstraint) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QConstraint) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QConstraint) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QConstraint) *> *");
-    qRegisterMetaType<QConstraint *>("QConstraint *");
-    qRegisterMetaType<const QSet<QConstraint *> *>("const QSet<QConstraint *> *");
-    qRegisterMetaType<const QList<QConstraint *> *>("const QList<QConstraint *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QElement) *>("QT_PREPEND_NAMESPACE_QTUML(QElement) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QElement) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QElement) *> *");
-    qRegisterMetaType<QElement *>("QElement *");
-    qRegisterMetaType<const QSet<QElement *> *>("const QSet<QElement *> *");
-    qRegisterMetaType<const QList<QElement *> *>("const QList<QElement *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QNamespace) *>("QT_PREPEND_NAMESPACE_QTUML(QNamespace) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QNamespace) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QNamespace) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QNamespace) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QNamespace) *> *");
-    qRegisterMetaType<QNamespace *>("QNamespace *");
-    qRegisterMetaType<const QSet<QNamespace *> *>("const QSet<QNamespace *> *");
-    qRegisterMetaType<const QList<QNamespace *> *>("const QList<QNamespace *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *>("QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *");
-    qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
-    qRegisterMetaType<const QSet<QValueSpecification *> *>("const QSet<QValueSpecification *> *");
-    qRegisterMetaType<const QList<QValueSpecification *> *>("const QList<QValueSpecification *> *");
-
-    QPackageableElement::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qconstraint.cpp"

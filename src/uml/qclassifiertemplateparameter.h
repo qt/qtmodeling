@@ -66,7 +66,7 @@ class Q_UML_EXPORT QClassifierTemplateParameter : public QTemplateParameter
 
     Q_PROPERTY(bool allowSubstitutable READ allowSubstitutable WRITE setAllowSubstitutable RESET unsetAllowSubstitutable)
     Q_PROPERTY(QClassifier * parameteredElement READ parameteredElement WRITE setParameteredElement)
-    Q_PROPERTY(const QSet<QClassifier *> * constrainingClassifiers READ constrainingClassifiers)
+    Q_PROPERTY(QSet<QClassifier *> constrainingClassifiers READ constrainingClassifiers)
 
     Q_DISABLE_COPY(QClassifierTemplateParameter)
     Q_DECLARE_PRIVATE(QClassifierTemplateParameter)
@@ -83,20 +83,15 @@ public:
     // Association ends from QClassifierTemplateParameter
     Q_INVOKABLE QClassifier *parameteredElement() const;
     Q_INVOKABLE void setParameteredElement(QClassifier *parameteredElement);
-    Q_INVOKABLE const QSet<QClassifier *> *constrainingClassifiers() const;
+    Q_INVOKABLE const QSet<QClassifier *> &constrainingClassifiers() const;
     Q_INVOKABLE void addConstrainingClassifier(QClassifier *constrainingClassifier);
     Q_INVOKABLE void removeConstrainingClassifier(QClassifier *constrainingClassifier);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QClassifierTemplateParameter(QClassifierTemplateParameterPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QClassifierTemplateParameter) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifierTemplateParameter) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QClassifierTemplateParameter) *> *)
 
 QT_END_HEADER
 

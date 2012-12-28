@@ -70,8 +70,8 @@ public:
     explicit QDataTypePrivate();
     virtual ~QDataTypePrivate();
 
-    QList<QOperation *> *ownedOperations;
-    QList<QProperty *> *ownedAttributes;
+    QList<QOperation *> ownedOperations;
+    QList<QProperty *> ownedAttributes;
 };
 
 QT_END_NAMESPACE_QTUML

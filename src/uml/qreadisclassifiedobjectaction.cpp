@@ -195,42 +195,6 @@ void QReadIsClassifiedObjectAction::setClassifier(QClassifier *classifier)
     }
 }
 
-void QReadIsClassifiedObjectAction::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QReadIsClassifiedObjectAction) *>("QT_PREPEND_NAMESPACE_QTUML(QReadIsClassifiedObjectAction) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QReadIsClassifiedObjectAction) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QReadIsClassifiedObjectAction) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QReadIsClassifiedObjectAction) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QReadIsClassifiedObjectAction) *> *");
-    qRegisterMetaType<QReadIsClassifiedObjectAction *>("QReadIsClassifiedObjectAction *");
-    qRegisterMetaType<const QSet<QReadIsClassifiedObjectAction *> *>("const QSet<QReadIsClassifiedObjectAction *> *");
-    qRegisterMetaType<const QList<QReadIsClassifiedObjectAction *> *>("const QList<QReadIsClassifiedObjectAction *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *>("QT_PREPEND_NAMESPACE_QTUML(QClassifier) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *");
-    qRegisterMetaType<QClassifier *>("QClassifier *");
-    qRegisterMetaType<const QSet<QClassifier *> *>("const QSet<QClassifier *> *");
-    qRegisterMetaType<const QList<QClassifier *> *>("const QList<QClassifier *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QInputPin) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
-    qRegisterMetaType<QInputPin *>("QInputPin *");
-    qRegisterMetaType<const QSet<QInputPin *> *>("const QSet<QInputPin *> *");
-    qRegisterMetaType<const QList<QInputPin *> *>("const QList<QInputPin *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *");
-    qRegisterMetaType<QOutputPin *>("QOutputPin *");
-    qRegisterMetaType<const QSet<QOutputPin *> *>("const QSet<QOutputPin *> *");
-    qRegisterMetaType<const QList<QOutputPin *> *>("const QList<QOutputPin *> *");
-
-    QAction::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 #include "moc_qreadisclassifiedobjectaction.cpp"
 
 QT_END_NAMESPACE_QTUML

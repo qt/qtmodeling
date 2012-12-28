@@ -73,7 +73,7 @@ public:
 
     QConnectableElement *represents;
     QPartDecomposition *decomposedAs;
-    QSet<QInteractionFragment *> *coveredBy;
+    QSet<QInteractionFragment *> coveredBy;
     QInteraction *interaction;
     QValueSpecification *selector;
 };

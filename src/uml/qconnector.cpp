@@ -49,18 +49,12 @@
 QT_BEGIN_NAMESPACE_QTUML
 
 QConnectorPrivate::QConnectorPrivate() :
-    redefinedConnectors(new QSet<QConnector *>),
-    contracts(new QSet<QBehavior *>),
-    type(0),
-    ends(new QList<QConnectorEnd *>)
+    type(0)
 {
 }
 
 QConnectorPrivate::~QConnectorPrivate()
 {
-    delete redefinedConnectors;
-    delete contracts;
-    delete ends;
 }
 
 /*!
@@ -108,7 +102,7 @@ QtUml::ConnectorKind QConnector::kind() const
 /*!
     A connector may be redefined when its containing classifier is specialized. The redefining connector may have a type that specializes the type of the redefined connector. The types of the connector ends of the redefining connector may specialize the types of the connector ends of the redefined connector. The properties of the connector ends of the redefining connector may be replaced.
  */
-const QSet<QConnector *> *QConnector::redefinedConnectors() const
+const QSet<QConnector *> &QConnector::redefinedConnectors() const
 {
     // This is a read-write association end
 
@@ -121,8 +115,8 @@ void QConnector::addRedefinedConnector(QConnector *redefinedConnector)
     // This is a read-write association end
 
     Q_D(QConnector);
-    if (!d->redefinedConnectors->contains(redefinedConnector)) {
-        d->redefinedConnectors->insert(redefinedConnector);
+    if (!d->redefinedConnectors.contains(redefinedConnector)) {
+        d->redefinedConnectors.insert(redefinedConnector);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QRedefinableElementPrivate *>(d))->addRedefinedElement(qwrappedobject_cast<QRedefinableElement *>(redefinedConnector));
@@ -134,8 +128,8 @@ void QConnector::removeRedefinedConnector(QConnector *redefinedConnector)
     // This is a read-write association end
 
     Q_D(QConnector);
-    if (d->redefinedConnectors->contains(redefinedConnector)) {
-        d->redefinedConnectors->remove(redefinedConnector);
+    if (d->redefinedConnectors.contains(redefinedConnector)) {
+        d->redefinedConnectors.remove(redefinedConnector);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QRedefinableElementPrivate *>(d))->removeRedefinedElement(qwrappedobject_cast<QRedefinableElement *>(redefinedConnector));
@@ -145,7 +139,7 @@ void QConnector::removeRedefinedConnector(QConnector *redefinedConnector)
 /*!
     The set of Behaviors that specify the valid interaction patterns across the connector.
  */
-const QSet<QBehavior *> *QConnector::contracts() const
+const QSet<QBehavior *> &QConnector::contracts() const
 {
     // This is a read-write association end
 
@@ -158,8 +152,8 @@ void QConnector::addContract(QBehavior *contract)
     // This is a read-write association end
 
     Q_D(QConnector);
-    if (!d->contracts->contains(contract)) {
-        d->contracts->insert(contract);
+    if (!d->contracts.contains(contract)) {
+        d->contracts.insert(contract);
     }
 }
 
@@ -168,8 +162,8 @@ void QConnector::removeContract(QBehavior *contract)
     // This is a read-write association end
 
     Q_D(QConnector);
-    if (d->contracts->contains(contract)) {
-        d->contracts->remove(contract);
+    if (d->contracts.contains(contract)) {
+        d->contracts.remove(contract);
     }
 }
 
@@ -197,7 +191,7 @@ void QConnector::setType(QAssociation *type)
 /*!
     A connector consists of at least two connector ends, each representing the participation of instances of the classifiers typing the connectable elements attached to this end. The set of connector ends is ordered.
  */
-const QList<QConnectorEnd *> *QConnector::ends() const
+const QList<QConnectorEnd *> &QConnector::ends() const
 {
     // This is a read-write association end
 
@@ -210,8 +204,8 @@ void QConnector::addEnd(QConnectorEnd *end)
     // This is a read-write association end
 
     Q_D(QConnector);
-    if (!d->ends->contains(end)) {
-        d->ends->append(end);
+    if (!d->ends.contains(end)) {
+        d->ends.append(end);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(end));
@@ -223,48 +217,12 @@ void QConnector::removeEnd(QConnectorEnd *end)
     // This is a read-write association end
 
     Q_D(QConnector);
-    if (d->ends->contains(end)) {
-        d->ends->removeAll(end);
+    if (d->ends.contains(end)) {
+        d->ends.removeAll(end);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(end));
     }
-}
-
-void QConnector::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QConnector) *>("QT_PREPEND_NAMESPACE_QTUML(QConnector) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QConnector) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QConnector) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QConnector) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QConnector) *> *");
-    qRegisterMetaType<QConnector *>("QConnector *");
-    qRegisterMetaType<const QSet<QConnector *> *>("const QSet<QConnector *> *");
-    qRegisterMetaType<const QList<QConnector *> *>("const QList<QConnector *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QAssociation) *>("QT_PREPEND_NAMESPACE_QTUML(QAssociation) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QAssociation) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QAssociation) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QAssociation) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QAssociation) *> *");
-    qRegisterMetaType<QAssociation *>("QAssociation *");
-    qRegisterMetaType<const QSet<QAssociation *> *>("const QSet<QAssociation *> *");
-    qRegisterMetaType<const QList<QAssociation *> *>("const QList<QAssociation *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *>("QT_PREPEND_NAMESPACE_QTUML(QBehavior) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *");
-    qRegisterMetaType<QBehavior *>("QBehavior *");
-    qRegisterMetaType<const QSet<QBehavior *> *>("const QSet<QBehavior *> *");
-    qRegisterMetaType<const QList<QBehavior *> *>("const QList<QBehavior *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QConnectorEnd) *>("QT_PREPEND_NAMESPACE_QTUML(QConnectorEnd) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QConnectorEnd) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QConnectorEnd) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QConnectorEnd) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QConnectorEnd) *> *");
-    qRegisterMetaType<QConnectorEnd *>("QConnectorEnd *");
-    qRegisterMetaType<const QSet<QConnectorEnd *> *>("const QSet<QConnectorEnd *> *");
-    qRegisterMetaType<const QList<QConnectorEnd *> *>("const QList<QConnectorEnd *> *");
-
-    QFeature::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qconnector.cpp"

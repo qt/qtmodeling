@@ -67,8 +67,8 @@ public:
     explicit QBehavioredClassifierPrivate();
     virtual ~QBehavioredClassifierPrivate();
 
-    QSet<QBehavior *> *ownedBehaviors;
-    QSet<QInterfaceRealization *> *interfaceRealizations;
+    QSet<QBehavior *> ownedBehaviors;
+    QSet<QInterfaceRealization *> interfaceRealizations;
     QBehavior *classifierBehavior;
 };
 

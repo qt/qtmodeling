@@ -73,17 +73,12 @@ public:
     Q_INVOKABLE QMofObject *get(qint32 index) const;
     Q_INVOKABLE QMofObject *remove(qint32 index);
     Q_INVOKABLE QMofObject *set(qint32 index, const QMofObject *object);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QReflectiveSequence(QReflectiveSequencePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTMOF
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTMOF(QReflectiveSequence) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTMOF(QReflectiveSequence) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTMOF(QReflectiveSequence) *> *)
 
 QT_END_HEADER
 

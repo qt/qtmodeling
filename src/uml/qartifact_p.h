@@ -75,10 +75,10 @@ public:
     virtual ~QArtifactPrivate();
 
     QString fileName;
-    QList<QOperation *> *ownedOperations;
-    QList<QProperty *> *ownedAttributes;
-    QSet<QManifestation *> *manifestations;
-    QSet<QArtifact *> *nestedArtifacts;
+    QList<QOperation *> ownedOperations;
+    QList<QProperty *> ownedAttributes;
+    QSet<QManifestation *> manifestations;
+    QSet<QArtifact *> nestedArtifacts;
 };
 
 QT_END_NAMESPACE_QTUML

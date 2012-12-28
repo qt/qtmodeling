@@ -84,7 +84,6 @@ public:
 
     // Operations
     Q_INVOKABLE QProperty *metaclassEnd() const;
-    virtual void registerMetaTypes() const;
 
     // Classes which access read-only opposite properties should be friend
     friend class QClassPrivate;
@@ -94,10 +93,6 @@ protected:
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QExtension) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QExtension) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QExtension) *> *)
 
 QT_END_HEADER
 

@@ -64,7 +64,7 @@ class Q_UML_EXPORT QTimeExpression : public QValueSpecification
 {
     Q_OBJECT
 
-    Q_PROPERTY(const QSet<QObservation *> * observations READ observations)
+    Q_PROPERTY(QSet<QObservation *> observations READ observations)
     Q_PROPERTY(QValueSpecification * expr READ expr WRITE setExpr)
 
     Q_DISABLE_COPY(QTimeExpression)
@@ -75,22 +75,17 @@ public:
     virtual ~QTimeExpression();
 
     // Association ends from QTimeExpression
-    Q_INVOKABLE const QSet<QObservation *> *observations() const;
+    Q_INVOKABLE const QSet<QObservation *> &observations() const;
     Q_INVOKABLE void addObservation(QObservation *observation);
     Q_INVOKABLE void removeObservation(QObservation *observation);
     Q_INVOKABLE QValueSpecification *expr() const;
     Q_INVOKABLE void setExpr(QValueSpecification *expr);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QTimeExpression(QTimeExpressionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QTimeExpression) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QTimeExpression) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QTimeExpression) *> *)
 
 QT_END_HEADER
 

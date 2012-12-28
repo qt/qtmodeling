@@ -47,20 +47,12 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QOpaqueActionPrivate::QOpaqueActionPrivate() :
-    bodies(new QList<QString>),
-    languages(new QList<QString>),
-    inputValues(new QSet<QInputPin *>),
-    outputValues(new QSet<QOutputPin *>)
+QOpaqueActionPrivate::QOpaqueActionPrivate()
 {
 }
 
 QOpaqueActionPrivate::~QOpaqueActionPrivate()
 {
-    delete bodies;
-    delete languages;
-    delete inputValues;
-    delete outputValues;
 }
 
 /*!
@@ -92,7 +84,7 @@ QOpaqueAction::~QOpaqueAction()
 /*!
     Specifies the action in one or more languages.
  */
-const QList<QString> *QOpaqueAction::bodies() const
+const QList<QString> QOpaqueAction::bodies() const
 {
     // This is a read-write attribute
 
@@ -105,8 +97,8 @@ void QOpaqueAction::addBody(QString body)
     // This is a read-write attribute
 
     Q_D(QOpaqueAction);
-    if (!d->bodies->contains(body)) {
-        d->bodies->append(body);
+    if (!d->bodies.contains(body)) {
+        d->bodies.append(body);
     }
 }
 
@@ -115,15 +107,15 @@ void QOpaqueAction::removeBody(QString body)
     // This is a read-write attribute
 
     Q_D(QOpaqueAction);
-    if (d->bodies->contains(body)) {
-        d->bodies->removeAll(body);
+    if (d->bodies.contains(body)) {
+        d->bodies.removeAll(body);
     }
 }
 
 /*!
     Languages the body strings use, in the same order as the body strings
  */
-const QList<QString> *QOpaqueAction::languages() const
+const QList<QString> QOpaqueAction::languages() const
 {
     // This is a read-write attribute
 
@@ -136,8 +128,8 @@ void QOpaqueAction::addLanguage(QString language)
     // This is a read-write attribute
 
     Q_D(QOpaqueAction);
-    if (!d->languages->contains(language)) {
-        d->languages->append(language);
+    if (!d->languages.contains(language)) {
+        d->languages.append(language);
     }
 }
 
@@ -146,8 +138,8 @@ void QOpaqueAction::removeLanguage(QString language)
     // This is a read-write attribute
 
     Q_D(QOpaqueAction);
-    if (d->languages->contains(language)) {
-        d->languages->removeAll(language);
+    if (d->languages.contains(language)) {
+        d->languages.removeAll(language);
     }
 }
 
@@ -158,7 +150,7 @@ void QOpaqueAction::removeLanguage(QString language)
 /*!
     Provides input to the action.
  */
-const QSet<QInputPin *> *QOpaqueAction::inputValues() const
+const QSet<QInputPin *> &QOpaqueAction::inputValues() const
 {
     // This is a read-write association end
 
@@ -171,8 +163,8 @@ void QOpaqueAction::addInputValue(QInputPin *inputValue)
     // This is a read-write association end
 
     Q_D(QOpaqueAction);
-    if (!d->inputValues->contains(inputValue)) {
-        d->inputValues->insert(inputValue);
+    if (!d->inputValues.contains(inputValue)) {
+        d->inputValues.insert(inputValue);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QActionPrivate *>(d))->addInput(qwrappedobject_cast<QInputPin *>(inputValue));
@@ -184,8 +176,8 @@ void QOpaqueAction::removeInputValue(QInputPin *inputValue)
     // This is a read-write association end
 
     Q_D(QOpaqueAction);
-    if (d->inputValues->contains(inputValue)) {
-        d->inputValues->remove(inputValue);
+    if (d->inputValues.contains(inputValue)) {
+        d->inputValues.remove(inputValue);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QActionPrivate *>(d))->removeInput(qwrappedobject_cast<QInputPin *>(inputValue));
@@ -195,7 +187,7 @@ void QOpaqueAction::removeInputValue(QInputPin *inputValue)
 /*!
     Takes output from the action.
  */
-const QSet<QOutputPin *> *QOpaqueAction::outputValues() const
+const QSet<QOutputPin *> &QOpaqueAction::outputValues() const
 {
     // This is a read-write association end
 
@@ -208,8 +200,8 @@ void QOpaqueAction::addOutputValue(QOutputPin *outputValue)
     // This is a read-write association end
 
     Q_D(QOpaqueAction);
-    if (!d->outputValues->contains(outputValue)) {
-        d->outputValues->insert(outputValue);
+    if (!d->outputValues.contains(outputValue)) {
+        d->outputValues.insert(outputValue);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QActionPrivate *>(d))->addOutput(qwrappedobject_cast<QOutputPin *>(outputValue));
@@ -221,41 +213,12 @@ void QOpaqueAction::removeOutputValue(QOutputPin *outputValue)
     // This is a read-write association end
 
     Q_D(QOpaqueAction);
-    if (d->outputValues->contains(outputValue)) {
-        d->outputValues->remove(outputValue);
+    if (d->outputValues.contains(outputValue)) {
+        d->outputValues.remove(outputValue);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QActionPrivate *>(d))->removeOutput(qwrappedobject_cast<QOutputPin *>(outputValue));
     }
-}
-
-void QOpaqueAction::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QOpaqueAction) *>("QT_PREPEND_NAMESPACE_QTUML(QOpaqueAction) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QOpaqueAction) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QOpaqueAction) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QOpaqueAction) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QOpaqueAction) *> *");
-    qRegisterMetaType<QOpaqueAction *>("QOpaqueAction *");
-    qRegisterMetaType<const QSet<QOpaqueAction *> *>("const QSet<QOpaqueAction *> *");
-    qRegisterMetaType<const QList<QOpaqueAction *> *>("const QList<QOpaqueAction *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QInputPin) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
-    qRegisterMetaType<QInputPin *>("QInputPin *");
-    qRegisterMetaType<const QSet<QInputPin *> *>("const QSet<QInputPin *> *");
-    qRegisterMetaType<const QList<QInputPin *> *>("const QList<QInputPin *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *");
-    qRegisterMetaType<QOutputPin *>("QOutputPin *");
-    qRegisterMetaType<const QSet<QOutputPin *> *>("const QSet<QOutputPin *> *");
-    qRegisterMetaType<const QList<QOutputPin *> *>("const QList<QOutputPin *> *");
-
-    QAction::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qopaqueaction.cpp"

@@ -64,17 +64,12 @@ class Q_UML_EXPORT QForkNode : public QControlNode
 public:
     Q_INVOKABLE explicit QForkNode(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QForkNode();
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QForkNode(QForkNodePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QForkNode) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QForkNode) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QForkNode) *> *)
 
 QT_END_HEADER
 

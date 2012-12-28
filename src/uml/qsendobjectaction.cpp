@@ -133,28 +133,6 @@ void QSendObjectAction::setTarget(QInputPin *target)
     }
 }
 
-void QSendObjectAction::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QSendObjectAction) *>("QT_PREPEND_NAMESPACE_QTUML(QSendObjectAction) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QSendObjectAction) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QSendObjectAction) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QSendObjectAction) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QSendObjectAction) *> *");
-    qRegisterMetaType<QSendObjectAction *>("QSendObjectAction *");
-    qRegisterMetaType<const QSet<QSendObjectAction *> *>("const QSet<QSendObjectAction *> *");
-    qRegisterMetaType<const QList<QSendObjectAction *> *>("const QList<QSendObjectAction *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QInputPin) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
-    qRegisterMetaType<QInputPin *>("QInputPin *");
-    qRegisterMetaType<const QSet<QInputPin *> *>("const QSet<QInputPin *> *");
-    qRegisterMetaType<const QList<QInputPin *> *>("const QList<QInputPin *> *");
-
-    QInvocationAction::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 #include "moc_qsendobjectaction.cpp"
 
 QT_END_NAMESPACE_QTUML

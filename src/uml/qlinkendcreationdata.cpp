@@ -133,28 +133,6 @@ void QLinkEndCreationData::setInsertAt(QInputPin *insertAt)
     }
 }
 
-void QLinkEndCreationData::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QLinkEndCreationData) *>("QT_PREPEND_NAMESPACE_QTUML(QLinkEndCreationData) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QLinkEndCreationData) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QLinkEndCreationData) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QLinkEndCreationData) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QLinkEndCreationData) *> *");
-    qRegisterMetaType<QLinkEndCreationData *>("QLinkEndCreationData *");
-    qRegisterMetaType<const QSet<QLinkEndCreationData *> *>("const QSet<QLinkEndCreationData *> *");
-    qRegisterMetaType<const QList<QLinkEndCreationData *> *>("const QList<QLinkEndCreationData *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QInputPin) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *");
-    qRegisterMetaType<QInputPin *>("QInputPin *");
-    qRegisterMetaType<const QSet<QInputPin *> *>("const QSet<QInputPin *> *");
-    qRegisterMetaType<const QList<QInputPin *> *>("const QList<QInputPin *> *");
-
-    QLinkEndData::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 #include "moc_qlinkendcreationdata.cpp"
 
 QT_END_NAMESPACE_QTUML

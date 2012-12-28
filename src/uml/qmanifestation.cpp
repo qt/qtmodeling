@@ -110,28 +110,6 @@ void QManifestation::setUtilizedElement(QPackageableElement *utilizedElement)
     }
 }
 
-void QManifestation::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QManifestation) *>("QT_PREPEND_NAMESPACE_QTUML(QManifestation) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QManifestation) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QManifestation) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QManifestation) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QManifestation) *> *");
-    qRegisterMetaType<QManifestation *>("QManifestation *");
-    qRegisterMetaType<const QSet<QManifestation *> *>("const QSet<QManifestation *> *");
-    qRegisterMetaType<const QList<QManifestation *> *>("const QList<QManifestation *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QPackageableElement) *>("QT_PREPEND_NAMESPACE_QTUML(QPackageableElement) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QPackageableElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QPackageableElement) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QPackageableElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QPackageableElement) *> *");
-    qRegisterMetaType<QPackageableElement *>("QPackageableElement *");
-    qRegisterMetaType<const QSet<QPackageableElement *> *>("const QSet<QPackageableElement *> *");
-    qRegisterMetaType<const QList<QPackageableElement *> *>("const QList<QPackageableElement *> *");
-
-    QAbstraction::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 // Overriden methods for subsetted properties
 
 void QManifestation::addSupplier(QWrappedObjectPointer<QPackageableElement> utilizedElement)

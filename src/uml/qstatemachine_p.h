@@ -71,10 +71,10 @@ public:
     explicit QStateMachinePrivate();
     virtual ~QStateMachinePrivate();
 
-    QSet<QStateMachine *> *extendedStateMachines;
-    QSet<QPseudostate *> *connectionPoints;
-    QSet<QState *> *submachineStates;
-    QSet<QRegion *> *regions;
+    QSet<QStateMachine *> extendedStateMachines;
+    QSet<QPseudostate *> connectionPoints;
+    QSet<QState *> submachineStates;
+    QSet<QRegion *> regions;
 };
 
 QT_END_NAMESPACE_QTUML

@@ -71,14 +71,14 @@ public:
     virtual ~QLoopNodePrivate();
 
     bool isTestedFirst;
-    QList<QInputPin *> *loopVariableInputs;
+    QList<QInputPin *> loopVariableInputs;
     QOutputPin *decider;
-    QList<QOutputPin *> *bodyOutputs;
-    QList<QOutputPin *> *loopVariables;
-    QList<QOutputPin *> *results;
-    QSet<QExecutableNode *> *setupParts;
-    QSet<QExecutableNode *> *bodyParts;
-    QSet<QExecutableNode *> *tests;
+    QList<QOutputPin *> bodyOutputs;
+    QList<QOutputPin *> loopVariables;
+    QList<QOutputPin *> results;
+    QSet<QExecutableNode *> setupParts;
+    QSet<QExecutableNode *> bodyParts;
+    QSet<QExecutableNode *> tests;
 };
 
 QT_END_NAMESPACE_QTUML

@@ -65,8 +65,8 @@ public:
     explicit QOpaqueBehaviorPrivate();
     virtual ~QOpaqueBehaviorPrivate();
 
-    QList<QString> *languages;
-    QList<QString> *bodies;
+    QList<QString> languages;
+    QList<QString> bodies;
 };
 
 QT_END_NAMESPACE_QTUML

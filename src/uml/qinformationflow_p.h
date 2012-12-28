@@ -75,13 +75,13 @@ public:
     explicit QInformationFlowPrivate();
     virtual ~QInformationFlowPrivate();
 
-    QSet<QNamedElement *> *informationTargets;
-    QSet<QConnector *> *realizingConnectors;
-    QSet<QClassifier *> *conveyed;
-    QSet<QNamedElement *> *informationSources;
-    QSet<QMessage *> *realizingMessages;
-    QSet<QActivityEdge *> *realizingActivityEdges;
-    QSet<QRelationship *> *realizations;
+    QSet<QNamedElement *> informationTargets;
+    QSet<QConnector *> realizingConnectors;
+    QSet<QClassifier *> conveyed;
+    QSet<QNamedElement *> informationSources;
+    QSet<QMessage *> realizingMessages;
+    QSet<QActivityEdge *> realizingActivityEdges;
+    QSet<QRelationship *> realizations;
 };
 
 QT_END_NAMESPACE_QTUML

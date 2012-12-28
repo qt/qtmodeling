@@ -81,17 +81,12 @@ public:
 
     // Operations
     Q_INVOKABLE qint32 lowerBound() const;
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QExtensionEnd(QExtensionEndPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QExtensionEnd) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QExtensionEnd) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QExtensionEnd) *> *)
 
 QT_END_HEADER
 

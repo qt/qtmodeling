@@ -67,7 +67,7 @@ class Q_UML_EXPORT QExceptionHandler : public QElement
     Q_OBJECT
 
     Q_PROPERTY(QExecutableNode * handlerBody READ handlerBody WRITE setHandlerBody)
-    Q_PROPERTY(const QSet<QClassifier *> * exceptionTypes READ exceptionTypes)
+    Q_PROPERTY(QSet<QClassifier *> exceptionTypes READ exceptionTypes)
     Q_PROPERTY(QExecutableNode * protectedNode READ protectedNode WRITE setProtectedNode)
     Q_PROPERTY(QObjectNode * exceptionInput READ exceptionInput WRITE setExceptionInput)
 
@@ -81,24 +81,19 @@ public:
     // Association ends from QExceptionHandler
     Q_INVOKABLE QExecutableNode *handlerBody() const;
     Q_INVOKABLE void setHandlerBody(QExecutableNode *handlerBody);
-    Q_INVOKABLE const QSet<QClassifier *> *exceptionTypes() const;
+    Q_INVOKABLE const QSet<QClassifier *> &exceptionTypes() const;
     Q_INVOKABLE void addExceptionType(QClassifier *exceptionType);
     Q_INVOKABLE void removeExceptionType(QClassifier *exceptionType);
     Q_INVOKABLE QExecutableNode *protectedNode() const;
     Q_INVOKABLE void setProtectedNode(QExecutableNode *protectedNode);
     Q_INVOKABLE QObjectNode *exceptionInput() const;
     Q_INVOKABLE void setExceptionInput(QObjectNode *exceptionInput);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QExceptionHandler(QExceptionHandlerPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QExceptionHandler) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QExceptionHandler) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QExceptionHandler) *> *)
 
 QT_END_HEADER
 

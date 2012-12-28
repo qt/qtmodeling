@@ -79,17 +79,12 @@ public:
     // Association ends from QJoinNode
     Q_INVOKABLE QValueSpecification *joinSpec() const;
     Q_INVOKABLE void setJoinSpec(QValueSpecification *joinSpec);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QJoinNode(QJoinNodePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QJoinNode) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QJoinNode) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QJoinNode) *> *)
 
 QT_END_HEADER
 

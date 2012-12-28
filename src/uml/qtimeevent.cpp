@@ -141,28 +141,6 @@ void QTimeEvent::setWhen(QTimeExpression *when)
     }
 }
 
-void QTimeEvent::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QTimeEvent) *>("QT_PREPEND_NAMESPACE_QTUML(QTimeEvent) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QTimeEvent) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QTimeEvent) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QTimeEvent) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QTimeEvent) *> *");
-    qRegisterMetaType<QTimeEvent *>("QTimeEvent *");
-    qRegisterMetaType<const QSet<QTimeEvent *> *>("const QSet<QTimeEvent *> *");
-    qRegisterMetaType<const QList<QTimeEvent *> *>("const QList<QTimeEvent *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QTimeExpression) *>("QT_PREPEND_NAMESPACE_QTUML(QTimeExpression) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QTimeExpression) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QTimeExpression) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QTimeExpression) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QTimeExpression) *> *");
-    qRegisterMetaType<QTimeExpression *>("QTimeExpression *");
-    qRegisterMetaType<const QSet<QTimeExpression *> *>("const QSet<QTimeExpression *> *");
-    qRegisterMetaType<const QList<QTimeExpression *> *>("const QList<QTimeExpression *> *");
-
-    QEvent::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 #include "moc_qtimeevent.cpp"
 
 QT_END_NAMESPACE_QTUML

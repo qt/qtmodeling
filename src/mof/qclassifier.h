@@ -73,12 +73,12 @@ class Q_MOF_EXPORT QClassifier : public QWrappedObject
 
     Q_PROPERTY(bool isAbstract READ isAbstract WRITE setAbstract RESET unsetAbstract)
     Q_PROPERTY(bool isFinalSpecialization READ isFinalSpecialization WRITE setFinalSpecialization RESET unsetFinalSpecialization)
-    Q_PROPERTY(const QSet<QProperty *> * attributes READ attributes)
-    Q_PROPERTY(const QSet<QFeature *> * features READ features)
-    Q_PROPERTY(const QSet<QClassifier *> * generals READ generals STORED false)
-    Q_PROPERTY(const QSet<QClassifier *> * redefinedClassifiers READ redefinedClassifiers)
-    Q_PROPERTY(const QSet<QNamedElement *> * inheritedMembers READ inheritedMembers STORED false)
-    Q_PROPERTY(const QSet<QGeneralization *> * generalizations READ generalizations)
+    Q_PROPERTY(QSet<QProperty *> attributes READ attributes)
+    Q_PROPERTY(QSet<QFeature *> features READ features)
+    Q_PROPERTY(QSet<QClassifier *> generals READ generals STORED false)
+    Q_PROPERTY(QSet<QClassifier *> redefinedClassifiers READ redefinedClassifiers)
+    Q_PROPERTY(QSet<QNamedElement *> inheritedMembers READ inheritedMembers STORED false)
+    Q_PROPERTY(QSet<QGeneralization *> generalizations READ generalizations)
 
     Q_DISABLE_COPY(QClassifier)
     Q_DECLARE_PRIVATE(QClassifier)
@@ -88,9 +88,9 @@ public:
     virtual ~QClassifier();
 
     // Association ends from aggregated QElement
-    Q_INVOKABLE const QSet<QElement *> *ownedElements() const;
+    Q_INVOKABLE const QSet<QElement *> &ownedElements() const;
     Q_INVOKABLE QElement *owner() const;
-    Q_INVOKABLE const QSet<QComment *> *ownedComments() const;
+    Q_INVOKABLE const QSet<QComment *> &ownedComments() const;
     Q_INVOKABLE void addOwnedComment(QComment *ownedComment);
     Q_INVOKABLE void removeOwnedComment(QComment *ownedComment);
 
@@ -117,22 +117,22 @@ public:
     Q_INVOKABLE void unsetLeaf();
 
     // Association ends from aggregated QRedefinableElement
-    Q_INVOKABLE const QSet<QRedefinableElement *> *redefinedElements() const;
-    Q_INVOKABLE const QSet<QClassifier *> *redefinitionContexts() const;
+    Q_INVOKABLE const QSet<QRedefinableElement *> &redefinedElements() const;
+    Q_INVOKABLE const QSet<QClassifier *> &redefinitionContexts() const;
 
     // Association ends from aggregated QNamespace
-    Q_INVOKABLE const QSet<QPackageImport *> *packageImports() const;
+    Q_INVOKABLE const QSet<QPackageImport *> &packageImports() const;
     Q_INVOKABLE void addPackageImport(QPackageImport *packageImport);
     Q_INVOKABLE void removePackageImport(QPackageImport *packageImport);
-    Q_INVOKABLE const QSet<QNamedElement *> *members() const;
-    Q_INVOKABLE const QSet<QPackageableElement *> *importedMembers() const;
-    Q_INVOKABLE const QSet<QElementImport *> *elementImports() const;
+    Q_INVOKABLE const QSet<QNamedElement *> &members() const;
+    Q_INVOKABLE const QSet<QPackageableElement *> &importedMembers() const;
+    Q_INVOKABLE const QSet<QElementImport *> &elementImports() const;
     Q_INVOKABLE void addElementImport(QElementImport *elementImport);
     Q_INVOKABLE void removeElementImport(QElementImport *elementImport);
-    Q_INVOKABLE const QSet<QConstraint *> *ownedRules() const;
+    Q_INVOKABLE const QSet<QConstraint *> &ownedRules() const;
     Q_INVOKABLE void addOwnedRule(QConstraint *ownedRule);
     Q_INVOKABLE void removeOwnedRule(QConstraint *ownedRule);
-    Q_INVOKABLE const QSet<QNamedElement *> *ownedMembers() const;
+    Q_INVOKABLE const QSet<QNamedElement *> &ownedMembers() const;
 
     // Attributes from QClassifier
     Q_INVOKABLE bool isAbstract() const;
@@ -143,29 +143,28 @@ public:
     Q_INVOKABLE void unsetFinalSpecialization();
 
     // Association ends from QClassifier
-    Q_INVOKABLE const QSet<QProperty *> *attributes() const;
-    Q_INVOKABLE const QSet<QFeature *> *features() const;
-    Q_INVOKABLE const QSet<QClassifier *> *generals() const;
+    Q_INVOKABLE const QSet<QProperty *> &attributes() const;
+    Q_INVOKABLE const QSet<QFeature *> &features() const;
+    Q_INVOKABLE const QSet<QClassifier *> &generals() const;
     Q_INVOKABLE void addGeneral(QClassifier *general);
     Q_INVOKABLE void removeGeneral(QClassifier *general);
-    Q_INVOKABLE const QSet<QClassifier *> *redefinedClassifiers() const;
+    Q_INVOKABLE const QSet<QClassifier *> &redefinedClassifiers() const;
     Q_INVOKABLE void addRedefinedClassifier(QClassifier *redefinedClassifier);
     Q_INVOKABLE void removeRedefinedClassifier(QClassifier *redefinedClassifier);
-    Q_INVOKABLE const QSet<QNamedElement *> *inheritedMembers() const;
-    Q_INVOKABLE const QSet<QGeneralization *> *generalizations() const;
+    Q_INVOKABLE const QSet<QNamedElement *> &inheritedMembers() const;
+    Q_INVOKABLE const QSet<QGeneralization *> &generalizations() const;
     Q_INVOKABLE void addGeneralization(QGeneralization *generalization);
     Q_INVOKABLE void removeGeneralization(QGeneralization *generalization);
 
     // Operations
-    Q_INVOKABLE const QSet<QFeature *> *allFeatures() const;
-    Q_INVOKABLE const QSet<QClassifier *> *allParents() const;
+    Q_INVOKABLE const QSet<QFeature *> &allFeatures() const;
+    Q_INVOKABLE const QSet<QClassifier *> &allParents() const;
     Q_INVOKABLE bool conformsTo(const QClassifier *other) const;
     Q_INVOKABLE bool hasVisibilityOf(const QNamedElement *n) const;
-    Q_INVOKABLE const QSet<QNamedElement *> *inherit(const QSet<QNamedElement *> *inhs) const;
-    Q_INVOKABLE const QSet<QNamedElement *> *inheritableMembers(const QClassifier *c) const;
+    Q_INVOKABLE const QSet<QNamedElement *> &inherit(const QSet<QNamedElement *> &inhs) const;
+    Q_INVOKABLE const QSet<QNamedElement *> &inheritableMembers(const QClassifier *c) const;
     Q_INVOKABLE bool maySpecializeType(const QClassifier *c) const;
-    Q_INVOKABLE const QSet<QClassifier *> *parents() const;
-    virtual void registerMetaTypes() const;
+    Q_INVOKABLE const QSet<QClassifier *> &parents() const;
 
     // Classes which access read-only opposite properties should be friend
     friend class QFeaturePrivate;
@@ -180,10 +179,6 @@ private:
 };
 
 QT_END_NAMESPACE_QTMOF
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTMOF(QClassifier) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTMOF(QClassifier) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTMOF(QClassifier) *> *)
 
 QT_END_HEADER
 

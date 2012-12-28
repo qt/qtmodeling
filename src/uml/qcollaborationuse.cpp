@@ -48,14 +48,12 @@
 QT_BEGIN_NAMESPACE_QTUML
 
 QCollaborationUsePrivate::QCollaborationUsePrivate() :
-    type(0),
-    roleBindings(new QSet<QDependency *>)
+    type(0)
 {
 }
 
 QCollaborationUsePrivate::~QCollaborationUsePrivate()
 {
-    delete roleBindings;
 }
 
 /*!
@@ -108,7 +106,7 @@ void QCollaborationUse::setType(QCollaboration *type)
 /*!
     A mapping between features of the collaboration type and features of the owning classifier. This mapping indicates which connectable element of the classifier plays which role(s) in the collaboration. A connectable element may be bound to multiple roles in the same collaboration use (that is, it may play multiple roles).
  */
-const QSet<QDependency *> *QCollaborationUse::roleBindings() const
+const QSet<QDependency *> &QCollaborationUse::roleBindings() const
 {
     // This is a read-write association end
 
@@ -121,8 +119,8 @@ void QCollaborationUse::addRoleBinding(QDependency *roleBinding)
     // This is a read-write association end
 
     Q_D(QCollaborationUse);
-    if (!d->roleBindings->contains(roleBinding)) {
-        d->roleBindings->insert(roleBinding);
+    if (!d->roleBindings.contains(roleBinding)) {
+        d->roleBindings.insert(roleBinding);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(roleBinding));
@@ -134,41 +132,12 @@ void QCollaborationUse::removeRoleBinding(QDependency *roleBinding)
     // This is a read-write association end
 
     Q_D(QCollaborationUse);
-    if (d->roleBindings->contains(roleBinding)) {
-        d->roleBindings->remove(roleBinding);
+    if (d->roleBindings.contains(roleBinding)) {
+        d->roleBindings.remove(roleBinding);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(roleBinding));
     }
-}
-
-void QCollaborationUse::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QCollaborationUse) *>("QT_PREPEND_NAMESPACE_QTUML(QCollaborationUse) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QCollaborationUse) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QCollaborationUse) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QCollaborationUse) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QCollaborationUse) *> *");
-    qRegisterMetaType<QCollaborationUse *>("QCollaborationUse *");
-    qRegisterMetaType<const QSet<QCollaborationUse *> *>("const QSet<QCollaborationUse *> *");
-    qRegisterMetaType<const QList<QCollaborationUse *> *>("const QList<QCollaborationUse *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QDependency) *>("QT_PREPEND_NAMESPACE_QTUML(QDependency) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QDependency) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QDependency) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QDependency) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QDependency) *> *");
-    qRegisterMetaType<QDependency *>("QDependency *");
-    qRegisterMetaType<const QSet<QDependency *> *>("const QSet<QDependency *> *");
-    qRegisterMetaType<const QList<QDependency *> *>("const QList<QDependency *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QCollaboration) *>("QT_PREPEND_NAMESPACE_QTUML(QCollaboration) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QCollaboration) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QCollaboration) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QCollaboration) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QCollaboration) *> *");
-    qRegisterMetaType<QCollaboration *>("QCollaboration *");
-    qRegisterMetaType<const QSet<QCollaboration *> *>("const QSet<QCollaboration *> *");
-    qRegisterMetaType<const QList<QCollaboration *> *>("const QList<QCollaboration *> *");
-
-    QNamedElement::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qcollaborationuse.cpp"

@@ -74,21 +74,6 @@ QLiteralSpecification::~QLiteralSpecification()
 {
 }
 
-void QLiteralSpecification::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QLiteralSpecification) *>("QT_PREPEND_NAMESPACE_QTUML(QLiteralSpecification) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QLiteralSpecification) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QLiteralSpecification) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QLiteralSpecification) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QLiteralSpecification) *> *");
-    qRegisterMetaType<QLiteralSpecification *>("QLiteralSpecification *");
-    qRegisterMetaType<const QSet<QLiteralSpecification *> *>("const QSet<QLiteralSpecification *> *");
-    qRegisterMetaType<const QList<QLiteralSpecification *> *>("const QList<QLiteralSpecification *> *");
-
-    QValueSpecification::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 #include "moc_qliteralspecification.cpp"
 
 QT_END_NAMESPACE_QTUML

@@ -75,17 +75,12 @@ public:
     // Operations
     Q_INVOKABLE bool isComputable() const;
     Q_INVOKABLE qint32 unlimitedValue() const;
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QLiteralUnlimitedNatural(QLiteralUnlimitedNaturalPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTMOF
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTMOF(QLiteralUnlimitedNatural) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTMOF(QLiteralUnlimitedNatural) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTMOF(QLiteralUnlimitedNatural) *> *)
 
 QT_END_HEADER
 

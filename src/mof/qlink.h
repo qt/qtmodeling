@@ -84,17 +84,12 @@ public:
     // Operations
     Q_INVOKABLE bool equals(const QLink *otherLink) const;
     Q_INVOKABLE void delete_();
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QLink(QLinkPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTMOF
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTMOF(QLink) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTMOF(QLink) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTMOF(QLink) *> *)
 
 QT_END_HEADER
 

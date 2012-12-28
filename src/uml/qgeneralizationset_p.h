@@ -71,7 +71,7 @@ public:
     bool isCovering;
     bool isDisjoint;
     QClassifier *powertype;
-    QSet<QGeneralization *> *generalizations;
+    QSet<QGeneralization *> generalizations;
 };
 
 QT_END_NAMESPACE_QTUML

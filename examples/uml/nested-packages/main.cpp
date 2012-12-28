@@ -57,11 +57,11 @@ int main ()
     model->addPackagedElement(package);
     model->addOwnedType(primitiveType);
 
-    qDebug() << "model->ownedElements()->size():" << model->ownedElements()->size();
-    qDebug() << "model->members()->size():" << model->members()->size();
-    qDebug() << "model->ownedMembers()->size():" << model->ownedMembers()->size();
-    qDebug() << "model->ownedRules()->size():" << model->ownedRules()->size();
-    qDebug() << "model->packagedElements()->size():" << model->packagedElements()->size();
+    qDebug() << "model->ownedElements()->size():" << model->ownedElements().size();
+    qDebug() << "model->members()->size():" << model->members().size();
+    qDebug() << "model->ownedMembers()->size():" << model->ownedMembers().size();
+    qDebug() << "model->ownedRules()->size():" << model->ownedRules().size();
+    qDebug() << "model->packagedElements()->size():" << model->packagedElements().size();
     qDebug();
     qDebug() << "package->qualifiedName():" << package->qualifiedName();
     qDebug() << "package->nestingPackage() ?" << ((package->nestingPackage() == 0) ? "Nao":"Sim");
@@ -76,11 +76,11 @@ int main ()
     model->addPackagedElement(package);
     qDebug() << "REMOVED";
 
-    qDebug() << "model->ownedElements()->size():" << model->ownedElements()->size();
-    qDebug() << "model->members()->size():" << model->members()->size();
-    qDebug() << "model->ownedMembers()->size():" << model->ownedMembers()->size();
-    qDebug() << "model->ownedRules()->size():" << model->ownedRules()->size();
-    qDebug() << "model->packagedElements()->size():" << model->packagedElements()->size();
+    qDebug() << "model->ownedElements()->size():" << model->ownedElements().size();
+    qDebug() << "model->members()->size():" << model->members().size();
+    qDebug() << "model->ownedMembers()->size():" << model->ownedMembers().size();
+    qDebug() << "model->ownedRules()->size():" << model->ownedRules().size();
+    qDebug() << "model->packagedElements()->size():" << model->packagedElements().size();
     qDebug();
     qDebug() << "package->qualifiedName():" << package->qualifiedName();
     qDebug() << "package->nestingPackage() ?" << ((package->nestingPackage() == 0) ? "Nao":"Sim");
@@ -89,13 +89,13 @@ int main ()
     qDebug() << "primitiveType->qualifiedName():" << primitiveType->qualifiedName();
     qDebug() << "directionIn->qualifiedName():" << directionIn->qualifiedName();
 
-    QScopedPointer<QPackageList> nestedPackages (model->nestedPackages());
+    QScopedPointer<QPackageList> nestedPackages (&model->nestedPackages());
     qDebug() << "model->nestedPackages()->size():" << nestedPackages->size();
 
-    QScopedPointer<QStereotypeList> ownedStereotypes (model->ownedStereotypes());
+    QScopedPointer<QStereotypeList> ownedStereotypes (&model->ownedStereotypes());
     qDebug() << "model->ownedStereotypes()->size():" << ownedStereotypes->size();
 
-    QScopedPointer<QTypeList> ownedTypes (model->ownedTypes());
+    QScopedPointer<QTypeList> ownedTypes (&model->ownedTypes());
     qDebug() << "model->ownedTypes()->size():" << ownedTypes->size();
 
     checkProperties(model);
@@ -105,19 +105,19 @@ int main ()
     QWrappedObjectPointer<QComponentRealization> cr = new QComponentRealization;
     cr->setAbstraction(c1);
     qDebug();
-    qDebug() << "cr->suppliers()->size():" << cr->suppliers()->size();
-    qDebug() << "c1->realizations()->size():" << c1->realizations()->size();
-    qDebug() << "c2->realizations()->size():" << c2->realizations()->size();
+    qDebug() << "cr->suppliers()->size():" << cr->suppliers().size();
+    qDebug() << "c1->realizations()->size():" << c1->realizations().size();
+    qDebug() << "c2->realizations()->size():" << c2->realizations().size();
     cr->setAbstraction(c2);
     qDebug();
-    qDebug() << "cr->suppliers()->size():" << cr->suppliers()->size();
-    qDebug() << "c1->realizations()->size():" << c1->realizations()->size();
-    qDebug() << "c2->realizations()->size():" << c2->realizations()->size();
+    qDebug() << "cr->suppliers()->size():" << cr->suppliers().size();
+    qDebug() << "c1->realizations()->size():" << c1->realizations().size();
+    qDebug() << "c2->realizations()->size():" << c2->realizations().size();
     cr->setAbstraction(0);
     qDebug();
-    qDebug() << "cr->suppliers()->size():" << cr->suppliers()->size();
-    qDebug() << "c1->realizations()->size():" << c1->realizations()->size();
-    qDebug() << "c2->realizations()->size():" << c2->realizations()->size();
+    qDebug() << "cr->suppliers()->size():" << cr->suppliers().size();
+    qDebug() << "c1->realizations()->size():" << c1->realizations().size();
+    qDebug() << "c2->realizations()->size():" << c2->realizations().size();
     cr->setAbstraction(c1);
     package->addOwnedType(c1);
     package->addOwnedType(c2);

@@ -68,9 +68,9 @@ public:
     explicit QElementPrivate();
     virtual ~QElementPrivate();
 
-    QSet<QElement *> *ownedElements;
+    QSet<QElement *> ownedElements;
     QElement *owner;
-    QSet<QComment *> *ownedComments;
+    QSet<QComment *> ownedComments;
 
     // Internal functions for read-only subsetted association ends
     void addOwnedElement(QElement *ownedElement);

@@ -74,21 +74,6 @@ QDevice::~QDevice()
 {
 }
 
-void QDevice::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QDevice) *>("QT_PREPEND_NAMESPACE_QTUML(QDevice) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QDevice) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QDevice) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QDevice) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QDevice) *> *");
-    qRegisterMetaType<QDevice *>("QDevice *");
-    qRegisterMetaType<const QSet<QDevice *> *>("const QSet<QDevice *> *");
-    qRegisterMetaType<const QList<QDevice *> *>("const QList<QDevice *> *");
-
-    QNode::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 #include "moc_qdevice.cpp"
 
 QT_END_NAMESPACE_QTUML

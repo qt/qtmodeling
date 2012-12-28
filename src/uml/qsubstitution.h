@@ -85,17 +85,12 @@ public:
     Q_INVOKABLE void removeSupplier(QWrappedObjectPointer<QClassifier> contract);
     Q_INVOKABLE void addClient(QWrappedObjectPointer<QClassifier> substitutingClassifier);
     Q_INVOKABLE void removeClient(QWrappedObjectPointer<QClassifier> substitutingClassifier);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QSubstitution(QSubstitutionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QSubstitution) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QSubstitution) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QSubstitution) *> *)
 
 QT_END_HEADER
 

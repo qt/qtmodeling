@@ -107,28 +107,6 @@ void QConnectableElementTemplateParameter::setParameteredElement(QConnectableEle
     }
 }
 
-void QConnectableElementTemplateParameter::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QConnectableElementTemplateParameter) *>("QT_PREPEND_NAMESPACE_QTUML(QConnectableElementTemplateParameter) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QConnectableElementTemplateParameter) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QConnectableElementTemplateParameter) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QConnectableElementTemplateParameter) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QConnectableElementTemplateParameter) *> *");
-    qRegisterMetaType<QConnectableElementTemplateParameter *>("QConnectableElementTemplateParameter *");
-    qRegisterMetaType<const QSet<QConnectableElementTemplateParameter *> *>("const QSet<QConnectableElementTemplateParameter *> *");
-    qRegisterMetaType<const QList<QConnectableElementTemplateParameter *> *>("const QList<QConnectableElementTemplateParameter *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QConnectableElement) *>("QT_PREPEND_NAMESPACE_QTUML(QConnectableElement) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QConnectableElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QConnectableElement) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QConnectableElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QConnectableElement) *> *");
-    qRegisterMetaType<QConnectableElement *>("QConnectableElement *");
-    qRegisterMetaType<const QSet<QConnectableElement *> *>("const QSet<QConnectableElement *> *");
-    qRegisterMetaType<const QList<QConnectableElement *> *>("const QList<QConnectableElement *> *");
-
-    QTemplateParameter::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 #include "moc_qconnectableelementtemplateparameter.cpp"
 
 QT_END_NAMESPACE_QTUML

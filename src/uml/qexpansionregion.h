@@ -68,8 +68,8 @@ class Q_UML_EXPORT QExpansionRegion : public QStructuredActivityNode
     Q_OBJECT
 
     Q_PROPERTY(QtUml::ExpansionKind mode READ mode WRITE setMode RESET unsetMode)
-    Q_PROPERTY(const QSet<QExpansionNode *> * inputElements READ inputElements)
-    Q_PROPERTY(const QSet<QExpansionNode *> * outputElements READ outputElements)
+    Q_PROPERTY(QSet<QExpansionNode *> inputElements READ inputElements)
+    Q_PROPERTY(QSet<QExpansionNode *> outputElements READ outputElements)
 
     Q_DISABLE_COPY(QExpansionRegion)
     Q_DECLARE_PRIVATE(QExpansionRegion)
@@ -84,23 +84,18 @@ public:
     Q_INVOKABLE void unsetMode();
 
     // Association ends from QExpansionRegion
-    Q_INVOKABLE const QSet<QExpansionNode *> *inputElements() const;
+    Q_INVOKABLE const QSet<QExpansionNode *> &inputElements() const;
     Q_INVOKABLE void addInputElement(QExpansionNode *inputElement);
     Q_INVOKABLE void removeInputElement(QExpansionNode *inputElement);
-    Q_INVOKABLE const QSet<QExpansionNode *> *outputElements() const;
+    Q_INVOKABLE const QSet<QExpansionNode *> &outputElements() const;
     Q_INVOKABLE void addOutputElement(QExpansionNode *outputElement);
     Q_INVOKABLE void removeOutputElement(QExpansionNode *outputElement);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QExpansionRegion(QExpansionRegionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QExpansionRegion) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QExpansionRegion) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QExpansionRegion) *> *)
 
 QT_END_HEADER
 

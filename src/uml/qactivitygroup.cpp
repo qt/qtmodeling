@@ -53,26 +53,20 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QActivityGroupPrivate::QActivityGroupPrivate() :
     inActivity(0),
-    containedNodes(new QSet<QActivityNode *>),
-    subgroups(new QSet<QActivityGroup *>),
-    containedEdges(new QSet<QActivityEdge *>),
     superGroup(0)
 {
 }
 
 QActivityGroupPrivate::~QActivityGroupPrivate()
 {
-    delete containedNodes;
-    delete subgroups;
-    delete containedEdges;
 }
 
 void QActivityGroupPrivate::addContainedNode(QActivityNode *containedNode)
 {
     // This is a read-only derived-union association end
 
-    if (!this->containedNodes->contains(containedNode)) {
-        this->containedNodes->insert(containedNode);
+    if (!this->containedNodes.contains(containedNode)) {
+        this->containedNodes.insert(containedNode);
 
         // Adjust opposite property
         Q_Q(QActivityGroup);
@@ -84,8 +78,8 @@ void QActivityGroupPrivate::removeContainedNode(QActivityNode *containedNode)
 {
     // This is a read-only derived-union association end
 
-    if (this->containedNodes->contains(containedNode)) {
-        this->containedNodes->remove(containedNode);
+    if (this->containedNodes.contains(containedNode)) {
+        this->containedNodes.remove(containedNode);
 
         // Adjust opposite property
         Q_Q(QActivityGroup);
@@ -98,8 +92,8 @@ void QActivityGroupPrivate::addSubgroup(QActivityGroup *subgroup)
 {
     // This is a read-only derived-union association end
 
-    if (!this->subgroups->contains(subgroup)) {
-        this->subgroups->insert(subgroup);
+    if (!this->subgroups.contains(subgroup)) {
+        this->subgroups.insert(subgroup);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(this))->addOwnedElement(qwrappedobject_cast<QElement *>(subgroup));
@@ -114,8 +108,8 @@ void QActivityGroupPrivate::removeSubgroup(QActivityGroup *subgroup)
 {
     // This is a read-only derived-union association end
 
-    if (this->subgroups->contains(subgroup)) {
-        this->subgroups->remove(subgroup);
+    if (this->subgroups.contains(subgroup)) {
+        this->subgroups.remove(subgroup);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(this))->removeOwnedElement(qwrappedobject_cast<QElement *>(subgroup));
@@ -129,8 +123,8 @@ void QActivityGroupPrivate::addContainedEdge(QActivityEdge *containedEdge)
 {
     // This is a read-only derived-union association end
 
-    if (!this->containedEdges->contains(containedEdge)) {
-        this->containedEdges->insert(containedEdge);
+    if (!this->containedEdges.contains(containedEdge)) {
+        this->containedEdges.insert(containedEdge);
 
         // Adjust opposite property
         Q_Q(QActivityGroup);
@@ -142,8 +136,8 @@ void QActivityGroupPrivate::removeContainedEdge(QActivityEdge *containedEdge)
 {
     // This is a read-only derived-union association end
 
-    if (this->containedEdges->contains(containedEdge)) {
-        this->containedEdges->remove(containedEdge);
+    if (this->containedEdges.contains(containedEdge)) {
+        this->containedEdges.remove(containedEdge);
 
         // Adjust opposite property
         Q_Q(QActivityGroup);
@@ -234,7 +228,7 @@ void QActivityGroup::setInActivity(QActivity *inActivity)
 /*!
     Nodes immediately contained in the group.
  */
-const QSet<QActivityNode *> *QActivityGroup::containedNodes() const
+const QSet<QActivityNode *> &QActivityGroup::containedNodes() const
 {
     // This is a read-only derived-union association end
 
@@ -245,7 +239,7 @@ const QSet<QActivityNode *> *QActivityGroup::containedNodes() const
 /*!
     Groups immediately contained in the group.
  */
-const QSet<QActivityGroup *> *QActivityGroup::subgroups() const
+const QSet<QActivityGroup *> &QActivityGroup::subgroups() const
 {
     // This is a read-only derived-union association end
 
@@ -256,7 +250,7 @@ const QSet<QActivityGroup *> *QActivityGroup::subgroups() const
 /*!
     Edges immediately contained in the group.
  */
-const QSet<QActivityEdge *> *QActivityGroup::containedEdges() const
+const QSet<QActivityEdge *> &QActivityGroup::containedEdges() const
 {
     // This is a read-only derived-union association end
 
@@ -273,42 +267,6 @@ QActivityGroup *QActivityGroup::superGroup() const
 
     Q_D(const QActivityGroup);
     return d->superGroup;
-}
-
-void QActivityGroup::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QActivityGroup) *>("QT_PREPEND_NAMESPACE_QTUML(QActivityGroup) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QActivityGroup) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QActivityGroup) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QActivityGroup) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QActivityGroup) *> *");
-    qRegisterMetaType<QActivityGroup *>("QActivityGroup *");
-    qRegisterMetaType<const QSet<QActivityGroup *> *>("const QSet<QActivityGroup *> *");
-    qRegisterMetaType<const QList<QActivityGroup *> *>("const QList<QActivityGroup *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QActivity) *>("QT_PREPEND_NAMESPACE_QTUML(QActivity) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QActivity) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QActivity) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QActivity) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QActivity) *> *");
-    qRegisterMetaType<QActivity *>("QActivity *");
-    qRegisterMetaType<const QSet<QActivity *> *>("const QSet<QActivity *> *");
-    qRegisterMetaType<const QList<QActivity *> *>("const QList<QActivity *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QActivityEdge) *>("QT_PREPEND_NAMESPACE_QTUML(QActivityEdge) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QActivityEdge) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QActivityEdge) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QActivityEdge) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QActivityEdge) *> *");
-    qRegisterMetaType<QActivityEdge *>("QActivityEdge *");
-    qRegisterMetaType<const QSet<QActivityEdge *> *>("const QSet<QActivityEdge *> *");
-    qRegisterMetaType<const QList<QActivityEdge *> *>("const QList<QActivityEdge *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QActivityNode) *>("QT_PREPEND_NAMESPACE_QTUML(QActivityNode) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QActivityNode) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QActivityNode) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QActivityNode) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QActivityNode) *> *");
-    qRegisterMetaType<QActivityNode *>("QActivityNode *");
-    qRegisterMetaType<const QSet<QActivityNode *> *>("const QSet<QActivityNode *> *");
-    qRegisterMetaType<const QList<QActivityNode *> *>("const QList<QActivityNode *> *");
-
-    QNamedElement::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qactivitygroup.cpp"

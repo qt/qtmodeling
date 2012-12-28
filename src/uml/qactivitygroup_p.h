@@ -70,9 +70,9 @@ public:
     virtual ~QActivityGroupPrivate();
 
     QActivity *inActivity;
-    QSet<QActivityNode *> *containedNodes;
-    QSet<QActivityGroup *> *subgroups;
-    QSet<QActivityEdge *> *containedEdges;
+    QSet<QActivityNode *> containedNodes;
+    QSet<QActivityGroup *> subgroups;
+    QSet<QActivityEdge *> containedEdges;
     QActivityGroup *superGroup;
 
     // Internal functions for read-only subsetted association ends

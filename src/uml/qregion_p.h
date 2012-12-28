@@ -75,10 +75,10 @@ public:
     virtual ~QRegionPrivate();
 
     QRegion *extendedRegion;
-    QSet<QTransition *> *transitions;
+    QSet<QTransition *> transitions;
     QStateMachine *stateMachine;
     QState *state;
-    QSet<QVertex *> *subvertices;
+    QSet<QVertex *> subvertices;
 };
 
 QT_END_NAMESPACE_QTUML

@@ -64,8 +64,8 @@ class Q_UML_EXPORT QDirectedRelationship : public QRelationship
 {
     Q_OBJECT
 
-    Q_PROPERTY(const QSet<QElement *> * sources READ sources)
-    Q_PROPERTY(const QSet<QElement *> * targets READ targets)
+    Q_PROPERTY(QSet<QElement *> sources READ sources)
+    Q_PROPERTY(QSet<QElement *> targets READ targets)
 
     Q_DISABLE_COPY(QDirectedRelationship)
     Q_DECLARE_PRIVATE(QDirectedRelationship)
@@ -75,19 +75,14 @@ public:
     virtual ~QDirectedRelationship();
 
     // Association ends from QDirectedRelationship
-    Q_INVOKABLE const QSet<QElement *> *sources() const;
-    Q_INVOKABLE const QSet<QElement *> *targets() const;
-    virtual void registerMetaTypes() const;
+    Q_INVOKABLE const QSet<QElement *> &sources() const;
+    Q_INVOKABLE const QSet<QElement *> &targets() const;
 
 protected:
     explicit QDirectedRelationship(QDirectedRelationshipPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QDirectedRelationship) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QDirectedRelationship) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QDirectedRelationship) *> *)
 
 QT_END_HEADER
 

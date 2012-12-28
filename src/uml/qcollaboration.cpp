@@ -46,14 +46,12 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QCollaborationPrivate::QCollaborationPrivate() :
-    collaborationRoles(new QSet<QConnectableElement *>)
+QCollaborationPrivate::QCollaborationPrivate()
 {
 }
 
 QCollaborationPrivate::~QCollaborationPrivate()
 {
-    delete collaborationRoles;
 }
 
 /*!
@@ -89,7 +87,7 @@ QCollaboration::~QCollaboration()
 /*!
     The Elements owned by this element.
  */
-const QSet<QElement *> *QCollaboration::ownedElements() const
+const QSet<QElement *> &QCollaboration::ownedElements() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedElements();
 }
@@ -105,7 +103,7 @@ QElement *QCollaboration::owner() const
 /*!
     The Comments owned by this element.
  */
-const QSet<QComment *> *QCollaboration::ownedComments() const
+const QSet<QComment *> &QCollaboration::ownedComments() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedComments();
 }
@@ -173,7 +171,7 @@ QNamespace *QCollaboration::namespace_() const
 /*!
     Indicates the dependencies that reference the client.
  */
-const QSet<QDependency *> *QCollaboration::clientDependencies() const
+const QSet<QDependency *> &QCollaboration::clientDependencies() const
 {
     return (qwrappedobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
@@ -195,7 +193,7 @@ void QCollaboration::removeClientDependency(QDependency *clientDependency)
 /*!
     References the PackageImports owned by the Namespace.
  */
-const QSet<QPackageImport *> *QCollaboration::packageImports() const
+const QSet<QPackageImport *> &QCollaboration::packageImports() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->packageImports();
 }
@@ -213,7 +211,7 @@ void QCollaboration::removePackageImport(QPackageImport *packageImport)
 /*!
     A collection of NamedElements identifiable within the Namespace, either by being owned or by being introduced by importing or inheritance.
  */
-const QSet<QNamedElement *> *QCollaboration::members() const
+const QSet<QNamedElement *> &QCollaboration::members() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->members();
 }
@@ -221,7 +219,7 @@ const QSet<QNamedElement *> *QCollaboration::members() const
 /*!
     References the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports.
  */
-const QSet<QPackageableElement *> *QCollaboration::importedMembers() const
+const QSet<QPackageableElement *> &QCollaboration::importedMembers() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->importedMembers();
 }
@@ -229,7 +227,7 @@ const QSet<QPackageableElement *> *QCollaboration::importedMembers() const
 /*!
     References the ElementImports owned by the Namespace.
  */
-const QSet<QElementImport *> *QCollaboration::elementImports() const
+const QSet<QElementImport *> &QCollaboration::elementImports() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->elementImports();
 }
@@ -247,7 +245,7 @@ void QCollaboration::removeElementImport(QElementImport *elementImport)
 /*!
     Specifies a set of Constraints owned by this Namespace.
  */
-const QSet<QConstraint *> *QCollaboration::ownedRules() const
+const QSet<QConstraint *> &QCollaboration::ownedRules() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->ownedRules();
 }
@@ -265,7 +263,7 @@ void QCollaboration::removeOwnedRule(QConstraint *ownedRule)
 /*!
     A collection of NamedElements owned by the Namespace.
  */
-const QSet<QNamedElement *> *QCollaboration::ownedMembers() const
+const QSet<QNamedElement *> &QCollaboration::ownedMembers() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->ownedMembers();
 }
@@ -355,7 +353,7 @@ void QCollaboration::unsetLeaf()
 /*!
     The redefinable element that is being redefined by this element.
  */
-const QSet<QRedefinableElement *> *QCollaboration::redefinedElements() const
+const QSet<QRedefinableElement *> &QCollaboration::redefinedElements() const
 {
     return (qwrappedobject_cast<const QRedefinableElement *>(this))->redefinedElements();
 }
@@ -363,7 +361,7 @@ const QSet<QRedefinableElement *> *QCollaboration::redefinedElements() const
 /*!
     References the contexts that this element may be redefined from.
  */
-const QSet<QClassifier *> *QCollaboration::redefinitionContexts() const
+const QSet<QClassifier *> &QCollaboration::redefinitionContexts() const
 {
     return (qwrappedobject_cast<const QRedefinableElement *>(this))->redefinitionContexts();
 }
@@ -375,7 +373,7 @@ const QSet<QClassifier *> *QCollaboration::redefinitionContexts() const
 /*!
     The optional bindings from this element to templates.
  */
-const QSet<QTemplateBinding *> *QCollaboration::templateBindings() const
+const QSet<QTemplateBinding *> &QCollaboration::templateBindings() const
 {
     return (qwrappedobject_cast<const QTemplateableElement *>(this))->templateBindings();
 }
@@ -437,7 +435,7 @@ void QCollaboration::unsetFinalSpecialization()
 /*!
     References the use cases owned by this classifier.
  */
-const QSet<QUseCase *> *QCollaboration::ownedUseCases() const
+const QSet<QUseCase *> &QCollaboration::ownedUseCases() const
 {
     return (qwrappedobject_cast<const QClassifier *>(this))->ownedUseCases();
 }
@@ -455,7 +453,7 @@ void QCollaboration::removeOwnedUseCase(QUseCase *ownedUseCase)
 /*!
     Designates the GeneralizationSet of which the associated Classifier is a power type.
  */
-const QSet<QGeneralizationSet *> *QCollaboration::powertypeExtents() const
+const QSet<QGeneralizationSet *> &QCollaboration::powertypeExtents() const
 {
     return (qwrappedobject_cast<const QClassifier *>(this))->powertypeExtents();
 }
@@ -473,7 +471,7 @@ void QCollaboration::removePowertypeExtent(QGeneralizationSet *powertypeExtent)
 /*!
     The set of use cases for which this Classifier is the subject.
  */
-const QSet<QUseCase *> *QCollaboration::useCases() const
+const QSet<QUseCase *> &QCollaboration::useCases() const
 {
     return (qwrappedobject_cast<const QClassifier *>(this))->useCases();
 }
@@ -504,7 +502,7 @@ void QCollaboration::setTemplateParameter(QClassifierTemplateParameter *template
 /*!
     References the Classifiers that are redefined by this Classifier.
  */
-const QSet<QClassifier *> *QCollaboration::redefinedClassifiers() const
+const QSet<QClassifier *> &QCollaboration::redefinedClassifiers() const
 {
     return (qwrappedobject_cast<const QClassifier *>(this))->redefinedClassifiers();
 }
@@ -535,7 +533,7 @@ void QCollaboration::setOwnedTemplateSignature(QRedefinableTemplateSignature *ow
 /*!
     References the collaboration uses owned by the classifier.
  */
-const QSet<QCollaborationUse *> *QCollaboration::collaborationUses() const
+const QSet<QCollaborationUse *> &QCollaboration::collaborationUses() const
 {
     return (qwrappedobject_cast<const QClassifier *>(this))->collaborationUses();
 }
@@ -553,7 +551,7 @@ void QCollaboration::removeCollaborationUse(QCollaborationUse *collaborationUse)
 /*!
     Refers to all of the Properties that are direct (i.e. not inherited or imported) attributes of the classifier.
  */
-const QSet<QProperty *> *QCollaboration::attributes() const
+const QSet<QProperty *> &QCollaboration::attributes() const
 {
     return (qwrappedobject_cast<const QClassifier *>(this))->attributes();
 }
@@ -561,7 +559,7 @@ const QSet<QProperty *> *QCollaboration::attributes() const
 /*!
     Specifies each feature defined in the classifier.Note that there may be members of the Classifier that are of the type Feature but are not included in this association, e.g. inherited features.
  */
-const QSet<QFeature *> *QCollaboration::features() const
+const QSet<QFeature *> &QCollaboration::features() const
 {
     return (qwrappedobject_cast<const QClassifier *>(this))->features();
 }
@@ -569,7 +567,7 @@ const QSet<QFeature *> *QCollaboration::features() const
 /*!
     Specifies the general Classifiers for this Classifier.References the general classifier in the Generalization relationship.
  */
-const QSet<QClassifier *> *QCollaboration::generals() const
+const QSet<QClassifier *> &QCollaboration::generals() const
 {
     return (qwrappedobject_cast<const QClassifier *>(this))->generals();
 }
@@ -600,7 +598,7 @@ void QCollaboration::setRepresentation(QCollaborationUse *representation)
 /*!
     Specifies the Generalization relationships for this Classifier. These Generalizations navigaten to more general classifiers in the generalization hierarchy.
  */
-const QSet<QGeneralization *> *QCollaboration::generalizations() const
+const QSet<QGeneralization *> &QCollaboration::generalizations() const
 {
     return (qwrappedobject_cast<const QClassifier *>(this))->generalizations();
 }
@@ -618,7 +616,7 @@ void QCollaboration::removeGeneralization(QGeneralization *generalization)
 /*!
     Specifies all elements inherited by this classifier from the general classifiers.
  */
-const QSet<QNamedElement *> *QCollaboration::inheritedMembers() const
+const QSet<QNamedElement *> &QCollaboration::inheritedMembers() const
 {
     return (qwrappedobject_cast<const QClassifier *>(this))->inheritedMembers();
 }
@@ -626,7 +624,7 @@ const QSet<QNamedElement *> *QCollaboration::inheritedMembers() const
 /*!
     References the substitutions that are owned by this Classifier.
  */
-const QSet<QSubstitution *> *QCollaboration::substitutions() const
+const QSet<QSubstitution *> &QCollaboration::substitutions() const
 {
     return (qwrappedobject_cast<const QClassifier *>(this))->substitutions();
 }
@@ -648,7 +646,7 @@ void QCollaboration::removeSubstitution(QSubstitution *substitution)
 /*!
     References the roles that instances may play in this classifier.
  */
-const QSet<QConnectableElement *> *QCollaboration::roles() const
+const QSet<QConnectableElement *> &QCollaboration::roles() const
 {
     return (qwrappedobject_cast<const QStructuredClassifier *>(this))->roles();
 }
@@ -656,7 +654,7 @@ const QSet<QConnectableElement *> *QCollaboration::roles() const
 /*!
     References the properties owned by the classifier.
  */
-const QList<QProperty *> *QCollaboration::ownedAttributes() const
+const QList<QProperty *> &QCollaboration::ownedAttributes() const
 {
     return (qwrappedobject_cast<const QStructuredClassifier *>(this))->ownedAttributes();
 }
@@ -674,7 +672,7 @@ void QCollaboration::removeOwnedAttribute(QProperty *ownedAttribute)
 /*!
     References the properties specifying instances that the classifier owns by composition. This association is derived, selecting those owned properties where isComposite is true.
  */
-const QSet<QProperty *> *QCollaboration::parts() const
+const QSet<QProperty *> &QCollaboration::parts() const
 {
     return (qwrappedobject_cast<const QStructuredClassifier *>(this))->parts();
 }
@@ -682,7 +680,7 @@ const QSet<QProperty *> *QCollaboration::parts() const
 /*!
     References the connectors owned by the classifier.
  */
-const QSet<QConnector *> *QCollaboration::ownedConnectors() const
+const QSet<QConnector *> &QCollaboration::ownedConnectors() const
 {
     return (qwrappedobject_cast<const QStructuredClassifier *>(this))->ownedConnectors();
 }
@@ -704,7 +702,7 @@ void QCollaboration::removeOwnedConnector(QConnector *ownedConnector)
 /*!
     References behavior specifications owned by a classifier.
  */
-const QSet<QBehavior *> *QCollaboration::ownedBehaviors() const
+const QSet<QBehavior *> &QCollaboration::ownedBehaviors() const
 {
     return (qwrappedobject_cast<const QBehavioredClassifier *>(this))->ownedBehaviors();
 }
@@ -722,7 +720,7 @@ void QCollaboration::removeOwnedBehavior(QBehavior *ownedBehavior)
 /*!
     The set of InterfaceRealizations owned by the BehavioredClassifier. Interface realizations reference the Interfaces of which the BehavioredClassifier is an implementation.
  */
-const QSet<QInterfaceRealization *> *QCollaboration::interfaceRealizations() const
+const QSet<QInterfaceRealization *> &QCollaboration::interfaceRealizations() const
 {
     return (qwrappedobject_cast<const QBehavioredClassifier *>(this))->interfaceRealizations();
 }
@@ -757,7 +755,7 @@ void QCollaboration::setClassifierBehavior(QBehavior *classifierBehavior)
 /*!
     References connectable elements (possibly owned by other classifiers) which represent roles that instances may play in this collaboration.
  */
-const QSet<QConnectableElement *> *QCollaboration::collaborationRoles() const
+const QSet<QConnectableElement *> &QCollaboration::collaborationRoles() const
 {
     // This is a read-write association end
 
@@ -770,8 +768,8 @@ void QCollaboration::addCollaborationRole(QConnectableElement *collaborationRole
     // This is a read-write association end
 
     Q_D(QCollaboration);
-    if (!d->collaborationRoles->contains(collaborationRole)) {
-        d->collaborationRoles->insert(collaborationRole);
+    if (!d->collaborationRoles.contains(collaborationRole)) {
+        d->collaborationRoles.insert(collaborationRole);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QStructuredClassifierPrivate *>(d))->addRole(qwrappedobject_cast<QConnectableElement *>(collaborationRole));
@@ -783,34 +781,12 @@ void QCollaboration::removeCollaborationRole(QConnectableElement *collaborationR
     // This is a read-write association end
 
     Q_D(QCollaboration);
-    if (d->collaborationRoles->contains(collaborationRole)) {
-        d->collaborationRoles->remove(collaborationRole);
+    if (d->collaborationRoles.contains(collaborationRole)) {
+        d->collaborationRoles.remove(collaborationRole);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QStructuredClassifierPrivate *>(d))->removeRole(qwrappedobject_cast<QConnectableElement *>(collaborationRole));
     }
-}
-
-void QCollaboration::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QCollaboration) *>("QT_PREPEND_NAMESPACE_QTUML(QCollaboration) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QCollaboration) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QCollaboration) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QCollaboration) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QCollaboration) *> *");
-    qRegisterMetaType<QCollaboration *>("QCollaboration *");
-    qRegisterMetaType<const QSet<QCollaboration *> *>("const QSet<QCollaboration *> *");
-    qRegisterMetaType<const QList<QCollaboration *> *>("const QList<QCollaboration *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QConnectableElement) *>("QT_PREPEND_NAMESPACE_QTUML(QConnectableElement) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QConnectableElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QConnectableElement) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QConnectableElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QConnectableElement) *> *");
-    qRegisterMetaType<QConnectableElement *>("QConnectableElement *");
-    qRegisterMetaType<const QSet<QConnectableElement *> *>("const QSet<QConnectableElement *> *");
-    qRegisterMetaType<const QList<QConnectableElement *> *>("const QList<QConnectableElement *> *");
-
-    QWrappedObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qcollaboration.cpp"

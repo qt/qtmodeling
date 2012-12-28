@@ -48,14 +48,12 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QClassifierTemplateParameterPrivate::QClassifierTemplateParameterPrivate() :
     allowSubstitutable(true),
-    parameteredElement(0),
-    constrainingClassifiers(new QSet<QClassifier *>)
+    parameteredElement(0)
 {
 }
 
 QClassifierTemplateParameterPrivate::~QClassifierTemplateParameterPrivate()
 {
-    delete constrainingClassifiers;
 }
 
 /*!
@@ -143,7 +141,7 @@ void QClassifierTemplateParameter::setParameteredElement(QClassifier *parametere
 /*!
     The classifiers that constrain the argument that can be used for the parameter. If the allowSubstitutable attribute is true, then any classifier that is compatible with this constraining classifier can be substituted; otherwise, it must be either this classifier or one of its subclasses. If this property is empty, there are no constraints on the classifier that can be used as an argument.
  */
-const QSet<QClassifier *> *QClassifierTemplateParameter::constrainingClassifiers() const
+const QSet<QClassifier *> &QClassifierTemplateParameter::constrainingClassifiers() const
 {
     // This is a read-write association end
 
@@ -156,8 +154,8 @@ void QClassifierTemplateParameter::addConstrainingClassifier(QClassifier *constr
     // This is a read-write association end
 
     Q_D(QClassifierTemplateParameter);
-    if (!d->constrainingClassifiers->contains(constrainingClassifier)) {
-        d->constrainingClassifiers->insert(constrainingClassifier);
+    if (!d->constrainingClassifiers.contains(constrainingClassifier)) {
+        d->constrainingClassifiers.insert(constrainingClassifier);
     }
 }
 
@@ -166,31 +164,9 @@ void QClassifierTemplateParameter::removeConstrainingClassifier(QClassifier *con
     // This is a read-write association end
 
     Q_D(QClassifierTemplateParameter);
-    if (d->constrainingClassifiers->contains(constrainingClassifier)) {
-        d->constrainingClassifiers->remove(constrainingClassifier);
+    if (d->constrainingClassifiers.contains(constrainingClassifier)) {
+        d->constrainingClassifiers.remove(constrainingClassifier);
     }
-}
-
-void QClassifierTemplateParameter::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QClassifierTemplateParameter) *>("QT_PREPEND_NAMESPACE_QTUML(QClassifierTemplateParameter) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifierTemplateParameter) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifierTemplateParameter) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QClassifierTemplateParameter) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QClassifierTemplateParameter) *> *");
-    qRegisterMetaType<QClassifierTemplateParameter *>("QClassifierTemplateParameter *");
-    qRegisterMetaType<const QSet<QClassifierTemplateParameter *> *>("const QSet<QClassifierTemplateParameter *> *");
-    qRegisterMetaType<const QList<QClassifierTemplateParameter *> *>("const QList<QClassifierTemplateParameter *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *>("QT_PREPEND_NAMESPACE_QTUML(QClassifier) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *");
-    qRegisterMetaType<QClassifier *>("QClassifier *");
-    qRegisterMetaType<const QSet<QClassifier *> *>("const QSet<QClassifier *> *");
-    qRegisterMetaType<const QList<QClassifier *> *>("const QList<QClassifier *> *");
-
-    QTemplateParameter::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qclassifiertemplateparameter.cpp"

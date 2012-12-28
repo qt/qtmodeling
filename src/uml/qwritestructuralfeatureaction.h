@@ -77,17 +77,12 @@ public:
     Q_INVOKABLE void setResult(QOutputPin *result);
     Q_INVOKABLE QInputPin *value() const;
     Q_INVOKABLE void setValue(QInputPin *value);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QWriteStructuralFeatureAction(QWriteStructuralFeatureActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QWriteStructuralFeatureAction) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QWriteStructuralFeatureAction) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QWriteStructuralFeatureAction) *> *)
 
 QT_END_HEADER
 

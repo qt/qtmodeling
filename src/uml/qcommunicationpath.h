@@ -64,17 +64,12 @@ class Q_UML_EXPORT QCommunicationPath : public QAssociation
 public:
     Q_INVOKABLE explicit QCommunicationPath(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QCommunicationPath();
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QCommunicationPath(QCommunicationPathPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QCommunicationPath) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QCommunicationPath) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QCommunicationPath) *> *)
 
 QT_END_HEADER
 

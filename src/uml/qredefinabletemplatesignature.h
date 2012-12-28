@@ -68,9 +68,9 @@ class Q_UML_EXPORT QRedefinableTemplateSignature : public QWrappedObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(const QSet<QTemplateParameter *> * inheritedParameters READ inheritedParameters STORED false)
+    Q_PROPERTY(QSet<QTemplateParameter *> inheritedParameters READ inheritedParameters STORED false)
     Q_PROPERTY(QClassifier * classifier READ classifier WRITE setClassifier)
-    Q_PROPERTY(const QSet<QRedefinableTemplateSignature *> * extendedSignatures READ extendedSignatures)
+    Q_PROPERTY(QSet<QRedefinableTemplateSignature *> extendedSignatures READ extendedSignatures)
 
     Q_DISABLE_COPY(QRedefinableTemplateSignature)
     Q_DECLARE_PRIVATE(QRedefinableTemplateSignature)
@@ -80,9 +80,9 @@ public:
     virtual ~QRedefinableTemplateSignature();
 
     // Association ends from aggregated QElement
-    Q_INVOKABLE const QSet<QElement *> *ownedElements() const;
+    Q_INVOKABLE const QSet<QElement *> &ownedElements() const;
     Q_INVOKABLE QElement *owner() const;
-    Q_INVOKABLE const QSet<QComment *> *ownedComments() const;
+    Q_INVOKABLE const QSet<QComment *> &ownedComments() const;
     Q_INVOKABLE void addOwnedComment(QComment *ownedComment);
     Q_INVOKABLE void removeOwnedComment(QComment *ownedComment);
 
@@ -97,7 +97,7 @@ public:
     Q_INVOKABLE QStringExpression *nameExpression() const;
     Q_INVOKABLE void setNameExpression(QStringExpression *nameExpression);
     Q_INVOKABLE QNamespace *namespace_() const;
-    Q_INVOKABLE const QSet<QDependency *> *clientDependencies() const;
+    Q_INVOKABLE const QSet<QDependency *> &clientDependencies() const;
     Q_INVOKABLE void addClientDependency(QDependency *clientDependency);
     Q_INVOKABLE void removeClientDependency(QDependency *clientDependency);
 
@@ -107,20 +107,19 @@ public:
     Q_INVOKABLE void unsetLeaf();
 
     // Association ends from aggregated QRedefinableElement
-    Q_INVOKABLE const QSet<QRedefinableElement *> *redefinedElements() const;
-    Q_INVOKABLE const QSet<QClassifier *> *redefinitionContexts() const;
+    Q_INVOKABLE const QSet<QRedefinableElement *> &redefinedElements() const;
+    Q_INVOKABLE const QSet<QClassifier *> &redefinitionContexts() const;
 
     // Association ends from QRedefinableTemplateSignature
-    Q_INVOKABLE const QSet<QTemplateParameter *> *inheritedParameters() const;
+    Q_INVOKABLE const QSet<QTemplateParameter *> &inheritedParameters() const;
     Q_INVOKABLE QClassifier *classifier() const;
     Q_INVOKABLE void setClassifier(QClassifier *classifier);
-    Q_INVOKABLE const QSet<QRedefinableTemplateSignature *> *extendedSignatures() const;
+    Q_INVOKABLE const QSet<QRedefinableTemplateSignature *> &extendedSignatures() const;
     Q_INVOKABLE void addExtendedSignature(QRedefinableTemplateSignature *extendedSignature);
     Q_INVOKABLE void removeExtendedSignature(QRedefinableTemplateSignature *extendedSignature);
 
     // Operations
     Q_INVOKABLE bool isConsistentWith(const QRedefinableElement *redefinee) const;
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QRedefinableTemplateSignature(QRedefinableTemplateSignaturePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
@@ -131,10 +130,6 @@ private:
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QRedefinableTemplateSignature) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QRedefinableTemplateSignature) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QRedefinableTemplateSignature) *> *)
 
 QT_END_HEADER
 

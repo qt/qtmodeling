@@ -64,17 +64,12 @@ class Q_UML_EXPORT QExecutionEnvironment : public QNode
 public:
     Q_INVOKABLE explicit QExecutionEnvironment(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QExecutionEnvironment();
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QExecutionEnvironment(QExecutionEnvironmentPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QExecutionEnvironment) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QExecutionEnvironment) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QExecutionEnvironment) *> *)
 
 QT_END_HEADER
 

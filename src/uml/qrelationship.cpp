@@ -44,22 +44,20 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QRelationshipPrivate::QRelationshipPrivate() :
-    relatedElements(new QSet<QElement *>)
+QRelationshipPrivate::QRelationshipPrivate()
 {
 }
 
 QRelationshipPrivate::~QRelationshipPrivate()
 {
-    delete relatedElements;
 }
 
 void QRelationshipPrivate::addRelatedElement(QElement *relatedElement)
 {
     // This is a read-only derived-union association end
 
-    if (!this->relatedElements->contains(relatedElement)) {
-        this->relatedElements->insert(relatedElement);
+    if (!this->relatedElements.contains(relatedElement)) {
+        this->relatedElements.insert(relatedElement);
     }
 }
 
@@ -67,8 +65,8 @@ void QRelationshipPrivate::removeRelatedElement(QElement *relatedElement)
 {
     // This is a read-only derived-union association end
 
-    if (this->relatedElements->contains(relatedElement)) {
-        this->relatedElements->remove(relatedElement);
+    if (this->relatedElements.contains(relatedElement)) {
+        this->relatedElements.remove(relatedElement);
     }
 }
 
@@ -101,27 +99,12 @@ QRelationship::~QRelationship()
 /*!
     Specifies the elements related by the Relationship.
  */
-const QSet<QElement *> *QRelationship::relatedElements() const
+const QSet<QElement *> &QRelationship::relatedElements() const
 {
     // This is a read-only derived-union association end
 
     Q_D(const QRelationship);
     return d->relatedElements;
-}
-
-void QRelationship::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QRelationship) *>("QT_PREPEND_NAMESPACE_QTUML(QRelationship) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QRelationship) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QRelationship) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QRelationship) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QRelationship) *> *");
-    qRegisterMetaType<QRelationship *>("QRelationship *");
-    qRegisterMetaType<const QSet<QRelationship *> *>("const QSet<QRelationship *> *");
-    qRegisterMetaType<const QList<QRelationship *> *>("const QList<QRelationship *> *");
-
-    QElement::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qrelationship.cpp"

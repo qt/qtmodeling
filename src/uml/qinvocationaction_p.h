@@ -67,7 +67,7 @@ public:
     explicit QInvocationActionPrivate();
     virtual ~QInvocationActionPrivate();
 
-    QList<QInputPin *> *arguments;
+    QList<QInputPin *> arguments;
     QPort *onPort;
 };
 

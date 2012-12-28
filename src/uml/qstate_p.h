@@ -78,12 +78,12 @@ public:
     explicit QStatePrivate();
     virtual ~QStatePrivate();
 
-    QSet<QRegion *> *regions;
+    QSet<QRegion *> regions;
     QBehavior *exit;
-    QSet<QConnectionPointReference *> *connections;
+    QSet<QConnectionPointReference *> connections;
     QState *redefinedState;
-    QSet<QTrigger *> *deferrableTriggers;
-    QSet<QPseudostate *> *connectionPoints;
+    QSet<QTrigger *> deferrableTriggers;
+    QSet<QPseudostate *> connectionPoints;
     QBehavior *entry;
     QBehavior *doActivity;
     QStateMachine *submachine;

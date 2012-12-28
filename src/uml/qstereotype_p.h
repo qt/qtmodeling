@@ -68,7 +68,7 @@ public:
     explicit QStereotypePrivate();
     virtual ~QStereotypePrivate();
 
-    QSet<QImage *> *icons;
+    QSet<QImage *> icons;
 };
 
 QT_END_NAMESPACE_QTUML

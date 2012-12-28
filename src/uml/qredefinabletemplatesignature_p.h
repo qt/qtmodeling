@@ -72,7 +72,7 @@ public:
     virtual ~QRedefinableTemplateSignaturePrivate();
 
     QClassifier *classifier;
-    QSet<QRedefinableTemplateSignature *> *extendedSignatures;
+    QSet<QRedefinableTemplateSignature *> extendedSignatures;
 };
 
 QT_END_NAMESPACE_QTUML

@@ -66,9 +66,9 @@ class Q_UML_EXPORT QVertex : public QNamedElement
 {
     Q_OBJECT
 
-    Q_PROPERTY(const QSet<QTransition *> * incomings READ incomings STORED false)
+    Q_PROPERTY(QSet<QTransition *> incomings READ incomings STORED false)
     Q_PROPERTY(QRegion * container READ container WRITE setContainer)
-    Q_PROPERTY(const QSet<QTransition *> * outgoings READ outgoings STORED false)
+    Q_PROPERTY(QSet<QTransition *> outgoings READ outgoings STORED false)
 
     Q_DISABLE_COPY(QVertex)
     Q_DECLARE_PRIVATE(QVertex)
@@ -78,14 +78,13 @@ public:
     virtual ~QVertex();
 
     // Association ends from QVertex
-    Q_INVOKABLE const QSet<QTransition *> *incomings() const;
+    Q_INVOKABLE const QSet<QTransition *> &incomings() const;
     Q_INVOKABLE QRegion *container() const;
     Q_INVOKABLE void setContainer(QRegion *container);
-    Q_INVOKABLE const QSet<QTransition *> *outgoings() const;
+    Q_INVOKABLE const QSet<QTransition *> &outgoings() const;
 
     // Operations
     Q_INVOKABLE QStateMachine *containingStateMachine() const;
-    virtual void registerMetaTypes() const;
 
     // Classes which access read-only opposite properties should be friend
     friend class QTransition;
@@ -95,10 +94,6 @@ protected:
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QVertex) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QVertex) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QVertex) *> *)
 
 QT_END_HEADER
 

@@ -80,18 +80,13 @@ public:
     Q_INVOKABLE void set(const QProperty *property, const QMofObject *value);
     Q_INVOKABLE bool isSet(const QProperty *property) const;
     Q_INVOKABLE void unset(const QProperty *property);
-    Q_INVOKABLE QMofObject *invoke(const QOperation *op, const QSet<QArgument *> *arguments);
-    virtual void registerMetaTypes() const;
+    Q_INVOKABLE QMofObject *invoke(const QOperation *op, const QSet<QArgument *> &arguments);
 
 protected:
     explicit QMofObject(QMofObjectPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTMOF
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTMOF(QMofObject) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTMOF(QMofObject) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTMOF(QMofObject) *> *)
 
 QT_END_HEADER
 

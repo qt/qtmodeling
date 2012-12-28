@@ -48,20 +48,12 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QArtifactPrivate::QArtifactPrivate() :
-    ownedOperations(new QList<QOperation *>),
-    ownedAttributes(new QList<QProperty *>),
-    manifestations(new QSet<QManifestation *>),
-    nestedArtifacts(new QSet<QArtifact *>)
+QArtifactPrivate::QArtifactPrivate()
 {
 }
 
 QArtifactPrivate::~QArtifactPrivate()
 {
-    delete ownedOperations;
-    delete ownedAttributes;
-    delete manifestations;
-    delete nestedArtifacts;
 }
 
 /*!
@@ -97,7 +89,7 @@ QArtifact::~QArtifact()
 /*!
     The Elements owned by this element.
  */
-const QSet<QElement *> *QArtifact::ownedElements() const
+const QSet<QElement *> &QArtifact::ownedElements() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedElements();
 }
@@ -113,7 +105,7 @@ QElement *QArtifact::owner() const
 /*!
     The Comments owned by this element.
  */
-const QSet<QComment *> *QArtifact::ownedComments() const
+const QSet<QComment *> &QArtifact::ownedComments() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedComments();
 }
@@ -181,7 +173,7 @@ QNamespace *QArtifact::namespace_() const
 /*!
     Indicates the dependencies that reference the client.
  */
-const QSet<QDependency *> *QArtifact::clientDependencies() const
+const QSet<QDependency *> &QArtifact::clientDependencies() const
 {
     return (qwrappedobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
@@ -203,7 +195,7 @@ void QArtifact::removeClientDependency(QDependency *clientDependency)
 /*!
     References the PackageImports owned by the Namespace.
  */
-const QSet<QPackageImport *> *QArtifact::packageImports() const
+const QSet<QPackageImport *> &QArtifact::packageImports() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->packageImports();
 }
@@ -221,7 +213,7 @@ void QArtifact::removePackageImport(QPackageImport *packageImport)
 /*!
     A collection of NamedElements identifiable within the Namespace, either by being owned or by being introduced by importing or inheritance.
  */
-const QSet<QNamedElement *> *QArtifact::members() const
+const QSet<QNamedElement *> &QArtifact::members() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->members();
 }
@@ -229,7 +221,7 @@ const QSet<QNamedElement *> *QArtifact::members() const
 /*!
     References the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports.
  */
-const QSet<QPackageableElement *> *QArtifact::importedMembers() const
+const QSet<QPackageableElement *> &QArtifact::importedMembers() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->importedMembers();
 }
@@ -237,7 +229,7 @@ const QSet<QPackageableElement *> *QArtifact::importedMembers() const
 /*!
     References the ElementImports owned by the Namespace.
  */
-const QSet<QElementImport *> *QArtifact::elementImports() const
+const QSet<QElementImport *> &QArtifact::elementImports() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->elementImports();
 }
@@ -255,7 +247,7 @@ void QArtifact::removeElementImport(QElementImport *elementImport)
 /*!
     Specifies a set of Constraints owned by this Namespace.
  */
-const QSet<QConstraint *> *QArtifact::ownedRules() const
+const QSet<QConstraint *> &QArtifact::ownedRules() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->ownedRules();
 }
@@ -273,7 +265,7 @@ void QArtifact::removeOwnedRule(QConstraint *ownedRule)
 /*!
     A collection of NamedElements owned by the Namespace.
  */
-const QSet<QNamedElement *> *QArtifact::ownedMembers() const
+const QSet<QNamedElement *> &QArtifact::ownedMembers() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->ownedMembers();
 }
@@ -363,7 +355,7 @@ void QArtifact::unsetLeaf()
 /*!
     The redefinable element that is being redefined by this element.
  */
-const QSet<QRedefinableElement *> *QArtifact::redefinedElements() const
+const QSet<QRedefinableElement *> &QArtifact::redefinedElements() const
 {
     return (qwrappedobject_cast<const QRedefinableElement *>(this))->redefinedElements();
 }
@@ -371,7 +363,7 @@ const QSet<QRedefinableElement *> *QArtifact::redefinedElements() const
 /*!
     References the contexts that this element may be redefined from.
  */
-const QSet<QClassifier *> *QArtifact::redefinitionContexts() const
+const QSet<QClassifier *> &QArtifact::redefinitionContexts() const
 {
     return (qwrappedobject_cast<const QRedefinableElement *>(this))->redefinitionContexts();
 }
@@ -383,7 +375,7 @@ const QSet<QClassifier *> *QArtifact::redefinitionContexts() const
 /*!
     The optional bindings from this element to templates.
  */
-const QSet<QTemplateBinding *> *QArtifact::templateBindings() const
+const QSet<QTemplateBinding *> &QArtifact::templateBindings() const
 {
     return (qwrappedobject_cast<const QTemplateableElement *>(this))->templateBindings();
 }
@@ -445,7 +437,7 @@ void QArtifact::unsetFinalSpecialization()
 /*!
     References the use cases owned by this classifier.
  */
-const QSet<QUseCase *> *QArtifact::ownedUseCases() const
+const QSet<QUseCase *> &QArtifact::ownedUseCases() const
 {
     return (qwrappedobject_cast<const QClassifier *>(this))->ownedUseCases();
 }
@@ -463,7 +455,7 @@ void QArtifact::removeOwnedUseCase(QUseCase *ownedUseCase)
 /*!
     Designates the GeneralizationSet of which the associated Classifier is a power type.
  */
-const QSet<QGeneralizationSet *> *QArtifact::powertypeExtents() const
+const QSet<QGeneralizationSet *> &QArtifact::powertypeExtents() const
 {
     return (qwrappedobject_cast<const QClassifier *>(this))->powertypeExtents();
 }
@@ -481,7 +473,7 @@ void QArtifact::removePowertypeExtent(QGeneralizationSet *powertypeExtent)
 /*!
     The set of use cases for which this Classifier is the subject.
  */
-const QSet<QUseCase *> *QArtifact::useCases() const
+const QSet<QUseCase *> &QArtifact::useCases() const
 {
     return (qwrappedobject_cast<const QClassifier *>(this))->useCases();
 }
@@ -512,7 +504,7 @@ void QArtifact::setTemplateParameter(QClassifierTemplateParameter *templateParam
 /*!
     References the Classifiers that are redefined by this Classifier.
  */
-const QSet<QClassifier *> *QArtifact::redefinedClassifiers() const
+const QSet<QClassifier *> &QArtifact::redefinedClassifiers() const
 {
     return (qwrappedobject_cast<const QClassifier *>(this))->redefinedClassifiers();
 }
@@ -543,7 +535,7 @@ void QArtifact::setOwnedTemplateSignature(QRedefinableTemplateSignature *ownedTe
 /*!
     References the collaboration uses owned by the classifier.
  */
-const QSet<QCollaborationUse *> *QArtifact::collaborationUses() const
+const QSet<QCollaborationUse *> &QArtifact::collaborationUses() const
 {
     return (qwrappedobject_cast<const QClassifier *>(this))->collaborationUses();
 }
@@ -561,7 +553,7 @@ void QArtifact::removeCollaborationUse(QCollaborationUse *collaborationUse)
 /*!
     Refers to all of the Properties that are direct (i.e. not inherited or imported) attributes of the classifier.
  */
-const QSet<QProperty *> *QArtifact::attributes() const
+const QSet<QProperty *> &QArtifact::attributes() const
 {
     return (qwrappedobject_cast<const QClassifier *>(this))->attributes();
 }
@@ -569,7 +561,7 @@ const QSet<QProperty *> *QArtifact::attributes() const
 /*!
     Specifies each feature defined in the classifier.Note that there may be members of the Classifier that are of the type Feature but are not included in this association, e.g. inherited features.
  */
-const QSet<QFeature *> *QArtifact::features() const
+const QSet<QFeature *> &QArtifact::features() const
 {
     return (qwrappedobject_cast<const QClassifier *>(this))->features();
 }
@@ -577,7 +569,7 @@ const QSet<QFeature *> *QArtifact::features() const
 /*!
     Specifies the general Classifiers for this Classifier.References the general classifier in the Generalization relationship.
  */
-const QSet<QClassifier *> *QArtifact::generals() const
+const QSet<QClassifier *> &QArtifact::generals() const
 {
     return (qwrappedobject_cast<const QClassifier *>(this))->generals();
 }
@@ -608,7 +600,7 @@ void QArtifact::setRepresentation(QCollaborationUse *representation)
 /*!
     Specifies the Generalization relationships for this Classifier. These Generalizations navigaten to more general classifiers in the generalization hierarchy.
  */
-const QSet<QGeneralization *> *QArtifact::generalizations() const
+const QSet<QGeneralization *> &QArtifact::generalizations() const
 {
     return (qwrappedobject_cast<const QClassifier *>(this))->generalizations();
 }
@@ -626,7 +618,7 @@ void QArtifact::removeGeneralization(QGeneralization *generalization)
 /*!
     Specifies all elements inherited by this classifier from the general classifiers.
  */
-const QSet<QNamedElement *> *QArtifact::inheritedMembers() const
+const QSet<QNamedElement *> &QArtifact::inheritedMembers() const
 {
     return (qwrappedobject_cast<const QClassifier *>(this))->inheritedMembers();
 }
@@ -634,7 +626,7 @@ const QSet<QNamedElement *> *QArtifact::inheritedMembers() const
 /*!
     References the substitutions that are owned by this Classifier.
  */
-const QSet<QSubstitution *> *QArtifact::substitutions() const
+const QSet<QSubstitution *> &QArtifact::substitutions() const
 {
     return (qwrappedobject_cast<const QClassifier *>(this))->substitutions();
 }
@@ -681,7 +673,7 @@ void QArtifact::setFileName(QString fileName)
 /*!
     The Operations defined for the Artifact. The association is a specialization of the ownedMember association.
  */
-const QList<QOperation *> *QArtifact::ownedOperations() const
+const QList<QOperation *> &QArtifact::ownedOperations() const
 {
     // This is a read-write association end
 
@@ -694,8 +686,8 @@ void QArtifact::addOwnedOperation(QOperation *ownedOperation)
     // This is a read-write association end
 
     Q_D(QArtifact);
-    if (!d->ownedOperations->contains(ownedOperation)) {
-        d->ownedOperations->append(ownedOperation);
+    if (!d->ownedOperations.contains(ownedOperation)) {
+        d->ownedOperations.append(ownedOperation);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QClassifierPrivate *>(d))->addFeature(qwrappedobject_cast<QFeature *>(ownedOperation));
@@ -708,8 +700,8 @@ void QArtifact::removeOwnedOperation(QOperation *ownedOperation)
     // This is a read-write association end
 
     Q_D(QArtifact);
-    if (d->ownedOperations->contains(ownedOperation)) {
-        d->ownedOperations->removeAll(ownedOperation);
+    if (d->ownedOperations.contains(ownedOperation)) {
+        d->ownedOperations.removeAll(ownedOperation);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QClassifierPrivate *>(d))->removeFeature(qwrappedobject_cast<QFeature *>(ownedOperation));
@@ -720,7 +712,7 @@ void QArtifact::removeOwnedOperation(QOperation *ownedOperation)
 /*!
     The attributes or association ends defined for the Artifact. The association is a specialization of the ownedMember association.
  */
-const QList<QProperty *> *QArtifact::ownedAttributes() const
+const QList<QProperty *> &QArtifact::ownedAttributes() const
 {
     // This is a read-write association end
 
@@ -733,8 +725,8 @@ void QArtifact::addOwnedAttribute(QProperty *ownedAttribute)
     // This is a read-write association end
 
     Q_D(QArtifact);
-    if (!d->ownedAttributes->contains(ownedAttribute)) {
-        d->ownedAttributes->append(ownedAttribute);
+    if (!d->ownedAttributes.contains(ownedAttribute)) {
+        d->ownedAttributes.append(ownedAttribute);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qwrappedobject_cast<QNamedElement *>(ownedAttribute));
@@ -747,8 +739,8 @@ void QArtifact::removeOwnedAttribute(QProperty *ownedAttribute)
     // This is a read-write association end
 
     Q_D(QArtifact);
-    if (d->ownedAttributes->contains(ownedAttribute)) {
-        d->ownedAttributes->removeAll(ownedAttribute);
+    if (d->ownedAttributes.contains(ownedAttribute)) {
+        d->ownedAttributes.removeAll(ownedAttribute);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qwrappedobject_cast<QNamedElement *>(ownedAttribute));
@@ -759,7 +751,7 @@ void QArtifact::removeOwnedAttribute(QProperty *ownedAttribute)
 /*!
     The set of model elements that are manifested in the Artifact. That is, these model elements are utilized in the construction (or generation) of the artifact.
  */
-const QSet<QManifestation *> *QArtifact::manifestations() const
+const QSet<QManifestation *> &QArtifact::manifestations() const
 {
     // This is a read-write association end
 
@@ -772,8 +764,8 @@ void QArtifact::addManifestation(QManifestation *manifestation)
     // This is a read-write association end
 
     Q_D(QArtifact);
-    if (!d->manifestations->contains(manifestation)) {
-        d->manifestations->insert(manifestation);
+    if (!d->manifestations.contains(manifestation)) {
+        d->manifestations.insert(manifestation);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(manifestation));
@@ -786,8 +778,8 @@ void QArtifact::removeManifestation(QManifestation *manifestation)
     // This is a read-write association end
 
     Q_D(QArtifact);
-    if (d->manifestations->contains(manifestation)) {
-        d->manifestations->remove(manifestation);
+    if (d->manifestations.contains(manifestation)) {
+        d->manifestations.remove(manifestation);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(manifestation));
@@ -798,7 +790,7 @@ void QArtifact::removeManifestation(QManifestation *manifestation)
 /*!
     The Artifacts that are defined (nested) within the Artifact. The association is a specialization of the ownedMember association from Namespace to NamedElement.
  */
-const QSet<QArtifact *> *QArtifact::nestedArtifacts() const
+const QSet<QArtifact *> &QArtifact::nestedArtifacts() const
 {
     // This is a read-write association end
 
@@ -811,8 +803,8 @@ void QArtifact::addNestedArtifact(QArtifact *nestedArtifact)
     // This is a read-write association end
 
     Q_D(QArtifact);
-    if (!d->nestedArtifacts->contains(nestedArtifact)) {
-        d->nestedArtifacts->insert(nestedArtifact);
+    if (!d->nestedArtifacts.contains(nestedArtifact)) {
+        d->nestedArtifacts.insert(nestedArtifact);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qwrappedobject_cast<QNamedElement *>(nestedArtifact));
@@ -824,48 +816,12 @@ void QArtifact::removeNestedArtifact(QArtifact *nestedArtifact)
     // This is a read-write association end
 
     Q_D(QArtifact);
-    if (d->nestedArtifacts->contains(nestedArtifact)) {
-        d->nestedArtifacts->remove(nestedArtifact);
+    if (d->nestedArtifacts.contains(nestedArtifact)) {
+        d->nestedArtifacts.remove(nestedArtifact);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qwrappedobject_cast<QNamedElement *>(nestedArtifact));
     }
-}
-
-void QArtifact::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QArtifact) *>("QT_PREPEND_NAMESPACE_QTUML(QArtifact) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QArtifact) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QArtifact) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QArtifact) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QArtifact) *> *");
-    qRegisterMetaType<QArtifact *>("QArtifact *");
-    qRegisterMetaType<const QSet<QArtifact *> *>("const QSet<QArtifact *> *");
-    qRegisterMetaType<const QList<QArtifact *> *>("const QList<QArtifact *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QOperation) *>("QT_PREPEND_NAMESPACE_QTUML(QOperation) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *");
-    qRegisterMetaType<QOperation *>("QOperation *");
-    qRegisterMetaType<const QSet<QOperation *> *>("const QSet<QOperation *> *");
-    qRegisterMetaType<const QList<QOperation *> *>("const QList<QOperation *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QProperty) *>("QT_PREPEND_NAMESPACE_QTUML(QProperty) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QProperty) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QProperty) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QProperty) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QProperty) *> *");
-    qRegisterMetaType<QProperty *>("QProperty *");
-    qRegisterMetaType<const QSet<QProperty *> *>("const QSet<QProperty *> *");
-    qRegisterMetaType<const QList<QProperty *> *>("const QList<QProperty *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QManifestation) *>("QT_PREPEND_NAMESPACE_QTUML(QManifestation) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QManifestation) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QManifestation) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QManifestation) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QManifestation) *> *");
-    qRegisterMetaType<QManifestation *>("QManifestation *");
-    qRegisterMetaType<const QSet<QManifestation *> *>("const QSet<QManifestation *> *");
-    qRegisterMetaType<const QList<QManifestation *> *>("const QList<QManifestation *> *");
-
-    QWrappedObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 // Overriden methods for subsetted properties

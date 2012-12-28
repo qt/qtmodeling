@@ -69,12 +69,12 @@ public:
     explicit QClausePrivate();
     virtual ~QClausePrivate();
 
-    QSet<QClause *> *successorClauses;
+    QSet<QClause *> successorClauses;
     QOutputPin *decider;
-    QSet<QClause *> *predecessorClauses;
-    QList<QOutputPin *> *bodyOutputs;
-    QSet<QExecutableNode *> *bodies;
-    QSet<QExecutableNode *> *tests;
+    QSet<QClause *> predecessorClauses;
+    QList<QOutputPin *> bodyOutputs;
+    QSet<QExecutableNode *> bodies;
+    QSet<QExecutableNode *> tests;
 };
 
 QT_END_NAMESPACE_QTUML

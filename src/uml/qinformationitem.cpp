@@ -44,14 +44,12 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QInformationItemPrivate::QInformationItemPrivate() :
-    represented(new QSet<QClassifier *>)
+QInformationItemPrivate::QInformationItemPrivate()
 {
 }
 
 QInformationItemPrivate::~QInformationItemPrivate()
 {
-    delete represented;
 }
 
 /*!
@@ -83,7 +81,7 @@ QInformationItem::~QInformationItem()
 /*!
     Determines the classifiers that will specify the structure and nature of the information. An information item represents all its represented classifiers.
  */
-const QSet<QClassifier *> *QInformationItem::represented() const
+const QSet<QClassifier *> &QInformationItem::represented() const
 {
     // This is a read-write association end
 
@@ -96,8 +94,8 @@ void QInformationItem::addRepresented(QClassifier *represented)
     // This is a read-write association end
 
     Q_D(QInformationItem);
-    if (!d->represented->contains(represented)) {
-        d->represented->insert(represented);
+    if (!d->represented.contains(represented)) {
+        d->represented.insert(represented);
     }
 }
 
@@ -106,24 +104,9 @@ void QInformationItem::removeRepresented(QClassifier *represented)
     // This is a read-write association end
 
     Q_D(QInformationItem);
-    if (d->represented->contains(represented)) {
-        d->represented->remove(represented);
+    if (d->represented.contains(represented)) {
+        d->represented.remove(represented);
     }
-}
-
-void QInformationItem::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInformationItem) *>("QT_PREPEND_NAMESPACE_QTUML(QInformationItem) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInformationItem) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInformationItem) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInformationItem) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInformationItem) *> *");
-    qRegisterMetaType<QInformationItem *>("QInformationItem *");
-    qRegisterMetaType<const QSet<QInformationItem *> *>("const QSet<QInformationItem *> *");
-    qRegisterMetaType<const QList<QInformationItem *> *>("const QList<QInformationItem *> *");
-
-    QClassifier::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qinformationitem.cpp"

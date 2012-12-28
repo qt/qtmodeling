@@ -65,9 +65,9 @@ class Q_UML_EXPORT QConnectionPointReference : public QVertex
 {
     Q_OBJECT
 
-    Q_PROPERTY(const QSet<QPseudostate *> * exits READ exits)
+    Q_PROPERTY(QSet<QPseudostate *> exits READ exits)
     Q_PROPERTY(QState * state READ state WRITE setState)
-    Q_PROPERTY(const QSet<QPseudostate *> * entries READ entries)
+    Q_PROPERTY(QSet<QPseudostate *> entries READ entries)
 
     Q_DISABLE_COPY(QConnectionPointReference)
     Q_DECLARE_PRIVATE(QConnectionPointReference)
@@ -77,25 +77,20 @@ public:
     virtual ~QConnectionPointReference();
 
     // Association ends from QConnectionPointReference
-    Q_INVOKABLE const QSet<QPseudostate *> *exits() const;
+    Q_INVOKABLE const QSet<QPseudostate *> &exits() const;
     Q_INVOKABLE void addExit(QPseudostate *exit);
     Q_INVOKABLE void removeExit(QPseudostate *exit);
     Q_INVOKABLE QState *state() const;
     Q_INVOKABLE void setState(QState *state);
-    Q_INVOKABLE const QSet<QPseudostate *> *entries() const;
+    Q_INVOKABLE const QSet<QPseudostate *> &entries() const;
     Q_INVOKABLE void addEntry(QPseudostate *entry);
     Q_INVOKABLE void removeEntry(QPseudostate *entry);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QConnectionPointReference(QConnectionPointReferencePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QConnectionPointReference) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QConnectionPointReference) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QConnectionPointReference) *> *)
 
 QT_END_HEADER
 

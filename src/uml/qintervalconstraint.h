@@ -73,17 +73,12 @@ public:
     // Association ends from QIntervalConstraint
     Q_INVOKABLE QInterval *specification() const;
     Q_INVOKABLE void setSpecification(QInterval *specification);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QIntervalConstraint(QIntervalConstraintPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QIntervalConstraint) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QIntervalConstraint) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QIntervalConstraint) *> *)
 
 QT_END_HEADER
 

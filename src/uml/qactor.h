@@ -64,17 +64,12 @@ class Q_UML_EXPORT QActor : public QBehavioredClassifier
 public:
     Q_INVOKABLE explicit QActor(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QActor();
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QActor(QActorPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QActor) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QActor) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QActor) *> *)
 
 QT_END_HEADER
 

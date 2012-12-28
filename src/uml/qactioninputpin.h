@@ -73,17 +73,12 @@ public:
     // Association ends from QActionInputPin
     Q_INVOKABLE QAction *fromAction() const;
     Q_INVOKABLE void setFromAction(QAction *fromAction);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QActionInputPin(QActionInputPinPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QActionInputPin) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QActionInputPin) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QActionInputPin) *> *)
 
 QT_END_HEADER
 

@@ -64,17 +64,12 @@ class Q_UML_EXPORT QInputPin : public QPin
 public:
     Q_INVOKABLE explicit QInputPin(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QInputPin();
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QInputPin(QInputPinPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QInputPin) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QInputPin) *> *)
 
 QT_END_HEADER
 

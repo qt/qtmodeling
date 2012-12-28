@@ -46,14 +46,12 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QExecutableNodePrivate::QExecutableNodePrivate() :
-    handlers(new QSet<QExceptionHandler *>)
+QExecutableNodePrivate::QExecutableNodePrivate()
 {
 }
 
 QExecutableNodePrivate::~QExecutableNodePrivate()
 {
-    delete handlers;
 }
 
 /*!
@@ -85,7 +83,7 @@ QExecutableNode::~QExecutableNode()
 /*!
     A set of exception handlers that are examined if an uncaught exception propagates to the outer level of the executable node.
  */
-const QSet<QExceptionHandler *> *QExecutableNode::handlers() const
+const QSet<QExceptionHandler *> &QExecutableNode::handlers() const
 {
     // This is a read-write association end
 
@@ -98,8 +96,8 @@ void QExecutableNode::addHandler(QExceptionHandler *handler)
     // This is a read-write association end
 
     Q_D(QExecutableNode);
-    if (!d->handlers->contains(handler)) {
-        d->handlers->insert(handler);
+    if (!d->handlers.contains(handler)) {
+        d->handlers.insert(handler);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(handler));
@@ -114,8 +112,8 @@ void QExecutableNode::removeHandler(QExceptionHandler *handler)
     // This is a read-write association end
 
     Q_D(QExecutableNode);
-    if (d->handlers->contains(handler)) {
-        d->handlers->remove(handler);
+    if (d->handlers.contains(handler)) {
+        d->handlers.remove(handler);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(handler));
@@ -123,28 +121,6 @@ void QExecutableNode::removeHandler(QExceptionHandler *handler)
         // Adjust opposite property
         handler->setProtectedNode(0);
     }
-}
-
-void QExecutableNode::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *>("QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *> *");
-    qRegisterMetaType<QExecutableNode *>("QExecutableNode *");
-    qRegisterMetaType<const QSet<QExecutableNode *> *>("const QSet<QExecutableNode *> *");
-    qRegisterMetaType<const QList<QExecutableNode *> *>("const QList<QExecutableNode *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QExceptionHandler) *>("QT_PREPEND_NAMESPACE_QTUML(QExceptionHandler) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QExceptionHandler) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QExceptionHandler) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QExceptionHandler) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QExceptionHandler) *> *");
-    qRegisterMetaType<QExceptionHandler *>("QExceptionHandler *");
-    qRegisterMetaType<const QSet<QExceptionHandler *> *>("const QSet<QExceptionHandler *> *");
-    qRegisterMetaType<const QList<QExceptionHandler *> *>("const QList<QExceptionHandler *> *");
-
-    QActivityNode::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qexecutablenode.cpp"

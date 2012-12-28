@@ -47,24 +47,21 @@
 QT_BEGIN_NAMESPACE_QTUML
 
 QElementPrivate::QElementPrivate() :
-    ownedElements(new QSet<QElement *>),
-    owner(0),
-    ownedComments(new QSet<QComment *>)
+    owner(0)
 {
 }
 
 QElementPrivate::~QElementPrivate()
 {
-    delete ownedElements;
-    delete ownedComments;
+    qDeleteAll(ownedElements);
 }
 
 void QElementPrivate::addOwnedElement(QElement *ownedElement)
 {
     // This is a read-only derived-union association end
 
-    if (!this->ownedElements->contains(ownedElement)) {
-        this->ownedElements->insert(ownedElement);
+    if (!this->ownedElements.contains(ownedElement)) {
+        this->ownedElements.insert(ownedElement);
         Q_Q(QElement);
         qTopLevelWrapper(ownedElement)->setParent(qTopLevelWrapper(q));
 
@@ -77,8 +74,8 @@ void QElementPrivate::removeOwnedElement(QElement *ownedElement)
 {
     // This is a read-only derived-union association end
 
-    if (this->ownedElements->contains(ownedElement)) {
-        this->ownedElements->remove(ownedElement);
+    if (this->ownedElements.contains(ownedElement)) {
+        this->ownedElements.remove(ownedElement);
         qTopLevelWrapper(ownedElement)->setParent(0);
 
         // Adjust opposite property
@@ -133,7 +130,7 @@ QElement::~QElement()
 /*!
     The Elements owned by this element.
  */
-const QSet<QElement *> *QElement::ownedElements() const
+const QSet<QElement *> &QElement::ownedElements() const
 {
     // This is a read-only derived-union association end
 
@@ -155,7 +152,7 @@ QElement *QElement::owner() const
 /*!
     The Comments owned by this element.
  */
-const QSet<QComment *> *QElement::ownedComments() const
+const QSet<QComment *> &QElement::ownedComments() const
 {
     // This is a read-write association end
 
@@ -168,8 +165,8 @@ void QElement::addOwnedComment(QComment *ownedComment)
     // This is a read-write association end
 
     Q_D(QElement);
-    if (!d->ownedComments->contains(ownedComment)) {
-        d->ownedComments->insert(ownedComment);
+    if (!d->ownedComments.contains(ownedComment)) {
+        d->ownedComments.insert(ownedComment);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(ownedComment));
@@ -181,8 +178,8 @@ void QElement::removeOwnedComment(QComment *ownedComment)
     // This is a read-write association end
 
     Q_D(QElement);
-    if (d->ownedComments->contains(ownedComment)) {
-        d->ownedComments->remove(ownedComment);
+    if (d->ownedComments.contains(ownedComment)) {
+        d->ownedComments.remove(ownedComment);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(ownedComment));
@@ -193,11 +190,11 @@ void QElement::removeOwnedComment(QComment *ownedComment)
     The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
     It is the caller's responsibility to delete the returned set.
  */
-const QSet<QElement *> *QElement::allOwnedElements() const
+const QSet<QElement *> &QElement::allOwnedElements() const
 {
     QSet<QElement *> *allOwnedElements_ = new QSet<QElement *>;
     allOwnedElements(allOwnedElements_);
-    return allOwnedElements_;
+    return *allOwnedElements_;
 }
 
 /*!
@@ -208,33 +205,11 @@ bool QElement::mustBeOwned() const
     return true;
 }
 
-void QElement::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QElement) *>("QT_PREPEND_NAMESPACE_QTUML(QElement) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QElement) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QElement) *> *");
-    qRegisterMetaType<QElement *>("QElement *");
-    qRegisterMetaType<const QSet<QElement *> *>("const QSet<QElement *> *");
-    qRegisterMetaType<const QList<QElement *> *>("const QList<QElement *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QComment) *>("QT_PREPEND_NAMESPACE_QTUML(QComment) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QComment) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QComment) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QComment) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QComment) *> *");
-    qRegisterMetaType<QComment *>("QComment *");
-    qRegisterMetaType<const QSet<QComment *> *>("const QSet<QComment *> *");
-    qRegisterMetaType<const QList<QComment *> *>("const QList<QComment *> *");
-
-    QWrappedObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QElement::allOwnedElements(QSet<QElement *> *allOwnedElements_) const
 {
     Q_D(const QElement);
-    allOwnedElements_->unite(*d->ownedElements);
-    foreach (QElement *element, *d->ownedElements)
+    allOwnedElements_->unite(d->ownedElements);
+    foreach (QElement *element, d->ownedElements)
         element->allOwnedElements(allOwnedElements_);
 }
 

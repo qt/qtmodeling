@@ -67,7 +67,7 @@ public:
     virtual ~QFeaturePrivate();
 
     bool isStatic;
-    QSet<QClassifier *> *featuringClassifiers;
+    QSet<QClassifier *> featuringClassifiers;
 
     // Internal functions for read-only subsetted association ends
     void addFeaturingClassifier(QClassifier *featuringClassifier);

@@ -74,14 +74,14 @@ public:
     virtual ~QOperationPrivate();
 
     bool isQuery;
-    QList<QParameter *> *ownedParameters;
+    QList<QParameter *> ownedParameters;
     QConstraint *bodyCondition;
-    QSet<QOperation *> *redefinedOperations;
-    QSet<QConstraint *> *postconditions;
+    QSet<QOperation *> redefinedOperations;
+    QSet<QConstraint *> postconditions;
     QDataType *datatype;
-    QSet<QConstraint *> *preconditions;
+    QSet<QConstraint *> preconditions;
     QClass *class_;
-    QSet<QType *> *raisedExceptions;
+    QSet<QType *> raisedExceptions;
 };
 
 QT_END_NAMESPACE_QTMOF

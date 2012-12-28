@@ -69,9 +69,9 @@ public:
     explicit QInstanceSpecificationPrivate();
     virtual ~QInstanceSpecificationPrivate();
 
-    QSet<QClassifier *> *classifiers;
+    QSet<QClassifier *> classifiers;
     QValueSpecification *specification;
-    QSet<QSlot *> *slots_;
+    QSet<QSlot *> slots_;
 };
 
 QT_END_NAMESPACE_QTMOF

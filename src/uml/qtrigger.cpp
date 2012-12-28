@@ -48,14 +48,12 @@
 QT_BEGIN_NAMESPACE_QTUML
 
 QTriggerPrivate::QTriggerPrivate() :
-    ports(new QSet<QPort *>),
     event(0)
 {
 }
 
 QTriggerPrivate::~QTriggerPrivate()
 {
-    delete ports;
 }
 
 /*!
@@ -87,7 +85,7 @@ QTrigger::~QTrigger()
 /*!
     A optional port of the receiver object on which the behavioral feature is invoked.
  */
-const QSet<QPort *> *QTrigger::ports() const
+const QSet<QPort *> &QTrigger::ports() const
 {
     // This is a read-write association end
 
@@ -100,8 +98,8 @@ void QTrigger::addPort(QPort *port)
     // This is a read-write association end
 
     Q_D(QTrigger);
-    if (!d->ports->contains(port)) {
-        d->ports->insert(port);
+    if (!d->ports.contains(port)) {
+        d->ports.insert(port);
     }
 }
 
@@ -110,8 +108,8 @@ void QTrigger::removePort(QPort *port)
     // This is a read-write association end
 
     Q_D(QTrigger);
-    if (d->ports->contains(port)) {
-        d->ports->remove(port);
+    if (d->ports.contains(port)) {
+        d->ports.remove(port);
     }
 }
 
@@ -134,35 +132,6 @@ void QTrigger::setEvent(QEvent *event)
     if (d->event != event) {
         d->event = event;
     }
-}
-
-void QTrigger::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QTrigger) *>("QT_PREPEND_NAMESPACE_QTUML(QTrigger) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QTrigger) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QTrigger) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QTrigger) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QTrigger) *> *");
-    qRegisterMetaType<QTrigger *>("QTrigger *");
-    qRegisterMetaType<const QSet<QTrigger *> *>("const QSet<QTrigger *> *");
-    qRegisterMetaType<const QList<QTrigger *> *>("const QList<QTrigger *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QEvent) *>("QT_PREPEND_NAMESPACE_QTUML(QEvent) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QEvent) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QEvent) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QEvent) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QEvent) *> *");
-    qRegisterMetaType<QEvent *>("QEvent *");
-    qRegisterMetaType<const QSet<QEvent *> *>("const QSet<QEvent *> *");
-    qRegisterMetaType<const QList<QEvent *> *>("const QList<QEvent *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QPort) *>("QT_PREPEND_NAMESPACE_QTUML(QPort) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QPort) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QPort) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QPort) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QPort) *> *");
-    qRegisterMetaType<QPort *>("QPort *");
-    qRegisterMetaType<const QSet<QPort *> *>("const QSet<QPort *> *");
-    qRegisterMetaType<const QList<QPort *> *>("const QList<QPort *> *");
-
-    QNamedElement::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qtrigger.cpp"

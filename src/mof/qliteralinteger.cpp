@@ -119,21 +119,6 @@ bool QLiteralInteger::isComputable() const
     return bool(); // change here to your derived return
 }
 
-void QLiteralInteger::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QLiteralInteger) *>("QT_PREPEND_NAMESPACE_QTMOF(QLiteralInteger) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QLiteralInteger) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QLiteralInteger) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QLiteralInteger) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QLiteralInteger) *> *");
-    qRegisterMetaType<QLiteralInteger *>("QLiteralInteger *");
-    qRegisterMetaType<const QSet<QLiteralInteger *> *>("const QSet<QLiteralInteger *> *");
-    qRegisterMetaType<const QList<QLiteralInteger *> *>("const QList<QLiteralInteger *> *");
-
-    QLiteralSpecification::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 #include "moc_qliteralinteger.cpp"
 
 QT_END_NAMESPACE_QTMOF

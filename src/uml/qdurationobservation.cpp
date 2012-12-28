@@ -46,16 +46,12 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QDurationObservationPrivate::QDurationObservationPrivate() :
-    firstEvents(new QSet<bool>),
-    events(new QSet<QNamedElement *>)
+QDurationObservationPrivate::QDurationObservationPrivate()
 {
 }
 
 QDurationObservationPrivate::~QDurationObservationPrivate()
 {
-    delete firstEvents;
-    delete events;
 }
 
 /*!
@@ -87,7 +83,7 @@ QDurationObservation::~QDurationObservation()
 /*!
     The value of firstEvent[i] is related to event[i] (where i is 1 or 2). If firstEvent[i] is true, then the corresponding observation event is the first time instant the execution enters event[i]. If firstEvent[i] is false, then the corresponding observation event is the time instant the execution exits event[i]. Default value is true applied when event[i] refers an element that represents only one time instant.
  */
-const QSet<bool> *QDurationObservation::firstEvents() const
+const QSet<bool> QDurationObservation::firstEvents() const
 {
     // This is a read-write attribute
 
@@ -100,8 +96,8 @@ void QDurationObservation::addFirstEvent(bool firstEvent)
     // This is a read-write attribute
 
     Q_D(QDurationObservation);
-    if (!d->firstEvents->contains(firstEvent)) {
-        d->firstEvents->insert(firstEvent);
+    if (!d->firstEvents.contains(firstEvent)) {
+        d->firstEvents.insert(firstEvent);
     }
 }
 
@@ -110,8 +106,8 @@ void QDurationObservation::removeFirstEvent(bool firstEvent)
     // This is a read-write attribute
 
     Q_D(QDurationObservation);
-    if (d->firstEvents->contains(firstEvent)) {
-        d->firstEvents->remove(firstEvent);
+    if (d->firstEvents.contains(firstEvent)) {
+        d->firstEvents.remove(firstEvent);
     }
 }
 
@@ -122,7 +118,7 @@ void QDurationObservation::removeFirstEvent(bool firstEvent)
 /*!
     The observation is determined by the entering or exiting of the event element during execution.
  */
-const QSet<QNamedElement *> *QDurationObservation::events() const
+const QSet<QNamedElement *> &QDurationObservation::events() const
 {
     // This is a read-write association end
 
@@ -135,8 +131,8 @@ void QDurationObservation::addEvent(QNamedElement *event)
     // This is a read-write association end
 
     Q_D(QDurationObservation);
-    if (!d->events->contains(event)) {
-        d->events->insert(event);
+    if (!d->events.contains(event)) {
+        d->events.insert(event);
     }
 }
 
@@ -145,31 +141,9 @@ void QDurationObservation::removeEvent(QNamedElement *event)
     // This is a read-write association end
 
     Q_D(QDurationObservation);
-    if (d->events->contains(event)) {
-        d->events->remove(event);
+    if (d->events.contains(event)) {
+        d->events.remove(event);
     }
-}
-
-void QDurationObservation::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QDurationObservation) *>("QT_PREPEND_NAMESPACE_QTUML(QDurationObservation) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QDurationObservation) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QDurationObservation) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QDurationObservation) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QDurationObservation) *> *");
-    qRegisterMetaType<QDurationObservation *>("QDurationObservation *");
-    qRegisterMetaType<const QSet<QDurationObservation *> *>("const QSet<QDurationObservation *> *");
-    qRegisterMetaType<const QList<QDurationObservation *> *>("const QList<QDurationObservation *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *>("QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *> *");
-    qRegisterMetaType<QNamedElement *>("QNamedElement *");
-    qRegisterMetaType<const QSet<QNamedElement *> *>("const QSet<QNamedElement *> *");
-    qRegisterMetaType<const QList<QNamedElement *> *>("const QList<QNamedElement *> *");
-
-    QObservation::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qdurationobservation.cpp"

@@ -70,8 +70,8 @@ public:
     explicit QDependencyPrivate();
     virtual ~QDependencyPrivate();
 
-    QSet<QNamedElement *> *clients;
-    QSet<QNamedElement *> *suppliers;
+    QSet<QNamedElement *> clients;
+    QSet<QNamedElement *> suppliers;
 };
 
 QT_END_NAMESPACE_QTUML

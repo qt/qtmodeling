@@ -71,17 +71,12 @@ public:
     Q_INVOKABLE bool setting() const;
     Q_INVOKABLE void setSetting(bool setting);
     Q_INVOKABLE void unsetSetting();
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QContinuation(QContinuationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QContinuation) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QContinuation) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QContinuation) *> *)
 
 QT_END_HEADER
 

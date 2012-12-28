@@ -44,14 +44,12 @@
 
 QT_BEGIN_NAMESPACE_QTMOF
 
-QExpressionPrivate::QExpressionPrivate() :
-    operands(new QList<QValueSpecification *>)
+QExpressionPrivate::QExpressionPrivate()
 {
 }
 
 QExpressionPrivate::~QExpressionPrivate()
 {
-    delete operands;
 }
 
 /*!
@@ -108,7 +106,7 @@ void QExpression::setSymbol(QString symbol)
 /*!
     Specifies a sequence of operands.
  */
-const QList<QValueSpecification *> *QExpression::operands() const
+const QList<QValueSpecification *> &QExpression::operands() const
 {
     // This is a read-write association end
 
@@ -121,8 +119,8 @@ void QExpression::addOperand(QValueSpecification *operand)
     // This is a read-write association end
 
     Q_D(QExpression);
-    if (!d->operands->contains(operand)) {
-        d->operands->append(operand);
+    if (!d->operands.contains(operand)) {
+        d->operands.append(operand);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(operand));
@@ -134,27 +132,12 @@ void QExpression::removeOperand(QValueSpecification *operand)
     // This is a read-write association end
 
     Q_D(QExpression);
-    if (d->operands->contains(operand)) {
-        d->operands->removeAll(operand);
+    if (d->operands.contains(operand)) {
+        d->operands.removeAll(operand);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(operand));
     }
-}
-
-void QExpression::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QExpression) *>("QT_PREPEND_NAMESPACE_QTMOF(QExpression) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QExpression) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QExpression) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QExpression) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QExpression) *> *");
-    qRegisterMetaType<QExpression *>("QExpression *");
-    qRegisterMetaType<const QSet<QExpression *> *>("const QSet<QExpression *> *");
-    qRegisterMetaType<const QList<QExpression *> *>("const QList<QExpression *> *");
-
-    QValueSpecification::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qexpression.cpp"

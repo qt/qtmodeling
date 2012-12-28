@@ -67,7 +67,7 @@ public:
     explicit QCreateLinkActionPrivate();
     virtual ~QCreateLinkActionPrivate();
 
-    QSet<QLinkEndCreationData *> *endData;
+    QSet<QLinkEndCreationData *> endData;
 };
 
 QT_END_NAMESPACE_QTUML

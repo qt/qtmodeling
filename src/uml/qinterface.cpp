@@ -50,22 +50,12 @@
 QT_BEGIN_NAMESPACE_QTUML
 
 QInterfacePrivate::QInterfacePrivate() :
-    protocol(0),
-    redefinedInterfaces(new QSet<QInterface *>),
-    ownedReceptions(new QSet<QReception *>),
-    ownedOperations(new QList<QOperation *>),
-    nestedClassifiers(new QList<QClassifier *>),
-    ownedAttributes(new QList<QProperty *>)
+    protocol(0)
 {
 }
 
 QInterfacePrivate::~QInterfacePrivate()
 {
-    delete redefinedInterfaces;
-    delete ownedReceptions;
-    delete ownedOperations;
-    delete nestedClassifiers;
-    delete ownedAttributes;
 }
 
 /*!
@@ -126,7 +116,7 @@ void QInterface::setProtocol(QProtocolStateMachine *protocol)
 /*!
     References all the Interfaces redefined by this Interface.
  */
-const QSet<QInterface *> *QInterface::redefinedInterfaces() const
+const QSet<QInterface *> &QInterface::redefinedInterfaces() const
 {
     // This is a read-write association end
 
@@ -139,8 +129,8 @@ void QInterface::addRedefinedInterface(QInterface *redefinedInterface)
     // This is a read-write association end
 
     Q_D(QInterface);
-    if (!d->redefinedInterfaces->contains(redefinedInterface)) {
-        d->redefinedInterfaces->insert(redefinedInterface);
+    if (!d->redefinedInterfaces.contains(redefinedInterface)) {
+        d->redefinedInterfaces.insert(redefinedInterface);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QClassifier *>(this))->addRedefinedClassifier(qwrappedobject_cast<QClassifier *>(redefinedInterface));
@@ -152,8 +142,8 @@ void QInterface::removeRedefinedInterface(QInterface *redefinedInterface)
     // This is a read-write association end
 
     Q_D(QInterface);
-    if (d->redefinedInterfaces->contains(redefinedInterface)) {
-        d->redefinedInterfaces->remove(redefinedInterface);
+    if (d->redefinedInterfaces.contains(redefinedInterface)) {
+        d->redefinedInterfaces.remove(redefinedInterface);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QClassifier *>(this))->removeRedefinedClassifier(qwrappedobject_cast<QClassifier *>(redefinedInterface));
@@ -163,7 +153,7 @@ void QInterface::removeRedefinedInterface(QInterface *redefinedInterface)
 /*!
     Receptions that objects providing this interface are willing to accept.
  */
-const QSet<QReception *> *QInterface::ownedReceptions() const
+const QSet<QReception *> &QInterface::ownedReceptions() const
 {
     // This is a read-write association end
 
@@ -176,8 +166,8 @@ void QInterface::addOwnedReception(QReception *ownedReception)
     // This is a read-write association end
 
     Q_D(QInterface);
-    if (!d->ownedReceptions->contains(ownedReception)) {
-        d->ownedReceptions->insert(ownedReception);
+    if (!d->ownedReceptions.contains(ownedReception)) {
+        d->ownedReceptions.insert(ownedReception);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QClassifierPrivate *>(d))->addFeature(qwrappedobject_cast<QFeature *>(ownedReception));
@@ -190,8 +180,8 @@ void QInterface::removeOwnedReception(QReception *ownedReception)
     // This is a read-write association end
 
     Q_D(QInterface);
-    if (d->ownedReceptions->contains(ownedReception)) {
-        d->ownedReceptions->remove(ownedReception);
+    if (d->ownedReceptions.contains(ownedReception)) {
+        d->ownedReceptions.remove(ownedReception);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QClassifierPrivate *>(d))->removeFeature(qwrappedobject_cast<QFeature *>(ownedReception));
@@ -202,7 +192,7 @@ void QInterface::removeOwnedReception(QReception *ownedReception)
 /*!
     The operations owned by the class.
  */
-const QList<QOperation *> *QInterface::ownedOperations() const
+const QList<QOperation *> &QInterface::ownedOperations() const
 {
     // This is a read-write association end
 
@@ -215,8 +205,8 @@ void QInterface::addOwnedOperation(QOperation *ownedOperation)
     // This is a read-write association end
 
     Q_D(QInterface);
-    if (!d->ownedOperations->contains(ownedOperation)) {
-        d->ownedOperations->append(ownedOperation);
+    if (!d->ownedOperations.contains(ownedOperation)) {
+        d->ownedOperations.append(ownedOperation);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QClassifierPrivate *>(d))->addFeature(qwrappedobject_cast<QFeature *>(ownedOperation));
@@ -232,8 +222,8 @@ void QInterface::removeOwnedOperation(QOperation *ownedOperation)
     // This is a read-write association end
 
     Q_D(QInterface);
-    if (d->ownedOperations->contains(ownedOperation)) {
-        d->ownedOperations->removeAll(ownedOperation);
+    if (d->ownedOperations.contains(ownedOperation)) {
+        d->ownedOperations.removeAll(ownedOperation);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QClassifierPrivate *>(d))->removeFeature(qwrappedobject_cast<QFeature *>(ownedOperation));
@@ -247,7 +237,7 @@ void QInterface::removeOwnedOperation(QOperation *ownedOperation)
 /*!
     References all the Classifiers that are defined (nested) within the Class.
  */
-const QList<QClassifier *> *QInterface::nestedClassifiers() const
+const QList<QClassifier *> &QInterface::nestedClassifiers() const
 {
     // This is a read-write association end
 
@@ -260,8 +250,8 @@ void QInterface::addNestedClassifier(QClassifier *nestedClassifier)
     // This is a read-write association end
 
     Q_D(QInterface);
-    if (!d->nestedClassifiers->contains(nestedClassifier)) {
-        d->nestedClassifiers->append(nestedClassifier);
+    if (!d->nestedClassifiers.contains(nestedClassifier)) {
+        d->nestedClassifiers.append(nestedClassifier);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qwrappedobject_cast<QNamedElement *>(nestedClassifier));
@@ -273,8 +263,8 @@ void QInterface::removeNestedClassifier(QClassifier *nestedClassifier)
     // This is a read-write association end
 
     Q_D(QInterface);
-    if (d->nestedClassifiers->contains(nestedClassifier)) {
-        d->nestedClassifiers->removeAll(nestedClassifier);
+    if (d->nestedClassifiers.contains(nestedClassifier)) {
+        d->nestedClassifiers.removeAll(nestedClassifier);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qwrappedobject_cast<QNamedElement *>(nestedClassifier));
@@ -284,7 +274,7 @@ void QInterface::removeNestedClassifier(QClassifier *nestedClassifier)
 /*!
     The attributes (i.e. the properties) owned by the class.
  */
-const QList<QProperty *> *QInterface::ownedAttributes() const
+const QList<QProperty *> &QInterface::ownedAttributes() const
 {
     // This is a read-write association end
 
@@ -297,8 +287,8 @@ void QInterface::addOwnedAttribute(QProperty *ownedAttribute)
     // This is a read-write association end
 
     Q_D(QInterface);
-    if (!d->ownedAttributes->contains(ownedAttribute)) {
-        d->ownedAttributes->append(ownedAttribute);
+    if (!d->ownedAttributes.contains(ownedAttribute)) {
+        d->ownedAttributes.append(ownedAttribute);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qwrappedobject_cast<QNamedElement *>(ownedAttribute));
@@ -314,8 +304,8 @@ void QInterface::removeOwnedAttribute(QProperty *ownedAttribute)
     // This is a read-write association end
 
     Q_D(QInterface);
-    if (d->ownedAttributes->contains(ownedAttribute)) {
-        d->ownedAttributes->removeAll(ownedAttribute);
+    if (d->ownedAttributes.contains(ownedAttribute)) {
+        d->ownedAttributes.removeAll(ownedAttribute);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qwrappedobject_cast<QNamedElement *>(ownedAttribute));
@@ -324,49 +314,6 @@ void QInterface::removeOwnedAttribute(QProperty *ownedAttribute)
         // Adjust opposite property
         ownedAttribute->setInterface(0);
     }
-}
-
-void QInterface::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInterface) *>("QT_PREPEND_NAMESPACE_QTUML(QInterface) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInterface) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInterface) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInterface) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInterface) *> *");
-    qRegisterMetaType<QInterface *>("QInterface *");
-    qRegisterMetaType<const QSet<QInterface *> *>("const QSet<QInterface *> *");
-    qRegisterMetaType<const QList<QInterface *> *>("const QList<QInterface *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QProtocolStateMachine) *>("QT_PREPEND_NAMESPACE_QTUML(QProtocolStateMachine) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QProtocolStateMachine) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QProtocolStateMachine) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QProtocolStateMachine) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QProtocolStateMachine) *> *");
-    qRegisterMetaType<QProtocolStateMachine *>("QProtocolStateMachine *");
-    qRegisterMetaType<const QSet<QProtocolStateMachine *> *>("const QSet<QProtocolStateMachine *> *");
-    qRegisterMetaType<const QList<QProtocolStateMachine *> *>("const QList<QProtocolStateMachine *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QReception) *>("QT_PREPEND_NAMESPACE_QTUML(QReception) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QReception) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QReception) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QReception) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QReception) *> *");
-    qRegisterMetaType<QReception *>("QReception *");
-    qRegisterMetaType<const QSet<QReception *> *>("const QSet<QReception *> *");
-    qRegisterMetaType<const QList<QReception *> *>("const QList<QReception *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QProperty) *>("QT_PREPEND_NAMESPACE_QTUML(QProperty) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QProperty) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QProperty) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QProperty) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QProperty) *> *");
-    qRegisterMetaType<QProperty *>("QProperty *");
-    qRegisterMetaType<const QSet<QProperty *> *>("const QSet<QProperty *> *");
-    qRegisterMetaType<const QList<QProperty *> *>("const QList<QProperty *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QOperation) *>("QT_PREPEND_NAMESPACE_QTUML(QOperation) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *");
-    qRegisterMetaType<QOperation *>("QOperation *");
-    qRegisterMetaType<const QSet<QOperation *> *>("const QSet<QOperation *> *");
-    qRegisterMetaType<const QList<QOperation *> *>("const QList<QOperation *> *");
-
-    QClassifier::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 // Overriden methods for subsetted properties

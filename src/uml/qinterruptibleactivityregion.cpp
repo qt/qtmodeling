@@ -47,16 +47,12 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QInterruptibleActivityRegionPrivate::QInterruptibleActivityRegionPrivate() :
-    interruptingEdges(new QSet<QActivityEdge *>),
-    nodes(new QSet<QActivityNode *>)
+QInterruptibleActivityRegionPrivate::QInterruptibleActivityRegionPrivate()
 {
 }
 
 QInterruptibleActivityRegionPrivate::~QInterruptibleActivityRegionPrivate()
 {
-    delete interruptingEdges;
-    delete nodes;
 }
 
 /*!
@@ -88,7 +84,7 @@ QInterruptibleActivityRegion::~QInterruptibleActivityRegion()
 /*!
     The edges leaving the region that will abort other tokens flowing in the region.
  */
-const QSet<QActivityEdge *> *QInterruptibleActivityRegion::interruptingEdges() const
+const QSet<QActivityEdge *> &QInterruptibleActivityRegion::interruptingEdges() const
 {
     // This is a read-write association end
 
@@ -101,8 +97,8 @@ void QInterruptibleActivityRegion::addInterruptingEdge(QActivityEdge *interrupti
     // This is a read-write association end
 
     Q_D(QInterruptibleActivityRegion);
-    if (!d->interruptingEdges->contains(interruptingEdge)) {
-        d->interruptingEdges->insert(interruptingEdge);
+    if (!d->interruptingEdges.contains(interruptingEdge)) {
+        d->interruptingEdges.insert(interruptingEdge);
 
         // Adjust opposite property
         interruptingEdge->setInterrupts(this);
@@ -114,8 +110,8 @@ void QInterruptibleActivityRegion::removeInterruptingEdge(QActivityEdge *interru
     // This is a read-write association end
 
     Q_D(QInterruptibleActivityRegion);
-    if (d->interruptingEdges->contains(interruptingEdge)) {
-        d->interruptingEdges->remove(interruptingEdge);
+    if (d->interruptingEdges.contains(interruptingEdge)) {
+        d->interruptingEdges.remove(interruptingEdge);
 
         // Adjust opposite property
         interruptingEdge->setInterrupts(0);
@@ -125,7 +121,7 @@ void QInterruptibleActivityRegion::removeInterruptingEdge(QActivityEdge *interru
 /*!
     Nodes immediately contained in the group.
  */
-const QSet<QActivityNode *> *QInterruptibleActivityRegion::nodes() const
+const QSet<QActivityNode *> &QInterruptibleActivityRegion::nodes() const
 {
     // This is a read-write association end
 
@@ -138,8 +134,8 @@ void QInterruptibleActivityRegion::addNode(QActivityNode *node)
     // This is a read-write association end
 
     Q_D(QInterruptibleActivityRegion);
-    if (!d->nodes->contains(node)) {
-        d->nodes->insert(node);
+    if (!d->nodes.contains(node)) {
+        d->nodes.insert(node);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QActivityGroupPrivate *>(d))->addContainedNode(qwrappedobject_cast<QActivityNode *>(node));
@@ -154,8 +150,8 @@ void QInterruptibleActivityRegion::removeNode(QActivityNode *node)
     // This is a read-write association end
 
     Q_D(QInterruptibleActivityRegion);
-    if (d->nodes->contains(node)) {
-        d->nodes->remove(node);
+    if (d->nodes.contains(node)) {
+        d->nodes.remove(node);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QActivityGroupPrivate *>(d))->removeContainedNode(qwrappedobject_cast<QActivityNode *>(node));
@@ -164,35 +160,6 @@ void QInterruptibleActivityRegion::removeNode(QActivityNode *node)
         if (node)
             node->removeInInterruptibleRegion(this);
     }
-}
-
-void QInterruptibleActivityRegion::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInterruptibleActivityRegion) *>("QT_PREPEND_NAMESPACE_QTUML(QInterruptibleActivityRegion) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInterruptibleActivityRegion) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInterruptibleActivityRegion) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInterruptibleActivityRegion) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInterruptibleActivityRegion) *> *");
-    qRegisterMetaType<QInterruptibleActivityRegion *>("QInterruptibleActivityRegion *");
-    qRegisterMetaType<const QSet<QInterruptibleActivityRegion *> *>("const QSet<QInterruptibleActivityRegion *> *");
-    qRegisterMetaType<const QList<QInterruptibleActivityRegion *> *>("const QList<QInterruptibleActivityRegion *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QActivityEdge) *>("QT_PREPEND_NAMESPACE_QTUML(QActivityEdge) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QActivityEdge) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QActivityEdge) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QActivityEdge) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QActivityEdge) *> *");
-    qRegisterMetaType<QActivityEdge *>("QActivityEdge *");
-    qRegisterMetaType<const QSet<QActivityEdge *> *>("const QSet<QActivityEdge *> *");
-    qRegisterMetaType<const QList<QActivityEdge *> *>("const QList<QActivityEdge *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QActivityNode) *>("QT_PREPEND_NAMESPACE_QTUML(QActivityNode) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QActivityNode) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QActivityNode) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QActivityNode) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QActivityNode) *> *");
-    qRegisterMetaType<QActivityNode *>("QActivityNode *");
-    qRegisterMetaType<const QSet<QActivityNode *> *>("const QSet<QActivityNode *> *");
-    qRegisterMetaType<const QList<QActivityNode *> *>("const QList<QActivityNode *> *");
-
-    QActivityGroup::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qinterruptibleactivityregion.cpp"

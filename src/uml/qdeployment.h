@@ -70,8 +70,8 @@ class Q_UML_EXPORT QDeployment : public QDependency
     Q_OBJECT
 
     Q_PROPERTY(QDeploymentTarget * location READ location WRITE setLocation)
-    Q_PROPERTY(const QSet<QDeploymentSpecification *> * configurations READ configurations)
-    Q_PROPERTY(const QSet<QDeployedArtifact *> * deployedArtifacts READ deployedArtifacts)
+    Q_PROPERTY(QSet<QDeploymentSpecification *> configurations READ configurations)
+    Q_PROPERTY(QSet<QDeployedArtifact *> deployedArtifacts READ deployedArtifacts)
 
     Q_DISABLE_COPY(QDeployment)
     Q_DECLARE_PRIVATE(QDeployment)
@@ -83,10 +83,10 @@ public:
     // Association ends from QDeployment
     Q_INVOKABLE QDeploymentTarget *location() const;
     Q_INVOKABLE void setLocation(QDeploymentTarget *location);
-    Q_INVOKABLE const QSet<QDeploymentSpecification *> *configurations() const;
+    Q_INVOKABLE const QSet<QDeploymentSpecification *> &configurations() const;
     Q_INVOKABLE void addConfiguration(QDeploymentSpecification *configuration);
     Q_INVOKABLE void removeConfiguration(QDeploymentSpecification *configuration);
-    Q_INVOKABLE const QSet<QDeployedArtifact *> *deployedArtifacts() const;
+    Q_INVOKABLE const QSet<QDeployedArtifact *> &deployedArtifacts() const;
     Q_INVOKABLE void addDeployedArtifact(QDeployedArtifact *deployedArtifact);
     Q_INVOKABLE void removeDeployedArtifact(QDeployedArtifact *deployedArtifact);
 
@@ -95,17 +95,12 @@ public:
     Q_INVOKABLE void removeClient(QWrappedObjectPointer<QDeploymentTarget> location);
     Q_INVOKABLE void addSupplier(QWrappedObjectPointer<QDeployedArtifact> deployedArtifact);
     Q_INVOKABLE void removeSupplier(QWrappedObjectPointer<QDeployedArtifact> deployedArtifact);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QDeployment(QDeploymentPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QDeployment) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QDeployment) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QDeployment) *> *)
 
 QT_END_HEADER
 

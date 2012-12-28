@@ -44,16 +44,12 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QOpaqueBehaviorPrivate::QOpaqueBehaviorPrivate() :
-    languages(new QList<QString>),
-    bodies(new QList<QString>)
+QOpaqueBehaviorPrivate::QOpaqueBehaviorPrivate()
 {
 }
 
 QOpaqueBehaviorPrivate::~QOpaqueBehaviorPrivate()
 {
-    delete languages;
-    delete bodies;
 }
 
 /*!
@@ -85,7 +81,7 @@ QOpaqueBehavior::~QOpaqueBehavior()
 /*!
     Languages the body strings use in the same order as the body strings.
  */
-const QList<QString> *QOpaqueBehavior::languages() const
+const QList<QString> QOpaqueBehavior::languages() const
 {
     // This is a read-write attribute
 
@@ -98,8 +94,8 @@ void QOpaqueBehavior::addLanguage(QString language)
     // This is a read-write attribute
 
     Q_D(QOpaqueBehavior);
-    if (!d->languages->contains(language)) {
-        d->languages->append(language);
+    if (!d->languages.contains(language)) {
+        d->languages.append(language);
     }
 }
 
@@ -108,15 +104,15 @@ void QOpaqueBehavior::removeLanguage(QString language)
     // This is a read-write attribute
 
     Q_D(QOpaqueBehavior);
-    if (d->languages->contains(language)) {
-        d->languages->removeAll(language);
+    if (d->languages.contains(language)) {
+        d->languages.removeAll(language);
     }
 }
 
 /*!
     Specifies the behavior in one or more languages.
  */
-const QList<QString> *QOpaqueBehavior::bodies() const
+const QList<QString> QOpaqueBehavior::bodies() const
 {
     // This is a read-write attribute
 
@@ -129,8 +125,8 @@ void QOpaqueBehavior::addBody(QString body)
     // This is a read-write attribute
 
     Q_D(QOpaqueBehavior);
-    if (!d->bodies->contains(body)) {
-        d->bodies->append(body);
+    if (!d->bodies.contains(body)) {
+        d->bodies.append(body);
     }
 }
 
@@ -139,24 +135,9 @@ void QOpaqueBehavior::removeBody(QString body)
     // This is a read-write attribute
 
     Q_D(QOpaqueBehavior);
-    if (d->bodies->contains(body)) {
-        d->bodies->removeAll(body);
+    if (d->bodies.contains(body)) {
+        d->bodies.removeAll(body);
     }
-}
-
-void QOpaqueBehavior::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QOpaqueBehavior) *>("QT_PREPEND_NAMESPACE_QTUML(QOpaqueBehavior) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QOpaqueBehavior) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QOpaqueBehavior) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QOpaqueBehavior) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QOpaqueBehavior) *> *");
-    qRegisterMetaType<QOpaqueBehavior *>("QOpaqueBehavior *");
-    qRegisterMetaType<const QSet<QOpaqueBehavior *> *>("const QSet<QOpaqueBehavior *> *");
-    qRegisterMetaType<const QList<QOpaqueBehavior *> *>("const QList<QOpaqueBehavior *> *");
-
-    QBehavior::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qopaquebehavior.cpp"

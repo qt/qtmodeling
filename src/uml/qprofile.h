@@ -65,8 +65,8 @@ class Q_UML_EXPORT QProfile : public QPackage
 {
     Q_OBJECT
 
-    Q_PROPERTY(const QSet<QPackageImport *> * metamodelReferences READ metamodelReferences)
-    Q_PROPERTY(const QSet<QElementImport *> * metaclassReferences READ metaclassReferences)
+    Q_PROPERTY(QSet<QPackageImport *> metamodelReferences READ metamodelReferences)
+    Q_PROPERTY(QSet<QElementImport *> metaclassReferences READ metaclassReferences)
 
     Q_DISABLE_COPY(QProfile)
     Q_DECLARE_PRIVATE(QProfile)
@@ -76,23 +76,18 @@ public:
     virtual ~QProfile();
 
     // Association ends from QProfile
-    Q_INVOKABLE const QSet<QPackageImport *> *metamodelReferences() const;
+    Q_INVOKABLE const QSet<QPackageImport *> &metamodelReferences() const;
     Q_INVOKABLE void addMetamodelReference(QPackageImport *metamodelReference);
     Q_INVOKABLE void removeMetamodelReference(QPackageImport *metamodelReference);
-    Q_INVOKABLE const QSet<QElementImport *> *metaclassReferences() const;
+    Q_INVOKABLE const QSet<QElementImport *> &metaclassReferences() const;
     Q_INVOKABLE void addMetaclassReference(QElementImport *metaclassReference);
     Q_INVOKABLE void removeMetaclassReference(QElementImport *metaclassReference);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QProfile(QProfilePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QProfile) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QProfile) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QProfile) *> *)
 
 QT_END_HEADER
 

@@ -48,16 +48,12 @@
 QT_BEGIN_NAMESPACE_QTUML
 
 QAcceptEventActionPrivate::QAcceptEventActionPrivate() :
-    isUnmarshall(false),
-    triggers(new QSet<QTrigger *>),
-    results(new QSet<QOutputPin *>)
+    isUnmarshall(false)
 {
 }
 
 QAcceptEventActionPrivate::~QAcceptEventActionPrivate()
 {
-    delete triggers;
-    delete results;
 }
 
 /*!
@@ -119,7 +115,7 @@ void QAcceptEventAction::unsetUnmarshall()
 /*!
     The type of events accepted by the action, as specified by triggers. For triggers with signal events, a signal of the specified type or any subtype of the specified signal type is accepted.
  */
-const QSet<QTrigger *> *QAcceptEventAction::triggers() const
+const QSet<QTrigger *> &QAcceptEventAction::triggers() const
 {
     // This is a read-write association end
 
@@ -132,8 +128,8 @@ void QAcceptEventAction::addTrigger(QTrigger *trigger)
     // This is a read-write association end
 
     Q_D(QAcceptEventAction);
-    if (!d->triggers->contains(trigger)) {
-        d->triggers->insert(trigger);
+    if (!d->triggers.contains(trigger)) {
+        d->triggers.insert(trigger);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(trigger));
@@ -145,8 +141,8 @@ void QAcceptEventAction::removeTrigger(QTrigger *trigger)
     // This is a read-write association end
 
     Q_D(QAcceptEventAction);
-    if (d->triggers->contains(trigger)) {
-        d->triggers->remove(trigger);
+    if (d->triggers.contains(trigger)) {
+        d->triggers.remove(trigger);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(trigger));
@@ -156,7 +152,7 @@ void QAcceptEventAction::removeTrigger(QTrigger *trigger)
 /*!
     Pins holding the received event objects or their attributes. Event objects may be copied in transmission, so identity might not be preserved.
  */
-const QSet<QOutputPin *> *QAcceptEventAction::results() const
+const QSet<QOutputPin *> &QAcceptEventAction::results() const
 {
     // This is a read-write association end
 
@@ -169,8 +165,8 @@ void QAcceptEventAction::addResult(QOutputPin *result)
     // This is a read-write association end
 
     Q_D(QAcceptEventAction);
-    if (!d->results->contains(result)) {
-        d->results->insert(result);
+    if (!d->results.contains(result)) {
+        d->results.insert(result);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QActionPrivate *>(d))->addOutput(qwrappedobject_cast<QOutputPin *>(result));
@@ -182,41 +178,12 @@ void QAcceptEventAction::removeResult(QOutputPin *result)
     // This is a read-write association end
 
     Q_D(QAcceptEventAction);
-    if (d->results->contains(result)) {
-        d->results->remove(result);
+    if (d->results.contains(result)) {
+        d->results.remove(result);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QActionPrivate *>(d))->removeOutput(qwrappedobject_cast<QOutputPin *>(result));
     }
-}
-
-void QAcceptEventAction::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QAcceptEventAction) *>("QT_PREPEND_NAMESPACE_QTUML(QAcceptEventAction) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QAcceptEventAction) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QAcceptEventAction) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QAcceptEventAction) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QAcceptEventAction) *> *");
-    qRegisterMetaType<QAcceptEventAction *>("QAcceptEventAction *");
-    qRegisterMetaType<const QSet<QAcceptEventAction *> *>("const QSet<QAcceptEventAction *> *");
-    qRegisterMetaType<const QList<QAcceptEventAction *> *>("const QList<QAcceptEventAction *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *");
-    qRegisterMetaType<QOutputPin *>("QOutputPin *");
-    qRegisterMetaType<const QSet<QOutputPin *> *>("const QSet<QOutputPin *> *");
-    qRegisterMetaType<const QList<QOutputPin *> *>("const QList<QOutputPin *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QTrigger) *>("QT_PREPEND_NAMESPACE_QTUML(QTrigger) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QTrigger) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QTrigger) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QTrigger) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QTrigger) *> *");
-    qRegisterMetaType<QTrigger *>("QTrigger *");
-    qRegisterMetaType<const QSet<QTrigger *> *>("const QSet<QTrigger *> *");
-    qRegisterMetaType<const QList<QTrigger *> *>("const QList<QTrigger *> *");
-
-    QAction::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qaccepteventaction.cpp"

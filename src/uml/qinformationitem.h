@@ -61,7 +61,7 @@ class Q_UML_EXPORT QInformationItem : public QClassifier
 {
     Q_OBJECT
 
-    Q_PROPERTY(const QSet<QClassifier *> * represented READ represented)
+    Q_PROPERTY(QSet<QClassifier *> represented READ represented)
 
     Q_DISABLE_COPY(QInformationItem)
     Q_DECLARE_PRIVATE(QInformationItem)
@@ -71,20 +71,15 @@ public:
     virtual ~QInformationItem();
 
     // Association ends from QInformationItem
-    Q_INVOKABLE const QSet<QClassifier *> *represented() const;
+    Q_INVOKABLE const QSet<QClassifier *> &represented() const;
     Q_INVOKABLE void addRepresented(QClassifier *represented);
     Q_INVOKABLE void removeRepresented(QClassifier *represented);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QInformationItem(QInformationItemPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QInformationItem) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QInformationItem) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QInformationItem) *> *)
 
 QT_END_HEADER
 

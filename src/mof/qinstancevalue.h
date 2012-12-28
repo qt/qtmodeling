@@ -73,17 +73,12 @@ public:
     // Association ends from QInstanceValue
     Q_INVOKABLE QInstanceSpecification *instance() const;
     Q_INVOKABLE void setInstance(QInstanceSpecification *instance);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QInstanceValue(QInstanceValuePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTMOF
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTMOF(QInstanceValue) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTMOF(QInstanceValue) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTMOF(QInstanceValue) *> *)
 
 QT_END_HEADER
 

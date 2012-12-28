@@ -46,14 +46,12 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QEnumerationPrivate::QEnumerationPrivate() :
-    ownedLiterals(new QList<QEnumerationLiteral *>)
+QEnumerationPrivate::QEnumerationPrivate()
 {
 }
 
 QEnumerationPrivate::~QEnumerationPrivate()
 {
-    delete ownedLiterals;
 }
 
 /*!
@@ -85,7 +83,7 @@ QEnumeration::~QEnumeration()
 /*!
     The ordered set of literals for this Enumeration.
  */
-const QList<QEnumerationLiteral *> *QEnumeration::ownedLiterals() const
+const QList<QEnumerationLiteral *> &QEnumeration::ownedLiterals() const
 {
     // This is a read-write association end
 
@@ -98,8 +96,8 @@ void QEnumeration::addOwnedLiteral(QEnumerationLiteral *ownedLiteral)
     // This is a read-write association end
 
     Q_D(QEnumeration);
-    if (!d->ownedLiterals->contains(ownedLiteral)) {
-        d->ownedLiterals->append(ownedLiteral);
+    if (!d->ownedLiterals.contains(ownedLiteral)) {
+        d->ownedLiterals.append(ownedLiteral);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qwrappedobject_cast<QNamedElement *>(ownedLiteral));
@@ -114,8 +112,8 @@ void QEnumeration::removeOwnedLiteral(QEnumerationLiteral *ownedLiteral)
     // This is a read-write association end
 
     Q_D(QEnumeration);
-    if (d->ownedLiterals->contains(ownedLiteral)) {
-        d->ownedLiterals->removeAll(ownedLiteral);
+    if (d->ownedLiterals.contains(ownedLiteral)) {
+        d->ownedLiterals.removeAll(ownedLiteral);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qwrappedobject_cast<QNamedElement *>(ownedLiteral));
@@ -123,28 +121,6 @@ void QEnumeration::removeOwnedLiteral(QEnumerationLiteral *ownedLiteral)
         // Adjust opposite property
         ownedLiteral->setEnumeration(0);
     }
-}
-
-void QEnumeration::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QEnumeration) *>("QT_PREPEND_NAMESPACE_QTUML(QEnumeration) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QEnumeration) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QEnumeration) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QEnumeration) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QEnumeration) *> *");
-    qRegisterMetaType<QEnumeration *>("QEnumeration *");
-    qRegisterMetaType<const QSet<QEnumeration *> *>("const QSet<QEnumeration *> *");
-    qRegisterMetaType<const QList<QEnumeration *> *>("const QList<QEnumeration *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QEnumerationLiteral) *>("QT_PREPEND_NAMESPACE_QTUML(QEnumerationLiteral) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QEnumerationLiteral) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QEnumerationLiteral) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QEnumerationLiteral) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QEnumerationLiteral) *> *");
-    qRegisterMetaType<QEnumerationLiteral *>("QEnumerationLiteral *");
-    qRegisterMetaType<const QSet<QEnumerationLiteral *> *>("const QSet<QEnumerationLiteral *> *");
-    qRegisterMetaType<const QList<QEnumerationLiteral *> *>("const QList<QEnumerationLiteral *> *");
-
-    QDataType::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qenumeration.cpp"

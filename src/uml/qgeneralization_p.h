@@ -70,7 +70,7 @@ public:
 
     bool isSubstitutable;
     QClassifier *specific;
-    QSet<QGeneralizationSet *> *generalizationSets;
+    QSet<QGeneralizationSet *> generalizationSets;
     QClassifier *general;
 };
 

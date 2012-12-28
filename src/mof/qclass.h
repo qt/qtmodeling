@@ -68,10 +68,10 @@ class Q_MOF_EXPORT QClass : public QClassifier
     Q_OBJECT
 
     Q_PROPERTY(bool isAbstract READ isAbstract WRITE setAbstract RESET unsetAbstract)
-    Q_PROPERTY(const QList<QClassifier *> * nestedClassifiers READ nestedClassifiers)
-    Q_PROPERTY(const QList<QOperation *> * ownedOperations READ ownedOperations)
-    Q_PROPERTY(const QList<QProperty *> * ownedAttributes READ ownedAttributes)
-    Q_PROPERTY(const QSet<QClass *> * superClasses READ superClasses STORED false)
+    Q_PROPERTY(QList<QClassifier *> nestedClassifiers READ nestedClassifiers)
+    Q_PROPERTY(QList<QOperation *> ownedOperations READ ownedOperations)
+    Q_PROPERTY(QList<QProperty *> ownedAttributes READ ownedAttributes)
+    Q_PROPERTY(QSet<QClass *> superClasses READ superClasses STORED false)
 
     Q_DISABLE_COPY(QClass)
     Q_DECLARE_PRIVATE(QClass)
@@ -86,32 +86,27 @@ public:
     Q_INVOKABLE void unsetAbstract();
 
     // Association ends from QClass
-    Q_INVOKABLE const QList<QClassifier *> *nestedClassifiers() const;
+    Q_INVOKABLE const QList<QClassifier *> &nestedClassifiers() const;
     Q_INVOKABLE void addNestedClassifier(QClassifier *nestedClassifier);
     Q_INVOKABLE void removeNestedClassifier(QClassifier *nestedClassifier);
-    Q_INVOKABLE const QList<QOperation *> *ownedOperations() const;
+    Q_INVOKABLE const QList<QOperation *> &ownedOperations() const;
     Q_INVOKABLE void addOwnedOperation(QOperation *ownedOperation);
     Q_INVOKABLE void removeOwnedOperation(QOperation *ownedOperation);
-    Q_INVOKABLE const QList<QProperty *> *ownedAttributes() const;
+    Q_INVOKABLE const QList<QProperty *> &ownedAttributes() const;
     Q_INVOKABLE void addOwnedAttribute(QProperty *ownedAttribute);
     Q_INVOKABLE void removeOwnedAttribute(QProperty *ownedAttribute);
-    Q_INVOKABLE const QSet<QClass *> *superClasses() const;
+    Q_INVOKABLE const QSet<QClass *> &superClasses() const;
     Q_INVOKABLE void addSuperClass(QClass *superClass);
     Q_INVOKABLE void removeSuperClass(QClass *superClass);
 
     // Operations
-    Q_INVOKABLE const QSet<QNamedElement *> *inherit(const QSet<QNamedElement *> *inhs) const;
-    virtual void registerMetaTypes() const;
+    Q_INVOKABLE const QSet<QNamedElement *> &inherit(const QSet<QNamedElement *> &inhs) const;
 
 protected:
     explicit QClass(QClassPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTMOF
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTMOF(QClass) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTMOF(QClass) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTMOF(QClass) *> *)
 
 QT_END_HEADER
 

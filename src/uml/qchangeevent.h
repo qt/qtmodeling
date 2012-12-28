@@ -73,17 +73,12 @@ public:
     // Association ends from QChangeEvent
     Q_INVOKABLE QValueSpecification *changeExpression() const;
     Q_INVOKABLE void setChangeExpression(QValueSpecification *changeExpression);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QChangeEvent(QChangeEventPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QChangeEvent) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QChangeEvent) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QChangeEvent) *> *)
 
 QT_END_HEADER
 

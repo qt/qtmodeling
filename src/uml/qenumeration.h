@@ -64,7 +64,7 @@ class Q_UML_EXPORT QEnumeration : public QDataType
 {
     Q_OBJECT
 
-    Q_PROPERTY(const QList<QEnumerationLiteral *> * ownedLiterals READ ownedLiterals)
+    Q_PROPERTY(QList<QEnumerationLiteral *> ownedLiterals READ ownedLiterals)
 
     Q_DISABLE_COPY(QEnumeration)
     Q_DECLARE_PRIVATE(QEnumeration)
@@ -74,20 +74,15 @@ public:
     virtual ~QEnumeration();
 
     // Association ends from QEnumeration
-    Q_INVOKABLE const QList<QEnumerationLiteral *> *ownedLiterals() const;
+    Q_INVOKABLE const QList<QEnumerationLiteral *> &ownedLiterals() const;
     Q_INVOKABLE void addOwnedLiteral(QEnumerationLiteral *ownedLiteral);
     Q_INVOKABLE void removeOwnedLiteral(QEnumerationLiteral *ownedLiteral);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QEnumeration(QEnumerationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QEnumeration) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QEnumeration) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QEnumeration) *> *)
 
 QT_END_HEADER
 

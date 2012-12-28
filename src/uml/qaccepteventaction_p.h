@@ -69,8 +69,8 @@ public:
     virtual ~QAcceptEventActionPrivate();
 
     bool isUnmarshall;
-    QSet<QTrigger *> *triggers;
-    QSet<QOutputPin *> *results;
+    QSet<QTrigger *> triggers;
+    QSet<QOutputPin *> results;
 };
 
 QT_END_NAMESPACE_QTUML

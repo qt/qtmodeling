@@ -47,14 +47,12 @@
 QT_BEGIN_NAMESPACE_QTUML
 
 QInteractionOperandPrivate::QInteractionOperandPrivate() :
-    fragments(new QList<QInteractionFragment *>),
     guard(0)
 {
 }
 
 QInteractionOperandPrivate::~QInteractionOperandPrivate()
 {
-    delete fragments;
 }
 
 /*!
@@ -90,7 +88,7 @@ QInteractionOperand::~QInteractionOperand()
 /*!
     The Elements owned by this element.
  */
-const QSet<QElement *> *QInteractionOperand::ownedElements() const
+const QSet<QElement *> &QInteractionOperand::ownedElements() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedElements();
 }
@@ -106,7 +104,7 @@ QElement *QInteractionOperand::owner() const
 /*!
     The Comments owned by this element.
  */
-const QSet<QComment *> *QInteractionOperand::ownedComments() const
+const QSet<QComment *> &QInteractionOperand::ownedComments() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedComments();
 }
@@ -187,7 +185,7 @@ QNamespace *QInteractionOperand::namespace_() const
 /*!
     Indicates the dependencies that reference the client.
  */
-const QSet<QDependency *> *QInteractionOperand::clientDependencies() const
+const QSet<QDependency *> &QInteractionOperand::clientDependencies() const
 {
     return (qwrappedobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
@@ -209,7 +207,7 @@ void QInteractionOperand::removeClientDependency(QDependency *clientDependency)
 /*!
     The general ordering relationships contained in this fragment.
  */
-const QSet<QGeneralOrdering *> *QInteractionOperand::generalOrderings() const
+const QSet<QGeneralOrdering *> &QInteractionOperand::generalOrderings() const
 {
     return (qwrappedobject_cast<const QInteractionFragment *>(this))->generalOrderings();
 }
@@ -240,7 +238,7 @@ void QInteractionOperand::setEnclosingInteraction(QInteraction *enclosingInterac
 /*!
     References the Lifelines that the InteractionFragment involves.
  */
-const QSet<QLifeline *> *QInteractionOperand::covered() const
+const QSet<QLifeline *> &QInteractionOperand::covered() const
 {
     return (qwrappedobject_cast<const QInteractionFragment *>(this))->covered();
 }
@@ -275,7 +273,7 @@ void QInteractionOperand::setEnclosingOperand(QInteractionOperand *enclosingOper
 /*!
     References the PackageImports owned by the Namespace.
  */
-const QSet<QPackageImport *> *QInteractionOperand::packageImports() const
+const QSet<QPackageImport *> &QInteractionOperand::packageImports() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->packageImports();
 }
@@ -293,7 +291,7 @@ void QInteractionOperand::removePackageImport(QPackageImport *packageImport)
 /*!
     A collection of NamedElements identifiable within the Namespace, either by being owned or by being introduced by importing or inheritance.
  */
-const QSet<QNamedElement *> *QInteractionOperand::members() const
+const QSet<QNamedElement *> &QInteractionOperand::members() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->members();
 }
@@ -301,7 +299,7 @@ const QSet<QNamedElement *> *QInteractionOperand::members() const
 /*!
     References the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports.
  */
-const QSet<QPackageableElement *> *QInteractionOperand::importedMembers() const
+const QSet<QPackageableElement *> &QInteractionOperand::importedMembers() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->importedMembers();
 }
@@ -309,7 +307,7 @@ const QSet<QPackageableElement *> *QInteractionOperand::importedMembers() const
 /*!
     References the ElementImports owned by the Namespace.
  */
-const QSet<QElementImport *> *QInteractionOperand::elementImports() const
+const QSet<QElementImport *> &QInteractionOperand::elementImports() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->elementImports();
 }
@@ -327,7 +325,7 @@ void QInteractionOperand::removeElementImport(QElementImport *elementImport)
 /*!
     Specifies a set of Constraints owned by this Namespace.
  */
-const QSet<QConstraint *> *QInteractionOperand::ownedRules() const
+const QSet<QConstraint *> &QInteractionOperand::ownedRules() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->ownedRules();
 }
@@ -345,7 +343,7 @@ void QInteractionOperand::removeOwnedRule(QConstraint *ownedRule)
 /*!
     A collection of NamedElements owned by the Namespace.
  */
-const QSet<QNamedElement *> *QInteractionOperand::ownedMembers() const
+const QSet<QNamedElement *> &QInteractionOperand::ownedMembers() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->ownedMembers();
 }
@@ -357,7 +355,7 @@ const QSet<QNamedElement *> *QInteractionOperand::ownedMembers() const
 /*!
     The fragments of the operand.
  */
-const QList<QInteractionFragment *> *QInteractionOperand::fragments() const
+const QList<QInteractionFragment *> &QInteractionOperand::fragments() const
 {
     // This is a read-write association end
 
@@ -370,8 +368,8 @@ void QInteractionOperand::addFragment(QInteractionFragment *fragment)
     // This is a read-write association end
 
     Q_D(QInteractionOperand);
-    if (!d->fragments->contains(fragment)) {
-        d->fragments->append(fragment);
+    if (!d->fragments.contains(fragment)) {
+        d->fragments.append(fragment);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qwrappedobject_cast<QNamedElement *>(fragment));
@@ -386,8 +384,8 @@ void QInteractionOperand::removeFragment(QInteractionFragment *fragment)
     // This is a read-write association end
 
     Q_D(QInteractionOperand);
-    if (d->fragments->contains(fragment)) {
-        d->fragments->removeAll(fragment);
+    if (d->fragments.contains(fragment)) {
+        d->fragments.removeAll(fragment);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qwrappedobject_cast<QNamedElement *>(fragment));
@@ -424,28 +422,6 @@ void QInteractionOperand::setGuard(QInteractionConstraint *guard)
             (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(guard));
         }
     }
-}
-
-void QInteractionOperand::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInteractionOperand) *>("QT_PREPEND_NAMESPACE_QTUML(QInteractionOperand) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInteractionOperand) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInteractionOperand) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInteractionOperand) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInteractionOperand) *> *");
-    qRegisterMetaType<QInteractionOperand *>("QInteractionOperand *");
-    qRegisterMetaType<const QSet<QInteractionOperand *> *>("const QSet<QInteractionOperand *> *");
-    qRegisterMetaType<const QList<QInteractionOperand *> *>("const QList<QInteractionOperand *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInteractionConstraint) *>("QT_PREPEND_NAMESPACE_QTUML(QInteractionConstraint) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInteractionConstraint) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInteractionConstraint) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInteractionConstraint) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInteractionConstraint) *> *");
-    qRegisterMetaType<QInteractionConstraint *>("QInteractionConstraint *");
-    qRegisterMetaType<const QSet<QInteractionConstraint *> *>("const QSet<QInteractionConstraint *> *");
-    qRegisterMetaType<const QList<QInteractionConstraint *> *>("const QList<QInteractionConstraint *> *");
-
-    QWrappedObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qinteractionoperand.cpp"

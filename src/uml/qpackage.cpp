@@ -52,18 +52,12 @@
 QT_BEGIN_NAMESPACE_QTUML
 
 QPackagePrivate::QPackagePrivate() :
-    packagedElements(new QSet<QPackageableElement *>),
-    nestingPackage(0),
-    profileApplications(new QSet<QProfileApplication *>),
-    packageMerges(new QSet<QPackageMerge *>)
+    nestingPackage(0)
 {
 }
 
 QPackagePrivate::~QPackagePrivate()
 {
-    delete packagedElements;
-    delete profileApplications;
-    delete packageMerges;
 }
 
 /*!
@@ -101,7 +95,7 @@ QPackage::~QPackage()
 /*!
     The Elements owned by this element.
  */
-const QSet<QElement *> *QPackage::ownedElements() const
+const QSet<QElement *> &QPackage::ownedElements() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedElements();
 }
@@ -117,7 +111,7 @@ QElement *QPackage::owner() const
 /*!
     The Comments owned by this element.
  */
-const QSet<QComment *> *QPackage::ownedComments() const
+const QSet<QComment *> &QPackage::ownedComments() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedComments();
 }
@@ -185,7 +179,7 @@ QNamespace *QPackage::namespace_() const
 /*!
     Indicates the dependencies that reference the client.
  */
-const QSet<QDependency *> *QPackage::clientDependencies() const
+const QSet<QDependency *> &QPackage::clientDependencies() const
 {
     return (qwrappedobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
@@ -207,7 +201,7 @@ void QPackage::removeClientDependency(QDependency *clientDependency)
 /*!
     References the PackageImports owned by the Namespace.
  */
-const QSet<QPackageImport *> *QPackage::packageImports() const
+const QSet<QPackageImport *> &QPackage::packageImports() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->packageImports();
 }
@@ -225,7 +219,7 @@ void QPackage::removePackageImport(QPackageImport *packageImport)
 /*!
     A collection of NamedElements identifiable within the Namespace, either by being owned or by being introduced by importing or inheritance.
  */
-const QSet<QNamedElement *> *QPackage::members() const
+const QSet<QNamedElement *> &QPackage::members() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->members();
 }
@@ -233,7 +227,7 @@ const QSet<QNamedElement *> *QPackage::members() const
 /*!
     References the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports.
  */
-const QSet<QPackageableElement *> *QPackage::importedMembers() const
+const QSet<QPackageableElement *> &QPackage::importedMembers() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->importedMembers();
 }
@@ -241,7 +235,7 @@ const QSet<QPackageableElement *> *QPackage::importedMembers() const
 /*!
     References the ElementImports owned by the Namespace.
  */
-const QSet<QElementImport *> *QPackage::elementImports() const
+const QSet<QElementImport *> &QPackage::elementImports() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->elementImports();
 }
@@ -259,7 +253,7 @@ void QPackage::removeElementImport(QElementImport *elementImport)
 /*!
     Specifies a set of Constraints owned by this Namespace.
  */
-const QSet<QConstraint *> *QPackage::ownedRules() const
+const QSet<QConstraint *> &QPackage::ownedRules() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->ownedRules();
 }
@@ -277,7 +271,7 @@ void QPackage::removeOwnedRule(QConstraint *ownedRule)
 /*!
     A collection of NamedElements owned by the Namespace.
  */
-const QSet<QNamedElement *> *QPackage::ownedMembers() const
+const QSet<QNamedElement *> &QPackage::ownedMembers() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->ownedMembers();
 }
@@ -354,7 +348,7 @@ void QPackage::setOwnedTemplateSignature(QTemplateSignature *ownedTemplateSignat
 /*!
     The optional bindings from this element to templates.
  */
-const QSet<QTemplateBinding *> *QPackage::templateBindings() const
+const QSet<QTemplateBinding *> &QPackage::templateBindings() const
 {
     return (qwrappedobject_cast<const QTemplateableElement *>(this))->templateBindings();
 }
@@ -402,16 +396,16 @@ void QPackage::setURI(QString URI)
     References the packaged elements that are Types.
     It is the caller's responsibility to delete the returned set.
  */
-const QSet<QType *> *QPackage::ownedTypes() const
+const QSet<QType *> &QPackage::ownedTypes() const
 {
     // This is a read-write derived association end
 
     Q_D(const QPackage);
     QSet<QType *> *ownedTypes_ = new QSet<QType *>;
-    foreach (QPackageableElement *packageableElement, *d->packagedElements)
+    foreach (QPackageableElement *packageableElement, d->packagedElements)
         if (QType *type = qwrappedobject_cast<QType *>(packageableElement))
             ownedTypes_->insert(type);
-    return ownedTypes_;
+    return *ownedTypes_;
 }
 
 void QPackage::addOwnedType(QType *ownedType)
@@ -419,7 +413,7 @@ void QPackage::addOwnedType(QType *ownedType)
     // This is a read-write derived association end
 
     Q_D(QPackage);
-    if (!d->packagedElements->contains(ownedType)) {
+    if (!d->packagedElements.contains(ownedType)) {
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QPackage *>(this))->addPackagedElement(qwrappedobject_cast<QPackageableElement *>(ownedType));
 
@@ -433,7 +427,7 @@ void QPackage::removeOwnedType(QType *ownedType)
     // This is a read-write derived association end
 
     Q_D(QPackage);
-    if (d->packagedElements->contains(ownedType)) {
+    if (d->packagedElements.contains(ownedType)) {
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QPackage *>(this))->removePackagedElement(qwrappedobject_cast<QPackageableElement *>(ownedType));
 
@@ -445,7 +439,7 @@ void QPackage::removeOwnedType(QType *ownedType)
 /*!
     Specifies the packageable elements that are owned by this Package.
  */
-const QSet<QPackageableElement *> *QPackage::packagedElements() const
+const QSet<QPackageableElement *> &QPackage::packagedElements() const
 {
     // This is a read-write association end
 
@@ -458,8 +452,8 @@ void QPackage::addPackagedElement(QPackageableElement *packagedElement)
     // This is a read-write association end
 
     Q_D(QPackage);
-    if (!d->packagedElements->contains(packagedElement)) {
-        d->packagedElements->insert(packagedElement);
+    if (!d->packagedElements.contains(packagedElement)) {
+        d->packagedElements.insert(packagedElement);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qwrappedobject_cast<QNamedElement *>(packagedElement));
@@ -471,8 +465,8 @@ void QPackage::removePackagedElement(QPackageableElement *packagedElement)
     // This is a read-write association end
 
     Q_D(QPackage);
-    if (d->packagedElements->contains(packagedElement)) {
-        d->packagedElements->remove(packagedElement);
+    if (d->packagedElements.contains(packagedElement)) {
+        d->packagedElements.remove(packagedElement);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qwrappedobject_cast<QNamedElement *>(packagedElement));
@@ -514,7 +508,7 @@ void QPackage::setNestingPackage(QPackage *nestingPackage)
 /*!
     References the ProfileApplications that indicate which profiles have been applied to the Package.
  */
-const QSet<QProfileApplication *> *QPackage::profileApplications() const
+const QSet<QProfileApplication *> &QPackage::profileApplications() const
 {
     // This is a read-write association end
 
@@ -527,8 +521,8 @@ void QPackage::addProfileApplication(QProfileApplication *profileApplication)
     // This is a read-write association end
 
     Q_D(QPackage);
-    if (!d->profileApplications->contains(profileApplication)) {
-        d->profileApplications->insert(profileApplication);
+    if (!d->profileApplications.contains(profileApplication)) {
+        d->profileApplications.insert(profileApplication);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(profileApplication));
@@ -543,8 +537,8 @@ void QPackage::removeProfileApplication(QProfileApplication *profileApplication)
     // This is a read-write association end
 
     Q_D(QPackage);
-    if (d->profileApplications->contains(profileApplication)) {
-        d->profileApplications->remove(profileApplication);
+    if (d->profileApplications.contains(profileApplication)) {
+        d->profileApplications.remove(profileApplication);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(profileApplication));
@@ -558,22 +552,22 @@ void QPackage::removeProfileApplication(QProfileApplication *profileApplication)
     References the Stereotypes that are owned by the Package
     It is the caller's responsibility to delete the returned set.
  */
-const QSet<QStereotype *> *QPackage::ownedStereotypes() const
+const QSet<QStereotype *> &QPackage::ownedStereotypes() const
 {
     // This is a read-only derived association end
 
     Q_D(const QPackage);
     QSet<QStereotype *> *ownedStereotypes_ = new QSet<QStereotype *>;
-    foreach (QPackageableElement *packageableElement, *d->packagedElements)
+    foreach (QPackageableElement *packageableElement, d->packagedElements)
         if (QStereotype *stereotype = qwrappedobject_cast<QStereotype *>(packageableElement))
             ownedStereotypes_->insert(stereotype);
-    return ownedStereotypes_;
+    return *ownedStereotypes_;
 }
 
 /*!
     References the PackageMerges that are owned by this Package.
  */
-const QSet<QPackageMerge *> *QPackage::packageMerges() const
+const QSet<QPackageMerge *> &QPackage::packageMerges() const
 {
     // This is a read-write association end
 
@@ -586,8 +580,8 @@ void QPackage::addPackageMerge(QPackageMerge *packageMerge)
     // This is a read-write association end
 
     Q_D(QPackage);
-    if (!d->packageMerges->contains(packageMerge)) {
-        d->packageMerges->insert(packageMerge);
+    if (!d->packageMerges.contains(packageMerge)) {
+        d->packageMerges.insert(packageMerge);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(packageMerge));
@@ -602,8 +596,8 @@ void QPackage::removePackageMerge(QPackageMerge *packageMerge)
     // This is a read-write association end
 
     Q_D(QPackage);
-    if (d->packageMerges->contains(packageMerge)) {
-        d->packageMerges->remove(packageMerge);
+    if (d->packageMerges.contains(packageMerge)) {
+        d->packageMerges.remove(packageMerge);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(packageMerge));
@@ -617,16 +611,16 @@ void QPackage::removePackageMerge(QPackageMerge *packageMerge)
     References the packaged elements that are Packages.
     It is the caller's responsibility to delete the returned set.
  */
-const QSet<QPackage *> *QPackage::nestedPackages() const
+const QSet<QPackage *> &QPackage::nestedPackages() const
 {
     // This is a read-write derived association end
 
     Q_D(const QPackage);
     QSet<QPackage *> *nestedPackages_ = new QSet<QPackage *>;
-    foreach (QPackageableElement *packageableElement, *d->packagedElements)
+    foreach (QPackageableElement *packageableElement, d->packagedElements)
         if (QPackage *package = qwrappedobject_cast<QPackage *>(packageableElement))
             nestedPackages_->insert(package);
-    return nestedPackages_;
+    return *nestedPackages_;
 }
 
 void QPackage::addNestedPackage(QPackage *nestedPackage)
@@ -634,7 +628,7 @@ void QPackage::addNestedPackage(QPackage *nestedPackage)
     // This is a read-write derived association end
 
     Q_D(QPackage);
-    if (!d->packagedElements->contains(qwrappedobject_cast<QPackageableElement *>(nestedPackage))) {
+    if (!d->packagedElements.contains(qwrappedobject_cast<QPackageableElement *>(nestedPackage))) {
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QPackage *>(this))->addPackagedElement(qwrappedobject_cast<QPackageableElement *>(nestedPackage));
 
@@ -648,7 +642,7 @@ void QPackage::removeNestedPackage(QPackage *nestedPackage)
     // This is a read-write derived association end
 
     Q_D(QPackage);
-    if (d->packagedElements->contains(qwrappedobject_cast<QPackageableElement *>(nestedPackage))) {
+    if (d->packagedElements.contains(qwrappedobject_cast<QPackageableElement *>(nestedPackage))) {
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QPackage *>(this))->removePackagedElement(qwrappedobject_cast<QPackageableElement *>(nestedPackage));
 
@@ -660,11 +654,11 @@ void QPackage::removeNestedPackage(QPackage *nestedPackage)
 /*!
     The query allApplicableStereotypes() returns all the directly or indirectly owned stereotypes, including stereotypes contained in sub-profiles.
  */
-const QSet<QStereotype *> *QPackage::allApplicableStereotypes() const
+const QSet<QStereotype *> &QPackage::allApplicableStereotypes() const
 {
     qWarning("QPackage::allApplicableStereotypes: operation to be implemented");
 
-    return 0; // change here to your derived return
+    return *(new QSet<QStereotype *>); // change here to your derived return
 }
 
 /*!
@@ -701,68 +695,11 @@ bool QPackage::mustBeOwned() const
 /*!
     The query visibleMembers() defines which members of a Package can be accessed outside it.
  */
-const QSet<QPackageableElement *> *QPackage::visibleMembers() const
+const QSet<QPackageableElement *> &QPackage::visibleMembers() const
 {
     qWarning("QPackage::visibleMembers: operation to be implemented");
 
-    return 0; // change here to your derived return
-}
-
-void QPackage::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QPackage) *>("QT_PREPEND_NAMESPACE_QTUML(QPackage) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QPackage) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QPackage) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QPackage) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QPackage) *> *");
-    qRegisterMetaType<QPackage *>("QPackage *");
-    qRegisterMetaType<const QSet<QPackage *> *>("const QSet<QPackage *> *");
-    qRegisterMetaType<const QList<QPackage *> *>("const QList<QPackage *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QProfile) *>("QT_PREPEND_NAMESPACE_QTUML(QProfile) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QProfile) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QProfile) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QProfile) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QProfile) *> *");
-    qRegisterMetaType<QProfile *>("QProfile *");
-    qRegisterMetaType<const QSet<QProfile *> *>("const QSet<QProfile *> *");
-    qRegisterMetaType<const QList<QProfile *> *>("const QList<QProfile *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QProfileApplication) *>("QT_PREPEND_NAMESPACE_QTUML(QProfileApplication) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QProfileApplication) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QProfileApplication) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QProfileApplication) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QProfileApplication) *> *");
-    qRegisterMetaType<QProfileApplication *>("QProfileApplication *");
-    qRegisterMetaType<const QSet<QProfileApplication *> *>("const QSet<QProfileApplication *> *");
-    qRegisterMetaType<const QList<QProfileApplication *> *>("const QList<QProfileApplication *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *>("QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *> *");
-    qRegisterMetaType<QNamedElement *>("QNamedElement *");
-    qRegisterMetaType<const QSet<QNamedElement *> *>("const QSet<QNamedElement *> *");
-    qRegisterMetaType<const QList<QNamedElement *> *>("const QList<QNamedElement *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QPackageMerge) *>("QT_PREPEND_NAMESPACE_QTUML(QPackageMerge) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QPackageMerge) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QPackageMerge) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QPackageMerge) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QPackageMerge) *> *");
-    qRegisterMetaType<QPackageMerge *>("QPackageMerge *");
-    qRegisterMetaType<const QSet<QPackageMerge *> *>("const QSet<QPackageMerge *> *");
-    qRegisterMetaType<const QList<QPackageMerge *> *>("const QList<QPackageMerge *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QStereotype) *>("QT_PREPEND_NAMESPACE_QTUML(QStereotype) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QStereotype) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QStereotype) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QStereotype) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QStereotype) *> *");
-    qRegisterMetaType<QStereotype *>("QStereotype *");
-    qRegisterMetaType<const QSet<QStereotype *> *>("const QSet<QStereotype *> *");
-    qRegisterMetaType<const QList<QStereotype *> *>("const QList<QStereotype *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QType) *>("QT_PREPEND_NAMESPACE_QTUML(QType) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QType) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QType) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QType) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QType) *> *");
-    qRegisterMetaType<QType *>("QType *");
-    qRegisterMetaType<const QSet<QType *> *>("const QSet<QType *> *");
-    qRegisterMetaType<const QList<QType *> *>("const QList<QType *> *");
-
-    QWrappedObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
+    return *(new QSet<QPackageableElement *>); // change here to your derived return
 }
 
 // Overriden methods for subsetted properties

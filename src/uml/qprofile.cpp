@@ -47,16 +47,12 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QProfilePrivate::QProfilePrivate() :
-    metamodelReferences(new QSet<QPackageImport *>),
-    metaclassReferences(new QSet<QElementImport *>)
+QProfilePrivate::QProfilePrivate()
 {
 }
 
 QProfilePrivate::~QProfilePrivate()
 {
-    delete metamodelReferences;
-    delete metaclassReferences;
 }
 
 /*!
@@ -88,7 +84,7 @@ QProfile::~QProfile()
 /*!
     References a package containing (directly or indirectly) metaclasses that may be extended.
  */
-const QSet<QPackageImport *> *QProfile::metamodelReferences() const
+const QSet<QPackageImport *> &QProfile::metamodelReferences() const
 {
     // This is a read-write association end
 
@@ -101,8 +97,8 @@ void QProfile::addMetamodelReference(QPackageImport *metamodelReference)
     // This is a read-write association end
 
     Q_D(QProfile);
-    if (!d->metamodelReferences->contains(metamodelReference)) {
-        d->metamodelReferences->insert(metamodelReference);
+    if (!d->metamodelReferences.contains(metamodelReference)) {
+        d->metamodelReferences.insert(metamodelReference);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QNamespace *>(this))->addPackageImport(qwrappedobject_cast<QPackageImport *>(metamodelReference));
@@ -114,8 +110,8 @@ void QProfile::removeMetamodelReference(QPackageImport *metamodelReference)
     // This is a read-write association end
 
     Q_D(QProfile);
-    if (d->metamodelReferences->contains(metamodelReference)) {
-        d->metamodelReferences->remove(metamodelReference);
+    if (d->metamodelReferences.contains(metamodelReference)) {
+        d->metamodelReferences.remove(metamodelReference);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QNamespace *>(this))->removePackageImport(qwrappedobject_cast<QPackageImport *>(metamodelReference));
@@ -125,7 +121,7 @@ void QProfile::removeMetamodelReference(QPackageImport *metamodelReference)
 /*!
     References a metaclass that may be extended.
  */
-const QSet<QElementImport *> *QProfile::metaclassReferences() const
+const QSet<QElementImport *> &QProfile::metaclassReferences() const
 {
     // This is a read-write association end
 
@@ -138,8 +134,8 @@ void QProfile::addMetaclassReference(QElementImport *metaclassReference)
     // This is a read-write association end
 
     Q_D(QProfile);
-    if (!d->metaclassReferences->contains(metaclassReference)) {
-        d->metaclassReferences->insert(metaclassReference);
+    if (!d->metaclassReferences.contains(metaclassReference)) {
+        d->metaclassReferences.insert(metaclassReference);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QNamespace *>(this))->addElementImport(qwrappedobject_cast<QElementImport *>(metaclassReference));
@@ -151,41 +147,12 @@ void QProfile::removeMetaclassReference(QElementImport *metaclassReference)
     // This is a read-write association end
 
     Q_D(QProfile);
-    if (d->metaclassReferences->contains(metaclassReference)) {
-        d->metaclassReferences->remove(metaclassReference);
+    if (d->metaclassReferences.contains(metaclassReference)) {
+        d->metaclassReferences.remove(metaclassReference);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QNamespace *>(this))->removeElementImport(qwrappedobject_cast<QElementImport *>(metaclassReference));
     }
-}
-
-void QProfile::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QProfile) *>("QT_PREPEND_NAMESPACE_QTUML(QProfile) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QProfile) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QProfile) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QProfile) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QProfile) *> *");
-    qRegisterMetaType<QProfile *>("QProfile *");
-    qRegisterMetaType<const QSet<QProfile *> *>("const QSet<QProfile *> *");
-    qRegisterMetaType<const QList<QProfile *> *>("const QList<QProfile *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QElementImport) *>("QT_PREPEND_NAMESPACE_QTUML(QElementImport) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QElementImport) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QElementImport) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QElementImport) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QElementImport) *> *");
-    qRegisterMetaType<QElementImport *>("QElementImport *");
-    qRegisterMetaType<const QSet<QElementImport *> *>("const QSet<QElementImport *> *");
-    qRegisterMetaType<const QList<QElementImport *> *>("const QList<QElementImport *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QPackageImport) *>("QT_PREPEND_NAMESPACE_QTUML(QPackageImport) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QPackageImport) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QPackageImport) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QPackageImport) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QPackageImport) *> *");
-    qRegisterMetaType<QPackageImport *>("QPackageImport *");
-    qRegisterMetaType<const QSet<QPackageImport *> *>("const QSet<QPackageImport *> *");
-    qRegisterMetaType<const QList<QPackageImport *> *>("const QList<QPackageImport *> *");
-
-    QPackage::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qprofile.cpp"

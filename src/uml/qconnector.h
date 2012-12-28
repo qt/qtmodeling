@@ -71,10 +71,10 @@ class Q_UML_EXPORT QConnector : public QFeature
     Q_OBJECT
 
     Q_PROPERTY(QtUml::ConnectorKind kind READ kind STORED false)
-    Q_PROPERTY(const QSet<QConnector *> * redefinedConnectors READ redefinedConnectors)
-    Q_PROPERTY(const QSet<QBehavior *> * contracts READ contracts)
+    Q_PROPERTY(QSet<QConnector *> redefinedConnectors READ redefinedConnectors)
+    Q_PROPERTY(QSet<QBehavior *> contracts READ contracts)
     Q_PROPERTY(QAssociation * type READ type WRITE setType)
-    Q_PROPERTY(const QList<QConnectorEnd *> * ends READ ends)
+    Q_PROPERTY(QList<QConnectorEnd *> ends READ ends)
 
     Q_DISABLE_COPY(QConnector)
     Q_DECLARE_PRIVATE(QConnector)
@@ -87,28 +87,23 @@ public:
     Q_INVOKABLE QtUml::ConnectorKind kind() const;
 
     // Association ends from QConnector
-    Q_INVOKABLE const QSet<QConnector *> *redefinedConnectors() const;
+    Q_INVOKABLE const QSet<QConnector *> &redefinedConnectors() const;
     Q_INVOKABLE void addRedefinedConnector(QConnector *redefinedConnector);
     Q_INVOKABLE void removeRedefinedConnector(QConnector *redefinedConnector);
-    Q_INVOKABLE const QSet<QBehavior *> *contracts() const;
+    Q_INVOKABLE const QSet<QBehavior *> &contracts() const;
     Q_INVOKABLE void addContract(QBehavior *contract);
     Q_INVOKABLE void removeContract(QBehavior *contract);
     Q_INVOKABLE QAssociation *type() const;
     Q_INVOKABLE void setType(QAssociation *type);
-    Q_INVOKABLE const QList<QConnectorEnd *> *ends() const;
+    Q_INVOKABLE const QList<QConnectorEnd *> &ends() const;
     Q_INVOKABLE void addEnd(QConnectorEnd *end);
     Q_INVOKABLE void removeEnd(QConnectorEnd *end);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QConnector(QConnectorPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QConnector) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QConnector) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QConnector) *> *)
 
 QT_END_HEADER
 

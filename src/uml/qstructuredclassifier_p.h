@@ -69,9 +69,9 @@ public:
     explicit QStructuredClassifierPrivate();
     virtual ~QStructuredClassifierPrivate();
 
-    QSet<QConnectableElement *> *roles;
-    QList<QProperty *> *ownedAttributes;
-    QSet<QConnector *> *ownedConnectors;
+    QSet<QConnectableElement *> roles;
+    QList<QProperty *> ownedAttributes;
+    QSet<QConnector *> ownedConnectors;
 
     // Internal functions for read-only subsetted association ends
     void addRole(QConnectableElement *role);

@@ -66,7 +66,7 @@ public:
     virtual ~QCommentPrivate();
 
     QString body;
-    QSet<QElement *> *annotatedElements;
+    QSet<QElement *> annotatedElements;
 };
 
 QT_END_NAMESPACE_QTMOF

@@ -13,10 +13,10 @@ declare function qtxmi:typeStringFromProperty ($properties as node()*) as xs:str
 
 declare function qtxmi:mappedBaseNamespace($xmiFile as xs:string*) as xs:string* {
          if ($xmiFile = "PrimitiveTypes.xmi") then ""
-    else if ($xmiFile = "Superstructure.xmi") then "QtUml"
-    else if ($xmiFile = "UML.xmi") then "QtUml"
-    else if ($xmiFile = "MOF.xmi") then "QtMof"
-    else if ($xmiFile = "MOF-merged.xmi") then "QtMof"
+    else if ($xmiFile = "Superstructure.xmi") then "QtUml::"
+    else if ($xmiFile = "UML.xmi") then "QtUml::"
+    else if ($xmiFile = "MOF.xmi") then "QtMof::"
+    else if ($xmiFile = "MOF-merged.xmi") then "QtMof::"
     else "QtUnknown"
 };
 
@@ -160,9 +160,12 @@ declare function qtxmi:modifiedTypeFromNamespacedProperty ($property as node(), 
                      concat ("const ", $type)
                  else
                      $type
-    let $type := if ($collection and ($element/@xmi:type = "uml:Class" or $property/upperValue/@value != "1")) then
-                     concat ($type, " *")
-                 else if ($collection and $element/@xmi:type != "uml:Class" and ($property/@direction = "inout" or $property/@direction = "out")) then
+    let $type := if ($collection and $element/@xmi:type = "uml:Class") then
+                     if ($property/upperValue/@value != "1") then
+                         concat ($type, " &amp;")
+                     else
+                         concat ($type, " *")
+                 else if ($element/@xmi:type != "uml:Class" and ($property/@direction = "inout" or $property/@direction = "out")) then
                      concat ($type, " &amp;")
                  else
                      $type
@@ -236,7 +239,7 @@ declare function qtxmi:subsettedBy($property as node()) as xs:string {
 {
 for $namespace in distinct-values((doc($xmiFile)//packagedElement[@xmi:type="uml:Package"] | doc($xmiFile)//uml:Package)/@xmi:id)
 return
-<namespace path="{replace(replace(concat(qtxmi:mappedBaseNamespace($xmiFile), $namespace), "-", "/"), "::", "/")}">
+<namespace path="{replace(replace(replace(concat(qtxmi:mappedBaseNamespace($xmiFile), $namespace), "-", "/"), "::", "/"), "/$", "")}">
 {
 for $class in doc($xmiFile)//*[@xmi:id=$namespace]/packagedElement[@xmi:type="uml:Class"]
 let $namespace := concat(replace(concat(qtxmi:mappedBaseNamespace($xmiFile), $namespace), "-", "::"), "::")
@@ -299,9 +302,9 @@ return
         {
         for $attribute in $class/ownedAttribute
         let $unqualifiedType := qtxmi:modifiedTypeFromNamespacedProperty($attribute, $namespace, xs:boolean("true"))
-        let $unqualifiedType := if (ends-with($unqualifiedType, "*")) then $unqualifiedType else concat($unqualifiedType, " ")
+        let $unqualifiedType := if (ends-with($unqualifiedType, "*") or ends-with($unqualifiedType, "&amp;")) then $unqualifiedType else concat($unqualifiedType, " ")
         let $singleUnqualifiedType := qtxmi:modifiedTypeFromNamespacedProperty($attribute, $namespace, xs:boolean("false"))
-        let $singleUnqualifiedType := if (ends-with($singleUnqualifiedType, "*")) then $singleUnqualifiedType else concat($singleUnqualifiedType, " ")
+        let $singleUnqualifiedType := if (ends-with($singleUnqualifiedType, "*") or ends-with($singleUnqualifiedType, "&amp;")) then $singleUnqualifiedType else concat($singleUnqualifiedType, " ")
         let $isDerived := if (not($attribute/@isDerived) or $attribute/@isDerived = "false") then "false" else "true"
         let $isDerivedUnion := if (not($attribute/@isDerivedUnion) or $attribute/@isDerivedUnion = "false") then "false" else "true"
         let $isReadOnly := if (not($attribute/@isReadOnly) or $attribute/@isReadOnly = "false") then "false" else "true"
@@ -341,9 +344,9 @@ return
         {
         for $attribute in $class/ownedAttribute
         let $unqualifiedType := qtxmi:modifiedTypeFromNamespacedProperty($attribute, $namespace, xs:boolean("true"))
-        let $unqualifiedType := if (ends-with($unqualifiedType, "*")) then $unqualifiedType else concat($unqualifiedType, " ")
+        let $unqualifiedType := if (ends-with($unqualifiedType, "*") or ends-with($unqualifiedType, "&amp;")) then $unqualifiedType else concat($unqualifiedType, " ")
         let $singleUnqualifiedType := qtxmi:modifiedTypeFromNamespacedProperty($attribute, $namespace, xs:boolean("false"))
-        let $singleUnqualifiedType := if (ends-with($singleUnqualifiedType, "*")) then $singleUnqualifiedType else concat($singleUnqualifiedType, " ")
+        let $singleUnqualifiedType := if (ends-with($singleUnqualifiedType, "*") or ends-with($singleUnqualifiedType, "&amp;")) then $singleUnqualifiedType else concat($singleUnqualifiedType, " ")
         let $isDerived := if (not($attribute/@isDerived) or $attribute/@isDerived = "false") then "false" else "true"
         let $isDerivedUnion := if (not($attribute/@isDerivedUnion) or $attribute/@isDerivedUnion = "false") then "false" else "true"
         let $isReadOnly := if (not($attribute/@isReadOnly) or $attribute/@isReadOnly = "false") then "false" else "true"
@@ -387,7 +390,7 @@ return
                           qtxmi:modifiedTypeFromNamespacedProperty($operation/ownedParameter[@direction = "return"], $namespace, xs:boolean("true"))
                        else
                            "void"
-        let $return := if (ends-with($return, "*")) then $return else concat($return, " ")
+        let $return := if (ends-with($return, "*") or ends-with($return, "&amp;")) then $return else concat($return, " ")
         where empty($class/ownedAttribute[@name = $operation/@name])
         return
         <operation return="{$return}" name="{qtxmi:mappedFunctionName($operation/@name)}" constness="{$constness}">

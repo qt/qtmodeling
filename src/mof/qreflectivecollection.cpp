@@ -103,21 +103,6 @@ qint32 QReflectiveCollection::size() const
     return qint32(); // change here to your derived return
 }
 
-void QReflectiveCollection::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QReflectiveCollection) *>("QT_PREPEND_NAMESPACE_QTMOF(QReflectiveCollection) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QReflectiveCollection) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QReflectiveCollection) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QReflectiveCollection) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QReflectiveCollection) *> *");
-    qRegisterMetaType<QReflectiveCollection *>("QReflectiveCollection *");
-    qRegisterMetaType<const QSet<QReflectiveCollection *> *>("const QSet<QReflectiveCollection *> *");
-    qRegisterMetaType<const QList<QReflectiveCollection *> *>("const QList<QReflectiveCollection *> *");
-
-    QMofObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 #include "moc_qreflectivecollection.cpp"
 
 QT_END_NAMESPACE_QTMOF

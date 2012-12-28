@@ -71,8 +71,8 @@ public:
     virtual ~QExpansionRegionPrivate();
 
     QtUml::ExpansionKind mode;
-    QSet<QExpansionNode *> *inputElements;
-    QSet<QExpansionNode *> *outputElements;
+    QSet<QExpansionNode *> inputElements;
+    QSet<QExpansionNode *> outputElements;
 };
 
 QT_END_NAMESPACE_QTUML

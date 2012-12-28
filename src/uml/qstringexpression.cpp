@@ -45,14 +45,12 @@
 QT_BEGIN_NAMESPACE_QTUML
 
 QStringExpressionPrivate::QStringExpressionPrivate() :
-    owningExpression(0),
-    subExpressions(new QSet<QStringExpression *>)
+    owningExpression(0)
 {
 }
 
 QStringExpressionPrivate::~QStringExpressionPrivate()
 {
-    delete subExpressions;
 }
 
 /*!
@@ -88,7 +86,7 @@ QStringExpression::~QStringExpression()
 /*!
     The Elements owned by this element.
  */
-const QSet<QElement *> *QStringExpression::ownedElements() const
+const QSet<QElement *> &QStringExpression::ownedElements() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedElements();
 }
@@ -104,7 +102,7 @@ QElement *QStringExpression::owner() const
 /*!
     The Comments owned by this element.
  */
-const QSet<QComment *> *QStringExpression::ownedComments() const
+const QSet<QComment *> &QStringExpression::ownedComments() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedComments();
 }
@@ -139,7 +137,7 @@ void QStringExpression::setOwnedTemplateSignature(QTemplateSignature *ownedTempl
 /*!
     The optional bindings from this element to templates.
  */
-const QSet<QTemplateBinding *> *QStringExpression::templateBindings() const
+const QSet<QTemplateBinding *> &QStringExpression::templateBindings() const
 {
     return (qwrappedobject_cast<const QTemplateableElement *>(this))->templateBindings();
 }
@@ -193,7 +191,7 @@ void QStringExpression::setOwningExpression(QStringExpression *owningExpression)
 /*!
     The StringExpressions that constitute this StringExpression.
  */
-const QSet<QStringExpression *> *QStringExpression::subExpressions() const
+const QSet<QStringExpression *> &QStringExpression::subExpressions() const
 {
     // This is a read-write association end
 
@@ -206,8 +204,8 @@ void QStringExpression::addSubExpression(QStringExpression *subExpression)
     // This is a read-write association end
 
     Q_D(QStringExpression);
-    if (!d->subExpressions->contains(subExpression)) {
-        d->subExpressions->insert(subExpression);
+    if (!d->subExpressions.contains(subExpression)) {
+        d->subExpressions.insert(subExpression);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(subExpression));
@@ -222,8 +220,8 @@ void QStringExpression::removeSubExpression(QStringExpression *subExpression)
     // This is a read-write association end
 
     Q_D(QStringExpression);
-    if (d->subExpressions->contains(subExpression)) {
-        d->subExpressions->remove(subExpression);
+    if (d->subExpressions.contains(subExpression)) {
+        d->subExpressions.remove(subExpression);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(subExpression));
@@ -241,21 +239,6 @@ QString QStringExpression::stringValue() const
     qWarning("QStringExpression::stringValue: operation to be implemented");
 
     return QString(); // change here to your derived return
-}
-
-void QStringExpression::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QStringExpression) *>("QT_PREPEND_NAMESPACE_QTUML(QStringExpression) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QStringExpression) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QStringExpression) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QStringExpression) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QStringExpression) *> *");
-    qRegisterMetaType<QStringExpression *>("QStringExpression *");
-    qRegisterMetaType<const QSet<QStringExpression *> *>("const QSet<QStringExpression *> *");
-    qRegisterMetaType<const QList<QStringExpression *> *>("const QList<QStringExpression *> *");
-
-    QWrappedObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qstringexpression.cpp"

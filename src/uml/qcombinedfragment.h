@@ -70,8 +70,8 @@ class Q_UML_EXPORT QCombinedFragment : public QInteractionFragment
     Q_OBJECT
 
     Q_PROPERTY(QtUml::InteractionOperatorKind interactionOperator READ interactionOperator WRITE setInteractionOperator RESET unsetInteractionOperator)
-    Q_PROPERTY(const QSet<QGate *> * cfragmentGates READ cfragmentGates)
-    Q_PROPERTY(const QList<QInteractionOperand *> * operands READ operands)
+    Q_PROPERTY(QSet<QGate *> cfragmentGates READ cfragmentGates)
+    Q_PROPERTY(QList<QInteractionOperand *> operands READ operands)
 
     Q_DISABLE_COPY(QCombinedFragment)
     Q_DECLARE_PRIVATE(QCombinedFragment)
@@ -86,23 +86,18 @@ public:
     Q_INVOKABLE void unsetInteractionOperator();
 
     // Association ends from QCombinedFragment
-    Q_INVOKABLE const QSet<QGate *> *cfragmentGates() const;
+    Q_INVOKABLE const QSet<QGate *> &cfragmentGates() const;
     Q_INVOKABLE void addCfragmentGate(QGate *cfragmentGate);
     Q_INVOKABLE void removeCfragmentGate(QGate *cfragmentGate);
-    Q_INVOKABLE const QList<QInteractionOperand *> *operands() const;
+    Q_INVOKABLE const QList<QInteractionOperand *> &operands() const;
     Q_INVOKABLE void addOperand(QInteractionOperand *operand);
     Q_INVOKABLE void removeOperand(QInteractionOperand *operand);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QCombinedFragment(QCombinedFragmentPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QCombinedFragment) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QCombinedFragment) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QCombinedFragment) *> *)
 
 QT_END_HEADER
 

@@ -125,21 +125,6 @@ qint32 QLiteralUnlimitedNatural::unlimitedValue() const
     return qint32(); // change here to your derived return
 }
 
-void QLiteralUnlimitedNatural::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QLiteralUnlimitedNatural) *>("QT_PREPEND_NAMESPACE_QTUML(QLiteralUnlimitedNatural) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QLiteralUnlimitedNatural) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QLiteralUnlimitedNatural) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QLiteralUnlimitedNatural) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QLiteralUnlimitedNatural) *> *");
-    qRegisterMetaType<QLiteralUnlimitedNatural *>("QLiteralUnlimitedNatural *");
-    qRegisterMetaType<const QSet<QLiteralUnlimitedNatural *> *>("const QSet<QLiteralUnlimitedNatural *> *");
-    qRegisterMetaType<const QList<QLiteralUnlimitedNatural *> *>("const QList<QLiteralUnlimitedNatural *> *");
-
-    QLiteralSpecification::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 #include "moc_qliteralunlimitednatural.cpp"
 
 QT_END_NAMESPACE_QTUML

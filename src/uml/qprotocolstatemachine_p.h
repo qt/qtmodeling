@@ -67,7 +67,7 @@ public:
     explicit QProtocolStateMachinePrivate();
     virtual ~QProtocolStateMachinePrivate();
 
-    QSet<QProtocolConformance *> *conformance;
+    QSet<QProtocolConformance *> conformance;
 };
 
 QT_END_NAMESPACE_QTUML

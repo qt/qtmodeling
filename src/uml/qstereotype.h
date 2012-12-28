@@ -65,7 +65,7 @@ class Q_UML_EXPORT QStereotype : public QClass
 {
     Q_OBJECT
 
-    Q_PROPERTY(const QSet<QImage *> * icons READ icons)
+    Q_PROPERTY(QSet<QImage *> icons READ icons)
     Q_PROPERTY(QProfile * profile READ profile STORED false)
 
     Q_DISABLE_COPY(QStereotype)
@@ -76,24 +76,19 @@ public:
     virtual ~QStereotype();
 
     // Association ends from QStereotype
-    Q_INVOKABLE const QSet<QImage *> *icons() const;
+    Q_INVOKABLE const QSet<QImage *> &icons() const;
     Q_INVOKABLE void addIcon(QImage *icon);
     Q_INVOKABLE void removeIcon(QImage *icon);
     Q_INVOKABLE QProfile *profile() const;
 
     // Operations
     Q_INVOKABLE QProfile *containingProfile() const;
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QStereotype(QStereotypePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QStereotype) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QStereotype) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QStereotype) *> *)
 
 QT_END_HEADER
 

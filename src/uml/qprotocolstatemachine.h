@@ -64,7 +64,7 @@ class Q_UML_EXPORT QProtocolStateMachine : public QStateMachine
 {
     Q_OBJECT
 
-    Q_PROPERTY(const QSet<QProtocolConformance *> * conformance READ conformance)
+    Q_PROPERTY(QSet<QProtocolConformance *> conformance READ conformance)
 
     Q_DISABLE_COPY(QProtocolStateMachine)
     Q_DECLARE_PRIVATE(QProtocolStateMachine)
@@ -74,20 +74,15 @@ public:
     virtual ~QProtocolStateMachine();
 
     // Association ends from QProtocolStateMachine
-    Q_INVOKABLE const QSet<QProtocolConformance *> *conformance() const;
+    Q_INVOKABLE const QSet<QProtocolConformance *> &conformance() const;
     Q_INVOKABLE void addConformance(QProtocolConformance *conformance);
     Q_INVOKABLE void removeConformance(QProtocolConformance *conformance);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QProtocolStateMachine(QProtocolStateMachinePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QProtocolStateMachine) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QProtocolStateMachine) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QProtocolStateMachine) *> *)
 
 QT_END_HEADER
 

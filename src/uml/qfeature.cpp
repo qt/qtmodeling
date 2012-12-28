@@ -49,22 +49,20 @@
 QT_BEGIN_NAMESPACE_QTUML
 
 QFeaturePrivate::QFeaturePrivate() :
-    isStatic(false),
-    featuringClassifiers(new QSet<QClassifier *>)
+    isStatic(false)
 {
 }
 
 QFeaturePrivate::~QFeaturePrivate()
 {
-    delete featuringClassifiers;
 }
 
 void QFeaturePrivate::addFeaturingClassifier(QClassifier *featuringClassifier)
 {
     // This is a read-only derived-union association end
 
-    if (!this->featuringClassifiers->contains(featuringClassifier)) {
-        this->featuringClassifiers->insert(featuringClassifier);
+    if (!this->featuringClassifiers.contains(featuringClassifier)) {
+        this->featuringClassifiers.insert(featuringClassifier);
 
         // Adjust opposite property
         Q_Q(QFeature);
@@ -76,8 +74,8 @@ void QFeaturePrivate::removeFeaturingClassifier(QClassifier *featuringClassifier
 {
     // This is a read-only derived-union association end
 
-    if (this->featuringClassifiers->contains(featuringClassifier)) {
-        this->featuringClassifiers->remove(featuringClassifier);
+    if (this->featuringClassifiers.contains(featuringClassifier)) {
+        this->featuringClassifiers.remove(featuringClassifier);
 
         // Adjust opposite property
         Q_Q(QFeature);
@@ -145,34 +143,12 @@ void QFeature::unsetStatic()
 /*!
     The Classifiers that have this Feature as a feature.
  */
-const QSet<QClassifier *> *QFeature::featuringClassifiers() const
+const QSet<QClassifier *> &QFeature::featuringClassifiers() const
 {
     // This is a read-only derived-union association end
 
     Q_D(const QFeature);
     return d->featuringClassifiers;
-}
-
-void QFeature::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QFeature) *>("QT_PREPEND_NAMESPACE_QTUML(QFeature) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QFeature) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QFeature) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QFeature) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QFeature) *> *");
-    qRegisterMetaType<QFeature *>("QFeature *");
-    qRegisterMetaType<const QSet<QFeature *> *>("const QSet<QFeature *> *");
-    qRegisterMetaType<const QList<QFeature *> *>("const QList<QFeature *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *>("QT_PREPEND_NAMESPACE_QTUML(QClassifier) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *");
-    qRegisterMetaType<QClassifier *>("QClassifier *");
-    qRegisterMetaType<const QSet<QClassifier *> *>("const QSet<QClassifier *> *");
-    qRegisterMetaType<const QList<QClassifier *> *>("const QList<QClassifier *> *");
-
-    QRedefinableElement::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qfeature.cpp"

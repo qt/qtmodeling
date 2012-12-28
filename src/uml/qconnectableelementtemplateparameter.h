@@ -73,17 +73,12 @@ public:
     // Association ends from QConnectableElementTemplateParameter
     Q_INVOKABLE QConnectableElement *parameteredElement() const;
     Q_INVOKABLE void setParameteredElement(QConnectableElement *parameteredElement);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QConnectableElementTemplateParameter(QConnectableElementTemplateParameterPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QConnectableElementTemplateParameter) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QConnectableElementTemplateParameter) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QConnectableElementTemplateParameter) *> *)
 
 QT_END_HEADER
 

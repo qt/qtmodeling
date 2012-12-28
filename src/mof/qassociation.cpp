@@ -48,18 +48,12 @@
 QT_BEGIN_NAMESPACE_QTMOF
 
 QAssociationPrivate::QAssociationPrivate() :
-    isDerived(false),
-    navigableOwnedEnds(new QSet<QProperty *>),
-    ownedEnds(new QList<QProperty *>),
-    memberEnds(new QList<QProperty *>)
+    isDerived(false)
 {
 }
 
 QAssociationPrivate::~QAssociationPrivate()
 {
-    delete navigableOwnedEnds;
-    delete ownedEnds;
-    delete memberEnds;
 }
 
 /*!
@@ -95,7 +89,7 @@ QAssociation::~QAssociation()
 /*!
     The Elements owned by this element.
  */
-const QSet<QElement *> *QAssociation::ownedElements() const
+const QSet<QElement *> &QAssociation::ownedElements() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedElements();
 }
@@ -111,7 +105,7 @@ QElement *QAssociation::owner() const
 /*!
     The Comments owned by this element.
  */
-const QSet<QComment *> *QAssociation::ownedComments() const
+const QSet<QComment *> &QAssociation::ownedComments() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedComments();
 }
@@ -133,7 +127,7 @@ void QAssociation::removeOwnedComment(QComment *ownedComment)
 /*!
     Specifies the elements related by the Relationship.
  */
-const QSet<QElement *> *QAssociation::relatedElements() const
+const QSet<QElement *> &QAssociation::relatedElements() const
 {
     return (qwrappedobject_cast<const QRelationship *>(this))->relatedElements();
 }
@@ -243,7 +237,7 @@ void QAssociation::unsetLeaf()
 /*!
     The redefinable element that is being redefined by this element.
  */
-const QSet<QRedefinableElement *> *QAssociation::redefinedElements() const
+const QSet<QRedefinableElement *> &QAssociation::redefinedElements() const
 {
     return (qwrappedobject_cast<const QRedefinableElement *>(this))->redefinedElements();
 }
@@ -251,7 +245,7 @@ const QSet<QRedefinableElement *> *QAssociation::redefinedElements() const
 /*!
     References the contexts that this element may be redefined from.
  */
-const QSet<QClassifier *> *QAssociation::redefinitionContexts() const
+const QSet<QClassifier *> &QAssociation::redefinitionContexts() const
 {
     return (qwrappedobject_cast<const QRedefinableElement *>(this))->redefinitionContexts();
 }
@@ -263,7 +257,7 @@ const QSet<QClassifier *> *QAssociation::redefinitionContexts() const
 /*!
     References the PackageImports owned by the Namespace.
  */
-const QSet<QPackageImport *> *QAssociation::packageImports() const
+const QSet<QPackageImport *> &QAssociation::packageImports() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->packageImports();
 }
@@ -281,7 +275,7 @@ void QAssociation::removePackageImport(QPackageImport *packageImport)
 /*!
     A collection of NamedElements identifiable within the Namespace, either by being owned or by being introduced by importing or inheritance.
  */
-const QSet<QNamedElement *> *QAssociation::members() const
+const QSet<QNamedElement *> &QAssociation::members() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->members();
 }
@@ -289,7 +283,7 @@ const QSet<QNamedElement *> *QAssociation::members() const
 /*!
     References the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports.
  */
-const QSet<QPackageableElement *> *QAssociation::importedMembers() const
+const QSet<QPackageableElement *> &QAssociation::importedMembers() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->importedMembers();
 }
@@ -297,7 +291,7 @@ const QSet<QPackageableElement *> *QAssociation::importedMembers() const
 /*!
     References the ElementImports owned by the Namespace.
  */
-const QSet<QElementImport *> *QAssociation::elementImports() const
+const QSet<QElementImport *> &QAssociation::elementImports() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->elementImports();
 }
@@ -315,7 +309,7 @@ void QAssociation::removeElementImport(QElementImport *elementImport)
 /*!
     Specifies a set of Constraints owned by this Namespace.
  */
-const QSet<QConstraint *> *QAssociation::ownedRules() const
+const QSet<QConstraint *> &QAssociation::ownedRules() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->ownedRules();
 }
@@ -333,7 +327,7 @@ void QAssociation::removeOwnedRule(QConstraint *ownedRule)
 /*!
     A collection of NamedElements owned by the Namespace.
  */
-const QSet<QNamedElement *> *QAssociation::ownedMembers() const
+const QSet<QNamedElement *> &QAssociation::ownedMembers() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->ownedMembers();
 }
@@ -385,7 +379,7 @@ void QAssociation::unsetFinalSpecialization()
 /*!
     Refers to all of the Properties that are direct (i.e. not inherited or imported) attributes of the classifier.
  */
-const QSet<QProperty *> *QAssociation::attributes() const
+const QSet<QProperty *> &QAssociation::attributes() const
 {
     return (qwrappedobject_cast<const QClassifier *>(this))->attributes();
 }
@@ -393,7 +387,7 @@ const QSet<QProperty *> *QAssociation::attributes() const
 /*!
     Specifies each feature defined in the classifier.
  */
-const QSet<QFeature *> *QAssociation::features() const
+const QSet<QFeature *> &QAssociation::features() const
 {
     return (qwrappedobject_cast<const QClassifier *>(this))->features();
 }
@@ -401,7 +395,7 @@ const QSet<QFeature *> *QAssociation::features() const
 /*!
     Specifies the general Classifiers for this Classifier.
  */
-const QSet<QClassifier *> *QAssociation::generals() const
+const QSet<QClassifier *> &QAssociation::generals() const
 {
     return (qwrappedobject_cast<const QClassifier *>(this))->generals();
 }
@@ -419,7 +413,7 @@ void QAssociation::removeGeneral(QClassifier *general)
 /*!
     References the Classifiers that are redefined by this Classifier.
  */
-const QSet<QClassifier *> *QAssociation::redefinedClassifiers() const
+const QSet<QClassifier *> &QAssociation::redefinedClassifiers() const
 {
     return (qwrappedobject_cast<const QClassifier *>(this))->redefinedClassifiers();
 }
@@ -437,7 +431,7 @@ void QAssociation::removeRedefinedClassifier(QClassifier *redefinedClassifier)
 /*!
     Specifies all elements inherited by this classifier from the general classifiers.
  */
-const QSet<QNamedElement *> *QAssociation::inheritedMembers() const
+const QSet<QNamedElement *> &QAssociation::inheritedMembers() const
 {
     return (qwrappedobject_cast<const QClassifier *>(this))->inheritedMembers();
 }
@@ -445,7 +439,7 @@ const QSet<QNamedElement *> *QAssociation::inheritedMembers() const
 /*!
     Specifies the Generalization relationships for this Classifier. These Generalizations navigaten to more general classifiers in the generalization hierarchy.
  */
-const QSet<QGeneralization *> *QAssociation::generalizations() const
+const QSet<QGeneralization *> &QAssociation::generalizations() const
 {
     return (qwrappedobject_cast<const QClassifier *>(this))->generalizations();
 }
@@ -497,19 +491,19 @@ void QAssociation::unsetDerived()
 /*!
     References the classifiers that are used as types of the ends of the association.
  */
-const QList<QType *> *QAssociation::endTypes() const
+const QList<QType *> &QAssociation::endTypes() const
 {
     // This is a read-only derived association end
 
     qWarning("QAssociation::endTypes: to be implemented (this is a derived associationend)");
 
-    return 0; // change here to your derived return
+    return *(new QList<QType *>); // change here to your derived return
 }
 
 /*!
     The navigable ends that are owned by the association itself.
  */
-const QSet<QProperty *> *QAssociation::navigableOwnedEnds() const
+const QSet<QProperty *> &QAssociation::navigableOwnedEnds() const
 {
     // This is a read-write association end
 
@@ -522,8 +516,8 @@ void QAssociation::addNavigableOwnedEnd(QProperty *navigableOwnedEnd)
     // This is a read-write association end
 
     Q_D(QAssociation);
-    if (!d->navigableOwnedEnds->contains(navigableOwnedEnd)) {
-        d->navigableOwnedEnds->insert(navigableOwnedEnd);
+    if (!d->navigableOwnedEnds.contains(navigableOwnedEnd)) {
+        d->navigableOwnedEnds.insert(navigableOwnedEnd);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QAssociation *>(this))->addOwnedEnd(qwrappedobject_cast<QProperty *>(navigableOwnedEnd));
@@ -535,8 +529,8 @@ void QAssociation::removeNavigableOwnedEnd(QProperty *navigableOwnedEnd)
     // This is a read-write association end
 
     Q_D(QAssociation);
-    if (d->navigableOwnedEnds->contains(navigableOwnedEnd)) {
-        d->navigableOwnedEnds->remove(navigableOwnedEnd);
+    if (d->navigableOwnedEnds.contains(navigableOwnedEnd)) {
+        d->navigableOwnedEnds.remove(navigableOwnedEnd);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QAssociation *>(this))->removeOwnedEnd(qwrappedobject_cast<QProperty *>(navigableOwnedEnd));
@@ -546,7 +540,7 @@ void QAssociation::removeNavigableOwnedEnd(QProperty *navigableOwnedEnd)
 /*!
     The ends that are owned by the association itself.
  */
-const QList<QProperty *> *QAssociation::ownedEnds() const
+const QList<QProperty *> &QAssociation::ownedEnds() const
 {
     // This is a read-write association end
 
@@ -559,8 +553,8 @@ void QAssociation::addOwnedEnd(QProperty *ownedEnd)
     // This is a read-write association end
 
     Q_D(QAssociation);
-    if (!d->ownedEnds->contains(ownedEnd)) {
-        d->ownedEnds->append(ownedEnd);
+    if (!d->ownedEnds.contains(ownedEnd)) {
+        d->ownedEnds.append(ownedEnd);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QClassifierPrivate *>(d))->addFeature(qwrappedobject_cast<QFeature *>(ownedEnd));
@@ -577,8 +571,8 @@ void QAssociation::removeOwnedEnd(QProperty *ownedEnd)
     // This is a read-write association end
 
     Q_D(QAssociation);
-    if (d->ownedEnds->contains(ownedEnd)) {
-        d->ownedEnds->removeAll(ownedEnd);
+    if (d->ownedEnds.contains(ownedEnd)) {
+        d->ownedEnds.removeAll(ownedEnd);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QClassifierPrivate *>(d))->removeFeature(qwrappedobject_cast<QFeature *>(ownedEnd));
@@ -593,7 +587,7 @@ void QAssociation::removeOwnedEnd(QProperty *ownedEnd)
 /*!
     Each end represents participation of instances of the classifier connected to the end in links of the association.
  */
-const QList<QProperty *> *QAssociation::memberEnds() const
+const QList<QProperty *> &QAssociation::memberEnds() const
 {
     // This is a read-write association end
 
@@ -606,8 +600,8 @@ void QAssociation::addMemberEnd(QProperty *memberEnd)
     // This is a read-write association end
 
     Q_D(QAssociation);
-    if (!d->memberEnds->contains(memberEnd)) {
-        d->memberEnds->append(memberEnd);
+    if (!d->memberEnds.contains(memberEnd)) {
+        d->memberEnds.append(memberEnd);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QNamespacePrivate *>(d))->addMember(qwrappedobject_cast<QNamedElement *>(memberEnd));
@@ -622,8 +616,8 @@ void QAssociation::removeMemberEnd(QProperty *memberEnd)
     // This is a read-write association end
 
     Q_D(QAssociation);
-    if (d->memberEnds->contains(memberEnd)) {
-        d->memberEnds->removeAll(memberEnd);
+    if (d->memberEnds.contains(memberEnd)) {
+        d->memberEnds.removeAll(memberEnd);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QNamespacePrivate *>(d))->removeMember(qwrappedobject_cast<QNamedElement *>(memberEnd));
@@ -631,35 +625,6 @@ void QAssociation::removeMemberEnd(QProperty *memberEnd)
         // Adjust opposite property
         memberEnd->setAssociation(0);
     }
-}
-
-void QAssociation::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QAssociation) *>("QT_PREPEND_NAMESPACE_QTMOF(QAssociation) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QAssociation) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QAssociation) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QAssociation) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QAssociation) *> *");
-    qRegisterMetaType<QAssociation *>("QAssociation *");
-    qRegisterMetaType<const QSet<QAssociation *> *>("const QSet<QAssociation *> *");
-    qRegisterMetaType<const QList<QAssociation *> *>("const QList<QAssociation *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QType) *>("QT_PREPEND_NAMESPACE_QTMOF(QType) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QType) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QType) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QType) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QType) *> *");
-    qRegisterMetaType<QType *>("QType *");
-    qRegisterMetaType<const QSet<QType *> *>("const QSet<QType *> *");
-    qRegisterMetaType<const QList<QType *> *>("const QList<QType *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QProperty) *>("QT_PREPEND_NAMESPACE_QTMOF(QProperty) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QProperty) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QProperty) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QProperty) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QProperty) *> *");
-    qRegisterMetaType<QProperty *>("QProperty *");
-    qRegisterMetaType<const QSet<QProperty *> *>("const QSet<QProperty *> *");
-    qRegisterMetaType<const QList<QProperty *> *>("const QList<QProperty *> *");
-
-    QWrappedObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qassociation.cpp"

@@ -70,8 +70,8 @@ public:
     virtual ~QDeploymentPrivate();
 
     QDeploymentTarget *location;
-    QSet<QDeploymentSpecification *> *configurations;
-    QSet<QDeployedArtifact *> *deployedArtifacts;
+    QSet<QDeploymentSpecification *> configurations;
+    QSet<QDeployedArtifact *> deployedArtifacts;
 };
 
 QT_END_NAMESPACE_QTUML

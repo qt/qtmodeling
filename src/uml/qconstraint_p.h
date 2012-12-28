@@ -71,7 +71,7 @@ public:
 
     QNamespace *context;
     QValueSpecification *specification;
-    QList<QElement *> *constrainedElements;
+    QList<QElement *> constrainedElements;
 };
 
 QT_END_NAMESPACE_QTUML

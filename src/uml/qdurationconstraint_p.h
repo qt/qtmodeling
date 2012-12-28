@@ -67,7 +67,7 @@ public:
     explicit QDurationConstraintPrivate();
     virtual ~QDurationConstraintPrivate();
 
-    QSet<bool> *firstEvents;
+    QSet<bool> firstEvents;
     QDurationInterval *specification;
 };
 

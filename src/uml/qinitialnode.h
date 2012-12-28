@@ -64,17 +64,12 @@ class Q_UML_EXPORT QInitialNode : public QControlNode
 public:
     Q_INVOKABLE explicit QInitialNode(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QInitialNode();
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QInitialNode(QInitialNodePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QInitialNode) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QInitialNode) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QInitialNode) *> *)
 
 QT_END_HEADER
 

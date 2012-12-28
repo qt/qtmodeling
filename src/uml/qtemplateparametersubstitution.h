@@ -84,17 +84,12 @@ public:
     Q_INVOKABLE void setActual(QParameterableElement *actual);
     Q_INVOKABLE QTemplateBinding *templateBinding() const;
     Q_INVOKABLE void setTemplateBinding(QTemplateBinding *templateBinding);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QTemplateParameterSubstitution(QTemplateParameterSubstitutionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QTemplateParameterSubstitution) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QTemplateParameterSubstitution) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QTemplateParameterSubstitution) *> *)
 
 QT_END_HEADER
 

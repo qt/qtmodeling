@@ -86,7 +86,7 @@ public:
     QRegion *container;
     QTransition *redefinedTransition;
     QVertex *source;
-    QSet<QTrigger *> *triggers;
+    QSet<QTrigger *> triggers;
 };
 
 QT_END_NAMESPACE_QTUML

@@ -77,7 +77,7 @@ class Q_UML_EXPORT QNamedElement : public QElement
     Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
     Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QNamespace * namespace_ READ namespace_)
-    Q_PROPERTY(const QSet<QDependency *> * clientDependencies READ clientDependencies)
+    Q_PROPERTY(QSet<QDependency *> clientDependencies READ clientDependencies)
 
     Q_DISABLE_COPY(QNamedElement)
     Q_DECLARE_PRIVATE(QNamedElement)
@@ -97,16 +97,15 @@ public:
     Q_INVOKABLE QStringExpression *nameExpression() const;
     Q_INVOKABLE void setNameExpression(QStringExpression *nameExpression);
     Q_INVOKABLE QNamespace *namespace_() const;
-    Q_INVOKABLE const QSet<QDependency *> *clientDependencies() const;
+    Q_INVOKABLE const QSet<QDependency *> &clientDependencies() const;
     Q_INVOKABLE void addClientDependency(QDependency *clientDependency);
     Q_INVOKABLE void removeClientDependency(QDependency *clientDependency);
 
     // Operations
-    Q_INVOKABLE const QList<QNamespace *> *allNamespaces() const;
-    Q_INVOKABLE const QSet<QPackage *> *allOwningPackages() const;
+    Q_INVOKABLE const QList<QNamespace *> &allNamespaces() const;
+    Q_INVOKABLE const QSet<QPackage *> &allOwningPackages() const;
     Q_INVOKABLE bool isDistinguishableFrom(const QNamedElement *n, const QNamespace *ns) const;
     Q_INVOKABLE QString separator() const;
-    virtual void registerMetaTypes() const;
 
     // Classes which access read-only opposite properties should be friend
     friend class QNamespacePrivate;
@@ -116,10 +115,6 @@ protected:
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QNamedElement) *> *)
 
 QT_END_HEADER
 

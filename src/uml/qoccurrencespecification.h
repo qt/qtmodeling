@@ -66,8 +66,8 @@ class Q_UML_EXPORT QOccurrenceSpecification : public QInteractionFragment
     Q_OBJECT
 
     Q_PROPERTY(QLifeline * covered READ covered WRITE setCovered)
-    Q_PROPERTY(const QSet<QGeneralOrdering *> * toAfter READ toAfter)
-    Q_PROPERTY(const QSet<QGeneralOrdering *> * toBefore READ toBefore)
+    Q_PROPERTY(QSet<QGeneralOrdering *> toAfter READ toAfter)
+    Q_PROPERTY(QSet<QGeneralOrdering *> toBefore READ toBefore)
 
     Q_DISABLE_COPY(QOccurrenceSpecification)
     Q_DECLARE_PRIVATE(QOccurrenceSpecification)
@@ -79,23 +79,18 @@ public:
     // Association ends from QOccurrenceSpecification
     Q_INVOKABLE QLifeline *covered() const;
     Q_INVOKABLE void setCovered(QLifeline *covered);
-    Q_INVOKABLE const QSet<QGeneralOrdering *> *toAfter() const;
+    Q_INVOKABLE const QSet<QGeneralOrdering *> &toAfter() const;
     Q_INVOKABLE void addToAfter(QGeneralOrdering *toAfter);
     Q_INVOKABLE void removeToAfter(QGeneralOrdering *toAfter);
-    Q_INVOKABLE const QSet<QGeneralOrdering *> *toBefore() const;
+    Q_INVOKABLE const QSet<QGeneralOrdering *> &toBefore() const;
     Q_INVOKABLE void addToBefore(QGeneralOrdering *toBefore);
     Q_INVOKABLE void removeToBefore(QGeneralOrdering *toBefore);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QOccurrenceSpecification(QOccurrenceSpecificationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QOccurrenceSpecification) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QOccurrenceSpecification) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QOccurrenceSpecification) *> *)
 
 QT_END_HEADER
 

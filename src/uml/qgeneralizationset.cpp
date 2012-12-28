@@ -50,14 +50,12 @@ QT_BEGIN_NAMESPACE_QTUML
 QGeneralizationSetPrivate::QGeneralizationSetPrivate() :
     isCovering(false),
     isDisjoint(false),
-    powertype(0),
-    generalizations(new QSet<QGeneralization *>)
+    powertype(0)
 {
 }
 
 QGeneralizationSetPrivate::~QGeneralizationSetPrivate()
 {
-    delete generalizations;
 }
 
 /*!
@@ -174,7 +172,7 @@ void QGeneralizationSet::setPowertype(QClassifier *powertype)
 /*!
     Designates the instances of Generalization which are members of a given GeneralizationSet.
  */
-const QSet<QGeneralization *> *QGeneralizationSet::generalizations() const
+const QSet<QGeneralization *> &QGeneralizationSet::generalizations() const
 {
     // This is a read-write association end
 
@@ -187,8 +185,8 @@ void QGeneralizationSet::addGeneralization(QGeneralization *generalization)
     // This is a read-write association end
 
     Q_D(QGeneralizationSet);
-    if (!d->generalizations->contains(generalization)) {
-        d->generalizations->insert(generalization);
+    if (!d->generalizations.contains(generalization)) {
+        d->generalizations.insert(generalization);
 
         // Adjust opposite property
         generalization->addGeneralizationSet(this);
@@ -200,42 +198,13 @@ void QGeneralizationSet::removeGeneralization(QGeneralization *generalization)
     // This is a read-write association end
 
     Q_D(QGeneralizationSet);
-    if (d->generalizations->contains(generalization)) {
-        d->generalizations->remove(generalization);
+    if (d->generalizations.contains(generalization)) {
+        d->generalizations.remove(generalization);
 
         // Adjust opposite property
         if (generalization)
             generalization->removeGeneralizationSet(this);
     }
-}
-
-void QGeneralizationSet::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QGeneralizationSet) *>("QT_PREPEND_NAMESPACE_QTUML(QGeneralizationSet) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QGeneralizationSet) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QGeneralizationSet) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QGeneralizationSet) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QGeneralizationSet) *> *");
-    qRegisterMetaType<QGeneralizationSet *>("QGeneralizationSet *");
-    qRegisterMetaType<const QSet<QGeneralizationSet *> *>("const QSet<QGeneralizationSet *> *");
-    qRegisterMetaType<const QList<QGeneralizationSet *> *>("const QList<QGeneralizationSet *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QGeneralization) *>("QT_PREPEND_NAMESPACE_QTUML(QGeneralization) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QGeneralization) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QGeneralization) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QGeneralization) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QGeneralization) *> *");
-    qRegisterMetaType<QGeneralization *>("QGeneralization *");
-    qRegisterMetaType<const QSet<QGeneralization *> *>("const QSet<QGeneralization *> *");
-    qRegisterMetaType<const QList<QGeneralization *> *>("const QList<QGeneralization *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *>("QT_PREPEND_NAMESPACE_QTUML(QClassifier) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *");
-    qRegisterMetaType<QClassifier *>("QClassifier *");
-    qRegisterMetaType<const QSet<QClassifier *> *>("const QSet<QClassifier *> *");
-    qRegisterMetaType<const QList<QClassifier *> *>("const QList<QClassifier *> *");
-
-    QPackageableElement::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qgeneralizationset.cpp"

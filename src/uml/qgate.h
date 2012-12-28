@@ -64,17 +64,12 @@ class Q_UML_EXPORT QGate : public QMessageEnd
 public:
     Q_INVOKABLE explicit QGate(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QGate();
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QGate(QGatePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QGate) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QGate) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QGate) *> *)
 
 QT_END_HEADER
 

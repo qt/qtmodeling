@@ -77,11 +77,11 @@ public:
     virtual ~QStructuredActivityNodePrivate();
 
     bool mustIsolate;
-    QSet<QInputPin *> *structuredNodeInputs;
-    QSet<QActivityNode *> *nodes;
-    QSet<QOutputPin *> *structuredNodeOutputs;
-    QSet<QActivityEdge *> *edges;
-    QSet<QVariable *> *variables;
+    QSet<QInputPin *> structuredNodeInputs;
+    QSet<QActivityNode *> nodes;
+    QSet<QOutputPin *> structuredNodeOutputs;
+    QSet<QActivityEdge *> edges;
+    QSet<QVariable *> variables;
     QActivity *activity;
 };
 

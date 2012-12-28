@@ -71,10 +71,10 @@ public:
     explicit QInteractionUsePrivate();
     virtual ~QInteractionUsePrivate();
 
-    QSet<QGate *> *actualGates;
+    QSet<QGate *> actualGates;
     QValueSpecification *returnValue;
     QInteraction *refersTo;
-    QList<QValueSpecification *> *arguments;
+    QList<QValueSpecification *> arguments;
     QProperty *returnValueRecipient;
 };
 

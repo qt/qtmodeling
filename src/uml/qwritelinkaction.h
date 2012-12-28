@@ -64,17 +64,12 @@ class Q_UML_EXPORT QWriteLinkAction : public QLinkAction
 public:
     Q_INVOKABLE explicit QWriteLinkAction(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QWriteLinkAction();
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QWriteLinkAction(QWriteLinkActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QWriteLinkAction) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QWriteLinkAction) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QWriteLinkAction) *> *)
 
 QT_END_HEADER
 

@@ -66,8 +66,8 @@ class Q_UML_EXPORT QAcceptEventAction : public QAction
     Q_OBJECT
 
     Q_PROPERTY(bool isUnmarshall READ isUnmarshall WRITE setUnmarshall RESET unsetUnmarshall)
-    Q_PROPERTY(const QSet<QTrigger *> * triggers READ triggers)
-    Q_PROPERTY(const QSet<QOutputPin *> * results READ results)
+    Q_PROPERTY(QSet<QTrigger *> triggers READ triggers)
+    Q_PROPERTY(QSet<QOutputPin *> results READ results)
 
     Q_DISABLE_COPY(QAcceptEventAction)
     Q_DECLARE_PRIVATE(QAcceptEventAction)
@@ -82,23 +82,18 @@ public:
     Q_INVOKABLE void unsetUnmarshall();
 
     // Association ends from QAcceptEventAction
-    Q_INVOKABLE const QSet<QTrigger *> *triggers() const;
+    Q_INVOKABLE const QSet<QTrigger *> &triggers() const;
     Q_INVOKABLE void addTrigger(QTrigger *trigger);
     Q_INVOKABLE void removeTrigger(QTrigger *trigger);
-    Q_INVOKABLE const QSet<QOutputPin *> *results() const;
+    Q_INVOKABLE const QSet<QOutputPin *> &results() const;
     Q_INVOKABLE void addResult(QOutputPin *result);
     Q_INVOKABLE void removeResult(QOutputPin *result);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QAcceptEventAction(QAcceptEventActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QAcceptEventAction) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QAcceptEventAction) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QAcceptEventAction) *> *)
 
 QT_END_HEADER
 

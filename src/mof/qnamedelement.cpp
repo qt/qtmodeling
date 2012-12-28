@@ -176,11 +176,11 @@ QNamespace *QNamedElement::namespace_() const
 /*!
     The query allNamespaces() gives the sequence of namespaces in which the NamedElement is nested, working outwards.
  */
-const QList<QNamespace *> *QNamedElement::allNamespaces() const
+const QList<QNamespace *> &QNamedElement::allNamespaces() const
 {
     qWarning("QNamedElement::allNamespaces: operation to be implemented");
 
-    return 0; // change here to your derived return
+    return *(new QList<QNamespace *>); // change here to your derived return
 }
 
 /*!
@@ -203,28 +203,6 @@ QString QNamedElement::separator() const
     qWarning("QNamedElement::separator: operation to be implemented");
 
     return QString(); // change here to your derived return
-}
-
-void QNamedElement::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QNamedElement) *>("QT_PREPEND_NAMESPACE_QTMOF(QNamedElement) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QNamedElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QNamedElement) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QNamedElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QNamedElement) *> *");
-    qRegisterMetaType<QNamedElement *>("QNamedElement *");
-    qRegisterMetaType<const QSet<QNamedElement *> *>("const QSet<QNamedElement *> *");
-    qRegisterMetaType<const QList<QNamedElement *> *>("const QList<QNamedElement *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QNamespace) *>("QT_PREPEND_NAMESPACE_QTMOF(QNamespace) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QNamespace) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QNamespace) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QNamespace) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QNamespace) *> *");
-    qRegisterMetaType<QNamespace *>("QNamespace *");
-    qRegisterMetaType<const QSet<QNamespace *> *>("const QSet<QNamespace *> *");
-    qRegisterMetaType<const QList<QNamespace *> *>("const QList<QNamespace *> *");
-
-    QElement::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qnamedelement.cpp"

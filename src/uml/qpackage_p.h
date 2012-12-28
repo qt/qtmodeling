@@ -78,10 +78,10 @@ public:
     virtual ~QPackagePrivate();
 
     QString URI;
-    QSet<QPackageableElement *> *packagedElements;
+    QSet<QPackageableElement *> packagedElements;
     QPackage *nestingPackage;
-    QSet<QProfileApplication *> *profileApplications;
-    QSet<QPackageMerge *> *packageMerges;
+    QSet<QProfileApplication *> profileApplications;
+    QSet<QPackageMerge *> packageMerges;
 };
 
 QT_END_NAMESPACE_QTUML

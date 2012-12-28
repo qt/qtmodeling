@@ -73,17 +73,12 @@ public:
     // Association ends from QWriteVariableAction
     Q_INVOKABLE QInputPin *value() const;
     Q_INVOKABLE void setValue(QInputPin *value);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QWriteVariableAction(QWriteVariableActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QWriteVariableAction) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QWriteVariableAction) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QWriteVariableAction) *> *)
 
 QT_END_HEADER
 

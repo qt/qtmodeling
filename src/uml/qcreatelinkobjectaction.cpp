@@ -110,28 +110,6 @@ void QCreateLinkObjectAction::setResult(QOutputPin *result)
     }
 }
 
-void QCreateLinkObjectAction::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QCreateLinkObjectAction) *>("QT_PREPEND_NAMESPACE_QTUML(QCreateLinkObjectAction) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QCreateLinkObjectAction) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QCreateLinkObjectAction) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QCreateLinkObjectAction) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QCreateLinkObjectAction) *> *");
-    qRegisterMetaType<QCreateLinkObjectAction *>("QCreateLinkObjectAction *");
-    qRegisterMetaType<const QSet<QCreateLinkObjectAction *> *>("const QSet<QCreateLinkObjectAction *> *");
-    qRegisterMetaType<const QList<QCreateLinkObjectAction *> *>("const QList<QCreateLinkObjectAction *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *");
-    qRegisterMetaType<QOutputPin *>("QOutputPin *");
-    qRegisterMetaType<const QSet<QOutputPin *> *>("const QSet<QOutputPin *> *");
-    qRegisterMetaType<const QList<QOutputPin *> *>("const QList<QOutputPin *> *");
-
-    QCreateLinkAction::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 #include "moc_qcreatelinkobjectaction.cpp"
 
 QT_END_NAMESPACE_QTUML

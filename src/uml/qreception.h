@@ -73,17 +73,12 @@ public:
     // Association ends from QReception
     Q_INVOKABLE QSignal *signal() const;
     Q_INVOKABLE void setSignal(QSignal *signal);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QReception(QReceptionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QReception) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QReception) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QReception) *> *)
 
 QT_END_HEADER
 

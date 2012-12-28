@@ -48,16 +48,12 @@
 QT_BEGIN_NAMESPACE_QTUML
 
 QBehavioredClassifierPrivate::QBehavioredClassifierPrivate() :
-    ownedBehaviors(new QSet<QBehavior *>),
-    interfaceRealizations(new QSet<QInterfaceRealization *>),
     classifierBehavior(0)
 {
 }
 
 QBehavioredClassifierPrivate::~QBehavioredClassifierPrivate()
 {
-    delete ownedBehaviors;
-    delete interfaceRealizations;
 }
 
 /*!
@@ -89,7 +85,7 @@ QBehavioredClassifier::~QBehavioredClassifier()
 /*!
     References behavior specifications owned by a classifier.
  */
-const QSet<QBehavior *> *QBehavioredClassifier::ownedBehaviors() const
+const QSet<QBehavior *> &QBehavioredClassifier::ownedBehaviors() const
 {
     // This is a read-write association end
 
@@ -102,8 +98,8 @@ void QBehavioredClassifier::addOwnedBehavior(QBehavior *ownedBehavior)
     // This is a read-write association end
 
     Q_D(QBehavioredClassifier);
-    if (!d->ownedBehaviors->contains(ownedBehavior)) {
-        d->ownedBehaviors->insert(ownedBehavior);
+    if (!d->ownedBehaviors.contains(ownedBehavior)) {
+        d->ownedBehaviors.insert(ownedBehavior);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qwrappedobject_cast<QNamedElement *>(ownedBehavior));
@@ -115,8 +111,8 @@ void QBehavioredClassifier::removeOwnedBehavior(QBehavior *ownedBehavior)
     // This is a read-write association end
 
     Q_D(QBehavioredClassifier);
-    if (d->ownedBehaviors->contains(ownedBehavior)) {
-        d->ownedBehaviors->remove(ownedBehavior);
+    if (d->ownedBehaviors.contains(ownedBehavior)) {
+        d->ownedBehaviors.remove(ownedBehavior);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qwrappedobject_cast<QNamedElement *>(ownedBehavior));
@@ -126,7 +122,7 @@ void QBehavioredClassifier::removeOwnedBehavior(QBehavior *ownedBehavior)
 /*!
     The set of InterfaceRealizations owned by the BehavioredClassifier. Interface realizations reference the Interfaces of which the BehavioredClassifier is an implementation.
  */
-const QSet<QInterfaceRealization *> *QBehavioredClassifier::interfaceRealizations() const
+const QSet<QInterfaceRealization *> &QBehavioredClassifier::interfaceRealizations() const
 {
     // This is a read-write association end
 
@@ -139,8 +135,8 @@ void QBehavioredClassifier::addInterfaceRealization(QInterfaceRealization *inter
     // This is a read-write association end
 
     Q_D(QBehavioredClassifier);
-    if (!d->interfaceRealizations->contains(interfaceRealization)) {
-        d->interfaceRealizations->insert(interfaceRealization);
+    if (!d->interfaceRealizations.contains(interfaceRealization)) {
+        d->interfaceRealizations.insert(interfaceRealization);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(interfaceRealization));
@@ -156,8 +152,8 @@ void QBehavioredClassifier::removeInterfaceRealization(QInterfaceRealization *in
     // This is a read-write association end
 
     Q_D(QBehavioredClassifier);
-    if (d->interfaceRealizations->contains(interfaceRealization)) {
-        d->interfaceRealizations->remove(interfaceRealization);
+    if (d->interfaceRealizations.contains(interfaceRealization)) {
+        d->interfaceRealizations.remove(interfaceRealization);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(interfaceRealization));
@@ -195,35 +191,6 @@ void QBehavioredClassifier::setClassifierBehavior(QBehavior *classifierBehavior)
             (qwrappedobject_cast<QBehavioredClassifier *>(this))->addOwnedBehavior(qwrappedobject_cast<QBehavior *>(classifierBehavior));
         }
     }
-}
-
-void QBehavioredClassifier::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QBehavioredClassifier) *>("QT_PREPEND_NAMESPACE_QTUML(QBehavioredClassifier) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QBehavioredClassifier) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QBehavioredClassifier) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QBehavioredClassifier) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QBehavioredClassifier) *> *");
-    qRegisterMetaType<QBehavioredClassifier *>("QBehavioredClassifier *");
-    qRegisterMetaType<const QSet<QBehavioredClassifier *> *>("const QSet<QBehavioredClassifier *> *");
-    qRegisterMetaType<const QList<QBehavioredClassifier *> *>("const QList<QBehavioredClassifier *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *>("QT_PREPEND_NAMESPACE_QTUML(QBehavior) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *");
-    qRegisterMetaType<QBehavior *>("QBehavior *");
-    qRegisterMetaType<const QSet<QBehavior *> *>("const QSet<QBehavior *> *");
-    qRegisterMetaType<const QList<QBehavior *> *>("const QList<QBehavior *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInterfaceRealization) *>("QT_PREPEND_NAMESPACE_QTUML(QInterfaceRealization) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInterfaceRealization) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInterfaceRealization) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInterfaceRealization) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInterfaceRealization) *> *");
-    qRegisterMetaType<QInterfaceRealization *>("QInterfaceRealization *");
-    qRegisterMetaType<const QSet<QInterfaceRealization *> *>("const QSet<QInterfaceRealization *> *");
-    qRegisterMetaType<const QList<QInterfaceRealization *> *>("const QList<QInterfaceRealization *> *");
-
-    QClassifier::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 // Overriden methods for subsetted properties

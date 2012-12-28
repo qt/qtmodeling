@@ -67,7 +67,7 @@ public:
     explicit QConsiderIgnoreFragmentPrivate();
     virtual ~QConsiderIgnoreFragmentPrivate();
 
-    QSet<QNamedElement *> *messages;
+    QSet<QNamedElement *> messages;
 };
 
 QT_END_NAMESPACE_QTUML

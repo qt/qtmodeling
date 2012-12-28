@@ -65,7 +65,7 @@ public:
     explicit QTagPrivate();
     virtual ~QTagPrivate();
 
-    QSet<QElement *> *elements;
+    QSet<QElement *> elements;
     QString value;
     QString name;
     QElement *tagOwner;

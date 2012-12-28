@@ -180,28 +180,6 @@ void QGeneralization::setGeneral(QClassifier *general)
     }
 }
 
-void QGeneralization::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QGeneralization) *>("QT_PREPEND_NAMESPACE_QTMOF(QGeneralization) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QGeneralization) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QGeneralization) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QGeneralization) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QGeneralization) *> *");
-    qRegisterMetaType<QGeneralization *>("QGeneralization *");
-    qRegisterMetaType<const QSet<QGeneralization *> *>("const QSet<QGeneralization *> *");
-    qRegisterMetaType<const QList<QGeneralization *> *>("const QList<QGeneralization *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QClassifier) *>("QT_PREPEND_NAMESPACE_QTMOF(QClassifier) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QClassifier) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QClassifier) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QClassifier) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QClassifier) *> *");
-    qRegisterMetaType<QClassifier *>("QClassifier *");
-    qRegisterMetaType<const QSet<QClassifier *> *>("const QSet<QClassifier *> *");
-    qRegisterMetaType<const QList<QClassifier *> *>("const QList<QClassifier *> *");
-
-    QDirectedRelationship::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 #include "moc_qgeneralization.cpp"
 
 QT_END_NAMESPACE_QTMOF

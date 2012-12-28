@@ -65,8 +65,8 @@ public:
     explicit QOpaqueExpressionPrivate();
     virtual ~QOpaqueExpressionPrivate();
 
-    QList<QString> *bodies;
-    QList<QString> *languages;
+    QList<QString> bodies;
+    QList<QString> languages;
 };
 
 QT_END_NAMESPACE_QTMOF

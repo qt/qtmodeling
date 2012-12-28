@@ -67,9 +67,9 @@ class Q_UML_EXPORT QInteractionFragment : public QNamedElement
 {
     Q_OBJECT
 
-    Q_PROPERTY(const QSet<QGeneralOrdering *> * generalOrderings READ generalOrderings)
+    Q_PROPERTY(QSet<QGeneralOrdering *> generalOrderings READ generalOrderings)
     Q_PROPERTY(QInteraction * enclosingInteraction READ enclosingInteraction WRITE setEnclosingInteraction)
-    Q_PROPERTY(const QSet<QLifeline *> * covered READ covered)
+    Q_PROPERTY(QSet<QLifeline *> covered READ covered)
     Q_PROPERTY(QInteractionOperand * enclosingOperand READ enclosingOperand WRITE setEnclosingOperand)
 
     Q_DISABLE_COPY(QInteractionFragment)
@@ -80,27 +80,22 @@ public:
     virtual ~QInteractionFragment();
 
     // Association ends from QInteractionFragment
-    Q_INVOKABLE const QSet<QGeneralOrdering *> *generalOrderings() const;
+    Q_INVOKABLE const QSet<QGeneralOrdering *> &generalOrderings() const;
     Q_INVOKABLE void addGeneralOrdering(QGeneralOrdering *generalOrdering);
     Q_INVOKABLE void removeGeneralOrdering(QGeneralOrdering *generalOrdering);
     Q_INVOKABLE QInteraction *enclosingInteraction() const;
     Q_INVOKABLE void setEnclosingInteraction(QInteraction *enclosingInteraction);
-    Q_INVOKABLE const QSet<QLifeline *> *covered() const;
+    Q_INVOKABLE const QSet<QLifeline *> &covered() const;
     Q_INVOKABLE void addCovered(QLifeline *covered);
     Q_INVOKABLE void removeCovered(QLifeline *covered);
     Q_INVOKABLE QInteractionOperand *enclosingOperand() const;
     Q_INVOKABLE void setEnclosingOperand(QInteractionOperand *enclosingOperand);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QInteractionFragment(QInteractionFragmentPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QInteractionFragment) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QInteractionFragment) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QInteractionFragment) *> *)
 
 QT_END_HEADER
 

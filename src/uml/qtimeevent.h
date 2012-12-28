@@ -79,17 +79,12 @@ public:
     // Association ends from QTimeEvent
     Q_INVOKABLE QTimeExpression *when() const;
     Q_INVOKABLE void setWhen(QTimeExpression *when);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QTimeEvent(QTimeEventPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QTimeEvent) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QTimeEvent) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QTimeEvent) *> *)
 
 QT_END_HEADER
 

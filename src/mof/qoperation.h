@@ -75,15 +75,15 @@ class Q_MOF_EXPORT QOperation : public QBehavioralFeature
     Q_PROPERTY(bool isUnique READ isUnique STORED false)
     Q_PROPERTY(qint32 upper READ upper STORED false)
     Q_PROPERTY(bool isOrdered READ isOrdered STORED false)
-    Q_PROPERTY(const QList<QParameter *> * ownedParameters READ ownedParameters)
+    Q_PROPERTY(QList<QParameter *> ownedParameters READ ownedParameters)
     Q_PROPERTY(QConstraint * bodyCondition READ bodyCondition WRITE setBodyCondition)
-    Q_PROPERTY(const QSet<QOperation *> * redefinedOperations READ redefinedOperations)
-    Q_PROPERTY(const QSet<QConstraint *> * postconditions READ postconditions)
+    Q_PROPERTY(QSet<QOperation *> redefinedOperations READ redefinedOperations)
+    Q_PROPERTY(QSet<QConstraint *> postconditions READ postconditions)
     Q_PROPERTY(QDataType * datatype READ datatype WRITE setDatatype)
     Q_PROPERTY(QType * type READ type STORED false)
-    Q_PROPERTY(const QSet<QConstraint *> * preconditions READ preconditions)
+    Q_PROPERTY(QSet<QConstraint *> preconditions READ preconditions)
     Q_PROPERTY(QClass * class_ READ class_ WRITE setClass_)
-    Q_PROPERTY(const QSet<QType *> * raisedExceptions READ raisedExceptions)
+    Q_PROPERTY(QSet<QType *> raisedExceptions READ raisedExceptions)
 
     Q_DISABLE_COPY(QOperation)
     Q_DECLARE_PRIVATE(QOperation)
@@ -102,43 +102,38 @@ public:
     Q_INVOKABLE bool isOrdered() const;
 
     // Association ends from QOperation
-    Q_INVOKABLE const QList<QParameter *> *ownedParameters() const;
+    Q_INVOKABLE const QList<QParameter *> &ownedParameters() const;
     Q_INVOKABLE void addOwnedParameter(QParameter *ownedParameter);
     Q_INVOKABLE void removeOwnedParameter(QParameter *ownedParameter);
     Q_INVOKABLE QConstraint *bodyCondition() const;
     Q_INVOKABLE void setBodyCondition(QConstraint *bodyCondition);
-    Q_INVOKABLE const QSet<QOperation *> *redefinedOperations() const;
+    Q_INVOKABLE const QSet<QOperation *> &redefinedOperations() const;
     Q_INVOKABLE void addRedefinedOperation(QOperation *redefinedOperation);
     Q_INVOKABLE void removeRedefinedOperation(QOperation *redefinedOperation);
-    Q_INVOKABLE const QSet<QConstraint *> *postconditions() const;
+    Q_INVOKABLE const QSet<QConstraint *> &postconditions() const;
     Q_INVOKABLE void addPostcondition(QConstraint *postcondition);
     Q_INVOKABLE void removePostcondition(QConstraint *postcondition);
     Q_INVOKABLE QDataType *datatype() const;
     Q_INVOKABLE void setDatatype(QDataType *datatype);
     Q_INVOKABLE QType *type() const;
-    Q_INVOKABLE const QSet<QConstraint *> *preconditions() const;
+    Q_INVOKABLE const QSet<QConstraint *> &preconditions() const;
     Q_INVOKABLE void addPrecondition(QConstraint *precondition);
     Q_INVOKABLE void removePrecondition(QConstraint *precondition);
     Q_INVOKABLE QClass *class_() const;
     Q_INVOKABLE void setClass_(QClass *class_);
-    Q_INVOKABLE const QSet<QType *> *raisedExceptions() const;
+    Q_INVOKABLE const QSet<QType *> &raisedExceptions() const;
     Q_INVOKABLE void addRaisedException(QType *raisedException);
     Q_INVOKABLE void removeRaisedException(QType *raisedException);
 
     // Operations
     Q_INVOKABLE bool isConsistentWith(const QRedefinableElement *redefinee) const;
-    Q_INVOKABLE const QSet<QParameter *> *returnResult() const;
-    virtual void registerMetaTypes() const;
+    Q_INVOKABLE const QSet<QParameter *> &returnResult() const;
 
 protected:
     explicit QOperation(QOperationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTMOF
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTMOF(QOperation) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTMOF(QOperation) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTMOF(QOperation) *> *)
 
 QT_END_HEADER
 

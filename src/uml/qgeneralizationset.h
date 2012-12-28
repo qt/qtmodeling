@@ -68,7 +68,7 @@ class Q_UML_EXPORT QGeneralizationSet : public QPackageableElement
     Q_PROPERTY(bool isCovering READ isCovering WRITE setCovering RESET unsetCovering)
     Q_PROPERTY(bool isDisjoint READ isDisjoint WRITE setDisjoint RESET unsetDisjoint)
     Q_PROPERTY(QClassifier * powertype READ powertype WRITE setPowertype)
-    Q_PROPERTY(const QSet<QGeneralization *> * generalizations READ generalizations)
+    Q_PROPERTY(QSet<QGeneralization *> generalizations READ generalizations)
 
     Q_DISABLE_COPY(QGeneralizationSet)
     Q_DECLARE_PRIVATE(QGeneralizationSet)
@@ -88,20 +88,15 @@ public:
     // Association ends from QGeneralizationSet
     Q_INVOKABLE QClassifier *powertype() const;
     Q_INVOKABLE void setPowertype(QClassifier *powertype);
-    Q_INVOKABLE const QSet<QGeneralization *> *generalizations() const;
+    Q_INVOKABLE const QSet<QGeneralization *> &generalizations() const;
     Q_INVOKABLE void addGeneralization(QGeneralization *generalization);
     Q_INVOKABLE void removeGeneralization(QGeneralization *generalization);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QGeneralizationSet(QGeneralizationSetPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QGeneralizationSet) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QGeneralizationSet) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QGeneralizationSet) *> *)
 
 QT_END_HEADER
 

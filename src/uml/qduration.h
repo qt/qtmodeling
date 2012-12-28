@@ -65,7 +65,7 @@ class Q_UML_EXPORT QDuration : public QValueSpecification
     Q_OBJECT
 
     Q_PROPERTY(QValueSpecification * expr READ expr WRITE setExpr)
-    Q_PROPERTY(const QSet<QObservation *> * observations READ observations)
+    Q_PROPERTY(QSet<QObservation *> observations READ observations)
 
     Q_DISABLE_COPY(QDuration)
     Q_DECLARE_PRIVATE(QDuration)
@@ -77,20 +77,15 @@ public:
     // Association ends from QDuration
     Q_INVOKABLE QValueSpecification *expr() const;
     Q_INVOKABLE void setExpr(QValueSpecification *expr);
-    Q_INVOKABLE const QSet<QObservation *> *observations() const;
+    Q_INVOKABLE const QSet<QObservation *> &observations() const;
     Q_INVOKABLE void addObservation(QObservation *observation);
     Q_INVOKABLE void removeObservation(QObservation *observation);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QDuration(QDurationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QDuration) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QDuration) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QDuration) *> *)
 
 QT_END_HEADER
 

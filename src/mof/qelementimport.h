@@ -95,17 +95,12 @@ public:
 
     // Operations
     Q_INVOKABLE QString getName() const;
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QElementImport(QElementImportPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTMOF
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTMOF(QElementImport) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTMOF(QElementImport) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTMOF(QElementImport) *> *)
 
 QT_END_HEADER
 

@@ -70,10 +70,10 @@ public:
     explicit QUseCasePrivate();
     virtual ~QUseCasePrivate();
 
-    QSet<QExtensionPoint *> *extensionPoints;
-    QSet<QInclude *> *includes;
-    QSet<QClassifier *> *subjects;
-    QSet<QExtend *> *extends;
+    QSet<QExtensionPoint *> extensionPoints;
+    QSet<QInclude *> includes;
+    QSet<QClassifier *> subjects;
+    QSet<QExtend *> extends;
 };
 
 QT_END_NAMESPACE_QTUML

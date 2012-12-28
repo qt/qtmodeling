@@ -87,7 +87,7 @@ QValueSpecification::~QValueSpecification()
 /*!
     The Elements owned by this element.
  */
-const QSet<QElement *> *QValueSpecification::ownedElements() const
+const QSet<QElement *> &QValueSpecification::ownedElements() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedElements();
 }
@@ -103,7 +103,7 @@ QElement *QValueSpecification::owner() const
 /*!
     The Comments owned by this element.
  */
-const QSet<QComment *> *QValueSpecification::ownedComments() const
+const QSet<QComment *> &QValueSpecification::ownedComments() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedComments();
 }
@@ -171,7 +171,7 @@ QNamespace *QValueSpecification::namespace_() const
 /*!
     Indicates the dependencies that reference the client.
  */
-const QSet<QDependency *> *QValueSpecification::clientDependencies() const
+const QSet<QDependency *> &QValueSpecification::clientDependencies() const
 {
     return (qwrappedobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
@@ -334,28 +334,6 @@ qint32 QValueSpecification::unlimitedValue() const
     qWarning("QValueSpecification::unlimitedValue: operation to be implemented");
 
     return qint32(); // change here to your derived return
-}
-
-void QValueSpecification::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *>("QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *");
-    qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
-    qRegisterMetaType<const QSet<QValueSpecification *> *>("const QSet<QValueSpecification *> *");
-    qRegisterMetaType<const QList<QValueSpecification *> *>("const QList<QValueSpecification *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QParameterableElement) *>("QT_PREPEND_NAMESPACE_QTUML(QParameterableElement) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QParameterableElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QParameterableElement) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QParameterableElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QParameterableElement) *> *");
-    qRegisterMetaType<QParameterableElement *>("QParameterableElement *");
-    qRegisterMetaType<const QSet<QParameterableElement *> *>("const QSet<QParameterableElement *> *");
-    qRegisterMetaType<const QList<QParameterableElement *> *>("const QList<QParameterableElement *> *");
-
-    QWrappedObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qvaluespecification.cpp"

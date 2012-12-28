@@ -64,17 +64,12 @@ class Q_UML_EXPORT QFunctionBehavior : public QOpaqueBehavior
 public:
     Q_INVOKABLE explicit QFunctionBehavior(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QFunctionBehavior();
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QFunctionBehavior(QFunctionBehaviorPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QFunctionBehavior) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QFunctionBehavior) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QFunctionBehavior) *> *)
 
 QT_END_HEADER
 

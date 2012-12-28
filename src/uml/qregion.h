@@ -72,11 +72,11 @@ class Q_UML_EXPORT QRegion : public QWrappedObject
     Q_OBJECT
 
     Q_PROPERTY(QRegion * extendedRegion READ extendedRegion WRITE setExtendedRegion)
-    Q_PROPERTY(const QSet<QTransition *> * transitions READ transitions)
+    Q_PROPERTY(QSet<QTransition *> transitions READ transitions)
     Q_PROPERTY(QStateMachine * stateMachine READ stateMachine WRITE setStateMachine)
     Q_PROPERTY(QState * state READ state WRITE setState)
     Q_PROPERTY(QClassifier * redefinitionContext READ redefinitionContext STORED false)
-    Q_PROPERTY(const QSet<QVertex *> * subvertices READ subvertices)
+    Q_PROPERTY(QSet<QVertex *> subvertices READ subvertices)
 
     Q_DISABLE_COPY(QRegion)
     Q_DECLARE_PRIVATE(QRegion)
@@ -86,9 +86,9 @@ public:
     virtual ~QRegion();
 
     // Association ends from aggregated QElement
-    Q_INVOKABLE const QSet<QElement *> *ownedElements() const;
+    Q_INVOKABLE const QSet<QElement *> &ownedElements() const;
     Q_INVOKABLE QElement *owner() const;
-    Q_INVOKABLE const QSet<QComment *> *ownedComments() const;
+    Q_INVOKABLE const QSet<QComment *> &ownedComments() const;
     Q_INVOKABLE void addOwnedComment(QComment *ownedComment);
     Q_INVOKABLE void removeOwnedComment(QComment *ownedComment);
 
@@ -103,7 +103,7 @@ public:
     Q_INVOKABLE QStringExpression *nameExpression() const;
     Q_INVOKABLE void setNameExpression(QStringExpression *nameExpression);
     Q_INVOKABLE QNamespace *namespace_() const;
-    Q_INVOKABLE const QSet<QDependency *> *clientDependencies() const;
+    Q_INVOKABLE const QSet<QDependency *> &clientDependencies() const;
     Q_INVOKABLE void addClientDependency(QDependency *clientDependency);
     Q_INVOKABLE void removeClientDependency(QDependency *clientDependency);
 
@@ -113,26 +113,26 @@ public:
     Q_INVOKABLE void unsetLeaf();
 
     // Association ends from aggregated QRedefinableElement
-    Q_INVOKABLE const QSet<QRedefinableElement *> *redefinedElements() const;
+    Q_INVOKABLE const QSet<QRedefinableElement *> &redefinedElements() const;
 
     // Association ends from aggregated QNamespace
-    Q_INVOKABLE const QSet<QPackageImport *> *packageImports() const;
+    Q_INVOKABLE const QSet<QPackageImport *> &packageImports() const;
     Q_INVOKABLE void addPackageImport(QPackageImport *packageImport);
     Q_INVOKABLE void removePackageImport(QPackageImport *packageImport);
-    Q_INVOKABLE const QSet<QNamedElement *> *members() const;
-    Q_INVOKABLE const QSet<QPackageableElement *> *importedMembers() const;
-    Q_INVOKABLE const QSet<QElementImport *> *elementImports() const;
+    Q_INVOKABLE const QSet<QNamedElement *> &members() const;
+    Q_INVOKABLE const QSet<QPackageableElement *> &importedMembers() const;
+    Q_INVOKABLE const QSet<QElementImport *> &elementImports() const;
     Q_INVOKABLE void addElementImport(QElementImport *elementImport);
     Q_INVOKABLE void removeElementImport(QElementImport *elementImport);
-    Q_INVOKABLE const QSet<QConstraint *> *ownedRules() const;
+    Q_INVOKABLE const QSet<QConstraint *> &ownedRules() const;
     Q_INVOKABLE void addOwnedRule(QConstraint *ownedRule);
     Q_INVOKABLE void removeOwnedRule(QConstraint *ownedRule);
-    Q_INVOKABLE const QSet<QNamedElement *> *ownedMembers() const;
+    Q_INVOKABLE const QSet<QNamedElement *> &ownedMembers() const;
 
     // Association ends from QRegion
     Q_INVOKABLE QRegion *extendedRegion() const;
     Q_INVOKABLE void setExtendedRegion(QRegion *extendedRegion);
-    Q_INVOKABLE const QSet<QTransition *> *transitions() const;
+    Q_INVOKABLE const QSet<QTransition *> &transitions() const;
     Q_INVOKABLE void addTransition(QTransition *transition);
     Q_INVOKABLE void removeTransition(QTransition *transition);
     Q_INVOKABLE QStateMachine *stateMachine() const;
@@ -140,7 +140,7 @@ public:
     Q_INVOKABLE QState *state() const;
     Q_INVOKABLE void setState(QState *state);
     Q_INVOKABLE QClassifier *redefinitionContext() const;
-    Q_INVOKABLE const QSet<QVertex *> *subvertices() const;
+    Q_INVOKABLE const QSet<QVertex *> &subvertices() const;
     Q_INVOKABLE void addSubvertex(QVertex *subvertex);
     Q_INVOKABLE void removeSubvertex(QVertex *subvertex);
 
@@ -149,7 +149,6 @@ public:
     Q_INVOKABLE QStateMachine *containingStateMachine() const;
     Q_INVOKABLE bool isConsistentWith(const QRedefinableElement *redefinee) const;
     Q_INVOKABLE bool isRedefinitionContextValid(const QRegion *redefined) const;
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QRegion(QRegionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
@@ -160,10 +159,6 @@ private:
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QRegion) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QRegion) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QRegion) *> *)
 
 QT_END_HEADER
 

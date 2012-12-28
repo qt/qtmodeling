@@ -63,7 +63,7 @@ class Q_MOF_EXPORT QExpression : public QValueSpecification
     Q_OBJECT
 
     Q_PROPERTY(QString symbol READ symbol WRITE setSymbol)
-    Q_PROPERTY(const QList<QValueSpecification *> * operands READ operands)
+    Q_PROPERTY(QList<QValueSpecification *> operands READ operands)
 
     Q_DISABLE_COPY(QExpression)
     Q_DECLARE_PRIVATE(QExpression)
@@ -77,20 +77,15 @@ public:
     Q_INVOKABLE void setSymbol(QString symbol);
 
     // Association ends from QExpression
-    Q_INVOKABLE const QList<QValueSpecification *> *operands() const;
+    Q_INVOKABLE const QList<QValueSpecification *> &operands() const;
     Q_INVOKABLE void addOperand(QValueSpecification *operand);
     Q_INVOKABLE void removeOperand(QValueSpecification *operand);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QExpression(QExpressionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTMOF
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTMOF(QExpression) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTMOF(QExpression) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTMOF(QExpression) *> *)
 
 QT_END_HEADER
 

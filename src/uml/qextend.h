@@ -71,7 +71,7 @@ class Q_UML_EXPORT QExtend : public QWrappedObject
 
     Q_PROPERTY(QUseCase * extendedCase READ extendedCase WRITE setExtendedCase)
     Q_PROPERTY(QUseCase * extension READ extension WRITE setExtension)
-    Q_PROPERTY(const QList<QExtensionPoint *> * extensionLocations READ extensionLocations)
+    Q_PROPERTY(QList<QExtensionPoint *> extensionLocations READ extensionLocations)
     Q_PROPERTY(QConstraint * condition READ condition WRITE setCondition)
 
     Q_DISABLE_COPY(QExtend)
@@ -82,18 +82,18 @@ public:
     virtual ~QExtend();
 
     // Association ends from aggregated QElement
-    Q_INVOKABLE const QSet<QElement *> *ownedElements() const;
+    Q_INVOKABLE const QSet<QElement *> &ownedElements() const;
     Q_INVOKABLE QElement *owner() const;
-    Q_INVOKABLE const QSet<QComment *> *ownedComments() const;
+    Q_INVOKABLE const QSet<QComment *> &ownedComments() const;
     Q_INVOKABLE void addOwnedComment(QComment *ownedComment);
     Q_INVOKABLE void removeOwnedComment(QComment *ownedComment);
 
     // Association ends from aggregated QRelationship
-    Q_INVOKABLE const QSet<QElement *> *relatedElements() const;
+    Q_INVOKABLE const QSet<QElement *> &relatedElements() const;
 
     // Association ends from aggregated QDirectedRelationship
-    Q_INVOKABLE const QSet<QElement *> *sources() const;
-    Q_INVOKABLE const QSet<QElement *> *targets() const;
+    Q_INVOKABLE const QSet<QElement *> &sources() const;
+    Q_INVOKABLE const QSet<QElement *> &targets() const;
 
     // Attributes from aggregated QNamedElement
     Q_INVOKABLE QString name() const;
@@ -106,7 +106,7 @@ public:
     Q_INVOKABLE QStringExpression *nameExpression() const;
     Q_INVOKABLE void setNameExpression(QStringExpression *nameExpression);
     Q_INVOKABLE QNamespace *namespace_() const;
-    Q_INVOKABLE const QSet<QDependency *> *clientDependencies() const;
+    Q_INVOKABLE const QSet<QDependency *> &clientDependencies() const;
     Q_INVOKABLE void addClientDependency(QDependency *clientDependency);
     Q_INVOKABLE void removeClientDependency(QDependency *clientDependency);
 
@@ -115,12 +115,11 @@ public:
     Q_INVOKABLE void setExtendedCase(QUseCase *extendedCase);
     Q_INVOKABLE QUseCase *extension() const;
     Q_INVOKABLE void setExtension(QUseCase *extension);
-    Q_INVOKABLE const QList<QExtensionPoint *> *extensionLocations() const;
+    Q_INVOKABLE const QList<QExtensionPoint *> &extensionLocations() const;
     Q_INVOKABLE void addExtensionLocation(QExtensionPoint *extensionLocation);
     Q_INVOKABLE void removeExtensionLocation(QExtensionPoint *extensionLocation);
     Q_INVOKABLE QConstraint *condition() const;
     Q_INVOKABLE void setCondition(QConstraint *condition);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QExtend(QExtendPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
@@ -131,10 +130,6 @@ private:
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QExtend) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QExtend) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QExtend) *> *)
 
 QT_END_HEADER
 

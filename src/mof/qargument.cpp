@@ -110,28 +110,6 @@ void QArgument::setValue(QMofObject *value)
     }
 }
 
-void QArgument::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QArgument) *>("QT_PREPEND_NAMESPACE_QTMOF(QArgument) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QArgument) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QArgument) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QArgument) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QArgument) *> *");
-    qRegisterMetaType<QArgument *>("QArgument *");
-    qRegisterMetaType<const QSet<QArgument *> *>("const QSet<QArgument *> *");
-    qRegisterMetaType<const QList<QArgument *> *>("const QList<QArgument *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QMofObject) *>("QT_PREPEND_NAMESPACE_QTMOF(QMofObject) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QMofObject) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QMofObject) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QMofObject) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QMofObject) *> *");
-    qRegisterMetaType<QMofObject *>("QMofObject *");
-    qRegisterMetaType<const QSet<QMofObject *> *>("const QSet<QMofObject *> *");
-    qRegisterMetaType<const QList<QMofObject *> *>("const QList<QMofObject *> *");
-
-    QWrappedObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 #include "moc_qargument.cpp"
 
 QT_END_NAMESPACE_QTMOF

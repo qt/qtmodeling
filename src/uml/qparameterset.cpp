@@ -47,16 +47,12 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QParameterSetPrivate::QParameterSetPrivate() :
-    parameters(new QSet<QParameter *>),
-    conditions(new QSet<QConstraint *>)
+QParameterSetPrivate::QParameterSetPrivate()
 {
 }
 
 QParameterSetPrivate::~QParameterSetPrivate()
 {
-    delete parameters;
-    delete conditions;
 }
 
 /*!
@@ -88,7 +84,7 @@ QParameterSet::~QParameterSet()
 /*!
     Parameters in the parameter set.
  */
-const QSet<QParameter *> *QParameterSet::parameters() const
+const QSet<QParameter *> &QParameterSet::parameters() const
 {
     // This is a read-write association end
 
@@ -101,8 +97,8 @@ void QParameterSet::addParameter(QParameter *parameter)
     // This is a read-write association end
 
     Q_D(QParameterSet);
-    if (!d->parameters->contains(parameter)) {
-        d->parameters->insert(parameter);
+    if (!d->parameters.contains(parameter)) {
+        d->parameters.insert(parameter);
 
         // Adjust opposite property
         parameter->addParameterSet(this);
@@ -114,8 +110,8 @@ void QParameterSet::removeParameter(QParameter *parameter)
     // This is a read-write association end
 
     Q_D(QParameterSet);
-    if (d->parameters->contains(parameter)) {
-        d->parameters->remove(parameter);
+    if (d->parameters.contains(parameter)) {
+        d->parameters.remove(parameter);
 
         // Adjust opposite property
         if (parameter)
@@ -126,7 +122,7 @@ void QParameterSet::removeParameter(QParameter *parameter)
 /*!
     Constraint that should be satisfied for the owner of the parameters in an input parameter set to start execution using the values provided for those parameters, or the owner of the parameters in an output parameter set to end execution providing the values for those parameters, if all preconditions and conditions on input parameter sets were satisfied.
  */
-const QSet<QConstraint *> *QParameterSet::conditions() const
+const QSet<QConstraint *> &QParameterSet::conditions() const
 {
     // This is a read-write association end
 
@@ -139,8 +135,8 @@ void QParameterSet::addCondition(QConstraint *condition)
     // This is a read-write association end
 
     Q_D(QParameterSet);
-    if (!d->conditions->contains(condition)) {
-        d->conditions->insert(condition);
+    if (!d->conditions.contains(condition)) {
+        d->conditions.insert(condition);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(condition));
@@ -152,41 +148,12 @@ void QParameterSet::removeCondition(QConstraint *condition)
     // This is a read-write association end
 
     Q_D(QParameterSet);
-    if (d->conditions->contains(condition)) {
-        d->conditions->remove(condition);
+    if (d->conditions.contains(condition)) {
+        d->conditions.remove(condition);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(condition));
     }
-}
-
-void QParameterSet::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QParameterSet) *>("QT_PREPEND_NAMESPACE_QTUML(QParameterSet) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QParameterSet) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QParameterSet) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QParameterSet) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QParameterSet) *> *");
-    qRegisterMetaType<QParameterSet *>("QParameterSet *");
-    qRegisterMetaType<const QSet<QParameterSet *> *>("const QSet<QParameterSet *> *");
-    qRegisterMetaType<const QList<QParameterSet *> *>("const QList<QParameterSet *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QConstraint) *>("QT_PREPEND_NAMESPACE_QTUML(QConstraint) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QConstraint) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QConstraint) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QConstraint) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QConstraint) *> *");
-    qRegisterMetaType<QConstraint *>("QConstraint *");
-    qRegisterMetaType<const QSet<QConstraint *> *>("const QSet<QConstraint *> *");
-    qRegisterMetaType<const QList<QConstraint *> *>("const QList<QConstraint *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QParameter) *>("QT_PREPEND_NAMESPACE_QTUML(QParameter) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QParameter) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QParameter) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QParameter) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QParameter) *> *");
-    qRegisterMetaType<QParameter *>("QParameter *");
-    qRegisterMetaType<const QSet<QParameter *> *>("const QSet<QParameter *> *");
-    qRegisterMetaType<const QList<QParameter *> *>("const QList<QParameter *> *");
-
-    QNamedElement::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qparameterset.cpp"

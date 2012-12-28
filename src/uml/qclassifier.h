@@ -83,20 +83,20 @@ class Q_UML_EXPORT QClassifier : public QWrappedObject
 
     Q_PROPERTY(bool isAbstract READ isAbstract WRITE setAbstract RESET unsetAbstract)
     Q_PROPERTY(bool isFinalSpecialization READ isFinalSpecialization WRITE setFinalSpecialization RESET unsetFinalSpecialization)
-    Q_PROPERTY(const QSet<QUseCase *> * ownedUseCases READ ownedUseCases)
-    Q_PROPERTY(const QSet<QGeneralizationSet *> * powertypeExtents READ powertypeExtents)
-    Q_PROPERTY(const QSet<QUseCase *> * useCases READ useCases)
+    Q_PROPERTY(QSet<QUseCase *> ownedUseCases READ ownedUseCases)
+    Q_PROPERTY(QSet<QGeneralizationSet *> powertypeExtents READ powertypeExtents)
+    Q_PROPERTY(QSet<QUseCase *> useCases READ useCases)
     Q_PROPERTY(QClassifierTemplateParameter * templateParameter READ templateParameter WRITE setTemplateParameter)
-    Q_PROPERTY(const QSet<QClassifier *> * redefinedClassifiers READ redefinedClassifiers)
+    Q_PROPERTY(QSet<QClassifier *> redefinedClassifiers READ redefinedClassifiers)
     Q_PROPERTY(QRedefinableTemplateSignature * ownedTemplateSignature READ ownedTemplateSignature WRITE setOwnedTemplateSignature)
-    Q_PROPERTY(const QSet<QCollaborationUse *> * collaborationUses READ collaborationUses)
-    Q_PROPERTY(const QSet<QProperty *> * attributes READ attributes)
-    Q_PROPERTY(const QSet<QFeature *> * features READ features)
-    Q_PROPERTY(const QSet<QClassifier *> * generals READ generals STORED false)
+    Q_PROPERTY(QSet<QCollaborationUse *> collaborationUses READ collaborationUses)
+    Q_PROPERTY(QSet<QProperty *> attributes READ attributes)
+    Q_PROPERTY(QSet<QFeature *> features READ features)
+    Q_PROPERTY(QSet<QClassifier *> generals READ generals STORED false)
     Q_PROPERTY(QCollaborationUse * representation READ representation WRITE setRepresentation)
-    Q_PROPERTY(const QSet<QGeneralization *> * generalizations READ generalizations)
-    Q_PROPERTY(const QSet<QNamedElement *> * inheritedMembers READ inheritedMembers STORED false)
-    Q_PROPERTY(const QSet<QSubstitution *> * substitutions READ substitutions)
+    Q_PROPERTY(QSet<QGeneralization *> generalizations READ generalizations)
+    Q_PROPERTY(QSet<QNamedElement *> inheritedMembers READ inheritedMembers STORED false)
+    Q_PROPERTY(QSet<QSubstitution *> substitutions READ substitutions)
 
     Q_DISABLE_COPY(QClassifier)
     Q_DECLARE_PRIVATE(QClassifier)
@@ -106,9 +106,9 @@ public:
     virtual ~QClassifier();
 
     // Association ends from aggregated QElement
-    Q_INVOKABLE const QSet<QElement *> *ownedElements() const;
+    Q_INVOKABLE const QSet<QElement *> &ownedElements() const;
     Q_INVOKABLE QElement *owner() const;
-    Q_INVOKABLE const QSet<QComment *> *ownedComments() const;
+    Q_INVOKABLE const QSet<QComment *> &ownedComments() const;
     Q_INVOKABLE void addOwnedComment(QComment *ownedComment);
     Q_INVOKABLE void removeOwnedComment(QComment *ownedComment);
 
@@ -121,23 +121,23 @@ public:
     Q_INVOKABLE QStringExpression *nameExpression() const;
     Q_INVOKABLE void setNameExpression(QStringExpression *nameExpression);
     Q_INVOKABLE QNamespace *namespace_() const;
-    Q_INVOKABLE const QSet<QDependency *> *clientDependencies() const;
+    Q_INVOKABLE const QSet<QDependency *> &clientDependencies() const;
     Q_INVOKABLE void addClientDependency(QDependency *clientDependency);
     Q_INVOKABLE void removeClientDependency(QDependency *clientDependency);
 
     // Association ends from aggregated QNamespace
-    Q_INVOKABLE const QSet<QPackageImport *> *packageImports() const;
+    Q_INVOKABLE const QSet<QPackageImport *> &packageImports() const;
     Q_INVOKABLE void addPackageImport(QPackageImport *packageImport);
     Q_INVOKABLE void removePackageImport(QPackageImport *packageImport);
-    Q_INVOKABLE const QSet<QNamedElement *> *members() const;
-    Q_INVOKABLE const QSet<QPackageableElement *> *importedMembers() const;
-    Q_INVOKABLE const QSet<QElementImport *> *elementImports() const;
+    Q_INVOKABLE const QSet<QNamedElement *> &members() const;
+    Q_INVOKABLE const QSet<QPackageableElement *> &importedMembers() const;
+    Q_INVOKABLE const QSet<QElementImport *> &elementImports() const;
     Q_INVOKABLE void addElementImport(QElementImport *elementImport);
     Q_INVOKABLE void removeElementImport(QElementImport *elementImport);
-    Q_INVOKABLE const QSet<QConstraint *> *ownedRules() const;
+    Q_INVOKABLE const QSet<QConstraint *> &ownedRules() const;
     Q_INVOKABLE void addOwnedRule(QConstraint *ownedRule);
     Q_INVOKABLE void removeOwnedRule(QConstraint *ownedRule);
-    Q_INVOKABLE const QSet<QNamedElement *> *ownedMembers() const;
+    Q_INVOKABLE const QSet<QNamedElement *> &ownedMembers() const;
 
     // Association ends from aggregated QParameterableElement
     Q_INVOKABLE QTemplateParameter *owningTemplateParameter() const;
@@ -158,11 +158,11 @@ public:
     Q_INVOKABLE void unsetLeaf();
 
     // Association ends from aggregated QRedefinableElement
-    Q_INVOKABLE const QSet<QRedefinableElement *> *redefinedElements() const;
-    Q_INVOKABLE const QSet<QClassifier *> *redefinitionContexts() const;
+    Q_INVOKABLE const QSet<QRedefinableElement *> &redefinedElements() const;
+    Q_INVOKABLE const QSet<QClassifier *> &redefinitionContexts() const;
 
     // Association ends from aggregated QTemplateableElement
-    Q_INVOKABLE const QSet<QTemplateBinding *> *templateBindings() const;
+    Q_INVOKABLE const QSet<QTemplateBinding *> &templateBindings() const;
     Q_INVOKABLE void addTemplateBinding(QTemplateBinding *templateBinding);
     Q_INVOKABLE void removeTemplateBinding(QTemplateBinding *templateBinding);
 
@@ -175,55 +175,54 @@ public:
     Q_INVOKABLE void unsetFinalSpecialization();
 
     // Association ends from QClassifier
-    Q_INVOKABLE const QSet<QUseCase *> *ownedUseCases() const;
+    Q_INVOKABLE const QSet<QUseCase *> &ownedUseCases() const;
     Q_INVOKABLE void addOwnedUseCase(QUseCase *ownedUseCase);
     Q_INVOKABLE void removeOwnedUseCase(QUseCase *ownedUseCase);
-    Q_INVOKABLE const QSet<QGeneralizationSet *> *powertypeExtents() const;
+    Q_INVOKABLE const QSet<QGeneralizationSet *> &powertypeExtents() const;
     Q_INVOKABLE void addPowertypeExtent(QGeneralizationSet *powertypeExtent);
     Q_INVOKABLE void removePowertypeExtent(QGeneralizationSet *powertypeExtent);
-    Q_INVOKABLE const QSet<QUseCase *> *useCases() const;
+    Q_INVOKABLE const QSet<QUseCase *> &useCases() const;
     Q_INVOKABLE void addUseCase(QUseCase *useCase);
     Q_INVOKABLE void removeUseCase(QUseCase *useCase);
     Q_INVOKABLE QClassifierTemplateParameter *templateParameter() const;
     Q_INVOKABLE void setTemplateParameter(QClassifierTemplateParameter *templateParameter);
-    Q_INVOKABLE const QSet<QClassifier *> *redefinedClassifiers() const;
+    Q_INVOKABLE const QSet<QClassifier *> &redefinedClassifiers() const;
     Q_INVOKABLE void addRedefinedClassifier(QClassifier *redefinedClassifier);
     Q_INVOKABLE void removeRedefinedClassifier(QClassifier *redefinedClassifier);
     Q_INVOKABLE QRedefinableTemplateSignature *ownedTemplateSignature() const;
     Q_INVOKABLE void setOwnedTemplateSignature(QRedefinableTemplateSignature *ownedTemplateSignature);
-    Q_INVOKABLE const QSet<QCollaborationUse *> *collaborationUses() const;
+    Q_INVOKABLE const QSet<QCollaborationUse *> &collaborationUses() const;
     Q_INVOKABLE void addCollaborationUse(QCollaborationUse *collaborationUse);
     Q_INVOKABLE void removeCollaborationUse(QCollaborationUse *collaborationUse);
-    Q_INVOKABLE const QSet<QProperty *> *attributes() const;
-    Q_INVOKABLE const QSet<QFeature *> *features() const;
-    Q_INVOKABLE const QSet<QClassifier *> *generals() const;
+    Q_INVOKABLE const QSet<QProperty *> &attributes() const;
+    Q_INVOKABLE const QSet<QFeature *> &features() const;
+    Q_INVOKABLE const QSet<QClassifier *> &generals() const;
     Q_INVOKABLE void addGeneral(QClassifier *general);
     Q_INVOKABLE void removeGeneral(QClassifier *general);
     Q_INVOKABLE QCollaborationUse *representation() const;
     Q_INVOKABLE void setRepresentation(QCollaborationUse *representation);
-    Q_INVOKABLE const QSet<QGeneralization *> *generalizations() const;
+    Q_INVOKABLE const QSet<QGeneralization *> &generalizations() const;
     Q_INVOKABLE void addGeneralization(QGeneralization *generalization);
     Q_INVOKABLE void removeGeneralization(QGeneralization *generalization);
-    Q_INVOKABLE const QSet<QNamedElement *> *inheritedMembers() const;
-    Q_INVOKABLE const QSet<QSubstitution *> *substitutions() const;
+    Q_INVOKABLE const QSet<QNamedElement *> &inheritedMembers() const;
+    Q_INVOKABLE const QSet<QSubstitution *> &substitutions() const;
     Q_INVOKABLE void addSubstitution(QSubstitution *substitution);
     Q_INVOKABLE void removeSubstitution(QSubstitution *substitution);
 
     // Operations
-    Q_INVOKABLE const QSet<QFeature *> *allFeatures() const;
-    Q_INVOKABLE const QSet<QClassifier *> *allParents() const;
+    Q_INVOKABLE const QSet<QFeature *> &allFeatures() const;
+    Q_INVOKABLE const QSet<QClassifier *> &allParents() const;
     Q_INVOKABLE bool conformsTo(const QClassifier *other) const;
     Q_INVOKABLE bool hasVisibilityOf(const QNamedElement *n) const;
-    Q_INVOKABLE const QSet<QNamedElement *> *inherit(const QSet<QNamedElement *> *inhs) const;
-    Q_INVOKABLE const QSet<QNamedElement *> *inheritableMembers(const QClassifier *c) const;
+    Q_INVOKABLE const QSet<QNamedElement *> &inherit(const QSet<QNamedElement *> &inhs) const;
+    Q_INVOKABLE const QSet<QNamedElement *> &inheritableMembers(const QClassifier *c) const;
     Q_INVOKABLE bool isTemplate() const;
     Q_INVOKABLE bool maySpecializeType(const QClassifier *c) const;
-    Q_INVOKABLE const QSet<QClassifier *> *parents() const;
+    Q_INVOKABLE const QSet<QClassifier *> &parents() const;
 
     // Overriden methods for subsetted properties
     Q_INVOKABLE void addClientDependency(QWrappedObjectPointer<QSubstitution> substitution);
     Q_INVOKABLE void removeClientDependency(QWrappedObjectPointer<QSubstitution> substitution);
-    virtual void registerMetaTypes() const;
 
     // Classes which access read-only opposite properties should be friend
     friend class QFeaturePrivate;
@@ -239,10 +238,6 @@ private:
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QClassifier) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *)
 
 QT_END_HEADER
 

@@ -74,21 +74,6 @@ QFinalNode::~QFinalNode()
 {
 }
 
-void QFinalNode::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QFinalNode) *>("QT_PREPEND_NAMESPACE_QTUML(QFinalNode) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QFinalNode) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QFinalNode) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QFinalNode) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QFinalNode) *> *");
-    qRegisterMetaType<QFinalNode *>("QFinalNode *");
-    qRegisterMetaType<const QSet<QFinalNode *> *>("const QSet<QFinalNode *> *");
-    qRegisterMetaType<const QList<QFinalNode *> *>("const QList<QFinalNode *> *");
-
-    QControlNode::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 #include "moc_qfinalnode.cpp"
 
 QT_END_NAMESPACE_QTUML

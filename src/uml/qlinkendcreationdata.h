@@ -79,17 +79,12 @@ public:
     // Association ends from QLinkEndCreationData
     Q_INVOKABLE QInputPin *insertAt() const;
     Q_INVOKABLE void setInsertAt(QInputPin *insertAt);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QLinkEndCreationData(QLinkEndCreationDataPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QLinkEndCreationData) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QLinkEndCreationData) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QLinkEndCreationData) *> *)
 
 QT_END_HEADER
 

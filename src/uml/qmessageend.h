@@ -73,17 +73,12 @@ public:
     // Association ends from QMessageEnd
     Q_INVOKABLE QMessage *message() const;
     Q_INVOKABLE void setMessage(QMessage *message);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QMessageEnd(QMessageEndPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QMessageEnd) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QMessageEnd) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QMessageEnd) *> *)
 
 QT_END_HEADER
 

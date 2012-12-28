@@ -71,7 +71,7 @@ public:
 
     QInputPin *value;
     QProperty *end;
-    QSet<QQualifierValue *> *qualifiers;
+    QSet<QQualifierValue *> qualifiers;
 };
 
 QT_END_NAMESPACE_QTUML

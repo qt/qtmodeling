@@ -125,35 +125,6 @@ void QDecisionNode::setDecisionInput(QBehavior *decisionInput)
     }
 }
 
-void QDecisionNode::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QDecisionNode) *>("QT_PREPEND_NAMESPACE_QTUML(QDecisionNode) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QDecisionNode) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QDecisionNode) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QDecisionNode) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QDecisionNode) *> *");
-    qRegisterMetaType<QDecisionNode *>("QDecisionNode *");
-    qRegisterMetaType<const QSet<QDecisionNode *> *>("const QSet<QDecisionNode *> *");
-    qRegisterMetaType<const QList<QDecisionNode *> *>("const QList<QDecisionNode *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *>("QT_PREPEND_NAMESPACE_QTUML(QBehavior) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QBehavior) *> *");
-    qRegisterMetaType<QBehavior *>("QBehavior *");
-    qRegisterMetaType<const QSet<QBehavior *> *>("const QSet<QBehavior *> *");
-    qRegisterMetaType<const QList<QBehavior *> *>("const QList<QBehavior *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QObjectFlow) *>("QT_PREPEND_NAMESPACE_QTUML(QObjectFlow) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QObjectFlow) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QObjectFlow) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QObjectFlow) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QObjectFlow) *> *");
-    qRegisterMetaType<QObjectFlow *>("QObjectFlow *");
-    qRegisterMetaType<const QSet<QObjectFlow *> *>("const QSet<QObjectFlow *> *");
-    qRegisterMetaType<const QList<QObjectFlow *> *>("const QList<QObjectFlow *> *");
-
-    QControlNode::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 #include "moc_qdecisionnode.cpp"
 
 QT_END_NAMESPACE_QTUML

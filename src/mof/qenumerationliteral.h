@@ -75,17 +75,12 @@ public:
     Q_INVOKABLE QEnumeration *classifier() const;
     Q_INVOKABLE QEnumeration *enumeration() const;
     Q_INVOKABLE void setEnumeration(QEnumeration *enumeration);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QEnumerationLiteral(QEnumerationLiteralPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTMOF
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTMOF(QEnumerationLiteral) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTMOF(QEnumerationLiteral) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTMOF(QEnumerationLiteral) *> *)
 
 QT_END_HEADER
 

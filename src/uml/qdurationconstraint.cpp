@@ -47,14 +47,12 @@
 QT_BEGIN_NAMESPACE_QTUML
 
 QDurationConstraintPrivate::QDurationConstraintPrivate() :
-    firstEvents(new QSet<bool>),
     specification(0)
 {
 }
 
 QDurationConstraintPrivate::~QDurationConstraintPrivate()
 {
-    delete firstEvents;
     delete specification;
 }
 
@@ -87,7 +85,7 @@ QDurationConstraint::~QDurationConstraint()
 /*!
     The value of firstEvent[i] is related to constrainedElement[i] (where i is 1 or 2). If firstEvent[i] is true, then the corresponding observation event is the first time instant the execution enters constrainedElement[i]. If firstEvent[i] is false, then the corresponding observation event is the last time instant the execution is within constrainedElement[i]. Default value is true applied when constrainedElement[i] refers an element that represents only one time instant.
  */
-const QSet<bool> *QDurationConstraint::firstEvents() const
+const QSet<bool> QDurationConstraint::firstEvents() const
 {
     // This is a read-write attribute
 
@@ -100,8 +98,8 @@ void QDurationConstraint::addFirstEvent(bool firstEvent)
     // This is a read-write attribute
 
     Q_D(QDurationConstraint);
-    if (!d->firstEvents->contains(firstEvent)) {
-        d->firstEvents->insert(firstEvent);
+    if (!d->firstEvents.contains(firstEvent)) {
+        d->firstEvents.insert(firstEvent);
     }
 }
 
@@ -110,8 +108,8 @@ void QDurationConstraint::removeFirstEvent(bool firstEvent)
     // This is a read-write attribute
 
     Q_D(QDurationConstraint);
-    if (d->firstEvents->contains(firstEvent)) {
-        d->firstEvents->remove(firstEvent);
+    if (d->firstEvents.contains(firstEvent)) {
+        d->firstEvents.remove(firstEvent);
     }
 }
 
@@ -138,28 +136,6 @@ void QDurationConstraint::setSpecification(QDurationInterval *specification)
     if (d->specification != specification) {
         d->specification = specification;
     }
-}
-
-void QDurationConstraint::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QDurationConstraint) *>("QT_PREPEND_NAMESPACE_QTUML(QDurationConstraint) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QDurationConstraint) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QDurationConstraint) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QDurationConstraint) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QDurationConstraint) *> *");
-    qRegisterMetaType<QDurationConstraint *>("QDurationConstraint *");
-    qRegisterMetaType<const QSet<QDurationConstraint *> *>("const QSet<QDurationConstraint *> *");
-    qRegisterMetaType<const QList<QDurationConstraint *> *>("const QList<QDurationConstraint *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QDurationInterval) *>("QT_PREPEND_NAMESPACE_QTUML(QDurationInterval) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QDurationInterval) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QDurationInterval) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QDurationInterval) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QDurationInterval) *> *");
-    qRegisterMetaType<QDurationInterval *>("QDurationInterval *");
-    qRegisterMetaType<const QSet<QDurationInterval *> *>("const QSet<QDurationInterval *> *");
-    qRegisterMetaType<const QList<QDurationInterval *> *>("const QList<QDurationInterval *> *");
-
-    QIntervalConstraint::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qdurationconstraint.cpp"

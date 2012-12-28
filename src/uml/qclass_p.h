@@ -78,10 +78,10 @@ public:
 
     bool isAbstract;
     bool isActive;
-    QList<QClassifier *> *nestedClassifiers;
-    QSet<QReception *> *ownedReceptions;
-    QList<QOperation *> *ownedOperations;
-    QList<QProperty *> *ownedAttributes;
+    QList<QClassifier *> nestedClassifiers;
+    QSet<QReception *> ownedReceptions;
+    QList<QOperation *> ownedOperations;
+    QList<QProperty *> ownedAttributes;
 
     // Internal functions for read-only subsetted association ends
     void addExtension(QExtension *extension);

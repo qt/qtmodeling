@@ -45,14 +45,12 @@
 QT_BEGIN_NAMESPACE_QTMOF
 
 QTagPrivate::QTagPrivate() :
-    elements(new QSet<QElement *>),
     tagOwner(0)
 {
 }
 
 QTagPrivate::~QTagPrivate()
 {
-    delete elements;
 }
 
 
@@ -74,7 +72,7 @@ QTag::~QTag()
 // ATTRIBUTES FROM QTag
 // ---------------------------------------------------------------
 
-const QSet<QElement *> *QTag::elements() const
+const QSet<QElement *> &QTag::elements() const
 {
     // This is a read-write attribute
 
@@ -87,8 +85,8 @@ void QTag::addElement(QElement *element)
     // This is a read-write attribute
 
     Q_D(QTag);
-    if (!d->elements->contains(element)) {
-        d->elements->insert(element);
+    if (!d->elements.contains(element)) {
+        d->elements.insert(element);
     }
 }
 
@@ -97,8 +95,8 @@ void QTag::removeElement(QElement *element)
     // This is a read-write attribute
 
     Q_D(QTag);
-    if (d->elements->contains(element)) {
-        d->elements->remove(element);
+    if (d->elements.contains(element)) {
+        d->elements.remove(element);
     }
 }
 
@@ -154,21 +152,6 @@ void QTag::setTagOwner(QElement *tagOwner)
     if (d->tagOwner != tagOwner) {
         d->tagOwner = tagOwner;
     }
-}
-
-void QTag::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QTag) *>("QT_PREPEND_NAMESPACE_QTMOF(QTag) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QTag) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QTag) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QTag) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QTag) *> *");
-    qRegisterMetaType<QTag *>("QTag *");
-    qRegisterMetaType<const QSet<QTag *> *>("const QSet<QTag *> *");
-    qRegisterMetaType<const QList<QTag *> *>("const QList<QTag *> *");
-
-    QElement::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qtag.cpp"

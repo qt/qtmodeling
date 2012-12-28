@@ -66,7 +66,7 @@ class Q_UML_EXPORT QProtocolTransition : public QTransition
     Q_OBJECT
 
     Q_PROPERTY(QConstraint * postCondition READ postCondition WRITE setPostCondition)
-    Q_PROPERTY(const QSet<QOperation *> * referred READ referred STORED false)
+    Q_PROPERTY(QSet<QOperation *> referred READ referred STORED false)
     Q_PROPERTY(QConstraint * preCondition READ preCondition WRITE setPreCondition)
 
     Q_DISABLE_COPY(QProtocolTransition)
@@ -79,20 +79,15 @@ public:
     // Association ends from QProtocolTransition
     Q_INVOKABLE QConstraint *postCondition() const;
     Q_INVOKABLE void setPostCondition(QConstraint *postCondition);
-    Q_INVOKABLE const QSet<QOperation *> *referred() const;
+    Q_INVOKABLE const QSet<QOperation *> &referred() const;
     Q_INVOKABLE QConstraint *preCondition() const;
     Q_INVOKABLE void setPreCondition(QConstraint *preCondition);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QProtocolTransition(QProtocolTransitionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QProtocolTransition) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QProtocolTransition) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QProtocolTransition) *> *)
 
 QT_END_HEADER
 

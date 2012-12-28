@@ -68,8 +68,8 @@ public:
     explicit QParameterSetPrivate();
     virtual ~QParameterSetPrivate();
 
-    QSet<QParameter *> *parameters;
-    QSet<QConstraint *> *conditions;
+    QSet<QParameter *> parameters;
+    QSet<QConstraint *> conditions;
 };
 
 QT_END_NAMESPACE_QTUML

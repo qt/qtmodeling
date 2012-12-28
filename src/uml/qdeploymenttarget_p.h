@@ -67,7 +67,7 @@ public:
     explicit QDeploymentTargetPrivate();
     virtual ~QDeploymentTargetPrivate();
 
-    QSet<QDeployment *> *deployments;
+    QSet<QDeployment *> deployments;
 };
 
 QT_END_NAMESPACE_QTUML

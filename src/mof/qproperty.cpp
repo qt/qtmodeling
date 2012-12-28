@@ -57,20 +57,16 @@ QPropertyPrivate::QPropertyPrivate() :
     isID(false),
     isDerivedUnion(false),
     aggregation(QtMof::AggregationNone),
-    subsettedProperties(new QSet<QProperty *>),
     owningAssociation(0),
     defaultValue(0),
     class_(0),
     datatype(0),
-    redefinedProperties(new QSet<QProperty *>),
     association(0)
 {
 }
 
 QPropertyPrivate::~QPropertyPrivate()
 {
-    delete subsettedProperties;
-    delete redefinedProperties;
 }
 
 /*!
@@ -284,7 +280,7 @@ void QProperty::unsetAggregation()
 /*!
     References the properties of which this property is constrained to be a subset.
  */
-const QSet<QProperty *> *QProperty::subsettedProperties() const
+const QSet<QProperty *> &QProperty::subsettedProperties() const
 {
     // This is a read-write association end
 
@@ -297,8 +293,8 @@ void QProperty::addSubsettedProperty(QProperty *subsettedProperty)
     // This is a read-write association end
 
     Q_D(QProperty);
-    if (!d->subsettedProperties->contains(subsettedProperty)) {
-        d->subsettedProperties->insert(subsettedProperty);
+    if (!d->subsettedProperties.contains(subsettedProperty)) {
+        d->subsettedProperties.insert(subsettedProperty);
     }
 }
 
@@ -307,8 +303,8 @@ void QProperty::removeSubsettedProperty(QProperty *subsettedProperty)
     // This is a read-write association end
 
     Q_D(QProperty);
-    if (d->subsettedProperties->contains(subsettedProperty)) {
-        d->subsettedProperties->remove(subsettedProperty);
+    if (d->subsettedProperties.contains(subsettedProperty)) {
+        d->subsettedProperties.remove(subsettedProperty);
     }
 }
 
@@ -495,7 +491,7 @@ void QProperty::setDatatype(QDataType *datatype)
 /*!
     References the properties that are redefined by this property.
  */
-const QSet<QProperty *> *QProperty::redefinedProperties() const
+const QSet<QProperty *> &QProperty::redefinedProperties() const
 {
     // This is a read-write association end
 
@@ -508,8 +504,8 @@ void QProperty::addRedefinedProperty(QProperty *redefinedProperty)
     // This is a read-write association end
 
     Q_D(QProperty);
-    if (!d->redefinedProperties->contains(redefinedProperty)) {
-        d->redefinedProperties->insert(redefinedProperty);
+    if (!d->redefinedProperties.contains(redefinedProperty)) {
+        d->redefinedProperties.insert(redefinedProperty);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QRedefinableElementPrivate *>(d))->addRedefinedElement(qwrappedobject_cast<QRedefinableElement *>(redefinedProperty));
@@ -521,8 +517,8 @@ void QProperty::removeRedefinedProperty(QProperty *redefinedProperty)
     // This is a read-write association end
 
     Q_D(QProperty);
-    if (d->redefinedProperties->contains(redefinedProperty)) {
-        d->redefinedProperties->remove(redefinedProperty);
+    if (d->redefinedProperties.contains(redefinedProperty)) {
+        d->redefinedProperties.remove(redefinedProperty);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QRedefinableElementPrivate *>(d))->removeRedefinedElement(qwrappedobject_cast<QRedefinableElement *>(redefinedProperty));
@@ -593,68 +589,11 @@ bool QProperty::isNavigable() const
 /*!
     The query subsettingContext() gives the context for subsetting a property. It consists, in the case of an attribute, of the corresponding classifier, and in the case of an association end, all of the classifiers at the other ends.
  */
-const QSet<QType *> *QProperty::subsettingContext() const
+const QSet<QType *> &QProperty::subsettingContext() const
 {
     qWarning("QProperty::subsettingContext: operation to be implemented");
 
-    return 0; // change here to your derived return
-}
-
-void QProperty::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QProperty) *>("QT_PREPEND_NAMESPACE_QTMOF(QProperty) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QProperty) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QProperty) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QProperty) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QProperty) *> *");
-    qRegisterMetaType<QProperty *>("QProperty *");
-    qRegisterMetaType<const QSet<QProperty *> *>("const QSet<QProperty *> *");
-    qRegisterMetaType<const QList<QProperty *> *>("const QList<QProperty *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QRedefinableElement) *>("QT_PREPEND_NAMESPACE_QTMOF(QRedefinableElement) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QRedefinableElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QRedefinableElement) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QRedefinableElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QRedefinableElement) *> *");
-    qRegisterMetaType<QRedefinableElement *>("QRedefinableElement *");
-    qRegisterMetaType<const QSet<QRedefinableElement *> *>("const QSet<QRedefinableElement *> *");
-    qRegisterMetaType<const QList<QRedefinableElement *> *>("const QList<QRedefinableElement *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QType) *>("QT_PREPEND_NAMESPACE_QTMOF(QType) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QType) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QType) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QType) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QType) *> *");
-    qRegisterMetaType<QType *>("QType *");
-    qRegisterMetaType<const QSet<QType *> *>("const QSet<QType *> *");
-    qRegisterMetaType<const QList<QType *> *>("const QList<QType *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QValueSpecification) *>("QT_PREPEND_NAMESPACE_QTMOF(QValueSpecification) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QValueSpecification) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QValueSpecification) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QValueSpecification) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QValueSpecification) *> *");
-    qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
-    qRegisterMetaType<const QSet<QValueSpecification *> *>("const QSet<QValueSpecification *> *");
-    qRegisterMetaType<const QList<QValueSpecification *> *>("const QList<QValueSpecification *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QClass) *>("QT_PREPEND_NAMESPACE_QTMOF(QClass) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QClass) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QClass) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QClass) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QClass) *> *");
-    qRegisterMetaType<QClass *>("QClass *");
-    qRegisterMetaType<const QSet<QClass *> *>("const QSet<QClass *> *");
-    qRegisterMetaType<const QList<QClass *> *>("const QList<QClass *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QAssociation) *>("QT_PREPEND_NAMESPACE_QTMOF(QAssociation) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QAssociation) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QAssociation) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QAssociation) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QAssociation) *> *");
-    qRegisterMetaType<QAssociation *>("QAssociation *");
-    qRegisterMetaType<const QSet<QAssociation *> *>("const QSet<QAssociation *> *");
-    qRegisterMetaType<const QList<QAssociation *> *>("const QList<QAssociation *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QDataType) *>("QT_PREPEND_NAMESPACE_QTMOF(QDataType) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QDataType) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QDataType) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QDataType) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QDataType) *> *");
-    qRegisterMetaType<QDataType *>("QDataType *");
-    qRegisterMetaType<const QSet<QDataType *> *>("const QSet<QDataType *> *");
-    qRegisterMetaType<const QList<QDataType *> *>("const QList<QDataType *> *");
-
-    QStructuralFeature::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
+    return *(new QSet<QType *>); // change here to your derived return
 }
 
 #include "moc_qproperty.cpp"

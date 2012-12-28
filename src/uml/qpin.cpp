@@ -86,7 +86,7 @@ QPin::~QPin()
 /*!
     The Elements owned by this element.
  */
-const QSet<QElement *> *QPin::ownedElements() const
+const QSet<QElement *> &QPin::ownedElements() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedElements();
 }
@@ -102,7 +102,7 @@ QElement *QPin::owner() const
 /*!
     The Comments owned by this element.
  */
-const QSet<QComment *> *QPin::ownedComments() const
+const QSet<QComment *> &QPin::ownedComments() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedComments();
 }
@@ -284,7 +284,7 @@ QNamespace *QPin::namespace_() const
 /*!
     Indicates the dependencies that reference the client.
  */
-const QSet<QDependency *> *QPin::clientDependencies() const
+const QSet<QDependency *> &QPin::clientDependencies() const
 {
     return (qwrappedobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
@@ -328,7 +328,7 @@ void QPin::unsetLeaf()
 /*!
     The redefinable element that is being redefined by this element.
  */
-const QSet<QRedefinableElement *> *QPin::redefinedElements() const
+const QSet<QRedefinableElement *> &QPin::redefinedElements() const
 {
     return (qwrappedobject_cast<const QRedefinableElement *>(this))->redefinedElements();
 }
@@ -336,7 +336,7 @@ const QSet<QRedefinableElement *> *QPin::redefinedElements() const
 /*!
     References the contexts that this element may be redefined from.
  */
-const QSet<QClassifier *> *QPin::redefinitionContexts() const
+const QSet<QClassifier *> &QPin::redefinitionContexts() const
 {
     return (qwrappedobject_cast<const QRedefinableElement *>(this))->redefinitionContexts();
 }
@@ -348,7 +348,7 @@ const QSet<QClassifier *> *QPin::redefinitionContexts() const
 /*!
     Inherited nodes replaced by this node in a specialization of the activity.
  */
-const QSet<QActivityNode *> *QPin::redefinedNodes() const
+const QSet<QActivityNode *> &QPin::redefinedNodes() const
 {
     return (qwrappedobject_cast<const QActivityNode *>(this))->redefinedNodes();
 }
@@ -366,7 +366,7 @@ void QPin::removeRedefinedNode(QActivityNode *redefinedNode)
 /*!
     Edges that have the node as target.
  */
-const QSet<QActivityEdge *> *QPin::incomings() const
+const QSet<QActivityEdge *> &QPin::incomings() const
 {
     return (qwrappedobject_cast<const QActivityNode *>(this))->incomings();
 }
@@ -397,7 +397,7 @@ void QPin::setActivity(QActivity *activity)
 /*!
     Groups containing the node.
  */
-const QSet<QActivityGroup *> *QPin::inGroup() const
+const QSet<QActivityGroup *> &QPin::inGroup() const
 {
     return (qwrappedobject_cast<const QActivityNode *>(this))->inGroup();
 }
@@ -418,7 +418,7 @@ void QPin::setInStructuredNode(QStructuredActivityNode *inStructuredNode)
 /*!
     Partitions containing the node.
  */
-const QSet<QActivityPartition *> *QPin::inPartition() const
+const QSet<QActivityPartition *> &QPin::inPartition() const
 {
     return (qwrappedobject_cast<const QActivityNode *>(this))->inPartition();
 }
@@ -436,7 +436,7 @@ void QPin::removeInPartition(QActivityPartition *inPartition)
 /*!
     Interruptible regions containing the node.
  */
-const QSet<QInterruptibleActivityRegion *> *QPin::inInterruptibleRegion() const
+const QSet<QInterruptibleActivityRegion *> &QPin::inInterruptibleRegion() const
 {
     return (qwrappedobject_cast<const QActivityNode *>(this))->inInterruptibleRegion();
 }
@@ -454,7 +454,7 @@ void QPin::removeInInterruptibleRegion(QInterruptibleActivityRegion *inInterrupt
 /*!
     Edges that have the node as source.
  */
-const QSet<QActivityEdge *> *QPin::outgoings() const
+const QSet<QActivityEdge *> &QPin::outgoings() const
 {
     return (qwrappedobject_cast<const QActivityNode *>(this))->outgoings();
 }
@@ -559,7 +559,7 @@ void QPin::setSelection(QBehavior *selection)
 /*!
     The required states of the object available at this point in the activity.
  */
-const QSet<QState *> *QPin::inState() const
+const QSet<QState *> &QPin::inState() const
 {
     return (qwrappedobject_cast<const QObjectNode *>(this))->inState();
 }
@@ -602,21 +602,6 @@ void QPin::setControl(bool isControl)
 void QPin::unsetControl()
 {
     setControl(false);
-}
-
-void QPin::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QPin) *>("QT_PREPEND_NAMESPACE_QTUML(QPin) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QPin) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QPin) *> *");
-    qRegisterMetaType<QPin *>("QPin *");
-    qRegisterMetaType<const QSet<QPin *> *>("const QSet<QPin *> *");
-    qRegisterMetaType<const QList<QPin *> *>("const QList<QPin *> *");
-
-    QWrappedObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qpin.cpp"

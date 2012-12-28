@@ -67,7 +67,6 @@ class Q_UML_EXPORT QAssociationClass : public QWrappedObject
 public:
     Q_INVOKABLE explicit QAssociationClass(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QAssociationClass();
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QAssociationClass(QAssociationClassPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
@@ -78,10 +77,6 @@ private:
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QAssociationClass) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QAssociationClass) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QAssociationClass) *> *)
 
 QT_END_HEADER
 

@@ -70,7 +70,7 @@ public:
 
     QTrigger *replyToCall;
     QInputPin *returnInformation;
-    QSet<QInputPin *> *replyValues;
+    QSet<QInputPin *> replyValues;
 };
 
 QT_END_NAMESPACE_QTUML

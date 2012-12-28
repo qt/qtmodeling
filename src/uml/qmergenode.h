@@ -64,17 +64,12 @@ class Q_UML_EXPORT QMergeNode : public QControlNode
 public:
     Q_INVOKABLE explicit QMergeNode(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QMergeNode();
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QMergeNode(QMergeNodePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QMergeNode) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QMergeNode) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QMergeNode) *> *)
 
 QT_END_HEADER
 

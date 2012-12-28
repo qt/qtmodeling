@@ -70,10 +70,10 @@ public:
     explicit QOpaqueActionPrivate();
     virtual ~QOpaqueActionPrivate();
 
-    QList<QString> *bodies;
-    QList<QString> *languages;
-    QSet<QInputPin *> *inputValues;
-    QSet<QOutputPin *> *outputValues;
+    QList<QString> bodies;
+    QList<QString> languages;
+    QSet<QInputPin *> inputValues;
+    QSet<QOutputPin *> outputValues;
 };
 
 QT_END_NAMESPACE_QTUML

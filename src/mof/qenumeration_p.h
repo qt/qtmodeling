@@ -67,7 +67,7 @@ public:
     explicit QEnumerationPrivate();
     virtual ~QEnumerationPrivate();
 
-    QList<QEnumerationLiteral *> *ownedLiterals;
+    QList<QEnumerationLiteral *> ownedLiterals;
 };
 
 QT_END_NAMESPACE_QTMOF

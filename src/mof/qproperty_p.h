@@ -81,12 +81,12 @@ public:
     bool isID;
     bool isDerivedUnion;
     QtMof::AggregationKind aggregation;
-    QSet<QProperty *> *subsettedProperties;
+    QSet<QProperty *> subsettedProperties;
     QAssociation *owningAssociation;
     QValueSpecification *defaultValue;
     QClass *class_;
     QDataType *datatype;
-    QSet<QProperty *> *redefinedProperties;
+    QSet<QProperty *> redefinedProperties;
     QAssociation *association;
 };
 

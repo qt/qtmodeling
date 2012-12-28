@@ -74,7 +74,7 @@ class Q_UML_EXPORT QMessage : public QNamedElement
     Q_PROPERTY(QtUml::MessageSort messageSort READ messageSort WRITE setMessageSort RESET unsetMessageSort)
     Q_PROPERTY(QtUml::MessageKind messageKind READ messageKind STORED false)
     Q_PROPERTY(QNamedElement * signature READ signature WRITE setSignature)
-    Q_PROPERTY(const QList<QValueSpecification *> * arguments READ arguments)
+    Q_PROPERTY(QList<QValueSpecification *> arguments READ arguments)
     Q_PROPERTY(QMessageEnd * receiveEvent READ receiveEvent WRITE setReceiveEvent)
     Q_PROPERTY(QInteraction * interaction READ interaction WRITE setInteraction)
     Q_PROPERTY(QMessageEnd * sendEvent READ sendEvent WRITE setSendEvent)
@@ -96,7 +96,7 @@ public:
     // Association ends from QMessage
     Q_INVOKABLE QNamedElement *signature() const;
     Q_INVOKABLE void setSignature(QNamedElement *signature);
-    Q_INVOKABLE const QList<QValueSpecification *> *arguments() const;
+    Q_INVOKABLE const QList<QValueSpecification *> &arguments() const;
     Q_INVOKABLE void addArgument(QValueSpecification *argument);
     Q_INVOKABLE void removeArgument(QValueSpecification *argument);
     Q_INVOKABLE QMessageEnd *receiveEvent() const;
@@ -107,17 +107,12 @@ public:
     Q_INVOKABLE void setSendEvent(QMessageEnd *sendEvent);
     Q_INVOKABLE QConnector *connector() const;
     Q_INVOKABLE void setConnector(QConnector *connector);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QMessage(QMessagePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QMessage) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QMessage) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QMessage) *> *)
 
 QT_END_HEADER
 

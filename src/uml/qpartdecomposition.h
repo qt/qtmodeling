@@ -64,17 +64,12 @@ class Q_UML_EXPORT QPartDecomposition : public QInteractionUse
 public:
     Q_INVOKABLE explicit QPartDecomposition(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QPartDecomposition();
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QPartDecomposition(QPartDecompositionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QPartDecomposition) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QPartDecomposition) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QPartDecomposition) *> *)
 
 QT_END_HEADER
 

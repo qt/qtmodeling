@@ -53,14 +53,12 @@ QParameterPrivate::QParameterPrivate() :
     direction(QtUml::ParameterDirectionIn),
     isStream(false),
     operation(0),
-    defaultValue(0),
-    parameterSets(new QSet<QParameterSet *>)
+    defaultValue(0)
 {
 }
 
 QParameterPrivate::~QParameterPrivate()
 {
-    delete parameterSets;
 }
 
 /*!
@@ -96,7 +94,7 @@ QParameter::~QParameter()
 /*!
     The Elements owned by this element.
  */
-const QSet<QElement *> *QParameter::ownedElements() const
+const QSet<QElement *> &QParameter::ownedElements() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedElements();
 }
@@ -112,7 +110,7 @@ QElement *QParameter::owner() const
 /*!
     The Comments owned by this element.
  */
-const QSet<QComment *> *QParameter::ownedComments() const
+const QSet<QComment *> &QParameter::ownedComments() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedComments();
 }
@@ -294,7 +292,7 @@ QNamespace *QParameter::namespace_() const
 /*!
     Indicates the dependencies that reference the client.
  */
-const QSet<QDependency *> *QParameter::clientDependencies() const
+const QSet<QDependency *> &QParameter::clientDependencies() const
 {
     return (qwrappedobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
@@ -350,7 +348,7 @@ void QParameter::setOwningTemplateParameter(QTemplateParameter *owningTemplatePa
 /*!
     Denotes a set of connector ends that attaches to this connectable element.
  */
-const QList<QConnectorEnd *> *QParameter::ends() const
+const QList<QConnectorEnd *> &QParameter::ends() const
 {
     return (qwrappedobject_cast<const QConnectableElement *>(this))->ends();
 }
@@ -563,7 +561,7 @@ void QParameter::setDefaultValue(QValueSpecification *defaultValue)
 /*!
     The parameter sets containing the parameter. See ParameterSet.
  */
-const QSet<QParameterSet *> *QParameter::parameterSets() const
+const QSet<QParameterSet *> &QParameter::parameterSets() const
 {
     // This is a read-write association end
 
@@ -576,8 +574,8 @@ void QParameter::addParameterSet(QParameterSet *parameterSet)
     // This is a read-write association end
 
     Q_D(QParameter);
-    if (!d->parameterSets->contains(parameterSet)) {
-        d->parameterSets->insert(parameterSet);
+    if (!d->parameterSets.contains(parameterSet)) {
+        d->parameterSets.insert(parameterSet);
 
         // Adjust opposite property
         parameterSet->addParameter(this);
@@ -589,49 +587,13 @@ void QParameter::removeParameterSet(QParameterSet *parameterSet)
     // This is a read-write association end
 
     Q_D(QParameter);
-    if (d->parameterSets->contains(parameterSet)) {
-        d->parameterSets->remove(parameterSet);
+    if (d->parameterSets.contains(parameterSet)) {
+        d->parameterSets.remove(parameterSet);
 
         // Adjust opposite property
         if (parameterSet)
             parameterSet->removeParameter(this);
     }
-}
-
-void QParameter::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QParameter) *>("QT_PREPEND_NAMESPACE_QTUML(QParameter) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QParameter) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QParameter) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QParameter) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QParameter) *> *");
-    qRegisterMetaType<QParameter *>("QParameter *");
-    qRegisterMetaType<const QSet<QParameter *> *>("const QSet<QParameter *> *");
-    qRegisterMetaType<const QList<QParameter *> *>("const QList<QParameter *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *>("QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *");
-    qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
-    qRegisterMetaType<const QSet<QValueSpecification *> *>("const QSet<QValueSpecification *> *");
-    qRegisterMetaType<const QList<QValueSpecification *> *>("const QList<QValueSpecification *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QOperation) *>("QT_PREPEND_NAMESPACE_QTUML(QOperation) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QOperation) *> *");
-    qRegisterMetaType<QOperation *>("QOperation *");
-    qRegisterMetaType<const QSet<QOperation *> *>("const QSet<QOperation *> *");
-    qRegisterMetaType<const QList<QOperation *> *>("const QList<QOperation *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QParameterSet) *>("QT_PREPEND_NAMESPACE_QTUML(QParameterSet) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QParameterSet) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QParameterSet) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QParameterSet) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QParameterSet) *> *");
-    qRegisterMetaType<QParameterSet *>("QParameterSet *");
-    qRegisterMetaType<const QSet<QParameterSet *> *>("const QSet<QParameterSet *> *");
-    qRegisterMetaType<const QList<QParameterSet *> *>("const QList<QParameterSet *> *");
-
-    QWrappedObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qparameter.cpp"

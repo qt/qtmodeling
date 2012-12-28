@@ -69,8 +69,8 @@ public:
     virtual ~QOccurrenceSpecificationPrivate();
 
     QLifeline *covered;
-    QSet<QGeneralOrdering *> *toAfter;
-    QSet<QGeneralOrdering *> *toBefore;
+    QSet<QGeneralOrdering *> toAfter;
+    QSet<QGeneralOrdering *> toBefore;
 };
 
 QT_END_NAMESPACE_QTUML

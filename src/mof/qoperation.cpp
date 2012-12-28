@@ -53,24 +53,15 @@ QT_BEGIN_NAMESPACE_QTMOF
 
 QOperationPrivate::QOperationPrivate() :
     isQuery(false),
-    ownedParameters(new QList<QParameter *>),
     bodyCondition(0),
-    redefinedOperations(new QSet<QOperation *>),
-    postconditions(new QSet<QConstraint *>),
     datatype(0),
-    preconditions(new QSet<QConstraint *>),
-    class_(0),
-    raisedExceptions(new QSet<QType *>)
+    class_(0)
 {
 }
 
 QOperationPrivate::~QOperationPrivate()
 {
-    delete ownedParameters;
-    delete redefinedOperations;
-    delete postconditions;
-    delete preconditions;
-    delete raisedExceptions;
+    qDeleteAll(ownedParameters);
 }
 
 /*!
@@ -180,7 +171,7 @@ bool QOperation::isOrdered() const
 /*!
     Specifies the parameters owned by this Operation.
  */
-const QList<QParameter *> *QOperation::ownedParameters() const
+const QList<QParameter *> &QOperation::ownedParameters() const
 {
     // This is a read-write association end
 
@@ -193,8 +184,8 @@ void QOperation::addOwnedParameter(QParameter *ownedParameter)
     // This is a read-write association end
 
     Q_D(QOperation);
-    if (!d->ownedParameters->contains(ownedParameter)) {
-        d->ownedParameters->append(ownedParameter);
+    if (!d->ownedParameters.contains(ownedParameter)) {
+        d->ownedParameters.append(ownedParameter);
         qTopLevelWrapper(ownedParameter)->setParent(qTopLevelWrapper(this));
 
         // Adjust opposite property
@@ -207,8 +198,8 @@ void QOperation::removeOwnedParameter(QParameter *ownedParameter)
     // This is a read-write association end
 
     Q_D(QOperation);
-    if (d->ownedParameters->contains(ownedParameter)) {
-        d->ownedParameters->removeAll(ownedParameter);
+    if (d->ownedParameters.contains(ownedParameter)) {
+        d->ownedParameters.removeAll(ownedParameter);
         qTopLevelWrapper(ownedParameter)->setParent(0);
 
         // Adjust opposite property
@@ -248,7 +239,7 @@ void QOperation::setBodyCondition(QConstraint *bodyCondition)
 /*!
     References the Operations that are redefined by this Operation.
  */
-const QSet<QOperation *> *QOperation::redefinedOperations() const
+const QSet<QOperation *> &QOperation::redefinedOperations() const
 {
     // This is a read-write association end
 
@@ -261,8 +252,8 @@ void QOperation::addRedefinedOperation(QOperation *redefinedOperation)
     // This is a read-write association end
 
     Q_D(QOperation);
-    if (!d->redefinedOperations->contains(redefinedOperation)) {
-        d->redefinedOperations->insert(redefinedOperation);
+    if (!d->redefinedOperations.contains(redefinedOperation)) {
+        d->redefinedOperations.insert(redefinedOperation);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QRedefinableElementPrivate *>(d))->addRedefinedElement(qwrappedobject_cast<QRedefinableElement *>(redefinedOperation));
@@ -274,8 +265,8 @@ void QOperation::removeRedefinedOperation(QOperation *redefinedOperation)
     // This is a read-write association end
 
     Q_D(QOperation);
-    if (d->redefinedOperations->contains(redefinedOperation)) {
-        d->redefinedOperations->remove(redefinedOperation);
+    if (d->redefinedOperations.contains(redefinedOperation)) {
+        d->redefinedOperations.remove(redefinedOperation);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QRedefinableElementPrivate *>(d))->removeRedefinedElement(qwrappedobject_cast<QRedefinableElement *>(redefinedOperation));
@@ -285,7 +276,7 @@ void QOperation::removeRedefinedOperation(QOperation *redefinedOperation)
 /*!
     An optional set of Constraints specifying the state of the system when the Operation is completed.
  */
-const QSet<QConstraint *> *QOperation::postconditions() const
+const QSet<QConstraint *> &QOperation::postconditions() const
 {
     // This is a read-write association end
 
@@ -298,8 +289,8 @@ void QOperation::addPostcondition(QConstraint *postcondition)
     // This is a read-write association end
 
     Q_D(QOperation);
-    if (!d->postconditions->contains(postcondition)) {
-        d->postconditions->insert(postcondition);
+    if (!d->postconditions.contains(postcondition)) {
+        d->postconditions.insert(postcondition);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QNamespace *>(this))->addOwnedRule(qwrappedobject_cast<QConstraint *>(postcondition));
@@ -311,8 +302,8 @@ void QOperation::removePostcondition(QConstraint *postcondition)
     // This is a read-write association end
 
     Q_D(QOperation);
-    if (d->postconditions->contains(postcondition)) {
-        d->postconditions->remove(postcondition);
+    if (d->postconditions.contains(postcondition)) {
+        d->postconditions.remove(postcondition);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QNamespace *>(this))->removeOwnedRule(qwrappedobject_cast<QConstraint *>(postcondition));
@@ -376,7 +367,7 @@ QType *QOperation::type() const
 /*!
     An optional set of Constraints on the state of the system when the Operation is invoked.
  */
-const QSet<QConstraint *> *QOperation::preconditions() const
+const QSet<QConstraint *> &QOperation::preconditions() const
 {
     // This is a read-write association end
 
@@ -389,8 +380,8 @@ void QOperation::addPrecondition(QConstraint *precondition)
     // This is a read-write association end
 
     Q_D(QOperation);
-    if (!d->preconditions->contains(precondition)) {
-        d->preconditions->insert(precondition);
+    if (!d->preconditions.contains(precondition)) {
+        d->preconditions.insert(precondition);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QNamespace *>(this))->addOwnedRule(qwrappedobject_cast<QConstraint *>(precondition));
@@ -402,8 +393,8 @@ void QOperation::removePrecondition(QConstraint *precondition)
     // This is a read-write association end
 
     Q_D(QOperation);
-    if (d->preconditions->contains(precondition)) {
-        d->preconditions->remove(precondition);
+    if (d->preconditions.contains(precondition)) {
+        d->preconditions.remove(precondition);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QNamespace *>(this))->removeOwnedRule(qwrappedobject_cast<QConstraint *>(precondition));
@@ -455,7 +446,7 @@ void QOperation::setClass_(QClass *class_)
 /*!
     References the Types representing exceptions that may be raised during an invocation of this operation.
  */
-const QSet<QType *> *QOperation::raisedExceptions() const
+const QSet<QType *> &QOperation::raisedExceptions() const
 {
     // This is a read-write association end
 
@@ -468,8 +459,8 @@ void QOperation::addRaisedException(QType *raisedException)
     // This is a read-write association end
 
     Q_D(QOperation);
-    if (!d->raisedExceptions->contains(raisedException)) {
-        d->raisedExceptions->insert(raisedException);
+    if (!d->raisedExceptions.contains(raisedException)) {
+        d->raisedExceptions.insert(raisedException);
     }
 }
 
@@ -478,8 +469,8 @@ void QOperation::removeRaisedException(QType *raisedException)
     // This is a read-write association end
 
     Q_D(QOperation);
-    if (d->raisedExceptions->contains(raisedException)) {
-        d->raisedExceptions->remove(raisedException);
+    if (d->raisedExceptions.contains(raisedException)) {
+        d->raisedExceptions.remove(raisedException);
     }
 }
 
@@ -497,68 +488,11 @@ bool QOperation::isConsistentWith(const QRedefinableElement *redefinee) const
 /*!
     The query returnResult() returns the set containing the return parameter of the Operation if one exists, otherwise, it returns an empty set
  */
-const QSet<QParameter *> *QOperation::returnResult() const
+const QSet<QParameter *> &QOperation::returnResult() const
 {
     qWarning("QOperation::returnResult: operation to be implemented");
 
-    return 0; // change here to your derived return
-}
-
-void QOperation::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QOperation) *>("QT_PREPEND_NAMESPACE_QTMOF(QOperation) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QOperation) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QOperation) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QOperation) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QOperation) *> *");
-    qRegisterMetaType<QOperation *>("QOperation *");
-    qRegisterMetaType<const QSet<QOperation *> *>("const QSet<QOperation *> *");
-    qRegisterMetaType<const QList<QOperation *> *>("const QList<QOperation *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QType) *>("QT_PREPEND_NAMESPACE_QTMOF(QType) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QType) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QType) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QType) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QType) *> *");
-    qRegisterMetaType<QType *>("QType *");
-    qRegisterMetaType<const QSet<QType *> *>("const QSet<QType *> *");
-    qRegisterMetaType<const QList<QType *> *>("const QList<QType *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QRedefinableElement) *>("QT_PREPEND_NAMESPACE_QTMOF(QRedefinableElement) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QRedefinableElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QRedefinableElement) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QRedefinableElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QRedefinableElement) *> *");
-    qRegisterMetaType<QRedefinableElement *>("QRedefinableElement *");
-    qRegisterMetaType<const QSet<QRedefinableElement *> *>("const QSet<QRedefinableElement *> *");
-    qRegisterMetaType<const QList<QRedefinableElement *> *>("const QList<QRedefinableElement *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QParameter) *>("QT_PREPEND_NAMESPACE_QTMOF(QParameter) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QParameter) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QParameter) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QParameter) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QParameter) *> *");
-    qRegisterMetaType<QParameter *>("QParameter *");
-    qRegisterMetaType<const QSet<QParameter *> *>("const QSet<QParameter *> *");
-    qRegisterMetaType<const QList<QParameter *> *>("const QList<QParameter *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QClass) *>("QT_PREPEND_NAMESPACE_QTMOF(QClass) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QClass) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QClass) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QClass) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QClass) *> *");
-    qRegisterMetaType<QClass *>("QClass *");
-    qRegisterMetaType<const QSet<QClass *> *>("const QSet<QClass *> *");
-    qRegisterMetaType<const QList<QClass *> *>("const QList<QClass *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QConstraint) *>("QT_PREPEND_NAMESPACE_QTMOF(QConstraint) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QConstraint) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QConstraint) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QConstraint) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QConstraint) *> *");
-    qRegisterMetaType<QConstraint *>("QConstraint *");
-    qRegisterMetaType<const QSet<QConstraint *> *>("const QSet<QConstraint *> *");
-    qRegisterMetaType<const QList<QConstraint *> *>("const QList<QConstraint *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTMOF(QDataType) *>("QT_PREPEND_NAMESPACE_QTMOF(QDataType) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTMOF(QDataType) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTMOF(QDataType) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTMOF(QDataType) *> *>("const QList<QT_PREPEND_NAMESPACE_QTMOF(QDataType) *> *");
-    qRegisterMetaType<QDataType *>("QDataType *");
-    qRegisterMetaType<const QSet<QDataType *> *>("const QSet<QDataType *> *");
-    qRegisterMetaType<const QList<QDataType *> *>("const QList<QDataType *> *");
-
-    QBehavioralFeature::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
+    return *(new QSet<QParameter *>); // change here to your derived return
 }
 
 #include "moc_qoperation.cpp"

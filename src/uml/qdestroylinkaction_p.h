@@ -67,7 +67,7 @@ public:
     explicit QDestroyLinkActionPrivate();
     virtual ~QDestroyLinkActionPrivate();
 
-    QSet<QLinkEndDestructionData *> *endData;
+    QSet<QLinkEndDestructionData *> endData;
 };
 
 QT_END_NAMESPACE_QTUML

@@ -80,17 +80,12 @@ public:
     // Overriden methods for subsetted properties
     Q_INVOKABLE void addSupplier(QWrappedObjectPointer<QPackageableElement> utilizedElement);
     Q_INVOKABLE void removeSupplier(QWrappedObjectPointer<QPackageableElement> utilizedElement);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QManifestation(QManifestationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QManifestation) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QManifestation) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QManifestation) *> *)
 
 QT_END_HEADER
 

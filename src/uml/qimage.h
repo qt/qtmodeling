@@ -79,17 +79,12 @@ public:
     Q_INVOKABLE void setLocation(QString location);
     Q_INVOKABLE QString content() const;
     Q_INVOKABLE void setContent(QString content);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QImage(QImagePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QImage) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QImage) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QImage) *> *)
 
 QT_END_HEADER
 

@@ -50,20 +50,12 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QStateMachinePrivate::QStateMachinePrivate() :
-    extendedStateMachines(new QSet<QStateMachine *>),
-    connectionPoints(new QSet<QPseudostate *>),
-    submachineStates(new QSet<QState *>),
-    regions(new QSet<QRegion *>)
+QStateMachinePrivate::QStateMachinePrivate()
 {
 }
 
 QStateMachinePrivate::~QStateMachinePrivate()
 {
-    delete extendedStateMachines;
-    delete connectionPoints;
-    delete submachineStates;
-    delete regions;
 }
 
 /*!
@@ -95,7 +87,7 @@ QStateMachine::~QStateMachine()
 /*!
     The state machines of which this is an extension.
  */
-const QSet<QStateMachine *> *QStateMachine::extendedStateMachines() const
+const QSet<QStateMachine *> &QStateMachine::extendedStateMachines() const
 {
     // This is a read-write association end
 
@@ -108,8 +100,8 @@ void QStateMachine::addExtendedStateMachine(QStateMachine *extendedStateMachine)
     // This is a read-write association end
 
     Q_D(QStateMachine);
-    if (!d->extendedStateMachines->contains(extendedStateMachine)) {
-        d->extendedStateMachines->insert(extendedStateMachine);
+    if (!d->extendedStateMachines.contains(extendedStateMachine)) {
+        d->extendedStateMachines.insert(extendedStateMachine);
     }
 }
 
@@ -118,15 +110,15 @@ void QStateMachine::removeExtendedStateMachine(QStateMachine *extendedStateMachi
     // This is a read-write association end
 
     Q_D(QStateMachine);
-    if (d->extendedStateMachines->contains(extendedStateMachine)) {
-        d->extendedStateMachines->remove(extendedStateMachine);
+    if (d->extendedStateMachines.contains(extendedStateMachine)) {
+        d->extendedStateMachines.remove(extendedStateMachine);
     }
 }
 
 /*!
     The connection points defined for this state machine. They represent the interface of the state machine when used as part of submachine state.
  */
-const QSet<QPseudostate *> *QStateMachine::connectionPoints() const
+const QSet<QPseudostate *> &QStateMachine::connectionPoints() const
 {
     // This is a read-write association end
 
@@ -139,8 +131,8 @@ void QStateMachine::addConnectionPoint(QPseudostate *connectionPoint)
     // This is a read-write association end
 
     Q_D(QStateMachine);
-    if (!d->connectionPoints->contains(connectionPoint)) {
-        d->connectionPoints->insert(connectionPoint);
+    if (!d->connectionPoints.contains(connectionPoint)) {
+        d->connectionPoints.insert(connectionPoint);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qwrappedobject_cast<QNamedElement *>(connectionPoint));
@@ -155,8 +147,8 @@ void QStateMachine::removeConnectionPoint(QPseudostate *connectionPoint)
     // This is a read-write association end
 
     Q_D(QStateMachine);
-    if (d->connectionPoints->contains(connectionPoint)) {
-        d->connectionPoints->remove(connectionPoint);
+    if (d->connectionPoints.contains(connectionPoint)) {
+        d->connectionPoints.remove(connectionPoint);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qwrappedobject_cast<QNamedElement *>(connectionPoint));
@@ -169,7 +161,7 @@ void QStateMachine::removeConnectionPoint(QPseudostate *connectionPoint)
 /*!
     References the submachine(s) in case of a submachine state. Multiple machines are referenced in case of a concurrent state.
  */
-const QSet<QState *> *QStateMachine::submachineStates() const
+const QSet<QState *> &QStateMachine::submachineStates() const
 {
     // This is a read-write association end
 
@@ -182,8 +174,8 @@ void QStateMachine::addSubmachineState(QState *submachineState)
     // This is a read-write association end
 
     Q_D(QStateMachine);
-    if (!d->submachineStates->contains(submachineState)) {
-        d->submachineStates->insert(submachineState);
+    if (!d->submachineStates.contains(submachineState)) {
+        d->submachineStates.insert(submachineState);
 
         // Adjust opposite property
         submachineState->setSubmachine(this);
@@ -195,8 +187,8 @@ void QStateMachine::removeSubmachineState(QState *submachineState)
     // This is a read-write association end
 
     Q_D(QStateMachine);
-    if (d->submachineStates->contains(submachineState)) {
-        d->submachineStates->remove(submachineState);
+    if (d->submachineStates.contains(submachineState)) {
+        d->submachineStates.remove(submachineState);
 
         // Adjust opposite property
         submachineState->setSubmachine(0);
@@ -206,7 +198,7 @@ void QStateMachine::removeSubmachineState(QState *submachineState)
 /*!
     The regions owned directly by the state machine.
  */
-const QSet<QRegion *> *QStateMachine::regions() const
+const QSet<QRegion *> &QStateMachine::regions() const
 {
     // This is a read-write association end
 
@@ -219,8 +211,8 @@ void QStateMachine::addRegion(QRegion *region)
     // This is a read-write association end
 
     Q_D(QStateMachine);
-    if (!d->regions->contains(region)) {
-        d->regions->insert(region);
+    if (!d->regions.contains(region)) {
+        d->regions.insert(region);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qwrappedobject_cast<QNamedElement *>(region));
@@ -235,8 +227,8 @@ void QStateMachine::removeRegion(QRegion *region)
     // This is a read-write association end
 
     Q_D(QStateMachine);
-    if (d->regions->contains(region)) {
-        d->regions->remove(region);
+    if (d->regions.contains(region)) {
+        d->regions.remove(region);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qwrappedobject_cast<QNamedElement *>(region));
@@ -290,56 +282,6 @@ bool QStateMachine::isRedefinitionContextValid(const QStateMachine *redefined) c
     Q_UNUSED(redefined);
 
     return bool(); // change here to your derived return
-}
-
-void QStateMachine::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QStateMachine) *>("QT_PREPEND_NAMESPACE_QTUML(QStateMachine) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QStateMachine) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QStateMachine) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QStateMachine) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QStateMachine) *> *");
-    qRegisterMetaType<QStateMachine *>("QStateMachine *");
-    qRegisterMetaType<const QSet<QStateMachine *> *>("const QSet<QStateMachine *> *");
-    qRegisterMetaType<const QList<QStateMachine *> *>("const QList<QStateMachine *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QNamespace) *>("QT_PREPEND_NAMESPACE_QTUML(QNamespace) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QNamespace) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QNamespace) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QNamespace) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QNamespace) *> *");
-    qRegisterMetaType<QNamespace *>("QNamespace *");
-    qRegisterMetaType<const QSet<QNamespace *> *>("const QSet<QNamespace *> *");
-    qRegisterMetaType<const QList<QNamespace *> *>("const QList<QNamespace *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QRedefinableElement) *>("QT_PREPEND_NAMESPACE_QTUML(QRedefinableElement) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QRedefinableElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QRedefinableElement) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QRedefinableElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QRedefinableElement) *> *");
-    qRegisterMetaType<QRedefinableElement *>("QRedefinableElement *");
-    qRegisterMetaType<const QSet<QRedefinableElement *> *>("const QSet<QRedefinableElement *> *");
-    qRegisterMetaType<const QList<QRedefinableElement *> *>("const QList<QRedefinableElement *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QState) *>("QT_PREPEND_NAMESPACE_QTUML(QState) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QState) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QState) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QState) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QState) *> *");
-    qRegisterMetaType<QState *>("QState *");
-    qRegisterMetaType<const QSet<QState *> *>("const QSet<QState *> *");
-    qRegisterMetaType<const QList<QState *> *>("const QList<QState *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QPseudostate) *>("QT_PREPEND_NAMESPACE_QTUML(QPseudostate) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QPseudostate) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QPseudostate) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QPseudostate) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QPseudostate) *> *");
-    qRegisterMetaType<QPseudostate *>("QPseudostate *");
-    qRegisterMetaType<const QSet<QPseudostate *> *>("const QSet<QPseudostate *> *");
-    qRegisterMetaType<const QList<QPseudostate *> *>("const QList<QPseudostate *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QRegion) *>("QT_PREPEND_NAMESPACE_QTUML(QRegion) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QRegion) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QRegion) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QRegion) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QRegion) *> *");
-    qRegisterMetaType<QRegion *>("QRegion *");
-    qRegisterMetaType<const QSet<QRegion *> *>("const QSet<QRegion *> *");
-    qRegisterMetaType<const QList<QRegion *> *>("const QList<QRegion *> *");
-
-    QBehavior::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qstatemachine.cpp"

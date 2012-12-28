@@ -70,7 +70,7 @@ public:
     explicit QCollaborationPrivate();
     virtual ~QCollaborationPrivate();
 
-    QSet<QConnectableElement *> *collaborationRoles;
+    QSet<QConnectableElement *> collaborationRoles;
 };
 
 QT_END_NAMESPACE_QTUML

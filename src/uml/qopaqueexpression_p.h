@@ -69,8 +69,8 @@ public:
     explicit QOpaqueExpressionPrivate();
     virtual ~QOpaqueExpressionPrivate();
 
-    QList<QString> *bodies;
-    QList<QString> *languages;
+    QList<QString> bodies;
+    QList<QString> languages;
     QBehavior *behavior;
 };
 

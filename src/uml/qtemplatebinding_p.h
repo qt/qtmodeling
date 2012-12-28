@@ -71,7 +71,7 @@ public:
 
     QTemplateSignature *signature;
     QTemplateableElement *boundElement;
-    QSet<QTemplateParameterSubstitution *> *parameterSubstitutions;
+    QSet<QTemplateParameterSubstitution *> parameterSubstitutions;
 };
 
 QT_END_NAMESPACE_QTUML

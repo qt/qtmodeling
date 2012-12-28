@@ -99,21 +99,6 @@ void QModel::setViewpoint(QString viewpoint)
     }
 }
 
-void QModel::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QModel) *>("QT_PREPEND_NAMESPACE_QTUML(QModel) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QModel) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QModel) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QModel) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QModel) *> *");
-    qRegisterMetaType<QModel *>("QModel *");
-    qRegisterMetaType<const QSet<QModel *> *>("const QSet<QModel *> *");
-    qRegisterMetaType<const QList<QModel *> *>("const QList<QModel *> *");
-
-    QPackage::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 #include "moc_qmodel.cpp"
 
 QT_END_NAMESPACE_QTUML

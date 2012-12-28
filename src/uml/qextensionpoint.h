@@ -73,17 +73,12 @@ public:
     // Association ends from QExtensionPoint
     Q_INVOKABLE QUseCase *useCase() const;
     Q_INVOKABLE void setUseCase(QUseCase *useCase);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QExtensionPoint(QExtensionPointPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QExtensionPoint) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QExtensionPoint) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QExtensionPoint) *> *)
 
 QT_END_HEADER
 

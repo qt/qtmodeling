@@ -52,17 +52,13 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QRegionPrivate::QRegionPrivate() :
     extendedRegion(0),
-    transitions(new QSet<QTransition *>),
     stateMachine(0),
-    state(0),
-    subvertices(new QSet<QVertex *>)
+    state(0)
 {
 }
 
 QRegionPrivate::~QRegionPrivate()
 {
-    delete transitions;
-    delete subvertices;
 }
 
 /*!
@@ -98,7 +94,7 @@ QRegion::~QRegion()
 /*!
     The Elements owned by this element.
  */
-const QSet<QElement *> *QRegion::ownedElements() const
+const QSet<QElement *> &QRegion::ownedElements() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedElements();
 }
@@ -114,7 +110,7 @@ QElement *QRegion::owner() const
 /*!
     The Comments owned by this element.
  */
-const QSet<QComment *> *QRegion::ownedComments() const
+const QSet<QComment *> &QRegion::ownedComments() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedComments();
 }
@@ -195,7 +191,7 @@ QNamespace *QRegion::namespace_() const
 /*!
     Indicates the dependencies that reference the client.
  */
-const QSet<QDependency *> *QRegion::clientDependencies() const
+const QSet<QDependency *> &QRegion::clientDependencies() const
 {
     return (qwrappedobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
@@ -239,7 +235,7 @@ void QRegion::unsetLeaf()
 /*!
     The redefinable element that is being redefined by this element.
  */
-const QSet<QRedefinableElement *> *QRegion::redefinedElements() const
+const QSet<QRedefinableElement *> &QRegion::redefinedElements() const
 {
     return (qwrappedobject_cast<const QRedefinableElement *>(this))->redefinedElements();
 }
@@ -251,7 +247,7 @@ const QSet<QRedefinableElement *> *QRegion::redefinedElements() const
 /*!
     References the PackageImports owned by the Namespace.
  */
-const QSet<QPackageImport *> *QRegion::packageImports() const
+const QSet<QPackageImport *> &QRegion::packageImports() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->packageImports();
 }
@@ -269,7 +265,7 @@ void QRegion::removePackageImport(QPackageImport *packageImport)
 /*!
     A collection of NamedElements identifiable within the Namespace, either by being owned or by being introduced by importing or inheritance.
  */
-const QSet<QNamedElement *> *QRegion::members() const
+const QSet<QNamedElement *> &QRegion::members() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->members();
 }
@@ -277,7 +273,7 @@ const QSet<QNamedElement *> *QRegion::members() const
 /*!
     References the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports.
  */
-const QSet<QPackageableElement *> *QRegion::importedMembers() const
+const QSet<QPackageableElement *> &QRegion::importedMembers() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->importedMembers();
 }
@@ -285,7 +281,7 @@ const QSet<QPackageableElement *> *QRegion::importedMembers() const
 /*!
     References the ElementImports owned by the Namespace.
  */
-const QSet<QElementImport *> *QRegion::elementImports() const
+const QSet<QElementImport *> &QRegion::elementImports() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->elementImports();
 }
@@ -303,7 +299,7 @@ void QRegion::removeElementImport(QElementImport *elementImport)
 /*!
     Specifies a set of Constraints owned by this Namespace.
  */
-const QSet<QConstraint *> *QRegion::ownedRules() const
+const QSet<QConstraint *> &QRegion::ownedRules() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->ownedRules();
 }
@@ -321,7 +317,7 @@ void QRegion::removeOwnedRule(QConstraint *ownedRule)
 /*!
     A collection of NamedElements owned by the Namespace.
  */
-const QSet<QNamedElement *> *QRegion::ownedMembers() const
+const QSet<QNamedElement *> &QRegion::ownedMembers() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->ownedMembers();
 }
@@ -362,7 +358,7 @@ void QRegion::setExtendedRegion(QRegion *extendedRegion)
 /*!
     The set of transitions owned by the region.
  */
-const QSet<QTransition *> *QRegion::transitions() const
+const QSet<QTransition *> &QRegion::transitions() const
 {
     // This is a read-write association end
 
@@ -375,8 +371,8 @@ void QRegion::addTransition(QTransition *transition)
     // This is a read-write association end
 
     Q_D(QRegion);
-    if (!d->transitions->contains(transition)) {
-        d->transitions->insert(transition);
+    if (!d->transitions.contains(transition)) {
+        d->transitions.insert(transition);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qwrappedobject_cast<QNamedElement *>(transition));
@@ -391,8 +387,8 @@ void QRegion::removeTransition(QTransition *transition)
     // This is a read-write association end
 
     Q_D(QRegion);
-    if (d->transitions->contains(transition)) {
-        d->transitions->remove(transition);
+    if (d->transitions.contains(transition)) {
+        d->transitions.remove(transition);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qwrappedobject_cast<QNamedElement *>(transition));
@@ -481,7 +477,7 @@ QClassifier *QRegion::redefinitionContext() const
 /*!
     The set of vertices that are owned by this region.
  */
-const QSet<QVertex *> *QRegion::subvertices() const
+const QSet<QVertex *> &QRegion::subvertices() const
 {
     // This is a read-write association end
 
@@ -494,8 +490,8 @@ void QRegion::addSubvertex(QVertex *subvertex)
     // This is a read-write association end
 
     Q_D(QRegion);
-    if (!d->subvertices->contains(subvertex)) {
-        d->subvertices->insert(subvertex);
+    if (!d->subvertices.contains(subvertex)) {
+        d->subvertices.insert(subvertex);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qwrappedobject_cast<QNamedElement *>(subvertex));
@@ -510,8 +506,8 @@ void QRegion::removeSubvertex(QVertex *subvertex)
     // This is a read-write association end
 
     Q_D(QRegion);
-    if (d->subvertices->contains(subvertex)) {
-        d->subvertices->remove(subvertex);
+    if (d->subvertices.contains(subvertex)) {
+        d->subvertices.remove(subvertex);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qwrappedobject_cast<QNamedElement *>(subvertex));
@@ -561,56 +557,6 @@ bool QRegion::isRedefinitionContextValid(const QRegion *redefined) const
     Q_UNUSED(redefined);
 
     return bool(); // change here to your derived return
-}
-
-void QRegion::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QRegion) *>("QT_PREPEND_NAMESPACE_QTUML(QRegion) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QRegion) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QRegion) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QRegion) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QRegion) *> *");
-    qRegisterMetaType<QRegion *>("QRegion *");
-    qRegisterMetaType<const QSet<QRegion *> *>("const QSet<QRegion *> *");
-    qRegisterMetaType<const QList<QRegion *> *>("const QList<QRegion *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QVertex) *>("QT_PREPEND_NAMESPACE_QTUML(QVertex) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QVertex) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QVertex) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QVertex) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QVertex) *> *");
-    qRegisterMetaType<QVertex *>("QVertex *");
-    qRegisterMetaType<const QSet<QVertex *> *>("const QSet<QVertex *> *");
-    qRegisterMetaType<const QList<QVertex *> *>("const QList<QVertex *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QTransition) *>("QT_PREPEND_NAMESPACE_QTUML(QTransition) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QTransition) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QTransition) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QTransition) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QTransition) *> *");
-    qRegisterMetaType<QTransition *>("QTransition *");
-    qRegisterMetaType<const QSet<QTransition *> *>("const QSet<QTransition *> *");
-    qRegisterMetaType<const QList<QTransition *> *>("const QList<QTransition *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QStateMachine) *>("QT_PREPEND_NAMESPACE_QTUML(QStateMachine) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QStateMachine) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QStateMachine) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QStateMachine) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QStateMachine) *> *");
-    qRegisterMetaType<QStateMachine *>("QStateMachine *");
-    qRegisterMetaType<const QSet<QStateMachine *> *>("const QSet<QStateMachine *> *");
-    qRegisterMetaType<const QList<QStateMachine *> *>("const QList<QStateMachine *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *>("QT_PREPEND_NAMESPACE_QTUML(QClassifier) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QClassifier) *> *");
-    qRegisterMetaType<QClassifier *>("QClassifier *");
-    qRegisterMetaType<const QSet<QClassifier *> *>("const QSet<QClassifier *> *");
-    qRegisterMetaType<const QList<QClassifier *> *>("const QList<QClassifier *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QState) *>("QT_PREPEND_NAMESPACE_QTUML(QState) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QState) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QState) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QState) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QState) *> *");
-    qRegisterMetaType<QState *>("QState *");
-    qRegisterMetaType<const QSet<QState *> *>("const QSet<QState *> *");
-    qRegisterMetaType<const QList<QState *> *>("const QList<QState *> *");
-
-    QWrappedObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qregion.cpp"

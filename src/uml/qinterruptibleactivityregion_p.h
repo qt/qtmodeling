@@ -68,8 +68,8 @@ public:
     explicit QInterruptibleActivityRegionPrivate();
     virtual ~QInterruptibleActivityRegionPrivate();
 
-    QSet<QActivityEdge *> *interruptingEdges;
-    QSet<QActivityNode *> *nodes;
+    QSet<QActivityEdge *> interruptingEdges;
+    QSet<QActivityNode *> nodes;
 };
 
 QT_END_NAMESPACE_QTUML

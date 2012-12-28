@@ -63,7 +63,7 @@ class Q_MOF_EXPORT QComment : public QElement
     Q_OBJECT
 
     Q_PROPERTY(QString body READ body WRITE setBody)
-    Q_PROPERTY(const QSet<QElement *> * annotatedElements READ annotatedElements)
+    Q_PROPERTY(QSet<QElement *> annotatedElements READ annotatedElements)
 
     Q_DISABLE_COPY(QComment)
     Q_DECLARE_PRIVATE(QComment)
@@ -77,20 +77,15 @@ public:
     Q_INVOKABLE void setBody(QString body);
 
     // Association ends from QComment
-    Q_INVOKABLE const QSet<QElement *> *annotatedElements() const;
+    Q_INVOKABLE const QSet<QElement *> &annotatedElements() const;
     Q_INVOKABLE void addAnnotatedElement(QElement *annotatedElement);
     Q_INVOKABLE void removeAnnotatedElement(QElement *annotatedElement);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QComment(QCommentPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTMOF
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTMOF(QComment) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTMOF(QComment) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTMOF(QComment) *> *)
 
 QT_END_HEADER
 

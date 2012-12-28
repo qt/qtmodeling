@@ -68,7 +68,7 @@ class Q_UML_EXPORT QLinkEndData : public QElement
 
     Q_PROPERTY(QInputPin * value READ value WRITE setValue)
     Q_PROPERTY(QProperty * end READ end WRITE setEnd)
-    Q_PROPERTY(const QSet<QQualifierValue *> * qualifiers READ qualifiers)
+    Q_PROPERTY(QSet<QQualifierValue *> qualifiers READ qualifiers)
 
     Q_DISABLE_COPY(QLinkEndData)
     Q_DECLARE_PRIVATE(QLinkEndData)
@@ -82,20 +82,15 @@ public:
     Q_INVOKABLE void setValue(QInputPin *value);
     Q_INVOKABLE QProperty *end() const;
     Q_INVOKABLE void setEnd(QProperty *end);
-    Q_INVOKABLE const QSet<QQualifierValue *> *qualifiers() const;
+    Q_INVOKABLE const QSet<QQualifierValue *> &qualifiers() const;
     Q_INVOKABLE void addQualifier(QQualifierValue *qualifier);
     Q_INVOKABLE void removeQualifier(QQualifierValue *qualifier);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QLinkEndData(QLinkEndDataPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QLinkEndData) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QLinkEndData) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QLinkEndData) *> *)
 
 QT_END_HEADER
 

@@ -48,16 +48,12 @@
 QT_BEGIN_NAMESPACE_QTUML
 
 QTemplateSignaturePrivate::QTemplateSignaturePrivate() :
-    parameters(new QList<QTemplateParameter *>),
-    template_(0),
-    ownedParameters(new QList<QTemplateParameter *>)
+    template_(0)
 {
 }
 
 QTemplateSignaturePrivate::~QTemplateSignaturePrivate()
 {
-    delete parameters;
-    delete ownedParameters;
 }
 
 /*!
@@ -89,7 +85,7 @@ QTemplateSignature::~QTemplateSignature()
 /*!
     The ordered set of all formal template parameters for this template signature.
  */
-const QList<QTemplateParameter *> *QTemplateSignature::parameters() const
+const QList<QTemplateParameter *> &QTemplateSignature::parameters() const
 {
     // This is a read-write association end
 
@@ -102,8 +98,8 @@ void QTemplateSignature::addParameter(QTemplateParameter *parameter)
     // This is a read-write association end
 
     Q_D(QTemplateSignature);
-    if (!d->parameters->contains(parameter)) {
-        d->parameters->append(parameter);
+    if (!d->parameters.contains(parameter)) {
+        d->parameters.append(parameter);
     }
 }
 
@@ -112,8 +108,8 @@ void QTemplateSignature::removeParameter(QTemplateParameter *parameter)
     // This is a read-write association end
 
     Q_D(QTemplateSignature);
-    if (d->parameters->contains(parameter)) {
-        d->parameters->removeAll(parameter);
+    if (d->parameters.contains(parameter)) {
+        d->parameters.removeAll(parameter);
     }
 }
 
@@ -149,7 +145,7 @@ void QTemplateSignature::setTemplate_(QTemplateableElement *template_)
 /*!
     The formal template parameters that are owned by this template signature.
  */
-const QList<QTemplateParameter *> *QTemplateSignature::ownedParameters() const
+const QList<QTemplateParameter *> &QTemplateSignature::ownedParameters() const
 {
     // This is a read-write association end
 
@@ -162,8 +158,8 @@ void QTemplateSignature::addOwnedParameter(QTemplateParameter *ownedParameter)
     // This is a read-write association end
 
     Q_D(QTemplateSignature);
-    if (!d->ownedParameters->contains(ownedParameter)) {
-        d->ownedParameters->append(ownedParameter);
+    if (!d->ownedParameters.contains(ownedParameter)) {
+        d->ownedParameters.append(ownedParameter);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QTemplateSignature *>(this))->addParameter(qwrappedobject_cast<QTemplateParameter *>(ownedParameter));
@@ -179,8 +175,8 @@ void QTemplateSignature::removeOwnedParameter(QTemplateParameter *ownedParameter
     // This is a read-write association end
 
     Q_D(QTemplateSignature);
-    if (d->ownedParameters->contains(ownedParameter)) {
-        d->ownedParameters->removeAll(ownedParameter);
+    if (d->ownedParameters.contains(ownedParameter)) {
+        d->ownedParameters.removeAll(ownedParameter);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QTemplateSignature *>(this))->removeParameter(qwrappedobject_cast<QTemplateParameter *>(ownedParameter));
@@ -189,35 +185,6 @@ void QTemplateSignature::removeOwnedParameter(QTemplateParameter *ownedParameter
         // Adjust opposite property
         ownedParameter->setSignature(0);
     }
-}
-
-void QTemplateSignature::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QTemplateSignature) *>("QT_PREPEND_NAMESPACE_QTUML(QTemplateSignature) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QTemplateSignature) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QTemplateSignature) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QTemplateSignature) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QTemplateSignature) *> *");
-    qRegisterMetaType<QTemplateSignature *>("QTemplateSignature *");
-    qRegisterMetaType<const QSet<QTemplateSignature *> *>("const QSet<QTemplateSignature *> *");
-    qRegisterMetaType<const QList<QTemplateSignature *> *>("const QList<QTemplateSignature *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QTemplateParameter) *>("QT_PREPEND_NAMESPACE_QTUML(QTemplateParameter) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QTemplateParameter) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QTemplateParameter) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QTemplateParameter) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QTemplateParameter) *> *");
-    qRegisterMetaType<QTemplateParameter *>("QTemplateParameter *");
-    qRegisterMetaType<const QSet<QTemplateParameter *> *>("const QSet<QTemplateParameter *> *");
-    qRegisterMetaType<const QList<QTemplateParameter *> *>("const QList<QTemplateParameter *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QTemplateableElement) *>("QT_PREPEND_NAMESPACE_QTUML(QTemplateableElement) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QTemplateableElement) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QTemplateableElement) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QTemplateableElement) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QTemplateableElement) *> *");
-    qRegisterMetaType<QTemplateableElement *>("QTemplateableElement *");
-    qRegisterMetaType<const QSet<QTemplateableElement *> *>("const QSet<QTemplateableElement *> *");
-    qRegisterMetaType<const QList<QTemplateableElement *> *>("const QList<QTemplateableElement *> *");
-
-    QElement::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qtemplatesignature.cpp"

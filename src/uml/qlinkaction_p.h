@@ -68,8 +68,8 @@ public:
     explicit QLinkActionPrivate();
     virtual ~QLinkActionPrivate();
 
-    QSet<QInputPin *> *inputValues;
-    QSet<QLinkEndData *> *endData;
+    QSet<QInputPin *> inputValues;
+    QSet<QLinkEndData *> endData;
 };
 
 QT_END_NAMESPACE_QTUML

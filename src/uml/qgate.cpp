@@ -74,21 +74,6 @@ QGate::~QGate()
 {
 }
 
-void QGate::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QGate) *>("QT_PREPEND_NAMESPACE_QTUML(QGate) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QGate) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QGate) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QGate) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QGate) *> *");
-    qRegisterMetaType<QGate *>("QGate *");
-    qRegisterMetaType<const QSet<QGate *> *>("const QSet<QGate *> *");
-    qRegisterMetaType<const QList<QGate *> *>("const QList<QGate *> *");
-
-    QMessageEnd::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 #include "moc_qgate.cpp"
 
 QT_END_NAMESPACE_QTUML

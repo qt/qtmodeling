@@ -77,17 +77,12 @@ public:
     Q_INVOKABLE void setObject(QInputPin *object);
     Q_INVOKABLE QAssociation *association() const;
     Q_INVOKABLE void setAssociation(QAssociation *association);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QClearAssociationAction(QClearAssociationActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QClearAssociationAction) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QClearAssociationAction) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QClearAssociationAction) *> *)
 
 QT_END_HEADER
 

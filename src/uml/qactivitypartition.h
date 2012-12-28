@@ -69,10 +69,10 @@ class Q_UML_EXPORT QActivityPartition : public QActivityGroup
     Q_PROPERTY(bool isDimension READ isDimension WRITE setDimension RESET unsetDimension)
     Q_PROPERTY(bool isExternal READ isExternal WRITE setExternal RESET unsetExternal)
     Q_PROPERTY(QElement * represents READ represents WRITE setRepresents)
-    Q_PROPERTY(const QSet<QActivityPartition *> * subpartitions READ subpartitions)
+    Q_PROPERTY(QSet<QActivityPartition *> subpartitions READ subpartitions)
     Q_PROPERTY(QActivityPartition * superPartition READ superPartition WRITE setSuperPartition)
-    Q_PROPERTY(const QSet<QActivityNode *> * nodes READ nodes)
-    Q_PROPERTY(const QSet<QActivityEdge *> * edges READ edges)
+    Q_PROPERTY(QSet<QActivityNode *> nodes READ nodes)
+    Q_PROPERTY(QSet<QActivityEdge *> edges READ edges)
 
     Q_DISABLE_COPY(QActivityPartition)
     Q_DECLARE_PRIVATE(QActivityPartition)
@@ -92,28 +92,23 @@ public:
     // Association ends from QActivityPartition
     Q_INVOKABLE QElement *represents() const;
     Q_INVOKABLE void setRepresents(QElement *represents);
-    Q_INVOKABLE const QSet<QActivityPartition *> *subpartitions() const;
+    Q_INVOKABLE const QSet<QActivityPartition *> &subpartitions() const;
     Q_INVOKABLE void addSubpartition(QActivityPartition *subpartition);
     Q_INVOKABLE void removeSubpartition(QActivityPartition *subpartition);
     Q_INVOKABLE QActivityPartition *superPartition() const;
     Q_INVOKABLE void setSuperPartition(QActivityPartition *superPartition);
-    Q_INVOKABLE const QSet<QActivityNode *> *nodes() const;
+    Q_INVOKABLE const QSet<QActivityNode *> &nodes() const;
     Q_INVOKABLE void addNode(QActivityNode *node);
     Q_INVOKABLE void removeNode(QActivityNode *node);
-    Q_INVOKABLE const QSet<QActivityEdge *> *edges() const;
+    Q_INVOKABLE const QSet<QActivityEdge *> &edges() const;
     Q_INVOKABLE void addEdge(QActivityEdge *edge);
     Q_INVOKABLE void removeEdge(QActivityEdge *edge);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QActivityPartition(QActivityPartitionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QActivityPartition) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QActivityPartition) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QActivityPartition) *> *)
 
 QT_END_HEADER
 

@@ -66,9 +66,9 @@ class Q_MOF_EXPORT QInstanceSpecification : public QPackageableElement
 {
     Q_OBJECT
 
-    Q_PROPERTY(const QSet<QClassifier *> * classifiers READ classifiers)
+    Q_PROPERTY(QSet<QClassifier *> classifiers READ classifiers)
     Q_PROPERTY(QValueSpecification * specification READ specification WRITE setSpecification)
-    Q_PROPERTY(const QSet<QSlot *> * slots_ READ slots_)
+    Q_PROPERTY(QSet<QSlot *> slots_ READ slots_)
 
     Q_DISABLE_COPY(QInstanceSpecification)
     Q_DECLARE_PRIVATE(QInstanceSpecification)
@@ -78,25 +78,20 @@ public:
     virtual ~QInstanceSpecification();
 
     // Association ends from QInstanceSpecification
-    Q_INVOKABLE const QSet<QClassifier *> *classifiers() const;
+    Q_INVOKABLE const QSet<QClassifier *> &classifiers() const;
     Q_INVOKABLE void addClassifier(QClassifier *classifier);
     Q_INVOKABLE void removeClassifier(QClassifier *classifier);
     Q_INVOKABLE QValueSpecification *specification() const;
     Q_INVOKABLE void setSpecification(QValueSpecification *specification);
-    Q_INVOKABLE const QSet<QSlot *> *slots_() const;
+    Q_INVOKABLE const QSet<QSlot *> &slots_() const;
     Q_INVOKABLE void addSlot_(QSlot *slot_);
     Q_INVOKABLE void removeSlot_(QSlot *slot_);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QInstanceSpecification(QInstanceSpecificationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTMOF
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTMOF(QInstanceSpecification) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTMOF(QInstanceSpecification) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTMOF(QInstanceSpecification) *> *)
 
 QT_END_HEADER
 

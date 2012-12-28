@@ -71,8 +71,8 @@ public:
     virtual ~QComponentPrivate();
 
     bool isIndirectlyInstantiated;
-    QSet<QComponentRealization *> *realizations;
-    QSet<QPackageableElement *> *packagedElements;
+    QSet<QComponentRealization *> realizations;
+    QSet<QPackageableElement *> packagedElements;
 };
 
 QT_END_NAMESPACE_QTUML

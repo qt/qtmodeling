@@ -72,9 +72,9 @@ class Q_UML_EXPORT QPort : public QProperty
     Q_PROPERTY(bool isBehavior READ isBehavior WRITE setBehavior RESET unsetBehavior)
     Q_PROPERTY(bool isService READ isService WRITE setService RESET unsetService)
     Q_PROPERTY(QProtocolStateMachine * protocol READ protocol WRITE setProtocol)
-    Q_PROPERTY(const QSet<QInterface *> * required READ required STORED false)
-    Q_PROPERTY(const QSet<QInterface *> * provided READ provided STORED false)
-    Q_PROPERTY(const QSet<QPort *> * redefinedPorts READ redefinedPorts)
+    Q_PROPERTY(QSet<QInterface *> required READ required STORED false)
+    Q_PROPERTY(QSet<QInterface *> provided READ provided STORED false)
+    Q_PROPERTY(QSet<QPort *> redefinedPorts READ redefinedPorts)
 
     Q_DISABLE_COPY(QPort)
     Q_DECLARE_PRIVATE(QPort)
@@ -97,26 +97,21 @@ public:
     // Association ends from QPort
     Q_INVOKABLE QProtocolStateMachine *protocol() const;
     Q_INVOKABLE void setProtocol(QProtocolStateMachine *protocol);
-    Q_INVOKABLE const QSet<QInterface *> *required() const;
-    Q_INVOKABLE const QSet<QInterface *> *provided() const;
-    Q_INVOKABLE const QSet<QPort *> *redefinedPorts() const;
+    Q_INVOKABLE const QSet<QInterface *> &required() const;
+    Q_INVOKABLE const QSet<QInterface *> &provided() const;
+    Q_INVOKABLE const QSet<QPort *> &redefinedPorts() const;
     Q_INVOKABLE void addRedefinedPort(QPort *redefinedPort);
     Q_INVOKABLE void removeRedefinedPort(QPort *redefinedPort);
 
     // Overriden methods for subsetted properties
     Q_INVOKABLE void addRedefinedProperty(QWrappedObjectPointer<QPort> redefinedPort);
     Q_INVOKABLE void removeRedefinedProperty(QWrappedObjectPointer<QPort> redefinedPort);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QPort(QPortPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QPort) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QPort) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QPort) *> *)
 
 QT_END_HEADER
 

@@ -73,17 +73,12 @@ public:
     // Association ends from QReadVariableAction
     Q_INVOKABLE QOutputPin *result() const;
     Q_INVOKABLE void setResult(QOutputPin *result);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QReadVariableAction(QReadVariableActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QReadVariableAction) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QReadVariableAction) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QReadVariableAction) *> *)
 
 QT_END_HEADER
 

@@ -84,7 +84,7 @@ class Q_UML_EXPORT QTransition : public QWrappedObject
     Q_PROPERTY(QClassifier * redefinitionContext READ redefinitionContext STORED false)
     Q_PROPERTY(QTransition * redefinedTransition READ redefinedTransition WRITE setRedefinedTransition)
     Q_PROPERTY(QVertex * source READ source WRITE setSource)
-    Q_PROPERTY(const QSet<QTrigger *> * triggers READ triggers)
+    Q_PROPERTY(QSet<QTrigger *> triggers READ triggers)
 
     Q_DISABLE_COPY(QTransition)
     Q_DECLARE_PRIVATE(QTransition)
@@ -94,9 +94,9 @@ public:
     virtual ~QTransition();
 
     // Association ends from aggregated QElement
-    Q_INVOKABLE const QSet<QElement *> *ownedElements() const;
+    Q_INVOKABLE const QSet<QElement *> &ownedElements() const;
     Q_INVOKABLE QElement *owner() const;
-    Q_INVOKABLE const QSet<QComment *> *ownedComments() const;
+    Q_INVOKABLE const QSet<QComment *> &ownedComments() const;
     Q_INVOKABLE void addOwnedComment(QComment *ownedComment);
     Q_INVOKABLE void removeOwnedComment(QComment *ownedComment);
 
@@ -111,7 +111,7 @@ public:
     Q_INVOKABLE QStringExpression *nameExpression() const;
     Q_INVOKABLE void setNameExpression(QStringExpression *nameExpression);
     Q_INVOKABLE QNamespace *namespace_() const;
-    Q_INVOKABLE const QSet<QDependency *> *clientDependencies() const;
+    Q_INVOKABLE const QSet<QDependency *> &clientDependencies() const;
     Q_INVOKABLE void addClientDependency(QDependency *clientDependency);
     Q_INVOKABLE void removeClientDependency(QDependency *clientDependency);
 
@@ -121,21 +121,21 @@ public:
     Q_INVOKABLE void unsetLeaf();
 
     // Association ends from aggregated QRedefinableElement
-    Q_INVOKABLE const QSet<QRedefinableElement *> *redefinedElements() const;
+    Q_INVOKABLE const QSet<QRedefinableElement *> &redefinedElements() const;
 
     // Association ends from aggregated QNamespace
-    Q_INVOKABLE const QSet<QPackageImport *> *packageImports() const;
+    Q_INVOKABLE const QSet<QPackageImport *> &packageImports() const;
     Q_INVOKABLE void addPackageImport(QPackageImport *packageImport);
     Q_INVOKABLE void removePackageImport(QPackageImport *packageImport);
-    Q_INVOKABLE const QSet<QNamedElement *> *members() const;
-    Q_INVOKABLE const QSet<QPackageableElement *> *importedMembers() const;
-    Q_INVOKABLE const QSet<QElementImport *> *elementImports() const;
+    Q_INVOKABLE const QSet<QNamedElement *> &members() const;
+    Q_INVOKABLE const QSet<QPackageableElement *> &importedMembers() const;
+    Q_INVOKABLE const QSet<QElementImport *> &elementImports() const;
     Q_INVOKABLE void addElementImport(QElementImport *elementImport);
     Q_INVOKABLE void removeElementImport(QElementImport *elementImport);
-    Q_INVOKABLE const QSet<QConstraint *> *ownedRules() const;
+    Q_INVOKABLE const QSet<QConstraint *> &ownedRules() const;
     Q_INVOKABLE void addOwnedRule(QConstraint *ownedRule);
     Q_INVOKABLE void removeOwnedRule(QConstraint *ownedRule);
-    Q_INVOKABLE const QSet<QNamedElement *> *ownedMembers() const;
+    Q_INVOKABLE const QSet<QNamedElement *> &ownedMembers() const;
 
     // Attributes from QTransition
     Q_INVOKABLE QtUml::TransitionKind kind() const;
@@ -156,14 +156,13 @@ public:
     Q_INVOKABLE void setRedefinedTransition(QTransition *redefinedTransition);
     Q_INVOKABLE QVertex *source() const;
     Q_INVOKABLE void setSource(QVertex *source);
-    Q_INVOKABLE const QSet<QTrigger *> *triggers() const;
+    Q_INVOKABLE const QSet<QTrigger *> &triggers() const;
     Q_INVOKABLE void addTrigger(QTrigger *trigger);
     Q_INVOKABLE void removeTrigger(QTrigger *trigger);
 
     // Operations
     Q_INVOKABLE QStateMachine *containingStateMachine() const;
     Q_INVOKABLE bool isConsistentWith(const QRedefinableElement *redefinee) const;
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QTransition(QTransitionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
@@ -174,10 +173,6 @@ private:
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QTransition) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QTransition) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QTransition) *> *)
 
 QT_END_HEADER
 

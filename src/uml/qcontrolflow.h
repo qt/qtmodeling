@@ -64,17 +64,12 @@ class Q_UML_EXPORT QControlFlow : public QActivityEdge
 public:
     Q_INVOKABLE explicit QControlFlow(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QControlFlow();
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QControlFlow(QControlFlowPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QControlFlow) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QControlFlow) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QControlFlow) *> *)
 
 QT_END_HEADER
 

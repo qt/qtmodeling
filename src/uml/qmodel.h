@@ -73,17 +73,12 @@ public:
     // Attributes from QModel
     Q_INVOKABLE QString viewpoint() const;
     Q_INVOKABLE void setViewpoint(QString viewpoint);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QModel(QModelPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QModel) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QModel) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QModel) *> *)
 
 QT_END_HEADER
 

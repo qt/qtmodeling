@@ -68,8 +68,8 @@ public:
     explicit QProfilePrivate();
     virtual ~QProfilePrivate();
 
-    QSet<QPackageImport *> *metamodelReferences;
-    QSet<QElementImport *> *metaclassReferences;
+    QSet<QPackageImport *> metamodelReferences;
+    QSet<QElementImport *> metaclassReferences;
 };
 
 QT_END_NAMESPACE_QTUML

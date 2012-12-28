@@ -66,7 +66,7 @@ public:
     virtual ~QExpressionPrivate();
 
     QString symbol;
-    QList<QValueSpecification *> *operands;
+    QList<QValueSpecification *> operands;
 };
 
 QT_END_NAMESPACE_QTUML

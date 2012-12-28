@@ -65,7 +65,7 @@ class Q_UML_EXPORT QFeature : public QRedefinableElement
     Q_OBJECT
 
     Q_PROPERTY(bool isStatic READ isStatic WRITE setStatic RESET unsetStatic)
-    Q_PROPERTY(const QSet<QClassifier *> * featuringClassifiers READ featuringClassifiers)
+    Q_PROPERTY(QSet<QClassifier *> featuringClassifiers READ featuringClassifiers)
 
     Q_DISABLE_COPY(QFeature)
     Q_DECLARE_PRIVATE(QFeature)
@@ -80,8 +80,7 @@ public:
     Q_INVOKABLE void unsetStatic();
 
     // Association ends from QFeature
-    Q_INVOKABLE const QSet<QClassifier *> *featuringClassifiers() const;
-    virtual void registerMetaTypes() const;
+    Q_INVOKABLE const QSet<QClassifier *> &featuringClassifiers() const;
 
     // Classes which access read-only opposite properties should be friend
     friend class QClassifierPrivate;
@@ -91,10 +90,6 @@ protected:
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QFeature) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QFeature) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QFeature) *> *)
 
 QT_END_HEADER
 

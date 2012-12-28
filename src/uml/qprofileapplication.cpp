@@ -181,35 +181,6 @@ void QProfileApplication::setAppliedProfile(QProfile *appliedProfile)
     }
 }
 
-void QProfileApplication::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QProfileApplication) *>("QT_PREPEND_NAMESPACE_QTUML(QProfileApplication) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QProfileApplication) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QProfileApplication) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QProfileApplication) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QProfileApplication) *> *");
-    qRegisterMetaType<QProfileApplication *>("QProfileApplication *");
-    qRegisterMetaType<const QSet<QProfileApplication *> *>("const QSet<QProfileApplication *> *");
-    qRegisterMetaType<const QList<QProfileApplication *> *>("const QList<QProfileApplication *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QProfile) *>("QT_PREPEND_NAMESPACE_QTUML(QProfile) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QProfile) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QProfile) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QProfile) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QProfile) *> *");
-    qRegisterMetaType<QProfile *>("QProfile *");
-    qRegisterMetaType<const QSet<QProfile *> *>("const QSet<QProfile *> *");
-    qRegisterMetaType<const QList<QProfile *> *>("const QList<QProfile *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QPackage) *>("QT_PREPEND_NAMESPACE_QTUML(QPackage) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QPackage) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QPackage) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QPackage) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QPackage) *> *");
-    qRegisterMetaType<QPackage *>("QPackage *");
-    qRegisterMetaType<const QSet<QPackage *> *>("const QSet<QPackage *> *");
-    qRegisterMetaType<const QList<QPackage *> *>("const QList<QPackage *> *");
-
-    QDirectedRelationship::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 #include "moc_qprofileapplication.cpp"
 
 QT_END_NAMESPACE_QTUML

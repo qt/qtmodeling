@@ -51,14 +51,12 @@ QT_BEGIN_NAMESPACE_QTUML
 QExtendPrivate::QExtendPrivate() :
     extendedCase(0),
     extension(0),
-    extensionLocations(new QList<QExtensionPoint *>),
     condition(0)
 {
 }
 
 QExtendPrivate::~QExtendPrivate()
 {
-    delete extensionLocations;
 }
 
 /*!
@@ -94,7 +92,7 @@ QExtend::~QExtend()
 /*!
     The Elements owned by this element.
  */
-const QSet<QElement *> *QExtend::ownedElements() const
+const QSet<QElement *> &QExtend::ownedElements() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedElements();
 }
@@ -110,7 +108,7 @@ QElement *QExtend::owner() const
 /*!
     The Comments owned by this element.
  */
-const QSet<QComment *> *QExtend::ownedComments() const
+const QSet<QComment *> &QExtend::ownedComments() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedComments();
 }
@@ -132,7 +130,7 @@ void QExtend::removeOwnedComment(QComment *ownedComment)
 /*!
     Specifies the elements related by the Relationship.
  */
-const QSet<QElement *> *QExtend::relatedElements() const
+const QSet<QElement *> &QExtend::relatedElements() const
 {
     return (qwrappedobject_cast<const QRelationship *>(this))->relatedElements();
 }
@@ -144,7 +142,7 @@ const QSet<QElement *> *QExtend::relatedElements() const
 /*!
     Specifies the sources of the DirectedRelationship.
  */
-const QSet<QElement *> *QExtend::sources() const
+const QSet<QElement *> &QExtend::sources() const
 {
     return (qwrappedobject_cast<const QDirectedRelationship *>(this))->sources();
 }
@@ -152,7 +150,7 @@ const QSet<QElement *> *QExtend::sources() const
 /*!
     Specifies the targets of the DirectedRelationship.
  */
-const QSet<QElement *> *QExtend::targets() const
+const QSet<QElement *> &QExtend::targets() const
 {
     return (qwrappedobject_cast<const QDirectedRelationship *>(this))->targets();
 }
@@ -223,7 +221,7 @@ QNamespace *QExtend::namespace_() const
 /*!
     Indicates the dependencies that reference the client.
  */
-const QSet<QDependency *> *QExtend::clientDependencies() const
+const QSet<QDependency *> &QExtend::clientDependencies() const
 {
     return (qwrappedobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
@@ -312,7 +310,7 @@ void QExtend::setExtension(QUseCase *extension)
 /*!
     An ordered list of extension points belonging to the extended use case, specifying where the respective behavioral fragments of the extending use case are to be inserted. The first fragment in the extending use case is associated with the first extension point in the list, the second fragment with the second point, and so on. (Note that, in most practical cases, the extending use case has just a single behavior fragment, so that the list of extension points is trivial.)
  */
-const QList<QExtensionPoint *> *QExtend::extensionLocations() const
+const QList<QExtensionPoint *> &QExtend::extensionLocations() const
 {
     // This is a read-write association end
 
@@ -325,8 +323,8 @@ void QExtend::addExtensionLocation(QExtensionPoint *extensionLocation)
     // This is a read-write association end
 
     Q_D(QExtend);
-    if (!d->extensionLocations->contains(extensionLocation)) {
-        d->extensionLocations->append(extensionLocation);
+    if (!d->extensionLocations.contains(extensionLocation)) {
+        d->extensionLocations.append(extensionLocation);
     }
 }
 
@@ -335,8 +333,8 @@ void QExtend::removeExtensionLocation(QExtensionPoint *extensionLocation)
     // This is a read-write association end
 
     Q_D(QExtend);
-    if (d->extensionLocations->contains(extensionLocation)) {
-        d->extensionLocations->removeAll(extensionLocation);
+    if (d->extensionLocations.contains(extensionLocation)) {
+        d->extensionLocations.removeAll(extensionLocation);
     }
 }
 
@@ -367,42 +365,6 @@ void QExtend::setCondition(QConstraint *condition)
             (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(condition));
         }
     }
-}
-
-void QExtend::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QExtend) *>("QT_PREPEND_NAMESPACE_QTUML(QExtend) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QExtend) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QExtend) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QExtend) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QExtend) *> *");
-    qRegisterMetaType<QExtend *>("QExtend *");
-    qRegisterMetaType<const QSet<QExtend *> *>("const QSet<QExtend *> *");
-    qRegisterMetaType<const QList<QExtend *> *>("const QList<QExtend *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QConstraint) *>("QT_PREPEND_NAMESPACE_QTUML(QConstraint) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QConstraint) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QConstraint) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QConstraint) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QConstraint) *> *");
-    qRegisterMetaType<QConstraint *>("QConstraint *");
-    qRegisterMetaType<const QSet<QConstraint *> *>("const QSet<QConstraint *> *");
-    qRegisterMetaType<const QList<QConstraint *> *>("const QList<QConstraint *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QUseCase) *>("QT_PREPEND_NAMESPACE_QTUML(QUseCase) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QUseCase) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QUseCase) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QUseCase) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QUseCase) *> *");
-    qRegisterMetaType<QUseCase *>("QUseCase *");
-    qRegisterMetaType<const QSet<QUseCase *> *>("const QSet<QUseCase *> *");
-    qRegisterMetaType<const QList<QUseCase *> *>("const QList<QUseCase *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QExtensionPoint) *>("QT_PREPEND_NAMESPACE_QTUML(QExtensionPoint) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QExtensionPoint) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QExtensionPoint) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QExtensionPoint) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QExtensionPoint) *> *");
-    qRegisterMetaType<QExtensionPoint *>("QExtensionPoint *");
-    qRegisterMetaType<const QSet<QExtensionPoint *> *>("const QSet<QExtensionPoint *> *");
-    qRegisterMetaType<const QList<QExtensionPoint *> *>("const QList<QExtensionPoint *> *");
-
-    QWrappedObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qextend.cpp"

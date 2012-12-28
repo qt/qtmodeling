@@ -72,11 +72,11 @@ class Q_UML_EXPORT QInterface : public QClassifier
     Q_OBJECT
 
     Q_PROPERTY(QProtocolStateMachine * protocol READ protocol WRITE setProtocol)
-    Q_PROPERTY(const QSet<QInterface *> * redefinedInterfaces READ redefinedInterfaces)
-    Q_PROPERTY(const QSet<QReception *> * ownedReceptions READ ownedReceptions)
-    Q_PROPERTY(const QList<QOperation *> * ownedOperations READ ownedOperations)
-    Q_PROPERTY(const QList<QClassifier *> * nestedClassifiers READ nestedClassifiers)
-    Q_PROPERTY(const QList<QProperty *> * ownedAttributes READ ownedAttributes)
+    Q_PROPERTY(QSet<QInterface *> redefinedInterfaces READ redefinedInterfaces)
+    Q_PROPERTY(QSet<QReception *> ownedReceptions READ ownedReceptions)
+    Q_PROPERTY(QList<QOperation *> ownedOperations READ ownedOperations)
+    Q_PROPERTY(QList<QClassifier *> nestedClassifiers READ nestedClassifiers)
+    Q_PROPERTY(QList<QProperty *> ownedAttributes READ ownedAttributes)
 
     Q_DISABLE_COPY(QInterface)
     Q_DECLARE_PRIVATE(QInterface)
@@ -88,36 +88,31 @@ public:
     // Association ends from QInterface
     Q_INVOKABLE QProtocolStateMachine *protocol() const;
     Q_INVOKABLE void setProtocol(QProtocolStateMachine *protocol);
-    Q_INVOKABLE const QSet<QInterface *> *redefinedInterfaces() const;
+    Q_INVOKABLE const QSet<QInterface *> &redefinedInterfaces() const;
     Q_INVOKABLE void addRedefinedInterface(QInterface *redefinedInterface);
     Q_INVOKABLE void removeRedefinedInterface(QInterface *redefinedInterface);
-    Q_INVOKABLE const QSet<QReception *> *ownedReceptions() const;
+    Q_INVOKABLE const QSet<QReception *> &ownedReceptions() const;
     Q_INVOKABLE void addOwnedReception(QReception *ownedReception);
     Q_INVOKABLE void removeOwnedReception(QReception *ownedReception);
-    Q_INVOKABLE const QList<QOperation *> *ownedOperations() const;
+    Q_INVOKABLE const QList<QOperation *> &ownedOperations() const;
     Q_INVOKABLE void addOwnedOperation(QOperation *ownedOperation);
     Q_INVOKABLE void removeOwnedOperation(QOperation *ownedOperation);
-    Q_INVOKABLE const QList<QClassifier *> *nestedClassifiers() const;
+    Q_INVOKABLE const QList<QClassifier *> &nestedClassifiers() const;
     Q_INVOKABLE void addNestedClassifier(QClassifier *nestedClassifier);
     Q_INVOKABLE void removeNestedClassifier(QClassifier *nestedClassifier);
-    Q_INVOKABLE const QList<QProperty *> *ownedAttributes() const;
+    Q_INVOKABLE const QList<QProperty *> &ownedAttributes() const;
     Q_INVOKABLE void addOwnedAttribute(QProperty *ownedAttribute);
     Q_INVOKABLE void removeOwnedAttribute(QProperty *ownedAttribute);
 
     // Overriden methods for subsetted properties
     Q_INVOKABLE void addRedefinedClassifier(QWrappedObjectPointer<QInterface> redefinedInterface);
     Q_INVOKABLE void removeRedefinedClassifier(QWrappedObjectPointer<QInterface> redefinedInterface);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QInterface(QInterfacePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QInterface) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QInterface) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QInterface) *> *)
 
 QT_END_HEADER
 

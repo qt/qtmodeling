@@ -74,11 +74,11 @@ public:
     explicit QInteractionPrivate();
     virtual ~QInteractionPrivate();
 
-    QSet<QAction *> *actions;
-    QSet<QMessage *> *messages;
-    QSet<QGate *> *formalGates;
-    QList<QInteractionFragment *> *fragments;
-    QSet<QLifeline *> *lifelines;
+    QSet<QAction *> actions;
+    QSet<QMessage *> messages;
+    QSet<QGate *> formalGates;
+    QList<QInteractionFragment *> fragments;
+    QSet<QLifeline *> lifelines;
 };
 
 QT_END_NAMESPACE_QTUML

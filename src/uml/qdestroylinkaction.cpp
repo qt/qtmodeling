@@ -46,14 +46,13 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QDestroyLinkActionPrivate::QDestroyLinkActionPrivate() :
-    endData(new QSet<QLinkEndDestructionData *>)
+QDestroyLinkActionPrivate::QDestroyLinkActionPrivate()
 {
 }
 
 QDestroyLinkActionPrivate::~QDestroyLinkActionPrivate()
 {
-    delete endData;
+    qDeleteAll(endData);
 }
 
 /*!
@@ -85,7 +84,7 @@ QDestroyLinkAction::~QDestroyLinkAction()
 /*!
     Specifies ends of association and inputs.
  */
-const QSet<QLinkEndDestructionData *> *QDestroyLinkAction::endData() const
+const QSet<QLinkEndDestructionData *> &QDestroyLinkAction::endData() const
 {
     // This is a read-write association end
 
@@ -98,8 +97,8 @@ void QDestroyLinkAction::addEndData(QLinkEndDestructionData *endData)
     // This is a read-write association end
 
     Q_D(QDestroyLinkAction);
-    if (!d->endData->contains(endData)) {
-        d->endData->insert(endData);
+    if (!d->endData.contains(endData)) {
+        d->endData.insert(endData);
         qTopLevelWrapper(endData)->setParent(qTopLevelWrapper(this));
     }
 }
@@ -109,32 +108,10 @@ void QDestroyLinkAction::removeEndData(QLinkEndDestructionData *endData)
     // This is a read-write association end
 
     Q_D(QDestroyLinkAction);
-    if (d->endData->contains(endData)) {
-        d->endData->remove(endData);
+    if (d->endData.contains(endData)) {
+        d->endData.remove(endData);
         qTopLevelWrapper(endData)->setParent(0);
     }
-}
-
-void QDestroyLinkAction::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QDestroyLinkAction) *>("QT_PREPEND_NAMESPACE_QTUML(QDestroyLinkAction) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QDestroyLinkAction) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QDestroyLinkAction) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QDestroyLinkAction) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QDestroyLinkAction) *> *");
-    qRegisterMetaType<QDestroyLinkAction *>("QDestroyLinkAction *");
-    qRegisterMetaType<const QSet<QDestroyLinkAction *> *>("const QSet<QDestroyLinkAction *> *");
-    qRegisterMetaType<const QList<QDestroyLinkAction *> *>("const QList<QDestroyLinkAction *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QLinkEndDestructionData) *>("QT_PREPEND_NAMESPACE_QTUML(QLinkEndDestructionData) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QLinkEndDestructionData) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QLinkEndDestructionData) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QLinkEndDestructionData) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QLinkEndDestructionData) *> *");
-    qRegisterMetaType<QLinkEndDestructionData *>("QLinkEndDestructionData *");
-    qRegisterMetaType<const QSet<QLinkEndDestructionData *> *>("const QSet<QLinkEndDestructionData *> *");
-    qRegisterMetaType<const QList<QLinkEndDestructionData *> *>("const QList<QLinkEndDestructionData *> *");
-
-    QWriteLinkAction::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qdestroylinkaction.cpp"

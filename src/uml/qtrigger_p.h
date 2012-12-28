@@ -68,7 +68,7 @@ public:
     explicit QTriggerPrivate();
     virtual ~QTriggerPrivate();
 
-    QSet<QPort *> *ports;
+    QSet<QPort *> ports;
     QEvent *event;
 };
 

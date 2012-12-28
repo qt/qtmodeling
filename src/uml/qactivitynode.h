@@ -69,14 +69,14 @@ class Q_UML_EXPORT QActivityNode : public QRedefinableElement
 {
     Q_OBJECT
 
-    Q_PROPERTY(const QSet<QActivityNode *> * redefinedNodes READ redefinedNodes)
-    Q_PROPERTY(const QSet<QActivityEdge *> * incomings READ incomings)
+    Q_PROPERTY(QSet<QActivityNode *> redefinedNodes READ redefinedNodes)
+    Q_PROPERTY(QSet<QActivityEdge *> incomings READ incomings)
     Q_PROPERTY(QActivity * activity READ activity WRITE setActivity)
-    Q_PROPERTY(const QSet<QActivityGroup *> * inGroup READ inGroup)
+    Q_PROPERTY(QSet<QActivityGroup *> inGroup READ inGroup)
     Q_PROPERTY(QStructuredActivityNode * inStructuredNode READ inStructuredNode WRITE setInStructuredNode)
-    Q_PROPERTY(const QSet<QActivityPartition *> * inPartition READ inPartition)
-    Q_PROPERTY(const QSet<QInterruptibleActivityRegion *> * inInterruptibleRegion READ inInterruptibleRegion)
-    Q_PROPERTY(const QSet<QActivityEdge *> * outgoings READ outgoings)
+    Q_PROPERTY(QSet<QActivityPartition *> inPartition READ inPartition)
+    Q_PROPERTY(QSet<QInterruptibleActivityRegion *> inInterruptibleRegion READ inInterruptibleRegion)
+    Q_PROPERTY(QSet<QActivityEdge *> outgoings READ outgoings)
 
     Q_DISABLE_COPY(QActivityNode)
     Q_DECLARE_PRIVATE(QActivityNode)
@@ -86,27 +86,26 @@ public:
     virtual ~QActivityNode();
 
     // Association ends from QActivityNode
-    Q_INVOKABLE const QSet<QActivityNode *> *redefinedNodes() const;
+    Q_INVOKABLE const QSet<QActivityNode *> &redefinedNodes() const;
     Q_INVOKABLE void addRedefinedNode(QActivityNode *redefinedNode);
     Q_INVOKABLE void removeRedefinedNode(QActivityNode *redefinedNode);
-    Q_INVOKABLE const QSet<QActivityEdge *> *incomings() const;
+    Q_INVOKABLE const QSet<QActivityEdge *> &incomings() const;
     Q_INVOKABLE void addIncoming(QActivityEdge *incoming);
     Q_INVOKABLE void removeIncoming(QActivityEdge *incoming);
     Q_INVOKABLE QActivity *activity() const;
     Q_INVOKABLE void setActivity(QActivity *activity);
-    Q_INVOKABLE const QSet<QActivityGroup *> *inGroup() const;
+    Q_INVOKABLE const QSet<QActivityGroup *> &inGroup() const;
     Q_INVOKABLE QStructuredActivityNode *inStructuredNode() const;
     Q_INVOKABLE void setInStructuredNode(QStructuredActivityNode *inStructuredNode);
-    Q_INVOKABLE const QSet<QActivityPartition *> *inPartition() const;
+    Q_INVOKABLE const QSet<QActivityPartition *> &inPartition() const;
     Q_INVOKABLE void addInPartition(QActivityPartition *inPartition);
     Q_INVOKABLE void removeInPartition(QActivityPartition *inPartition);
-    Q_INVOKABLE const QSet<QInterruptibleActivityRegion *> *inInterruptibleRegion() const;
+    Q_INVOKABLE const QSet<QInterruptibleActivityRegion *> &inInterruptibleRegion() const;
     Q_INVOKABLE void addInInterruptibleRegion(QInterruptibleActivityRegion *inInterruptibleRegion);
     Q_INVOKABLE void removeInInterruptibleRegion(QInterruptibleActivityRegion *inInterruptibleRegion);
-    Q_INVOKABLE const QSet<QActivityEdge *> *outgoings() const;
+    Q_INVOKABLE const QSet<QActivityEdge *> &outgoings() const;
     Q_INVOKABLE void addOutgoing(QActivityEdge *outgoing);
     Q_INVOKABLE void removeOutgoing(QActivityEdge *outgoing);
-    virtual void registerMetaTypes() const;
 
     // Classes which access read-only opposite properties should be friend
     friend class QActivityGroupPrivate;
@@ -116,10 +115,6 @@ protected:
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QActivityNode) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QActivityNode) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QActivityNode) *> *)
 
 QT_END_HEADER
 

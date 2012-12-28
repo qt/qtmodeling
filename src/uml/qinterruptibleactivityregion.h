@@ -65,8 +65,8 @@ class Q_UML_EXPORT QInterruptibleActivityRegion : public QActivityGroup
 {
     Q_OBJECT
 
-    Q_PROPERTY(const QSet<QActivityEdge *> * interruptingEdges READ interruptingEdges)
-    Q_PROPERTY(const QSet<QActivityNode *> * nodes READ nodes)
+    Q_PROPERTY(QSet<QActivityEdge *> interruptingEdges READ interruptingEdges)
+    Q_PROPERTY(QSet<QActivityNode *> nodes READ nodes)
 
     Q_DISABLE_COPY(QInterruptibleActivityRegion)
     Q_DECLARE_PRIVATE(QInterruptibleActivityRegion)
@@ -76,23 +76,18 @@ public:
     virtual ~QInterruptibleActivityRegion();
 
     // Association ends from QInterruptibleActivityRegion
-    Q_INVOKABLE const QSet<QActivityEdge *> *interruptingEdges() const;
+    Q_INVOKABLE const QSet<QActivityEdge *> &interruptingEdges() const;
     Q_INVOKABLE void addInterruptingEdge(QActivityEdge *interruptingEdge);
     Q_INVOKABLE void removeInterruptingEdge(QActivityEdge *interruptingEdge);
-    Q_INVOKABLE const QSet<QActivityNode *> *nodes() const;
+    Q_INVOKABLE const QSet<QActivityNode *> &nodes() const;
     Q_INVOKABLE void addNode(QActivityNode *node);
     Q_INVOKABLE void removeNode(QActivityNode *node);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QInterruptibleActivityRegion(QInterruptibleActivityRegionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QInterruptibleActivityRegion) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QInterruptibleActivityRegion) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QInterruptibleActivityRegion) *> *)
 
 QT_END_HEADER
 

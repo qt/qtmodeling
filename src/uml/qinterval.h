@@ -73,17 +73,12 @@ public:
     Q_INVOKABLE void setMin(QValueSpecification *min);
     Q_INVOKABLE QValueSpecification *max() const;
     Q_INVOKABLE void setMax(QValueSpecification *max);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QInterval(QIntervalPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QInterval) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QInterval) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QInterval) *> *)
 
 QT_END_HEADER
 

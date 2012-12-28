@@ -68,8 +68,8 @@ public:
     virtual ~QRedefinableElementPrivate();
 
     bool isLeaf;
-    QSet<QRedefinableElement *> *redefinedElements;
-    QSet<QClassifier *> *redefinitionContexts;
+    QSet<QRedefinableElement *> redefinedElements;
+    QSet<QClassifier *> redefinitionContexts;
 
     // Internal functions for read-only subsetted association ends
     void addRedefinedElement(QRedefinableElement *redefinedElement);

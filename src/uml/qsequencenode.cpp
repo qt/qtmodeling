@@ -46,14 +46,13 @@
 
 QT_BEGIN_NAMESPACE_QTUML
 
-QSequenceNodePrivate::QSequenceNodePrivate() :
-    executableNodes(new QList<QExecutableNode *>)
+QSequenceNodePrivate::QSequenceNodePrivate()
 {
 }
 
 QSequenceNodePrivate::~QSequenceNodePrivate()
 {
-    delete executableNodes;
+    qDeleteAll(executableNodes);
 }
 
 /*!
@@ -85,7 +84,7 @@ QSequenceNode::~QSequenceNode()
 /*!
     An ordered set of executable nodes.
  */
-const QList<QExecutableNode *> *QSequenceNode::executableNodes() const
+const QList<QExecutableNode *> &QSequenceNode::executableNodes() const
 {
     // This is a read-write association end
 
@@ -98,8 +97,8 @@ void QSequenceNode::addExecutableNode(QExecutableNode *executableNode)
     // This is a read-write association end
 
     Q_D(QSequenceNode);
-    if (!d->executableNodes->contains(executableNode)) {
-        d->executableNodes->append(executableNode);
+    if (!d->executableNodes.contains(executableNode)) {
+        d->executableNodes.append(executableNode);
         qTopLevelWrapper(executableNode)->setParent(qTopLevelWrapper(this));
     }
 }
@@ -109,32 +108,10 @@ void QSequenceNode::removeExecutableNode(QExecutableNode *executableNode)
     // This is a read-write association end
 
     Q_D(QSequenceNode);
-    if (d->executableNodes->contains(executableNode)) {
-        d->executableNodes->removeAll(executableNode);
+    if (d->executableNodes.contains(executableNode)) {
+        d->executableNodes.removeAll(executableNode);
         qTopLevelWrapper(executableNode)->setParent(0);
     }
-}
-
-void QSequenceNode::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QSequenceNode) *>("QT_PREPEND_NAMESPACE_QTUML(QSequenceNode) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QSequenceNode) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QSequenceNode) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QSequenceNode) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QSequenceNode) *> *");
-    qRegisterMetaType<QSequenceNode *>("QSequenceNode *");
-    qRegisterMetaType<const QSet<QSequenceNode *> *>("const QSet<QSequenceNode *> *");
-    qRegisterMetaType<const QList<QSequenceNode *> *>("const QList<QSequenceNode *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *>("QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QExecutableNode) *> *");
-    qRegisterMetaType<QExecutableNode *>("QExecutableNode *");
-    qRegisterMetaType<const QSet<QExecutableNode *> *>("const QSet<QExecutableNode *> *");
-    qRegisterMetaType<const QList<QExecutableNode *> *>("const QList<QExecutableNode *> *");
-
-    QStructuredActivityNode::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qsequencenode.cpp"

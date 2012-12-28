@@ -140,28 +140,6 @@ void QInteractionConstraint::setMinint(QValueSpecification *minint)
     }
 }
 
-void QInteractionConstraint::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QInteractionConstraint) *>("QT_PREPEND_NAMESPACE_QTUML(QInteractionConstraint) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QInteractionConstraint) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QInteractionConstraint) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QInteractionConstraint) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QInteractionConstraint) *> *");
-    qRegisterMetaType<QInteractionConstraint *>("QInteractionConstraint *");
-    qRegisterMetaType<const QSet<QInteractionConstraint *> *>("const QSet<QInteractionConstraint *> *");
-    qRegisterMetaType<const QList<QInteractionConstraint *> *>("const QList<QInteractionConstraint *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *>("QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QValueSpecification) *> *");
-    qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
-    qRegisterMetaType<const QSet<QValueSpecification *> *>("const QSet<QValueSpecification *> *");
-    qRegisterMetaType<const QList<QValueSpecification *> *>("const QList<QValueSpecification *> *");
-
-    QConstraint::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 #include "moc_qinteractionconstraint.cpp"
 
 QT_END_NAMESPACE_QTUML

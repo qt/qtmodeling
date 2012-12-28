@@ -49,16 +49,13 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QConditionalNodePrivate::QConditionalNodePrivate() :
     isAssured(false),
-    isDeterminate(false),
-    clauses(new QSet<QClause *>),
-    results(new QList<QOutputPin *>)
+    isDeterminate(false)
 {
 }
 
 QConditionalNodePrivate::~QConditionalNodePrivate()
 {
-    delete clauses;
-    delete results;
+    qDeleteAll(results);
 }
 
 /*!
@@ -146,7 +143,7 @@ void QConditionalNode::unsetDeterminate()
 /*!
     Set of clauses composing the conditional.
  */
-const QSet<QClause *> *QConditionalNode::clauses() const
+const QSet<QClause *> &QConditionalNode::clauses() const
 {
     // This is a read-write association end
 
@@ -159,8 +156,8 @@ void QConditionalNode::addClause(QClause *clause)
     // This is a read-write association end
 
     Q_D(QConditionalNode);
-    if (!d->clauses->contains(clause)) {
-        d->clauses->insert(clause);
+    if (!d->clauses.contains(clause)) {
+        d->clauses.insert(clause);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(clause));
@@ -172,8 +169,8 @@ void QConditionalNode::removeClause(QClause *clause)
     // This is a read-write association end
 
     Q_D(QConditionalNode);
-    if (d->clauses->contains(clause)) {
-        d->clauses->remove(clause);
+    if (d->clauses.contains(clause)) {
+        d->clauses.remove(clause);
 
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(clause));
@@ -183,7 +180,7 @@ void QConditionalNode::removeClause(QClause *clause)
 /*!
     A list of output pins that constitute the data flow outputs of the conditional.
  */
-const QList<QOutputPin *> *QConditionalNode::results() const
+const QList<QOutputPin *> &QConditionalNode::results() const
 {
     // This is a read-write association end
 
@@ -196,8 +193,8 @@ void QConditionalNode::addResult(QOutputPin *result)
     // This is a read-write association end
 
     Q_D(QConditionalNode);
-    if (!d->results->contains(result)) {
-        d->results->append(result);
+    if (!d->results.contains(result)) {
+        d->results.append(result);
         qTopLevelWrapper(result)->setParent(qTopLevelWrapper(this));
     }
 }
@@ -207,39 +204,10 @@ void QConditionalNode::removeResult(QOutputPin *result)
     // This is a read-write association end
 
     Q_D(QConditionalNode);
-    if (d->results->contains(result)) {
-        d->results->removeAll(result);
+    if (d->results.contains(result)) {
+        d->results.removeAll(result);
         qTopLevelWrapper(result)->setParent(0);
     }
-}
-
-void QConditionalNode::registerMetaTypes() const
-{
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QConditionalNode) *>("QT_PREPEND_NAMESPACE_QTUML(QConditionalNode) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QConditionalNode) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QConditionalNode) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QConditionalNode) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QConditionalNode) *> *");
-    qRegisterMetaType<QConditionalNode *>("QConditionalNode *");
-    qRegisterMetaType<const QSet<QConditionalNode *> *>("const QSet<QConditionalNode *> *");
-    qRegisterMetaType<const QList<QConditionalNode *> *>("const QList<QConditionalNode *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QClause) *>("QT_PREPEND_NAMESPACE_QTUML(QClause) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QClause) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QClause) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QClause) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QClause) *> *");
-    qRegisterMetaType<QClause *>("QClause *");
-    qRegisterMetaType<const QSet<QClause *> *>("const QSet<QClause *> *");
-    qRegisterMetaType<const QList<QClause *> *>("const QList<QClause *> *");
-
-    qRegisterMetaType<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *>("QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *");
-    qRegisterMetaType<const QSet<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *>("const QSet<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *");
-    qRegisterMetaType<const QList<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *>("const QList<QT_PREPEND_NAMESPACE_QTUML(QOutputPin) *> *");
-    qRegisterMetaType<QOutputPin *>("QOutputPin *");
-    qRegisterMetaType<const QSet<QOutputPin *> *>("const QSet<QOutputPin *> *");
-    qRegisterMetaType<const QList<QOutputPin *> *>("const QList<QOutputPin *> *");
-
-    QStructuredActivityNode::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qconditionalnode.cpp"

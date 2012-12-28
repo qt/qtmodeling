@@ -70,9 +70,9 @@ class Q_UML_EXPORT QInstanceSpecification : public QWrappedObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(const QSet<QClassifier *> * classifiers READ classifiers)
+    Q_PROPERTY(QSet<QClassifier *> classifiers READ classifiers)
     Q_PROPERTY(QValueSpecification * specification READ specification WRITE setSpecification)
-    Q_PROPERTY(const QSet<QSlot *> * slots_ READ slots_)
+    Q_PROPERTY(QSet<QSlot *> slots_ READ slots_)
 
     Q_DISABLE_COPY(QInstanceSpecification)
     Q_DECLARE_PRIVATE(QInstanceSpecification)
@@ -82,9 +82,9 @@ public:
     virtual ~QInstanceSpecification();
 
     // Association ends from aggregated QElement
-    Q_INVOKABLE const QSet<QElement *> *ownedElements() const;
+    Q_INVOKABLE const QSet<QElement *> &ownedElements() const;
     Q_INVOKABLE QElement *owner() const;
-    Q_INVOKABLE const QSet<QComment *> *ownedComments() const;
+    Q_INVOKABLE const QSet<QComment *> &ownedComments() const;
     Q_INVOKABLE void addOwnedComment(QComment *ownedComment);
     Q_INVOKABLE void removeOwnedComment(QComment *ownedComment);
 
@@ -97,7 +97,7 @@ public:
     Q_INVOKABLE QStringExpression *nameExpression() const;
     Q_INVOKABLE void setNameExpression(QStringExpression *nameExpression);
     Q_INVOKABLE QNamespace *namespace_() const;
-    Q_INVOKABLE const QSet<QDependency *> *clientDependencies() const;
+    Q_INVOKABLE const QSet<QDependency *> &clientDependencies() const;
     Q_INVOKABLE void addClientDependency(QDependency *clientDependency);
     Q_INVOKABLE void removeClientDependency(QDependency *clientDependency);
 
@@ -113,21 +113,20 @@ public:
     Q_INVOKABLE void unsetVisibility();
 
     // Association ends from aggregated QDeploymentTarget
-    Q_INVOKABLE const QSet<QPackageableElement *> *deployedElements() const;
-    Q_INVOKABLE const QSet<QDeployment *> *deployments() const;
+    Q_INVOKABLE const QSet<QPackageableElement *> &deployedElements() const;
+    Q_INVOKABLE const QSet<QDeployment *> &deployments() const;
     Q_INVOKABLE void addDeployment(QDeployment *deployment);
     Q_INVOKABLE void removeDeployment(QDeployment *deployment);
 
     // Association ends from QInstanceSpecification
-    Q_INVOKABLE const QSet<QClassifier *> *classifiers() const;
+    Q_INVOKABLE const QSet<QClassifier *> &classifiers() const;
     Q_INVOKABLE void addClassifier(QClassifier *classifier);
     Q_INVOKABLE void removeClassifier(QClassifier *classifier);
     Q_INVOKABLE QValueSpecification *specification() const;
     Q_INVOKABLE void setSpecification(QValueSpecification *specification);
-    Q_INVOKABLE const QSet<QSlot *> *slots_() const;
+    Q_INVOKABLE const QSet<QSlot *> &slots_() const;
     Q_INVOKABLE void addSlot_(QSlot *slot_);
     Q_INVOKABLE void removeSlot_(QSlot *slot_);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QInstanceSpecification(QInstanceSpecificationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
@@ -139,10 +138,6 @@ private:
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QInstanceSpecification) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QInstanceSpecification) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QInstanceSpecification) *> *)
 
 QT_END_HEADER
 

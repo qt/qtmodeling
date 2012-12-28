@@ -86,17 +86,12 @@ public:
     Q_INVOKABLE void removeClient(QWrappedObjectPointer<QBehavioredClassifier> implementingClassifier);
     Q_INVOKABLE void addSupplier(QWrappedObjectPointer<QInterface> contract);
     Q_INVOKABLE void removeSupplier(QWrappedObjectPointer<QInterface> contract);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QInterfaceRealization(QInterfaceRealizationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QInterfaceRealization) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QInterfaceRealization) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QInterfaceRealization) *> *)
 
 QT_END_HEADER
 

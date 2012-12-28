@@ -80,17 +80,12 @@ public:
     Q_INVOKABLE void setName(QString name);
     Q_INVOKABLE QMofObject *value() const;
     Q_INVOKABLE void setValue(QMofObject *value);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QArgument(QArgumentPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTMOF
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTMOF(QArgument) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTMOF(QArgument) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTMOF(QArgument) *> *)
 
 QT_END_HEADER
 

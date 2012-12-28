@@ -64,17 +64,12 @@ class Q_UML_EXPORT QDataStoreNode : public QCentralBufferNode
 public:
     Q_INVOKABLE explicit QDataStoreNode(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QDataStoreNode();
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QDataStoreNode(QDataStoreNodePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QDataStoreNode) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QDataStoreNode) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QDataStoreNode) *> *)
 
 QT_END_HEADER
 

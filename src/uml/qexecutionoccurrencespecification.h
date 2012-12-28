@@ -73,17 +73,12 @@ public:
     // Association ends from QExecutionOccurrenceSpecification
     Q_INVOKABLE QExecutionSpecification *execution() const;
     Q_INVOKABLE void setExecution(QExecutionSpecification *execution);
-    virtual void registerMetaTypes() const;
 
 protected:
     explicit QExecutionOccurrenceSpecification(QExecutionOccurrenceSpecificationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 };
 
 QT_END_NAMESPACE_QTUML
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTUML(QExecutionOccurrenceSpecification) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTUML(QExecutionOccurrenceSpecification) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTUML(QExecutionOccurrenceSpecification) *> *)
 
 QT_END_HEADER
 
