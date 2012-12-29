@@ -1,7 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-#include <QtWrappedObjects/QWrappedObjectPointer>
 #include <QtWrappedObjects/QMetaWrappedObject>
 
 #include <QtUml/QModel>
@@ -51,11 +50,11 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->propertyEditor->setItemDelegateForColumn(1, new PropertyEditorItemDelegate(ui->propertyEditor));
 
-    WrappedObjectPropertyModel *m = new WrappedObjectPropertyModel;
+    WrappedObjectPropertyModel *m = new WrappedObjectPropertyModel(this);
     ui->propertyEditor->setModel(m);
 
-    QWrappedObjectPointer<QModel> model = new QModel;
-    model->setName("MyModel");
+    _model = new QModel;
+    _model->setName("MyModel");
 
     QWrappedObjectPointer<QPackage> package = new QPackage;
     package->setName("Package1");
@@ -77,11 +76,11 @@ MainWindow::MainWindow(QWidget *parent) :
     QWrappedObjectPointer<QClass> class2_ = new QClass;
     class2_->setName("InterStudent");
 
-    QWrappedObjectPointer<QModel> model2 = new QModel;
-    model2->setName("Model2");
+    _model2 = new QModel;
+    _model2->setName("Model2");
     QWrappedObjectPointer<QClass> class3_ = new QClass;
     class3_->setName("Professor");
-    model2->addOwnedType(class3_);
+    _model2->addOwnedType(class3_);
 
     QWrappedObjectPointer<QElementImport> elementImport = new QElementImport;
     elementImport->setObjectName("ElementImport1");
@@ -91,17 +90,19 @@ MainWindow::MainWindow(QWidget *parent) :
     package->addOwnedType(class_);
     package->addOwnedType(class2_);
 
-    model->addNestedPackage(package);
-    model->addOwnedType(primitiveType);
-    model->addElementImport(elementImport);
+    _model->addNestedPackage(package);
+    _model->addOwnedType(primitiveType);
+    _model->addElementImport(elementImport);
 
-    populateModelExplorer(model);
+    populateModelExplorer(_model);
     ui->modelExplorer->setCurrentItem(ui->modelExplorer->topLevelItem(0));
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete _model.data();
+    delete _model2.data();
 }
 
 void MainWindow::contextMenuEvent(QContextMenuEvent *event)

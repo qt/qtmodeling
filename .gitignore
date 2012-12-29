@@ -6,3 +6,6 @@ Makefile
 generated
 lib
 include
+.rcc
+.uic
+*.pro.user
