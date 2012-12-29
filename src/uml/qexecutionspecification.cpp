@@ -124,6 +124,18 @@ void QExecutionSpecification::setFinish(QOccurrenceSpecification *finish)
     }
 }
 
+void QExecutionSpecification::registerMetaTypes() const
+{
+    qRegisterMetaType<QOccurrenceSpecification *>("QOccurrenceSpecification *");
+    qRegisterMetaType<QSet<QOccurrenceSpecification *>>("QSet<QOccurrenceSpecification *>");
+    qRegisterMetaType<QList<QOccurrenceSpecification *>>("QList<QOccurrenceSpecification *>");
+
+    QInteractionFragment::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qexecutionspecification.cpp"
 
 QT_END_NAMESPACE_QTUML

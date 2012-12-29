@@ -116,7 +116,7 @@ void QReclassifyObjectAction::unsetReplaceAll()
 /*!
     A set of classifiers to be removed from the classifiers of the object.
  */
-const QSet<QClassifier *> &QReclassifyObjectAction::oldClassifiers() const
+QSet<QClassifier *> QReclassifyObjectAction::oldClassifiers() const
 {
     // This is a read-write association end
 
@@ -176,7 +176,7 @@ void QReclassifyObjectAction::setObject(QInputPin *object)
 /*!
     A set of classifiers to be added to the classifiers of the object.
  */
-const QSet<QClassifier *> &QReclassifyObjectAction::newClassifiers() const
+QSet<QClassifier *> QReclassifyObjectAction::newClassifiers() const
 {
     // This is a read-write association end
 
@@ -202,6 +202,22 @@ void QReclassifyObjectAction::removeNewClassifier(QClassifier *newClassifier)
     if (d->newClassifiers.contains(newClassifier)) {
         d->newClassifiers.remove(newClassifier);
     }
+}
+
+void QReclassifyObjectAction::registerMetaTypes() const
+{
+    qRegisterMetaType<QClassifier *>("QClassifier *");
+    qRegisterMetaType<QSet<QClassifier *>>("QSet<QClassifier *>");
+    qRegisterMetaType<QList<QClassifier *>>("QList<QClassifier *>");
+
+    qRegisterMetaType<QInputPin *>("QInputPin *");
+    qRegisterMetaType<QSet<QInputPin *>>("QSet<QInputPin *>");
+    qRegisterMetaType<QList<QInputPin *>>("QList<QInputPin *>");
+
+    QAction::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qreclassifyobjectaction.cpp"

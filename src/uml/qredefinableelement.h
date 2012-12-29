@@ -81,12 +81,13 @@ public:
     Q_INVOKABLE void unsetLeaf();
 
     // Association ends from QRedefinableElement
-    Q_INVOKABLE const QSet<QRedefinableElement *> &redefinedElements() const;
-    Q_INVOKABLE const QSet<QClassifier *> &redefinitionContexts() const;
+    Q_INVOKABLE QSet<QRedefinableElement *> redefinedElements() const;
+    Q_INVOKABLE QSet<QClassifier *> redefinitionContexts() const;
 
     // Operations
     Q_INVOKABLE bool isConsistentWith(const QRedefinableElement *redefinee) const;
     Q_INVOKABLE bool isRedefinitionContextValid(const QRedefinableElement *redefined) const;
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QRedefinableElement(QRedefinableElementPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

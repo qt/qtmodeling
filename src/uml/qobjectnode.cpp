@@ -93,7 +93,7 @@ QObjectNode::~QObjectNode()
 /*!
     The Elements owned by this element.
  */
-const QSet<QElement *> &QObjectNode::ownedElements() const
+QSet<QElement *> QObjectNode::ownedElements() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedElements();
 }
@@ -109,7 +109,7 @@ QElement *QObjectNode::owner() const
 /*!
     The Comments owned by this element.
  */
-const QSet<QComment *> &QObjectNode::ownedComments() const
+QSet<QComment *> QObjectNode::ownedComments() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedComments();
 }
@@ -190,7 +190,7 @@ QNamespace *QObjectNode::namespace_() const
 /*!
     Indicates the dependencies that reference the client.
  */
-const QSet<QDependency *> &QObjectNode::clientDependencies() const
+QSet<QDependency *> QObjectNode::clientDependencies() const
 {
     return (qwrappedobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
@@ -234,7 +234,7 @@ void QObjectNode::unsetLeaf()
 /*!
     The redefinable element that is being redefined by this element.
  */
-const QSet<QRedefinableElement *> &QObjectNode::redefinedElements() const
+QSet<QRedefinableElement *> QObjectNode::redefinedElements() const
 {
     return (qwrappedobject_cast<const QRedefinableElement *>(this))->redefinedElements();
 }
@@ -242,7 +242,7 @@ const QSet<QRedefinableElement *> &QObjectNode::redefinedElements() const
 /*!
     References the contexts that this element may be redefined from.
  */
-const QSet<QClassifier *> &QObjectNode::redefinitionContexts() const
+QSet<QClassifier *> QObjectNode::redefinitionContexts() const
 {
     return (qwrappedobject_cast<const QRedefinableElement *>(this))->redefinitionContexts();
 }
@@ -254,7 +254,7 @@ const QSet<QClassifier *> &QObjectNode::redefinitionContexts() const
 /*!
     Inherited nodes replaced by this node in a specialization of the activity.
  */
-const QSet<QActivityNode *> &QObjectNode::redefinedNodes() const
+QSet<QActivityNode *> QObjectNode::redefinedNodes() const
 {
     return (qwrappedobject_cast<const QActivityNode *>(this))->redefinedNodes();
 }
@@ -272,7 +272,7 @@ void QObjectNode::removeRedefinedNode(QActivityNode *redefinedNode)
 /*!
     Edges that have the node as target.
  */
-const QSet<QActivityEdge *> &QObjectNode::incomings() const
+QSet<QActivityEdge *> QObjectNode::incomings() const
 {
     return (qwrappedobject_cast<const QActivityNode *>(this))->incomings();
 }
@@ -303,7 +303,7 @@ void QObjectNode::setActivity(QActivity *activity)
 /*!
     Groups containing the node.
  */
-const QSet<QActivityGroup *> &QObjectNode::inGroup() const
+QSet<QActivityGroup *> QObjectNode::inGroup() const
 {
     return (qwrappedobject_cast<const QActivityNode *>(this))->inGroup();
 }
@@ -324,7 +324,7 @@ void QObjectNode::setInStructuredNode(QStructuredActivityNode *inStructuredNode)
 /*!
     Partitions containing the node.
  */
-const QSet<QActivityPartition *> &QObjectNode::inPartition() const
+QSet<QActivityPartition *> QObjectNode::inPartition() const
 {
     return (qwrappedobject_cast<const QActivityNode *>(this))->inPartition();
 }
@@ -342,7 +342,7 @@ void QObjectNode::removeInPartition(QActivityPartition *inPartition)
 /*!
     Interruptible regions containing the node.
  */
-const QSet<QInterruptibleActivityRegion *> &QObjectNode::inInterruptibleRegion() const
+QSet<QInterruptibleActivityRegion *> QObjectNode::inInterruptibleRegion() const
 {
     return (qwrappedobject_cast<const QActivityNode *>(this))->inInterruptibleRegion();
 }
@@ -360,7 +360,7 @@ void QObjectNode::removeInInterruptibleRegion(QInterruptibleActivityRegion *inIn
 /*!
     Edges that have the node as source.
  */
-const QSet<QActivityEdge *> &QObjectNode::outgoings() const
+QSet<QActivityEdge *> QObjectNode::outgoings() const
 {
     return (qwrappedobject_cast<const QActivityNode *>(this))->outgoings();
 }
@@ -505,7 +505,7 @@ void QObjectNode::setSelection(QBehavior *selection)
 /*!
     The required states of the object available at this point in the activity.
  */
-const QSet<QState *> &QObjectNode::inState() const
+QSet<QState *> QObjectNode::inState() const
 {
     // This is a read-write association end
 
@@ -531,6 +531,26 @@ void QObjectNode::removeInState(QState *inState)
     if (d->inState.contains(inState)) {
         d->inState.remove(inState);
     }
+}
+
+void QObjectNode::registerMetaTypes() const
+{
+    qRegisterMetaType<QState *>("QState *");
+    qRegisterMetaType<QSet<QState *>>("QSet<QState *>");
+    qRegisterMetaType<QList<QState *>>("QList<QState *>");
+
+    qRegisterMetaType<QBehavior *>("QBehavior *");
+    qRegisterMetaType<QSet<QBehavior *>>("QSet<QBehavior *>");
+    qRegisterMetaType<QList<QBehavior *>>("QList<QBehavior *>");
+
+    qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
+    qRegisterMetaType<QSet<QValueSpecification *>>("QSet<QValueSpecification *>");
+    qRegisterMetaType<QList<QValueSpecification *>>("QList<QValueSpecification *>");
+
+    QWrappedObject::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qobjectnode.cpp"

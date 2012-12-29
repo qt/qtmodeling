@@ -166,7 +166,7 @@ void QActivityPartition::setRepresents(QElement *represents)
 /*!
     Partitions immediately contained in the partition.
  */
-const QSet<QActivityPartition *> &QActivityPartition::subpartitions() const
+QSet<QActivityPartition *> QActivityPartition::subpartitions() const
 {
     // This is a read-write association end
 
@@ -241,7 +241,7 @@ void QActivityPartition::setSuperPartition(QActivityPartition *superPartition)
 /*!
     Nodes immediately contained in the group.
  */
-const QSet<QActivityNode *> &QActivityPartition::nodes() const
+QSet<QActivityNode *> QActivityPartition::nodes() const
 {
     // This is a read-write association end
 
@@ -285,7 +285,7 @@ void QActivityPartition::removeNode(QActivityNode *node)
 /*!
     Edges immediately contained in the group.
  */
-const QSet<QActivityEdge *> &QActivityPartition::edges() const
+QSet<QActivityEdge *> QActivityPartition::edges() const
 {
     // This is a read-write association end
 
@@ -324,6 +324,26 @@ void QActivityPartition::removeEdge(QActivityEdge *edge)
         if (edge)
             edge->removeInPartition(this);
     }
+}
+
+void QActivityPartition::registerMetaTypes() const
+{
+    qRegisterMetaType<QElement *>("QElement *");
+    qRegisterMetaType<QSet<QElement *>>("QSet<QElement *>");
+    qRegisterMetaType<QList<QElement *>>("QList<QElement *>");
+
+    qRegisterMetaType<QActivityEdge *>("QActivityEdge *");
+    qRegisterMetaType<QSet<QActivityEdge *>>("QSet<QActivityEdge *>");
+    qRegisterMetaType<QList<QActivityEdge *>>("QList<QActivityEdge *>");
+
+    qRegisterMetaType<QActivityNode *>("QActivityNode *");
+    qRegisterMetaType<QSet<QActivityNode *>>("QSet<QActivityNode *>");
+    qRegisterMetaType<QList<QActivityNode *>>("QList<QActivityNode *>");
+
+    QActivityGroup::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qactivitypartition.cpp"

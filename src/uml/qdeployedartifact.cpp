@@ -74,6 +74,14 @@ QDeployedArtifact::~QDeployedArtifact()
 {
 }
 
+void QDeployedArtifact::registerMetaTypes() const
+{
+    QNamedElement::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qdeployedartifact.cpp"
 
 QT_END_NAMESPACE_QTUML

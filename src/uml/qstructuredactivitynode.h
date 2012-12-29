@@ -89,9 +89,9 @@ public:
     virtual ~QStructuredActivityNode();
 
     // Association ends from aggregated QElement
-    Q_INVOKABLE const QSet<QElement *> &ownedElements() const;
+    Q_INVOKABLE QSet<QElement *> ownedElements() const;
     Q_INVOKABLE QElement *owner() const;
-    Q_INVOKABLE const QSet<QComment *> &ownedComments() const;
+    Q_INVOKABLE QSet<QComment *> ownedComments() const;
     Q_INVOKABLE void addOwnedComment(QComment *ownedComment);
     Q_INVOKABLE void removeOwnedComment(QComment *ownedComment);
 
@@ -106,7 +106,7 @@ public:
     Q_INVOKABLE QStringExpression *nameExpression() const;
     Q_INVOKABLE void setNameExpression(QStringExpression *nameExpression);
     Q_INVOKABLE QNamespace *namespace_() const;
-    Q_INVOKABLE const QSet<QDependency *> &clientDependencies() const;
+    Q_INVOKABLE QSet<QDependency *> clientDependencies() const;
     Q_INVOKABLE void addClientDependency(QDependency *clientDependency);
     Q_INVOKABLE void removeClientDependency(QDependency *clientDependency);
 
@@ -116,31 +116,31 @@ public:
     Q_INVOKABLE void unsetLeaf();
 
     // Association ends from aggregated QRedefinableElement
-    Q_INVOKABLE const QSet<QRedefinableElement *> &redefinedElements() const;
-    Q_INVOKABLE const QSet<QClassifier *> &redefinitionContexts() const;
+    Q_INVOKABLE QSet<QRedefinableElement *> redefinedElements() const;
+    Q_INVOKABLE QSet<QClassifier *> redefinitionContexts() const;
 
     // Association ends from aggregated QActivityNode
-    Q_INVOKABLE const QSet<QActivityNode *> &redefinedNodes() const;
+    Q_INVOKABLE QSet<QActivityNode *> redefinedNodes() const;
     Q_INVOKABLE void addRedefinedNode(QActivityNode *redefinedNode);
     Q_INVOKABLE void removeRedefinedNode(QActivityNode *redefinedNode);
-    Q_INVOKABLE const QSet<QActivityEdge *> &incomings() const;
+    Q_INVOKABLE QSet<QActivityEdge *> incomings() const;
     Q_INVOKABLE void addIncoming(QActivityEdge *incoming);
     Q_INVOKABLE void removeIncoming(QActivityEdge *incoming);
-    Q_INVOKABLE const QSet<QActivityGroup *> &inGroup() const;
+    Q_INVOKABLE QSet<QActivityGroup *> inGroup() const;
     Q_INVOKABLE QStructuredActivityNode *inStructuredNode() const;
     Q_INVOKABLE void setInStructuredNode(QStructuredActivityNode *inStructuredNode);
-    Q_INVOKABLE const QSet<QActivityPartition *> &inPartition() const;
+    Q_INVOKABLE QSet<QActivityPartition *> inPartition() const;
     Q_INVOKABLE void addInPartition(QActivityPartition *inPartition);
     Q_INVOKABLE void removeInPartition(QActivityPartition *inPartition);
-    Q_INVOKABLE const QSet<QInterruptibleActivityRegion *> &inInterruptibleRegion() const;
+    Q_INVOKABLE QSet<QInterruptibleActivityRegion *> inInterruptibleRegion() const;
     Q_INVOKABLE void addInInterruptibleRegion(QInterruptibleActivityRegion *inInterruptibleRegion);
     Q_INVOKABLE void removeInInterruptibleRegion(QInterruptibleActivityRegion *inInterruptibleRegion);
-    Q_INVOKABLE const QSet<QActivityEdge *> &outgoings() const;
+    Q_INVOKABLE QSet<QActivityEdge *> outgoings() const;
     Q_INVOKABLE void addOutgoing(QActivityEdge *outgoing);
     Q_INVOKABLE void removeOutgoing(QActivityEdge *outgoing);
 
     // Association ends from aggregated QExecutableNode
-    Q_INVOKABLE const QSet<QExceptionHandler *> &handlers() const;
+    Q_INVOKABLE QSet<QExceptionHandler *> handlers() const;
     Q_INVOKABLE void addHandler(QExceptionHandler *handler);
     Q_INVOKABLE void removeHandler(QExceptionHandler *handler);
 
@@ -151,33 +151,33 @@ public:
 
     // Association ends from aggregated QAction
     Q_INVOKABLE QClassifier *context() const;
-    Q_INVOKABLE const QSet<QConstraint *> &localPostconditions() const;
+    Q_INVOKABLE QSet<QConstraint *> localPostconditions() const;
     Q_INVOKABLE void addLocalPostcondition(QConstraint *localPostcondition);
     Q_INVOKABLE void removeLocalPostcondition(QConstraint *localPostcondition);
-    Q_INVOKABLE const QSet<QConstraint *> &localPreconditions() const;
+    Q_INVOKABLE QSet<QConstraint *> localPreconditions() const;
     Q_INVOKABLE void addLocalPrecondition(QConstraint *localPrecondition);
     Q_INVOKABLE void removeLocalPrecondition(QConstraint *localPrecondition);
-    Q_INVOKABLE const QList<QInputPin *> &inputs() const;
-    Q_INVOKABLE const QList<QOutputPin *> &outputs() const;
+    Q_INVOKABLE QList<QInputPin *> inputs() const;
+    Q_INVOKABLE QList<QOutputPin *> outputs() const;
 
     // Association ends from aggregated QNamespace
-    Q_INVOKABLE const QSet<QPackageImport *> &packageImports() const;
+    Q_INVOKABLE QSet<QPackageImport *> packageImports() const;
     Q_INVOKABLE void addPackageImport(QPackageImport *packageImport);
     Q_INVOKABLE void removePackageImport(QPackageImport *packageImport);
-    Q_INVOKABLE const QSet<QNamedElement *> &members() const;
-    Q_INVOKABLE const QSet<QPackageableElement *> &importedMembers() const;
-    Q_INVOKABLE const QSet<QElementImport *> &elementImports() const;
+    Q_INVOKABLE QSet<QNamedElement *> members() const;
+    Q_INVOKABLE QSet<QPackageableElement *> importedMembers() const;
+    Q_INVOKABLE QSet<QElementImport *> elementImports() const;
     Q_INVOKABLE void addElementImport(QElementImport *elementImport);
     Q_INVOKABLE void removeElementImport(QElementImport *elementImport);
-    Q_INVOKABLE const QSet<QConstraint *> &ownedRules() const;
+    Q_INVOKABLE QSet<QConstraint *> ownedRules() const;
     Q_INVOKABLE void addOwnedRule(QConstraint *ownedRule);
     Q_INVOKABLE void removeOwnedRule(QConstraint *ownedRule);
-    Q_INVOKABLE const QSet<QNamedElement *> &ownedMembers() const;
+    Q_INVOKABLE QSet<QNamedElement *> ownedMembers() const;
 
     // Association ends from aggregated QActivityGroup
-    Q_INVOKABLE const QSet<QActivityNode *> &containedNodes() const;
-    Q_INVOKABLE const QSet<QActivityGroup *> &subgroups() const;
-    Q_INVOKABLE const QSet<QActivityEdge *> &containedEdges() const;
+    Q_INVOKABLE QSet<QActivityNode *> containedNodes() const;
+    Q_INVOKABLE QSet<QActivityGroup *> subgroups() const;
+    Q_INVOKABLE QSet<QActivityEdge *> containedEdges() const;
     Q_INVOKABLE QActivityGroup *superGroup() const;
 
     // Attributes from QStructuredActivityNode
@@ -186,23 +186,24 @@ public:
     Q_INVOKABLE void unsetMustIsolate();
 
     // Association ends from QStructuredActivityNode
-    Q_INVOKABLE const QSet<QInputPin *> &structuredNodeInputs() const;
+    Q_INVOKABLE QSet<QInputPin *> structuredNodeInputs() const;
     Q_INVOKABLE void addStructuredNodeInput(QInputPin *structuredNodeInput);
     Q_INVOKABLE void removeStructuredNodeInput(QInputPin *structuredNodeInput);
-    Q_INVOKABLE const QSet<QActivityNode *> &nodes() const;
+    Q_INVOKABLE QSet<QActivityNode *> nodes() const;
     Q_INVOKABLE void addNode(QActivityNode *node);
     Q_INVOKABLE void removeNode(QActivityNode *node);
-    Q_INVOKABLE const QSet<QOutputPin *> &structuredNodeOutputs() const;
+    Q_INVOKABLE QSet<QOutputPin *> structuredNodeOutputs() const;
     Q_INVOKABLE void addStructuredNodeOutput(QOutputPin *structuredNodeOutput);
     Q_INVOKABLE void removeStructuredNodeOutput(QOutputPin *structuredNodeOutput);
-    Q_INVOKABLE const QSet<QActivityEdge *> &edges() const;
+    Q_INVOKABLE QSet<QActivityEdge *> edges() const;
     Q_INVOKABLE void addEdge(QActivityEdge *edge);
     Q_INVOKABLE void removeEdge(QActivityEdge *edge);
-    Q_INVOKABLE const QSet<QVariable *> &variables() const;
+    Q_INVOKABLE QSet<QVariable *> variables() const;
     Q_INVOKABLE void addVariable(QVariable *variable);
     Q_INVOKABLE void removeVariable(QVariable *variable);
     Q_INVOKABLE QActivity *activity() const;
     Q_INVOKABLE void setActivity(QActivity *activity);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QStructuredActivityNode(QStructuredActivityNodePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

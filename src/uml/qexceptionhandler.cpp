@@ -109,7 +109,7 @@ void QExceptionHandler::setHandlerBody(QExecutableNode *handlerBody)
 /*!
     The kind of instances that the handler catches. If an exception occurs whose type is any of the classifiers in the set, the handler catches the exception and executes its body.
  */
-const QSet<QClassifier *> &QExceptionHandler::exceptionTypes() const
+QSet<QClassifier *> QExceptionHandler::exceptionTypes() const
 {
     // This is a read-write association end
 
@@ -188,6 +188,26 @@ void QExceptionHandler::setExceptionInput(QObjectNode *exceptionInput)
     if (d->exceptionInput != exceptionInput) {
         d->exceptionInput = exceptionInput;
     }
+}
+
+void QExceptionHandler::registerMetaTypes() const
+{
+    qRegisterMetaType<QObjectNode *>("QObjectNode *");
+    qRegisterMetaType<QSet<QObjectNode *>>("QSet<QObjectNode *>");
+    qRegisterMetaType<QList<QObjectNode *>>("QList<QObjectNode *>");
+
+    qRegisterMetaType<QClassifier *>("QClassifier *");
+    qRegisterMetaType<QSet<QClassifier *>>("QSet<QClassifier *>");
+    qRegisterMetaType<QList<QClassifier *>>("QList<QClassifier *>");
+
+    qRegisterMetaType<QExecutableNode *>("QExecutableNode *");
+    qRegisterMetaType<QSet<QExecutableNode *>>("QSet<QExecutableNode *>");
+    qRegisterMetaType<QList<QExecutableNode *>>("QList<QExecutableNode *>");
+
+    QElement::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qexceptionhandler.cpp"

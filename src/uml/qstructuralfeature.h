@@ -72,9 +72,9 @@ public:
     virtual ~QStructuralFeature();
 
     // Association ends from aggregated QElement
-    Q_INVOKABLE const QSet<QElement *> &ownedElements() const;
+    Q_INVOKABLE QSet<QElement *> ownedElements() const;
     Q_INVOKABLE QElement *owner() const;
-    Q_INVOKABLE const QSet<QComment *> &ownedComments() const;
+    Q_INVOKABLE QSet<QComment *> ownedComments() const;
     Q_INVOKABLE void addOwnedComment(QComment *ownedComment);
     Q_INVOKABLE void removeOwnedComment(QComment *ownedComment);
 
@@ -89,7 +89,7 @@ public:
     Q_INVOKABLE QStringExpression *nameExpression() const;
     Q_INVOKABLE void setNameExpression(QStringExpression *nameExpression);
     Q_INVOKABLE QNamespace *namespace_() const;
-    Q_INVOKABLE const QSet<QDependency *> &clientDependencies() const;
+    Q_INVOKABLE QSet<QDependency *> clientDependencies() const;
     Q_INVOKABLE void addClientDependency(QDependency *clientDependency);
     Q_INVOKABLE void removeClientDependency(QDependency *clientDependency);
 
@@ -122,8 +122,8 @@ public:
     Q_INVOKABLE void unsetLeaf();
 
     // Association ends from aggregated QRedefinableElement
-    Q_INVOKABLE const QSet<QRedefinableElement *> &redefinedElements() const;
-    Q_INVOKABLE const QSet<QClassifier *> &redefinitionContexts() const;
+    Q_INVOKABLE QSet<QRedefinableElement *> redefinedElements() const;
+    Q_INVOKABLE QSet<QClassifier *> redefinitionContexts() const;
 
     // Attributes from aggregated QFeature
     Q_INVOKABLE bool isStatic() const;
@@ -131,12 +131,13 @@ public:
     Q_INVOKABLE void unsetStatic();
 
     // Association ends from aggregated QFeature
-    Q_INVOKABLE const QSet<QClassifier *> &featuringClassifiers() const;
+    Q_INVOKABLE QSet<QClassifier *> featuringClassifiers() const;
 
     // Attributes from QStructuralFeature
     Q_INVOKABLE bool isReadOnly() const;
     Q_INVOKABLE void setReadOnly(bool isReadOnly);
     Q_INVOKABLE void unsetReadOnly();
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QStructuralFeature(QStructuralFeaturePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

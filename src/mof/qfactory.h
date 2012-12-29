@@ -88,8 +88,9 @@ public:
     Q_INVOKABLE QMofObject *createFromString(const QDataType *dataType, QString string);
     Q_INVOKABLE QString convertToString(const QDataType *dataType, const QMofObject *object);
     Q_INVOKABLE QElement *create(const QClass *metaClass);
-    Q_INVOKABLE QElement *createElement(const QClass *class_, const QSet<QArgument *> &arguments);
+    Q_INVOKABLE QElement *createElement(const QClass *class_, QSet<QArgument *> arguments);
     Q_INVOKABLE QLink *createLink(const QAssociation *association, const QElement *firstElement, const QElement *secondElement);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QFactory(QFactoryPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

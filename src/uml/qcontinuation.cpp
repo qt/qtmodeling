@@ -105,6 +105,14 @@ void QContinuation::unsetSetting()
     setSetting(true);
 }
 
+void QContinuation::registerMetaTypes() const
+{
+    QInteractionFragment::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qcontinuation.cpp"
 
 QT_END_NAMESPACE_QTUML

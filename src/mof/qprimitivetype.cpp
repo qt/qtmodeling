@@ -74,6 +74,14 @@ QPrimitiveType::~QPrimitiveType()
 {
 }
 
+void QPrimitiveType::registerMetaTypes() const
+{
+    QDataType::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qprimitivetype.cpp"
 
 QT_END_NAMESPACE_QTMOF

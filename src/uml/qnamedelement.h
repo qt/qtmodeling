@@ -97,15 +97,16 @@ public:
     Q_INVOKABLE QStringExpression *nameExpression() const;
     Q_INVOKABLE void setNameExpression(QStringExpression *nameExpression);
     Q_INVOKABLE QNamespace *namespace_() const;
-    Q_INVOKABLE const QSet<QDependency *> &clientDependencies() const;
+    Q_INVOKABLE QSet<QDependency *> clientDependencies() const;
     Q_INVOKABLE void addClientDependency(QDependency *clientDependency);
     Q_INVOKABLE void removeClientDependency(QDependency *clientDependency);
 
     // Operations
-    Q_INVOKABLE const QList<QNamespace *> &allNamespaces() const;
-    Q_INVOKABLE const QSet<QPackage *> &allOwningPackages() const;
+    Q_INVOKABLE QList<QNamespace *> allNamespaces() const;
+    Q_INVOKABLE QSet<QPackage *> allOwningPackages() const;
     Q_INVOKABLE bool isDistinguishableFrom(const QNamedElement *n, const QNamespace *ns) const;
     Q_INVOKABLE QString separator() const;
+    virtual void registerMetaTypes() const;
 
     // Classes which access read-only opposite properties should be friend
     friend class QNamespacePrivate;

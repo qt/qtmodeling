@@ -84,7 +84,7 @@ QParameterSet::~QParameterSet()
 /*!
     Parameters in the parameter set.
  */
-const QSet<QParameter *> &QParameterSet::parameters() const
+QSet<QParameter *> QParameterSet::parameters() const
 {
     // This is a read-write association end
 
@@ -122,7 +122,7 @@ void QParameterSet::removeParameter(QParameter *parameter)
 /*!
     Constraint that should be satisfied for the owner of the parameters in an input parameter set to start execution using the values provided for those parameters, or the owner of the parameters in an output parameter set to end execution providing the values for those parameters, if all preconditions and conditions on input parameter sets were satisfied.
  */
-const QSet<QConstraint *> &QParameterSet::conditions() const
+QSet<QConstraint *> QParameterSet::conditions() const
 {
     // This is a read-write association end
 
@@ -154,6 +154,22 @@ void QParameterSet::removeCondition(QConstraint *condition)
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(condition));
     }
+}
+
+void QParameterSet::registerMetaTypes() const
+{
+    qRegisterMetaType<QConstraint *>("QConstraint *");
+    qRegisterMetaType<QSet<QConstraint *>>("QSet<QConstraint *>");
+    qRegisterMetaType<QList<QConstraint *>>("QList<QConstraint *>");
+
+    qRegisterMetaType<QParameter *>("QParameter *");
+    qRegisterMetaType<QSet<QParameter *>>("QSet<QParameter *>");
+    qRegisterMetaType<QList<QParameter *>>("QList<QParameter *>");
+
+    QNamedElement::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qparameterset.cpp"

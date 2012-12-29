@@ -90,7 +90,7 @@ QPackage::~QPackage()
 /*!
     The Elements owned by this element.
  */
-const QSet<QElement *> &QPackage::ownedElements() const
+QSet<QElement *> QPackage::ownedElements() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedElements();
 }
@@ -106,7 +106,7 @@ QElement *QPackage::owner() const
 /*!
     The Comments owned by this element.
  */
-const QSet<QComment *> &QPackage::ownedComments() const
+QSet<QComment *> QPackage::ownedComments() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedComments();
 }
@@ -165,7 +165,7 @@ QNamespace *QPackage::namespace_() const
 /*!
     References the PackageImports owned by the Namespace.
  */
-const QSet<QPackageImport *> &QPackage::packageImports() const
+QSet<QPackageImport *> QPackage::packageImports() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->packageImports();
 }
@@ -183,7 +183,7 @@ void QPackage::removePackageImport(QPackageImport *packageImport)
 /*!
     A collection of NamedElements identifiable within the Namespace, either by being owned or by being introduced by importing or inheritance.
  */
-const QSet<QNamedElement *> &QPackage::members() const
+QSet<QNamedElement *> QPackage::members() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->members();
 }
@@ -191,7 +191,7 @@ const QSet<QNamedElement *> &QPackage::members() const
 /*!
     References the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports.
  */
-const QSet<QPackageableElement *> &QPackage::importedMembers() const
+QSet<QPackageableElement *> QPackage::importedMembers() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->importedMembers();
 }
@@ -199,7 +199,7 @@ const QSet<QPackageableElement *> &QPackage::importedMembers() const
 /*!
     References the ElementImports owned by the Namespace.
  */
-const QSet<QElementImport *> &QPackage::elementImports() const
+QSet<QElementImport *> QPackage::elementImports() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->elementImports();
 }
@@ -217,7 +217,7 @@ void QPackage::removeElementImport(QElementImport *elementImport)
 /*!
     Specifies a set of Constraints owned by this Namespace.
  */
-const QSet<QConstraint *> &QPackage::ownedRules() const
+QSet<QConstraint *> QPackage::ownedRules() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->ownedRules();
 }
@@ -235,7 +235,7 @@ void QPackage::removeOwnedRule(QConstraint *ownedRule)
 /*!
     A collection of NamedElements owned by the Namespace.
  */
-const QSet<QNamedElement *> &QPackage::ownedMembers() const
+QSet<QNamedElement *> QPackage::ownedMembers() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->ownedMembers();
 }
@@ -294,13 +294,13 @@ void QPackage::setURI(QString URI)
 /*!
     References the packaged elements that are Types.
  */
-const QSet<QType *> &QPackage::ownedTypes() const
+QSet<QType *> QPackage::ownedTypes() const
 {
     // This is a read-write derived association end
 
     qWarning("QPackage::ownedTypes: to be implemented (this is a derived associationend)");
 
-    return *(new QSet<QType *>); // change here to your derived return
+    return QSet<QType *>(); // change here to your derived return
 }
 
 void QPackage::addOwnedType(QType *ownedType)
@@ -342,7 +342,7 @@ void QPackage::removeOwnedType(QType *ownedType)
 /*!
     Specifies the packageable elements that are owned by this Package.
  */
-const QSet<QPackageableElement *> &QPackage::packagedElements() const
+QSet<QPackageableElement *> QPackage::packagedElements() const
 {
     // This is a read-write association end
 
@@ -411,7 +411,7 @@ void QPackage::setNestingPackage(QPackage *nestingPackage)
 /*!
     References the PackageMerges that are owned by this Package.
  */
-const QSet<QPackageMerge *> &QPackage::packageMerges() const
+QSet<QPackageMerge *> QPackage::packageMerges() const
 {
     // This is a read-write association end
 
@@ -454,13 +454,13 @@ void QPackage::removePackageMerge(QPackageMerge *packageMerge)
 /*!
     References the packaged elements that are Packages.
  */
-const QSet<QPackage *> &QPackage::nestedPackages() const
+QSet<QPackage *> QPackage::nestedPackages() const
 {
     // This is a read-write derived association end
 
     qWarning("QPackage::nestedPackages: to be implemented (this is a derived associationend)");
 
-    return *(new QSet<QPackage *>); // change here to your derived return
+    return QSet<QPackage *>(); // change here to your derived return
 }
 
 void QPackage::addNestedPackage(QPackage *nestedPackage)
@@ -523,11 +523,31 @@ bool QPackage::mustBeOwned() const
 /*!
     The query visibleMembers() defines which members of a Package can be accessed outside it.
  */
-const QSet<QPackageableElement *> &QPackage::visibleMembers() const
+QSet<QPackageableElement *> QPackage::visibleMembers() const
 {
     qWarning("QPackage::visibleMembers: operation to be implemented");
 
-    return *(new QSet<QPackageableElement *>); // change here to your derived return
+    return QSet<QPackageableElement *>(); // change here to your derived return
+}
+
+void QPackage::registerMetaTypes() const
+{
+    qRegisterMetaType<QNamedElement *>("QNamedElement *");
+    qRegisterMetaType<QSet<QNamedElement *>>("QSet<QNamedElement *>");
+    qRegisterMetaType<QList<QNamedElement *>>("QList<QNamedElement *>");
+
+    qRegisterMetaType<QPackageMerge *>("QPackageMerge *");
+    qRegisterMetaType<QSet<QPackageMerge *>>("QSet<QPackageMerge *>");
+    qRegisterMetaType<QList<QPackageMerge *>>("QList<QPackageMerge *>");
+
+    qRegisterMetaType<QType *>("QType *");
+    qRegisterMetaType<QSet<QType *>>("QSet<QType *>");
+    qRegisterMetaType<QList<QType *>>("QList<QType *>");
+
+    QWrappedObject::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 // Overriden methods for subsetted properties

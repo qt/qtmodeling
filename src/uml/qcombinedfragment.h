@@ -86,12 +86,13 @@ public:
     Q_INVOKABLE void unsetInteractionOperator();
 
     // Association ends from QCombinedFragment
-    Q_INVOKABLE const QSet<QGate *> &cfragmentGates() const;
+    Q_INVOKABLE QSet<QGate *> cfragmentGates() const;
     Q_INVOKABLE void addCfragmentGate(QGate *cfragmentGate);
     Q_INVOKABLE void removeCfragmentGate(QGate *cfragmentGate);
-    Q_INVOKABLE const QList<QInteractionOperand *> &operands() const;
+    Q_INVOKABLE QList<QInteractionOperand *> operands() const;
     Q_INVOKABLE void addOperand(QInteractionOperand *operand);
     Q_INVOKABLE void removeOperand(QInteractionOperand *operand);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QCombinedFragment(QCombinedFragmentPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

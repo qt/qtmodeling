@@ -83,14 +83,15 @@ public:
     Q_INVOKABLE void unsetReplaceAll();
 
     // Association ends from QReclassifyObjectAction
-    Q_INVOKABLE const QSet<QClassifier *> &oldClassifiers() const;
+    Q_INVOKABLE QSet<QClassifier *> oldClassifiers() const;
     Q_INVOKABLE void addOldClassifier(QClassifier *oldClassifier);
     Q_INVOKABLE void removeOldClassifier(QClassifier *oldClassifier);
     Q_INVOKABLE QInputPin *object() const;
     Q_INVOKABLE void setObject(QInputPin *object);
-    Q_INVOKABLE const QSet<QClassifier *> &newClassifiers() const;
+    Q_INVOKABLE QSet<QClassifier *> newClassifiers() const;
     Q_INVOKABLE void addNewClassifier(QClassifier *newClassifier);
     Q_INVOKABLE void removeNewClassifier(QClassifier *newClassifier);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QReclassifyObjectAction(QReclassifyObjectActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

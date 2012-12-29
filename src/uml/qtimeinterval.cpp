@@ -124,6 +124,18 @@ void QTimeInterval::setMin(QTimeExpression *min)
     }
 }
 
+void QTimeInterval::registerMetaTypes() const
+{
+    qRegisterMetaType<QTimeExpression *>("QTimeExpression *");
+    qRegisterMetaType<QSet<QTimeExpression *>>("QSet<QTimeExpression *>");
+    qRegisterMetaType<QList<QTimeExpression *>>("QList<QTimeExpression *>");
+
+    QInterval::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qtimeinterval.cpp"
 
 QT_END_NAMESPACE_QTUML

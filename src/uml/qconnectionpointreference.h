@@ -77,14 +77,15 @@ public:
     virtual ~QConnectionPointReference();
 
     // Association ends from QConnectionPointReference
-    Q_INVOKABLE const QSet<QPseudostate *> &exits() const;
+    Q_INVOKABLE QSet<QPseudostate *> exits() const;
     Q_INVOKABLE void addExit(QPseudostate *exit);
     Q_INVOKABLE void removeExit(QPseudostate *exit);
     Q_INVOKABLE QState *state() const;
     Q_INVOKABLE void setState(QState *state);
-    Q_INVOKABLE const QSet<QPseudostate *> &entries() const;
+    Q_INVOKABLE QSet<QPseudostate *> entries() const;
     Q_INVOKABLE void addEntry(QPseudostate *entry);
     Q_INVOKABLE void removeEntry(QPseudostate *entry);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QConnectionPointReference(QConnectionPointReferencePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

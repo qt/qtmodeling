@@ -64,6 +64,7 @@ class Q_UML_EXPORT QFlowFinalNode : public QFinalNode
 public:
     Q_INVOKABLE explicit QFlowFinalNode(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QFlowFinalNode();
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QFlowFinalNode(QFlowFinalNodePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

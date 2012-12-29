@@ -140,6 +140,18 @@ void QGeneralOrdering::setAfter(QOccurrenceSpecification *after)
     }
 }
 
+void QGeneralOrdering::registerMetaTypes() const
+{
+    qRegisterMetaType<QOccurrenceSpecification *>("QOccurrenceSpecification *");
+    qRegisterMetaType<QSet<QOccurrenceSpecification *>>("QSet<QOccurrenceSpecification *>");
+    qRegisterMetaType<QList<QOccurrenceSpecification *>>("QList<QOccurrenceSpecification *>");
+
+    QNamedElement::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qgeneralordering.cpp"
 
 QT_END_NAMESPACE_QTUML

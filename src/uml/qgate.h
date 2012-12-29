@@ -64,6 +64,7 @@ class Q_UML_EXPORT QGate : public QMessageEnd
 public:
     Q_INVOKABLE explicit QGate(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QGate();
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QGate(QGatePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

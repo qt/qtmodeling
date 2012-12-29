@@ -73,6 +73,7 @@ public:
     // Attributes from QModel
     Q_INVOKABLE QString viewpoint() const;
     Q_INVOKABLE void setViewpoint(QString viewpoint);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QModel(QModelPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

@@ -75,18 +75,18 @@ public:
     virtual ~QInclude();
 
     // Association ends from aggregated QElement
-    Q_INVOKABLE const QSet<QElement *> &ownedElements() const;
+    Q_INVOKABLE QSet<QElement *> ownedElements() const;
     Q_INVOKABLE QElement *owner() const;
-    Q_INVOKABLE const QSet<QComment *> &ownedComments() const;
+    Q_INVOKABLE QSet<QComment *> ownedComments() const;
     Q_INVOKABLE void addOwnedComment(QComment *ownedComment);
     Q_INVOKABLE void removeOwnedComment(QComment *ownedComment);
 
     // Association ends from aggregated QRelationship
-    Q_INVOKABLE const QSet<QElement *> &relatedElements() const;
+    Q_INVOKABLE QSet<QElement *> relatedElements() const;
 
     // Association ends from aggregated QDirectedRelationship
-    Q_INVOKABLE const QSet<QElement *> &sources() const;
-    Q_INVOKABLE const QSet<QElement *> &targets() const;
+    Q_INVOKABLE QSet<QElement *> sources() const;
+    Q_INVOKABLE QSet<QElement *> targets() const;
 
     // Attributes from aggregated QNamedElement
     Q_INVOKABLE QString name() const;
@@ -99,7 +99,7 @@ public:
     Q_INVOKABLE QStringExpression *nameExpression() const;
     Q_INVOKABLE void setNameExpression(QStringExpression *nameExpression);
     Q_INVOKABLE QNamespace *namespace_() const;
-    Q_INVOKABLE const QSet<QDependency *> &clientDependencies() const;
+    Q_INVOKABLE QSet<QDependency *> clientDependencies() const;
     Q_INVOKABLE void addClientDependency(QDependency *clientDependency);
     Q_INVOKABLE void removeClientDependency(QDependency *clientDependency);
 
@@ -108,6 +108,7 @@ public:
     Q_INVOKABLE void setIncludingCase(QUseCase *includingCase);
     Q_INVOKABLE QUseCase *addition() const;
     Q_INVOKABLE void setAddition(QUseCase *addition);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QInclude(QIncludePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

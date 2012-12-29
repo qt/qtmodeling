@@ -85,7 +85,7 @@ QMessageOccurrenceSpecification::~QMessageOccurrenceSpecification()
 /*!
     The Elements owned by this element.
  */
-const QSet<QElement *> &QMessageOccurrenceSpecification::ownedElements() const
+QSet<QElement *> QMessageOccurrenceSpecification::ownedElements() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedElements();
 }
@@ -101,7 +101,7 @@ QElement *QMessageOccurrenceSpecification::owner() const
 /*!
     The Comments owned by this element.
  */
-const QSet<QComment *> &QMessageOccurrenceSpecification::ownedComments() const
+QSet<QComment *> QMessageOccurrenceSpecification::ownedComments() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedComments();
 }
@@ -182,7 +182,7 @@ QNamespace *QMessageOccurrenceSpecification::namespace_() const
 /*!
     Indicates the dependencies that reference the client.
  */
-const QSet<QDependency *> &QMessageOccurrenceSpecification::clientDependencies() const
+QSet<QDependency *> QMessageOccurrenceSpecification::clientDependencies() const
 {
     return (qwrappedobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
@@ -212,6 +212,14 @@ QMessage *QMessageOccurrenceSpecification::message() const
 void QMessageOccurrenceSpecification::setMessage(QMessage *message)
 {
     (qwrappedobject_cast<QMessageEnd *>(this))->setMessage(message);
+}
+
+void QMessageOccurrenceSpecification::registerMetaTypes() const
+{
+    QWrappedObject::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qmessageoccurrencespecification.cpp"

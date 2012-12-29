@@ -156,13 +156,13 @@ declare function qtxmi:modifiedTypeFromNamespacedProperty ($property as node(), 
                      concat($type, ">")
                  else
                      $type
-    let $type := if ($collection and $property/upperValue/@value != "1") then
+    let $type := if (($property/@direction = "inout" or $property/@direction = "out") and $property/upperValue/@value != "1") then
                      concat ("const ", $type)
                  else
                      $type
     let $type := if ($collection and $element/@xmi:type = "uml:Class") then
                      if ($property/upperValue/@value != "1") then
-                         concat ($type, " &amp;")
+                         $type
                      else
                          concat ($type, " *")
                  else if ($element/@xmi:type != "uml:Class" and ($property/@direction = "inout" or $property/@direction = "out")) then

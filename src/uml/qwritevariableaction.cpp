@@ -110,6 +110,18 @@ void QWriteVariableAction::setValue(QInputPin *value)
     }
 }
 
+void QWriteVariableAction::registerMetaTypes() const
+{
+    qRegisterMetaType<QInputPin *>("QInputPin *");
+    qRegisterMetaType<QSet<QInputPin *>>("QSet<QInputPin *>");
+    qRegisterMetaType<QList<QInputPin *>>("QList<QInputPin *>");
+
+    QVariableAction::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qwritevariableaction.cpp"
 
 QT_END_NAMESPACE_QTUML

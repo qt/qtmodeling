@@ -74,6 +74,14 @@ QUsage::~QUsage()
 {
 }
 
+void QUsage::registerMetaTypes() const
+{
+    QDependency::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qusage.cpp"
 
 QT_END_NAMESPACE_QTUML

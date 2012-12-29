@@ -74,6 +74,14 @@ QAnyReceiveEvent::~QAnyReceiveEvent()
 {
 }
 
+void QAnyReceiveEvent::registerMetaTypes() const
+{
+    QMessageEvent::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qanyreceiveevent.cpp"
 
 QT_END_NAMESPACE_QTUML

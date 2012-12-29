@@ -78,15 +78,16 @@ public:
     virtual ~QDataType();
 
     // Association ends from QDataType
-    Q_INVOKABLE const QList<QOperation *> &ownedOperations() const;
+    Q_INVOKABLE QList<QOperation *> ownedOperations() const;
     Q_INVOKABLE void addOwnedOperation(QOperation *ownedOperation);
     Q_INVOKABLE void removeOwnedOperation(QOperation *ownedOperation);
-    Q_INVOKABLE const QList<QProperty *> &ownedAttributes() const;
+    Q_INVOKABLE QList<QProperty *> ownedAttributes() const;
     Q_INVOKABLE void addOwnedAttribute(QProperty *ownedAttribute);
     Q_INVOKABLE void removeOwnedAttribute(QProperty *ownedAttribute);
 
     // Operations
-    Q_INVOKABLE const QSet<QNamedElement *> &inherit(const QSet<QNamedElement *> &inhs) const;
+    Q_INVOKABLE QSet<QNamedElement *> inherit(QSet<QNamedElement *> inhs) const;
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QDataType(QDataTypePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

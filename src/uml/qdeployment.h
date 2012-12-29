@@ -83,10 +83,10 @@ public:
     // Association ends from QDeployment
     Q_INVOKABLE QDeploymentTarget *location() const;
     Q_INVOKABLE void setLocation(QDeploymentTarget *location);
-    Q_INVOKABLE const QSet<QDeploymentSpecification *> &configurations() const;
+    Q_INVOKABLE QSet<QDeploymentSpecification *> configurations() const;
     Q_INVOKABLE void addConfiguration(QDeploymentSpecification *configuration);
     Q_INVOKABLE void removeConfiguration(QDeploymentSpecification *configuration);
-    Q_INVOKABLE const QSet<QDeployedArtifact *> &deployedArtifacts() const;
+    Q_INVOKABLE QSet<QDeployedArtifact *> deployedArtifacts() const;
     Q_INVOKABLE void addDeployedArtifact(QDeployedArtifact *deployedArtifact);
     Q_INVOKABLE void removeDeployedArtifact(QDeployedArtifact *deployedArtifact);
 
@@ -95,6 +95,7 @@ public:
     Q_INVOKABLE void removeClient(QWrappedObjectPointer<QDeploymentTarget> location);
     Q_INVOKABLE void addSupplier(QWrappedObjectPointer<QDeployedArtifact> deployedArtifact);
     Q_INVOKABLE void removeSupplier(QWrappedObjectPointer<QDeployedArtifact> deployedArtifact);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QDeployment(QDeploymentPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

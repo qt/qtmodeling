@@ -73,6 +73,7 @@ public:
     // Association ends from QCallBehaviorAction
     Q_INVOKABLE QBehavior *behavior() const;
     Q_INVOKABLE void setBehavior(QBehavior *behavior);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QCallBehaviorAction(QCallBehaviorActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

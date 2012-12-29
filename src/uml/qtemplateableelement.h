@@ -79,13 +79,14 @@ public:
     // Association ends from QTemplateableElement
     Q_INVOKABLE QTemplateSignature *ownedTemplateSignature() const;
     Q_INVOKABLE void setOwnedTemplateSignature(QTemplateSignature *ownedTemplateSignature);
-    Q_INVOKABLE const QSet<QTemplateBinding *> &templateBindings() const;
+    Q_INVOKABLE QSet<QTemplateBinding *> templateBindings() const;
     Q_INVOKABLE void addTemplateBinding(QTemplateBinding *templateBinding);
     Q_INVOKABLE void removeTemplateBinding(QTemplateBinding *templateBinding);
 
     // Operations
     Q_INVOKABLE bool isTemplate() const;
-    Q_INVOKABLE const QSet<QParameterableElement *> &parameterableElements() const;
+    Q_INVOKABLE QSet<QParameterableElement *> parameterableElements() const;
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QTemplateableElement(QTemplateableElementPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

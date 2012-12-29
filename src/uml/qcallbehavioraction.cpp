@@ -102,6 +102,18 @@ void QCallBehaviorAction::setBehavior(QBehavior *behavior)
     }
 }
 
+void QCallBehaviorAction::registerMetaTypes() const
+{
+    qRegisterMetaType<QBehavior *>("QBehavior *");
+    qRegisterMetaType<QSet<QBehavior *>>("QSet<QBehavior *>");
+    qRegisterMetaType<QList<QBehavior *>>("QList<QBehavior *>");
+
+    QCallAction::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qcallbehavioraction.cpp"
 
 QT_END_NAMESPACE_QTUML

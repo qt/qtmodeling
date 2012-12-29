@@ -150,6 +150,22 @@ void QInterfaceRealization::setContract(QInterface *contract)
     }
 }
 
+void QInterfaceRealization::registerMetaTypes() const
+{
+    qRegisterMetaType<QInterface *>("QInterface *");
+    qRegisterMetaType<QSet<QInterface *>>("QSet<QInterface *>");
+    qRegisterMetaType<QList<QInterface *>>("QList<QInterface *>");
+
+    qRegisterMetaType<QBehavioredClassifier *>("QBehavioredClassifier *");
+    qRegisterMetaType<QSet<QBehavioredClassifier *>>("QSet<QBehavioredClassifier *>");
+    qRegisterMetaType<QList<QBehavioredClassifier *>>("QList<QBehavioredClassifier *>");
+
+    QRealization::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 // Overriden methods for subsetted properties
 
 void QInterfaceRealization::addClient(QWrappedObjectPointer<QBehavioredClassifier> implementingClassifier)

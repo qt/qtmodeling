@@ -181,6 +181,22 @@ void QPackageImport::setImportedPackage(QPackage *importedPackage)
     }
 }
 
+void QPackageImport::registerMetaTypes() const
+{
+    qRegisterMetaType<QPackage *>("QPackage *");
+    qRegisterMetaType<QSet<QPackage *>>("QSet<QPackage *>");
+    qRegisterMetaType<QList<QPackage *>>("QList<QPackage *>");
+
+    qRegisterMetaType<QNamespace *>("QNamespace *");
+    qRegisterMetaType<QSet<QNamespace *>>("QSet<QNamespace *>");
+    qRegisterMetaType<QList<QNamespace *>>("QList<QNamespace *>");
+
+    QDirectedRelationship::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qpackageimport.cpp"
 
 QT_END_NAMESPACE_QTMOF

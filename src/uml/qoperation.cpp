@@ -103,7 +103,7 @@ QOperation::~QOperation()
 /*!
     The Elements owned by this element.
  */
-const QSet<QElement *> &QOperation::ownedElements() const
+QSet<QElement *> QOperation::ownedElements() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedElements();
 }
@@ -119,7 +119,7 @@ QElement *QOperation::owner() const
 /*!
     The Comments owned by this element.
  */
-const QSet<QComment *> &QOperation::ownedComments() const
+QSet<QComment *> QOperation::ownedComments() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedComments();
 }
@@ -154,7 +154,7 @@ void QOperation::setOwnedTemplateSignature(QTemplateSignature *ownedTemplateSign
 /*!
     The optional bindings from this element to templates.
  */
-const QSet<QTemplateBinding *> &QOperation::templateBindings() const
+QSet<QTemplateBinding *> QOperation::templateBindings() const
 {
     return (qwrappedobject_cast<const QTemplateableElement *>(this))->templateBindings();
 }
@@ -235,7 +235,7 @@ QNamespace *QOperation::namespace_() const
 /*!
     Indicates the dependencies that reference the client.
  */
-const QSet<QDependency *> &QOperation::clientDependencies() const
+QSet<QDependency *> QOperation::clientDependencies() const
 {
     return (qwrappedobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
@@ -257,7 +257,7 @@ void QOperation::removeClientDependency(QDependency *clientDependency)
 /*!
     References the PackageImports owned by the Namespace.
  */
-const QSet<QPackageImport *> &QOperation::packageImports() const
+QSet<QPackageImport *> QOperation::packageImports() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->packageImports();
 }
@@ -275,7 +275,7 @@ void QOperation::removePackageImport(QPackageImport *packageImport)
 /*!
     A collection of NamedElements identifiable within the Namespace, either by being owned or by being introduced by importing or inheritance.
  */
-const QSet<QNamedElement *> &QOperation::members() const
+QSet<QNamedElement *> QOperation::members() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->members();
 }
@@ -283,7 +283,7 @@ const QSet<QNamedElement *> &QOperation::members() const
 /*!
     References the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports.
  */
-const QSet<QPackageableElement *> &QOperation::importedMembers() const
+QSet<QPackageableElement *> QOperation::importedMembers() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->importedMembers();
 }
@@ -291,7 +291,7 @@ const QSet<QPackageableElement *> &QOperation::importedMembers() const
 /*!
     References the ElementImports owned by the Namespace.
  */
-const QSet<QElementImport *> &QOperation::elementImports() const
+QSet<QElementImport *> QOperation::elementImports() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->elementImports();
 }
@@ -309,7 +309,7 @@ void QOperation::removeElementImport(QElementImport *elementImport)
 /*!
     Specifies a set of Constraints owned by this Namespace.
  */
-const QSet<QConstraint *> &QOperation::ownedRules() const
+QSet<QConstraint *> QOperation::ownedRules() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->ownedRules();
 }
@@ -327,7 +327,7 @@ void QOperation::removeOwnedRule(QConstraint *ownedRule)
 /*!
     A collection of NamedElements owned by the Namespace.
  */
-const QSet<QNamedElement *> &QOperation::ownedMembers() const
+QSet<QNamedElement *> QOperation::ownedMembers() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->ownedMembers();
 }
@@ -361,7 +361,7 @@ void QOperation::unsetLeaf()
 /*!
     The redefinable element that is being redefined by this element.
  */
-const QSet<QRedefinableElement *> &QOperation::redefinedElements() const
+QSet<QRedefinableElement *> QOperation::redefinedElements() const
 {
     return (qwrappedobject_cast<const QRedefinableElement *>(this))->redefinedElements();
 }
@@ -369,7 +369,7 @@ const QSet<QRedefinableElement *> &QOperation::redefinedElements() const
 /*!
     References the contexts that this element may be redefined from.
  */
-const QSet<QClassifier *> &QOperation::redefinitionContexts() const
+QSet<QClassifier *> QOperation::redefinitionContexts() const
 {
     return (qwrappedobject_cast<const QRedefinableElement *>(this))->redefinitionContexts();
 }
@@ -403,7 +403,7 @@ void QOperation::unsetStatic()
 /*!
     The Classifiers that have this Feature as a feature.
  */
-const QSet<QClassifier *> &QOperation::featuringClassifiers() const
+QSet<QClassifier *> QOperation::featuringClassifiers() const
 {
     return (qwrappedobject_cast<const QFeature *>(this))->featuringClassifiers();
 }
@@ -455,7 +455,7 @@ void QOperation::unsetAbstract()
 /*!
     The ParameterSets owned by this BehavioralFeature.
  */
-const QSet<QParameterSet *> &QOperation::ownedParameterSets() const
+QSet<QParameterSet *> QOperation::ownedParameterSets() const
 {
     return (qwrappedobject_cast<const QBehavioralFeature *>(this))->ownedParameterSets();
 }
@@ -473,7 +473,7 @@ void QOperation::removeOwnedParameterSet(QParameterSet *ownedParameterSet)
 /*!
     A behavioral description that implements the behavioral feature. There may be at most one behavior for a particular pairing of a classifier (as owner of the behavior) and a behavioral feature (as specification of the behavior).
  */
-const QSet<QBehavior *> &QOperation::methods() const
+QSet<QBehavior *> QOperation::methods() const
 {
     return (qwrappedobject_cast<const QBehavioralFeature *>(this))->methods();
 }
@@ -590,7 +590,7 @@ bool QOperation::isOrdered() const
 /*!
     Specifies the ordered set of formal parameters of this BehavioralFeature.Specifies the parameters owned by this Operation.
  */
-const QList<QParameter *> &QOperation::ownedParameters() const
+QList<QParameter *> QOperation::ownedParameters() const
 {
     // This is a read-write association end
 
@@ -658,7 +658,7 @@ void QOperation::setBodyCondition(QConstraint *bodyCondition)
 /*!
     References the Operations that are redefined by this Operation.
  */
-const QSet<QOperation *> &QOperation::redefinedOperations() const
+QSet<QOperation *> QOperation::redefinedOperations() const
 {
     // This is a read-write association end
 
@@ -695,7 +695,7 @@ void QOperation::removeRedefinedOperation(QOperation *redefinedOperation)
 /*!
     An optional set of Constraints specifying the state of the system when the Operation is completed.
  */
-const QSet<QConstraint *> &QOperation::postconditions() const
+QSet<QConstraint *> QOperation::postconditions() const
 {
     // This is a read-write association end
 
@@ -854,7 +854,7 @@ QType *QOperation::type() const
 /*!
     An optional set of Constraints on the state of the system when the Operation is invoked.
  */
-const QSet<QConstraint *> &QOperation::preconditions() const
+QSet<QConstraint *> QOperation::preconditions() const
 {
     // This is a read-write association end
 
@@ -933,7 +933,7 @@ void QOperation::setClass_(QClass *class_)
 /*!
     References the Types representing exceptions that may be raised during an invocation of this operation.
  */
-const QSet<QType *> &QOperation::raisedExceptions() const
+QSet<QType *> QOperation::raisedExceptions() const
 {
     // This is a read-write association end
 
@@ -975,11 +975,51 @@ bool QOperation::isConsistentWith(const QRedefinableElement *redefinee) const
 /*!
     The query returnResult() returns the set containing the return parameter of the Operation if one exists, otherwise, it returns an empty set
  */
-const QSet<QParameter *> &QOperation::returnResult() const
+QSet<QParameter *> QOperation::returnResult() const
 {
     qWarning("QOperation::returnResult: operation to be implemented");
 
-    return *(new QSet<QParameter *>); // change here to your derived return
+    return QSet<QParameter *>(); // change here to your derived return
+}
+
+void QOperation::registerMetaTypes() const
+{
+    qRegisterMetaType<QRedefinableElement *>("QRedefinableElement *");
+    qRegisterMetaType<QSet<QRedefinableElement *>>("QSet<QRedefinableElement *>");
+    qRegisterMetaType<QList<QRedefinableElement *>>("QList<QRedefinableElement *>");
+
+    qRegisterMetaType<QType *>("QType *");
+    qRegisterMetaType<QSet<QType *>>("QSet<QType *>");
+    qRegisterMetaType<QList<QType *>>("QList<QType *>");
+
+    qRegisterMetaType<QOperationTemplateParameter *>("QOperationTemplateParameter *");
+    qRegisterMetaType<QSet<QOperationTemplateParameter *>>("QSet<QOperationTemplateParameter *>");
+    qRegisterMetaType<QList<QOperationTemplateParameter *>>("QList<QOperationTemplateParameter *>");
+
+    qRegisterMetaType<QParameter *>("QParameter *");
+    qRegisterMetaType<QSet<QParameter *>>("QSet<QParameter *>");
+    qRegisterMetaType<QList<QParameter *>>("QList<QParameter *>");
+
+    qRegisterMetaType<QInterface *>("QInterface *");
+    qRegisterMetaType<QSet<QInterface *>>("QSet<QInterface *>");
+    qRegisterMetaType<QList<QInterface *>>("QList<QInterface *>");
+
+    qRegisterMetaType<QConstraint *>("QConstraint *");
+    qRegisterMetaType<QSet<QConstraint *>>("QSet<QConstraint *>");
+    qRegisterMetaType<QList<QConstraint *>>("QList<QConstraint *>");
+
+    qRegisterMetaType<QDataType *>("QDataType *");
+    qRegisterMetaType<QSet<QDataType *>>("QSet<QDataType *>");
+    qRegisterMetaType<QList<QDataType *>>("QList<QDataType *>");
+
+    qRegisterMetaType<QClass *>("QClass *");
+    qRegisterMetaType<QSet<QClass *>>("QSet<QClass *>");
+    qRegisterMetaType<QList<QClass *>>("QList<QClass *>");
+
+    QWrappedObject::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qoperation.cpp"

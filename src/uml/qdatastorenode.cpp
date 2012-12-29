@@ -74,6 +74,14 @@ QDataStoreNode::~QDataStoreNode()
 {
 }
 
+void QDataStoreNode::registerMetaTypes() const
+{
+    QCentralBufferNode::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qdatastorenode.cpp"
 
 QT_END_NAMESPACE_QTUML

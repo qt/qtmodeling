@@ -88,7 +88,7 @@ QStructuralFeature::~QStructuralFeature()
 /*!
     The Elements owned by this element.
  */
-const QSet<QElement *> &QStructuralFeature::ownedElements() const
+QSet<QElement *> QStructuralFeature::ownedElements() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedElements();
 }
@@ -104,7 +104,7 @@ QElement *QStructuralFeature::owner() const
 /*!
     The Comments owned by this element.
  */
-const QSet<QComment *> &QStructuralFeature::ownedComments() const
+QSet<QComment *> QStructuralFeature::ownedComments() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedComments();
 }
@@ -198,7 +198,7 @@ void QStructuralFeature::unsetLeaf()
 /*!
     The redefinable element that is being redefined by this element.
  */
-const QSet<QRedefinableElement *> &QStructuralFeature::redefinedElements() const
+QSet<QRedefinableElement *> QStructuralFeature::redefinedElements() const
 {
     return (qwrappedobject_cast<const QRedefinableElement *>(this))->redefinedElements();
 }
@@ -206,7 +206,7 @@ const QSet<QRedefinableElement *> &QStructuralFeature::redefinedElements() const
 /*!
     References the contexts that this element may be redefined from.
  */
-const QSet<QClassifier *> &QStructuralFeature::redefinitionContexts() const
+QSet<QClassifier *> QStructuralFeature::redefinitionContexts() const
 {
     return (qwrappedobject_cast<const QRedefinableElement *>(this))->redefinitionContexts();
 }
@@ -240,7 +240,7 @@ void QStructuralFeature::unsetStatic()
 /*!
     The Classifiers that have this Feature as a feature.
  */
-const QSet<QClassifier *> &QStructuralFeature::featuringClassifiers() const
+QSet<QClassifier *> QStructuralFeature::featuringClassifiers() const
 {
     return (qwrappedobject_cast<const QFeature *>(this))->featuringClassifiers();
 }
@@ -391,6 +391,14 @@ void QStructuralFeature::setReadOnly(bool isReadOnly)
 void QStructuralFeature::unsetReadOnly()
 {
     setReadOnly(false);
+}
+
+void QStructuralFeature::registerMetaTypes() const
+{
+    QWrappedObject::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qstructuralfeature.cpp"

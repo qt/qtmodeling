@@ -146,7 +146,7 @@ void QActivity::unsetSingleExecution()
 /*!
     Top-level partitions in the activity.
  */
-const QSet<QActivityPartition *> &QActivity::partitions() const
+QSet<QActivityPartition *> QActivity::partitions() const
 {
     // This is a read-write association end
 
@@ -183,7 +183,7 @@ void QActivity::removePartition(QActivityPartition *partition)
 /*!
     Nodes coordinated by the activity.
  */
-const QSet<QActivityNode *> &QActivity::nodes() const
+QSet<QActivityNode *> QActivity::nodes() const
 {
     // This is a read-write association end
 
@@ -226,7 +226,7 @@ void QActivity::removeNode(QActivityNode *node)
 /*!
     Top-level variables in the activity.
  */
-const QSet<QVariable *> &QActivity::variables() const
+QSet<QVariable *> QActivity::variables() const
 {
     // This is a read-write association end
 
@@ -269,7 +269,7 @@ void QActivity::removeVariable(QVariable *variable)
 /*!
     Top-level structured nodes in the activity.
  */
-const QSet<QStructuredActivityNode *> &QActivity::structuredNodes() const
+QSet<QStructuredActivityNode *> QActivity::structuredNodes() const
 {
     // This is a read-write association end
 
@@ -314,7 +314,7 @@ void QActivity::removeStructuredNode(QStructuredActivityNode *structuredNode)
 /*!
     Top-level groups in the activity.
  */
-const QSet<QActivityGroup *> &QActivity::groups() const
+QSet<QActivityGroup *> QActivity::groups() const
 {
     // This is a read-write association end
 
@@ -357,7 +357,7 @@ void QActivity::removeGroup(QActivityGroup *group)
 /*!
     Edges expressing flow between nodes of the activity.
  */
-const QSet<QActivityEdge *> &QActivity::edges() const
+QSet<QActivityEdge *> QActivity::edges() const
 {
     // This is a read-write association end
 
@@ -395,6 +395,38 @@ void QActivity::removeEdge(QActivityEdge *edge)
         // Adjust opposite property
         edge->setActivity(0);
     }
+}
+
+void QActivity::registerMetaTypes() const
+{
+    qRegisterMetaType<QStructuredActivityNode *>("QStructuredActivityNode *");
+    qRegisterMetaType<QSet<QStructuredActivityNode *>>("QSet<QStructuredActivityNode *>");
+    qRegisterMetaType<QList<QStructuredActivityNode *>>("QList<QStructuredActivityNode *>");
+
+    qRegisterMetaType<QVariable *>("QVariable *");
+    qRegisterMetaType<QSet<QVariable *>>("QSet<QVariable *>");
+    qRegisterMetaType<QList<QVariable *>>("QList<QVariable *>");
+
+    qRegisterMetaType<QActivityPartition *>("QActivityPartition *");
+    qRegisterMetaType<QSet<QActivityPartition *>>("QSet<QActivityPartition *>");
+    qRegisterMetaType<QList<QActivityPartition *>>("QList<QActivityPartition *>");
+
+    qRegisterMetaType<QActivityGroup *>("QActivityGroup *");
+    qRegisterMetaType<QSet<QActivityGroup *>>("QSet<QActivityGroup *>");
+    qRegisterMetaType<QList<QActivityGroup *>>("QList<QActivityGroup *>");
+
+    qRegisterMetaType<QActivityEdge *>("QActivityEdge *");
+    qRegisterMetaType<QSet<QActivityEdge *>>("QSet<QActivityEdge *>");
+    qRegisterMetaType<QList<QActivityEdge *>>("QList<QActivityEdge *>");
+
+    qRegisterMetaType<QActivityNode *>("QActivityNode *");
+    qRegisterMetaType<QSet<QActivityNode *>>("QSet<QActivityNode *>");
+    qRegisterMetaType<QList<QActivityNode *>>("QList<QActivityNode *>");
+
+    QBehavior::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 // Overriden methods for subsetted properties

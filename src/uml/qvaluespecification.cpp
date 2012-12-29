@@ -87,7 +87,7 @@ QValueSpecification::~QValueSpecification()
 /*!
     The Elements owned by this element.
  */
-const QSet<QElement *> &QValueSpecification::ownedElements() const
+QSet<QElement *> QValueSpecification::ownedElements() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedElements();
 }
@@ -103,7 +103,7 @@ QElement *QValueSpecification::owner() const
 /*!
     The Comments owned by this element.
  */
-const QSet<QComment *> &QValueSpecification::ownedComments() const
+QSet<QComment *> QValueSpecification::ownedComments() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedComments();
 }
@@ -171,7 +171,7 @@ QNamespace *QValueSpecification::namespace_() const
 /*!
     Indicates the dependencies that reference the client.
  */
-const QSet<QDependency *> &QValueSpecification::clientDependencies() const
+QSet<QDependency *> QValueSpecification::clientDependencies() const
 {
     return (qwrappedobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
@@ -334,6 +334,18 @@ qint32 QValueSpecification::unlimitedValue() const
     qWarning("QValueSpecification::unlimitedValue: operation to be implemented");
 
     return qint32(); // change here to your derived return
+}
+
+void QValueSpecification::registerMetaTypes() const
+{
+    qRegisterMetaType<QParameterableElement *>("QParameterableElement *");
+    qRegisterMetaType<QSet<QParameterableElement *>>("QSet<QParameterableElement *>");
+    qRegisterMetaType<QList<QParameterableElement *>>("QList<QParameterableElement *>");
+
+    QWrappedObject::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qvaluespecification.cpp"

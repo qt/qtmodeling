@@ -102,6 +102,18 @@ void QInstanceValue::setInstance(QInstanceSpecification *instance)
     }
 }
 
+void QInstanceValue::registerMetaTypes() const
+{
+    qRegisterMetaType<QInstanceSpecification *>("QInstanceSpecification *");
+    qRegisterMetaType<QSet<QInstanceSpecification *>>("QSet<QInstanceSpecification *>");
+    qRegisterMetaType<QList<QInstanceSpecification *>>("QList<QInstanceSpecification *>");
+
+    QValueSpecification::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qinstancevalue.cpp"
 
 QT_END_NAMESPACE_QTUML

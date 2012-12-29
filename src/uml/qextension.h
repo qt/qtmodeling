@@ -84,6 +84,7 @@ public:
 
     // Operations
     Q_INVOKABLE QProperty *metaclassEnd() const;
+    virtual void registerMetaTypes() const;
 
     // Classes which access read-only opposite properties should be friend
     friend class QClassPrivate;

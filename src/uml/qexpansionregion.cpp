@@ -114,7 +114,7 @@ void QExpansionRegion::unsetMode()
 /*!
     An object node that holds a separate element of the input collection during each of the multiple executions of the region.
  */
-const QSet<QExpansionNode *> &QExpansionRegion::inputElements() const
+QSet<QExpansionNode *> QExpansionRegion::inputElements() const
 {
     // This is a read-write association end
 
@@ -151,7 +151,7 @@ void QExpansionRegion::removeInputElement(QExpansionNode *inputElement)
 /*!
     An object node that accepts a separate element of the output collection during each of the multiple executions of the region. The values are formed into a collection that is available when the execution of the region is complete.
  */
-const QSet<QExpansionNode *> &QExpansionRegion::outputElements() const
+QSet<QExpansionNode *> QExpansionRegion::outputElements() const
 {
     // This is a read-write association end
 
@@ -183,6 +183,18 @@ void QExpansionRegion::removeOutputElement(QExpansionNode *outputElement)
         // Adjust opposite property
         outputElement->setRegionAsOutput(0);
     }
+}
+
+void QExpansionRegion::registerMetaTypes() const
+{
+    qRegisterMetaType<QExpansionNode *>("QExpansionNode *");
+    qRegisterMetaType<QSet<QExpansionNode *>>("QSet<QExpansionNode *>");
+    qRegisterMetaType<QList<QExpansionNode *>>("QList<QExpansionNode *>");
+
+    QStructuredActivityNode::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qexpansionregion.cpp"

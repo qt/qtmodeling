@@ -74,6 +74,14 @@ QFlowFinalNode::~QFlowFinalNode()
 {
 }
 
+void QFlowFinalNode::registerMetaTypes() const
+{
+    QFinalNode::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qflowfinalnode.cpp"
 
 QT_END_NAMESPACE_QTUML

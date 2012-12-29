@@ -80,10 +80,10 @@ public:
     virtual ~QBehavioredClassifier();
 
     // Association ends from QBehavioredClassifier
-    Q_INVOKABLE const QSet<QBehavior *> &ownedBehaviors() const;
+    Q_INVOKABLE QSet<QBehavior *> ownedBehaviors() const;
     Q_INVOKABLE void addOwnedBehavior(QBehavior *ownedBehavior);
     Q_INVOKABLE void removeOwnedBehavior(QBehavior *ownedBehavior);
-    Q_INVOKABLE const QSet<QInterfaceRealization *> &interfaceRealizations() const;
+    Q_INVOKABLE QSet<QInterfaceRealization *> interfaceRealizations() const;
     Q_INVOKABLE void addInterfaceRealization(QInterfaceRealization *interfaceRealization);
     Q_INVOKABLE void removeInterfaceRealization(QInterfaceRealization *interfaceRealization);
     Q_INVOKABLE QBehavior *classifierBehavior() const;
@@ -92,6 +92,7 @@ public:
     // Overriden methods for subsetted properties
     Q_INVOKABLE void addClientDependency(QWrappedObjectPointer<QInterfaceRealization> interfaceRealization);
     Q_INVOKABLE void removeClientDependency(QWrappedObjectPointer<QInterfaceRealization> interfaceRealization);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QBehavioredClassifier(QBehavioredClassifierPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

@@ -143,7 +143,7 @@ void QConditionalNode::unsetDeterminate()
 /*!
     Set of clauses composing the conditional.
  */
-const QSet<QClause *> &QConditionalNode::clauses() const
+QSet<QClause *> QConditionalNode::clauses() const
 {
     // This is a read-write association end
 
@@ -180,7 +180,7 @@ void QConditionalNode::removeClause(QClause *clause)
 /*!
     A list of output pins that constitute the data flow outputs of the conditional.
  */
-const QList<QOutputPin *> &QConditionalNode::results() const
+QList<QOutputPin *> QConditionalNode::results() const
 {
     // This is a read-write association end
 
@@ -208,6 +208,22 @@ void QConditionalNode::removeResult(QOutputPin *result)
         d->results.removeAll(result);
         qTopLevelWrapper(result)->setParent(0);
     }
+}
+
+void QConditionalNode::registerMetaTypes() const
+{
+    qRegisterMetaType<QClause *>("QClause *");
+    qRegisterMetaType<QSet<QClause *>>("QSet<QClause *>");
+    qRegisterMetaType<QList<QClause *>>("QList<QClause *>");
+
+    qRegisterMetaType<QOutputPin *>("QOutputPin *");
+    qRegisterMetaType<QSet<QOutputPin *>>("QSet<QOutputPin *>");
+    qRegisterMetaType<QList<QOutputPin *>>("QList<QOutputPin *>");
+
+    QStructuredActivityNode::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qconditionalnode.cpp"

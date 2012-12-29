@@ -84,7 +84,7 @@ QStereotype::~QStereotype()
 /*!
     Stereotype can change the graphical appearance of the extended model element by using attached icons. When this association is not null, it references the location of the icon content to be displayed within diagrams presenting the extended model elements.
  */
-const QSet<QImage *> &QStereotype::icons() const
+QSet<QImage *> QStereotype::icons() const
 {
     // This is a read-write association end
 
@@ -138,6 +138,22 @@ QProfile *QStereotype::containingProfile() const
     qWarning("QStereotype::containingProfile: operation to be implemented");
 
     return 0; // change here to your derived return
+}
+
+void QStereotype::registerMetaTypes() const
+{
+    qRegisterMetaType<QImage *>("QImage *");
+    qRegisterMetaType<QSet<QImage *>>("QSet<QImage *>");
+    qRegisterMetaType<QList<QImage *>>("QList<QImage *>");
+
+    qRegisterMetaType<QProfile *>("QProfile *");
+    qRegisterMetaType<QSet<QProfile *>>("QSet<QProfile *>");
+    qRegisterMetaType<QList<QProfile *>>("QList<QProfile *>");
+
+    QClass::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qstereotype.cpp"

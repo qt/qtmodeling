@@ -5,6 +5,7 @@
 #include <QtWrappedObjects/QMetaWrappedObject>
 
 #include <QtUml/QModel>
+#include <QtUml/QElementImport>
 #include <QtUml/QPrimitiveType>
 #include <QtUml/QEnumeration>
 #include <QtUml/QEnumerationLiteral>
@@ -76,12 +77,23 @@ MainWindow::MainWindow(QWidget *parent) :
     QWrappedObjectPointer<QClass> class2_ = new QClass;
     class2_->setName("InterStudent");
 
+    QWrappedObjectPointer<QModel> model2 = new QModel;
+    model2->setName("Model2");
+    QWrappedObjectPointer<QClass> class3_ = new QClass;
+    class3_->setName("Professor");
+    model2->addOwnedType(class3_);
+
+    QWrappedObjectPointer<QElementImport> elementImport = new QElementImport;
+    elementImport->setObjectName("ElementImport1");
+    elementImport->setImportedElement(class3_);
+
     package->addOwnedType(enumeration);
     package->addOwnedType(class_);
     package->addOwnedType(class2_);
 
     model->addNestedPackage(package);
     model->addOwnedType(primitiveType);
+    model->addElementImport(elementImport);
 
     populateModelExplorer(model);
     ui->modelExplorer->setCurrentItem(ui->modelExplorer->topLevelItem(0));
@@ -95,7 +107,7 @@ MainWindow::~MainWindow()
 void MainWindow::contextMenuEvent(QContextMenuEvent *event)
 {
     QMenu menu(this);
-    QObject *element = ui->modelExplorer->currentItem()->data(0, Qt::UserRole).value<QObject *>();
+    QObject *element = qvariant_cast<QObject *>(ui->modelExplorer->currentItem()->data(0, Qt::UserRole));
     _visitedAddMethods.clear();
     populateContextMenu(menu, element);
     menu.exec(event->globalPos());
@@ -103,8 +115,8 @@ void MainWindow::contextMenuEvent(QContextMenuEvent *event)
 
 void MainWindow::populateContextMenu(QMenu &menu, QObject *element)
 {
-    foreach (QObject *child, element->children())
-        populateContextMenu(menu, child);
+//    foreach (QObject *child, element->children())
+//        populateContextMenu(menu, child);
 
     const QMetaObject *metaObject = element->metaObject();
     int propertyCount = metaObject->propertyCount();
@@ -113,7 +125,7 @@ void MainWindow::populateContextMenu(QMenu &menu, QObject *element)
         QString propertyType = metaObject->property(i).typeName();
         if (propertyType.contains("QList") || propertyType.contains("QSet")) {
             QString modifiedPropertyName = QString(propertyName.left(1).toUpper()+propertyName.mid(1)).remove(QRegularExpression("s$")).replace(QRegularExpression("ie$"), "y").replace(QRegularExpression("se$"), "s").replace(QRegularExpression("ice$"), "ex").replace(QRegularExpression("ce$"), "x");
-            QString methodParameter = QString(metaObject->property(i).typeName()).remove("const QList<").remove("const QSet<").remove(">*");
+            QString methodParameter = QString(metaObject->property(i).typeName()).remove("QList<").remove("QSet<").remove(">");
             QString methodSignature = QString("add%1(%2)").arg(modifiedPropertyName).arg(methodParameter);
             int metaMethodIndex;
             QString text = tr("Add %1").arg(modifiedPropertyName);
@@ -135,7 +147,7 @@ void MainWindow::on_modelExplorer_currentItemChanged(QTreeWidgetItem *current, Q
     if (!current)
         return;
 
-    QWrappedObject *element = current->data(0, Qt::UserRole).value<QWrappedObject *>();
+    QWrappedObject *element = qvariant_cast<QWrappedObject *>(current->data(0, Qt::UserRole));
     WrappedObjectPropertyModel *model = qobject_cast<WrappedObjectPropertyModel *>(ui->propertyEditor->model());
     if (element && model) {
         model->setWrappedObject(element);
@@ -169,30 +181,24 @@ void MainWindow::populateModelExplorer(QWrappedObject *element, QTreeWidgetItem 
         QWrappedObject *propertyWrappedObject = metaPropertyInfo.propertyWrappedObject;
         QString typeName = metaProperty.typeName();
 
-        if (typeName.endsWith('*') && !typeName.contains(QRegularExpression ("QSet|QList")) && metaProperty.read(propertyWrappedObject).value<QWrappedObject *>()) {
-            QWrappedObject *wrappedObject = metaProperty.read(propertyWrappedObject).value<QWrappedObject *>();
+        if (typeName.endsWith('*') && qvariant_cast<QWrappedObject *>(metaProperty.read(propertyWrappedObject))) {
+            QWrappedObject *wrappedObject = qvariant_cast<QWrappedObject *>(metaProperty.read(propertyWrappedObject));
             if (!_visitedObjects.contains(qTopLevelWrapper(wrappedObject)))
                 populateModelExplorer(wrappedObject, item);
             if (!metaProperty.isStored())
                 delete wrappedObject;
         }
-        else if (typeName.endsWith('*') && typeName.contains("QSet") && metaProperty.read(propertyWrappedObject).isValid()) {
-            if (QSet<QWrappedObject *> *elements = *(static_cast<QSet<QWrappedObject *> **>(metaProperty.read(propertyWrappedObject).data()))) {
-                foreach (QWrappedObject *wrappedObject, *elements)
-                    if (!_visitedObjects.contains(qTopLevelWrapper(wrappedObject)))
-                        populateModelExplorer(wrappedObject, item);
-                if (!metaProperty.isStored())
-                    delete elements;
-            }
+        else if (typeName.contains("QSet") && metaProperty.read(propertyWrappedObject).isValid()) {
+            QSet<QWrappedObject *> elements = *(static_cast<QSet<QWrappedObject *> *>(metaProperty.read(propertyWrappedObject).data()));
+            foreach (QWrappedObject *wrappedObject, elements)
+                if (!_visitedObjects.contains(qTopLevelWrapper(wrappedObject)))
+                    populateModelExplorer(wrappedObject, item);
         }
-        else if (typeName.endsWith('*') && typeName.contains("QList") && metaProperty.read(propertyWrappedObject).isValid()) {
-            if (QList<QWrappedObject *> *elements = *(static_cast<QList<QWrappedObject *> **>(metaProperty.read(propertyWrappedObject).data()))) {
-                foreach (QWrappedObject *wrappedObject, *elements)
-                    if (!_visitedObjects.contains(qTopLevelWrapper(wrappedObject)))
-                        populateModelExplorer(wrappedObject, item);
-                if (!metaProperty.isStored())
-                    delete elements;
-            }
+        else if (typeName.contains("QList") && metaProperty.read(propertyWrappedObject).isValid()) {
+            QList<QWrappedObject *> elements = *(static_cast<QList<QWrappedObject *> *>(metaProperty.read(propertyWrappedObject).data()));
+            foreach (QWrappedObject *wrappedObject, elements)
+                if (!_visitedObjects.contains(qTopLevelWrapper(wrappedObject)))
+                    populateModelExplorer(wrappedObject, item);
         }
     }
 
@@ -214,7 +220,8 @@ void MainWindow::handleAddMethod()
                 QObject *addedElement = metaObject->newInstance();
                 addedElement->setObjectName(QString("Unamed %1").arg(elementType.remove("*")));
                 if (addedElement)
-                    metaMethod.invoke(element, Q_ARG(QObject *, addedElement));
+                    if (!metaMethod.invoke(element, Q_ARG(QObject *, addedElement)))
+                        qDebug() << "Error when invoking metaMethod !";
             }
         }
     }
@@ -223,7 +230,7 @@ void MainWindow::handleAddMethod()
 
 void MainWindow::refreshModel()
 {
-    QWrappedObject *rootElement = ui->modelExplorer->topLevelItem(0)->data(0, Qt::UserRole).value<QWrappedObject *>();
+    QWrappedObject *rootElement = qvariant_cast<QWrappedObject *>(ui->modelExplorer->topLevelItem(0)->data(0, Qt::UserRole));
     ui->modelExplorer->clear();
     _visitedObjects.clear();
     populateModelExplorer(rootElement);

@@ -125,6 +125,14 @@ qint32 QLiteralUnlimitedNatural::unlimitedValue() const
     return qint32(); // change here to your derived return
 }
 
+void QLiteralUnlimitedNatural::registerMetaTypes() const
+{
+    QLiteralSpecification::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qliteralunlimitednatural.cpp"
 
 QT_END_NAMESPACE_QTMOF

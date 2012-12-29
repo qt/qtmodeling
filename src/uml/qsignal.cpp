@@ -83,7 +83,7 @@ QSignal::~QSignal()
 /*!
     The attributes owned by the signal.
  */
-const QList<QProperty *> &QSignal::ownedAttributes() const
+QList<QProperty *> QSignal::ownedAttributes() const
 {
     // This is a read-write association end
 
@@ -117,6 +117,18 @@ void QSignal::removeOwnedAttribute(QProperty *ownedAttribute)
         (qwrappedobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qwrappedobject_cast<QNamedElement *>(ownedAttribute));
         (qwrappedobject_cast<QClassifierPrivate *>(d))->removeAttribute(qwrappedobject_cast<QProperty *>(ownedAttribute));
     }
+}
+
+void QSignal::registerMetaTypes() const
+{
+    qRegisterMetaType<QProperty *>("QProperty *");
+    qRegisterMetaType<QSet<QProperty *>>("QSet<QProperty *>");
+    qRegisterMetaType<QList<QProperty *>>("QList<QProperty *>");
+
+    QClassifier::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qsignal.cpp"

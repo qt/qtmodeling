@@ -85,7 +85,7 @@ QTemplateSignature::~QTemplateSignature()
 /*!
     The ordered set of all formal template parameters for this template signature.
  */
-const QList<QTemplateParameter *> &QTemplateSignature::parameters() const
+QList<QTemplateParameter *> QTemplateSignature::parameters() const
 {
     // This is a read-write association end
 
@@ -145,7 +145,7 @@ void QTemplateSignature::setTemplate_(QTemplateableElement *template_)
 /*!
     The formal template parameters that are owned by this template signature.
  */
-const QList<QTemplateParameter *> &QTemplateSignature::ownedParameters() const
+QList<QTemplateParameter *> QTemplateSignature::ownedParameters() const
 {
     // This is a read-write association end
 
@@ -185,6 +185,22 @@ void QTemplateSignature::removeOwnedParameter(QTemplateParameter *ownedParameter
         // Adjust opposite property
         ownedParameter->setSignature(0);
     }
+}
+
+void QTemplateSignature::registerMetaTypes() const
+{
+    qRegisterMetaType<QTemplateParameter *>("QTemplateParameter *");
+    qRegisterMetaType<QSet<QTemplateParameter *>>("QSet<QTemplateParameter *>");
+    qRegisterMetaType<QList<QTemplateParameter *>>("QList<QTemplateParameter *>");
+
+    qRegisterMetaType<QTemplateableElement *>("QTemplateableElement *");
+    qRegisterMetaType<QSet<QTemplateableElement *>>("QSet<QTemplateableElement *>");
+    qRegisterMetaType<QList<QTemplateableElement *>>("QList<QTemplateableElement *>");
+
+    QElement::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qtemplatesignature.cpp"

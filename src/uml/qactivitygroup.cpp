@@ -228,7 +228,7 @@ void QActivityGroup::setInActivity(QActivity *inActivity)
 /*!
     Nodes immediately contained in the group.
  */
-const QSet<QActivityNode *> &QActivityGroup::containedNodes() const
+QSet<QActivityNode *> QActivityGroup::containedNodes() const
 {
     // This is a read-only derived-union association end
 
@@ -239,7 +239,7 @@ const QSet<QActivityNode *> &QActivityGroup::containedNodes() const
 /*!
     Groups immediately contained in the group.
  */
-const QSet<QActivityGroup *> &QActivityGroup::subgroups() const
+QSet<QActivityGroup *> QActivityGroup::subgroups() const
 {
     // This is a read-only derived-union association end
 
@@ -250,7 +250,7 @@ const QSet<QActivityGroup *> &QActivityGroup::subgroups() const
 /*!
     Edges immediately contained in the group.
  */
-const QSet<QActivityEdge *> &QActivityGroup::containedEdges() const
+QSet<QActivityEdge *> QActivityGroup::containedEdges() const
 {
     // This is a read-only derived-union association end
 
@@ -267,6 +267,26 @@ QActivityGroup *QActivityGroup::superGroup() const
 
     Q_D(const QActivityGroup);
     return d->superGroup;
+}
+
+void QActivityGroup::registerMetaTypes() const
+{
+    qRegisterMetaType<QActivity *>("QActivity *");
+    qRegisterMetaType<QSet<QActivity *>>("QSet<QActivity *>");
+    qRegisterMetaType<QList<QActivity *>>("QList<QActivity *>");
+
+    qRegisterMetaType<QActivityEdge *>("QActivityEdge *");
+    qRegisterMetaType<QSet<QActivityEdge *>>("QSet<QActivityEdge *>");
+    qRegisterMetaType<QList<QActivityEdge *>>("QList<QActivityEdge *>");
+
+    qRegisterMetaType<QActivityNode *>("QActivityNode *");
+    qRegisterMetaType<QSet<QActivityNode *>>("QSet<QActivityNode *>");
+    qRegisterMetaType<QList<QActivityNode *>>("QList<QActivityNode *>");
+
+    QNamedElement::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qactivitygroup.cpp"

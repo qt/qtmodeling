@@ -171,7 +171,7 @@ bool QOperation::isOrdered() const
 /*!
     Specifies the parameters owned by this Operation.
  */
-const QList<QParameter *> &QOperation::ownedParameters() const
+QList<QParameter *> QOperation::ownedParameters() const
 {
     // This is a read-write association end
 
@@ -239,7 +239,7 @@ void QOperation::setBodyCondition(QConstraint *bodyCondition)
 /*!
     References the Operations that are redefined by this Operation.
  */
-const QSet<QOperation *> &QOperation::redefinedOperations() const
+QSet<QOperation *> QOperation::redefinedOperations() const
 {
     // This is a read-write association end
 
@@ -276,7 +276,7 @@ void QOperation::removeRedefinedOperation(QOperation *redefinedOperation)
 /*!
     An optional set of Constraints specifying the state of the system when the Operation is completed.
  */
-const QSet<QConstraint *> &QOperation::postconditions() const
+QSet<QConstraint *> QOperation::postconditions() const
 {
     // This is a read-write association end
 
@@ -367,7 +367,7 @@ QType *QOperation::type() const
 /*!
     An optional set of Constraints on the state of the system when the Operation is invoked.
  */
-const QSet<QConstraint *> &QOperation::preconditions() const
+QSet<QConstraint *> QOperation::preconditions() const
 {
     // This is a read-write association end
 
@@ -446,7 +446,7 @@ void QOperation::setClass_(QClass *class_)
 /*!
     References the Types representing exceptions that may be raised during an invocation of this operation.
  */
-const QSet<QType *> &QOperation::raisedExceptions() const
+QSet<QType *> QOperation::raisedExceptions() const
 {
     // This is a read-write association end
 
@@ -488,11 +488,43 @@ bool QOperation::isConsistentWith(const QRedefinableElement *redefinee) const
 /*!
     The query returnResult() returns the set containing the return parameter of the Operation if one exists, otherwise, it returns an empty set
  */
-const QSet<QParameter *> &QOperation::returnResult() const
+QSet<QParameter *> QOperation::returnResult() const
 {
     qWarning("QOperation::returnResult: operation to be implemented");
 
-    return *(new QSet<QParameter *>); // change here to your derived return
+    return QSet<QParameter *>(); // change here to your derived return
+}
+
+void QOperation::registerMetaTypes() const
+{
+    qRegisterMetaType<QType *>("QType *");
+    qRegisterMetaType<QSet<QType *>>("QSet<QType *>");
+    qRegisterMetaType<QList<QType *>>("QList<QType *>");
+
+    qRegisterMetaType<QRedefinableElement *>("QRedefinableElement *");
+    qRegisterMetaType<QSet<QRedefinableElement *>>("QSet<QRedefinableElement *>");
+    qRegisterMetaType<QList<QRedefinableElement *>>("QList<QRedefinableElement *>");
+
+    qRegisterMetaType<QParameter *>("QParameter *");
+    qRegisterMetaType<QSet<QParameter *>>("QSet<QParameter *>");
+    qRegisterMetaType<QList<QParameter *>>("QList<QParameter *>");
+
+    qRegisterMetaType<QClass *>("QClass *");
+    qRegisterMetaType<QSet<QClass *>>("QSet<QClass *>");
+    qRegisterMetaType<QList<QClass *>>("QList<QClass *>");
+
+    qRegisterMetaType<QConstraint *>("QConstraint *");
+    qRegisterMetaType<QSet<QConstraint *>>("QSet<QConstraint *>");
+    qRegisterMetaType<QList<QConstraint *>>("QList<QConstraint *>");
+
+    qRegisterMetaType<QDataType *>("QDataType *");
+    qRegisterMetaType<QSet<QDataType *>>("QSet<QDataType *>");
+    qRegisterMetaType<QList<QDataType *>>("QList<QDataType *>");
+
+    QBehavioralFeature::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qoperation.cpp"

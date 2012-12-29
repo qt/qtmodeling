@@ -140,6 +140,18 @@ void QExpansionNode::setRegionAsInput(QExpansionRegion *regionAsInput)
     }
 }
 
+void QExpansionNode::registerMetaTypes() const
+{
+    qRegisterMetaType<QExpansionRegion *>("QExpansionRegion *");
+    qRegisterMetaType<QSet<QExpansionRegion *>>("QSet<QExpansionRegion *>");
+    qRegisterMetaType<QList<QExpansionRegion *>>("QList<QExpansionRegion *>");
+
+    QObjectNode::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qexpansionnode.cpp"
 
 QT_END_NAMESPACE_QTUML

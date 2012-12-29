@@ -84,7 +84,7 @@ QOpaqueAction::~QOpaqueAction()
 /*!
     Specifies the action in one or more languages.
  */
-const QList<QString> QOpaqueAction::bodies() const
+QList<QString> QOpaqueAction::bodies() const
 {
     // This is a read-write attribute
 
@@ -115,7 +115,7 @@ void QOpaqueAction::removeBody(QString body)
 /*!
     Languages the body strings use, in the same order as the body strings
  */
-const QList<QString> QOpaqueAction::languages() const
+QList<QString> QOpaqueAction::languages() const
 {
     // This is a read-write attribute
 
@@ -150,7 +150,7 @@ void QOpaqueAction::removeLanguage(QString language)
 /*!
     Provides input to the action.
  */
-const QSet<QInputPin *> &QOpaqueAction::inputValues() const
+QSet<QInputPin *> QOpaqueAction::inputValues() const
 {
     // This is a read-write association end
 
@@ -187,7 +187,7 @@ void QOpaqueAction::removeInputValue(QInputPin *inputValue)
 /*!
     Takes output from the action.
  */
-const QSet<QOutputPin *> &QOpaqueAction::outputValues() const
+QSet<QOutputPin *> QOpaqueAction::outputValues() const
 {
     // This is a read-write association end
 
@@ -219,6 +219,22 @@ void QOpaqueAction::removeOutputValue(QOutputPin *outputValue)
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QActionPrivate *>(d))->removeOutput(qwrappedobject_cast<QOutputPin *>(outputValue));
     }
+}
+
+void QOpaqueAction::registerMetaTypes() const
+{
+    qRegisterMetaType<QInputPin *>("QInputPin *");
+    qRegisterMetaType<QSet<QInputPin *>>("QSet<QInputPin *>");
+    qRegisterMetaType<QList<QInputPin *>>("QList<QInputPin *>");
+
+    qRegisterMetaType<QOutputPin *>("QOutputPin *");
+    qRegisterMetaType<QSet<QOutputPin *>>("QSet<QOutputPin *>");
+    qRegisterMetaType<QList<QOutputPin *>>("QList<QOutputPin *>");
+
+    QAction::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qopaqueaction.cpp"

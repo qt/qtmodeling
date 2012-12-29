@@ -80,16 +80,17 @@ public:
     virtual ~QInteractionFragment();
 
     // Association ends from QInteractionFragment
-    Q_INVOKABLE const QSet<QGeneralOrdering *> &generalOrderings() const;
+    Q_INVOKABLE QSet<QGeneralOrdering *> generalOrderings() const;
     Q_INVOKABLE void addGeneralOrdering(QGeneralOrdering *generalOrdering);
     Q_INVOKABLE void removeGeneralOrdering(QGeneralOrdering *generalOrdering);
     Q_INVOKABLE QInteraction *enclosingInteraction() const;
     Q_INVOKABLE void setEnclosingInteraction(QInteraction *enclosingInteraction);
-    Q_INVOKABLE const QSet<QLifeline *> &covered() const;
+    Q_INVOKABLE QSet<QLifeline *> covered() const;
     Q_INVOKABLE void addCovered(QLifeline *covered);
     Q_INVOKABLE void removeCovered(QLifeline *covered);
     Q_INVOKABLE QInteractionOperand *enclosingOperand() const;
     Q_INVOKABLE void setEnclosingOperand(QInteractionOperand *enclosingOperand);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QInteractionFragment(QInteractionFragmentPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

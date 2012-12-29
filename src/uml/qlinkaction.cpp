@@ -85,7 +85,7 @@ QLinkAction::~QLinkAction()
 /*!
     Pins taking end objects and qualifier values as input.
  */
-const QSet<QInputPin *> &QLinkAction::inputValues() const
+QSet<QInputPin *> QLinkAction::inputValues() const
 {
     // This is a read-write association end
 
@@ -122,7 +122,7 @@ void QLinkAction::removeInputValue(QInputPin *inputValue)
 /*!
     Data identifying one end of a link by the objects on its ends and qualifiers.
  */
-const QSet<QLinkEndData *> &QLinkAction::endData() const
+QSet<QLinkEndData *> QLinkAction::endData() const
 {
     // This is a read-write association end
 
@@ -164,6 +164,26 @@ QAssociation *QLinkAction::association() const
     qWarning("QLinkAction::association: operation to be implemented");
 
     return 0; // change here to your derived return
+}
+
+void QLinkAction::registerMetaTypes() const
+{
+    qRegisterMetaType<QLinkEndData *>("QLinkEndData *");
+    qRegisterMetaType<QSet<QLinkEndData *>>("QSet<QLinkEndData *>");
+    qRegisterMetaType<QList<QLinkEndData *>>("QList<QLinkEndData *>");
+
+    qRegisterMetaType<QInputPin *>("QInputPin *");
+    qRegisterMetaType<QSet<QInputPin *>>("QSet<QInputPin *>");
+    qRegisterMetaType<QList<QInputPin *>>("QList<QInputPin *>");
+
+    qRegisterMetaType<QAssociation *>("QAssociation *");
+    qRegisterMetaType<QSet<QAssociation *>>("QSet<QAssociation *>");
+    qRegisterMetaType<QList<QAssociation *>>("QList<QAssociation *>");
+
+    QAction::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qlinkaction.cpp"

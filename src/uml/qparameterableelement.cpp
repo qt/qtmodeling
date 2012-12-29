@@ -159,6 +159,18 @@ bool QParameterableElement::isTemplateParameter() const
     return bool(); // change here to your derived return
 }
 
+void QParameterableElement::registerMetaTypes() const
+{
+    qRegisterMetaType<QTemplateParameter *>("QTemplateParameter *");
+    qRegisterMetaType<QSet<QTemplateParameter *>>("QSet<QTemplateParameter *>");
+    qRegisterMetaType<QList<QTemplateParameter *>>("QList<QTemplateParameter *>");
+
+    QElement::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qparameterableelement.cpp"
 
 QT_END_NAMESPACE_QTUML

@@ -150,7 +150,7 @@ void QRedefinableElement::unsetLeaf()
 /*!
     The redefinable element that is being redefined by this element.
  */
-const QSet<QRedefinableElement *> &QRedefinableElement::redefinedElements() const
+QSet<QRedefinableElement *> QRedefinableElement::redefinedElements() const
 {
     // This is a read-only derived-union association end
 
@@ -161,7 +161,7 @@ const QSet<QRedefinableElement *> &QRedefinableElement::redefinedElements() cons
 /*!
     References the contexts that this element may be redefined from.
  */
-const QSet<QClassifier *> &QRedefinableElement::redefinitionContexts() const
+QSet<QClassifier *> QRedefinableElement::redefinitionContexts() const
 {
     // This is a read-only derived-union association end
 
@@ -189,6 +189,18 @@ bool QRedefinableElement::isRedefinitionContextValid(const QRedefinableElement *
     Q_UNUSED(redefined);
 
     return bool(); // change here to your derived return
+}
+
+void QRedefinableElement::registerMetaTypes() const
+{
+    qRegisterMetaType<QClassifier *>("QClassifier *");
+    qRegisterMetaType<QSet<QClassifier *>>("QSet<QClassifier *>");
+    qRegisterMetaType<QList<QClassifier *>>("QList<QClassifier *>");
+
+    QNamedElement::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qredefinableelement.cpp"

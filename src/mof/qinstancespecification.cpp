@@ -86,7 +86,7 @@ QInstanceSpecification::~QInstanceSpecification()
 /*!
     The classifier or classifiers of the represented instance. If multiple classifiers are specified, the instance is classified by all of them.
  */
-const QSet<QClassifier *> &QInstanceSpecification::classifiers() const
+QSet<QClassifier *> QInstanceSpecification::classifiers() const
 {
     // This is a read-write association end
 
@@ -146,7 +146,7 @@ void QInstanceSpecification::setSpecification(QValueSpecification *specification
 /*!
     A slot giving the value or values of a structural feature of the instance. An instance specification can have one slot per structural feature of its classifiers, including inherited features. It is not necessary to model a slot for each structural feature, in which case the instance specification is a partial description.
  */
-const QSet<QSlot *> &QInstanceSpecification::slots_() const
+QSet<QSlot *> QInstanceSpecification::slots_() const
 {
     // This is a read-write association end
 
@@ -184,6 +184,26 @@ void QInstanceSpecification::removeSlot_(QSlot *slot_)
         // Adjust opposite property
         slot_->setOwningInstance(0);
     }
+}
+
+void QInstanceSpecification::registerMetaTypes() const
+{
+    qRegisterMetaType<QClassifier *>("QClassifier *");
+    qRegisterMetaType<QSet<QClassifier *>>("QSet<QClassifier *>");
+    qRegisterMetaType<QList<QClassifier *>>("QList<QClassifier *>");
+
+    qRegisterMetaType<QSlot *>("QSlot *");
+    qRegisterMetaType<QSet<QSlot *>>("QSet<QSlot *>");
+    qRegisterMetaType<QList<QSlot *>>("QList<QSlot *>");
+
+    qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
+    qRegisterMetaType<QSet<QValueSpecification *>>("QSet<QValueSpecification *>");
+    qRegisterMetaType<QList<QValueSpecification *>>("QList<QValueSpecification *>");
+
+    QPackageableElement::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qinstancespecification.cpp"

@@ -80,7 +80,8 @@ public:
     Q_INVOKABLE void unsetStatic();
 
     // Association ends from QFeature
-    Q_INVOKABLE const QSet<QClassifier *> &featuringClassifiers() const;
+    Q_INVOKABLE QSet<QClassifier *> featuringClassifiers() const;
+    virtual void registerMetaTypes() const;
 
     // Classes which access read-only opposite properties should be friend
     friend class QClassifierPrivate;

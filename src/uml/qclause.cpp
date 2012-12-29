@@ -85,7 +85,7 @@ QClause::~QClause()
 /*!
     A set of clauses which may not be tested unless the current clause tests false.
  */
-const QSet<QClause *> &QClause::successorClauses() const
+QSet<QClause *> QClause::successorClauses() const
 {
     // This is a read-write association end
 
@@ -144,7 +144,7 @@ void QClause::setDecider(QOutputPin *decider)
 /*!
     A set of clauses whose tests must all evaluate false before the current clause can be tested.
  */
-const QSet<QClause *> &QClause::predecessorClauses() const
+QSet<QClause *> QClause::predecessorClauses() const
 {
     // This is a read-write association end
 
@@ -182,7 +182,7 @@ void QClause::removePredecessorClause(QClause *predecessorClause)
 /*!
     A list of output pins within the body fragment whose values are moved to the result pins of the containing conditional node after execution of the clause body.
  */
-const QList<QOutputPin *> &QClause::bodyOutputs() const
+QList<QOutputPin *> QClause::bodyOutputs() const
 {
     // This is a read-write association end
 
@@ -213,7 +213,7 @@ void QClause::removeBodyOutput(QOutputPin *bodyOutput)
 /*!
     A nested activity fragment that is executed if the test evaluates to true and the clause is chosen over any concurrent clauses that also evaluate to true.
  */
-const QSet<QExecutableNode *> &QClause::bodies() const
+QSet<QExecutableNode *> QClause::bodies() const
 {
     // This is a read-write association end
 
@@ -244,7 +244,7 @@ void QClause::removeBody(QExecutableNode *body)
 /*!
     A nested activity fragment with a designated output pin that specifies the result of the test.
  */
-const QSet<QExecutableNode *> &QClause::tests() const
+QSet<QExecutableNode *> QClause::tests() const
 {
     // This is a read-write association end
 
@@ -270,6 +270,22 @@ void QClause::removeTest(QExecutableNode *test)
     if (d->tests.contains(test)) {
         d->tests.remove(test);
     }
+}
+
+void QClause::registerMetaTypes() const
+{
+    qRegisterMetaType<QExecutableNode *>("QExecutableNode *");
+    qRegisterMetaType<QSet<QExecutableNode *>>("QSet<QExecutableNode *>");
+    qRegisterMetaType<QList<QExecutableNode *>>("QList<QExecutableNode *>");
+
+    qRegisterMetaType<QOutputPin *>("QOutputPin *");
+    qRegisterMetaType<QSet<QOutputPin *>>("QSet<QOutputPin *>");
+    qRegisterMetaType<QList<QOutputPin *>>("QList<QOutputPin *>");
+
+    QElement::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qclause.cpp"

@@ -74,6 +74,14 @@ QGate::~QGate()
 {
 }
 
+void QGate::registerMetaTypes() const
+{
+    QMessageEnd::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qgate.cpp"
 
 QT_END_NAMESPACE_QTUML

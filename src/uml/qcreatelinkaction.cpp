@@ -84,7 +84,7 @@ QCreateLinkAction::~QCreateLinkAction()
 /*!
     Specifies ends of association and inputs.
  */
-const QSet<QLinkEndCreationData *> &QCreateLinkAction::endData() const
+QSet<QLinkEndCreationData *> QCreateLinkAction::endData() const
 {
     // This is a read-write association end
 
@@ -112,6 +112,18 @@ void QCreateLinkAction::removeEndData(QLinkEndCreationData *endData)
         d->endData.remove(endData);
         qTopLevelWrapper(endData)->setParent(0);
     }
+}
+
+void QCreateLinkAction::registerMetaTypes() const
+{
+    qRegisterMetaType<QLinkEndCreationData *>("QLinkEndCreationData *");
+    qRegisterMetaType<QSet<QLinkEndCreationData *>>("QSet<QLinkEndCreationData *>");
+    qRegisterMetaType<QList<QLinkEndCreationData *>>("QList<QLinkEndCreationData *>");
+
+    QWriteLinkAction::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qcreatelinkaction.cpp"

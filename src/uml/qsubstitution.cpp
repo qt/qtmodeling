@@ -149,6 +149,18 @@ void QSubstitution::setSubstitutingClassifier(QClassifier *substitutingClassifie
     }
 }
 
+void QSubstitution::registerMetaTypes() const
+{
+    qRegisterMetaType<QClassifier *>("QClassifier *");
+    qRegisterMetaType<QSet<QClassifier *>>("QSet<QClassifier *>");
+    qRegisterMetaType<QList<QClassifier *>>("QList<QClassifier *>");
+
+    QRealization::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 // Overriden methods for subsetted properties
 
 void QSubstitution::addSupplier(QWrappedObjectPointer<QClassifier> contract)

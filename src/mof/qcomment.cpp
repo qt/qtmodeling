@@ -106,7 +106,7 @@ void QComment::setBody(QString body)
 /*!
     References the Element(s) being commented.
  */
-const QSet<QElement *> &QComment::annotatedElements() const
+QSet<QElement *> QComment::annotatedElements() const
 {
     // This is a read-write association end
 
@@ -132,6 +132,14 @@ void QComment::removeAnnotatedElement(QElement *annotatedElement)
     if (d->annotatedElements.contains(annotatedElement)) {
         d->annotatedElements.remove(annotatedElement);
     }
+}
+
+void QComment::registerMetaTypes() const
+{
+    QElement::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qcomment.cpp"

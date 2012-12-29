@@ -116,7 +116,7 @@ void QUnmarshallAction::setObject(QInputPin *object)
 /*!
     The values of the structural features of the input object.
  */
-const QSet<QOutputPin *> &QUnmarshallAction::results() const
+QSet<QOutputPin *> QUnmarshallAction::results() const
 {
     // This is a read-write association end
 
@@ -169,6 +169,26 @@ void QUnmarshallAction::setUnmarshallType(QClassifier *unmarshallType)
     if (d->unmarshallType != unmarshallType) {
         d->unmarshallType = unmarshallType;
     }
+}
+
+void QUnmarshallAction::registerMetaTypes() const
+{
+    qRegisterMetaType<QInputPin *>("QInputPin *");
+    qRegisterMetaType<QSet<QInputPin *>>("QSet<QInputPin *>");
+    qRegisterMetaType<QList<QInputPin *>>("QList<QInputPin *>");
+
+    qRegisterMetaType<QOutputPin *>("QOutputPin *");
+    qRegisterMetaType<QSet<QOutputPin *>>("QSet<QOutputPin *>");
+    qRegisterMetaType<QList<QOutputPin *>>("QList<QOutputPin *>");
+
+    qRegisterMetaType<QClassifier *>("QClassifier *");
+    qRegisterMetaType<QSet<QClassifier *>>("QSet<QClassifier *>");
+    qRegisterMetaType<QList<QClassifier *>>("QList<QClassifier *>");
+
+    QAction::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qunmarshallaction.cpp"

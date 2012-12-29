@@ -84,7 +84,7 @@ QTimeExpression::~QTimeExpression()
 /*!
     Refers to the time and duration observations that are involved in expr.
  */
-const QSet<QObservation *> &QTimeExpression::observations() const
+QSet<QObservation *> QTimeExpression::observations() const
 {
     // This is a read-write association end
 
@@ -139,6 +139,18 @@ void QTimeExpression::setExpr(QValueSpecification *expr)
             (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(expr));
         }
     }
+}
+
+void QTimeExpression::registerMetaTypes() const
+{
+    qRegisterMetaType<QObservation *>("QObservation *");
+    qRegisterMetaType<QSet<QObservation *>>("QSet<QObservation *>");
+    qRegisterMetaType<QList<QObservation *>>("QList<QObservation *>");
+
+    QValueSpecification::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qtimeexpression.cpp"

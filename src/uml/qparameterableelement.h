@@ -80,6 +80,7 @@ public:
     // Operations
     Q_INVOKABLE bool isCompatibleWith(const QParameterableElement *p) const;
     Q_INVOKABLE bool isTemplateParameter() const;
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QParameterableElement(QParameterableElementPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

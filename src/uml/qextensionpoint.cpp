@@ -113,6 +113,18 @@ void QExtensionPoint::setUseCase(QUseCase *useCase)
     }
 }
 
+void QExtensionPoint::registerMetaTypes() const
+{
+    qRegisterMetaType<QUseCase *>("QUseCase *");
+    qRegisterMetaType<QSet<QUseCase *>>("QSet<QUseCase *>");
+    qRegisterMetaType<QList<QUseCase *>>("QList<QUseCase *>");
+
+    QRedefinableElement::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qextensionpoint.cpp"
 
 QT_END_NAMESPACE_QTUML

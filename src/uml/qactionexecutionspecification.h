@@ -73,6 +73,7 @@ public:
     // Association ends from QActionExecutionSpecification
     Q_INVOKABLE QAction *action() const;
     Q_INVOKABLE void setAction(QAction *action);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QActionExecutionSpecification(QActionExecutionSpecificationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

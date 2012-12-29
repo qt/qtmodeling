@@ -107,6 +107,18 @@ void QConnectableElementTemplateParameter::setParameteredElement(QConnectableEle
     }
 }
 
+void QConnectableElementTemplateParameter::registerMetaTypes() const
+{
+    qRegisterMetaType<QConnectableElement *>("QConnectableElement *");
+    qRegisterMetaType<QSet<QConnectableElement *>>("QSet<QConnectableElement *>");
+    qRegisterMetaType<QList<QConnectableElement *>>("QList<QConnectableElement *>");
+
+    QTemplateParameter::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qconnectableelementtemplateparameter.cpp"
 
 QT_END_NAMESPACE_QTUML

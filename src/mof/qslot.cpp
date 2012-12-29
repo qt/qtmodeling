@@ -87,7 +87,7 @@ QSlot::~QSlot()
 /*!
     The value or values corresponding to the defining feature for the owning instance specification.
  */
-const QList<QValueSpecification *> &QSlot::values() const
+QList<QValueSpecification *> QSlot::values() const
 {
     // This is a read-write association end
 
@@ -172,6 +172,26 @@ void QSlot::setOwningInstance(QInstanceSpecification *owningInstance)
         if (owningInstance)
             owningInstance->addSlot_(this);
     }
+}
+
+void QSlot::registerMetaTypes() const
+{
+    qRegisterMetaType<QStructuralFeature *>("QStructuralFeature *");
+    qRegisterMetaType<QSet<QStructuralFeature *>>("QSet<QStructuralFeature *>");
+    qRegisterMetaType<QList<QStructuralFeature *>>("QList<QStructuralFeature *>");
+
+    qRegisterMetaType<QInstanceSpecification *>("QInstanceSpecification *");
+    qRegisterMetaType<QSet<QInstanceSpecification *>>("QSet<QInstanceSpecification *>");
+    qRegisterMetaType<QList<QInstanceSpecification *>>("QList<QInstanceSpecification *>");
+
+    qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
+    qRegisterMetaType<QSet<QValueSpecification *>>("QSet<QValueSpecification *>");
+    qRegisterMetaType<QList<QValueSpecification *>>("QList<QValueSpecification *>");
+
+    QElement::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qslot.cpp"

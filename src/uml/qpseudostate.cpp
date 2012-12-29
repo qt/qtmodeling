@@ -178,6 +178,22 @@ void QPseudostate::setStateMachine(QStateMachine *stateMachine)
     }
 }
 
+void QPseudostate::registerMetaTypes() const
+{
+    qRegisterMetaType<QState *>("QState *");
+    qRegisterMetaType<QSet<QState *>>("QSet<QState *>");
+    qRegisterMetaType<QList<QState *>>("QList<QState *>");
+
+    qRegisterMetaType<QStateMachine *>("QStateMachine *");
+    qRegisterMetaType<QSet<QStateMachine *>>("QSet<QStateMachine *>");
+    qRegisterMetaType<QList<QStateMachine *>>("QList<QStateMachine *>");
+
+    QVertex::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qpseudostate.cpp"
 
 QT_END_NAMESPACE_QTUML

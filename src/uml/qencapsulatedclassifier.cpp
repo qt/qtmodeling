@@ -83,13 +83,25 @@ QEncapsulatedClassifier::~QEncapsulatedClassifier()
 /*!
     References a set of ports that an encapsulated classifier owns.
  */
-const QSet<QPort *> &QEncapsulatedClassifier::ownedPorts() const
+QSet<QPort *> QEncapsulatedClassifier::ownedPorts() const
 {
     // This is a read-only derived association end
 
     qWarning("QEncapsulatedClassifier::ownedPorts: to be implemented (this is a derived associationend)");
 
-    return *(new QSet<QPort *>); // change here to your derived return
+    return QSet<QPort *>(); // change here to your derived return
+}
+
+void QEncapsulatedClassifier::registerMetaTypes() const
+{
+    qRegisterMetaType<QPort *>("QPort *");
+    qRegisterMetaType<QSet<QPort *>>("QSet<QPort *>");
+    qRegisterMetaType<QList<QPort *>>("QList<QPort *>");
+
+    QStructuredClassifier::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qencapsulatedclassifier.cpp"

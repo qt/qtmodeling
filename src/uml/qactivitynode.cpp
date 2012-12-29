@@ -119,7 +119,7 @@ QActivityNode::~QActivityNode()
 /*!
     Inherited nodes replaced by this node in a specialization of the activity.
  */
-const QSet<QActivityNode *> &QActivityNode::redefinedNodes() const
+QSet<QActivityNode *> QActivityNode::redefinedNodes() const
 {
     // This is a read-write association end
 
@@ -156,7 +156,7 @@ void QActivityNode::removeRedefinedNode(QActivityNode *redefinedNode)
 /*!
     Edges that have the node as target.
  */
-const QSet<QActivityEdge *> &QActivityNode::incomings() const
+QSet<QActivityEdge *> QActivityNode::incomings() const
 {
     // This is a read-write association end
 
@@ -225,7 +225,7 @@ void QActivityNode::setActivity(QActivity *activity)
 /*!
     Groups containing the node.
  */
-const QSet<QActivityGroup *> &QActivityNode::inGroup() const
+QSet<QActivityGroup *> QActivityNode::inGroup() const
 {
     // This is a read-only derived-union association end
 
@@ -274,7 +274,7 @@ void QActivityNode::setInStructuredNode(QStructuredActivityNode *inStructuredNod
 /*!
     Partitions containing the node.
  */
-const QSet<QActivityPartition *> &QActivityNode::inPartition() const
+QSet<QActivityPartition *> QActivityNode::inPartition() const
 {
     // This is a read-write association end
 
@@ -318,7 +318,7 @@ void QActivityNode::removeInPartition(QActivityPartition *inPartition)
 /*!
     Interruptible regions containing the node.
  */
-const QSet<QInterruptibleActivityRegion *> &QActivityNode::inInterruptibleRegion() const
+QSet<QInterruptibleActivityRegion *> QActivityNode::inInterruptibleRegion() const
 {
     // This is a read-write association end
 
@@ -362,7 +362,7 @@ void QActivityNode::removeInInterruptibleRegion(QInterruptibleActivityRegion *in
 /*!
     Edges that have the node as source.
  */
-const QSet<QActivityEdge *> &QActivityNode::outgoings() const
+QSet<QActivityEdge *> QActivityNode::outgoings() const
 {
     // This is a read-write association end
 
@@ -394,6 +394,38 @@ void QActivityNode::removeOutgoing(QActivityEdge *outgoing)
         // Adjust opposite property
         outgoing->setSource(0);
     }
+}
+
+void QActivityNode::registerMetaTypes() const
+{
+    qRegisterMetaType<QActivityEdge *>("QActivityEdge *");
+    qRegisterMetaType<QSet<QActivityEdge *>>("QSet<QActivityEdge *>");
+    qRegisterMetaType<QList<QActivityEdge *>>("QList<QActivityEdge *>");
+
+    qRegisterMetaType<QStructuredActivityNode *>("QStructuredActivityNode *");
+    qRegisterMetaType<QSet<QStructuredActivityNode *>>("QSet<QStructuredActivityNode *>");
+    qRegisterMetaType<QList<QStructuredActivityNode *>>("QList<QStructuredActivityNode *>");
+
+    qRegisterMetaType<QActivityPartition *>("QActivityPartition *");
+    qRegisterMetaType<QSet<QActivityPartition *>>("QSet<QActivityPartition *>");
+    qRegisterMetaType<QList<QActivityPartition *>>("QList<QActivityPartition *>");
+
+    qRegisterMetaType<QActivityGroup *>("QActivityGroup *");
+    qRegisterMetaType<QSet<QActivityGroup *>>("QSet<QActivityGroup *>");
+    qRegisterMetaType<QList<QActivityGroup *>>("QList<QActivityGroup *>");
+
+    qRegisterMetaType<QActivity *>("QActivity *");
+    qRegisterMetaType<QSet<QActivity *>>("QSet<QActivity *>");
+    qRegisterMetaType<QList<QActivity *>>("QList<QActivity *>");
+
+    qRegisterMetaType<QInterruptibleActivityRegion *>("QInterruptibleActivityRegion *");
+    qRegisterMetaType<QSet<QInterruptibleActivityRegion *>>("QSet<QInterruptibleActivityRegion *>");
+    qRegisterMetaType<QList<QInterruptibleActivityRegion *>>("QList<QInterruptibleActivityRegion *>");
+
+    QRedefinableElement::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qactivitynode.cpp"

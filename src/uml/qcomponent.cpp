@@ -117,7 +117,7 @@ void QComponent::unsetIndirectlyInstantiated()
 /*!
     The set of Realizations owned by the Component. Realizations reference the Classifiers of which the Component is an abstraction; i.e., that realize its behavior.
  */
-const QSet<QComponentRealization *> &QComponent::realizations() const
+QSet<QComponentRealization *> QComponent::realizations() const
 {
     // This is a read-write association end
 
@@ -160,31 +160,31 @@ void QComponent::removeRealization(QComponentRealization *realization)
 /*!
     The interfaces that the component requires from other components in its environment in order to be able to offer its full set of provided functionality. These interfaces may be used by the Component or any of its realizingClassifiers, or they may be the Interfaces that are required by its public Ports.
  */
-const QSet<QInterface *> &QComponent::required() const
+QSet<QInterface *> QComponent::required() const
 {
     // This is a read-only derived association end
 
     qWarning("QComponent::required: to be implemented (this is a derived associationend)");
 
-    return *(new QSet<QInterface *>); // change here to your derived return
+    return QSet<QInterface *>(); // change here to your derived return
 }
 
 /*!
     The interfaces that the component exposes to its environment. These interfaces may be Realized by the Component or any of its realizingClassifiers, or they may be the Interfaces that are provided by its public Ports.
  */
-const QSet<QInterface *> &QComponent::provided() const
+QSet<QInterface *> QComponent::provided() const
 {
     // This is a read-only derived association end
 
     qWarning("QComponent::provided: to be implemented (this is a derived associationend)");
 
-    return *(new QSet<QInterface *>); // change here to your derived return
+    return QSet<QInterface *>(); // change here to your derived return
 }
 
 /*!
     The set of PackageableElements that a Component owns. In the namespace of a component, all model elements that are involved in or related to its definition may be owned or imported explicitly. These may include e.g. Classes, Interfaces, Components, Packages, Use cases, Dependencies (e.g. mappings), and Artifacts.
  */
-const QSet<QPackageableElement *> &QComponent::packagedElements() const
+QSet<QPackageableElement *> QComponent::packagedElements() const
 {
     // This is a read-write association end
 
@@ -221,23 +221,47 @@ void QComponent::removePackagedElement(QPackageableElement *packagedElement)
 /*!
     Utility returning the set of realized interfaces of a component.
  */
-const QSet<QInterface *> &QComponent::realizedInterfaces(const QClassifier *classifier) const
+QSet<QInterface *> QComponent::realizedInterfaces(const QClassifier *classifier) const
 {
     qWarning("QComponent::realizedInterfaces: operation to be implemented");
     Q_UNUSED(classifier);
 
-    return *(new QSet<QInterface *>); // change here to your derived return
+    return QSet<QInterface *>(); // change here to your derived return
 }
 
 /*!
     Utility returning the set of used interfaces of a component.
  */
-const QSet<QInterface *> &QComponent::usedInterfaces(const QClassifier *classifier) const
+QSet<QInterface *> QComponent::usedInterfaces(const QClassifier *classifier) const
 {
     qWarning("QComponent::usedInterfaces: operation to be implemented");
     Q_UNUSED(classifier);
 
-    return *(new QSet<QInterface *>); // change here to your derived return
+    return QSet<QInterface *>(); // change here to your derived return
+}
+
+void QComponent::registerMetaTypes() const
+{
+    qRegisterMetaType<QClassifier *>("QClassifier *");
+    qRegisterMetaType<QSet<QClassifier *>>("QSet<QClassifier *>");
+    qRegisterMetaType<QList<QClassifier *>>("QList<QClassifier *>");
+
+    qRegisterMetaType<QComponentRealization *>("QComponentRealization *");
+    qRegisterMetaType<QSet<QComponentRealization *>>("QSet<QComponentRealization *>");
+    qRegisterMetaType<QList<QComponentRealization *>>("QList<QComponentRealization *>");
+
+    qRegisterMetaType<QPackageableElement *>("QPackageableElement *");
+    qRegisterMetaType<QSet<QPackageableElement *>>("QSet<QPackageableElement *>");
+    qRegisterMetaType<QList<QPackageableElement *>>("QList<QPackageableElement *>");
+
+    qRegisterMetaType<QInterface *>("QInterface *");
+    qRegisterMetaType<QSet<QInterface *>>("QSet<QInterface *>");
+    qRegisterMetaType<QList<QInterface *>>("QList<QInterface *>");
+
+    QClass::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qcomponent.cpp"

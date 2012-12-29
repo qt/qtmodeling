@@ -64,6 +64,7 @@ class Q_UML_EXPORT QInputPin : public QPin
 public:
     Q_INVOKABLE explicit QInputPin(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QInputPin();
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QInputPin(QInputPinPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

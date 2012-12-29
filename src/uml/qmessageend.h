@@ -73,6 +73,7 @@ public:
     // Association ends from QMessageEnd
     Q_INVOKABLE QMessage *message() const;
     Q_INVOKABLE void setMessage(QMessage *message);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QMessageEnd(QMessageEndPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

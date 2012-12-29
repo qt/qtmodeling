@@ -190,6 +190,26 @@ void QTemplateParameterSubstitution::setTemplateBinding(QTemplateBinding *templa
     }
 }
 
+void QTemplateParameterSubstitution::registerMetaTypes() const
+{
+    qRegisterMetaType<QParameterableElement *>("QParameterableElement *");
+    qRegisterMetaType<QSet<QParameterableElement *>>("QSet<QParameterableElement *>");
+    qRegisterMetaType<QList<QParameterableElement *>>("QList<QParameterableElement *>");
+
+    qRegisterMetaType<QTemplateParameter *>("QTemplateParameter *");
+    qRegisterMetaType<QSet<QTemplateParameter *>>("QSet<QTemplateParameter *>");
+    qRegisterMetaType<QList<QTemplateParameter *>>("QList<QTemplateParameter *>");
+
+    qRegisterMetaType<QTemplateBinding *>("QTemplateBinding *");
+    qRegisterMetaType<QSet<QTemplateBinding *>>("QSet<QTemplateBinding *>");
+    qRegisterMetaType<QList<QTemplateBinding *>>("QList<QTemplateBinding *>");
+
+    QElement::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qtemplateparametersubstitution.cpp"
 
 QT_END_NAMESPACE_QTUML

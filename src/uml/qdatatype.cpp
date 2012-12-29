@@ -85,7 +85,7 @@ QDataType::~QDataType()
 /*!
     The Operations owned by the DataType.
  */
-const QList<QOperation *> &QDataType::ownedOperations() const
+QList<QOperation *> QDataType::ownedOperations() const
 {
     // This is a read-write association end
 
@@ -130,7 +130,7 @@ void QDataType::removeOwnedOperation(QOperation *ownedOperation)
 /*!
     The Attributes owned by the DataType.
  */
-const QList<QProperty *> &QDataType::ownedAttributes() const
+QList<QProperty *> QDataType::ownedAttributes() const
 {
     // This is a read-write association end
 
@@ -175,12 +175,32 @@ void QDataType::removeOwnedAttribute(QProperty *ownedAttribute)
 /*!
     The inherit operation is overridden to exclude redefined properties.
  */
-const QSet<QNamedElement *> &QDataType::inherit(const QSet<QNamedElement *> &inhs) const
+QSet<QNamedElement *> QDataType::inherit(QSet<QNamedElement *> inhs) const
 {
     qWarning("QDataType::inherit: operation to be implemented");
     Q_UNUSED(inhs);
 
-    return *(new QSet<QNamedElement *>); // change here to your derived return
+    return QSet<QNamedElement *>(); // change here to your derived return
+}
+
+void QDataType::registerMetaTypes() const
+{
+    qRegisterMetaType<QProperty *>("QProperty *");
+    qRegisterMetaType<QSet<QProperty *>>("QSet<QProperty *>");
+    qRegisterMetaType<QList<QProperty *>>("QList<QProperty *>");
+
+    qRegisterMetaType<QOperation *>("QOperation *");
+    qRegisterMetaType<QSet<QOperation *>>("QSet<QOperation *>");
+    qRegisterMetaType<QList<QOperation *>>("QList<QOperation *>");
+
+    qRegisterMetaType<QNamedElement *>("QNamedElement *");
+    qRegisterMetaType<QSet<QNamedElement *>>("QSet<QNamedElement *>");
+    qRegisterMetaType<QList<QNamedElement *>>("QList<QNamedElement *>");
+
+    QClassifier::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qdatatype.cpp"

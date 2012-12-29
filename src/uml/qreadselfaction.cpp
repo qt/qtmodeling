@@ -110,6 +110,18 @@ void QReadSelfAction::setResult(QOutputPin *result)
     }
 }
 
+void QReadSelfAction::registerMetaTypes() const
+{
+    qRegisterMetaType<QOutputPin *>("QOutputPin *");
+    qRegisterMetaType<QSet<QOutputPin *>>("QSet<QOutputPin *>");
+    qRegisterMetaType<QList<QOutputPin *>>("QList<QOutputPin *>");
+
+    QAction::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qreadselfaction.cpp"
 
 QT_END_NAMESPACE_QTUML

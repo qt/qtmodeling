@@ -64,6 +64,7 @@ class Q_UML_EXPORT QControlNode : public QActivityNode
 public:
     Q_INVOKABLE explicit QControlNode(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QControlNode();
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QControlNode(QControlNodePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

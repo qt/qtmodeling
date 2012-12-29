@@ -80,11 +80,12 @@ public:
     // Association ends from QUnmarshallAction
     Q_INVOKABLE QInputPin *object() const;
     Q_INVOKABLE void setObject(QInputPin *object);
-    Q_INVOKABLE const QSet<QOutputPin *> &results() const;
+    Q_INVOKABLE QSet<QOutputPin *> results() const;
     Q_INVOKABLE void addResult(QOutputPin *result);
     Q_INVOKABLE void removeResult(QOutputPin *result);
     Q_INVOKABLE QClassifier *unmarshallType() const;
     Q_INVOKABLE void setUnmarshallType(QClassifier *unmarshallType);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QUnmarshallAction(QUnmarshallActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

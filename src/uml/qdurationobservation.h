@@ -75,14 +75,15 @@ public:
     virtual ~QDurationObservation();
 
     // Attributes from QDurationObservation
-    Q_INVOKABLE const QSet<bool> firstEvents() const;
+    Q_INVOKABLE QSet<bool> firstEvents() const;
     Q_INVOKABLE void addFirstEvent(bool firstEvent);
     Q_INVOKABLE void removeFirstEvent(bool firstEvent);
 
     // Association ends from QDurationObservation
-    Q_INVOKABLE const QSet<QNamedElement *> &events() const;
+    Q_INVOKABLE QSet<QNamedElement *> events() const;
     Q_INVOKABLE void addEvent(QNamedElement *event);
     Q_INVOKABLE void removeEvent(QNamedElement *event);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QDurationObservation(QDurationObservationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

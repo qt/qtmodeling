@@ -74,6 +74,14 @@ QMergeNode::~QMergeNode()
 {
 }
 
+void QMergeNode::registerMetaTypes() const
+{
+    QControlNode::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qmergenode.cpp"
 
 QT_END_NAMESPACE_QTUML

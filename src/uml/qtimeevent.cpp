@@ -141,6 +141,18 @@ void QTimeEvent::setWhen(QTimeExpression *when)
     }
 }
 
+void QTimeEvent::registerMetaTypes() const
+{
+    qRegisterMetaType<QTimeExpression *>("QTimeExpression *");
+    qRegisterMetaType<QSet<QTimeExpression *>>("QSet<QTimeExpression *>");
+    qRegisterMetaType<QList<QTimeExpression *>>("QList<QTimeExpression *>");
+
+    QEvent::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qtimeevent.cpp"
 
 QT_END_NAMESPACE_QTUML

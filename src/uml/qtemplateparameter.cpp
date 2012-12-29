@@ -230,6 +230,22 @@ void QTemplateParameter::setSignature(QTemplateSignature *signature)
     }
 }
 
+void QTemplateParameter::registerMetaTypes() const
+{
+    qRegisterMetaType<QParameterableElement *>("QParameterableElement *");
+    qRegisterMetaType<QSet<QParameterableElement *>>("QSet<QParameterableElement *>");
+    qRegisterMetaType<QList<QParameterableElement *>>("QList<QParameterableElement *>");
+
+    qRegisterMetaType<QTemplateSignature *>("QTemplateSignature *");
+    qRegisterMetaType<QSet<QTemplateSignature *>>("QSet<QTemplateSignature *>");
+    qRegisterMetaType<QList<QTemplateSignature *>>("QList<QTemplateSignature *>");
+
+    QElement::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qtemplateparameter.cpp"
 
 QT_END_NAMESPACE_QTUML

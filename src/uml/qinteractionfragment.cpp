@@ -88,7 +88,7 @@ QInteractionFragment::~QInteractionFragment()
 /*!
     The general ordering relationships contained in this fragment.
  */
-const QSet<QGeneralOrdering *> &QInteractionFragment::generalOrderings() const
+QSet<QGeneralOrdering *> QInteractionFragment::generalOrderings() const
 {
     // This is a read-write association end
 
@@ -157,7 +157,7 @@ void QInteractionFragment::setEnclosingInteraction(QInteraction *enclosingIntera
 /*!
     References the Lifelines that the InteractionFragment involves.
  */
-const QSet<QLifeline *> &QInteractionFragment::covered() const
+QSet<QLifeline *> QInteractionFragment::covered() const
 {
     // This is a read-write association end
 
@@ -222,6 +222,30 @@ void QInteractionFragment::setEnclosingOperand(QInteractionOperand *enclosingOpe
         if (enclosingOperand)
             enclosingOperand->addFragment(this);
     }
+}
+
+void QInteractionFragment::registerMetaTypes() const
+{
+    qRegisterMetaType<QGeneralOrdering *>("QGeneralOrdering *");
+    qRegisterMetaType<QSet<QGeneralOrdering *>>("QSet<QGeneralOrdering *>");
+    qRegisterMetaType<QList<QGeneralOrdering *>>("QList<QGeneralOrdering *>");
+
+    qRegisterMetaType<QInteractionOperand *>("QInteractionOperand *");
+    qRegisterMetaType<QSet<QInteractionOperand *>>("QSet<QInteractionOperand *>");
+    qRegisterMetaType<QList<QInteractionOperand *>>("QList<QInteractionOperand *>");
+
+    qRegisterMetaType<QLifeline *>("QLifeline *");
+    qRegisterMetaType<QSet<QLifeline *>>("QSet<QLifeline *>");
+    qRegisterMetaType<QList<QLifeline *>>("QList<QLifeline *>");
+
+    qRegisterMetaType<QInteraction *>("QInteraction *");
+    qRegisterMetaType<QSet<QInteraction *>>("QSet<QInteraction *>");
+    qRegisterMetaType<QList<QInteraction *>>("QList<QInteraction *>");
+
+    QNamedElement::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qinteractionfragment.cpp"

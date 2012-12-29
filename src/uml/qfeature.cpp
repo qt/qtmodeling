@@ -143,12 +143,24 @@ void QFeature::unsetStatic()
 /*!
     The Classifiers that have this Feature as a feature.
  */
-const QSet<QClassifier *> &QFeature::featuringClassifiers() const
+QSet<QClassifier *> QFeature::featuringClassifiers() const
 {
     // This is a read-only derived-union association end
 
     Q_D(const QFeature);
     return d->featuringClassifiers;
+}
+
+void QFeature::registerMetaTypes() const
+{
+    qRegisterMetaType<QClassifier *>("QClassifier *");
+    qRegisterMetaType<QSet<QClassifier *>>("QSet<QClassifier *>");
+    qRegisterMetaType<QList<QClassifier *>>("QList<QClassifier *>");
+
+    QRedefinableElement::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qfeature.cpp"

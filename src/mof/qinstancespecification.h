@@ -78,14 +78,15 @@ public:
     virtual ~QInstanceSpecification();
 
     // Association ends from QInstanceSpecification
-    Q_INVOKABLE const QSet<QClassifier *> &classifiers() const;
+    Q_INVOKABLE QSet<QClassifier *> classifiers() const;
     Q_INVOKABLE void addClassifier(QClassifier *classifier);
     Q_INVOKABLE void removeClassifier(QClassifier *classifier);
     Q_INVOKABLE QValueSpecification *specification() const;
     Q_INVOKABLE void setSpecification(QValueSpecification *specification);
-    Q_INVOKABLE const QSet<QSlot *> &slots_() const;
+    Q_INVOKABLE QSet<QSlot *> slots_() const;
     Q_INVOKABLE void addSlot_(QSlot *slot_);
     Q_INVOKABLE void removeSlot_(QSlot *slot_);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QInstanceSpecification(QInstanceSpecificationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

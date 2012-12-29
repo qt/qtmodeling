@@ -122,6 +122,14 @@ void QInterval::setMax(QValueSpecification *max)
     }
 }
 
+void QInterval::registerMetaTypes() const
+{
+    QValueSpecification::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qinterval.cpp"
 
 QT_END_NAMESPACE_QTUML

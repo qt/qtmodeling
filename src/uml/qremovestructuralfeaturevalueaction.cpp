@@ -141,6 +141,18 @@ void QRemoveStructuralFeatureValueAction::setRemoveAt(QInputPin *removeAt)
     }
 }
 
+void QRemoveStructuralFeatureValueAction::registerMetaTypes() const
+{
+    qRegisterMetaType<QInputPin *>("QInputPin *");
+    qRegisterMetaType<QSet<QInputPin *>>("QSet<QInputPin *>");
+    qRegisterMetaType<QList<QInputPin *>>("QList<QInputPin *>");
+
+    QWriteStructuralFeatureAction::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qremovestructuralfeaturevalueaction.cpp"
 
 QT_END_NAMESPACE_QTUML

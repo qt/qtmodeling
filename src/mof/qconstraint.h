@@ -82,9 +82,10 @@ public:
     Q_INVOKABLE void setContext(QNamespace *context);
     Q_INVOKABLE QValueSpecification *specification() const;
     Q_INVOKABLE void setSpecification(QValueSpecification *specification);
-    Q_INVOKABLE const QList<QElement *> &constrainedElements() const;
+    Q_INVOKABLE QList<QElement *> constrainedElements() const;
     Q_INVOKABLE void addConstrainedElement(QElement *constrainedElement);
     Q_INVOKABLE void removeConstrainedElement(QElement *constrainedElement);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QConstraint(QConstraintPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

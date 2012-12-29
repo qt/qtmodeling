@@ -125,6 +125,22 @@ void QQualifierValue::setQualifier(QProperty *qualifier)
     }
 }
 
+void QQualifierValue::registerMetaTypes() const
+{
+    qRegisterMetaType<QProperty *>("QProperty *");
+    qRegisterMetaType<QSet<QProperty *>>("QSet<QProperty *>");
+    qRegisterMetaType<QList<QProperty *>>("QList<QProperty *>");
+
+    qRegisterMetaType<QInputPin *>("QInputPin *");
+    qRegisterMetaType<QSet<QInputPin *>>("QSet<QInputPin *>");
+    qRegisterMetaType<QList<QInputPin *>>("QList<QInputPin *>");
+
+    QElement::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qqualifiervalue.cpp"
 
 QT_END_NAMESPACE_QTUML

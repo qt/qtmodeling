@@ -73,6 +73,7 @@ public:
     Q_INVOKABLE void setMin(QValueSpecification *min);
     Q_INVOKABLE QValueSpecification *max() const;
     Q_INVOKABLE void setMax(QValueSpecification *max);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QInterval(QIntervalPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

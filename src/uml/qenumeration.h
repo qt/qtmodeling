@@ -74,9 +74,10 @@ public:
     virtual ~QEnumeration();
 
     // Association ends from QEnumeration
-    Q_INVOKABLE const QList<QEnumerationLiteral *> &ownedLiterals() const;
+    Q_INVOKABLE QList<QEnumerationLiteral *> ownedLiterals() const;
     Q_INVOKABLE void addOwnedLiteral(QEnumerationLiteral *ownedLiteral);
     Q_INVOKABLE void removeOwnedLiteral(QEnumerationLiteral *ownedLiteral);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QEnumeration(QEnumerationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

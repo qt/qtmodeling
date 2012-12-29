@@ -110,6 +110,18 @@ void QAcceptCallAction::setReturnInformation(QOutputPin *returnInformation)
     }
 }
 
+void QAcceptCallAction::registerMetaTypes() const
+{
+    qRegisterMetaType<QOutputPin *>("QOutputPin *");
+    qRegisterMetaType<QSet<QOutputPin *>>("QSet<QOutputPin *>");
+    qRegisterMetaType<QList<QOutputPin *>>("QList<QOutputPin *>");
+
+    QAcceptEventAction::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qacceptcallaction.cpp"
 
 QT_END_NAMESPACE_QTUML

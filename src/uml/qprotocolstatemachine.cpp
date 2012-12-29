@@ -83,7 +83,7 @@ QProtocolStateMachine::~QProtocolStateMachine()
 /*!
     Conformance between protocol state machines.
  */
-const QSet<QProtocolConformance *> &QProtocolStateMachine::conformance() const
+QSet<QProtocolConformance *> QProtocolStateMachine::conformance() const
 {
     // This is a read-write association end
 
@@ -121,6 +121,18 @@ void QProtocolStateMachine::removeConformance(QProtocolConformance *conformance)
         // Adjust opposite property
         conformance->setSpecificMachine(0);
     }
+}
+
+void QProtocolStateMachine::registerMetaTypes() const
+{
+    qRegisterMetaType<QProtocolConformance *>("QProtocolConformance *");
+    qRegisterMetaType<QSet<QProtocolConformance *>>("QSet<QProtocolConformance *>");
+    qRegisterMetaType<QList<QProtocolConformance *>>("QList<QProtocolConformance *>");
+
+    QStateMachine::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qprotocolstatemachine.cpp"

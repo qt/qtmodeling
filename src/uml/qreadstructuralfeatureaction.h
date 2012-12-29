@@ -73,6 +73,7 @@ public:
     // Association ends from QReadStructuralFeatureAction
     Q_INVOKABLE QOutputPin *result() const;
     Q_INVOKABLE void setResult(QOutputPin *result);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QReadStructuralFeatureAction(QReadStructuralFeatureActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

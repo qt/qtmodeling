@@ -96,19 +96,19 @@ public:
     // Association ends from QBehavior
     Q_INVOKABLE QBehavioralFeature *specification() const;
     Q_INVOKABLE void setSpecification(QBehavioralFeature *specification);
-    Q_INVOKABLE const QSet<QConstraint *> &postconditions() const;
+    Q_INVOKABLE QSet<QConstraint *> postconditions() const;
     Q_INVOKABLE void addPostcondition(QConstraint *postcondition);
     Q_INVOKABLE void removePostcondition(QConstraint *postcondition);
-    Q_INVOKABLE const QSet<QConstraint *> &preconditions() const;
+    Q_INVOKABLE QSet<QConstraint *> preconditions() const;
     Q_INVOKABLE void addPrecondition(QConstraint *precondition);
     Q_INVOKABLE void removePrecondition(QConstraint *precondition);
-    Q_INVOKABLE const QSet<QBehavior *> &redefinedBehaviors() const;
+    Q_INVOKABLE QSet<QBehavior *> redefinedBehaviors() const;
     Q_INVOKABLE void addRedefinedBehavior(QBehavior *redefinedBehavior);
     Q_INVOKABLE void removeRedefinedBehavior(QBehavior *redefinedBehavior);
-    Q_INVOKABLE const QList<QParameter *> &ownedParameters() const;
+    Q_INVOKABLE QList<QParameter *> ownedParameters() const;
     Q_INVOKABLE void addOwnedParameter(QParameter *ownedParameter);
     Q_INVOKABLE void removeOwnedParameter(QParameter *ownedParameter);
-    Q_INVOKABLE const QSet<QParameterSet *> &ownedParameterSets() const;
+    Q_INVOKABLE QSet<QParameterSet *> ownedParameterSets() const;
     Q_INVOKABLE void addOwnedParameterSet(QParameterSet *ownedParameterSet);
     Q_INVOKABLE void removeOwnedParameterSet(QParameterSet *ownedParameterSet);
     Q_INVOKABLE QBehavioredClassifier *context() const;
@@ -116,6 +116,7 @@ public:
     // Overriden methods for subsetted properties
     Q_INVOKABLE void addRedefinedClassifier(QWrappedObjectPointer<QBehavior> redefinedBehavior);
     Q_INVOKABLE void removeRedefinedClassifier(QWrappedObjectPointer<QBehavior> redefinedBehavior);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QBehavior(QBehaviorPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

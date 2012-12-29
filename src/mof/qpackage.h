@@ -88,9 +88,9 @@ public:
     virtual ~QPackage();
 
     // Association ends from aggregated QElement
-    Q_INVOKABLE const QSet<QElement *> &ownedElements() const;
+    Q_INVOKABLE QSet<QElement *> ownedElements() const;
     Q_INVOKABLE QElement *owner() const;
-    Q_INVOKABLE const QSet<QComment *> &ownedComments() const;
+    Q_INVOKABLE QSet<QComment *> ownedComments() const;
     Q_INVOKABLE void addOwnedComment(QComment *ownedComment);
     Q_INVOKABLE void removeOwnedComment(QComment *ownedComment);
 
@@ -103,18 +103,18 @@ public:
     Q_INVOKABLE QNamespace *namespace_() const;
 
     // Association ends from aggregated QNamespace
-    Q_INVOKABLE const QSet<QPackageImport *> &packageImports() const;
+    Q_INVOKABLE QSet<QPackageImport *> packageImports() const;
     Q_INVOKABLE void addPackageImport(QPackageImport *packageImport);
     Q_INVOKABLE void removePackageImport(QPackageImport *packageImport);
-    Q_INVOKABLE const QSet<QNamedElement *> &members() const;
-    Q_INVOKABLE const QSet<QPackageableElement *> &importedMembers() const;
-    Q_INVOKABLE const QSet<QElementImport *> &elementImports() const;
+    Q_INVOKABLE QSet<QNamedElement *> members() const;
+    Q_INVOKABLE QSet<QPackageableElement *> importedMembers() const;
+    Q_INVOKABLE QSet<QElementImport *> elementImports() const;
     Q_INVOKABLE void addElementImport(QElementImport *elementImport);
     Q_INVOKABLE void removeElementImport(QElementImport *elementImport);
-    Q_INVOKABLE const QSet<QConstraint *> &ownedRules() const;
+    Q_INVOKABLE QSet<QConstraint *> ownedRules() const;
     Q_INVOKABLE void addOwnedRule(QConstraint *ownedRule);
     Q_INVOKABLE void removeOwnedRule(QConstraint *ownedRule);
-    Q_INVOKABLE const QSet<QNamedElement *> &ownedMembers() const;
+    Q_INVOKABLE QSet<QNamedElement *> ownedMembers() const;
 
     // Attributes from aggregated QPackageableElement
     Q_INVOKABLE QtMof::VisibilityKind visibility() const;
@@ -126,31 +126,32 @@ public:
     Q_INVOKABLE void setURI(QString URI);
 
     // Association ends from QPackage
-    Q_INVOKABLE const QSet<QType *> &ownedTypes() const;
+    Q_INVOKABLE QSet<QType *> ownedTypes() const;
     Q_INVOKABLE void addOwnedType(QType *ownedType);
     Q_INVOKABLE void removeOwnedType(QType *ownedType);
-    Q_INVOKABLE const QSet<QPackageableElement *> &packagedElements() const;
+    Q_INVOKABLE QSet<QPackageableElement *> packagedElements() const;
     Q_INVOKABLE void addPackagedElement(QPackageableElement *packagedElement);
     Q_INVOKABLE void removePackagedElement(QPackageableElement *packagedElement);
     Q_INVOKABLE QPackage *nestingPackage() const;
     Q_INVOKABLE void setNestingPackage(QPackage *nestingPackage);
-    Q_INVOKABLE const QSet<QPackageMerge *> &packageMerges() const;
+    Q_INVOKABLE QSet<QPackageMerge *> packageMerges() const;
     Q_INVOKABLE void addPackageMerge(QPackageMerge *packageMerge);
     Q_INVOKABLE void removePackageMerge(QPackageMerge *packageMerge);
-    Q_INVOKABLE const QSet<QPackage *> &nestedPackages() const;
+    Q_INVOKABLE QSet<QPackage *> nestedPackages() const;
     Q_INVOKABLE void addNestedPackage(QPackage *nestedPackage);
     Q_INVOKABLE void removeNestedPackage(QPackage *nestedPackage);
 
     // Operations
     Q_INVOKABLE bool makesVisible(const QNamedElement *el) const;
     Q_INVOKABLE bool mustBeOwned() const;
-    Q_INVOKABLE const QSet<QPackageableElement *> &visibleMembers() const;
+    Q_INVOKABLE QSet<QPackageableElement *> visibleMembers() const;
 
     // Overriden methods for subsetted properties
     Q_INVOKABLE void addPackagedElement(QWrappedObjectPointer<QType> ownedType);
     Q_INVOKABLE void removePackagedElement(QWrappedObjectPointer<QType> ownedType);
     Q_INVOKABLE void addPackagedElement(QWrappedObjectPointer<QPackage> nestedPackage);
     Q_INVOKABLE void removePackagedElement(QWrappedObjectPointer<QPackage> nestedPackage);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QPackage(QPackagePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

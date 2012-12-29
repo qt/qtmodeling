@@ -105,6 +105,14 @@ void QPackageableElement::unsetVisibility()
     setVisibility(QtMof::VisibilityPublic);
 }
 
+void QPackageableElement::registerMetaTypes() const
+{
+    QNamedElement::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qpackageableelement.cpp"
 
 QT_END_NAMESPACE_QTMOF

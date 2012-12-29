@@ -79,6 +79,7 @@ public:
     // Association ends from QRemoveStructuralFeatureValueAction
     Q_INVOKABLE QInputPin *removeAt() const;
     Q_INVOKABLE void setRemoveAt(QInputPin *removeAt);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QRemoveStructuralFeatureValueAction(QRemoveStructuralFeatureValueActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

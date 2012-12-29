@@ -114,7 +114,7 @@ void QCallAction::unsetSynchronous()
 /*!
     A list of output pins where the results of performing the invocation are placed.
  */
-const QList<QOutputPin *> &QCallAction::results() const
+QList<QOutputPin *> QCallAction::results() const
 {
     // This is a read-write association end
 
@@ -146,6 +146,18 @@ void QCallAction::removeResult(QOutputPin *result)
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QActionPrivate *>(d))->removeOutput(qwrappedobject_cast<QOutputPin *>(result));
     }
+}
+
+void QCallAction::registerMetaTypes() const
+{
+    qRegisterMetaType<QOutputPin *>("QOutputPin *");
+    qRegisterMetaType<QSet<QOutputPin *>>("QSet<QOutputPin *>");
+    qRegisterMetaType<QList<QOutputPin *>>("QList<QOutputPin *>");
+
+    QInvocationAction::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qcallaction.cpp"

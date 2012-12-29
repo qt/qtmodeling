@@ -73,6 +73,7 @@ public:
     // Association ends from QReadSelfAction
     Q_INVOKABLE QOutputPin *result() const;
     Q_INVOKABLE void setResult(QOutputPin *result);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QReadSelfAction(QReadSelfActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

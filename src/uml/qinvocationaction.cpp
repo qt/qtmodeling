@@ -85,7 +85,7 @@ QInvocationAction::~QInvocationAction()
 /*!
     Specification of the ordered set of argument values that appears during execution.
  */
-const QList<QInputPin *> &QInvocationAction::arguments() const
+QList<QInputPin *> QInvocationAction::arguments() const
 {
     // This is a read-write association end
 
@@ -138,6 +138,22 @@ void QInvocationAction::setOnPort(QPort *onPort)
     if (d->onPort != onPort) {
         d->onPort = onPort;
     }
+}
+
+void QInvocationAction::registerMetaTypes() const
+{
+    qRegisterMetaType<QInputPin *>("QInputPin *");
+    qRegisterMetaType<QSet<QInputPin *>>("QSet<QInputPin *>");
+    qRegisterMetaType<QList<QInputPin *>>("QList<QInputPin *>");
+
+    qRegisterMetaType<QPort *>("QPort *");
+    qRegisterMetaType<QSet<QPort *>>("QSet<QPort *>");
+    qRegisterMetaType<QList<QPort *>>("QList<QPort *>");
+
+    QAction::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qinvocationaction.cpp"

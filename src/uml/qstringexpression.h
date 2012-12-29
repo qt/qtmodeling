@@ -76,28 +76,29 @@ public:
     virtual ~QStringExpression();
 
     // Association ends from aggregated QElement
-    Q_INVOKABLE const QSet<QElement *> &ownedElements() const;
+    Q_INVOKABLE QSet<QElement *> ownedElements() const;
     Q_INVOKABLE QElement *owner() const;
-    Q_INVOKABLE const QSet<QComment *> &ownedComments() const;
+    Q_INVOKABLE QSet<QComment *> ownedComments() const;
     Q_INVOKABLE void addOwnedComment(QComment *ownedComment);
     Q_INVOKABLE void removeOwnedComment(QComment *ownedComment);
 
     // Association ends from aggregated QTemplateableElement
     Q_INVOKABLE QTemplateSignature *ownedTemplateSignature() const;
     Q_INVOKABLE void setOwnedTemplateSignature(QTemplateSignature *ownedTemplateSignature);
-    Q_INVOKABLE const QSet<QTemplateBinding *> &templateBindings() const;
+    Q_INVOKABLE QSet<QTemplateBinding *> templateBindings() const;
     Q_INVOKABLE void addTemplateBinding(QTemplateBinding *templateBinding);
     Q_INVOKABLE void removeTemplateBinding(QTemplateBinding *templateBinding);
 
     // Association ends from QStringExpression
     Q_INVOKABLE QStringExpression *owningExpression() const;
     Q_INVOKABLE void setOwningExpression(QStringExpression *owningExpression);
-    Q_INVOKABLE const QSet<QStringExpression *> &subExpressions() const;
+    Q_INVOKABLE QSet<QStringExpression *> subExpressions() const;
     Q_INVOKABLE void addSubExpression(QStringExpression *subExpression);
     Q_INVOKABLE void removeSubExpression(QStringExpression *subExpression);
 
     // Operations
     Q_INVOKABLE QString stringValue() const;
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QStringExpression(QStringExpressionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

@@ -76,12 +76,13 @@ public:
     virtual ~QInterruptibleActivityRegion();
 
     // Association ends from QInterruptibleActivityRegion
-    Q_INVOKABLE const QSet<QActivityEdge *> &interruptingEdges() const;
+    Q_INVOKABLE QSet<QActivityEdge *> interruptingEdges() const;
     Q_INVOKABLE void addInterruptingEdge(QActivityEdge *interruptingEdge);
     Q_INVOKABLE void removeInterruptingEdge(QActivityEdge *interruptingEdge);
-    Q_INVOKABLE const QSet<QActivityNode *> &nodes() const;
+    Q_INVOKABLE QSet<QActivityNode *> nodes() const;
     Q_INVOKABLE void addNode(QActivityNode *node);
     Q_INVOKABLE void removeNode(QActivityNode *node);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QInterruptibleActivityRegion(QInterruptibleActivityRegionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

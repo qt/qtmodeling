@@ -84,9 +84,9 @@ public:
     virtual ~QParameter();
 
     // Association ends from aggregated QElement
-    Q_INVOKABLE const QSet<QElement *> &ownedElements() const;
+    Q_INVOKABLE QSet<QElement *> ownedElements() const;
     Q_INVOKABLE QElement *owner() const;
-    Q_INVOKABLE const QSet<QComment *> &ownedComments() const;
+    Q_INVOKABLE QSet<QComment *> ownedComments() const;
     Q_INVOKABLE void addOwnedComment(QComment *ownedComment);
     Q_INVOKABLE void removeOwnedComment(QComment *ownedComment);
 
@@ -134,6 +134,7 @@ public:
     Q_INVOKABLE void setOperation(QOperation *operation);
     Q_INVOKABLE QValueSpecification *defaultValue() const;
     Q_INVOKABLE void setDefaultValue(QValueSpecification *defaultValue);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QParameter(QParameterPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

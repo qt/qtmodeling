@@ -116,6 +116,14 @@ qreal QLiteralReal::realValue() const
     return qreal(); // change here to your derived return
 }
 
+void QLiteralReal::registerMetaTypes() const
+{
+    QLiteralSpecification::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qliteralreal.cpp"
 
 QT_END_NAMESPACE_QTUML

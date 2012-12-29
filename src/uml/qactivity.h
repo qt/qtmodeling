@@ -97,22 +97,22 @@ public:
     Q_INVOKABLE void unsetSingleExecution();
 
     // Association ends from QActivity
-    Q_INVOKABLE const QSet<QActivityPartition *> &partitions() const;
+    Q_INVOKABLE QSet<QActivityPartition *> partitions() const;
     Q_INVOKABLE void addPartition(QActivityPartition *partition);
     Q_INVOKABLE void removePartition(QActivityPartition *partition);
-    Q_INVOKABLE const QSet<QActivityNode *> &nodes() const;
+    Q_INVOKABLE QSet<QActivityNode *> nodes() const;
     Q_INVOKABLE void addNode(QActivityNode *node);
     Q_INVOKABLE void removeNode(QActivityNode *node);
-    Q_INVOKABLE const QSet<QVariable *> &variables() const;
+    Q_INVOKABLE QSet<QVariable *> variables() const;
     Q_INVOKABLE void addVariable(QVariable *variable);
     Q_INVOKABLE void removeVariable(QVariable *variable);
-    Q_INVOKABLE const QSet<QStructuredActivityNode *> &structuredNodes() const;
+    Q_INVOKABLE QSet<QStructuredActivityNode *> structuredNodes() const;
     Q_INVOKABLE void addStructuredNode(QStructuredActivityNode *structuredNode);
     Q_INVOKABLE void removeStructuredNode(QStructuredActivityNode *structuredNode);
-    Q_INVOKABLE const QSet<QActivityGroup *> &groups() const;
+    Q_INVOKABLE QSet<QActivityGroup *> groups() const;
     Q_INVOKABLE void addGroup(QActivityGroup *group);
     Q_INVOKABLE void removeGroup(QActivityGroup *group);
-    Q_INVOKABLE const QSet<QActivityEdge *> &edges() const;
+    Q_INVOKABLE QSet<QActivityEdge *> edges() const;
     Q_INVOKABLE void addEdge(QActivityEdge *edge);
     Q_INVOKABLE void removeEdge(QActivityEdge *edge);
 
@@ -123,6 +123,7 @@ public:
     Q_INVOKABLE void removeGroup(QWrappedObjectPointer<QStructuredActivityNode> structuredNode);
     Q_INVOKABLE void addNode(QWrappedObjectPointer<QStructuredActivityNode> structuredNode);
     Q_INVOKABLE void removeNode(QWrappedObjectPointer<QStructuredActivityNode> structuredNode);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QActivity(QActivityPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

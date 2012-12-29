@@ -181,6 +181,22 @@ void QProfileApplication::setAppliedProfile(QProfile *appliedProfile)
     }
 }
 
+void QProfileApplication::registerMetaTypes() const
+{
+    qRegisterMetaType<QProfile *>("QProfile *");
+    qRegisterMetaType<QSet<QProfile *>>("QSet<QProfile *>");
+    qRegisterMetaType<QList<QProfile *>>("QList<QProfile *>");
+
+    qRegisterMetaType<QPackage *>("QPackage *");
+    qRegisterMetaType<QSet<QPackage *>>("QSet<QPackage *>");
+    qRegisterMetaType<QList<QPackage *>>("QList<QPackage *>");
+
+    QDirectedRelationship::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qprofileapplication.cpp"
 
 QT_END_NAMESPACE_QTUML

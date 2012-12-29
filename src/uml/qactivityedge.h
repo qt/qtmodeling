@@ -91,13 +91,13 @@ public:
     // Association ends from QActivityEdge
     Q_INVOKABLE QActivityNode *source() const;
     Q_INVOKABLE void setSource(QActivityNode *source);
-    Q_INVOKABLE const QSet<QActivityEdge *> &redefinedEdges() const;
+    Q_INVOKABLE QSet<QActivityEdge *> redefinedEdges() const;
     Q_INVOKABLE void addRedefinedEdge(QActivityEdge *redefinedEdge);
     Q_INVOKABLE void removeRedefinedEdge(QActivityEdge *redefinedEdge);
-    Q_INVOKABLE const QSet<QActivityGroup *> &inGroup() const;
+    Q_INVOKABLE QSet<QActivityGroup *> inGroup() const;
     Q_INVOKABLE QValueSpecification *guard() const;
     Q_INVOKABLE void setGuard(QValueSpecification *guard);
-    Q_INVOKABLE const QSet<QActivityPartition *> &inPartition() const;
+    Q_INVOKABLE QSet<QActivityPartition *> inPartition() const;
     Q_INVOKABLE void addInPartition(QActivityPartition *inPartition);
     Q_INVOKABLE void removeInPartition(QActivityPartition *inPartition);
     Q_INVOKABLE QActivity *activity() const;
@@ -110,6 +110,7 @@ public:
     Q_INVOKABLE void setInStructuredNode(QStructuredActivityNode *inStructuredNode);
     Q_INVOKABLE QActivityNode *target() const;
     Q_INVOKABLE void setTarget(QActivityNode *target);
+    virtual void registerMetaTypes() const;
 
     // Classes which access read-only opposite properties should be friend
     friend class QActivityGroupPrivate;

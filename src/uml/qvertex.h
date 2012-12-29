@@ -78,13 +78,14 @@ public:
     virtual ~QVertex();
 
     // Association ends from QVertex
-    Q_INVOKABLE const QSet<QTransition *> &incomings() const;
+    Q_INVOKABLE QSet<QTransition *> incomings() const;
     Q_INVOKABLE QRegion *container() const;
     Q_INVOKABLE void setContainer(QRegion *container);
-    Q_INVOKABLE const QSet<QTransition *> &outgoings() const;
+    Q_INVOKABLE QSet<QTransition *> outgoings() const;
 
     // Operations
     Q_INVOKABLE QStateMachine *containingStateMachine() const;
+    virtual void registerMetaTypes() const;
 
     // Classes which access read-only opposite properties should be friend
     friend class QTransition;

@@ -83,7 +83,7 @@ QEnumeration::~QEnumeration()
 /*!
     The ordered set of literals for this Enumeration.
  */
-const QList<QEnumerationLiteral *> &QEnumeration::ownedLiterals() const
+QList<QEnumerationLiteral *> QEnumeration::ownedLiterals() const
 {
     // This is a read-write association end
 
@@ -121,6 +121,18 @@ void QEnumeration::removeOwnedLiteral(QEnumerationLiteral *ownedLiteral)
         // Adjust opposite property
         ownedLiteral->setEnumeration(0);
     }
+}
+
+void QEnumeration::registerMetaTypes() const
+{
+    qRegisterMetaType<QEnumerationLiteral *>("QEnumerationLiteral *");
+    qRegisterMetaType<QSet<QEnumerationLiteral *>>("QSet<QEnumerationLiteral *>");
+    qRegisterMetaType<QList<QEnumerationLiteral *>>("QList<QEnumerationLiteral *>");
+
+    QDataType::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qenumeration.cpp"

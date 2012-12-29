@@ -85,7 +85,7 @@ QTrigger::~QTrigger()
 /*!
     A optional port of the receiver object on which the behavioral feature is invoked.
  */
-const QSet<QPort *> &QTrigger::ports() const
+QSet<QPort *> QTrigger::ports() const
 {
     // This is a read-write association end
 
@@ -132,6 +132,22 @@ void QTrigger::setEvent(QEvent *event)
     if (d->event != event) {
         d->event = event;
     }
+}
+
+void QTrigger::registerMetaTypes() const
+{
+    qRegisterMetaType<QEvent *>("QEvent *");
+    qRegisterMetaType<QSet<QEvent *>>("QSet<QEvent *>");
+    qRegisterMetaType<QList<QEvent *>>("QList<QEvent *>");
+
+    qRegisterMetaType<QPort *>("QPort *");
+    qRegisterMetaType<QSet<QPort *>>("QSet<QPort *>");
+    qRegisterMetaType<QList<QPort *>>("QList<QPort *>");
+
+    QNamedElement::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qtrigger.cpp"

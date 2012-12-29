@@ -107,6 +107,18 @@ void QOperationTemplateParameter::setParameteredElement(QOperation *parameteredE
     }
 }
 
+void QOperationTemplateParameter::registerMetaTypes() const
+{
+    qRegisterMetaType<QOperation *>("QOperation *");
+    qRegisterMetaType<QSet<QOperation *>>("QSet<QOperation *>");
+    qRegisterMetaType<QList<QOperation *>>("QList<QOperation *>");
+
+    QTemplateParameter::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qoperationtemplateparameter.cpp"
 
 QT_END_NAMESPACE_QTUML

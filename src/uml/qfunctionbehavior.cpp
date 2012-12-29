@@ -74,6 +74,14 @@ QFunctionBehavior::~QFunctionBehavior()
 {
 }
 
+void QFunctionBehavior::registerMetaTypes() const
+{
+    QOpaqueBehavior::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qfunctionbehavior.cpp"
 
 QT_END_NAMESPACE_QTUML

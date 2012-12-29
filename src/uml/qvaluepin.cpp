@@ -110,6 +110,18 @@ void QValuePin::setValue(QValueSpecification *value)
     }
 }
 
+void QValuePin::registerMetaTypes() const
+{
+    qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
+    qRegisterMetaType<QSet<QValueSpecification *>>("QSet<QValueSpecification *>");
+    qRegisterMetaType<QList<QValueSpecification *>>("QList<QValueSpecification *>");
+
+    QInputPin::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qvaluepin.cpp"
 
 QT_END_NAMESPACE_QTUML

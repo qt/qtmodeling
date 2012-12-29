@@ -87,7 +87,7 @@ QDependency::~QDependency()
 /*!
     The Elements owned by this element.
  */
-const QSet<QElement *> &QDependency::ownedElements() const
+QSet<QElement *> QDependency::ownedElements() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedElements();
 }
@@ -103,7 +103,7 @@ QElement *QDependency::owner() const
 /*!
     The Comments owned by this element.
  */
-const QSet<QComment *> &QDependency::ownedComments() const
+QSet<QComment *> QDependency::ownedComments() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedComments();
 }
@@ -201,7 +201,7 @@ QNamespace *QDependency::namespace_() const
 /*!
     Indicates the dependencies that reference the client.
  */
-const QSet<QDependency *> &QDependency::clientDependencies() const
+QSet<QDependency *> QDependency::clientDependencies() const
 {
     return (qwrappedobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
@@ -245,7 +245,7 @@ void QDependency::unsetVisibility()
 /*!
     Specifies the elements related by the Relationship.
  */
-const QSet<QElement *> &QDependency::relatedElements() const
+QSet<QElement *> QDependency::relatedElements() const
 {
     return (qwrappedobject_cast<const QRelationship *>(this))->relatedElements();
 }
@@ -257,7 +257,7 @@ const QSet<QElement *> &QDependency::relatedElements() const
 /*!
     Specifies the sources of the DirectedRelationship.
  */
-const QSet<QElement *> &QDependency::sources() const
+QSet<QElement *> QDependency::sources() const
 {
     return (qwrappedobject_cast<const QDirectedRelationship *>(this))->sources();
 }
@@ -265,7 +265,7 @@ const QSet<QElement *> &QDependency::sources() const
 /*!
     Specifies the targets of the DirectedRelationship.
  */
-const QSet<QElement *> &QDependency::targets() const
+QSet<QElement *> QDependency::targets() const
 {
     return (qwrappedobject_cast<const QDirectedRelationship *>(this))->targets();
 }
@@ -277,7 +277,7 @@ const QSet<QElement *> &QDependency::targets() const
 /*!
     The element(s) dependent on the supplier element(s). In some cases (such as a Trace Abstraction) the assignment of direction (that is, the designation of the client element) is at the discretion of the modeler, and is a stipulation.
  */
-const QSet<QNamedElement *> &QDependency::clients() const
+QSet<QNamedElement *> QDependency::clients() const
 {
     // This is a read-write association end
 
@@ -321,7 +321,7 @@ void QDependency::removeClient(QNamedElement *client)
 /*!
     The element(s) independent of the client element(s), in the same respect and the same dependency relationship. In some directed dependency relationships (such as Refinement Abstractions), a common convention in the domain of class-based OO software is to put the more abstract element in this role. Despite this convention, users of UML may stipulate a sense of dependency suitable for their domain, which makes a more abstract element dependent on that which is more specific.
  */
-const QSet<QNamedElement *> &QDependency::suppliers() const
+QSet<QNamedElement *> QDependency::suppliers() const
 {
     // This is a read-write association end
 
@@ -353,6 +353,18 @@ void QDependency::removeSupplier(QNamedElement *supplier)
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QDirectedRelationshipPrivate *>(d))->removeTarget(qwrappedobject_cast<QElement *>(supplier));
     }
+}
+
+void QDependency::registerMetaTypes() const
+{
+    qRegisterMetaType<QNamedElement *>("QNamedElement *");
+    qRegisterMetaType<QSet<QNamedElement *>>("QSet<QNamedElement *>");
+    qRegisterMetaType<QList<QNamedElement *>>("QList<QNamedElement *>");
+
+    QWrappedObject::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qdependency.cpp"

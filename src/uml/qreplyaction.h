@@ -81,9 +81,10 @@ public:
     Q_INVOKABLE void setReplyToCall(QTrigger *replyToCall);
     Q_INVOKABLE QInputPin *returnInformation() const;
     Q_INVOKABLE void setReturnInformation(QInputPin *returnInformation);
-    Q_INVOKABLE const QSet<QInputPin *> &replyValues() const;
+    Q_INVOKABLE QSet<QInputPin *> replyValues() const;
     Q_INVOKABLE void addReplyValue(QInputPin *replyValue);
     Q_INVOKABLE void removeReplyValue(QInputPin *replyValue);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QReplyAction(QReplyActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

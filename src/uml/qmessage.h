@@ -96,7 +96,7 @@ public:
     // Association ends from QMessage
     Q_INVOKABLE QNamedElement *signature() const;
     Q_INVOKABLE void setSignature(QNamedElement *signature);
-    Q_INVOKABLE const QList<QValueSpecification *> &arguments() const;
+    Q_INVOKABLE QList<QValueSpecification *> arguments() const;
     Q_INVOKABLE void addArgument(QValueSpecification *argument);
     Q_INVOKABLE void removeArgument(QValueSpecification *argument);
     Q_INVOKABLE QMessageEnd *receiveEvent() const;
@@ -107,6 +107,7 @@ public:
     Q_INVOKABLE void setSendEvent(QMessageEnd *sendEvent);
     Q_INVOKABLE QConnector *connector() const;
     Q_INVOKABLE void setConnector(QConnector *connector);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QMessage(QMessagePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

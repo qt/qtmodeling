@@ -64,6 +64,7 @@ class Q_UML_EXPORT QPartDecomposition : public QInteractionUse
 public:
     Q_INVOKABLE explicit QPartDecomposition(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QPartDecomposition();
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QPartDecomposition(QPartDecompositionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

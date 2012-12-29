@@ -139,7 +139,7 @@ QNamespace::~QNamespace()
 /*!
     References the PackageImports owned by the Namespace.
  */
-const QSet<QPackageImport *> &QNamespace::packageImports() const
+QSet<QPackageImport *> QNamespace::packageImports() const
 {
     // This is a read-write association end
 
@@ -182,7 +182,7 @@ void QNamespace::removePackageImport(QPackageImport *packageImport)
 /*!
     A collection of NamedElements identifiable within the Namespace, either by being owned or by being introduced by importing or inheritance.
  */
-const QSet<QNamedElement *> &QNamespace::members() const
+QSet<QNamedElement *> QNamespace::members() const
 {
     // This is a read-only derived-union association end
 
@@ -193,19 +193,19 @@ const QSet<QNamedElement *> &QNamespace::members() const
 /*!
     References the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports.
  */
-const QSet<QPackageableElement *> &QNamespace::importedMembers() const
+QSet<QPackageableElement *> QNamespace::importedMembers() const
 {
     // This is a read-only derived association end
 
     qWarning("QNamespace::importedMembers: to be implemented (this is a derived associationend)");
 
-    return *(new QSet<QPackageableElement *>); // change here to your derived return
+    return QSet<QPackageableElement *>(); // change here to your derived return
 }
 
 /*!
     References the ElementImports owned by the Namespace.
  */
-const QSet<QElementImport *> &QNamespace::elementImports() const
+QSet<QElementImport *> QNamespace::elementImports() const
 {
     // This is a read-write association end
 
@@ -248,7 +248,7 @@ void QNamespace::removeElementImport(QElementImport *elementImport)
 /*!
     Specifies a set of Constraints owned by this Namespace.
  */
-const QSet<QConstraint *> &QNamespace::ownedRules() const
+QSet<QConstraint *> QNamespace::ownedRules() const
 {
     // This is a read-write association end
 
@@ -291,7 +291,7 @@ void QNamespace::removeOwnedRule(QConstraint *ownedRule)
 /*!
     A collection of NamedElements owned by the Namespace.
  */
-const QSet<QNamedElement *> &QNamespace::ownedMembers() const
+QSet<QNamedElement *> QNamespace::ownedMembers() const
 {
     // This is a read-only derived-union association end
 
@@ -302,18 +302,18 @@ const QSet<QNamedElement *> &QNamespace::ownedMembers() const
 /*!
     The query excludeCollisions() excludes from a set of PackageableElements any that would not be distinguishable from each other in this namespace.
  */
-const QSet<QPackageableElement *> &QNamespace::excludeCollisions(const QPackageableElement *imps) const
+QSet<QPackageableElement *> QNamespace::excludeCollisions(const QPackageableElement *imps) const
 {
     qWarning("QNamespace::excludeCollisions: operation to be implemented");
     Q_UNUSED(imps);
 
-    return *(new QSet<QPackageableElement *>); // change here to your derived return
+    return QSet<QPackageableElement *>(); // change here to your derived return
 }
 
 /*!
     The query getNamesOfMember() gives a set of all of the names that a member would have in a Namespace. In general a member can have multiple names in a Namespace if it is imported more than once with different aliases. The query takes account of importing. It gives back the set of names that an element would have in an importing namespace, either because it is owned, or if not owned then imported individually, or if not individually then from a package.
  */
-const QSet<QString> QNamespace::getNamesOfMember(const QNamedElement *element) const
+QSet<QString> QNamespace::getNamesOfMember(const QNamedElement *element) const
 {
     qWarning("QNamespace::getNamesOfMember: operation to be implemented");
     Q_UNUSED(element);
@@ -324,12 +324,12 @@ const QSet<QString> QNamespace::getNamesOfMember(const QNamedElement *element) c
 /*!
     The query importMembers() defines which of a set of PackageableElements are actually imported into the namespace. This excludes hidden ones, i.e., those which have names that conflict with names of owned members, and also excludes elements which would have the same name when imported.
  */
-const QSet<QPackageableElement *> &QNamespace::importMembers(const QPackageableElement *imps) const
+QSet<QPackageableElement *> QNamespace::importMembers(const QPackageableElement *imps) const
 {
     qWarning("QNamespace::importMembers: operation to be implemented");
     Q_UNUSED(imps);
 
-    return *(new QSet<QPackageableElement *>); // change here to your derived return
+    return QSet<QPackageableElement *>(); // change here to your derived return
 }
 
 /*!
@@ -340,6 +340,30 @@ bool QNamespace::membersAreDistinguishable() const
     qWarning("QNamespace::membersAreDistinguishable: operation to be implemented");
 
     return bool(); // change here to your derived return
+}
+
+void QNamespace::registerMetaTypes() const
+{
+    qRegisterMetaType<QPackageImport *>("QPackageImport *");
+    qRegisterMetaType<QSet<QPackageImport *>>("QSet<QPackageImport *>");
+    qRegisterMetaType<QList<QPackageImport *>>("QList<QPackageImport *>");
+
+    qRegisterMetaType<QConstraint *>("QConstraint *");
+    qRegisterMetaType<QSet<QConstraint *>>("QSet<QConstraint *>");
+    qRegisterMetaType<QList<QConstraint *>>("QList<QConstraint *>");
+
+    qRegisterMetaType<QElementImport *>("QElementImport *");
+    qRegisterMetaType<QSet<QElementImport *>>("QSet<QElementImport *>");
+    qRegisterMetaType<QList<QElementImport *>>("QList<QElementImport *>");
+
+    qRegisterMetaType<QPackageableElement *>("QPackageableElement *");
+    qRegisterMetaType<QSet<QPackageableElement *>>("QSet<QPackageableElement *>");
+    qRegisterMetaType<QList<QPackageableElement *>>("QList<QPackageableElement *>");
+
+    QNamedElement::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qnamespace.cpp"

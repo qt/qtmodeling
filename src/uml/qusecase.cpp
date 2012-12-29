@@ -86,7 +86,7 @@ QUseCase::~QUseCase()
 /*!
     References the ExtensionPoints owned by the use case.
  */
-const QSet<QExtensionPoint *> &QUseCase::extensionPoints() const
+QSet<QExtensionPoint *> QUseCase::extensionPoints() const
 {
     // This is a read-write association end
 
@@ -129,7 +129,7 @@ void QUseCase::removeExtensionPoint(QExtensionPoint *extensionPoint)
 /*!
     References the Include relationships owned by this use case.
  */
-const QSet<QInclude *> &QUseCase::includes() const
+QSet<QInclude *> QUseCase::includes() const
 {
     // This is a read-write association end
 
@@ -172,7 +172,7 @@ void QUseCase::removeInclude(QInclude *include)
 /*!
     References the subjects to which this use case applies. The subject or its parts realize all the use cases that apply to this subject. Use cases need not be attached to any specific subject, however. The subject may, but need not, own the use cases that apply to it.
  */
-const QSet<QClassifier *> &QUseCase::subjects() const
+QSet<QClassifier *> QUseCase::subjects() const
 {
     // This is a read-write association end
 
@@ -210,7 +210,7 @@ void QUseCase::removeSubject(QClassifier *subject)
 /*!
     References the Extend relationships owned by this use case.
  */
-const QSet<QExtend *> &QUseCase::extends() const
+QSet<QExtend *> QUseCase::extends() const
 {
     // This is a read-write association end
 
@@ -253,11 +253,35 @@ void QUseCase::removeExtend(QExtend *extend)
 /*!
     The query allIncludedUseCases() returns the transitive closure of all use cases (directly or indirectly) included by this use case.
  */
-const QSet<QUseCase *> &QUseCase::allIncludedUseCases() const
+QSet<QUseCase *> QUseCase::allIncludedUseCases() const
 {
     qWarning("QUseCase::allIncludedUseCases: operation to be implemented");
 
-    return *(new QSet<QUseCase *>); // change here to your derived return
+    return QSet<QUseCase *>(); // change here to your derived return
+}
+
+void QUseCase::registerMetaTypes() const
+{
+    qRegisterMetaType<QClassifier *>("QClassifier *");
+    qRegisterMetaType<QSet<QClassifier *>>("QSet<QClassifier *>");
+    qRegisterMetaType<QList<QClassifier *>>("QList<QClassifier *>");
+
+    qRegisterMetaType<QInclude *>("QInclude *");
+    qRegisterMetaType<QSet<QInclude *>>("QSet<QInclude *>");
+    qRegisterMetaType<QList<QInclude *>>("QList<QInclude *>");
+
+    qRegisterMetaType<QExtend *>("QExtend *");
+    qRegisterMetaType<QSet<QExtend *>>("QSet<QExtend *>");
+    qRegisterMetaType<QList<QExtend *>>("QList<QExtend *>");
+
+    qRegisterMetaType<QExtensionPoint *>("QExtensionPoint *");
+    qRegisterMetaType<QSet<QExtensionPoint *>>("QSet<QExtensionPoint *>");
+    qRegisterMetaType<QList<QExtensionPoint *>>("QList<QExtensionPoint *>");
+
+    QBehavioredClassifier::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qusecase.cpp"

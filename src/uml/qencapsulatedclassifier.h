@@ -74,7 +74,8 @@ public:
     virtual ~QEncapsulatedClassifier();
 
     // Association ends from QEncapsulatedClassifier
-    Q_INVOKABLE const QSet<QPort *> &ownedPorts() const;
+    Q_INVOKABLE QSet<QPort *> ownedPorts() const;
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QEncapsulatedClassifier(QEncapsulatedClassifierPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

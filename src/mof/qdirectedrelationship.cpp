@@ -131,7 +131,7 @@ QDirectedRelationship::~QDirectedRelationship()
 /*!
     Specifies the sources of the DirectedRelationship.
  */
-const QSet<QElement *> &QDirectedRelationship::sources() const
+QSet<QElement *> QDirectedRelationship::sources() const
 {
     // This is a read-only derived-union association end
 
@@ -142,12 +142,24 @@ const QSet<QElement *> &QDirectedRelationship::sources() const
 /*!
     Specifies the targets of the DirectedRelationship.
  */
-const QSet<QElement *> &QDirectedRelationship::targets() const
+QSet<QElement *> QDirectedRelationship::targets() const
 {
     // This is a read-only derived-union association end
 
     Q_D(const QDirectedRelationship);
     return d->targets;
+}
+
+void QDirectedRelationship::registerMetaTypes() const
+{
+    qRegisterMetaType<QElement *>("QElement *");
+    qRegisterMetaType<QSet<QElement *>>("QSet<QElement *>");
+    qRegisterMetaType<QList<QElement *>>("QList<QElement *>");
+
+    QRelationship::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qdirectedrelationship.cpp"

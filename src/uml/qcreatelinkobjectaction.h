@@ -73,6 +73,7 @@ public:
     // Association ends from QCreateLinkObjectAction
     Q_INVOKABLE QOutputPin *result() const;
     Q_INVOKABLE void setResult(QOutputPin *result);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QCreateLinkObjectAction(QCreateLinkObjectActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

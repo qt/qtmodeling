@@ -83,7 +83,7 @@ QConsiderIgnoreFragment::~QConsiderIgnoreFragment()
 /*!
     The set of messages that apply to this fragment
  */
-const QSet<QNamedElement *> &QConsiderIgnoreFragment::messages() const
+QSet<QNamedElement *> QConsiderIgnoreFragment::messages() const
 {
     // This is a read-write association end
 
@@ -109,6 +109,18 @@ void QConsiderIgnoreFragment::removeMessage(QNamedElement *message)
     if (d->messages.contains(message)) {
         d->messages.remove(message);
     }
+}
+
+void QConsiderIgnoreFragment::registerMetaTypes() const
+{
+    qRegisterMetaType<QNamedElement *>("QNamedElement *");
+    qRegisterMetaType<QSet<QNamedElement *>>("QSet<QNamedElement *>");
+    qRegisterMetaType<QList<QNamedElement *>>("QList<QNamedElement *>");
+
+    QCombinedFragment::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qconsiderignorefragment.cpp"

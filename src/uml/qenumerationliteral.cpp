@@ -125,6 +125,18 @@ void QEnumerationLiteral::setEnumeration(QEnumeration *enumeration)
     }
 }
 
+void QEnumerationLiteral::registerMetaTypes() const
+{
+    qRegisterMetaType<QEnumeration *>("QEnumeration *");
+    qRegisterMetaType<QSet<QEnumeration *>>("QSet<QEnumeration *>");
+    qRegisterMetaType<QList<QEnumeration *>>("QList<QEnumeration *>");
+
+    QInstanceSpecification::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qenumerationliteral.cpp"
 
 QT_END_NAMESPACE_QTUML

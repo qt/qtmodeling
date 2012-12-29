@@ -147,6 +147,22 @@ QProperty *QConnectorEnd::definingEnd() const
     return 0; // change here to your derived return
 }
 
+void QConnectorEnd::registerMetaTypes() const
+{
+    qRegisterMetaType<QProperty *>("QProperty *");
+    qRegisterMetaType<QSet<QProperty *>>("QSet<QProperty *>");
+    qRegisterMetaType<QList<QProperty *>>("QList<QProperty *>");
+
+    qRegisterMetaType<QConnectableElement *>("QConnectableElement *");
+    qRegisterMetaType<QSet<QConnectableElement *>>("QSet<QConnectableElement *>");
+    qRegisterMetaType<QList<QConnectableElement *>>("QList<QConnectableElement *>");
+
+    QMultiplicityElement::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qconnectorend.cpp"
 
 QT_END_NAMESPACE_QTUML

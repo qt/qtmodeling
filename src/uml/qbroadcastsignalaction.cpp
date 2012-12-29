@@ -102,6 +102,18 @@ void QBroadcastSignalAction::setSignal(QSignal *signal)
     }
 }
 
+void QBroadcastSignalAction::registerMetaTypes() const
+{
+    qRegisterMetaType<QSignal *>("QSignal *");
+    qRegisterMetaType<QSet<QSignal *>>("QSet<QSignal *>");
+    qRegisterMetaType<QList<QSignal *>>("QList<QSignal *>");
+
+    QInvocationAction::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qbroadcastsignalaction.cpp"
 
 QT_END_NAMESPACE_QTUML

@@ -141,6 +141,18 @@ void QJoinNode::setJoinSpec(QValueSpecification *joinSpec)
     }
 }
 
+void QJoinNode::registerMetaTypes() const
+{
+    qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
+    qRegisterMetaType<QSet<QValueSpecification *>>("QSet<QValueSpecification *>");
+    qRegisterMetaType<QList<QValueSpecification *>>("QList<QValueSpecification *>");
+
+    QControlNode::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qjoinnode.cpp"
 
 QT_END_NAMESPACE_QTUML

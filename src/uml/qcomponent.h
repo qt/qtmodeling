@@ -86,18 +86,19 @@ public:
     Q_INVOKABLE void unsetIndirectlyInstantiated();
 
     // Association ends from QComponent
-    Q_INVOKABLE const QSet<QComponentRealization *> &realizations() const;
+    Q_INVOKABLE QSet<QComponentRealization *> realizations() const;
     Q_INVOKABLE void addRealization(QComponentRealization *realization);
     Q_INVOKABLE void removeRealization(QComponentRealization *realization);
-    Q_INVOKABLE const QSet<QInterface *> &required() const;
-    Q_INVOKABLE const QSet<QInterface *> &provided() const;
-    Q_INVOKABLE const QSet<QPackageableElement *> &packagedElements() const;
+    Q_INVOKABLE QSet<QInterface *> required() const;
+    Q_INVOKABLE QSet<QInterface *> provided() const;
+    Q_INVOKABLE QSet<QPackageableElement *> packagedElements() const;
     Q_INVOKABLE void addPackagedElement(QPackageableElement *packagedElement);
     Q_INVOKABLE void removePackagedElement(QPackageableElement *packagedElement);
 
     // Operations
-    Q_INVOKABLE const QSet<QInterface *> &realizedInterfaces(const QClassifier *classifier) const;
-    Q_INVOKABLE const QSet<QInterface *> &usedInterfaces(const QClassifier *classifier) const;
+    Q_INVOKABLE QSet<QInterface *> realizedInterfaces(const QClassifier *classifier) const;
+    Q_INVOKABLE QSet<QInterface *> usedInterfaces(const QClassifier *classifier) const;
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QComponent(QComponentPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

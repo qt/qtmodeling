@@ -74,6 +74,14 @@ QControlFlow::~QControlFlow()
 {
 }
 
+void QControlFlow::registerMetaTypes() const
+{
+    QActivityEdge::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qcontrolflow.cpp"
 
 QT_END_NAMESPACE_QTUML

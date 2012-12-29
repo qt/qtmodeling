@@ -133,6 +133,22 @@ void QStructuralFeatureAction::setStructuralFeature(QStructuralFeature *structur
     }
 }
 
+void QStructuralFeatureAction::registerMetaTypes() const
+{
+    qRegisterMetaType<QInputPin *>("QInputPin *");
+    qRegisterMetaType<QSet<QInputPin *>>("QSet<QInputPin *>");
+    qRegisterMetaType<QList<QInputPin *>>("QList<QInputPin *>");
+
+    qRegisterMetaType<QStructuralFeature *>("QStructuralFeature *");
+    qRegisterMetaType<QSet<QStructuralFeature *>>("QSet<QStructuralFeature *>");
+    qRegisterMetaType<QList<QStructuralFeature *>>("QList<QStructuralFeature *>");
+
+    QAction::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qstructuralfeatureaction.cpp"
 
 QT_END_NAMESPACE_QTUML

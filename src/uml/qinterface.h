@@ -88,25 +88,26 @@ public:
     // Association ends from QInterface
     Q_INVOKABLE QProtocolStateMachine *protocol() const;
     Q_INVOKABLE void setProtocol(QProtocolStateMachine *protocol);
-    Q_INVOKABLE const QSet<QInterface *> &redefinedInterfaces() const;
+    Q_INVOKABLE QSet<QInterface *> redefinedInterfaces() const;
     Q_INVOKABLE void addRedefinedInterface(QInterface *redefinedInterface);
     Q_INVOKABLE void removeRedefinedInterface(QInterface *redefinedInterface);
-    Q_INVOKABLE const QSet<QReception *> &ownedReceptions() const;
+    Q_INVOKABLE QSet<QReception *> ownedReceptions() const;
     Q_INVOKABLE void addOwnedReception(QReception *ownedReception);
     Q_INVOKABLE void removeOwnedReception(QReception *ownedReception);
-    Q_INVOKABLE const QList<QOperation *> &ownedOperations() const;
+    Q_INVOKABLE QList<QOperation *> ownedOperations() const;
     Q_INVOKABLE void addOwnedOperation(QOperation *ownedOperation);
     Q_INVOKABLE void removeOwnedOperation(QOperation *ownedOperation);
-    Q_INVOKABLE const QList<QClassifier *> &nestedClassifiers() const;
+    Q_INVOKABLE QList<QClassifier *> nestedClassifiers() const;
     Q_INVOKABLE void addNestedClassifier(QClassifier *nestedClassifier);
     Q_INVOKABLE void removeNestedClassifier(QClassifier *nestedClassifier);
-    Q_INVOKABLE const QList<QProperty *> &ownedAttributes() const;
+    Q_INVOKABLE QList<QProperty *> ownedAttributes() const;
     Q_INVOKABLE void addOwnedAttribute(QProperty *ownedAttribute);
     Q_INVOKABLE void removeOwnedAttribute(QProperty *ownedAttribute);
 
     // Overriden methods for subsetted properties
     Q_INVOKABLE void addRedefinedClassifier(QWrappedObjectPointer<QInterface> redefinedInterface);
     Q_INVOKABLE void removeRedefinedClassifier(QWrappedObjectPointer<QInterface> redefinedInterface);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QInterface(QInterfacePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

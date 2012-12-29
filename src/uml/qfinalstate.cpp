@@ -74,6 +74,14 @@ QFinalState::~QFinalState()
 {
 }
 
+void QFinalState::registerMetaTypes() const
+{
+    QState::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qfinalstate.cpp"
 
 QT_END_NAMESPACE_QTUML

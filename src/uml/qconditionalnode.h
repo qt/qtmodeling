@@ -87,12 +87,13 @@ public:
     Q_INVOKABLE void unsetDeterminate();
 
     // Association ends from QConditionalNode
-    Q_INVOKABLE const QSet<QClause *> &clauses() const;
+    Q_INVOKABLE QSet<QClause *> clauses() const;
     Q_INVOKABLE void addClause(QClause *clause);
     Q_INVOKABLE void removeClause(QClause *clause);
-    Q_INVOKABLE const QList<QOutputPin *> &results() const;
+    Q_INVOKABLE QList<QOutputPin *> results() const;
     Q_INVOKABLE void addResult(QOutputPin *result);
     Q_INVOKABLE void removeResult(QOutputPin *result);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QConditionalNode(QConditionalNodePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

@@ -106,7 +106,7 @@ void QOccurrenceSpecification::setCovered(QLifeline *covered)
 /*!
     References the GeneralOrderings that specify EventOcurrences that must occur after this OccurrenceSpecification
  */
-const QSet<QGeneralOrdering *> &QOccurrenceSpecification::toAfter() const
+QSet<QGeneralOrdering *> QOccurrenceSpecification::toAfter() const
 {
     // This is a read-write association end
 
@@ -143,7 +143,7 @@ void QOccurrenceSpecification::removeToAfter(QGeneralOrdering *toAfter)
 /*!
     References the GeneralOrderings that specify EventOcurrences that must occur before this OccurrenceSpecification
  */
-const QSet<QGeneralOrdering *> &QOccurrenceSpecification::toBefore() const
+QSet<QGeneralOrdering *> QOccurrenceSpecification::toBefore() const
 {
     // This is a read-write association end
 
@@ -175,6 +175,22 @@ void QOccurrenceSpecification::removeToBefore(QGeneralOrdering *toBefore)
         // Adjust opposite property
         toBefore->setAfter(0);
     }
+}
+
+void QOccurrenceSpecification::registerMetaTypes() const
+{
+    qRegisterMetaType<QLifeline *>("QLifeline *");
+    qRegisterMetaType<QSet<QLifeline *>>("QSet<QLifeline *>");
+    qRegisterMetaType<QList<QLifeline *>>("QList<QLifeline *>");
+
+    qRegisterMetaType<QGeneralOrdering *>("QGeneralOrdering *");
+    qRegisterMetaType<QSet<QGeneralOrdering *>>("QSet<QGeneralOrdering *>");
+    qRegisterMetaType<QList<QGeneralOrdering *>>("QList<QGeneralOrdering *>");
+
+    QInteractionFragment::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qoccurrencespecification.cpp"

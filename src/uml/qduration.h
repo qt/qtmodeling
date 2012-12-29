@@ -77,9 +77,10 @@ public:
     // Association ends from QDuration
     Q_INVOKABLE QValueSpecification *expr() const;
     Q_INVOKABLE void setExpr(QValueSpecification *expr);
-    Q_INVOKABLE const QSet<QObservation *> &observations() const;
+    Q_INVOKABLE QSet<QObservation *> observations() const;
     Q_INVOKABLE void addObservation(QObservation *observation);
     Q_INVOKABLE void removeObservation(QObservation *observation);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QDuration(QDurationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

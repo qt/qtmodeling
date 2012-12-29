@@ -141,6 +141,18 @@ void QAddVariableValueAction::setInsertAt(QInputPin *insertAt)
     }
 }
 
+void QAddVariableValueAction::registerMetaTypes() const
+{
+    qRegisterMetaType<QInputPin *>("QInputPin *");
+    qRegisterMetaType<QSet<QInputPin *>>("QSet<QInputPin *>");
+    qRegisterMetaType<QList<QInputPin *>>("QList<QInputPin *>");
+
+    QWriteVariableAction::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qaddvariablevalueaction.cpp"
 
 QT_END_NAMESPACE_QTUML

@@ -102,6 +102,18 @@ void QMessageEnd::setMessage(QMessage *message)
     }
 }
 
+void QMessageEnd::registerMetaTypes() const
+{
+    qRegisterMetaType<QMessage *>("QMessage *");
+    qRegisterMetaType<QSet<QMessage *>>("QSet<QMessage *>");
+    qRegisterMetaType<QList<QMessage *>>("QList<QMessage *>");
+
+    QNamedElement::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qmessageend.cpp"
 
 QT_END_NAMESPACE_QTUML

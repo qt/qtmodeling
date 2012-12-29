@@ -107,9 +107,9 @@ public:
     virtual ~QProperty();
 
     // Association ends from aggregated QElement
-    Q_INVOKABLE const QSet<QElement *> &ownedElements() const;
+    Q_INVOKABLE QSet<QElement *> ownedElements() const;
     Q_INVOKABLE QElement *owner() const;
-    Q_INVOKABLE const QSet<QComment *> &ownedComments() const;
+    Q_INVOKABLE QSet<QComment *> ownedComments() const;
     Q_INVOKABLE void addOwnedComment(QComment *ownedComment);
     Q_INVOKABLE void removeOwnedComment(QComment *ownedComment);
 
@@ -124,7 +124,7 @@ public:
     Q_INVOKABLE QStringExpression *nameExpression() const;
     Q_INVOKABLE void setNameExpression(QStringExpression *nameExpression);
     Q_INVOKABLE QNamespace *namespace_() const;
-    Q_INVOKABLE const QSet<QDependency *> &clientDependencies() const;
+    Q_INVOKABLE QSet<QDependency *> clientDependencies() const;
     Q_INVOKABLE void addClientDependency(QDependency *clientDependency);
     Q_INVOKABLE void removeClientDependency(QDependency *clientDependency);
 
@@ -157,8 +157,8 @@ public:
     Q_INVOKABLE void unsetLeaf();
 
     // Association ends from aggregated QRedefinableElement
-    Q_INVOKABLE const QSet<QRedefinableElement *> &redefinedElements() const;
-    Q_INVOKABLE const QSet<QClassifier *> &redefinitionContexts() const;
+    Q_INVOKABLE QSet<QRedefinableElement *> redefinedElements() const;
+    Q_INVOKABLE QSet<QClassifier *> redefinitionContexts() const;
 
     // Attributes from aggregated QFeature
     Q_INVOKABLE bool isStatic() const;
@@ -166,20 +166,20 @@ public:
     Q_INVOKABLE void unsetStatic();
 
     // Association ends from aggregated QFeature
-    Q_INVOKABLE const QSet<QClassifier *> &featuringClassifiers() const;
+    Q_INVOKABLE QSet<QClassifier *> featuringClassifiers() const;
 
     // Association ends from aggregated QParameterableElement
     Q_INVOKABLE QTemplateParameter *owningTemplateParameter() const;
     Q_INVOKABLE void setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter);
 
     // Association ends from aggregated QConnectableElement
-    Q_INVOKABLE const QList<QConnectorEnd *> &ends() const;
+    Q_INVOKABLE QList<QConnectorEnd *> ends() const;
     Q_INVOKABLE QConnectableElementTemplateParameter *templateParameter() const;
     Q_INVOKABLE void setTemplateParameter(QConnectableElementTemplateParameter *templateParameter);
 
     // Association ends from aggregated QDeploymentTarget
-    Q_INVOKABLE const QSet<QPackageableElement *> &deployedElements() const;
-    Q_INVOKABLE const QSet<QDeployment *> &deployments() const;
+    Q_INVOKABLE QSet<QPackageableElement *> deployedElements() const;
+    Q_INVOKABLE QSet<QDeployment *> deployments() const;
     Q_INVOKABLE void addDeployment(QDeployment *deployment);
     Q_INVOKABLE void removeDeployment(QDeployment *deployment);
 
@@ -206,12 +206,12 @@ public:
     Q_INVOKABLE void unsetAggregation();
 
     // Association ends from QProperty
-    Q_INVOKABLE const QSet<QProperty *> &subsettedProperties() const;
+    Q_INVOKABLE QSet<QProperty *> subsettedProperties() const;
     Q_INVOKABLE void addSubsettedProperty(QProperty *subsettedProperty);
     Q_INVOKABLE void removeSubsettedProperty(QProperty *subsettedProperty);
     Q_INVOKABLE QAssociation *owningAssociation() const;
     Q_INVOKABLE void setOwningAssociation(QAssociation *owningAssociation);
-    Q_INVOKABLE const QList<QProperty *> &qualifiers() const;
+    Q_INVOKABLE QList<QProperty *> qualifiers() const;
     Q_INVOKABLE void addQualifier(QProperty *qualifier);
     Q_INVOKABLE void removeQualifier(QProperty *qualifier);
     Q_INVOKABLE QValueSpecification *defaultValue() const;
@@ -224,7 +224,7 @@ public:
     Q_INVOKABLE void setAssociationEnd(QProperty *associationEnd);
     Q_INVOKABLE QDataType *datatype() const;
     Q_INVOKABLE void setDatatype(QDataType *datatype);
-    Q_INVOKABLE const QSet<QProperty *> &redefinedProperties() const;
+    Q_INVOKABLE QSet<QProperty *> redefinedProperties() const;
     Q_INVOKABLE void addRedefinedProperty(QProperty *redefinedProperty);
     Q_INVOKABLE void removeRedefinedProperty(QProperty *redefinedProperty);
     Q_INVOKABLE QAssociation *association() const;
@@ -237,7 +237,8 @@ public:
     Q_INVOKABLE bool isCompatibleWith(const QParameterableElement *p) const;
     Q_INVOKABLE bool isConsistentWith(const QRedefinableElement *redefinee) const;
     Q_INVOKABLE bool isNavigable() const;
-    Q_INVOKABLE const QSet<QType *> &subsettingContext() const;
+    Q_INVOKABLE QSet<QType *> subsettingContext() const;
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QProperty(QPropertyPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

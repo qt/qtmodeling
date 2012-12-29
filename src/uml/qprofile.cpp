@@ -84,7 +84,7 @@ QProfile::~QProfile()
 /*!
     References a package containing (directly or indirectly) metaclasses that may be extended.
  */
-const QSet<QPackageImport *> &QProfile::metamodelReferences() const
+QSet<QPackageImport *> QProfile::metamodelReferences() const
 {
     // This is a read-write association end
 
@@ -121,7 +121,7 @@ void QProfile::removeMetamodelReference(QPackageImport *metamodelReference)
 /*!
     References a metaclass that may be extended.
  */
-const QSet<QElementImport *> &QProfile::metaclassReferences() const
+QSet<QElementImport *> QProfile::metaclassReferences() const
 {
     // This is a read-write association end
 
@@ -153,6 +153,22 @@ void QProfile::removeMetaclassReference(QElementImport *metaclassReference)
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QNamespace *>(this))->removeElementImport(qwrappedobject_cast<QElementImport *>(metaclassReference));
     }
+}
+
+void QProfile::registerMetaTypes() const
+{
+    qRegisterMetaType<QElementImport *>("QElementImport *");
+    qRegisterMetaType<QSet<QElementImport *>>("QSet<QElementImport *>");
+    qRegisterMetaType<QList<QElementImport *>>("QList<QElementImport *>");
+
+    qRegisterMetaType<QPackageImport *>("QPackageImport *");
+    qRegisterMetaType<QSet<QPackageImport *>>("QSet<QPackageImport *>");
+    qRegisterMetaType<QList<QPackageImport *>>("QList<QPackageImport *>");
+
+    QPackage::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qprofile.cpp"

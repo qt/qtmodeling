@@ -180,6 +180,18 @@ void QGeneralization::setGeneral(QClassifier *general)
     }
 }
 
+void QGeneralization::registerMetaTypes() const
+{
+    qRegisterMetaType<QClassifier *>("QClassifier *");
+    qRegisterMetaType<QSet<QClassifier *>>("QSet<QClassifier *>");
+    qRegisterMetaType<QList<QClassifier *>>("QList<QClassifier *>");
+
+    QDirectedRelationship::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qgeneralization.cpp"
 
 QT_END_NAMESPACE_QTMOF

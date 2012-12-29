@@ -76,6 +76,7 @@ public:
     Q_INVOKABLE void setMergedPackage(QPackage *mergedPackage);
     Q_INVOKABLE QPackage *receivingPackage() const;
     Q_INVOKABLE void setReceivingPackage(QPackage *receivingPackage);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QPackageMerge(QPackageMergePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

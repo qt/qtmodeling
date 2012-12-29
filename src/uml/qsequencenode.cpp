@@ -84,7 +84,7 @@ QSequenceNode::~QSequenceNode()
 /*!
     An ordered set of executable nodes.
  */
-const QList<QExecutableNode *> &QSequenceNode::executableNodes() const
+QList<QExecutableNode *> QSequenceNode::executableNodes() const
 {
     // This is a read-write association end
 
@@ -112,6 +112,18 @@ void QSequenceNode::removeExecutableNode(QExecutableNode *executableNode)
         d->executableNodes.removeAll(executableNode);
         qTopLevelWrapper(executableNode)->setParent(0);
     }
+}
+
+void QSequenceNode::registerMetaTypes() const
+{
+    qRegisterMetaType<QExecutableNode *>("QExecutableNode *");
+    qRegisterMetaType<QSet<QExecutableNode *>>("QSet<QExecutableNode *>");
+    qRegisterMetaType<QList<QExecutableNode *>>("QList<QExecutableNode *>");
+
+    QStructuredActivityNode::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qsequencenode.cpp"

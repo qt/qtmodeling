@@ -113,7 +113,7 @@ void QDuration::setExpr(QValueSpecification *expr)
 /*!
     Refers to the time and duration observations that are involved in expr.
  */
-const QSet<QObservation *> &QDuration::observations() const
+QSet<QObservation *> QDuration::observations() const
 {
     // This is a read-write association end
 
@@ -139,6 +139,18 @@ void QDuration::removeObservation(QObservation *observation)
     if (d->observations.contains(observation)) {
         d->observations.remove(observation);
     }
+}
+
+void QDuration::registerMetaTypes() const
+{
+    qRegisterMetaType<QObservation *>("QObservation *");
+    qRegisterMetaType<QSet<QObservation *>>("QSet<QObservation *>");
+    qRegisterMetaType<QList<QObservation *>>("QList<QObservation *>");
+
+    QValueSpecification::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qduration.cpp"

@@ -80,20 +80,21 @@ public:
     virtual ~QOpaqueAction();
 
     // Attributes from QOpaqueAction
-    Q_INVOKABLE const QList<QString> bodies() const;
+    Q_INVOKABLE QList<QString> bodies() const;
     Q_INVOKABLE void addBody(QString body);
     Q_INVOKABLE void removeBody(QString body);
-    Q_INVOKABLE const QList<QString> languages() const;
+    Q_INVOKABLE QList<QString> languages() const;
     Q_INVOKABLE void addLanguage(QString language);
     Q_INVOKABLE void removeLanguage(QString language);
 
     // Association ends from QOpaqueAction
-    Q_INVOKABLE const QSet<QInputPin *> &inputValues() const;
+    Q_INVOKABLE QSet<QInputPin *> inputValues() const;
     Q_INVOKABLE void addInputValue(QInputPin *inputValue);
     Q_INVOKABLE void removeInputValue(QInputPin *inputValue);
-    Q_INVOKABLE const QSet<QOutputPin *> &outputValues() const;
+    Q_INVOKABLE QSet<QOutputPin *> outputValues() const;
     Q_INVOKABLE void addOutputValue(QOutputPin *outputValue);
     Q_INVOKABLE void removeOutputValue(QOutputPin *outputValue);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QOpaqueAction(QOpaqueActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

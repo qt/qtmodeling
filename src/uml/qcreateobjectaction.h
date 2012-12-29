@@ -77,6 +77,7 @@ public:
     Q_INVOKABLE void setClassifier(QClassifier *classifier);
     Q_INVOKABLE QOutputPin *result() const;
     Q_INVOKABLE void setResult(QOutputPin *result);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QCreateObjectAction(QCreateObjectActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

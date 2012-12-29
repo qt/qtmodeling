@@ -78,9 +78,10 @@ public:
     // Association ends from QCollaborationUse
     Q_INVOKABLE QCollaboration *type() const;
     Q_INVOKABLE void setType(QCollaboration *type);
-    Q_INVOKABLE const QSet<QDependency *> &roleBindings() const;
+    Q_INVOKABLE QSet<QDependency *> roleBindings() const;
     Q_INVOKABLE void addRoleBinding(QDependency *roleBinding);
     Q_INVOKABLE void removeRoleBinding(QDependency *roleBinding);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QCollaborationUse(QCollaborationUsePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

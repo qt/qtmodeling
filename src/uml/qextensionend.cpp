@@ -140,6 +140,18 @@ qint32 QExtensionEnd::lowerBound() const
     return qint32(); // change here to your derived return
 }
 
+void QExtensionEnd::registerMetaTypes() const
+{
+    qRegisterMetaType<QStereotype *>("QStereotype *");
+    qRegisterMetaType<QSet<QStereotype *>>("QSet<QStereotype *>");
+    qRegisterMetaType<QList<QStereotype *>>("QList<QStereotype *>");
+
+    QProperty::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qextensionend.cpp"
 
 QT_END_NAMESPACE_QTUML

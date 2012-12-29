@@ -74,6 +74,14 @@ QDevice::~QDevice()
 {
 }
 
+void QDevice::registerMetaTypes() const
+{
+    QNode::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qdevice.cpp"
 
 QT_END_NAMESPACE_QTUML

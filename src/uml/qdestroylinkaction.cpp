@@ -84,7 +84,7 @@ QDestroyLinkAction::~QDestroyLinkAction()
 /*!
     Specifies ends of association and inputs.
  */
-const QSet<QLinkEndDestructionData *> &QDestroyLinkAction::endData() const
+QSet<QLinkEndDestructionData *> QDestroyLinkAction::endData() const
 {
     // This is a read-write association end
 
@@ -112,6 +112,18 @@ void QDestroyLinkAction::removeEndData(QLinkEndDestructionData *endData)
         d->endData.remove(endData);
         qTopLevelWrapper(endData)->setParent(0);
     }
+}
+
+void QDestroyLinkAction::registerMetaTypes() const
+{
+    qRegisterMetaType<QLinkEndDestructionData *>("QLinkEndDestructionData *");
+    qRegisterMetaType<QSet<QLinkEndDestructionData *>>("QSet<QLinkEndDestructionData *>");
+    qRegisterMetaType<QList<QLinkEndDestructionData *>>("QList<QLinkEndDestructionData *>");
+
+    QWriteLinkAction::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qdestroylinkaction.cpp"

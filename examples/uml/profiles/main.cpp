@@ -37,9 +37,8 @@ int main ()
     profile->addPackagedElement(stereotype);
 
     // Show profile's owned stereotypes
-    QScopedPointer<QStereotypeList> ownedStereotypes (&profile->ownedStereotypes());
     qDebug() << "Owned stereotypes:";
-    foreach (QStereotype *ownedStereotype, *ownedStereotypes)
+    foreach (QStereotype *ownedStereotype, profile->ownedStereotypes())
         qDebug() << "    " << ownedStereotype->name();
 
     // Adding attribute to stereotype
@@ -65,9 +64,8 @@ int main ()
     qDebug() << "Profile owned members:";
     foreach (QNamedElement *namedElement, profile->ownedMembers())
         qDebug() << "    " << namedElement->name();
-    QScopedPointer<QPackageableElementList> importedMembers (&profile->importedMembers());
     qDebug() << "Profile imported members:";
-    foreach (QPackageableElement *importedMember, *importedMembers)
+    foreach (QPackageableElement *importedMember, profile->importedMembers())
         qDebug() << "    " << importedMember->name();
 
     // Create extension

@@ -74,6 +74,14 @@ QObservation::~QObservation()
 {
 }
 
+void QObservation::registerMetaTypes() const
+{
+    QPackageableElement::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qobservation.cpp"
 
 QT_END_NAMESPACE_QTUML

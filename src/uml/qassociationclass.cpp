@@ -78,6 +78,14 @@ QAssociationClass::~QAssociationClass()
 {
 }
 
+void QAssociationClass::registerMetaTypes() const
+{
+    QWrappedObject::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qassociationclass.cpp"
 
 QT_END_NAMESPACE_QTUML

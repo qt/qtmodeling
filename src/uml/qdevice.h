@@ -64,6 +64,7 @@ class Q_UML_EXPORT QDevice : public QNode
 public:
     Q_INVOKABLE explicit QDevice(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QDevice();
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QDevice(QDevicePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

@@ -74,9 +74,10 @@ public:
     virtual ~QSequenceNode();
 
     // Association ends from QSequenceNode
-    Q_INVOKABLE const QList<QExecutableNode *> &executableNodes() const;
+    Q_INVOKABLE QList<QExecutableNode *> executableNodes() const;
     Q_INVOKABLE void addExecutableNode(QExecutableNode *executableNode);
     Q_INVOKABLE void removeExecutableNode(QExecutableNode *executableNode);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QSequenceNode(QSequenceNodePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

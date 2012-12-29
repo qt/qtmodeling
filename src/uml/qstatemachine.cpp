@@ -87,7 +87,7 @@ QStateMachine::~QStateMachine()
 /*!
     The state machines of which this is an extension.
  */
-const QSet<QStateMachine *> &QStateMachine::extendedStateMachines() const
+QSet<QStateMachine *> QStateMachine::extendedStateMachines() const
 {
     // This is a read-write association end
 
@@ -118,7 +118,7 @@ void QStateMachine::removeExtendedStateMachine(QStateMachine *extendedStateMachi
 /*!
     The connection points defined for this state machine. They represent the interface of the state machine when used as part of submachine state.
  */
-const QSet<QPseudostate *> &QStateMachine::connectionPoints() const
+QSet<QPseudostate *> QStateMachine::connectionPoints() const
 {
     // This is a read-write association end
 
@@ -161,7 +161,7 @@ void QStateMachine::removeConnectionPoint(QPseudostate *connectionPoint)
 /*!
     References the submachine(s) in case of a submachine state. Multiple machines are referenced in case of a concurrent state.
  */
-const QSet<QState *> &QStateMachine::submachineStates() const
+QSet<QState *> QStateMachine::submachineStates() const
 {
     // This is a read-write association end
 
@@ -198,7 +198,7 @@ void QStateMachine::removeSubmachineState(QState *submachineState)
 /*!
     The regions owned directly by the state machine.
  */
-const QSet<QRegion *> &QStateMachine::regions() const
+QSet<QRegion *> QStateMachine::regions() const
 {
     // This is a read-write association end
 
@@ -282,6 +282,34 @@ bool QStateMachine::isRedefinitionContextValid(const QStateMachine *redefined) c
     Q_UNUSED(redefined);
 
     return bool(); // change here to your derived return
+}
+
+void QStateMachine::registerMetaTypes() const
+{
+    qRegisterMetaType<QNamespace *>("QNamespace *");
+    qRegisterMetaType<QSet<QNamespace *>>("QSet<QNamespace *>");
+    qRegisterMetaType<QList<QNamespace *>>("QList<QNamespace *>");
+
+    qRegisterMetaType<QRedefinableElement *>("QRedefinableElement *");
+    qRegisterMetaType<QSet<QRedefinableElement *>>("QSet<QRedefinableElement *>");
+    qRegisterMetaType<QList<QRedefinableElement *>>("QList<QRedefinableElement *>");
+
+    qRegisterMetaType<QState *>("QState *");
+    qRegisterMetaType<QSet<QState *>>("QSet<QState *>");
+    qRegisterMetaType<QList<QState *>>("QList<QState *>");
+
+    qRegisterMetaType<QPseudostate *>("QPseudostate *");
+    qRegisterMetaType<QSet<QPseudostate *>>("QSet<QPseudostate *>");
+    qRegisterMetaType<QList<QPseudostate *>>("QList<QPseudostate *>");
+
+    qRegisterMetaType<QRegion *>("QRegion *");
+    qRegisterMetaType<QSet<QRegion *>>("QSet<QRegion *>");
+    qRegisterMetaType<QList<QRegion *>>("QList<QRegion *>");
+
+    QBehavior::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qstatemachine.cpp"

@@ -76,13 +76,14 @@ public:
     virtual ~QStereotype();
 
     // Association ends from QStereotype
-    Q_INVOKABLE const QSet<QImage *> &icons() const;
+    Q_INVOKABLE QSet<QImage *> icons() const;
     Q_INVOKABLE void addIcon(QImage *icon);
     Q_INVOKABLE void removeIcon(QImage *icon);
     Q_INVOKABLE QProfile *profile() const;
 
     // Operations
     Q_INVOKABLE QProfile *containingProfile() const;
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QStereotype(QStereotypePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

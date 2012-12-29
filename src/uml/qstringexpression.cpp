@@ -86,7 +86,7 @@ QStringExpression::~QStringExpression()
 /*!
     The Elements owned by this element.
  */
-const QSet<QElement *> &QStringExpression::ownedElements() const
+QSet<QElement *> QStringExpression::ownedElements() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedElements();
 }
@@ -102,7 +102,7 @@ QElement *QStringExpression::owner() const
 /*!
     The Comments owned by this element.
  */
-const QSet<QComment *> &QStringExpression::ownedComments() const
+QSet<QComment *> QStringExpression::ownedComments() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedComments();
 }
@@ -137,7 +137,7 @@ void QStringExpression::setOwnedTemplateSignature(QTemplateSignature *ownedTempl
 /*!
     The optional bindings from this element to templates.
  */
-const QSet<QTemplateBinding *> &QStringExpression::templateBindings() const
+QSet<QTemplateBinding *> QStringExpression::templateBindings() const
 {
     return (qwrappedobject_cast<const QTemplateableElement *>(this))->templateBindings();
 }
@@ -191,7 +191,7 @@ void QStringExpression::setOwningExpression(QStringExpression *owningExpression)
 /*!
     The StringExpressions that constitute this StringExpression.
  */
-const QSet<QStringExpression *> &QStringExpression::subExpressions() const
+QSet<QStringExpression *> QStringExpression::subExpressions() const
 {
     // This is a read-write association end
 
@@ -239,6 +239,14 @@ QString QStringExpression::stringValue() const
     qWarning("QStringExpression::stringValue: operation to be implemented");
 
     return QString(); // change here to your derived return
+}
+
+void QStringExpression::registerMetaTypes() const
+{
+    QWrappedObject::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qstringexpression.cpp"

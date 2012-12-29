@@ -102,6 +102,18 @@ void QReception::setSignal(QSignal *signal)
     }
 }
 
+void QReception::registerMetaTypes() const
+{
+    qRegisterMetaType<QSignal *>("QSignal *");
+    qRegisterMetaType<QSet<QSignal *>>("QSet<QSignal *>");
+    qRegisterMetaType<QList<QSignal *>>("QList<QSignal *>");
+
+    QBehavioralFeature::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qreception.cpp"
 
 QT_END_NAMESPACE_QTUML
