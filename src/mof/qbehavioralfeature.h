@@ -81,9 +81,9 @@ public:
     virtual ~QBehavioralFeature();
 
     // Association ends from aggregated QElement
-    Q_INVOKABLE const QSet<QElement *> &ownedElements() const;
+    Q_INVOKABLE QSet<QElement *> ownedElements() const;
     Q_INVOKABLE QElement *owner() const;
-    Q_INVOKABLE const QSet<QComment *> &ownedComments() const;
+    Q_INVOKABLE QSet<QComment *> ownedComments() const;
     Q_INVOKABLE void addOwnedComment(QComment *ownedComment);
     Q_INVOKABLE void removeOwnedComment(QComment *ownedComment);
 
@@ -103,8 +103,8 @@ public:
     Q_INVOKABLE void unsetLeaf();
 
     // Association ends from aggregated QRedefinableElement
-    Q_INVOKABLE const QSet<QRedefinableElement *> &redefinedElements() const;
-    Q_INVOKABLE const QSet<QClassifier *> &redefinitionContexts() const;
+    Q_INVOKABLE QSet<QRedefinableElement *> redefinedElements() const;
+    Q_INVOKABLE QSet<QClassifier *> redefinitionContexts() const;
 
     // Attributes from aggregated QFeature
     Q_INVOKABLE bool isStatic() const;
@@ -112,32 +112,33 @@ public:
     Q_INVOKABLE void unsetStatic();
 
     // Association ends from aggregated QFeature
-    Q_INVOKABLE const QSet<QClassifier *> &featuringClassifiers() const;
+    Q_INVOKABLE QSet<QClassifier *> featuringClassifiers() const;
 
     // Association ends from aggregated QNamespace
-    Q_INVOKABLE const QSet<QPackageImport *> &packageImports() const;
+    Q_INVOKABLE QSet<QPackageImport *> packageImports() const;
     Q_INVOKABLE void addPackageImport(QPackageImport *packageImport);
     Q_INVOKABLE void removePackageImport(QPackageImport *packageImport);
-    Q_INVOKABLE const QSet<QNamedElement *> &members() const;
-    Q_INVOKABLE const QSet<QPackageableElement *> &importedMembers() const;
-    Q_INVOKABLE const QSet<QElementImport *> &elementImports() const;
+    Q_INVOKABLE QSet<QNamedElement *> members() const;
+    Q_INVOKABLE QSet<QPackageableElement *> importedMembers() const;
+    Q_INVOKABLE QSet<QElementImport *> elementImports() const;
     Q_INVOKABLE void addElementImport(QElementImport *elementImport);
     Q_INVOKABLE void removeElementImport(QElementImport *elementImport);
-    Q_INVOKABLE const QSet<QConstraint *> &ownedRules() const;
+    Q_INVOKABLE QSet<QConstraint *> ownedRules() const;
     Q_INVOKABLE void addOwnedRule(QConstraint *ownedRule);
     Q_INVOKABLE void removeOwnedRule(QConstraint *ownedRule);
-    Q_INVOKABLE const QSet<QNamedElement *> &ownedMembers() const;
+    Q_INVOKABLE QSet<QNamedElement *> ownedMembers() const;
 
     // Association ends from QBehavioralFeature
-    Q_INVOKABLE const QSet<QType *> &raisedExceptions() const;
+    Q_INVOKABLE QSet<QType *> raisedExceptions() const;
     Q_INVOKABLE void addRaisedException(QType *raisedException);
     Q_INVOKABLE void removeRaisedException(QType *raisedException);
-    Q_INVOKABLE const QList<QParameter *> &ownedParameters() const;
+    Q_INVOKABLE QList<QParameter *> ownedParameters() const;
     Q_INVOKABLE void addOwnedParameter(QParameter *ownedParameter);
     Q_INVOKABLE void removeOwnedParameter(QParameter *ownedParameter);
 
     // Operations
     Q_INVOKABLE bool isDistinguishableFrom(const QNamedElement *n, const QNamespace *ns) const;
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QBehavioralFeature(QBehavioralFeaturePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

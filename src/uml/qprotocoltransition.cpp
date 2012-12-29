@@ -115,13 +115,13 @@ void QProtocolTransition::setPostCondition(QConstraint *postCondition)
 /*!
     This association refers to the associated operation. It is derived from the operation of the call trigger when applicable.
  */
-const QSet<QOperation *> &QProtocolTransition::referred() const
+QSet<QOperation *> QProtocolTransition::referred() const
 {
     // This is a read-only derived association end
 
     qWarning("QProtocolTransition::referred: to be implemented (this is a derived associationend)");
 
-    return *(new QSet<QOperation *>); // change here to your derived return
+    return QSet<QOperation *>(); // change here to your derived return
 }
 
 /*!
@@ -146,6 +146,22 @@ void QProtocolTransition::setPreCondition(QConstraint *preCondition)
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QTransition *>(this))->setGuard(qwrappedobject_cast<QConstraint *>(preCondition));
     }
+}
+
+void QProtocolTransition::registerMetaTypes() const
+{
+    qRegisterMetaType<QConstraint *>("QConstraint *");
+    qRegisterMetaType<QSet<QConstraint *>>("QSet<QConstraint *>");
+    qRegisterMetaType<QList<QConstraint *>>("QList<QConstraint *>");
+
+    qRegisterMetaType<QOperation *>("QOperation *");
+    qRegisterMetaType<QSet<QOperation *>>("QSet<QOperation *>");
+    qRegisterMetaType<QList<QOperation *>>("QList<QOperation *>");
+
+    QTransition::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qprotocoltransition.cpp"

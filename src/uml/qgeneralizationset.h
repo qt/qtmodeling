@@ -88,9 +88,10 @@ public:
     // Association ends from QGeneralizationSet
     Q_INVOKABLE QClassifier *powertype() const;
     Q_INVOKABLE void setPowertype(QClassifier *powertype);
-    Q_INVOKABLE const QSet<QGeneralization *> &generalizations() const;
+    Q_INVOKABLE QSet<QGeneralization *> generalizations() const;
     Q_INVOKABLE void addGeneralization(QGeneralization *generalization);
     Q_INVOKABLE void removeGeneralization(QGeneralization *generalization);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QGeneralizationSet(QGeneralizationSetPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

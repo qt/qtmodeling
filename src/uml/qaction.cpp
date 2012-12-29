@@ -177,7 +177,7 @@ QClassifier *QAction::context() const
 /*!
     Constraint that must be satisfied when executed is completed.
  */
-const QSet<QConstraint *> &QAction::localPostconditions() const
+QSet<QConstraint *> QAction::localPostconditions() const
 {
     // This is a read-write association end
 
@@ -214,7 +214,7 @@ void QAction::removeLocalPostcondition(QConstraint *localPostcondition)
 /*!
     Constraint that must be satisfied when execution is started.
  */
-const QSet<QConstraint *> &QAction::localPreconditions() const
+QSet<QConstraint *> QAction::localPreconditions() const
 {
     // This is a read-write association end
 
@@ -251,7 +251,7 @@ void QAction::removeLocalPrecondition(QConstraint *localPrecondition)
 /*!
     The ordered set of input pins connected to the Action. These are among the total set of inputs.
  */
-const QList<QInputPin *> &QAction::inputs() const
+QList<QInputPin *> QAction::inputs() const
 {
     // This is a read-only derived-union association end
 
@@ -262,12 +262,36 @@ const QList<QInputPin *> &QAction::inputs() const
 /*!
     The ordered set of output pins connected to the Action. The action places its results onto pins in this set.
  */
-const QList<QOutputPin *> &QAction::outputs() const
+QList<QOutputPin *> QAction::outputs() const
 {
     // This is a read-only derived-union association end
 
     Q_D(const QAction);
     return d->outputs;
+}
+
+void QAction::registerMetaTypes() const
+{
+    qRegisterMetaType<QOutputPin *>("QOutputPin *");
+    qRegisterMetaType<QSet<QOutputPin *>>("QSet<QOutputPin *>");
+    qRegisterMetaType<QList<QOutputPin *>>("QList<QOutputPin *>");
+
+    qRegisterMetaType<QConstraint *>("QConstraint *");
+    qRegisterMetaType<QSet<QConstraint *>>("QSet<QConstraint *>");
+    qRegisterMetaType<QList<QConstraint *>>("QList<QConstraint *>");
+
+    qRegisterMetaType<QClassifier *>("QClassifier *");
+    qRegisterMetaType<QSet<QClassifier *>>("QSet<QClassifier *>");
+    qRegisterMetaType<QList<QClassifier *>>("QList<QClassifier *>");
+
+    qRegisterMetaType<QInputPin *>("QInputPin *");
+    qRegisterMetaType<QSet<QInputPin *>>("QSet<QInputPin *>");
+    qRegisterMetaType<QList<QInputPin *>>("QList<QInputPin *>");
+
+    QExecutableNode::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qaction.cpp"

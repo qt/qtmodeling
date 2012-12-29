@@ -85,7 +85,7 @@ QBehavioredClassifier::~QBehavioredClassifier()
 /*!
     References behavior specifications owned by a classifier.
  */
-const QSet<QBehavior *> &QBehavioredClassifier::ownedBehaviors() const
+QSet<QBehavior *> QBehavioredClassifier::ownedBehaviors() const
 {
     // This is a read-write association end
 
@@ -122,7 +122,7 @@ void QBehavioredClassifier::removeOwnedBehavior(QBehavior *ownedBehavior)
 /*!
     The set of InterfaceRealizations owned by the BehavioredClassifier. Interface realizations reference the Interfaces of which the BehavioredClassifier is an implementation.
  */
-const QSet<QInterfaceRealization *> &QBehavioredClassifier::interfaceRealizations() const
+QSet<QInterfaceRealization *> QBehavioredClassifier::interfaceRealizations() const
 {
     // This is a read-write association end
 
@@ -191,6 +191,22 @@ void QBehavioredClassifier::setClassifierBehavior(QBehavior *classifierBehavior)
             (qwrappedobject_cast<QBehavioredClassifier *>(this))->addOwnedBehavior(qwrappedobject_cast<QBehavior *>(classifierBehavior));
         }
     }
+}
+
+void QBehavioredClassifier::registerMetaTypes() const
+{
+    qRegisterMetaType<QBehavior *>("QBehavior *");
+    qRegisterMetaType<QSet<QBehavior *>>("QSet<QBehavior *>");
+    qRegisterMetaType<QList<QBehavior *>>("QList<QBehavior *>");
+
+    qRegisterMetaType<QInterfaceRealization *>("QInterfaceRealization *");
+    qRegisterMetaType<QSet<QInterfaceRealization *>>("QSet<QInterfaceRealization *>");
+    qRegisterMetaType<QList<QInterfaceRealization *>>("QList<QInterfaceRealization *>");
+
+    QClassifier::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 // Overriden methods for subsetted properties

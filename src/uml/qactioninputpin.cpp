@@ -110,6 +110,18 @@ void QActionInputPin::setFromAction(QAction *fromAction)
     }
 }
 
+void QActionInputPin::registerMetaTypes() const
+{
+    qRegisterMetaType<QAction *>("QAction *");
+    qRegisterMetaType<QSet<QAction *>>("QSet<QAction *>");
+    qRegisterMetaType<QList<QAction *>>("QList<QAction *>");
+
+    QInputPin::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qactioninputpin.cpp"
 
 QT_END_NAMESPACE_QTUML

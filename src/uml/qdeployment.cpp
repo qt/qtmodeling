@@ -124,7 +124,7 @@ void QDeployment::setLocation(QDeploymentTarget *location)
 /*!
     The specification of properties that parameterize the deployment and execution of one or more Artifacts.
  */
-const QSet<QDeploymentSpecification *> &QDeployment::configurations() const
+QSet<QDeploymentSpecification *> QDeployment::configurations() const
 {
     // This is a read-write association end
 
@@ -167,7 +167,7 @@ void QDeployment::removeConfiguration(QDeploymentSpecification *configuration)
 /*!
     The Artifacts that are deployed onto a Node. This association specializes the supplier association.
  */
-const QSet<QDeployedArtifact *> &QDeployment::deployedArtifacts() const
+QSet<QDeployedArtifact *> QDeployment::deployedArtifacts() const
 {
     // This is a read-write association end
 
@@ -199,6 +199,26 @@ void QDeployment::removeDeployedArtifact(QDeployedArtifact *deployedArtifact)
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QDependency *>(this))->removeSupplier(qwrappedobject_cast<QNamedElement *>(deployedArtifact));
     }
+}
+
+void QDeployment::registerMetaTypes() const
+{
+    qRegisterMetaType<QDeploymentSpecification *>("QDeploymentSpecification *");
+    qRegisterMetaType<QSet<QDeploymentSpecification *>>("QSet<QDeploymentSpecification *>");
+    qRegisterMetaType<QList<QDeploymentSpecification *>>("QList<QDeploymentSpecification *>");
+
+    qRegisterMetaType<QDeployedArtifact *>("QDeployedArtifact *");
+    qRegisterMetaType<QSet<QDeployedArtifact *>>("QSet<QDeployedArtifact *>");
+    qRegisterMetaType<QList<QDeployedArtifact *>>("QList<QDeployedArtifact *>");
+
+    qRegisterMetaType<QDeploymentTarget *>("QDeploymentTarget *");
+    qRegisterMetaType<QSet<QDeploymentTarget *>>("QSet<QDeploymentTarget *>");
+    qRegisterMetaType<QList<QDeploymentTarget *>>("QList<QDeploymentTarget *>");
+
+    QDependency::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 // Overriden methods for subsetted properties

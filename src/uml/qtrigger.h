@@ -76,11 +76,12 @@ public:
     virtual ~QTrigger();
 
     // Association ends from QTrigger
-    Q_INVOKABLE const QSet<QPort *> &ports() const;
+    Q_INVOKABLE QSet<QPort *> ports() const;
     Q_INVOKABLE void addPort(QPort *port);
     Q_INVOKABLE void removePort(QPort *port);
     Q_INVOKABLE QEvent *event() const;
     Q_INVOKABLE void setEvent(QEvent *event);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QTrigger(QTriggerPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

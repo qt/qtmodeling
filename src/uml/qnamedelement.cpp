@@ -164,9 +164,9 @@ QString QNamedElement::qualifiedName() const
     Q_D(const QNamedElement);
     if (d->name.isEmpty()) return QString();
     QString qualifiedName_(d->name);
-    QScopedPointer< const QList<QNamespace *> > allNamespaces_(&allNamespaces());
+    QList<QNamespace *> allNamespaces_ = allNamespaces();
     QString separator_ = separator();
-    foreach (QNamespace *namespace_, *allNamespaces_) {
+    foreach (QNamespace *namespace_, allNamespaces_) {
         if (namespace_->name().isEmpty())
             return QString();
         qualifiedName_.prepend(separator_).prepend(namespace_->name());
@@ -221,7 +221,7 @@ QNamespace *QNamedElement::namespace_() const
 /*!
     Indicates the dependencies that reference the client.
  */
-const QSet<QDependency *> &QNamedElement::clientDependencies() const
+QSet<QDependency *> QNamedElement::clientDependencies() const
 {
     // This is a read-write association end
 
@@ -258,33 +258,32 @@ void QNamedElement::removeClientDependency(QDependency *clientDependency)
 
 /*!
     The query allNamespaces() gives the sequence of namespaces in which the NamedElement is nested, working outwards.
-    It is the caller's responsibility to delete the returned list.
  */
-const QList<QNamespace *> &QNamedElement::allNamespaces() const
+QList<QNamespace *> QNamedElement::allNamespaces() const
 {
     Q_D(const QNamedElement);
     if (!d->namespace_) {
-        return *(new QList<QNamespace *>);
+        return QList<QNamespace *>();
     }
     else {
-        QList<QNamespace *> *allNamespaces_ = new QList<QNamespace *>;
+        QList<QNamespace *> allNamespaces_;
         QNamespace *namespace_ = this->namespace_();
         while (namespace_) {
-            allNamespaces_->append(namespace_);
+            allNamespaces_.append(namespace_);
             namespace_ = namespace_->namespace_();
         }
-        return *allNamespaces_;
+        return allNamespaces_;
     }
 }
 
 /*!
     The query allOwningPackages() returns all the directly or indirectly owning packages.
  */
-const QSet<QPackage *> &QNamedElement::allOwningPackages() const
+QSet<QPackage *> QNamedElement::allOwningPackages() const
 {
     qWarning("QNamedElement::allOwningPackages: operation to be implemented");
 
-    return *(new QSet<QPackage *>); // change here to your derived return
+    return QSet<QPackage *>(); // change here to your derived return
 }
 
 /*!
@@ -305,6 +304,30 @@ bool QNamedElement::isDistinguishableFrom(const QNamedElement *n, const QNamespa
 QString QNamedElement::separator() const
 {
     return QStringLiteral("::");
+}
+
+void QNamedElement::registerMetaTypes() const
+{
+    qRegisterMetaType<QPackage *>("QPackage *");
+    qRegisterMetaType<QSet<QPackage *>>("QSet<QPackage *>");
+    qRegisterMetaType<QList<QPackage *>>("QList<QPackage *>");
+
+    qRegisterMetaType<QNamespace *>("QNamespace *");
+    qRegisterMetaType<QSet<QNamespace *>>("QSet<QNamespace *>");
+    qRegisterMetaType<QList<QNamespace *>>("QList<QNamespace *>");
+
+    qRegisterMetaType<QDependency *>("QDependency *");
+    qRegisterMetaType<QSet<QDependency *>>("QSet<QDependency *>");
+    qRegisterMetaType<QList<QDependency *>>("QList<QDependency *>");
+
+    qRegisterMetaType<QStringExpression *>("QStringExpression *");
+    qRegisterMetaType<QSet<QStringExpression *>>("QSet<QStringExpression *>");
+    qRegisterMetaType<QList<QStringExpression *>>("QList<QStringExpression *>");
+
+    QElement::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qnamedelement.cpp"

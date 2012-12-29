@@ -74,6 +74,14 @@ QActor::~QActor()
 {
 }
 
+void QActor::registerMetaTypes() const
+{
+    QBehavioredClassifier::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qactor.cpp"
 
 QT_END_NAMESPACE_QTUML

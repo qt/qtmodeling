@@ -89,7 +89,7 @@ QInclude::~QInclude()
 /*!
     The Elements owned by this element.
  */
-const QSet<QElement *> &QInclude::ownedElements() const
+QSet<QElement *> QInclude::ownedElements() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedElements();
 }
@@ -105,7 +105,7 @@ QElement *QInclude::owner() const
 /*!
     The Comments owned by this element.
  */
-const QSet<QComment *> &QInclude::ownedComments() const
+QSet<QComment *> QInclude::ownedComments() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedComments();
 }
@@ -127,7 +127,7 @@ void QInclude::removeOwnedComment(QComment *ownedComment)
 /*!
     Specifies the elements related by the Relationship.
  */
-const QSet<QElement *> &QInclude::relatedElements() const
+QSet<QElement *> QInclude::relatedElements() const
 {
     return (qwrappedobject_cast<const QRelationship *>(this))->relatedElements();
 }
@@ -139,7 +139,7 @@ const QSet<QElement *> &QInclude::relatedElements() const
 /*!
     Specifies the sources of the DirectedRelationship.
  */
-const QSet<QElement *> &QInclude::sources() const
+QSet<QElement *> QInclude::sources() const
 {
     return (qwrappedobject_cast<const QDirectedRelationship *>(this))->sources();
 }
@@ -147,7 +147,7 @@ const QSet<QElement *> &QInclude::sources() const
 /*!
     Specifies the targets of the DirectedRelationship.
  */
-const QSet<QElement *> &QInclude::targets() const
+QSet<QElement *> QInclude::targets() const
 {
     return (qwrappedobject_cast<const QDirectedRelationship *>(this))->targets();
 }
@@ -218,7 +218,7 @@ QNamespace *QInclude::namespace_() const
 /*!
     Indicates the dependencies that reference the client.
  */
-const QSet<QDependency *> &QInclude::clientDependencies() const
+QSet<QDependency *> QInclude::clientDependencies() const
 {
     return (qwrappedobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
@@ -302,6 +302,18 @@ void QInclude::setAddition(QUseCase *addition)
             (qwrappedobject_cast<QDirectedRelationshipPrivate *>(d))->addTarget(qwrappedobject_cast<QElement *>(addition));
         }
     }
+}
+
+void QInclude::registerMetaTypes() const
+{
+    qRegisterMetaType<QUseCase *>("QUseCase *");
+    qRegisterMetaType<QSet<QUseCase *>>("QSet<QUseCase *>");
+    qRegisterMetaType<QList<QUseCase *>>("QList<QUseCase *>");
+
+    QWrappedObject::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qinclude.cpp"

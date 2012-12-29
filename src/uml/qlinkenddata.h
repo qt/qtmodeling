@@ -82,9 +82,10 @@ public:
     Q_INVOKABLE void setValue(QInputPin *value);
     Q_INVOKABLE QProperty *end() const;
     Q_INVOKABLE void setEnd(QProperty *end);
-    Q_INVOKABLE const QSet<QQualifierValue *> &qualifiers() const;
+    Q_INVOKABLE QSet<QQualifierValue *> qualifiers() const;
     Q_INVOKABLE void addQualifier(QQualifierValue *qualifier);
     Q_INVOKABLE void removeQualifier(QQualifierValue *qualifier);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QLinkEndData(QLinkEndDataPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

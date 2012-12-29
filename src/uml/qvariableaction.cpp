@@ -102,6 +102,18 @@ void QVariableAction::setVariable(QVariable *variable)
     }
 }
 
+void QVariableAction::registerMetaTypes() const
+{
+    qRegisterMetaType<QVariable *>("QVariable *");
+    qRegisterMetaType<QSet<QVariable *>>("QSet<QVariable *>");
+    qRegisterMetaType<QList<QVariable *>>("QList<QVariable *>");
+
+    QAction::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qvariableaction.cpp"
 
 QT_END_NAMESPACE_QTUML

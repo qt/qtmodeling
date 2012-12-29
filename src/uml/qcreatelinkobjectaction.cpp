@@ -110,6 +110,18 @@ void QCreateLinkObjectAction::setResult(QOutputPin *result)
     }
 }
 
+void QCreateLinkObjectAction::registerMetaTypes() const
+{
+    qRegisterMetaType<QOutputPin *>("QOutputPin *");
+    qRegisterMetaType<QSet<QOutputPin *>>("QSet<QOutputPin *>");
+    qRegisterMetaType<QList<QOutputPin *>>("QList<QOutputPin *>");
+
+    QCreateLinkAction::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qcreatelinkobjectaction.cpp"
 
 QT_END_NAMESPACE_QTUML

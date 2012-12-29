@@ -106,7 +106,7 @@ void QCollaborationUse::setType(QCollaboration *type)
 /*!
     A mapping between features of the collaboration type and features of the owning classifier. This mapping indicates which connectable element of the classifier plays which role(s) in the collaboration. A connectable element may be bound to multiple roles in the same collaboration use (that is, it may play multiple roles).
  */
-const QSet<QDependency *> &QCollaborationUse::roleBindings() const
+QSet<QDependency *> QCollaborationUse::roleBindings() const
 {
     // This is a read-write association end
 
@@ -138,6 +138,22 @@ void QCollaborationUse::removeRoleBinding(QDependency *roleBinding)
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(roleBinding));
     }
+}
+
+void QCollaborationUse::registerMetaTypes() const
+{
+    qRegisterMetaType<QDependency *>("QDependency *");
+    qRegisterMetaType<QSet<QDependency *>>("QSet<QDependency *>");
+    qRegisterMetaType<QList<QDependency *>>("QList<QDependency *>");
+
+    qRegisterMetaType<QCollaboration *>("QCollaboration *");
+    qRegisterMetaType<QSet<QCollaboration *>>("QSet<QCollaboration *>");
+    qRegisterMetaType<QList<QCollaboration *>>("QList<QCollaboration *>");
+
+    QNamedElement::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qcollaborationuse.cpp"

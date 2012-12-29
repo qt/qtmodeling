@@ -87,17 +87,18 @@ public:
     Q_INVOKABLE QtUml::ConnectorKind kind() const;
 
     // Association ends from QConnector
-    Q_INVOKABLE const QSet<QConnector *> &redefinedConnectors() const;
+    Q_INVOKABLE QSet<QConnector *> redefinedConnectors() const;
     Q_INVOKABLE void addRedefinedConnector(QConnector *redefinedConnector);
     Q_INVOKABLE void removeRedefinedConnector(QConnector *redefinedConnector);
-    Q_INVOKABLE const QSet<QBehavior *> &contracts() const;
+    Q_INVOKABLE QSet<QBehavior *> contracts() const;
     Q_INVOKABLE void addContract(QBehavior *contract);
     Q_INVOKABLE void removeContract(QBehavior *contract);
     Q_INVOKABLE QAssociation *type() const;
     Q_INVOKABLE void setType(QAssociation *type);
-    Q_INVOKABLE const QList<QConnectorEnd *> &ends() const;
+    Q_INVOKABLE QList<QConnectorEnd *> ends() const;
     Q_INVOKABLE void addEnd(QConnectorEnd *end);
     Q_INVOKABLE void removeEnd(QConnectorEnd *end);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QConnector(QConnectorPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

@@ -119,6 +119,14 @@ bool QLiteralInteger::isComputable() const
     return bool(); // change here to your derived return
 }
 
+void QLiteralInteger::registerMetaTypes() const
+{
+    QLiteralSpecification::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qliteralinteger.cpp"
 
 QT_END_NAMESPACE_QTUML

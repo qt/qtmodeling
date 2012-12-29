@@ -83,9 +83,10 @@ public:
     // Association ends from QClassifierTemplateParameter
     Q_INVOKABLE QClassifier *parameteredElement() const;
     Q_INVOKABLE void setParameteredElement(QClassifier *parameteredElement);
-    Q_INVOKABLE const QSet<QClassifier *> &constrainingClassifiers() const;
+    Q_INVOKABLE QSet<QClassifier *> constrainingClassifiers() const;
     Q_INVOKABLE void addConstrainingClassifier(QClassifier *constrainingClassifier);
     Q_INVOKABLE void removeConstrainingClassifier(QClassifier *constrainingClassifier);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QClassifierTemplateParameter(QClassifierTemplateParameterPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

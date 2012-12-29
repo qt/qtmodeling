@@ -155,7 +155,7 @@ void QMessage::setSignature(QNamedElement *signature)
 /*!
     The arguments of the Message
  */
-const QList<QValueSpecification *> &QMessage::arguments() const
+QList<QValueSpecification *> QMessage::arguments() const
 {
     // This is a read-write association end
 
@@ -282,6 +282,30 @@ void QMessage::setConnector(QConnector *connector)
     if (d->connector != connector) {
         d->connector = connector;
     }
+}
+
+void QMessage::registerMetaTypes() const
+{
+    qRegisterMetaType<QMessageEnd *>("QMessageEnd *");
+    qRegisterMetaType<QSet<QMessageEnd *>>("QSet<QMessageEnd *>");
+    qRegisterMetaType<QList<QMessageEnd *>>("QList<QMessageEnd *>");
+
+    qRegisterMetaType<QInteraction *>("QInteraction *");
+    qRegisterMetaType<QSet<QInteraction *>>("QSet<QInteraction *>");
+    qRegisterMetaType<QList<QInteraction *>>("QList<QInteraction *>");
+
+    qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
+    qRegisterMetaType<QSet<QValueSpecification *>>("QSet<QValueSpecification *>");
+    qRegisterMetaType<QList<QValueSpecification *>>("QList<QValueSpecification *>");
+
+    qRegisterMetaType<QConnector *>("QConnector *");
+    qRegisterMetaType<QSet<QConnector *>>("QSet<QConnector *>");
+    qRegisterMetaType<QList<QConnector *>>("QList<QConnector *>");
+
+    QNamedElement::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qmessage.cpp"

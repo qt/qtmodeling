@@ -76,6 +76,7 @@ public:
     Q_INVOKABLE void setMax(QDuration *max);
     Q_INVOKABLE QDuration *min() const;
     Q_INVOKABLE void setMin(QDuration *min);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QDurationInterval(QDurationIntervalPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

@@ -81,7 +81,7 @@ QInformationItem::~QInformationItem()
 /*!
     Determines the classifiers that will specify the structure and nature of the information. An information item represents all its represented classifiers.
  */
-const QSet<QClassifier *> &QInformationItem::represented() const
+QSet<QClassifier *> QInformationItem::represented() const
 {
     // This is a read-write association end
 
@@ -107,6 +107,14 @@ void QInformationItem::removeRepresented(QClassifier *represented)
     if (d->represented.contains(represented)) {
         d->represented.remove(represented);
     }
+}
+
+void QInformationItem::registerMetaTypes() const
+{
+    QClassifier::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qinformationitem.cpp"

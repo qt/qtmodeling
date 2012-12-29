@@ -172,7 +172,7 @@ void QGeneralizationSet::setPowertype(QClassifier *powertype)
 /*!
     Designates the instances of Generalization which are members of a given GeneralizationSet.
  */
-const QSet<QGeneralization *> &QGeneralizationSet::generalizations() const
+QSet<QGeneralization *> QGeneralizationSet::generalizations() const
 {
     // This is a read-write association end
 
@@ -205,6 +205,22 @@ void QGeneralizationSet::removeGeneralization(QGeneralization *generalization)
         if (generalization)
             generalization->removeGeneralizationSet(this);
     }
+}
+
+void QGeneralizationSet::registerMetaTypes() const
+{
+    qRegisterMetaType<QGeneralization *>("QGeneralization *");
+    qRegisterMetaType<QSet<QGeneralization *>>("QSet<QGeneralization *>");
+    qRegisterMetaType<QList<QGeneralization *>>("QList<QGeneralization *>");
+
+    qRegisterMetaType<QClassifier *>("QClassifier *");
+    qRegisterMetaType<QSet<QClassifier *>>("QSet<QClassifier *>");
+    qRegisterMetaType<QList<QClassifier *>>("QList<QClassifier *>");
+
+    QPackageableElement::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qgeneralizationset.cpp"

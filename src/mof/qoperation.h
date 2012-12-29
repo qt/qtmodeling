@@ -102,32 +102,33 @@ public:
     Q_INVOKABLE bool isOrdered() const;
 
     // Association ends from QOperation
-    Q_INVOKABLE const QList<QParameter *> &ownedParameters() const;
+    Q_INVOKABLE QList<QParameter *> ownedParameters() const;
     Q_INVOKABLE void addOwnedParameter(QParameter *ownedParameter);
     Q_INVOKABLE void removeOwnedParameter(QParameter *ownedParameter);
     Q_INVOKABLE QConstraint *bodyCondition() const;
     Q_INVOKABLE void setBodyCondition(QConstraint *bodyCondition);
-    Q_INVOKABLE const QSet<QOperation *> &redefinedOperations() const;
+    Q_INVOKABLE QSet<QOperation *> redefinedOperations() const;
     Q_INVOKABLE void addRedefinedOperation(QOperation *redefinedOperation);
     Q_INVOKABLE void removeRedefinedOperation(QOperation *redefinedOperation);
-    Q_INVOKABLE const QSet<QConstraint *> &postconditions() const;
+    Q_INVOKABLE QSet<QConstraint *> postconditions() const;
     Q_INVOKABLE void addPostcondition(QConstraint *postcondition);
     Q_INVOKABLE void removePostcondition(QConstraint *postcondition);
     Q_INVOKABLE QDataType *datatype() const;
     Q_INVOKABLE void setDatatype(QDataType *datatype);
     Q_INVOKABLE QType *type() const;
-    Q_INVOKABLE const QSet<QConstraint *> &preconditions() const;
+    Q_INVOKABLE QSet<QConstraint *> preconditions() const;
     Q_INVOKABLE void addPrecondition(QConstraint *precondition);
     Q_INVOKABLE void removePrecondition(QConstraint *precondition);
     Q_INVOKABLE QClass *class_() const;
     Q_INVOKABLE void setClass_(QClass *class_);
-    Q_INVOKABLE const QSet<QType *> &raisedExceptions() const;
+    Q_INVOKABLE QSet<QType *> raisedExceptions() const;
     Q_INVOKABLE void addRaisedException(QType *raisedException);
     Q_INVOKABLE void removeRaisedException(QType *raisedException);
 
     // Operations
     Q_INVOKABLE bool isConsistentWith(const QRedefinableElement *redefinee) const;
-    Q_INVOKABLE const QSet<QParameter *> &returnResult() const;
+    Q_INVOKABLE QSet<QParameter *> returnResult() const;
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QOperation(QOperationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

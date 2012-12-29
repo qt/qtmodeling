@@ -85,7 +85,7 @@ QNode::~QNode()
 /*!
     The Elements owned by this element.
  */
-const QSet<QElement *> &QNode::ownedElements() const
+QSet<QElement *> QNode::ownedElements() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedElements();
 }
@@ -101,7 +101,7 @@ QElement *QNode::owner() const
 /*!
     The Comments owned by this element.
  */
-const QSet<QComment *> &QNode::ownedComments() const
+QSet<QComment *> QNode::ownedComments() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedComments();
 }
@@ -182,7 +182,7 @@ QNamespace *QNode::namespace_() const
 /*!
     Indicates the dependencies that reference the client.
  */
-const QSet<QDependency *> &QNode::clientDependencies() const
+QSet<QDependency *> QNode::clientDependencies() const
 {
     return (qwrappedobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
@@ -204,7 +204,7 @@ void QNode::removeClientDependency(QDependency *clientDependency)
 /*!
     The set of elements that are manifested in an Artifact that is involved in Deployment to a DeploymentTarget.
  */
-const QSet<QPackageableElement *> &QNode::deployedElements() const
+QSet<QPackageableElement *> QNode::deployedElements() const
 {
     return (qwrappedobject_cast<const QDeploymentTarget *>(this))->deployedElements();
 }
@@ -212,7 +212,7 @@ const QSet<QPackageableElement *> &QNode::deployedElements() const
 /*!
     The set of Deployments for a DeploymentTarget.
  */
-const QSet<QDeployment *> &QNode::deployments() const
+QSet<QDeployment *> QNode::deployments() const
 {
     return (qwrappedobject_cast<const QDeploymentTarget *>(this))->deployments();
 }
@@ -234,7 +234,7 @@ void QNode::removeDeployment(QDeployment *deployment)
 /*!
     The Nodes that are defined (nested) within the Node.
  */
-const QSet<QNode *> &QNode::nestedNodes() const
+QSet<QNode *> QNode::nestedNodes() const
 {
     // This is a read-write association end
 
@@ -266,6 +266,14 @@ void QNode::removeNestedNode(QNode *nestedNode)
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qwrappedobject_cast<QNamedElement *>(nestedNode));
     }
+}
+
+void QNode::registerMetaTypes() const
+{
+    QWrappedObject::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qnode.cpp"

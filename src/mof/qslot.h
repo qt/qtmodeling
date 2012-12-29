@@ -78,13 +78,14 @@ public:
     virtual ~QSlot();
 
     // Association ends from QSlot
-    Q_INVOKABLE const QList<QValueSpecification *> &values() const;
+    Q_INVOKABLE QList<QValueSpecification *> values() const;
     Q_INVOKABLE void addValue(QValueSpecification *value);
     Q_INVOKABLE void removeValue(QValueSpecification *value);
     Q_INVOKABLE QStructuralFeature *definingFeature() const;
     Q_INVOKABLE void setDefiningFeature(QStructuralFeature *definingFeature);
     Q_INVOKABLE QInstanceSpecification *owningInstance() const;
     Q_INVOKABLE void setOwningInstance(QInstanceSpecification *owningInstance);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QSlot(QSlotPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

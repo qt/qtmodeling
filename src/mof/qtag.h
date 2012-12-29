@@ -75,7 +75,7 @@ public:
     virtual ~QTag();
 
     // Attributes from QTag
-    Q_INVOKABLE const QSet<QElement *> &elements() const;
+    Q_INVOKABLE QSet<QElement *> elements() const;
     Q_INVOKABLE void addElement(QElement *element);
     Q_INVOKABLE void removeElement(QElement *element);
     Q_INVOKABLE QString value() const;
@@ -84,6 +84,7 @@ public:
     Q_INVOKABLE void setName(QString name);
     Q_INVOKABLE QElement *tagOwner() const;
     Q_INVOKABLE void setTagOwner(QElement *tagOwner);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QTag(QTagPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

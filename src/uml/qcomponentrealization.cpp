@@ -123,7 +123,7 @@ void QComponentRealization::setAbstraction(QComponent *abstraction)
 /*!
     The classifiers that are involved in the implementation of the Component that owns this Realization.
  */
-const QSet<QClassifier *> &QComponentRealization::realizingClassifiers() const
+QSet<QClassifier *> QComponentRealization::realizingClassifiers() const
 {
     // This is a read-write association end
 
@@ -155,6 +155,22 @@ void QComponentRealization::removeRealizingClassifier(QClassifier *realizingClas
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QDependency *>(this))->removeClient(qwrappedobject_cast<QNamedElement *>(realizingClassifier));
     }
+}
+
+void QComponentRealization::registerMetaTypes() const
+{
+    qRegisterMetaType<QComponent *>("QComponent *");
+    qRegisterMetaType<QSet<QComponent *>>("QSet<QComponent *>");
+    qRegisterMetaType<QList<QComponent *>>("QList<QComponent *>");
+
+    qRegisterMetaType<QClassifier *>("QClassifier *");
+    qRegisterMetaType<QSet<QClassifier *>>("QSet<QClassifier *>");
+    qRegisterMetaType<QList<QClassifier *>>("QList<QClassifier *>");
+
+    QRealization::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 // Overriden methods for subsetted properties

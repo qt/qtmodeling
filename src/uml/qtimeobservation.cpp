@@ -133,6 +133,18 @@ void QTimeObservation::setEvent(QNamedElement *event)
     }
 }
 
+void QTimeObservation::registerMetaTypes() const
+{
+    qRegisterMetaType<QNamedElement *>("QNamedElement *");
+    qRegisterMetaType<QSet<QNamedElement *>>("QSet<QNamedElement *>");
+    qRegisterMetaType<QList<QNamedElement *>>("QList<QNamedElement *>");
+
+    QObservation::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qtimeobservation.cpp"
 
 QT_END_NAMESPACE_QTUML

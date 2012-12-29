@@ -76,6 +76,7 @@ public:
     Q_INVOKABLE void setSpecificMachine(QProtocolStateMachine *specificMachine);
     Q_INVOKABLE QProtocolStateMachine *generalMachine() const;
     Q_INVOKABLE void setGeneralMachine(QProtocolStateMachine *generalMachine);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QProtocolConformance(QProtocolConformancePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

@@ -94,7 +94,7 @@ QParameter::~QParameter()
 /*!
     The Elements owned by this element.
  */
-const QSet<QElement *> &QParameter::ownedElements() const
+QSet<QElement *> QParameter::ownedElements() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedElements();
 }
@@ -110,7 +110,7 @@ QElement *QParameter::owner() const
 /*!
     The Comments owned by this element.
  */
-const QSet<QComment *> &QParameter::ownedComments() const
+QSet<QComment *> QParameter::ownedComments() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedComments();
 }
@@ -292,7 +292,7 @@ QNamespace *QParameter::namespace_() const
 /*!
     Indicates the dependencies that reference the client.
  */
-const QSet<QDependency *> &QParameter::clientDependencies() const
+QSet<QDependency *> QParameter::clientDependencies() const
 {
     return (qwrappedobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
@@ -348,7 +348,7 @@ void QParameter::setOwningTemplateParameter(QTemplateParameter *owningTemplatePa
 /*!
     Denotes a set of connector ends that attaches to this connectable element.
  */
-const QList<QConnectorEnd *> &QParameter::ends() const
+QList<QConnectorEnd *> QParameter::ends() const
 {
     return (qwrappedobject_cast<const QConnectableElement *>(this))->ends();
 }
@@ -561,7 +561,7 @@ void QParameter::setDefaultValue(QValueSpecification *defaultValue)
 /*!
     The parameter sets containing the parameter. See ParameterSet.
  */
-const QSet<QParameterSet *> &QParameter::parameterSets() const
+QSet<QParameterSet *> QParameter::parameterSets() const
 {
     // This is a read-write association end
 
@@ -594,6 +594,26 @@ void QParameter::removeParameterSet(QParameterSet *parameterSet)
         if (parameterSet)
             parameterSet->removeParameter(this);
     }
+}
+
+void QParameter::registerMetaTypes() const
+{
+    qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
+    qRegisterMetaType<QSet<QValueSpecification *>>("QSet<QValueSpecification *>");
+    qRegisterMetaType<QList<QValueSpecification *>>("QList<QValueSpecification *>");
+
+    qRegisterMetaType<QOperation *>("QOperation *");
+    qRegisterMetaType<QSet<QOperation *>>("QSet<QOperation *>");
+    qRegisterMetaType<QList<QOperation *>>("QList<QOperation *>");
+
+    qRegisterMetaType<QParameterSet *>("QParameterSet *");
+    qRegisterMetaType<QSet<QParameterSet *>>("QSet<QParameterSet *>");
+    qRegisterMetaType<QList<QParameterSet *>>("QList<QParameterSet *>");
+
+    QWrappedObject::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qparameter.cpp"

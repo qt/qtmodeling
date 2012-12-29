@@ -74,6 +74,14 @@ QInitialNode::~QInitialNode()
 {
 }
 
+void QInitialNode::registerMetaTypes() const
+{
+    QControlNode::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qinitialnode.cpp"
 
 QT_END_NAMESPACE_QTUML

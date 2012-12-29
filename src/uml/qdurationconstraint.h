@@ -75,13 +75,14 @@ public:
     virtual ~QDurationConstraint();
 
     // Attributes from QDurationConstraint
-    Q_INVOKABLE const QSet<bool> firstEvents() const;
+    Q_INVOKABLE QSet<bool> firstEvents() const;
     Q_INVOKABLE void addFirstEvent(bool firstEvent);
     Q_INVOKABLE void removeFirstEvent(bool firstEvent);
 
     // Association ends from QDurationConstraint
     Q_INVOKABLE QDurationInterval *specification() const;
     Q_INVOKABLE void setSpecification(QDurationInterval *specification);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QDurationConstraint(QDurationConstraintPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

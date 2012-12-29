@@ -1,8 +1,8 @@
 <qtxmi:XMI xmlns:qtxmi="http://www.qt-project.org" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.omg.org/spec/UML/20110701">
-    <namespace path="QtUnknown/">
+    <namespace path="QtUnknown">
         <class name="QBaseClass" isAbstract="true">
             <qtinclude>QtCore/QSet</qtinclude>
-            <forwarddecl namespace="QtUnknown::">QUsedClass</forwarddecl>
+            <forwarddecl namespace="">QUsedClass</forwarddecl>
             <attribute isDerived="false" isDerivedUnion="false" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="BaseClass-readWriteSingleValuedPrimitiveAttribute" defaultValue="true" aggregation="none" subsettedBy="">
                 <accessor return="bool " name="readWriteSingleValuedPrimitiveAttribute" constness=" const"/>
                 <accessor return="void " name="setReadWriteSingleValuedPrimitiveAttribute" constness="">
@@ -18,7 +18,7 @@
                 <documentation>subsettedReadWriteAttribute.</documentation>
             </attribute>
             <attribute isDerived="true" isDerivedUnion="true" isReadOnly="true" subsettedProperty="" redefinedProperty="" id="BaseClass-subsettedReadOnlyAttribute" defaultValue="" aggregation="none" subsettedBy="TestingClass-subsetReadOnlyAttribute">
-                <accessor return="const QSet&lt;QUsedClass *&gt; *" name="subsettedReadOnlyAttributes" constness=" const"/>
+                <accessor return="QSet&lt;QUsedClass *&gt; " name="subsettedReadOnlyAttributes" constness=" const"/>
                 <accessor return="void " name="addSubsettedReadOnlyAttribute" constness="">
                     <parameter type="QUsedClass *" name="subsettedReadOnlyAttribute"/>
                 </accessor>
@@ -28,7 +28,7 @@
                 <documentation>subsettedReadOnlyAttribute.</documentation>
             </attribute>
             <attribute isDerived="false" isDerivedUnion="false" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="BaseClass-slot" defaultValue="" aggregation="none" subsettedBy="">
-                <accessor return="const QSet&lt;bool&gt; *" name="slots_" constness=" const"/>
+                <accessor return="QSet&lt;bool&gt; " name="slots_" constness=" const"/>
                 <accessor return="void " name="addSlot_" constness="">
                     <parameter type="bool " name="slot_"/>
                 </accessor>
@@ -38,7 +38,7 @@
                 <documentation>name mapped attribute.</documentation>
             </attribute>
             <attribute isDerived="true" isDerivedUnion="false" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="BaseClass-readWriteDerivedAttribute" defaultValue="" aggregation="none" subsettedBy="">
-                <accessor return="const QSet&lt;bool&gt; *" name="readWriteDerivedAttributes" constness=" const"/>
+                <accessor return="QSet&lt;bool&gt; " name="readWriteDerivedAttributes" constness=" const"/>
                 <accessor return="void " name="addReadWriteDerivedAttribute" constness="">
                     <parameter type="bool " name="readWriteDerivedAttribute"/>
                 </accessor>
@@ -48,7 +48,7 @@
                 <documentation>readWriteDerivedAttribute.</documentation>
             </attribute>
             <attribute isDerived="true" isDerivedUnion="false" isReadOnly="true" subsettedProperty="" redefinedProperty="" id="BaseClass-readOnlyDerivedAttribute" defaultValue="" aggregation="none" subsettedBy="">
-                <accessor return="const QSet&lt;bool&gt; *" name="readOnlyDerivedAttributes" constness=" const"/>
+                <accessor return="QSet&lt;bool&gt; " name="readOnlyDerivedAttributes" constness=" const"/>
                 <accessor return="void " name="addReadOnlyDerivedAttribute" constness="">
                     <parameter type="bool " name="readOnlyDerivedAttribute"/>
                 </accessor>
@@ -58,7 +58,7 @@
                 <documentation>readOnlyDerivedAttribute.</documentation>
             </attribute>
             <attribute isDerived="true" isDerivedUnion="true" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="BaseClass-readWriteDerivedUnionAttribute" defaultValue="" aggregation="none" subsettedBy="">
-                <accessor return="const QSet&lt;bool&gt; *" name="readWriteDerivedUnionAttributes" constness=" const"/>
+                <accessor return="QSet&lt;bool&gt; " name="readWriteDerivedUnionAttributes" constness=" const"/>
                 <accessor return="void " name="addReadWriteDerivedUnionAttribute" constness="">
                     <parameter type="bool " name="readWriteDerivedUnionAttribute"/>
                 </accessor>
@@ -68,7 +68,7 @@
                 <documentation>readWriteDerivedUnionAttribute.</documentation>
             </attribute>
             <attribute isDerived="true" isDerivedUnion="true" isReadOnly="true" subsettedProperty="" redefinedProperty="" id="BaseClass-readOnlyDerivedUnionAttribute" defaultValue="" aggregation="none" subsettedBy="">
-                <accessor return="const QSet&lt;bool&gt; *" name="readOnlyDerivedUnionAttributes" constness=" const"/>
+                <accessor return="QSet&lt;bool&gt; " name="readOnlyDerivedUnionAttributes" constness=" const"/>
                 <accessor return="void " name="addReadOnlyDerivedUnionAttribute" constness="">
                     <parameter type="bool " name="readOnlyDerivedUnionAttribute"/>
                 </accessor>
@@ -77,23 +77,20 @@
                 </accessor>
                 <documentation>readOnlyDerivedUnionAttribute.</documentation>
             </attribute>
-            <operation return="const QSet&lt;bool&gt; *" name="aRealOperation" constness=" const">
+            <operation return="QSet&lt;bool&gt; " name="aRealOperation" constness=" const">
                 <documentation>Testing aRealOperation.</documentation>
             </operation>
         </class>
-        <class name="QUsedClass" isAbstract="false">
-            <superclass include="QtCore/QObject" name="QObject"/>
-        </class>
+        <class name="QUsedClass" isAbstract="false"/>
         <class name="QTestingClass" isAbstract="false">
             <documentation>Testing class' comment 1.Testing class' comment 2.</documentation>
             <qtumlinclude>QtUnknown/QtUnknownEnumerations</qtumlinclude>
-            <superclass include="QtCore/QObject" name="QObject"/>
             <superclass include="QtUnknown/QBaseClass" name="QBaseClass"/>
             <qtinclude>QtCore/QSet</qtinclude>
-            <forwarddecl namespace="QtUnknown::">QUsedClass</forwarddecl>
-            <forwarddecl namespace="QtUnknown::">QTestingClass</forwarddecl>
+            <forwarddecl namespace="">QUsedClass</forwarddecl>
+            <forwarddecl namespace="">QTestingClass</forwarddecl>
             <attribute isDerived="false" isDerivedUnion="false" isReadOnly="false" subsettedProperty="BaseClass-subsettedReadWriteAttribute" redefinedProperty="" id="TestingClass-subsetReadWriteAttribute" defaultValue="" aggregation="none" subsettedBy="">
-                <accessor return="const QSet&lt;QUsedClass *&gt; *" name="subsetReadWriteAttributes" constness=" const"/>
+                <accessor return="QSet&lt;QUsedClass *&gt; " name="subsetReadWriteAttributes" constness=" const"/>
                 <accessor return="void " name="addSubsetReadWriteAttribute" constness="">
                     <parameter type="QUsedClass *" name="subsetReadWriteAttribute"/>
                 </accessor>
@@ -124,7 +121,7 @@
                 <documentation>readOnlySingleValuedPrimitiveAttribute.</documentation>
             </attribute>
             <attribute isDerived="false" isDerivedUnion="false" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="TestingClass-readWriteMultiValuedPrimitiveAttribute" defaultValue="" aggregation="none" subsettedBy="">
-                <accessor return="const QSet&lt;bool&gt; *" name="readWriteMultiValuedPrimitiveAttributes" constness=" const"/>
+                <accessor return="QSet&lt;bool&gt; " name="readWriteMultiValuedPrimitiveAttributes" constness=" const"/>
                 <accessor return="void " name="addReadWriteMultiValuedPrimitiveAttribute" constness="">
                     <parameter type="bool " name="readWriteMultiValuedPrimitiveAttribute"/>
                 </accessor>
@@ -134,7 +131,7 @@
                 <documentation>readWriteMultiValuedPrimitiveAttribute.</documentation>
             </attribute>
             <attribute isDerived="false" isDerivedUnion="false" isReadOnly="true" subsettedProperty="" redefinedProperty="" id="TestingClass-readOnlyMultiValuedPrimitiveAttribute" defaultValue="" aggregation="none" subsettedBy="">
-                <accessor return="const QSet&lt;bool&gt; *" name="readOnlyMultiValuedPrimitiveAttributes" constness=" const"/>
+                <accessor return="QSet&lt;bool&gt; " name="readOnlyMultiValuedPrimitiveAttributes" constness=" const"/>
                 <accessor return="void " name="addReadOnlyMultiValuedPrimitiveAttribute" constness="">
                     <parameter type="bool " name="readOnlyMultiValuedPrimitiveAttribute"/>
                 </accessor>
@@ -151,7 +148,7 @@
                 <documentation>readOnlySingleValuedEnumerationAttribute.</documentation>
             </attribute>
             <attribute isDerived="false" isDerivedUnion="false" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="TestingClass-readWriteMultiValuedEnumerationAttribute" defaultValue="" aggregation="none" subsettedBy="">
-                <accessor return="const QSet&lt;QtUnknown::VisibilityKind&gt; *" name="readWriteMultiValuedEnumerationAttributes" constness=" const"/>
+                <accessor return="QSet&lt;QtUnknown::VisibilityKind&gt; " name="readWriteMultiValuedEnumerationAttributes" constness=" const"/>
                 <accessor return="void " name="addReadWriteMultiValuedEnumerationAttribute" constness="">
                     <parameter type="QtUnknown::VisibilityKind " name="readWriteMultiValuedEnumerationAttribute"/>
                 </accessor>
@@ -161,7 +158,7 @@
                 <documentation>readWriteMultiValuedEnumerationAttribute.</documentation>
             </attribute>
             <attribute isDerived="false" isDerivedUnion="false" isReadOnly="true" subsettedProperty="" redefinedProperty="" id="TestingClass-readOnlyMultiValuedEnumerationAttribute" defaultValue="" aggregation="none" subsettedBy="">
-                <accessor return="const QSet&lt;QtUnknown::VisibilityKind&gt; *" name="readOnlyMultiValuedEnumerationAttributes" constness=" const"/>
+                <accessor return="QSet&lt;QtUnknown::VisibilityKind&gt; " name="readOnlyMultiValuedEnumerationAttributes" constness=" const"/>
                 <accessor return="void " name="addReadOnlyMultiValuedEnumerationAttribute" constness="">
                     <parameter type="QtUnknown::VisibilityKind " name="readOnlyMultiValuedEnumerationAttribute"/>
                 </accessor>
@@ -178,7 +175,7 @@
                 <documentation>readOnlySingleValuedObjectAttribute.</documentation>
             </attribute>
             <attribute isDerived="false" isDerivedUnion="false" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="TestingClass-readWriteMultiValuedObjectAttribute" defaultValue="" aggregation="none" subsettedBy="">
-                <accessor return="const QSet&lt;QUsedClass *&gt; *" name="readWriteMultiValuedObjectAttributes" constness=" const"/>
+                <accessor return="QSet&lt;QUsedClass *&gt; " name="readWriteMultiValuedObjectAttributes" constness=" const"/>
                 <accessor return="void " name="addReadWriteMultiValuedObjectAttribute" constness="">
                     <parameter type="QUsedClass *" name="readWriteMultiValuedObjectAttribute"/>
                 </accessor>
@@ -188,7 +185,7 @@
                 <documentation>readWriteMultiValuedObjectAttribute.</documentation>
             </attribute>
             <attribute isDerived="false" isDerivedUnion="false" isReadOnly="true" subsettedProperty="" redefinedProperty="" id="TestingClass-readOnlyMultiValuedObjectAttribute" defaultValue="" aggregation="none" subsettedBy="">
-                <accessor return="const QSet&lt;QUsedClass *&gt; *" name="readOnlyMultiValuedObjectAttributes" constness=" const"/>
+                <accessor return="QSet&lt;QUsedClass *&gt; " name="readOnlyMultiValuedObjectAttributes" constness=" const"/>
                 <accessor return="void " name="addReadOnlyMultiValuedObjectAttribute" constness="">
                     <parameter type="QUsedClass *" name="readOnlyMultiValuedObjectAttribute"/>
                 </accessor>
@@ -221,40 +218,40 @@
             <operation return="bool " name="opReturnPrimitiveSV" constness=" const">
                 <documentation>Testing opReturnPrimitiveSV.</documentation>
             </operation>
-            <operation return="const QSet&lt;bool&gt; *" name="opReturnPrimitiveMV" constness=" const">
+            <operation return="QSet&lt;bool&gt; " name="opReturnPrimitiveMV" constness=" const">
                 <documentation>Testing opReturnPrimitiveMV.</documentation>
             </operation>
             <operation return="QtUnknown::VisibilityKind " name="opReturnEnumerationSV" constness=" const">
                 <documentation>Testing opReturnEnumerationSV.</documentation>
             </operation>
-            <operation return="const QSet&lt;QtUnknown::VisibilityKind&gt; *" name="opReturnEnumerationMV" constness=" const">
+            <operation return="QSet&lt;QtUnknown::VisibilityKind&gt; " name="opReturnEnumerationMV" constness=" const">
                 <documentation>Testing opReturnEnumerationMV.</documentation>
             </operation>
             <operation return="QUsedClass *" name="opReturnObjectSV" constness=" const">
                 <documentation>Testing opReturnObjectSV.</documentation>
             </operation>
-            <operation return="const QSet&lt;QUsedClass *&gt; *" name="opReturnObjectMV" constness=" const">
+            <operation return="QSet&lt;QUsedClass *&gt; " name="opReturnObjectMV" constness=" const">
                 <documentation>Testing opReturnObjectMV.</documentation>
             </operation>
             <operation return="void " name="opParameters" constness=" const">
                 <parameter type="bool " name="pinprimitiveSV"/>
                 <parameter type="QtUnknown::VisibilityKind " name="pinenumerationSV"/>
                 <parameter type="const QUsedClass *" name="pinobjectSV"/>
-                <parameter type="const QSet&lt;bool&gt; *" name="pinprimitiveMV"/>
-                <parameter type="const QSet&lt;QtUnknown::VisibilityKind&gt; *" name="pinenumerationMV"/>
-                <parameter type="const QSet&lt;QUsedClass *&gt; *" name="pinobjectMV"/>
+                <parameter type="QSet&lt;bool&gt; " name="pinprimitiveMV"/>
+                <parameter type="QSet&lt;QtUnknown::VisibilityKind&gt; " name="pinenumerationMV"/>
+                <parameter type="QSet&lt;QUsedClass *&gt; " name="pinobjectMV"/>
                 <parameter type="bool &amp;" name="pinoutprimitiveSV"/>
                 <parameter type="QtUnknown::VisibilityKind &amp;" name="pinoutenumerationSV"/>
                 <parameter type="QUsedClass *" name="pinoutobjectSV"/>
-                <parameter type="const QSet&lt;bool&gt; *" name="pinoutprimitiveMV"/>
-                <parameter type="const QSet&lt;QtUnknown::VisibilityKind&gt; *" name="pinoutenumerationMV"/>
-                <parameter type="const QSet&lt;QUsedClass *&gt; *" name="pinoutobjectMV"/>
+                <parameter type="const QSet&lt;bool&gt; &amp;" name="pinoutprimitiveMV"/>
+                <parameter type="const QSet&lt;QtUnknown::VisibilityKind&gt; &amp;" name="pinoutenumerationMV"/>
+                <parameter type="const QSet&lt;QUsedClass *&gt; " name="pinoutobjectMV"/>
                 <parameter type="bool &amp;" name="poutprimitiveSV"/>
                 <parameter type="QtUnknown::VisibilityKind &amp;" name="poutenumerationSV"/>
                 <parameter type="QUsedClass *" name="poutobjectSV"/>
-                <parameter type="const QSet&lt;bool&gt; *" name="poutprimitiveMV"/>
-                <parameter type="const QSet&lt;QtUnknown::VisibilityKind&gt; *" name="poutenumerationMV"/>
-                <parameter type="const QSet&lt;QUsedClass *&gt; *" name="poutobjectMV"/>
+                <parameter type="const QSet&lt;bool&gt; &amp;" name="poutprimitiveMV"/>
+                <parameter type="const QSet&lt;QtUnknown::VisibilityKind&gt; &amp;" name="poutenumerationMV"/>
+                <parameter type="const QSet&lt;QUsedClass *&gt; " name="poutobjectMV"/>
                 <documentation>Testing opParameters.</documentation>
             </operation>
         </class>

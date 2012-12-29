@@ -64,6 +64,7 @@ class Q_UML_EXPORT QMessageEvent : public QEvent
 public:
     Q_INVOKABLE explicit QMessageEvent(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QMessageEvent();
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QMessageEvent(QMessageEventPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

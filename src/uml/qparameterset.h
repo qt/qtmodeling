@@ -76,12 +76,13 @@ public:
     virtual ~QParameterSet();
 
     // Association ends from QParameterSet
-    Q_INVOKABLE const QSet<QParameter *> &parameters() const;
+    Q_INVOKABLE QSet<QParameter *> parameters() const;
     Q_INVOKABLE void addParameter(QParameter *parameter);
     Q_INVOKABLE void removeParameter(QParameter *parameter);
-    Q_INVOKABLE const QSet<QConstraint *> &conditions() const;
+    Q_INVOKABLE QSet<QConstraint *> conditions() const;
     Q_INVOKABLE void addCondition(QConstraint *condition);
     Q_INVOKABLE void removeCondition(QConstraint *condition);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QParameterSet(QParameterSetPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

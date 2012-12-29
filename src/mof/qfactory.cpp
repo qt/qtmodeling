@@ -124,7 +124,7 @@ QElement *QFactory::create(const QClass *metaClass)
     return 0; // change here to your derived return
 }
 
-QElement *QFactory::createElement(const QClass *class_, const QSet<QArgument *> &arguments)
+QElement *QFactory::createElement(const QClass *class_, QSet<QArgument *> arguments)
 {
     qWarning("QFactory::createElement: operation to be implemented");
     Q_UNUSED(class_);
@@ -141,6 +141,42 @@ QLink *QFactory::createLink(const QAssociation *association, const QElement *fir
     Q_UNUSED(secondElement);
 
     return 0; // change here to your derived return
+}
+
+void QFactory::registerMetaTypes() const
+{
+    qRegisterMetaType<QLink *>("QLink *");
+    qRegisterMetaType<QSet<QLink *>>("QSet<QLink *>");
+    qRegisterMetaType<QList<QLink *>>("QList<QLink *>");
+
+    qRegisterMetaType<QArgument *>("QArgument *");
+    qRegisterMetaType<QSet<QArgument *>>("QSet<QArgument *>");
+    qRegisterMetaType<QList<QArgument *>>("QList<QArgument *>");
+
+    qRegisterMetaType<QAssociation *>("QAssociation *");
+    qRegisterMetaType<QSet<QAssociation *>>("QSet<QAssociation *>");
+    qRegisterMetaType<QList<QAssociation *>>("QList<QAssociation *>");
+
+    qRegisterMetaType<QClass *>("QClass *");
+    qRegisterMetaType<QSet<QClass *>>("QSet<QClass *>");
+    qRegisterMetaType<QList<QClass *>>("QList<QClass *>");
+
+    qRegisterMetaType<QMofObject *>("QMofObject *");
+    qRegisterMetaType<QSet<QMofObject *>>("QSet<QMofObject *>");
+    qRegisterMetaType<QList<QMofObject *>>("QList<QMofObject *>");
+
+    qRegisterMetaType<QPackage *>("QPackage *");
+    qRegisterMetaType<QSet<QPackage *>>("QSet<QPackage *>");
+    qRegisterMetaType<QList<QPackage *>>("QList<QPackage *>");
+
+    qRegisterMetaType<QDataType *>("QDataType *");
+    qRegisterMetaType<QSet<QDataType *>>("QSet<QDataType *>");
+    qRegisterMetaType<QList<QDataType *>>("QList<QDataType *>");
+
+    QElement::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qfactory.cpp"

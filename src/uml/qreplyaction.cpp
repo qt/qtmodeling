@@ -136,7 +136,7 @@ void QReplyAction::setReturnInformation(QInputPin *returnInformation)
 /*!
     A list of pins containing the reply values of the operation. These values are returned to the caller.
  */
-const QSet<QInputPin *> &QReplyAction::replyValues() const
+QSet<QInputPin *> QReplyAction::replyValues() const
 {
     // This is a read-write association end
 
@@ -168,6 +168,22 @@ void QReplyAction::removeReplyValue(QInputPin *replyValue)
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QActionPrivate *>(d))->removeInput(qwrappedobject_cast<QInputPin *>(replyValue));
     }
+}
+
+void QReplyAction::registerMetaTypes() const
+{
+    qRegisterMetaType<QTrigger *>("QTrigger *");
+    qRegisterMetaType<QSet<QTrigger *>>("QSet<QTrigger *>");
+    qRegisterMetaType<QList<QTrigger *>>("QList<QTrigger *>");
+
+    qRegisterMetaType<QInputPin *>("QInputPin *");
+    qRegisterMetaType<QSet<QInputPin *>>("QSet<QInputPin *>");
+    qRegisterMetaType<QList<QInputPin *>>("QList<QInputPin *>");
+
+    QAction::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qreplyaction.cpp"

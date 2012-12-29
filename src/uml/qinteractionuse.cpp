@@ -89,7 +89,7 @@ QInteractionUse::~QInteractionUse()
 /*!
     The actual gates of the InteractionUse
  */
-const QSet<QGate *> &QInteractionUse::actualGates() const
+QSet<QGate *> QInteractionUse::actualGates() const
 {
     // This is a read-write association end
 
@@ -176,7 +176,7 @@ void QInteractionUse::setRefersTo(QInteraction *refersTo)
 /*!
     The actual arguments of the Interaction
  */
-const QList<QValueSpecification *> &QInteractionUse::arguments() const
+QList<QValueSpecification *> QInteractionUse::arguments() const
 {
     // This is a read-write association end
 
@@ -229,6 +229,30 @@ void QInteractionUse::setReturnValueRecipient(QProperty *returnValueRecipient)
     if (d->returnValueRecipient != returnValueRecipient) {
         d->returnValueRecipient = returnValueRecipient;
     }
+}
+
+void QInteractionUse::registerMetaTypes() const
+{
+    qRegisterMetaType<QProperty *>("QProperty *");
+    qRegisterMetaType<QSet<QProperty *>>("QSet<QProperty *>");
+    qRegisterMetaType<QList<QProperty *>>("QList<QProperty *>");
+
+    qRegisterMetaType<QInteraction *>("QInteraction *");
+    qRegisterMetaType<QSet<QInteraction *>>("QSet<QInteraction *>");
+    qRegisterMetaType<QList<QInteraction *>>("QList<QInteraction *>");
+
+    qRegisterMetaType<QGate *>("QGate *");
+    qRegisterMetaType<QSet<QGate *>>("QSet<QGate *>");
+    qRegisterMetaType<QList<QGate *>>("QList<QGate *>");
+
+    qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
+    qRegisterMetaType<QSet<QValueSpecification *>>("QSet<QValueSpecification *>");
+    qRegisterMetaType<QList<QValueSpecification *>>("QList<QValueSpecification *>");
+
+    QInteractionFragment::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qinteractionuse.cpp"

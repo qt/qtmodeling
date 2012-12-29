@@ -91,7 +91,7 @@ QVariable::~QVariable()
 /*!
     The Elements owned by this element.
  */
-const QSet<QElement *> &QVariable::ownedElements() const
+QSet<QElement *> QVariable::ownedElements() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedElements();
 }
@@ -107,7 +107,7 @@ QElement *QVariable::owner() const
 /*!
     The Comments owned by this element.
  */
-const QSet<QComment *> &QVariable::ownedComments() const
+QSet<QComment *> QVariable::ownedComments() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedComments();
 }
@@ -289,7 +289,7 @@ QNamespace *QVariable::namespace_() const
 /*!
     Indicates the dependencies that reference the client.
  */
-const QSet<QDependency *> &QVariable::clientDependencies() const
+QSet<QDependency *> QVariable::clientDependencies() const
 {
     return (qwrappedobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
@@ -345,7 +345,7 @@ void QVariable::setOwningTemplateParameter(QTemplateParameter *owningTemplatePar
 /*!
     Denotes a set of connector ends that attaches to this connectable element.
  */
-const QList<QConnectorEnd *> &QVariable::ends() const
+QList<QConnectorEnd *> QVariable::ends() const
 {
     return (qwrappedobject_cast<const QConnectableElement *>(this))->ends();
 }
@@ -440,6 +440,26 @@ bool QVariable::isAccessibleBy(const QAction *a) const
     Q_UNUSED(a);
 
     return bool(); // change here to your derived return
+}
+
+void QVariable::registerMetaTypes() const
+{
+    qRegisterMetaType<QActivity *>("QActivity *");
+    qRegisterMetaType<QSet<QActivity *>>("QSet<QActivity *>");
+    qRegisterMetaType<QList<QActivity *>>("QList<QActivity *>");
+
+    qRegisterMetaType<QStructuredActivityNode *>("QStructuredActivityNode *");
+    qRegisterMetaType<QSet<QStructuredActivityNode *>>("QSet<QStructuredActivityNode *>");
+    qRegisterMetaType<QList<QStructuredActivityNode *>>("QList<QStructuredActivityNode *>");
+
+    qRegisterMetaType<QAction *>("QAction *");
+    qRegisterMetaType<QSet<QAction *>>("QSet<QAction *>");
+    qRegisterMetaType<QList<QAction *>>("QList<QAction *>");
+
+    QWrappedObject::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qvariable.cpp"

@@ -87,31 +87,31 @@ QReflectiveSequence *QExtent::elements() const
     return 0; // change here to your derived return
 }
 
-const QSet<QElement *> &QExtent::elementsOfType(const QClass *type, bool includesSubtypes) const
+QSet<QElement *> QExtent::elementsOfType(const QClass *type, bool includesSubtypes) const
 {
     qWarning("QExtent::elementsOfType: operation to be implemented");
     Q_UNUSED(type);
     Q_UNUSED(includesSubtypes);
 
-    return *(new QSet<QElement *>); // change here to your derived return
+    return QSet<QElement *>(); // change here to your derived return
 }
 
-const QSet<QLink *> &QExtent::linksOfType(const QAssociation *type) const
+QSet<QLink *> QExtent::linksOfType(const QAssociation *type) const
 {
     qWarning("QExtent::linksOfType: operation to be implemented");
     Q_UNUSED(type);
 
-    return *(new QSet<QLink *>); // change here to your derived return
+    return QSet<QLink *>(); // change here to your derived return
 }
 
-const QSet<QElement *> &QExtent::linkedElements(const QAssociation *association, const QElement *endElement, bool end1ToEnd2Direction) const
+QSet<QElement *> QExtent::linkedElements(const QAssociation *association, const QElement *endElement, bool end1ToEnd2Direction) const
 {
     qWarning("QExtent::linkedElements: operation to be implemented");
     Q_UNUSED(association);
     Q_UNUSED(endElement);
     Q_UNUSED(end1ToEnd2Direction);
 
-    return *(new QSet<QElement *>); // change here to your derived return
+    return QSet<QElement *>(); // change here to your derived return
 }
 
 bool QExtent::linkExists(const QAssociation *association, const QElement *firstElement, const QElement *secondElement) const
@@ -122,6 +122,34 @@ bool QExtent::linkExists(const QAssociation *association, const QElement *firstE
     Q_UNUSED(secondElement);
 
     return bool(); // change here to your derived return
+}
+
+void QExtent::registerMetaTypes() const
+{
+    qRegisterMetaType<QLink *>("QLink *");
+    qRegisterMetaType<QSet<QLink *>>("QSet<QLink *>");
+    qRegisterMetaType<QList<QLink *>>("QList<QLink *>");
+
+    qRegisterMetaType<QAssociation *>("QAssociation *");
+    qRegisterMetaType<QSet<QAssociation *>>("QSet<QAssociation *>");
+    qRegisterMetaType<QList<QAssociation *>>("QList<QAssociation *>");
+
+    qRegisterMetaType<QClass *>("QClass *");
+    qRegisterMetaType<QSet<QClass *>>("QSet<QClass *>");
+    qRegisterMetaType<QList<QClass *>>("QList<QClass *>");
+
+    qRegisterMetaType<QReflectiveSequence *>("QReflectiveSequence *");
+    qRegisterMetaType<QSet<QReflectiveSequence *>>("QSet<QReflectiveSequence *>");
+    qRegisterMetaType<QList<QReflectiveSequence *>>("QList<QReflectiveSequence *>");
+
+    qRegisterMetaType<QElement *>("QElement *");
+    qRegisterMetaType<QSet<QElement *>>("QSet<QElement *>");
+    qRegisterMetaType<QList<QElement *>>("QList<QElement *>");
+
+    QMofObject::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qextent.cpp"

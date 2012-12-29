@@ -77,6 +77,7 @@ public:
     Q_INVOKABLE void setDecisionInputFlow(QObjectFlow *decisionInputFlow);
     Q_INVOKABLE QBehavior *decisionInput() const;
     Q_INVOKABLE void setDecisionInput(QBehavior *decisionInput);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QDecisionNode(QDecisionNodePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

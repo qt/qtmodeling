@@ -88,18 +88,18 @@ public:
     virtual ~QInformationFlow();
 
     // Association ends from aggregated QElement
-    Q_INVOKABLE const QSet<QElement *> &ownedElements() const;
+    Q_INVOKABLE QSet<QElement *> ownedElements() const;
     Q_INVOKABLE QElement *owner() const;
-    Q_INVOKABLE const QSet<QComment *> &ownedComments() const;
+    Q_INVOKABLE QSet<QComment *> ownedComments() const;
     Q_INVOKABLE void addOwnedComment(QComment *ownedComment);
     Q_INVOKABLE void removeOwnedComment(QComment *ownedComment);
 
     // Association ends from aggregated QRelationship
-    Q_INVOKABLE const QSet<QElement *> &relatedElements() const;
+    Q_INVOKABLE QSet<QElement *> relatedElements() const;
 
     // Association ends from aggregated QDirectedRelationship
-    Q_INVOKABLE const QSet<QElement *> &sources() const;
-    Q_INVOKABLE const QSet<QElement *> &targets() const;
+    Q_INVOKABLE QSet<QElement *> sources() const;
+    Q_INVOKABLE QSet<QElement *> targets() const;
 
     // Association ends from aggregated QParameterableElement
     Q_INVOKABLE QTemplateParameter *owningTemplateParameter() const;
@@ -116,7 +116,7 @@ public:
     Q_INVOKABLE QStringExpression *nameExpression() const;
     Q_INVOKABLE void setNameExpression(QStringExpression *nameExpression);
     Q_INVOKABLE QNamespace *namespace_() const;
-    Q_INVOKABLE const QSet<QDependency *> &clientDependencies() const;
+    Q_INVOKABLE QSet<QDependency *> clientDependencies() const;
     Q_INVOKABLE void addClientDependency(QDependency *clientDependency);
     Q_INVOKABLE void removeClientDependency(QDependency *clientDependency);
 
@@ -126,27 +126,28 @@ public:
     Q_INVOKABLE void unsetVisibility();
 
     // Association ends from QInformationFlow
-    Q_INVOKABLE const QSet<QNamedElement *> &informationTargets() const;
+    Q_INVOKABLE QSet<QNamedElement *> informationTargets() const;
     Q_INVOKABLE void addInformationTarget(QNamedElement *informationTarget);
     Q_INVOKABLE void removeInformationTarget(QNamedElement *informationTarget);
-    Q_INVOKABLE const QSet<QConnector *> &realizingConnectors() const;
+    Q_INVOKABLE QSet<QConnector *> realizingConnectors() const;
     Q_INVOKABLE void addRealizingConnector(QConnector *realizingConnector);
     Q_INVOKABLE void removeRealizingConnector(QConnector *realizingConnector);
-    Q_INVOKABLE const QSet<QClassifier *> &conveyed() const;
+    Q_INVOKABLE QSet<QClassifier *> conveyed() const;
     Q_INVOKABLE void addConveyed(QClassifier *conveyed);
     Q_INVOKABLE void removeConveyed(QClassifier *conveyed);
-    Q_INVOKABLE const QSet<QNamedElement *> &informationSources() const;
+    Q_INVOKABLE QSet<QNamedElement *> informationSources() const;
     Q_INVOKABLE void addInformationSource(QNamedElement *informationSource);
     Q_INVOKABLE void removeInformationSource(QNamedElement *informationSource);
-    Q_INVOKABLE const QSet<QMessage *> &realizingMessages() const;
+    Q_INVOKABLE QSet<QMessage *> realizingMessages() const;
     Q_INVOKABLE void addRealizingMessage(QMessage *realizingMessage);
     Q_INVOKABLE void removeRealizingMessage(QMessage *realizingMessage);
-    Q_INVOKABLE const QSet<QActivityEdge *> &realizingActivityEdges() const;
+    Q_INVOKABLE QSet<QActivityEdge *> realizingActivityEdges() const;
     Q_INVOKABLE void addRealizingActivityEdge(QActivityEdge *realizingActivityEdge);
     Q_INVOKABLE void removeRealizingActivityEdge(QActivityEdge *realizingActivityEdge);
-    Q_INVOKABLE const QSet<QRelationship *> &realizations() const;
+    Q_INVOKABLE QSet<QRelationship *> realizations() const;
     Q_INVOKABLE void addRealization(QRelationship *realization);
     Q_INVOKABLE void removeRealization(QRelationship *realization);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QInformationFlow(QInformationFlowPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

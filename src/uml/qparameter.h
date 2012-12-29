@@ -91,9 +91,9 @@ public:
     virtual ~QParameter();
 
     // Association ends from aggregated QElement
-    Q_INVOKABLE const QSet<QElement *> &ownedElements() const;
+    Q_INVOKABLE QSet<QElement *> ownedElements() const;
     Q_INVOKABLE QElement *owner() const;
-    Q_INVOKABLE const QSet<QComment *> &ownedComments() const;
+    Q_INVOKABLE QSet<QComment *> ownedComments() const;
     Q_INVOKABLE void addOwnedComment(QComment *ownedComment);
     Q_INVOKABLE void removeOwnedComment(QComment *ownedComment);
 
@@ -127,7 +127,7 @@ public:
     Q_INVOKABLE QStringExpression *nameExpression() const;
     Q_INVOKABLE void setNameExpression(QStringExpression *nameExpression);
     Q_INVOKABLE QNamespace *namespace_() const;
-    Q_INVOKABLE const QSet<QDependency *> &clientDependencies() const;
+    Q_INVOKABLE QSet<QDependency *> clientDependencies() const;
     Q_INVOKABLE void addClientDependency(QDependency *clientDependency);
     Q_INVOKABLE void removeClientDependency(QDependency *clientDependency);
 
@@ -140,7 +140,7 @@ public:
     Q_INVOKABLE void setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter);
 
     // Association ends from aggregated QConnectableElement
-    Q_INVOKABLE const QList<QConnectorEnd *> &ends() const;
+    Q_INVOKABLE QList<QConnectorEnd *> ends() const;
     Q_INVOKABLE QConnectableElementTemplateParameter *templateParameter() const;
     Q_INVOKABLE void setTemplateParameter(QConnectableElementTemplateParameter *templateParameter);
 
@@ -164,9 +164,10 @@ public:
     Q_INVOKABLE void setOperation(QOperation *operation);
     Q_INVOKABLE QValueSpecification *defaultValue() const;
     Q_INVOKABLE void setDefaultValue(QValueSpecification *defaultValue);
-    Q_INVOKABLE const QSet<QParameterSet *> &parameterSets() const;
+    Q_INVOKABLE QSet<QParameterSet *> parameterSets() const;
     Q_INVOKABLE void addParameterSet(QParameterSet *parameterSet);
     Q_INVOKABLE void removeParameterSet(QParameterSet *parameterSet);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QParameter(QParameterPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

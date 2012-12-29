@@ -74,6 +74,14 @@ QCentralBufferNode::~QCentralBufferNode()
 {
 }
 
+void QCentralBufferNode::registerMetaTypes() const
+{
+    QObjectNode::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qcentralbuffernode.cpp"
 
 QT_END_NAMESPACE_QTUML

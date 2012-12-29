@@ -74,6 +74,14 @@ QLiteralSpecification::~QLiteralSpecification()
 {
 }
 
+void QLiteralSpecification::registerMetaTypes() const
+{
+    QValueSpecification::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qliteralspecification.cpp"
 
 QT_END_NAMESPACE_QTMOF

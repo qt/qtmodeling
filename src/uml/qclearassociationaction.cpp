@@ -133,6 +133,22 @@ void QClearAssociationAction::setAssociation(QAssociation *association)
     }
 }
 
+void QClearAssociationAction::registerMetaTypes() const
+{
+    qRegisterMetaType<QAssociation *>("QAssociation *");
+    qRegisterMetaType<QSet<QAssociation *>>("QSet<QAssociation *>");
+    qRegisterMetaType<QList<QAssociation *>>("QList<QAssociation *>");
+
+    qRegisterMetaType<QInputPin *>("QInputPin *");
+    qRegisterMetaType<QSet<QInputPin *>>("QSet<QInputPin *>");
+    qRegisterMetaType<QList<QInputPin *>>("QList<QInputPin *>");
+
+    QAction::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qclearassociationaction.cpp"
 
 QT_END_NAMESPACE_QTUML

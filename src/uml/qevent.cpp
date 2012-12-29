@@ -74,6 +74,14 @@ QEvent::~QEvent()
 {
 }
 
+void QEvent::registerMetaTypes() const
+{
+    QPackageableElement::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qevent.cpp"
 
 QT_END_NAMESPACE_QTUML

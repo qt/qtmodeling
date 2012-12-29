@@ -155,7 +155,7 @@ void QGeneralization::setSpecific(QClassifier *specific)
 /*!
     Designates a set in which instances of Generalization is considered members.
  */
-const QSet<QGeneralizationSet *> &QGeneralization::generalizationSets() const
+QSet<QGeneralizationSet *> QGeneralization::generalizationSets() const
 {
     // This is a read-write association end
 
@@ -217,6 +217,22 @@ void QGeneralization::setGeneral(QClassifier *general)
             (qwrappedobject_cast<QDirectedRelationshipPrivate *>(d))->addTarget(qwrappedobject_cast<QElement *>(general));
         }
     }
+}
+
+void QGeneralization::registerMetaTypes() const
+{
+    qRegisterMetaType<QClassifier *>("QClassifier *");
+    qRegisterMetaType<QSet<QClassifier *>>("QSet<QClassifier *>");
+    qRegisterMetaType<QList<QClassifier *>>("QList<QClassifier *>");
+
+    qRegisterMetaType<QGeneralizationSet *>("QGeneralizationSet *");
+    qRegisterMetaType<QSet<QGeneralizationSet *>>("QSet<QGeneralizationSet *>");
+    qRegisterMetaType<QList<QGeneralizationSet *>>("QList<QGeneralizationSet *>");
+
+    QDirectedRelationship::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qgeneralization.cpp"

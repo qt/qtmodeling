@@ -125,7 +125,7 @@ void QInteraction::setSpecification(QBehavioralFeature *specification)
 /*!
     An optional set of Constraints specifying what is fulfilled after the execution of the behavior is completed, if its precondition was fulfilled before its invocation.
  */
-const QSet<QConstraint *> &QInteraction::postconditions() const
+QSet<QConstraint *> QInteraction::postconditions() const
 {
     return (qwrappedobject_cast<const QBehavior *>(this))->postconditions();
 }
@@ -143,7 +143,7 @@ void QInteraction::removePostcondition(QConstraint *postcondition)
 /*!
     An optional set of Constraints specifying what must be fulfilled when the behavior is invoked.
  */
-const QSet<QConstraint *> &QInteraction::preconditions() const
+QSet<QConstraint *> QInteraction::preconditions() const
 {
     return (qwrappedobject_cast<const QBehavior *>(this))->preconditions();
 }
@@ -161,7 +161,7 @@ void QInteraction::removePrecondition(QConstraint *precondition)
 /*!
     References a behavior that this behavior redefines. A subtype of Behavior may redefine any other subtype of Behavior. If the behavior implements a behavioral feature, it replaces the redefined behavior. If the behavior is a classifier behavior, it extends the redefined behavior.
  */
-const QSet<QBehavior *> &QInteraction::redefinedBehaviors() const
+QSet<QBehavior *> QInteraction::redefinedBehaviors() const
 {
     return (qwrappedobject_cast<const QBehavior *>(this))->redefinedBehaviors();
 }
@@ -179,7 +179,7 @@ void QInteraction::removeRedefinedBehavior(QBehavior *redefinedBehavior)
 /*!
     References a list of parameters to the behavior which describes the order and type of arguments that can be given when the behavior is invoked and of the values which will be returned when the behavior completes its execution.
  */
-const QList<QParameter *> &QInteraction::ownedParameters() const
+QList<QParameter *> QInteraction::ownedParameters() const
 {
     return (qwrappedobject_cast<const QBehavior *>(this))->ownedParameters();
 }
@@ -197,7 +197,7 @@ void QInteraction::removeOwnedParameter(QParameter *ownedParameter)
 /*!
     The ParameterSets owned by this Behavior.
  */
-const QSet<QParameterSet *> &QInteraction::ownedParameterSets() const
+QSet<QParameterSet *> QInteraction::ownedParameterSets() const
 {
     return (qwrappedobject_cast<const QBehavior *>(this))->ownedParameterSets();
 }
@@ -227,7 +227,7 @@ QBehavioredClassifier *QInteraction::context() const
 /*!
     The Elements owned by this element.
  */
-const QSet<QElement *> &QInteraction::ownedElements() const
+QSet<QElement *> QInteraction::ownedElements() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedElements();
 }
@@ -243,7 +243,7 @@ QElement *QInteraction::owner() const
 /*!
     The Comments owned by this element.
  */
-const QSet<QComment *> &QInteraction::ownedComments() const
+QSet<QComment *> QInteraction::ownedComments() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedComments();
 }
@@ -324,7 +324,7 @@ QNamespace *QInteraction::namespace_() const
 /*!
     Indicates the dependencies that reference the client.
  */
-const QSet<QDependency *> &QInteraction::clientDependencies() const
+QSet<QDependency *> QInteraction::clientDependencies() const
 {
     return (qwrappedobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
@@ -346,7 +346,7 @@ void QInteraction::removeClientDependency(QDependency *clientDependency)
 /*!
     The general ordering relationships contained in this fragment.
  */
-const QSet<QGeneralOrdering *> &QInteraction::generalOrderings() const
+QSet<QGeneralOrdering *> QInteraction::generalOrderings() const
 {
     return (qwrappedobject_cast<const QInteractionFragment *>(this))->generalOrderings();
 }
@@ -377,7 +377,7 @@ void QInteraction::setEnclosingInteraction(QInteraction *enclosingInteraction)
 /*!
     References the Lifelines that the InteractionFragment involves.
  */
-const QSet<QLifeline *> &QInteraction::covered() const
+QSet<QLifeline *> QInteraction::covered() const
 {
     return (qwrappedobject_cast<const QInteractionFragment *>(this))->covered();
 }
@@ -412,7 +412,7 @@ void QInteraction::setEnclosingOperand(QInteractionOperand *enclosingOperand)
 /*!
     Actions owned by the Interaction.
  */
-const QSet<QAction *> &QInteraction::actions() const
+QSet<QAction *> QInteraction::actions() const
 {
     // This is a read-write association end
 
@@ -449,7 +449,7 @@ void QInteraction::removeAction(QAction *action)
 /*!
     The Messages contained in this Interaction.
  */
-const QSet<QMessage *> &QInteraction::messages() const
+QSet<QMessage *> QInteraction::messages() const
 {
     // This is a read-write association end
 
@@ -492,7 +492,7 @@ void QInteraction::removeMessage(QMessage *message)
 /*!
     Specifies the gates that form the message interface between this Interaction and any InteractionUses which reference it.
  */
-const QSet<QGate *> &QInteraction::formalGates() const
+QSet<QGate *> QInteraction::formalGates() const
 {
     // This is a read-write association end
 
@@ -529,7 +529,7 @@ void QInteraction::removeFormalGate(QGate *formalGate)
 /*!
     The ordered set of fragments in the Interaction.
  */
-const QList<QInteractionFragment *> &QInteraction::fragments() const
+QList<QInteractionFragment *> QInteraction::fragments() const
 {
     // This is a read-write association end
 
@@ -572,7 +572,7 @@ void QInteraction::removeFragment(QInteractionFragment *fragment)
 /*!
     Specifies the participants in this Interaction.
  */
-const QSet<QLifeline *> &QInteraction::lifelines() const
+QSet<QLifeline *> QInteraction::lifelines() const
 {
     // This is a read-write association end
 
@@ -610,6 +610,30 @@ void QInteraction::removeLifeline(QLifeline *lifeline)
         // Adjust opposite property
         lifeline->setInteraction(0);
     }
+}
+
+void QInteraction::registerMetaTypes() const
+{
+    qRegisterMetaType<QMessage *>("QMessage *");
+    qRegisterMetaType<QSet<QMessage *>>("QSet<QMessage *>");
+    qRegisterMetaType<QList<QMessage *>>("QList<QMessage *>");
+
+    qRegisterMetaType<QLifeline *>("QLifeline *");
+    qRegisterMetaType<QSet<QLifeline *>>("QSet<QLifeline *>");
+    qRegisterMetaType<QList<QLifeline *>>("QList<QLifeline *>");
+
+    qRegisterMetaType<QAction *>("QAction *");
+    qRegisterMetaType<QSet<QAction *>>("QSet<QAction *>");
+    qRegisterMetaType<QList<QAction *>>("QList<QAction *>");
+
+    qRegisterMetaType<QGate *>("QGate *");
+    qRegisterMetaType<QSet<QGate *>>("QSet<QGate *>");
+    qRegisterMetaType<QList<QGate *>>("QList<QGate *>");
+
+    QWrappedObject::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qinteraction.cpp"

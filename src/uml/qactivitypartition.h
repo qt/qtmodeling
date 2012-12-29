@@ -92,17 +92,18 @@ public:
     // Association ends from QActivityPartition
     Q_INVOKABLE QElement *represents() const;
     Q_INVOKABLE void setRepresents(QElement *represents);
-    Q_INVOKABLE const QSet<QActivityPartition *> &subpartitions() const;
+    Q_INVOKABLE QSet<QActivityPartition *> subpartitions() const;
     Q_INVOKABLE void addSubpartition(QActivityPartition *subpartition);
     Q_INVOKABLE void removeSubpartition(QActivityPartition *subpartition);
     Q_INVOKABLE QActivityPartition *superPartition() const;
     Q_INVOKABLE void setSuperPartition(QActivityPartition *superPartition);
-    Q_INVOKABLE const QSet<QActivityNode *> &nodes() const;
+    Q_INVOKABLE QSet<QActivityNode *> nodes() const;
     Q_INVOKABLE void addNode(QActivityNode *node);
     Q_INVOKABLE void removeNode(QActivityNode *node);
-    Q_INVOKABLE const QSet<QActivityEdge *> &edges() const;
+    Q_INVOKABLE QSet<QActivityEdge *> edges() const;
     Q_INVOKABLE void addEdge(QActivityEdge *edge);
     Q_INVOKABLE void removeEdge(QActivityEdge *edge);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QActivityPartition(QActivityPartitionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

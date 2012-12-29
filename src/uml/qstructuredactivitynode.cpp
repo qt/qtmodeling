@@ -96,7 +96,7 @@ QStructuredActivityNode::~QStructuredActivityNode()
 /*!
     The Elements owned by this element.
  */
-const QSet<QElement *> &QStructuredActivityNode::ownedElements() const
+QSet<QElement *> QStructuredActivityNode::ownedElements() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedElements();
 }
@@ -112,7 +112,7 @@ QElement *QStructuredActivityNode::owner() const
 /*!
     The Comments owned by this element.
  */
-const QSet<QComment *> &QStructuredActivityNode::ownedComments() const
+QSet<QComment *> QStructuredActivityNode::ownedComments() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedComments();
 }
@@ -193,7 +193,7 @@ QNamespace *QStructuredActivityNode::namespace_() const
 /*!
     Indicates the dependencies that reference the client.
  */
-const QSet<QDependency *> &QStructuredActivityNode::clientDependencies() const
+QSet<QDependency *> QStructuredActivityNode::clientDependencies() const
 {
     return (qwrappedobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
@@ -237,7 +237,7 @@ void QStructuredActivityNode::unsetLeaf()
 /*!
     The redefinable element that is being redefined by this element.
  */
-const QSet<QRedefinableElement *> &QStructuredActivityNode::redefinedElements() const
+QSet<QRedefinableElement *> QStructuredActivityNode::redefinedElements() const
 {
     return (qwrappedobject_cast<const QRedefinableElement *>(this))->redefinedElements();
 }
@@ -245,7 +245,7 @@ const QSet<QRedefinableElement *> &QStructuredActivityNode::redefinedElements() 
 /*!
     References the contexts that this element may be redefined from.
  */
-const QSet<QClassifier *> &QStructuredActivityNode::redefinitionContexts() const
+QSet<QClassifier *> QStructuredActivityNode::redefinitionContexts() const
 {
     return (qwrappedobject_cast<const QRedefinableElement *>(this))->redefinitionContexts();
 }
@@ -257,7 +257,7 @@ const QSet<QClassifier *> &QStructuredActivityNode::redefinitionContexts() const
 /*!
     Inherited nodes replaced by this node in a specialization of the activity.
  */
-const QSet<QActivityNode *> &QStructuredActivityNode::redefinedNodes() const
+QSet<QActivityNode *> QStructuredActivityNode::redefinedNodes() const
 {
     return (qwrappedobject_cast<const QActivityNode *>(this))->redefinedNodes();
 }
@@ -275,7 +275,7 @@ void QStructuredActivityNode::removeRedefinedNode(QActivityNode *redefinedNode)
 /*!
     Edges that have the node as target.
  */
-const QSet<QActivityEdge *> &QStructuredActivityNode::incomings() const
+QSet<QActivityEdge *> QStructuredActivityNode::incomings() const
 {
     return (qwrappedobject_cast<const QActivityNode *>(this))->incomings();
 }
@@ -293,7 +293,7 @@ void QStructuredActivityNode::removeIncoming(QActivityEdge *incoming)
 /*!
     Groups containing the node.
  */
-const QSet<QActivityGroup *> &QStructuredActivityNode::inGroup() const
+QSet<QActivityGroup *> QStructuredActivityNode::inGroup() const
 {
     return (qwrappedobject_cast<const QActivityNode *>(this))->inGroup();
 }
@@ -314,7 +314,7 @@ void QStructuredActivityNode::setInStructuredNode(QStructuredActivityNode *inStr
 /*!
     Partitions containing the node.
  */
-const QSet<QActivityPartition *> &QStructuredActivityNode::inPartition() const
+QSet<QActivityPartition *> QStructuredActivityNode::inPartition() const
 {
     return (qwrappedobject_cast<const QActivityNode *>(this))->inPartition();
 }
@@ -332,7 +332,7 @@ void QStructuredActivityNode::removeInPartition(QActivityPartition *inPartition)
 /*!
     Interruptible regions containing the node.
  */
-const QSet<QInterruptibleActivityRegion *> &QStructuredActivityNode::inInterruptibleRegion() const
+QSet<QInterruptibleActivityRegion *> QStructuredActivityNode::inInterruptibleRegion() const
 {
     return (qwrappedobject_cast<const QActivityNode *>(this))->inInterruptibleRegion();
 }
@@ -350,7 +350,7 @@ void QStructuredActivityNode::removeInInterruptibleRegion(QInterruptibleActivity
 /*!
     Edges that have the node as source.
  */
-const QSet<QActivityEdge *> &QStructuredActivityNode::outgoings() const
+QSet<QActivityEdge *> QStructuredActivityNode::outgoings() const
 {
     return (qwrappedobject_cast<const QActivityNode *>(this))->outgoings();
 }
@@ -372,7 +372,7 @@ void QStructuredActivityNode::removeOutgoing(QActivityEdge *outgoing)
 /*!
     A set of exception handlers that are examined if an uncaught exception propagates to the outer level of the executable node.
  */
-const QSet<QExceptionHandler *> &QStructuredActivityNode::handlers() const
+QSet<QExceptionHandler *> QStructuredActivityNode::handlers() const
 {
     return (qwrappedobject_cast<const QExecutableNode *>(this))->handlers();
 }
@@ -424,7 +424,7 @@ QClassifier *QStructuredActivityNode::context() const
 /*!
     Constraint that must be satisfied when executed is completed.
  */
-const QSet<QConstraint *> &QStructuredActivityNode::localPostconditions() const
+QSet<QConstraint *> QStructuredActivityNode::localPostconditions() const
 {
     return (qwrappedobject_cast<const QAction *>(this))->localPostconditions();
 }
@@ -442,7 +442,7 @@ void QStructuredActivityNode::removeLocalPostcondition(QConstraint *localPostcon
 /*!
     Constraint that must be satisfied when execution is started.
  */
-const QSet<QConstraint *> &QStructuredActivityNode::localPreconditions() const
+QSet<QConstraint *> QStructuredActivityNode::localPreconditions() const
 {
     return (qwrappedobject_cast<const QAction *>(this))->localPreconditions();
 }
@@ -460,7 +460,7 @@ void QStructuredActivityNode::removeLocalPrecondition(QConstraint *localPrecondi
 /*!
     The ordered set of input pins connected to the Action. These are among the total set of inputs.
  */
-const QList<QInputPin *> &QStructuredActivityNode::inputs() const
+QList<QInputPin *> QStructuredActivityNode::inputs() const
 {
     return (qwrappedobject_cast<const QAction *>(this))->inputs();
 }
@@ -468,7 +468,7 @@ const QList<QInputPin *> &QStructuredActivityNode::inputs() const
 /*!
     The ordered set of output pins connected to the Action. The action places its results onto pins in this set.
  */
-const QList<QOutputPin *> &QStructuredActivityNode::outputs() const
+QList<QOutputPin *> QStructuredActivityNode::outputs() const
 {
     return (qwrappedobject_cast<const QAction *>(this))->outputs();
 }
@@ -480,7 +480,7 @@ const QList<QOutputPin *> &QStructuredActivityNode::outputs() const
 /*!
     References the PackageImports owned by the Namespace.
  */
-const QSet<QPackageImport *> &QStructuredActivityNode::packageImports() const
+QSet<QPackageImport *> QStructuredActivityNode::packageImports() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->packageImports();
 }
@@ -498,7 +498,7 @@ void QStructuredActivityNode::removePackageImport(QPackageImport *packageImport)
 /*!
     A collection of NamedElements identifiable within the Namespace, either by being owned or by being introduced by importing or inheritance.
  */
-const QSet<QNamedElement *> &QStructuredActivityNode::members() const
+QSet<QNamedElement *> QStructuredActivityNode::members() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->members();
 }
@@ -506,7 +506,7 @@ const QSet<QNamedElement *> &QStructuredActivityNode::members() const
 /*!
     References the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports.
  */
-const QSet<QPackageableElement *> &QStructuredActivityNode::importedMembers() const
+QSet<QPackageableElement *> QStructuredActivityNode::importedMembers() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->importedMembers();
 }
@@ -514,7 +514,7 @@ const QSet<QPackageableElement *> &QStructuredActivityNode::importedMembers() co
 /*!
     References the ElementImports owned by the Namespace.
  */
-const QSet<QElementImport *> &QStructuredActivityNode::elementImports() const
+QSet<QElementImport *> QStructuredActivityNode::elementImports() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->elementImports();
 }
@@ -532,7 +532,7 @@ void QStructuredActivityNode::removeElementImport(QElementImport *elementImport)
 /*!
     Specifies a set of Constraints owned by this Namespace.
  */
-const QSet<QConstraint *> &QStructuredActivityNode::ownedRules() const
+QSet<QConstraint *> QStructuredActivityNode::ownedRules() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->ownedRules();
 }
@@ -550,7 +550,7 @@ void QStructuredActivityNode::removeOwnedRule(QConstraint *ownedRule)
 /*!
     A collection of NamedElements owned by the Namespace.
  */
-const QSet<QNamedElement *> &QStructuredActivityNode::ownedMembers() const
+QSet<QNamedElement *> QStructuredActivityNode::ownedMembers() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->ownedMembers();
 }
@@ -562,7 +562,7 @@ const QSet<QNamedElement *> &QStructuredActivityNode::ownedMembers() const
 /*!
     Nodes immediately contained in the group.
  */
-const QSet<QActivityNode *> &QStructuredActivityNode::containedNodes() const
+QSet<QActivityNode *> QStructuredActivityNode::containedNodes() const
 {
     return (qwrappedobject_cast<const QActivityGroup *>(this))->containedNodes();
 }
@@ -570,7 +570,7 @@ const QSet<QActivityNode *> &QStructuredActivityNode::containedNodes() const
 /*!
     Groups immediately contained in the group.
  */
-const QSet<QActivityGroup *> &QStructuredActivityNode::subgroups() const
+QSet<QActivityGroup *> QStructuredActivityNode::subgroups() const
 {
     return (qwrappedobject_cast<const QActivityGroup *>(this))->subgroups();
 }
@@ -578,7 +578,7 @@ const QSet<QActivityGroup *> &QStructuredActivityNode::subgroups() const
 /*!
     Edges immediately contained in the group.
  */
-const QSet<QActivityEdge *> &QStructuredActivityNode::containedEdges() const
+QSet<QActivityEdge *> QStructuredActivityNode::containedEdges() const
 {
     return (qwrappedobject_cast<const QActivityGroup *>(this))->containedEdges();
 }
@@ -625,7 +625,7 @@ void QStructuredActivityNode::unsetMustIsolate()
 // ASSOCIATION ENDS FROM QStructuredActivityNode
 // ---------------------------------------------------------------
 
-const QSet<QInputPin *> &QStructuredActivityNode::structuredNodeInputs() const
+QSet<QInputPin *> QStructuredActivityNode::structuredNodeInputs() const
 {
     // This is a read-write association end
 
@@ -662,7 +662,7 @@ void QStructuredActivityNode::removeStructuredNodeInput(QInputPin *structuredNod
 /*!
     Nodes immediately contained in the group.
  */
-const QSet<QActivityNode *> &QStructuredActivityNode::nodes() const
+QSet<QActivityNode *> QStructuredActivityNode::nodes() const
 {
     // This is a read-write association end
 
@@ -704,7 +704,7 @@ void QStructuredActivityNode::removeNode(QActivityNode *node)
     }
 }
 
-const QSet<QOutputPin *> &QStructuredActivityNode::structuredNodeOutputs() const
+QSet<QOutputPin *> QStructuredActivityNode::structuredNodeOutputs() const
 {
     // This is a read-write association end
 
@@ -741,7 +741,7 @@ void QStructuredActivityNode::removeStructuredNodeOutput(QOutputPin *structuredN
 /*!
     Edges immediately contained in the structured node.
  */
-const QSet<QActivityEdge *> &QStructuredActivityNode::edges() const
+QSet<QActivityEdge *> QStructuredActivityNode::edges() const
 {
     // This is a read-write association end
 
@@ -786,7 +786,7 @@ void QStructuredActivityNode::removeEdge(QActivityEdge *edge)
 /*!
     A variable defined in the scope of the structured activity node. It has no value and may not be accessed
  */
-const QSet<QVariable *> &QStructuredActivityNode::variables() const
+QSet<QVariable *> QStructuredActivityNode::variables() const
 {
     // This is a read-write association end
 
@@ -853,6 +853,38 @@ void QStructuredActivityNode::setActivity(QActivity *activity)
         if (activity)
             activity->addStructuredNode(this);
     }
+}
+
+void QStructuredActivityNode::registerMetaTypes() const
+{
+    qRegisterMetaType<QOutputPin *>("QOutputPin *");
+    qRegisterMetaType<QSet<QOutputPin *>>("QSet<QOutputPin *>");
+    qRegisterMetaType<QList<QOutputPin *>>("QList<QOutputPin *>");
+
+    qRegisterMetaType<QVariable *>("QVariable *");
+    qRegisterMetaType<QSet<QVariable *>>("QSet<QVariable *>");
+    qRegisterMetaType<QList<QVariable *>>("QList<QVariable *>");
+
+    qRegisterMetaType<QInputPin *>("QInputPin *");
+    qRegisterMetaType<QSet<QInputPin *>>("QSet<QInputPin *>");
+    qRegisterMetaType<QList<QInputPin *>>("QList<QInputPin *>");
+
+    qRegisterMetaType<QActivityEdge *>("QActivityEdge *");
+    qRegisterMetaType<QSet<QActivityEdge *>>("QSet<QActivityEdge *>");
+    qRegisterMetaType<QList<QActivityEdge *>>("QList<QActivityEdge *>");
+
+    qRegisterMetaType<QActivity *>("QActivity *");
+    qRegisterMetaType<QSet<QActivity *>>("QSet<QActivity *>");
+    qRegisterMetaType<QList<QActivity *>>("QList<QActivity *>");
+
+    qRegisterMetaType<QActivityNode *>("QActivityNode *");
+    qRegisterMetaType<QSet<QActivityNode *>>("QSet<QActivityNode *>");
+    qRegisterMetaType<QList<QActivityNode *>>("QList<QActivityNode *>");
+
+    QWrappedObject::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qstructuredactivitynode.cpp"

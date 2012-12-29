@@ -110,6 +110,18 @@ void QRaiseExceptionAction::setException(QInputPin *exception)
     }
 }
 
+void QRaiseExceptionAction::registerMetaTypes() const
+{
+    qRegisterMetaType<QInputPin *>("QInputPin *");
+    qRegisterMetaType<QSet<QInputPin *>>("QSet<QInputPin *>");
+    qRegisterMetaType<QList<QInputPin *>>("QList<QInputPin *>");
+
+    QAction::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qraiseexceptionaction.cpp"
 
 QT_END_NAMESPACE_QTUML

@@ -85,7 +85,7 @@ QConnectionPointReference::~QConnectionPointReference()
 /*!
     The exitPoints kind pseudo states corresponding to this connection point.
  */
-const QSet<QPseudostate *> &QConnectionPointReference::exits() const
+QSet<QPseudostate *> QConnectionPointReference::exits() const
 {
     // This is a read-write association end
 
@@ -148,7 +148,7 @@ void QConnectionPointReference::setState(QState *state)
 /*!
     The entryPoint kind pseudo states corresponding to this connection point.
  */
-const QSet<QPseudostate *> &QConnectionPointReference::entries() const
+QSet<QPseudostate *> QConnectionPointReference::entries() const
 {
     // This is a read-write association end
 
@@ -174,6 +174,22 @@ void QConnectionPointReference::removeEntry(QPseudostate *entry)
     if (d->entries.contains(entry)) {
         d->entries.remove(entry);
     }
+}
+
+void QConnectionPointReference::registerMetaTypes() const
+{
+    qRegisterMetaType<QPseudostate *>("QPseudostate *");
+    qRegisterMetaType<QSet<QPseudostate *>>("QSet<QPseudostate *>");
+    qRegisterMetaType<QList<QPseudostate *>>("QList<QPseudostate *>");
+
+    qRegisterMetaType<QState *>("QState *");
+    qRegisterMetaType<QSet<QState *>>("QSet<QState *>");
+    qRegisterMetaType<QList<QState *>>("QList<QState *>");
+
+    QVertex::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qconnectionpointreference.cpp"

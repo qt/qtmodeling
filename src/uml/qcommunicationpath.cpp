@@ -74,6 +74,14 @@ QCommunicationPath::~QCommunicationPath()
 {
 }
 
+void QCommunicationPath::registerMetaTypes() const
+{
+    QAssociation::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qcommunicationpath.cpp"
 
 QT_END_NAMESPACE_QTUML

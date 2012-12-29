@@ -80,9 +80,10 @@ public:
     Q_INVOKABLE void unsetSynchronous();
 
     // Association ends from QCallAction
-    Q_INVOKABLE const QList<QOutputPin *> &results() const;
+    Q_INVOKABLE QList<QOutputPin *> results() const;
     Q_INVOKABLE void addResult(QOutputPin *result);
     Q_INVOKABLE void removeResult(QOutputPin *result);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QCallAction(QCallActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

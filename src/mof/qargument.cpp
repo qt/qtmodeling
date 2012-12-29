@@ -110,6 +110,18 @@ void QArgument::setValue(QMofObject *value)
     }
 }
 
+void QArgument::registerMetaTypes() const
+{
+    qRegisterMetaType<QMofObject *>("QMofObject *");
+    qRegisterMetaType<QSet<QMofObject *>>("QSet<QMofObject *>");
+    qRegisterMetaType<QList<QMofObject *>>("QList<QMofObject *>");
+
+    QWrappedObject::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qargument.cpp"
 
 QT_END_NAMESPACE_QTMOF

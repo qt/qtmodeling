@@ -140,6 +140,18 @@ void QInteractionConstraint::setMinint(QValueSpecification *minint)
     }
 }
 
+void QInteractionConstraint::registerMetaTypes() const
+{
+    qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
+    qRegisterMetaType<QSet<QValueSpecification *>>("QSet<QValueSpecification *>");
+    qRegisterMetaType<QList<QValueSpecification *>>("QList<QValueSpecification *>");
+
+    QConstraint::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qinteractionconstraint.cpp"
 
 QT_END_NAMESPACE_QTUML

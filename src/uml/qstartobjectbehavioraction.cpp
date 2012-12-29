@@ -110,6 +110,18 @@ void QStartObjectBehaviorAction::setObject(QInputPin *object)
     }
 }
 
+void QStartObjectBehaviorAction::registerMetaTypes() const
+{
+    qRegisterMetaType<QInputPin *>("QInputPin *");
+    qRegisterMetaType<QSet<QInputPin *>>("QSet<QInputPin *>");
+    qRegisterMetaType<QList<QInputPin *>>("QList<QInputPin *>");
+
+    QCallAction::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qstartobjectbehavioraction.cpp"
 
 QT_END_NAMESPACE_QTUML

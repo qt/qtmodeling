@@ -82,18 +82,19 @@ public:
     virtual ~QInteractionUse();
 
     // Association ends from QInteractionUse
-    Q_INVOKABLE const QSet<QGate *> &actualGates() const;
+    Q_INVOKABLE QSet<QGate *> actualGates() const;
     Q_INVOKABLE void addActualGate(QGate *actualGate);
     Q_INVOKABLE void removeActualGate(QGate *actualGate);
     Q_INVOKABLE QValueSpecification *returnValue() const;
     Q_INVOKABLE void setReturnValue(QValueSpecification *returnValue);
     Q_INVOKABLE QInteraction *refersTo() const;
     Q_INVOKABLE void setRefersTo(QInteraction *refersTo);
-    Q_INVOKABLE const QList<QValueSpecification *> &arguments() const;
+    Q_INVOKABLE QList<QValueSpecification *> arguments() const;
     Q_INVOKABLE void addArgument(QValueSpecification *argument);
     Q_INVOKABLE void removeArgument(QValueSpecification *argument);
     Q_INVOKABLE QProperty *returnValueRecipient() const;
     Q_INVOKABLE void setReturnValueRecipient(QProperty *returnValueRecipient);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QInteractionUse(QInteractionUsePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

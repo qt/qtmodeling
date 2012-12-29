@@ -91,7 +91,7 @@ QParameter::~QParameter()
 /*!
     The Elements owned by this element.
  */
-const QSet<QElement *> &QParameter::ownedElements() const
+QSet<QElement *> QParameter::ownedElements() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedElements();
 }
@@ -107,7 +107,7 @@ QElement *QParameter::owner() const
 /*!
     The Comments owned by this element.
  */
-const QSet<QComment *> &QParameter::ownedComments() const
+QSet<QComment *> QParameter::ownedComments() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedComments();
 }
@@ -395,6 +395,22 @@ void QParameter::setDefaultValue(QValueSpecification *defaultValue)
             (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(defaultValue));
         }
     }
+}
+
+void QParameter::registerMetaTypes() const
+{
+    qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
+    qRegisterMetaType<QSet<QValueSpecification *>>("QSet<QValueSpecification *>");
+    qRegisterMetaType<QList<QValueSpecification *>>("QList<QValueSpecification *>");
+
+    qRegisterMetaType<QOperation *>("QOperation *");
+    qRegisterMetaType<QSet<QOperation *>>("QSet<QOperation *>");
+    qRegisterMetaType<QList<QOperation *>>("QList<QOperation *>");
+
+    QWrappedObject::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qparameter.cpp"

@@ -73,6 +73,7 @@ public:
     // Association ends from QAbstraction
     Q_INVOKABLE QOpaqueExpression *mapping() const;
     Q_INVOKABLE void setMapping(QOpaqueExpression *mapping);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QAbstraction(QAbstractionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

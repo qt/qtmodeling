@@ -86,8 +86,8 @@ QVariant WrappedObjectPropertyModel::data(const QModelIndex &index, int role) co
                         }
                         else if (metaProperty.isEnumType())
                             return QString::fromLatin1(metaProperty.enumerator().valueToKey(variant.toInt())).toLower().remove(metaProperty.name());
-                        else if (typeName.endsWith('*') && !typeName.contains(QRegularExpression ("QSet|QList")) && variant.canConvert<QWrappedObject *>()) {
-                            QWrappedObject *objectElement = variant.value<QWrappedObject *>();
+                        else if (typeName.endsWith('*') && qvariant_cast<QWrappedObject *>(variant)) {
+                            QWrappedObject *objectElement = qvariant_cast<QWrappedObject *>(variant);
                             if (objectElement) {
                                 QString returnedValue = qTopLevelWrapper(objectElement)->objectName();
                                 if (!metaProperty.isStored())
@@ -97,35 +97,30 @@ QVariant WrappedObjectPropertyModel::data(const QModelIndex &index, int role) co
                             else
                                 return QVariant();
                         }
-                        else if (typeName.endsWith('*') && typeName.contains("QSet") && variant.isValid()) {
-                            if (QSet<QWrappedObject *> *elements = *(static_cast<QSet<QWrappedObject *> **>(variant.data()))) {
-                                QString str;
-                                if (elements->size() > 0) {
-                                    str.append("[");
-                                    foreach (QWrappedObject *object, *elements)
+                        else if (typeName.contains("QSet") && variant.isValid()) {
+                            QSet<QWrappedObject *> elements = *(static_cast<QSet<QWrappedObject *> *>(variant.data()));
+                            QString str;
+                            if (elements.size() > 0) {
+                                str.append("[");
+                                foreach (QWrappedObject *object, elements)
+                                    if (qwrappedobject_cast<QWrappedObject *>(object))
                                         str.append((qwrappedobject_cast<QWrappedObject *>(object))->objectName().append(", "));
-                                    str.chop(2);
-                                    str.append("]");
-                                }
-                                if (!metaProperty.isStored())
-                                    delete elements;
-                                return !str.isEmpty() ? str:QVariant();
+                                str.chop(2);
+                                str.append("]");
                             }
+                            return !str.isEmpty() ? str:QVariant();
                         }
-                        else if (typeName.endsWith('*') && typeName.contains("QList") && variant.isValid()) {
-                            if (QList<QWrappedObject *> *elements = *(static_cast<QList<QWrappedObject *> **>(variant.data()))) {
-                                QString str;
-                                if (elements->size() > 0) {
-                                    str.append("[");
-                                    foreach (QWrappedObject *object, *elements)
-                                        str.append((qwrappedobject_cast<QWrappedObject *>(object))->objectName().append(", "));
-                                    str.chop(2);
-                                    str.append("]");
-                                }
-                                if (!metaProperty.isStored())
-                                    delete elements;
-                                return !str.isEmpty() ? str:QVariant();
+                        else if (typeName.contains("QList") && variant.isValid()) {
+                            QList<QWrappedObject *> elements = *(static_cast<QList<QWrappedObject *> *>(variant.data()));
+                            QString str;
+                            if (elements.size() > 0) {
+                                str.append("[");
+                                foreach (QWrappedObject *object, elements)
+                                    str.append((qwrappedobject_cast<QWrappedObject *>(object))->objectName().append(", "));
+                                str.chop(2);
+                                str.append("]");
                             }
+                            return !str.isEmpty() ? str:QVariant();
                         }
                     }
                     return QVariant();

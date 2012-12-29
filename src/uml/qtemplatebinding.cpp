@@ -154,7 +154,7 @@ void QTemplateBinding::setBoundElement(QTemplateableElement *boundElement)
 /*!
     The parameter substitutions owned by this template binding.
  */
-const QSet<QTemplateParameterSubstitution *> &QTemplateBinding::parameterSubstitutions() const
+QSet<QTemplateParameterSubstitution *> QTemplateBinding::parameterSubstitutions() const
 {
     // This is a read-write association end
 
@@ -192,6 +192,26 @@ void QTemplateBinding::removeParameterSubstitution(QTemplateParameterSubstitutio
         // Adjust opposite property
         parameterSubstitution->setTemplateBinding(0);
     }
+}
+
+void QTemplateBinding::registerMetaTypes() const
+{
+    qRegisterMetaType<QTemplateableElement *>("QTemplateableElement *");
+    qRegisterMetaType<QSet<QTemplateableElement *>>("QSet<QTemplateableElement *>");
+    qRegisterMetaType<QList<QTemplateableElement *>>("QList<QTemplateableElement *>");
+
+    qRegisterMetaType<QTemplateParameterSubstitution *>("QTemplateParameterSubstitution *");
+    qRegisterMetaType<QSet<QTemplateParameterSubstitution *>>("QSet<QTemplateParameterSubstitution *>");
+    qRegisterMetaType<QList<QTemplateParameterSubstitution *>>("QList<QTemplateParameterSubstitution *>");
+
+    qRegisterMetaType<QTemplateSignature *>("QTemplateSignature *");
+    qRegisterMetaType<QSet<QTemplateSignature *>>("QSet<QTemplateSignature *>");
+    qRegisterMetaType<QList<QTemplateSignature *>>("QList<QTemplateSignature *>");
+
+    QDirectedRelationship::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qtemplatebinding.cpp"

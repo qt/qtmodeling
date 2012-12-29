@@ -108,7 +108,7 @@ QProperty::~QProperty()
 /*!
     The Elements owned by this element.
  */
-const QSet<QElement *> &QProperty::ownedElements() const
+QSet<QElement *> QProperty::ownedElements() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedElements();
 }
@@ -124,7 +124,7 @@ QElement *QProperty::owner() const
 /*!
     The Comments owned by this element.
  */
-const QSet<QComment *> &QProperty::ownedComments() const
+QSet<QComment *> QProperty::ownedComments() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedComments();
 }
@@ -205,7 +205,7 @@ QNamespace *QProperty::namespace_() const
 /*!
     Indicates the dependencies that reference the client.
  */
-const QSet<QDependency *> &QProperty::clientDependencies() const
+QSet<QDependency *> QProperty::clientDependencies() const
 {
     return (qwrappedobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
@@ -367,7 +367,7 @@ void QProperty::unsetLeaf()
 /*!
     The redefinable element that is being redefined by this element.
  */
-const QSet<QRedefinableElement *> &QProperty::redefinedElements() const
+QSet<QRedefinableElement *> QProperty::redefinedElements() const
 {
     return (qwrappedobject_cast<const QRedefinableElement *>(this))->redefinedElements();
 }
@@ -375,7 +375,7 @@ const QSet<QRedefinableElement *> &QProperty::redefinedElements() const
 /*!
     References the contexts that this element may be redefined from.
  */
-const QSet<QClassifier *> &QProperty::redefinitionContexts() const
+QSet<QClassifier *> QProperty::redefinitionContexts() const
 {
     return (qwrappedobject_cast<const QRedefinableElement *>(this))->redefinitionContexts();
 }
@@ -409,7 +409,7 @@ void QProperty::unsetStatic()
 /*!
     The Classifiers that have this Feature as a feature.
  */
-const QSet<QClassifier *> &QProperty::featuringClassifiers() const
+QSet<QClassifier *> QProperty::featuringClassifiers() const
 {
     return (qwrappedobject_cast<const QFeature *>(this))->featuringClassifiers();
 }
@@ -438,7 +438,7 @@ void QProperty::setOwningTemplateParameter(QTemplateParameter *owningTemplatePar
 /*!
     Denotes a set of connector ends that attaches to this connectable element.
  */
-const QList<QConnectorEnd *> &QProperty::ends() const
+QList<QConnectorEnd *> QProperty::ends() const
 {
     return (qwrappedobject_cast<const QConnectableElement *>(this))->ends();
 }
@@ -463,7 +463,7 @@ void QProperty::setTemplateParameter(QConnectableElementTemplateParameter *templ
 /*!
     The set of elements that are manifested in an Artifact that is involved in Deployment to a DeploymentTarget.
  */
-const QSet<QPackageableElement *> &QProperty::deployedElements() const
+QSet<QPackageableElement *> QProperty::deployedElements() const
 {
     return (qwrappedobject_cast<const QDeploymentTarget *>(this))->deployedElements();
 }
@@ -471,7 +471,7 @@ const QSet<QPackageableElement *> &QProperty::deployedElements() const
 /*!
     The set of Deployments for a DeploymentTarget.
  */
-const QSet<QDeployment *> &QProperty::deployments() const
+QSet<QDeployment *> QProperty::deployments() const
 {
     return (qwrappedobject_cast<const QDeploymentTarget *>(this))->deployments();
 }
@@ -680,7 +680,7 @@ void QProperty::unsetAggregation()
 /*!
     References the properties of which this property is constrained to be a subset.
  */
-const QSet<QProperty *> &QProperty::subsettedProperties() const
+QSet<QProperty *> QProperty::subsettedProperties() const
 {
     // This is a read-write association end
 
@@ -754,7 +754,7 @@ void QProperty::setOwningAssociation(QAssociation *owningAssociation)
 /*!
     An optional list of ordered qualifier attributes for the end. If the list is empty, then the Association is not qualified.
  */
-const QList<QProperty *> &QProperty::qualifiers() const
+QList<QProperty *> QProperty::qualifiers() const
 {
     // This is a read-write association end
 
@@ -966,7 +966,7 @@ void QProperty::setDatatype(QDataType *datatype)
 /*!
     References the properties that are redefined by this property.
  */
-const QSet<QProperty *> &QProperty::redefinedProperties() const
+QSet<QProperty *> QProperty::redefinedProperties() const
 {
     // This is a read-write association end
 
@@ -1117,11 +1117,51 @@ bool QProperty::isNavigable() const
 /*!
     The query subsettingContext() gives the context for subsetting a property. It consists, in the case of an attribute, of the corresponding classifier, and in the case of an association end, all of the classifiers at the other ends.
  */
-const QSet<QType *> &QProperty::subsettingContext() const
+QSet<QType *> QProperty::subsettingContext() const
 {
     qWarning("QProperty::subsettingContext: operation to be implemented");
 
-    return *(new QSet<QType *>); // change here to your derived return
+    return QSet<QType *>(); // change here to your derived return
+}
+
+void QProperty::registerMetaTypes() const
+{
+    qRegisterMetaType<QType *>("QType *");
+    qRegisterMetaType<QSet<QType *>>("QSet<QType *>");
+    qRegisterMetaType<QList<QType *>>("QList<QType *>");
+
+    qRegisterMetaType<QInterface *>("QInterface *");
+    qRegisterMetaType<QSet<QInterface *>>("QSet<QInterface *>");
+    qRegisterMetaType<QList<QInterface *>>("QList<QInterface *>");
+
+    qRegisterMetaType<QRedefinableElement *>("QRedefinableElement *");
+    qRegisterMetaType<QSet<QRedefinableElement *>>("QSet<QRedefinableElement *>");
+    qRegisterMetaType<QList<QRedefinableElement *>>("QList<QRedefinableElement *>");
+
+    qRegisterMetaType<QParameterableElement *>("QParameterableElement *");
+    qRegisterMetaType<QSet<QParameterableElement *>>("QSet<QParameterableElement *>");
+    qRegisterMetaType<QList<QParameterableElement *>>("QList<QParameterableElement *>");
+
+    qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
+    qRegisterMetaType<QSet<QValueSpecification *>>("QSet<QValueSpecification *>");
+    qRegisterMetaType<QList<QValueSpecification *>>("QList<QValueSpecification *>");
+
+    qRegisterMetaType<QDataType *>("QDataType *");
+    qRegisterMetaType<QSet<QDataType *>>("QSet<QDataType *>");
+    qRegisterMetaType<QList<QDataType *>>("QList<QDataType *>");
+
+    qRegisterMetaType<QAssociation *>("QAssociation *");
+    qRegisterMetaType<QSet<QAssociation *>>("QSet<QAssociation *>");
+    qRegisterMetaType<QList<QAssociation *>>("QList<QAssociation *>");
+
+    qRegisterMetaType<QClass *>("QClass *");
+    qRegisterMetaType<QSet<QClass *>>("QSet<QClass *>");
+    qRegisterMetaType<QList<QClass *>>("QList<QClass *>");
+
+    QWrappedObject::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qproperty.cpp"

@@ -77,15 +77,16 @@ public:
     virtual ~QLinkAction();
 
     // Association ends from QLinkAction
-    Q_INVOKABLE const QSet<QInputPin *> &inputValues() const;
+    Q_INVOKABLE QSet<QInputPin *> inputValues() const;
     Q_INVOKABLE void addInputValue(QInputPin *inputValue);
     Q_INVOKABLE void removeInputValue(QInputPin *inputValue);
-    Q_INVOKABLE const QSet<QLinkEndData *> &endData() const;
+    Q_INVOKABLE QSet<QLinkEndData *> endData() const;
     Q_INVOKABLE void addEndData(QLinkEndData *endData);
     Q_INVOKABLE void removeEndData(QLinkEndData *endData);
 
     // Operations
     Q_INVOKABLE QAssociation *association() const;
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QLinkAction(QLinkActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

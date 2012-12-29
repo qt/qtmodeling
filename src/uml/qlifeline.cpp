@@ -133,7 +133,7 @@ void QLifeline::setDecomposedAs(QPartDecomposition *decomposedAs)
 /*!
     References the InteractionFragments in which this Lifeline takes part.
  */
-const QSet<QInteractionFragment *> &QLifeline::coveredBy() const
+QSet<QInteractionFragment *> QLifeline::coveredBy() const
 {
     // This is a read-write association end
 
@@ -227,6 +227,34 @@ void QLifeline::setSelector(QValueSpecification *selector)
             (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(selector));
         }
     }
+}
+
+void QLifeline::registerMetaTypes() const
+{
+    qRegisterMetaType<QConnectableElement *>("QConnectableElement *");
+    qRegisterMetaType<QSet<QConnectableElement *>>("QSet<QConnectableElement *>");
+    qRegisterMetaType<QList<QConnectableElement *>>("QList<QConnectableElement *>");
+
+    qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
+    qRegisterMetaType<QSet<QValueSpecification *>>("QSet<QValueSpecification *>");
+    qRegisterMetaType<QList<QValueSpecification *>>("QList<QValueSpecification *>");
+
+    qRegisterMetaType<QInteraction *>("QInteraction *");
+    qRegisterMetaType<QSet<QInteraction *>>("QSet<QInteraction *>");
+    qRegisterMetaType<QList<QInteraction *>>("QList<QInteraction *>");
+
+    qRegisterMetaType<QInteractionFragment *>("QInteractionFragment *");
+    qRegisterMetaType<QSet<QInteractionFragment *>>("QSet<QInteractionFragment *>");
+    qRegisterMetaType<QList<QInteractionFragment *>>("QList<QInteractionFragment *>");
+
+    qRegisterMetaType<QPartDecomposition *>("QPartDecomposition *");
+    qRegisterMetaType<QSet<QPartDecomposition *>>("QSet<QPartDecomposition *>");
+    qRegisterMetaType<QList<QPartDecomposition *>>("QList<QPartDecomposition *>");
+
+    QNamedElement::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qlifeline.cpp"

@@ -74,6 +74,14 @@ QInputPin::~QInputPin()
 {
 }
 
+void QInputPin::registerMetaTypes() const
+{
+    QPin::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qinputpin.cpp"
 
 QT_END_NAMESPACE_QTUML

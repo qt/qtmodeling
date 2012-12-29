@@ -106,7 +106,7 @@ void QExpression::setSymbol(QString symbol)
 /*!
     Specifies a sequence of operands.
  */
-const QList<QValueSpecification *> &QExpression::operands() const
+QList<QValueSpecification *> QExpression::operands() const
 {
     // This is a read-write association end
 
@@ -138,6 +138,14 @@ void QExpression::removeOperand(QValueSpecification *operand)
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(operand));
     }
+}
+
+void QExpression::registerMetaTypes() const
+{
+    QValueSpecification::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qexpression.cpp"

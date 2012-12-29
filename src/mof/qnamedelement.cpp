@@ -176,11 +176,11 @@ QNamespace *QNamedElement::namespace_() const
 /*!
     The query allNamespaces() gives the sequence of namespaces in which the NamedElement is nested, working outwards.
  */
-const QList<QNamespace *> &QNamedElement::allNamespaces() const
+QList<QNamespace *> QNamedElement::allNamespaces() const
 {
     qWarning("QNamedElement::allNamespaces: operation to be implemented");
 
-    return *(new QList<QNamespace *>); // change here to your derived return
+    return QList<QNamespace *>(); // change here to your derived return
 }
 
 /*!
@@ -203,6 +203,18 @@ QString QNamedElement::separator() const
     qWarning("QNamedElement::separator: operation to be implemented");
 
     return QString(); // change here to your derived return
+}
+
+void QNamedElement::registerMetaTypes() const
+{
+    qRegisterMetaType<QNamespace *>("QNamespace *");
+    qRegisterMetaType<QSet<QNamespace *>>("QSet<QNamespace *>");
+    qRegisterMetaType<QList<QNamespace *>>("QList<QNamespace *>");
+
+    QElement::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qnamedelement.cpp"

@@ -133,6 +133,18 @@ void QLinkEndDestructionData::setDestroyAt(QInputPin *destroyAt)
     }
 }
 
+void QLinkEndDestructionData::registerMetaTypes() const
+{
+    qRegisterMetaType<QInputPin *>("QInputPin *");
+    qRegisterMetaType<QSet<QInputPin *>>("QSet<QInputPin *>");
+    qRegisterMetaType<QList<QInputPin *>>("QList<QInputPin *>");
+
+    QLinkEndData::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qlinkenddestructiondata.cpp"
 
 QT_END_NAMESPACE_QTUML

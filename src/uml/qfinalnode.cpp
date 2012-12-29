@@ -74,6 +74,14 @@ QFinalNode::~QFinalNode()
 {
 }
 
+void QFinalNode::registerMetaTypes() const
+{
+    QControlNode::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qfinalnode.cpp"
 
 QT_END_NAMESPACE_QTUML

@@ -89,14 +89,15 @@ public:
 
     // Association ends from QAction
     Q_INVOKABLE QClassifier *context() const;
-    Q_INVOKABLE const QSet<QConstraint *> &localPostconditions() const;
+    Q_INVOKABLE QSet<QConstraint *> localPostconditions() const;
     Q_INVOKABLE void addLocalPostcondition(QConstraint *localPostcondition);
     Q_INVOKABLE void removeLocalPostcondition(QConstraint *localPostcondition);
-    Q_INVOKABLE const QSet<QConstraint *> &localPreconditions() const;
+    Q_INVOKABLE QSet<QConstraint *> localPreconditions() const;
     Q_INVOKABLE void addLocalPrecondition(QConstraint *localPrecondition);
     Q_INVOKABLE void removeLocalPrecondition(QConstraint *localPrecondition);
-    Q_INVOKABLE const QList<QInputPin *> &inputs() const;
-    Q_INVOKABLE const QList<QOutputPin *> &outputs() const;
+    Q_INVOKABLE QList<QInputPin *> inputs() const;
+    Q_INVOKABLE QList<QOutputPin *> outputs() const;
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QAction(QActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

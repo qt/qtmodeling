@@ -94,7 +94,7 @@ QRegion::~QRegion()
 /*!
     The Elements owned by this element.
  */
-const QSet<QElement *> &QRegion::ownedElements() const
+QSet<QElement *> QRegion::ownedElements() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedElements();
 }
@@ -110,7 +110,7 @@ QElement *QRegion::owner() const
 /*!
     The Comments owned by this element.
  */
-const QSet<QComment *> &QRegion::ownedComments() const
+QSet<QComment *> QRegion::ownedComments() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedComments();
 }
@@ -191,7 +191,7 @@ QNamespace *QRegion::namespace_() const
 /*!
     Indicates the dependencies that reference the client.
  */
-const QSet<QDependency *> &QRegion::clientDependencies() const
+QSet<QDependency *> QRegion::clientDependencies() const
 {
     return (qwrappedobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
@@ -235,7 +235,7 @@ void QRegion::unsetLeaf()
 /*!
     The redefinable element that is being redefined by this element.
  */
-const QSet<QRedefinableElement *> &QRegion::redefinedElements() const
+QSet<QRedefinableElement *> QRegion::redefinedElements() const
 {
     return (qwrappedobject_cast<const QRedefinableElement *>(this))->redefinedElements();
 }
@@ -247,7 +247,7 @@ const QSet<QRedefinableElement *> &QRegion::redefinedElements() const
 /*!
     References the PackageImports owned by the Namespace.
  */
-const QSet<QPackageImport *> &QRegion::packageImports() const
+QSet<QPackageImport *> QRegion::packageImports() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->packageImports();
 }
@@ -265,7 +265,7 @@ void QRegion::removePackageImport(QPackageImport *packageImport)
 /*!
     A collection of NamedElements identifiable within the Namespace, either by being owned or by being introduced by importing or inheritance.
  */
-const QSet<QNamedElement *> &QRegion::members() const
+QSet<QNamedElement *> QRegion::members() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->members();
 }
@@ -273,7 +273,7 @@ const QSet<QNamedElement *> &QRegion::members() const
 /*!
     References the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports.
  */
-const QSet<QPackageableElement *> &QRegion::importedMembers() const
+QSet<QPackageableElement *> QRegion::importedMembers() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->importedMembers();
 }
@@ -281,7 +281,7 @@ const QSet<QPackageableElement *> &QRegion::importedMembers() const
 /*!
     References the ElementImports owned by the Namespace.
  */
-const QSet<QElementImport *> &QRegion::elementImports() const
+QSet<QElementImport *> QRegion::elementImports() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->elementImports();
 }
@@ -299,7 +299,7 @@ void QRegion::removeElementImport(QElementImport *elementImport)
 /*!
     Specifies a set of Constraints owned by this Namespace.
  */
-const QSet<QConstraint *> &QRegion::ownedRules() const
+QSet<QConstraint *> QRegion::ownedRules() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->ownedRules();
 }
@@ -317,7 +317,7 @@ void QRegion::removeOwnedRule(QConstraint *ownedRule)
 /*!
     A collection of NamedElements owned by the Namespace.
  */
-const QSet<QNamedElement *> &QRegion::ownedMembers() const
+QSet<QNamedElement *> QRegion::ownedMembers() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->ownedMembers();
 }
@@ -358,7 +358,7 @@ void QRegion::setExtendedRegion(QRegion *extendedRegion)
 /*!
     The set of transitions owned by the region.
  */
-const QSet<QTransition *> &QRegion::transitions() const
+QSet<QTransition *> QRegion::transitions() const
 {
     // This is a read-write association end
 
@@ -477,7 +477,7 @@ QClassifier *QRegion::redefinitionContext() const
 /*!
     The set of vertices that are owned by this region.
  */
-const QSet<QVertex *> &QRegion::subvertices() const
+QSet<QVertex *> QRegion::subvertices() const
 {
     // This is a read-write association end
 
@@ -557,6 +557,34 @@ bool QRegion::isRedefinitionContextValid(const QRegion *redefined) const
     Q_UNUSED(redefined);
 
     return bool(); // change here to your derived return
+}
+
+void QRegion::registerMetaTypes() const
+{
+    qRegisterMetaType<QVertex *>("QVertex *");
+    qRegisterMetaType<QSet<QVertex *>>("QSet<QVertex *>");
+    qRegisterMetaType<QList<QVertex *>>("QList<QVertex *>");
+
+    qRegisterMetaType<QTransition *>("QTransition *");
+    qRegisterMetaType<QSet<QTransition *>>("QSet<QTransition *>");
+    qRegisterMetaType<QList<QTransition *>>("QList<QTransition *>");
+
+    qRegisterMetaType<QStateMachine *>("QStateMachine *");
+    qRegisterMetaType<QSet<QStateMachine *>>("QSet<QStateMachine *>");
+    qRegisterMetaType<QList<QStateMachine *>>("QList<QStateMachine *>");
+
+    qRegisterMetaType<QClassifier *>("QClassifier *");
+    qRegisterMetaType<QSet<QClassifier *>>("QSet<QClassifier *>");
+    qRegisterMetaType<QList<QClassifier *>>("QList<QClassifier *>");
+
+    qRegisterMetaType<QState *>("QState *");
+    qRegisterMetaType<QSet<QState *>>("QSet<QState *>");
+    qRegisterMetaType<QList<QState *>>("QList<QState *>");
+
+    QWrappedObject::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qregion.cpp"

@@ -83,24 +83,25 @@ public:
     virtual ~QNamespace();
 
     // Association ends from QNamespace
-    Q_INVOKABLE const QSet<QPackageImport *> &packageImports() const;
+    Q_INVOKABLE QSet<QPackageImport *> packageImports() const;
     Q_INVOKABLE void addPackageImport(QPackageImport *packageImport);
     Q_INVOKABLE void removePackageImport(QPackageImport *packageImport);
-    Q_INVOKABLE const QSet<QNamedElement *> &members() const;
-    Q_INVOKABLE const QSet<QPackageableElement *> &importedMembers() const;
-    Q_INVOKABLE const QSet<QElementImport *> &elementImports() const;
+    Q_INVOKABLE QSet<QNamedElement *> members() const;
+    Q_INVOKABLE QSet<QPackageableElement *> importedMembers() const;
+    Q_INVOKABLE QSet<QElementImport *> elementImports() const;
     Q_INVOKABLE void addElementImport(QElementImport *elementImport);
     Q_INVOKABLE void removeElementImport(QElementImport *elementImport);
-    Q_INVOKABLE const QSet<QConstraint *> &ownedRules() const;
+    Q_INVOKABLE QSet<QConstraint *> ownedRules() const;
     Q_INVOKABLE void addOwnedRule(QConstraint *ownedRule);
     Q_INVOKABLE void removeOwnedRule(QConstraint *ownedRule);
-    Q_INVOKABLE const QSet<QNamedElement *> &ownedMembers() const;
+    Q_INVOKABLE QSet<QNamedElement *> ownedMembers() const;
 
     // Operations
-    Q_INVOKABLE const QSet<QPackageableElement *> &excludeCollisions(const QSet<QPackageableElement *> &imps) const;
-    Q_INVOKABLE const QSet<QString> getNamesOfMember(const QNamedElement *element) const;
-    Q_INVOKABLE const QSet<QPackageableElement *> &importMembers(const QSet<QPackageableElement *> &imps) const;
+    Q_INVOKABLE QSet<QPackageableElement *> excludeCollisions(QSet<QPackageableElement *> imps) const;
+    Q_INVOKABLE QSet<QString> getNamesOfMember(const QNamedElement *element) const;
+    Q_INVOKABLE QSet<QPackageableElement *> importMembers(QSet<QPackageableElement *> imps) const;
     Q_INVOKABLE bool membersAreDistinguishable() const;
+    virtual void registerMetaTypes() const;
 
     // Classes which access read-only opposite properties should be friend
     friend class QNamedElementPrivate;

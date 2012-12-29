@@ -81,13 +81,14 @@ public:
     // Association ends from QExceptionHandler
     Q_INVOKABLE QExecutableNode *handlerBody() const;
     Q_INVOKABLE void setHandlerBody(QExecutableNode *handlerBody);
-    Q_INVOKABLE const QSet<QClassifier *> &exceptionTypes() const;
+    Q_INVOKABLE QSet<QClassifier *> exceptionTypes() const;
     Q_INVOKABLE void addExceptionType(QClassifier *exceptionType);
     Q_INVOKABLE void removeExceptionType(QClassifier *exceptionType);
     Q_INVOKABLE QExecutableNode *protectedNode() const;
     Q_INVOKABLE void setProtectedNode(QExecutableNode *protectedNode);
     Q_INVOKABLE QObjectNode *exceptionInput() const;
     Q_INVOKABLE void setExceptionInput(QObjectNode *exceptionInput);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QExceptionHandler(QExceptionHandlerPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

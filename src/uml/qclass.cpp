@@ -127,7 +127,7 @@ QClass::~QClass()
 /*!
     The Elements owned by this element.
  */
-const QSet<QElement *> &QClass::ownedElements() const
+QSet<QElement *> QClass::ownedElements() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedElements();
 }
@@ -143,7 +143,7 @@ QElement *QClass::owner() const
 /*!
     The Comments owned by this element.
  */
-const QSet<QComment *> &QClass::ownedComments() const
+QSet<QComment *> QClass::ownedComments() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedComments();
 }
@@ -211,7 +211,7 @@ QNamespace *QClass::namespace_() const
 /*!
     Indicates the dependencies that reference the client.
  */
-const QSet<QDependency *> &QClass::clientDependencies() const
+QSet<QDependency *> QClass::clientDependencies() const
 {
     return (qwrappedobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
@@ -233,7 +233,7 @@ void QClass::removeClientDependency(QDependency *clientDependency)
 /*!
     References the PackageImports owned by the Namespace.
  */
-const QSet<QPackageImport *> &QClass::packageImports() const
+QSet<QPackageImport *> QClass::packageImports() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->packageImports();
 }
@@ -251,7 +251,7 @@ void QClass::removePackageImport(QPackageImport *packageImport)
 /*!
     A collection of NamedElements identifiable within the Namespace, either by being owned or by being introduced by importing or inheritance.
  */
-const QSet<QNamedElement *> &QClass::members() const
+QSet<QNamedElement *> QClass::members() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->members();
 }
@@ -259,7 +259,7 @@ const QSet<QNamedElement *> &QClass::members() const
 /*!
     References the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports.
  */
-const QSet<QPackageableElement *> &QClass::importedMembers() const
+QSet<QPackageableElement *> QClass::importedMembers() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->importedMembers();
 }
@@ -267,7 +267,7 @@ const QSet<QPackageableElement *> &QClass::importedMembers() const
 /*!
     References the ElementImports owned by the Namespace.
  */
-const QSet<QElementImport *> &QClass::elementImports() const
+QSet<QElementImport *> QClass::elementImports() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->elementImports();
 }
@@ -285,7 +285,7 @@ void QClass::removeElementImport(QElementImport *elementImport)
 /*!
     Specifies a set of Constraints owned by this Namespace.
  */
-const QSet<QConstraint *> &QClass::ownedRules() const
+QSet<QConstraint *> QClass::ownedRules() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->ownedRules();
 }
@@ -303,7 +303,7 @@ void QClass::removeOwnedRule(QConstraint *ownedRule)
 /*!
     A collection of NamedElements owned by the Namespace.
  */
-const QSet<QNamedElement *> &QClass::ownedMembers() const
+QSet<QNamedElement *> QClass::ownedMembers() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->ownedMembers();
 }
@@ -393,7 +393,7 @@ void QClass::unsetLeaf()
 /*!
     The redefinable element that is being redefined by this element.
  */
-const QSet<QRedefinableElement *> &QClass::redefinedElements() const
+QSet<QRedefinableElement *> QClass::redefinedElements() const
 {
     return (qwrappedobject_cast<const QRedefinableElement *>(this))->redefinedElements();
 }
@@ -401,7 +401,7 @@ const QSet<QRedefinableElement *> &QClass::redefinedElements() const
 /*!
     References the contexts that this element may be redefined from.
  */
-const QSet<QClassifier *> &QClass::redefinitionContexts() const
+QSet<QClassifier *> QClass::redefinitionContexts() const
 {
     return (qwrappedobject_cast<const QRedefinableElement *>(this))->redefinitionContexts();
 }
@@ -413,7 +413,7 @@ const QSet<QClassifier *> &QClass::redefinitionContexts() const
 /*!
     The optional bindings from this element to templates.
  */
-const QSet<QTemplateBinding *> &QClass::templateBindings() const
+QSet<QTemplateBinding *> QClass::templateBindings() const
 {
     return (qwrappedobject_cast<const QTemplateableElement *>(this))->templateBindings();
 }
@@ -457,7 +457,7 @@ void QClass::unsetFinalSpecialization()
 /*!
     References the use cases owned by this classifier.
  */
-const QSet<QUseCase *> &QClass::ownedUseCases() const
+QSet<QUseCase *> QClass::ownedUseCases() const
 {
     return (qwrappedobject_cast<const QClassifier *>(this))->ownedUseCases();
 }
@@ -475,7 +475,7 @@ void QClass::removeOwnedUseCase(QUseCase *ownedUseCase)
 /*!
     Designates the GeneralizationSet of which the associated Classifier is a power type.
  */
-const QSet<QGeneralizationSet *> &QClass::powertypeExtents() const
+QSet<QGeneralizationSet *> QClass::powertypeExtents() const
 {
     return (qwrappedobject_cast<const QClassifier *>(this))->powertypeExtents();
 }
@@ -493,7 +493,7 @@ void QClass::removePowertypeExtent(QGeneralizationSet *powertypeExtent)
 /*!
     The set of use cases for which this Classifier is the subject.
  */
-const QSet<QUseCase *> &QClass::useCases() const
+QSet<QUseCase *> QClass::useCases() const
 {
     return (qwrappedobject_cast<const QClassifier *>(this))->useCases();
 }
@@ -524,7 +524,7 @@ void QClass::setTemplateParameter(QClassifierTemplateParameter *templateParamete
 /*!
     References the Classifiers that are redefined by this Classifier.
  */
-const QSet<QClassifier *> &QClass::redefinedClassifiers() const
+QSet<QClassifier *> QClass::redefinedClassifiers() const
 {
     return (qwrappedobject_cast<const QClassifier *>(this))->redefinedClassifiers();
 }
@@ -555,7 +555,7 @@ void QClass::setOwnedTemplateSignature(QRedefinableTemplateSignature *ownedTempl
 /*!
     References the collaboration uses owned by the classifier.
  */
-const QSet<QCollaborationUse *> &QClass::collaborationUses() const
+QSet<QCollaborationUse *> QClass::collaborationUses() const
 {
     return (qwrappedobject_cast<const QClassifier *>(this))->collaborationUses();
 }
@@ -573,7 +573,7 @@ void QClass::removeCollaborationUse(QCollaborationUse *collaborationUse)
 /*!
     Refers to all of the Properties that are direct (i.e. not inherited or imported) attributes of the classifier.
  */
-const QSet<QProperty *> &QClass::attributes() const
+QSet<QProperty *> QClass::attributes() const
 {
     return (qwrappedobject_cast<const QClassifier *>(this))->attributes();
 }
@@ -581,7 +581,7 @@ const QSet<QProperty *> &QClass::attributes() const
 /*!
     Specifies each feature defined in the classifier.Note that there may be members of the Classifier that are of the type Feature but are not included in this association, e.g. inherited features.
  */
-const QSet<QFeature *> &QClass::features() const
+QSet<QFeature *> QClass::features() const
 {
     return (qwrappedobject_cast<const QClassifier *>(this))->features();
 }
@@ -602,7 +602,7 @@ void QClass::setRepresentation(QCollaborationUse *representation)
 /*!
     Specifies the Generalization relationships for this Classifier. These Generalizations navigaten to more general classifiers in the generalization hierarchy.
  */
-const QSet<QGeneralization *> &QClass::generalizations() const
+QSet<QGeneralization *> QClass::generalizations() const
 {
     return (qwrappedobject_cast<const QClassifier *>(this))->generalizations();
 }
@@ -620,7 +620,7 @@ void QClass::removeGeneralization(QGeneralization *generalization)
 /*!
     Specifies all elements inherited by this classifier from the general classifiers.
  */
-const QSet<QNamedElement *> &QClass::inheritedMembers() const
+QSet<QNamedElement *> QClass::inheritedMembers() const
 {
     return (qwrappedobject_cast<const QClassifier *>(this))->inheritedMembers();
 }
@@ -628,7 +628,7 @@ const QSet<QNamedElement *> &QClass::inheritedMembers() const
 /*!
     References the substitutions that are owned by this Classifier.
  */
-const QSet<QSubstitution *> &QClass::substitutions() const
+QSet<QSubstitution *> QClass::substitutions() const
 {
     return (qwrappedobject_cast<const QClassifier *>(this))->substitutions();
 }
@@ -650,7 +650,7 @@ void QClass::removeSubstitution(QSubstitution *substitution)
 /*!
     References the roles that instances may play in this classifier.
  */
-const QSet<QConnectableElement *> &QClass::roles() const
+QSet<QConnectableElement *> QClass::roles() const
 {
     return (qwrappedobject_cast<const QStructuredClassifier *>(this))->roles();
 }
@@ -658,7 +658,7 @@ const QSet<QConnectableElement *> &QClass::roles() const
 /*!
     References the properties specifying instances that the classifier owns by composition. This association is derived, selecting those owned properties where isComposite is true.
  */
-const QSet<QProperty *> &QClass::parts() const
+QSet<QProperty *> QClass::parts() const
 {
     return (qwrappedobject_cast<const QStructuredClassifier *>(this))->parts();
 }
@@ -666,7 +666,7 @@ const QSet<QProperty *> &QClass::parts() const
 /*!
     References the connectors owned by the classifier.
  */
-const QSet<QConnector *> &QClass::ownedConnectors() const
+QSet<QConnector *> QClass::ownedConnectors() const
 {
     return (qwrappedobject_cast<const QStructuredClassifier *>(this))->ownedConnectors();
 }
@@ -688,7 +688,7 @@ void QClass::removeOwnedConnector(QConnector *ownedConnector)
 /*!
     References a set of ports that an encapsulated classifier owns.
  */
-const QSet<QPort *> &QClass::ownedPorts() const
+QSet<QPort *> QClass::ownedPorts() const
 {
     return (qwrappedobject_cast<const QEncapsulatedClassifier *>(this))->ownedPorts();
 }
@@ -700,7 +700,7 @@ const QSet<QPort *> &QClass::ownedPorts() const
 /*!
     References behavior specifications owned by a classifier.
  */
-const QSet<QBehavior *> &QClass::ownedBehaviors() const
+QSet<QBehavior *> QClass::ownedBehaviors() const
 {
     return (qwrappedobject_cast<const QBehavioredClassifier *>(this))->ownedBehaviors();
 }
@@ -718,7 +718,7 @@ void QClass::removeOwnedBehavior(QBehavior *ownedBehavior)
 /*!
     The set of InterfaceRealizations owned by the BehavioredClassifier. Interface realizations reference the Interfaces of which the BehavioredClassifier is an implementation.
  */
-const QSet<QInterfaceRealization *> &QClass::interfaceRealizations() const
+QSet<QInterfaceRealization *> QClass::interfaceRealizations() const
 {
     return (qwrappedobject_cast<const QBehavioredClassifier *>(this))->interfaceRealizations();
 }
@@ -809,7 +809,7 @@ void QClass::unsetActive()
 /*!
     References all the Classifiers that are defined (nested) within the Class.
  */
-const QList<QClassifier *> &QClass::nestedClassifiers() const
+QList<QClassifier *> QClass::nestedClassifiers() const
 {
     // This is a read-write association end
 
@@ -846,7 +846,7 @@ void QClass::removeNestedClassifier(QClassifier *nestedClassifier)
 /*!
     Receptions that objects of this class are willing to accept.
  */
-const QSet<QReception *> &QClass::ownedReceptions() const
+QSet<QReception *> QClass::ownedReceptions() const
 {
     // This is a read-write association end
 
@@ -885,19 +885,19 @@ void QClass::removeOwnedReception(QReception *ownedReception)
 /*!
     References the Extensions that specify additional properties of the metaclass. The property is derived from the extensions whose memberEnds are typed by the Class.
  */
-const QSet<QExtension *> &QClass::extensions() const
+QSet<QExtension *> QClass::extensions() const
 {
     // This is a read-only derived association end
 
     qWarning("QClass::extensions: to be implemented (this is a derived associationend)");
 
-    return *(new QSet<QExtension *>); // change here to your derived return
+    return QSet<QExtension *>(); // change here to your derived return
 }
 
 /*!
     The operations owned by the class.
  */
-const QList<QOperation *> &QClass::ownedOperations() const
+QList<QOperation *> QClass::ownedOperations() const
 {
     // This is a read-write association end
 
@@ -942,7 +942,7 @@ void QClass::removeOwnedOperation(QOperation *ownedOperation)
 /*!
     The attributes (i.e. the properties) owned by the class.
  */
-const QList<QProperty *> &QClass::ownedAttributes() const
+QList<QProperty *> QClass::ownedAttributes() const
 {
     // This is a read-write association end
 
@@ -987,13 +987,13 @@ void QClass::removeOwnedAttribute(QProperty *ownedAttribute)
 /*!
     This gives the superclasses of a class.
  */
-const QSet<QClass *> &QClass::superClasses() const
+QSet<QClass *> QClass::superClasses() const
 {
     // This is a read-write derived association end
 
     qWarning("QClass::superClasses: to be implemented (this is a derived associationend)");
 
-    return *(new QSet<QClass *>); // change here to your derived return
+    return QSet<QClass *>(); // change here to your derived return
 }
 
 void QClass::addSuperClass(QClass *superClass)
@@ -1023,12 +1023,44 @@ void QClass::removeSuperClass(QClass *superClass)
 /*!
     The inherit operation is overridden to exclude redefined properties.
  */
-const QSet<QNamedElement *> &QClass::inherit(const QSet<QNamedElement *> &inhs) const
+QSet<QNamedElement *> QClass::inherit(QSet<QNamedElement *> inhs) const
 {
     qWarning("QClass::inherit: operation to be implemented");
     Q_UNUSED(inhs);
 
-    return *(new QSet<QNamedElement *>); // change here to your derived return
+    return QSet<QNamedElement *>(); // change here to your derived return
+}
+
+void QClass::registerMetaTypes() const
+{
+    qRegisterMetaType<QReception *>("QReception *");
+    qRegisterMetaType<QSet<QReception *>>("QSet<QReception *>");
+    qRegisterMetaType<QList<QReception *>>("QList<QReception *>");
+
+    qRegisterMetaType<QNamedElement *>("QNamedElement *");
+    qRegisterMetaType<QSet<QNamedElement *>>("QSet<QNamedElement *>");
+    qRegisterMetaType<QList<QNamedElement *>>("QList<QNamedElement *>");
+
+    qRegisterMetaType<QOperation *>("QOperation *");
+    qRegisterMetaType<QSet<QOperation *>>("QSet<QOperation *>");
+    qRegisterMetaType<QList<QOperation *>>("QList<QOperation *>");
+
+    qRegisterMetaType<QClassifier *>("QClassifier *");
+    qRegisterMetaType<QSet<QClassifier *>>("QSet<QClassifier *>");
+    qRegisterMetaType<QList<QClassifier *>>("QList<QClassifier *>");
+
+    qRegisterMetaType<QExtension *>("QExtension *");
+    qRegisterMetaType<QSet<QExtension *>>("QSet<QExtension *>");
+    qRegisterMetaType<QList<QExtension *>>("QList<QExtension *>");
+
+    qRegisterMetaType<QProperty *>("QProperty *");
+    qRegisterMetaType<QSet<QProperty *>>("QSet<QProperty *>");
+    qRegisterMetaType<QList<QProperty *>>("QList<QProperty *>");
+
+    QWrappedObject::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qclass.cpp"

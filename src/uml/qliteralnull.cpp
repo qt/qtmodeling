@@ -94,6 +94,14 @@ bool QLiteralNull::isNull() const
     return bool(); // change here to your derived return
 }
 
+void QLiteralNull::registerMetaTypes() const
+{
+    QLiteralSpecification::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qliteralnull.cpp"
 
 QT_END_NAMESPACE_QTUML

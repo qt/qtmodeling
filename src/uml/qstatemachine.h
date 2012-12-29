@@ -81,16 +81,16 @@ public:
     virtual ~QStateMachine();
 
     // Association ends from QStateMachine
-    Q_INVOKABLE const QSet<QStateMachine *> &extendedStateMachines() const;
+    Q_INVOKABLE QSet<QStateMachine *> extendedStateMachines() const;
     Q_INVOKABLE void addExtendedStateMachine(QStateMachine *extendedStateMachine);
     Q_INVOKABLE void removeExtendedStateMachine(QStateMachine *extendedStateMachine);
-    Q_INVOKABLE const QSet<QPseudostate *> &connectionPoints() const;
+    Q_INVOKABLE QSet<QPseudostate *> connectionPoints() const;
     Q_INVOKABLE void addConnectionPoint(QPseudostate *connectionPoint);
     Q_INVOKABLE void removeConnectionPoint(QPseudostate *connectionPoint);
-    Q_INVOKABLE const QSet<QState *> &submachineStates() const;
+    Q_INVOKABLE QSet<QState *> submachineStates() const;
     Q_INVOKABLE void addSubmachineState(QState *submachineState);
     Q_INVOKABLE void removeSubmachineState(QState *submachineState);
-    Q_INVOKABLE const QSet<QRegion *> &regions() const;
+    Q_INVOKABLE QSet<QRegion *> regions() const;
     Q_INVOKABLE void addRegion(QRegion *region);
     Q_INVOKABLE void removeRegion(QRegion *region);
 
@@ -99,6 +99,7 @@ public:
     Q_INVOKABLE bool ancestor(const QState *s1, const QState *s2) const;
     Q_INVOKABLE bool isConsistentWith(const QRedefinableElement *redefinee) const;
     Q_INVOKABLE bool isRedefinitionContextValid(const QStateMachine *redefined) const;
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QStateMachine(QStateMachinePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

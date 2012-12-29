@@ -81,7 +81,7 @@ QOpaqueExpression::~QOpaqueExpression()
 /*!
     The text of the expression, possibly in multiple languages.
  */
-const QList<QString> QOpaqueExpression::bodies() const
+QList<QString> QOpaqueExpression::bodies() const
 {
     // This is a read-write attribute
 
@@ -112,7 +112,7 @@ void QOpaqueExpression::removeBody(QString body)
 /*!
     Specifies the languages in which the expression is stated. The interpretation of the expression body depends on the languages. If the languages are unspecified, they might be implicit from the expression body or the context. Languages are matched to body strings by order.
  */
-const QList<QString> QOpaqueExpression::languages() const
+QList<QString> QOpaqueExpression::languages() const
 {
     // This is a read-write attribute
 
@@ -178,6 +178,14 @@ qint32 QOpaqueExpression::value() const
     qWarning("QOpaqueExpression::value: operation to be implemented");
 
     return qint32(); // change here to your derived return
+}
+
+void QOpaqueExpression::registerMetaTypes() const
+{
+    QValueSpecification::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qopaqueexpression.cpp"

@@ -64,6 +64,7 @@ class Q_UML_EXPORT QAnyReceiveEvent : public QMessageEvent
 public:
     Q_INVOKABLE explicit QAnyReceiveEvent(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QAnyReceiveEvent();
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QAnyReceiveEvent(QAnyReceiveEventPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

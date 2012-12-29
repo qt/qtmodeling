@@ -124,6 +124,18 @@ void QDurationInterval::setMin(QDuration *min)
     }
 }
 
+void QDurationInterval::registerMetaTypes() const
+{
+    qRegisterMetaType<QDuration *>("QDuration *");
+    qRegisterMetaType<QSet<QDuration *>>("QSet<QDuration *>");
+    qRegisterMetaType<QList<QDuration *>>("QList<QDuration *>");
+
+    QInterval::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qdurationinterval.cpp"
 
 QT_END_NAMESPACE_QTUML

@@ -141,6 +141,14 @@ void QImage::setContent(QString content)
     }
 }
 
+void QImage::registerMetaTypes() const
+{
+    QElement::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qimage.cpp"
 
 QT_END_NAMESPACE_QTUML

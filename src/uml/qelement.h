@@ -77,21 +77,22 @@ public:
     virtual ~QElement();
 
     // Association ends from QElement
-    Q_INVOKABLE const QSet<QElement *> &ownedElements() const;
+    Q_INVOKABLE QSet<QElement *> ownedElements() const;
     Q_INVOKABLE QElement *owner() const;
-    Q_INVOKABLE const QSet<QComment *> &ownedComments() const;
+    Q_INVOKABLE QSet<QComment *> ownedComments() const;
     Q_INVOKABLE void addOwnedComment(QComment *ownedComment);
     Q_INVOKABLE void removeOwnedComment(QComment *ownedComment);
 
     // Operations
-    Q_INVOKABLE const QSet<QElement *> &allOwnedElements() const;
+    Q_INVOKABLE QSet<QElement *> allOwnedElements() const;
     Q_INVOKABLE bool mustBeOwned() const;
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QElement(QElementPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
 
 private:
-    void allOwnedElements(QSet<QElement *> *allOwnedElements_) const;
+    void allOwnedElements(QSet<QElement *> &allOwnedElements_) const;
 };
 
 QT_END_NAMESPACE_QTUML

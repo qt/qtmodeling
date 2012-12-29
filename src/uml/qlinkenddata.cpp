@@ -129,7 +129,7 @@ void QLinkEndData::setEnd(QProperty *end)
 /*!
     List of qualifier values
  */
-const QSet<QQualifierValue *> &QLinkEndData::qualifiers() const
+QSet<QQualifierValue *> QLinkEndData::qualifiers() const
 {
     // This is a read-write association end
 
@@ -161,6 +161,26 @@ void QLinkEndData::removeQualifier(QQualifierValue *qualifier)
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(qualifier));
     }
+}
+
+void QLinkEndData::registerMetaTypes() const
+{
+    qRegisterMetaType<QProperty *>("QProperty *");
+    qRegisterMetaType<QSet<QProperty *>>("QSet<QProperty *>");
+    qRegisterMetaType<QList<QProperty *>>("QList<QProperty *>");
+
+    qRegisterMetaType<QQualifierValue *>("QQualifierValue *");
+    qRegisterMetaType<QSet<QQualifierValue *>>("QSet<QQualifierValue *>");
+    qRegisterMetaType<QList<QQualifierValue *>>("QList<QQualifierValue *>");
+
+    qRegisterMetaType<QInputPin *>("QInputPin *");
+    qRegisterMetaType<QSet<QInputPin *>>("QSet<QInputPin *>");
+    qRegisterMetaType<QList<QInputPin *>>("QList<QInputPin *>");
+
+    QElement::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qlinkenddata.cpp"

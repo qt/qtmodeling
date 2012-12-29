@@ -79,9 +79,10 @@ public:
     // Association ends from QProtocolTransition
     Q_INVOKABLE QConstraint *postCondition() const;
     Q_INVOKABLE void setPostCondition(QConstraint *postCondition);
-    Q_INVOKABLE const QSet<QOperation *> &referred() const;
+    Q_INVOKABLE QSet<QOperation *> referred() const;
     Q_INVOKABLE QConstraint *preCondition() const;
     Q_INVOKABLE void setPreCondition(QConstraint *preCondition);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QProtocolTransition(QProtocolTransitionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

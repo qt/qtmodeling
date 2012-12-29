@@ -92,7 +92,7 @@ QExtend::~QExtend()
 /*!
     The Elements owned by this element.
  */
-const QSet<QElement *> &QExtend::ownedElements() const
+QSet<QElement *> QExtend::ownedElements() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedElements();
 }
@@ -108,7 +108,7 @@ QElement *QExtend::owner() const
 /*!
     The Comments owned by this element.
  */
-const QSet<QComment *> &QExtend::ownedComments() const
+QSet<QComment *> QExtend::ownedComments() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedComments();
 }
@@ -130,7 +130,7 @@ void QExtend::removeOwnedComment(QComment *ownedComment)
 /*!
     Specifies the elements related by the Relationship.
  */
-const QSet<QElement *> &QExtend::relatedElements() const
+QSet<QElement *> QExtend::relatedElements() const
 {
     return (qwrappedobject_cast<const QRelationship *>(this))->relatedElements();
 }
@@ -142,7 +142,7 @@ const QSet<QElement *> &QExtend::relatedElements() const
 /*!
     Specifies the sources of the DirectedRelationship.
  */
-const QSet<QElement *> &QExtend::sources() const
+QSet<QElement *> QExtend::sources() const
 {
     return (qwrappedobject_cast<const QDirectedRelationship *>(this))->sources();
 }
@@ -150,7 +150,7 @@ const QSet<QElement *> &QExtend::sources() const
 /*!
     Specifies the targets of the DirectedRelationship.
  */
-const QSet<QElement *> &QExtend::targets() const
+QSet<QElement *> QExtend::targets() const
 {
     return (qwrappedobject_cast<const QDirectedRelationship *>(this))->targets();
 }
@@ -221,7 +221,7 @@ QNamespace *QExtend::namespace_() const
 /*!
     Indicates the dependencies that reference the client.
  */
-const QSet<QDependency *> &QExtend::clientDependencies() const
+QSet<QDependency *> QExtend::clientDependencies() const
 {
     return (qwrappedobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
@@ -310,7 +310,7 @@ void QExtend::setExtension(QUseCase *extension)
 /*!
     An ordered list of extension points belonging to the extended use case, specifying where the respective behavioral fragments of the extending use case are to be inserted. The first fragment in the extending use case is associated with the first extension point in the list, the second fragment with the second point, and so on. (Note that, in most practical cases, the extending use case has just a single behavior fragment, so that the list of extension points is trivial.)
  */
-const QList<QExtensionPoint *> &QExtend::extensionLocations() const
+QList<QExtensionPoint *> QExtend::extensionLocations() const
 {
     // This is a read-write association end
 
@@ -365,6 +365,26 @@ void QExtend::setCondition(QConstraint *condition)
             (qwrappedobject_cast<QElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QElement *>(condition));
         }
     }
+}
+
+void QExtend::registerMetaTypes() const
+{
+    qRegisterMetaType<QConstraint *>("QConstraint *");
+    qRegisterMetaType<QSet<QConstraint *>>("QSet<QConstraint *>");
+    qRegisterMetaType<QList<QConstraint *>>("QList<QConstraint *>");
+
+    qRegisterMetaType<QUseCase *>("QUseCase *");
+    qRegisterMetaType<QSet<QUseCase *>>("QSet<QUseCase *>");
+    qRegisterMetaType<QList<QUseCase *>>("QList<QUseCase *>");
+
+    qRegisterMetaType<QExtensionPoint *>("QExtensionPoint *");
+    qRegisterMetaType<QSet<QExtensionPoint *>>("QSet<QExtensionPoint *>");
+    qRegisterMetaType<QList<QExtensionPoint *>>("QList<QExtensionPoint *>");
+
+    QWrappedObject::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qextend.cpp"

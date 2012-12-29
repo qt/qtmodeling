@@ -110,6 +110,18 @@ void QAbstraction::setMapping(QOpaqueExpression *mapping)
     }
 }
 
+void QAbstraction::registerMetaTypes() const
+{
+    qRegisterMetaType<QOpaqueExpression *>("QOpaqueExpression *");
+    qRegisterMetaType<QSet<QOpaqueExpression *>>("QSet<QOpaqueExpression *>");
+    qRegisterMetaType<QList<QOpaqueExpression *>>("QList<QOpaqueExpression *>");
+
+    QDependency::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qabstraction.cpp"
 
 QT_END_NAMESPACE_QTUML

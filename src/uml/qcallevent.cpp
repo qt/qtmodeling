@@ -102,6 +102,18 @@ void QCallEvent::setOperation(QOperation *operation)
     }
 }
 
+void QCallEvent::registerMetaTypes() const
+{
+    qRegisterMetaType<QOperation *>("QOperation *");
+    qRegisterMetaType<QSet<QOperation *>>("QSet<QOperation *>");
+    qRegisterMetaType<QList<QOperation *>>("QList<QOperation *>");
+
+    QMessageEvent::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qcallevent.cpp"
 
 QT_END_NAMESPACE_QTUML

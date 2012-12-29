@@ -110,6 +110,18 @@ void QManifestation::setUtilizedElement(QPackageableElement *utilizedElement)
     }
 }
 
+void QManifestation::registerMetaTypes() const
+{
+    qRegisterMetaType<QPackageableElement *>("QPackageableElement *");
+    qRegisterMetaType<QSet<QPackageableElement *>>("QSet<QPackageableElement *>");
+    qRegisterMetaType<QList<QPackageableElement *>>("QList<QPackageableElement *>");
+
+    QAbstraction::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 // Overriden methods for subsetted properties
 
 void QManifestation::addSupplier(QWrappedObjectPointer<QPackageableElement> utilizedElement)

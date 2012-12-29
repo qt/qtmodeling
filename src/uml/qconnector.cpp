@@ -102,7 +102,7 @@ QtUml::ConnectorKind QConnector::kind() const
 /*!
     A connector may be redefined when its containing classifier is specialized. The redefining connector may have a type that specializes the type of the redefined connector. The types of the connector ends of the redefining connector may specialize the types of the connector ends of the redefined connector. The properties of the connector ends of the redefining connector may be replaced.
  */
-const QSet<QConnector *> &QConnector::redefinedConnectors() const
+QSet<QConnector *> QConnector::redefinedConnectors() const
 {
     // This is a read-write association end
 
@@ -139,7 +139,7 @@ void QConnector::removeRedefinedConnector(QConnector *redefinedConnector)
 /*!
     The set of Behaviors that specify the valid interaction patterns across the connector.
  */
-const QSet<QBehavior *> &QConnector::contracts() const
+QSet<QBehavior *> QConnector::contracts() const
 {
     // This is a read-write association end
 
@@ -191,7 +191,7 @@ void QConnector::setType(QAssociation *type)
 /*!
     A connector consists of at least two connector ends, each representing the participation of instances of the classifiers typing the connectable elements attached to this end. The set of connector ends is ordered.
  */
-const QList<QConnectorEnd *> &QConnector::ends() const
+QList<QConnectorEnd *> QConnector::ends() const
 {
     // This is a read-write association end
 
@@ -223,6 +223,26 @@ void QConnector::removeEnd(QConnectorEnd *end)
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(end));
     }
+}
+
+void QConnector::registerMetaTypes() const
+{
+    qRegisterMetaType<QAssociation *>("QAssociation *");
+    qRegisterMetaType<QSet<QAssociation *>>("QSet<QAssociation *>");
+    qRegisterMetaType<QList<QAssociation *>>("QList<QAssociation *>");
+
+    qRegisterMetaType<QBehavior *>("QBehavior *");
+    qRegisterMetaType<QSet<QBehavior *>>("QSet<QBehavior *>");
+    qRegisterMetaType<QList<QBehavior *>>("QList<QBehavior *>");
+
+    qRegisterMetaType<QConnectorEnd *>("QConnectorEnd *");
+    qRegisterMetaType<QSet<QConnectorEnd *>>("QSet<QConnectorEnd *>");
+    qRegisterMetaType<QList<QConnectorEnd *>>("QList<QConnectorEnd *>");
+
+    QFeature::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qconnector.cpp"

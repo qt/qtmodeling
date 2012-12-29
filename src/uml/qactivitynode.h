@@ -86,26 +86,27 @@ public:
     virtual ~QActivityNode();
 
     // Association ends from QActivityNode
-    Q_INVOKABLE const QSet<QActivityNode *> &redefinedNodes() const;
+    Q_INVOKABLE QSet<QActivityNode *> redefinedNodes() const;
     Q_INVOKABLE void addRedefinedNode(QActivityNode *redefinedNode);
     Q_INVOKABLE void removeRedefinedNode(QActivityNode *redefinedNode);
-    Q_INVOKABLE const QSet<QActivityEdge *> &incomings() const;
+    Q_INVOKABLE QSet<QActivityEdge *> incomings() const;
     Q_INVOKABLE void addIncoming(QActivityEdge *incoming);
     Q_INVOKABLE void removeIncoming(QActivityEdge *incoming);
     Q_INVOKABLE QActivity *activity() const;
     Q_INVOKABLE void setActivity(QActivity *activity);
-    Q_INVOKABLE const QSet<QActivityGroup *> &inGroup() const;
+    Q_INVOKABLE QSet<QActivityGroup *> inGroup() const;
     Q_INVOKABLE QStructuredActivityNode *inStructuredNode() const;
     Q_INVOKABLE void setInStructuredNode(QStructuredActivityNode *inStructuredNode);
-    Q_INVOKABLE const QSet<QActivityPartition *> &inPartition() const;
+    Q_INVOKABLE QSet<QActivityPartition *> inPartition() const;
     Q_INVOKABLE void addInPartition(QActivityPartition *inPartition);
     Q_INVOKABLE void removeInPartition(QActivityPartition *inPartition);
-    Q_INVOKABLE const QSet<QInterruptibleActivityRegion *> &inInterruptibleRegion() const;
+    Q_INVOKABLE QSet<QInterruptibleActivityRegion *> inInterruptibleRegion() const;
     Q_INVOKABLE void addInInterruptibleRegion(QInterruptibleActivityRegion *inInterruptibleRegion);
     Q_INVOKABLE void removeInInterruptibleRegion(QInterruptibleActivityRegion *inInterruptibleRegion);
-    Q_INVOKABLE const QSet<QActivityEdge *> &outgoings() const;
+    Q_INVOKABLE QSet<QActivityEdge *> outgoings() const;
     Q_INVOKABLE void addOutgoing(QActivityEdge *outgoing);
     Q_INVOKABLE void removeOutgoing(QActivityEdge *outgoing);
+    virtual void registerMetaTypes() const;
 
     // Classes which access read-only opposite properties should be friend
     friend class QActivityGroupPrivate;

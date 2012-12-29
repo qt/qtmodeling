@@ -77,14 +77,15 @@ public:
     virtual ~QTemplateSignature();
 
     // Association ends from QTemplateSignature
-    Q_INVOKABLE const QList<QTemplateParameter *> &parameters() const;
+    Q_INVOKABLE QList<QTemplateParameter *> parameters() const;
     Q_INVOKABLE void addParameter(QTemplateParameter *parameter);
     Q_INVOKABLE void removeParameter(QTemplateParameter *parameter);
     Q_INVOKABLE QTemplateableElement *template_() const;
     Q_INVOKABLE void setTemplate_(QTemplateableElement *template_);
-    Q_INVOKABLE const QList<QTemplateParameter *> &ownedParameters() const;
+    Q_INVOKABLE QList<QTemplateParameter *> ownedParameters() const;
     Q_INVOKABLE void addOwnedParameter(QTemplateParameter *ownedParameter);
     Q_INVOKABLE void removeOwnedParameter(QTemplateParameter *ownedParameter);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QTemplateSignature(QTemplateSignaturePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

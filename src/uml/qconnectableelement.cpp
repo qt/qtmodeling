@@ -120,7 +120,7 @@ QConnectableElement::~QConnectableElement()
 /*!
     The Elements owned by this element.
  */
-const QSet<QElement *> &QConnectableElement::ownedElements() const
+QSet<QElement *> QConnectableElement::ownedElements() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedElements();
 }
@@ -136,7 +136,7 @@ QElement *QConnectableElement::owner() const
 /*!
     The Comments owned by this element.
  */
-const QSet<QComment *> &QConnectableElement::ownedComments() const
+QSet<QComment *> QConnectableElement::ownedComments() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedComments();
 }
@@ -217,7 +217,7 @@ QNamespace *QConnectableElement::namespace_() const
 /*!
     Indicates the dependencies that reference the client.
  */
-const QSet<QDependency *> &QConnectableElement::clientDependencies() const
+QSet<QDependency *> QConnectableElement::clientDependencies() const
 {
     return (qwrappedobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
@@ -273,13 +273,13 @@ void QConnectableElement::setOwningTemplateParameter(QTemplateParameter *owningT
 /*!
     Denotes a set of connector ends that attaches to this connectable element.
  */
-const QList<QConnectorEnd *> &QConnectableElement::ends() const
+QList<QConnectorEnd *> QConnectableElement::ends() const
 {
     // This is a read-only derived association end
 
     qWarning("QConnectableElement::ends: to be implemented (this is a derived associationend)");
 
-    return *(new QList<QConnectorEnd *>); // change here to your derived return
+    return QList<QConnectorEnd *>(); // change here to your derived return
 }
 
 /*!
@@ -306,6 +306,22 @@ void QConnectableElement::setTemplateParameter(QConnectableElementTemplateParame
         // Adjust opposite property
         templateParameter->setParameteredElement(this);
     }
+}
+
+void QConnectableElement::registerMetaTypes() const
+{
+    qRegisterMetaType<QConnectorEnd *>("QConnectorEnd *");
+    qRegisterMetaType<QSet<QConnectorEnd *>>("QSet<QConnectorEnd *>");
+    qRegisterMetaType<QList<QConnectorEnd *>>("QList<QConnectorEnd *>");
+
+    qRegisterMetaType<QConnectableElementTemplateParameter *>("QConnectableElementTemplateParameter *");
+    qRegisterMetaType<QSet<QConnectableElementTemplateParameter *>>("QSet<QConnectableElementTemplateParameter *>");
+    qRegisterMetaType<QList<QConnectableElementTemplateParameter *>>("QList<QConnectableElementTemplateParameter *>");
+
+    QWrappedObject::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qconnectableelement.cpp"

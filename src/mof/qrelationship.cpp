@@ -99,12 +99,20 @@ QRelationship::~QRelationship()
 /*!
     Specifies the elements related by the Relationship.
  */
-const QSet<QElement *> &QRelationship::relatedElements() const
+QSet<QElement *> QRelationship::relatedElements() const
 {
     // This is a read-only derived-union association end
 
     Q_D(const QRelationship);
     return d->relatedElements;
+}
+
+void QRelationship::registerMetaTypes() const
+{
+    QElement::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qrelationship.cpp"

@@ -92,7 +92,7 @@ QInformationFlow::~QInformationFlow()
 /*!
     The Elements owned by this element.
  */
-const QSet<QElement *> &QInformationFlow::ownedElements() const
+QSet<QElement *> QInformationFlow::ownedElements() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedElements();
 }
@@ -108,7 +108,7 @@ QElement *QInformationFlow::owner() const
 /*!
     The Comments owned by this element.
  */
-const QSet<QComment *> &QInformationFlow::ownedComments() const
+QSet<QComment *> QInformationFlow::ownedComments() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedComments();
 }
@@ -130,7 +130,7 @@ void QInformationFlow::removeOwnedComment(QComment *ownedComment)
 /*!
     Specifies the elements related by the Relationship.
  */
-const QSet<QElement *> &QInformationFlow::relatedElements() const
+QSet<QElement *> QInformationFlow::relatedElements() const
 {
     return (qwrappedobject_cast<const QRelationship *>(this))->relatedElements();
 }
@@ -142,7 +142,7 @@ const QSet<QElement *> &QInformationFlow::relatedElements() const
 /*!
     Specifies the sources of the DirectedRelationship.
  */
-const QSet<QElement *> &QInformationFlow::sources() const
+QSet<QElement *> QInformationFlow::sources() const
 {
     return (qwrappedobject_cast<const QDirectedRelationship *>(this))->sources();
 }
@@ -150,7 +150,7 @@ const QSet<QElement *> &QInformationFlow::sources() const
 /*!
     Specifies the targets of the DirectedRelationship.
  */
-const QSet<QElement *> &QInformationFlow::targets() const
+QSet<QElement *> QInformationFlow::targets() const
 {
     return (qwrappedobject_cast<const QDirectedRelationship *>(this))->targets();
 }
@@ -238,7 +238,7 @@ QNamespace *QInformationFlow::namespace_() const
 /*!
     Indicates the dependencies that reference the client.
  */
-const QSet<QDependency *> &QInformationFlow::clientDependencies() const
+QSet<QDependency *> QInformationFlow::clientDependencies() const
 {
     return (qwrappedobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
@@ -282,7 +282,7 @@ void QInformationFlow::unsetVisibility()
 /*!
     Defines to which target the conveyed InformationItems are directed.
  */
-const QSet<QNamedElement *> &QInformationFlow::informationTargets() const
+QSet<QNamedElement *> QInformationFlow::informationTargets() const
 {
     // This is a read-write association end
 
@@ -319,7 +319,7 @@ void QInformationFlow::removeInformationTarget(QNamedElement *informationTarget)
 /*!
     Determines which Connectors will realize the specified flow.
  */
-const QSet<QConnector *> &QInformationFlow::realizingConnectors() const
+QSet<QConnector *> QInformationFlow::realizingConnectors() const
 {
     // This is a read-write association end
 
@@ -350,7 +350,7 @@ void QInformationFlow::removeRealizingConnector(QConnector *realizingConnector)
 /*!
     Specifies the information items that may circulate on this information flow.
  */
-const QSet<QClassifier *> &QInformationFlow::conveyed() const
+QSet<QClassifier *> QInformationFlow::conveyed() const
 {
     // This is a read-write association end
 
@@ -381,7 +381,7 @@ void QInformationFlow::removeConveyed(QClassifier *conveyed)
 /*!
     Defines from which source the conveyed InformationItems are initiated.
  */
-const QSet<QNamedElement *> &QInformationFlow::informationSources() const
+QSet<QNamedElement *> QInformationFlow::informationSources() const
 {
     // This is a read-write association end
 
@@ -418,7 +418,7 @@ void QInformationFlow::removeInformationSource(QNamedElement *informationSource)
 /*!
     Determines which Messages will realize the specified flow.
  */
-const QSet<QMessage *> &QInformationFlow::realizingMessages() const
+QSet<QMessage *> QInformationFlow::realizingMessages() const
 {
     // This is a read-write association end
 
@@ -449,7 +449,7 @@ void QInformationFlow::removeRealizingMessage(QMessage *realizingMessage)
 /*!
     Determines which ActivityEdges will realize the specified flow.
  */
-const QSet<QActivityEdge *> &QInformationFlow::realizingActivityEdges() const
+QSet<QActivityEdge *> QInformationFlow::realizingActivityEdges() const
 {
     // This is a read-write association end
 
@@ -480,7 +480,7 @@ void QInformationFlow::removeRealizingActivityEdge(QActivityEdge *realizingActiv
 /*!
     Determines which Relationship will realize the specified flow
  */
-const QSet<QRelationship *> &QInformationFlow::realizations() const
+QSet<QRelationship *> QInformationFlow::realizations() const
 {
     // This is a read-write association end
 
@@ -506,6 +506,38 @@ void QInformationFlow::removeRealization(QRelationship *realization)
     if (d->realizations.contains(realization)) {
         d->realizations.remove(realization);
     }
+}
+
+void QInformationFlow::registerMetaTypes() const
+{
+    qRegisterMetaType<QConnector *>("QConnector *");
+    qRegisterMetaType<QSet<QConnector *>>("QSet<QConnector *>");
+    qRegisterMetaType<QList<QConnector *>>("QList<QConnector *>");
+
+    qRegisterMetaType<QMessage *>("QMessage *");
+    qRegisterMetaType<QSet<QMessage *>>("QSet<QMessage *>");
+    qRegisterMetaType<QList<QMessage *>>("QList<QMessage *>");
+
+    qRegisterMetaType<QActivityEdge *>("QActivityEdge *");
+    qRegisterMetaType<QSet<QActivityEdge *>>("QSet<QActivityEdge *>");
+    qRegisterMetaType<QList<QActivityEdge *>>("QList<QActivityEdge *>");
+
+    qRegisterMetaType<QNamedElement *>("QNamedElement *");
+    qRegisterMetaType<QSet<QNamedElement *>>("QSet<QNamedElement *>");
+    qRegisterMetaType<QList<QNamedElement *>>("QList<QNamedElement *>");
+
+    qRegisterMetaType<QClassifier *>("QClassifier *");
+    qRegisterMetaType<QSet<QClassifier *>>("QSet<QClassifier *>");
+    qRegisterMetaType<QList<QClassifier *>>("QList<QClassifier *>");
+
+    qRegisterMetaType<QRelationship *>("QRelationship *");
+    qRegisterMetaType<QSet<QRelationship *>>("QSet<QRelationship *>");
+    qRegisterMetaType<QList<QRelationship *>>("QList<QRelationship *>");
+
+    QWrappedObject::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qinformationflow.cpp"

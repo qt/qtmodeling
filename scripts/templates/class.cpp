@@ -498,7 +498,7 @@ ${class.name}Private::~${class.name}Private()
     [%- IF attribute.accessor.0.return.search('\*$') -%]
     delete ${attribute.accessor.0.name};
 
-    [%- ELSIF attribute.accessor.0.return.search('\&$') -%]
+    [%- ELSIF attribute.accessor.0.return.search('> $') -%]
     qDeleteAll(${attribute.accessor.0.name});
 
     [%- END -%]
@@ -509,7 +509,7 @@ ${class.name}Private::~${class.name}Private()
     [%- IF associationend.accessor.0.return.search('\*$') -%]
     delete ${associationend.accessor.0.name};
 
-    [%- ELSIF associationend.accessor.0.return.search('\&$') -%]
+    [%- ELSIF associationend.accessor.0.return.search('> $') -%]
     qDeleteAll(${associationend.accessor.0.name});
 
     [%- END -%]
@@ -724,6 +724,22 @@ ${operation.return}${class.name}::${operation.name}([%- FOREACH parameter IN ope
     [%- END %]
 }
 [% END -%]
+
+void ${class.name}::registerMetaTypes() const
+{
+[% FOREACH forwarddecl IN class.forwarddecl -%]
+[%- IF forwarddecl.content != class.name -%]
+    qRegisterMetaType<${forwarddecl.content} *>("${forwarddecl.content} *");
+    qRegisterMetaType<QSet<${forwarddecl.content} *>>("QSet<${forwarddecl.content} *>");
+    qRegisterMetaType<QList<${forwarddecl.content} *>>("QList<${forwarddecl.content} *>");
+
+[% END -%]
+[%- END -%]
+    [% IF class.superclass.size == 1 %]${class.superclass.0.name.split('/').last}[% ELSE %]QWrappedObject[% END %]::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
 
 [%- found = 'false' -%]
 [%- IF class.item('attribute') %]

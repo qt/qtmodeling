@@ -148,7 +148,7 @@ void QBehavior::setSpecification(QBehavioralFeature *specification)
 /*!
     An optional set of Constraints specifying what is fulfilled after the execution of the behavior is completed, if its precondition was fulfilled before its invocation.
  */
-const QSet<QConstraint *> &QBehavior::postconditions() const
+QSet<QConstraint *> QBehavior::postconditions() const
 {
     // This is a read-write association end
 
@@ -185,7 +185,7 @@ void QBehavior::removePostcondition(QConstraint *postcondition)
 /*!
     An optional set of Constraints specifying what must be fulfilled when the behavior is invoked.
  */
-const QSet<QConstraint *> &QBehavior::preconditions() const
+QSet<QConstraint *> QBehavior::preconditions() const
 {
     // This is a read-write association end
 
@@ -222,7 +222,7 @@ void QBehavior::removePrecondition(QConstraint *precondition)
 /*!
     References a behavior that this behavior redefines. A subtype of Behavior may redefine any other subtype of Behavior. If the behavior implements a behavioral feature, it replaces the redefined behavior. If the behavior is a classifier behavior, it extends the redefined behavior.
  */
-const QSet<QBehavior *> &QBehavior::redefinedBehaviors() const
+QSet<QBehavior *> QBehavior::redefinedBehaviors() const
 {
     // This is a read-write association end
 
@@ -259,7 +259,7 @@ void QBehavior::removeRedefinedBehavior(QBehavior *redefinedBehavior)
 /*!
     References a list of parameters to the behavior which describes the order and type of arguments that can be given when the behavior is invoked and of the values which will be returned when the behavior completes its execution.
  */
-const QList<QParameter *> &QBehavior::ownedParameters() const
+QList<QParameter *> QBehavior::ownedParameters() const
 {
     // This is a read-write association end
 
@@ -296,7 +296,7 @@ void QBehavior::removeOwnedParameter(QParameter *ownedParameter)
 /*!
     The ParameterSets owned by this Behavior.
  */
-const QSet<QParameterSet *> &QBehavior::ownedParameterSets() const
+QSet<QParameterSet *> QBehavior::ownedParameterSets() const
 {
     // This is a read-write association end
 
@@ -340,6 +340,34 @@ QBehavioredClassifier *QBehavior::context() const
     qWarning("QBehavior::context: to be implemented (this is a derived associationend)");
 
     return 0; // change here to your derived return
+}
+
+void QBehavior::registerMetaTypes() const
+{
+    qRegisterMetaType<QBehavioralFeature *>("QBehavioralFeature *");
+    qRegisterMetaType<QSet<QBehavioralFeature *>>("QSet<QBehavioralFeature *>");
+    qRegisterMetaType<QList<QBehavioralFeature *>>("QList<QBehavioralFeature *>");
+
+    qRegisterMetaType<QConstraint *>("QConstraint *");
+    qRegisterMetaType<QSet<QConstraint *>>("QSet<QConstraint *>");
+    qRegisterMetaType<QList<QConstraint *>>("QList<QConstraint *>");
+
+    qRegisterMetaType<QParameter *>("QParameter *");
+    qRegisterMetaType<QSet<QParameter *>>("QSet<QParameter *>");
+    qRegisterMetaType<QList<QParameter *>>("QList<QParameter *>");
+
+    qRegisterMetaType<QBehavioredClassifier *>("QBehavioredClassifier *");
+    qRegisterMetaType<QSet<QBehavioredClassifier *>>("QSet<QBehavioredClassifier *>");
+    qRegisterMetaType<QList<QBehavioredClassifier *>>("QList<QBehavioredClassifier *>");
+
+    qRegisterMetaType<QParameterSet *>("QParameterSet *");
+    qRegisterMetaType<QSet<QParameterSet *>>("QSet<QParameterSet *>");
+    qRegisterMetaType<QList<QParameterSet *>>("QList<QParameterSet *>");
+
+    QClass::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 // Overriden methods for subsetted properties

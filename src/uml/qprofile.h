@@ -76,12 +76,13 @@ public:
     virtual ~QProfile();
 
     // Association ends from QProfile
-    Q_INVOKABLE const QSet<QPackageImport *> &metamodelReferences() const;
+    Q_INVOKABLE QSet<QPackageImport *> metamodelReferences() const;
     Q_INVOKABLE void addMetamodelReference(QPackageImport *metamodelReference);
     Q_INVOKABLE void removeMetamodelReference(QPackageImport *metamodelReference);
-    Q_INVOKABLE const QSet<QElementImport *> &metaclassReferences() const;
+    Q_INVOKABLE QSet<QElementImport *> metaclassReferences() const;
     Q_INVOKABLE void addMetaclassReference(QElementImport *metaclassReference);
     Q_INVOKABLE void removeMetaclassReference(QElementImport *metaclassReference);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QProfile(QProfilePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

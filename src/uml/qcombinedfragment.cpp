@@ -115,7 +115,7 @@ void QCombinedFragment::unsetInteractionOperator()
 /*!
     Specifies the gates that form the interface between this CombinedFragment and its surroundings
  */
-const QSet<QGate *> &QCombinedFragment::cfragmentGates() const
+QSet<QGate *> QCombinedFragment::cfragmentGates() const
 {
     // This is a read-write association end
 
@@ -152,7 +152,7 @@ void QCombinedFragment::removeCfragmentGate(QGate *cfragmentGate)
 /*!
     The set of operands of the combined fragment.
  */
-const QList<QInteractionOperand *> &QCombinedFragment::operands() const
+QList<QInteractionOperand *> QCombinedFragment::operands() const
 {
     // This is a read-write association end
 
@@ -184,6 +184,22 @@ void QCombinedFragment::removeOperand(QInteractionOperand *operand)
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QElement *>(operand));
     }
+}
+
+void QCombinedFragment::registerMetaTypes() const
+{
+    qRegisterMetaType<QGate *>("QGate *");
+    qRegisterMetaType<QSet<QGate *>>("QSet<QGate *>");
+    qRegisterMetaType<QList<QGate *>>("QList<QGate *>");
+
+    qRegisterMetaType<QInteractionOperand *>("QInteractionOperand *");
+    qRegisterMetaType<QSet<QInteractionOperand *>>("QSet<QInteractionOperand *>");
+    qRegisterMetaType<QList<QInteractionOperand *>>("QList<QInteractionOperand *>");
+
+    QInteractionFragment::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qcombinedfragment.cpp"

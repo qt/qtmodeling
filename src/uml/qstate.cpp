@@ -102,7 +102,7 @@ QState::~QState()
 /*!
     The Elements owned by this element.
  */
-const QSet<QElement *> &QState::ownedElements() const
+QSet<QElement *> QState::ownedElements() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedElements();
 }
@@ -118,7 +118,7 @@ QElement *QState::owner() const
 /*!
     The Comments owned by this element.
  */
-const QSet<QComment *> &QState::ownedComments() const
+QSet<QComment *> QState::ownedComments() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedComments();
 }
@@ -199,7 +199,7 @@ QNamespace *QState::namespace_() const
 /*!
     Indicates the dependencies that reference the client.
  */
-const QSet<QDependency *> &QState::clientDependencies() const
+QSet<QDependency *> QState::clientDependencies() const
 {
     return (qwrappedobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
@@ -221,7 +221,7 @@ void QState::removeClientDependency(QDependency *clientDependency)
 /*!
     References the PackageImports owned by the Namespace.
  */
-const QSet<QPackageImport *> &QState::packageImports() const
+QSet<QPackageImport *> QState::packageImports() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->packageImports();
 }
@@ -239,7 +239,7 @@ void QState::removePackageImport(QPackageImport *packageImport)
 /*!
     A collection of NamedElements identifiable within the Namespace, either by being owned or by being introduced by importing or inheritance.
  */
-const QSet<QNamedElement *> &QState::members() const
+QSet<QNamedElement *> QState::members() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->members();
 }
@@ -247,7 +247,7 @@ const QSet<QNamedElement *> &QState::members() const
 /*!
     References the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports.
  */
-const QSet<QPackageableElement *> &QState::importedMembers() const
+QSet<QPackageableElement *> QState::importedMembers() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->importedMembers();
 }
@@ -255,7 +255,7 @@ const QSet<QPackageableElement *> &QState::importedMembers() const
 /*!
     References the ElementImports owned by the Namespace.
  */
-const QSet<QElementImport *> &QState::elementImports() const
+QSet<QElementImport *> QState::elementImports() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->elementImports();
 }
@@ -273,7 +273,7 @@ void QState::removeElementImport(QElementImport *elementImport)
 /*!
     Specifies a set of Constraints owned by this Namespace.
  */
-const QSet<QConstraint *> &QState::ownedRules() const
+QSet<QConstraint *> QState::ownedRules() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->ownedRules();
 }
@@ -291,7 +291,7 @@ void QState::removeOwnedRule(QConstraint *ownedRule)
 /*!
     A collection of NamedElements owned by the Namespace.
  */
-const QSet<QNamedElement *> &QState::ownedMembers() const
+QSet<QNamedElement *> QState::ownedMembers() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->ownedMembers();
 }
@@ -325,7 +325,7 @@ void QState::unsetLeaf()
 /*!
     The redefinable element that is being redefined by this element.
  */
-const QSet<QRedefinableElement *> &QState::redefinedElements() const
+QSet<QRedefinableElement *> QState::redefinedElements() const
 {
     return (qwrappedobject_cast<const QRedefinableElement *>(this))->redefinedElements();
 }
@@ -337,7 +337,7 @@ const QSet<QRedefinableElement *> &QState::redefinedElements() const
 /*!
     Specifies the transitions entering this vertex.
  */
-const QSet<QTransition *> &QState::incomings() const
+QSet<QTransition *> QState::incomings() const
 {
     return (qwrappedobject_cast<const QVertex *>(this))->incomings();
 }
@@ -358,7 +358,7 @@ void QState::setContainer(QRegion *container)
 /*!
     Specifies the transitions departing from this vertex.
  */
-const QSet<QTransition *> &QState::outgoings() const
+QSet<QTransition *> QState::outgoings() const
 {
     return (qwrappedobject_cast<const QVertex *>(this))->outgoings();
 }
@@ -422,7 +422,7 @@ bool QState::isSubmachineState() const
 /*!
     The regions owned directly by the state.
  */
-const QSet<QRegion *> &QState::regions() const
+QSet<QRegion *> QState::regions() const
 {
     // This is a read-write association end
 
@@ -494,7 +494,7 @@ void QState::setExit(QBehavior *exit)
 /*!
     The entry and exit connection points used in conjunction with this (submachine) state, i.e. as targets and sources, respectively, in the region with the submachine state. A connection point reference references the corresponding definition of a connection point pseudostate in the statemachine referenced by the submachinestate.
  */
-const QSet<QConnectionPointReference *> &QState::connections() const
+QSet<QConnectionPointReference *> QState::connections() const
 {
     // This is a read-write association end
 
@@ -578,7 +578,7 @@ void QState::setRedefinedState(QState *redefinedState)
 /*!
     A list of triggers that are candidates to be retained by the state machine if they trigger no transitions out of the state (not consumed). A deferred trigger is retained until the state machine reaches a state configuration where it is no longer deferred.
  */
-const QSet<QTrigger *> &QState::deferrableTriggers() const
+QSet<QTrigger *> QState::deferrableTriggers() const
 {
     // This is a read-write association end
 
@@ -615,7 +615,7 @@ void QState::removeDeferrableTrigger(QTrigger *deferrableTrigger)
 /*!
     The entry and exit pseudostates of a composite state. These can only be entry or exit Pseudostates, and they must have different names. They can only be defined for composite states.
  */
-const QSet<QPseudostate *> &QState::connectionPoints() const
+QSet<QPseudostate *> QState::connectionPoints() const
 {
     // This is a read-write association end
 
@@ -801,6 +801,46 @@ bool QState::isRedefinitionContextValid(const QState *redefined) const
     Q_UNUSED(redefined);
 
     return bool(); // change here to your derived return
+}
+
+void QState::registerMetaTypes() const
+{
+    qRegisterMetaType<QStateMachine *>("QStateMachine *");
+    qRegisterMetaType<QSet<QStateMachine *>>("QSet<QStateMachine *>");
+    qRegisterMetaType<QList<QStateMachine *>>("QList<QStateMachine *>");
+
+    qRegisterMetaType<QClassifier *>("QClassifier *");
+    qRegisterMetaType<QSet<QClassifier *>>("QSet<QClassifier *>");
+    qRegisterMetaType<QList<QClassifier *>>("QList<QClassifier *>");
+
+    qRegisterMetaType<QConstraint *>("QConstraint *");
+    qRegisterMetaType<QSet<QConstraint *>>("QSet<QConstraint *>");
+    qRegisterMetaType<QList<QConstraint *>>("QList<QConstraint *>");
+
+    qRegisterMetaType<QRegion *>("QRegion *");
+    qRegisterMetaType<QSet<QRegion *>>("QSet<QRegion *>");
+    qRegisterMetaType<QList<QRegion *>>("QList<QRegion *>");
+
+    qRegisterMetaType<QBehavior *>("QBehavior *");
+    qRegisterMetaType<QSet<QBehavior *>>("QSet<QBehavior *>");
+    qRegisterMetaType<QList<QBehavior *>>("QList<QBehavior *>");
+
+    qRegisterMetaType<QConnectionPointReference *>("QConnectionPointReference *");
+    qRegisterMetaType<QSet<QConnectionPointReference *>>("QSet<QConnectionPointReference *>");
+    qRegisterMetaType<QList<QConnectionPointReference *>>("QList<QConnectionPointReference *>");
+
+    qRegisterMetaType<QTrigger *>("QTrigger *");
+    qRegisterMetaType<QSet<QTrigger *>>("QSet<QTrigger *>");
+    qRegisterMetaType<QList<QTrigger *>>("QList<QTrigger *>");
+
+    qRegisterMetaType<QPseudostate *>("QPseudostate *");
+    qRegisterMetaType<QSet<QPseudostate *>>("QSet<QPseudostate *>");
+    qRegisterMetaType<QList<QPseudostate *>>("QList<QPseudostate *>");
+
+    QWrappedObject::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qstate.cpp"

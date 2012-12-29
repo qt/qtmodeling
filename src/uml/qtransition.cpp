@@ -102,7 +102,7 @@ QTransition::~QTransition()
 /*!
     The Elements owned by this element.
  */
-const QSet<QElement *> &QTransition::ownedElements() const
+QSet<QElement *> QTransition::ownedElements() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedElements();
 }
@@ -118,7 +118,7 @@ QElement *QTransition::owner() const
 /*!
     The Comments owned by this element.
  */
-const QSet<QComment *> &QTransition::ownedComments() const
+QSet<QComment *> QTransition::ownedComments() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedComments();
 }
@@ -199,7 +199,7 @@ QNamespace *QTransition::namespace_() const
 /*!
     Indicates the dependencies that reference the client.
  */
-const QSet<QDependency *> &QTransition::clientDependencies() const
+QSet<QDependency *> QTransition::clientDependencies() const
 {
     return (qwrappedobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
@@ -243,7 +243,7 @@ void QTransition::unsetLeaf()
 /*!
     The redefinable element that is being redefined by this element.
  */
-const QSet<QRedefinableElement *> &QTransition::redefinedElements() const
+QSet<QRedefinableElement *> QTransition::redefinedElements() const
 {
     return (qwrappedobject_cast<const QRedefinableElement *>(this))->redefinedElements();
 }
@@ -255,7 +255,7 @@ const QSet<QRedefinableElement *> &QTransition::redefinedElements() const
 /*!
     References the PackageImports owned by the Namespace.
  */
-const QSet<QPackageImport *> &QTransition::packageImports() const
+QSet<QPackageImport *> QTransition::packageImports() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->packageImports();
 }
@@ -273,7 +273,7 @@ void QTransition::removePackageImport(QPackageImport *packageImport)
 /*!
     A collection of NamedElements identifiable within the Namespace, either by being owned or by being introduced by importing or inheritance.
  */
-const QSet<QNamedElement *> &QTransition::members() const
+QSet<QNamedElement *> QTransition::members() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->members();
 }
@@ -281,7 +281,7 @@ const QSet<QNamedElement *> &QTransition::members() const
 /*!
     References the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports.
  */
-const QSet<QPackageableElement *> &QTransition::importedMembers() const
+QSet<QPackageableElement *> QTransition::importedMembers() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->importedMembers();
 }
@@ -289,7 +289,7 @@ const QSet<QPackageableElement *> &QTransition::importedMembers() const
 /*!
     References the ElementImports owned by the Namespace.
  */
-const QSet<QElementImport *> &QTransition::elementImports() const
+QSet<QElementImport *> QTransition::elementImports() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->elementImports();
 }
@@ -307,7 +307,7 @@ void QTransition::removeElementImport(QElementImport *elementImport)
 /*!
     Specifies a set of Constraints owned by this Namespace.
  */
-const QSet<QConstraint *> &QTransition::ownedRules() const
+QSet<QConstraint *> QTransition::ownedRules() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->ownedRules();
 }
@@ -325,7 +325,7 @@ void QTransition::removeOwnedRule(QConstraint *ownedRule)
 /*!
     A collection of NamedElements owned by the Namespace.
  */
-const QSet<QNamedElement *> &QTransition::ownedMembers() const
+QSet<QNamedElement *> QTransition::ownedMembers() const
 {
     return (qwrappedobject_cast<const QNamespace *>(this))->ownedMembers();
 }
@@ -556,7 +556,7 @@ void QTransition::setSource(QVertex *source)
 /*!
     Specifies the triggers that may fire the transition.
  */
-const QSet<QTrigger *> &QTransition::triggers() const
+QSet<QTrigger *> QTransition::triggers() const
 {
     // This is a read-write association end
 
@@ -609,6 +609,42 @@ bool QTransition::isConsistentWith(const QRedefinableElement *redefinee) const
     Q_UNUSED(redefinee);
 
     return bool(); // change here to your derived return
+}
+
+void QTransition::registerMetaTypes() const
+{
+    qRegisterMetaType<QTrigger *>("QTrigger *");
+    qRegisterMetaType<QSet<QTrigger *>>("QSet<QTrigger *>");
+    qRegisterMetaType<QList<QTrigger *>>("QList<QTrigger *>");
+
+    qRegisterMetaType<QVertex *>("QVertex *");
+    qRegisterMetaType<QSet<QVertex *>>("QSet<QVertex *>");
+    qRegisterMetaType<QList<QVertex *>>("QList<QVertex *>");
+
+    qRegisterMetaType<QStateMachine *>("QStateMachine *");
+    qRegisterMetaType<QSet<QStateMachine *>>("QSet<QStateMachine *>");
+    qRegisterMetaType<QList<QStateMachine *>>("QList<QStateMachine *>");
+
+    qRegisterMetaType<QClassifier *>("QClassifier *");
+    qRegisterMetaType<QSet<QClassifier *>>("QSet<QClassifier *>");
+    qRegisterMetaType<QList<QClassifier *>>("QList<QClassifier *>");
+
+    qRegisterMetaType<QRegion *>("QRegion *");
+    qRegisterMetaType<QSet<QRegion *>>("QSet<QRegion *>");
+    qRegisterMetaType<QList<QRegion *>>("QList<QRegion *>");
+
+    qRegisterMetaType<QConstraint *>("QConstraint *");
+    qRegisterMetaType<QSet<QConstraint *>>("QSet<QConstraint *>");
+    qRegisterMetaType<QList<QConstraint *>>("QList<QConstraint *>");
+
+    qRegisterMetaType<QBehavior *>("QBehavior *");
+    qRegisterMetaType<QSet<QBehavior *>>("QSet<QBehavior *>");
+    qRegisterMetaType<QList<QBehavior *>>("QList<QBehavior *>");
+
+    QWrappedObject::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qtransition.cpp"

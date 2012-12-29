@@ -73,6 +73,7 @@ public:
     // Association ends from QOperationTemplateParameter
     Q_INVOKABLE QOperation *parameteredElement() const;
     Q_INVOKABLE void setParameteredElement(QOperation *parameteredElement);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QOperationTemplateParameter(QOperationTemplateParameterPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

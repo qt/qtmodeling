@@ -133,6 +133,22 @@ void QSendSignalAction::setSignal(QSignal *signal)
     }
 }
 
+void QSendSignalAction::registerMetaTypes() const
+{
+    qRegisterMetaType<QSignal *>("QSignal *");
+    qRegisterMetaType<QSet<QSignal *>>("QSet<QSignal *>");
+    qRegisterMetaType<QList<QSignal *>>("QList<QSignal *>");
+
+    qRegisterMetaType<QInputPin *>("QInputPin *");
+    qRegisterMetaType<QSet<QInputPin *>>("QSet<QInputPin *>");
+    qRegisterMetaType<QList<QInputPin *>>("QList<QInputPin *>");
+
+    QInvocationAction::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qsendsignalaction.cpp"
 
 QT_END_NAMESPACE_QTUML

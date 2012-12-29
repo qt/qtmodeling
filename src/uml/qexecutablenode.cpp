@@ -83,7 +83,7 @@ QExecutableNode::~QExecutableNode()
 /*!
     A set of exception handlers that are examined if an uncaught exception propagates to the outer level of the executable node.
  */
-const QSet<QExceptionHandler *> &QExecutableNode::handlers() const
+QSet<QExceptionHandler *> QExecutableNode::handlers() const
 {
     // This is a read-write association end
 
@@ -121,6 +121,18 @@ void QExecutableNode::removeHandler(QExceptionHandler *handler)
         // Adjust opposite property
         handler->setProtectedNode(0);
     }
+}
+
+void QExecutableNode::registerMetaTypes() const
+{
+    qRegisterMetaType<QExceptionHandler *>("QExceptionHandler *");
+    qRegisterMetaType<QSet<QExceptionHandler *>>("QSet<QExceptionHandler *>");
+    qRegisterMetaType<QList<QExceptionHandler *>>("QList<QExceptionHandler *>");
+
+    QActivityNode::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qexecutablenode.cpp"

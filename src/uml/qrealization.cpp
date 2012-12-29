@@ -74,6 +74,14 @@ QRealization::~QRealization()
 {
 }
 
+void QRealization::registerMetaTypes() const
+{
+    QAbstraction::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qrealization.cpp"
 
 QT_END_NAMESPACE_QTUML

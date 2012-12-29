@@ -81,7 +81,7 @@ public:
     // Association ends from QComponentRealization
     Q_INVOKABLE QComponent *abstraction() const;
     Q_INVOKABLE void setAbstraction(QComponent *abstraction);
-    Q_INVOKABLE const QSet<QClassifier *> &realizingClassifiers() const;
+    Q_INVOKABLE QSet<QClassifier *> realizingClassifiers() const;
     Q_INVOKABLE void addRealizingClassifier(QClassifier *realizingClassifier);
     Q_INVOKABLE void removeRealizingClassifier(QClassifier *realizingClassifier);
 
@@ -90,6 +90,7 @@ public:
     Q_INVOKABLE void removeSupplier(QWrappedObjectPointer<QComponent> abstraction);
     Q_INVOKABLE void addClient(QWrappedObjectPointer<QClassifier> realizingClassifier);
     Q_INVOKABLE void removeClient(QWrappedObjectPointer<QClassifier> realizingClassifier);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QComponentRealization(QComponentRealizationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

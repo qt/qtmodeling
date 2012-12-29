@@ -141,6 +141,18 @@ void QAddStructuralFeatureValueAction::setInsertAt(QInputPin *insertAt)
     }
 }
 
+void QAddStructuralFeatureValueAction::registerMetaTypes() const
+{
+    qRegisterMetaType<QInputPin *>("QInputPin *");
+    qRegisterMetaType<QSet<QInputPin *>>("QSet<QInputPin *>");
+    qRegisterMetaType<QList<QInputPin *>>("QList<QInputPin *>");
+
+    QWriteStructuralFeatureAction::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qaddstructuralfeaturevalueaction.cpp"
 
 QT_END_NAMESPACE_QTUML

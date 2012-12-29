@@ -119,6 +119,14 @@ QString QLiteralString::stringValue() const
     return QString(); // change here to your derived return
 }
 
+void QLiteralString::registerMetaTypes() const
+{
+    QLiteralSpecification::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qliteralstring.cpp"
 
 QT_END_NAMESPACE_QTMOF

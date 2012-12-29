@@ -149,6 +149,18 @@ void QProtocolConformance::setGeneralMachine(QProtocolStateMachine *generalMachi
     }
 }
 
+void QProtocolConformance::registerMetaTypes() const
+{
+    qRegisterMetaType<QProtocolStateMachine *>("QProtocolStateMachine *");
+    qRegisterMetaType<QSet<QProtocolStateMachine *>>("QSet<QProtocolStateMachine *>");
+    qRegisterMetaType<QList<QProtocolStateMachine *>>("QList<QProtocolStateMachine *>");
+
+    QDirectedRelationship::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qprotocolconformance.cpp"
 
 QT_END_NAMESPACE_QTUML

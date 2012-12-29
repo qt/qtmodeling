@@ -72,7 +72,7 @@ QTag::~QTag()
 // ATTRIBUTES FROM QTag
 // ---------------------------------------------------------------
 
-const QSet<QElement *> &QTag::elements() const
+QSet<QElement *> QTag::elements() const
 {
     // This is a read-write attribute
 
@@ -152,6 +152,14 @@ void QTag::setTagOwner(QElement *tagOwner)
     if (d->tagOwner != tagOwner) {
         d->tagOwner = tagOwner;
     }
+}
+
+void QTag::registerMetaTypes() const
+{
+    QElement::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qtag.cpp"

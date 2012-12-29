@@ -79,14 +79,15 @@ public:
     virtual ~QDeploymentTarget();
 
     // Association ends from QDeploymentTarget
-    Q_INVOKABLE const QSet<QPackageableElement *> &deployedElements() const;
-    Q_INVOKABLE const QSet<QDeployment *> &deployments() const;
+    Q_INVOKABLE QSet<QPackageableElement *> deployedElements() const;
+    Q_INVOKABLE QSet<QDeployment *> deployments() const;
     Q_INVOKABLE void addDeployment(QDeployment *deployment);
     Q_INVOKABLE void removeDeployment(QDeployment *deployment);
 
     // Overriden methods for subsetted properties
     Q_INVOKABLE void addClientDependency(QWrappedObjectPointer<QDeployment> deployment);
     Q_INVOKABLE void removeClientDependency(QWrappedObjectPointer<QDeployment> deployment);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QDeploymentTarget(QDeploymentTargetPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

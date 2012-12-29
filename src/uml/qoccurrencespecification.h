@@ -79,12 +79,13 @@ public:
     // Association ends from QOccurrenceSpecification
     Q_INVOKABLE QLifeline *covered() const;
     Q_INVOKABLE void setCovered(QLifeline *covered);
-    Q_INVOKABLE const QSet<QGeneralOrdering *> &toAfter() const;
+    Q_INVOKABLE QSet<QGeneralOrdering *> toAfter() const;
     Q_INVOKABLE void addToAfter(QGeneralOrdering *toAfter);
     Q_INVOKABLE void removeToAfter(QGeneralOrdering *toAfter);
-    Q_INVOKABLE const QSet<QGeneralOrdering *> &toBefore() const;
+    Q_INVOKABLE QSet<QGeneralOrdering *> toBefore() const;
     Q_INVOKABLE void addToBefore(QGeneralOrdering *toBefore);
     Q_INVOKABLE void removeToBefore(QGeneralOrdering *toBefore);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QOccurrenceSpecification(QOccurrenceSpecificationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

@@ -82,12 +82,13 @@ public:
     Q_INVOKABLE void unsetUnmarshall();
 
     // Association ends from QAcceptEventAction
-    Q_INVOKABLE const QSet<QTrigger *> &triggers() const;
+    Q_INVOKABLE QSet<QTrigger *> triggers() const;
     Q_INVOKABLE void addTrigger(QTrigger *trigger);
     Q_INVOKABLE void removeTrigger(QTrigger *trigger);
-    Q_INVOKABLE const QSet<QOutputPin *> &results() const;
+    Q_INVOKABLE QSet<QOutputPin *> results() const;
     Q_INVOKABLE void addResult(QOutputPin *result);
     Q_INVOKABLE void removeResult(QOutputPin *result);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QAcceptEventAction(QAcceptEventActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

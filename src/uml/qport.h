@@ -97,15 +97,16 @@ public:
     // Association ends from QPort
     Q_INVOKABLE QProtocolStateMachine *protocol() const;
     Q_INVOKABLE void setProtocol(QProtocolStateMachine *protocol);
-    Q_INVOKABLE const QSet<QInterface *> &required() const;
-    Q_INVOKABLE const QSet<QInterface *> &provided() const;
-    Q_INVOKABLE const QSet<QPort *> &redefinedPorts() const;
+    Q_INVOKABLE QSet<QInterface *> required() const;
+    Q_INVOKABLE QSet<QInterface *> provided() const;
+    Q_INVOKABLE QSet<QPort *> redefinedPorts() const;
     Q_INVOKABLE void addRedefinedPort(QPort *redefinedPort);
     Q_INVOKABLE void removeRedefinedPort(QPort *redefinedPort);
 
     // Overriden methods for subsetted properties
     Q_INVOKABLE void addRedefinedProperty(QWrappedObjectPointer<QPort> redefinedPort);
     Q_INVOKABLE void removeRedefinedProperty(QWrappedObjectPointer<QPort> redefinedPort);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QPort(QPortPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

@@ -129,6 +129,18 @@ void QException::setObjectInError(QElement *objectInError)
     }
 }
 
+void QException::registerMetaTypes() const
+{
+    qRegisterMetaType<QElement *>("QElement *");
+    qRegisterMetaType<QSet<QElement *>>("QSet<QElement *>");
+    qRegisterMetaType<QList<QElement *>>("QList<QElement *>");
+
+    QWrappedObject::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qexception.cpp"
 
 QT_END_NAMESPACE_QTMOF

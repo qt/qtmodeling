@@ -81,7 +81,7 @@ QOpaqueBehavior::~QOpaqueBehavior()
 /*!
     Languages the body strings use in the same order as the body strings.
  */
-const QList<QString> QOpaqueBehavior::languages() const
+QList<QString> QOpaqueBehavior::languages() const
 {
     // This is a read-write attribute
 
@@ -112,7 +112,7 @@ void QOpaqueBehavior::removeLanguage(QString language)
 /*!
     Specifies the behavior in one or more languages.
  */
-const QList<QString> QOpaqueBehavior::bodies() const
+QList<QString> QOpaqueBehavior::bodies() const
 {
     // This is a read-write attribute
 
@@ -138,6 +138,14 @@ void QOpaqueBehavior::removeBody(QString body)
     if (d->bodies.contains(body)) {
         d->bodies.removeAll(body);
     }
+}
+
+void QOpaqueBehavior::registerMetaTypes() const
+{
+    QBehavior::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qopaquebehavior.cpp"

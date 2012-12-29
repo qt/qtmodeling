@@ -86,6 +86,7 @@ public:
     Q_INVOKABLE void setImportingNamespace(QNamespace *importingNamespace);
     Q_INVOKABLE QPackage *importedPackage() const;
     Q_INVOKABLE void setImportedPackage(QPackage *importedPackage);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QPackageImport(QPackageImportPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

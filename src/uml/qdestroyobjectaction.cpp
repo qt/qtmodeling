@@ -168,6 +168,18 @@ void QDestroyObjectAction::setTarget(QInputPin *target)
     }
 }
 
+void QDestroyObjectAction::registerMetaTypes() const
+{
+    qRegisterMetaType<QInputPin *>("QInputPin *");
+    qRegisterMetaType<QSet<QInputPin *>>("QSet<QInputPin *>");
+    qRegisterMetaType<QList<QInputPin *>>("QList<QInputPin *>");
+
+    QAction::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qdestroyobjectaction.cpp"
 
 QT_END_NAMESPACE_QTUML

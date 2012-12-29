@@ -116,7 +116,7 @@ void QInterface::setProtocol(QProtocolStateMachine *protocol)
 /*!
     References all the Interfaces redefined by this Interface.
  */
-const QSet<QInterface *> &QInterface::redefinedInterfaces() const
+QSet<QInterface *> QInterface::redefinedInterfaces() const
 {
     // This is a read-write association end
 
@@ -153,7 +153,7 @@ void QInterface::removeRedefinedInterface(QInterface *redefinedInterface)
 /*!
     Receptions that objects providing this interface are willing to accept.
  */
-const QSet<QReception *> &QInterface::ownedReceptions() const
+QSet<QReception *> QInterface::ownedReceptions() const
 {
     // This is a read-write association end
 
@@ -192,7 +192,7 @@ void QInterface::removeOwnedReception(QReception *ownedReception)
 /*!
     The operations owned by the class.
  */
-const QList<QOperation *> &QInterface::ownedOperations() const
+QList<QOperation *> QInterface::ownedOperations() const
 {
     // This is a read-write association end
 
@@ -237,7 +237,7 @@ void QInterface::removeOwnedOperation(QOperation *ownedOperation)
 /*!
     References all the Classifiers that are defined (nested) within the Class.
  */
-const QList<QClassifier *> &QInterface::nestedClassifiers() const
+QList<QClassifier *> QInterface::nestedClassifiers() const
 {
     // This is a read-write association end
 
@@ -274,7 +274,7 @@ void QInterface::removeNestedClassifier(QClassifier *nestedClassifier)
 /*!
     The attributes (i.e. the properties) owned by the class.
  */
-const QList<QProperty *> &QInterface::ownedAttributes() const
+QList<QProperty *> QInterface::ownedAttributes() const
 {
     // This is a read-write association end
 
@@ -314,6 +314,30 @@ void QInterface::removeOwnedAttribute(QProperty *ownedAttribute)
         // Adjust opposite property
         ownedAttribute->setInterface(0);
     }
+}
+
+void QInterface::registerMetaTypes() const
+{
+    qRegisterMetaType<QProtocolStateMachine *>("QProtocolStateMachine *");
+    qRegisterMetaType<QSet<QProtocolStateMachine *>>("QSet<QProtocolStateMachine *>");
+    qRegisterMetaType<QList<QProtocolStateMachine *>>("QList<QProtocolStateMachine *>");
+
+    qRegisterMetaType<QReception *>("QReception *");
+    qRegisterMetaType<QSet<QReception *>>("QSet<QReception *>");
+    qRegisterMetaType<QList<QReception *>>("QList<QReception *>");
+
+    qRegisterMetaType<QProperty *>("QProperty *");
+    qRegisterMetaType<QSet<QProperty *>>("QSet<QProperty *>");
+    qRegisterMetaType<QList<QProperty *>>("QList<QProperty *>");
+
+    qRegisterMetaType<QOperation *>("QOperation *");
+    qRegisterMetaType<QSet<QOperation *>>("QSet<QOperation *>");
+    qRegisterMetaType<QList<QOperation *>>("QList<QOperation *>");
+
+    QClassifier::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 // Overriden methods for subsetted properties

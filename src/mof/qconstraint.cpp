@@ -148,7 +148,7 @@ void QConstraint::setSpecification(QValueSpecification *specification)
 /*!
     The ordered set of Elements referenced by this Constraint.
  */
-const QList<QElement *> &QConstraint::constrainedElements() const
+QList<QElement *> QConstraint::constrainedElements() const
 {
     // This is a read-write association end
 
@@ -174,6 +174,26 @@ void QConstraint::removeConstrainedElement(QElement *constrainedElement)
     if (d->constrainedElements.contains(constrainedElement)) {
         d->constrainedElements.removeAll(constrainedElement);
     }
+}
+
+void QConstraint::registerMetaTypes() const
+{
+    qRegisterMetaType<QElement *>("QElement *");
+    qRegisterMetaType<QSet<QElement *>>("QSet<QElement *>");
+    qRegisterMetaType<QList<QElement *>>("QList<QElement *>");
+
+    qRegisterMetaType<QNamespace *>("QNamespace *");
+    qRegisterMetaType<QSet<QNamespace *>>("QSet<QNamespace *>");
+    qRegisterMetaType<QList<QNamespace *>>("QList<QNamespace *>");
+
+    qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
+    qRegisterMetaType<QSet<QValueSpecification *>>("QSet<QValueSpecification *>");
+    qRegisterMetaType<QList<QValueSpecification *>>("QList<QValueSpecification *>");
+
+    QPackageableElement::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qconstraint.cpp"

@@ -110,6 +110,18 @@ void QChangeEvent::setChangeExpression(QValueSpecification *changeExpression)
     }
 }
 
+void QChangeEvent::registerMetaTypes() const
+{
+    qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
+    qRegisterMetaType<QSet<QValueSpecification *>>("QSet<QValueSpecification *>");
+    qRegisterMetaType<QList<QValueSpecification *>>("QList<QValueSpecification *>");
+
+    QEvent::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qchangeevent.cpp"
 
 QT_END_NAMESPACE_QTUML

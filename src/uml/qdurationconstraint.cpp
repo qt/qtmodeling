@@ -85,7 +85,7 @@ QDurationConstraint::~QDurationConstraint()
 /*!
     The value of firstEvent[i] is related to constrainedElement[i] (where i is 1 or 2). If firstEvent[i] is true, then the corresponding observation event is the first time instant the execution enters constrainedElement[i]. If firstEvent[i] is false, then the corresponding observation event is the last time instant the execution is within constrainedElement[i]. Default value is true applied when constrainedElement[i] refers an element that represents only one time instant.
  */
-const QSet<bool> QDurationConstraint::firstEvents() const
+QSet<bool> QDurationConstraint::firstEvents() const
 {
     // This is a read-write attribute
 
@@ -136,6 +136,18 @@ void QDurationConstraint::setSpecification(QDurationInterval *specification)
     if (d->specification != specification) {
         d->specification = specification;
     }
+}
+
+void QDurationConstraint::registerMetaTypes() const
+{
+    qRegisterMetaType<QDurationInterval *>("QDurationInterval *");
+    qRegisterMetaType<QSet<QDurationInterval *>>("QSet<QDurationInterval *>");
+    qRegisterMetaType<QList<QDurationInterval *>>("QList<QDurationInterval *>");
+
+    QIntervalConstraint::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qdurationconstraint.cpp"

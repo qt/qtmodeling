@@ -109,7 +109,7 @@ QStructuredClassifier::~QStructuredClassifier()
 /*!
     References the roles that instances may play in this classifier.
  */
-const QSet<QConnectableElement *> &QStructuredClassifier::roles() const
+QSet<QConnectableElement *> QStructuredClassifier::roles() const
 {
     // This is a read-only derived-union association end
 
@@ -120,7 +120,7 @@ const QSet<QConnectableElement *> &QStructuredClassifier::roles() const
 /*!
     References the properties owned by the classifier.
  */
-const QList<QProperty *> &QStructuredClassifier::ownedAttributes() const
+QList<QProperty *> QStructuredClassifier::ownedAttributes() const
 {
     // This is a read-write association end
 
@@ -161,19 +161,19 @@ void QStructuredClassifier::removeOwnedAttribute(QProperty *ownedAttribute)
 /*!
     References the properties specifying instances that the classifier owns by composition. This association is derived, selecting those owned properties where isComposite is true.
  */
-const QSet<QProperty *> &QStructuredClassifier::parts() const
+QSet<QProperty *> QStructuredClassifier::parts() const
 {
     // This is a read-only derived association end
 
     qWarning("QStructuredClassifier::parts: to be implemented (this is a derived associationend)");
 
-    return *(new QSet<QProperty *>); // change here to your derived return
+    return QSet<QProperty *>(); // change here to your derived return
 }
 
 /*!
     References the connectors owned by the classifier.
  */
-const QSet<QConnector *> &QStructuredClassifier::ownedConnectors() const
+QSet<QConnector *> QStructuredClassifier::ownedConnectors() const
 {
     // This is a read-write association end
 
@@ -207,6 +207,26 @@ void QStructuredClassifier::removeOwnedConnector(QConnector *ownedConnector)
         (qwrappedobject_cast<QClassifierPrivate *>(d))->removeFeature(qwrappedobject_cast<QFeature *>(ownedConnector));
         (qwrappedobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qwrappedobject_cast<QNamedElement *>(ownedConnector));
     }
+}
+
+void QStructuredClassifier::registerMetaTypes() const
+{
+    qRegisterMetaType<QProperty *>("QProperty *");
+    qRegisterMetaType<QSet<QProperty *>>("QSet<QProperty *>");
+    qRegisterMetaType<QList<QProperty *>>("QList<QProperty *>");
+
+    qRegisterMetaType<QConnector *>("QConnector *");
+    qRegisterMetaType<QSet<QConnector *>>("QSet<QConnector *>");
+    qRegisterMetaType<QList<QConnector *>>("QList<QConnector *>");
+
+    qRegisterMetaType<QConnectableElement *>("QConnectableElement *");
+    qRegisterMetaType<QSet<QConnectableElement *>>("QSet<QConnectableElement *>");
+    qRegisterMetaType<QList<QConnectableElement *>>("QList<QConnectableElement *>");
+
+    QClassifier::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qstructuredclassifier.cpp"

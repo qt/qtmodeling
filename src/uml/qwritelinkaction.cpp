@@ -74,6 +74,14 @@ QWriteLinkAction::~QWriteLinkAction()
 {
 }
 
+void QWriteLinkAction::registerMetaTypes() const
+{
+    QLinkAction::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qwritelinkaction.cpp"
 
 QT_END_NAMESPACE_QTUML

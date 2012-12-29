@@ -148,13 +148,13 @@ QVertex::~QVertex()
 /*!
     Specifies the transitions entering this vertex.
  */
-const QSet<QTransition *> &QVertex::incomings() const
+QSet<QTransition *> QVertex::incomings() const
 {
     // This is a read-only derived association end
 
     qWarning("QVertex::incomings: to be implemented (this is a derived associationend)");
 
-    return *(new QSet<QTransition *>); // change here to your derived return
+    return QSet<QTransition *>(); // change here to your derived return
 }
 
 /*!
@@ -192,13 +192,13 @@ void QVertex::setContainer(QRegion *container)
 /*!
     Specifies the transitions departing from this vertex.
  */
-const QSet<QTransition *> &QVertex::outgoings() const
+QSet<QTransition *> QVertex::outgoings() const
 {
     // This is a read-only derived association end
 
     qWarning("QVertex::outgoings: to be implemented (this is a derived associationend)");
 
-    return *(new QSet<QTransition *>); // change here to your derived return
+    return QSet<QTransition *>(); // change here to your derived return
 }
 
 /*!
@@ -209,6 +209,26 @@ QStateMachine *QVertex::containingStateMachine() const
     qWarning("QVertex::containingStateMachine: operation to be implemented");
 
     return 0; // change here to your derived return
+}
+
+void QVertex::registerMetaTypes() const
+{
+    qRegisterMetaType<QRegion *>("QRegion *");
+    qRegisterMetaType<QSet<QRegion *>>("QSet<QRegion *>");
+    qRegisterMetaType<QList<QRegion *>>("QList<QRegion *>");
+
+    qRegisterMetaType<QTransition *>("QTransition *");
+    qRegisterMetaType<QSet<QTransition *>>("QSet<QTransition *>");
+    qRegisterMetaType<QList<QTransition *>>("QList<QTransition *>");
+
+    qRegisterMetaType<QStateMachine *>("QStateMachine *");
+    qRegisterMetaType<QSet<QStateMachine *>>("QSet<QStateMachine *>");
+    qRegisterMetaType<QList<QStateMachine *>>("QList<QStateMachine *>");
+
+    QNamedElement::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qvertex.cpp"

@@ -74,6 +74,14 @@ QPartDecomposition::~QPartDecomposition()
 {
 }
 
+void QPartDecomposition::registerMetaTypes() const
+{
+    QInteractionUse::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qpartdecomposition.cpp"
 
 QT_END_NAMESPACE_QTUML

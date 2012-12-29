@@ -74,6 +74,14 @@ QOutputPin::~QOutputPin()
 {
 }
 
+void QOutputPin::registerMetaTypes() const
+{
+    QPin::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qoutputpin.cpp"
 
 QT_END_NAMESPACE_QTUML

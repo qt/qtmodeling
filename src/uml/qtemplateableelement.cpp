@@ -120,7 +120,7 @@ void QTemplateableElement::setOwnedTemplateSignature(QTemplateSignature *ownedTe
 /*!
     The optional bindings from this element to templates.
  */
-const QSet<QTemplateBinding *> &QTemplateableElement::templateBindings() const
+QSet<QTemplateBinding *> QTemplateableElement::templateBindings() const
 {
     // This is a read-write association end
 
@@ -173,11 +173,31 @@ bool QTemplateableElement::isTemplate() const
 /*!
     The query parameterableElements() returns the set of elements that may be used as the parametered elements for a template parameter of this templateable element. By default, this set includes all the owned elements. Subclasses may override this operation if they choose to restrict the set of parameterable elements.
  */
-const QSet<QParameterableElement *> &QTemplateableElement::parameterableElements() const
+QSet<QParameterableElement *> QTemplateableElement::parameterableElements() const
 {
     qWarning("QTemplateableElement::parameterableElements: operation to be implemented");
 
-    return *(new QSet<QParameterableElement *>); // change here to your derived return
+    return QSet<QParameterableElement *>(); // change here to your derived return
+}
+
+void QTemplateableElement::registerMetaTypes() const
+{
+    qRegisterMetaType<QTemplateSignature *>("QTemplateSignature *");
+    qRegisterMetaType<QSet<QTemplateSignature *>>("QSet<QTemplateSignature *>");
+    qRegisterMetaType<QList<QTemplateSignature *>>("QList<QTemplateSignature *>");
+
+    qRegisterMetaType<QTemplateBinding *>("QTemplateBinding *");
+    qRegisterMetaType<QSet<QTemplateBinding *>>("QSet<QTemplateBinding *>");
+    qRegisterMetaType<QList<QTemplateBinding *>>("QList<QTemplateBinding *>");
+
+    qRegisterMetaType<QParameterableElement *>("QParameterableElement *");
+    qRegisterMetaType<QSet<QParameterableElement *>>("QSet<QParameterableElement *>");
+    qRegisterMetaType<QList<QParameterableElement *>>("QList<QParameterableElement *>");
+
+    QElement::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qtemplateableelement.cpp"

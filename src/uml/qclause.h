@@ -81,23 +81,24 @@ public:
     virtual ~QClause();
 
     // Association ends from QClause
-    Q_INVOKABLE const QSet<QClause *> &successorClauses() const;
+    Q_INVOKABLE QSet<QClause *> successorClauses() const;
     Q_INVOKABLE void addSuccessorClause(QClause *successorClause);
     Q_INVOKABLE void removeSuccessorClause(QClause *successorClause);
     Q_INVOKABLE QOutputPin *decider() const;
     Q_INVOKABLE void setDecider(QOutputPin *decider);
-    Q_INVOKABLE const QSet<QClause *> &predecessorClauses() const;
+    Q_INVOKABLE QSet<QClause *> predecessorClauses() const;
     Q_INVOKABLE void addPredecessorClause(QClause *predecessorClause);
     Q_INVOKABLE void removePredecessorClause(QClause *predecessorClause);
-    Q_INVOKABLE const QList<QOutputPin *> &bodyOutputs() const;
+    Q_INVOKABLE QList<QOutputPin *> bodyOutputs() const;
     Q_INVOKABLE void addBodyOutput(QOutputPin *bodyOutput);
     Q_INVOKABLE void removeBodyOutput(QOutputPin *bodyOutput);
-    Q_INVOKABLE const QSet<QExecutableNode *> &bodies() const;
+    Q_INVOKABLE QSet<QExecutableNode *> bodies() const;
     Q_INVOKABLE void addBody(QExecutableNode *body);
     Q_INVOKABLE void removeBody(QExecutableNode *body);
-    Q_INVOKABLE const QSet<QExecutableNode *> &tests() const;
+    Q_INVOKABLE QSet<QExecutableNode *> tests() const;
     Q_INVOKABLE void addTest(QExecutableNode *test);
     Q_INVOKABLE void removeTest(QExecutableNode *test);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QClause(QClausePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

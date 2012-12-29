@@ -74,6 +74,14 @@ QDestructionOccurrenceSpecification::~QDestructionOccurrenceSpecification()
 {
 }
 
+void QDestructionOccurrenceSpecification::registerMetaTypes() const
+{
+    QMessageOccurrenceSpecification::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qdestructionoccurrencespecification.cpp"
 
 QT_END_NAMESPACE_QTUML

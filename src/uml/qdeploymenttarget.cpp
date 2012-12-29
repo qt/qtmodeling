@@ -84,19 +84,19 @@ QDeploymentTarget::~QDeploymentTarget()
 /*!
     The set of elements that are manifested in an Artifact that is involved in Deployment to a DeploymentTarget.
  */
-const QSet<QPackageableElement *> &QDeploymentTarget::deployedElements() const
+QSet<QPackageableElement *> QDeploymentTarget::deployedElements() const
 {
     // This is a read-only derived association end
 
     qWarning("QDeploymentTarget::deployedElements: to be implemented (this is a derived associationend)");
 
-    return *(new QSet<QPackageableElement *>); // change here to your derived return
+    return QSet<QPackageableElement *>(); // change here to your derived return
 }
 
 /*!
     The set of Deployments for a DeploymentTarget.
  */
-const QSet<QDeployment *> &QDeploymentTarget::deployments() const
+QSet<QDeployment *> QDeploymentTarget::deployments() const
 {
     // This is a read-write association end
 
@@ -136,6 +136,22 @@ void QDeploymentTarget::removeDeployment(QDeployment *deployment)
         // Adjust opposite property
         deployment->setLocation(0);
     }
+}
+
+void QDeploymentTarget::registerMetaTypes() const
+{
+    qRegisterMetaType<QPackageableElement *>("QPackageableElement *");
+    qRegisterMetaType<QSet<QPackageableElement *>>("QSet<QPackageableElement *>");
+    qRegisterMetaType<QList<QPackageableElement *>>("QList<QPackageableElement *>");
+
+    qRegisterMetaType<QDeployment *>("QDeployment *");
+    qRegisterMetaType<QSet<QDeployment *>>("QSet<QDeployment *>");
+    qRegisterMetaType<QList<QDeployment *>>("QList<QDeployment *>");
+
+    QNamedElement::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 // Overriden methods for subsetted properties

@@ -74,6 +74,14 @@ QClearVariableAction::~QClearVariableAction()
 {
 }
 
+void QClearVariableAction::registerMetaTypes() const
+{
+    QVariableAction::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qclearvariableaction.cpp"
 
 QT_END_NAMESPACE_QTUML

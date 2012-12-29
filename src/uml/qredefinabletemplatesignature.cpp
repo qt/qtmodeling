@@ -89,7 +89,7 @@ QRedefinableTemplateSignature::~QRedefinableTemplateSignature()
 /*!
     The Elements owned by this element.
  */
-const QSet<QElement *> &QRedefinableTemplateSignature::ownedElements() const
+QSet<QElement *> QRedefinableTemplateSignature::ownedElements() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedElements();
 }
@@ -105,7 +105,7 @@ QElement *QRedefinableTemplateSignature::owner() const
 /*!
     The Comments owned by this element.
  */
-const QSet<QComment *> &QRedefinableTemplateSignature::ownedComments() const
+QSet<QComment *> QRedefinableTemplateSignature::ownedComments() const
 {
     return (qwrappedobject_cast<const QElement *>(this))->ownedComments();
 }
@@ -186,7 +186,7 @@ QNamespace *QRedefinableTemplateSignature::namespace_() const
 /*!
     Indicates the dependencies that reference the client.
  */
-const QSet<QDependency *> &QRedefinableTemplateSignature::clientDependencies() const
+QSet<QDependency *> QRedefinableTemplateSignature::clientDependencies() const
 {
     return (qwrappedobject_cast<const QNamedElement *>(this))->clientDependencies();
 }
@@ -230,7 +230,7 @@ void QRedefinableTemplateSignature::unsetLeaf()
 /*!
     The redefinable element that is being redefined by this element.
  */
-const QSet<QRedefinableElement *> &QRedefinableTemplateSignature::redefinedElements() const
+QSet<QRedefinableElement *> QRedefinableTemplateSignature::redefinedElements() const
 {
     return (qwrappedobject_cast<const QRedefinableElement *>(this))->redefinedElements();
 }
@@ -238,7 +238,7 @@ const QSet<QRedefinableElement *> &QRedefinableTemplateSignature::redefinedEleme
 /*!
     References the contexts that this element may be redefined from.
  */
-const QSet<QClassifier *> &QRedefinableTemplateSignature::redefinitionContexts() const
+QSet<QClassifier *> QRedefinableTemplateSignature::redefinitionContexts() const
 {
     return (qwrappedobject_cast<const QRedefinableElement *>(this))->redefinitionContexts();
 }
@@ -250,13 +250,13 @@ const QSet<QClassifier *> &QRedefinableTemplateSignature::redefinitionContexts()
 /*!
     The formal template parameters of the extendedSignature.
  */
-const QSet<QTemplateParameter *> &QRedefinableTemplateSignature::inheritedParameters() const
+QSet<QTemplateParameter *> QRedefinableTemplateSignature::inheritedParameters() const
 {
     // This is a read-only derived association end
 
     qWarning("QRedefinableTemplateSignature::inheritedParameters: to be implemented (this is a derived associationend)");
 
-    return *(new QSet<QTemplateParameter *>); // change here to your derived return
+    return QSet<QTemplateParameter *>(); // change here to your derived return
 }
 
 /*!
@@ -296,7 +296,7 @@ void QRedefinableTemplateSignature::setClassifier(QClassifier *classifier)
 /*!
     The template signature that is extended by this template signature.
  */
-const QSet<QRedefinableTemplateSignature *> &QRedefinableTemplateSignature::extendedSignatures() const
+QSet<QRedefinableTemplateSignature *> QRedefinableTemplateSignature::extendedSignatures() const
 {
     // This is a read-write association end
 
@@ -339,6 +339,22 @@ bool QRedefinableTemplateSignature::isConsistentWith(const QRedefinableElement *
     Q_UNUSED(redefinee);
 
     return bool(); // change here to your derived return
+}
+
+void QRedefinableTemplateSignature::registerMetaTypes() const
+{
+    qRegisterMetaType<QClassifier *>("QClassifier *");
+    qRegisterMetaType<QSet<QClassifier *>>("QSet<QClassifier *>");
+    qRegisterMetaType<QList<QClassifier *>>("QList<QClassifier *>");
+
+    qRegisterMetaType<QTemplateParameter *>("QTemplateParameter *");
+    qRegisterMetaType<QSet<QTemplateParameter *>>("QSet<QTemplateParameter *>");
+    qRegisterMetaType<QList<QTemplateParameter *>>("QList<QTemplateParameter *>");
+
+    QWrappedObject::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qredefinabletemplatesignature.cpp"

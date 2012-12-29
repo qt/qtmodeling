@@ -80,14 +80,15 @@ public:
     virtual ~QStructuredClassifier();
 
     // Association ends from QStructuredClassifier
-    Q_INVOKABLE const QSet<QConnectableElement *> &roles() const;
-    Q_INVOKABLE const QList<QProperty *> &ownedAttributes() const;
+    Q_INVOKABLE QSet<QConnectableElement *> roles() const;
+    Q_INVOKABLE QList<QProperty *> ownedAttributes() const;
     Q_INVOKABLE void addOwnedAttribute(QProperty *ownedAttribute);
     Q_INVOKABLE void removeOwnedAttribute(QProperty *ownedAttribute);
-    Q_INVOKABLE const QSet<QProperty *> &parts() const;
-    Q_INVOKABLE const QSet<QConnector *> &ownedConnectors() const;
+    Q_INVOKABLE QSet<QProperty *> parts() const;
+    Q_INVOKABLE QSet<QConnector *> ownedConnectors() const;
     Q_INVOKABLE void addOwnedConnector(QConnector *ownedConnector);
     Q_INVOKABLE void removeOwnedConnector(QConnector *ownedConnector);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QStructuredClassifier(QStructuredClassifierPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

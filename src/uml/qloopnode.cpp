@@ -119,7 +119,7 @@ void QLoopNode::unsetTestedFirst()
 /*!
     A list of values that are moved into the loop variable pins before the first iteration of the loop.
  */
-const QList<QInputPin *> &QLoopNode::loopVariableInputs() const
+QList<QInputPin *> QLoopNode::loopVariableInputs() const
 {
     // This is a read-write association end
 
@@ -173,7 +173,7 @@ void QLoopNode::setDecider(QOutputPin *decider)
 /*!
     A list of output pins within the body fragment the values of which are moved to the loop variable pins after completion of execution of the body, before the next iteration of the loop begins or before the loop exits.
  */
-const QList<QOutputPin *> &QLoopNode::bodyOutputs() const
+QList<QOutputPin *> QLoopNode::bodyOutputs() const
 {
     // This is a read-write association end
 
@@ -204,7 +204,7 @@ void QLoopNode::removeBodyOutput(QOutputPin *bodyOutput)
 /*!
     A list of output pins that hold the values of the loop variables during an execution of the loop. When the test fails, the values are movied to the result pins of the loop.
  */
-const QList<QOutputPin *> &QLoopNode::loopVariables() const
+QList<QOutputPin *> QLoopNode::loopVariables() const
 {
     // This is a read-write association end
 
@@ -235,7 +235,7 @@ void QLoopNode::removeLoopVariable(QOutputPin *loopVariable)
 /*!
     A list of output pins that constitute the data flow output of the entire loop.
  */
-const QList<QOutputPin *> &QLoopNode::results() const
+QList<QOutputPin *> QLoopNode::results() const
 {
     // This is a read-write association end
 
@@ -268,7 +268,7 @@ void QLoopNode::removeResult(QOutputPin *result)
 /*!
     The set of nodes and edges that initialize values or perform other setup computations for the loop.
  */
-const QSet<QExecutableNode *> &QLoopNode::setupParts() const
+QSet<QExecutableNode *> QLoopNode::setupParts() const
 {
     // This is a read-write association end
 
@@ -299,7 +299,7 @@ void QLoopNode::removeSetupPart(QExecutableNode *setupPart)
 /*!
     The set of nodes and edges that perform the repetitive computations of the loop. The body section is executed as long as the test section produces a true value.
  */
-const QSet<QExecutableNode *> &QLoopNode::bodyParts() const
+QSet<QExecutableNode *> QLoopNode::bodyParts() const
 {
     // This is a read-write association end
 
@@ -330,7 +330,7 @@ void QLoopNode::removeBodyPart(QExecutableNode *bodyPart)
 /*!
     The set of nodes, edges, and designated value that compute a Boolean value to determine if another execution of the body will be performed.
  */
-const QSet<QExecutableNode *> &QLoopNode::tests() const
+QSet<QExecutableNode *> QLoopNode::tests() const
 {
     // This is a read-write association end
 
@@ -356,6 +356,26 @@ void QLoopNode::removeTest(QExecutableNode *test)
     if (d->tests.contains(test)) {
         d->tests.remove(test);
     }
+}
+
+void QLoopNode::registerMetaTypes() const
+{
+    qRegisterMetaType<QOutputPin *>("QOutputPin *");
+    qRegisterMetaType<QSet<QOutputPin *>>("QSet<QOutputPin *>");
+    qRegisterMetaType<QList<QOutputPin *>>("QList<QOutputPin *>");
+
+    qRegisterMetaType<QExecutableNode *>("QExecutableNode *");
+    qRegisterMetaType<QSet<QExecutableNode *>>("QSet<QExecutableNode *>");
+    qRegisterMetaType<QList<QExecutableNode *>>("QList<QExecutableNode *>");
+
+    qRegisterMetaType<QInputPin *>("QInputPin *");
+    qRegisterMetaType<QSet<QInputPin *>>("QSet<QInputPin *>");
+    qRegisterMetaType<QList<QInputPin *>>("QList<QInputPin *>");
+
+    QStructuredActivityNode::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qloopnode.cpp"

@@ -102,6 +102,18 @@ void QTypedElement::setType(QType *type)
     }
 }
 
+void QTypedElement::registerMetaTypes() const
+{
+    qRegisterMetaType<QType *>("QType *");
+    qRegisterMetaType<QSet<QType *>>("QSet<QType *>");
+    qRegisterMetaType<QList<QType *>>("QList<QType *>");
+
+    QNamedElement::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qtypedelement.cpp"
 
 QT_END_NAMESPACE_QTUML

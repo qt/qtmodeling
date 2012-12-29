@@ -86,21 +86,22 @@ public:
     Q_INVOKABLE void unsetAbstract();
 
     // Association ends from QClass
-    Q_INVOKABLE const QList<QClassifier *> &nestedClassifiers() const;
+    Q_INVOKABLE QList<QClassifier *> nestedClassifiers() const;
     Q_INVOKABLE void addNestedClassifier(QClassifier *nestedClassifier);
     Q_INVOKABLE void removeNestedClassifier(QClassifier *nestedClassifier);
-    Q_INVOKABLE const QList<QOperation *> &ownedOperations() const;
+    Q_INVOKABLE QList<QOperation *> ownedOperations() const;
     Q_INVOKABLE void addOwnedOperation(QOperation *ownedOperation);
     Q_INVOKABLE void removeOwnedOperation(QOperation *ownedOperation);
-    Q_INVOKABLE const QList<QProperty *> &ownedAttributes() const;
+    Q_INVOKABLE QList<QProperty *> ownedAttributes() const;
     Q_INVOKABLE void addOwnedAttribute(QProperty *ownedAttribute);
     Q_INVOKABLE void removeOwnedAttribute(QProperty *ownedAttribute);
-    Q_INVOKABLE const QSet<QClass *> &superClasses() const;
+    Q_INVOKABLE QSet<QClass *> superClasses() const;
     Q_INVOKABLE void addSuperClass(QClass *superClass);
     Q_INVOKABLE void removeSuperClass(QClass *superClass);
 
     // Operations
-    Q_INVOKABLE const QSet<QNamedElement *> &inherit(const QSet<QNamedElement *> &inhs) const;
+    Q_INVOKABLE QSet<QNamedElement *> inherit(QSet<QNamedElement *> inhs) const;
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QClass(QClassPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

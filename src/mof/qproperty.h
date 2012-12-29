@@ -118,7 +118,7 @@ public:
     Q_INVOKABLE void unsetAggregation();
 
     // Association ends from QProperty
-    Q_INVOKABLE const QSet<QProperty *> &subsettedProperties() const;
+    Q_INVOKABLE QSet<QProperty *> subsettedProperties() const;
     Q_INVOKABLE void addSubsettedProperty(QProperty *subsettedProperty);
     Q_INVOKABLE void removeSubsettedProperty(QProperty *subsettedProperty);
     Q_INVOKABLE QAssociation *owningAssociation() const;
@@ -131,7 +131,7 @@ public:
     Q_INVOKABLE void setOpposite(QProperty *opposite);
     Q_INVOKABLE QDataType *datatype() const;
     Q_INVOKABLE void setDatatype(QDataType *datatype);
-    Q_INVOKABLE const QSet<QProperty *> &redefinedProperties() const;
+    Q_INVOKABLE QSet<QProperty *> redefinedProperties() const;
     Q_INVOKABLE void addRedefinedProperty(QProperty *redefinedProperty);
     Q_INVOKABLE void removeRedefinedProperty(QProperty *redefinedProperty);
     Q_INVOKABLE QAssociation *association() const;
@@ -141,7 +141,8 @@ public:
     Q_INVOKABLE bool isAttribute(const QProperty *p) const;
     Q_INVOKABLE bool isConsistentWith(const QRedefinableElement *redefinee) const;
     Q_INVOKABLE bool isNavigable() const;
-    Q_INVOKABLE const QSet<QType *> &subsettingContext() const;
+    Q_INVOKABLE QSet<QType *> subsettingContext() const;
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QProperty(QPropertyPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

@@ -131,7 +131,7 @@ QElement::~QElement()
 /*!
     The Elements owned by this element.
  */
-const QSet<QElement *> &QElement::ownedElements() const
+QSet<QElement *> QElement::ownedElements() const
 {
     // This is a read-only derived-union association end
 
@@ -153,7 +153,7 @@ QElement *QElement::owner() const
 /*!
     The Comments owned by this element.
  */
-const QSet<QComment *> &QElement::ownedComments() const
+QSet<QComment *> QElement::ownedComments() const
 {
     // This is a read-write association end
 
@@ -190,11 +190,11 @@ void QElement::removeOwnedComment(QComment *ownedComment)
 /*!
     The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
  */
-const QSet<QElement *> &QElement::allOwnedElements() const
+QSet<QElement *> QElement::allOwnedElements() const
 {
     qWarning("QElement::allOwnedElements: operation to be implemented");
 
-    return *(new QSet<QElement *>); // change here to your derived return
+    return QSet<QElement *>(); // change here to your derived return
 }
 
 /*!
@@ -233,6 +233,22 @@ bool QElement::isInstanceOfType(const QClass *type, bool includesSubtypes) const
 void QElement::delete_()
 {
     qWarning("QElement::delete_: operation to be implemented");
+}
+
+void QElement::registerMetaTypes() const
+{
+    qRegisterMetaType<QComment *>("QComment *");
+    qRegisterMetaType<QSet<QComment *>>("QSet<QComment *>");
+    qRegisterMetaType<QList<QComment *>>("QList<QComment *>");
+
+    qRegisterMetaType<QClass *>("QClass *");
+    qRegisterMetaType<QSet<QClass *>>("QSet<QClass *>");
+    qRegisterMetaType<QList<QClass *>>("QList<QClass *>");
+
+    QMofObject::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qelement.cpp"

@@ -102,6 +102,18 @@ void QActivityParameterNode::setParameter(QParameter *parameter)
     }
 }
 
+void QActivityParameterNode::registerMetaTypes() const
+{
+    qRegisterMetaType<QParameter *>("QParameter *");
+    qRegisterMetaType<QSet<QParameter *>>("QSet<QParameter *>");
+    qRegisterMetaType<QList<QParameter *>>("QList<QParameter *>");
+
+    QObjectNode::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qactivityparameternode.cpp"
 
 QT_END_NAMESPACE_QTUML

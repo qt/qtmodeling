@@ -73,6 +73,7 @@ public:
     // Association ends from QInstanceValue
     Q_INVOKABLE QInstanceSpecification *instance() const;
     Q_INVOKABLE void setInstance(QInstanceSpecification *instance);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QInstanceValue(QInstanceValuePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

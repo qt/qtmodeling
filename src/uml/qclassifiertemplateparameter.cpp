@@ -141,7 +141,7 @@ void QClassifierTemplateParameter::setParameteredElement(QClassifier *parametere
 /*!
     The classifiers that constrain the argument that can be used for the parameter. If the allowSubstitutable attribute is true, then any classifier that is compatible with this constraining classifier can be substituted; otherwise, it must be either this classifier or one of its subclasses. If this property is empty, there are no constraints on the classifier that can be used as an argument.
  */
-const QSet<QClassifier *> &QClassifierTemplateParameter::constrainingClassifiers() const
+QSet<QClassifier *> QClassifierTemplateParameter::constrainingClassifiers() const
 {
     // This is a read-write association end
 
@@ -167,6 +167,18 @@ void QClassifierTemplateParameter::removeConstrainingClassifier(QClassifier *con
     if (d->constrainingClassifiers.contains(constrainingClassifier)) {
         d->constrainingClassifiers.remove(constrainingClassifier);
     }
+}
+
+void QClassifierTemplateParameter::registerMetaTypes() const
+{
+    qRegisterMetaType<QClassifier *>("QClassifier *");
+    qRegisterMetaType<QSet<QClassifier *>>("QSet<QClassifier *>");
+    qRegisterMetaType<QList<QClassifier *>>("QList<QClassifier *>");
+
+    QTemplateParameter::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qclassifiertemplateparameter.cpp"

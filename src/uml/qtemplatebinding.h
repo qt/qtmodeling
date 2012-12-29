@@ -82,9 +82,10 @@ public:
     Q_INVOKABLE void setSignature(QTemplateSignature *signature);
     Q_INVOKABLE QTemplateableElement *boundElement() const;
     Q_INVOKABLE void setBoundElement(QTemplateableElement *boundElement);
-    Q_INVOKABLE const QSet<QTemplateParameterSubstitution *> &parameterSubstitutions() const;
+    Q_INVOKABLE QSet<QTemplateParameterSubstitution *> parameterSubstitutions() const;
     Q_INVOKABLE void addParameterSubstitution(QTemplateParameterSubstitution *parameterSubstitution);
     Q_INVOKABLE void removeParameterSubstitution(QTemplateParameterSubstitution *parameterSubstitution);
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QTemplateBinding(QTemplateBindingPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

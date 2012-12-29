@@ -74,6 +74,14 @@ QForkNode::~QForkNode()
 {
 }
 
+void QForkNode::registerMetaTypes() const
+{
+    QControlNode::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qforknode.cpp"
 
 QT_END_NAMESPACE_QTUML

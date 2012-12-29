@@ -108,13 +108,33 @@ void QMofObject::unset(const QProperty *property)
     Q_UNUSED(property);
 }
 
-QMofObject *QMofObject::invoke(const QOperation *op, const QSet<QArgument *> &arguments)
+QMofObject *QMofObject::invoke(const QOperation *op, QSet<QArgument *> arguments)
 {
     qWarning("QMofObject::invoke: operation to be implemented");
     Q_UNUSED(op);
     Q_UNUSED(arguments);
 
     return 0; // change here to your derived return
+}
+
+void QMofObject::registerMetaTypes() const
+{
+    qRegisterMetaType<QArgument *>("QArgument *");
+    qRegisterMetaType<QSet<QArgument *>>("QSet<QArgument *>");
+    qRegisterMetaType<QList<QArgument *>>("QList<QArgument *>");
+
+    qRegisterMetaType<QOperation *>("QOperation *");
+    qRegisterMetaType<QSet<QOperation *>>("QSet<QOperation *>");
+    qRegisterMetaType<QList<QOperation *>>("QList<QOperation *>");
+
+    qRegisterMetaType<QProperty *>("QProperty *");
+    qRegisterMetaType<QSet<QProperty *>>("QSet<QProperty *>");
+    qRegisterMetaType<QList<QProperty *>>("QList<QProperty *>");
+
+    QWrappedObject::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qmofobject.cpp"

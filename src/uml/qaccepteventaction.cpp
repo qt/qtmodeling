@@ -115,7 +115,7 @@ void QAcceptEventAction::unsetUnmarshall()
 /*!
     The type of events accepted by the action, as specified by triggers. For triggers with signal events, a signal of the specified type or any subtype of the specified signal type is accepted.
  */
-const QSet<QTrigger *> &QAcceptEventAction::triggers() const
+QSet<QTrigger *> QAcceptEventAction::triggers() const
 {
     // This is a read-write association end
 
@@ -152,7 +152,7 @@ void QAcceptEventAction::removeTrigger(QTrigger *trigger)
 /*!
     Pins holding the received event objects or their attributes. Event objects may be copied in transmission, so identity might not be preserved.
  */
-const QSet<QOutputPin *> &QAcceptEventAction::results() const
+QSet<QOutputPin *> QAcceptEventAction::results() const
 {
     // This is a read-write association end
 
@@ -184,6 +184,22 @@ void QAcceptEventAction::removeResult(QOutputPin *result)
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QActionPrivate *>(d))->removeOutput(qwrappedobject_cast<QOutputPin *>(result));
     }
+}
+
+void QAcceptEventAction::registerMetaTypes() const
+{
+    qRegisterMetaType<QOutputPin *>("QOutputPin *");
+    qRegisterMetaType<QSet<QOutputPin *>>("QSet<QOutputPin *>");
+    qRegisterMetaType<QList<QOutputPin *>>("QList<QOutputPin *>");
+
+    qRegisterMetaType<QTrigger *>("QTrigger *");
+    qRegisterMetaType<QSet<QTrigger *>>("QSet<QTrigger *>");
+    qRegisterMetaType<QList<QTrigger *>>("QList<QTrigger *>");
+
+    QAction::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qaccepteventaction.cpp"

@@ -103,6 +103,18 @@ void QIntervalConstraint::setSpecification(QInterval *specification)
     }
 }
 
+void QIntervalConstraint::registerMetaTypes() const
+{
+    qRegisterMetaType<QInterval *>("QInterval *");
+    qRegisterMetaType<QSet<QInterval *>>("QSet<QInterval *>");
+    qRegisterMetaType<QList<QInterval *>>("QList<QInterval *>");
+
+    QConstraint::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qintervalconstraint.cpp"
 
 QT_END_NAMESPACE_QTUML

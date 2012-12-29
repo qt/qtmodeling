@@ -149,6 +149,18 @@ void QPackageMerge::setReceivingPackage(QPackage *receivingPackage)
     }
 }
 
+void QPackageMerge::registerMetaTypes() const
+{
+    qRegisterMetaType<QPackage *>("QPackage *");
+    qRegisterMetaType<QSet<QPackage *>>("QSet<QPackage *>");
+    qRegisterMetaType<QList<QPackage *>>("QList<QPackage *>");
+
+    QDirectedRelationship::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qpackagemerge.cpp"
 
 QT_END_NAMESPACE_QTMOF

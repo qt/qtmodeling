@@ -84,7 +84,7 @@ QInterruptibleActivityRegion::~QInterruptibleActivityRegion()
 /*!
     The edges leaving the region that will abort other tokens flowing in the region.
  */
-const QSet<QActivityEdge *> &QInterruptibleActivityRegion::interruptingEdges() const
+QSet<QActivityEdge *> QInterruptibleActivityRegion::interruptingEdges() const
 {
     // This is a read-write association end
 
@@ -121,7 +121,7 @@ void QInterruptibleActivityRegion::removeInterruptingEdge(QActivityEdge *interru
 /*!
     Nodes immediately contained in the group.
  */
-const QSet<QActivityNode *> &QInterruptibleActivityRegion::nodes() const
+QSet<QActivityNode *> QInterruptibleActivityRegion::nodes() const
 {
     // This is a read-write association end
 
@@ -160,6 +160,22 @@ void QInterruptibleActivityRegion::removeNode(QActivityNode *node)
         if (node)
             node->removeInInterruptibleRegion(this);
     }
+}
+
+void QInterruptibleActivityRegion::registerMetaTypes() const
+{
+    qRegisterMetaType<QActivityEdge *>("QActivityEdge *");
+    qRegisterMetaType<QSet<QActivityEdge *>>("QSet<QActivityEdge *>");
+    qRegisterMetaType<QList<QActivityEdge *>>("QList<QActivityEdge *>");
+
+    qRegisterMetaType<QActivityNode *>("QActivityNode *");
+    qRegisterMetaType<QSet<QActivityNode *>>("QSet<QActivityNode *>");
+    qRegisterMetaType<QList<QActivityNode *>>("QList<QActivityNode *>");
+
+    QActivityGroup::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qinterruptibleactivityregion.cpp"

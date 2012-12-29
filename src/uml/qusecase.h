@@ -80,21 +80,22 @@ public:
     virtual ~QUseCase();
 
     // Association ends from QUseCase
-    Q_INVOKABLE const QSet<QExtensionPoint *> &extensionPoints() const;
+    Q_INVOKABLE QSet<QExtensionPoint *> extensionPoints() const;
     Q_INVOKABLE void addExtensionPoint(QExtensionPoint *extensionPoint);
     Q_INVOKABLE void removeExtensionPoint(QExtensionPoint *extensionPoint);
-    Q_INVOKABLE const QSet<QInclude *> &includes() const;
+    Q_INVOKABLE QSet<QInclude *> includes() const;
     Q_INVOKABLE void addInclude(QInclude *include);
     Q_INVOKABLE void removeInclude(QInclude *include);
-    Q_INVOKABLE const QSet<QClassifier *> &subjects() const;
+    Q_INVOKABLE QSet<QClassifier *> subjects() const;
     Q_INVOKABLE void addSubject(QClassifier *subject);
     Q_INVOKABLE void removeSubject(QClassifier *subject);
-    Q_INVOKABLE const QSet<QExtend *> &extends() const;
+    Q_INVOKABLE QSet<QExtend *> extends() const;
     Q_INVOKABLE void addExtend(QExtend *extend);
     Q_INVOKABLE void removeExtend(QExtend *extend);
 
     // Operations
-    Q_INVOKABLE const QSet<QUseCase *> &allIncludedUseCases() const;
+    Q_INVOKABLE QSet<QUseCase *> allIncludedUseCases() const;
+    virtual void registerMetaTypes() const;
 
 protected:
     explicit QUseCase(QUseCasePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

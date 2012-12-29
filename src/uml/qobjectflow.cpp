@@ -182,6 +182,18 @@ void QObjectFlow::setTransformation(QBehavior *transformation)
     }
 }
 
+void QObjectFlow::registerMetaTypes() const
+{
+    qRegisterMetaType<QBehavior *>("QBehavior *");
+    qRegisterMetaType<QSet<QBehavior *>>("QSet<QBehavior *>");
+    qRegisterMetaType<QList<QBehavior *>>("QList<QBehavior *>");
+
+    QActivityEdge::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qobjectflow.cpp"
 
 QT_END_NAMESPACE_QTUML

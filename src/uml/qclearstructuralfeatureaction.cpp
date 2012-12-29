@@ -110,6 +110,18 @@ void QClearStructuralFeatureAction::setResult(QOutputPin *result)
     }
 }
 
+void QClearStructuralFeatureAction::registerMetaTypes() const
+{
+    qRegisterMetaType<QOutputPin *>("QOutputPin *");
+    qRegisterMetaType<QSet<QOutputPin *>>("QSet<QOutputPin *>");
+    qRegisterMetaType<QList<QOutputPin *>>("QList<QOutputPin *>");
+
+    QStructuralFeatureAction::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qclearstructuralfeatureaction.cpp"
 
 QT_END_NAMESPACE_QTUML

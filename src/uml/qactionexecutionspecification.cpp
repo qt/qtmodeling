@@ -102,6 +102,18 @@ void QActionExecutionSpecification::setAction(QAction *action)
     }
 }
 
+void QActionExecutionSpecification::registerMetaTypes() const
+{
+    qRegisterMetaType<QAction *>("QAction *");
+    qRegisterMetaType<QSet<QAction *>>("QSet<QAction *>");
+    qRegisterMetaType<QList<QAction *>>("QList<QAction *>");
+
+    QExecutionSpecification::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
+}
+
 #include "moc_qactionexecutionspecification.cpp"
 
 QT_END_NAMESPACE_QTUML

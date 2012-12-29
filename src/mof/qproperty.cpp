@@ -280,7 +280,7 @@ void QProperty::unsetAggregation()
 /*!
     References the properties of which this property is constrained to be a subset.
  */
-const QSet<QProperty *> &QProperty::subsettedProperties() const
+QSet<QProperty *> QProperty::subsettedProperties() const
 {
     // This is a read-write association end
 
@@ -491,7 +491,7 @@ void QProperty::setDatatype(QDataType *datatype)
 /*!
     References the properties that are redefined by this property.
  */
-const QSet<QProperty *> &QProperty::redefinedProperties() const
+QSet<QProperty *> QProperty::redefinedProperties() const
 {
     // This is a read-write association end
 
@@ -589,11 +589,43 @@ bool QProperty::isNavigable() const
 /*!
     The query subsettingContext() gives the context for subsetting a property. It consists, in the case of an attribute, of the corresponding classifier, and in the case of an association end, all of the classifiers at the other ends.
  */
-const QSet<QType *> &QProperty::subsettingContext() const
+QSet<QType *> QProperty::subsettingContext() const
 {
     qWarning("QProperty::subsettingContext: operation to be implemented");
 
-    return *(new QSet<QType *>); // change here to your derived return
+    return QSet<QType *>(); // change here to your derived return
+}
+
+void QProperty::registerMetaTypes() const
+{
+    qRegisterMetaType<QRedefinableElement *>("QRedefinableElement *");
+    qRegisterMetaType<QSet<QRedefinableElement *>>("QSet<QRedefinableElement *>");
+    qRegisterMetaType<QList<QRedefinableElement *>>("QList<QRedefinableElement *>");
+
+    qRegisterMetaType<QType *>("QType *");
+    qRegisterMetaType<QSet<QType *>>("QSet<QType *>");
+    qRegisterMetaType<QList<QType *>>("QList<QType *>");
+
+    qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
+    qRegisterMetaType<QSet<QValueSpecification *>>("QSet<QValueSpecification *>");
+    qRegisterMetaType<QList<QValueSpecification *>>("QList<QValueSpecification *>");
+
+    qRegisterMetaType<QClass *>("QClass *");
+    qRegisterMetaType<QSet<QClass *>>("QSet<QClass *>");
+    qRegisterMetaType<QList<QClass *>>("QList<QClass *>");
+
+    qRegisterMetaType<QAssociation *>("QAssociation *");
+    qRegisterMetaType<QSet<QAssociation *>>("QSet<QAssociation *>");
+    qRegisterMetaType<QList<QAssociation *>>("QList<QAssociation *>");
+
+    qRegisterMetaType<QDataType *>("QDataType *");
+    qRegisterMetaType<QSet<QDataType *>>("QSet<QDataType *>");
+    qRegisterMetaType<QList<QDataType *>>("QList<QDataType *>");
+
+    QStructuralFeature::registerMetaTypes();
+
+    foreach (QWrappedObject *wrappedObject, wrappedObjects())
+        wrappedObject->registerMetaTypes();
 }
 
 #include "moc_qproperty.cpp"
