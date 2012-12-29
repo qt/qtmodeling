@@ -2,7 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QtCore/QHash>
+
 #include <QtWidgets/QMainWindow>
+
+#include <QtWrappedObjects/QWrappedObjectPointer>
 
 namespace Ui {
     class MainWindow;
@@ -12,10 +15,12 @@ namespace QtWrappedObjects {
     class QWrappedObject;
 }
 using QtWrappedObjects::QWrappedObject;
+using QtWrappedObjects::QWrappedObjectPointer;
 
 namespace QtUml {
-    class QNamedElement;
+    class QModel;
 }
+using QtUml::QModel;
 
 class QTreeWidgetItem;
 
@@ -40,6 +45,9 @@ private:
     Ui::MainWindow *ui;
     QHash< QString, QPair<QObject *, QMetaMethod> > _visitedAddMethods;
     QList<QWrappedObject *> _visitedObjects;
+
+    QWrappedObjectPointer<QModel> _model;
+    QWrappedObjectPointer<QModel> _model2;
 
     void populateContextMenu(QMenu &menu, QObject *element);
 };
