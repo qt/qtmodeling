@@ -10,18 +10,16 @@
 #include <QtUml/QComponentRealization>
 
 #include <QtCore/QDebug>
-#include <QtCore/QScopedPointer>
-#include <QtCore/QMetaProperty>
 
 using namespace QtUml;
 using namespace QtWrappedObjects;
 
-void checkProperties(QObject *object)
+void checkProperties(QWrappedObject *wrappedObject)
 {
-    const QMetaObject *metaObject = object->metaObject();
-    int propertyCount = metaObject->propertyCount();
+    const QMetaWrappedObject *metaWrappedObject = wrappedObject->metaWrappedObject();
+    int propertyCount = metaWrappedObject->propertyCount();
     for (int i = 0; i < propertyCount; ++i) {
-        qDebug() << "Property" << metaObject->property(i).name();
+        qDebug() << "Property" << metaWrappedObject->property(i).metaProperty.name();
     }
 }
 
@@ -117,8 +115,5 @@ int main ()
 
     delete model.data();
     delete package.data();
-
-    // All containers created by nestedPackages(), ownedStereotypes(), and ownedTypes()
-    // are destroyed by QScopedPointer
 }
 
