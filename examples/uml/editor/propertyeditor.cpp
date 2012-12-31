@@ -16,16 +16,17 @@ PropertyEditor::PropertyEditor(QWidget *widget, bool resettable, QWidget *parent
         QToolButton *toolButton = new QToolButton;
         toolButton->setIcon(QPixmap(":/icons/resetproperty.png"));
         toolButton->setMaximumSize(22, 22);
+        connect(toolButton, &QToolButton::clicked, this, &PropertyEditor::resetRequired);
         layout->addWidget(toolButton);
     }
     setLayout(layout);
     if (QComboBox *comboBox = qobject_cast<QComboBox *>(_widget))
-        connect(comboBox, SIGNAL(currentIndexChanged(int)), SIGNAL(intValueChanged(int)));
+        connect(comboBox, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &PropertyEditor::valueChanged);
     if (QCheckBox *checkBox = qobject_cast<QCheckBox *>(_widget))
-        connect(checkBox, SIGNAL(stateChanged(int)), SIGNAL(intValueChanged(int)));
+        connect(checkBox, &QCheckBox::stateChanged, this, &PropertyEditor::valueChanged);
 }
 
-int PropertyEditor::intValue() const
+int PropertyEditor::value() const
 {
     if (QComboBox *comboBox = qobject_cast<QComboBox *>(_widget))
         return comboBox->currentIndex();
@@ -34,18 +35,18 @@ int PropertyEditor::intValue() const
     return -1;
 }
 
-void PropertyEditor::setIntValue(int value)
+void PropertyEditor::setValue(int value)
 {
     if (QComboBox *comboBox = qobject_cast<QComboBox *>(_widget)) {
         if (comboBox->currentIndex() != value) {
             comboBox->setCurrentIndex(value);
-            emit intValueChanged(value);
+            emit valueChanged(value);
         }
     }
     if (QCheckBox *checkBox = qobject_cast<QCheckBox *>(_widget)) {
         if (checkBox->isChecked() != (value == 0 ? false:true)) {
             checkBox->setChecked(value == 0 ? false:true);
-            emit intValueChanged(value);
+            emit valueChanged(value);
         }
     }
 }

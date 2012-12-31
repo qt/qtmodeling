@@ -49,7 +49,7 @@ private:
     QWrappedObjectPointer<QModel> _model;
     QWrappedObjectPointer<QModel> _model2;
 
-    void populateContextMenu(QMenu &menu, QObject *element);
+    void populateContextMenu(QMenu &menu, QtWrappedObjects::QWrappedObject *element);
 };
 
 #endif // MAINWINDOW_H

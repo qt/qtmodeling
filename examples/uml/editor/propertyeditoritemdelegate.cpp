@@ -33,7 +33,8 @@ QWidget *PropertyEditorItemDelegate::createEditor(QWidget *parent, const QStyleO
 
         if (metaProperty.type() == QVariant::Bool) {
             PropertyEditor *propertyEditor = new PropertyEditor(new QCheckBox, metaProperty.isResettable(), parent);
-            connect(propertyEditor, SIGNAL(intValueChanged(int)), SLOT(editorChanged()));
+            connect(propertyEditor, &PropertyEditor::valueChanged, this, &PropertyEditorItemDelegate::editorChanged);
+            connect(propertyEditor, &PropertyEditor::resetRequired, [=](){ metaProperty.reset(metaPropertyInfo->propertyWrappedObject); propertyEditor->setValue(metaProperty.read(metaPropertyInfo->propertyWrappedObject).toInt()); });
             return propertyEditor;
         }
         if (metaProperty.isEnumType()) {
@@ -44,7 +45,8 @@ QWidget *PropertyEditorItemDelegate::createEditor(QWidget *parent, const QStyleO
                 comboBox->addItem(QString(metaEnum.key(j)).toLower().remove(QString(metaProperty.name())));
             comboBox->setMaximumHeight(22);
             PropertyEditor *propertyEditor = new PropertyEditor(comboBox, metaProperty.isResettable(), parent);
-            connect(propertyEditor, SIGNAL(intValueChanged(int)), SLOT(editorChanged()));
+            connect(propertyEditor, &PropertyEditor::valueChanged, this, &PropertyEditorItemDelegate::editorChanged);
+            connect(propertyEditor, &PropertyEditor::resetRequired, [=](){ metaProperty.reset(metaPropertyInfo->propertyWrappedObject); propertyEditor->setValue(metaProperty.read(metaPropertyInfo->propertyWrappedObject).toInt()); });
             return propertyEditor;
         }
         return QStyledItemDelegate::createEditor(parent, option, index);
@@ -59,9 +61,9 @@ void PropertyEditorItemDelegate::setEditorData(QWidget *editor, const QModelInde
         QMetaProperty metaProperty = metaPropertyInfo->metaProperty;
         PropertyEditor *propertyEditor = qobject_cast<PropertyEditor *>(editor);
         if (metaProperty.type() == QVariant::Bool)
-            propertyEditor->setIntValue(metaProperty.read(metaPropertyInfo->propertyWrappedObject).toBool() == true ? 1:0);
+            propertyEditor->setValue(metaProperty.read(metaPropertyInfo->propertyWrappedObject).toBool() == true ? 1:0);
         else if (metaProperty.isEnumType())
-            propertyEditor->setIntValue(metaProperty.read(metaPropertyInfo->propertyWrappedObject).toInt());
+            propertyEditor->setValue(metaProperty.read(metaPropertyInfo->propertyWrappedObject).toInt());
         else
             QStyledItemDelegate::setEditorData(editor, index);
     }
@@ -95,7 +97,7 @@ void PropertyEditorItemDelegate::setModelData(QWidget *editor, QAbstractItemMode
         QMetaProperty metaProperty = metaPropertyInfo->metaProperty;
         if (metaProperty.type() == QVariant::Bool || metaProperty.isEnumType()) {
             PropertyEditor *propertyEditor = qobject_cast<PropertyEditor *>(editor);
-            model->setData(index, propertyEditor->intValue(), Qt::DisplayRole);
+            model->setData(index, propertyEditor->value(), Qt::DisplayRole);
         }
         else if (metaProperty.type() == QVariant::String) {
             QLineEdit *lineEdit = qobject_cast<QLineEdit *>(editor);
@@ -106,6 +108,14 @@ void PropertyEditorItemDelegate::setModelData(QWidget *editor, QAbstractItemMode
     }
     else
         QStyledItemDelegate::setModelData(editor, model, index);
+}
+
+bool PropertyEditorItemDelegate::eventFilter(QObject *object, QEvent *event)
+{
+    if (event->type() == QEvent::FocusOut)
+        return false;
+    else
+        return QStyledItemDelegate::eventFilter(object, event);
 }
 
 void PropertyEditorItemDelegate::editorChanged()

@@ -30,8 +30,6 @@
 #include "propertyeditoritemdelegate.h"
 #include "wrappedobjectpropertymodel.h"
 
-#include <QFileSystemModel>
-
 using namespace QtUml;
 using namespace QtWrappedObjects;
 
@@ -48,7 +46,9 @@ MainWindow::MainWindow(QWidget *parent) :
     palette.setColor(QPalette::Inactive, QPalette::AlternateBase, QColor(255, 255, 191));
     ui->propertyEditor->setPalette(palette);
 
-    ui->propertyEditor->setItemDelegateForColumn(1, new PropertyEditorItemDelegate(ui->propertyEditor));
+    PropertyEditorItemDelegate *delegate = new PropertyEditorItemDelegate(ui->propertyEditor);
+    connect(delegate, &PropertyEditorItemDelegate::closeEditor, [=](){ qDebug() << "CloseEditor called"; });
+    ui->propertyEditor->setItemDelegateForColumn(1, delegate);
 
     WrappedObjectPropertyModel *m = new WrappedObjectPropertyModel(this);
     ui->propertyEditor->setModel(m);
@@ -108,31 +108,28 @@ MainWindow::~MainWindow()
 void MainWindow::contextMenuEvent(QContextMenuEvent *event)
 {
     QMenu menu(this);
-    QObject *element = qvariant_cast<QObject *>(ui->modelExplorer->currentItem()->data(0, Qt::UserRole));
+    QWrappedObject *element = qvariant_cast<QWrappedObject *>(ui->modelExplorer->currentItem()->data(0, Qt::UserRole));
     _visitedAddMethods.clear();
     populateContextMenu(menu, element);
     menu.exec(event->globalPos());
 }
 
-void MainWindow::populateContextMenu(QMenu &menu, QObject *element)
+void MainWindow::populateContextMenu(QMenu &menu, QWrappedObject *element)
 {
-//    foreach (QObject *child, element->children())
-//        populateContextMenu(menu, child);
-
-    const QMetaObject *metaObject = element->metaObject();
-    int propertyCount = metaObject->propertyCount();
+    const QMetaWrappedObject *metaWrappedObject = element->metaWrappedObject();
+    int propertyCount = metaWrappedObject->propertyCount();
     for (int i = 0; i < propertyCount; ++i) {
-        QString propertyName = metaObject->property(i).name();
-        QString propertyType = metaObject->property(i).typeName();
+        QString propertyName = metaWrappedObject->property(i).metaProperty.name();
+        QString propertyType = metaWrappedObject->property(i).metaProperty.typeName();
         if (propertyType.contains("QList") || propertyType.contains("QSet")) {
             QString modifiedPropertyName = QString(propertyName.left(1).toUpper()+propertyName.mid(1)).remove(QRegularExpression("s$")).replace(QRegularExpression("ie$"), "y").replace(QRegularExpression("se$"), "s").replace(QRegularExpression("ice$"), "ex").replace(QRegularExpression("ce$"), "x");
-            QString methodParameter = QString(metaObject->property(i).typeName()).remove("QList<").remove("QSet<").remove(">");
+            QString methodParameter = propertyType.remove("QList<").remove("QSet<").remove(">");
             QString methodSignature = QString("add%1(%2)").arg(modifiedPropertyName).arg(methodParameter);
             int metaMethodIndex;
             QString text = tr("Add %1").arg(modifiedPropertyName);
-            if ((metaMethodIndex = metaObject->indexOfMethod(methodSignature.toLatin1())) != -1 and !_visitedAddMethods.contains(text)) {
+            if ((metaMethodIndex = element->metaObject()->indexOfMethod(methodSignature.toLatin1())) != -1 and !_visitedAddMethods.contains(text)) {
                 QAction *action = new QAction(text, this);
-                _visitedAddMethods[text] = QPair<QObject *, QMetaMethod>(element, metaObject->method(metaMethodIndex));
+                _visitedAddMethods[text] = QPair<QObject *, QMetaMethod>(element, element->metaObject()->method(metaMethodIndex));
                 action->setData(methodParameter);
                 connect(action, SIGNAL(triggered()), this, SLOT(handleAddMethod()));
                 menu.addAction(action);
@@ -186,8 +183,6 @@ void MainWindow::populateModelExplorer(QWrappedObject *element, QTreeWidgetItem 
             QWrappedObject *wrappedObject = qvariant_cast<QWrappedObject *>(metaProperty.read(propertyWrappedObject));
             if (!_visitedObjects.contains(qTopLevelWrapper(wrappedObject)))
                 populateModelExplorer(wrappedObject, item);
-            if (!metaProperty.isStored())
-                delete wrappedObject;
         }
         else if (typeName.contains("QSet") && metaProperty.read(propertyWrappedObject).isValid()) {
             QSet<QWrappedObject *> elements = *(static_cast<QSet<QWrappedObject *> *>(metaProperty.read(propertyWrappedObject).data()));
