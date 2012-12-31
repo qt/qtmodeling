@@ -140,8 +140,12 @@ QVariant WrappedObjectPropertyModel::data(const QModelIndex &index, int role) co
                 font.setBold(metaPropertyInfo->wasChanged);
             return font;
         }
-        case Qt::UserRole: {
-            return qVariantFromValue(static_cast<QMetaPropertyInfo *>(index.internalPointer()));
+        case Qt::ToolTipRole: {
+            QMetaPropertyInfo *metaPropertyInfo = static_cast<QMetaPropertyInfo *>(index.internalPointer());
+            if (metaPropertyInfo)
+                return QString::fromLatin1("type: %1").arg(metaPropertyInfo->metaProperty.typeName());
+            else
+                return "";
         }
     }
     return QVariant();
