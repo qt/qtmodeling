@@ -15,9 +15,6 @@ public:
     virtual void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const;
     virtual void setModelData(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index) const;
     bool eventFilter(QObject *object, QEvent *event);
-
-private Q_SLOTS:
-    void editorChanged();
 };
 
 #endif // PROPERTYEDITORITEMDELEGATE_H
