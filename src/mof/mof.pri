@@ -53,7 +53,8 @@ PUBLIC_HEADERS += \
     qfeature.h \
     qpackageimport.h \
     qargument.h \
-    qbehavioralfeature.h
+    qbehavioralfeature.h \
+    qxmiwriter.h
 
 PRIVATE_HEADERS += \
     qrelationship_p.h \
@@ -108,7 +109,8 @@ PRIVATE_HEADERS += \
     qfeature_p.h \
     qpackageimport_p.h \
     qargument_p.h \
-    qbehavioralfeature_p.h
+    qbehavioralfeature_p.h \
+    qxmiwriter_p.h
 
 SOURCES += \
     qtmofenumerations.cpp \
@@ -164,4 +166,5 @@ SOURCES += \
     qfeature.cpp \
     qpackageimport.cpp \
     qargument.cpp \
-    qbehavioralfeature.cpp
+    qbehavioralfeature.cpp \
+    qxmiwriter.cpp
