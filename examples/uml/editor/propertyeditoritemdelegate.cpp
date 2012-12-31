@@ -10,8 +10,6 @@
 #include <QtWrappedObjects/QWrappedObject>
 #include <QtWrappedObjects/QMetaPropertyInfo>
 
-#include <QtCore/QDebug>
-
 #include "propertyeditor.h"
 
 using namespace QtWrappedObjects;
@@ -28,25 +26,26 @@ PropertyEditorItemDelegate::~PropertyEditorItemDelegate()
 QWidget *PropertyEditorItemDelegate::createEditor(QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
     if (index.data(Qt::UserRole).canConvert<QMetaPropertyInfo *>()) {
-        QMetaPropertyInfo *metaPropertyInfo = qvariant_cast<QMetaPropertyInfo *>(index.data(Qt::UserRole));
+        QMetaPropertyInfo *metaPropertyInfo = static_cast<QMetaPropertyInfo *>(index.internalPointer());
         QMetaProperty metaProperty = metaPropertyInfo->metaProperty;
 
-        if (metaProperty.type() == QVariant::Bool) {
-            PropertyEditor *propertyEditor = new PropertyEditor(new QCheckBox, metaProperty.isResettable(), parent);
-            connect(propertyEditor, &PropertyEditor::valueChanged, this, &PropertyEditorItemDelegate::editorChanged);
-            connect(propertyEditor, &PropertyEditor::resetRequired, [=](){ metaProperty.reset(metaPropertyInfo->propertyWrappedObject); propertyEditor->setValue(metaProperty.read(metaPropertyInfo->propertyWrappedObject).toInt()); });
-            return propertyEditor;
-        }
-        if (metaProperty.isEnumType()) {
-            QComboBox *comboBox = new QComboBox(parent);
-            QMetaEnum metaEnum = metaProperty.enumerator();
-            int keyCount = metaEnum.keyCount();
-            for (int j = 0; j < keyCount; ++j)
-                comboBox->addItem(QString(metaEnum.key(j)).toLower().remove(QString(metaProperty.name())));
-            comboBox->setMaximumHeight(22);
-            PropertyEditor *propertyEditor = new PropertyEditor(comboBox, metaProperty.isResettable(), parent);
-            connect(propertyEditor, &PropertyEditor::valueChanged, this, &PropertyEditorItemDelegate::editorChanged);
-            connect(propertyEditor, &PropertyEditor::resetRequired, [=](){ metaProperty.reset(metaPropertyInfo->propertyWrappedObject); propertyEditor->setValue(metaProperty.read(metaPropertyInfo->propertyWrappedObject).toInt()); });
+        if (metaProperty.type() == QVariant::Bool || metaProperty.isEnumType()) {
+            QWidget *widget = 0;
+            if (metaProperty.type() == QVariant::Bool) {
+                widget = new QCheckBox;
+            }
+            else if (metaProperty.isEnumType()) {
+                QComboBox *comboBox = new QComboBox(parent);
+                QMetaEnum metaEnum = metaProperty.enumerator();
+                int keyCount = metaEnum.keyCount();
+                for (int j = 0; j < keyCount; ++j)
+                    comboBox->addItem(QString(metaEnum.key(j)).toLower().remove(QString(metaProperty.name())));
+                comboBox->setMaximumHeight(22);
+                widget = comboBox;
+            }
+            PropertyEditor *propertyEditor = new PropertyEditor(widget, metaPropertyInfo, parent);
+            connect(propertyEditor, &PropertyEditor::commitData, this, &PropertyEditorItemDelegate::commitData);
+            connect(propertyEditor, &PropertyEditor::closeEditor, this, &PropertyEditorItemDelegate::closeEditor);
             return propertyEditor;
         }
         return QStyledItemDelegate::createEditor(parent, option, index);
@@ -57,7 +56,7 @@ QWidget *PropertyEditorItemDelegate::createEditor(QWidget *parent, const QStyleO
 void PropertyEditorItemDelegate::setEditorData(QWidget *editor, const QModelIndex &index) const
 {
     if (index.data(Qt::UserRole).canConvert<QMetaPropertyInfo *>()) {
-        QMetaPropertyInfo *metaPropertyInfo = qvariant_cast<QMetaPropertyInfo *>(index.data(Qt::UserRole));
+        QMetaPropertyInfo *metaPropertyInfo = static_cast<QMetaPropertyInfo *>(index.internalPointer());
         QMetaProperty metaProperty = metaPropertyInfo->metaProperty;
         PropertyEditor *propertyEditor = qobject_cast<PropertyEditor *>(editor);
         if (metaProperty.type() == QVariant::Bool)
@@ -93,7 +92,7 @@ void PropertyEditorItemDelegate::paint(QPainter *painter, const QStyleOptionView
 void PropertyEditorItemDelegate::setModelData(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index) const
 {
     if (index.data(Qt::UserRole).canConvert<QMetaPropertyInfo *>()) {
-        QMetaPropertyInfo *metaPropertyInfo = qvariant_cast<QMetaPropertyInfo *>(index.data(Qt::UserRole));
+        QMetaPropertyInfo *metaPropertyInfo = static_cast<QMetaPropertyInfo *>(index.internalPointer());
         QMetaProperty metaProperty = metaPropertyInfo->metaProperty;
         if (metaProperty.type() == QVariant::Bool || metaProperty.isEnumType()) {
             PropertyEditor *propertyEditor = qobject_cast<PropertyEditor *>(editor);
@@ -116,11 +115,4 @@ bool PropertyEditorItemDelegate::eventFilter(QObject *object, QEvent *event)
         return false;
     else
         return QStyledItemDelegate::eventFilter(object, event);
-}
-
-void PropertyEditorItemDelegate::editorChanged()
-{
-    QWidget *editor = qobject_cast<QWidget *>(sender());
-    if (editor)
-        emit commitData(editor);
 }

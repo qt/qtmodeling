@@ -1,13 +1,12 @@
 #include "wrappedobjectpropertymodel.h"
 
-#include <QtWrappedObjects/QMetaPropertyInfo>
-
 #include <QtCore/QRegularExpression>
 #include <QtCore/QSize>
-#include <QtCore/QDebug>
 
 #include <QtGui/QFontMetrics>
 #include <QtGui/QBrush>
+
+#include <QtWrappedObjects/QMetaPropertyInfo>
 
 using QtWrappedObjects::QMetaPropertyInfo;
 
@@ -134,6 +133,13 @@ QVariant WrappedObjectPropertyModel::data(const QModelIndex &index, int role) co
             QFontMetrics fontMetrics(font);
             return QSize(fontMetrics.width(data(index, Qt::DisplayRole).toString()) + 10, 22);
         }
+        case Qt::FontRole: {
+            QFont font;
+            QMetaPropertyInfo *metaPropertyInfo = static_cast<QMetaPropertyInfo *>(index.internalPointer());
+            if (metaPropertyInfo && index.column() == 0 && metaPropertyInfo->metaProperty.isResettable())
+                font.setBold(metaPropertyInfo->wasChanged);
+            return font;
+        }
         case Qt::UserRole: {
             return qVariantFromValue(static_cast<QMetaPropertyInfo *>(index.internalPointer()));
         }
@@ -154,7 +160,10 @@ bool WrappedObjectPropertyModel::setData(const QModelIndex &index, const QVarian
                     propertyWrappedObject = qTopLevelWrapper(propertyWrappedObject);
                     propertyWrappedObject->setProperty("name", value);
             }
-            metaProperty.write(propertyWrappedObject, value);
+            if (metaProperty.read(propertyWrappedObject) != value) {
+                metaPropertyInfo->wasChanged = true;
+                metaProperty.write(propertyWrappedObject, value);
+            }
             return true;
         }
     }

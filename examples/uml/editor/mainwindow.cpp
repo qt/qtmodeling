@@ -1,6 +1,21 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+#include <QtCore/QVariant>
+#include <QtCore/QRegularExpression>
+#include <QtCore/QMetaProperty>
+#include <QtCore/QTimer>
+
+#include <QtGui/QContextMenuEvent>
+#include <QtGui/QPixmap>
+
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QCheckBox>
+#include <QtWidgets/QToolButton>
+#include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QStyledItemDelegate>
+#include <QtWidgets/QItemEditorCreatorBase>
+
 #include <QtWrappedObjects/QMetaWrappedObject>
 
 #include <QtUml/QModel>
@@ -10,22 +25,6 @@
 #include <QtUml/QEnumerationLiteral>
 #include <QtUml/QClass>
 #include <QtUml/QComment>
-
-#include <QtCore/QDebug>
-#include <QtCore/QVariant>
-#include <QtCore/QRegularExpression>
-#include <QtCore/QMetaProperty>
-#include <QtCore/QTimer>
-
-#include <QtWidgets/QComboBox>
-#include <QtWidgets/QCheckBox>
-#include <QtWidgets/QToolButton>
-#include <QtWidgets/QHBoxLayout>
-#include <QtWidgets/QStyledItemDelegate>
-#include <QtWidgets/QItemEditorCreatorBase>
-
-#include <QtGui/QContextMenuEvent>
-#include <QtGui/QPixmap>
 
 #include "propertyeditoritemdelegate.h"
 #include "wrappedobjectpropertymodel.h"
@@ -47,7 +46,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->propertyEditor->setPalette(palette);
 
     PropertyEditorItemDelegate *delegate = new PropertyEditorItemDelegate(ui->propertyEditor);
-    connect(delegate, &PropertyEditorItemDelegate::closeEditor, [=](){ qDebug() << "CloseEditor called"; });
     ui->propertyEditor->setItemDelegateForColumn(1, delegate);
 
     WrappedObjectPropertyModel *m = new WrappedObjectPropertyModel(this);
@@ -215,9 +213,12 @@ void MainWindow::handleAddMethod()
             if (metaObject) {
                 QObject *addedElement = metaObject->newInstance();
                 addedElement->setObjectName(QString("Unamed %1").arg(elementType.remove("*")));
-                if (addedElement)
+                if (addedElement) {
                     if (!metaMethod.invoke(element, Q_ARG(QObject *, addedElement)))
-                        qDebug() << "Error when invoking metaMethod !";
+                        statusBar()->showMessage("Error when invoking metaMethod !");
+                    else
+                        statusBar()->showMessage("MetaMethod successfully executed !", 3000);
+                }
             }
         }
     }
