@@ -189,15 +189,23 @@ void QLinkEndData::registerMetaTypes() const
 
 void QLinkEndData::setPropertyData()
 {
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QLinkEndData")][QString::fromLatin1("value")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLinkEndData")][QString::fromLatin1("value")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLinkEndData")][QString::fromLatin1("value")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLinkEndData")][QString::fromLatin1("value")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Input pin that provides the specified object for the given end. This pin is omitted if the link-end data specifies an 'open' end for reading.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLinkEndData")][QString::fromLatin1("value")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLinkEndData")][QString::fromLatin1("value")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QLinkEndData")][QString::fromLatin1("end")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLinkEndData")][QString::fromLatin1("end")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLinkEndData")][QString::fromLatin1("end")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLinkEndData")][QString::fromLatin1("end")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Association end for which this link-end data specifies values.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLinkEndData")][QString::fromLatin1("end")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLinkEndData")][QString::fromLatin1("end")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QLinkEndData")][QString::fromLatin1("qualifiers")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLinkEndData")][QString::fromLatin1("qualifiers")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLinkEndData")][QString::fromLatin1("qualifiers")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLinkEndData")][QString::fromLatin1("qualifiers")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("List of qualifier values");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLinkEndData")][QString::fromLatin1("qualifiers")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLinkEndData")][QString::fromLatin1("qualifiers")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElement");
 
     QElement::setPropertyData();
 }

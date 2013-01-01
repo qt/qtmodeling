@@ -140,15 +140,35 @@ QVariant WrappedObjectPropertyModel::data(const QModelIndex &index, int role) co
             if (metaPropertyInfo && index.column() == 0 && metaPropertyInfo->metaProperty.isResettable())
                 font.setBold(metaPropertyInfo->wasChanged);
             if (metaPropertyInfo && index.column() == 0)
-                font.setItalic(QWrappedObject::propertyData(QString::fromLatin1(metaPropertyInfo->propertyMetaObject->className()), metaPropertyInfo->metaProperty, QtWrappedObjects::QtWrappedObjects::IsCompositeRole).toBool());
+                font.setItalic(QWrappedObject::propertyData(QString::fromLatin1(metaPropertyInfo->propertyMetaObject->className()), metaPropertyInfo->metaProperty, QtWrappedObjects::QtWrappedObjects::AggregationRole).toString() == "composite");
             return font;
         }
         case Qt::ToolTipRole: {
             QMetaPropertyInfo *metaPropertyInfo = static_cast<QMetaPropertyInfo *>(index.internalPointer());
-            if (metaPropertyInfo)
-                return QWrappedObject::propertyData(QString::fromLatin1(metaPropertyInfo->propertyMetaObject->className()), metaPropertyInfo->metaProperty, QtWrappedObjects::QtWrappedObjects::DocumentationRole).toString();
-            else
+            if (metaPropertyInfo) {
+                QString toolTip = QWrappedObject::propertyData(QString::fromLatin1(metaPropertyInfo->propertyMetaObject->className()), metaPropertyInfo->metaProperty, QtWrappedObjects::QtWrappedObjects::DocumentationRole).toString().remove(QRegularExpression(".$"));
+                int i = 50;
+                while (i < toolTip.length()) {
+                    toolTip = toolTip.replace(toolTip.lastIndexOf(" ", i), 1, "\n");
+                    i += 50;
+                }
+                if (!toolTip.isEmpty())
+                    toolTip += "\n\n";
+                toolTip += QString("Type: %1").arg(metaPropertyInfo->metaProperty.typeName());
+                QVariant variant = QWrappedObject::propertyData(QString::fromLatin1(metaPropertyInfo->propertyMetaObject->className()), metaPropertyInfo->metaProperty, QtWrappedObjects::QtWrappedObjects::AggregationRole);
+                if (variant.isValid() && variant.toString() != "none")
+                    toolTip += QString("\nAggregation: %1").arg(variant.toString());
+                QString redefinedProperties = QWrappedObject::propertyData(QString::fromLatin1(metaPropertyInfo->propertyMetaObject->className()), metaPropertyInfo->metaProperty, QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole).toString();
+                if (!redefinedProperties.isEmpty())
+                    toolTip += QString("\nRedefines: %1").arg(redefinedProperties);
+                QString subsettedProperties = QWrappedObject::propertyData(QString::fromLatin1(metaPropertyInfo->propertyMetaObject->className()), metaPropertyInfo->metaProperty, QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole).toString();
+                if (!subsettedProperties.isEmpty())
+                    toolTip += QString("\nSubsets: %1").arg(subsettedProperties);
+                return toolTip;
+            }
+            else {
                 return "";
+            }
         }
     }
     return QVariant();

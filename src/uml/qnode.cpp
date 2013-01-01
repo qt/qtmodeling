@@ -282,9 +282,11 @@ void QNode::registerMetaTypes() const
 
 void QNode::setPropertyData()
 {
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QNode")][QString::fromLatin1("nestedNodes")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNode")][QString::fromLatin1("nestedNodes")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNode")][QString::fromLatin1("nestedNodes")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QNode")][QString::fromLatin1("nestedNodes")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The Nodes that are defined (nested) within the Node.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNode")][QString::fromLatin1("nestedNodes")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNode")][QString::fromLatin1("nestedNodes")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamespace::ownedMember");
 
     QWrappedObject::setPropertyData();
 }

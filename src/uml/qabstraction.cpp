@@ -128,9 +128,11 @@ void QAbstraction::registerMetaTypes() const
 
 void QAbstraction::setPropertyData()
 {
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QAbstraction")][QString::fromLatin1("mapping")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QAbstraction")][QString::fromLatin1("mapping")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QAbstraction")][QString::fromLatin1("mapping")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QAbstraction")][QString::fromLatin1("mapping")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An composition of an Expression that states the abstraction relationship between the supplier and the client. In some cases, such as Derivation, it is usually formal and unidirectional; in other cases, such as Trace, it is usually informal and bidirectional. The mapping expression is optional and may be omitted if the precise relationship between the elements is not specified.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QAbstraction")][QString::fromLatin1("mapping")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QAbstraction")][QString::fromLatin1("mapping")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElement");
 
     QDependency::setPropertyData();
 }

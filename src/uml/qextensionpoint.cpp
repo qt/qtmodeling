@@ -131,9 +131,11 @@ void QExtensionPoint::registerMetaTypes() const
 
 void QExtensionPoint::setPropertyData()
 {
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtensionPoint")][QString::fromLatin1("useCase")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtensionPoint")][QString::fromLatin1("useCase")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtensionPoint")][QString::fromLatin1("useCase")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QExtensionPoint")][QString::fromLatin1("useCase")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the use case that owns this extension point.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtensionPoint")][QString::fromLatin1("useCase")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtensionPoint")][QString::fromLatin1("useCase")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamedElement::namespace");
 
     QRedefinableElement::setPropertyData();
 }

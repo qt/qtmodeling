@@ -88,7 +88,6 @@ void QCommunicationPath::registerMetaTypes() const
 
 void QCommunicationPath::setPropertyData()
 {
-
     QAssociation::setPropertyData();
 }
 

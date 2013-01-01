@@ -123,9 +123,11 @@ void QInformationItem::registerMetaTypes() const
 
 void QInformationItem::setPropertyData()
 {
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationItem")][QString::fromLatin1("represented")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationItem")][QString::fromLatin1("represented")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationItem")][QString::fromLatin1("represented")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationItem")][QString::fromLatin1("represented")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Determines the classifiers that will specify the structure and nature of the information. An information item represents all its represented classifiers.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationItem")][QString::fromLatin1("represented")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationItem")][QString::fromLatin1("represented")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
 
     QClassifier::setPropertyData();
 }

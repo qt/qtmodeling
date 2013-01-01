@@ -120,9 +120,11 @@ void QMessageEnd::registerMetaTypes() const
 
 void QMessageEnd::setPropertyData()
 {
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessageEnd")][QString::fromLatin1("message")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessageEnd")][QString::fromLatin1("message")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessageEnd")][QString::fromLatin1("message")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMessageEnd")][QString::fromLatin1("message")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References a Message.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessageEnd")][QString::fromLatin1("message")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessageEnd")][QString::fromLatin1("message")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
 
     QNamedElement::setPropertyData();
 }

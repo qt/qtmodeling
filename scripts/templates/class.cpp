@@ -747,27 +747,22 @@ void ${class.name}::registerMetaTypes() const
 
 void ${class.name}::setPropertyData()
 {
-[%- FOREACH attribute IN class.attribute.values -%]
-[%- IF attribute.aggregation == 'composite' %]
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("${class.name}")][QString::fromLatin1("${attribute.accessor.0.name}")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
-[%- ELSE %]
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("${class.name}")][QString::fromLatin1("${attribute.accessor.0.name}")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
-[%- END %]
+[%- FOREACH attribute IN class.attribute.values %]
+    QWrappedObject::propertyDataHash[QString::fromLatin1("${class.name}")][QString::fromLatin1("${attribute.accessor.0.name}")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("${attribute.aggregation}");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("${class.name}")][QString::fromLatin1("${attribute.accessor.0.name}")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = [%- IF attribute.isDerivedUnion == 'true' %]true[% ELSE %]false[% END %];
     QWrappedObject::propertyDataHash[QString::fromLatin1("${class.name}")][QString::fromLatin1("${attribute.accessor.0.name}")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("${attribute.documentation.replace('"', '\"')}");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("${class.name}")][QString::fromLatin1("${attribute.accessor.0.name}")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("${attribute.redefinedProperty.replace('^(.)', 'Q$1').replace(' ', ' Q').replace('-','::')}");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("${class.name}")][QString::fromLatin1("${attribute.accessor.0.name}")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("${attribute.subsettedProperty.replace('^(.)', 'Q$1').replace(' ', ' Q').replace('-','::')}");
+
 [%- END -%]
-[%- FOREACH associationend IN class.associationend.values -%]
-[%- IF associationend.aggregation == 'composite' %]
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("${class.name}")][QString::fromLatin1("${associationend.accessor.0.name}")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
-[%- ELSE %]
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("${class.name}")][QString::fromLatin1("${associationend.accessor.0.name}")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
-[%- END %]
+[%- FOREACH associationend IN class.associationend.values %]
+    QWrappedObject::propertyDataHash[QString::fromLatin1("${class.name}")][QString::fromLatin1("${associationend.accessor.0.name}")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("${associationend.aggregation}");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("${class.name}")][QString::fromLatin1("${associationend.accessor.0.name}")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = [%- IF associationend.isDerivedUnion == 'true' %]true[% ELSE %]false[% END %];
     QWrappedObject::propertyDataHash[QString::fromLatin1("${class.name}")][QString::fromLatin1("${associationend.accessor.0.name}")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("${associationend.documentation.replace('"', '\"')}");
-[%- END %]
+    QWrappedObject::propertyDataHash[QString::fromLatin1("${class.name}")][QString::fromLatin1("${associationend.accessor.0.name}")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("${associationend.redefinedProperty.replace('^(.)', 'Q$1').replace(' ', ' Q').replace('-','::')}");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("${class.name}")][QString::fromLatin1("${associationend.accessor.0.name}")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("${associationend.subsettedProperty.replace('^(.)', 'Q$1').replace(' ', ' Q').replace('-','::')}");
 
+[%- END %]
     [% IF class.superclass.size == 1 %]${class.superclass.0.name.split('/').last}[% ELSE %]QWrappedObject[% END %]::setPropertyData();
 }
 

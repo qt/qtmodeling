@@ -120,9 +120,11 @@ void QCallBehaviorAction::registerMetaTypes() const
 
 void QCallBehaviorAction::setPropertyData()
 {
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QCallBehaviorAction")][QString::fromLatin1("behavior")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCallBehaviorAction")][QString::fromLatin1("behavior")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCallBehaviorAction")][QString::fromLatin1("behavior")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QCallBehaviorAction")][QString::fromLatin1("behavior")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The invoked behavior. It must be capable of accepting and returning control.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCallBehaviorAction")][QString::fromLatin1("behavior")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCallBehaviorAction")][QString::fromLatin1("behavior")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
 
     QCallAction::setPropertyData();
 }

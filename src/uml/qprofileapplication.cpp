@@ -203,15 +203,23 @@ void QProfileApplication::registerMetaTypes() const
 
 void QProfileApplication::setPropertyData()
 {
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QProfileApplication")][QString::fromLatin1("isStrict")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProfileApplication")][QString::fromLatin1("isStrict")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProfileApplication")][QString::fromLatin1("isStrict")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QProfileApplication")][QString::fromLatin1("isStrict")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies that the Profile filtering rules for the metaclasses of the referenced metamodel shall be strictly applied.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProfileApplication")][QString::fromLatin1("isStrict")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProfileApplication")][QString::fromLatin1("isStrict")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QProfileApplication")][QString::fromLatin1("applyingPackage")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProfileApplication")][QString::fromLatin1("applyingPackage")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProfileApplication")][QString::fromLatin1("applyingPackage")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QProfileApplication")][QString::fromLatin1("applyingPackage")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The package that owns the profile application.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProfileApplication")][QString::fromLatin1("applyingPackage")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProfileApplication")][QString::fromLatin1("applyingPackage")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::owner QDirectedRelationship::source");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QProfileApplication")][QString::fromLatin1("appliedProfile")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProfileApplication")][QString::fromLatin1("appliedProfile")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProfileApplication")][QString::fromLatin1("appliedProfile")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QProfileApplication")][QString::fromLatin1("appliedProfile")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Profiles that are applied to a Package through this ProfileApplication.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProfileApplication")][QString::fromLatin1("appliedProfile")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProfileApplication")][QString::fromLatin1("appliedProfile")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QDirectedRelationship::target");
 
     QDirectedRelationship::setPropertyData();
 }

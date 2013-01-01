@@ -88,7 +88,6 @@ void QGate::registerMetaTypes() const
 
 void QGate::setPropertyData()
 {
-
     QMessageEnd::setPropertyData();
 }
 

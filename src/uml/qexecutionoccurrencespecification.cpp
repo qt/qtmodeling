@@ -120,9 +120,11 @@ void QExecutionOccurrenceSpecification::registerMetaTypes() const
 
 void QExecutionOccurrenceSpecification::setPropertyData()
 {
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExecutionOccurrenceSpecification")][QString::fromLatin1("execution")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExecutionOccurrenceSpecification")][QString::fromLatin1("execution")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExecutionOccurrenceSpecification")][QString::fromLatin1("execution")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QExecutionOccurrenceSpecification")][QString::fromLatin1("execution")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the execution specification describing the execution that is started or finished at this execution event.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExecutionOccurrenceSpecification")][QString::fromLatin1("execution")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExecutionOccurrenceSpecification")][QString::fromLatin1("execution")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
 
     QOccurrenceSpecification::setPropertyData();
 }

@@ -92,7 +92,6 @@ void QAssociationClass::registerMetaTypes() const
 
 void QAssociationClass::setPropertyData()
 {
-
     QWrappedObject::setPropertyData();
 }
 

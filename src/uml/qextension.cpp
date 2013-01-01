@@ -192,15 +192,23 @@ void QExtension::registerMetaTypes() const
 
 void QExtension::setPropertyData()
 {
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtension")][QString::fromLatin1("isRequired")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtension")][QString::fromLatin1("isRequired")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtension")][QString::fromLatin1("isRequired")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QExtension")][QString::fromLatin1("isRequired")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Indicates whether an instance of the extending stereotype must be created when an instance of the extended class is created. The attribute value is derived from the value of the lower property of the ExtensionEnd referenced by Extension::ownedEnd; a lower value of 1 means that isRequired is true, but otherwise it is false. Since the default value of ExtensionEnd::lower is 0, the default value of isRequired is false.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtension")][QString::fromLatin1("isRequired")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtension")][QString::fromLatin1("isRequired")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtension")][QString::fromLatin1("metaclass")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtension")][QString::fromLatin1("metaclass")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtension")][QString::fromLatin1("metaclass")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QExtension")][QString::fromLatin1("metaclass")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Class that is extended through an Extension. The property is derived from the type of the memberEnd that is not the ownedEnd.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtension")][QString::fromLatin1("metaclass")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtension")][QString::fromLatin1("metaclass")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtension")][QString::fromLatin1("ownedEnd")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtension")][QString::fromLatin1("ownedEnd")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtension")][QString::fromLatin1("ownedEnd")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QExtension")][QString::fromLatin1("ownedEnd")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the end of the extension that is typed by a Stereotype.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtension")][QString::fromLatin1("ownedEnd")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QAssociation::ownedEnd");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtension")][QString::fromLatin1("ownedEnd")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
 
     QAssociation::setPropertyData();
 }

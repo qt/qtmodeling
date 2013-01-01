@@ -136,12 +136,17 @@ void QInterval::registerMetaTypes() const
 
 void QInterval::setPropertyData()
 {
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterval")][QString::fromLatin1("min")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterval")][QString::fromLatin1("min")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterval")][QString::fromLatin1("min")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QInterval")][QString::fromLatin1("min")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Refers to the ValueSpecification denoting the minimum value of the range.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterval")][QString::fromLatin1("min")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterval")][QString::fromLatin1("min")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterval")][QString::fromLatin1("max")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterval")][QString::fromLatin1("max")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterval")][QString::fromLatin1("max")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QInterval")][QString::fromLatin1("max")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Refers to the ValueSpecification denoting the maximum value of the range.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterval")][QString::fromLatin1("max")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterval")][QString::fromLatin1("max")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
 
     QValueSpecification::setPropertyData();
 }

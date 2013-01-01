@@ -192,15 +192,23 @@ void QReplyAction::registerMetaTypes() const
 
 void QReplyAction::setPropertyData()
 {
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QReplyAction")][QString::fromLatin1("replyToCall")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReplyAction")][QString::fromLatin1("replyToCall")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReplyAction")][QString::fromLatin1("replyToCall")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QReplyAction")][QString::fromLatin1("replyToCall")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The trigger specifying the operation whose call is being replied to.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReplyAction")][QString::fromLatin1("replyToCall")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReplyAction")][QString::fromLatin1("replyToCall")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QReplyAction")][QString::fromLatin1("returnInformation")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReplyAction")][QString::fromLatin1("returnInformation")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReplyAction")][QString::fromLatin1("returnInformation")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QReplyAction")][QString::fromLatin1("returnInformation")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A pin containing the return information value produced by an earlier AcceptCallAction.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReplyAction")][QString::fromLatin1("returnInformation")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReplyAction")][QString::fromLatin1("returnInformation")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QAction::input");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QReplyAction")][QString::fromLatin1("replyValues")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReplyAction")][QString::fromLatin1("replyValues")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReplyAction")][QString::fromLatin1("replyValues")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QReplyAction")][QString::fromLatin1("replyValues")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A list of pins containing the reply values of the operation. These values are returned to the caller.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReplyAction")][QString::fromLatin1("replyValues")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReplyAction")][QString::fromLatin1("replyValues")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QAction::input");
 
     QAction::setPropertyData();
 }

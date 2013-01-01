@@ -208,15 +208,23 @@ void QCombinedFragment::registerMetaTypes() const
 
 void QCombinedFragment::setPropertyData()
 {
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QCombinedFragment")][QString::fromLatin1("interactionOperator")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCombinedFragment")][QString::fromLatin1("interactionOperator")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCombinedFragment")][QString::fromLatin1("interactionOperator")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QCombinedFragment")][QString::fromLatin1("interactionOperator")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the operation which defines the semantics of this combination of InteractionFragments.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCombinedFragment")][QString::fromLatin1("interactionOperator")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCombinedFragment")][QString::fromLatin1("interactionOperator")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QCombinedFragment")][QString::fromLatin1("cfragmentGates")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCombinedFragment")][QString::fromLatin1("cfragmentGates")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCombinedFragment")][QString::fromLatin1("cfragmentGates")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QCombinedFragment")][QString::fromLatin1("cfragmentGates")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the gates that form the interface between this CombinedFragment and its surroundings");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCombinedFragment")][QString::fromLatin1("cfragmentGates")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCombinedFragment")][QString::fromLatin1("cfragmentGates")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElement");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QCombinedFragment")][QString::fromLatin1("operands")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCombinedFragment")][QString::fromLatin1("operands")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCombinedFragment")][QString::fromLatin1("operands")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QCombinedFragment")][QString::fromLatin1("operands")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The set of operands of the combined fragment.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCombinedFragment")][QString::fromLatin1("operands")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCombinedFragment")][QString::fromLatin1("operands")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElement");
 
     QInteractionFragment::setPropertyData();
 }

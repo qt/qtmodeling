@@ -162,12 +162,17 @@ void QStereotype::registerMetaTypes() const
 
 void QStereotype::setPropertyData()
 {
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStereotype")][QString::fromLatin1("icons")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStereotype")][QString::fromLatin1("icons")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStereotype")][QString::fromLatin1("icons")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QStereotype")][QString::fromLatin1("icons")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Stereotype can change the graphical appearance of the extended model element by using attached icons. When this association is not null, it references the location of the icon content to be displayed within diagrams presenting the extended model elements.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStereotype")][QString::fromLatin1("icons")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStereotype")][QString::fromLatin1("icons")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElement");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStereotype")][QString::fromLatin1("profile")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStereotype")][QString::fromLatin1("profile")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStereotype")][QString::fromLatin1("profile")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QStereotype")][QString::fromLatin1("profile")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The profile that directly or indirectly contains this stereotype.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStereotype")][QString::fromLatin1("profile")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStereotype")][QString::fromLatin1("profile")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
 
     QClass::setPropertyData();
 }

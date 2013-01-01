@@ -110,7 +110,6 @@ void QURIExtent::registerMetaTypes() const
 
 void QURIExtent::setPropertyData()
 {
-
     QExtent::setPropertyData();
 }
 

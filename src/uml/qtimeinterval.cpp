@@ -142,12 +142,17 @@ void QTimeInterval::registerMetaTypes() const
 
 void QTimeInterval::setPropertyData()
 {
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeInterval")][QString::fromLatin1("max")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeInterval")][QString::fromLatin1("max")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeInterval")][QString::fromLatin1("max")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeInterval")][QString::fromLatin1("max")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Refers to the TimeExpression denoting the maximum value of the range.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeInterval")][QString::fromLatin1("max")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QInterval::max");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeInterval")][QString::fromLatin1("max")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeInterval")][QString::fromLatin1("min")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeInterval")][QString::fromLatin1("min")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeInterval")][QString::fromLatin1("min")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeInterval")][QString::fromLatin1("min")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Refers to the TimeExpression denoting the minimum value of the range.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeInterval")][QString::fromLatin1("min")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QInterval::min");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeInterval")][QString::fromLatin1("min")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
 
     QInterval::setPropertyData();
 }

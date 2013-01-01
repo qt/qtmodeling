@@ -88,7 +88,6 @@ void QDeployedArtifact::registerMetaTypes() const
 
 void QDeployedArtifact::setPropertyData()
 {
-
     QNamedElement::setPropertyData();
 }
 

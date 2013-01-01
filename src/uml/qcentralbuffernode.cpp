@@ -88,7 +88,6 @@ void QCentralBufferNode::registerMetaTypes() const
 
 void QCentralBufferNode::setPropertyData()
 {
-
     QObjectNode::setPropertyData();
 }
 

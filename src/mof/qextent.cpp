@@ -158,7 +158,6 @@ void QExtent::registerMetaTypes() const
 
 void QExtent::setPropertyData()
 {
-
     QMofObject::setPropertyData();
 }
 

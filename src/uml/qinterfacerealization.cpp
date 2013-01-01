@@ -172,12 +172,17 @@ void QInterfaceRealization::registerMetaTypes() const
 
 void QInterfaceRealization::setPropertyData()
 {
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterfaceRealization")][QString::fromLatin1("implementingClassifier")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterfaceRealization")][QString::fromLatin1("implementingClassifier")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterfaceRealization")][QString::fromLatin1("implementingClassifier")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QInterfaceRealization")][QString::fromLatin1("implementingClassifier")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the BehavioredClassifier that owns this Interfacerealization (i.e., the classifier that realizes the Interface to which it points).");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterfaceRealization")][QString::fromLatin1("implementingClassifier")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterfaceRealization")][QString::fromLatin1("implementingClassifier")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::owner QDependency::client");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterfaceRealization")][QString::fromLatin1("contract")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterfaceRealization")][QString::fromLatin1("contract")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterfaceRealization")][QString::fromLatin1("contract")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QInterfaceRealization")][QString::fromLatin1("contract")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Interface specifying the conformance contract.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterfaceRealization")][QString::fromLatin1("contract")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterfaceRealization")][QString::fromLatin1("contract")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QDependency::supplier");
 
     QRealization::setPropertyData();
 }

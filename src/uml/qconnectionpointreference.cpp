@@ -198,15 +198,23 @@ void QConnectionPointReference::registerMetaTypes() const
 
 void QConnectionPointReference::setPropertyData()
 {
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnectionPointReference")][QString::fromLatin1("exits")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnectionPointReference")][QString::fromLatin1("exits")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnectionPointReference")][QString::fromLatin1("exits")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QConnectionPointReference")][QString::fromLatin1("exits")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The exitPoints kind pseudo states corresponding to this connection point.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnectionPointReference")][QString::fromLatin1("exits")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnectionPointReference")][QString::fromLatin1("exits")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnectionPointReference")][QString::fromLatin1("state")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnectionPointReference")][QString::fromLatin1("state")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnectionPointReference")][QString::fromLatin1("state")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QConnectionPointReference")][QString::fromLatin1("state")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The State in which the connection point refreshens are defined.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnectionPointReference")][QString::fromLatin1("state")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnectionPointReference")][QString::fromLatin1("state")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamedElement::namespace");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnectionPointReference")][QString::fromLatin1("entries")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnectionPointReference")][QString::fromLatin1("entries")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnectionPointReference")][QString::fromLatin1("entries")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QConnectionPointReference")][QString::fromLatin1("entries")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The entryPoint kind pseudo states corresponding to this connection point.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnectionPointReference")][QString::fromLatin1("entries")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnectionPointReference")][QString::fromLatin1("entries")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
 
     QVertex::setPropertyData();
 }

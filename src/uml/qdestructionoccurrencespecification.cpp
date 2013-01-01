@@ -88,7 +88,6 @@ void QDestructionOccurrenceSpecification::registerMetaTypes() const
 
 void QDestructionOccurrenceSpecification::setPropertyData()
 {
-
     QMessageOccurrenceSpecification::setPropertyData();
 }
 

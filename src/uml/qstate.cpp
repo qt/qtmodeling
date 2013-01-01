@@ -849,51 +849,95 @@ void QState::registerMetaTypes() const
 
 void QState::setPropertyData()
 {
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("isSimple")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("isSimple")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("isSimple")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("isSimple")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A state with isSimple=true is said to be a simple state. A simple state does not have any regions and it does not refer to any submachine state machine.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("isSimple")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("isSimple")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("isComposite")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("isComposite")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("isComposite")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("isComposite")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A state with isComposite=true is said to be a composite state. A composite state is a state that contains at least one region.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("isComposite")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("isComposite")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("isOrthogonal")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("isOrthogonal")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("isOrthogonal")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("isOrthogonal")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A state with isOrthogonal=true is said to be an orthogonal composite state. An orthogonal composite state contains two or more regions.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("isOrthogonal")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("isOrthogonal")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("isSubmachineState")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("isSubmachineState")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("isSubmachineState")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("isSubmachineState")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A state with isSubmachineState=true is said to be a submachine state. Such a state refers to a state machine (submachine).");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("isSubmachineState")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("isSubmachineState")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("regions")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("regions")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("regions")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("regions")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The regions owned directly by the state.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("regions")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("regions")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamespace::ownedMember");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("exit")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("exit")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("exit")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("exit")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An optional behavior that is executed whenever this state is exited regardless of which transition was taken out of the state. If defined, exit actions are always executed to completion only after all internal activities and transition actions have completed execution.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("exit")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("exit")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElement");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("connections")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("connections")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("connections")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("connections")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The entry and exit connection points used in conjunction with this (submachine) state, i.e. as targets and sources, respectively, in the region with the submachine state. A connection point reference references the corresponding definition of a connection point pseudostate in the statemachine referenced by the submachinestate.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("connections")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("connections")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamespace::ownedMember");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("redefinitionContext")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("redefinitionContext")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("redefinitionContext")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("redefinitionContext")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the classifier in which context this element may be redefined.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("redefinitionContext")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QRedefinableElement::redefinitionContext");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("redefinitionContext")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("redefinedState")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("redefinedState")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("redefinedState")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("redefinedState")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The state of which this state is a redefinition.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("redefinedState")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("redefinedState")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QRedefinableElement::redefinedElement");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("deferrableTriggers")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("deferrableTriggers")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("deferrableTriggers")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("deferrableTriggers")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A list of triggers that are candidates to be retained by the state machine if they trigger no transitions out of the state (not consumed). A deferred trigger is retained until the state machine reaches a state configuration where it is no longer deferred.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("deferrableTriggers")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("deferrableTriggers")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElement");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("connectionPoints")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("connectionPoints")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("connectionPoints")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("connectionPoints")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The entry and exit pseudostates of a composite state. These can only be entry or exit Pseudostates, and they must have different names. They can only be defined for composite states.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("connectionPoints")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("connectionPoints")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamespace::ownedMember");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("entry")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("entry")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("entry")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("entry")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An optional behavior that is executed whenever this state is entered regardless of the transition taken to reach the state. If defined, entry actions are always executed to completion prior to any internal behavior or transitions performed within the state.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("entry")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("entry")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElement");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("doActivity")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("doActivity")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("doActivity")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("doActivity")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An optional behavior that is executed while being in the state. The execution starts when this state is entered, and stops either by itself, or when the state is exited, whichever comes first.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("doActivity")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("doActivity")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElement");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("submachine")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("submachine")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("submachine")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("submachine")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The state machine that is to be inserted in place of the (submachine) state.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("submachine")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("submachine")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("stateInvariant")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("stateInvariant")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("stateInvariant")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("stateInvariant")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies conditions that are always true when this state is the current state. In protocol state machines, state invariants are additional conditions to the preconditions of the outgoing transitions, and to the postcondition of the incoming transitions.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("stateInvariant")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("stateInvariant")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamespace::ownedRule");
 
     QWrappedObject::setPropertyData();
 }

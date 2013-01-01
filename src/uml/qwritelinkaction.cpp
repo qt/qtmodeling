@@ -88,7 +88,6 @@ void QWriteLinkAction::registerMetaTypes() const
 
 void QWriteLinkAction::setPropertyData()
 {
-
     QLinkAction::setPropertyData();
 }
 

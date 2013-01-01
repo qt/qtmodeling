@@ -117,7 +117,6 @@ void QReflectiveCollection::registerMetaTypes() const
 
 void QReflectiveCollection::setPropertyData()
 {
-
     QMofObject::setPropertyData();
 }
 

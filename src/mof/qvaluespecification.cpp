@@ -276,7 +276,6 @@ void QValueSpecification::registerMetaTypes() const
 
 void QValueSpecification::setPropertyData()
 {
-
     QWrappedObject::setPropertyData();
 }
 

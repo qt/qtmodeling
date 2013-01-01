@@ -88,7 +88,6 @@ void QObservation::registerMetaTypes() const
 
 void QObservation::setPropertyData()
 {
-
     QPackageableElement::setPropertyData();
 }
 

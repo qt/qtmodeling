@@ -216,18 +216,29 @@ void QExceptionHandler::registerMetaTypes() const
 
 void QExceptionHandler::setPropertyData()
 {
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExceptionHandler")][QString::fromLatin1("handlerBody")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExceptionHandler")][QString::fromLatin1("handlerBody")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExceptionHandler")][QString::fromLatin1("handlerBody")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QExceptionHandler")][QString::fromLatin1("handlerBody")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A node that is executed if the handler satisfies an uncaught exception.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExceptionHandler")][QString::fromLatin1("handlerBody")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExceptionHandler")][QString::fromLatin1("handlerBody")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExceptionHandler")][QString::fromLatin1("exceptionTypes")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExceptionHandler")][QString::fromLatin1("exceptionTypes")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExceptionHandler")][QString::fromLatin1("exceptionTypes")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QExceptionHandler")][QString::fromLatin1("exceptionTypes")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The kind of instances that the handler catches. If an exception occurs whose type is any of the classifiers in the set, the handler catches the exception and executes its body.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExceptionHandler")][QString::fromLatin1("exceptionTypes")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExceptionHandler")][QString::fromLatin1("exceptionTypes")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExceptionHandler")][QString::fromLatin1("protectedNode")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExceptionHandler")][QString::fromLatin1("protectedNode")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExceptionHandler")][QString::fromLatin1("protectedNode")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QExceptionHandler")][QString::fromLatin1("protectedNode")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The node protected by the handler. The handler is examined if an exception propagates to the outside of the node.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExceptionHandler")][QString::fromLatin1("protectedNode")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExceptionHandler")][QString::fromLatin1("protectedNode")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::owner");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExceptionHandler")][QString::fromLatin1("exceptionInput")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExceptionHandler")][QString::fromLatin1("exceptionInput")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExceptionHandler")][QString::fromLatin1("exceptionInput")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QExceptionHandler")][QString::fromLatin1("exceptionInput")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An object node within the handler body. When the handler catches an exception, the exception token is placed in this node, causing the body to execute.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExceptionHandler")][QString::fromLatin1("exceptionInput")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExceptionHandler")][QString::fromLatin1("exceptionInput")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
 
     QElement::setPropertyData();
 }

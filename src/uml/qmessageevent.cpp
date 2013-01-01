@@ -88,7 +88,6 @@ void QMessageEvent::registerMetaTypes() const
 
 void QMessageEvent::setPropertyData()
 {
-
     QEvent::setPropertyData();
 }
 

@@ -63,8 +63,11 @@ public:
         MetaObjectRole = 0,
         WrappedObjectRole,
         WasChangedRole,
-        IsCompositeRole,
+        AggregationRole,
+        IsDerivedUnionRole,
         DocumentationRole,
+        RedefinedPropertiesRole,
+        SubsettedPropertiesRole,
         UserRole = 0x0100
     };
 

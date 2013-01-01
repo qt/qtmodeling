@@ -88,7 +88,6 @@ void QActor::registerMetaTypes() const
 
 void QActor::setPropertyData()
 {
-
     QBehavioredClassifier::setPropertyData();
 }
 

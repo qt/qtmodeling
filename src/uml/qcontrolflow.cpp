@@ -88,7 +88,6 @@ void QControlFlow::registerMetaTypes() const
 
 void QControlFlow::setPropertyData()
 {
-
     QActivityEdge::setPropertyData();
 }
 

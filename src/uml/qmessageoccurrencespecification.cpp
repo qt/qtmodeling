@@ -228,7 +228,6 @@ void QMessageOccurrenceSpecification::registerMetaTypes() const
 
 void QMessageOccurrenceSpecification::setPropertyData()
 {
-
     QWrappedObject::setPropertyData();
 }
 

@@ -88,7 +88,6 @@ void QMergeNode::registerMetaTypes() const
 
 void QMergeNode::setPropertyData()
 {
-
     QControlNode::setPropertyData();
 }
 
