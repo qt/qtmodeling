@@ -45,6 +45,8 @@
 #include <QtUml/QElementImport>
 #include <QtUml/QPackageImport>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QProfilePrivate::QProfilePrivate()
@@ -66,11 +68,13 @@ QProfilePrivate::~QProfilePrivate()
 QProfile::QProfile(QWrappedObject *parent, QWrappedObject *wrapper) :
     QPackage(*new QProfilePrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QProfile::QProfile(QProfilePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QPackage(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QProfile::~QProfile()
@@ -169,6 +173,18 @@ void QProfile::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QProfile::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProfile")][QString::fromLatin1("metamodelReferences")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProfile")][QString::fromLatin1("metamodelReferences")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References a package containing (directly or indirectly) metaclasses that may be extended.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProfile")][QString::fromLatin1("metaclassReferences")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProfile")][QString::fromLatin1("metaclassReferences")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References a metaclass that may be extended.");
+
+    QPackage::setPropertyData();
 }
 
 #include "moc_qprofile.cpp"

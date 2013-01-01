@@ -44,6 +44,8 @@
 
 #include <QtUml/QTimeExpression>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QTimeIntervalPrivate::QTimeIntervalPrivate() :
@@ -67,11 +69,13 @@ QTimeIntervalPrivate::~QTimeIntervalPrivate()
 QTimeInterval::QTimeInterval(QWrappedObject *parent, QWrappedObject *wrapper) :
     QInterval(*new QTimeIntervalPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QTimeInterval::QTimeInterval(QTimeIntervalPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QInterval(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QTimeInterval::~QTimeInterval()
@@ -134,6 +138,18 @@ void QTimeInterval::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QTimeInterval::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeInterval")][QString::fromLatin1("max")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeInterval")][QString::fromLatin1("max")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Refers to the TimeExpression denoting the maximum value of the range.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeInterval")][QString::fromLatin1("min")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeInterval")][QString::fromLatin1("min")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Refers to the TimeExpression denoting the minimum value of the range.");
+
+    QInterval::setPropertyData();
 }
 
 #include "moc_qtimeinterval.cpp"

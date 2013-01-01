@@ -48,6 +48,8 @@
 #include <QtUml/QPseudostate>
 #include <QtUml/QRegion>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QStateMachinePrivate::QStateMachinePrivate()
@@ -69,11 +71,13 @@ QStateMachinePrivate::~QStateMachinePrivate()
 QStateMachine::QStateMachine(QWrappedObject *parent, QWrappedObject *wrapper) :
     QBehavior(*new QStateMachinePrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QStateMachine::QStateMachine(QStateMachinePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QBehavior(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QStateMachine::~QStateMachine()
@@ -310,6 +314,24 @@ void QStateMachine::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QStateMachine::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStateMachine")][QString::fromLatin1("extendedStateMachines")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStateMachine")][QString::fromLatin1("extendedStateMachines")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The state machines of which this is an extension.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStateMachine")][QString::fromLatin1("connectionPoints")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStateMachine")][QString::fromLatin1("connectionPoints")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The connection points defined for this state machine. They represent the interface of the state machine when used as part of submachine state.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStateMachine")][QString::fromLatin1("submachineStates")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStateMachine")][QString::fromLatin1("submachineStates")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the submachine(s) in case of a submachine state. Multiple machines are referenced in case of a concurrent state.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStateMachine")][QString::fromLatin1("regions")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStateMachine")][QString::fromLatin1("regions")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The regions owned directly by the state machine.");
+
+    QBehavior::setPropertyData();
 }
 
 #include "moc_qstatemachine.cpp"

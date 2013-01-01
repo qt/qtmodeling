@@ -168,6 +168,7 @@ public:
     Q_INVOKABLE void addParameterSet(QParameterSet *parameterSet);
     Q_INVOKABLE void removeParameterSet(QParameterSet *parameterSet);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QParameter(QParameterPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

@@ -65,6 +65,7 @@ public:
     Q_INVOKABLE explicit QLiteralSpecification(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QLiteralSpecification();
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QLiteralSpecification(QLiteralSpecificationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

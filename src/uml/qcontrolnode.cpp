@@ -42,6 +42,8 @@
 #include "qcontrolnode.h"
 #include "qcontrolnode_p.h"
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QControlNodePrivate::QControlNodePrivate()
@@ -63,11 +65,13 @@ QControlNodePrivate::~QControlNodePrivate()
 QControlNode::QControlNode(QWrappedObject *parent, QWrappedObject *wrapper) :
     QActivityNode(*new QControlNodePrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QControlNode::QControlNode(QControlNodePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QActivityNode(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QControlNode::~QControlNode()
@@ -80,6 +84,12 @@ void QControlNode::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QControlNode::setPropertyData()
+{
+
+    QActivityNode::setPropertyData();
 }
 
 #include "moc_qcontrolnode.cpp"

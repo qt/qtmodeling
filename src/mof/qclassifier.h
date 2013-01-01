@@ -166,6 +166,7 @@ public:
     Q_INVOKABLE bool maySpecializeType(const QClassifier *c) const;
     Q_INVOKABLE QSet<QClassifier *> parents() const;
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
     // Classes which access read-only opposite properties should be friend
     friend class QFeaturePrivate;

@@ -65,6 +65,7 @@ public:
     Q_INVOKABLE explicit QDeployedArtifact(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QDeployedArtifact();
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QDeployedArtifact(QDeployedArtifactPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

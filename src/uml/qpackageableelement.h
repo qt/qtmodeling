@@ -104,6 +104,7 @@ public:
     Q_INVOKABLE void setVisibility(QtUml::VisibilityKind visibility);
     Q_INVOKABLE void unsetVisibility();
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QPackageableElement(QPackageableElementPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

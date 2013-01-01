@@ -49,6 +49,8 @@
 #include <QtUml/QActivityEdge>
 #include <QtUml/QActivityNode>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QActivityGroupPrivate::QActivityGroupPrivate() :
@@ -178,11 +180,13 @@ void QActivityGroupPrivate::setSuperGroup(QActivityGroup *superGroup)
 QActivityGroup::QActivityGroup(QWrappedObject *parent, QWrappedObject *wrapper) :
     QNamedElement(*new QActivityGroupPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QActivityGroup::QActivityGroup(QActivityGroupPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QNamedElement(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QActivityGroup::~QActivityGroup()
@@ -287,6 +291,27 @@ void QActivityGroup::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QActivityGroup::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityGroup")][QString::fromLatin1("inActivity")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityGroup")][QString::fromLatin1("inActivity")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Activity containing the group.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityGroup")][QString::fromLatin1("containedNodes")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityGroup")][QString::fromLatin1("containedNodes")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Nodes immediately contained in the group.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityGroup")][QString::fromLatin1("subgroups")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityGroup")][QString::fromLatin1("subgroups")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Groups immediately contained in the group.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityGroup")][QString::fromLatin1("containedEdges")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityGroup")][QString::fromLatin1("containedEdges")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Edges immediately contained in the group.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityGroup")][QString::fromLatin1("superGroup")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityGroup")][QString::fromLatin1("superGroup")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Group immediately containing the group.");
+
+    QNamedElement::setPropertyData();
 }
 
 #include "moc_qactivitygroup.cpp"

@@ -92,6 +92,7 @@ public:
     Q_INVOKABLE void addNewClassifier(QClassifier *newClassifier);
     Q_INVOKABLE void removeNewClassifier(QClassifier *newClassifier);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QReclassifyObjectAction(QReclassifyObjectActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

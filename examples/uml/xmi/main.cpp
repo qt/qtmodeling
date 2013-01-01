@@ -51,6 +51,7 @@ int main ()
         return 1;
     }
 
+    model->setPropertyData();
     QXmiWriter writer(model);
     if (writer.writeFile(&file))
         qDebug() << "XMI file saved !";

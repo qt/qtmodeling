@@ -42,6 +42,8 @@
 #include "qnode.h"
 #include "qnode_p.h"
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QNodePrivate::QNodePrivate()
@@ -65,6 +67,7 @@ QNode::QNode(QWrappedObject *parent, QWrappedObject *wrapper) :
     _wrappedClass(new QClass(this, this)),
     _wrappedDeploymentTarget(new QDeploymentTarget(this, this))
 {
+    setPropertyData();
 }
 
 QNode::QNode(QNodePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
@@ -72,6 +75,7 @@ QNode::QNode(QNodePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) 
     _wrappedClass(new QClass(this, this)),
     _wrappedDeploymentTarget(new QDeploymentTarget(this, this))
 {
+    setPropertyData();
 }
 
 QNode::~QNode()
@@ -274,6 +278,15 @@ void QNode::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QNode::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNode")][QString::fromLatin1("nestedNodes")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNode")][QString::fromLatin1("nestedNodes")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The Nodes that are defined (nested) within the Node.");
+
+    QWrappedObject::setPropertyData();
 }
 
 #include "moc_qnode.cpp"

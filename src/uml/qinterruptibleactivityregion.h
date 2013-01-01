@@ -83,6 +83,7 @@ public:
     Q_INVOKABLE void addNode(QActivityNode *node);
     Q_INVOKABLE void removeNode(QActivityNode *node);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QInterruptibleActivityRegion(QInterruptibleActivityRegionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

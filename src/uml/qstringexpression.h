@@ -99,6 +99,7 @@ public:
     // Operations
     Q_INVOKABLE QString stringValue() const;
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QStringExpression(QStringExpressionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

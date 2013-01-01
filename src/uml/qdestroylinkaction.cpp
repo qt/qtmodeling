@@ -44,6 +44,8 @@
 
 #include <QtUml/QLinkEndDestructionData>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QDestroyLinkActionPrivate::QDestroyLinkActionPrivate()
@@ -66,11 +68,13 @@ QDestroyLinkActionPrivate::~QDestroyLinkActionPrivate()
 QDestroyLinkAction::QDestroyLinkAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QWriteLinkAction(*new QDestroyLinkActionPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QDestroyLinkAction::QDestroyLinkAction(QDestroyLinkActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QWriteLinkAction(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QDestroyLinkAction::~QDestroyLinkAction()
@@ -124,6 +128,15 @@ void QDestroyLinkAction::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QDestroyLinkAction::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDestroyLinkAction")][QString::fromLatin1("endData")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDestroyLinkAction")][QString::fromLatin1("endData")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies ends of association and inputs.");
+
+    QWriteLinkAction::setPropertyData();
 }
 
 #include "moc_qdestroylinkaction.cpp"

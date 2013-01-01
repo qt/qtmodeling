@@ -44,6 +44,8 @@
 
 #include <QtUml/QOpaqueExpression>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QAbstractionPrivate::QAbstractionPrivate() :
@@ -66,11 +68,13 @@ QAbstractionPrivate::~QAbstractionPrivate()
 QAbstraction::QAbstraction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QDependency(*new QAbstractionPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QAbstraction::QAbstraction(QAbstractionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QDependency(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QAbstraction::~QAbstraction()
@@ -120,6 +124,15 @@ void QAbstraction::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QAbstraction::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QAbstraction")][QString::fromLatin1("mapping")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QAbstraction")][QString::fromLatin1("mapping")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An composition of an Expression that states the abstraction relationship between the supplier and the client. In some cases, such as Derivation, it is usually formal and unidirectional; in other cases, such as Trace, it is usually informal and bidirectional. The mapping expression is optional and may be omitted if the precise relationship between the elements is not specified.");
+
+    QDependency::setPropertyData();
 }
 
 #include "moc_qabstraction.cpp"

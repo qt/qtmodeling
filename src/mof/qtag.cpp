@@ -42,6 +42,8 @@
 #include "qtag.h"
 #include "qtag_p.h"
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTMOF
 
 QTagPrivate::QTagPrivate() :
@@ -57,11 +59,13 @@ QTagPrivate::~QTagPrivate()
 QTag::QTag(QWrappedObject *parent, QWrappedObject *wrapper) :
     QElement(*new QTagPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QTag::QTag(QTagPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QElement(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QTag::~QTag()
@@ -160,6 +164,24 @@ void QTag::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QTag::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTag")][QString::fromLatin1("elements")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTag")][QString::fromLatin1("elements")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTag")][QString::fromLatin1("value")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTag")][QString::fromLatin1("value")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTag")][QString::fromLatin1("name")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTag")][QString::fromLatin1("name")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTag")][QString::fromLatin1("tagOwner")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTag")][QString::fromLatin1("tagOwner")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("");
+
+    QElement::setPropertyData();
 }
 
 #include "moc_qtag.cpp"

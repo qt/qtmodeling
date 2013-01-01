@@ -86,6 +86,7 @@ public:
     Q_INVOKABLE bool isPositive() const;
     Q_INVOKABLE qint32 value() const;
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QOpaqueExpression(QOpaqueExpressionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

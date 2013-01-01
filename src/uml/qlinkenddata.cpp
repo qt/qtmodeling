@@ -46,6 +46,8 @@
 #include <QtUml/QQualifierValue>
 #include <QtUml/QInputPin>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QLinkEndDataPrivate::QLinkEndDataPrivate() :
@@ -69,11 +71,13 @@ QLinkEndDataPrivate::~QLinkEndDataPrivate()
 QLinkEndData::QLinkEndData(QWrappedObject *parent, QWrappedObject *wrapper) :
     QElement(*new QLinkEndDataPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QLinkEndData::QLinkEndData(QLinkEndDataPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QElement(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QLinkEndData::~QLinkEndData()
@@ -181,6 +185,21 @@ void QLinkEndData::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QLinkEndData::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLinkEndData")][QString::fromLatin1("value")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLinkEndData")][QString::fromLatin1("value")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Input pin that provides the specified object for the given end. This pin is omitted if the link-end data specifies an 'open' end for reading.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLinkEndData")][QString::fromLatin1("end")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLinkEndData")][QString::fromLatin1("end")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Association end for which this link-end data specifies values.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLinkEndData")][QString::fromLatin1("qualifiers")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLinkEndData")][QString::fromLatin1("qualifiers")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("List of qualifier values");
+
+    QElement::setPropertyData();
 }
 
 #include "moc_qlinkenddata.cpp"

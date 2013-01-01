@@ -47,6 +47,8 @@
 #include <QtUml/QValueSpecification>
 #include <QtUml/QConnector>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QMessagePrivate::QMessagePrivate() :
@@ -74,11 +76,13 @@ QMessagePrivate::~QMessagePrivate()
 QMessage::QMessage(QWrappedObject *parent, QWrappedObject *wrapper) :
     QNamedElement(*new QMessagePrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QMessage::QMessage(QMessagePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QNamedElement(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QMessage::~QMessage()
@@ -306,6 +310,36 @@ void QMessage::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QMessage::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("messageSort")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("messageSort")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The sort of communication reflected by the Message");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("messageKind")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("messageKind")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The derived kind of the Message (complete, lost, found or unknown)");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("signature")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("signature")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The signature of the Message is the specification of its content. It refers either an Operation or a Signal.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("arguments")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("arguments")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The arguments of the Message");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("receiveEvent")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("receiveEvent")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Receiving of the Message");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("interaction")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("interaction")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The enclosing Interaction owning the Message");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("sendEvent")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("sendEvent")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Sending of the Message.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("connector")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("connector")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The Connector on which this Message is sent.");
+
+    QNamedElement::setPropertyData();
 }
 
 #include "moc_qmessage.cpp"

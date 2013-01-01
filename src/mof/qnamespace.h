@@ -102,6 +102,7 @@ public:
     Q_INVOKABLE QSet<QPackageableElement *> importMembers(const QPackageableElement *imps) const;
     Q_INVOKABLE bool membersAreDistinguishable() const;
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
     // Classes which access read-only opposite properties should be friend
     friend class QNamedElementPrivate;

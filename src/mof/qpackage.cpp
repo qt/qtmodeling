@@ -46,6 +46,8 @@
 #include <QtMof/QPackageMerge>
 #include <QtMof/QType>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTMOF
 
 QPackagePrivate::QPackagePrivate() :
@@ -70,6 +72,7 @@ QPackage::QPackage(QWrappedObject *parent, QWrappedObject *wrapper) :
     _wrappedNamespace(new QNamespace(this, this)),
     _wrappedPackageableElement(new QPackageableElement(this, this))
 {
+    setPropertyData();
 }
 
 QPackage::QPackage(QPackagePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
@@ -77,6 +80,7 @@ QPackage::QPackage(QPackagePrivate &dd, QWrappedObject *parent, QWrappedObject *
     _wrappedNamespace(new QNamespace(this, this)),
     _wrappedPackageableElement(new QPackageableElement(this, this))
 {
+    setPropertyData();
 }
 
 QPackage::~QPackage()
@@ -548,6 +552,30 @@ void QPackage::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QPackage::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QPackage")][QString::fromLatin1("URI")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QPackage")][QString::fromLatin1("URI")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Provides an identifier for the package that can be used for many purposes. A URI is the universally unique identification of the package following the IETF URI specification, RFC 2396 http://www.ietf.org/rfc/rfc2396.txt and it must comply with those syntax rules.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QPackage")][QString::fromLatin1("ownedTypes")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QPackage")][QString::fromLatin1("ownedTypes")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the packaged elements that are Types.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QPackage")][QString::fromLatin1("packagedElements")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QPackage")][QString::fromLatin1("packagedElements")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the packageable elements that are owned by this Package.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QPackage")][QString::fromLatin1("nestingPackage")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QPackage")][QString::fromLatin1("nestingPackage")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Package that owns this Package.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QPackage")][QString::fromLatin1("packageMerges")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QPackage")][QString::fromLatin1("packageMerges")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the PackageMerges that are owned by this Package.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QPackage")][QString::fromLatin1("nestedPackages")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QPackage")][QString::fromLatin1("nestedPackages")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the packaged elements that are Packages.");
+
+    QWrappedObject::setPropertyData();
 }
 
 // Overriden methods for subsetted properties

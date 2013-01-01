@@ -45,6 +45,8 @@
 #include <QtUml/QProfile>
 #include <QtUml/QPackage>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QProfileApplicationPrivate::QProfileApplicationPrivate() :
@@ -69,11 +71,13 @@ QProfileApplicationPrivate::~QProfileApplicationPrivate()
 QProfileApplication::QProfileApplication(QWrappedObject *parent, QWrappedObject *wrapper) :
     QDirectedRelationship(*new QProfileApplicationPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QProfileApplication::QProfileApplication(QProfileApplicationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QDirectedRelationship(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QProfileApplication::~QProfileApplication()
@@ -195,6 +199,21 @@ void QProfileApplication::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QProfileApplication::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProfileApplication")][QString::fromLatin1("isStrict")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProfileApplication")][QString::fromLatin1("isStrict")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies that the Profile filtering rules for the metaclasses of the referenced metamodel shall be strictly applied.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProfileApplication")][QString::fromLatin1("applyingPackage")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProfileApplication")][QString::fromLatin1("applyingPackage")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The package that owns the profile application.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProfileApplication")][QString::fromLatin1("appliedProfile")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProfileApplication")][QString::fromLatin1("appliedProfile")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Profiles that are applied to a Package through this ProfileApplication.");
+
+    QDirectedRelationship::setPropertyData();
 }
 
 #include "moc_qprofileapplication.cpp"

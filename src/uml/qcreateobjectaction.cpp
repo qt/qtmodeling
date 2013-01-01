@@ -45,6 +45,8 @@
 #include <QtUml/QClassifier>
 #include <QtUml/QOutputPin>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QCreateObjectActionPrivate::QCreateObjectActionPrivate() :
@@ -68,11 +70,13 @@ QCreateObjectActionPrivate::~QCreateObjectActionPrivate()
 QCreateObjectAction::QCreateObjectAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(*new QCreateObjectActionPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QCreateObjectAction::QCreateObjectAction(QCreateObjectActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QCreateObjectAction::~QCreateObjectAction()
@@ -147,6 +151,18 @@ void QCreateObjectAction::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QCreateObjectAction::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCreateObjectAction")][QString::fromLatin1("classifier")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCreateObjectAction")][QString::fromLatin1("classifier")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Classifier to be instantiated.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCreateObjectAction")][QString::fromLatin1("result")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCreateObjectAction")][QString::fromLatin1("result")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Gives the output pin on which the result is put.");
+
+    QAction::setPropertyData();
 }
 
 #include "moc_qcreateobjectaction.cpp"

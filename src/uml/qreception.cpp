@@ -44,6 +44,8 @@
 
 #include <QtUml/QSignal>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QReceptionPrivate::QReceptionPrivate() :
@@ -66,11 +68,13 @@ QReceptionPrivate::~QReceptionPrivate()
 QReception::QReception(QWrappedObject *parent, QWrappedObject *wrapper) :
     QBehavioralFeature(*new QReceptionPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QReception::QReception(QReceptionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QBehavioralFeature(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QReception::~QReception()
@@ -112,6 +116,15 @@ void QReception::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QReception::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReception")][QString::fromLatin1("signal")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReception")][QString::fromLatin1("signal")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The signal that this reception handles.");
+
+    QBehavioralFeature::setPropertyData();
 }
 
 #include "moc_qreception.cpp"

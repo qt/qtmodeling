@@ -44,6 +44,8 @@
 
 #include <QtMof/QClassifier>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTMOF
 
 QGeneralizationPrivate::QGeneralizationPrivate() :
@@ -68,11 +70,13 @@ QGeneralizationPrivate::~QGeneralizationPrivate()
 QGeneralization::QGeneralization(QWrappedObject *parent, QWrappedObject *wrapper) :
     QDirectedRelationship(*new QGeneralizationPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QGeneralization::QGeneralization(QGeneralizationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QDirectedRelationship(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QGeneralization::~QGeneralization()
@@ -190,6 +194,21 @@ void QGeneralization::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QGeneralization::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QGeneralization")][QString::fromLatin1("isSubstitutable")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QGeneralization")][QString::fromLatin1("isSubstitutable")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Indicates whether the specific classifier can be used wherever the general classifier can be used. If true, the execution traces of the specific classifier will be a superset of the execution traces of the general classifier.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QGeneralization")][QString::fromLatin1("specific")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QGeneralization")][QString::fromLatin1("specific")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the specializing classifier in the Generalization relationship.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QGeneralization")][QString::fromLatin1("general")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QGeneralization")][QString::fromLatin1("general")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the general classifier in the Generalization relationship.");
+
+    QDirectedRelationship::setPropertyData();
 }
 
 #include "moc_qgeneralization.cpp"

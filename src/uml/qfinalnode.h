@@ -65,6 +65,7 @@ public:
     Q_INVOKABLE explicit QFinalNode(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QFinalNode();
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QFinalNode(QFinalNodePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

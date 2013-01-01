@@ -44,6 +44,8 @@
 
 #include <QtUml/QConnectableElement>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QConnectableElementTemplateParameterPrivate::QConnectableElementTemplateParameterPrivate() :
@@ -66,11 +68,13 @@ QConnectableElementTemplateParameterPrivate::~QConnectableElementTemplateParamet
 QConnectableElementTemplateParameter::QConnectableElementTemplateParameter(QWrappedObject *parent, QWrappedObject *wrapper) :
     QTemplateParameter(*new QConnectableElementTemplateParameterPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QConnectableElementTemplateParameter::QConnectableElementTemplateParameter(QConnectableElementTemplateParameterPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QTemplateParameter(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QConnectableElementTemplateParameter::~QConnectableElementTemplateParameter()
@@ -117,6 +121,15 @@ void QConnectableElementTemplateParameter::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QConnectableElementTemplateParameter::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnectableElementTemplateParameter")][QString::fromLatin1("parameteredElement")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnectableElementTemplateParameter")][QString::fromLatin1("parameteredElement")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The ConnectableElement for this template parameter.");
+
+    QTemplateParameter::setPropertyData();
 }
 
 #include "moc_qconnectableelementtemplateparameter.cpp"

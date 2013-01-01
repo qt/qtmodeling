@@ -91,6 +91,7 @@ public:
     Q_INVOKABLE QElement *createElement(const QClass *class_, QSet<QArgument *> arguments);
     Q_INVOKABLE QLink *createLink(const QAssociation *association, const QElement *firstElement, const QElement *secondElement);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QFactory(QFactoryPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

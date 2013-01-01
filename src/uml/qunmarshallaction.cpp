@@ -46,6 +46,8 @@
 #include <QtUml/QOutputPin>
 #include <QtUml/QClassifier>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QUnmarshallActionPrivate::QUnmarshallActionPrivate() :
@@ -69,11 +71,13 @@ QUnmarshallActionPrivate::~QUnmarshallActionPrivate()
 QUnmarshallAction::QUnmarshallAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(*new QUnmarshallActionPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QUnmarshallAction::QUnmarshallAction(QUnmarshallActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QUnmarshallAction::~QUnmarshallAction()
@@ -189,6 +193,21 @@ void QUnmarshallAction::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QUnmarshallAction::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUnmarshallAction")][QString::fromLatin1("object")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUnmarshallAction")][QString::fromLatin1("object")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The object to be unmarshalled.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUnmarshallAction")][QString::fromLatin1("results")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUnmarshallAction")][QString::fromLatin1("results")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The values of the structural features of the input object.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUnmarshallAction")][QString::fromLatin1("unmarshallType")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUnmarshallAction")][QString::fromLatin1("unmarshallType")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The type of the object to be unmarshalled.");
+
+    QAction::setPropertyData();
 }
 
 #include "moc_qunmarshallaction.cpp"

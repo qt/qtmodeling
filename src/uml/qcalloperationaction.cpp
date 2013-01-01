@@ -45,6 +45,8 @@
 #include <QtUml/QOperation>
 #include <QtUml/QInputPin>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QCallOperationActionPrivate::QCallOperationActionPrivate() :
@@ -68,11 +70,13 @@ QCallOperationActionPrivate::~QCallOperationActionPrivate()
 QCallOperationAction::QCallOperationAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QCallAction(*new QCallOperationActionPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QCallOperationAction::QCallOperationAction(QCallOperationActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QCallAction(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QCallOperationAction::~QCallOperationAction()
@@ -147,6 +151,18 @@ void QCallOperationAction::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QCallOperationAction::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCallOperationAction")][QString::fromLatin1("operation")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCallOperationAction")][QString::fromLatin1("operation")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The operation to be invoked by the action execution.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCallOperationAction")][QString::fromLatin1("target")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCallOperationAction")][QString::fromLatin1("target")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The target object to which the request is sent. The classifier of the target object is used to dynamically determine a behavior to invoke. This object constitutes the context of the execution of the operation.");
+
+    QCallAction::setPropertyData();
 }
 
 #include "moc_qcalloperationaction.cpp"

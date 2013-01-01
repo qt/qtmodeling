@@ -91,6 +91,7 @@ public:
     Q_INVOKABLE QInteractionOperand *enclosingOperand() const;
     Q_INVOKABLE void setEnclosingOperand(QInteractionOperand *enclosingOperand);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QInteractionFragment(QInteractionFragmentPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

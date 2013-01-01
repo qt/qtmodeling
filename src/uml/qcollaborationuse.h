@@ -82,6 +82,7 @@ public:
     Q_INVOKABLE void addRoleBinding(QDependency *roleBinding);
     Q_INVOKABLE void removeRoleBinding(QDependency *roleBinding);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QCollaborationUse(QCollaborationUsePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

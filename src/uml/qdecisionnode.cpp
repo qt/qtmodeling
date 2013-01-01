@@ -45,6 +45,8 @@
 #include <QtUml/QBehavior>
 #include <QtUml/QObjectFlow>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QDecisionNodePrivate::QDecisionNodePrivate() :
@@ -68,11 +70,13 @@ QDecisionNodePrivate::~QDecisionNodePrivate()
 QDecisionNode::QDecisionNode(QWrappedObject *parent, QWrappedObject *wrapper) :
     QControlNode(*new QDecisionNodePrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QDecisionNode::QDecisionNode(QDecisionNodePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QControlNode(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QDecisionNode::~QDecisionNode()
@@ -139,6 +143,18 @@ void QDecisionNode::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QDecisionNode::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDecisionNode")][QString::fromLatin1("decisionInputFlow")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDecisionNode")][QString::fromLatin1("decisionInputFlow")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An additional edge incoming to the decision node that provides a decision input value.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDecisionNode")][QString::fromLatin1("decisionInput")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDecisionNode")][QString::fromLatin1("decisionInput")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Provides input to guard specifications on edges outgoing from the decision node.");
+
+    QControlNode::setPropertyData();
 }
 
 #include "moc_qdecisionnode.cpp"

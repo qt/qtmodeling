@@ -65,6 +65,7 @@ public:
     Q_INVOKABLE explicit QPrimitiveType(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QPrimitiveType();
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QPrimitiveType(QPrimitiveTypePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

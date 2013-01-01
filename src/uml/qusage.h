@@ -65,6 +65,7 @@ public:
     Q_INVOKABLE explicit QUsage(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QUsage();
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QUsage(QUsagePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

@@ -87,6 +87,7 @@ public:
     Q_INVOKABLE QTemplateSignature *signature() const;
     Q_INVOKABLE void setSignature(QTemplateSignature *signature);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QTemplateParameter(QTemplateParameterPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

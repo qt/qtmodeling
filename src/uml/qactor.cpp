@@ -42,6 +42,8 @@
 #include "qactor.h"
 #include "qactor_p.h"
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QActorPrivate::QActorPrivate()
@@ -63,11 +65,13 @@ QActorPrivate::~QActorPrivate()
 QActor::QActor(QWrappedObject *parent, QWrappedObject *wrapper) :
     QBehavioredClassifier(*new QActorPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QActor::QActor(QActorPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QBehavioredClassifier(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QActor::~QActor()
@@ -80,6 +84,12 @@ void QActor::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QActor::setPropertyData()
+{
+
+    QBehavioredClassifier::setPropertyData();
 }
 
 #include "moc_qactor.cpp"

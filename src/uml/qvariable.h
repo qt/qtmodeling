@@ -139,6 +139,7 @@ public:
     // Operations
     Q_INVOKABLE bool isAccessibleBy(const QAction *a) const;
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QVariable(QVariablePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

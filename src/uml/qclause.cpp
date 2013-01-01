@@ -45,6 +45,8 @@
 #include <QtUml/QExecutableNode>
 #include <QtUml/QOutputPin>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QClausePrivate::QClausePrivate() :
@@ -67,11 +69,13 @@ QClausePrivate::~QClausePrivate()
 QClause::QClause(QWrappedObject *parent, QWrappedObject *wrapper) :
     QElement(*new QClausePrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QClause::QClause(QClausePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QElement(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QClause::~QClause()
@@ -286,6 +290,30 @@ void QClause::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QClause::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("successorClauses")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("successorClauses")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A set of clauses which may not be tested unless the current clause tests false.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("decider")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("decider")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An output pin within the test fragment the value of which is examined after execution of the test to determine whether the body should be executed.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("predecessorClauses")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("predecessorClauses")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A set of clauses whose tests must all evaluate false before the current clause can be tested.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("bodyOutputs")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("bodyOutputs")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A list of output pins within the body fragment whose values are moved to the result pins of the containing conditional node after execution of the clause body.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("bodies")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("bodies")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A nested activity fragment that is executed if the test evaluates to true and the clause is chosen over any concurrent clauses that also evaluate to true.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("tests")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("tests")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A nested activity fragment with a designated output pin that specifies the result of the test.");
+
+    QElement::setPropertyData();
 }
 
 #include "moc_qclause.cpp"

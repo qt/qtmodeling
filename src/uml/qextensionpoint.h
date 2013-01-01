@@ -74,6 +74,7 @@ public:
     Q_INVOKABLE QUseCase *useCase() const;
     Q_INVOKABLE void setUseCase(QUseCase *useCase);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QExtensionPoint(QExtensionPointPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

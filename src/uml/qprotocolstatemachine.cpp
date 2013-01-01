@@ -44,6 +44,8 @@
 
 #include <QtUml/QProtocolConformance>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QProtocolStateMachinePrivate::QProtocolStateMachinePrivate()
@@ -65,11 +67,13 @@ QProtocolStateMachinePrivate::~QProtocolStateMachinePrivate()
 QProtocolStateMachine::QProtocolStateMachine(QWrappedObject *parent, QWrappedObject *wrapper) :
     QStateMachine(*new QProtocolStateMachinePrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QProtocolStateMachine::QProtocolStateMachine(QProtocolStateMachinePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QStateMachine(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QProtocolStateMachine::~QProtocolStateMachine()
@@ -133,6 +137,15 @@ void QProtocolStateMachine::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QProtocolStateMachine::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolStateMachine")][QString::fromLatin1("conformance")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolStateMachine")][QString::fromLatin1("conformance")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Conformance between protocol state machines.");
+
+    QStateMachine::setPropertyData();
 }
 
 #include "moc_qprotocolstatemachine.cpp"

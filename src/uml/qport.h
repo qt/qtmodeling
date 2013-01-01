@@ -107,6 +107,7 @@ public:
     Q_INVOKABLE void addRedefinedProperty(QWrappedObjectPointer<QPort> redefinedPort);
     Q_INVOKABLE void removeRedefinedProperty(QWrappedObjectPointer<QPort> redefinedPort);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QPort(QPortPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

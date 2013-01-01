@@ -80,6 +80,7 @@ public:
     Q_INVOKABLE QNamedElement *event() const;
     Q_INVOKABLE void setEvent(QNamedElement *event);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QTimeObservation(QTimeObservationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

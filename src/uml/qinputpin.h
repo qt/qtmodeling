@@ -65,6 +65,7 @@ public:
     Q_INVOKABLE explicit QInputPin(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QInputPin();
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QInputPin(QInputPinPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

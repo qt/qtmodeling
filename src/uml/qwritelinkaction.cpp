@@ -42,6 +42,8 @@
 #include "qwritelinkaction.h"
 #include "qwritelinkaction_p.h"
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QWriteLinkActionPrivate::QWriteLinkActionPrivate()
@@ -63,11 +65,13 @@ QWriteLinkActionPrivate::~QWriteLinkActionPrivate()
 QWriteLinkAction::QWriteLinkAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QLinkAction(*new QWriteLinkActionPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QWriteLinkAction::QWriteLinkAction(QWriteLinkActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QLinkAction(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QWriteLinkAction::~QWriteLinkAction()
@@ -80,6 +84,12 @@ void QWriteLinkAction::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QWriteLinkAction::setPropertyData()
+{
+
+    QLinkAction::setPropertyData();
 }
 
 #include "moc_qwritelinkaction.cpp"

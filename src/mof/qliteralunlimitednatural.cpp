@@ -42,6 +42,8 @@
 #include "qliteralunlimitednatural.h"
 #include "qliteralunlimitednatural_p.h"
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTMOF
 
 QLiteralUnlimitedNaturalPrivate::QLiteralUnlimitedNaturalPrivate() :
@@ -64,11 +66,13 @@ QLiteralUnlimitedNaturalPrivate::~QLiteralUnlimitedNaturalPrivate()
 QLiteralUnlimitedNatural::QLiteralUnlimitedNatural(QWrappedObject *parent, QWrappedObject *wrapper) :
     QLiteralSpecification(*new QLiteralUnlimitedNaturalPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QLiteralUnlimitedNatural::QLiteralUnlimitedNatural(QLiteralUnlimitedNaturalPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QLiteralSpecification(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QLiteralUnlimitedNatural::~QLiteralUnlimitedNatural()
@@ -131,6 +135,15 @@ void QLiteralUnlimitedNatural::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QLiteralUnlimitedNatural::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLiteralUnlimitedNatural")][QString::fromLatin1("value")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLiteralUnlimitedNatural")][QString::fromLatin1("value")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The specified UnlimitedNatural value.");
+
+    QLiteralSpecification::setPropertyData();
 }
 
 #include "moc_qliteralunlimitednatural.cpp"

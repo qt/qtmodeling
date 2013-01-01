@@ -44,6 +44,8 @@
 
 #include <QtUml/QProtocolStateMachine>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QProtocolConformancePrivate::QProtocolConformancePrivate() :
@@ -67,11 +69,13 @@ QProtocolConformancePrivate::~QProtocolConformancePrivate()
 QProtocolConformance::QProtocolConformance(QWrappedObject *parent, QWrappedObject *wrapper) :
     QDirectedRelationship(*new QProtocolConformancePrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QProtocolConformance::QProtocolConformance(QProtocolConformancePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QDirectedRelationship(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QProtocolConformance::~QProtocolConformance()
@@ -159,6 +163,18 @@ void QProtocolConformance::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QProtocolConformance::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolConformance")][QString::fromLatin1("specificMachine")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolConformance")][QString::fromLatin1("specificMachine")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the state machine which conforms to the general state machine.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolConformance")][QString::fromLatin1("generalMachine")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolConformance")][QString::fromLatin1("generalMachine")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the protocol state machine to which the specific state machine conforms.");
+
+    QDirectedRelationship::setPropertyData();
 }
 
 #include "moc_qprotocolconformance.cpp"

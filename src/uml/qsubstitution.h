@@ -86,6 +86,7 @@ public:
     Q_INVOKABLE void addClient(QWrappedObjectPointer<QClassifier> substitutingClassifier);
     Q_INVOKABLE void removeClient(QWrappedObjectPointer<QClassifier> substitutingClassifier);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QSubstitution(QSubstitutionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

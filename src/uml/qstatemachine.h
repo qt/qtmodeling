@@ -100,6 +100,7 @@ public:
     Q_INVOKABLE bool isConsistentWith(const QRedefinableElement *redefinee) const;
     Q_INVOKABLE bool isRedefinitionContextValid(const QStateMachine *redefined) const;
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QStateMachine(QStateMachinePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

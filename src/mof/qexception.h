@@ -84,6 +84,7 @@ public:
     Q_INVOKABLE QElement *objectInError() const;
     Q_INVOKABLE void setObjectInError(QElement *objectInError);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QException(QExceptionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

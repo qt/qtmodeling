@@ -47,6 +47,8 @@
 #include <QtUml/QProperty>
 #include <QtUml/QConnectableElement>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QConnectorEndPrivate::QConnectorEndPrivate() :
@@ -70,11 +72,13 @@ QConnectorEndPrivate::~QConnectorEndPrivate()
 QConnectorEnd::QConnectorEnd(QWrappedObject *parent, QWrappedObject *wrapper) :
     QMultiplicityElement(*new QConnectorEndPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QConnectorEnd::QConnectorEnd(QConnectorEndPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QMultiplicityElement(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QConnectorEnd::~QConnectorEnd()
@@ -161,6 +165,21 @@ void QConnectorEnd::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QConnectorEnd::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnectorEnd")][QString::fromLatin1("role")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnectorEnd")][QString::fromLatin1("role")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The connectable element attached at this connector end. When an instance of the containing classifier is created, a link may (depending on the multiplicities) be created to an instance of the classifier that types this connectable element.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnectorEnd")][QString::fromLatin1("partWithPort")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnectorEnd")][QString::fromLatin1("partWithPort")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Indicates the role of the internal structure of a classifier with the port to which the connector end is attached.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnectorEnd")][QString::fromLatin1("definingEnd")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnectorEnd")][QString::fromLatin1("definingEnd")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A derived association referencing the corresponding association end on the association which types the connector owing this connector end. This association is derived by selecting the association end at the same place in the ordering of association ends as this connector end.");
+
+    QMultiplicityElement::setPropertyData();
 }
 
 #include "moc_qconnectorend.cpp"

@@ -42,6 +42,8 @@
 #include "qgate.h"
 #include "qgate_p.h"
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QGatePrivate::QGatePrivate()
@@ -63,11 +65,13 @@ QGatePrivate::~QGatePrivate()
 QGate::QGate(QWrappedObject *parent, QWrappedObject *wrapper) :
     QMessageEnd(*new QGatePrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QGate::QGate(QGatePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QMessageEnd(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QGate::~QGate()
@@ -80,6 +84,12 @@ void QGate::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QGate::setPropertyData()
+{
+
+    QMessageEnd::setPropertyData();
 }
 
 #include "moc_qgate.cpp"

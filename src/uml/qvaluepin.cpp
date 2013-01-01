@@ -44,6 +44,8 @@
 
 #include <QtUml/QValueSpecification>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QValuePinPrivate::QValuePinPrivate() :
@@ -66,11 +68,13 @@ QValuePinPrivate::~QValuePinPrivate()
 QValuePin::QValuePin(QWrappedObject *parent, QWrappedObject *wrapper) :
     QInputPin(*new QValuePinPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QValuePin::QValuePin(QValuePinPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QInputPin(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QValuePin::~QValuePin()
@@ -120,6 +124,15 @@ void QValuePin::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QValuePin::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QValuePin")][QString::fromLatin1("value")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QValuePin")][QString::fromLatin1("value")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Value that the pin will provide.");
+
+    QInputPin::setPropertyData();
 }
 
 #include "moc_qvaluepin.cpp"

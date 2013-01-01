@@ -45,6 +45,8 @@
 #include <QtUml/QImage>
 #include <QtUml/QProfile>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QStereotypePrivate::QStereotypePrivate()
@@ -66,11 +68,13 @@ QStereotypePrivate::~QStereotypePrivate()
 QStereotype::QStereotype(QWrappedObject *parent, QWrappedObject *wrapper) :
     QClass(*new QStereotypePrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QStereotype::QStereotype(QStereotypePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QClass(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QStereotype::~QStereotype()
@@ -154,6 +158,18 @@ void QStereotype::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QStereotype::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStereotype")][QString::fromLatin1("icons")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStereotype")][QString::fromLatin1("icons")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Stereotype can change the graphical appearance of the extended model element by using attached icons. When this association is not null, it references the location of the icon content to be displayed within diagrams presenting the extended model elements.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStereotype")][QString::fromLatin1("profile")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStereotype")][QString::fromLatin1("profile")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The profile that directly or indirectly contains this stereotype.");
+
+    QClass::setPropertyData();
 }
 
 #include "moc_qstereotype.cpp"

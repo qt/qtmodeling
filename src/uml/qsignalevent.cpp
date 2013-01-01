@@ -44,6 +44,8 @@
 
 #include <QtUml/QSignal>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QSignalEventPrivate::QSignalEventPrivate() :
@@ -66,11 +68,13 @@ QSignalEventPrivate::~QSignalEventPrivate()
 QSignalEvent::QSignalEvent(QWrappedObject *parent, QWrappedObject *wrapper) :
     QMessageEvent(*new QSignalEventPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QSignalEvent::QSignalEvent(QSignalEventPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QMessageEvent(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QSignalEvent::~QSignalEvent()
@@ -112,6 +116,15 @@ void QSignalEvent::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QSignalEvent::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QSignalEvent")][QString::fromLatin1("signal")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QSignalEvent")][QString::fromLatin1("signal")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The specific signal that is associated with this event.");
+
+    QMessageEvent::setPropertyData();
 }
 
 #include "moc_qsignalevent.cpp"

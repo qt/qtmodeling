@@ -45,6 +45,8 @@
 #include <QtUml/QTrigger>
 #include <QtUml/QInputPin>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QReplyActionPrivate::QReplyActionPrivate() :
@@ -68,11 +70,13 @@ QReplyActionPrivate::~QReplyActionPrivate()
 QReplyAction::QReplyAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(*new QReplyActionPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QReplyAction::QReplyAction(QReplyActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QReplyAction::~QReplyAction()
@@ -184,6 +188,21 @@ void QReplyAction::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QReplyAction::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReplyAction")][QString::fromLatin1("replyToCall")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReplyAction")][QString::fromLatin1("replyToCall")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The trigger specifying the operation whose call is being replied to.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReplyAction")][QString::fromLatin1("returnInformation")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReplyAction")][QString::fromLatin1("returnInformation")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A pin containing the return information value produced by an earlier AcceptCallAction.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReplyAction")][QString::fromLatin1("replyValues")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReplyAction")][QString::fromLatin1("replyValues")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A list of pins containing the reply values of the operation. These values are returned to the caller.");
+
+    QAction::setPropertyData();
 }
 
 #include "moc_qreplyaction.cpp"

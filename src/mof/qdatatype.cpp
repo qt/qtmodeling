@@ -46,6 +46,8 @@
 #include <QtMof/QOperation>
 #include <QtMof/QNamedElement>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTMOF
 
 QDataTypePrivate::QDataTypePrivate()
@@ -67,11 +69,13 @@ QDataTypePrivate::~QDataTypePrivate()
 QDataType::QDataType(QWrappedObject *parent, QWrappedObject *wrapper) :
     QClassifier(*new QDataTypePrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QDataType::QDataType(QDataTypePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QClassifier(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QDataType::~QDataType()
@@ -201,6 +205,18 @@ void QDataType::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QDataType::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDataType")][QString::fromLatin1("ownedOperations")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDataType")][QString::fromLatin1("ownedOperations")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The Operations owned by the DataType.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDataType")][QString::fromLatin1("ownedAttributes")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDataType")][QString::fromLatin1("ownedAttributes")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The Attributes owned by the DataType.");
+
+    QClassifier::setPropertyData();
 }
 
 #include "moc_qdatatype.cpp"

@@ -45,6 +45,8 @@
 #include <QtUml/QClassifier>
 #include <QtUml/QInputPin>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QReclassifyObjectActionPrivate::QReclassifyObjectActionPrivate() :
@@ -68,11 +70,13 @@ QReclassifyObjectActionPrivate::~QReclassifyObjectActionPrivate()
 QReclassifyObjectAction::QReclassifyObjectAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(*new QReclassifyObjectActionPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QReclassifyObjectAction::QReclassifyObjectAction(QReclassifyObjectActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QReclassifyObjectAction::~QReclassifyObjectAction()
@@ -218,6 +222,24 @@ void QReclassifyObjectAction::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QReclassifyObjectAction::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReclassifyObjectAction")][QString::fromLatin1("isReplaceAll")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReclassifyObjectAction")][QString::fromLatin1("isReplaceAll")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies whether existing classifiers should be removed before adding the new classifiers.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReclassifyObjectAction")][QString::fromLatin1("oldClassifiers")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReclassifyObjectAction")][QString::fromLatin1("oldClassifiers")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A set of classifiers to be removed from the classifiers of the object.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReclassifyObjectAction")][QString::fromLatin1("object")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReclassifyObjectAction")][QString::fromLatin1("object")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Holds the object to be reclassified.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReclassifyObjectAction")][QString::fromLatin1("newClassifiers")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReclassifyObjectAction")][QString::fromLatin1("newClassifiers")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A set of classifiers to be added to the classifiers of the object.");
+
+    QAction::setPropertyData();
 }
 
 #include "moc_qreclassifyobjectaction.cpp"

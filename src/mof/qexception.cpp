@@ -44,6 +44,8 @@
 
 #include <QtMof/QElement>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTMOF
 
 QExceptionPrivate::QExceptionPrivate() :
@@ -60,11 +62,13 @@ QExceptionPrivate::~QExceptionPrivate()
 QException::QException(QWrappedObject *parent, QWrappedObject *wrapper) :
     QWrappedObject(*new QExceptionPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QException::QException(QExceptionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QWrappedObject(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QException::~QException()
@@ -139,6 +143,21 @@ void QException::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QException::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QException")][QString::fromLatin1("description")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QException")][QString::fromLatin1("description")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QException")][QString::fromLatin1("elementInError")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QException")][QString::fromLatin1("elementInError")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QException")][QString::fromLatin1("objectInError")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QException")][QString::fromLatin1("objectInError")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("");
+
+    QWrappedObject::setPropertyData();
 }
 
 #include "moc_qexception.cpp"

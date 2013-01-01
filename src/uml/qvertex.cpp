@@ -46,6 +46,8 @@
 #include <QtUml/QTransition>
 #include <QtUml/QStateMachine>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QVertexPrivate::QVertexPrivate() :
@@ -130,11 +132,13 @@ void QVertexPrivate::removeOutgoing(QTransition *outgoing)
 QVertex::QVertex(QWrappedObject *parent, QWrappedObject *wrapper) :
     QNamedElement(*new QVertexPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QVertex::QVertex(QVertexPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QNamedElement(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QVertex::~QVertex()
@@ -229,6 +233,21 @@ void QVertex::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QVertex::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QVertex")][QString::fromLatin1("incomings")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QVertex")][QString::fromLatin1("incomings")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the transitions entering this vertex.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QVertex")][QString::fromLatin1("container")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QVertex")][QString::fromLatin1("container")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The region that contains this vertex.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QVertex")][QString::fromLatin1("outgoings")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QVertex")][QString::fromLatin1("outgoings")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the transitions departing from this vertex.");
+
+    QNamedElement::setPropertyData();
 }
 
 #include "moc_qvertex.cpp"

@@ -78,6 +78,7 @@ public:
     Q_INVOKABLE QSet<QElement *> sources() const;
     Q_INVOKABLE QSet<QElement *> targets() const;
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QDirectedRelationship(QDirectedRelationshipPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

@@ -44,6 +44,8 @@
 
 #include <QtUml/QTimeExpression>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QTimeEventPrivate::QTimeEventPrivate() :
@@ -67,11 +69,13 @@ QTimeEventPrivate::~QTimeEventPrivate()
 QTimeEvent::QTimeEvent(QWrappedObject *parent, QWrappedObject *wrapper) :
     QEvent(*new QTimeEventPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QTimeEvent::QTimeEvent(QTimeEventPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QEvent(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QTimeEvent::~QTimeEvent()
@@ -151,6 +155,18 @@ void QTimeEvent::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QTimeEvent::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeEvent")][QString::fromLatin1("isRelative")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeEvent")][QString::fromLatin1("isRelative")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies whether it is relative or absolute time.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeEvent")][QString::fromLatin1("when")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeEvent")][QString::fromLatin1("when")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the corresponding time deadline.");
+
+    QEvent::setPropertyData();
 }
 
 #include "moc_qtimeevent.cpp"

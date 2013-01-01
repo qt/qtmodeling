@@ -94,6 +94,7 @@ public:
     Q_INVOKABLE QValueSpecification *selector() const;
     Q_INVOKABLE void setSelector(QValueSpecification *selector);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QLifeline(QLifelinePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

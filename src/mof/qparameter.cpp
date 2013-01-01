@@ -45,6 +45,8 @@
 #include <QtMof/QValueSpecification>
 #include <QtMof/QOperation>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTMOF
 
 QParameterPrivate::QParameterPrivate() :
@@ -71,6 +73,7 @@ QParameter::QParameter(QWrappedObject *parent, QWrappedObject *wrapper) :
     _wrappedTypedElement(new QTypedElement(this, this)),
     _wrappedMultiplicityElement(new QMultiplicityElement(this, this))
 {
+    setPropertyData();
 }
 
 QParameter::QParameter(QParameterPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
@@ -78,6 +81,7 @@ QParameter::QParameter(QParameterPrivate &dd, QWrappedObject *parent, QWrappedOb
     _wrappedTypedElement(new QTypedElement(this, this)),
     _wrappedMultiplicityElement(new QMultiplicityElement(this, this))
 {
+    setPropertyData();
 }
 
 QParameter::~QParameter()
@@ -411,6 +415,24 @@ void QParameter::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QParameter::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("default_")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("default_")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies a String that represents a value to be used when no argument is supplied for the Parameter.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("direction")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("direction")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Indicates whether a parameter is being sent into or out of a behavioral element.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("operation")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("operation")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Operation owning this parameter.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("defaultValue")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("defaultValue")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies a ValueSpecification that represents a value to be used when no argument is supplied for the Parameter.");
+
+    QWrappedObject::setPropertyData();
 }
 
 #include "moc_qparameter.cpp"

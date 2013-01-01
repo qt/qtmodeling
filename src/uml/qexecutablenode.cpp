@@ -44,6 +44,8 @@
 
 #include <QtUml/QExceptionHandler>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QExecutableNodePrivate::QExecutableNodePrivate()
@@ -65,11 +67,13 @@ QExecutableNodePrivate::~QExecutableNodePrivate()
 QExecutableNode::QExecutableNode(QWrappedObject *parent, QWrappedObject *wrapper) :
     QActivityNode(*new QExecutableNodePrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QExecutableNode::QExecutableNode(QExecutableNodePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QActivityNode(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QExecutableNode::~QExecutableNode()
@@ -133,6 +137,15 @@ void QExecutableNode::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QExecutableNode::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExecutableNode")][QString::fromLatin1("handlers")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExecutableNode")][QString::fromLatin1("handlers")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A set of exception handlers that are examined if an uncaught exception propagates to the outer level of the executable node.");
+
+    QActivityNode::setPropertyData();
 }
 
 #include "moc_qexecutablenode.cpp"

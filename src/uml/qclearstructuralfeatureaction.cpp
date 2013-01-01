@@ -44,6 +44,8 @@
 
 #include <QtUml/QOutputPin>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QClearStructuralFeatureActionPrivate::QClearStructuralFeatureActionPrivate() :
@@ -66,11 +68,13 @@ QClearStructuralFeatureActionPrivate::~QClearStructuralFeatureActionPrivate()
 QClearStructuralFeatureAction::QClearStructuralFeatureAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QStructuralFeatureAction(*new QClearStructuralFeatureActionPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QClearStructuralFeatureAction::QClearStructuralFeatureAction(QClearStructuralFeatureActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QStructuralFeatureAction(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QClearStructuralFeatureAction::~QClearStructuralFeatureAction()
@@ -120,6 +124,15 @@ void QClearStructuralFeatureAction::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QClearStructuralFeatureAction::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClearStructuralFeatureAction")][QString::fromLatin1("result")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClearStructuralFeatureAction")][QString::fromLatin1("result")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Gives the output pin on which the result is put.");
+
+    QStructuralFeatureAction::setPropertyData();
 }
 
 #include "moc_qclearstructuralfeatureaction.cpp"

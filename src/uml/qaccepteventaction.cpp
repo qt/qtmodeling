@@ -45,6 +45,8 @@
 #include <QtUml/QOutputPin>
 #include <QtUml/QTrigger>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QAcceptEventActionPrivate::QAcceptEventActionPrivate() :
@@ -67,11 +69,13 @@ QAcceptEventActionPrivate::~QAcceptEventActionPrivate()
 QAcceptEventAction::QAcceptEventAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(*new QAcceptEventActionPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QAcceptEventAction::QAcceptEventAction(QAcceptEventActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QAcceptEventAction::~QAcceptEventAction()
@@ -200,6 +204,21 @@ void QAcceptEventAction::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QAcceptEventAction::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QAcceptEventAction")][QString::fromLatin1("isUnmarshall")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QAcceptEventAction")][QString::fromLatin1("isUnmarshall")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Indicates whether there is a single output pin for the event, or multiple output pins for attributes of the event.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QAcceptEventAction")][QString::fromLatin1("triggers")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QAcceptEventAction")][QString::fromLatin1("triggers")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The type of events accepted by the action, as specified by triggers. For triggers with signal events, a signal of the specified type or any subtype of the specified signal type is accepted.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QAcceptEventAction")][QString::fromLatin1("results")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QAcceptEventAction")][QString::fromLatin1("results")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Pins holding the received event objects or their attributes. Event objects may be copied in transmission, so identity might not be preserved.");
+
+    QAction::setPropertyData();
 }
 
 #include "moc_qaccepteventaction.cpp"

@@ -47,6 +47,8 @@
 #include <QtUml/QProperty>
 #include <QtUml/QOperation>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QInterfacePrivate::QInterfacePrivate() :
@@ -69,11 +71,13 @@ QInterfacePrivate::~QInterfacePrivate()
 QInterface::QInterface(QWrappedObject *parent, QWrappedObject *wrapper) :
     QClassifier(*new QInterfacePrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QInterface::QInterface(QInterfacePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QClassifier(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QInterface::~QInterface()
@@ -338,6 +342,30 @@ void QInterface::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QInterface::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterface")][QString::fromLatin1("protocol")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterface")][QString::fromLatin1("protocol")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References a protocol state machine specifying the legal sequences of the invocation of the behavioral features described in the interface.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterface")][QString::fromLatin1("redefinedInterfaces")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterface")][QString::fromLatin1("redefinedInterfaces")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References all the Interfaces redefined by this Interface.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterface")][QString::fromLatin1("ownedReceptions")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterface")][QString::fromLatin1("ownedReceptions")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Receptions that objects providing this interface are willing to accept.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterface")][QString::fromLatin1("ownedOperations")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterface")][QString::fromLatin1("ownedOperations")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The operations owned by the class.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterface")][QString::fromLatin1("nestedClassifiers")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterface")][QString::fromLatin1("nestedClassifiers")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References all the Classifiers that are defined (nested) within the Class.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterface")][QString::fromLatin1("ownedAttributes")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterface")][QString::fromLatin1("ownedAttributes")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The attributes (i.e. the properties) owned by the class.");
+
+    QClassifier::setPropertyData();
 }
 
 // Overriden methods for subsetted properties

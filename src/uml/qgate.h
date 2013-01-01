@@ -65,6 +65,7 @@ public:
     Q_INVOKABLE explicit QGate(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QGate();
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QGate(QGatePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

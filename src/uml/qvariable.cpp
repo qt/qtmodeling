@@ -46,6 +46,8 @@
 #include <QtUml/QStructuredActivityNode>
 #include <QtUml/QAction>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QVariablePrivate::QVariablePrivate() :
@@ -71,6 +73,7 @@ QVariable::QVariable(QWrappedObject *parent, QWrappedObject *wrapper) :
     _wrappedMultiplicityElement(new QMultiplicityElement(this, this)),
     _wrappedConnectableElement(new QConnectableElement(this, this))
 {
+    setPropertyData();
 }
 
 QVariable::QVariable(QVariablePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
@@ -78,6 +81,7 @@ QVariable::QVariable(QVariablePrivate &dd, QWrappedObject *parent, QWrappedObjec
     _wrappedMultiplicityElement(new QMultiplicityElement(this, this)),
     _wrappedConnectableElement(new QConnectableElement(this, this))
 {
+    setPropertyData();
 }
 
 QVariable::~QVariable()
@@ -460,6 +464,18 @@ void QVariable::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QVariable::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QVariable")][QString::fromLatin1("scope")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QVariable")][QString::fromLatin1("scope")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A structured activity node that owns the variable.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QVariable")][QString::fromLatin1("activityScope")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QVariable")][QString::fromLatin1("activityScope")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An activity that owns the variable.");
+
+    QWrappedObject::setPropertyData();
 }
 
 #include "moc_qvariable.cpp"

@@ -129,6 +129,7 @@ public:
     Q_INVOKABLE bool isConsistentWith(const QRedefinableElement *redefinee) const;
     Q_INVOKABLE QSet<QParameter *> returnResult() const;
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QOperation(QOperationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

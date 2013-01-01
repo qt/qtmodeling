@@ -50,6 +50,8 @@
 #include <QtMof/QPackage>
 #include <QtMof/QDataType>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTMOF
 
 QFactoryPrivate::QFactoryPrivate() :
@@ -65,11 +67,13 @@ QFactoryPrivate::~QFactoryPrivate()
 QFactory::QFactory(QWrappedObject *parent, QWrappedObject *wrapper) :
     QElement(*new QFactoryPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QFactory::QFactory(QFactoryPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QElement(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QFactory::~QFactory()
@@ -177,6 +181,15 @@ void QFactory::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QFactory::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QFactory")][QString::fromLatin1("package")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QFactory")][QString::fromLatin1("package")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("");
+
+    QElement::setPropertyData();
 }
 
 #include "moc_qfactory.cpp"

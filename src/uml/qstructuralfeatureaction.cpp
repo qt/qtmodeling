@@ -45,6 +45,8 @@
 #include <QtUml/QInputPin>
 #include <QtUml/QStructuralFeature>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QStructuralFeatureActionPrivate::QStructuralFeatureActionPrivate() :
@@ -68,11 +70,13 @@ QStructuralFeatureActionPrivate::~QStructuralFeatureActionPrivate()
 QStructuralFeatureAction::QStructuralFeatureAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(*new QStructuralFeatureActionPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QStructuralFeatureAction::QStructuralFeatureAction(QStructuralFeatureActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QStructuralFeatureAction::~QStructuralFeatureAction()
@@ -147,6 +151,18 @@ void QStructuralFeatureAction::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QStructuralFeatureAction::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuralFeatureAction")][QString::fromLatin1("object")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuralFeatureAction")][QString::fromLatin1("object")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Gives the input pin from which the object whose structural feature is to be read or written is obtained.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuralFeatureAction")][QString::fromLatin1("structuralFeature")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuralFeatureAction")][QString::fromLatin1("structuralFeature")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Structural feature to be read.");
+
+    QAction::setPropertyData();
 }
 
 #include "moc_qstructuralfeatureaction.cpp"

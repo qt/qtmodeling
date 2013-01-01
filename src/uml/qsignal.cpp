@@ -44,6 +44,8 @@
 
 #include <QtUml/QProperty>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QSignalPrivate::QSignalPrivate()
@@ -65,11 +67,13 @@ QSignalPrivate::~QSignalPrivate()
 QSignal::QSignal(QWrappedObject *parent, QWrappedObject *wrapper) :
     QClassifier(*new QSignalPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QSignal::QSignal(QSignalPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QClassifier(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QSignal::~QSignal()
@@ -129,6 +133,15 @@ void QSignal::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QSignal::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QSignal")][QString::fromLatin1("ownedAttributes")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QSignal")][QString::fromLatin1("ownedAttributes")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The attributes owned by the signal.");
+
+    QClassifier::setPropertyData();
 }
 
 #include "moc_qsignal.cpp"

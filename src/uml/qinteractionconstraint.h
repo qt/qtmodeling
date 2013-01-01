@@ -77,6 +77,7 @@ public:
     Q_INVOKABLE QValueSpecification *minint() const;
     Q_INVOKABLE void setMinint(QValueSpecification *minint);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QInteractionConstraint(QInteractionConstraintPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

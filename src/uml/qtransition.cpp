@@ -52,6 +52,8 @@
 #include <QtUml/QConstraint>
 #include <QtUml/QBehavior>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QTransitionPrivate::QTransitionPrivate() :
@@ -82,6 +84,7 @@ QTransition::QTransition(QWrappedObject *parent, QWrappedObject *wrapper) :
     _wrappedRedefinableElement(new QRedefinableElement(this, this)),
     _wrappedNamespace(new QNamespace(this, this))
 {
+    setPropertyData();
 }
 
 QTransition::QTransition(QTransitionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
@@ -89,6 +92,7 @@ QTransition::QTransition(QTransitionPrivate &dd, QWrappedObject *parent, QWrappe
     _wrappedRedefinableElement(new QRedefinableElement(this, this)),
     _wrappedNamespace(new QNamespace(this, this))
 {
+    setPropertyData();
 }
 
 QTransition::~QTransition()
@@ -645,6 +649,39 @@ void QTransition::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QTransition::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("kind")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("kind")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Indicates the precise type of the transition.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("guard")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("guard")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A guard is a constraint that provides a fine-grained control over the firing of the transition. The guard is evaluated when an event occurrence is dispatched by the state machine. If the guard is true at that time, the transition may be enabled, otherwise, it is disabled. Guards should be pure expressions without side effects. Guard expressions with side effects are ill formed.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("target")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("target")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Designates the target vertex that is reached when the transition is taken.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("effect")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("effect")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies an optional behavior to be performed when the transition fires.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("container")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("container")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Designates the region that owns this transition.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("redefinitionContext")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("redefinitionContext")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the classifier in which context this element may be redefined.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("redefinedTransition")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("redefinedTransition")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The transition that is redefined by this transition.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("source")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("source")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Designates the originating vertex (state or pseudostate) of the transition.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("triggers")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("triggers")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the triggers that may fire the transition.");
+
+    QWrappedObject::setPropertyData();
 }
 
 #include "moc_qtransition.cpp"

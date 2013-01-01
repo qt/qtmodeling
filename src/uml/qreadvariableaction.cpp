@@ -44,6 +44,8 @@
 
 #include <QtUml/QOutputPin>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QReadVariableActionPrivate::QReadVariableActionPrivate() :
@@ -66,11 +68,13 @@ QReadVariableActionPrivate::~QReadVariableActionPrivate()
 QReadVariableAction::QReadVariableAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QVariableAction(*new QReadVariableActionPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QReadVariableAction::QReadVariableAction(QReadVariableActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QVariableAction(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QReadVariableAction::~QReadVariableAction()
@@ -120,6 +124,15 @@ void QReadVariableAction::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QReadVariableAction::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReadVariableAction")][QString::fromLatin1("result")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReadVariableAction")][QString::fromLatin1("result")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Gives the output pin on which the result is put.");
+
+    QVariableAction::setPropertyData();
 }
 
 #include "moc_qreadvariableaction.cpp"

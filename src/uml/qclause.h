@@ -99,6 +99,7 @@ public:
     Q_INVOKABLE void addTest(QExecutableNode *test);
     Q_INVOKABLE void removeTest(QExecutableNode *test);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QClause(QClausePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

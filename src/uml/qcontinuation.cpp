@@ -42,6 +42,8 @@
 #include "qcontinuation.h"
 #include "qcontinuation_p.h"
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QContinuationPrivate::QContinuationPrivate() :
@@ -64,11 +66,13 @@ QContinuationPrivate::~QContinuationPrivate()
 QContinuation::QContinuation(QWrappedObject *parent, QWrappedObject *wrapper) :
     QInteractionFragment(*new QContinuationPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QContinuation::QContinuation(QContinuationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QInteractionFragment(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QContinuation::~QContinuation()
@@ -111,6 +115,15 @@ void QContinuation::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QContinuation::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QContinuation")][QString::fromLatin1("setting")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QContinuation")][QString::fromLatin1("setting")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("True: when the Continuation is at the end of the enclosing InteractionFragment and False when it is in the beginning.");
+
+    QInteractionFragment::setPropertyData();
 }
 
 #include "moc_qcontinuation.cpp"

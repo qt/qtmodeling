@@ -76,6 +76,7 @@ public:
     Q_INVOKABLE bool booleanValue() const;
     Q_INVOKABLE bool isComputable() const;
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QLiteralBoolean(QLiteralBooleanPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

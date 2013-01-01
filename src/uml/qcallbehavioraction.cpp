@@ -44,6 +44,8 @@
 
 #include <QtUml/QBehavior>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QCallBehaviorActionPrivate::QCallBehaviorActionPrivate() :
@@ -66,11 +68,13 @@ QCallBehaviorActionPrivate::~QCallBehaviorActionPrivate()
 QCallBehaviorAction::QCallBehaviorAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QCallAction(*new QCallBehaviorActionPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QCallBehaviorAction::QCallBehaviorAction(QCallBehaviorActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QCallAction(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QCallBehaviorAction::~QCallBehaviorAction()
@@ -112,6 +116,15 @@ void QCallBehaviorAction::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QCallBehaviorAction::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCallBehaviorAction")][QString::fromLatin1("behavior")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCallBehaviorAction")][QString::fromLatin1("behavior")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The invoked behavior. It must be capable of accepting and returning control.");
+
+    QCallAction::setPropertyData();
 }
 
 #include "moc_qcallbehavioraction.cpp"

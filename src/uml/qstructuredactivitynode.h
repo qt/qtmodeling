@@ -204,6 +204,7 @@ public:
     Q_INVOKABLE QActivity *activity() const;
     Q_INVOKABLE void setActivity(QActivity *activity);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QStructuredActivityNode(QStructuredActivityNodePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

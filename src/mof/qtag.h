@@ -85,6 +85,7 @@ public:
     Q_INVOKABLE QElement *tagOwner() const;
     Q_INVOKABLE void setTagOwner(QElement *tagOwner);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QTag(QTagPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

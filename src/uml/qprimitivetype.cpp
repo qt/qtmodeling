@@ -42,6 +42,8 @@
 #include "qprimitivetype.h"
 #include "qprimitivetype_p.h"
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QPrimitiveTypePrivate::QPrimitiveTypePrivate()
@@ -63,11 +65,13 @@ QPrimitiveTypePrivate::~QPrimitiveTypePrivate()
 QPrimitiveType::QPrimitiveType(QWrappedObject *parent, QWrappedObject *wrapper) :
     QDataType(*new QPrimitiveTypePrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QPrimitiveType::QPrimitiveType(QPrimitiveTypePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QDataType(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QPrimitiveType::~QPrimitiveType()
@@ -80,6 +84,12 @@ void QPrimitiveType::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QPrimitiveType::setPropertyData()
+{
+
+    QDataType::setPropertyData();
 }
 
 #include "moc_qprimitivetype.cpp"

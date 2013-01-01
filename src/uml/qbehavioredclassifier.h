@@ -93,6 +93,7 @@ public:
     Q_INVOKABLE void addClientDependency(QWrappedObjectPointer<QInterfaceRealization> interfaceRealization);
     Q_INVOKABLE void removeClientDependency(QWrappedObjectPointer<QInterfaceRealization> interfaceRealization);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QBehavioredClassifier(QBehavioredClassifierPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

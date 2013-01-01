@@ -44,6 +44,8 @@
 
 #include <QtMof/QValueSpecification>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTMOF
 
 QMultiplicityElementPrivate::QMultiplicityElementPrivate() :
@@ -69,11 +71,13 @@ QMultiplicityElementPrivate::~QMultiplicityElementPrivate()
 QMultiplicityElement::QMultiplicityElement(QWrappedObject *parent, QWrappedObject *wrapper) :
     QElement(*new QMultiplicityElementPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QMultiplicityElement::QMultiplicityElement(QMultiplicityElementPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QElement(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QMultiplicityElement::~QMultiplicityElement()
@@ -313,6 +317,30 @@ void QMultiplicityElement::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QMultiplicityElement::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMultiplicityElement")][QString::fromLatin1("upper")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMultiplicityElement")][QString::fromLatin1("upper")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the upper bound of the multiplicity interval.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMultiplicityElement")][QString::fromLatin1("isUnique")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMultiplicityElement")][QString::fromLatin1("isUnique")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("For a multivalued multiplicity, this attributes specifies whether the values in an instantiation of this element are unique.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMultiplicityElement")][QString::fromLatin1("isOrdered")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMultiplicityElement")][QString::fromLatin1("isOrdered")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("For a multivalued multiplicity, this attribute specifies whether the values in an instantiation of this element are sequentially ordered.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMultiplicityElement")][QString::fromLatin1("lower")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMultiplicityElement")][QString::fromLatin1("lower")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the lower bound of the multiplicity interval.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMultiplicityElement")][QString::fromLatin1("upperValue")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMultiplicityElement")][QString::fromLatin1("upperValue")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The specification of the upper bound for this multiplicity.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMultiplicityElement")][QString::fromLatin1("lowerValue")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMultiplicityElement")][QString::fromLatin1("lowerValue")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The specification of the lower bound for this multiplicity.");
+
+    QElement::setPropertyData();
 }
 
 #include "moc_qmultiplicityelement.cpp"

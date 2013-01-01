@@ -49,6 +49,9 @@
 // Qt includes
 #include <QtCore/QSet>
 #include <QtCore/QList>
+#include <QtCore/QMetaProperty>
+
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
 
 QT_BEGIN_HEADER
 
@@ -81,11 +84,19 @@ public:
     bool setProperty(const char *name, const QVariant &value);
     QVariant property(const char *name) const;
 
+    static QVariant propertyData(QString className, QMetaProperty metaProperty, QtWrappedObjects::MetaPropertyDataRole role)
+    {
+        return propertyDataHash[className][QString::fromLatin1(metaProperty.name())][role];
+    }
+
     virtual void registerMetaTypes() const;
 
 protected:
     explicit QWrappedObject(QWrappedObjectPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     void initialize(QWrappedObject *wrapper);
+    virtual void setPropertyData();
+
+    static QHash<QString, QHash<QString, QHash<QtWrappedObjects::MetaPropertyDataRole, QVariant>>> propertyDataHash;
 };
 
 QT_END_NAMESPACE_QTWRAPPEDOBJECTS

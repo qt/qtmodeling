@@ -89,6 +89,7 @@ public:
     Q_INVOKABLE QObjectNode *exceptionInput() const;
     Q_INVOKABLE void setExceptionInput(QObjectNode *exceptionInput);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QExceptionHandler(QExceptionHandlerPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

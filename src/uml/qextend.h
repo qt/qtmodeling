@@ -121,6 +121,7 @@ public:
     Q_INVOKABLE QConstraint *condition() const;
     Q_INVOKABLE void setCondition(QConstraint *condition);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QExtend(QExtendPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

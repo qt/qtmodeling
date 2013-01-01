@@ -46,6 +46,8 @@
 #include <QtUml/QSlot>
 #include <QtUml/QValueSpecification>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QInstanceSpecificationPrivate::QInstanceSpecificationPrivate() :
@@ -71,6 +73,7 @@ QInstanceSpecification::QInstanceSpecification(QWrappedObject *parent, QWrappedO
     _wrappedPackageableElement(new QPackageableElement(this, this)),
     _wrappedDeploymentTarget(new QDeploymentTarget(this, this))
 {
+    setPropertyData();
 }
 
 QInstanceSpecification::QInstanceSpecification(QInstanceSpecificationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
@@ -79,6 +82,7 @@ QInstanceSpecification::QInstanceSpecification(QInstanceSpecificationPrivate &dd
     _wrappedPackageableElement(new QPackageableElement(this, this)),
     _wrappedDeploymentTarget(new QDeploymentTarget(this, this))
 {
+    setPropertyData();
 }
 
 QInstanceSpecification::~QInstanceSpecification()
@@ -398,6 +402,21 @@ void QInstanceSpecification::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QInstanceSpecification::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInstanceSpecification")][QString::fromLatin1("classifiers")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInstanceSpecification")][QString::fromLatin1("classifiers")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The classifier or classifiers of the represented instance. If multiple classifiers are specified, the instance is classified by all of them.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInstanceSpecification")][QString::fromLatin1("specification")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInstanceSpecification")][QString::fromLatin1("specification")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A specification of how to compute, derive, or construct the instance.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInstanceSpecification")][QString::fromLatin1("slots_")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInstanceSpecification")][QString::fromLatin1("slots_")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A slot giving the value or values of a structural feature of the instance. An instance specification can have one slot per structural feature of its classifiers, including inherited features. It is not necessary to model a slot for each structural feature, in which case the instance specification is a partial description.");
+
+    QWrappedObject::setPropertyData();
 }
 
 #include "moc_qinstancespecification.cpp"

@@ -42,6 +42,8 @@
 #include "qopaquebehavior.h"
 #include "qopaquebehavior_p.h"
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QOpaqueBehaviorPrivate::QOpaqueBehaviorPrivate()
@@ -63,11 +65,13 @@ QOpaqueBehaviorPrivate::~QOpaqueBehaviorPrivate()
 QOpaqueBehavior::QOpaqueBehavior(QWrappedObject *parent, QWrappedObject *wrapper) :
     QBehavior(*new QOpaqueBehaviorPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QOpaqueBehavior::QOpaqueBehavior(QOpaqueBehaviorPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QBehavior(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QOpaqueBehavior::~QOpaqueBehavior()
@@ -146,6 +150,18 @@ void QOpaqueBehavior::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QOpaqueBehavior::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOpaqueBehavior")][QString::fromLatin1("languages")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOpaqueBehavior")][QString::fromLatin1("languages")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Languages the body strings use in the same order as the body strings.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOpaqueBehavior")][QString::fromLatin1("bodies")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOpaqueBehavior")][QString::fromLatin1("bodies")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the behavior in one or more languages.");
+
+    QBehavior::setPropertyData();
 }
 
 #include "moc_qopaquebehavior.cpp"

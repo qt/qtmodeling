@@ -44,6 +44,8 @@
 
 #include <QtUml/QObservation>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QDurationPrivate::QDurationPrivate() :
@@ -66,11 +68,13 @@ QDurationPrivate::~QDurationPrivate()
 QDuration::QDuration(QWrappedObject *parent, QWrappedObject *wrapper) :
     QValueSpecification(*new QDurationPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QDuration::QDuration(QDurationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QValueSpecification(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QDuration::~QDuration()
@@ -151,6 +155,18 @@ void QDuration::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QDuration::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuration")][QString::fromLatin1("expr")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuration")][QString::fromLatin1("expr")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The value of the Duration.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuration")][QString::fromLatin1("observations")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuration")][QString::fromLatin1("observations")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Refers to the time and duration observations that are involved in expr.");
+
+    QValueSpecification::setPropertyData();
 }
 
 #include "moc_qduration.cpp"

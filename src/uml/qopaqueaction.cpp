@@ -45,6 +45,8 @@
 #include <QtUml/QInputPin>
 #include <QtUml/QOutputPin>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QOpaqueActionPrivate::QOpaqueActionPrivate()
@@ -66,11 +68,13 @@ QOpaqueActionPrivate::~QOpaqueActionPrivate()
 QOpaqueAction::QOpaqueAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(*new QOpaqueActionPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QOpaqueAction::QOpaqueAction(QOpaqueActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QOpaqueAction::~QOpaqueAction()
@@ -235,6 +239,24 @@ void QOpaqueAction::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QOpaqueAction::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOpaqueAction")][QString::fromLatin1("bodies")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOpaqueAction")][QString::fromLatin1("bodies")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the action in one or more languages.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOpaqueAction")][QString::fromLatin1("languages")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOpaqueAction")][QString::fromLatin1("languages")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Languages the body strings use, in the same order as the body strings");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOpaqueAction")][QString::fromLatin1("inputValues")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOpaqueAction")][QString::fromLatin1("inputValues")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Provides input to the action.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOpaqueAction")][QString::fromLatin1("outputValues")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOpaqueAction")][QString::fromLatin1("outputValues")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Takes output from the action.");
+
+    QAction::setPropertyData();
 }
 
 #include "moc_qopaqueaction.cpp"

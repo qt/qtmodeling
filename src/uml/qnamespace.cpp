@@ -50,6 +50,8 @@
 #include <QtUml/QPackageableElement>
 #include <QtUml/QPackage>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QNamespacePrivate::QNamespacePrivate()
@@ -122,11 +124,13 @@ void QNamespacePrivate::removeOwnedMember(QNamedElement *ownedMember)
 QNamespace::QNamespace(QWrappedObject *parent, QWrappedObject *wrapper) :
     QNamedElement(*new QNamespacePrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QNamespace::QNamespace(QNamespacePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QNamedElement(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QNamespace::~QNamespace()
@@ -388,6 +392,30 @@ void QNamespace::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QNamespace::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("packageImports")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("packageImports")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the PackageImports owned by the Namespace.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("members")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("members")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A collection of NamedElements identifiable within the Namespace, either by being owned or by being introduced by importing or inheritance.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("importedMembers")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("importedMembers")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("elementImports")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("elementImports")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the ElementImports owned by the Namespace.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("ownedRules")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("ownedRules")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies a set of Constraints owned by this Namespace.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("ownedMembers")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("ownedMembers")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A collection of NamedElements owned by the Namespace.");
+
+    QNamedElement::setPropertyData();
 }
 
 #include "moc_qnamespace.cpp"

@@ -74,6 +74,7 @@ public:
     Q_INVOKABLE QValueSpecification *changeExpression() const;
     Q_INVOKABLE void setChangeExpression(QValueSpecification *changeExpression);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QChangeEvent(QChangeEventPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

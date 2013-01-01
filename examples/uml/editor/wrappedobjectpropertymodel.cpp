@@ -7,6 +7,7 @@
 #include <QtGui/QBrush>
 
 #include <QtWrappedObjects/QMetaPropertyInfo>
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
 
 using QtWrappedObjects::QMetaPropertyInfo;
 
@@ -138,12 +139,14 @@ QVariant WrappedObjectPropertyModel::data(const QModelIndex &index, int role) co
             QMetaPropertyInfo *metaPropertyInfo = static_cast<QMetaPropertyInfo *>(index.internalPointer());
             if (metaPropertyInfo && index.column() == 0 && metaPropertyInfo->metaProperty.isResettable())
                 font.setBold(metaPropertyInfo->wasChanged);
+            if (metaPropertyInfo && index.column() == 0)
+                font.setItalic(QWrappedObject::propertyData(QString::fromLatin1(metaPropertyInfo->propertyMetaObject->className()), metaPropertyInfo->metaProperty, QtWrappedObjects::QtWrappedObjects::IsCompositeRole).toBool());
             return font;
         }
         case Qt::ToolTipRole: {
             QMetaPropertyInfo *metaPropertyInfo = static_cast<QMetaPropertyInfo *>(index.internalPointer());
             if (metaPropertyInfo)
-                return QString::fromLatin1("type: %1").arg(metaPropertyInfo->metaProperty.typeName());
+                return QWrappedObject::propertyData(QString::fromLatin1(metaPropertyInfo->propertyMetaObject->className()), metaPropertyInfo->metaProperty, QtWrappedObjects::QtWrappedObjects::DocumentationRole).toString();
             else
                 return "";
         }

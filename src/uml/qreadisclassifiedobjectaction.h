@@ -88,6 +88,7 @@ public:
     Q_INVOKABLE QClassifier *classifier() const;
     Q_INVOKABLE void setClassifier(QClassifier *classifier);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QReadIsClassifiedObjectAction(QReadIsClassifiedObjectActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

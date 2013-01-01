@@ -45,6 +45,8 @@
 #include <QtUml/QOutputPin>
 #include <QtUml/QValueSpecification>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QValueSpecificationActionPrivate::QValueSpecificationActionPrivate() :
@@ -68,11 +70,13 @@ QValueSpecificationActionPrivate::~QValueSpecificationActionPrivate()
 QValueSpecificationAction::QValueSpecificationAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(*new QValueSpecificationActionPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QValueSpecificationAction::QValueSpecificationAction(QValueSpecificationActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QValueSpecificationAction::~QValueSpecificationAction()
@@ -155,6 +159,18 @@ void QValueSpecificationAction::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QValueSpecificationAction::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QValueSpecificationAction")][QString::fromLatin1("value")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QValueSpecificationAction")][QString::fromLatin1("value")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Value specification to be evaluated.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QValueSpecificationAction")][QString::fromLatin1("result")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QValueSpecificationAction")][QString::fromLatin1("result")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Gives the output pin on which the result is put.");
+
+    QAction::setPropertyData();
 }
 
 #include "moc_qvaluespecificationaction.cpp"

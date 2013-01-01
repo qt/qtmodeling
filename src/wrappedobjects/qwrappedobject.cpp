@@ -56,6 +56,8 @@ QWrappedObjectPrivate::~QWrappedObjectPrivate()
     delete metaWrappedObject;
 }
 
+QHash<QString, QHash<QString, QHash<QtWrappedObjects::MetaPropertyDataRole, QVariant>>> QWrappedObject::propertyDataHash;
+
 QWrappedObject::QWrappedObject(QWrappedObject *parent, QWrappedObject *wrapper) :
     QObject(*new QWrappedObjectPrivate, parent)
 {
@@ -84,6 +86,11 @@ void QWrappedObject::setObjectName(const QString &name)
 void QWrappedObject::initialize(QWrappedObject *wrapper)
 {
     setWrapper(wrapper);
+    setPropertyData();
+}
+
+void QWrappedObject::setPropertyData()
+{
 }
 
 const QList<QWrappedObject *> &QWrappedObject::wrappedObjects() const

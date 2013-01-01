@@ -205,6 +205,7 @@ public:
     Q_INVOKABLE void addCollaborationRole(QConnectableElement *collaborationRole);
     Q_INVOKABLE void removeCollaborationRole(QConnectableElement *collaborationRole);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QCollaboration(QCollaborationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

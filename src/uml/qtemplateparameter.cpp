@@ -45,6 +45,8 @@
 #include <QtUml/QParameterableElement>
 #include <QtUml/QTemplateSignature>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QTemplateParameterPrivate::QTemplateParameterPrivate() :
@@ -71,11 +73,13 @@ QTemplateParameterPrivate::~QTemplateParameterPrivate()
 QTemplateParameter::QTemplateParameter(QWrappedObject *parent, QWrappedObject *wrapper) :
     QElement(*new QTemplateParameterPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QTemplateParameter::QTemplateParameter(QTemplateParameterPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QElement(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QTemplateParameter::~QTemplateParameter()
@@ -244,6 +248,27 @@ void QTemplateParameter::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QTemplateParameter::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateParameter")][QString::fromLatin1("default_")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateParameter")][QString::fromLatin1("default_")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The element that is the default for this formal template parameter.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateParameter")][QString::fromLatin1("parameteredElement")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateParameter")][QString::fromLatin1("parameteredElement")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The element exposed by this template parameter.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateParameter")][QString::fromLatin1("ownedParameteredElement")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateParameter")][QString::fromLatin1("ownedParameteredElement")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The element that is owned by this template parameter.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateParameter")][QString::fromLatin1("ownedDefault")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateParameter")][QString::fromLatin1("ownedDefault")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The element that is owned by this template parameter for the purpose of providing a default.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateParameter")][QString::fromLatin1("signature")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateParameter")][QString::fromLatin1("signature")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The template signature that owns this template parameter.");
+
+    QElement::setPropertyData();
 }
 
 #include "moc_qtemplateparameter.cpp"

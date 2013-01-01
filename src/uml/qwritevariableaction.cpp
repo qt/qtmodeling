@@ -44,6 +44,8 @@
 
 #include <QtUml/QInputPin>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QWriteVariableActionPrivate::QWriteVariableActionPrivate() :
@@ -66,11 +68,13 @@ QWriteVariableActionPrivate::~QWriteVariableActionPrivate()
 QWriteVariableAction::QWriteVariableAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QVariableAction(*new QWriteVariableActionPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QWriteVariableAction::QWriteVariableAction(QWriteVariableActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QVariableAction(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QWriteVariableAction::~QWriteVariableAction()
@@ -120,6 +124,15 @@ void QWriteVariableAction::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QWriteVariableAction::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QWriteVariableAction")][QString::fromLatin1("value")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QWriteVariableAction")][QString::fromLatin1("value")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Value to be added or removed from the variable.");
+
+    QVariableAction::setPropertyData();
 }
 
 #include "moc_qwritevariableaction.cpp"

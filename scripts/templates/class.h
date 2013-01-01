@@ -356,6 +356,7 @@ public:
     [%- END -%]
     [%- END %]
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 [%- friendClasses = [] -%]
 [%- FOREACH friendClass IN classes.values -%]
 [%- FOREACH associationend IN friendClass.associationend.values -%]

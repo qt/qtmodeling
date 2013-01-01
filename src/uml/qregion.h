@@ -150,6 +150,7 @@ public:
     Q_INVOKABLE bool isConsistentWith(const QRedefinableElement *redefinee) const;
     Q_INVOKABLE bool isRedefinitionContextValid(const QRegion *redefined) const;
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QRegion(QRegionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

@@ -42,6 +42,8 @@
 #include "qdestructionoccurrencespecification.h"
 #include "qdestructionoccurrencespecification_p.h"
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QDestructionOccurrenceSpecificationPrivate::QDestructionOccurrenceSpecificationPrivate()
@@ -63,11 +65,13 @@ QDestructionOccurrenceSpecificationPrivate::~QDestructionOccurrenceSpecification
 QDestructionOccurrenceSpecification::QDestructionOccurrenceSpecification(QWrappedObject *parent, QWrappedObject *wrapper) :
     QMessageOccurrenceSpecification(*new QDestructionOccurrenceSpecificationPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QDestructionOccurrenceSpecification::QDestructionOccurrenceSpecification(QDestructionOccurrenceSpecificationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QMessageOccurrenceSpecification(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QDestructionOccurrenceSpecification::~QDestructionOccurrenceSpecification()
@@ -80,6 +84,12 @@ void QDestructionOccurrenceSpecification::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QDestructionOccurrenceSpecification::setPropertyData()
+{
+
+    QMessageOccurrenceSpecification::setPropertyData();
 }
 
 #include "moc_qdestructionoccurrencespecification.cpp"

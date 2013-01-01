@@ -46,6 +46,8 @@
 #include <QtUml/QTemplateParameter>
 #include <QtUml/QTemplateBinding>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QTemplateParameterSubstitutionPrivate::QTemplateParameterSubstitutionPrivate() :
@@ -71,11 +73,13 @@ QTemplateParameterSubstitutionPrivate::~QTemplateParameterSubstitutionPrivate()
 QTemplateParameterSubstitution::QTemplateParameterSubstitution(QWrappedObject *parent, QWrappedObject *wrapper) :
     QElement(*new QTemplateParameterSubstitutionPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QTemplateParameterSubstitution::QTemplateParameterSubstitution(QTemplateParameterSubstitutionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QElement(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QTemplateParameterSubstitution::~QTemplateParameterSubstitution()
@@ -208,6 +212,24 @@ void QTemplateParameterSubstitution::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QTemplateParameterSubstitution::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateParameterSubstitution")][QString::fromLatin1("ownedActual")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateParameterSubstitution")][QString::fromLatin1("ownedActual")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The actual parameter that is owned by this substitution.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateParameterSubstitution")][QString::fromLatin1("formal")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateParameterSubstitution")][QString::fromLatin1("formal")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The formal template parameter that is associated with this substitution.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateParameterSubstitution")][QString::fromLatin1("actual")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateParameterSubstitution")][QString::fromLatin1("actual")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The element that is the actual parameter for this substitution.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateParameterSubstitution")][QString::fromLatin1("templateBinding")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateParameterSubstitution")][QString::fromLatin1("templateBinding")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The optional bindings from this element to templates.");
+
+    QElement::setPropertyData();
 }
 
 #include "moc_qtemplateparametersubstitution.cpp"

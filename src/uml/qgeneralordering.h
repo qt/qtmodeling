@@ -77,6 +77,7 @@ public:
     Q_INVOKABLE QOccurrenceSpecification *after() const;
     Q_INVOKABLE void setAfter(QOccurrenceSpecification *after);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QGeneralOrdering(QGeneralOrderingPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

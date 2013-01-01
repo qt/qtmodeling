@@ -24,6 +24,7 @@
 #include <QtUml/QEnumeration>
 #include <QtUml/QEnumerationLiteral>
 #include <QtUml/QClass>
+#include <QtUml/QProperty>
 #include <QtUml/QComment>
 
 #include "propertyeditoritemdelegate.h"
@@ -70,6 +71,11 @@ MainWindow::MainWindow(QWidget *parent) :
     class_->setName("Student");
     class_->setAbstract(true);
     class_->setVisibility(QtUml::QtUml::VisibilityPackage);
+
+    QWrappedObjectPointer<QProperty> property = new QProperty;
+    property->setName("name");
+    property->setType(primitiveType);
+    class_->addOwnedAttribute(property);
 
     QWrappedObjectPointer<QClass> class2_ = new QClass;
     class2_->setName("InterStudent");
@@ -119,8 +125,8 @@ void MainWindow::populateContextMenu(QMenu &menu, QWrappedObject *element)
     for (int i = 0; i < propertyCount; ++i) {
         QString propertyName = metaWrappedObject->property(i).metaProperty.name();
         QString propertyType = metaWrappedObject->property(i).metaProperty.typeName();
+        QString modifiedPropertyName = QString(propertyName.left(1).toUpper()+propertyName.mid(1)).remove(QRegularExpression("s$")).replace(QRegularExpression("ie$"), "y").replace(QRegularExpression("se$"), "s").replace(QRegularExpression("ice$"), "ex").replace(QRegularExpression("ce$"), "x");
         if (propertyType.contains("QList") || propertyType.contains("QSet")) {
-            QString modifiedPropertyName = QString(propertyName.left(1).toUpper()+propertyName.mid(1)).remove(QRegularExpression("s$")).replace(QRegularExpression("ie$"), "y").replace(QRegularExpression("se$"), "s").replace(QRegularExpression("ice$"), "ex").replace(QRegularExpression("ce$"), "x");
             QString methodParameter = propertyType.remove("QList<").remove("QSet<").remove(">");
             QString methodSignature = QString("add%1(%2)").arg(modifiedPropertyName).arg(methodParameter);
             int metaMethodIndex;
@@ -129,6 +135,18 @@ void MainWindow::populateContextMenu(QMenu &menu, QWrappedObject *element)
                 QAction *action = new QAction(text, this);
                 _visitedAddMethods[text] = QPair<QObject *, QMetaMethod>(element, element->metaObject()->method(metaMethodIndex));
                 action->setData(methodParameter);
+                connect(action, SIGNAL(triggered()), this, SLOT(handleAddMethod()));
+                menu.addAction(action);
+            }
+        }
+        else if (propertyType.endsWith("*")) {
+            QString methodSignature = QString("set%1(%2)").arg(modifiedPropertyName).arg(propertyType);
+            int metaMethodIndex;
+            QString text = tr("Set %1").arg(modifiedPropertyName.remove(QRegularExpression("_$")));
+            if ((metaMethodIndex = element->metaObject()->indexOfMethod(methodSignature.toLatin1())) != -1 and !_visitedAddMethods.contains(text)) {
+                QAction *action = new QAction(text, this);
+                _visitedAddMethods[text] = QPair<QObject *, QMetaMethod>(element, element->metaObject()->method(metaMethodIndex));
+                action->setData(propertyType);
                 connect(action, SIGNAL(triggered()), this, SLOT(handleAddMethod()));
                 menu.addAction(action);
             }

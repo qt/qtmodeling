@@ -45,6 +45,8 @@
 #include <QtUml/QComponent>
 #include <QtUml/QClassifier>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QComponentRealizationPrivate::QComponentRealizationPrivate() :
@@ -67,11 +69,13 @@ QComponentRealizationPrivate::~QComponentRealizationPrivate()
 QComponentRealization::QComponentRealization(QWrappedObject *parent, QWrappedObject *wrapper) :
     QRealization(*new QComponentRealizationPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QComponentRealization::QComponentRealization(QComponentRealizationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QRealization(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QComponentRealization::~QComponentRealization()
@@ -171,6 +175,18 @@ void QComponentRealization::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QComponentRealization::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QComponentRealization")][QString::fromLatin1("abstraction")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QComponentRealization")][QString::fromLatin1("abstraction")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The Component that owns this ComponentRealization and which is implemented by its realizing classifiers.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QComponentRealization")][QString::fromLatin1("realizingClassifiers")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QComponentRealization")][QString::fromLatin1("realizingClassifiers")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The classifiers that are involved in the implementation of the Component that owns this Realization.");
+
+    QRealization::setPropertyData();
 }
 
 // Overriden methods for subsetted properties

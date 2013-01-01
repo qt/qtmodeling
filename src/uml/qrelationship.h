@@ -73,6 +73,7 @@ public:
     // Association ends from QRelationship
     Q_INVOKABLE QSet<QElement *> relatedElements() const;
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QRelationship(QRelationshipPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

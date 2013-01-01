@@ -74,6 +74,7 @@ public:
     Q_INVOKABLE QValueSpecification *value() const;
     Q_INVOKABLE void setValue(QValueSpecification *value);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QValuePin(QValuePinPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

@@ -44,6 +44,8 @@
 
 #include <QtUml/QPackage>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QPackageMergePrivate::QPackageMergePrivate() :
@@ -67,11 +69,13 @@ QPackageMergePrivate::~QPackageMergePrivate()
 QPackageMerge::QPackageMerge(QWrappedObject *parent, QWrappedObject *wrapper) :
     QDirectedRelationship(*new QPackageMergePrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QPackageMerge::QPackageMerge(QPackageMergePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QDirectedRelationship(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QPackageMerge::~QPackageMerge()
@@ -159,6 +163,18 @@ void QPackageMerge::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QPackageMerge::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QPackageMerge")][QString::fromLatin1("mergedPackage")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QPackageMerge")][QString::fromLatin1("mergedPackage")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Package that is to be merged with the receiving package of the PackageMerge.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QPackageMerge")][QString::fromLatin1("receivingPackage")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QPackageMerge")][QString::fromLatin1("receivingPackage")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Package that is being extended with the contents of the merged package of the PackageMerge.");
+
+    QDirectedRelationship::setPropertyData();
 }
 
 #include "moc_qpackagemerge.cpp"

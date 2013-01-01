@@ -44,6 +44,8 @@
 
 #include <QtMof/QMofObject>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTMOF
 
 QReflectiveSequencePrivate::QReflectiveSequencePrivate()
@@ -58,11 +60,13 @@ QReflectiveSequencePrivate::~QReflectiveSequencePrivate()
 QReflectiveSequence::QReflectiveSequence(QWrappedObject *parent, QWrappedObject *wrapper) :
     QReflectiveCollection(*new QReflectiveSequencePrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QReflectiveSequence::QReflectiveSequence(QReflectiveSequencePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QReflectiveCollection(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QReflectiveSequence::~QReflectiveSequence()
@@ -111,6 +115,12 @@ void QReflectiveSequence::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QReflectiveSequence::setPropertyData()
+{
+
+    QReflectiveCollection::setPropertyData();
 }
 
 #include "moc_qreflectivesequence.cpp"

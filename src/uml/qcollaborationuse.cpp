@@ -45,6 +45,8 @@
 #include <QtUml/QDependency>
 #include <QtUml/QCollaboration>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QCollaborationUsePrivate::QCollaborationUsePrivate() :
@@ -67,11 +69,13 @@ QCollaborationUsePrivate::~QCollaborationUsePrivate()
 QCollaborationUse::QCollaborationUse(QWrappedObject *parent, QWrappedObject *wrapper) :
     QNamedElement(*new QCollaborationUsePrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QCollaborationUse::QCollaborationUse(QCollaborationUsePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QNamedElement(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QCollaborationUse::~QCollaborationUse()
@@ -154,6 +158,18 @@ void QCollaborationUse::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QCollaborationUse::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCollaborationUse")][QString::fromLatin1("type")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCollaborationUse")][QString::fromLatin1("type")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The collaboration which is used in this occurrence. The collaboration defines the cooperation between its roles which are mapped to properties of the classifier owning the collaboration use.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCollaborationUse")][QString::fromLatin1("roleBindings")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCollaborationUse")][QString::fromLatin1("roleBindings")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A mapping between features of the collaboration type and features of the owning classifier. This mapping indicates which connectable element of the classifier plays which role(s) in the collaboration. A connectable element may be bound to multiple roles in the same collaboration use (that is, it may play multiple roles).");
+
+    QNamedElement::setPropertyData();
 }
 
 #include "moc_qcollaborationuse.cpp"

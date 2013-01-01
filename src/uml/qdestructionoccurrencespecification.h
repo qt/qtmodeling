@@ -65,6 +65,7 @@ public:
     Q_INVOKABLE explicit QDestructionOccurrenceSpecification(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QDestructionOccurrenceSpecification();
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QDestructionOccurrenceSpecification(QDestructionOccurrenceSpecificationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

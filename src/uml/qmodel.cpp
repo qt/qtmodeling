@@ -42,6 +42,8 @@
 #include "qmodel.h"
 #include "qmodel_p.h"
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QModelPrivate::QModelPrivate()
@@ -63,11 +65,13 @@ QModelPrivate::~QModelPrivate()
 QModel::QModel(QWrappedObject *parent, QWrappedObject *wrapper) :
     QPackage(*new QModelPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QModel::QModel(QModelPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QPackage(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QModel::~QModel()
@@ -105,6 +109,15 @@ void QModel::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QModel::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QModel")][QString::fromLatin1("viewpoint")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QModel")][QString::fromLatin1("viewpoint")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The name of the viewpoint that is expressed by a model (This name may refer to a profile definition).");
+
+    QPackage::setPropertyData();
 }
 
 #include "moc_qmodel.cpp"

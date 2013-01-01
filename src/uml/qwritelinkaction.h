@@ -65,6 +65,7 @@ public:
     Q_INVOKABLE explicit QWriteLinkAction(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QWriteLinkAction();
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QWriteLinkAction(QWriteLinkActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

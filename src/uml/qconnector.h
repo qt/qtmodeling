@@ -99,6 +99,7 @@ public:
     Q_INVOKABLE void addEnd(QConnectorEnd *end);
     Q_INVOKABLE void removeEnd(QConnectorEnd *end);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QConnector(QConnectorPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

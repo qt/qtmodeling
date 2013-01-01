@@ -42,6 +42,8 @@
 #include "qdevice.h"
 #include "qdevice_p.h"
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QDevicePrivate::QDevicePrivate()
@@ -63,11 +65,13 @@ QDevicePrivate::~QDevicePrivate()
 QDevice::QDevice(QWrappedObject *parent, QWrappedObject *wrapper) :
     QNode(*new QDevicePrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QDevice::QDevice(QDevicePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QNode(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QDevice::~QDevice()
@@ -80,6 +84,12 @@ void QDevice::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QDevice::setPropertyData()
+{
+
+    QNode::setPropertyData();
 }
 
 #include "moc_qdevice.cpp"

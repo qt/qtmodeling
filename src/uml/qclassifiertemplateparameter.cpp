@@ -44,6 +44,8 @@
 
 #include <QtUml/QClassifier>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QClassifierTemplateParameterPrivate::QClassifierTemplateParameterPrivate() :
@@ -67,11 +69,13 @@ QClassifierTemplateParameterPrivate::~QClassifierTemplateParameterPrivate()
 QClassifierTemplateParameter::QClassifierTemplateParameter(QWrappedObject *parent, QWrappedObject *wrapper) :
     QTemplateParameter(*new QClassifierTemplateParameterPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QClassifierTemplateParameter::QClassifierTemplateParameter(QClassifierTemplateParameterPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QTemplateParameter(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QClassifierTemplateParameter::~QClassifierTemplateParameter()
@@ -179,6 +183,21 @@ void QClassifierTemplateParameter::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QClassifierTemplateParameter::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifierTemplateParameter")][QString::fromLatin1("allowSubstitutable")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifierTemplateParameter")][QString::fromLatin1("allowSubstitutable")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Constrains the required relationship between an actual parameter and the parameteredElement for this formal parameter.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifierTemplateParameter")][QString::fromLatin1("parameteredElement")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifierTemplateParameter")][QString::fromLatin1("parameteredElement")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The parameterable classifier for this template parameter.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifierTemplateParameter")][QString::fromLatin1("constrainingClassifiers")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifierTemplateParameter")][QString::fromLatin1("constrainingClassifiers")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The classifiers that constrain the argument that can be used for the parameter. If the allowSubstitutable attribute is true, then any classifier that is compatible with this constraining classifier can be substituted; otherwise, it must be either this classifier or one of its subclasses. If this property is empty, there are no constraints on the classifier that can be used as an argument.");
+
+    QTemplateParameter::setPropertyData();
 }
 
 #include "moc_qclassifiertemplateparameter.cpp"

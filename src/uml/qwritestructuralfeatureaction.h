@@ -78,6 +78,7 @@ public:
     Q_INVOKABLE QInputPin *value() const;
     Q_INVOKABLE void setValue(QInputPin *value);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QWriteStructuralFeatureAction(QWriteStructuralFeatureActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

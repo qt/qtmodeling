@@ -65,6 +65,7 @@ public:
     Q_INVOKABLE explicit QPartDecomposition(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QPartDecomposition();
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QPartDecomposition(QPartDecompositionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

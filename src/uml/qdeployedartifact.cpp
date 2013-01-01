@@ -42,6 +42,8 @@
 #include "qdeployedartifact.h"
 #include "qdeployedartifact_p.h"
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QDeployedArtifactPrivate::QDeployedArtifactPrivate()
@@ -63,11 +65,13 @@ QDeployedArtifactPrivate::~QDeployedArtifactPrivate()
 QDeployedArtifact::QDeployedArtifact(QWrappedObject *parent, QWrappedObject *wrapper) :
     QNamedElement(*new QDeployedArtifactPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QDeployedArtifact::QDeployedArtifact(QDeployedArtifactPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QNamedElement(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QDeployedArtifact::~QDeployedArtifact()
@@ -80,6 +84,12 @@ void QDeployedArtifact::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QDeployedArtifact::setPropertyData()
+{
+
+    QNamedElement::setPropertyData();
 }
 
 #include "moc_qdeployedartifact.cpp"

@@ -45,6 +45,8 @@
 #include <QtUml/QBehavior>
 #include <QtUml/QInterfaceRealization>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QBehavioredClassifierPrivate::QBehavioredClassifierPrivate() :
@@ -67,11 +69,13 @@ QBehavioredClassifierPrivate::~QBehavioredClassifierPrivate()
 QBehavioredClassifier::QBehavioredClassifier(QWrappedObject *parent, QWrappedObject *wrapper) :
     QClassifier(*new QBehavioredClassifierPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QBehavioredClassifier::QBehavioredClassifier(QBehavioredClassifierPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QClassifier(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QBehavioredClassifier::~QBehavioredClassifier()
@@ -207,6 +211,21 @@ void QBehavioredClassifier::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QBehavioredClassifier::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioredClassifier")][QString::fromLatin1("ownedBehaviors")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioredClassifier")][QString::fromLatin1("ownedBehaviors")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References behavior specifications owned by a classifier.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioredClassifier")][QString::fromLatin1("interfaceRealizations")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioredClassifier")][QString::fromLatin1("interfaceRealizations")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The set of InterfaceRealizations owned by the BehavioredClassifier. Interface realizations reference the Interfaces of which the BehavioredClassifier is an implementation.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioredClassifier")][QString::fromLatin1("classifierBehavior")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioredClassifier")][QString::fromLatin1("classifierBehavior")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A behavior specification that specifies the behavior of the classifier itself.");
+
+    QClassifier::setPropertyData();
 }
 
 // Overriden methods for subsetted properties

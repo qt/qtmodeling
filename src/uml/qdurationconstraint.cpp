@@ -44,6 +44,8 @@
 
 #include <QtUml/QDurationInterval>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QDurationConstraintPrivate::QDurationConstraintPrivate() :
@@ -67,11 +69,13 @@ QDurationConstraintPrivate::~QDurationConstraintPrivate()
 QDurationConstraint::QDurationConstraint(QWrappedObject *parent, QWrappedObject *wrapper) :
     QIntervalConstraint(*new QDurationConstraintPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QDurationConstraint::QDurationConstraint(QDurationConstraintPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QIntervalConstraint(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QDurationConstraint::~QDurationConstraint()
@@ -148,6 +152,18 @@ void QDurationConstraint::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QDurationConstraint::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDurationConstraint")][QString::fromLatin1("firstEvents")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDurationConstraint")][QString::fromLatin1("firstEvents")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The value of firstEvent[i] is related to constrainedElement[i] (where i is 1 or 2). If firstEvent[i] is true, then the corresponding observation event is the first time instant the execution enters constrainedElement[i]. If firstEvent[i] is false, then the corresponding observation event is the last time instant the execution is within constrainedElement[i]. Default value is true applied when constrainedElement[i] refers an element that represents only one time instant.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDurationConstraint")][QString::fromLatin1("specification")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDurationConstraint")][QString::fromLatin1("specification")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The interval constraining the duration.");
+
+    QIntervalConstraint::setPropertyData();
 }
 
 #include "moc_qdurationconstraint.cpp"

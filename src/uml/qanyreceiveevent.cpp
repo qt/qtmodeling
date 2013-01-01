@@ -42,6 +42,8 @@
 #include "qanyreceiveevent.h"
 #include "qanyreceiveevent_p.h"
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QAnyReceiveEventPrivate::QAnyReceiveEventPrivate()
@@ -63,11 +65,13 @@ QAnyReceiveEventPrivate::~QAnyReceiveEventPrivate()
 QAnyReceiveEvent::QAnyReceiveEvent(QWrappedObject *parent, QWrappedObject *wrapper) :
     QMessageEvent(*new QAnyReceiveEventPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QAnyReceiveEvent::QAnyReceiveEvent(QAnyReceiveEventPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QMessageEvent(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QAnyReceiveEvent::~QAnyReceiveEvent()
@@ -80,6 +84,12 @@ void QAnyReceiveEvent::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QAnyReceiveEvent::setPropertyData()
+{
+
+    QMessageEvent::setPropertyData();
 }
 
 #include "moc_qanyreceiveevent.cpp"

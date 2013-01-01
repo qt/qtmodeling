@@ -45,6 +45,8 @@
 
 #include <QtCore/QMetaProperty>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_HEADER
 
 class QStringList;

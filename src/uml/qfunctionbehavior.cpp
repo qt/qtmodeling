@@ -42,6 +42,8 @@
 #include "qfunctionbehavior.h"
 #include "qfunctionbehavior_p.h"
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QFunctionBehaviorPrivate::QFunctionBehaviorPrivate()
@@ -63,11 +65,13 @@ QFunctionBehaviorPrivate::~QFunctionBehaviorPrivate()
 QFunctionBehavior::QFunctionBehavior(QWrappedObject *parent, QWrappedObject *wrapper) :
     QOpaqueBehavior(*new QFunctionBehaviorPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QFunctionBehavior::QFunctionBehavior(QFunctionBehaviorPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QOpaqueBehavior(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QFunctionBehavior::~QFunctionBehavior()
@@ -80,6 +84,12 @@ void QFunctionBehavior::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QFunctionBehavior::setPropertyData()
+{
+
+    QOpaqueBehavior::setPropertyData();
 }
 
 #include "moc_qfunctionbehavior.cpp"

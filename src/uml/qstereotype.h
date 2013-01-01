@@ -84,6 +84,7 @@ public:
     // Operations
     Q_INVOKABLE QProfile *containingProfile() const;
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QStereotype(QStereotypePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

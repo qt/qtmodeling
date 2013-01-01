@@ -46,6 +46,8 @@
 #include <QtMof/QType>
 #include <QtMof/QNamedElement>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTMOF
 
 QBehavioralFeaturePrivate::QBehavioralFeaturePrivate()
@@ -69,6 +71,7 @@ QBehavioralFeature::QBehavioralFeature(QWrappedObject *parent, QWrappedObject *w
     _wrappedFeature(new QFeature(this, this)),
     _wrappedNamespace(new QNamespace(this, this))
 {
+    setPropertyData();
 }
 
 QBehavioralFeature::QBehavioralFeature(QBehavioralFeaturePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
@@ -76,6 +79,7 @@ QBehavioralFeature::QBehavioralFeature(QBehavioralFeaturePrivate &dd, QWrappedOb
     _wrappedFeature(new QFeature(this, this)),
     _wrappedNamespace(new QNamespace(this, this))
 {
+    setPropertyData();
 }
 
 QBehavioralFeature::~QBehavioralFeature()
@@ -430,6 +434,18 @@ void QBehavioralFeature::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QBehavioralFeature::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioralFeature")][QString::fromLatin1("raisedExceptions")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioralFeature")][QString::fromLatin1("raisedExceptions")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Types representing exceptions that may be raised during an invocation of this feature.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioralFeature")][QString::fromLatin1("ownedParameters")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioralFeature")][QString::fromLatin1("ownedParameters")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the ordered set of formal parameters of this BehavioralFeature.");
+
+    QWrappedObject::setPropertyData();
 }
 
 #include "moc_qbehavioralfeature.cpp"

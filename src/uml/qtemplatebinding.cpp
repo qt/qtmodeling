@@ -46,6 +46,8 @@
 #include <QtUml/QTemplateParameterSubstitution>
 #include <QtUml/QTemplateSignature>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QTemplateBindingPrivate::QTemplateBindingPrivate() :
@@ -69,11 +71,13 @@ QTemplateBindingPrivate::~QTemplateBindingPrivate()
 QTemplateBinding::QTemplateBinding(QWrappedObject *parent, QWrappedObject *wrapper) :
     QDirectedRelationship(*new QTemplateBindingPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QTemplateBinding::QTemplateBinding(QTemplateBindingPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QDirectedRelationship(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QTemplateBinding::~QTemplateBinding()
@@ -212,6 +216,21 @@ void QTemplateBinding::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QTemplateBinding::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateBinding")][QString::fromLatin1("signature")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateBinding")][QString::fromLatin1("signature")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The template signature for the template that is the target of the binding.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateBinding")][QString::fromLatin1("boundElement")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateBinding")][QString::fromLatin1("boundElement")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The element that is bound by this binding.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateBinding")][QString::fromLatin1("parameterSubstitutions")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateBinding")][QString::fromLatin1("parameterSubstitutions")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The parameter substitutions owned by this template binding.");
+
+    QDirectedRelationship::setPropertyData();
 }
 
 #include "moc_qtemplatebinding.cpp"

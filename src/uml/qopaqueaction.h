@@ -95,6 +95,7 @@ public:
     Q_INVOKABLE void addOutputValue(QOutputPin *outputValue);
     Q_INVOKABLE void removeOutputValue(QOutputPin *outputValue);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QOpaqueAction(QOpaqueActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

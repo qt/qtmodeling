@@ -48,6 +48,8 @@
 #include <QtMof/QReflectiveSequence>
 #include <QtMof/QElement>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTMOF
 
 QExtentPrivate::QExtentPrivate()
@@ -62,11 +64,13 @@ QExtentPrivate::~QExtentPrivate()
 QExtent::QExtent(QWrappedObject *parent, QWrappedObject *wrapper) :
     QMofObject(*new QExtentPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QExtent::QExtent(QExtentPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QMofObject(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QExtent::~QExtent()
@@ -150,6 +154,12 @@ void QExtent::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QExtent::setPropertyData()
+{
+
+    QMofObject::setPropertyData();
 }
 
 #include "moc_qextent.cpp"

@@ -92,6 +92,7 @@ public:
     Q_INVOKABLE void addGeneralization(QGeneralization *generalization);
     Q_INVOKABLE void removeGeneralization(QGeneralization *generalization);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QGeneralizationSet(QGeneralizationSetPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

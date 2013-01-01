@@ -74,6 +74,7 @@ public:
     Q_INVOKABLE QInputPin *object() const;
     Q_INVOKABLE void setObject(QInputPin *object);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QStartClassifierBehaviorAction(QStartClassifierBehaviorActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

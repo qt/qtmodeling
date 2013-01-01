@@ -42,6 +42,8 @@
 #include "qexpression.h"
 #include "qexpression_p.h"
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTMOF
 
 QExpressionPrivate::QExpressionPrivate()
@@ -63,11 +65,13 @@ QExpressionPrivate::~QExpressionPrivate()
 QExpression::QExpression(QWrappedObject *parent, QWrappedObject *wrapper) :
     QValueSpecification(*new QExpressionPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QExpression::QExpression(QExpressionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QValueSpecification(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QExpression::~QExpression()
@@ -146,6 +150,18 @@ void QExpression::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QExpression::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExpression")][QString::fromLatin1("symbol")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExpression")][QString::fromLatin1("symbol")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The symbol associated with the node in the expression tree.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExpression")][QString::fromLatin1("operands")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExpression")][QString::fromLatin1("operands")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies a sequence of operands.");
+
+    QValueSpecification::setPropertyData();
 }
 
 #include "moc_qexpression.cpp"

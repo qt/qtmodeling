@@ -86,6 +86,7 @@ public:
     Q_INVOKABLE QClassifier *unmarshallType() const;
     Q_INVOKABLE void setUnmarshallType(QClassifier *unmarshallType);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QUnmarshallAction(QUnmarshallActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

@@ -65,6 +65,7 @@ public:
     Q_INVOKABLE explicit QControlNode(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QControlNode();
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QControlNode(QControlNodePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

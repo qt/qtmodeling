@@ -42,6 +42,8 @@
 #include "qcentralbuffernode.h"
 #include "qcentralbuffernode_p.h"
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QCentralBufferNodePrivate::QCentralBufferNodePrivate()
@@ -63,11 +65,13 @@ QCentralBufferNodePrivate::~QCentralBufferNodePrivate()
 QCentralBufferNode::QCentralBufferNode(QWrappedObject *parent, QWrappedObject *wrapper) :
     QObjectNode(*new QCentralBufferNodePrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QCentralBufferNode::QCentralBufferNode(QCentralBufferNodePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QObjectNode(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QCentralBufferNode::~QCentralBufferNode()
@@ -80,6 +84,12 @@ void QCentralBufferNode::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QCentralBufferNode::setPropertyData()
+{
+
+    QObjectNode::setPropertyData();
 }
 
 #include "moc_qcentralbuffernode.cpp"

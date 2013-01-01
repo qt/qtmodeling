@@ -45,6 +45,8 @@
 #include <QtUml/QConstraint>
 #include <QtUml/QOperation>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QProtocolTransitionPrivate::QProtocolTransitionPrivate() :
@@ -68,11 +70,13 @@ QProtocolTransitionPrivate::~QProtocolTransitionPrivate()
 QProtocolTransition::QProtocolTransition(QWrappedObject *parent, QWrappedObject *wrapper) :
     QTransition(*new QProtocolTransitionPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QProtocolTransition::QProtocolTransition(QProtocolTransitionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QTransition(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QProtocolTransition::~QProtocolTransition()
@@ -162,6 +166,21 @@ void QProtocolTransition::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QProtocolTransition::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolTransition")][QString::fromLatin1("postCondition")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolTransition")][QString::fromLatin1("postCondition")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the post condition of the transition which is the condition that should be obtained once the transition is triggered. This post condition is part of the post condition of the operation connected to the transition.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolTransition")][QString::fromLatin1("referred")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolTransition")][QString::fromLatin1("referred")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("This association refers to the associated operation. It is derived from the operation of the call trigger when applicable.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolTransition")][QString::fromLatin1("preCondition")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolTransition")][QString::fromLatin1("preCondition")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the precondition of the transition. It specifies the condition that should be verified before triggering the transition. This guard condition added to the source state will be evaluated as part of the precondition of the operation referred by the transition if any.");
+
+    QTransition::setPropertyData();
 }
 
 #include "moc_qprotocoltransition.cpp"

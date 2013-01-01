@@ -68,6 +68,7 @@ public:
     Q_INVOKABLE explicit QAssociationClass(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QAssociationClass();
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QAssociationClass(QAssociationClassPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

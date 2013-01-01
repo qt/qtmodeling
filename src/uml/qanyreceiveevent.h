@@ -65,6 +65,7 @@ public:
     Q_INVOKABLE explicit QAnyReceiveEvent(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QAnyReceiveEvent();
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QAnyReceiveEvent(QAnyReceiveEventPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

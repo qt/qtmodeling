@@ -42,6 +42,8 @@
 #include "qstringexpression.h"
 #include "qstringexpression_p.h"
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QStringExpressionPrivate::QStringExpressionPrivate() :
@@ -66,6 +68,7 @@ QStringExpression::QStringExpression(QWrappedObject *parent, QWrappedObject *wra
     _wrappedExpression(new QExpression(this, this)),
     _wrappedTemplateableElement(new QTemplateableElement(this, this))
 {
+    setPropertyData();
 }
 
 QStringExpression::QStringExpression(QStringExpressionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
@@ -73,6 +76,7 @@ QStringExpression::QStringExpression(QStringExpressionPrivate &dd, QWrappedObjec
     _wrappedExpression(new QExpression(this, this)),
     _wrappedTemplateableElement(new QTemplateableElement(this, this))
 {
+    setPropertyData();
 }
 
 QStringExpression::~QStringExpression()
@@ -247,6 +251,18 @@ void QStringExpression::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QStringExpression::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStringExpression")][QString::fromLatin1("owningExpression")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStringExpression")][QString::fromLatin1("owningExpression")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The string expression of which this expression is a substring.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStringExpression")][QString::fromLatin1("subExpressions")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStringExpression")][QString::fromLatin1("subExpressions")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The StringExpressions that constitute this StringExpression.");
+
+    QWrappedObject::setPropertyData();
 }
 
 #include "moc_qstringexpression.cpp"

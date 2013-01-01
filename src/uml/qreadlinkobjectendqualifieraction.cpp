@@ -46,6 +46,8 @@
 #include <QtUml/QProperty>
 #include <QtUml/QOutputPin>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QReadLinkObjectEndQualifierActionPrivate::QReadLinkObjectEndQualifierActionPrivate() :
@@ -70,11 +72,13 @@ QReadLinkObjectEndQualifierActionPrivate::~QReadLinkObjectEndQualifierActionPriv
 QReadLinkObjectEndQualifierAction::QReadLinkObjectEndQualifierAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(*new QReadLinkObjectEndQualifierActionPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QReadLinkObjectEndQualifierAction::QReadLinkObjectEndQualifierAction(QReadLinkObjectEndQualifierActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QReadLinkObjectEndQualifierAction::~QReadLinkObjectEndQualifierAction()
@@ -182,6 +186,21 @@ void QReadLinkObjectEndQualifierAction::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QReadLinkObjectEndQualifierAction::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReadLinkObjectEndQualifierAction")][QString::fromLatin1("result")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReadLinkObjectEndQualifierAction")][QString::fromLatin1("result")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Pin where the result value is placed.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReadLinkObjectEndQualifierAction")][QString::fromLatin1("object")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReadLinkObjectEndQualifierAction")][QString::fromLatin1("object")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Gives the input pin from which the link object is obtained.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReadLinkObjectEndQualifierAction")][QString::fromLatin1("qualifier")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReadLinkObjectEndQualifierAction")][QString::fromLatin1("qualifier")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The attribute representing the qualifier to be read.");
+
+    QAction::setPropertyData();
 }
 
 #include "moc_qreadlinkobjectendqualifieraction.cpp"

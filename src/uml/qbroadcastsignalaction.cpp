@@ -44,6 +44,8 @@
 
 #include <QtUml/QSignal>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QBroadcastSignalActionPrivate::QBroadcastSignalActionPrivate() :
@@ -66,11 +68,13 @@ QBroadcastSignalActionPrivate::~QBroadcastSignalActionPrivate()
 QBroadcastSignalAction::QBroadcastSignalAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QInvocationAction(*new QBroadcastSignalActionPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QBroadcastSignalAction::QBroadcastSignalAction(QBroadcastSignalActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QInvocationAction(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QBroadcastSignalAction::~QBroadcastSignalAction()
@@ -112,6 +116,15 @@ void QBroadcastSignalAction::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QBroadcastSignalAction::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QBroadcastSignalAction")][QString::fromLatin1("signal")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QBroadcastSignalAction")][QString::fromLatin1("signal")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The specification of signal object transmitted to the target objects.");
+
+    QInvocationAction::setPropertyData();
 }
 
 #include "moc_qbroadcastsignalaction.cpp"

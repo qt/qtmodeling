@@ -46,6 +46,8 @@
 #include <QtUml/QConnector>
 #include <QtUml/QConnectableElement>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QStructuredClassifierPrivate::QStructuredClassifierPrivate()
@@ -91,11 +93,13 @@ void QStructuredClassifierPrivate::removeRole(QConnectableElement *role)
 QStructuredClassifier::QStructuredClassifier(QWrappedObject *parent, QWrappedObject *wrapper) :
     QClassifier(*new QStructuredClassifierPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QStructuredClassifier::QStructuredClassifier(QStructuredClassifierPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QClassifier(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QStructuredClassifier::~QStructuredClassifier()
@@ -227,6 +231,24 @@ void QStructuredClassifier::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QStructuredClassifier::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredClassifier")][QString::fromLatin1("roles")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredClassifier")][QString::fromLatin1("roles")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the roles that instances may play in this classifier.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredClassifier")][QString::fromLatin1("ownedAttributes")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredClassifier")][QString::fromLatin1("ownedAttributes")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the properties owned by the classifier.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredClassifier")][QString::fromLatin1("parts")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredClassifier")][QString::fromLatin1("parts")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the properties specifying instances that the classifier owns by composition. This association is derived, selecting those owned properties where isComposite is true.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredClassifier")][QString::fromLatin1("ownedConnectors")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredClassifier")][QString::fromLatin1("ownedConnectors")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the connectors owned by the classifier.");
+
+    QClassifier::setPropertyData();
 }
 
 #include "moc_qstructuredclassifier.cpp"

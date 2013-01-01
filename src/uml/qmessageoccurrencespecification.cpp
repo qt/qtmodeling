@@ -42,6 +42,8 @@
 #include "qmessageoccurrencespecification.h"
 #include "qmessageoccurrencespecification_p.h"
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QMessageOccurrenceSpecificationPrivate::QMessageOccurrenceSpecificationPrivate()
@@ -65,6 +67,7 @@ QMessageOccurrenceSpecification::QMessageOccurrenceSpecification(QWrappedObject 
     _wrappedOccurrenceSpecification(new QOccurrenceSpecification(this, this)),
     _wrappedMessageEnd(new QMessageEnd(this, this))
 {
+    setPropertyData();
 }
 
 QMessageOccurrenceSpecification::QMessageOccurrenceSpecification(QMessageOccurrenceSpecificationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
@@ -72,6 +75,7 @@ QMessageOccurrenceSpecification::QMessageOccurrenceSpecification(QMessageOccurre
     _wrappedOccurrenceSpecification(new QOccurrenceSpecification(this, this)),
     _wrappedMessageEnd(new QMessageEnd(this, this))
 {
+    setPropertyData();
 }
 
 QMessageOccurrenceSpecification::~QMessageOccurrenceSpecification()
@@ -220,6 +224,12 @@ void QMessageOccurrenceSpecification::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QMessageOccurrenceSpecification::setPropertyData()
+{
+
+    QWrappedObject::setPropertyData();
 }
 
 #include "moc_qmessageoccurrencespecification.cpp"

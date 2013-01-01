@@ -76,6 +76,7 @@ public:
     Q_INVOKABLE QEnumeration *enumeration() const;
     Q_INVOKABLE void setEnumeration(QEnumeration *enumeration);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QEnumerationLiteral(QEnumerationLiteralPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

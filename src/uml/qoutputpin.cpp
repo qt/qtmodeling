@@ -42,6 +42,8 @@
 #include "qoutputpin.h"
 #include "qoutputpin_p.h"
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QOutputPinPrivate::QOutputPinPrivate()
@@ -63,11 +65,13 @@ QOutputPinPrivate::~QOutputPinPrivate()
 QOutputPin::QOutputPin(QWrappedObject *parent, QWrappedObject *wrapper) :
     QPin(*new QOutputPinPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QOutputPin::QOutputPin(QOutputPinPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QPin(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QOutputPin::~QOutputPin()
@@ -80,6 +84,12 @@ void QOutputPin::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QOutputPin::setPropertyData()
+{
+
+    QPin::setPropertyData();
 }
 
 #include "moc_qoutputpin.cpp"

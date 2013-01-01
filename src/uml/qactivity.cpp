@@ -49,6 +49,8 @@
 #include <QtUml/QActivityEdge>
 #include <QtUml/QActivityNode>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QActivityPrivate::QActivityPrivate() :
@@ -72,11 +74,13 @@ QActivityPrivate::~QActivityPrivate()
 QActivity::QActivity(QWrappedObject *parent, QWrappedObject *wrapper) :
     QBehavior(*new QActivityPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QActivity::QActivity(QActivityPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QBehavior(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QActivity::~QActivity()
@@ -427,6 +431,36 @@ void QActivity::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QActivity::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivity")][QString::fromLatin1("isReadOnly")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivity")][QString::fromLatin1("isReadOnly")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("If true, this activity must not make any changes to variables outside the activity or to objects. (This is an assertion, not an executable property. It may be used by an execution engine to optimize model execution. If the assertion is violated by the action, then the model is ill-formed.) The default is false (an activity may make nonlocal changes).");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivity")][QString::fromLatin1("isSingleExecution")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivity")][QString::fromLatin1("isSingleExecution")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("If true, all invocations of the activity are handled by the same execution.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivity")][QString::fromLatin1("partitions")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivity")][QString::fromLatin1("partitions")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Top-level partitions in the activity.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivity")][QString::fromLatin1("nodes")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivity")][QString::fromLatin1("nodes")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Nodes coordinated by the activity.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivity")][QString::fromLatin1("variables")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivity")][QString::fromLatin1("variables")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Top-level variables in the activity.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivity")][QString::fromLatin1("structuredNodes")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivity")][QString::fromLatin1("structuredNodes")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Top-level structured nodes in the activity.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivity")][QString::fromLatin1("groups")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivity")][QString::fromLatin1("groups")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Top-level groups in the activity.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivity")][QString::fromLatin1("edges")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivity")][QString::fromLatin1("edges")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Edges expressing flow between nodes of the activity.");
+
+    QBehavior::setPropertyData();
 }
 
 // Overriden methods for subsetted properties

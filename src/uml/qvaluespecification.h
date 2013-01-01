@@ -119,6 +119,7 @@ public:
     Q_INVOKABLE QString stringValue() const;
     Q_INVOKABLE qint32 unlimitedValue() const;
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QValueSpecification(QValueSpecificationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

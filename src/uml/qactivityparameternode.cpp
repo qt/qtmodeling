@@ -44,6 +44,8 @@
 
 #include <QtUml/QParameter>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QActivityParameterNodePrivate::QActivityParameterNodePrivate() :
@@ -66,11 +68,13 @@ QActivityParameterNodePrivate::~QActivityParameterNodePrivate()
 QActivityParameterNode::QActivityParameterNode(QWrappedObject *parent, QWrappedObject *wrapper) :
     QObjectNode(*new QActivityParameterNodePrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QActivityParameterNode::QActivityParameterNode(QActivityParameterNodePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QObjectNode(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QActivityParameterNode::~QActivityParameterNode()
@@ -112,6 +116,15 @@ void QActivityParameterNode::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QActivityParameterNode::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityParameterNode")][QString::fromLatin1("parameter")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityParameterNode")][QString::fromLatin1("parameter")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The parameter the object node will be accepting or providing values for.");
+
+    QObjectNode::setPropertyData();
 }
 
 #include "moc_qactivityparameternode.cpp"

@@ -44,6 +44,8 @@
 
 #include <QtMof/QClassifier>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTMOF
 
 QRedefinableElementPrivate::QRedefinableElementPrivate() :
@@ -102,11 +104,13 @@ void QRedefinableElementPrivate::removeRedefinitionContext(QClassifier *redefini
 QRedefinableElement::QRedefinableElement(QWrappedObject *parent, QWrappedObject *wrapper) :
     QNamedElement(*new QRedefinableElementPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QRedefinableElement::QRedefinableElement(QRedefinableElementPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QNamedElement(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QRedefinableElement::~QRedefinableElement()
@@ -201,6 +205,21 @@ void QRedefinableElement::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QRedefinableElement::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QRedefinableElement")][QString::fromLatin1("isLeaf")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QRedefinableElement")][QString::fromLatin1("isLeaf")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Indicates whether it is possible to further redefine a RedefinableElement. If the value is true, then it is not possible to further redefine the RedefinableElement. Note that this property is preserved through package merge operations; that is, the capability to redefine a RedefinableElement (i.e., isLeaf=false) must be preserved in the resulting RedefinableElement of a package merge operation where a RedefinableElement with isLeaf=false is merged with a matching RedefinableElement with isLeaf=true: the resulting RedefinableElement will have isLeaf=false. Default value is false.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QRedefinableElement")][QString::fromLatin1("redefinedElements")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QRedefinableElement")][QString::fromLatin1("redefinedElements")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The redefinable element that is being redefined by this element.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QRedefinableElement")][QString::fromLatin1("redefinitionContexts")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QRedefinableElement")][QString::fromLatin1("redefinitionContexts")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the contexts that this element may be redefined from.");
+
+    QNamedElement::setPropertyData();
 }
 
 #include "moc_qredefinableelement.cpp"

@@ -57,10 +57,12 @@ public:
     explicit QMetaWrappedObjectPrivate();
     virtual ~QMetaWrappedObjectPrivate();
 
-    QMetaWrappedObject *q_ptr;
     const QWrappedObject *wrappedObject;
     QList<QMetaPropertyInfo> propertyInfos;
     QList<QPair<QString, int>> propertyGroupInfos;
+
+protected:
+    QMetaWrappedObject *q_ptr;
 };
 
 QT_END_NAMESPACE_QTWRAPPEDOBJECTS

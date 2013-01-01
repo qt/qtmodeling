@@ -46,6 +46,8 @@
 #include <QtUml/QOperation>
 #include <QtUml/QParameterSet>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QParameterPrivate::QParameterPrivate() :
@@ -74,6 +76,7 @@ QParameter::QParameter(QWrappedObject *parent, QWrappedObject *wrapper) :
     _wrappedMultiplicityElement(new QMultiplicityElement(this, this)),
     _wrappedConnectableElement(new QConnectableElement(this, this))
 {
+    setPropertyData();
 }
 
 QParameter::QParameter(QParameterPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
@@ -81,6 +84,7 @@ QParameter::QParameter(QParameterPrivate &dd, QWrappedObject *parent, QWrappedOb
     _wrappedMultiplicityElement(new QMultiplicityElement(this, this)),
     _wrappedConnectableElement(new QConnectableElement(this, this))
 {
+    setPropertyData();
 }
 
 QParameter::~QParameter()
@@ -614,6 +618,36 @@ void QParameter::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QParameter::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("isException")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("isException")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Tells whether an output parameter may emit a value to the exclusion of the other outputs.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("default_")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("default_")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies a String that represents a value to be used when no argument is supplied for the Parameter.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("direction")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("direction")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Indicates whether a parameter is being sent into or out of a behavioral element.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("isStream")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("isStream")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Tells whether an input parameter may accept values while its behavior is executing, or whether an output parameter post values while the behavior is executing.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("effect")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("effect")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the effect that the owner of the parameter has on values passed in or out of the parameter.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("operation")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("operation")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Operation owning this parameter.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("defaultValue")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("defaultValue")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies a ValueSpecification that represents a value to be used when no argument is supplied for the Parameter.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("parameterSets")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("parameterSets")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The parameter sets containing the parameter. See ParameterSet.");
+
+    QWrappedObject::setPropertyData();
 }
 
 #include "moc_qparameter.cpp"

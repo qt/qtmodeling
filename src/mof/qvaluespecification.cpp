@@ -42,6 +42,8 @@
 #include "qvaluespecification.h"
 #include "qvaluespecification_p.h"
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTMOF
 
 QValueSpecificationPrivate::QValueSpecificationPrivate()
@@ -65,6 +67,7 @@ QValueSpecification::QValueSpecification(QWrappedObject *parent, QWrappedObject 
     _wrappedPackageableElement(new QPackageableElement(this, this)),
     _wrappedTypedElement(new QTypedElement(this, this))
 {
+    setPropertyData();
 }
 
 QValueSpecification::QValueSpecification(QValueSpecificationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
@@ -72,6 +75,7 @@ QValueSpecification::QValueSpecification(QValueSpecificationPrivate &dd, QWrappe
     _wrappedPackageableElement(new QPackageableElement(this, this)),
     _wrappedTypedElement(new QTypedElement(this, this))
 {
+    setPropertyData();
 }
 
 QValueSpecification::~QValueSpecification()
@@ -268,6 +272,12 @@ void QValueSpecification::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QValueSpecification::setPropertyData()
+{
+
+    QWrappedObject::setPropertyData();
 }
 
 #include "moc_qvaluespecification.cpp"

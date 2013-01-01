@@ -206,6 +206,7 @@ public:
     Q_INVOKABLE void addMemberEnd(QProperty *memberEnd);
     Q_INVOKABLE void removeMemberEnd(QProperty *memberEnd);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QAssociation(QAssociationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

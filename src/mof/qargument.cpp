@@ -44,6 +44,8 @@
 
 #include <QtMof/QMofObject>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTMOF
 
 QArgumentPrivate::QArgumentPrivate() :
@@ -59,11 +61,13 @@ QArgumentPrivate::~QArgumentPrivate()
 QArgument::QArgument(QWrappedObject *parent, QWrappedObject *wrapper) :
     QWrappedObject(*new QArgumentPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QArgument::QArgument(QArgumentPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QWrappedObject(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QArgument::~QArgument()
@@ -120,6 +124,18 @@ void QArgument::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QArgument::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QArgument")][QString::fromLatin1("name")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QArgument")][QString::fromLatin1("name")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QArgument")][QString::fromLatin1("value")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QArgument")][QString::fromLatin1("value")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("");
+
+    QWrappedObject::setPropertyData();
 }
 
 #include "moc_qargument.cpp"

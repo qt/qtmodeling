@@ -87,6 +87,7 @@ public:
     // Operations
     Q_INVOKABLE QAssociation *association() const;
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QLinkAction(QLinkActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

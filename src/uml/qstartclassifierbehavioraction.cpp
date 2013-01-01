@@ -44,6 +44,8 @@
 
 #include <QtUml/QInputPin>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QStartClassifierBehaviorActionPrivate::QStartClassifierBehaviorActionPrivate() :
@@ -66,11 +68,13 @@ QStartClassifierBehaviorActionPrivate::~QStartClassifierBehaviorActionPrivate()
 QStartClassifierBehaviorAction::QStartClassifierBehaviorAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(*new QStartClassifierBehaviorActionPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QStartClassifierBehaviorAction::QStartClassifierBehaviorAction(QStartClassifierBehaviorActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QStartClassifierBehaviorAction::~QStartClassifierBehaviorAction()
@@ -120,6 +124,15 @@ void QStartClassifierBehaviorAction::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QStartClassifierBehaviorAction::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStartClassifierBehaviorAction")][QString::fromLatin1("object")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStartClassifierBehaviorAction")][QString::fromLatin1("object")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Holds the object on which to start the owned behavior.");
+
+    QAction::setPropertyData();
 }
 
 #include "moc_qstartclassifierbehavioraction.cpp"

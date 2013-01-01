@@ -108,6 +108,7 @@ public:
     Q_INVOKABLE void addRedefinedClassifier(QWrappedObjectPointer<QInterface> redefinedInterface);
     Q_INVOKABLE void removeRedefinedClassifier(QWrappedObjectPointer<QInterface> redefinedInterface);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QInterface(QInterfacePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

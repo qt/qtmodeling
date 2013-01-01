@@ -46,6 +46,8 @@
 #include <QtMof/QInstanceSpecification>
 #include <QtMof/QValueSpecification>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTMOF
 
 QSlotPrivate::QSlotPrivate() :
@@ -69,11 +71,13 @@ QSlotPrivate::~QSlotPrivate()
 QSlot::QSlot(QWrappedObject *parent, QWrappedObject *wrapper) :
     QElement(*new QSlotPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QSlot::QSlot(QSlotPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QElement(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QSlot::~QSlot()
@@ -192,6 +196,21 @@ void QSlot::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QSlot::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QSlot")][QString::fromLatin1("values")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QSlot")][QString::fromLatin1("values")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The value or values corresponding to the defining feature for the owning instance specification.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QSlot")][QString::fromLatin1("definingFeature")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QSlot")][QString::fromLatin1("definingFeature")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The structural feature that specifies the values that may be held by the slot.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QSlot")][QString::fromLatin1("owningInstance")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QSlot")][QString::fromLatin1("owningInstance")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The instance specification that owns this slot.");
+
+    QElement::setPropertyData();
 }
 
 #include "moc_qslot.cpp"

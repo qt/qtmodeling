@@ -42,6 +42,8 @@
 #include "qclearvariableaction.h"
 #include "qclearvariableaction_p.h"
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QClearVariableActionPrivate::QClearVariableActionPrivate()
@@ -63,11 +65,13 @@ QClearVariableActionPrivate::~QClearVariableActionPrivate()
 QClearVariableAction::QClearVariableAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QVariableAction(*new QClearVariableActionPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QClearVariableAction::QClearVariableAction(QClearVariableActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QVariableAction(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QClearVariableAction::~QClearVariableAction()
@@ -80,6 +84,12 @@ void QClearVariableAction::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QClearVariableAction::setPropertyData()
+{
+
+    QVariableAction::setPropertyData();
 }
 
 #include "moc_qclearvariableaction.cpp"

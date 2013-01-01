@@ -44,6 +44,8 @@
 
 #include <QtUml/QInterval>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QIntervalConstraintPrivate::QIntervalConstraintPrivate() :
@@ -67,11 +69,13 @@ QIntervalConstraintPrivate::~QIntervalConstraintPrivate()
 QIntervalConstraint::QIntervalConstraint(QWrappedObject *parent, QWrappedObject *wrapper) :
     QConstraint(*new QIntervalConstraintPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QIntervalConstraint::QIntervalConstraint(QIntervalConstraintPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QConstraint(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QIntervalConstraint::~QIntervalConstraint()
@@ -113,6 +117,15 @@ void QIntervalConstraint::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QIntervalConstraint::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QIntervalConstraint")][QString::fromLatin1("specification")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QIntervalConstraint")][QString::fromLatin1("specification")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A condition that must be true when evaluated in order for the constraint to be satisfied.");
+
+    QConstraint::setPropertyData();
 }
 
 #include "moc_qintervalconstraint.cpp"

@@ -44,6 +44,8 @@
 
 #include <QtUml/QOccurrenceSpecification>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QExecutionSpecificationPrivate::QExecutionSpecificationPrivate() :
@@ -67,11 +69,13 @@ QExecutionSpecificationPrivate::~QExecutionSpecificationPrivate()
 QExecutionSpecification::QExecutionSpecification(QWrappedObject *parent, QWrappedObject *wrapper) :
     QInteractionFragment(*new QExecutionSpecificationPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QExecutionSpecification::QExecutionSpecification(QExecutionSpecificationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QInteractionFragment(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QExecutionSpecification::~QExecutionSpecification()
@@ -134,6 +138,18 @@ void QExecutionSpecification::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QExecutionSpecification::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExecutionSpecification")][QString::fromLatin1("start")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExecutionSpecification")][QString::fromLatin1("start")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the OccurrenceSpecification that designates the start of the Action or Behavior");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExecutionSpecification")][QString::fromLatin1("finish")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExecutionSpecification")][QString::fromLatin1("finish")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the OccurrenceSpecification that designates the finish of the Action or Behavior.");
+
+    QInteractionFragment::setPropertyData();
 }
 
 #include "moc_qexecutionspecification.cpp"

@@ -44,6 +44,8 @@
 
 #include <QtUml/QOutputPin>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QReadStructuralFeatureActionPrivate::QReadStructuralFeatureActionPrivate() :
@@ -66,11 +68,13 @@ QReadStructuralFeatureActionPrivate::~QReadStructuralFeatureActionPrivate()
 QReadStructuralFeatureAction::QReadStructuralFeatureAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QStructuralFeatureAction(*new QReadStructuralFeatureActionPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QReadStructuralFeatureAction::QReadStructuralFeatureAction(QReadStructuralFeatureActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QStructuralFeatureAction(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QReadStructuralFeatureAction::~QReadStructuralFeatureAction()
@@ -120,6 +124,15 @@ void QReadStructuralFeatureAction::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QReadStructuralFeatureAction::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReadStructuralFeatureAction")][QString::fromLatin1("result")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReadStructuralFeatureAction")][QString::fromLatin1("result")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Gives the output pin on which the result is put.");
+
+    QStructuralFeatureAction::setPropertyData();
 }
 
 #include "moc_qreadstructuralfeatureaction.cpp"

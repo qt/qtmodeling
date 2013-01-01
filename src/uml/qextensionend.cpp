@@ -44,6 +44,8 @@
 
 #include <QtUml/QStereotype>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QExtensionEndPrivate::QExtensionEndPrivate() :
@@ -66,11 +68,13 @@ QExtensionEndPrivate::~QExtensionEndPrivate()
 QExtensionEnd::QExtensionEnd(QWrappedObject *parent, QWrappedObject *wrapper) :
     QProperty(*new QExtensionEndPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QExtensionEnd::QExtensionEnd(QExtensionEndPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QProperty(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QExtensionEnd::~QExtensionEnd()
@@ -150,6 +154,18 @@ void QExtensionEnd::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QExtensionEnd::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtensionEnd")][QString::fromLatin1("lower")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtensionEnd")][QString::fromLatin1("lower")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("This redefinition changes the default multiplicity of association ends, since model elements are usually extended by 0 or 1 instance of the extension stereotype.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtensionEnd")][QString::fromLatin1("type")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtensionEnd")][QString::fromLatin1("type")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the type of the ExtensionEnd. Note that this association restricts the possible types of an ExtensionEnd to only be Stereotypes.");
+
+    QProperty::setPropertyData();
 }
 
 #include "moc_qextensionend.cpp"

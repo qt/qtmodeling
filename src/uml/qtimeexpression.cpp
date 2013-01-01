@@ -44,6 +44,8 @@
 
 #include <QtUml/QObservation>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QTimeExpressionPrivate::QTimeExpressionPrivate() :
@@ -66,11 +68,13 @@ QTimeExpressionPrivate::~QTimeExpressionPrivate()
 QTimeExpression::QTimeExpression(QWrappedObject *parent, QWrappedObject *wrapper) :
     QValueSpecification(*new QTimeExpressionPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QTimeExpression::QTimeExpression(QTimeExpressionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QValueSpecification(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QTimeExpression::~QTimeExpression()
@@ -151,6 +155,18 @@ void QTimeExpression::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QTimeExpression::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeExpression")][QString::fromLatin1("observations")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeExpression")][QString::fromLatin1("observations")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Refers to the time and duration observations that are involved in expr.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeExpression")][QString::fromLatin1("expr")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeExpression")][QString::fromLatin1("expr")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The value of the time expression.");
+
+    QValueSpecification::setPropertyData();
 }
 
 #include "moc_qtimeexpression.cpp"

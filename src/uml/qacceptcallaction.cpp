@@ -44,6 +44,8 @@
 
 #include <QtUml/QOutputPin>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QAcceptCallActionPrivate::QAcceptCallActionPrivate() :
@@ -66,11 +68,13 @@ QAcceptCallActionPrivate::~QAcceptCallActionPrivate()
 QAcceptCallAction::QAcceptCallAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QAcceptEventAction(*new QAcceptCallActionPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QAcceptCallAction::QAcceptCallAction(QAcceptCallActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QAcceptEventAction(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QAcceptCallAction::~QAcceptCallAction()
@@ -120,6 +124,15 @@ void QAcceptCallAction::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QAcceptCallAction::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QAcceptCallAction")][QString::fromLatin1("returnInformation")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QAcceptCallAction")][QString::fromLatin1("returnInformation")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Pin where a value is placed containing sufficient information to perform a subsequent reply and return control to the caller. The contents of this value are opaque. It can be passed and copied but it cannot be manipulated by the model.");
+
+    QAcceptEventAction::setPropertyData();
 }
 
 #include "moc_qacceptcallaction.cpp"

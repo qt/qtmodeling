@@ -42,6 +42,8 @@
 #include "qliteralreal.h"
 #include "qliteralreal_p.h"
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QLiteralRealPrivate::QLiteralRealPrivate()
@@ -63,11 +65,13 @@ QLiteralRealPrivate::~QLiteralRealPrivate()
 QLiteralReal::QLiteralReal(QWrappedObject *parent, QWrappedObject *wrapper) :
     QLiteralSpecification(*new QLiteralRealPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QLiteralReal::QLiteralReal(QLiteralRealPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QLiteralSpecification(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QLiteralReal::~QLiteralReal()
@@ -122,6 +126,15 @@ void QLiteralReal::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QLiteralReal::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLiteralReal")][QString::fromLatin1("value")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLiteralReal")][QString::fromLatin1("value")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("");
+
+    QLiteralSpecification::setPropertyData();
 }
 
 #include "moc_qliteralreal.cpp"

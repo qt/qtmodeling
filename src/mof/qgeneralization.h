@@ -83,6 +83,7 @@ public:
     Q_INVOKABLE QClassifier *general() const;
     Q_INVOKABLE void setGeneral(QClassifier *general);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QGeneralization(QGeneralizationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

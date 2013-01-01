@@ -42,6 +42,8 @@
 #include "qpin.h"
 #include "qpin_p.h"
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QPinPrivate::QPinPrivate() :
@@ -66,6 +68,7 @@ QPin::QPin(QWrappedObject *parent, QWrappedObject *wrapper) :
     _wrappedMultiplicityElement(new QMultiplicityElement(this, this)),
     _wrappedObjectNode(new QObjectNode(this, this))
 {
+    setPropertyData();
 }
 
 QPin::QPin(QPinPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
@@ -73,6 +76,7 @@ QPin::QPin(QPinPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     _wrappedMultiplicityElement(new QMultiplicityElement(this, this)),
     _wrappedObjectNode(new QObjectNode(this, this))
 {
+    setPropertyData();
 }
 
 QPin::~QPin()
@@ -610,6 +614,15 @@ void QPin::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QPin::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QPin")][QString::fromLatin1("isControl")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QPin")][QString::fromLatin1("isControl")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Tells whether the pins provide data to the actions, or just controls when it executes it.");
+
+    QWrappedObject::setPropertyData();
 }
 
 #include "moc_qpin.cpp"

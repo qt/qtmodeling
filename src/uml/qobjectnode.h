@@ -159,6 +159,7 @@ public:
     Q_INVOKABLE void addInState(QState *inState);
     Q_INVOKABLE void removeInState(QState *inState);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QObjectNode(QObjectNodePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

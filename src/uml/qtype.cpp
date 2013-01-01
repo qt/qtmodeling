@@ -44,6 +44,8 @@
 
 #include <QtUml/QPackage>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QTypePrivate::QTypePrivate() :
@@ -66,11 +68,13 @@ QTypePrivate::~QTypePrivate()
 QType::QType(QWrappedObject *parent, QWrappedObject *wrapper) :
     QPackageableElement(*new QTypePrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QType::QType(QTypePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QPackageableElement(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QType::~QType()
@@ -134,6 +138,15 @@ void QType::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QType::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QType")][QString::fromLatin1("package")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QType")][QString::fromLatin1("package")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the owning package of this classifier, if any.");
+
+    QPackageableElement::setPropertyData();
 }
 
 #include "moc_qtype.cpp"

@@ -42,6 +42,8 @@
 #include "qinitialnode.h"
 #include "qinitialnode_p.h"
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QInitialNodePrivate::QInitialNodePrivate()
@@ -63,11 +65,13 @@ QInitialNodePrivate::~QInitialNodePrivate()
 QInitialNode::QInitialNode(QWrappedObject *parent, QWrappedObject *wrapper) :
     QControlNode(*new QInitialNodePrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QInitialNode::QInitialNode(QInitialNodePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QControlNode(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QInitialNode::~QInitialNode()
@@ -80,6 +84,12 @@ void QInitialNode::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QInitialNode::setPropertyData()
+{
+
+    QControlNode::setPropertyData();
 }
 
 #include "moc_qinitialnode.cpp"

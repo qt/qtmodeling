@@ -213,6 +213,7 @@ public:
     Q_INVOKABLE void addClientDependency(QWrappedObjectPointer<QManifestation> manifestation);
     Q_INVOKABLE void removeClientDependency(QWrappedObjectPointer<QManifestation> manifestation);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QArtifact(QArtifactPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

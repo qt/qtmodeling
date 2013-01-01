@@ -45,6 +45,8 @@
 #include <QtMof/QType>
 #include <QtMof/QProperty>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTMOF
 
 QAssociationPrivate::QAssociationPrivate() :
@@ -69,6 +71,7 @@ QAssociation::QAssociation(QWrappedObject *parent, QWrappedObject *wrapper) :
     _wrappedRelationship(new QRelationship(this, this)),
     _wrappedClassifier(new QClassifier(this, this))
 {
+    setPropertyData();
 }
 
 QAssociation::QAssociation(QAssociationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
@@ -76,6 +79,7 @@ QAssociation::QAssociation(QAssociationPrivate &dd, QWrappedObject *parent, QWra
     _wrappedRelationship(new QRelationship(this, this)),
     _wrappedClassifier(new QClassifier(this, this))
 {
+    setPropertyData();
 }
 
 QAssociation::~QAssociation()
@@ -641,6 +645,27 @@ void QAssociation::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QAssociation::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QAssociation")][QString::fromLatin1("isDerived")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QAssociation")][QString::fromLatin1("isDerived")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies whether the association is derived from other model elements such as other associations or constraints.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QAssociation")][QString::fromLatin1("endTypes")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QAssociation")][QString::fromLatin1("endTypes")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the classifiers that are used as types of the ends of the association.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QAssociation")][QString::fromLatin1("navigableOwnedEnds")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QAssociation")][QString::fromLatin1("navigableOwnedEnds")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The navigable ends that are owned by the association itself.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QAssociation")][QString::fromLatin1("ownedEnds")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QAssociation")][QString::fromLatin1("ownedEnds")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The ends that are owned by the association itself.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QAssociation")][QString::fromLatin1("memberEnds")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QAssociation")][QString::fromLatin1("memberEnds")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Each end represents participation of instances of the classifier connected to the end in links of the association.");
+
+    QWrappedObject::setPropertyData();
 }
 
 #include "moc_qassociation.cpp"

@@ -47,6 +47,8 @@
 #include <QtUml/QClassifier>
 #include <QtUml/QInputPin>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QActionPrivate::QActionPrivate() :
@@ -117,11 +119,13 @@ void QActionPrivate::removeOutput(QOutputPin *output)
 QAction::QAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QExecutableNode(*new QActionPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QAction::QAction(QActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QExecutableNode(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QAction::~QAction()
@@ -292,6 +296,30 @@ void QAction::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QAction::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QAction")][QString::fromLatin1("isLocallyReentrant")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QAction")][QString::fromLatin1("isLocallyReentrant")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("If true, the action can begin a new, concurrent execution, even if there is already another execution of the action ongoing. If false, the action cannot begin a new execution until any previous execution has completed.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QAction")][QString::fromLatin1("context")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QAction")][QString::fromLatin1("context")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The classifier that owns the behavior of which this action is a part.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QAction")][QString::fromLatin1("localPostconditions")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QAction")][QString::fromLatin1("localPostconditions")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Constraint that must be satisfied when executed is completed.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QAction")][QString::fromLatin1("localPreconditions")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QAction")][QString::fromLatin1("localPreconditions")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Constraint that must be satisfied when execution is started.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QAction")][QString::fromLatin1("inputs")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QAction")][QString::fromLatin1("inputs")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The ordered set of input pins connected to the Action. These are among the total set of inputs.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QAction")][QString::fromLatin1("outputs")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QAction")][QString::fromLatin1("outputs")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The ordered set of output pins connected to the Action. The action places its results onto pins in this set.");
+
+    QExecutableNode::setPropertyData();
 }
 
 #include "moc_qaction.cpp"

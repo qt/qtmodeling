@@ -46,6 +46,8 @@
 #include <QtUml/QClassifier>
 #include <QtUml/QExecutableNode>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QExceptionHandlerPrivate::QExceptionHandlerPrivate() :
@@ -70,11 +72,13 @@ QExceptionHandlerPrivate::~QExceptionHandlerPrivate()
 QExceptionHandler::QExceptionHandler(QWrappedObject *parent, QWrappedObject *wrapper) :
     QElement(*new QExceptionHandlerPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QExceptionHandler::QExceptionHandler(QExceptionHandlerPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QElement(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QExceptionHandler::~QExceptionHandler()
@@ -208,6 +212,24 @@ void QExceptionHandler::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QExceptionHandler::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExceptionHandler")][QString::fromLatin1("handlerBody")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExceptionHandler")][QString::fromLatin1("handlerBody")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A node that is executed if the handler satisfies an uncaught exception.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExceptionHandler")][QString::fromLatin1("exceptionTypes")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExceptionHandler")][QString::fromLatin1("exceptionTypes")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The kind of instances that the handler catches. If an exception occurs whose type is any of the classifiers in the set, the handler catches the exception and executes its body.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExceptionHandler")][QString::fromLatin1("protectedNode")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExceptionHandler")][QString::fromLatin1("protectedNode")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The node protected by the handler. The handler is examined if an exception propagates to the outside of the node.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExceptionHandler")][QString::fromLatin1("exceptionInput")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExceptionHandler")][QString::fromLatin1("exceptionInput")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An object node within the handler body. When the handler catches an exception, the exception token is placed in this node, causing the body to execute.");
+
+    QElement::setPropertyData();
 }
 
 #include "moc_qexceptionhandler.cpp"

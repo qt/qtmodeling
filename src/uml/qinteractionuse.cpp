@@ -47,6 +47,8 @@
 #include <QtUml/QGate>
 #include <QtUml/QValueSpecification>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QInteractionUsePrivate::QInteractionUsePrivate() :
@@ -71,11 +73,13 @@ QInteractionUsePrivate::~QInteractionUsePrivate()
 QInteractionUse::QInteractionUse(QWrappedObject *parent, QWrappedObject *wrapper) :
     QInteractionFragment(*new QInteractionUsePrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QInteractionUse::QInteractionUse(QInteractionUsePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QInteractionFragment(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QInteractionUse::~QInteractionUse()
@@ -253,6 +257,27 @@ void QInteractionUse::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QInteractionUse::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionUse")][QString::fromLatin1("actualGates")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionUse")][QString::fromLatin1("actualGates")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The actual gates of the InteractionUse");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionUse")][QString::fromLatin1("returnValue")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionUse")][QString::fromLatin1("returnValue")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The value of the executed Interaction.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionUse")][QString::fromLatin1("refersTo")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionUse")][QString::fromLatin1("refersTo")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Refers to the Interaction that defines its meaning");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionUse")][QString::fromLatin1("arguments")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionUse")][QString::fromLatin1("arguments")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The actual arguments of the Interaction");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionUse")][QString::fromLatin1("returnValueRecipient")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionUse")][QString::fromLatin1("returnValueRecipient")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The recipient of the return value.");
+
+    QInteractionFragment::setPropertyData();
 }
 
 #include "moc_qinteractionuse.cpp"

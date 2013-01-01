@@ -80,6 +80,7 @@ public:
     Q_INVOKABLE QInputPin *removeAt() const;
     Q_INVOKABLE void setRemoveAt(QInputPin *removeAt);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QRemoveVariableValueAction(QRemoveVariableValueActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

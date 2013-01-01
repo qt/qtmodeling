@@ -44,6 +44,8 @@
 
 #include <QtUml/QPackageableElement>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QManifestationPrivate::QManifestationPrivate() :
@@ -66,11 +68,13 @@ QManifestationPrivate::~QManifestationPrivate()
 QManifestation::QManifestation(QWrappedObject *parent, QWrappedObject *wrapper) :
     QAbstraction(*new QManifestationPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QManifestation::QManifestation(QManifestationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QAbstraction(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QManifestation::~QManifestation()
@@ -120,6 +124,15 @@ void QManifestation::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QManifestation::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QManifestation")][QString::fromLatin1("utilizedElement")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QManifestation")][QString::fromLatin1("utilizedElement")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The model element that is utilized in the manifestation in an Artifact.");
+
+    QAbstraction::setPropertyData();
 }
 
 // Overriden methods for subsetted properties

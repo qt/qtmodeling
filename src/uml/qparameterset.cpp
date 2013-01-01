@@ -45,6 +45,8 @@
 #include <QtUml/QConstraint>
 #include <QtUml/QParameter>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QParameterSetPrivate::QParameterSetPrivate()
@@ -66,11 +68,13 @@ QParameterSetPrivate::~QParameterSetPrivate()
 QParameterSet::QParameterSet(QWrappedObject *parent, QWrappedObject *wrapper) :
     QNamedElement(*new QParameterSetPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QParameterSet::QParameterSet(QParameterSetPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QNamedElement(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QParameterSet::~QParameterSet()
@@ -170,6 +174,18 @@ void QParameterSet::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QParameterSet::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameterSet")][QString::fromLatin1("parameters")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameterSet")][QString::fromLatin1("parameters")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Parameters in the parameter set.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameterSet")][QString::fromLatin1("conditions")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameterSet")][QString::fromLatin1("conditions")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Constraint that should be satisfied for the owner of the parameters in an input parameter set to start execution using the values provided for those parameters, or the owner of the parameters in an output parameter set to end execution providing the values for those parameters, if all preconditions and conditions on input parameter sets were satisfied.");
+
+    QNamedElement::setPropertyData();
 }
 
 #include "moc_qparameterset.cpp"

@@ -44,6 +44,8 @@
 
 #include <QtUml/QOutputPin>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QCreateLinkObjectActionPrivate::QCreateLinkObjectActionPrivate() :
@@ -66,11 +68,13 @@ QCreateLinkObjectActionPrivate::~QCreateLinkObjectActionPrivate()
 QCreateLinkObjectAction::QCreateLinkObjectAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QCreateLinkAction(*new QCreateLinkObjectActionPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QCreateLinkObjectAction::QCreateLinkObjectAction(QCreateLinkObjectActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QCreateLinkAction(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QCreateLinkObjectAction::~QCreateLinkObjectAction()
@@ -120,6 +124,15 @@ void QCreateLinkObjectAction::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QCreateLinkObjectAction::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCreateLinkObjectAction")][QString::fromLatin1("result")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCreateLinkObjectAction")][QString::fromLatin1("result")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Gives the output pin on which the result is put.");
+
+    QCreateLinkAction::setPropertyData();
 }
 
 #include "moc_qcreatelinkobjectaction.cpp"

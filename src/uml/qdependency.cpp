@@ -44,6 +44,8 @@
 
 #include <QtUml/QNamedElement>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QDependencyPrivate::QDependencyPrivate()
@@ -67,6 +69,7 @@ QDependency::QDependency(QWrappedObject *parent, QWrappedObject *wrapper) :
     _wrappedPackageableElement(new QPackageableElement(this, this)),
     _wrappedDirectedRelationship(new QDirectedRelationship(this, this))
 {
+    setPropertyData();
 }
 
 QDependency::QDependency(QDependencyPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
@@ -74,6 +77,7 @@ QDependency::QDependency(QDependencyPrivate &dd, QWrappedObject *parent, QWrappe
     _wrappedPackageableElement(new QPackageableElement(this, this)),
     _wrappedDirectedRelationship(new QDirectedRelationship(this, this))
 {
+    setPropertyData();
 }
 
 QDependency::~QDependency()
@@ -365,6 +369,18 @@ void QDependency::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QDependency::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDependency")][QString::fromLatin1("clients")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDependency")][QString::fromLatin1("clients")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The element(s) dependent on the supplier element(s). In some cases (such as a Trace Abstraction) the assignment of direction (that is, the designation of the client element) is at the discretion of the modeler, and is a stipulation.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDependency")][QString::fromLatin1("suppliers")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDependency")][QString::fromLatin1("suppliers")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The element(s) independent of the client element(s), in the same respect and the same dependency relationship. In some directed dependency relationships (such as Refinement Abstractions), a common convention in the domain of class-based OO software is to put the more abstract element in this role. Despite this convention, users of UML may stipulate a sense of dependency suitable for their domain, which makes a more abstract element dependent on that which is more specific.");
+
+    QWrappedObject::setPropertyData();
 }
 
 #include "moc_qdependency.cpp"

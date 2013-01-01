@@ -44,6 +44,8 @@
 
 #include <QtMof/QEnumeration>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTMOF
 
 QEnumerationLiteralPrivate::QEnumerationLiteralPrivate() :
@@ -66,11 +68,13 @@ QEnumerationLiteralPrivate::~QEnumerationLiteralPrivate()
 QEnumerationLiteral::QEnumerationLiteral(QWrappedObject *parent, QWrappedObject *wrapper) :
     QInstanceSpecification(*new QEnumerationLiteralPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QEnumerationLiteral::QEnumerationLiteral(QEnumerationLiteralPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QInstanceSpecification(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QEnumerationLiteral::~QEnumerationLiteral()
@@ -135,6 +139,18 @@ void QEnumerationLiteral::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QEnumerationLiteral::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QEnumerationLiteral")][QString::fromLatin1("classifier")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QEnumerationLiteral")][QString::fromLatin1("classifier")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The classifier of this EnumerationLiteral derived to be equal to its enumeration.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QEnumerationLiteral")][QString::fromLatin1("enumeration")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QEnumerationLiteral")][QString::fromLatin1("enumeration")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The Enumeration that this EnumerationLiteral is a member of.");
+
+    QInstanceSpecification::setPropertyData();
 }
 
 #include "moc_qenumerationliteral.cpp"

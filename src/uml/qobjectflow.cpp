@@ -44,6 +44,8 @@
 
 #include <QtUml/QBehavior>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QObjectFlowPrivate::QObjectFlowPrivate() :
@@ -69,11 +71,13 @@ QObjectFlowPrivate::~QObjectFlowPrivate()
 QObjectFlow::QObjectFlow(QWrappedObject *parent, QWrappedObject *wrapper) :
     QActivityEdge(*new QObjectFlowPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QObjectFlow::QObjectFlow(QObjectFlowPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QActivityEdge(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QObjectFlow::~QObjectFlow()
@@ -192,6 +196,24 @@ void QObjectFlow::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QObjectFlow::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectFlow")][QString::fromLatin1("isMultireceive")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectFlow")][QString::fromLatin1("isMultireceive")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Tells whether the objects in the flow are gathered from respondents to multicasting.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectFlow")][QString::fromLatin1("isMulticast")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectFlow")][QString::fromLatin1("isMulticast")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Tells whether the objects in the flow are passed by multicasting.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectFlow")][QString::fromLatin1("selection")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectFlow")][QString::fromLatin1("selection")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Selects tokens from a source object node.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectFlow")][QString::fromLatin1("transformation")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectFlow")][QString::fromLatin1("transformation")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Changes or replaces data tokens flowing along edge.");
+
+    QActivityEdge::setPropertyData();
 }
 
 #include "moc_qobjectflow.cpp"

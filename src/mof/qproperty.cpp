@@ -49,6 +49,8 @@
 #include <QtMof/QAssociation>
 #include <QtMof/QDataType>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTMOF
 
 QPropertyPrivate::QPropertyPrivate() :
@@ -80,11 +82,13 @@ QPropertyPrivate::~QPropertyPrivate()
 QProperty::QProperty(QWrappedObject *parent, QWrappedObject *wrapper) :
     QStructuralFeature(*new QPropertyPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QProperty::QProperty(QPropertyPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QStructuralFeature(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QProperty::~QProperty()
@@ -626,6 +630,57 @@ void QProperty::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QProperty::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProperty")][QString::fromLatin1("isDerived")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProperty")][QString::fromLatin1("isDerived")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies whether the Property is derived, i.e., whether its value or values can be computed from other information.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProperty")][QString::fromLatin1("default_")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProperty")][QString::fromLatin1("default_")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A String that is evaluated to give a default value for the Property when an object of the owning Classifier is instantiated.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProperty")][QString::fromLatin1("isComposite")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProperty")][QString::fromLatin1("isComposite")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("This is a derived value, indicating whether the aggregation of the Property is composite or not.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProperty")][QString::fromLatin1("isReadOnly")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProperty")][QString::fromLatin1("isReadOnly")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("If true, the attribute may only be read, and not written.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProperty")][QString::fromLatin1("isID")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProperty")][QString::fromLatin1("isID")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("True indicates this property can be used to uniquely identify an instance of the containing Class.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProperty")][QString::fromLatin1("isDerivedUnion")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProperty")][QString::fromLatin1("isDerivedUnion")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies whether the property is derived as the union of all of the properties that are constrained to subset it.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProperty")][QString::fromLatin1("aggregation")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProperty")][QString::fromLatin1("aggregation")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the kind of aggregation that applies to the Property.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProperty")][QString::fromLatin1("subsettedProperties")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProperty")][QString::fromLatin1("subsettedProperties")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the properties of which this property is constrained to be a subset.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProperty")][QString::fromLatin1("owningAssociation")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProperty")][QString::fromLatin1("owningAssociation")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the owning association of this property, if any.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProperty")][QString::fromLatin1("defaultValue")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProperty")][QString::fromLatin1("defaultValue")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A ValueSpecification that is evaluated to give a default value for the Property when an object of the owning Classifier is instantiated.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProperty")][QString::fromLatin1("class_")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProperty")][QString::fromLatin1("class_")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Class that owns the Property.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProperty")][QString::fromLatin1("opposite")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProperty")][QString::fromLatin1("opposite")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("In the case where the property is one navigable end of a binary association with both ends navigable, this gives the other end.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProperty")][QString::fromLatin1("datatype")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProperty")][QString::fromLatin1("datatype")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The DataType that owns this Property.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProperty")][QString::fromLatin1("redefinedProperties")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProperty")][QString::fromLatin1("redefinedProperties")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the properties that are redefined by this property.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProperty")][QString::fromLatin1("association")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProperty")][QString::fromLatin1("association")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the association of which this property is a member, if any.");
+
+    QStructuralFeature::setPropertyData();
 }
 
 #include "moc_qproperty.cpp"

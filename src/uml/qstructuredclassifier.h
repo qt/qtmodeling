@@ -89,6 +89,7 @@ public:
     Q_INVOKABLE void addOwnedConnector(QConnector *ownedConnector);
     Q_INVOKABLE void removeOwnedConnector(QConnector *ownedConnector);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QStructuredClassifier(QStructuredClassifierPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

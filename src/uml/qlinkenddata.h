@@ -86,6 +86,7 @@ public:
     Q_INVOKABLE void addQualifier(QQualifierValue *qualifier);
     Q_INVOKABLE void removeQualifier(QQualifierValue *qualifier);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QLinkEndData(QLinkEndDataPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

@@ -44,6 +44,8 @@
 
 #include <QtUml/QVariable>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QVariableActionPrivate::QVariableActionPrivate() :
@@ -66,11 +68,13 @@ QVariableActionPrivate::~QVariableActionPrivate()
 QVariableAction::QVariableAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(*new QVariableActionPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QVariableAction::QVariableAction(QVariableActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QVariableAction::~QVariableAction()
@@ -112,6 +116,15 @@ void QVariableAction::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QVariableAction::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QVariableAction")][QString::fromLatin1("variable")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QVariableAction")][QString::fromLatin1("variable")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Variable to be read.");
+
+    QAction::setPropertyData();
 }
 
 #include "moc_qvariableaction.cpp"
