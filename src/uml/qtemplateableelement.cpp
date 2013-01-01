@@ -46,6 +46,8 @@
 #include <QtUml/QTemplateBinding>
 #include <QtUml/QParameterableElement>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QTemplateableElementPrivate::QTemplateableElementPrivate() :
@@ -68,11 +70,13 @@ QTemplateableElementPrivate::~QTemplateableElementPrivate()
 QTemplateableElement::QTemplateableElement(QWrappedObject *parent, QWrappedObject *wrapper) :
     QElement(*new QTemplateableElementPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QTemplateableElement::QTemplateableElement(QTemplateableElementPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QElement(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QTemplateableElement::~QTemplateableElement()
@@ -198,6 +202,18 @@ void QTemplateableElement::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QTemplateableElement::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateableElement")][QString::fromLatin1("ownedTemplateSignature")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateableElement")][QString::fromLatin1("ownedTemplateSignature")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The optional template signature specifying the formal template parameters.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateableElement")][QString::fromLatin1("templateBindings")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateableElement")][QString::fromLatin1("templateBindings")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The optional bindings from this element to templates.");
+
+    QElement::setPropertyData();
 }
 
 #include "moc_qtemplateableelement.cpp"

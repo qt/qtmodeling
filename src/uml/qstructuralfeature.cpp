@@ -42,6 +42,8 @@
 #include "qstructuralfeature.h"
 #include "qstructuralfeature_p.h"
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QStructuralFeaturePrivate::QStructuralFeaturePrivate() :
@@ -67,6 +69,7 @@ QStructuralFeature::QStructuralFeature(QWrappedObject *parent, QWrappedObject *w
     _wrappedMultiplicityElement(new QMultiplicityElement(this, this)),
     _wrappedFeature(new QFeature(this, this))
 {
+    setPropertyData();
 }
 
 QStructuralFeature::QStructuralFeature(QStructuralFeaturePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
@@ -75,6 +78,7 @@ QStructuralFeature::QStructuralFeature(QStructuralFeaturePrivate &dd, QWrappedOb
     _wrappedMultiplicityElement(new QMultiplicityElement(this, this)),
     _wrappedFeature(new QFeature(this, this))
 {
+    setPropertyData();
 }
 
 QStructuralFeature::~QStructuralFeature()
@@ -430,6 +434,15 @@ void QStructuralFeature::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QStructuralFeature::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuralFeature")][QString::fromLatin1("isReadOnly")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuralFeature")][QString::fromLatin1("isReadOnly")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("States whether the feature's value may be modified by a client.");
+
+    QWrappedObject::setPropertyData();
 }
 
 #include "moc_qstructuralfeature.cpp"

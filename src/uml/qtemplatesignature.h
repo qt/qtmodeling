@@ -86,6 +86,7 @@ public:
     Q_INVOKABLE void addOwnedParameter(QTemplateParameter *ownedParameter);
     Q_INVOKABLE void removeOwnedParameter(QTemplateParameter *ownedParameter);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QTemplateSignature(QTemplateSignaturePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

@@ -46,6 +46,8 @@
 #include <QtMof/QProperty>
 #include <QtMof/QOperation>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTMOF
 
 QClassPrivate::QClassPrivate() :
@@ -68,11 +70,13 @@ QClassPrivate::~QClassPrivate()
 QClass::QClass(QWrappedObject *parent, QWrappedObject *wrapper) :
     QClassifier(*new QClassPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QClass::QClass(QClassPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QClassifier(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QClass::~QClass()
@@ -305,6 +309,27 @@ void QClass::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QClass::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClass")][QString::fromLatin1("isAbstract")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClass")][QString::fromLatin1("isAbstract")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("If true, the Classifier does not provide a complete declaration and can typically not be instantiated. An abstract classifier is intended to be used by other classifiers e.g. as the target of general metarelationships or generalization relationships.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClass")][QString::fromLatin1("nestedClassifiers")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClass")][QString::fromLatin1("nestedClassifiers")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References all the Classifiers that are defined (nested) within the Class.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClass")][QString::fromLatin1("ownedOperations")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClass")][QString::fromLatin1("ownedOperations")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The operations owned by the class.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClass")][QString::fromLatin1("ownedAttributes")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClass")][QString::fromLatin1("ownedAttributes")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The attributes (i.e. the properties) owned by the class.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClass")][QString::fromLatin1("superClasses")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClass")][QString::fromLatin1("superClasses")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("This gives the superclasses of a class.");
+
+    QClassifier::setPropertyData();
 }
 
 #include "moc_qclass.cpp"

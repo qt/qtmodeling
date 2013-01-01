@@ -83,6 +83,7 @@ public:
     Q_INVOKABLE QDurationInterval *specification() const;
     Q_INVOKABLE void setSpecification(QDurationInterval *specification);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QDurationConstraint(QDurationConstraintPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

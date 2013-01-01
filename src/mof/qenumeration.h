@@ -78,6 +78,7 @@ public:
     Q_INVOKABLE void addOwnedLiteral(QEnumerationLiteral *ownedLiteral);
     Q_INVOKABLE void removeOwnedLiteral(QEnumerationLiteral *ownedLiteral);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QEnumeration(QEnumerationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

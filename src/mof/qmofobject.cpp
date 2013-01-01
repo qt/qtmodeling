@@ -46,6 +46,8 @@
 #include <QtMof/QOperation>
 #include <QtMof/QProperty>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTMOF
 
 QMofObjectPrivate::QMofObjectPrivate()
@@ -60,11 +62,13 @@ QMofObjectPrivate::~QMofObjectPrivate()
 QMofObject::QMofObject(QWrappedObject *parent, QWrappedObject *wrapper) :
     QWrappedObject(*new QMofObjectPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QMofObject::QMofObject(QMofObjectPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QWrappedObject(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QMofObject::~QMofObject()
@@ -135,6 +139,12 @@ void QMofObject::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QMofObject::setPropertyData()
+{
+
+    QWrappedObject::setPropertyData();
 }
 
 #include "moc_qmofobject.cpp"

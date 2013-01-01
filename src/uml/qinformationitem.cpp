@@ -42,6 +42,8 @@
 #include "qinformationitem.h"
 #include "qinformationitem_p.h"
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QInformationItemPrivate::QInformationItemPrivate()
@@ -63,11 +65,13 @@ QInformationItemPrivate::~QInformationItemPrivate()
 QInformationItem::QInformationItem(QWrappedObject *parent, QWrappedObject *wrapper) :
     QClassifier(*new QInformationItemPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QInformationItem::QInformationItem(QInformationItemPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QClassifier(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QInformationItem::~QInformationItem()
@@ -115,6 +119,15 @@ void QInformationItem::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QInformationItem::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationItem")][QString::fromLatin1("represented")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationItem")][QString::fromLatin1("represented")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Determines the classifiers that will specify the structure and nature of the information. An information item represents all its represented classifiers.");
+
+    QClassifier::setPropertyData();
 }
 
 #include "moc_qinformationitem.cpp"

@@ -45,6 +45,8 @@
 #include <QtMof/QPackageableElement>
 #include <QtMof/QNamespace>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTMOF
 
 QElementImportPrivate::QElementImportPrivate() :
@@ -69,11 +71,13 @@ QElementImportPrivate::~QElementImportPrivate()
 QElementImport::QElementImport(QWrappedObject *parent, QWrappedObject *wrapper) :
     QDirectedRelationship(*new QElementImportPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QElementImport::QElementImport(QElementImportPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QDirectedRelationship(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QElementImport::~QElementImport()
@@ -226,6 +230,24 @@ void QElementImport::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QElementImport::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QElementImport")][QString::fromLatin1("alias")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QElementImport")][QString::fromLatin1("alias")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the name that should be added to the namespace of the importing package in lieu of the name of the imported packagable element. The aliased name must not clash with any other member name in the importing package. By default, no alias is used.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QElementImport")][QString::fromLatin1("visibility")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QElementImport")][QString::fromLatin1("visibility")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the visibility of the imported PackageableElement within the importing Package. The default visibility is the same as that of the imported element. If the imported element does not have a visibility, it is possible to add visibility to the element import.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QElementImport")][QString::fromLatin1("importedElement")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QElementImport")][QString::fromLatin1("importedElement")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the PackageableElement whose name is to be added to a Namespace.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QElementImport")][QString::fromLatin1("importingNamespace")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QElementImport")][QString::fromLatin1("importingNamespace")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the Namespace that imports a PackageableElement from another Package.");
+
+    QDirectedRelationship::setPropertyData();
 }
 
 #include "moc_qelementimport.cpp"

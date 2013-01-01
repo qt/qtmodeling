@@ -98,6 +98,7 @@ public:
     Q_INVOKABLE QList<QInputPin *> inputs() const;
     Q_INVOKABLE QList<QOutputPin *> outputs() const;
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QAction(QActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

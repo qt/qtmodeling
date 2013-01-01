@@ -85,6 +85,7 @@ public:
     Q_INVOKABLE QTemplateBinding *templateBinding() const;
     Q_INVOKABLE void setTemplateBinding(QTemplateBinding *templateBinding);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QTemplateParameterSubstitution(QTemplateParameterSubstitutionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

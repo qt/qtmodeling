@@ -44,6 +44,8 @@
 
 #include <QtMof/QInstanceSpecification>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTMOF
 
 QInstanceValuePrivate::QInstanceValuePrivate() :
@@ -66,11 +68,13 @@ QInstanceValuePrivate::~QInstanceValuePrivate()
 QInstanceValue::QInstanceValue(QWrappedObject *parent, QWrappedObject *wrapper) :
     QValueSpecification(*new QInstanceValuePrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QInstanceValue::QInstanceValue(QInstanceValuePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QValueSpecification(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QInstanceValue::~QInstanceValue()
@@ -112,6 +116,15 @@ void QInstanceValue::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QInstanceValue::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInstanceValue")][QString::fromLatin1("instance")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInstanceValue")][QString::fromLatin1("instance")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The instance that is the specified value.");
+
+    QValueSpecification::setPropertyData();
 }
 
 #include "moc_qinstancevalue.cpp"

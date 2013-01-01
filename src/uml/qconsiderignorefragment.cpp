@@ -44,6 +44,8 @@
 
 #include <QtUml/QNamedElement>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QConsiderIgnoreFragmentPrivate::QConsiderIgnoreFragmentPrivate()
@@ -65,11 +67,13 @@ QConsiderIgnoreFragmentPrivate::~QConsiderIgnoreFragmentPrivate()
 QConsiderIgnoreFragment::QConsiderIgnoreFragment(QWrappedObject *parent, QWrappedObject *wrapper) :
     QCombinedFragment(*new QConsiderIgnoreFragmentPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QConsiderIgnoreFragment::QConsiderIgnoreFragment(QConsiderIgnoreFragmentPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QCombinedFragment(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QConsiderIgnoreFragment::~QConsiderIgnoreFragment()
@@ -121,6 +125,15 @@ void QConsiderIgnoreFragment::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QConsiderIgnoreFragment::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QConsiderIgnoreFragment")][QString::fromLatin1("messages")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QConsiderIgnoreFragment")][QString::fromLatin1("messages")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The set of messages that apply to this fragment");
+
+    QCombinedFragment::setPropertyData();
 }
 
 #include "moc_qconsiderignorefragment.cpp"

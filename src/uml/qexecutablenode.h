@@ -78,6 +78,7 @@ public:
     Q_INVOKABLE void addHandler(QExceptionHandler *handler);
     Q_INVOKABLE void removeHandler(QExceptionHandler *handler);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QExecutableNode(QExecutableNodePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

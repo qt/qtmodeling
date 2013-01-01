@@ -44,6 +44,8 @@
 
 #include <QtUml/QAction>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QActionInputPinPrivate::QActionInputPinPrivate() :
@@ -66,11 +68,13 @@ QActionInputPinPrivate::~QActionInputPinPrivate()
 QActionInputPin::QActionInputPin(QWrappedObject *parent, QWrappedObject *wrapper) :
     QInputPin(*new QActionInputPinPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QActionInputPin::QActionInputPin(QActionInputPinPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QInputPin(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QActionInputPin::~QActionInputPin()
@@ -120,6 +124,15 @@ void QActionInputPin::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QActionInputPin::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActionInputPin")][QString::fromLatin1("fromAction")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActionInputPin")][QString::fromLatin1("fromAction")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The action used to provide values.");
+
+    QInputPin::setPropertyData();
 }
 
 #include "moc_qactioninputpin.cpp"

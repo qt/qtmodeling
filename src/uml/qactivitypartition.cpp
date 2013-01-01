@@ -46,6 +46,8 @@
 #include <QtUml/QActivityEdge>
 #include <QtUml/QActivityNode>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QActivityPartitionPrivate::QActivityPartitionPrivate() :
@@ -71,11 +73,13 @@ QActivityPartitionPrivate::~QActivityPartitionPrivate()
 QActivityPartition::QActivityPartition(QWrappedObject *parent, QWrappedObject *wrapper) :
     QActivityGroup(*new QActivityPartitionPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QActivityPartition::QActivityPartition(QActivityPartitionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QActivityGroup(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QActivityPartition::~QActivityPartition()
@@ -344,6 +348,33 @@ void QActivityPartition::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QActivityPartition::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("isDimension")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("isDimension")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Tells whether the partition groups other partitions along a dimension.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("isExternal")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("isExternal")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Tells whether the partition represents an entity to which the partitioning structure does not apply.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("represents")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("represents")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An element constraining behaviors invoked by nodes in the partition.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("subpartitions")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("subpartitions")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Partitions immediately contained in the partition.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("superPartition")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("superPartition")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Partition immediately containing the partition.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("nodes")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("nodes")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Nodes immediately contained in the group.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("edges")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("edges")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Edges immediately contained in the group.");
+
+    QActivityGroup::setPropertyData();
 }
 
 #include "moc_qactivitypartition.cpp"

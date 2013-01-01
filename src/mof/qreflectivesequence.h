@@ -74,6 +74,7 @@ public:
     Q_INVOKABLE QMofObject *remove(qint32 index);
     Q_INVOKABLE QMofObject *set(qint32 index, const QMofObject *object);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QReflectiveSequence(QReflectiveSequencePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

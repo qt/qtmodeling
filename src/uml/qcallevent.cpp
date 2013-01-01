@@ -44,6 +44,8 @@
 
 #include <QtUml/QOperation>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QCallEventPrivate::QCallEventPrivate() :
@@ -66,11 +68,13 @@ QCallEventPrivate::~QCallEventPrivate()
 QCallEvent::QCallEvent(QWrappedObject *parent, QWrappedObject *wrapper) :
     QMessageEvent(*new QCallEventPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QCallEvent::QCallEvent(QCallEventPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QMessageEvent(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QCallEvent::~QCallEvent()
@@ -112,6 +116,15 @@ void QCallEvent::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QCallEvent::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCallEvent")][QString::fromLatin1("operation")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCallEvent")][QString::fromLatin1("operation")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Designates the operation whose invocation raised the call event.");
+
+    QMessageEvent::setPropertyData();
 }
 
 #include "moc_qcallevent.cpp"

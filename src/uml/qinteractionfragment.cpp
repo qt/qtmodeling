@@ -47,6 +47,8 @@
 #include <QtUml/QLifeline>
 #include <QtUml/QInteraction>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QInteractionFragmentPrivate::QInteractionFragmentPrivate() :
@@ -70,11 +72,13 @@ QInteractionFragmentPrivate::~QInteractionFragmentPrivate()
 QInteractionFragment::QInteractionFragment(QWrappedObject *parent, QWrappedObject *wrapper) :
     QNamedElement(*new QInteractionFragmentPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QInteractionFragment::QInteractionFragment(QInteractionFragmentPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QNamedElement(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QInteractionFragment::~QInteractionFragment()
@@ -246,6 +250,24 @@ void QInteractionFragment::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QInteractionFragment::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionFragment")][QString::fromLatin1("generalOrderings")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionFragment")][QString::fromLatin1("generalOrderings")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The general ordering relationships contained in this fragment.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionFragment")][QString::fromLatin1("enclosingInteraction")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionFragment")][QString::fromLatin1("enclosingInteraction")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The Interaction enclosing this InteractionFragment.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionFragment")][QString::fromLatin1("covered")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionFragment")][QString::fromLatin1("covered")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Lifelines that the InteractionFragment involves.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionFragment")][QString::fromLatin1("enclosingOperand")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionFragment")][QString::fromLatin1("enclosingOperand")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The operand enclosing this InteractionFragment (they may nest recursively)");
+
+    QNamedElement::setPropertyData();
 }
 
 #include "moc_qinteractionfragment.cpp"

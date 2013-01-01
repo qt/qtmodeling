@@ -44,6 +44,8 @@
 
 #include <QtUml/QClassifier>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QSubstitutionPrivate::QSubstitutionPrivate() :
@@ -67,11 +69,13 @@ QSubstitutionPrivate::~QSubstitutionPrivate()
 QSubstitution::QSubstitution(QWrappedObject *parent, QWrappedObject *wrapper) :
     QRealization(*new QSubstitutionPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QSubstitution::QSubstitution(QSubstitutionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QRealization(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QSubstitution::~QSubstitution()
@@ -159,6 +163,18 @@ void QSubstitution::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QSubstitution::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QSubstitution")][QString::fromLatin1("contract")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QSubstitution")][QString::fromLatin1("contract")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The contract with which the substituting classifier complies.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QSubstitution")][QString::fromLatin1("substitutingClassifier")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QSubstitution")][QString::fromLatin1("substitutingClassifier")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Instances of the substituting classifier are runtime substitutable where instances of the contract classifier are expected.");
+
+    QRealization::setPropertyData();
 }
 
 // Overriden methods for subsetted properties

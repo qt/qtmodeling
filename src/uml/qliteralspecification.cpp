@@ -42,6 +42,8 @@
 #include "qliteralspecification.h"
 #include "qliteralspecification_p.h"
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QLiteralSpecificationPrivate::QLiteralSpecificationPrivate()
@@ -63,11 +65,13 @@ QLiteralSpecificationPrivate::~QLiteralSpecificationPrivate()
 QLiteralSpecification::QLiteralSpecification(QWrappedObject *parent, QWrappedObject *wrapper) :
     QValueSpecification(*new QLiteralSpecificationPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QLiteralSpecification::QLiteralSpecification(QLiteralSpecificationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QValueSpecification(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QLiteralSpecification::~QLiteralSpecification()
@@ -80,6 +84,12 @@ void QLiteralSpecification::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QLiteralSpecification::setPropertyData()
+{
+
+    QValueSpecification::setPropertyData();
 }
 
 #include "moc_qliteralspecification.cpp"

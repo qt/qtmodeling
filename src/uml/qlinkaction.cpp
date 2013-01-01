@@ -46,6 +46,8 @@
 #include <QtUml/QInputPin>
 #include <QtUml/QAssociation>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QLinkActionPrivate::QLinkActionPrivate()
@@ -67,11 +69,13 @@ QLinkActionPrivate::~QLinkActionPrivate()
 QLinkAction::QLinkAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(*new QLinkActionPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QLinkAction::QLinkAction(QLinkActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QLinkAction::~QLinkAction()
@@ -184,6 +188,18 @@ void QLinkAction::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QLinkAction::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLinkAction")][QString::fromLatin1("inputValues")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLinkAction")][QString::fromLatin1("inputValues")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Pins taking end objects and qualifier values as input.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLinkAction")][QString::fromLatin1("endData")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLinkAction")][QString::fromLatin1("endData")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Data identifying one end of a link by the objects on its ends and qualifiers.");
+
+    QAction::setPropertyData();
 }
 
 #include "moc_qlinkaction.cpp"

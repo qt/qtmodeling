@@ -186,6 +186,7 @@ public:
     Q_INVOKABLE bool isConsistentWith(const QRedefinableElement *redefinee) const;
     Q_INVOKABLE bool isRedefinitionContextValid(const QState *redefined) const;
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QState(QStatePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

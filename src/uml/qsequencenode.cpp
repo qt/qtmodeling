@@ -44,6 +44,8 @@
 
 #include <QtUml/QExecutableNode>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QSequenceNodePrivate::QSequenceNodePrivate()
@@ -66,11 +68,13 @@ QSequenceNodePrivate::~QSequenceNodePrivate()
 QSequenceNode::QSequenceNode(QWrappedObject *parent, QWrappedObject *wrapper) :
     QStructuredActivityNode(*new QSequenceNodePrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QSequenceNode::QSequenceNode(QSequenceNodePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QStructuredActivityNode(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QSequenceNode::~QSequenceNode()
@@ -124,6 +128,15 @@ void QSequenceNode::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QSequenceNode::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QSequenceNode")][QString::fromLatin1("executableNodes")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QSequenceNode")][QString::fromLatin1("executableNodes")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An ordered set of executable nodes.");
+
+    QStructuredActivityNode::setPropertyData();
 }
 
 #include "moc_qsequencenode.cpp"

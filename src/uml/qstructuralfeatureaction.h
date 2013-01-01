@@ -78,6 +78,7 @@ public:
     Q_INVOKABLE QStructuralFeature *structuralFeature() const;
     Q_INVOKABLE void setStructuralFeature(QStructuralFeature *structuralFeature);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QStructuralFeatureAction(QStructuralFeatureActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

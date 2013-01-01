@@ -42,6 +42,8 @@
 #include "qrelationship.h"
 #include "qrelationship_p.h"
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QRelationshipPrivate::QRelationshipPrivate()
@@ -81,11 +83,13 @@ void QRelationshipPrivate::removeRelatedElement(QElement *relatedElement)
 QRelationship::QRelationship(QWrappedObject *parent, QWrappedObject *wrapper) :
     QElement(*new QRelationshipPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QRelationship::QRelationship(QRelationshipPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QElement(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QRelationship::~QRelationship()
@@ -113,6 +117,15 @@ void QRelationship::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QRelationship::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QRelationship")][QString::fromLatin1("relatedElements")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QRelationship")][QString::fromLatin1("relatedElements")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the elements related by the Relationship.");
+
+    QElement::setPropertyData();
 }
 
 #include "moc_qrelationship.cpp"

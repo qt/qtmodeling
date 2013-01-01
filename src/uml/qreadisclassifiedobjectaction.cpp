@@ -46,6 +46,8 @@
 #include <QtUml/QInputPin>
 #include <QtUml/QOutputPin>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QReadIsClassifiedObjectActionPrivate::QReadIsClassifiedObjectActionPrivate() :
@@ -71,11 +73,13 @@ QReadIsClassifiedObjectActionPrivate::~QReadIsClassifiedObjectActionPrivate()
 QReadIsClassifiedObjectAction::QReadIsClassifiedObjectAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(*new QReadIsClassifiedObjectActionPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QReadIsClassifiedObjectAction::QReadIsClassifiedObjectAction(QReadIsClassifiedObjectActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QReadIsClassifiedObjectAction::~QReadIsClassifiedObjectAction()
@@ -213,6 +217,24 @@ void QReadIsClassifiedObjectAction::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QReadIsClassifiedObjectAction::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReadIsClassifiedObjectAction")][QString::fromLatin1("isDirect")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReadIsClassifiedObjectAction")][QString::fromLatin1("isDirect")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Indicates whether the classifier must directly classify the input object.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReadIsClassifiedObjectAction")][QString::fromLatin1("result")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReadIsClassifiedObjectAction")][QString::fromLatin1("result")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("After termination of the action, will hold the result of the test.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReadIsClassifiedObjectAction")][QString::fromLatin1("object")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReadIsClassifiedObjectAction")][QString::fromLatin1("object")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Holds the object whose classification is to be tested.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReadIsClassifiedObjectAction")][QString::fromLatin1("classifier")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReadIsClassifiedObjectAction")][QString::fromLatin1("classifier")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The classifier against which the classification of the input object is tested.");
+
+    QAction::setPropertyData();
 }
 
 #include "moc_qreadisclassifiedobjectaction.cpp"

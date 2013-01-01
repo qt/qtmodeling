@@ -42,6 +42,8 @@
 #include "qusage.h"
 #include "qusage_p.h"
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QUsagePrivate::QUsagePrivate()
@@ -63,11 +65,13 @@ QUsagePrivate::~QUsagePrivate()
 QUsage::QUsage(QWrappedObject *parent, QWrappedObject *wrapper) :
     QDependency(*new QUsagePrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QUsage::QUsage(QUsagePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QDependency(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QUsage::~QUsage()
@@ -80,6 +84,12 @@ void QUsage::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QUsage::setPropertyData()
+{
+
+    QDependency::setPropertyData();
 }
 
 #include "moc_qusage.cpp"

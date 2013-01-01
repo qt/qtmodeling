@@ -42,6 +42,8 @@
 #include "qexecutionenvironment.h"
 #include "qexecutionenvironment_p.h"
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QExecutionEnvironmentPrivate::QExecutionEnvironmentPrivate()
@@ -63,11 +65,13 @@ QExecutionEnvironmentPrivate::~QExecutionEnvironmentPrivate()
 QExecutionEnvironment::QExecutionEnvironment(QWrappedObject *parent, QWrappedObject *wrapper) :
     QNode(*new QExecutionEnvironmentPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QExecutionEnvironment::QExecutionEnvironment(QExecutionEnvironmentPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QNode(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QExecutionEnvironment::~QExecutionEnvironment()
@@ -80,6 +84,12 @@ void QExecutionEnvironment::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QExecutionEnvironment::setPropertyData()
+{
+
+    QNode::setPropertyData();
 }
 
 #include "moc_qexecutionenvironment.cpp"

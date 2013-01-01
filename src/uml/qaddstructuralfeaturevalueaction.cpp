@@ -44,6 +44,8 @@
 
 #include <QtUml/QInputPin>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QAddStructuralFeatureValueActionPrivate::QAddStructuralFeatureValueActionPrivate() :
@@ -67,11 +69,13 @@ QAddStructuralFeatureValueActionPrivate::~QAddStructuralFeatureValueActionPrivat
 QAddStructuralFeatureValueAction::QAddStructuralFeatureValueAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QWriteStructuralFeatureAction(*new QAddStructuralFeatureValueActionPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QAddStructuralFeatureValueAction::QAddStructuralFeatureValueAction(QAddStructuralFeatureValueActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QWriteStructuralFeatureAction(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QAddStructuralFeatureValueAction::~QAddStructuralFeatureValueAction()
@@ -151,6 +155,18 @@ void QAddStructuralFeatureValueAction::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QAddStructuralFeatureValueAction::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QAddStructuralFeatureValueAction")][QString::fromLatin1("isReplaceAll")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QAddStructuralFeatureValueAction")][QString::fromLatin1("isReplaceAll")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies whether existing values of the structural feature of the object should be removed before adding the new value.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QAddStructuralFeatureValueAction")][QString::fromLatin1("insertAt")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QAddStructuralFeatureValueAction")][QString::fromLatin1("insertAt")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Gives the position at which to insert a new value or move an existing value in ordered structural features. The type of the pin is UnlimitedNatural, but the value cannot be zero. This pin is omitted for unordered structural features.");
+
+    QWriteStructuralFeatureAction::setPropertyData();
 }
 
 #include "moc_qaddstructuralfeaturevalueaction.cpp"

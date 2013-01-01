@@ -51,6 +51,8 @@
 #include <QtUml/QExtension>
 #include <QtUml/QProperty>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QClassPrivate::QClassPrivate() :
@@ -107,6 +109,7 @@ QClass::QClass(QWrappedObject *parent, QWrappedObject *wrapper) :
     _wrappedEncapsulatedClassifier(new QEncapsulatedClassifier(this, this)),
     _wrappedBehavioredClassifier(new QBehavioredClassifier(this, this))
 {
+    setPropertyData();
 }
 
 QClass::QClass(QClassPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
@@ -114,6 +117,7 @@ QClass::QClass(QClassPrivate &dd, QWrappedObject *parent, QWrappedObject *wrappe
     _wrappedEncapsulatedClassifier(new QEncapsulatedClassifier(this, this)),
     _wrappedBehavioredClassifier(new QBehavioredClassifier(this, this))
 {
+    setPropertyData();
 }
 
 QClass::~QClass()
@@ -1061,6 +1065,36 @@ void QClass::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QClass::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClass")][QString::fromLatin1("isAbstract")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClass")][QString::fromLatin1("isAbstract")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("If true, the Classifier does not provide a complete declaration and can typically not be instantiated. An abstract classifier is intended to be used by other classifiers e.g. as the target of general metarelationships or generalization relationships.True when a class is abstract.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClass")][QString::fromLatin1("isActive")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClass")][QString::fromLatin1("isActive")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Determines whether an object specified by this class is active or not. If true, then the owning class is referred to as an active class. If false, then such a class is referred to as a passive class.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClass")][QString::fromLatin1("nestedClassifiers")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClass")][QString::fromLatin1("nestedClassifiers")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References all the Classifiers that are defined (nested) within the Class.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClass")][QString::fromLatin1("ownedReceptions")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClass")][QString::fromLatin1("ownedReceptions")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Receptions that objects of this class are willing to accept.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClass")][QString::fromLatin1("extensions")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClass")][QString::fromLatin1("extensions")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Extensions that specify additional properties of the metaclass. The property is derived from the extensions whose memberEnds are typed by the Class.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClass")][QString::fromLatin1("ownedOperations")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClass")][QString::fromLatin1("ownedOperations")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The operations owned by the class.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClass")][QString::fromLatin1("ownedAttributes")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClass")][QString::fromLatin1("ownedAttributes")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The attributes (i.e. the properties) owned by the class.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClass")][QString::fromLatin1("superClasses")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClass")][QString::fromLatin1("superClasses")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("This gives the superclasses of a class.");
+
+    QWrappedObject::setPropertyData();
 }
 
 #include "moc_qclass.cpp"

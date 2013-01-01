@@ -42,6 +42,8 @@
 #include "qimage.h"
 #include "qimage_p.h"
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QImagePrivate::QImagePrivate()
@@ -63,11 +65,13 @@ QImagePrivate::~QImagePrivate()
 QImage::QImage(QWrappedObject *parent, QWrappedObject *wrapper) :
     QElement(*new QImagePrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QImage::QImage(QImagePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QElement(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QImage::~QImage()
@@ -147,6 +151,21 @@ void QImage::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QImage::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QImage")][QString::fromLatin1("format")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QImage")][QString::fromLatin1("format")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("This indicates the format of the content - which is how the string content should be interpreted. The following values are reserved: SVG, GIF, PNG, JPG, WMF, EMF, BMP. In addition the prefix 'MIME: ' is also reserved. This option can be used as an alternative to express the reserved values above, for example \"SVG\" could instead be expressed as \"MIME: image/svg+xml\".");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QImage")][QString::fromLatin1("location")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QImage")][QString::fromLatin1("location")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("This contains a location that can be used by a tool to locate the image as an alternative to embedding it in the stereotype.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QImage")][QString::fromLatin1("content")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QImage")][QString::fromLatin1("content")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("This contains the serialization of the image according to the format. The value could represent a bitmap, image such as a GIF file, or drawing 'instructions' using a standard such as Scalable Vector Graphic (SVG) (which is XML based).");
+
+    QElement::setPropertyData();
 }
 
 #include "moc_qimage.cpp"

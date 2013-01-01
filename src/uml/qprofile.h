@@ -83,6 +83,7 @@ public:
     Q_INVOKABLE void addMetaclassReference(QElementImport *metaclassReference);
     Q_INVOKABLE void removeMetaclassReference(QElementImport *metaclassReference);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QProfile(QProfilePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

@@ -44,6 +44,8 @@
 
 #include <QtUml/QExpansionRegion>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QExpansionNodePrivate::QExpansionNodePrivate() :
@@ -67,11 +69,13 @@ QExpansionNodePrivate::~QExpansionNodePrivate()
 QExpansionNode::QExpansionNode(QWrappedObject *parent, QWrappedObject *wrapper) :
     QObjectNode(*new QExpansionNodePrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QExpansionNode::QExpansionNode(QExpansionNodePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QObjectNode(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QExpansionNode::~QExpansionNode()
@@ -150,6 +154,18 @@ void QExpansionNode::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QExpansionNode::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionNode")][QString::fromLatin1("regionAsOutput")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionNode")][QString::fromLatin1("regionAsOutput")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The expansion region for which the node is an output.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionNode")][QString::fromLatin1("regionAsInput")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionNode")][QString::fromLatin1("regionAsInput")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The expansion region for which the node is an input.");
+
+    QObjectNode::setPropertyData();
 }
 
 #include "moc_qexpansionnode.cpp"

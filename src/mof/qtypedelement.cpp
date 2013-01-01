@@ -44,6 +44,8 @@
 
 #include <QtMof/QType>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTMOF
 
 QTypedElementPrivate::QTypedElementPrivate() :
@@ -66,11 +68,13 @@ QTypedElementPrivate::~QTypedElementPrivate()
 QTypedElement::QTypedElement(QWrappedObject *parent, QWrappedObject *wrapper) :
     QNamedElement(*new QTypedElementPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QTypedElement::QTypedElement(QTypedElementPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QNamedElement(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QTypedElement::~QTypedElement()
@@ -112,6 +116,15 @@ void QTypedElement::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QTypedElement::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTypedElement")][QString::fromLatin1("type")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTypedElement")][QString::fromLatin1("type")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The type of the TypedElement.");
+
+    QNamedElement::setPropertyData();
 }
 
 #include "moc_qtypedelement.cpp"

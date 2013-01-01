@@ -49,6 +49,8 @@
 #include <QtMof/QProperty>
 #include <QtMof/QFeature>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTMOF
 
 QClassifierPrivate::QClassifierPrivate() :
@@ -132,6 +134,7 @@ QClassifier::QClassifier(QWrappedObject *parent, QWrappedObject *wrapper) :
     _wrappedRedefinableElement(new QRedefinableElement(this, this)),
     _wrappedNamespace(new QNamespace(this, this))
 {
+    setPropertyData();
 }
 
 QClassifier::QClassifier(QClassifierPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
@@ -140,6 +143,7 @@ QClassifier::QClassifier(QClassifierPrivate &dd, QWrappedObject *parent, QWrappe
     _wrappedRedefinableElement(new QRedefinableElement(this, this)),
     _wrappedNamespace(new QNamespace(this, this))
 {
+    setPropertyData();
 }
 
 QClassifier::~QClassifier()
@@ -701,6 +705,36 @@ void QClassifier::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QClassifier::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("isAbstract")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("isAbstract")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("If true, the Classifier does not provide a complete declaration and can typically not be instantiated. An abstract classifier is intended to be used by other classifiers e.g. as the target of general metarelationships or generalization relationships.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("isFinalSpecialization")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("isFinalSpecialization")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("If true, the Classifier cannot be specialized by generalization. Note that this property is preserved through package merge operations; that is, the capability to specialize a Classifier (i.e., isFinalSpecialization =false) must be preserved in the resulting Classifier of a package merge operation where a Classifier with isFinalSpecialization =false is merged with a matching Classifier with isFinalSpecialization =true: the resulting Classifier will have isFinalSpecialization =false.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("attributes")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("attributes")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Refers to all of the Properties that are direct (i.e. not inherited or imported) attributes of the classifier.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("features")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("features")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies each feature defined in the classifier.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("generals")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("generals")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the general Classifiers for this Classifier.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("redefinedClassifiers")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("redefinedClassifiers")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Classifiers that are redefined by this Classifier.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("inheritedMembers")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("inheritedMembers")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies all elements inherited by this classifier from the general classifiers.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("generalizations")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("generalizations")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the Generalization relationships for this Classifier. These Generalizations navigaten to more general classifiers in the generalization hierarchy.");
+
+    QWrappedObject::setPropertyData();
 }
 
 #include "moc_qclassifier.cpp"

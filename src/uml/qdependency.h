@@ -123,6 +123,7 @@ public:
     Q_INVOKABLE void addSupplier(QNamedElement *supplier);
     Q_INVOKABLE void removeSupplier(QNamedElement *supplier);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QDependency(QDependencyPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

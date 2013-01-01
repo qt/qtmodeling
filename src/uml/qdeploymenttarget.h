@@ -88,6 +88,7 @@ public:
     Q_INVOKABLE void addClientDependency(QWrappedObjectPointer<QDeployment> deployment);
     Q_INVOKABLE void removeClientDependency(QWrappedObjectPointer<QDeployment> deployment);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QDeploymentTarget(QDeploymentTargetPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

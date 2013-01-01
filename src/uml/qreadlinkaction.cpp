@@ -44,6 +44,8 @@
 
 #include <QtUml/QOutputPin>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QReadLinkActionPrivate::QReadLinkActionPrivate() :
@@ -66,11 +68,13 @@ QReadLinkActionPrivate::~QReadLinkActionPrivate()
 QReadLinkAction::QReadLinkAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QLinkAction(*new QReadLinkActionPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QReadLinkAction::QReadLinkAction(QReadLinkActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QLinkAction(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QReadLinkAction::~QReadLinkAction()
@@ -120,6 +124,15 @@ void QReadLinkAction::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QReadLinkAction::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReadLinkAction")][QString::fromLatin1("result")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReadLinkAction")][QString::fromLatin1("result")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The pin on which are put the objects participating in the association at the end not specified by the inputs.");
+
+    QLinkAction::setPropertyData();
 }
 
 #include "moc_qreadlinkaction.cpp"

@@ -44,6 +44,8 @@
 
 #include <QtUml/QUseCase>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QExtensionPointPrivate::QExtensionPointPrivate() :
@@ -66,11 +68,13 @@ QExtensionPointPrivate::~QExtensionPointPrivate()
 QExtensionPoint::QExtensionPoint(QWrappedObject *parent, QWrappedObject *wrapper) :
     QRedefinableElement(*new QExtensionPointPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QExtensionPoint::QExtensionPoint(QExtensionPointPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QRedefinableElement(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QExtensionPoint::~QExtensionPoint()
@@ -123,6 +127,15 @@ void QExtensionPoint::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QExtensionPoint::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtensionPoint")][QString::fromLatin1("useCase")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtensionPoint")][QString::fromLatin1("useCase")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the use case that owns this extension point.");
+
+    QRedefinableElement::setPropertyData();
 }
 
 #include "moc_qextensionpoint.cpp"

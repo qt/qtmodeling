@@ -46,6 +46,8 @@
 #include <QtUml/QDeployedArtifact>
 #include <QtUml/QDeploymentTarget>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QDeploymentPrivate::QDeploymentPrivate() :
@@ -68,11 +70,13 @@ QDeploymentPrivate::~QDeploymentPrivate()
 QDeployment::QDeployment(QWrappedObject *parent, QWrappedObject *wrapper) :
     QDependency(*new QDeploymentPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QDeployment::QDeployment(QDeploymentPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QDependency(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QDeployment::~QDeployment()
@@ -219,6 +223,21 @@ void QDeployment::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QDeployment::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDeployment")][QString::fromLatin1("location")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDeployment")][QString::fromLatin1("location")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The DeployedTarget which is the target of a Deployment.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDeployment")][QString::fromLatin1("configurations")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDeployment")][QString::fromLatin1("configurations")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The specification of properties that parameterize the deployment and execution of one or more Artifacts.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDeployment")][QString::fromLatin1("deployedArtifacts")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDeployment")][QString::fromLatin1("deployedArtifacts")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The Artifacts that are deployed onto a Node. This association specializes the supplier association.");
+
+    QDependency::setPropertyData();
 }
 
 // Overriden methods for subsetted properties

@@ -46,6 +46,8 @@
 #include <QtUml/QProperty>
 #include <QtUml/QManifestation>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QArtifactPrivate::QArtifactPrivate()
@@ -69,6 +71,7 @@ QArtifact::QArtifact(QWrappedObject *parent, QWrappedObject *wrapper) :
     _wrappedDeployedArtifact(new QDeployedArtifact(this, this)),
     _wrappedClassifier(new QClassifier(this, this))
 {
+    setPropertyData();
 }
 
 QArtifact::QArtifact(QArtifactPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
@@ -76,6 +79,7 @@ QArtifact::QArtifact(QArtifactPrivate &dd, QWrappedObject *parent, QWrappedObjec
     _wrappedDeployedArtifact(new QDeployedArtifact(this, this)),
     _wrappedClassifier(new QClassifier(this, this))
 {
+    setPropertyData();
 }
 
 QArtifact::~QArtifact()
@@ -842,6 +846,27 @@ void QArtifact::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QArtifact::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QArtifact")][QString::fromLatin1("fileName")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QArtifact")][QString::fromLatin1("fileName")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A concrete name that is used to refer to the Artifact in a physical context. Example: file system name, universal resource locator.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QArtifact")][QString::fromLatin1("ownedOperations")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QArtifact")][QString::fromLatin1("ownedOperations")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The Operations defined for the Artifact. The association is a specialization of the ownedMember association.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QArtifact")][QString::fromLatin1("ownedAttributes")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QArtifact")][QString::fromLatin1("ownedAttributes")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The attributes or association ends defined for the Artifact. The association is a specialization of the ownedMember association.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QArtifact")][QString::fromLatin1("manifestations")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QArtifact")][QString::fromLatin1("manifestations")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The set of model elements that are manifested in the Artifact. That is, these model elements are utilized in the construction (or generation) of the artifact.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QArtifact")][QString::fromLatin1("nestedArtifacts")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QArtifact")][QString::fromLatin1("nestedArtifacts")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The Artifacts that are defined (nested) within the Artifact. The association is a specialization of the ownedMember association from Namespace to NamedElement.");
+
+    QWrappedObject::setPropertyData();
 }
 
 // Overriden methods for subsetted properties

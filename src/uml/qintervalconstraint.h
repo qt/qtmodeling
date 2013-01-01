@@ -74,6 +74,7 @@ public:
     Q_INVOKABLE QInterval *specification() const;
     Q_INVOKABLE void setSpecification(QInterval *specification);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QIntervalConstraint(QIntervalConstraintPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

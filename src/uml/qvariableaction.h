@@ -74,6 +74,7 @@ public:
     Q_INVOKABLE QVariable *variable() const;
     Q_INVOKABLE void setVariable(QVariable *variable);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QVariableAction(QVariableActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

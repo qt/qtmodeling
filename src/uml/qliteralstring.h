@@ -78,6 +78,7 @@ public:
     Q_INVOKABLE bool isComputable() const;
     Q_INVOKABLE QString stringValue() const;
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QLiteralString(QLiteralStringPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

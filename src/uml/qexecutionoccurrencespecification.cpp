@@ -44,6 +44,8 @@
 
 #include <QtUml/QExecutionSpecification>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QExecutionOccurrenceSpecificationPrivate::QExecutionOccurrenceSpecificationPrivate() :
@@ -66,11 +68,13 @@ QExecutionOccurrenceSpecificationPrivate::~QExecutionOccurrenceSpecificationPriv
 QExecutionOccurrenceSpecification::QExecutionOccurrenceSpecification(QWrappedObject *parent, QWrappedObject *wrapper) :
     QOccurrenceSpecification(*new QExecutionOccurrenceSpecificationPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QExecutionOccurrenceSpecification::QExecutionOccurrenceSpecification(QExecutionOccurrenceSpecificationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QOccurrenceSpecification(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QExecutionOccurrenceSpecification::~QExecutionOccurrenceSpecification()
@@ -112,6 +116,15 @@ void QExecutionOccurrenceSpecification::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QExecutionOccurrenceSpecification::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExecutionOccurrenceSpecification")][QString::fromLatin1("execution")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExecutionOccurrenceSpecification")][QString::fromLatin1("execution")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the execution specification describing the execution that is started or finished at this execution event.");
+
+    QOccurrenceSpecification::setPropertyData();
 }
 
 #include "moc_qexecutionoccurrencespecification.cpp"

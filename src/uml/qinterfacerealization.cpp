@@ -45,6 +45,8 @@
 #include <QtUml/QInterface>
 #include <QtUml/QBehavioredClassifier>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QInterfaceRealizationPrivate::QInterfaceRealizationPrivate() :
@@ -68,11 +70,13 @@ QInterfaceRealizationPrivate::~QInterfaceRealizationPrivate()
 QInterfaceRealization::QInterfaceRealization(QWrappedObject *parent, QWrappedObject *wrapper) :
     QRealization(*new QInterfaceRealizationPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QInterfaceRealization::QInterfaceRealization(QInterfaceRealizationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QRealization(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QInterfaceRealization::~QInterfaceRealization()
@@ -164,6 +168,18 @@ void QInterfaceRealization::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QInterfaceRealization::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterfaceRealization")][QString::fromLatin1("implementingClassifier")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterfaceRealization")][QString::fromLatin1("implementingClassifier")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the BehavioredClassifier that owns this Interfacerealization (i.e., the classifier that realizes the Interface to which it points).");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterfaceRealization")][QString::fromLatin1("contract")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterfaceRealization")][QString::fromLatin1("contract")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Interface specifying the conformance contract.");
+
+    QRealization::setPropertyData();
 }
 
 // Overriden methods for subsetted properties

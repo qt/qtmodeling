@@ -45,6 +45,8 @@
 #include <QtUml/QLifeline>
 #include <QtUml/QGeneralOrdering>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QOccurrenceSpecificationPrivate::QOccurrenceSpecificationPrivate() :
@@ -67,11 +69,13 @@ QOccurrenceSpecificationPrivate::~QOccurrenceSpecificationPrivate()
 QOccurrenceSpecification::QOccurrenceSpecification(QWrappedObject *parent, QWrappedObject *wrapper) :
     QInteractionFragment(*new QOccurrenceSpecificationPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QOccurrenceSpecification::QOccurrenceSpecification(QOccurrenceSpecificationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QInteractionFragment(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QOccurrenceSpecification::~QOccurrenceSpecification()
@@ -191,6 +195,21 @@ void QOccurrenceSpecification::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QOccurrenceSpecification::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOccurrenceSpecification")][QString::fromLatin1("covered")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOccurrenceSpecification")][QString::fromLatin1("covered")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Lifeline on which the OccurrenceSpecification appears.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOccurrenceSpecification")][QString::fromLatin1("toAfter")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOccurrenceSpecification")][QString::fromLatin1("toAfter")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the GeneralOrderings that specify EventOcurrences that must occur after this OccurrenceSpecification");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOccurrenceSpecification")][QString::fromLatin1("toBefore")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOccurrenceSpecification")][QString::fromLatin1("toBefore")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the GeneralOrderings that specify EventOcurrences that must occur before this OccurrenceSpecification");
+
+    QInteractionFragment::setPropertyData();
 }
 
 #include "moc_qoccurrencespecification.cpp"

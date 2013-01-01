@@ -96,6 +96,7 @@ public:
     Q_INVOKABLE void addSupplier(QWrappedObjectPointer<QDeployedArtifact> deployedArtifact);
     Q_INVOKABLE void removeSupplier(QWrappedObjectPointer<QDeployedArtifact> deployedArtifact);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QDeployment(QDeploymentPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

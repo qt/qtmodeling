@@ -42,6 +42,8 @@
 #include "qdatastorenode.h"
 #include "qdatastorenode_p.h"
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QDataStoreNodePrivate::QDataStoreNodePrivate()
@@ -63,11 +65,13 @@ QDataStoreNodePrivate::~QDataStoreNodePrivate()
 QDataStoreNode::QDataStoreNode(QWrappedObject *parent, QWrappedObject *wrapper) :
     QCentralBufferNode(*new QDataStoreNodePrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QDataStoreNode::QDataStoreNode(QDataStoreNodePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QCentralBufferNode(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QDataStoreNode::~QDataStoreNode()
@@ -80,6 +84,12 @@ void QDataStoreNode::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QDataStoreNode::setPropertyData()
+{
+
+    QCentralBufferNode::setPropertyData();
 }
 
 #include "moc_qdatastorenode.cpp"

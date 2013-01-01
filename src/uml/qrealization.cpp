@@ -42,6 +42,8 @@
 #include "qrealization.h"
 #include "qrealization_p.h"
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QRealizationPrivate::QRealizationPrivate()
@@ -63,11 +65,13 @@ QRealizationPrivate::~QRealizationPrivate()
 QRealization::QRealization(QWrappedObject *parent, QWrappedObject *wrapper) :
     QAbstraction(*new QRealizationPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QRealization::QRealization(QRealizationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QAbstraction(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QRealization::~QRealization()
@@ -80,6 +84,12 @@ void QRealization::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QRealization::setPropertyData()
+{
+
+    QAbstraction::setPropertyData();
 }
 
 #include "moc_qrealization.cpp"

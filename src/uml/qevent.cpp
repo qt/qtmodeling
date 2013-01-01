@@ -42,6 +42,8 @@
 #include "qevent.h"
 #include "qevent_p.h"
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QEventPrivate::QEventPrivate()
@@ -63,11 +65,13 @@ QEventPrivate::~QEventPrivate()
 QEvent::QEvent(QWrappedObject *parent, QWrappedObject *wrapper) :
     QPackageableElement(*new QEventPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QEvent::QEvent(QEventPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QPackageableElement(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QEvent::~QEvent()
@@ -80,6 +84,12 @@ void QEvent::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QEvent::setPropertyData()
+{
+
+    QPackageableElement::setPropertyData();
 }
 
 #include "moc_qevent.cpp"

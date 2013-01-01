@@ -75,6 +75,7 @@ public:
     Q_INVOKABLE bool isComputable() const;
     Q_INVOKABLE qreal realValue() const;
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QLiteralReal(QLiteralRealPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

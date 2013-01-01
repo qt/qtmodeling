@@ -46,6 +46,8 @@
 
 #include <QtMof/QClassifier>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTMOF
 
 QFeaturePrivate::QFeaturePrivate() :
@@ -95,11 +97,13 @@ void QFeaturePrivate::removeFeaturingClassifier(QClassifier *featuringClassifier
 QFeature::QFeature(QWrappedObject *parent, QWrappedObject *wrapper) :
     QRedefinableElement(*new QFeaturePrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QFeature::QFeature(QFeaturePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QRedefinableElement(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QFeature::~QFeature()
@@ -161,6 +165,18 @@ void QFeature::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QFeature::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QFeature")][QString::fromLatin1("isStatic")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QFeature")][QString::fromLatin1("isStatic")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies whether this feature characterizes individual instances classified by the classifier (false) or the classifier itself (true).");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QFeature")][QString::fromLatin1("featuringClassifiers")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QFeature")][QString::fromLatin1("featuringClassifiers")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The Classifiers that have this Feature as a feature.");
+
+    QRedefinableElement::setPropertyData();
 }
 
 #include "moc_qfeature.cpp"

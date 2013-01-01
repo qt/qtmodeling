@@ -45,6 +45,8 @@
 #include <QtUml/QState>
 #include <QtUml/QStateMachine>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QPseudostatePrivate::QPseudostatePrivate() :
@@ -69,11 +71,13 @@ QPseudostatePrivate::~QPseudostatePrivate()
 QPseudostate::QPseudostate(QWrappedObject *parent, QWrappedObject *wrapper) :
     QVertex(*new QPseudostatePrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QPseudostate::QPseudostate(QPseudostatePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QVertex(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QPseudostate::~QPseudostate()
@@ -192,6 +196,21 @@ void QPseudostate::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QPseudostate::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QPseudostate")][QString::fromLatin1("kind")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QPseudostate")][QString::fromLatin1("kind")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Determines the precise type of the Pseudostate and can be one of: entryPoint, exitPoint, initial, deepHistory, shallowHistory, join, fork, junction, terminate or choice.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QPseudostate")][QString::fromLatin1("state")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QPseudostate")][QString::fromLatin1("state")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The State that owns this pseudostate and in which it appears.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QPseudostate")][QString::fromLatin1("stateMachine")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QPseudostate")][QString::fromLatin1("stateMachine")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The StateMachine in which this Pseudostate is defined. This only applies to Pseudostates of the kind entryPoint or exitPoint.");
+
+    QVertex::setPropertyData();
 }
 
 #include "moc_qpseudostate.cpp"

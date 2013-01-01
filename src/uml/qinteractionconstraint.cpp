@@ -44,6 +44,8 @@
 
 #include <QtUml/QValueSpecification>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QInteractionConstraintPrivate::QInteractionConstraintPrivate() :
@@ -67,11 +69,13 @@ QInteractionConstraintPrivate::~QInteractionConstraintPrivate()
 QInteractionConstraint::QInteractionConstraint(QWrappedObject *parent, QWrappedObject *wrapper) :
     QConstraint(*new QInteractionConstraintPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QInteractionConstraint::QInteractionConstraint(QInteractionConstraintPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QConstraint(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QInteractionConstraint::~QInteractionConstraint()
@@ -150,6 +154,18 @@ void QInteractionConstraint::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QInteractionConstraint::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionConstraint")][QString::fromLatin1("maxint")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionConstraint")][QString::fromLatin1("maxint")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The maximum number of iterations of a loop");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionConstraint")][QString::fromLatin1("minint")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionConstraint")][QString::fromLatin1("minint")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The minimum number of iterations of a loop");
+
+    QConstraint::setPropertyData();
 }
 
 #include "moc_qinteractionconstraint.cpp"

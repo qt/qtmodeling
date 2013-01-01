@@ -46,6 +46,8 @@
 
 #include <QtMof/QNamespace>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTMOF
 
 QNamedElementPrivate::QNamedElementPrivate() :
@@ -89,11 +91,13 @@ void QNamedElementPrivate::setNamespace_(QNamespace *namespace_)
 QNamedElement::QNamedElement(QWrappedObject *parent, QWrappedObject *wrapper) :
     QElement(*new QNamedElementPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QNamedElement::QNamedElement(QNamedElementPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QElement(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QNamedElement::~QNamedElement()
@@ -215,6 +219,24 @@ void QNamedElement::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QNamedElement::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamedElement")][QString::fromLatin1("name")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamedElement")][QString::fromLatin1("name")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The name of the NamedElement.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamedElement")][QString::fromLatin1("visibility")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamedElement")][QString::fromLatin1("visibility")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamedElement")][QString::fromLatin1("qualifiedName")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamedElement")][QString::fromLatin1("qualifiedName")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamedElement")][QString::fromLatin1("namespace_")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamedElement")][QString::fromLatin1("namespace_")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the namespace that owns the NamedElement.");
+
+    QElement::setPropertyData();
 }
 
 #include "moc_qnamedelement.cpp"

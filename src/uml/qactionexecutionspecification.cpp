@@ -44,6 +44,8 @@
 
 #include <QtUml/QAction>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QActionExecutionSpecificationPrivate::QActionExecutionSpecificationPrivate() :
@@ -66,11 +68,13 @@ QActionExecutionSpecificationPrivate::~QActionExecutionSpecificationPrivate()
 QActionExecutionSpecification::QActionExecutionSpecification(QWrappedObject *parent, QWrappedObject *wrapper) :
     QExecutionSpecification(*new QActionExecutionSpecificationPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QActionExecutionSpecification::QActionExecutionSpecification(QActionExecutionSpecificationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QExecutionSpecification(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QActionExecutionSpecification::~QActionExecutionSpecification()
@@ -112,6 +116,15 @@ void QActionExecutionSpecification::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QActionExecutionSpecification::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActionExecutionSpecification")][QString::fromLatin1("action")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActionExecutionSpecification")][QString::fromLatin1("action")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Action whose execution is occurring.");
+
+    QExecutionSpecification::setPropertyData();
 }
 
 #include "moc_qactionexecutionspecification.cpp"

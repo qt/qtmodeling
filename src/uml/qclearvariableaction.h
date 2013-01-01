@@ -65,6 +65,7 @@ public:
     Q_INVOKABLE explicit QClearVariableAction(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QClearVariableAction();
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QClearVariableAction(QClearVariableActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

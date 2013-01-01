@@ -46,6 +46,8 @@
 #include <QtMof/QNamespace>
 #include <QtMof/QValueSpecification>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTMOF
 
 QConstraintPrivate::QConstraintPrivate() :
@@ -69,11 +71,13 @@ QConstraintPrivate::~QConstraintPrivate()
 QConstraint::QConstraint(QWrappedObject *parent, QWrappedObject *wrapper) :
     QPackageableElement(*new QConstraintPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QConstraint::QConstraint(QConstraintPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QPackageableElement(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QConstraint::~QConstraint()
@@ -194,6 +198,21 @@ void QConstraint::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QConstraint::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QConstraint")][QString::fromLatin1("context")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QConstraint")][QString::fromLatin1("context")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the namespace that owns the NamedElement.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QConstraint")][QString::fromLatin1("specification")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QConstraint")][QString::fromLatin1("specification")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A condition that must be true when evaluated in order for the constraint to be satisfied.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QConstraint")][QString::fromLatin1("constrainedElements")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QConstraint")][QString::fromLatin1("constrainedElements")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The ordered set of Elements referenced by this Constraint.");
+
+    QPackageableElement::setPropertyData();
 }
 
 #include "moc_qconstraint.cpp"

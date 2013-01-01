@@ -65,6 +65,7 @@ public:
     Q_INVOKABLE explicit QInitialNode(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QInitialNode();
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QInitialNode(QInitialNodePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

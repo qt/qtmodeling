@@ -65,6 +65,7 @@ public:
     Q_INVOKABLE explicit QEvent(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QEvent();
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QEvent(QEventPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

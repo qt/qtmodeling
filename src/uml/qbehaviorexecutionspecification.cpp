@@ -44,6 +44,8 @@
 
 #include <QtUml/QBehavior>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QBehaviorExecutionSpecificationPrivate::QBehaviorExecutionSpecificationPrivate() :
@@ -66,11 +68,13 @@ QBehaviorExecutionSpecificationPrivate::~QBehaviorExecutionSpecificationPrivate(
 QBehaviorExecutionSpecification::QBehaviorExecutionSpecification(QWrappedObject *parent, QWrappedObject *wrapper) :
     QExecutionSpecification(*new QBehaviorExecutionSpecificationPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QBehaviorExecutionSpecification::QBehaviorExecutionSpecification(QBehaviorExecutionSpecificationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QExecutionSpecification(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QBehaviorExecutionSpecification::~QBehaviorExecutionSpecification()
@@ -112,6 +116,15 @@ void QBehaviorExecutionSpecification::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QBehaviorExecutionSpecification::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QBehaviorExecutionSpecification")][QString::fromLatin1("behavior")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QBehaviorExecutionSpecification")][QString::fromLatin1("behavior")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Behavior whose execution is occurring.");
+
+    QExecutionSpecification::setPropertyData();
 }
 
 #include "moc_qbehaviorexecutionspecification.cpp"

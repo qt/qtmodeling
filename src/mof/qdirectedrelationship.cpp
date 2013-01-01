@@ -44,6 +44,8 @@
 
 #include <QtMof/QElement>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTMOF
 
 QDirectedRelationshipPrivate::QDirectedRelationshipPrivate()
@@ -113,11 +115,13 @@ void QDirectedRelationshipPrivate::removeTarget(QElement *target)
 QDirectedRelationship::QDirectedRelationship(QWrappedObject *parent, QWrappedObject *wrapper) :
     QRelationship(*new QDirectedRelationshipPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QDirectedRelationship::QDirectedRelationship(QDirectedRelationshipPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QRelationship(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QDirectedRelationship::~QDirectedRelationship()
@@ -160,6 +164,18 @@ void QDirectedRelationship::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QDirectedRelationship::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDirectedRelationship")][QString::fromLatin1("sources")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDirectedRelationship")][QString::fromLatin1("sources")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the sources of the DirectedRelationship.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDirectedRelationship")][QString::fromLatin1("targets")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDirectedRelationship")][QString::fromLatin1("targets")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the targets of the DirectedRelationship.");
+
+    QRelationship::setPropertyData();
 }
 
 #include "moc_qdirectedrelationship.cpp"

@@ -44,6 +44,8 @@
 
 #include <QtUml/QMessage>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QMessageEndPrivate::QMessageEndPrivate() :
@@ -66,11 +68,13 @@ QMessageEndPrivate::~QMessageEndPrivate()
 QMessageEnd::QMessageEnd(QWrappedObject *parent, QWrappedObject *wrapper) :
     QNamedElement(*new QMessageEndPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QMessageEnd::QMessageEnd(QMessageEndPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QNamedElement(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QMessageEnd::~QMessageEnd()
@@ -112,6 +116,15 @@ void QMessageEnd::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QMessageEnd::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessageEnd")][QString::fromLatin1("message")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessageEnd")][QString::fromLatin1("message")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References a Message.");
+
+    QNamedElement::setPropertyData();
 }
 
 #include "moc_qmessageend.cpp"

@@ -80,6 +80,7 @@ public:
     Q_INVOKABLE void addBody(QString body);
     Q_INVOKABLE void removeBody(QString body);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QOpaqueBehavior(QOpaqueBehaviorPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

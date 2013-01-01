@@ -82,6 +82,7 @@ public:
     Q_INVOKABLE QPort *onPort() const;
     Q_INVOKABLE void setOnPort(QPort *onPort);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QInvocationAction(QInvocationActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

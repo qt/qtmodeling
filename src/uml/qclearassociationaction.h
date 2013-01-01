@@ -78,6 +78,7 @@ public:
     Q_INVOKABLE QAssociation *association() const;
     Q_INVOKABLE void setAssociation(QAssociation *association);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QClearAssociationAction(QClearAssociationActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

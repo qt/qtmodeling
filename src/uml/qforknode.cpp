@@ -42,6 +42,8 @@
 #include "qforknode.h"
 #include "qforknode_p.h"
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QForkNodePrivate::QForkNodePrivate()
@@ -63,11 +65,13 @@ QForkNodePrivate::~QForkNodePrivate()
 QForkNode::QForkNode(QWrappedObject *parent, QWrappedObject *wrapper) :
     QControlNode(*new QForkNodePrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QForkNode::QForkNode(QForkNodePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QControlNode(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QForkNode::~QForkNode()
@@ -80,6 +84,12 @@ void QForkNode::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QForkNode::setPropertyData()
+{
+
+    QControlNode::setPropertyData();
 }
 
 #include "moc_qforknode.cpp"

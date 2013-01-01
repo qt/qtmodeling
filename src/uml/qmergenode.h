@@ -65,6 +65,7 @@ public:
     Q_INVOKABLE explicit QMergeNode(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QMergeNode();
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QMergeNode(QMergeNodePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

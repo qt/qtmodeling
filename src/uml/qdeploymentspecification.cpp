@@ -44,6 +44,8 @@
 
 #include <QtUml/QDeployment>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QDeploymentSpecificationPrivate::QDeploymentSpecificationPrivate() :
@@ -66,11 +68,13 @@ QDeploymentSpecificationPrivate::~QDeploymentSpecificationPrivate()
 QDeploymentSpecification::QDeploymentSpecification(QWrappedObject *parent, QWrappedObject *wrapper) :
     QArtifact(*new QDeploymentSpecificationPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QDeploymentSpecification::QDeploymentSpecification(QDeploymentSpecificationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QArtifact(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QDeploymentSpecification::~QDeploymentSpecification()
@@ -169,6 +173,21 @@ void QDeploymentSpecification::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QDeploymentSpecification::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDeploymentSpecification")][QString::fromLatin1("deploymentLocation")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDeploymentSpecification")][QString::fromLatin1("deploymentLocation")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The location where an Artifact is deployed onto a Node. This is typically a 'directory' or 'memory address'.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDeploymentSpecification")][QString::fromLatin1("executionLocation")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDeploymentSpecification")][QString::fromLatin1("executionLocation")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The location where a component Artifact executes. This may be a local or remote location.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDeploymentSpecification")][QString::fromLatin1("deployment")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDeploymentSpecification")][QString::fromLatin1("deployment")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The deployment with which the DeploymentSpecification is associated.");
+
+    QArtifact::setPropertyData();
 }
 
 #include "moc_qdeploymentspecification.cpp"

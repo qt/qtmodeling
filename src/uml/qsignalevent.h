@@ -74,6 +74,7 @@ public:
     Q_INVOKABLE QSignal *signal() const;
     Q_INVOKABLE void setSignal(QSignal *signal);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QSignalEvent(QSignalEventPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

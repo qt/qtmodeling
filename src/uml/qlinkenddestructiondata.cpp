@@ -44,6 +44,8 @@
 
 #include <QtUml/QInputPin>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QLinkEndDestructionDataPrivate::QLinkEndDestructionDataPrivate() :
@@ -67,11 +69,13 @@ QLinkEndDestructionDataPrivate::~QLinkEndDestructionDataPrivate()
 QLinkEndDestructionData::QLinkEndDestructionData(QWrappedObject *parent, QWrappedObject *wrapper) :
     QLinkEndData(*new QLinkEndDestructionDataPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QLinkEndDestructionData::QLinkEndDestructionData(QLinkEndDestructionDataPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QLinkEndData(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QLinkEndDestructionData::~QLinkEndDestructionData()
@@ -143,6 +147,18 @@ void QLinkEndDestructionData::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QLinkEndDestructionData::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLinkEndDestructionData")][QString::fromLatin1("isDestroyDuplicates")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLinkEndDestructionData")][QString::fromLatin1("isDestroyDuplicates")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies whether to destroy duplicates of the value in nonunique association ends.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLinkEndDestructionData")][QString::fromLatin1("destroyAt")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLinkEndDestructionData")][QString::fromLatin1("destroyAt")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the position of an existing link to be destroyed in ordered nonunique association ends. The type of the pin is UnlimitedNatural, but the value cannot be zero or unlimited.");
+
+    QLinkEndData::setPropertyData();
 }
 
 #include "moc_qlinkenddestructiondata.cpp"

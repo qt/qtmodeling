@@ -45,6 +45,8 @@
 #include <QtUml/QProperty>
 #include <QtUml/QInputPin>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QQualifierValuePrivate::QQualifierValuePrivate() :
@@ -68,11 +70,13 @@ QQualifierValuePrivate::~QQualifierValuePrivate()
 QQualifierValue::QQualifierValue(QWrappedObject *parent, QWrappedObject *wrapper) :
     QElement(*new QQualifierValuePrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QQualifierValue::QQualifierValue(QQualifierValuePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QElement(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QQualifierValue::~QQualifierValue()
@@ -139,6 +143,18 @@ void QQualifierValue::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QQualifierValue::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QQualifierValue")][QString::fromLatin1("value")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QQualifierValue")][QString::fromLatin1("value")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Input pin from which the specified value for the qualifier is taken.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QQualifierValue")][QString::fromLatin1("qualifier")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QQualifierValue")][QString::fromLatin1("qualifier")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Attribute representing the qualifier for which the value is to be specified.");
+
+    QElement::setPropertyData();
 }
 
 #include "moc_qqualifiervalue.cpp"

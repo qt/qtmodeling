@@ -44,6 +44,8 @@
 
 #include <QtUml/QInputPin>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QSendObjectActionPrivate::QSendObjectActionPrivate() :
@@ -68,11 +70,13 @@ QSendObjectActionPrivate::~QSendObjectActionPrivate()
 QSendObjectAction::QSendObjectAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QInvocationAction(*new QSendObjectActionPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QSendObjectAction::QSendObjectAction(QSendObjectActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QInvocationAction(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QSendObjectAction::~QSendObjectAction()
@@ -143,6 +147,18 @@ void QSendObjectAction::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QSendObjectAction::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QSendObjectAction")][QString::fromLatin1("request")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QSendObjectAction")][QString::fromLatin1("request")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The request object, which is transmitted to the target object. The object may be copied in transmission, so identity might not be preserved.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QSendObjectAction")][QString::fromLatin1("target")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QSendObjectAction")][QString::fromLatin1("target")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The target object to which the object is sent.");
+
+    QInvocationAction::setPropertyData();
 }
 
 #include "moc_qsendobjectaction.cpp"

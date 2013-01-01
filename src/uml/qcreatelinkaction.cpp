@@ -44,6 +44,8 @@
 
 #include <QtUml/QLinkEndCreationData>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QCreateLinkActionPrivate::QCreateLinkActionPrivate()
@@ -66,11 +68,13 @@ QCreateLinkActionPrivate::~QCreateLinkActionPrivate()
 QCreateLinkAction::QCreateLinkAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QWriteLinkAction(*new QCreateLinkActionPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QCreateLinkAction::QCreateLinkAction(QCreateLinkActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QWriteLinkAction(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QCreateLinkAction::~QCreateLinkAction()
@@ -124,6 +128,15 @@ void QCreateLinkAction::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QCreateLinkAction::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCreateLinkAction")][QString::fromLatin1("endData")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCreateLinkAction")][QString::fromLatin1("endData")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies ends of association and inputs.");
+
+    QWriteLinkAction::setPropertyData();
 }
 
 #include "moc_qcreatelinkaction.cpp"

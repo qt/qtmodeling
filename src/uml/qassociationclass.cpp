@@ -42,6 +42,8 @@
 #include "qassociationclass.h"
 #include "qassociationclass_p.h"
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QAssociationClassPrivate::QAssociationClassPrivate()
@@ -65,6 +67,7 @@ QAssociationClass::QAssociationClass(QWrappedObject *parent, QWrappedObject *wra
     _wrappedClass(new QClass(this, this)),
     _wrappedAssociation(new QAssociation(this, this))
 {
+    setPropertyData();
 }
 
 QAssociationClass::QAssociationClass(QAssociationClassPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
@@ -72,6 +75,7 @@ QAssociationClass::QAssociationClass(QAssociationClassPrivate &dd, QWrappedObjec
     _wrappedClass(new QClass(this, this)),
     _wrappedAssociation(new QAssociation(this, this))
 {
+    setPropertyData();
 }
 
 QAssociationClass::~QAssociationClass()
@@ -84,6 +88,12 @@ void QAssociationClass::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QAssociationClass::setPropertyData()
+{
+
+    QWrappedObject::setPropertyData();
 }
 
 #include "moc_qassociationclass.cpp"

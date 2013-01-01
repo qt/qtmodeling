@@ -44,6 +44,8 @@
 
 #include <QtUml/QInteractionConstraint>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QInteractionOperandPrivate::QInteractionOperandPrivate() :
@@ -68,6 +70,7 @@ QInteractionOperand::QInteractionOperand(QWrappedObject *parent, QWrappedObject 
     _wrappedInteractionFragment(new QInteractionFragment(this, this)),
     _wrappedNamespace(new QNamespace(this, this))
 {
+    setPropertyData();
 }
 
 QInteractionOperand::QInteractionOperand(QInteractionOperandPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
@@ -75,6 +78,7 @@ QInteractionOperand::QInteractionOperand(QInteractionOperandPrivate &dd, QWrappe
     _wrappedInteractionFragment(new QInteractionFragment(this, this)),
     _wrappedNamespace(new QNamespace(this, this))
 {
+    setPropertyData();
 }
 
 QInteractionOperand::~QInteractionOperand()
@@ -434,6 +438,18 @@ void QInteractionOperand::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QInteractionOperand::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionOperand")][QString::fromLatin1("fragments")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionOperand")][QString::fromLatin1("fragments")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The fragments of the operand.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionOperand")][QString::fromLatin1("guard")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionOperand")][QString::fromLatin1("guard")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Constraint of the operand.");
+
+    QWrappedObject::setPropertyData();
 }
 
 #include "moc_qinteractionoperand.cpp"

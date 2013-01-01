@@ -45,6 +45,8 @@
 #include <QtUml/QClassifier>
 #include <QtUml/QTemplateParameter>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QRedefinableTemplateSignaturePrivate::QRedefinableTemplateSignaturePrivate() :
@@ -69,6 +71,7 @@ QRedefinableTemplateSignature::QRedefinableTemplateSignature(QWrappedObject *par
     _wrappedTemplateSignature(new QTemplateSignature(this, this)),
     _wrappedRedefinableElement(new QRedefinableElement(this, this))
 {
+    setPropertyData();
 }
 
 QRedefinableTemplateSignature::QRedefinableTemplateSignature(QRedefinableTemplateSignaturePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
@@ -76,6 +79,7 @@ QRedefinableTemplateSignature::QRedefinableTemplateSignature(QRedefinableTemplat
     _wrappedTemplateSignature(new QTemplateSignature(this, this)),
     _wrappedRedefinableElement(new QRedefinableElement(this, this))
 {
+    setPropertyData();
 }
 
 QRedefinableTemplateSignature::~QRedefinableTemplateSignature()
@@ -355,6 +359,21 @@ void QRedefinableTemplateSignature::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QRedefinableTemplateSignature::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QRedefinableTemplateSignature")][QString::fromLatin1("inheritedParameters")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QRedefinableTemplateSignature")][QString::fromLatin1("inheritedParameters")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The formal template parameters of the extendedSignature.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QRedefinableTemplateSignature")][QString::fromLatin1("classifier")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QRedefinableTemplateSignature")][QString::fromLatin1("classifier")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The classifier that owns this template signature.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QRedefinableTemplateSignature")][QString::fromLatin1("extendedSignatures")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QRedefinableTemplateSignature")][QString::fromLatin1("extendedSignatures")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The template signature that is extended by this template signature.");
+
+    QWrappedObject::setPropertyData();
 }
 
 #include "moc_qredefinabletemplatesignature.cpp"

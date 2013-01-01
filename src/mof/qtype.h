@@ -79,6 +79,7 @@ public:
     Q_INVOKABLE bool conformsTo(const QType *other) const;
     Q_INVOKABLE bool isInstance(const QMofObject *object) const;
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QType(QTypePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

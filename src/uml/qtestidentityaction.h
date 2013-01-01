@@ -81,6 +81,7 @@ public:
     Q_INVOKABLE QInputPin *first() const;
     Q_INVOKABLE void setFirst(QInputPin *first);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QTestIdentityAction(QTestIdentityActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

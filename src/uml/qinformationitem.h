@@ -75,6 +75,7 @@ public:
     Q_INVOKABLE void addRepresented(QClassifier *represented);
     Q_INVOKABLE void removeRepresented(QClassifier *represented);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QInformationItem(QInformationItemPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

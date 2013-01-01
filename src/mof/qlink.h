@@ -85,6 +85,7 @@ public:
     Q_INVOKABLE bool equals(const QLink *otherLink) const;
     Q_INVOKABLE void delete_();
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QLink(QLinkPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

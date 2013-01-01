@@ -74,6 +74,7 @@ public:
     Q_INVOKABLE QValueSpecification *max() const;
     Q_INVOKABLE void setMax(QValueSpecification *max);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QInterval(QIntervalPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

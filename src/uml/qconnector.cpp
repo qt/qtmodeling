@@ -46,6 +46,8 @@
 #include <QtUml/QBehavior>
 #include <QtUml/QConnectorEnd>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QConnectorPrivate::QConnectorPrivate() :
@@ -68,11 +70,13 @@ QConnectorPrivate::~QConnectorPrivate()
 QConnector::QConnector(QWrappedObject *parent, QWrappedObject *wrapper) :
     QFeature(*new QConnectorPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QConnector::QConnector(QConnectorPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QFeature(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QConnector::~QConnector()
@@ -243,6 +247,27 @@ void QConnector::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QConnector::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnector")][QString::fromLatin1("kind")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnector")][QString::fromLatin1("kind")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Indicates the kind of connector. This is derived: a connector with one or more ends connected to a Port which is not on a Part and which is not a behavior port is a delegation; otherwise it is an assembly.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnector")][QString::fromLatin1("redefinedConnectors")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnector")][QString::fromLatin1("redefinedConnectors")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A connector may be redefined when its containing classifier is specialized. The redefining connector may have a type that specializes the type of the redefined connector. The types of the connector ends of the redefining connector may specialize the types of the connector ends of the redefined connector. The properties of the connector ends of the redefining connector may be replaced.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnector")][QString::fromLatin1("contracts")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnector")][QString::fromLatin1("contracts")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The set of Behaviors that specify the valid interaction patterns across the connector.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnector")][QString::fromLatin1("type")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnector")][QString::fromLatin1("type")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An optional association that specifies the link corresponding to this connector.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnector")][QString::fromLatin1("ends")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnector")][QString::fromLatin1("ends")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A connector consists of at least two connector ends, each representing the participation of instances of the classifiers typing the connectable elements attached to this end. The set of connector ends is ordered.");
+
+    QFeature::setPropertyData();
 }
 
 #include "moc_qconnector.cpp"

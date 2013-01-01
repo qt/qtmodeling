@@ -42,6 +42,8 @@
 #include "qobservation.h"
 #include "qobservation_p.h"
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QObservationPrivate::QObservationPrivate()
@@ -63,11 +65,13 @@ QObservationPrivate::~QObservationPrivate()
 QObservation::QObservation(QWrappedObject *parent, QWrappedObject *wrapper) :
     QPackageableElement(*new QObservationPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QObservation::QObservation(QObservationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QPackageableElement(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QObservation::~QObservation()
@@ -80,6 +84,12 @@ void QObservation::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QObservation::setPropertyData()
+{
+
+    QPackageableElement::setPropertyData();
 }
 
 #include "moc_qobservation.cpp"

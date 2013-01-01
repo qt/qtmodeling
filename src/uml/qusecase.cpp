@@ -47,6 +47,8 @@
 #include <QtUml/QExtend>
 #include <QtUml/QExtensionPoint>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QUseCasePrivate::QUseCasePrivate()
@@ -68,11 +70,13 @@ QUseCasePrivate::~QUseCasePrivate()
 QUseCase::QUseCase(QWrappedObject *parent, QWrappedObject *wrapper) :
     QBehavioredClassifier(*new QUseCasePrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QUseCase::QUseCase(QUseCasePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QBehavioredClassifier(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QUseCase::~QUseCase()
@@ -282,6 +286,24 @@ void QUseCase::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QUseCase::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUseCase")][QString::fromLatin1("extensionPoints")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUseCase")][QString::fromLatin1("extensionPoints")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the ExtensionPoints owned by the use case.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUseCase")][QString::fromLatin1("includes")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUseCase")][QString::fromLatin1("includes")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Include relationships owned by this use case.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUseCase")][QString::fromLatin1("subjects")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUseCase")][QString::fromLatin1("subjects")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the subjects to which this use case applies. The subject or its parts realize all the use cases that apply to this subject. Use cases need not be attached to any specific subject, however. The subject may, but need not, own the use cases that apply to it.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUseCase")][QString::fromLatin1("extends")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUseCase")][QString::fromLatin1("extends")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Extend relationships owned by this use case.");
+
+    QBehavioredClassifier::setPropertyData();
 }
 
 #include "moc_qusecase.cpp"

@@ -44,6 +44,8 @@
 
 #include <QtUml/QInputPin>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QAddVariableValueActionPrivate::QAddVariableValueActionPrivate() :
@@ -67,11 +69,13 @@ QAddVariableValueActionPrivate::~QAddVariableValueActionPrivate()
 QAddVariableValueAction::QAddVariableValueAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QWriteVariableAction(*new QAddVariableValueActionPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QAddVariableValueAction::QAddVariableValueAction(QAddVariableValueActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QWriteVariableAction(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QAddVariableValueAction::~QAddVariableValueAction()
@@ -151,6 +155,18 @@ void QAddVariableValueAction::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QAddVariableValueAction::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QAddVariableValueAction")][QString::fromLatin1("isReplaceAll")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QAddVariableValueAction")][QString::fromLatin1("isReplaceAll")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies whether existing values of the variable should be removed before adding the new value.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QAddVariableValueAction")][QString::fromLatin1("insertAt")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QAddVariableValueAction")][QString::fromLatin1("insertAt")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Gives the position at which to insert a new value or move an existing value in ordered variables. The types is UnlimitedINatural, but the value cannot be zero. This pin is omitted for unordered variables.");
+
+    QWriteVariableAction::setPropertyData();
 }
 
 #include "moc_qaddvariablevalueaction.cpp"

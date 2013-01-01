@@ -74,6 +74,7 @@ public:
     Q_INVOKABLE QOperation *operation() const;
     Q_INVOKABLE void setOperation(QOperation *operation);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QCallEvent(QCallEventPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

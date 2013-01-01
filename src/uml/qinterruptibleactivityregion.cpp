@@ -45,6 +45,8 @@
 #include <QtUml/QActivityEdge>
 #include <QtUml/QActivityNode>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QInterruptibleActivityRegionPrivate::QInterruptibleActivityRegionPrivate()
@@ -66,11 +68,13 @@ QInterruptibleActivityRegionPrivate::~QInterruptibleActivityRegionPrivate()
 QInterruptibleActivityRegion::QInterruptibleActivityRegion(QWrappedObject *parent, QWrappedObject *wrapper) :
     QActivityGroup(*new QInterruptibleActivityRegionPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QInterruptibleActivityRegion::QInterruptibleActivityRegion(QInterruptibleActivityRegionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QActivityGroup(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QInterruptibleActivityRegion::~QInterruptibleActivityRegion()
@@ -176,6 +180,18 @@ void QInterruptibleActivityRegion::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QInterruptibleActivityRegion::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterruptibleActivityRegion")][QString::fromLatin1("interruptingEdges")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterruptibleActivityRegion")][QString::fromLatin1("interruptingEdges")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The edges leaving the region that will abort other tokens flowing in the region.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterruptibleActivityRegion")][QString::fromLatin1("nodes")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterruptibleActivityRegion")][QString::fromLatin1("nodes")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Nodes immediately contained in the group.");
+
+    QActivityGroup::setPropertyData();
 }
 
 #include "moc_qinterruptibleactivityregion.cpp"

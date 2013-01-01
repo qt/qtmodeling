@@ -42,6 +42,8 @@
 #include "qcontrolflow.h"
 #include "qcontrolflow_p.h"
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QControlFlowPrivate::QControlFlowPrivate()
@@ -63,11 +65,13 @@ QControlFlowPrivate::~QControlFlowPrivate()
 QControlFlow::QControlFlow(QWrappedObject *parent, QWrappedObject *wrapper) :
     QActivityEdge(*new QControlFlowPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QControlFlow::QControlFlow(QControlFlowPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QActivityEdge(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QControlFlow::~QControlFlow()
@@ -80,6 +84,12 @@ void QControlFlow::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QControlFlow::setPropertyData()
+{
+
+    QActivityEdge::setPropertyData();
 }
 
 #include "moc_qcontrolflow.cpp"

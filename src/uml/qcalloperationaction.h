@@ -78,6 +78,7 @@ public:
     Q_INVOKABLE QInputPin *target() const;
     Q_INVOKABLE void setTarget(QInputPin *target);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QCallOperationAction(QCallOperationActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

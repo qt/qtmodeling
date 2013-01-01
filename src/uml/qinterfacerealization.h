@@ -87,6 +87,7 @@ public:
     Q_INVOKABLE void addSupplier(QWrappedObjectPointer<QInterface> contract);
     Q_INVOKABLE void removeSupplier(QWrappedObjectPointer<QInterface> contract);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QInterfaceRealization(QInterfaceRealizationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

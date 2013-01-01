@@ -87,6 +87,7 @@ public:
     Q_INVOKABLE QPackage *importedPackage() const;
     Q_INVOKABLE void setImportedPackage(QPackage *importedPackage);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QPackageImport(QPackageImportPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

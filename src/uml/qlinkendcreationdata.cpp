@@ -44,6 +44,8 @@
 
 #include <QtUml/QInputPin>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QLinkEndCreationDataPrivate::QLinkEndCreationDataPrivate() :
@@ -67,11 +69,13 @@ QLinkEndCreationDataPrivate::~QLinkEndCreationDataPrivate()
 QLinkEndCreationData::QLinkEndCreationData(QWrappedObject *parent, QWrappedObject *wrapper) :
     QLinkEndData(*new QLinkEndCreationDataPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QLinkEndCreationData::QLinkEndCreationData(QLinkEndCreationDataPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QLinkEndData(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QLinkEndCreationData::~QLinkEndCreationData()
@@ -143,6 +147,18 @@ void QLinkEndCreationData::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QLinkEndCreationData::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLinkEndCreationData")][QString::fromLatin1("isReplaceAll")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLinkEndCreationData")][QString::fromLatin1("isReplaceAll")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies whether the existing links emanating from the object on this end should be destroyed before creating a new link.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLinkEndCreationData")][QString::fromLatin1("insertAt")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLinkEndCreationData")][QString::fromLatin1("insertAt")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies where the new link should be inserted for ordered association ends, or where an existing link should be moved to. The type of the input is UnlimitedNatural, but the input cannot be zero. This pin is omitted for association ends that are not ordered.");
+
+    QLinkEndData::setPropertyData();
 }
 
 #include "moc_qlinkendcreationdata.cpp"

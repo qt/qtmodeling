@@ -46,6 +46,8 @@
 #include <QtUml/QBehavior>
 #include <QtUml/QOutputPin>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QReduceActionPrivate::QReduceActionPrivate() :
@@ -71,11 +73,13 @@ QReduceActionPrivate::~QReduceActionPrivate()
 QReduceAction::QReduceAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(*new QReduceActionPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QReduceAction::QReduceAction(QReduceActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QReduceAction::~QReduceAction()
@@ -213,6 +217,24 @@ void QReduceAction::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QReduceAction::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReduceAction")][QString::fromLatin1("isOrdered")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReduceAction")][QString::fromLatin1("isOrdered")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Tells whether the order of the input collection should determine the order in which the behavior is applied to its elements.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReduceAction")][QString::fromLatin1("result")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReduceAction")][QString::fromLatin1("result")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Gives the output pin on which the result is put.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReduceAction")][QString::fromLatin1("collection")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReduceAction")][QString::fromLatin1("collection")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The collection to be reduced.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReduceAction")][QString::fromLatin1("reducer")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReduceAction")][QString::fromLatin1("reducer")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Behavior that is applied to two elements of the input collection to produce a value that is the same type as elements of the collection.");
+
+    QAction::setPropertyData();
 }
 
 #include "moc_qreduceaction.cpp"

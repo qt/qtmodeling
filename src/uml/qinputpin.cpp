@@ -42,6 +42,8 @@
 #include "qinputpin.h"
 #include "qinputpin_p.h"
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QInputPinPrivate::QInputPinPrivate()
@@ -63,11 +65,13 @@ QInputPinPrivate::~QInputPinPrivate()
 QInputPin::QInputPin(QWrappedObject *parent, QWrappedObject *wrapper) :
     QPin(*new QInputPinPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QInputPin::QInputPin(QInputPinPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QPin(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QInputPin::~QInputPin()
@@ -80,6 +84,12 @@ void QInputPin::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QInputPin::setPropertyData()
+{
+
+    QPin::setPropertyData();
 }
 
 #include "moc_qinputpin.cpp"

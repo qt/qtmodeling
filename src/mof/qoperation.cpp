@@ -49,6 +49,8 @@
 #include <QtMof/QConstraint>
 #include <QtMof/QDataType>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTMOF
 
 QOperationPrivate::QOperationPrivate() :
@@ -75,11 +77,13 @@ QOperationPrivate::~QOperationPrivate()
 QOperation::QOperation(QWrappedObject *parent, QWrappedObject *wrapper) :
     QBehavioralFeature(*new QOperationPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QOperation::QOperation(QOperationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QBehavioralFeature(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QOperation::~QOperation()
@@ -525,6 +529,54 @@ void QOperation::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QOperation::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOperation")][QString::fromLatin1("lower")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOperation")][QString::fromLatin1("lower")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the lower multiplicity of the return parameter, if present.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOperation")][QString::fromLatin1("isQuery")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOperation")][QString::fromLatin1("isQuery")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies whether an execution of the BehavioralFeature leaves the state of the system unchanged (isQuery=true) or whether side effects may occur (isQuery=false).");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOperation")][QString::fromLatin1("isUnique")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOperation")][QString::fromLatin1("isUnique")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies whether the return parameter is unique or not, if present.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOperation")][QString::fromLatin1("upper")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOperation")][QString::fromLatin1("upper")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the upper multiplicity of the return parameter, if present.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOperation")][QString::fromLatin1("isOrdered")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOperation")][QString::fromLatin1("isOrdered")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies whether the return parameter is ordered or not, if present.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOperation")][QString::fromLatin1("ownedParameters")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOperation")][QString::fromLatin1("ownedParameters")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the parameters owned by this Operation.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOperation")][QString::fromLatin1("bodyCondition")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOperation")][QString::fromLatin1("bodyCondition")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An optional Constraint on the result values of an invocation of this Operation.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOperation")][QString::fromLatin1("redefinedOperations")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOperation")][QString::fromLatin1("redefinedOperations")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Operations that are redefined by this Operation.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOperation")][QString::fromLatin1("postconditions")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOperation")][QString::fromLatin1("postconditions")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An optional set of Constraints specifying the state of the system when the Operation is completed.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOperation")][QString::fromLatin1("datatype")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOperation")][QString::fromLatin1("datatype")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The DataType that owns this Operation.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOperation")][QString::fromLatin1("type")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOperation")][QString::fromLatin1("type")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the return result of the operation, if present.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOperation")][QString::fromLatin1("preconditions")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOperation")][QString::fromLatin1("preconditions")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An optional set of Constraints on the state of the system when the Operation is invoked.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOperation")][QString::fromLatin1("class_")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOperation")][QString::fromLatin1("class_")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The class that owns the operation.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOperation")][QString::fromLatin1("raisedExceptions")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOperation")][QString::fromLatin1("raisedExceptions")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Types representing exceptions that may be raised during an invocation of this operation.");
+
+    QBehavioralFeature::setPropertyData();
 }
 
 #include "moc_qoperation.cpp"

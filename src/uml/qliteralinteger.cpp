@@ -42,6 +42,8 @@
 #include "qliteralinteger.h"
 #include "qliteralinteger_p.h"
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QLiteralIntegerPrivate::QLiteralIntegerPrivate()
@@ -63,11 +65,13 @@ QLiteralIntegerPrivate::~QLiteralIntegerPrivate()
 QLiteralInteger::QLiteralInteger(QWrappedObject *parent, QWrappedObject *wrapper) :
     QLiteralSpecification(*new QLiteralIntegerPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QLiteralInteger::QLiteralInteger(QLiteralIntegerPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QLiteralSpecification(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QLiteralInteger::~QLiteralInteger()
@@ -125,6 +129,15 @@ void QLiteralInteger::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QLiteralInteger::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLiteralInteger")][QString::fromLatin1("value")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLiteralInteger")][QString::fromLatin1("value")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The specified Integer value.");
+
+    QLiteralSpecification::setPropertyData();
 }
 
 #include "moc_qliteralinteger.cpp"

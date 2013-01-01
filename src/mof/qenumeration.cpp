@@ -44,6 +44,8 @@
 
 #include <QtMof/QEnumerationLiteral>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTMOF
 
 QEnumerationPrivate::QEnumerationPrivate()
@@ -65,11 +67,13 @@ QEnumerationPrivate::~QEnumerationPrivate()
 QEnumeration::QEnumeration(QWrappedObject *parent, QWrappedObject *wrapper) :
     QDataType(*new QEnumerationPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QEnumeration::QEnumeration(QEnumerationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QDataType(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QEnumeration::~QEnumeration()
@@ -133,6 +137,15 @@ void QEnumeration::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QEnumeration::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QEnumeration")][QString::fromLatin1("ownedLiterals")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QEnumeration")][QString::fromLatin1("ownedLiterals")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The ordered set of literals for this Enumeration.");
+
+    QDataType::setPropertyData();
 }
 
 #include "moc_qenumeration.cpp"

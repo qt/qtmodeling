@@ -44,6 +44,8 @@
 
 #include <QtUml/QPort>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QEncapsulatedClassifierPrivate::QEncapsulatedClassifierPrivate()
@@ -65,11 +67,13 @@ QEncapsulatedClassifierPrivate::~QEncapsulatedClassifierPrivate()
 QEncapsulatedClassifier::QEncapsulatedClassifier(QWrappedObject *parent, QWrappedObject *wrapper) :
     QStructuredClassifier(*new QEncapsulatedClassifierPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QEncapsulatedClassifier::QEncapsulatedClassifier(QEncapsulatedClassifierPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QStructuredClassifier(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QEncapsulatedClassifier::~QEncapsulatedClassifier()
@@ -102,6 +106,15 @@ void QEncapsulatedClassifier::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QEncapsulatedClassifier::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QEncapsulatedClassifier")][QString::fromLatin1("ownedPorts")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QEncapsulatedClassifier")][QString::fromLatin1("ownedPorts")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References a set of ports that an encapsulated classifier owns.");
+
+    QStructuredClassifier::setPropertyData();
 }
 
 #include "moc_qencapsulatedclassifier.cpp"

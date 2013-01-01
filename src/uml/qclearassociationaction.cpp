@@ -45,6 +45,8 @@
 #include <QtUml/QAssociation>
 #include <QtUml/QInputPin>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QClearAssociationActionPrivate::QClearAssociationActionPrivate() :
@@ -68,11 +70,13 @@ QClearAssociationActionPrivate::~QClearAssociationActionPrivate()
 QClearAssociationAction::QClearAssociationAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(*new QClearAssociationActionPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QClearAssociationAction::QClearAssociationAction(QClearAssociationActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QClearAssociationAction::~QClearAssociationAction()
@@ -147,6 +151,18 @@ void QClearAssociationAction::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QClearAssociationAction::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClearAssociationAction")][QString::fromLatin1("object")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClearAssociationAction")][QString::fromLatin1("object")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Gives the input pin from which is obtained the object whose participation in the association is to be cleared.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClearAssociationAction")][QString::fromLatin1("association")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClearAssociationAction")][QString::fromLatin1("association")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Association to be cleared.");
+
+    QAction::setPropertyData();
 }
 
 #include "moc_qclearassociationaction.cpp"

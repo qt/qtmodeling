@@ -74,6 +74,7 @@ public:
     Q_INVOKABLE QInputPin *exception() const;
     Q_INVOKABLE void setException(QInputPin *exception);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QRaiseExceptionAction(QRaiseExceptionActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

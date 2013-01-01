@@ -93,6 +93,7 @@ public:
     Q_INVOKABLE void addOperand(QInteractionOperand *operand);
     Q_INVOKABLE void removeOperand(QInteractionOperand *operand);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QCombinedFragment(QCombinedFragmentPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

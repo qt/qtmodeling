@@ -44,6 +44,8 @@
 
 #include <QtUml/QExpansionNode>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QExpansionRegionPrivate::QExpansionRegionPrivate() :
@@ -66,11 +68,13 @@ QExpansionRegionPrivate::~QExpansionRegionPrivate()
 QExpansionRegion::QExpansionRegion(QWrappedObject *parent, QWrappedObject *wrapper) :
     QStructuredActivityNode(*new QExpansionRegionPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QExpansionRegion::QExpansionRegion(QExpansionRegionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QStructuredActivityNode(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QExpansionRegion::~QExpansionRegion()
@@ -195,6 +199,21 @@ void QExpansionRegion::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QExpansionRegion::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionRegion")][QString::fromLatin1("mode")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionRegion")][QString::fromLatin1("mode")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The way in which the executions interact: parallel: all interactions are independent iterative: the interactions occur in order of the elements stream: a stream of values flows into a single execution");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionRegion")][QString::fromLatin1("inputElements")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionRegion")][QString::fromLatin1("inputElements")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An object node that holds a separate element of the input collection during each of the multiple executions of the region.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionRegion")][QString::fromLatin1("outputElements")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionRegion")][QString::fromLatin1("outputElements")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An object node that accepts a separate element of the output collection during each of the multiple executions of the region. The values are formed into a collection that is available when the execution of the region is complete.");
+
+    QStructuredActivityNode::setPropertyData();
 }
 
 #include "moc_qexpansionregion.cpp"

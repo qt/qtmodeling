@@ -82,6 +82,7 @@ public:
     Q_INVOKABLE QEvent *event() const;
     Q_INVOKABLE void setEvent(QEvent *event);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QTrigger(QTriggerPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

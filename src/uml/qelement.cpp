@@ -44,6 +44,8 @@
 
 #include <QtUml/QComment>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QElementPrivate::QElementPrivate() :
@@ -112,11 +114,13 @@ void QElementPrivate::setOwner(QElement *owner)
 QElement::QElement(QWrappedObject *parent, QWrappedObject *wrapper) :
     QWrappedObject(*new QElementPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QElement::QElement(QElementPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QWrappedObject(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QElement::~QElement()
@@ -214,6 +218,21 @@ void QElement::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QElement::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QElement")][QString::fromLatin1("ownedElements")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QElement")][QString::fromLatin1("ownedElements")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The Elements owned by this element.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QElement")][QString::fromLatin1("owner")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QElement")][QString::fromLatin1("owner")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The Element that owns this element.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QElement")][QString::fromLatin1("ownedComments")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QElement")][QString::fromLatin1("ownedComments")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The Comments owned by this element.");
+
+    QWrappedObject::setPropertyData();
 }
 
 void QElement::allOwnedElements(QSet<QElement *> &allOwnedElements_) const

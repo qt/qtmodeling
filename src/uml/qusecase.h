@@ -96,6 +96,7 @@ public:
     // Operations
     Q_INVOKABLE QSet<QUseCase *> allIncludedUseCases() const;
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QUseCase(QUseCasePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

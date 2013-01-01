@@ -45,6 +45,8 @@
 #include <QtUml/QInputPin>
 #include <QtUml/QOutputPin>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QTestIdentityActionPrivate::QTestIdentityActionPrivate() :
@@ -69,11 +71,13 @@ QTestIdentityActionPrivate::~QTestIdentityActionPrivate()
 QTestIdentityAction::QTestIdentityAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(*new QTestIdentityActionPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QTestIdentityAction::QTestIdentityAction(QTestIdentityActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QTestIdentityAction::~QTestIdentityAction()
@@ -185,6 +189,21 @@ void QTestIdentityAction::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QTestIdentityAction::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTestIdentityAction")][QString::fromLatin1("second")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTestIdentityAction")][QString::fromLatin1("second")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Gives the pin on which an object is placed.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTestIdentityAction")][QString::fromLatin1("result")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTestIdentityAction")][QString::fromLatin1("result")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Tells whether the two input objects are identical.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTestIdentityAction")][QString::fromLatin1("first")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTestIdentityAction")][QString::fromLatin1("first")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Gives the pin on which an object is placed.");
+
+    QAction::setPropertyData();
 }
 
 #include "moc_qtestidentityaction.cpp"

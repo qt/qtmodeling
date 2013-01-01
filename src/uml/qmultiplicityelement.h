@@ -103,6 +103,7 @@ public:
     Q_INVOKABLE qint32 lowerBound() const;
     Q_INVOKABLE qint32 upperBound() const;
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QMultiplicityElement(QMultiplicityElementPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

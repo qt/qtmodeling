@@ -91,6 +91,7 @@ public:
     Q_INVOKABLE void addClient(QWrappedObjectPointer<QClassifier> realizingClassifier);
     Q_INVOKABLE void removeClient(QWrappedObjectPointer<QClassifier> realizingClassifier);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QComponentRealization(QComponentRealizationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

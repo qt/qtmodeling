@@ -42,6 +42,8 @@
 #include "qactivityfinalnode.h"
 #include "qactivityfinalnode_p.h"
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QActivityFinalNodePrivate::QActivityFinalNodePrivate()
@@ -63,11 +65,13 @@ QActivityFinalNodePrivate::~QActivityFinalNodePrivate()
 QActivityFinalNode::QActivityFinalNode(QWrappedObject *parent, QWrappedObject *wrapper) :
     QFinalNode(*new QActivityFinalNodePrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QActivityFinalNode::QActivityFinalNode(QActivityFinalNodePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QFinalNode(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QActivityFinalNode::~QActivityFinalNode()
@@ -80,6 +84,12 @@ void QActivityFinalNode::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QActivityFinalNode::setPropertyData()
+{
+
+    QFinalNode::setPropertyData();
 }
 
 #include "moc_qactivityfinalnode.cpp"

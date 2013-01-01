@@ -44,6 +44,8 @@
 
 #include <QtUml/QUseCase>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QIncludePrivate::QIncludePrivate() :
@@ -69,6 +71,7 @@ QInclude::QInclude(QWrappedObject *parent, QWrappedObject *wrapper) :
     _wrappedDirectedRelationship(new QDirectedRelationship(this, this)),
     _wrappedNamedElement(new QNamedElement(this, this))
 {
+    setPropertyData();
 }
 
 QInclude::QInclude(QIncludePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
@@ -76,6 +79,7 @@ QInclude::QInclude(QIncludePrivate &dd, QWrappedObject *parent, QWrappedObject *
     _wrappedDirectedRelationship(new QDirectedRelationship(this, this)),
     _wrappedNamedElement(new QNamedElement(this, this))
 {
+    setPropertyData();
 }
 
 QInclude::~QInclude()
@@ -314,6 +318,18 @@ void QInclude::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QInclude::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInclude")][QString::fromLatin1("includingCase")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInclude")][QString::fromLatin1("includingCase")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the use case which will include the addition and owns the include relationship.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInclude")][QString::fromLatin1("addition")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInclude")][QString::fromLatin1("addition")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the use case that is to be included.");
+
+    QWrappedObject::setPropertyData();
 }
 
 #include "moc_qinclude.cpp"

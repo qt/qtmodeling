@@ -45,6 +45,8 @@
 #include <QtUml/QGate>
 #include <QtUml/QInteractionOperand>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QCombinedFragmentPrivate::QCombinedFragmentPrivate() :
@@ -67,11 +69,13 @@ QCombinedFragmentPrivate::~QCombinedFragmentPrivate()
 QCombinedFragment::QCombinedFragment(QWrappedObject *parent, QWrappedObject *wrapper) :
     QInteractionFragment(*new QCombinedFragmentPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QCombinedFragment::QCombinedFragment(QCombinedFragmentPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QInteractionFragment(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QCombinedFragment::~QCombinedFragment()
@@ -200,6 +204,21 @@ void QCombinedFragment::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QCombinedFragment::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCombinedFragment")][QString::fromLatin1("interactionOperator")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCombinedFragment")][QString::fromLatin1("interactionOperator")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the operation which defines the semantics of this combination of InteractionFragments.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCombinedFragment")][QString::fromLatin1("cfragmentGates")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCombinedFragment")][QString::fromLatin1("cfragmentGates")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the gates that form the interface between this CombinedFragment and its surroundings");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCombinedFragment")][QString::fromLatin1("operands")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCombinedFragment")][QString::fromLatin1("operands")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The set of operands of the combined fragment.");
+
+    QInteractionFragment::setPropertyData();
 }
 
 #include "moc_qcombinedfragment.cpp"

@@ -45,6 +45,8 @@
 #include <QtUml/QClassifier>
 #include <QtUml/QOutputPin>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QReadExtentActionPrivate::QReadExtentActionPrivate() :
@@ -68,11 +70,13 @@ QReadExtentActionPrivate::~QReadExtentActionPrivate()
 QReadExtentAction::QReadExtentAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(*new QReadExtentActionPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QReadExtentAction::QReadExtentAction(QReadExtentActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QReadExtentAction::~QReadExtentAction()
@@ -147,6 +151,18 @@ void QReadExtentAction::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QReadExtentAction::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReadExtentAction")][QString::fromLatin1("classifier")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReadExtentAction")][QString::fromLatin1("classifier")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The classifier whose instances are to be retrieved.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReadExtentAction")][QString::fromLatin1("result")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReadExtentAction")][QString::fromLatin1("result")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The runtime instances of the classifier.");
+
+    QAction::setPropertyData();
 }
 
 #include "moc_qreadextentaction.cpp"

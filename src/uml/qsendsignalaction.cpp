@@ -45,6 +45,8 @@
 #include <QtUml/QSignal>
 #include <QtUml/QInputPin>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QSendSignalActionPrivate::QSendSignalActionPrivate() :
@@ -68,11 +70,13 @@ QSendSignalActionPrivate::~QSendSignalActionPrivate()
 QSendSignalAction::QSendSignalAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QInvocationAction(*new QSendSignalActionPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QSendSignalAction::QSendSignalAction(QSendSignalActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QInvocationAction(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QSendSignalAction::~QSendSignalAction()
@@ -147,6 +151,18 @@ void QSendSignalAction::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QSendSignalAction::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QSendSignalAction")][QString::fromLatin1("target")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QSendSignalAction")][QString::fromLatin1("target")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The target object to which the signal is sent.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QSendSignalAction")][QString::fromLatin1("signal")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QSendSignalAction")][QString::fromLatin1("signal")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The type of signal transmitted to the target object.");
+
+    QInvocationAction::setPropertyData();
 }
 
 #include "moc_qsendsignalaction.cpp"

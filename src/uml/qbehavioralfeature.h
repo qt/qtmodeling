@@ -167,6 +167,7 @@ public:
     // Operations
     Q_INVOKABLE bool isDistinguishableFrom(const QNamedElement *n, const QNamespace *ns) const;
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QBehavioralFeature(QBehavioralFeaturePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

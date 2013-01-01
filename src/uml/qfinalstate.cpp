@@ -42,6 +42,8 @@
 #include "qfinalstate.h"
 #include "qfinalstate_p.h"
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QFinalStatePrivate::QFinalStatePrivate()
@@ -63,11 +65,13 @@ QFinalStatePrivate::~QFinalStatePrivate()
 QFinalState::QFinalState(QWrappedObject *parent, QWrappedObject *wrapper) :
     QState(*new QFinalStatePrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QFinalState::QFinalState(QFinalStatePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QState(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QFinalState::~QFinalState()
@@ -80,6 +84,12 @@ void QFinalState::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QFinalState::setPropertyData()
+{
+
+    QState::setPropertyData();
 }
 
 #include "moc_qfinalstate.cpp"

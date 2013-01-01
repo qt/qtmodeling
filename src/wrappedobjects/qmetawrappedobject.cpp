@@ -41,6 +41,7 @@
 
 #include "qmetawrappedobject.h"
 #include "qmetawrappedobject_p.h"
+#include "qwrappedobject_p.h"
 
 #include <QtWrappedObjects/QWrappedObject>
 #include <QtCore/QMetaObject>

@@ -148,6 +148,7 @@ public:
     Q_INVOKABLE void addRealization(QRelationship *realization);
     Q_INVOKABLE void removeRealization(QRelationship *realization);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QInformationFlow(QInformationFlowPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

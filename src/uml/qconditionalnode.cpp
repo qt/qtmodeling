@@ -45,6 +45,8 @@
 #include <QtUml/QClause>
 #include <QtUml/QOutputPin>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QConditionalNodePrivate::QConditionalNodePrivate() :
@@ -69,11 +71,13 @@ QConditionalNodePrivate::~QConditionalNodePrivate()
 QConditionalNode::QConditionalNode(QWrappedObject *parent, QWrappedObject *wrapper) :
     QStructuredActivityNode(*new QConditionalNodePrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QConditionalNode::QConditionalNode(QConditionalNodePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QStructuredActivityNode(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QConditionalNode::~QConditionalNode()
@@ -224,6 +228,24 @@ void QConditionalNode::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QConditionalNode::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QConditionalNode")][QString::fromLatin1("isAssured")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QConditionalNode")][QString::fromLatin1("isAssured")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("If true, the modeler asserts that at least one test will succeed.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QConditionalNode")][QString::fromLatin1("isDeterminate")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QConditionalNode")][QString::fromLatin1("isDeterminate")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("If true, the modeler asserts that at most one test will succeed.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QConditionalNode")][QString::fromLatin1("clauses")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QConditionalNode")][QString::fromLatin1("clauses")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Set of clauses composing the conditional.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QConditionalNode")][QString::fromLatin1("results")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QConditionalNode")][QString::fromLatin1("results")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A list of output pins that constitute the data flow outputs of the conditional.");
+
+    QStructuredActivityNode::setPropertyData();
 }
 
 #include "moc_qconditionalnode.cpp"

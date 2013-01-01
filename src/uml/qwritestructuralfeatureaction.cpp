@@ -45,6 +45,8 @@
 #include <QtUml/QOutputPin>
 #include <QtUml/QInputPin>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QWriteStructuralFeatureActionPrivate::QWriteStructuralFeatureActionPrivate() :
@@ -68,11 +70,13 @@ QWriteStructuralFeatureActionPrivate::~QWriteStructuralFeatureActionPrivate()
 QWriteStructuralFeatureAction::QWriteStructuralFeatureAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QStructuralFeatureAction(*new QWriteStructuralFeatureActionPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QWriteStructuralFeatureAction::QWriteStructuralFeatureAction(QWriteStructuralFeatureActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QStructuralFeatureAction(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QWriteStructuralFeatureAction::~QWriteStructuralFeatureAction()
@@ -155,6 +159,18 @@ void QWriteStructuralFeatureAction::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QWriteStructuralFeatureAction::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QWriteStructuralFeatureAction")][QString::fromLatin1("result")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QWriteStructuralFeatureAction")][QString::fromLatin1("result")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Gives the output pin on which the result is put.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QWriteStructuralFeatureAction")][QString::fromLatin1("value")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QWriteStructuralFeatureAction")][QString::fromLatin1("value")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Value to be added or removed from the structural feature.");
+
+    QStructuralFeatureAction::setPropertyData();
 }
 
 #include "moc_qwritestructuralfeatureaction.cpp"

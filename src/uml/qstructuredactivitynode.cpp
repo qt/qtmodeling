@@ -49,6 +49,8 @@
 #include <QtUml/QActivity>
 #include <QtUml/QActivityNode>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QStructuredActivityNodePrivate::QStructuredActivityNodePrivate() :
@@ -75,6 +77,7 @@ QStructuredActivityNode::QStructuredActivityNode(QWrappedObject *parent, QWrappe
     _wrappedNamespace(new QNamespace(this, this)),
     _wrappedActivityGroup(new QActivityGroup(this, this))
 {
+    setPropertyData();
 }
 
 QStructuredActivityNode::QStructuredActivityNode(QStructuredActivityNodePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
@@ -83,6 +86,7 @@ QStructuredActivityNode::QStructuredActivityNode(QStructuredActivityNodePrivate 
     _wrappedNamespace(new QNamespace(this, this)),
     _wrappedActivityGroup(new QActivityGroup(this, this))
 {
+    setPropertyData();
 }
 
 QStructuredActivityNode::~QStructuredActivityNode()
@@ -885,6 +889,33 @@ void QStructuredActivityNode::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QStructuredActivityNode::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredActivityNode")][QString::fromLatin1("mustIsolate")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredActivityNode")][QString::fromLatin1("mustIsolate")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("If true, then the actions in the node execute in isolation from actions outside the node.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredActivityNode")][QString::fromLatin1("structuredNodeInputs")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredActivityNode")][QString::fromLatin1("structuredNodeInputs")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredActivityNode")][QString::fromLatin1("nodes")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredActivityNode")][QString::fromLatin1("nodes")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Nodes immediately contained in the group.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredActivityNode")][QString::fromLatin1("structuredNodeOutputs")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredActivityNode")][QString::fromLatin1("structuredNodeOutputs")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredActivityNode")][QString::fromLatin1("edges")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredActivityNode")][QString::fromLatin1("edges")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Edges immediately contained in the structured node.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredActivityNode")][QString::fromLatin1("variables")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredActivityNode")][QString::fromLatin1("variables")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A variable defined in the scope of the structured activity node. It has no value and may not be accessed");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredActivityNode")][QString::fromLatin1("activity")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredActivityNode")][QString::fromLatin1("activity")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Activity immediately containing the node.");
+
+    QWrappedObject::setPropertyData();
 }
 
 #include "moc_qstructuredactivitynode.cpp"

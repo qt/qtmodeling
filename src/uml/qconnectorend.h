@@ -80,6 +80,7 @@ public:
     Q_INVOKABLE void setPartWithPort(QProperty *partWithPort);
     Q_INVOKABLE QProperty *definingEnd() const;
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QConnectorEnd(QConnectorEndPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

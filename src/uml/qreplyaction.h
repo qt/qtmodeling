@@ -85,6 +85,7 @@ public:
     Q_INVOKABLE void addReplyValue(QInputPin *replyValue);
     Q_INVOKABLE void removeReplyValue(QInputPin *replyValue);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QReplyAction(QReplyActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

@@ -86,6 +86,7 @@ public:
     Q_INVOKABLE void addConstrainedElement(QElement *constrainedElement);
     Q_INVOKABLE void removeConstrainedElement(QElement *constrainedElement);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QConstraint(QConstraintPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

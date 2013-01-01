@@ -42,6 +42,8 @@
 #include "qopaqueexpression.h"
 #include "qopaqueexpression_p.h"
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTMOF
 
 QOpaqueExpressionPrivate::QOpaqueExpressionPrivate()
@@ -63,11 +65,13 @@ QOpaqueExpressionPrivate::~QOpaqueExpressionPrivate()
 QOpaqueExpression::QOpaqueExpression(QWrappedObject *parent, QWrappedObject *wrapper) :
     QValueSpecification(*new QOpaqueExpressionPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QOpaqueExpression::QOpaqueExpression(QOpaqueExpressionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QValueSpecification(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QOpaqueExpression::~QOpaqueExpression()
@@ -186,6 +190,18 @@ void QOpaqueExpression::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QOpaqueExpression::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOpaqueExpression")][QString::fromLatin1("bodies")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOpaqueExpression")][QString::fromLatin1("bodies")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The text of the expression, possibly in multiple languages.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOpaqueExpression")][QString::fromLatin1("languages")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOpaqueExpression")][QString::fromLatin1("languages")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the languages in which the expression is stated. The interpretation of the expression body depends on the languages. If the languages are unspecified, they might be implicit from the expression body or the context. Languages are matched to body strings by order.");
+
+    QValueSpecification::setPropertyData();
 }
 
 #include "moc_qopaqueexpression.cpp"

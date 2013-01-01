@@ -45,6 +45,8 @@
 #include <QtUml/QInputPin>
 #include <QtUml/QPort>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QInvocationActionPrivate::QInvocationActionPrivate() :
@@ -67,11 +69,13 @@ QInvocationActionPrivate::~QInvocationActionPrivate()
 QInvocationAction::QInvocationAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(*new QInvocationActionPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QInvocationAction::QInvocationAction(QInvocationActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QInvocationAction::~QInvocationAction()
@@ -154,6 +158,18 @@ void QInvocationAction::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QInvocationAction::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInvocationAction")][QString::fromLatin1("arguments")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInvocationAction")][QString::fromLatin1("arguments")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specification of the ordered set of argument values that appears during execution.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInvocationAction")][QString::fromLatin1("onPort")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInvocationAction")][QString::fromLatin1("onPort")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A optional port of the receiver object on which the behavioral feature is invoked.");
+
+    QAction::setPropertyData();
 }
 
 #include "moc_qinvocationaction.cpp"

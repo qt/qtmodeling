@@ -65,6 +65,7 @@ public:
     Q_INVOKABLE explicit QDevice(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QDevice();
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QDevice(QDevicePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

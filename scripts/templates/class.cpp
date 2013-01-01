@@ -438,6 +438,8 @@ void ${class.name}::unset${associationend.accessor.0.name.ucfirst.replace('^Is',
 [%- IF found == 'true' -%]
 
 [% END -%]
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_${namespace.replace('/', '_').upper}
 
 ${class.name}Private::${class.name}Private()
@@ -682,6 +684,7 @@ ${class.name}::${class.name}(QWrappedObject *parent, QWrappedObject *wrapper) :
 [%- END -%]
 [%- END %]
 {
+    setPropertyData();
 }
 
 ${class.name}::${class.name}(${class.name}Private &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
@@ -693,6 +696,7 @@ ${class.name}::${class.name}(${class.name}Private &dd, QWrappedObject *parent, Q
 [%- END -%]
 [%- END %]
 {
+    setPropertyData();
 }
 
 ${class.name}::~${class.name}()
@@ -739,6 +743,32 @@ void ${class.name}::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void ${class.name}::setPropertyData()
+{
+[%- FOREACH attribute IN class.attribute.values -%]
+[%- IF attribute.aggregation == 'composite' %]
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("${class.name}")][QString::fromLatin1("${attribute.accessor.0.name}")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+[%- ELSE %]
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("${class.name}")][QString::fromLatin1("${attribute.accessor.0.name}")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+[%- END %]
+    QWrappedObject::propertyDataHash[QString::fromLatin1("${class.name}")][QString::fromLatin1("${attribute.accessor.0.name}")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("${attribute.documentation.replace('"', '\"')}");
+[%- END -%]
+[%- FOREACH associationend IN class.associationend.values -%]
+[%- IF associationend.aggregation == 'composite' %]
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("${class.name}")][QString::fromLatin1("${associationend.accessor.0.name}")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+[%- ELSE %]
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("${class.name}")][QString::fromLatin1("${associationend.accessor.0.name}")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+[%- END %]
+    QWrappedObject::propertyDataHash[QString::fromLatin1("${class.name}")][QString::fromLatin1("${associationend.accessor.0.name}")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("${associationend.documentation.replace('"', '\"')}");
+[%- END %]
+
+    [% IF class.superclass.size == 1 %]${class.superclass.0.name.split('/').last}[% ELSE %]QWrappedObject[% END %]::setPropertyData();
 }
 
 [%- found = 'false' -%]

@@ -45,6 +45,8 @@
 #include <QtUml/QEvent>
 #include <QtUml/QPort>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QTriggerPrivate::QTriggerPrivate() :
@@ -67,11 +69,13 @@ QTriggerPrivate::~QTriggerPrivate()
 QTrigger::QTrigger(QWrappedObject *parent, QWrappedObject *wrapper) :
     QNamedElement(*new QTriggerPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QTrigger::QTrigger(QTriggerPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QNamedElement(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QTrigger::~QTrigger()
@@ -148,6 +152,18 @@ void QTrigger::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QTrigger::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTrigger")][QString::fromLatin1("ports")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTrigger")][QString::fromLatin1("ports")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A optional port of the receiver object on which the behavioral feature is invoked.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTrigger")][QString::fromLatin1("event")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTrigger")][QString::fromLatin1("event")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The event that causes the trigger.");
+
+    QNamedElement::setPropertyData();
 }
 
 #include "moc_qtrigger.cpp"

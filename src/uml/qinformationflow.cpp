@@ -49,6 +49,8 @@
 #include <QtUml/QClassifier>
 #include <QtUml/QRelationship>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QInformationFlowPrivate::QInformationFlowPrivate()
@@ -72,6 +74,7 @@ QInformationFlow::QInformationFlow(QWrappedObject *parent, QWrappedObject *wrapp
     _wrappedDirectedRelationship(new QDirectedRelationship(this, this)),
     _wrappedPackageableElement(new QPackageableElement(this, this))
 {
+    setPropertyData();
 }
 
 QInformationFlow::QInformationFlow(QInformationFlowPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
@@ -79,6 +82,7 @@ QInformationFlow::QInformationFlow(QInformationFlowPrivate &dd, QWrappedObject *
     _wrappedDirectedRelationship(new QDirectedRelationship(this, this)),
     _wrappedPackageableElement(new QPackageableElement(this, this))
 {
+    setPropertyData();
 }
 
 QInformationFlow::~QInformationFlow()
@@ -538,6 +542,33 @@ void QInformationFlow::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QInformationFlow::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationFlow")][QString::fromLatin1("informationTargets")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationFlow")][QString::fromLatin1("informationTargets")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Defines to which target the conveyed InformationItems are directed.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationFlow")][QString::fromLatin1("realizingConnectors")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationFlow")][QString::fromLatin1("realizingConnectors")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Determines which Connectors will realize the specified flow.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationFlow")][QString::fromLatin1("conveyed")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationFlow")][QString::fromLatin1("conveyed")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the information items that may circulate on this information flow.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationFlow")][QString::fromLatin1("informationSources")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationFlow")][QString::fromLatin1("informationSources")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Defines from which source the conveyed InformationItems are initiated.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationFlow")][QString::fromLatin1("realizingMessages")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationFlow")][QString::fromLatin1("realizingMessages")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Determines which Messages will realize the specified flow.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationFlow")][QString::fromLatin1("realizingActivityEdges")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationFlow")][QString::fromLatin1("realizingActivityEdges")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Determines which ActivityEdges will realize the specified flow.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationFlow")][QString::fromLatin1("realizations")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationFlow")][QString::fromLatin1("realizations")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Determines which Relationship will realize the specified flow");
+
+    QWrappedObject::setPropertyData();
 }
 
 #include "moc_qinformationflow.cpp"

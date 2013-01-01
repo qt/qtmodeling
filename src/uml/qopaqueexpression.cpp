@@ -45,6 +45,8 @@
 #include <QtUml/QBehavior>
 #include <QtUml/QParameter>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QOpaqueExpressionPrivate::QOpaqueExpressionPrivate() :
@@ -67,11 +69,13 @@ QOpaqueExpressionPrivate::~QOpaqueExpressionPrivate()
 QOpaqueExpression::QOpaqueExpression(QWrappedObject *parent, QWrappedObject *wrapper) :
     QValueSpecification(*new QOpaqueExpressionPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QOpaqueExpression::QOpaqueExpression(QOpaqueExpressionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QValueSpecification(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QOpaqueExpression::~QOpaqueExpression()
@@ -235,6 +239,24 @@ void QOpaqueExpression::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QOpaqueExpression::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOpaqueExpression")][QString::fromLatin1("bodies")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOpaqueExpression")][QString::fromLatin1("bodies")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The text of the expression, possibly in multiple languages.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOpaqueExpression")][QString::fromLatin1("languages")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOpaqueExpression")][QString::fromLatin1("languages")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the languages in which the expression is stated. The interpretation of the expression body depends on the languages. If the languages are unspecified, they might be implicit from the expression body or the context. Languages are matched to body strings by order.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOpaqueExpression")][QString::fromLatin1("behavior")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOpaqueExpression")][QString::fromLatin1("behavior")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the behavior of the opaque expression.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOpaqueExpression")][QString::fromLatin1("result")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOpaqueExpression")][QString::fromLatin1("result")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Restricts an opaque expression to return exactly one return result. When the invocation of the opaque expression completes, a single set of values is returned to its owner. This association is derived from the single return result parameter of the associated behavior.");
+
+    QValueSpecification::setPropertyData();
 }
 
 #include "moc_qopaqueexpression.cpp"

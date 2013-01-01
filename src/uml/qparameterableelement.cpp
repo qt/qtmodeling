@@ -44,6 +44,8 @@
 
 #include <QtUml/QTemplateParameter>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QParameterableElementPrivate::QParameterableElementPrivate() :
@@ -67,11 +69,13 @@ QParameterableElementPrivate::~QParameterableElementPrivate()
 QParameterableElement::QParameterableElement(QWrappedObject *parent, QWrappedObject *wrapper) :
     QElement(*new QParameterableElementPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QParameterableElement::QParameterableElement(QParameterableElementPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QElement(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QParameterableElement::~QParameterableElement()
@@ -169,6 +173,18 @@ void QParameterableElement::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QParameterableElement::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameterableElement")][QString::fromLatin1("owningTemplateParameter")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameterableElement")][QString::fromLatin1("owningTemplateParameter")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The formal template parameter that owns this element.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameterableElement")][QString::fromLatin1("templateParameter")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameterableElement")][QString::fromLatin1("templateParameter")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The template parameter that exposes this element as a formal parameter.");
+
+    QElement::setPropertyData();
 }
 
 #include "moc_qparameterableelement.cpp"

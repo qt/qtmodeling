@@ -44,6 +44,8 @@
 
 #include <QtUml/QOutputPin>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QReadSelfActionPrivate::QReadSelfActionPrivate() :
@@ -66,11 +68,13 @@ QReadSelfActionPrivate::~QReadSelfActionPrivate()
 QReadSelfAction::QReadSelfAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(*new QReadSelfActionPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QReadSelfAction::QReadSelfAction(QReadSelfActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QReadSelfAction::~QReadSelfAction()
@@ -120,6 +124,15 @@ void QReadSelfAction::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QReadSelfAction::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReadSelfAction")][QString::fromLatin1("result")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReadSelfAction")][QString::fromLatin1("result")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Gives the output pin on which the hosting object is placed.");
+
+    QAction::setPropertyData();
 }
 
 #include "moc_qreadselfaction.cpp"

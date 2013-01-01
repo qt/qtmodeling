@@ -65,6 +65,7 @@ public:
     Q_INVOKABLE explicit QObservation(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QObservation();
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QObservation(QObservationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

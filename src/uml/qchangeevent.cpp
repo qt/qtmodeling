@@ -44,6 +44,8 @@
 
 #include <QtUml/QValueSpecification>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QChangeEventPrivate::QChangeEventPrivate() :
@@ -66,11 +68,13 @@ QChangeEventPrivate::~QChangeEventPrivate()
 QChangeEvent::QChangeEvent(QWrappedObject *parent, QWrappedObject *wrapper) :
     QEvent(*new QChangeEventPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QChangeEvent::QChangeEvent(QChangeEventPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QEvent(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QChangeEvent::~QChangeEvent()
@@ -120,6 +124,15 @@ void QChangeEvent::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QChangeEvent::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QChangeEvent")][QString::fromLatin1("changeExpression")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QChangeEvent")][QString::fromLatin1("changeExpression")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A Boolean-valued expression that will result in a change event whenever its value changes from false to true.");
+
+    QEvent::setPropertyData();
 }
 
 #include "moc_qchangeevent.cpp"

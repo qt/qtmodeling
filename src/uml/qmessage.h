@@ -108,6 +108,7 @@ public:
     Q_INVOKABLE QConnector *connector() const;
     Q_INVOKABLE void setConnector(QConnector *connector);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QMessage(QMessagePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

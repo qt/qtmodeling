@@ -164,6 +164,7 @@ public:
     Q_INVOKABLE QStateMachine *containingStateMachine() const;
     Q_INVOKABLE bool isConsistentWith(const QRedefinableElement *redefinee) const;
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QTransition(QTransitionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

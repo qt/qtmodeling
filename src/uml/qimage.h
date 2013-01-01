@@ -80,6 +80,7 @@ public:
     Q_INVOKABLE QString content() const;
     Q_INVOKABLE void setContent(QString content);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QImage(QImagePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

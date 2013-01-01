@@ -74,6 +74,7 @@ public:
     Q_INVOKABLE QParameter *parameter() const;
     Q_INVOKABLE void setParameter(QParameter *parameter);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QActivityParameterNode(QActivityParameterNodePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

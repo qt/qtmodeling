@@ -95,6 +95,7 @@ public:
     Q_INVOKABLE QProperty *returnValueRecipient() const;
     Q_INVOKABLE void setReturnValueRecipient(QProperty *returnValueRecipient);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QInteractionUse(QInteractionUsePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

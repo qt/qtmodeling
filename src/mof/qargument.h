@@ -81,6 +81,7 @@ public:
     Q_INVOKABLE QMofObject *value() const;
     Q_INVOKABLE void setValue(QMofObject *value);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QArgument(QArgumentPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

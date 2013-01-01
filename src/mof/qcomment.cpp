@@ -42,6 +42,8 @@
 #include "qcomment.h"
 #include "qcomment_p.h"
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTMOF
 
 QCommentPrivate::QCommentPrivate()
@@ -63,11 +65,13 @@ QCommentPrivate::~QCommentPrivate()
 QComment::QComment(QWrappedObject *parent, QWrappedObject *wrapper) :
     QElement(*new QCommentPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QComment::QComment(QCommentPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QElement(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QComment::~QComment()
@@ -140,6 +144,18 @@ void QComment::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QComment::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QComment")][QString::fromLatin1("body")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QComment")][QString::fromLatin1("body")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies a string that is the comment.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QComment")][QString::fromLatin1("annotatedElements")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QComment")][QString::fromLatin1("annotatedElements")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Element(s) being commented.");
+
+    QElement::setPropertyData();
 }
 
 #include "moc_qcomment.cpp"

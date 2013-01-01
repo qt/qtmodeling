@@ -42,6 +42,8 @@
 #include "qcommunicationpath.h"
 #include "qcommunicationpath_p.h"
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QCommunicationPathPrivate::QCommunicationPathPrivate()
@@ -63,11 +65,13 @@ QCommunicationPathPrivate::~QCommunicationPathPrivate()
 QCommunicationPath::QCommunicationPath(QWrappedObject *parent, QWrappedObject *wrapper) :
     QAssociation(*new QCommunicationPathPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QCommunicationPath::QCommunicationPath(QCommunicationPathPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QAssociation(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QCommunicationPath::~QCommunicationPath()
@@ -80,6 +84,12 @@ void QCommunicationPath::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QCommunicationPath::setPropertyData()
+{
+
+    QAssociation::setPropertyData();
 }
 
 #include "moc_qcommunicationpath.cpp"

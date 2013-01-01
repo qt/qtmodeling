@@ -44,6 +44,8 @@
 
 #include <QtUml/QOperation>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QOperationTemplateParameterPrivate::QOperationTemplateParameterPrivate() :
@@ -66,11 +68,13 @@ QOperationTemplateParameterPrivate::~QOperationTemplateParameterPrivate()
 QOperationTemplateParameter::QOperationTemplateParameter(QWrappedObject *parent, QWrappedObject *wrapper) :
     QTemplateParameter(*new QOperationTemplateParameterPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QOperationTemplateParameter::QOperationTemplateParameter(QOperationTemplateParameterPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QTemplateParameter(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QOperationTemplateParameter::~QOperationTemplateParameter()
@@ -117,6 +121,15 @@ void QOperationTemplateParameter::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QOperationTemplateParameter::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOperationTemplateParameter")][QString::fromLatin1("parameteredElement")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOperationTemplateParameter")][QString::fromLatin1("parameteredElement")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The operation for this template parameter.");
+
+    QTemplateParameter::setPropertyData();
 }
 
 #include "moc_qoperationtemplateparameter.cpp"

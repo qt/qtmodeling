@@ -45,6 +45,8 @@
 #include <QtUml/QTemplateParameter>
 #include <QtUml/QTemplateableElement>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QTemplateSignaturePrivate::QTemplateSignaturePrivate() :
@@ -67,11 +69,13 @@ QTemplateSignaturePrivate::~QTemplateSignaturePrivate()
 QTemplateSignature::QTemplateSignature(QWrappedObject *parent, QWrappedObject *wrapper) :
     QElement(*new QTemplateSignaturePrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QTemplateSignature::QTemplateSignature(QTemplateSignaturePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QElement(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QTemplateSignature::~QTemplateSignature()
@@ -201,6 +205,21 @@ void QTemplateSignature::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QTemplateSignature::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateSignature")][QString::fromLatin1("parameters")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateSignature")][QString::fromLatin1("parameters")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The ordered set of all formal template parameters for this template signature.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateSignature")][QString::fromLatin1("template_")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateSignature")][QString::fromLatin1("template_")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The element that owns this template signature.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateSignature")][QString::fromLatin1("ownedParameters")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateSignature")][QString::fromLatin1("ownedParameters")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The formal template parameters that are owned by this template signature.");
+
+    QElement::setPropertyData();
 }
 
 #include "moc_qtemplatesignature.cpp"

@@ -65,6 +65,7 @@ public:
     Q_INVOKABLE explicit QActor(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QActor();
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QActor(QActorPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

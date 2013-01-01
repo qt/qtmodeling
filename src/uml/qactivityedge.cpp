@@ -52,6 +52,8 @@
 #include <QtUml/QActivityGroup>
 #include <QtUml/QValueSpecification>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QActivityEdgePrivate::QActivityEdgePrivate() :
@@ -107,11 +109,13 @@ void QActivityEdgePrivate::removeInGroup(QActivityGroup *inGroup)
 QActivityEdge::QActivityEdge(QWrappedObject *parent, QWrappedObject *wrapper) :
     QRedefinableElement(*new QActivityEdgePrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QActivityEdge::QActivityEdge(QActivityEdgePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QRedefinableElement(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QActivityEdge::~QActivityEdge()
@@ -463,6 +467,42 @@ void QActivityEdge::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QActivityEdge::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("source")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("source")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Node from which tokens are taken when they traverse the edge.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("redefinedEdges")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("redefinedEdges")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Inherited edges replaced by this edge in a specialization of the activity.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("inGroup")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("inGroup")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Groups containing the edge.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("guard")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("guard")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specification evaluated at runtime to determine if the edge can be traversed.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("inPartition")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("inPartition")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Partitions containing the edge.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("activity")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("activity")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Activity containing the edge.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("interrupts")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("interrupts")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Region that the edge can interrupt.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("weight")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("weight")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The minimum number of tokens that must traverse the edge at the same time.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("inStructuredNode")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("inStructuredNode")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Structured activity node containing the edge.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("target")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("target")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Node to which tokens are put when they traverse the edge.");
+
+    QRedefinableElement::setPropertyData();
 }
 
 #include "moc_qactivityedge.cpp"

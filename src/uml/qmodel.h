@@ -74,6 +74,7 @@ public:
     Q_INVOKABLE QString viewpoint() const;
     Q_INVOKABLE void setViewpoint(QString viewpoint);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QModel(QModelPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

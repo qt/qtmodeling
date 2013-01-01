@@ -44,6 +44,8 @@
 
 #include <QtUml/QOccurrenceSpecification>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QGeneralOrderingPrivate::QGeneralOrderingPrivate() :
@@ -67,11 +69,13 @@ QGeneralOrderingPrivate::~QGeneralOrderingPrivate()
 QGeneralOrdering::QGeneralOrdering(QWrappedObject *parent, QWrappedObject *wrapper) :
     QNamedElement(*new QGeneralOrderingPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QGeneralOrdering::QGeneralOrdering(QGeneralOrderingPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QNamedElement(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QGeneralOrdering::~QGeneralOrdering()
@@ -150,6 +154,18 @@ void QGeneralOrdering::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QGeneralOrdering::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QGeneralOrdering")][QString::fromLatin1("before")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QGeneralOrdering")][QString::fromLatin1("before")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The OccurrenceSpecification referenced comes before the OccurrenceSpecification referenced by after.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QGeneralOrdering")][QString::fromLatin1("after")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QGeneralOrdering")][QString::fromLatin1("after")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The OccurrenceSpecification referenced comes after the OccurrenceSpecification referenced by before.");
+
+    QNamedElement::setPropertyData();
 }
 
 #include "moc_qgeneralordering.cpp"

@@ -42,6 +42,8 @@
 #include "qpackageableelement.h"
 #include "qpackageableelement_p.h"
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTMOF
 
 QPackageableElementPrivate::QPackageableElementPrivate() :
@@ -64,11 +66,13 @@ QPackageableElementPrivate::~QPackageableElementPrivate()
 QPackageableElement::QPackageableElement(QWrappedObject *parent, QWrappedObject *wrapper) :
     QNamedElement(*new QPackageableElementPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QPackageableElement::QPackageableElement(QPackageableElementPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QNamedElement(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QPackageableElement::~QPackageableElement()
@@ -111,6 +115,15 @@ void QPackageableElement::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QPackageableElement::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QPackageableElement")][QString::fromLatin1("visibility")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QPackageableElement")][QString::fromLatin1("visibility")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Indicates that packageable elements must always have a visibility, i.e., visibility is not optional.");
+
+    QNamedElement::setPropertyData();
 }
 
 #include "moc_qpackageableelement.cpp"

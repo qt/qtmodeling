@@ -46,6 +46,8 @@
 #include <QtUml/QBehavior>
 #include <QtUml/QValueSpecification>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QObjectNodePrivate::QObjectNodePrivate() :
@@ -73,6 +75,7 @@ QObjectNode::QObjectNode(QWrappedObject *parent, QWrappedObject *wrapper) :
     _wrappedActivityNode(new QActivityNode(this, this)),
     _wrappedTypedElement(new QTypedElement(this, this))
 {
+    setPropertyData();
 }
 
 QObjectNode::QObjectNode(QObjectNodePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
@@ -80,6 +83,7 @@ QObjectNode::QObjectNode(QObjectNodePrivate &dd, QWrappedObject *parent, QWrappe
     _wrappedActivityNode(new QActivityNode(this, this)),
     _wrappedTypedElement(new QTypedElement(this, this))
 {
+    setPropertyData();
 }
 
 QObjectNode::~QObjectNode()
@@ -551,6 +555,27 @@ void QObjectNode::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QObjectNode::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectNode")][QString::fromLatin1("isControlType")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectNode")][QString::fromLatin1("isControlType")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Tells whether the type of the object node is to be treated as control.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectNode")][QString::fromLatin1("ordering")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectNode")][QString::fromLatin1("ordering")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Tells whether and how the tokens in the object node are ordered for selection to traverse edges outgoing from the object node.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectNode")][QString::fromLatin1("upperBound")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectNode")][QString::fromLatin1("upperBound")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The maximum number of tokens allowed in the node. Objects cannot flow into the node if the upper bound is reached.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectNode")][QString::fromLatin1("selection")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectNode")][QString::fromLatin1("selection")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Selects tokens for outgoing edges.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectNode")][QString::fromLatin1("inState")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectNode")][QString::fromLatin1("inState")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The required states of the object available at this point in the activity.");
+
+    QWrappedObject::setPropertyData();
 }
 
 #include "moc_qobjectnode.cpp"

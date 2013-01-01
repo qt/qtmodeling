@@ -65,6 +65,7 @@ public:
     Q_INVOKABLE explicit QForkNode(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QForkNode();
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QForkNode(QForkNodePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

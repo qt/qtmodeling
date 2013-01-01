@@ -44,6 +44,8 @@
 
 #include <QtUml/QConnectableElement>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QCollaborationPrivate::QCollaborationPrivate()
@@ -67,6 +69,7 @@ QCollaboration::QCollaboration(QWrappedObject *parent, QWrappedObject *wrapper) 
     _wrappedStructuredClassifier(new QStructuredClassifier(this, this)),
     _wrappedBehavioredClassifier(new QBehavioredClassifier(this, this))
 {
+    setPropertyData();
 }
 
 QCollaboration::QCollaboration(QCollaborationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
@@ -74,6 +77,7 @@ QCollaboration::QCollaboration(QCollaborationPrivate &dd, QWrappedObject *parent
     _wrappedStructuredClassifier(new QStructuredClassifier(this, this)),
     _wrappedBehavioredClassifier(new QBehavioredClassifier(this, this))
 {
+    setPropertyData();
 }
 
 QCollaboration::~QCollaboration()
@@ -799,6 +803,15 @@ void QCollaboration::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QCollaboration::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCollaboration")][QString::fromLatin1("collaborationRoles")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCollaboration")][QString::fromLatin1("collaborationRoles")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References connectable elements (possibly owned by other classifiers) which represent roles that instances may play in this collaboration.");
+
+    QWrappedObject::setPropertyData();
 }
 
 #include "moc_qcollaboration.cpp"

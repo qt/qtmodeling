@@ -45,6 +45,8 @@
 #include <QtMof/QElement>
 #include <QtMof/QAssociation>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTMOF
 
 QLinkPrivate::QLinkPrivate() :
@@ -62,11 +64,13 @@ QLinkPrivate::~QLinkPrivate()
 QLink::QLink(QWrappedObject *parent, QWrappedObject *wrapper) :
     QMofObject(*new QLinkPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QLink::QLink(QLinkPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QMofObject(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QLink::~QLink()
@@ -158,6 +162,21 @@ void QLink::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QLink::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLink")][QString::fromLatin1("association")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLink")][QString::fromLatin1("association")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLink")][QString::fromLatin1("secondElement")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLink")][QString::fromLatin1("secondElement")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLink")][QString::fromLatin1("firstElement")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLink")][QString::fromLatin1("firstElement")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("");
+
+    QMofObject::setPropertyData();
 }
 
 #include "moc_qlink.cpp"

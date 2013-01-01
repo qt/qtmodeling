@@ -74,6 +74,7 @@ public:
     Q_INVOKABLE QInstanceSpecification *instance() const;
     Q_INVOKABLE void setInstance(QInstanceSpecification *instance);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QInstanceValue(QInstanceValuePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

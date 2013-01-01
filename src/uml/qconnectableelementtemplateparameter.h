@@ -74,6 +74,7 @@ public:
     Q_INVOKABLE QConnectableElement *parameteredElement() const;
     Q_INVOKABLE void setParameteredElement(QConnectableElement *parameteredElement);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QConnectableElementTemplateParameter(QConnectableElementTemplateParameterPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

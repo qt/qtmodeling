@@ -42,6 +42,8 @@
 #include "qflowfinalnode.h"
 #include "qflowfinalnode_p.h"
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QFlowFinalNodePrivate::QFlowFinalNodePrivate()
@@ -63,11 +65,13 @@ QFlowFinalNodePrivate::~QFlowFinalNodePrivate()
 QFlowFinalNode::QFlowFinalNode(QWrappedObject *parent, QWrappedObject *wrapper) :
     QFinalNode(*new QFlowFinalNodePrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QFlowFinalNode::QFlowFinalNode(QFlowFinalNodePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QFinalNode(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QFlowFinalNode::~QFlowFinalNode()
@@ -80,6 +84,12 @@ void QFlowFinalNode::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QFlowFinalNode::setPropertyData()
+{
+
+    QFinalNode::setPropertyData();
 }
 
 #include "moc_qflowfinalnode.cpp"

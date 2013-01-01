@@ -45,6 +45,8 @@
 #include <QtUml/QLifeline>
 #include <QtUml/QConstraint>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QStateInvariantPrivate::QStateInvariantPrivate() :
@@ -68,11 +70,13 @@ QStateInvariantPrivate::~QStateInvariantPrivate()
 QStateInvariant::QStateInvariant(QWrappedObject *parent, QWrappedObject *wrapper) :
     QInteractionFragment(*new QStateInvariantPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QStateInvariant::QStateInvariant(QStateInvariantPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QInteractionFragment(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QStateInvariant::~QStateInvariant()
@@ -147,6 +151,18 @@ void QStateInvariant::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QStateInvariant::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStateInvariant")][QString::fromLatin1("invariant")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStateInvariant")][QString::fromLatin1("invariant")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A Constraint that should hold at runtime for this StateInvariant");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStateInvariant")][QString::fromLatin1("covered")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStateInvariant")][QString::fromLatin1("covered")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Lifeline on which the StateInvariant appears.");
+
+    QInteractionFragment::setPropertyData();
 }
 
 #include "moc_qstateinvariant.cpp"

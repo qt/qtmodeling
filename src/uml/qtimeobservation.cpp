@@ -44,6 +44,8 @@
 
 #include <QtUml/QNamedElement>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QTimeObservationPrivate::QTimeObservationPrivate() :
@@ -67,11 +69,13 @@ QTimeObservationPrivate::~QTimeObservationPrivate()
 QTimeObservation::QTimeObservation(QWrappedObject *parent, QWrappedObject *wrapper) :
     QObservation(*new QTimeObservationPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QTimeObservation::QTimeObservation(QTimeObservationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QObservation(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QTimeObservation::~QTimeObservation()
@@ -143,6 +147,18 @@ void QTimeObservation::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QTimeObservation::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeObservation")][QString::fromLatin1("firstEvent")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeObservation")][QString::fromLatin1("firstEvent")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The value of firstEvent is related to event. If firstEvent is true, then the corresponding observation event is the first time instant the execution enters event. If firstEvent is false, then the corresponding observation event is the time instant the execution exits event.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeObservation")][QString::fromLatin1("event")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeObservation")][QString::fromLatin1("event")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The observation is determined by the entering or exiting of the event element during execution.");
+
+    QObservation::setPropertyData();
 }
 
 #include "moc_qtimeobservation.cpp"

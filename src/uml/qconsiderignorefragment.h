@@ -78,6 +78,7 @@ public:
     Q_INVOKABLE void addMessage(QNamedElement *message);
     Q_INVOKABLE void removeMessage(QNamedElement *message);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QConsiderIgnoreFragment(QConsiderIgnoreFragmentPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

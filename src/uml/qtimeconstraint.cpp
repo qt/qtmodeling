@@ -44,6 +44,8 @@
 
 #include <QtUml/QTimeInterval>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QTimeConstraintPrivate::QTimeConstraintPrivate() :
@@ -68,11 +70,13 @@ QTimeConstraintPrivate::~QTimeConstraintPrivate()
 QTimeConstraint::QTimeConstraint(QWrappedObject *parent, QWrappedObject *wrapper) :
     QIntervalConstraint(*new QTimeConstraintPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QTimeConstraint::QTimeConstraint(QTimeConstraintPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QIntervalConstraint(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QTimeConstraint::~QTimeConstraint()
@@ -144,6 +148,18 @@ void QTimeConstraint::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QTimeConstraint::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeConstraint")][QString::fromLatin1("firstEvent")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeConstraint")][QString::fromLatin1("firstEvent")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The value of firstEvent is related to constrainedElement. If firstEvent is true, then the corresponding observation event is the first time instant the execution enters constrainedElement. If firstEvent is false, then the corresponding observation event is the last time instant the execution is within constrainedElement.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeConstraint")][QString::fromLatin1("specification")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeConstraint")][QString::fromLatin1("specification")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A condition that must be true when evaluated in order for the constraint to be satisfied.");
+
+    QIntervalConstraint::setPropertyData();
 }
 
 #include "moc_qtimeconstraint.cpp"

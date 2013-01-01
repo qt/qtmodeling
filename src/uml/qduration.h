@@ -81,6 +81,7 @@ public:
     Q_INVOKABLE void addObservation(QObservation *observation);
     Q_INVOKABLE void removeObservation(QObservation *observation);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QDuration(QDurationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

@@ -44,6 +44,8 @@
 
 #include <QtUml/QValueSpecification>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QJoinNodePrivate::QJoinNodePrivate() :
@@ -67,11 +69,13 @@ QJoinNodePrivate::~QJoinNodePrivate()
 QJoinNode::QJoinNode(QWrappedObject *parent, QWrappedObject *wrapper) :
     QControlNode(*new QJoinNodePrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QJoinNode::QJoinNode(QJoinNodePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QControlNode(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QJoinNode::~QJoinNode()
@@ -151,6 +155,18 @@ void QJoinNode::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QJoinNode::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QJoinNode")][QString::fromLatin1("isCombineDuplicate")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QJoinNode")][QString::fromLatin1("isCombineDuplicate")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Tells whether tokens having objects with the same identity are combined into one by the join.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QJoinNode")][QString::fromLatin1("joinSpec")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QJoinNode")][QString::fromLatin1("joinSpec")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A specification giving the conditions under which the join with emit a token. Default is \"and\".");
+
+    QControlNode::setPropertyData();
 }
 
 #include "moc_qjoinnode.cpp"

@@ -44,6 +44,8 @@
 
 #include <QtUml/QInputPin>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QRemoveStructuralFeatureValueActionPrivate::QRemoveStructuralFeatureValueActionPrivate() :
@@ -67,11 +69,13 @@ QRemoveStructuralFeatureValueActionPrivate::~QRemoveStructuralFeatureValueAction
 QRemoveStructuralFeatureValueAction::QRemoveStructuralFeatureValueAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QWriteStructuralFeatureAction(*new QRemoveStructuralFeatureValueActionPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QRemoveStructuralFeatureValueAction::QRemoveStructuralFeatureValueAction(QRemoveStructuralFeatureValueActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QWriteStructuralFeatureAction(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QRemoveStructuralFeatureValueAction::~QRemoveStructuralFeatureValueAction()
@@ -151,6 +155,18 @@ void QRemoveStructuralFeatureValueAction::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QRemoveStructuralFeatureValueAction::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QRemoveStructuralFeatureValueAction")][QString::fromLatin1("isRemoveDuplicates")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QRemoveStructuralFeatureValueAction")][QString::fromLatin1("isRemoveDuplicates")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies whether to remove duplicates of the value in nonunique structural features.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QRemoveStructuralFeatureValueAction")][QString::fromLatin1("removeAt")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QRemoveStructuralFeatureValueAction")][QString::fromLatin1("removeAt")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the position of an existing value to remove in ordered nonunique structural features. The type of the pin is UnlimitedNatural, but the value cannot be zero or unlimited.");
+
+    QWriteStructuralFeatureAction::setPropertyData();
 }
 
 #include "moc_qremovestructuralfeaturevalueaction.cpp"

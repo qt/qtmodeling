@@ -80,6 +80,7 @@ public:
     Q_INVOKABLE QInputPin *destroyAt() const;
     Q_INVOKABLE void setDestroyAt(QInputPin *destroyAt);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QLinkEndDestructionData(QLinkEndDestructionDataPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

@@ -42,6 +42,8 @@
 #include "qpartdecomposition.h"
 #include "qpartdecomposition_p.h"
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QPartDecompositionPrivate::QPartDecompositionPrivate()
@@ -63,11 +65,13 @@ QPartDecompositionPrivate::~QPartDecompositionPrivate()
 QPartDecomposition::QPartDecomposition(QWrappedObject *parent, QWrappedObject *wrapper) :
     QInteractionUse(*new QPartDecompositionPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QPartDecomposition::QPartDecomposition(QPartDecompositionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QInteractionUse(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QPartDecomposition::~QPartDecomposition()
@@ -80,6 +84,12 @@ void QPartDecomposition::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QPartDecomposition::setPropertyData()
+{
+
+    QInteractionUse::setPropertyData();
 }
 
 #include "moc_qpartdecomposition.cpp"

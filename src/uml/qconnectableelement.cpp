@@ -45,6 +45,8 @@
 #include <QtUml/QConnectorEnd>
 #include <QtUml/QConnectableElementTemplateParameter>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QConnectableElementPrivate::QConnectableElementPrivate() :
@@ -100,6 +102,7 @@ QConnectableElement::QConnectableElement(QWrappedObject *parent, QWrappedObject 
     _wrappedTypedElement(new QTypedElement(this, this)),
     _wrappedParameterableElement(new QParameterableElement(this, this))
 {
+    setPropertyData();
 }
 
 QConnectableElement::QConnectableElement(QConnectableElementPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
@@ -107,6 +110,7 @@ QConnectableElement::QConnectableElement(QConnectableElementPrivate &dd, QWrappe
     _wrappedTypedElement(new QTypedElement(this, this)),
     _wrappedParameterableElement(new QParameterableElement(this, this))
 {
+    setPropertyData();
 }
 
 QConnectableElement::~QConnectableElement()
@@ -322,6 +326,18 @@ void QConnectableElement::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QConnectableElement::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnectableElement")][QString::fromLatin1("ends")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnectableElement")][QString::fromLatin1("ends")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Denotes a set of connector ends that attaches to this connectable element.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnectableElement")][QString::fromLatin1("templateParameter")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnectableElement")][QString::fromLatin1("templateParameter")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The ConnectableElementTemplateParameter for this ConnectableElement parameter.");
+
+    QWrappedObject::setPropertyData();
 }
 
 #include "moc_qconnectableelement.cpp"

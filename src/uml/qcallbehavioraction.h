@@ -74,6 +74,7 @@ public:
     Q_INVOKABLE QBehavior *behavior() const;
     Q_INVOKABLE void setBehavior(QBehavior *behavior);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QCallBehaviorAction(QCallBehaviorActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

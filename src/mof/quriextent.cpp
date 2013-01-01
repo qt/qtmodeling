@@ -44,6 +44,8 @@
 
 #include <QtMof/QElement>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTMOF
 
 QURIExtentPrivate::QURIExtentPrivate()
@@ -58,11 +60,13 @@ QURIExtentPrivate::~QURIExtentPrivate()
 QURIExtent::QURIExtent(QWrappedObject *parent, QWrappedObject *wrapper) :
     QExtent(*new QURIExtentPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QURIExtent::QURIExtent(QURIExtentPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QExtent(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QURIExtent::~QURIExtent()
@@ -102,6 +106,12 @@ void QURIExtent::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QURIExtent::setPropertyData()
+{
+
+    QExtent::setPropertyData();
 }
 
 #include "moc_quriextent.cpp"

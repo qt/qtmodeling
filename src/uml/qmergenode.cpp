@@ -42,6 +42,8 @@
 #include "qmergenode.h"
 #include "qmergenode_p.h"
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QMergeNodePrivate::QMergeNodePrivate()
@@ -63,11 +65,13 @@ QMergeNodePrivate::~QMergeNodePrivate()
 QMergeNode::QMergeNode(QWrappedObject *parent, QWrappedObject *wrapper) :
     QControlNode(*new QMergeNodePrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QMergeNode::QMergeNode(QMergeNodePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QControlNode(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QMergeNode::~QMergeNode()
@@ -80,6 +84,12 @@ void QMergeNode::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QMergeNode::setPropertyData()
+{
+
+    QControlNode::setPropertyData();
 }
 
 #include "moc_qmergenode.cpp"

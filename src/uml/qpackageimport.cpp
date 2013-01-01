@@ -45,6 +45,8 @@
 #include <QtUml/QPackage>
 #include <QtUml/QNamespace>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QPackageImportPrivate::QPackageImportPrivate() :
@@ -69,11 +71,13 @@ QPackageImportPrivate::~QPackageImportPrivate()
 QPackageImport::QPackageImport(QWrappedObject *parent, QWrappedObject *wrapper) :
     QDirectedRelationship(*new QPackageImportPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QPackageImport::QPackageImport(QPackageImportPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QDirectedRelationship(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QPackageImport::~QPackageImport()
@@ -195,6 +199,21 @@ void QPackageImport::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QPackageImport::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QPackageImport")][QString::fromLatin1("visibility")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QPackageImport")][QString::fromLatin1("visibility")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the visibility of the imported PackageableElements within the importing Namespace, i.e., whether imported elements will in turn be visible to other packages that use that importingPackage as an importedPackage. If the PackageImport is public, the imported elements will be visible outside the package, while if it is private they will not.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QPackageImport")][QString::fromLatin1("importingNamespace")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QPackageImport")][QString::fromLatin1("importingNamespace")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the Namespace that imports the members from a Package.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QPackageImport")][QString::fromLatin1("importedPackage")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QPackageImport")][QString::fromLatin1("importedPackage")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the Package whose members are imported into a Namespace.");
+
+    QDirectedRelationship::setPropertyData();
 }
 
 #include "moc_qpackageimport.cpp"

@@ -65,6 +65,7 @@ public:
     Q_INVOKABLE explicit QFunctionBehavior(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QFunctionBehavior();
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QFunctionBehavior(QFunctionBehaviorPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

@@ -236,6 +236,7 @@ public:
     // Operations
     Q_INVOKABLE QSet<QNamedElement *> inherit(QSet<QNamedElement *> inhs) const;
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
     // Classes which access read-only opposite properties should be friend
     friend class QExtensionPrivate;

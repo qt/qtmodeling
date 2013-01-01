@@ -44,6 +44,8 @@
 
 #include <QtUml/QInputPin>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QRemoveVariableValueActionPrivate::QRemoveVariableValueActionPrivate() :
@@ -67,11 +69,13 @@ QRemoveVariableValueActionPrivate::~QRemoveVariableValueActionPrivate()
 QRemoveVariableValueAction::QRemoveVariableValueAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QWriteVariableAction(*new QRemoveVariableValueActionPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QRemoveVariableValueAction::QRemoveVariableValueAction(QRemoveVariableValueActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QWriteVariableAction(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QRemoveVariableValueAction::~QRemoveVariableValueAction()
@@ -151,6 +155,18 @@ void QRemoveVariableValueAction::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QRemoveVariableValueAction::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QRemoveVariableValueAction")][QString::fromLatin1("isRemoveDuplicates")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QRemoveVariableValueAction")][QString::fromLatin1("isRemoveDuplicates")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies whether to remove duplicates of the value in nonunique variables.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QRemoveVariableValueAction")][QString::fromLatin1("removeAt")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QRemoveVariableValueAction")][QString::fromLatin1("removeAt")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the position of an existing value to remove in ordered nonunique variables. The type of the pin is UnlimitedNatural, but the value cannot be zero or unlimited.");
+
+    QWriteVariableAction::setPropertyData();
 }
 
 #include "moc_qremovevariablevalueaction.cpp"

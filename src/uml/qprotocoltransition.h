@@ -83,6 +83,7 @@ public:
     Q_INVOKABLE QConstraint *preCondition() const;
     Q_INVOKABLE void setPreCondition(QConstraint *preCondition);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QProtocolTransition(QProtocolTransitionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

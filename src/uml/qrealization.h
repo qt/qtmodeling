@@ -65,6 +65,7 @@ public:
     Q_INVOKABLE explicit QRealization(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
     virtual ~QRealization();
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QRealization(QRealizationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

@@ -44,6 +44,8 @@
 
 #include <QtUml/QInputPin>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QRaiseExceptionActionPrivate::QRaiseExceptionActionPrivate() :
@@ -66,11 +68,13 @@ QRaiseExceptionActionPrivate::~QRaiseExceptionActionPrivate()
 QRaiseExceptionAction::QRaiseExceptionAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(*new QRaiseExceptionActionPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QRaiseExceptionAction::QRaiseExceptionAction(QRaiseExceptionActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QAction(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QRaiseExceptionAction::~QRaiseExceptionAction()
@@ -120,6 +124,15 @@ void QRaiseExceptionAction::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QRaiseExceptionAction::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QRaiseExceptionAction")][QString::fromLatin1("exception")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QRaiseExceptionAction")][QString::fromLatin1("exception")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An input pin whose value becomes an exception object.");
+
+    QAction::setPropertyData();
 }
 
 #include "moc_qraiseexceptionaction.cpp"

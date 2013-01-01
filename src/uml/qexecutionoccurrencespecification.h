@@ -74,6 +74,7 @@ public:
     Q_INVOKABLE QExecutionSpecification *execution() const;
     Q_INVOKABLE void setExecution(QExecutionSpecification *execution);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QExecutionOccurrenceSpecification(QExecutionOccurrenceSpecificationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

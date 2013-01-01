@@ -42,6 +42,8 @@
 #include "qliteralnull.h"
 #include "qliteralnull_p.h"
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QLiteralNullPrivate::QLiteralNullPrivate()
@@ -63,11 +65,13 @@ QLiteralNullPrivate::~QLiteralNullPrivate()
 QLiteralNull::QLiteralNull(QWrappedObject *parent, QWrappedObject *wrapper) :
     QLiteralSpecification(*new QLiteralNullPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QLiteralNull::QLiteralNull(QLiteralNullPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QLiteralSpecification(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QLiteralNull::~QLiteralNull()
@@ -100,6 +104,12 @@ void QLiteralNull::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QLiteralNull::setPropertyData()
+{
+
+    QLiteralSpecification::setPropertyData();
 }
 
 #include "moc_qliteralnull.cpp"

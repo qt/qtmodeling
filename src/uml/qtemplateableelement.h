@@ -87,6 +87,7 @@ public:
     Q_INVOKABLE bool isTemplate() const;
     Q_INVOKABLE QSet<QParameterableElement *> parameterableElements() const;
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QTemplateableElement(QTemplateableElementPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

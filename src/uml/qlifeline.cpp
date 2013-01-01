@@ -48,6 +48,8 @@
 #include <QtUml/QInteractionFragment>
 #include <QtUml/QPartDecomposition>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QLifelinePrivate::QLifelinePrivate() :
@@ -73,11 +75,13 @@ QLifelinePrivate::~QLifelinePrivate()
 QLifeline::QLifeline(QWrappedObject *parent, QWrappedObject *wrapper) :
     QNamedElement(*new QLifelinePrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QLifeline::QLifeline(QLifelinePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QNamedElement(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QLifeline::~QLifeline()
@@ -255,6 +259,27 @@ void QLifeline::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QLifeline::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLifeline")][QString::fromLatin1("represents")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLifeline")][QString::fromLatin1("represents")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the ConnectableElement within the classifier that contains the enclosing interaction.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLifeline")][QString::fromLatin1("decomposedAs")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLifeline")][QString::fromLatin1("decomposedAs")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Interaction that represents the decomposition.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLifeline")][QString::fromLatin1("coveredBy")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLifeline")][QString::fromLatin1("coveredBy")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the InteractionFragments in which this Lifeline takes part.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLifeline")][QString::fromLatin1("interaction")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLifeline")][QString::fromLatin1("interaction")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Interaction enclosing this Lifeline.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLifeline")][QString::fromLatin1("selector")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLifeline")][QString::fromLatin1("selector")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("If the referenced ConnectableElement is multivalued, then this specifies the specific individual part within that set.");
+
+    QNamedElement::setPropertyData();
 }
 
 #include "moc_qlifeline.cpp"

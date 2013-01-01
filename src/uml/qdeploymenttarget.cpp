@@ -45,6 +45,8 @@
 #include <QtUml/QPackageableElement>
 #include <QtUml/QDeployment>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QDeploymentTargetPrivate::QDeploymentTargetPrivate()
@@ -66,11 +68,13 @@ QDeploymentTargetPrivate::~QDeploymentTargetPrivate()
 QDeploymentTarget::QDeploymentTarget(QWrappedObject *parent, QWrappedObject *wrapper) :
     QNamedElement(*new QDeploymentTargetPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QDeploymentTarget::QDeploymentTarget(QDeploymentTargetPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QNamedElement(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QDeploymentTarget::~QDeploymentTarget()
@@ -152,6 +156,18 @@ void QDeploymentTarget::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QDeploymentTarget::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDeploymentTarget")][QString::fromLatin1("deployedElements")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDeploymentTarget")][QString::fromLatin1("deployedElements")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The set of elements that are manifested in an Artifact that is involved in Deployment to a DeploymentTarget.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDeploymentTarget")][QString::fromLatin1("deployments")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDeploymentTarget")][QString::fromLatin1("deployments")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The set of Deployments for a DeploymentTarget.");
+
+    QNamedElement::setPropertyData();
 }
 
 // Overriden methods for subsetted properties

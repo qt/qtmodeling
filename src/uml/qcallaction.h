@@ -84,6 +84,7 @@ public:
     Q_INVOKABLE void addResult(QOutputPin *result);
     Q_INVOKABLE void removeResult(QOutputPin *result);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QCallAction(QCallActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

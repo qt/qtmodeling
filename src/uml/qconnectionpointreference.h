@@ -86,6 +86,7 @@ public:
     Q_INVOKABLE void addEntry(QPseudostate *entry);
     Q_INVOKABLE void removeEntry(QPseudostate *entry);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QConnectionPointReference(QConnectionPointReferencePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

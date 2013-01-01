@@ -80,6 +80,7 @@ public:
     Q_INVOKABLE QValueSpecification *joinSpec() const;
     Q_INVOKABLE void setJoinSpec(QValueSpecification *joinSpec);
     virtual void registerMetaTypes() const;
+    virtual void setPropertyData();
 
 protected:
     explicit QJoinNode(QJoinNodePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);

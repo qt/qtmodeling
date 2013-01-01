@@ -44,6 +44,8 @@
 
 #include <QtUml/QOutputPin>
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QCallActionPrivate::QCallActionPrivate() :
@@ -66,11 +68,13 @@ QCallActionPrivate::~QCallActionPrivate()
 QCallAction::QCallAction(QWrappedObject *parent, QWrappedObject *wrapper) :
     QInvocationAction(*new QCallActionPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QCallAction::QCallAction(QCallActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QInvocationAction(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QCallAction::~QCallAction()
@@ -158,6 +162,18 @@ void QCallAction::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QCallAction::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCallAction")][QString::fromLatin1("isSynchronous")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCallAction")][QString::fromLatin1("isSynchronous")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("If true, the call is synchronous and the caller waits for completion of the invoked behavior. If false, the call is asynchronous and the caller proceeds immediately and does not expect a return values.");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCallAction")][QString::fromLatin1("results")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCallAction")][QString::fromLatin1("results")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A list of output pins where the results of performing the invocation are placed.");
+
+    QInvocationAction::setPropertyData();
 }
 
 #include "moc_qcallaction.cpp"

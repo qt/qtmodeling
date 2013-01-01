@@ -42,6 +42,8 @@
 #include "qliteralboolean.h"
 #include "qliteralboolean_p.h"
 
+#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+
 QT_BEGIN_NAMESPACE_QTUML
 
 QLiteralBooleanPrivate::QLiteralBooleanPrivate() :
@@ -64,11 +66,13 @@ QLiteralBooleanPrivate::~QLiteralBooleanPrivate()
 QLiteralBoolean::QLiteralBoolean(QWrappedObject *parent, QWrappedObject *wrapper) :
     QLiteralSpecification(*new QLiteralBooleanPrivate, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QLiteralBoolean::QLiteralBoolean(QLiteralBooleanPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
     QLiteralSpecification(dd, parent, wrapper)
 {
+    setPropertyData();
 }
 
 QLiteralBoolean::~QLiteralBoolean()
@@ -131,6 +135,15 @@ void QLiteralBoolean::registerMetaTypes() const
 
     foreach (QWrappedObject *wrappedObject, wrappedObjects())
         wrappedObject->registerMetaTypes();
+}
+
+void QLiteralBoolean::setPropertyData()
+{
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLiteralBoolean")][QString::fromLatin1("value")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLiteralBoolean")][QString::fromLatin1("value")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The specified Boolean value.");
+
+    QLiteralSpecification::setPropertyData();
 }
 
 #include "moc_qliteralboolean.cpp"
