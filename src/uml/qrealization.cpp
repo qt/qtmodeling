@@ -88,7 +88,6 @@ void QRealization::registerMetaTypes() const
 
 void QRealization::setPropertyData()
 {
-
     QAbstraction::setPropertyData();
 }
 

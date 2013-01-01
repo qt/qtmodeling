@@ -120,9 +120,11 @@ void QInstanceValue::registerMetaTypes() const
 
 void QInstanceValue::setPropertyData()
 {
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInstanceValue")][QString::fromLatin1("instance")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInstanceValue")][QString::fromLatin1("instance")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInstanceValue")][QString::fromLatin1("instance")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QInstanceValue")][QString::fromLatin1("instance")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The instance that is the specified value.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInstanceValue")][QString::fromLatin1("instance")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInstanceValue")][QString::fromLatin1("instance")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
 
     QValueSpecification::setPropertyData();
 }

@@ -88,7 +88,6 @@ void QActivityFinalNode::registerMetaTypes() const
 
 void QActivityFinalNode::setPropertyData()
 {
-
     QFinalNode::setPropertyData();
 }
 

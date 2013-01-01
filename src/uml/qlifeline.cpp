@@ -263,21 +263,35 @@ void QLifeline::registerMetaTypes() const
 
 void QLifeline::setPropertyData()
 {
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QLifeline")][QString::fromLatin1("represents")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLifeline")][QString::fromLatin1("represents")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLifeline")][QString::fromLatin1("represents")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLifeline")][QString::fromLatin1("represents")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the ConnectableElement within the classifier that contains the enclosing interaction.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLifeline")][QString::fromLatin1("represents")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLifeline")][QString::fromLatin1("represents")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QLifeline")][QString::fromLatin1("decomposedAs")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLifeline")][QString::fromLatin1("decomposedAs")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLifeline")][QString::fromLatin1("decomposedAs")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLifeline")][QString::fromLatin1("decomposedAs")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Interaction that represents the decomposition.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLifeline")][QString::fromLatin1("decomposedAs")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLifeline")][QString::fromLatin1("decomposedAs")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QLifeline")][QString::fromLatin1("coveredBy")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLifeline")][QString::fromLatin1("coveredBy")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLifeline")][QString::fromLatin1("coveredBy")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLifeline")][QString::fromLatin1("coveredBy")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the InteractionFragments in which this Lifeline takes part.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLifeline")][QString::fromLatin1("coveredBy")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLifeline")][QString::fromLatin1("coveredBy")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QLifeline")][QString::fromLatin1("interaction")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLifeline")][QString::fromLatin1("interaction")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLifeline")][QString::fromLatin1("interaction")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLifeline")][QString::fromLatin1("interaction")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Interaction enclosing this Lifeline.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLifeline")][QString::fromLatin1("interaction")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLifeline")][QString::fromLatin1("interaction")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamedElement::namespace");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QLifeline")][QString::fromLatin1("selector")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLifeline")][QString::fromLatin1("selector")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLifeline")][QString::fromLatin1("selector")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLifeline")][QString::fromLatin1("selector")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("If the referenced ConnectableElement is multivalued, then this specifies the specific individual part within that set.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLifeline")][QString::fromLatin1("selector")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLifeline")][QString::fromLatin1("selector")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElement");
 
     QNamedElement::setPropertyData();
 }

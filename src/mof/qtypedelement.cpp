@@ -120,9 +120,11 @@ void QTypedElement::registerMetaTypes() const
 
 void QTypedElement::setPropertyData()
 {
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTypedElement")][QString::fromLatin1("type")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTypedElement")][QString::fromLatin1("type")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTypedElement")][QString::fromLatin1("type")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QTypedElement")][QString::fromLatin1("type")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The type of the TypedElement.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTypedElement")][QString::fromLatin1("type")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTypedElement")][QString::fromLatin1("type")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
 
     QNamedElement::setPropertyData();
 }

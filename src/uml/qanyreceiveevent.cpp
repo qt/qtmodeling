@@ -88,7 +88,6 @@ void QAnyReceiveEvent::registerMetaTypes() const
 
 void QAnyReceiveEvent::setPropertyData()
 {
-
     QMessageEvent::setPropertyData();
 }
 

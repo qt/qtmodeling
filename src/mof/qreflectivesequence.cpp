@@ -119,7 +119,6 @@ void QReflectiveSequence::registerMetaTypes() const
 
 void QReflectiveSequence::setPropertyData()
 {
-
     QReflectiveCollection::setPropertyData();
 }
 

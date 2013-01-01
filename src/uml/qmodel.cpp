@@ -113,9 +113,11 @@ void QModel::registerMetaTypes() const
 
 void QModel::setPropertyData()
 {
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QModel")][QString::fromLatin1("viewpoint")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QModel")][QString::fromLatin1("viewpoint")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QModel")][QString::fromLatin1("viewpoint")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QModel")][QString::fromLatin1("viewpoint")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The name of the viewpoint that is expressed by a model (This name may refer to a profile definition).");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QModel")][QString::fromLatin1("viewpoint")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QModel")][QString::fromLatin1("viewpoint")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
 
     QPackage::setPropertyData();
 }

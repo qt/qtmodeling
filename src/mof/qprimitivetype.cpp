@@ -88,7 +88,6 @@ void QPrimitiveType::registerMetaTypes() const
 
 void QPrimitiveType::setPropertyData()
 {
-
     QDataType::setPropertyData();
 }
 

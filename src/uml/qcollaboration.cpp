@@ -807,9 +807,11 @@ void QCollaboration::registerMetaTypes() const
 
 void QCollaboration::setPropertyData()
 {
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QCollaboration")][QString::fromLatin1("collaborationRoles")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCollaboration")][QString::fromLatin1("collaborationRoles")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCollaboration")][QString::fromLatin1("collaborationRoles")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QCollaboration")][QString::fromLatin1("collaborationRoles")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References connectable elements (possibly owned by other classifiers) which represent roles that instances may play in this collaboration.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCollaboration")][QString::fromLatin1("collaborationRoles")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCollaboration")][QString::fromLatin1("collaborationRoles")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QStructuredClassifier::role");
 
     QWrappedObject::setPropertyData();
 }

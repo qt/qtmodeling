@@ -88,7 +88,6 @@ void QEvent::registerMetaTypes() const
 
 void QEvent::setPropertyData()
 {
-
     QPackageableElement::setPropertyData();
 }
 

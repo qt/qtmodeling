@@ -128,9 +128,11 @@ void QStartObjectBehaviorAction::registerMetaTypes() const
 
 void QStartObjectBehaviorAction::setPropertyData()
 {
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStartObjectBehaviorAction")][QString::fromLatin1("object")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStartObjectBehaviorAction")][QString::fromLatin1("object")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStartObjectBehaviorAction")][QString::fromLatin1("object")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QStartObjectBehaviorAction")][QString::fromLatin1("object")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Holds the object which is either a behavior to be started or has a classifier behavior to be started.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStartObjectBehaviorAction")][QString::fromLatin1("object")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStartObjectBehaviorAction")][QString::fromLatin1("object")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QAction::input");
 
     QCallAction::setPropertyData();
 }

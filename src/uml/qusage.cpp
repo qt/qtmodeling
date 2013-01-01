@@ -88,7 +88,6 @@ void QUsage::registerMetaTypes() const
 
 void QUsage::setPropertyData()
 {
-
     QDependency::setPropertyData();
 }
 

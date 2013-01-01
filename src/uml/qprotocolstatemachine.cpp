@@ -141,9 +141,11 @@ void QProtocolStateMachine::registerMetaTypes() const
 
 void QProtocolStateMachine::setPropertyData()
 {
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolStateMachine")][QString::fromLatin1("conformance")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolStateMachine")][QString::fromLatin1("conformance")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolStateMachine")][QString::fromLatin1("conformance")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolStateMachine")][QString::fromLatin1("conformance")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Conformance between protocol state machines.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolStateMachine")][QString::fromLatin1("conformance")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolStateMachine")][QString::fromLatin1("conformance")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElement");
 
     QStateMachine::setPropertyData();
 }

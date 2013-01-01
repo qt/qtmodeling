@@ -88,7 +88,6 @@ void QDevice::registerMetaTypes() const
 
 void QDevice::setPropertyData()
 {
-
     QNode::setPropertyData();
 }
 

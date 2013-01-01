@@ -190,15 +190,23 @@ void QReadLinkObjectEndQualifierAction::registerMetaTypes() const
 
 void QReadLinkObjectEndQualifierAction::setPropertyData()
 {
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QReadLinkObjectEndQualifierAction")][QString::fromLatin1("result")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReadLinkObjectEndQualifierAction")][QString::fromLatin1("result")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReadLinkObjectEndQualifierAction")][QString::fromLatin1("result")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QReadLinkObjectEndQualifierAction")][QString::fromLatin1("result")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Pin where the result value is placed.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReadLinkObjectEndQualifierAction")][QString::fromLatin1("result")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReadLinkObjectEndQualifierAction")][QString::fromLatin1("result")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QAction::output");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QReadLinkObjectEndQualifierAction")][QString::fromLatin1("object")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReadLinkObjectEndQualifierAction")][QString::fromLatin1("object")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReadLinkObjectEndQualifierAction")][QString::fromLatin1("object")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QReadLinkObjectEndQualifierAction")][QString::fromLatin1("object")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Gives the input pin from which the link object is obtained.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReadLinkObjectEndQualifierAction")][QString::fromLatin1("object")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReadLinkObjectEndQualifierAction")][QString::fromLatin1("object")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QAction::input");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QReadLinkObjectEndQualifierAction")][QString::fromLatin1("qualifier")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReadLinkObjectEndQualifierAction")][QString::fromLatin1("qualifier")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReadLinkObjectEndQualifierAction")][QString::fromLatin1("qualifier")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QReadLinkObjectEndQualifierAction")][QString::fromLatin1("qualifier")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The attribute representing the qualifier to be read.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReadLinkObjectEndQualifierAction")][QString::fromLatin1("qualifier")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReadLinkObjectEndQualifierAction")][QString::fromLatin1("qualifier")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
 
     QAction::setPropertyData();
 }

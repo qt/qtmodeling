@@ -611,24 +611,41 @@ void QBehavioralFeature::registerMetaTypes() const
 
 void QBehavioralFeature::setPropertyData()
 {
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioralFeature")][QString::fromLatin1("concurrency")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioralFeature")][QString::fromLatin1("concurrency")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioralFeature")][QString::fromLatin1("concurrency")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioralFeature")][QString::fromLatin1("concurrency")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the semantics of concurrent calls to the same passive instance (i.e., an instance originating from a class with isActive being false). Active instances control access to their own behavioral features.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioralFeature")][QString::fromLatin1("concurrency")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioralFeature")][QString::fromLatin1("concurrency")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioralFeature")][QString::fromLatin1("isAbstract")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioralFeature")][QString::fromLatin1("isAbstract")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioralFeature")][QString::fromLatin1("isAbstract")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioralFeature")][QString::fromLatin1("isAbstract")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("If true, then the behavioral feature does not have an implementation, and one must be supplied by a more specific element. If false, the behavioral feature must have an implementation in the classifier or one must be inherited from a more general element.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioralFeature")][QString::fromLatin1("isAbstract")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioralFeature")][QString::fromLatin1("isAbstract")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioralFeature")][QString::fromLatin1("raisedExceptions")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioralFeature")][QString::fromLatin1("raisedExceptions")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioralFeature")][QString::fromLatin1("raisedExceptions")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioralFeature")][QString::fromLatin1("raisedExceptions")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Types representing exceptions that may be raised during an invocation of this feature.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioralFeature")][QString::fromLatin1("raisedExceptions")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioralFeature")][QString::fromLatin1("raisedExceptions")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioralFeature")][QString::fromLatin1("ownedParameters")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioralFeature")][QString::fromLatin1("ownedParameters")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioralFeature")][QString::fromLatin1("ownedParameters")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioralFeature")][QString::fromLatin1("ownedParameters")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the ordered set of formal parameters of this BehavioralFeature.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioralFeature")][QString::fromLatin1("ownedParameters")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioralFeature")][QString::fromLatin1("ownedParameters")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamespace::ownedMember");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioralFeature")][QString::fromLatin1("ownedParameterSets")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioralFeature")][QString::fromLatin1("ownedParameterSets")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioralFeature")][QString::fromLatin1("ownedParameterSets")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioralFeature")][QString::fromLatin1("ownedParameterSets")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The ParameterSets owned by this BehavioralFeature.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioralFeature")][QString::fromLatin1("ownedParameterSets")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioralFeature")][QString::fromLatin1("ownedParameterSets")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamespace::ownedMember");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioralFeature")][QString::fromLatin1("methods")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioralFeature")][QString::fromLatin1("methods")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioralFeature")][QString::fromLatin1("methods")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioralFeature")][QString::fromLatin1("methods")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A behavioral description that implements the behavioral feature. There may be at most one behavior for a particular pairing of a classifier (as owner of the behavior) and a behavioral feature (as specification of the behavior).");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioralFeature")][QString::fromLatin1("methods")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioralFeature")][QString::fromLatin1("methods")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
 
     QWrappedObject::setPropertyData();
 }

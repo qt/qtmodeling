@@ -88,7 +88,6 @@ void QForkNode::registerMetaTypes() const
 
 void QForkNode::setPropertyData()
 {
-
     QControlNode::setPropertyData();
 }
 

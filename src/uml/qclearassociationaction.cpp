@@ -155,12 +155,17 @@ void QClearAssociationAction::registerMetaTypes() const
 
 void QClearAssociationAction::setPropertyData()
 {
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClearAssociationAction")][QString::fromLatin1("object")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClearAssociationAction")][QString::fromLatin1("object")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClearAssociationAction")][QString::fromLatin1("object")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QClearAssociationAction")][QString::fromLatin1("object")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Gives the input pin from which is obtained the object whose participation in the association is to be cleared.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClearAssociationAction")][QString::fromLatin1("object")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClearAssociationAction")][QString::fromLatin1("object")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QAction::input");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClearAssociationAction")][QString::fromLatin1("association")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClearAssociationAction")][QString::fromLatin1("association")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClearAssociationAction")][QString::fromLatin1("association")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QClearAssociationAction")][QString::fromLatin1("association")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Association to be cleared.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClearAssociationAction")][QString::fromLatin1("association")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClearAssociationAction")][QString::fromLatin1("association")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
 
     QAction::setPropertyData();
 }

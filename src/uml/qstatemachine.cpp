@@ -318,18 +318,29 @@ void QStateMachine::registerMetaTypes() const
 
 void QStateMachine::setPropertyData()
 {
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStateMachine")][QString::fromLatin1("extendedStateMachines")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStateMachine")][QString::fromLatin1("extendedStateMachines")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStateMachine")][QString::fromLatin1("extendedStateMachines")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QStateMachine")][QString::fromLatin1("extendedStateMachines")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The state machines of which this is an extension.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStateMachine")][QString::fromLatin1("extendedStateMachines")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QBehavior::redefinedBehavior");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStateMachine")][QString::fromLatin1("extendedStateMachines")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStateMachine")][QString::fromLatin1("connectionPoints")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStateMachine")][QString::fromLatin1("connectionPoints")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStateMachine")][QString::fromLatin1("connectionPoints")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QStateMachine")][QString::fromLatin1("connectionPoints")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The connection points defined for this state machine. They represent the interface of the state machine when used as part of submachine state.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStateMachine")][QString::fromLatin1("connectionPoints")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStateMachine")][QString::fromLatin1("connectionPoints")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamespace::ownedMember");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStateMachine")][QString::fromLatin1("submachineStates")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStateMachine")][QString::fromLatin1("submachineStates")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStateMachine")][QString::fromLatin1("submachineStates")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QStateMachine")][QString::fromLatin1("submachineStates")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the submachine(s) in case of a submachine state. Multiple machines are referenced in case of a concurrent state.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStateMachine")][QString::fromLatin1("submachineStates")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStateMachine")][QString::fromLatin1("submachineStates")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStateMachine")][QString::fromLatin1("regions")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStateMachine")][QString::fromLatin1("regions")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStateMachine")][QString::fromLatin1("regions")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QStateMachine")][QString::fromLatin1("regions")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The regions owned directly by the state machine.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStateMachine")][QString::fromLatin1("regions")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStateMachine")][QString::fromLatin1("regions")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamespace::ownedMember");
 
     QBehavior::setPropertyData();
 }

@@ -88,7 +88,6 @@ void QFunctionBehavior::registerMetaTypes() const
 
 void QFunctionBehavior::setPropertyData()
 {
-
     QOpaqueBehavior::setPropertyData();
 }
 

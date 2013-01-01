@@ -88,7 +88,6 @@ void QOutputPin::registerMetaTypes() const
 
 void QOutputPin::setPropertyData()
 {
-
     QPin::setPropertyData();
 }
 

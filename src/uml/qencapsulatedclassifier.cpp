@@ -110,9 +110,11 @@ void QEncapsulatedClassifier::registerMetaTypes() const
 
 void QEncapsulatedClassifier::setPropertyData()
 {
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QEncapsulatedClassifier")][QString::fromLatin1("ownedPorts")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QEncapsulatedClassifier")][QString::fromLatin1("ownedPorts")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QEncapsulatedClassifier")][QString::fromLatin1("ownedPorts")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QEncapsulatedClassifier")][QString::fromLatin1("ownedPorts")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References a set of ports that an encapsulated classifier owns.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QEncapsulatedClassifier")][QString::fromLatin1("ownedPorts")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QEncapsulatedClassifier")][QString::fromLatin1("ownedPorts")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QStructuredClassifier::ownedAttribute");
 
     QStructuredClassifier::setPropertyData();
 }

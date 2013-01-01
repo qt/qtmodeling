@@ -143,7 +143,6 @@ void QMofObject::registerMetaTypes() const
 
 void QMofObject::setPropertyData()
 {
-
     QWrappedObject::setPropertyData();
 }
 

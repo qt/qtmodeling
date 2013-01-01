@@ -88,7 +88,6 @@ void QClearVariableAction::registerMetaTypes() const
 
 void QClearVariableAction::setPropertyData()
 {
-
     QVariableAction::setPropertyData();
 }
 

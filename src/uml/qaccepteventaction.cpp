@@ -208,15 +208,23 @@ void QAcceptEventAction::registerMetaTypes() const
 
 void QAcceptEventAction::setPropertyData()
 {
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QAcceptEventAction")][QString::fromLatin1("isUnmarshall")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QAcceptEventAction")][QString::fromLatin1("isUnmarshall")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QAcceptEventAction")][QString::fromLatin1("isUnmarshall")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QAcceptEventAction")][QString::fromLatin1("isUnmarshall")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Indicates whether there is a single output pin for the event, or multiple output pins for attributes of the event.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QAcceptEventAction")][QString::fromLatin1("isUnmarshall")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QAcceptEventAction")][QString::fromLatin1("isUnmarshall")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QAcceptEventAction")][QString::fromLatin1("triggers")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QAcceptEventAction")][QString::fromLatin1("triggers")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QAcceptEventAction")][QString::fromLatin1("triggers")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QAcceptEventAction")][QString::fromLatin1("triggers")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The type of events accepted by the action, as specified by triggers. For triggers with signal events, a signal of the specified type or any subtype of the specified signal type is accepted.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QAcceptEventAction")][QString::fromLatin1("triggers")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QAcceptEventAction")][QString::fromLatin1("triggers")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElement");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QAcceptEventAction")][QString::fromLatin1("results")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QAcceptEventAction")][QString::fromLatin1("results")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QAcceptEventAction")][QString::fromLatin1("results")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QAcceptEventAction")][QString::fromLatin1("results")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Pins holding the received event objects or their attributes. Event objects may be copied in transmission, so identity might not be preserved.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QAcceptEventAction")][QString::fromLatin1("results")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QAcceptEventAction")][QString::fromLatin1("results")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QAction::output");
 
     QAction::setPropertyData();
 }

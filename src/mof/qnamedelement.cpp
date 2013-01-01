@@ -223,18 +223,29 @@ void QNamedElement::registerMetaTypes() const
 
 void QNamedElement::setPropertyData()
 {
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamedElement")][QString::fromLatin1("name")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamedElement")][QString::fromLatin1("name")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamedElement")][QString::fromLatin1("name")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QNamedElement")][QString::fromLatin1("name")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The name of the NamedElement.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamedElement")][QString::fromLatin1("name")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamedElement")][QString::fromLatin1("name")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamedElement")][QString::fromLatin1("visibility")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamedElement")][QString::fromLatin1("visibility")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamedElement")][QString::fromLatin1("visibility")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QNamedElement")][QString::fromLatin1("visibility")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamedElement")][QString::fromLatin1("visibility")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamedElement")][QString::fromLatin1("visibility")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamedElement")][QString::fromLatin1("qualifiedName")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamedElement")][QString::fromLatin1("qualifiedName")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamedElement")][QString::fromLatin1("qualifiedName")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QNamedElement")][QString::fromLatin1("qualifiedName")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamedElement")][QString::fromLatin1("qualifiedName")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamedElement")][QString::fromLatin1("qualifiedName")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamedElement")][QString::fromLatin1("namespace_")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamedElement")][QString::fromLatin1("namespace_")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamedElement")][QString::fromLatin1("namespace_")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = true;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QNamedElement")][QString::fromLatin1("namespace_")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the namespace that owns the NamedElement.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamedElement")][QString::fromLatin1("namespace_")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamedElement")][QString::fromLatin1("namespace_")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::owner");
 
     QElement::setPropertyData();
 }

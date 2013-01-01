@@ -200,15 +200,23 @@ void QPseudostate::registerMetaTypes() const
 
 void QPseudostate::setPropertyData()
 {
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QPseudostate")][QString::fromLatin1("kind")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QPseudostate")][QString::fromLatin1("kind")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QPseudostate")][QString::fromLatin1("kind")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QPseudostate")][QString::fromLatin1("kind")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Determines the precise type of the Pseudostate and can be one of: entryPoint, exitPoint, initial, deepHistory, shallowHistory, join, fork, junction, terminate or choice.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QPseudostate")][QString::fromLatin1("kind")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QPseudostate")][QString::fromLatin1("kind")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QPseudostate")][QString::fromLatin1("state")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QPseudostate")][QString::fromLatin1("state")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QPseudostate")][QString::fromLatin1("state")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QPseudostate")][QString::fromLatin1("state")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The State that owns this pseudostate and in which it appears.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QPseudostate")][QString::fromLatin1("state")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QPseudostate")][QString::fromLatin1("state")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamedElement::namespace");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QPseudostate")][QString::fromLatin1("stateMachine")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QPseudostate")][QString::fromLatin1("stateMachine")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QPseudostate")][QString::fromLatin1("stateMachine")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QPseudostate")][QString::fromLatin1("stateMachine")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The StateMachine in which this Pseudostate is defined. This only applies to Pseudostates of the kind entryPoint or exitPoint.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QPseudostate")][QString::fromLatin1("stateMachine")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QPseudostate")][QString::fromLatin1("stateMachine")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamedElement::namespace");
 
     QVertex::setPropertyData();
 }

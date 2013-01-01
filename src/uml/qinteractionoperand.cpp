@@ -442,12 +442,17 @@ void QInteractionOperand::registerMetaTypes() const
 
 void QInteractionOperand::setPropertyData()
 {
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionOperand")][QString::fromLatin1("fragments")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionOperand")][QString::fromLatin1("fragments")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionOperand")][QString::fromLatin1("fragments")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionOperand")][QString::fromLatin1("fragments")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The fragments of the operand.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionOperand")][QString::fromLatin1("fragments")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionOperand")][QString::fromLatin1("fragments")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamespace::ownedMember");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionOperand")][QString::fromLatin1("guard")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionOperand")][QString::fromLatin1("guard")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionOperand")][QString::fromLatin1("guard")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionOperand")][QString::fromLatin1("guard")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Constraint of the operand.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionOperand")][QString::fromLatin1("guard")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionOperand")][QString::fromLatin1("guard")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElement");
 
     QWrappedObject::setPropertyData();
 }

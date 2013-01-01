@@ -229,18 +229,29 @@ void QGeneralizationSet::registerMetaTypes() const
 
 void QGeneralizationSet::setPropertyData()
 {
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QGeneralizationSet")][QString::fromLatin1("isCovering")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QGeneralizationSet")][QString::fromLatin1("isCovering")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QGeneralizationSet")][QString::fromLatin1("isCovering")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QGeneralizationSet")][QString::fromLatin1("isCovering")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Indicates (via the associated Generalizations) whether or not the set of specific Classifiers are covering for a particular general classifier. When isCovering is true, every instance of a particular general Classifier is also an instance of at least one of its specific Classifiers for the GeneralizationSet. When isCovering is false, there are one or more instances of the particular general Classifier that are not instances of at least one of its specific Classifiers defined for the GeneralizationSet.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QGeneralizationSet")][QString::fromLatin1("isCovering")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QGeneralizationSet")][QString::fromLatin1("isCovering")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QGeneralizationSet")][QString::fromLatin1("isDisjoint")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QGeneralizationSet")][QString::fromLatin1("isDisjoint")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QGeneralizationSet")][QString::fromLatin1("isDisjoint")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QGeneralizationSet")][QString::fromLatin1("isDisjoint")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Indicates whether or not the set of specific Classifiers in a Generalization relationship have instance in common. If isDisjoint is true, the specific Classifiers for a particular GeneralizationSet have no members in common; that is, their intersection is empty. If isDisjoint is false, the specific Classifiers in a particular GeneralizationSet have one or more members in common; that is, their intersection is not empty. For example, Person could have two Generalization relationships, each with the different specific Classifier: Manager or Staff. This would be disjoint because every instance of Person must either be a Manager or Staff. In contrast, Person could have two Generalization relationships involving two specific (and non-covering) Classifiers: Sales Person and Manager. This GeneralizationSet would not be disjoint because there are instances of Person which can be a Sales Person and a Manager.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QGeneralizationSet")][QString::fromLatin1("isDisjoint")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QGeneralizationSet")][QString::fromLatin1("isDisjoint")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QGeneralizationSet")][QString::fromLatin1("powertype")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QGeneralizationSet")][QString::fromLatin1("powertype")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QGeneralizationSet")][QString::fromLatin1("powertype")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QGeneralizationSet")][QString::fromLatin1("powertype")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Designates the Classifier that is defined as the power type for the associated GeneralizationSet.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QGeneralizationSet")][QString::fromLatin1("powertype")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QGeneralizationSet")][QString::fromLatin1("powertype")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QGeneralizationSet")][QString::fromLatin1("generalizations")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QGeneralizationSet")][QString::fromLatin1("generalizations")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QGeneralizationSet")][QString::fromLatin1("generalizations")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QGeneralizationSet")][QString::fromLatin1("generalizations")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Designates the instances of Generalization which are members of a given GeneralizationSet.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QGeneralizationSet")][QString::fromLatin1("generalizations")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QGeneralizationSet")][QString::fromLatin1("generalizations")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
 
     QPackageableElement::setPropertyData();
 }

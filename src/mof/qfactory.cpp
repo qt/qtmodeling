@@ -185,9 +185,11 @@ void QFactory::registerMetaTypes() const
 
 void QFactory::setPropertyData()
 {
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QFactory")][QString::fromLatin1("package")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QFactory")][QString::fromLatin1("package")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QFactory")][QString::fromLatin1("package")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QFactory")][QString::fromLatin1("package")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QFactory")][QString::fromLatin1("package")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QFactory")][QString::fromLatin1("package")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
 
     QElement::setPropertyData();
 }

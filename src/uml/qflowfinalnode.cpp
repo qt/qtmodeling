@@ -88,7 +88,6 @@ void QFlowFinalNode::registerMetaTypes() const
 
 void QFlowFinalNode::setPropertyData()
 {
-
     QFinalNode::setPropertyData();
 }
 

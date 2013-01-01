@@ -160,12 +160,17 @@ void QDeploymentTarget::registerMetaTypes() const
 
 void QDeploymentTarget::setPropertyData()
 {
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDeploymentTarget")][QString::fromLatin1("deployedElements")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDeploymentTarget")][QString::fromLatin1("deployedElements")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDeploymentTarget")][QString::fromLatin1("deployedElements")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDeploymentTarget")][QString::fromLatin1("deployedElements")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The set of elements that are manifested in an Artifact that is involved in Deployment to a DeploymentTarget.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDeploymentTarget")][QString::fromLatin1("deployedElements")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDeploymentTarget")][QString::fromLatin1("deployedElements")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDeploymentTarget")][QString::fromLatin1("deployments")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDeploymentTarget")][QString::fromLatin1("deployments")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDeploymentTarget")][QString::fromLatin1("deployments")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDeploymentTarget")][QString::fromLatin1("deployments")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The set of Deployments for a DeploymentTarget.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDeploymentTarget")][QString::fromLatin1("deployments")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDeploymentTarget")][QString::fromLatin1("deployments")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElement QNamedElement::clientDependency");
 
     QNamedElement::setPropertyData();
 }

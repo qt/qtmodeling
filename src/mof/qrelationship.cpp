@@ -121,9 +121,11 @@ void QRelationship::registerMetaTypes() const
 
 void QRelationship::setPropertyData()
 {
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QRelationship")][QString::fromLatin1("relatedElements")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QRelationship")][QString::fromLatin1("relatedElements")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QRelationship")][QString::fromLatin1("relatedElements")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = true;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QRelationship")][QString::fromLatin1("relatedElements")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the elements related by the Relationship.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QRelationship")][QString::fromLatin1("relatedElements")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QRelationship")][QString::fromLatin1("relatedElements")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
 
     QElement::setPropertyData();
 }

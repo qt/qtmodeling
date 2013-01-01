@@ -88,7 +88,6 @@ void QLiteralSpecification::registerMetaTypes() const
 
 void QLiteralSpecification::setPropertyData()
 {
-
     QValueSpecification::setPropertyData();
 }
 

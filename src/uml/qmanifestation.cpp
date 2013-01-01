@@ -128,9 +128,11 @@ void QManifestation::registerMetaTypes() const
 
 void QManifestation::setPropertyData()
 {
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QManifestation")][QString::fromLatin1("utilizedElement")][QtWrappedObjects::QtWrappedObjects::IsCompositeRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QManifestation")][QString::fromLatin1("utilizedElement")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QManifestation")][QString::fromLatin1("utilizedElement")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QManifestation")][QString::fromLatin1("utilizedElement")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The model element that is utilized in the manifestation in an Artifact.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QManifestation")][QString::fromLatin1("utilizedElement")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QManifestation")][QString::fromLatin1("utilizedElement")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QDependency::supplier");
 
     QAbstraction::setPropertyData();
 }

@@ -108,7 +108,6 @@ void QLiteralNull::registerMetaTypes() const
 
 void QLiteralNull::setPropertyData()
 {
-
     QLiteralSpecification::setPropertyData();
 }
 

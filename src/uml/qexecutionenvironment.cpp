@@ -88,7 +88,6 @@ void QExecutionEnvironment::registerMetaTypes() const
 
 void QExecutionEnvironment::setPropertyData()
 {
-
     QNode::setPropertyData();
 }
 

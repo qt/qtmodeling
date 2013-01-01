@@ -88,7 +88,6 @@ void QPartDecomposition::registerMetaTypes() const
 
 void QPartDecomposition::setPropertyData()
 {
-
     QInteractionUse::setPropertyData();
 }
 

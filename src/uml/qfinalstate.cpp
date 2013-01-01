@@ -88,7 +88,6 @@ void QFinalState::registerMetaTypes() const
 
 void QFinalState::setPropertyData()
 {
-
     QState::setPropertyData();
 }
 
