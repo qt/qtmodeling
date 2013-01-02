@@ -167,12 +167,14 @@ void QCollaborationUse::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QCollaborationUse")][QString::fromLatin1("type")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The collaboration which is used in this occurrence. The collaboration defines the cooperation between its roles which are mapped to properties of the classifier owning the collaboration use.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QCollaborationUse")][QString::fromLatin1("type")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QCollaborationUse")][QString::fromLatin1("type")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCollaborationUse")][QString::fromLatin1("type")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QCollaborationUse")][QString::fromLatin1("roleBindings")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QCollaborationUse")][QString::fromLatin1("roleBindings")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QCollaborationUse")][QString::fromLatin1("roleBindings")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A mapping between features of the collaboration type and features of the owning classifier. This mapping indicates which connectable element of the classifier plays which role(s) in the collaboration. A connectable element may be bound to multiple roles in the same collaboration use (that is, it may play multiple roles).");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QCollaborationUse")][QString::fromLatin1("roleBindings")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QCollaborationUse")][QString::fromLatin1("roleBindings")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElement");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCollaborationUse")][QString::fromLatin1("roleBindings")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCollaborationUse")][QString::fromLatin1("roleBindings")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QNamedElement::setPropertyData();
 }

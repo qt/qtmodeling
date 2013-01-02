@@ -125,6 +125,7 @@ void QBehaviorExecutionSpecification::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QBehaviorExecutionSpecification")][QString::fromLatin1("behavior")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Behavior whose execution is occurring.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QBehaviorExecutionSpecification")][QString::fromLatin1("behavior")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QBehaviorExecutionSpecification")][QString::fromLatin1("behavior")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QBehaviorExecutionSpecification")][QString::fromLatin1("behavior")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QExecutionSpecification::setPropertyData();
 }

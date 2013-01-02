@@ -157,12 +157,14 @@ void QTimeConstraint::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeConstraint")][QString::fromLatin1("firstEvent")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The value of firstEvent is related to constrainedElement. If firstEvent is true, then the corresponding observation event is the first time instant the execution enters constrainedElement. If firstEvent is false, then the corresponding observation event is the last time instant the execution is within constrainedElement.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeConstraint")][QString::fromLatin1("firstEvent")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeConstraint")][QString::fromLatin1("firstEvent")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeConstraint")][QString::fromLatin1("firstEvent")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeConstraint")][QString::fromLatin1("specification")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeConstraint")][QString::fromLatin1("specification")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeConstraint")][QString::fromLatin1("specification")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A condition that must be true when evaluated in order for the constraint to be satisfied.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeConstraint")][QString::fromLatin1("specification")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QIntervalConstraint::specification");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeConstraint")][QString::fromLatin1("specification")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeConstraint")][QString::fromLatin1("specification")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QIntervalConstraint::setPropertyData();
 }

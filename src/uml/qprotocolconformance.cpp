@@ -171,13 +171,15 @@ void QProtocolConformance::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolConformance")][QString::fromLatin1("specificMachine")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolConformance")][QString::fromLatin1("specificMachine")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the state machine which conforms to the general state machine.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolConformance")][QString::fromLatin1("specificMachine")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolConformance")][QString::fromLatin1("specificMachine")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::owner QDirectedRelationship::source");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolConformance")][QString::fromLatin1("specificMachine")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::owner QDirectedRelationship::sources");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolConformance")][QString::fromLatin1("specificMachine")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QProtocolStateMachine::conformance");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolConformance")][QString::fromLatin1("generalMachine")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolConformance")][QString::fromLatin1("generalMachine")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolConformance")][QString::fromLatin1("generalMachine")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the protocol state machine to which the specific state machine conforms.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolConformance")][QString::fromLatin1("generalMachine")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolConformance")][QString::fromLatin1("generalMachine")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QDirectedRelationship::target");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolConformance")][QString::fromLatin1("generalMachine")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QDirectedRelationship::targets");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolConformance")][QString::fromLatin1("generalMachine")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QDirectedRelationship::setPropertyData();
 }

@@ -203,18 +203,21 @@ void QGeneralization::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QGeneralization")][QString::fromLatin1("isSubstitutable")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Indicates whether the specific classifier can be used wherever the general classifier can be used. If true, the execution traces of the specific classifier will be a superset of the execution traces of the general classifier.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QGeneralization")][QString::fromLatin1("isSubstitutable")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QGeneralization")][QString::fromLatin1("isSubstitutable")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QGeneralization")][QString::fromLatin1("isSubstitutable")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QGeneralization")][QString::fromLatin1("specific")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QGeneralization")][QString::fromLatin1("specific")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QGeneralization")][QString::fromLatin1("specific")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the specializing classifier in the Generalization relationship.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QGeneralization")][QString::fromLatin1("specific")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QGeneralization")][QString::fromLatin1("specific")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::owner QDirectedRelationship::source");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QGeneralization")][QString::fromLatin1("specific")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::owner QDirectedRelationship::sources");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QGeneralization")][QString::fromLatin1("specific")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QClassifier::generalization");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QGeneralization")][QString::fromLatin1("general")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QGeneralization")][QString::fromLatin1("general")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QGeneralization")][QString::fromLatin1("general")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the general classifier in the Generalization relationship.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QGeneralization")][QString::fromLatin1("general")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QGeneralization")][QString::fromLatin1("general")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QDirectedRelationship::target");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QGeneralization")][QString::fromLatin1("general")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QDirectedRelationship::targets");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QGeneralization")][QString::fromLatin1("general")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QDirectedRelationship::setPropertyData();
 }

@@ -152,12 +152,14 @@ void QQualifierValue::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QQualifierValue")][QString::fromLatin1("value")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Input pin from which the specified value for the qualifier is taken.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QQualifierValue")][QString::fromLatin1("value")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QQualifierValue")][QString::fromLatin1("value")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QQualifierValue")][QString::fromLatin1("value")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QQualifierValue")][QString::fromLatin1("qualifier")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QQualifierValue")][QString::fromLatin1("qualifier")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QQualifierValue")][QString::fromLatin1("qualifier")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Attribute representing the qualifier for which the value is to be specified.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QQualifierValue")][QString::fromLatin1("qualifier")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QQualifierValue")][QString::fromLatin1("qualifier")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QQualifierValue")][QString::fromLatin1("qualifier")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QElement::setPropertyData();
 }

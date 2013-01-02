@@ -357,42 +357,49 @@ void QActivityPartition::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("isDimension")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Tells whether the partition groups other partitions along a dimension.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("isDimension")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("isDimension")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("isDimension")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("isExternal")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("isExternal")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("isExternal")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Tells whether the partition represents an entity to which the partitioning structure does not apply.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("isExternal")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("isExternal")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("isExternal")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("represents")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("represents")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("represents")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An element constraining behaviors invoked by nodes in the partition.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("represents")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("represents")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("represents")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("subpartitions")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("subpartitions")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("subpartitions")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Partitions immediately contained in the partition.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("subpartitions")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("subpartitions")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QActivityGroup::subgroup");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("subpartitions")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QActivityGroup::subgroups");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("subpartitions")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QActivityPartition::superPartition");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("superPartition")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("superPartition")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("superPartition")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Partition immediately containing the partition.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("superPartition")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("superPartition")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QActivityGroup::superGroup");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("superPartition")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QActivityPartition::subpartition");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("nodes")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("nodes")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("nodes")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Nodes immediately contained in the group.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("nodes")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("nodes")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QActivityGroup::containedNode");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("nodes")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QActivityGroup::containedNodes");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("nodes")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QActivityNode::inPartition");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("edges")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("edges")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("edges")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Edges immediately contained in the group.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("edges")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("edges")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QActivityGroup::containedEdge");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("edges")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QActivityGroup::containedEdges");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("edges")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QActivityEdge::inPartition");
 
     QActivityGroup::setPropertyData();
 }

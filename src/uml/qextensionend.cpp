@@ -163,12 +163,14 @@ void QExtensionEnd::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QExtensionEnd")][QString::fromLatin1("lower")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("This redefinition changes the default multiplicity of association ends, since model elements are usually extended by 0 or 1 instance of the extension stereotype.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QExtensionEnd")][QString::fromLatin1("lower")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QMultiplicityElement::lower");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QExtensionEnd")][QString::fromLatin1("lower")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtensionEnd")][QString::fromLatin1("lower")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QExtensionEnd")][QString::fromLatin1("type")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QExtensionEnd")][QString::fromLatin1("type")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QExtensionEnd")][QString::fromLatin1("type")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the type of the ExtensionEnd. Note that this association restricts the possible types of an ExtensionEnd to only be Stereotypes.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QExtensionEnd")][QString::fromLatin1("type")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QTypedElement::type");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QExtensionEnd")][QString::fromLatin1("type")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtensionEnd")][QString::fromLatin1("type")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QProperty::setPropertyData();
 }

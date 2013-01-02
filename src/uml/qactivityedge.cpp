@@ -476,60 +476,70 @@ void QActivityEdge::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("source")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Node from which tokens are taken when they traverse the edge.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("source")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("source")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("source")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QActivityNode::outgoing");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("redefinedEdges")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("redefinedEdges")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("redefinedEdges")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Inherited edges replaced by this edge in a specialization of the activity.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("redefinedEdges")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("redefinedEdges")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QRedefinableElement::redefinedElement");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("redefinedEdges")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QRedefinableElement::redefinedElements");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("redefinedEdges")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("inGroup")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("inGroup")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = true;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("inGroup")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Groups containing the edge.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("inGroup")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("inGroup")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("inGroup")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QActivityGroup::containedEdge");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("guard")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("guard")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("guard")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specification evaluated at runtime to determine if the edge can be traversed.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("guard")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("guard")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElement");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("guard")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("guard")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("inPartition")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("inPartition")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("inPartition")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Partitions containing the edge.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("inPartition")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("inPartition")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QActivityEdge::inGroup");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("inPartition")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QActivityPartition::edge");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("activity")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("activity")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("activity")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Activity containing the edge.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("activity")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("activity")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::owner");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("activity")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QActivity::edge");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("interrupts")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("interrupts")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("interrupts")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Region that the edge can interrupt.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("interrupts")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("interrupts")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("interrupts")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QInterruptibleActivityRegion::interruptingEdge");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("weight")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("weight")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("weight")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The minimum number of tokens that must traverse the edge at the same time.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("weight")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("weight")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElement");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("weight")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("weight")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("inStructuredNode")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("inStructuredNode")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("inStructuredNode")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Structured activity node containing the edge.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("inStructuredNode")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("inStructuredNode")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QActivityEdge::inGroup QElement::owner");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("inStructuredNode")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QStructuredActivityNode::edge");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("target")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("target")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("target")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Node to which tokens are put when they traverse the edge.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("target")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("target")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("target")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QActivityNode::incoming");
 
     QRedefinableElement::setPropertyData();
 }

@@ -224,19 +224,22 @@ void QTemplateBinding::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateBinding")][QString::fromLatin1("signature")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateBinding")][QString::fromLatin1("signature")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The template signature for the template that is the target of the binding.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateBinding")][QString::fromLatin1("signature")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateBinding")][QString::fromLatin1("signature")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QDirectedRelationship::target");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateBinding")][QString::fromLatin1("signature")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QDirectedRelationship::targets");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateBinding")][QString::fromLatin1("signature")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateBinding")][QString::fromLatin1("boundElement")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateBinding")][QString::fromLatin1("boundElement")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateBinding")][QString::fromLatin1("boundElement")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The element that is bound by this binding.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateBinding")][QString::fromLatin1("boundElement")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateBinding")][QString::fromLatin1("boundElement")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::owner QDirectedRelationship::source");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateBinding")][QString::fromLatin1("boundElement")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::owner QDirectedRelationship::sources");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateBinding")][QString::fromLatin1("boundElement")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QTemplateableElement::templateBinding");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateBinding")][QString::fromLatin1("parameterSubstitutions")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateBinding")][QString::fromLatin1("parameterSubstitutions")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateBinding")][QString::fromLatin1("parameterSubstitutions")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The parameter substitutions owned by this template binding.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateBinding")][QString::fromLatin1("parameterSubstitutions")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateBinding")][QString::fromLatin1("parameterSubstitutions")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElement");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateBinding")][QString::fromLatin1("parameterSubstitutions")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateBinding")][QString::fromLatin1("parameterSubstitutions")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QTemplateParameterSubstitution::templateBinding");
 
     QDirectedRelationship::setPropertyData();
 }

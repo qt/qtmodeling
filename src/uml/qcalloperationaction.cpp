@@ -160,12 +160,14 @@ void QCallOperationAction::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QCallOperationAction")][QString::fromLatin1("operation")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The operation to be invoked by the action execution.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QCallOperationAction")][QString::fromLatin1("operation")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QCallOperationAction")][QString::fromLatin1("operation")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCallOperationAction")][QString::fromLatin1("operation")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QCallOperationAction")][QString::fromLatin1("target")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QCallOperationAction")][QString::fromLatin1("target")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QCallOperationAction")][QString::fromLatin1("target")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The target object to which the request is sent. The classifier of the target object is used to dynamically determine a behavior to invoke. This object constitutes the context of the execution of the operation.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QCallOperationAction")][QString::fromLatin1("target")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QCallOperationAction")][QString::fromLatin1("target")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QAction::input");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCallOperationAction")][QString::fromLatin1("target")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QAction::inputs");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCallOperationAction")][QString::fromLatin1("target")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QCallAction::setPropertyData();
 }

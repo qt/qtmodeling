@@ -132,7 +132,8 @@ void QChangeEvent::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QChangeEvent")][QString::fromLatin1("changeExpression")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QChangeEvent")][QString::fromLatin1("changeExpression")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A Boolean-valued expression that will result in a change event whenever its value changes from false to true.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QChangeEvent")][QString::fromLatin1("changeExpression")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QChangeEvent")][QString::fromLatin1("changeExpression")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElement");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QChangeEvent")][QString::fromLatin1("changeExpression")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QChangeEvent")][QString::fromLatin1("changeExpression")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QEvent::setPropertyData();
 }

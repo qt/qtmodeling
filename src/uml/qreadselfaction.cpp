@@ -132,7 +132,8 @@ void QReadSelfAction::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QReadSelfAction")][QString::fromLatin1("result")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QReadSelfAction")][QString::fromLatin1("result")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Gives the output pin on which the hosting object is placed.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QReadSelfAction")][QString::fromLatin1("result")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QReadSelfAction")][QString::fromLatin1("result")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QAction::output");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReadSelfAction")][QString::fromLatin1("result")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QAction::outputs");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReadSelfAction")][QString::fromLatin1("result")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QAction::setPropertyData();
 }

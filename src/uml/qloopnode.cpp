@@ -389,54 +389,63 @@ void QLoopNode::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLoopNode")][QString::fromLatin1("isTestedFirst")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("If true, the test is performed before the first execution of the body. If false, the body is executed once before the test is performed.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLoopNode")][QString::fromLatin1("isTestedFirst")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLoopNode")][QString::fromLatin1("isTestedFirst")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLoopNode")][QString::fromLatin1("isTestedFirst")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLoopNode")][QString::fromLatin1("loopVariableInputs")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLoopNode")][QString::fromLatin1("loopVariableInputs")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLoopNode")][QString::fromLatin1("loopVariableInputs")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A list of values that are moved into the loop variable pins before the first iteration of the loop.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QLoopNode")][QString::fromLatin1("loopVariableInputs")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QStructuredActivityNode::structuredNodeInput");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLoopNode")][QString::fromLatin1("loopVariableInputs")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QStructuredActivityNode::structuredNodeInputs");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLoopNode")][QString::fromLatin1("loopVariableInputs")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLoopNode")][QString::fromLatin1("loopVariableInputs")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLoopNode")][QString::fromLatin1("decider")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLoopNode")][QString::fromLatin1("decider")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLoopNode")][QString::fromLatin1("decider")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An output pin within the test fragment the value of which is examined after execution of the test to determine whether to execute the loop body.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLoopNode")][QString::fromLatin1("decider")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLoopNode")][QString::fromLatin1("decider")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLoopNode")][QString::fromLatin1("decider")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLoopNode")][QString::fromLatin1("bodyOutputs")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLoopNode")][QString::fromLatin1("bodyOutputs")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLoopNode")][QString::fromLatin1("bodyOutputs")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A list of output pins within the body fragment the values of which are moved to the loop variable pins after completion of execution of the body, before the next iteration of the loop begins or before the loop exits.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLoopNode")][QString::fromLatin1("bodyOutputs")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLoopNode")][QString::fromLatin1("bodyOutputs")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLoopNode")][QString::fromLatin1("bodyOutputs")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLoopNode")][QString::fromLatin1("loopVariables")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLoopNode")][QString::fromLatin1("loopVariables")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLoopNode")][QString::fromLatin1("loopVariables")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A list of output pins that hold the values of the loop variables during an execution of the loop. When the test fails, the values are movied to the result pins of the loop.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLoopNode")][QString::fromLatin1("loopVariables")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLoopNode")][QString::fromLatin1("loopVariables")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLoopNode")][QString::fromLatin1("loopVariables")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLoopNode")][QString::fromLatin1("results")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLoopNode")][QString::fromLatin1("results")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLoopNode")][QString::fromLatin1("results")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A list of output pins that constitute the data flow output of the entire loop.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QLoopNode")][QString::fromLatin1("results")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QStructuredActivityNode::structuredNodeOutput");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLoopNode")][QString::fromLatin1("results")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QStructuredActivityNode::structuredNodeOutputs");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLoopNode")][QString::fromLatin1("results")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLoopNode")][QString::fromLatin1("results")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLoopNode")][QString::fromLatin1("setupParts")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLoopNode")][QString::fromLatin1("setupParts")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLoopNode")][QString::fromLatin1("setupParts")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The set of nodes and edges that initialize values or perform other setup computations for the loop.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLoopNode")][QString::fromLatin1("setupParts")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLoopNode")][QString::fromLatin1("setupParts")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLoopNode")][QString::fromLatin1("setupParts")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLoopNode")][QString::fromLatin1("bodyParts")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLoopNode")][QString::fromLatin1("bodyParts")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLoopNode")][QString::fromLatin1("bodyParts")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The set of nodes and edges that perform the repetitive computations of the loop. The body section is executed as long as the test section produces a true value.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLoopNode")][QString::fromLatin1("bodyParts")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLoopNode")][QString::fromLatin1("bodyParts")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLoopNode")][QString::fromLatin1("bodyParts")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLoopNode")][QString::fromLatin1("tests")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLoopNode")][QString::fromLatin1("tests")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLoopNode")][QString::fromLatin1("tests")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The set of nodes, edges, and designated value that compute a Boolean value to determine if another execution of the body will be performed.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLoopNode")][QString::fromLatin1("tests")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLoopNode")][QString::fromLatin1("tests")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLoopNode")][QString::fromLatin1("tests")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QStructuredActivityNode::setPropertyData();
 }

@@ -443,6 +443,7 @@ void QStructuralFeature::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuralFeature")][QString::fromLatin1("isReadOnly")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("States whether the feature's value may be modified by a client.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuralFeature")][QString::fromLatin1("isReadOnly")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuralFeature")][QString::fromLatin1("isReadOnly")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuralFeature")][QString::fromLatin1("isReadOnly")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::setPropertyData();
 }

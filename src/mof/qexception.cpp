@@ -152,18 +152,21 @@ void QException::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QException")][QString::fromLatin1("description")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QException")][QString::fromLatin1("description")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QException")][QString::fromLatin1("description")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QException")][QString::fromLatin1("description")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QException")][QString::fromLatin1("elementInError")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QException")][QString::fromLatin1("elementInError")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QException")][QString::fromLatin1("elementInError")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QException")][QString::fromLatin1("elementInError")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QException")][QString::fromLatin1("elementInError")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QException")][QString::fromLatin1("elementInError")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QException")][QString::fromLatin1("objectInError")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QException")][QString::fromLatin1("objectInError")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QException")][QString::fromLatin1("objectInError")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QException")][QString::fromLatin1("objectInError")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QException")][QString::fromLatin1("objectInError")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QException")][QString::fromLatin1("objectInError")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::setPropertyData();
 }

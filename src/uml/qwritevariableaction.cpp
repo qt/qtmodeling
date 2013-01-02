@@ -132,7 +132,8 @@ void QWriteVariableAction::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QWriteVariableAction")][QString::fromLatin1("value")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QWriteVariableAction")][QString::fromLatin1("value")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Value to be added or removed from the variable.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QWriteVariableAction")][QString::fromLatin1("value")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QWriteVariableAction")][QString::fromLatin1("value")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QAction::input");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QWriteVariableAction")][QString::fromLatin1("value")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QAction::inputs");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QWriteVariableAction")][QString::fromLatin1("value")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QVariableAction::setPropertyData();
 }

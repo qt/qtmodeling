@@ -65,6 +65,7 @@ public:
         WasChangedRole,
         AggregationRole,
         IsDerivedUnionRole,
+        OppositeEndRole,
         DocumentationRole,
         RedefinedPropertiesRole,
         SubsettedPropertiesRole,

@@ -19,6 +19,7 @@
 #include <QtWrappedObjects/QMetaWrappedObject>
 
 #include <QtUml/QModel>
+#include <QtUml/QGeneralization>
 #include <QtUml/QElementImport>
 #include <QtUml/QPrimitiveType>
 #include <QtUml/QEnumeration>
@@ -79,6 +80,11 @@ MainWindow::MainWindow(QWidget *parent) :
 
     QWrappedObjectPointer<QClass> class2_ = new QClass;
     class2_->setName("InterStudent");
+
+    QWrappedObjectPointer<QGeneralization> generalization = new QGeneralization;
+    generalization->setObjectName("generalization");
+    generalization->setGeneral(class_);
+    class2_->addGeneralization(generalization);
 
     _model2 = new QModel;
     _model2->setName("Model2");
@@ -194,23 +200,26 @@ void MainWindow::populateModelExplorer(QWrappedObject *element, QTreeWidgetItem 
         QMetaProperty metaProperty = metaPropertyInfo.metaProperty;
         QWrappedObject *propertyWrappedObject = metaPropertyInfo.propertyWrappedObject;
         QString typeName = metaProperty.typeName();
+        QString aggregationRole = element->propertyData(QString::fromLatin1(metaPropertyInfo.propertyMetaObject->className()), metaProperty, QtWrappedObjects::QtWrappedObjects::AggregationRole).toString();
 
         if (typeName.endsWith('*') && qvariant_cast<QWrappedObject *>(metaProperty.read(propertyWrappedObject))) {
             QWrappedObject *wrappedObject = qvariant_cast<QWrappedObject *>(metaProperty.read(propertyWrappedObject));
-            if (!_visitedObjects.contains(qTopLevelWrapper(wrappedObject)))
+            if (aggregationRole == QString::fromLatin1("composite") && !_visitedObjects.contains(qTopLevelWrapper(wrappedObject)))
                 populateModelExplorer(wrappedObject, item);
         }
         else if (typeName.contains("QSet") && metaProperty.read(propertyWrappedObject).isValid()) {
             QSet<QWrappedObject *> elements = *(static_cast<QSet<QWrappedObject *> *>(metaProperty.read(propertyWrappedObject).data()));
-            foreach (QWrappedObject *wrappedObject, elements)
-                if (!_visitedObjects.contains(qTopLevelWrapper(wrappedObject)))
-                    populateModelExplorer(wrappedObject, item);
+            if (aggregationRole == QString::fromLatin1("composite"))
+                foreach (QWrappedObject *wrappedObject, elements)
+                    if (!_visitedObjects.contains(qTopLevelWrapper(wrappedObject)))
+                        populateModelExplorer(wrappedObject, item);
         }
         else if (typeName.contains("QList") && metaProperty.read(propertyWrappedObject).isValid()) {
             QList<QWrappedObject *> elements = *(static_cast<QList<QWrappedObject *> *>(metaProperty.read(propertyWrappedObject).data()));
-            foreach (QWrappedObject *wrappedObject, elements)
-                if (!_visitedObjects.contains(qTopLevelWrapper(wrappedObject)))
-                    populateModelExplorer(wrappedObject, item);
+            if (aggregationRole == QString::fromLatin1("composite"))
+                foreach (QWrappedObject *wrappedObject, elements)
+                    if (!_visitedObjects.contains(qTopLevelWrapper(wrappedObject)))
+                        populateModelExplorer(wrappedObject, item);
         }
     }
 

@@ -248,24 +248,28 @@ void QOpaqueAction::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QOpaqueAction")][QString::fromLatin1("bodies")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the action in one or more languages.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QOpaqueAction")][QString::fromLatin1("bodies")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QOpaqueAction")][QString::fromLatin1("bodies")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOpaqueAction")][QString::fromLatin1("bodies")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QOpaqueAction")][QString::fromLatin1("languages")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QOpaqueAction")][QString::fromLatin1("languages")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QOpaqueAction")][QString::fromLatin1("languages")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Languages the body strings use, in the same order as the body strings");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QOpaqueAction")][QString::fromLatin1("languages")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QOpaqueAction")][QString::fromLatin1("languages")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOpaqueAction")][QString::fromLatin1("languages")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QOpaqueAction")][QString::fromLatin1("inputValues")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QOpaqueAction")][QString::fromLatin1("inputValues")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QOpaqueAction")][QString::fromLatin1("inputValues")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Provides input to the action.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QOpaqueAction")][QString::fromLatin1("inputValues")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QOpaqueAction")][QString::fromLatin1("inputValues")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QAction::input");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOpaqueAction")][QString::fromLatin1("inputValues")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QAction::inputs");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOpaqueAction")][QString::fromLatin1("inputValues")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QOpaqueAction")][QString::fromLatin1("outputValues")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QOpaqueAction")][QString::fromLatin1("outputValues")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QOpaqueAction")][QString::fromLatin1("outputValues")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Takes output from the action.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QOpaqueAction")][QString::fromLatin1("outputValues")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QOpaqueAction")][QString::fromLatin1("outputValues")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QAction::output");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOpaqueAction")][QString::fromLatin1("outputValues")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QAction::outputs");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOpaqueAction")][QString::fromLatin1("outputValues")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QAction::setPropertyData();
 }

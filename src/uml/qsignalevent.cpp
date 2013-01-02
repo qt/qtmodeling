@@ -125,6 +125,7 @@ void QSignalEvent::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QSignalEvent")][QString::fromLatin1("signal")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The specific signal that is associated with this event.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QSignalEvent")][QString::fromLatin1("signal")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QSignalEvent")][QString::fromLatin1("signal")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QSignalEvent")][QString::fromLatin1("signal")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QMessageEvent::setPropertyData();
 }

@@ -134,6 +134,7 @@ void QConsiderIgnoreFragment::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QConsiderIgnoreFragment")][QString::fromLatin1("messages")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The set of messages that apply to this fragment");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QConsiderIgnoreFragment")][QString::fromLatin1("messages")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QConsiderIgnoreFragment")][QString::fromLatin1("messages")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QConsiderIgnoreFragment")][QString::fromLatin1("messages")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QCombinedFragment::setPropertyData();
 }

@@ -204,18 +204,21 @@ void QOccurrenceSpecification::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QOccurrenceSpecification")][QString::fromLatin1("covered")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Lifeline on which the OccurrenceSpecification appears.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QOccurrenceSpecification")][QString::fromLatin1("covered")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QInteractionFragment::covered");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QOccurrenceSpecification")][QString::fromLatin1("covered")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOccurrenceSpecification")][QString::fromLatin1("covered")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QOccurrenceSpecification")][QString::fromLatin1("toAfter")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QOccurrenceSpecification")][QString::fromLatin1("toAfter")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QOccurrenceSpecification")][QString::fromLatin1("toAfter")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the GeneralOrderings that specify EventOcurrences that must occur after this OccurrenceSpecification");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QOccurrenceSpecification")][QString::fromLatin1("toAfter")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QOccurrenceSpecification")][QString::fromLatin1("toAfter")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOccurrenceSpecification")][QString::fromLatin1("toAfter")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QGeneralOrdering::before");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QOccurrenceSpecification")][QString::fromLatin1("toBefore")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QOccurrenceSpecification")][QString::fromLatin1("toBefore")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QOccurrenceSpecification")][QString::fromLatin1("toBefore")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the GeneralOrderings that specify EventOcurrences that must occur before this OccurrenceSpecification");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QOccurrenceSpecification")][QString::fromLatin1("toBefore")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QOccurrenceSpecification")][QString::fromLatin1("toBefore")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOccurrenceSpecification")][QString::fromLatin1("toBefore")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QGeneralOrdering::after");
 
     QInteractionFragment::setPropertyData();
 }

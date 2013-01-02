@@ -213,13 +213,15 @@ void QDataType::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDataType")][QString::fromLatin1("ownedOperations")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDataType")][QString::fromLatin1("ownedOperations")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The Operations owned by the DataType.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDataType")][QString::fromLatin1("ownedOperations")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDataType")][QString::fromLatin1("ownedOperations")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QClassifier::feature QNamespace::ownedMember");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDataType")][QString::fromLatin1("ownedOperations")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QClassifier::features QNamespace::ownedMembers");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDataType")][QString::fromLatin1("ownedOperations")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QOperation::datatype");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDataType")][QString::fromLatin1("ownedAttributes")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDataType")][QString::fromLatin1("ownedAttributes")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDataType")][QString::fromLatin1("ownedAttributes")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The Attributes owned by the DataType.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDataType")][QString::fromLatin1("ownedAttributes")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDataType")][QString::fromLatin1("ownedAttributes")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QClassifier::attribute QNamespace::ownedMember");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDataType")][QString::fromLatin1("ownedAttributes")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QClassifier::attributes QNamespace::ownedMembers");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDataType")][QString::fromLatin1("ownedAttributes")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QProperty::datatype");
 
     QClassifier::setPropertyData();
 }

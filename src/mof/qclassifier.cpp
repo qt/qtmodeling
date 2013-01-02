@@ -714,48 +714,56 @@ void QClassifier::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("isAbstract")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("If true, the Classifier does not provide a complete declaration and can typically not be instantiated. An abstract classifier is intended to be used by other classifiers e.g. as the target of general metarelationships or generalization relationships.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("isAbstract")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("isAbstract")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("isAbstract")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("isFinalSpecialization")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("isFinalSpecialization")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("isFinalSpecialization")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("If true, the Classifier cannot be specialized by generalization. Note that this property is preserved through package merge operations; that is, the capability to specialize a Classifier (i.e., isFinalSpecialization =false) must be preserved in the resulting Classifier of a package merge operation where a Classifier with isFinalSpecialization =false is merged with a matching Classifier with isFinalSpecialization =true: the resulting Classifier will have isFinalSpecialization =false.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("isFinalSpecialization")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("isFinalSpecialization")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("isFinalSpecialization")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("attributes")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("attributes")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = true;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("attributes")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Refers to all of the Properties that are direct (i.e. not inherited or imported) attributes of the classifier.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("attributes")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("attributes")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QClassifier::feature");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("attributes")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QClassifier::features");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("attributes")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("features")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("features")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = true;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("features")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies each feature defined in the classifier.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("features")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("features")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamespace::member");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("features")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamespace::members");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("features")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QFeature::featuringClassifier");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("generals")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("generals")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("generals")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the general Classifiers for this Classifier.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("generals")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("generals")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("generals")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("redefinedClassifiers")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("redefinedClassifiers")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("redefinedClassifiers")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Classifiers that are redefined by this Classifier.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("redefinedClassifiers")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("redefinedClassifiers")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QRedefinableElement::redefinedElement");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("redefinedClassifiers")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QRedefinableElement::redefinedElements");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("redefinedClassifiers")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("inheritedMembers")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("inheritedMembers")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("inheritedMembers")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies all elements inherited by this classifier from the general classifiers.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("inheritedMembers")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("inheritedMembers")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamespace::member");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("inheritedMembers")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamespace::members");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("inheritedMembers")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("generalizations")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("generalizations")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("generalizations")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the Generalization relationships for this Classifier. These Generalizations navigaten to more general classifiers in the generalization hierarchy.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("generalizations")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("generalizations")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElement");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("generalizations")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("generalizations")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QGeneralization::specific");
 
     QWrappedObject::setPropertyData();
 }

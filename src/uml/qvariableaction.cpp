@@ -125,6 +125,7 @@ void QVariableAction::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QVariableAction")][QString::fromLatin1("variable")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Variable to be read.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QVariableAction")][QString::fromLatin1("variable")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QVariableAction")][QString::fromLatin1("variable")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QVariableAction")][QString::fromLatin1("variable")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QAction::setPropertyData();
 }

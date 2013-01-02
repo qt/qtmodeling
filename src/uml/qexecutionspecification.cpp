@@ -147,12 +147,14 @@ void QExecutionSpecification::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QExecutionSpecification")][QString::fromLatin1("start")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the OccurrenceSpecification that designates the start of the Action or Behavior");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QExecutionSpecification")][QString::fromLatin1("start")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QExecutionSpecification")][QString::fromLatin1("start")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExecutionSpecification")][QString::fromLatin1("start")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QExecutionSpecification")][QString::fromLatin1("finish")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QExecutionSpecification")][QString::fromLatin1("finish")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QExecutionSpecification")][QString::fromLatin1("finish")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the OccurrenceSpecification that designates the finish of the Action or Behavior.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QExecutionSpecification")][QString::fromLatin1("finish")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QExecutionSpecification")][QString::fromLatin1("finish")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExecutionSpecification")][QString::fromLatin1("finish")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QInteractionFragment::setPropertyData();
 }

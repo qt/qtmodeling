@@ -204,19 +204,22 @@ void QSlot::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QSlot")][QString::fromLatin1("values")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QSlot")][QString::fromLatin1("values")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The value or values corresponding to the defining feature for the owning instance specification.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QSlot")][QString::fromLatin1("values")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QSlot")][QString::fromLatin1("values")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElement");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QSlot")][QString::fromLatin1("values")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QSlot")][QString::fromLatin1("values")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QSlot")][QString::fromLatin1("definingFeature")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QSlot")][QString::fromLatin1("definingFeature")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QSlot")][QString::fromLatin1("definingFeature")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The structural feature that specifies the values that may be held by the slot.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QSlot")][QString::fromLatin1("definingFeature")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QSlot")][QString::fromLatin1("definingFeature")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QSlot")][QString::fromLatin1("definingFeature")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QSlot")][QString::fromLatin1("owningInstance")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QSlot")][QString::fromLatin1("owningInstance")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QSlot")][QString::fromLatin1("owningInstance")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The instance specification that owns this slot.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QSlot")][QString::fromLatin1("owningInstance")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QSlot")][QString::fromLatin1("owningInstance")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::owner");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QSlot")][QString::fromLatin1("owningInstance")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QInstanceSpecification::slot");
 
     QElement::setPropertyData();
 }

@@ -160,18 +160,21 @@ void QImage::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QImage")][QString::fromLatin1("format")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("This indicates the format of the content - which is how the string content should be interpreted. The following values are reserved: SVG, GIF, PNG, JPG, WMF, EMF, BMP. In addition the prefix 'MIME: ' is also reserved. This option can be used as an alternative to express the reserved values above, for example \"SVG\" could instead be expressed as \"MIME: image/svg+xml\".");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QImage")][QString::fromLatin1("format")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QImage")][QString::fromLatin1("format")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QImage")][QString::fromLatin1("format")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QImage")][QString::fromLatin1("location")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QImage")][QString::fromLatin1("location")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QImage")][QString::fromLatin1("location")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("This contains a location that can be used by a tool to locate the image as an alternative to embedding it in the stereotype.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QImage")][QString::fromLatin1("location")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QImage")][QString::fromLatin1("location")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QImage")][QString::fromLatin1("location")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QImage")][QString::fromLatin1("content")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QImage")][QString::fromLatin1("content")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QImage")][QString::fromLatin1("content")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("This contains the serialization of the image according to the format. The value could represent a bitmap, image such as a GIF file, or drawing 'instructions' using a standard such as Scalable Vector Graphic (SVG) (which is XML based).");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QImage")][QString::fromLatin1("content")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QImage")][QString::fromLatin1("content")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QImage")][QString::fromLatin1("content")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QElement::setPropertyData();
 }

@@ -182,18 +182,21 @@ void QDeploymentSpecification::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDeploymentSpecification")][QString::fromLatin1("deploymentLocation")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The location where an Artifact is deployed onto a Node. This is typically a 'directory' or 'memory address'.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDeploymentSpecification")][QString::fromLatin1("deploymentLocation")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDeploymentSpecification")][QString::fromLatin1("deploymentLocation")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDeploymentSpecification")][QString::fromLatin1("deploymentLocation")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDeploymentSpecification")][QString::fromLatin1("executionLocation")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDeploymentSpecification")][QString::fromLatin1("executionLocation")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDeploymentSpecification")][QString::fromLatin1("executionLocation")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The location where a component Artifact executes. This may be a local or remote location.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDeploymentSpecification")][QString::fromLatin1("executionLocation")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDeploymentSpecification")][QString::fromLatin1("executionLocation")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDeploymentSpecification")][QString::fromLatin1("executionLocation")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDeploymentSpecification")][QString::fromLatin1("deployment")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDeploymentSpecification")][QString::fromLatin1("deployment")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDeploymentSpecification")][QString::fromLatin1("deployment")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The deployment with which the DeploymentSpecification is associated.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDeploymentSpecification")][QString::fromLatin1("deployment")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDeploymentSpecification")][QString::fromLatin1("deployment")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::owner");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDeploymentSpecification")][QString::fromLatin1("deployment")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QDeployment::configuration");
 
     QArtifact::setPropertyData();
 }

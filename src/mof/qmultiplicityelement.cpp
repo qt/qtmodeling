@@ -326,36 +326,42 @@ void QMultiplicityElement::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMultiplicityElement")][QString::fromLatin1("upper")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the upper bound of the multiplicity interval.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMultiplicityElement")][QString::fromLatin1("upper")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMultiplicityElement")][QString::fromLatin1("upper")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMultiplicityElement")][QString::fromLatin1("upper")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMultiplicityElement")][QString::fromLatin1("isUnique")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMultiplicityElement")][QString::fromLatin1("isUnique")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMultiplicityElement")][QString::fromLatin1("isUnique")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("For a multivalued multiplicity, this attributes specifies whether the values in an instantiation of this element are unique.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMultiplicityElement")][QString::fromLatin1("isUnique")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMultiplicityElement")][QString::fromLatin1("isUnique")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMultiplicityElement")][QString::fromLatin1("isUnique")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMultiplicityElement")][QString::fromLatin1("isOrdered")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMultiplicityElement")][QString::fromLatin1("isOrdered")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMultiplicityElement")][QString::fromLatin1("isOrdered")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("For a multivalued multiplicity, this attribute specifies whether the values in an instantiation of this element are sequentially ordered.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMultiplicityElement")][QString::fromLatin1("isOrdered")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMultiplicityElement")][QString::fromLatin1("isOrdered")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMultiplicityElement")][QString::fromLatin1("isOrdered")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMultiplicityElement")][QString::fromLatin1("lower")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMultiplicityElement")][QString::fromLatin1("lower")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMultiplicityElement")][QString::fromLatin1("lower")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the lower bound of the multiplicity interval.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMultiplicityElement")][QString::fromLatin1("lower")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMultiplicityElement")][QString::fromLatin1("lower")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMultiplicityElement")][QString::fromLatin1("lower")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMultiplicityElement")][QString::fromLatin1("upperValue")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMultiplicityElement")][QString::fromLatin1("upperValue")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMultiplicityElement")][QString::fromLatin1("upperValue")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The specification of the upper bound for this multiplicity.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMultiplicityElement")][QString::fromLatin1("upperValue")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMultiplicityElement")][QString::fromLatin1("upperValue")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElement");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMultiplicityElement")][QString::fromLatin1("upperValue")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMultiplicityElement")][QString::fromLatin1("upperValue")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMultiplicityElement")][QString::fromLatin1("lowerValue")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMultiplicityElement")][QString::fromLatin1("lowerValue")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMultiplicityElement")][QString::fromLatin1("lowerValue")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The specification of the lower bound for this multiplicity.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMultiplicityElement")][QString::fromLatin1("lowerValue")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMultiplicityElement")][QString::fromLatin1("lowerValue")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElement");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMultiplicityElement")][QString::fromLatin1("lowerValue")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMultiplicityElement")][QString::fromLatin1("lowerValue")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QElement::setPropertyData();
 }
