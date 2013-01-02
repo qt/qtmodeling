@@ -8,6 +8,7 @@
 #include <QtUml/QClass>
 #include <QtUml/QComponent>
 #include <QtUml/QComponentRealization>
+#include <QtUml/QGeneralization>
 
 #include <QtMof/QXmiWriter>
 using QtMof::QXmiWriter;
@@ -35,11 +36,20 @@ int main ()
     directionIn->setName("DirectionIn");
     enumeration->addOwnedLiteral(directionIn);
 
+    QWrappedObjectPointer<QClass> class2_ = new QClass;
+    class2_->setName("Person");
+    class2_->setAbstract(true);
+
     QWrappedObjectPointer<QClass> class_ = new QClass;
     class_->setName("Student");
     class_->setAbstract(false);
 
+    QWrappedObjectPointer<QGeneralization> generalization = new QGeneralization;
+    generalization->setGeneral(class2_);
+    class_->addGeneralization(generalization);
+
     package->addOwnedType(enumeration);
+    package->addOwnedType(class2_);
     package->addOwnedType(class_);
 
     model->addNestedPackage(package);

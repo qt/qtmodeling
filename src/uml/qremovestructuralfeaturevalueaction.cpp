@@ -164,12 +164,14 @@ void QRemoveStructuralFeatureValueAction::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QRemoveStructuralFeatureValueAction")][QString::fromLatin1("isRemoveDuplicates")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies whether to remove duplicates of the value in nonunique structural features.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QRemoveStructuralFeatureValueAction")][QString::fromLatin1("isRemoveDuplicates")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QRemoveStructuralFeatureValueAction")][QString::fromLatin1("isRemoveDuplicates")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QRemoveStructuralFeatureValueAction")][QString::fromLatin1("isRemoveDuplicates")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QRemoveStructuralFeatureValueAction")][QString::fromLatin1("removeAt")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QRemoveStructuralFeatureValueAction")][QString::fromLatin1("removeAt")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QRemoveStructuralFeatureValueAction")][QString::fromLatin1("removeAt")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the position of an existing value to remove in ordered nonunique structural features. The type of the pin is UnlimitedNatural, but the value cannot be zero or unlimited.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QRemoveStructuralFeatureValueAction")][QString::fromLatin1("removeAt")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QRemoveStructuralFeatureValueAction")][QString::fromLatin1("removeAt")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QAction::input");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QRemoveStructuralFeatureValueAction")][QString::fromLatin1("removeAt")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QAction::inputs");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QRemoveStructuralFeatureValueAction")][QString::fromLatin1("removeAt")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWriteStructuralFeatureAction::setPropertyData();
 }

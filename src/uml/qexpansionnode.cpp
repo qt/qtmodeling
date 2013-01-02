@@ -163,12 +163,14 @@ void QExpansionNode::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionNode")][QString::fromLatin1("regionAsOutput")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The expansion region for which the node is an output.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionNode")][QString::fromLatin1("regionAsOutput")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionNode")][QString::fromLatin1("regionAsOutput")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionNode")][QString::fromLatin1("regionAsOutput")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QExpansionRegion::outputElement");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionNode")][QString::fromLatin1("regionAsInput")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionNode")][QString::fromLatin1("regionAsInput")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionNode")][QString::fromLatin1("regionAsInput")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The expansion region for which the node is an input.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionNode")][QString::fromLatin1("regionAsInput")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionNode")][QString::fromLatin1("regionAsInput")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionNode")][QString::fromLatin1("regionAsInput")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QExpansionRegion::inputElement");
 
     QObjectNode::setPropertyData();
 }

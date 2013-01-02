@@ -156,12 +156,14 @@ void QLinkEndDestructionData::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLinkEndDestructionData")][QString::fromLatin1("isDestroyDuplicates")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies whether to destroy duplicates of the value in nonunique association ends.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLinkEndDestructionData")][QString::fromLatin1("isDestroyDuplicates")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLinkEndDestructionData")][QString::fromLatin1("isDestroyDuplicates")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLinkEndDestructionData")][QString::fromLatin1("isDestroyDuplicates")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLinkEndDestructionData")][QString::fromLatin1("destroyAt")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLinkEndDestructionData")][QString::fromLatin1("destroyAt")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLinkEndDestructionData")][QString::fromLatin1("destroyAt")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the position of an existing link to be destroyed in ordered nonunique association ends. The type of the pin is UnlimitedNatural, but the value cannot be zero or unlimited.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLinkEndDestructionData")][QString::fromLatin1("destroyAt")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLinkEndDestructionData")][QString::fromLatin1("destroyAt")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLinkEndDestructionData")][QString::fromLatin1("destroyAt")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QLinkEndData::setPropertyData();
 }

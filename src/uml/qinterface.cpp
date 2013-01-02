@@ -350,37 +350,43 @@ void QInterface::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QInterface")][QString::fromLatin1("protocol")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QInterface")][QString::fromLatin1("protocol")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References a protocol state machine specifying the legal sequences of the invocation of the behavioral features described in the interface.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QInterface")][QString::fromLatin1("protocol")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterface")][QString::fromLatin1("protocol")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamespace::ownedMember");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterface")][QString::fromLatin1("protocol")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamespace::ownedMembers");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterface")][QString::fromLatin1("protocol")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QInterface")][QString::fromLatin1("redefinedInterfaces")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QInterface")][QString::fromLatin1("redefinedInterfaces")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QInterface")][QString::fromLatin1("redefinedInterfaces")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References all the Interfaces redefined by this Interface.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QInterface")][QString::fromLatin1("redefinedInterfaces")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterface")][QString::fromLatin1("redefinedInterfaces")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QClassifier::redefinedClassifier");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterface")][QString::fromLatin1("redefinedInterfaces")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QClassifier::redefinedClassifiers");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterface")][QString::fromLatin1("redefinedInterfaces")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QInterface")][QString::fromLatin1("ownedReceptions")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QInterface")][QString::fromLatin1("ownedReceptions")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QInterface")][QString::fromLatin1("ownedReceptions")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Receptions that objects providing this interface are willing to accept.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QInterface")][QString::fromLatin1("ownedReceptions")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterface")][QString::fromLatin1("ownedReceptions")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QClassifier::feature QNamespace::ownedMember");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterface")][QString::fromLatin1("ownedReceptions")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QClassifier::features QNamespace::ownedMembers");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterface")][QString::fromLatin1("ownedReceptions")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QInterface")][QString::fromLatin1("ownedOperations")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QInterface")][QString::fromLatin1("ownedOperations")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QInterface")][QString::fromLatin1("ownedOperations")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The operations owned by the class.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QInterface")][QString::fromLatin1("ownedOperations")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterface")][QString::fromLatin1("ownedOperations")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QClassifier::feature QNamespace::ownedMember");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterface")][QString::fromLatin1("ownedOperations")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QClassifier::features QNamespace::ownedMembers");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterface")][QString::fromLatin1("ownedOperations")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QOperation::interface");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QInterface")][QString::fromLatin1("nestedClassifiers")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QInterface")][QString::fromLatin1("nestedClassifiers")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QInterface")][QString::fromLatin1("nestedClassifiers")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References all the Classifiers that are defined (nested) within the Class.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QInterface")][QString::fromLatin1("nestedClassifiers")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterface")][QString::fromLatin1("nestedClassifiers")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamespace::ownedMember");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterface")][QString::fromLatin1("nestedClassifiers")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamespace::ownedMembers");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterface")][QString::fromLatin1("nestedClassifiers")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QInterface")][QString::fromLatin1("ownedAttributes")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QInterface")][QString::fromLatin1("ownedAttributes")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QInterface")][QString::fromLatin1("ownedAttributes")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The attributes (i.e. the properties) owned by the class.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QInterface")][QString::fromLatin1("ownedAttributes")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterface")][QString::fromLatin1("ownedAttributes")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamespace::ownedMember QClassifier::attribute");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterface")][QString::fromLatin1("ownedAttributes")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamespace::ownedMembers QClassifier::attributes");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterface")][QString::fromLatin1("ownedAttributes")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QProperty::interface");
 
     QClassifier::setPropertyData();
 }

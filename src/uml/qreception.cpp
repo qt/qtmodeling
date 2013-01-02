@@ -125,6 +125,7 @@ void QReception::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QReception")][QString::fromLatin1("signal")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The signal that this reception handles.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QReception")][QString::fromLatin1("signal")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QReception")][QString::fromLatin1("signal")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QReception")][QString::fromLatin1("signal")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QBehavioralFeature::setPropertyData();
 }

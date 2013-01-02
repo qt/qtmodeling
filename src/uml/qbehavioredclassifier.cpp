@@ -219,19 +219,22 @@ void QBehavioredClassifier::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioredClassifier")][QString::fromLatin1("ownedBehaviors")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioredClassifier")][QString::fromLatin1("ownedBehaviors")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References behavior specifications owned by a classifier.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioredClassifier")][QString::fromLatin1("ownedBehaviors")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioredClassifier")][QString::fromLatin1("ownedBehaviors")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamespace::ownedMember");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioredClassifier")][QString::fromLatin1("ownedBehaviors")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamespace::ownedMembers");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioredClassifier")][QString::fromLatin1("ownedBehaviors")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioredClassifier")][QString::fromLatin1("interfaceRealizations")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioredClassifier")][QString::fromLatin1("interfaceRealizations")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioredClassifier")][QString::fromLatin1("interfaceRealizations")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The set of InterfaceRealizations owned by the BehavioredClassifier. Interface realizations reference the Interfaces of which the BehavioredClassifier is an implementation.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioredClassifier")][QString::fromLatin1("interfaceRealizations")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioredClassifier")][QString::fromLatin1("interfaceRealizations")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElement QNamedElement::clientDependency");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioredClassifier")][QString::fromLatin1("interfaceRealizations")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements QNamedElement::clientDependencies");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioredClassifier")][QString::fromLatin1("interfaceRealizations")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QInterfaceRealization::implementingClassifier");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioredClassifier")][QString::fromLatin1("classifierBehavior")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioredClassifier")][QString::fromLatin1("classifierBehavior")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioredClassifier")][QString::fromLatin1("classifierBehavior")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A behavior specification that specifies the behavior of the classifier itself.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioredClassifier")][QString::fromLatin1("classifierBehavior")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioredClassifier")][QString::fromLatin1("classifierBehavior")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QBehavioredClassifier::ownedBehavior");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioredClassifier")][QString::fromLatin1("classifierBehavior")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QBehavioredClassifier::ownedBehaviors");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioredClassifier")][QString::fromLatin1("classifierBehavior")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QClassifier::setPropertyData();
 }

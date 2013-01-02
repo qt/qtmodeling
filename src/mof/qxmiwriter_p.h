@@ -46,6 +46,8 @@
 
 #include "QtMof/QXmiWriter"
 
+#include <QtCore/QStringList>
+
 #include <QtXml/QXmlStreamWriter>
 
 QT_BEGIN_HEADER
@@ -65,6 +67,9 @@ public:
     QWrappedObject *wrappedObject;
     QXmlStreamWriter writer;
     QList<QWrappedObject *> visitedObjects;
+    QHash<QWrappedObject *, QString> idMap;
+    QStringList idStack;
+    QStringList blacklistedOppositeEnds;
 };
 
 QT_END_NAMESPACE_QTMOF

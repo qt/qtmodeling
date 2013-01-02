@@ -137,6 +137,7 @@ void QCreateLinkAction::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QCreateLinkAction")][QString::fromLatin1("endData")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies ends of association and inputs.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QCreateLinkAction")][QString::fromLatin1("endData")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QLinkAction::endData");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QCreateLinkAction")][QString::fromLatin1("endData")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QCreateLinkAction")][QString::fromLatin1("endData")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWriteLinkAction::setPropertyData();
 }

@@ -171,18 +171,21 @@ void QLink::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLink")][QString::fromLatin1("association")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLink")][QString::fromLatin1("association")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLink")][QString::fromLatin1("association")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLink")][QString::fromLatin1("association")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLink")][QString::fromLatin1("secondElement")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLink")][QString::fromLatin1("secondElement")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLink")][QString::fromLatin1("secondElement")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLink")][QString::fromLatin1("secondElement")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLink")][QString::fromLatin1("secondElement")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLink")][QString::fromLatin1("secondElement")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLink")][QString::fromLatin1("firstElement")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLink")][QString::fromLatin1("firstElement")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLink")][QString::fromLatin1("firstElement")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLink")][QString::fromLatin1("firstElement")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLink")][QString::fromLatin1("firstElement")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLink")][QString::fromLatin1("firstElement")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QMofObject::setPropertyData();
 }

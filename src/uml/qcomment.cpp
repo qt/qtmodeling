@@ -153,12 +153,14 @@ void QComment::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QComment")][QString::fromLatin1("body")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies a string that is the comment.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QComment")][QString::fromLatin1("body")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QComment")][QString::fromLatin1("body")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QComment")][QString::fromLatin1("body")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QComment")][QString::fromLatin1("annotatedElements")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QComment")][QString::fromLatin1("annotatedElements")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QComment")][QString::fromLatin1("annotatedElements")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Element(s) being commented.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QComment")][QString::fromLatin1("annotatedElements")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QComment")][QString::fromLatin1("annotatedElements")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QComment")][QString::fromLatin1("annotatedElements")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QElement::setPropertyData();
 }

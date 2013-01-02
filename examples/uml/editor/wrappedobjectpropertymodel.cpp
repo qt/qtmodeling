@@ -146,7 +146,11 @@ QVariant WrappedObjectPropertyModel::data(const QModelIndex &index, int role) co
         case Qt::ToolTipRole: {
             QMetaPropertyInfo *metaPropertyInfo = static_cast<QMetaPropertyInfo *>(index.internalPointer());
             if (metaPropertyInfo) {
-                QString toolTip = QWrappedObject::propertyData(QString::fromLatin1(metaPropertyInfo->propertyMetaObject->className()), metaPropertyInfo->metaProperty, QtWrappedObjects::QtWrappedObjects::DocumentationRole).toString().remove(QRegularExpression(".$"));
+                QString toolTip = QWrappedObject::propertyData(QString::fromLatin1(metaPropertyInfo->propertyMetaObject->className()), metaPropertyInfo->metaProperty, QtWrappedObjects::QtWrappedObjects::DocumentationRole).toString().remove(QRegularExpression(".$")).append(".");
+                if (QWrappedObject::propertyData(QString::fromLatin1(metaPropertyInfo->propertyMetaObject->className()), metaPropertyInfo->metaProperty, QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole).toBool())
+                    toolTip += QString::fromLatin1(" This is a derived union property.");
+                else if (!metaPropertyInfo->metaProperty.isStored())
+                    toolTip += QString::fromLatin1(" This is a derived property.");
                 int i = 50;
                 while (i < toolTip.length()) {
                     toolTip = toolTip.replace(toolTip.lastIndexOf(" ", i), 1, "\n");
@@ -164,6 +168,9 @@ QVariant WrappedObjectPropertyModel::data(const QModelIndex &index, int role) co
                 QString subsettedProperties = QWrappedObject::propertyData(QString::fromLatin1(metaPropertyInfo->propertyMetaObject->className()), metaPropertyInfo->metaProperty, QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole).toString();
                 if (!subsettedProperties.isEmpty())
                     toolTip += QString("\nSubsets: %1").arg(subsettedProperties);
+                QString oppositeEnd = QWrappedObject::propertyData(QString::fromLatin1(metaPropertyInfo->propertyMetaObject->className()), metaPropertyInfo->metaProperty, QtWrappedObjects::QtWrappedObjects::OppositeEndRole).toString();
+                if (!oppositeEnd.isEmpty())
+                    toolTip += QString("\nOpposite end: %1").arg(oppositeEnd);
                 return toolTip;
             }
             else {

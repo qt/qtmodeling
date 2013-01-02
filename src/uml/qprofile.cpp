@@ -181,13 +181,15 @@ void QProfile::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QProfile")][QString::fromLatin1("metamodelReferences")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QProfile")][QString::fromLatin1("metamodelReferences")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References a package containing (directly or indirectly) metaclasses that may be extended.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QProfile")][QString::fromLatin1("metamodelReferences")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QProfile")][QString::fromLatin1("metamodelReferences")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamespace::packageImport");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProfile")][QString::fromLatin1("metamodelReferences")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamespace::packageImports");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProfile")][QString::fromLatin1("metamodelReferences")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QProfile")][QString::fromLatin1("metaclassReferences")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QProfile")][QString::fromLatin1("metaclassReferences")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QProfile")][QString::fromLatin1("metaclassReferences")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References a metaclass that may be extended.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QProfile")][QString::fromLatin1("metaclassReferences")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QProfile")][QString::fromLatin1("metaclassReferences")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamespace::elementImport");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProfile")][QString::fromLatin1("metaclassReferences")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamespace::elementImports");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProfile")][QString::fromLatin1("metaclassReferences")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QPackage::setPropertyData();
 }

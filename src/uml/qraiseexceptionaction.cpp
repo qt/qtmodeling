@@ -132,7 +132,8 @@ void QRaiseExceptionAction::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QRaiseExceptionAction")][QString::fromLatin1("exception")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QRaiseExceptionAction")][QString::fromLatin1("exception")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An input pin whose value becomes an exception object.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QRaiseExceptionAction")][QString::fromLatin1("exception")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QRaiseExceptionAction")][QString::fromLatin1("exception")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QAction::input");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QRaiseExceptionAction")][QString::fromLatin1("exception")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QAction::inputs");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QRaiseExceptionAction")][QString::fromLatin1("exception")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QAction::setPropertyData();
 }

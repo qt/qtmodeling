@@ -135,8 +135,9 @@ void QSequenceNode::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QSequenceNode")][QString::fromLatin1("executableNodes")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QSequenceNode")][QString::fromLatin1("executableNodes")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QSequenceNode")][QString::fromLatin1("executableNodes")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An ordered set of executable nodes.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QSequenceNode")][QString::fromLatin1("executableNodes")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QStructuredActivityNode::node");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QSequenceNode")][QString::fromLatin1("executableNodes")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QStructuredActivityNode::nodes");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QSequenceNode")][QString::fromLatin1("executableNodes")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QSequenceNode")][QString::fromLatin1("executableNodes")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QStructuredActivityNode::setPropertyData();
 }

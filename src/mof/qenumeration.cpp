@@ -145,7 +145,8 @@ void QEnumeration::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QEnumeration")][QString::fromLatin1("ownedLiterals")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QEnumeration")][QString::fromLatin1("ownedLiterals")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The ordered set of literals for this Enumeration.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QEnumeration")][QString::fromLatin1("ownedLiterals")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QEnumeration")][QString::fromLatin1("ownedLiterals")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamespace::ownedMember");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QEnumeration")][QString::fromLatin1("ownedLiterals")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamespace::ownedMembers");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QEnumeration")][QString::fromLatin1("ownedLiterals")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QEnumerationLiteral::enumeration");
 
     QDataType::setPropertyData();
 }

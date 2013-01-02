@@ -191,18 +191,21 @@ void QDestroyObjectAction::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDestroyObjectAction")][QString::fromLatin1("isDestroyLinks")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies whether links in which the object participates are destroyed along with the object.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDestroyObjectAction")][QString::fromLatin1("isDestroyLinks")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDestroyObjectAction")][QString::fromLatin1("isDestroyLinks")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDestroyObjectAction")][QString::fromLatin1("isDestroyLinks")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDestroyObjectAction")][QString::fromLatin1("isDestroyOwnedObjects")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDestroyObjectAction")][QString::fromLatin1("isDestroyOwnedObjects")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDestroyObjectAction")][QString::fromLatin1("isDestroyOwnedObjects")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies whether objects owned by the object are destroyed along with the object.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDestroyObjectAction")][QString::fromLatin1("isDestroyOwnedObjects")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDestroyObjectAction")][QString::fromLatin1("isDestroyOwnedObjects")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDestroyObjectAction")][QString::fromLatin1("isDestroyOwnedObjects")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDestroyObjectAction")][QString::fromLatin1("target")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDestroyObjectAction")][QString::fromLatin1("target")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDestroyObjectAction")][QString::fromLatin1("target")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The input pin providing the object to be destroyed.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDestroyObjectAction")][QString::fromLatin1("target")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDestroyObjectAction")][QString::fromLatin1("target")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QAction::input");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDestroyObjectAction")][QString::fromLatin1("target")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QAction::inputs");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDestroyObjectAction")][QString::fromLatin1("target")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QAction::setPropertyData();
 }

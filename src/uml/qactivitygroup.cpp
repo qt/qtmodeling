@@ -300,30 +300,35 @@ void QActivityGroup::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityGroup")][QString::fromLatin1("inActivity")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Activity containing the group.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityGroup")][QString::fromLatin1("inActivity")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityGroup")][QString::fromLatin1("inActivity")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::owner");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityGroup")][QString::fromLatin1("inActivity")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QActivity::group");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityGroup")][QString::fromLatin1("containedNodes")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityGroup")][QString::fromLatin1("containedNodes")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = true;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityGroup")][QString::fromLatin1("containedNodes")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Nodes immediately contained in the group.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityGroup")][QString::fromLatin1("containedNodes")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityGroup")][QString::fromLatin1("containedNodes")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityGroup")][QString::fromLatin1("containedNodes")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QActivityNode::inGroup");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityGroup")][QString::fromLatin1("subgroups")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityGroup")][QString::fromLatin1("subgroups")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = true;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityGroup")][QString::fromLatin1("subgroups")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Groups immediately contained in the group.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityGroup")][QString::fromLatin1("subgroups")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityGroup")][QString::fromLatin1("subgroups")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElement");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityGroup")][QString::fromLatin1("subgroups")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityGroup")][QString::fromLatin1("subgroups")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QActivityGroup::superGroup");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityGroup")][QString::fromLatin1("containedEdges")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityGroup")][QString::fromLatin1("containedEdges")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = true;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityGroup")][QString::fromLatin1("containedEdges")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Edges immediately contained in the group.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityGroup")][QString::fromLatin1("containedEdges")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityGroup")][QString::fromLatin1("containedEdges")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityGroup")][QString::fromLatin1("containedEdges")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QActivityEdge::inGroup");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityGroup")][QString::fromLatin1("superGroup")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityGroup")][QString::fromLatin1("superGroup")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = true;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityGroup")][QString::fromLatin1("superGroup")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Group immediately containing the group.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityGroup")][QString::fromLatin1("superGroup")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityGroup")][QString::fromLatin1("superGroup")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::owner");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityGroup")][QString::fromLatin1("superGroup")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QActivityGroup::subgroup");
 
     QNamedElement::setPropertyData();
 }

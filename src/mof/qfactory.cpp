@@ -190,6 +190,7 @@ void QFactory::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QFactory")][QString::fromLatin1("package")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QFactory")][QString::fromLatin1("package")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QFactory")][QString::fromLatin1("package")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QFactory")][QString::fromLatin1("package")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QElement::setPropertyData();
 }

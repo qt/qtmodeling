@@ -164,12 +164,14 @@ void QJoinNode::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QJoinNode")][QString::fromLatin1("isCombineDuplicate")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Tells whether tokens having objects with the same identity are combined into one by the join.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QJoinNode")][QString::fromLatin1("isCombineDuplicate")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QJoinNode")][QString::fromLatin1("isCombineDuplicate")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QJoinNode")][QString::fromLatin1("isCombineDuplicate")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QJoinNode")][QString::fromLatin1("joinSpec")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QJoinNode")][QString::fromLatin1("joinSpec")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QJoinNode")][QString::fromLatin1("joinSpec")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A specification giving the conditions under which the join with emit a token. Default is \"and\".");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QJoinNode")][QString::fromLatin1("joinSpec")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QJoinNode")][QString::fromLatin1("joinSpec")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElement");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QJoinNode")][QString::fromLatin1("joinSpec")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QJoinNode")][QString::fromLatin1("joinSpec")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QControlNode::setPropertyData();
 }

@@ -377,13 +377,15 @@ void QDependency::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDependency")][QString::fromLatin1("clients")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDependency")][QString::fromLatin1("clients")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The element(s) dependent on the supplier element(s). In some cases (such as a Trace Abstraction) the assignment of direction (that is, the designation of the client element) is at the discretion of the modeler, and is a stipulation.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDependency")][QString::fromLatin1("clients")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDependency")][QString::fromLatin1("clients")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QDirectedRelationship::source");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDependency")][QString::fromLatin1("clients")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QDirectedRelationship::sources");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDependency")][QString::fromLatin1("clients")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QNamedElement::clientDependency");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDependency")][QString::fromLatin1("suppliers")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDependency")][QString::fromLatin1("suppliers")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDependency")][QString::fromLatin1("suppliers")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The element(s) independent of the client element(s), in the same respect and the same dependency relationship. In some directed dependency relationships (such as Refinement Abstractions), a common convention in the domain of class-based OO software is to put the more abstract element in this role. Despite this convention, users of UML may stipulate a sense of dependency suitable for their domain, which makes a more abstract element dependent on that which is more specific.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDependency")][QString::fromLatin1("suppliers")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDependency")][QString::fromLatin1("suppliers")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QDirectedRelationship::target");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDependency")][QString::fromLatin1("suppliers")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QDirectedRelationship::targets");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDependency")][QString::fromLatin1("suppliers")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::setPropertyData();
 }

@@ -138,6 +138,7 @@ void QLiteralString::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLiteralString")][QString::fromLatin1("value")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The specified String value.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLiteralString")][QString::fromLatin1("value")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLiteralString")][QString::fromLatin1("value")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QLiteralString")][QString::fromLatin1("value")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QLiteralSpecification::setPropertyData();
 }
