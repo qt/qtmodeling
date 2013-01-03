@@ -47,8 +47,7 @@
 #include "QtMof/QXmiWriter"
 
 #include <QtCore/QStringList>
-
-#include <QtXml/QXmlStreamWriter>
+#include <QtCore/QXmlStreamWriter>
 
 QT_BEGIN_HEADER
 
