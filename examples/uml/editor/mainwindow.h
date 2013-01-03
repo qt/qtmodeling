@@ -23,6 +23,7 @@ namespace QtUml {
 using QtUml::QModel;
 
 class QTreeWidgetItem;
+class QItemSelection;
 
 class MainWindow : public QMainWindow
 {
@@ -36,10 +37,8 @@ protected:
      void contextMenuEvent(QContextMenuEvent *event);
 
 private Q_SLOTS:
-    void on_modelExplorer_currentItemChanged(QTreeWidgetItem *current, QTreeWidgetItem *previous);
-    void populateModelExplorer(QWrappedObject *element, QTreeWidgetItem *parent = 0);
+    void modelInspectorSelectionChanged(const QItemSelection &selected, const QItemSelection &deselected);
     void handleAddMethod();
-    void refreshModel();
 
 private:
     Ui::MainWindow *ui;
