@@ -1,7 +1,7 @@
 load(qt_build_config)
 
 TARGET = QtMof
-QT = wrappedobjects-private core-private
+QT = wrappedobjects-private core-private xml
 
 load(qt_module)
 
