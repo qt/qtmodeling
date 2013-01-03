@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>690</width>
+    <width>704</width>
     <height>447</height>
    </rect>
   </property>
@@ -21,7 +21,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>690</width>
+     <width>704</width>
      <height>20</height>
     </rect>
    </property>
@@ -35,9 +35,9 @@
    </attribute>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
-  <widget class="QDockWidget" name="dckExplorer">
+  <widget class="QDockWidget" name="dckInspector">
    <property name="windowTitle">
-    <string>Explorer</string>
+    <string>Model Inspector</string>
    </property>
    <attribute name="dockWidgetArea">
     <number>1</number>
@@ -45,12 +45,19 @@
    <widget class="QWidget" name="dockWidgetContents">
     <layout class="QGridLayout" name="gridLayout">
      <item row="0" column="0">
-      <widget class="QTreeWidget" name="modelExplorer">
-       <column>
-        <property name="text">
-         <string>Model</string>
-        </property>
-       </column>
+      <widget class="QTreeView" name="modelInspector">
+       <property name="minimumSize">
+        <size>
+         <width>320</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="alternatingRowColors">
+        <bool>true</bool>
+       </property>
+       <property name="uniformRowHeights">
+        <bool>true</bool>
+       </property>
       </widget>
      </item>
     </layout>
@@ -75,9 +82,6 @@
        </property>
        <property name="editTriggers">
         <set>QAbstractItemView::AllEditTriggers</set>
-       </property>
-       <property name="defaultDropAction">
-        <enum>Qt::TargetMoveAction</enum>
        </property>
        <property name="alternatingRowColors">
         <bool>true</bool>
