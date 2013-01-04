@@ -82,7 +82,7 @@ class Q_UML_EXPORT QObjectNode : public QWrappedObject
     Q_DECLARE_PRIVATE(QObjectNode)
 
 public:
-    Q_INVOKABLE explicit QObjectNode(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QObjectNode(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QObjectNode();
 
     // Association ends from aggregated QElement
@@ -162,7 +162,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QObjectNode(QObjectNodePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QObjectNode(QObjectNodePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 
 private:
     QActivityNode *_wrappedActivityNode;

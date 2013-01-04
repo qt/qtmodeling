@@ -59,14 +59,14 @@ QMofObjectPrivate::~QMofObjectPrivate()
 }
 
 
-QMofObject::QMofObject(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(*new QMofObjectPrivate, parent, wrapper)
+QMofObject::QMofObject(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(*new QMofObjectPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QMofObject::QMofObject(QMofObjectPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(dd, parent, wrapper)
+QMofObject::QMofObject(QMofObjectPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(dd, wrapper, parent)
 {
     setPropertyData();
 }

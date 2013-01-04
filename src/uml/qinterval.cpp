@@ -64,14 +64,14 @@ QIntervalPrivate::~QIntervalPrivate()
     \brief An interval defines the range between two value specifications.
  */
 
-QInterval::QInterval(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QValueSpecification(*new QIntervalPrivate, parent, wrapper)
+QInterval::QInterval(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QValueSpecification(*new QIntervalPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QInterval::QInterval(QIntervalPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QValueSpecification(dd, parent, wrapper)
+QInterval::QInterval(QIntervalPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QValueSpecification(dd, wrapper, parent)
 {
     setPropertyData();
 }

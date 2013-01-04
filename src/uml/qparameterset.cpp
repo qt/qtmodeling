@@ -65,14 +65,14 @@ QParameterSetPrivate::~QParameterSetPrivate()
     \brief A parameter set is an element that provides alternative sets of inputs or outputs that a behavior may use.
  */
 
-QParameterSet::QParameterSet(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QNamedElement(*new QParameterSetPrivate, parent, wrapper)
+QParameterSet::QParameterSet(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QNamedElement(*new QParameterSetPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QParameterSet::QParameterSet(QParameterSetPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QNamedElement(dd, parent, wrapper)
+QParameterSet::QParameterSet(QParameterSetPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QNamedElement(dd, wrapper, parent)
 {
     setPropertyData();
 }

@@ -65,14 +65,14 @@ QReceptionPrivate::~QReceptionPrivate()
     \brief A reception is a declaration stating that a classifier is prepared to react to the receipt of a signal. A reception designates a signal and specifies the expected behavioral response. The details of handling a signal are specified by the behavior associated with the reception or the classifier itself.
  */
 
-QReception::QReception(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QBehavioralFeature(*new QReceptionPrivate, parent, wrapper)
+QReception::QReception(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QBehavioralFeature(*new QReceptionPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QReception::QReception(QReceptionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QBehavioralFeature(dd, parent, wrapper)
+QReception::QReception(QReceptionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QBehavioralFeature(dd, wrapper, parent)
 {
     setPropertyData();
 }

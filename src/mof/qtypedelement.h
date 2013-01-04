@@ -67,7 +67,7 @@ class Q_MOF_EXPORT QTypedElement : public QNamedElement
     Q_DECLARE_PRIVATE(QTypedElement)
 
 public:
-    Q_INVOKABLE explicit QTypedElement(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QTypedElement(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QTypedElement();
 
     // Association ends from QTypedElement
@@ -77,7 +77,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QTypedElement(QTypedElementPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QTypedElement(QTypedElementPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTMOF

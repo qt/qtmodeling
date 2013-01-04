@@ -62,14 +62,14 @@ QAnyReceiveEventPrivate::~QAnyReceiveEventPrivate()
     \brief A trigger for an AnyReceiveEvent is triggered by the receipt of any message that is not explicitly handled by any related trigger.
  */
 
-QAnyReceiveEvent::QAnyReceiveEvent(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QMessageEvent(*new QAnyReceiveEventPrivate, parent, wrapper)
+QAnyReceiveEvent::QAnyReceiveEvent(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QMessageEvent(*new QAnyReceiveEventPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QAnyReceiveEvent::QAnyReceiveEvent(QAnyReceiveEventPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QMessageEvent(dd, parent, wrapper)
+QAnyReceiveEvent::QAnyReceiveEvent(QAnyReceiveEventPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QMessageEvent(dd, wrapper, parent)
 {
     setPropertyData();
 }

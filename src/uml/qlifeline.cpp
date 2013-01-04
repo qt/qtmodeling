@@ -72,14 +72,14 @@ QLifelinePrivate::~QLifelinePrivate()
     \brief A lifeline represents an individual participant in the interaction. While parts and structural features may have multiplicity greater than 1, lifelines represent only one interacting entity.
  */
 
-QLifeline::QLifeline(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QNamedElement(*new QLifelinePrivate, parent, wrapper)
+QLifeline::QLifeline(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QNamedElement(*new QLifelinePrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QLifeline::QLifeline(QLifelinePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QNamedElement(dd, parent, wrapper)
+QLifeline::QLifeline(QLifelinePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QNamedElement(dd, wrapper, parent)
 {
     setPropertyData();
 }

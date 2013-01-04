@@ -65,14 +65,14 @@ QCallEventPrivate::~QCallEventPrivate()
     \brief A call event models the receipt by an object of a message invoking a call of an operation.
  */
 
-QCallEvent::QCallEvent(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QMessageEvent(*new QCallEventPrivate, parent, wrapper)
+QCallEvent::QCallEvent(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QMessageEvent(*new QCallEventPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QCallEvent::QCallEvent(QCallEventPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QMessageEvent(dd, parent, wrapper)
+QCallEvent::QCallEvent(QCallEventPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QMessageEvent(dd, wrapper, parent)
 {
     setPropertyData();
 }

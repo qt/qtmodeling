@@ -68,7 +68,7 @@ class Q_UML_EXPORT QGeneralOrdering : public QNamedElement
     Q_DECLARE_PRIVATE(QGeneralOrdering)
 
 public:
-    Q_INVOKABLE explicit QGeneralOrdering(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QGeneralOrdering(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QGeneralOrdering();
 
     // Association ends from QGeneralOrdering
@@ -80,7 +80,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QGeneralOrdering(QGeneralOrderingPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QGeneralOrdering(QGeneralOrderingPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

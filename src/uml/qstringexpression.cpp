@@ -63,18 +63,18 @@ QStringExpressionPrivate::~QStringExpressionPrivate()
     \brief An expression that specifies a string value that is derived by concatenating a set of sub string expressions, some of which might be template parameters.
  */
 
-QStringExpression::QStringExpression(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(*new QStringExpressionPrivate, parent, wrapper),
-    _wrappedExpression(new QExpression(this, this)),
-    _wrappedTemplateableElement(new QTemplateableElement(this, this))
+QStringExpression::QStringExpression(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(*new QStringExpressionPrivate, wrapper, parent),
+    _wrappedExpression(new QExpression(this)),
+    _wrappedTemplateableElement(new QTemplateableElement(this))
 {
     setPropertyData();
 }
 
-QStringExpression::QStringExpression(QStringExpressionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(dd, parent, wrapper),
-    _wrappedExpression(new QExpression(this, this)),
-    _wrappedTemplateableElement(new QTemplateableElement(this, this))
+QStringExpression::QStringExpression(QStringExpressionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(dd, wrapper, parent),
+    _wrappedExpression(new QExpression(this)),
+    _wrappedTemplateableElement(new QTemplateableElement(this))
 {
     setPropertyData();
 }

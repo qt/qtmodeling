@@ -62,14 +62,14 @@ QCentralBufferNodePrivate::~QCentralBufferNodePrivate()
     \brief A central buffer node is an object node for managing flows from multiple sources and destinations.
  */
 
-QCentralBufferNode::QCentralBufferNode(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QObjectNode(*new QCentralBufferNodePrivate, parent, wrapper)
+QCentralBufferNode::QCentralBufferNode(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QObjectNode(*new QCentralBufferNodePrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QCentralBufferNode::QCentralBufferNode(QCentralBufferNodePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QObjectNode(dd, parent, wrapper)
+QCentralBufferNode::QCentralBufferNode(QCentralBufferNodePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QObjectNode(dd, wrapper, parent)
 {
     setPropertyData();
 }

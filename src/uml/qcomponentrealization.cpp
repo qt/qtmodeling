@@ -66,14 +66,14 @@ QComponentRealizationPrivate::~QComponentRealizationPrivate()
     \brief The realization concept is specialized to (optionally) define the classifiers that realize the contract offered by a component in terms of its provided and required interfaces. The component forms an abstraction from these various classifiers.
  */
 
-QComponentRealization::QComponentRealization(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QRealization(*new QComponentRealizationPrivate, parent, wrapper)
+QComponentRealization::QComponentRealization(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QRealization(*new QComponentRealizationPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QComponentRealization::QComponentRealization(QComponentRealizationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QRealization(dd, parent, wrapper)
+QComponentRealization::QComponentRealization(QComponentRealizationPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QRealization(dd, wrapper, parent)
 {
     setPropertyData();
 }

@@ -67,14 +67,14 @@ QValueSpecificationActionPrivate::~QValueSpecificationActionPrivate()
     \brief A value specification action is an action that evaluates a value specification.
  */
 
-QValueSpecificationAction::QValueSpecificationAction(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QAction(*new QValueSpecificationActionPrivate, parent, wrapper)
+QValueSpecificationAction::QValueSpecificationAction(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QAction(*new QValueSpecificationActionPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QValueSpecificationAction::QValueSpecificationAction(QValueSpecificationActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QAction(dd, parent, wrapper)
+QValueSpecificationAction::QValueSpecificationAction(QValueSpecificationActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QAction(dd, wrapper, parent)
 {
     setPropertyData();
 }

@@ -70,14 +70,14 @@ QTemplateParameterPrivate::~QTemplateParameterPrivate()
     \brief A template parameter exposes a parameterable element as a formal template parameter of a template.
  */
 
-QTemplateParameter::QTemplateParameter(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QElement(*new QTemplateParameterPrivate, parent, wrapper)
+QTemplateParameter::QTemplateParameter(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QElement(*new QTemplateParameterPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QTemplateParameter::QTemplateParameter(QTemplateParameterPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QElement(dd, parent, wrapper)
+QTemplateParameter::QTemplateParameter(QTemplateParameterPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QElement(dd, wrapper, parent)
 {
     setPropertyData();
 }

@@ -62,13 +62,13 @@ class Q_UML_EXPORT QMergeNode : public QControlNode
     Q_DECLARE_PRIVATE(QMergeNode)
 
 public:
-    Q_INVOKABLE explicit QMergeNode(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QMergeNode(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QMergeNode();
     virtual void registerMetaTypes() const;
     virtual void setPropertyData();
 
 protected:
-    explicit QMergeNode(QMergeNodePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QMergeNode(QMergeNodePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

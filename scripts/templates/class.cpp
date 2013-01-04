@@ -675,24 +675,24 @@ ${accessor.return}${class.name}Private::${accessor.name}([%- FOREACH parameter I
  */
 [%- END %]
 
-${class.name}::${class.name}(QWrappedObject *parent, QWrappedObject *wrapper) :
-[% IF class.superclass.size == 1-%]    ${class.superclass.0.name}[%- ELSE -%]    QWrappedObject[% END %](*new ${class.name}Private, parent, wrapper)
+${class.name}::${class.name}(QWrappedObject *wrapper, QWrappedObject *parent) :
+[% IF class.superclass.size == 1-%]    ${class.superclass.0.name}[%- ELSE -%]    QWrappedObject[% END %](*new ${class.name}Private, wrapper, parent)
 [%- IF class.superclass and class.superclass.size > 1 -%]
 [%- FOREACH parentClass IN class.superclass -%]
 ,
-    _wrapped${parentClass.name.replace('^Q', '')}(new ${parentClass.name}(this, this))
+    _wrapped${parentClass.name.replace('^Q', '')}(new ${parentClass.name}(this))
 [%- END -%]
 [%- END %]
 {
     setPropertyData();
 }
 
-${class.name}::${class.name}(${class.name}Private &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-[% IF class.superclass.size == 1-%]    ${class.superclass.0.name}(dd, parent, wrapper)[%- ELSE -%]    QWrappedObject(dd, parent, wrapper)[%- END -%]
+${class.name}::${class.name}(${class.name}Private &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+[% IF class.superclass.size == 1-%]    ${class.superclass.0.name}(dd, wrapper, parent)[%- ELSE -%]    QWrappedObject(dd, wrapper, parent)[%- END -%]
 [%- IF class.superclass and class.superclass.size > 1 -%]
 [%- FOREACH parentClass IN class.superclass -%]
 ,
-    _wrapped${parentClass.name.replace('^Q', '')}(new ${parentClass.name}(this, this))
+    _wrapped${parentClass.name.replace('^Q', '')}(new ${parentClass.name}(this))
 [%- END -%]
 [%- END %]
 {

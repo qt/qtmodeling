@@ -68,14 +68,14 @@ QStateMachinePrivate::~QStateMachinePrivate()
     \brief State machines can be used to express the behavior of part of a system. Behavior is modeled as a traversal of a graph of state nodes interconnected by one or more joined transition arcs that are triggered by the dispatching of series of (event) occurrences. During this traversal, the state machine executes a series of activities associated with various elements of the state machine.
  */
 
-QStateMachine::QStateMachine(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QBehavior(*new QStateMachinePrivate, parent, wrapper)
+QStateMachine::QStateMachine(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QBehavior(*new QStateMachinePrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QStateMachine::QStateMachine(QStateMachinePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QBehavior(dd, parent, wrapper)
+QStateMachine::QStateMachine(QStateMachinePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QBehavior(dd, wrapper, parent)
 {
     setPropertyData();
 }

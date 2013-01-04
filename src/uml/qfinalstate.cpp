@@ -62,14 +62,14 @@ QFinalStatePrivate::~QFinalStatePrivate()
     \brief A special kind of state signifying that the enclosing region is completed. If the enclosing region is directly contained in a state machine and all other regions in the state machine also are completed, then it means that the entire state machine is completed.
  */
 
-QFinalState::QFinalState(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QState(*new QFinalStatePrivate, parent, wrapper)
+QFinalState::QFinalState(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QState(*new QFinalStatePrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QFinalState::QFinalState(QFinalStatePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QState(dd, parent, wrapper)
+QFinalState::QFinalState(QFinalStatePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QState(dd, wrapper, parent)
 {
     setPropertyData();
 }

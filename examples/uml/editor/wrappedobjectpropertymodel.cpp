@@ -2,7 +2,6 @@
 
 #include <QtCore/QRegularExpression>
 #include <QtCore/QSize>
-#include <QtCore/QDebug>
 
 #include <QtGui/QFontMetrics>
 #include <QtGui/QBrush>
@@ -19,9 +18,11 @@ WrappedObjectPropertyModel::WrappedObjectPropertyModel(QObject *parent) :
 
 void WrappedObjectPropertyModel::setWrappedObject(QWrappedObject *wrappedObject)
 {
-    beginResetModel();
-    _metaWrappedObject = wrappedObject->metaWrappedObject();
-    endResetModel();
+    if (wrappedObject && _metaWrappedObject != wrappedObject->metaWrappedObject()) {
+        beginResetModel();
+        _metaWrappedObject = wrappedObject->metaWrappedObject();
+        endResetModel();
+    }
 }
 
 QModelIndex WrappedObjectPropertyModel::index(int row, int column, const QModelIndex &parent) const
@@ -199,7 +200,6 @@ bool WrappedObjectPropertyModel::setData(const QModelIndex &index, const QVarian
             }
             if (QString::fromLatin1(metaProperty.name()) == "name")
                 emit dataChanged(index, index);
-            qDebug() << "SETDATA";
             if (metaProperty.read(propertyWrappedObject) != value) {
                 metaPropertyInfo->wasChanged = true;
                 metaProperty.write(propertyWrappedObject, value);

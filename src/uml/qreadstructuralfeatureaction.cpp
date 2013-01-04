@@ -65,14 +65,14 @@ QReadStructuralFeatureActionPrivate::~QReadStructuralFeatureActionPrivate()
     \brief A read structural feature action is a structural feature action that retrieves the values of a structural feature.
  */
 
-QReadStructuralFeatureAction::QReadStructuralFeatureAction(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QStructuralFeatureAction(*new QReadStructuralFeatureActionPrivate, parent, wrapper)
+QReadStructuralFeatureAction::QReadStructuralFeatureAction(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QStructuralFeatureAction(*new QReadStructuralFeatureActionPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QReadStructuralFeatureAction::QReadStructuralFeatureAction(QReadStructuralFeatureActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QStructuralFeatureAction(dd, parent, wrapper)
+QReadStructuralFeatureAction::QReadStructuralFeatureAction(QReadStructuralFeatureActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QStructuralFeatureAction(dd, wrapper, parent)
 {
     setPropertyData();
 }

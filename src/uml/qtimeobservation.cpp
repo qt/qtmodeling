@@ -66,14 +66,14 @@ QTimeObservationPrivate::~QTimeObservationPrivate()
     \brief A time observation is a reference to a time instant during an execution. It points out the element in the model to observe and whether the observation is when this model element is entered or when it is exited.
  */
 
-QTimeObservation::QTimeObservation(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QObservation(*new QTimeObservationPrivate, parent, wrapper)
+QTimeObservation::QTimeObservation(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QObservation(*new QTimeObservationPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QTimeObservation::QTimeObservation(QTimeObservationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QObservation(dd, parent, wrapper)
+QTimeObservation::QTimeObservation(QTimeObservationPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QObservation(dd, wrapper, parent)
 {
     setPropertyData();
 }

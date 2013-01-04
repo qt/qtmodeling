@@ -65,14 +65,14 @@ QChangeEventPrivate::~QChangeEventPrivate()
     \brief A change event models a change in the system configuration that makes a condition true.
  */
 
-QChangeEvent::QChangeEvent(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QEvent(*new QChangeEventPrivate, parent, wrapper)
+QChangeEvent::QChangeEvent(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QEvent(*new QChangeEventPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QChangeEvent::QChangeEvent(QChangeEventPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QEvent(dd, parent, wrapper)
+QChangeEvent::QChangeEvent(QChangeEventPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QEvent(dd, wrapper, parent)
 {
     setPropertyData();
 }

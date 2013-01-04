@@ -72,7 +72,7 @@ class Q_UML_EXPORT QTemplateParameter : public QElement
     Q_DECLARE_PRIVATE(QTemplateParameter)
 
 public:
-    Q_INVOKABLE explicit QTemplateParameter(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QTemplateParameter(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QTemplateParameter();
 
     // Association ends from QTemplateParameter
@@ -90,7 +90,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QTemplateParameter(QTemplateParameterPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QTemplateParameter(QTemplateParameterPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -73,7 +73,7 @@ class Q_UML_EXPORT QCollaboration : public QWrappedObject
     Q_DECLARE_PRIVATE(QCollaboration)
 
 public:
-    Q_INVOKABLE explicit QCollaboration(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QCollaboration(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QCollaboration();
 
     // Association ends from aggregated QElement
@@ -208,7 +208,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QCollaboration(QCollaborationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QCollaboration(QCollaborationPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 
 private:
     QStructuredClassifier *_wrappedStructuredClassifier;

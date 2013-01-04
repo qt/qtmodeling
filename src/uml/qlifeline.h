@@ -78,7 +78,7 @@ class Q_UML_EXPORT QLifeline : public QNamedElement
     Q_DECLARE_PRIVATE(QLifeline)
 
 public:
-    Q_INVOKABLE explicit QLifeline(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QLifeline(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QLifeline();
 
     // Association ends from QLifeline
@@ -97,7 +97,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QLifeline(QLifelinePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QLifeline(QLifelinePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

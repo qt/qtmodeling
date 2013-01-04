@@ -65,14 +65,14 @@ QStartObjectBehaviorActionPrivate::~QStartObjectBehaviorActionPrivate()
     \brief StartObjectBehaviorAction is an action that starts the execution either of a directly instantiated behavior or of the classifier behavior of an object. Argument values may be supplied for the input parameters of the behavior. If the behavior is invoked synchronously, then output values may be obtained for output parameters.
  */
 
-QStartObjectBehaviorAction::QStartObjectBehaviorAction(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QCallAction(*new QStartObjectBehaviorActionPrivate, parent, wrapper)
+QStartObjectBehaviorAction::QStartObjectBehaviorAction(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QCallAction(*new QStartObjectBehaviorActionPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QStartObjectBehaviorAction::QStartObjectBehaviorAction(QStartObjectBehaviorActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QCallAction(dd, parent, wrapper)
+QStartObjectBehaviorAction::QStartObjectBehaviorAction(QStartObjectBehaviorActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QCallAction(dd, wrapper, parent)
 {
     setPropertyData();
 }

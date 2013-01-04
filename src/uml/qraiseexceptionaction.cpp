@@ -65,14 +65,14 @@ QRaiseExceptionActionPrivate::~QRaiseExceptionActionPrivate()
     \brief A raise exception action is an action that causes an exception to occur. The input value becomes the exception object.
  */
 
-QRaiseExceptionAction::QRaiseExceptionAction(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QAction(*new QRaiseExceptionActionPrivate, parent, wrapper)
+QRaiseExceptionAction::QRaiseExceptionAction(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QAction(*new QRaiseExceptionActionPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QRaiseExceptionAction::QRaiseExceptionAction(QRaiseExceptionActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QAction(dd, parent, wrapper)
+QRaiseExceptionAction::QRaiseExceptionAction(QRaiseExceptionActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QAction(dd, wrapper, parent)
 {
     setPropertyData();
 }

@@ -100,14 +100,14 @@ void QActivityNodePrivate::removeInGroup(QActivityGroup *inGroup)
     \brief ActivityNode is an abstract class for points in the flow of an activity connected by edges.
  */
 
-QActivityNode::QActivityNode(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QRedefinableElement(*new QActivityNodePrivate, parent, wrapper)
+QActivityNode::QActivityNode(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QRedefinableElement(*new QActivityNodePrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QActivityNode::QActivityNode(QActivityNodePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QRedefinableElement(dd, parent, wrapper)
+QActivityNode::QActivityNode(QActivityNodePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QRedefinableElement(dd, wrapper, parent)
 {
     setPropertyData();
 }

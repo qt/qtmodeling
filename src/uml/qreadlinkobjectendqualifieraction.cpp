@@ -69,14 +69,14 @@ QReadLinkObjectEndQualifierActionPrivate::~QReadLinkObjectEndQualifierActionPriv
     \brief A read link object end qualifier action is an action that retrieves a qualifier end value from a link object.
  */
 
-QReadLinkObjectEndQualifierAction::QReadLinkObjectEndQualifierAction(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QAction(*new QReadLinkObjectEndQualifierActionPrivate, parent, wrapper)
+QReadLinkObjectEndQualifierAction::QReadLinkObjectEndQualifierAction(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QAction(*new QReadLinkObjectEndQualifierActionPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QReadLinkObjectEndQualifierAction::QReadLinkObjectEndQualifierAction(QReadLinkObjectEndQualifierActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QAction(dd, parent, wrapper)
+QReadLinkObjectEndQualifierAction::QReadLinkObjectEndQualifierAction(QReadLinkObjectEndQualifierActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QAction(dd, wrapper, parent)
 {
     setPropertyData();
 }

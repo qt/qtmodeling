@@ -70,7 +70,7 @@ class Q_UML_EXPORT QManifestation : public QAbstraction
     Q_DECLARE_PRIVATE(QManifestation)
 
 public:
-    Q_INVOKABLE explicit QManifestation(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QManifestation(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QManifestation();
 
     // Association ends from QManifestation
@@ -84,7 +84,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QManifestation(QManifestationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QManifestation(QManifestationPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

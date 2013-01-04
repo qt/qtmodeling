@@ -71,18 +71,18 @@ QRegionPrivate::~QRegionPrivate()
     \brief A region is an orthogonal part of either a composite state or a state machine. It contains states and transitions.
  */
 
-QRegion::QRegion(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(*new QRegionPrivate, parent, wrapper),
-    _wrappedRedefinableElement(new QRedefinableElement(this, this)),
-    _wrappedNamespace(new QNamespace(this, this))
+QRegion::QRegion(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(*new QRegionPrivate, wrapper, parent),
+    _wrappedRedefinableElement(new QRedefinableElement(this)),
+    _wrappedNamespace(new QNamespace(this))
 {
     setPropertyData();
 }
 
-QRegion::QRegion(QRegionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(dd, parent, wrapper),
-    _wrappedRedefinableElement(new QRedefinableElement(this, this)),
-    _wrappedNamespace(new QNamespace(this, this))
+QRegion::QRegion(QRegionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(dd, wrapper, parent),
+    _wrappedRedefinableElement(new QRedefinableElement(this)),
+    _wrappedNamespace(new QNamespace(this))
 {
     setPropertyData();
 }

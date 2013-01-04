@@ -82,7 +82,7 @@ class Q_UML_EXPORT QRegion : public QWrappedObject
     Q_DECLARE_PRIVATE(QRegion)
 
 public:
-    Q_INVOKABLE explicit QRegion(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QRegion(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QRegion();
 
     // Association ends from aggregated QElement
@@ -153,7 +153,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QRegion(QRegionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QRegion(QRegionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 
 private:
     QRedefinableElement *_wrappedRedefinableElement;

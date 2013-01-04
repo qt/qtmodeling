@@ -76,7 +76,7 @@ class Q_UML_EXPORT QBehavioredClassifier : public QClassifier
     Q_DECLARE_PRIVATE(QBehavioredClassifier)
 
 public:
-    Q_INVOKABLE explicit QBehavioredClassifier(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QBehavioredClassifier(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QBehavioredClassifier();
 
     // Association ends from QBehavioredClassifier
@@ -96,7 +96,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QBehavioredClassifier(QBehavioredClassifierPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QBehavioredClassifier(QBehavioredClassifierPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

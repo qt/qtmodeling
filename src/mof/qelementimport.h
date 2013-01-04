@@ -77,7 +77,7 @@ class Q_MOF_EXPORT QElementImport : public QDirectedRelationship
     Q_DECLARE_PRIVATE(QElementImport)
 
 public:
-    Q_INVOKABLE explicit QElementImport(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QElementImport(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QElementImport();
 
     // Attributes from QElementImport
@@ -99,7 +99,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QElementImport(QElementImportPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QElementImport(QElementImportPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTMOF

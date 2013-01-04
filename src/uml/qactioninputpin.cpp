@@ -65,14 +65,14 @@ QActionInputPinPrivate::~QActionInputPinPrivate()
     \brief An action input pin is a kind of pin that executes an action to determine the values to input to another.
  */
 
-QActionInputPin::QActionInputPin(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QInputPin(*new QActionInputPinPrivate, parent, wrapper)
+QActionInputPin::QActionInputPin(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QInputPin(*new QActionInputPinPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QActionInputPin::QActionInputPin(QActionInputPinPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QInputPin(dd, parent, wrapper)
+QActionInputPin::QActionInputPin(QActionInputPinPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QInputPin(dd, wrapper, parent)
 {
     setPropertyData();
 }

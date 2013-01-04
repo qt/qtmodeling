@@ -67,14 +67,14 @@ QConnectorPrivate::~QConnectorPrivate()
     \brief A delegation connector is a connector that links the external contract of a component (as specified by its ports) to the realization of that behavior. It represents the forwarding of events (operation requests and events): a signal that arrives at a port that has a delegation connector to one or more parts or ports on parts will be passed on to those targets for handling. An assembly connector is a connector between two or more parts or ports on parts that defines that one or more parts provide the services that other parts use.Specifies a link that enables communication between two or more instances. This link may be an instance of an association, or it may represent the possibility of the instances being able to communicate because their identities are known by virtue of being passed in as parameters, held in variables or slots, or because the communicating instances are the same instance. The link may be realized by something as simple as a pointer or by something as complex as a network connection. In contrast to associations, which specify links between any instance of the associated classifiers, connectors specify links between instances playing the connected parts only.
  */
 
-QConnector::QConnector(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QFeature(*new QConnectorPrivate, parent, wrapper)
+QConnector::QConnector(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QFeature(*new QConnectorPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QConnector::QConnector(QConnectorPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QFeature(dd, parent, wrapper)
+QConnector::QConnector(QConnectorPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QFeature(dd, wrapper, parent)
 {
     setPropertyData();
 }

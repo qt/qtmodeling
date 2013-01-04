@@ -71,7 +71,7 @@ class Q_UML_EXPORT QSubstitution : public QRealization
     Q_DECLARE_PRIVATE(QSubstitution)
 
 public:
-    Q_INVOKABLE explicit QSubstitution(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QSubstitution(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QSubstitution();
 
     // Association ends from QSubstitution
@@ -89,7 +89,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QSubstitution(QSubstitutionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QSubstitution(QSubstitutionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

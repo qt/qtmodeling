@@ -81,7 +81,7 @@ class Q_UML_EXPORT QLoopNode : public QStructuredActivityNode
     Q_DECLARE_PRIVATE(QLoopNode)
 
 public:
-    Q_INVOKABLE explicit QLoopNode(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QLoopNode(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QLoopNode();
 
     // Attributes from QLoopNode
@@ -117,7 +117,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QLoopNode(QLoopNodePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QLoopNode(QLoopNodePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

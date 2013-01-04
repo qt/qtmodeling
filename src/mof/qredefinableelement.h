@@ -72,7 +72,7 @@ class Q_MOF_EXPORT QRedefinableElement : public QNamedElement
     Q_DECLARE_PRIVATE(QRedefinableElement)
 
 public:
-    Q_INVOKABLE explicit QRedefinableElement(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QRedefinableElement(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QRedefinableElement();
 
     // Attributes from QRedefinableElement
@@ -91,7 +91,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QRedefinableElement(QRedefinableElementPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QRedefinableElement(QRedefinableElementPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTMOF

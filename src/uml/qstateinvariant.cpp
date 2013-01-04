@@ -67,14 +67,14 @@ QStateInvariantPrivate::~QStateInvariantPrivate()
     \brief A state invariant is a runtime constraint on the participants of the interaction. It may be used to specify a variety of different kinds of constraints, such as values of attributes or variables, internal or external states, and so on. A state invariant is an interaction fragment and it is placed on a lifeline.
  */
 
-QStateInvariant::QStateInvariant(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QInteractionFragment(*new QStateInvariantPrivate, parent, wrapper)
+QStateInvariant::QStateInvariant(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QInteractionFragment(*new QStateInvariantPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QStateInvariant::QStateInvariant(QStateInvariantPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QInteractionFragment(dd, parent, wrapper)
+QStateInvariant::QStateInvariant(QStateInvariantPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QInteractionFragment(dd, wrapper, parent)
 {
     setPropertyData();
 }

@@ -30,7 +30,16 @@ public Q_SLOTS:
     void updateIndex(const QModelIndex &index);
 
 private:
+    struct WrappedObjectItem
+    {
+        QWrappedObject *item;
+        QList<WrappedObjectItem>children;
+    };
+
+    void refreshInternalData(QWrappedObject *wrappedObject, WrappedObjectItem *rootItem = 0);
+
     QWrappedObject *_wrappedObject;
+    QList<WrappedObjectItem> _rootItems;
 };
 
 #endif // WRAPPEDOBJECTMODEL_H

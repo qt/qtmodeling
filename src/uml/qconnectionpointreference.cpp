@@ -66,14 +66,14 @@ QConnectionPointReferencePrivate::~QConnectionPointReferencePrivate()
     \brief A connection point reference represents a usage (as part of a submachine state) of an entry/exit point defined in the statemachine reference by the submachine state.
  */
 
-QConnectionPointReference::QConnectionPointReference(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QVertex(*new QConnectionPointReferencePrivate, parent, wrapper)
+QConnectionPointReference::QConnectionPointReference(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QVertex(*new QConnectionPointReferencePrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QConnectionPointReference::QConnectionPointReference(QConnectionPointReferencePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QVertex(dd, parent, wrapper)
+QConnectionPointReference::QConnectionPointReference(QConnectionPointReferencePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QVertex(dd, wrapper, parent)
 {
     setPropertyData();
 }

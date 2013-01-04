@@ -66,14 +66,14 @@ QTemplateSignaturePrivate::~QTemplateSignaturePrivate()
     \brief A template signature bundles the set of formal template parameters for a templated element.
  */
 
-QTemplateSignature::QTemplateSignature(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QElement(*new QTemplateSignaturePrivate, parent, wrapper)
+QTemplateSignature::QTemplateSignature(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QElement(*new QTemplateSignaturePrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QTemplateSignature::QTemplateSignature(QTemplateSignaturePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QElement(dd, parent, wrapper)
+QTemplateSignature::QTemplateSignature(QTemplateSignaturePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QElement(dd, wrapper, parent)
 {
     setPropertyData();
 }

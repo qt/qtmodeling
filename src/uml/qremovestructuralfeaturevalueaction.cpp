@@ -66,14 +66,14 @@ QRemoveStructuralFeatureValueActionPrivate::~QRemoveStructuralFeatureValueAction
     \brief A remove structural feature value action is a write structural feature action that removes values from structural features.
  */
 
-QRemoveStructuralFeatureValueAction::QRemoveStructuralFeatureValueAction(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWriteStructuralFeatureAction(*new QRemoveStructuralFeatureValueActionPrivate, parent, wrapper)
+QRemoveStructuralFeatureValueAction::QRemoveStructuralFeatureValueAction(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWriteStructuralFeatureAction(*new QRemoveStructuralFeatureValueActionPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QRemoveStructuralFeatureValueAction::QRemoveStructuralFeatureValueAction(QRemoveStructuralFeatureValueActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWriteStructuralFeatureAction(dd, parent, wrapper)
+QRemoveStructuralFeatureValueAction::QRemoveStructuralFeatureValueAction(QRemoveStructuralFeatureValueActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWriteStructuralFeatureAction(dd, wrapper, parent)
 {
     setPropertyData();
 }

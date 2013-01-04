@@ -66,14 +66,14 @@ QInvocationActionPrivate::~QInvocationActionPrivate()
     \brief InvocationAction is an abstract class for the various actions that invoke behavior.In addition to targeting an object, invocation actions can also invoke behavioral features on ports from where the invocation requests are routed onwards on links deriving from attached connectors. Invocation actions may also be sent to a target via a given port, either on the sending object or on another object.
  */
 
-QInvocationAction::QInvocationAction(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QAction(*new QInvocationActionPrivate, parent, wrapper)
+QInvocationAction::QInvocationAction(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QAction(*new QInvocationActionPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QInvocationAction::QInvocationAction(QInvocationActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QAction(dd, parent, wrapper)
+QInvocationAction::QInvocationAction(QInvocationActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QAction(dd, wrapper, parent)
 {
     setPropertyData();
 }

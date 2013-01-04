@@ -70,14 +70,14 @@ QInteractionUsePrivate::~QInteractionUsePrivate()
     \brief An interaction use refers to an interaction. The interaction use is a shorthand for copying the contents of the referenced interaction where the interaction use is. To be accurate the copying must take into account substituting parameters with arguments and connect the formal gates with the actual ones.
  */
 
-QInteractionUse::QInteractionUse(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QInteractionFragment(*new QInteractionUsePrivate, parent, wrapper)
+QInteractionUse::QInteractionUse(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QInteractionFragment(*new QInteractionUsePrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QInteractionUse::QInteractionUse(QInteractionUsePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QInteractionFragment(dd, parent, wrapper)
+QInteractionUse::QInteractionUse(QInteractionUsePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QInteractionFragment(dd, wrapper, parent)
 {
     setPropertyData();
 }

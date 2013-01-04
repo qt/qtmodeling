@@ -65,14 +65,14 @@ QActionExecutionSpecificationPrivate::~QActionExecutionSpecificationPrivate()
     \brief An action execution specification is a kind of execution specification representing the execution of an action.
  */
 
-QActionExecutionSpecification::QActionExecutionSpecification(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QExecutionSpecification(*new QActionExecutionSpecificationPrivate, parent, wrapper)
+QActionExecutionSpecification::QActionExecutionSpecification(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QExecutionSpecification(*new QActionExecutionSpecificationPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QActionExecutionSpecification::QActionExecutionSpecification(QActionExecutionSpecificationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QExecutionSpecification(dd, parent, wrapper)
+QActionExecutionSpecification::QActionExecutionSpecification(QActionExecutionSpecificationPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QExecutionSpecification(dd, wrapper, parent)
 {
     setPropertyData();
 }

@@ -68,7 +68,7 @@ class Q_UML_EXPORT QExpansionNode : public QObjectNode
     Q_DECLARE_PRIVATE(QExpansionNode)
 
 public:
-    Q_INVOKABLE explicit QExpansionNode(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QExpansionNode(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QExpansionNode();
 
     // Association ends from QExpansionNode
@@ -80,7 +80,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QExpansionNode(QExpansionNodePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QExpansionNode(QExpansionNodePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

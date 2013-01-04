@@ -67,14 +67,14 @@ QReclassifyObjectActionPrivate::~QReclassifyObjectActionPrivate()
     \brief A reclassify object action is an action that changes which classifiers classify an object.
  */
 
-QReclassifyObjectAction::QReclassifyObjectAction(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QAction(*new QReclassifyObjectActionPrivate, parent, wrapper)
+QReclassifyObjectAction::QReclassifyObjectAction(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QAction(*new QReclassifyObjectActionPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QReclassifyObjectAction::QReclassifyObjectAction(QReclassifyObjectActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QAction(dd, parent, wrapper)
+QReclassifyObjectAction::QReclassifyObjectAction(QReclassifyObjectActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QAction(dd, wrapper, parent)
 {
     setPropertyData();
 }

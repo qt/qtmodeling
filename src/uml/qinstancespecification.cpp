@@ -67,20 +67,20 @@ QInstanceSpecificationPrivate::~QInstanceSpecificationPrivate()
     \brief An instance specification has the capability of being a deployment target in a deployment relationship, in the case that it is an instance of a node. It is also has the capability of being a deployed artifact, if it is an instance of an artifact.An instance specification is a model element that represents an instance in a modeled system.
  */
 
-QInstanceSpecification::QInstanceSpecification(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(*new QInstanceSpecificationPrivate, parent, wrapper),
-    _wrappedDeployedArtifact(new QDeployedArtifact(this, this)),
-    _wrappedPackageableElement(new QPackageableElement(this, this)),
-    _wrappedDeploymentTarget(new QDeploymentTarget(this, this))
+QInstanceSpecification::QInstanceSpecification(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(*new QInstanceSpecificationPrivate, wrapper, parent),
+    _wrappedDeployedArtifact(new QDeployedArtifact(this)),
+    _wrappedPackageableElement(new QPackageableElement(this)),
+    _wrappedDeploymentTarget(new QDeploymentTarget(this))
 {
     setPropertyData();
 }
 
-QInstanceSpecification::QInstanceSpecification(QInstanceSpecificationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(dd, parent, wrapper),
-    _wrappedDeployedArtifact(new QDeployedArtifact(this, this)),
-    _wrappedPackageableElement(new QPackageableElement(this, this)),
-    _wrappedDeploymentTarget(new QDeploymentTarget(this, this))
+QInstanceSpecification::QInstanceSpecification(QInstanceSpecificationPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(dd, wrapper, parent),
+    _wrappedDeployedArtifact(new QDeployedArtifact(this)),
+    _wrappedPackageableElement(new QPackageableElement(this)),
+    _wrappedDeploymentTarget(new QDeploymentTarget(this))
 {
     setPropertyData();
 }

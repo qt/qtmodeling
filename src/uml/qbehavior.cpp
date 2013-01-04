@@ -70,14 +70,14 @@ QBehaviorPrivate::~QBehaviorPrivate()
     \brief Behavior is a specification of how its context classifier changes state over time. This specification may be either a definition of possible behavior execution or emergent behavior, or a selective illustration of an interesting subset of possible executions. The latter form is typically used for capturing examples, such as a trace of a particular execution.A behavior owns zero or more parameter sets.
  */
 
-QBehavior::QBehavior(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QClass(*new QBehaviorPrivate, parent, wrapper)
+QBehavior::QBehavior(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QClass(*new QBehaviorPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QBehavior::QBehavior(QBehaviorPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QClass(dd, parent, wrapper)
+QBehavior::QBehavior(QBehaviorPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QClass(dd, wrapper, parent)
 {
     setPropertyData();
 }

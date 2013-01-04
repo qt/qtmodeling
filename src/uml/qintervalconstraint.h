@@ -67,7 +67,7 @@ class Q_UML_EXPORT QIntervalConstraint : public QConstraint
     Q_DECLARE_PRIVATE(QIntervalConstraint)
 
 public:
-    Q_INVOKABLE explicit QIntervalConstraint(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QIntervalConstraint(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QIntervalConstraint();
 
     // Association ends from QIntervalConstraint
@@ -77,7 +77,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QIntervalConstraint(QIntervalConstraintPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QIntervalConstraint(QIntervalConstraintPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

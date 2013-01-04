@@ -84,7 +84,7 @@ class Q_UML_EXPORT QMessage : public QNamedElement
     Q_DECLARE_PRIVATE(QMessage)
 
 public:
-    Q_INVOKABLE explicit QMessage(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QMessage(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QMessage();
 
     // Attributes from QMessage
@@ -111,7 +111,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QMessage(QMessagePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QMessage(QMessagePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

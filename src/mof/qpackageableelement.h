@@ -67,7 +67,7 @@ class Q_MOF_EXPORT QPackageableElement : public QNamedElement
     Q_DECLARE_PRIVATE(QPackageableElement)
 
 public:
-    Q_INVOKABLE explicit QPackageableElement(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QPackageableElement(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QPackageableElement();
 
     // Attributes from QPackageableElement
@@ -78,7 +78,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QPackageableElement(QPackageableElementPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QPackageableElement(QPackageableElementPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTMOF

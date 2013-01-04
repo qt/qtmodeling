@@ -72,7 +72,7 @@ class Q_UML_EXPORT QReduceAction : public QAction
     Q_DECLARE_PRIVATE(QReduceAction)
 
 public:
-    Q_INVOKABLE explicit QReduceAction(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QReduceAction(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QReduceAction();
 
     // Attributes from QReduceAction
@@ -91,7 +91,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QReduceAction(QReduceActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QReduceAction(QReduceActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -67,7 +67,7 @@ class Q_UML_EXPORT QPin : public QWrappedObject
     Q_DECLARE_PRIVATE(QPin)
 
 public:
-    Q_INVOKABLE explicit QPin(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QPin(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QPin();
 
     // Association ends from aggregated QElement
@@ -171,7 +171,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QPin(QPinPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QPin(QPinPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 
 private:
     QMultiplicityElement *_wrappedMultiplicityElement;

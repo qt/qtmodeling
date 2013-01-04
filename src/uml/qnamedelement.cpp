@@ -92,14 +92,14 @@ void QNamedElementPrivate::setNamespace_(QNamespace *namespace_)
     \brief A named element supports using a string expression to specify its name. This allows names of model elements to involve template parameters. The actual name is evaluated from the string expression only when it is sensible to do so (e.g., when a template is bound).A named element is an element in a model that may have a name.
  */
 
-QNamedElement::QNamedElement(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QElement(*new QNamedElementPrivate, parent, wrapper)
+QNamedElement::QNamedElement(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QElement(*new QNamedElementPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QNamedElement::QNamedElement(QNamedElementPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QElement(dd, parent, wrapper)
+QNamedElement::QNamedElement(QNamedElementPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QElement(dd, wrapper, parent)
 {
     setPropertyData();
 }

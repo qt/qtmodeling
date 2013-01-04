@@ -77,7 +77,7 @@ class Q_UML_EXPORT QStateMachine : public QBehavior
     Q_DECLARE_PRIVATE(QStateMachine)
 
 public:
-    Q_INVOKABLE explicit QStateMachine(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QStateMachine(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QStateMachine();
 
     // Association ends from QStateMachine
@@ -103,7 +103,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QStateMachine(QStateMachinePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QStateMachine(QStateMachinePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

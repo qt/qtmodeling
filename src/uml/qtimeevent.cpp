@@ -66,14 +66,14 @@ QTimeEventPrivate::~QTimeEventPrivate()
     \brief A time event can be defined relative to entering the current state of the executing state machine.A time event specifies a point in time. At the specified time, the event occurs.
  */
 
-QTimeEvent::QTimeEvent(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QEvent(*new QTimeEventPrivate, parent, wrapper)
+QTimeEvent::QTimeEvent(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QEvent(*new QTimeEventPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QTimeEvent::QTimeEvent(QTimeEventPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QEvent(dd, parent, wrapper)
+QTimeEvent::QTimeEvent(QTimeEventPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QEvent(dd, wrapper, parent)
 {
     setPropertyData();
 }

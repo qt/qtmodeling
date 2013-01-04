@@ -64,7 +64,7 @@ class Q_UML_EXPORT QContinuation : public QInteractionFragment
     Q_DECLARE_PRIVATE(QContinuation)
 
 public:
-    Q_INVOKABLE explicit QContinuation(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QContinuation(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QContinuation();
 
     // Attributes from QContinuation
@@ -75,7 +75,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QContinuation(QContinuationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QContinuation(QContinuationPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

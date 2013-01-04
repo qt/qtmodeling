@@ -68,7 +68,7 @@ class Q_UML_EXPORT QAddVariableValueAction : public QWriteVariableAction
     Q_DECLARE_PRIVATE(QAddVariableValueAction)
 
 public:
-    Q_INVOKABLE explicit QAddVariableValueAction(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QAddVariableValueAction(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QAddVariableValueAction();
 
     // Attributes from QAddVariableValueAction
@@ -83,7 +83,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QAddVariableValueAction(QAddVariableValueActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QAddVariableValueAction(QAddVariableValueActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

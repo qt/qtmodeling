@@ -67,7 +67,7 @@ class Q_UML_EXPORT QActionExecutionSpecification : public QExecutionSpecificatio
     Q_DECLARE_PRIVATE(QActionExecutionSpecification)
 
 public:
-    Q_INVOKABLE explicit QActionExecutionSpecification(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QActionExecutionSpecification(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QActionExecutionSpecification();
 
     // Association ends from QActionExecutionSpecification
@@ -77,7 +77,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QActionExecutionSpecification(QActionExecutionSpecificationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QActionExecutionSpecification(QActionExecutionSpecificationPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -75,7 +75,7 @@ class Q_UML_EXPORT QExpansionRegion : public QStructuredActivityNode
     Q_DECLARE_PRIVATE(QExpansionRegion)
 
 public:
-    Q_INVOKABLE explicit QExpansionRegion(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QExpansionRegion(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QExpansionRegion();
 
     // Attributes from QExpansionRegion
@@ -94,7 +94,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QExpansionRegion(QExpansionRegionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QExpansionRegion(QExpansionRegionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

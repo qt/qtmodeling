@@ -177,14 +177,14 @@ void QActivityGroupPrivate::setSuperGroup(QActivityGroup *superGroup)
     \brief ActivityGroup is an abstract class for defining sets of nodes and edges in an activity.
  */
 
-QActivityGroup::QActivityGroup(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QNamedElement(*new QActivityGroupPrivate, parent, wrapper)
+QActivityGroup::QActivityGroup(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QNamedElement(*new QActivityGroupPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QActivityGroup::QActivityGroup(QActivityGroupPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QNamedElement(dd, parent, wrapper)
+QActivityGroup::QActivityGroup(QActivityGroupPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QNamedElement(dd, wrapper, parent)
 {
     setPropertyData();
 }

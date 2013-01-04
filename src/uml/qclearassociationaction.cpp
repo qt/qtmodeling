@@ -67,14 +67,14 @@ QClearAssociationActionPrivate::~QClearAssociationActionPrivate()
     \brief A clear association action is an action that destroys all links of an association in which a particular object participates.
  */
 
-QClearAssociationAction::QClearAssociationAction(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QAction(*new QClearAssociationActionPrivate, parent, wrapper)
+QClearAssociationAction::QClearAssociationAction(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QAction(*new QClearAssociationActionPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QClearAssociationAction::QClearAssociationAction(QClearAssociationActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QAction(dd, parent, wrapper)
+QClearAssociationAction::QClearAssociationAction(QClearAssociationActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QAction(dd, wrapper, parent)
 {
     setPropertyData();
 }

@@ -69,14 +69,14 @@ QConnectorEndPrivate::~QConnectorEndPrivate()
     \brief A connector end is an endpoint of a connector, which attaches the connector to a connectable element. Each connector end is part of one connector.
  */
 
-QConnectorEnd::QConnectorEnd(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QMultiplicityElement(*new QConnectorEndPrivate, parent, wrapper)
+QConnectorEnd::QConnectorEnd(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QMultiplicityElement(*new QConnectorEndPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QConnectorEnd::QConnectorEnd(QConnectorEndPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QMultiplicityElement(dd, parent, wrapper)
+QConnectorEnd::QConnectorEnd(QConnectorEndPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QMultiplicityElement(dd, wrapper, parent)
 {
     setPropertyData();
 }

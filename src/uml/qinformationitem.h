@@ -67,7 +67,7 @@ class Q_UML_EXPORT QInformationItem : public QClassifier
     Q_DECLARE_PRIVATE(QInformationItem)
 
 public:
-    Q_INVOKABLE explicit QInformationItem(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QInformationItem(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QInformationItem();
 
     // Association ends from QInformationItem
@@ -78,7 +78,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QInformationItem(QInformationItemPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QInformationItem(QInformationItemPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

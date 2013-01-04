@@ -65,7 +65,7 @@ class Q_UML_EXPORT QInterval : public QValueSpecification
     Q_DECLARE_PRIVATE(QInterval)
 
 public:
-    Q_INVOKABLE explicit QInterval(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QInterval(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QInterval();
 
     // Association ends from QInterval
@@ -77,7 +77,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QInterval(QIntervalPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QInterval(QIntervalPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

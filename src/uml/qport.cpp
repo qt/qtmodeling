@@ -69,14 +69,14 @@ QPortPrivate::~QPortPrivate()
     \brief A port has an associated protocol state machine.A port is a property of a classifier that specifies a distinct interaction point between that classifier and its environment or between the (behavior of the) classifier and its internal parts. Ports are connected to properties of the classifier by connectors through which requests can be made to invoke the behavioral features of a classifier. A Port may specify the services a classifier provides (offers) to its environment as well as the services that a classifier expects (requires) of its environment.
  */
 
-QPort::QPort(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QProperty(*new QPortPrivate, parent, wrapper)
+QPort::QPort(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QProperty(*new QPortPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QPort::QPort(QPortPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QProperty(dd, parent, wrapper)
+QPort::QPort(QPortPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QProperty(dd, wrapper, parent)
 {
     setPropertyData();
 }

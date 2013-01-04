@@ -66,14 +66,14 @@ QBehavioredClassifierPrivate::~QBehavioredClassifierPrivate()
     \brief A behaviored classifier may have an interface realization.A classifier can have behavior specifications defined in its namespace. One of these may specify the behavior of the classifier itself.
  */
 
-QBehavioredClassifier::QBehavioredClassifier(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QClassifier(*new QBehavioredClassifierPrivate, parent, wrapper)
+QBehavioredClassifier::QBehavioredClassifier(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QClassifier(*new QBehavioredClassifierPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QBehavioredClassifier::QBehavioredClassifier(QBehavioredClassifierPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QClassifier(dd, parent, wrapper)
+QBehavioredClassifier::QBehavioredClassifier(QBehavioredClassifierPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QClassifier(dd, wrapper, parent)
 {
     setPropertyData();
 }

@@ -65,14 +65,14 @@ QOpaqueActionPrivate::~QOpaqueActionPrivate()
     \brief An action with implementation-specific semantics.
  */
 
-QOpaqueAction::QOpaqueAction(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QAction(*new QOpaqueActionPrivate, parent, wrapper)
+QOpaqueAction::QOpaqueAction(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QAction(*new QOpaqueActionPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QOpaqueAction::QOpaqueAction(QOpaqueActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QAction(dd, parent, wrapper)
+QOpaqueAction::QOpaqueAction(QOpaqueActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QAction(dd, wrapper, parent)
 {
     setPropertyData();
 }

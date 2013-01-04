@@ -67,14 +67,14 @@ QTemplateableElementPrivate::~QTemplateableElementPrivate()
     \brief A templateable element is an element that can optionally be defined as a template and bound to other templates.
  */
 
-QTemplateableElement::QTemplateableElement(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QElement(*new QTemplateableElementPrivate, parent, wrapper)
+QTemplateableElement::QTemplateableElement(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QElement(*new QTemplateableElementPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QTemplateableElement::QTemplateableElement(QTemplateableElementPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QElement(dd, parent, wrapper)
+QTemplateableElement::QTemplateableElement(QTemplateableElementPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QElement(dd, wrapper, parent)
 {
     setPropertyData();
 }

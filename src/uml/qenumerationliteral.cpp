@@ -65,14 +65,14 @@ QEnumerationLiteralPrivate::~QEnumerationLiteralPrivate()
     \brief An enumeration literal is a user-defined data value for an enumeration.
  */
 
-QEnumerationLiteral::QEnumerationLiteral(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QInstanceSpecification(*new QEnumerationLiteralPrivate, parent, wrapper)
+QEnumerationLiteral::QEnumerationLiteral(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QInstanceSpecification(*new QEnumerationLiteralPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QEnumerationLiteral::QEnumerationLiteral(QEnumerationLiteralPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QInstanceSpecification(dd, parent, wrapper)
+QEnumerationLiteral::QEnumerationLiteral(QEnumerationLiteralPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QInstanceSpecification(dd, wrapper, parent)
 {
     setPropertyData();
 }

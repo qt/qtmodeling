@@ -69,14 +69,14 @@ QInteractionFragmentPrivate::~QInteractionFragmentPrivate()
     \brief InteractionFragment is an abstract notion of the most general interaction unit. An interaction fragment is a piece of an interaction. Each interaction fragment is conceptually like an interaction by itself.
  */
 
-QInteractionFragment::QInteractionFragment(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QNamedElement(*new QInteractionFragmentPrivate, parent, wrapper)
+QInteractionFragment::QInteractionFragment(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QNamedElement(*new QInteractionFragmentPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QInteractionFragment::QInteractionFragment(QInteractionFragmentPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QNamedElement(dd, parent, wrapper)
+QInteractionFragment::QInteractionFragment(QInteractionFragmentPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QNamedElement(dd, wrapper, parent)
 {
     setPropertyData();
 }

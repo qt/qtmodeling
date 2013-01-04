@@ -73,7 +73,7 @@ class Q_UML_EXPORT QLinkAction : public QAction
     Q_DECLARE_PRIVATE(QLinkAction)
 
 public:
-    Q_INVOKABLE explicit QLinkAction(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QLinkAction(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QLinkAction();
 
     // Association ends from QLinkAction
@@ -90,7 +90,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QLinkAction(QLinkActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QLinkAction(QLinkActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -65,14 +65,14 @@ QDeploymentTargetPrivate::~QDeploymentTargetPrivate()
     \brief A deployment target is the location for a deployed artifact.
  */
 
-QDeploymentTarget::QDeploymentTarget(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QNamedElement(*new QDeploymentTargetPrivate, parent, wrapper)
+QDeploymentTarget::QDeploymentTarget(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QNamedElement(*new QDeploymentTargetPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QDeploymentTarget::QDeploymentTarget(QDeploymentTargetPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QNamedElement(dd, parent, wrapper)
+QDeploymentTarget::QDeploymentTarget(QDeploymentTargetPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QNamedElement(dd, wrapper, parent)
 {
     setPropertyData();
 }

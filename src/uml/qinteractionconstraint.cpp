@@ -66,14 +66,14 @@ QInteractionConstraintPrivate::~QInteractionConstraintPrivate()
     \brief An interaction constraint is a Boolean expression that guards an operand in a combined fragment.
  */
 
-QInteractionConstraint::QInteractionConstraint(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QConstraint(*new QInteractionConstraintPrivate, parent, wrapper)
+QInteractionConstraint::QInteractionConstraint(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QConstraint(*new QInteractionConstraintPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QInteractionConstraint::QInteractionConstraint(QInteractionConstraintPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QConstraint(dd, parent, wrapper)
+QInteractionConstraint::QInteractionConstraint(QInteractionConstraintPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QConstraint(dd, wrapper, parent)
 {
     setPropertyData();
 }

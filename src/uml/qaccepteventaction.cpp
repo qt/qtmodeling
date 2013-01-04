@@ -66,14 +66,14 @@ QAcceptEventActionPrivate::~QAcceptEventActionPrivate()
     \brief A accept event action is an action that waits for the occurrence of an event meeting specified conditions.
  */
 
-QAcceptEventAction::QAcceptEventAction(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QAction(*new QAcceptEventActionPrivate, parent, wrapper)
+QAcceptEventAction::QAcceptEventAction(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QAction(*new QAcceptEventActionPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QAcceptEventAction::QAcceptEventAction(QAcceptEventActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QAction(dd, parent, wrapper)
+QAcceptEventAction::QAcceptEventAction(QAcceptEventActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QAction(dd, wrapper, parent)
 {
     setPropertyData();
 }

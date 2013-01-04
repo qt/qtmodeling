@@ -69,18 +69,18 @@ QInformationFlowPrivate::~QInformationFlowPrivate()
     \brief An information flow specifies that one or more information items circulates from its sources to its targets. Information flows require some kind of information channel for transmitting information items from the source to the destination. An information channel is represented in various ways depending on the nature of its sources and targets. It may be represented by connectors, links, associations, or even dependencies. For example, if the source and destination are parts in some composite structure such as a collaboration, then the information channel is likely to be represented by a connector between them. Or, if the source and target are objects (which are a kind of instance specification), they may be represented by a link that joins the two, and so on.
  */
 
-QInformationFlow::QInformationFlow(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(*new QInformationFlowPrivate, parent, wrapper),
-    _wrappedDirectedRelationship(new QDirectedRelationship(this, this)),
-    _wrappedPackageableElement(new QPackageableElement(this, this))
+QInformationFlow::QInformationFlow(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(*new QInformationFlowPrivate, wrapper, parent),
+    _wrappedDirectedRelationship(new QDirectedRelationship(this)),
+    _wrappedPackageableElement(new QPackageableElement(this))
 {
     setPropertyData();
 }
 
-QInformationFlow::QInformationFlow(QInformationFlowPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(dd, parent, wrapper),
-    _wrappedDirectedRelationship(new QDirectedRelationship(this, this)),
-    _wrappedPackageableElement(new QPackageableElement(this, this))
+QInformationFlow::QInformationFlow(QInformationFlowPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(dd, wrapper, parent),
+    _wrappedDirectedRelationship(new QDirectedRelationship(this)),
+    _wrappedPackageableElement(new QPackageableElement(this))
 {
     setPropertyData();
 }

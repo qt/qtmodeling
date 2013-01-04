@@ -71,7 +71,7 @@ class Q_UML_EXPORT QDurationObservation : public QObservation
     Q_DECLARE_PRIVATE(QDurationObservation)
 
 public:
-    Q_INVOKABLE explicit QDurationObservation(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QDurationObservation(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QDurationObservation();
 
     // Attributes from QDurationObservation
@@ -87,7 +87,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QDurationObservation(QDurationObservationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QDurationObservation(QDurationObservationPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

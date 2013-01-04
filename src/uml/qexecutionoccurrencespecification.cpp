@@ -65,14 +65,14 @@ QExecutionOccurrenceSpecificationPrivate::~QExecutionOccurrenceSpecificationPriv
     \brief An execution occurrence specification represents moments in time at which actions or behaviors start or finish.
  */
 
-QExecutionOccurrenceSpecification::QExecutionOccurrenceSpecification(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QOccurrenceSpecification(*new QExecutionOccurrenceSpecificationPrivate, parent, wrapper)
+QExecutionOccurrenceSpecification::QExecutionOccurrenceSpecification(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QOccurrenceSpecification(*new QExecutionOccurrenceSpecificationPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QExecutionOccurrenceSpecification::QExecutionOccurrenceSpecification(QExecutionOccurrenceSpecificationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QOccurrenceSpecification(dd, parent, wrapper)
+QExecutionOccurrenceSpecification::QExecutionOccurrenceSpecification(QExecutionOccurrenceSpecificationPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QOccurrenceSpecification(dd, wrapper, parent)
 {
     setPropertyData();
 }

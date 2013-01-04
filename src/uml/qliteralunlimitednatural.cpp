@@ -63,14 +63,14 @@ QLiteralUnlimitedNaturalPrivate::~QLiteralUnlimitedNaturalPrivate()
     \brief A literal unlimited natural is a specification of an unlimited natural number.
  */
 
-QLiteralUnlimitedNatural::QLiteralUnlimitedNatural(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QLiteralSpecification(*new QLiteralUnlimitedNaturalPrivate, parent, wrapper)
+QLiteralUnlimitedNatural::QLiteralUnlimitedNatural(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QLiteralSpecification(*new QLiteralUnlimitedNaturalPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QLiteralUnlimitedNatural::QLiteralUnlimitedNatural(QLiteralUnlimitedNaturalPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QLiteralSpecification(dd, parent, wrapper)
+QLiteralUnlimitedNatural::QLiteralUnlimitedNatural(QLiteralUnlimitedNaturalPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QLiteralSpecification(dd, wrapper, parent)
 {
     setPropertyData();
 }

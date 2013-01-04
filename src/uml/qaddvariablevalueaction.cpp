@@ -66,14 +66,14 @@ QAddVariableValueActionPrivate::~QAddVariableValueActionPrivate()
     \brief An add variable value action is a write variable action for adding values to a variable.
  */
 
-QAddVariableValueAction::QAddVariableValueAction(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWriteVariableAction(*new QAddVariableValueActionPrivate, parent, wrapper)
+QAddVariableValueAction::QAddVariableValueAction(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWriteVariableAction(*new QAddVariableValueActionPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QAddVariableValueAction::QAddVariableValueAction(QAddVariableValueActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWriteVariableAction(dd, parent, wrapper)
+QAddVariableValueAction::QAddVariableValueAction(QAddVariableValueActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWriteVariableAction(dd, wrapper, parent)
 {
     setPropertyData();
 }

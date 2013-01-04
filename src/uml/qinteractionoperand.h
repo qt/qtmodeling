@@ -74,7 +74,7 @@ class Q_UML_EXPORT QInteractionOperand : public QWrappedObject
     Q_DECLARE_PRIVATE(QInteractionOperand)
 
 public:
-    Q_INVOKABLE explicit QInteractionOperand(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QInteractionOperand(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QInteractionOperand();
 
     // Association ends from aggregated QElement
@@ -135,7 +135,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QInteractionOperand(QInteractionOperandPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QInteractionOperand(QInteractionOperandPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 
 private:
     QInteractionFragment *_wrappedInteractionFragment;

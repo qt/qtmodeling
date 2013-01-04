@@ -66,14 +66,14 @@ QIntervalConstraintPrivate::~QIntervalConstraintPrivate()
     \brief An interval constraint is a constraint that refers to an interval.
  */
 
-QIntervalConstraint::QIntervalConstraint(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QConstraint(*new QIntervalConstraintPrivate, parent, wrapper)
+QIntervalConstraint::QIntervalConstraint(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QConstraint(*new QIntervalConstraintPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QIntervalConstraint::QIntervalConstraint(QIntervalConstraintPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QConstraint(dd, parent, wrapper)
+QIntervalConstraint::QIntervalConstraint(QIntervalConstraintPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QConstraint(dd, wrapper, parent)
 {
     setPropertyData();
 }

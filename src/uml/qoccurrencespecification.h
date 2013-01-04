@@ -73,7 +73,7 @@ class Q_UML_EXPORT QOccurrenceSpecification : public QInteractionFragment
     Q_DECLARE_PRIVATE(QOccurrenceSpecification)
 
 public:
-    Q_INVOKABLE explicit QOccurrenceSpecification(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QOccurrenceSpecification(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QOccurrenceSpecification();
 
     // Association ends from QOccurrenceSpecification
@@ -89,7 +89,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QOccurrenceSpecification(QOccurrenceSpecificationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QOccurrenceSpecification(QOccurrenceSpecificationPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -67,14 +67,14 @@ QDestroyObjectActionPrivate::~QDestroyObjectActionPrivate()
     \brief A destroy object action is an action that destroys objects.
  */
 
-QDestroyObjectAction::QDestroyObjectAction(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QAction(*new QDestroyObjectActionPrivate, parent, wrapper)
+QDestroyObjectAction::QDestroyObjectAction(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QAction(*new QDestroyObjectActionPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QDestroyObjectAction::QDestroyObjectAction(QDestroyObjectActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QAction(dd, parent, wrapper)
+QDestroyObjectAction::QDestroyObjectAction(QDestroyObjectActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QAction(dd, wrapper, parent)
 {
     setPropertyData();
 }

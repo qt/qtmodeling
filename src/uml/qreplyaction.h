@@ -73,7 +73,7 @@ class Q_UML_EXPORT QReplyAction : public QAction
     Q_DECLARE_PRIVATE(QReplyAction)
 
 public:
-    Q_INVOKABLE explicit QReplyAction(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QReplyAction(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QReplyAction();
 
     // Association ends from QReplyAction
@@ -88,7 +88,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QReplyAction(QReplyActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QReplyAction(QReplyActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

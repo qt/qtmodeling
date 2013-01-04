@@ -86,7 +86,7 @@ class Q_UML_EXPORT QClass : public QWrappedObject
     Q_DECLARE_PRIVATE(QClass)
 
 public:
-    Q_INVOKABLE explicit QClass(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QClass(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QClass();
 
     // Association ends from aggregated QElement
@@ -242,7 +242,7 @@ public:
     friend class QExtensionPrivate;
 
 protected:
-    explicit QClass(QClassPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QClass(QClassPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 
 private:
     QEncapsulatedClassifier *_wrappedEncapsulatedClassifier;

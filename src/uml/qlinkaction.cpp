@@ -66,14 +66,14 @@ QLinkActionPrivate::~QLinkActionPrivate()
     \brief LinkAction is an abstract class for all link actions that identify their links by the objects at the ends of the links and by the qualifiers at ends of the links.
  */
 
-QLinkAction::QLinkAction(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QAction(*new QLinkActionPrivate, parent, wrapper)
+QLinkAction::QLinkAction(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QAction(*new QLinkActionPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QLinkAction::QLinkAction(QLinkActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QAction(dd, parent, wrapper)
+QLinkAction::QLinkAction(QLinkActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QAction(dd, wrapper, parent)
 {
     setPropertyData();
 }

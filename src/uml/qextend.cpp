@@ -69,18 +69,18 @@ QExtendPrivate::~QExtendPrivate()
     \brief A relationship from an extending use case to an extended use case that specifies how and when the behavior defined in the extending use case can be inserted into the behavior defined in the extended use case.
  */
 
-QExtend::QExtend(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(*new QExtendPrivate, parent, wrapper),
-    _wrappedDirectedRelationship(new QDirectedRelationship(this, this)),
-    _wrappedNamedElement(new QNamedElement(this, this))
+QExtend::QExtend(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(*new QExtendPrivate, wrapper, parent),
+    _wrappedDirectedRelationship(new QDirectedRelationship(this)),
+    _wrappedNamedElement(new QNamedElement(this))
 {
     setPropertyData();
 }
 
-QExtend::QExtend(QExtendPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(dd, parent, wrapper),
-    _wrappedDirectedRelationship(new QDirectedRelationship(this, this)),
-    _wrappedNamedElement(new QNamedElement(this, this))
+QExtend::QExtend(QExtendPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(dd, wrapper, parent),
+    _wrappedDirectedRelationship(new QDirectedRelationship(this)),
+    _wrappedNamedElement(new QNamedElement(this))
 {
     setPropertyData();
 }

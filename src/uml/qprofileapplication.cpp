@@ -68,14 +68,14 @@ QProfileApplicationPrivate::~QProfileApplicationPrivate()
     \brief A profile application is used to show which profiles have been applied to a package.
  */
 
-QProfileApplication::QProfileApplication(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QDirectedRelationship(*new QProfileApplicationPrivate, parent, wrapper)
+QProfileApplication::QProfileApplication(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QDirectedRelationship(*new QProfileApplicationPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QProfileApplication::QProfileApplication(QProfileApplicationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QDirectedRelationship(dd, parent, wrapper)
+QProfileApplication::QProfileApplication(QProfileApplicationPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QDirectedRelationship(dd, wrapper, parent)
 {
     setPropertyData();
 }

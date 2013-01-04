@@ -75,7 +75,7 @@ class Q_UML_EXPORT QComponentRealization : public QRealization
     Q_DECLARE_PRIVATE(QComponentRealization)
 
 public:
-    Q_INVOKABLE explicit QComponentRealization(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QComponentRealization(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QComponentRealization();
 
     // Association ends from QComponentRealization
@@ -94,7 +94,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QComponentRealization(QComponentRealizationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QComponentRealization(QComponentRealizationPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

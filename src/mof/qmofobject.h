@@ -71,7 +71,7 @@ class Q_MOF_EXPORT QMofObject : public QWrappedObject
     Q_DECLARE_PRIVATE(QMofObject)
 
 public:
-    Q_INVOKABLE explicit QMofObject(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QMofObject(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QMofObject();
 
     // Operations
@@ -85,7 +85,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QMofObject(QMofObjectPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QMofObject(QMofObjectPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTMOF

@@ -66,14 +66,14 @@ QSubstitutionPrivate::~QSubstitutionPrivate()
     \brief A substitution is a relationship between two classifiers signifies that the substituting classifier complies with the contract specified by the contract classifier. This implies that instances of the substituting classifier are runtime substitutable where instances of the contract classifier are expected.
  */
 
-QSubstitution::QSubstitution(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QRealization(*new QSubstitutionPrivate, parent, wrapper)
+QSubstitution::QSubstitution(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QRealization(*new QSubstitutionPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QSubstitution::QSubstitution(QSubstitutionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QRealization(dd, parent, wrapper)
+QSubstitution::QSubstitution(QSubstitutionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QRealization(dd, wrapper, parent)
 {
     setPropertyData();
 }

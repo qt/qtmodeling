@@ -66,18 +66,18 @@ QBehavioralFeaturePrivate::~QBehavioralFeaturePrivate()
     \brief A behavioral feature is a feature of a classifier that specifies an aspect of the behavior of its instances.
  */
 
-QBehavioralFeature::QBehavioralFeature(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(*new QBehavioralFeaturePrivate, parent, wrapper),
-    _wrappedFeature(new QFeature(this, this)),
-    _wrappedNamespace(new QNamespace(this, this))
+QBehavioralFeature::QBehavioralFeature(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(*new QBehavioralFeaturePrivate, wrapper, parent),
+    _wrappedFeature(new QFeature(this)),
+    _wrappedNamespace(new QNamespace(this))
 {
     setPropertyData();
 }
 
-QBehavioralFeature::QBehavioralFeature(QBehavioralFeaturePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(dd, parent, wrapper),
-    _wrappedFeature(new QFeature(this, this)),
-    _wrappedNamespace(new QNamespace(this, this))
+QBehavioralFeature::QBehavioralFeature(QBehavioralFeaturePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(dd, wrapper, parent),
+    _wrappedFeature(new QFeature(this)),
+    _wrappedNamespace(new QNamespace(this))
 {
     setPropertyData();
 }

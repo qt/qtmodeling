@@ -62,14 +62,14 @@ QOpaqueBehaviorPrivate::~QOpaqueBehaviorPrivate()
     \brief An behavior with implementation-specific semantics.
  */
 
-QOpaqueBehavior::QOpaqueBehavior(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QBehavior(*new QOpaqueBehaviorPrivate, parent, wrapper)
+QOpaqueBehavior::QOpaqueBehavior(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QBehavior(*new QOpaqueBehaviorPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QOpaqueBehavior::QOpaqueBehavior(QOpaqueBehaviorPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QBehavior(dd, parent, wrapper)
+QOpaqueBehavior::QOpaqueBehavior(QOpaqueBehaviorPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QBehavior(dd, wrapper, parent)
 {
     setPropertyData();
 }

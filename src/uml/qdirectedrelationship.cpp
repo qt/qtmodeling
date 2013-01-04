@@ -112,14 +112,14 @@ void QDirectedRelationshipPrivate::removeTarget(QElement *target)
     \brief A directed relationship represents a relationship between a collection of source model elements and a collection of target model elements.
  */
 
-QDirectedRelationship::QDirectedRelationship(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QRelationship(*new QDirectedRelationshipPrivate, parent, wrapper)
+QDirectedRelationship::QDirectedRelationship(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QRelationship(*new QDirectedRelationshipPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QDirectedRelationship::QDirectedRelationship(QDirectedRelationshipPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QRelationship(dd, parent, wrapper)
+QDirectedRelationship::QDirectedRelationship(QDirectedRelationshipPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QRelationship(dd, wrapper, parent)
 {
     setPropertyData();
 }

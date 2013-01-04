@@ -66,14 +66,14 @@ QOccurrenceSpecificationPrivate::~QOccurrenceSpecificationPrivate()
     \brief An occurrence specification is the basic semantic unit of interactions. The sequences of occurrences specified by them are the meanings of interactions.
  */
 
-QOccurrenceSpecification::QOccurrenceSpecification(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QInteractionFragment(*new QOccurrenceSpecificationPrivate, parent, wrapper)
+QOccurrenceSpecification::QOccurrenceSpecification(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QInteractionFragment(*new QOccurrenceSpecificationPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QOccurrenceSpecification::QOccurrenceSpecification(QOccurrenceSpecificationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QInteractionFragment(dd, parent, wrapper)
+QOccurrenceSpecification::QOccurrenceSpecification(QOccurrenceSpecificationPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QInteractionFragment(dd, wrapper, parent)
 {
     setPropertyData();
 }

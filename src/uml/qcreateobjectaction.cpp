@@ -67,14 +67,14 @@ QCreateObjectActionPrivate::~QCreateObjectActionPrivate()
     \brief A create object action is an action that creates an object that conforms to a statically specified classifier and puts it on an output pin at runtime.
  */
 
-QCreateObjectAction::QCreateObjectAction(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QAction(*new QCreateObjectActionPrivate, parent, wrapper)
+QCreateObjectAction::QCreateObjectAction(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QAction(*new QCreateObjectActionPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QCreateObjectAction::QCreateObjectAction(QCreateObjectActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QAction(dd, parent, wrapper)
+QCreateObjectAction::QCreateObjectAction(QCreateObjectActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QAction(dd, wrapper, parent)
 {
     setPropertyData();
 }

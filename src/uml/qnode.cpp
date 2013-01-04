@@ -62,18 +62,18 @@ QNodePrivate::~QNodePrivate()
     \brief A node is computational resource upon which artifacts may be deployed for execution. Nodes can be interconnected through communication paths to define network structures.
  */
 
-QNode::QNode(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(*new QNodePrivate, parent, wrapper),
-    _wrappedClass(new QClass(this, this)),
-    _wrappedDeploymentTarget(new QDeploymentTarget(this, this))
+QNode::QNode(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(*new QNodePrivate, wrapper, parent),
+    _wrappedClass(new QClass(this)),
+    _wrappedDeploymentTarget(new QDeploymentTarget(this))
 {
     setPropertyData();
 }
 
-QNode::QNode(QNodePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(dd, parent, wrapper),
-    _wrappedClass(new QClass(this, this)),
-    _wrappedDeploymentTarget(new QDeploymentTarget(this, this))
+QNode::QNode(QNodePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(dd, wrapper, parent),
+    _wrappedClass(new QClass(this)),
+    _wrappedDeploymentTarget(new QDeploymentTarget(this))
 {
     setPropertyData();
 }

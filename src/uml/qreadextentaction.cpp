@@ -67,14 +67,14 @@ QReadExtentActionPrivate::~QReadExtentActionPrivate()
     \brief A read extent action is an action that retrieves the current instances of a classifier.
  */
 
-QReadExtentAction::QReadExtentAction(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QAction(*new QReadExtentActionPrivate, parent, wrapper)
+QReadExtentAction::QReadExtentAction(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QAction(*new QReadExtentActionPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QReadExtentAction::QReadExtentAction(QReadExtentActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QAction(dd, parent, wrapper)
+QReadExtentAction::QReadExtentAction(QReadExtentActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QAction(dd, wrapper, parent)
 {
     setPropertyData();
 }

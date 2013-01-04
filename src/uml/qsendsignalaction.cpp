@@ -67,14 +67,14 @@ QSendSignalActionPrivate::~QSendSignalActionPrivate()
     \brief A send signal action is an action that creates a signal instance from its inputs, and transmits it to the target object, where it may cause the firing of a state machine transition or the execution of an activity. The argument values are available to the execution of associated behaviors. The requestor continues execution immediately. Any reply message is ignored and is not transmitted to the requestor. If the input is already a signal instance, use a send object action.
  */
 
-QSendSignalAction::QSendSignalAction(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QInvocationAction(*new QSendSignalActionPrivate, parent, wrapper)
+QSendSignalAction::QSendSignalAction(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QInvocationAction(*new QSendSignalActionPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QSendSignalAction::QSendSignalAction(QSendSignalActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QInvocationAction(dd, parent, wrapper)
+QSendSignalAction::QSendSignalAction(QSendSignalActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QInvocationAction(dd, wrapper, parent)
 {
     setPropertyData();
 }

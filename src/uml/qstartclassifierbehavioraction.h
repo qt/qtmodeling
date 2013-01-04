@@ -67,7 +67,7 @@ class Q_UML_EXPORT QStartClassifierBehaviorAction : public QAction
     Q_DECLARE_PRIVATE(QStartClassifierBehaviorAction)
 
 public:
-    Q_INVOKABLE explicit QStartClassifierBehaviorAction(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QStartClassifierBehaviorAction(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QStartClassifierBehaviorAction();
 
     // Association ends from QStartClassifierBehaviorAction
@@ -77,7 +77,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QStartClassifierBehaviorAction(QStartClassifierBehaviorActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QStartClassifierBehaviorAction(QStartClassifierBehaviorActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

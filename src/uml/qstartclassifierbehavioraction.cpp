@@ -65,14 +65,14 @@ QStartClassifierBehaviorActionPrivate::~QStartClassifierBehaviorActionPrivate()
     \brief A start classifier behavior action is an action that starts the classifier behavior of the input.
  */
 
-QStartClassifierBehaviorAction::QStartClassifierBehaviorAction(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QAction(*new QStartClassifierBehaviorActionPrivate, parent, wrapper)
+QStartClassifierBehaviorAction::QStartClassifierBehaviorAction(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QAction(*new QStartClassifierBehaviorActionPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QStartClassifierBehaviorAction::QStartClassifierBehaviorAction(QStartClassifierBehaviorActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QAction(dd, parent, wrapper)
+QStartClassifierBehaviorAction::QStartClassifierBehaviorAction(QStartClassifierBehaviorActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QAction(dd, wrapper, parent)
 {
     setPropertyData();
 }

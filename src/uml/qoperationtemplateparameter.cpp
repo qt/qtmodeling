@@ -65,14 +65,14 @@ QOperationTemplateParameterPrivate::~QOperationTemplateParameterPrivate()
     \brief An operation template parameter exposes an operation as a formal parameter for a template.
  */
 
-QOperationTemplateParameter::QOperationTemplateParameter(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QTemplateParameter(*new QOperationTemplateParameterPrivate, parent, wrapper)
+QOperationTemplateParameter::QOperationTemplateParameter(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QTemplateParameter(*new QOperationTemplateParameterPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QOperationTemplateParameter::QOperationTemplateParameter(QOperationTemplateParameterPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QTemplateParameter(dd, parent, wrapper)
+QOperationTemplateParameter::QOperationTemplateParameter(QOperationTemplateParameterPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QTemplateParameter(dd, wrapper, parent)
 {
     setPropertyData();
 }

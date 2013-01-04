@@ -65,14 +65,14 @@ QProfilePrivate::~QProfilePrivate()
     \brief A profile defines limited extensions to a reference metamodel with the purpose of adapting the metamodel to a specific platform or domain.
  */
 
-QProfile::QProfile(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QPackage(*new QProfilePrivate, parent, wrapper)
+QProfile::QProfile(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QPackage(*new QProfilePrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QProfile::QProfile(QProfilePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QPackage(dd, parent, wrapper)
+QProfile::QProfile(QProfilePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QPackage(dd, wrapper, parent)
 {
     setPropertyData();
 }

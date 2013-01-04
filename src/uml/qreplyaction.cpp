@@ -67,14 +67,14 @@ QReplyActionPrivate::~QReplyActionPrivate()
     \brief A reply action is an action that accepts a set of return values and a value containing return information produced by a previous accept call action. The reply action returns the values to the caller of the previous call, completing execution of the call.
  */
 
-QReplyAction::QReplyAction(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QAction(*new QReplyActionPrivate, parent, wrapper)
+QReplyAction::QReplyAction(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QAction(*new QReplyActionPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QReplyAction::QReplyAction(QReplyActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QAction(dd, parent, wrapper)
+QReplyAction::QReplyAction(QReplyActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QAction(dd, wrapper, parent)
 {
     setPropertyData();
 }

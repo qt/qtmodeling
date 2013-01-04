@@ -63,7 +63,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->propertyEditor->setModel(propertyModel);
 
     WrappedObjectModel *wrappedObjectModel = new WrappedObjectModel(this);
-    ui->modelInspector->setModel(wrappedObjectModel);
+    //ui->modelInspector->setModel(wrappedObjectModel);
 
     _model = new QModel;
     _model->setName("MyModel");
@@ -127,6 +127,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(propertyModel, &WrappedObjectModel::dataChanged, [=](){
         wrappedObjectModel->updateIndex(ui->modelInspector->selectionModel()->selectedIndexes().first());
     });
+
+    qDebug() << "AQUI" << wrappedObjectModel->rowCount(wrappedObjectModel->index(0, 0, QModelIndex()));
 }
 
 MainWindow::~MainWindow()

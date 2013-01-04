@@ -64,7 +64,7 @@ class Q_MOF_EXPORT QLiteralBoolean : public QLiteralSpecification
     Q_DECLARE_PRIVATE(QLiteralBoolean)
 
 public:
-    Q_INVOKABLE explicit QLiteralBoolean(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QLiteralBoolean(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QLiteralBoolean();
 
     // Attributes from QLiteralBoolean
@@ -79,7 +79,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QLiteralBoolean(QLiteralBooleanPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QLiteralBoolean(QLiteralBooleanPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTMOF

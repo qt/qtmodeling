@@ -67,7 +67,7 @@ class Q_UML_EXPORT QChangeEvent : public QEvent
     Q_DECLARE_PRIVATE(QChangeEvent)
 
 public:
-    Q_INVOKABLE explicit QChangeEvent(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QChangeEvent(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QChangeEvent();
 
     // Association ends from QChangeEvent
@@ -77,7 +77,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QChangeEvent(QChangeEventPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QChangeEvent(QChangeEventPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

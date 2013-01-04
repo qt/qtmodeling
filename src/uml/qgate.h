@@ -62,13 +62,13 @@ class Q_UML_EXPORT QGate : public QMessageEnd
     Q_DECLARE_PRIVATE(QGate)
 
 public:
-    Q_INVOKABLE explicit QGate(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QGate(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QGate();
     virtual void registerMetaTypes() const;
     virtual void setPropertyData();
 
 protected:
-    explicit QGate(QGatePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QGate(QGatePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

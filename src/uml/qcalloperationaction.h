@@ -69,7 +69,7 @@ class Q_UML_EXPORT QCallOperationAction : public QCallAction
     Q_DECLARE_PRIVATE(QCallOperationAction)
 
 public:
-    Q_INVOKABLE explicit QCallOperationAction(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QCallOperationAction(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QCallOperationAction();
 
     // Association ends from QCallOperationAction
@@ -81,7 +81,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QCallOperationAction(QCallOperationActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QCallOperationAction(QCallOperationActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

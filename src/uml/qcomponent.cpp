@@ -68,14 +68,14 @@ QComponentPrivate::~QComponentPrivate()
     \brief In the namespace of a component, all model elements that are involved in or related to its definition are either owned or imported explicitly. This may include, for example, use cases and dependencies (e.g. mappings), packages, components, and artifacts.A component represents a modular part of a system that encapsulates its contents and whose manifestation is replaceable within its environment.
  */
 
-QComponent::QComponent(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QClass(*new QComponentPrivate, parent, wrapper)
+QComponent::QComponent(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QClass(*new QComponentPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QComponent::QComponent(QComponentPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QClass(dd, parent, wrapper)
+QComponent::QComponent(QComponentPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QClass(dd, wrapper, parent)
 {
     setPropertyData();
 }

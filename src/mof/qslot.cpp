@@ -68,14 +68,14 @@ QSlotPrivate::~QSlotPrivate()
     \brief A slot specifies that an entity modeled by an instance specification has a value or values for a specific structural feature.
  */
 
-QSlot::QSlot(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QElement(*new QSlotPrivate, parent, wrapper)
+QSlot::QSlot(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QElement(*new QSlotPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QSlot::QSlot(QSlotPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QElement(dd, parent, wrapper)
+QSlot::QSlot(QSlotPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QElement(dd, wrapper, parent)
 {
     setPropertyData();
 }

@@ -68,14 +68,14 @@ QMultiplicityElementPrivate::~QMultiplicityElementPrivate()
     \brief A multiplicity is a definition of an inclusive interval of non-negative integers beginning with a lower bound and ending with a (possibly infinite) upper bound. A multiplicity element embeds this information to specify the allowable cardinalities for an instantiation of this element.
  */
 
-QMultiplicityElement::QMultiplicityElement(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QElement(*new QMultiplicityElementPrivate, parent, wrapper)
+QMultiplicityElement::QMultiplicityElement(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QElement(*new QMultiplicityElementPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QMultiplicityElement::QMultiplicityElement(QMultiplicityElementPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QElement(dd, parent, wrapper)
+QMultiplicityElement::QMultiplicityElement(QMultiplicityElementPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QElement(dd, wrapper, parent)
 {
     setPropertyData();
 }

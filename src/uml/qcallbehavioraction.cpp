@@ -65,14 +65,14 @@ QCallBehaviorActionPrivate::~QCallBehaviorActionPrivate()
     \brief A call behavior action is a call action that invokes a behavior directly rather than invoking a behavioral feature that, in turn, results in the invocation of that behavior. The argument values of the action are available to the execution of the invoked behavior. For synchronous calls the execution of the call behavior action waits until the execution of the invoked behavior completes and a result is returned on its output pin. The action completes immediately without a result, if the call is asynchronous. In particular, the invoked behavior may be an activity.
  */
 
-QCallBehaviorAction::QCallBehaviorAction(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QCallAction(*new QCallBehaviorActionPrivate, parent, wrapper)
+QCallBehaviorAction::QCallBehaviorAction(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QCallAction(*new QCallBehaviorActionPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QCallBehaviorAction::QCallBehaviorAction(QCallBehaviorActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QCallAction(dd, parent, wrapper)
+QCallBehaviorAction::QCallBehaviorAction(QCallBehaviorActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QCallAction(dd, wrapper, parent)
 {
     setPropertyData();
 }

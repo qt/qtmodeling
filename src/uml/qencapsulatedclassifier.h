@@ -70,7 +70,7 @@ class Q_UML_EXPORT QEncapsulatedClassifier : public QStructuredClassifier
     Q_DECLARE_PRIVATE(QEncapsulatedClassifier)
 
 public:
-    Q_INVOKABLE explicit QEncapsulatedClassifier(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QEncapsulatedClassifier(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QEncapsulatedClassifier();
 
     // Association ends from QEncapsulatedClassifier
@@ -79,7 +79,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QEncapsulatedClassifier(QEncapsulatedClassifierPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QEncapsulatedClassifier(QEncapsulatedClassifierPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

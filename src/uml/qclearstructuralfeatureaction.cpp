@@ -65,14 +65,14 @@ QClearStructuralFeatureActionPrivate::~QClearStructuralFeatureActionPrivate()
     \brief A clear structural feature action is a structural feature action that removes all values of a structural feature.
  */
 
-QClearStructuralFeatureAction::QClearStructuralFeatureAction(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QStructuralFeatureAction(*new QClearStructuralFeatureActionPrivate, parent, wrapper)
+QClearStructuralFeatureAction::QClearStructuralFeatureAction(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QStructuralFeatureAction(*new QClearStructuralFeatureActionPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QClearStructuralFeatureAction::QClearStructuralFeatureAction(QClearStructuralFeatureActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QStructuralFeatureAction(dd, parent, wrapper)
+QClearStructuralFeatureAction::QClearStructuralFeatureAction(QClearStructuralFeatureActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QStructuralFeatureAction(dd, wrapper, parent)
 {
     setPropertyData();
 }

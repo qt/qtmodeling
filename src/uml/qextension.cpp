@@ -91,14 +91,14 @@ void QExtensionPrivate::setMetaclass(QClass *metaclass)
     \brief An extension is used to indicate that the properties of a metaclass are extended through a stereotype, and gives the ability to flexibly add (and later remove) stereotypes to classes.
  */
 
-QExtension::QExtension(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QAssociation(*new QExtensionPrivate, parent, wrapper)
+QExtension::QExtension(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QAssociation(*new QExtensionPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QExtension::QExtension(QExtensionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QAssociation(dd, parent, wrapper)
+QExtension::QExtension(QExtensionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QAssociation(dd, wrapper, parent)
 {
     setPropertyData();
 }

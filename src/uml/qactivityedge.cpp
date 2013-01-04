@@ -106,14 +106,14 @@ void QActivityEdgePrivate::removeInGroup(QActivityGroup *inGroup)
     \brief Activity edges can be contained in interruptible regions.An activity edge is an abstract class for directed connections between two activity nodes.
  */
 
-QActivityEdge::QActivityEdge(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QRedefinableElement(*new QActivityEdgePrivate, parent, wrapper)
+QActivityEdge::QActivityEdge(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QRedefinableElement(*new QActivityEdgePrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QActivityEdge::QActivityEdge(QActivityEdgePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QRedefinableElement(dd, parent, wrapper)
+QActivityEdge::QActivityEdge(QActivityEdgePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QRedefinableElement(dd, wrapper, parent)
 {
     setPropertyData();
 }

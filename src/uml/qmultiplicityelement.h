@@ -72,7 +72,7 @@ class Q_UML_EXPORT QMultiplicityElement : public QElement
     Q_DECLARE_PRIVATE(QMultiplicityElement)
 
 public:
-    Q_INVOKABLE explicit QMultiplicityElement(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QMultiplicityElement(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QMultiplicityElement();
 
     // Attributes from QMultiplicityElement
@@ -106,7 +106,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QMultiplicityElement(QMultiplicityElementPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QMultiplicityElement(QMultiplicityElementPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -65,14 +65,14 @@ QAbstractionPrivate::~QAbstractionPrivate()
     \brief An abstraction is a relationship that relates two elements or sets of elements that represent the same concept at different levels of abstraction or from different viewpoints.
  */
 
-QAbstraction::QAbstraction(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QDependency(*new QAbstractionPrivate, parent, wrapper)
+QAbstraction::QAbstraction(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QDependency(*new QAbstractionPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QAbstraction::QAbstraction(QAbstractionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QDependency(dd, parent, wrapper)
+QAbstraction::QAbstraction(QAbstractionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QDependency(dd, wrapper, parent)
 {
     setPropertyData();
 }

@@ -66,14 +66,14 @@ QDataTypePrivate::~QDataTypePrivate()
     \brief A data type is a type whose instances are identified only by their value. A data type may contain attributes to support the modeling of structured data types.
  */
 
-QDataType::QDataType(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QClassifier(*new QDataTypePrivate, parent, wrapper)
+QDataType::QDataType(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QClassifier(*new QDataTypePrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QDataType::QDataType(QDataTypePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QClassifier(dd, parent, wrapper)
+QDataType::QDataType(QDataTypePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QClassifier(dd, wrapper, parent)
 {
     setPropertyData();
 }

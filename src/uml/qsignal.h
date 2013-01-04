@@ -70,7 +70,7 @@ class Q_UML_EXPORT QSignal : public QClassifier
     Q_DECLARE_PRIVATE(QSignal)
 
 public:
-    Q_INVOKABLE explicit QSignal(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QSignal(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QSignal();
 
     // Association ends from QSignal
@@ -81,7 +81,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QSignal(QSignalPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QSignal(QSignalPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -68,14 +68,14 @@ QElementImportPrivate::~QElementImportPrivate()
     \brief An element import identifies an element in another package, and allows the element to be referenced using its name without a qualifier.
  */
 
-QElementImport::QElementImport(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QDirectedRelationship(*new QElementImportPrivate, parent, wrapper)
+QElementImport::QElementImport(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QDirectedRelationship(*new QElementImportPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QElementImport::QElementImport(QElementImportPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QDirectedRelationship(dd, parent, wrapper)
+QElementImport::QElementImport(QElementImportPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QDirectedRelationship(dd, wrapper, parent)
 {
     setPropertyData();
 }

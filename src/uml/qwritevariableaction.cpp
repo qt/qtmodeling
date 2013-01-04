@@ -65,14 +65,14 @@ QWriteVariableActionPrivate::~QWriteVariableActionPrivate()
     \brief WriteVariableAction is an abstract class for variable actions that change variable values.
  */
 
-QWriteVariableAction::QWriteVariableAction(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QVariableAction(*new QWriteVariableActionPrivate, parent, wrapper)
+QWriteVariableAction::QWriteVariableAction(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QVariableAction(*new QWriteVariableActionPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QWriteVariableAction::QWriteVariableAction(QWriteVariableActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QVariableAction(dd, parent, wrapper)
+QWriteVariableAction::QWriteVariableAction(QWriteVariableActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QVariableAction(dd, wrapper, parent)
 {
     setPropertyData();
 }

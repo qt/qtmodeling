@@ -70,14 +70,14 @@ QActivityPartitionPrivate::~QActivityPartitionPrivate()
     \brief An activity partition is a kind of activity group for identifying actions that have some characteristic in common.
  */
 
-QActivityPartition::QActivityPartition(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QActivityGroup(*new QActivityPartitionPrivate, parent, wrapper)
+QActivityPartition::QActivityPartition(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QActivityGroup(*new QActivityPartitionPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QActivityPartition::QActivityPartition(QActivityPartitionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QActivityGroup(dd, parent, wrapper)
+QActivityPartition::QActivityPartition(QActivityPartitionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QActivityGroup(dd, wrapper, parent)
 {
     setPropertyData();
 }

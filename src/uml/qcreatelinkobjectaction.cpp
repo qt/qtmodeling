@@ -65,14 +65,14 @@ QCreateLinkObjectActionPrivate::~QCreateLinkObjectActionPrivate()
     \brief A create link object action creates a link object.
  */
 
-QCreateLinkObjectAction::QCreateLinkObjectAction(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QCreateLinkAction(*new QCreateLinkObjectActionPrivate, parent, wrapper)
+QCreateLinkObjectAction::QCreateLinkObjectAction(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QCreateLinkAction(*new QCreateLinkObjectActionPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QCreateLinkObjectAction::QCreateLinkObjectAction(QCreateLinkObjectActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QCreateLinkAction(dd, parent, wrapper)
+QCreateLinkObjectAction::QCreateLinkObjectAction(QCreateLinkObjectActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QCreateLinkAction(dd, wrapper, parent)
 {
     setPropertyData();
 }

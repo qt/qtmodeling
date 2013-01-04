@@ -68,7 +68,7 @@ class Q_UML_EXPORT QStructuralFeature : public QWrappedObject
     Q_DECLARE_PRIVATE(QStructuralFeature)
 
 public:
-    Q_INVOKABLE explicit QStructuralFeature(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QStructuralFeature(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QStructuralFeature();
 
     // Association ends from aggregated QElement
@@ -141,7 +141,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QStructuralFeature(QStructuralFeaturePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QStructuralFeature(QStructuralFeaturePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 
 private:
     QTypedElement *_wrappedTypedElement;

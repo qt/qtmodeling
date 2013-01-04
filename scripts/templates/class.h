@@ -293,7 +293,7 @@ class Q_[% namespace.split('/').0.substr(2).upper %]_EXPORT ${class.name} : publ
     Q_DECLARE_PRIVATE(${class.name})
 
 public:
-    Q_INVOKABLE explicit ${class.name}(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit ${class.name}(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~${class.name}();
 [%- IF class.superclass and class.superclass.size > 1 -%]
     [%- GENERATEFUNCTIONS(class, 'true') -%]
@@ -381,7 +381,7 @@ public:
 [%- END %]
 
 protected:
-    explicit ${class.name}(${class.name}Private &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit ${class.name}(${class.name}Private &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 [%- IF class.superclass and class.superclass.size > 1 %]
 
 private:

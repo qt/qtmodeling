@@ -68,14 +68,14 @@ QGeneralizationPrivate::~QGeneralizationPrivate()
     \brief A generalization is a taxonomic relationship between a more general classifier and a more specific classifier. Each instance of the specific classifier is also an indirect instance of the general classifier. Thus, the specific classifier inherits the features of the more general classifier.A generalization relates a specific classifier to a more general classifier, and is owned by the specific classifier.
  */
 
-QGeneralization::QGeneralization(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QDirectedRelationship(*new QGeneralizationPrivate, parent, wrapper)
+QGeneralization::QGeneralization(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QDirectedRelationship(*new QGeneralizationPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QGeneralization::QGeneralization(QGeneralizationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QDirectedRelationship(dd, parent, wrapper)
+QGeneralization::QGeneralization(QGeneralizationPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QDirectedRelationship(dd, wrapper, parent)
 {
     setPropertyData();
 }

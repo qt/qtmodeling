@@ -72,7 +72,7 @@ class Q_UML_EXPORT QStringExpression : public QWrappedObject
     Q_DECLARE_PRIVATE(QStringExpression)
 
 public:
-    Q_INVOKABLE explicit QStringExpression(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QStringExpression(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QStringExpression();
 
     // Association ends from aggregated QElement
@@ -102,7 +102,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QStringExpression(QStringExpressionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QStringExpression(QStringExpressionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 
 private:
     QExpression *_wrappedExpression;

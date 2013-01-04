@@ -67,14 +67,14 @@ QUseCasePrivate::~QUseCasePrivate()
     \brief A use case is the specification of a set of actions performed by a system, which yields an observable result that is, typically, of value for one or more actors or other stakeholders of the system.
  */
 
-QUseCase::QUseCase(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QBehavioredClassifier(*new QUseCasePrivate, parent, wrapper)
+QUseCase::QUseCase(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QBehavioredClassifier(*new QUseCasePrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QUseCase::QUseCase(QUseCasePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QBehavioredClassifier(dd, parent, wrapper)
+QUseCase::QUseCase(QUseCasePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QBehavioredClassifier(dd, wrapper, parent)
 {
     setPropertyData();
 }

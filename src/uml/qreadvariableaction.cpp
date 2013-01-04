@@ -65,14 +65,14 @@ QReadVariableActionPrivate::~QReadVariableActionPrivate()
     \brief A read variable action is a variable action that retrieves the values of a variable.
  */
 
-QReadVariableAction::QReadVariableAction(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QVariableAction(*new QReadVariableActionPrivate, parent, wrapper)
+QReadVariableAction::QReadVariableAction(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QVariableAction(*new QReadVariableActionPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QReadVariableAction::QReadVariableAction(QReadVariableActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QVariableAction(dd, parent, wrapper)
+QReadVariableAction::QReadVariableAction(QReadVariableActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QVariableAction(dd, wrapper, parent)
 {
     setPropertyData();
 }

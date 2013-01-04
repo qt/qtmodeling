@@ -67,18 +67,18 @@ QInteractionPrivate::~QInteractionPrivate()
     \brief An interaction is a unit of behavior that focuses on the observable exchange of information between connectable elements.
  */
 
-QInteraction::QInteraction(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(*new QInteractionPrivate, parent, wrapper),
-    _wrappedBehavior(new QBehavior(this, this)),
-    _wrappedInteractionFragment(new QInteractionFragment(this, this))
+QInteraction::QInteraction(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(*new QInteractionPrivate, wrapper, parent),
+    _wrappedBehavior(new QBehavior(this)),
+    _wrappedInteractionFragment(new QInteractionFragment(this))
 {
     setPropertyData();
 }
 
-QInteraction::QInteraction(QInteractionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(dd, parent, wrapper),
-    _wrappedBehavior(new QBehavior(this, this)),
-    _wrappedInteractionFragment(new QInteractionFragment(this, this))
+QInteraction::QInteraction(QInteractionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(dd, wrapper, parent),
+    _wrappedBehavior(new QBehavior(this)),
+    _wrappedInteractionFragment(new QInteractionFragment(this))
 {
     setPropertyData();
 }

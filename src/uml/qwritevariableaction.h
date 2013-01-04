@@ -67,7 +67,7 @@ class Q_UML_EXPORT QWriteVariableAction : public QVariableAction
     Q_DECLARE_PRIVATE(QWriteVariableAction)
 
 public:
-    Q_INVOKABLE explicit QWriteVariableAction(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QWriteVariableAction(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QWriteVariableAction();
 
     // Association ends from QWriteVariableAction
@@ -77,7 +77,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QWriteVariableAction(QWriteVariableActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QWriteVariableAction(QWriteVariableActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

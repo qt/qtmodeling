@@ -71,7 +71,7 @@ class Q_UML_EXPORT QDuration : public QValueSpecification
     Q_DECLARE_PRIVATE(QDuration)
 
 public:
-    Q_INVOKABLE explicit QDuration(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QDuration(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QDuration();
 
     // Association ends from QDuration
@@ -84,7 +84,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QDuration(QDurationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QDuration(QDurationPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

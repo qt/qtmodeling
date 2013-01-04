@@ -76,7 +76,7 @@ class Q_UML_EXPORT QStructuredClassifier : public QClassifier
     Q_DECLARE_PRIVATE(QStructuredClassifier)
 
 public:
-    Q_INVOKABLE explicit QStructuredClassifier(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QStructuredClassifier(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QStructuredClassifier();
 
     // Association ends from QStructuredClassifier
@@ -92,7 +92,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QStructuredClassifier(QStructuredClassifierPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QStructuredClassifier(QStructuredClassifierPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

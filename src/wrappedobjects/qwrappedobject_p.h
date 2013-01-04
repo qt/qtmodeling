@@ -46,6 +46,8 @@
 
 #include "QtWrappedObjects/QWrappedObject"
 
+#include <QtCore/QPointer>
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTWRAPPEDOBJECTS
@@ -65,7 +67,7 @@ public:
         return dynamic_cast<QWrappedObjectPrivate *>(o->d_func());
     }
 
-    QList<QWrappedObject *> wrappedObjects;
+    QList<QPointer<QWrappedObject>> wrappedObjects;
     QWrappedObject *wrapper;
     QMetaWrappedObject *metaWrappedObject;
 };

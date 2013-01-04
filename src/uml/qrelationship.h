@@ -67,7 +67,7 @@ class Q_UML_EXPORT QRelationship : public QElement
     Q_DECLARE_PRIVATE(QRelationship)
 
 public:
-    Q_INVOKABLE explicit QRelationship(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QRelationship(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QRelationship();
 
     // Association ends from QRelationship
@@ -76,7 +76,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QRelationship(QRelationshipPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QRelationship(QRelationshipPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -66,14 +66,14 @@ QParameterableElementPrivate::~QParameterableElementPrivate()
     \brief A parameterable element is an element that can be exposed as a formal template parameter for a template, or specified as an actual parameter in a binding of a template.
  */
 
-QParameterableElement::QParameterableElement(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QElement(*new QParameterableElementPrivate, parent, wrapper)
+QParameterableElement::QParameterableElement(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QElement(*new QParameterableElementPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QParameterableElement::QParameterableElement(QParameterableElementPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QElement(dd, parent, wrapper)
+QParameterableElement::QParameterableElement(QParameterableElementPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QElement(dd, wrapper, parent)
 {
     setPropertyData();
 }

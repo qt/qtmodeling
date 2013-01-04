@@ -84,7 +84,7 @@ class Q_UML_EXPORT QArtifact : public QWrappedObject
     Q_DECLARE_PRIVATE(QArtifact)
 
 public:
-    Q_INVOKABLE explicit QArtifact(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QArtifact(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QArtifact();
 
     // Association ends from aggregated QElement
@@ -216,7 +216,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QArtifact(QArtifactPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QArtifact(QArtifactPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 
 private:
     QDeployedArtifact *_wrappedDeployedArtifact;

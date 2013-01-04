@@ -66,14 +66,14 @@ QTimeIntervalPrivate::~QTimeIntervalPrivate()
     \brief A time interval defines the range between two time expressions.
  */
 
-QTimeInterval::QTimeInterval(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QInterval(*new QTimeIntervalPrivate, parent, wrapper)
+QTimeInterval::QTimeInterval(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QInterval(*new QTimeIntervalPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QTimeInterval::QTimeInterval(QTimeIntervalPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QInterval(dd, parent, wrapper)
+QTimeInterval::QTimeInterval(QTimeIntervalPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QInterval(dd, wrapper, parent)
 {
     setPropertyData();
 }

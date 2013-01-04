@@ -67,7 +67,7 @@ class Q_UML_EXPORT QType : public QPackageableElement
     Q_DECLARE_PRIVATE(QType)
 
 public:
-    Q_INVOKABLE explicit QType(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QType(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QType();
 
     // Association ends from QType
@@ -80,7 +80,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QType(QTypePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QType(QTypePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

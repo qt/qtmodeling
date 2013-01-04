@@ -67,14 +67,14 @@ QWriteStructuralFeatureActionPrivate::~QWriteStructuralFeatureActionPrivate()
     \brief WriteStructuralFeatureAction is an abstract class for structural feature actions that change structural feature values.
  */
 
-QWriteStructuralFeatureAction::QWriteStructuralFeatureAction(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QStructuralFeatureAction(*new QWriteStructuralFeatureActionPrivate, parent, wrapper)
+QWriteStructuralFeatureAction::QWriteStructuralFeatureAction(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QStructuralFeatureAction(*new QWriteStructuralFeatureActionPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QWriteStructuralFeatureAction::QWriteStructuralFeatureAction(QWriteStructuralFeatureActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QStructuralFeatureAction(dd, parent, wrapper)
+QWriteStructuralFeatureAction::QWriteStructuralFeatureAction(QWriteStructuralFeatureActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QStructuralFeatureAction(dd, wrapper, parent)
 {
     setPropertyData();
 }

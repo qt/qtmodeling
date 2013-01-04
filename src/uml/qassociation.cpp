@@ -66,18 +66,18 @@ QAssociationPrivate::~QAssociationPrivate()
     \brief An association describes a set of tuples whose values refer to typed instances. An instance of an association is called a link.A link is a tuple with one value for each end of the association, where each value is an instance of the type of the end.An association describes a set of tuples whose values refer to typed instances. An instance of an association is called a link. A link is a tuple with one value for each end of the association, where each value is an instance of the type of the end.
  */
 
-QAssociation::QAssociation(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(*new QAssociationPrivate, parent, wrapper),
-    _wrappedClassifier(new QClassifier(this, this)),
-    _wrappedRelationship(new QRelationship(this, this))
+QAssociation::QAssociation(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(*new QAssociationPrivate, wrapper, parent),
+    _wrappedClassifier(new QClassifier(this)),
+    _wrappedRelationship(new QRelationship(this))
 {
     setPropertyData();
 }
 
-QAssociation::QAssociation(QAssociationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(dd, parent, wrapper),
-    _wrappedClassifier(new QClassifier(this, this)),
-    _wrappedRelationship(new QRelationship(this, this))
+QAssociation::QAssociation(QAssociationPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(dd, wrapper, parent),
+    _wrappedClassifier(new QClassifier(this)),
+    _wrappedRelationship(new QRelationship(this))
 {
     setPropertyData();
 }

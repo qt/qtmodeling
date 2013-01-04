@@ -65,14 +65,14 @@ QDestroyLinkActionPrivate::~QDestroyLinkActionPrivate()
     \brief A destroy link action is a write link action that destroys links and link objects.
  */
 
-QDestroyLinkAction::QDestroyLinkAction(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWriteLinkAction(*new QDestroyLinkActionPrivate, parent, wrapper)
+QDestroyLinkAction::QDestroyLinkAction(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWriteLinkAction(*new QDestroyLinkActionPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QDestroyLinkAction::QDestroyLinkAction(QDestroyLinkActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWriteLinkAction(dd, parent, wrapper)
+QDestroyLinkAction::QDestroyLinkAction(QDestroyLinkActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWriteLinkAction(dd, wrapper, parent)
 {
     setPropertyData();
 }

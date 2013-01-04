@@ -69,7 +69,7 @@ class Q_UML_EXPORT QReadExtentAction : public QAction
     Q_DECLARE_PRIVATE(QReadExtentAction)
 
 public:
-    Q_INVOKABLE explicit QReadExtentAction(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QReadExtentAction(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QReadExtentAction();
 
     // Association ends from QReadExtentAction
@@ -81,7 +81,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QReadExtentAction(QReadExtentActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QReadExtentAction(QReadExtentActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

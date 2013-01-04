@@ -69,7 +69,7 @@ class Q_MOF_EXPORT QComment : public QElement
     Q_DECLARE_PRIVATE(QComment)
 
 public:
-    Q_INVOKABLE explicit QComment(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QComment(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QComment();
 
     // Attributes from QComment
@@ -84,7 +84,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QComment(QCommentPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QComment(QCommentPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTMOF

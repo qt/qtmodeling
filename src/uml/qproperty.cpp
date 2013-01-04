@@ -83,20 +83,20 @@ QPropertyPrivate::~QPropertyPrivate()
     \brief Property represents a declared state of one or more instances in terms of a named relationship to a value or values. When a property is an attribute of a classifier, the value or values are related to the instance of the classifier by being held in slots of the instance. When a property is an association end, the value or values are related to the instance or instances at the other end(s) of the association. The range of valid values represented by the property can be controlled by setting the property's type.A property is a structural feature of a classifier that characterizes instances of the classifier. A property related by ownedAttribute to a classifier (other than an association) represents an attribute and might also represent an association end. It relates an instance of the class to a value or set of values of the type of the attribute. A property related by memberEnd or its specializations to an association represents an end of the association. The type of the property is the type of the end of the association.A property has the capability of being a deployment target in a deployment relationship. This enables modeling the deployment to hierarchical nodes that have properties functioning as internal parts.Property specializes ParameterableElement to specify that a property can be exposed as a formal template parameter, and provided as an actual parameter in a binding of a template.A property represents a set of instances that are owned by a containing classifier instance.
  */
 
-QProperty::QProperty(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(*new QPropertyPrivate, parent, wrapper),
-    _wrappedStructuralFeature(new QStructuralFeature(this, this)),
-    _wrappedConnectableElement(new QConnectableElement(this, this)),
-    _wrappedDeploymentTarget(new QDeploymentTarget(this, this))
+QProperty::QProperty(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(*new QPropertyPrivate, wrapper, parent),
+    _wrappedStructuralFeature(new QStructuralFeature(this)),
+    _wrappedConnectableElement(new QConnectableElement(this)),
+    _wrappedDeploymentTarget(new QDeploymentTarget(this))
 {
     setPropertyData();
 }
 
-QProperty::QProperty(QPropertyPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(dd, parent, wrapper),
-    _wrappedStructuralFeature(new QStructuralFeature(this, this)),
-    _wrappedConnectableElement(new QConnectableElement(this, this)),
-    _wrappedDeploymentTarget(new QDeploymentTarget(this, this))
+QProperty::QProperty(QPropertyPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(dd, wrapper, parent),
+    _wrappedStructuralFeature(new QStructuralFeature(this)),
+    _wrappedConnectableElement(new QConnectableElement(this)),
+    _wrappedDeploymentTarget(new QDeploymentTarget(this))
 {
     setPropertyData();
 }

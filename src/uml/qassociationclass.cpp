@@ -62,18 +62,18 @@ QAssociationClassPrivate::~QAssociationClassPrivate()
     \brief A model element that has both association and class properties. An AssociationClass can be seen as an association that also has class properties, or as a class that also has association properties. It not only connects a set of classifiers but also defines a set of features that belong to the relationship itself and not to any of the classifiers.
  */
 
-QAssociationClass::QAssociationClass(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(*new QAssociationClassPrivate, parent, wrapper),
-    _wrappedClass(new QClass(this, this)),
-    _wrappedAssociation(new QAssociation(this, this))
+QAssociationClass::QAssociationClass(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(*new QAssociationClassPrivate, wrapper, parent),
+    _wrappedClass(new QClass(this)),
+    _wrappedAssociation(new QAssociation(this))
 {
     setPropertyData();
 }
 
-QAssociationClass::QAssociationClass(QAssociationClassPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(dd, parent, wrapper),
-    _wrappedClass(new QClass(this, this)),
-    _wrappedAssociation(new QAssociation(this, this))
+QAssociationClass::QAssociationClass(QAssociationClassPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(dd, wrapper, parent),
+    _wrappedClass(new QClass(this)),
+    _wrappedAssociation(new QAssociation(this))
 {
     setPropertyData();
 }

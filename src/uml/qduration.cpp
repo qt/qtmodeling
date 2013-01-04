@@ -65,14 +65,14 @@ QDurationPrivate::~QDurationPrivate()
     \brief Duration defines a value specification that specifies the temporal distance between two time instants.
  */
 
-QDuration::QDuration(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QValueSpecification(*new QDurationPrivate, parent, wrapper)
+QDuration::QDuration(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QValueSpecification(*new QDurationPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QDuration::QDuration(QDurationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QValueSpecification(dd, parent, wrapper)
+QDuration::QDuration(QDurationPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QValueSpecification(dd, wrapper, parent)
 {
     setPropertyData();
 }

@@ -71,18 +71,18 @@ QParameterPrivate::~QParameterPrivate()
     \brief Parameters are allowed to be treated as connectable elements.A parameter is a specification of an argument used to pass information into or out of an invocation of a behavioral feature.Parameters have support for streaming, exceptions, and parameter sets.
  */
 
-QParameter::QParameter(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(*new QParameterPrivate, parent, wrapper),
-    _wrappedMultiplicityElement(new QMultiplicityElement(this, this)),
-    _wrappedConnectableElement(new QConnectableElement(this, this))
+QParameter::QParameter(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(*new QParameterPrivate, wrapper, parent),
+    _wrappedMultiplicityElement(new QMultiplicityElement(this)),
+    _wrappedConnectableElement(new QConnectableElement(this))
 {
     setPropertyData();
 }
 
-QParameter::QParameter(QParameterPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(dd, parent, wrapper),
-    _wrappedMultiplicityElement(new QMultiplicityElement(this, this)),
-    _wrappedConnectableElement(new QConnectableElement(this, this))
+QParameter::QParameter(QParameterPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(dd, wrapper, parent),
+    _wrappedMultiplicityElement(new QMultiplicityElement(this)),
+    _wrappedConnectableElement(new QConnectableElement(this))
 {
     setPropertyData();
 }

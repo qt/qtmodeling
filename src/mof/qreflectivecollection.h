@@ -62,7 +62,7 @@ class Q_MOF_EXPORT QReflectiveCollection : public QMofObject
     Q_DECLARE_PRIVATE(QReflectiveCollection)
 
 public:
-    Q_INVOKABLE explicit QReflectiveCollection(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QReflectiveCollection(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QReflectiveCollection();
 
     // Operations
@@ -75,7 +75,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QReflectiveCollection(QReflectiveCollectionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QReflectiveCollection(QReflectiveCollectionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTMOF

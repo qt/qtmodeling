@@ -81,7 +81,7 @@ class Q_UML_EXPORT QInteraction : public QWrappedObject
     Q_DECLARE_PRIVATE(QInteraction)
 
 public:
-    Q_INVOKABLE explicit QInteraction(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QInteraction(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QInteraction();
 
     // Attributes from aggregated QBehavior
@@ -163,7 +163,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QInteraction(QInteractionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QInteraction(QInteractionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 
 private:
     QBehavior *_wrappedBehavior;

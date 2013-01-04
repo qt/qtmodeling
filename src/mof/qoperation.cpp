@@ -74,14 +74,14 @@ QOperationPrivate::~QOperationPrivate()
     \brief An operation is a behavioral feature of a classifier that specifies the name, type, parameters, and constraints for invoking an associated behavior.
  */
 
-QOperation::QOperation(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QBehavioralFeature(*new QOperationPrivate, parent, wrapper)
+QOperation::QOperation(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QBehavioralFeature(*new QOperationPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QOperation::QOperation(QOperationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QBehavioralFeature(dd, parent, wrapper)
+QOperation::QOperation(QOperationPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QBehavioralFeature(dd, wrapper, parent)
 {
     setPropertyData();
 }

@@ -66,18 +66,18 @@ QRedefinableTemplateSignaturePrivate::~QRedefinableTemplateSignaturePrivate()
     \brief A redefinable template signature supports the addition of formal template parameters in a specialization of a template classifier.
  */
 
-QRedefinableTemplateSignature::QRedefinableTemplateSignature(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(*new QRedefinableTemplateSignaturePrivate, parent, wrapper),
-    _wrappedTemplateSignature(new QTemplateSignature(this, this)),
-    _wrappedRedefinableElement(new QRedefinableElement(this, this))
+QRedefinableTemplateSignature::QRedefinableTemplateSignature(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(*new QRedefinableTemplateSignaturePrivate, wrapper, parent),
+    _wrappedTemplateSignature(new QTemplateSignature(this)),
+    _wrappedRedefinableElement(new QRedefinableElement(this))
 {
     setPropertyData();
 }
 
-QRedefinableTemplateSignature::QRedefinableTemplateSignature(QRedefinableTemplateSignaturePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(dd, parent, wrapper),
-    _wrappedTemplateSignature(new QTemplateSignature(this, this)),
-    _wrappedRedefinableElement(new QRedefinableElement(this, this))
+QRedefinableTemplateSignature::QRedefinableTemplateSignature(QRedefinableTemplateSignaturePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(dd, wrapper, parent),
+    _wrappedTemplateSignature(new QTemplateSignature(this)),
+    _wrappedRedefinableElement(new QRedefinableElement(this))
 {
     setPropertyData();
 }

@@ -62,14 +62,14 @@ QRealizationPrivate::~QRealizationPrivate()
     \brief Realization is a specialized abstraction relationship between two sets of model elements, one representing a specification (the supplier) and the other represents an implementation of the latter (the client). Realization can be used to model stepwise refinement, optimizations, transformations, templates, model synthesis, framework composition, etc.
  */
 
-QRealization::QRealization(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QAbstraction(*new QRealizationPrivate, parent, wrapper)
+QRealization::QRealization(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QAbstraction(*new QRealizationPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QRealization::QRealization(QRealizationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QAbstraction(dd, parent, wrapper)
+QRealization::QRealization(QRealizationPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QAbstraction(dd, wrapper, parent)
 {
     setPropertyData();
 }
