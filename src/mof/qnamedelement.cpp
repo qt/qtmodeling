@@ -88,14 +88,14 @@ void QNamedElementPrivate::setNamespace_(QNamespace *namespace_)
     \brief A named element is an element in a model that may have a name.
  */
 
-QNamedElement::QNamedElement(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QElement(*new QNamedElementPrivate, parent, wrapper)
+QNamedElement::QNamedElement(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QElement(*new QNamedElementPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QNamedElement::QNamedElement(QNamedElementPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QElement(dd, parent, wrapper)
+QNamedElement::QNamedElement(QNamedElementPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QElement(dd, wrapper, parent)
 {
     setPropertyData();
 }

@@ -76,7 +76,7 @@ class Q_UML_EXPORT QRedefinableTemplateSignature : public QWrappedObject
     Q_DECLARE_PRIVATE(QRedefinableTemplateSignature)
 
 public:
-    Q_INVOKABLE explicit QRedefinableTemplateSignature(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QRedefinableTemplateSignature(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QRedefinableTemplateSignature();
 
     // Association ends from aggregated QElement
@@ -124,7 +124,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QRedefinableTemplateSignature(QRedefinableTemplateSignaturePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QRedefinableTemplateSignature(QRedefinableTemplateSignaturePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 
 private:
     QTemplateSignature *_wrappedTemplateSignature;

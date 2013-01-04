@@ -75,7 +75,7 @@ class Q_UML_EXPORT QOpaqueExpression : public QValueSpecification
     Q_DECLARE_PRIVATE(QOpaqueExpression)
 
 public:
-    Q_INVOKABLE explicit QOpaqueExpression(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QOpaqueExpression(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QOpaqueExpression();
 
     // Attributes from QOpaqueExpression
@@ -100,7 +100,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QOpaqueExpression(QOpaqueExpressionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QOpaqueExpression(QOpaqueExpressionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

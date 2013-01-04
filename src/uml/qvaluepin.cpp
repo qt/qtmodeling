@@ -65,14 +65,14 @@ QValuePinPrivate::~QValuePinPrivate()
     \brief A value pin is an input pin that provides a value by evaluating a value specification.
  */
 
-QValuePin::QValuePin(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QInputPin(*new QValuePinPrivate, parent, wrapper)
+QValuePin::QValuePin(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QInputPin(*new QValuePinPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QValuePin::QValuePin(QValuePinPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QInputPin(dd, parent, wrapper)
+QValuePin::QValuePin(QValuePinPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QInputPin(dd, wrapper, parent)
 {
     setPropertyData();
 }

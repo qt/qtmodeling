@@ -79,18 +79,18 @@ QTransitionPrivate::~QTransitionPrivate()
     \brief A transition is a directed relationship between a source vertex and a target vertex. It may be part of a compound transition, which takes the state machine from one state configuration to another, representing the complete response of the state machine to an occurrence of an event of a particular type.
  */
 
-QTransition::QTransition(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(*new QTransitionPrivate, parent, wrapper),
-    _wrappedRedefinableElement(new QRedefinableElement(this, this)),
-    _wrappedNamespace(new QNamespace(this, this))
+QTransition::QTransition(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(*new QTransitionPrivate, wrapper, parent),
+    _wrappedRedefinableElement(new QRedefinableElement(this)),
+    _wrappedNamespace(new QNamespace(this))
 {
     setPropertyData();
 }
 
-QTransition::QTransition(QTransitionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(dd, parent, wrapper),
-    _wrappedRedefinableElement(new QRedefinableElement(this, this)),
-    _wrappedNamespace(new QNamespace(this, this))
+QTransition::QTransition(QTransitionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(dd, wrapper, parent),
+    _wrappedRedefinableElement(new QRedefinableElement(this)),
+    _wrappedNamespace(new QNamespace(this))
 {
     setPropertyData();
 }

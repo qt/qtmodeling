@@ -69,14 +69,14 @@ QReadLinkObjectEndActionPrivate::~QReadLinkObjectEndActionPrivate()
     \brief A read link object end action is an action that retrieves an end object from a link object.
  */
 
-QReadLinkObjectEndAction::QReadLinkObjectEndAction(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QAction(*new QReadLinkObjectEndActionPrivate, parent, wrapper)
+QReadLinkObjectEndAction::QReadLinkObjectEndAction(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QAction(*new QReadLinkObjectEndActionPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QReadLinkObjectEndAction::QReadLinkObjectEndAction(QReadLinkObjectEndActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QAction(dd, parent, wrapper)
+QReadLinkObjectEndAction::QReadLinkObjectEndAction(QReadLinkObjectEndActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QAction(dd, wrapper, parent)
 {
     setPropertyData();
 }

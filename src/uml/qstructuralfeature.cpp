@@ -63,20 +63,20 @@ QStructuralFeaturePrivate::~QStructuralFeaturePrivate()
     \brief A structural feature is a typed feature of a classifier that specifies the structure of instances of the classifier.By specializing multiplicity element, it supports a multiplicity that specifies valid cardinalities for the collection of values associated with an instantiation of the structural feature.
  */
 
-QStructuralFeature::QStructuralFeature(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(*new QStructuralFeaturePrivate, parent, wrapper),
-    _wrappedTypedElement(new QTypedElement(this, this)),
-    _wrappedMultiplicityElement(new QMultiplicityElement(this, this)),
-    _wrappedFeature(new QFeature(this, this))
+QStructuralFeature::QStructuralFeature(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(*new QStructuralFeaturePrivate, wrapper, parent),
+    _wrappedTypedElement(new QTypedElement(this)),
+    _wrappedMultiplicityElement(new QMultiplicityElement(this)),
+    _wrappedFeature(new QFeature(this))
 {
     setPropertyData();
 }
 
-QStructuralFeature::QStructuralFeature(QStructuralFeaturePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(dd, parent, wrapper),
-    _wrappedTypedElement(new QTypedElement(this, this)),
-    _wrappedMultiplicityElement(new QMultiplicityElement(this, this)),
-    _wrappedFeature(new QFeature(this, this))
+QStructuralFeature::QStructuralFeature(QStructuralFeaturePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(dd, wrapper, parent),
+    _wrappedTypedElement(new QTypedElement(this)),
+    _wrappedMultiplicityElement(new QMultiplicityElement(this)),
+    _wrappedFeature(new QFeature(this))
 {
     setPropertyData();
 }

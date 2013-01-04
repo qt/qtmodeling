@@ -102,7 +102,7 @@ class Q_UML_EXPORT QClassifier : public QWrappedObject
     Q_DECLARE_PRIVATE(QClassifier)
 
 public:
-    Q_INVOKABLE explicit QClassifier(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QClassifier(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QClassifier();
 
     // Association ends from aggregated QElement
@@ -230,7 +230,7 @@ public:
     friend class QFeaturePrivate;
 
 protected:
-    explicit QClassifier(QClassifierPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QClassifier(QClassifierPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 
 private:
     QNamespace *_wrappedNamespace;

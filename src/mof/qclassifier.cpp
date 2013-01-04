@@ -128,20 +128,20 @@ void QClassifierPrivate::removeFeature(QFeature *feature)
     \brief A classifier is a classification of instances - it describes a set of instances that have features in common. A classifier can specify a generalization hierarchy by referencing its general classifiers.
  */
 
-QClassifier::QClassifier(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(*new QClassifierPrivate, parent, wrapper),
-    _wrappedType(new QType(this, this)),
-    _wrappedRedefinableElement(new QRedefinableElement(this, this)),
-    _wrappedNamespace(new QNamespace(this, this))
+QClassifier::QClassifier(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(*new QClassifierPrivate, wrapper, parent),
+    _wrappedType(new QType(this)),
+    _wrappedRedefinableElement(new QRedefinableElement(this)),
+    _wrappedNamespace(new QNamespace(this))
 {
     setPropertyData();
 }
 
-QClassifier::QClassifier(QClassifierPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(dd, parent, wrapper),
-    _wrappedType(new QType(this, this)),
-    _wrappedRedefinableElement(new QRedefinableElement(this, this)),
-    _wrappedNamespace(new QNamespace(this, this))
+QClassifier::QClassifier(QClassifierPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(dd, wrapper, parent),
+    _wrappedType(new QType(this)),
+    _wrappedRedefinableElement(new QRedefinableElement(this)),
+    _wrappedNamespace(new QNamespace(this))
 {
     setPropertyData();
 }

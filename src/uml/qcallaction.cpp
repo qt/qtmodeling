@@ -65,14 +65,14 @@ QCallActionPrivate::~QCallActionPrivate()
     \brief CallAction is an abstract class for actions that invoke behavior and receive return values.
  */
 
-QCallAction::QCallAction(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QInvocationAction(*new QCallActionPrivate, parent, wrapper)
+QCallAction::QCallAction(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QInvocationAction(*new QCallActionPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QCallAction::QCallAction(QCallActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QInvocationAction(dd, parent, wrapper)
+QCallAction::QCallAction(QCallActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QInvocationAction(dd, wrapper, parent)
 {
     setPropertyData();
 }

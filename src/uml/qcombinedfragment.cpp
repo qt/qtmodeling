@@ -66,14 +66,14 @@ QCombinedFragmentPrivate::~QCombinedFragmentPrivate()
     \brief A combined fragment defines an expression of interaction fragments. A combined fragment is defined by an interaction operator and corresponding interaction operands. Through the use of combined fragments the user will be able to describe a number of traces in a compact and concise manner.
  */
 
-QCombinedFragment::QCombinedFragment(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QInteractionFragment(*new QCombinedFragmentPrivate, parent, wrapper)
+QCombinedFragment::QCombinedFragment(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QInteractionFragment(*new QCombinedFragmentPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QCombinedFragment::QCombinedFragment(QCombinedFragmentPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QInteractionFragment(dd, parent, wrapper)
+QCombinedFragment::QCombinedFragment(QCombinedFragmentPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QInteractionFragment(dd, wrapper, parent)
 {
     setPropertyData();
 }

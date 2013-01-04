@@ -64,7 +64,7 @@ class Q_MOF_EXPORT QLiteralUnlimitedNatural : public QLiteralSpecification
     Q_DECLARE_PRIVATE(QLiteralUnlimitedNatural)
 
 public:
-    Q_INVOKABLE explicit QLiteralUnlimitedNatural(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QLiteralUnlimitedNatural(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QLiteralUnlimitedNatural();
 
     // Attributes from QLiteralUnlimitedNatural
@@ -79,7 +79,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QLiteralUnlimitedNatural(QLiteralUnlimitedNaturalPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QLiteralUnlimitedNatural(QLiteralUnlimitedNaturalPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTMOF

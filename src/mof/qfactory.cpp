@@ -64,14 +64,14 @@ QFactoryPrivate::~QFactoryPrivate()
 }
 
 
-QFactory::QFactory(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QElement(*new QFactoryPrivate, parent, wrapper)
+QFactory::QFactory(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QElement(*new QFactoryPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QFactory::QFactory(QFactoryPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QElement(dd, parent, wrapper)
+QFactory::QFactory(QFactoryPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QElement(dd, wrapper, parent)
 {
     setPropertyData();
 }

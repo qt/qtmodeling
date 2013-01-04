@@ -62,7 +62,7 @@ class Q_MOF_EXPORT QLiteralNull : public QLiteralSpecification
     Q_DECLARE_PRIVATE(QLiteralNull)
 
 public:
-    Q_INVOKABLE explicit QLiteralNull(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QLiteralNull(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QLiteralNull();
 
     // Operations
@@ -72,7 +72,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QLiteralNull(QLiteralNullPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QLiteralNull(QLiteralNullPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTMOF

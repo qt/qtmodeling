@@ -62,13 +62,13 @@ class Q_UML_EXPORT QDeployedArtifact : public QNamedElement
     Q_DECLARE_PRIVATE(QDeployedArtifact)
 
 public:
-    Q_INVOKABLE explicit QDeployedArtifact(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QDeployedArtifact(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QDeployedArtifact();
     virtual void registerMetaTypes() const;
     virtual void setPropertyData();
 
 protected:
-    explicit QDeployedArtifact(QDeployedArtifactPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QDeployedArtifact(QDeployedArtifactPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -67,14 +67,14 @@ QInterfaceRealizationPrivate::~QInterfaceRealizationPrivate()
     \brief An interface realization is a specialized realization relationship between a classifier and an interface. This relationship signifies that the realizing classifier conforms to the contract specified by the interface.
  */
 
-QInterfaceRealization::QInterfaceRealization(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QRealization(*new QInterfaceRealizationPrivate, parent, wrapper)
+QInterfaceRealization::QInterfaceRealization(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QRealization(*new QInterfaceRealizationPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QInterfaceRealization::QInterfaceRealization(QInterfaceRealizationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QRealization(dd, parent, wrapper)
+QInterfaceRealization::QInterfaceRealization(QInterfaceRealizationPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QRealization(dd, wrapper, parent)
 {
     setPropertyData();
 }

@@ -65,14 +65,14 @@ QStereotypePrivate::~QStereotypePrivate()
     \brief A stereotype defines how an existing metaclass may be extended, and enables the use of platform or domain specific terminology or notation in place of, or in addition to, the ones used for the extended metaclass.
  */
 
-QStereotype::QStereotype(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QClass(*new QStereotypePrivate, parent, wrapper)
+QStereotype::QStereotype(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QClass(*new QStereotypePrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QStereotype::QStereotype(QStereotypePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QClass(dd, parent, wrapper)
+QStereotype::QStereotype(QStereotypePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QClass(dd, wrapper, parent)
 {
     setPropertyData();
 }

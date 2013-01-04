@@ -70,14 +70,14 @@ QReduceActionPrivate::~QReduceActionPrivate()
     \brief A reduce action is an action that reduces a collection to a single value by combining the elements of the collection.
  */
 
-QReduceAction::QReduceAction(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QAction(*new QReduceActionPrivate, parent, wrapper)
+QReduceAction::QReduceAction(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QAction(*new QReduceActionPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QReduceAction::QReduceAction(QReduceActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QAction(dd, parent, wrapper)
+QReduceAction::QReduceAction(QReduceActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QAction(dd, wrapper, parent)
 {
     setPropertyData();
 }

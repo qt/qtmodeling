@@ -72,7 +72,7 @@ class Q_MOF_EXPORT QExtent : public QMofObject
     Q_DECLARE_PRIVATE(QExtent)
 
 public:
-    Q_INVOKABLE explicit QExtent(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QExtent(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QExtent();
 
     // Operations
@@ -86,7 +86,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QExtent(QExtentPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QExtent(QExtentPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTMOF

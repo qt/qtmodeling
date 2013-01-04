@@ -62,13 +62,13 @@ class Q_UML_EXPORT QPartDecomposition : public QInteractionUse
     Q_DECLARE_PRIVATE(QPartDecomposition)
 
 public:
-    Q_INVOKABLE explicit QPartDecomposition(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QPartDecomposition(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QPartDecomposition();
     virtual void registerMetaTypes() const;
     virtual void setPropertyData();
 
 protected:
-    explicit QPartDecomposition(QPartDecompositionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QPartDecomposition(QPartDecompositionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

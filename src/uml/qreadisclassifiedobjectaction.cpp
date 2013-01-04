@@ -70,14 +70,14 @@ QReadIsClassifiedObjectActionPrivate::~QReadIsClassifiedObjectActionPrivate()
     \brief A read is classified object action is an action that determines whether a runtime object is classified by a given classifier.
  */
 
-QReadIsClassifiedObjectAction::QReadIsClassifiedObjectAction(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QAction(*new QReadIsClassifiedObjectActionPrivate, parent, wrapper)
+QReadIsClassifiedObjectAction::QReadIsClassifiedObjectAction(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QAction(*new QReadIsClassifiedObjectActionPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QReadIsClassifiedObjectAction::QReadIsClassifiedObjectAction(QReadIsClassifiedObjectActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QAction(dd, parent, wrapper)
+QReadIsClassifiedObjectAction::QReadIsClassifiedObjectAction(QReadIsClassifiedObjectActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QAction(dd, wrapper, parent)
 {
     setPropertyData();
 }

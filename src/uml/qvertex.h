@@ -74,7 +74,7 @@ class Q_UML_EXPORT QVertex : public QNamedElement
     Q_DECLARE_PRIVATE(QVertex)
 
 public:
-    Q_INVOKABLE explicit QVertex(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QVertex(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QVertex();
 
     // Association ends from QVertex
@@ -92,7 +92,7 @@ public:
     friend class QTransition;
 
 protected:
-    explicit QVertex(QVertexPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QVertex(QVertexPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

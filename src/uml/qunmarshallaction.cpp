@@ -68,14 +68,14 @@ QUnmarshallActionPrivate::~QUnmarshallActionPrivate()
     \brief An unmarshall action is an action that breaks an object of a known type into outputs each of which is equal to a value from a structural feature of the object.
  */
 
-QUnmarshallAction::QUnmarshallAction(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QAction(*new QUnmarshallActionPrivate, parent, wrapper)
+QUnmarshallAction::QUnmarshallAction(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QAction(*new QUnmarshallActionPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QUnmarshallAction::QUnmarshallAction(QUnmarshallActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QAction(dd, parent, wrapper)
+QUnmarshallAction::QUnmarshallAction(QUnmarshallActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QAction(dd, wrapper, parent)
 {
     setPropertyData();
 }

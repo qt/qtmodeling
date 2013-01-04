@@ -64,14 +64,14 @@ QEnumerationPrivate::~QEnumerationPrivate()
     \brief An enumeration is a data type whose values are enumerated in the model as enumeration literals.
  */
 
-QEnumeration::QEnumeration(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QDataType(*new QEnumerationPrivate, parent, wrapper)
+QEnumeration::QEnumeration(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QDataType(*new QEnumerationPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QEnumeration::QEnumeration(QEnumerationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QDataType(dd, parent, wrapper)
+QEnumeration::QEnumeration(QEnumerationPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QDataType(dd, wrapper, parent)
 {
     setPropertyData();
 }

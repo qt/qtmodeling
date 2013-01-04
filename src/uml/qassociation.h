@@ -79,7 +79,7 @@ class Q_UML_EXPORT QAssociation : public QWrappedObject
     Q_DECLARE_PRIVATE(QAssociation)
 
 public:
-    Q_INVOKABLE explicit QAssociation(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QAssociation(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QAssociation();
 
     // Association ends from aggregated QElement
@@ -209,7 +209,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QAssociation(QAssociationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QAssociation(QAssociationPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 
 private:
     QClassifier *_wrappedClassifier;

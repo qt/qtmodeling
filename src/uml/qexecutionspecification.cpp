@@ -66,14 +66,14 @@ QExecutionSpecificationPrivate::~QExecutionSpecificationPrivate()
     \brief An execution specification is a specification of the execution of a unit of behavior or action within the lifeline. The duration of an execution specification is represented by two cccurrence specifications, the start occurrence specification and the finish occurrence specification.
  */
 
-QExecutionSpecification::QExecutionSpecification(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QInteractionFragment(*new QExecutionSpecificationPrivate, parent, wrapper)
+QExecutionSpecification::QExecutionSpecification(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QInteractionFragment(*new QExecutionSpecificationPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QExecutionSpecification::QExecutionSpecification(QExecutionSpecificationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QInteractionFragment(dd, parent, wrapper)
+QExecutionSpecification::QExecutionSpecification(QExecutionSpecificationPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QInteractionFragment(dd, wrapper, parent)
 {
     setPropertyData();
 }

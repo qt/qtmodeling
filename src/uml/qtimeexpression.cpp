@@ -65,14 +65,14 @@ QTimeExpressionPrivate::~QTimeExpressionPrivate()
     \brief A time expression defines a value specification that represents a time value.
  */
 
-QTimeExpression::QTimeExpression(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QValueSpecification(*new QTimeExpressionPrivate, parent, wrapper)
+QTimeExpression::QTimeExpression(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QValueSpecification(*new QTimeExpressionPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QTimeExpression::QTimeExpression(QTimeExpressionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QValueSpecification(dd, parent, wrapper)
+QTimeExpression::QTimeExpression(QTimeExpressionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QValueSpecification(dd, wrapper, parent)
 {
     setPropertyData();
 }

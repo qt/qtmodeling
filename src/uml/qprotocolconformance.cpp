@@ -66,14 +66,14 @@ QProtocolConformancePrivate::~QProtocolConformancePrivate()
     \brief Protocol state machines can be redefined into more specific protocol state machines, or into behavioral state machines. Protocol conformance declares that the specific protocol state machine specifies a protocol that conforms to the general state machine one, or that the specific behavioral state machine abide by the protocol of the general protocol state machine.
  */
 
-QProtocolConformance::QProtocolConformance(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QDirectedRelationship(*new QProtocolConformancePrivate, parent, wrapper)
+QProtocolConformance::QProtocolConformance(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QDirectedRelationship(*new QProtocolConformancePrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QProtocolConformance::QProtocolConformance(QProtocolConformancePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QDirectedRelationship(dd, parent, wrapper)
+QProtocolConformance::QProtocolConformance(QProtocolConformancePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QDirectedRelationship(dd, wrapper, parent)
 {
     setPropertyData();
 }

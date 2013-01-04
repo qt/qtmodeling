@@ -65,14 +65,14 @@ QMessageEndPrivate::~QMessageEndPrivate()
     \brief MessageEnd is an abstract specialization of NamedElement that represents what can occur at the end of a message.
  */
 
-QMessageEnd::QMessageEnd(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QNamedElement(*new QMessageEndPrivate, parent, wrapper)
+QMessageEnd::QMessageEnd(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QNamedElement(*new QMessageEndPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QMessageEnd::QMessageEnd(QMessageEndPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QNamedElement(dd, parent, wrapper)
+QMessageEnd::QMessageEnd(QMessageEndPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QNamedElement(dd, wrapper, parent)
 {
     setPropertyData();
 }

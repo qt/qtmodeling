@@ -71,7 +71,7 @@ class Q_UML_EXPORT QValueSpecification : public QWrappedObject
     Q_DECLARE_PRIVATE(QValueSpecification)
 
 public:
-    Q_INVOKABLE explicit QValueSpecification(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QValueSpecification(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QValueSpecification();
 
     // Association ends from aggregated QElement
@@ -122,7 +122,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QValueSpecification(QValueSpecificationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QValueSpecification(QValueSpecificationPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 
 private:
     QTypedElement *_wrappedTypedElement;

@@ -71,7 +71,7 @@ class Q_MOF_EXPORT QDirectedRelationship : public QRelationship
     Q_DECLARE_PRIVATE(QDirectedRelationship)
 
 public:
-    Q_INVOKABLE explicit QDirectedRelationship(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QDirectedRelationship(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QDirectedRelationship();
 
     // Association ends from QDirectedRelationship
@@ -81,7 +81,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QDirectedRelationship(QDirectedRelationshipPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QDirectedRelationship(QDirectedRelationshipPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTMOF

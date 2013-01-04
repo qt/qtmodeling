@@ -97,18 +97,18 @@ void QConnectableElementPrivate::removeEnd(QConnectorEnd *end)
     \brief ConnectableElement is an abstract metaclass representing a set of instances that play roles of a classifier. Connectable elements may be joined by attached connectors and specify configurations of linked instances to be created within an instance of the containing classifier.A connectable element may be exposed as a connectable element template parameter.
  */
 
-QConnectableElement::QConnectableElement(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(*new QConnectableElementPrivate, parent, wrapper),
-    _wrappedTypedElement(new QTypedElement(this, this)),
-    _wrappedParameterableElement(new QParameterableElement(this, this))
+QConnectableElement::QConnectableElement(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(*new QConnectableElementPrivate, wrapper, parent),
+    _wrappedTypedElement(new QTypedElement(this)),
+    _wrappedParameterableElement(new QParameterableElement(this))
 {
     setPropertyData();
 }
 
-QConnectableElement::QConnectableElement(QConnectableElementPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(dd, parent, wrapper),
-    _wrappedTypedElement(new QTypedElement(this, this)),
-    _wrappedParameterableElement(new QParameterableElement(this, this))
+QConnectableElement::QConnectableElement(QConnectableElementPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(dd, wrapper, parent),
+    _wrappedTypedElement(new QTypedElement(this)),
+    _wrappedParameterableElement(new QParameterableElement(this))
 {
     setPropertyData();
 }

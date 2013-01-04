@@ -71,14 +71,14 @@ QActivityPrivate::~QActivityPrivate()
     \brief An activity is the specification of parameterized behavior as the coordinated sequencing of subordinate units whose individual elements are actions.
  */
 
-QActivity::QActivity(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QBehavior(*new QActivityPrivate, parent, wrapper)
+QActivity::QActivity(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QBehavior(*new QActivityPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QActivity::QActivity(QActivityPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QBehavior(dd, parent, wrapper)
+QActivity::QActivity(QActivityPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QBehavior(dd, wrapper, parent)
 {
     setPropertyData();
 }

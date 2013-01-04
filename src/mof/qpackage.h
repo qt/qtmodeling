@@ -84,7 +84,7 @@ class Q_MOF_EXPORT QPackage : public QWrappedObject
     Q_DECLARE_PRIVATE(QPackage)
 
 public:
-    Q_INVOKABLE explicit QPackage(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QPackage(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QPackage();
 
     // Association ends from aggregated QElement
@@ -155,7 +155,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QPackage(QPackagePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QPackage(QPackagePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 
 private:
     QNamespace *_wrappedNamespace;

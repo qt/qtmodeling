@@ -74,7 +74,7 @@ class Q_MOF_EXPORT QInstanceSpecification : public QPackageableElement
     Q_DECLARE_PRIVATE(QInstanceSpecification)
 
 public:
-    Q_INVOKABLE explicit QInstanceSpecification(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QInstanceSpecification(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QInstanceSpecification();
 
     // Association ends from QInstanceSpecification
@@ -90,7 +90,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QInstanceSpecification(QInstanceSpecificationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QInstanceSpecification(QInstanceSpecificationPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTMOF

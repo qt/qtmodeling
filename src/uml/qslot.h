@@ -74,7 +74,7 @@ class Q_UML_EXPORT QSlot : public QElement
     Q_DECLARE_PRIVATE(QSlot)
 
 public:
-    Q_INVOKABLE explicit QSlot(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QSlot(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QSlot();
 
     // Association ends from QSlot
@@ -89,7 +89,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QSlot(QSlotPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QSlot(QSlotPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

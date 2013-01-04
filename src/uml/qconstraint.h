@@ -74,7 +74,7 @@ class Q_UML_EXPORT QConstraint : public QPackageableElement
     Q_DECLARE_PRIVATE(QConstraint)
 
 public:
-    Q_INVOKABLE explicit QConstraint(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QConstraint(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QConstraint();
 
     // Association ends from QConstraint
@@ -89,7 +89,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QConstraint(QConstraintPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QConstraint(QConstraintPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

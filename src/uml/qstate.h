@@ -95,7 +95,7 @@ class Q_UML_EXPORT QState : public QWrappedObject
     Q_DECLARE_PRIVATE(QState)
 
 public:
-    Q_INVOKABLE explicit QState(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QState(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QState();
 
     // Association ends from aggregated QElement
@@ -189,7 +189,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QState(QStatePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QState(QStatePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 
 private:
     QNamespace *_wrappedNamespace;

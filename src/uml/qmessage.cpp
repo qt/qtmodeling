@@ -73,14 +73,14 @@ QMessagePrivate::~QMessagePrivate()
     \brief A message defines a particular communication between lifelines of an interaction.
  */
 
-QMessage::QMessage(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QNamedElement(*new QMessagePrivate, parent, wrapper)
+QMessage::QMessage(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QNamedElement(*new QMessagePrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QMessage::QMessage(QMessagePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QNamedElement(dd, parent, wrapper)
+QMessage::QMessage(QMessagePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QNamedElement(dd, wrapper, parent)
 {
     setPropertyData();
 }

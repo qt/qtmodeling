@@ -71,7 +71,7 @@ class Q_UML_EXPORT QDurationConstraint : public QIntervalConstraint
     Q_DECLARE_PRIVATE(QDurationConstraint)
 
 public:
-    Q_INVOKABLE explicit QDurationConstraint(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QDurationConstraint(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QDurationConstraint();
 
     // Attributes from QDurationConstraint
@@ -86,7 +86,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QDurationConstraint(QDurationConstraintPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QDurationConstraint(QDurationConstraintPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -78,7 +78,7 @@ class Q_UML_EXPORT QActivityPartition : public QActivityGroup
     Q_DECLARE_PRIVATE(QActivityPartition)
 
 public:
-    Q_INVOKABLE explicit QActivityPartition(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QActivityPartition(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QActivityPartition();
 
     // Attributes from QActivityPartition
@@ -107,7 +107,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QActivityPartition(QActivityPartitionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QActivityPartition(QActivityPartitionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

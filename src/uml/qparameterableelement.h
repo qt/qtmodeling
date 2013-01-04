@@ -68,7 +68,7 @@ class Q_UML_EXPORT QParameterableElement : public QElement
     Q_DECLARE_PRIVATE(QParameterableElement)
 
 public:
-    Q_INVOKABLE explicit QParameterableElement(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QParameterableElement(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QParameterableElement();
 
     // Association ends from QParameterableElement
@@ -84,7 +84,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QParameterableElement(QParameterableElementPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QParameterableElement(QParameterableElementPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

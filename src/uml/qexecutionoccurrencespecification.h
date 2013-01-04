@@ -67,7 +67,7 @@ class Q_UML_EXPORT QExecutionOccurrenceSpecification : public QOccurrenceSpecifi
     Q_DECLARE_PRIVATE(QExecutionOccurrenceSpecification)
 
 public:
-    Q_INVOKABLE explicit QExecutionOccurrenceSpecification(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QExecutionOccurrenceSpecification(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QExecutionOccurrenceSpecification();
 
     // Association ends from QExecutionOccurrenceSpecification
@@ -77,7 +77,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QExecutionOccurrenceSpecification(QExecutionOccurrenceSpecificationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QExecutionOccurrenceSpecification(QExecutionOccurrenceSpecificationPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

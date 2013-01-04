@@ -70,14 +70,14 @@ QLoopNodePrivate::~QLoopNodePrivate()
     \brief A loop node is a structured activity node that represents a loop with setup, test, and body sections.
  */
 
-QLoopNode::QLoopNode(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QStructuredActivityNode(*new QLoopNodePrivate, parent, wrapper)
+QLoopNode::QLoopNode(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QStructuredActivityNode(*new QLoopNodePrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QLoopNode::QLoopNode(QLoopNodePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QStructuredActivityNode(dd, parent, wrapper)
+QLoopNode::QLoopNode(QLoopNodePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QStructuredActivityNode(dd, wrapper, parent)
 {
     setPropertyData();
 }

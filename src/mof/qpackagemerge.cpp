@@ -66,14 +66,14 @@ QPackageMergePrivate::~QPackageMergePrivate()
     \brief A package merge defines how the contents of one package are extended by the contents of another package.
  */
 
-QPackageMerge::QPackageMerge(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QDirectedRelationship(*new QPackageMergePrivate, parent, wrapper)
+QPackageMerge::QPackageMerge(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QDirectedRelationship(*new QPackageMergePrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QPackageMerge::QPackageMerge(QPackageMergePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QDirectedRelationship(dd, parent, wrapper)
+QPackageMerge::QPackageMerge(QPackageMergePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QDirectedRelationship(dd, wrapper, parent)
 {
     setPropertyData();
 }

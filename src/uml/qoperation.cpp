@@ -78,20 +78,20 @@ QOperationPrivate::~QOperationPrivate()
     \brief An operation is a behavioral feature of a classifier that specifies the name, type, parameters, and constraints for invoking an associated behavior.An operation may invoke both the execution of method behaviors as well as other behavioral responses.Operation specializes TemplateableElement in order to support specification of template operations and bound operations. Operation specializes ParameterableElement to specify that an operation can be exposed as a formal template parameter, and provided as an actual parameter in a binding of a template.
  */
 
-QOperation::QOperation(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(*new QOperationPrivate, parent, wrapper),
-    _wrappedTemplateableElement(new QTemplateableElement(this, this)),
-    _wrappedBehavioralFeature(new QBehavioralFeature(this, this)),
-    _wrappedParameterableElement(new QParameterableElement(this, this))
+QOperation::QOperation(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(*new QOperationPrivate, wrapper, parent),
+    _wrappedTemplateableElement(new QTemplateableElement(this)),
+    _wrappedBehavioralFeature(new QBehavioralFeature(this)),
+    _wrappedParameterableElement(new QParameterableElement(this))
 {
     setPropertyData();
 }
 
-QOperation::QOperation(QOperationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(dd, parent, wrapper),
-    _wrappedTemplateableElement(new QTemplateableElement(this, this)),
-    _wrappedBehavioralFeature(new QBehavioralFeature(this, this)),
-    _wrappedParameterableElement(new QParameterableElement(this, this))
+QOperation::QOperation(QOperationPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(dd, wrapper, parent),
+    _wrappedTemplateableElement(new QTemplateableElement(this)),
+    _wrappedBehavioralFeature(new QBehavioralFeature(this)),
+    _wrappedParameterableElement(new QParameterableElement(this))
 {
     setPropertyData();
 }

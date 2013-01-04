@@ -62,14 +62,14 @@ QFinalNodePrivate::~QFinalNodePrivate()
     \brief A final node is an abstract control node at which a flow in an activity stops.
  */
 
-QFinalNode::QFinalNode(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QControlNode(*new QFinalNodePrivate, parent, wrapper)
+QFinalNode::QFinalNode(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QControlNode(*new QFinalNodePrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QFinalNode::QFinalNode(QFinalNodePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QControlNode(dd, parent, wrapper)
+QFinalNode::QFinalNode(QFinalNodePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QControlNode(dd, wrapper, parent)
 {
     setPropertyData();
 }

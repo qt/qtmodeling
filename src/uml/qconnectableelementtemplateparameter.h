@@ -67,7 +67,7 @@ class Q_UML_EXPORT QConnectableElementTemplateParameter : public QTemplateParame
     Q_DECLARE_PRIVATE(QConnectableElementTemplateParameter)
 
 public:
-    Q_INVOKABLE explicit QConnectableElementTemplateParameter(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QConnectableElementTemplateParameter(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QConnectableElementTemplateParameter();
 
     // Association ends from QConnectableElementTemplateParameter
@@ -77,7 +77,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QConnectableElementTemplateParameter(QConnectableElementTemplateParameterPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QConnectableElementTemplateParameter(QConnectableElementTemplateParameterPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

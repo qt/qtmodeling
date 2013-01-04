@@ -68,7 +68,7 @@ class Q_MOF_EXPORT QURIExtent : public QExtent
     Q_DECLARE_PRIVATE(QURIExtent)
 
 public:
-    Q_INVOKABLE explicit QURIExtent(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QURIExtent(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QURIExtent();
 
     // Operations
@@ -79,7 +79,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QURIExtent(QURIExtentPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QURIExtent(QURIExtentPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTMOF

@@ -67,14 +67,14 @@ QClassPrivate::~QClassPrivate()
     \brief A class describes a set of objects that share the same specifications of features, constraints, and semantics.
  */
 
-QClass::QClass(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QClassifier(*new QClassPrivate, parent, wrapper)
+QClass::QClass(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QClassifier(*new QClassPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QClass::QClass(QClassPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QClassifier(dd, parent, wrapper)
+QClass::QClass(QClassPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QClassifier(dd, wrapper, parent)
 {
     setPropertyData();
 }

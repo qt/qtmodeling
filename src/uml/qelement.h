@@ -73,7 +73,7 @@ class Q_UML_EXPORT QElement : public QWrappedObject
     Q_DECLARE_PRIVATE(QElement)
 
 public:
-    Q_INVOKABLE explicit QElement(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QElement(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QElement();
 
     // Association ends from QElement
@@ -90,7 +90,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QElement(QElementPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QElement(QElementPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 
 private:
     void allOwnedElements(QSet<QElement *> &allOwnedElements_) const;

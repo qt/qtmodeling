@@ -65,14 +65,14 @@ QReadSelfActionPrivate::~QReadSelfActionPrivate()
     \brief A read self action is an action that retrieves the host object of an action.
  */
 
-QReadSelfAction::QReadSelfAction(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QAction(*new QReadSelfActionPrivate, parent, wrapper)
+QReadSelfAction::QReadSelfAction(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QAction(*new QReadSelfActionPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QReadSelfAction::QReadSelfAction(QReadSelfActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QAction(dd, parent, wrapper)
+QReadSelfAction::QReadSelfAction(QReadSelfActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QAction(dd, wrapper, parent)
 {
     setPropertyData();
 }

@@ -65,18 +65,18 @@ QInteractionOperandPrivate::~QInteractionOperandPrivate()
     \brief An interaction operand is contained in a combined fragment. An interaction operand represents one operand of the expression given by the enclosing combined fragment.
  */
 
-QInteractionOperand::QInteractionOperand(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(*new QInteractionOperandPrivate, parent, wrapper),
-    _wrappedInteractionFragment(new QInteractionFragment(this, this)),
-    _wrappedNamespace(new QNamespace(this, this))
+QInteractionOperand::QInteractionOperand(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(*new QInteractionOperandPrivate, wrapper, parent),
+    _wrappedInteractionFragment(new QInteractionFragment(this)),
+    _wrappedNamespace(new QNamespace(this))
 {
     setPropertyData();
 }
 
-QInteractionOperand::QInteractionOperand(QInteractionOperandPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(dd, parent, wrapper),
-    _wrappedInteractionFragment(new QInteractionFragment(this, this)),
-    _wrappedNamespace(new QNamespace(this, this))
+QInteractionOperand::QInteractionOperand(QInteractionOperandPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(dd, wrapper, parent),
+    _wrappedInteractionFragment(new QInteractionFragment(this)),
+    _wrappedNamespace(new QNamespace(this))
 {
     setPropertyData();
 }

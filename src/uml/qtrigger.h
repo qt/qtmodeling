@@ -72,7 +72,7 @@ class Q_UML_EXPORT QTrigger : public QNamedElement
     Q_DECLARE_PRIVATE(QTrigger)
 
 public:
-    Q_INVOKABLE explicit QTrigger(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QTrigger(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QTrigger();
 
     // Association ends from QTrigger
@@ -85,7 +85,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QTrigger(QTriggerPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QTrigger(QTriggerPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

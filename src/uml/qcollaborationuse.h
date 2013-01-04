@@ -72,7 +72,7 @@ class Q_UML_EXPORT QCollaborationUse : public QNamedElement
     Q_DECLARE_PRIVATE(QCollaborationUse)
 
 public:
-    Q_INVOKABLE explicit QCollaborationUse(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QCollaborationUse(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QCollaborationUse();
 
     // Association ends from QCollaborationUse
@@ -85,7 +85,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QCollaborationUse(QCollaborationUsePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QCollaborationUse(QCollaborationUsePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

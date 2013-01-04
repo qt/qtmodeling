@@ -63,20 +63,20 @@ QStructuralFeaturePrivate::~QStructuralFeaturePrivate()
     \brief By specializing multiplicity element, it supports a multiplicity that specifies valid cardinalities for the collection of values associated with an instantiation of the structural feature.
  */
 
-QStructuralFeature::QStructuralFeature(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(*new QStructuralFeaturePrivate, parent, wrapper),
-    _wrappedFeature(new QFeature(this, this)),
-    _wrappedTypedElement(new QTypedElement(this, this)),
-    _wrappedMultiplicityElement(new QMultiplicityElement(this, this))
+QStructuralFeature::QStructuralFeature(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(*new QStructuralFeaturePrivate, wrapper, parent),
+    _wrappedFeature(new QFeature(this)),
+    _wrappedTypedElement(new QTypedElement(this)),
+    _wrappedMultiplicityElement(new QMultiplicityElement(this))
 {
     setPropertyData();
 }
 
-QStructuralFeature::QStructuralFeature(QStructuralFeaturePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(dd, parent, wrapper),
-    _wrappedFeature(new QFeature(this, this)),
-    _wrappedTypedElement(new QTypedElement(this, this)),
-    _wrappedMultiplicityElement(new QMultiplicityElement(this, this))
+QStructuralFeature::QStructuralFeature(QStructuralFeaturePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(dd, wrapper, parent),
+    _wrappedFeature(new QFeature(this)),
+    _wrappedTypedElement(new QTypedElement(this)),
+    _wrappedMultiplicityElement(new QMultiplicityElement(this))
 {
     setPropertyData();
 }

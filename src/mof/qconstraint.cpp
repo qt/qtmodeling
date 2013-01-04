@@ -68,14 +68,14 @@ QConstraintPrivate::~QConstraintPrivate()
     \brief A constraint is a condition or restriction expressed in natural language text or in a machine readable language for the purpose of declaring some of the semantics of an element.
  */
 
-QConstraint::QConstraint(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QPackageableElement(*new QConstraintPrivate, parent, wrapper)
+QConstraint::QConstraint(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QPackageableElement(*new QConstraintPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QConstraint::QConstraint(QConstraintPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QPackageableElement(dd, parent, wrapper)
+QConstraint::QConstraint(QConstraintPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QPackageableElement(dd, wrapper, parent)
 {
     setPropertyData();
 }

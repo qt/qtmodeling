@@ -72,7 +72,7 @@ class Q_UML_EXPORT QInterfaceRealization : public QRealization
     Q_DECLARE_PRIVATE(QInterfaceRealization)
 
 public:
-    Q_INVOKABLE explicit QInterfaceRealization(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QInterfaceRealization(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QInterfaceRealization();
 
     // Association ends from QInterfaceRealization
@@ -90,7 +90,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QInterfaceRealization(QInterfaceRealizationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QInterfaceRealization(QInterfaceRealizationPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

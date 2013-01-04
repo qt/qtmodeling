@@ -67,14 +67,14 @@ QDeploymentPrivate::~QDeploymentPrivate()
     \brief A deployment is the allocation of an artifact or artifact instance to a deployment target.A component deployment is the deployment of one or more artifacts or artifact instances to a deployment target, optionally parameterized by a deployment specification. Examples are executables and configuration files.
  */
 
-QDeployment::QDeployment(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QDependency(*new QDeploymentPrivate, parent, wrapper)
+QDeployment::QDeployment(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QDependency(*new QDeploymentPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QDeployment::QDeployment(QDeploymentPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QDependency(dd, parent, wrapper)
+QDeployment::QDeployment(QDeploymentPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QDependency(dd, wrapper, parent)
 {
     setPropertyData();
 }

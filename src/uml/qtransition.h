@@ -90,7 +90,7 @@ class Q_UML_EXPORT QTransition : public QWrappedObject
     Q_DECLARE_PRIVATE(QTransition)
 
 public:
-    Q_INVOKABLE explicit QTransition(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QTransition(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QTransition();
 
     // Association ends from aggregated QElement
@@ -167,7 +167,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QTransition(QTransitionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QTransition(QTransitionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 
 private:
     QRedefinableElement *_wrappedRedefinableElement;

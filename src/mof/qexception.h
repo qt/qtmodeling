@@ -73,7 +73,7 @@ class Q_MOF_EXPORT QException : public QWrappedObject
     Q_DECLARE_PRIVATE(QException)
 
 public:
-    Q_INVOKABLE explicit QException(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QException(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QException();
 
     // Attributes from QException
@@ -87,7 +87,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QException(QExceptionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QException(QExceptionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTMOF

@@ -66,18 +66,18 @@ QIncludePrivate::~QIncludePrivate()
     \brief An include relationship defines that a use case contains the behavior defined in another use case.
  */
 
-QInclude::QInclude(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(*new QIncludePrivate, parent, wrapper),
-    _wrappedDirectedRelationship(new QDirectedRelationship(this, this)),
-    _wrappedNamedElement(new QNamedElement(this, this))
+QInclude::QInclude(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(*new QIncludePrivate, wrapper, parent),
+    _wrappedDirectedRelationship(new QDirectedRelationship(this)),
+    _wrappedNamedElement(new QNamedElement(this))
 {
     setPropertyData();
 }
 
-QInclude::QInclude(QIncludePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(dd, parent, wrapper),
-    _wrappedDirectedRelationship(new QDirectedRelationship(this, this)),
-    _wrappedNamedElement(new QNamedElement(this, this))
+QInclude::QInclude(QIncludePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(dd, wrapper, parent),
+    _wrappedDirectedRelationship(new QDirectedRelationship(this)),
+    _wrappedNamedElement(new QNamedElement(this))
 {
     setPropertyData();
 }

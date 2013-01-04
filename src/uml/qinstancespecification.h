@@ -78,7 +78,7 @@ class Q_UML_EXPORT QInstanceSpecification : public QWrappedObject
     Q_DECLARE_PRIVATE(QInstanceSpecification)
 
 public:
-    Q_INVOKABLE explicit QInstanceSpecification(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QInstanceSpecification(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QInstanceSpecification();
 
     // Association ends from aggregated QElement
@@ -131,7 +131,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QInstanceSpecification(QInstanceSpecificationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QInstanceSpecification(QInstanceSpecificationPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 
 private:
     QDeployedArtifact *_wrappedDeployedArtifact;

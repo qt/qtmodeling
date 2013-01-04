@@ -58,14 +58,14 @@ QArgumentPrivate::~QArgumentPrivate()
 }
 
 
-QArgument::QArgument(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(*new QArgumentPrivate, parent, wrapper)
+QArgument::QArgument(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(*new QArgumentPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QArgument::QArgument(QArgumentPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(dd, parent, wrapper)
+QArgument::QArgument(QArgumentPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(dd, wrapper, parent)
 {
     setPropertyData();
 }

@@ -62,13 +62,13 @@ class Q_UML_EXPORT QDevice : public QNode
     Q_DECLARE_PRIVATE(QDevice)
 
 public:
-    Q_INVOKABLE explicit QDevice(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QDevice(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QDevice();
     virtual void registerMetaTypes() const;
     virtual void setPropertyData();
 
 protected:
-    explicit QDevice(QDevicePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QDevice(QDevicePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

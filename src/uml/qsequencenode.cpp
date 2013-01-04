@@ -65,14 +65,14 @@ QSequenceNodePrivate::~QSequenceNodePrivate()
     \brief A sequence node is a structured activity node that executes its actions in order.
  */
 
-QSequenceNode::QSequenceNode(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QStructuredActivityNode(*new QSequenceNodePrivate, parent, wrapper)
+QSequenceNode::QSequenceNode(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QStructuredActivityNode(*new QSequenceNodePrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QSequenceNode::QSequenceNode(QSequenceNodePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QStructuredActivityNode(dd, parent, wrapper)
+QSequenceNode::QSequenceNode(QSequenceNodePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QStructuredActivityNode(dd, wrapper, parent)
 {
     setPropertyData();
 }

@@ -68,14 +68,14 @@ QPackageImportPrivate::~QPackageImportPrivate()
     \brief A package import is a relationship that allows the use of unqualified names to refer to package members from other namespaces.
  */
 
-QPackageImport::QPackageImport(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QDirectedRelationship(*new QPackageImportPrivate, parent, wrapper)
+QPackageImport::QPackageImport(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QDirectedRelationship(*new QPackageImportPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QPackageImport::QPackageImport(QPackageImportPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QDirectedRelationship(dd, parent, wrapper)
+QPackageImport::QPackageImport(QPackageImportPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QDirectedRelationship(dd, wrapper, parent)
 {
     setPropertyData();
 }

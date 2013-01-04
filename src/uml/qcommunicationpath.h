@@ -62,13 +62,13 @@ class Q_UML_EXPORT QCommunicationPath : public QAssociation
     Q_DECLARE_PRIVATE(QCommunicationPath)
 
 public:
-    Q_INVOKABLE explicit QCommunicationPath(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QCommunicationPath(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QCommunicationPath();
     virtual void registerMetaTypes() const;
     virtual void setPropertyData();
 
 protected:
-    explicit QCommunicationPath(QCommunicationPathPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QCommunicationPath(QCommunicationPathPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

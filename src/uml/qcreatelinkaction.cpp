@@ -65,14 +65,14 @@ QCreateLinkActionPrivate::~QCreateLinkActionPrivate()
     \brief A create link action is a write link action for creating links.
  */
 
-QCreateLinkAction::QCreateLinkAction(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWriteLinkAction(*new QCreateLinkActionPrivate, parent, wrapper)
+QCreateLinkAction::QCreateLinkAction(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWriteLinkAction(*new QCreateLinkActionPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QCreateLinkAction::QCreateLinkAction(QCreateLinkActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWriteLinkAction(dd, parent, wrapper)
+QCreateLinkAction::QCreateLinkAction(QCreateLinkActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWriteLinkAction(dd, wrapper, parent)
 {
     setPropertyData();
 }

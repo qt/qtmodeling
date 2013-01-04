@@ -71,7 +71,7 @@ class Q_UML_EXPORT QFeature : public QRedefinableElement
     Q_DECLARE_PRIVATE(QFeature)
 
 public:
-    Q_INVOKABLE explicit QFeature(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QFeature(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QFeature();
 
     // Attributes from QFeature
@@ -88,7 +88,7 @@ public:
     friend class QClassifierPrivate;
 
 protected:
-    explicit QFeature(QFeaturePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QFeature(QFeaturePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

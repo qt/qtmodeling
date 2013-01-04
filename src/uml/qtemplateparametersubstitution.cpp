@@ -70,14 +70,14 @@ QTemplateParameterSubstitutionPrivate::~QTemplateParameterSubstitutionPrivate()
     \brief A template parameter substitution relates the actual parameter to a formal template parameter as part of a template binding.
  */
 
-QTemplateParameterSubstitution::QTemplateParameterSubstitution(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QElement(*new QTemplateParameterSubstitutionPrivate, parent, wrapper)
+QTemplateParameterSubstitution::QTemplateParameterSubstitution(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QElement(*new QTemplateParameterSubstitutionPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QTemplateParameterSubstitution::QTemplateParameterSubstitution(QTemplateParameterSubstitutionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QElement(dd, parent, wrapper)
+QTemplateParameterSubstitution::QTemplateParameterSubstitution(QTemplateParameterSubstitutionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QElement(dd, wrapper, parent)
 {
     setPropertyData();
 }

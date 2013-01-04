@@ -56,14 +56,14 @@ QTagPrivate::~QTagPrivate()
 }
 
 
-QTag::QTag(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QElement(*new QTagPrivate, parent, wrapper)
+QTag::QTag(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QElement(*new QTagPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QTag::QTag(QTagPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QElement(dd, parent, wrapper)
+QTag::QTag(QTagPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QElement(dd, wrapper, parent)
 {
     setPropertyData();
 }

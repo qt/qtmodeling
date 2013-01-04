@@ -68,14 +68,14 @@ QPseudostatePrivate::~QPseudostatePrivate()
     \brief A pseudostate is an abstraction that encompasses different types of transient vertices in the state machine graph.
  */
 
-QPseudostate::QPseudostate(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QVertex(*new QPseudostatePrivate, parent, wrapper)
+QPseudostate::QPseudostate(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QVertex(*new QPseudostatePrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QPseudostate::QPseudostate(QPseudostatePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QVertex(dd, parent, wrapper)
+QPseudostate::QPseudostate(QPseudostatePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QVertex(dd, wrapper, parent)
 {
     setPropertyData();
 }

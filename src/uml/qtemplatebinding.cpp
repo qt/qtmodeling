@@ -68,14 +68,14 @@ QTemplateBindingPrivate::~QTemplateBindingPrivate()
     \brief A template binding represents a relationship between a templateable element and a template. A template binding specifies the substitutions of actual parameters for the formal parameters of the template.
  */
 
-QTemplateBinding::QTemplateBinding(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QDirectedRelationship(*new QTemplateBindingPrivate, parent, wrapper)
+QTemplateBinding::QTemplateBinding(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QDirectedRelationship(*new QTemplateBindingPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QTemplateBinding::QTemplateBinding(QTemplateBindingPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QDirectedRelationship(dd, parent, wrapper)
+QTemplateBinding::QTemplateBinding(QTemplateBindingPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QDirectedRelationship(dd, wrapper, parent)
 {
     setPropertyData();
 }

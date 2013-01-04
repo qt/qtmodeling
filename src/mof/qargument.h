@@ -72,7 +72,7 @@ class Q_MOF_EXPORT QArgument : public QWrappedObject
     Q_DECLARE_PRIVATE(QArgument)
 
 public:
-    Q_INVOKABLE explicit QArgument(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QArgument(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QArgument();
 
     // Attributes from QArgument
@@ -84,7 +84,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QArgument(QArgumentPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QArgument(QArgumentPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTMOF

@@ -66,14 +66,14 @@ QRemoveVariableValueActionPrivate::~QRemoveVariableValueActionPrivate()
     \brief A remove variable value action is a write variable action that removes values from variables.
  */
 
-QRemoveVariableValueAction::QRemoveVariableValueAction(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWriteVariableAction(*new QRemoveVariableValueActionPrivate, parent, wrapper)
+QRemoveVariableValueAction::QRemoveVariableValueAction(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWriteVariableAction(*new QRemoveVariableValueActionPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QRemoveVariableValueAction::QRemoveVariableValueAction(QRemoveVariableValueActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWriteVariableAction(dd, parent, wrapper)
+QRemoveVariableValueAction::QRemoveVariableValueAction(QRemoveVariableValueActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWriteVariableAction(dd, wrapper, parent)
 {
     setPropertyData();
 }

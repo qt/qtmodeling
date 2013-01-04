@@ -67,14 +67,14 @@ QInstanceSpecificationPrivate::~QInstanceSpecificationPrivate()
     \brief An instance specification is a model element that represents an instance in a modeled system.
  */
 
-QInstanceSpecification::QInstanceSpecification(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QPackageableElement(*new QInstanceSpecificationPrivate, parent, wrapper)
+QInstanceSpecification::QInstanceSpecification(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QPackageableElement(*new QInstanceSpecificationPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QInstanceSpecification::QInstanceSpecification(QInstanceSpecificationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QPackageableElement(dd, parent, wrapper)
+QInstanceSpecification::QInstanceSpecification(QInstanceSpecificationPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QPackageableElement(dd, wrapper, parent)
 {
     setPropertyData();
 }

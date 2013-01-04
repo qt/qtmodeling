@@ -90,14 +90,14 @@ void QStructuredClassifierPrivate::removeRole(QConnectableElement *role)
     \brief A structured classifier is an abstract metaclass that represents any classifier whose behavior can be fully or partly described by the collaboration of owned or referenced instances.
  */
 
-QStructuredClassifier::QStructuredClassifier(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QClassifier(*new QStructuredClassifierPrivate, parent, wrapper)
+QStructuredClassifier::QStructuredClassifier(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QClassifier(*new QStructuredClassifierPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QStructuredClassifier::QStructuredClassifier(QStructuredClassifierPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QClassifier(dd, parent, wrapper)
+QStructuredClassifier::QStructuredClassifier(QStructuredClassifierPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QClassifier(dd, wrapper, parent)
 {
     setPropertyData();
 }

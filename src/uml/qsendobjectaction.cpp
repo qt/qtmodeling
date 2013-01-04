@@ -67,14 +67,14 @@ QSendObjectActionPrivate::~QSendObjectActionPrivate()
     \brief A send object action is an action that transmits an object to the target object, where it may invoke behavior such as the firing of state machine transitions or the execution of an activity. The value of the object is available to the execution of invoked behaviors. The requestor continues execution immediately. Any reply message is ignored and is not transmitted to the requestor.
  */
 
-QSendObjectAction::QSendObjectAction(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QInvocationAction(*new QSendObjectActionPrivate, parent, wrapper)
+QSendObjectAction::QSendObjectAction(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QInvocationAction(*new QSendObjectActionPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QSendObjectAction::QSendObjectAction(QSendObjectActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QInvocationAction(dd, parent, wrapper)
+QSendObjectAction::QSendObjectAction(QSendObjectActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QInvocationAction(dd, wrapper, parent)
 {
     setPropertyData();
 }

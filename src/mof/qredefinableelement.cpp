@@ -101,14 +101,14 @@ void QRedefinableElementPrivate::removeRedefinitionContext(QClassifier *redefini
     \brief A redefinable element is an element that, when defined in the context of a classifier, can be redefined more specifically or differently in the context of another classifier that specializes (directly or indirectly) the context classifier.
  */
 
-QRedefinableElement::QRedefinableElement(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QNamedElement(*new QRedefinableElementPrivate, parent, wrapper)
+QRedefinableElement::QRedefinableElement(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QNamedElement(*new QRedefinableElementPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QRedefinableElement::QRedefinableElement(QRedefinableElementPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QNamedElement(dd, parent, wrapper)
+QRedefinableElement::QRedefinableElement(QRedefinableElementPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QNamedElement(dd, wrapper, parent)
 {
     setPropertyData();
 }

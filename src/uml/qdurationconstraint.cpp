@@ -66,14 +66,14 @@ QDurationConstraintPrivate::~QDurationConstraintPrivate()
     \brief A duration constraint is a constraint that refers to a duration interval.
  */
 
-QDurationConstraint::QDurationConstraint(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QIntervalConstraint(*new QDurationConstraintPrivate, parent, wrapper)
+QDurationConstraint::QDurationConstraint(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QIntervalConstraint(*new QDurationConstraintPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QDurationConstraint::QDurationConstraint(QDurationConstraintPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QIntervalConstraint(dd, parent, wrapper)
+QDurationConstraint::QDurationConstraint(QDurationConstraintPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QIntervalConstraint(dd, wrapper, parent)
 {
     setPropertyData();
 }

@@ -66,14 +66,14 @@ QJoinNodePrivate::~QJoinNodePrivate()
     \brief A join node is a control node that synchronizes multiple flows.Join nodes have a Boolean value specification using the names of the incoming edges to specify the conditions under which the join will emit a token.
  */
 
-QJoinNode::QJoinNode(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QControlNode(*new QJoinNodePrivate, parent, wrapper)
+QJoinNode::QJoinNode(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QControlNode(*new QJoinNodePrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QJoinNode::QJoinNode(QJoinNodePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QControlNode(dd, parent, wrapper)
+QJoinNode::QJoinNode(QJoinNodePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QControlNode(dd, wrapper, parent)
 {
     setPropertyData();
 }

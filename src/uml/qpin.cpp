@@ -63,18 +63,18 @@ QPinPrivate::~QPinPrivate()
     \brief A pin is a typed element and multiplicity element that provides values to actions and accept result values from them.A pin is an object node for inputs and outputs to actions.
  */
 
-QPin::QPin(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(*new QPinPrivate, parent, wrapper),
-    _wrappedMultiplicityElement(new QMultiplicityElement(this, this)),
-    _wrappedObjectNode(new QObjectNode(this, this))
+QPin::QPin(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(*new QPinPrivate, wrapper, parent),
+    _wrappedMultiplicityElement(new QMultiplicityElement(this)),
+    _wrappedObjectNode(new QObjectNode(this))
 {
     setPropertyData();
 }
 
-QPin::QPin(QPinPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(dd, parent, wrapper),
-    _wrappedMultiplicityElement(new QMultiplicityElement(this, this)),
-    _wrappedObjectNode(new QObjectNode(this, this))
+QPin::QPin(QPinPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(dd, wrapper, parent),
+    _wrappedMultiplicityElement(new QMultiplicityElement(this)),
+    _wrappedObjectNode(new QObjectNode(this))
 {
     setPropertyData();
 }

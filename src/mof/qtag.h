@@ -71,7 +71,7 @@ class Q_MOF_EXPORT QTag : public QElement
     Q_DECLARE_PRIVATE(QTag)
 
 public:
-    Q_INVOKABLE explicit QTag(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QTag(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QTag();
 
     // Attributes from QTag
@@ -88,7 +88,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QTag(QTagPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QTag(QTagPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTMOF

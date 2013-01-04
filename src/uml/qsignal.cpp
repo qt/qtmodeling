@@ -64,14 +64,14 @@ QSignalPrivate::~QSignalPrivate()
     \brief A signal is a specification of send request instances communicated between objects. The receiving object handles the received request instances as specified by its receptions. The data carried by a send request (which was passed to it by the send invocation occurrence that caused that request) are represented as attributes of the signal. A signal is defined independently of the classifiers handling the signal occurrence.
  */
 
-QSignal::QSignal(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QClassifier(*new QSignalPrivate, parent, wrapper)
+QSignal::QSignal(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QClassifier(*new QSignalPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QSignal::QSignal(QSignalPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QClassifier(dd, parent, wrapper)
+QSignal::QSignal(QSignalPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QClassifier(dd, wrapper, parent)
 {
     setPropertyData();
 }

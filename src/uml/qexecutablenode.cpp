@@ -64,14 +64,14 @@ QExecutableNodePrivate::~QExecutableNodePrivate()
     \brief An executable node is an abstract class for activity nodes that may be executed. It is used as an attachment point for exception handlers.An executable node is an abstract class for activity nodes that may be executed. It is used as an attachment point for exception handlers.
  */
 
-QExecutableNode::QExecutableNode(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QActivityNode(*new QExecutableNodePrivate, parent, wrapper)
+QExecutableNode::QExecutableNode(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QActivityNode(*new QExecutableNodePrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QExecutableNode::QExecutableNode(QExecutableNodePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QActivityNode(dd, parent, wrapper)
+QExecutableNode::QExecutableNode(QExecutableNodePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QActivityNode(dd, wrapper, parent)
 {
     setPropertyData();
 }

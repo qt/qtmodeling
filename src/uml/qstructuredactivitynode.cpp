@@ -71,20 +71,20 @@ QStructuredActivityNodePrivate::~QStructuredActivityNodePrivate()
     \brief A structured activity node is an executable activity node that may have an expansion into subordinate nodes as an activity group. The subordinate nodes must belong to only one structured activity node, although they may be nested.Because of the concurrent nature of the execution of actions within and across activities, it can be difficult to guarantee the consistent access and modification of object memory. In order to avoid race conditions or other concurrency-related problems, it is sometimes necessary to isolate the effects of a group of actions from the effects of actions outside the group. This may be indicated by setting the mustIsolate attribute to true on a structured activity node. If a structured activity node is "isolated," then any object used by an action within the node cannot be accessed by any action outside the node until the structured activity node as a whole completes. Any concurrent actions that would result in accessing such objects are required to have their execution deferred until the completion of the node.
  */
 
-QStructuredActivityNode::QStructuredActivityNode(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(*new QStructuredActivityNodePrivate, parent, wrapper),
-    _wrappedAction(new QAction(this, this)),
-    _wrappedNamespace(new QNamespace(this, this)),
-    _wrappedActivityGroup(new QActivityGroup(this, this))
+QStructuredActivityNode::QStructuredActivityNode(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(*new QStructuredActivityNodePrivate, wrapper, parent),
+    _wrappedAction(new QAction(this)),
+    _wrappedNamespace(new QNamespace(this)),
+    _wrappedActivityGroup(new QActivityGroup(this))
 {
     setPropertyData();
 }
 
-QStructuredActivityNode::QStructuredActivityNode(QStructuredActivityNodePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(dd, parent, wrapper),
-    _wrappedAction(new QAction(this, this)),
-    _wrappedNamespace(new QNamespace(this, this)),
-    _wrappedActivityGroup(new QActivityGroup(this, this))
+QStructuredActivityNode::QStructuredActivityNode(QStructuredActivityNodePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(dd, wrapper, parent),
+    _wrappedAction(new QAction(this)),
+    _wrappedNamespace(new QNamespace(this)),
+    _wrappedActivityGroup(new QActivityGroup(this))
 {
     setPropertyData();
 }

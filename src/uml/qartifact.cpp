@@ -66,18 +66,18 @@ QArtifactPrivate::~QArtifactPrivate()
     \brief An artifact is the source of a deployment to a node.An artifact is the specification of a physical piece of information that is used or produced by a software development process, or by deployment and operation of a system. Examples of artifacts include model files, source files, scripts, and binary executable files, a table in a database system, a development deliverable, or a word-processing document, a mail message.
  */
 
-QArtifact::QArtifact(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(*new QArtifactPrivate, parent, wrapper),
-    _wrappedDeployedArtifact(new QDeployedArtifact(this, this)),
-    _wrappedClassifier(new QClassifier(this, this))
+QArtifact::QArtifact(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(*new QArtifactPrivate, wrapper, parent),
+    _wrappedDeployedArtifact(new QDeployedArtifact(this)),
+    _wrappedClassifier(new QClassifier(this))
 {
     setPropertyData();
 }
 
-QArtifact::QArtifact(QArtifactPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(dd, parent, wrapper),
-    _wrappedDeployedArtifact(new QDeployedArtifact(this, this)),
-    _wrappedClassifier(new QClassifier(this, this))
+QArtifact::QArtifact(QArtifactPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(dd, wrapper, parent),
+    _wrappedDeployedArtifact(new QDeployedArtifact(this)),
+    _wrappedClassifier(new QClassifier(this))
 {
     setPropertyData();
 }

@@ -72,7 +72,7 @@ class Q_UML_EXPORT QClassifierTemplateParameter : public QTemplateParameter
     Q_DECLARE_PRIVATE(QClassifierTemplateParameter)
 
 public:
-    Q_INVOKABLE explicit QClassifierTemplateParameter(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QClassifierTemplateParameter(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QClassifierTemplateParameter();
 
     // Attributes from QClassifierTemplateParameter
@@ -90,7 +90,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QClassifierTemplateParameter(QClassifierTemplateParameterPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QClassifierTemplateParameter(QClassifierTemplateParameterPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -85,7 +85,7 @@ class Q_UML_EXPORT QStructuredActivityNode : public QWrappedObject
     Q_DECLARE_PRIVATE(QStructuredActivityNode)
 
 public:
-    Q_INVOKABLE explicit QStructuredActivityNode(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QStructuredActivityNode(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QStructuredActivityNode();
 
     // Association ends from aggregated QElement
@@ -207,7 +207,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QStructuredActivityNode(QStructuredActivityNodePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QStructuredActivityNode(QStructuredActivityNodePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 
 private:
     QAction *_wrappedAction;

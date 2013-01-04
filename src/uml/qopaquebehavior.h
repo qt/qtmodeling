@@ -69,7 +69,7 @@ class Q_UML_EXPORT QOpaqueBehavior : public QBehavior
     Q_DECLARE_PRIVATE(QOpaqueBehavior)
 
 public:
-    Q_INVOKABLE explicit QOpaqueBehavior(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QOpaqueBehavior(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QOpaqueBehavior();
 
     // Attributes from QOpaqueBehavior
@@ -83,7 +83,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QOpaqueBehavior(QOpaqueBehaviorPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QOpaqueBehavior(QOpaqueBehaviorPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

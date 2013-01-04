@@ -65,14 +65,14 @@ QDeploymentSpecificationPrivate::~QDeploymentSpecificationPrivate()
     \brief A deployment specification specifies a set of properties that determine execution parameters of a component artifact that is deployed on a node. A deployment specification can be aimed at a specific type of container. An artifact that reifies or implements deployment specification properties is a deployment descriptor.
  */
 
-QDeploymentSpecification::QDeploymentSpecification(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QArtifact(*new QDeploymentSpecificationPrivate, parent, wrapper)
+QDeploymentSpecification::QDeploymentSpecification(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QArtifact(*new QDeploymentSpecificationPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QDeploymentSpecification::QDeploymentSpecification(QDeploymentSpecificationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QArtifact(dd, parent, wrapper)
+QDeploymentSpecification::QDeploymentSpecification(QDeploymentSpecificationPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QArtifact(dd, wrapper, parent)
 {
     setPropertyData();
 }

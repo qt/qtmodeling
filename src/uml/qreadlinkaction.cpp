@@ -65,14 +65,14 @@ QReadLinkActionPrivate::~QReadLinkActionPrivate()
     \brief A read link action is a link action that navigates across associations to retrieve objects on one end.
  */
 
-QReadLinkAction::QReadLinkAction(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QLinkAction(*new QReadLinkActionPrivate, parent, wrapper)
+QReadLinkAction::QReadLinkAction(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QLinkAction(*new QReadLinkActionPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QReadLinkAction::QReadLinkAction(QReadLinkActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QLinkAction(dd, parent, wrapper)
+QReadLinkAction::QReadLinkAction(QReadLinkActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QLinkAction(dd, wrapper, parent)
 {
     setPropertyData();
 }

@@ -62,14 +62,14 @@ QUsagePrivate::~QUsagePrivate()
     \brief A usage is a relationship in which one element requires another element (or set of elements) for its full implementation or operation. A usage is a dependency in which the client requires the presence of the supplier.
  */
 
-QUsage::QUsage(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QDependency(*new QUsagePrivate, parent, wrapper)
+QUsage::QUsage(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QDependency(*new QUsagePrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QUsage::QUsage(QUsagePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QDependency(dd, parent, wrapper)
+QUsage::QUsage(QUsagePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QDependency(dd, wrapper, parent)
 {
     setPropertyData();
 }

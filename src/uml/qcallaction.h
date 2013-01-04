@@ -71,7 +71,7 @@ class Q_UML_EXPORT QCallAction : public QInvocationAction
     Q_DECLARE_PRIVATE(QCallAction)
 
 public:
-    Q_INVOKABLE explicit QCallAction(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QCallAction(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QCallAction();
 
     // Attributes from QCallAction
@@ -87,7 +87,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QCallAction(QCallActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QCallAction(QCallActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

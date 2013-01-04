@@ -112,14 +112,14 @@ void QElementPrivate::setOwner(QElement *owner)
     \brief An element is a constituent of a model. As such, it has the capability of owning other elements.
  */
 
-QElement::QElement(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QMofObject(*new QElementPrivate, parent, wrapper)
+QElement::QElement(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QMofObject(*new QElementPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QElement::QElement(QElementPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QMofObject(dd, parent, wrapper)
+QElement::QElement(QElementPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QMofObject(dd, wrapper, parent)
 {
     setPropertyData();
 }

@@ -67,7 +67,7 @@ class Q_UML_EXPORT QRaiseExceptionAction : public QAction
     Q_DECLARE_PRIVATE(QRaiseExceptionAction)
 
 public:
-    Q_INVOKABLE explicit QRaiseExceptionAction(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QRaiseExceptionAction(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QRaiseExceptionAction();
 
     // Association ends from QRaiseExceptionAction
@@ -77,7 +77,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QRaiseExceptionAction(QRaiseExceptionActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QRaiseExceptionAction(QRaiseExceptionActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

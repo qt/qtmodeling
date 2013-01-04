@@ -67,7 +67,7 @@ class Q_UML_EXPORT QSignalEvent : public QMessageEvent
     Q_DECLARE_PRIVATE(QSignalEvent)
 
 public:
-    Q_INVOKABLE explicit QSignalEvent(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QSignalEvent(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QSignalEvent();
 
     // Association ends from QSignalEvent
@@ -77,7 +77,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QSignalEvent(QSignalEventPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QSignalEvent(QSignalEventPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

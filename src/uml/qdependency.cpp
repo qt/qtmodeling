@@ -64,18 +64,18 @@ QDependencyPrivate::~QDependencyPrivate()
     \brief A dependency is a relationship that signifies that a single or a set of model elements requires other model elements for their specification or implementation. This means that the complete semantics of the depending elements is either semantically or structurally dependent on the definition of the supplier element(s).
  */
 
-QDependency::QDependency(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(*new QDependencyPrivate, parent, wrapper),
-    _wrappedPackageableElement(new QPackageableElement(this, this)),
-    _wrappedDirectedRelationship(new QDirectedRelationship(this, this))
+QDependency::QDependency(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(*new QDependencyPrivate, wrapper, parent),
+    _wrappedPackageableElement(new QPackageableElement(this)),
+    _wrappedDirectedRelationship(new QDirectedRelationship(this))
 {
     setPropertyData();
 }
 
-QDependency::QDependency(QDependencyPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(dd, parent, wrapper),
-    _wrappedPackageableElement(new QPackageableElement(this, this)),
-    _wrappedDirectedRelationship(new QDirectedRelationship(this, this))
+QDependency::QDependency(QDependencyPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(dd, wrapper, parent),
+    _wrappedPackageableElement(new QPackageableElement(this)),
+    _wrappedDirectedRelationship(new QDirectedRelationship(this))
 {
     setPropertyData();
 }

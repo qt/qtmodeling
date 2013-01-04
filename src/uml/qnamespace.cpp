@@ -121,14 +121,14 @@ void QNamespacePrivate::removeOwnedMember(QNamedElement *ownedMember)
     \brief A namespace is an element in a model that contains a set of named elements that can be identified by name.
  */
 
-QNamespace::QNamespace(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QNamedElement(*new QNamespacePrivate, parent, wrapper)
+QNamespace::QNamespace(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QNamedElement(*new QNamespacePrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QNamespace::QNamespace(QNamespacePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QNamedElement(dd, parent, wrapper)
+QNamespace::QNamespace(QNamespacePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QNamedElement(dd, wrapper, parent)
 {
     setPropertyData();
 }

@@ -67,14 +67,14 @@ QDecisionNodePrivate::~QDecisionNodePrivate()
     \brief A decision node is a control node that chooses between outgoing flows.
  */
 
-QDecisionNode::QDecisionNode(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QControlNode(*new QDecisionNodePrivate, parent, wrapper)
+QDecisionNode::QDecisionNode(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QControlNode(*new QDecisionNodePrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QDecisionNode::QDecisionNode(QDecisionNodePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QControlNode(dd, parent, wrapper)
+QDecisionNode::QDecisionNode(QDecisionNodePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QControlNode(dd, wrapper, parent)
 {
     setPropertyData();
 }

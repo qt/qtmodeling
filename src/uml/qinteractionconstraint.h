@@ -68,7 +68,7 @@ class Q_UML_EXPORT QInteractionConstraint : public QConstraint
     Q_DECLARE_PRIVATE(QInteractionConstraint)
 
 public:
-    Q_INVOKABLE explicit QInteractionConstraint(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QInteractionConstraint(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QInteractionConstraint();
 
     // Association ends from QInteractionConstraint
@@ -80,7 +80,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QInteractionConstraint(QInteractionConstraintPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QInteractionConstraint(QInteractionConstraintPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

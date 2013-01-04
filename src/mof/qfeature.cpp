@@ -94,14 +94,14 @@ void QFeaturePrivate::removeFeaturingClassifier(QClassifier *featuringClassifier
     \brief A feature declares a behavioral or structural characteristic of instances of classifiers.
  */
 
-QFeature::QFeature(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QRedefinableElement(*new QFeaturePrivate, parent, wrapper)
+QFeature::QFeature(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QRedefinableElement(*new QFeaturePrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QFeature::QFeature(QFeaturePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QRedefinableElement(dd, parent, wrapper)
+QFeature::QFeature(QFeaturePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QRedefinableElement(dd, wrapper, parent)
 {
     setPropertyData();
 }

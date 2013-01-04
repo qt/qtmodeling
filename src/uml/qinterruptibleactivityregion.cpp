@@ -65,14 +65,14 @@ QInterruptibleActivityRegionPrivate::~QInterruptibleActivityRegionPrivate()
     \brief An interruptible activity region is an activity group that supports termination of tokens flowing in the portions of an activity.
  */
 
-QInterruptibleActivityRegion::QInterruptibleActivityRegion(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QActivityGroup(*new QInterruptibleActivityRegionPrivate, parent, wrapper)
+QInterruptibleActivityRegion::QInterruptibleActivityRegion(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QActivityGroup(*new QInterruptibleActivityRegionPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QInterruptibleActivityRegion::QInterruptibleActivityRegion(QInterruptibleActivityRegionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QActivityGroup(dd, parent, wrapper)
+QInterruptibleActivityRegion::QInterruptibleActivityRegion(QInterruptibleActivityRegionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QActivityGroup(dd, wrapper, parent)
 {
     setPropertyData();
 }

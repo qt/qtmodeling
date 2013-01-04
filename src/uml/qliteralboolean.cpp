@@ -63,14 +63,14 @@ QLiteralBooleanPrivate::~QLiteralBooleanPrivate()
     \brief A literal Boolean is a specification of a Boolean value.
  */
 
-QLiteralBoolean::QLiteralBoolean(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QLiteralSpecification(*new QLiteralBooleanPrivate, parent, wrapper)
+QLiteralBoolean::QLiteralBoolean(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QLiteralSpecification(*new QLiteralBooleanPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QLiteralBoolean::QLiteralBoolean(QLiteralBooleanPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QLiteralSpecification(dd, parent, wrapper)
+QLiteralBoolean::QLiteralBoolean(QLiteralBooleanPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QLiteralSpecification(dd, wrapper, parent)
 {
     setPropertyData();
 }

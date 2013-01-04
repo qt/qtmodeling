@@ -68,18 +68,18 @@ QVariablePrivate::~QVariablePrivate()
     \brief A variable is considered a connectable element.Variables are elements for passing data between actions indirectly. A local variable stores values shared by the actions within a structured activity group but not accessible outside it. The output of an action may be written to a variable and read for the input to a subsequent action, which is effectively an indirect data flow path. Because there is no predefined relationship between actions that read and write variables, these actions must be sequenced by control flows to prevent race conditions that may occur between actions that read or write the same variable.
  */
 
-QVariable::QVariable(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(*new QVariablePrivate, parent, wrapper),
-    _wrappedMultiplicityElement(new QMultiplicityElement(this, this)),
-    _wrappedConnectableElement(new QConnectableElement(this, this))
+QVariable::QVariable(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(*new QVariablePrivate, wrapper, parent),
+    _wrappedMultiplicityElement(new QMultiplicityElement(this)),
+    _wrappedConnectableElement(new QConnectableElement(this))
 {
     setPropertyData();
 }
 
-QVariable::QVariable(QVariablePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(dd, parent, wrapper),
-    _wrappedMultiplicityElement(new QMultiplicityElement(this, this)),
-    _wrappedConnectableElement(new QConnectableElement(this, this))
+QVariable::QVariable(QVariablePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(dd, wrapper, parent),
+    _wrappedMultiplicityElement(new QMultiplicityElement(this)),
+    _wrappedConnectableElement(new QConnectableElement(this))
 {
     setPropertyData();
 }

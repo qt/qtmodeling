@@ -64,18 +64,18 @@ QCollaborationPrivate::~QCollaborationPrivate()
     \brief A collaboration use represents the application of the pattern described by a collaboration to a specific situation involving specific classes or instances playing the roles of the collaboration.
  */
 
-QCollaboration::QCollaboration(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(*new QCollaborationPrivate, parent, wrapper),
-    _wrappedStructuredClassifier(new QStructuredClassifier(this, this)),
-    _wrappedBehavioredClassifier(new QBehavioredClassifier(this, this))
+QCollaboration::QCollaboration(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(*new QCollaborationPrivate, wrapper, parent),
+    _wrappedStructuredClassifier(new QStructuredClassifier(this)),
+    _wrappedBehavioredClassifier(new QBehavioredClassifier(this))
 {
     setPropertyData();
 }
 
-QCollaboration::QCollaboration(QCollaborationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(dd, parent, wrapper),
-    _wrappedStructuredClassifier(new QStructuredClassifier(this, this)),
-    _wrappedBehavioredClassifier(new QBehavioredClassifier(this, this))
+QCollaboration::QCollaboration(QCollaborationPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(dd, wrapper, parent),
+    _wrappedStructuredClassifier(new QStructuredClassifier(this)),
+    _wrappedBehavioredClassifier(new QBehavioredClassifier(this))
 {
     setPropertyData();
 }

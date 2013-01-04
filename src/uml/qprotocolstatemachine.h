@@ -70,7 +70,7 @@ class Q_UML_EXPORT QProtocolStateMachine : public QStateMachine
     Q_DECLARE_PRIVATE(QProtocolStateMachine)
 
 public:
-    Q_INVOKABLE explicit QProtocolStateMachine(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QProtocolStateMachine(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QProtocolStateMachine();
 
     // Association ends from QProtocolStateMachine
@@ -81,7 +81,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QProtocolStateMachine(QProtocolStateMachinePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QProtocolStateMachine(QProtocolStateMachinePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

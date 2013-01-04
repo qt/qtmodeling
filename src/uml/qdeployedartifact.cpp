@@ -62,14 +62,14 @@ QDeployedArtifactPrivate::~QDeployedArtifactPrivate()
     \brief A deployed artifact is an artifact or artifact instance that has been deployed to a deployment target.
  */
 
-QDeployedArtifact::QDeployedArtifact(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QNamedElement(*new QDeployedArtifactPrivate, parent, wrapper)
+QDeployedArtifact::QDeployedArtifact(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QNamedElement(*new QDeployedArtifactPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QDeployedArtifact::QDeployedArtifact(QDeployedArtifactPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QNamedElement(dd, parent, wrapper)
+QDeployedArtifact::QDeployedArtifact(QDeployedArtifactPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QNamedElement(dd, wrapper, parent)
 {
     setPropertyData();
 }

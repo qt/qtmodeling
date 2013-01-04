@@ -72,7 +72,7 @@ class Q_UML_EXPORT QReadIsClassifiedObjectAction : public QAction
     Q_DECLARE_PRIVATE(QReadIsClassifiedObjectAction)
 
 public:
-    Q_INVOKABLE explicit QReadIsClassifiedObjectAction(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QReadIsClassifiedObjectAction(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QReadIsClassifiedObjectAction();
 
     // Attributes from QReadIsClassifiedObjectAction
@@ -91,7 +91,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QReadIsClassifiedObjectAction(QReadIsClassifiedObjectActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QReadIsClassifiedObjectAction(QReadIsClassifiedObjectActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

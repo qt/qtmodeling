@@ -62,14 +62,14 @@ QDestructionOccurrenceSpecificationPrivate::~QDestructionOccurrenceSpecification
     \brief A destruction event models the destruction of an object.
  */
 
-QDestructionOccurrenceSpecification::QDestructionOccurrenceSpecification(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QMessageOccurrenceSpecification(*new QDestructionOccurrenceSpecificationPrivate, parent, wrapper)
+QDestructionOccurrenceSpecification::QDestructionOccurrenceSpecification(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QMessageOccurrenceSpecification(*new QDestructionOccurrenceSpecificationPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QDestructionOccurrenceSpecification::QDestructionOccurrenceSpecification(QDestructionOccurrenceSpecificationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QMessageOccurrenceSpecification(dd, parent, wrapper)
+QDestructionOccurrenceSpecification::QDestructionOccurrenceSpecification(QDestructionOccurrenceSpecificationPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QMessageOccurrenceSpecification(dd, wrapper, parent)
 {
     setPropertyData();
 }

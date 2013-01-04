@@ -62,13 +62,13 @@ class Q_UML_EXPORT QFlowFinalNode : public QFinalNode
     Q_DECLARE_PRIVATE(QFlowFinalNode)
 
 public:
-    Q_INVOKABLE explicit QFlowFinalNode(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QFlowFinalNode(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QFlowFinalNode();
     virtual void registerMetaTypes() const;
     virtual void setPropertyData();
 
 protected:
-    explicit QFlowFinalNode(QFlowFinalNodePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QFlowFinalNode(QFlowFinalNodePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

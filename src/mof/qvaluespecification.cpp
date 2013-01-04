@@ -62,18 +62,18 @@ QValueSpecificationPrivate::~QValueSpecificationPrivate()
     \brief A value specification is the specification of a (possibly empty) set of instances, including both objects and data values.
  */
 
-QValueSpecification::QValueSpecification(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(*new QValueSpecificationPrivate, parent, wrapper),
-    _wrappedPackageableElement(new QPackageableElement(this, this)),
-    _wrappedTypedElement(new QTypedElement(this, this))
+QValueSpecification::QValueSpecification(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(*new QValueSpecificationPrivate, wrapper, parent),
+    _wrappedPackageableElement(new QPackageableElement(this)),
+    _wrappedTypedElement(new QTypedElement(this))
 {
     setPropertyData();
 }
 
-QValueSpecification::QValueSpecification(QValueSpecificationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(dd, parent, wrapper),
-    _wrappedPackageableElement(new QPackageableElement(this, this)),
-    _wrappedTypedElement(new QTypedElement(this, this))
+QValueSpecification::QValueSpecification(QValueSpecificationPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(dd, wrapper, parent),
+    _wrappedPackageableElement(new QPackageableElement(this)),
+    _wrappedTypedElement(new QTypedElement(this))
 {
     setPropertyData();
 }

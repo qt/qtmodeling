@@ -62,13 +62,13 @@ class Q_UML_EXPORT QExecutionEnvironment : public QNode
     Q_DECLARE_PRIVATE(QExecutionEnvironment)
 
 public:
-    Q_INVOKABLE explicit QExecutionEnvironment(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QExecutionEnvironment(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QExecutionEnvironment();
     virtual void registerMetaTypes() const;
     virtual void setPropertyData();
 
 protected:
-    explicit QExecutionEnvironment(QExecutionEnvironmentPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QExecutionEnvironment(QExecutionEnvironmentPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

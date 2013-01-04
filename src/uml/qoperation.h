@@ -97,7 +97,7 @@ class Q_UML_EXPORT QOperation : public QWrappedObject
     Q_DECLARE_PRIVATE(QOperation)
 
 public:
-    Q_INVOKABLE explicit QOperation(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QOperation(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QOperation();
 
     // Association ends from aggregated QElement
@@ -224,7 +224,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QOperation(QOperationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QOperation(QOperationPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 
 private:
     QTemplateableElement *_wrappedTemplateableElement;

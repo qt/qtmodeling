@@ -62,13 +62,13 @@ class Q_UML_EXPORT QWriteLinkAction : public QLinkAction
     Q_DECLARE_PRIVATE(QWriteLinkAction)
 
 public:
-    Q_INVOKABLE explicit QWriteLinkAction(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QWriteLinkAction(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QWriteLinkAction();
     virtual void registerMetaTypes() const;
     virtual void setPropertyData();
 
 protected:
-    explicit QWriteLinkAction(QWriteLinkActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QWriteLinkAction(QWriteLinkActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

@@ -62,14 +62,14 @@ QEventPrivate::~QEventPrivate()
     \brief An event is the specification of some occurrence that may potentially trigger effects by an object.
  */
 
-QEvent::QEvent(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QPackageableElement(*new QEventPrivate, parent, wrapper)
+QEvent::QEvent(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QPackageableElement(*new QEventPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QEvent::QEvent(QEventPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QPackageableElement(dd, parent, wrapper)
+QEvent::QEvent(QEventPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QPackageableElement(dd, wrapper, parent)
 {
     setPropertyData();
 }

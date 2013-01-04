@@ -65,14 +65,14 @@ QExtensionPointPrivate::~QExtensionPointPrivate()
     \brief An extension point identifies a point in the behavior of a use case where that behavior can be extended by the behavior of some other (extending) use case, as specified by an extend relationship.
  */
 
-QExtensionPoint::QExtensionPoint(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QRedefinableElement(*new QExtensionPointPrivate, parent, wrapper)
+QExtensionPoint::QExtensionPoint(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QRedefinableElement(*new QExtensionPointPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QExtensionPoint::QExtensionPoint(QExtensionPointPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QRedefinableElement(dd, parent, wrapper)
+QExtensionPoint::QExtensionPoint(QExtensionPointPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QRedefinableElement(dd, wrapper, parent)
 {
     setPropertyData();
 }

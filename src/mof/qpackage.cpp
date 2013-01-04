@@ -67,18 +67,18 @@ QPackagePrivate::~QPackagePrivate()
     \brief A package is used to group elements, and provides a namespace for the grouped elements.
  */
 
-QPackage::QPackage(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(*new QPackagePrivate, parent, wrapper),
-    _wrappedNamespace(new QNamespace(this, this)),
-    _wrappedPackageableElement(new QPackageableElement(this, this))
+QPackage::QPackage(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(*new QPackagePrivate, wrapper, parent),
+    _wrappedNamespace(new QNamespace(this)),
+    _wrappedPackageableElement(new QPackageableElement(this))
 {
     setPropertyData();
 }
 
-QPackage::QPackage(QPackagePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(dd, parent, wrapper),
-    _wrappedNamespace(new QNamespace(this, this)),
-    _wrappedPackageableElement(new QPackageableElement(this, this))
+QPackage::QPackage(QPackagePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(dd, wrapper, parent),
+    _wrappedNamespace(new QNamespace(this)),
+    _wrappedPackageableElement(new QPackageableElement(this))
 {
     setPropertyData();
 }

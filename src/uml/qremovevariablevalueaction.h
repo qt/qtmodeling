@@ -68,7 +68,7 @@ class Q_UML_EXPORT QRemoveVariableValueAction : public QWriteVariableAction
     Q_DECLARE_PRIVATE(QRemoveVariableValueAction)
 
 public:
-    Q_INVOKABLE explicit QRemoveVariableValueAction(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QRemoveVariableValueAction(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QRemoveVariableValueAction();
 
     // Attributes from QRemoveVariableValueAction
@@ -83,7 +83,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QRemoveVariableValueAction(QRemoveVariableValueActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QRemoveVariableValueAction(QRemoveVariableValueActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

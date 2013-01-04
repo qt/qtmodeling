@@ -70,12 +70,12 @@ class Q_WRAPPEDOBJECTS_EXPORT QWrappedObject : public QObject
     Q_DECLARE_PRIVATE(QWrappedObject)
 
 public:
-    Q_INVOKABLE explicit QWrappedObject(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QWrappedObject(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QWrappedObject();
 
     void setObjectName(const QString &name);
 
-    const QList<QWrappedObject *> &wrappedObjects() const;
+    const QList<QPointer<QWrappedObject>> &wrappedObjects() const;
 
     void setWrapper(QWrappedObject *wrapper);
     QWrappedObject *wrapper() const;
@@ -92,7 +92,7 @@ public:
     virtual void registerMetaTypes() const;
 
 protected:
-    explicit QWrappedObject(QWrappedObjectPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QWrappedObject(QWrappedObjectPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     void initialize(QWrappedObject *wrapper);
     virtual void setPropertyData();
 
@@ -100,10 +100,6 @@ protected:
 };
 
 QT_END_NAMESPACE_QTWRAPPEDOBJECTS
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTWRAPPEDOBJECTS(QWrappedObject) *)
-Q_DECLARE_METATYPE(const QSet<QT_PREPEND_NAMESPACE_QTWRAPPEDOBJECTS(QWrappedObject) *> *)
-Q_DECLARE_METATYPE(const QList<QT_PREPEND_NAMESPACE_QTWRAPPEDOBJECTS(QWrappedObject) *> *)
 
 template <class T>
 inline T qwrappedobject_cast(QT_PREPEND_NAMESPACE_QTWRAPPEDOBJECTS(QWrappedObject) *base, bool restoreToWrapper = true)

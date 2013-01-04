@@ -62,13 +62,13 @@ class Q_UML_EXPORT QDataStoreNode : public QCentralBufferNode
     Q_DECLARE_PRIVATE(QDataStoreNode)
 
 public:
-    Q_INVOKABLE explicit QDataStoreNode(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QDataStoreNode(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QDataStoreNode();
     virtual void registerMetaTypes() const;
     virtual void setPropertyData();
 
 protected:
-    explicit QDataStoreNode(QDataStoreNodePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QDataStoreNode(QDataStoreNodePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

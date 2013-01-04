@@ -71,7 +71,7 @@ class Q_UML_EXPORT QExtension : public QAssociation
     Q_DECLARE_PRIVATE(QExtension)
 
 public:
-    Q_INVOKABLE explicit QExtension(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QExtension(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QExtension();
 
     // Attributes from QExtension
@@ -91,7 +91,7 @@ public:
     friend class QClassPrivate;
 
 protected:
-    explicit QExtension(QExtensionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QExtension(QExtensionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

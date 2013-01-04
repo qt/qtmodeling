@@ -66,14 +66,14 @@ QDurationIntervalPrivate::~QDurationIntervalPrivate()
     \brief A duration interval defines the range between two durations.
  */
 
-QDurationInterval::QDurationInterval(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QInterval(*new QDurationIntervalPrivate, parent, wrapper)
+QDurationInterval::QDurationInterval(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QInterval(*new QDurationIntervalPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QDurationInterval::QDurationInterval(QDurationIntervalPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QInterval(dd, parent, wrapper)
+QDurationInterval::QDurationInterval(QDurationIntervalPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QInterval(dd, wrapper, parent)
 {
     setPropertyData();
 }

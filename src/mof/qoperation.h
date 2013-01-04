@@ -89,7 +89,7 @@ class Q_MOF_EXPORT QOperation : public QBehavioralFeature
     Q_DECLARE_PRIVATE(QOperation)
 
 public:
-    Q_INVOKABLE explicit QOperation(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QOperation(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QOperation();
 
     // Attributes from QOperation
@@ -132,7 +132,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QOperation(QOperationPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QOperation(QOperationPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTMOF

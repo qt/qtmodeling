@@ -70,7 +70,7 @@ class Q_UML_EXPORT QPackageableElement : public QWrappedObject
     Q_DECLARE_PRIVATE(QPackageableElement)
 
 public:
-    Q_INVOKABLE explicit QPackageableElement(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QPackageableElement(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QPackageableElement();
 
     // Association ends from aggregated QElement
@@ -107,7 +107,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QPackageableElement(QPackageableElementPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QPackageableElement(QPackageableElementPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 
 private:
     QParameterableElement *_wrappedParameterableElement;

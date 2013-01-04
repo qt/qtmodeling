@@ -70,18 +70,18 @@ QObjectNodePrivate::~QObjectNodePrivate()
     \brief An object node is an abstract activity node that is part of defining object flow in an activity.Object nodes have support for token selection, limitation on the number of tokens, specifying the state required for tokens, and carrying control values.
  */
 
-QObjectNode::QObjectNode(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(*new QObjectNodePrivate, parent, wrapper),
-    _wrappedActivityNode(new QActivityNode(this, this)),
-    _wrappedTypedElement(new QTypedElement(this, this))
+QObjectNode::QObjectNode(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(*new QObjectNodePrivate, wrapper, parent),
+    _wrappedActivityNode(new QActivityNode(this)),
+    _wrappedTypedElement(new QTypedElement(this))
 {
     setPropertyData();
 }
 
-QObjectNode::QObjectNode(QObjectNodePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(dd, parent, wrapper),
-    _wrappedActivityNode(new QActivityNode(this, this)),
-    _wrappedTypedElement(new QTypedElement(this, this))
+QObjectNode::QObjectNode(QObjectNodePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(dd, wrapper, parent),
+    _wrappedActivityNode(new QActivityNode(this)),
+    _wrappedTypedElement(new QTypedElement(this))
 {
     setPropertyData();
 }

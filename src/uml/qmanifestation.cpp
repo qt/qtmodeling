@@ -65,14 +65,14 @@ QManifestationPrivate::~QManifestationPrivate()
     \brief A manifestation is the concrete physical rendering of one or more model elements by an artifact.
  */
 
-QManifestation::QManifestation(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QAbstraction(*new QManifestationPrivate, parent, wrapper)
+QManifestation::QManifestation(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QAbstraction(*new QManifestationPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QManifestation::QManifestation(QManifestationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QAbstraction(dd, parent, wrapper)
+QManifestation::QManifestation(QManifestationPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QAbstraction(dd, wrapper, parent)
 {
     setPropertyData();
 }

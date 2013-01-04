@@ -68,14 +68,14 @@ QConditionalNodePrivate::~QConditionalNodePrivate()
     \brief A conditional node is a structured activity node that represents an exclusive choice among some number of alternatives.
  */
 
-QConditionalNode::QConditionalNode(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QStructuredActivityNode(*new QConditionalNodePrivate, parent, wrapper)
+QConditionalNode::QConditionalNode(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QStructuredActivityNode(*new QConditionalNodePrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QConditionalNode::QConditionalNode(QConditionalNodePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QStructuredActivityNode(dd, parent, wrapper)
+QConditionalNode::QConditionalNode(QConditionalNodePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QStructuredActivityNode(dd, wrapper, parent)
 {
     setPropertyData();
 }

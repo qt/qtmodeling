@@ -62,14 +62,14 @@ QExpressionPrivate::~QExpressionPrivate()
     \brief An expression represents a node in an expression tree, which may be non-terminal or terminal. It defines a symbol, and has a possibly empty sequence of operands which are value specifications.
  */
 
-QExpression::QExpression(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QValueSpecification(*new QExpressionPrivate, parent, wrapper)
+QExpression::QExpression(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QValueSpecification(*new QExpressionPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QExpression::QExpression(QExpressionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QValueSpecification(dd, parent, wrapper)
+QExpression::QExpression(QExpressionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QValueSpecification(dd, wrapper, parent)
 {
     setPropertyData();
 }

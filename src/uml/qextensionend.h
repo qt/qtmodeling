@@ -68,7 +68,7 @@ class Q_UML_EXPORT QExtensionEnd : public QProperty
     Q_DECLARE_PRIVATE(QExtensionEnd)
 
 public:
-    Q_INVOKABLE explicit QExtensionEnd(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QExtensionEnd(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QExtensionEnd();
 
     // Attributes from QExtensionEnd
@@ -85,7 +85,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QExtensionEnd(QExtensionEndPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QExtensionEnd(QExtensionEndPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

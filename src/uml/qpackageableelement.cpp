@@ -63,18 +63,18 @@ QPackageableElementPrivate::~QPackageableElementPrivate()
     \brief Packageable elements are able to serve as a template parameter.A packageable element indicates a named element that may be owned directly by a package.
  */
 
-QPackageableElement::QPackageableElement(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(*new QPackageableElementPrivate, parent, wrapper),
-    _wrappedParameterableElement(new QParameterableElement(this, this)),
-    _wrappedNamedElement(new QNamedElement(this, this))
+QPackageableElement::QPackageableElement(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(*new QPackageableElementPrivate, wrapper, parent),
+    _wrappedParameterableElement(new QParameterableElement(this)),
+    _wrappedNamedElement(new QNamedElement(this))
 {
     setPropertyData();
 }
 
-QPackageableElement::QPackageableElement(QPackageableElementPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(dd, parent, wrapper),
-    _wrappedParameterableElement(new QParameterableElement(this, this)),
-    _wrappedNamedElement(new QNamedElement(this, this))
+QPackageableElement::QPackageableElement(QPackageableElementPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(dd, wrapper, parent),
+    _wrappedParameterableElement(new QParameterableElement(this)),
+    _wrappedNamedElement(new QNamedElement(this))
 {
     setPropertyData();
 }

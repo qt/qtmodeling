@@ -78,7 +78,7 @@ class Q_UML_EXPORT QInteractionUse : public QInteractionFragment
     Q_DECLARE_PRIVATE(QInteractionUse)
 
 public:
-    Q_INVOKABLE explicit QInteractionUse(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QInteractionUse(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QInteractionUse();
 
     // Association ends from QInteractionUse
@@ -98,7 +98,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QInteractionUse(QInteractionUsePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QInteractionUse(QInteractionUsePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

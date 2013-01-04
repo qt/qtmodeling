@@ -73,7 +73,7 @@ class Q_UML_EXPORT QVariable : public QWrappedObject
     Q_DECLARE_PRIVATE(QVariable)
 
 public:
-    Q_INVOKABLE explicit QVariable(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QVariable(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QVariable();
 
     // Association ends from aggregated QElement
@@ -142,7 +142,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QVariable(QVariablePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QVariable(QVariablePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 
 private:
     QMultiplicityElement *_wrappedMultiplicityElement;

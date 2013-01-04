@@ -77,7 +77,7 @@ class Q_MOF_EXPORT QBehavioralFeature : public QWrappedObject
     Q_DECLARE_PRIVATE(QBehavioralFeature)
 
 public:
-    Q_INVOKABLE explicit QBehavioralFeature(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QBehavioralFeature(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QBehavioralFeature();
 
     // Association ends from aggregated QElement
@@ -142,7 +142,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QBehavioralFeature(QBehavioralFeaturePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QBehavioralFeature(QBehavioralFeaturePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 
 private:
     QFeature *_wrappedFeature;

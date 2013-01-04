@@ -62,13 +62,13 @@ class Q_UML_EXPORT QInputPin : public QPin
     Q_DECLARE_PRIVATE(QInputPin)
 
 public:
-    Q_INVOKABLE explicit QInputPin(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QInputPin(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QInputPin();
     virtual void registerMetaTypes() const;
     virtual void setPropertyData();
 
 protected:
-    explicit QInputPin(QInputPinPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QInputPin(QInputPinPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

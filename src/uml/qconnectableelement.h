@@ -75,7 +75,7 @@ class Q_UML_EXPORT QConnectableElement : public QWrappedObject
     Q_DECLARE_PRIVATE(QConnectableElement)
 
 public:
-    Q_INVOKABLE explicit QConnectableElement(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QConnectableElement(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QConnectableElement();
 
     // Association ends from aggregated QElement
@@ -119,7 +119,7 @@ public:
     friend class QConnectorEnd;
 
 protected:
-    explicit QConnectableElement(QConnectableElementPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QConnectableElement(QConnectableElementPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 
 private:
     QTypedElement *_wrappedTypedElement;

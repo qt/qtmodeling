@@ -75,7 +75,7 @@ class Q_UML_EXPORT QDeploymentTarget : public QNamedElement
     Q_DECLARE_PRIVATE(QDeploymentTarget)
 
 public:
-    Q_INVOKABLE explicit QDeploymentTarget(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QDeploymentTarget(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QDeploymentTarget();
 
     // Association ends from QDeploymentTarget
@@ -91,7 +91,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QDeploymentTarget(QDeploymentTargetPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QDeploymentTarget(QDeploymentTargetPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

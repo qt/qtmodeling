@@ -48,7 +48,7 @@ int main ()
     package->addOwnedType(class_);
 
     //model->addNestedPackage(package);
-    model->addPackagedElement(package);
+    //model->addPackagedElement(package);
     model->addOwnedType(primitiveType);
 
     qDebug() << "model->ownedElements().size():" << model->ownedElements().size();
@@ -65,7 +65,7 @@ int main ()
     qDebug() << "directionIn->qualifiedName():" << directionIn->qualifiedName();
 
     //model->removeNestedPackage(package);
-    model->removePackagedElement(package);
+    //model->removePackagedElement(package);
     //model->addNestedPackage(package);
     //model->addPackagedElement(package);
     qDebug() << "REMOVED";
@@ -114,6 +114,6 @@ int main ()
     package->addOwnedType(c2);
 
     delete model.data();
-    delete package.data();
+    //delete package.data();
 }
 

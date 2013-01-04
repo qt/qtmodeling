@@ -67,14 +67,14 @@ QProtocolTransitionPrivate::~QProtocolTransitionPrivate()
     \brief A protocol transition specifies a legal transition for an operation. Transitions of protocol state machines have the following information: a pre condition (guard), on trigger, and a post condition. Every protocol transition is associated to zero or one operation (referred BehavioralFeature) that belongs to the context classifier of the protocol state machine.
  */
 
-QProtocolTransition::QProtocolTransition(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QTransition(*new QProtocolTransitionPrivate, parent, wrapper)
+QProtocolTransition::QProtocolTransition(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QTransition(*new QProtocolTransitionPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QProtocolTransition::QProtocolTransition(QProtocolTransitionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QTransition(dd, parent, wrapper)
+QProtocolTransition::QProtocolTransition(QProtocolTransitionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QTransition(dd, wrapper, parent)
 {
     setPropertyData();
 }

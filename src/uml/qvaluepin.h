@@ -67,7 +67,7 @@ class Q_UML_EXPORT QValuePin : public QInputPin
     Q_DECLARE_PRIVATE(QValuePin)
 
 public:
-    Q_INVOKABLE explicit QValuePin(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QValuePin(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QValuePin();
 
     // Association ends from QValuePin
@@ -77,7 +77,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QValuePin(QValuePinPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QValuePin(QValuePinPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

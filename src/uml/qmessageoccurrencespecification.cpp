@@ -62,18 +62,18 @@ QMessageOccurrenceSpecificationPrivate::~QMessageOccurrenceSpecificationPrivate(
     \brief A message occurrence specification pecifies the occurrence of message events, such as sending and receiving of signals or invoking or receiving of operation calls. A message occurrence specification is a kind of message end. Messages are generated either by synchronous operation calls or asynchronous signal sends. They are received by the execution of corresponding accept event actions.
  */
 
-QMessageOccurrenceSpecification::QMessageOccurrenceSpecification(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(*new QMessageOccurrenceSpecificationPrivate, parent, wrapper),
-    _wrappedOccurrenceSpecification(new QOccurrenceSpecification(this, this)),
-    _wrappedMessageEnd(new QMessageEnd(this, this))
+QMessageOccurrenceSpecification::QMessageOccurrenceSpecification(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(*new QMessageOccurrenceSpecificationPrivate, wrapper, parent),
+    _wrappedOccurrenceSpecification(new QOccurrenceSpecification(this)),
+    _wrappedMessageEnd(new QMessageEnd(this))
 {
     setPropertyData();
 }
 
-QMessageOccurrenceSpecification::QMessageOccurrenceSpecification(QMessageOccurrenceSpecificationPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(dd, parent, wrapper),
-    _wrappedOccurrenceSpecification(new QOccurrenceSpecification(this, this)),
-    _wrappedMessageEnd(new QMessageEnd(this, this))
+QMessageOccurrenceSpecification::QMessageOccurrenceSpecification(QMessageOccurrenceSpecificationPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(dd, wrapper, parent),
+    _wrappedOccurrenceSpecification(new QOccurrenceSpecification(this)),
+    _wrappedMessageEnd(new QMessageEnd(this))
 {
     setPropertyData();
 }

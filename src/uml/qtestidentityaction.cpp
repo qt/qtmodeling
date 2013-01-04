@@ -68,14 +68,14 @@ QTestIdentityActionPrivate::~QTestIdentityActionPrivate()
     \brief A test identity action is an action that tests if two values are identical objects.
  */
 
-QTestIdentityAction::QTestIdentityAction(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QAction(*new QTestIdentityActionPrivate, parent, wrapper)
+QTestIdentityAction::QTestIdentityAction(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QAction(*new QTestIdentityActionPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QTestIdentityAction::QTestIdentityAction(QTestIdentityActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QAction(dd, parent, wrapper)
+QTestIdentityAction::QTestIdentityAction(QTestIdentityActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QAction(dd, wrapper, parent)
 {
     setPropertyData();
 }

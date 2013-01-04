@@ -65,14 +65,14 @@ QActivityParameterNodePrivate::~QActivityParameterNodePrivate()
     \brief An activity parameter node is an object node for inputs and outputs to activities.
  */
 
-QActivityParameterNode::QActivityParameterNode(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QObjectNode(*new QActivityParameterNodePrivate, parent, wrapper)
+QActivityParameterNode::QActivityParameterNode(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QObjectNode(*new QActivityParameterNodePrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QActivityParameterNode::QActivityParameterNode(QActivityParameterNodePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QObjectNode(dd, parent, wrapper)
+QActivityParameterNode::QActivityParameterNode(QActivityParameterNodePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QObjectNode(dd, wrapper, parent)
 {
     setPropertyData();
 }

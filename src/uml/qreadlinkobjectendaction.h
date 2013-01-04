@@ -71,7 +71,7 @@ class Q_UML_EXPORT QReadLinkObjectEndAction : public QAction
     Q_DECLARE_PRIVATE(QReadLinkObjectEndAction)
 
 public:
-    Q_INVOKABLE explicit QReadLinkObjectEndAction(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QReadLinkObjectEndAction(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QReadLinkObjectEndAction();
 
     // Association ends from QReadLinkObjectEndAction
@@ -85,7 +85,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QReadLinkObjectEndAction(QReadLinkObjectEndActionPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QReadLinkObjectEndAction(QReadLinkObjectEndActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTUML

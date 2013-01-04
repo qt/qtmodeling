@@ -62,14 +62,14 @@ QPartDecompositionPrivate::~QPartDecompositionPrivate()
     \brief A part decomposition is a description of the internal interactions of one lifeline relative to an interaction.
  */
 
-QPartDecomposition::QPartDecomposition(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QInteractionUse(*new QPartDecompositionPrivate, parent, wrapper)
+QPartDecomposition::QPartDecomposition(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QInteractionUse(*new QPartDecompositionPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QPartDecomposition::QPartDecomposition(QPartDecompositionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QInteractionUse(dd, parent, wrapper)
+QPartDecomposition::QPartDecomposition(QPartDecompositionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QInteractionUse(dd, wrapper, parent)
 {
     setPropertyData();
 }

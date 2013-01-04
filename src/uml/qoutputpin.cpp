@@ -62,14 +62,14 @@ QOutputPinPrivate::~QOutputPinPrivate()
     \brief An output pin is a pin that holds output values produced by an action.
  */
 
-QOutputPin::QOutputPin(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QPin(*new QOutputPinPrivate, parent, wrapper)
+QOutputPin::QOutputPin(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QPin(*new QOutputPinPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QOutputPin::QOutputPin(QOutputPinPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QPin(dd, parent, wrapper)
+QOutputPin::QOutputPin(QOutputPinPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QPin(dd, wrapper, parent)
 {
     setPropertyData();
 }

@@ -62,13 +62,13 @@ class Q_MOF_EXPORT QPrimitiveType : public QDataType
     Q_DECLARE_PRIVATE(QPrimitiveType)
 
 public:
-    Q_INVOKABLE explicit QPrimitiveType(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QPrimitiveType(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QPrimitiveType();
     virtual void registerMetaTypes() const;
     virtual void setPropertyData();
 
 protected:
-    explicit QPrimitiveType(QPrimitiveTypePrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QPrimitiveType(QPrimitiveTypePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE_QTMOF

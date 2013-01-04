@@ -66,14 +66,14 @@ QAddStructuralFeatureValueActionPrivate::~QAddStructuralFeatureValueActionPrivat
     \brief An add structural feature value action is a write structural feature action for adding values to a structural feature.
  */
 
-QAddStructuralFeatureValueAction::QAddStructuralFeatureValueAction(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWriteStructuralFeatureAction(*new QAddStructuralFeatureValueActionPrivate, parent, wrapper)
+QAddStructuralFeatureValueAction::QAddStructuralFeatureValueAction(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWriteStructuralFeatureAction(*new QAddStructuralFeatureValueActionPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QAddStructuralFeatureValueAction::QAddStructuralFeatureValueAction(QAddStructuralFeatureValueActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWriteStructuralFeatureAction(dd, parent, wrapper)
+QAddStructuralFeatureValueAction::QAddStructuralFeatureValueAction(QAddStructuralFeatureValueActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWriteStructuralFeatureAction(dd, wrapper, parent)
 {
     setPropertyData();
 }

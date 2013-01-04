@@ -78,7 +78,7 @@ class Q_UML_EXPORT QExtend : public QWrappedObject
     Q_DECLARE_PRIVATE(QExtend)
 
 public:
-    Q_INVOKABLE explicit QExtend(QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    Q_INVOKABLE explicit QExtend(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QExtend();
 
     // Association ends from aggregated QElement
@@ -124,7 +124,7 @@ public:
     virtual void setPropertyData();
 
 protected:
-    explicit QExtend(QExtendPrivate &dd, QWrappedObject *parent = 0, QWrappedObject *wrapper = 0);
+    explicit QExtend(QExtendPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 
 private:
     QDirectedRelationship *_wrappedDirectedRelationship;

@@ -68,14 +68,14 @@ QInterfacePrivate::~QInterfacePrivate()
     \brief Since an interface specifies conformance characteristics, it does not own detailed behavior specifications. Instead, interfaces may own a protocol state machine that specifies event sequences and pre/post conditions for the operations and receptions described by the interface.Interfaces may include receptions (in addition to operations).An interface is a kind of classifier that represents a declaration of a set of coherent public features and obligations. An interface specifies a contract; any instance of a classifier that realizes the interface must fulfill that contract. The obligations that may be associated with an interface are in the form of various kinds of constraints (such as pre- and post-conditions) or protocol specifications, which may impose ordering restrictions on interactions through the interface.
  */
 
-QInterface::QInterface(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QClassifier(*new QInterfacePrivate, parent, wrapper)
+QInterface::QInterface(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QClassifier(*new QInterfacePrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QInterface::QInterface(QInterfacePrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QClassifier(dd, parent, wrapper)
+QInterface::QInterface(QInterfacePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QClassifier(dd, wrapper, parent)
 {
     setPropertyData();
 }

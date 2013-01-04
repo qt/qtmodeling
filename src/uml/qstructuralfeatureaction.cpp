@@ -67,14 +67,14 @@ QStructuralFeatureActionPrivate::~QStructuralFeatureActionPrivate()
     \brief StructuralFeatureAction is an abstract class for all structural feature actions.
  */
 
-QStructuralFeatureAction::QStructuralFeatureAction(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QAction(*new QStructuralFeatureActionPrivate, parent, wrapper)
+QStructuralFeatureAction::QStructuralFeatureAction(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QAction(*new QStructuralFeatureActionPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QStructuralFeatureAction::QStructuralFeatureAction(QStructuralFeatureActionPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QAction(dd, parent, wrapper)
+QStructuralFeatureAction::QStructuralFeatureAction(QStructuralFeatureActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QAction(dd, wrapper, parent)
 {
     setPropertyData();
 }

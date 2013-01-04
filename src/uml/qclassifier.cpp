@@ -138,22 +138,22 @@ void QClassifierPrivate::removeFeature(QFeature *feature)
     \brief A classifier is a classification of instances - it describes a set of instances that have features in common. A classifier can specify a generalization hierarchy by referencing its general classifiers.A classifier has the capability to own use cases. Although the owning classifier typically represents the subject to which the owned use cases apply, this is not necessarily the case. In principle, the same use case can be applied to multiple subjects, as identified by the subject association role of a use case.Classifier is defined to be a kind of templateable element so that a classifier can be parameterized. It is also defined to be a kind of parameterable element so that a classifier can be a formal template parameter.A classifier has the capability to own collaboration uses. These collaboration uses link a collaboration with the classifier to give a description of the workings of the classifier.
  */
 
-QClassifier::QClassifier(QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(*new QClassifierPrivate, parent, wrapper),
-    _wrappedNamespace(new QNamespace(this, this)),
-    _wrappedType(new QType(this, this)),
-    _wrappedRedefinableElement(new QRedefinableElement(this, this)),
-    _wrappedTemplateableElement(new QTemplateableElement(this, this))
+QClassifier::QClassifier(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(*new QClassifierPrivate, wrapper, parent),
+    _wrappedNamespace(new QNamespace(this)),
+    _wrappedType(new QType(this)),
+    _wrappedRedefinableElement(new QRedefinableElement(this)),
+    _wrappedTemplateableElement(new QTemplateableElement(this))
 {
     setPropertyData();
 }
 
-QClassifier::QClassifier(QClassifierPrivate &dd, QWrappedObject *parent, QWrappedObject *wrapper) :
-    QWrappedObject(dd, parent, wrapper),
-    _wrappedNamespace(new QNamespace(this, this)),
-    _wrappedType(new QType(this, this)),
-    _wrappedRedefinableElement(new QRedefinableElement(this, this)),
-    _wrappedTemplateableElement(new QTemplateableElement(this, this))
+QClassifier::QClassifier(QClassifierPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(dd, wrapper, parent),
+    _wrappedNamespace(new QNamespace(this)),
+    _wrappedType(new QType(this)),
+    _wrappedRedefinableElement(new QRedefinableElement(this)),
+    _wrappedTemplateableElement(new QTemplateableElement(this))
 {
     setPropertyData();
 }
