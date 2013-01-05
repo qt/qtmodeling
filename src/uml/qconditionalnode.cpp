@@ -57,7 +57,6 @@ QConditionalNodePrivate::QConditionalNodePrivate() :
 
 QConditionalNodePrivate::~QConditionalNodePrivate()
 {
-    qDeleteAll(results);
 }
 
 /*!

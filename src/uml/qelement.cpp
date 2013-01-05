@@ -55,7 +55,6 @@ QElementPrivate::QElementPrivate() :
 
 QElementPrivate::~QElementPrivate()
 {
-    qDeleteAll(ownedElements);
 }
 
 void QElementPrivate::addOwnedElement(QElement *ownedElement)

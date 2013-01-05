@@ -54,7 +54,6 @@ QCreateLinkActionPrivate::QCreateLinkActionPrivate()
 
 QCreateLinkActionPrivate::~QCreateLinkActionPrivate()
 {
-    qDeleteAll(endData);
 }
 
 /*!

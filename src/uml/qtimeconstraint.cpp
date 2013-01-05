@@ -56,7 +56,6 @@ QTimeConstraintPrivate::QTimeConstraintPrivate() :
 
 QTimeConstraintPrivate::~QTimeConstraintPrivate()
 {
-    delete specification;
 }
 
 /*!
@@ -134,7 +133,10 @@ void QTimeConstraint::setSpecification(QTimeInterval *specification)
 
     Q_D(QTimeConstraint);
     if (d->specification != specification) {
+        if (d->specification)
+            qTopLevelWrapper(d->specification)->setParent(0);
         d->specification = specification;
+        qTopLevelWrapper(specification)->setParent(qTopLevelWrapper(this));
     }
 }
 

@@ -58,8 +58,6 @@ QLoopNodePrivate::QLoopNodePrivate() :
 
 QLoopNodePrivate::~QLoopNodePrivate()
 {
-    qDeleteAll(loopVariableInputs);
-    qDeleteAll(results);
 }
 
 /*!

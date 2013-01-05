@@ -56,7 +56,6 @@ QSendObjectActionPrivate::QSendObjectActionPrivate() :
 
 QSendObjectActionPrivate::~QSendObjectActionPrivate()
 {
-    delete request;
 }
 
 /*!
@@ -104,7 +103,10 @@ void QSendObjectAction::setRequest(QInputPin *request)
 
     Q_D(QSendObjectAction);
     if (d->request != request) {
+        if (d->request)
+            qTopLevelWrapper(d->request)->setParent(0);
         d->request = request;
+        qTopLevelWrapper(request)->setParent(qTopLevelWrapper(this));
     }
 }
 
