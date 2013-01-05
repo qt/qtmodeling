@@ -63,7 +63,6 @@ QOperationPrivate::QOperationPrivate() :
 
 QOperationPrivate::~QOperationPrivate()
 {
-    qDeleteAll(ownedParameters);
 }
 
 /*!

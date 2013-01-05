@@ -70,7 +70,6 @@ QClassifierPrivate::QClassifierPrivate() :
 
 QClassifierPrivate::~QClassifierPrivate()
 {
-    delete ownedTemplateSignature;
 }
 
 void QClassifierPrivate::addAttribute(QProperty *attribute)
@@ -724,7 +723,10 @@ void QClassifier::setOwnedTemplateSignature(QRedefinableTemplateSignature *owned
     if (d->ownedTemplateSignature != ownedTemplateSignature) {
         // Adjust opposite property
 
+        if (d->ownedTemplateSignature)
+            qTopLevelWrapper(d->ownedTemplateSignature)->setParent(0);
         d->ownedTemplateSignature = ownedTemplateSignature;
+        qTopLevelWrapper(ownedTemplateSignature)->setParent(qTopLevelWrapper(this));
 
         // Adjust opposite property
         ownedTemplateSignature->setClassifier(this);

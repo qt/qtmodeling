@@ -54,7 +54,6 @@ QSequenceNodePrivate::QSequenceNodePrivate()
 
 QSequenceNodePrivate::~QSequenceNodePrivate()
 {
-    qDeleteAll(executableNodes);
 }
 
 /*!

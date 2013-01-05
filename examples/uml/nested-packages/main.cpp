@@ -48,8 +48,9 @@ int main ()
     package->addOwnedType(class_);
 
     //model->addNestedPackage(package);
-    //model->addPackagedElement(package);
+    model->addPackagedElement(package);
     model->addOwnedType(primitiveType);
+    model->dumpObjectTree();
 
     qDebug() << "model->ownedElements().size():" << model->ownedElements().size();
     qDebug() << "model->members().size():" << model->members().size();
@@ -59,15 +60,16 @@ int main ()
     qDebug();
     qDebug() << "package->qualifiedName():" << package->qualifiedName();
     qDebug() << "package->nestingPackage() ?" << ((package->nestingPackage() == 0) ? "Nao":"Sim");
+
     qDebug() << "class_->qualifiedName():" << class_->qualifiedName();
     qDebug() << "enumeration->qualifiedName():" << enumeration->qualifiedName();
     qDebug() << "primitiveType->qualifiedName():" << primitiveType->qualifiedName();
     qDebug() << "directionIn->qualifiedName():" << directionIn->qualifiedName();
 
-    //model->removeNestedPackage(package);
-    //model->removePackagedElement(package);
-    //model->addNestedPackage(package);
-    //model->addPackagedElement(package);
+    model->removeNestedPackage(package);
+//    model->removePackagedElement(package);
+//    model->addNestedPackage(package);
+//    model->addPackagedElement(package);
     qDebug() << "REMOVED";
 
     qDebug() << "model->ownedElements().size():" << model->ownedElements().size();
@@ -78,6 +80,7 @@ int main ()
     qDebug();
     qDebug() << "package->qualifiedName():" << package->qualifiedName();
     qDebug() << "package->nestingPackage() ?" << ((package->nestingPackage() == 0) ? "Nao":"Sim");
+
     qDebug() << "class_->qualifiedName():" << class_->qualifiedName();
     qDebug() << "enumeration->qualifiedName():" << enumeration->qualifiedName();
     qDebug() << "primitiveType->qualifiedName():" << primitiveType->qualifiedName();
@@ -114,6 +117,6 @@ int main ()
     package->addOwnedType(c2);
 
     delete model.data();
-    //delete package.data();
+    delete package.data();
 }
 

@@ -75,7 +75,7 @@ public:
 
     void setObjectName(const QString &name);
 
-    const QList<QPointer<QWrappedObject>> &wrappedObjects() const;
+    const QList<QWrappedObject *> &wrappedObjects() const;
 
     void setWrapper(QWrappedObject *wrapper);
     QWrappedObject *wrapper() const;

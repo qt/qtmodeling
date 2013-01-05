@@ -176,7 +176,14 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
         [%- ELSE -%]
             [%- IF accessor.name.search('^set') %]
             [%- HANDLESUBSETTEDPROPERTY(attribute, 2, 'true') %]
+[%- IF attribute.aggregation == 'composite' and attribute.accessor.0.return.search('\*$') and attribute.subsettedProperty == '' %]
+        if (d->${accessor.parameter.0.name})
+            qTopLevelWrapper(d->${accessor.parameter.0.name})->setParent(0);
+[%- END %]
         d->${accessor.parameter.0.name} = ${accessor.parameter.0.name};
+[%- IF attribute.aggregation == 'composite' and attribute.accessor.0.return.search('\*$') and attribute.subsettedProperty == '' %]
+        qTopLevelWrapper(${accessor.parameter.0.name})->setParent(qTopLevelWrapper(this));
+[%- END %]
             [%- HANDLESUBSETTEDPROPERTY(attribute, 1, 'true') -%]
             [%- END -%]
             [%- IF accessor.name.search('^add') %]
@@ -287,7 +294,14 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
             [%- IF accessor.name.search('^set') %]
             [%- HANDLEOPPOSITEEND(associationend, accessor, 2, 'true') %]
             [%- HANDLESUBSETTEDPROPERTY(associationend, 2, 'true') %]
+[%- IF associationend.aggregation == 'composite' and associationend.accessor.0.return.search('\*$') and associationend.subsettedProperty == '' %]
+        if (d->${accessor.parameter.0.name})
+            qTopLevelWrapper(d->${accessor.parameter.0.name})->setParent(0);
+[%- END %]
         d->${accessor.parameter.0.name} = ${accessor.parameter.0.name};
+[%- IF associationend.aggregation == 'composite' and associationend.accessor.0.return.search('\*$') and associationend.subsettedProperty == '' %]
+        qTopLevelWrapper(${accessor.parameter.0.name})->setParent(qTopLevelWrapper(this));
+[%- END %]
             [%- HANDLESUBSETTEDPROPERTY(associationend, 1, 'true') -%]
             [%- HANDLEOPPOSITEEND(associationend, accessor, 1, 'true') %]
             [%- END -%]
@@ -495,28 +509,6 @@ ${class.name}Private::${class.name}Private()
 
 ${class.name}Private::~${class.name}Private()
 {
-[% FOREACH attribute IN class.attribute.values -%]
-[%- IF (attribute.isDerived == 'false' or attribute.isDerivedUnion == 'true') and attribute.aggregation == 'composite' and attribute.subsettedProperty == '' -%]
-    [%- IF attribute.accessor.0.return.search('\*$') -%]
-    delete ${attribute.accessor.0.name};
-
-    [%- ELSIF attribute.accessor.0.return.search('> $') -%]
-    qDeleteAll(${attribute.accessor.0.name});
-
-    [%- END -%]
-[%- END -%]
-[%- END -%]
-[%- FOREACH associationend IN class.associationend.values -%]
-[%- IF (associationend.isDerived == 'false' or associationend.isDerivedUnion == 'true') and associationend.aggregation == 'composite' and associationend.subsettedProperty == '' -%]
-    [%- IF associationend.accessor.0.return.search('\*$') -%]
-    delete ${associationend.accessor.0.name};
-
-    [%- ELSIF associationend.accessor.0.return.search('> $') -%]
-    qDeleteAll(${associationend.accessor.0.name});
-
-    [%- END -%]
-[%- END -%]
-[%- END -%]
 }
 
 [%- FOREACH attribute IN class.attribute.values -%]
@@ -535,7 +527,14 @@ ${accessor.return}${class.name}Private::${accessor.name}([%- FOREACH parameter I
     [%- END %]
     [%- IF accessor.name.search('^set') %]
     [%- HANDLESUBSETTEDPROPERTY(attribute, 2, 'true') %]
+[%- IF attribute.aggregation == 'composite' and attribute.accessor.0.return.search('\*$') and attribute.subsettedProperty == '' %]
+        if (this->${accessor.parameter.0.name})
+            qTopLevelWrapper(this->${accessor.parameter.0.name})->setParent(0);
+[%- END %]
         this->${accessor.parameter.0.name} = ${accessor.parameter.0.name};
+[%- IF attribute.aggregation == 'composite' and attribute.accessor.0.return.search('\*$') and attribute.subsettedProperty == '' %]
+        qTopLevelWrapper(${accessor.parameter.0.name})->setParent(qTopLevelWrapper(this));
+[%- END %]
     [%- HANDLESUBSETTEDPROPERTY(attribute, 1, 'true') -%]
     [%- END -%]
     [%- IF accessor.name.search('^add') %]
@@ -605,7 +604,14 @@ ${accessor.return}${class.name}Private::${accessor.name}([%- FOREACH parameter I
     [%- END %]
     [%- HANDLEOPPOSITEEND(associationend, accessor, 2, 'true') %]
     [%- HANDLESUBSETTEDPROPERTY(associationend, 2, 'true') %]
+[%- IF associationend.aggregation == 'composite' and associationend.accessor.0.return.search('\*$') and associationend.subsettedProperty == '' %]
+        if (this->${accessor.parameter.0.name})
+            qTopLevelWrapper(this->${accessor.parameter.0.name})->setParent(0);
+[%- END %]
         this->${accessor.parameter.0.name} = ${accessor.parameter.0.name};
+[%- IF associationend.aggregation == 'composite' and associationend.accessor.0.return.search('\*$') and associationend.subsettedProperty == '' %]
+        qTopLevelWrapper(${accessor.parameter.0.name})->setParent(qTopLevelWrapper(this));
+[%- END %]
     [%- HANDLESUBSETTEDPROPERTY(associationend, 1, 'true') -%]
     [%- HANDLEOPPOSITEEND(associationend, accessor, 1, 'true') %]
     [%- END -%]

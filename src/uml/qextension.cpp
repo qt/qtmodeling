@@ -59,7 +59,6 @@ QExtensionPrivate::QExtensionPrivate() :
 
 QExtensionPrivate::~QExtensionPrivate()
 {
-    delete ownedEnd;
 }
 
 void QExtensionPrivate::setMetaclass(QClass *metaclass)
@@ -156,7 +155,10 @@ void QExtension::setOwnedEnd(QExtensionEnd *ownedEnd)
 
     Q_D(QExtension);
     if (d->ownedEnd != ownedEnd) {
+        if (d->ownedEnd)
+            qTopLevelWrapper(d->ownedEnd)->setParent(0);
         d->ownedEnd = ownedEnd;
+        qTopLevelWrapper(ownedEnd)->setParent(qTopLevelWrapper(this));
     }
 }
 

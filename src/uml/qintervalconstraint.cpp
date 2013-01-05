@@ -55,7 +55,6 @@ QIntervalConstraintPrivate::QIntervalConstraintPrivate() :
 
 QIntervalConstraintPrivate::~QIntervalConstraintPrivate()
 {
-    delete specification;
 }
 
 /*!
@@ -103,7 +102,10 @@ void QIntervalConstraint::setSpecification(QInterval *specification)
 
     Q_D(QIntervalConstraint);
     if (d->specification != specification) {
+        if (d->specification)
+            qTopLevelWrapper(d->specification)->setParent(0);
         d->specification = specification;
+        qTopLevelWrapper(specification)->setParent(qTopLevelWrapper(this));
     }
 }
 

@@ -44,8 +44,6 @@
 
 #include <QtWrappedObjects/QMetaWrappedObject>
 
-#include <QtCore/QDebug>
-
 QT_BEGIN_NAMESPACE_QTWRAPPEDOBJECTS
 
 QWrappedObjectPrivate::QWrappedObjectPrivate(int version)
@@ -56,9 +54,6 @@ QWrappedObjectPrivate::QWrappedObjectPrivate(int version)
 QWrappedObjectPrivate::~QWrappedObjectPrivate()
 {
     delete metaWrappedObject;
-    qDebug() << "Removendo" << wrappedObjects.size() << "wrapped objects";
-    foreach (QWrappedObject *w, wrappedObjects)
-        qDebug() << "A remover objeto do tipo" << w->metaObject()->className() << "e nome" << w->objectName();
     qDeleteAll(wrappedObjects);
 }
 
@@ -99,7 +94,7 @@ void QWrappedObject::setPropertyData()
 {
 }
 
-const QList<QPointer<QWrappedObject>> &QWrappedObject::wrappedObjects() const
+const QList<QWrappedObject *> &QWrappedObject::wrappedObjects() const
 {
     Q_D(const QWrappedObject);
     return d->wrappedObjects;
@@ -116,10 +111,8 @@ void QWrappedObject::setWrapper(QWrappedObject *wrapper)
 
     d->wrapper = wrapper;
 
-    if (wrapper) {
-        qDebug() << "Inserindo" << this->metaObject()->className() << "como filho de" << wrapper->metaObject()->className();
+    if (wrapper)
         wrapper->d_func()->wrappedObjects.append(this);
-    }
 }
 
 QWrappedObject *QWrappedObject::wrapper() const

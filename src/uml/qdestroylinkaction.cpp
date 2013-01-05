@@ -54,7 +54,6 @@ QDestroyLinkActionPrivate::QDestroyLinkActionPrivate()
 
 QDestroyLinkActionPrivate::~QDestroyLinkActionPrivate()
 {
-    qDeleteAll(endData);
 }
 
 /*!

@@ -55,7 +55,6 @@ QDurationConstraintPrivate::QDurationConstraintPrivate() :
 
 QDurationConstraintPrivate::~QDurationConstraintPrivate()
 {
-    delete specification;
 }
 
 /*!
@@ -138,7 +137,10 @@ void QDurationConstraint::setSpecification(QDurationInterval *specification)
 
     Q_D(QDurationConstraint);
     if (d->specification != specification) {
+        if (d->specification)
+            qTopLevelWrapper(d->specification)->setParent(0);
         d->specification = specification;
+        qTopLevelWrapper(specification)->setParent(qTopLevelWrapper(this));
     }
 }
 
