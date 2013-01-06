@@ -180,6 +180,9 @@ QVariant WrappedObjectPropertyModel::data(const QModelIndex &index, int role) co
                 return "";
             }
         }
+        case Qt::UserRole: {
+            return qVariantFromValue(static_cast<QMetaPropertyInfo *>(index.internalPointer()));
+        }
     }
     return QVariant();
 }

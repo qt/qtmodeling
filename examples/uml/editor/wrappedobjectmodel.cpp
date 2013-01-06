@@ -83,6 +83,9 @@ QVariant WrappedObjectModel::data(const QModelIndex &index, int role) const
             QWrappedObject *wrappedObject = static_cast<QWrappedObject *>(index.internalPointer());
             return index.column() == 0 ? qTopLevelWrapper(wrappedObject)->objectName():QString::fromLatin1(qTopLevelWrapper(wrappedObject)->metaObject()->className());
         }
+        case Qt::UserRole: {
+            return qVariantFromValue(static_cast<QWrappedObject *>(index.internalPointer()));
+        }
     }
     return QVariant();
 }
