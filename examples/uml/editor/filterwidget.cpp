@@ -185,7 +185,7 @@ FilterWidget::FilterWidget(QWidget *parent, LayoutMode lm)  :
     l->addWidget(m_editor);
 
     // KDE has custom icons for this. Notice that icon namings are counter intuitive
-    // If these icons are not avaiable we use the freedesktop standard name before
+    // If these icons are not available we use the freedesktop standard name before
     // falling back to a bundled resource
     QIcon icon = QIcon::fromTheme(layoutDirection() == Qt::LeftToRight ?
                      QStringLiteral("edit-clear-locationbar-rtl") :
