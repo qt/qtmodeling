@@ -18,13 +18,17 @@ SOURCES += main.cpp\
     propertyeditoritemdelegate.cpp \
     propertyeditor.cpp \
     wrappedobjectpropertymodel.cpp \
-    wrappedobjectmodel.cpp
+    wrappedobjectmodel.cpp \
+    wrappedobjectpropertyfiltermodel.cpp \
+    filterwidget.cpp
 
 HEADERS  += mainwindow.h \
     propertyeditoritemdelegate.h \
     propertyeditor.h \
     wrappedobjectpropertymodel.h \
-    wrappedobjectmodel.h
+    wrappedobjectmodel.h \
+    wrappedobjectpropertyfiltermodel.h \
+    filterwidget.h
 
 FORMS    += mainwindow.ui
 

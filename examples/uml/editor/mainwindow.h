@@ -24,6 +24,7 @@ using QtUml::QModel;
 
 class QTreeWidgetItem;
 class QItemSelection;
+class WrappedObjectPropertyModel;
 
 class MainWindow : public QMainWindow
 {
@@ -47,6 +48,7 @@ private:
 
     QWrappedObjectPointer<QModel> _model;
     QWrappedObjectPointer<QModel> _model2;
+    WrappedObjectPropertyModel *_propertyModel;
 
     void populateContextMenu(QMenu &menu, QtWrappedObjects::QWrappedObject *element);
 };

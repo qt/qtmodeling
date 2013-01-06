@@ -31,6 +31,7 @@
 #include "wrappedobjectmodel.h"
 #include "propertyeditoritemdelegate.h"
 #include "wrappedobjectpropertymodel.h"
+#include "wrappedobjectpropertyfiltermodel.h"
 
 using namespace QtUml;
 using namespace QtWrappedObjects;
@@ -58,8 +59,15 @@ MainWindow::MainWindow(QWidget *parent) :
     PropertyEditorItemDelegate *delegate = new PropertyEditorItemDelegate(ui->propertyEditor);
     ui->propertyEditor->setItemDelegateForColumn(1, delegate);
 
-    WrappedObjectPropertyModel *propertyModel = new WrappedObjectPropertyModel(this);
-    ui->propertyEditor->setModel(propertyModel);
+    _propertyModel = new WrappedObjectPropertyModel(this);
+    WrappedObjectPropertyFilterModel *proxyModel = new WrappedObjectPropertyFilterModel(this);
+    proxyModel->setFilterCaseSensitivity(Qt::CaseInsensitive);
+    proxyModel->setSourceModel(_propertyModel);
+    connect(ui->filterWidget, &FilterWidget::filterChanged,
+            proxyModel, static_cast<void (QSortFilterProxyModel::*)(const QString &)>(&QSortFilterProxyModel::setFilterRegExp));
+    connect(ui->filterWidget, &FilterWidget::filterChanged,
+            ui->propertyEditor, &QTreeView::expandAll);
+    ui->propertyEditor->setModel(proxyModel);
 
     WrappedObjectModel *wrappedObjectModel = new WrappedObjectModel(this);
     ui->modelInspector->setModel(wrappedObjectModel);
@@ -123,7 +131,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->modelInspector->selectionModel(), &QItemSelectionModel::selectionChanged, this, &MainWindow::modelInspectorSelectionChanged);
     ui->modelInspector->setCurrentIndex(wrappedObjectModel->index(0, 0));
 
-    connect(propertyModel, &WrappedObjectModel::dataChanged, [=](){
+    connect(_propertyModel, &WrappedObjectModel::dataChanged, [=](){
         wrappedObjectModel->updateIndex(ui->modelInspector->selectionModel()->selectedIndexes().first());
     });
 }
@@ -138,7 +146,7 @@ MainWindow::~MainWindow()
 void MainWindow::contextMenuEvent(QContextMenuEvent *event)
 {
     QMenu menu(this);
-    QWrappedObject *element = static_cast<QWrappedObject *>(ui->modelInspector->currentIndex().internalPointer());
+    QWrappedObject *element = qvariant_cast<QWrappedObject *>(ui->modelInspector->currentIndex().data(Qt::UserRole));
     _visitedAddMethods.clear();
     populateContextMenu(menu, element);
     menu.exec(event->globalPos());
@@ -183,10 +191,10 @@ void MainWindow::populateContextMenu(QMenu &menu, QWrappedObject *element)
 void MainWindow::modelInspectorSelectionChanged(const QItemSelection &selected, const QItemSelection &deselected)
 {
     Q_UNUSED(deselected);
-    QWrappedObject *element = static_cast<QWrappedObject *>(selected.indexes().first().internalPointer());
-    WrappedObjectPropertyModel *model = qobject_cast<WrappedObjectPropertyModel *>(ui->propertyEditor->model());
-    if (element && model) {
-        model->setWrappedObject(element);
+    QWrappedObject *element = qvariant_cast<QWrappedObject *>(selected.indexes().first().data(Qt::UserRole));
+    if (element) {
+        ui->lblInspectedObject->setText(QString("%1: %2").arg(element->objectName()).arg(element->metaObject()->className()));
+        _propertyModel->setWrappedObject(element);
         ui->propertyEditor->expandAll();
         ui->propertyEditor->resizeColumnToContents(0);
         ui->propertyEditor->resizeColumnToContents(1);

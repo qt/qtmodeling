@@ -25,7 +25,7 @@ PropertyEditorItemDelegate::~PropertyEditorItemDelegate()
 
 QWidget *PropertyEditorItemDelegate::createEditor(QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
-    if (QMetaPropertyInfo *metaPropertyInfo = static_cast<QMetaPropertyInfo *>(index.internalPointer())) {
+    if (QMetaPropertyInfo *metaPropertyInfo = qvariant_cast<QMetaPropertyInfo *>(index.data(Qt::UserRole))) {
         QMetaProperty metaProperty = metaPropertyInfo->metaProperty;
 
         if (metaProperty.type() == QVariant::Bool || metaProperty.isEnumType()) {
@@ -56,7 +56,7 @@ QWidget *PropertyEditorItemDelegate::createEditor(QWidget *parent, const QStyleO
 
 void PropertyEditorItemDelegate::setEditorData(QWidget *editor, const QModelIndex &index) const
 {
-    if (QMetaPropertyInfo *metaPropertyInfo = static_cast<QMetaPropertyInfo *>(index.internalPointer())) {
+    if (QMetaPropertyInfo *metaPropertyInfo = qvariant_cast<QMetaPropertyInfo *>(index.data(Qt::UserRole))) {
         QMetaProperty metaProperty = metaPropertyInfo->metaProperty;
         PropertyEditor *propertyEditor = qobject_cast<PropertyEditor *>(editor);
         if (metaProperty.type() == QVariant::Bool)
@@ -91,7 +91,7 @@ void PropertyEditorItemDelegate::paint(QPainter *painter, const QStyleOptionView
 
 void PropertyEditorItemDelegate::setModelData(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index) const
 {
-    if (QMetaPropertyInfo *metaPropertyInfo = static_cast<QMetaPropertyInfo *>(index.internalPointer())) {
+    if (QMetaPropertyInfo *metaPropertyInfo = qvariant_cast<QMetaPropertyInfo *>(index.data(Qt::UserRole))) {
         QMetaProperty metaProperty = metaPropertyInfo->metaProperty;
         if (metaProperty.type() == QVariant::Bool || metaProperty.isEnumType()) {
             PropertyEditor *propertyEditor = qobject_cast<PropertyEditor *>(editor);
