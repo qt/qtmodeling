@@ -61,9 +61,6 @@ int main ()
         return 1;
     }
 
-    model->setPropertyData();
-    model->registerMetaTypes();
-
     QXmiWriter writer(model);
     if (writer.writeFile(&file))
         qDebug() << "XMI file saved !";

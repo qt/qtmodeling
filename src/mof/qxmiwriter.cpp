@@ -106,6 +106,7 @@ void QXmiWriter::populateIdMap(QWrappedObject *wrappedObject, int index)
         d->idStack << QString::fromLatin1(wrappedObject->metaObject()->className()).remove(QRegularExpression(QString::fromLatin1("^Q"))) + QString::fromLatin1((index != -1) ? ".%1":"").arg(index);
     QString id = d->idStack.join(QString::fromLatin1("-"));
     d->idMap.insert(wrappedObject, id);
+    wrappedObject->registerMetaTypes();
 
     const QMetaWrappedObject *metaWrappedObject = wrappedObject->metaWrappedObject();
     int propertyCount = metaWrappedObject->propertyCount();
