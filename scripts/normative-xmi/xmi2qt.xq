@@ -108,7 +108,7 @@ declare function qtxmi:modifiedFunctionName ($property as node()*) as xs:string*
                          and $property/@name != "referred"
                          and $property/@name != "represented"
                          ) then
-                             concat(replace(replace(replace(replace(replace(qtxmi:mappedFunctionName($property/@name), "_$", ""), "y$", "ie"), "s$", "se"), "ex$", "ice"), "x$", "ce"), "s")
+                             concat(replace(replace(replace(replace(replace(qtxmi:mappedFunctionName($property/@name), "_$", ""), "y$", "ie"), "ss$", "sse"), "ex$", "ice"), "x$", "ce"), "s")
                          else qtxmi:mappedFunctionName($property/@name)
     let $functionName := if(ends-with($mappedFunctionName, "_") and not(ends-with($functionName, "_"))) then concat($functionName, "_") else $functionName
     return $functionName

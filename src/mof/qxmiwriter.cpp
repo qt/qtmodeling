@@ -188,14 +188,14 @@ void QXmiWriter::writeWrappedObject(QWrappedObject *wrappedObject, QString eleme
         QMetaPropertyInfo metaPropertyInfo = metaWrappedObject->property(i);
         QMetaProperty metaProperty = metaPropertyInfo.metaProperty;
 
-        if (d->blacklistedOppositeEnds.contains(QString::fromLatin1("%1::%2").arg(QString::fromLatin1(metaPropertyInfo.propertyMetaObject->className())).arg(QString::fromLatin1(metaProperty.name()))))
+        if (d->blacklistedOppositeEnds.contains(QString::fromLatin1("%1::%2").arg(QString::fromLatin1(metaPropertyInfo.propertyMetaObject->className())).arg(QString::fromLatin1(metaProperty.name()).remove(QRegularExpression(QString::fromLatin1("_$"))))))
             continue;
 
         QWrappedObject *propertyWrappedObject = metaPropertyInfo.propertyWrappedObject;
         QString typeName = QString::fromLatin1(metaProperty.typeName());
         QVariant variant = metaProperty.read(propertyWrappedObject);
         QString aggregationRole = wrappedObject->propertyData(QString::fromLatin1(metaPropertyInfo.propertyMetaObject->className()), metaProperty, QtWrappedObjects::QtWrappedObjects::AggregationRole).toString();
-        QString modifiedPropertyName = QString::fromLatin1(metaProperty.name()).remove(QRegularExpression(QString::fromLatin1("s$"))).replace(QRegularExpression(QString::fromLatin1("ie$")), QString::fromLatin1("y")).replace(QRegularExpression(QString::fromLatin1("se$")), QString::fromLatin1("s")).replace(QRegularExpression(QString::fromLatin1("ice$")), QString::fromLatin1("ex")).replace(QRegularExpression(QString::fromLatin1("ce$")), QString::fromLatin1("x"));
+        QString modifiedPropertyName = QString::fromLatin1(metaProperty.name()).remove(QRegularExpression(QString::fromLatin1("_$"))).remove(QRegularExpression(QString::fromLatin1("s$"))).replace(QRegularExpression(QString::fromLatin1("ie$")), QString::fromLatin1("y")).replace(QRegularExpression(QString::fromLatin1("sse$")), QString::fromLatin1("ss")).replace(QRegularExpression(QString::fromLatin1("ice$")), QString::fromLatin1("ex")).replace(QRegularExpression(QString::fromLatin1("ce$")), QString::fromLatin1("x"));
         if (!metaProperty.isStored() || QWrappedObject::propertyData(QString::fromLatin1(metaPropertyInfo.propertyMetaObject->className()), metaProperty, QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole).toBool())
             continue;
         if (typeName.endsWith('*') && qvariant_cast<QWrappedObject *>(variant)) {
