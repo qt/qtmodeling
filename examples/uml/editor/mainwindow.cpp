@@ -4,7 +4,7 @@
 #include <QtCore/QVariant>
 #include <QtCore/QRegularExpression>
 #include <QtCore/QMetaProperty>
-#include <QtCore/QTimer>
+#include <QtCore/QDebug>
 
 #include <QtGui/QContextMenuEvent>
 #include <QtGui/QPixmap>
@@ -232,13 +232,14 @@ void MainWindow::handleAddMethod()
         QObject *element = _visitedAddMethods[action->text()].first;
         QMetaMethod metaMethod = _visitedAddMethods[action->text()].second;
         QString elementType = action->data().toString();
+        qDebug() << "Procurando metatype de" << elementType;
         int type;
         if ((type = QMetaType::type(elementType.toLatin1())) != QMetaType::UnknownType) {
             const QMetaObject *metaObject = QMetaType::metaObjectForType(type);
             if (metaObject) {
                 QObject *addedElement = metaObject->newInstance();
-                addedElement->setObjectName(QString("Unamed %1").arg(elementType.remove("*")));
                 if (addedElement) {
+                    addedElement->setObjectName(QString("Unamed %1").arg(elementType.remove("*")));
                     if (!metaMethod.invoke(element, Q_ARG(QObject *, addedElement)))
                         statusBar()->showMessage("Error when invoking metaMethod !", 6000);
                     else

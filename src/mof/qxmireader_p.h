@@ -5,7 +5,7 @@
 **
 ** This file is part of the QtMof module of the Qt Toolkit.
 **
-** :LGPL
+** $QT_BEGIN_LICENSE:LGPL$
 ** GNU Lesser General Public License Usage
 ** This file may be used under the terms of the GNU Lesser General Public
 ** License version 2.1 as published by the Free Software Foundation and
@@ -35,39 +35,39 @@
 **
 **
 **
-**
+** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QTMOF_QMOFPOINTER_H
-#define QTMOF_QMOFPOINTER_H
-
-#include <QtMof/QtMofGlobal>
+#ifndef QTMOF_QXMIREADER_P_H
+#define QTMOF_QXMIREADER_P_H
 
 // Base class includes
-#include <QtCore/QPointer>
+#include "private/qobject_p.h"
 
-#include <QtMof/QMofObject>
+#include "QtMof/QXmiReader"
+
+#include <QtCore/QXmlStreamReader>
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE_QTMOF
 
-template <class T>
-class Q_MOF_EXPORT QMofPointer : public QPointer<T>
-{
-public:
-    QMofPointer(T *p = 0) : QPointer<T>(p) { }
-    virtual ~QMofPointer() { }
+QT_MODULE(QtMof)
 
-    template <class U> inline operator U *()
-    {
-        return qmofobject_cast<U *>(QPointer<T>::data());
-    }
+class Q_MOF_EXPORT QXmiReaderPrivate : public QObjectPrivate
+{
+    Q_DECLARE_PUBLIC(QXmiReader)
+
+public:
+    explicit QXmiReaderPrivate();
+    virtual ~QXmiReaderPrivate();
+
+    QXmlStreamReader reader;
 };
 
 QT_END_NAMESPACE_QTMOF
 
 QT_END_HEADER
 
-#endif // QTMOF_QMOFPOINTER_H
+#endif // QTMOF_QXMIREADER_P_H
 
