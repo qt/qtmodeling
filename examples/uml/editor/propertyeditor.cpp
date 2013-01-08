@@ -21,7 +21,7 @@ PropertyEditor::PropertyEditor(QWidget *widget, QMetaPropertyInfo *metaPropertyI
         QToolButton *toolButton = new QToolButton;
         toolButton->setIcon(QPixmap(":/icons/resetproperty.png"));
         toolButton->setMaximumSize(22, 22);
-        toolButton->setEnabled(_metaPropertyInfo->wasChanged);
+        toolButton->setEnabled(_metaPropertyInfo->propertyWrappedObject->isPropertyModified(_metaPropertyInfo->metaProperty));
         connect(toolButton, &QToolButton::clicked, this, &PropertyEditor::resetClicked);
         layout->addWidget(toolButton);
     }
@@ -59,9 +59,6 @@ void PropertyEditor::setValue(int value)
 
 void PropertyEditor::resetClicked()
 {
-    QMetaProperty metaProperty = _metaPropertyInfo->metaProperty;
-    metaProperty.reset(_metaPropertyInfo->propertyWrappedObject);
-    setValue(metaProperty.read(_metaPropertyInfo->propertyWrappedObject).toInt());
-    _metaPropertyInfo->wasChanged = false;
+    _metaPropertyInfo->metaProperty.reset(_metaPropertyInfo->propertyWrappedObject);
     emit closeEditor(this);
 }

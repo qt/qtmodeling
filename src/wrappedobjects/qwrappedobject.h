@@ -89,6 +89,8 @@ public:
         return propertyDataHash[className][QString::fromLatin1(metaProperty.name())][role];
     }
 
+    bool isPropertyModified(QMetaProperty metaProperty) const;
+
     virtual void registerMetaTypes() const;
 
 protected:

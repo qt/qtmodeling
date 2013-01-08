@@ -104,11 +104,14 @@ void QCallAction::setSynchronous(bool isSynchronous)
     if (d->isSynchronous != isSynchronous) {
         d->isSynchronous = isSynchronous;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isSynchronous");
 }
 
 void QCallAction::unsetSynchronous()
 {
     setSynchronous(true);
+    Q_D(QCallAction);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isSynchronous"));
 }
 
 // ---------------------------------------------------------------

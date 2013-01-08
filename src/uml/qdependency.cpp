@@ -240,6 +240,8 @@ void QDependency::setVisibility(QtUml::VisibilityKind visibility)
 void QDependency::unsetVisibility()
 {
     setVisibility(QtUml::VisibilityPublic);
+    Q_D(QDependency);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("visibility"));
 }
 
 // ---------------------------------------------------------------

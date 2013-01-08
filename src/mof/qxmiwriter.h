@@ -75,7 +75,7 @@ public:
 
     bool writeFile(QIODevice *device);
 
-private:
+protected:
     void populateIdMap(QWrappedObject *wrappedObject, int index = -1);
     void writeWrappedObject(QWrappedObject *wrappedObject, QString elementName = QString::fromLatin1(""));
 };

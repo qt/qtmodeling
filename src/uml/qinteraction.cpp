@@ -107,6 +107,8 @@ void QInteraction::setReentrant(bool isReentrant)
 void QInteraction::unsetReentrant()
 {
     setReentrant(true);
+    Q_D(QInteraction);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isReentrant"));
 }
 
 // ---------------------------------------------------------------

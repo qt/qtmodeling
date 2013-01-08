@@ -105,11 +105,14 @@ void QAcceptEventAction::setUnmarshall(bool isUnmarshall)
     if (d->isUnmarshall != isUnmarshall) {
         d->isUnmarshall = isUnmarshall;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isUnmarshall");
 }
 
 void QAcceptEventAction::unsetUnmarshall()
 {
     setUnmarshall(false);
+    Q_D(QAcceptEventAction);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isUnmarshall"));
 }
 
 // ---------------------------------------------------------------

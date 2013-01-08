@@ -105,11 +105,14 @@ void QCombinedFragment::setInteractionOperator(QtUml::InteractionOperatorKind in
     if (d->interactionOperator != interactionOperator) {
         d->interactionOperator = interactionOperator;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("interactionOperator");
 }
 
 void QCombinedFragment::unsetInteractionOperator()
 {
     setInteractionOperator(QtUml::InteractionOperatorSeq);
+    Q_D(QCombinedFragment);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("interactionOperator"));
 }
 
 // ---------------------------------------------------------------

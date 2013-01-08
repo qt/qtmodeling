@@ -106,11 +106,14 @@ void QDestroyObjectAction::setDestroyLinks(bool isDestroyLinks)
     if (d->isDestroyLinks != isDestroyLinks) {
         d->isDestroyLinks = isDestroyLinks;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isDestroyLinks");
 }
 
 void QDestroyObjectAction::unsetDestroyLinks()
 {
     setDestroyLinks(false);
+    Q_D(QDestroyObjectAction);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isDestroyLinks"));
 }
 
 /*!
@@ -132,11 +135,14 @@ void QDestroyObjectAction::setDestroyOwnedObjects(bool isDestroyOwnedObjects)
     if (d->isDestroyOwnedObjects != isDestroyOwnedObjects) {
         d->isDestroyOwnedObjects = isDestroyOwnedObjects;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isDestroyOwnedObjects");
 }
 
 void QDestroyObjectAction::unsetDestroyOwnedObjects()
 {
     setDestroyOwnedObjects(false);
+    Q_D(QDestroyObjectAction);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isDestroyOwnedObjects"));
 }
 
 // ---------------------------------------------------------------

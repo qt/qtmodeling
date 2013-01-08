@@ -230,6 +230,8 @@ void QRegion::setLeaf(bool isLeaf)
 void QRegion::unsetLeaf()
 {
     setLeaf(false);
+    Q_D(QRegion);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isLeaf"));
 }
 
 // ---------------------------------------------------------------

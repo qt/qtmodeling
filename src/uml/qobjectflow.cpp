@@ -107,11 +107,14 @@ void QObjectFlow::setMultireceive(bool isMultireceive)
     if (d->isMultireceive != isMultireceive) {
         d->isMultireceive = isMultireceive;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isMultireceive");
 }
 
 void QObjectFlow::unsetMultireceive()
 {
     setMultireceive(false);
+    Q_D(QObjectFlow);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isMultireceive"));
 }
 
 /*!
@@ -133,11 +136,14 @@ void QObjectFlow::setMulticast(bool isMulticast)
     if (d->isMulticast != isMulticast) {
         d->isMulticast = isMulticast;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isMulticast");
 }
 
 void QObjectFlow::unsetMulticast()
 {
     setMulticast(false);
+    Q_D(QObjectFlow);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isMulticast"));
 }
 
 // ---------------------------------------------------------------

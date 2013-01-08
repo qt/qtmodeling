@@ -109,11 +109,14 @@ void QBehavior::setReentrant(bool isReentrant)
     if (d->isReentrant != isReentrant) {
         d->isReentrant = isReentrant;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isReentrant");
 }
 
 void QBehavior::unsetReentrant()
 {
     setReentrant(true);
+    Q_D(QBehavior);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isReentrant"));
 }
 
 // ---------------------------------------------------------------

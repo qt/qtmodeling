@@ -110,11 +110,14 @@ void QActivity::setReadOnly(bool isReadOnly)
     if (d->isReadOnly != isReadOnly) {
         d->isReadOnly = isReadOnly;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isReadOnly");
 }
 
 void QActivity::unsetReadOnly()
 {
     setReadOnly(false);
+    Q_D(QActivity);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isReadOnly"));
 }
 
 /*!
@@ -136,11 +139,14 @@ void QActivity::setSingleExecution(bool isSingleExecution)
     if (d->isSingleExecution != isSingleExecution) {
         d->isSingleExecution = isSingleExecution;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isSingleExecution");
 }
 
 void QActivity::unsetSingleExecution()
 {
     setSingleExecution(false);
+    Q_D(QActivity);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isSingleExecution"));
 }
 
 // ---------------------------------------------------------------

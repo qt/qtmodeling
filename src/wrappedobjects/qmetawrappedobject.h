@@ -63,7 +63,6 @@ struct Q_WRAPPEDOBJECTS_EXPORT QMetaPropertyInfo
     QMetaProperty metaProperty;
     const QMetaObject *propertyMetaObject;
     QWrappedObject *propertyWrappedObject;
-    bool wasChanged;
 
     inline bool operator==(const QMetaPropertyInfo &other) const
     {

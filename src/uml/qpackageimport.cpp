@@ -107,11 +107,14 @@ void QPackageImport::setVisibility(QtUml::VisibilityKind visibility)
     if (d->visibility != visibility) {
         d->visibility = visibility;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("visibility");
 }
 
 void QPackageImport::unsetVisibility()
 {
     setVisibility(QtUml::VisibilityPublic);
+    Q_D(QPackageImport);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("visibility"));
 }
 
 // ---------------------------------------------------------------

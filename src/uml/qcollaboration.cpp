@@ -309,6 +309,8 @@ void QCollaboration::setVisibility(QtUml::VisibilityKind visibility)
 void QCollaboration::unsetVisibility()
 {
     setVisibility(QtUml::VisibilityPublic);
+    Q_D(QCollaboration);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("visibility"));
 }
 
 // ---------------------------------------------------------------
@@ -348,6 +350,8 @@ void QCollaboration::setLeaf(bool isLeaf)
 void QCollaboration::unsetLeaf()
 {
     setLeaf(false);
+    Q_D(QCollaboration);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isLeaf"));
 }
 
 // ---------------------------------------------------------------
@@ -412,6 +416,8 @@ void QCollaboration::setAbstract(bool isAbstract)
 void QCollaboration::unsetAbstract()
 {
     setAbstract(false);
+    Q_D(QCollaboration);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isAbstract"));
 }
 
 /*!
@@ -430,6 +436,8 @@ void QCollaboration::setFinalSpecialization(bool isFinalSpecialization)
 void QCollaboration::unsetFinalSpecialization()
 {
     setFinalSpecialization(false);
+    Q_D(QCollaboration);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isFinalSpecialization"));
 }
 
 // ---------------------------------------------------------------

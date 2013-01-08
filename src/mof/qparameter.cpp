@@ -213,6 +213,8 @@ void QParameter::setUpper(qint32 upper)
 void QParameter::unsetUpper()
 {
     setUpper(1);
+    Q_D(QParameter);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("upper"));
 }
 
 /*!
@@ -231,6 +233,8 @@ void QParameter::setUnique(bool isUnique)
 void QParameter::unsetUnique()
 {
     setUnique(true);
+    Q_D(QParameter);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isUnique"));
 }
 
 /*!
@@ -249,6 +253,8 @@ void QParameter::setOrdered(bool isOrdered)
 void QParameter::unsetOrdered()
 {
     setOrdered(false);
+    Q_D(QParameter);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isOrdered"));
 }
 
 /*!
@@ -329,11 +335,14 @@ void QParameter::setDirection(QtMof::ParameterDirectionKind direction)
     if (d->direction != direction) {
         d->direction = direction;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("direction");
 }
 
 void QParameter::unsetDirection()
 {
     setDirection(QtMof::ParameterDirectionIn);
+    Q_D(QParameter);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("direction"));
 }
 
 // ---------------------------------------------------------------

@@ -118,11 +118,14 @@ void QProperty::setDerived(bool isDerived)
     if (d->isDerived != isDerived) {
         d->isDerived = isDerived;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isDerived");
 }
 
 void QProperty::unsetDerived()
 {
     setDerived(false);
+    Q_D(QProperty);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isDerived"));
 }
 
 /*!
@@ -192,11 +195,14 @@ void QProperty::setReadOnly(bool isReadOnly)
     if (d->isReadOnly != isReadOnly) {
         d->isReadOnly = isReadOnly;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isReadOnly");
 }
 
 void QProperty::unsetReadOnly()
 {
     setReadOnly(false);
+    Q_D(QProperty);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isReadOnly"));
 }
 
 /*!
@@ -218,11 +224,14 @@ void QProperty::setID(bool isID)
     if (d->isID != isID) {
         d->isID = isID;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isID");
 }
 
 void QProperty::unsetID()
 {
     setID(false);
+    Q_D(QProperty);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isID"));
 }
 
 /*!
@@ -244,11 +253,14 @@ void QProperty::setDerivedUnion(bool isDerivedUnion)
     if (d->isDerivedUnion != isDerivedUnion) {
         d->isDerivedUnion = isDerivedUnion;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isDerivedUnion");
 }
 
 void QProperty::unsetDerivedUnion()
 {
     setDerivedUnion(false);
+    Q_D(QProperty);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isDerivedUnion"));
 }
 
 /*!
@@ -270,11 +282,14 @@ void QProperty::setAggregation(QtMof::AggregationKind aggregation)
     if (d->aggregation != aggregation) {
         d->aggregation = aggregation;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("aggregation");
 }
 
 void QProperty::unsetAggregation()
 {
     setAggregation(QtMof::AggregationNone);
+    Q_D(QProperty);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("aggregation"));
 }
 
 // ---------------------------------------------------------------

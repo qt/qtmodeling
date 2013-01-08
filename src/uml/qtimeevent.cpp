@@ -105,11 +105,14 @@ void QTimeEvent::setRelative(bool isRelative)
     if (d->isRelative != isRelative) {
         d->isRelative = isRelative;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isRelative");
 }
 
 void QTimeEvent::unsetRelative()
 {
     setRelative(false);
+    Q_D(QTimeEvent);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isRelative"));
 }
 
 // ---------------------------------------------------------------

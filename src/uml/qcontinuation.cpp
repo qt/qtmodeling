@@ -102,11 +102,14 @@ void QContinuation::setSetting(bool setting)
     if (d->setting != setting) {
         d->setting = setting;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("setting");
 }
 
 void QContinuation::unsetSetting()
 {
     setSetting(true);
+    Q_D(QContinuation);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("setting"));
 }
 
 void QContinuation::registerMetaTypes() const

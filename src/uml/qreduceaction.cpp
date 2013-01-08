@@ -109,11 +109,14 @@ void QReduceAction::setOrdered(bool isOrdered)
     if (d->isOrdered != isOrdered) {
         d->isOrdered = isOrdered;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isOrdered");
 }
 
 void QReduceAction::unsetOrdered()
 {
     setOrdered(false);
+    Q_D(QReduceAction);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isOrdered"));
 }
 
 // ---------------------------------------------------------------

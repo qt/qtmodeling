@@ -202,6 +202,9 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
             [%- END -%]
         [%- END %]
     }
+    [%- IF attribute.defaultValue != '' %]
+    d->modifiedResettableProperties << QString::fromLatin1("${attribute.accessor.0.name}");
+    [%- END %]
     [%- END -%]
 [%- ELSE %]
     qWarning("${class.name}::${accessor.name}: to be implemented (this is a derived attribute)");
@@ -252,6 +255,8 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
 void ${class.name}::unset${attribute.accessor.0.name.ucfirst.replace('^Is', '')}()
 {
     ${attribute.accessor.1.name}(${attribute.defaultValue});
+    Q_D(${class.name});
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("${attribute.accessor.0.name}"));
 }
 
             [%- END %]
@@ -366,6 +371,9 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
 [%- END %]
     [%- IF !loop.first %]
     }
+    [%- IF associationend.defaultValue != '' %]
+    d->modifiedResettableProperties << QString::fromLatin1("${associationend.accessor.0.name}");
+    [%- END %]
     [%- END %]
 [%- ELSE %]
     [% IF accessor.return != 'void ' %]return [% END %](qwrappedobject_cast<[% IF accessor.constness == ' const' %]const [% END %]${parent.name} *>(this))->${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.name}[% IF !loop.last %], [% END %][%- END -%]);

@@ -277,6 +277,8 @@ void QInformationFlow::setVisibility(QtUml::VisibilityKind visibility)
 void QInformationFlow::unsetVisibility()
 {
     setVisibility(QtUml::VisibilityPublic);
+    Q_D(QInformationFlow);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("visibility"));
 }
 
 // ---------------------------------------------------------------

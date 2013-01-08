@@ -349,6 +349,8 @@ void QClass::setVisibility(QtUml::VisibilityKind visibility)
 void QClass::unsetVisibility()
 {
     setVisibility(QtUml::VisibilityPublic);
+    Q_D(QClass);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("visibility"));
 }
 
 // ---------------------------------------------------------------
@@ -388,6 +390,8 @@ void QClass::setLeaf(bool isLeaf)
 void QClass::unsetLeaf()
 {
     setLeaf(false);
+    Q_D(QClass);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isLeaf"));
 }
 
 // ---------------------------------------------------------------
@@ -452,6 +456,8 @@ void QClass::setFinalSpecialization(bool isFinalSpecialization)
 void QClass::unsetFinalSpecialization()
 {
     setFinalSpecialization(false);
+    Q_D(QClass);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isFinalSpecialization"));
 }
 
 // ---------------------------------------------------------------
@@ -773,11 +779,14 @@ void QClass::setAbstract(bool isAbstract)
     if (d->isAbstract != isAbstract) {
         d->isAbstract = isAbstract;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isAbstract");
 }
 
 void QClass::unsetAbstract()
 {
     setAbstract(false);
+    Q_D(QClass);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isAbstract"));
 }
 
 /*!
@@ -799,11 +808,14 @@ void QClass::setActive(bool isActive)
     if (d->isActive != isActive) {
         d->isActive = isActive;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isActive");
 }
 
 void QClass::unsetActive()
 {
     setActive(false);
+    Q_D(QClass);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isActive"));
 }
 
 // ---------------------------------------------------------------

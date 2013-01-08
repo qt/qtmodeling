@@ -229,6 +229,8 @@ void QObjectNode::setLeaf(bool isLeaf)
 void QObjectNode::unsetLeaf()
 {
     setLeaf(false);
+    Q_D(QObjectNode);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isLeaf"));
 }
 
 // ---------------------------------------------------------------
@@ -419,11 +421,14 @@ void QObjectNode::setControlType(bool isControlType)
     if (d->isControlType != isControlType) {
         d->isControlType = isControlType;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isControlType");
 }
 
 void QObjectNode::unsetControlType()
 {
     setControlType(false);
+    Q_D(QObjectNode);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isControlType"));
 }
 
 /*!
@@ -445,11 +450,14 @@ void QObjectNode::setOrdering(QtUml::ObjectNodeOrderingKind ordering)
     if (d->ordering != ordering) {
         d->ordering = ordering;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("ordering");
 }
 
 void QObjectNode::unsetOrdering()
 {
     setOrdering(QtUml::ObjectNodeOrderingFIFO);
+    Q_D(QObjectNode);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("ordering"));
 }
 
 // ---------------------------------------------------------------

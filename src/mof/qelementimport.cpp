@@ -128,11 +128,14 @@ void QElementImport::setVisibility(QtMof::VisibilityKind visibility)
     if (d->visibility != visibility) {
         d->visibility = visibility;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("visibility");
 }
 
 void QElementImport::unsetVisibility()
 {
     setVisibility(QtMof::VisibilityPublic);
+    Q_D(QElementImport);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("visibility"));
 }
 
 // ---------------------------------------------------------------

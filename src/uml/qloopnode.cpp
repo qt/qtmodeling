@@ -107,11 +107,14 @@ void QLoopNode::setTestedFirst(bool isTestedFirst)
     if (d->isTestedFirst != isTestedFirst) {
         d->isTestedFirst = isTestedFirst;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isTestedFirst");
 }
 
 void QLoopNode::unsetTestedFirst()
 {
     setTestedFirst(false);
+    Q_D(QLoopNode);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isTestedFirst"));
 }
 
 // ---------------------------------------------------------------

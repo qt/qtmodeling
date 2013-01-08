@@ -232,6 +232,8 @@ void QStructuredActivityNode::setLeaf(bool isLeaf)
 void QStructuredActivityNode::unsetLeaf()
 {
     setLeaf(false);
+    Q_D(QStructuredActivityNode);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isLeaf"));
 }
 
 // ---------------------------------------------------------------
@@ -411,6 +413,8 @@ void QStructuredActivityNode::setLocallyReentrant(bool isLocallyReentrant)
 void QStructuredActivityNode::unsetLocallyReentrant()
 {
     setLocallyReentrant(false);
+    Q_D(QStructuredActivityNode);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isLocallyReentrant"));
 }
 
 // ---------------------------------------------------------------
@@ -618,11 +622,14 @@ void QStructuredActivityNode::setMustIsolate(bool mustIsolate)
     if (d->mustIsolate != mustIsolate) {
         d->mustIsolate = mustIsolate;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("mustIsolate");
 }
 
 void QStructuredActivityNode::unsetMustIsolate()
 {
     setMustIsolate(false);
+    Q_D(QStructuredActivityNode);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("mustIsolate"));
 }
 
 // ---------------------------------------------------------------

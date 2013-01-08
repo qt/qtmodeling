@@ -105,11 +105,14 @@ void QTimeConstraint::setFirstEvent(bool firstEvent)
     if (d->firstEvent != firstEvent) {
         d->firstEvent = firstEvent;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("firstEvent");
 }
 
 void QTimeConstraint::unsetFirstEvent()
 {
     setFirstEvent(true);
+    Q_D(QTimeConstraint);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("firstEvent"));
 }
 
 // ---------------------------------------------------------------

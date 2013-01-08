@@ -105,11 +105,14 @@ void QTimeObservation::setFirstEvent(bool firstEvent)
     if (d->firstEvent != firstEvent) {
         d->firstEvent = firstEvent;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("firstEvent");
 }
 
 void QTimeObservation::unsetFirstEvent()
 {
     setFirstEvent(true);
+    Q_D(QTimeObservation);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("firstEvent"));
 }
 
 // ---------------------------------------------------------------

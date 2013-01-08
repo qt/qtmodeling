@@ -311,6 +311,8 @@ void QAssociation::setVisibility(QtUml::VisibilityKind visibility)
 void QAssociation::unsetVisibility()
 {
     setVisibility(QtUml::VisibilityPublic);
+    Q_D(QAssociation);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("visibility"));
 }
 
 // ---------------------------------------------------------------
@@ -350,6 +352,8 @@ void QAssociation::setLeaf(bool isLeaf)
 void QAssociation::unsetLeaf()
 {
     setLeaf(false);
+    Q_D(QAssociation);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isLeaf"));
 }
 
 // ---------------------------------------------------------------
@@ -414,6 +418,8 @@ void QAssociation::setAbstract(bool isAbstract)
 void QAssociation::unsetAbstract()
 {
     setAbstract(false);
+    Q_D(QAssociation);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isAbstract"));
 }
 
 /*!
@@ -432,6 +438,8 @@ void QAssociation::setFinalSpecialization(bool isFinalSpecialization)
 void QAssociation::unsetFinalSpecialization()
 {
     setFinalSpecialization(false);
+    Q_D(QAssociation);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isFinalSpecialization"));
 }
 
 // ---------------------------------------------------------------
@@ -680,11 +688,14 @@ void QAssociation::setDerived(bool isDerived)
     if (d->isDerived != isDerived) {
         d->isDerived = isDerived;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isDerived");
 }
 
 void QAssociation::unsetDerived()
 {
     setDerived(false);
+    Q_D(QAssociation);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isDerived"));
 }
 
 // ---------------------------------------------------------------

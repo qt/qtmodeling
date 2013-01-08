@@ -104,11 +104,14 @@ void QExpansionRegion::setMode(QtUml::ExpansionKind mode)
     if (d->mode != mode) {
         d->mode = mode;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("mode");
 }
 
 void QExpansionRegion::unsetMode()
 {
     setMode(QtUml::ExpansionIterative);
+    Q_D(QExpansionRegion);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("mode"));
 }
 
 // ---------------------------------------------------------------

@@ -386,6 +386,8 @@ void QClassifier::setVisibility(QtUml::VisibilityKind visibility)
 void QClassifier::unsetVisibility()
 {
     setVisibility(QtUml::VisibilityPublic);
+    Q_D(QClassifier);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("visibility"));
 }
 
 // ---------------------------------------------------------------
@@ -425,6 +427,8 @@ void QClassifier::setLeaf(bool isLeaf)
 void QClassifier::unsetLeaf()
 {
     setLeaf(false);
+    Q_D(QClassifier);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isLeaf"));
 }
 
 // ---------------------------------------------------------------
@@ -492,11 +496,14 @@ void QClassifier::setAbstract(bool isAbstract)
     if (d->isAbstract != isAbstract) {
         d->isAbstract = isAbstract;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isAbstract");
 }
 
 void QClassifier::unsetAbstract()
 {
     setAbstract(false);
+    Q_D(QClassifier);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isAbstract"));
 }
 
 /*!
@@ -518,11 +525,14 @@ void QClassifier::setFinalSpecialization(bool isFinalSpecialization)
     if (d->isFinalSpecialization != isFinalSpecialization) {
         d->isFinalSpecialization = isFinalSpecialization;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isFinalSpecialization");
 }
 
 void QClassifier::unsetFinalSpecialization()
 {
     setFinalSpecialization(false);
+    Q_D(QClassifier);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isFinalSpecialization"));
 }
 
 // ---------------------------------------------------------------

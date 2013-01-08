@@ -107,11 +107,14 @@ void QPseudostate::setKind(QtUml::PseudostateKind kind)
     if (d->kind != kind) {
         d->kind = kind;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("kind");
 }
 
 void QPseudostate::unsetKind()
 {
     setKind(QtUml::PseudostateInitial);
+    Q_D(QPseudostate);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("kind"));
 }
 
 // ---------------------------------------------------------------

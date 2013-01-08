@@ -225,6 +225,8 @@ void QRedefinableTemplateSignature::setLeaf(bool isLeaf)
 void QRedefinableTemplateSignature::unsetLeaf()
 {
     setLeaf(false);
+    Q_D(QRedefinableTemplateSignature);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isLeaf"));
 }
 
 // ---------------------------------------------------------------

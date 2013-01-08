@@ -15,8 +15,12 @@
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QStyledItemDelegate>
 #include <QtWidgets/QItemEditorCreatorBase>
+#include <QtWidgets/QFileDialog>
+#include <QtWidgets/QMessageBox>
 
 #include <QtWrappedObjects/QMetaWrappedObject>
+
+#include <QtMof/QXmiWriter>
 
 #include <QtUml/QModel>
 #include <QtUml/QGeneralization>
@@ -34,6 +38,7 @@
 #include "wrappedobjectpropertyfiltermodel.h"
 
 using namespace QtUml;
+using namespace QtMof;
 using namespace QtWrappedObjects;
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -67,6 +72,10 @@ MainWindow::MainWindow(QWidget *parent) :
             proxyModel, static_cast<void (QSortFilterProxyModel::*)(const QString &)>(&QSortFilterProxyModel::setFilterRegExp));
     connect(ui->filterWidget, &FilterWidget::filterChanged,
             ui->propertyEditor, &QTreeView::expandAll);
+    connect(ui->filterWidget, &FilterWidget::filterChanged, [=](){
+        ui->propertyEditor->resizeColumnToContents(0);
+        ui->propertyEditor->resizeColumnToContents(1);
+    });
     ui->propertyEditor->setModel(proxyModel);
 
     WrappedObjectModel *wrappedObjectModel = new WrappedObjectModel(this);
@@ -89,7 +98,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     QWrappedObjectPointer<QClass> class_ = new QClass;
     class_->setName("Student");
-    class_->setAbstract(true);
+    class_->setAbstract(false);
     class_->setVisibility(QtUml::QtUml::VisibilityPackage);
 
     QWrappedObjectPointer<QProperty> property = new QProperty;
@@ -188,6 +197,21 @@ void MainWindow::populateContextMenu(QMenu &menu, QWrappedObject *element)
     }
 }
 
+void MainWindow::saveXmi(QWrappedObject *rootElement)
+{
+    QFile file(_currentFileName);
+    if (!file.open(QFile::WriteOnly | QFile::Text)) {
+        QMessageBox::critical(this, tr("Save As"), tr("Cannot write file !"));
+        return;
+    }
+
+    QXmiWriter writer(rootElement);
+    if (!writer.writeFile(&file))
+        QMessageBox::critical(this, tr("Save As"), tr("Error when writing XMI file !"));
+    else
+        statusBar()->showMessage("XMI file successfully saved !", 3000);
+}
+
 void MainWindow::modelInspectorSelectionChanged(const QItemSelection &selected, const QItemSelection &deselected)
 {
     Q_UNUSED(deselected);
@@ -216,7 +240,7 @@ void MainWindow::handleAddMethod()
                 addedElement->setObjectName(QString("Unamed %1").arg(elementType.remove("*")));
                 if (addedElement) {
                     if (!metaMethod.invoke(element, Q_ARG(QObject *, addedElement)))
-                        statusBar()->showMessage("Error when invoking metaMethod !");
+                        statusBar()->showMessage("Error when invoking metaMethod !", 6000);
                     else
                         statusBar()->showMessage("MetaMethod successfully executed !", 3000);
                 }
@@ -225,4 +249,21 @@ void MainWindow::handleAddMethod()
     }
     WrappedObjectModel *wrappedObjectModel = dynamic_cast<WrappedObjectModel *>(ui->modelInspector->model());
     wrappedObjectModel->updateIndex(QModelIndex());
+}
+
+void MainWindow::on_actionFileSaveAs_triggered()
+{
+    QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"), QDir::currentPath(), "XMI files (*.xmi)");
+    if (!fileName.isEmpty()) {
+        _currentFileName = fileName;
+        saveXmi(_model);
+    }
+}
+
+void MainWindow::on_actionFileSave_triggered()
+{
+    if (_currentFileName.isEmpty())
+        on_actionFileSaveAs_triggered();
+    else
+        saveXmi(_model);
 }

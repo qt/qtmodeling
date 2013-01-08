@@ -105,11 +105,14 @@ void QLinkEndDestructionData::setDestroyDuplicates(bool isDestroyDuplicates)
     if (d->isDestroyDuplicates != isDestroyDuplicates) {
         d->isDestroyDuplicates = isDestroyDuplicates;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isDestroyDuplicates");
 }
 
 void QLinkEndDestructionData::unsetDestroyDuplicates()
 {
     setDestroyDuplicates(false);
+    Q_D(QLinkEndDestructionData);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isDestroyDuplicates"));
 }
 
 // ---------------------------------------------------------------

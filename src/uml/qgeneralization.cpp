@@ -107,11 +107,14 @@ void QGeneralization::setSubstitutable(bool isSubstitutable)
     if (d->isSubstitutable != isSubstitutable) {
         d->isSubstitutable = isSubstitutable;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isSubstitutable");
 }
 
 void QGeneralization::unsetSubstitutable()
 {
     setSubstitutable(true);
+    Q_D(QGeneralization);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isSubstitutable"));
 }
 
 // ---------------------------------------------------------------

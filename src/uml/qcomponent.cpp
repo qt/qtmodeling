@@ -107,11 +107,14 @@ void QComponent::setIndirectlyInstantiated(bool isIndirectlyInstantiated)
     if (d->isIndirectlyInstantiated != isIndirectlyInstantiated) {
         d->isIndirectlyInstantiated = isIndirectlyInstantiated;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isIndirectlyInstantiated");
 }
 
 void QComponent::unsetIndirectlyInstantiated()
 {
     setIndirectlyInstantiated(true);
+    Q_D(QComponent);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isIndirectlyInstantiated"));
 }
 
 // ---------------------------------------------------------------

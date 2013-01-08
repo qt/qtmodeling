@@ -107,11 +107,14 @@ void QGeneralizationSet::setCovering(bool isCovering)
     if (d->isCovering != isCovering) {
         d->isCovering = isCovering;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isCovering");
 }
 
 void QGeneralizationSet::unsetCovering()
 {
     setCovering(false);
+    Q_D(QGeneralizationSet);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isCovering"));
 }
 
 /*!
@@ -133,11 +136,14 @@ void QGeneralizationSet::setDisjoint(bool isDisjoint)
     if (d->isDisjoint != isDisjoint) {
         d->isDisjoint = isDisjoint;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isDisjoint");
 }
 
 void QGeneralizationSet::unsetDisjoint()
 {
     setDisjoint(false);
+    Q_D(QGeneralizationSet);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isDisjoint"));
 }
 
 // ---------------------------------------------------------------

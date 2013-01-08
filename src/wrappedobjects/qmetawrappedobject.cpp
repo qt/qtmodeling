@@ -151,7 +151,6 @@ void QMetaWrappedObject::handleWrappedObjectProperties(const QWrappedObject *wra
         visitedClasses << QString::fromLatin1(metaObject->className());
         propertyInfo.propertyMetaObject = metaObject;
         propertyInfo.propertyWrappedObject = const_cast<QWrappedObject *>(wrappingObject);
-        propertyInfo.wasChanged = false;
         int propertyCount = metaObject->propertyCount();
         if (propertyCount - metaObject->propertyOffset() > 0)
             d_ptr->propertyGroupInfos << QPair<QString, int>(QString::fromLatin1(metaObject->className()), d_ptr->propertyInfos.size());

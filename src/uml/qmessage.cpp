@@ -112,11 +112,14 @@ void QMessage::setMessageSort(QtUml::MessageSort messageSort)
     if (d->messageSort != messageSort) {
         d->messageSort = messageSort;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("messageSort");
 }
 
 void QMessage::unsetMessageSort()
 {
     setMessageSort(QtUml::MessageSynchCall);
+    Q_D(QMessage);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("messageSort"));
 }
 
 /*!

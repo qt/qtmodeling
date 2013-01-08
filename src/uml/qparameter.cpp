@@ -149,6 +149,8 @@ void QParameter::setUpper(qint32 upper)
 void QParameter::unsetUpper()
 {
     setUpper(1);
+    Q_D(QParameter);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("upper"));
 }
 
 /*!
@@ -167,6 +169,8 @@ void QParameter::setUnique(bool isUnique)
 void QParameter::unsetUnique()
 {
     setUnique(true);
+    Q_D(QParameter);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isUnique"));
 }
 
 /*!
@@ -185,6 +189,8 @@ void QParameter::setOrdered(bool isOrdered)
 void QParameter::unsetOrdered()
 {
     setOrdered(false);
+    Q_D(QParameter);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isOrdered"));
 }
 
 /*!
@@ -393,11 +399,14 @@ void QParameter::setException(bool isException)
     if (d->isException != isException) {
         d->isException = isException;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isException");
 }
 
 void QParameter::unsetException()
 {
     setException(false);
+    Q_D(QParameter);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isException"));
 }
 
 /*!
@@ -443,11 +452,14 @@ void QParameter::setDirection(QtUml::ParameterDirectionKind direction)
     if (d->direction != direction) {
         d->direction = direction;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("direction");
 }
 
 void QParameter::unsetDirection()
 {
     setDirection(QtUml::ParameterDirectionIn);
+    Q_D(QParameter);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("direction"));
 }
 
 /*!
@@ -469,11 +481,14 @@ void QParameter::setStream(bool isStream)
     if (d->isStream != isStream) {
         d->isStream = isStream;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isStream");
 }
 
 void QParameter::unsetStream()
 {
     setStream(false);
+    Q_D(QParameter);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isStream"));
 }
 
 /*!

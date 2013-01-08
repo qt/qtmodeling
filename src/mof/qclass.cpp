@@ -106,11 +106,14 @@ void QClass::setAbstract(bool isAbstract)
     if (d->isAbstract != isAbstract) {
         d->isAbstract = isAbstract;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isAbstract");
 }
 
 void QClass::unsetAbstract()
 {
     setAbstract(false);
+    Q_D(QClass);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isAbstract"));
 }
 
 // ---------------------------------------------------------------

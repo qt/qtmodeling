@@ -141,6 +141,8 @@ void QPin::setUpper(qint32 upper)
 void QPin::unsetUpper()
 {
     setUpper(1);
+    Q_D(QPin);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("upper"));
 }
 
 /*!
@@ -159,6 +161,8 @@ void QPin::setUnique(bool isUnique)
 void QPin::unsetUnique()
 {
     setUnique(true);
+    Q_D(QPin);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isUnique"));
 }
 
 /*!
@@ -177,6 +181,8 @@ void QPin::setOrdered(bool isOrdered)
 void QPin::unsetOrdered()
 {
     setOrdered(false);
+    Q_D(QPin);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isOrdered"));
 }
 
 /*!
@@ -323,6 +329,8 @@ void QPin::setLeaf(bool isLeaf)
 void QPin::unsetLeaf()
 {
     setLeaf(false);
+    Q_D(QPin);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isLeaf"));
 }
 
 // ---------------------------------------------------------------
@@ -510,6 +518,8 @@ void QPin::setControlType(bool isControlType)
 void QPin::unsetControlType()
 {
     setControlType(false);
+    Q_D(QPin);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isControlType"));
 }
 
 /*!
@@ -528,6 +538,8 @@ void QPin::setOrdering(QtUml::ObjectNodeOrderingKind ordering)
 void QPin::unsetOrdering()
 {
     setOrdering(QtUml::ObjectNodeOrderingFIFO);
+    Q_D(QPin);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("ordering"));
 }
 
 // ---------------------------------------------------------------
@@ -601,11 +613,14 @@ void QPin::setControl(bool isControl)
     if (d->isControl != isControl) {
         d->isControl = isControl;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isControl");
 }
 
 void QPin::unsetControl()
 {
     setControl(false);
+    Q_D(QPin);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isControl"));
 }
 
 void QPin::registerMetaTypes() const
