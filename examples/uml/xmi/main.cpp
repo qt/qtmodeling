@@ -1,14 +1,11 @@
 #include <QtWrappedObjects>
 
-#include <QtUml/QModel>
 #include <QtUml/QPackage>
-#include <QtUml/QPrimitiveType>
-#include <QtUml/QEnumeration>
-#include <QtUml/QEnumerationLiteral>
 #include <QtUml/QClass>
-#include <QtUml/QComponent>
-#include <QtUml/QComponentRealization>
-#include <QtUml/QGeneralization>
+#include <QtUml/QUseCase>
+#include <QtUml/QPort>
+#include <QtUml/QStereotype>
+#include <QtUml/QComment>
 
 #include <QtMof/QXmiWriter>
 using QtMof::QXmiWriter;
@@ -20,40 +17,28 @@ using namespace QtWrappedObjects;
 
 int main ()
 {
-    QWrappedObjectPointer<QModel> model = new QModel;
-    model->setName("MyModel");
-    model->setURI("http://liveblue.wordpress.com");
-
     QWrappedObjectPointer<QPackage> package = new QPackage;
-    package->setName("Package1");
-
-    QWrappedObjectPointer<QPrimitiveType> primitiveType = new QPrimitiveType;
-    primitiveType->setName("String");
-
-    QWrappedObjectPointer<QEnumeration> enumeration = new QEnumeration;
-    enumeration->setName("DirectionKind");
-    QWrappedObjectPointer<QEnumerationLiteral> directionIn = new QEnumerationLiteral;
-    directionIn->setName("DirectionIn");
-    enumeration->addOwnedLiteral(directionIn);
-
-    QWrappedObjectPointer<QClass> class2_ = new QClass;
-    class2_->setName("Person");
-    class2_->setAbstract(true);
+    package->setName("RootPackage");
 
     QWrappedObjectPointer<QClass> class_ = new QClass;
     class_->setName("Student");
-    class_->setAbstract(false);
-
-    QWrappedObjectPointer<QGeneralization> generalization = new QGeneralization;
-    generalization->setGeneral(class2_);
-    class_->addGeneralization(generalization);
-
-    package->addOwnedType(enumeration);
-    package->addOwnedType(class2_);
     package->addOwnedType(class_);
 
-    model->addNestedPackage(package);
-    model->addOwnedType(primitiveType);
+    QWrappedObjectPointer<QUseCase> useCase = new QUseCase;
+    useCase->setName("StudentUseCase1");
+    class_->addOwnedUseCase(useCase);
+
+    QWrappedObjectPointer<QPort> port = new QPort;
+    port->setName("StudentPort");
+    class_->addOwnedAttribute(port);
+
+    QWrappedObjectPointer<QStereotype> stereotype = new QStereotype;
+    stereotype->setName("MyStereotype");
+    package->addPackagedElement(stereotype);
+
+    QWrappedObjectPointer<QComment> comment = new QComment;
+    comment->setBody("Testing comment");
+    stereotype->addOwnedComment(comment);
 
     QFile file("test.xmi");
     if (!file.open(QFile::WriteOnly | QFile::Text)) {
@@ -61,12 +46,12 @@ int main ()
         return 1;
     }
 
-    QXmiWriter writer(model);
+    QXmiWriter writer(package);
     if (writer.writeFile(&file))
         qDebug() << "XMI file saved !";
     else
         qDebug() << "Error when writing XMI file !";
 
-    delete model.data();
+    delete package.data();
 }
 
