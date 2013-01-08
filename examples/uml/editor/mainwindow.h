@@ -41,6 +41,9 @@ private Q_SLOTS:
     void modelInspectorSelectionChanged(const QItemSelection &selected, const QItemSelection &deselected);
     void handleAddMethod();
 
+    void on_actionFileSaveAs_triggered();
+    void on_actionFileSave_triggered();
+
 private:
     Ui::MainWindow *ui;
     QHash< QString, QPair<QObject *, QMetaMethod> > _visitedAddMethods;
@@ -49,8 +52,10 @@ private:
     QWrappedObjectPointer<QModel> _model;
     QWrappedObjectPointer<QModel> _model2;
     WrappedObjectPropertyModel *_propertyModel;
+    QString _currentFileName;
 
     void populateContextMenu(QMenu &menu, QtWrappedObjects::QWrappedObject *element);
+    void saveXmi(QWrappedObject *rootElement);
 };
 
 #endif // MAINWINDOW_H

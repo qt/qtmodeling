@@ -62,13 +62,12 @@ public:
     {
         MetaObjectRole = 0,
         WrappedObjectRole,
-        WasChangedRole,
         AggregationRole,
-        IsDerivedUnionRole,
         OppositeEndRole,
         DocumentationRole,
         RedefinedPropertiesRole,
         SubsettedPropertiesRole,
+        IsDerivedUnionRole,
         UserRole = 0x0100
     };
 

@@ -154,6 +154,12 @@ QVariant QWrappedObject::property(const char *name) const
         return QVariant();
 }
 
+bool QWrappedObject::isPropertyModified(QMetaProperty metaProperty) const
+{
+    Q_D(const QWrappedObject);
+    return d->modifiedResettableProperties.contains(QString::fromLatin1(metaProperty.name()));
+}
+
 void QWrappedObject::registerMetaTypes() const
 {
 }

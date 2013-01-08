@@ -311,6 +311,8 @@ void QArtifact::setVisibility(QtUml::VisibilityKind visibility)
 void QArtifact::unsetVisibility()
 {
     setVisibility(QtUml::VisibilityPublic);
+    Q_D(QArtifact);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("visibility"));
 }
 
 // ---------------------------------------------------------------
@@ -350,6 +352,8 @@ void QArtifact::setLeaf(bool isLeaf)
 void QArtifact::unsetLeaf()
 {
     setLeaf(false);
+    Q_D(QArtifact);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isLeaf"));
 }
 
 // ---------------------------------------------------------------
@@ -414,6 +418,8 @@ void QArtifact::setAbstract(bool isAbstract)
 void QArtifact::unsetAbstract()
 {
     setAbstract(false);
+    Q_D(QArtifact);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isAbstract"));
 }
 
 /*!
@@ -432,6 +438,8 @@ void QArtifact::setFinalSpecialization(bool isFinalSpecialization)
 void QArtifact::unsetFinalSpecialization()
 {
     setFinalSpecialization(false);
+    Q_D(QArtifact);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isFinalSpecialization"));
 }
 
 // ---------------------------------------------------------------

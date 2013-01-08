@@ -109,11 +109,14 @@ void QActivityPartition::setDimension(bool isDimension)
     if (d->isDimension != isDimension) {
         d->isDimension = isDimension;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isDimension");
 }
 
 void QActivityPartition::unsetDimension()
 {
     setDimension(false);
+    Q_D(QActivityPartition);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isDimension"));
 }
 
 /*!
@@ -135,11 +138,14 @@ void QActivityPartition::setExternal(bool isExternal)
     if (d->isExternal != isExternal) {
         d->isExternal = isExternal;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isExternal");
 }
 
 void QActivityPartition::unsetExternal()
 {
     setExternal(false);
+    Q_D(QActivityPartition);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isExternal"));
 }
 
 // ---------------------------------------------------------------

@@ -102,11 +102,14 @@ void QLiteralUnlimitedNatural::setValue(qint32 value)
     if (d->value != value) {
         d->value = value;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("value");
 }
 
 void QLiteralUnlimitedNatural::unsetValue()
 {
     setValue(0);
+    Q_D(QLiteralUnlimitedNatural);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("value"));
 }
 
 /*!

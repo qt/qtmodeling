@@ -44,6 +44,8 @@
 // Base class includes
 #include "private/qobject_p.h"
 
+#include <QtCore/QStringList>
+
 #include "QtWrappedObjects/QWrappedObject"
 
 QT_BEGIN_HEADER
@@ -68,6 +70,7 @@ public:
     QList<QWrappedObject *> wrappedObjects;
     QWrappedObject *wrapper;
     QMetaWrappedObject *metaWrappedObject;
+    QStringList modifiedResettableProperties;
 };
 
 QT_END_NAMESPACE_QTWRAPPEDOBJECTS

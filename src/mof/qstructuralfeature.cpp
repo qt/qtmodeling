@@ -193,6 +193,8 @@ void QStructuralFeature::setLeaf(bool isLeaf)
 void QStructuralFeature::unsetLeaf()
 {
     setLeaf(false);
+    Q_D(QStructuralFeature);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isLeaf"));
 }
 
 // ---------------------------------------------------------------
@@ -235,6 +237,8 @@ void QStructuralFeature::setStatic(bool isStatic)
 void QStructuralFeature::unsetStatic()
 {
     setStatic(false);
+    Q_D(QStructuralFeature);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isStatic"));
 }
 
 // ---------------------------------------------------------------
@@ -286,6 +290,8 @@ void QStructuralFeature::setUpper(qint32 upper)
 void QStructuralFeature::unsetUpper()
 {
     setUpper(1);
+    Q_D(QStructuralFeature);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("upper"));
 }
 
 /*!
@@ -304,6 +310,8 @@ void QStructuralFeature::setUnique(bool isUnique)
 void QStructuralFeature::unsetUnique()
 {
     setUnique(true);
+    Q_D(QStructuralFeature);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isUnique"));
 }
 
 /*!
@@ -322,6 +330,8 @@ void QStructuralFeature::setOrdered(bool isOrdered)
 void QStructuralFeature::unsetOrdered()
 {
     setOrdered(false);
+    Q_D(QStructuralFeature);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isOrdered"));
 }
 
 /*!
@@ -390,11 +400,14 @@ void QStructuralFeature::setReadOnly(bool isReadOnly)
     if (d->isReadOnly != isReadOnly) {
         d->isReadOnly = isReadOnly;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isReadOnly");
 }
 
 void QStructuralFeature::unsetReadOnly()
 {
     setReadOnly(false);
+    Q_D(QStructuralFeature);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isReadOnly"));
 }
 
 void QStructuralFeature::registerMetaTypes() const

@@ -105,11 +105,14 @@ void QJoinNode::setCombineDuplicate(bool isCombineDuplicate)
     if (d->isCombineDuplicate != isCombineDuplicate) {
         d->isCombineDuplicate = isCombineDuplicate;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isCombineDuplicate");
 }
 
 void QJoinNode::unsetCombineDuplicate()
 {
     setCombineDuplicate(true);
+    Q_D(QJoinNode);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isCombineDuplicate"));
 }
 
 // ---------------------------------------------------------------

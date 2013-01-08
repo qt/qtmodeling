@@ -115,6 +115,8 @@ void QMultiplicityElement::setUpper(qint32 upper)
 void QMultiplicityElement::unsetUpper()
 {
     setUpper(1);
+    Q_D(QMultiplicityElement);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("upper"));
 }
 
 /*!
@@ -136,11 +138,14 @@ void QMultiplicityElement::setUnique(bool isUnique)
     if (d->isUnique != isUnique) {
         d->isUnique = isUnique;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isUnique");
 }
 
 void QMultiplicityElement::unsetUnique()
 {
     setUnique(true);
+    Q_D(QMultiplicityElement);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isUnique"));
 }
 
 /*!
@@ -162,11 +167,14 @@ void QMultiplicityElement::setOrdered(bool isOrdered)
     if (d->isOrdered != isOrdered) {
         d->isOrdered = isOrdered;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isOrdered");
 }
 
 void QMultiplicityElement::unsetOrdered()
 {
     setOrdered(false);
+    Q_D(QMultiplicityElement);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isOrdered"));
 }
 
 /*!

@@ -311,6 +311,8 @@ void QBehavioralFeature::setLeaf(bool isLeaf)
 void QBehavioralFeature::unsetLeaf()
 {
     setLeaf(false);
+    Q_D(QBehavioralFeature);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isLeaf"));
 }
 
 // ---------------------------------------------------------------
@@ -353,6 +355,8 @@ void QBehavioralFeature::setStatic(bool isStatic)
 void QBehavioralFeature::unsetStatic()
 {
     setStatic(false);
+    Q_D(QBehavioralFeature);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isStatic"));
 }
 
 // ---------------------------------------------------------------
@@ -390,11 +394,14 @@ void QBehavioralFeature::setConcurrency(QtUml::CallConcurrencyKind concurrency)
     if (d->concurrency != concurrency) {
         d->concurrency = concurrency;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("concurrency");
 }
 
 void QBehavioralFeature::unsetConcurrency()
 {
     setConcurrency(QtUml::CallConcurrencySequential);
+    Q_D(QBehavioralFeature);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("concurrency"));
 }
 
 /*!
@@ -416,11 +423,14 @@ void QBehavioralFeature::setAbstract(bool isAbstract)
     if (d->isAbstract != isAbstract) {
         d->isAbstract = isAbstract;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isAbstract");
 }
 
 void QBehavioralFeature::unsetAbstract()
 {
     setAbstract(false);
+    Q_D(QBehavioralFeature);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isAbstract"));
 }
 
 // ---------------------------------------------------------------

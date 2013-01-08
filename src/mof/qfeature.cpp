@@ -133,11 +133,14 @@ void QFeature::setStatic(bool isStatic)
     if (d->isStatic != isStatic) {
         d->isStatic = isStatic;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isStatic");
 }
 
 void QFeature::unsetStatic()
 {
     setStatic(false);
+    Q_D(QFeature);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isStatic"));
 }
 
 // ---------------------------------------------------------------

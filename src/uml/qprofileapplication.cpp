@@ -107,11 +107,14 @@ void QProfileApplication::setStrict(bool isStrict)
     if (d->isStrict != isStrict) {
         d->isStrict = isStrict;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isStrict");
 }
 
 void QProfileApplication::unsetStrict()
 {
     setStrict(false);
+    Q_D(QProfileApplication);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isStrict"));
 }
 
 // ---------------------------------------------------------------

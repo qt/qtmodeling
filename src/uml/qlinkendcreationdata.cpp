@@ -105,11 +105,14 @@ void QLinkEndCreationData::setReplaceAll(bool isReplaceAll)
     if (d->isReplaceAll != isReplaceAll) {
         d->isReplaceAll = isReplaceAll;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isReplaceAll");
 }
 
 void QLinkEndCreationData::unsetReplaceAll()
 {
     setReplaceAll(false);
+    Q_D(QLinkEndCreationData);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isReplaceAll"));
 }
 
 // ---------------------------------------------------------------

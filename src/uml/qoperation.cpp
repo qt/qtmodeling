@@ -355,6 +355,8 @@ void QOperation::setLeaf(bool isLeaf)
 void QOperation::unsetLeaf()
 {
     setLeaf(false);
+    Q_D(QOperation);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isLeaf"));
 }
 
 // ---------------------------------------------------------------
@@ -397,6 +399,8 @@ void QOperation::setStatic(bool isStatic)
 void QOperation::unsetStatic()
 {
     setStatic(false);
+    Q_D(QOperation);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isStatic"));
 }
 
 // ---------------------------------------------------------------
@@ -431,6 +435,8 @@ void QOperation::setConcurrency(QtUml::CallConcurrencyKind concurrency)
 void QOperation::unsetConcurrency()
 {
     setConcurrency(QtUml::CallConcurrencySequential);
+    Q_D(QOperation);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("concurrency"));
 }
 
 /*!
@@ -449,6 +455,8 @@ void QOperation::setAbstract(bool isAbstract)
 void QOperation::unsetAbstract()
 {
     setAbstract(false);
+    Q_D(QOperation);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isAbstract"));
 }
 
 // ---------------------------------------------------------------
@@ -543,11 +551,14 @@ void QOperation::setQuery(bool isQuery)
     if (d->isQuery != isQuery) {
         d->isQuery = isQuery;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isQuery");
 }
 
 void QOperation::unsetQuery()
 {
     setQuery(false);
+    Q_D(QOperation);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isQuery"));
 }
 
 /*!

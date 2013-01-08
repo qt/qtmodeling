@@ -261,6 +261,8 @@ void QProperty::setUpper(qint32 upper)
 void QProperty::unsetUpper()
 {
     setUpper(1);
+    Q_D(QProperty);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("upper"));
 }
 
 /*!
@@ -279,6 +281,8 @@ void QProperty::setUnique(bool isUnique)
 void QProperty::unsetUnique()
 {
     setUnique(true);
+    Q_D(QProperty);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isUnique"));
 }
 
 /*!
@@ -297,6 +301,8 @@ void QProperty::setOrdered(bool isOrdered)
 void QProperty::unsetOrdered()
 {
     setOrdered(false);
+    Q_D(QProperty);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isOrdered"));
 }
 
 /*!
@@ -362,6 +368,8 @@ void QProperty::setLeaf(bool isLeaf)
 void QProperty::unsetLeaf()
 {
     setLeaf(false);
+    Q_D(QProperty);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isLeaf"));
 }
 
 // ---------------------------------------------------------------
@@ -404,6 +412,8 @@ void QProperty::setStatic(bool isStatic)
 void QProperty::unsetStatic()
 {
     setStatic(false);
+    Q_D(QProperty);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isStatic"));
 }
 
 // ---------------------------------------------------------------
@@ -513,11 +523,14 @@ void QProperty::setDerived(bool isDerived)
     if (d->isDerived != isDerived) {
         d->isDerived = isDerived;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isDerived");
 }
 
 void QProperty::unsetDerived()
 {
     setDerived(false);
+    Q_D(QProperty);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isDerived"));
 }
 
 /*!
@@ -571,6 +584,8 @@ void QProperty::setComposite(bool isComposite)
 void QProperty::unsetComposite()
 {
     setComposite(false);
+    Q_D(QProperty);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isComposite"));
 }
 
 /*!
@@ -592,11 +607,14 @@ void QProperty::setReadOnly(bool isReadOnly)
     if (d->isReadOnly != isReadOnly) {
         d->isReadOnly = isReadOnly;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isReadOnly");
 }
 
 void QProperty::unsetReadOnly()
 {
     setReadOnly(false);
+    Q_D(QProperty);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isReadOnly"));
 }
 
 /*!
@@ -618,11 +636,14 @@ void QProperty::setID(bool isID)
     if (d->isID != isID) {
         d->isID = isID;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isID");
 }
 
 void QProperty::unsetID()
 {
     setID(false);
+    Q_D(QProperty);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isID"));
 }
 
 /*!
@@ -644,11 +665,14 @@ void QProperty::setDerivedUnion(bool isDerivedUnion)
     if (d->isDerivedUnion != isDerivedUnion) {
         d->isDerivedUnion = isDerivedUnion;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isDerivedUnion");
 }
 
 void QProperty::unsetDerivedUnion()
 {
     setDerivedUnion(false);
+    Q_D(QProperty);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isDerivedUnion"));
 }
 
 /*!
@@ -670,11 +694,14 @@ void QProperty::setAggregation(QtUml::AggregationKind aggregation)
     if (d->aggregation != aggregation) {
         d->aggregation = aggregation;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("aggregation");
 }
 
 void QProperty::unsetAggregation()
 {
     setAggregation(QtUml::AggregationNone);
+    Q_D(QProperty);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("aggregation"));
 }
 
 // ---------------------------------------------------------------

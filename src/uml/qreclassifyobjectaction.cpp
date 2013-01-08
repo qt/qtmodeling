@@ -106,11 +106,14 @@ void QReclassifyObjectAction::setReplaceAll(bool isReplaceAll)
     if (d->isReplaceAll != isReplaceAll) {
         d->isReplaceAll = isReplaceAll;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isReplaceAll");
 }
 
 void QReclassifyObjectAction::unsetReplaceAll()
 {
     setReplaceAll(false);
+    Q_D(QReclassifyObjectAction);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isReplaceAll"));
 }
 
 // ---------------------------------------------------------------

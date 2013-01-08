@@ -108,11 +108,14 @@ void QPort::setConjugated(bool isConjugated)
     if (d->isConjugated != isConjugated) {
         d->isConjugated = isConjugated;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isConjugated");
 }
 
 void QPort::unsetConjugated()
 {
     setConjugated(false);
+    Q_D(QPort);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isConjugated"));
 }
 
 /*!
@@ -134,11 +137,14 @@ void QPort::setBehavior(bool isBehavior)
     if (d->isBehavior != isBehavior) {
         d->isBehavior = isBehavior;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isBehavior");
 }
 
 void QPort::unsetBehavior()
 {
     setBehavior(false);
+    Q_D(QPort);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isBehavior"));
 }
 
 /*!
@@ -160,11 +166,14 @@ void QPort::setService(bool isService)
     if (d->isService != isService) {
         d->isService = isService;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isService");
 }
 
 void QPort::unsetService()
 {
     setService(true);
+    Q_D(QPort);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isService"));
 }
 
 // ---------------------------------------------------------------

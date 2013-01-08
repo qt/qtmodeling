@@ -106,11 +106,14 @@ void QConditionalNode::setAssured(bool isAssured)
     if (d->isAssured != isAssured) {
         d->isAssured = isAssured;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isAssured");
 }
 
 void QConditionalNode::unsetAssured()
 {
     setAssured(false);
+    Q_D(QConditionalNode);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isAssured"));
 }
 
 /*!
@@ -132,11 +135,14 @@ void QConditionalNode::setDeterminate(bool isDeterminate)
     if (d->isDeterminate != isDeterminate) {
         d->isDeterminate = isDeterminate;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isDeterminate");
 }
 
 void QConditionalNode::unsetDeterminate()
 {
     setDeterminate(false);
+    Q_D(QConditionalNode);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isDeterminate"));
 }
 
 // ---------------------------------------------------------------

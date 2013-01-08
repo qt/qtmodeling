@@ -320,6 +320,8 @@ void QState::setLeaf(bool isLeaf)
 void QState::unsetLeaf()
 {
     setLeaf(false);
+    Q_D(QState);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isLeaf"));
 }
 
 // ---------------------------------------------------------------

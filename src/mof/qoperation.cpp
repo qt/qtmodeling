@@ -124,11 +124,14 @@ void QOperation::setQuery(bool isQuery)
     if (d->isQuery != isQuery) {
         d->isQuery = isQuery;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isQuery");
 }
 
 void QOperation::unsetQuery()
 {
     setQuery(false);
+    Q_D(QOperation);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isQuery"));
 }
 
 /*!

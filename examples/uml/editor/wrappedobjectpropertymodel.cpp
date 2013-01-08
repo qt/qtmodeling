@@ -141,7 +141,7 @@ QVariant WrappedObjectPropertyModel::data(const QModelIndex &index, int role) co
             QFont font;
             QMetaPropertyInfo *metaPropertyInfo = static_cast<QMetaPropertyInfo *>(index.internalPointer());
             if (metaPropertyInfo && index.column() == 0 && metaPropertyInfo->metaProperty.isResettable())
-                font.setBold(metaPropertyInfo->wasChanged);
+                font.setBold(metaPropertyInfo->propertyWrappedObject->isPropertyModified(metaPropertyInfo->metaProperty));
             if (metaPropertyInfo && index.column() == 0)
                 font.setItalic(QWrappedObject::propertyData(QString::fromLatin1(metaPropertyInfo->propertyMetaObject->className()), metaPropertyInfo->metaProperty, QtWrappedObjects::QtWrappedObjects::AggregationRole).toString() == "composite");
             return font;
@@ -203,10 +203,8 @@ bool WrappedObjectPropertyModel::setData(const QModelIndex &index, const QVarian
             }
             if (QString::fromLatin1(metaProperty.name()) == "name")
                 emit dataChanged(index, index);
-            if (metaProperty.read(propertyWrappedObject) != value) {
-                metaPropertyInfo->wasChanged = true;
+            if (metaProperty.read(propertyWrappedObject) != value)
                 metaProperty.write(propertyWrappedObject, value);
-            }
             return true;
         }
     }

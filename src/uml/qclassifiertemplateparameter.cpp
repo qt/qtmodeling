@@ -105,11 +105,14 @@ void QClassifierTemplateParameter::setAllowSubstitutable(bool allowSubstitutable
     if (d->allowSubstitutable != allowSubstitutable) {
         d->allowSubstitutable = allowSubstitutable;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("allowSubstitutable");
 }
 
 void QClassifierTemplateParameter::unsetAllowSubstitutable()
 {
     setAllowSubstitutable(true);
+    Q_D(QClassifierTemplateParameter);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("allowSubstitutable"));
 }
 
 // ---------------------------------------------------------------

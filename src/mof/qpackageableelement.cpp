@@ -102,11 +102,14 @@ void QPackageableElement::setVisibility(QtMof::VisibilityKind visibility)
     if (d->visibility != visibility) {
         d->visibility = visibility;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("visibility");
 }
 
 void QPackageableElement::unsetVisibility()
 {
     setVisibility(QtMof::VisibilityPublic);
+    Q_D(QPackageableElement);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("visibility"));
 }
 
 void QPackageableElement::registerMetaTypes() const

@@ -105,11 +105,14 @@ void QRemoveVariableValueAction::setRemoveDuplicates(bool isRemoveDuplicates)
     if (d->isRemoveDuplicates != isRemoveDuplicates) {
         d->isRemoveDuplicates = isRemoveDuplicates;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isRemoveDuplicates");
 }
 
 void QRemoveVariableValueAction::unsetRemoveDuplicates()
 {
     setRemoveDuplicates(false);
+    Q_D(QRemoveVariableValueAction);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isRemoveDuplicates"));
 }
 
 // ---------------------------------------------------------------

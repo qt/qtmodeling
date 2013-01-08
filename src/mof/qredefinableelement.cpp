@@ -140,11 +140,14 @@ void QRedefinableElement::setLeaf(bool isLeaf)
     if (d->isLeaf != isLeaf) {
         d->isLeaf = isLeaf;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isLeaf");
 }
 
 void QRedefinableElement::unsetLeaf()
 {
     setLeaf(false);
+    Q_D(QRedefinableElement);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isLeaf"));
 }
 
 // ---------------------------------------------------------------

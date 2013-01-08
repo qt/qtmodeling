@@ -146,6 +146,8 @@ void QVariable::setUpper(qint32 upper)
 void QVariable::unsetUpper()
 {
     setUpper(1);
+    Q_D(QVariable);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("upper"));
 }
 
 /*!
@@ -164,6 +166,8 @@ void QVariable::setUnique(bool isUnique)
 void QVariable::unsetUnique()
 {
     setUnique(true);
+    Q_D(QVariable);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isUnique"));
 }
 
 /*!
@@ -182,6 +186,8 @@ void QVariable::setOrdered(bool isOrdered)
 void QVariable::unsetOrdered()
 {
     setOrdered(false);
+    Q_D(QVariable);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isOrdered"));
 }
 
 /*!

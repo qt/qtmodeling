@@ -155,11 +155,14 @@ void QAction::setLocallyReentrant(bool isLocallyReentrant)
     if (d->isLocallyReentrant != isLocallyReentrant) {
         d->isLocallyReentrant = isLocallyReentrant;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isLocallyReentrant");
 }
 
 void QAction::unsetLocallyReentrant()
 {
     setLocallyReentrant(false);
+    Q_D(QAction);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isLocallyReentrant"));
 }
 
 // ---------------------------------------------------------------

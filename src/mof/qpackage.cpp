@@ -264,6 +264,8 @@ void QPackage::setVisibility(QtMof::VisibilityKind visibility)
 void QPackage::unsetVisibility()
 {
     setVisibility(QtMof::VisibilityPublic);
+    Q_D(QPackage);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("visibility"));
 }
 
 // ---------------------------------------------------------------

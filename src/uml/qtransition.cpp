@@ -238,6 +238,8 @@ void QTransition::setLeaf(bool isLeaf)
 void QTransition::unsetLeaf()
 {
     setLeaf(false);
+    Q_D(QTransition);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isLeaf"));
 }
 
 // ---------------------------------------------------------------
@@ -357,11 +359,14 @@ void QTransition::setKind(QtUml::TransitionKind kind)
     if (d->kind != kind) {
         d->kind = kind;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("kind");
 }
 
 void QTransition::unsetKind()
 {
     setKind(QtUml::TransitionExternal);
+    Q_D(QTransition);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("kind"));
 }
 
 // ---------------------------------------------------------------

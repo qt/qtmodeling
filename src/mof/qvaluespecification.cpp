@@ -177,6 +177,8 @@ void QValueSpecification::setVisibility(QtMof::VisibilityKind visibility)
 void QValueSpecification::unsetVisibility()
 {
     setVisibility(QtMof::VisibilityPublic);
+    Q_D(QValueSpecification);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("visibility"));
 }
 
 // ---------------------------------------------------------------

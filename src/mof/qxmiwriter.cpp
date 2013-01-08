@@ -100,29 +100,40 @@ bool QXmiWriter::writeFile(QIODevice *device)
 void QXmiWriter::populateIdMap(QWrappedObject *wrappedObject, int index)
 {
     Q_D(QXmiWriter);
+
     if (wrappedObject->metaWrappedObject()->indexOfProperty("name") != -1)
         d->idStack << wrappedObject->property("name").toString();
     else
-        d->idStack << QString::fromLatin1(wrappedObject->metaObject()->className()).remove(QRegularExpression(QString::fromLatin1("^Q"))) + QString::fromLatin1((index != -1) ? ".%1":"").arg(index);
-    QString id = d->idStack.join(QString::fromLatin1("-"));
-    d->idMap.insert(wrappedObject, id);
+        d->idStack << QString::fromLatin1(wrappedObject->metaObject()->className()).remove(QRegularExpression(QString::fromLatin1("^Q"))) +
+                      QString::fromLatin1((index != -1) ? ".%1":"").arg(index);
+    d->idMap.insert(wrappedObject, d->idStack.join(QString::fromLatin1("-")));
+
     wrappedObject->registerMetaTypes();
 
     const QMetaWrappedObject *metaWrappedObject = wrappedObject->metaWrappedObject();
     int propertyCount = metaWrappedObject->propertyCount();
+
     for (int i = 0; i < propertyCount; ++i) {
         QMetaPropertyInfo metaPropertyInfo = metaWrappedObject->property(i);
         QMetaProperty metaProperty = metaPropertyInfo.metaProperty;
         QWrappedObject *propertyWrappedObject = metaPropertyInfo.propertyWrappedObject;
         QString typeName = QString::fromLatin1(metaProperty.typeName());
         QVariant variant = metaProperty.read(propertyWrappedObject);
-        QString aggregationRole = wrappedObject->propertyData(QString::fromLatin1(metaPropertyInfo.propertyMetaObject->className()), metaProperty, QtWrappedObjects::QtWrappedObjects::AggregationRole).toString();
+        QString aggregationRole = wrappedObject->propertyData(QString::fromLatin1(metaPropertyInfo.propertyMetaObject->className()),
+                                                              metaProperty,
+                                                              QtWrappedObjects::QtWrappedObjects::AggregationRole).toString();
 
         if (aggregationRole == QString::fromLatin1("composite"))
-            if (!wrappedObject->propertyData(QString::fromLatin1(metaPropertyInfo.propertyMetaObject->className()), metaProperty, QtWrappedObjects::QtWrappedObjects::OppositeEndRole).toString().isEmpty())
-                d->blacklistedOppositeEnds << wrappedObject->propertyData(QString::fromLatin1(metaPropertyInfo.propertyMetaObject->className()), metaProperty, QtWrappedObjects::QtWrappedObjects::OppositeEndRole).toString();
+            if (!wrappedObject->propertyData(QString::fromLatin1(metaPropertyInfo.propertyMetaObject->className()),
+                                             metaProperty,
+                                             QtWrappedObjects::QtWrappedObjects::OppositeEndRole).toString().isEmpty())
+                d->blacklistedOppositeEnds << wrappedObject->propertyData(QString::fromLatin1(metaPropertyInfo.propertyMetaObject->className()),
+                                                                          metaProperty,
+                                                                          QtWrappedObjects::QtWrappedObjects::OppositeEndRole).toString();
 
-        if (wrappedObject->propertyData(QString::fromLatin1(metaPropertyInfo.propertyMetaObject->className()), metaProperty, QtWrappedObjects::QtWrappedObjects::AggregationRole).toString() != QString::fromLatin1("composite"))
+        if (wrappedObject->propertyData(QString::fromLatin1(metaPropertyInfo.propertyMetaObject->className()),
+                                        metaProperty,
+                                        QtWrappedObjects::QtWrappedObjects::AggregationRole).toString() != QString::fromLatin1("composite"))
             continue;
 
         if (typeName.endsWith('*') && qvariant_cast<QWrappedObject *>(variant))
@@ -154,35 +165,44 @@ void QXmiWriter::writeWrappedObject(QWrappedObject *wrappedObject, QString eleme
     d->visitedObjects.append(wrappedObject);
     wrappedObject->registerMetaTypes();
 
-    const QMetaWrappedObject *metaWrappedObject = wrappedObject->metaWrappedObject();
-    d->writer.writeStartElement(elementName.isEmpty() ? QString::fromLatin1(d->wrappedObject->metaObject()->className()).remove(QRegularExpression(QString::fromLatin1("^Q"))).prepend(QString::fromLatin1("uml:")):elementName);
+    d->writer.writeStartElement(elementName.isEmpty() ? QString::fromLatin1(d->wrappedObject->metaObject()->className()).remove(QRegularExpression(QString::fromLatin1("^Q"))).prepend(QString::fromLatin1("uml:"))
+                                                      :
+                                                        elementName);
     if (!elementName.isEmpty())
         d->writer.writeAttribute(QString::fromLatin1("xmi:type"), QString::fromLatin1(wrappedObject->metaObject()->className()).remove(QRegularExpression(QString::fromLatin1("^Q"))).prepend(QString::fromLatin1("uml:")));
+
+    const QMetaWrappedObject *metaWrappedObject = wrappedObject->metaWrappedObject();
     int propertyCount = metaWrappedObject->propertyCount();
+
     for (int i = propertyCount - 1; i >= 0; --i) {
         QMetaPropertyInfo metaPropertyInfo = metaWrappedObject->property(i);
         QMetaProperty metaProperty = metaPropertyInfo.metaProperty;
         QWrappedObject *propertyWrappedObject = metaPropertyInfo.propertyWrappedObject;
-        QString typeName = QString::fromLatin1(metaProperty.typeName());
         QVariant variant = metaProperty.read(propertyWrappedObject);
-        if (!metaProperty.isStored() || QWrappedObject::propertyData(QString::fromLatin1(metaPropertyInfo.propertyMetaObject->className()), metaProperty, QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole).toBool())
+
+        if (!metaProperty.isStored() || QWrappedObject::propertyData(QString::fromLatin1(metaPropertyInfo.propertyMetaObject->className()),
+                                                                     metaProperty,
+                                                                     QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole).toBool())
             continue;
+
         if (metaProperty.type() == QVariant::String) {
             QString value = variant.toString();
             if (!value.isEmpty())
                 d->writer.writeAttribute(QString::fromLatin1(metaProperty.name()), value);
         }
         else if (metaProperty.type() == QVariant::Bool) {
-//            if (!metaProperty.isResettable() || (metaProperty.isResettable() && metaPropertyInfo.wasChanged))
+            if (!metaProperty.isResettable() || (metaProperty.isResettable() && propertyWrappedObject->isPropertyModified(metaProperty)))
                 d->writer.writeAttribute(QString::fromLatin1(metaProperty.name()), QString::fromLatin1(variant.toBool() ? "true":"false"));
         }
         else if (metaProperty.isEnumType()) {
-//            if (!metaProperty.isResettable() || (metaProperty.isResettable() && metaPropertyInfo.wasChanged)) {
+            if (!metaProperty.isResettable() || (metaProperty.isResettable() && propertyWrappedObject->isPropertyModified(metaProperty))) {
                 QMetaEnum metaEnum = metaProperty.enumerator();
-                d->writer.writeAttribute(QString::fromLatin1(metaProperty.name()), QString::fromLatin1(metaEnum.key(variant.toInt())).toLower().remove(QString::fromLatin1(metaProperty.name())));
-//            }
+                if (!QString::fromLatin1(metaEnum.key(variant.toInt())).isEmpty())
+                    d->writer.writeAttribute(QString::fromLatin1(metaProperty.name()), QString::fromLatin1(metaEnum.key(variant.toInt())).toLower().remove(QString::fromLatin1(metaProperty.name())));
+            }
         }
     }
+
     d->writer.writeAttribute(QString::fromLatin1("xmi:id"), d->idMap.value(wrappedObject));
     for (int i = propertyCount - 1; i >= 0; --i) {
         QMetaPropertyInfo metaPropertyInfo = metaWrappedObject->property(i);
@@ -194,10 +214,14 @@ void QXmiWriter::writeWrappedObject(QWrappedObject *wrappedObject, QString eleme
         QWrappedObject *propertyWrappedObject = metaPropertyInfo.propertyWrappedObject;
         QString typeName = QString::fromLatin1(metaProperty.typeName());
         QVariant variant = metaProperty.read(propertyWrappedObject);
-        QString aggregationRole = wrappedObject->propertyData(QString::fromLatin1(metaPropertyInfo.propertyMetaObject->className()), metaProperty, QtWrappedObjects::QtWrappedObjects::AggregationRole).toString();
+        QString aggregationRole = wrappedObject->propertyData(QString::fromLatin1(metaPropertyInfo.propertyMetaObject->className()),
+                                                              metaProperty,
+                                                              QtWrappedObjects::QtWrappedObjects::AggregationRole).toString();
         QString modifiedPropertyName = QString::fromLatin1(metaProperty.name()).remove(QRegularExpression(QString::fromLatin1("_$"))).remove(QRegularExpression(QString::fromLatin1("s$"))).replace(QRegularExpression(QString::fromLatin1("ie$")), QString::fromLatin1("y")).replace(QRegularExpression(QString::fromLatin1("sse$")), QString::fromLatin1("ss")).replace(QRegularExpression(QString::fromLatin1("ice$")), QString::fromLatin1("ex")).replace(QRegularExpression(QString::fromLatin1("ce$")), QString::fromLatin1("x"));
+
         if (!metaProperty.isStored() || QWrappedObject::propertyData(QString::fromLatin1(metaPropertyInfo.propertyMetaObject->className()), metaProperty, QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole).toBool())
             continue;
+
         if (typeName.endsWith('*') && qvariant_cast<QWrappedObject *>(variant)) {
             if (aggregationRole == QString::fromLatin1("composite")) {
                 writeWrappedObject(qTopLevelWrapper(qvariant_cast<QWrappedObject *>(variant)), modifiedPropertyName);
@@ -237,6 +261,7 @@ void QXmiWriter::writeWrappedObject(QWrappedObject *wrappedObject, QString eleme
             }
         }
     }
+
     d->writer.writeEndElement();
 }
 

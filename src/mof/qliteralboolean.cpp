@@ -102,11 +102,14 @@ void QLiteralBoolean::setValue(bool value)
     if (d->value != value) {
         d->value = value;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("value");
 }
 
 void QLiteralBoolean::unsetValue()
 {
     setValue(false);
+    Q_D(QLiteralBoolean);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("value"));
 }
 
 /*!

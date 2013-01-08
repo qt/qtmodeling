@@ -105,11 +105,14 @@ void QAddVariableValueAction::setReplaceAll(bool isReplaceAll)
     if (d->isReplaceAll != isReplaceAll) {
         d->isReplaceAll = isReplaceAll;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isReplaceAll");
 }
 
 void QAddVariableValueAction::unsetReplaceAll()
 {
     setReplaceAll(false);
+    Q_D(QAddVariableValueAction);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isReplaceAll"));
 }
 
 // ---------------------------------------------------------------

@@ -109,11 +109,14 @@ void QReadIsClassifiedObjectAction::setDirect(bool isDirect)
     if (d->isDirect != isDirect) {
         d->isDirect = isDirect;
     }
+    d->modifiedResettableProperties << QString::fromLatin1("isDirect");
 }
 
 void QReadIsClassifiedObjectAction::unsetDirect()
 {
     setDirect(false);
+    Q_D(QReadIsClassifiedObjectAction);
+    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isDirect"));
 }
 
 // ---------------------------------------------------------------
