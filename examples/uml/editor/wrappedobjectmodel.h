@@ -16,6 +16,7 @@ public:
     explicit WrappedObjectModel(QObject *parent = 0);
 
     void setWrappedObject(QWrappedObject *wrappedObject);
+    QWrappedObject *wrappedObject() const;
 
     virtual QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const;
     virtual QModelIndex parent(const QModelIndex &child) const;

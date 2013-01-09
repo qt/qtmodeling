@@ -21,23 +21,14 @@
 #include <QtWrappedObjects/QMetaWrappedObject>
 
 #include <QtMof/QXmiWriter>
-
-#include <QtUml/QModel>
-#include <QtUml/QGeneralization>
-#include <QtUml/QElementImport>
-#include <QtUml/QPrimitiveType>
-#include <QtUml/QEnumeration>
-#include <QtUml/QEnumerationLiteral>
-#include <QtUml/QClass>
-#include <QtUml/QProperty>
-#include <QtUml/QComment>
+#include <QtMof/QXmiReader>
+#include <QtMof/QtMofMetaModel>
 
 #include "wrappedobjectmodel.h"
 #include "propertyeditoritemdelegate.h"
 #include "wrappedobjectpropertymodel.h"
 #include "wrappedobjectpropertyfiltermodel.h"
 
-using namespace QtUml;
 using namespace QtMof;
 using namespace QtWrappedObjects;
 
@@ -64,6 +55,8 @@ MainWindow::MainWindow(QWidget *parent) :
     PropertyEditorItemDelegate *delegate = new PropertyEditorItemDelegate(ui->propertyEditor);
     ui->propertyEditor->setItemDelegateForColumn(1, delegate);
 
+    QtMofMetaModel::init();
+
     _propertyModel = new WrappedObjectPropertyModel(this);
     WrappedObjectPropertyFilterModel *proxyModel = new WrappedObjectPropertyFilterModel(this);
     proxyModel->setFilterCaseSensitivity(Qt::CaseInsensitive);
@@ -78,78 +71,20 @@ MainWindow::MainWindow(QWidget *parent) :
     });
     ui->propertyEditor->setModel(proxyModel);
 
-    WrappedObjectModel *wrappedObjectModel = new WrappedObjectModel(this);
-    ui->modelInspector->setModel(wrappedObjectModel);
-
-    _model = new QModel;
-    _model->setName("MyModel");
-
-    QWrappedObjectPointer<QPackage> package = new QPackage;
-    package->setName("Package1");
-
-    QWrappedObjectPointer<QPrimitiveType> primitiveType = new QPrimitiveType;
-    primitiveType->setName("String");
-
-    QWrappedObjectPointer<QEnumeration> enumeration = new QEnumeration;
-    enumeration->setName("DirectionKind");
-    QWrappedObjectPointer<QEnumerationLiteral> directionIn = new QEnumerationLiteral;
-    directionIn->setName("DirectionIn");
-    enumeration->addOwnedLiteral(directionIn);
-
-    QWrappedObjectPointer<QClass> class_ = new QClass;
-    class_->setName("Student");
-    class_->setAbstract(false);
-    class_->setVisibility(QtUml::QtUml::VisibilityPackage);
-
-    QWrappedObjectPointer<QProperty> property = new QProperty;
-    property->setName("name");
-    property->setType(primitiveType);
-    class_->addOwnedAttribute(property);
-
-    QWrappedObjectPointer<QClass> class2_ = new QClass;
-    class2_->setName("InterStudent");
-
-    QWrappedObjectPointer<QGeneralization> generalization = new QGeneralization;
-    generalization->setObjectName("generalization");
-    generalization->setGeneral(class_);
-    class2_->addGeneralization(generalization);
-
-    _model2 = new QModel;
-    _model2->setName("Model2");
-    QWrappedObjectPointer<QClass> class3_ = new QClass;
-    class3_->setName("Professor");
-    _model2->addOwnedType(class3_);
-
-    QWrappedObjectPointer<QElementImport> elementImport = new QElementImport;
-    elementImport->setObjectName("ElementImport1");
-    elementImport->setImportedElement(class3_);
-
-    package->addOwnedType(enumeration);
-    package->addOwnedType(class_);
-    package->addOwnedType(class2_);
-
-    _model->addNestedPackage(package);
-    _model->addOwnedType(primitiveType);
-    _model->addElementImport(elementImport);
-
-    wrappedObjectModel->setWrappedObject(_model);
-    ui->modelInspector->expandAll();
-    ui->modelInspector->resizeColumnToContents(0);
-    ui->modelInspector->resizeColumnToContents(1);
+    _wrappedObjectModel = new WrappedObjectModel(this);
+    ui->modelInspector->setModel(_wrappedObjectModel);
 
     connect(ui->modelInspector->selectionModel(), &QItemSelectionModel::selectionChanged, this, &MainWindow::modelInspectorSelectionChanged);
-    ui->modelInspector->setCurrentIndex(wrappedObjectModel->index(0, 0));
+    ui->modelInspector->setCurrentIndex(_wrappedObjectModel->index(0, 0));
 
     connect(_propertyModel, &WrappedObjectModel::dataChanged, [=](){
-        wrappedObjectModel->updateIndex(ui->modelInspector->selectionModel()->selectedIndexes().first());
+        _wrappedObjectModel->updateIndex(ui->modelInspector->selectionModel()->selectedIndexes().first());
     });
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
-    delete _model.data();
-    delete _model2.data();
 }
 
 void MainWindow::contextMenuEvent(QContextMenuEvent *event)
@@ -212,6 +147,18 @@ void MainWindow::saveXmi(QWrappedObject *rootElement)
         statusBar()->showMessage("XMI file successfully saved !", 3000);
 }
 
+QWrappedObject *MainWindow::loadXmi()
+{
+    QFile file(_currentFileName);
+    if (!file.open(QFile::ReadOnly | QFile::Text)) {
+        QMessageBox::critical(this, tr("Open"), tr("Cannot read file !"));
+        return 0;
+    }
+
+    QXmiReader reader;
+    return reader.readFile(&file);
+}
+
 void MainWindow::modelInspectorSelectionChanged(const QItemSelection &selected, const QItemSelection &deselected)
 {
     Q_UNUSED(deselected);
@@ -240,7 +187,7 @@ void MainWindow::handleAddMethod()
                 QObject *addedElement = metaObject->newInstance();
                 if (addedElement) {
                     addedElement->setObjectName(QString("Unamed %1").arg(elementType.remove("*")));
-                    if (!metaMethod.invoke(element, Q_ARG(QObject *, addedElement)))
+                    if (!metaMethod.invoke(element, ::Q_ARG(QObject *, addedElement)))
                         statusBar()->showMessage("Error when invoking metaMethod !", 6000);
                     else
                         statusBar()->showMessage("MetaMethod successfully executed !", 3000);
@@ -252,12 +199,26 @@ void MainWindow::handleAddMethod()
     wrappedObjectModel->updateIndex(QModelIndex());
 }
 
+void MainWindow::on_actionFileOpen_triggered()
+{
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Open"), QDir::currentPath(), "XMI files (*.xmi)");
+    if (!fileName.isEmpty()) {
+        _currentFileName = fileName;
+        delete _wrappedObjectModel->wrappedObject();
+        _wrappedObjectModel->setWrappedObject(loadXmi());
+        ui->modelInspector->expandAll();
+        ui->modelInspector->resizeColumnToContents(0);
+        ui->modelInspector->resizeColumnToContents(1);
+        ui->modelInspector->setCurrentIndex(_wrappedObjectModel->index(0, 0));
+    }
+}
+
 void MainWindow::on_actionFileSaveAs_triggered()
 {
     QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"), QDir::currentPath(), "XMI files (*.xmi)");
     if (!fileName.isEmpty()) {
         _currentFileName = fileName;
-        saveXmi(_model);
+        saveXmi(_wrappedObjectModel->wrappedObject());
     }
 }
 
@@ -266,5 +227,5 @@ void MainWindow::on_actionFileSave_triggered()
     if (_currentFileName.isEmpty())
         on_actionFileSaveAs_triggered();
     else
-        saveXmi(_model);
+        saveXmi(_wrappedObjectModel->wrappedObject());
 }
