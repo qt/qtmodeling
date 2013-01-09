@@ -38,8 +38,8 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QTUMLENUMERATIONS_H
-#define QTUMLENUMERATIONS_H
+#ifndef QTUMLNAMESPACE_H
+#define QTUMLNAMESPACE_H
 
 #include <QtUml/QtUmlGlobal>
 
@@ -179,5 +179,5 @@ QT_END_NAMESPACE_QTUML
 
 QT_END_HEADER
 
-#endif // QTUMLENUMERATIONS_H
+#endif // QTUMLNAMESPACE_H
 

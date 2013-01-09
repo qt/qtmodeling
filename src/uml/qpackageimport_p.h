@@ -47,7 +47,7 @@
 #include "QtUml/QPackageImport"
 
 // QtUml includes
-#include "QtUml/QtUmlEnumerations"
+#include "QtUml/QtUmlNamespace"
 
 QT_BEGIN_HEADER
 

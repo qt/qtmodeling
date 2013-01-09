@@ -45,7 +45,7 @@
 #include <QtUml/QElementImport>
 #include <QtUml/QPackageImport>
 
-#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+#include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
 QT_BEGIN_NAMESPACE_QTUML
 

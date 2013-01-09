@@ -3,9 +3,9 @@
 ** Copyright (C) 2012 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/
 **
-** This file is part of the [% namespace.split('/').0 %] module of the Qt Toolkit.
+** This file is part of the QtWrappedObjects module of the Qt Toolkit.
 **
-** [% GET '$QT_BEGIN_LICENSE:LGPL$' %]
+** $QT_BEGIN_LICENSE:LGPL$
 ** GNU Lesser General Public License Usage
 ** This file may be used under the terms of the GNU Lesser General Public
 ** License version 2.1 as published by the Free Software Foundation and
@@ -35,45 +35,49 @@
 **
 **
 **
-** [% GET '$QT_END_LICENSE$' %]
+** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef ${namespace.split('/').0.upper}ENUMERATIONS_H
-#define ${namespace.split('/').0.upper}ENUMERATIONS_H
+#ifndef QTWRAPPEDOBJECTSNAMESPACE_H
+#define QTWRAPPEDOBJECTSNAMESPACE_H
 
-#include <[% namespace.split('/').0 %]/[% namespace.split('/').0 %]Global>
+#include <QtWrappedObjects/QtWrappedObjectsGlobal>
 
 #include <QtCore/QObject>
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_${namespace.replace('/', '_').upper}
+QT_BEGIN_NAMESPACE_QTWRAPPEDOBJECTS
 
-QT_MODULE([% namespace.split('/').0 %])
+QT_MODULE(QtWrappedObjects)
 
-class Q_[% namespace.split('/').0.substr(2).upper %]_EXPORT ${namespace.split('::').0} : public QObject
+class Q_WRAPPEDOBJECTS_EXPORT QtWrappedObjects : public QObject
 {
     Q_OBJECT
 
-[% FOREACH enumeration IN enumerations -%]
-    Q_ENUMS(${enumeration.name})
-[% END %]
+    Q_ENUMS(MetaPropertyDataRole)
+
 public:
-[% FOREACH enumeration IN enumerations -%]
-    enum ${enumeration.name}
+    enum MetaPropertyDataRole
     {
-        [%- FOREACH literal IN enumeration.literal %]
-        ${literal.name}[%- IF loop.first -%] = 0[%- END -%][%- IF !loop.last -%],[%- END -%]
-        [%- END %]
+        MetaObjectRole = 0,
+        WrappedObjectRole,
+        AggregationRole,
+        OppositeEndRole,
+        DocumentationRole,
+        RedefinedPropertiesRole,
+        SubsettedPropertiesRole,
+        IsDerivedUnionRole,
+        UserRole = 0x0100
     };
-[% END -%]
+
 private:
-    explicit ${namespace.split('/').0}();
+    explicit QtWrappedObjects();
 };
 
-QT_END_NAMESPACE_${namespace.replace('/', '_').upper}
+QT_END_NAMESPACE_QTWRAPPEDOBJECTS
 
 QT_END_HEADER
 
-#endif // ${namespace.split('/').0.upper}ENUMERATIONS_H
+#endif // QTWRAPPEDOBJECTSNAMESPACE_H
 

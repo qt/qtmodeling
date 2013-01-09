@@ -45,7 +45,7 @@
 
 #include <QtCore/QMetaProperty>
 
-#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+#include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
 QT_BEGIN_HEADER
 

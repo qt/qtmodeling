@@ -48,7 +48,7 @@
 #include <QtUml/QClassifier>
 #include <QtUml/QState>
 
-#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+#include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
 QT_BEGIN_NAMESPACE_QTUML
 

@@ -38,8 +38,8 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QTMOFENUMERATIONS_H
-#define QTMOFENUMERATIONS_H
+#ifndef QTMOFNAMESPACE_H
+#define QTMOFNAMESPACE_H
 
 #include <QtMof/QtMofGlobal>
 
@@ -88,5 +88,5 @@ QT_END_NAMESPACE_QTMOF
 
 QT_END_HEADER
 
-#endif // QTMOFENUMERATIONS_H
+#endif // QTMOFNAMESPACE_H
 

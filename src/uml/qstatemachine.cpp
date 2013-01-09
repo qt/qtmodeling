@@ -48,7 +48,7 @@
 #include <QtUml/QPseudostate>
 #include <QtUml/QRegion>
 
-#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+#include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
 QT_BEGIN_NAMESPACE_QTUML
 

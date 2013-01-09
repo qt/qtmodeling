@@ -42,7 +42,7 @@
 #include "qopaqueexpression.h"
 #include "qopaqueexpression_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+#include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
 QT_BEGIN_NAMESPACE_QTMOF
 

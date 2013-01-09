@@ -3,9 +3,9 @@
 ** Copyright (C) 2012 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/
 **
-** This file is part of the QtWrappedObjects module of the Qt Toolkit.
+** This file is part of the [% namespace.split('/').0 %] module of the Qt Toolkit.
 **
-** $QT_BEGIN_LICENSE:LGPL$
+** [% GET '$QT_BEGIN_LICENSE:LGPL$' %]
 ** GNU Lesser General Public License Usage
 ** This file may be used under the terms of the GNU Lesser General Public
 ** License version 2.1 as published by the Free Software Foundation and
@@ -35,49 +35,45 @@
 **
 **
 **
-** $QT_END_LICENSE$
+** [% GET '$QT_END_LICENSE$' %]
 **
 ****************************************************************************/
-#ifndef QTWRAPPEDOBJECTSENUMERATIONS_H
-#define QTWRAPPEDOBJECTSENUMERATIONS_H
+#ifndef ${namespace.split('/').0.upper}NAMESPACE_H
+#define ${namespace.split('/').0.upper}NAMESPACE_H
 
-#include <QtWrappedObjects/QtWrappedObjectsGlobal>
+#include <[% namespace.split('/').0 %]/[% namespace.split('/').0 %]Global>
 
 #include <QtCore/QObject>
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTWRAPPEDOBJECTS
+QT_BEGIN_NAMESPACE_${namespace.replace('/', '_').upper}
 
-QT_MODULE(QtWrappedObjects)
+QT_MODULE([% namespace.split('/').0 %])
 
-class Q_WRAPPEDOBJECTS_EXPORT QtWrappedObjects : public QObject
+class Q_[% namespace.split('/').0.substr(2).upper %]_EXPORT ${namespace.split('::').0} : public QObject
 {
     Q_OBJECT
 
-    Q_ENUMS(MetaPropertyDataRole)
-
+[% FOREACH enumeration IN enumerations -%]
+    Q_ENUMS(${enumeration.name})
+[% END %]
 public:
-    enum MetaPropertyDataRole
+[% FOREACH enumeration IN enumerations -%]
+    enum ${enumeration.name}
     {
-        MetaObjectRole = 0,
-        WrappedObjectRole,
-        AggregationRole,
-        OppositeEndRole,
-        DocumentationRole,
-        RedefinedPropertiesRole,
-        SubsettedPropertiesRole,
-        IsDerivedUnionRole,
-        UserRole = 0x0100
+        [%- FOREACH literal IN enumeration.literal %]
+        ${literal.name}[%- IF loop.first -%] = 0[%- END -%][%- IF !loop.last -%],[%- END -%]
+        [%- END %]
     };
-
+[% END -%]
 private:
-    explicit QtWrappedObjects();
+    explicit ${namespace.split('/').0}();
 };
 
-QT_END_NAMESPACE_QTWRAPPEDOBJECTS
+QT_END_NAMESPACE_${namespace.replace('/', '_').upper}
 
 QT_END_HEADER
 
-#endif // QTWRAPPEDOBJECTSENUMERATIONS_H
+#endif // ${namespace.split('/').0.upper}NAMESPACE_H
 

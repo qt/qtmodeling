@@ -45,7 +45,7 @@
 #include <QtUml/QBehavior>
 #include <QtUml/QObjectFlow>
 
-#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+#include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
 QT_BEGIN_NAMESPACE_QTUML
 

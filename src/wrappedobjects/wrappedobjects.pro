@@ -10,7 +10,7 @@ PUBLIC_HEADERS += \
     qwrappedobject.h \
     qmetawrappedobject.h \
     qwrappedobjectpointer.h \
-    qtwrappedobjectsenumerations.h
+    qtwrappedobjectsnamespace.h
 
 PRIVATE_HEADERS += \
     qwrappedobject_p.h \
@@ -19,6 +19,6 @@ PRIVATE_HEADERS += \
 SOURCES += \
     qwrappedobject.cpp \
     qmetawrappedobject.cpp \
-    qtwrappedobjectsenumerations.cpp
+    qtwrappedobjectsnamespace.cpp
 
 HEADERS += $$PUBLIC_HEADERS $$PRIVATE_HEADERS

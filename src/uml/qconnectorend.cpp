@@ -47,7 +47,7 @@
 #include <QtUml/QProperty>
 #include <QtUml/QConnectableElement>
 
-#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+#include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
 QT_BEGIN_NAMESPACE_QTUML
 

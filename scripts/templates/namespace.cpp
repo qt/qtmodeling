@@ -39,7 +39,7 @@
 **
 ****************************************************************************/
 
-#include "${namespace.split('/').0.lower}enumerations.h"
+#include "${namespace.split('/').0.lower}namespace.h"
 
 QT_BEGIN_NAMESPACE_${namespace.replace('/', '_').upper}
 
@@ -49,7 +49,7 @@ ${namespace.split('/').0}::${namespace.split('/').0}()
 
 [% FOREACH enumeration IN enumerations -%]
 /*!
-    \enum ${namespace.replace('/', '::')}::QEnumerations::${enumeration.name}
+    \enum ${namespace.replace('/', '::')}::${namespace.replace('/', '::')}::${enumeration.name}
 
     ${enumeration.documentation}
 
@@ -61,7 +61,7 @@ ${namespace.split('/').0}::${namespace.split('/').0}()
 
 [% END %]
 
-#include "moc_${namespace.split('/').0.lower}enumerations.cpp"
+#include "moc_${namespace.split('/').0.lower}namespace.cpp"
 
 QT_END_NAMESPACE_${namespace.replace('/', '_').upper}
 

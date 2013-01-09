@@ -14,9 +14,9 @@
     "qtmofglobal.h"  => "QtMofGlobal",
     "qtumlversion.h" => "QtUmlVersion",
     "qtumlglobal.h"  => "QtUmlGlobal",
-    "qtumlenumerations.h"  => "QtUmlEnumerations",
-    "qtmofenumerations.h"  => "QtMofEnumerations",
-    "qtwrappedobjectsenumerations.h"  => "QtWrappedObjectsEnumerations",
+    "qtumlnamespace.h"  => "QtUmlNamespace",
+    "qtmofnamespace.h"  => "QtMofNamespace",
+    "qtwrappedobjectsnamespace.h"  => "QtWrappedObjectsNamespace",
 );
 
 %modulepris = (

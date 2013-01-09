@@ -1,6 +1,6 @@
 PUBLIC_HEADERS += \
     qtmofglobal.h \
-    qtmofenumerations.h \
+    qtmofnamespace.h \
     qrelationship.h \
     qcomment.h \
     qtag.h \
@@ -115,7 +115,7 @@ PRIVATE_HEADERS += \
     qxmireader_p.h
 
 SOURCES += \
-    qtmofenumerations.cpp \
+    qtmofnamespace.cpp \
     qrelationship.cpp \
     qcomment.cpp \
     qtag.cpp \

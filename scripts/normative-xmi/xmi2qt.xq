@@ -256,7 +256,7 @@ return
         for $id in qtxmi:elementFromProperty($class/ownedAttribute | $class/ownedOperation/ownedParameter)/@xmi:type
         where $id = "uml:Enumeration"
         return
-        <qtumlinclude>{replace(qtxmi:mappedBaseNamespace($xmiFile), "::", "")}/{tokenize($namespace, "::")[1]}Enumerations</qtumlinclude>
+        <qtumlinclude>{replace(qtxmi:mappedBaseNamespace($xmiFile), "::", "")}/{tokenize($namespace, "::")[1]}Namespace</qtumlinclude>
         }
         {
         for $superClass in $superClasses

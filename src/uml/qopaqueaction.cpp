@@ -45,7 +45,7 @@
 #include <QtUml/QInputPin>
 #include <QtUml/QOutputPin>
 
-#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+#include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
 QT_BEGIN_NAMESPACE_QTUML
 

@@ -50,7 +50,7 @@ using QtWrappedObjects::QWrappedObjectPrivate;
 #include "QtMof/QParameter"
 
 // QtMof includes
-#include "QtMof/QtMofEnumerations"
+#include "QtMof/QtMofNamespace"
 
 // Qt includes
 #include "QtCore/QString"

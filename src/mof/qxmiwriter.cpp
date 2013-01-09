@@ -48,7 +48,7 @@
 #include <QtWrappedObjects/QWrappedObject>
 #include <QtWrappedObjects/QMetaWrappedObject>
 #include <QtWrappedObjects/QMetaPropertyInfo>
-#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+#include <QtWrappedObjects/QtWrappedObjectsNamespace>
 using QtWrappedObjects::QMetaWrappedObject;
 using QtWrappedObjects::QMetaPropertyInfo;
 

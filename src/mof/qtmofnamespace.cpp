@@ -39,7 +39,7 @@
 **
 ****************************************************************************/
 
-#include "qtmofenumerations.h"
+#include "qtmofnamespace.h"
 
 QT_BEGIN_NAMESPACE_QTMOF
 
@@ -48,7 +48,7 @@ QtMof::QtMof()
 }
 
 /*!
-    \enum QtMof::QEnumerations::AggregationKind
+    \enum QtMof::QtMof::AggregationKind
 
     AggregationKind is an enumeration type that specifies the literals for defining the kind of aggregation of a property.
 
@@ -61,7 +61,7 @@ QtMof::QtMof()
  */
 
 /*!
-    \enum QtMof::QEnumerations::ParameterDirectionKind
+    \enum QtMof::QtMof::ParameterDirectionKind
 
     Parameter direction kind is an enumeration type that defines literals used to specify direction of parameters.
 
@@ -75,7 +75,7 @@ QtMof::QtMof()
  */
 
 /*!
-    \enum QtMof::QEnumerations::VisibilityKind
+    \enum QtMof::QtMof::VisibilityKind
 
     VisibilityKind is an enumeration type that defines literals to determine the visibility of elements in a model.
 
@@ -87,7 +87,7 @@ QtMof::QtMof()
 
 
 
-#include "moc_qtmofenumerations.cpp"
+#include "moc_qtmofnamespace.cpp"
 
 QT_END_NAMESPACE_QTMOF
 

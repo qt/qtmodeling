@@ -51,7 +51,7 @@ using QtWrappedObjects::QWrappedObject;
 #include <QtUml/QDeploymentTarget>
 
 // QtUml includes
-#include <QtUml/QtUmlEnumerations>
+#include <QtUml/QtUmlNamespace>
 
 // Qt includes
 #include <QtCore/QString>

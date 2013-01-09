@@ -46,7 +46,7 @@
 #include <QtUml/QClassifier>
 #include <QtUml/QExecutableNode>
 
-#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+#include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
 QT_BEGIN_NAMESPACE_QTUML
 

@@ -47,7 +47,7 @@
 #include <QtUml/QElement>
 
 // QtUml includes
-#include <QtUml/QtUmlEnumerations>
+#include <QtUml/QtUmlNamespace>
 
 // Qt includes
 #include <QtCore/QString>

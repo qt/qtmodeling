@@ -47,7 +47,7 @@
 #include <QtUml/QVertex>
 
 // QtUml includes
-#include <QtUml/QtUmlEnumerations>
+#include <QtUml/QtUmlNamespace>
 
 QT_BEGIN_HEADER
 

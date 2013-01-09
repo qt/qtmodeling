@@ -49,7 +49,7 @@
 #include <QtMof/QProperty>
 #include <QtMof/QFeature>
 
-#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+#include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
 QT_BEGIN_NAMESPACE_QTMOF
 

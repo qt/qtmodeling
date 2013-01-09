@@ -46,7 +46,7 @@
 #include <QtMof/QNamespace>
 #include <QtMof/QValueSpecification>
 
-#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+#include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
 QT_BEGIN_NAMESPACE_QTMOF
 
