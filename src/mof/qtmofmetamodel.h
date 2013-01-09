@@ -3,7 +3,7 @@
 ** Copyright (C) 2012 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/
 **
-** This file is part of the QtWrappedObjects module of the Qt Toolkit.
+** This file is part of the QtMof module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** GNU Lesser General Public License Usage
@@ -38,56 +38,26 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QTWRAPPEDOBJECTS_QWRAPPEDOBJECT_P_H
-#define QTWRAPPEDOBJECTS_QWRAPPEDOBJECT_P_H
+#ifndef QTMOFMETAMODEL_H
+#define QTMOFMETAMODEL_H
 
-// Base class includes
-#include "private/qobject_p.h"
-
-#include <QtCore/QStringList>
-
-#include "QtWrappedObjects/QWrappedObject"
+#include <QtMof/QtMof>
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTWRAPPEDOBJECTS
+QT_BEGIN_NAMESPACE_QTMOF
 
-QT_MODULE(QtWrappedObjects)
+QT_MODULE(QtMof)
 
-class Q_WRAPPEDOBJECTS_EXPORT QWrappedObjectPrivate : public QObjectPrivate
+class Q_MOF_EXPORT QtMofMetaModel
 {
-    Q_DECLARE_PUBLIC(QWrappedObject)
-
 public:
-    explicit QWrappedObjectPrivate(int version = QObjectPrivateVersion);
-    virtual ~QWrappedObjectPrivate();
-
-    static QWrappedObjectPrivate *get(QWrappedObject *o);
-
-    QList<QWrappedObject *> wrappedObjects;
-    QWrappedObject *wrapper;
-    QMetaWrappedObject *metaWrappedObject;
-    QStringList modifiedResettableProperties;
+    static void init();
 };
 
-QT_END_NAMESPACE_QTWRAPPEDOBJECTS
-
-template <class T>
-inline T qwrappedobject_cast(QT_PREPEND_NAMESPACE_QTWRAPPEDOBJECTS(QWrappedObjectPrivate) *base, bool restoreToWrapper = true)
-{
-    while (restoreToWrapper && base->wrapper)
-        base = base->get(base->wrapper);
-    if (dynamic_cast<T>(base))
-        return dynamic_cast<T>(base);
-    foreach (QT_PREPEND_NAMESPACE_QTWRAPPEDOBJECTS(QWrappedObject) *wrappedObject, base->wrappedObjects) {
-        T returnValue = qwrappedobject_cast<T>(base->get(wrappedObject), false);
-        if (returnValue != T())
-            return returnValue;
-    }
-    return T(); // not found
-}
+QT_END_NAMESPACE_QTMOF
 
 QT_END_HEADER
 
-#endif // QTWRAPPEDOBJECTS_QWRAPPEDOBJECT_P_H
+#endif // QTMOFMETAMODEL_H
 

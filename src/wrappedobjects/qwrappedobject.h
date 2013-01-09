@@ -84,10 +84,7 @@ public:
     bool setProperty(const char *name, const QVariant &value);
     QVariant property(const char *name) const;
 
-    static QVariant propertyData(QString className, QMetaProperty metaProperty, QtWrappedObjects::MetaPropertyDataRole role)
-    {
-        return propertyDataHash[className][QString::fromLatin1(metaProperty.name())][role];
-    }
+    static QVariant propertyData(QString className, QMetaProperty metaProperty, QtWrappedObjects::MetaPropertyDataRole role);
 
     bool isPropertyModified(QMetaProperty metaProperty) const;
 
