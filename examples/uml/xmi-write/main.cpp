@@ -10,8 +10,6 @@
 #include <QtMof/QXmiWriter>
 using QtMof::QXmiWriter;
 
-#include <QtCore/QDebug>
-
 using namespace QtUml;
 using namespace QtWrappedObjects;
 
@@ -41,6 +39,7 @@ int main ()
     stereotype->addOwnedComment(comment);
 
     QFile file("test.xmi");
+
     if (!file.open(QFile::WriteOnly | QFile::Text)) {
         qDebug() << "Cannot write file !";
         return 1;
@@ -51,6 +50,7 @@ int main ()
         qDebug() << "XMI file saved !";
     else
         qDebug() << "Error when writing XMI file !";
+    file.close();
 
     delete package.data();
 }

@@ -57,6 +57,11 @@ QWrappedObjectPrivate::~QWrappedObjectPrivate()
     qDeleteAll(wrappedObjects);
 }
 
+QWrappedObjectPrivate *QWrappedObjectPrivate::get(QWrappedObject *o)
+{
+    return dynamic_cast<QWrappedObjectPrivate *>(o->d_func());
+}
+
 QHash<QString, QHash<QString, QHash<QtWrappedObjects::MetaPropertyDataRole, QVariant>>> QWrappedObject::propertyDataHash;
 
 QWrappedObject::QWrappedObject(QWrappedObject *wrapper, QWrappedObject *parent) :
@@ -152,6 +157,11 @@ QVariant QWrappedObject::property(const char *name) const
     }
     else
         return QVariant();
+}
+
+QVariant QWrappedObject::propertyData(QString className, QMetaProperty metaProperty, QtWrappedObjects::MetaPropertyDataRole role)
+{
+    return propertyDataHash[className][QString::fromLatin1(metaProperty.name())][role];
 }
 
 bool QWrappedObject::isPropertyModified(QMetaProperty metaProperty) const

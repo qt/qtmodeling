@@ -1,5 +1,5 @@
 TEMPLATE = app
-TARGET = xmi
+TARGET = xmi-read
 DEPENDPATH += .
 INCLUDEPATH += .
 
