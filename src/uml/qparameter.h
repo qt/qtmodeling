@@ -50,8 +50,8 @@ using QtWrappedObjects::QWrappedObject;
 #include <QtUml/QConnectableElement>
 
 // QtUml includes
-#include <QtUml/QtUmlEnumerations>
-#include <QtUml/QtUmlEnumerations>
+#include <QtUml/QtUmlNamespace>
+#include <QtUml/QtUmlNamespace>
 
 // Qt includes
 #include <QtCore/QString>

@@ -50,13 +50,13 @@ foreach my $class (values %$classes) {
     }) ne 1) { print $tt->error(); }
 }
 
-open STDOUT, '>', $options{o}."/".$namespace->{path}."/".lc($namespace->{path})."enumerations.h";
-if ($tt->process('enumerations.h', {
+open STDOUT, '>', $options{o}."/".$namespace->{path}."/".lc($namespace->{path})."namespace.h";
+if ($tt->process('namespace.h', {
     namespace => $namespace->{path},
     enumerations => $enumerations
 }) ne 1) { print $tt->error(); }
-open STDOUT, '>', $options{o}."/".$namespace->{path}."/".lc($namespace->{path})."enumerations.cpp";
-if ($tt->process('enumerations.cpp', {
+open STDOUT, '>', $options{o}."/".$namespace->{path}."/".lc($namespace->{path})."namespace.cpp";
+if ($tt->process('namespace.cpp', {
     namespace => $namespace->{path},
     enumerations => $enumerations
 }) ne 1) { print $tt->error(); }

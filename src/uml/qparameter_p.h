@@ -50,8 +50,8 @@ using QtWrappedObjects::QWrappedObjectPrivate;
 #include "QtUml/QParameter"
 
 // QtUml includes
-#include "QtUml/QtUmlEnumerations"
-#include "QtUml/QtUmlEnumerations"
+#include "QtUml/QtUmlNamespace"
+#include "QtUml/QtUmlNamespace"
 
 // Qt includes
 #include "QtCore/QString"

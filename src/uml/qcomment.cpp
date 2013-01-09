@@ -42,7 +42,7 @@
 #include "qcomment.h"
 #include "qcomment_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+#include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
 QT_BEGIN_NAMESPACE_QTUML
 

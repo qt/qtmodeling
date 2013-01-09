@@ -51,7 +51,7 @@
 #include <QtUml/QTrigger>
 #include <QtUml/QPseudostate>
 
-#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+#include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
 QT_BEGIN_NAMESPACE_QTUML
 

@@ -47,7 +47,7 @@
 #include "QtUml/QPseudostate"
 
 // QtUml includes
-#include "QtUml/QtUmlEnumerations"
+#include "QtUml/QtUmlNamespace"
 
 QT_BEGIN_HEADER
 

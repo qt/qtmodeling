@@ -7,7 +7,7 @@
 #include <QtGui/QBrush>
 
 #include <QtWrappedObjects/QMetaPropertyInfo>
-#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+#include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
 using QtWrappedObjects::QMetaPropertyInfo;
 

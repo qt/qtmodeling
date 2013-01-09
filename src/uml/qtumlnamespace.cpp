@@ -39,7 +39,7 @@
 **
 ****************************************************************************/
 
-#include "qtumlenumerations.h"
+#include "qtumlnamespace.h"
 
 QT_BEGIN_NAMESPACE_QTUML
 
@@ -48,7 +48,7 @@ QtUml::QtUml()
 }
 
 /*!
-    \enum QtUml::QEnumerations::AggregationKind
+    \enum QtUml::QtUml::AggregationKind
 
     AggregationKind is an enumeration type that specifies the literals for defining the kind of aggregation of a property.
 
@@ -61,7 +61,7 @@ QtUml::QtUml()
  */
 
 /*!
-    \enum QtUml::QEnumerations::CallConcurrencyKind
+    \enum QtUml::QtUml::CallConcurrencyKind
 
     CallConcurrencyKind is an enumeration type.
 
@@ -74,7 +74,7 @@ QtUml::QtUml()
  */
 
 /*!
-    \enum QtUml::QEnumerations::ConnectorKind
+    \enum QtUml::QtUml::ConnectorKind
 
     ConnectorKind is an enumeration type.
 
@@ -85,7 +85,7 @@ QtUml::QtUml()
  */
 
 /*!
-    \enum QtUml::QEnumerations::ExpansionKind
+    \enum QtUml::QtUml::ExpansionKind
 
     ExpansionKind is an enumeration type used to specify how multiple executions of an expansion region interact.
 
@@ -98,7 +98,7 @@ QtUml::QtUml()
  */
 
 /*!
-    \enum QtUml::QEnumerations::InteractionOperatorKind
+    \enum QtUml::QtUml::InteractionOperatorKind
 
     InteractionOperatorKind is an enumeration designating the different kinds of operators of combined fragments. The interaction operand defines the type of operator of a combined fragment.
 
@@ -129,7 +129,7 @@ QtUml::QtUml()
  */
 
 /*!
-    \enum QtUml::QEnumerations::MessageKind
+    \enum QtUml::QtUml::MessageKind
 
     This is an enumerated type that identifies the type of message.
 
@@ -144,7 +144,7 @@ QtUml::QtUml()
  */
 
 /*!
-    \enum QtUml::QEnumerations::MessageSort
+    \enum QtUml::QtUml::MessageSort
 
     This is an enumerated type that identifies the type of communication action that was used to generate the message.
 
@@ -163,7 +163,7 @@ QtUml::QtUml()
  */
 
 /*!
-    \enum QtUml::QEnumerations::ObjectNodeOrderingKind
+    \enum QtUml::QtUml::ObjectNodeOrderingKind
 
     ObjectNodeOrderingKind is an enumeration indicating queuing order within a node.
 
@@ -178,7 +178,7 @@ QtUml::QtUml()
  */
 
 /*!
-    \enum QtUml::QEnumerations::ParameterDirectionKind
+    \enum QtUml::QtUml::ParameterDirectionKind
 
     Parameter direction kind is an enumeration type that defines literals used to specify direction of parameters.
 
@@ -193,7 +193,7 @@ QtUml::QtUml()
  */
 
 /*!
-    \enum QtUml::QEnumerations::ParameterEffectKind
+    \enum QtUml::QtUml::ParameterEffectKind
 
     The datatype ParameterEffectKind is an enumeration that indicates the effect of a behavior on values passed in or out of its parameters.
 
@@ -208,7 +208,7 @@ QtUml::QtUml()
  */
 
 /*!
-    \enum QtUml::QEnumerations::PseudostateKind
+    \enum QtUml::QtUml::PseudostateKind
 
     PseudostateKind is an enumeration type.
 
@@ -235,7 +235,7 @@ QtUml::QtUml()
  */
 
 /*!
-    \enum QtUml::QEnumerations::TransitionKind
+    \enum QtUml::QtUml::TransitionKind
 
     TransitionKind is an enumeration type.
 
@@ -248,7 +248,7 @@ QtUml::QtUml()
  */
 
 /*!
-    \enum QtUml::QEnumerations::VisibilityKind
+    \enum QtUml::QtUml::VisibilityKind
 
     VisibilityKind is an enumeration type that defines literals to determine the visibility of elements in a model.
 
@@ -264,7 +264,7 @@ QtUml::QtUml()
 
 
 
-#include "moc_qtumlenumerations.cpp"
+#include "moc_qtumlnamespace.cpp"
 
 QT_END_NAMESPACE_QTUML
 

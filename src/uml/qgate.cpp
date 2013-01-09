@@ -42,7 +42,7 @@
 #include "qgate.h"
 #include "qgate_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+#include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
 QT_BEGIN_NAMESPACE_QTUML
 

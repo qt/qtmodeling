@@ -48,7 +48,7 @@
 #include <QtMof/QReflectiveSequence>
 #include <QtMof/QElement>
 
-#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+#include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
 QT_BEGIN_NAMESPACE_QTMOF
 

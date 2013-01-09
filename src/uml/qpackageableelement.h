@@ -50,7 +50,7 @@ using QtWrappedObjects::QWrappedObject;
 #include <QtUml/QNamedElement>
 
 // QtUml includes
-#include <QtUml/QtUmlEnumerations>
+#include <QtUml/QtUmlNamespace>
 
 QT_BEGIN_HEADER
 

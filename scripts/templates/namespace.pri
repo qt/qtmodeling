@@ -1,7 +1,7 @@
 PUBLIC_HEADERS += \
     ${namespace.path}/${namespace.path.split('/').0.lower}global.h
     [%- IF namespace.item('enumeration') -%][% ' \\' %]
-    ${namespace.path}/${namespace.path.split('/').0.lower}enumerations.h
+    ${namespace.path}/${namespace.path.split('/').0.lower}namespace.h
     [%- END %]
 [%- FOREACH class IN namespace.class.values -%][% ' \\' %]
     ${namespace.path}/${class.name.lower}.h
@@ -14,7 +14,7 @@ PRIVATE_HEADERS +=
 
 SOURCES +=
     [%- IF namespace.item('enumeration') -%][% ' \\' %]
-    ${namespace.path}/${namespace.path.split('/').0.lower}enumerations.cpp
+    ${namespace.path}/${namespace.path.split('/').0.lower}namespace.cpp
     [%- END -%]
 [%- FOREACH class IN namespace.class.values -%][% ' \\' %]
     ${namespace.path}/${class.name.lower}.cpp

@@ -47,7 +47,7 @@
 #include <QtMof/QStructuralFeature>
 
 // QtMof includes
-#include <QtMof/QtMofEnumerations>
+#include <QtMof/QtMofNamespace>
 
 // Qt includes
 #include <QtCore/QString>

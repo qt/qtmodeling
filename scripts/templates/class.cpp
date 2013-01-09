@@ -460,7 +460,7 @@ void ${class.name}::unset${associationend.accessor.0.name.ucfirst.replace('^Is',
 [%- IF found == 'true' -%]
 
 [% END -%]
-#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+#include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
 QT_BEGIN_NAMESPACE_${namespace.replace('/', '_').upper}
 

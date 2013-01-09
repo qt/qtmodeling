@@ -52,7 +52,7 @@
 #include <QtUml/QConstraint>
 #include <QtUml/QBehavior>
 
-#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+#include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
 QT_BEGIN_NAMESPACE_QTUML
 

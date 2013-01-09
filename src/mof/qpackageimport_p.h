@@ -47,7 +47,7 @@
 #include "QtMof/QPackageImport"
 
 // QtMof includes
-#include "QtMof/QtMofEnumerations"
+#include "QtMof/QtMofNamespace"
 
 QT_BEGIN_HEADER
 

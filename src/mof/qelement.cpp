@@ -45,7 +45,7 @@
 #include <QtMof/QComment>
 #include <QtMof/QClass>
 
-#include <QtWrappedObjects/QtWrappedObjectsEnumerations>
+#include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
 QT_BEGIN_NAMESPACE_QTMOF
 

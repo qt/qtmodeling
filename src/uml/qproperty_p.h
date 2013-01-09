@@ -51,7 +51,7 @@ using QtWrappedObjects::QWrappedObjectPrivate;
 #include "QtUml/QProperty"
 
 // QtUml includes
-#include "QtUml/QtUmlEnumerations"
+#include "QtUml/QtUmlNamespace"
 
 // Qt includes
 #include "QtCore/QString"
