@@ -74,6 +74,9 @@ public:
     virtual ~QXmiReader();
 
     QWrappedObject *readFile(QIODevice *device);
+
+protected:
+    QWrappedObject *createInstance(QString instanceClass, QString instanceName);
 };
 
 QT_END_NAMESPACE_QTMOF

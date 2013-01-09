@@ -63,6 +63,7 @@ public:
     virtual ~QXmiReaderPrivate();
 
     QXmlStreamReader reader;
+    QHash<QString, QWrappedObject *> idMap;
 };
 
 QT_END_NAMESPACE_QTMOF

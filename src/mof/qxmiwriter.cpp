@@ -180,7 +180,7 @@ void QXmiWriter::writeWrappedObject(QWrappedObject *wrappedObject, QString eleme
         QWrappedObject *propertyWrappedObject = metaPropertyInfo.propertyWrappedObject;
         QVariant variant = metaProperty.read(propertyWrappedObject);
 
-        if (!metaProperty.isStored() || QWrappedObject::propertyData(QString::fromLatin1(metaPropertyInfo.propertyMetaObject->className()),
+        if (!metaProperty.isStored() || QString::fromLatin1(metaProperty.name()) == QString::fromLatin1("objectName") || QWrappedObject::propertyData(QString::fromLatin1(metaPropertyInfo.propertyMetaObject->className()),
                                                                      metaProperty,
                                                                      QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole).toBool())
             continue;

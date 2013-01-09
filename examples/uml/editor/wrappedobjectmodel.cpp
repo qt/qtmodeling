@@ -21,6 +21,11 @@ void WrappedObjectModel::setWrappedObject(QWrappedObject *wrappedObject)
     }
 }
 
+QWrappedObject *WrappedObjectModel::wrappedObject() const
+{
+    return _wrappedObject;
+}
+
 QModelIndex WrappedObjectModel::index(int row, int column, const QModelIndex &parent) const
 {
     if (!_wrappedObject || row < 0 || column < 0 || column >= 2 || (parent.isValid() && parent.column() != 0))

@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       = core gui uml mof
+QT       = core gui mof
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 

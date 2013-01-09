@@ -138,6 +138,7 @@ bool QWrappedObject::setProperty(const char *name, const QVariant &value)
 {
     Q_D(QWrappedObject);
     int index;
+    metaWrappedObject();
     if ((index = d->metaWrappedObject->indexOfProperty(name)) != -1) {
         QMetaPropertyInfo metaPropertyInfo = d->metaWrappedObject->property(index);
         metaPropertyInfo.metaProperty.write(metaPropertyInfo.propertyWrappedObject, value);

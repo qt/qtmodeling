@@ -44,6 +44,7 @@
 
 #include <QtCore/QIODevice>
 #include <QtCore/QRegularExpression>
+#include <QtCore/QMetaMethod>
 #include <QtCore/QDebug>
 
 #include <QtWrappedObjects/QWrappedObject>
@@ -55,7 +56,6 @@ using QtWrappedObjects::QMetaWrappedObject;
 using QtWrappedObjects::QMetaPropertyInfo;
 
 #include <QtMof>
-using namespace QtMof;
 
 QT_BEGIN_NAMESPACE_QTMOF
 
@@ -89,23 +89,113 @@ QWrappedObject *QXmiReader::readFile(QIODevice *device)
         if (d->reader.isStartElement()) {
             QString elementName = d->reader.name().toString().prepend(QString::fromLatin1("Q")).append(QString::fromLatin1("*"));
             if (d->reader.namespaceUri() == QString::fromLatin1("http://www.omg.org/spec/UML/20110701")) {
-                int type;
-                if ((type = QMetaType::type(elementName.toLatin1())) != QMetaType::UnknownType) {
-                    const QMetaObject *metaObject = QMetaType::metaObjectForType(type);
-                    if (metaObject) {
-                        rootElement = dynamic_cast<QWrappedObject *>(metaObject->newInstance());
-                        if (rootElement)
-                            rootElement->setObjectName(d->reader.attributes().value(QString::fromLatin1("name")).toString());
-                        else qDebug() << "newInstance retornou null";
-                    }
-                    else qDebug() << "Nao encontrei o metaobject";
-                }
-                else qDebug() << "Nao encontrei metatype de" << elementName;
+                QWrappedObject *wrappedObject = createInstance(elementName, d->reader.attributes().value(QString::fromLatin1("name")).toString());
+                if (wrappedObject)
+                    d->idMap.insert(d->reader.attributes().value(QString::fromLatin1("xmi:id")).toString(), wrappedObject);
+            }
+            else {
+                QString xmiType = d->reader.attributes().value(QString::fromLatin1("xmi:type")).toString().split(':').last();
+                if (xmiType.isEmpty())
+                    continue;
+                QWrappedObject *wrappedObject = createInstance(xmiType.prepend(QString::fromLatin1("Q")).append(QString::fromLatin1("*")), d->reader.attributes().value(QString::fromLatin1("name")).toString());
+                if (wrappedObject)
+                    d->idMap.insert(d->reader.attributes().value(QString::fromLatin1("xmi:id")).toString(), wrappedObject);
             }
         }
     }
 
+    device->reset();
+    d->reader.clear();
+    d->reader.setDevice(device);
+    QStack<QPair<QString, QWrappedObject *>> stack;
+
+    while (!d->reader.atEnd()) {
+        d->reader.readNext();
+
+        if (d->reader.isStartElement()) {
+            QString id = d->reader.attributes().value(QString::fromLatin1("xmi:id")).toString();
+            QWrappedObject *wrappedObject = d->idMap.value(id);
+            if (!wrappedObject) {
+                QString id = d->reader.attributes().value(QString::fromLatin1("xmi:idref")).toString();
+                wrappedObject = d->idMap.value(id);
+            }
+            if (wrappedObject) {
+                const QMetaWrappedObject *metaWrappedObject = wrappedObject->metaWrappedObject();
+                foreach (QXmlStreamAttribute attribute, d->reader.attributes()) {
+                    int propertyIndex;
+                    if ((propertyIndex = metaWrappedObject->indexOfProperty(attribute.name().toString().toLatin1())) != -1) {
+                        qDebug() << "Object contem a propriedade" << attribute.name();
+                        QMetaPropertyInfo metaPropertyInfo = metaWrappedObject->property(propertyIndex);
+                        QMetaProperty metaProperty = metaPropertyInfo.metaProperty;
+                        if (metaProperty.type() == QVariant::Bool) {
+                            wrappedObject->setProperty(attribute.name().toString().toLatin1(), attribute.value().toString() == QString::fromLatin1("true") ? true:false);
+                        }
+                        else if (metaProperty.isEnumType()) {
+                            wrappedObject->setProperty(attribute.name().toString().toLatin1(), QString::fromLatin1(metaProperty.enumerator().valueToKey(attribute.value().toString().toInt())).toLower().remove(QString::fromLatin1(metaProperty.name())).toLatin1());
+                        }
+                        else if (metaProperty.type() == QVariant::String) {
+                            wrappedObject->setProperty(attribute.name().toString().toLatin1(), attribute.value().toString());
+                        }
+                    }
+                    else
+                        qDebug() << "Object" << id << "NAO contem a propriedade" << attribute.name();
+                }
+                if (!stack.isEmpty()) {
+                    QWrappedObject *containerObject = stack.top().second;
+                    QString methodParameter = d->reader.attributes().value(QString::fromLatin1("xmi:type")).toString().split(':').last().prepend(QString::fromLatin1("Q")).append(QString::fromLatin1("*"));
+                    QString elementName = d->reader.name().toString();
+                    elementName = elementName.left(1).toUpper() + elementName.mid(1);
+                    QString methodSignature1 = QString::fromLatin1("add%1(%2)").arg(elementName).arg(methodParameter);
+                    QString methodSignature2 = QString::fromLatin1("set%1(%2)").arg(elementName).arg(methodParameter);
+                    int methodCount = containerObject->metaObject()->methodCount();
+                    int i;
+                    for (i = 0; i < methodCount; ++i) {
+                        QMetaMethod metaMethod = containerObject->metaObject()->method(i);
+                        if (QString::fromLatin1(metaMethod.name()) == QString::fromLatin1("add%1").arg(elementName) ||
+                            QString::fromLatin1(metaMethod.name()) == QString::fromLatin1("set%1").arg(elementName)) {
+                            if (!metaMethod.invoke(containerObject, ::Q_ARG(QWrappedObject *, wrappedObject)))
+                                qDebug() << "Erro ao invocar metametodo" << metaMethod.name();
+                            else
+                                qDebug() << "Metametodo ok ->" << containerObject->objectName() << metaMethod.name() << wrappedObject->objectName();
+                            break;
+                        }
+                    }
+                    if (i == methodCount)
+                        qDebug() << "NAO ACHOU METODO" << QString::fromLatin1("add%1").arg(elementName) << "ou" << QString::fromLatin1("set%1").arg(elementName) << containerObject->objectName() << "->" << wrappedObject->objectName();
+                }
+                stack.push(QPair<QString, QWrappedObject *>(d->reader.name().toString(), wrappedObject));
+                qDebug() << stack;
+            }
+        }
+        else if (d->reader.isEndElement() && !stack.isEmpty() && stack.top().first == d->reader.name()) {
+            stack.pop();
+            if (!stack.isEmpty())
+                rootElement = stack.top().second;
+            qDebug() << "endElement" << d->reader.name() << ". ROOT ELEM:" << rootElement;
+        }
+    }
+
     return rootElement;
+}
+
+QWrappedObject *QXmiReader::createInstance(QString instanceClass, QString instanceName)
+{
+    int type;
+    if ((type = QMetaType::type(instanceClass.toLatin1())) != QMetaType::UnknownType) {
+        const QMetaObject *metaObject = QMetaType::metaObjectForType(type);
+        if (metaObject) {
+            QWrappedObject *wrappedObject = dynamic_cast<QWrappedObject *>(metaObject->newInstance());
+            if (wrappedObject) {
+                qTopLevelWrapper(wrappedObject)->setObjectName(instanceName);
+                qDebug() << "Criei instancia de" << instanceClass << ". Name:" << instanceName;
+                return wrappedObject;
+            }
+            else qDebug() << "newInstance retornou null";
+        }
+        else qDebug() << "Nao encontrei o metaobject";
+    }
+    else qDebug() << "Nao encontrei metatype de" << instanceClass;
+    return 0;
 }
 
 #include "moc_qxmireader.cpp"
