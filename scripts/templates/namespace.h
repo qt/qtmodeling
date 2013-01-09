@@ -67,6 +67,7 @@ public:
         [%- END %]
     };
 [% END -%]
+
 private:
     explicit ${namespace.split('/').0}();
 };

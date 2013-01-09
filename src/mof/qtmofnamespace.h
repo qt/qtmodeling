@@ -80,6 +80,7 @@ public:
         VisibilityProtected,
         VisibilityPackage
     };
+
 private:
     explicit QtMof();
 };

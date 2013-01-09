@@ -262,8 +262,6 @@ QtUml::QtUml()
     A package element is owned by a namespace that is not a package, and is visible to elements that are in the same package as its owning namespace. Only named elements that are not owned by packages can be marked as having package visibility. Any element marked as having package visibility is visible to all elements within the nearest enclosing package (given that other owning elements have proper visibility). Outside the nearest enclosing package, an element marked as having package visibility is not visible.
  */
 
-
-
 #include "moc_qtumlnamespace.cpp"
 
 QT_END_NAMESPACE_QTUML
