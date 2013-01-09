@@ -171,6 +171,7 @@ public:
         VisibilityProtected,
         VisibilityPackage
     };
+
 private:
     explicit QtUml();
 };

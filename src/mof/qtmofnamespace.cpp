@@ -85,8 +85,6 @@ QtMof::QtMof()
     \value VisibilityPackage
  */
 
-
-
 #include "moc_qtmofnamespace.cpp"
 
 QT_END_NAMESPACE_QTMOF

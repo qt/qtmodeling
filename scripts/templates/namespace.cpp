@@ -59,8 +59,7 @@ ${namespace.split('/').0}::${namespace.split('/').0}()
     [%- END %]
  */
 
-[% END %]
-
+[% END -%]
 #include "moc_${namespace.split('/').0.lower}namespace.cpp"
 
 QT_END_NAMESPACE_${namespace.replace('/', '_').upper}
