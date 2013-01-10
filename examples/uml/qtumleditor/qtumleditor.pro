@@ -11,6 +11,13 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = qtumleditor
 TEMPLATE = app
 
+target.path = $$[QT_INSTALL_PREFIX]/bin
+
+xmi.path = $$[QT_INSTALL_PREFIX]/doc/qtumleditor
+xmi.files = example.xmi
+
+INSTALLS += target xmi
+
 CONFIG += c++11
 
 SOURCES += main.cpp\
