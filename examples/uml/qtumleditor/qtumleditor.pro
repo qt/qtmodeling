@@ -8,7 +8,7 @@ QT       = core gui mof
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = editor
+TARGET = qtumleditor
 TEMPLATE = app
 
 CONFIG += c++11
@@ -33,4 +33,4 @@ HEADERS  += mainwindow.h \
 FORMS    += mainwindow.ui
 
 RESOURCES += \
-    editor.qrc
+    qtumleditor.qrc
