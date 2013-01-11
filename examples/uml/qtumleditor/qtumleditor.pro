@@ -13,7 +13,7 @@ TEMPLATE = app
 
 target.path = $$[QT_INSTALL_PREFIX]/bin
 
-xmi.path = $$[QT_INSTALL_PREFIX]/doc/qtumleditor
+xmi.path = $$[QT_INSTALL_PREFIX]/share/doc/packages/qtumleditor
 xmi.files = example.xmi
 
 INSTALLS += target xmi
