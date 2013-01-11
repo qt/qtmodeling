@@ -5,21 +5,15 @@
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QLineEdit>
 
-#include <QtGui/QPainter>
-
 #include <QtWrappedObjects/QWrappedObject>
 #include <QtWrappedObjects/QMetaPropertyInfo>
 
 #include "propertyeditor.h"
 
-using namespace QtWrappedObjects;
+using QtWrappedObjects::QMetaPropertyInfo;
 
 PropertyEditorItemDelegate::PropertyEditorItemDelegate(QObject *parent) :
     QStyledItemDelegate(parent)
-{
-}
-
-PropertyEditorItemDelegate::~PropertyEditorItemDelegate()
 {
 }
 

@@ -1,13 +1,12 @@
 #include "wrappedobjectpropertymodel.h"
 
 #include <QtCore/QRegularExpression>
-#include <QtCore/QSize>
 
 #include <QtGui/QFontMetrics>
-#include <QtGui/QBrush>
 
+#include <QtWrappedObjects/QWrappedObject>
+#include <QtWrappedObjects/QMetaWrappedObject>
 #include <QtWrappedObjects/QMetaPropertyInfo>
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
 using QtWrappedObjects::QMetaPropertyInfo;
 
@@ -21,8 +20,16 @@ void WrappedObjectPropertyModel::setWrappedObject(QWrappedObject *wrappedObject)
     if (wrappedObject && _metaWrappedObject != wrappedObject->metaWrappedObject()) {
         beginResetModel();
         _metaWrappedObject = wrappedObject->metaWrappedObject();
+        _wrappedObjectIndex = QModelIndex();
         endResetModel();
     }
+}
+
+void WrappedObjectPropertyModel::setWrappedObjectIndex(const QModelIndex &wrappedObjectIndex)
+{
+    QWrappedObject *wrappedObject = qvariant_cast<QWrappedObject *>(wrappedObjectIndex.data(Qt::UserRole));
+    setWrappedObject(wrappedObject);
+    _wrappedObjectIndex = wrappedObjectIndex;
 }
 
 QModelIndex WrappedObjectPropertyModel::index(int row, int column, const QModelIndex &parent) const
@@ -199,10 +206,10 @@ bool WrappedObjectPropertyModel::setData(const QModelIndex &index, const QVarian
             if (QString::fromLatin1(metaProperty.name()) == "objectName") {
                     propertyWrappedObject = qTopLevelWrapper(propertyWrappedObject);
                     propertyWrappedObject->setProperty("name", value);
-                    emit dataChanged(index, index);
+                    emit indexChanged(_wrappedObjectIndex);
             }
             if (QString::fromLatin1(metaProperty.name()) == "name")
-                emit dataChanged(index, index);
+                emit indexChanged(_wrappedObjectIndex);
             if (metaProperty.read(propertyWrappedObject) != value)
                 metaProperty.write(propertyWrappedObject, value);
             return true;

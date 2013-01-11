@@ -61,20 +61,7 @@
    <widget class="QWidget" name="dockWidgetContents">
     <layout class="QGridLayout" name="gridLayout">
      <item row="0" column="0">
-      <widget class="QTreeView" name="modelInspector">
-       <property name="minimumSize">
-        <size>
-         <width>320</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="alternatingRowColors">
-        <bool>true</bool>
-       </property>
-       <property name="uniformRowHeights">
-        <bool>true</bool>
-       </property>
-      </widget>
+      <widget class="QWrappedObjectView" name="wrappedObjectView" native="true"/>
      </item>
     </layout>
    </widget>
@@ -88,34 +75,8 @@
    </attribute>
    <widget class="QWidget" name="dockWidgetContents_2">
     <layout class="QGridLayout" name="gridLayout_2">
-     <item row="2" column="0">
-      <widget class="QTreeView" name="propertyEditor">
-       <property name="minimumSize">
-        <size>
-         <width>350</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="editTriggers">
-        <set>QAbstractItemView::AllEditTriggers</set>
-       </property>
-       <property name="alternatingRowColors">
-        <bool>true</bool>
-       </property>
-       <property name="uniformRowHeights">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0">
-      <widget class="QLabel" name="lblInspectedObject">
-       <property name="text">
-        <string>InspectedObject</string>
-       </property>
-      </widget>
-     </item>
      <item row="0" column="0">
-      <widget class="FilterWidget" name="filterWidget" native="true"/>
+      <widget class="QWrappedObjectPropertyEditor" name="propertyEditor" native="true"/>
      </item>
     </layout>
    </widget>
@@ -192,9 +153,15 @@
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
   <customwidget>
-   <class>FilterWidget</class>
+   <class>QWrappedObjectPropertyEditor</class>
    <extends>QWidget</extends>
-   <header>filterwidget.h</header>
+   <header>qwrappedobjectpropertyeditor.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>QWrappedObjectView</class>
+   <extends>QWidget</extends>
+   <header>qwrappedobjectview.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

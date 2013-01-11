@@ -42,13 +42,8 @@
 #ifndef FILTERWIDGET_H
 #define FILTERWIDGET_H
 
-#include <QtGui/QColor>
-
-#include <QtWidgets/QWidget>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QToolButton>
-
-class QToolButton;
 
 #define ICONBUTTON_SIZE 16
 
@@ -106,13 +101,13 @@ public:
     bool refuseFocus() const; // see HintLineEdit
     void setRefuseFocus(bool v);
 
-signals:
+Q_SIGNALS:
     void filterChanged(const QString &);
 
-public slots:
+public Q_SLOTS:
     void reset();
 
-private slots:
+private Q_SLOTS:
     void checkButton(const QString &text);
 
 private:

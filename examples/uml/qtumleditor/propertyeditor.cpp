@@ -1,7 +1,5 @@
 #include "propertyeditor.h"
 
-#include <QtCore/QMetaProperty>
-
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QToolButton>
 #include <QtWidgets/QComboBox>

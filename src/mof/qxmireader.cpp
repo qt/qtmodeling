@@ -45,7 +45,6 @@
 #include <QtCore/QIODevice>
 #include <QtCore/QRegularExpression>
 #include <QtCore/QMetaMethod>
-#include <QtCore/QDebug>
 
 #include <QtWrappedObjects/QWrappedObject>
 #include <QtWrappedObjects/QMetaWrappedObject>
@@ -124,7 +123,6 @@ QWrappedObject *QXmiReader::readFile(QIODevice *device)
                 foreach (QXmlStreamAttribute attribute, d->reader.attributes()) {
                     int propertyIndex;
                     if ((propertyIndex = metaWrappedObject->indexOfProperty(attribute.name().toString().toLatin1())) != -1) {
-                        qDebug() << "Object contem a propriedade" << attribute.name();
                         QMetaPropertyInfo metaPropertyInfo = metaWrappedObject->property(propertyIndex);
                         QMetaProperty metaProperty = metaPropertyInfo.metaProperty;
                         if (metaProperty.type() == QVariant::Bool) {
@@ -137,8 +135,6 @@ QWrappedObject *QXmiReader::readFile(QIODevice *device)
                             wrappedObject->setProperty(attribute.name().toString().toLatin1(), attribute.value().toString());
                         }
                     }
-                    else
-                        qDebug() << "Object" << id << "NAO contem a propriedade" << attribute.name();
                 }
                 if (!stack.isEmpty()) {
                     QWrappedObject *containerObject = stack.top().second;
@@ -153,25 +149,18 @@ QWrappedObject *QXmiReader::readFile(QIODevice *device)
                         QMetaMethod metaMethod = containerObject->metaObject()->method(i);
                         if (QString::fromLatin1(metaMethod.name()) == QString::fromLatin1("add%1").arg(elementName) ||
                             QString::fromLatin1(metaMethod.name()) == QString::fromLatin1("set%1").arg(elementName)) {
-                            if (!metaMethod.invoke(containerObject, ::Q_ARG(QWrappedObject *, wrappedObject)))
-                                qDebug() << "Erro ao invocar metametodo" << metaMethod.name();
-                            else
-                                qDebug() << "Metametodo ok ->" << containerObject->objectName() << metaMethod.name() << wrappedObject->objectName();
+                            metaMethod.invoke(containerObject, ::Q_ARG(QWrappedObject *, wrappedObject));
                             break;
                         }
                     }
-                    if (i == methodCount)
-                        qDebug() << "NAO ACHOU METODO" << QString::fromLatin1("add%1").arg(elementName) << "ou" << QString::fromLatin1("set%1").arg(elementName) << containerObject->objectName() << "->" << wrappedObject->objectName();
                 }
                 stack.push(QPair<QString, QWrappedObject *>(d->reader.name().toString(), wrappedObject));
-                qDebug() << stack;
             }
         }
         else if (d->reader.isEndElement() && !stack.isEmpty() && stack.top().first == d->reader.name()) {
             stack.pop();
             if (!stack.isEmpty())
                 rootElement = stack.top().second;
-            qDebug() << "endElement" << d->reader.name() << ". ROOT ELEM:" << rootElement;
         }
     }
 
@@ -187,14 +176,10 @@ QWrappedObject *QXmiReader::createInstance(QString instanceClass, QString instan
             QWrappedObject *wrappedObject = dynamic_cast<QWrappedObject *>(metaObject->newInstance());
             if (wrappedObject) {
                 qTopLevelWrapper(wrappedObject)->setObjectName(instanceName);
-                qDebug() << "Criei instancia de" << instanceClass << ". Name:" << instanceName;
                 return wrappedObject;
             }
-            else qDebug() << "newInstance retornou null";
         }
-        else qDebug() << "Nao encontrei o metaobject";
     }
-    else qDebug() << "Nao encontrei metatype de" << instanceClass;
     return 0;
 }
 

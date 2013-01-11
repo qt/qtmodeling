@@ -3,8 +3,11 @@
 
 #include <QAbstractItemModel>
 
-#include <QtWrappedObjects/QWrappedObject>
-#include <QtWrappedObjects/QMetaWrappedObject>
+namespace QtWrappedObjects
+{
+    class QWrappedObject;
+    class QMetaWrappedObject;
+}
 
 using QtWrappedObjects::QWrappedObject;
 using QtWrappedObjects::QMetaWrappedObject;
@@ -15,8 +18,6 @@ class WrappedObjectPropertyModel : public QAbstractItemModel
 public:
     explicit WrappedObjectPropertyModel(QObject *parent = 0);
 
-    void setWrappedObject(QWrappedObject *wrappedObject);
-
     virtual QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const;
     virtual QModelIndex parent(const QModelIndex &child) const;
     virtual int rowCount(const QModelIndex &parent = QModelIndex()) const;
@@ -26,7 +27,15 @@ public:
     QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const;
     Qt::ItemFlags flags(const QModelIndex & index) const;
 
+public Q_SLOTS:
+    void setWrappedObject(QWrappedObject *wrappedObject);
+    void setWrappedObjectIndex(const QModelIndex &wrappedObjectIndex);
+
+Q_SIGNALS:
+    void indexChanged(const QModelIndex &wrappedObjectIndex);
+
 private:
+    QModelIndex _wrappedObjectIndex;
     const QMetaWrappedObject *_metaWrappedObject;
 };
 
