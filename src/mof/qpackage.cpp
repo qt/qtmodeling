@@ -304,21 +304,20 @@ QSet<QType *> QPackage::ownedTypes() const
 {
     // This is a read-write derived association end
 
-    qWarning("QPackage::ownedTypes: to be implemented (this is a derived associationend)");
-
-    return QSet<QType *>(); // change here to your derived return
+    Q_D(const QPackage);
+    QSet<QType *> ownedTypes_;
+    foreach (QPackageableElement *packageableElement, d->packagedElements)
+        if (QType *type = qwrappedobject_cast<QType *>(packageableElement))
+            ownedTypes_.insert(type);
+    return ownedTypes_;
 }
 
 void QPackage::addOwnedType(QType *ownedType)
 {
     // This is a read-write derived association end
 
-    qWarning("QPackage::addOwnedType: to be implemented (this is a derived associationend)");
-    Q_UNUSED(ownedType);
-
-    if (false) { // change to your derived inclusion criteria
-        // change to your derived code
-
+    Q_D(QPackage);
+    if (!d->packagedElements.contains(ownedType)) {
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QPackage *>(this))->addPackagedElement(qwrappedobject_cast<QPackageableElement *>(ownedType));
 
@@ -331,12 +330,8 @@ void QPackage::removeOwnedType(QType *ownedType)
 {
     // This is a read-write derived association end
 
-    qWarning("QPackage::removeOwnedType: to be implemented (this is a derived associationend)");
-    Q_UNUSED(ownedType);
-
-    if (false) { // change to your derived exclusion criteria
-        // change to your derived code
-
+    Q_D(QPackage);
+    if (d->packagedElements.contains(ownedType)) {
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QPackage *>(this))->removePackagedElement(qwrappedobject_cast<QPackageableElement *>(ownedType));
 
@@ -464,21 +459,20 @@ QSet<QPackage *> QPackage::nestedPackages() const
 {
     // This is a read-write derived association end
 
-    qWarning("QPackage::nestedPackages: to be implemented (this is a derived associationend)");
-
-    return QSet<QPackage *>(); // change here to your derived return
+    Q_D(const QPackage);
+    QSet<QPackage *> nestedPackages_;
+    foreach (QPackageableElement *packageableElement, d->packagedElements)
+        if (QPackage *package = qwrappedobject_cast<QPackage *>(packageableElement))
+            nestedPackages_.insert(package);
+    return nestedPackages_;
 }
 
 void QPackage::addNestedPackage(QPackage *nestedPackage)
 {
     // This is a read-write derived association end
 
-    qWarning("QPackage::addNestedPackage: to be implemented (this is a derived associationend)");
-    Q_UNUSED(nestedPackage);
-
-    if (false) { // change to your derived inclusion criteria
-        // change to your derived code
-
+    Q_D(QPackage);
+    if (!d->packagedElements.contains(qwrappedobject_cast<QPackageableElement *>(nestedPackage))) {
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QPackage *>(this))->addPackagedElement(qwrappedobject_cast<QPackageableElement *>(nestedPackage));
 
@@ -491,12 +485,8 @@ void QPackage::removeNestedPackage(QPackage *nestedPackage)
 {
     // This is a read-write derived association end
 
-    qWarning("QPackage::removeNestedPackage: to be implemented (this is a derived associationend)");
-    Q_UNUSED(nestedPackage);
-
-    if (false) { // change to your derived exclusion criteria
-        // change to your derived code
-
+    Q_D(QPackage);
+    if (d->packagedElements.contains(qwrappedobject_cast<QPackageableElement *>(nestedPackage))) {
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QPackage *>(this))->removePackagedElement(qwrappedobject_cast<QPackageableElement *>(nestedPackage));
 

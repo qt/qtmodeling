@@ -95,6 +95,9 @@ public:
 
 protected:
     explicit QElement(QElementPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+
+private:
+    void allOwnedElements(QSet<QElement *> &allOwnedElements_) const;
 };
 
 QT_END_NAMESPACE_QTMOF

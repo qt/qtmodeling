@@ -126,6 +126,10 @@ void QNamedElement::setName(QString name)
     Q_D(QNamedElement);
     if (d->name != name) {
         d->name = name;
+        QWrappedObject *wrappedObject = this;
+        while (wrappedObject->wrapper())
+            wrappedObject = wrappedObject->wrapper();
+        wrappedObject->setObjectName(name);
     }
 }
 
@@ -157,9 +161,17 @@ QString QNamedElement::qualifiedName() const
 {
     // This is a read-only derived attribute
 
-    qWarning("QNamedElement::qualifiedName: to be implemented (this is a derived attribute)");
-
-    return QString(); // change here to your derived return
+    Q_D(const QNamedElement);
+    if (d->name.isEmpty()) return QString();
+    QString qualifiedName_(d->name);
+    QList<QNamespace *> allNamespaces_ = allNamespaces();
+    QString separator_ = separator();
+    foreach (QNamespace *namespace_, allNamespaces_) {
+        if (namespace_->name().isEmpty())
+            return QString();
+        qualifiedName_.prepend(separator_).prepend(namespace_->name());
+    }
+    return qualifiedName_;
 }
 
 // ---------------------------------------------------------------
@@ -182,9 +194,19 @@ QNamespace *QNamedElement::namespace_() const
  */
 QList<QNamespace *> QNamedElement::allNamespaces() const
 {
-    qWarning("QNamedElement::allNamespaces: operation to be implemented");
-
-    return QList<QNamespace *>(); // change here to your derived return
+    Q_D(const QNamedElement);
+    if (!d->namespace_) {
+        return QList<QNamespace *>();
+    }
+    else {
+        QList<QNamespace *> allNamespaces_;
+        QNamespace *namespace_ = this->namespace_();
+        while (namespace_) {
+            allNamespaces_.append(namespace_);
+            namespace_ = namespace_->namespace_();
+        }
+        return allNamespaces_;
+    }
 }
 
 /*!
@@ -204,9 +226,7 @@ bool QNamedElement::isDistinguishableFrom(const QNamedElement *n, const QNamespa
  */
 QString QNamedElement::separator() const
 {
-    qWarning("QNamedElement::separator: operation to be implemented");
-
-    return QString(); // change here to your derived return
+    return QStringLiteral("::");
 }
 
 void QNamedElement::registerMetaTypes() const

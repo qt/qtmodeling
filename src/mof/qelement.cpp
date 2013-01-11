@@ -195,9 +195,9 @@ void QElement::removeOwnedComment(QComment *ownedComment)
  */
 QSet<QElement *> QElement::allOwnedElements() const
 {
-    qWarning("QElement::allOwnedElements: operation to be implemented");
-
-    return QSet<QElement *>(); // change here to your derived return
+    QSet<QElement *> allOwnedElements_;
+    allOwnedElements(allOwnedElements_);
+    return allOwnedElements_;
 }
 
 /*!
@@ -205,9 +205,7 @@ QSet<QElement *> QElement::allOwnedElements() const
  */
 bool QElement::mustBeOwned() const
 {
-    qWarning("QElement::mustBeOwned: operation to be implemented");
-
-    return bool(); // change here to your derived return
+    return true;
 }
 
 QClass *QElement::getMetaClass() const
@@ -278,6 +276,14 @@ void QElement::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QElement")][QString::fromLatin1("ownedComments")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QMofObject::setPropertyData();
+}
+
+void QElement::allOwnedElements(QSet<QElement *> &allOwnedElements_) const
+{
+    Q_D(const QElement);
+    allOwnedElements_.unite(d->ownedElements);
+    foreach (QElement *element, d->ownedElements)
+        element->allOwnedElements(allOwnedElements_);
 }
 
 #include "moc_qelement.cpp"
