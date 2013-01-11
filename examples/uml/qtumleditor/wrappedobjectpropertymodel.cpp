@@ -19,7 +19,8 @@ void WrappedObjectPropertyModel::setWrappedObject(QWrappedObject *wrappedObject)
 {
     if (wrappedObject && _metaWrappedObject != wrappedObject->metaWrappedObject()) {
         beginResetModel();
-        _metaWrappedObject = wrappedObject->metaWrappedObject();
+        _wrappedObject = wrappedObject;
+        _metaWrappedObject = _wrappedObject->metaWrappedObject();
         _wrappedObjectIndex = QModelIndex();
         endResetModel();
     }
@@ -231,4 +232,9 @@ Qt::ItemFlags WrappedObjectPropertyModel::flags(const QModelIndex &index) const
     if (metaPropertyInfo && metaPropertyInfo->metaProperty.isWritable() && index.column() == 1)
         return Qt::ItemIsEnabled | Qt::ItemIsSelectable | Qt::ItemIsEditable;
     return QAbstractItemModel::flags(index);
+}
+
+QWrappedObject *WrappedObjectPropertyModel::wrappedObject() const
+{
+    return _wrappedObject;
 }
