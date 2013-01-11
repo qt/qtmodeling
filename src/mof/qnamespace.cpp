@@ -48,6 +48,7 @@
 #include <QtMof/QConstraint>
 #include <QtMof/QElementImport>
 #include <QtMof/QPackageableElement>
+#include <QtMof/QPackage>
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
@@ -164,6 +165,11 @@ void QNamespace::addPackageImport(QPackageImport *packageImport)
 
         // Adjust opposite property
         packageImport->setImportingNamespace(this);
+
+        // Adjust indirectly subsetted property(ies)
+        // This is because importedMembers is derived (not derivedUnion) and subsets member
+        foreach (QPackageableElement *packageableElement, packageImport->importedPackage()->packagedElements())
+            d->addMember(qwrappedobject_cast<QNamedElement *>(packageableElement));
     }
 }
 
@@ -180,6 +186,11 @@ void QNamespace::removePackageImport(QPackageImport *packageImport)
 
         // Adjust opposite property
         packageImport->setImportingNamespace(0);
+
+        // Adjust indirectly subsetted property(ies)
+        // This is because importedMembers is derived (not derivedUnion) and subsets member
+        foreach (QPackageableElement *packageableElement, packageImport->importedPackage()->packagedElements())
+            d->removeMember(qwrappedobject_cast<QNamedElement *>(packageableElement));
     }
 }
 
@@ -201,9 +212,14 @@ QSet<QPackageableElement *> QNamespace::importedMembers() const
 {
     // This is a read-only derived association end
 
-    qWarning("QNamespace::importedMembers: to be implemented (this is a derived associationend)");
+    Q_D(const QNamespace);
+    QSet<QPackageableElement *> importedMembers_;
+    foreach (QElementImport *elementImport, d->elementImports)
+        importedMembers_.insert(elementImport->importedElement());
+    foreach (QPackageImport *packageImport, d->packageImports)
+        importedMembers_.unite(packageImport->importedPackage()->packagedElements());
 
-    return QSet<QPackageableElement *>(); // change here to your derived return
+    return importedMembers_;
 }
 
 /*!
@@ -230,6 +246,10 @@ void QNamespace::addElementImport(QElementImport *elementImport)
 
         // Adjust opposite property
         elementImport->setImportingNamespace(this);
+
+        // Adjust indirectly subsetted property(ies)
+        // This is because importedMembers is derived (not derivedUnion) and subsets member
+        d->addMember(qwrappedobject_cast<QNamedElement *>(elementImport->importedElement()));
     }
 }
 
@@ -246,6 +266,10 @@ void QNamespace::removeElementImport(QElementImport *elementImport)
 
         // Adjust opposite property
         elementImport->setImportingNamespace(0);
+
+        // Adjust indirectly subsetted property(ies)
+        // This is because importedMembers is derived (not derivedUnion) and subsets member
+        d->removeMember(qwrappedobject_cast<QNamedElement *>(elementImport->importedElement()));
     }
 }
 
