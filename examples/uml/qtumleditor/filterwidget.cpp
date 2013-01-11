@@ -41,20 +41,13 @@
 
 #include "filterwidget.h"
 
-#include <QtCore/QDebug>
 #include <QtCore/QPropertyAnimation>
 
 #include <QtGui/QFocusEvent>
-#include <QtGui/QPalette>
-#include <QtGui/QCursor>
 #include <QtGui/QPainter>
 
-#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QHBoxLayout>
-#include <QtWidgets/QLineEdit>
-#include <QtWidgets/QToolButton>
 #include <QtWidgets/QStyle>
-#include <QtWidgets/QStyleOption>
 
 enum { debugFilter = 0 };
 
@@ -118,8 +111,6 @@ void HintLineEdit::setRefuseFocus(bool v)
 
 void HintLineEdit::mousePressEvent(QMouseEvent *e)
 {
-    if (debugFilter)
-        qDebug() << Q_FUNC_INFO;
     // Explicitly focus on click.
     if (m_refuseFocus && !hasFocus())
         setFocus(Qt::OtherFocusReason);
@@ -128,8 +119,6 @@ void HintLineEdit::mousePressEvent(QMouseEvent *e)
 
 void HintLineEdit::focusInEvent(QFocusEvent *e)
 {
-    if (debugFilter)
-        qDebug() << Q_FUNC_INFO;
     if (m_refuseFocus) {
         // Refuse the focus if the mouse it outside. In addition to the mouse
         // press logic, this prevents a re-focussing which occurs once
@@ -138,8 +127,6 @@ void HintLineEdit::focusInEvent(QFocusEvent *e)
         if (reason == Qt::ActiveWindowFocusReason || reason == Qt::PopupFocusReason) {
             const QPoint mousePos = mapFromGlobal(QCursor::pos());
             const bool refuse = !geometry().contains(mousePos);
-            if (debugFilter)
-                qDebug() << Q_FUNC_INFO << refuse ;
             if (refuse) {
                 e->ignore();
                 return;
@@ -232,9 +219,6 @@ QIcon FilterWidget::createIconSet(const QString &name)
 
 void FilterWidget::reset()
 {
-    if (debugFilter)
-        qDebug() << Q_FUNC_INFO;
-
     if (!m_editor->text().isEmpty()) {
         // Editor has lost focus once this is pressed
         m_editor->clear();

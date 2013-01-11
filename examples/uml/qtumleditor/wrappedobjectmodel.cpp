@@ -1,11 +1,8 @@
 #include "wrappedobjectmodel.h"
 
 #include <QtWrappedObjects/QWrappedObject>
-#include <QtWrappedObjects/QMetaWrappedObject>
-#include <QtWrappedObjects/QMetaPropertyInfo>
+
 using QtWrappedObjects::QWrappedObject;
-using QtWrappedObjects::QMetaWrappedObject;
-using QtWrappedObjects::QMetaPropertyInfo;
 
 WrappedObjectModel::WrappedObjectModel(QObject *parent) :
     QAbstractItemModel(parent), _wrappedObject(0)

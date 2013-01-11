@@ -6,7 +6,7 @@
 namespace QtWrappedObjects
 {
     class QWrappedObject;
-};
+}
 using QtWrappedObjects::QWrappedObject;
 
 class WrappedObjectModel : public QAbstractItemModel
@@ -15,7 +15,6 @@ class WrappedObjectModel : public QAbstractItemModel
 public:
     explicit WrappedObjectModel(QObject *parent = 0);
 
-    void setWrappedObject(QWrappedObject *wrappedObject);
     QWrappedObject *wrappedObject() const;
 
     virtual QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const;
@@ -28,10 +27,10 @@ public:
     Qt::ItemFlags flags(const QModelIndex &index) const;
 
 public Q_SLOTS:
+    void setWrappedObject(QWrappedObject *wrappedObject);
     void updateIndex(const QModelIndex &index);
 
 private:
-
     QWrappedObject *_wrappedObject;
 };
 
