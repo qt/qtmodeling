@@ -27,6 +27,8 @@ public:
     QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const;
     Qt::ItemFlags flags(const QModelIndex & index) const;
 
+    QWrappedObject *wrappedObject() const;
+
 public Q_SLOTS:
     void setWrappedObject(QWrappedObject *wrappedObject);
     void setWrappedObjectIndex(const QModelIndex &wrappedObjectIndex);
@@ -36,6 +38,7 @@ Q_SIGNALS:
 
 private:
     QModelIndex _wrappedObjectIndex;
+    QWrappedObject *_wrappedObject;
     const QMetaWrappedObject *_metaWrappedObject;
 };
 

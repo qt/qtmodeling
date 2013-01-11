@@ -4,10 +4,14 @@
 #include <QtWidgets/QTreeView>
 #include <QtWidgets/QVBoxLayout>
 
+#include <QtWrappedObjects/QWrappedObject>
+
 #include "filterwidget.h"
 #include "propertyeditoritemdelegate.h"
 #include "wrappedobjectpropertymodel.h"
 #include "wrappedobjectpropertyfiltermodel.h"
+
+using QtWrappedObjects::QWrappedObject;
 
 QWrappedObjectPropertyEditor::QWrappedObjectPropertyEditor(QWidget *parent) :
     QWidget(parent),
@@ -33,7 +37,7 @@ QWrappedObjectPropertyEditor::QWrappedObjectPropertyEditor(QWidget *parent) :
     _proxyModel->setFilterCaseSensitivity(Qt::CaseInsensitive);
 
     QVBoxLayout *layout = new QVBoxLayout(this);
-    layout->setSpacing(0);
+    layout->setSpacing(2);
     layout->setContentsMargins(0, 0, 0, 0);
     layout->addWidget(_filter);
     layout->addWidget(_label);
@@ -56,6 +60,7 @@ void QWrappedObjectPropertyEditor::setModel(WrappedObjectPropertyModel *property
     _proxyModel->setSourceModel(_propertyModel);
     if (propertyModel) {
         connect(propertyModel, &QAbstractItemModel::modelReset, [=]() {
+            _label->setText(QString::fromLatin1("%1: %2").arg(_propertyModel->wrappedObject()->objectName()).arg(_propertyModel->wrappedObject()->metaObject()->className()));
             _treeView->expandAll();
             _treeView->resizeColumnToContents(0);
             _treeView->resizeColumnToContents(1);
