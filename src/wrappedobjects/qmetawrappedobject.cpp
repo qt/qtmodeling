@@ -58,6 +58,14 @@ QMetaWrappedObjectPrivate::~QMetaWrappedObjectPrivate()
 {
 }
 
+/*!
+    \class QMetaWrappedObject
+
+    \inmodule QtWrappedObjects
+
+    \brief The QMetaWrappedObject class provides meta information about a QWrappedObject.
+ */
+
 QMetaWrappedObject::QMetaWrappedObject(QWrappedObject *wrappedObject)
     : d_ptr(new QMetaWrappedObjectPrivate)
 {

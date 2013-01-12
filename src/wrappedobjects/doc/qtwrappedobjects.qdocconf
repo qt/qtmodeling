@@ -1,0 +1,41 @@
+include($QT_INSTALL_DOCS/global/qt-module-defaults.qdocconf)
+
+project                 = QtWrappedObjects
+description             = Qt WrappedObjects Reference Documentation
+url                     = http://qt-project.org/doc/qtwrappedobjects
+version                 = 5.0.0
+
+examplesinstallpath     = wrappedobjects
+
+qhp.projects            = QtWrappedObjects
+
+qhp.QtWrappedObjects.file            = qtwrappedobjects.qhp
+qhp.QtWrappedObjects.namespace           = org.qt-project.qtwrappedobjects.500
+qhp.QtWrappedObjects.virtualFolder       = qtwrappedobjects
+qhp.QtWrappedObjects.indexTitle          = Qt WrappedObjects
+qhp.QtWrappedObjects.indexRoot           =
+
+qhp.QtWrappedObjects.filterAttributes    = qtwrappedobjects 5.0.0 qtrefdoc
+qhp.QtWrappedObjects.customFilters.Qt.name = QtWrappedObjects 5.0.0
+qhp.QtWrappedObjects.customFilters.Qt.filterAttributes = qtwrappedobjects 5.0.0
+
+qhp.QtWrappedObjects.subprojects         = classes
+qhp.QtWrappedObjects.subprojects.classes.title = C++ Classes
+qhp.QtWrappedObjects.subprojects.classes.indexTitle = Qt WrappedObjects C++ Classes
+qhp.QtWrappedObjects.subprojects.classes.selectors = class fake:headerfile
+qhp.QtWrappedObjects.subprojects.classes.sortPages = true
+tagfile                 = ../../../doc/qtwrappedobjects/qtwrappedobjects.tags
+
+depends                 += qtcore qtdoc
+
+headerdirs  += ..
+
+sourcedirs  += .. \
+               ../../../examples/wrappedobjects/doc/src
+
+exampledirs += ../../../examples/wrappedobjects \
+               ../ \
+               snippets
+
+imagedirs   += images \
+               ../../../examples/wrappedobjects/doc/images

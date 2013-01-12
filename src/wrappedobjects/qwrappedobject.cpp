@@ -62,6 +62,14 @@ QWrappedObjectPrivate *QWrappedObjectPrivate::get(QWrappedObject *o)
     return dynamic_cast<QWrappedObjectPrivate *>(o->d_func());
 }
 
+/*!
+    \class QWrappedObject
+
+    \inmodule QtWrappedObjects
+
+    \brief The QWrappedObject class provides a QObject which can be wrapped by another QWrappedObject.
+ */
+
 QHash<QString, QHash<QString, QHash<QtWrappedObjects::MetaPropertyDataRole, QVariant>>> QWrappedObject::propertyDataHash;
 
 QWrappedObject::QWrappedObject(QWrappedObject *wrapper, QWrappedObject *parent) :
