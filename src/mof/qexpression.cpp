@@ -144,14 +144,6 @@ void QExpression::removeOperand(QValueSpecification *operand)
     }
 }
 
-void QExpression::registerMetaTypes() const
-{
-    QValueSpecification::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QExpression::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QExpression")][QString::fromLatin1("symbol")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

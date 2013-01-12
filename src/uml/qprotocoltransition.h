@@ -82,7 +82,7 @@ public:
     Q_INVOKABLE QSet<QOperation *> referred() const;
     Q_INVOKABLE QConstraint *preCondition() const;
     Q_INVOKABLE void setPreCondition(QConstraint *preCondition);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

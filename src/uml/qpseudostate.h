@@ -86,7 +86,7 @@ public:
     Q_INVOKABLE void setState(QState *state);
     Q_INVOKABLE QStateMachine *stateMachine() const;
     Q_INVOKABLE void setStateMachine(QStateMachine *stateMachine);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

@@ -106,18 +106,6 @@ void QMessageEnd::setMessage(QMessage *message)
     }
 }
 
-void QMessageEnd::registerMetaTypes() const
-{
-    qRegisterMetaType<QMessage *>("QMessage *");
-    qRegisterMetaType<QSet<QMessage *>>("QSet<QMessage *>");
-    qRegisterMetaType<QList<QMessage *>>("QList<QMessage *>");
-
-    QNamedElement::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QMessageEnd::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMessageEnd")][QString::fromLatin1("message")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

@@ -99,7 +99,7 @@ public:
     Q_INVOKABLE bool ancestor(const QState *s1, const QState *s2) const;
     Q_INVOKABLE bool isConsistentWith(const QRedefinableElement *redefinee) const;
     Q_INVOKABLE bool isRedefinitionContextValid(const QStateMachine *redefined) const;
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

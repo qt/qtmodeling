@@ -64,7 +64,7 @@ class Q_UML_EXPORT QUsage : public QDependency
 public:
     Q_INVOKABLE explicit QUsage(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QUsage();
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

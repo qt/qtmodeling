@@ -79,7 +79,7 @@ public:
     // Association ends from QRemoveVariableValueAction
     Q_INVOKABLE QInputPin *removeAt() const;
     Q_INVOKABLE void setRemoveAt(QInputPin *removeAt);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

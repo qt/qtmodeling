@@ -129,22 +129,6 @@ void QDecisionNode::setDecisionInput(QBehavior *decisionInput)
     }
 }
 
-void QDecisionNode::registerMetaTypes() const
-{
-    qRegisterMetaType<QBehavior *>("QBehavior *");
-    qRegisterMetaType<QSet<QBehavior *>>("QSet<QBehavior *>");
-    qRegisterMetaType<QList<QBehavior *>>("QList<QBehavior *>");
-
-    qRegisterMetaType<QObjectFlow *>("QObjectFlow *");
-    qRegisterMetaType<QSet<QObjectFlow *>>("QSet<QObjectFlow *>");
-    qRegisterMetaType<QList<QObjectFlow *>>("QList<QObjectFlow *>");
-
-    QControlNode::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QDecisionNode::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDecisionNode")][QString::fromLatin1("decisionInputFlow")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

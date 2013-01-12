@@ -620,42 +620,6 @@ bool QTransition::isConsistentWith(const QRedefinableElement *redefinee) const
     return bool(); // change here to your derived return
 }
 
-void QTransition::registerMetaTypes() const
-{
-    qRegisterMetaType<QTrigger *>("QTrigger *");
-    qRegisterMetaType<QSet<QTrigger *>>("QSet<QTrigger *>");
-    qRegisterMetaType<QList<QTrigger *>>("QList<QTrigger *>");
-
-    qRegisterMetaType<QVertex *>("QVertex *");
-    qRegisterMetaType<QSet<QVertex *>>("QSet<QVertex *>");
-    qRegisterMetaType<QList<QVertex *>>("QList<QVertex *>");
-
-    qRegisterMetaType<QStateMachine *>("QStateMachine *");
-    qRegisterMetaType<QSet<QStateMachine *>>("QSet<QStateMachine *>");
-    qRegisterMetaType<QList<QStateMachine *>>("QList<QStateMachine *>");
-
-    qRegisterMetaType<QClassifier *>("QClassifier *");
-    qRegisterMetaType<QSet<QClassifier *>>("QSet<QClassifier *>");
-    qRegisterMetaType<QList<QClassifier *>>("QList<QClassifier *>");
-
-    qRegisterMetaType<QRegion *>("QRegion *");
-    qRegisterMetaType<QSet<QRegion *>>("QSet<QRegion *>");
-    qRegisterMetaType<QList<QRegion *>>("QList<QRegion *>");
-
-    qRegisterMetaType<QConstraint *>("QConstraint *");
-    qRegisterMetaType<QSet<QConstraint *>>("QSet<QConstraint *>");
-    qRegisterMetaType<QList<QConstraint *>>("QList<QConstraint *>");
-
-    qRegisterMetaType<QBehavior *>("QBehavior *");
-    qRegisterMetaType<QSet<QBehavior *>>("QSet<QBehavior *>");
-    qRegisterMetaType<QList<QBehavior *>>("QList<QBehavior *>");
-
-    QWrappedObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QTransition::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("kind")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

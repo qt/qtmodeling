@@ -86,7 +86,7 @@ public:
     Q_INVOKABLE QSet<QClassifier *> constrainingClassifiers() const;
     Q_INVOKABLE void addConstrainingClassifier(QClassifier *constrainingClassifier);
     Q_INVOKABLE void removeConstrainingClassifier(QClassifier *constrainingClassifier);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

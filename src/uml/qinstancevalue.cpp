@@ -106,18 +106,6 @@ void QInstanceValue::setInstance(QInstanceSpecification *instance)
     }
 }
 
-void QInstanceValue::registerMetaTypes() const
-{
-    qRegisterMetaType<QInstanceSpecification *>("QInstanceSpecification *");
-    qRegisterMetaType<QSet<QInstanceSpecification *>>("QSet<QInstanceSpecification *>");
-    qRegisterMetaType<QList<QInstanceSpecification *>>("QList<QInstanceSpecification *>");
-
-    QValueSpecification::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QInstanceValue::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QInstanceValue")][QString::fromLatin1("instance")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

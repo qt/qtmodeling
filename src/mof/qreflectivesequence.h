@@ -73,7 +73,7 @@ public:
     Q_INVOKABLE QMofObject *get(qint32 index) const;
     Q_INVOKABLE QMofObject *remove(qint32 index);
     Q_INVOKABLE QMofObject *set(qint32 index, const QMofObject *object);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

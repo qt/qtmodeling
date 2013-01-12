@@ -85,7 +85,7 @@ public:
     Q_INVOKABLE void removeResult(QOutputPin *result);
     Q_INVOKABLE QClassifier *unmarshallType() const;
     Q_INVOKABLE void setUnmarshallType(QClassifier *unmarshallType);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

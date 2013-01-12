@@ -81,7 +81,7 @@ public:
     Q_INVOKABLE bool isSet(const QProperty *property) const;
     Q_INVOKABLE void unset(const QProperty *property);
     Q_INVOKABLE QMofObject *invoke(const QOperation *op, QSet<QArgument *> arguments);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

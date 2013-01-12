@@ -74,7 +74,7 @@ public:
     Q_INVOKABLE QtMof::VisibilityKind visibility() const;
     Q_INVOKABLE void setVisibility(QtMof::VisibilityKind visibility);
     Q_INVOKABLE void unsetVisibility();
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

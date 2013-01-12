@@ -78,14 +78,6 @@ QPrimitiveType::~QPrimitiveType()
 {
 }
 
-void QPrimitiveType::registerMetaTypes() const
-{
-    QDataType::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QPrimitiveType::setPropertyData()
 {
     QDataType::setPropertyData();

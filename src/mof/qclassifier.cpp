@@ -693,30 +693,6 @@ QSet<QClassifier *> QClassifier::parents() const
     return QSet<QClassifier *>(); // change here to your derived return
 }
 
-void QClassifier::registerMetaTypes() const
-{
-    qRegisterMetaType<QGeneralization *>("QGeneralization *");
-    qRegisterMetaType<QSet<QGeneralization *>>("QSet<QGeneralization *>");
-    qRegisterMetaType<QList<QGeneralization *>>("QList<QGeneralization *>");
-
-    qRegisterMetaType<QNamedElement *>("QNamedElement *");
-    qRegisterMetaType<QSet<QNamedElement *>>("QSet<QNamedElement *>");
-    qRegisterMetaType<QList<QNamedElement *>>("QList<QNamedElement *>");
-
-    qRegisterMetaType<QProperty *>("QProperty *");
-    qRegisterMetaType<QSet<QProperty *>>("QSet<QProperty *>");
-    qRegisterMetaType<QList<QProperty *>>("QList<QProperty *>");
-
-    qRegisterMetaType<QFeature *>("QFeature *");
-    qRegisterMetaType<QSet<QFeature *>>("QSet<QFeature *>");
-    qRegisterMetaType<QList<QFeature *>>("QList<QFeature *>");
-
-    QWrappedObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QClassifier::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("isAbstract")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

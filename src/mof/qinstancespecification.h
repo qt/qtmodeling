@@ -86,7 +86,7 @@ public:
     Q_INVOKABLE QSet<QSlot *> slots_() const;
     Q_INVOKABLE void addSlot_(QSlot *slot_);
     Q_INVOKABLE void removeSlot_(QSlot *slot_);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

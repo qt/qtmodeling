@@ -452,26 +452,6 @@ bool QVariable::isAccessibleBy(const QAction *a) const
     return bool(); // change here to your derived return
 }
 
-void QVariable::registerMetaTypes() const
-{
-    qRegisterMetaType<QActivity *>("QActivity *");
-    qRegisterMetaType<QSet<QActivity *>>("QSet<QActivity *>");
-    qRegisterMetaType<QList<QActivity *>>("QList<QActivity *>");
-
-    qRegisterMetaType<QStructuredActivityNode *>("QStructuredActivityNode *");
-    qRegisterMetaType<QSet<QStructuredActivityNode *>>("QSet<QStructuredActivityNode *>");
-    qRegisterMetaType<QList<QStructuredActivityNode *>>("QList<QStructuredActivityNode *>");
-
-    qRegisterMetaType<QAction *>("QAction *");
-    qRegisterMetaType<QSet<QAction *>>("QSet<QAction *>");
-    qRegisterMetaType<QList<QAction *>>("QList<QAction *>");
-
-    QWrappedObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QVariable::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QVariable")][QString::fromLatin1("scope")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

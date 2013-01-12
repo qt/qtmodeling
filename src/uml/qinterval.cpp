@@ -126,14 +126,6 @@ void QInterval::setMax(QValueSpecification *max)
     }
 }
 
-void QInterval::registerMetaTypes() const
-{
-    QValueSpecification::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QInterval::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QInterval")][QString::fromLatin1("min")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

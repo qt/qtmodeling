@@ -79,7 +79,7 @@ public:
     // Association ends from QTimeObservation
     Q_INVOKABLE QNamedElement *event() const;
     Q_INVOKABLE void setEvent(QNamedElement *event);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

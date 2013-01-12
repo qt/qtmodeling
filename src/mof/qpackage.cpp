@@ -526,26 +526,6 @@ QSet<QPackageableElement *> QPackage::visibleMembers() const
     return QSet<QPackageableElement *>(); // change here to your derived return
 }
 
-void QPackage::registerMetaTypes() const
-{
-    qRegisterMetaType<QNamedElement *>("QNamedElement *");
-    qRegisterMetaType<QSet<QNamedElement *>>("QSet<QNamedElement *>");
-    qRegisterMetaType<QList<QNamedElement *>>("QList<QNamedElement *>");
-
-    qRegisterMetaType<QPackageMerge *>("QPackageMerge *");
-    qRegisterMetaType<QSet<QPackageMerge *>>("QSet<QPackageMerge *>");
-    qRegisterMetaType<QList<QPackageMerge *>>("QList<QPackageMerge *>");
-
-    qRegisterMetaType<QType *>("QType *");
-    qRegisterMetaType<QSet<QType *>>("QSet<QType *>");
-    qRegisterMetaType<QList<QType *>>("QList<QType *>");
-
-    QWrappedObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QPackage::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QPackage")][QString::fromLatin1("URI")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

@@ -144,18 +144,6 @@ void QInteractionConstraint::setMinint(QValueSpecification *minint)
     }
 }
 
-void QInteractionConstraint::registerMetaTypes() const
-{
-    qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
-    qRegisterMetaType<QSet<QValueSpecification *>>("QSet<QValueSpecification *>");
-    qRegisterMetaType<QList<QValueSpecification *>>("QList<QValueSpecification *>");
-
-    QConstraint::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QInteractionConstraint::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionConstraint")][QString::fromLatin1("maxint")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");

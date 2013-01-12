@@ -111,18 +111,6 @@ void QOperationTemplateParameter::setParameteredElement(QOperation *parameteredE
     }
 }
 
-void QOperationTemplateParameter::registerMetaTypes() const
-{
-    qRegisterMetaType<QOperation *>("QOperation *");
-    qRegisterMetaType<QSet<QOperation *>>("QSet<QOperation *>");
-    qRegisterMetaType<QList<QOperation *>>("QList<QOperation *>");
-
-    QTemplateParameter::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QOperationTemplateParameter::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QOperationTemplateParameter")][QString::fromLatin1("parameteredElement")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

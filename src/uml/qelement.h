@@ -86,7 +86,7 @@ public:
     // Operations
     Q_INVOKABLE QSet<QElement *> allOwnedElements() const;
     Q_INVOKABLE bool mustBeOwned() const;
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

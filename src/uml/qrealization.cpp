@@ -78,14 +78,6 @@ QRealization::~QRealization()
 {
 }
 
-void QRealization::registerMetaTypes() const
-{
-    QAbstraction::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QRealization::setPropertyData()
 {
     QAbstraction::setPropertyData();

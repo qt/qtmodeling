@@ -77,7 +77,7 @@ public:
     Q_INVOKABLE void setObject(QInputPin *object);
     Q_INVOKABLE QStructuralFeature *structuralFeature() const;
     Q_INVOKABLE void setStructuralFeature(QStructuralFeature *structuralFeature);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

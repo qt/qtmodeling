@@ -80,7 +80,7 @@ public:
     Q_INVOKABLE QSet<QElement *> annotatedElements() const;
     Q_INVOKABLE void addAnnotatedElement(QElement *annotatedElement);
     Q_INVOKABLE void removeAnnotatedElement(QElement *annotatedElement);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

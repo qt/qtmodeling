@@ -114,18 +114,6 @@ void QStartObjectBehaviorAction::setObject(QInputPin *object)
     }
 }
 
-void QStartObjectBehaviorAction::registerMetaTypes() const
-{
-    qRegisterMetaType<QInputPin *>("QInputPin *");
-    qRegisterMetaType<QSet<QInputPin *>>("QSet<QInputPin *>");
-    qRegisterMetaType<QList<QInputPin *>>("QList<QInputPin *>");
-
-    QCallAction::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QStartObjectBehaviorAction::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QStartObjectBehaviorAction")][QString::fromLatin1("object")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");

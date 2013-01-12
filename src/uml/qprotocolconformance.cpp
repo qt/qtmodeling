@@ -153,18 +153,6 @@ void QProtocolConformance::setGeneralMachine(QProtocolStateMachine *generalMachi
     }
 }
 
-void QProtocolConformance::registerMetaTypes() const
-{
-    qRegisterMetaType<QProtocolStateMachine *>("QProtocolStateMachine *");
-    qRegisterMetaType<QSet<QProtocolStateMachine *>>("QSet<QProtocolStateMachine *>");
-    qRegisterMetaType<QList<QProtocolStateMachine *>>("QList<QProtocolStateMachine *>");
-
-    QDirectedRelationship::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QProtocolConformance::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolConformance")][QString::fromLatin1("specificMachine")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

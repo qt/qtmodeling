@@ -128,34 +128,6 @@ bool QExtent::linkExists(const QAssociation *association, const QElement *firstE
     return bool(); // change here to your derived return
 }
 
-void QExtent::registerMetaTypes() const
-{
-    qRegisterMetaType<QLink *>("QLink *");
-    qRegisterMetaType<QSet<QLink *>>("QSet<QLink *>");
-    qRegisterMetaType<QList<QLink *>>("QList<QLink *>");
-
-    qRegisterMetaType<QAssociation *>("QAssociation *");
-    qRegisterMetaType<QSet<QAssociation *>>("QSet<QAssociation *>");
-    qRegisterMetaType<QList<QAssociation *>>("QList<QAssociation *>");
-
-    qRegisterMetaType<QClass *>("QClass *");
-    qRegisterMetaType<QSet<QClass *>>("QSet<QClass *>");
-    qRegisterMetaType<QList<QClass *>>("QList<QClass *>");
-
-    qRegisterMetaType<QReflectiveSequence *>("QReflectiveSequence *");
-    qRegisterMetaType<QSet<QReflectiveSequence *>>("QSet<QReflectiveSequence *>");
-    qRegisterMetaType<QList<QReflectiveSequence *>>("QList<QReflectiveSequence *>");
-
-    qRegisterMetaType<QElement *>("QElement *");
-    qRegisterMetaType<QSet<QElement *>>("QSet<QElement *>");
-    qRegisterMetaType<QList<QElement *>>("QList<QElement *>");
-
-    QMofObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QExtent::setPropertyData()
 {
     QMofObject::setPropertyData();

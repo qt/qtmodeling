@@ -142,22 +142,6 @@ void QDeploymentTarget::removeDeployment(QDeployment *deployment)
     }
 }
 
-void QDeploymentTarget::registerMetaTypes() const
-{
-    qRegisterMetaType<QPackageableElement *>("QPackageableElement *");
-    qRegisterMetaType<QSet<QPackageableElement *>>("QSet<QPackageableElement *>");
-    qRegisterMetaType<QList<QPackageableElement *>>("QList<QPackageableElement *>");
-
-    qRegisterMetaType<QDeployment *>("QDeployment *");
-    qRegisterMetaType<QSet<QDeployment *>>("QSet<QDeployment *>");
-    qRegisterMetaType<QList<QDeployment *>>("QList<QDeployment *>");
-
-    QNamedElement::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QDeploymentTarget::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDeploymentTarget")][QString::fromLatin1("deployedElements")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

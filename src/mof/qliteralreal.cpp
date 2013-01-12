@@ -120,14 +120,6 @@ qreal QLiteralReal::realValue() const
     return qreal(); // change here to your derived return
 }
 
-void QLiteralReal::registerMetaTypes() const
-{
-    QLiteralSpecification::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QLiteralReal::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLiteralReal")][QString::fromLatin1("value")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

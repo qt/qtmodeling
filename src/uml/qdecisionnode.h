@@ -77,7 +77,7 @@ public:
     Q_INVOKABLE void setDecisionInputFlow(QObjectFlow *decisionInputFlow);
     Q_INVOKABLE QBehavior *decisionInput() const;
     Q_INVOKABLE void setDecisionInput(QBehavior *decisionInput);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

@@ -79,7 +79,7 @@ public:
     // Association ends from QTimeEvent
     Q_INVOKABLE QTimeExpression *when() const;
     Q_INVOKABLE void setWhen(QTimeExpression *when);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

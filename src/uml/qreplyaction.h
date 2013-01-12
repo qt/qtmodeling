@@ -84,7 +84,7 @@ public:
     Q_INVOKABLE QSet<QInputPin *> replyValues() const;
     Q_INVOKABLE void addReplyValue(QInputPin *replyValue);
     Q_INVOKABLE void removeReplyValue(QInputPin *replyValue);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

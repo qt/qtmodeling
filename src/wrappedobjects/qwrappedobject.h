@@ -88,8 +88,6 @@ public:
 
     bool isPropertyModified(QMetaProperty metaProperty) const;
 
-    virtual void registerMetaTypes() const;
-
 protected:
     explicit QWrappedObject(QWrappedObjectPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     void initialize(QWrappedObject *wrapper);

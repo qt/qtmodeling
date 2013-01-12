@@ -90,7 +90,7 @@ public:
     Q_INVOKABLE QElement *create(const QClass *metaClass);
     Q_INVOKABLE QElement *createElement(const QClass *class_, QSet<QArgument *> arguments);
     Q_INVOKABLE QLink *createLink(const QAssociation *association, const QElement *firstElement, const QElement *secondElement);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

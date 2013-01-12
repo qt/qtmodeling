@@ -137,22 +137,6 @@ void QCallOperationAction::setTarget(QInputPin *target)
     }
 }
 
-void QCallOperationAction::registerMetaTypes() const
-{
-    qRegisterMetaType<QOperation *>("QOperation *");
-    qRegisterMetaType<QSet<QOperation *>>("QSet<QOperation *>");
-    qRegisterMetaType<QList<QOperation *>>("QList<QOperation *>");
-
-    qRegisterMetaType<QInputPin *>("QInputPin *");
-    qRegisterMetaType<QSet<QInputPin *>>("QSet<QInputPin *>");
-    qRegisterMetaType<QList<QInputPin *>>("QList<QInputPin *>");
-
-    QCallAction::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QCallOperationAction::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QCallOperationAction")][QString::fromLatin1("operation")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

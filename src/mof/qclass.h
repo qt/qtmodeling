@@ -101,7 +101,7 @@ public:
 
     // Operations
     Q_INVOKABLE QSet<QNamedElement *> inherit(QSet<QNamedElement *> inhs) const;
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

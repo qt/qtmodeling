@@ -80,7 +80,7 @@ public:
     // Overriden methods for subsetted properties
     Q_INVOKABLE void addSupplier(QWrappedObjectPointer<QPackageableElement> utilizedElement);
     Q_INVOKABLE void removeSupplier(QWrappedObjectPointer<QPackageableElement> utilizedElement);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

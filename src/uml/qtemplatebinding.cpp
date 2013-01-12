@@ -198,26 +198,6 @@ void QTemplateBinding::removeParameterSubstitution(QTemplateParameterSubstitutio
     }
 }
 
-void QTemplateBinding::registerMetaTypes() const
-{
-    qRegisterMetaType<QTemplateableElement *>("QTemplateableElement *");
-    qRegisterMetaType<QSet<QTemplateableElement *>>("QSet<QTemplateableElement *>");
-    qRegisterMetaType<QList<QTemplateableElement *>>("QList<QTemplateableElement *>");
-
-    qRegisterMetaType<QTemplateParameterSubstitution *>("QTemplateParameterSubstitution *");
-    qRegisterMetaType<QSet<QTemplateParameterSubstitution *>>("QSet<QTemplateParameterSubstitution *>");
-    qRegisterMetaType<QList<QTemplateParameterSubstitution *>>("QList<QTemplateParameterSubstitution *>");
-
-    qRegisterMetaType<QTemplateSignature *>("QTemplateSignature *");
-    qRegisterMetaType<QSet<QTemplateSignature *>>("QSet<QTemplateSignature *>");
-    qRegisterMetaType<QList<QTemplateSignature *>>("QList<QTemplateSignature *>");
-
-    QDirectedRelationship::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QTemplateBinding::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateBinding")][QString::fromLatin1("signature")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

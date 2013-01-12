@@ -77,7 +77,7 @@ public:
     Q_INVOKABLE QList<QExecutableNode *> executableNodes() const;
     Q_INVOKABLE void addExecutableNode(QExecutableNode *executableNode);
     Q_INVOKABLE void removeExecutableNode(QExecutableNode *executableNode);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

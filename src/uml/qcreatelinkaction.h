@@ -77,7 +77,7 @@ public:
     Q_INVOKABLE QSet<QLinkEndCreationData *> endData() const;
     Q_INVOKABLE void addEndData(QLinkEndCreationData *endData);
     Q_INVOKABLE void removeEndData(QLinkEndCreationData *endData);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

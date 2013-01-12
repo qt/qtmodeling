@@ -291,30 +291,6 @@ void QMessage::setConnector(QConnector *connector)
     }
 }
 
-void QMessage::registerMetaTypes() const
-{
-    qRegisterMetaType<QMessageEnd *>("QMessageEnd *");
-    qRegisterMetaType<QSet<QMessageEnd *>>("QSet<QMessageEnd *>");
-    qRegisterMetaType<QList<QMessageEnd *>>("QList<QMessageEnd *>");
-
-    qRegisterMetaType<QInteraction *>("QInteraction *");
-    qRegisterMetaType<QSet<QInteraction *>>("QSet<QInteraction *>");
-    qRegisterMetaType<QList<QInteraction *>>("QList<QInteraction *>");
-
-    qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
-    qRegisterMetaType<QSet<QValueSpecification *>>("QSet<QValueSpecification *>");
-    qRegisterMetaType<QList<QValueSpecification *>>("QList<QValueSpecification *>");
-
-    qRegisterMetaType<QConnector *>("QConnector *");
-    qRegisterMetaType<QSet<QConnector *>>("QSet<QConnector *>");
-    qRegisterMetaType<QList<QConnector *>>("QList<QConnector *>");
-
-    QNamedElement::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QMessage::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("messageSort")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

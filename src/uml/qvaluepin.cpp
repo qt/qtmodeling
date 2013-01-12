@@ -114,18 +114,6 @@ void QValuePin::setValue(QValueSpecification *value)
     }
 }
 
-void QValuePin::registerMetaTypes() const
-{
-    qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
-    qRegisterMetaType<QSet<QValueSpecification *>>("QSet<QValueSpecification *>");
-    qRegisterMetaType<QList<QValueSpecification *>>("QList<QValueSpecification *>");
-
-    QInputPin::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QValuePin::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QValuePin")][QString::fromLatin1("value")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");

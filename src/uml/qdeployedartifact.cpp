@@ -78,14 +78,6 @@ QDeployedArtifact::~QDeployedArtifact()
 {
 }
 
-void QDeployedArtifact::registerMetaTypes() const
-{
-    QNamedElement::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QDeployedArtifact::setPropertyData()
 {
     QNamedElement::setPropertyData();

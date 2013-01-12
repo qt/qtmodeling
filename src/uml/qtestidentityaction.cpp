@@ -175,22 +175,6 @@ void QTestIdentityAction::setFirst(QInputPin *first)
     }
 }
 
-void QTestIdentityAction::registerMetaTypes() const
-{
-    qRegisterMetaType<QInputPin *>("QInputPin *");
-    qRegisterMetaType<QSet<QInputPin *>>("QSet<QInputPin *>");
-    qRegisterMetaType<QList<QInputPin *>>("QList<QInputPin *>");
-
-    qRegisterMetaType<QOutputPin *>("QOutputPin *");
-    qRegisterMetaType<QSet<QOutputPin *>>("QSet<QOutputPin *>");
-    qRegisterMetaType<QList<QOutputPin *>>("QList<QOutputPin *>");
-
-    QAction::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QTestIdentityAction::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QTestIdentityAction")][QString::fromLatin1("second")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");

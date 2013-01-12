@@ -78,14 +78,6 @@ QWriteLinkAction::~QWriteLinkAction()
 {
 }
 
-void QWriteLinkAction::registerMetaTypes() const
-{
-    QLinkAction::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QWriteLinkAction::setPropertyData()
 {
     QLinkAction::setPropertyData();

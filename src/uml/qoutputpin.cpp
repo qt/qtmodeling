@@ -78,14 +78,6 @@ QOutputPin::~QOutputPin()
 {
 }
 
-void QOutputPin::registerMetaTypes() const
-{
-    QPin::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QOutputPin::setPropertyData()
 {
     QPin::setPropertyData();

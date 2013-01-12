@@ -85,7 +85,7 @@ public:
     Q_INVOKABLE QList<QTemplateParameter *> ownedParameters() const;
     Q_INVOKABLE void addOwnedParameter(QTemplateParameter *ownedParameter);
     Q_INVOKABLE void removeOwnedParameter(QTemplateParameter *ownedParameter);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

@@ -112,7 +112,7 @@ public:
     Q_INVOKABLE QList<QConnectorEnd *> ends() const;
     Q_INVOKABLE QConnectableElementTemplateParameter *templateParameter() const;
     Q_INVOKABLE void setTemplateParameter(QConnectableElementTemplateParameter *templateParameter);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
     // Classes which access read-only opposite properties should be friend

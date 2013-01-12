@@ -82,14 +82,6 @@ QAssociationClass::~QAssociationClass()
 {
 }
 
-void QAssociationClass::registerMetaTypes() const
-{
-    QWrappedObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QAssociationClass::setPropertyData()
 {
     QWrappedObject::setPropertyData();

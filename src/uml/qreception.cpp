@@ -106,18 +106,6 @@ void QReception::setSignal(QSignal *signal)
     }
 }
 
-void QReception::registerMetaTypes() const
-{
-    qRegisterMetaType<QSignal *>("QSignal *");
-    qRegisterMetaType<QSet<QSignal *>>("QSet<QSignal *>");
-    qRegisterMetaType<QList<QSignal *>>("QList<QSignal *>");
-
-    QBehavioralFeature::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QReception::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QReception")][QString::fromLatin1("signal")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

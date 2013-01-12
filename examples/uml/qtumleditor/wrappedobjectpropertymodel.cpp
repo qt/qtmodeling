@@ -84,7 +84,6 @@ QVariant WrappedObjectPropertyModel::data(const QModelIndex &index, int role) co
                     if (index.parent().row() != -1 && metaPropertyInfo) {
                         QMetaProperty metaProperty = metaPropertyInfo->metaProperty;
                         QWrappedObject *propertyWrappedObject = metaPropertyInfo->propertyWrappedObject;
-                        propertyWrappedObject->registerMetaTypes();
                         QString typeName = metaProperty.typeName();
                         QVariant variant = metaProperty.read(propertyWrappedObject);
                         if (metaProperty.type() == QVariant::String) {

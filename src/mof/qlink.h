@@ -84,7 +84,7 @@ public:
     // Operations
     Q_INVOKABLE bool equals(const QLink *otherLink) const;
     Q_INVOKABLE void delete_();
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

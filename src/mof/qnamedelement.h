@@ -94,7 +94,7 @@ public:
     Q_INVOKABLE QList<QNamespace *> allNamespaces() const;
     Q_INVOKABLE bool isDistinguishableFrom(const QNamedElement *n, const QNamespace *ns) const;
     Q_INVOKABLE QString separator() const;
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
     // Classes which access read-only opposite properties should be friend

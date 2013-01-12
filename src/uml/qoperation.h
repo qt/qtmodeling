@@ -220,7 +220,7 @@ public:
     // Operations
     Q_INVOKABLE bool isConsistentWith(const QRedefinableElement *redefinee) const;
     Q_INVOKABLE QSet<QParameter *> returnResult() const;
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

@@ -94,7 +94,7 @@ public:
     Q_INVOKABLE void removeArgument(QValueSpecification *argument);
     Q_INVOKABLE QProperty *returnValueRecipient() const;
     Q_INVOKABLE void setReturnValueRecipient(QProperty *returnValueRecipient);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

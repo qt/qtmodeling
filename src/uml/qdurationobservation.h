@@ -83,7 +83,7 @@ public:
     Q_INVOKABLE QSet<QNamedElement *> events() const;
     Q_INVOKABLE void addEvent(QNamedElement *event);
     Q_INVOKABLE void removeEvent(QNamedElement *event);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

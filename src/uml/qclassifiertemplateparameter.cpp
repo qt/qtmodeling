@@ -176,18 +176,6 @@ void QClassifierTemplateParameter::removeConstrainingClassifier(QClassifier *con
     }
 }
 
-void QClassifierTemplateParameter::registerMetaTypes() const
-{
-    qRegisterMetaType<QClassifier *>("QClassifier *");
-    qRegisterMetaType<QSet<QClassifier *>>("QSet<QClassifier *>");
-    qRegisterMetaType<QList<QClassifier *>>("QList<QClassifier *>");
-
-    QTemplateParameter::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QClassifierTemplateParameter::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifierTemplateParameter")][QString::fromLatin1("allowSubstitutable")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

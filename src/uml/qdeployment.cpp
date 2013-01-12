@@ -205,26 +205,6 @@ void QDeployment::removeDeployedArtifact(QDeployedArtifact *deployedArtifact)
     }
 }
 
-void QDeployment::registerMetaTypes() const
-{
-    qRegisterMetaType<QDeploymentSpecification *>("QDeploymentSpecification *");
-    qRegisterMetaType<QSet<QDeploymentSpecification *>>("QSet<QDeploymentSpecification *>");
-    qRegisterMetaType<QList<QDeploymentSpecification *>>("QList<QDeploymentSpecification *>");
-
-    qRegisterMetaType<QDeployedArtifact *>("QDeployedArtifact *");
-    qRegisterMetaType<QSet<QDeployedArtifact *>>("QSet<QDeployedArtifact *>");
-    qRegisterMetaType<QList<QDeployedArtifact *>>("QList<QDeployedArtifact *>");
-
-    qRegisterMetaType<QDeploymentTarget *>("QDeploymentTarget *");
-    qRegisterMetaType<QSet<QDeploymentTarget *>>("QSet<QDeploymentTarget *>");
-    qRegisterMetaType<QList<QDeploymentTarget *>>("QList<QDeploymentTarget *>");
-
-    QDependency::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QDeployment::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDeployment")][QString::fromLatin1("location")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

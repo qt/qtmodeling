@@ -73,7 +73,7 @@ public:
     // Association ends from QActionInputPin
     Q_INVOKABLE QAction *fromAction() const;
     Q_INVOKABLE void setFromAction(QAction *fromAction);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

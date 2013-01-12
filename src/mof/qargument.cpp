@@ -114,18 +114,6 @@ void QArgument::setValue(QMofObject *value)
     }
 }
 
-void QArgument::registerMetaTypes() const
-{
-    qRegisterMetaType<QMofObject *>("QMofObject *");
-    qRegisterMetaType<QSet<QMofObject *>>("QSet<QMofObject *>");
-    qRegisterMetaType<QList<QMofObject *>>("QList<QMofObject *>");
-
-    QWrappedObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QArgument::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QArgument")][QString::fromLatin1("name")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

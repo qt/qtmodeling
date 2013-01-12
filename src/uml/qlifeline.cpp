@@ -233,34 +233,6 @@ void QLifeline::setSelector(QValueSpecification *selector)
     }
 }
 
-void QLifeline::registerMetaTypes() const
-{
-    qRegisterMetaType<QConnectableElement *>("QConnectableElement *");
-    qRegisterMetaType<QSet<QConnectableElement *>>("QSet<QConnectableElement *>");
-    qRegisterMetaType<QList<QConnectableElement *>>("QList<QConnectableElement *>");
-
-    qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
-    qRegisterMetaType<QSet<QValueSpecification *>>("QSet<QValueSpecification *>");
-    qRegisterMetaType<QList<QValueSpecification *>>("QList<QValueSpecification *>");
-
-    qRegisterMetaType<QInteraction *>("QInteraction *");
-    qRegisterMetaType<QSet<QInteraction *>>("QSet<QInteraction *>");
-    qRegisterMetaType<QList<QInteraction *>>("QList<QInteraction *>");
-
-    qRegisterMetaType<QInteractionFragment *>("QInteractionFragment *");
-    qRegisterMetaType<QSet<QInteractionFragment *>>("QSet<QInteractionFragment *>");
-    qRegisterMetaType<QList<QInteractionFragment *>>("QList<QInteractionFragment *>");
-
-    qRegisterMetaType<QPartDecomposition *>("QPartDecomposition *");
-    qRegisterMetaType<QSet<QPartDecomposition *>>("QSet<QPartDecomposition *>");
-    qRegisterMetaType<QList<QPartDecomposition *>>("QList<QPartDecomposition *>");
-
-    QNamedElement::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QLifeline::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLifeline")][QString::fromLatin1("represents")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

@@ -245,14 +245,6 @@ QString QStringExpression::stringValue() const
     return QString(); // change here to your derived return
 }
 
-void QStringExpression::registerMetaTypes() const
-{
-    QWrappedObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QStringExpression::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QStringExpression")][QString::fromLatin1("owningExpression")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

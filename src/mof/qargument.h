@@ -80,7 +80,7 @@ public:
     Q_INVOKABLE void setName(QString name);
     Q_INVOKABLE QMofObject *value() const;
     Q_INVOKABLE void setValue(QMofObject *value);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

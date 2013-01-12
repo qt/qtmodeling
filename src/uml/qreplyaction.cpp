@@ -174,22 +174,6 @@ void QReplyAction::removeReplyValue(QInputPin *replyValue)
     }
 }
 
-void QReplyAction::registerMetaTypes() const
-{
-    qRegisterMetaType<QTrigger *>("QTrigger *");
-    qRegisterMetaType<QSet<QTrigger *>>("QSet<QTrigger *>");
-    qRegisterMetaType<QList<QTrigger *>>("QList<QTrigger *>");
-
-    qRegisterMetaType<QInputPin *>("QInputPin *");
-    qRegisterMetaType<QSet<QInputPin *>>("QSet<QInputPin *>");
-    qRegisterMetaType<QList<QInputPin *>>("QList<QInputPin *>");
-
-    QAction::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QReplyAction::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QReplyAction")][QString::fromLatin1("replyToCall")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

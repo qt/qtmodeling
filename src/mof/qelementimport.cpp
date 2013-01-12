@@ -219,22 +219,6 @@ QString QElementImport::getName() const
     return QString(); // change here to your derived return
 }
 
-void QElementImport::registerMetaTypes() const
-{
-    qRegisterMetaType<QPackageableElement *>("QPackageableElement *");
-    qRegisterMetaType<QSet<QPackageableElement *>>("QSet<QPackageableElement *>");
-    qRegisterMetaType<QList<QPackageableElement *>>("QList<QPackageableElement *>");
-
-    qRegisterMetaType<QNamespace *>("QNamespace *");
-    qRegisterMetaType<QSet<QNamespace *>>("QSet<QNamespace *>");
-    qRegisterMetaType<QList<QNamespace *>>("QList<QNamespace *>");
-
-    QDirectedRelationship::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QElementImport::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QElementImport")][QString::fromLatin1("alias")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

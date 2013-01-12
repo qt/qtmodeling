@@ -75,7 +75,7 @@ public:
 
     // Association ends from QEncapsulatedClassifier
     Q_INVOKABLE QSet<QPort *> ownedPorts() const;
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

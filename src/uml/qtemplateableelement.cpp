@@ -184,26 +184,6 @@ QSet<QParameterableElement *> QTemplateableElement::parameterableElements() cons
     return QSet<QParameterableElement *>(); // change here to your derived return
 }
 
-void QTemplateableElement::registerMetaTypes() const
-{
-    qRegisterMetaType<QTemplateSignature *>("QTemplateSignature *");
-    qRegisterMetaType<QSet<QTemplateSignature *>>("QSet<QTemplateSignature *>");
-    qRegisterMetaType<QList<QTemplateSignature *>>("QList<QTemplateSignature *>");
-
-    qRegisterMetaType<QTemplateBinding *>("QTemplateBinding *");
-    qRegisterMetaType<QSet<QTemplateBinding *>>("QSet<QTemplateBinding *>");
-    qRegisterMetaType<QList<QTemplateBinding *>>("QList<QTemplateBinding *>");
-
-    qRegisterMetaType<QParameterableElement *>("QParameterableElement *");
-    qRegisterMetaType<QSet<QParameterableElement *>>("QSet<QParameterableElement *>");
-    qRegisterMetaType<QList<QParameterableElement *>>("QList<QParameterableElement *>");
-
-    QElement::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QTemplateableElement::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateableElement")][QString::fromLatin1("ownedTemplateSignature")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");

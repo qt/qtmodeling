@@ -129,18 +129,6 @@ void QEnumerationLiteral::setEnumeration(QEnumeration *enumeration)
     }
 }
 
-void QEnumerationLiteral::registerMetaTypes() const
-{
-    qRegisterMetaType<QEnumeration *>("QEnumeration *");
-    qRegisterMetaType<QSet<QEnumeration *>>("QSet<QEnumeration *>");
-    qRegisterMetaType<QList<QEnumeration *>>("QList<QEnumeration *>");
-
-    QInstanceSpecification::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QEnumerationLiteral::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QEnumerationLiteral")][QString::fromLatin1("classifier")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

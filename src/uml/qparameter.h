@@ -167,7 +167,7 @@ public:
     Q_INVOKABLE QSet<QParameterSet *> parameterSets() const;
     Q_INVOKABLE void addParameterSet(QParameterSet *parameterSet);
     Q_INVOKABLE void removeParameterSet(QParameterSet *parameterSet);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

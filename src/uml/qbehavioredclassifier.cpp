@@ -197,22 +197,6 @@ void QBehavioredClassifier::setClassifierBehavior(QBehavior *classifierBehavior)
     }
 }
 
-void QBehavioredClassifier::registerMetaTypes() const
-{
-    qRegisterMetaType<QBehavior *>("QBehavior *");
-    qRegisterMetaType<QSet<QBehavior *>>("QSet<QBehavior *>");
-    qRegisterMetaType<QList<QBehavior *>>("QList<QBehavior *>");
-
-    qRegisterMetaType<QInterfaceRealization *>("QInterfaceRealization *");
-    qRegisterMetaType<QSet<QInterfaceRealization *>>("QSet<QInterfaceRealization *>");
-    qRegisterMetaType<QList<QInterfaceRealization *>>("QList<QInterfaceRealization *>");
-
-    QClassifier::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QBehavioredClassifier::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioredClassifier")][QString::fromLatin1("ownedBehaviors")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");

@@ -218,14 +218,6 @@ void QMessageOccurrenceSpecification::setMessage(QMessage *message)
     (qwrappedobject_cast<QMessageEnd *>(this))->setMessage(message);
 }
 
-void QMessageOccurrenceSpecification::registerMetaTypes() const
-{
-    QWrappedObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QMessageOccurrenceSpecification::setPropertyData()
 {
     QWrappedObject::setPropertyData();

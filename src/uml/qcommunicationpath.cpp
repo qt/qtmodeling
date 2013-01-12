@@ -78,14 +78,6 @@ QCommunicationPath::~QCommunicationPath()
 {
 }
 
-void QCommunicationPath::registerMetaTypes() const
-{
-    QAssociation::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QCommunicationPath::setPropertyData()
 {
     QAssociation::setPropertyData();

@@ -78,14 +78,6 @@ QFunctionBehavior::~QFunctionBehavior()
 {
 }
 
-void QFunctionBehavior::registerMetaTypes() const
-{
-    QOpaqueBehavior::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QFunctionBehavior::setPropertyData()
 {
     QOpaqueBehavior::setPropertyData();

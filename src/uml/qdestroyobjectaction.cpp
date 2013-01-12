@@ -178,18 +178,6 @@ void QDestroyObjectAction::setTarget(QInputPin *target)
     }
 }
 
-void QDestroyObjectAction::registerMetaTypes() const
-{
-    qRegisterMetaType<QInputPin *>("QInputPin *");
-    qRegisterMetaType<QSet<QInputPin *>>("QSet<QInputPin *>");
-    qRegisterMetaType<QList<QInputPin *>>("QList<QInputPin *>");
-
-    QAction::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QDestroyObjectAction::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDestroyObjectAction")][QString::fromLatin1("isDestroyLinks")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

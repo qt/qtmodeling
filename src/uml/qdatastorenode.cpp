@@ -78,14 +78,6 @@ QDataStoreNode::~QDataStoreNode()
 {
 }
 
-void QDataStoreNode::registerMetaTypes() const
-{
-    QCentralBufferNode::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QDataStoreNode::setPropertyData()
 {
     QCentralBufferNode::setPropertyData();

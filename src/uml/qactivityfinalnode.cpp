@@ -78,14 +78,6 @@ QActivityFinalNode::~QActivityFinalNode()
 {
 }
 
-void QActivityFinalNode::registerMetaTypes() const
-{
-    QFinalNode::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QActivityFinalNode::setPropertyData()
 {
     QFinalNode::setPropertyData();

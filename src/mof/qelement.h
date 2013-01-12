@@ -90,7 +90,7 @@ public:
     Q_INVOKABLE QElement *container() const;
     Q_INVOKABLE bool isInstanceOfType(const QClass *type, bool includesSubtypes) const;
     Q_INVOKABLE void delete_();
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

@@ -71,7 +71,7 @@ public:
     Q_INVOKABLE bool setting() const;
     Q_INVOKABLE void setSetting(bool setting);
     Q_INVOKABLE void unsetSetting();
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

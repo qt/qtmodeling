@@ -1155,46 +1155,6 @@ QSet<QType *> QProperty::subsettingContext() const
     return QSet<QType *>(); // change here to your derived return
 }
 
-void QProperty::registerMetaTypes() const
-{
-    qRegisterMetaType<QType *>("QType *");
-    qRegisterMetaType<QSet<QType *>>("QSet<QType *>");
-    qRegisterMetaType<QList<QType *>>("QList<QType *>");
-
-    qRegisterMetaType<QInterface *>("QInterface *");
-    qRegisterMetaType<QSet<QInterface *>>("QSet<QInterface *>");
-    qRegisterMetaType<QList<QInterface *>>("QList<QInterface *>");
-
-    qRegisterMetaType<QRedefinableElement *>("QRedefinableElement *");
-    qRegisterMetaType<QSet<QRedefinableElement *>>("QSet<QRedefinableElement *>");
-    qRegisterMetaType<QList<QRedefinableElement *>>("QList<QRedefinableElement *>");
-
-    qRegisterMetaType<QParameterableElement *>("QParameterableElement *");
-    qRegisterMetaType<QSet<QParameterableElement *>>("QSet<QParameterableElement *>");
-    qRegisterMetaType<QList<QParameterableElement *>>("QList<QParameterableElement *>");
-
-    qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
-    qRegisterMetaType<QSet<QValueSpecification *>>("QSet<QValueSpecification *>");
-    qRegisterMetaType<QList<QValueSpecification *>>("QList<QValueSpecification *>");
-
-    qRegisterMetaType<QDataType *>("QDataType *");
-    qRegisterMetaType<QSet<QDataType *>>("QSet<QDataType *>");
-    qRegisterMetaType<QList<QDataType *>>("QList<QDataType *>");
-
-    qRegisterMetaType<QAssociation *>("QAssociation *");
-    qRegisterMetaType<QSet<QAssociation *>>("QSet<QAssociation *>");
-    qRegisterMetaType<QList<QAssociation *>>("QList<QAssociation *>");
-
-    qRegisterMetaType<QClass *>("QClass *");
-    qRegisterMetaType<QSet<QClass *>>("QSet<QClass *>");
-    qRegisterMetaType<QList<QClass *>>("QList<QClass *>");
-
-    QWrappedObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QProperty::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QProperty")][QString::fromLatin1("isDerived")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

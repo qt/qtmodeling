@@ -73,7 +73,7 @@ public:
     // Association ends from QChangeEvent
     Q_INVOKABLE QValueSpecification *changeExpression() const;
     Q_INVOKABLE void setChangeExpression(QValueSpecification *changeExpression);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

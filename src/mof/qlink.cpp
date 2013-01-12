@@ -148,22 +148,6 @@ void QLink::delete_()
     qWarning("QLink::delete_: operation to be implemented");
 }
 
-void QLink::registerMetaTypes() const
-{
-    qRegisterMetaType<QElement *>("QElement *");
-    qRegisterMetaType<QSet<QElement *>>("QSet<QElement *>");
-    qRegisterMetaType<QList<QElement *>>("QList<QElement *>");
-
-    qRegisterMetaType<QAssociation *>("QAssociation *");
-    qRegisterMetaType<QSet<QAssociation *>>("QSet<QAssociation *>");
-    qRegisterMetaType<QList<QAssociation *>>("QList<QAssociation *>");
-
-    QMofObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QLink::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLink")][QString::fromLatin1("association")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

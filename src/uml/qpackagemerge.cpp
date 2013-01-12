@@ -153,18 +153,6 @@ void QPackageMerge::setReceivingPackage(QPackage *receivingPackage)
     }
 }
 
-void QPackageMerge::registerMetaTypes() const
-{
-    qRegisterMetaType<QPackage *>("QPackage *");
-    qRegisterMetaType<QSet<QPackage *>>("QSet<QPackage *>");
-    qRegisterMetaType<QList<QPackage *>>("QList<QPackage *>");
-
-    QDirectedRelationship::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QPackageMerge::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QPackageMerge")][QString::fromLatin1("mergedPackage")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

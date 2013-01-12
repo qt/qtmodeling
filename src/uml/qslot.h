@@ -85,7 +85,7 @@ public:
     Q_INVOKABLE void setDefiningFeature(QStructuralFeature *definingFeature);
     Q_INVOKABLE QInstanceSpecification *owningInstance() const;
     Q_INVOKABLE void setOwningInstance(QInstanceSpecification *owningInstance);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

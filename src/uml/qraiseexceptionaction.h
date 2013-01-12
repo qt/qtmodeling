@@ -73,7 +73,7 @@ public:
     // Association ends from QRaiseExceptionAction
     Q_INVOKABLE QInputPin *exception() const;
     Q_INVOKABLE void setException(QInputPin *exception);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

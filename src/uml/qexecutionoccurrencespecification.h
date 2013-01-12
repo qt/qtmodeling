@@ -73,7 +73,7 @@ public:
     // Association ends from QExecutionOccurrenceSpecification
     Q_INVOKABLE QExecutionSpecification *execution() const;
     Q_INVOKABLE void setExecution(QExecutionSpecification *execution);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

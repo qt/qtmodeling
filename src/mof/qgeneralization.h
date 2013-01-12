@@ -82,7 +82,7 @@ public:
     Q_INVOKABLE void setSpecific(QClassifier *specific);
     Q_INVOKABLE QClassifier *general() const;
     Q_INVOKABLE void setGeneral(QClassifier *general);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

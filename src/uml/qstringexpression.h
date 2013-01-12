@@ -98,7 +98,7 @@ public:
 
     // Operations
     Q_INVOKABLE QString stringValue() const;
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

@@ -122,7 +122,7 @@ public:
     Q_INVOKABLE QSet<QNamedElement *> suppliers() const;
     Q_INVOKABLE void addSupplier(QNamedElement *supplier);
     Q_INVOKABLE void removeSupplier(QNamedElement *supplier);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

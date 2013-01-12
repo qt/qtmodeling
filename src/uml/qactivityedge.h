@@ -110,7 +110,7 @@ public:
     Q_INVOKABLE void setInStructuredNode(QStructuredActivityNode *inStructuredNode);
     Q_INVOKABLE QActivityNode *target() const;
     Q_INVOKABLE void setTarget(QActivityNode *target);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
     // Classes which access read-only opposite properties should be friend

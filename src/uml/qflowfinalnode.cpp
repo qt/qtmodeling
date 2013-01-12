@@ -78,14 +78,6 @@ QFlowFinalNode::~QFlowFinalNode()
 {
 }
 
-void QFlowFinalNode::registerMetaTypes() const
-{
-    QFinalNode::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QFlowFinalNode::setPropertyData()
 {
     QFinalNode::setPropertyData();

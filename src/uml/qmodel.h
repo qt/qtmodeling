@@ -73,7 +73,7 @@ public:
     // Attributes from QModel
     Q_INVOKABLE QString viewpoint() const;
     Q_INVOKABLE void setViewpoint(QString viewpoint);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

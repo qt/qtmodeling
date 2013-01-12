@@ -166,22 +166,6 @@ void QInterruptibleActivityRegion::removeNode(QActivityNode *node)
     }
 }
 
-void QInterruptibleActivityRegion::registerMetaTypes() const
-{
-    qRegisterMetaType<QActivityEdge *>("QActivityEdge *");
-    qRegisterMetaType<QSet<QActivityEdge *>>("QSet<QActivityEdge *>");
-    qRegisterMetaType<QList<QActivityEdge *>>("QList<QActivityEdge *>");
-
-    qRegisterMetaType<QActivityNode *>("QActivityNode *");
-    qRegisterMetaType<QSet<QActivityNode *>>("QSet<QActivityNode *>");
-    qRegisterMetaType<QList<QActivityNode *>>("QList<QActivityNode *>");
-
-    QActivityGroup::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QInterruptibleActivityRegion::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QInterruptibleActivityRegion")][QString::fromLatin1("interruptingEdges")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

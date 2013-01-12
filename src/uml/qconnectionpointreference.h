@@ -85,7 +85,7 @@ public:
     Q_INVOKABLE QSet<QPseudostate *> entries() const;
     Q_INVOKABLE void addEntry(QPseudostate *entry);
     Q_INVOKABLE void removeEntry(QPseudostate *entry);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

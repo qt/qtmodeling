@@ -247,30 +247,6 @@ QSet<QInterface *> QComponent::usedInterfaces(const QClassifier *classifier) con
     return QSet<QInterface *>(); // change here to your derived return
 }
 
-void QComponent::registerMetaTypes() const
-{
-    qRegisterMetaType<QClassifier *>("QClassifier *");
-    qRegisterMetaType<QSet<QClassifier *>>("QSet<QClassifier *>");
-    qRegisterMetaType<QList<QClassifier *>>("QList<QClassifier *>");
-
-    qRegisterMetaType<QComponentRealization *>("QComponentRealization *");
-    qRegisterMetaType<QSet<QComponentRealization *>>("QSet<QComponentRealization *>");
-    qRegisterMetaType<QList<QComponentRealization *>>("QList<QComponentRealization *>");
-
-    qRegisterMetaType<QPackageableElement *>("QPackageableElement *");
-    qRegisterMetaType<QSet<QPackageableElement *>>("QSet<QPackageableElement *>");
-    qRegisterMetaType<QList<QPackageableElement *>>("QList<QPackageableElement *>");
-
-    qRegisterMetaType<QInterface *>("QInterface *");
-    qRegisterMetaType<QSet<QInterface *>>("QSet<QInterface *>");
-    qRegisterMetaType<QList<QInterface *>>("QList<QInterface *>");
-
-    QClass::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QComponent::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QComponent")][QString::fromLatin1("isIndirectlyInstantiated")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

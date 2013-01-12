@@ -76,7 +76,7 @@ public:
     Q_INVOKABLE void setMax(QDuration *max);
     Q_INVOKABLE QDuration *min() const;
     Q_INVOKABLE void setMin(QDuration *min);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

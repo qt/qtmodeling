@@ -743,22 +743,6 @@ ${operation.return}${class.name}::${operation.name}([%- FOREACH parameter IN ope
 }
 [% END -%]
 
-void ${class.name}::registerMetaTypes() const
-{
-[% FOREACH forwarddecl IN class.forwarddecl -%]
-[%- IF forwarddecl.content != class.name -%]
-    qRegisterMetaType<${forwarddecl.content} *>("${forwarddecl.content} *");
-    qRegisterMetaType<QSet<${forwarddecl.content} *>>("QSet<${forwarddecl.content} *>");
-    qRegisterMetaType<QList<${forwarddecl.content} *>>("QList<${forwarddecl.content} *>");
-
-[% END -%]
-[%- END -%]
-    [% IF class.superclass.size == 1 %]${class.superclass.0.name.split('/').last}[% ELSE %]QWrappedObject[% END %]::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void ${class.name}::setPropertyData()
 {
 [%- FOREACH attribute IN class.attribute.values %]

@@ -81,7 +81,7 @@ public:
     Q_INVOKABLE void removePort(QPort *port);
     Q_INVOKABLE QEvent *event() const;
     Q_INVOKABLE void setEvent(QEvent *event);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

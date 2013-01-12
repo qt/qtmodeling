@@ -272,14 +272,6 @@ void QNode::removeNestedNode(QNode *nestedNode)
     }
 }
 
-void QNode::registerMetaTypes() const
-{
-    QWrappedObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QNode::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QNode")][QString::fromLatin1("nestedNodes")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");

@@ -167,26 +167,6 @@ void QLinkEndData::removeQualifier(QQualifierValue *qualifier)
     }
 }
 
-void QLinkEndData::registerMetaTypes() const
-{
-    qRegisterMetaType<QProperty *>("QProperty *");
-    qRegisterMetaType<QSet<QProperty *>>("QSet<QProperty *>");
-    qRegisterMetaType<QList<QProperty *>>("QList<QProperty *>");
-
-    qRegisterMetaType<QQualifierValue *>("QQualifierValue *");
-    qRegisterMetaType<QSet<QQualifierValue *>>("QSet<QQualifierValue *>");
-    qRegisterMetaType<QList<QQualifierValue *>>("QList<QQualifierValue *>");
-
-    qRegisterMetaType<QInputPin *>("QInputPin *");
-    qRegisterMetaType<QSet<QInputPin *>>("QSet<QInputPin *>");
-    qRegisterMetaType<QList<QInputPin *>>("QList<QInputPin *>");
-
-    QElement::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QLinkEndData::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLinkEndData")][QString::fromLatin1("value")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

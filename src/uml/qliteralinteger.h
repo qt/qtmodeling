@@ -74,7 +74,7 @@ public:
     // Operations
     Q_INVOKABLE qint32 integerValue() const;
     Q_INVOKABLE bool isComputable() const;
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

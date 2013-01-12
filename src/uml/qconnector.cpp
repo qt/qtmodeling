@@ -229,26 +229,6 @@ void QConnector::removeEnd(QConnectorEnd *end)
     }
 }
 
-void QConnector::registerMetaTypes() const
-{
-    qRegisterMetaType<QAssociation *>("QAssociation *");
-    qRegisterMetaType<QSet<QAssociation *>>("QSet<QAssociation *>");
-    qRegisterMetaType<QList<QAssociation *>>("QList<QAssociation *>");
-
-    qRegisterMetaType<QBehavior *>("QBehavior *");
-    qRegisterMetaType<QSet<QBehavior *>>("QSet<QBehavior *>");
-    qRegisterMetaType<QList<QBehavior *>>("QList<QBehavior *>");
-
-    qRegisterMetaType<QConnectorEnd *>("QConnectorEnd *");
-    qRegisterMetaType<QSet<QConnectorEnd *>>("QSet<QConnectorEnd *>");
-    qRegisterMetaType<QList<QConnectorEnd *>>("QList<QConnectorEnd *>");
-
-    QFeature::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QConnector::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QConnector")][QString::fromLatin1("kind")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

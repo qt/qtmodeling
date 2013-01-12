@@ -158,14 +158,6 @@ void QTag::setTagOwner(QElement *tagOwner)
     }
 }
 
-void QTag::registerMetaTypes() const
-{
-    QElement::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QTag::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QTag")][QString::fromLatin1("elements")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

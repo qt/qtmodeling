@@ -131,7 +131,7 @@ public:
     Q_INVOKABLE void removeFragment(QInteractionFragment *fragment);
     Q_INVOKABLE QInteractionConstraint *guard() const;
     Q_INVOKABLE void setGuard(QInteractionConstraint *guard);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

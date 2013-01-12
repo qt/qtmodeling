@@ -91,7 +91,7 @@ public:
     Q_INVOKABLE QSet<QClassifier *> newClassifiers() const;
     Q_INVOKABLE void addNewClassifier(QClassifier *newClassifier);
     Q_INVOKABLE void removeNewClassifier(QClassifier *newClassifier);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

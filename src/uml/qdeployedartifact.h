@@ -64,7 +64,7 @@ class Q_UML_EXPORT QDeployedArtifact : public QNamedElement
 public:
     Q_INVOKABLE explicit QDeployedArtifact(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QDeployedArtifact();
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

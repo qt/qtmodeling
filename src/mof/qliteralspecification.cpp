@@ -78,14 +78,6 @@ QLiteralSpecification::~QLiteralSpecification()
 {
 }
 
-void QLiteralSpecification::registerMetaTypes() const
-{
-    QValueSpecification::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QLiteralSpecification::setPropertyData()
 {
     QValueSpecification::setPropertyData();

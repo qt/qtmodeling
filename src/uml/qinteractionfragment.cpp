@@ -228,30 +228,6 @@ void QInteractionFragment::setEnclosingOperand(QInteractionOperand *enclosingOpe
     }
 }
 
-void QInteractionFragment::registerMetaTypes() const
-{
-    qRegisterMetaType<QGeneralOrdering *>("QGeneralOrdering *");
-    qRegisterMetaType<QSet<QGeneralOrdering *>>("QSet<QGeneralOrdering *>");
-    qRegisterMetaType<QList<QGeneralOrdering *>>("QList<QGeneralOrdering *>");
-
-    qRegisterMetaType<QInteractionOperand *>("QInteractionOperand *");
-    qRegisterMetaType<QSet<QInteractionOperand *>>("QSet<QInteractionOperand *>");
-    qRegisterMetaType<QList<QInteractionOperand *>>("QList<QInteractionOperand *>");
-
-    qRegisterMetaType<QLifeline *>("QLifeline *");
-    qRegisterMetaType<QSet<QLifeline *>>("QSet<QLifeline *>");
-    qRegisterMetaType<QList<QLifeline *>>("QList<QLifeline *>");
-
-    qRegisterMetaType<QInteraction *>("QInteraction *");
-    qRegisterMetaType<QSet<QInteraction *>>("QSet<QInteraction *>");
-    qRegisterMetaType<QList<QInteraction *>>("QList<QInteraction *>");
-
-    QNamedElement::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QInteractionFragment::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionFragment")][QString::fromLatin1("generalOrderings")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");

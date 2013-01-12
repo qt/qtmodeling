@@ -98,7 +98,7 @@ public:
     // Operations
     Q_INVOKABLE QSet<QInterface *> realizedInterfaces(const QClassifier *classifier) const;
     Q_INVOKABLE QSet<QInterface *> usedInterfaces(const QClassifier *classifier) const;
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

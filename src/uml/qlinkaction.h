@@ -86,7 +86,7 @@ public:
 
     // Operations
     Q_INVOKABLE QAssociation *association() const;
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

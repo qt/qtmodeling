@@ -64,7 +64,7 @@ class Q_UML_EXPORT QWriteLinkAction : public QLinkAction
 public:
     Q_INVOKABLE explicit QWriteLinkAction(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QWriteLinkAction();
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

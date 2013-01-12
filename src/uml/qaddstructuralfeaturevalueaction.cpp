@@ -148,18 +148,6 @@ void QAddStructuralFeatureValueAction::setInsertAt(QInputPin *insertAt)
     }
 }
 
-void QAddStructuralFeatureValueAction::registerMetaTypes() const
-{
-    qRegisterMetaType<QInputPin *>("QInputPin *");
-    qRegisterMetaType<QSet<QInputPin *>>("QSet<QInputPin *>");
-    qRegisterMetaType<QList<QInputPin *>>("QList<QInputPin *>");
-
-    QWriteStructuralFeatureAction::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QAddStructuralFeatureValueAction::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QAddStructuralFeatureValueAction")][QString::fromLatin1("isReplaceAll")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

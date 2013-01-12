@@ -219,22 +219,6 @@ void QConditionalNode::removeResult(QOutputPin *result)
     }
 }
 
-void QConditionalNode::registerMetaTypes() const
-{
-    qRegisterMetaType<QClause *>("QClause *");
-    qRegisterMetaType<QSet<QClause *>>("QSet<QClause *>");
-    qRegisterMetaType<QList<QClause *>>("QList<QClause *>");
-
-    qRegisterMetaType<QOutputPin *>("QOutputPin *");
-    qRegisterMetaType<QSet<QOutputPin *>>("QSet<QOutputPin *>");
-    qRegisterMetaType<QList<QOutputPin *>>("QList<QOutputPin *>");
-
-    QStructuredActivityNode::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QConditionalNode::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QConditionalNode")][QString::fromLatin1("isAssured")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

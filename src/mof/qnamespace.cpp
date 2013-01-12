@@ -373,30 +373,6 @@ bool QNamespace::membersAreDistinguishable() const
     return bool(); // change here to your derived return
 }
 
-void QNamespace::registerMetaTypes() const
-{
-    qRegisterMetaType<QPackageImport *>("QPackageImport *");
-    qRegisterMetaType<QSet<QPackageImport *>>("QSet<QPackageImport *>");
-    qRegisterMetaType<QList<QPackageImport *>>("QList<QPackageImport *>");
-
-    qRegisterMetaType<QConstraint *>("QConstraint *");
-    qRegisterMetaType<QSet<QConstraint *>>("QSet<QConstraint *>");
-    qRegisterMetaType<QList<QConstraint *>>("QList<QConstraint *>");
-
-    qRegisterMetaType<QElementImport *>("QElementImport *");
-    qRegisterMetaType<QSet<QElementImport *>>("QSet<QElementImport *>");
-    qRegisterMetaType<QList<QElementImport *>>("QList<QElementImport *>");
-
-    qRegisterMetaType<QPackageableElement *>("QPackageableElement *");
-    qRegisterMetaType<QSet<QPackageableElement *>>("QSet<QPackageableElement *>");
-    qRegisterMetaType<QList<QPackageableElement *>>("QList<QPackageableElement *>");
-
-    QNamedElement::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QNamespace::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("packageImports")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");

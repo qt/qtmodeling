@@ -113,14 +113,6 @@ void QInformationItem::removeRepresented(QClassifier *represented)
     }
 }
 
-void QInformationItem::registerMetaTypes() const
-{
-    QClassifier::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QInformationItem::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationItem")][QString::fromLatin1("represented")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

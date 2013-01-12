@@ -108,7 +108,7 @@ public:
     Q_INVOKABLE void setIncludingCase(QUseCase *includingCase);
     Q_INVOKABLE QUseCase *addition() const;
     Q_INVOKABLE void setAddition(QUseCase *addition);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

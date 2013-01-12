@@ -64,7 +64,7 @@ class Q_UML_EXPORT QRealization : public QAbstraction
 public:
     Q_INVOKABLE explicit QRealization(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QRealization();
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

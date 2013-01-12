@@ -73,7 +73,7 @@ public:
     // Association ends from QExtensionPoint
     Q_INVOKABLE QUseCase *useCase() const;
     Q_INVOKABLE void setUseCase(QUseCase *useCase);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

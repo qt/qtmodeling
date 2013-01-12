@@ -225,22 +225,6 @@ void QOpaqueAction::removeOutputValue(QOutputPin *outputValue)
     }
 }
 
-void QOpaqueAction::registerMetaTypes() const
-{
-    qRegisterMetaType<QInputPin *>("QInputPin *");
-    qRegisterMetaType<QSet<QInputPin *>>("QSet<QInputPin *>");
-    qRegisterMetaType<QList<QInputPin *>>("QList<QInputPin *>");
-
-    qRegisterMetaType<QOutputPin *>("QOutputPin *");
-    qRegisterMetaType<QSet<QOutputPin *>>("QSet<QOutputPin *>");
-    qRegisterMetaType<QList<QOutputPin *>>("QList<QOutputPin *>");
-
-    QAction::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QOpaqueAction::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QOpaqueAction")][QString::fromLatin1("bodies")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

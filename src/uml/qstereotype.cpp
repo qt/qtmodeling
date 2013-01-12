@@ -144,22 +144,6 @@ QProfile *QStereotype::containingProfile() const
     return 0; // change here to your derived return
 }
 
-void QStereotype::registerMetaTypes() const
-{
-    qRegisterMetaType<QImage *>("QImage *");
-    qRegisterMetaType<QSet<QImage *>>("QSet<QImage *>");
-    qRegisterMetaType<QList<QImage *>>("QList<QImage *>");
-
-    qRegisterMetaType<QProfile *>("QProfile *");
-    qRegisterMetaType<QSet<QProfile *>>("QSet<QProfile *>");
-    qRegisterMetaType<QList<QProfile *>>("QList<QProfile *>");
-
-    QClass::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QStereotype::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QStereotype")][QString::fromLatin1("icons")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");

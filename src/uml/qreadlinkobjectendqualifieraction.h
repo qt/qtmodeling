@@ -81,7 +81,7 @@ public:
     Q_INVOKABLE void setObject(QInputPin *object);
     Q_INVOKABLE QProperty *qualifier() const;
     Q_INVOKABLE void setQualifier(QProperty *qualifier);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

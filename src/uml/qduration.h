@@ -80,7 +80,7 @@ public:
     Q_INVOKABLE QSet<QObservation *> observations() const;
     Q_INVOKABLE void addObservation(QObservation *observation);
     Q_INVOKABLE void removeObservation(QObservation *observation);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

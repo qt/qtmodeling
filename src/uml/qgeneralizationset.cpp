@@ -217,22 +217,6 @@ void QGeneralizationSet::removeGeneralization(QGeneralization *generalization)
     }
 }
 
-void QGeneralizationSet::registerMetaTypes() const
-{
-    qRegisterMetaType<QGeneralization *>("QGeneralization *");
-    qRegisterMetaType<QSet<QGeneralization *>>("QSet<QGeneralization *>");
-    qRegisterMetaType<QList<QGeneralization *>>("QList<QGeneralization *>");
-
-    qRegisterMetaType<QClassifier *>("QClassifier *");
-    qRegisterMetaType<QSet<QClassifier *>>("QSet<QClassifier *>");
-    qRegisterMetaType<QList<QClassifier *>>("QList<QClassifier *>");
-
-    QPackageableElement::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QGeneralizationSet::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QGeneralizationSet")][QString::fromLatin1("isCovering")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

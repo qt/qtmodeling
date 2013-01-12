@@ -192,18 +192,6 @@ void QExpansionRegion::removeOutputElement(QExpansionNode *outputElement)
     }
 }
 
-void QExpansionRegion::registerMetaTypes() const
-{
-    qRegisterMetaType<QExpansionNode *>("QExpansionNode *");
-    qRegisterMetaType<QSet<QExpansionNode *>>("QSet<QExpansionNode *>");
-    qRegisterMetaType<QList<QExpansionNode *>>("QList<QExpansionNode *>");
-
-    QStructuredActivityNode::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QExpansionRegion::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionRegion")][QString::fromLatin1("mode")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

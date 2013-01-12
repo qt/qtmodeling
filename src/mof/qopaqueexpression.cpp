@@ -184,14 +184,6 @@ qint32 QOpaqueExpression::value() const
     return qint32(); // change here to your derived return
 }
 
-void QOpaqueExpression::registerMetaTypes() const
-{
-    QValueSpecification::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QOpaqueExpression::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QOpaqueExpression")][QString::fromLatin1("bodies")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

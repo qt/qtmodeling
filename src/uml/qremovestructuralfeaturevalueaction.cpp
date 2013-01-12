@@ -148,18 +148,6 @@ void QRemoveStructuralFeatureValueAction::setRemoveAt(QInputPin *removeAt)
     }
 }
 
-void QRemoveStructuralFeatureValueAction::registerMetaTypes() const
-{
-    qRegisterMetaType<QInputPin *>("QInputPin *");
-    qRegisterMetaType<QSet<QInputPin *>>("QSet<QInputPin *>");
-    qRegisterMetaType<QList<QInputPin *>>("QList<QInputPin *>");
-
-    QWriteStructuralFeatureAction::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QRemoveStructuralFeatureValueAction::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QRemoveStructuralFeatureValueAction")][QString::fromLatin1("isRemoveDuplicates")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

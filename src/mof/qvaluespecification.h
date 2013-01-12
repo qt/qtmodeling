@@ -103,7 +103,7 @@ public:
     Q_INVOKABLE qreal realValue();
     Q_INVOKABLE QString stringValue() const;
     Q_INVOKABLE qint32 unlimitedValue() const;
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

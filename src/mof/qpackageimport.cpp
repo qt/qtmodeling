@@ -188,22 +188,6 @@ void QPackageImport::setImportedPackage(QPackage *importedPackage)
     }
 }
 
-void QPackageImport::registerMetaTypes() const
-{
-    qRegisterMetaType<QPackage *>("QPackage *");
-    qRegisterMetaType<QSet<QPackage *>>("QSet<QPackage *>");
-    qRegisterMetaType<QList<QPackage *>>("QList<QPackage *>");
-
-    qRegisterMetaType<QNamespace *>("QNamespace *");
-    qRegisterMetaType<QSet<QNamespace *>>("QSet<QNamespace *>");
-    qRegisterMetaType<QList<QNamespace *>>("QList<QNamespace *>");
-
-    QDirectedRelationship::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QPackageImport::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QPackageImport")][QString::fromLatin1("visibility")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

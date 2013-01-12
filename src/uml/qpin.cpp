@@ -623,14 +623,6 @@ void QPin::unsetControl()
     d->modifiedResettableProperties.removeAll(QString::fromLatin1("isControl"));
 }
 
-void QPin::registerMetaTypes() const
-{
-    QWrappedObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QPin::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QPin")][QString::fromLatin1("isControl")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

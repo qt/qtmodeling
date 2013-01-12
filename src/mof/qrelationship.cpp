@@ -111,14 +111,6 @@ QSet<QElement *> QRelationship::relatedElements() const
     return d->relatedElements;
 }
 
-void QRelationship::registerMetaTypes() const
-{
-    QElement::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QRelationship::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QRelationship")][QString::fromLatin1("relatedElements")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

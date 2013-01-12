@@ -501,38 +501,6 @@ QSet<QParameter *> QOperation::returnResult() const
     return QSet<QParameter *>(); // change here to your derived return
 }
 
-void QOperation::registerMetaTypes() const
-{
-    qRegisterMetaType<QType *>("QType *");
-    qRegisterMetaType<QSet<QType *>>("QSet<QType *>");
-    qRegisterMetaType<QList<QType *>>("QList<QType *>");
-
-    qRegisterMetaType<QRedefinableElement *>("QRedefinableElement *");
-    qRegisterMetaType<QSet<QRedefinableElement *>>("QSet<QRedefinableElement *>");
-    qRegisterMetaType<QList<QRedefinableElement *>>("QList<QRedefinableElement *>");
-
-    qRegisterMetaType<QParameter *>("QParameter *");
-    qRegisterMetaType<QSet<QParameter *>>("QSet<QParameter *>");
-    qRegisterMetaType<QList<QParameter *>>("QList<QParameter *>");
-
-    qRegisterMetaType<QClass *>("QClass *");
-    qRegisterMetaType<QSet<QClass *>>("QSet<QClass *>");
-    qRegisterMetaType<QList<QClass *>>("QList<QClass *>");
-
-    qRegisterMetaType<QConstraint *>("QConstraint *");
-    qRegisterMetaType<QSet<QConstraint *>>("QSet<QConstraint *>");
-    qRegisterMetaType<QList<QConstraint *>>("QList<QConstraint *>");
-
-    qRegisterMetaType<QDataType *>("QDataType *");
-    qRegisterMetaType<QSet<QDataType *>>("QSet<QDataType *>");
-    qRegisterMetaType<QList<QDataType *>>("QList<QDataType *>");
-
-    QBehavioralFeature::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QOperation::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QOperation")][QString::fromLatin1("lower")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

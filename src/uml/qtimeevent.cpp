@@ -148,18 +148,6 @@ void QTimeEvent::setWhen(QTimeExpression *when)
     }
 }
 
-void QTimeEvent::registerMetaTypes() const
-{
-    qRegisterMetaType<QTimeExpression *>("QTimeExpression *");
-    qRegisterMetaType<QSet<QTimeExpression *>>("QSet<QTimeExpression *>");
-    qRegisterMetaType<QList<QTimeExpression *>>("QList<QTimeExpression *>");
-
-    QEvent::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QTimeEvent::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeEvent")][QString::fromLatin1("isRelative")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

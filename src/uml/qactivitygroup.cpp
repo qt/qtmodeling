@@ -273,26 +273,6 @@ QActivityGroup *QActivityGroup::superGroup() const
     return d->superGroup;
 }
 
-void QActivityGroup::registerMetaTypes() const
-{
-    qRegisterMetaType<QActivity *>("QActivity *");
-    qRegisterMetaType<QSet<QActivity *>>("QSet<QActivity *>");
-    qRegisterMetaType<QList<QActivity *>>("QList<QActivity *>");
-
-    qRegisterMetaType<QActivityEdge *>("QActivityEdge *");
-    qRegisterMetaType<QSet<QActivityEdge *>>("QSet<QActivityEdge *>");
-    qRegisterMetaType<QList<QActivityEdge *>>("QList<QActivityEdge *>");
-
-    qRegisterMetaType<QActivityNode *>("QActivityNode *");
-    qRegisterMetaType<QSet<QActivityNode *>>("QSet<QActivityNode *>");
-    qRegisterMetaType<QList<QActivityNode *>>("QList<QActivityNode *>");
-
-    QNamedElement::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QActivityGroup::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityGroup")][QString::fromLatin1("inActivity")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

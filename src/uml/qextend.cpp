@@ -371,26 +371,6 @@ void QExtend::setCondition(QConstraint *condition)
     }
 }
 
-void QExtend::registerMetaTypes() const
-{
-    qRegisterMetaType<QConstraint *>("QConstraint *");
-    qRegisterMetaType<QSet<QConstraint *>>("QSet<QConstraint *>");
-    qRegisterMetaType<QList<QConstraint *>>("QList<QConstraint *>");
-
-    qRegisterMetaType<QUseCase *>("QUseCase *");
-    qRegisterMetaType<QSet<QUseCase *>>("QSet<QUseCase *>");
-    qRegisterMetaType<QList<QUseCase *>>("QList<QUseCase *>");
-
-    qRegisterMetaType<QExtensionPoint *>("QExtensionPoint *");
-    qRegisterMetaType<QSet<QExtensionPoint *>>("QSet<QExtensionPoint *>");
-    qRegisterMetaType<QList<QExtensionPoint *>>("QList<QExtensionPoint *>");
-
-    QWrappedObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QExtend::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QExtend")][QString::fromLatin1("extendedCase")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

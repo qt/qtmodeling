@@ -158,18 +158,6 @@ QSet<QClassifier *> QFeature::featuringClassifiers() const
     return d->featuringClassifiers;
 }
 
-void QFeature::registerMetaTypes() const
-{
-    qRegisterMetaType<QClassifier *>("QClassifier *");
-    qRegisterMetaType<QSet<QClassifier *>>("QSet<QClassifier *>");
-    qRegisterMetaType<QList<QClassifier *>>("QList<QClassifier *>");
-
-    QRedefinableElement::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QFeature::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QFeature")][QString::fromLatin1("isStatic")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

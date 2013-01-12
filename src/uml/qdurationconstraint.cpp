@@ -144,18 +144,6 @@ void QDurationConstraint::setSpecification(QDurationInterval *specification)
     }
 }
 
-void QDurationConstraint::registerMetaTypes() const
-{
-    qRegisterMetaType<QDurationInterval *>("QDurationInterval *");
-    qRegisterMetaType<QSet<QDurationInterval *>>("QSet<QDurationInterval *>");
-    qRegisterMetaType<QList<QDurationInterval *>>("QList<QDurationInterval *>");
-
-    QIntervalConstraint::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QDurationConstraint::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDurationConstraint")][QString::fromLatin1("firstEvents")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

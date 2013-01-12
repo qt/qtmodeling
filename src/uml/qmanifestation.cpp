@@ -114,18 +114,6 @@ void QManifestation::setUtilizedElement(QPackageableElement *utilizedElement)
     }
 }
 
-void QManifestation::registerMetaTypes() const
-{
-    qRegisterMetaType<QPackageableElement *>("QPackageableElement *");
-    qRegisterMetaType<QSet<QPackageableElement *>>("QSet<QPackageableElement *>");
-    qRegisterMetaType<QList<QPackageableElement *>>("QList<QPackageableElement *>");
-
-    QAbstraction::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QManifestation::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QManifestation")][QString::fromLatin1("utilizedElement")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

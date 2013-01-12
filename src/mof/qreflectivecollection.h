@@ -71,7 +71,7 @@ public:
     Q_INVOKABLE void clear();
     Q_INVOKABLE bool remove(const QMofObject *object);
     Q_INVOKABLE qint32 size() const;
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

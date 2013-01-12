@@ -106,18 +106,6 @@ void QCallEvent::setOperation(QOperation *operation)
     }
 }
 
-void QCallEvent::registerMetaTypes() const
-{
-    qRegisterMetaType<QOperation *>("QOperation *");
-    qRegisterMetaType<QSet<QOperation *>>("QSet<QOperation *>");
-    qRegisterMetaType<QList<QOperation *>>("QList<QOperation *>");
-
-    QMessageEvent::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QCallEvent::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QCallEvent")][QString::fromLatin1("operation")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

@@ -148,18 +148,6 @@ void QJoinNode::setJoinSpec(QValueSpecification *joinSpec)
     }
 }
 
-void QJoinNode::registerMetaTypes() const
-{
-    qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
-    qRegisterMetaType<QSet<QValueSpecification *>>("QSet<QValueSpecification *>");
-    qRegisterMetaType<QList<QValueSpecification *>>("QList<QValueSpecification *>");
-
-    QControlNode::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QJoinNode::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QJoinNode")][QString::fromLatin1("isCombineDuplicate")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

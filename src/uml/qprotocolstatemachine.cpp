@@ -127,18 +127,6 @@ void QProtocolStateMachine::removeConformance(QProtocolConformance *conformance)
     }
 }
 
-void QProtocolStateMachine::registerMetaTypes() const
-{
-    qRegisterMetaType<QProtocolConformance *>("QProtocolConformance *");
-    qRegisterMetaType<QSet<QProtocolConformance *>>("QSet<QProtocolConformance *>");
-    qRegisterMetaType<QList<QProtocolConformance *>>("QList<QProtocolConformance *>");
-
-    QStateMachine::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QProtocolStateMachine::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolStateMachine")][QString::fromLatin1("conformance")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");

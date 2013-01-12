@@ -114,18 +114,6 @@ void QStartClassifierBehaviorAction::setObject(QInputPin *object)
     }
 }
 
-void QStartClassifierBehaviorAction::registerMetaTypes() const
-{
-    qRegisterMetaType<QInputPin *>("QInputPin *");
-    qRegisterMetaType<QSet<QInputPin *>>("QSet<QInputPin *>");
-    qRegisterMetaType<QList<QInputPin *>>("QList<QInputPin *>");
-
-    QAction::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QStartClassifierBehaviorAction::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QStartClassifierBehaviorAction")][QString::fromLatin1("object")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");

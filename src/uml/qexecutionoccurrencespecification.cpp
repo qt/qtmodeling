@@ -106,18 +106,6 @@ void QExecutionOccurrenceSpecification::setExecution(QExecutionSpecification *ex
     }
 }
 
-void QExecutionOccurrenceSpecification::registerMetaTypes() const
-{
-    qRegisterMetaType<QExecutionSpecification *>("QExecutionSpecification *");
-    qRegisterMetaType<QSet<QExecutionSpecification *>>("QSet<QExecutionSpecification *>");
-    qRegisterMetaType<QList<QExecutionSpecification *>>("QList<QExecutionSpecification *>");
-
-    QOccurrenceSpecification::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QExecutionOccurrenceSpecification::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QExecutionOccurrenceSpecification")][QString::fromLatin1("execution")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

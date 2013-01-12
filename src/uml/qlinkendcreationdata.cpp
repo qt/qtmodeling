@@ -140,18 +140,6 @@ void QLinkEndCreationData::setInsertAt(QInputPin *insertAt)
     }
 }
 
-void QLinkEndCreationData::registerMetaTypes() const
-{
-    qRegisterMetaType<QInputPin *>("QInputPin *");
-    qRegisterMetaType<QSet<QInputPin *>>("QSet<QInputPin *>");
-    qRegisterMetaType<QList<QInputPin *>>("QList<QInputPin *>");
-
-    QLinkEndData::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QLinkEndCreationData::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLinkEndCreationData")][QString::fromLatin1("isReplaceAll")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

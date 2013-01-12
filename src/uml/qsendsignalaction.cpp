@@ -137,22 +137,6 @@ void QSendSignalAction::setSignal(QSignal *signal)
     }
 }
 
-void QSendSignalAction::registerMetaTypes() const
-{
-    qRegisterMetaType<QSignal *>("QSignal *");
-    qRegisterMetaType<QSet<QSignal *>>("QSet<QSignal *>");
-    qRegisterMetaType<QList<QSignal *>>("QList<QSignal *>");
-
-    qRegisterMetaType<QInputPin *>("QInputPin *");
-    qRegisterMetaType<QSet<QInputPin *>>("QSet<QInputPin *>");
-    qRegisterMetaType<QList<QInputPin *>>("QList<QInputPin *>");
-
-    QInvocationAction::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QSendSignalAction::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QSendSignalAction")][QString::fromLatin1("target")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");

@@ -420,26 +420,6 @@ bool QBehavioralFeature::isDistinguishableFrom(const QNamedElement *n, const QNa
     return bool(); // change here to your derived return
 }
 
-void QBehavioralFeature::registerMetaTypes() const
-{
-    qRegisterMetaType<QParameter *>("QParameter *");
-    qRegisterMetaType<QSet<QParameter *>>("QSet<QParameter *>");
-    qRegisterMetaType<QList<QParameter *>>("QList<QParameter *>");
-
-    qRegisterMetaType<QType *>("QType *");
-    qRegisterMetaType<QSet<QType *>>("QSet<QType *>");
-    qRegisterMetaType<QList<QType *>>("QList<QType *>");
-
-    qRegisterMetaType<QNamedElement *>("QNamedElement *");
-    qRegisterMetaType<QSet<QNamedElement *>>("QSet<QNamedElement *>");
-    qRegisterMetaType<QList<QNamedElement *>>("QList<QNamedElement *>");
-
-    QWrappedObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QBehavioralFeature::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavioralFeature")][QString::fromLatin1("raisedExceptions")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

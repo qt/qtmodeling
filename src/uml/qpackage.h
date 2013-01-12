@@ -181,7 +181,7 @@ public:
     Q_INVOKABLE void removePackagedElement(QWrappedObjectPointer<QType> ownedType);
     Q_INVOKABLE void addPackagedElement(QWrappedObjectPointer<QPackage> nestedPackage);
     Q_INVOKABLE void removePackagedElement(QWrappedObjectPointer<QPackage> nestedPackage);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

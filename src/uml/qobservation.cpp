@@ -78,14 +78,6 @@ QObservation::~QObservation()
 {
 }
 
-void QObservation::registerMetaTypes() const
-{
-    QPackageableElement::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QObservation::setPropertyData()
 {
     QPackageableElement::setPropertyData();

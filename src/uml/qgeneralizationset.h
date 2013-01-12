@@ -91,7 +91,7 @@ public:
     Q_INVOKABLE QSet<QGeneralization *> generalizations() const;
     Q_INVOKABLE void addGeneralization(QGeneralization *generalization);
     Q_INVOKABLE void removeGeneralization(QGeneralization *generalization);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

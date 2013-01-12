@@ -137,22 +137,6 @@ void QStateInvariant::setCovered(QLifeline *covered)
     }
 }
 
-void QStateInvariant::registerMetaTypes() const
-{
-    qRegisterMetaType<QLifeline *>("QLifeline *");
-    qRegisterMetaType<QSet<QLifeline *>>("QSet<QLifeline *>");
-    qRegisterMetaType<QList<QLifeline *>>("QList<QLifeline *>");
-
-    qRegisterMetaType<QConstraint *>("QConstraint *");
-    qRegisterMetaType<QSet<QConstraint *>>("QSet<QConstraint *>");
-    qRegisterMetaType<QList<QConstraint *>>("QList<QConstraint *>");
-
-    QInteractionFragment::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QStateInvariant::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QStateInvariant")][QString::fromLatin1("invariant")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");

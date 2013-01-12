@@ -92,7 +92,7 @@ public:
     // Overriden methods for subsetted properties
     Q_INVOKABLE void addClientDependency(QWrappedObjectPointer<QInterfaceRealization> interfaceRealization);
     Q_INVOKABLE void removeClientDependency(QWrappedObjectPointer<QInterfaceRealization> interfaceRealization);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

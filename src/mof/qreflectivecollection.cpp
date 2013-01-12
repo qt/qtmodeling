@@ -107,14 +107,6 @@ qint32 QReflectiveCollection::size() const
     return qint32(); // change here to your derived return
 }
 
-void QReflectiveCollection::registerMetaTypes() const
-{
-    QMofObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QReflectiveCollection::setPropertyData()
 {
     QMofObject::setPropertyData();

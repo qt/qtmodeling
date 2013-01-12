@@ -106,18 +106,6 @@ void QVariableAction::setVariable(QVariable *variable)
     }
 }
 
-void QVariableAction::registerMetaTypes() const
-{
-    qRegisterMetaType<QVariable *>("QVariable *");
-    qRegisterMetaType<QSet<QVariable *>>("QSet<QVariable *>");
-    qRegisterMetaType<QList<QVariable *>>("QList<QVariable *>");
-
-    QAction::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QVariableAction::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QVariableAction")][QString::fromLatin1("variable")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

@@ -109,18 +109,6 @@ void QIntervalConstraint::setSpecification(QInterval *specification)
     }
 }
 
-void QIntervalConstraint::registerMetaTypes() const
-{
-    qRegisterMetaType<QInterval *>("QInterval *");
-    qRegisterMetaType<QSet<QInterval *>>("QSet<QInterval *>");
-    qRegisterMetaType<QList<QInterval *>>("QList<QInterval *>");
-
-    QConstraint::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QIntervalConstraint::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QIntervalConstraint")][QString::fromLatin1("specification")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");

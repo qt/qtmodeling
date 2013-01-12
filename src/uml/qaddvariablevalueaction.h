@@ -79,7 +79,7 @@ public:
     // Association ends from QAddVariableValueAction
     Q_INVOKABLE QInputPin *insertAt() const;
     Q_INVOKABLE void setInsertAt(QInputPin *insertAt);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

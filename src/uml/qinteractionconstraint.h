@@ -76,7 +76,7 @@ public:
     Q_INVOKABLE void setMaxint(QValueSpecification *maxint);
     Q_INVOKABLE QValueSpecification *minint() const;
     Q_INVOKABLE void setMinint(QValueSpecification *minint);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

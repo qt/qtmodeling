@@ -153,18 +153,6 @@ void QSubstitution::setSubstitutingClassifier(QClassifier *substitutingClassifie
     }
 }
 
-void QSubstitution::registerMetaTypes() const
-{
-    qRegisterMetaType<QClassifier *>("QClassifier *");
-    qRegisterMetaType<QSet<QClassifier *>>("QSet<QClassifier *>");
-    qRegisterMetaType<QList<QClassifier *>>("QList<QClassifier *>");
-
-    QRealization::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QSubstitution::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QSubstitution")][QString::fromLatin1("contract")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

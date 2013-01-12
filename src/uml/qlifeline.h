@@ -93,7 +93,7 @@ public:
     Q_INVOKABLE void setInteraction(QInteraction *interaction);
     Q_INVOKABLE QValueSpecification *selector() const;
     Q_INVOKABLE void setSelector(QValueSpecification *selector);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

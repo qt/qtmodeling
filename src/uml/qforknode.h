@@ -64,7 +64,7 @@ class Q_UML_EXPORT QForkNode : public QControlNode
 public:
     Q_INVOKABLE explicit QForkNode(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QForkNode();
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

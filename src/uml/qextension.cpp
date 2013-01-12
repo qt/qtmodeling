@@ -172,26 +172,6 @@ QProperty *QExtension::metaclassEnd() const
     return 0; // change here to your derived return
 }
 
-void QExtension::registerMetaTypes() const
-{
-    qRegisterMetaType<QClass *>("QClass *");
-    qRegisterMetaType<QSet<QClass *>>("QSet<QClass *>");
-    qRegisterMetaType<QList<QClass *>>("QList<QClass *>");
-
-    qRegisterMetaType<QExtensionEnd *>("QExtensionEnd *");
-    qRegisterMetaType<QSet<QExtensionEnd *>>("QSet<QExtensionEnd *>");
-    qRegisterMetaType<QList<QExtensionEnd *>>("QList<QExtensionEnd *>");
-
-    qRegisterMetaType<QProperty *>("QProperty *");
-    qRegisterMetaType<QSet<QProperty *>>("QSet<QProperty *>");
-    qRegisterMetaType<QList<QProperty *>>("QList<QProperty *>");
-
-    QAssociation::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QExtension::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QExtension")][QString::fromLatin1("isRequired")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

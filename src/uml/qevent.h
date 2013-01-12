@@ -64,7 +64,7 @@ class Q_UML_EXPORT QEvent : public QPackageableElement
 public:
     Q_INVOKABLE explicit QEvent(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QEvent();
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

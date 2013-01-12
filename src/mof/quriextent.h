@@ -75,7 +75,7 @@ public:
     Q_INVOKABLE QString contextURI() const;
     Q_INVOKABLE QString uri(const QElement *object) const;
     Q_INVOKABLE QElement *element(QString uri) const;
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

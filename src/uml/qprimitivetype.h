@@ -64,7 +64,7 @@ class Q_UML_EXPORT QPrimitiveType : public QDataType
 public:
     Q_INVOKABLE explicit QPrimitiveType(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QPrimitiveType();
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

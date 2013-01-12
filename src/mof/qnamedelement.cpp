@@ -229,18 +229,6 @@ QString QNamedElement::separator() const
     return QStringLiteral("::");
 }
 
-void QNamedElement::registerMetaTypes() const
-{
-    qRegisterMetaType<QNamespace *>("QNamespace *");
-    qRegisterMetaType<QSet<QNamespace *>>("QSet<QNamespace *>");
-    qRegisterMetaType<QList<QNamespace *>>("QList<QNamespace *>");
-
-    QElement::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QNamedElement::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QNamedElement")][QString::fromLatin1("name")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

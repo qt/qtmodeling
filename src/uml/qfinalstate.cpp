@@ -78,14 +78,6 @@ QFinalState::~QFinalState()
 {
 }
 
-void QFinalState::registerMetaTypes() const
-{
-    QState::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QFinalState::setPropertyData()
 {
     QState::setPropertyData();

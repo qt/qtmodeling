@@ -78,14 +78,6 @@ QExecutionEnvironment::~QExecutionEnvironment()
 {
 }
 
-void QExecutionEnvironment::registerMetaTypes() const
-{
-    QNode::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QExecutionEnvironment::setPropertyData()
 {
     QNode::setPropertyData();

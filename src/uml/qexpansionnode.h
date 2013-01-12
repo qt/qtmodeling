@@ -76,7 +76,7 @@ public:
     Q_INVOKABLE void setRegionAsOutput(QExpansionRegion *regionAsOutput);
     Q_INVOKABLE QExpansionRegion *regionAsInput() const;
     Q_INVOKABLE void setRegionAsInput(QExpansionRegion *regionAsInput);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

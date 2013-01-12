@@ -134,7 +134,7 @@ public:
     Q_INVOKABLE void setOperation(QOperation *operation);
     Q_INVOKABLE QValueSpecification *defaultValue() const;
     Q_INVOKABLE void setDefaultValue(QValueSpecification *defaultValue);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

@@ -188,22 +188,6 @@ void QProfileApplication::setAppliedProfile(QProfile *appliedProfile)
     }
 }
 
-void QProfileApplication::registerMetaTypes() const
-{
-    qRegisterMetaType<QProfile *>("QProfile *");
-    qRegisterMetaType<QSet<QProfile *>>("QSet<QProfile *>");
-    qRegisterMetaType<QList<QProfile *>>("QList<QProfile *>");
-
-    qRegisterMetaType<QPackage *>("QPackage *");
-    qRegisterMetaType<QSet<QPackage *>>("QSet<QPackage *>");
-    qRegisterMetaType<QList<QPackage *>>("QList<QPackage *>");
-
-    QDirectedRelationship::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QProfileApplication::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QProfileApplication")][QString::fromLatin1("isStrict")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

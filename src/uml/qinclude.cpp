@@ -308,18 +308,6 @@ void QInclude::setAddition(QUseCase *addition)
     }
 }
 
-void QInclude::registerMetaTypes() const
-{
-    qRegisterMetaType<QUseCase *>("QUseCase *");
-    qRegisterMetaType<QSet<QUseCase *>>("QSet<QUseCase *>");
-    qRegisterMetaType<QList<QUseCase *>>("QList<QUseCase *>");
-
-    QWrappedObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QInclude::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QInclude")][QString::fromLatin1("includingCase")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

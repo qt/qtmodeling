@@ -107,7 +107,7 @@ public:
     Q_INVOKABLE void setSendEvent(QMessageEnd *sendEvent);
     Q_INVOKABLE QConnector *connector() const;
     Q_INVOKABLE void setConnector(QConnector *connector);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

@@ -545,26 +545,6 @@ void QObjectNode::removeInState(QState *inState)
     }
 }
 
-void QObjectNode::registerMetaTypes() const
-{
-    qRegisterMetaType<QState *>("QState *");
-    qRegisterMetaType<QSet<QState *>>("QSet<QState *>");
-    qRegisterMetaType<QList<QState *>>("QList<QState *>");
-
-    qRegisterMetaType<QBehavior *>("QBehavior *");
-    qRegisterMetaType<QSet<QBehavior *>>("QSet<QBehavior *>");
-    qRegisterMetaType<QList<QBehavior *>>("QList<QBehavior *>");
-
-    qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
-    qRegisterMetaType<QSet<QValueSpecification *>>("QSet<QValueSpecification *>");
-    qRegisterMetaType<QList<QValueSpecification *>>("QList<QValueSpecification *>");
-
-    QWrappedObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QObjectNode::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectNode")][QString::fromLatin1("isControlType")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

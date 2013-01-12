@@ -90,7 +90,7 @@ public:
     Q_INVOKABLE void removeSupplier(QWrappedObjectPointer<QComponent> abstraction);
     Q_INVOKABLE void addClient(QWrappedObjectPointer<QClassifier> realizingClassifier);
     Q_INVOKABLE void removeClient(QWrappedObjectPointer<QClassifier> realizingClassifier);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

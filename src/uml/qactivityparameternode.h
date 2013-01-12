@@ -73,7 +73,7 @@ public:
     // Association ends from QActivityParameterNode
     Q_INVOKABLE QParameter *parameter() const;
     Q_INVOKABLE void setParameter(QParameter *parameter);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

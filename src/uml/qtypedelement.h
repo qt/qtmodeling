@@ -73,7 +73,7 @@ public:
     // Association ends from QTypedElement
     Q_INVOKABLE QType *type() const;
     Q_INVOKABLE void setType(QType *type);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

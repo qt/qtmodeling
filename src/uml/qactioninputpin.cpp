@@ -114,18 +114,6 @@ void QActionInputPin::setFromAction(QAction *fromAction)
     }
 }
 
-void QActionInputPin::registerMetaTypes() const
-{
-    qRegisterMetaType<QAction *>("QAction *");
-    qRegisterMetaType<QSet<QAction *>>("QSet<QAction *>");
-    qRegisterMetaType<QList<QAction *>>("QList<QAction *>");
-
-    QInputPin::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QActionInputPin::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActionInputPin")][QString::fromLatin1("fromAction")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");

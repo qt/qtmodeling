@@ -64,7 +64,7 @@ class Q_UML_EXPORT QFinalState : public QState
 public:
     Q_INVOKABLE explicit QFinalState(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QFinalState();
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

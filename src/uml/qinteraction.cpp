@@ -618,30 +618,6 @@ void QInteraction::removeLifeline(QLifeline *lifeline)
     }
 }
 
-void QInteraction::registerMetaTypes() const
-{
-    qRegisterMetaType<QMessage *>("QMessage *");
-    qRegisterMetaType<QSet<QMessage *>>("QSet<QMessage *>");
-    qRegisterMetaType<QList<QMessage *>>("QList<QMessage *>");
-
-    qRegisterMetaType<QLifeline *>("QLifeline *");
-    qRegisterMetaType<QSet<QLifeline *>>("QSet<QLifeline *>");
-    qRegisterMetaType<QList<QLifeline *>>("QList<QLifeline *>");
-
-    qRegisterMetaType<QAction *>("QAction *");
-    qRegisterMetaType<QSet<QAction *>>("QSet<QAction *>");
-    qRegisterMetaType<QList<QAction *>>("QList<QAction *>");
-
-    qRegisterMetaType<QGate *>("QGate *");
-    qRegisterMetaType<QSet<QGate *>>("QSet<QGate *>");
-    qRegisterMetaType<QList<QGate *>>("QList<QGate *>");
-
-    QWrappedObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QInteraction::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QInteraction")][QString::fromLatin1("actions")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");

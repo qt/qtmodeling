@@ -77,7 +77,7 @@ public:
     // Operations
     Q_INVOKABLE bool isComputable() const;
     Q_INVOKABLE QString stringValue() const;
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

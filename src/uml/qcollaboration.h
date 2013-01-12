@@ -204,7 +204,7 @@ public:
     Q_INVOKABLE QSet<QConnectableElement *> collaborationRoles() const;
     Q_INVOKABLE void addCollaborationRole(QConnectableElement *collaborationRole);
     Q_INVOKABLE void removeCollaborationRole(QConnectableElement *collaborationRole);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

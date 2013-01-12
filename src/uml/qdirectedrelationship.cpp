@@ -154,18 +154,6 @@ QSet<QElement *> QDirectedRelationship::targets() const
     return d->targets;
 }
 
-void QDirectedRelationship::registerMetaTypes() const
-{
-    qRegisterMetaType<QElement *>("QElement *");
-    qRegisterMetaType<QSet<QElement *>>("QSet<QElement *>");
-    qRegisterMetaType<QList<QElement *>>("QList<QElement *>");
-
-    QRelationship::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QDirectedRelationship::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDirectedRelationship")][QString::fromLatin1("sources")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
