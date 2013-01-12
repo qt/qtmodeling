@@ -1,0 +1,41 @@
+include($QT_INSTALL_DOCS/global/qt-module-defaults.qdocconf)
+
+project                 = QtUml
+description             = Qt UML Reference Documentation
+url                     = http://qt-project.org/doc/qtuml
+version                 = 5.0.0
+
+examplesinstallpath     = uml
+
+qhp.projects            = QtUml
+
+qhp.QtUml.file            = qtuml.qhp
+qhp.QtUml.namespace           = org.qt-project.qtuml.500
+qhp.QtUml.virtualFolder       = qtuml
+qhp.QtUml.indexTitle          = Qt UML
+qhp.QtUml.indexRoot           =
+
+qhp.QtUml.filterAttributes    = qtuml 5.0.0 qtrefdoc
+qhp.QtUml.customFilters.Qt.name = QtUml 5.0.0
+qhp.QtUml.customFilters.Qt.filterAttributes = qtuml 5.0.0
+
+qhp.QtUml.subprojects         = classes
+qhp.QtUml.subprojects.classes.title = C++ Classes
+qhp.QtUml.subprojects.classes.indexTitle = Qt UML C++ Classes
+qhp.QtUml.subprojects.classes.selectors = class fake:headerfile
+qhp.QtUml.subprojects.classes.sortPages = true
+tagfile                 = ../../../doc/qtuml/qtuml.tags
+
+depends                 += qtcore qtxml qtdoc
+
+headerdirs  += ..
+
+sourcedirs  += .. \
+               ../../../examples/uml/doc/src
+
+exampledirs += ../../../examples/uml \
+               ../ \
+               snippets
+
+imagedirs   += images \
+               ../../../examples/uml/doc/images

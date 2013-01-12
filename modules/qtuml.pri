@@ -11,7 +11,7 @@ QT.uml.sources = $$QT_MODULE_BASE/src/uml
 QT.uml.libs = $$QT_MODULE_LIB_BASE
 QT.uml.plugins = $$QT_MODULE_PLUGIN_BASE
 QT.uml.imports = $$QT_MODULE_IMPORT_BASE
-QT.uml.depends = core
+QT.uml.depends = core wrappedobjects
 
 QT.uml.DEFINES = QT_UML_LIB
 QT_CONFIG += uml

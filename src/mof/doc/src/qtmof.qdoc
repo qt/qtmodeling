@@ -1,0 +1,66 @@
+/****************************************************************************
+**
+** Copyright (C) 2012 Digia Plc and/or its subsidiary(-ies).
+** Contact: http://www.qt-project.org/legal
+**
+** This file is part of the documentation of the Qt Toolkit.
+**
+** $QT_BEGIN_LICENSE:FDL$
+** Commercial License Usage
+** Licensees holding valid commercial Qt licenses may use this file in
+** accordance with the commercial license agreement provided with the
+** Software or, alternatively, in accordance with the terms contained in
+** a written agreement between you and Digia.  For licensing terms and
+** conditions see http://qt.digia.com/licensing.  For further information
+** use the contact form at http://qt.digia.com/contact-us.
+**
+** GNU Free Documentation License Usage
+** Alternatively, this file may be used under the terms of the GNU Free
+** Documentation License version 1.3 as published by the Free Software
+** Foundation and appearing in the file included in the packaging of
+** this file.  Please review the following information to ensure
+** the GNU Free Documentation License version 1.3 requirements
+** will be met: http://www.gnu.org/copyleft/fdl.html.
+** $QT_END_LICENSE$
+**
+****************************************************************************/
+/*!
+    \page qtmof-index.html
+    \title Qt MOF
+    \brief Implements the OMG's Meta Object Facility (MOF) standard.
+
+    Qt Mof is an add-on module which implements the OMG's Meta Object Facility (MOF) metamodel.
+
+    \section1 Getting Started
+    To enable Qt MOF in a project, add this directive into the C++ files:
+    \code
+    #include <QtMof>
+    \endcode
+    To link against the Qt MOF module, add this line to the project file:
+    \code
+    QT += mof
+    \endcode
+
+    \section1 Reference
+    These are links to the API reference materials.
+    \list
+    \li \l{Qt MOF Module C++ Classes}{C++ classes}
+    \endlist
+*/
+
+/*!
+    \module QtMof
+    \title Qt MOF Module C++ Classes
+    \ingroup modules
+    \brief Implements the OMG's Meta Object Facility (MOF) standard.
+
+    To include the definitions of the module's classes, use the
+    following directive:
+
+    \snippet code/doc_src_qtmof.cpp 0
+
+    To link against the module, add this line to your \l qmake \c
+    .pro file:
+
+    \snippet code/doc_src_qtmof.pro 0
+*/

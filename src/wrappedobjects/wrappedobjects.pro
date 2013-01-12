@@ -3,6 +3,8 @@ load(qt_build_config)
 TARGET = QtWrappedObjects
 QT = core-private
 
+QMAKE_DOCS = $$PWD/doc/qtwrappedobjects.qdocconf
+
 load(qt_module)
 
 PUBLIC_HEADERS += \
