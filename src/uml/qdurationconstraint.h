@@ -82,7 +82,7 @@ public:
     // Association ends from QDurationConstraint
     Q_INVOKABLE QDurationInterval *specification() const;
     Q_INVOKABLE void setSpecification(QDurationInterval *specification);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

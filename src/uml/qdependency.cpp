@@ -361,18 +361,6 @@ void QDependency::removeSupplier(QNamedElement *supplier)
     }
 }
 
-void QDependency::registerMetaTypes() const
-{
-    qRegisterMetaType<QNamedElement *>("QNamedElement *");
-    qRegisterMetaType<QSet<QNamedElement *>>("QSet<QNamedElement *>");
-    qRegisterMetaType<QList<QNamedElement *>>("QList<QNamedElement *>");
-
-    QWrappedObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QDependency::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDependency")][QString::fromLatin1("clients")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

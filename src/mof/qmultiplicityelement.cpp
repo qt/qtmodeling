@@ -315,18 +315,6 @@ qint32 QMultiplicityElement::upperBound() const
     return qint32(); // change here to your derived return
 }
 
-void QMultiplicityElement::registerMetaTypes() const
-{
-    qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
-    qRegisterMetaType<QSet<QValueSpecification *>>("QSet<QValueSpecification *>");
-    qRegisterMetaType<QList<QValueSpecification *>>("QList<QValueSpecification *>");
-
-    QElement::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QMultiplicityElement::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMultiplicityElement")][QString::fromLatin1("upper")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

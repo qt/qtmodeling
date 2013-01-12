@@ -106,18 +106,6 @@ void QActivityParameterNode::setParameter(QParameter *parameter)
     }
 }
 
-void QActivityParameterNode::registerMetaTypes() const
-{
-    qRegisterMetaType<QParameter *>("QParameter *");
-    qRegisterMetaType<QSet<QParameter *>>("QSet<QParameter *>");
-    qRegisterMetaType<QList<QParameter *>>("QList<QParameter *>");
-
-    QObjectNode::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QActivityParameterNode::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityParameterNode")][QString::fromLatin1("parameter")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

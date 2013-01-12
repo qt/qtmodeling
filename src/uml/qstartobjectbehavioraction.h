@@ -73,7 +73,7 @@ public:
     // Association ends from QStartObjectBehaviorAction
     Q_INVOKABLE QInputPin *object() const;
     Q_INVOKABLE void setObject(QInputPin *object);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

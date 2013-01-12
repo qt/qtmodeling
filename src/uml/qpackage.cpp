@@ -705,38 +705,6 @@ QSet<QPackageableElement *> QPackage::visibleMembers() const
     return QSet<QPackageableElement *>(); // change here to your derived return
 }
 
-void QPackage::registerMetaTypes() const
-{
-    qRegisterMetaType<QProfile *>("QProfile *");
-    qRegisterMetaType<QSet<QProfile *>>("QSet<QProfile *>");
-    qRegisterMetaType<QList<QProfile *>>("QList<QProfile *>");
-
-    qRegisterMetaType<QProfileApplication *>("QProfileApplication *");
-    qRegisterMetaType<QSet<QProfileApplication *>>("QSet<QProfileApplication *>");
-    qRegisterMetaType<QList<QProfileApplication *>>("QList<QProfileApplication *>");
-
-    qRegisterMetaType<QNamedElement *>("QNamedElement *");
-    qRegisterMetaType<QSet<QNamedElement *>>("QSet<QNamedElement *>");
-    qRegisterMetaType<QList<QNamedElement *>>("QList<QNamedElement *>");
-
-    qRegisterMetaType<QPackageMerge *>("QPackageMerge *");
-    qRegisterMetaType<QSet<QPackageMerge *>>("QSet<QPackageMerge *>");
-    qRegisterMetaType<QList<QPackageMerge *>>("QList<QPackageMerge *>");
-
-    qRegisterMetaType<QStereotype *>("QStereotype *");
-    qRegisterMetaType<QSet<QStereotype *>>("QSet<QStereotype *>");
-    qRegisterMetaType<QList<QStereotype *>>("QList<QStereotype *>");
-
-    qRegisterMetaType<QType *>("QType *");
-    qRegisterMetaType<QSet<QType *>>("QSet<QType *>");
-    qRegisterMetaType<QList<QType *>>("QList<QType *>");
-
-    QWrappedObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QPackage::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QPackage")][QString::fromLatin1("URI")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

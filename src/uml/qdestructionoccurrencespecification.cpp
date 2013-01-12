@@ -78,14 +78,6 @@ QDestructionOccurrenceSpecification::~QDestructionOccurrenceSpecification()
 {
 }
 
-void QDestructionOccurrenceSpecification::registerMetaTypes() const
-{
-    QMessageOccurrenceSpecification::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QDestructionOccurrenceSpecification::setPropertyData()
 {
     QMessageOccurrenceSpecification::setPropertyData();

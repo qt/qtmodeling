@@ -268,14 +268,6 @@ qint32 QValueSpecification::unlimitedValue() const
     return qint32(); // change here to your derived return
 }
 
-void QValueSpecification::registerMetaTypes() const
-{
-    QWrappedObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QValueSpecification::setPropertyData()
 {
     QWrappedObject::setPropertyData();

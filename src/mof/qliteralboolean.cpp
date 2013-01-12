@@ -132,14 +132,6 @@ bool QLiteralBoolean::isComputable() const
     return bool(); // change here to your derived return
 }
 
-void QLiteralBoolean::registerMetaTypes() const
-{
-    QLiteralSpecification::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QLiteralBoolean::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLiteralBoolean")][QString::fromLatin1("value")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

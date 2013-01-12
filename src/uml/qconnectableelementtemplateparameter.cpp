@@ -111,18 +111,6 @@ void QConnectableElementTemplateParameter::setParameteredElement(QConnectableEle
     }
 }
 
-void QConnectableElementTemplateParameter::registerMetaTypes() const
-{
-    qRegisterMetaType<QConnectableElement *>("QConnectableElement *");
-    qRegisterMetaType<QSet<QConnectableElement *>>("QSet<QConnectableElement *>");
-    qRegisterMetaType<QList<QConnectableElement *>>("QList<QConnectableElement *>");
-
-    QTemplateParameter::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QConnectableElementTemplateParameter::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QConnectableElementTemplateParameter")][QString::fromLatin1("parameteredElement")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

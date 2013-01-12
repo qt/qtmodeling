@@ -90,7 +90,7 @@ public:
     Q_INVOKABLE void removeGeneralizationSet(QGeneralizationSet *generalizationSet);
     Q_INVOKABLE QClassifier *general() const;
     Q_INVOKABLE void setGeneral(QClassifier *general);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

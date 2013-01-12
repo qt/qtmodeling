@@ -115,18 +115,6 @@ void QConsiderIgnoreFragment::removeMessage(QNamedElement *message)
     }
 }
 
-void QConsiderIgnoreFragment::registerMetaTypes() const
-{
-    qRegisterMetaType<QNamedElement *>("QNamedElement *");
-    qRegisterMetaType<QSet<QNamedElement *>>("QSet<QNamedElement *>");
-    qRegisterMetaType<QList<QNamedElement *>>("QList<QNamedElement *>");
-
-    QCombinedFragment::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QConsiderIgnoreFragment::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QConsiderIgnoreFragment")][QString::fromLatin1("messages")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

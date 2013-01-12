@@ -234,22 +234,6 @@ void QTemplateParameter::setSignature(QTemplateSignature *signature)
     }
 }
 
-void QTemplateParameter::registerMetaTypes() const
-{
-    qRegisterMetaType<QParameterableElement *>("QParameterableElement *");
-    qRegisterMetaType<QSet<QParameterableElement *>>("QSet<QParameterableElement *>");
-    qRegisterMetaType<QList<QParameterableElement *>>("QList<QParameterableElement *>");
-
-    qRegisterMetaType<QTemplateSignature *>("QTemplateSignature *");
-    qRegisterMetaType<QSet<QTemplateSignature *>>("QSet<QTemplateSignature *>");
-    qRegisterMetaType<QList<QTemplateSignature *>>("QList<QTemplateSignature *>");
-
-    QElement::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QTemplateParameter::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateParameter")][QString::fromLatin1("default_")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

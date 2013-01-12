@@ -615,38 +615,6 @@ QSet<QType *> QProperty::subsettingContext() const
     return QSet<QType *>(); // change here to your derived return
 }
 
-void QProperty::registerMetaTypes() const
-{
-    qRegisterMetaType<QRedefinableElement *>("QRedefinableElement *");
-    qRegisterMetaType<QSet<QRedefinableElement *>>("QSet<QRedefinableElement *>");
-    qRegisterMetaType<QList<QRedefinableElement *>>("QList<QRedefinableElement *>");
-
-    qRegisterMetaType<QType *>("QType *");
-    qRegisterMetaType<QSet<QType *>>("QSet<QType *>");
-    qRegisterMetaType<QList<QType *>>("QList<QType *>");
-
-    qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
-    qRegisterMetaType<QSet<QValueSpecification *>>("QSet<QValueSpecification *>");
-    qRegisterMetaType<QList<QValueSpecification *>>("QList<QValueSpecification *>");
-
-    qRegisterMetaType<QClass *>("QClass *");
-    qRegisterMetaType<QSet<QClass *>>("QSet<QClass *>");
-    qRegisterMetaType<QList<QClass *>>("QList<QClass *>");
-
-    qRegisterMetaType<QAssociation *>("QAssociation *");
-    qRegisterMetaType<QSet<QAssociation *>>("QSet<QAssociation *>");
-    qRegisterMetaType<QList<QAssociation *>>("QList<QAssociation *>");
-
-    qRegisterMetaType<QDataType *>("QDataType *");
-    qRegisterMetaType<QSet<QDataType *>>("QSet<QDataType *>");
-    qRegisterMetaType<QList<QDataType *>>("QList<QDataType *>");
-
-    QStructuralFeature::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QProperty::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QProperty")][QString::fromLatin1("isDerived")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

@@ -73,7 +73,7 @@ public:
     // Association ends from QCallEvent
     Q_INVOKABLE QOperation *operation() const;
     Q_INVOKABLE void setOperation(QOperation *operation);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

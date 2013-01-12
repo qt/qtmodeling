@@ -123,14 +123,6 @@ bool QLiteralInteger::isComputable() const
     return bool(); // change here to your derived return
 }
 
-void QLiteralInteger::registerMetaTypes() const
-{
-    QLiteralSpecification::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QLiteralInteger::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLiteralInteger")][QString::fromLatin1("value")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

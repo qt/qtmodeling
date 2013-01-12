@@ -77,7 +77,7 @@ public:
     Q_INVOKABLE QList<QProperty *> ownedAttributes() const;
     Q_INVOKABLE void addOwnedAttribute(QProperty *ownedAttribute);
     Q_INVOKABLE void removeOwnedAttribute(QProperty *ownedAttribute);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

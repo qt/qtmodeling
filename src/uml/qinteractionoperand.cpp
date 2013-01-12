@@ -428,18 +428,6 @@ void QInteractionOperand::setGuard(QInteractionConstraint *guard)
     }
 }
 
-void QInteractionOperand::registerMetaTypes() const
-{
-    qRegisterMetaType<QInteractionConstraint *>("QInteractionConstraint *");
-    qRegisterMetaType<QSet<QInteractionConstraint *>>("QSet<QInteractionConstraint *>");
-    qRegisterMetaType<QList<QInteractionConstraint *>>("QList<QInteractionConstraint *>");
-
-    QWrappedObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QInteractionOperand::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionOperand")][QString::fromLatin1("fragments")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");

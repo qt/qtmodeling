@@ -78,14 +78,6 @@ QGate::~QGate()
 {
 }
 
-void QGate::registerMetaTypes() const
-{
-    QMessageEnd::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QGate::setPropertyData()
 {
     QMessageEnd::setPropertyData();

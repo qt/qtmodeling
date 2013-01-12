@@ -106,7 +106,7 @@ public:
     Q_INVOKABLE QSet<QActivityEdge *> outgoings() const;
     Q_INVOKABLE void addOutgoing(QActivityEdge *outgoing);
     Q_INVOKABLE void removeOutgoing(QActivityEdge *outgoing);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
     // Classes which access read-only opposite properties should be friend

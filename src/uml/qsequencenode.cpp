@@ -117,18 +117,6 @@ void QSequenceNode::removeExecutableNode(QExecutableNode *executableNode)
     }
 }
 
-void QSequenceNode::registerMetaTypes() const
-{
-    qRegisterMetaType<QExecutableNode *>("QExecutableNode *");
-    qRegisterMetaType<QSet<QExecutableNode *>>("QSet<QExecutableNode *>");
-    qRegisterMetaType<QList<QExecutableNode *>>("QList<QExecutableNode *>");
-
-    QStructuredActivityNode::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QSequenceNode::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QSequenceNode")][QString::fromLatin1("executableNodes")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");

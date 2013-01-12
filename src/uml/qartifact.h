@@ -212,7 +212,7 @@ public:
     // Overriden methods for subsetted properties
     Q_INVOKABLE void addClientDependency(QWrappedObjectPointer<QManifestation> manifestation);
     Q_INVOKABLE void removeClientDependency(QWrappedObjectPointer<QManifestation> manifestation);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

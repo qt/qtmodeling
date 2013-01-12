@@ -79,7 +79,7 @@ public:
     Q_INVOKABLE QProperty *partWithPort() const;
     Q_INVOKABLE void setPartWithPort(QProperty *partWithPort);
     Q_INVOKABLE QProperty *definingEnd() const;
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

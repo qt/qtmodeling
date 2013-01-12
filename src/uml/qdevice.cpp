@@ -78,14 +78,6 @@ QDevice::~QDevice()
 {
 }
 
-void QDevice::registerMetaTypes() const
-{
-    QNode::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QDevice::setPropertyData()
 {
     QNode::setPropertyData();

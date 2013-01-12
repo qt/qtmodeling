@@ -120,7 +120,7 @@ public:
     Q_INVOKABLE void removeExtensionLocation(QExtensionPoint *extensionLocation);
     Q_INVOKABLE QConstraint *condition() const;
     Q_INVOKABLE void setCondition(QConstraint *condition);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

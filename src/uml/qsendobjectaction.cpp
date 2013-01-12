@@ -139,18 +139,6 @@ void QSendObjectAction::setTarget(QInputPin *target)
     }
 }
 
-void QSendObjectAction::registerMetaTypes() const
-{
-    qRegisterMetaType<QInputPin *>("QInputPin *");
-    qRegisterMetaType<QSet<QInputPin *>>("QSet<QInputPin *>");
-    qRegisterMetaType<QList<QInputPin *>>("QList<QInputPin *>");
-
-    QInvocationAction::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QSendObjectAction::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QSendObjectAction")][QString::fromLatin1("request")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");

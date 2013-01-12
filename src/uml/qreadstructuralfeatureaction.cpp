@@ -114,18 +114,6 @@ void QReadStructuralFeatureAction::setResult(QOutputPin *result)
     }
 }
 
-void QReadStructuralFeatureAction::registerMetaTypes() const
-{
-    qRegisterMetaType<QOutputPin *>("QOutputPin *");
-    qRegisterMetaType<QSet<QOutputPin *>>("QSet<QOutputPin *>");
-    qRegisterMetaType<QList<QOutputPin *>>("QList<QOutputPin *>");
-
-    QStructuralFeatureAction::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QReadStructuralFeatureAction::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QReadStructuralFeatureAction")][QString::fromLatin1("result")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");

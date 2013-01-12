@@ -129,22 +129,6 @@ void QQualifierValue::setQualifier(QProperty *qualifier)
     }
 }
 
-void QQualifierValue::registerMetaTypes() const
-{
-    qRegisterMetaType<QProperty *>("QProperty *");
-    qRegisterMetaType<QSet<QProperty *>>("QSet<QProperty *>");
-    qRegisterMetaType<QList<QProperty *>>("QList<QProperty *>");
-
-    qRegisterMetaType<QInputPin *>("QInputPin *");
-    qRegisterMetaType<QSet<QInputPin *>>("QSet<QInputPin *>");
-    qRegisterMetaType<QList<QInputPin *>>("QList<QInputPin *>");
-
-    QElement::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QQualifierValue::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QQualifierValue")][QString::fromLatin1("value")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

@@ -514,38 +514,6 @@ void QInformationFlow::removeRealization(QRelationship *realization)
     }
 }
 
-void QInformationFlow::registerMetaTypes() const
-{
-    qRegisterMetaType<QConnector *>("QConnector *");
-    qRegisterMetaType<QSet<QConnector *>>("QSet<QConnector *>");
-    qRegisterMetaType<QList<QConnector *>>("QList<QConnector *>");
-
-    qRegisterMetaType<QMessage *>("QMessage *");
-    qRegisterMetaType<QSet<QMessage *>>("QSet<QMessage *>");
-    qRegisterMetaType<QList<QMessage *>>("QList<QMessage *>");
-
-    qRegisterMetaType<QActivityEdge *>("QActivityEdge *");
-    qRegisterMetaType<QSet<QActivityEdge *>>("QSet<QActivityEdge *>");
-    qRegisterMetaType<QList<QActivityEdge *>>("QList<QActivityEdge *>");
-
-    qRegisterMetaType<QNamedElement *>("QNamedElement *");
-    qRegisterMetaType<QSet<QNamedElement *>>("QSet<QNamedElement *>");
-    qRegisterMetaType<QList<QNamedElement *>>("QList<QNamedElement *>");
-
-    qRegisterMetaType<QClassifier *>("QClassifier *");
-    qRegisterMetaType<QSet<QClassifier *>>("QSet<QClassifier *>");
-    qRegisterMetaType<QList<QClassifier *>>("QList<QClassifier *>");
-
-    qRegisterMetaType<QRelationship *>("QRelationship *");
-    qRegisterMetaType<QSet<QRelationship *>>("QSet<QRelationship *>");
-    qRegisterMetaType<QList<QRelationship *>>("QList<QRelationship *>");
-
-    QWrappedObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QInformationFlow::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationFlow")][QString::fromLatin1("informationTargets")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

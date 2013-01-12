@@ -85,7 +85,7 @@ public:
 
     // Operations
     Q_INVOKABLE QStateMachine *containingStateMachine() const;
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
     // Classes which access read-only opposite properties should be friend

@@ -117,18 +117,6 @@ void QExtensionPoint::setUseCase(QUseCase *useCase)
     }
 }
 
-void QExtensionPoint::registerMetaTypes() const
-{
-    qRegisterMetaType<QUseCase *>("QUseCase *");
-    qRegisterMetaType<QSet<QUseCase *>>("QSet<QUseCase *>");
-    qRegisterMetaType<QList<QUseCase *>>("QList<QUseCase *>");
-
-    QRedefinableElement::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QExtensionPoint::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QExtensionPoint")][QString::fromLatin1("useCase")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

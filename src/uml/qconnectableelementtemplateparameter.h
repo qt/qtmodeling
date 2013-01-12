@@ -73,7 +73,7 @@ public:
     // Association ends from QConnectableElementTemplateParameter
     Q_INVOKABLE QConnectableElement *parameteredElement() const;
     Q_INVOKABLE void setParameteredElement(QConnectableElement *parameteredElement);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

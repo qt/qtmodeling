@@ -144,18 +144,6 @@ void QExpansionNode::setRegionAsInput(QExpansionRegion *regionAsInput)
     }
 }
 
-void QExpansionNode::registerMetaTypes() const
-{
-    qRegisterMetaType<QExpansionRegion *>("QExpansionRegion *");
-    qRegisterMetaType<QSet<QExpansionRegion *>>("QSet<QExpansionRegion *>");
-    qRegisterMetaType<QList<QExpansionRegion *>>("QList<QExpansionRegion *>");
-
-    QObjectNode::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QExpansionNode::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionNode")][QString::fromLatin1("regionAsOutput")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

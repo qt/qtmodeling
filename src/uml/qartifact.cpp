@@ -836,26 +836,6 @@ void QArtifact::removeNestedArtifact(QArtifact *nestedArtifact)
     }
 }
 
-void QArtifact::registerMetaTypes() const
-{
-    qRegisterMetaType<QOperation *>("QOperation *");
-    qRegisterMetaType<QSet<QOperation *>>("QSet<QOperation *>");
-    qRegisterMetaType<QList<QOperation *>>("QList<QOperation *>");
-
-    qRegisterMetaType<QProperty *>("QProperty *");
-    qRegisterMetaType<QSet<QProperty *>>("QSet<QProperty *>");
-    qRegisterMetaType<QList<QProperty *>>("QList<QProperty *>");
-
-    qRegisterMetaType<QManifestation *>("QManifestation *");
-    qRegisterMetaType<QSet<QManifestation *>>("QSet<QManifestation *>");
-    qRegisterMetaType<QList<QManifestation *>>("QList<QManifestation *>");
-
-    QWrappedObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QArtifact::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QArtifact")][QString::fromLatin1("fileName")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

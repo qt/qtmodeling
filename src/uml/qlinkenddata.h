@@ -85,7 +85,7 @@ public:
     Q_INVOKABLE QSet<QQualifierValue *> qualifiers() const;
     Q_INVOKABLE void addQualifier(QQualifierValue *qualifier);
     Q_INVOKABLE void removeQualifier(QQualifierValue *qualifier);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

@@ -39,11 +39,11 @@
 **
 ****************************************************************************/
 
-#include "qtmofmetamodel.h"
+#include "qmofmetamodel.h"
 
 QT_BEGIN_NAMESPACE_QTMOF
 
-void QtMofMetaModel::init()
+void QMofMetaModel::init()
 {
     qRegisterMetaType<QArgument *>("QArgument *");
     qRegisterMetaType<QList<QArgument *>>("QList<QArgument *>");

@@ -49,6 +49,9 @@
 #include <QtWrappedObjects/QMetaWrappedObject>
 #include <QtWrappedObjects/QMetaPropertyInfo>
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
+
+#include <QtMof/QMofMetaModel>
+
 using QtWrappedObjects::QMetaWrappedObject;
 using QtWrappedObjects::QMetaPropertyInfo;
 
@@ -68,6 +71,7 @@ QXmiWriterPrivate::~QXmiWriterPrivate()
 QXmiWriter::QXmiWriter(QWrappedObject *wrappedObject, QObject *parent) :
     QObject(*new QXmiWriterPrivate(wrappedObject), parent)
 {
+    QMofMetaModel::init();
 }
 
 QXmiWriter::~QXmiWriter()
@@ -107,8 +111,6 @@ void QXmiWriter::populateIdMap(QWrappedObject *wrappedObject, int index)
         d->idStack << QString::fromLatin1(wrappedObject->metaObject()->className()).remove(QRegularExpression(QString::fromLatin1("^Q"))) +
                       QString::fromLatin1((index != -1) ? ".%1":"").arg(index);
     d->idMap.insert(wrappedObject, d->idStack.join(QString::fromLatin1("-")));
-
-    wrappedObject->registerMetaTypes();
 
     const QMetaWrappedObject *metaWrappedObject = wrappedObject->metaWrappedObject();
     int propertyCount = metaWrappedObject->propertyCount();
@@ -163,7 +165,6 @@ void QXmiWriter::writeWrappedObject(QWrappedObject *wrappedObject, QString eleme
         return;
 
     d->visitedObjects.append(wrappedObject);
-    wrappedObject->registerMetaTypes();
 
     d->writer.writeStartElement(elementName.isEmpty() ? QString::fromLatin1(d->wrappedObject->metaObject()->className()).remove(QRegularExpression(QString::fromLatin1("^Q"))).prepend(QString::fromLatin1("uml:"))
                                                       :

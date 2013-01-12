@@ -148,18 +148,6 @@ void QAddVariableValueAction::setInsertAt(QInputPin *insertAt)
     }
 }
 
-void QAddVariableValueAction::registerMetaTypes() const
-{
-    qRegisterMetaType<QInputPin *>("QInputPin *");
-    qRegisterMetaType<QSet<QInputPin *>>("QSet<QInputPin *>");
-    qRegisterMetaType<QList<QInputPin *>>("QList<QInputPin *>");
-
-    QWriteVariableAction::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QAddVariableValueAction::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QAddVariableValueAction")][QString::fromLatin1("isReplaceAll")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

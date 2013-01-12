@@ -114,18 +114,6 @@ void QReadLinkAction::setResult(QOutputPin *result)
     }
 }
 
-void QReadLinkAction::registerMetaTypes() const
-{
-    qRegisterMetaType<QOutputPin *>("QOutputPin *");
-    qRegisterMetaType<QSet<QOutputPin *>>("QSet<QOutputPin *>");
-    qRegisterMetaType<QList<QOutputPin *>>("QList<QOutputPin *>");
-
-    QLinkAction::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QReadLinkAction::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QReadLinkAction")][QString::fromLatin1("result")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");

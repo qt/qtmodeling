@@ -76,7 +76,7 @@ public:
 
     // Operations
     Q_INVOKABLE bool conformsTo(const QType *other) const;
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

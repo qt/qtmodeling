@@ -103,7 +103,7 @@ public:
     Q_INVOKABLE QSet<QActivityEdge *> edges() const;
     Q_INVOKABLE void addEdge(QActivityEdge *edge);
     Q_INVOKABLE void removeEdge(QActivityEdge *edge);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

@@ -79,7 +79,7 @@ public:
     Q_INVOKABLE QList<QString> bodies() const;
     Q_INVOKABLE void addBody(QString body);
     Q_INVOKABLE void removeBody(QString body);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

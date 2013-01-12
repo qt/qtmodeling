@@ -116,7 +116,7 @@ public:
     // Overriden methods for subsetted properties
     Q_INVOKABLE void addRedefinedClassifier(QWrappedObjectPointer<QBehavior> redefinedBehavior);
     Q_INVOKABLE void removeRedefinedClassifier(QWrappedObjectPointer<QBehavior> redefinedBehavior);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

@@ -145,18 +145,6 @@ void QDuration::removeObservation(QObservation *observation)
     }
 }
 
-void QDuration::registerMetaTypes() const
-{
-    qRegisterMetaType<QObservation *>("QObservation *");
-    qRegisterMetaType<QSet<QObservation *>>("QSet<QObservation *>");
-    qRegisterMetaType<QList<QObservation *>>("QList<QObservation *>");
-
-    QValueSpecification::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QDuration::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDuration")][QString::fromLatin1("expr")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");

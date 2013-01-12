@@ -77,7 +77,7 @@ public:
     Q_INVOKABLE QSet<QNamedElement *> messages() const;
     Q_INVOKABLE void addMessage(QNamedElement *message);
     Q_INVOKABLE void removeMessage(QNamedElement *message);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

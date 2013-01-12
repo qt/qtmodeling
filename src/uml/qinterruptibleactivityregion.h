@@ -82,7 +82,7 @@ public:
     Q_INVOKABLE QSet<QActivityNode *> nodes() const;
     Q_INVOKABLE void addNode(QActivityNode *node);
     Q_INVOKABLE void removeNode(QActivityNode *node);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

@@ -112,14 +112,6 @@ void QPackageableElement::unsetVisibility()
     d->modifiedResettableProperties.removeAll(QString::fromLatin1("visibility"));
 }
 
-void QPackageableElement::registerMetaTypes() const
-{
-    QNamedElement::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QPackageableElement::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QPackageableElement")][QString::fromLatin1("visibility")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

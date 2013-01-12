@@ -117,18 +117,6 @@ void QCreateLinkAction::removeEndData(QLinkEndCreationData *endData)
     }
 }
 
-void QCreateLinkAction::registerMetaTypes() const
-{
-    qRegisterMetaType<QLinkEndCreationData *>("QLinkEndCreationData *");
-    qRegisterMetaType<QSet<QLinkEndCreationData *>>("QSet<QLinkEndCreationData *>");
-    qRegisterMetaType<QList<QLinkEndCreationData *>>("QList<QLinkEndCreationData *>");
-
-    QWriteLinkAction::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QCreateLinkAction::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QCreateLinkAction")][QString::fromLatin1("endData")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");

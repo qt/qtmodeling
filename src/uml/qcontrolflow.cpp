@@ -78,14 +78,6 @@ QControlFlow::~QControlFlow()
 {
 }
 
-void QControlFlow::registerMetaTypes() const
-{
-    QActivityEdge::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QControlFlow::setPropertyData()
 {
     QActivityEdge::setPropertyData();

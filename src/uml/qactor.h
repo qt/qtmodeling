@@ -64,7 +64,7 @@ class Q_UML_EXPORT QActor : public QBehavioredClassifier
 public:
     Q_INVOKABLE explicit QActor(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QActor();
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

@@ -78,14 +78,6 @@ QUsage::~QUsage()
 {
 }
 
-void QUsage::registerMetaTypes() const
-{
-    QDependency::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QUsage::setPropertyData()
 {
     QDependency::setPropertyData();

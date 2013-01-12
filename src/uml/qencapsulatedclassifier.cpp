@@ -96,18 +96,6 @@ QSet<QPort *> QEncapsulatedClassifier::ownedPorts() const
     return QSet<QPort *>(); // change here to your derived return
 }
 
-void QEncapsulatedClassifier::registerMetaTypes() const
-{
-    qRegisterMetaType<QPort *>("QPort *");
-    qRegisterMetaType<QSet<QPort *>>("QSet<QPort *>");
-    qRegisterMetaType<QList<QPort *>>("QList<QPort *>");
-
-    QStructuredClassifier::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QEncapsulatedClassifier::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QEncapsulatedClassifier")][QString::fromLatin1("ownedPorts")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");

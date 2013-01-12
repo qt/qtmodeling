@@ -205,7 +205,7 @@ public:
     Q_INVOKABLE QList<QProperty *> memberEnds() const;
     Q_INVOKABLE void addMemberEnd(QProperty *memberEnd);
     Q_INVOKABLE void removeMemberEnd(QProperty *memberEnd);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

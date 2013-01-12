@@ -433,42 +433,6 @@ void QActivityEdge::setTarget(QActivityNode *target)
     }
 }
 
-void QActivityEdge::registerMetaTypes() const
-{
-    qRegisterMetaType<QInterruptibleActivityRegion *>("QInterruptibleActivityRegion *");
-    qRegisterMetaType<QSet<QInterruptibleActivityRegion *>>("QSet<QInterruptibleActivityRegion *>");
-    qRegisterMetaType<QList<QInterruptibleActivityRegion *>>("QList<QInterruptibleActivityRegion *>");
-
-    qRegisterMetaType<QActivityNode *>("QActivityNode *");
-    qRegisterMetaType<QSet<QActivityNode *>>("QSet<QActivityNode *>");
-    qRegisterMetaType<QList<QActivityNode *>>("QList<QActivityNode *>");
-
-    qRegisterMetaType<QStructuredActivityNode *>("QStructuredActivityNode *");
-    qRegisterMetaType<QSet<QStructuredActivityNode *>>("QSet<QStructuredActivityNode *>");
-    qRegisterMetaType<QList<QStructuredActivityNode *>>("QList<QStructuredActivityNode *>");
-
-    qRegisterMetaType<QActivityPartition *>("QActivityPartition *");
-    qRegisterMetaType<QSet<QActivityPartition *>>("QSet<QActivityPartition *>");
-    qRegisterMetaType<QList<QActivityPartition *>>("QList<QActivityPartition *>");
-
-    qRegisterMetaType<QActivity *>("QActivity *");
-    qRegisterMetaType<QSet<QActivity *>>("QSet<QActivity *>");
-    qRegisterMetaType<QList<QActivity *>>("QList<QActivity *>");
-
-    qRegisterMetaType<QActivityGroup *>("QActivityGroup *");
-    qRegisterMetaType<QSet<QActivityGroup *>>("QSet<QActivityGroup *>");
-    qRegisterMetaType<QList<QActivityGroup *>>("QList<QActivityGroup *>");
-
-    qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
-    qRegisterMetaType<QSet<QValueSpecification *>>("QSet<QValueSpecification *>");
-    qRegisterMetaType<QList<QValueSpecification *>>("QList<QValueSpecification *>");
-
-    QRedefinableElement::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QActivityEdge::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityEdge")][QString::fromLatin1("source")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

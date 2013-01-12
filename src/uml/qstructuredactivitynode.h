@@ -203,7 +203,7 @@ public:
     Q_INVOKABLE void removeVariable(QVariable *variable);
     Q_INVOKABLE QActivity *activity() const;
     Q_INVOKABLE void setActivity(QActivity *activity);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

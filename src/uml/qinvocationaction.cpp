@@ -144,22 +144,6 @@ void QInvocationAction::setOnPort(QPort *onPort)
     }
 }
 
-void QInvocationAction::registerMetaTypes() const
-{
-    qRegisterMetaType<QInputPin *>("QInputPin *");
-    qRegisterMetaType<QSet<QInputPin *>>("QSet<QInputPin *>");
-    qRegisterMetaType<QList<QInputPin *>>("QList<QInputPin *>");
-
-    qRegisterMetaType<QPort *>("QPort *");
-    qRegisterMetaType<QSet<QPort *>>("QSet<QPort *>");
-    qRegisterMetaType<QList<QPort *>>("QList<QPort *>");
-
-    QAction::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QInvocationAction::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QInvocationAction")][QString::fromLatin1("arguments")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");

@@ -163,18 +163,6 @@ void QDeploymentSpecification::setDeployment(QDeployment *deployment)
     }
 }
 
-void QDeploymentSpecification::registerMetaTypes() const
-{
-    qRegisterMetaType<QDeployment *>("QDeployment *");
-    qRegisterMetaType<QSet<QDeployment *>>("QSet<QDeployment *>");
-    qRegisterMetaType<QList<QDeployment *>>("QList<QDeployment *>");
-
-    QArtifact::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QDeploymentSpecification::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDeploymentSpecification")][QString::fromLatin1("deploymentLocation")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

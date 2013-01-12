@@ -88,7 +88,7 @@ public:
     Q_INVOKABLE QSet<QOutputPin *> results() const;
     Q_INVOKABLE void addResult(QOutputPin *result);
     Q_INVOKABLE void removeResult(QOutputPin *result);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

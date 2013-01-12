@@ -96,18 +96,6 @@ QElement *QURIExtent::element(QString uri) const
     return 0; // change here to your derived return
 }
 
-void QURIExtent::registerMetaTypes() const
-{
-    qRegisterMetaType<QElement *>("QElement *");
-    qRegisterMetaType<QSet<QElement *>>("QSet<QElement *>");
-    qRegisterMetaType<QList<QElement *>>("QList<QElement *>");
-
-    QExtent::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QURIExtent::setPropertyData()
 {
     QExtent::setPropertyData();

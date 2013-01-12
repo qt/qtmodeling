@@ -114,18 +114,6 @@ void QChangeEvent::setChangeExpression(QValueSpecification *changeExpression)
     }
 }
 
-void QChangeEvent::registerMetaTypes() const
-{
-    qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
-    qRegisterMetaType<QSet<QValueSpecification *>>("QSet<QValueSpecification *>");
-    qRegisterMetaType<QList<QValueSpecification *>>("QList<QValueSpecification *>");
-
-    QEvent::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QChangeEvent::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QChangeEvent")][QString::fromLatin1("changeExpression")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");

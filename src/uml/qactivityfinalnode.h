@@ -64,7 +64,7 @@ class Q_UML_EXPORT QActivityFinalNode : public QFinalNode
 public:
     Q_INVOKABLE explicit QActivityFinalNode(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QActivityFinalNode();
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

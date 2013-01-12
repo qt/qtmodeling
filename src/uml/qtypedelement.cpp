@@ -106,18 +106,6 @@ void QTypedElement::setType(QType *type)
     }
 }
 
-void QTypedElement::registerMetaTypes() const
-{
-    qRegisterMetaType<QType *>("QType *");
-    qRegisterMetaType<QSet<QType *>>("QSet<QType *>");
-    qRegisterMetaType<QList<QType *>>("QList<QType *>");
-
-    QNamedElement::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QTypedElement::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QTypedElement")][QString::fromLatin1("type")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

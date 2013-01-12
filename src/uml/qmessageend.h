@@ -73,7 +73,7 @@ public:
     // Association ends from QMessageEnd
     Q_INVOKABLE QMessage *message() const;
     Q_INVOKABLE void setMessage(QMessage *message);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

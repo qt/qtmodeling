@@ -145,18 +145,6 @@ void QTimeExpression::setExpr(QValueSpecification *expr)
     }
 }
 
-void QTimeExpression::registerMetaTypes() const
-{
-    qRegisterMetaType<QObservation *>("QObservation *");
-    qRegisterMetaType<QSet<QObservation *>>("QSet<QObservation *>");
-    qRegisterMetaType<QList<QObservation *>>("QList<QObservation *>");
-
-    QValueSpecification::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QTimeExpression::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeExpression")][QString::fromLatin1("observations")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

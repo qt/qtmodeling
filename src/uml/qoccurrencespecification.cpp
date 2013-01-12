@@ -181,22 +181,6 @@ void QOccurrenceSpecification::removeToBefore(QGeneralOrdering *toBefore)
     }
 }
 
-void QOccurrenceSpecification::registerMetaTypes() const
-{
-    qRegisterMetaType<QLifeline *>("QLifeline *");
-    qRegisterMetaType<QSet<QLifeline *>>("QSet<QLifeline *>");
-    qRegisterMetaType<QList<QLifeline *>>("QList<QLifeline *>");
-
-    qRegisterMetaType<QGeneralOrdering *>("QGeneralOrdering *");
-    qRegisterMetaType<QSet<QGeneralOrdering *>>("QSet<QGeneralOrdering *>");
-    qRegisterMetaType<QList<QGeneralOrdering *>>("QList<QGeneralOrdering *>");
-
-    QInteractionFragment::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QOccurrenceSpecification::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QOccurrenceSpecification")][QString::fromLatin1("covered")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

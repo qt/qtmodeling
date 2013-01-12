@@ -87,7 +87,7 @@ public:
     Q_INVOKABLE void setCollection(QInputPin *collection);
     Q_INVOKABLE QBehavior *reducer() const;
     Q_INVOKABLE void setReducer(QBehavior *reducer);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

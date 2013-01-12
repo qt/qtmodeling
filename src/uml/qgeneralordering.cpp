@@ -144,18 +144,6 @@ void QGeneralOrdering::setAfter(QOccurrenceSpecification *after)
     }
 }
 
-void QGeneralOrdering::registerMetaTypes() const
-{
-    qRegisterMetaType<QOccurrenceSpecification *>("QOccurrenceSpecification *");
-    qRegisterMetaType<QSet<QOccurrenceSpecification *>>("QSet<QOccurrenceSpecification *>");
-    qRegisterMetaType<QList<QOccurrenceSpecification *>>("QList<QOccurrenceSpecification *>");
-
-    QNamedElement::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QGeneralOrdering::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QGeneralOrdering")][QString::fromLatin1("before")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

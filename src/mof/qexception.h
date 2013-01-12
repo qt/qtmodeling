@@ -83,7 +83,7 @@ public:
     Q_INVOKABLE void setElementInError(QElement *elementInError);
     Q_INVOKABLE QElement *objectInError() const;
     Q_INVOKABLE void setObjectInError(QElement *objectInError);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

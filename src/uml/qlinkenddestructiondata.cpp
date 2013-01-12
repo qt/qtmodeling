@@ -140,18 +140,6 @@ void QLinkEndDestructionData::setDestroyAt(QInputPin *destroyAt)
     }
 }
 
-void QLinkEndDestructionData::registerMetaTypes() const
-{
-    qRegisterMetaType<QInputPin *>("QInputPin *");
-    qRegisterMetaType<QSet<QInputPin *>>("QSet<QInputPin *>");
-    qRegisterMetaType<QList<QInputPin *>>("QList<QInputPin *>");
-
-    QLinkEndData::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QLinkEndDestructionData::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLinkEndDestructionData")][QString::fromLatin1("isDestroyDuplicates")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

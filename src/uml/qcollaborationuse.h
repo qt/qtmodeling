@@ -81,7 +81,7 @@ public:
     Q_INVOKABLE QSet<QDependency *> roleBindings() const;
     Q_INVOKABLE void addRoleBinding(QDependency *roleBinding);
     Q_INVOKABLE void removeRoleBinding(QDependency *roleBinding);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

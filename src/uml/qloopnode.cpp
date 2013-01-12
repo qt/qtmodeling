@@ -363,26 +363,6 @@ void QLoopNode::removeTest(QExecutableNode *test)
     }
 }
 
-void QLoopNode::registerMetaTypes() const
-{
-    qRegisterMetaType<QOutputPin *>("QOutputPin *");
-    qRegisterMetaType<QSet<QOutputPin *>>("QSet<QOutputPin *>");
-    qRegisterMetaType<QList<QOutputPin *>>("QList<QOutputPin *>");
-
-    qRegisterMetaType<QExecutableNode *>("QExecutableNode *");
-    qRegisterMetaType<QSet<QExecutableNode *>>("QSet<QExecutableNode *>");
-    qRegisterMetaType<QList<QExecutableNode *>>("QList<QExecutableNode *>");
-
-    qRegisterMetaType<QInputPin *>("QInputPin *");
-    qRegisterMetaType<QSet<QInputPin *>>("QSet<QInputPin *>");
-    qRegisterMetaType<QList<QInputPin *>>("QList<QInputPin *>");
-
-    QStructuredActivityNode::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QLoopNode::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLoopNode")][QString::fromLatin1("isTestedFirst")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

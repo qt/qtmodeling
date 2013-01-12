@@ -81,7 +81,7 @@ public:
     Q_INVOKABLE void removeArgument(QInputPin *argument);
     Q_INVOKABLE QPort *onPort() const;
     Q_INVOKABLE void setOnPort(QPort *onPort);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

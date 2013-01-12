@@ -213,26 +213,6 @@ void QStructuredClassifier::removeOwnedConnector(QConnector *ownedConnector)
     }
 }
 
-void QStructuredClassifier::registerMetaTypes() const
-{
-    qRegisterMetaType<QProperty *>("QProperty *");
-    qRegisterMetaType<QSet<QProperty *>>("QSet<QProperty *>");
-    qRegisterMetaType<QList<QProperty *>>("QList<QProperty *>");
-
-    qRegisterMetaType<QConnector *>("QConnector *");
-    qRegisterMetaType<QSet<QConnector *>>("QSet<QConnector *>");
-    qRegisterMetaType<QList<QConnector *>>("QList<QConnector *>");
-
-    qRegisterMetaType<QConnectableElement *>("QConnectableElement *");
-    qRegisterMetaType<QSet<QConnectableElement *>>("QSet<QConnectableElement *>");
-    qRegisterMetaType<QList<QConnectableElement *>>("QList<QConnectableElement *>");
-
-    QClassifier::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QStructuredClassifier::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredClassifier")][QString::fromLatin1("roles")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

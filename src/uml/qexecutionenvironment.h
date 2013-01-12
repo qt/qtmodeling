@@ -64,7 +64,7 @@ class Q_UML_EXPORT QExecutionEnvironment : public QNode
 public:
     Q_INVOKABLE explicit QExecutionEnvironment(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QExecutionEnvironment();
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

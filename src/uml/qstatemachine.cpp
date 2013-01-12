@@ -288,34 +288,6 @@ bool QStateMachine::isRedefinitionContextValid(const QStateMachine *redefined) c
     return bool(); // change here to your derived return
 }
 
-void QStateMachine::registerMetaTypes() const
-{
-    qRegisterMetaType<QNamespace *>("QNamespace *");
-    qRegisterMetaType<QSet<QNamespace *>>("QSet<QNamespace *>");
-    qRegisterMetaType<QList<QNamespace *>>("QList<QNamespace *>");
-
-    qRegisterMetaType<QRedefinableElement *>("QRedefinableElement *");
-    qRegisterMetaType<QSet<QRedefinableElement *>>("QSet<QRedefinableElement *>");
-    qRegisterMetaType<QList<QRedefinableElement *>>("QList<QRedefinableElement *>");
-
-    qRegisterMetaType<QState *>("QState *");
-    qRegisterMetaType<QSet<QState *>>("QSet<QState *>");
-    qRegisterMetaType<QList<QState *>>("QList<QState *>");
-
-    qRegisterMetaType<QPseudostate *>("QPseudostate *");
-    qRegisterMetaType<QSet<QPseudostate *>>("QSet<QPseudostate *>");
-    qRegisterMetaType<QList<QPseudostate *>>("QList<QPseudostate *>");
-
-    qRegisterMetaType<QRegion *>("QRegion *");
-    qRegisterMetaType<QSet<QRegion *>>("QSet<QRegion *>");
-    qRegisterMetaType<QList<QRegion *>>("QList<QRegion *>");
-
-    QBehavior::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QStateMachine::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QStateMachine")][QString::fromLatin1("extendedStateMachines")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

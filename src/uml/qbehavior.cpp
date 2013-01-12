@@ -349,34 +349,6 @@ QBehavioredClassifier *QBehavior::context() const
     return 0; // change here to your derived return
 }
 
-void QBehavior::registerMetaTypes() const
-{
-    qRegisterMetaType<QBehavioralFeature *>("QBehavioralFeature *");
-    qRegisterMetaType<QSet<QBehavioralFeature *>>("QSet<QBehavioralFeature *>");
-    qRegisterMetaType<QList<QBehavioralFeature *>>("QList<QBehavioralFeature *>");
-
-    qRegisterMetaType<QConstraint *>("QConstraint *");
-    qRegisterMetaType<QSet<QConstraint *>>("QSet<QConstraint *>");
-    qRegisterMetaType<QList<QConstraint *>>("QList<QConstraint *>");
-
-    qRegisterMetaType<QParameter *>("QParameter *");
-    qRegisterMetaType<QSet<QParameter *>>("QSet<QParameter *>");
-    qRegisterMetaType<QList<QParameter *>>("QList<QParameter *>");
-
-    qRegisterMetaType<QBehavioredClassifier *>("QBehavioredClassifier *");
-    qRegisterMetaType<QSet<QBehavioredClassifier *>>("QSet<QBehavioredClassifier *>");
-    qRegisterMetaType<QList<QBehavioredClassifier *>>("QList<QBehavioredClassifier *>");
-
-    qRegisterMetaType<QParameterSet *>("QParameterSet *");
-    qRegisterMetaType<QSet<QParameterSet *>>("QSet<QParameterSet *>");
-    qRegisterMetaType<QList<QParameterSet *>>("QList<QParameterSet *>");
-
-    QClass::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QBehavior::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QBehavior")][QString::fromLatin1("isReentrant")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

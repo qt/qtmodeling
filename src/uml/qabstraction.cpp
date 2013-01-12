@@ -114,18 +114,6 @@ void QAbstraction::setMapping(QOpaqueExpression *mapping)
     }
 }
 
-void QAbstraction::registerMetaTypes() const
-{
-    qRegisterMetaType<QOpaqueExpression *>("QOpaqueExpression *");
-    qRegisterMetaType<QSet<QOpaqueExpression *>>("QSet<QOpaqueExpression *>");
-    qRegisterMetaType<QList<QOpaqueExpression *>>("QList<QOpaqueExpression *>");
-
-    QDependency::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QAbstraction::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QAbstraction")][QString::fromLatin1("mapping")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");

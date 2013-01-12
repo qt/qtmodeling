@@ -120,7 +120,7 @@ public:
 
     // Operations
     Q_INVOKABLE bool isConsistentWith(const QRedefinableElement *redefinee) const;
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

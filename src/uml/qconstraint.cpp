@@ -180,26 +180,6 @@ void QConstraint::removeConstrainedElement(QElement *constrainedElement)
     }
 }
 
-void QConstraint::registerMetaTypes() const
-{
-    qRegisterMetaType<QElement *>("QElement *");
-    qRegisterMetaType<QSet<QElement *>>("QSet<QElement *>");
-    qRegisterMetaType<QList<QElement *>>("QList<QElement *>");
-
-    qRegisterMetaType<QNamespace *>("QNamespace *");
-    qRegisterMetaType<QSet<QNamespace *>>("QSet<QNamespace *>");
-    qRegisterMetaType<QList<QNamespace *>>("QList<QNamespace *>");
-
-    qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
-    qRegisterMetaType<QSet<QValueSpecification *>>("QSet<QValueSpecification *>");
-    qRegisterMetaType<QList<QValueSpecification *>>("QList<QValueSpecification *>");
-
-    QPackageableElement::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QConstraint::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QConstraint")][QString::fromLatin1("context")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

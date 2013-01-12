@@ -127,18 +127,6 @@ void QEnumeration::removeOwnedLiteral(QEnumerationLiteral *ownedLiteral)
     }
 }
 
-void QEnumeration::registerMetaTypes() const
-{
-    qRegisterMetaType<QEnumerationLiteral *>("QEnumerationLiteral *");
-    qRegisterMetaType<QSet<QEnumerationLiteral *>>("QSet<QEnumerationLiteral *>");
-    qRegisterMetaType<QList<QEnumerationLiteral *>>("QList<QEnumerationLiteral *>");
-
-    QDataType::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QEnumeration::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QEnumeration")][QString::fromLatin1("ownedLiterals")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");

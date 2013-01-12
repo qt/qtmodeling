@@ -193,22 +193,6 @@ void QCombinedFragment::removeOperand(QInteractionOperand *operand)
     }
 }
 
-void QCombinedFragment::registerMetaTypes() const
-{
-    qRegisterMetaType<QGate *>("QGate *");
-    qRegisterMetaType<QSet<QGate *>>("QSet<QGate *>");
-    qRegisterMetaType<QList<QGate *>>("QList<QGate *>");
-
-    qRegisterMetaType<QInteractionOperand *>("QInteractionOperand *");
-    qRegisterMetaType<QSet<QInteractionOperand *>>("QSet<QInteractionOperand *>");
-    qRegisterMetaType<QList<QInteractionOperand *>>("QList<QInteractionOperand *>");
-
-    QInteractionFragment::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QCombinedFragment::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QCombinedFragment")][QString::fromLatin1("interactionOperator")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

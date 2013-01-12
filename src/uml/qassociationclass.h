@@ -67,7 +67,7 @@ class Q_UML_EXPORT QAssociationClass : public QWrappedObject
 public:
     Q_INVOKABLE explicit QAssociationClass(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QAssociationClass();
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

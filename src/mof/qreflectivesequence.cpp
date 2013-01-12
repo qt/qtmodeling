@@ -105,18 +105,6 @@ QMofObject *QReflectiveSequence::set(qint32 index, const QMofObject *object)
     return 0; // change here to your derived return
 }
 
-void QReflectiveSequence::registerMetaTypes() const
-{
-    qRegisterMetaType<QMofObject *>("QMofObject *");
-    qRegisterMetaType<QSet<QMofObject *>>("QSet<QMofObject *>");
-    qRegisterMetaType<QList<QMofObject *>>("QList<QMofObject *>");
-
-    QReflectiveCollection::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QReflectiveSequence::setPropertyData()
 {
     QReflectiveCollection::setPropertyData();

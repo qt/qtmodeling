@@ -114,18 +114,6 @@ void QAcceptCallAction::setReturnInformation(QOutputPin *returnInformation)
     }
 }
 
-void QAcceptCallAction::registerMetaTypes() const
-{
-    qRegisterMetaType<QOutputPin *>("QOutputPin *");
-    qRegisterMetaType<QSet<QOutputPin *>>("QSet<QOutputPin *>");
-    qRegisterMetaType<QList<QOutputPin *>>("QList<QOutputPin *>");
-
-    QAcceptEventAction::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QAcceptCallAction::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QAcceptCallAction")][QString::fromLatin1("returnInformation")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");

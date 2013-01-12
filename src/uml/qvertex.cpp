@@ -215,26 +215,6 @@ QStateMachine *QVertex::containingStateMachine() const
     return 0; // change here to your derived return
 }
 
-void QVertex::registerMetaTypes() const
-{
-    qRegisterMetaType<QRegion *>("QRegion *");
-    qRegisterMetaType<QSet<QRegion *>>("QSet<QRegion *>");
-    qRegisterMetaType<QList<QRegion *>>("QList<QRegion *>");
-
-    qRegisterMetaType<QTransition *>("QTransition *");
-    qRegisterMetaType<QSet<QTransition *>>("QSet<QTransition *>");
-    qRegisterMetaType<QList<QTransition *>>("QList<QTransition *>");
-
-    qRegisterMetaType<QStateMachine *>("QStateMachine *");
-    qRegisterMetaType<QSet<QStateMachine *>>("QSet<QStateMachine *>");
-    qRegisterMetaType<QList<QStateMachine *>>("QList<QStateMachine *>");
-
-    QNamedElement::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QVertex::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QVertex")][QString::fromLatin1("incomings")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

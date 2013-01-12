@@ -88,7 +88,7 @@ public:
     Q_INVOKABLE void setProtectedNode(QExecutableNode *protectedNode);
     Q_INVOKABLE QObjectNode *exceptionInput() const;
     Q_INVOKABLE void setExceptionInput(QObjectNode *exceptionInput);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

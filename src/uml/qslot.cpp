@@ -178,26 +178,6 @@ void QSlot::setOwningInstance(QInstanceSpecification *owningInstance)
     }
 }
 
-void QSlot::registerMetaTypes() const
-{
-    qRegisterMetaType<QStructuralFeature *>("QStructuralFeature *");
-    qRegisterMetaType<QSet<QStructuralFeature *>>("QSet<QStructuralFeature *>");
-    qRegisterMetaType<QList<QStructuralFeature *>>("QList<QStructuralFeature *>");
-
-    qRegisterMetaType<QInstanceSpecification *>("QInstanceSpecification *");
-    qRegisterMetaType<QSet<QInstanceSpecification *>>("QSet<QInstanceSpecification *>");
-    qRegisterMetaType<QList<QInstanceSpecification *>>("QList<QInstanceSpecification *>");
-
-    qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
-    qRegisterMetaType<QSet<QValueSpecification *>>("QSet<QValueSpecification *>");
-    qRegisterMetaType<QList<QValueSpecification *>>("QList<QValueSpecification *>");
-
-    QElement::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QSlot::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QSlot")][QString::fromLatin1("values")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");

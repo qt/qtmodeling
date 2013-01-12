@@ -51,10 +51,10 @@
 #include <QtWrappedObjects/QMetaPropertyInfo>
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
+#include <QtMof/QMofMetaModel>
+
 using QtWrappedObjects::QMetaWrappedObject;
 using QtWrappedObjects::QMetaPropertyInfo;
-
-#include <QtMof>
 
 QT_BEGIN_NAMESPACE_QTMOF
 
@@ -69,6 +69,7 @@ QXmiReaderPrivate::~QXmiReaderPrivate()
 QXmiReader::QXmiReader(QObject *parent) :
     QObject(*new QXmiReaderPrivate, parent)
 {
+    QMofMetaModel::init();
 }
 
 QXmiReader::~QXmiReader()

@@ -145,14 +145,6 @@ void QImage::setContent(QString content)
     }
 }
 
-void QImage::registerMetaTypes() const
-{
-    QElement::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QImage::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QImage")][QString::fromLatin1("format")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

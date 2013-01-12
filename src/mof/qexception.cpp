@@ -133,18 +133,6 @@ void QException::setObjectInError(QElement *objectInError)
     }
 }
 
-void QException::registerMetaTypes() const
-{
-    qRegisterMetaType<QElement *>("QElement *");
-    qRegisterMetaType<QSet<QElement *>>("QSet<QElement *>");
-    qRegisterMetaType<QList<QElement *>>("QList<QElement *>");
-
-    QWrappedObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QException::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QException")][QString::fromLatin1("description")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

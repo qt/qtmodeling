@@ -72,7 +72,7 @@ public:
 
     // Association ends from QRelationship
     Q_INVOKABLE QSet<QElement *> relatedElements() const;
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

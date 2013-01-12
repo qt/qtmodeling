@@ -128,18 +128,6 @@ void QTimeInterval::setMin(QTimeExpression *min)
     }
 }
 
-void QTimeInterval::registerMetaTypes() const
-{
-    qRegisterMetaType<QTimeExpression *>("QTimeExpression *");
-    qRegisterMetaType<QSet<QTimeExpression *>>("QSet<QTimeExpression *>");
-    qRegisterMetaType<QList<QTimeExpression *>>("QList<QTimeExpression *>");
-
-    QInterval::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QTimeInterval::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeInterval")][QString::fromLatin1("max")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

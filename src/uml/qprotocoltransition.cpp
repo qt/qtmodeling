@@ -152,22 +152,6 @@ void QProtocolTransition::setPreCondition(QConstraint *preCondition)
     }
 }
 
-void QProtocolTransition::registerMetaTypes() const
-{
-    qRegisterMetaType<QConstraint *>("QConstraint *");
-    qRegisterMetaType<QSet<QConstraint *>>("QSet<QConstraint *>");
-    qRegisterMetaType<QList<QConstraint *>>("QList<QConstraint *>");
-
-    qRegisterMetaType<QOperation *>("QOperation *");
-    qRegisterMetaType<QSet<QOperation *>>("QSet<QOperation *>");
-    qRegisterMetaType<QList<QOperation *>>("QList<QOperation *>");
-
-    QTransition::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QProtocolTransition::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolTransition")][QString::fromLatin1("postCondition")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");

@@ -180,22 +180,6 @@ void QConnectionPointReference::removeEntry(QPseudostate *entry)
     }
 }
 
-void QConnectionPointReference::registerMetaTypes() const
-{
-    qRegisterMetaType<QPseudostate *>("QPseudostate *");
-    qRegisterMetaType<QSet<QPseudostate *>>("QSet<QPseudostate *>");
-    qRegisterMetaType<QList<QPseudostate *>>("QList<QPseudostate *>");
-
-    qRegisterMetaType<QState *>("QState *");
-    qRegisterMetaType<QSet<QState *>>("QSet<QState *>");
-    qRegisterMetaType<QList<QState *>>("QList<QState *>");
-
-    QVertex::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QConnectionPointReference::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QConnectionPointReference")][QString::fromLatin1("exits")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

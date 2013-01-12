@@ -410,14 +410,6 @@ void QStructuralFeature::unsetReadOnly()
     d->modifiedResettableProperties.removeAll(QString::fromLatin1("isReadOnly"));
 }
 
-void QStructuralFeature::registerMetaTypes() const
-{
-    QWrappedObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QStructuralFeature::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuralFeature")][QString::fromLatin1("isReadOnly")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

@@ -78,14 +78,6 @@ QPartDecomposition::~QPartDecomposition()
 {
 }
 
-void QPartDecomposition::registerMetaTypes() const
-{
-    QInteractionUse::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QPartDecomposition::setPropertyData()
 {
     QInteractionUse::setPropertyData();

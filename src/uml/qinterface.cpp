@@ -320,30 +320,6 @@ void QInterface::removeOwnedAttribute(QProperty *ownedAttribute)
     }
 }
 
-void QInterface::registerMetaTypes() const
-{
-    qRegisterMetaType<QProtocolStateMachine *>("QProtocolStateMachine *");
-    qRegisterMetaType<QSet<QProtocolStateMachine *>>("QSet<QProtocolStateMachine *>");
-    qRegisterMetaType<QList<QProtocolStateMachine *>>("QList<QProtocolStateMachine *>");
-
-    qRegisterMetaType<QReception *>("QReception *");
-    qRegisterMetaType<QSet<QReception *>>("QSet<QReception *>");
-    qRegisterMetaType<QList<QReception *>>("QList<QReception *>");
-
-    qRegisterMetaType<QProperty *>("QProperty *");
-    qRegisterMetaType<QSet<QProperty *>>("QSet<QProperty *>");
-    qRegisterMetaType<QList<QProperty *>>("QList<QProperty *>");
-
-    qRegisterMetaType<QOperation *>("QOperation *");
-    qRegisterMetaType<QSet<QOperation *>>("QSet<QOperation *>");
-    qRegisterMetaType<QList<QOperation *>>("QList<QOperation *>");
-
-    QClassifier::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QInterface::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QInterface")][QString::fromLatin1("protocol")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");

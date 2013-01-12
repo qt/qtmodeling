@@ -73,7 +73,7 @@ public:
     // Association ends from QVariableAction
     Q_INVOKABLE QVariable *variable() const;
     Q_INVOKABLE void setVariable(QVariable *variable);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

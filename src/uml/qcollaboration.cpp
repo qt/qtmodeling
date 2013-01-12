@@ -801,18 +801,6 @@ void QCollaboration::removeCollaborationRole(QConnectableElement *collaborationR
     }
 }
 
-void QCollaboration::registerMetaTypes() const
-{
-    qRegisterMetaType<QConnectableElement *>("QConnectableElement *");
-    qRegisterMetaType<QSet<QConnectableElement *>>("QSet<QConnectableElement *>");
-    qRegisterMetaType<QList<QConnectableElement *>>("QList<QConnectableElement *>");
-
-    QWrappedObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QCollaboration::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QCollaboration")][QString::fromLatin1("collaborationRoles")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

@@ -132,14 +132,6 @@ qint32 QLiteralUnlimitedNatural::unlimitedValue() const
     return qint32(); // change here to your derived return
 }
 
-void QLiteralUnlimitedNatural::registerMetaTypes() const
-{
-    QLiteralSpecification::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QLiteralUnlimitedNatural::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLiteralUnlimitedNatural")][QString::fromLatin1("value")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

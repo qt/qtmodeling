@@ -170,26 +170,6 @@ QAssociation *QLinkAction::association() const
     return 0; // change here to your derived return
 }
 
-void QLinkAction::registerMetaTypes() const
-{
-    qRegisterMetaType<QLinkEndData *>("QLinkEndData *");
-    qRegisterMetaType<QSet<QLinkEndData *>>("QSet<QLinkEndData *>");
-    qRegisterMetaType<QList<QLinkEndData *>>("QList<QLinkEndData *>");
-
-    qRegisterMetaType<QInputPin *>("QInputPin *");
-    qRegisterMetaType<QSet<QInputPin *>>("QSet<QInputPin *>");
-    qRegisterMetaType<QList<QInputPin *>>("QList<QInputPin *>");
-
-    qRegisterMetaType<QAssociation *>("QAssociation *");
-    qRegisterMetaType<QSet<QAssociation *>>("QSet<QAssociation *>");
-    qRegisterMetaType<QList<QAssociation *>>("QList<QAssociation *>");
-
-    QAction::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QLinkAction::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLinkAction")][QString::fromLatin1("inputValues")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");

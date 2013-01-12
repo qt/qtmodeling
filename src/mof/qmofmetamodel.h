@@ -38,8 +38,8 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QTMOFMETAMODEL_H
-#define QTMOFMETAMODEL_H
+#ifndef QMOFMETAMODEL_H
+#define QMOFMETAMODEL_H
 
 #include <QtMof/QtMof>
 
@@ -49,7 +49,7 @@ QT_BEGIN_NAMESPACE_QTMOF
 
 QT_MODULE(QtMof)
 
-class Q_MOF_EXPORT QtMofMetaModel
+class Q_MOF_EXPORT QMofMetaModel
 {
 public:
     static void init();
@@ -59,5 +59,5 @@ QT_END_NAMESPACE_QTMOF
 
 QT_END_HEADER
 
-#endif // QTMOFMETAMODEL_H
+#endif // QMOFMETAMODEL_H
 

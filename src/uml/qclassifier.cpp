@@ -1062,54 +1062,6 @@ QSet<QClassifier *> QClassifier::parents() const
     return QSet<QClassifier *>(); // change here to your derived return
 }
 
-void QClassifier::registerMetaTypes() const
-{
-    qRegisterMetaType<QRedefinableTemplateSignature *>("QRedefinableTemplateSignature *");
-    qRegisterMetaType<QSet<QRedefinableTemplateSignature *>>("QSet<QRedefinableTemplateSignature *>");
-    qRegisterMetaType<QList<QRedefinableTemplateSignature *>>("QList<QRedefinableTemplateSignature *>");
-
-    qRegisterMetaType<QClassifierTemplateParameter *>("QClassifierTemplateParameter *");
-    qRegisterMetaType<QSet<QClassifierTemplateParameter *>>("QSet<QClassifierTemplateParameter *>");
-    qRegisterMetaType<QList<QClassifierTemplateParameter *>>("QList<QClassifierTemplateParameter *>");
-
-    qRegisterMetaType<QUseCase *>("QUseCase *");
-    qRegisterMetaType<QSet<QUseCase *>>("QSet<QUseCase *>");
-    qRegisterMetaType<QList<QUseCase *>>("QList<QUseCase *>");
-
-    qRegisterMetaType<QSubstitution *>("QSubstitution *");
-    qRegisterMetaType<QSet<QSubstitution *>>("QSet<QSubstitution *>");
-    qRegisterMetaType<QList<QSubstitution *>>("QList<QSubstitution *>");
-
-    qRegisterMetaType<QGeneralizationSet *>("QGeneralizationSet *");
-    qRegisterMetaType<QSet<QGeneralizationSet *>>("QSet<QGeneralizationSet *>");
-    qRegisterMetaType<QList<QGeneralizationSet *>>("QList<QGeneralizationSet *>");
-
-    qRegisterMetaType<QNamedElement *>("QNamedElement *");
-    qRegisterMetaType<QSet<QNamedElement *>>("QSet<QNamedElement *>");
-    qRegisterMetaType<QList<QNamedElement *>>("QList<QNamedElement *>");
-
-    qRegisterMetaType<QProperty *>("QProperty *");
-    qRegisterMetaType<QSet<QProperty *>>("QSet<QProperty *>");
-    qRegisterMetaType<QList<QProperty *>>("QList<QProperty *>");
-
-    qRegisterMetaType<QGeneralization *>("QGeneralization *");
-    qRegisterMetaType<QSet<QGeneralization *>>("QSet<QGeneralization *>");
-    qRegisterMetaType<QList<QGeneralization *>>("QList<QGeneralization *>");
-
-    qRegisterMetaType<QCollaborationUse *>("QCollaborationUse *");
-    qRegisterMetaType<QSet<QCollaborationUse *>>("QSet<QCollaborationUse *>");
-    qRegisterMetaType<QList<QCollaborationUse *>>("QList<QCollaborationUse *>");
-
-    qRegisterMetaType<QFeature *>("QFeature *");
-    qRegisterMetaType<QSet<QFeature *>>("QSet<QFeature *>");
-    qRegisterMetaType<QList<QFeature *>>("QList<QFeature *>");
-
-    QWrappedObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QClassifier::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifier")][QString::fromLatin1("isAbstract")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

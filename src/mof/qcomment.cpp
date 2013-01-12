@@ -138,14 +138,6 @@ void QComment::removeAnnotatedElement(QElement *annotatedElement)
     }
 }
 
-void QComment::registerMetaTypes() const
-{
-    QElement::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QComment::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QComment")][QString::fromLatin1("body")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

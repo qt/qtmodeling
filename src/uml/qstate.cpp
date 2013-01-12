@@ -809,46 +809,6 @@ bool QState::isRedefinitionContextValid(const QState *redefined) const
     return bool(); // change here to your derived return
 }
 
-void QState::registerMetaTypes() const
-{
-    qRegisterMetaType<QStateMachine *>("QStateMachine *");
-    qRegisterMetaType<QSet<QStateMachine *>>("QSet<QStateMachine *>");
-    qRegisterMetaType<QList<QStateMachine *>>("QList<QStateMachine *>");
-
-    qRegisterMetaType<QClassifier *>("QClassifier *");
-    qRegisterMetaType<QSet<QClassifier *>>("QSet<QClassifier *>");
-    qRegisterMetaType<QList<QClassifier *>>("QList<QClassifier *>");
-
-    qRegisterMetaType<QConstraint *>("QConstraint *");
-    qRegisterMetaType<QSet<QConstraint *>>("QSet<QConstraint *>");
-    qRegisterMetaType<QList<QConstraint *>>("QList<QConstraint *>");
-
-    qRegisterMetaType<QRegion *>("QRegion *");
-    qRegisterMetaType<QSet<QRegion *>>("QSet<QRegion *>");
-    qRegisterMetaType<QList<QRegion *>>("QList<QRegion *>");
-
-    qRegisterMetaType<QBehavior *>("QBehavior *");
-    qRegisterMetaType<QSet<QBehavior *>>("QSet<QBehavior *>");
-    qRegisterMetaType<QList<QBehavior *>>("QList<QBehavior *>");
-
-    qRegisterMetaType<QConnectionPointReference *>("QConnectionPointReference *");
-    qRegisterMetaType<QSet<QConnectionPointReference *>>("QSet<QConnectionPointReference *>");
-    qRegisterMetaType<QList<QConnectionPointReference *>>("QList<QConnectionPointReference *>");
-
-    qRegisterMetaType<QTrigger *>("QTrigger *");
-    qRegisterMetaType<QSet<QTrigger *>>("QSet<QTrigger *>");
-    qRegisterMetaType<QList<QTrigger *>>("QList<QTrigger *>");
-
-    qRegisterMetaType<QPseudostate *>("QPseudostate *");
-    qRegisterMetaType<QSet<QPseudostate *>>("QSet<QPseudostate *>");
-    qRegisterMetaType<QList<QPseudostate *>>("QList<QPseudostate *>");
-
-    QWrappedObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QState::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QState")][QString::fromLatin1("isSimple")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

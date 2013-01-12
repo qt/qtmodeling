@@ -78,14 +78,6 @@ QControlNode::~QControlNode()
 {
 }
 
-void QControlNode::registerMetaTypes() const
-{
-    QActivityNode::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QControlNode::setPropertyData()
 {
     QActivityNode::setPropertyData();

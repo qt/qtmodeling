@@ -78,14 +78,6 @@ QClearVariableAction::~QClearVariableAction()
 {
 }
 
-void QClearVariableAction::registerMetaTypes() const
-{
-    QVariableAction::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QClearVariableAction::setPropertyData()
 {
     QVariableAction::setPropertyData();

@@ -77,7 +77,7 @@ public:
     Q_INVOKABLE QSet<QProtocolConformance *> conformance() const;
     Q_INVOKABLE void addConformance(QProtocolConformance *conformance);
     Q_INVOKABLE void removeConformance(QProtocolConformance *conformance);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

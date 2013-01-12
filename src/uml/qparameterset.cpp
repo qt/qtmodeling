@@ -160,22 +160,6 @@ void QParameterSet::removeCondition(QConstraint *condition)
     }
 }
 
-void QParameterSet::registerMetaTypes() const
-{
-    qRegisterMetaType<QConstraint *>("QConstraint *");
-    qRegisterMetaType<QSet<QConstraint *>>("QSet<QConstraint *>");
-    qRegisterMetaType<QList<QConstraint *>>("QList<QConstraint *>");
-
-    qRegisterMetaType<QParameter *>("QParameter *");
-    qRegisterMetaType<QSet<QParameter *>>("QSet<QParameter *>");
-    qRegisterMetaType<QList<QParameter *>>("QList<QParameter *>");
-
-    QNamedElement::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QParameterSet::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QParameterSet")][QString::fromLatin1("parameters")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

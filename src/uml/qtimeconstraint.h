@@ -79,7 +79,7 @@ public:
     // Association ends from QTimeConstraint
     Q_INVOKABLE QTimeInterval *specification() const;
     Q_INVOKABLE void setSpecification(QTimeInterval *specification);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

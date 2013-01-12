@@ -262,22 +262,6 @@ void QPort::removeRedefinedPort(QPort *redefinedPort)
     }
 }
 
-void QPort::registerMetaTypes() const
-{
-    qRegisterMetaType<QProtocolStateMachine *>("QProtocolStateMachine *");
-    qRegisterMetaType<QSet<QProtocolStateMachine *>>("QSet<QProtocolStateMachine *>");
-    qRegisterMetaType<QList<QProtocolStateMachine *>>("QList<QProtocolStateMachine *>");
-
-    qRegisterMetaType<QInterface *>("QInterface *");
-    qRegisterMetaType<QSet<QInterface *>>("QSet<QInterface *>");
-    qRegisterMetaType<QList<QInterface *>>("QList<QInterface *>");
-
-    QProperty::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QPort::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QPort")][QString::fromLatin1("isConjugated")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

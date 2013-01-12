@@ -64,7 +64,7 @@ class Q_UML_EXPORT QClearVariableAction : public QVariableAction
 public:
     Q_INVOKABLE explicit QClearVariableAction(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QClearVariableAction();
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

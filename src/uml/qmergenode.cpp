@@ -78,14 +78,6 @@ QMergeNode::~QMergeNode()
 {
 }
 
-void QMergeNode::registerMetaTypes() const
-{
-    QControlNode::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QMergeNode::setPropertyData()
 {
     QControlNode::setPropertyData();

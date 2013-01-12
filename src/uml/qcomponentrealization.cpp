@@ -161,22 +161,6 @@ void QComponentRealization::removeRealizingClassifier(QClassifier *realizingClas
     }
 }
 
-void QComponentRealization::registerMetaTypes() const
-{
-    qRegisterMetaType<QComponent *>("QComponent *");
-    qRegisterMetaType<QSet<QComponent *>>("QSet<QComponent *>");
-    qRegisterMetaType<QList<QComponent *>>("QList<QComponent *>");
-
-    qRegisterMetaType<QClassifier *>("QClassifier *");
-    qRegisterMetaType<QSet<QClassifier *>>("QSet<QClassifier *>");
-    qRegisterMetaType<QList<QClassifier *>>("QList<QClassifier *>");
-
-    QRealization::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QComponentRealization::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QComponentRealization")][QString::fromLatin1("abstraction")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

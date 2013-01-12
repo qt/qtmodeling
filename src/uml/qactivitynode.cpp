@@ -400,38 +400,6 @@ void QActivityNode::removeOutgoing(QActivityEdge *outgoing)
     }
 }
 
-void QActivityNode::registerMetaTypes() const
-{
-    qRegisterMetaType<QActivityEdge *>("QActivityEdge *");
-    qRegisterMetaType<QSet<QActivityEdge *>>("QSet<QActivityEdge *>");
-    qRegisterMetaType<QList<QActivityEdge *>>("QList<QActivityEdge *>");
-
-    qRegisterMetaType<QStructuredActivityNode *>("QStructuredActivityNode *");
-    qRegisterMetaType<QSet<QStructuredActivityNode *>>("QSet<QStructuredActivityNode *>");
-    qRegisterMetaType<QList<QStructuredActivityNode *>>("QList<QStructuredActivityNode *>");
-
-    qRegisterMetaType<QActivityPartition *>("QActivityPartition *");
-    qRegisterMetaType<QSet<QActivityPartition *>>("QSet<QActivityPartition *>");
-    qRegisterMetaType<QList<QActivityPartition *>>("QList<QActivityPartition *>");
-
-    qRegisterMetaType<QActivityGroup *>("QActivityGroup *");
-    qRegisterMetaType<QSet<QActivityGroup *>>("QSet<QActivityGroup *>");
-    qRegisterMetaType<QList<QActivityGroup *>>("QList<QActivityGroup *>");
-
-    qRegisterMetaType<QActivity *>("QActivity *");
-    qRegisterMetaType<QSet<QActivity *>>("QSet<QActivity *>");
-    qRegisterMetaType<QList<QActivity *>>("QList<QActivity *>");
-
-    qRegisterMetaType<QInterruptibleActivityRegion *>("QInterruptibleActivityRegion *");
-    qRegisterMetaType<QSet<QInterruptibleActivityRegion *>>("QSet<QInterruptibleActivityRegion *>");
-    qRegisterMetaType<QList<QInterruptibleActivityRegion *>>("QList<QInterruptibleActivityRegion *>");
-
-    QRedefinableElement::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QActivityNode::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityNode")][QString::fromLatin1("redefinedNodes")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

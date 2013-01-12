@@ -1,20 +1,15 @@
-#include <QtWrappedObjects>
+#include <QtWrappedObjects/QtWrappedObjects>
 
 #include <QtMof/QXmiReader>
-using QtMof::QXmiReader;
 #include <QtMof/QXmiWriter>
+
+using QtMof::QXmiReader;
 using QtMof::QXmiWriter;
-
-#include <QtMof/QtMofMetaModel>
-
-#include <QtCore/QDebug>
 
 using namespace QtWrappedObjects;
 
 int main ()
 {
-    QtMof::QtMofMetaModel::init();
-
     QFile file("test.xmi");
 
     if (!file.open(QFile::ReadOnly | QFile::Text)) {

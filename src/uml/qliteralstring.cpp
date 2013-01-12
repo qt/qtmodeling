@@ -123,14 +123,6 @@ QString QLiteralString::stringValue() const
     return QString(); // change here to your derived return
 }
 
-void QLiteralString::registerMetaTypes() const
-{
-    QLiteralSpecification::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QLiteralString::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QLiteralString")][QString::fromLatin1("value")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

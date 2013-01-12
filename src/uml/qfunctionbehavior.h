@@ -64,7 +64,7 @@ class Q_UML_EXPORT QFunctionBehavior : public QOpaqueBehavior
 public:
     Q_INVOKABLE explicit QFunctionBehavior(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QFunctionBehavior();
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

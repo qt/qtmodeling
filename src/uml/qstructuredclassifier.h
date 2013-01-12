@@ -88,7 +88,7 @@ public:
     Q_INVOKABLE QSet<QConnector *> ownedConnectors() const;
     Q_INVOKABLE void addOwnedConnector(QConnector *ownedConnector);
     Q_INVOKABLE void removeOwnedConnector(QConnector *ownedConnector);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

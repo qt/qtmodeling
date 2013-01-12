@@ -138,22 +138,6 @@ void QTrigger::setEvent(QEvent *event)
     }
 }
 
-void QTrigger::registerMetaTypes() const
-{
-    qRegisterMetaType<QEvent *>("QEvent *");
-    qRegisterMetaType<QSet<QEvent *>>("QSet<QEvent *>");
-    qRegisterMetaType<QList<QEvent *>>("QList<QEvent *>");
-
-    qRegisterMetaType<QPort *>("QPort *");
-    qRegisterMetaType<QSet<QPort *>>("QSet<QPort *>");
-    qRegisterMetaType<QList<QPort *>>("QList<QPort *>");
-
-    QNamedElement::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QTrigger::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QTrigger")][QString::fromLatin1("ports")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

@@ -150,18 +150,6 @@ void QDurationObservation::removeEvent(QNamedElement *event)
     }
 }
 
-void QDurationObservation::registerMetaTypes() const
-{
-    qRegisterMetaType<QNamedElement *>("QNamedElement *");
-    qRegisterMetaType<QSet<QNamedElement *>>("QSet<QNamedElement *>");
-    qRegisterMetaType<QList<QNamedElement *>>("QList<QNamedElement *>");
-
-    QObservation::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QDurationObservation::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDurationObservation")][QString::fromLatin1("firstEvents")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

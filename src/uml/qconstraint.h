@@ -85,7 +85,7 @@ public:
     Q_INVOKABLE QList<QElement *> constrainedElements() const;
     Q_INVOKABLE void addConstrainedElement(QElement *constrainedElement);
     Q_INVOKABLE void removeConstrainedElement(QElement *constrainedElement);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

@@ -78,14 +78,6 @@ QAnyReceiveEvent::~QAnyReceiveEvent()
 {
 }
 
-void QAnyReceiveEvent::registerMetaTypes() const
-{
-    QMessageEvent::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QAnyReceiveEvent::setPropertyData()
 {
     QMessageEvent::setPropertyData();

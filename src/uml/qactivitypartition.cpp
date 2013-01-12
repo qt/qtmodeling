@@ -336,26 +336,6 @@ void QActivityPartition::removeEdge(QActivityEdge *edge)
     }
 }
 
-void QActivityPartition::registerMetaTypes() const
-{
-    qRegisterMetaType<QElement *>("QElement *");
-    qRegisterMetaType<QSet<QElement *>>("QSet<QElement *>");
-    qRegisterMetaType<QList<QElement *>>("QList<QElement *>");
-
-    qRegisterMetaType<QActivityEdge *>("QActivityEdge *");
-    qRegisterMetaType<QSet<QActivityEdge *>>("QSet<QActivityEdge *>");
-    qRegisterMetaType<QList<QActivityEdge *>>("QList<QActivityEdge *>");
-
-    qRegisterMetaType<QActivityNode *>("QActivityNode *");
-    qRegisterMetaType<QSet<QActivityNode *>>("QSet<QActivityNode *>");
-    qRegisterMetaType<QList<QActivityNode *>>("QList<QActivityNode *>");
-
-    QActivityGroup::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QActivityPartition::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityPartition")][QString::fromLatin1("isDimension")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

@@ -144,14 +144,6 @@ void QOpaqueBehavior::removeBody(QString body)
     }
 }
 
-void QOpaqueBehavior::registerMetaTypes() const
-{
-    QBehavior::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QOpaqueBehavior::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QOpaqueBehavior")][QString::fromLatin1("languages")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

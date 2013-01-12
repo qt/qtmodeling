@@ -407,38 +407,6 @@ void QActivity::removeEdge(QActivityEdge *edge)
     }
 }
 
-void QActivity::registerMetaTypes() const
-{
-    qRegisterMetaType<QStructuredActivityNode *>("QStructuredActivityNode *");
-    qRegisterMetaType<QSet<QStructuredActivityNode *>>("QSet<QStructuredActivityNode *>");
-    qRegisterMetaType<QList<QStructuredActivityNode *>>("QList<QStructuredActivityNode *>");
-
-    qRegisterMetaType<QVariable *>("QVariable *");
-    qRegisterMetaType<QSet<QVariable *>>("QSet<QVariable *>");
-    qRegisterMetaType<QList<QVariable *>>("QList<QVariable *>");
-
-    qRegisterMetaType<QActivityPartition *>("QActivityPartition *");
-    qRegisterMetaType<QSet<QActivityPartition *>>("QSet<QActivityPartition *>");
-    qRegisterMetaType<QList<QActivityPartition *>>("QList<QActivityPartition *>");
-
-    qRegisterMetaType<QActivityGroup *>("QActivityGroup *");
-    qRegisterMetaType<QSet<QActivityGroup *>>("QSet<QActivityGroup *>");
-    qRegisterMetaType<QList<QActivityGroup *>>("QList<QActivityGroup *>");
-
-    qRegisterMetaType<QActivityEdge *>("QActivityEdge *");
-    qRegisterMetaType<QSet<QActivityEdge *>>("QSet<QActivityEdge *>");
-    qRegisterMetaType<QList<QActivityEdge *>>("QList<QActivityEdge *>");
-
-    qRegisterMetaType<QActivityNode *>("QActivityNode *");
-    qRegisterMetaType<QSet<QActivityNode *>>("QSet<QActivityNode *>");
-    qRegisterMetaType<QList<QActivityNode *>>("QList<QActivityNode *>");
-
-    QBehavior::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QActivity::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActivity")][QString::fromLatin1("isReadOnly")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

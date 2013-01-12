@@ -264,30 +264,6 @@ QSet<QUseCase *> QUseCase::allIncludedUseCases() const
     return QSet<QUseCase *>(); // change here to your derived return
 }
 
-void QUseCase::registerMetaTypes() const
-{
-    qRegisterMetaType<QClassifier *>("QClassifier *");
-    qRegisterMetaType<QSet<QClassifier *>>("QSet<QClassifier *>");
-    qRegisterMetaType<QList<QClassifier *>>("QList<QClassifier *>");
-
-    qRegisterMetaType<QInclude *>("QInclude *");
-    qRegisterMetaType<QSet<QInclude *>>("QSet<QInclude *>");
-    qRegisterMetaType<QList<QInclude *>>("QList<QInclude *>");
-
-    qRegisterMetaType<QExtend *>("QExtend *");
-    qRegisterMetaType<QSet<QExtend *>>("QSet<QExtend *>");
-    qRegisterMetaType<QList<QExtend *>>("QList<QExtend *>");
-
-    qRegisterMetaType<QExtensionPoint *>("QExtensionPoint *");
-    qRegisterMetaType<QSet<QExtensionPoint *>>("QSet<QExtensionPoint *>");
-    qRegisterMetaType<QList<QExtensionPoint *>>("QList<QExtensionPoint *>");
-
-    QBehavioredClassifier::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QUseCase::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUseCase")][QString::fromLatin1("extensionPoints")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");

@@ -127,18 +127,6 @@ void QExecutableNode::removeHandler(QExceptionHandler *handler)
     }
 }
 
-void QExecutableNode::registerMetaTypes() const
-{
-    qRegisterMetaType<QExceptionHandler *>("QExceptionHandler *");
-    qRegisterMetaType<QSet<QExceptionHandler *>>("QSet<QExceptionHandler *>");
-    qRegisterMetaType<QList<QExceptionHandler *>>("QList<QExceptionHandler *>");
-
-    QActivityNode::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QExecutableNode::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QExecutableNode")][QString::fromLatin1("handlers")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");

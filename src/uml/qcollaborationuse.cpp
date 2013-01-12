@@ -144,22 +144,6 @@ void QCollaborationUse::removeRoleBinding(QDependency *roleBinding)
     }
 }
 
-void QCollaborationUse::registerMetaTypes() const
-{
-    qRegisterMetaType<QDependency *>("QDependency *");
-    qRegisterMetaType<QSet<QDependency *>>("QSet<QDependency *>");
-    qRegisterMetaType<QList<QDependency *>>("QList<QDependency *>");
-
-    qRegisterMetaType<QCollaboration *>("QCollaboration *");
-    qRegisterMetaType<QSet<QCollaboration *>>("QSet<QCollaboration *>");
-    qRegisterMetaType<QList<QCollaboration *>>("QList<QCollaboration *>");
-
-    QNamedElement::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QCollaborationUse::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QCollaborationUse")][QString::fromLatin1("type")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

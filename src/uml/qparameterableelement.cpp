@@ -163,18 +163,6 @@ bool QParameterableElement::isTemplateParameter() const
     return bool(); // change here to your derived return
 }
 
-void QParameterableElement::registerMetaTypes() const
-{
-    qRegisterMetaType<QTemplateParameter *>("QTemplateParameter *");
-    qRegisterMetaType<QSet<QTemplateParameter *>>("QSet<QTemplateParameter *>");
-    qRegisterMetaType<QList<QTemplateParameter *>>("QList<QTemplateParameter *>");
-
-    QElement::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QParameterableElement::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QParameterableElement")][QString::fromLatin1("owningTemplateParameter")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

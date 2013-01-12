@@ -158,7 +158,7 @@ public:
     Q_INVOKABLE QSet<QState *> inState() const;
     Q_INVOKABLE void addInState(QState *inState);
     Q_INVOKABLE void removeInState(QState *inState);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

@@ -83,7 +83,7 @@ public:
 
     // Operations
     Q_INVOKABLE QProfile *containingProfile() const;
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

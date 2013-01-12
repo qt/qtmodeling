@@ -187,18 +187,6 @@ void QGeneralization::setGeneral(QClassifier *general)
     }
 }
 
-void QGeneralization::registerMetaTypes() const
-{
-    qRegisterMetaType<QClassifier *>("QClassifier *");
-    qRegisterMetaType<QSet<QClassifier *>>("QSet<QClassifier *>");
-    qRegisterMetaType<QList<QClassifier *>>("QList<QClassifier *>");
-
-    QDirectedRelationship::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QGeneralization::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QGeneralization")][QString::fromLatin1("isSubstitutable")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

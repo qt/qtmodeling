@@ -77,7 +77,7 @@ public:
     Q_INVOKABLE QSet<QExceptionHandler *> handlers() const;
     Q_INVOKABLE void addHandler(QExceptionHandler *handler);
     Q_INVOKABLE void removeHandler(QExceptionHandler *handler);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

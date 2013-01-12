@@ -76,7 +76,7 @@ public:
     Q_INVOKABLE void setRequest(QInputPin *request);
     Q_INVOKABLE QInputPin *target() const;
     Q_INVOKABLE void setTarget(QInputPin *target);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

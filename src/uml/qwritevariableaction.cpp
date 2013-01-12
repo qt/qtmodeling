@@ -114,18 +114,6 @@ void QWriteVariableAction::setValue(QInputPin *value)
     }
 }
 
-void QWriteVariableAction::registerMetaTypes() const
-{
-    qRegisterMetaType<QInputPin *>("QInputPin *");
-    qRegisterMetaType<QSet<QInputPin *>>("QSet<QInputPin *>");
-    qRegisterMetaType<QList<QInputPin *>>("QList<QInputPin *>");
-
-    QVariableAction::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QWriteVariableAction::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QWriteVariableAction")][QString::fromLatin1("value")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");

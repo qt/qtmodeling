@@ -132,7 +132,7 @@ public:
     Q_INVOKABLE bool isReadOnly() const;
     Q_INVOKABLE void setReadOnly(bool isReadOnly);
     Q_INVOKABLE void unsetReadOnly();
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

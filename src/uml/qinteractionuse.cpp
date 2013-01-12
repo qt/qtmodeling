@@ -235,30 +235,6 @@ void QInteractionUse::setReturnValueRecipient(QProperty *returnValueRecipient)
     }
 }
 
-void QInteractionUse::registerMetaTypes() const
-{
-    qRegisterMetaType<QProperty *>("QProperty *");
-    qRegisterMetaType<QSet<QProperty *>>("QSet<QProperty *>");
-    qRegisterMetaType<QList<QProperty *>>("QList<QProperty *>");
-
-    qRegisterMetaType<QInteraction *>("QInteraction *");
-    qRegisterMetaType<QSet<QInteraction *>>("QSet<QInteraction *>");
-    qRegisterMetaType<QList<QInteraction *>>("QList<QInteraction *>");
-
-    qRegisterMetaType<QGate *>("QGate *");
-    qRegisterMetaType<QSet<QGate *>>("QSet<QGate *>");
-    qRegisterMetaType<QList<QGate *>>("QList<QGate *>");
-
-    qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
-    qRegisterMetaType<QSet<QValueSpecification *>>("QSet<QValueSpecification *>");
-    qRegisterMetaType<QList<QValueSpecification *>>("QList<QValueSpecification *>");
-
-    QInteractionFragment::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QInteractionUse::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionUse")][QString::fromLatin1("actualGates")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");

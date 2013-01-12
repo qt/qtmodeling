@@ -193,22 +193,6 @@ void QAcceptEventAction::removeResult(QOutputPin *result)
     }
 }
 
-void QAcceptEventAction::registerMetaTypes() const
-{
-    qRegisterMetaType<QOutputPin *>("QOutputPin *");
-    qRegisterMetaType<QSet<QOutputPin *>>("QSet<QOutputPin *>");
-    qRegisterMetaType<QList<QOutputPin *>>("QList<QOutputPin *>");
-
-    qRegisterMetaType<QTrigger *>("QTrigger *");
-    qRegisterMetaType<QSet<QTrigger *>>("QSet<QTrigger *>");
-    qRegisterMetaType<QList<QTrigger *>>("QList<QTrigger *>");
-
-    QAction::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QAcceptEventAction::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QAcceptEventAction")][QString::fromLatin1("isUnmarshall")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

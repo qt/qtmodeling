@@ -78,14 +78,6 @@ QActor::~QActor()
 {
 }
 
-void QActor::registerMetaTypes() const
-{
-    QBehavioredClassifier::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QActor::setPropertyData()
 {
     QBehavioredClassifier::setPropertyData();

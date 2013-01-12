@@ -276,22 +276,6 @@ void QClause::removeTest(QExecutableNode *test)
     }
 }
 
-void QClause::registerMetaTypes() const
-{
-    qRegisterMetaType<QExecutableNode *>("QExecutableNode *");
-    qRegisterMetaType<QSet<QExecutableNode *>>("QSet<QExecutableNode *>");
-    qRegisterMetaType<QList<QExecutableNode *>>("QList<QExecutableNode *>");
-
-    qRegisterMetaType<QOutputPin *>("QOutputPin *");
-    qRegisterMetaType<QSet<QOutputPin *>>("QSet<QOutputPin *>");
-    qRegisterMetaType<QList<QOutputPin *>>("QList<QOutputPin *>");
-
-    QElement::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QClause::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("successorClauses")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

@@ -103,14 +103,6 @@ void QModel::setViewpoint(QString viewpoint)
     }
 }
 
-void QModel::registerMetaTypes() const
-{
-    QPackage::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QModel::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QModel")][QString::fromLatin1("viewpoint")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

@@ -167,7 +167,7 @@ public:
     Q_INVOKABLE bool isControl() const;
     Q_INVOKABLE void setControl(bool isControl);
     Q_INVOKABLE void unsetControl();
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

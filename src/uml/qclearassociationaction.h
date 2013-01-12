@@ -77,7 +77,7 @@ public:
     Q_INVOKABLE void setObject(QInputPin *object);
     Q_INVOKABLE QAssociation *association() const;
     Q_INVOKABLE void setAssociation(QAssociation *association);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

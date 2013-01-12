@@ -64,7 +64,7 @@ class Q_UML_EXPORT QDataStoreNode : public QCentralBufferNode
 public:
     Q_INVOKABLE explicit QDataStoreNode(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QDataStoreNode();
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

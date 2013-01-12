@@ -106,18 +106,6 @@ void QBroadcastSignalAction::setSignal(QSignal *signal)
     }
 }
 
-void QBroadcastSignalAction::registerMetaTypes() const
-{
-    qRegisterMetaType<QSignal *>("QSignal *");
-    qRegisterMetaType<QSet<QSignal *>>("QSet<QSignal *>");
-    qRegisterMetaType<QList<QSignal *>>("QList<QSignal *>");
-
-    QInvocationAction::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QBroadcastSignalAction::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QBroadcastSignalAction")][QString::fromLatin1("signal")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

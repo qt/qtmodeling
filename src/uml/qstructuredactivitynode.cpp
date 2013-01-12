@@ -866,38 +866,6 @@ void QStructuredActivityNode::setActivity(QActivity *activity)
     }
 }
 
-void QStructuredActivityNode::registerMetaTypes() const
-{
-    qRegisterMetaType<QOutputPin *>("QOutputPin *");
-    qRegisterMetaType<QSet<QOutputPin *>>("QSet<QOutputPin *>");
-    qRegisterMetaType<QList<QOutputPin *>>("QList<QOutputPin *>");
-
-    qRegisterMetaType<QVariable *>("QVariable *");
-    qRegisterMetaType<QSet<QVariable *>>("QSet<QVariable *>");
-    qRegisterMetaType<QList<QVariable *>>("QList<QVariable *>");
-
-    qRegisterMetaType<QInputPin *>("QInputPin *");
-    qRegisterMetaType<QSet<QInputPin *>>("QSet<QInputPin *>");
-    qRegisterMetaType<QList<QInputPin *>>("QList<QInputPin *>");
-
-    qRegisterMetaType<QActivityEdge *>("QActivityEdge *");
-    qRegisterMetaType<QSet<QActivityEdge *>>("QSet<QActivityEdge *>");
-    qRegisterMetaType<QList<QActivityEdge *>>("QList<QActivityEdge *>");
-
-    qRegisterMetaType<QActivity *>("QActivity *");
-    qRegisterMetaType<QSet<QActivity *>>("QSet<QActivity *>");
-    qRegisterMetaType<QList<QActivity *>>("QList<QActivity *>");
-
-    qRegisterMetaType<QActivityNode *>("QActivityNode *");
-    qRegisterMetaType<QSet<QActivityNode *>>("QSet<QActivityNode *>");
-    qRegisterMetaType<QList<QActivityNode *>>("QList<QActivityNode *>");
-
-    QWrappedObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QStructuredActivityNode::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredActivityNode")][QString::fromLatin1("mustIsolate")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

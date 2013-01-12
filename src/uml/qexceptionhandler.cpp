@@ -194,26 +194,6 @@ void QExceptionHandler::setExceptionInput(QObjectNode *exceptionInput)
     }
 }
 
-void QExceptionHandler::registerMetaTypes() const
-{
-    qRegisterMetaType<QObjectNode *>("QObjectNode *");
-    qRegisterMetaType<QSet<QObjectNode *>>("QSet<QObjectNode *>");
-    qRegisterMetaType<QList<QObjectNode *>>("QList<QObjectNode *>");
-
-    qRegisterMetaType<QClassifier *>("QClassifier *");
-    qRegisterMetaType<QSet<QClassifier *>>("QSet<QClassifier *>");
-    qRegisterMetaType<QList<QClassifier *>>("QList<QClassifier *>");
-
-    qRegisterMetaType<QExecutableNode *>("QExecutableNode *");
-    qRegisterMetaType<QSet<QExecutableNode *>>("QSet<QExecutableNode *>");
-    qRegisterMetaType<QList<QExecutableNode *>>("QList<QExecutableNode *>");
-
-    QElement::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QExceptionHandler::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QExceptionHandler")][QString::fromLatin1("handlerBody")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

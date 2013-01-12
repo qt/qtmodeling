@@ -103,7 +103,7 @@ public:
     Q_INVOKABLE QtUml::VisibilityKind visibility() const;
     Q_INVOKABLE void setVisibility(QtUml::VisibilityKind visibility);
     Q_INVOKABLE void unsetVisibility();
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

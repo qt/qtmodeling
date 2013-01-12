@@ -85,7 +85,7 @@ public:
     Q_INVOKABLE void removeSupplier(QWrappedObjectPointer<QClassifier> contract);
     Q_INVOKABLE void addClient(QWrappedObjectPointer<QClassifier> substitutingClassifier);
     Q_INVOKABLE void removeClient(QWrappedObjectPointer<QClassifier> substitutingClassifier);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

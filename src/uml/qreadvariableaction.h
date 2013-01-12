@@ -73,7 +73,7 @@ public:
     // Association ends from QReadVariableAction
     Q_INVOKABLE QOutputPin *result() const;
     Q_INVOKABLE void setResult(QOutputPin *result);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

@@ -347,22 +347,6 @@ bool QRedefinableTemplateSignature::isConsistentWith(const QRedefinableElement *
     return bool(); // change here to your derived return
 }
 
-void QRedefinableTemplateSignature::registerMetaTypes() const
-{
-    qRegisterMetaType<QClassifier *>("QClassifier *");
-    qRegisterMetaType<QSet<QClassifier *>>("QSet<QClassifier *>");
-    qRegisterMetaType<QList<QClassifier *>>("QList<QClassifier *>");
-
-    qRegisterMetaType<QTemplateParameter *>("QTemplateParameter *");
-    qRegisterMetaType<QSet<QTemplateParameter *>>("QSet<QTemplateParameter *>");
-    qRegisterMetaType<QList<QTemplateParameter *>>("QList<QTemplateParameter *>");
-
-    QWrappedObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QRedefinableTemplateSignature::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QRedefinableTemplateSignature")][QString::fromLatin1("inheritedParameters")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

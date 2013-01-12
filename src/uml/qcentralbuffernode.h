@@ -64,7 +64,7 @@ class Q_UML_EXPORT QCentralBufferNode : public QObjectNode
 public:
     Q_INVOKABLE explicit QCentralBufferNode(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
     virtual ~QCentralBufferNode();
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

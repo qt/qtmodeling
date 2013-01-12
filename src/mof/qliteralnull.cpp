@@ -98,14 +98,6 @@ bool QLiteralNull::isNull() const
     return bool(); // change here to your derived return
 }
 
-void QLiteralNull::registerMetaTypes() const
-{
-    QLiteralSpecification::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QLiteralNull::setPropertyData()
 {
     QLiteralSpecification::setPropertyData();

@@ -386,26 +386,6 @@ void QInstanceSpecification::removeSlot_(QSlot *slot_)
     }
 }
 
-void QInstanceSpecification::registerMetaTypes() const
-{
-    qRegisterMetaType<QClassifier *>("QClassifier *");
-    qRegisterMetaType<QSet<QClassifier *>>("QSet<QClassifier *>");
-    qRegisterMetaType<QList<QClassifier *>>("QList<QClassifier *>");
-
-    qRegisterMetaType<QSlot *>("QSlot *");
-    qRegisterMetaType<QSet<QSlot *>>("QSet<QSlot *>");
-    qRegisterMetaType<QList<QSlot *>>("QList<QSlot *>");
-
-    qRegisterMetaType<QValueSpecification *>("QValueSpecification *");
-    qRegisterMetaType<QSet<QValueSpecification *>>("QSet<QValueSpecification *>");
-    qRegisterMetaType<QList<QValueSpecification *>>("QList<QValueSpecification *>");
-
-    QWrappedObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QInstanceSpecification::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QInstanceSpecification")][QString::fromLatin1("classifiers")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

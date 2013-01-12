@@ -4,7 +4,7 @@
 #include <QtWidgets/QFileDialog>
 #include <QtWidgets/QMessageBox>
 
-#include <QtMof/QtMofMetaModel>
+#include <QtMof/QMofMetaModel>
 
 #include "wrappedobjectmodel.h"
 #include "wrappedobjectpropertymodel.h"
@@ -18,7 +18,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    QtMofMetaModel::init();
+    QMofMetaModel::init();
 
     ui->wrappedObjectView->setModel(_wrappedObjectModel);
 

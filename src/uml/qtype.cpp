@@ -128,18 +128,6 @@ bool QType::conformsTo(const QType *other) const
     return bool(); // change here to your derived return
 }
 
-void QType::registerMetaTypes() const
-{
-    qRegisterMetaType<QPackage *>("QPackage *");
-    qRegisterMetaType<QSet<QPackage *>>("QSet<QPackage *>");
-    qRegisterMetaType<QList<QPackage *>>("QList<QPackage *>");
-
-    QPackageableElement::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QType::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QType")][QString::fromLatin1("package")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

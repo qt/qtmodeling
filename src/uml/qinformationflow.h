@@ -147,7 +147,7 @@ public:
     Q_INVOKABLE QSet<QRelationship *> realizations() const;
     Q_INVOKABLE void addRealization(QRelationship *realization);
     Q_INVOKABLE void removeRealization(QRelationship *realization);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

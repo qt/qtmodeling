@@ -112,14 +112,6 @@ void QContinuation::unsetSetting()
     d->modifiedResettableProperties.removeAll(QString::fromLatin1("setting"));
 }
 
-void QContinuation::registerMetaTypes() const
-{
-    QInteractionFragment::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QContinuation::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QContinuation")][QString::fromLatin1("setting")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

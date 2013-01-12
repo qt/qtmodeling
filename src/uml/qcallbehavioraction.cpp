@@ -106,18 +106,6 @@ void QCallBehaviorAction::setBehavior(QBehavior *behavior)
     }
 }
 
-void QCallBehaviorAction::registerMetaTypes() const
-{
-    qRegisterMetaType<QBehavior *>("QBehavior *");
-    qRegisterMetaType<QSet<QBehavior *>>("QSet<QBehavior *>");
-    qRegisterMetaType<QList<QBehavior *>>("QList<QBehavior *>");
-
-    QCallAction::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QCallBehaviorAction::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QCallBehaviorAction")][QString::fromLatin1("behavior")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

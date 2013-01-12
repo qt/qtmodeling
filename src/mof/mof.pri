@@ -54,7 +54,7 @@ PUBLIC_HEADERS += \
     qpackageimport.h \
     qargument.h \
     qbehavioralfeature.h \
-    qtmofmetamodel.h \
+    qmofmetamodel.h \
     qxmiwriter.h \
     qxmireader.h
 
@@ -170,6 +170,6 @@ SOURCES += \
     qpackageimport.cpp \
     qargument.cpp \
     qbehavioralfeature.cpp \
-    qtmofmetamodel.cpp \
+    qmofmetamodel.cpp \
     qxmiwriter.cpp \
     qxmireader.cpp

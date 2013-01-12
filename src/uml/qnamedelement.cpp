@@ -310,30 +310,6 @@ QString QNamedElement::separator() const
     return QStringLiteral("::");
 }
 
-void QNamedElement::registerMetaTypes() const
-{
-    qRegisterMetaType<QPackage *>("QPackage *");
-    qRegisterMetaType<QSet<QPackage *>>("QSet<QPackage *>");
-    qRegisterMetaType<QList<QPackage *>>("QList<QPackage *>");
-
-    qRegisterMetaType<QNamespace *>("QNamespace *");
-    qRegisterMetaType<QSet<QNamespace *>>("QSet<QNamespace *>");
-    qRegisterMetaType<QList<QNamespace *>>("QList<QNamespace *>");
-
-    qRegisterMetaType<QDependency *>("QDependency *");
-    qRegisterMetaType<QSet<QDependency *>>("QSet<QDependency *>");
-    qRegisterMetaType<QList<QDependency *>>("QList<QDependency *>");
-
-    qRegisterMetaType<QStringExpression *>("QStringExpression *");
-    qRegisterMetaType<QSet<QStringExpression *>>("QSet<QStringExpression *>");
-    qRegisterMetaType<QList<QStringExpression *>>("QList<QStringExpression *>");
-
-    QElement::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QNamedElement::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QNamedElement")][QString::fromLatin1("name")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

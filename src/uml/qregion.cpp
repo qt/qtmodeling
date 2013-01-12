@@ -565,34 +565,6 @@ bool QRegion::isRedefinitionContextValid(const QRegion *redefined) const
     return bool(); // change here to your derived return
 }
 
-void QRegion::registerMetaTypes() const
-{
-    qRegisterMetaType<QVertex *>("QVertex *");
-    qRegisterMetaType<QSet<QVertex *>>("QSet<QVertex *>");
-    qRegisterMetaType<QList<QVertex *>>("QList<QVertex *>");
-
-    qRegisterMetaType<QTransition *>("QTransition *");
-    qRegisterMetaType<QSet<QTransition *>>("QSet<QTransition *>");
-    qRegisterMetaType<QList<QTransition *>>("QList<QTransition *>");
-
-    qRegisterMetaType<QStateMachine *>("QStateMachine *");
-    qRegisterMetaType<QSet<QStateMachine *>>("QSet<QStateMachine *>");
-    qRegisterMetaType<QList<QStateMachine *>>("QList<QStateMachine *>");
-
-    qRegisterMetaType<QClassifier *>("QClassifier *");
-    qRegisterMetaType<QSet<QClassifier *>>("QSet<QClassifier *>");
-    qRegisterMetaType<QList<QClassifier *>>("QList<QClassifier *>");
-
-    qRegisterMetaType<QState *>("QState *");
-    qRegisterMetaType<QSet<QState *>>("QSet<QState *>");
-    qRegisterMetaType<QList<QState *>>("QList<QState *>");
-
-    QWrappedObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QRegion::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QRegion")][QString::fromLatin1("extendedRegion")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

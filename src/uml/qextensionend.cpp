@@ -144,18 +144,6 @@ qint32 QExtensionEnd::lowerBound() const
     return qint32(); // change here to your derived return
 }
 
-void QExtensionEnd::registerMetaTypes() const
-{
-    qRegisterMetaType<QStereotype *>("QStereotype *");
-    qRegisterMetaType<QSet<QStereotype *>>("QSet<QStereotype *>");
-    qRegisterMetaType<QList<QStereotype *>>("QList<QStereotype *>");
-
-    QProperty::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QExtensionEnd::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QExtensionEnd")][QString::fromLatin1("lower")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

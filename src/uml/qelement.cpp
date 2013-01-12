@@ -207,18 +207,6 @@ bool QElement::mustBeOwned() const
     return true;
 }
 
-void QElement::registerMetaTypes() const
-{
-    qRegisterMetaType<QComment *>("QComment *");
-    qRegisterMetaType<QSet<QComment *>>("QSet<QComment *>");
-    qRegisterMetaType<QList<QComment *>>("QList<QComment *>");
-
-    QWrappedObject::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QElement::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QElement")][QString::fromLatin1("ownedElements")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");

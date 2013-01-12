@@ -98,7 +98,7 @@ public:
     Q_INVOKABLE QSet<QExecutableNode *> tests() const;
     Q_INVOKABLE void addTest(QExecutableNode *test);
     Q_INVOKABLE void removeTest(QExecutableNode *test);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

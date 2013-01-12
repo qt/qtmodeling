@@ -87,7 +87,7 @@ public:
     // Overriden methods for subsetted properties
     Q_INVOKABLE void addClientDependency(QWrappedObjectPointer<QDeployment> deployment);
     Q_INVOKABLE void removeClientDependency(QWrappedObjectPointer<QDeployment> deployment);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

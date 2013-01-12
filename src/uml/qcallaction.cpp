@@ -155,18 +155,6 @@ void QCallAction::removeResult(QOutputPin *result)
     }
 }
 
-void QCallAction::registerMetaTypes() const
-{
-    qRegisterMetaType<QOutputPin *>("QOutputPin *");
-    qRegisterMetaType<QSet<QOutputPin *>>("QSet<QOutputPin *>");
-    qRegisterMetaType<QList<QOutputPin *>>("QList<QOutputPin *>");
-
-    QInvocationAction::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QCallAction::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QCallAction")][QString::fromLatin1("isSynchronous")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

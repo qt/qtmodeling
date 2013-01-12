@@ -82,7 +82,7 @@ public:
     Q_INVOKABLE QSet<QConstraint *> conditions() const;
     Q_INVOKABLE void addCondition(QConstraint *condition);
     Q_INVOKABLE void removeCondition(QConstraint *condition);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

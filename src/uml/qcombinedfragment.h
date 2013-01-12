@@ -92,7 +92,7 @@ public:
     Q_INVOKABLE QList<QInteractionOperand *> operands() const;
     Q_INVOKABLE void addOperand(QInteractionOperand *operand);
     Q_INVOKABLE void removeOperand(QInteractionOperand *operand);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

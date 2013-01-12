@@ -106,18 +106,6 @@ void QActionExecutionSpecification::setAction(QAction *action)
     }
 }
 
-void QActionExecutionSpecification::registerMetaTypes() const
-{
-    qRegisterMetaType<QAction *>("QAction *");
-    qRegisterMetaType<QSet<QAction *>>("QSet<QAction *>");
-    qRegisterMetaType<QList<QAction *>>("QList<QAction *>");
-
-    QExecutionSpecification::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QActionExecutionSpecification::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QActionExecutionSpecification")][QString::fromLatin1("action")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");

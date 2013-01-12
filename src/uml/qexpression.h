@@ -80,7 +80,7 @@ public:
     Q_INVOKABLE QList<QValueSpecification *> operands() const;
     Q_INVOKABLE void addOperand(QValueSpecification *operand);
     Q_INVOKABLE void removeOperand(QValueSpecification *operand);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:

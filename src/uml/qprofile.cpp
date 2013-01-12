@@ -159,22 +159,6 @@ void QProfile::removeMetaclassReference(QElementImport *metaclassReference)
     }
 }
 
-void QProfile::registerMetaTypes() const
-{
-    qRegisterMetaType<QElementImport *>("QElementImport *");
-    qRegisterMetaType<QSet<QElementImport *>>("QSet<QElementImport *>");
-    qRegisterMetaType<QList<QElementImport *>>("QList<QElementImport *>");
-
-    qRegisterMetaType<QPackageImport *>("QPackageImport *");
-    qRegisterMetaType<QSet<QPackageImport *>>("QSet<QPackageImport *>");
-    qRegisterMetaType<QList<QPackageImport *>>("QList<QPackageImport *>");
-
-    QPackage::registerMetaTypes();
-
-    foreach (QWrappedObject *wrappedObject, wrappedObjects())
-        wrappedObject->registerMetaTypes();
-}
-
 void QProfile::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QProfile")][QString::fromLatin1("metamodelReferences")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");

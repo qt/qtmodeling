@@ -95,7 +95,7 @@ public:
     Q_INVOKABLE void removeClient(QWrappedObjectPointer<QDeploymentTarget> location);
     Q_INVOKABLE void addSupplier(QWrappedObjectPointer<QDeployedArtifact> deployedArtifact);
     Q_INVOKABLE void removeSupplier(QWrappedObjectPointer<QDeployedArtifact> deployedArtifact);
-    virtual void registerMetaTypes() const;
+
     virtual void setPropertyData();
 
 protected:
