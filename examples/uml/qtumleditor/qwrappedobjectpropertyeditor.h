@@ -7,8 +7,13 @@ class FilterWidget;
 class QLabel;
 class QTreeView;
 
-class WrappedObjectPropertyModel;
+namespace QtWrappedObjects {
+    class QWrappedObjectPropertyModel;
+}
+
 class WrappedObjectPropertyFilterModel;
+
+using QtWrappedObjects::QWrappedObjectPropertyModel;
 
 class QWrappedObjectPropertyEditor : public QWidget
 {
@@ -16,17 +21,17 @@ class QWrappedObjectPropertyEditor : public QWidget
 public:
     explicit QWrappedObjectPropertyEditor(QWidget *parent = 0);
 
-    WrappedObjectPropertyModel *model() const;
+    QWrappedObjectPropertyModel *model() const;
 
 public Q_SLOTS:
-    void setModel(WrappedObjectPropertyModel *model);
+    void setModel(QWrappedObjectPropertyModel *model);
 
 private:
     FilterWidget *_filter;
     QLabel *_label;
     QTreeView *_treeView;
     WrappedObjectPropertyFilterModel *_proxyModel;
-    WrappedObjectPropertyModel *_propertyModel;
+    QWrappedObjectPropertyModel *_propertyModel;
 };
 
 #endif // QWRAPPEDOBJECTPROPERTYEDITOR_H

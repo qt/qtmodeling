@@ -1,7 +1,7 @@
 load(qt_build_config)
 
 TARGET = QtWrappedObjects
-QT = core-private
+QT = core-private gui
 
 QMAKE_DOCS = $$PWD/doc/qtwrappedobjects.qdocconf
 
@@ -12,7 +12,9 @@ PUBLIC_HEADERS += \
     qwrappedobject.h \
     qmetawrappedobject.h \
     qwrappedobjectpointer.h \
-    qtwrappedobjectsnamespace.h
+    qtwrappedobjectsnamespace.h \
+    qwrappedobjectmodel.h \
+    qwrappedobjectpropertymodel.h
 
 PRIVATE_HEADERS += \
     qwrappedobject_p.h \
@@ -21,6 +23,8 @@ PRIVATE_HEADERS += \
 SOURCES += \
     qwrappedobject.cpp \
     qmetawrappedobject.cpp \
-    qtwrappedobjectsnamespace.cpp
+    qtwrappedobjectsnamespace.cpp \
+    qwrappedobjectmodel.cpp \
+    qwrappedobjectpropertymodel.cpp
 
 HEADERS += $$PUBLIC_HEADERS $$PRIVATE_HEADERS

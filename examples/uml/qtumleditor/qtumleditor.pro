@@ -24,8 +24,6 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     propertyeditoritemdelegate.cpp \
     propertyeditor.cpp \
-    wrappedobjectpropertymodel.cpp \
-    wrappedobjectmodel.cpp \
     wrappedobjectpropertyfiltermodel.cpp \
     filterwidget.cpp \
     qwrappedobjectpropertyeditor.cpp \
@@ -34,8 +32,6 @@ SOURCES += main.cpp\
 HEADERS  += mainwindow.h \
     propertyeditoritemdelegate.h \
     propertyeditor.h \
-    wrappedobjectpropertymodel.h \
-    wrappedobjectmodel.h \
     wrappedobjectpropertyfiltermodel.h \
     filterwidget.h \
     qwrappedobjectpropertyeditor.h \
