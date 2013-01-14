@@ -4,31 +4,32 @@
 #include <QtWidgets/QFileDialog>
 #include <QtWidgets/QMessageBox>
 
+#include <QtWrappedObjects/QWrappedObject>
+#include <QtWrappedObjects/QWrappedObjectModel>
+#include <QtWrappedObjects/QWrappedObjectPropertyModel>
+
 #include <QtMof/QMofMetaModel>
 
-#include "wrappedobjectmodel.h"
-#include "wrappedobjectpropertymodel.h"
-
-using namespace QtMof;
+using QtWrappedObjects::QWrappedObjectPropertyModel;
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
-    _wrappedObjectModel(new WrappedObjectModel(this))
+    _wrappedObjectModel(new QWrappedObjectModel(this))
 {
     ui->setupUi(this);
 
-    QMofMetaModel::init();
+    QtMof::QMofMetaModel::init();
 
     ui->wrappedObjectView->setModel(_wrappedObjectModel);
 
-    WrappedObjectPropertyModel *propertyModel = new WrappedObjectPropertyModel(this);
+    QWrappedObjectPropertyModel *propertyModel = new QWrappedObjectPropertyModel(this);
     ui->propertyEditor->setModel(propertyModel);
 
     connect(ui->wrappedObjectView, &QWrappedObjectView::wrappedObjectChanged,
-            propertyModel, &WrappedObjectPropertyModel::setWrappedObject);
-    connect(propertyModel, &WrappedObjectPropertyModel::indexChanged,
-            _wrappedObjectModel, &WrappedObjectModel::updateIndex);
+            propertyModel, &QWrappedObjectPropertyModel::setWrappedObject);
+    connect(propertyModel, &QWrappedObjectPropertyModel::indexChanged,
+            _wrappedObjectModel, &QWrappedObjectModel::updateIndex);
 }
 
 MainWindow::~MainWindow()
@@ -44,7 +45,7 @@ void MainWindow::saveXmi(QWrappedObject *rootElement)
         return;
     }
 
-    QXmiWriter writer(rootElement);
+    QtMof::QXmiWriter writer(rootElement);
     if (!writer.writeFile(&file))
         QMessageBox::critical(this, tr("Save As"), tr("Error when writing XMI file !"));
     else
@@ -59,7 +60,7 @@ QWrappedObject *MainWindow::loadXmi()
         return 0;
     }
 
-    QXmiReader reader;
+    QtMof::QXmiReader reader;
     return reader.readFile(&file);
 }
 

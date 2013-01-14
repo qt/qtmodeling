@@ -3,18 +3,16 @@
 
 #include <QtWidgets/QMainWindow>
 
-//#include <QtWrappedObjects/QWrappedObjectPointer>
-
 namespace Ui {
     class MainWindow;
 }
 
 namespace QtWrappedObjects {
     class QWrappedObject;
+    class QWrappedObjectModel;
 }
 using QtWrappedObjects::QWrappedObject;
-
-class WrappedObjectModel;
+using QtWrappedObjects::QWrappedObjectModel;
 
 class MainWindow : public QMainWindow
 {
@@ -34,7 +32,7 @@ private:
     QWrappedObject *loadXmi();
 
     Ui::MainWindow *ui;
-    WrappedObjectModel *_wrappedObjectModel;
+    QWrappedObjectModel *_wrappedObjectModel;
 
     QString _currentFileName;
 };

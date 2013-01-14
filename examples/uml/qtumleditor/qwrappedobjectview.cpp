@@ -10,10 +10,10 @@
 
 #include <QtWrappedObjects/QWrappedObject>
 #include <QtWrappedObjects/QMetaWrappedObject>
-
-#include "wrappedobjectmodel.h"
+#include <QtWrappedObjects/QWrappedObjectModel>
 
 using QtWrappedObjects::QMetaWrappedObject;
+using QtWrappedObjects::QWrappedObjectModel;
 
 QWrappedObjectView::QWrappedObjectView(QWidget *parent) :
     QWidget(parent),
@@ -60,7 +60,7 @@ void QWrappedObjectView::setModel(QAbstractItemModel *model)
 
 void QWrappedObjectView::updateSelected()
 {
-    (dynamic_cast<WrappedObjectModel *>(_treeView->model()))->updateIndex(_treeView->selectionModel()->selectedIndexes().first());
+    (dynamic_cast<QWrappedObjectModel *>(_treeView->model()))->updateIndex(_treeView->selectionModel()->selectedIndexes().first());
 }
 
 void QWrappedObjectView::contextMenuEvent(QContextMenuEvent *event)
@@ -91,7 +91,7 @@ void QWrappedObjectView::handleAddMethod()
             }
         }
     }
-    WrappedObjectModel *wrappedObjectModel = dynamic_cast<WrappedObjectModel *>(_treeView->model());
+    QWrappedObjectModel *wrappedObjectModel = dynamic_cast<QWrappedObjectModel *>(_treeView->model());
     wrappedObjectModel->updateIndex(QModelIndex());
 }
 

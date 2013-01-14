@@ -5,10 +5,10 @@
 #include <QtWidgets/QVBoxLayout>
 
 #include <QtWrappedObjects/QWrappedObject>
+#include <QtWrappedObjects/QWrappedObjectPropertyModel>
 
 #include "filterwidget.h"
 #include "propertyeditoritemdelegate.h"
-#include "wrappedobjectpropertymodel.h"
 #include "wrappedobjectpropertyfiltermodel.h"
 
 using QtWrappedObjects::QWrappedObject;
@@ -52,7 +52,7 @@ QWrappedObjectPropertyEditor::QWrappedObjectPropertyEditor(QWidget *parent) :
     });
 }
 
-void QWrappedObjectPropertyEditor::setModel(WrappedObjectPropertyModel *propertyModel)
+void QWrappedObjectPropertyEditor::setModel(QWrappedObjectPropertyModel *propertyModel)
 {
     if (_propertyModel)
         disconnect(_propertyModel, 0, this, 0);
@@ -68,7 +68,7 @@ void QWrappedObjectPropertyEditor::setModel(WrappedObjectPropertyModel *property
     }
 }
 
-WrappedObjectPropertyModel *QWrappedObjectPropertyEditor::model() const
+QWrappedObjectPropertyModel *QWrappedObjectPropertyEditor::model() const
 {
     return _propertyModel;
 }

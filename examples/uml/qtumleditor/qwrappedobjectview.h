@@ -1,9 +1,9 @@
 #ifndef QWRAPPEDOBJECTVIEW_H
 #define QWRAPPEDOBJECTVIEW_H
 
-#include <QtCore/QMetaMethod>
-
 #include <QtWidgets/QWidget>
+
+#include <QtCore/QMetaMethod>
 
 class QMenu;
 class QTreeView;
