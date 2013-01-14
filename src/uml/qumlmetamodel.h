@@ -38,8 +38,8 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QTUMLMETAMODEL_H
-#define QTUMLMETAMODEL_H
+#ifndef QUMLMETAMODEL_H
+#define QUMLMETAMODEL_H
 
 #include <QtUml/QtUml>
 
@@ -49,7 +49,7 @@ QT_BEGIN_NAMESPACE_QTUML
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QtUmlMetaModel
+class Q_UML_EXPORT QUmlMetaModel
 {
 public:
     static void init();
@@ -59,5 +59,5 @@ QT_END_NAMESPACE_QTUML
 
 QT_END_HEADER
 
-#endif // QTUMLMETAMODEL_H
+#endif // QUMLMETAMODEL_H
 

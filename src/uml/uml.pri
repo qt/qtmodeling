@@ -243,7 +243,7 @@ PUBLIC_HEADERS += \
     qcallevent.h \
     qdeploymenttarget.h \
     qextension.h \
-    qtumlmetamodel.h
+    qumlmetamodel.h
 
 PRIVATE_HEADERS += \
     qacceptcallaction_p.h \
@@ -733,4 +733,4 @@ SOURCES += \
     qcallevent.cpp \
     qdeploymenttarget.cpp \
     qextension.cpp \
-    qtumlmetamodel.cpp
+    qumlmetamodel.cpp
