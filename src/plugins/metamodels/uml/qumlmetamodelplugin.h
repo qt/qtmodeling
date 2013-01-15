@@ -48,7 +48,7 @@ using QtWrappedObjects::QMetaModelPlugin;
 class QUmlMetaModelPlugin : public QMetaModelPlugin
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QMetaModelPlugin")
+    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QMetaModelPlugin" FILE "uml.json")
 
 public:
     QUmlMetaModelPlugin(QObject *parent = 0);

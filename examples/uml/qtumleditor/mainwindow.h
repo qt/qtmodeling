@@ -3,8 +3,19 @@
 
 #include <QtWidgets/QMainWindow>
 
+#include <QtCore/QPair>
+#include <QtCore/QJsonObject>
+
+class QDialog;
+
+namespace QtWrappedObjects
+{
+    class QMetaModelPlugin;
+}
+
 namespace Ui {
     class MainWindow;
+    class AboutPlugins;
 }
 
 namespace QtWrappedObjects {
@@ -13,6 +24,7 @@ namespace QtWrappedObjects {
 }
 using QtWrappedObjects::QWrappedObject;
 using QtWrappedObjects::QWrappedObjectModel;
+using QtWrappedObjects::QMetaModelPlugin;
 
 class MainWindow : public QMainWindow
 {
@@ -26,8 +38,10 @@ private Q_SLOTS:
     void on_actionFileOpen_triggered();
     void on_actionFileSaveAs_triggered();
     void on_actionFileSave_triggered();
+    void on_actionAboutPlugins_triggered();
 
 private:
+    void loadPlugins();
     void saveXmi(QWrappedObject *rootElement);
     QWrappedObject *loadXmi();
 
@@ -35,6 +49,9 @@ private:
     QWrappedObjectModel *_wrappedObjectModel;
 
     QString _currentFileName;
+    QHash<QString, QPair<QMetaModelPlugin *, QJsonObject>> _loadedPlugins;
+    QDialog *_aboutPluginsDialog;
+    Ui::AboutPlugins *_aboutPlugins;
 };
 
 #endif // MAINWINDOW_H

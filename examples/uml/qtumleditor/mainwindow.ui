@@ -37,7 +37,14 @@
     <addaction name="separator"/>
     <addaction name="actionFileQuit"/>
    </widget>
+   <widget class="QMenu" name="menu_Help">
+    <property name="title">
+     <string>&amp;Help</string>
+    </property>
+    <addaction name="actionAboutPlugins"/>
+   </widget>
    <addaction name="menu_File"/>
+   <addaction name="menu_Help"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -58,7 +65,7 @@
    <attribute name="dockWidgetArea">
     <number>1</number>
    </attribute>
-   <widget class="QWidget" name="dockWidgetContents">
+   <widget class="QWidget" name="dckInspectorLayout">
     <layout class="QGridLayout" name="gridLayout">
      <item row="0" column="0">
       <widget class="QWrappedObjectView" name="wrappedObjectView" native="true"/>
@@ -73,7 +80,7 @@
    <attribute name="dockWidgetArea">
     <number>2</number>
    </attribute>
-   <widget class="QWidget" name="dockWidgetContents_2">
+   <widget class="QWidget" name="dckPropertyEditorLayout">
     <layout class="QGridLayout" name="gridLayout_2">
      <item row="0" column="0">
       <widget class="QWrappedObjectPropertyEditor" name="propertyEditor" native="true"/>
@@ -88,7 +95,7 @@
     </iconset>
    </property>
    <property name="text">
-    <string>&amp;New</string>
+    <string>&amp;New...</string>
    </property>
    <property name="toolTip">
     <string>New</string>
@@ -104,7 +111,7 @@
     </iconset>
    </property>
    <property name="text">
-    <string>&amp;Open</string>
+    <string>&amp;Open...</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+O</string>
@@ -133,7 +140,7 @@
     </iconset>
    </property>
    <property name="text">
-    <string>Save &amp;as</string>
+    <string>Save &amp;as...</string>
    </property>
   </action>
   <action name="actionFileQuit">
@@ -147,6 +154,16 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+Q</string>
+   </property>
+  </action>
+  <action name="actionAboutPlugins">
+   <property name="icon">
+    <iconset theme="help-about">
+     <normaloff/>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>About &amp;Plugins...</string>
    </property>
   </action>
  </widget>
