@@ -1,4 +1,4 @@
 TEMPLATE = subdirs
 CONFIG  += ordered
 
-SUBDIRS = wrappedobjects mof uml
+SUBDIRS = wrappedobjects mof uml plugins

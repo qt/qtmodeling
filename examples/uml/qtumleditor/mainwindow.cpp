@@ -61,6 +61,7 @@ QWrappedObject *MainWindow::loadXmi()
     }
 
     QtMof::QXmiReader reader;
+    setWindowTitle(QFileInfo(file).fileName() + " - QtUml Editor");
     return reader.readFile(&file);
 }
 
