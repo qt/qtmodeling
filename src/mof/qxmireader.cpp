@@ -87,27 +87,19 @@ QWrappedObject *QXmiReader::readFile(QIODevice *device)
         d->reader.readNext();
 
         if (d->reader.isStartElement()) {
-            QString elementName = d->reader.name().toString().prepend(QString::fromLatin1("Q")).append(QString::fromLatin1("*"));
-            if (d->reader.namespaceUri() == QString::fromLatin1("http://www.omg.org/spec/UML/20110701")) {
-                QString instanceName = d->reader.attributes().value(QString::fromLatin1("name")).toString();
-                if (instanceName.isEmpty())
-                    instanceName = d->reader.attributes().value(QString::fromLatin1("xmi:id")).toString();
-                QWrappedObject *wrappedObject = createInstance(elementName, instanceName);
-                if (wrappedObject) {
-                    d->idMap.insert(d->reader.attributes().value(QString::fromLatin1("xmi:id")).toString(), wrappedObject);
+            QString xmiType = d->reader.attributes().value(QString::fromLatin1("xmi:type")).toString().split(':').last();
+            if (xmiType.isEmpty() && d->reader.namespaceUri() == QString::fromLatin1("http://www.omg.org/spec/UML/20110701"))
+                xmiType = d->reader.name().toString();
+            if (xmiType.isEmpty())
+                continue;
+            QString instanceName = d->reader.attributes().value(QString::fromLatin1("name")).toString();
+            if (instanceName.isEmpty())
+                instanceName = d->reader.attributes().value(QString::fromLatin1("xmi:id")).toString();
+            QWrappedObject *wrappedObject = createInstance(xmiType.prepend(QString::fromLatin1("Q")).append(QString::fromLatin1("*")), instanceName);
+            if (wrappedObject) {
+                d->idMap.insert(d->reader.attributes().value(QString::fromLatin1("xmi:id")).toString(), wrappedObject);
+                if (!rootElement)
                     rootElement = wrappedObject;
-                }
-            }
-            else {
-                QString xmiType = d->reader.attributes().value(QString::fromLatin1("xmi:type")).toString().split(':').last();
-                if (xmiType.isEmpty())
-                    continue;
-                QString instanceName = d->reader.attributes().value(QString::fromLatin1("name")).toString();
-                if (instanceName.isEmpty())
-                    instanceName = d->reader.attributes().value(QString::fromLatin1("xmi:id")).toString();
-                QWrappedObject *wrappedObject = createInstance(xmiType.prepend(QString::fromLatin1("Q")).append(QString::fromLatin1("*")), instanceName);
-                if (wrappedObject)
-                    d->idMap.insert(d->reader.attributes().value(QString::fromLatin1("xmi:id")).toString(), wrappedObject);
             }
         }
     }
@@ -150,7 +142,6 @@ QWrappedObject *QXmiReader::readFile(QIODevice *device)
                 }
                 if (!stack.isEmpty()) {
                     QWrappedObject *containerObject = stack.top().second;
-                    QString methodParameter = d->reader.attributes().value(QString::fromLatin1("xmi:type")).toString().split(':').last().prepend(QString::fromLatin1("Q")).append(QString::fromLatin1("*"));
                     QString elementName = d->reader.name().toString();
                     elementName = elementName.left(1).toUpper() + elementName.mid(1);
                     int methodCount = containerObject->metaObject()->methodCount();
