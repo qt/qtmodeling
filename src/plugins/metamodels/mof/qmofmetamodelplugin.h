@@ -48,7 +48,7 @@ using QtWrappedObjects::QMetaModelPlugin;
 class QMofMetaModelPlugin : public QMetaModelPlugin
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QMetaModelPlugin")
+    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QMetaModelPlugin" FILE "mof.json")
 
 public:
     QMofMetaModelPlugin(QObject *parent = 0);

@@ -37,7 +37,8 @@ HEADERS  += mainwindow.h \
     qwrappedobjectpropertyeditor.h \
     qwrappedobjectview.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    aboutplugins.ui
 
 RESOURCES += \
     qtumleditor.qrc
