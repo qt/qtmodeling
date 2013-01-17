@@ -6,6 +6,7 @@
 
 #include <QtWidgets/QFileDialog>
 #include <QtWidgets/QMessageBox>
+#include <QtWidgets/QListView>
 
 #include <QtWrappedObjects/QWrappedObject>
 #include <QtWrappedObjects/QMetaModelPlugin>
@@ -40,6 +41,16 @@ MainWindow::MainWindow(QWidget *parent) :
             _wrappedObjectModel, &QWrappedObjectModel::updateIndex);
 
     loadPlugins();
+
+    QPalette modelPallete = ui->issues->palette();
+    modelPallete.setColor(QPalette::Active, QPalette::Base, QColor(255, 255, 255));
+    modelPallete.setColor(QPalette::Inactive, QPalette::Base, QColor(255, 255, 255));
+    modelPallete.setColor(QPalette::Active, QPalette::AlternateBase, QColor(248, 247, 246));
+    modelPallete.setColor(QPalette::Inactive, QPalette::AlternateBase, QColor(248, 247, 246));
+    ui->issues->setPalette(modelPallete);
+
+    tabifyDockWidget(ui->dckIssues, ui->dckXPath);
+    ui->dckIssues->raise();
 }
 
 MainWindow::~MainWindow()
@@ -72,7 +83,10 @@ QWrappedObject *MainWindow::loadXmi()
 
     QtMof::QXmiReader reader;
     setWindowTitle(QFileInfo(file).fileName() + " - QtUml Editor");
-    return reader.readFile(&file);
+    QWrappedObject *wrappedObject = reader.readFile(&file);
+    ui->issues->setModel(new QStringListModel(reader.errorStrings()));
+
+    return wrappedObject;
 }
 
 void MainWindow::on_actionFileOpen_triggered()
