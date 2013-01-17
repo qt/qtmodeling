@@ -50,6 +50,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->issues->setPalette(modelPallete);
 
     tabifyDockWidget(ui->dckIssues, ui->dckXPath);
+    tabifyDockWidget(ui->dckXPath, ui->dckOcl);
     ui->dckIssues->raise();
 }
 
