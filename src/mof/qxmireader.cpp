@@ -42,19 +42,24 @@
 #include "qxmireader.h"
 #include "qxmireader_p.h"
 
+#include <QtCore/QDir>
+#include <QtCore/QStack>
 #include <QtCore/QIODevice>
-#include <QtCore/QRegularExpression>
 #include <QtCore/QMetaMethod>
+#include <QtCore/QPluginLoader>
+#include <QtCore/QCoreApplication>
+#include <QtCore/QRegularExpression>
+
+#include <QtCore/QDebug>
 
 #include <QtWrappedObjects/QWrappedObject>
-#include <QtWrappedObjects/QMetaWrappedObject>
+#include <QtWrappedObjects/QMetaModelPlugin>
 #include <QtWrappedObjects/QMetaPropertyInfo>
+#include <QtWrappedObjects/QMetaWrappedObject>
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-#include <QtMof/QMofMetaModel>
-
-using QtWrappedObjects::QMetaWrappedObject;
-using QtWrappedObjects::QMetaPropertyInfo;
+using QT_PREPEND_NAMESPACE_QTWRAPPEDOBJECTS(QMetaPropertyInfo);
+using QT_PREPEND_NAMESPACE_QTWRAPPEDOBJECTS(QMetaWrappedObject);
 
 QT_BEGIN_NAMESPACE_QTMOF
 
@@ -69,17 +74,37 @@ QXmiReaderPrivate::~QXmiReaderPrivate()
 QXmiReader::QXmiReader(QObject *parent) :
     QObject(*new QXmiReaderPrivate, parent)
 {
-    QMofMetaModel::init();
+    loadPlugins();
 }
 
 QXmiReader::~QXmiReader()
 {
 }
 
+void QXmiReader::loadPlugins()
+{
+    Q_D(QXmiReader);
+
+    d->metaModelPlugins.clear();
+    QMetaModelPlugin *metaModelPlugin = 0;
+    foreach (QString pluginPath, QCoreApplication::libraryPaths()) {
+        QDir pluginsDir(pluginPath);
+        pluginsDir.cd(QString::fromLatin1("metamodels"));
+        foreach (QString fileName, pluginsDir.entryList(QDir::Files)) {
+            QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
+            QObject *plugin = loader.instance();
+            if (plugin && (metaModelPlugin = qobject_cast<QMetaModelPlugin *>(plugin)))
+                d->metaModelPlugins.insert(metaModelPlugin->metaModelNamespaceUri(), metaModelPlugin);
+        }
+    }
+    qDebug() << "Metamodel plugins:" << d->metaModelPlugins;
+}
+
 QWrappedObject *QXmiReader::readFile(QIODevice *device)
 {
     Q_D(QXmiReader);
 
+    d->errors.clear();
     d->reader.setDevice(device);
     QWrappedObject *rootElement = 0;
 
@@ -87,6 +112,13 @@ QWrappedObject *QXmiReader::readFile(QIODevice *device)
         d->reader.readNext();
 
         if (d->reader.isStartElement()) {
+            foreach (const QXmlStreamNamespaceDeclaration &namespaceDeclaration, d->reader.namespaceDeclarations()) {
+                QMetaModelPlugin *metaModelPlugin = d->metaModelPlugins.value(namespaceDeclaration.namespaceUri().toString());
+                if (metaModelPlugin)
+                    metaModelPlugin->initMetaModel();
+                else
+                    d->errors << QString::fromLatin1("Could not find metamodel for namespace URI '%1'").arg(namespaceDeclaration.namespaceUri().toString());
+            }
             QString xmiType = d->reader.attributes().value(QString::fromLatin1("xmi:type")).toString().split(':').last();
             if (xmiType.isEmpty() && d->reader.namespaceUri() == QString::fromLatin1("http://www.omg.org/spec/UML/20110701"))
                 xmiType = d->reader.name().toString();
@@ -101,6 +133,8 @@ QWrappedObject *QXmiReader::readFile(QIODevice *device)
                 if (!rootElement)
                     rootElement = wrappedObject;
             }
+            else
+                d->errors << QString::fromLatin1("Could not create instance with id '%1' and type '%2'. Corresponding metamodel loaded ?").arg(instanceName).arg(xmiType);
         }
     }
 
@@ -120,6 +154,7 @@ QWrappedObject *QXmiReader::readFile(QIODevice *device)
                 id = d->reader.attributes().value(QString::fromLatin1("href")).toString();
             if (id.isEmpty() && !stack.isEmpty())
                 continue;
+
             QWrappedObject *wrappedObject = d->idMap.value(id);
 
             if (wrappedObject) {
@@ -130,15 +165,20 @@ QWrappedObject *QXmiReader::readFile(QIODevice *device)
                         QMetaPropertyInfo metaPropertyInfo = metaWrappedObject->property(propertyIndex);
                         QMetaProperty metaProperty = metaPropertyInfo.metaProperty;
                         if (metaProperty.type() == QVariant::Bool) {
-                            wrappedObject->setProperty(attribute.name().toString().toLatin1(), attribute.value().toString() == QString::fromLatin1("true") ? true:false);
+                            if (!wrappedObject->setProperty(attribute.name().toString().toLatin1(), attribute.value().toString() == QString::fromLatin1("true") ? true:false))
+                                d->errors << QString::fromLatin1("Error when setting property '%1' of object with id '%2'.").arg(attribute.name().toString()).arg(id);
                         }
                         else if (metaProperty.isEnumType()) {
-                            wrappedObject->setProperty(attribute.name().toString().toLatin1(), QString::fromLatin1(metaProperty.enumerator().valueToKey(attribute.value().toString().toInt())).toLower().remove(QString::fromLatin1(metaProperty.name())).toLatin1());
+                            if (!wrappedObject->setProperty(attribute.name().toString().toLatin1(), QString::fromLatin1(metaProperty.enumerator().valueToKey(attribute.value().toString().toInt())).toLower().remove(QString::fromLatin1(metaProperty.name())).toLatin1()))
+                                d->errors << QString::fromLatin1("Error when setting property '%1' of object with id '%2'.").arg(attribute.name().toString()).arg(id);
                         }
                         else if (metaProperty.type() == QVariant::String) {
-                            wrappedObject->setProperty(attribute.name().toString().toLatin1(), attribute.value().toString());
+                            if (!wrappedObject->setProperty(attribute.name().toString().toLatin1(), attribute.value().toString()))
+                                d->errors << QString::fromLatin1("Error when setting property '%1' of object with id '%2'.").arg(attribute.name().toString()).arg(id);
                         }
                     }
+                    else
+                        d->errors << QString::fromLatin1("Property '%1' not found in object of type '%2'. Corresponding metamodel loaded ?").arg(attribute.name().toString()).arg(QString::fromLatin1(wrappedObject->metaObject()->className()));
                 }
                 if (!stack.isEmpty()) {
                     QWrappedObject *containerObject = stack.top().second;
@@ -150,13 +190,18 @@ QWrappedObject *QXmiReader::readFile(QIODevice *device)
                         QMetaMethod metaMethod = containerObject->metaObject()->method(i);
                         if (QString::fromLatin1(metaMethod.name()) == QString::fromLatin1("add%1").arg(elementName) ||
                             QString::fromLatin1(metaMethod.name()) == QString::fromLatin1("set%1").arg(elementName)) {
-                            metaMethod.invoke(containerObject, ::Q_ARG(QWrappedObject *, wrappedObject));
+                            if (!metaMethod.invoke(containerObject, ::Q_ARG(QWrappedObject *, wrappedObject)))
+                                d->errors << QString::fromLatin1("Error when invoking metamethod '%1' on object '%2'.").arg(QString::fromLatin1(metaMethod.name())).arg(containerObject->objectName());
                             break;
                         }
                     }
+                    if (i == methodCount)
+                        d->errors << QString::fromLatin1("Metamethod add/set'%1' not found on object '%2'.").arg(elementName).arg(containerObject->objectName());
                 }
                 stack.push(QPair<QString, QWrappedObject *>(d->reader.name().toString(), wrappedObject));
             }
+            else
+                d->errors << QString::fromLatin1("Could not cross reference instance with id '%1' in element '%2'. Bad formed XMI file ?").arg(id).arg(d->reader.name().toString());
         }
         else if (d->reader.isEndElement() && !stack.isEmpty() && stack.top().first == d->reader.name()) {
             stack.pop();
@@ -180,6 +225,13 @@ QWrappedObject *QXmiReader::createInstance(QString instanceClass, QString instan
         }
     }
     return 0;
+}
+
+QStringList QXmiReader::errorStrings() const
+{
+    Q_D(const QXmiReader);
+
+    return d->errors;
 }
 
 #include "moc_qxmireader.cpp"

@@ -46,14 +46,16 @@
 // Base class includes
 #include <QtCore/QObject>
 
+#include <QtWrappedObjects/QtWrappedObjectsGlobal>
+
 QT_BEGIN_HEADER
 
 class QIODevice;
 
-namespace QtWrappedObjects
-{
+QT_BEGIN_NAMESPACE_QTWRAPPEDOBJECTS
     class QWrappedObject;
-};
+QT_END_NAMESPACE_QTWRAPPEDOBJECTS
+
 using QtWrappedObjects::QWrappedObject;
 
 QT_BEGIN_NAMESPACE_QTMOF
@@ -74,8 +76,10 @@ public:
     virtual ~QXmiReader();
 
     QWrappedObject *readFile(QIODevice *device);
+    QStringList errorStrings() const;
 
 protected:
+    void loadPlugins();
     QWrappedObject *createInstance(QString instanceClass, QString instanceName);
 };
 

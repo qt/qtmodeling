@@ -19,8 +19,14 @@ int main ()
 
     QXmiReader reader;
     QWrappedObject *rootElement = reader.readFile(&file);
-    qDebug() << "Successfully read object with name" << rootElement->objectName();
-
+    if (rootElement)
+        qDebug() << "Successfully read object with name" << rootElement->objectName();
+    if (reader.errorStrings().size() > 0) {
+        qDebug() << "Errors:";
+        foreach (QString error, reader.errorStrings())
+            qDebug() << "\t" << error;
+    }
+/*
     QFile file2("test-out.xmi");
 
     if (!file2.open(QFile::WriteOnly | QFile::Text)) {
@@ -29,5 +35,6 @@ int main ()
     }
     QXmiWriter writer(rootElement);
     writer.writeFile(&file2);
+*/
 }
 

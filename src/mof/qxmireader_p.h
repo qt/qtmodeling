@@ -46,9 +46,16 @@
 
 #include "QtMof/QXmiReader"
 
+#include <QtCore/QStringList>
 #include <QtCore/QXmlStreamReader>
 
 QT_BEGIN_HEADER
+
+QT_BEGIN_NAMESPACE_QTWRAPPEDOBJECTS
+class QMetaModelPlugin;
+QT_END_NAMESPACE_QTWRAPPEDOBJECTS
+
+using QtWrappedObjects::QMetaModelPlugin;
 
 QT_BEGIN_NAMESPACE_QTMOF
 
@@ -64,6 +71,8 @@ public:
 
     QXmlStreamReader reader;
     QHash<QString, QWrappedObject *> idMap;
+    QHash<QString, QMetaModelPlugin *> metaModelPlugins;
+    QStringList errors;
 };
 
 QT_END_NAMESPACE_QTMOF
