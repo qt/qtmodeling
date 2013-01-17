@@ -201,13 +201,12 @@ void FilterWidget::checkButton(const QString &text)
 QIcon FilterWidget::createIconSet(const QString &name)
 {
     QStringList candidates = QStringList()
-        << (QString::fromUtf8(":/qt-project.org/formeditor/images/") + name)
+        << (QString::fromUtf8(":/icons/") + name)
 #ifdef Q_OS_MAC
-        << (QString::fromUtf8(":/qt-project.org/formeditor/images/mac/") + name)
+        << (QString::fromUtf8(":/icons/mac/") + name);
 #else
-        << (QString::fromUtf8(":/qt-project.org/formeditor/images/win/") + name)
+        << (QString::fromUtf8(":/icons/win/") + name);
 #endif
-        << (QString::fromUtf8(":/qt-project.org/formeditor/images/designer_") + name);
 
     foreach (const QString &f, candidates) {
         if (QFile::exists(f))
