@@ -60,7 +60,7 @@ QOperationPrivate::QOperationPrivate() :
     bodyCondition(0),
     datatype(0),
     templateParameter(0),
-    interface(0),
+    interface_(0),
     class_(0)
 {
 }
@@ -814,42 +814,42 @@ void QOperation::setTemplateParameter(QOperationTemplateParameter *templateParam
 /*!
     The Interface that owns this Operation.
  */
-QInterface *QOperation::interface() const
+QInterface *QOperation::interface_() const
 {
     // This is a read-write association end
 
     Q_D(const QOperation);
-    return d->interface;
+    return d->interface_;
 }
 
-void QOperation::setInterface(QInterface *interface)
+void QOperation::setInterface_(QInterface *interface_)
 {
     // This is a read-write association end
 
     Q_D(QOperation);
-    if (d->interface != interface) {
+    if (d->interface_ != interface_) {
         // Adjust opposite property
-        if (d->interface)
-            d->interface->removeOwnedOperation(this);
+        if (d->interface_)
+            d->interface_->removeOwnedOperation(this);
 
         // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QFeaturePrivate *>(d))->removeFeaturingClassifier(qwrappedobject_cast<QClassifier *>(d->interface));
-        (qwrappedobject_cast<QRedefinableElementPrivate *>(d))->removeRedefinitionContext(qwrappedobject_cast<QClassifier *>(d->interface));
+        (qwrappedobject_cast<QFeaturePrivate *>(d))->removeFeaturingClassifier(qwrappedobject_cast<QClassifier *>(d->interface_));
+        (qwrappedobject_cast<QRedefinableElementPrivate *>(d))->removeRedefinitionContext(qwrappedobject_cast<QClassifier *>(d->interface_));
 
-        d->interface = interface;
+        d->interface_ = interface_;
 
         // Adjust subsetted property(ies)
-        if (interface) {
-            (qwrappedobject_cast<QFeaturePrivate *>(d))->addFeaturingClassifier(qwrappedobject_cast<QClassifier *>(interface));
+        if (interface_) {
+            (qwrappedobject_cast<QFeaturePrivate *>(d))->addFeaturingClassifier(qwrappedobject_cast<QClassifier *>(interface_));
         }
-        if (interface) {
-            (qwrappedobject_cast<QRedefinableElementPrivate *>(d))->addRedefinitionContext(qwrappedobject_cast<QClassifier *>(interface));
+        if (interface_) {
+            (qwrappedobject_cast<QRedefinableElementPrivate *>(d))->addRedefinitionContext(qwrappedobject_cast<QClassifier *>(interface_));
         }
-        (qwrappedobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qwrappedobject_cast<QNamespace *>(interface));
+        (qwrappedobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qwrappedobject_cast<QNamespace *>(interface_));
 
         // Adjust opposite property
-        if (interface)
-            interface->addOwnedOperation(this);
+        if (interface_)
+            interface_->addOwnedOperation(this);
     }
 }
 
@@ -1075,12 +1075,12 @@ void QOperation::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QOperation")][QString::fromLatin1("templateParameter")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QOperation")][QString::fromLatin1("templateParameter")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QOperationTemplateParameter::parameteredElement");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QOperation")][QString::fromLatin1("interface")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QOperation")][QString::fromLatin1("interface")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QOperation")][QString::fromLatin1("interface")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The Interface that owns this Operation.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QOperation")][QString::fromLatin1("interface")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QOperation")][QString::fromLatin1("interface")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QFeature::featuringClassifiers QRedefinableElement::redefinitionContexts QNamedElement::namespace");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QOperation")][QString::fromLatin1("interface")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QInterface::ownedOperation");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOperation")][QString::fromLatin1("interface_")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOperation")][QString::fromLatin1("interface_")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOperation")][QString::fromLatin1("interface_")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The Interface that owns this Operation.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOperation")][QString::fromLatin1("interface_")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOperation")][QString::fromLatin1("interface_")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QFeature::featuringClassifiers QRedefinableElement::redefinitionContexts QNamedElement::namespace");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QOperation")][QString::fromLatin1("interface_")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QInterface::ownedOperation");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QOperation")][QString::fromLatin1("type")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QOperation")][QString::fromLatin1("type")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;

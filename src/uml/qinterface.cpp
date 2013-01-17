@@ -217,7 +217,7 @@ void QInterface::addOwnedOperation(QOperation *ownedOperation)
         (qwrappedobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qwrappedobject_cast<QNamedElement *>(ownedOperation));
 
         // Adjust opposite property
-        ownedOperation->setInterface(this);
+        ownedOperation->setInterface_(this);
     }
 }
 
@@ -234,7 +234,7 @@ void QInterface::removeOwnedOperation(QOperation *ownedOperation)
         (qwrappedobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qwrappedobject_cast<QNamedElement *>(ownedOperation));
 
         // Adjust opposite property
-        ownedOperation->setInterface(0);
+        ownedOperation->setInterface_(0);
     }
 }
 
@@ -299,7 +299,7 @@ void QInterface::addOwnedAttribute(QProperty *ownedAttribute)
         (qwrappedobject_cast<QClassifierPrivate *>(d))->addAttribute(qwrappedobject_cast<QProperty *>(ownedAttribute));
 
         // Adjust opposite property
-        ownedAttribute->setInterface(this);
+        ownedAttribute->setInterface_(this);
     }
 }
 
@@ -316,7 +316,7 @@ void QInterface::removeOwnedAttribute(QProperty *ownedAttribute)
         (qwrappedobject_cast<QClassifierPrivate *>(d))->removeAttribute(qwrappedobject_cast<QProperty *>(ownedAttribute));
 
         // Adjust opposite property
-        ownedAttribute->setInterface(0);
+        ownedAttribute->setInterface_(0);
     }
 }
 

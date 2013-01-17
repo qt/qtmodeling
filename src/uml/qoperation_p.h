@@ -86,7 +86,7 @@ public:
     QSet<QConstraint *> postconditions;
     QDataType *datatype;
     QOperationTemplateParameter *templateParameter;
-    QInterface *interface;
+    QInterface *interface_;
     QSet<QConstraint *> preconditions;
     QClass *class_;
     QSet<QType *> raisedExceptions;
