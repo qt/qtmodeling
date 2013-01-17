@@ -87,7 +87,7 @@ class Q_UML_EXPORT QOperation : public QWrappedObject
     Q_PROPERTY(QSet<QConstraint *> postconditions READ postconditions)
     Q_PROPERTY(QDataType * datatype READ datatype WRITE setDatatype)
     Q_PROPERTY(QOperationTemplateParameter * templateParameter READ templateParameter WRITE setTemplateParameter)
-    Q_PROPERTY(QInterface * interface READ interface WRITE setInterface)
+    Q_PROPERTY(QInterface * interface_ READ interface_ WRITE setInterface_)
     Q_PROPERTY(QType * type READ type STORED false)
     Q_PROPERTY(QSet<QConstraint *> preconditions READ preconditions)
     Q_PROPERTY(QClass * class_ READ class_ WRITE setClass_)
@@ -205,8 +205,8 @@ public:
     Q_INVOKABLE void setDatatype(QDataType *datatype);
     Q_INVOKABLE QOperationTemplateParameter *templateParameter() const;
     Q_INVOKABLE void setTemplateParameter(QOperationTemplateParameter *templateParameter);
-    Q_INVOKABLE QInterface *interface() const;
-    Q_INVOKABLE void setInterface(QInterface *interface);
+    Q_INVOKABLE QInterface *interface_() const;
+    Q_INVOKABLE void setInterface_(QInterface *interface_);
     Q_INVOKABLE QType *type() const;
     Q_INVOKABLE QSet<QConstraint *> preconditions() const;
     Q_INVOKABLE void addPrecondition(QConstraint *precondition);

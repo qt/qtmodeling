@@ -67,7 +67,7 @@ QPropertyPrivate::QPropertyPrivate() :
     associationEnd(0),
     datatype(0),
     association(0),
-    interface(0)
+    interface_(0)
 {
 }
 
@@ -1063,42 +1063,42 @@ void QProperty::setAssociation(QAssociation *association)
 /*!
     References the Interface that owns the Property
  */
-QInterface *QProperty::interface() const
+QInterface *QProperty::interface_() const
 {
     // This is a read-write association end
 
     Q_D(const QProperty);
-    return d->interface;
+    return d->interface_;
 }
 
-void QProperty::setInterface(QInterface *interface)
+void QProperty::setInterface_(QInterface *interface_)
 {
     // This is a read-write association end
 
     Q_D(QProperty);
-    if (d->interface != interface) {
+    if (d->interface_ != interface_) {
         // Adjust opposite property
-        if (d->interface)
-            d->interface->removeOwnedAttribute(this);
+        if (d->interface_)
+            d->interface_->removeOwnedAttribute(this);
 
         // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QFeaturePrivate *>(d))->removeFeaturingClassifier(qwrappedobject_cast<QClassifier *>(d->interface));
-        (qwrappedobject_cast<QRedefinableElementPrivate *>(d))->removeRedefinitionContext(qwrappedobject_cast<QClassifier *>(d->interface));
+        (qwrappedobject_cast<QFeaturePrivate *>(d))->removeFeaturingClassifier(qwrappedobject_cast<QClassifier *>(d->interface_));
+        (qwrappedobject_cast<QRedefinableElementPrivate *>(d))->removeRedefinitionContext(qwrappedobject_cast<QClassifier *>(d->interface_));
 
-        d->interface = interface;
+        d->interface_ = interface_;
 
         // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qwrappedobject_cast<QNamespace *>(interface));
-        if (interface) {
-            (qwrappedobject_cast<QFeaturePrivate *>(d))->addFeaturingClassifier(qwrappedobject_cast<QClassifier *>(interface));
+        (qwrappedobject_cast<QNamedElementPrivate *>(d))->setNamespace_(qwrappedobject_cast<QNamespace *>(interface_));
+        if (interface_) {
+            (qwrappedobject_cast<QFeaturePrivate *>(d))->addFeaturingClassifier(qwrappedobject_cast<QClassifier *>(interface_));
         }
-        if (interface) {
-            (qwrappedobject_cast<QRedefinableElementPrivate *>(d))->addRedefinitionContext(qwrappedobject_cast<QClassifier *>(interface));
+        if (interface_) {
+            (qwrappedobject_cast<QRedefinableElementPrivate *>(d))->addRedefinitionContext(qwrappedobject_cast<QClassifier *>(interface_));
         }
 
         // Adjust opposite property
-        if (interface)
-            interface->addOwnedAttribute(this);
+        if (interface_)
+            interface_->addOwnedAttribute(this);
     }
 }
 
@@ -1276,12 +1276,12 @@ void QProperty::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QProperty")][QString::fromLatin1("association")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QProperty")][QString::fromLatin1("association")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QAssociation::memberEnd");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QProperty")][QString::fromLatin1("interface")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QProperty")][QString::fromLatin1("interface")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QProperty")][QString::fromLatin1("interface")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Interface that owns the Property");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QProperty")][QString::fromLatin1("interface")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QProperty")][QString::fromLatin1("interface")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamedElement::namespace QFeature::featuringClassifiers QRedefinableElement::redefinitionContexts");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QProperty")][QString::fromLatin1("interface")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QInterface::ownedAttribute");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProperty")][QString::fromLatin1("interface_")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProperty")][QString::fromLatin1("interface_")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProperty")][QString::fromLatin1("interface_")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Interface that owns the Property");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProperty")][QString::fromLatin1("interface_")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProperty")][QString::fromLatin1("interface_")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamedElement::namespace QFeature::featuringClassifiers QRedefinableElement::redefinitionContexts");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QProperty")][QString::fromLatin1("interface_")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QInterface::ownedAttribute");
 
     QWrappedObject::setPropertyData();
 }

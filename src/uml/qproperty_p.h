@@ -97,7 +97,7 @@ public:
     QDataType *datatype;
     QSet<QProperty *> redefinedProperties;
     QAssociation *association;
-    QInterface *interface;
+    QInterface *interface_;
 };
 
 QT_END_NAMESPACE_QTUML

@@ -97,7 +97,7 @@ class Q_UML_EXPORT QProperty : public QWrappedObject
     Q_PROPERTY(QDataType * datatype READ datatype WRITE setDatatype)
     Q_PROPERTY(QSet<QProperty *> redefinedProperties READ redefinedProperties)
     Q_PROPERTY(QAssociation * association READ association WRITE setAssociation)
-    Q_PROPERTY(QInterface * interface READ interface WRITE setInterface)
+    Q_PROPERTY(QInterface * interface_ READ interface_ WRITE setInterface_)
 
     Q_DISABLE_COPY(QProperty)
     Q_DECLARE_PRIVATE(QProperty)
@@ -229,8 +229,8 @@ public:
     Q_INVOKABLE void removeRedefinedProperty(QProperty *redefinedProperty);
     Q_INVOKABLE QAssociation *association() const;
     Q_INVOKABLE void setAssociation(QAssociation *association);
-    Q_INVOKABLE QInterface *interface() const;
-    Q_INVOKABLE void setInterface(QInterface *interface);
+    Q_INVOKABLE QInterface *interface_() const;
+    Q_INVOKABLE void setInterface_(QInterface *interface_);
 
     // Operations
     Q_INVOKABLE bool isAttribute(const QProperty *p) const;

@@ -56,8 +56,8 @@ template <class T>
 class Q_WRAPPEDOBJECTS_EXPORT QWrappedObjectPointer : public QPointer<T>
 {
 public:
-    QWrappedObjectPointer(T *p = 0) : QPointer<T>(p) { }
-    virtual ~QWrappedObjectPointer() { }
+    inline QWrappedObjectPointer(T *p = 0) : QPointer<T>(p) { }
+    inline ~QWrappedObjectPointer() { }
 
     template <class U> inline operator U *()
     {

@@ -84,7 +84,7 @@
         <class name="QUsedClass" isAbstract="false"/>
         <class name="QTestingClass" isAbstract="false">
             <documentation>Testing class' comment 1.Testing class' comment 2.</documentation>
-            <qtumlinclude>QtUnknown/QtUnknownEnumerations</qtumlinclude>
+            <qtumlinclude>QtUnknown/QtUnknownNamespace</qtumlinclude>
             <superclass include="QtUnknown/QBaseClass" name="QBaseClass"/>
             <qtinclude>QtCore/QSet</qtinclude>
             <forwarddecl namespace="">QUsedClass</forwarddecl>
