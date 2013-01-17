@@ -90,9 +90,8 @@
   </widget>
   <action name="actionFileNew">
    <property name="icon">
-    <iconset theme="document-new">
-     <normaloff/>
-    </iconset>
+    <iconset theme="document-new" resource="qtumleditor.qrc">
+     <normaloff>:/icons/document-new.png</normaloff>:/icons/document-new.png</iconset>
    </property>
    <property name="text">
     <string>&amp;New...</string>
@@ -106,9 +105,8 @@
   </action>
   <action name="actionFileOpen">
    <property name="icon">
-    <iconset theme="document-open">
-     <normaloff/>
-    </iconset>
+    <iconset theme="document-open" resource="qtumleditor.qrc">
+     <normaloff>:/icons/document-open.png</normaloff>:/icons/document-open.png</iconset>
    </property>
    <property name="text">
     <string>&amp;Open...</string>
@@ -119,9 +117,8 @@
   </action>
   <action name="actionFileSave">
    <property name="icon">
-    <iconset theme="document-save">
-     <normaloff/>
-    </iconset>
+    <iconset theme="document-save" resource="qtumleditor.qrc">
+     <normaloff>:/icons/document-save.png</normaloff>:/icons/document-save.png</iconset>
    </property>
    <property name="text">
     <string>&amp;Save</string>
@@ -135,9 +132,8 @@
   </action>
   <action name="actionFileSaveAs">
    <property name="icon">
-    <iconset theme="document-save-as">
-     <normaloff/>
-    </iconset>
+    <iconset theme="document-save-as" resource="qtumleditor.qrc">
+     <normaloff>:/icons/document-save-as.png</normaloff>:/icons/document-save-as.png</iconset>
    </property>
    <property name="text">
     <string>Save &amp;as...</string>
@@ -145,9 +141,8 @@
   </action>
   <action name="actionFileQuit">
    <property name="icon">
-    <iconset theme="application-exit">
-     <normaloff/>
-    </iconset>
+    <iconset theme="application-exit" resource="qtumleditor.qrc">
+     <normaloff>:/icons/application-exit.png</normaloff>:/icons/application-exit.png</iconset>
    </property>
    <property name="text">
     <string>&amp;Quit</string>
@@ -158,9 +153,8 @@
   </action>
   <action name="actionAboutPlugins">
    <property name="icon">
-    <iconset theme="help-about">
-     <normaloff/>
-    </iconset>
+    <iconset theme="help-about" resource="qtumleditor.qrc">
+     <normaloff>:/icons/help-about.png</normaloff>:/icons/help-about.png</iconset>
    </property>
    <property name="text">
     <string>About &amp;Plugins...</string>
@@ -182,6 +176,8 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="qtumleditor.qrc"/>
+ </resources>
  <connections/>
 </ui>
