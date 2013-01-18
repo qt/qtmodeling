@@ -3,6 +3,7 @@
 #include "ui_aboutplugins.h"
 
 #include <QtCore/QPluginLoader>
+#include <QtCore/QStringListModel>
 
 #include <QtWidgets/QFileDialog>
 #include <QtWidgets/QMessageBox>
@@ -13,7 +14,8 @@
 #include <QtWrappedObjects/QWrappedObjectModel>
 #include <QtWrappedObjects/QWrappedObjectPropertyModel>
 
-#include <QtMof/QMofMetaModel>
+#include <QtMof/QXmiWriter>
+#include <QtMof/QXmiReader>
 
 using QtWrappedObjects::QMetaModelPlugin;
 using QtWrappedObjects::QWrappedObjectPropertyModel;
@@ -27,8 +29,6 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     _aboutPlugins->setupUi(_aboutPluginsDialog);
-
-    QtMof::QMofMetaModel::init();
 
     ui->wrappedObjectView->setModel(_wrappedObjectModel);
 

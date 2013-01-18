@@ -50,8 +50,6 @@
 #include <QtCore/QCoreApplication>
 #include <QtCore/QRegularExpression>
 
-#include <QtCore/QDebug>
-
 #include <QtWrappedObjects/QWrappedObject>
 #include <QtWrappedObjects/QMetaModelPlugin>
 #include <QtWrappedObjects/QMetaPropertyInfo>
@@ -97,7 +95,6 @@ void QXmiReader::loadPlugins()
                 d->metaModelPlugins.insert(metaModelPlugin->metaModelNamespaceUri(), metaModelPlugin);
         }
     }
-    qDebug() << "Metamodel plugins:" << d->metaModelPlugins;
 }
 
 QWrappedObject *QXmiReader::readFile(QIODevice *device)
