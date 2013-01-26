@@ -3,7 +3,7 @@
 ** Copyright (C) 2012 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/
 **
-** This file is part of the QtWrappedObjects module of the Qt Toolkit.
+** This file is part of the QtWrappedObjectsWidgets module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** GNU Lesser General Public License Usage
@@ -38,27 +38,33 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QWRAPPEDOBJECTPROPERTYMODEL_H
-#define QWRAPPEDOBJECTPROPERTYMODEL_H
+#ifndef QWRAPPEDOBJECTMODEL_H
+#define QWRAPPEDOBJECTMODEL_H
 
+#include <QtWrappedObjectsWidgets/QtWrappedObjectsWidgetsGlobal>
 #include <QtWrappedObjects/QtWrappedObjectsGlobal>
 
 #include <QAbstractItemModel>
 
+QT_BEGIN_NAMESPACE_QTWRAPPEDOBJECTS
+class QWrappedObject;
+QT_END_NAMESPACE_QTWRAPPEDOBJECTS
+
+using QtWrappedObjects::QWrappedObject;
+
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTWRAPPEDOBJECTS
+QT_BEGIN_NAMESPACE_QTWRAPPEDOBJECTSWIDGETS
 
-QT_MODULE(QtWrappedObjects)
+QT_MODULE(QtWrappedObjectsWidgets)
 
-class QWrappedObject;
-class QMetaWrappedObject;
-
-class Q_WRAPPEDOBJECTS_EXPORT QWrappedObjectPropertyModel : public QAbstractItemModel
+class Q_WRAPPEDOBJECTSWIDGETS_EXPORT QWrappedObjectModel : public QAbstractItemModel
 {
     Q_OBJECT
 public:
-    explicit QWrappedObjectPropertyModel(QObject *parent = 0);
+    explicit QWrappedObjectModel(QObject *parent = 0);
+
+    QWrappedObject *wrappedObject() const;
 
     virtual QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const;
     virtual QModelIndex parent(const QModelIndex &child) const;
@@ -67,25 +73,18 @@ public:
     virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
     bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole);
     QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const;
-    Qt::ItemFlags flags(const QModelIndex & index) const;
-
-    QWrappedObject *wrappedObject() const;
+    Qt::ItemFlags flags(const QModelIndex &index) const;
 
 public Q_SLOTS:
     void setWrappedObject(QWrappedObject *wrappedObject);
-    void setWrappedObjectIndex(const QModelIndex &wrappedObjectIndex);
-
-Q_SIGNALS:
-    void indexChanged(const QModelIndex &wrappedObjectIndex);
+    void updateIndex(const QModelIndex &index);
 
 private:
-    QModelIndex _wrappedObjectIndex;
     QWrappedObject *_wrappedObject;
-    const QMetaWrappedObject *_metaWrappedObject;
 };
 
-QT_END_NAMESPACE_QTWRAPPEDOBJECTS
+QT_END_NAMESPACE_QTWRAPPEDOBJECTSWIDGETS
 
 QT_END_HEADER
 
-#endif // QWRAPPEDOBJECTPROPERTYMODEL_H
+#endif // QWRAPPEDOBJECTMODEL_H

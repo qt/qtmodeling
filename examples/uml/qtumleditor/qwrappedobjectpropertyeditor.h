@@ -7,13 +7,13 @@ class FilterWidget;
 class QLabel;
 class QTreeView;
 
-namespace QtWrappedObjects {
+namespace QtWrappedObjectsWidgets {
     class QWrappedObjectPropertyModel;
 }
 
 class WrappedObjectPropertyFilterModel;
 
-using QtWrappedObjects::QWrappedObjectPropertyModel;
+using QtWrappedObjectsWidgets::QWrappedObjectPropertyModel;
 
 class QWrappedObjectPropertyEditor : public QWidget
 {

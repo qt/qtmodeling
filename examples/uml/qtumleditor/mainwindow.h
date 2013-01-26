@@ -8,11 +8,6 @@
 
 class QDialog;
 
-namespace QtWrappedObjects
-{
-    class QMetaModelPlugin;
-}
-
 namespace Ui {
     class MainWindow;
     class AboutPlugins;
@@ -20,11 +15,16 @@ namespace Ui {
 
 namespace QtWrappedObjects {
     class QWrappedObject;
+    class QMetaModelPlugin;
+}
+
+namespace QtWrappedObjectsWidgets {
     class QWrappedObjectModel;
 }
+
 using QtWrappedObjects::QWrappedObject;
-using QtWrappedObjects::QWrappedObjectModel;
 using QtWrappedObjects::QMetaModelPlugin;
+using QtWrappedObjectsWidgets::QWrappedObjectModel;
 
 class MainWindow : public QMainWindow
 {

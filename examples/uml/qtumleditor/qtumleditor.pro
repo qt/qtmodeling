@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       = core gui mof
+QT       = wrappedobjects wrappedobjectswidgets mof
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
