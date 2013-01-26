@@ -5,7 +5,7 @@
 #include <QtWidgets/QVBoxLayout>
 
 #include <QtWrappedObjects/QWrappedObject>
-#include <QtWrappedObjects/QWrappedObjectPropertyModel>
+#include <QtWrappedObjectsWidgets/QWrappedObjectPropertyModel>
 
 #include "filterwidget.h"
 #include "propertyeditoritemdelegate.h"

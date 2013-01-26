@@ -10,10 +10,10 @@
 
 #include <QtWrappedObjects/QWrappedObject>
 #include <QtWrappedObjects/QMetaWrappedObject>
-#include <QtWrappedObjects/QWrappedObjectModel>
+#include <QtWrappedObjectsWidgets/QWrappedObjectModel>
 
 using QtWrappedObjects::QMetaWrappedObject;
-using QtWrappedObjects::QWrappedObjectModel;
+using QtWrappedObjectsWidgets::QWrappedObjectModel;
 
 QWrappedObjectView::QWrappedObjectView(QWidget *parent) :
     QWidget(parent),

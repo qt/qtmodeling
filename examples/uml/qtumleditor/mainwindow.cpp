@@ -11,14 +11,13 @@
 
 #include <QtWrappedObjects/QWrappedObject>
 #include <QtWrappedObjects/QMetaModelPlugin>
-#include <QtWrappedObjects/QWrappedObjectModel>
-#include <QtWrappedObjects/QWrappedObjectPropertyModel>
+#include <QtWrappedObjectsWidgets/QWrappedObjectModel>
+#include <QtWrappedObjectsWidgets/QWrappedObjectPropertyModel>
 
 #include <QtMof/QXmiWriter>
 #include <QtMof/QXmiReader>
 
-using QtWrappedObjects::QMetaModelPlugin;
-using QtWrappedObjects::QWrappedObjectPropertyModel;
+using QtWrappedObjectsWidgets::QWrappedObjectPropertyModel;
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),

@@ -3,7 +3,7 @@
 ** Copyright (C) 2012 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/
 **
-** This file is part of the QtWrappedObjects module of the Qt Toolkit.
+** This file is part of the QtWrappedObjectsWidgets module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** GNU Lesser General Public License Usage
@@ -48,7 +48,9 @@
 #include <QtWrappedObjects/QMetaWrappedObject>
 #include <QtWrappedObjects/QMetaPropertyInfo>
 
-QT_BEGIN_NAMESPACE_QTWRAPPEDOBJECTS
+using QtWrappedObjects::QMetaPropertyInfo;
+
+QT_BEGIN_NAMESPACE_QTWRAPPEDOBJECTSWIDGETS
 
 QWrappedObjectPropertyModel::QWrappedObjectPropertyModel(QObject *parent) :
     QAbstractItemModel(parent), _metaWrappedObject(0)
@@ -280,5 +282,5 @@ QWrappedObject *QWrappedObjectPropertyModel::wrappedObject() const
 
 #include "moc_qwrappedobjectpropertymodel.cpp"
 
-QT_END_NAMESPACE_QTWRAPPEDOBJECTS
+QT_END_NAMESPACE_QTWRAPPEDOBJECTSWIDGETS
 
