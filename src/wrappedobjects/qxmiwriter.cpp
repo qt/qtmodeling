@@ -3,7 +3,7 @@
 ** Copyright (C) 2012 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/
 **
-** This file is part of the QtMof module of the Qt Toolkit.
+** This file is part of the QtWrappedObjects module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** GNU Lesser General Public License Usage
@@ -42,17 +42,13 @@
 #include "qxmiwriter.h"
 #include "qxmiwriter_p.h"
 
-#include <QtCore/QIODevice>
+#include <QtCore/QSet>
 #include <QtCore/QRegularExpression>
 
 #include <QtWrappedObjects/QWrappedObject>
-#include <QtWrappedObjects/QMetaWrappedObject>
 #include <QtWrappedObjects/QMetaPropertyInfo>
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-#include <QtMof/QMofMetaModel>
-
-QT_BEGIN_NAMESPACE_QTMOF
+QT_BEGIN_NAMESPACE
 
 QXmiWriterPrivate::QXmiWriterPrivate(QWrappedObject *wrappedObject)
     : wrappedObject(wrappedObject)
@@ -68,7 +64,6 @@ QXmiWriterPrivate::~QXmiWriterPrivate()
 QXmiWriter::QXmiWriter(QWrappedObject *wrappedObject, QObject *parent) :
     QObject(*new QXmiWriterPrivate(wrappedObject), parent)
 {
-    QMofMetaModel::init();
 }
 
 QXmiWriter::~QXmiWriter()
@@ -265,5 +260,5 @@ void QXmiWriter::writeWrappedObject(QWrappedObject *wrappedObject, QString eleme
 
 #include "moc_qxmiwriter.cpp"
 
-QT_END_NAMESPACE_QTMOF
+QT_END_NAMESPACE
 

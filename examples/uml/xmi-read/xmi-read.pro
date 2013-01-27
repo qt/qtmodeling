@@ -3,7 +3,7 @@ TARGET = xmi-read
 DEPENDPATH += .
 INCLUDEPATH += .
 
-QT += uml mof
+QT += wrappedobjects
 QT -= gui
 
 CONFIG += c++11

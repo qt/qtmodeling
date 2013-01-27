@@ -3,7 +3,7 @@
 ** Copyright (C) 2012 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/
 **
-** This file is part of the QtMof module of the Qt Toolkit.
+** This file is part of the QtWrappedObjects module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** GNU Lesser General Public License Usage
@@ -38,49 +38,44 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QTMOF_QXMIWRITER_H
-#define QTMOF_QXMIWRITER_H
+#ifndef QTWRAPPEDOBJECTS_QXMIREADER_H
+#define QTWRAPPEDOBJECTS_QXMIREADER_H
 
-#include <QtMof/QtMofGlobal>
-
-// Base class includes
 #include <QtCore/QObject>
 
 QT_BEGIN_HEADER
 
-class QIODevice;
-
 QT_BEGIN_NAMESPACE
+
+QT_MODULE(QtWrappedObjects)
+
+class QIODevice;
 class QWrappedObject;
-QT_END_NAMESPACE
 
-QT_BEGIN_NAMESPACE_QTMOF
+class QXmiReaderPrivate;
 
-QT_MODULE(QtMof)
-
-class QXmiWriterPrivate;
-
-class Q_MOF_EXPORT QXmiWriter : public QObject
+class Q_CORE_EXPORT QXmiReader : public QObject
 {
     Q_OBJECT
 
-    Q_DISABLE_COPY(QXmiWriter)
-    Q_DECLARE_PRIVATE(QXmiWriter)
+    Q_DISABLE_COPY(QXmiReader)
+    Q_DECLARE_PRIVATE(QXmiReader)
 
 public:
-    explicit QXmiWriter(QWrappedObject *wrappedObject, QObject *parent = 0);
-    virtual ~QXmiWriter();
+    explicit QXmiReader(QObject *parent = 0);
+    virtual ~QXmiReader();
 
-    bool writeFile(QIODevice *device);
+    QWrappedObject *readFile(QIODevice *device);
+    QStringList errorStrings() const;
 
 protected:
-    void populateIdMap(QWrappedObject *wrappedObject, int index = -1);
-    void writeWrappedObject(QWrappedObject *wrappedObject, QString elementName = QString::fromLatin1(""));
+    void loadPlugins();
+    QWrappedObject *createInstance(QString instanceClass, QString instanceName);
 };
 
-QT_END_NAMESPACE_QTMOF
+QT_END_NAMESPACE
 
 QT_END_HEADER
 
-#endif // QTMOF_QXMIWRITER_H
+#endif // QTWRAPPEDOBJECTS_QXMIREADER_H
 

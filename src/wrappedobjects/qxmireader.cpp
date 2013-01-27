@@ -3,7 +3,7 @@
 ** Copyright (C) 2012 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/
 **
-** This file is part of the QtMof module of the Qt Toolkit.
+** This file is part of the QtWrappedObjects module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** GNU Lesser General Public License Usage
@@ -44,22 +44,14 @@
 
 #include <QtCore/QDir>
 #include <QtCore/QStack>
-#include <QtCore/QIODevice>
-#include <QtCore/QMetaMethod>
 #include <QtCore/QPluginLoader>
 #include <QtCore/QCoreApplication>
-#include <QtCore/QRegularExpression>
 
 #include <QtWrappedObjects/QWrappedObject>
 #include <QtWrappedObjects/QMetaModelPlugin>
-#include <QtWrappedObjects/QMetaPropertyInfo>
 #include <QtWrappedObjects/QMetaWrappedObject>
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-using QT_PREPEND_NAMESPACE(QMetaPropertyInfo);
-using QT_PREPEND_NAMESPACE(QMetaWrappedObject);
-
-QT_BEGIN_NAMESPACE_QTMOF
+QT_BEGIN_NAMESPACE
 
 QXmiReaderPrivate::QXmiReaderPrivate()
 {
@@ -233,5 +225,4 @@ QStringList QXmiReader::errorStrings() const
 
 #include "moc_qxmireader.cpp"
 
-QT_END_NAMESPACE_QTMOF
-
+QT_END_NAMESPACE

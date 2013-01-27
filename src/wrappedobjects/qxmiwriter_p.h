@@ -3,7 +3,7 @@
 ** Copyright (C) 2012 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/
 **
-** This file is part of the QtMof module of the Qt Toolkit.
+** This file is part of the QtWrappedObjects module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** GNU Lesser General Public License Usage
@@ -38,24 +38,21 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QTMOF_QXMIWRITER_P_H
-#define QTMOF_QXMIWRITER_P_H
+#ifndef QTWRAPPEDOBJECTS_QXMIWRITER_P_H
+#define QTWRAPPEDOBJECTS_QXMIWRITER_P_H
 
-// Base class includes
 #include "private/qobject_p.h"
-
-#include "QtMof/QXmiWriter"
 
 #include <QtCore/QStringList>
 #include <QtCore/QXmlStreamWriter>
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTMOF
+QT_BEGIN_NAMESPACE
 
-QT_MODULE(QtMof)
+QT_MODULE(QtWrappedObjects)
 
-class Q_MOF_EXPORT QXmiWriterPrivate : public QObjectPrivate
+class Q_CORE_EXPORT QXmiWriterPrivate : public QObjectPrivate
 {
     Q_DECLARE_PUBLIC(QXmiWriter)
 
@@ -71,9 +68,9 @@ public:
     QStringList blacklistedOppositeEnds;
 };
 
-QT_END_NAMESPACE_QTMOF
+QT_END_NAMESPACE
 
 QT_END_HEADER
 
-#endif // QTMOF_QXMIWRITER_P_H
+#endif // QTWRAPPEDOBJECTS_QXMIWRITER_P_H
 
