@@ -1,6 +1,6 @@
 include(../metamodelplugins.pri)
 
-QT += uml
+QT = uml
 
 TARGET = qumlmetamodel
 

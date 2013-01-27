@@ -38,10 +38,9 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-
 #include "qtwrappedobjectsnamespace.h"
 
-QT_BEGIN_NAMESPACE_QTWRAPPEDOBJECTS
+QT_BEGIN_NAMESPACE
 
 QtWrappedObjects::QtWrappedObjects()
 {
@@ -49,5 +48,5 @@ QtWrappedObjects::QtWrappedObjects()
 
 #include "moc_qtwrappedobjectsnamespace.cpp"
 
-QT_END_NAMESPACE_QTWRAPPEDOBJECTS
+QT_END_NAMESPACE
 

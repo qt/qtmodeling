@@ -180,7 +180,6 @@
 // Base class includes
 [%- IF !class.superclass || class.superclass.size > 1 %]
 #include <QtWrappedObjects/QWrappedObject>
-using QtWrappedObjects::QWrappedObject;
 [%- END -%]
 [%- FOREACH superClass IN class.superclass %]
 #include <${superClass.include}>
@@ -241,7 +240,6 @@ using QtWrappedObjects::QWrappedObject;
 [%- IF found == 'true' %]
 
 #include <QtWrappedObjects/QWrappedObjectPointer>
-using QtWrappedObjects::QWrappedObjectPointer;
 [%- END %]
 
 QT_BEGIN_HEADER

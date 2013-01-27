@@ -39,73 +39,90 @@
 **
 ****************************************************************************/
 #include "qwrappedobjectpropertymodel.h"
+#include "qwrappedobjectpropertymodel_p.h"
 
 #include <QtCore/QRegularExpression>
 
 #include <QtGui/QFontMetrics>
 
 #include <QtWrappedObjects/QWrappedObject>
-#include <QtWrappedObjects/QMetaWrappedObject>
 #include <QtWrappedObjects/QMetaPropertyInfo>
 
-using QtWrappedObjects::QMetaPropertyInfo;
+QT_BEGIN_NAMESPACE
 
-QT_BEGIN_NAMESPACE_QTWRAPPEDOBJECTSWIDGETS
+QWrappedObjectPropertyModelPrivate::QWrappedObjectPropertyModelPrivate() :
+    wrappedObject(0), metaWrappedObject(0)
+{
+}
 
 QWrappedObjectPropertyModel::QWrappedObjectPropertyModel(QObject *parent) :
-    QAbstractItemModel(parent), _metaWrappedObject(0)
+    QAbstractItemModel(*new QWrappedObjectPropertyModelPrivate, parent)
 {
 }
 
 void QWrappedObjectPropertyModel::setWrappedObject(QWrappedObject *wrappedObject)
 {
-    if (wrappedObject && _metaWrappedObject != wrappedObject->metaWrappedObject()) {
+    Q_D(QWrappedObjectPropertyModel);
+
+    if (wrappedObject && d->metaWrappedObject != wrappedObject->metaWrappedObject()) {
         beginResetModel();
-        _wrappedObject = wrappedObject;
-        _metaWrappedObject = _wrappedObject->metaWrappedObject();
-        _wrappedObjectIndex = QModelIndex();
+        d->wrappedObject = wrappedObject;
+        d->metaWrappedObject = d->wrappedObject->metaWrappedObject();
+        d->wrappedObjectIndex = QModelIndex();
         endResetModel();
     }
 }
 
 void QWrappedObjectPropertyModel::setWrappedObjectIndex(const QModelIndex &wrappedObjectIndex)
 {
+    Q_D(QWrappedObjectPropertyModel);
+
     QWrappedObject *wrappedObject = qvariant_cast<QWrappedObject *>(wrappedObjectIndex.data(Qt::UserRole));
     setWrappedObject(wrappedObject);
-    _wrappedObjectIndex = wrappedObjectIndex;
+    d->wrappedObjectIndex = wrappedObjectIndex;
 }
 
 QModelIndex QWrappedObjectPropertyModel::index(int row, int column, const QModelIndex &parent) const
 {
-    if (!_metaWrappedObject || row < 0 || column < 0 || column >= 2 || (parent.isValid() && parent.column() != 0))
+    Q_D(const QWrappedObjectPropertyModel);
+
+    if (!d->metaWrappedObject || row < 0 || column < 0 || column >= 2 || (parent.isValid() && parent.column() != 0))
         return QModelIndex();
-    return createIndex(row, column, (parent.isValid()) ? static_cast<void *>(&_metaWrappedObject->property(parent.row(), row)):0);
+    return createIndex(row, column, (parent.isValid()) ? static_cast<void *>(&d->metaWrappedObject->property(parent.row(), row)):0);
 }
 
 QModelIndex QWrappedObjectPropertyModel::parent(const QModelIndex &child) const
 {
+    Q_D(const QWrappedObjectPropertyModel);
+
     QMetaPropertyInfo *metaPropertyInfo = static_cast<QMetaPropertyInfo *>(child.internalPointer());
-    if (!_metaWrappedObject || !child.isValid() || !metaPropertyInfo)
+    if (!d->metaWrappedObject || !child.isValid() || !metaPropertyInfo)
         return QModelIndex();
-    return createIndex(_metaWrappedObject->indexOfGroup(metaPropertyInfo->propertyMetaObject->className()), 0);
+    return createIndex(d->metaWrappedObject->indexOfGroup(metaPropertyInfo->propertyMetaObject->className()), 0);
 }
 
 int QWrappedObjectPropertyModel::rowCount(const QModelIndex &parent) const
 {
-    if (!_metaWrappedObject || (parent.isValid() && parent.column() != 0))
+    Q_D(const QWrappedObjectPropertyModel);
+
+    if (!d->metaWrappedObject || (parent.isValid() && parent.column() != 0))
         return 0;
-    return (parent.row() == -1) ? _metaWrappedObject->propertyGroupCount():
-                                  (!parent.internalPointer()) ? _metaWrappedObject->propertyCount(parent.row()):0;
+    return (parent.row() == -1) ? d->metaWrappedObject->propertyGroupCount():
+                                  (!parent.internalPointer()) ? d->metaWrappedObject->propertyCount(parent.row()):0;
 }
 
 int QWrappedObjectPropertyModel::columnCount(const QModelIndex &parent) const
 {
-    return (!_metaWrappedObject || (parent.isValid() && parent.column() != 0)) ? 0:2;
+    Q_D(const QWrappedObjectPropertyModel);
+
+    return (!d->metaWrappedObject || (parent.isValid() && parent.column() != 0)) ? 0:2;
 }
 
 QVariant QWrappedObjectPropertyModel::data(const QModelIndex &index, int role) const
 {
-    if (!_metaWrappedObject || _metaWrappedObject->propertyCount() == 0 || index.column() < 0 || index.column() >= 2)
+    Q_D(const QWrappedObjectPropertyModel);
+
+    if (!d->metaWrappedObject || d->metaWrappedObject->propertyCount() == 0 || index.column() < 0 || index.column() >= 2)
         return QVariant();
     switch (role) {
         case Qt::DisplayRole:
@@ -120,7 +137,7 @@ QVariant QWrappedObjectPropertyModel::data(const QModelIndex &index, int role) c
                             propertyName = propertyName.replace(0, 1, propertyName.left(1).toLower());
                         return propertyName.append(QString::fromLatin1(!metaProperty.isWritable() ? " (RO)":""));
                     }
-                    return QString::fromLatin1(_metaWrappedObject->property(index.row(), 0).propertyMetaObject->className());
+                    return QString::fromLatin1(d->metaWrappedObject->property(index.row(), 0).propertyMetaObject->className());
                 }
                 case 1: {
                     if (index.parent().row() != -1 && metaPropertyInfo) {
@@ -238,7 +255,9 @@ QVariant QWrappedObjectPropertyModel::data(const QModelIndex &index, int role) c
 
 bool QWrappedObjectPropertyModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
-    if (!_metaWrappedObject || _metaWrappedObject->propertyCount() == 0 || index.column() < 0 || index.column() >= 2)
+    Q_D(QWrappedObjectPropertyModel);
+
+    if (!d->metaWrappedObject || d->metaWrappedObject->propertyCount() == 0 || index.column() < 0 || index.column() >= 2)
         return false;
     switch (role) {
         case Qt::DisplayRole: {
@@ -248,10 +267,10 @@ bool QWrappedObjectPropertyModel::setData(const QModelIndex &index, const QVaria
             if (QString::fromLatin1(metaProperty.name()) == QString::fromLatin1("objectName")) {
                     propertyWrappedObject = qTopLevelWrapper(propertyWrappedObject);
                     propertyWrappedObject->setProperty("name", value);
-                    emit indexChanged(_wrappedObjectIndex);
+                    emit indexChanged(d->wrappedObjectIndex);
             }
             if (QString::fromLatin1(metaProperty.name()) == QString::fromLatin1("name"))
-                emit indexChanged(_wrappedObjectIndex);
+                emit indexChanged(d->wrappedObjectIndex);
             if (metaProperty.read(propertyWrappedObject) != value)
                 metaProperty.write(propertyWrappedObject, value);
             return true;
@@ -277,10 +296,12 @@ Qt::ItemFlags QWrappedObjectPropertyModel::flags(const QModelIndex &index) const
 
 QWrappedObject *QWrappedObjectPropertyModel::wrappedObject() const
 {
-    return _wrappedObject;
+    Q_D(const QWrappedObjectPropertyModel);
+
+    return d->wrappedObject;
 }
 
 #include "moc_qwrappedobjectpropertymodel.cpp"
 
-QT_END_NAMESPACE_QTWRAPPEDOBJECTSWIDGETS
+QT_END_NAMESPACE
 

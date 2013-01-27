@@ -41,26 +41,25 @@
 #ifndef QWRAPPEDOBJECTMODEL_H
 #define QWRAPPEDOBJECTMODEL_H
 
-#include <QtWrappedObjectsWidgets/QtWrappedObjectsWidgetsGlobal>
-#include <QtWrappedObjects/QtWrappedObjectsGlobal>
-
 #include <QAbstractItemModel>
-
-QT_BEGIN_NAMESPACE_QTWRAPPEDOBJECTS
-class QWrappedObject;
-QT_END_NAMESPACE_QTWRAPPEDOBJECTS
-
-using QtWrappedObjects::QWrappedObject;
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTWRAPPEDOBJECTSWIDGETS
+QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtWrappedObjectsWidgets)
 
-class Q_WRAPPEDOBJECTSWIDGETS_EXPORT QWrappedObjectModel : public QAbstractItemModel
+class QWrappedObject;
+
+class QWrappedObjectModelPrivate;
+
+class Q_CORE_EXPORT QWrappedObjectModel : public QAbstractItemModel
 {
     Q_OBJECT
+
+    Q_DISABLE_COPY(QWrappedObjectModel)
+    Q_DECLARE_PRIVATE(QWrappedObjectModel)
+
 public:
     explicit QWrappedObjectModel(QObject *parent = 0);
 
@@ -78,13 +77,11 @@ public:
 public Q_SLOTS:
     void setWrappedObject(QWrappedObject *wrappedObject);
     void updateIndex(const QModelIndex &index);
-
-private:
-    QWrappedObject *_wrappedObject;
 };
 
-QT_END_NAMESPACE_QTWRAPPEDOBJECTSWIDGETS
+QT_END_NAMESPACE
 
 QT_END_HEADER
 
 #endif // QWRAPPEDOBJECTMODEL_H
+

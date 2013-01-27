@@ -17,8 +17,6 @@
 #include <QtMof/QXmiWriter>
 #include <QtMof/QXmiReader>
 
-using QtWrappedObjectsWidgets::QWrappedObjectPropertyModel;
-
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),

@@ -4,7 +4,6 @@
 
 #include <QtMof/QXmiWriter>
 
-using namespace QtWrappedObjects;
 using namespace QtUml;
 
 using QtMof::QXmiWriter;

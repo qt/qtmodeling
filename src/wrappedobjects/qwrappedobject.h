@@ -41,28 +41,20 @@
 #ifndef QTWRAPPEDOBJECTS_QWRAPPEDOBJECT_H
 #define QTWRAPPEDOBJECTS_QWRAPPEDOBJECT_H
 
-#include <QtWrappedObjects/QtWrappedObjectsGlobal>
-
-// Base class includes
 #include <QtCore/QObject>
-
-// Qt includes
-#include <QtCore/QSet>
-#include <QtCore/QList>
-#include <QtCore/QMetaProperty>
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTWRAPPEDOBJECTS
+QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtWrappedObjects)
 
 class QMetaWrappedObject;
 class QWrappedObjectPrivate;
 
-class Q_WRAPPEDOBJECTS_EXPORT QWrappedObject : public QObject
+class Q_CORE_EXPORT QWrappedObject : public QObject
 {
     Q_OBJECT
 
@@ -90,16 +82,17 @@ public:
 
 protected:
     explicit QWrappedObject(QWrappedObjectPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+
     void initialize(QWrappedObject *wrapper);
     virtual void setPropertyData();
 
     static QHash<QString, QHash<QString, QHash<QtWrappedObjects::MetaPropertyDataRole, QVariant>>> propertyDataHash;
 };
 
-QT_END_NAMESPACE_QTWRAPPEDOBJECTS
+QT_END_NAMESPACE
 
 template <class T>
-inline T qwrappedobject_cast(QT_PREPEND_NAMESPACE_QTWRAPPEDOBJECTS(QWrappedObject) *base, bool restoreToWrapper = true)
+inline T qwrappedobject_cast(QT_PREPEND_NAMESPACE(QWrappedObject) *base, bool restoreToWrapper = true)
 {
     if (!base)
         return T();
@@ -107,7 +100,7 @@ inline T qwrappedobject_cast(QT_PREPEND_NAMESPACE_QTWRAPPEDOBJECTS(QWrappedObjec
         base = base->wrapper();
     if (dynamic_cast<T>(base))
         return dynamic_cast<T>(base);
-    foreach (QT_PREPEND_NAMESPACE_QTWRAPPEDOBJECTS(QWrappedObject) *wrappedObject, base->wrappedObjects()) {
+    foreach (QT_PREPEND_NAMESPACE(QWrappedObject) *wrappedObject, base->wrappedObjects()) {
         T returnValue = qwrappedobject_cast<T>(wrappedObject, false);
         if (returnValue != T())
             return returnValue;
@@ -116,12 +109,12 @@ inline T qwrappedobject_cast(QT_PREPEND_NAMESPACE_QTWRAPPEDOBJECTS(QWrappedObjec
 }
 
 template <class T>
-inline T qwrappedobject_cast(const QT_PREPEND_NAMESPACE_QTWRAPPEDOBJECTS(QWrappedObject) *base, bool restoreToWrapper = true)
+inline T qwrappedobject_cast(const QT_PREPEND_NAMESPACE(QWrappedObject) *base, bool restoreToWrapper = true)
 {
-    return qwrappedobject_cast<T>(const_cast<QT_PREPEND_NAMESPACE_QTWRAPPEDOBJECTS(QWrappedObject) *>(base), restoreToWrapper);
+    return qwrappedobject_cast<T>(const_cast<QT_PREPEND_NAMESPACE(QWrappedObject) *>(base), restoreToWrapper);
 }
 
-inline QT_PREPEND_NAMESPACE_QTWRAPPEDOBJECTS(QWrappedObject) *qTopLevelWrapper(QT_PREPEND_NAMESPACE_QTWRAPPEDOBJECTS(QWrappedObject) *wrapped)
+inline QT_PREPEND_NAMESPACE(QWrappedObject) *qTopLevelWrapper(QT_PREPEND_NAMESPACE(QWrappedObject) *wrapped)
 {
     if (!wrapped)
         return 0;
@@ -133,4 +126,3 @@ inline QT_PREPEND_NAMESPACE_QTWRAPPEDOBJECTS(QWrappedObject) *qTopLevelWrapper(Q
 QT_END_HEADER
 
 #endif // QTWRAPPEDOBJECTS_QWRAPPEDOBJECT_H
-

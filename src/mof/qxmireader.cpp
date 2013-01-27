@@ -56,8 +56,8 @@
 #include <QtWrappedObjects/QMetaWrappedObject>
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-using QT_PREPEND_NAMESPACE_QTWRAPPEDOBJECTS(QMetaPropertyInfo);
-using QT_PREPEND_NAMESPACE_QTWRAPPEDOBJECTS(QMetaWrappedObject);
+using QT_PREPEND_NAMESPACE(QMetaPropertyInfo);
+using QT_PREPEND_NAMESPACE(QMetaWrappedObject);
 
 QT_BEGIN_NAMESPACE_QTMOF
 

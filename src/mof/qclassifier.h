@@ -45,7 +45,6 @@
 
 // Base class includes
 #include <QtWrappedObjects/QWrappedObject>
-using QtWrappedObjects::QWrappedObject;
 #include <QtMof/QType>
 #include <QtMof/QRedefinableElement>
 #include <QtMof/QNamespace>

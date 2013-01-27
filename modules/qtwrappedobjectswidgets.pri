@@ -11,7 +11,7 @@ QT.wrappedobjectswidgets.sources = $$QT_MODULE_BASE/src/wrappedobjectswidgets
 QT.wrappedobjectswidgets.libs = $$QT_MODULE_LIB_BASE
 QT.wrappedobjectswidgets.plugins = $$QT_MODULE_PLUGIN_BASE
 QT.wrappedobjectswidgets.imports = $$QT_MODULE_IMPORT_BASE
-QT.wrappedobjectswidgets.depends = core
+QT.wrappedobjectswidgets.depends = core wrappedobjects
 
 QT.wrappedobjectswidgets.DEFINES = QT_WRAPPEDOBJECTSWIDGETS_LIB
 QT_CONFIG += wrappedobjectswidgets

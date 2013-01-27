@@ -13,18 +13,9 @@ namespace Ui {
     class AboutPlugins;
 }
 
-namespace QtWrappedObjects {
-    class QWrappedObject;
-    class QMetaModelPlugin;
-}
-
-namespace QtWrappedObjectsWidgets {
-    class QWrappedObjectModel;
-}
-
-using QtWrappedObjects::QWrappedObject;
-using QtWrappedObjects::QMetaModelPlugin;
-using QtWrappedObjectsWidgets::QWrappedObjectModel;
+class QWrappedObject;
+class QMetaModelPlugin;
+class QWrappedObjectModel;
 
 class MainWindow : public QMainWindow
 {

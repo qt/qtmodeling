@@ -41,20 +41,17 @@
 #ifndef QTWRAPPEDOBJECTS_QWRAPPEDOBJECT_P_H
 #define QTWRAPPEDOBJECTS_QWRAPPEDOBJECT_P_H
 
-// Base class includes
 #include "private/qobject_p.h"
 
 #include <QtCore/QStringList>
 
-#include "QtWrappedObjects/QWrappedObject"
-
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTWRAPPEDOBJECTS
+QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtWrappedObjects)
 
-class Q_WRAPPEDOBJECTS_EXPORT QWrappedObjectPrivate : public QObjectPrivate
+class Q_CORE_EXPORT QWrappedObjectPrivate : public QObjectPrivate
 {
     Q_DECLARE_PUBLIC(QWrappedObject)
 
@@ -70,16 +67,16 @@ public:
     QStringList modifiedResettableProperties;
 };
 
-QT_END_NAMESPACE_QTWRAPPEDOBJECTS
+QT_END_NAMESPACE
 
 template <class T>
-inline T qwrappedobject_cast(QT_PREPEND_NAMESPACE_QTWRAPPEDOBJECTS(QWrappedObjectPrivate) *base, bool restoreToWrapper = true)
+inline T qwrappedobject_cast(QT_PREPEND_NAMESPACE(QWrappedObjectPrivate) *base, bool restoreToWrapper = true)
 {
     while (restoreToWrapper && base->wrapper)
         base = base->get(base->wrapper);
     if (dynamic_cast<T>(base))
         return dynamic_cast<T>(base);
-    foreach (QT_PREPEND_NAMESPACE_QTWRAPPEDOBJECTS(QWrappedObject) *wrappedObject, base->wrappedObjects) {
+    foreach (QT_PREPEND_NAMESPACE(QWrappedObject) *wrappedObject, base->wrappedObjects) {
         T returnValue = qwrappedobject_cast<T>(base->get(wrappedObject), false);
         if (returnValue != T())
             return returnValue;

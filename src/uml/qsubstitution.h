@@ -47,7 +47,6 @@
 #include <QtUml/QRealization>
 
 #include <QtWrappedObjects/QWrappedObjectPointer>
-using QtWrappedObjects::QWrappedObjectPointer;
 
 QT_BEGIN_HEADER
 

@@ -41,15 +41,15 @@
 #ifndef QTWRAPPEDOBJECTS_QMETAWRAPPEDOBJECT_P_H
 #define QTWRAPPEDOBJECTS_QMETAWRAPPEDOBJECT_P_H
 
-#include "QtWrappedObjects/QMetaWrappedObject"
+#include <QtCore/qglobal.h>
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTWRAPPEDOBJECTS
+QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtWrappedObjects)
 
-class Q_WRAPPEDOBJECTS_EXPORT QMetaWrappedObjectPrivate
+class Q_CORE_EXPORT QMetaWrappedObjectPrivate
 {
     Q_DECLARE_PUBLIC(QMetaWrappedObject)
 
@@ -65,7 +65,7 @@ protected:
     QMetaWrappedObject *q_ptr;
 };
 
-QT_END_NAMESPACE_QTWRAPPEDOBJECTS
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

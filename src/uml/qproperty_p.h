@@ -43,7 +43,6 @@
 
 // Base class includes
 #include "private/qwrappedobject_p.h"
-using QtWrappedObjects::QWrappedObjectPrivate;
 #include "private/qstructuralfeature_p.h"
 #include "private/qconnectableelement_p.h"
 #include "private/qdeploymenttarget_p.h"

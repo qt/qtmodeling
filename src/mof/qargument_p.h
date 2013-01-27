@@ -43,7 +43,6 @@
 
 // Base class includes
 #include "private/qwrappedobject_p.h"
-using QtWrappedObjects::QWrappedObjectPrivate;
 
 #include "QtMof/QArgument"
 

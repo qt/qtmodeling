@@ -51,7 +51,6 @@
 #include <QtCore/QSet>
 
 #include <QtWrappedObjects/QWrappedObjectPointer>
-using QtWrappedObjects::QWrappedObjectPointer;
 
 QT_BEGIN_HEADER
 

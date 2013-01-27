@@ -12,7 +12,6 @@
 #include <QtCore/QDebug>
 
 using namespace QtUml;
-using namespace QtWrappedObjects;
 
 void checkProperties(QWrappedObject *wrappedObject)
 {

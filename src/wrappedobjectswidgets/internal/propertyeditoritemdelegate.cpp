@@ -1,16 +1,56 @@
-#include "propertyeditoritemdelegate.h"
+/****************************************************************************
+**
+** Copyright (C) 2012 Sandro S. Andrade <sandroandrade@kde.org>
+** Contact: http://www.qt-project.org/
+**
+** This file is part of the QtWrappedObjectsWidgets module of the Qt Toolkit.
+**
+** $QT_BEGIN_LICENSE:LGPL$
+** GNU Lesser General Public License Usage
+** This file may be used under the terms of the GNU Lesser General Public
+** License version 2.1 as published by the Free Software Foundation and
+** appearing in the file LICENSE.LGPL included in the packaging of this
+** file. Please review the following information to ensure the GNU Lesser
+** General Public License version 2.1 requirements will be met:
+** http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
+**
+** In addition, as a special exception, Nokia gives you certain additional
+** rights. These rights are described in the Nokia  LGPL Exception
+** version 1.1, included in the file LGPL_EXCEPTION.txt in this package.
+**
+** GNU General Public License Usage
+** Alternatively, this file may be used under the terms of the GNU General
+** Public License version 3.0 as published by the Free Software Foundation
+** and appearing in the file LICENSE.GPL included in the packaging of this
+** file. Please review the following information to ensure the GNU General
+** Public License version 3.0 requirements will be met:
+** http://www.gnu.org/copyleft/gpl.html.
+**
+** Other Usage
+** Alternatively, this file may be used in accordance with the terms and
+** conditions contained in a signed written agreement between you and Nokia.
+**
+**
+**
+**
+**
+**
+** $QT_END_LICENSE$
+**
+****************************************************************************/
+#include "propertyeditoritemdelegate_p.h"
 
-#include <QtWidgets/QApplication>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QCheckBox>
 #include <QtWidgets/QComboBox>
-#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QApplication>
 
 #include <QtWrappedObjects/QWrappedObject>
 #include <QtWrappedObjects/QMetaPropertyInfo>
 
-#include "propertyeditor.h"
+#include "propertyeditor_p.h"
 
-using QtWrappedObjects::QMetaPropertyInfo;
+QT_BEGIN_NAMESPACE
 
 PropertyEditorItemDelegate::PropertyEditorItemDelegate(QObject *parent) :
     QStyledItemDelegate(parent)
@@ -32,7 +72,7 @@ QWidget *PropertyEditorItemDelegate::createEditor(QWidget *parent, const QStyleO
                 QMetaEnum metaEnum = metaProperty.enumerator();
                 int keyCount = metaEnum.keyCount();
                 for (int j = 0; j < keyCount; ++j)
-                    comboBox->addItem(QString(metaEnum.key(j)).toLower().remove(QString(metaProperty.name())));
+                    comboBox->addItem(QString::fromLatin1((metaEnum.key(j))).toLower().remove(QString::fromLatin1((metaProperty.name()))));
                 comboBox->setMaximumHeight(22);
                 widget = comboBox;
             }
@@ -77,7 +117,8 @@ void PropertyEditorItemDelegate::paint(QPainter *painter, const QStyleOptionView
             opt.rect = option.rect;
             QApplication::style()->drawControl(QStyle::CE_CheckBox, &opt, painter);
         }
-        else QStyledItemDelegate::paint(painter, option, index);
+        else
+            QStyledItemDelegate::paint(painter, option, index);
     }
     else
         QStyledItemDelegate::paint(painter, option, index);
@@ -109,3 +150,7 @@ bool PropertyEditorItemDelegate::eventFilter(QObject *object, QEvent *event)
     else
         return QStyledItemDelegate::eventFilter(object, event);
 }
+
+#include "moc_propertyeditoritemdelegate_p.cpp"
+
+QT_END_NAMESPACE

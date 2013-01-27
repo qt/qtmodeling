@@ -15,7 +15,7 @@
 ** http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
 **
 ** In addition, as a special exception, Nokia gives you certain additional
-** rights. These rights are described in the Nokia Qt LGPL Exception
+** rights. These rights are described in the Nokia  LGPL Exception
 ** version 1.1, included in the file LGPL_EXCEPTION.txt in this package.
 **
 ** GNU General Public License Usage
@@ -38,49 +38,33 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QTWRAPPEDOBJECTSWIDGETSGLOBAL_H
-#define QTWRAPPEDOBJECTSWIDGETSGLOBAL_H
+#ifndef QWRAPPEDOBJECTPROPERTYMODEL_P_H
+#define QWRAPPEDOBJECTPROPERTYMODEL_P_H
 
-#include <QtCore/qglobal.h>
+#include "private/qabstractitemmodel_p.h"
 
 QT_BEGIN_HEADER
 
-#ifndef QT_STATIC
-#    if defined(QT_BUILD_WRAPPEDOBJECTSWIDGETS_LIB)
-#        define Q_WRAPPEDOBJECTSWIDGETS_EXPORT Q_DECL_EXPORT
-#    else
-#        define Q_WRAPPEDOBJECTSWIDGETS_EXPORT Q_DECL_IMPORT
-#    endif
-#else
-#    define Q_WRAPPEDOBJECTSWIDGETS_EXPORT
-#endif
+QT_BEGIN_NAMESPACE
 
-// QtWrappedObjectsWidgets macros
+QT_MODULE(QtWrappedObjectsWidgets)
 
-#if defined(Q_MOC_RUN)
+class QMetaWrappedObject;
 
-#define QT_NAMESPACE_QTWRAPPEDOBJECTSWIDGETS
-#define QT_BEGIN_NAMESPACE_QTWRAPPEDOBJECTSWIDGETS
-#define QT_END_NAMESPACE_QTWRAPPEDOBJECTSWIDGETS
-#define QT_USE_NAMESPACE_QTWRAPPEDOBJECTSWIDGETS
-#define QT_PREPEND_NAMESPACE_QTWRAPPEDOBJECTSWIDGETS(name) ::name
+class Q_CORE_EXPORT QWrappedObjectPropertyModelPrivate : public QAbstractItemModelPrivate
+{
+    Q_DECLARE_PUBLIC(QWrappedObjectPropertyModel)
 
-#else
+public:
+    explicit QWrappedObjectPropertyModelPrivate();
 
-#if defined(QT_NAMESPACE)
-#    define QT_NAMESPACE_QTWRAPPEDOBJECTSWIDGETS QT_NAMESPACE::QtWrappedObjectsWidgets
-#else
-#    define QT_NAMESPACE_QTWRAPPEDOBJECTSWIDGETS QtWrappedObjectsWidgets
-#endif
+    QModelIndex wrappedObjectIndex;
+    QWrappedObject *wrappedObject;
+    const QMetaWrappedObject *metaWrappedObject;
+};
 
-#define QT_BEGIN_NAMESPACE_QTWRAPPEDOBJECTSWIDGETS QT_BEGIN_NAMESPACE namespace QtWrappedObjectsWidgets {
-#define QT_END_NAMESPACE_QTWRAPPEDOBJECTSWIDGETS QT_END_NAMESPACE }
-#define QT_USE_NAMESPACE_QTWRAPPEDOBJECTSWIDGETS using namespace ::QT_NAMESPACE_QTWRAPPEDOBJECTSWIDGETS;
-#define QT_PREPEND_NAMESPACE_QTWRAPPEDOBJECTSWIDGETS(name) ::QT_NAMESPACE_QTWRAPPEDOBJECTSWIDGETS::name
-
-#endif /* defined(Q_MOC_RUN) */
+QT_END_NAMESPACE
 
 QT_END_HEADER
 
-#endif // QTWRAPPEDOBJECTSWIDGETSGLOBAL_H
-
+#endif // QWRAPPEDOBJECTPROPERTYMODEL_P_H

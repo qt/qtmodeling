@@ -10,16 +10,14 @@
 
 %classnames = (
     "qtwrappedobjectsversion.h" => "QtWrappedObjectsVersion",
-    "qtwrappedobjectsglobal.h"  => "QtWrappedObjectsGlobal",
+    "qtwrappedobjectsnamespace.h"  => "QtWrappedObjectsNamespace",
     "qtwrappedobjectswidgetsversion.h" => "QtWrappedObjectsWidgetsVersion",
-    "qtwrappedobjectswidgetsglobal.h"  => "QtWrappedObjectsWidgetsGlobal",
     "qtmofversion.h" => "QtMofVersion",
     "qtmofglobal.h"  => "QtMofGlobal",
+    "qtmofnamespace.h"  => "QtMofNamespace",
     "qtumlversion.h" => "QtUmlVersion",
     "qtumlglobal.h"  => "QtUmlGlobal",
     "qtumlnamespace.h"  => "QtUmlNamespace",
-    "qtmofnamespace.h"  => "QtMofNamespace",
-    "qtwrappedobjectsnamespace.h"  => "QtWrappedObjectsNamespace",
 );
 
 %modulepris = (

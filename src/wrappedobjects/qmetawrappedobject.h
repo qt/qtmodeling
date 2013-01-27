@@ -41,24 +41,18 @@
 #ifndef QTWRAPPEDOBJECTS_QMETAWRAPPEDOBJECT_H
 #define QTWRAPPEDOBJECTS_QMETAWRAPPEDOBJECT_H
 
-#include <QtWrappedObjects/QtWrappedObjectsGlobal>
-
 #include <QtCore/QMetaProperty>
-
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
 QT_BEGIN_HEADER
 
-class QStringList;
-
-QT_BEGIN_NAMESPACE_QTWRAPPEDOBJECTS
+QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtWrappedObjects)
 
 class QWrappedObject;
 class QMetaWrappedObjectPrivate;
 
-struct Q_WRAPPEDOBJECTS_EXPORT QMetaPropertyInfo
+struct Q_CORE_EXPORT QMetaPropertyInfo
 {
     QMetaProperty metaProperty;
     const QMetaObject *propertyMetaObject;
@@ -75,7 +69,7 @@ struct Q_WRAPPEDOBJECTS_EXPORT QMetaPropertyInfo
     }
 };
 
-class Q_WRAPPEDOBJECTS_EXPORT QMetaWrappedObject
+class Q_CORE_EXPORT QMetaWrappedObject
 {
     Q_DISABLE_COPY(QMetaWrappedObject)
     Q_DECLARE_PRIVATE(QMetaWrappedObject)
@@ -102,12 +96,11 @@ protected:
     friend class QWrappedObject;
 };
 
-QT_END_NAMESPACE_QTWRAPPEDOBJECTS
+QT_END_NAMESPACE
 
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTWRAPPEDOBJECTS(QMetaPropertyInfo) *)
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE_QTWRAPPEDOBJECTS(QMetaPropertyInfo))
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QMetaPropertyInfo) *)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QMetaPropertyInfo))
 
 QT_END_HEADER
 
 #endif // QTWRAPPEDOBJECTS_QMETAWRAPPEDOBJECT_H
-

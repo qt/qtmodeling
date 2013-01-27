@@ -41,32 +41,27 @@
 #ifndef QTWRAPPEDOBJECTS_QMETAMODELPLUGIN_H
 #define QTWRAPPEDOBJECTS_QMETAMODELPLUGIN_H
 
-#include <QtWrappedObjects/QtWrappedObjectsGlobal>
-
-// Base class includes
 #include <QtCore/QObject>
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTWRAPPEDOBJECTS
+QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtWrappedObjects)
 
-class Q_WRAPPEDOBJECTS_EXPORT QMetaModelPlugin : public QObject
+class Q_CORE_EXPORT QMetaModelPlugin : public QObject
 {
     Q_OBJECT
 
 public:
     explicit QMetaModelPlugin(QObject *parent = 0);
-    virtual ~QMetaModelPlugin();
 
     virtual void initMetaModel() = 0;
     virtual QString metaModelNamespaceUri() = 0;
 };
 
-QT_END_NAMESPACE_QTWRAPPEDOBJECTS
+QT_END_NAMESPACE
 
 QT_END_HEADER
 
 #endif // QTWRAPPEDOBJECTS_QMETAMODELPLUGIN_H
-

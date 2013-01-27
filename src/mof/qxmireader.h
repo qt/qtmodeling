@@ -46,17 +46,13 @@
 // Base class includes
 #include <QtCore/QObject>
 
-#include <QtWrappedObjects/QtWrappedObjectsGlobal>
-
 QT_BEGIN_HEADER
 
 class QIODevice;
 
-QT_BEGIN_NAMESPACE_QTWRAPPEDOBJECTS
-    class QWrappedObject;
-QT_END_NAMESPACE_QTWRAPPEDOBJECTS
-
-using QtWrappedObjects::QWrappedObject;
+QT_BEGIN_NAMESPACE
+class QWrappedObject;
+QT_END_NAMESPACE
 
 QT_BEGIN_NAMESPACE_QTMOF
 

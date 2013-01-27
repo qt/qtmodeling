@@ -45,7 +45,6 @@
 
 // Base class includes
 #include <QtWrappedObjects/QWrappedObject>
-using QtWrappedObjects::QWrappedObject;
 #include <QtMof/QNamespace>
 #include <QtMof/QPackageableElement>
 
@@ -54,7 +53,6 @@ using QtWrappedObjects::QWrappedObject;
 #include <QtCore/QSet>
 
 #include <QtWrappedObjects/QWrappedObjectPointer>
-using QtWrappedObjects::QWrappedObjectPointer;
 
 QT_BEGIN_HEADER
 

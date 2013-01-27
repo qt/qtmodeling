@@ -50,11 +50,9 @@ QT_BEGIN_HEADER
 
 class QIODevice;
 
-namespace QtWrappedObjects
-{
-    class QWrappedObject;
-};
-using QtWrappedObjects::QWrappedObject;
+QT_BEGIN_NAMESPACE
+class QWrappedObject;
+QT_END_NAMESPACE
 
 QT_BEGIN_NAMESPACE_QTMOF
 

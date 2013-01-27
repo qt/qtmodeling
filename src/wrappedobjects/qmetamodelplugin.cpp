@@ -38,21 +38,15 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-
 #include "qmetamodelplugin.h"
 
-QT_BEGIN_NAMESPACE_QTWRAPPEDOBJECTS
+QT_BEGIN_NAMESPACE
 
 QMetaModelPlugin::QMetaModelPlugin(QObject *parent)
     : QObject(parent)
 {
 }
 
-QMetaModelPlugin::~QMetaModelPlugin()
-{
-}
-
 #include "moc_qmetamodelplugin.cpp"
 
-QT_END_NAMESPACE_QTWRAPPEDOBJECTS
-
+QT_END_NAMESPACE
