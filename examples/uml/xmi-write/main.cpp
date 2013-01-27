@@ -1,15 +1,14 @@
+#include <QtWrappedObjects/QXmiWriter>
 #include <QtWrappedObjects/QtWrappedObjects>
 
 #include <QtUml/QtUml>
 
-#include <QtMof/QXmiWriter>
-
 using namespace QtUml;
-
-using QtMof::QXmiWriter;
 
 int main ()
 {
+    QUmlMetaModel::init();
+
     QWrappedObjectPointer<QPackage> model = new QPackage;
     model->setName("MyRootPackage");
 

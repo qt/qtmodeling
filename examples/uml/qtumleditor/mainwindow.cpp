@@ -5,17 +5,16 @@
 #include <QtCore/QPluginLoader>
 #include <QtCore/QStringListModel>
 
+#include <QtWidgets/QListView>
 #include <QtWidgets/QFileDialog>
 #include <QtWidgets/QMessageBox>
-#include <QtWidgets/QListView>
 
+#include <QtWrappedObjects/QXmiWriter>
+#include <QtWrappedObjects/QXmiReader>
 #include <QtWrappedObjects/QWrappedObject>
 #include <QtWrappedObjects/QMetaModelPlugin>
 #include <QtWrappedObjectsWidgets/QWrappedObjectModel>
 #include <QtWrappedObjectsWidgets/QWrappedObjectPropertyModel>
-
-#include <QtMof/QXmiWriter>
-#include <QtMof/QXmiReader>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -64,7 +63,7 @@ void MainWindow::saveXmi(QWrappedObject *rootElement)
         return;
     }
 
-    QtMof::QXmiWriter writer(rootElement);
+    QXmiWriter writer(rootElement);
     if (!writer.writeFile(&file))
         QMessageBox::critical(this, tr("Save As"), tr("Error when writing XMI file !"));
     else
@@ -79,7 +78,7 @@ QWrappedObject *MainWindow::loadXmi()
         return 0;
     }
 
-    QtMof::QXmiReader reader;
+    QXmiReader reader;
     setWindowTitle(QFileInfo(file).fileName() + " - QtUml Editor");
     QWrappedObject *wrappedObject = reader.readFile(&file);
     ui->issues->setModel(new QStringListModel(reader.errorStrings()));

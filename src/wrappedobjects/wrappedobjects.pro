@@ -8,6 +8,8 @@ QMAKE_DOCS = $$PWD/doc/qtwrappedobjects.qdocconf
 load(qt_module)
 
 PUBLIC_HEADERS += \
+    qxmiwriter.h \
+    qxmireader.h \
     qwrappedobject.h \
     qmetamodelplugin.h \
     qmetawrappedobject.h \
@@ -15,10 +17,14 @@ PUBLIC_HEADERS += \
     qtwrappedobjectsnamespace.h
 
 PRIVATE_HEADERS += \
+    qxmiwriter_p.h \
+    qxmireader_p.h \
     qwrappedobject_p.h \
     qmetawrappedobject_p.h
 
 SOURCES += \
+    qxmiwriter.cpp \
+    qxmireader.cpp \
     qwrappedobject.cpp \
     qmetamodelplugin.cpp \
     qmetawrappedobject.cpp \

@@ -1,10 +1,6 @@
+#include <QtWrappedObjects/QXmiReader>
+#include <QtWrappedObjects/QXmiWriter>
 #include <QtWrappedObjects/QtWrappedObjects>
-
-#include <QtMof/QXmiReader>
-#include <QtMof/QXmiWriter>
-
-using QtMof::QXmiReader;
-using QtMof::QXmiWriter;
 
 int main ()
 {
@@ -24,7 +20,7 @@ int main ()
         foreach (QString error, reader.errorStrings())
             qDebug() << "\t" << error;
     }
-/*
+
     QFile file2("test-out.xmi");
 
     if (!file2.open(QFile::WriteOnly | QFile::Text)) {
@@ -33,6 +29,5 @@ int main ()
     }
     QXmiWriter writer(rootElement);
     writer.writeFile(&file2);
-*/
 }
 

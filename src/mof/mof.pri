@@ -54,9 +54,7 @@ PUBLIC_HEADERS += \
     qpackageimport.h \
     qargument.h \
     qbehavioralfeature.h \
-    qmofmetamodel.h \
-    qxmiwriter.h \
-    qxmireader.h
+    qmofmetamodel.h
 
 PRIVATE_HEADERS += \
     qrelationship_p.h \
@@ -111,9 +109,7 @@ PRIVATE_HEADERS += \
     qfeature_p.h \
     qpackageimport_p.h \
     qargument_p.h \
-    qbehavioralfeature_p.h \
-    qxmiwriter_p.h \
-    qxmireader_p.h
+    qbehavioralfeature_p.h
 
 SOURCES += \
     qtmofnamespace.cpp \
@@ -170,6 +166,4 @@ SOURCES += \
     qpackageimport.cpp \
     qargument.cpp \
     qbehavioralfeature.cpp \
-    qmofmetamodel.cpp \
-    qxmiwriter.cpp \
-    qxmireader.cpp
+    qmofmetamodel.cpp

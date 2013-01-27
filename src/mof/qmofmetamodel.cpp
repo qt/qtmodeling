@@ -204,12 +204,6 @@ void QMofMetaModel::init()
     qRegisterMetaType<QValueSpecification *>();
     qRegisterMetaType<QList<QValueSpecification *>>();
     qRegisterMetaType<QSet<QValueSpecification *>>();
-    qRegisterMetaType<QXmiReader *>();
-    qRegisterMetaType<QList<QXmiReader *>>();
-    qRegisterMetaType<QSet<QXmiReader *>>();
-    qRegisterMetaType<QXmiWriter *>();
-    qRegisterMetaType<QList<QXmiWriter *>>();
-    qRegisterMetaType<QSet<QXmiWriter *>>();
 }
 
 QT_END_NAMESPACE_QTMOF

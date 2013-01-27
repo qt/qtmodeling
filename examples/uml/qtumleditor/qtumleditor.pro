@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT = wrappedobjectswidgets mof
+QT = wrappedobjectswidgets
 
 TARGET = qtumleditor
 TEMPLATE = app

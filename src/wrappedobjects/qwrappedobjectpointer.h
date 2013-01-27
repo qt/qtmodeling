@@ -49,6 +49,8 @@ QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
+QT_MODULE(QtWrappedObjects)
+
 template <class T>
 class Q_CORE_EXPORT QWrappedObjectPointer : public QPointer<T>
 {
