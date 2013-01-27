@@ -43,7 +43,6 @@
 
 // Base class includes
 #include "private/qwrappedobject_p.h"
-using QtWrappedObjects::QWrappedObjectPrivate;
 #include "private/qoccurrencespecification_p.h"
 #include "private/qmessageend_p.h"
 

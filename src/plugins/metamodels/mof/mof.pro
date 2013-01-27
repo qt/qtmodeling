@@ -1,6 +1,6 @@
 include(../metamodelplugins.pri)
 
-QT += mof
+QT = mof
 
 TARGET = qmofmetamodel
 

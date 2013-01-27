@@ -4,9 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       = wrappedobjects wrappedobjectswidgets mof
-
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+QT = wrappedobjectswidgets mof
 
 TARGET = qtumleditor
 TEMPLATE = app
@@ -20,25 +18,13 @@ INSTALLS += target xmi
 
 CONFIG += c++11
 
-SOURCES += main.cpp\
-        mainwindow.cpp \
-    propertyeditoritemdelegate.cpp \
-    propertyeditor.cpp \
-    wrappedobjectpropertyfiltermodel.cpp \
-    filterwidget.cpp \
-    qwrappedobjectpropertyeditor.cpp \
-    qwrappedobjectview.cpp
+SOURCES += main.cpp \
+        mainwindow.cpp
 
 HEADERS  += mainwindow.h \
-    propertyeditoritemdelegate.h \
-    propertyeditor.h \
-    wrappedobjectpropertyfiltermodel.h \
-    filterwidget.h \
-    qwrappedobjectpropertyeditor.h \
-    qwrappedobjectview.h
 
 FORMS    += mainwindow.ui \
-    aboutplugins.ui
+            aboutplugins.ui
 
 RESOURCES += \
     qtumleditor.qrc

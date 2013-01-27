@@ -43,8 +43,6 @@
 
 #include <QtWrappedObjects/QMetaModelPlugin>
 
-using QtWrappedObjects::QMetaModelPlugin;
-
 class QMofMetaModelPlugin : public QMetaModelPlugin
 {
     Q_OBJECT

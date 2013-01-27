@@ -45,7 +45,6 @@
 [%- IF !class.superclass || class.superclass.size > 1 -%]
 
 #include "private/qwrappedobject_p.h"
-using QtWrappedObjects::QWrappedObjectPrivate;
 [%- END -%]
 [%- FOREACH superclass IN class.superclass -%]
 

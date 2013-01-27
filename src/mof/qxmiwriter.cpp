@@ -52,9 +52,6 @@
 
 #include <QtMof/QMofMetaModel>
 
-using QtWrappedObjects::QMetaWrappedObject;
-using QtWrappedObjects::QMetaPropertyInfo;
-
 QT_BEGIN_NAMESPACE_QTMOF
 
 QXmiWriterPrivate::QXmiWriterPrivate(QWrappedObject *wrappedObject)

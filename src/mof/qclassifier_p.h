@@ -43,7 +43,6 @@
 
 // Base class includes
 #include "private/qwrappedobject_p.h"
-using QtWrappedObjects::QWrappedObjectPrivate;
 #include "private/qtype_p.h"
 #include "private/qredefinableelement_p.h"
 #include "private/qnamespace_p.h"

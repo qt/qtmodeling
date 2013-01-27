@@ -45,7 +45,6 @@
 
 // Base class includes
 #include <QtWrappedObjects/QWrappedObject>
-using QtWrappedObjects::QWrappedObject;
 #include <QtUml/QStructuralFeature>
 #include <QtUml/QConnectableElement>
 #include <QtUml/QDeploymentTarget>

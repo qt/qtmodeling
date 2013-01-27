@@ -45,7 +45,6 @@
 
 // Base class includes
 #include <QtWrappedObjects/QWrappedObject>
-using QtWrappedObjects::QWrappedObject;
 #include <QtUml/QDirectedRelationship>
 #include <QtUml/QNamedElement>
 

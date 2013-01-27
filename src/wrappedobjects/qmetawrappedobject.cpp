@@ -38,17 +38,14 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-
 #include "qmetawrappedobject.h"
 #include "qmetawrappedobject_p.h"
-#include "qwrappedobject_p.h"
 
 #include <QtWrappedObjects/QWrappedObject>
-#include <QtCore/QMetaObject>
 #include <QtCore/QStringList>
 #include <QtCore/QStack>
 
-QT_BEGIN_NAMESPACE_QTWRAPPEDOBJECTS
+QT_BEGIN_NAMESPACE
 
 QMetaWrappedObjectPrivate::QMetaWrappedObjectPrivate()
 {
@@ -177,5 +174,4 @@ void QMetaWrappedObject::handleWrappedObjectProperties(const QWrappedObject *wra
     }
 }
 
-QT_END_NAMESPACE_QTWRAPPEDOBJECTS
-
+QT_END_NAMESPACE

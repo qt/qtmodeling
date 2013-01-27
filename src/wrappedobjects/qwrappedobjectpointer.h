@@ -41,19 +41,16 @@
 #ifndef QTWRAPPEDOBJECTS_QWRAPPEDOBJECTPOINTER_H
 #define QTWRAPPEDOBJECTS_QWRAPPEDOBJECTPOINTER_H
 
-#include <QtWrappedObjects/QtWrappedObjectsGlobal>
-
-// Base class includes
 #include <QtCore/QPointer>
 
-#include <QtWrappedObjects/QWrappedObject>
+#include "qwrappedobject.h"
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTWRAPPEDOBJECTS
+QT_BEGIN_NAMESPACE
 
 template <class T>
-class Q_WRAPPEDOBJECTS_EXPORT QWrappedObjectPointer : public QPointer<T>
+class Q_CORE_EXPORT QWrappedObjectPointer : public QPointer<T>
 {
 public:
     inline QWrappedObjectPointer(T *p = 0) : QPointer<T>(p) { }
@@ -65,9 +62,8 @@ public:
     }
 };
 
-QT_END_NAMESPACE_QTWRAPPEDOBJECTS
+QT_END_NAMESPACE
 
 QT_END_HEADER
 
 #endif // QTWRAPPEDOBJECTS_QWRAPPEDOBJECTPOINTER_H
-

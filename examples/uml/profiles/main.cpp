@@ -13,7 +13,6 @@
 #include <QtCore/QDebug>
 
 using namespace QtUml;
-using QtWrappedObjects::QWrappedObjectPointer;
 
 typedef const QSet<QStereotype *> QStereotypeList;
 typedef const QSet<QPackageableElement *> QPackageableElementList;

@@ -6,8 +6,6 @@
 using QtMof::QXmiReader;
 using QtMof::QXmiWriter;
 
-using namespace QtWrappedObjects;
-
 int main ()
 {
     QFile file("test.xmi");

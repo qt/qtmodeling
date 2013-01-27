@@ -38,13 +38,12 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-
 #include "qwrappedobject.h"
 #include "qwrappedobject_p.h"
 
 #include <QtWrappedObjects/QMetaWrappedObject>
 
-QT_BEGIN_NAMESPACE_QTWRAPPEDOBJECTS
+QT_BEGIN_NAMESPACE
 
 QWrappedObjectPrivate::QWrappedObjectPrivate(int version)
     : QObjectPrivate(version), wrapper(0), metaWrappedObject(0)
@@ -181,5 +180,4 @@ bool QWrappedObject::isPropertyModified(QMetaProperty metaProperty) const
 
 #include "moc_qwrappedobject.cpp"
 
-QT_END_NAMESPACE_QTWRAPPEDOBJECTS
-
+QT_END_NAMESPACE

@@ -39,37 +39,49 @@
 **
 ****************************************************************************/
 #include "qwrappedobjectmodel.h"
+#include "qwrappedobjectmodel_p.h"
 
 #include <QtWrappedObjects/QWrappedObject>
 
-QT_BEGIN_NAMESPACE_QTWRAPPEDOBJECTSWIDGETS
+QT_BEGIN_NAMESPACE
+
+QWrappedObjectModelPrivate::QWrappedObjectModelPrivate()
+    : wrappedObject(0)
+{
+}
 
 QWrappedObjectModel::QWrappedObjectModel(QObject *parent) :
-    QAbstractItemModel(parent), _wrappedObject(0)
+    QAbstractItemModel(*new QWrappedObjectModelPrivate, parent)
 {
 }
 
 void QWrappedObjectModel::setWrappedObject(QWrappedObject *wrappedObject)
 {
-    if (wrappedObject && _wrappedObject != wrappedObject) {
+    Q_D(QWrappedObjectModel);
+
+    if (wrappedObject && d->wrappedObject != wrappedObject) {
         beginResetModel();
-        _wrappedObject = wrappedObject;
+        d->wrappedObject = wrappedObject;
         endResetModel();
     }
 }
 
 QWrappedObject *QWrappedObjectModel::wrappedObject() const
 {
-    return _wrappedObject;
+    Q_D(const QWrappedObjectModel);
+
+    return d->wrappedObject;
 }
 
 QModelIndex QWrappedObjectModel::index(int row, int column, const QModelIndex &parent) const
 {
-    if (!_wrappedObject || row < 0 || column < 0 || column >= 2 || (parent.isValid() && parent.column() != 0))
+    Q_D(const QWrappedObjectModel);
+
+    if (!d->wrappedObject || row < 0 || column < 0 || column >= 2 || (parent.isValid() && parent.column() != 0))
         return QModelIndex();
 
     if (!parent.isValid())
-        return createIndex(row, column, static_cast<void *>(qTopLevelWrapper(_wrappedObject)));
+        return createIndex(row, column, static_cast<void *>(qTopLevelWrapper(d->wrappedObject)));
 
     QWrappedObject *wrappedObject = static_cast<QWrappedObject *>(parent.internalPointer());
     if (!wrappedObject)
@@ -80,8 +92,10 @@ QModelIndex QWrappedObjectModel::index(int row, int column, const QModelIndex &p
 
 QModelIndex QWrappedObjectModel::parent(const QModelIndex &child) const
 {
+    Q_D(const QWrappedObjectModel);
+
     QWrappedObject *wrappedObject = static_cast<QWrappedObject *>(child.internalPointer());
-    if (!_wrappedObject || !child.isValid() || !wrappedObject)
+    if (!d->wrappedObject || !child.isValid() || !wrappedObject)
         return QModelIndex();
 
     QWrappedObject *parentWrappedObject = qTopLevelWrapper(dynamic_cast<QWrappedObject *>(wrappedObject->parent()));
@@ -97,7 +111,9 @@ QModelIndex QWrappedObjectModel::parent(const QModelIndex &child) const
 
 int QWrappedObjectModel::rowCount(const QModelIndex &parent) const
 {
-    if (!_wrappedObject || (parent.isValid() && parent.column() != 0))
+    Q_D(const QWrappedObjectModel);
+
+    if (!d->wrappedObject || (parent.isValid() && parent.column() != 0))
         return 0;
 
     if (parent.row() == -1)
@@ -112,12 +128,16 @@ int QWrappedObjectModel::rowCount(const QModelIndex &parent) const
 
 int QWrappedObjectModel::columnCount(const QModelIndex &parent) const
 {
-    return (!_wrappedObject || (parent.isValid() && parent.column() != 0)) ? 0:2;
+    Q_D(const QWrappedObjectModel);
+
+    return (!d->wrappedObject || (parent.isValid() && parent.column() != 0)) ? 0:2;
 }
 
 QVariant QWrappedObjectModel::data(const QModelIndex &index, int role) const
 {
-    if (!_wrappedObject || index.column() < 0 || index.column() >= 2)
+    Q_D(const QWrappedObjectModel);
+
+    if (!d->wrappedObject || index.column() < 0 || index.column() >= 2)
         return QVariant();
     switch (role) {
         case Qt::DisplayRole:
@@ -159,5 +179,4 @@ void QWrappedObjectModel::updateIndex(const QModelIndex &index)
 
 #include "moc_qwrappedobjectmodel.cpp"
 
-QT_END_NAMESPACE_QTWRAPPEDOBJECTSWIDGETS
-
+QT_END_NAMESPACE
