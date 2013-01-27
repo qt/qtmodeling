@@ -41,7 +41,7 @@
 #ifndef PROPERTYEDITORITEMDELEGATE_P_H
 #define PROPERTYEDITORITEMDELEGATE_P_H
 
-#include <QtGui/QStyledItemDelegate>
+#include <QtWidgets/QStyledItemDelegate>
 
 QT_BEGIN_HEADER
 
