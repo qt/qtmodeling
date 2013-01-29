@@ -1,0 +1,155 @@
+{
+   <glibc>
+   Memcheck:Leak
+   fun:malloc
+   obj:/usr/lib/libglib-2.0.so.0.3400.3
+   ...
+   fun:_ZN27QEventDispatcherGlibPrivateC1EP13_GMainContext
+   fun:_ZN20QEventDispatcherGlibC1EP7QObject
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   fun:UDataMemory_createNewInstance_50
+   obj:/usr/lib/libicuuc.so.50.1.2
+   ...
+   fun:ucnv_getStandardName_50
+   fun:_ZN9QIcuCodec20codecForNameUnlockedEPKc
+   fun:_ZN9QIcuCodec20defaultCodecUnlockedEv
+   fun:_ZN10QTextCodec14codecForLocaleEv
+   fun:_ZNK7QString11toLocal8BitEv
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   fun:_ZN9QHashData12allocateNodeEi
+   ...
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   fun:_ZN9QListData11detach_growEPii
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   fun:_ZN10QArrayData8allocateEmmm6QFlagsINS_16AllocationOptionEE
+   ...
+}
+{
+   <waitCondition>
+   Memcheck:Leak
+   fun:_Znwm
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:calloc
+   fun:g_malloc0
+   ...
+   fun:g_main_context_new
+   fun:g_main_context_default
+   fun:_ZN27QEventDispatcherGlibPrivateC1EP13_GMainContext
+   fun:_ZN20QEventDispatcherGlibC1EP7QObject
+   fun:_ZN23QCoreApplicationPrivate21createEventDispatcherEv
+   fun:_ZN16QCoreApplication4initEv
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:calloc
+   ...
+   obj:/usr/lib/libdl-2.17.so
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   ...
+   obj:/usr/lib/libdl-2.17.so
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:memalign
+   fun:posix_memalign
+   obj:/usr/lib/libglib-2.0.so.0.3400.3
+   fun:g_slice_alloc
+   ...
+   fun:_ZN27QEventDispatcherGlibPrivateC1EP13_GMainContext
+   fun:_ZN20QEventDispatcherGlibC1EP7QObject
+   fun:_ZN23QCoreApplicationPrivate21createEventDispatcherEv
+   fun:_ZN16QCoreApplication4initEv
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   fun:_ZNK9QMetaEnum3keyEi
+   fun:_ZN10QXmiWriter18writeWrappedObjectEP14QWrappedObject7QString
+   fun:_ZN10QXmiWriter18writeWrappedObjectEP14QWrappedObject7QString
+   fun:_ZN10QXmiWriter18writeWrappedObjectEP14QWrappedObject7QString
+   fun:_ZN10QXmiWriter18writeWrappedObjectEP14QWrappedObject7QString
+   fun:_ZN10QXmiWriter9writeFileEP9QIODevice
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Value8
+   fun:_ZNK9QMetaEnum3keyEi
+   fun:_ZN10QXmiWriter18writeWrappedObjectEP14QWrappedObject7QString
+   fun:_ZN10QXmiWriter18writeWrappedObjectEP14QWrappedObject7QString
+   fun:_ZN10QXmiWriter18writeWrappedObjectEP14QWrappedObject7QString
+   fun:_ZN10QXmiWriter18writeWrappedObjectEP14QWrappedObject7QString
+   fun:_ZN10QXmiWriter9writeFileEP9QIODevice
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:realloc
+   fun:_ZN9QListData7reallocEi
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:_Znam
+   fun:_ZN9QHashData6rehashEi
+   ...
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   fun:_ZN9QHashData12allocateNodeEi
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:_Znam
+   fun:_ZN9QHashData6rehashEi
+   fun:_ZN9QHashData8willGrowEv
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   fun:_ZN13QJsonDocument14fromBinaryDataERK10QByteArrayNS_14DataValidationE
+   ...
+}
