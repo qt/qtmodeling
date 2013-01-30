@@ -46,6 +46,7 @@
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QTreeView>
 #include <QtWidgets/QVBoxLayout>
+#include <QtWidgets/QMessageBox>
 
 #include <QtWrappedObjects/QWrappedObject>
 #include <QtWrappedObjects/QMetaWrappedObject>
@@ -89,6 +90,13 @@ void QWrappedObjectViewPrivate::populateContextMenu(QMenu &menu, QWrappedObject 
                 menu.addAction(action);
             }
         }
+    }
+    if (element->parent()) {
+        menu.addSeparator();
+        QAction *action = new QAction(QObject::tr("&Delete"), q);
+        action->setIcon(QIcon::fromTheme(QString::fromLatin1("edit-delete")));
+        QObject::connect(action, &QAction::triggered, q, &QWrappedObjectView::deleteObject);
+        menu.addAction(action);
     }
 }
 
@@ -179,6 +187,84 @@ void QWrappedObjectView::handleAddMethod()
     }
     QWrappedObjectModel *wrappedObjectModel = dynamic_cast<QWrappedObjectModel *>(d->treeView->model());
     wrappedObjectModel->updateIndex(QModelIndex());
+}
+
+void QWrappedObjectView::deleteObject()
+{
+    Q_D(QWrappedObjectView);
+
+    QWrappedObject *usedObject = qvariant_cast<QWrappedObject *>(d->treeView->selectionModel()->selection().indexes().first().data(Qt::UserRole));
+
+    if (QMessageBox::question(this, tr("Delete element"), tr("Are you sure you want to delete '%1' element' ?").arg(qTopLevelWrapper(usedObject)->objectName())) == QMessageBox::Yes) {
+        QWrappedObject *container = qvariant_cast<QWrappedObject *>(d->treeView->model()->index(0, 0, QModelIndex()).data(Qt::UserRole));
+        removeObjectUse(container, usedObject);
+        QWrappedObjectModel *wrappedObjectModel = dynamic_cast<QWrappedObjectModel *>(d->treeView->model());
+        wrappedObjectModel->updateIndex(QModelIndex());
+        d->treeView->setCurrentIndex(wrappedObjectModel->index(0, 0));
+        emit wrappedObjectChanged(qvariant_cast<QWrappedObject *>(wrappedObjectModel->index(0, 0).data(Qt::UserRole)));
+        d->treeView->expandAll();
+        d->treeView->resizeColumnToContents(0);
+        d->treeView->resizeColumnToContents(1);
+        usedObject->deleteLater();
+    }
+}
+
+void QWrappedObjectView::removeObjectUse(QWrappedObject *container, QWrappedObject *usedObject)
+{
+    const QMetaWrappedObject *metaWrappedObject = container->metaWrappedObject();
+    int propertyCount = metaWrappedObject->propertyCount();
+    for (int i = 0; i < propertyCount; ++i) {
+        QMetaProperty metaProperty = metaWrappedObject->property(i).metaProperty;
+        QWrappedObject *propertyWrappedObject = metaWrappedObject->property(i).propertyWrappedObject;
+        QString propertyName = QString::fromLatin1(metaProperty.name());
+        QString modifiedPropertyName = QString(propertyName.left(1).toUpper()+propertyName.mid(1)).remove(QRegularExpression(QString::fromLatin1("s$"))).replace(QRegularExpression(QString::fromLatin1("ie$")), QString::fromLatin1("y")).replace(QRegularExpression(QString::fromLatin1("se$")), QString::fromLatin1("s")).replace(QRegularExpression(QString::fromLatin1("ice$")), QString::fromLatin1("ex")).replace(QRegularExpression(QString::fromLatin1("ce$")), QString::fromLatin1("x")).remove(QRegularExpression(QString::fromLatin1("_$")));
+        QString typeName = QString::fromLatin1(metaProperty.typeName());
+        QVariant variant = metaProperty.read(propertyWrappedObject);
+        QString methodSignature;
+        int metaMethodIndex;
+        if (typeName.endsWith('*') && qvariant_cast<QWrappedObject *>(variant)) {
+            QWrappedObject *object = qvariant_cast<QWrappedObject *>(variant);
+            if (object == usedObject) {
+                methodSignature = QString::fromLatin1("set%1(%2)").arg(modifiedPropertyName).arg(typeName);
+                if (!methodSignature.isEmpty() && (metaMethodIndex = container->metaObject()->indexOfMethod(methodSignature.toLatin1())) != -1) {
+                    container->metaObject()->method(metaMethodIndex).invoke(container, ::Q_ARG(QObject *, 0));
+                }
+            }
+            else if (QWrappedObject::propertyData(QString::fromLatin1(metaWrappedObject->property(i).propertyMetaObject->className()), metaWrappedObject->property(i).metaProperty, QtWrappedObjects::QtWrappedObjects::AggregationRole).toString() == QString::fromLatin1("composite"))
+                removeObjectUse(object, usedObject);
+        }
+        else if (typeName.contains(QString::fromLatin1("QSet")) && variant.isValid()) {
+            QSet<QWrappedObject *> elements = *(static_cast<QSet<QWrappedObject *> *>(variant.data()));
+            if (elements.size() > 0) {
+                foreach (QWrappedObject *object, elements) {
+                    if (object == usedObject) {
+                        typeName = typeName.remove(QString::fromLatin1("QSet<")).remove(QString::fromLatin1(">"));
+                        methodSignature = QString::fromLatin1("remove%1(%2)").arg(modifiedPropertyName).arg(typeName);
+                        if (!methodSignature.isEmpty() && (metaMethodIndex = container->metaObject()->indexOfMethod(methodSignature.toLatin1())) != -1) {
+                            container->metaObject()->method(metaMethodIndex).invoke(container, ::Q_ARG(QObject *, usedObject));
+                        }
+                    }
+                    else if (QWrappedObject::propertyData(QString::fromLatin1(metaWrappedObject->property(i).propertyMetaObject->className()), metaWrappedObject->property(i).metaProperty, QtWrappedObjects::QtWrappedObjects::AggregationRole).toString() == QString::fromLatin1("composite"))
+                        removeObjectUse(object, usedObject);                }
+            }
+        }
+        else if (typeName.contains(QString::fromLatin1("QList")) && variant.isValid()) {
+            QList<QWrappedObject *> elements = *(static_cast<QList<QWrappedObject *> *>(variant.data()));
+            if (elements.size() > 0) {
+                foreach (QWrappedObject *object, elements) {
+                    if (object == usedObject) {
+                        typeName = typeName.remove(QString::fromLatin1("QList<")).remove(QString::fromLatin1(">"));
+                        methodSignature = QString::fromLatin1("remove%1(%2)").arg(modifiedPropertyName).arg(typeName);
+                        if (!methodSignature.isEmpty() && (metaMethodIndex = container->metaObject()->indexOfMethod(methodSignature.toLatin1())) != -1) {
+                            container->metaObject()->method(metaMethodIndex).invoke(container, ::Q_ARG(QObject *, usedObject));
+                        }
+                    }
+                    else if (QWrappedObject::propertyData(QString::fromLatin1(metaWrappedObject->property(i).propertyMetaObject->className()), metaWrappedObject->property(i).metaProperty, QtWrappedObjects::QtWrappedObjects::AggregationRole).toString() == QString::fromLatin1("composite"))
+                        removeObjectUse(object, usedObject);
+                }
+            }
+        }
+    }
 }
 
 #include "moc_qwrappedobjectview.cpp"

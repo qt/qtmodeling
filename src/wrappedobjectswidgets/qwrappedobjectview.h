@@ -76,6 +76,10 @@ protected:
 
 private Q_SLOTS:
     void handleAddMethod();
+    void deleteObject();
+
+private:
+    void removeObjectUse(QWrappedObject *container, QWrappedObject *usedObject);
 };
 
 QT_END_NAMESPACE
