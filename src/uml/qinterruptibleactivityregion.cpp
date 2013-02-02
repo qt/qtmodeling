@@ -168,19 +168,19 @@ void QInterruptibleActivityRegion::removeNode(QActivityNode *node)
 
 void QInterruptibleActivityRegion::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterruptibleActivityRegion")][QString::fromLatin1("interruptingEdges")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterruptibleActivityRegion")][QString::fromLatin1("interruptingEdges")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterruptibleActivityRegion")][QString::fromLatin1("interruptingEdges")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The edges leaving the region that will abort other tokens flowing in the region.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterruptibleActivityRegion")][QString::fromLatin1("interruptingEdges")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterruptibleActivityRegion")][QString::fromLatin1("interruptingEdges")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterruptibleActivityRegion")][QString::fromLatin1("interruptingEdges")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QActivityEdge::interrupts");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterruptibleActivityRegion")][QString::fromLatin1("interruptingEdges")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterruptibleActivityRegion")][QString::fromLatin1("interruptingEdges")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterruptibleActivityRegion")][QString::fromLatin1("interruptingEdges")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The edges leaving the region that will abort other tokens flowing in the region.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterruptibleActivityRegion")][QString::fromLatin1("interruptingEdges")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterruptibleActivityRegion")][QString::fromLatin1("interruptingEdges")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterruptibleActivityRegion")][QString::fromLatin1("interruptingEdges")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QActivityEdge::interrupts");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterruptibleActivityRegion")][QString::fromLatin1("nodes")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterruptibleActivityRegion")][QString::fromLatin1("nodes")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterruptibleActivityRegion")][QString::fromLatin1("nodes")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Nodes immediately contained in the group.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterruptibleActivityRegion")][QString::fromLatin1("nodes")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterruptibleActivityRegion")][QString::fromLatin1("nodes")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QActivityGroup::containedNodes");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterruptibleActivityRegion")][QString::fromLatin1("nodes")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QActivityNode::inInterruptibleRegion");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterruptibleActivityRegion")][QString::fromLatin1("nodes")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterruptibleActivityRegion")][QString::fromLatin1("nodes")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterruptibleActivityRegion")][QString::fromLatin1("nodes")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Nodes immediately contained in the group.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterruptibleActivityRegion")][QString::fromLatin1("nodes")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterruptibleActivityRegion")][QString::fromLatin1("nodes")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QActivityGroup::containedNodes");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInterruptibleActivityRegion")][QString::fromLatin1("nodes")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QActivityNode::inInterruptibleRegion");
 
     QActivityGroup::setPropertyData();
 }

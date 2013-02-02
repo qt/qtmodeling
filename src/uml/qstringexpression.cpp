@@ -247,19 +247,19 @@ QString QStringExpression::stringValue() const
 
 void QStringExpression::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStringExpression")][QString::fromLatin1("owningExpression")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStringExpression")][QString::fromLatin1("owningExpression")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStringExpression")][QString::fromLatin1("owningExpression")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The string expression of which this expression is a substring.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStringExpression")][QString::fromLatin1("owningExpression")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStringExpression")][QString::fromLatin1("owningExpression")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::owner");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStringExpression")][QString::fromLatin1("owningExpression")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QStringExpression::subExpression");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStringExpression")][QString::fromLatin1("owningExpression")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStringExpression")][QString::fromLatin1("owningExpression")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStringExpression")][QString::fromLatin1("owningExpression")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The string expression of which this expression is a substring.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStringExpression")][QString::fromLatin1("owningExpression")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStringExpression")][QString::fromLatin1("owningExpression")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::owner");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStringExpression")][QString::fromLatin1("owningExpression")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QStringExpression::subExpression");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStringExpression")][QString::fromLatin1("subExpressions")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStringExpression")][QString::fromLatin1("subExpressions")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStringExpression")][QString::fromLatin1("subExpressions")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The StringExpressions that constitute this StringExpression.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStringExpression")][QString::fromLatin1("subExpressions")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStringExpression")][QString::fromLatin1("subExpressions")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStringExpression")][QString::fromLatin1("subExpressions")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QStringExpression::owningExpression");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStringExpression")][QString::fromLatin1("subExpressions")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStringExpression")][QString::fromLatin1("subExpressions")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStringExpression")][QString::fromLatin1("subExpressions")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The StringExpressions that constitute this StringExpression.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStringExpression")][QString::fromLatin1("subExpressions")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStringExpression")][QString::fromLatin1("subExpressions")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStringExpression")][QString::fromLatin1("subExpressions")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QStringExpression::owningExpression");
 
     QWrappedObject::setPropertyData();
 }

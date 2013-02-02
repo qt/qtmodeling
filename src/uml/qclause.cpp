@@ -278,47 +278,47 @@ void QClause::removeTest(QExecutableNode *test)
 
 void QClause::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("successorClauses")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("successorClauses")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("successorClauses")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A set of clauses which may not be tested unless the current clause tests false.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("successorClauses")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("successorClauses")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("successorClauses")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QClause::predecessorClause");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("successorClauses")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("successorClauses")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("successorClauses")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A set of clauses which may not be tested unless the current clause tests false.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("successorClauses")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("successorClauses")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("successorClauses")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QClause::predecessorClause");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("decider")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("decider")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("decider")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An output pin within the test fragment the value of which is examined after execution of the test to determine whether the body should be executed.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("decider")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("decider")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("decider")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("decider")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("decider")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("decider")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An output pin within the test fragment the value of which is examined after execution of the test to determine whether the body should be executed.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("decider")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("decider")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("decider")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("predecessorClauses")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("predecessorClauses")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("predecessorClauses")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A set of clauses whose tests must all evaluate false before the current clause can be tested.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("predecessorClauses")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("predecessorClauses")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("predecessorClauses")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QClause::successorClause");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("predecessorClauses")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("predecessorClauses")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("predecessorClauses")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A set of clauses whose tests must all evaluate false before the current clause can be tested.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("predecessorClauses")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("predecessorClauses")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("predecessorClauses")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QClause::successorClause");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("bodyOutputs")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("bodyOutputs")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("bodyOutputs")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A list of output pins within the body fragment whose values are moved to the result pins of the containing conditional node after execution of the clause body.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("bodyOutputs")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("bodyOutputs")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("bodyOutputs")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("bodyOutputs")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("bodyOutputs")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("bodyOutputs")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A list of output pins within the body fragment whose values are moved to the result pins of the containing conditional node after execution of the clause body.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("bodyOutputs")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("bodyOutputs")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("bodyOutputs")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("bodies")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("bodies")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("bodies")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A nested activity fragment that is executed if the test evaluates to true and the clause is chosen over any concurrent clauses that also evaluate to true.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("bodies")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("bodies")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("bodies")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("bodies")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("bodies")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("bodies")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A nested activity fragment that is executed if the test evaluates to true and the clause is chosen over any concurrent clauses that also evaluate to true.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("bodies")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("bodies")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("bodies")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("tests")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("tests")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("tests")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A nested activity fragment with a designated output pin that specifies the result of the test.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("tests")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("tests")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("tests")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("tests")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("tests")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("tests")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A nested activity fragment with a designated output pin that specifies the result of the test.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("tests")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("tests")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClause")][QString::fromLatin1("tests")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QElement::setPropertyData();
 }

@@ -373,33 +373,33 @@ void QExtend::setCondition(QConstraint *condition)
 
 void QExtend::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtend")][QString::fromLatin1("extendedCase")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtend")][QString::fromLatin1("extendedCase")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtend")][QString::fromLatin1("extendedCase")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the use case that is being extended.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtend")][QString::fromLatin1("extendedCase")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtend")][QString::fromLatin1("extendedCase")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QDirectedRelationship::targets");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtend")][QString::fromLatin1("extendedCase")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtend")][QString::fromLatin1("extendedCase")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtend")][QString::fromLatin1("extendedCase")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtend")][QString::fromLatin1("extendedCase")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the use case that is being extended.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtend")][QString::fromLatin1("extendedCase")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtend")][QString::fromLatin1("extendedCase")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QDirectedRelationship::targets");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtend")][QString::fromLatin1("extendedCase")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtend")][QString::fromLatin1("extension")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtend")][QString::fromLatin1("extension")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtend")][QString::fromLatin1("extension")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the use case that represents the extension and owns the extend relationship.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtend")][QString::fromLatin1("extension")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtend")][QString::fromLatin1("extension")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QDirectedRelationship::sources QNamedElement::namespace");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtend")][QString::fromLatin1("extension")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUseCase::extend");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtend")][QString::fromLatin1("extension")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtend")][QString::fromLatin1("extension")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtend")][QString::fromLatin1("extension")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the use case that represents the extension and owns the extend relationship.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtend")][QString::fromLatin1("extension")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtend")][QString::fromLatin1("extension")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QDirectedRelationship::sources QNamedElement::namespace");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtend")][QString::fromLatin1("extension")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUseCase::extend");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtend")][QString::fromLatin1("extensionLocations")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtend")][QString::fromLatin1("extensionLocations")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtend")][QString::fromLatin1("extensionLocations")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An ordered list of extension points belonging to the extended use case, specifying where the respective behavioral fragments of the extending use case are to be inserted. The first fragment in the extending use case is associated with the first extension point in the list, the second fragment with the second point, and so on. (Note that, in most practical cases, the extending use case has just a single behavior fragment, so that the list of extension points is trivial.)");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtend")][QString::fromLatin1("extensionLocations")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtend")][QString::fromLatin1("extensionLocations")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtend")][QString::fromLatin1("extensionLocations")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtend")][QString::fromLatin1("extensionLocations")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtend")][QString::fromLatin1("extensionLocations")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtend")][QString::fromLatin1("extensionLocations")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An ordered list of extension points belonging to the extended use case, specifying where the respective behavioral fragments of the extending use case are to be inserted. The first fragment in the extending use case is associated with the first extension point in the list, the second fragment with the second point, and so on. (Note that, in most practical cases, the extending use case has just a single behavior fragment, so that the list of extension points is trivial.)");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtend")][QString::fromLatin1("extensionLocations")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtend")][QString::fromLatin1("extensionLocations")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtend")][QString::fromLatin1("extensionLocations")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtend")][QString::fromLatin1("condition")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtend")][QString::fromLatin1("condition")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtend")][QString::fromLatin1("condition")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the condition that must hold when the first extension point is reached for the extension to take place. If no constraint is associated with the extend relationship, the extension is unconditional.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtend")][QString::fromLatin1("condition")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtend")][QString::fromLatin1("condition")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtend")][QString::fromLatin1("condition")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtend")][QString::fromLatin1("condition")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtend")][QString::fromLatin1("condition")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtend")][QString::fromLatin1("condition")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the condition that must hold when the first extension point is reached for the extension to take place. If no constraint is associated with the extend relationship, the extension is unconditional.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtend")][QString::fromLatin1("condition")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtend")][QString::fromLatin1("condition")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtend")][QString::fromLatin1("condition")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::setPropertyData();
 }

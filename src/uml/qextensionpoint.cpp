@@ -119,12 +119,12 @@ void QExtensionPoint::setUseCase(QUseCase *useCase)
 
 void QExtensionPoint::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtensionPoint")][QString::fromLatin1("useCase")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtensionPoint")][QString::fromLatin1("useCase")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtensionPoint")][QString::fromLatin1("useCase")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the use case that owns this extension point.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtensionPoint")][QString::fromLatin1("useCase")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtensionPoint")][QString::fromLatin1("useCase")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamedElement::namespace");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtensionPoint")][QString::fromLatin1("useCase")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUseCase::extensionPoint");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtensionPoint")][QString::fromLatin1("useCase")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtensionPoint")][QString::fromLatin1("useCase")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtensionPoint")][QString::fromLatin1("useCase")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the use case that owns this extension point.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtensionPoint")][QString::fromLatin1("useCase")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtensionPoint")][QString::fromLatin1("useCase")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamedElement::namespace");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExtensionPoint")][QString::fromLatin1("useCase")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUseCase::extensionPoint");
 
     QRedefinableElement::setPropertyData();
 }

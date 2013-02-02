@@ -230,33 +230,33 @@ void QInteractionFragment::setEnclosingOperand(QInteractionOperand *enclosingOpe
 
 void QInteractionFragment::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionFragment")][QString::fromLatin1("generalOrderings")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionFragment")][QString::fromLatin1("generalOrderings")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionFragment")][QString::fromLatin1("generalOrderings")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The general ordering relationships contained in this fragment.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionFragment")][QString::fromLatin1("generalOrderings")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionFragment")][QString::fromLatin1("generalOrderings")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionFragment")][QString::fromLatin1("generalOrderings")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionFragment")][QString::fromLatin1("generalOrderings")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionFragment")][QString::fromLatin1("generalOrderings")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionFragment")][QString::fromLatin1("generalOrderings")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The general ordering relationships contained in this fragment.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionFragment")][QString::fromLatin1("generalOrderings")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionFragment")][QString::fromLatin1("generalOrderings")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionFragment")][QString::fromLatin1("generalOrderings")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionFragment")][QString::fromLatin1("enclosingInteraction")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionFragment")][QString::fromLatin1("enclosingInteraction")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionFragment")][QString::fromLatin1("enclosingInteraction")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The Interaction enclosing this InteractionFragment.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionFragment")][QString::fromLatin1("enclosingInteraction")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionFragment")][QString::fromLatin1("enclosingInteraction")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamedElement::namespace");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionFragment")][QString::fromLatin1("enclosingInteraction")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QInteraction::fragment");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionFragment")][QString::fromLatin1("enclosingInteraction")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionFragment")][QString::fromLatin1("enclosingInteraction")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionFragment")][QString::fromLatin1("enclosingInteraction")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The Interaction enclosing this InteractionFragment.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionFragment")][QString::fromLatin1("enclosingInteraction")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionFragment")][QString::fromLatin1("enclosingInteraction")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamedElement::namespace");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionFragment")][QString::fromLatin1("enclosingInteraction")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QInteraction::fragment");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionFragment")][QString::fromLatin1("covered")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionFragment")][QString::fromLatin1("covered")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionFragment")][QString::fromLatin1("covered")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Lifelines that the InteractionFragment involves.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionFragment")][QString::fromLatin1("covered")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionFragment")][QString::fromLatin1("covered")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionFragment")][QString::fromLatin1("covered")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QLifeline::coveredBy");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionFragment")][QString::fromLatin1("covered")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionFragment")][QString::fromLatin1("covered")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionFragment")][QString::fromLatin1("covered")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Lifelines that the InteractionFragment involves.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionFragment")][QString::fromLatin1("covered")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionFragment")][QString::fromLatin1("covered")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionFragment")][QString::fromLatin1("covered")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QLifeline::coveredBy");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionFragment")][QString::fromLatin1("enclosingOperand")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionFragment")][QString::fromLatin1("enclosingOperand")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionFragment")][QString::fromLatin1("enclosingOperand")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The operand enclosing this InteractionFragment (they may nest recursively)");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionFragment")][QString::fromLatin1("enclosingOperand")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionFragment")][QString::fromLatin1("enclosingOperand")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamedElement::namespace");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionFragment")][QString::fromLatin1("enclosingOperand")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QInteractionOperand::fragment");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionFragment")][QString::fromLatin1("enclosingOperand")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionFragment")][QString::fromLatin1("enclosingOperand")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionFragment")][QString::fromLatin1("enclosingOperand")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The operand enclosing this InteractionFragment (they may nest recursively)");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionFragment")][QString::fromLatin1("enclosingOperand")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionFragment")][QString::fromLatin1("enclosingOperand")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamedElement::namespace");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionFragment")][QString::fromLatin1("enclosingOperand")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QInteractionOperand::fragment");
 
     QNamedElement::setPropertyData();
 }

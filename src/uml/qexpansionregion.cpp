@@ -194,26 +194,26 @@ void QExpansionRegion::removeOutputElement(QExpansionNode *outputElement)
 
 void QExpansionRegion::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionRegion")][QString::fromLatin1("mode")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionRegion")][QString::fromLatin1("mode")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionRegion")][QString::fromLatin1("mode")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The way in which the executions interact: parallel: all interactions are independent iterative: the interactions occur in order of the elements stream: a stream of values flows into a single execution");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionRegion")][QString::fromLatin1("mode")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionRegion")][QString::fromLatin1("mode")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionRegion")][QString::fromLatin1("mode")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionRegion")][QString::fromLatin1("mode")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionRegion")][QString::fromLatin1("mode")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionRegion")][QString::fromLatin1("mode")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The way in which the executions interact: parallel: all interactions are independent iterative: the interactions occur in order of the elements stream: a stream of values flows into a single execution");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionRegion")][QString::fromLatin1("mode")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionRegion")][QString::fromLatin1("mode")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionRegion")][QString::fromLatin1("mode")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionRegion")][QString::fromLatin1("inputElements")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionRegion")][QString::fromLatin1("inputElements")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionRegion")][QString::fromLatin1("inputElements")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An object node that holds a separate element of the input collection during each of the multiple executions of the region.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionRegion")][QString::fromLatin1("inputElements")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionRegion")][QString::fromLatin1("inputElements")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionRegion")][QString::fromLatin1("inputElements")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QExpansionNode::regionAsInput");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionRegion")][QString::fromLatin1("inputElements")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionRegion")][QString::fromLatin1("inputElements")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionRegion")][QString::fromLatin1("inputElements")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An object node that holds a separate element of the input collection during each of the multiple executions of the region.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionRegion")][QString::fromLatin1("inputElements")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionRegion")][QString::fromLatin1("inputElements")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionRegion")][QString::fromLatin1("inputElements")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QExpansionNode::regionAsInput");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionRegion")][QString::fromLatin1("outputElements")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionRegion")][QString::fromLatin1("outputElements")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionRegion")][QString::fromLatin1("outputElements")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An object node that accepts a separate element of the output collection during each of the multiple executions of the region. The values are formed into a collection that is available when the execution of the region is complete.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionRegion")][QString::fromLatin1("outputElements")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionRegion")][QString::fromLatin1("outputElements")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionRegion")][QString::fromLatin1("outputElements")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QExpansionNode::regionAsOutput");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionRegion")][QString::fromLatin1("outputElements")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionRegion")][QString::fromLatin1("outputElements")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionRegion")][QString::fromLatin1("outputElements")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An object node that accepts a separate element of the output collection during each of the multiple executions of the region. The values are formed into a collection that is available when the execution of the region is complete.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionRegion")][QString::fromLatin1("outputElements")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionRegion")][QString::fromLatin1("outputElements")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QExpansionRegion")][QString::fromLatin1("outputElements")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QExpansionNode::regionAsOutput");
 
     QStructuredActivityNode::setPropertyData();
 }

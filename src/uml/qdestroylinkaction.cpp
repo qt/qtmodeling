@@ -119,12 +119,12 @@ void QDestroyLinkAction::removeEndData(QLinkEndDestructionData *endData)
 
 void QDestroyLinkAction::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDestroyLinkAction")][QString::fromLatin1("endData")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDestroyLinkAction")][QString::fromLatin1("endData")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDestroyLinkAction")][QString::fromLatin1("endData")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies ends of association and inputs.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDestroyLinkAction")][QString::fromLatin1("endData")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QLinkAction::endData");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDestroyLinkAction")][QString::fromLatin1("endData")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDestroyLinkAction")][QString::fromLatin1("endData")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDestroyLinkAction")][QString::fromLatin1("endData")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDestroyLinkAction")][QString::fromLatin1("endData")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDestroyLinkAction")][QString::fromLatin1("endData")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies ends of association and inputs.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDestroyLinkAction")][QString::fromLatin1("endData")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QLinkAction::endData");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDestroyLinkAction")][QString::fromLatin1("endData")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDestroyLinkAction")][QString::fromLatin1("endData")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWriteLinkAction::setPropertyData();
 }

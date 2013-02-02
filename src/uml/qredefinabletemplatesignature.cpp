@@ -349,26 +349,26 @@ bool QRedefinableTemplateSignature::isConsistentWith(const QRedefinableElement *
 
 void QRedefinableTemplateSignature::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QRedefinableTemplateSignature")][QString::fromLatin1("inheritedParameters")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QRedefinableTemplateSignature")][QString::fromLatin1("inheritedParameters")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QRedefinableTemplateSignature")][QString::fromLatin1("inheritedParameters")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The formal template parameters of the extendedSignature.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QRedefinableTemplateSignature")][QString::fromLatin1("inheritedParameters")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QRedefinableTemplateSignature")][QString::fromLatin1("inheritedParameters")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QTemplateSignature::parameters");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QRedefinableTemplateSignature")][QString::fromLatin1("inheritedParameters")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QRedefinableTemplateSignature")][QString::fromLatin1("inheritedParameters")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QRedefinableTemplateSignature")][QString::fromLatin1("inheritedParameters")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QRedefinableTemplateSignature")][QString::fromLatin1("inheritedParameters")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The formal template parameters of the extendedSignature.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QRedefinableTemplateSignature")][QString::fromLatin1("inheritedParameters")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QRedefinableTemplateSignature")][QString::fromLatin1("inheritedParameters")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QTemplateSignature::parameters");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QRedefinableTemplateSignature")][QString::fromLatin1("inheritedParameters")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QRedefinableTemplateSignature")][QString::fromLatin1("classifier")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QRedefinableTemplateSignature")][QString::fromLatin1("classifier")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QRedefinableTemplateSignature")][QString::fromLatin1("classifier")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The classifier that owns this template signature.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QRedefinableTemplateSignature")][QString::fromLatin1("classifier")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QTemplateSignature::template");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QRedefinableTemplateSignature")][QString::fromLatin1("classifier")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QRedefinableElement::redefinitionContexts");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QRedefinableTemplateSignature")][QString::fromLatin1("classifier")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QClassifier::ownedTemplateSignature");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QRedefinableTemplateSignature")][QString::fromLatin1("classifier")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QRedefinableTemplateSignature")][QString::fromLatin1("classifier")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QRedefinableTemplateSignature")][QString::fromLatin1("classifier")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The classifier that owns this template signature.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QRedefinableTemplateSignature")][QString::fromLatin1("classifier")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QTemplateSignature::template");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QRedefinableTemplateSignature")][QString::fromLatin1("classifier")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QRedefinableElement::redefinitionContexts");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QRedefinableTemplateSignature")][QString::fromLatin1("classifier")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QClassifier::ownedTemplateSignature");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QRedefinableTemplateSignature")][QString::fromLatin1("extendedSignatures")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QRedefinableTemplateSignature")][QString::fromLatin1("extendedSignatures")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QRedefinableTemplateSignature")][QString::fromLatin1("extendedSignatures")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The template signature that is extended by this template signature.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QRedefinableTemplateSignature")][QString::fromLatin1("extendedSignatures")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QRedefinableTemplateSignature")][QString::fromLatin1("extendedSignatures")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QRedefinableElement::redefinedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QRedefinableTemplateSignature")][QString::fromLatin1("extendedSignatures")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QRedefinableTemplateSignature")][QString::fromLatin1("extendedSignatures")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QRedefinableTemplateSignature")][QString::fromLatin1("extendedSignatures")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QRedefinableTemplateSignature")][QString::fromLatin1("extendedSignatures")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The template signature that is extended by this template signature.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QRedefinableTemplateSignature")][QString::fromLatin1("extendedSignatures")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QRedefinableTemplateSignature")][QString::fromLatin1("extendedSignatures")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QRedefinableElement::redefinedElements");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QRedefinableTemplateSignature")][QString::fromLatin1("extendedSignatures")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::setPropertyData();
 }

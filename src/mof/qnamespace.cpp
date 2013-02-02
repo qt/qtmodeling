@@ -375,47 +375,47 @@ bool QNamespace::membersAreDistinguishable() const
 
 void QNamespace::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("packageImports")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("packageImports")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("packageImports")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the PackageImports owned by the Namespace.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("packageImports")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("packageImports")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("packageImports")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QPackageImport::importingNamespace");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("packageImports")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("packageImports")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("packageImports")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the PackageImports owned by the Namespace.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("packageImports")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("packageImports")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("packageImports")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QPackageImport::importingNamespace");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("members")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("members")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = true;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("members")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A collection of NamedElements identifiable within the Namespace, either by being owned or by being introduced by importing or inheritance.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("members")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("members")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("members")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("members")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("members")][QtWrappedObjects::IsDerivedUnionRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("members")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A collection of NamedElements identifiable within the Namespace, either by being owned or by being introduced by importing or inheritance.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("members")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("members")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("members")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("importedMembers")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("importedMembers")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("importedMembers")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("importedMembers")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("importedMembers")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamespace::members");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("importedMembers")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("importedMembers")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("importedMembers")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("importedMembers")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("importedMembers")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("importedMembers")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamespace::members");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("importedMembers")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("elementImports")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("elementImports")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("elementImports")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the ElementImports owned by the Namespace.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("elementImports")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("elementImports")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("elementImports")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QElementImport::importingNamespace");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("elementImports")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("elementImports")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("elementImports")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the ElementImports owned by the Namespace.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("elementImports")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("elementImports")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("elementImports")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QElementImport::importingNamespace");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("ownedRules")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("ownedRules")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("ownedRules")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies a set of Constraints owned by this Namespace.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("ownedRules")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("ownedRules")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamespace::ownedMembers");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("ownedRules")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QConstraint::context");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("ownedRules")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("ownedRules")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("ownedRules")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies a set of Constraints owned by this Namespace.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("ownedRules")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("ownedRules")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamespace::ownedMembers");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("ownedRules")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QConstraint::context");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("ownedMembers")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("ownedMembers")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = true;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("ownedMembers")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A collection of NamedElements owned by the Namespace.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("ownedMembers")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("ownedMembers")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements QNamespace::members");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("ownedMembers")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QNamedElement::namespace");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("ownedMembers")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("ownedMembers")][QtWrappedObjects::IsDerivedUnionRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("ownedMembers")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A collection of NamedElements owned by the Namespace.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("ownedMembers")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("ownedMembers")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements QNamespace::members");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNamespace")][QString::fromLatin1("ownedMembers")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QNamedElement::namespace");
 
     QNamedElement::setPropertyData();
 }

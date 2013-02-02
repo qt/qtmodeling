@@ -131,19 +131,19 @@ void QDecisionNode::setDecisionInput(QBehavior *decisionInput)
 
 void QDecisionNode::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDecisionNode")][QString::fromLatin1("decisionInputFlow")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDecisionNode")][QString::fromLatin1("decisionInputFlow")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDecisionNode")][QString::fromLatin1("decisionInputFlow")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An additional edge incoming to the decision node that provides a decision input value.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDecisionNode")][QString::fromLatin1("decisionInputFlow")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDecisionNode")][QString::fromLatin1("decisionInputFlow")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDecisionNode")][QString::fromLatin1("decisionInputFlow")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDecisionNode")][QString::fromLatin1("decisionInputFlow")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDecisionNode")][QString::fromLatin1("decisionInputFlow")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDecisionNode")][QString::fromLatin1("decisionInputFlow")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An additional edge incoming to the decision node that provides a decision input value.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDecisionNode")][QString::fromLatin1("decisionInputFlow")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDecisionNode")][QString::fromLatin1("decisionInputFlow")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDecisionNode")][QString::fromLatin1("decisionInputFlow")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDecisionNode")][QString::fromLatin1("decisionInput")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDecisionNode")][QString::fromLatin1("decisionInput")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDecisionNode")][QString::fromLatin1("decisionInput")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Provides input to guard specifications on edges outgoing from the decision node.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDecisionNode")][QString::fromLatin1("decisionInput")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDecisionNode")][QString::fromLatin1("decisionInput")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDecisionNode")][QString::fromLatin1("decisionInput")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDecisionNode")][QString::fromLatin1("decisionInput")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDecisionNode")][QString::fromLatin1("decisionInput")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDecisionNode")][QString::fromLatin1("decisionInput")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Provides input to guard specifications on edges outgoing from the decision node.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDecisionNode")][QString::fromLatin1("decisionInput")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDecisionNode")][QString::fromLatin1("decisionInput")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDecisionNode")][QString::fromLatin1("decisionInput")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QControlNode::setPropertyData();
 }

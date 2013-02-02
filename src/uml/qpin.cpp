@@ -625,12 +625,12 @@ void QPin::unsetControl()
 
 void QPin::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QPin")][QString::fromLatin1("isControl")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QPin")][QString::fromLatin1("isControl")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QPin")][QString::fromLatin1("isControl")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Tells whether the pins provide data to the actions, or just controls when it executes it.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QPin")][QString::fromLatin1("isControl")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QPin")][QString::fromLatin1("isControl")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QPin")][QString::fromLatin1("isControl")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QPin")][QString::fromLatin1("isControl")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QPin")][QString::fromLatin1("isControl")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QPin")][QString::fromLatin1("isControl")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Tells whether the pins provide data to the actions, or just controls when it executes it.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QPin")][QString::fromLatin1("isControl")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QPin")][QString::fromLatin1("isControl")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QPin")][QString::fromLatin1("isControl")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::setPropertyData();
 }
