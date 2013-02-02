@@ -139,19 +139,19 @@ void QStructuralFeatureAction::setStructuralFeature(QStructuralFeature *structur
 
 void QStructuralFeatureAction::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuralFeatureAction")][QString::fromLatin1("object")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuralFeatureAction")][QString::fromLatin1("object")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuralFeatureAction")][QString::fromLatin1("object")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Gives the input pin from which the object whose structural feature is to be read or written is obtained.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuralFeatureAction")][QString::fromLatin1("object")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuralFeatureAction")][QString::fromLatin1("object")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QAction::inputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuralFeatureAction")][QString::fromLatin1("object")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuralFeatureAction")][QString::fromLatin1("object")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuralFeatureAction")][QString::fromLatin1("object")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuralFeatureAction")][QString::fromLatin1("object")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Gives the input pin from which the object whose structural feature is to be read or written is obtained.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuralFeatureAction")][QString::fromLatin1("object")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuralFeatureAction")][QString::fromLatin1("object")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QAction::inputs");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuralFeatureAction")][QString::fromLatin1("object")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuralFeatureAction")][QString::fromLatin1("structuralFeature")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuralFeatureAction")][QString::fromLatin1("structuralFeature")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuralFeatureAction")][QString::fromLatin1("structuralFeature")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Structural feature to be read.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuralFeatureAction")][QString::fromLatin1("structuralFeature")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuralFeatureAction")][QString::fromLatin1("structuralFeature")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuralFeatureAction")][QString::fromLatin1("structuralFeature")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuralFeatureAction")][QString::fromLatin1("structuralFeature")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuralFeatureAction")][QString::fromLatin1("structuralFeature")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuralFeatureAction")][QString::fromLatin1("structuralFeature")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Structural feature to be read.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuralFeatureAction")][QString::fromLatin1("structuralFeature")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuralFeatureAction")][QString::fromLatin1("structuralFeature")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuralFeatureAction")][QString::fromLatin1("structuralFeature")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QAction::setPropertyData();
 }

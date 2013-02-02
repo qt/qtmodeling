@@ -454,19 +454,19 @@ bool QVariable::isAccessibleBy(const QAction *a) const
 
 void QVariable::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QVariable")][QString::fromLatin1("scope")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QVariable")][QString::fromLatin1("scope")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QVariable")][QString::fromLatin1("scope")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A structured activity node that owns the variable.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QVariable")][QString::fromLatin1("scope")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QVariable")][QString::fromLatin1("scope")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamedElement::namespace");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QVariable")][QString::fromLatin1("scope")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QStructuredActivityNode::variable");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QVariable")][QString::fromLatin1("scope")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QVariable")][QString::fromLatin1("scope")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QVariable")][QString::fromLatin1("scope")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A structured activity node that owns the variable.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QVariable")][QString::fromLatin1("scope")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QVariable")][QString::fromLatin1("scope")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamedElement::namespace");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QVariable")][QString::fromLatin1("scope")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QStructuredActivityNode::variable");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QVariable")][QString::fromLatin1("activityScope")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QVariable")][QString::fromLatin1("activityScope")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QVariable")][QString::fromLatin1("activityScope")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An activity that owns the variable.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QVariable")][QString::fromLatin1("activityScope")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QVariable")][QString::fromLatin1("activityScope")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamedElement::namespace");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QVariable")][QString::fromLatin1("activityScope")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QActivity::variable");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QVariable")][QString::fromLatin1("activityScope")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QVariable")][QString::fromLatin1("activityScope")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QVariable")][QString::fromLatin1("activityScope")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An activity that owns the variable.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QVariable")][QString::fromLatin1("activityScope")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QVariable")][QString::fromLatin1("activityScope")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamedElement::namespace");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QVariable")][QString::fromLatin1("activityScope")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QActivity::variable");
 
     QWrappedObject::setPropertyData();
 }

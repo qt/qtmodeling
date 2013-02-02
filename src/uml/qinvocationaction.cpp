@@ -146,19 +146,19 @@ void QInvocationAction::setOnPort(QPort *onPort)
 
 void QInvocationAction::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInvocationAction")][QString::fromLatin1("arguments")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInvocationAction")][QString::fromLatin1("arguments")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInvocationAction")][QString::fromLatin1("arguments")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specification of the ordered set of argument values that appears during execution.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInvocationAction")][QString::fromLatin1("arguments")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInvocationAction")][QString::fromLatin1("arguments")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QAction::inputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInvocationAction")][QString::fromLatin1("arguments")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInvocationAction")][QString::fromLatin1("arguments")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInvocationAction")][QString::fromLatin1("arguments")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInvocationAction")][QString::fromLatin1("arguments")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specification of the ordered set of argument values that appears during execution.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInvocationAction")][QString::fromLatin1("arguments")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInvocationAction")][QString::fromLatin1("arguments")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QAction::inputs");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInvocationAction")][QString::fromLatin1("arguments")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInvocationAction")][QString::fromLatin1("onPort")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInvocationAction")][QString::fromLatin1("onPort")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInvocationAction")][QString::fromLatin1("onPort")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A optional port of the receiver object on which the behavioral feature is invoked.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInvocationAction")][QString::fromLatin1("onPort")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInvocationAction")][QString::fromLatin1("onPort")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInvocationAction")][QString::fromLatin1("onPort")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInvocationAction")][QString::fromLatin1("onPort")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInvocationAction")][QString::fromLatin1("onPort")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInvocationAction")][QString::fromLatin1("onPort")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A optional port of the receiver object on which the behavioral feature is invoked.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInvocationAction")][QString::fromLatin1("onPort")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInvocationAction")][QString::fromLatin1("onPort")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInvocationAction")][QString::fromLatin1("onPort")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QAction::setPropertyData();
 }

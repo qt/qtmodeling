@@ -178,26 +178,26 @@ void QClassifierTemplateParameter::removeConstrainingClassifier(QClassifier *con
 
 void QClassifierTemplateParameter::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifierTemplateParameter")][QString::fromLatin1("allowSubstitutable")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifierTemplateParameter")][QString::fromLatin1("allowSubstitutable")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifierTemplateParameter")][QString::fromLatin1("allowSubstitutable")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Constrains the required relationship between an actual parameter and the parameteredElement for this formal parameter.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifierTemplateParameter")][QString::fromLatin1("allowSubstitutable")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifierTemplateParameter")][QString::fromLatin1("allowSubstitutable")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifierTemplateParameter")][QString::fromLatin1("allowSubstitutable")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifierTemplateParameter")][QString::fromLatin1("allowSubstitutable")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifierTemplateParameter")][QString::fromLatin1("allowSubstitutable")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifierTemplateParameter")][QString::fromLatin1("allowSubstitutable")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Constrains the required relationship between an actual parameter and the parameteredElement for this formal parameter.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifierTemplateParameter")][QString::fromLatin1("allowSubstitutable")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifierTemplateParameter")][QString::fromLatin1("allowSubstitutable")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifierTemplateParameter")][QString::fromLatin1("allowSubstitutable")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifierTemplateParameter")][QString::fromLatin1("parameteredElement")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifierTemplateParameter")][QString::fromLatin1("parameteredElement")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifierTemplateParameter")][QString::fromLatin1("parameteredElement")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The parameterable classifier for this template parameter.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifierTemplateParameter")][QString::fromLatin1("parameteredElement")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QTemplateParameter::parameteredElement");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifierTemplateParameter")][QString::fromLatin1("parameteredElement")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifierTemplateParameter")][QString::fromLatin1("parameteredElement")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QClassifier::templateParameter");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifierTemplateParameter")][QString::fromLatin1("parameteredElement")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifierTemplateParameter")][QString::fromLatin1("parameteredElement")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifierTemplateParameter")][QString::fromLatin1("parameteredElement")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The parameterable classifier for this template parameter.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifierTemplateParameter")][QString::fromLatin1("parameteredElement")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QTemplateParameter::parameteredElement");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifierTemplateParameter")][QString::fromLatin1("parameteredElement")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifierTemplateParameter")][QString::fromLatin1("parameteredElement")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QClassifier::templateParameter");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifierTemplateParameter")][QString::fromLatin1("constrainingClassifiers")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifierTemplateParameter")][QString::fromLatin1("constrainingClassifiers")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifierTemplateParameter")][QString::fromLatin1("constrainingClassifiers")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The classifiers that constrain the argument that can be used for the parameter. If the allowSubstitutable attribute is true, then any classifier that is compatible with this constraining classifier can be substituted; otherwise, it must be either this classifier or one of its subclasses. If this property is empty, there are no constraints on the classifier that can be used as an argument.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifierTemplateParameter")][QString::fromLatin1("constrainingClassifiers")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifierTemplateParameter")][QString::fromLatin1("constrainingClassifiers")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifierTemplateParameter")][QString::fromLatin1("constrainingClassifiers")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifierTemplateParameter")][QString::fromLatin1("constrainingClassifiers")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifierTemplateParameter")][QString::fromLatin1("constrainingClassifiers")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifierTemplateParameter")][QString::fromLatin1("constrainingClassifiers")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The classifiers that constrain the argument that can be used for the parameter. If the allowSubstitutable attribute is true, then any classifier that is compatible with this constraining classifier can be substituted; otherwise, it must be either this classifier or one of its subclasses. If this property is empty, there are no constraints on the classifier that can be used as an argument.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifierTemplateParameter")][QString::fromLatin1("constrainingClassifiers")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifierTemplateParameter")][QString::fromLatin1("constrainingClassifiers")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QClassifierTemplateParameter")][QString::fromLatin1("constrainingClassifiers")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QTemplateParameter::setPropertyData();
 }

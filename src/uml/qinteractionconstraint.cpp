@@ -146,19 +146,19 @@ void QInteractionConstraint::setMinint(QValueSpecification *minint)
 
 void QInteractionConstraint::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionConstraint")][QString::fromLatin1("maxint")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionConstraint")][QString::fromLatin1("maxint")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionConstraint")][QString::fromLatin1("maxint")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The maximum number of iterations of a loop");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionConstraint")][QString::fromLatin1("maxint")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionConstraint")][QString::fromLatin1("maxint")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionConstraint")][QString::fromLatin1("maxint")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionConstraint")][QString::fromLatin1("maxint")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionConstraint")][QString::fromLatin1("maxint")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionConstraint")][QString::fromLatin1("maxint")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The maximum number of iterations of a loop");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionConstraint")][QString::fromLatin1("maxint")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionConstraint")][QString::fromLatin1("maxint")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionConstraint")][QString::fromLatin1("maxint")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionConstraint")][QString::fromLatin1("minint")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionConstraint")][QString::fromLatin1("minint")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionConstraint")][QString::fromLatin1("minint")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The minimum number of iterations of a loop");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionConstraint")][QString::fromLatin1("minint")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionConstraint")][QString::fromLatin1("minint")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionConstraint")][QString::fromLatin1("minint")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionConstraint")][QString::fromLatin1("minint")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionConstraint")][QString::fromLatin1("minint")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionConstraint")][QString::fromLatin1("minint")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The minimum number of iterations of a loop");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionConstraint")][QString::fromLatin1("minint")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionConstraint")][QString::fromLatin1("minint")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QInteractionConstraint")][QString::fromLatin1("minint")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QConstraint::setPropertyData();
 }

@@ -108,12 +108,12 @@ void QActionExecutionSpecification::setAction(QAction *action)
 
 void QActionExecutionSpecification::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QActionExecutionSpecification")][QString::fromLatin1("action")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QActionExecutionSpecification")][QString::fromLatin1("action")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QActionExecutionSpecification")][QString::fromLatin1("action")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Action whose execution is occurring.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QActionExecutionSpecification")][QString::fromLatin1("action")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QActionExecutionSpecification")][QString::fromLatin1("action")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QActionExecutionSpecification")][QString::fromLatin1("action")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActionExecutionSpecification")][QString::fromLatin1("action")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActionExecutionSpecification")][QString::fromLatin1("action")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActionExecutionSpecification")][QString::fromLatin1("action")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Action whose execution is occurring.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActionExecutionSpecification")][QString::fromLatin1("action")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActionExecutionSpecification")][QString::fromLatin1("action")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActionExecutionSpecification")][QString::fromLatin1("action")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QExecutionSpecification::setPropertyData();
 }

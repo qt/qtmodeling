@@ -163,19 +163,19 @@ void QComponentRealization::removeRealizingClassifier(QClassifier *realizingClas
 
 void QComponentRealization::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QComponentRealization")][QString::fromLatin1("abstraction")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QComponentRealization")][QString::fromLatin1("abstraction")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QComponentRealization")][QString::fromLatin1("abstraction")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The Component that owns this ComponentRealization and which is implemented by its realizing classifiers.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QComponentRealization")][QString::fromLatin1("abstraction")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QComponentRealization")][QString::fromLatin1("abstraction")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QDependency::suppliers QElement::owner");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QComponentRealization")][QString::fromLatin1("abstraction")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QComponent::realization");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QComponentRealization")][QString::fromLatin1("abstraction")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QComponentRealization")][QString::fromLatin1("abstraction")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QComponentRealization")][QString::fromLatin1("abstraction")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The Component that owns this ComponentRealization and which is implemented by its realizing classifiers.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QComponentRealization")][QString::fromLatin1("abstraction")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QComponentRealization")][QString::fromLatin1("abstraction")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QDependency::suppliers QElement::owner");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QComponentRealization")][QString::fromLatin1("abstraction")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QComponent::realization");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QComponentRealization")][QString::fromLatin1("realizingClassifiers")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QComponentRealization")][QString::fromLatin1("realizingClassifiers")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QComponentRealization")][QString::fromLatin1("realizingClassifiers")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The classifiers that are involved in the implementation of the Component that owns this Realization.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QComponentRealization")][QString::fromLatin1("realizingClassifiers")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QComponentRealization")][QString::fromLatin1("realizingClassifiers")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QDependency::clients");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QComponentRealization")][QString::fromLatin1("realizingClassifiers")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QComponentRealization")][QString::fromLatin1("realizingClassifiers")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QComponentRealization")][QString::fromLatin1("realizingClassifiers")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QComponentRealization")][QString::fromLatin1("realizingClassifiers")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The classifiers that are involved in the implementation of the Component that owns this Realization.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QComponentRealization")][QString::fromLatin1("realizingClassifiers")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QComponentRealization")][QString::fromLatin1("realizingClassifiers")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QDependency::clients");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QComponentRealization")][QString::fromLatin1("realizingClassifiers")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QRealization::setPropertyData();
 }

@@ -140,19 +140,19 @@ void QTrigger::setEvent(QEvent *event)
 
 void QTrigger::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTrigger")][QString::fromLatin1("ports")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTrigger")][QString::fromLatin1("ports")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTrigger")][QString::fromLatin1("ports")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A optional port of the receiver object on which the behavioral feature is invoked.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTrigger")][QString::fromLatin1("ports")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTrigger")][QString::fromLatin1("ports")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTrigger")][QString::fromLatin1("ports")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTrigger")][QString::fromLatin1("ports")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTrigger")][QString::fromLatin1("ports")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTrigger")][QString::fromLatin1("ports")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A optional port of the receiver object on which the behavioral feature is invoked.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTrigger")][QString::fromLatin1("ports")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTrigger")][QString::fromLatin1("ports")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTrigger")][QString::fromLatin1("ports")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTrigger")][QString::fromLatin1("event")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTrigger")][QString::fromLatin1("event")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTrigger")][QString::fromLatin1("event")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The event that causes the trigger.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTrigger")][QString::fromLatin1("event")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTrigger")][QString::fromLatin1("event")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTrigger")][QString::fromLatin1("event")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTrigger")][QString::fromLatin1("event")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTrigger")][QString::fromLatin1("event")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTrigger")][QString::fromLatin1("event")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The event that causes the trigger.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTrigger")][QString::fromLatin1("event")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTrigger")][QString::fromLatin1("event")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTrigger")][QString::fromLatin1("event")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QNamedElement::setPropertyData();
 }

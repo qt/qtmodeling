@@ -82,7 +82,7 @@ void QWrappedObjectViewPrivate::populateContextMenu(QMenu &menu, QWrappedObject 
                 actionText = QObject::tr("Set %1").arg(modifiedPropertyName);
             }
             int metaMethodIndex;
-            if ((metaMethodIndex = element->metaObject()->indexOfMethod(methodSignature.toLatin1())) != -1 and !visitedAddMethods.contains(actionText)) {
+            if ((metaMethodIndex = element->metaObject()->indexOfMethod(methodSignature.toLatin1())) != -1 && !visitedAddMethods.contains(actionText)) {
                 QAction *action = new QAction(actionText, q);
                 visitedAddMethods[actionText] = QPair<QObject *, QMetaMethod>(element, element->metaObject()->method(metaMethodIndex));
                 action->setData(propertyType);
@@ -230,7 +230,7 @@ void QWrappedObjectView::removeObjectUse(QWrappedObject *container, QWrappedObje
                     container->metaObject()->method(metaMethodIndex).invoke(container, ::Q_ARG(QObject *, 0));
                 }
             }
-            else if (QWrappedObject::propertyData(QString::fromLatin1(metaWrappedObject->property(i).propertyMetaObject->className()), metaWrappedObject->property(i).metaProperty, QtWrappedObjects::QtWrappedObjects::AggregationRole).toString() == QString::fromLatin1("composite"))
+            else if (QWrappedObject::propertyData(QString::fromLatin1(metaWrappedObject->property(i).propertyMetaObject->className()), metaWrappedObject->property(i).metaProperty, QtWrappedObjects::AggregationRole).toString() == QString::fromLatin1("composite"))
                 removeObjectUse(object, usedObject);
         }
         else if (typeName.contains(QString::fromLatin1("QSet")) && variant.isValid()) {
@@ -244,7 +244,7 @@ void QWrappedObjectView::removeObjectUse(QWrappedObject *container, QWrappedObje
                             container->metaObject()->method(metaMethodIndex).invoke(container, ::Q_ARG(QObject *, usedObject));
                         }
                     }
-                    else if (QWrappedObject::propertyData(QString::fromLatin1(metaWrappedObject->property(i).propertyMetaObject->className()), metaWrappedObject->property(i).metaProperty, QtWrappedObjects::QtWrappedObjects::AggregationRole).toString() == QString::fromLatin1("composite"))
+                    else if (QWrappedObject::propertyData(QString::fromLatin1(metaWrappedObject->property(i).propertyMetaObject->className()), metaWrappedObject->property(i).metaProperty, QtWrappedObjects::AggregationRole).toString() == QString::fromLatin1("composite"))
                         removeObjectUse(object, usedObject);                }
             }
         }
@@ -259,7 +259,7 @@ void QWrappedObjectView::removeObjectUse(QWrappedObject *container, QWrappedObje
                             container->metaObject()->method(metaMethodIndex).invoke(container, ::Q_ARG(QObject *, usedObject));
                         }
                     }
-                    else if (QWrappedObject::propertyData(QString::fromLatin1(metaWrappedObject->property(i).propertyMetaObject->className()), metaWrappedObject->property(i).metaProperty, QtWrappedObjects::QtWrappedObjects::AggregationRole).toString() == QString::fromLatin1("composite"))
+                    else if (QWrappedObject::propertyData(QString::fromLatin1(metaWrappedObject->property(i).propertyMetaObject->className()), metaWrappedObject->property(i).metaProperty, QtWrappedObjects::AggregationRole).toString() == QString::fromLatin1("composite"))
                         removeObjectUse(object, usedObject);
                 }
             }

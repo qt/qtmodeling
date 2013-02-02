@@ -116,12 +116,12 @@ void QActionInputPin::setFromAction(QAction *fromAction)
 
 void QActionInputPin::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QActionInputPin")][QString::fromLatin1("fromAction")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QActionInputPin")][QString::fromLatin1("fromAction")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QActionInputPin")][QString::fromLatin1("fromAction")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The action used to provide values.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QActionInputPin")][QString::fromLatin1("fromAction")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QActionInputPin")][QString::fromLatin1("fromAction")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QActionInputPin")][QString::fromLatin1("fromAction")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActionInputPin")][QString::fromLatin1("fromAction")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActionInputPin")][QString::fromLatin1("fromAction")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActionInputPin")][QString::fromLatin1("fromAction")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The action used to provide values.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActionInputPin")][QString::fromLatin1("fromAction")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActionInputPin")][QString::fromLatin1("fromAction")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QActionInputPin")][QString::fromLatin1("fromAction")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QInputPin::setPropertyData();
 }

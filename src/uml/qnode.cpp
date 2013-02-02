@@ -274,12 +274,12 @@ void QNode::removeNestedNode(QNode *nestedNode)
 
 void QNode::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QNode")][QString::fromLatin1("nestedNodes")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QNode")][QString::fromLatin1("nestedNodes")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QNode")][QString::fromLatin1("nestedNodes")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The Nodes that are defined (nested) within the Node.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QNode")][QString::fromLatin1("nestedNodes")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QNode")][QString::fromLatin1("nestedNodes")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamespace::ownedMembers");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QNode")][QString::fromLatin1("nestedNodes")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNode")][QString::fromLatin1("nestedNodes")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNode")][QString::fromLatin1("nestedNodes")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNode")][QString::fromLatin1("nestedNodes")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The Nodes that are defined (nested) within the Node.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNode")][QString::fromLatin1("nestedNodes")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNode")][QString::fromLatin1("nestedNodes")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamespace::ownedMembers");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QNode")][QString::fromLatin1("nestedNodes")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::setPropertyData();
 }

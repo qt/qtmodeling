@@ -150,19 +150,19 @@ void QTimeEvent::setWhen(QTimeExpression *when)
 
 void QTimeEvent::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeEvent")][QString::fromLatin1("isRelative")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeEvent")][QString::fromLatin1("isRelative")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeEvent")][QString::fromLatin1("isRelative")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies whether it is relative or absolute time.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeEvent")][QString::fromLatin1("isRelative")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeEvent")][QString::fromLatin1("isRelative")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeEvent")][QString::fromLatin1("isRelative")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeEvent")][QString::fromLatin1("isRelative")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeEvent")][QString::fromLatin1("isRelative")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeEvent")][QString::fromLatin1("isRelative")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies whether it is relative or absolute time.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeEvent")][QString::fromLatin1("isRelative")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeEvent")][QString::fromLatin1("isRelative")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeEvent")][QString::fromLatin1("isRelative")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeEvent")][QString::fromLatin1("when")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeEvent")][QString::fromLatin1("when")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeEvent")][QString::fromLatin1("when")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the corresponding time deadline.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeEvent")][QString::fromLatin1("when")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeEvent")][QString::fromLatin1("when")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeEvent")][QString::fromLatin1("when")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeEvent")][QString::fromLatin1("when")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeEvent")][QString::fromLatin1("when")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeEvent")][QString::fromLatin1("when")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the corresponding time deadline.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeEvent")][QString::fromLatin1("when")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeEvent")][QString::fromLatin1("when")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeEvent")][QString::fromLatin1("when")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QEvent::setPropertyData();
 }

@@ -194,33 +194,33 @@ void QObjectFlow::setTransformation(QBehavior *transformation)
 
 void QObjectFlow::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectFlow")][QString::fromLatin1("isMultireceive")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectFlow")][QString::fromLatin1("isMultireceive")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectFlow")][QString::fromLatin1("isMultireceive")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Tells whether the objects in the flow are gathered from respondents to multicasting.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectFlow")][QString::fromLatin1("isMultireceive")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectFlow")][QString::fromLatin1("isMultireceive")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectFlow")][QString::fromLatin1("isMultireceive")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectFlow")][QString::fromLatin1("isMultireceive")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectFlow")][QString::fromLatin1("isMultireceive")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectFlow")][QString::fromLatin1("isMultireceive")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Tells whether the objects in the flow are gathered from respondents to multicasting.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectFlow")][QString::fromLatin1("isMultireceive")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectFlow")][QString::fromLatin1("isMultireceive")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectFlow")][QString::fromLatin1("isMultireceive")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectFlow")][QString::fromLatin1("isMulticast")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectFlow")][QString::fromLatin1("isMulticast")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectFlow")][QString::fromLatin1("isMulticast")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Tells whether the objects in the flow are passed by multicasting.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectFlow")][QString::fromLatin1("isMulticast")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectFlow")][QString::fromLatin1("isMulticast")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectFlow")][QString::fromLatin1("isMulticast")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectFlow")][QString::fromLatin1("isMulticast")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectFlow")][QString::fromLatin1("isMulticast")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectFlow")][QString::fromLatin1("isMulticast")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Tells whether the objects in the flow are passed by multicasting.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectFlow")][QString::fromLatin1("isMulticast")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectFlow")][QString::fromLatin1("isMulticast")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectFlow")][QString::fromLatin1("isMulticast")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectFlow")][QString::fromLatin1("selection")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectFlow")][QString::fromLatin1("selection")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectFlow")][QString::fromLatin1("selection")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Selects tokens from a source object node.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectFlow")][QString::fromLatin1("selection")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectFlow")][QString::fromLatin1("selection")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectFlow")][QString::fromLatin1("selection")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectFlow")][QString::fromLatin1("selection")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectFlow")][QString::fromLatin1("selection")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectFlow")][QString::fromLatin1("selection")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Selects tokens from a source object node.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectFlow")][QString::fromLatin1("selection")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectFlow")][QString::fromLatin1("selection")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectFlow")][QString::fromLatin1("selection")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectFlow")][QString::fromLatin1("transformation")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectFlow")][QString::fromLatin1("transformation")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectFlow")][QString::fromLatin1("transformation")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Changes or replaces data tokens flowing along edge.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectFlow")][QString::fromLatin1("transformation")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectFlow")][QString::fromLatin1("transformation")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectFlow")][QString::fromLatin1("transformation")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectFlow")][QString::fromLatin1("transformation")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectFlow")][QString::fromLatin1("transformation")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectFlow")][QString::fromLatin1("transformation")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Changes or replaces data tokens flowing along edge.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectFlow")][QString::fromLatin1("transformation")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectFlow")][QString::fromLatin1("transformation")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectFlow")][QString::fromLatin1("transformation")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QActivityEdge::setPropertyData();
 }

@@ -147,19 +147,19 @@ void QTimeExpression::setExpr(QValueSpecification *expr)
 
 void QTimeExpression::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeExpression")][QString::fromLatin1("observations")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeExpression")][QString::fromLatin1("observations")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeExpression")][QString::fromLatin1("observations")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Refers to the time and duration observations that are involved in expr.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeExpression")][QString::fromLatin1("observations")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeExpression")][QString::fromLatin1("observations")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeExpression")][QString::fromLatin1("observations")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeExpression")][QString::fromLatin1("observations")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeExpression")][QString::fromLatin1("observations")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeExpression")][QString::fromLatin1("observations")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Refers to the time and duration observations that are involved in expr.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeExpression")][QString::fromLatin1("observations")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeExpression")][QString::fromLatin1("observations")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeExpression")][QString::fromLatin1("observations")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeExpression")][QString::fromLatin1("expr")][QtWrappedObjects::QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeExpression")][QString::fromLatin1("expr")][QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeExpression")][QString::fromLatin1("expr")][QtWrappedObjects::QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The value of the time expression.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeExpression")][QString::fromLatin1("expr")][QtWrappedObjects::QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeExpression")][QString::fromLatin1("expr")][QtWrappedObjects::QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeExpression")][QString::fromLatin1("expr")][QtWrappedObjects::QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeExpression")][QString::fromLatin1("expr")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeExpression")][QString::fromLatin1("expr")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeExpression")][QString::fromLatin1("expr")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The value of the time expression.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeExpression")][QString::fromLatin1("expr")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeExpression")][QString::fromLatin1("expr")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QTimeExpression")][QString::fromLatin1("expr")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QValueSpecification::setPropertyData();
 }
