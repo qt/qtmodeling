@@ -41,6 +41,7 @@
 #ifndef PROPERTYEDITORITEMDELEGATE_P_H
 #define PROPERTYEDITORITEMDELEGATE_P_H
 
+#include <QtWrappedObjectsWidgets/QtWrappedObjectsWidgetsGlobal>
 #include <QtWidgets/QStyledItemDelegate>
 
 QT_BEGIN_HEADER
@@ -49,7 +50,7 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtWrappedObjectsWidgets)
 
-class Q_CORE_EXPORT PropertyEditorItemDelegate : public QStyledItemDelegate
+class Q_WRAPPEDOBJECTSWIDGETS_EXPORT PropertyEditorItemDelegate : public QStyledItemDelegate
 {
     Q_OBJECT
 
