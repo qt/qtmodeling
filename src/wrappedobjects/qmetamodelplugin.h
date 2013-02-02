@@ -41,6 +41,7 @@
 #ifndef QTWRAPPEDOBJECTS_QMETAMODELPLUGIN_H
 #define QTWRAPPEDOBJECTS_QMETAMODELPLUGIN_H
 
+#include <QtCore/qglobal.h>
 #include <QtCore/QObject>
 
 QT_BEGIN_HEADER

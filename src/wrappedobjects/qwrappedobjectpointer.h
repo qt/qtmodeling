@@ -41,6 +41,7 @@
 #ifndef QTWRAPPEDOBJECTS_QWRAPPEDOBJECTPOINTER_H
 #define QTWRAPPEDOBJECTS_QWRAPPEDOBJECTPOINTER_H
 
+#include <QtCore/qglobal.h>
 #include <QtCore/QPointer>
 
 #include "qwrappedobject.h"

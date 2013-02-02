@@ -41,6 +41,7 @@
 #ifndef QTWRAPPEDOBJECTS_QWRAPPEDOBJECT_P_H
 #define QTWRAPPEDOBJECTS_QWRAPPEDOBJECT_P_H
 
+#include <QtCore/qglobal.h>
 #include "private/qobject_p.h"
 
 #include <QtCore/QStringList>

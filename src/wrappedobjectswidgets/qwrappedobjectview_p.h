@@ -41,6 +41,7 @@
 #ifndef QWRAPPEDOBJECTVIEW_P_H
 #define QWRAPPEDOBJECTVIEW_P_H
 
+#include <QtCore/qglobal.h>
 #include "private/qwidget_p.h"
 
 QT_BEGIN_HEADER

@@ -41,6 +41,7 @@
 #ifndef QWRAPPEDOBJECTPROPERTYFILTERMODEL_H
 #define QWRAPPEDOBJECTPROPERTYFILTERMODEL_H
 
+#include <QtCore/qglobal.h>
 #include <QSortFilterProxyModel>
 
 QT_BEGIN_HEADER
