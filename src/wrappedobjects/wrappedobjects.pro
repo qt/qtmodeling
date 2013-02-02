@@ -28,6 +28,7 @@ SOURCES += \
     qwrappedobject.cpp \
     qmetamodelplugin.cpp \
     qmetawrappedobject.cpp \
+    qwrappedobjectpointer.cpp \
     qtwrappedobjectsnamespace.cpp
 
 HEADERS += $$PUBLIC_HEADERS $$PRIVATE_HEADERS
