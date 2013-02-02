@@ -41,11 +41,12 @@
 #ifndef QWRAPPEDOBJECTPROPERTYEDITOR_P_H
 #define QWRAPPEDOBJECTPROPERTYEDITOR_P_H
 
+#include <QtCore/qglobal.h>
+#include "private/qwidget_p.h"
+
 #include <QtWidgets/QHBoxLayout>
 
 #include <QtWrappedObjects/QWrappedObject>
-
-#include "private/qwidget_p.h"
 
 QT_BEGIN_HEADER
 

@@ -41,6 +41,7 @@
 #ifndef QTWRAPPEDOBJECTS_QXMIREADER_H
 #define QTWRAPPEDOBJECTS_QXMIREADER_H
 
+#include <QtCore/qglobal.h>
 #include <QtCore/QObject>
 
 QT_BEGIN_HEADER

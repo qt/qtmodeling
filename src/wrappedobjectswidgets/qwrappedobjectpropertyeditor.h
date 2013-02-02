@@ -41,6 +41,7 @@
 #ifndef QWRAPPEDOBJECTPROPERTYEDITOR_H
 #define QWRAPPEDOBJECTPROPERTYEDITOR_H
 
+#include <QtCore/qglobal.h>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_HEADER

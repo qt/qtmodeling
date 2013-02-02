@@ -41,6 +41,7 @@
 #ifndef QWRAPPEDOBJECTPROPERTYMODEL_H
 #define QWRAPPEDOBJECTPROPERTYMODEL_H
 
+#include <QtCore/qglobal.h>
 #include <QAbstractItemModel>
 
 QT_BEGIN_HEADER

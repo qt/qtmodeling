@@ -41,6 +41,7 @@
 #ifndef QTWRAPPEDOBJECTS_QMETAWRAPPEDOBJECT_H
 #define QTWRAPPEDOBJECTS_QMETAWRAPPEDOBJECT_H
 
+#include <QtCore/qglobal.h>
 #include <QtCore/QMetaProperty>
 
 QT_BEGIN_HEADER

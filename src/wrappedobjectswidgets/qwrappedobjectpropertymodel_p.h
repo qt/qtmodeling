@@ -41,6 +41,7 @@
 #ifndef QWRAPPEDOBJECTPROPERTYMODEL_P_H
 #define QWRAPPEDOBJECTPROPERTYMODEL_P_H
 
+#include <QtCore/qglobal.h>
 #include "private/qabstractitemmodel_p.h"
 
 QT_BEGIN_HEADER
