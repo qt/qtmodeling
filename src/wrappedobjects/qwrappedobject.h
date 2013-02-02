@@ -41,7 +41,7 @@
 #ifndef QTWRAPPEDOBJECTS_QWRAPPEDOBJECT_H
 #define QTWRAPPEDOBJECTS_QWRAPPEDOBJECT_H
 
-#include <QtCore/qglobal.h>
+#include <QtWrappedObjects/QtWrappedObjectsGlobal>
 #include <QtCore/QObject>
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
@@ -55,7 +55,7 @@ QT_MODULE(QtWrappedObjects)
 class QMetaWrappedObject;
 class QWrappedObjectPrivate;
 
-class Q_CORE_EXPORT QWrappedObject : public QObject
+class Q_WRAPPEDOBJECTS_EXPORT QWrappedObject : public QObject
 {
     Q_OBJECT
 

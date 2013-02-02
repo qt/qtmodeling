@@ -41,7 +41,7 @@
 #ifndef QWRAPPEDOBJECTVIEW_P_H
 #define QWRAPPEDOBJECTVIEW_P_H
 
-#include <QtCore/qglobal.h>
+#include <QtWrappedObjectsWidgets/QtWrappedObjectsWidgetsGlobal>
 #include "private/qwidget_p.h"
 
 QT_BEGIN_HEADER
@@ -52,7 +52,7 @@ QT_MODULE(QtWrappedObjectsWidgets)
 
 class QTreeView;
 
-class Q_CORE_EXPORT QWrappedObjectViewPrivate : public QWidgetPrivate
+class Q_WRAPPEDOBJECTSWIDGETS_EXPORT QWrappedObjectViewPrivate : public QWidgetPrivate
 {
     Q_DECLARE_PUBLIC(QWrappedObjectView)
 

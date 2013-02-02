@@ -10,8 +10,10 @@
 
 %classnames = (
     "qtwrappedobjectsversion.h" => "QtWrappedObjectsVersion",
+    "qtwrappedobjectsglobal.h"  => "QtWrappedObjectsGlobal",
     "qtwrappedobjectsnamespace.h"  => "QtWrappedObjectsNamespace",
     "qtwrappedobjectswidgetsversion.h" => "QtWrappedObjectsWidgetsVersion",
+    "qtwrappedobjectswidgetsglobal.h"  => "QtWrappedObjectsWidgetsGlobal",
     "qtmofversion.h" => "QtMofVersion",
     "qtmofglobal.h"  => "QtMofGlobal",
     "qtmofnamespace.h"  => "QtMofNamespace",

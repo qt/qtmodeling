@@ -41,7 +41,7 @@
 #ifndef QTWRAPPEDOBJECTS_QMETAWRAPPEDOBJECT_H
 #define QTWRAPPEDOBJECTS_QMETAWRAPPEDOBJECT_H
 
-#include <QtCore/qglobal.h>
+#include <QtWrappedObjects/QtWrappedObjectsGlobal>
 #include <QtCore/QMetaProperty>
 
 QT_BEGIN_HEADER
@@ -53,7 +53,7 @@ QT_MODULE(QtWrappedObjects)
 class QWrappedObject;
 class QMetaWrappedObjectPrivate;
 
-struct Q_CORE_EXPORT QMetaPropertyInfo
+struct Q_WRAPPEDOBJECTS_EXPORT QMetaPropertyInfo
 {
     QMetaProperty metaProperty;
     const QMetaObject *propertyMetaObject;
@@ -70,7 +70,7 @@ struct Q_CORE_EXPORT QMetaPropertyInfo
     }
 };
 
-class Q_CORE_EXPORT QMetaWrappedObject
+class Q_WRAPPEDOBJECTS_EXPORT QMetaWrappedObject
 {
     Q_DISABLE_COPY(QMetaWrappedObject)
     Q_DECLARE_PRIVATE(QMetaWrappedObject)

@@ -41,7 +41,7 @@
 #ifndef QWRAPPEDOBJECTPROPERTYMODEL_P_H
 #define QWRAPPEDOBJECTPROPERTYMODEL_P_H
 
-#include <QtCore/qglobal.h>
+#include <QtWrappedObjectsWidgets/QtWrappedObjectsWidgetsGlobal>
 #include "private/qabstractitemmodel_p.h"
 
 QT_BEGIN_HEADER
@@ -52,7 +52,7 @@ QT_MODULE(QtWrappedObjectsWidgets)
 
 class QMetaWrappedObject;
 
-class Q_CORE_EXPORT QWrappedObjectPropertyModelPrivate : public QAbstractItemModelPrivate
+class Q_WRAPPEDOBJECTSWIDGETS_EXPORT QWrappedObjectPropertyModelPrivate : public QAbstractItemModelPrivate
 {
     Q_DECLARE_PUBLIC(QWrappedObjectPropertyModel)
 

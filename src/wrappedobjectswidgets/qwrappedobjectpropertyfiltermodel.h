@@ -41,7 +41,7 @@
 #ifndef QWRAPPEDOBJECTPROPERTYFILTERMODEL_H
 #define QWRAPPEDOBJECTPROPERTYFILTERMODEL_H
 
-#include <QtCore/qglobal.h>
+#include <QtWrappedObjectsWidgets/QtWrappedObjectsWidgetsGlobal>
 #include <QSortFilterProxyModel>
 
 QT_BEGIN_HEADER
@@ -50,7 +50,7 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtWrappedObjectsWidgets)
 
-class QWrappedObjectPropertyFilterModel : public QSortFilterProxyModel
+class Q_WRAPPEDOBJECTSWIDGETS_EXPORT QWrappedObjectPropertyFilterModel : public QSortFilterProxyModel
 {
     Q_OBJECT
 public:

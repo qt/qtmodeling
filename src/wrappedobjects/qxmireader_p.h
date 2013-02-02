@@ -41,7 +41,7 @@
 #ifndef QTWRAPPEDOBJECTS_QXMIREADER_P_H
 #define QTWRAPPEDOBJECTS_QXMIREADER_P_H
 
-#include <QtCore/qglobal.h>
+#include <QtWrappedObjects/QtWrappedObjectsGlobal>
 #include "private/qobject_p.h"
 
 #include <QtCore/QStringList>
@@ -55,7 +55,7 @@ QT_MODULE(QtWrappedObjects)
 
 class QMetaModelPlugin;
 
-class Q_CORE_EXPORT QXmiReaderPrivate : public QObjectPrivate
+class Q_WRAPPEDOBJECTS_EXPORT QXmiReaderPrivate : public QObjectPrivate
 {
     Q_DECLARE_PUBLIC(QXmiReader)
 
