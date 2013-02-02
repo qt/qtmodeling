@@ -41,7 +41,7 @@
 #ifndef QWRAPPEDOBJECTPROPERTYEDITOR_H
 #define QWRAPPEDOBJECTPROPERTYEDITOR_H
 
-#include <QtCore/qglobal.h>
+#include <QtWrappedObjectsWidgets/QtWrappedObjectsWidgetsGlobal>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_HEADER
@@ -54,7 +54,7 @@ class QWrappedObjectPropertyModel;
 
 class QWrappedObjectPropertyEditorPrivate;
 
-class Q_CORE_EXPORT QWrappedObjectPropertyEditor : public QWidget
+class Q_WRAPPEDOBJECTSWIDGETS_EXPORT QWrappedObjectPropertyEditor : public QWidget
 {
     Q_OBJECT
 

@@ -41,7 +41,7 @@
 #ifndef QWRAPPEDOBJECTVIEW_H
 #define QWRAPPEDOBJECTVIEW_H
 
-#include <QtCore/qglobal.h>
+#include <QtWrappedObjectsWidgets/QtWrappedObjectsWidgetsGlobal>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_HEADER
@@ -55,7 +55,7 @@ class QWrappedObject;
 
 class QWrappedObjectViewPrivate;
 
-class Q_CORE_EXPORT QWrappedObjectView : public QWidget
+class Q_WRAPPEDOBJECTSWIDGETS_EXPORT QWrappedObjectView : public QWidget
 {
     Q_OBJECT
 

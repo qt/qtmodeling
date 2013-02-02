@@ -41,7 +41,7 @@
 #ifndef QWRAPPEDOBJECTPROPERTYEDITOR_P_H
 #define QWRAPPEDOBJECTPROPERTYEDITOR_P_H
 
-#include <QtCore/qglobal.h>
+#include <QtWrappedObjectsWidgets/QtWrappedObjectsWidgetsGlobal>
 #include "private/qwidget_p.h"
 
 #include <QtWidgets/QHBoxLayout>
@@ -61,7 +61,7 @@ class QWrappedObjectPropertyModel;
 class QWrappedObjectPropertyFilterModel;
 class FilterWidget;
 
-class Q_CORE_EXPORT QWrappedObjectPropertyEditorPrivate : public QWidgetPrivate
+class Q_WRAPPEDOBJECTSWIDGETS_EXPORT QWrappedObjectPropertyEditorPrivate : public QWidgetPrivate
 {
     Q_DECLARE_PUBLIC(QWrappedObjectPropertyEditor)
 

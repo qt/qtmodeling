@@ -41,7 +41,7 @@
 #ifndef QTWRAPPEDOBJECTS_QXMIREADER_H
 #define QTWRAPPEDOBJECTS_QXMIREADER_H
 
-#include <QtCore/qglobal.h>
+#include <QtWrappedObjects/QtWrappedObjectsGlobal>
 #include <QtCore/QObject>
 
 QT_BEGIN_HEADER
@@ -55,7 +55,7 @@ class QWrappedObject;
 
 class QXmiReaderPrivate;
 
-class Q_CORE_EXPORT QXmiReader : public QObject
+class Q_WRAPPEDOBJECTS_EXPORT QXmiReader : public QObject
 {
     Q_OBJECT
 

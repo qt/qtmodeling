@@ -41,7 +41,7 @@
 #ifndef QTWRAPPEDOBJECTS_QMETAMODELPLUGIN_H
 #define QTWRAPPEDOBJECTS_QMETAMODELPLUGIN_H
 
-#include <QtCore/qglobal.h>
+#include <QtWrappedObjects/QtWrappedObjectsGlobal>
 #include <QtCore/QObject>
 
 QT_BEGIN_HEADER
@@ -50,7 +50,7 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtWrappedObjects)
 
-class Q_CORE_EXPORT QMetaModelPlugin : public QObject
+class Q_WRAPPEDOBJECTS_EXPORT QMetaModelPlugin : public QObject
 {
     Q_OBJECT
 

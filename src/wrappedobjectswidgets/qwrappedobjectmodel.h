@@ -41,7 +41,7 @@
 #ifndef QWRAPPEDOBJECTMODEL_H
 #define QWRAPPEDOBJECTMODEL_H
 
-#include <QtCore/qglobal.h>
+#include <QtWrappedObjectsWidgets/QtWrappedObjectsWidgetsGlobal>
 #include <QAbstractItemModel>
 
 QT_BEGIN_HEADER
@@ -54,7 +54,7 @@ class QWrappedObject;
 
 class QWrappedObjectModelPrivate;
 
-class Q_CORE_EXPORT QWrappedObjectModel : public QAbstractItemModel
+class Q_WRAPPEDOBJECTSWIDGETS_EXPORT QWrappedObjectModel : public QAbstractItemModel
 {
     Q_OBJECT
 

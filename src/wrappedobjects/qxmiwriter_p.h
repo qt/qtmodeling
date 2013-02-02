@@ -41,7 +41,7 @@
 #ifndef QTWRAPPEDOBJECTS_QXMIWRITER_P_H
 #define QTWRAPPEDOBJECTS_QXMIWRITER_P_H
 
-#include <QtCore/qglobal.h>
+#include <QtWrappedObjects/QtWrappedObjectsGlobal>
 #include "private/qobject_p.h"
 
 #include <QtCore/QStringList>
@@ -53,7 +53,7 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtWrappedObjects)
 
-class Q_CORE_EXPORT QXmiWriterPrivate : public QObjectPrivate
+class Q_WRAPPEDOBJECTS_EXPORT QXmiWriterPrivate : public QObjectPrivate
 {
     Q_DECLARE_PUBLIC(QXmiWriter)
 

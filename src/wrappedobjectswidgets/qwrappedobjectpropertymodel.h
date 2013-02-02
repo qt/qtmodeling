@@ -37,11 +37,11 @@
 **
 ** $QT_END_LICENSE$
 **
-****************************************************************************/
+***************************************************************************/
 #ifndef QWRAPPEDOBJECTPROPERTYMODEL_H
 #define QWRAPPEDOBJECTPROPERTYMODEL_H
 
-#include <QtCore/qglobal.h>
+#include <QtWrappedObjectsWidgets/QtWrappedObjectsWidgetsGlobal>
 #include <QAbstractItemModel>
 
 QT_BEGIN_HEADER
@@ -54,7 +54,7 @@ class QWrappedObject;
 
 class QWrappedObjectPropertyModelPrivate;
 
-class Q_CORE_EXPORT QWrappedObjectPropertyModel : public QAbstractItemModel
+class Q_WRAPPEDOBJECTSWIDGETS_EXPORT QWrappedObjectPropertyModel : public QAbstractItemModel
 {
     Q_OBJECT
 
