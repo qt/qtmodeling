@@ -115,19 +115,19 @@ void QXmiWriter::populateIdMap(QWrappedObject *wrappedObject, int index)
         QVariant variant = metaProperty.read(propertyWrappedObject);
         QString aggregationRole = wrappedObject->propertyData(QString::fromLatin1(metaPropertyInfo.propertyMetaObject->className()),
                                                               metaProperty,
-                                                              QtWrappedObjects::QtWrappedObjects::AggregationRole).toString();
+                                                              QtWrappedObjects::AggregationRole).toString();
 
         if (aggregationRole == QString::fromLatin1("composite"))
             if (!wrappedObject->propertyData(QString::fromLatin1(metaPropertyInfo.propertyMetaObject->className()),
                                              metaProperty,
-                                             QtWrappedObjects::QtWrappedObjects::OppositeEndRole).toString().isEmpty())
+                                             QtWrappedObjects::OppositeEndRole).toString().isEmpty())
                 d->blacklistedOppositeEnds << wrappedObject->propertyData(QString::fromLatin1(metaPropertyInfo.propertyMetaObject->className()),
                                                                           metaProperty,
-                                                                          QtWrappedObjects::QtWrappedObjects::OppositeEndRole).toString();
+                                                                          QtWrappedObjects::OppositeEndRole).toString();
 
         if (wrappedObject->propertyData(QString::fromLatin1(metaPropertyInfo.propertyMetaObject->className()),
                                         metaProperty,
-                                        QtWrappedObjects::QtWrappedObjects::AggregationRole).toString() != QString::fromLatin1("composite"))
+                                        QtWrappedObjects::AggregationRole).toString() != QString::fromLatin1("composite"))
             continue;
 
         if (typeName.endsWith('*') && qvariant_cast<QWrappedObject *>(variant))
@@ -175,7 +175,7 @@ void QXmiWriter::writeWrappedObject(QWrappedObject *wrappedObject, QString eleme
 
         if (!metaProperty.isStored() || QString::fromLatin1(metaProperty.name()) == QString::fromLatin1("objectName") || QWrappedObject::propertyData(QString::fromLatin1(metaPropertyInfo.propertyMetaObject->className()),
                                                                      metaProperty,
-                                                                     QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole).toBool())
+                                                                     QtWrappedObjects::IsDerivedUnionRole).toBool())
             continue;
 
         if (metaProperty.type() == QVariant::String) {
@@ -209,10 +209,10 @@ void QXmiWriter::writeWrappedObject(QWrappedObject *wrappedObject, QString eleme
         QVariant variant = metaProperty.read(propertyWrappedObject);
         QString aggregationRole = wrappedObject->propertyData(QString::fromLatin1(metaPropertyInfo.propertyMetaObject->className()),
                                                               metaProperty,
-                                                              QtWrappedObjects::QtWrappedObjects::AggregationRole).toString();
+                                                              QtWrappedObjects::AggregationRole).toString();
         QString modifiedPropertyName = QString::fromLatin1(metaProperty.name()).remove(QRegularExpression(QString::fromLatin1("_$"))).remove(QRegularExpression(QString::fromLatin1("s$"))).replace(QRegularExpression(QString::fromLatin1("ie$")), QString::fromLatin1("y")).replace(QRegularExpression(QString::fromLatin1("sse$")), QString::fromLatin1("ss")).replace(QRegularExpression(QString::fromLatin1("ice$")), QString::fromLatin1("ex")).replace(QRegularExpression(QString::fromLatin1("ce$")), QString::fromLatin1("x"));
 
-        if (!metaProperty.isStored() || QWrappedObject::propertyData(QString::fromLatin1(metaPropertyInfo.propertyMetaObject->className()), metaProperty, QtWrappedObjects::QtWrappedObjects::IsDerivedUnionRole).toBool())
+        if (!metaProperty.isStored() || QWrappedObject::propertyData(QString::fromLatin1(metaPropertyInfo.propertyMetaObject->className()), metaProperty, QtWrappedObjects::IsDerivedUnionRole).toBool())
             continue;
 
         if (typeName.endsWith('*') && qvariant_cast<QWrappedObject *>(variant)) {
