@@ -180,3 +180,4 @@ void QWrappedObjectModel::updateIndex(const QModelIndex &index)
 #include "moc_qwrappedobjectmodel.cpp"
 
 QT_END_NAMESPACE
+

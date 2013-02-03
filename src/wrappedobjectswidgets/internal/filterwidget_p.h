@@ -41,7 +41,7 @@
 #ifndef FILTERWIDGET_P_H
 #define FILTERWIDGET_P_H
 
-#include <QtWrappedObjectsWidgets/QtWrappedObjectsWidgetsGlobal>
+#include "../qtwrappedobjectswidgetsglobal.h"
 
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QToolButton>
@@ -135,3 +135,4 @@ QT_END_NAMESPACE
 QT_END_HEADER
 
 #endif // FILTERWIDGET_P_H
+

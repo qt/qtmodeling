@@ -40,6 +40,10 @@
 ****************************************************************************/
 #include "qwrappedobjectview.h"
 #include "qwrappedobjectview_p.h"
+#include "qwrappedobjectmodel.h"
+
+#include <QtWrappedObjects/QWrappedObject>
+#include <QtWrappedObjects/QMetaWrappedObject>
 
 #include <QtCore/QRegularExpression>
 
@@ -47,10 +51,6 @@
 #include <QtWidgets/QTreeView>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QMessageBox>
-
-#include <QtWrappedObjects/QWrappedObject>
-#include <QtWrappedObjects/QMetaWrappedObject>
-#include <QtWrappedObjectsWidgets/QWrappedObjectModel>
 
 QT_BEGIN_NAMESPACE
 
@@ -270,3 +270,4 @@ void QWrappedObjectView::removeObjectUse(QWrappedObject *container, QWrappedObje
 #include "moc_qwrappedobjectview.cpp"
 
 QT_END_NAMESPACE
+

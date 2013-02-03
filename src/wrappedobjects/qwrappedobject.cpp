@@ -40,8 +40,7 @@
 ****************************************************************************/
 #include "qwrappedobject.h"
 #include "qwrappedobject_p.h"
-
-#include <QtWrappedObjects/QMetaWrappedObject>
+#include "qmetawrappedobject.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -181,3 +180,4 @@ bool QWrappedObject::isPropertyModified(QMetaProperty metaProperty) const
 #include "moc_qwrappedobject.cpp"
 
 QT_END_NAMESPACE
+

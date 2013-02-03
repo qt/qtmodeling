@@ -41,15 +41,14 @@
 
 #include "qxmireader.h"
 #include "qxmireader_p.h"
+#include "qwrappedobject.h"
+#include "qmetamodelplugin.h"
+#include "qmetawrappedobject.h"
 
 #include <QtCore/QDir>
 #include <QtCore/QStack>
 #include <QtCore/QPluginLoader>
 #include <QtCore/QCoreApplication>
-
-#include <QtWrappedObjects/QWrappedObject>
-#include <QtWrappedObjects/QMetaModelPlugin>
-#include <QtWrappedObjects/QMetaWrappedObject>
 
 QT_BEGIN_NAMESPACE
 
@@ -226,3 +225,4 @@ QStringList QXmiReader::errorStrings() const
 #include "moc_qxmireader.cpp"
 
 QT_END_NAMESPACE
+

@@ -41,7 +41,8 @@
 #ifndef PROPERTYEDITORITEMDELEGATE_P_H
 #define PROPERTYEDITORITEMDELEGATE_P_H
 
-#include <QtWrappedObjectsWidgets/QtWrappedObjectsWidgetsGlobal>
+#include "../qtwrappedobjectswidgetsglobal.h"
+
 #include <QtWidgets/QStyledItemDelegate>
 
 QT_BEGIN_HEADER
@@ -69,3 +70,4 @@ QT_END_NAMESPACE
 QT_END_HEADER
 
 #endif // PROPERTYEDITORITEMDELEGATE_P_H
+

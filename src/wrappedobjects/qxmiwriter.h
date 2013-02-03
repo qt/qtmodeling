@@ -41,7 +41,8 @@
 #ifndef QTWRAPPEDOBJECTS_QXMIWRITER_H
 #define QTWRAPPEDOBJECTS_QXMIWRITER_H
 
-#include <QtWrappedObjects/QtWrappedObjectsGlobal>
+#include "qtwrappedobjectsglobal.h"
+
 #include <QtCore/QObject>
 
 QT_BEGIN_HEADER

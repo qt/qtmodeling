@@ -41,7 +41,8 @@
 #ifndef QTWRAPPEDOBJECTS_QMETAWRAPPEDOBJECT_H
 #define QTWRAPPEDOBJECTS_QMETAWRAPPEDOBJECT_H
 
-#include <QtWrappedObjects/QtWrappedObjectsGlobal>
+#include "qtwrappedobjectsglobal.h"
+
 #include <QtCore/QMetaProperty>
 
 QT_BEGIN_HEADER
@@ -105,3 +106,4 @@ Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QMetaPropertyInfo))
 QT_END_HEADER
 
 #endif // QTWRAPPEDOBJECTS_QMETAWRAPPEDOBJECT_H
+

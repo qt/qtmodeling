@@ -41,7 +41,7 @@
 #ifndef QWRAPPEDOBJECTPROPERTYMODEL_P_H
 #define QWRAPPEDOBJECTPROPERTYMODEL_P_H
 
-#include <QtWrappedObjectsWidgets/QtWrappedObjectsWidgetsGlobal>
+#include "qtwrappedobjectswidgetsglobal.h"
 #include "private/qabstractitemmodel_p.h"
 
 QT_BEGIN_HEADER
@@ -69,3 +69,4 @@ QT_END_NAMESPACE
 QT_END_HEADER
 
 #endif // QWRAPPEDOBJECTPROPERTYMODEL_P_H
+

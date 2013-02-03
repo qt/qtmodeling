@@ -50,3 +50,4 @@ QMetaModelPlugin::QMetaModelPlugin(QObject *parent)
 #include "moc_qmetamodelplugin.cpp"
 
 QT_END_NAMESPACE
+

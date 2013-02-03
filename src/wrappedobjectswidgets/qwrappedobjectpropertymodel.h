@@ -41,8 +41,9 @@
 #ifndef QWRAPPEDOBJECTPROPERTYMODEL_H
 #define QWRAPPEDOBJECTPROPERTYMODEL_H
 
-#include <QtWrappedObjectsWidgets/QtWrappedObjectsWidgetsGlobal>
-#include <QAbstractItemModel>
+#include "qtwrappedobjectswidgetsglobal.h"
+
+#include <QtCore/QAbstractItemModel>
 
 QT_BEGIN_HEADER
 
@@ -88,3 +89,4 @@ QT_END_NAMESPACE
 QT_END_HEADER
 
 #endif // QWRAPPEDOBJECTPROPERTYMODEL_H
+

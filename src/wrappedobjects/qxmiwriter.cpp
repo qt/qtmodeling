@@ -41,12 +41,11 @@
 
 #include "qxmiwriter.h"
 #include "qxmiwriter_p.h"
+#include "qwrappedobject.h"
+#include "qmetawrappedobject.h"
 
 #include <QtCore/QSet>
 #include <QtCore/QRegularExpression>
-
-#include <QtWrappedObjects/QWrappedObject>
-#include <QtWrappedObjects/QMetaPropertyInfo>
 
 QT_BEGIN_NAMESPACE
 

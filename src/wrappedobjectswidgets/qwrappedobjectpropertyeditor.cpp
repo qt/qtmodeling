@@ -40,15 +40,13 @@
 ****************************************************************************/
 #include "qwrappedobjectpropertyeditor.h"
 #include "qwrappedobjectpropertyeditor_p.h"
+#include "qwrappedobjectpropertymodel.h"
+#include "qwrappedobjectpropertyfiltermodel.h"
+#include "internal/filterwidget_p.h"
+#include "internal/propertyeditoritemdelegate_p.h"
 
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QTreeView>
-
-#include <QtWrappedObjectsWidgets/QWrappedObjectPropertyModel>
-#include <QtWrappedObjectsWidgets/QWrappedObjectPropertyFilterModel>
-
-#include "internal/filterwidget_p.h"
-#include "internal/propertyeditoritemdelegate_p.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -125,3 +123,4 @@ QWrappedObjectPropertyModel *QWrappedObjectPropertyEditor::model() const
 #include "moc_qwrappedobjectpropertyeditor.cpp"
 
 QT_END_NAMESPACE
+

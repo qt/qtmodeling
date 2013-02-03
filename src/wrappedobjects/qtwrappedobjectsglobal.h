@@ -41,7 +41,7 @@
 #ifndef QTWRAPPEDOBJECTSGLOBAL_H
 #define QTWRAPPEDOBJECTSGLOBAL_H
 
-#include <QtCore/qglobal.h>
+#include <QtCore/QtGlobal>
 
 QT_BEGIN_HEADER
 

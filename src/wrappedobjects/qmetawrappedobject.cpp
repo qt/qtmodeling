@@ -40,8 +40,8 @@
 ****************************************************************************/
 #include "qmetawrappedobject.h"
 #include "qmetawrappedobject_p.h"
+#include "qwrappedobject.h"
 
-#include <QtWrappedObjects/QWrappedObject>
 #include <QtCore/QStringList>
 #include <QtCore/QStack>
 
@@ -175,3 +175,4 @@ void QMetaWrappedObject::handleWrappedObjectProperties(const QWrappedObject *wra
 }
 
 QT_END_NAMESPACE
+
