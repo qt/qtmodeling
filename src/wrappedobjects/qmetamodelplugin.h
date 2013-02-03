@@ -41,7 +41,8 @@
 #ifndef QTWRAPPEDOBJECTS_QMETAMODELPLUGIN_H
 #define QTWRAPPEDOBJECTS_QMETAMODELPLUGIN_H
 
-#include <QtWrappedObjects/QtWrappedObjectsGlobal>
+#include "qtwrappedobjectsglobal.h"
+
 #include <QtCore/QObject>
 
 QT_BEGIN_HEADER
@@ -66,3 +67,4 @@ QT_END_NAMESPACE
 QT_END_HEADER
 
 #endif // QTWRAPPEDOBJECTS_QMETAMODELPLUGIN_H
+

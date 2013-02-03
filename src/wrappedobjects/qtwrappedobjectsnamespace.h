@@ -41,7 +41,8 @@
 #ifndef QTWRAPPEDOBJECTSNAMESPACE_H
 #define QTWRAPPEDOBJECTSNAMESPACE_H
 
-#include <QtWrappedObjects/QtWrappedObjectsGlobal>
+#include "qtwrappedobjectsglobal.h"
+
 #include <QtCore/QObject>
 
 QT_BEGIN_HEADER

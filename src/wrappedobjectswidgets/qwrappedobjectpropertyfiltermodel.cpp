@@ -65,3 +65,4 @@ bool QWrappedObjectPropertyFilterModel::filterAcceptsRow(int sourceRow, const QM
 #include "moc_qwrappedobjectpropertyfiltermodel.cpp"
 
 QT_END_NAMESPACE
+

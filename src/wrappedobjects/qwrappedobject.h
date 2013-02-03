@@ -41,10 +41,10 @@
 #ifndef QTWRAPPEDOBJECTS_QWRAPPEDOBJECT_H
 #define QTWRAPPEDOBJECTS_QWRAPPEDOBJECT_H
 
-#include <QtWrappedObjects/QtWrappedObjectsGlobal>
-#include <QtCore/QObject>
+#include "qtwrappedobjectsglobal.h"
+#include "qtwrappedobjectsnamespace.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
+#include <QtCore/QObject>
 
 QT_BEGIN_HEADER
 
@@ -127,3 +127,4 @@ inline QT_PREPEND_NAMESPACE(QWrappedObject) *qTopLevelWrapper(QT_PREPEND_NAMESPA
 QT_END_HEADER
 
 #endif // QTWRAPPEDOBJECTS_QWRAPPEDOBJECT_H
+

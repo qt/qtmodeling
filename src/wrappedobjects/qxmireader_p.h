@@ -41,7 +41,7 @@
 #ifndef QTWRAPPEDOBJECTS_QXMIREADER_P_H
 #define QTWRAPPEDOBJECTS_QXMIREADER_P_H
 
-#include <QtWrappedObjects/QtWrappedObjectsGlobal>
+#include "qtwrappedobjectsglobal.h"
 #include "private/qobject_p.h"
 
 #include <QtCore/QStringList>

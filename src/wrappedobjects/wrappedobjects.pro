@@ -14,6 +14,7 @@ PUBLIC_HEADERS += \
     qmetamodelplugin.h \
     qmetawrappedobject.h \
     qwrappedobjectpointer.h \
+    qtwrappedobjectsglobal.h \
     qtwrappedobjectsnamespace.h
 
 PRIVATE_HEADERS += \
@@ -28,7 +29,6 @@ SOURCES += \
     qwrappedobject.cpp \
     qmetamodelplugin.cpp \
     qmetawrappedobject.cpp \
-    qwrappedobjectpointer.cpp \
     qtwrappedobjectsnamespace.cpp
 
 HEADERS += $$PUBLIC_HEADERS $$PRIVATE_HEADERS

@@ -41,7 +41,7 @@
 #ifndef QTWRAPPEDOBJECTS_QMETAWRAPPEDOBJECT_P_H
 #define QTWRAPPEDOBJECTS_QMETAWRAPPEDOBJECT_P_H
 
-#include <QtWrappedObjects/QtWrappedObjectsGlobal>
+#include "qtwrappedobjectsglobal.h"
 
 QT_BEGIN_HEADER
 

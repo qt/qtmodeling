@@ -41,12 +41,12 @@
 #include "qwrappedobjectpropertymodel.h"
 #include "qwrappedobjectpropertymodel_p.h"
 
-#include <QtCore/QRegularExpression>
+#include <QtWrappedObjects/QWrappedObject>
+#include <QtWrappedObjects/QMetaPropertyInfo>
 
 #include <QtGui/QFontMetrics>
 
-#include <QtWrappedObjects/QWrappedObject>
-#include <QtWrappedObjects/QMetaPropertyInfo>
+#include <QtCore/QRegularExpression>
 
 QT_BEGIN_NAMESPACE
 

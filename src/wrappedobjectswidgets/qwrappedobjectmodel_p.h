@@ -41,7 +41,7 @@
 #ifndef QWRAPPEDOBJECTMODEL_P_H
 #define QWRAPPEDOBJECTMODEL_P_H
 
-#include <QtWrappedObjectsWidgets/QtWrappedObjectsWidgetsGlobal>
+#include "qtwrappedobjectswidgetsglobal.h"
 #include "private/qabstractitemmodel_p.h"
 
 QT_BEGIN_HEADER

@@ -10,6 +10,7 @@ load(qt_module)
 PUBLIC_HEADERS += \
     qwrappedobjectview.h \
     qwrappedobjectmodel.h \
+    qtwrappedobjectsglobal.h \
     qwrappedobjectpropertymodel.h \
     qwrappedobjectpropertyeditor.h \
     qwrappedobjectpropertyfiltermodel.h \

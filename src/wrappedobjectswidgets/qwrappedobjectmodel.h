@@ -41,8 +41,9 @@
 #ifndef QWRAPPEDOBJECTMODEL_H
 #define QWRAPPEDOBJECTMODEL_H
 
-#include <QtWrappedObjectsWidgets/QtWrappedObjectsWidgetsGlobal>
-#include <QAbstractItemModel>
+#include "qtwrappedobjectswidgetsglobal.h"
+
+#include <QtCore/QAbstractItemModel>
 
 QT_BEGIN_HEADER
 
