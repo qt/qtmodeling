@@ -9,3 +9,5 @@ include
 .rcc
 .uic
 *.pro.user
+*.Debug
+*.Release
