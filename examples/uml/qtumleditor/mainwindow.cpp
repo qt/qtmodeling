@@ -4,6 +4,9 @@
 
 #include <QtCore/QPluginLoader>
 #include <QtCore/QStringListModel>
+#include <QtCore/QTimer>
+
+#include <QtScript/QScriptValueIterator>
 
 #include <QtWidgets/QListView>
 #include <QtWidgets/QFileDialog>
@@ -49,8 +52,6 @@ MainWindow::MainWindow(QWidget *parent) :
     tabifyDockWidget(ui->dckXPath, ui->dckOcl);
     tabifyDockWidget(ui->dckOcl, ui->dckJavaScript);
     ui->dckIssues->raise();
-
-    qScriptRegisterMetaType(&_engine, toScriptValue, fromScriptValue);
 }
 
 MainWindow::~MainWindow()
@@ -87,6 +88,8 @@ QWrappedObject *MainWindow::loadXmi()
     ui->txeIssues->setModel(new QStringListModel(reader.errorStrings()));
     _engine.globalObject().setProperty("model", _engine.newQObject(wrappedObject));
     _engine.globalObject().setProperty(wrappedObject->objectName(), _engine.newQObject(wrappedObject));
+    ui->txeJavaScript->setText(wrappedObject->objectName());
+    QTimer::singleShot(0, this, SLOT(on_psbJSEvaluate_clicked()));
 
     return wrappedObject;
 }
@@ -138,6 +141,7 @@ void MainWindow::on_actionAboutPlugins_triggered()
 void MainWindow::on_psbJSEvaluate_clicked()
 {
     ui->txeJavaScriptEvaluation->setText(_engine.evaluate(ui->txeJavaScript->toPlainText()).toString());
+    ui->wrappedObjectView->updateSelected();
 }
 
 void MainWindow::loadPlugins()
@@ -149,8 +153,10 @@ void MainWindow::loadPlugins()
         foreach (QString fileName, pluginsDir.entryList(QDir::Files)) {
             QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
             QObject *plugin = loader.instance();
-            if (plugin && (metaModelPlugin = qobject_cast<QMetaModelPlugin *>(plugin)))
+            if (plugin && (metaModelPlugin = qobject_cast<QMetaModelPlugin *>(plugin))) {
                 _loadedPlugins.insert(metaModelPlugin->metaModelNamespaceUri(), QPair<QMetaModelPlugin *, QJsonObject>(metaModelPlugin, loader.metaData()));
+                metaModelPlugin->initMetaModel(&_engine);
+            }
         }
     }
 }

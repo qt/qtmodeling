@@ -68,6 +68,22 @@ class Q_UML_EXPORT QExtend : public QWrappedObject
 {
     Q_OBJECT
 
+    Q_PROPERTY(QSet<QElement *> ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(QSet<QComment *> ownedComments READ ownedComments)
+
+    Q_PROPERTY(QSet<QElement *> relatedElements READ relatedElements)
+
+    Q_PROPERTY(QSet<QElement *> sources READ sources)
+    Q_PROPERTY(QSet<QElement *> targets READ targets)
+
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
+    Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
+    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(QSet<QDependency *> clientDependencies READ clientDependencies)
+
     Q_PROPERTY(QUseCase * extendedCase READ extendedCase WRITE setExtendedCase)
     Q_PROPERTY(QUseCase * extension READ extension WRITE setExtension)
     Q_PROPERTY(QList<QExtensionPoint *> extensionLocations READ extensionLocations)

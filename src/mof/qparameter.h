@@ -70,6 +70,24 @@ class Q_MOF_EXPORT QParameter : public QWrappedObject
 {
     Q_OBJECT
 
+    Q_PROPERTY(QSet<QElement *> ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(QSet<QComment *> ownedComments READ ownedComments)
+
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QtMof::VisibilityKind visibility READ visibility WRITE setVisibility)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
+    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
+
+    Q_PROPERTY(QType * type READ type WRITE setType)
+
+    Q_PROPERTY(qint32 upper READ upper WRITE setUpper RESET unsetUpper STORED false)
+    Q_PROPERTY(bool unique READ isUnique WRITE setUnique RESET unsetUnique)
+    Q_PROPERTY(bool ordered READ isOrdered WRITE setOrdered RESET unsetOrdered)
+    Q_PROPERTY(qint32 lower READ lower WRITE setLower STORED false)
+    Q_PROPERTY(QValueSpecification * upperValue READ upperValue WRITE setUpperValue)
+    Q_PROPERTY(QValueSpecification * lowerValue READ lowerValue WRITE setLowerValue)
+
     Q_PROPERTY(QString default_ READ default_ STORED false)
     Q_PROPERTY(QtMof::ParameterDirectionKind direction READ direction WRITE setDirection RESET unsetDirection)
     Q_PROPERTY(QOperation * operation READ operation WRITE setOperation)

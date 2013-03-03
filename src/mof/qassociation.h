@@ -68,6 +68,40 @@ class Q_MOF_EXPORT QAssociation : public QWrappedObject
 {
     Q_OBJECT
 
+    Q_PROPERTY(QSet<QElement *> ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(QSet<QComment *> ownedComments READ ownedComments)
+
+    Q_PROPERTY(QSet<QElement *> relatedElements READ relatedElements)
+
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
+    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
+
+    Q_PROPERTY(QtMof::VisibilityKind visibility READ visibility WRITE setVisibility RESET unsetVisibility)
+
+    Q_PROPERTY(QPackage * package READ package WRITE setPackage)
+
+    Q_PROPERTY(bool leaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
+    Q_PROPERTY(QSet<QRedefinableElement *> redefinedElements READ redefinedElements)
+    Q_PROPERTY(QSet<QClassifier *> redefinitionContexts READ redefinitionContexts)
+
+    Q_PROPERTY(QSet<QPackageImport *> packageImports READ packageImports)
+    Q_PROPERTY(QSet<QNamedElement *> members READ members)
+    Q_PROPERTY(QSet<QPackageableElement *> importedMembers READ importedMembers STORED false)
+    Q_PROPERTY(QSet<QElementImport *> elementImports READ elementImports)
+    Q_PROPERTY(QSet<QConstraint *> ownedRules READ ownedRules)
+    Q_PROPERTY(QSet<QNamedElement *> ownedMembers READ ownedMembers)
+
+    Q_PROPERTY(bool abstract READ isAbstract WRITE setAbstract RESET unsetAbstract)
+    Q_PROPERTY(bool finalSpecialization READ isFinalSpecialization WRITE setFinalSpecialization RESET unsetFinalSpecialization)
+    Q_PROPERTY(QSet<QProperty *> attributes READ attributes)
+    Q_PROPERTY(QSet<QFeature *> features READ features)
+    Q_PROPERTY(QSet<QClassifier *> generals READ generals STORED false)
+    Q_PROPERTY(QSet<QClassifier *> redefinedClassifiers READ redefinedClassifiers)
+    Q_PROPERTY(QSet<QNamedElement *> inheritedMembers READ inheritedMembers STORED false)
+    Q_PROPERTY(QSet<QGeneralization *> generalizations READ generalizations)
+
     Q_PROPERTY(bool derived READ isDerived WRITE setDerived RESET unsetDerived)
     Q_PROPERTY(QList<QType *> endTypes READ endTypes STORED false)
     Q_PROPERTY(QSet<QProperty *> navigableOwnedEnds READ navigableOwnedEnds)

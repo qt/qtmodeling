@@ -81,7 +81,8 @@ void QMetaWrappedObject::initialize(QWrappedObject *wrappedObject)
     d_ptr->wrappedObject = wrappedObject;
 
     QStringList visitedClasses;
-    handleWrappedObjectProperties(d_ptr->wrappedObject, visitedClasses);
+    QStringList visitedProperties;
+    handleWrappedObjectProperties(d_ptr->wrappedObject, d_ptr->wrappedObject->metaObject(), visitedClasses, visitedProperties);
 }
 
 QMetaWrappedObject::~QMetaWrappedObject()
@@ -137,40 +138,38 @@ int QMetaWrappedObject::indexOfGroup(const char *name) const
     return -1;
 }
 
-void QMetaWrappedObject::handleWrappedObjectProperties(const QWrappedObject *wrappingObject, QStringList &visitedClasses) const
+void QMetaWrappedObject::handleWrappedObjectProperties(const QWrappedObject *wrappingObject, const QMetaObject *metaObject, QStringList &visitedClasses, QStringList &visitedProperties) const
 {
-    foreach (QWrappedObject *wrappedObject, wrappingObject->wrappedObjects())
-        handleWrappedObjectProperties(wrappedObject, visitedClasses);
+    if (!metaObject)
+       return;
 
-    const QMetaObject *metaObject = wrappingObject->metaObject();
-    QStack<const QMetaObject *> metaObjects;
-    while (metaObject) {
-        metaObjects.push(metaObject);
-        metaObject = metaObject->superClass();
+    if (metaObject->superClass() && !visitedClasses.contains(QString::fromLatin1(metaObject->superClass()->className())))
+        handleWrappedObjectProperties(wrappingObject, metaObject->superClass(), visitedClasses, visitedProperties);
+
+    if (QString::fromLatin1(metaObject->className()) == QString::fromLatin1("QWrappedObject")) {
+        foreach (QWrappedObject *wrappedObject, wrappingObject->wrappedObjects())
+            handleWrappedObjectProperties(wrappedObject, wrappedObject->metaObject(), visitedClasses, visitedProperties);
     }
+
     QMetaPropertyInfo propertyInfo;
-    while (!metaObjects.isEmpty()) {
-        metaObject = metaObjects.pop();
-        if (visitedClasses.contains(QString::fromLatin1(metaObject->className())))
-            continue;
-        visitedClasses << QString::fromLatin1(metaObject->className());
-        propertyInfo.propertyMetaObject = metaObject;
-        propertyInfo.propertyWrappedObject = const_cast<QWrappedObject *>(wrappingObject);
-        int propertyCount = metaObject->propertyCount();
-        if (propertyCount - metaObject->propertyOffset() > 0)
-            d_ptr->propertyGroupInfos << QPair<QString, int>(QString::fromLatin1(metaObject->className()), d_ptr->propertyInfos.size());
-        for (int i = metaObject->propertyOffset(); i < propertyCount; ++i) {
-            propertyInfo.metaProperty = metaObject->property(i);
-            int index;
-            if ((index = d_ptr->propertyInfos.indexOf(propertyInfo)) != -1) {
-                d_ptr->propertyInfos.removeAll(propertyInfo);
-                QList<QPair<QString, int>>::iterator iend = d_ptr->propertyGroupInfos.end();
-                for (QList<QPair<QString, int>>::iterator i = d_ptr->propertyGroupInfos.begin(); i < iend; ++i)
-                   if (i->second > index)
-                       i->second--;
-            }
-            d_ptr->propertyInfos << propertyInfo;
+    visitedClasses << QString::fromLatin1(metaObject->className());
+    propertyInfo.propertyMetaObject = metaObject;
+    propertyInfo.propertyWrappedObject = const_cast<QWrappedObject *>(wrappingObject);
+    int propertyCount = metaObject->propertyCount();
+    if (propertyCount - metaObject->propertyOffset() > 0)
+        d_ptr->propertyGroupInfos << QPair<QString, int>(QString::fromLatin1(metaObject->className()), d_ptr->propertyInfos.size());
+    for (int i = metaObject->propertyOffset(); i < propertyCount; ++i) {
+        propertyInfo.metaProperty = metaObject->property(i);
+        int index;
+        if ((index = d_ptr->propertyInfos.indexOf(propertyInfo)) != -1 && QWrappedObject::propertyData(QString::fromLatin1(metaObject->className()), propertyInfo.metaProperty, QtWrappedObjects::RedefinedPropertiesRole).toString() != QString::fromLatin1("")) {
+            d_ptr->propertyInfos.removeAll(propertyInfo);
+            QList<QPair<QString, int>>::iterator iend = d_ptr->propertyGroupInfos.end();
+            for (QList<QPair<QString, int>>::iterator i = d_ptr->propertyGroupInfos.begin(); i < iend; ++i)
+               if (i->second > index)
+                   i->second--;
         }
+        if (!d_ptr->propertyInfos.contains(propertyInfo))
+            d_ptr->propertyInfos << propertyInfo;
     }
 }
 

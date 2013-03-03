@@ -151,6 +151,10 @@ void QWrappedObjectView::updateSelected()
     Q_D(QWrappedObjectView);
 
     (dynamic_cast<QWrappedObjectModel *>(d->treeView->model()))->updateIndex(d->treeView->selectionModel()->selectedIndexes().first());
+    // FIX ME
+    QModelIndex index = d->treeView->selectionModel()->selectedIndexes().first();
+    d->treeView->setCurrentIndex(d->treeView->model()->index(0, 0));
+    d->treeView->setCurrentIndex(index);
 }
 
 void QWrappedObjectView::contextMenuEvent(QContextMenuEvent *event)

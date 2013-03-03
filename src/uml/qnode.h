@@ -63,6 +63,20 @@ class Q_UML_EXPORT QNode : public QWrappedObject
 {
     Q_OBJECT
 
+    Q_PROPERTY(QSet<QElement *> ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(QSet<QComment *> ownedComments READ ownedComments)
+
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
+    Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
+    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(QSet<QDependency *> clientDependencies READ clientDependencies)
+
+    Q_PROPERTY(QSet<QPackageableElement *> deployedElements READ deployedElements STORED false)
+    Q_PROPERTY(QSet<QDeployment *> deployments READ deployments)
+
     Q_PROPERTY(QSet<QNode *> nestedNodes READ nestedNodes)
 
     Q_DISABLE_COPY(QNode)

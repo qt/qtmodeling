@@ -70,6 +70,31 @@ class Q_UML_EXPORT QInteraction : public QWrappedObject
 {
     Q_OBJECT
 
+    Q_PROPERTY(bool reentrant READ isReentrant WRITE setReentrant RESET unsetReentrant)
+    Q_PROPERTY(QBehavioralFeature * specification READ specification WRITE setSpecification)
+    Q_PROPERTY(QSet<QConstraint *> postconditions READ postconditions)
+    Q_PROPERTY(QSet<QConstraint *> preconditions READ preconditions)
+    Q_PROPERTY(QSet<QBehavior *> redefinedBehaviors READ redefinedBehaviors)
+    Q_PROPERTY(QList<QParameter *> ownedParameters READ ownedParameters)
+    Q_PROPERTY(QSet<QParameterSet *> ownedParameterSets READ ownedParameterSets)
+    Q_PROPERTY(QBehavioredClassifier * context READ context STORED false)
+
+    Q_PROPERTY(QSet<QElement *> ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(QSet<QComment *> ownedComments READ ownedComments)
+
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
+    Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
+    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(QSet<QDependency *> clientDependencies READ clientDependencies)
+
+    Q_PROPERTY(QSet<QGeneralOrdering *> generalOrderings READ generalOrderings)
+    Q_PROPERTY(QInteraction * enclosingInteraction READ enclosingInteraction WRITE setEnclosingInteraction)
+    Q_PROPERTY(QSet<QLifeline *> covered READ covered)
+    Q_PROPERTY(QInteractionOperand * enclosingOperand READ enclosingOperand WRITE setEnclosingOperand)
+
     Q_PROPERTY(QSet<QAction *> actions READ actions)
     Q_PROPERTY(QSet<QMessage *> messages READ messages)
     Q_PROPERTY(QSet<QGate *> formalGates READ formalGates)

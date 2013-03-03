@@ -75,6 +75,27 @@ class Q_UML_EXPORT QTransition : public QWrappedObject
 {
     Q_OBJECT
 
+    Q_PROPERTY(QSet<QElement *> ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(QSet<QComment *> ownedComments READ ownedComments)
+
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
+    Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
+    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(QSet<QDependency *> clientDependencies READ clientDependencies)
+
+    Q_PROPERTY(bool leaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
+    Q_PROPERTY(QSet<QRedefinableElement *> redefinedElements READ redefinedElements)
+
+    Q_PROPERTY(QSet<QPackageImport *> packageImports READ packageImports)
+    Q_PROPERTY(QSet<QNamedElement *> members READ members)
+    Q_PROPERTY(QSet<QPackageableElement *> importedMembers READ importedMembers STORED false)
+    Q_PROPERTY(QSet<QElementImport *> elementImports READ elementImports)
+    Q_PROPERTY(QSet<QConstraint *> ownedRules READ ownedRules)
+    Q_PROPERTY(QSet<QNamedElement *> ownedMembers READ ownedMembers)
+
     Q_PROPERTY(QtUml::TransitionKind kind READ kind WRITE setKind RESET unsetKind)
     Q_PROPERTY(QConstraint * guard READ guard WRITE setGuard)
     Q_PROPERTY(QVertex * target READ target WRITE setTarget)

@@ -51,6 +51,8 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtWrappedObjects)
 
+class QScriptEngine;
+
 class Q_WRAPPEDOBJECTS_EXPORT QMetaModelPlugin : public QObject
 {
     Q_OBJECT
@@ -58,7 +60,7 @@ class Q_WRAPPEDOBJECTS_EXPORT QMetaModelPlugin : public QObject
 public:
     explicit QMetaModelPlugin(QObject *parent = 0);
 
-    virtual void initMetaModel() = 0;
+    virtual void initMetaModel(QScriptEngine *scriptEngine = 0) = 0;
     virtual QString metaModelNamespaceUri() = 0;
 };
 

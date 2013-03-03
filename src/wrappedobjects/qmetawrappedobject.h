@@ -91,7 +91,7 @@ protected:
     explicit QMetaWrappedObject(QWrappedObject *wrappedObject);
     explicit QMetaWrappedObject(QMetaWrappedObjectPrivate &dd, QWrappedObject *wrappedObject);
     void initialize(QWrappedObject *wrappedObject);
-    void handleWrappedObjectProperties(const QWrappedObject *wrappingObject, QStringList &visitedClasses) const;
+    void handleWrappedObjectProperties(const QWrappedObject *wrappingObject, const QMetaObject *metaObject, QStringList &visitedClasses, QStringList &visitedProperties) const;
 
     QMetaWrappedObjectPrivate *d_ptr;
 

@@ -67,6 +67,21 @@ class Q_UML_EXPORT QRedefinableTemplateSignature : public QWrappedObject
 {
     Q_OBJECT
 
+    Q_PROPERTY(QSet<QElement *> ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(QSet<QComment *> ownedComments READ ownedComments)
+
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
+    Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
+    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(QSet<QDependency *> clientDependencies READ clientDependencies)
+
+    Q_PROPERTY(bool leaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
+    Q_PROPERTY(QSet<QRedefinableElement *> redefinedElements READ redefinedElements)
+    Q_PROPERTY(QSet<QClassifier *> redefinitionContexts READ redefinitionContexts)
+
     Q_PROPERTY(QSet<QTemplateParameter *> inheritedParameters READ inheritedParameters STORED false)
     Q_PROPERTY(QClassifier * classifier READ classifier WRITE setClassifier)
     Q_PROPERTY(QSet<QRedefinableTemplateSignature *> extendedSignatures READ extendedSignatures)

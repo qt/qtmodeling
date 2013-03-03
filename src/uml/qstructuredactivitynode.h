@@ -72,6 +72,50 @@ class Q_UML_EXPORT QStructuredActivityNode : public QWrappedObject
 {
     Q_OBJECT
 
+    Q_PROPERTY(QSet<QElement *> ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(QSet<QComment *> ownedComments READ ownedComments)
+
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
+    Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
+    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(QSet<QDependency *> clientDependencies READ clientDependencies)
+
+    Q_PROPERTY(bool leaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
+    Q_PROPERTY(QSet<QRedefinableElement *> redefinedElements READ redefinedElements)
+    Q_PROPERTY(QSet<QClassifier *> redefinitionContexts READ redefinitionContexts)
+
+    Q_PROPERTY(QSet<QActivityNode *> redefinedNodes READ redefinedNodes)
+    Q_PROPERTY(QSet<QActivityEdge *> incomings READ incomings)
+    Q_PROPERTY(QSet<QActivityGroup *> inGroup READ inGroup)
+    Q_PROPERTY(QStructuredActivityNode * inStructuredNode READ inStructuredNode WRITE setInStructuredNode)
+    Q_PROPERTY(QSet<QActivityPartition *> inPartition READ inPartition)
+    Q_PROPERTY(QSet<QInterruptibleActivityRegion *> inInterruptibleRegion READ inInterruptibleRegion)
+    Q_PROPERTY(QSet<QActivityEdge *> outgoings READ outgoings)
+
+    Q_PROPERTY(QSet<QExceptionHandler *> handlers READ handlers)
+
+    Q_PROPERTY(bool locallyReentrant READ isLocallyReentrant WRITE setLocallyReentrant RESET unsetLocallyReentrant)
+    Q_PROPERTY(QClassifier * context READ context STORED false)
+    Q_PROPERTY(QSet<QConstraint *> localPostconditions READ localPostconditions)
+    Q_PROPERTY(QSet<QConstraint *> localPreconditions READ localPreconditions)
+    Q_PROPERTY(QList<QInputPin *> inputs READ inputs)
+    Q_PROPERTY(QList<QOutputPin *> outputs READ outputs)
+
+    Q_PROPERTY(QSet<QPackageImport *> packageImports READ packageImports)
+    Q_PROPERTY(QSet<QNamedElement *> members READ members)
+    Q_PROPERTY(QSet<QPackageableElement *> importedMembers READ importedMembers STORED false)
+    Q_PROPERTY(QSet<QElementImport *> elementImports READ elementImports)
+    Q_PROPERTY(QSet<QConstraint *> ownedRules READ ownedRules)
+    Q_PROPERTY(QSet<QNamedElement *> ownedMembers READ ownedMembers)
+
+    Q_PROPERTY(QSet<QActivityNode *> containedNodes READ containedNodes)
+    Q_PROPERTY(QSet<QActivityGroup *> subgroups READ subgroups)
+    Q_PROPERTY(QSet<QActivityEdge *> containedEdges READ containedEdges)
+    Q_PROPERTY(QActivityGroup * superGroup READ superGroup)
+
     Q_PROPERTY(bool mustIsolate READ mustIsolate WRITE setMustIsolate RESET unsetMustIsolate)
     Q_PROPERTY(QSet<QInputPin *> structuredNodeInputs READ structuredNodeInputs)
     Q_PROPERTY(QSet<QActivityNode *> nodes READ nodes)
