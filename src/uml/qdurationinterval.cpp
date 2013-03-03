@@ -104,6 +104,9 @@ void QDurationInterval::setMax(QDuration *max)
     Q_D(QDurationInterval);
     if (d->max != max) {
         d->max = max;
+
+        // Adjust redefined property(ies)
+        (qwrappedobject_cast<QInterval *>(this))->setMax(qwrappedobject_cast<QValueSpecification *>(max));
     }
 }
 
@@ -125,6 +128,9 @@ void QDurationInterval::setMin(QDuration *min)
     Q_D(QDurationInterval);
     if (d->min != min) {
         d->min = min;
+
+        // Adjust redefined property(ies)
+        (qwrappedobject_cast<QInterval *>(this))->setMin(qwrappedobject_cast<QValueSpecification *>(min));
     }
 }
 

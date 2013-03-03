@@ -106,6 +106,9 @@ void QIntervalConstraint::setSpecification(QInterval *specification)
             qTopLevelWrapper(d->specification)->setParent(0);
         d->specification = specification;
         qTopLevelWrapper(specification)->setParent(qTopLevelWrapper(this));
+
+        // Adjust redefined property(ies)
+        (qwrappedobject_cast<QConstraint *>(this))->setSpecification(qwrappedobject_cast<QValueSpecification *>(specification));
     }
 }
 

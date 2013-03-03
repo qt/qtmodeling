@@ -140,6 +140,9 @@ void QLoopNode::addLoopVariableInput(QInputPin *loopVariableInput)
     if (!d->loopVariableInputs.contains(loopVariableInput)) {
         d->loopVariableInputs.append(loopVariableInput);
         qTopLevelWrapper(loopVariableInput)->setParent(qTopLevelWrapper(this));
+
+        // Adjust redefined property(ies)
+        (qwrappedobject_cast<QStructuredActivityNode *>(this))->addStructuredNodeInput(qwrappedobject_cast<QInputPin *>(loopVariableInput));
     }
 }
 
@@ -151,6 +154,9 @@ void QLoopNode::removeLoopVariableInput(QInputPin *loopVariableInput)
     if (d->loopVariableInputs.contains(loopVariableInput)) {
         d->loopVariableInputs.removeAll(loopVariableInput);
         qTopLevelWrapper(loopVariableInput)->setParent(0);
+
+        // Adjust redefined property(ies)
+        (qwrappedobject_cast<QStructuredActivityNode *>(this))->removeStructuredNodeInput(qwrappedobject_cast<QInputPin *>(loopVariableInput));
     }
 }
 
@@ -256,6 +262,9 @@ void QLoopNode::addResult(QOutputPin *result)
     if (!d->results.contains(result)) {
         d->results.append(result);
         qTopLevelWrapper(result)->setParent(qTopLevelWrapper(this));
+
+        // Adjust redefined property(ies)
+        (qwrappedobject_cast<QStructuredActivityNode *>(this))->addStructuredNodeOutput(qwrappedobject_cast<QOutputPin *>(result));
     }
 }
 
@@ -267,6 +276,9 @@ void QLoopNode::removeResult(QOutputPin *result)
     if (d->results.contains(result)) {
         d->results.removeAll(result);
         qTopLevelWrapper(result)->setParent(0);
+
+        // Adjust redefined property(ies)
+        (qwrappedobject_cast<QStructuredActivityNode *>(this))->removeStructuredNodeOutput(qwrappedobject_cast<QOutputPin *>(result));
     }
 }
 

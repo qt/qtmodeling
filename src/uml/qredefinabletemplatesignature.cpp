@@ -294,6 +294,9 @@ void QRedefinableTemplateSignature::setClassifier(QClassifier *classifier)
             (qwrappedobject_cast<QRedefinableElementPrivate *>(d))->addRedefinitionContext(qwrappedobject_cast<QClassifier *>(classifier));
         }
 
+        // Adjust redefined property(ies)
+        (qwrappedobject_cast<QTemplateSignature *>(this))->setTemplate_(qwrappedobject_cast<QTemplateableElement *>(classifier));
+
         // Adjust opposite property
         classifier->setOwnedTemplateSignature(this);
     }

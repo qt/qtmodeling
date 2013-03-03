@@ -860,6 +860,10 @@ void QStructuredActivityNode::setActivity(QActivity *activity)
 
         d->activity = activity;
 
+        // Adjust redefined property(ies)
+        (qwrappedobject_cast<QActivityGroup *>(this))->setInActivity(qwrappedobject_cast<QActivity *>(activity));
+        (qwrappedobject_cast<QActivityNode *>(this))->setActivity(qwrappedobject_cast<QActivity *>(activity));
+
         // Adjust opposite property
         if (activity)
             activity->addStructuredNode(this);

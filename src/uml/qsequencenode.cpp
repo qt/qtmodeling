@@ -103,6 +103,9 @@ void QSequenceNode::addExecutableNode(QExecutableNode *executableNode)
     if (!d->executableNodes.contains(executableNode)) {
         d->executableNodes.append(executableNode);
         qTopLevelWrapper(executableNode)->setParent(qTopLevelWrapper(this));
+
+        // Adjust redefined property(ies)
+        (qwrappedobject_cast<QStructuredActivityNode *>(this))->addNode(qwrappedobject_cast<QActivityNode *>(executableNode));
     }
 }
 
@@ -114,6 +117,9 @@ void QSequenceNode::removeExecutableNode(QExecutableNode *executableNode)
     if (d->executableNodes.contains(executableNode)) {
         d->executableNodes.removeAll(executableNode);
         qTopLevelWrapper(executableNode)->setParent(0);
+
+        // Adjust redefined property(ies)
+        (qwrappedobject_cast<QStructuredActivityNode *>(this))->removeNode(qwrappedobject_cast<QActivityNode *>(executableNode));
     }
 }
 

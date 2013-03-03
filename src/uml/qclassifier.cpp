@@ -672,6 +672,9 @@ void QClassifier::setTemplateParameter(QClassifierTemplateParameter *templatePar
 
         d->templateParameter = templateParameter;
 
+        // Adjust redefined property(ies)
+        (qwrappedobject_cast<QParameterableElement *>(this))->setTemplateParameter(qwrappedobject_cast<QTemplateParameter *>(templateParameter));
+
         // Adjust opposite property
         templateParameter->setParameteredElement(this);
     }
@@ -737,6 +740,9 @@ void QClassifier::setOwnedTemplateSignature(QRedefinableTemplateSignature *owned
             qTopLevelWrapper(d->ownedTemplateSignature)->setParent(0);
         d->ownedTemplateSignature = ownedTemplateSignature;
         qTopLevelWrapper(ownedTemplateSignature)->setParent(qTopLevelWrapper(this));
+
+        // Adjust redefined property(ies)
+        (qwrappedobject_cast<QTemplateableElement *>(this))->setOwnedTemplateSignature(qwrappedobject_cast<QTemplateSignature *>(ownedTemplateSignature));
 
         // Adjust opposite property
         ownedTemplateSignature->setClassifier(this);

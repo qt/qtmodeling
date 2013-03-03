@@ -205,6 +205,9 @@ void QConditionalNode::addResult(QOutputPin *result)
     if (!d->results.contains(result)) {
         d->results.append(result);
         qTopLevelWrapper(result)->setParent(qTopLevelWrapper(this));
+
+        // Adjust redefined property(ies)
+        (qwrappedobject_cast<QStructuredActivityNode *>(this))->addStructuredNodeOutput(qwrappedobject_cast<QOutputPin *>(result));
     }
 }
 
@@ -216,6 +219,9 @@ void QConditionalNode::removeResult(QOutputPin *result)
     if (d->results.contains(result)) {
         d->results.removeAll(result);
         qTopLevelWrapper(result)->setParent(0);
+
+        // Adjust redefined property(ies)
+        (qwrappedobject_cast<QStructuredActivityNode *>(this))->removeStructuredNodeOutput(qwrappedobject_cast<QOutputPin *>(result));
     }
 }
 

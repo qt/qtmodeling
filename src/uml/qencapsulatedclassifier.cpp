@@ -91,9 +91,12 @@ QSet<QPort *> QEncapsulatedClassifier::ownedPorts() const
 {
     // This is a read-only derived association end
 
-    qWarning("QEncapsulatedClassifier::ownedPorts: to be implemented (this is a derived associationend)");
-
-    return QSet<QPort *>(); // change here to your derived return
+    Q_D(const QEncapsulatedClassifier);
+    QSet<QPort *> ownedPorts_;
+    foreach (QProperty *property, d->ownedAttributes)
+        if (QPort *port = qwrappedobject_cast<QPort *>(property))
+            ownedPorts_.insert(port);
+    return ownedPorts_;
 }
 
 void QEncapsulatedClassifier::setPropertyData()

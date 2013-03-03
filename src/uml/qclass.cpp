@@ -778,6 +778,9 @@ void QClass::setAbstract(bool isAbstract)
     Q_D(QClass);
     if (d->isAbstract != isAbstract) {
         d->isAbstract = isAbstract;
+
+        // Adjust redefined property(ies)
+        (qwrappedobject_cast<QClassifier *>(this))->setAbstract(isAbstract);
     }
     d->modifiedResettableProperties << QString::fromLatin1("isAbstract");
 }
@@ -978,6 +981,9 @@ void QClass::addOwnedAttribute(QProperty *ownedAttribute)
         (qwrappedobject_cast<QNamespacePrivate *>(d))->addOwnedMember(qwrappedobject_cast<QNamedElement *>(ownedAttribute));
         (qwrappedobject_cast<QClassifierPrivate *>(d))->addAttribute(qwrappedobject_cast<QProperty *>(ownedAttribute));
 
+        // Adjust redefined property(ies)
+        (qwrappedobject_cast<QStructuredClassifier *>(this))->addOwnedAttribute(qwrappedobject_cast<QProperty *>(ownedAttribute));
+
         // Adjust opposite property
         ownedAttribute->setClass_(this);
     }
@@ -994,6 +1000,9 @@ void QClass::removeOwnedAttribute(QProperty *ownedAttribute)
         // Adjust subsetted property(ies)
         (qwrappedobject_cast<QNamespacePrivate *>(d))->removeOwnedMember(qwrappedobject_cast<QNamedElement *>(ownedAttribute));
         (qwrappedobject_cast<QClassifierPrivate *>(d))->removeAttribute(qwrappedobject_cast<QProperty *>(ownedAttribute));
+
+        // Adjust redefined property(ies)
+        (qwrappedobject_cast<QStructuredClassifier *>(this))->removeOwnedAttribute(qwrappedobject_cast<QProperty *>(ownedAttribute));
 
         // Adjust opposite property
         ownedAttribute->setClass_(0);
@@ -1021,6 +1030,9 @@ void QClass::addSuperClass(QClass *superClass)
 
     if (false) { // change to your derived inclusion criteria
         // change to your derived code
+
+        // Adjust redefined property(ies)
+        (qwrappedobject_cast<QClassifier *>(this))->addGeneral(qwrappedobject_cast<QClassifier *>(superClass));
     }
 }
 
@@ -1033,6 +1045,9 @@ void QClass::removeSuperClass(QClass *superClass)
 
     if (false) { // change to your derived exclusion criteria
         // change to your derived code
+
+        // Adjust redefined property(ies)
+        (qwrappedobject_cast<QClassifier *>(this))->removeGeneral(qwrappedobject_cast<QClassifier *>(superClass));
     }
 }
 

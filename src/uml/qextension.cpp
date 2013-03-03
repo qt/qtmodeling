@@ -155,10 +155,18 @@ void QExtension::setOwnedEnd(QExtensionEnd *ownedEnd)
 
     Q_D(QExtension);
     if (d->ownedEnd != ownedEnd) {
+        // Adjust redefined property(ies)
+        (qwrappedobject_cast<QAssociation *>(this))->removeOwnedEnd(qwrappedobject_cast<QProperty *>(d->ownedEnd));
+
         if (d->ownedEnd)
             qTopLevelWrapper(d->ownedEnd)->setParent(0);
         d->ownedEnd = ownedEnd;
         qTopLevelWrapper(ownedEnd)->setParent(qTopLevelWrapper(this));
+
+        // Adjust redefined property(ies)
+        if (ownedEnd) {
+            (qwrappedobject_cast<QAssociation *>(this))->addOwnedEnd(qwrappedobject_cast<QProperty *>(ownedEnd));
+        }
     }
 }
 

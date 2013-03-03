@@ -241,6 +241,9 @@ void QPackageableElement::setVisibility(QtUml::VisibilityKind visibility)
     Q_D(QPackageableElement);
     if (d->visibility != visibility) {
         d->visibility = visibility;
+
+        // Adjust redefined property(ies)
+        (qwrappedobject_cast<QNamedElement *>(this))->setVisibility(visibility);
     }
     d->modifiedResettableProperties << QString::fromLatin1("visibility");
 }
