@@ -70,6 +70,62 @@
     [%- END -%]
     [%- END -%]
 [%- END -%]
+[%- MACRO HANDLEREDEFINEDPROPERTY(property, operation, singlevalued) BLOCK -%]
+    [%- IF property.redefinedProperty != '' %]
+    [%- found = 'false' -%]
+    [%- FOREACH redefinedProperty IN property.redefinedProperty.split(' ') -%]
+        [%- redefinedClass = redefinedProperty.split('-').0.replace('^', 'Q') -%]
+        [%- IF classes.item(redefinedClass).attribute.item(redefinedProperty) -%]
+        [%- redefinedPropertyItem = classes.item(redefinedClass).attribute.item(redefinedProperty) -%]
+        [%- ELSE -%]
+        [%- redefinedPropertyItem = classes.item(redefinedClass).associationend.item(redefinedProperty) -%]
+        [%- END -%]
+        [%- IF operation == 1 and redefinedPropertyItem.accessor.1 -%]
+            [%- IF found == 'false' %]
+
+        // Adjust redefined property(ies)
+            [%- found = 'true' -%]
+            [%- END %]
+        [%- IF property.accessor.size == 2 and redefinedPropertyItem.accessor.size > 2 %]
+        if (${accessor.parameter.0.name}) {
+        [%- END %]
+            [%- IF property.isReadOnly == redefinedPropertyItem.isReadOnly %]
+        [% IF property.accessor.size == 2 and redefinedPropertyItem.accessor.size > 2 %]    [% END %](qwrappedobject_cast<${redefinedClass}[% IF redefinedPropertyItem.isReadOnly == 'true' %]Private[% END %] *>(this))->${redefinedPropertyItem.accessor.1.name}(qwrappedobject_cast<${redefinedPropertyItem.accessor.1.parameter.0.type}>(${accessor.parameter.0.name}));
+            [%- ELSIF property.isReadOnly == 'false' and redefinedPropertyItem.isReadOnly == 'true' %]
+        [% IF property.accessor.size == 2 and redefinedPropertyItem.accessor.size > 2 %]    [% END %](qwrappedobject_cast<${redefinedClass}Private *>(d))->${redefinedPropertyItem.accessor.1.name}(qwrappedobject_cast<${redefinedPropertyItem.accessor.1.parameter.0.type}>(${accessor.parameter.0.name}));
+            [%- ELSE %]
+        [% IF property.accessor.size == 2 and redefinedPropertyItem.accessor.size > 2 %]    [% END %]Q_Q(${class.name});
+        [% IF property.accessor.size == 2 and redefinedPropertyItem.accessor.size > 2 %]    [% END %]q->${redefinedClass}::${redefinedPropertyItem.accessor.1.name}(qwrappedobject_cast<${redefinedPropertyItem.accessor.1.parameter.0.type}>(${accessor.parameter.0.name}));
+            [%- END %]
+        [%- IF property.accessor.size == 2 and redefinedPropertyItem.accessor.size > 2 %]
+        }
+        [%- END %]
+        [%- ELSE -%][%- IF operation == 2 and redefinedPropertyItem.accessor.2 -%]
+            [%- IF found == 'false' -%]
+            [%- IF singlevalued == 'false' %]
+
+            [%- END %]
+        // Adjust redefined property(ies)
+            [%- found = 'true' -%]
+            [%- END %]
+            [%- IF property.isReadOnly == 'true' and redefinedPropertyItem.isReadOnly == 'true' %]
+        (qwrappedobject_cast<${redefinedClass}Private *>(this))->${redefinedPropertyItem.accessor.2.name}(qwrappedobject_cast<${redefinedPropertyItem.accessor.1.parameter.0.type}>([% IF singlevalued == 'true' %]this->[% END %]${accessor.parameter.0.name}));
+            [%- ELSIF property.isReadOnly == 'false' and redefinedPropertyItem.isReadOnly == 'false' %]
+        (qwrappedobject_cast<${redefinedClass} *>(this))->${redefinedPropertyItem.accessor.2.name}(qwrappedobject_cast<${redefinedPropertyItem.accessor.1.parameter.0.type}>([% IF singlevalued == 'true' %]d->[% END %]${accessor.parameter.0.name}));
+            [%- ELSIF property.isReadOnly == 'false' and redefinedPropertyItem.isReadOnly == 'true' %]
+        (qwrappedobject_cast<${redefinedClass}Private *>(d))->${redefinedPropertyItem.accessor.2.name}(qwrappedobject_cast<${redefinedPropertyItem.accessor.1.parameter.0.type}>([% IF singlevalued == 'true' %]d->[% END %]${accessor.parameter.0.name}));
+            [%- ELSE %]
+        Q_Q(${class.name});
+        q->${redefinedClass}::${redefinedPropertyItem.accessor.2.name}(qwrappedobject_cast<${redefinedPropertyItem.accessor.1.parameter.0.type}>([% IF singlevalued == 'true' %]this->[% END %]${accessor.parameter.0.name}));
+            [%- END %]
+        [%- END -%]
+        [%- END -%]
+    [%- END -%]
+    [%- IF found == 'true' and operation == 2 and singlevalued == 'true' %]
+
+    [%- END -%]
+    [%- END -%]
+[%- END -%]
 [%- MACRO HANDLEOPPOSITEEND(property, accessor, operation, singlevalued) BLOCK -%]
 [%- IF property.oppositeEnd != '' -%]
 [%- opposite = classes.item(property.oppositeEnd.split('-').0.replace('^', 'Q')).associationend.item(property.oppositeEnd) %]
@@ -176,6 +232,7 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
         [%- ELSE -%]
             [%- IF accessor.name.search('^set') %]
             [%- HANDLESUBSETTEDPROPERTY(attribute, 2, 'true') %]
+            [%- HANDLEREDEFINEDPROPERTY(attribute, 2, 'true') %]
 [%- IF attribute.aggregation == 'composite' and attribute.accessor.0.return.search('\*$') and attribute.subsettedProperty == '' %]
         if (d->${accessor.parameter.0.name})
             qTopLevelWrapper(d->${accessor.parameter.0.name})->setParent(0);
@@ -185,6 +242,7 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
         qTopLevelWrapper(${accessor.parameter.0.name})->setParent(qTopLevelWrapper(this));
 [%- END %]
             [%- HANDLESUBSETTEDPROPERTY(attribute, 1, 'true') -%]
+            [%- HANDLEREDEFINEDPROPERTY(attribute, 1, 'true') -%]
             [%- END -%]
             [%- IF accessor.name.search('^add') %]
         d->${attribute.accessor.0.name}.[% IF attribute.accessor.0.return.search('QSet') %]insert[% ELSE %]append[% END %](${accessor.parameter.0.name});
@@ -192,6 +250,7 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
         qTopLevelWrapper(${accessor.parameter.0.name})->setParent(qTopLevelWrapper(this));
 [%- END %]
             [%- HANDLESUBSETTEDPROPERTY(attribute, 1, 'false') -%]
+            [%- HANDLEREDEFINEDPROPERTY(attribute, 1, 'false') -%]
     [%- END -%]
             [%- IF accessor.name.search('^remove') %]
         d->${attribute.accessor.0.name}.[% IF attribute.accessor.0.return.search('QSet') %]remove[% ELSE %]removeAll[% END %](${accessor.parameter.0.name});
@@ -199,6 +258,7 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
         qTopLevelWrapper(${accessor.parameter.0.name})->setParent(0);
 [%- END %]
             [%- HANDLESUBSETTEDPROPERTY(attribute, 2, 'false') -%]
+            [%- HANDLEREDEFINEDPROPERTY(attribute, 2, 'false') -%]
             [%- END -%]
         [%- END %]
     }
@@ -229,16 +289,20 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
         [%- ELSE -%]
             [%- IF accessor.name.search('^set') %]
             [%- HANDLESUBSETTEDPROPERTY(attribute, 2, 'true') %]
+            [%- HANDLEREDEFINEDPROPERTY(attribute, 2, 'true') %]
         // change to your derived code
             [%- HANDLESUBSETTEDPROPERTY(attribute, 1, 'true') -%]
+            [%- HANDLEREDEFINEDPROPERTY(attribute, 1, 'true') -%]
             [%- END -%]
             [%- IF accessor.name.search('^add') %]
         // change to your derived code
             [%- HANDLESUBSETTEDPROPERTY(attribute, 1, 'false') -%]
+            [%- HANDLEREDEFINEDPROPERTY(attribute, 1, 'false') -%]
     [%- END -%]
             [%- IF accessor.name.search('^remove') %]
         // change to your derived code
             [%- HANDLESUBSETTEDPROPERTY(attribute, 2, 'false') -%]
+            [%- HANDLEREDEFINEDPROPERTY(attribute, 2, 'false') -%]
             [%- END -%]
         [%- END %]
     }
@@ -299,6 +363,7 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
             [%- IF accessor.name.search('^set') %]
             [%- HANDLEOPPOSITEEND(associationend, accessor, 2, 'true') %]
             [%- HANDLESUBSETTEDPROPERTY(associationend, 2, 'true') %]
+            [%- HANDLEREDEFINEDPROPERTY(associationend, 2, 'true') %]
 [%- IF associationend.aggregation == 'composite' and associationend.accessor.0.return.search('\*$') and associationend.subsettedProperty == '' %]
         if (d->${accessor.parameter.0.name})
             qTopLevelWrapper(d->${accessor.parameter.0.name})->setParent(0);
@@ -308,6 +373,7 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
         qTopLevelWrapper(${accessor.parameter.0.name})->setParent(qTopLevelWrapper(this));
 [%- END %]
             [%- HANDLESUBSETTEDPROPERTY(associationend, 1, 'true') -%]
+            [%- HANDLEREDEFINEDPROPERTY(associationend, 1, 'true') -%]
             [%- HANDLEOPPOSITEEND(associationend, accessor, 1, 'true') %]
             [%- END -%]
             [%- IF accessor.name.search('^add') %]
@@ -316,6 +382,7 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
         qTopLevelWrapper(${accessor.parameter.0.name})->setParent(qTopLevelWrapper(this));
 [%- END %]
             [%- HANDLESUBSETTEDPROPERTY(associationend, 1, 'false') -%]
+            [%- HANDLEREDEFINEDPROPERTY(associationend, 1, 'false') -%]
             [%- HANDLEOPPOSITEEND(associationend, accessor, 1, 'false') -%]
             [%- END -%]
             [%- IF accessor.name.search('^remove') %]
@@ -324,6 +391,7 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
         qTopLevelWrapper(${accessor.parameter.0.name})->setParent(0);
 [%- END %]
             [%- HANDLESUBSETTEDPROPERTY(associationend, 2, 'false') -%]
+            [%- HANDLEREDEFINEDPROPERTY(associationend, 2, 'false') -%]
             [%- HANDLEOPPOSITEEND(associationend, accessor, 2, 'false') -%]
             [%- END -%]
         [%- END %]
@@ -352,18 +420,22 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN acces
             [%- IF accessor.name.search('^set') %]
             [%- HANDLEOPPOSITEEND(associationend, accessor, 2, 'true') %]
             [%- HANDLESUBSETTEDPROPERTY(associationend, 2, 'true') %]
+            [%- HANDLEREDEFINEDPROPERTY(associationend, 2, 'true') %]
         // change to your derived code
             [%- HANDLESUBSETTEDPROPERTY(associationend, 1, 'true') -%]
+            [%- HANDLEREDEFINEDPROPERTY(associationend, 1, 'true') -%]
             [%- HANDLEOPPOSITEEND(associationend, accessor, 1, 'true') %]
             [%- END -%]
             [%- IF accessor.name.search('^add') %]
         // change to your derived code
             [%- HANDLESUBSETTEDPROPERTY(associationend, 1, 'false') -%]
+            [%- HANDLEREDEFINEDPROPERTY(associationend, 1, 'false') -%]
             [%- HANDLEOPPOSITEEND(associationend, accessor, 1, 'false') -%]
             [%- END -%]
             [%- IF accessor.name.search('^remove') %]
         // change to your derived code
             [%- HANDLESUBSETTEDPROPERTY(associationend, 2, 'false') -%]
+            [%- HANDLEREDEFINEDPROPERTY(associationend, 2, 'false') -%]
             [%- HANDLEOPPOSITEEND(associationend, accessor, 2, 'false') -%]
             [%- END -%]
         [%- END %]
@@ -535,6 +607,7 @@ ${accessor.return}${class.name}Private::${accessor.name}([%- FOREACH parameter I
     [%- END %]
     [%- IF accessor.name.search('^set') %]
     [%- HANDLESUBSETTEDPROPERTY(attribute, 2, 'true') %]
+    [%- HANDLEREDEFINEDPROPERTY(attribute, 2, 'true') %]
 [%- IF attribute.aggregation == 'composite' and attribute.accessor.0.return.search('\*$') and attribute.subsettedProperty == '' %]
         if (this->${accessor.parameter.0.name})
             qTopLevelWrapper(this->${accessor.parameter.0.name})->setParent(0);
@@ -544,6 +617,7 @@ ${accessor.return}${class.name}Private::${accessor.name}([%- FOREACH parameter I
         qTopLevelWrapper(${accessor.parameter.0.name})->setParent(qTopLevelWrapper(this));
 [%- END %]
     [%- HANDLESUBSETTEDPROPERTY(attribute, 1, 'true') -%]
+    [%- HANDLEREDEFINEDPROPERTY(attribute, 1, 'true') -%]
     [%- END -%]
     [%- IF accessor.name.search('^add') %]
         this->${attribute.accessor.0.name}.[% IF attribute.accessor.0.return.search('QSet') %]insert[% ELSE %]append[% END %](${accessor.parameter.0.name});
@@ -552,6 +626,7 @@ ${accessor.return}${class.name}Private::${accessor.name}([%- FOREACH parameter I
         qTopLevelWrapper(${accessor.parameter.0.name})->setParent(qTopLevelWrapper(q));
 [%- END %]
     [%- HANDLESUBSETTEDPROPERTY(attribute, 1, 'false') -%]
+    [%- HANDLEREDEFINEDPROPERTY(attribute, 1, 'false') -%]
     [%- END -%]
     [%- IF accessor.name.search('^remove') %]
         this->${attribute.accessor.0.name}.[% IF attribute.accessor.0.return.search('QSet') %]remove[% ELSE %]removeAll[% END %](${accessor.parameter.0.name});
@@ -559,6 +634,7 @@ ${accessor.return}${class.name}Private::${accessor.name}([%- FOREACH parameter I
         qTopLevelWrapper(${accessor.parameter.0.name})->setParent(0);
 [%- END %]
     [%- HANDLESUBSETTEDPROPERTY(attribute, 2, 'false') -%]
+    [%- HANDLEREDEFINEDPROPERTY(attribute, 2, 'false') -%]
     [%- END -%]
     }
 [%- ELSE %]
@@ -574,16 +650,20 @@ ${accessor.return}${class.name}Private::${accessor.name}([%- FOREACH parameter I
     [%- END %]
     [%- IF accessor.name.search('^set') %]
     [%- HANDLESUBSETTEDPROPERTY(attribute, 2, 'true') %]
+    [%- HANDLEREDEFINEDPROPERTY(attribute, 2, 'true') %]
         // <derived-code>
     [%- HANDLESUBSETTEDPROPERTY(attribute, 1, 'true') -%]
+    [%- HANDLEREDEFINEDPROPERTY(attribute, 1, 'true') -%]
     [%- END -%]
     [%- IF accessor.name.search('^add') %]
         // <derived-code>
     [%- HANDLESUBSETTEDPROPERTY(attribute, 1, 'false') -%]
+    [%- HANDLEREDEFINEDPROPERTY(attribute, 1, 'false') -%]
     [%- END -%]
     [%- IF accessor.name.search('^remove') %]
         // <derived-code>
     [%- HANDLESUBSETTEDPROPERTY(attribute, 2, 'false') -%]
+    [%- HANDLEREDEFINEDPROPERTY(attribute, 2, 'false') -%]
     [%- END -%]
     }
 [%- END %]
@@ -612,6 +692,7 @@ ${accessor.return}${class.name}Private::${accessor.name}([%- FOREACH parameter I
     [%- END %]
     [%- HANDLEOPPOSITEEND(associationend, accessor, 2, 'true') %]
     [%- HANDLESUBSETTEDPROPERTY(associationend, 2, 'true') %]
+    [%- HANDLEREDEFINEDPROPERTY(associationend, 2, 'true') %]
 [%- IF associationend.aggregation == 'composite' and associationend.accessor.0.return.search('\*$') and associationend.subsettedProperty == '' %]
         if (this->${accessor.parameter.0.name})
             qTopLevelWrapper(this->${accessor.parameter.0.name})->setParent(0);
@@ -621,6 +702,7 @@ ${accessor.return}${class.name}Private::${accessor.name}([%- FOREACH parameter I
         qTopLevelWrapper(${accessor.parameter.0.name})->setParent(qTopLevelWrapper(this));
 [%- END %]
     [%- HANDLESUBSETTEDPROPERTY(associationend, 1, 'true') -%]
+    [%- HANDLEREDEFINEPROPERTY(associationend, 1, 'true') -%]
     [%- HANDLEOPPOSITEEND(associationend, accessor, 1, 'true') %]
     [%- END -%]
     [%- IF accessor.name.search('^add') %]
@@ -630,6 +712,7 @@ ${accessor.return}${class.name}Private::${accessor.name}([%- FOREACH parameter I
         qTopLevelWrapper(${accessor.parameter.0.name})->setParent(qTopLevelWrapper(q));
 [%- END %]
     [%- HANDLESUBSETTEDPROPERTY(associationend, 1, 'false') -%]
+    [%- HANDLEREDEFINEDPROPERTY(associationend, 1, 'false') -%]
     [%- HANDLEOPPOSITEEND(associationend, accessor, 1, 'false') -%]
     [%- END -%]
     [%- IF accessor.name.search('^remove') %]
@@ -638,6 +721,7 @@ ${accessor.return}${class.name}Private::${accessor.name}([%- FOREACH parameter I
         qTopLevelWrapper(${accessor.parameter.0.name})->setParent(0);
 [%- END %]
     [%- HANDLESUBSETTEDPROPERTY(associationend, 2, 'false') -%]
+    [%- HANDLEREDEFINEDPROPERTY(associationend, 2, 'false') -%]
     [%- HANDLEOPPOSITEEND(associationend, accessor, 2, 'false') -%]
     [%- END %]
     }
@@ -658,18 +742,22 @@ ${accessor.return}${class.name}Private::${accessor.name}([%- FOREACH parameter I
     [%- END %]
     [%- HANDLEOPPOSITEEND(associationend, accessor, 2, 'true') %]
     [%- HANDLESUBSETTEDPROPERTY(associationend, 2, 'true') %]
+    [%- HANDLEREDEFINEDPROPERTY(associationend, 2, 'true') %]
         // <derived-code>
     [%- HANDLESUBSETTEDPROPERTY(associationend, 1, 'true') -%]
+    [%- HANDLEREDEFINEDPROPERTY(associationend, 1, 'true') -%]
     [%- HANDLEOPPOSITEEND(associationend, accessor, 1, 'true') %]
     [%- END -%]
     [%- IF accessor.name.search('^add') %]
         // <derived-code>
     [%- HANDLESUBSETTEDPROPERTY(associationend, 1, 'false') -%]
+    [%- HANDLEREDEFINEDPROPERTY(associationend, 1, 'false') -%]
     [%- HANDLEOPPOSITEEND(associationend, accessor, 1, 'false') -%]
     [%- END -%]
     [%- IF accessor.name.search('^remove') %]
         // <derived-code>
     [%- HANDLESUBSETTEDPROPERTY(associationend, 2, 'false') -%]
+    [%- HANDLEREDEFINEDPROPERTY(associationend, 2, 'false') -%]
     [%- HANDLEOPPOSITEEND(associationend, accessor, 2, 'false') -%]
     [%- END %]
     }

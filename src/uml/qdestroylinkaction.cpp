@@ -103,6 +103,9 @@ void QDestroyLinkAction::addEndData(QLinkEndDestructionData *endData)
     if (!d->endData.contains(endData)) {
         d->endData.insert(endData);
         qTopLevelWrapper(endData)->setParent(qTopLevelWrapper(this));
+
+        // Adjust redefined property(ies)
+        (qwrappedobject_cast<QLinkAction *>(this))->addEndData(qwrappedobject_cast<QLinkEndData *>(endData));
     }
 }
 
@@ -114,6 +117,9 @@ void QDestroyLinkAction::removeEndData(QLinkEndDestructionData *endData)
     if (d->endData.contains(endData)) {
         d->endData.remove(endData);
         qTopLevelWrapper(endData)->setParent(0);
+
+        // Adjust redefined property(ies)
+        (qwrappedobject_cast<QLinkAction *>(this))->removeEndData(qwrappedobject_cast<QLinkEndData *>(endData));
     }
 }
 

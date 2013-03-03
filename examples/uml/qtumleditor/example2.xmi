@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.omg.org/spec/UML/20110701" xmlns:mofext="http://www.omg.org/spec/MOF/20110701">
+  <uml:Model name="MyModel" xmi:id="MyModel">
+    <packagedElement xmi:type="uml:Component" name="Component1" xmi:id="MyModel-Component1">
+      <ownedAttribute xmi:type="uml:Port" visibility="public" name="port1" xmi:id="MyModel-Component1-port1"/>
+      <ownedConnector xmi:type="uml:Connector" visibility="public" name="connector" xmi:id="MyModel-Component1-connector">
+        <end xmi:type="uml:ConnectorEnd" xmi:id="MyModel-Component1-connector-ConnectorEnd.0">
+          <role xmi:idref="MyModel-Component1-port1"/>
+        </end>
+        <end xmi:type="uml:ConnectorEnd" xmi:id="MyModel-Component1-connector-ConnectorEnd.1">
+          <role xmi:idref="MyModel-Component2-port2"/>
+        </end>
+      </ownedConnector>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Component" name="Component2" xmi:id="MyModel-Component2">
+      <ownedAttribute xmi:type="uml:Port" visibility="public" name="port2" xmi:id="MyModel-Component2-port2"/>
+    </packagedElement>
+  </uml:Model>
+</xmi:XMI>

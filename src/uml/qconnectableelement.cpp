@@ -307,6 +307,9 @@ void QConnectableElement::setTemplateParameter(QConnectableElementTemplateParame
 
         d->templateParameter = templateParameter;
 
+        // Adjust redefined property(ies)
+        (qwrappedobject_cast<QParameterableElement *>(this))->setTemplateParameter(qwrappedobject_cast<QTemplateParameter *>(templateParameter));
+
         // Adjust opposite property
         templateParameter->setParameteredElement(this);
     }

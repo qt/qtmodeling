@@ -106,6 +106,9 @@ void QOperationTemplateParameter::setParameteredElement(QOperation *parameteredE
 
         d->parameteredElement = parameteredElement;
 
+        // Adjust redefined property(ies)
+        (qwrappedobject_cast<QTemplateParameter *>(this))->setParameteredElement(qwrappedobject_cast<QParameterableElement *>(parameteredElement));
+
         // Adjust opposite property
         parameteredElement->setTemplateParameter(this);
     }

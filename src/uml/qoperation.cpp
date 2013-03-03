@@ -621,6 +621,9 @@ void QOperation::addOwnedParameter(QParameter *ownedParameter)
         d->ownedParameters.append(ownedParameter);
         qTopLevelWrapper(ownedParameter)->setParent(qTopLevelWrapper(this));
 
+        // Adjust redefined property(ies)
+        (qwrappedobject_cast<QBehavioralFeature *>(this))->addOwnedParameter(qwrappedobject_cast<QParameter *>(ownedParameter));
+
         // Adjust opposite property
         ownedParameter->setOperation(this);
     }
@@ -634,6 +637,9 @@ void QOperation::removeOwnedParameter(QParameter *ownedParameter)
     if (d->ownedParameters.contains(ownedParameter)) {
         d->ownedParameters.removeAll(ownedParameter);
         qTopLevelWrapper(ownedParameter)->setParent(0);
+
+        // Adjust redefined property(ies)
+        (qwrappedobject_cast<QBehavioralFeature *>(this))->removeOwnedParameter(qwrappedobject_cast<QParameter *>(ownedParameter));
 
         // Adjust opposite property
         ownedParameter->setOperation(0);
@@ -806,6 +812,9 @@ void QOperation::setTemplateParameter(QOperationTemplateParameter *templateParam
 
         d->templateParameter = templateParameter;
 
+        // Adjust redefined property(ies)
+        (qwrappedobject_cast<QParameterableElement *>(this))->setTemplateParameter(qwrappedobject_cast<QTemplateParameter *>(templateParameter));
+
         // Adjust opposite property
         templateParameter->setParameteredElement(this);
     }
@@ -962,6 +971,9 @@ void QOperation::addRaisedException(QType *raisedException)
     Q_D(QOperation);
     if (!d->raisedExceptions.contains(raisedException)) {
         d->raisedExceptions.insert(raisedException);
+
+        // Adjust redefined property(ies)
+        (qwrappedobject_cast<QBehavioralFeature *>(this))->addRaisedException(qwrappedobject_cast<QType *>(raisedException));
     }
 }
 
@@ -972,6 +984,9 @@ void QOperation::removeRaisedException(QType *raisedException)
     Q_D(QOperation);
     if (d->raisedExceptions.contains(raisedException)) {
         d->raisedExceptions.remove(raisedException);
+
+        // Adjust redefined property(ies)
+        (qwrappedobject_cast<QBehavioralFeature *>(this))->removeRaisedException(qwrappedobject_cast<QType *>(raisedException));
     }
 }
 

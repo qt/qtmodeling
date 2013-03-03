@@ -133,7 +133,15 @@ void QStateInvariant::setCovered(QLifeline *covered)
 
     Q_D(QStateInvariant);
     if (d->covered != covered) {
+        // Adjust redefined property(ies)
+        (qwrappedobject_cast<QInteractionFragment *>(this))->removeCovered(qwrappedobject_cast<QLifeline *>(d->covered));
+
         d->covered = covered;
+
+        // Adjust redefined property(ies)
+        if (covered) {
+            (qwrappedobject_cast<QInteractionFragment *>(this))->addCovered(qwrappedobject_cast<QLifeline *>(covered));
+        }
     }
 }
 

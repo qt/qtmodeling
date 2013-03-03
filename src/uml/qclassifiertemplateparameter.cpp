@@ -140,6 +140,9 @@ void QClassifierTemplateParameter::setParameteredElement(QClassifier *parametere
 
         d->parameteredElement = parameteredElement;
 
+        // Adjust redefined property(ies)
+        (qwrappedobject_cast<QTemplateParameter *>(this))->setParameteredElement(qwrappedobject_cast<QParameterableElement *>(parameteredElement));
+
         // Adjust opposite property
         parameteredElement->setTemplateParameter(this);
     }

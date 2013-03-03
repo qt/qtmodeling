@@ -105,6 +105,9 @@ void QClass::setAbstract(bool isAbstract)
     Q_D(QClass);
     if (d->isAbstract != isAbstract) {
         d->isAbstract = isAbstract;
+
+        // Adjust redefined property(ies)
+        (qwrappedobject_cast<QClassifier *>(this))->setAbstract(isAbstract);
     }
     d->modifiedResettableProperties << QString::fromLatin1("isAbstract");
 }
@@ -268,6 +271,9 @@ void QClass::addSuperClass(QClass *superClass)
 
     if (false) { // change to your derived inclusion criteria
         // change to your derived code
+
+        // Adjust redefined property(ies)
+        (qwrappedobject_cast<QClassifier *>(this))->addGeneral(qwrappedobject_cast<QClassifier *>(superClass));
     }
 }
 
@@ -280,6 +286,9 @@ void QClass::removeSuperClass(QClass *superClass)
 
     if (false) { // change to your derived exclusion criteria
         // change to your derived code
+
+        // Adjust redefined property(ies)
+        (qwrappedobject_cast<QClassifier *>(this))->removeGeneral(qwrappedobject_cast<QClassifier *>(superClass));
     }
 }
 

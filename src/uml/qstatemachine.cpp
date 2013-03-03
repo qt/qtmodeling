@@ -106,6 +106,9 @@ void QStateMachine::addExtendedStateMachine(QStateMachine *extendedStateMachine)
     Q_D(QStateMachine);
     if (!d->extendedStateMachines.contains(extendedStateMachine)) {
         d->extendedStateMachines.insert(extendedStateMachine);
+
+        // Adjust redefined property(ies)
+        (qwrappedobject_cast<QBehavior *>(this))->addRedefinedBehavior(qwrappedobject_cast<QBehavior *>(extendedStateMachine));
     }
 }
 
@@ -116,6 +119,9 @@ void QStateMachine::removeExtendedStateMachine(QStateMachine *extendedStateMachi
     Q_D(QStateMachine);
     if (d->extendedStateMachines.contains(extendedStateMachine)) {
         d->extendedStateMachines.remove(extendedStateMachine);
+
+        // Adjust redefined property(ies)
+        (qwrappedobject_cast<QBehavior *>(this))->removeRedefinedBehavior(qwrappedobject_cast<QBehavior *>(extendedStateMachine));
     }
 }
 

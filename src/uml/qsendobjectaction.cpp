@@ -103,10 +103,18 @@ void QSendObjectAction::setRequest(QInputPin *request)
 
     Q_D(QSendObjectAction);
     if (d->request != request) {
+        // Adjust redefined property(ies)
+        (qwrappedobject_cast<QInvocationAction *>(this))->removeArgument(qwrappedobject_cast<QInputPin *>(d->request));
+
         if (d->request)
             qTopLevelWrapper(d->request)->setParent(0);
         d->request = request;
         qTopLevelWrapper(request)->setParent(qTopLevelWrapper(this));
+
+        // Adjust redefined property(ies)
+        if (request) {
+            (qwrappedobject_cast<QInvocationAction *>(this))->addArgument(qwrappedobject_cast<QInputPin *>(request));
+        }
     }
 }
 

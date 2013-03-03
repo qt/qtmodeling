@@ -106,6 +106,9 @@ void QExtensionEnd::setLower(qint32 lower)
 
     if (false) { // change to your derived change criteria
         // change to your derived code
+
+        // Adjust redefined property(ies)
+        (qwrappedobject_cast<QMultiplicityElement *>(this))->setLower(lower);
     }
 }
 
@@ -131,6 +134,9 @@ void QExtensionEnd::setType(QStereotype *type)
     Q_D(QExtensionEnd);
     if (d->type != type) {
         d->type = type;
+
+        // Adjust redefined property(ies)
+        (qwrappedobject_cast<QTypedElement *>(this))->setType(qwrappedobject_cast<QType *>(type));
     }
 }
 

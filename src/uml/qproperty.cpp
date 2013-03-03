@@ -606,6 +606,9 @@ void QProperty::setReadOnly(bool isReadOnly)
     Q_D(QProperty);
     if (d->isReadOnly != isReadOnly) {
         d->isReadOnly = isReadOnly;
+
+        // Adjust redefined property(ies)
+        (qwrappedobject_cast<QStructuralFeature *>(this))->setReadOnly(isReadOnly);
     }
     d->modifiedResettableProperties << QString::fromLatin1("isReadOnly");
 }
