@@ -71,7 +71,7 @@ class Q_UML_EXPORT QObjectNode : public QWrappedObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool isControlType READ isControlType WRITE setControlType RESET unsetControlType)
+    Q_PROPERTY(bool controlType READ isControlType WRITE setControlType RESET unsetControlType)
     Q_PROPERTY(QtUml::ObjectNodeOrderingKind ordering READ ordering WRITE setOrdering RESET unsetOrdering)
     Q_PROPERTY(QValueSpecification * upperBound READ upperBound WRITE setUpperBound)
     Q_PROPERTY(QBehavior * selection READ selection WRITE setSelection)

@@ -65,7 +65,7 @@ class Q_UML_EXPORT QGeneralization : public QDirectedRelationship
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool isSubstitutable READ isSubstitutable WRITE setSubstitutable RESET unsetSubstitutable)
+    Q_PROPERTY(bool substitutable READ isSubstitutable WRITE setSubstitutable RESET unsetSubstitutable)
     Q_PROPERTY(QClassifier * specific READ specific WRITE setSpecific)
     Q_PROPERTY(QSet<QGeneralizationSet *> generalizationSets READ generalizationSets)
     Q_PROPERTY(QClassifier * general READ general WRITE setGeneral)

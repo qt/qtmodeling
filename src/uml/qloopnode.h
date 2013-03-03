@@ -67,7 +67,7 @@ class Q_UML_EXPORT QLoopNode : public QStructuredActivityNode
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool isTestedFirst READ isTestedFirst WRITE setTestedFirst RESET unsetTestedFirst)
+    Q_PROPERTY(bool testedFirst READ isTestedFirst WRITE setTestedFirst RESET unsetTestedFirst)
     Q_PROPERTY(QList<QInputPin *> loopVariableInputs READ loopVariableInputs)
     Q_PROPERTY(QOutputPin * decider READ decider WRITE setDecider)
     Q_PROPERTY(QList<QOutputPin *> bodyOutputs READ bodyOutputs)

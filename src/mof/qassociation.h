@@ -68,7 +68,7 @@ class Q_MOF_EXPORT QAssociation : public QWrappedObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool isDerived READ isDerived WRITE setDerived RESET unsetDerived)
+    Q_PROPERTY(bool derived READ isDerived WRITE setDerived RESET unsetDerived)
     Q_PROPERTY(QList<QType *> endTypes READ endTypes STORED false)
     Q_PROPERTY(QSet<QProperty *> navigableOwnedEnds READ navigableOwnedEnds)
     Q_PROPERTY(QList<QProperty *> ownedEnds READ ownedEnds)

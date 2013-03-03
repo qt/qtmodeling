@@ -6,6 +6,8 @@
 #include <QtCore/QPair>
 #include <QtCore/QJsonObject>
 
+#include <QtScript/QScriptEngine>
+
 class QDialog;
 
 namespace Ui {
@@ -30,6 +32,7 @@ private Q_SLOTS:
     void on_actionFileSaveAs_triggered();
     void on_actionFileSave_triggered();
     void on_actionAboutPlugins_triggered();
+    void on_psbJSEvaluate_clicked();
 
 private:
     void loadPlugins();
@@ -43,6 +46,8 @@ private:
     QHash<QString, QPair<QMetaModelPlugin *, QJsonObject>> _loadedPlugins;
     QDialog *_aboutPluginsDialog;
     Ui::AboutPlugins *_aboutPlugins;
+
+    QScriptEngine _engine;
 };
 
 #endif // MAINWINDOW_H

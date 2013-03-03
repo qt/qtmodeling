@@ -79,8 +79,8 @@ class Q_UML_EXPORT QClassifier : public QWrappedObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool isAbstract READ isAbstract WRITE setAbstract RESET unsetAbstract)
-    Q_PROPERTY(bool isFinalSpecialization READ isFinalSpecialization WRITE setFinalSpecialization RESET unsetFinalSpecialization)
+    Q_PROPERTY(bool abstract READ isAbstract WRITE setAbstract RESET unsetAbstract)
+    Q_PROPERTY(bool finalSpecialization READ isFinalSpecialization WRITE setFinalSpecialization RESET unsetFinalSpecialization)
     Q_PROPERTY(QSet<QUseCase *> ownedUseCases READ ownedUseCases)
     Q_PROPERTY(QSet<QGeneralizationSet *> powertypeExtents READ powertypeExtents)
     Q_PROPERTY(QSet<QUseCase *> useCases READ useCases)
