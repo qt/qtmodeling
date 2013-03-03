@@ -60,7 +60,7 @@ class Q_UML_EXPORT QPin : public QWrappedObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool isControl READ isControl WRITE setControl RESET unsetControl)
+    Q_PROPERTY(bool control READ isControl WRITE setControl RESET unsetControl)
 
     Q_DISABLE_COPY(QPin)
     Q_DECLARE_PRIVATE(QPin)

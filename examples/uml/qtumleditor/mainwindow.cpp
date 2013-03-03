@@ -38,16 +38,19 @@ MainWindow::MainWindow(QWidget *parent) :
 
     loadPlugins();
 
-    QPalette modelPallete = ui->issues->palette();
+    QPalette modelPallete = ui->txeIssues->palette();
     modelPallete.setColor(QPalette::Active, QPalette::Base, QColor(255, 255, 255));
     modelPallete.setColor(QPalette::Inactive, QPalette::Base, QColor(255, 255, 255));
     modelPallete.setColor(QPalette::Active, QPalette::AlternateBase, QColor(248, 247, 246));
     modelPallete.setColor(QPalette::Inactive, QPalette::AlternateBase, QColor(248, 247, 246));
-    ui->issues->setPalette(modelPallete);
+    ui->txeIssues->setPalette(modelPallete);
 
     tabifyDockWidget(ui->dckIssues, ui->dckXPath);
     tabifyDockWidget(ui->dckXPath, ui->dckOcl);
+    tabifyDockWidget(ui->dckOcl, ui->dckJavaScript);
     ui->dckIssues->raise();
+
+    qScriptRegisterMetaType(&_engine, toScriptValue, fromScriptValue);
 }
 
 MainWindow::~MainWindow()
@@ -81,7 +84,9 @@ QWrappedObject *MainWindow::loadXmi()
     QXmiReader reader;
     setWindowTitle(QFileInfo(file).fileName() + " - QtUml Editor");
     QWrappedObject *wrappedObject = reader.readFile(&file);
-    ui->issues->setModel(new QStringListModel(reader.errorStrings()));
+    ui->txeIssues->setModel(new QStringListModel(reader.errorStrings()));
+    _engine.globalObject().setProperty("model", _engine.newQObject(wrappedObject));
+    _engine.globalObject().setProperty(wrappedObject->objectName(), _engine.newQObject(wrappedObject));
 
     return wrappedObject;
 }
@@ -128,6 +133,11 @@ void MainWindow::on_actionAboutPlugins_triggered()
     }
     _aboutPlugins->loadedPlugins->resizeColumnsToContents();
     _aboutPluginsDialog->exec();
+}
+
+void MainWindow::on_psbJSEvaluate_clicked()
+{
+    ui->txeJavaScriptEvaluation->setText(_engine.evaluate(ui->txeJavaScript->toPlainText()).toString());
 }
 
 void MainWindow::loadPlugins()

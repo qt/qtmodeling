@@ -73,10 +73,10 @@ class Q_UML_EXPORT QParameter : public QWrappedObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool isException READ isException WRITE setException RESET unsetException)
+    Q_PROPERTY(bool exception READ isException WRITE setException RESET unsetException)
     Q_PROPERTY(QString default_ READ default_ WRITE setDefault_ STORED false)
     Q_PROPERTY(QtUml::ParameterDirectionKind direction READ direction WRITE setDirection RESET unsetDirection)
-    Q_PROPERTY(bool isStream READ isStream WRITE setStream RESET unsetStream)
+    Q_PROPERTY(bool stream READ isStream WRITE setStream RESET unsetStream)
     Q_PROPERTY(QtUml::ParameterEffectKind effect READ effect WRITE setEffect)
     Q_PROPERTY(QOperation * operation READ operation WRITE setOperation)
     Q_PROPERTY(QValueSpecification * defaultValue READ defaultValue WRITE setDefaultValue)

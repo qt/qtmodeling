@@ -67,7 +67,7 @@ class Q_UML_EXPORT QComponent : public QClass
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool isIndirectlyInstantiated READ isIndirectlyInstantiated WRITE setIndirectlyInstantiated RESET unsetIndirectlyInstantiated)
+    Q_PROPERTY(bool indirectlyInstantiated READ isIndirectlyInstantiated WRITE setIndirectlyInstantiated RESET unsetIndirectlyInstantiated)
     Q_PROPERTY(QSet<QComponentRealization *> realizations READ realizations)
     Q_PROPERTY(QSet<QInterface *> required READ required STORED false)
     Q_PROPERTY(QSet<QInterface *> provided READ provided STORED false)

@@ -73,12 +73,12 @@ class Q_MOF_EXPORT QProperty : public QStructuralFeature
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool isDerived READ isDerived WRITE setDerived RESET unsetDerived)
+    Q_PROPERTY(bool derived READ isDerived WRITE setDerived RESET unsetDerived)
     Q_PROPERTY(QString default_ READ default_ WRITE setDefault_ STORED false)
-    Q_PROPERTY(bool isComposite READ isComposite WRITE setComposite STORED false)
-    Q_PROPERTY(bool isReadOnly READ isReadOnly WRITE setReadOnly RESET unsetReadOnly)
-    Q_PROPERTY(bool isID READ isID WRITE setID RESET unsetID)
-    Q_PROPERTY(bool isDerivedUnion READ isDerivedUnion WRITE setDerivedUnion RESET unsetDerivedUnion)
+    Q_PROPERTY(bool composite READ isComposite WRITE setComposite STORED false)
+    Q_PROPERTY(bool readOnly READ isReadOnly WRITE setReadOnly RESET unsetReadOnly)
+    Q_PROPERTY(bool iD READ isID WRITE setID RESET unsetID)
+    Q_PROPERTY(bool derivedUnion READ isDerivedUnion WRITE setDerivedUnion RESET unsetDerivedUnion)
     Q_PROPERTY(QtMof::AggregationKind aggregation READ aggregation WRITE setAggregation RESET unsetAggregation)
     Q_PROPERTY(QSet<QProperty *> subsettedProperties READ subsettedProperties)
     Q_PROPERTY(QAssociation * owningAssociation READ owningAssociation WRITE setOwningAssociation)

@@ -64,7 +64,7 @@ class Q_MOF_EXPORT QRedefinableElement : public QNamedElement
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
+    Q_PROPERTY(bool leaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
     Q_PROPERTY(QSet<QRedefinableElement *> redefinedElements READ redefinedElements)
     Q_PROPERTY(QSet<QClassifier *> redefinitionContexts READ redefinitionContexts)
 

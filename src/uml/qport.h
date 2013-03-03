@@ -67,9 +67,9 @@ class Q_UML_EXPORT QPort : public QProperty
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool isConjugated READ isConjugated WRITE setConjugated RESET unsetConjugated)
-    Q_PROPERTY(bool isBehavior READ isBehavior WRITE setBehavior RESET unsetBehavior)
-    Q_PROPERTY(bool isService READ isService WRITE setService RESET unsetService)
+    Q_PROPERTY(bool conjugated READ isConjugated WRITE setConjugated RESET unsetConjugated)
+    Q_PROPERTY(bool behavior READ isBehavior WRITE setBehavior RESET unsetBehavior)
+    Q_PROPERTY(bool service READ isService WRITE setService RESET unsetService)
     Q_PROPERTY(QProtocolStateMachine * protocol READ protocol WRITE setProtocol)
     Q_PROPERTY(QSet<QInterface *> required READ required STORED false)
     Q_PROPERTY(QSet<QInterface *> provided READ provided STORED false)

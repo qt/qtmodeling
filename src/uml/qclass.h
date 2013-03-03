@@ -72,8 +72,8 @@ class Q_UML_EXPORT QClass : public QWrappedObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool isAbstract READ isAbstract WRITE setAbstract RESET unsetAbstract)
-    Q_PROPERTY(bool isActive READ isActive WRITE setActive RESET unsetActive)
+    Q_PROPERTY(bool abstract READ isAbstract WRITE setAbstract RESET unsetAbstract)
+    Q_PROPERTY(bool active READ isActive WRITE setActive RESET unsetActive)
     Q_PROPERTY(QList<QClassifier *> nestedClassifiers READ nestedClassifiers)
     Q_PROPERTY(QSet<QReception *> ownedReceptions READ ownedReceptions)
     Q_PROPERTY(QSet<QExtension *> extensions READ extensions STORED false)

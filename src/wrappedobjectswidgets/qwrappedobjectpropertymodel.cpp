@@ -132,7 +132,7 @@ QVariant QWrappedObjectPropertyModel::data(const QModelIndex &index, int role) c
                 case 0: {
                     if (metaPropertyInfo) {
                         QMetaProperty metaProperty = metaPropertyInfo->metaProperty;
-                        QString propertyName = QString::fromLatin1(metaProperty.name()).remove(QRegularExpression(QString::fromLatin1("_$"))).remove(QRegularExpression(QString::fromLatin1("^is")));
+                        QString propertyName = QString::fromLatin1(metaProperty.name()).remove(QRegularExpression(QString::fromLatin1("_$")));
                         if (propertyName != propertyName.toUpper())
                             propertyName = propertyName.replace(0, 1, propertyName.left(1).toLower());
                         return propertyName.append(QString::fromLatin1(!metaProperty.isWritable() ? " (RO)":""));

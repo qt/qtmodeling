@@ -66,8 +66,8 @@ class Q_UML_EXPORT QConditionalNode : public QStructuredActivityNode
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool isAssured READ isAssured WRITE setAssured RESET unsetAssured)
-    Q_PROPERTY(bool isDeterminate READ isDeterminate WRITE setDeterminate RESET unsetDeterminate)
+    Q_PROPERTY(bool assured READ isAssured WRITE setAssured RESET unsetAssured)
+    Q_PROPERTY(bool determinate READ isDeterminate WRITE setDeterminate RESET unsetDeterminate)
     Q_PROPERTY(QSet<QClause *> clauses READ clauses)
     Q_PROPERTY(QList<QOutputPin *> results READ results)
 

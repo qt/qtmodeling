@@ -70,8 +70,8 @@ class Q_MOF_EXPORT QClassifier : public QWrappedObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool isAbstract READ isAbstract WRITE setAbstract RESET unsetAbstract)
-    Q_PROPERTY(bool isFinalSpecialization READ isFinalSpecialization WRITE setFinalSpecialization RESET unsetFinalSpecialization)
+    Q_PROPERTY(bool abstract READ isAbstract WRITE setAbstract RESET unsetAbstract)
+    Q_PROPERTY(bool finalSpecialization READ isFinalSpecialization WRITE setFinalSpecialization RESET unsetFinalSpecialization)
     Q_PROPERTY(QSet<QProperty *> attributes READ attributes)
     Q_PROPERTY(QSet<QFeature *> features READ features)
     Q_PROPERTY(QSet<QClassifier *> generals READ generals STORED false)

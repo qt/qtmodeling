@@ -61,7 +61,7 @@ class Q_UML_EXPORT QStructuralFeature : public QWrappedObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool isReadOnly READ isReadOnly WRITE setReadOnly RESET unsetReadOnly)
+    Q_PROPERTY(bool readOnly READ isReadOnly WRITE setReadOnly RESET unsetReadOnly)
 
     Q_DISABLE_COPY(QStructuralFeature)
     Q_DECLARE_PRIVATE(QStructuralFeature)
