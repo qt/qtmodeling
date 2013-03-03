@@ -68,6 +68,7 @@ public:
         RedefinedPropertiesRole,
         SubsettedPropertiesRole,
         IsDerivedUnionRole,
+        GroupRole,
         UserRole = 0x0100
     };
 

@@ -52,7 +52,7 @@ QT_MODULE(QtMof)
 class Q_MOF_EXPORT QMofMetaModel
 {
 public:
-    static void init();
+    static void init(QScriptEngine *scriptEngine = 0);
 };
 
 QT_END_NAMESPACE_QTMOF

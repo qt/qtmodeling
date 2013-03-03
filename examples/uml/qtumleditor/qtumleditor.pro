@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT = wrappedobjectswidgets
+QT = wrappedobjectswidgets script
 
 TARGET = qtumleditor
 TEMPLATE = app

@@ -31,17 +31,15 @@
         [%- REDEFINEDPROPERTIES(class, redefinedProperties) -%]
     [%- END %]
 [%- END -%]
-[%- MACRO GENERATEPROPERTIES(class, recursive) BLOCK -%]
+[%- MACRO GENERATEPROPERTIES(class) BLOCK -%]
     [%- parents = [] -%]
     [%- redefinedProperties = [] -%]
-    [%- IF recursive == 'true' -%]
+    [%- IF class.superclass and class.superclass.size > 1 -%]
     [%- FOREACH superclass IN class.superclass %]
         [%- PARENTSOF(classes.item(superclass.include.split('/').last), parents, redefinedProperties) -%]
     [%- END -%]
     [%- END %]
-    [%- IF recursive == 'false' -%]
     [%- parents.push(class) -%]
-    [%- END -%]
     [%- REDEFINEDPROPERTIES(class, redefinedProperties) -%]
     [%- FOREACH parent IN parents.unique -%]
     [%- IF parent.attribute.values or parent.associationend.values -%]
@@ -285,7 +283,7 @@ class ${class.name}Private;
 class Q_[% namespace.split('/').0.substr(2).upper %]_EXPORT ${class.name} : public [% IF class.superclass.size == 1 %]${class.superclass.0.name.split('/').last}[% ELSE %]QWrappedObject[% END %]
 {
     Q_OBJECT
-    [%- GENERATEPROPERTIES(class, 'false') %]
+    [%- GENERATEPROPERTIES(class) %]
 
     Q_DISABLE_COPY(${class.name})
     Q_DECLARE_PRIVATE(${class.name})

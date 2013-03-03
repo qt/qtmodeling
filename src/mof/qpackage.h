@@ -71,6 +71,23 @@ class Q_MOF_EXPORT QPackage : public QWrappedObject
 {
     Q_OBJECT
 
+    Q_PROPERTY(QSet<QElement *> ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(QSet<QComment *> ownedComments READ ownedComments)
+
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
+    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
+
+    Q_PROPERTY(QSet<QPackageImport *> packageImports READ packageImports)
+    Q_PROPERTY(QSet<QNamedElement *> members READ members)
+    Q_PROPERTY(QSet<QPackageableElement *> importedMembers READ importedMembers STORED false)
+    Q_PROPERTY(QSet<QElementImport *> elementImports READ elementImports)
+    Q_PROPERTY(QSet<QConstraint *> ownedRules READ ownedRules)
+    Q_PROPERTY(QSet<QNamedElement *> ownedMembers READ ownedMembers)
+
+    Q_PROPERTY(QtMof::VisibilityKind visibility READ visibility WRITE setVisibility RESET unsetVisibility)
+
     Q_PROPERTY(QString URI READ URI WRITE setURI)
     Q_PROPERTY(QSet<QType *> ownedTypes READ ownedTypes STORED false)
     Q_PROPERTY(QSet<QPackageableElement *> packagedElements READ packagedElements)

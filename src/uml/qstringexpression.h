@@ -64,6 +64,13 @@ class Q_UML_EXPORT QStringExpression : public QWrappedObject
 {
     Q_OBJECT
 
+    Q_PROPERTY(QSet<QElement *> ownedElements READ ownedElements)
+    Q_PROPERTY(QElement * owner READ owner)
+    Q_PROPERTY(QSet<QComment *> ownedComments READ ownedComments)
+
+    Q_PROPERTY(QTemplateSignature * ownedTemplateSignature READ ownedTemplateSignature WRITE setOwnedTemplateSignature)
+    Q_PROPERTY(QSet<QTemplateBinding *> templateBindings READ templateBindings)
+
     Q_PROPERTY(QStringExpression * owningExpression READ owningExpression WRITE setOwningExpression)
     Q_PROPERTY(QSet<QStringExpression *> subExpressions READ subExpressions)
 

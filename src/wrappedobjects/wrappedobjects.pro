@@ -1,7 +1,7 @@
 load(qt_build_config)
 
 TARGET = QtWrappedObjects
-QT = core-private
+QT = core-private script
 
 QMAKE_DOCS = $$PWD/doc/qtwrappedobjects.qdocconf
 

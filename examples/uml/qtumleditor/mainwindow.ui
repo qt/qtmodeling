@@ -185,19 +185,68 @@
    <widget class="QWidget" name="dockWidgetContents_4">
     <layout class="QGridLayout" name="gridLayout_7">
      <item row="0" column="0">
-      <layout class="QVBoxLayout" name="verticalLayout">
+      <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
-        <widget class="QTextEdit" name="txeJavaScript"/>
-       </item>
-       <item>
-        <widget class="QPushButton" name="psbJSEvaluate">
-         <property name="text">
-          <string>&amp;Evaluate</string>
+        <widget class="QGroupBox" name="groupBox">
+         <property name="title">
+          <string>JavaScript Editor</string>
          </property>
+         <layout class="QGridLayout" name="gridLayout_8">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item row="1" column="0">
+           <widget class="QPushButton" name="psbJSEvaluate">
+            <property name="text">
+             <string>&amp;Evaluate</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QTextEdit" name="txeJavaScript"/>
+          </item>
+         </layout>
         </widget>
        </item>
        <item>
-        <widget class="QTextEdit" name="txeJavaScriptEvaluation"/>
+        <widget class="QGroupBox" name="groupBox_2">
+         <property name="title">
+          <string>JavaScript Output</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_9">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item row="0" column="0">
+           <widget class="QTextEdit" name="txeJavaScriptEvaluation">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
        </item>
       </layout>
      </item>
