@@ -9,6 +9,7 @@
 #include <QtScript/QScriptEngine>
 
 class QDialog;
+class QListView;
 
 namespace Ui {
     class MainWindow;
@@ -34,6 +35,9 @@ private Q_SLOTS:
     void on_actionAboutPlugins_triggered();
     void on_psbJSEvaluate_clicked();
 
+protected:
+    bool eventFilter(QObject *obj, QEvent *event);
+
 private:
     void loadPlugins();
     void saveXmi(QWrappedObject *rootElement);
@@ -48,6 +52,7 @@ private:
     Ui::AboutPlugins *_aboutPlugins;
 
     QScriptEngine _engine;
+    QListView *_codeCompletionView;
 };
 
 #endif // MAINWINDOW_H
