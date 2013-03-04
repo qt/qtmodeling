@@ -96,26 +96,31 @@ QWrappedObject *QXmiReader::readFile(QIODevice *device)
     d->reader.setDevice(device);
     QWrappedObject *rootElement = 0;
 
+    d->xmlNamespaceToImplementationNamespace.clear();
     while (!d->reader.atEnd()) {
         d->reader.readNext();
 
         if (d->reader.isStartElement()) {
             foreach (const QXmlStreamNamespaceDeclaration &namespaceDeclaration, d->reader.namespaceDeclarations()) {
                 QMetaModelPlugin *metaModelPlugin = d->metaModelPlugins.value(namespaceDeclaration.namespaceUri().toString());
-                if (metaModelPlugin)
+                if (metaModelPlugin) {
                     metaModelPlugin->initMetaModel();
-                else
+                    d->xmlNamespaceToImplementationNamespace.insert(namespaceDeclaration.prefix().toString(), metaModelPlugin->metaModelNamespace());
+                }
+                else {
                     d->errors << QString::fromLatin1("Could not find metamodel for namespace URI '%1'").arg(namespaceDeclaration.namespaceUri().toString());
+                }
             }
-            QString xmiType = d->reader.attributes().value(QString::fromLatin1("xmi:type")).toString().split(':').last();
-            if (xmiType.isEmpty() && d->reader.namespaceUri() == QString::fromLatin1("http://www.omg.org/spec/UML/20110701"))
-                xmiType = d->reader.name().toString();
-            if (xmiType.isEmpty())
+            QString xmiType = d->reader.attributes().value(QString::fromLatin1("xmi:type")).toString();
+            if (xmiType.isEmpty() && d->reader.qualifiedName() != d->reader.name())
+                xmiType = d->reader.qualifiedName().toString();
+            if (xmiType.isEmpty() || d->xmlNamespaceToImplementationNamespace[xmiType.split(':').first()].isEmpty())
                 continue;
+            xmiType = QString::fromLatin1("%1::Q%2 *").arg(d->xmlNamespaceToImplementationNamespace[xmiType.split(':').first()]).arg(xmiType.split(':').last());
             QString instanceName = d->reader.attributes().value(QString::fromLatin1("name")).toString();
             if (instanceName.isEmpty())
                 instanceName = d->reader.attributes().value(QString::fromLatin1("xmi:id")).toString();
-            QWrappedObject *wrappedObject = createInstance(xmiType.prepend(QString::fromLatin1("Q")).append(QString::fromLatin1("*")), instanceName);
+            QWrappedObject *wrappedObject = createInstance(xmiType, instanceName);
             if (wrappedObject) {
                 d->idMap.insert(d->reader.attributes().value(QString::fromLatin1("xmi:id")).toString(), wrappedObject);
                 if (!rootElement)

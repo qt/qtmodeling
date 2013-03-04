@@ -53,6 +53,7 @@ public:
 
     void initMetaModel(QScriptEngine *scriptEngine = 0);
     QString metaModelNamespaceUri();
+    QString metaModelNamespace();
 };
 
 #endif // QMOFMETAMODELPLUGIN_H

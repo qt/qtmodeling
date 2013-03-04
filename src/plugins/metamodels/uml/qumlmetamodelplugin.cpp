@@ -57,3 +57,8 @@ QString QUmlMetaModelPlugin::metaModelNamespaceUri()
     return QString::fromLatin1("http://www.omg.org/spec/UML/20110701");
 }
 
+QString QUmlMetaModelPlugin::metaModelNamespace()
+{
+    return QString::fromLatin1("QtUml");
+}
+
