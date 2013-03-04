@@ -67,7 +67,7 @@ class Q_MOF_EXPORT QClass : public QClassifier
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool abstract READ isAbstract WRITE setAbstract RESET unsetAbstract)
+    Q_PROPERTY(bool isAbstract READ isAbstract WRITE setAbstract RESET unsetAbstract)
     Q_PROPERTY(QList<QClassifier *> nestedClassifiers READ nestedClassifiers)
     Q_PROPERTY(QList<QOperation *> ownedOperations READ ownedOperations)
     Q_PROPERTY(QList<QProperty *> ownedAttributes READ ownedAttributes)

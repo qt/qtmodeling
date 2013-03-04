@@ -78,11 +78,11 @@ class Q_MOF_EXPORT QBehavioralFeature : public QWrappedObject
     Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
     Q_PROPERTY(QNamespace * namespace_ READ namespace_)
 
-    Q_PROPERTY(bool leaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
+    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
     Q_PROPERTY(QSet<QRedefinableElement *> redefinedElements READ redefinedElements)
     Q_PROPERTY(QSet<QClassifier *> redefinitionContexts READ redefinitionContexts)
 
-    Q_PROPERTY(bool static READ isStatic WRITE setStatic RESET unsetStatic)
+    Q_PROPERTY(bool isStatic READ isStatic WRITE setStatic RESET unsetStatic)
     Q_PROPERTY(QSet<QClassifier *> featuringClassifiers READ featuringClassifiers)
 
     Q_PROPERTY(QSet<QPackageImport *> packageImports READ packageImports)

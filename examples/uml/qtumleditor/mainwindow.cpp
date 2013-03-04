@@ -82,7 +82,7 @@ QWrappedObject *MainWindow::loadXmi()
         return 0;
     }
 
-    QXmiReader reader;
+    QXmiReader reader(&_engine);
     setWindowTitle(QFileInfo(file).fileName() + " - QtUml Editor");
     QWrappedObject *wrappedObject = reader.readFile(&file);
     ui->txeIssues->setModel(new QStringListModel(reader.errorStrings()));
@@ -155,7 +155,6 @@ void MainWindow::loadPlugins()
             QObject *plugin = loader.instance();
             if (plugin && (metaModelPlugin = qobject_cast<QMetaModelPlugin *>(plugin))) {
                 _loadedPlugins.insert(metaModelPlugin->metaModelNamespaceUri(), QPair<QMetaModelPlugin *, QJsonObject>(metaModelPlugin, loader.metaData()));
-                metaModelPlugin->initMetaModel(&_engine);
             }
         }
     }

@@ -61,7 +61,7 @@ class Q_UML_EXPORT QJoinNode : public QControlNode
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool combineDuplicate READ isCombineDuplicate WRITE setCombineDuplicate RESET unsetCombineDuplicate)
+    Q_PROPERTY(bool isCombineDuplicate READ isCombineDuplicate WRITE setCombineDuplicate RESET unsetCombineDuplicate)
     Q_PROPERTY(QValueSpecification * joinSpec READ joinSpec WRITE setJoinSpec)
 
     Q_DISABLE_COPY(QJoinNode)

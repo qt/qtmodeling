@@ -91,14 +91,14 @@ class Q_UML_EXPORT QAssociation : public QWrappedObject
 
     Q_PROPERTY(QPackage * package READ package WRITE setPackage)
 
-    Q_PROPERTY(bool leaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
+    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
     Q_PROPERTY(QSet<QRedefinableElement *> redefinedElements READ redefinedElements)
     Q_PROPERTY(QSet<QClassifier *> redefinitionContexts READ redefinitionContexts)
 
     Q_PROPERTY(QSet<QTemplateBinding *> templateBindings READ templateBindings)
 
-    Q_PROPERTY(bool abstract READ isAbstract WRITE setAbstract RESET unsetAbstract)
-    Q_PROPERTY(bool finalSpecialization READ isFinalSpecialization WRITE setFinalSpecialization RESET unsetFinalSpecialization)
+    Q_PROPERTY(bool isAbstract READ isAbstract WRITE setAbstract RESET unsetAbstract)
+    Q_PROPERTY(bool isFinalSpecialization READ isFinalSpecialization WRITE setFinalSpecialization RESET unsetFinalSpecialization)
     Q_PROPERTY(QSet<QUseCase *> ownedUseCases READ ownedUseCases)
     Q_PROPERTY(QSet<QGeneralizationSet *> powertypeExtents READ powertypeExtents)
     Q_PROPERTY(QSet<QUseCase *> useCases READ useCases)
@@ -116,7 +116,7 @@ class Q_UML_EXPORT QAssociation : public QWrappedObject
 
     Q_PROPERTY(QSet<QElement *> relatedElements READ relatedElements)
 
-    Q_PROPERTY(bool derived READ isDerived WRITE setDerived RESET unsetDerived)
+    Q_PROPERTY(bool isDerived READ isDerived WRITE setDerived RESET unsetDerived)
     Q_PROPERTY(QList<QType *> endTypes READ endTypes STORED false)
     Q_PROPERTY(QSet<QProperty *> navigableOwnedEnds READ navigableOwnedEnds)
     Q_PROPERTY(QList<QProperty *> ownedEnds READ ownedEnds)

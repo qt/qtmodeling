@@ -78,8 +78,8 @@ class Q_UML_EXPORT QParameter : public QWrappedObject
     Q_PROPERTY(QSet<QComment *> ownedComments READ ownedComments)
 
     Q_PROPERTY(qint32 upper READ upper WRITE setUpper RESET unsetUpper STORED false)
-    Q_PROPERTY(bool unique READ isUnique WRITE setUnique RESET unsetUnique)
-    Q_PROPERTY(bool ordered READ isOrdered WRITE setOrdered RESET unsetOrdered)
+    Q_PROPERTY(bool isUnique READ isUnique WRITE setUnique RESET unsetUnique)
+    Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered RESET unsetOrdered)
     Q_PROPERTY(qint32 lower READ lower WRITE setLower STORED false)
     Q_PROPERTY(QValueSpecification * upperValue READ upperValue WRITE setUpperValue)
     Q_PROPERTY(QValueSpecification * lowerValue READ lowerValue WRITE setLowerValue)
@@ -98,10 +98,10 @@ class Q_UML_EXPORT QParameter : public QWrappedObject
     Q_PROPERTY(QList<QConnectorEnd *> ends READ ends STORED false)
     Q_PROPERTY(QConnectableElementTemplateParameter * templateParameter READ templateParameter WRITE setTemplateParameter)
 
-    Q_PROPERTY(bool exception READ isException WRITE setException RESET unsetException)
+    Q_PROPERTY(bool isException READ isException WRITE setException RESET unsetException)
     Q_PROPERTY(QString default_ READ default_ WRITE setDefault_ STORED false)
     Q_PROPERTY(QtUml::ParameterDirectionKind direction READ direction WRITE setDirection RESET unsetDirection)
-    Q_PROPERTY(bool stream READ isStream WRITE setStream RESET unsetStream)
+    Q_PROPERTY(bool isStream READ isStream WRITE setStream RESET unsetStream)
     Q_PROPERTY(QtUml::ParameterEffectKind effect READ effect WRITE setEffect)
     Q_PROPERTY(QOperation * operation READ operation WRITE setOperation)
     Q_PROPERTY(QValueSpecification * defaultValue READ defaultValue WRITE setDefaultValue)

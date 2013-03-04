@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.omg.org/spec/UML/20110701" xmlns:mofext="http://www.omg.org/spec/MOF/20110701">
+<xmi:XMI xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.omg.org/spec/UML/20110701">
   <uml:Package name="MyRootPackage" xmi:id="MyRootPackage">
     <packagedElement xmi:type="uml:PrimitiveType" name="String" xmi:id="MyRootPackage-String"/>
     <packagedElement xmi:type="uml:Package" name="Package1" xmi:id="MyRootPackage-Package1">

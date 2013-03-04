@@ -71,7 +71,7 @@ class Q_MOF_EXPORT QOperation : public QBehavioralFeature
     Q_OBJECT
 
     Q_PROPERTY(qint32 lower READ lower STORED false)
-    Q_PROPERTY(bool query READ isQuery WRITE setQuery RESET unsetQuery)
+    Q_PROPERTY(bool isQuery READ isQuery WRITE setQuery RESET unsetQuery)
     Q_PROPERTY(bool isUnique READ isUnique STORED false)
     Q_PROPERTY(qint32 upper READ upper STORED false)
     Q_PROPERTY(bool isOrdered READ isOrdered STORED false)

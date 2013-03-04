@@ -70,7 +70,7 @@ class Q_UML_EXPORT QInteraction : public QWrappedObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool reentrant READ isReentrant WRITE setReentrant RESET unsetReentrant)
+    Q_PROPERTY(bool isReentrant READ isReentrant WRITE setReentrant RESET unsetReentrant)
     Q_PROPERTY(QBehavioralFeature * specification READ specification WRITE setSpecification)
     Q_PROPERTY(QSet<QConstraint *> postconditions READ postconditions)
     Q_PROPERTY(QSet<QConstraint *> preconditions READ preconditions)
