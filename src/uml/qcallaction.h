@@ -64,7 +64,7 @@ class Q_UML_EXPORT QCallAction : public QInvocationAction
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool synchronous READ isSynchronous WRITE setSynchronous RESET unsetSynchronous)
+    Q_PROPERTY(bool isSynchronous READ isSynchronous WRITE setSynchronous RESET unsetSynchronous)
     Q_PROPERTY(QList<QOutputPin *> results READ results)
 
     Q_DISABLE_COPY(QCallAction)

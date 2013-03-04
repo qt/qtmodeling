@@ -65,7 +65,7 @@ class Q_UML_EXPORT QAcceptEventAction : public QAction
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool unmarshall READ isUnmarshall WRITE setUnmarshall RESET unsetUnmarshall)
+    Q_PROPERTY(bool isUnmarshall READ isUnmarshall WRITE setUnmarshall RESET unsetUnmarshall)
     Q_PROPERTY(QSet<QTrigger *> triggers READ triggers)
     Q_PROPERTY(QSet<QOutputPin *> results READ results)
 

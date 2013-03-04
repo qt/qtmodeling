@@ -61,7 +61,7 @@ class Q_UML_EXPORT QRemoveStructuralFeatureValueAction : public QWriteStructural
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool removeDuplicates READ isRemoveDuplicates WRITE setRemoveDuplicates RESET unsetRemoveDuplicates)
+    Q_PROPERTY(bool isRemoveDuplicates READ isRemoveDuplicates WRITE setRemoveDuplicates RESET unsetRemoveDuplicates)
     Q_PROPERTY(QInputPin * removeAt READ removeAt WRITE setRemoveAt)
 
     Q_DISABLE_COPY(QRemoveStructuralFeatureValueAction)

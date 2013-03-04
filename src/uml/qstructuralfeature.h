@@ -75,20 +75,20 @@ class Q_UML_EXPORT QStructuralFeature : public QWrappedObject
     Q_PROPERTY(QType * type READ type WRITE setType)
 
     Q_PROPERTY(qint32 upper READ upper WRITE setUpper RESET unsetUpper STORED false)
-    Q_PROPERTY(bool unique READ isUnique WRITE setUnique RESET unsetUnique)
-    Q_PROPERTY(bool ordered READ isOrdered WRITE setOrdered RESET unsetOrdered)
+    Q_PROPERTY(bool isUnique READ isUnique WRITE setUnique RESET unsetUnique)
+    Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered RESET unsetOrdered)
     Q_PROPERTY(qint32 lower READ lower WRITE setLower STORED false)
     Q_PROPERTY(QValueSpecification * upperValue READ upperValue WRITE setUpperValue)
     Q_PROPERTY(QValueSpecification * lowerValue READ lowerValue WRITE setLowerValue)
 
-    Q_PROPERTY(bool leaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
+    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
     Q_PROPERTY(QSet<QRedefinableElement *> redefinedElements READ redefinedElements)
     Q_PROPERTY(QSet<QClassifier *> redefinitionContexts READ redefinitionContexts)
 
-    Q_PROPERTY(bool static READ isStatic WRITE setStatic RESET unsetStatic)
+    Q_PROPERTY(bool isStatic READ isStatic WRITE setStatic RESET unsetStatic)
     Q_PROPERTY(QSet<QClassifier *> featuringClassifiers READ featuringClassifiers)
 
-    Q_PROPERTY(bool readOnly READ isReadOnly WRITE setReadOnly RESET unsetReadOnly)
+    Q_PROPERTY(bool isReadOnly READ isReadOnly WRITE setReadOnly RESET unsetReadOnly)
 
     Q_DISABLE_COPY(QStructuralFeature)
     Q_DECLARE_PRIVATE(QStructuralFeature)

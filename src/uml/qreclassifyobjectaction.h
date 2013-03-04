@@ -65,7 +65,7 @@ class Q_UML_EXPORT QReclassifyObjectAction : public QAction
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool replaceAll READ isReplaceAll WRITE setReplaceAll RESET unsetReplaceAll)
+    Q_PROPERTY(bool isReplaceAll READ isReplaceAll WRITE setReplaceAll RESET unsetReplaceAll)
     Q_PROPERTY(QSet<QClassifier *> oldClassifiers READ oldClassifiers)
     Q_PROPERTY(QInputPin * object READ object WRITE setObject)
     Q_PROPERTY(QSet<QClassifier *> newClassifiers READ newClassifiers)

@@ -54,6 +54,7 @@ QT_MODULE(QtWrappedObjects)
 class QIODevice;
 class QWrappedObject;
 
+class QScriptEngine;
 class QXmiReaderPrivate;
 
 class Q_WRAPPEDOBJECTS_EXPORT QXmiReader : public QObject
@@ -64,7 +65,7 @@ class Q_WRAPPEDOBJECTS_EXPORT QXmiReader : public QObject
     Q_DECLARE_PRIVATE(QXmiReader)
 
 public:
-    explicit QXmiReader(QObject *parent = 0);
+    explicit QXmiReader(QScriptEngine *scriptEngine = 0, QObject *parent = 0);
     virtual ~QXmiReader();
 
     QWrappedObject *readFile(QIODevice *device);

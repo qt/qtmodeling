@@ -81,7 +81,7 @@ class Q_UML_EXPORT QRegion : public QWrappedObject
     Q_PROPERTY(QNamespace * namespace_ READ namespace_)
     Q_PROPERTY(QSet<QDependency *> clientDependencies READ clientDependencies)
 
-    Q_PROPERTY(bool leaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
+    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
     Q_PROPERTY(QSet<QRedefinableElement *> redefinedElements READ redefinedElements)
 
     Q_PROPERTY(QSet<QPackageImport *> packageImports READ packageImports)

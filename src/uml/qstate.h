@@ -92,7 +92,7 @@ class Q_UML_EXPORT QState : public QWrappedObject
     Q_PROPERTY(QSet<QConstraint *> ownedRules READ ownedRules)
     Q_PROPERTY(QSet<QNamedElement *> ownedMembers READ ownedMembers)
 
-    Q_PROPERTY(bool leaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
+    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
     Q_PROPERTY(QSet<QRedefinableElement *> redefinedElements READ redefinedElements)
 
     Q_PROPERTY(QSet<QTransition *> incomings READ incomings STORED false)

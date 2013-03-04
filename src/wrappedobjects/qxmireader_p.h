@@ -54,6 +54,7 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtWrappedObjects)
 
 class QMetaModelPlugin;
+class QScriptEngine;
 
 class Q_WRAPPEDOBJECTS_EXPORT QXmiReaderPrivate : public QObjectPrivate
 {
@@ -68,6 +69,7 @@ public:
     QHash<QString, QMetaModelPlugin *> metaModelPlugins;
     QHash<QString, QString> xmlNamespaceToImplementationNamespace;
     QStringList errors;
+    QScriptEngine *scriptEngine;
 };
 
 QT_END_NAMESPACE

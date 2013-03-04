@@ -71,8 +71,8 @@ class Q_UML_EXPORT QActivity : public QBehavior
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool readOnly READ isReadOnly WRITE setReadOnly RESET unsetReadOnly)
-    Q_PROPERTY(bool singleExecution READ isSingleExecution WRITE setSingleExecution RESET unsetSingleExecution)
+    Q_PROPERTY(bool isReadOnly READ isReadOnly WRITE setReadOnly RESET unsetReadOnly)
+    Q_PROPERTY(bool isSingleExecution READ isSingleExecution WRITE setSingleExecution RESET unsetSingleExecution)
     Q_PROPERTY(QSet<QActivityPartition *> partitions READ partitions)
     Q_PROPERTY(QSet<QActivityNode *> nodes READ nodes)
     Q_PROPERTY(QSet<QVariable *> variables READ variables)

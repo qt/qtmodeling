@@ -83,7 +83,7 @@ class Q_UML_EXPORT QStructuredActivityNode : public QWrappedObject
     Q_PROPERTY(QNamespace * namespace_ READ namespace_)
     Q_PROPERTY(QSet<QDependency *> clientDependencies READ clientDependencies)
 
-    Q_PROPERTY(bool leaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
+    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
     Q_PROPERTY(QSet<QRedefinableElement *> redefinedElements READ redefinedElements)
     Q_PROPERTY(QSet<QClassifier *> redefinitionContexts READ redefinitionContexts)
 
@@ -97,7 +97,7 @@ class Q_UML_EXPORT QStructuredActivityNode : public QWrappedObject
 
     Q_PROPERTY(QSet<QExceptionHandler *> handlers READ handlers)
 
-    Q_PROPERTY(bool locallyReentrant READ isLocallyReentrant WRITE setLocallyReentrant RESET unsetLocallyReentrant)
+    Q_PROPERTY(bool isLocallyReentrant READ isLocallyReentrant WRITE setLocallyReentrant RESET unsetLocallyReentrant)
     Q_PROPERTY(QClassifier * context READ context STORED false)
     Q_PROPERTY(QSet<QConstraint *> localPostconditions READ localPostconditions)
     Q_PROPERTY(QSet<QConstraint *> localPreconditions READ localPreconditions)

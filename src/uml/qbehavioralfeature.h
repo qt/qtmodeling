@@ -92,15 +92,15 @@ class Q_UML_EXPORT QBehavioralFeature : public QWrappedObject
     Q_PROPERTY(QSet<QConstraint *> ownedRules READ ownedRules)
     Q_PROPERTY(QSet<QNamedElement *> ownedMembers READ ownedMembers)
 
-    Q_PROPERTY(bool leaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
+    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
     Q_PROPERTY(QSet<QRedefinableElement *> redefinedElements READ redefinedElements)
     Q_PROPERTY(QSet<QClassifier *> redefinitionContexts READ redefinitionContexts)
 
-    Q_PROPERTY(bool static READ isStatic WRITE setStatic RESET unsetStatic)
+    Q_PROPERTY(bool isStatic READ isStatic WRITE setStatic RESET unsetStatic)
     Q_PROPERTY(QSet<QClassifier *> featuringClassifiers READ featuringClassifiers)
 
     Q_PROPERTY(QtUml::CallConcurrencyKind concurrency READ concurrency WRITE setConcurrency RESET unsetConcurrency)
-    Q_PROPERTY(bool abstract READ isAbstract WRITE setAbstract RESET unsetAbstract)
+    Q_PROPERTY(bool isAbstract READ isAbstract WRITE setAbstract RESET unsetAbstract)
     Q_PROPERTY(QSet<QType *> raisedExceptions READ raisedExceptions)
     Q_PROPERTY(QList<QParameter *> ownedParameters READ ownedParameters)
     Q_PROPERTY(QSet<QParameterSet *> ownedParameterSets READ ownedParameterSets)
