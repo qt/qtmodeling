@@ -5,16 +5,21 @@
 #include <QtCore/QPluginLoader>
 #include <QtCore/QStringListModel>
 #include <QtCore/QTimer>
+#include <QtCore/QStringListModel>
 
 #include <QtScript/QScriptValueIterator>
 
 #include <QtWidgets/QListView>
 #include <QtWidgets/QFileDialog>
 #include <QtWidgets/QMessageBox>
+#include <QtWidgets/QListWidget>
+
+#include <QtGui/QKeyEvent>
 
 #include <QtWrappedObjects/QXmiWriter>
 #include <QtWrappedObjects/QXmiReader>
 #include <QtWrappedObjects/QWrappedObject>
+#include <QtWrappedObjects/QMetaWrappedObject>
 #include <QtWrappedObjects/QMetaModelPlugin>
 #include <QtWrappedObjectsWidgets/QWrappedObjectModel>
 #include <QtWrappedObjectsWidgets/QWrappedObjectPropertyModel>
@@ -24,9 +29,13 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow),
     _wrappedObjectModel(new QWrappedObjectModel(this)),
     _aboutPluginsDialog(new QDialog(this)),
-    _aboutPlugins(new Ui::AboutPlugins)
+    _aboutPlugins(new Ui::AboutPlugins),
+    _codeCompletionView(new QListView)
 {
     ui->setupUi(this);
+    _codeCompletionView->setParent(ui->txeJavaScript);
+    _codeCompletionView->hide();
+
     _aboutPlugins->setupUi(_aboutPluginsDialog);
 
     ui->wrappedObjectView->setModel(_wrappedObjectModel);
@@ -52,6 +61,9 @@ MainWindow::MainWindow(QWidget *parent) :
     tabifyDockWidget(ui->dckXPath, ui->dckOcl);
     tabifyDockWidget(ui->dckOcl, ui->dckJavaScript);
     ui->dckIssues->raise();
+
+    ui->txeJavaScript->installEventFilter(this);
+    _codeCompletionView->installEventFilter(this);
 }
 
 MainWindow::~MainWindow()
@@ -142,6 +154,48 @@ void MainWindow::on_psbJSEvaluate_clicked()
 {
     ui->txeJavaScriptEvaluation->setText(_engine.evaluate(ui->txeJavaScript->toPlainText()).toString());
     ui->wrappedObjectView->updateSelected();
+}
+
+bool MainWindow::eventFilter(QObject *obj, QEvent *event)
+{
+    if (event->type() == QEvent::KeyPress && obj == ui->txeJavaScript) {
+        QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
+        if (keyEvent->key() == 46) {
+            QWrappedObject *wrappedObject = qwrappedobject_cast<QWrappedObject *>(dynamic_cast<QWrappedObject *>(_engine.evaluate(ui->txeJavaScript->toPlainText()).toQObject()));
+            if (wrappedObject) {
+                const QMetaWrappedObject *metaWrappedObject = wrappedObject->metaWrappedObject();
+                int propertyCount = metaWrappedObject->propertyCount();
+                QStringList propertyList;
+                for (int i = 0; i < propertyCount; ++i)
+                    propertyList << metaWrappedObject->property(i).metaProperty.name();
+                _codeCompletionView->setModel(new QStringListModel(propertyList));
+                QFont font;
+                QFontMetrics fm(font);
+                _codeCompletionView->setGeometry(ui->txeJavaScript->cursorRect().x(), ui->txeJavaScript->cursorRect().y()+fm.height(), 200, 100);
+                _codeCompletionView->show();
+                _codeCompletionView->setFocus();
+            }
+        }
+        return QObject::eventFilter(obj, event);
+    } else if (event->type() == QEvent::KeyPress && obj == _codeCompletionView) {
+        QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
+         if (keyEvent->key() == 16777220 || keyEvent->key() == 32) { // spacebar or enter
+            ui->txeJavaScript->insertPlainText(_codeCompletionView->model()->data(_codeCompletionView->selectionModel()->selectedIndexes().first()).toString());
+            _codeCompletionView->hide();
+            ui->txeJavaScript->setFocus();
+            return true;
+        }
+        else if (keyEvent->key() == 16777235 || keyEvent->key() == 16777237 || keyEvent->key() == 16777239 || keyEvent->key() == 16777238) { // uparrow and downarrow, pageup, pagedown
+            return QObject::eventFilter(obj, event);
+        }
+        else {
+            _codeCompletionView->hide();
+            ui->txeJavaScript->setFocus();
+            return true;
+        }
+    }
+    // standard event processing
+    return QObject::eventFilter(obj, event);
 }
 
 void MainWindow::loadPlugins()
