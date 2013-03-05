@@ -54,10 +54,13 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QTransitionPrivate::QTransitionPrivate() :
-    kind(QtUml::TransitionExternal),
+    kind(QtUmlNS::TransitionExternal),
     guard(0),
     target(0),
     effect(0),
@@ -157,12 +160,12 @@ void QTransition::setName(QString name)
 /*!
     Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility.
  */
-QtUml::VisibilityKind QTransition::visibility() const
+QtUmlNS::VisibilityKind QTransition::visibility() const
 {
     return (qwrappedobject_cast<const QNamedElement *>(this))->visibility();
 }
 
-void QTransition::setVisibility(QtUml::VisibilityKind visibility)
+void QTransition::setVisibility(QtUmlNS::VisibilityKind visibility)
 {
     (qwrappedobject_cast<QNamedElement *>(this))->setVisibility(visibility);
 }
@@ -343,7 +346,7 @@ QSet<QNamedElement *> QTransition::ownedMembers() const
 /*!
     Indicates the precise type of the transition.
  */
-QtUml::TransitionKind QTransition::kind() const
+QtUmlNS::TransitionKind QTransition::kind() const
 {
     // This is a read-write attribute
 
@@ -351,7 +354,7 @@ QtUml::TransitionKind QTransition::kind() const
     return d->kind;
 }
 
-void QTransition::setKind(QtUml::TransitionKind kind)
+void QTransition::setKind(QtUmlNS::TransitionKind kind)
 {
     // This is a read-write attribute
 
@@ -364,7 +367,7 @@ void QTransition::setKind(QtUml::TransitionKind kind)
 
 void QTransition::unsetKind()
 {
-    setKind(QtUml::TransitionExternal);
+    setKind(QtUmlNS::TransitionExternal);
     Q_D(QTransition);
     d->modifiedResettableProperties.removeAll(QString::fromLatin1("kind"));
 }
@@ -622,73 +625,75 @@ bool QTransition::isConsistentWith(const QRedefinableElement *redefinee) const
 
 void QTransition::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("kind")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("kind")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("kind")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Indicates the precise type of the transition.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("kind")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("kind")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("kind")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTransition")][QString::fromLatin1("kind")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTransition")][QString::fromLatin1("kind")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTransition")][QString::fromLatin1("kind")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Indicates the precise type of the transition.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTransition")][QString::fromLatin1("kind")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTransition")][QString::fromLatin1("kind")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTransition")][QString::fromLatin1("kind")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("guard")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("guard")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("guard")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A guard is a constraint that provides a fine-grained control over the firing of the transition. The guard is evaluated when an event occurrence is dispatched by the state machine. If the guard is true at that time, the transition may be enabled, otherwise, it is disabled. Guards should be pure expressions without side effects. Guard expressions with side effects are ill formed.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("guard")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("guard")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamespace::ownedRules");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("guard")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTransition")][QString::fromLatin1("guard")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTransition")][QString::fromLatin1("guard")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTransition")][QString::fromLatin1("guard")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A guard is a constraint that provides a fine-grained control over the firing of the transition. The guard is evaluated when an event occurrence is dispatched by the state machine. If the guard is true at that time, the transition may be enabled, otherwise, it is disabled. Guards should be pure expressions without side effects. Guard expressions with side effects are ill formed.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTransition")][QString::fromLatin1("guard")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTransition")][QString::fromLatin1("guard")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamespace::ownedRules");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTransition")][QString::fromLatin1("guard")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("target")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("target")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("target")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Designates the target vertex that is reached when the transition is taken.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("target")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("target")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("target")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QVertex::incoming");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTransition")][QString::fromLatin1("target")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTransition")][QString::fromLatin1("target")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTransition")][QString::fromLatin1("target")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Designates the target vertex that is reached when the transition is taken.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTransition")][QString::fromLatin1("target")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTransition")][QString::fromLatin1("target")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTransition")][QString::fromLatin1("target")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QVertex::incoming");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("effect")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("effect")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("effect")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies an optional behavior to be performed when the transition fires.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("effect")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("effect")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("effect")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTransition")][QString::fromLatin1("effect")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTransition")][QString::fromLatin1("effect")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTransition")][QString::fromLatin1("effect")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies an optional behavior to be performed when the transition fires.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTransition")][QString::fromLatin1("effect")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTransition")][QString::fromLatin1("effect")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTransition")][QString::fromLatin1("effect")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("container")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("container")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("container")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Designates the region that owns this transition.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("container")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("container")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamedElement::namespace");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("container")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QRegion::transition");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTransition")][QString::fromLatin1("container")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTransition")][QString::fromLatin1("container")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTransition")][QString::fromLatin1("container")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Designates the region that owns this transition.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTransition")][QString::fromLatin1("container")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTransition")][QString::fromLatin1("container")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamedElement::namespace");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTransition")][QString::fromLatin1("container")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QRegion::transition");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("redefinitionContext")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("redefinitionContext")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("redefinitionContext")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the classifier in which context this element may be redefined.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("redefinitionContext")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QRedefinableElement::redefinitionContexts");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("redefinitionContext")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("redefinitionContext")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTransition")][QString::fromLatin1("redefinitionContext")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTransition")][QString::fromLatin1("redefinitionContext")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTransition")][QString::fromLatin1("redefinitionContext")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the classifier in which context this element may be redefined.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTransition")][QString::fromLatin1("redefinitionContext")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QRedefinableElement::redefinitionContexts");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTransition")][QString::fromLatin1("redefinitionContext")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTransition")][QString::fromLatin1("redefinitionContext")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("redefinedTransition")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("redefinedTransition")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("redefinedTransition")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The transition that is redefined by this transition.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("redefinedTransition")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("redefinedTransition")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QRedefinableElement::redefinedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("redefinedTransition")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTransition")][QString::fromLatin1("redefinedTransition")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTransition")][QString::fromLatin1("redefinedTransition")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTransition")][QString::fromLatin1("redefinedTransition")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The transition that is redefined by this transition.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTransition")][QString::fromLatin1("redefinedTransition")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTransition")][QString::fromLatin1("redefinedTransition")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QRedefinableElement::redefinedElements");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTransition")][QString::fromLatin1("redefinedTransition")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("source")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("source")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("source")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Designates the originating vertex (state or pseudostate) of the transition.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("source")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("source")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("source")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QVertex::outgoing");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTransition")][QString::fromLatin1("source")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTransition")][QString::fromLatin1("source")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTransition")][QString::fromLatin1("source")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Designates the originating vertex (state or pseudostate) of the transition.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTransition")][QString::fromLatin1("source")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTransition")][QString::fromLatin1("source")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTransition")][QString::fromLatin1("source")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QVertex::outgoing");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("triggers")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("triggers")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("triggers")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the triggers that may fire the transition.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("triggers")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("triggers")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTransition")][QString::fromLatin1("triggers")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTransition")][QString::fromLatin1("triggers")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTransition")][QString::fromLatin1("triggers")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTransition")][QString::fromLatin1("triggers")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the triggers that may fire the transition.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTransition")][QString::fromLatin1("triggers")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTransition")][QString::fromLatin1("triggers")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTransition")][QString::fromLatin1("triggers")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::setPropertyData();
 }
 
-#include "moc_qtransition.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qtransition.cpp"
 

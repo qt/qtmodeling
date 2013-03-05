@@ -48,7 +48,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -61,7 +64,7 @@ class Q_UML_EXPORT QCreateLinkObjectAction : public QCreateLinkAction
 {
     Q_OBJECT
 
-    Q_PROPERTY(QOutputPin * result READ result WRITE setResult)
+    Q_PROPERTY(QtUml::QOutputPin * result READ result WRITE setResult)
 
     Q_DISABLE_COPY(QCreateLinkObjectAction)
     Q_DECLARE_PRIVATE(QCreateLinkObjectAction)
@@ -80,7 +83,9 @@ protected:
     explicit QCreateLinkObjectAction(QCreateLinkObjectActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

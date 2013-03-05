@@ -48,7 +48,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -61,7 +64,7 @@ class Q_UML_EXPORT QActivityParameterNode : public QObjectNode
 {
     Q_OBJECT
 
-    Q_PROPERTY(QParameter * parameter READ parameter WRITE setParameter)
+    Q_PROPERTY(QtUml::QParameter * parameter READ parameter WRITE setParameter)
 
     Q_DISABLE_COPY(QActivityParameterNode)
     Q_DECLARE_PRIVATE(QActivityParameterNode)
@@ -80,7 +83,9 @@ protected:
     explicit QActivityParameterNode(QActivityParameterNodePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

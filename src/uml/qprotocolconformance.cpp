@@ -46,7 +46,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QProtocolConformancePrivate::QProtocolConformancePrivate() :
     specificMachine(0),
@@ -155,24 +158,26 @@ void QProtocolConformance::setGeneralMachine(QProtocolStateMachine *generalMachi
 
 void QProtocolConformance::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolConformance")][QString::fromLatin1("specificMachine")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolConformance")][QString::fromLatin1("specificMachine")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolConformance")][QString::fromLatin1("specificMachine")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the state machine which conforms to the general state machine.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolConformance")][QString::fromLatin1("specificMachine")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolConformance")][QString::fromLatin1("specificMachine")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::owner QDirectedRelationship::sources");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolConformance")][QString::fromLatin1("specificMachine")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QProtocolStateMachine::conformance");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QProtocolConformance")][QString::fromLatin1("specificMachine")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QProtocolConformance")][QString::fromLatin1("specificMachine")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QProtocolConformance")][QString::fromLatin1("specificMachine")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the state machine which conforms to the general state machine.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QProtocolConformance")][QString::fromLatin1("specificMachine")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QProtocolConformance")][QString::fromLatin1("specificMachine")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::owner QDirectedRelationship::sources");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QProtocolConformance")][QString::fromLatin1("specificMachine")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QProtocolStateMachine::conformance");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolConformance")][QString::fromLatin1("generalMachine")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolConformance")][QString::fromLatin1("generalMachine")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolConformance")][QString::fromLatin1("generalMachine")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the protocol state machine to which the specific state machine conforms.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolConformance")][QString::fromLatin1("generalMachine")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolConformance")][QString::fromLatin1("generalMachine")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QDirectedRelationship::targets");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolConformance")][QString::fromLatin1("generalMachine")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QProtocolConformance")][QString::fromLatin1("generalMachine")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QProtocolConformance")][QString::fromLatin1("generalMachine")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QProtocolConformance")][QString::fromLatin1("generalMachine")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the protocol state machine to which the specific state machine conforms.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QProtocolConformance")][QString::fromLatin1("generalMachine")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QProtocolConformance")][QString::fromLatin1("generalMachine")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QDirectedRelationship::targets");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QProtocolConformance")][QString::fromLatin1("generalMachine")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QDirectedRelationship::setPropertyData();
 }
 
-#include "moc_qprotocolconformance.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qprotocolconformance.cpp"
 

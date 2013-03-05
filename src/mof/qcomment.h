@@ -52,7 +52,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTMOF
+QT_BEGIN_NAMESPACE
+
+namespace QtMof
+{
 
 QT_MODULE(QtMof)
 
@@ -63,7 +66,7 @@ class Q_MOF_EXPORT QComment : public QElement
     Q_OBJECT
 
     Q_PROPERTY(QString body READ body WRITE setBody)
-    Q_PROPERTY(QSet<QElement *> annotatedElements READ annotatedElements)
+    Q_PROPERTY(QSet<QtMof::QElement *> annotatedElements READ annotatedElements)
 
     Q_DISABLE_COPY(QComment)
     Q_DECLARE_PRIVATE(QComment)
@@ -87,7 +90,9 @@ protected:
     explicit QComment(QCommentPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTMOF
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

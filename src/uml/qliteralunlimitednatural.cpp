@@ -44,7 +44,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QLiteralUnlimitedNaturalPrivate::QLiteralUnlimitedNaturalPrivate() :
     value(0)
@@ -134,17 +137,19 @@ qint32 QLiteralUnlimitedNatural::unlimitedValue() const
 
 void QLiteralUnlimitedNatural::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QLiteralUnlimitedNatural")][QString::fromLatin1("value")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QLiteralUnlimitedNatural")][QString::fromLatin1("value")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QLiteralUnlimitedNatural")][QString::fromLatin1("value")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The specified UnlimitedNatural value.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QLiteralUnlimitedNatural")][QString::fromLatin1("value")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QLiteralUnlimitedNatural")][QString::fromLatin1("value")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QLiteralUnlimitedNatural")][QString::fromLatin1("value")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QLiteralUnlimitedNatural")][QString::fromLatin1("value")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QLiteralUnlimitedNatural")][QString::fromLatin1("value")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QLiteralUnlimitedNatural")][QString::fromLatin1("value")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The specified UnlimitedNatural value.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QLiteralUnlimitedNatural")][QString::fromLatin1("value")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QLiteralUnlimitedNatural")][QString::fromLatin1("value")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QLiteralUnlimitedNatural")][QString::fromLatin1("value")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QLiteralSpecification::setPropertyData();
 }
 
-#include "moc_qliteralunlimitednatural.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qliteralunlimitednatural.cpp"
 

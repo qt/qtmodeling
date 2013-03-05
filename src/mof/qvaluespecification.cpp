@@ -44,7 +44,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTMOF
+QT_BEGIN_NAMESPACE
+
+namespace QtMof
+{
 
 QValueSpecificationPrivate::QValueSpecificationPrivate()
 {
@@ -164,19 +167,19 @@ QNamespace *QValueSpecification::namespace_() const
 /*!
     Indicates that packageable elements must always have a visibility, i.e., visibility is not optional.
  */
-QtMof::VisibilityKind QValueSpecification::visibility() const
+QtMofNS::VisibilityKind QValueSpecification::visibility() const
 {
     return (qwrappedobject_cast<const QPackageableElement *>(this))->visibility();
 }
 
-void QValueSpecification::setVisibility(QtMof::VisibilityKind visibility)
+void QValueSpecification::setVisibility(QtMofNS::VisibilityKind visibility)
 {
     (qwrappedobject_cast<QPackageableElement *>(this))->setVisibility(visibility);
 }
 
 void QValueSpecification::unsetVisibility()
 {
-    setVisibility(QtMof::VisibilityPublic);
+    setVisibility(QtMofNS::VisibilityPublic);
     Q_D(QValueSpecification);
     d->modifiedResettableProperties.removeAll(QString::fromLatin1("visibility"));
 }
@@ -273,7 +276,9 @@ void QValueSpecification::setPropertyData()
     QWrappedObject::setPropertyData();
 }
 
-#include "moc_qvaluespecification.cpp"
+}
 
-QT_END_NAMESPACE_QTMOF
+QT_END_NAMESPACE
+
+#include "moc_qvaluespecification.cpp"
 

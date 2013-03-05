@@ -48,7 +48,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -62,8 +65,8 @@ class Q_UML_EXPORT QWriteStructuralFeatureAction : public QStructuralFeatureActi
 {
     Q_OBJECT
 
-    Q_PROPERTY(QOutputPin * result READ result WRITE setResult)
-    Q_PROPERTY(QInputPin * value READ value WRITE setValue)
+    Q_PROPERTY(QtUml::QOutputPin * result READ result WRITE setResult)
+    Q_PROPERTY(QtUml::QInputPin * value READ value WRITE setValue)
 
     Q_DISABLE_COPY(QWriteStructuralFeatureAction)
     Q_DECLARE_PRIVATE(QWriteStructuralFeatureAction)
@@ -84,7 +87,9 @@ protected:
     explicit QWriteStructuralFeatureAction(QWriteStructuralFeatureActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

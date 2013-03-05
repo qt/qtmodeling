@@ -48,7 +48,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -62,8 +65,8 @@ class Q_UML_EXPORT QClearAssociationAction : public QAction
 {
     Q_OBJECT
 
-    Q_PROPERTY(QInputPin * object READ object WRITE setObject)
-    Q_PROPERTY(QAssociation * association READ association WRITE setAssociation)
+    Q_PROPERTY(QtUml::QInputPin * object READ object WRITE setObject)
+    Q_PROPERTY(QtUml::QAssociation * association READ association WRITE setAssociation)
 
     Q_DISABLE_COPY(QClearAssociationAction)
     Q_DECLARE_PRIVATE(QClearAssociationAction)
@@ -84,7 +87,9 @@ protected:
     explicit QClearAssociationAction(QClearAssociationActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

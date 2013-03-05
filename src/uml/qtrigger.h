@@ -51,7 +51,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -65,8 +68,8 @@ class Q_UML_EXPORT QTrigger : public QNamedElement
 {
     Q_OBJECT
 
-    Q_PROPERTY(QSet<QPort *> ports READ ports)
-    Q_PROPERTY(QEvent * event READ event WRITE setEvent)
+    Q_PROPERTY(QSet<QtUml::QPort *> ports READ ports)
+    Q_PROPERTY(QtUml::QEvent * event READ event WRITE setEvent)
 
     Q_DISABLE_COPY(QTrigger)
     Q_DECLARE_PRIVATE(QTrigger)
@@ -88,7 +91,9 @@ protected:
     explicit QTrigger(QTriggerPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

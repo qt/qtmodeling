@@ -51,7 +51,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -65,9 +68,9 @@ class Q_UML_EXPORT QTemplateSignature : public QElement
 {
     Q_OBJECT
 
-    Q_PROPERTY(QList<QTemplateParameter *> parameters READ parameters)
-    Q_PROPERTY(QTemplateableElement * template_ READ template_ WRITE setTemplate_)
-    Q_PROPERTY(QList<QTemplateParameter *> ownedParameters READ ownedParameters)
+    Q_PROPERTY(QList<QtUml::QTemplateParameter *> parameters READ parameters)
+    Q_PROPERTY(QtUml::QTemplateableElement * template_ READ template_ WRITE setTemplate_)
+    Q_PROPERTY(QList<QtUml::QTemplateParameter *> ownedParameters READ ownedParameters)
 
     Q_DISABLE_COPY(QTemplateSignature)
     Q_DECLARE_PRIVATE(QTemplateSignature)
@@ -92,7 +95,9 @@ protected:
     explicit QTemplateSignature(QTemplateSignaturePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

@@ -47,10 +47,13 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QElementImportPrivate::QElementImportPrivate() :
-    visibility(QtUml::VisibilityPublic),
+    visibility(QtUmlNS::VisibilityPublic),
     importedElement(0),
     importingNamespace(0)
 {
@@ -112,7 +115,7 @@ void QElementImport::setAlias(QString alias)
 /*!
     Specifies the visibility of the imported PackageableElement within the importing Package. The default visibility is the same as that of the imported element. If the imported element does not have a visibility, it is possible to add visibility to the element import.
  */
-QtUml::VisibilityKind QElementImport::visibility() const
+QtUmlNS::VisibilityKind QElementImport::visibility() const
 {
     // This is a read-write attribute
 
@@ -120,7 +123,7 @@ QtUml::VisibilityKind QElementImport::visibility() const
     return d->visibility;
 }
 
-void QElementImport::setVisibility(QtUml::VisibilityKind visibility)
+void QElementImport::setVisibility(QtUmlNS::VisibilityKind visibility)
 {
     // This is a read-write attribute
 
@@ -133,7 +136,7 @@ void QElementImport::setVisibility(QtUml::VisibilityKind visibility)
 
 void QElementImport::unsetVisibility()
 {
-    setVisibility(QtUml::VisibilityPublic);
+    setVisibility(QtUmlNS::VisibilityPublic);
     Q_D(QElementImport);
     d->modifiedResettableProperties.removeAll(QString::fromLatin1("visibility"));
 }
@@ -221,38 +224,40 @@ QString QElementImport::getName() const
 
 void QElementImport::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QElementImport")][QString::fromLatin1("alias")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QElementImport")][QString::fromLatin1("alias")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QElementImport")][QString::fromLatin1("alias")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the name that should be added to the namespace of the importing package in lieu of the name of the imported packagable element. The aliased name must not clash with any other member name in the importing package. By default, no alias is used.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QElementImport")][QString::fromLatin1("alias")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QElementImport")][QString::fromLatin1("alias")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QElementImport")][QString::fromLatin1("alias")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QElementImport")][QString::fromLatin1("alias")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QElementImport")][QString::fromLatin1("alias")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QElementImport")][QString::fromLatin1("alias")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the name that should be added to the namespace of the importing package in lieu of the name of the imported packagable element. The aliased name must not clash with any other member name in the importing package. By default, no alias is used.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QElementImport")][QString::fromLatin1("alias")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QElementImport")][QString::fromLatin1("alias")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QElementImport")][QString::fromLatin1("alias")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QElementImport")][QString::fromLatin1("visibility")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QElementImport")][QString::fromLatin1("visibility")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QElementImport")][QString::fromLatin1("visibility")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the visibility of the imported PackageableElement within the importing Package. The default visibility is the same as that of the imported element. If the imported element does not have a visibility, it is possible to add visibility to the element import.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QElementImport")][QString::fromLatin1("visibility")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QElementImport")][QString::fromLatin1("visibility")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QElementImport")][QString::fromLatin1("visibility")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QElementImport")][QString::fromLatin1("visibility")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QElementImport")][QString::fromLatin1("visibility")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QElementImport")][QString::fromLatin1("visibility")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the visibility of the imported PackageableElement within the importing Package. The default visibility is the same as that of the imported element. If the imported element does not have a visibility, it is possible to add visibility to the element import.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QElementImport")][QString::fromLatin1("visibility")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QElementImport")][QString::fromLatin1("visibility")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QElementImport")][QString::fromLatin1("visibility")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QElementImport")][QString::fromLatin1("importedElement")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QElementImport")][QString::fromLatin1("importedElement")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QElementImport")][QString::fromLatin1("importedElement")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the PackageableElement whose name is to be added to a Namespace.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QElementImport")][QString::fromLatin1("importedElement")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QElementImport")][QString::fromLatin1("importedElement")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QDirectedRelationship::targets");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QElementImport")][QString::fromLatin1("importedElement")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QElementImport")][QString::fromLatin1("importedElement")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QElementImport")][QString::fromLatin1("importedElement")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QElementImport")][QString::fromLatin1("importedElement")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the PackageableElement whose name is to be added to a Namespace.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QElementImport")][QString::fromLatin1("importedElement")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QElementImport")][QString::fromLatin1("importedElement")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QDirectedRelationship::targets");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QElementImport")][QString::fromLatin1("importedElement")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QElementImport")][QString::fromLatin1("importingNamespace")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QElementImport")][QString::fromLatin1("importingNamespace")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QElementImport")][QString::fromLatin1("importingNamespace")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the Namespace that imports a PackageableElement from another Package.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QElementImport")][QString::fromLatin1("importingNamespace")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QElementImport")][QString::fromLatin1("importingNamespace")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::owner QDirectedRelationship::sources");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QElementImport")][QString::fromLatin1("importingNamespace")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QNamespace::elementImport");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QElementImport")][QString::fromLatin1("importingNamespace")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QElementImport")][QString::fromLatin1("importingNamespace")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QElementImport")][QString::fromLatin1("importingNamespace")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the Namespace that imports a PackageableElement from another Package.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QElementImport")][QString::fromLatin1("importingNamespace")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QElementImport")][QString::fromLatin1("importingNamespace")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::owner QDirectedRelationship::sources");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QElementImport")][QString::fromLatin1("importingNamespace")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QNamespace::elementImport");
 
     QDirectedRelationship::setPropertyData();
 }
 
-#include "moc_qelementimport.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qelementimport.cpp"
 

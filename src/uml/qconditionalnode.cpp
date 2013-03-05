@@ -47,7 +47,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QConditionalNodePrivate::QConditionalNodePrivate() :
     isAssured(false),
@@ -227,38 +230,40 @@ void QConditionalNode::removeResult(QOutputPin *result)
 
 void QConditionalNode::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConditionalNode")][QString::fromLatin1("isAssured")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConditionalNode")][QString::fromLatin1("isAssured")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConditionalNode")][QString::fromLatin1("isAssured")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("If true, the modeler asserts that at least one test will succeed.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConditionalNode")][QString::fromLatin1("isAssured")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConditionalNode")][QString::fromLatin1("isAssured")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConditionalNode")][QString::fromLatin1("isAssured")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConditionalNode")][QString::fromLatin1("isAssured")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConditionalNode")][QString::fromLatin1("isAssured")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConditionalNode")][QString::fromLatin1("isAssured")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("If true, the modeler asserts that at least one test will succeed.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConditionalNode")][QString::fromLatin1("isAssured")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConditionalNode")][QString::fromLatin1("isAssured")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConditionalNode")][QString::fromLatin1("isAssured")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConditionalNode")][QString::fromLatin1("isDeterminate")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConditionalNode")][QString::fromLatin1("isDeterminate")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConditionalNode")][QString::fromLatin1("isDeterminate")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("If true, the modeler asserts that at most one test will succeed.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConditionalNode")][QString::fromLatin1("isDeterminate")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConditionalNode")][QString::fromLatin1("isDeterminate")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConditionalNode")][QString::fromLatin1("isDeterminate")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConditionalNode")][QString::fromLatin1("isDeterminate")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConditionalNode")][QString::fromLatin1("isDeterminate")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConditionalNode")][QString::fromLatin1("isDeterminate")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("If true, the modeler asserts that at most one test will succeed.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConditionalNode")][QString::fromLatin1("isDeterminate")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConditionalNode")][QString::fromLatin1("isDeterminate")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConditionalNode")][QString::fromLatin1("isDeterminate")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConditionalNode")][QString::fromLatin1("clauses")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConditionalNode")][QString::fromLatin1("clauses")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConditionalNode")][QString::fromLatin1("clauses")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Set of clauses composing the conditional.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConditionalNode")][QString::fromLatin1("clauses")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConditionalNode")][QString::fromLatin1("clauses")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConditionalNode")][QString::fromLatin1("clauses")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConditionalNode")][QString::fromLatin1("clauses")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConditionalNode")][QString::fromLatin1("clauses")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConditionalNode")][QString::fromLatin1("clauses")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Set of clauses composing the conditional.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConditionalNode")][QString::fromLatin1("clauses")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConditionalNode")][QString::fromLatin1("clauses")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConditionalNode")][QString::fromLatin1("clauses")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConditionalNode")][QString::fromLatin1("results")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConditionalNode")][QString::fromLatin1("results")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConditionalNode")][QString::fromLatin1("results")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A list of output pins that constitute the data flow outputs of the conditional.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConditionalNode")][QString::fromLatin1("results")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QStructuredActivityNode::structuredNodeOutputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConditionalNode")][QString::fromLatin1("results")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConditionalNode")][QString::fromLatin1("results")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConditionalNode")][QString::fromLatin1("results")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConditionalNode")][QString::fromLatin1("results")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConditionalNode")][QString::fromLatin1("results")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A list of output pins that constitute the data flow outputs of the conditional.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConditionalNode")][QString::fromLatin1("results")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QStructuredActivityNode::structuredNodeOutputs");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConditionalNode")][QString::fromLatin1("results")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConditionalNode")][QString::fromLatin1("results")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QStructuredActivityNode::setPropertyData();
 }
 
-#include "moc_qconditionalnode.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qconditionalnode.cpp"
 

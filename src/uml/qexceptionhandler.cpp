@@ -48,7 +48,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QExceptionHandlerPrivate::QExceptionHandlerPrivate() :
     handlerBody(0),
@@ -196,38 +199,40 @@ void QExceptionHandler::setExceptionInput(QObjectNode *exceptionInput)
 
 void QExceptionHandler::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExceptionHandler")][QString::fromLatin1("handlerBody")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExceptionHandler")][QString::fromLatin1("handlerBody")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExceptionHandler")][QString::fromLatin1("handlerBody")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A node that is executed if the handler satisfies an uncaught exception.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExceptionHandler")][QString::fromLatin1("handlerBody")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExceptionHandler")][QString::fromLatin1("handlerBody")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExceptionHandler")][QString::fromLatin1("handlerBody")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QExceptionHandler")][QString::fromLatin1("handlerBody")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QExceptionHandler")][QString::fromLatin1("handlerBody")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QExceptionHandler")][QString::fromLatin1("handlerBody")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A node that is executed if the handler satisfies an uncaught exception.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QExceptionHandler")][QString::fromLatin1("handlerBody")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QExceptionHandler")][QString::fromLatin1("handlerBody")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QExceptionHandler")][QString::fromLatin1("handlerBody")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExceptionHandler")][QString::fromLatin1("exceptionTypes")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExceptionHandler")][QString::fromLatin1("exceptionTypes")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExceptionHandler")][QString::fromLatin1("exceptionTypes")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The kind of instances that the handler catches. If an exception occurs whose type is any of the classifiers in the set, the handler catches the exception and executes its body.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExceptionHandler")][QString::fromLatin1("exceptionTypes")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExceptionHandler")][QString::fromLatin1("exceptionTypes")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExceptionHandler")][QString::fromLatin1("exceptionTypes")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QExceptionHandler")][QString::fromLatin1("exceptionTypes")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QExceptionHandler")][QString::fromLatin1("exceptionTypes")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QExceptionHandler")][QString::fromLatin1("exceptionTypes")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The kind of instances that the handler catches. If an exception occurs whose type is any of the classifiers in the set, the handler catches the exception and executes its body.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QExceptionHandler")][QString::fromLatin1("exceptionTypes")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QExceptionHandler")][QString::fromLatin1("exceptionTypes")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QExceptionHandler")][QString::fromLatin1("exceptionTypes")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExceptionHandler")][QString::fromLatin1("protectedNode")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExceptionHandler")][QString::fromLatin1("protectedNode")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExceptionHandler")][QString::fromLatin1("protectedNode")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The node protected by the handler. The handler is examined if an exception propagates to the outside of the node.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExceptionHandler")][QString::fromLatin1("protectedNode")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExceptionHandler")][QString::fromLatin1("protectedNode")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::owner");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExceptionHandler")][QString::fromLatin1("protectedNode")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QExecutableNode::handler");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QExceptionHandler")][QString::fromLatin1("protectedNode")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QExceptionHandler")][QString::fromLatin1("protectedNode")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QExceptionHandler")][QString::fromLatin1("protectedNode")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The node protected by the handler. The handler is examined if an exception propagates to the outside of the node.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QExceptionHandler")][QString::fromLatin1("protectedNode")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QExceptionHandler")][QString::fromLatin1("protectedNode")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::owner");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QExceptionHandler")][QString::fromLatin1("protectedNode")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QExecutableNode::handler");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExceptionHandler")][QString::fromLatin1("exceptionInput")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExceptionHandler")][QString::fromLatin1("exceptionInput")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExceptionHandler")][QString::fromLatin1("exceptionInput")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An object node within the handler body. When the handler catches an exception, the exception token is placed in this node, causing the body to execute.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExceptionHandler")][QString::fromLatin1("exceptionInput")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExceptionHandler")][QString::fromLatin1("exceptionInput")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExceptionHandler")][QString::fromLatin1("exceptionInput")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QExceptionHandler")][QString::fromLatin1("exceptionInput")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QExceptionHandler")][QString::fromLatin1("exceptionInput")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QExceptionHandler")][QString::fromLatin1("exceptionInput")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An object node within the handler body. When the handler catches an exception, the exception token is placed in this node, causing the body to execute.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QExceptionHandler")][QString::fromLatin1("exceptionInput")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QExceptionHandler")][QString::fromLatin1("exceptionInput")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QExceptionHandler")][QString::fromLatin1("exceptionInput")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QElement::setPropertyData();
 }
 
-#include "moc_qexceptionhandler.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qexceptionhandler.cpp"
 

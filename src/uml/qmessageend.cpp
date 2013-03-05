@@ -46,7 +46,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QMessageEndPrivate::QMessageEndPrivate() :
     message(0)
@@ -108,17 +111,19 @@ void QMessageEnd::setMessage(QMessage *message)
 
 void QMessageEnd::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessageEnd")][QString::fromLatin1("message")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessageEnd")][QString::fromLatin1("message")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessageEnd")][QString::fromLatin1("message")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References a Message.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessageEnd")][QString::fromLatin1("message")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessageEnd")][QString::fromLatin1("message")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessageEnd")][QString::fromLatin1("message")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QMessageEnd")][QString::fromLatin1("message")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QMessageEnd")][QString::fromLatin1("message")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QMessageEnd")][QString::fromLatin1("message")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References a Message.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QMessageEnd")][QString::fromLatin1("message")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QMessageEnd")][QString::fromLatin1("message")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QMessageEnd")][QString::fromLatin1("message")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QNamedElement::setPropertyData();
 }
 
-#include "moc_qmessageend.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qmessageend.cpp"
 

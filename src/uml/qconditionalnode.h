@@ -52,7 +52,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -68,8 +71,8 @@ class Q_UML_EXPORT QConditionalNode : public QStructuredActivityNode
 
     Q_PROPERTY(bool isAssured READ isAssured WRITE setAssured RESET unsetAssured)
     Q_PROPERTY(bool isDeterminate READ isDeterminate WRITE setDeterminate RESET unsetDeterminate)
-    Q_PROPERTY(QSet<QClause *> clauses READ clauses)
-    Q_PROPERTY(QList<QOutputPin *> results READ results)
+    Q_PROPERTY(QSet<QtUml::QClause *> clauses READ clauses)
+    Q_PROPERTY(QList<QtUml::QOutputPin *> results READ results)
 
     Q_DISABLE_COPY(QConditionalNode)
     Q_DECLARE_PRIVATE(QConditionalNode)
@@ -100,7 +103,9 @@ protected:
     explicit QConditionalNode(QConditionalNodePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

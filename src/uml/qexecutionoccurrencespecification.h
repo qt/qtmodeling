@@ -48,7 +48,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -61,7 +64,7 @@ class Q_UML_EXPORT QExecutionOccurrenceSpecification : public QOccurrenceSpecifi
 {
     Q_OBJECT
 
-    Q_PROPERTY(QExecutionSpecification * execution READ execution WRITE setExecution)
+    Q_PROPERTY(QtUml::QExecutionSpecification * execution READ execution WRITE setExecution)
 
     Q_DISABLE_COPY(QExecutionOccurrenceSpecification)
     Q_DECLARE_PRIVATE(QExecutionOccurrenceSpecification)
@@ -80,7 +83,9 @@ protected:
     explicit QExecutionOccurrenceSpecification(QExecutionOccurrenceSpecificationPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

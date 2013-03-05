@@ -51,7 +51,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -66,7 +69,7 @@ class Q_UML_EXPORT QDeploymentSpecification : public QArtifact
 
     Q_PROPERTY(QString deploymentLocation READ deploymentLocation WRITE setDeploymentLocation)
     Q_PROPERTY(QString executionLocation READ executionLocation WRITE setExecutionLocation)
-    Q_PROPERTY(QDeployment * deployment READ deployment WRITE setDeployment)
+    Q_PROPERTY(QtUml::QDeployment * deployment READ deployment WRITE setDeployment)
 
     Q_DISABLE_COPY(QDeploymentSpecification)
     Q_DECLARE_PRIVATE(QDeploymentSpecification)
@@ -91,7 +94,9 @@ protected:
     explicit QDeploymentSpecification(QDeploymentSpecificationPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

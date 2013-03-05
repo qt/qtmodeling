@@ -55,7 +55,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -75,57 +78,57 @@ class Q_UML_EXPORT QOperation : public QWrappedObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(QSet<QElement *> ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(QSet<QComment *> ownedComments READ ownedComments)
+    Q_PROPERTY(QSet<QtUml::QElement *> ownedElements READ ownedElements)
+    Q_PROPERTY(QtUml::QElement * owner READ owner)
+    Q_PROPERTY(QSet<QtUml::QComment *> ownedComments READ ownedComments)
 
-    Q_PROPERTY(QTemplateSignature * ownedTemplateSignature READ ownedTemplateSignature WRITE setOwnedTemplateSignature)
-    Q_PROPERTY(QSet<QTemplateBinding *> templateBindings READ templateBindings)
+    Q_PROPERTY(QtUml::QTemplateSignature * ownedTemplateSignature READ ownedTemplateSignature WRITE setOwnedTemplateSignature)
+    Q_PROPERTY(QSet<QtUml::QTemplateBinding *> templateBindings READ templateBindings)
 
     Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
+    Q_PROPERTY(QtUmlNS::VisibilityKind visibility READ visibility WRITE setVisibility)
     Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
-    Q_PROPERTY(QSet<QDependency *> clientDependencies READ clientDependencies)
+    Q_PROPERTY(QtUml::QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
+    Q_PROPERTY(QtUml::QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(QSet<QtUml::QDependency *> clientDependencies READ clientDependencies)
 
-    Q_PROPERTY(QSet<QPackageImport *> packageImports READ packageImports)
-    Q_PROPERTY(QSet<QNamedElement *> members READ members)
-    Q_PROPERTY(QSet<QPackageableElement *> importedMembers READ importedMembers STORED false)
-    Q_PROPERTY(QSet<QElementImport *> elementImports READ elementImports)
-    Q_PROPERTY(QSet<QConstraint *> ownedRules READ ownedRules)
-    Q_PROPERTY(QSet<QNamedElement *> ownedMembers READ ownedMembers)
+    Q_PROPERTY(QSet<QtUml::QPackageImport *> packageImports READ packageImports)
+    Q_PROPERTY(QSet<QtUml::QNamedElement *> members READ members)
+    Q_PROPERTY(QSet<QtUml::QPackageableElement *> importedMembers READ importedMembers STORED false)
+    Q_PROPERTY(QSet<QtUml::QElementImport *> elementImports READ elementImports)
+    Q_PROPERTY(QSet<QtUml::QConstraint *> ownedRules READ ownedRules)
+    Q_PROPERTY(QSet<QtUml::QNamedElement *> ownedMembers READ ownedMembers)
 
     Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
-    Q_PROPERTY(QSet<QRedefinableElement *> redefinedElements READ redefinedElements)
-    Q_PROPERTY(QSet<QClassifier *> redefinitionContexts READ redefinitionContexts)
+    Q_PROPERTY(QSet<QtUml::QRedefinableElement *> redefinedElements READ redefinedElements)
+    Q_PROPERTY(QSet<QtUml::QClassifier *> redefinitionContexts READ redefinitionContexts)
 
     Q_PROPERTY(bool isStatic READ isStatic WRITE setStatic RESET unsetStatic)
-    Q_PROPERTY(QSet<QClassifier *> featuringClassifiers READ featuringClassifiers)
+    Q_PROPERTY(QSet<QtUml::QClassifier *> featuringClassifiers READ featuringClassifiers)
 
-    Q_PROPERTY(QtUml::CallConcurrencyKind concurrency READ concurrency WRITE setConcurrency RESET unsetConcurrency)
+    Q_PROPERTY(QtUmlNS::CallConcurrencyKind concurrency READ concurrency WRITE setConcurrency RESET unsetConcurrency)
     Q_PROPERTY(bool isAbstract READ isAbstract WRITE setAbstract RESET unsetAbstract)
-    Q_PROPERTY(QSet<QParameterSet *> ownedParameterSets READ ownedParameterSets)
-    Q_PROPERTY(QSet<QBehavior *> methods READ methods)
+    Q_PROPERTY(QSet<QtUml::QParameterSet *> ownedParameterSets READ ownedParameterSets)
+    Q_PROPERTY(QSet<QtUml::QBehavior *> methods READ methods)
 
-    Q_PROPERTY(QTemplateParameter * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
+    Q_PROPERTY(QtUml::QTemplateParameter * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
 
     Q_PROPERTY(qint32 lower READ lower STORED false)
     Q_PROPERTY(bool isQuery READ isQuery WRITE setQuery RESET unsetQuery)
     Q_PROPERTY(bool isUnique READ isUnique STORED false)
     Q_PROPERTY(qint32 upper READ upper STORED false)
     Q_PROPERTY(bool isOrdered READ isOrdered STORED false)
-    Q_PROPERTY(QList<QParameter *> ownedParameters READ ownedParameters)
-    Q_PROPERTY(QConstraint * bodyCondition READ bodyCondition WRITE setBodyCondition)
-    Q_PROPERTY(QSet<QOperation *> redefinedOperations READ redefinedOperations)
-    Q_PROPERTY(QSet<QConstraint *> postconditions READ postconditions)
-    Q_PROPERTY(QDataType * datatype READ datatype WRITE setDatatype)
-    Q_PROPERTY(QOperationTemplateParameter * templateParameter READ templateParameter WRITE setTemplateParameter)
-    Q_PROPERTY(QInterface * interface_ READ interface_ WRITE setInterface_)
-    Q_PROPERTY(QType * type READ type STORED false)
-    Q_PROPERTY(QSet<QConstraint *> preconditions READ preconditions)
-    Q_PROPERTY(QClass * class_ READ class_ WRITE setClass_)
-    Q_PROPERTY(QSet<QType *> raisedExceptions READ raisedExceptions)
+    Q_PROPERTY(QList<QtUml::QParameter *> ownedParameters READ ownedParameters)
+    Q_PROPERTY(QtUml::QConstraint * bodyCondition READ bodyCondition WRITE setBodyCondition)
+    Q_PROPERTY(QSet<QtUml::QOperation *> redefinedOperations READ redefinedOperations)
+    Q_PROPERTY(QSet<QtUml::QConstraint *> postconditions READ postconditions)
+    Q_PROPERTY(QtUml::QDataType * datatype READ datatype WRITE setDatatype)
+    Q_PROPERTY(QtUml::QOperationTemplateParameter * templateParameter READ templateParameter WRITE setTemplateParameter)
+    Q_PROPERTY(QtUml::QInterface * interface_ READ interface_ WRITE setInterface_)
+    Q_PROPERTY(QtUml::QType * type READ type STORED false)
+    Q_PROPERTY(QSet<QtUml::QConstraint *> preconditions READ preconditions)
+    Q_PROPERTY(QtUml::QClass * class_ READ class_ WRITE setClass_)
+    Q_PROPERTY(QSet<QtUml::QType *> raisedExceptions READ raisedExceptions)
 
     Q_DISABLE_COPY(QOperation)
     Q_DECLARE_PRIVATE(QOperation)
@@ -151,8 +154,8 @@ public:
     // Attributes from aggregated QNamedElement
     Q_INVOKABLE QString name() const;
     Q_INVOKABLE void setName(QString name);
-    Q_INVOKABLE QtUml::VisibilityKind visibility() const;
-    Q_INVOKABLE void setVisibility(QtUml::VisibilityKind visibility);
+    Q_INVOKABLE QtUmlNS::VisibilityKind visibility() const;
+    Q_INVOKABLE void setVisibility(QtUmlNS::VisibilityKind visibility);
     Q_INVOKABLE QString qualifiedName() const;
 
     // Association ends from aggregated QNamedElement
@@ -195,8 +198,8 @@ public:
     Q_INVOKABLE QSet<QClassifier *> featuringClassifiers() const;
 
     // Attributes from aggregated QBehavioralFeature
-    Q_INVOKABLE QtUml::CallConcurrencyKind concurrency() const;
-    Q_INVOKABLE void setConcurrency(QtUml::CallConcurrencyKind concurrency);
+    Q_INVOKABLE QtUmlNS::CallConcurrencyKind concurrency() const;
+    Q_INVOKABLE void setConcurrency(QtUmlNS::CallConcurrencyKind concurrency);
     Q_INVOKABLE void unsetConcurrency();
     Q_INVOKABLE bool isAbstract() const;
     Q_INVOKABLE void setAbstract(bool isAbstract);
@@ -266,7 +269,9 @@ private:
     QParameterableElement *_wrappedParameterableElement;
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

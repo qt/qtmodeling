@@ -46,7 +46,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QAcceptCallActionPrivate::QAcceptCallActionPrivate() :
     returnInformation(0)
@@ -116,17 +119,19 @@ void QAcceptCallAction::setReturnInformation(QOutputPin *returnInformation)
 
 void QAcceptCallAction::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QAcceptCallAction")][QString::fromLatin1("returnInformation")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QAcceptCallAction")][QString::fromLatin1("returnInformation")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QAcceptCallAction")][QString::fromLatin1("returnInformation")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Pin where a value is placed containing sufficient information to perform a subsequent reply and return control to the caller. The contents of this value are opaque. It can be passed and copied but it cannot be manipulated by the model.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QAcceptCallAction")][QString::fromLatin1("returnInformation")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QAcceptCallAction")][QString::fromLatin1("returnInformation")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QAction::outputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QAcceptCallAction")][QString::fromLatin1("returnInformation")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QAcceptCallAction")][QString::fromLatin1("returnInformation")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QAcceptCallAction")][QString::fromLatin1("returnInformation")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QAcceptCallAction")][QString::fromLatin1("returnInformation")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Pin where a value is placed containing sufficient information to perform a subsequent reply and return control to the caller. The contents of this value are opaque. It can be passed and copied but it cannot be manipulated by the model.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QAcceptCallAction")][QString::fromLatin1("returnInformation")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QAcceptCallAction")][QString::fromLatin1("returnInformation")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QAction::outputs");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QAcceptCallAction")][QString::fromLatin1("returnInformation")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QAcceptEventAction::setPropertyData();
 }
 
-#include "moc_qacceptcallaction.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qacceptcallaction.cpp"
 

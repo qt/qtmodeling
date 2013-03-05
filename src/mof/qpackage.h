@@ -56,7 +56,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTMOF
+QT_BEGIN_NAMESPACE
+
+namespace QtMof
+{
 
 QT_MODULE(QtMof)
 
@@ -71,29 +74,29 @@ class Q_MOF_EXPORT QPackage : public QWrappedObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(QSet<QElement *> ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(QSet<QComment *> ownedComments READ ownedComments)
+    Q_PROPERTY(QSet<QtMof::QElement *> ownedElements READ ownedElements)
+    Q_PROPERTY(QtMof::QElement * owner READ owner)
+    Q_PROPERTY(QSet<QtMof::QComment *> ownedComments READ ownedComments)
 
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(QtMof::QNamespace * namespace_ READ namespace_)
 
-    Q_PROPERTY(QSet<QPackageImport *> packageImports READ packageImports)
-    Q_PROPERTY(QSet<QNamedElement *> members READ members)
-    Q_PROPERTY(QSet<QPackageableElement *> importedMembers READ importedMembers STORED false)
-    Q_PROPERTY(QSet<QElementImport *> elementImports READ elementImports)
-    Q_PROPERTY(QSet<QConstraint *> ownedRules READ ownedRules)
-    Q_PROPERTY(QSet<QNamedElement *> ownedMembers READ ownedMembers)
+    Q_PROPERTY(QSet<QtMof::QPackageImport *> packageImports READ packageImports)
+    Q_PROPERTY(QSet<QtMof::QNamedElement *> members READ members)
+    Q_PROPERTY(QSet<QtMof::QPackageableElement *> importedMembers READ importedMembers STORED false)
+    Q_PROPERTY(QSet<QtMof::QElementImport *> elementImports READ elementImports)
+    Q_PROPERTY(QSet<QtMof::QConstraint *> ownedRules READ ownedRules)
+    Q_PROPERTY(QSet<QtMof::QNamedElement *> ownedMembers READ ownedMembers)
 
-    Q_PROPERTY(QtMof::VisibilityKind visibility READ visibility WRITE setVisibility RESET unsetVisibility)
+    Q_PROPERTY(QtMofNS::VisibilityKind visibility READ visibility WRITE setVisibility RESET unsetVisibility)
 
     Q_PROPERTY(QString URI READ URI WRITE setURI)
-    Q_PROPERTY(QSet<QType *> ownedTypes READ ownedTypes STORED false)
-    Q_PROPERTY(QSet<QPackageableElement *> packagedElements READ packagedElements)
-    Q_PROPERTY(QPackage * nestingPackage READ nestingPackage WRITE setNestingPackage)
-    Q_PROPERTY(QSet<QPackageMerge *> packageMerges READ packageMerges)
-    Q_PROPERTY(QSet<QPackage *> nestedPackages READ nestedPackages STORED false)
+    Q_PROPERTY(QSet<QtMof::QType *> ownedTypes READ ownedTypes STORED false)
+    Q_PROPERTY(QSet<QtMof::QPackageableElement *> packagedElements READ packagedElements)
+    Q_PROPERTY(QtMof::QPackage * nestingPackage READ nestingPackage WRITE setNestingPackage)
+    Q_PROPERTY(QSet<QtMof::QPackageMerge *> packageMerges READ packageMerges)
+    Q_PROPERTY(QSet<QtMof::QPackage *> nestedPackages READ nestedPackages STORED false)
 
     Q_DISABLE_COPY(QPackage)
     Q_DECLARE_PRIVATE(QPackage)
@@ -132,8 +135,8 @@ public:
     Q_INVOKABLE QSet<QNamedElement *> ownedMembers() const;
 
     // Attributes from aggregated QPackageableElement
-    Q_INVOKABLE QtMof::VisibilityKind visibility() const;
-    Q_INVOKABLE void setVisibility(QtMof::VisibilityKind visibility);
+    Q_INVOKABLE QtMofNS::VisibilityKind visibility() const;
+    Q_INVOKABLE void setVisibility(QtMofNS::VisibilityKind visibility);
     Q_INVOKABLE void unsetVisibility();
 
     // Attributes from QPackage
@@ -177,7 +180,9 @@ private:
     QPackageableElement *_wrappedPackageableElement;
 };
 
-QT_END_NAMESPACE_QTMOF
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

@@ -47,7 +47,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QStateInvariantPrivate::QStateInvariantPrivate() :
     invariant(0),
@@ -147,24 +150,26 @@ void QStateInvariant::setCovered(QLifeline *covered)
 
 void QStateInvariant::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStateInvariant")][QString::fromLatin1("invariant")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStateInvariant")][QString::fromLatin1("invariant")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStateInvariant")][QString::fromLatin1("invariant")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A Constraint that should hold at runtime for this StateInvariant");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStateInvariant")][QString::fromLatin1("invariant")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStateInvariant")][QString::fromLatin1("invariant")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStateInvariant")][QString::fromLatin1("invariant")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStateInvariant")][QString::fromLatin1("invariant")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStateInvariant")][QString::fromLatin1("invariant")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStateInvariant")][QString::fromLatin1("invariant")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A Constraint that should hold at runtime for this StateInvariant");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStateInvariant")][QString::fromLatin1("invariant")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStateInvariant")][QString::fromLatin1("invariant")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStateInvariant")][QString::fromLatin1("invariant")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStateInvariant")][QString::fromLatin1("covered")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStateInvariant")][QString::fromLatin1("covered")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStateInvariant")][QString::fromLatin1("covered")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Lifeline on which the StateInvariant appears.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStateInvariant")][QString::fromLatin1("covered")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QInteractionFragment::covered");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStateInvariant")][QString::fromLatin1("covered")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStateInvariant")][QString::fromLatin1("covered")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStateInvariant")][QString::fromLatin1("covered")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStateInvariant")][QString::fromLatin1("covered")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStateInvariant")][QString::fromLatin1("covered")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Lifeline on which the StateInvariant appears.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStateInvariant")][QString::fromLatin1("covered")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QInteractionFragment::covered");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStateInvariant")][QString::fromLatin1("covered")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStateInvariant")][QString::fromLatin1("covered")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QInteractionFragment::setPropertyData();
 }
 
-#include "moc_qstateinvariant.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qstateinvariant.cpp"
 

@@ -60,11 +60,12 @@ QXmiReaderPrivate::~QXmiReaderPrivate()
 {
 }
 
-QXmiReader::QXmiReader(QScriptEngine *scriptEngine, QObject *parent) :
+QXmiReader::QXmiReader(QScriptEngine *scriptEngine, bool initMetaModel, QObject *parent) :
     QObject(*new QXmiReaderPrivate, parent)
 {
     Q_D(QXmiReader);
     d->scriptEngine = scriptEngine;
+    d->initMetaModel = initMetaModel;
     loadPlugins();
 }
 
@@ -106,7 +107,8 @@ QWrappedObject *QXmiReader::readFile(QIODevice *device)
             foreach (const QXmlStreamNamespaceDeclaration &namespaceDeclaration, d->reader.namespaceDeclarations()) {
                 QMetaModelPlugin *metaModelPlugin = d->metaModelPlugins.value(namespaceDeclaration.namespaceUri().toString());
                 if (metaModelPlugin) {
-                    metaModelPlugin->initMetaModel(d->scriptEngine);
+                    if (d->initMetaModel)
+                       metaModelPlugin->initMetaModel(d->scriptEngine);
                     d->xmlNamespaceToImplementationNamespace.insert(namespaceDeclaration.prefix().toString(), metaModelPlugin->metaModelNamespace());
                 }
                 else {

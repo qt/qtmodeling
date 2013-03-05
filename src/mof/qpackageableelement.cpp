@@ -44,10 +44,13 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTMOF
+QT_BEGIN_NAMESPACE
+
+namespace QtMof
+{
 
 QPackageableElementPrivate::QPackageableElementPrivate() :
-    visibility(QtMof::VisibilityPublic)
+    visibility(QtMofNS::VisibilityPublic)
 {
 }
 
@@ -86,7 +89,7 @@ QPackageableElement::~QPackageableElement()
 /*!
     Indicates that packageable elements must always have a visibility, i.e., visibility is not optional.
  */
-QtMof::VisibilityKind QPackageableElement::visibility() const
+QtMofNS::VisibilityKind QPackageableElement::visibility() const
 {
     // This is a read-write attribute
 
@@ -94,7 +97,7 @@ QtMof::VisibilityKind QPackageableElement::visibility() const
     return d->visibility;
 }
 
-void QPackageableElement::setVisibility(QtMof::VisibilityKind visibility)
+void QPackageableElement::setVisibility(QtMofNS::VisibilityKind visibility)
 {
     // This is a read-write attribute
 
@@ -110,24 +113,26 @@ void QPackageableElement::setVisibility(QtMof::VisibilityKind visibility)
 
 void QPackageableElement::unsetVisibility()
 {
-    setVisibility(QtMof::VisibilityPublic);
+    setVisibility(QtMofNS::VisibilityPublic);
     Q_D(QPackageableElement);
     d->modifiedResettableProperties.removeAll(QString::fromLatin1("visibility"));
 }
 
 void QPackageableElement::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QPackageableElement")][QString::fromLatin1("visibility")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QPackageableElement")][QString::fromLatin1("visibility")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QPackageableElement")][QString::fromLatin1("visibility")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Indicates that packageable elements must always have a visibility, i.e., visibility is not optional.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QPackageableElement")][QString::fromLatin1("visibility")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QNamedElement::visibility");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QPackageableElement")][QString::fromLatin1("visibility")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QPackageableElement")][QString::fromLatin1("visibility")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtMof::QPackageableElement")][QString::fromLatin1("visibility")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtMof::QPackageableElement")][QString::fromLatin1("visibility")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtMof::QPackageableElement")][QString::fromLatin1("visibility")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Indicates that packageable elements must always have a visibility, i.e., visibility is not optional.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtMof::QPackageableElement")][QString::fromLatin1("visibility")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QNamedElement::visibility");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtMof::QPackageableElement")][QString::fromLatin1("visibility")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtMof::QPackageableElement")][QString::fromLatin1("visibility")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QNamedElement::setPropertyData();
 }
 
-#include "moc_qpackageableelement.cpp"
+}
 
-QT_END_NAMESPACE_QTMOF
+QT_END_NAMESPACE
+
+#include "moc_qpackageableelement.cpp"
 

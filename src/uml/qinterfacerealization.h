@@ -50,7 +50,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -64,8 +67,8 @@ class Q_UML_EXPORT QInterfaceRealization : public QRealization
 {
     Q_OBJECT
 
-    Q_PROPERTY(QBehavioredClassifier * implementingClassifier READ implementingClassifier WRITE setImplementingClassifier)
-    Q_PROPERTY(QInterface * contract READ contract WRITE setContract)
+    Q_PROPERTY(QtUml::QBehavioredClassifier * implementingClassifier READ implementingClassifier WRITE setImplementingClassifier)
+    Q_PROPERTY(QtUml::QInterface * contract READ contract WRITE setContract)
 
     Q_DISABLE_COPY(QInterfaceRealization)
     Q_DECLARE_PRIVATE(QInterfaceRealization)
@@ -92,7 +95,9 @@ protected:
     explicit QInterfaceRealization(QInterfaceRealizationPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

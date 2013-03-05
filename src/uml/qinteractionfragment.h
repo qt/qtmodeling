@@ -51,7 +51,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -67,10 +70,10 @@ class Q_UML_EXPORT QInteractionFragment : public QNamedElement
 {
     Q_OBJECT
 
-    Q_PROPERTY(QSet<QGeneralOrdering *> generalOrderings READ generalOrderings)
-    Q_PROPERTY(QInteraction * enclosingInteraction READ enclosingInteraction WRITE setEnclosingInteraction)
-    Q_PROPERTY(QSet<QLifeline *> covered READ covered)
-    Q_PROPERTY(QInteractionOperand * enclosingOperand READ enclosingOperand WRITE setEnclosingOperand)
+    Q_PROPERTY(QSet<QtUml::QGeneralOrdering *> generalOrderings READ generalOrderings)
+    Q_PROPERTY(QtUml::QInteraction * enclosingInteraction READ enclosingInteraction WRITE setEnclosingInteraction)
+    Q_PROPERTY(QSet<QtUml::QLifeline *> covered READ covered)
+    Q_PROPERTY(QtUml::QInteractionOperand * enclosingOperand READ enclosingOperand WRITE setEnclosingOperand)
 
     Q_DISABLE_COPY(QInteractionFragment)
     Q_DECLARE_PRIVATE(QInteractionFragment)
@@ -97,7 +100,9 @@ protected:
     explicit QInteractionFragment(QInteractionFragmentPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

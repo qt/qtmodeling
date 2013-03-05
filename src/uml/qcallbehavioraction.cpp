@@ -46,7 +46,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QCallBehaviorActionPrivate::QCallBehaviorActionPrivate() :
     behavior(0)
@@ -108,17 +111,19 @@ void QCallBehaviorAction::setBehavior(QBehavior *behavior)
 
 void QCallBehaviorAction::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QCallBehaviorAction")][QString::fromLatin1("behavior")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QCallBehaviorAction")][QString::fromLatin1("behavior")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QCallBehaviorAction")][QString::fromLatin1("behavior")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The invoked behavior. It must be capable of accepting and returning control.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QCallBehaviorAction")][QString::fromLatin1("behavior")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QCallBehaviorAction")][QString::fromLatin1("behavior")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QCallBehaviorAction")][QString::fromLatin1("behavior")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QCallBehaviorAction")][QString::fromLatin1("behavior")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QCallBehaviorAction")][QString::fromLatin1("behavior")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QCallBehaviorAction")][QString::fromLatin1("behavior")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The invoked behavior. It must be capable of accepting and returning control.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QCallBehaviorAction")][QString::fromLatin1("behavior")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QCallBehaviorAction")][QString::fromLatin1("behavior")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QCallBehaviorAction")][QString::fromLatin1("behavior")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QCallAction::setPropertyData();
 }
 
-#include "moc_qcallbehavioraction.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qcallbehavioraction.cpp"
 

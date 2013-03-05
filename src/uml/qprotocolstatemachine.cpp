@@ -46,7 +46,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QProtocolStateMachinePrivate::QProtocolStateMachinePrivate()
 {
@@ -129,17 +132,19 @@ void QProtocolStateMachine::removeConformance(QProtocolConformance *conformance)
 
 void QProtocolStateMachine::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolStateMachine")][QString::fromLatin1("conformance")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolStateMachine")][QString::fromLatin1("conformance")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolStateMachine")][QString::fromLatin1("conformance")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Conformance between protocol state machines.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolStateMachine")][QString::fromLatin1("conformance")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolStateMachine")][QString::fromLatin1("conformance")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolStateMachine")][QString::fromLatin1("conformance")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QProtocolConformance::specificMachine");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QProtocolStateMachine")][QString::fromLatin1("conformance")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QProtocolStateMachine")][QString::fromLatin1("conformance")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QProtocolStateMachine")][QString::fromLatin1("conformance")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Conformance between protocol state machines.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QProtocolStateMachine")][QString::fromLatin1("conformance")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QProtocolStateMachine")][QString::fromLatin1("conformance")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QProtocolStateMachine")][QString::fromLatin1("conformance")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QProtocolConformance::specificMachine");
 
     QStateMachine::setPropertyData();
 }
 
-#include "moc_qprotocolstatemachine.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qprotocolstatemachine.cpp"
 

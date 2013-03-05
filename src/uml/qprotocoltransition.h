@@ -51,7 +51,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -65,9 +68,9 @@ class Q_UML_EXPORT QProtocolTransition : public QTransition
 {
     Q_OBJECT
 
-    Q_PROPERTY(QConstraint * postCondition READ postCondition WRITE setPostCondition)
-    Q_PROPERTY(QSet<QOperation *> referred READ referred STORED false)
-    Q_PROPERTY(QConstraint * preCondition READ preCondition WRITE setPreCondition)
+    Q_PROPERTY(QtUml::QConstraint * postCondition READ postCondition WRITE setPostCondition)
+    Q_PROPERTY(QSet<QtUml::QOperation *> referred READ referred STORED false)
+    Q_PROPERTY(QtUml::QConstraint * preCondition READ preCondition WRITE setPreCondition)
 
     Q_DISABLE_COPY(QProtocolTransition)
     Q_DECLARE_PRIVATE(QProtocolTransition)
@@ -89,7 +92,9 @@ protected:
     explicit QProtocolTransition(QProtocolTransitionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

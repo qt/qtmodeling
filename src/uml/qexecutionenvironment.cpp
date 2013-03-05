@@ -44,7 +44,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QExecutionEnvironmentPrivate::QExecutionEnvironmentPrivate()
 {
@@ -83,7 +86,9 @@ void QExecutionEnvironment::setPropertyData()
     QNode::setPropertyData();
 }
 
-#include "moc_qexecutionenvironment.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qexecutionenvironment.cpp"
 

@@ -48,7 +48,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -61,7 +64,7 @@ class Q_UML_EXPORT QType : public QPackageableElement
 {
     Q_OBJECT
 
-    Q_PROPERTY(QPackage * package READ package WRITE setPackage)
+    Q_PROPERTY(QtUml::QPackage * package READ package WRITE setPackage)
 
     Q_DISABLE_COPY(QType)
     Q_DECLARE_PRIVATE(QType)
@@ -83,7 +86,9 @@ protected:
     explicit QType(QTypePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

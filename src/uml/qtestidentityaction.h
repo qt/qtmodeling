@@ -48,7 +48,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -62,9 +65,9 @@ class Q_UML_EXPORT QTestIdentityAction : public QAction
 {
     Q_OBJECT
 
-    Q_PROPERTY(QInputPin * second READ second WRITE setSecond)
-    Q_PROPERTY(QOutputPin * result READ result WRITE setResult)
-    Q_PROPERTY(QInputPin * first READ first WRITE setFirst)
+    Q_PROPERTY(QtUml::QInputPin * second READ second WRITE setSecond)
+    Q_PROPERTY(QtUml::QOutputPin * result READ result WRITE setResult)
+    Q_PROPERTY(QtUml::QInputPin * first READ first WRITE setFirst)
 
     Q_DISABLE_COPY(QTestIdentityAction)
     Q_DECLARE_PRIVATE(QTestIdentityAction)
@@ -87,7 +90,9 @@ protected:
     explicit QTestIdentityAction(QTestIdentityActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

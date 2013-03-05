@@ -46,7 +46,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QIncludePrivate::QIncludePrivate() :
     includingCase(0),
@@ -176,12 +179,12 @@ void QInclude::setName(QString name)
 /*!
     Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility.
  */
-QtUml::VisibilityKind QInclude::visibility() const
+QtUmlNS::VisibilityKind QInclude::visibility() const
 {
     return (qwrappedobject_cast<const QNamedElement *>(this))->visibility();
 }
 
-void QInclude::setVisibility(QtUml::VisibilityKind visibility)
+void QInclude::setVisibility(QtUmlNS::VisibilityKind visibility)
 {
     (qwrappedobject_cast<QNamedElement *>(this))->setVisibility(visibility);
 }
@@ -310,24 +313,26 @@ void QInclude::setAddition(QUseCase *addition)
 
 void QInclude::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInclude")][QString::fromLatin1("includingCase")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInclude")][QString::fromLatin1("includingCase")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInclude")][QString::fromLatin1("includingCase")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the use case which will include the addition and owns the include relationship.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInclude")][QString::fromLatin1("includingCase")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInclude")][QString::fromLatin1("includingCase")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QDirectedRelationship::sources QNamedElement::namespace");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInclude")][QString::fromLatin1("includingCase")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUseCase::include");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInclude")][QString::fromLatin1("includingCase")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInclude")][QString::fromLatin1("includingCase")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInclude")][QString::fromLatin1("includingCase")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the use case which will include the addition and owns the include relationship.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInclude")][QString::fromLatin1("includingCase")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInclude")][QString::fromLatin1("includingCase")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QDirectedRelationship::sources QNamedElement::namespace");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInclude")][QString::fromLatin1("includingCase")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUseCase::include");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInclude")][QString::fromLatin1("addition")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInclude")][QString::fromLatin1("addition")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInclude")][QString::fromLatin1("addition")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the use case that is to be included.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInclude")][QString::fromLatin1("addition")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInclude")][QString::fromLatin1("addition")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QDirectedRelationship::targets");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInclude")][QString::fromLatin1("addition")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInclude")][QString::fromLatin1("addition")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInclude")][QString::fromLatin1("addition")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInclude")][QString::fromLatin1("addition")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the use case that is to be included.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInclude")][QString::fromLatin1("addition")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInclude")][QString::fromLatin1("addition")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QDirectedRelationship::targets");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInclude")][QString::fromLatin1("addition")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::setPropertyData();
 }
 
-#include "moc_qinclude.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qinclude.cpp"
 

@@ -46,7 +46,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QRemoveVariableValueActionPrivate::QRemoveVariableValueActionPrivate() :
     isRemoveDuplicates(false),
@@ -150,24 +153,26 @@ void QRemoveVariableValueAction::setRemoveAt(QInputPin *removeAt)
 
 void QRemoveVariableValueAction::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QRemoveVariableValueAction")][QString::fromLatin1("isRemoveDuplicates")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QRemoveVariableValueAction")][QString::fromLatin1("isRemoveDuplicates")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QRemoveVariableValueAction")][QString::fromLatin1("isRemoveDuplicates")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies whether to remove duplicates of the value in nonunique variables.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QRemoveVariableValueAction")][QString::fromLatin1("isRemoveDuplicates")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QRemoveVariableValueAction")][QString::fromLatin1("isRemoveDuplicates")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QRemoveVariableValueAction")][QString::fromLatin1("isRemoveDuplicates")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QRemoveVariableValueAction")][QString::fromLatin1("isRemoveDuplicates")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QRemoveVariableValueAction")][QString::fromLatin1("isRemoveDuplicates")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QRemoveVariableValueAction")][QString::fromLatin1("isRemoveDuplicates")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies whether to remove duplicates of the value in nonunique variables.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QRemoveVariableValueAction")][QString::fromLatin1("isRemoveDuplicates")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QRemoveVariableValueAction")][QString::fromLatin1("isRemoveDuplicates")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QRemoveVariableValueAction")][QString::fromLatin1("isRemoveDuplicates")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QRemoveVariableValueAction")][QString::fromLatin1("removeAt")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QRemoveVariableValueAction")][QString::fromLatin1("removeAt")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QRemoveVariableValueAction")][QString::fromLatin1("removeAt")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the position of an existing value to remove in ordered nonunique variables. The type of the pin is UnlimitedNatural, but the value cannot be zero or unlimited.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QRemoveVariableValueAction")][QString::fromLatin1("removeAt")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QRemoveVariableValueAction")][QString::fromLatin1("removeAt")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QAction::inputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QRemoveVariableValueAction")][QString::fromLatin1("removeAt")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QRemoveVariableValueAction")][QString::fromLatin1("removeAt")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QRemoveVariableValueAction")][QString::fromLatin1("removeAt")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QRemoveVariableValueAction")][QString::fromLatin1("removeAt")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the position of an existing value to remove in ordered nonunique variables. The type of the pin is UnlimitedNatural, but the value cannot be zero or unlimited.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QRemoveVariableValueAction")][QString::fromLatin1("removeAt")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QRemoveVariableValueAction")][QString::fromLatin1("removeAt")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QAction::inputs");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QRemoveVariableValueAction")][QString::fromLatin1("removeAt")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWriteVariableAction::setPropertyData();
 }
 
-#include "moc_qremovevariablevalueaction.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qremovevariablevalueaction.cpp"
 

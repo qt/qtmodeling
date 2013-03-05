@@ -44,7 +44,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QDeployedArtifactPrivate::QDeployedArtifactPrivate()
 {
@@ -83,7 +86,9 @@ void QDeployedArtifact::setPropertyData()
     QNamedElement::setPropertyData();
 }
 
-#include "moc_qdeployedartifact.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qdeployedartifact.cpp"
 

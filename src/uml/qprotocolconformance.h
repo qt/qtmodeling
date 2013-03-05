@@ -48,7 +48,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -61,8 +64,8 @@ class Q_UML_EXPORT QProtocolConformance : public QDirectedRelationship
 {
     Q_OBJECT
 
-    Q_PROPERTY(QProtocolStateMachine * specificMachine READ specificMachine WRITE setSpecificMachine)
-    Q_PROPERTY(QProtocolStateMachine * generalMachine READ generalMachine WRITE setGeneralMachine)
+    Q_PROPERTY(QtUml::QProtocolStateMachine * specificMachine READ specificMachine WRITE setSpecificMachine)
+    Q_PROPERTY(QtUml::QProtocolStateMachine * generalMachine READ generalMachine WRITE setGeneralMachine)
 
     Q_DISABLE_COPY(QProtocolConformance)
     Q_DECLARE_PRIVATE(QProtocolConformance)
@@ -83,7 +86,9 @@ protected:
     explicit QProtocolConformance(QProtocolConformancePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

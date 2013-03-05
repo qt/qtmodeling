@@ -46,7 +46,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QSendObjectActionPrivate::QSendObjectActionPrivate() :
     request(0),
@@ -149,24 +152,26 @@ void QSendObjectAction::setTarget(QInputPin *target)
 
 void QSendObjectAction::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QSendObjectAction")][QString::fromLatin1("request")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QSendObjectAction")][QString::fromLatin1("request")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QSendObjectAction")][QString::fromLatin1("request")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The request object, which is transmitted to the target object. The object may be copied in transmission, so identity might not be preserved.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QSendObjectAction")][QString::fromLatin1("request")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QInvocationAction::arguments");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QSendObjectAction")][QString::fromLatin1("request")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QSendObjectAction")][QString::fromLatin1("request")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QSendObjectAction")][QString::fromLatin1("request")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QSendObjectAction")][QString::fromLatin1("request")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QSendObjectAction")][QString::fromLatin1("request")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The request object, which is transmitted to the target object. The object may be copied in transmission, so identity might not be preserved.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QSendObjectAction")][QString::fromLatin1("request")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QInvocationAction::arguments");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QSendObjectAction")][QString::fromLatin1("request")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QSendObjectAction")][QString::fromLatin1("request")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QSendObjectAction")][QString::fromLatin1("target")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QSendObjectAction")][QString::fromLatin1("target")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QSendObjectAction")][QString::fromLatin1("target")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The target object to which the object is sent.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QSendObjectAction")][QString::fromLatin1("target")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QSendObjectAction")][QString::fromLatin1("target")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QAction::inputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QSendObjectAction")][QString::fromLatin1("target")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QSendObjectAction")][QString::fromLatin1("target")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QSendObjectAction")][QString::fromLatin1("target")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QSendObjectAction")][QString::fromLatin1("target")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The target object to which the object is sent.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QSendObjectAction")][QString::fromLatin1("target")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QSendObjectAction")][QString::fromLatin1("target")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QAction::inputs");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QSendObjectAction")][QString::fromLatin1("target")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QInvocationAction::setPropertyData();
 }
 
-#include "moc_qsendobjectaction.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qsendobjectaction.cpp"
 

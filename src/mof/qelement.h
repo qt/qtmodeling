@@ -51,7 +51,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTMOF
+QT_BEGIN_NAMESPACE
+
+namespace QtMof
+{
 
 QT_MODULE(QtMof)
 
@@ -65,9 +68,9 @@ class Q_MOF_EXPORT QElement : public QMofObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(QSet<QElement *> ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(QSet<QComment *> ownedComments READ ownedComments)
+    Q_PROPERTY(QSet<QtMof::QElement *> ownedElements READ ownedElements)
+    Q_PROPERTY(QtMof::QElement * owner READ owner)
+    Q_PROPERTY(QSet<QtMof::QComment *> ownedComments READ ownedComments)
 
     Q_DISABLE_COPY(QElement)
     Q_DECLARE_PRIVATE(QElement)
@@ -100,7 +103,9 @@ private:
     void allOwnedElements(QSet<QElement *> &allOwnedElements_) const;
 };
 
-QT_END_NAMESPACE_QTMOF
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

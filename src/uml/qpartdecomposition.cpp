@@ -44,7 +44,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QPartDecompositionPrivate::QPartDecompositionPrivate()
 {
@@ -83,7 +86,9 @@ void QPartDecomposition::setPropertyData()
     QInteractionUse::setPropertyData();
 }
 
-#include "moc_qpartdecomposition.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qpartdecomposition.cpp"
 

@@ -44,7 +44,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QFunctionBehaviorPrivate::QFunctionBehaviorPrivate()
 {
@@ -83,7 +86,9 @@ void QFunctionBehavior::setPropertyData()
     QOpaqueBehavior::setPropertyData();
 }
 
-#include "moc_qfunctionbehavior.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qfunctionbehavior.cpp"
 

@@ -54,7 +54,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -71,35 +74,35 @@ class Q_UML_EXPORT QInteraction : public QWrappedObject
     Q_OBJECT
 
     Q_PROPERTY(bool isReentrant READ isReentrant WRITE setReentrant RESET unsetReentrant)
-    Q_PROPERTY(QBehavioralFeature * specification READ specification WRITE setSpecification)
-    Q_PROPERTY(QSet<QConstraint *> postconditions READ postconditions)
-    Q_PROPERTY(QSet<QConstraint *> preconditions READ preconditions)
-    Q_PROPERTY(QSet<QBehavior *> redefinedBehaviors READ redefinedBehaviors)
-    Q_PROPERTY(QList<QParameter *> ownedParameters READ ownedParameters)
-    Q_PROPERTY(QSet<QParameterSet *> ownedParameterSets READ ownedParameterSets)
-    Q_PROPERTY(QBehavioredClassifier * context READ context STORED false)
+    Q_PROPERTY(QtUml::QBehavioralFeature * specification READ specification WRITE setSpecification)
+    Q_PROPERTY(QSet<QtUml::QConstraint *> postconditions READ postconditions)
+    Q_PROPERTY(QSet<QtUml::QConstraint *> preconditions READ preconditions)
+    Q_PROPERTY(QSet<QtUml::QBehavior *> redefinedBehaviors READ redefinedBehaviors)
+    Q_PROPERTY(QList<QtUml::QParameter *> ownedParameters READ ownedParameters)
+    Q_PROPERTY(QSet<QtUml::QParameterSet *> ownedParameterSets READ ownedParameterSets)
+    Q_PROPERTY(QtUml::QBehavioredClassifier * context READ context STORED false)
 
-    Q_PROPERTY(QSet<QElement *> ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(QSet<QComment *> ownedComments READ ownedComments)
+    Q_PROPERTY(QSet<QtUml::QElement *> ownedElements READ ownedElements)
+    Q_PROPERTY(QtUml::QElement * owner READ owner)
+    Q_PROPERTY(QSet<QtUml::QComment *> ownedComments READ ownedComments)
 
     Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
+    Q_PROPERTY(QtUmlNS::VisibilityKind visibility READ visibility WRITE setVisibility)
     Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
-    Q_PROPERTY(QSet<QDependency *> clientDependencies READ clientDependencies)
+    Q_PROPERTY(QtUml::QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
+    Q_PROPERTY(QtUml::QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(QSet<QtUml::QDependency *> clientDependencies READ clientDependencies)
 
-    Q_PROPERTY(QSet<QGeneralOrdering *> generalOrderings READ generalOrderings)
-    Q_PROPERTY(QInteraction * enclosingInteraction READ enclosingInteraction WRITE setEnclosingInteraction)
-    Q_PROPERTY(QSet<QLifeline *> covered READ covered)
-    Q_PROPERTY(QInteractionOperand * enclosingOperand READ enclosingOperand WRITE setEnclosingOperand)
+    Q_PROPERTY(QSet<QtUml::QGeneralOrdering *> generalOrderings READ generalOrderings)
+    Q_PROPERTY(QtUml::QInteraction * enclosingInteraction READ enclosingInteraction WRITE setEnclosingInteraction)
+    Q_PROPERTY(QSet<QtUml::QLifeline *> covered READ covered)
+    Q_PROPERTY(QtUml::QInteractionOperand * enclosingOperand READ enclosingOperand WRITE setEnclosingOperand)
 
-    Q_PROPERTY(QSet<QAction *> actions READ actions)
-    Q_PROPERTY(QSet<QMessage *> messages READ messages)
-    Q_PROPERTY(QSet<QGate *> formalGates READ formalGates)
-    Q_PROPERTY(QList<QInteractionFragment *> fragments READ fragments)
-    Q_PROPERTY(QSet<QLifeline *> lifelines READ lifelines)
+    Q_PROPERTY(QSet<QtUml::QAction *> actions READ actions)
+    Q_PROPERTY(QSet<QtUml::QMessage *> messages READ messages)
+    Q_PROPERTY(QSet<QtUml::QGate *> formalGates READ formalGates)
+    Q_PROPERTY(QList<QtUml::QInteractionFragment *> fragments READ fragments)
+    Q_PROPERTY(QSet<QtUml::QLifeline *> lifelines READ lifelines)
 
     Q_DISABLE_COPY(QInteraction)
     Q_DECLARE_PRIVATE(QInteraction)
@@ -143,8 +146,8 @@ public:
     // Attributes from aggregated QNamedElement
     Q_INVOKABLE QString name() const;
     Q_INVOKABLE void setName(QString name);
-    Q_INVOKABLE QtUml::VisibilityKind visibility() const;
-    Q_INVOKABLE void setVisibility(QtUml::VisibilityKind visibility);
+    Q_INVOKABLE QtUmlNS::VisibilityKind visibility() const;
+    Q_INVOKABLE void setVisibility(QtUmlNS::VisibilityKind visibility);
     Q_INVOKABLE QString qualifiedName() const;
 
     // Association ends from aggregated QNamedElement
@@ -194,7 +197,9 @@ private:
     QInteractionFragment *_wrappedInteractionFragment;
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

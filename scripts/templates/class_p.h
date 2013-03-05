@@ -90,7 +90,10 @@ QT_END_NAMESPACE_${currentNamespace.replace('::', '_').upper}
 
 [%- END %]
 
-QT_BEGIN_NAMESPACE_${namespace.replace('/', '_').upper}
+QT_BEGIN_NAMESPACE
+
+namespace ${namespace.replace('/', '_')}
+{
 
 QT_MODULE([% namespace.split('/').0 %])
 
@@ -168,7 +171,9 @@ public:
 [%- END %]
 };
 
-QT_END_NAMESPACE_${namespace.replace('/', '_').upper}
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

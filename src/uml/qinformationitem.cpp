@@ -44,7 +44,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QInformationItemPrivate::QInformationItemPrivate()
 {
@@ -115,17 +118,19 @@ void QInformationItem::removeRepresented(QClassifier *represented)
 
 void QInformationItem::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationItem")][QString::fromLatin1("represented")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationItem")][QString::fromLatin1("represented")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationItem")][QString::fromLatin1("represented")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Determines the classifiers that will specify the structure and nature of the information. An information item represents all its represented classifiers.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationItem")][QString::fromLatin1("represented")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationItem")][QString::fromLatin1("represented")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationItem")][QString::fromLatin1("represented")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInformationItem")][QString::fromLatin1("represented")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInformationItem")][QString::fromLatin1("represented")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInformationItem")][QString::fromLatin1("represented")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Determines the classifiers that will specify the structure and nature of the information. An information item represents all its represented classifiers.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInformationItem")][QString::fromLatin1("represented")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInformationItem")][QString::fromLatin1("represented")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInformationItem")][QString::fromLatin1("represented")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QClassifier::setPropertyData();
 }
 
-#include "moc_qinformationitem.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qinformationitem.cpp"
 

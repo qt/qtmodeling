@@ -54,7 +54,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -70,12 +73,14 @@ public:
     explicit QExpansionRegionPrivate();
     virtual ~QExpansionRegionPrivate();
 
-    QtUml::ExpansionKind mode;
+    QtUmlNS::ExpansionKind mode;
     QSet<QExpansionNode *> inputElements;
     QSet<QExpansionNode *> outputElements;
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

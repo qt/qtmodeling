@@ -51,7 +51,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -65,8 +68,8 @@ class Q_UML_EXPORT QInterruptibleActivityRegion : public QActivityGroup
 {
     Q_OBJECT
 
-    Q_PROPERTY(QSet<QActivityEdge *> interruptingEdges READ interruptingEdges)
-    Q_PROPERTY(QSet<QActivityNode *> nodes READ nodes)
+    Q_PROPERTY(QSet<QtUml::QActivityEdge *> interruptingEdges READ interruptingEdges)
+    Q_PROPERTY(QSet<QtUml::QActivityNode *> nodes READ nodes)
 
     Q_DISABLE_COPY(QInterruptibleActivityRegion)
     Q_DECLARE_PRIVATE(QInterruptibleActivityRegion)
@@ -89,7 +92,9 @@ protected:
     explicit QInterruptibleActivityRegion(QInterruptibleActivityRegionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

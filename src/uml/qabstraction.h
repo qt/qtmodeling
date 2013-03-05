@@ -48,7 +48,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -61,7 +64,7 @@ class Q_UML_EXPORT QAbstraction : public QDependency
 {
     Q_OBJECT
 
-    Q_PROPERTY(QOpaqueExpression * mapping READ mapping WRITE setMapping)
+    Q_PROPERTY(QtUml::QOpaqueExpression * mapping READ mapping WRITE setMapping)
 
     Q_DISABLE_COPY(QAbstraction)
     Q_DECLARE_PRIVATE(QAbstraction)
@@ -80,7 +83,9 @@ protected:
     explicit QAbstraction(QAbstractionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

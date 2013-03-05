@@ -47,7 +47,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QProtocolTransitionPrivate::QProtocolTransitionPrivate() :
     postCondition(0),
@@ -154,31 +157,33 @@ void QProtocolTransition::setPreCondition(QConstraint *preCondition)
 
 void QProtocolTransition::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolTransition")][QString::fromLatin1("postCondition")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolTransition")][QString::fromLatin1("postCondition")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolTransition")][QString::fromLatin1("postCondition")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the post condition of the transition which is the condition that should be obtained once the transition is triggered. This post condition is part of the post condition of the operation connected to the transition.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolTransition")][QString::fromLatin1("postCondition")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolTransition")][QString::fromLatin1("postCondition")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamespace::ownedRules");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolTransition")][QString::fromLatin1("postCondition")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QProtocolTransition")][QString::fromLatin1("postCondition")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QProtocolTransition")][QString::fromLatin1("postCondition")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QProtocolTransition")][QString::fromLatin1("postCondition")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the post condition of the transition which is the condition that should be obtained once the transition is triggered. This post condition is part of the post condition of the operation connected to the transition.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QProtocolTransition")][QString::fromLatin1("postCondition")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QProtocolTransition")][QString::fromLatin1("postCondition")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamespace::ownedRules");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QProtocolTransition")][QString::fromLatin1("postCondition")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolTransition")][QString::fromLatin1("referred")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolTransition")][QString::fromLatin1("referred")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolTransition")][QString::fromLatin1("referred")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("This association refers to the associated operation. It is derived from the operation of the call trigger when applicable.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolTransition")][QString::fromLatin1("referred")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolTransition")][QString::fromLatin1("referred")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolTransition")][QString::fromLatin1("referred")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QProtocolTransition")][QString::fromLatin1("referred")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QProtocolTransition")][QString::fromLatin1("referred")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QProtocolTransition")][QString::fromLatin1("referred")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("This association refers to the associated operation. It is derived from the operation of the call trigger when applicable.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QProtocolTransition")][QString::fromLatin1("referred")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QProtocolTransition")][QString::fromLatin1("referred")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QProtocolTransition")][QString::fromLatin1("referred")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolTransition")][QString::fromLatin1("preCondition")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolTransition")][QString::fromLatin1("preCondition")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolTransition")][QString::fromLatin1("preCondition")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the precondition of the transition. It specifies the condition that should be verified before triggering the transition. This guard condition added to the source state will be evaluated as part of the precondition of the operation referred by the transition if any.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolTransition")][QString::fromLatin1("preCondition")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolTransition")][QString::fromLatin1("preCondition")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QTransition::guard");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QProtocolTransition")][QString::fromLatin1("preCondition")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QProtocolTransition")][QString::fromLatin1("preCondition")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QProtocolTransition")][QString::fromLatin1("preCondition")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QProtocolTransition")][QString::fromLatin1("preCondition")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the precondition of the transition. It specifies the condition that should be verified before triggering the transition. This guard condition added to the source state will be evaluated as part of the precondition of the operation referred by the transition if any.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QProtocolTransition")][QString::fromLatin1("preCondition")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QProtocolTransition")][QString::fromLatin1("preCondition")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QTransition::guard");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QProtocolTransition")][QString::fromLatin1("preCondition")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QTransition::setPropertyData();
 }
 
-#include "moc_qprotocoltransition.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qprotocoltransition.cpp"
 

@@ -51,7 +51,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -65,7 +68,7 @@ class Q_UML_EXPORT QFeature : public QRedefinableElement
     Q_OBJECT
 
     Q_PROPERTY(bool isStatic READ isStatic WRITE setStatic RESET unsetStatic)
-    Q_PROPERTY(QSet<QClassifier *> featuringClassifiers READ featuringClassifiers)
+    Q_PROPERTY(QSet<QtUml::QClassifier *> featuringClassifiers READ featuringClassifiers)
 
     Q_DISABLE_COPY(QFeature)
     Q_DECLARE_PRIVATE(QFeature)
@@ -91,7 +94,9 @@ protected:
     explicit QFeature(QFeaturePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

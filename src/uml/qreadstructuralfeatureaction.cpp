@@ -46,7 +46,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QReadStructuralFeatureActionPrivate::QReadStructuralFeatureActionPrivate() :
     result(0)
@@ -116,17 +119,19 @@ void QReadStructuralFeatureAction::setResult(QOutputPin *result)
 
 void QReadStructuralFeatureAction::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QReadStructuralFeatureAction")][QString::fromLatin1("result")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QReadStructuralFeatureAction")][QString::fromLatin1("result")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QReadStructuralFeatureAction")][QString::fromLatin1("result")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Gives the output pin on which the result is put.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QReadStructuralFeatureAction")][QString::fromLatin1("result")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QReadStructuralFeatureAction")][QString::fromLatin1("result")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QAction::outputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QReadStructuralFeatureAction")][QString::fromLatin1("result")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QReadStructuralFeatureAction")][QString::fromLatin1("result")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QReadStructuralFeatureAction")][QString::fromLatin1("result")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QReadStructuralFeatureAction")][QString::fromLatin1("result")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Gives the output pin on which the result is put.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QReadStructuralFeatureAction")][QString::fromLatin1("result")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QReadStructuralFeatureAction")][QString::fromLatin1("result")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QAction::outputs");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QReadStructuralFeatureAction")][QString::fromLatin1("result")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QStructuralFeatureAction::setPropertyData();
 }
 
-#include "moc_qreadstructuralfeatureaction.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qreadstructuralfeatureaction.cpp"
 

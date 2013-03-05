@@ -53,7 +53,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTMOF
+QT_BEGIN_NAMESPACE
+
+namespace QtMof
+{
 
 QT_MODULE(QtMof)
 
@@ -63,17 +66,17 @@ class Q_MOF_EXPORT QValueSpecification : public QWrappedObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(QSet<QElement *> ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(QSet<QComment *> ownedComments READ ownedComments)
+    Q_PROPERTY(QSet<QtMof::QElement *> ownedElements READ ownedElements)
+    Q_PROPERTY(QtMof::QElement * owner READ owner)
+    Q_PROPERTY(QSet<QtMof::QComment *> ownedComments READ ownedComments)
 
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(QtMof::QNamespace * namespace_ READ namespace_)
 
-    Q_PROPERTY(QtMof::VisibilityKind visibility READ visibility WRITE setVisibility RESET unsetVisibility)
+    Q_PROPERTY(QtMofNS::VisibilityKind visibility READ visibility WRITE setVisibility RESET unsetVisibility)
 
-    Q_PROPERTY(QType * type READ type WRITE setType)
+    Q_PROPERTY(QtMof::QType * type READ type WRITE setType)
 
     Q_DISABLE_COPY(QValueSpecification)
     Q_DECLARE_PRIVATE(QValueSpecification)
@@ -98,8 +101,8 @@ public:
     Q_INVOKABLE QNamespace *namespace_() const;
 
     // Attributes from aggregated QPackageableElement
-    Q_INVOKABLE QtMof::VisibilityKind visibility() const;
-    Q_INVOKABLE void setVisibility(QtMof::VisibilityKind visibility);
+    Q_INVOKABLE QtMofNS::VisibilityKind visibility() const;
+    Q_INVOKABLE void setVisibility(QtMofNS::VisibilityKind visibility);
     Q_INVOKABLE void unsetVisibility();
 
     // Association ends from aggregated QTypedElement
@@ -125,7 +128,9 @@ private:
     QTypedElement *_wrappedTypedElement;
 };
 
-QT_END_NAMESPACE_QTMOF
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

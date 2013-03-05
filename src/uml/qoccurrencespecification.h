@@ -51,7 +51,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -65,9 +68,9 @@ class Q_UML_EXPORT QOccurrenceSpecification : public QInteractionFragment
 {
     Q_OBJECT
 
-    Q_PROPERTY(QLifeline * covered READ covered WRITE setCovered)
-    Q_PROPERTY(QSet<QGeneralOrdering *> toAfter READ toAfter)
-    Q_PROPERTY(QSet<QGeneralOrdering *> toBefore READ toBefore)
+    Q_PROPERTY(QtUml::QLifeline * covered READ covered WRITE setCovered)
+    Q_PROPERTY(QSet<QtUml::QGeneralOrdering *> toAfter READ toAfter)
+    Q_PROPERTY(QSet<QtUml::QGeneralOrdering *> toBefore READ toBefore)
 
     Q_DISABLE_COPY(QOccurrenceSpecification)
     Q_DECLARE_PRIVATE(QOccurrenceSpecification)
@@ -92,7 +95,9 @@ protected:
     explicit QOccurrenceSpecification(QOccurrenceSpecificationPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

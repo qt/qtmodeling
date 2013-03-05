@@ -46,7 +46,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QDurationPrivate::QDurationPrivate() :
     expr(0)
@@ -147,24 +150,26 @@ void QDuration::removeObservation(QObservation *observation)
 
 void QDuration::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuration")][QString::fromLatin1("expr")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuration")][QString::fromLatin1("expr")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuration")][QString::fromLatin1("expr")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The value of the Duration.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuration")][QString::fromLatin1("expr")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuration")][QString::fromLatin1("expr")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuration")][QString::fromLatin1("expr")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QDuration")][QString::fromLatin1("expr")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QDuration")][QString::fromLatin1("expr")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QDuration")][QString::fromLatin1("expr")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The value of the Duration.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QDuration")][QString::fromLatin1("expr")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QDuration")][QString::fromLatin1("expr")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QDuration")][QString::fromLatin1("expr")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuration")][QString::fromLatin1("observations")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuration")][QString::fromLatin1("observations")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuration")][QString::fromLatin1("observations")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Refers to the time and duration observations that are involved in expr.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuration")][QString::fromLatin1("observations")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuration")][QString::fromLatin1("observations")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuration")][QString::fromLatin1("observations")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QDuration")][QString::fromLatin1("observations")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QDuration")][QString::fromLatin1("observations")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QDuration")][QString::fromLatin1("observations")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Refers to the time and duration observations that are involved in expr.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QDuration")][QString::fromLatin1("observations")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QDuration")][QString::fromLatin1("observations")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QDuration")][QString::fromLatin1("observations")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QValueSpecification::setPropertyData();
 }
 
-#include "moc_qduration.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qduration.cpp"
 

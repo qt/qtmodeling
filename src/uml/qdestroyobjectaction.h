@@ -48,7 +48,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -63,7 +66,7 @@ class Q_UML_EXPORT QDestroyObjectAction : public QAction
 
     Q_PROPERTY(bool isDestroyLinks READ isDestroyLinks WRITE setDestroyLinks RESET unsetDestroyLinks)
     Q_PROPERTY(bool isDestroyOwnedObjects READ isDestroyOwnedObjects WRITE setDestroyOwnedObjects RESET unsetDestroyOwnedObjects)
-    Q_PROPERTY(QInputPin * target READ target WRITE setTarget)
+    Q_PROPERTY(QtUml::QInputPin * target READ target WRITE setTarget)
 
     Q_DISABLE_COPY(QDestroyObjectAction)
     Q_DECLARE_PRIVATE(QDestroyObjectAction)
@@ -90,7 +93,9 @@ protected:
     explicit QDestroyObjectAction(QDestroyObjectActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

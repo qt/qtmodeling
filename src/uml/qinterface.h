@@ -54,7 +54,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -70,12 +73,12 @@ class Q_UML_EXPORT QInterface : public QClassifier
 {
     Q_OBJECT
 
-    Q_PROPERTY(QProtocolStateMachine * protocol READ protocol WRITE setProtocol)
-    Q_PROPERTY(QSet<QInterface *> redefinedInterfaces READ redefinedInterfaces)
-    Q_PROPERTY(QSet<QReception *> ownedReceptions READ ownedReceptions)
-    Q_PROPERTY(QList<QOperation *> ownedOperations READ ownedOperations)
-    Q_PROPERTY(QList<QClassifier *> nestedClassifiers READ nestedClassifiers)
-    Q_PROPERTY(QList<QProperty *> ownedAttributes READ ownedAttributes)
+    Q_PROPERTY(QtUml::QProtocolStateMachine * protocol READ protocol WRITE setProtocol)
+    Q_PROPERTY(QSet<QtUml::QInterface *> redefinedInterfaces READ redefinedInterfaces)
+    Q_PROPERTY(QSet<QtUml::QReception *> ownedReceptions READ ownedReceptions)
+    Q_PROPERTY(QList<QtUml::QOperation *> ownedOperations READ ownedOperations)
+    Q_PROPERTY(QList<QtUml::QClassifier *> nestedClassifiers READ nestedClassifiers)
+    Q_PROPERTY(QList<QtUml::QProperty *> ownedAttributes READ ownedAttributes)
 
     Q_DISABLE_COPY(QInterface)
     Q_DECLARE_PRIVATE(QInterface)
@@ -113,7 +116,9 @@ protected:
     explicit QInterface(QInterfacePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

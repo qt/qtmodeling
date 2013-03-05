@@ -47,11 +47,11 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTMOF
+QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtMof)
 
-class Q_MOF_EXPORT QtMof : public QObject
+class Q_MOF_EXPORT QtMofNS : public QObject
 {
     Q_OBJECT
 
@@ -81,11 +81,9 @@ public:
         VisibilityPackage
     };
 
-private:
-    explicit QtMof();
 };
 
-QT_END_NAMESPACE_QTMOF
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

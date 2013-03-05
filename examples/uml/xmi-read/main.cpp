@@ -11,7 +11,7 @@ int main ()
         return 1;
     }
 
-    QXmiReader reader;
+    QXmiReader reader(0, true);
     QWrappedObject *rootElement = reader.readFile(&file);
     if (rootElement)
         qDebug() << "Successfully read object with name" << rootElement->objectName();

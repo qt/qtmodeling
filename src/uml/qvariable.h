@@ -50,7 +50,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -65,33 +68,33 @@ class Q_UML_EXPORT QVariable : public QWrappedObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(QSet<QElement *> ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(QSet<QComment *> ownedComments READ ownedComments)
+    Q_PROPERTY(QSet<QtUml::QElement *> ownedElements READ ownedElements)
+    Q_PROPERTY(QtUml::QElement * owner READ owner)
+    Q_PROPERTY(QSet<QtUml::QComment *> ownedComments READ ownedComments)
 
     Q_PROPERTY(qint32 upper READ upper WRITE setUpper RESET unsetUpper STORED false)
     Q_PROPERTY(bool isUnique READ isUnique WRITE setUnique RESET unsetUnique)
     Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered RESET unsetOrdered)
     Q_PROPERTY(qint32 lower READ lower WRITE setLower STORED false)
-    Q_PROPERTY(QValueSpecification * upperValue READ upperValue WRITE setUpperValue)
-    Q_PROPERTY(QValueSpecification * lowerValue READ lowerValue WRITE setLowerValue)
+    Q_PROPERTY(QtUml::QValueSpecification * upperValue READ upperValue WRITE setUpperValue)
+    Q_PROPERTY(QtUml::QValueSpecification * lowerValue READ lowerValue WRITE setLowerValue)
 
     Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
+    Q_PROPERTY(QtUmlNS::VisibilityKind visibility READ visibility WRITE setVisibility)
     Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
-    Q_PROPERTY(QSet<QDependency *> clientDependencies READ clientDependencies)
+    Q_PROPERTY(QtUml::QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
+    Q_PROPERTY(QtUml::QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(QSet<QtUml::QDependency *> clientDependencies READ clientDependencies)
 
-    Q_PROPERTY(QType * type READ type WRITE setType)
+    Q_PROPERTY(QtUml::QType * type READ type WRITE setType)
 
-    Q_PROPERTY(QTemplateParameter * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
+    Q_PROPERTY(QtUml::QTemplateParameter * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
 
-    Q_PROPERTY(QList<QConnectorEnd *> ends READ ends STORED false)
-    Q_PROPERTY(QConnectableElementTemplateParameter * templateParameter READ templateParameter WRITE setTemplateParameter)
+    Q_PROPERTY(QList<QtUml::QConnectorEnd *> ends READ ends STORED false)
+    Q_PROPERTY(QtUml::QConnectableElementTemplateParameter * templateParameter READ templateParameter WRITE setTemplateParameter)
 
-    Q_PROPERTY(QStructuredActivityNode * scope READ scope WRITE setScope)
-    Q_PROPERTY(QActivity * activityScope READ activityScope WRITE setActivityScope)
+    Q_PROPERTY(QtUml::QStructuredActivityNode * scope READ scope WRITE setScope)
+    Q_PROPERTY(QtUml::QActivity * activityScope READ activityScope WRITE setActivityScope)
 
     Q_DISABLE_COPY(QVariable)
     Q_DECLARE_PRIVATE(QVariable)
@@ -129,8 +132,8 @@ public:
     // Attributes from aggregated QNamedElement
     Q_INVOKABLE QString name() const;
     Q_INVOKABLE void setName(QString name);
-    Q_INVOKABLE QtUml::VisibilityKind visibility() const;
-    Q_INVOKABLE void setVisibility(QtUml::VisibilityKind visibility);
+    Q_INVOKABLE QtUmlNS::VisibilityKind visibility() const;
+    Q_INVOKABLE void setVisibility(QtUmlNS::VisibilityKind visibility);
     Q_INVOKABLE QString qualifiedName() const;
 
     // Association ends from aggregated QNamedElement
@@ -173,7 +176,9 @@ private:
     QConnectableElement *_wrappedConnectableElement;
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

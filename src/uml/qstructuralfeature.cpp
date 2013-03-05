@@ -44,7 +44,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QStructuralFeaturePrivate::QStructuralFeaturePrivate() :
     isReadOnly(false)
@@ -143,12 +146,12 @@ void QStructuralFeature::setName(QString name)
 /*!
     Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility.
  */
-QtUml::VisibilityKind QStructuralFeature::visibility() const
+QtUmlNS::VisibilityKind QStructuralFeature::visibility() const
 {
     return (qwrappedobject_cast<const QNamedElement *>(this))->visibility();
 }
 
-void QStructuralFeature::setVisibility(QtUml::VisibilityKind visibility)
+void QStructuralFeature::setVisibility(QtUmlNS::VisibilityKind visibility)
 {
     (qwrappedobject_cast<QNamedElement *>(this))->setVisibility(visibility);
 }
@@ -443,17 +446,19 @@ void QStructuralFeature::unsetReadOnly()
 
 void QStructuralFeature::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuralFeature")][QString::fromLatin1("isReadOnly")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuralFeature")][QString::fromLatin1("isReadOnly")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuralFeature")][QString::fromLatin1("isReadOnly")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("States whether the feature's value may be modified by a client.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuralFeature")][QString::fromLatin1("isReadOnly")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuralFeature")][QString::fromLatin1("isReadOnly")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuralFeature")][QString::fromLatin1("isReadOnly")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStructuralFeature")][QString::fromLatin1("isReadOnly")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStructuralFeature")][QString::fromLatin1("isReadOnly")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStructuralFeature")][QString::fromLatin1("isReadOnly")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("States whether the feature's value may be modified by a client.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStructuralFeature")][QString::fromLatin1("isReadOnly")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStructuralFeature")][QString::fromLatin1("isReadOnly")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStructuralFeature")][QString::fromLatin1("isReadOnly")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::setPropertyData();
 }
 
-#include "moc_qstructuralfeature.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qstructuralfeature.cpp"
 

@@ -44,7 +44,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QLiteralNullPrivate::QLiteralNullPrivate()
 {
@@ -103,7 +106,9 @@ void QLiteralNull::setPropertyData()
     QLiteralSpecification::setPropertyData();
 }
 
-#include "moc_qliteralnull.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qliteralnull.cpp"
 

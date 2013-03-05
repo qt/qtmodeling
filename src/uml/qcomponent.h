@@ -51,7 +51,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -68,10 +71,10 @@ class Q_UML_EXPORT QComponent : public QClass
     Q_OBJECT
 
     Q_PROPERTY(bool isIndirectlyInstantiated READ isIndirectlyInstantiated WRITE setIndirectlyInstantiated RESET unsetIndirectlyInstantiated)
-    Q_PROPERTY(QSet<QComponentRealization *> realizations READ realizations)
-    Q_PROPERTY(QSet<QInterface *> required READ required STORED false)
-    Q_PROPERTY(QSet<QInterface *> provided READ provided STORED false)
-    Q_PROPERTY(QSet<QPackageableElement *> packagedElements READ packagedElements)
+    Q_PROPERTY(QSet<QtUml::QComponentRealization *> realizations READ realizations)
+    Q_PROPERTY(QSet<QtUml::QInterface *> required READ required STORED false)
+    Q_PROPERTY(QSet<QtUml::QInterface *> provided READ provided STORED false)
+    Q_PROPERTY(QSet<QtUml::QPackageableElement *> packagedElements READ packagedElements)
 
     Q_DISABLE_COPY(QComponent)
     Q_DECLARE_PRIVATE(QComponent)
@@ -105,7 +108,9 @@ protected:
     explicit QComponent(QComponentPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

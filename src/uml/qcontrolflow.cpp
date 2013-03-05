@@ -44,7 +44,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QControlFlowPrivate::QControlFlowPrivate()
 {
@@ -83,7 +86,9 @@ void QControlFlow::setPropertyData()
     QActivityEdge::setPropertyData();
 }
 
-#include "moc_qcontrolflow.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qcontrolflow.cpp"
 

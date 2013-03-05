@@ -52,7 +52,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -66,12 +69,12 @@ class Q_UML_EXPORT QClause : public QElement
 {
     Q_OBJECT
 
-    Q_PROPERTY(QSet<QClause *> successorClauses READ successorClauses)
-    Q_PROPERTY(QOutputPin * decider READ decider WRITE setDecider)
-    Q_PROPERTY(QSet<QClause *> predecessorClauses READ predecessorClauses)
-    Q_PROPERTY(QList<QOutputPin *> bodyOutputs READ bodyOutputs)
-    Q_PROPERTY(QSet<QExecutableNode *> bodies READ bodies)
-    Q_PROPERTY(QSet<QExecutableNode *> tests READ tests)
+    Q_PROPERTY(QSet<QtUml::QClause *> successorClauses READ successorClauses)
+    Q_PROPERTY(QtUml::QOutputPin * decider READ decider WRITE setDecider)
+    Q_PROPERTY(QSet<QtUml::QClause *> predecessorClauses READ predecessorClauses)
+    Q_PROPERTY(QList<QtUml::QOutputPin *> bodyOutputs READ bodyOutputs)
+    Q_PROPERTY(QSet<QtUml::QExecutableNode *> bodies READ bodies)
+    Q_PROPERTY(QSet<QtUml::QExecutableNode *> tests READ tests)
 
     Q_DISABLE_COPY(QClause)
     Q_DECLARE_PRIVATE(QClause)
@@ -105,7 +108,9 @@ protected:
     explicit QClause(QClausePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

@@ -46,7 +46,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QDependencyPrivate::QDependencyPrivate()
 {
@@ -227,19 +230,19 @@ void QDependency::removeClientDependency(QDependency *clientDependency)
 /*!
     Indicates that packageable elements must always have a visibility, i.e., visibility is not optional.
  */
-QtUml::VisibilityKind QDependency::visibility() const
+QtUmlNS::VisibilityKind QDependency::visibility() const
 {
     return (qwrappedobject_cast<const QPackageableElement *>(this))->visibility();
 }
 
-void QDependency::setVisibility(QtUml::VisibilityKind visibility)
+void QDependency::setVisibility(QtUmlNS::VisibilityKind visibility)
 {
     (qwrappedobject_cast<QPackageableElement *>(this))->setVisibility(visibility);
 }
 
 void QDependency::unsetVisibility()
 {
-    setVisibility(QtUml::VisibilityPublic);
+    setVisibility(QtUmlNS::VisibilityPublic);
     Q_D(QDependency);
     d->modifiedResettableProperties.removeAll(QString::fromLatin1("visibility"));
 }
@@ -363,24 +366,26 @@ void QDependency::removeSupplier(QNamedElement *supplier)
 
 void QDependency::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDependency")][QString::fromLatin1("clients")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDependency")][QString::fromLatin1("clients")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDependency")][QString::fromLatin1("clients")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The element(s) dependent on the supplier element(s). In some cases (such as a Trace Abstraction) the assignment of direction (that is, the designation of the client element) is at the discretion of the modeler, and is a stipulation.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDependency")][QString::fromLatin1("clients")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDependency")][QString::fromLatin1("clients")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QDirectedRelationship::sources");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDependency")][QString::fromLatin1("clients")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QNamedElement::clientDependency");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QDependency")][QString::fromLatin1("clients")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QDependency")][QString::fromLatin1("clients")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QDependency")][QString::fromLatin1("clients")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The element(s) dependent on the supplier element(s). In some cases (such as a Trace Abstraction) the assignment of direction (that is, the designation of the client element) is at the discretion of the modeler, and is a stipulation.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QDependency")][QString::fromLatin1("clients")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QDependency")][QString::fromLatin1("clients")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QDirectedRelationship::sources");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QDependency")][QString::fromLatin1("clients")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QNamedElement::clientDependency");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDependency")][QString::fromLatin1("suppliers")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDependency")][QString::fromLatin1("suppliers")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDependency")][QString::fromLatin1("suppliers")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The element(s) independent of the client element(s), in the same respect and the same dependency relationship. In some directed dependency relationships (such as Refinement Abstractions), a common convention in the domain of class-based OO software is to put the more abstract element in this role. Despite this convention, users of UML may stipulate a sense of dependency suitable for their domain, which makes a more abstract element dependent on that which is more specific.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDependency")][QString::fromLatin1("suppliers")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDependency")][QString::fromLatin1("suppliers")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QDirectedRelationship::targets");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDependency")][QString::fromLatin1("suppliers")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QDependency")][QString::fromLatin1("suppliers")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QDependency")][QString::fromLatin1("suppliers")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QDependency")][QString::fromLatin1("suppliers")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The element(s) independent of the client element(s), in the same respect and the same dependency relationship. In some directed dependency relationships (such as Refinement Abstractions), a common convention in the domain of class-based OO software is to put the more abstract element in this role. Despite this convention, users of UML may stipulate a sense of dependency suitable for their domain, which makes a more abstract element dependent on that which is more specific.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QDependency")][QString::fromLatin1("suppliers")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QDependency")][QString::fromLatin1("suppliers")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QDirectedRelationship::targets");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QDependency")][QString::fromLatin1("suppliers")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::setPropertyData();
 }
 
-#include "moc_qdependency.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qdependency.cpp"
 

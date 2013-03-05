@@ -56,7 +56,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -78,7 +81,7 @@ public:
     explicit QTransitionPrivate();
     virtual ~QTransitionPrivate();
 
-    QtUml::TransitionKind kind;
+    QtUmlNS::TransitionKind kind;
     QConstraint *guard;
     QVertex *target;
     QBehavior *effect;
@@ -88,7 +91,9 @@ public:
     QSet<QTrigger *> triggers;
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

@@ -44,7 +44,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QGatePrivate::QGatePrivate()
 {
@@ -83,7 +86,9 @@ void QGate::setPropertyData()
     QMessageEnd::setPropertyData();
 }
 
-#include "moc_qgate.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qgate.cpp"
 

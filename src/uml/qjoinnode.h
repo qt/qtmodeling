@@ -48,7 +48,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -62,7 +65,7 @@ class Q_UML_EXPORT QJoinNode : public QControlNode
     Q_OBJECT
 
     Q_PROPERTY(bool isCombineDuplicate READ isCombineDuplicate WRITE setCombineDuplicate RESET unsetCombineDuplicate)
-    Q_PROPERTY(QValueSpecification * joinSpec READ joinSpec WRITE setJoinSpec)
+    Q_PROPERTY(QtUml::QValueSpecification * joinSpec READ joinSpec WRITE setJoinSpec)
 
     Q_DISABLE_COPY(QJoinNode)
     Q_DECLARE_PRIVATE(QJoinNode)
@@ -86,7 +89,9 @@ protected:
     explicit QJoinNode(QJoinNodePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

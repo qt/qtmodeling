@@ -48,7 +48,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -61,7 +64,7 @@ class Q_UML_EXPORT QRaiseExceptionAction : public QAction
 {
     Q_OBJECT
 
-    Q_PROPERTY(QInputPin * exception READ exception WRITE setException)
+    Q_PROPERTY(QtUml::QInputPin * exception READ exception WRITE setException)
 
     Q_DISABLE_COPY(QRaiseExceptionAction)
     Q_DECLARE_PRIVATE(QRaiseExceptionAction)
@@ -80,7 +83,9 @@ protected:
     explicit QRaiseExceptionAction(QRaiseExceptionActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

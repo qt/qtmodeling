@@ -48,7 +48,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -63,8 +66,8 @@ class Q_UML_EXPORT QProfileApplication : public QDirectedRelationship
     Q_OBJECT
 
     Q_PROPERTY(bool isStrict READ isStrict WRITE setStrict RESET unsetStrict)
-    Q_PROPERTY(QPackage * applyingPackage READ applyingPackage WRITE setApplyingPackage)
-    Q_PROPERTY(QProfile * appliedProfile READ appliedProfile WRITE setAppliedProfile)
+    Q_PROPERTY(QtUml::QPackage * applyingPackage READ applyingPackage WRITE setApplyingPackage)
+    Q_PROPERTY(QtUml::QProfile * appliedProfile READ appliedProfile WRITE setAppliedProfile)
 
     Q_DISABLE_COPY(QProfileApplication)
     Q_DECLARE_PRIVATE(QProfileApplication)
@@ -90,7 +93,9 @@ protected:
     explicit QProfileApplication(QProfileApplicationPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

@@ -56,7 +56,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -75,36 +78,36 @@ class Q_UML_EXPORT QTransition : public QWrappedObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(QSet<QElement *> ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(QSet<QComment *> ownedComments READ ownedComments)
+    Q_PROPERTY(QSet<QtUml::QElement *> ownedElements READ ownedElements)
+    Q_PROPERTY(QtUml::QElement * owner READ owner)
+    Q_PROPERTY(QSet<QtUml::QComment *> ownedComments READ ownedComments)
 
     Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
+    Q_PROPERTY(QtUmlNS::VisibilityKind visibility READ visibility WRITE setVisibility)
     Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
-    Q_PROPERTY(QSet<QDependency *> clientDependencies READ clientDependencies)
+    Q_PROPERTY(QtUml::QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
+    Q_PROPERTY(QtUml::QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(QSet<QtUml::QDependency *> clientDependencies READ clientDependencies)
 
     Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
-    Q_PROPERTY(QSet<QRedefinableElement *> redefinedElements READ redefinedElements)
+    Q_PROPERTY(QSet<QtUml::QRedefinableElement *> redefinedElements READ redefinedElements)
 
-    Q_PROPERTY(QSet<QPackageImport *> packageImports READ packageImports)
-    Q_PROPERTY(QSet<QNamedElement *> members READ members)
-    Q_PROPERTY(QSet<QPackageableElement *> importedMembers READ importedMembers STORED false)
-    Q_PROPERTY(QSet<QElementImport *> elementImports READ elementImports)
-    Q_PROPERTY(QSet<QConstraint *> ownedRules READ ownedRules)
-    Q_PROPERTY(QSet<QNamedElement *> ownedMembers READ ownedMembers)
+    Q_PROPERTY(QSet<QtUml::QPackageImport *> packageImports READ packageImports)
+    Q_PROPERTY(QSet<QtUml::QNamedElement *> members READ members)
+    Q_PROPERTY(QSet<QtUml::QPackageableElement *> importedMembers READ importedMembers STORED false)
+    Q_PROPERTY(QSet<QtUml::QElementImport *> elementImports READ elementImports)
+    Q_PROPERTY(QSet<QtUml::QConstraint *> ownedRules READ ownedRules)
+    Q_PROPERTY(QSet<QtUml::QNamedElement *> ownedMembers READ ownedMembers)
 
-    Q_PROPERTY(QtUml::TransitionKind kind READ kind WRITE setKind RESET unsetKind)
-    Q_PROPERTY(QConstraint * guard READ guard WRITE setGuard)
-    Q_PROPERTY(QVertex * target READ target WRITE setTarget)
-    Q_PROPERTY(QBehavior * effect READ effect WRITE setEffect)
-    Q_PROPERTY(QRegion * container READ container WRITE setContainer)
-    Q_PROPERTY(QClassifier * redefinitionContext READ redefinitionContext STORED false)
-    Q_PROPERTY(QTransition * redefinedTransition READ redefinedTransition WRITE setRedefinedTransition)
-    Q_PROPERTY(QVertex * source READ source WRITE setSource)
-    Q_PROPERTY(QSet<QTrigger *> triggers READ triggers)
+    Q_PROPERTY(QtUmlNS::TransitionKind kind READ kind WRITE setKind RESET unsetKind)
+    Q_PROPERTY(QtUml::QConstraint * guard READ guard WRITE setGuard)
+    Q_PROPERTY(QtUml::QVertex * target READ target WRITE setTarget)
+    Q_PROPERTY(QtUml::QBehavior * effect READ effect WRITE setEffect)
+    Q_PROPERTY(QtUml::QRegion * container READ container WRITE setContainer)
+    Q_PROPERTY(QtUml::QClassifier * redefinitionContext READ redefinitionContext STORED false)
+    Q_PROPERTY(QtUml::QTransition * redefinedTransition READ redefinedTransition WRITE setRedefinedTransition)
+    Q_PROPERTY(QtUml::QVertex * source READ source WRITE setSource)
+    Q_PROPERTY(QSet<QtUml::QTrigger *> triggers READ triggers)
 
     Q_DISABLE_COPY(QTransition)
     Q_DECLARE_PRIVATE(QTransition)
@@ -123,8 +126,8 @@ public:
     // Attributes from aggregated QNamedElement
     Q_INVOKABLE QString name() const;
     Q_INVOKABLE void setName(QString name);
-    Q_INVOKABLE QtUml::VisibilityKind visibility() const;
-    Q_INVOKABLE void setVisibility(QtUml::VisibilityKind visibility);
+    Q_INVOKABLE QtUmlNS::VisibilityKind visibility() const;
+    Q_INVOKABLE void setVisibility(QtUmlNS::VisibilityKind visibility);
     Q_INVOKABLE QString qualifiedName() const;
 
     // Association ends from aggregated QNamedElement
@@ -158,8 +161,8 @@ public:
     Q_INVOKABLE QSet<QNamedElement *> ownedMembers() const;
 
     // Attributes from QTransition
-    Q_INVOKABLE QtUml::TransitionKind kind() const;
-    Q_INVOKABLE void setKind(QtUml::TransitionKind kind);
+    Q_INVOKABLE QtUmlNS::TransitionKind kind() const;
+    Q_INVOKABLE void setKind(QtUmlNS::TransitionKind kind);
     Q_INVOKABLE void unsetKind();
 
     // Association ends from QTransition
@@ -194,7 +197,9 @@ private:
     QNamespace *_wrappedNamespace;
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

@@ -44,7 +44,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QContinuationPrivate::QContinuationPrivate() :
     setting(true)
@@ -114,17 +117,19 @@ void QContinuation::unsetSetting()
 
 void QContinuation::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QContinuation")][QString::fromLatin1("setting")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QContinuation")][QString::fromLatin1("setting")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QContinuation")][QString::fromLatin1("setting")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("True: when the Continuation is at the end of the enclosing InteractionFragment and False when it is in the beginning.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QContinuation")][QString::fromLatin1("setting")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QContinuation")][QString::fromLatin1("setting")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QContinuation")][QString::fromLatin1("setting")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QContinuation")][QString::fromLatin1("setting")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QContinuation")][QString::fromLatin1("setting")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QContinuation")][QString::fromLatin1("setting")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("True: when the Continuation is at the end of the enclosing InteractionFragment and False when it is in the beginning.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QContinuation")][QString::fromLatin1("setting")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QContinuation")][QString::fromLatin1("setting")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QContinuation")][QString::fromLatin1("setting")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QInteractionFragment::setPropertyData();
 }
 
-#include "moc_qcontinuation.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qcontinuation.cpp"
 

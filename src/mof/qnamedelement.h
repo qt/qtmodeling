@@ -55,7 +55,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTMOF
+QT_BEGIN_NAMESPACE
+
+namespace QtMof
+{
 
 QT_MODULE(QtMof)
 
@@ -69,9 +72,9 @@ class Q_MOF_EXPORT QNamedElement : public QElement
     Q_OBJECT
 
     Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QtMof::VisibilityKind visibility READ visibility WRITE setVisibility)
+    Q_PROPERTY(QtMofNS::VisibilityKind visibility READ visibility WRITE setVisibility)
     Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(QtMof::QNamespace * namespace_ READ namespace_)
 
     Q_DISABLE_COPY(QNamedElement)
     Q_DECLARE_PRIVATE(QNamedElement)
@@ -83,8 +86,8 @@ public:
     // Attributes from QNamedElement
     Q_INVOKABLE QString name() const;
     Q_INVOKABLE void setName(QString name);
-    Q_INVOKABLE QtMof::VisibilityKind visibility() const;
-    Q_INVOKABLE void setVisibility(QtMof::VisibilityKind visibility);
+    Q_INVOKABLE QtMofNS::VisibilityKind visibility() const;
+    Q_INVOKABLE void setVisibility(QtMofNS::VisibilityKind visibility);
     Q_INVOKABLE QString qualifiedName() const;
 
     // Association ends from QNamedElement
@@ -104,7 +107,9 @@ protected:
     explicit QNamedElement(QNamedElementPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTMOF
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

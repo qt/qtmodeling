@@ -53,7 +53,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -70,10 +73,10 @@ class Q_UML_EXPORT QPort : public QProperty
     Q_PROPERTY(bool isConjugated READ isConjugated WRITE setConjugated RESET unsetConjugated)
     Q_PROPERTY(bool isBehavior READ isBehavior WRITE setBehavior RESET unsetBehavior)
     Q_PROPERTY(bool isService READ isService WRITE setService RESET unsetService)
-    Q_PROPERTY(QProtocolStateMachine * protocol READ protocol WRITE setProtocol)
-    Q_PROPERTY(QSet<QInterface *> required READ required STORED false)
-    Q_PROPERTY(QSet<QInterface *> provided READ provided STORED false)
-    Q_PROPERTY(QSet<QPort *> redefinedPorts READ redefinedPorts)
+    Q_PROPERTY(QtUml::QProtocolStateMachine * protocol READ protocol WRITE setProtocol)
+    Q_PROPERTY(QSet<QtUml::QInterface *> required READ required STORED false)
+    Q_PROPERTY(QSet<QtUml::QInterface *> provided READ provided STORED false)
+    Q_PROPERTY(QSet<QtUml::QPort *> redefinedPorts READ redefinedPorts)
 
     Q_DISABLE_COPY(QPort)
     Q_DECLARE_PRIVATE(QPort)
@@ -112,7 +115,9 @@ protected:
     explicit QPort(QPortPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

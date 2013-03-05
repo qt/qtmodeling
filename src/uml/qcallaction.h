@@ -51,7 +51,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -65,7 +68,7 @@ class Q_UML_EXPORT QCallAction : public QInvocationAction
     Q_OBJECT
 
     Q_PROPERTY(bool isSynchronous READ isSynchronous WRITE setSynchronous RESET unsetSynchronous)
-    Q_PROPERTY(QList<QOutputPin *> results READ results)
+    Q_PROPERTY(QList<QtUml::QOutputPin *> results READ results)
 
     Q_DISABLE_COPY(QCallAction)
     Q_DECLARE_PRIVATE(QCallAction)
@@ -90,7 +93,9 @@ protected:
     explicit QCallAction(QCallActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

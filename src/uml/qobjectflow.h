@@ -48,7 +48,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -63,8 +66,8 @@ class Q_UML_EXPORT QObjectFlow : public QActivityEdge
 
     Q_PROPERTY(bool isMultireceive READ isMultireceive WRITE setMultireceive RESET unsetMultireceive)
     Q_PROPERTY(bool isMulticast READ isMulticast WRITE setMulticast RESET unsetMulticast)
-    Q_PROPERTY(QBehavior * selection READ selection WRITE setSelection)
-    Q_PROPERTY(QBehavior * transformation READ transformation WRITE setTransformation)
+    Q_PROPERTY(QtUml::QBehavior * selection READ selection WRITE setSelection)
+    Q_PROPERTY(QtUml::QBehavior * transformation READ transformation WRITE setTransformation)
 
     Q_DISABLE_COPY(QObjectFlow)
     Q_DECLARE_PRIVATE(QObjectFlow)
@@ -93,7 +96,9 @@ protected:
     explicit QObjectFlow(QObjectFlowPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

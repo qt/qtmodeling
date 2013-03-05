@@ -58,7 +58,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -73,39 +76,39 @@ class Q_UML_EXPORT QParameter : public QWrappedObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(QSet<QElement *> ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(QSet<QComment *> ownedComments READ ownedComments)
+    Q_PROPERTY(QSet<QtUml::QElement *> ownedElements READ ownedElements)
+    Q_PROPERTY(QtUml::QElement * owner READ owner)
+    Q_PROPERTY(QSet<QtUml::QComment *> ownedComments READ ownedComments)
 
     Q_PROPERTY(qint32 upper READ upper WRITE setUpper RESET unsetUpper STORED false)
     Q_PROPERTY(bool isUnique READ isUnique WRITE setUnique RESET unsetUnique)
     Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered RESET unsetOrdered)
     Q_PROPERTY(qint32 lower READ lower WRITE setLower STORED false)
-    Q_PROPERTY(QValueSpecification * upperValue READ upperValue WRITE setUpperValue)
-    Q_PROPERTY(QValueSpecification * lowerValue READ lowerValue WRITE setLowerValue)
+    Q_PROPERTY(QtUml::QValueSpecification * upperValue READ upperValue WRITE setUpperValue)
+    Q_PROPERTY(QtUml::QValueSpecification * lowerValue READ lowerValue WRITE setLowerValue)
 
     Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
+    Q_PROPERTY(QtUmlNS::VisibilityKind visibility READ visibility WRITE setVisibility)
     Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
-    Q_PROPERTY(QSet<QDependency *> clientDependencies READ clientDependencies)
+    Q_PROPERTY(QtUml::QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
+    Q_PROPERTY(QtUml::QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(QSet<QtUml::QDependency *> clientDependencies READ clientDependencies)
 
-    Q_PROPERTY(QType * type READ type WRITE setType)
+    Q_PROPERTY(QtUml::QType * type READ type WRITE setType)
 
-    Q_PROPERTY(QTemplateParameter * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
+    Q_PROPERTY(QtUml::QTemplateParameter * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
 
-    Q_PROPERTY(QList<QConnectorEnd *> ends READ ends STORED false)
-    Q_PROPERTY(QConnectableElementTemplateParameter * templateParameter READ templateParameter WRITE setTemplateParameter)
+    Q_PROPERTY(QList<QtUml::QConnectorEnd *> ends READ ends STORED false)
+    Q_PROPERTY(QtUml::QConnectableElementTemplateParameter * templateParameter READ templateParameter WRITE setTemplateParameter)
 
     Q_PROPERTY(bool isException READ isException WRITE setException RESET unsetException)
     Q_PROPERTY(QString default_ READ default_ WRITE setDefault_ STORED false)
-    Q_PROPERTY(QtUml::ParameterDirectionKind direction READ direction WRITE setDirection RESET unsetDirection)
+    Q_PROPERTY(QtUmlNS::ParameterDirectionKind direction READ direction WRITE setDirection RESET unsetDirection)
     Q_PROPERTY(bool isStream READ isStream WRITE setStream RESET unsetStream)
-    Q_PROPERTY(QtUml::ParameterEffectKind effect READ effect WRITE setEffect)
-    Q_PROPERTY(QOperation * operation READ operation WRITE setOperation)
-    Q_PROPERTY(QValueSpecification * defaultValue READ defaultValue WRITE setDefaultValue)
-    Q_PROPERTY(QSet<QParameterSet *> parameterSets READ parameterSets)
+    Q_PROPERTY(QtUmlNS::ParameterEffectKind effect READ effect WRITE setEffect)
+    Q_PROPERTY(QtUml::QOperation * operation READ operation WRITE setOperation)
+    Q_PROPERTY(QtUml::QValueSpecification * defaultValue READ defaultValue WRITE setDefaultValue)
+    Q_PROPERTY(QSet<QtUml::QParameterSet *> parameterSets READ parameterSets)
 
     Q_DISABLE_COPY(QParameter)
     Q_DECLARE_PRIVATE(QParameter)
@@ -143,8 +146,8 @@ public:
     // Attributes from aggregated QNamedElement
     Q_INVOKABLE QString name() const;
     Q_INVOKABLE void setName(QString name);
-    Q_INVOKABLE QtUml::VisibilityKind visibility() const;
-    Q_INVOKABLE void setVisibility(QtUml::VisibilityKind visibility);
+    Q_INVOKABLE QtUmlNS::VisibilityKind visibility() const;
+    Q_INVOKABLE void setVisibility(QtUmlNS::VisibilityKind visibility);
     Q_INVOKABLE QString qualifiedName() const;
 
     // Association ends from aggregated QNamedElement
@@ -174,14 +177,14 @@ public:
     Q_INVOKABLE void unsetException();
     Q_INVOKABLE QString default_() const;
     Q_INVOKABLE void setDefault_(QString default_);
-    Q_INVOKABLE QtUml::ParameterDirectionKind direction() const;
-    Q_INVOKABLE void setDirection(QtUml::ParameterDirectionKind direction);
+    Q_INVOKABLE QtUmlNS::ParameterDirectionKind direction() const;
+    Q_INVOKABLE void setDirection(QtUmlNS::ParameterDirectionKind direction);
     Q_INVOKABLE void unsetDirection();
     Q_INVOKABLE bool isStream() const;
     Q_INVOKABLE void setStream(bool isStream);
     Q_INVOKABLE void unsetStream();
-    Q_INVOKABLE QtUml::ParameterEffectKind effect() const;
-    Q_INVOKABLE void setEffect(QtUml::ParameterEffectKind effect);
+    Q_INVOKABLE QtUmlNS::ParameterEffectKind effect() const;
+    Q_INVOKABLE void setEffect(QtUmlNS::ParameterEffectKind effect);
 
     // Association ends from QParameter
     Q_INVOKABLE QOperation *operation() const;
@@ -202,7 +205,9 @@ private:
     QConnectableElement *_wrappedConnectableElement;
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

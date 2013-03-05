@@ -46,7 +46,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QChangeEventPrivate::QChangeEventPrivate() :
     changeExpression(0)
@@ -116,17 +119,19 @@ void QChangeEvent::setChangeExpression(QValueSpecification *changeExpression)
 
 void QChangeEvent::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QChangeEvent")][QString::fromLatin1("changeExpression")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QChangeEvent")][QString::fromLatin1("changeExpression")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QChangeEvent")][QString::fromLatin1("changeExpression")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A Boolean-valued expression that will result in a change event whenever its value changes from false to true.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QChangeEvent")][QString::fromLatin1("changeExpression")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QChangeEvent")][QString::fromLatin1("changeExpression")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QChangeEvent")][QString::fromLatin1("changeExpression")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QChangeEvent")][QString::fromLatin1("changeExpression")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QChangeEvent")][QString::fromLatin1("changeExpression")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QChangeEvent")][QString::fromLatin1("changeExpression")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A Boolean-valued expression that will result in a change event whenever its value changes from false to true.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QChangeEvent")][QString::fromLatin1("changeExpression")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QChangeEvent")][QString::fromLatin1("changeExpression")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QChangeEvent")][QString::fromLatin1("changeExpression")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QEvent::setPropertyData();
 }
 
-#include "moc_qchangeevent.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qchangeevent.cpp"
 

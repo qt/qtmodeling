@@ -47,11 +47,11 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QtUml : public QObject
+class Q_UML_EXPORT QtUmlNS : public QObject
 {
     Q_OBJECT
 
@@ -172,11 +172,9 @@ public:
         VisibilityPackage
     };
 
-private:
-    explicit QtUml();
 };
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

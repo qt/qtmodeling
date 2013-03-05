@@ -48,7 +48,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTMOF
+QT_BEGIN_NAMESPACE
+
+namespace QtMof
+{
 
 QT_MODULE(QtMof)
 
@@ -62,8 +65,8 @@ class Q_MOF_EXPORT QGeneralization : public QDirectedRelationship
     Q_OBJECT
 
     Q_PROPERTY(bool isSubstitutable READ isSubstitutable WRITE setSubstitutable RESET unsetSubstitutable)
-    Q_PROPERTY(QClassifier * specific READ specific WRITE setSpecific)
-    Q_PROPERTY(QClassifier * general READ general WRITE setGeneral)
+    Q_PROPERTY(QtMof::QClassifier * specific READ specific WRITE setSpecific)
+    Q_PROPERTY(QtMof::QClassifier * general READ general WRITE setGeneral)
 
     Q_DISABLE_COPY(QGeneralization)
     Q_DECLARE_PRIVATE(QGeneralization)
@@ -89,7 +92,9 @@ protected:
     explicit QGeneralization(QGeneralizationPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTMOF
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

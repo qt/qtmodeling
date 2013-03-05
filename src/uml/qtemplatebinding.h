@@ -51,7 +51,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -66,9 +69,9 @@ class Q_UML_EXPORT QTemplateBinding : public QDirectedRelationship
 {
     Q_OBJECT
 
-    Q_PROPERTY(QTemplateSignature * signature READ signature WRITE setSignature)
-    Q_PROPERTY(QTemplateableElement * boundElement READ boundElement WRITE setBoundElement)
-    Q_PROPERTY(QSet<QTemplateParameterSubstitution *> parameterSubstitutions READ parameterSubstitutions)
+    Q_PROPERTY(QtUml::QTemplateSignature * signature READ signature WRITE setSignature)
+    Q_PROPERTY(QtUml::QTemplateableElement * boundElement READ boundElement WRITE setBoundElement)
+    Q_PROPERTY(QSet<QtUml::QTemplateParameterSubstitution *> parameterSubstitutions READ parameterSubstitutions)
 
     Q_DISABLE_COPY(QTemplateBinding)
     Q_DECLARE_PRIVATE(QTemplateBinding)
@@ -92,7 +95,9 @@ protected:
     explicit QTemplateBinding(QTemplateBindingPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

@@ -51,7 +51,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTMOF
+QT_BEGIN_NAMESPACE
+
+namespace QtMof
+{
 
 QT_MODULE(QtMof)
 
@@ -61,7 +64,7 @@ class Q_MOF_EXPORT QPackageableElement : public QNamedElement
 {
     Q_OBJECT
 
-    Q_PROPERTY(QtMof::VisibilityKind visibility READ visibility WRITE setVisibility RESET unsetVisibility)
+    Q_PROPERTY(QtMofNS::VisibilityKind visibility READ visibility WRITE setVisibility RESET unsetVisibility)
 
     Q_DISABLE_COPY(QPackageableElement)
     Q_DECLARE_PRIVATE(QPackageableElement)
@@ -71,8 +74,8 @@ public:
     virtual ~QPackageableElement();
 
     // Attributes from QPackageableElement
-    Q_INVOKABLE QtMof::VisibilityKind visibility() const;
-    Q_INVOKABLE void setVisibility(QtMof::VisibilityKind visibility);
+    Q_INVOKABLE QtMofNS::VisibilityKind visibility() const;
+    Q_INVOKABLE void setVisibility(QtMofNS::VisibilityKind visibility);
     Q_INVOKABLE void unsetVisibility();
 
     virtual void setPropertyData();
@@ -81,7 +84,9 @@ protected:
     explicit QPackageableElement(QPackageableElementPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTMOF
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

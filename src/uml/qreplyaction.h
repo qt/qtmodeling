@@ -51,7 +51,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -65,9 +68,9 @@ class Q_UML_EXPORT QReplyAction : public QAction
 {
     Q_OBJECT
 
-    Q_PROPERTY(QTrigger * replyToCall READ replyToCall WRITE setReplyToCall)
-    Q_PROPERTY(QInputPin * returnInformation READ returnInformation WRITE setReturnInformation)
-    Q_PROPERTY(QSet<QInputPin *> replyValues READ replyValues)
+    Q_PROPERTY(QtUml::QTrigger * replyToCall READ replyToCall WRITE setReplyToCall)
+    Q_PROPERTY(QtUml::QInputPin * returnInformation READ returnInformation WRITE setReturnInformation)
+    Q_PROPERTY(QSet<QtUml::QInputPin *> replyValues READ replyValues)
 
     Q_DISABLE_COPY(QReplyAction)
     Q_DECLARE_PRIVATE(QReplyAction)
@@ -91,7 +94,9 @@ protected:
     explicit QReplyAction(QReplyActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

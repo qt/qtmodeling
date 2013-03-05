@@ -51,7 +51,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -66,10 +69,10 @@ class Q_UML_EXPORT QExceptionHandler : public QElement
 {
     Q_OBJECT
 
-    Q_PROPERTY(QExecutableNode * handlerBody READ handlerBody WRITE setHandlerBody)
-    Q_PROPERTY(QSet<QClassifier *> exceptionTypes READ exceptionTypes)
-    Q_PROPERTY(QExecutableNode * protectedNode READ protectedNode WRITE setProtectedNode)
-    Q_PROPERTY(QObjectNode * exceptionInput READ exceptionInput WRITE setExceptionInput)
+    Q_PROPERTY(QtUml::QExecutableNode * handlerBody READ handlerBody WRITE setHandlerBody)
+    Q_PROPERTY(QSet<QtUml::QClassifier *> exceptionTypes READ exceptionTypes)
+    Q_PROPERTY(QtUml::QExecutableNode * protectedNode READ protectedNode WRITE setProtectedNode)
+    Q_PROPERTY(QtUml::QObjectNode * exceptionInput READ exceptionInput WRITE setExceptionInput)
 
     Q_DISABLE_COPY(QExceptionHandler)
     Q_DECLARE_PRIVATE(QExceptionHandler)
@@ -95,7 +98,9 @@ protected:
     explicit QExceptionHandler(QExceptionHandlerPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

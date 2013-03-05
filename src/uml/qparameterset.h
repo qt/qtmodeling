@@ -51,7 +51,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -65,8 +68,8 @@ class Q_UML_EXPORT QParameterSet : public QNamedElement
 {
     Q_OBJECT
 
-    Q_PROPERTY(QSet<QParameter *> parameters READ parameters)
-    Q_PROPERTY(QSet<QConstraint *> conditions READ conditions)
+    Q_PROPERTY(QSet<QtUml::QParameter *> parameters READ parameters)
+    Q_PROPERTY(QSet<QtUml::QConstraint *> conditions READ conditions)
 
     Q_DISABLE_COPY(QParameterSet)
     Q_DECLARE_PRIVATE(QParameterSet)
@@ -89,7 +92,9 @@ protected:
     explicit QParameterSet(QParameterSetPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

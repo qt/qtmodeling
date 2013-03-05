@@ -44,7 +44,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTMOF
+QT_BEGIN_NAMESPACE
+
+namespace QtMof
+{
 
 QRelationshipPrivate::QRelationshipPrivate()
 {
@@ -113,17 +116,19 @@ QSet<QElement *> QRelationship::relatedElements() const
 
 void QRelationship::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QRelationship")][QString::fromLatin1("relatedElements")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QRelationship")][QString::fromLatin1("relatedElements")][QtWrappedObjects::IsDerivedUnionRole] = true;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QRelationship")][QString::fromLatin1("relatedElements")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the elements related by the Relationship.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QRelationship")][QString::fromLatin1("relatedElements")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QRelationship")][QString::fromLatin1("relatedElements")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QRelationship")][QString::fromLatin1("relatedElements")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtMof::QRelationship")][QString::fromLatin1("relatedElements")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtMof::QRelationship")][QString::fromLatin1("relatedElements")][QtWrappedObjects::IsDerivedUnionRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtMof::QRelationship")][QString::fromLatin1("relatedElements")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the elements related by the Relationship.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtMof::QRelationship")][QString::fromLatin1("relatedElements")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtMof::QRelationship")][QString::fromLatin1("relatedElements")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtMof::QRelationship")][QString::fromLatin1("relatedElements")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QElement::setPropertyData();
 }
 
-#include "moc_qrelationship.cpp"
+}
 
-QT_END_NAMESPACE_QTMOF
+QT_END_NAMESPACE
+
+#include "moc_qrelationship.cpp"
 

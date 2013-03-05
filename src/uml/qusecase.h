@@ -51,7 +51,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -67,10 +70,10 @@ class Q_UML_EXPORT QUseCase : public QBehavioredClassifier
 {
     Q_OBJECT
 
-    Q_PROPERTY(QSet<QExtensionPoint *> extensionPoints READ extensionPoints)
-    Q_PROPERTY(QSet<QInclude *> includes READ includes)
-    Q_PROPERTY(QSet<QClassifier *> subjects READ subjects)
-    Q_PROPERTY(QSet<QExtend *> extends READ extends)
+    Q_PROPERTY(QSet<QtUml::QExtensionPoint *> extensionPoints READ extensionPoints)
+    Q_PROPERTY(QSet<QtUml::QInclude *> includes READ includes)
+    Q_PROPERTY(QSet<QtUml::QClassifier *> subjects READ subjects)
+    Q_PROPERTY(QSet<QtUml::QExtend *> extends READ extends)
 
     Q_DISABLE_COPY(QUseCase)
     Q_DECLARE_PRIVATE(QUseCase)
@@ -102,7 +105,9 @@ protected:
     explicit QUseCase(QUseCasePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

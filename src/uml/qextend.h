@@ -53,7 +53,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -68,26 +71,26 @@ class Q_UML_EXPORT QExtend : public QWrappedObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(QSet<QElement *> ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(QSet<QComment *> ownedComments READ ownedComments)
+    Q_PROPERTY(QSet<QtUml::QElement *> ownedElements READ ownedElements)
+    Q_PROPERTY(QtUml::QElement * owner READ owner)
+    Q_PROPERTY(QSet<QtUml::QComment *> ownedComments READ ownedComments)
 
-    Q_PROPERTY(QSet<QElement *> relatedElements READ relatedElements)
+    Q_PROPERTY(QSet<QtUml::QElement *> relatedElements READ relatedElements)
 
-    Q_PROPERTY(QSet<QElement *> sources READ sources)
-    Q_PROPERTY(QSet<QElement *> targets READ targets)
+    Q_PROPERTY(QSet<QtUml::QElement *> sources READ sources)
+    Q_PROPERTY(QSet<QtUml::QElement *> targets READ targets)
 
     Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
+    Q_PROPERTY(QtUmlNS::VisibilityKind visibility READ visibility WRITE setVisibility)
     Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
-    Q_PROPERTY(QSet<QDependency *> clientDependencies READ clientDependencies)
+    Q_PROPERTY(QtUml::QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
+    Q_PROPERTY(QtUml::QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(QSet<QtUml::QDependency *> clientDependencies READ clientDependencies)
 
-    Q_PROPERTY(QUseCase * extendedCase READ extendedCase WRITE setExtendedCase)
-    Q_PROPERTY(QUseCase * extension READ extension WRITE setExtension)
-    Q_PROPERTY(QList<QExtensionPoint *> extensionLocations READ extensionLocations)
-    Q_PROPERTY(QConstraint * condition READ condition WRITE setCondition)
+    Q_PROPERTY(QtUml::QUseCase * extendedCase READ extendedCase WRITE setExtendedCase)
+    Q_PROPERTY(QtUml::QUseCase * extension READ extension WRITE setExtension)
+    Q_PROPERTY(QList<QtUml::QExtensionPoint *> extensionLocations READ extensionLocations)
+    Q_PROPERTY(QtUml::QConstraint * condition READ condition WRITE setCondition)
 
     Q_DISABLE_COPY(QExtend)
     Q_DECLARE_PRIVATE(QExtend)
@@ -113,8 +116,8 @@ public:
     // Attributes from aggregated QNamedElement
     Q_INVOKABLE QString name() const;
     Q_INVOKABLE void setName(QString name);
-    Q_INVOKABLE QtUml::VisibilityKind visibility() const;
-    Q_INVOKABLE void setVisibility(QtUml::VisibilityKind visibility);
+    Q_INVOKABLE QtUmlNS::VisibilityKind visibility() const;
+    Q_INVOKABLE void setVisibility(QtUmlNS::VisibilityKind visibility);
     Q_INVOKABLE QString qualifiedName() const;
 
     // Association ends from aggregated QNamedElement
@@ -146,7 +149,9 @@ private:
     QNamedElement *_wrappedNamedElement;
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

@@ -48,7 +48,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QConnectorPrivate::QConnectorPrivate() :
     type(0)
@@ -90,13 +93,13 @@ QConnector::~QConnector()
 /*!
     Indicates the kind of connector. This is derived: a connector with one or more ends connected to a Port which is not on a Part and which is not a behavior port is a delegation; otherwise it is an assembly.
  */
-QtUml::ConnectorKind QConnector::kind() const
+QtUmlNS::ConnectorKind QConnector::kind() const
 {
     // This is a read-only derived attribute
 
     qWarning("QConnector::kind: to be implemented (this is a derived attribute)");
 
-    return QtUml::ConnectorKind(); // change here to your derived return
+    return QtUmlNS::ConnectorKind(); // change here to your derived return
 }
 
 // ---------------------------------------------------------------
@@ -231,45 +234,47 @@ void QConnector::removeEnd(QConnectorEnd *end)
 
 void QConnector::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnector")][QString::fromLatin1("kind")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnector")][QString::fromLatin1("kind")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnector")][QString::fromLatin1("kind")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Indicates the kind of connector. This is derived: a connector with one or more ends connected to a Port which is not on a Part and which is not a behavior port is a delegation; otherwise it is an assembly.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnector")][QString::fromLatin1("kind")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnector")][QString::fromLatin1("kind")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnector")][QString::fromLatin1("kind")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConnector")][QString::fromLatin1("kind")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConnector")][QString::fromLatin1("kind")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConnector")][QString::fromLatin1("kind")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Indicates the kind of connector. This is derived: a connector with one or more ends connected to a Port which is not on a Part and which is not a behavior port is a delegation; otherwise it is an assembly.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConnector")][QString::fromLatin1("kind")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConnector")][QString::fromLatin1("kind")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConnector")][QString::fromLatin1("kind")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnector")][QString::fromLatin1("redefinedConnectors")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnector")][QString::fromLatin1("redefinedConnectors")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnector")][QString::fromLatin1("redefinedConnectors")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A connector may be redefined when its containing classifier is specialized. The redefining connector may have a type that specializes the type of the redefined connector. The types of the connector ends of the redefining connector may specialize the types of the connector ends of the redefined connector. The properties of the connector ends of the redefining connector may be replaced.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnector")][QString::fromLatin1("redefinedConnectors")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnector")][QString::fromLatin1("redefinedConnectors")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QRedefinableElement::redefinedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnector")][QString::fromLatin1("redefinedConnectors")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConnector")][QString::fromLatin1("redefinedConnectors")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConnector")][QString::fromLatin1("redefinedConnectors")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConnector")][QString::fromLatin1("redefinedConnectors")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A connector may be redefined when its containing classifier is specialized. The redefining connector may have a type that specializes the type of the redefined connector. The types of the connector ends of the redefining connector may specialize the types of the connector ends of the redefined connector. The properties of the connector ends of the redefining connector may be replaced.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConnector")][QString::fromLatin1("redefinedConnectors")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConnector")][QString::fromLatin1("redefinedConnectors")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QRedefinableElement::redefinedElements");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConnector")][QString::fromLatin1("redefinedConnectors")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnector")][QString::fromLatin1("contracts")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnector")][QString::fromLatin1("contracts")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnector")][QString::fromLatin1("contracts")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The set of Behaviors that specify the valid interaction patterns across the connector.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnector")][QString::fromLatin1("contracts")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnector")][QString::fromLatin1("contracts")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnector")][QString::fromLatin1("contracts")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConnector")][QString::fromLatin1("contracts")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConnector")][QString::fromLatin1("contracts")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConnector")][QString::fromLatin1("contracts")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The set of Behaviors that specify the valid interaction patterns across the connector.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConnector")][QString::fromLatin1("contracts")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConnector")][QString::fromLatin1("contracts")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConnector")][QString::fromLatin1("contracts")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnector")][QString::fromLatin1("type")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnector")][QString::fromLatin1("type")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnector")][QString::fromLatin1("type")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An optional association that specifies the link corresponding to this connector.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnector")][QString::fromLatin1("type")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnector")][QString::fromLatin1("type")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnector")][QString::fromLatin1("type")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConnector")][QString::fromLatin1("type")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConnector")][QString::fromLatin1("type")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConnector")][QString::fromLatin1("type")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An optional association that specifies the link corresponding to this connector.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConnector")][QString::fromLatin1("type")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConnector")][QString::fromLatin1("type")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConnector")][QString::fromLatin1("type")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnector")][QString::fromLatin1("ends")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnector")][QString::fromLatin1("ends")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnector")][QString::fromLatin1("ends")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A connector consists of at least two connector ends, each representing the participation of instances of the classifiers typing the connectable elements attached to this end. The set of connector ends is ordered.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnector")][QString::fromLatin1("ends")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnector")][QString::fromLatin1("ends")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnector")][QString::fromLatin1("ends")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConnector")][QString::fromLatin1("ends")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConnector")][QString::fromLatin1("ends")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConnector")][QString::fromLatin1("ends")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A connector consists of at least two connector ends, each representing the participation of instances of the classifiers typing the connectable elements attached to this end. The set of connector ends is ordered.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConnector")][QString::fromLatin1("ends")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConnector")][QString::fromLatin1("ends")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConnector")][QString::fromLatin1("ends")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QFeature::setPropertyData();
 }
 
-#include "moc_qconnector.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qconnector.cpp"
 

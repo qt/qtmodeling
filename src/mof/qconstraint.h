@@ -51,7 +51,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTMOF
+QT_BEGIN_NAMESPACE
+
+namespace QtMof
+{
 
 QT_MODULE(QtMof)
 
@@ -66,9 +69,9 @@ class Q_MOF_EXPORT QConstraint : public QPackageableElement
 {
     Q_OBJECT
 
-    Q_PROPERTY(QNamespace * context READ context WRITE setContext)
-    Q_PROPERTY(QValueSpecification * specification READ specification WRITE setSpecification)
-    Q_PROPERTY(QList<QElement *> constrainedElements READ constrainedElements)
+    Q_PROPERTY(QtMof::QNamespace * context READ context WRITE setContext)
+    Q_PROPERTY(QtMof::QValueSpecification * specification READ specification WRITE setSpecification)
+    Q_PROPERTY(QList<QtMof::QElement *> constrainedElements READ constrainedElements)
 
     Q_DISABLE_COPY(QConstraint)
     Q_DECLARE_PRIVATE(QConstraint)
@@ -92,7 +95,9 @@ protected:
     explicit QConstraint(QConstraintPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTMOF
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

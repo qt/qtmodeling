@@ -51,7 +51,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QStructuredActivityNodePrivate::QStructuredActivityNodePrivate() :
     mustIsolate(false),
@@ -151,12 +154,12 @@ void QStructuredActivityNode::setName(QString name)
 /*!
     Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility.
  */
-QtUml::VisibilityKind QStructuredActivityNode::visibility() const
+QtUmlNS::VisibilityKind QStructuredActivityNode::visibility() const
 {
     return (qwrappedobject_cast<const QNamedElement *>(this))->visibility();
 }
 
-void QStructuredActivityNode::setVisibility(QtUml::VisibilityKind visibility)
+void QStructuredActivityNode::setVisibility(QtUmlNS::VisibilityKind visibility)
 {
     (qwrappedobject_cast<QNamedElement *>(this))->setVisibility(visibility);
 }
@@ -872,59 +875,61 @@ void QStructuredActivityNode::setActivity(QActivity *activity)
 
 void QStructuredActivityNode::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredActivityNode")][QString::fromLatin1("mustIsolate")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredActivityNode")][QString::fromLatin1("mustIsolate")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredActivityNode")][QString::fromLatin1("mustIsolate")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("If true, then the actions in the node execute in isolation from actions outside the node.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredActivityNode")][QString::fromLatin1("mustIsolate")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredActivityNode")][QString::fromLatin1("mustIsolate")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredActivityNode")][QString::fromLatin1("mustIsolate")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStructuredActivityNode")][QString::fromLatin1("mustIsolate")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStructuredActivityNode")][QString::fromLatin1("mustIsolate")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStructuredActivityNode")][QString::fromLatin1("mustIsolate")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("If true, then the actions in the node execute in isolation from actions outside the node.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStructuredActivityNode")][QString::fromLatin1("mustIsolate")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStructuredActivityNode")][QString::fromLatin1("mustIsolate")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStructuredActivityNode")][QString::fromLatin1("mustIsolate")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredActivityNode")][QString::fromLatin1("structuredNodeInputs")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredActivityNode")][QString::fromLatin1("structuredNodeInputs")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredActivityNode")][QString::fromLatin1("structuredNodeInputs")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredActivityNode")][QString::fromLatin1("structuredNodeInputs")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredActivityNode")][QString::fromLatin1("structuredNodeInputs")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QAction::inputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredActivityNode")][QString::fromLatin1("structuredNodeInputs")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStructuredActivityNode")][QString::fromLatin1("structuredNodeInputs")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStructuredActivityNode")][QString::fromLatin1("structuredNodeInputs")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStructuredActivityNode")][QString::fromLatin1("structuredNodeInputs")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStructuredActivityNode")][QString::fromLatin1("structuredNodeInputs")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStructuredActivityNode")][QString::fromLatin1("structuredNodeInputs")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QAction::inputs");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStructuredActivityNode")][QString::fromLatin1("structuredNodeInputs")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredActivityNode")][QString::fromLatin1("nodes")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredActivityNode")][QString::fromLatin1("nodes")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredActivityNode")][QString::fromLatin1("nodes")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Nodes immediately contained in the group.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredActivityNode")][QString::fromLatin1("nodes")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredActivityNode")][QString::fromLatin1("nodes")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QActivityGroup::containedNodes QElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredActivityNode")][QString::fromLatin1("nodes")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QActivityNode::inStructuredNode");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStructuredActivityNode")][QString::fromLatin1("nodes")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStructuredActivityNode")][QString::fromLatin1("nodes")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStructuredActivityNode")][QString::fromLatin1("nodes")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Nodes immediately contained in the group.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStructuredActivityNode")][QString::fromLatin1("nodes")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStructuredActivityNode")][QString::fromLatin1("nodes")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QActivityGroup::containedNodes QElement::ownedElements");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStructuredActivityNode")][QString::fromLatin1("nodes")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QActivityNode::inStructuredNode");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredActivityNode")][QString::fromLatin1("structuredNodeOutputs")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredActivityNode")][QString::fromLatin1("structuredNodeOutputs")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredActivityNode")][QString::fromLatin1("structuredNodeOutputs")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredActivityNode")][QString::fromLatin1("structuredNodeOutputs")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredActivityNode")][QString::fromLatin1("structuredNodeOutputs")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QAction::outputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredActivityNode")][QString::fromLatin1("structuredNodeOutputs")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStructuredActivityNode")][QString::fromLatin1("structuredNodeOutputs")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStructuredActivityNode")][QString::fromLatin1("structuredNodeOutputs")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStructuredActivityNode")][QString::fromLatin1("structuredNodeOutputs")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStructuredActivityNode")][QString::fromLatin1("structuredNodeOutputs")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStructuredActivityNode")][QString::fromLatin1("structuredNodeOutputs")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QAction::outputs");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStructuredActivityNode")][QString::fromLatin1("structuredNodeOutputs")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredActivityNode")][QString::fromLatin1("edges")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredActivityNode")][QString::fromLatin1("edges")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredActivityNode")][QString::fromLatin1("edges")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Edges immediately contained in the structured node.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredActivityNode")][QString::fromLatin1("edges")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredActivityNode")][QString::fromLatin1("edges")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QActivityGroup::containedEdges QElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredActivityNode")][QString::fromLatin1("edges")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QActivityEdge::inStructuredNode");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStructuredActivityNode")][QString::fromLatin1("edges")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStructuredActivityNode")][QString::fromLatin1("edges")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStructuredActivityNode")][QString::fromLatin1("edges")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Edges immediately contained in the structured node.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStructuredActivityNode")][QString::fromLatin1("edges")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStructuredActivityNode")][QString::fromLatin1("edges")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QActivityGroup::containedEdges QElement::ownedElements");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStructuredActivityNode")][QString::fromLatin1("edges")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QActivityEdge::inStructuredNode");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredActivityNode")][QString::fromLatin1("variables")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredActivityNode")][QString::fromLatin1("variables")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredActivityNode")][QString::fromLatin1("variables")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A variable defined in the scope of the structured activity node. It has no value and may not be accessed");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredActivityNode")][QString::fromLatin1("variables")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredActivityNode")][QString::fromLatin1("variables")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamespace::ownedMembers");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredActivityNode")][QString::fromLatin1("variables")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QVariable::scope");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStructuredActivityNode")][QString::fromLatin1("variables")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStructuredActivityNode")][QString::fromLatin1("variables")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStructuredActivityNode")][QString::fromLatin1("variables")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A variable defined in the scope of the structured activity node. It has no value and may not be accessed");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStructuredActivityNode")][QString::fromLatin1("variables")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStructuredActivityNode")][QString::fromLatin1("variables")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamespace::ownedMembers");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStructuredActivityNode")][QString::fromLatin1("variables")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QVariable::scope");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredActivityNode")][QString::fromLatin1("activity")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredActivityNode")][QString::fromLatin1("activity")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredActivityNode")][QString::fromLatin1("activity")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Activity immediately containing the node.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredActivityNode")][QString::fromLatin1("activity")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QActivityGroup::inActivity QActivityNode::activity");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredActivityNode")][QString::fromLatin1("activity")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QStructuredActivityNode")][QString::fromLatin1("activity")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QActivity::structuredNode");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStructuredActivityNode")][QString::fromLatin1("activity")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStructuredActivityNode")][QString::fromLatin1("activity")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStructuredActivityNode")][QString::fromLatin1("activity")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Activity immediately containing the node.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStructuredActivityNode")][QString::fromLatin1("activity")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QActivityGroup::inActivity QActivityNode::activity");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStructuredActivityNode")][QString::fromLatin1("activity")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QStructuredActivityNode")][QString::fromLatin1("activity")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QActivity::structuredNode");
 
     QWrappedObject::setPropertyData();
 }
 
-#include "moc_qstructuredactivitynode.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qstructuredactivitynode.cpp"
 

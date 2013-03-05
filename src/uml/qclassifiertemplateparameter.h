@@ -51,7 +51,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -65,8 +68,8 @@ class Q_UML_EXPORT QClassifierTemplateParameter : public QTemplateParameter
     Q_OBJECT
 
     Q_PROPERTY(bool allowSubstitutable READ allowSubstitutable WRITE setAllowSubstitutable RESET unsetAllowSubstitutable)
-    Q_PROPERTY(QClassifier * parameteredElement READ parameteredElement WRITE setParameteredElement)
-    Q_PROPERTY(QSet<QClassifier *> constrainingClassifiers READ constrainingClassifiers)
+    Q_PROPERTY(QtUml::QClassifier * parameteredElement READ parameteredElement WRITE setParameteredElement)
+    Q_PROPERTY(QSet<QtUml::QClassifier *> constrainingClassifiers READ constrainingClassifiers)
 
     Q_DISABLE_COPY(QClassifierTemplateParameter)
     Q_DECLARE_PRIVATE(QClassifierTemplateParameter)
@@ -93,7 +96,9 @@ protected:
     explicit QClassifierTemplateParameter(QClassifierTemplateParameterPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

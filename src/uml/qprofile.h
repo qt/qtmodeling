@@ -51,7 +51,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -65,8 +68,8 @@ class Q_UML_EXPORT QProfile : public QPackage
 {
     Q_OBJECT
 
-    Q_PROPERTY(QSet<QPackageImport *> metamodelReferences READ metamodelReferences)
-    Q_PROPERTY(QSet<QElementImport *> metaclassReferences READ metaclassReferences)
+    Q_PROPERTY(QSet<QtUml::QPackageImport *> metamodelReferences READ metamodelReferences)
+    Q_PROPERTY(QSet<QtUml::QElementImport *> metaclassReferences READ metaclassReferences)
 
     Q_DISABLE_COPY(QProfile)
     Q_DECLARE_PRIVATE(QProfile)
@@ -89,7 +92,9 @@ protected:
     explicit QProfile(QProfilePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

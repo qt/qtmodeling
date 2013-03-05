@@ -52,7 +52,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -69,11 +72,11 @@ class Q_UML_EXPORT QAction : public QExecutableNode
     Q_OBJECT
 
     Q_PROPERTY(bool isLocallyReentrant READ isLocallyReentrant WRITE setLocallyReentrant RESET unsetLocallyReentrant)
-    Q_PROPERTY(QClassifier * context READ context STORED false)
-    Q_PROPERTY(QSet<QConstraint *> localPostconditions READ localPostconditions)
-    Q_PROPERTY(QSet<QConstraint *> localPreconditions READ localPreconditions)
-    Q_PROPERTY(QList<QInputPin *> inputs READ inputs)
-    Q_PROPERTY(QList<QOutputPin *> outputs READ outputs)
+    Q_PROPERTY(QtUml::QClassifier * context READ context STORED false)
+    Q_PROPERTY(QSet<QtUml::QConstraint *> localPostconditions READ localPostconditions)
+    Q_PROPERTY(QSet<QtUml::QConstraint *> localPreconditions READ localPreconditions)
+    Q_PROPERTY(QList<QtUml::QInputPin *> inputs READ inputs)
+    Q_PROPERTY(QList<QtUml::QOutputPin *> outputs READ outputs)
 
     Q_DISABLE_COPY(QAction)
     Q_DECLARE_PRIVATE(QAction)
@@ -104,7 +107,9 @@ protected:
     explicit QAction(QActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

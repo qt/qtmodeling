@@ -46,7 +46,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QElementPrivate::QElementPrivate() :
     owner(0)
@@ -209,26 +212,26 @@ bool QElement::mustBeOwned() const
 
 void QElement::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QElement")][QString::fromLatin1("ownedElements")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QElement")][QString::fromLatin1("ownedElements")][QtWrappedObjects::IsDerivedUnionRole] = true;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QElement")][QString::fromLatin1("ownedElements")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The Elements owned by this element.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QElement")][QString::fromLatin1("ownedElements")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QElement")][QString::fromLatin1("ownedElements")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QElement")][QString::fromLatin1("ownedElements")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QElement::owner");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QElement")][QString::fromLatin1("ownedElements")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QElement")][QString::fromLatin1("ownedElements")][QtWrappedObjects::IsDerivedUnionRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QElement")][QString::fromLatin1("ownedElements")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The Elements owned by this element.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QElement")][QString::fromLatin1("ownedElements")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QElement")][QString::fromLatin1("ownedElements")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QElement")][QString::fromLatin1("ownedElements")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QElement::owner");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QElement")][QString::fromLatin1("owner")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QElement")][QString::fromLatin1("owner")][QtWrappedObjects::IsDerivedUnionRole] = true;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QElement")][QString::fromLatin1("owner")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The Element that owns this element.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QElement")][QString::fromLatin1("owner")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QElement")][QString::fromLatin1("owner")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QElement")][QString::fromLatin1("owner")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QElement::ownedElement");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QElement")][QString::fromLatin1("owner")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QElement")][QString::fromLatin1("owner")][QtWrappedObjects::IsDerivedUnionRole] = true;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QElement")][QString::fromLatin1("owner")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The Element that owns this element.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QElement")][QString::fromLatin1("owner")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QElement")][QString::fromLatin1("owner")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QElement")][QString::fromLatin1("owner")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QElement::ownedElement");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QElement")][QString::fromLatin1("ownedComments")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QElement")][QString::fromLatin1("ownedComments")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QElement")][QString::fromLatin1("ownedComments")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The Comments owned by this element.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QElement")][QString::fromLatin1("ownedComments")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QElement")][QString::fromLatin1("ownedComments")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QElement")][QString::fromLatin1("ownedComments")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QElement")][QString::fromLatin1("ownedComments")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QElement")][QString::fromLatin1("ownedComments")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QElement")][QString::fromLatin1("ownedComments")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The Comments owned by this element.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QElement")][QString::fromLatin1("ownedComments")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QElement")][QString::fromLatin1("ownedComments")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QElement")][QString::fromLatin1("ownedComments")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::setPropertyData();
 }
@@ -241,7 +244,9 @@ void QElement::allOwnedElements(QSet<QElement *> &allOwnedElements_) const
         element->allOwnedElements(allOwnedElements_);
 }
 
-#include "moc_qelement.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qelement.cpp"
 

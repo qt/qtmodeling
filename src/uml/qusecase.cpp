@@ -49,7 +49,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QUseCasePrivate::QUseCasePrivate()
 {
@@ -266,38 +269,40 @@ QSet<QUseCase *> QUseCase::allIncludedUseCases() const
 
 void QUseCase::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUseCase")][QString::fromLatin1("extensionPoints")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUseCase")][QString::fromLatin1("extensionPoints")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUseCase")][QString::fromLatin1("extensionPoints")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the ExtensionPoints owned by the use case.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUseCase")][QString::fromLatin1("extensionPoints")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUseCase")][QString::fromLatin1("extensionPoints")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamespace::ownedMembers");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUseCase")][QString::fromLatin1("extensionPoints")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QExtensionPoint::useCase");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QUseCase")][QString::fromLatin1("extensionPoints")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QUseCase")][QString::fromLatin1("extensionPoints")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QUseCase")][QString::fromLatin1("extensionPoints")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the ExtensionPoints owned by the use case.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QUseCase")][QString::fromLatin1("extensionPoints")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QUseCase")][QString::fromLatin1("extensionPoints")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamespace::ownedMembers");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QUseCase")][QString::fromLatin1("extensionPoints")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QExtensionPoint::useCase");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUseCase")][QString::fromLatin1("includes")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUseCase")][QString::fromLatin1("includes")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUseCase")][QString::fromLatin1("includes")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Include relationships owned by this use case.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUseCase")][QString::fromLatin1("includes")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUseCase")][QString::fromLatin1("includes")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamespace::ownedMembers");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUseCase")][QString::fromLatin1("includes")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QInclude::includingCase");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QUseCase")][QString::fromLatin1("includes")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QUseCase")][QString::fromLatin1("includes")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QUseCase")][QString::fromLatin1("includes")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Include relationships owned by this use case.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QUseCase")][QString::fromLatin1("includes")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QUseCase")][QString::fromLatin1("includes")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamespace::ownedMembers");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QUseCase")][QString::fromLatin1("includes")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QInclude::includingCase");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUseCase")][QString::fromLatin1("subjects")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUseCase")][QString::fromLatin1("subjects")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUseCase")][QString::fromLatin1("subjects")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the subjects to which this use case applies. The subject or its parts realize all the use cases that apply to this subject. Use cases need not be attached to any specific subject, however. The subject may, but need not, own the use cases that apply to it.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUseCase")][QString::fromLatin1("subjects")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUseCase")][QString::fromLatin1("subjects")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUseCase")][QString::fromLatin1("subjects")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QClassifier::useCase");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QUseCase")][QString::fromLatin1("subjects")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QUseCase")][QString::fromLatin1("subjects")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QUseCase")][QString::fromLatin1("subjects")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the subjects to which this use case applies. The subject or its parts realize all the use cases that apply to this subject. Use cases need not be attached to any specific subject, however. The subject may, but need not, own the use cases that apply to it.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QUseCase")][QString::fromLatin1("subjects")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QUseCase")][QString::fromLatin1("subjects")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QUseCase")][QString::fromLatin1("subjects")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QClassifier::useCase");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUseCase")][QString::fromLatin1("extends")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUseCase")][QString::fromLatin1("extends")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUseCase")][QString::fromLatin1("extends")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Extend relationships owned by this use case.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUseCase")][QString::fromLatin1("extends")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUseCase")][QString::fromLatin1("extends")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamespace::ownedMembers");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUseCase")][QString::fromLatin1("extends")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QExtend::extension");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QUseCase")][QString::fromLatin1("extends")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QUseCase")][QString::fromLatin1("extends")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QUseCase")][QString::fromLatin1("extends")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Extend relationships owned by this use case.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QUseCase")][QString::fromLatin1("extends")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QUseCase")][QString::fromLatin1("extends")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamespace::ownedMembers");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QUseCase")][QString::fromLatin1("extends")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QExtend::extension");
 
     QBehavioredClassifier::setPropertyData();
 }
 
-#include "moc_qusecase.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qusecase.cpp"
 

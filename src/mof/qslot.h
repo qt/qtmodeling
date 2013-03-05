@@ -51,7 +51,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTMOF
+QT_BEGIN_NAMESPACE
+
+namespace QtMof
+{
 
 QT_MODULE(QtMof)
 
@@ -66,9 +69,9 @@ class Q_MOF_EXPORT QSlot : public QElement
 {
     Q_OBJECT
 
-    Q_PROPERTY(QList<QValueSpecification *> values READ values)
-    Q_PROPERTY(QStructuralFeature * definingFeature READ definingFeature WRITE setDefiningFeature)
-    Q_PROPERTY(QInstanceSpecification * owningInstance READ owningInstance WRITE setOwningInstance)
+    Q_PROPERTY(QList<QtMof::QValueSpecification *> values READ values)
+    Q_PROPERTY(QtMof::QStructuralFeature * definingFeature READ definingFeature WRITE setDefiningFeature)
+    Q_PROPERTY(QtMof::QInstanceSpecification * owningInstance READ owningInstance WRITE setOwningInstance)
 
     Q_DISABLE_COPY(QSlot)
     Q_DECLARE_PRIVATE(QSlot)
@@ -92,7 +95,9 @@ protected:
     explicit QSlot(QSlotPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTMOF
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

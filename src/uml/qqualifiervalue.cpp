@@ -47,7 +47,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QQualifierValuePrivate::QQualifierValuePrivate() :
     value(0),
@@ -131,24 +134,26 @@ void QQualifierValue::setQualifier(QProperty *qualifier)
 
 void QQualifierValue::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QQualifierValue")][QString::fromLatin1("value")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QQualifierValue")][QString::fromLatin1("value")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QQualifierValue")][QString::fromLatin1("value")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Input pin from which the specified value for the qualifier is taken.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QQualifierValue")][QString::fromLatin1("value")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QQualifierValue")][QString::fromLatin1("value")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QQualifierValue")][QString::fromLatin1("value")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QQualifierValue")][QString::fromLatin1("value")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QQualifierValue")][QString::fromLatin1("value")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QQualifierValue")][QString::fromLatin1("value")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Input pin from which the specified value for the qualifier is taken.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QQualifierValue")][QString::fromLatin1("value")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QQualifierValue")][QString::fromLatin1("value")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QQualifierValue")][QString::fromLatin1("value")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QQualifierValue")][QString::fromLatin1("qualifier")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QQualifierValue")][QString::fromLatin1("qualifier")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QQualifierValue")][QString::fromLatin1("qualifier")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Attribute representing the qualifier for which the value is to be specified.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QQualifierValue")][QString::fromLatin1("qualifier")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QQualifierValue")][QString::fromLatin1("qualifier")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QQualifierValue")][QString::fromLatin1("qualifier")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QQualifierValue")][QString::fromLatin1("qualifier")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QQualifierValue")][QString::fromLatin1("qualifier")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QQualifierValue")][QString::fromLatin1("qualifier")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Attribute representing the qualifier for which the value is to be specified.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QQualifierValue")][QString::fromLatin1("qualifier")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QQualifierValue")][QString::fromLatin1("qualifier")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QQualifierValue")][QString::fromLatin1("qualifier")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QElement::setPropertyData();
 }
 
-#include "moc_qqualifiervalue.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qqualifiervalue.cpp"
 

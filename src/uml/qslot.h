@@ -51,7 +51,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -66,9 +69,9 @@ class Q_UML_EXPORT QSlot : public QElement
 {
     Q_OBJECT
 
-    Q_PROPERTY(QList<QValueSpecification *> values READ values)
-    Q_PROPERTY(QStructuralFeature * definingFeature READ definingFeature WRITE setDefiningFeature)
-    Q_PROPERTY(QInstanceSpecification * owningInstance READ owningInstance WRITE setOwningInstance)
+    Q_PROPERTY(QList<QtUml::QValueSpecification *> values READ values)
+    Q_PROPERTY(QtUml::QStructuralFeature * definingFeature READ definingFeature WRITE setDefiningFeature)
+    Q_PROPERTY(QtUml::QInstanceSpecification * owningInstance READ owningInstance WRITE setOwningInstance)
 
     Q_DISABLE_COPY(QSlot)
     Q_DECLARE_PRIVATE(QSlot)
@@ -92,7 +95,9 @@ protected:
     explicit QSlot(QSlotPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

@@ -54,7 +54,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTMOF
+QT_BEGIN_NAMESPACE
+
+namespace QtMof
+{
 
 QT_MODULE(QtMof)
 
@@ -69,31 +72,31 @@ class Q_MOF_EXPORT QBehavioralFeature : public QWrappedObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(QSet<QElement *> ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(QSet<QComment *> ownedComments READ ownedComments)
+    Q_PROPERTY(QSet<QtMof::QElement *> ownedElements READ ownedElements)
+    Q_PROPERTY(QtMof::QElement * owner READ owner)
+    Q_PROPERTY(QSet<QtMof::QComment *> ownedComments READ ownedComments)
 
     Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QtMof::VisibilityKind visibility READ visibility WRITE setVisibility)
+    Q_PROPERTY(QtMofNS::VisibilityKind visibility READ visibility WRITE setVisibility)
     Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(QtMof::QNamespace * namespace_ READ namespace_)
 
     Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
-    Q_PROPERTY(QSet<QRedefinableElement *> redefinedElements READ redefinedElements)
-    Q_PROPERTY(QSet<QClassifier *> redefinitionContexts READ redefinitionContexts)
+    Q_PROPERTY(QSet<QtMof::QRedefinableElement *> redefinedElements READ redefinedElements)
+    Q_PROPERTY(QSet<QtMof::QClassifier *> redefinitionContexts READ redefinitionContexts)
 
     Q_PROPERTY(bool isStatic READ isStatic WRITE setStatic RESET unsetStatic)
-    Q_PROPERTY(QSet<QClassifier *> featuringClassifiers READ featuringClassifiers)
+    Q_PROPERTY(QSet<QtMof::QClassifier *> featuringClassifiers READ featuringClassifiers)
 
-    Q_PROPERTY(QSet<QPackageImport *> packageImports READ packageImports)
-    Q_PROPERTY(QSet<QNamedElement *> members READ members)
-    Q_PROPERTY(QSet<QPackageableElement *> importedMembers READ importedMembers STORED false)
-    Q_PROPERTY(QSet<QElementImport *> elementImports READ elementImports)
-    Q_PROPERTY(QSet<QConstraint *> ownedRules READ ownedRules)
-    Q_PROPERTY(QSet<QNamedElement *> ownedMembers READ ownedMembers)
+    Q_PROPERTY(QSet<QtMof::QPackageImport *> packageImports READ packageImports)
+    Q_PROPERTY(QSet<QtMof::QNamedElement *> members READ members)
+    Q_PROPERTY(QSet<QtMof::QPackageableElement *> importedMembers READ importedMembers STORED false)
+    Q_PROPERTY(QSet<QtMof::QElementImport *> elementImports READ elementImports)
+    Q_PROPERTY(QSet<QtMof::QConstraint *> ownedRules READ ownedRules)
+    Q_PROPERTY(QSet<QtMof::QNamedElement *> ownedMembers READ ownedMembers)
 
-    Q_PROPERTY(QSet<QType *> raisedExceptions READ raisedExceptions)
-    Q_PROPERTY(QList<QParameter *> ownedParameters READ ownedParameters)
+    Q_PROPERTY(QSet<QtMof::QType *> raisedExceptions READ raisedExceptions)
+    Q_PROPERTY(QList<QtMof::QParameter *> ownedParameters READ ownedParameters)
 
     Q_DISABLE_COPY(QBehavioralFeature)
     Q_DECLARE_PRIVATE(QBehavioralFeature)
@@ -112,8 +115,8 @@ public:
     // Attributes from aggregated QNamedElement
     Q_INVOKABLE QString name() const;
     Q_INVOKABLE void setName(QString name);
-    Q_INVOKABLE QtMof::VisibilityKind visibility() const;
-    Q_INVOKABLE void setVisibility(QtMof::VisibilityKind visibility);
+    Q_INVOKABLE QtMofNS::VisibilityKind visibility() const;
+    Q_INVOKABLE void setVisibility(QtMofNS::VisibilityKind visibility);
     Q_INVOKABLE QString qualifiedName() const;
 
     // Association ends from aggregated QNamedElement
@@ -171,7 +174,9 @@ private:
     QNamespace *_wrappedNamespace;
 };
 
-QT_END_NAMESPACE_QTMOF
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

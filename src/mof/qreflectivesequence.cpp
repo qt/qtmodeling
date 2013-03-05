@@ -46,7 +46,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTMOF
+QT_BEGIN_NAMESPACE
+
+namespace QtMof
+{
 
 QReflectiveSequencePrivate::QReflectiveSequencePrivate()
 {
@@ -110,7 +113,9 @@ void QReflectiveSequence::setPropertyData()
     QReflectiveCollection::setPropertyData();
 }
 
-#include "moc_qreflectivesequence.cpp"
+}
 
-QT_END_NAMESPACE_QTMOF
+QT_END_NAMESPACE
+
+#include "moc_qreflectivesequence.cpp"
 

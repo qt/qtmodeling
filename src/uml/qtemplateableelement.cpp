@@ -48,7 +48,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QTemplateableElementPrivate::QTemplateableElementPrivate() :
     ownedTemplateSignature(0)
@@ -186,24 +189,26 @@ QSet<QParameterableElement *> QTemplateableElement::parameterableElements() cons
 
 void QTemplateableElement::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateableElement")][QString::fromLatin1("ownedTemplateSignature")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateableElement")][QString::fromLatin1("ownedTemplateSignature")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateableElement")][QString::fromLatin1("ownedTemplateSignature")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The optional template signature specifying the formal template parameters.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateableElement")][QString::fromLatin1("ownedTemplateSignature")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateableElement")][QString::fromLatin1("ownedTemplateSignature")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateableElement")][QString::fromLatin1("ownedTemplateSignature")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QTemplateSignature::template");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTemplateableElement")][QString::fromLatin1("ownedTemplateSignature")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTemplateableElement")][QString::fromLatin1("ownedTemplateSignature")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTemplateableElement")][QString::fromLatin1("ownedTemplateSignature")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The optional template signature specifying the formal template parameters.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTemplateableElement")][QString::fromLatin1("ownedTemplateSignature")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTemplateableElement")][QString::fromLatin1("ownedTemplateSignature")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTemplateableElement")][QString::fromLatin1("ownedTemplateSignature")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QTemplateSignature::template");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateableElement")][QString::fromLatin1("templateBindings")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateableElement")][QString::fromLatin1("templateBindings")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateableElement")][QString::fromLatin1("templateBindings")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The optional bindings from this element to templates.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateableElement")][QString::fromLatin1("templateBindings")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateableElement")][QString::fromLatin1("templateBindings")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QTemplateableElement")][QString::fromLatin1("templateBindings")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QTemplateBinding::boundElement");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTemplateableElement")][QString::fromLatin1("templateBindings")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTemplateableElement")][QString::fromLatin1("templateBindings")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTemplateableElement")][QString::fromLatin1("templateBindings")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The optional bindings from this element to templates.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTemplateableElement")][QString::fromLatin1("templateBindings")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTemplateableElement")][QString::fromLatin1("templateBindings")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QTemplateableElement")][QString::fromLatin1("templateBindings")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QTemplateBinding::boundElement");
 
     QElement::setPropertyData();
 }
 
-#include "moc_qtemplateableelement.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qtemplateableelement.cpp"
 

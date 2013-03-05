@@ -52,7 +52,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -68,12 +71,12 @@ class Q_UML_EXPORT QNamespace : public QNamedElement
 {
     Q_OBJECT
 
-    Q_PROPERTY(QSet<QPackageImport *> packageImports READ packageImports)
-    Q_PROPERTY(QSet<QNamedElement *> members READ members)
-    Q_PROPERTY(QSet<QPackageableElement *> importedMembers READ importedMembers STORED false)
-    Q_PROPERTY(QSet<QElementImport *> elementImports READ elementImports)
-    Q_PROPERTY(QSet<QConstraint *> ownedRules READ ownedRules)
-    Q_PROPERTY(QSet<QNamedElement *> ownedMembers READ ownedMembers)
+    Q_PROPERTY(QSet<QtUml::QPackageImport *> packageImports READ packageImports)
+    Q_PROPERTY(QSet<QtUml::QNamedElement *> members READ members)
+    Q_PROPERTY(QSet<QtUml::QPackageableElement *> importedMembers READ importedMembers STORED false)
+    Q_PROPERTY(QSet<QtUml::QElementImport *> elementImports READ elementImports)
+    Q_PROPERTY(QSet<QtUml::QConstraint *> ownedRules READ ownedRules)
+    Q_PROPERTY(QSet<QtUml::QNamedElement *> ownedMembers READ ownedMembers)
 
     Q_DISABLE_COPY(QNamespace)
     Q_DECLARE_PRIVATE(QNamespace)
@@ -111,7 +114,9 @@ protected:
     explicit QNamespace(QNamespacePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

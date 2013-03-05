@@ -51,7 +51,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -65,8 +68,8 @@ class Q_UML_EXPORT QCollaborationUse : public QNamedElement
 {
     Q_OBJECT
 
-    Q_PROPERTY(QCollaboration * type READ type WRITE setType)
-    Q_PROPERTY(QSet<QDependency *> roleBindings READ roleBindings)
+    Q_PROPERTY(QtUml::QCollaboration * type READ type WRITE setType)
+    Q_PROPERTY(QSet<QtUml::QDependency *> roleBindings READ roleBindings)
 
     Q_DISABLE_COPY(QCollaborationUse)
     Q_DECLARE_PRIVATE(QCollaborationUse)
@@ -88,7 +91,9 @@ protected:
     explicit QCollaborationUse(QCollaborationUsePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

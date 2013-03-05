@@ -44,7 +44,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QPrimitiveTypePrivate::QPrimitiveTypePrivate()
 {
@@ -83,7 +86,9 @@ void QPrimitiveType::setPropertyData()
     QDataType::setPropertyData();
 }
 
-#include "moc_qprimitivetype.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qprimitivetype.cpp"
 

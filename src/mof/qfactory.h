@@ -52,7 +52,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTMOF
+QT_BEGIN_NAMESPACE
+
+namespace QtMof
+{
 
 QT_MODULE(QtMof)
 
@@ -71,7 +74,7 @@ class Q_MOF_EXPORT QFactory : public QElement
 {
     Q_OBJECT
 
-    Q_PROPERTY(QPackage * package READ package WRITE setPackage)
+    Q_PROPERTY(QtMof::QPackage * package READ package WRITE setPackage)
 
     Q_DISABLE_COPY(QFactory)
     Q_DECLARE_PRIVATE(QFactory)
@@ -97,7 +100,9 @@ protected:
     explicit QFactory(QFactoryPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTMOF
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

@@ -48,11 +48,14 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QObjectNodePrivate::QObjectNodePrivate() :
     isControlType(false),
-    ordering(QtUml::ObjectNodeOrderingFIFO),
+    ordering(QtUmlNS::ObjectNodeOrderingFIFO),
     upperBound(0),
     selection(0)
 {
@@ -148,12 +151,12 @@ void QObjectNode::setName(QString name)
 /*!
     Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility.
  */
-QtUml::VisibilityKind QObjectNode::visibility() const
+QtUmlNS::VisibilityKind QObjectNode::visibility() const
 {
     return (qwrappedobject_cast<const QNamedElement *>(this))->visibility();
 }
 
-void QObjectNode::setVisibility(QtUml::VisibilityKind visibility)
+void QObjectNode::setVisibility(QtUmlNS::VisibilityKind visibility)
 {
     (qwrappedobject_cast<QNamedElement *>(this))->setVisibility(visibility);
 }
@@ -434,7 +437,7 @@ void QObjectNode::unsetControlType()
 /*!
     Tells whether and how the tokens in the object node are ordered for selection to traverse edges outgoing from the object node.
  */
-QtUml::ObjectNodeOrderingKind QObjectNode::ordering() const
+QtUmlNS::ObjectNodeOrderingKind QObjectNode::ordering() const
 {
     // This is a read-write attribute
 
@@ -442,7 +445,7 @@ QtUml::ObjectNodeOrderingKind QObjectNode::ordering() const
     return d->ordering;
 }
 
-void QObjectNode::setOrdering(QtUml::ObjectNodeOrderingKind ordering)
+void QObjectNode::setOrdering(QtUmlNS::ObjectNodeOrderingKind ordering)
 {
     // This is a read-write attribute
 
@@ -455,7 +458,7 @@ void QObjectNode::setOrdering(QtUml::ObjectNodeOrderingKind ordering)
 
 void QObjectNode::unsetOrdering()
 {
-    setOrdering(QtUml::ObjectNodeOrderingFIFO);
+    setOrdering(QtUmlNS::ObjectNodeOrderingFIFO);
     Q_D(QObjectNode);
     d->modifiedResettableProperties.removeAll(QString::fromLatin1("ordering"));
 }
@@ -547,45 +550,47 @@ void QObjectNode::removeInState(QState *inState)
 
 void QObjectNode::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectNode")][QString::fromLatin1("isControlType")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectNode")][QString::fromLatin1("isControlType")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectNode")][QString::fromLatin1("isControlType")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Tells whether the type of the object node is to be treated as control.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectNode")][QString::fromLatin1("isControlType")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectNode")][QString::fromLatin1("isControlType")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectNode")][QString::fromLatin1("isControlType")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QObjectNode")][QString::fromLatin1("isControlType")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QObjectNode")][QString::fromLatin1("isControlType")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QObjectNode")][QString::fromLatin1("isControlType")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Tells whether the type of the object node is to be treated as control.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QObjectNode")][QString::fromLatin1("isControlType")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QObjectNode")][QString::fromLatin1("isControlType")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QObjectNode")][QString::fromLatin1("isControlType")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectNode")][QString::fromLatin1("ordering")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectNode")][QString::fromLatin1("ordering")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectNode")][QString::fromLatin1("ordering")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Tells whether and how the tokens in the object node are ordered for selection to traverse edges outgoing from the object node.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectNode")][QString::fromLatin1("ordering")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectNode")][QString::fromLatin1("ordering")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectNode")][QString::fromLatin1("ordering")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QObjectNode")][QString::fromLatin1("ordering")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QObjectNode")][QString::fromLatin1("ordering")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QObjectNode")][QString::fromLatin1("ordering")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Tells whether and how the tokens in the object node are ordered for selection to traverse edges outgoing from the object node.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QObjectNode")][QString::fromLatin1("ordering")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QObjectNode")][QString::fromLatin1("ordering")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QObjectNode")][QString::fromLatin1("ordering")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectNode")][QString::fromLatin1("upperBound")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectNode")][QString::fromLatin1("upperBound")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectNode")][QString::fromLatin1("upperBound")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The maximum number of tokens allowed in the node. Objects cannot flow into the node if the upper bound is reached.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectNode")][QString::fromLatin1("upperBound")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectNode")][QString::fromLatin1("upperBound")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectNode")][QString::fromLatin1("upperBound")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QObjectNode")][QString::fromLatin1("upperBound")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QObjectNode")][QString::fromLatin1("upperBound")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QObjectNode")][QString::fromLatin1("upperBound")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The maximum number of tokens allowed in the node. Objects cannot flow into the node if the upper bound is reached.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QObjectNode")][QString::fromLatin1("upperBound")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QObjectNode")][QString::fromLatin1("upperBound")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QObjectNode")][QString::fromLatin1("upperBound")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectNode")][QString::fromLatin1("selection")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectNode")][QString::fromLatin1("selection")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectNode")][QString::fromLatin1("selection")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Selects tokens for outgoing edges.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectNode")][QString::fromLatin1("selection")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectNode")][QString::fromLatin1("selection")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectNode")][QString::fromLatin1("selection")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QObjectNode")][QString::fromLatin1("selection")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QObjectNode")][QString::fromLatin1("selection")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QObjectNode")][QString::fromLatin1("selection")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Selects tokens for outgoing edges.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QObjectNode")][QString::fromLatin1("selection")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QObjectNode")][QString::fromLatin1("selection")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QObjectNode")][QString::fromLatin1("selection")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectNode")][QString::fromLatin1("inState")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectNode")][QString::fromLatin1("inState")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectNode")][QString::fromLatin1("inState")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The required states of the object available at this point in the activity.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectNode")][QString::fromLatin1("inState")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectNode")][QString::fromLatin1("inState")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QObjectNode")][QString::fromLatin1("inState")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QObjectNode")][QString::fromLatin1("inState")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QObjectNode")][QString::fromLatin1("inState")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QObjectNode")][QString::fromLatin1("inState")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The required states of the object available at this point in the activity.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QObjectNode")][QString::fromLatin1("inState")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QObjectNode")][QString::fromLatin1("inState")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QObjectNode")][QString::fromLatin1("inState")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::setPropertyData();
 }
 
-#include "moc_qobjectnode.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qobjectnode.cpp"
 

@@ -51,7 +51,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -64,7 +67,7 @@ class Q_UML_EXPORT QSequenceNode : public QStructuredActivityNode
 {
     Q_OBJECT
 
-    Q_PROPERTY(QList<QExecutableNode *> executableNodes READ executableNodes)
+    Q_PROPERTY(QList<QtUml::QExecutableNode *> executableNodes READ executableNodes)
 
     Q_DISABLE_COPY(QSequenceNode)
     Q_DECLARE_PRIVATE(QSequenceNode)
@@ -84,7 +87,9 @@ protected:
     explicit QSequenceNode(QSequenceNodePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

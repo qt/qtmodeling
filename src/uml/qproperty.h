@@ -59,7 +59,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -79,40 +82,40 @@ class Q_UML_EXPORT QProperty : public QWrappedObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(QSet<QElement *> ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(QSet<QComment *> ownedComments READ ownedComments)
+    Q_PROPERTY(QSet<QtUml::QElement *> ownedElements READ ownedElements)
+    Q_PROPERTY(QtUml::QElement * owner READ owner)
+    Q_PROPERTY(QSet<QtUml::QComment *> ownedComments READ ownedComments)
 
     Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
+    Q_PROPERTY(QtUmlNS::VisibilityKind visibility READ visibility WRITE setVisibility)
     Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
-    Q_PROPERTY(QSet<QDependency *> clientDependencies READ clientDependencies)
+    Q_PROPERTY(QtUml::QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
+    Q_PROPERTY(QtUml::QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(QSet<QtUml::QDependency *> clientDependencies READ clientDependencies)
 
-    Q_PROPERTY(QType * type READ type WRITE setType)
+    Q_PROPERTY(QtUml::QType * type READ type WRITE setType)
 
     Q_PROPERTY(qint32 upper READ upper WRITE setUpper RESET unsetUpper STORED false)
     Q_PROPERTY(bool isUnique READ isUnique WRITE setUnique RESET unsetUnique)
     Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered RESET unsetOrdered)
     Q_PROPERTY(qint32 lower READ lower WRITE setLower STORED false)
-    Q_PROPERTY(QValueSpecification * upperValue READ upperValue WRITE setUpperValue)
-    Q_PROPERTY(QValueSpecification * lowerValue READ lowerValue WRITE setLowerValue)
+    Q_PROPERTY(QtUml::QValueSpecification * upperValue READ upperValue WRITE setUpperValue)
+    Q_PROPERTY(QtUml::QValueSpecification * lowerValue READ lowerValue WRITE setLowerValue)
 
     Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
-    Q_PROPERTY(QSet<QRedefinableElement *> redefinedElements READ redefinedElements)
-    Q_PROPERTY(QSet<QClassifier *> redefinitionContexts READ redefinitionContexts)
+    Q_PROPERTY(QSet<QtUml::QRedefinableElement *> redefinedElements READ redefinedElements)
+    Q_PROPERTY(QSet<QtUml::QClassifier *> redefinitionContexts READ redefinitionContexts)
 
     Q_PROPERTY(bool isStatic READ isStatic WRITE setStatic RESET unsetStatic)
-    Q_PROPERTY(QSet<QClassifier *> featuringClassifiers READ featuringClassifiers)
+    Q_PROPERTY(QSet<QtUml::QClassifier *> featuringClassifiers READ featuringClassifiers)
 
-    Q_PROPERTY(QTemplateParameter * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
+    Q_PROPERTY(QtUml::QTemplateParameter * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
 
-    Q_PROPERTY(QList<QConnectorEnd *> ends READ ends STORED false)
-    Q_PROPERTY(QConnectableElementTemplateParameter * templateParameter READ templateParameter WRITE setTemplateParameter)
+    Q_PROPERTY(QList<QtUml::QConnectorEnd *> ends READ ends STORED false)
+    Q_PROPERTY(QtUml::QConnectableElementTemplateParameter * templateParameter READ templateParameter WRITE setTemplateParameter)
 
-    Q_PROPERTY(QSet<QPackageableElement *> deployedElements READ deployedElements STORED false)
-    Q_PROPERTY(QSet<QDeployment *> deployments READ deployments)
+    Q_PROPERTY(QSet<QtUml::QPackageableElement *> deployedElements READ deployedElements STORED false)
+    Q_PROPERTY(QSet<QtUml::QDeployment *> deployments READ deployments)
 
     Q_PROPERTY(bool isDerived READ isDerived WRITE setDerived RESET unsetDerived)
     Q_PROPERTY(QString default_ READ default_ WRITE setDefault_ STORED false)
@@ -120,18 +123,18 @@ class Q_UML_EXPORT QProperty : public QWrappedObject
     Q_PROPERTY(bool isReadOnly READ isReadOnly WRITE setReadOnly RESET unsetReadOnly)
     Q_PROPERTY(bool isID READ isID WRITE setID RESET unsetID)
     Q_PROPERTY(bool isDerivedUnion READ isDerivedUnion WRITE setDerivedUnion RESET unsetDerivedUnion)
-    Q_PROPERTY(QtUml::AggregationKind aggregation READ aggregation WRITE setAggregation RESET unsetAggregation)
-    Q_PROPERTY(QSet<QProperty *> subsettedProperties READ subsettedProperties)
-    Q_PROPERTY(QAssociation * owningAssociation READ owningAssociation WRITE setOwningAssociation)
-    Q_PROPERTY(QList<QProperty *> qualifiers READ qualifiers)
-    Q_PROPERTY(QValueSpecification * defaultValue READ defaultValue WRITE setDefaultValue)
-    Q_PROPERTY(QClass * class_ READ class_ WRITE setClass_)
-    Q_PROPERTY(QProperty * opposite READ opposite WRITE setOpposite STORED false)
-    Q_PROPERTY(QProperty * associationEnd READ associationEnd WRITE setAssociationEnd)
-    Q_PROPERTY(QDataType * datatype READ datatype WRITE setDatatype)
-    Q_PROPERTY(QSet<QProperty *> redefinedProperties READ redefinedProperties)
-    Q_PROPERTY(QAssociation * association READ association WRITE setAssociation)
-    Q_PROPERTY(QInterface * interface_ READ interface_ WRITE setInterface_)
+    Q_PROPERTY(QtUmlNS::AggregationKind aggregation READ aggregation WRITE setAggregation RESET unsetAggregation)
+    Q_PROPERTY(QSet<QtUml::QProperty *> subsettedProperties READ subsettedProperties)
+    Q_PROPERTY(QtUml::QAssociation * owningAssociation READ owningAssociation WRITE setOwningAssociation)
+    Q_PROPERTY(QList<QtUml::QProperty *> qualifiers READ qualifiers)
+    Q_PROPERTY(QtUml::QValueSpecification * defaultValue READ defaultValue WRITE setDefaultValue)
+    Q_PROPERTY(QtUml::QClass * class_ READ class_ WRITE setClass_)
+    Q_PROPERTY(QtUml::QProperty * opposite READ opposite WRITE setOpposite STORED false)
+    Q_PROPERTY(QtUml::QProperty * associationEnd READ associationEnd WRITE setAssociationEnd)
+    Q_PROPERTY(QtUml::QDataType * datatype READ datatype WRITE setDatatype)
+    Q_PROPERTY(QSet<QtUml::QProperty *> redefinedProperties READ redefinedProperties)
+    Q_PROPERTY(QtUml::QAssociation * association READ association WRITE setAssociation)
+    Q_PROPERTY(QtUml::QInterface * interface_ READ interface_ WRITE setInterface_)
 
     Q_DISABLE_COPY(QProperty)
     Q_DECLARE_PRIVATE(QProperty)
@@ -150,8 +153,8 @@ public:
     // Attributes from aggregated QNamedElement
     Q_INVOKABLE QString name() const;
     Q_INVOKABLE void setName(QString name);
-    Q_INVOKABLE QtUml::VisibilityKind visibility() const;
-    Q_INVOKABLE void setVisibility(QtUml::VisibilityKind visibility);
+    Q_INVOKABLE QtUmlNS::VisibilityKind visibility() const;
+    Q_INVOKABLE void setVisibility(QtUmlNS::VisibilityKind visibility);
     Q_INVOKABLE QString qualifiedName() const;
 
     // Association ends from aggregated QNamedElement
@@ -235,8 +238,8 @@ public:
     Q_INVOKABLE bool isDerivedUnion() const;
     Q_INVOKABLE void setDerivedUnion(bool isDerivedUnion);
     Q_INVOKABLE void unsetDerivedUnion();
-    Q_INVOKABLE QtUml::AggregationKind aggregation() const;
-    Q_INVOKABLE void setAggregation(QtUml::AggregationKind aggregation);
+    Q_INVOKABLE QtUmlNS::AggregationKind aggregation() const;
+    Q_INVOKABLE void setAggregation(QtUmlNS::AggregationKind aggregation);
     Q_INVOKABLE void unsetAggregation();
 
     // Association ends from QProperty
@@ -284,7 +287,9 @@ private:
     QDeploymentTarget *_wrappedDeploymentTarget;
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

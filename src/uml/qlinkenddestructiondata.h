@@ -48,7 +48,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -62,7 +65,7 @@ class Q_UML_EXPORT QLinkEndDestructionData : public QLinkEndData
     Q_OBJECT
 
     Q_PROPERTY(bool isDestroyDuplicates READ isDestroyDuplicates WRITE setDestroyDuplicates RESET unsetDestroyDuplicates)
-    Q_PROPERTY(QInputPin * destroyAt READ destroyAt WRITE setDestroyAt)
+    Q_PROPERTY(QtUml::QInputPin * destroyAt READ destroyAt WRITE setDestroyAt)
 
     Q_DISABLE_COPY(QLinkEndDestructionData)
     Q_DECLARE_PRIVATE(QLinkEndDestructionData)
@@ -86,7 +89,9 @@ protected:
     explicit QLinkEndDestructionData(QLinkEndDestructionDataPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

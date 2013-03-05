@@ -51,7 +51,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -69,14 +72,14 @@ class Q_UML_EXPORT QActivityNode : public QRedefinableElement
 {
     Q_OBJECT
 
-    Q_PROPERTY(QSet<QActivityNode *> redefinedNodes READ redefinedNodes)
-    Q_PROPERTY(QSet<QActivityEdge *> incomings READ incomings)
-    Q_PROPERTY(QActivity * activity READ activity WRITE setActivity)
-    Q_PROPERTY(QSet<QActivityGroup *> inGroup READ inGroup)
-    Q_PROPERTY(QStructuredActivityNode * inStructuredNode READ inStructuredNode WRITE setInStructuredNode)
-    Q_PROPERTY(QSet<QActivityPartition *> inPartition READ inPartition)
-    Q_PROPERTY(QSet<QInterruptibleActivityRegion *> inInterruptibleRegion READ inInterruptibleRegion)
-    Q_PROPERTY(QSet<QActivityEdge *> outgoings READ outgoings)
+    Q_PROPERTY(QSet<QtUml::QActivityNode *> redefinedNodes READ redefinedNodes)
+    Q_PROPERTY(QSet<QtUml::QActivityEdge *> incomings READ incomings)
+    Q_PROPERTY(QtUml::QActivity * activity READ activity WRITE setActivity)
+    Q_PROPERTY(QSet<QtUml::QActivityGroup *> inGroup READ inGroup)
+    Q_PROPERTY(QtUml::QStructuredActivityNode * inStructuredNode READ inStructuredNode WRITE setInStructuredNode)
+    Q_PROPERTY(QSet<QtUml::QActivityPartition *> inPartition READ inPartition)
+    Q_PROPERTY(QSet<QtUml::QInterruptibleActivityRegion *> inInterruptibleRegion READ inInterruptibleRegion)
+    Q_PROPERTY(QSet<QtUml::QActivityEdge *> outgoings READ outgoings)
 
     Q_DISABLE_COPY(QActivityNode)
     Q_DECLARE_PRIVATE(QActivityNode)
@@ -116,7 +119,9 @@ protected:
     explicit QActivityNode(QActivityNodePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

@@ -53,7 +53,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -67,9 +70,9 @@ class Q_UML_EXPORT QBehavioredClassifier : public QClassifier
 {
     Q_OBJECT
 
-    Q_PROPERTY(QSet<QBehavior *> ownedBehaviors READ ownedBehaviors)
-    Q_PROPERTY(QSet<QInterfaceRealization *> interfaceRealizations READ interfaceRealizations)
-    Q_PROPERTY(QBehavior * classifierBehavior READ classifierBehavior WRITE setClassifierBehavior)
+    Q_PROPERTY(QSet<QtUml::QBehavior *> ownedBehaviors READ ownedBehaviors)
+    Q_PROPERTY(QSet<QtUml::QInterfaceRealization *> interfaceRealizations READ interfaceRealizations)
+    Q_PROPERTY(QtUml::QBehavior * classifierBehavior READ classifierBehavior WRITE setClassifierBehavior)
 
     Q_DISABLE_COPY(QBehavioredClassifier)
     Q_DECLARE_PRIVATE(QBehavioredClassifier)
@@ -98,7 +101,9 @@ protected:
     explicit QBehavioredClassifier(QBehavioredClassifierPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

@@ -51,7 +51,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QInformationFlowPrivate::QInformationFlowPrivate()
 {
@@ -264,19 +267,19 @@ void QInformationFlow::removeClientDependency(QDependency *clientDependency)
 /*!
     Indicates that packageable elements must always have a visibility, i.e., visibility is not optional.
  */
-QtUml::VisibilityKind QInformationFlow::visibility() const
+QtUmlNS::VisibilityKind QInformationFlow::visibility() const
 {
     return (qwrappedobject_cast<const QPackageableElement *>(this))->visibility();
 }
 
-void QInformationFlow::setVisibility(QtUml::VisibilityKind visibility)
+void QInformationFlow::setVisibility(QtUmlNS::VisibilityKind visibility)
 {
     (qwrappedobject_cast<QPackageableElement *>(this))->setVisibility(visibility);
 }
 
 void QInformationFlow::unsetVisibility()
 {
-    setVisibility(QtUml::VisibilityPublic);
+    setVisibility(QtUmlNS::VisibilityPublic);
     Q_D(QInformationFlow);
     d->modifiedResettableProperties.removeAll(QString::fromLatin1("visibility"));
 }
@@ -516,59 +519,61 @@ void QInformationFlow::removeRealization(QRelationship *realization)
 
 void QInformationFlow::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationFlow")][QString::fromLatin1("informationTargets")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationFlow")][QString::fromLatin1("informationTargets")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationFlow")][QString::fromLatin1("informationTargets")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Defines to which target the conveyed InformationItems are directed.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationFlow")][QString::fromLatin1("informationTargets")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationFlow")][QString::fromLatin1("informationTargets")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QDirectedRelationship::targets");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationFlow")][QString::fromLatin1("informationTargets")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInformationFlow")][QString::fromLatin1("informationTargets")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInformationFlow")][QString::fromLatin1("informationTargets")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInformationFlow")][QString::fromLatin1("informationTargets")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Defines to which target the conveyed InformationItems are directed.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInformationFlow")][QString::fromLatin1("informationTargets")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInformationFlow")][QString::fromLatin1("informationTargets")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QDirectedRelationship::targets");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInformationFlow")][QString::fromLatin1("informationTargets")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationFlow")][QString::fromLatin1("realizingConnectors")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationFlow")][QString::fromLatin1("realizingConnectors")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationFlow")][QString::fromLatin1("realizingConnectors")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Determines which Connectors will realize the specified flow.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationFlow")][QString::fromLatin1("realizingConnectors")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationFlow")][QString::fromLatin1("realizingConnectors")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationFlow")][QString::fromLatin1("realizingConnectors")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInformationFlow")][QString::fromLatin1("realizingConnectors")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInformationFlow")][QString::fromLatin1("realizingConnectors")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInformationFlow")][QString::fromLatin1("realizingConnectors")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Determines which Connectors will realize the specified flow.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInformationFlow")][QString::fromLatin1("realizingConnectors")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInformationFlow")][QString::fromLatin1("realizingConnectors")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInformationFlow")][QString::fromLatin1("realizingConnectors")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationFlow")][QString::fromLatin1("conveyed")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationFlow")][QString::fromLatin1("conveyed")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationFlow")][QString::fromLatin1("conveyed")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the information items that may circulate on this information flow.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationFlow")][QString::fromLatin1("conveyed")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationFlow")][QString::fromLatin1("conveyed")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationFlow")][QString::fromLatin1("conveyed")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInformationFlow")][QString::fromLatin1("conveyed")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInformationFlow")][QString::fromLatin1("conveyed")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInformationFlow")][QString::fromLatin1("conveyed")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the information items that may circulate on this information flow.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInformationFlow")][QString::fromLatin1("conveyed")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInformationFlow")][QString::fromLatin1("conveyed")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInformationFlow")][QString::fromLatin1("conveyed")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationFlow")][QString::fromLatin1("informationSources")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationFlow")][QString::fromLatin1("informationSources")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationFlow")][QString::fromLatin1("informationSources")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Defines from which source the conveyed InformationItems are initiated.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationFlow")][QString::fromLatin1("informationSources")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationFlow")][QString::fromLatin1("informationSources")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QDirectedRelationship::sources");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationFlow")][QString::fromLatin1("informationSources")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInformationFlow")][QString::fromLatin1("informationSources")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInformationFlow")][QString::fromLatin1("informationSources")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInformationFlow")][QString::fromLatin1("informationSources")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Defines from which source the conveyed InformationItems are initiated.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInformationFlow")][QString::fromLatin1("informationSources")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInformationFlow")][QString::fromLatin1("informationSources")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QDirectedRelationship::sources");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInformationFlow")][QString::fromLatin1("informationSources")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationFlow")][QString::fromLatin1("realizingMessages")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationFlow")][QString::fromLatin1("realizingMessages")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationFlow")][QString::fromLatin1("realizingMessages")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Determines which Messages will realize the specified flow.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationFlow")][QString::fromLatin1("realizingMessages")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationFlow")][QString::fromLatin1("realizingMessages")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationFlow")][QString::fromLatin1("realizingMessages")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInformationFlow")][QString::fromLatin1("realizingMessages")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInformationFlow")][QString::fromLatin1("realizingMessages")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInformationFlow")][QString::fromLatin1("realizingMessages")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Determines which Messages will realize the specified flow.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInformationFlow")][QString::fromLatin1("realizingMessages")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInformationFlow")][QString::fromLatin1("realizingMessages")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInformationFlow")][QString::fromLatin1("realizingMessages")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationFlow")][QString::fromLatin1("realizingActivityEdges")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationFlow")][QString::fromLatin1("realizingActivityEdges")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationFlow")][QString::fromLatin1("realizingActivityEdges")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Determines which ActivityEdges will realize the specified flow.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationFlow")][QString::fromLatin1("realizingActivityEdges")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationFlow")][QString::fromLatin1("realizingActivityEdges")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationFlow")][QString::fromLatin1("realizingActivityEdges")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInformationFlow")][QString::fromLatin1("realizingActivityEdges")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInformationFlow")][QString::fromLatin1("realizingActivityEdges")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInformationFlow")][QString::fromLatin1("realizingActivityEdges")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Determines which ActivityEdges will realize the specified flow.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInformationFlow")][QString::fromLatin1("realizingActivityEdges")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInformationFlow")][QString::fromLatin1("realizingActivityEdges")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInformationFlow")][QString::fromLatin1("realizingActivityEdges")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationFlow")][QString::fromLatin1("realizations")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationFlow")][QString::fromLatin1("realizations")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationFlow")][QString::fromLatin1("realizations")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Determines which Relationship will realize the specified flow");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationFlow")][QString::fromLatin1("realizations")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationFlow")][QString::fromLatin1("realizations")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QInformationFlow")][QString::fromLatin1("realizations")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInformationFlow")][QString::fromLatin1("realizations")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInformationFlow")][QString::fromLatin1("realizations")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInformationFlow")][QString::fromLatin1("realizations")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Determines which Relationship will realize the specified flow");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInformationFlow")][QString::fromLatin1("realizations")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInformationFlow")][QString::fromLatin1("realizations")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QInformationFlow")][QString::fromLatin1("realizations")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::setPropertyData();
 }
 
-#include "moc_qinformationflow.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qinformationflow.cpp"
 

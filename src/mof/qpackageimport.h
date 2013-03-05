@@ -51,7 +51,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTMOF
+QT_BEGIN_NAMESPACE
+
+namespace QtMof
+{
 
 QT_MODULE(QtMof)
 
@@ -65,9 +68,9 @@ class Q_MOF_EXPORT QPackageImport : public QDirectedRelationship
 {
     Q_OBJECT
 
-    Q_PROPERTY(QtMof::VisibilityKind visibility READ visibility WRITE setVisibility RESET unsetVisibility)
-    Q_PROPERTY(QNamespace * importingNamespace READ importingNamespace WRITE setImportingNamespace)
-    Q_PROPERTY(QPackage * importedPackage READ importedPackage WRITE setImportedPackage)
+    Q_PROPERTY(QtMofNS::VisibilityKind visibility READ visibility WRITE setVisibility RESET unsetVisibility)
+    Q_PROPERTY(QtMof::QNamespace * importingNamespace READ importingNamespace WRITE setImportingNamespace)
+    Q_PROPERTY(QtMof::QPackage * importedPackage READ importedPackage WRITE setImportedPackage)
 
     Q_DISABLE_COPY(QPackageImport)
     Q_DECLARE_PRIVATE(QPackageImport)
@@ -77,8 +80,8 @@ public:
     virtual ~QPackageImport();
 
     // Attributes from QPackageImport
-    Q_INVOKABLE QtMof::VisibilityKind visibility() const;
-    Q_INVOKABLE void setVisibility(QtMof::VisibilityKind visibility);
+    Q_INVOKABLE QtMofNS::VisibilityKind visibility() const;
+    Q_INVOKABLE void setVisibility(QtMofNS::VisibilityKind visibility);
     Q_INVOKABLE void unsetVisibility();
 
     // Association ends from QPackageImport
@@ -93,7 +96,9 @@ protected:
     explicit QPackageImport(QPackageImportPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTMOF
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

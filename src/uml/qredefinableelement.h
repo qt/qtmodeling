@@ -51,7 +51,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -65,8 +68,8 @@ class Q_UML_EXPORT QRedefinableElement : public QNamedElement
     Q_OBJECT
 
     Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
-    Q_PROPERTY(QSet<QRedefinableElement *> redefinedElements READ redefinedElements)
-    Q_PROPERTY(QSet<QClassifier *> redefinitionContexts READ redefinitionContexts)
+    Q_PROPERTY(QSet<QtUml::QRedefinableElement *> redefinedElements READ redefinedElements)
+    Q_PROPERTY(QSet<QtUml::QClassifier *> redefinitionContexts READ redefinitionContexts)
 
     Q_DISABLE_COPY(QRedefinableElement)
     Q_DECLARE_PRIVATE(QRedefinableElement)
@@ -94,7 +97,9 @@ protected:
     explicit QRedefinableElement(QRedefinableElementPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

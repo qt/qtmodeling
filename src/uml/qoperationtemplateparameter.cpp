@@ -46,7 +46,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QOperationTemplateParameterPrivate::QOperationTemplateParameterPrivate() :
     parameteredElement(0)
@@ -116,17 +119,19 @@ void QOperationTemplateParameter::setParameteredElement(QOperation *parameteredE
 
 void QOperationTemplateParameter::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QOperationTemplateParameter")][QString::fromLatin1("parameteredElement")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QOperationTemplateParameter")][QString::fromLatin1("parameteredElement")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QOperationTemplateParameter")][QString::fromLatin1("parameteredElement")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The operation for this template parameter.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QOperationTemplateParameter")][QString::fromLatin1("parameteredElement")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QTemplateParameter::parameteredElement");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QOperationTemplateParameter")][QString::fromLatin1("parameteredElement")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QOperationTemplateParameter")][QString::fromLatin1("parameteredElement")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QOperation::templateParameter");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QOperationTemplateParameter")][QString::fromLatin1("parameteredElement")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QOperationTemplateParameter")][QString::fromLatin1("parameteredElement")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QOperationTemplateParameter")][QString::fromLatin1("parameteredElement")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The operation for this template parameter.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QOperationTemplateParameter")][QString::fromLatin1("parameteredElement")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QTemplateParameter::parameteredElement");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QOperationTemplateParameter")][QString::fromLatin1("parameteredElement")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QOperationTemplateParameter")][QString::fromLatin1("parameteredElement")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QOperation::templateParameter");
 
     QTemplateParameter::setPropertyData();
 }
 
-#include "moc_qoperationtemplateparameter.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qoperationtemplateparameter.cpp"
 

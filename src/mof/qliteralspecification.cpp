@@ -44,7 +44,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTMOF
+QT_BEGIN_NAMESPACE
+
+namespace QtMof
+{
 
 QLiteralSpecificationPrivate::QLiteralSpecificationPrivate()
 {
@@ -83,7 +86,9 @@ void QLiteralSpecification::setPropertyData()
     QValueSpecification::setPropertyData();
 }
 
-#include "moc_qliteralspecification.cpp"
+}
 
-QT_END_NAMESPACE_QTMOF
+QT_END_NAMESPACE
+
+#include "moc_qliteralspecification.cpp"
 

@@ -46,7 +46,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QSequenceNodePrivate::QSequenceNodePrivate()
 {
@@ -125,17 +128,19 @@ void QSequenceNode::removeExecutableNode(QExecutableNode *executableNode)
 
 void QSequenceNode::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QSequenceNode")][QString::fromLatin1("executableNodes")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QSequenceNode")][QString::fromLatin1("executableNodes")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QSequenceNode")][QString::fromLatin1("executableNodes")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An ordered set of executable nodes.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QSequenceNode")][QString::fromLatin1("executableNodes")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QStructuredActivityNode::nodes");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QSequenceNode")][QString::fromLatin1("executableNodes")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QSequenceNode")][QString::fromLatin1("executableNodes")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QSequenceNode")][QString::fromLatin1("executableNodes")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QSequenceNode")][QString::fromLatin1("executableNodes")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QSequenceNode")][QString::fromLatin1("executableNodes")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An ordered set of executable nodes.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QSequenceNode")][QString::fromLatin1("executableNodes")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QStructuredActivityNode::nodes");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QSequenceNode")][QString::fromLatin1("executableNodes")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QSequenceNode")][QString::fromLatin1("executableNodes")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QStructuredActivityNode::setPropertyData();
 }
 
-#include "moc_qsequencenode.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qsequencenode.cpp"
 

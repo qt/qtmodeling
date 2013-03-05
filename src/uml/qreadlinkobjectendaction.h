@@ -48,7 +48,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -63,9 +66,9 @@ class Q_UML_EXPORT QReadLinkObjectEndAction : public QAction
 {
     Q_OBJECT
 
-    Q_PROPERTY(QProperty * end READ end WRITE setEnd)
-    Q_PROPERTY(QInputPin * object READ object WRITE setObject)
-    Q_PROPERTY(QOutputPin * result READ result WRITE setResult)
+    Q_PROPERTY(QtUml::QProperty * end READ end WRITE setEnd)
+    Q_PROPERTY(QtUml::QInputPin * object READ object WRITE setObject)
+    Q_PROPERTY(QtUml::QOutputPin * result READ result WRITE setResult)
 
     Q_DISABLE_COPY(QReadLinkObjectEndAction)
     Q_DECLARE_PRIVATE(QReadLinkObjectEndAction)
@@ -88,7 +91,9 @@ protected:
     explicit QReadLinkObjectEndAction(QReadLinkObjectEndActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

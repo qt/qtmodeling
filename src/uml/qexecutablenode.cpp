@@ -46,7 +46,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QExecutableNodePrivate::QExecutableNodePrivate()
 {
@@ -129,17 +132,19 @@ void QExecutableNode::removeHandler(QExceptionHandler *handler)
 
 void QExecutableNode::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExecutableNode")][QString::fromLatin1("handlers")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExecutableNode")][QString::fromLatin1("handlers")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExecutableNode")][QString::fromLatin1("handlers")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A set of exception handlers that are examined if an uncaught exception propagates to the outer level of the executable node.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExecutableNode")][QString::fromLatin1("handlers")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExecutableNode")][QString::fromLatin1("handlers")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QExecutableNode")][QString::fromLatin1("handlers")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QExceptionHandler::protectedNode");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QExecutableNode")][QString::fromLatin1("handlers")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QExecutableNode")][QString::fromLatin1("handlers")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QExecutableNode")][QString::fromLatin1("handlers")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A set of exception handlers that are examined if an uncaught exception propagates to the outer level of the executable node.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QExecutableNode")][QString::fromLatin1("handlers")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QExecutableNode")][QString::fromLatin1("handlers")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QExecutableNode")][QString::fromLatin1("handlers")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QExceptionHandler::protectedNode");
 
     QActivityNode::setPropertyData();
 }
 
-#include "moc_qexecutablenode.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qexecutablenode.cpp"
 

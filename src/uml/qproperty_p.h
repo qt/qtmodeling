@@ -59,7 +59,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -86,7 +89,7 @@ public:
     bool isReadOnly;
     bool isID;
     bool isDerivedUnion;
-    QtUml::AggregationKind aggregation;
+    QtUmlNS::AggregationKind aggregation;
     QSet<QProperty *> subsettedProperties;
     QAssociation *owningAssociation;
     QList<QProperty *> qualifiers;
@@ -99,7 +102,9 @@ public:
     QInterface *interface_;
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

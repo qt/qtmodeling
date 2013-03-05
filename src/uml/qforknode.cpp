@@ -44,7 +44,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QForkNodePrivate::QForkNodePrivate()
 {
@@ -83,7 +86,9 @@ void QForkNode::setPropertyData()
     QControlNode::setPropertyData();
 }
 
-#include "moc_qforknode.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qforknode.cpp"
 

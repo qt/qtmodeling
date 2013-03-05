@@ -48,7 +48,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -62,7 +65,7 @@ class Q_UML_EXPORT QRemoveVariableValueAction : public QWriteVariableAction
     Q_OBJECT
 
     Q_PROPERTY(bool isRemoveDuplicates READ isRemoveDuplicates WRITE setRemoveDuplicates RESET unsetRemoveDuplicates)
-    Q_PROPERTY(QInputPin * removeAt READ removeAt WRITE setRemoveAt)
+    Q_PROPERTY(QtUml::QInputPin * removeAt READ removeAt WRITE setRemoveAt)
 
     Q_DISABLE_COPY(QRemoveVariableValueAction)
     Q_DECLARE_PRIVATE(QRemoveVariableValueAction)
@@ -86,7 +89,9 @@ protected:
     explicit QRemoveVariableValueAction(QRemoveVariableValueActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

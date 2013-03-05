@@ -56,7 +56,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTMOF
+QT_BEGIN_NAMESPACE
+
+namespace QtMof
+{
 
 QT_MODULE(QtMof)
 
@@ -70,28 +73,28 @@ class Q_MOF_EXPORT QParameter : public QWrappedObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(QSet<QElement *> ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(QSet<QComment *> ownedComments READ ownedComments)
+    Q_PROPERTY(QSet<QtMof::QElement *> ownedElements READ ownedElements)
+    Q_PROPERTY(QtMof::QElement * owner READ owner)
+    Q_PROPERTY(QSet<QtMof::QComment *> ownedComments READ ownedComments)
 
     Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QtMof::VisibilityKind visibility READ visibility WRITE setVisibility)
+    Q_PROPERTY(QtMofNS::VisibilityKind visibility READ visibility WRITE setVisibility)
     Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(QtMof::QNamespace * namespace_ READ namespace_)
 
-    Q_PROPERTY(QType * type READ type WRITE setType)
+    Q_PROPERTY(QtMof::QType * type READ type WRITE setType)
 
     Q_PROPERTY(qint32 upper READ upper WRITE setUpper RESET unsetUpper STORED false)
     Q_PROPERTY(bool isUnique READ isUnique WRITE setUnique RESET unsetUnique)
     Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered RESET unsetOrdered)
     Q_PROPERTY(qint32 lower READ lower WRITE setLower STORED false)
-    Q_PROPERTY(QValueSpecification * upperValue READ upperValue WRITE setUpperValue)
-    Q_PROPERTY(QValueSpecification * lowerValue READ lowerValue WRITE setLowerValue)
+    Q_PROPERTY(QtMof::QValueSpecification * upperValue READ upperValue WRITE setUpperValue)
+    Q_PROPERTY(QtMof::QValueSpecification * lowerValue READ lowerValue WRITE setLowerValue)
 
     Q_PROPERTY(QString default_ READ default_ STORED false)
-    Q_PROPERTY(QtMof::ParameterDirectionKind direction READ direction WRITE setDirection RESET unsetDirection)
-    Q_PROPERTY(QOperation * operation READ operation WRITE setOperation)
-    Q_PROPERTY(QValueSpecification * defaultValue READ defaultValue WRITE setDefaultValue)
+    Q_PROPERTY(QtMofNS::ParameterDirectionKind direction READ direction WRITE setDirection RESET unsetDirection)
+    Q_PROPERTY(QtMof::QOperation * operation READ operation WRITE setOperation)
+    Q_PROPERTY(QtMof::QValueSpecification * defaultValue READ defaultValue WRITE setDefaultValue)
 
     Q_DISABLE_COPY(QParameter)
     Q_DECLARE_PRIVATE(QParameter)
@@ -110,8 +113,8 @@ public:
     // Attributes from aggregated QNamedElement
     Q_INVOKABLE QString name() const;
     Q_INVOKABLE void setName(QString name);
-    Q_INVOKABLE QtMof::VisibilityKind visibility() const;
-    Q_INVOKABLE void setVisibility(QtMof::VisibilityKind visibility);
+    Q_INVOKABLE QtMofNS::VisibilityKind visibility() const;
+    Q_INVOKABLE void setVisibility(QtMofNS::VisibilityKind visibility);
     Q_INVOKABLE QString qualifiedName() const;
 
     // Association ends from aggregated QNamedElement
@@ -142,8 +145,8 @@ public:
 
     // Attributes from QParameter
     Q_INVOKABLE QString default_() const;
-    Q_INVOKABLE QtMof::ParameterDirectionKind direction() const;
-    Q_INVOKABLE void setDirection(QtMof::ParameterDirectionKind direction);
+    Q_INVOKABLE QtMofNS::ParameterDirectionKind direction() const;
+    Q_INVOKABLE void setDirection(QtMofNS::ParameterDirectionKind direction);
     Q_INVOKABLE void unsetDirection();
 
     // Association ends from QParameter
@@ -162,7 +165,9 @@ private:
     QMultiplicityElement *_wrappedMultiplicityElement;
 };
 
-QT_END_NAMESPACE_QTMOF
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 
