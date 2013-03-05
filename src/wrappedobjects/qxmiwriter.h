@@ -70,6 +70,7 @@ public:
     bool writeFile(QIODevice *device);
 
 protected:
+    void loadPlugins();
     void populateIdMap(QWrappedObject *wrappedObject, int index = -1);
     void writeWrappedObject(QWrappedObject *wrappedObject, QString elementName = QString::fromLatin1(""));
 };
