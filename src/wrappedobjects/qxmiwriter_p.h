@@ -53,6 +53,8 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtWrappedObjects)
 
+class QMetaModelPlugin;
+
 class Q_WRAPPEDOBJECTS_EXPORT QXmiWriterPrivate : public QObjectPrivate
 {
     Q_DECLARE_PUBLIC(QXmiWriter)
@@ -63,9 +65,11 @@ public:
 
     QWrappedObject *wrappedObject;
     QXmlStreamWriter writer;
+    QHash<QString, QMetaModelPlugin *> metaModelPlugins;
     QList<QWrappedObject *> visitedObjects;
     QHash<QWrappedObject *, QString> idMap;
     QStringList idStack;
+    QString metaModelXmlNamespace;
     QStringList blacklistedOppositeEnds;
 };
 
