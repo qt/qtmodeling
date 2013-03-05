@@ -48,7 +48,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -61,7 +64,7 @@ class Q_UML_EXPORT QOperationTemplateParameter : public QTemplateParameter
 {
     Q_OBJECT
 
-    Q_PROPERTY(QOperation * parameteredElement READ parameteredElement WRITE setParameteredElement)
+    Q_PROPERTY(QtUml::QOperation * parameteredElement READ parameteredElement WRITE setParameteredElement)
 
     Q_DISABLE_COPY(QOperationTemplateParameter)
     Q_DECLARE_PRIVATE(QOperationTemplateParameter)
@@ -80,7 +83,9 @@ protected:
     explicit QOperationTemplateParameter(QOperationTemplateParameterPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

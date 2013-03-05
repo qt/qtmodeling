@@ -53,7 +53,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -70,33 +73,33 @@ class Q_UML_EXPORT QRegion : public QWrappedObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(QSet<QElement *> ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(QSet<QComment *> ownedComments READ ownedComments)
+    Q_PROPERTY(QSet<QtUml::QElement *> ownedElements READ ownedElements)
+    Q_PROPERTY(QtUml::QElement * owner READ owner)
+    Q_PROPERTY(QSet<QtUml::QComment *> ownedComments READ ownedComments)
 
     Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
+    Q_PROPERTY(QtUmlNS::VisibilityKind visibility READ visibility WRITE setVisibility)
     Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
-    Q_PROPERTY(QSet<QDependency *> clientDependencies READ clientDependencies)
+    Q_PROPERTY(QtUml::QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
+    Q_PROPERTY(QtUml::QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(QSet<QtUml::QDependency *> clientDependencies READ clientDependencies)
 
     Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
-    Q_PROPERTY(QSet<QRedefinableElement *> redefinedElements READ redefinedElements)
+    Q_PROPERTY(QSet<QtUml::QRedefinableElement *> redefinedElements READ redefinedElements)
 
-    Q_PROPERTY(QSet<QPackageImport *> packageImports READ packageImports)
-    Q_PROPERTY(QSet<QNamedElement *> members READ members)
-    Q_PROPERTY(QSet<QPackageableElement *> importedMembers READ importedMembers STORED false)
-    Q_PROPERTY(QSet<QElementImport *> elementImports READ elementImports)
-    Q_PROPERTY(QSet<QConstraint *> ownedRules READ ownedRules)
-    Q_PROPERTY(QSet<QNamedElement *> ownedMembers READ ownedMembers)
+    Q_PROPERTY(QSet<QtUml::QPackageImport *> packageImports READ packageImports)
+    Q_PROPERTY(QSet<QtUml::QNamedElement *> members READ members)
+    Q_PROPERTY(QSet<QtUml::QPackageableElement *> importedMembers READ importedMembers STORED false)
+    Q_PROPERTY(QSet<QtUml::QElementImport *> elementImports READ elementImports)
+    Q_PROPERTY(QSet<QtUml::QConstraint *> ownedRules READ ownedRules)
+    Q_PROPERTY(QSet<QtUml::QNamedElement *> ownedMembers READ ownedMembers)
 
-    Q_PROPERTY(QRegion * extendedRegion READ extendedRegion WRITE setExtendedRegion)
-    Q_PROPERTY(QSet<QTransition *> transitions READ transitions)
-    Q_PROPERTY(QStateMachine * stateMachine READ stateMachine WRITE setStateMachine)
-    Q_PROPERTY(QState * state READ state WRITE setState)
-    Q_PROPERTY(QClassifier * redefinitionContext READ redefinitionContext STORED false)
-    Q_PROPERTY(QSet<QVertex *> subvertices READ subvertices)
+    Q_PROPERTY(QtUml::QRegion * extendedRegion READ extendedRegion WRITE setExtendedRegion)
+    Q_PROPERTY(QSet<QtUml::QTransition *> transitions READ transitions)
+    Q_PROPERTY(QtUml::QStateMachine * stateMachine READ stateMachine WRITE setStateMachine)
+    Q_PROPERTY(QtUml::QState * state READ state WRITE setState)
+    Q_PROPERTY(QtUml::QClassifier * redefinitionContext READ redefinitionContext STORED false)
+    Q_PROPERTY(QSet<QtUml::QVertex *> subvertices READ subvertices)
 
     Q_DISABLE_COPY(QRegion)
     Q_DECLARE_PRIVATE(QRegion)
@@ -115,8 +118,8 @@ public:
     // Attributes from aggregated QNamedElement
     Q_INVOKABLE QString name() const;
     Q_INVOKABLE void setName(QString name);
-    Q_INVOKABLE QtUml::VisibilityKind visibility() const;
-    Q_INVOKABLE void setVisibility(QtUml::VisibilityKind visibility);
+    Q_INVOKABLE QtUmlNS::VisibilityKind visibility() const;
+    Q_INVOKABLE void setVisibility(QtUmlNS::VisibilityKind visibility);
     Q_INVOKABLE QString qualifiedName() const;
 
     // Association ends from aggregated QNamedElement
@@ -180,7 +183,9 @@ private:
     QNamespace *_wrappedNamespace;
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

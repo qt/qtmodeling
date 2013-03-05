@@ -54,7 +54,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -67,9 +70,9 @@ class Q_UML_EXPORT QExpansionRegion : public QStructuredActivityNode
 {
     Q_OBJECT
 
-    Q_PROPERTY(QtUml::ExpansionKind mode READ mode WRITE setMode RESET unsetMode)
-    Q_PROPERTY(QSet<QExpansionNode *> inputElements READ inputElements)
-    Q_PROPERTY(QSet<QExpansionNode *> outputElements READ outputElements)
+    Q_PROPERTY(QtUmlNS::ExpansionKind mode READ mode WRITE setMode RESET unsetMode)
+    Q_PROPERTY(QSet<QtUml::QExpansionNode *> inputElements READ inputElements)
+    Q_PROPERTY(QSet<QtUml::QExpansionNode *> outputElements READ outputElements)
 
     Q_DISABLE_COPY(QExpansionRegion)
     Q_DECLARE_PRIVATE(QExpansionRegion)
@@ -79,8 +82,8 @@ public:
     virtual ~QExpansionRegion();
 
     // Attributes from QExpansionRegion
-    Q_INVOKABLE QtUml::ExpansionKind mode() const;
-    Q_INVOKABLE void setMode(QtUml::ExpansionKind mode);
+    Q_INVOKABLE QtUmlNS::ExpansionKind mode() const;
+    Q_INVOKABLE void setMode(QtUmlNS::ExpansionKind mode);
     Q_INVOKABLE void unsetMode();
 
     // Association ends from QExpansionRegion
@@ -97,7 +100,9 @@ protected:
     explicit QExpansionRegion(QExpansionRegionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

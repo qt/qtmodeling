@@ -48,7 +48,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -61,8 +64,8 @@ class Q_UML_EXPORT QGeneralOrdering : public QNamedElement
 {
     Q_OBJECT
 
-    Q_PROPERTY(QOccurrenceSpecification * before READ before WRITE setBefore)
-    Q_PROPERTY(QOccurrenceSpecification * after READ after WRITE setAfter)
+    Q_PROPERTY(QtUml::QOccurrenceSpecification * before READ before WRITE setBefore)
+    Q_PROPERTY(QtUml::QOccurrenceSpecification * after READ after WRITE setAfter)
 
     Q_DISABLE_COPY(QGeneralOrdering)
     Q_DECLARE_PRIVATE(QGeneralOrdering)
@@ -83,7 +86,9 @@ protected:
     explicit QGeneralOrdering(QGeneralOrderingPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

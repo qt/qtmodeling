@@ -44,7 +44,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QCommunicationPathPrivate::QCommunicationPathPrivate()
 {
@@ -83,7 +86,9 @@ void QCommunicationPath::setPropertyData()
     QAssociation::setPropertyData();
 }
 
-#include "moc_qcommunicationpath.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qcommunicationpath.cpp"
 

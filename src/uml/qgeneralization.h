@@ -51,7 +51,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -66,9 +69,9 @@ class Q_UML_EXPORT QGeneralization : public QDirectedRelationship
     Q_OBJECT
 
     Q_PROPERTY(bool isSubstitutable READ isSubstitutable WRITE setSubstitutable RESET unsetSubstitutable)
-    Q_PROPERTY(QClassifier * specific READ specific WRITE setSpecific)
-    Q_PROPERTY(QSet<QGeneralizationSet *> generalizationSets READ generalizationSets)
-    Q_PROPERTY(QClassifier * general READ general WRITE setGeneral)
+    Q_PROPERTY(QtUml::QClassifier * specific READ specific WRITE setSpecific)
+    Q_PROPERTY(QSet<QtUml::QGeneralizationSet *> generalizationSets READ generalizationSets)
+    Q_PROPERTY(QtUml::QClassifier * general READ general WRITE setGeneral)
 
     Q_DISABLE_COPY(QGeneralization)
     Q_DECLARE_PRIVATE(QGeneralization)
@@ -97,7 +100,9 @@ protected:
     explicit QGeneralization(QGeneralizationPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

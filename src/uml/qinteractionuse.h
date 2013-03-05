@@ -52,7 +52,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -68,11 +71,11 @@ class Q_UML_EXPORT QInteractionUse : public QInteractionFragment
 {
     Q_OBJECT
 
-    Q_PROPERTY(QSet<QGate *> actualGates READ actualGates)
-    Q_PROPERTY(QValueSpecification * returnValue READ returnValue WRITE setReturnValue)
-    Q_PROPERTY(QInteraction * refersTo READ refersTo WRITE setRefersTo)
-    Q_PROPERTY(QList<QValueSpecification *> arguments READ arguments)
-    Q_PROPERTY(QProperty * returnValueRecipient READ returnValueRecipient WRITE setReturnValueRecipient)
+    Q_PROPERTY(QSet<QtUml::QGate *> actualGates READ actualGates)
+    Q_PROPERTY(QtUml::QValueSpecification * returnValue READ returnValue WRITE setReturnValue)
+    Q_PROPERTY(QtUml::QInteraction * refersTo READ refersTo WRITE setRefersTo)
+    Q_PROPERTY(QList<QtUml::QValueSpecification *> arguments READ arguments)
+    Q_PROPERTY(QtUml::QProperty * returnValueRecipient READ returnValueRecipient WRITE setReturnValueRecipient)
 
     Q_DISABLE_COPY(QInteractionUse)
     Q_DECLARE_PRIVATE(QInteractionUse)
@@ -101,7 +104,9 @@ protected:
     explicit QInteractionUse(QInteractionUsePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

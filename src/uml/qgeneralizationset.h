@@ -51,7 +51,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -67,8 +70,8 @@ class Q_UML_EXPORT QGeneralizationSet : public QPackageableElement
 
     Q_PROPERTY(bool isCovering READ isCovering WRITE setCovering RESET unsetCovering)
     Q_PROPERTY(bool isDisjoint READ isDisjoint WRITE setDisjoint RESET unsetDisjoint)
-    Q_PROPERTY(QClassifier * powertype READ powertype WRITE setPowertype)
-    Q_PROPERTY(QSet<QGeneralization *> generalizations READ generalizations)
+    Q_PROPERTY(QtUml::QClassifier * powertype READ powertype WRITE setPowertype)
+    Q_PROPERTY(QSet<QtUml::QGeneralization *> generalizations READ generalizations)
 
     Q_DISABLE_COPY(QGeneralizationSet)
     Q_DECLARE_PRIVATE(QGeneralizationSet)
@@ -98,7 +101,9 @@ protected:
     explicit QGeneralizationSet(QGeneralizationSetPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

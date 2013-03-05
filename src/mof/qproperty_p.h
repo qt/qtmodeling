@@ -55,7 +55,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTMOF
+QT_BEGIN_NAMESPACE
+
+namespace QtMof
+{
 
 QT_MODULE(QtMof)
 
@@ -80,7 +83,7 @@ public:
     bool isReadOnly;
     bool isID;
     bool isDerivedUnion;
-    QtMof::AggregationKind aggregation;
+    QtMofNS::AggregationKind aggregation;
     QSet<QProperty *> subsettedProperties;
     QAssociation *owningAssociation;
     QValueSpecification *defaultValue;
@@ -90,7 +93,9 @@ public:
     QAssociation *association;
 };
 
-QT_END_NAMESPACE_QTMOF
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

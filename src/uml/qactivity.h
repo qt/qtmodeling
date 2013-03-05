@@ -53,7 +53,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -73,12 +76,12 @@ class Q_UML_EXPORT QActivity : public QBehavior
 
     Q_PROPERTY(bool isReadOnly READ isReadOnly WRITE setReadOnly RESET unsetReadOnly)
     Q_PROPERTY(bool isSingleExecution READ isSingleExecution WRITE setSingleExecution RESET unsetSingleExecution)
-    Q_PROPERTY(QSet<QActivityPartition *> partitions READ partitions)
-    Q_PROPERTY(QSet<QActivityNode *> nodes READ nodes)
-    Q_PROPERTY(QSet<QVariable *> variables READ variables)
-    Q_PROPERTY(QSet<QStructuredActivityNode *> structuredNodes READ structuredNodes)
-    Q_PROPERTY(QSet<QActivityGroup *> groups READ groups)
-    Q_PROPERTY(QSet<QActivityEdge *> edges READ edges)
+    Q_PROPERTY(QSet<QtUml::QActivityPartition *> partitions READ partitions)
+    Q_PROPERTY(QSet<QtUml::QActivityNode *> nodes READ nodes)
+    Q_PROPERTY(QSet<QtUml::QVariable *> variables READ variables)
+    Q_PROPERTY(QSet<QtUml::QStructuredActivityNode *> structuredNodes READ structuredNodes)
+    Q_PROPERTY(QSet<QtUml::QActivityGroup *> groups READ groups)
+    Q_PROPERTY(QSet<QtUml::QActivityEdge *> edges READ edges)
 
     Q_DISABLE_COPY(QActivity)
     Q_DECLARE_PRIVATE(QActivity)
@@ -129,7 +132,9 @@ protected:
     explicit QActivity(QActivityPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

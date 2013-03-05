@@ -51,7 +51,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -68,11 +71,11 @@ class Q_UML_EXPORT QLifeline : public QNamedElement
 {
     Q_OBJECT
 
-    Q_PROPERTY(QConnectableElement * represents READ represents WRITE setRepresents)
-    Q_PROPERTY(QPartDecomposition * decomposedAs READ decomposedAs WRITE setDecomposedAs)
-    Q_PROPERTY(QSet<QInteractionFragment *> coveredBy READ coveredBy)
-    Q_PROPERTY(QInteraction * interaction READ interaction WRITE setInteraction)
-    Q_PROPERTY(QValueSpecification * selector READ selector WRITE setSelector)
+    Q_PROPERTY(QtUml::QConnectableElement * represents READ represents WRITE setRepresents)
+    Q_PROPERTY(QtUml::QPartDecomposition * decomposedAs READ decomposedAs WRITE setDecomposedAs)
+    Q_PROPERTY(QSet<QtUml::QInteractionFragment *> coveredBy READ coveredBy)
+    Q_PROPERTY(QtUml::QInteraction * interaction READ interaction WRITE setInteraction)
+    Q_PROPERTY(QtUml::QValueSpecification * selector READ selector WRITE setSelector)
 
     Q_DISABLE_COPY(QLifeline)
     Q_DECLARE_PRIVATE(QLifeline)
@@ -100,7 +103,9 @@ protected:
     explicit QLifeline(QLifelinePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

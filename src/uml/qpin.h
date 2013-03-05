@@ -50,7 +50,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -60,44 +63,44 @@ class Q_UML_EXPORT QPin : public QWrappedObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(QSet<QElement *> ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(QSet<QComment *> ownedComments READ ownedComments)
+    Q_PROPERTY(QSet<QtUml::QElement *> ownedElements READ ownedElements)
+    Q_PROPERTY(QtUml::QElement * owner READ owner)
+    Q_PROPERTY(QSet<QtUml::QComment *> ownedComments READ ownedComments)
 
     Q_PROPERTY(qint32 upper READ upper WRITE setUpper RESET unsetUpper STORED false)
     Q_PROPERTY(bool isUnique READ isUnique WRITE setUnique RESET unsetUnique)
     Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered RESET unsetOrdered)
     Q_PROPERTY(qint32 lower READ lower WRITE setLower STORED false)
-    Q_PROPERTY(QValueSpecification * upperValue READ upperValue WRITE setUpperValue)
-    Q_PROPERTY(QValueSpecification * lowerValue READ lowerValue WRITE setLowerValue)
+    Q_PROPERTY(QtUml::QValueSpecification * upperValue READ upperValue WRITE setUpperValue)
+    Q_PROPERTY(QtUml::QValueSpecification * lowerValue READ lowerValue WRITE setLowerValue)
 
     Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
+    Q_PROPERTY(QtUmlNS::VisibilityKind visibility READ visibility WRITE setVisibility)
     Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
-    Q_PROPERTY(QSet<QDependency *> clientDependencies READ clientDependencies)
+    Q_PROPERTY(QtUml::QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
+    Q_PROPERTY(QtUml::QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(QSet<QtUml::QDependency *> clientDependencies READ clientDependencies)
 
     Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
-    Q_PROPERTY(QSet<QRedefinableElement *> redefinedElements READ redefinedElements)
-    Q_PROPERTY(QSet<QClassifier *> redefinitionContexts READ redefinitionContexts)
+    Q_PROPERTY(QSet<QtUml::QRedefinableElement *> redefinedElements READ redefinedElements)
+    Q_PROPERTY(QSet<QtUml::QClassifier *> redefinitionContexts READ redefinitionContexts)
 
-    Q_PROPERTY(QSet<QActivityNode *> redefinedNodes READ redefinedNodes)
-    Q_PROPERTY(QSet<QActivityEdge *> incomings READ incomings)
-    Q_PROPERTY(QActivity * activity READ activity WRITE setActivity)
-    Q_PROPERTY(QSet<QActivityGroup *> inGroup READ inGroup)
-    Q_PROPERTY(QStructuredActivityNode * inStructuredNode READ inStructuredNode WRITE setInStructuredNode)
-    Q_PROPERTY(QSet<QActivityPartition *> inPartition READ inPartition)
-    Q_PROPERTY(QSet<QInterruptibleActivityRegion *> inInterruptibleRegion READ inInterruptibleRegion)
-    Q_PROPERTY(QSet<QActivityEdge *> outgoings READ outgoings)
+    Q_PROPERTY(QSet<QtUml::QActivityNode *> redefinedNodes READ redefinedNodes)
+    Q_PROPERTY(QSet<QtUml::QActivityEdge *> incomings READ incomings)
+    Q_PROPERTY(QtUml::QActivity * activity READ activity WRITE setActivity)
+    Q_PROPERTY(QSet<QtUml::QActivityGroup *> inGroup READ inGroup)
+    Q_PROPERTY(QtUml::QStructuredActivityNode * inStructuredNode READ inStructuredNode WRITE setInStructuredNode)
+    Q_PROPERTY(QSet<QtUml::QActivityPartition *> inPartition READ inPartition)
+    Q_PROPERTY(QSet<QtUml::QInterruptibleActivityRegion *> inInterruptibleRegion READ inInterruptibleRegion)
+    Q_PROPERTY(QSet<QtUml::QActivityEdge *> outgoings READ outgoings)
 
-    Q_PROPERTY(QType * type READ type WRITE setType)
+    Q_PROPERTY(QtUml::QType * type READ type WRITE setType)
 
     Q_PROPERTY(bool isControlType READ isControlType WRITE setControlType RESET unsetControlType)
-    Q_PROPERTY(QtUml::ObjectNodeOrderingKind ordering READ ordering WRITE setOrdering RESET unsetOrdering)
-    Q_PROPERTY(QValueSpecification * upperBound READ upperBound WRITE setUpperBound)
-    Q_PROPERTY(QBehavior * selection READ selection WRITE setSelection)
-    Q_PROPERTY(QSet<QState *> inState READ inState)
+    Q_PROPERTY(QtUmlNS::ObjectNodeOrderingKind ordering READ ordering WRITE setOrdering RESET unsetOrdering)
+    Q_PROPERTY(QtUml::QValueSpecification * upperBound READ upperBound WRITE setUpperBound)
+    Q_PROPERTY(QtUml::QBehavior * selection READ selection WRITE setSelection)
+    Q_PROPERTY(QSet<QtUml::QState *> inState READ inState)
 
     Q_PROPERTY(bool isControl READ isControl WRITE setControl RESET unsetControl)
 
@@ -137,8 +140,8 @@ public:
     // Attributes from aggregated QNamedElement
     Q_INVOKABLE QString name() const;
     Q_INVOKABLE void setName(QString name);
-    Q_INVOKABLE QtUml::VisibilityKind visibility() const;
-    Q_INVOKABLE void setVisibility(QtUml::VisibilityKind visibility);
+    Q_INVOKABLE QtUmlNS::VisibilityKind visibility() const;
+    Q_INVOKABLE void setVisibility(QtUmlNS::VisibilityKind visibility);
     Q_INVOKABLE QString qualifiedName() const;
 
     // Association ends from aggregated QNamedElement
@@ -188,8 +191,8 @@ public:
     Q_INVOKABLE bool isControlType() const;
     Q_INVOKABLE void setControlType(bool isControlType);
     Q_INVOKABLE void unsetControlType();
-    Q_INVOKABLE QtUml::ObjectNodeOrderingKind ordering() const;
-    Q_INVOKABLE void setOrdering(QtUml::ObjectNodeOrderingKind ordering);
+    Q_INVOKABLE QtUmlNS::ObjectNodeOrderingKind ordering() const;
+    Q_INVOKABLE void setOrdering(QtUmlNS::ObjectNodeOrderingKind ordering);
     Q_INVOKABLE void unsetOrdering();
 
     // Association ends from aggregated QObjectNode
@@ -216,7 +219,9 @@ private:
     QObjectNode *_wrappedObjectNode;
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

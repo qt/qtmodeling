@@ -49,10 +49,13 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QMessagePrivate::QMessagePrivate() :
-    messageSort(QtUml::MessageSynchCall),
+    messageSort(QtUmlNS::MessageSynchCall),
     signature(0),
     receiveEvent(0),
     interaction(0),
@@ -96,7 +99,7 @@ QMessage::~QMessage()
 /*!
     The sort of communication reflected by the Message
  */
-QtUml::MessageSort QMessage::messageSort() const
+QtUmlNS::MessageSort QMessage::messageSort() const
 {
     // This is a read-write attribute
 
@@ -104,7 +107,7 @@ QtUml::MessageSort QMessage::messageSort() const
     return d->messageSort;
 }
 
-void QMessage::setMessageSort(QtUml::MessageSort messageSort)
+void QMessage::setMessageSort(QtUmlNS::MessageSort messageSort)
 {
     // This is a read-write attribute
 
@@ -117,7 +120,7 @@ void QMessage::setMessageSort(QtUml::MessageSort messageSort)
 
 void QMessage::unsetMessageSort()
 {
-    setMessageSort(QtUml::MessageSynchCall);
+    setMessageSort(QtUmlNS::MessageSynchCall);
     Q_D(QMessage);
     d->modifiedResettableProperties.removeAll(QString::fromLatin1("messageSort"));
 }
@@ -125,13 +128,13 @@ void QMessage::unsetMessageSort()
 /*!
     The derived kind of the Message (complete, lost, found or unknown)
  */
-QtUml::MessageKind QMessage::messageKind() const
+QtUmlNS::MessageKind QMessage::messageKind() const
 {
     // This is a read-only derived attribute
 
     qWarning("QMessage::messageKind: to be implemented (this is a derived attribute)");
 
-    return QtUml::MessageKind(); // change here to your derived return
+    return QtUmlNS::MessageKind(); // change here to your derived return
 }
 
 // ---------------------------------------------------------------
@@ -293,66 +296,68 @@ void QMessage::setConnector(QConnector *connector)
 
 void QMessage::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("messageSort")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("messageSort")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("messageSort")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The sort of communication reflected by the Message");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("messageSort")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("messageSort")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("messageSort")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QMessage")][QString::fromLatin1("messageSort")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QMessage")][QString::fromLatin1("messageSort")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QMessage")][QString::fromLatin1("messageSort")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The sort of communication reflected by the Message");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QMessage")][QString::fromLatin1("messageSort")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QMessage")][QString::fromLatin1("messageSort")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QMessage")][QString::fromLatin1("messageSort")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("messageKind")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("messageKind")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("messageKind")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The derived kind of the Message (complete, lost, found or unknown)");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("messageKind")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("messageKind")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("messageKind")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QMessage")][QString::fromLatin1("messageKind")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QMessage")][QString::fromLatin1("messageKind")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QMessage")][QString::fromLatin1("messageKind")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The derived kind of the Message (complete, lost, found or unknown)");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QMessage")][QString::fromLatin1("messageKind")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QMessage")][QString::fromLatin1("messageKind")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QMessage")][QString::fromLatin1("messageKind")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("signature")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("signature")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("signature")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The signature of the Message is the specification of its content. It refers either an Operation or a Signal.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("signature")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("signature")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("signature")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QMessage")][QString::fromLatin1("signature")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QMessage")][QString::fromLatin1("signature")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QMessage")][QString::fromLatin1("signature")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The signature of the Message is the specification of its content. It refers either an Operation or a Signal.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QMessage")][QString::fromLatin1("signature")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QMessage")][QString::fromLatin1("signature")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QMessage")][QString::fromLatin1("signature")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("arguments")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("arguments")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("arguments")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The arguments of the Message");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("arguments")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("arguments")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("arguments")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QMessage")][QString::fromLatin1("arguments")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QMessage")][QString::fromLatin1("arguments")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QMessage")][QString::fromLatin1("arguments")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The arguments of the Message");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QMessage")][QString::fromLatin1("arguments")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QMessage")][QString::fromLatin1("arguments")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QMessage")][QString::fromLatin1("arguments")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("receiveEvent")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("receiveEvent")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("receiveEvent")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Receiving of the Message");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("receiveEvent")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("receiveEvent")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("receiveEvent")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QMessage")][QString::fromLatin1("receiveEvent")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QMessage")][QString::fromLatin1("receiveEvent")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QMessage")][QString::fromLatin1("receiveEvent")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Receiving of the Message");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QMessage")][QString::fromLatin1("receiveEvent")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QMessage")][QString::fromLatin1("receiveEvent")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QMessage")][QString::fromLatin1("receiveEvent")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("interaction")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("interaction")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("interaction")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The enclosing Interaction owning the Message");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("interaction")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("interaction")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamedElement::namespace");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("interaction")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QInteraction::message");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QMessage")][QString::fromLatin1("interaction")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QMessage")][QString::fromLatin1("interaction")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QMessage")][QString::fromLatin1("interaction")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The enclosing Interaction owning the Message");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QMessage")][QString::fromLatin1("interaction")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QMessage")][QString::fromLatin1("interaction")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamedElement::namespace");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QMessage")][QString::fromLatin1("interaction")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QInteraction::message");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("sendEvent")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("sendEvent")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("sendEvent")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Sending of the Message.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("sendEvent")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("sendEvent")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("sendEvent")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QMessage")][QString::fromLatin1("sendEvent")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QMessage")][QString::fromLatin1("sendEvent")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QMessage")][QString::fromLatin1("sendEvent")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Sending of the Message.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QMessage")][QString::fromLatin1("sendEvent")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QMessage")][QString::fromLatin1("sendEvent")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QMessage")][QString::fromLatin1("sendEvent")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("connector")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("connector")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("connector")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The Connector on which this Message is sent.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("connector")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("connector")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMessage")][QString::fromLatin1("connector")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QMessage")][QString::fromLatin1("connector")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QMessage")][QString::fromLatin1("connector")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QMessage")][QString::fromLatin1("connector")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The Connector on which this Message is sent.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QMessage")][QString::fromLatin1("connector")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QMessage")][QString::fromLatin1("connector")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QMessage")][QString::fromLatin1("connector")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QNamedElement::setPropertyData();
 }
 
-#include "moc_qmessage.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qmessage.cpp"
 

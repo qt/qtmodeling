@@ -51,7 +51,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTMOF
+QT_BEGIN_NAMESPACE
+
+namespace QtMof
+{
 
 QT_MODULE(QtMof)
 
@@ -66,9 +69,9 @@ class Q_MOF_EXPORT QInstanceSpecification : public QPackageableElement
 {
     Q_OBJECT
 
-    Q_PROPERTY(QSet<QClassifier *> classifiers READ classifiers)
-    Q_PROPERTY(QValueSpecification * specification READ specification WRITE setSpecification)
-    Q_PROPERTY(QSet<QSlot *> slots_ READ slots_)
+    Q_PROPERTY(QSet<QtMof::QClassifier *> classifiers READ classifiers)
+    Q_PROPERTY(QtMof::QValueSpecification * specification READ specification WRITE setSpecification)
+    Q_PROPERTY(QSet<QtMof::QSlot *> slots_ READ slots_)
 
     Q_DISABLE_COPY(QInstanceSpecification)
     Q_DECLARE_PRIVATE(QInstanceSpecification)
@@ -93,7 +96,9 @@ protected:
     explicit QInstanceSpecification(QInstanceSpecificationPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTMOF
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

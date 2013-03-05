@@ -48,7 +48,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -58,8 +61,8 @@ class Q_UML_EXPORT QInterval : public QValueSpecification
 {
     Q_OBJECT
 
-    Q_PROPERTY(QValueSpecification * min READ min WRITE setMin)
-    Q_PROPERTY(QValueSpecification * max READ max WRITE setMax)
+    Q_PROPERTY(QtUml::QValueSpecification * min READ min WRITE setMin)
+    Q_PROPERTY(QtUml::QValueSpecification * max READ max WRITE setMax)
 
     Q_DISABLE_COPY(QInterval)
     Q_DECLARE_PRIVATE(QInterval)
@@ -80,7 +83,9 @@ protected:
     explicit QInterval(QIntervalPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

@@ -74,11 +74,13 @@ void QWrappedObjectViewPrivate::populateContextMenu(QMenu &menu, QWrappedObject 
         if (propertyType.contains(QString::fromLatin1("QList")) || propertyType.contains(QString::fromLatin1("QSet")) || propertyType.endsWith(QString::fromLatin1("*"))) {
             if (propertyType.contains(QString::fromLatin1("QList")) || propertyType.contains(QString::fromLatin1("QSet"))) {
                 propertyType = propertyType.remove(QString::fromLatin1("QList<")).remove(QString::fromLatin1("QSet<")).remove(QString::fromLatin1(">"));
-                methodSignature = QString::fromLatin1("add%1(%2)").arg(modifiedPropertyName).arg(propertyType);
+                QString unqualifiedPropertyType = propertyType;
+                methodSignature = QString::fromLatin1("add%1(%2)").arg(modifiedPropertyName).arg(unqualifiedPropertyType.remove(QRegularExpression(QString::fromLatin1("^.*::"))));
                 actionText = QObject::tr("Add %1").arg(modifiedPropertyName);
             }
             else if (propertyType.endsWith(QString::fromLatin1("*"))) {
-                methodSignature = QString::fromLatin1("set%1(%2)").arg(modifiedPropertyName).arg(propertyType);
+                QString unqualifiedPropertyType = propertyType;
+                methodSignature = QString::fromLatin1("set%1(%2)").arg(modifiedPropertyName).arg(unqualifiedPropertyType.remove(QRegularExpression(QString::fromLatin1("^.*::"))));
                 actionText = QObject::tr("Set %1").arg(modifiedPropertyName);
             }
             int metaMethodIndex;

@@ -54,7 +54,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -64,15 +67,15 @@ class Q_UML_EXPORT QStringExpression : public QWrappedObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(QSet<QElement *> ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(QSet<QComment *> ownedComments READ ownedComments)
+    Q_PROPERTY(QSet<QtUml::QElement *> ownedElements READ ownedElements)
+    Q_PROPERTY(QtUml::QElement * owner READ owner)
+    Q_PROPERTY(QSet<QtUml::QComment *> ownedComments READ ownedComments)
 
-    Q_PROPERTY(QTemplateSignature * ownedTemplateSignature READ ownedTemplateSignature WRITE setOwnedTemplateSignature)
-    Q_PROPERTY(QSet<QTemplateBinding *> templateBindings READ templateBindings)
+    Q_PROPERTY(QtUml::QTemplateSignature * ownedTemplateSignature READ ownedTemplateSignature WRITE setOwnedTemplateSignature)
+    Q_PROPERTY(QSet<QtUml::QTemplateBinding *> templateBindings READ templateBindings)
 
-    Q_PROPERTY(QStringExpression * owningExpression READ owningExpression WRITE setOwningExpression)
-    Q_PROPERTY(QSet<QStringExpression *> subExpressions READ subExpressions)
+    Q_PROPERTY(QtUml::QStringExpression * owningExpression READ owningExpression WRITE setOwningExpression)
+    Q_PROPERTY(QSet<QtUml::QStringExpression *> subExpressions READ subExpressions)
 
     Q_DISABLE_COPY(QStringExpression)
     Q_DECLARE_PRIVATE(QStringExpression)
@@ -115,7 +118,9 @@ private:
     QTemplateableElement *_wrappedTemplateableElement;
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

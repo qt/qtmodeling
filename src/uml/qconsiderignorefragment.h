@@ -51,7 +51,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -64,7 +67,7 @@ class Q_UML_EXPORT QConsiderIgnoreFragment : public QCombinedFragment
 {
     Q_OBJECT
 
-    Q_PROPERTY(QSet<QNamedElement *> messages READ messages)
+    Q_PROPERTY(QSet<QtUml::QNamedElement *> messages READ messages)
 
     Q_DISABLE_COPY(QConsiderIgnoreFragment)
     Q_DECLARE_PRIVATE(QConsiderIgnoreFragment)
@@ -84,7 +87,9 @@ protected:
     explicit QConsiderIgnoreFragment(QConsiderIgnoreFragmentPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

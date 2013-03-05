@@ -48,7 +48,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -62,7 +65,7 @@ class Q_UML_EXPORT QAddVariableValueAction : public QWriteVariableAction
     Q_OBJECT
 
     Q_PROPERTY(bool isReplaceAll READ isReplaceAll WRITE setReplaceAll RESET unsetReplaceAll)
-    Q_PROPERTY(QInputPin * insertAt READ insertAt WRITE setInsertAt)
+    Q_PROPERTY(QtUml::QInputPin * insertAt READ insertAt WRITE setInsertAt)
 
     Q_DISABLE_COPY(QAddVariableValueAction)
     Q_DECLARE_PRIVATE(QAddVariableValueAction)
@@ -86,7 +89,9 @@ protected:
     explicit QAddVariableValueAction(QAddVariableValueActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

@@ -54,7 +54,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTMOF
+QT_BEGIN_NAMESPACE
+
+namespace QtMof
+{
 
 QT_MODULE(QtMof)
 
@@ -68,45 +71,45 @@ class Q_MOF_EXPORT QAssociation : public QWrappedObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(QSet<QElement *> ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(QSet<QComment *> ownedComments READ ownedComments)
+    Q_PROPERTY(QSet<QtMof::QElement *> ownedElements READ ownedElements)
+    Q_PROPERTY(QtMof::QElement * owner READ owner)
+    Q_PROPERTY(QSet<QtMof::QComment *> ownedComments READ ownedComments)
 
-    Q_PROPERTY(QSet<QElement *> relatedElements READ relatedElements)
+    Q_PROPERTY(QSet<QtMof::QElement *> relatedElements READ relatedElements)
 
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(QtMof::QNamespace * namespace_ READ namespace_)
 
-    Q_PROPERTY(QtMof::VisibilityKind visibility READ visibility WRITE setVisibility RESET unsetVisibility)
+    Q_PROPERTY(QtMofNS::VisibilityKind visibility READ visibility WRITE setVisibility RESET unsetVisibility)
 
-    Q_PROPERTY(QPackage * package READ package WRITE setPackage)
+    Q_PROPERTY(QtMof::QPackage * package READ package WRITE setPackage)
 
     Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
-    Q_PROPERTY(QSet<QRedefinableElement *> redefinedElements READ redefinedElements)
-    Q_PROPERTY(QSet<QClassifier *> redefinitionContexts READ redefinitionContexts)
+    Q_PROPERTY(QSet<QtMof::QRedefinableElement *> redefinedElements READ redefinedElements)
+    Q_PROPERTY(QSet<QtMof::QClassifier *> redefinitionContexts READ redefinitionContexts)
 
-    Q_PROPERTY(QSet<QPackageImport *> packageImports READ packageImports)
-    Q_PROPERTY(QSet<QNamedElement *> members READ members)
-    Q_PROPERTY(QSet<QPackageableElement *> importedMembers READ importedMembers STORED false)
-    Q_PROPERTY(QSet<QElementImport *> elementImports READ elementImports)
-    Q_PROPERTY(QSet<QConstraint *> ownedRules READ ownedRules)
-    Q_PROPERTY(QSet<QNamedElement *> ownedMembers READ ownedMembers)
+    Q_PROPERTY(QSet<QtMof::QPackageImport *> packageImports READ packageImports)
+    Q_PROPERTY(QSet<QtMof::QNamedElement *> members READ members)
+    Q_PROPERTY(QSet<QtMof::QPackageableElement *> importedMembers READ importedMembers STORED false)
+    Q_PROPERTY(QSet<QtMof::QElementImport *> elementImports READ elementImports)
+    Q_PROPERTY(QSet<QtMof::QConstraint *> ownedRules READ ownedRules)
+    Q_PROPERTY(QSet<QtMof::QNamedElement *> ownedMembers READ ownedMembers)
 
     Q_PROPERTY(bool isAbstract READ isAbstract WRITE setAbstract RESET unsetAbstract)
     Q_PROPERTY(bool isFinalSpecialization READ isFinalSpecialization WRITE setFinalSpecialization RESET unsetFinalSpecialization)
-    Q_PROPERTY(QSet<QProperty *> attributes READ attributes)
-    Q_PROPERTY(QSet<QFeature *> features READ features)
-    Q_PROPERTY(QSet<QClassifier *> generals READ generals STORED false)
-    Q_PROPERTY(QSet<QClassifier *> redefinedClassifiers READ redefinedClassifiers)
-    Q_PROPERTY(QSet<QNamedElement *> inheritedMembers READ inheritedMembers STORED false)
-    Q_PROPERTY(QSet<QGeneralization *> generalizations READ generalizations)
+    Q_PROPERTY(QSet<QtMof::QProperty *> attributes READ attributes)
+    Q_PROPERTY(QSet<QtMof::QFeature *> features READ features)
+    Q_PROPERTY(QSet<QtMof::QClassifier *> generals READ generals STORED false)
+    Q_PROPERTY(QSet<QtMof::QClassifier *> redefinedClassifiers READ redefinedClassifiers)
+    Q_PROPERTY(QSet<QtMof::QNamedElement *> inheritedMembers READ inheritedMembers STORED false)
+    Q_PROPERTY(QSet<QtMof::QGeneralization *> generalizations READ generalizations)
 
     Q_PROPERTY(bool isDerived READ isDerived WRITE setDerived RESET unsetDerived)
-    Q_PROPERTY(QList<QType *> endTypes READ endTypes STORED false)
-    Q_PROPERTY(QSet<QProperty *> navigableOwnedEnds READ navigableOwnedEnds)
-    Q_PROPERTY(QList<QProperty *> ownedEnds READ ownedEnds)
-    Q_PROPERTY(QList<QProperty *> memberEnds READ memberEnds)
+    Q_PROPERTY(QList<QtMof::QType *> endTypes READ endTypes STORED false)
+    Q_PROPERTY(QSet<QtMof::QProperty *> navigableOwnedEnds READ navigableOwnedEnds)
+    Q_PROPERTY(QList<QtMof::QProperty *> ownedEnds READ ownedEnds)
+    Q_PROPERTY(QList<QtMof::QProperty *> memberEnds READ memberEnds)
 
     Q_DISABLE_COPY(QAssociation)
     Q_DECLARE_PRIVATE(QAssociation)
@@ -134,8 +137,8 @@ public:
     Q_INVOKABLE QNamespace *namespace_() const;
 
     // Attributes from aggregated QPackageableElement
-    Q_INVOKABLE QtMof::VisibilityKind visibility() const;
-    Q_INVOKABLE void setVisibility(QtMof::VisibilityKind visibility);
+    Q_INVOKABLE QtMofNS::VisibilityKind visibility() const;
+    Q_INVOKABLE void setVisibility(QtMofNS::VisibilityKind visibility);
     Q_INVOKABLE void unsetVisibility();
 
     // Association ends from aggregated QType
@@ -214,7 +217,9 @@ private:
     QClassifier *_wrappedClassifier;
 };
 
-QT_END_NAMESPACE_QTMOF
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

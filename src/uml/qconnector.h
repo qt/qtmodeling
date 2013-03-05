@@ -55,7 +55,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -70,11 +73,11 @@ class Q_UML_EXPORT QConnector : public QFeature
 {
     Q_OBJECT
 
-    Q_PROPERTY(QtUml::ConnectorKind kind READ kind STORED false)
-    Q_PROPERTY(QSet<QConnector *> redefinedConnectors READ redefinedConnectors)
-    Q_PROPERTY(QSet<QBehavior *> contracts READ contracts)
-    Q_PROPERTY(QAssociation * type READ type WRITE setType)
-    Q_PROPERTY(QList<QConnectorEnd *> ends READ ends)
+    Q_PROPERTY(QtUmlNS::ConnectorKind kind READ kind STORED false)
+    Q_PROPERTY(QSet<QtUml::QConnector *> redefinedConnectors READ redefinedConnectors)
+    Q_PROPERTY(QSet<QtUml::QBehavior *> contracts READ contracts)
+    Q_PROPERTY(QtUml::QAssociation * type READ type WRITE setType)
+    Q_PROPERTY(QList<QtUml::QConnectorEnd *> ends READ ends)
 
     Q_DISABLE_COPY(QConnector)
     Q_DECLARE_PRIVATE(QConnector)
@@ -84,7 +87,7 @@ public:
     virtual ~QConnector();
 
     // Attributes from QConnector
-    Q_INVOKABLE QtUml::ConnectorKind kind() const;
+    Q_INVOKABLE QtUmlNS::ConnectorKind kind() const;
 
     // Association ends from QConnector
     Q_INVOKABLE QSet<QConnector *> redefinedConnectors() const;
@@ -105,7 +108,9 @@ protected:
     explicit QConnector(QConnectorPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

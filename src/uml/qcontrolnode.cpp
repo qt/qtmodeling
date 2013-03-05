@@ -44,7 +44,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QControlNodePrivate::QControlNodePrivate()
 {
@@ -83,7 +86,9 @@ void QControlNode::setPropertyData()
     QActivityNode::setPropertyData();
 }
 
-#include "moc_qcontrolnode.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qcontrolnode.cpp"
 

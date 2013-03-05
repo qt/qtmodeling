@@ -51,7 +51,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -65,9 +68,9 @@ class Q_UML_EXPORT QConnectionPointReference : public QVertex
 {
     Q_OBJECT
 
-    Q_PROPERTY(QSet<QPseudostate *> exits READ exits)
-    Q_PROPERTY(QState * state READ state WRITE setState)
-    Q_PROPERTY(QSet<QPseudostate *> entries READ entries)
+    Q_PROPERTY(QSet<QtUml::QPseudostate *> exits READ exits)
+    Q_PROPERTY(QtUml::QState * state READ state WRITE setState)
+    Q_PROPERTY(QSet<QtUml::QPseudostate *> entries READ entries)
 
     Q_DISABLE_COPY(QConnectionPointReference)
     Q_DECLARE_PRIVATE(QConnectionPointReference)
@@ -92,7 +95,9 @@ protected:
     explicit QConnectionPointReference(QConnectionPointReferencePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

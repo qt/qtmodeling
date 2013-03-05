@@ -48,7 +48,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTMOF
+QT_BEGIN_NAMESPACE
+
+namespace QtMof
+{
 
 QMofObjectPrivate::QMofObjectPrivate()
 {
@@ -126,7 +129,9 @@ void QMofObject::setPropertyData()
     QWrappedObject::setPropertyData();
 }
 
-#include "moc_qmofobject.cpp"
+}
 
-QT_END_NAMESPACE_QTMOF
+QT_END_NAMESPACE
+
+#include "moc_qmofobject.cpp"
 

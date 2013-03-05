@@ -48,7 +48,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -63,10 +66,10 @@ class Q_UML_EXPORT QTemplateParameterSubstitution : public QElement
 {
     Q_OBJECT
 
-    Q_PROPERTY(QParameterableElement * ownedActual READ ownedActual WRITE setOwnedActual)
-    Q_PROPERTY(QTemplateParameter * formal READ formal WRITE setFormal)
-    Q_PROPERTY(QParameterableElement * actual READ actual WRITE setActual)
-    Q_PROPERTY(QTemplateBinding * templateBinding READ templateBinding WRITE setTemplateBinding)
+    Q_PROPERTY(QtUml::QParameterableElement * ownedActual READ ownedActual WRITE setOwnedActual)
+    Q_PROPERTY(QtUml::QTemplateParameter * formal READ formal WRITE setFormal)
+    Q_PROPERTY(QtUml::QParameterableElement * actual READ actual WRITE setActual)
+    Q_PROPERTY(QtUml::QTemplateBinding * templateBinding READ templateBinding WRITE setTemplateBinding)
 
     Q_DISABLE_COPY(QTemplateParameterSubstitution)
     Q_DECLARE_PRIVATE(QTemplateParameterSubstitution)
@@ -91,7 +94,9 @@ protected:
     explicit QTemplateParameterSubstitution(QTemplateParameterSubstitutionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

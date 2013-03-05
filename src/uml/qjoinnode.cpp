@@ -46,7 +46,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QJoinNodePrivate::QJoinNodePrivate() :
     isCombineDuplicate(true),
@@ -150,24 +153,26 @@ void QJoinNode::setJoinSpec(QValueSpecification *joinSpec)
 
 void QJoinNode::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QJoinNode")][QString::fromLatin1("isCombineDuplicate")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QJoinNode")][QString::fromLatin1("isCombineDuplicate")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QJoinNode")][QString::fromLatin1("isCombineDuplicate")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Tells whether tokens having objects with the same identity are combined into one by the join.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QJoinNode")][QString::fromLatin1("isCombineDuplicate")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QJoinNode")][QString::fromLatin1("isCombineDuplicate")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QJoinNode")][QString::fromLatin1("isCombineDuplicate")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QJoinNode")][QString::fromLatin1("isCombineDuplicate")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QJoinNode")][QString::fromLatin1("isCombineDuplicate")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QJoinNode")][QString::fromLatin1("isCombineDuplicate")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Tells whether tokens having objects with the same identity are combined into one by the join.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QJoinNode")][QString::fromLatin1("isCombineDuplicate")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QJoinNode")][QString::fromLatin1("isCombineDuplicate")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QJoinNode")][QString::fromLatin1("isCombineDuplicate")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QJoinNode")][QString::fromLatin1("joinSpec")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QJoinNode")][QString::fromLatin1("joinSpec")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QJoinNode")][QString::fromLatin1("joinSpec")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A specification giving the conditions under which the join with emit a token. Default is \"and\".");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QJoinNode")][QString::fromLatin1("joinSpec")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QJoinNode")][QString::fromLatin1("joinSpec")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QJoinNode")][QString::fromLatin1("joinSpec")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QJoinNode")][QString::fromLatin1("joinSpec")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QJoinNode")][QString::fromLatin1("joinSpec")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QJoinNode")][QString::fromLatin1("joinSpec")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A specification giving the conditions under which the join with emit a token. Default is \"and\".");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QJoinNode")][QString::fromLatin1("joinSpec")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QJoinNode")][QString::fromLatin1("joinSpec")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QJoinNode")][QString::fromLatin1("joinSpec")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QControlNode::setPropertyData();
 }
 
-#include "moc_qjoinnode.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qjoinnode.cpp"
 

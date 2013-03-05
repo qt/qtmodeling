@@ -51,7 +51,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -65,7 +68,7 @@ class Q_UML_EXPORT QDurationConstraint : public QIntervalConstraint
     Q_OBJECT
 
     Q_PROPERTY(QSet<bool> firstEvents READ firstEvents)
-    Q_PROPERTY(QDurationInterval * specification READ specification WRITE setSpecification)
+    Q_PROPERTY(QtUml::QDurationInterval * specification READ specification WRITE setSpecification)
 
     Q_DISABLE_COPY(QDurationConstraint)
     Q_DECLARE_PRIVATE(QDurationConstraint)
@@ -89,7 +92,9 @@ protected:
     explicit QDurationConstraint(QDurationConstraintPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

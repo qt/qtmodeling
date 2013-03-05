@@ -48,7 +48,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -61,8 +64,8 @@ class Q_UML_EXPORT QExpansionNode : public QObjectNode
 {
     Q_OBJECT
 
-    Q_PROPERTY(QExpansionRegion * regionAsOutput READ regionAsOutput WRITE setRegionAsOutput)
-    Q_PROPERTY(QExpansionRegion * regionAsInput READ regionAsInput WRITE setRegionAsInput)
+    Q_PROPERTY(QtUml::QExpansionRegion * regionAsOutput READ regionAsOutput WRITE setRegionAsOutput)
+    Q_PROPERTY(QtUml::QExpansionRegion * regionAsInput READ regionAsInput WRITE setRegionAsInput)
 
     Q_DISABLE_COPY(QExpansionNode)
     Q_DECLARE_PRIVATE(QExpansionNode)
@@ -83,7 +86,9 @@ protected:
     explicit QExpansionNode(QExpansionNodePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

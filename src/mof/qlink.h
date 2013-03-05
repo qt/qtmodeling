@@ -48,7 +48,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTMOF
+QT_BEGIN_NAMESPACE
+
+namespace QtMof
+{
 
 QT_MODULE(QtMof)
 
@@ -62,9 +65,9 @@ class Q_MOF_EXPORT QLink : public QMofObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(QAssociation * association READ association WRITE setAssociation)
-    Q_PROPERTY(QElement * secondElement READ secondElement WRITE setSecondElement)
-    Q_PROPERTY(QElement * firstElement READ firstElement WRITE setFirstElement)
+    Q_PROPERTY(QtMof::QAssociation * association READ association WRITE setAssociation)
+    Q_PROPERTY(QtMof::QElement * secondElement READ secondElement WRITE setSecondElement)
+    Q_PROPERTY(QtMof::QElement * firstElement READ firstElement WRITE setFirstElement)
 
     Q_DISABLE_COPY(QLink)
     Q_DECLARE_PRIVATE(QLink)
@@ -91,7 +94,9 @@ protected:
     explicit QLink(QLinkPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTMOF
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

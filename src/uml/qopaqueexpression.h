@@ -52,7 +52,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -68,8 +71,8 @@ class Q_UML_EXPORT QOpaqueExpression : public QValueSpecification
 
     Q_PROPERTY(QList<QString> bodies READ bodies)
     Q_PROPERTY(QList<QString> languages READ languages)
-    Q_PROPERTY(QBehavior * behavior READ behavior WRITE setBehavior)
-    Q_PROPERTY(QParameter * result READ result STORED false)
+    Q_PROPERTY(QtUml::QBehavior * behavior READ behavior WRITE setBehavior)
+    Q_PROPERTY(QtUml::QParameter * result READ result STORED false)
 
     Q_DISABLE_COPY(QOpaqueExpression)
     Q_DECLARE_PRIVATE(QOpaqueExpression)
@@ -103,7 +106,9 @@ protected:
     explicit QOpaqueExpression(QOpaqueExpressionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

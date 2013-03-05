@@ -48,7 +48,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -61,7 +64,7 @@ class Q_UML_EXPORT QActionInputPin : public QInputPin
 {
     Q_OBJECT
 
-    Q_PROPERTY(QAction * fromAction READ fromAction WRITE setFromAction)
+    Q_PROPERTY(QtUml::QAction * fromAction READ fromAction WRITE setFromAction)
 
     Q_DISABLE_COPY(QActionInputPin)
     Q_DECLARE_PRIVATE(QActionInputPin)
@@ -80,7 +83,9 @@ protected:
     explicit QActionInputPin(QActionInputPinPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

@@ -47,11 +47,11 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_${namespace.replace('/', '_').upper}
+QT_BEGIN_NAMESPACE
 
 QT_MODULE([% namespace.split('/').0 %])
 
-class Q_[% namespace.split('/').0.substr(2).upper %]_EXPORT ${namespace.split('::').0} : public QObject
+class Q_[% namespace.split('/').0.substr(2).upper %]_EXPORT ${namespace.split('::').0}NS : public QObject
 {
     Q_OBJECT
 
@@ -68,11 +68,9 @@ public:
     };
 [% END -%]
 
-private:
-    explicit ${namespace.split('/').0}();
 };
 
-QT_END_NAMESPACE_${namespace.replace('/', '_').upper}
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

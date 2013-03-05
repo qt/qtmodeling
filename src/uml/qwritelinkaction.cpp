@@ -44,7 +44,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QWriteLinkActionPrivate::QWriteLinkActionPrivate()
 {
@@ -83,7 +86,9 @@ void QWriteLinkAction::setPropertyData()
     QLinkAction::setPropertyData();
 }
 
-#include "moc_qwritelinkaction.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qwritelinkaction.cpp"
 

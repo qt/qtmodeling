@@ -48,7 +48,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -61,8 +64,8 @@ class Q_UML_EXPORT QInteractionConstraint : public QConstraint
 {
     Q_OBJECT
 
-    Q_PROPERTY(QValueSpecification * maxint READ maxint WRITE setMaxint)
-    Q_PROPERTY(QValueSpecification * minint READ minint WRITE setMinint)
+    Q_PROPERTY(QtUml::QValueSpecification * maxint READ maxint WRITE setMaxint)
+    Q_PROPERTY(QtUml::QValueSpecification * minint READ minint WRITE setMinint)
 
     Q_DISABLE_COPY(QInteractionConstraint)
     Q_DECLARE_PRIVATE(QInteractionConstraint)
@@ -83,7 +86,9 @@ protected:
     explicit QInteractionConstraint(QInteractionConstraintPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

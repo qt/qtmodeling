@@ -52,7 +52,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTMOF
+QT_BEGIN_NAMESPACE
+
+namespace QtMof
+{
 
 QT_MODULE(QtMof)
 
@@ -62,10 +65,10 @@ class Q_MOF_EXPORT QTag : public QElement
 {
     Q_OBJECT
 
-    Q_PROPERTY(QSet<QElement *> elements READ elements)
+    Q_PROPERTY(QSet<QtMof::QElement *> elements READ elements)
     Q_PROPERTY(QString value READ value WRITE setValue)
     Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QElement * tagOwner READ tagOwner WRITE setTagOwner)
+    Q_PROPERTY(QtMof::QElement * tagOwner READ tagOwner WRITE setTagOwner)
 
     Q_DISABLE_COPY(QTag)
     Q_DECLARE_PRIVATE(QTag)
@@ -91,7 +94,9 @@ protected:
     explicit QTag(QTagPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTMOF
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

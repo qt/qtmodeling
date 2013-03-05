@@ -52,7 +52,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -67,10 +70,10 @@ class Q_UML_EXPORT QStructuredClassifier : public QClassifier
 {
     Q_OBJECT
 
-    Q_PROPERTY(QSet<QConnectableElement *> roles READ roles)
-    Q_PROPERTY(QList<QProperty *> ownedAttributes READ ownedAttributes)
-    Q_PROPERTY(QSet<QProperty *> parts READ parts STORED false)
-    Q_PROPERTY(QSet<QConnector *> ownedConnectors READ ownedConnectors)
+    Q_PROPERTY(QSet<QtUml::QConnectableElement *> roles READ roles)
+    Q_PROPERTY(QList<QtUml::QProperty *> ownedAttributes READ ownedAttributes)
+    Q_PROPERTY(QSet<QtUml::QProperty *> parts READ parts STORED false)
+    Q_PROPERTY(QSet<QtUml::QConnector *> ownedConnectors READ ownedConnectors)
 
     Q_DISABLE_COPY(QStructuredClassifier)
     Q_DECLARE_PRIVATE(QStructuredClassifier)
@@ -95,7 +98,9 @@ protected:
     explicit QStructuredClassifier(QStructuredClassifierPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

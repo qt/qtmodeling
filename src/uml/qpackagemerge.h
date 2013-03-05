@@ -48,7 +48,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -61,8 +64,8 @@ class Q_UML_EXPORT QPackageMerge : public QDirectedRelationship
 {
     Q_OBJECT
 
-    Q_PROPERTY(QPackage * mergedPackage READ mergedPackage WRITE setMergedPackage)
-    Q_PROPERTY(QPackage * receivingPackage READ receivingPackage WRITE setReceivingPackage)
+    Q_PROPERTY(QtUml::QPackage * mergedPackage READ mergedPackage WRITE setMergedPackage)
+    Q_PROPERTY(QtUml::QPackage * receivingPackage READ receivingPackage WRITE setReceivingPackage)
 
     Q_DISABLE_COPY(QPackageMerge)
     Q_DECLARE_PRIVATE(QPackageMerge)
@@ -83,7 +86,9 @@ protected:
     explicit QPackageMerge(QPackageMergePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

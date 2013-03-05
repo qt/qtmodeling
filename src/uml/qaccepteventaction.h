@@ -51,7 +51,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -66,8 +69,8 @@ class Q_UML_EXPORT QAcceptEventAction : public QAction
     Q_OBJECT
 
     Q_PROPERTY(bool isUnmarshall READ isUnmarshall WRITE setUnmarshall RESET unsetUnmarshall)
-    Q_PROPERTY(QSet<QTrigger *> triggers READ triggers)
-    Q_PROPERTY(QSet<QOutputPin *> results READ results)
+    Q_PROPERTY(QSet<QtUml::QTrigger *> triggers READ triggers)
+    Q_PROPERTY(QSet<QtUml::QOutputPin *> results READ results)
 
     Q_DISABLE_COPY(QAcceptEventAction)
     Q_DECLARE_PRIVATE(QAcceptEventAction)
@@ -95,7 +98,9 @@ protected:
     explicit QAcceptEventAction(QAcceptEventActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

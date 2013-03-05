@@ -52,7 +52,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTMOF
+QT_BEGIN_NAMESPACE
+
+namespace QtMof
+{
 
 QT_MODULE(QtMof)
 
@@ -63,7 +66,7 @@ class Q_MOF_EXPORT QExpression : public QValueSpecification
     Q_OBJECT
 
     Q_PROPERTY(QString symbol READ symbol WRITE setSymbol)
-    Q_PROPERTY(QList<QValueSpecification *> operands READ operands)
+    Q_PROPERTY(QList<QtMof::QValueSpecification *> operands READ operands)
 
     Q_DISABLE_COPY(QExpression)
     Q_DECLARE_PRIVATE(QExpression)
@@ -87,7 +90,9 @@ protected:
     explicit QExpression(QExpressionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTMOF
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

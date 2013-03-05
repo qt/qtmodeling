@@ -48,11 +48,14 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QParameterPrivate::QParameterPrivate() :
     isException(false),
-    direction(QtUml::ParameterDirectionIn),
+    direction(QtUmlNS::ParameterDirectionIn),
     isStream(false),
     operation(0),
     defaultValue(0)
@@ -256,12 +259,12 @@ void QParameter::setName(QString name)
 /*!
     Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility.
  */
-QtUml::VisibilityKind QParameter::visibility() const
+QtUmlNS::VisibilityKind QParameter::visibility() const
 {
     return (qwrappedobject_cast<const QNamedElement *>(this))->visibility();
 }
 
-void QParameter::setVisibility(QtUml::VisibilityKind visibility)
+void QParameter::setVisibility(QtUmlNS::VisibilityKind visibility)
 {
     (qwrappedobject_cast<QNamedElement *>(this))->setVisibility(visibility);
 }
@@ -436,7 +439,7 @@ void QParameter::setDefault_(QString default_)
 /*!
     Indicates whether a parameter is being sent into or out of a behavioral element.
  */
-QtUml::ParameterDirectionKind QParameter::direction() const
+QtUmlNS::ParameterDirectionKind QParameter::direction() const
 {
     // This is a read-write attribute
 
@@ -444,7 +447,7 @@ QtUml::ParameterDirectionKind QParameter::direction() const
     return d->direction;
 }
 
-void QParameter::setDirection(QtUml::ParameterDirectionKind direction)
+void QParameter::setDirection(QtUmlNS::ParameterDirectionKind direction)
 {
     // This is a read-write attribute
 
@@ -457,7 +460,7 @@ void QParameter::setDirection(QtUml::ParameterDirectionKind direction)
 
 void QParameter::unsetDirection()
 {
-    setDirection(QtUml::ParameterDirectionIn);
+    setDirection(QtUmlNS::ParameterDirectionIn);
     Q_D(QParameter);
     d->modifiedResettableProperties.removeAll(QString::fromLatin1("direction"));
 }
@@ -494,7 +497,7 @@ void QParameter::unsetStream()
 /*!
     Specifies the effect that the owner of the parameter has on values passed in or out of the parameter.
  */
-QtUml::ParameterEffectKind QParameter::effect() const
+QtUmlNS::ParameterEffectKind QParameter::effect() const
 {
     // This is a read-write attribute
 
@@ -502,7 +505,7 @@ QtUml::ParameterEffectKind QParameter::effect() const
     return d->effect;
 }
 
-void QParameter::setEffect(QtUml::ParameterEffectKind effect)
+void QParameter::setEffect(QtUmlNS::ParameterEffectKind effect)
 {
     // This is a read-write attribute
 
@@ -617,66 +620,68 @@ void QParameter::removeParameterSet(QParameterSet *parameterSet)
 
 void QParameter::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("isException")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("isException")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("isException")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Tells whether an output parameter may emit a value to the exclusion of the other outputs.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("isException")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("isException")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("isException")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameter")][QString::fromLatin1("isException")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameter")][QString::fromLatin1("isException")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameter")][QString::fromLatin1("isException")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Tells whether an output parameter may emit a value to the exclusion of the other outputs.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameter")][QString::fromLatin1("isException")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameter")][QString::fromLatin1("isException")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameter")][QString::fromLatin1("isException")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("default_")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("default_")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("default_")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies a String that represents a value to be used when no argument is supplied for the Parameter.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("default_")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("default_")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("default_")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameter")][QString::fromLatin1("default_")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameter")][QString::fromLatin1("default_")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameter")][QString::fromLatin1("default_")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies a String that represents a value to be used when no argument is supplied for the Parameter.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameter")][QString::fromLatin1("default_")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameter")][QString::fromLatin1("default_")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameter")][QString::fromLatin1("default_")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("direction")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("direction")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("direction")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Indicates whether a parameter is being sent into or out of a behavioral element.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("direction")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("direction")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("direction")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameter")][QString::fromLatin1("direction")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameter")][QString::fromLatin1("direction")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameter")][QString::fromLatin1("direction")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Indicates whether a parameter is being sent into or out of a behavioral element.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameter")][QString::fromLatin1("direction")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameter")][QString::fromLatin1("direction")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameter")][QString::fromLatin1("direction")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("isStream")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("isStream")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("isStream")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Tells whether an input parameter may accept values while its behavior is executing, or whether an output parameter post values while the behavior is executing.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("isStream")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("isStream")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("isStream")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameter")][QString::fromLatin1("isStream")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameter")][QString::fromLatin1("isStream")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameter")][QString::fromLatin1("isStream")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Tells whether an input parameter may accept values while its behavior is executing, or whether an output parameter post values while the behavior is executing.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameter")][QString::fromLatin1("isStream")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameter")][QString::fromLatin1("isStream")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameter")][QString::fromLatin1("isStream")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("effect")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("effect")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("effect")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the effect that the owner of the parameter has on values passed in or out of the parameter.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("effect")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("effect")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("effect")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameter")][QString::fromLatin1("effect")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameter")][QString::fromLatin1("effect")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameter")][QString::fromLatin1("effect")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the effect that the owner of the parameter has on values passed in or out of the parameter.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameter")][QString::fromLatin1("effect")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameter")][QString::fromLatin1("effect")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameter")][QString::fromLatin1("effect")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("operation")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("operation")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("operation")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Operation owning this parameter.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("operation")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("operation")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamedElement::namespace");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("operation")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QOperation::ownedParameter");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameter")][QString::fromLatin1("operation")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameter")][QString::fromLatin1("operation")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameter")][QString::fromLatin1("operation")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Operation owning this parameter.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameter")][QString::fromLatin1("operation")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameter")][QString::fromLatin1("operation")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamedElement::namespace");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameter")][QString::fromLatin1("operation")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QOperation::ownedParameter");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("defaultValue")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("defaultValue")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("defaultValue")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies a ValueSpecification that represents a value to be used when no argument is supplied for the Parameter.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("defaultValue")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("defaultValue")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("defaultValue")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameter")][QString::fromLatin1("defaultValue")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameter")][QString::fromLatin1("defaultValue")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameter")][QString::fromLatin1("defaultValue")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies a ValueSpecification that represents a value to be used when no argument is supplied for the Parameter.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameter")][QString::fromLatin1("defaultValue")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameter")][QString::fromLatin1("defaultValue")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameter")][QString::fromLatin1("defaultValue")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("parameterSets")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("parameterSets")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("parameterSets")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The parameter sets containing the parameter. See ParameterSet.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("parameterSets")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("parameterSets")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameter")][QString::fromLatin1("parameterSets")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QParameterSet::parameter");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameter")][QString::fromLatin1("parameterSets")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameter")][QString::fromLatin1("parameterSets")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameter")][QString::fromLatin1("parameterSets")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The parameter sets containing the parameter. See ParameterSet.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameter")][QString::fromLatin1("parameterSets")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameter")][QString::fromLatin1("parameterSets")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameter")][QString::fromLatin1("parameterSets")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QParameterSet::parameter");
 
     QWrappedObject::setPropertyData();
 }
 
-#include "moc_qparameter.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qparameter.cpp"
 

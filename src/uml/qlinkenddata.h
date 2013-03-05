@@ -51,7 +51,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -66,9 +69,9 @@ class Q_UML_EXPORT QLinkEndData : public QElement
 {
     Q_OBJECT
 
-    Q_PROPERTY(QInputPin * value READ value WRITE setValue)
-    Q_PROPERTY(QProperty * end READ end WRITE setEnd)
-    Q_PROPERTY(QSet<QQualifierValue *> qualifiers READ qualifiers)
+    Q_PROPERTY(QtUml::QInputPin * value READ value WRITE setValue)
+    Q_PROPERTY(QtUml::QProperty * end READ end WRITE setEnd)
+    Q_PROPERTY(QSet<QtUml::QQualifierValue *> qualifiers READ qualifiers)
 
     Q_DISABLE_COPY(QLinkEndData)
     Q_DECLARE_PRIVATE(QLinkEndData)
@@ -92,7 +95,9 @@ protected:
     explicit QLinkEndData(QLinkEndDataPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

@@ -44,7 +44,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QEventPrivate::QEventPrivate()
 {
@@ -83,7 +86,9 @@ void QEvent::setPropertyData()
     QPackageableElement::setPropertyData();
 }
 
-#include "moc_qevent.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qevent.cpp"
 

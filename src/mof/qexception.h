@@ -51,7 +51,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTMOF
+QT_BEGIN_NAMESPACE
+
+namespace QtMof
+{
 
 QT_MODULE(QtMof)
 
@@ -65,8 +68,8 @@ class Q_MOF_EXPORT QException : public QWrappedObject
     Q_OBJECT
 
     Q_PROPERTY(QString description READ description WRITE setDescription)
-    Q_PROPERTY(QElement * elementInError READ elementInError WRITE setElementInError)
-    Q_PROPERTY(QElement * objectInError READ objectInError WRITE setObjectInError)
+    Q_PROPERTY(QtMof::QElement * elementInError READ elementInError WRITE setElementInError)
+    Q_PROPERTY(QtMof::QElement * objectInError READ objectInError WRITE setObjectInError)
 
     Q_DISABLE_COPY(QException)
     Q_DECLARE_PRIVATE(QException)
@@ -89,7 +92,9 @@ protected:
     explicit QException(QExceptionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTMOF
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

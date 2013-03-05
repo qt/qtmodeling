@@ -51,7 +51,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -64,7 +67,7 @@ class Q_UML_EXPORT QEncapsulatedClassifier : public QStructuredClassifier
 {
     Q_OBJECT
 
-    Q_PROPERTY(QSet<QPort *> ownedPorts READ ownedPorts STORED false)
+    Q_PROPERTY(QSet<QtUml::QPort *> ownedPorts READ ownedPorts STORED false)
 
     Q_DISABLE_COPY(QEncapsulatedClassifier)
     Q_DECLARE_PRIVATE(QEncapsulatedClassifier)
@@ -82,7 +85,9 @@ protected:
     explicit QEncapsulatedClassifier(QEncapsulatedClassifierPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

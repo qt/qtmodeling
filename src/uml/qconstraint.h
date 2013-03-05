@@ -51,7 +51,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -66,9 +69,9 @@ class Q_UML_EXPORT QConstraint : public QPackageableElement
 {
     Q_OBJECT
 
-    Q_PROPERTY(QNamespace * context READ context WRITE setContext)
-    Q_PROPERTY(QValueSpecification * specification READ specification WRITE setSpecification)
-    Q_PROPERTY(QList<QElement *> constrainedElements READ constrainedElements)
+    Q_PROPERTY(QtUml::QNamespace * context READ context WRITE setContext)
+    Q_PROPERTY(QtUml::QValueSpecification * specification READ specification WRITE setSpecification)
+    Q_PROPERTY(QList<QtUml::QElement *> constrainedElements READ constrainedElements)
 
     Q_DISABLE_COPY(QConstraint)
     Q_DECLARE_PRIVATE(QConstraint)
@@ -92,7 +95,9 @@ protected:
     explicit QConstraint(QConstraintPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

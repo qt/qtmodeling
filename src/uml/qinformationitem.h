@@ -51,7 +51,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -61,7 +64,7 @@ class Q_UML_EXPORT QInformationItem : public QClassifier
 {
     Q_OBJECT
 
-    Q_PROPERTY(QSet<QClassifier *> represented READ represented)
+    Q_PROPERTY(QSet<QtUml::QClassifier *> represented READ represented)
 
     Q_DISABLE_COPY(QInformationItem)
     Q_DECLARE_PRIVATE(QInformationItem)
@@ -81,7 +84,9 @@ protected:
     explicit QInformationItem(QInformationItemPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

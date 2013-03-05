@@ -51,7 +51,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -68,11 +71,11 @@ class Q_UML_EXPORT QActivityPartition : public QActivityGroup
 
     Q_PROPERTY(bool isDimension READ isDimension WRITE setDimension RESET unsetDimension)
     Q_PROPERTY(bool isExternal READ isExternal WRITE setExternal RESET unsetExternal)
-    Q_PROPERTY(QElement * represents READ represents WRITE setRepresents)
-    Q_PROPERTY(QSet<QActivityPartition *> subpartitions READ subpartitions)
-    Q_PROPERTY(QActivityPartition * superPartition READ superPartition WRITE setSuperPartition)
-    Q_PROPERTY(QSet<QActivityNode *> nodes READ nodes)
-    Q_PROPERTY(QSet<QActivityEdge *> edges READ edges)
+    Q_PROPERTY(QtUml::QElement * represents READ represents WRITE setRepresents)
+    Q_PROPERTY(QSet<QtUml::QActivityPartition *> subpartitions READ subpartitions)
+    Q_PROPERTY(QtUml::QActivityPartition * superPartition READ superPartition WRITE setSuperPartition)
+    Q_PROPERTY(QSet<QtUml::QActivityNode *> nodes READ nodes)
+    Q_PROPERTY(QSet<QtUml::QActivityEdge *> edges READ edges)
 
     Q_DISABLE_COPY(QActivityPartition)
     Q_DECLARE_PRIVATE(QActivityPartition)
@@ -110,7 +113,9 @@ protected:
     explicit QActivityPartition(QActivityPartitionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

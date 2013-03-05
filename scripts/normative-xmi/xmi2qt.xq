@@ -13,10 +13,10 @@ declare function qtxmi:typeStringFromProperty ($properties as node()*) as xs:str
 
 declare function qtxmi:mappedBaseNamespace($xmiFile as xs:string*) as xs:string* {
          if ($xmiFile = "PrimitiveTypes.xmi") then ""
-    else if ($xmiFile = "Superstructure.xmi") then "QtUml::"
-    else if ($xmiFile = "UML.xmi") then "QtUml::"
-    else if ($xmiFile = "MOF.xmi") then "QtMof::"
-    else if ($xmiFile = "MOF-merged.xmi") then "QtMof::"
+    else if ($xmiFile = "Superstructure.xmi") then "QtUml"
+    else if ($xmiFile = "UML.xmi") then "QtUml"
+    else if ($xmiFile = "MOF.xmi") then "QtMof"
+    else if ($xmiFile = "MOF-merged.xmi") then "QtMof"
     else "QtUnknown"
 };
 
@@ -126,7 +126,7 @@ declare function qtxmi:typeFromNamespacedTypeString ($string as xs:string, $name
     let $type := if ($element/@xmi:type = "uml:Class") then
                      concat($propertyNamespace, concat("Q", $type))
                  else if ($element/@xmi:type = "uml:Enumeration") then
-                     concat($propertyNamespace, concat(concat(tokenize($namespace, "::")[1], "::"), $type))
+                     concat($propertyNamespace, concat(concat(tokenize($namespace, "::")[1], "NS::"), $type))
                  else
                      qtxmi:mappedPrimitiveType($type)
     return $type
@@ -193,7 +193,7 @@ declare function qtxmi:defaultValue ($property as node(), $namespace) as xs:stri
                              else if ($property/defaultValue/@xmi:type = "uml:InstanceValue" and
                                       qtxmi:elementFromTypeString($property/defaultValue/@type)/@xmi:type = "uml:Enumeration") then
                                  if ($property/defaultValue/@instance) then
-                                     concat($namespace,
+                                     concat(replace($namespace, "::", "NS::"),
                                             concat(replace(replace(tokenize($property/defaultValue/@instance, "-")[1], "Kind", ""), "Sort", ""),
                                                    concat(upper-case(substring(tokenize($property/defaultValue/@instance, "-")[2], 1, 1)),
                                                           substring(tokenize($property/defaultValue/@instance, "-")[2], 2))))

@@ -46,7 +46,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QActivityParameterNodePrivate::QActivityParameterNodePrivate() :
     parameter(0)
@@ -108,17 +111,19 @@ void QActivityParameterNode::setParameter(QParameter *parameter)
 
 void QActivityParameterNode::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityParameterNode")][QString::fromLatin1("parameter")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityParameterNode")][QString::fromLatin1("parameter")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityParameterNode")][QString::fromLatin1("parameter")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The parameter the object node will be accepting or providing values for.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityParameterNode")][QString::fromLatin1("parameter")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityParameterNode")][QString::fromLatin1("parameter")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QActivityParameterNode")][QString::fromLatin1("parameter")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QActivityParameterNode")][QString::fromLatin1("parameter")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QActivityParameterNode")][QString::fromLatin1("parameter")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QActivityParameterNode")][QString::fromLatin1("parameter")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The parameter the object node will be accepting or providing values for.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QActivityParameterNode")][QString::fromLatin1("parameter")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QActivityParameterNode")][QString::fromLatin1("parameter")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QActivityParameterNode")][QString::fromLatin1("parameter")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QObjectNode::setPropertyData();
 }
 
-#include "moc_qactivityparameternode.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qactivityparameternode.cpp"
 

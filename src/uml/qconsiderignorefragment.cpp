@@ -46,7 +46,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QConsiderIgnoreFragmentPrivate::QConsiderIgnoreFragmentPrivate()
 {
@@ -117,17 +120,19 @@ void QConsiderIgnoreFragment::removeMessage(QNamedElement *message)
 
 void QConsiderIgnoreFragment::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConsiderIgnoreFragment")][QString::fromLatin1("messages")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConsiderIgnoreFragment")][QString::fromLatin1("messages")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConsiderIgnoreFragment")][QString::fromLatin1("messages")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The set of messages that apply to this fragment");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConsiderIgnoreFragment")][QString::fromLatin1("messages")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConsiderIgnoreFragment")][QString::fromLatin1("messages")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConsiderIgnoreFragment")][QString::fromLatin1("messages")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConsiderIgnoreFragment")][QString::fromLatin1("messages")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConsiderIgnoreFragment")][QString::fromLatin1("messages")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConsiderIgnoreFragment")][QString::fromLatin1("messages")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The set of messages that apply to this fragment");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConsiderIgnoreFragment")][QString::fromLatin1("messages")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConsiderIgnoreFragment")][QString::fromLatin1("messages")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConsiderIgnoreFragment")][QString::fromLatin1("messages")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QCombinedFragment::setPropertyData();
 }
 
-#include "moc_qconsiderignorefragment.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qconsiderignorefragment.cpp"
 

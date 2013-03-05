@@ -48,7 +48,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -62,8 +65,8 @@ class Q_UML_EXPORT QStateInvariant : public QInteractionFragment
 {
     Q_OBJECT
 
-    Q_PROPERTY(QConstraint * invariant READ invariant WRITE setInvariant)
-    Q_PROPERTY(QLifeline * covered READ covered WRITE setCovered)
+    Q_PROPERTY(QtUml::QConstraint * invariant READ invariant WRITE setInvariant)
+    Q_PROPERTY(QtUml::QLifeline * covered READ covered WRITE setCovered)
 
     Q_DISABLE_COPY(QStateInvariant)
     Q_DECLARE_PRIVATE(QStateInvariant)
@@ -84,7 +87,9 @@ protected:
     explicit QStateInvariant(QStateInvariantPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

@@ -57,7 +57,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -72,57 +75,57 @@ class Q_UML_EXPORT QArtifact : public QWrappedObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(QSet<QElement *> ownedElements READ ownedElements)
-    Q_PROPERTY(QElement * owner READ owner)
-    Q_PROPERTY(QSet<QComment *> ownedComments READ ownedComments)
+    Q_PROPERTY(QSet<QtUml::QElement *> ownedElements READ ownedElements)
+    Q_PROPERTY(QtUml::QElement * owner READ owner)
+    Q_PROPERTY(QSet<QtUml::QComment *> ownedComments READ ownedComments)
 
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QNamespace * namespace_ READ namespace_)
-    Q_PROPERTY(QSet<QDependency *> clientDependencies READ clientDependencies)
+    Q_PROPERTY(QtUml::QStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
+    Q_PROPERTY(QtUml::QNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(QSet<QtUml::QDependency *> clientDependencies READ clientDependencies)
 
-    Q_PROPERTY(QSet<QPackageImport *> packageImports READ packageImports)
-    Q_PROPERTY(QSet<QNamedElement *> members READ members)
-    Q_PROPERTY(QSet<QPackageableElement *> importedMembers READ importedMembers STORED false)
-    Q_PROPERTY(QSet<QElementImport *> elementImports READ elementImports)
-    Q_PROPERTY(QSet<QConstraint *> ownedRules READ ownedRules)
-    Q_PROPERTY(QSet<QNamedElement *> ownedMembers READ ownedMembers)
+    Q_PROPERTY(QSet<QtUml::QPackageImport *> packageImports READ packageImports)
+    Q_PROPERTY(QSet<QtUml::QNamedElement *> members READ members)
+    Q_PROPERTY(QSet<QtUml::QPackageableElement *> importedMembers READ importedMembers STORED false)
+    Q_PROPERTY(QSet<QtUml::QElementImport *> elementImports READ elementImports)
+    Q_PROPERTY(QSet<QtUml::QConstraint *> ownedRules READ ownedRules)
+    Q_PROPERTY(QSet<QtUml::QNamedElement *> ownedMembers READ ownedMembers)
 
-    Q_PROPERTY(QTemplateParameter * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
+    Q_PROPERTY(QtUml::QTemplateParameter * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
 
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility RESET unsetVisibility)
+    Q_PROPERTY(QtUmlNS::VisibilityKind visibility READ visibility WRITE setVisibility RESET unsetVisibility)
 
-    Q_PROPERTY(QPackage * package READ package WRITE setPackage)
+    Q_PROPERTY(QtUml::QPackage * package READ package WRITE setPackage)
 
     Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
-    Q_PROPERTY(QSet<QRedefinableElement *> redefinedElements READ redefinedElements)
-    Q_PROPERTY(QSet<QClassifier *> redefinitionContexts READ redefinitionContexts)
+    Q_PROPERTY(QSet<QtUml::QRedefinableElement *> redefinedElements READ redefinedElements)
+    Q_PROPERTY(QSet<QtUml::QClassifier *> redefinitionContexts READ redefinitionContexts)
 
-    Q_PROPERTY(QSet<QTemplateBinding *> templateBindings READ templateBindings)
+    Q_PROPERTY(QSet<QtUml::QTemplateBinding *> templateBindings READ templateBindings)
 
     Q_PROPERTY(bool isAbstract READ isAbstract WRITE setAbstract RESET unsetAbstract)
     Q_PROPERTY(bool isFinalSpecialization READ isFinalSpecialization WRITE setFinalSpecialization RESET unsetFinalSpecialization)
-    Q_PROPERTY(QSet<QUseCase *> ownedUseCases READ ownedUseCases)
-    Q_PROPERTY(QSet<QGeneralizationSet *> powertypeExtents READ powertypeExtents)
-    Q_PROPERTY(QSet<QUseCase *> useCases READ useCases)
-    Q_PROPERTY(QClassifierTemplateParameter * templateParameter READ templateParameter WRITE setTemplateParameter)
-    Q_PROPERTY(QSet<QClassifier *> redefinedClassifiers READ redefinedClassifiers)
-    Q_PROPERTY(QRedefinableTemplateSignature * ownedTemplateSignature READ ownedTemplateSignature WRITE setOwnedTemplateSignature)
-    Q_PROPERTY(QSet<QCollaborationUse *> collaborationUses READ collaborationUses)
-    Q_PROPERTY(QSet<QProperty *> attributes READ attributes)
-    Q_PROPERTY(QSet<QFeature *> features READ features)
-    Q_PROPERTY(QSet<QClassifier *> generals READ generals STORED false)
-    Q_PROPERTY(QCollaborationUse * representation READ representation WRITE setRepresentation)
-    Q_PROPERTY(QSet<QGeneralization *> generalizations READ generalizations)
-    Q_PROPERTY(QSet<QNamedElement *> inheritedMembers READ inheritedMembers STORED false)
-    Q_PROPERTY(QSet<QSubstitution *> substitutions READ substitutions)
+    Q_PROPERTY(QSet<QtUml::QUseCase *> ownedUseCases READ ownedUseCases)
+    Q_PROPERTY(QSet<QtUml::QGeneralizationSet *> powertypeExtents READ powertypeExtents)
+    Q_PROPERTY(QSet<QtUml::QUseCase *> useCases READ useCases)
+    Q_PROPERTY(QtUml::QClassifierTemplateParameter * templateParameter READ templateParameter WRITE setTemplateParameter)
+    Q_PROPERTY(QSet<QtUml::QClassifier *> redefinedClassifiers READ redefinedClassifiers)
+    Q_PROPERTY(QtUml::QRedefinableTemplateSignature * ownedTemplateSignature READ ownedTemplateSignature WRITE setOwnedTemplateSignature)
+    Q_PROPERTY(QSet<QtUml::QCollaborationUse *> collaborationUses READ collaborationUses)
+    Q_PROPERTY(QSet<QtUml::QProperty *> attributes READ attributes)
+    Q_PROPERTY(QSet<QtUml::QFeature *> features READ features)
+    Q_PROPERTY(QSet<QtUml::QClassifier *> generals READ generals STORED false)
+    Q_PROPERTY(QtUml::QCollaborationUse * representation READ representation WRITE setRepresentation)
+    Q_PROPERTY(QSet<QtUml::QGeneralization *> generalizations READ generalizations)
+    Q_PROPERTY(QSet<QtUml::QNamedElement *> inheritedMembers READ inheritedMembers STORED false)
+    Q_PROPERTY(QSet<QtUml::QSubstitution *> substitutions READ substitutions)
 
     Q_PROPERTY(QString fileName READ fileName WRITE setFileName)
-    Q_PROPERTY(QList<QOperation *> ownedOperations READ ownedOperations)
-    Q_PROPERTY(QList<QProperty *> ownedAttributes READ ownedAttributes)
-    Q_PROPERTY(QSet<QManifestation *> manifestations READ manifestations)
-    Q_PROPERTY(QSet<QArtifact *> nestedArtifacts READ nestedArtifacts)
+    Q_PROPERTY(QList<QtUml::QOperation *> ownedOperations READ ownedOperations)
+    Q_PROPERTY(QList<QtUml::QProperty *> ownedAttributes READ ownedAttributes)
+    Q_PROPERTY(QSet<QtUml::QManifestation *> manifestations READ manifestations)
+    Q_PROPERTY(QSet<QtUml::QArtifact *> nestedArtifacts READ nestedArtifacts)
 
     Q_DISABLE_COPY(QArtifact)
     Q_DECLARE_PRIVATE(QArtifact)
@@ -170,8 +173,8 @@ public:
     Q_INVOKABLE void setOwningTemplateParameter(QTemplateParameter *owningTemplateParameter);
 
     // Attributes from aggregated QPackageableElement
-    Q_INVOKABLE QtUml::VisibilityKind visibility() const;
-    Q_INVOKABLE void setVisibility(QtUml::VisibilityKind visibility);
+    Q_INVOKABLE QtUmlNS::VisibilityKind visibility() const;
+    Q_INVOKABLE void setVisibility(QtUmlNS::VisibilityKind visibility);
     Q_INVOKABLE void unsetVisibility();
 
     // Association ends from aggregated QType
@@ -267,7 +270,9 @@ private:
     QClassifier *_wrappedClassifier;
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

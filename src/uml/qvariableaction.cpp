@@ -46,7 +46,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QVariableActionPrivate::QVariableActionPrivate() :
     variable(0)
@@ -108,17 +111,19 @@ void QVariableAction::setVariable(QVariable *variable)
 
 void QVariableAction::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QVariableAction")][QString::fromLatin1("variable")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QVariableAction")][QString::fromLatin1("variable")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QVariableAction")][QString::fromLatin1("variable")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Variable to be read.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QVariableAction")][QString::fromLatin1("variable")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QVariableAction")][QString::fromLatin1("variable")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QVariableAction")][QString::fromLatin1("variable")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QVariableAction")][QString::fromLatin1("variable")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QVariableAction")][QString::fromLatin1("variable")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QVariableAction")][QString::fromLatin1("variable")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Variable to be read.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QVariableAction")][QString::fromLatin1("variable")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QVariableAction")][QString::fromLatin1("variable")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QVariableAction")][QString::fromLatin1("variable")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QAction::setPropertyData();
 }
 
-#include "moc_qvariableaction.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qvariableaction.cpp"
 

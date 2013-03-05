@@ -52,7 +52,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -68,14 +71,14 @@ class Q_UML_EXPORT QLoopNode : public QStructuredActivityNode
     Q_OBJECT
 
     Q_PROPERTY(bool isTestedFirst READ isTestedFirst WRITE setTestedFirst RESET unsetTestedFirst)
-    Q_PROPERTY(QList<QInputPin *> loopVariableInputs READ loopVariableInputs)
-    Q_PROPERTY(QOutputPin * decider READ decider WRITE setDecider)
-    Q_PROPERTY(QList<QOutputPin *> bodyOutputs READ bodyOutputs)
-    Q_PROPERTY(QList<QOutputPin *> loopVariables READ loopVariables)
-    Q_PROPERTY(QList<QOutputPin *> results READ results)
-    Q_PROPERTY(QSet<QExecutableNode *> setupParts READ setupParts)
-    Q_PROPERTY(QSet<QExecutableNode *> bodyParts READ bodyParts)
-    Q_PROPERTY(QSet<QExecutableNode *> tests READ tests)
+    Q_PROPERTY(QList<QtUml::QInputPin *> loopVariableInputs READ loopVariableInputs)
+    Q_PROPERTY(QtUml::QOutputPin * decider READ decider WRITE setDecider)
+    Q_PROPERTY(QList<QtUml::QOutputPin *> bodyOutputs READ bodyOutputs)
+    Q_PROPERTY(QList<QtUml::QOutputPin *> loopVariables READ loopVariables)
+    Q_PROPERTY(QList<QtUml::QOutputPin *> results READ results)
+    Q_PROPERTY(QSet<QtUml::QExecutableNode *> setupParts READ setupParts)
+    Q_PROPERTY(QSet<QtUml::QExecutableNode *> bodyParts READ bodyParts)
+    Q_PROPERTY(QSet<QtUml::QExecutableNode *> tests READ tests)
 
     Q_DISABLE_COPY(QLoopNode)
     Q_DECLARE_PRIVATE(QLoopNode)
@@ -120,7 +123,9 @@ protected:
     explicit QLoopNode(QLoopNodePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

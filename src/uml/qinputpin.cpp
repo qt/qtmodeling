@@ -44,7 +44,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QInputPinPrivate::QInputPinPrivate()
 {
@@ -83,7 +86,9 @@ void QInputPin::setPropertyData()
     QPin::setPropertyData();
 }
 
-#include "moc_qinputpin.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qinputpin.cpp"
 

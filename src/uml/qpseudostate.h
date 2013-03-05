@@ -51,7 +51,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -65,9 +68,9 @@ class Q_UML_EXPORT QPseudostate : public QVertex
 {
     Q_OBJECT
 
-    Q_PROPERTY(QtUml::PseudostateKind kind READ kind WRITE setKind RESET unsetKind)
-    Q_PROPERTY(QState * state READ state WRITE setState)
-    Q_PROPERTY(QStateMachine * stateMachine READ stateMachine WRITE setStateMachine)
+    Q_PROPERTY(QtUmlNS::PseudostateKind kind READ kind WRITE setKind RESET unsetKind)
+    Q_PROPERTY(QtUml::QState * state READ state WRITE setState)
+    Q_PROPERTY(QtUml::QStateMachine * stateMachine READ stateMachine WRITE setStateMachine)
 
     Q_DISABLE_COPY(QPseudostate)
     Q_DECLARE_PRIVATE(QPseudostate)
@@ -77,8 +80,8 @@ public:
     virtual ~QPseudostate();
 
     // Attributes from QPseudostate
-    Q_INVOKABLE QtUml::PseudostateKind kind() const;
-    Q_INVOKABLE void setKind(QtUml::PseudostateKind kind);
+    Q_INVOKABLE QtUmlNS::PseudostateKind kind() const;
+    Q_INVOKABLE void setKind(QtUmlNS::PseudostateKind kind);
     Q_INVOKABLE void unsetKind();
 
     // Association ends from QPseudostate
@@ -93,7 +96,9 @@ protected:
     explicit QPseudostate(QPseudostatePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

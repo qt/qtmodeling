@@ -48,7 +48,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -61,7 +64,7 @@ class Q_UML_EXPORT QReception : public QBehavioralFeature
 {
     Q_OBJECT
 
-    Q_PROPERTY(QSignal * signal READ signal WRITE setSignal)
+    Q_PROPERTY(QtUml::QSignal * signal READ signal WRITE setSignal)
 
     Q_DISABLE_COPY(QReception)
     Q_DECLARE_PRIVATE(QReception)
@@ -80,7 +83,9 @@ protected:
     explicit QReception(QReceptionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

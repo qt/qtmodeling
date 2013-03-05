@@ -44,7 +44,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QMessageEventPrivate::QMessageEventPrivate()
 {
@@ -83,7 +86,9 @@ void QMessageEvent::setPropertyData()
     QEvent::setPropertyData();
 }
 
-#include "moc_qmessageevent.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qmessageevent.cpp"
 

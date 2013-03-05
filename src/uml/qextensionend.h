@@ -48,7 +48,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -62,7 +65,7 @@ class Q_UML_EXPORT QExtensionEnd : public QProperty
     Q_OBJECT
 
     Q_PROPERTY(qint32 lower READ lower WRITE setLower STORED false)
-    Q_PROPERTY(QStereotype * type READ type WRITE setType)
+    Q_PROPERTY(QtUml::QStereotype * type READ type WRITE setType)
 
     Q_DISABLE_COPY(QExtensionEnd)
     Q_DECLARE_PRIVATE(QExtensionEnd)
@@ -88,7 +91,9 @@ protected:
     explicit QExtensionEnd(QExtensionEndPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

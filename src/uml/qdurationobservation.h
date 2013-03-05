@@ -51,7 +51,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -65,7 +68,7 @@ class Q_UML_EXPORT QDurationObservation : public QObservation
     Q_OBJECT
 
     Q_PROPERTY(QSet<bool> firstEvents READ firstEvents)
-    Q_PROPERTY(QSet<QNamedElement *> events READ events)
+    Q_PROPERTY(QSet<QtUml::QNamedElement *> events READ events)
 
     Q_DISABLE_COPY(QDurationObservation)
     Q_DECLARE_PRIVATE(QDurationObservation)
@@ -90,7 +93,9 @@ protected:
     explicit QDurationObservation(QDurationObservationPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

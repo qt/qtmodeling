@@ -51,7 +51,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -66,9 +69,9 @@ class Q_UML_EXPORT QUnmarshallAction : public QAction
 {
     Q_OBJECT
 
-    Q_PROPERTY(QInputPin * object READ object WRITE setObject)
-    Q_PROPERTY(QSet<QOutputPin *> results READ results)
-    Q_PROPERTY(QClassifier * unmarshallType READ unmarshallType WRITE setUnmarshallType)
+    Q_PROPERTY(QtUml::QInputPin * object READ object WRITE setObject)
+    Q_PROPERTY(QSet<QtUml::QOutputPin *> results READ results)
+    Q_PROPERTY(QtUml::QClassifier * unmarshallType READ unmarshallType WRITE setUnmarshallType)
 
     Q_DISABLE_COPY(QUnmarshallAction)
     Q_DECLARE_PRIVATE(QUnmarshallAction)
@@ -92,7 +95,9 @@ protected:
     explicit QUnmarshallAction(QUnmarshallActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

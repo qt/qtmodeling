@@ -48,7 +48,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -61,7 +64,7 @@ class Q_UML_EXPORT QActionExecutionSpecification : public QExecutionSpecificatio
 {
     Q_OBJECT
 
-    Q_PROPERTY(QAction * action READ action WRITE setAction)
+    Q_PROPERTY(QtUml::QAction * action READ action WRITE setAction)
 
     Q_DISABLE_COPY(QActionExecutionSpecification)
     Q_DECLARE_PRIVATE(QActionExecutionSpecification)
@@ -80,7 +83,9 @@ protected:
     explicit QActionExecutionSpecification(QActionExecutionSpecificationPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

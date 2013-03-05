@@ -48,7 +48,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -62,8 +65,8 @@ class Q_UML_EXPORT QDecisionNode : public QControlNode
 {
     Q_OBJECT
 
-    Q_PROPERTY(QObjectFlow * decisionInputFlow READ decisionInputFlow WRITE setDecisionInputFlow)
-    Q_PROPERTY(QBehavior * decisionInput READ decisionInput WRITE setDecisionInput)
+    Q_PROPERTY(QtUml::QObjectFlow * decisionInputFlow READ decisionInputFlow WRITE setDecisionInputFlow)
+    Q_PROPERTY(QtUml::QBehavior * decisionInput READ decisionInput WRITE setDecisionInput)
 
     Q_DISABLE_COPY(QDecisionNode)
     Q_DECLARE_PRIVATE(QDecisionNode)
@@ -84,7 +87,9 @@ protected:
     explicit QDecisionNode(QDecisionNodePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

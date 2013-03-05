@@ -51,7 +51,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -66,11 +69,11 @@ class Q_UML_EXPORT QActivityGroup : public QNamedElement
 {
     Q_OBJECT
 
-    Q_PROPERTY(QActivity * inActivity READ inActivity WRITE setInActivity)
-    Q_PROPERTY(QSet<QActivityNode *> containedNodes READ containedNodes)
-    Q_PROPERTY(QSet<QActivityGroup *> subgroups READ subgroups)
-    Q_PROPERTY(QSet<QActivityEdge *> containedEdges READ containedEdges)
-    Q_PROPERTY(QActivityGroup * superGroup READ superGroup)
+    Q_PROPERTY(QtUml::QActivity * inActivity READ inActivity WRITE setInActivity)
+    Q_PROPERTY(QSet<QtUml::QActivityNode *> containedNodes READ containedNodes)
+    Q_PROPERTY(QSet<QtUml::QActivityGroup *> subgroups READ subgroups)
+    Q_PROPERTY(QSet<QtUml::QActivityEdge *> containedEdges READ containedEdges)
+    Q_PROPERTY(QtUml::QActivityGroup * superGroup READ superGroup)
 
     Q_DISABLE_COPY(QActivityGroup)
     Q_DECLARE_PRIVATE(QActivityGroup)
@@ -97,7 +100,9 @@ protected:
     explicit QActivityGroup(QActivityGroupPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

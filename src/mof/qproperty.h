@@ -55,7 +55,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTMOF
+QT_BEGIN_NAMESPACE
+
+namespace QtMof
+{
 
 QT_MODULE(QtMof)
 
@@ -79,15 +82,15 @@ class Q_MOF_EXPORT QProperty : public QStructuralFeature
     Q_PROPERTY(bool isReadOnly READ isReadOnly WRITE setReadOnly RESET unsetReadOnly)
     Q_PROPERTY(bool isID READ isID WRITE setID RESET unsetID)
     Q_PROPERTY(bool isDerivedUnion READ isDerivedUnion WRITE setDerivedUnion RESET unsetDerivedUnion)
-    Q_PROPERTY(QtMof::AggregationKind aggregation READ aggregation WRITE setAggregation RESET unsetAggregation)
-    Q_PROPERTY(QSet<QProperty *> subsettedProperties READ subsettedProperties)
-    Q_PROPERTY(QAssociation * owningAssociation READ owningAssociation WRITE setOwningAssociation)
-    Q_PROPERTY(QValueSpecification * defaultValue READ defaultValue WRITE setDefaultValue)
-    Q_PROPERTY(QClass * class_ READ class_ WRITE setClass_)
-    Q_PROPERTY(QProperty * opposite READ opposite WRITE setOpposite STORED false)
-    Q_PROPERTY(QDataType * datatype READ datatype WRITE setDatatype)
-    Q_PROPERTY(QSet<QProperty *> redefinedProperties READ redefinedProperties)
-    Q_PROPERTY(QAssociation * association READ association WRITE setAssociation)
+    Q_PROPERTY(QtMofNS::AggregationKind aggregation READ aggregation WRITE setAggregation RESET unsetAggregation)
+    Q_PROPERTY(QSet<QtMof::QProperty *> subsettedProperties READ subsettedProperties)
+    Q_PROPERTY(QtMof::QAssociation * owningAssociation READ owningAssociation WRITE setOwningAssociation)
+    Q_PROPERTY(QtMof::QValueSpecification * defaultValue READ defaultValue WRITE setDefaultValue)
+    Q_PROPERTY(QtMof::QClass * class_ READ class_ WRITE setClass_)
+    Q_PROPERTY(QtMof::QProperty * opposite READ opposite WRITE setOpposite STORED false)
+    Q_PROPERTY(QtMof::QDataType * datatype READ datatype WRITE setDatatype)
+    Q_PROPERTY(QSet<QtMof::QProperty *> redefinedProperties READ redefinedProperties)
+    Q_PROPERTY(QtMof::QAssociation * association READ association WRITE setAssociation)
 
     Q_DISABLE_COPY(QProperty)
     Q_DECLARE_PRIVATE(QProperty)
@@ -113,8 +116,8 @@ public:
     Q_INVOKABLE bool isDerivedUnion() const;
     Q_INVOKABLE void setDerivedUnion(bool isDerivedUnion);
     Q_INVOKABLE void unsetDerivedUnion();
-    Q_INVOKABLE QtMof::AggregationKind aggregation() const;
-    Q_INVOKABLE void setAggregation(QtMof::AggregationKind aggregation);
+    Q_INVOKABLE QtMofNS::AggregationKind aggregation() const;
+    Q_INVOKABLE void setAggregation(QtMofNS::AggregationKind aggregation);
     Q_INVOKABLE void unsetAggregation();
 
     // Association ends from QProperty
@@ -149,7 +152,9 @@ protected:
     explicit QProperty(QPropertyPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTMOF
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

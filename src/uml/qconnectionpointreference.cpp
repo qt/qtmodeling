@@ -47,7 +47,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QConnectionPointReferencePrivate::QConnectionPointReferencePrivate() :
     state(0)
@@ -182,31 +185,33 @@ void QConnectionPointReference::removeEntry(QPseudostate *entry)
 
 void QConnectionPointReference::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnectionPointReference")][QString::fromLatin1("exits")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnectionPointReference")][QString::fromLatin1("exits")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnectionPointReference")][QString::fromLatin1("exits")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The exitPoints kind pseudo states corresponding to this connection point.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnectionPointReference")][QString::fromLatin1("exits")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnectionPointReference")][QString::fromLatin1("exits")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnectionPointReference")][QString::fromLatin1("exits")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConnectionPointReference")][QString::fromLatin1("exits")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConnectionPointReference")][QString::fromLatin1("exits")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConnectionPointReference")][QString::fromLatin1("exits")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The exitPoints kind pseudo states corresponding to this connection point.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConnectionPointReference")][QString::fromLatin1("exits")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConnectionPointReference")][QString::fromLatin1("exits")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConnectionPointReference")][QString::fromLatin1("exits")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnectionPointReference")][QString::fromLatin1("state")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnectionPointReference")][QString::fromLatin1("state")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnectionPointReference")][QString::fromLatin1("state")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The State in which the connection point refreshens are defined.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnectionPointReference")][QString::fromLatin1("state")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnectionPointReference")][QString::fromLatin1("state")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamedElement::namespace");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnectionPointReference")][QString::fromLatin1("state")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QState::connection");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConnectionPointReference")][QString::fromLatin1("state")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConnectionPointReference")][QString::fromLatin1("state")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConnectionPointReference")][QString::fromLatin1("state")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The State in which the connection point refreshens are defined.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConnectionPointReference")][QString::fromLatin1("state")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConnectionPointReference")][QString::fromLatin1("state")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QNamedElement::namespace");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConnectionPointReference")][QString::fromLatin1("state")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QState::connection");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnectionPointReference")][QString::fromLatin1("entries")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnectionPointReference")][QString::fromLatin1("entries")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnectionPointReference")][QString::fromLatin1("entries")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The entryPoint kind pseudo states corresponding to this connection point.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnectionPointReference")][QString::fromLatin1("entries")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnectionPointReference")][QString::fromLatin1("entries")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QConnectionPointReference")][QString::fromLatin1("entries")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConnectionPointReference")][QString::fromLatin1("entries")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConnectionPointReference")][QString::fromLatin1("entries")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConnectionPointReference")][QString::fromLatin1("entries")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The entryPoint kind pseudo states corresponding to this connection point.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConnectionPointReference")][QString::fromLatin1("entries")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConnectionPointReference")][QString::fromLatin1("entries")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QConnectionPointReference")][QString::fromLatin1("entries")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QVertex::setPropertyData();
 }
 
-#include "moc_qconnectionpointreference.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qconnectionpointreference.cpp"
 

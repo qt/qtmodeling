@@ -51,7 +51,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTMOF
+QT_BEGIN_NAMESPACE
+
+namespace QtMof
+{
 
 QT_MODULE(QtMof)
 
@@ -64,7 +67,7 @@ class Q_MOF_EXPORT QEnumeration : public QDataType
 {
     Q_OBJECT
 
-    Q_PROPERTY(QList<QEnumerationLiteral *> ownedLiterals READ ownedLiterals)
+    Q_PROPERTY(QList<QtMof::QEnumerationLiteral *> ownedLiterals READ ownedLiterals)
 
     Q_DISABLE_COPY(QEnumeration)
     Q_DECLARE_PRIVATE(QEnumeration)
@@ -84,7 +87,9 @@ protected:
     explicit QEnumeration(QEnumerationPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTMOF
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

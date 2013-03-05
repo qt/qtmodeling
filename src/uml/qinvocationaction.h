@@ -51,7 +51,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -65,8 +68,8 @@ class Q_UML_EXPORT QInvocationAction : public QAction
 {
     Q_OBJECT
 
-    Q_PROPERTY(QList<QInputPin *> arguments READ arguments)
-    Q_PROPERTY(QPort * onPort READ onPort WRITE setOnPort)
+    Q_PROPERTY(QList<QtUml::QInputPin *> arguments READ arguments)
+    Q_PROPERTY(QtUml::QPort * onPort READ onPort WRITE setOnPort)
 
     Q_DISABLE_COPY(QInvocationAction)
     Q_DECLARE_PRIVATE(QInvocationAction)
@@ -88,7 +91,9 @@ protected:
     explicit QInvocationAction(QInvocationActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

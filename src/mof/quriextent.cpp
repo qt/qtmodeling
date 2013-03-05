@@ -46,7 +46,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTMOF
+QT_BEGIN_NAMESPACE
+
+namespace QtMof
+{
 
 QURIExtentPrivate::QURIExtentPrivate()
 {
@@ -101,7 +104,9 @@ void QURIExtent::setPropertyData()
     QExtent::setPropertyData();
 }
 
-#include "moc_quriextent.cpp"
+}
 
-QT_END_NAMESPACE_QTMOF
+QT_END_NAMESPACE
+
+#include "moc_quriextent.cpp"
 

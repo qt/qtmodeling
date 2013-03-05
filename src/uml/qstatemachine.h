@@ -51,7 +51,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -68,10 +71,10 @@ class Q_UML_EXPORT QStateMachine : public QBehavior
 {
     Q_OBJECT
 
-    Q_PROPERTY(QSet<QStateMachine *> extendedStateMachines READ extendedStateMachines)
-    Q_PROPERTY(QSet<QPseudostate *> connectionPoints READ connectionPoints)
-    Q_PROPERTY(QSet<QState *> submachineStates READ submachineStates)
-    Q_PROPERTY(QSet<QRegion *> regions READ regions)
+    Q_PROPERTY(QSet<QtUml::QStateMachine *> extendedStateMachines READ extendedStateMachines)
+    Q_PROPERTY(QSet<QtUml::QPseudostate *> connectionPoints READ connectionPoints)
+    Q_PROPERTY(QSet<QtUml::QState *> submachineStates READ submachineStates)
+    Q_PROPERTY(QSet<QtUml::QRegion *> regions READ regions)
 
     Q_DISABLE_COPY(QStateMachine)
     Q_DECLARE_PRIVATE(QStateMachine)
@@ -106,7 +109,9 @@ protected:
     explicit QStateMachine(QStateMachinePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

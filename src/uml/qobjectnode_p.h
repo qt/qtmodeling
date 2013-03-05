@@ -56,7 +56,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -74,13 +77,15 @@ public:
     virtual ~QObjectNodePrivate();
 
     bool isControlType;
-    QtUml::ObjectNodeOrderingKind ordering;
+    QtUmlNS::ObjectNodeOrderingKind ordering;
     QValueSpecification *upperBound;
     QBehavior *selection;
     QSet<QState *> inState;
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

@@ -51,7 +51,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -66,9 +69,9 @@ class Q_UML_EXPORT QVertex : public QNamedElement
 {
     Q_OBJECT
 
-    Q_PROPERTY(QSet<QTransition *> incomings READ incomings STORED false)
-    Q_PROPERTY(QRegion * container READ container WRITE setContainer)
-    Q_PROPERTY(QSet<QTransition *> outgoings READ outgoings STORED false)
+    Q_PROPERTY(QSet<QtUml::QTransition *> incomings READ incomings STORED false)
+    Q_PROPERTY(QtUml::QRegion * container READ container WRITE setContainer)
+    Q_PROPERTY(QSet<QtUml::QTransition *> outgoings READ outgoings STORED false)
 
     Q_DISABLE_COPY(QVertex)
     Q_DECLARE_PRIVATE(QVertex)
@@ -95,7 +98,9 @@ protected:
     explicit QVertex(QVertexPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

@@ -44,7 +44,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QPinPrivate::QPinPrivate() :
     isControl(false)
@@ -248,12 +251,12 @@ void QPin::setName(QString name)
 /*!
     Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility.
  */
-QtUml::VisibilityKind QPin::visibility() const
+QtUmlNS::VisibilityKind QPin::visibility() const
 {
     return (qwrappedobject_cast<const QNamedElement *>(this))->visibility();
 }
 
-void QPin::setVisibility(QtUml::VisibilityKind visibility)
+void QPin::setVisibility(QtUmlNS::VisibilityKind visibility)
 {
     (qwrappedobject_cast<QNamedElement *>(this))->setVisibility(visibility);
 }
@@ -525,19 +528,19 @@ void QPin::unsetControlType()
 /*!
     Tells whether and how the tokens in the object node are ordered for selection to traverse edges outgoing from the object node.
  */
-QtUml::ObjectNodeOrderingKind QPin::ordering() const
+QtUmlNS::ObjectNodeOrderingKind QPin::ordering() const
 {
     return (qwrappedobject_cast<const QObjectNode *>(this))->ordering();
 }
 
-void QPin::setOrdering(QtUml::ObjectNodeOrderingKind ordering)
+void QPin::setOrdering(QtUmlNS::ObjectNodeOrderingKind ordering)
 {
     (qwrappedobject_cast<QObjectNode *>(this))->setOrdering(ordering);
 }
 
 void QPin::unsetOrdering()
 {
-    setOrdering(QtUml::ObjectNodeOrderingFIFO);
+    setOrdering(QtUmlNS::ObjectNodeOrderingFIFO);
     Q_D(QPin);
     d->modifiedResettableProperties.removeAll(QString::fromLatin1("ordering"));
 }
@@ -625,17 +628,19 @@ void QPin::unsetControl()
 
 void QPin::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QPin")][QString::fromLatin1("isControl")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QPin")][QString::fromLatin1("isControl")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QPin")][QString::fromLatin1("isControl")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Tells whether the pins provide data to the actions, or just controls when it executes it.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QPin")][QString::fromLatin1("isControl")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QPin")][QString::fromLatin1("isControl")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QPin")][QString::fromLatin1("isControl")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QPin")][QString::fromLatin1("isControl")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QPin")][QString::fromLatin1("isControl")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QPin")][QString::fromLatin1("isControl")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Tells whether the pins provide data to the actions, or just controls when it executes it.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QPin")][QString::fromLatin1("isControl")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QPin")][QString::fromLatin1("isControl")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QPin")][QString::fromLatin1("isControl")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::setPropertyData();
 }
 
-#include "moc_qpin.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qpin.cpp"
 

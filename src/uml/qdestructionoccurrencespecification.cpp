@@ -44,7 +44,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QDestructionOccurrenceSpecificationPrivate::QDestructionOccurrenceSpecificationPrivate()
 {
@@ -83,7 +86,9 @@ void QDestructionOccurrenceSpecification::setPropertyData()
     QMessageOccurrenceSpecification::setPropertyData();
 }
 
-#include "moc_qdestructionoccurrencespecification.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qdestructionoccurrencespecification.cpp"
 

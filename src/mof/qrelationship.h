@@ -51,7 +51,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTMOF
+QT_BEGIN_NAMESPACE
+
+namespace QtMof
+{
 
 QT_MODULE(QtMof)
 
@@ -61,7 +64,7 @@ class Q_MOF_EXPORT QRelationship : public QElement
 {
     Q_OBJECT
 
-    Q_PROPERTY(QSet<QElement *> relatedElements READ relatedElements)
+    Q_PROPERTY(QSet<QtMof::QElement *> relatedElements READ relatedElements)
 
     Q_DISABLE_COPY(QRelationship)
     Q_DECLARE_PRIVATE(QRelationship)
@@ -79,7 +82,9 @@ protected:
     explicit QRelationship(QRelationshipPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTMOF
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

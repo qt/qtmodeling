@@ -51,7 +51,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -66,9 +69,9 @@ class Q_UML_EXPORT QReclassifyObjectAction : public QAction
     Q_OBJECT
 
     Q_PROPERTY(bool isReplaceAll READ isReplaceAll WRITE setReplaceAll RESET unsetReplaceAll)
-    Q_PROPERTY(QSet<QClassifier *> oldClassifiers READ oldClassifiers)
-    Q_PROPERTY(QInputPin * object READ object WRITE setObject)
-    Q_PROPERTY(QSet<QClassifier *> newClassifiers READ newClassifiers)
+    Q_PROPERTY(QSet<QtUml::QClassifier *> oldClassifiers READ oldClassifiers)
+    Q_PROPERTY(QtUml::QInputPin * object READ object WRITE setObject)
+    Q_PROPERTY(QSet<QtUml::QClassifier *> newClassifiers READ newClassifiers)
 
     Q_DISABLE_COPY(QReclassifyObjectAction)
     Q_DECLARE_PRIVATE(QReclassifyObjectAction)
@@ -98,7 +101,9 @@ protected:
     explicit QReclassifyObjectAction(QReclassifyObjectActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

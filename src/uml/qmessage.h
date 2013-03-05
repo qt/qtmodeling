@@ -55,7 +55,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -71,14 +74,14 @@ class Q_UML_EXPORT QMessage : public QNamedElement
 {
     Q_OBJECT
 
-    Q_PROPERTY(QtUml::MessageSort messageSort READ messageSort WRITE setMessageSort RESET unsetMessageSort)
-    Q_PROPERTY(QtUml::MessageKind messageKind READ messageKind STORED false)
-    Q_PROPERTY(QNamedElement * signature READ signature WRITE setSignature)
-    Q_PROPERTY(QList<QValueSpecification *> arguments READ arguments)
-    Q_PROPERTY(QMessageEnd * receiveEvent READ receiveEvent WRITE setReceiveEvent)
-    Q_PROPERTY(QInteraction * interaction READ interaction WRITE setInteraction)
-    Q_PROPERTY(QMessageEnd * sendEvent READ sendEvent WRITE setSendEvent)
-    Q_PROPERTY(QConnector * connector READ connector WRITE setConnector)
+    Q_PROPERTY(QtUmlNS::MessageSort messageSort READ messageSort WRITE setMessageSort RESET unsetMessageSort)
+    Q_PROPERTY(QtUmlNS::MessageKind messageKind READ messageKind STORED false)
+    Q_PROPERTY(QtUml::QNamedElement * signature READ signature WRITE setSignature)
+    Q_PROPERTY(QList<QtUml::QValueSpecification *> arguments READ arguments)
+    Q_PROPERTY(QtUml::QMessageEnd * receiveEvent READ receiveEvent WRITE setReceiveEvent)
+    Q_PROPERTY(QtUml::QInteraction * interaction READ interaction WRITE setInteraction)
+    Q_PROPERTY(QtUml::QMessageEnd * sendEvent READ sendEvent WRITE setSendEvent)
+    Q_PROPERTY(QtUml::QConnector * connector READ connector WRITE setConnector)
 
     Q_DISABLE_COPY(QMessage)
     Q_DECLARE_PRIVATE(QMessage)
@@ -88,10 +91,10 @@ public:
     virtual ~QMessage();
 
     // Attributes from QMessage
-    Q_INVOKABLE QtUml::MessageSort messageSort() const;
-    Q_INVOKABLE void setMessageSort(QtUml::MessageSort messageSort);
+    Q_INVOKABLE QtUmlNS::MessageSort messageSort() const;
+    Q_INVOKABLE void setMessageSort(QtUmlNS::MessageSort messageSort);
     Q_INVOKABLE void unsetMessageSort();
-    Q_INVOKABLE QtUml::MessageKind messageKind() const;
+    Q_INVOKABLE QtUmlNS::MessageKind messageKind() const;
 
     // Association ends from QMessage
     Q_INVOKABLE QNamedElement *signature() const;
@@ -114,7 +117,9 @@ protected:
     explicit QMessage(QMessagePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

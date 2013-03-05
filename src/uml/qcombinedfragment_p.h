@@ -55,7 +55,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -72,12 +75,14 @@ public:
     explicit QCombinedFragmentPrivate();
     virtual ~QCombinedFragmentPrivate();
 
-    QtUml::InteractionOperatorKind interactionOperator;
+    QtUmlNS::InteractionOperatorKind interactionOperator;
     QSet<QGate *> cfragmentGates;
     QList<QInteractionOperand *> operands;
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

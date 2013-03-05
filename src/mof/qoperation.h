@@ -52,7 +52,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTMOF
+QT_BEGIN_NAMESPACE
+
+namespace QtMof
+{
 
 QT_MODULE(QtMof)
 
@@ -75,15 +78,15 @@ class Q_MOF_EXPORT QOperation : public QBehavioralFeature
     Q_PROPERTY(bool isUnique READ isUnique STORED false)
     Q_PROPERTY(qint32 upper READ upper STORED false)
     Q_PROPERTY(bool isOrdered READ isOrdered STORED false)
-    Q_PROPERTY(QList<QParameter *> ownedParameters READ ownedParameters)
-    Q_PROPERTY(QConstraint * bodyCondition READ bodyCondition WRITE setBodyCondition)
-    Q_PROPERTY(QSet<QOperation *> redefinedOperations READ redefinedOperations)
-    Q_PROPERTY(QSet<QConstraint *> postconditions READ postconditions)
-    Q_PROPERTY(QDataType * datatype READ datatype WRITE setDatatype)
-    Q_PROPERTY(QType * type READ type STORED false)
-    Q_PROPERTY(QSet<QConstraint *> preconditions READ preconditions)
-    Q_PROPERTY(QClass * class_ READ class_ WRITE setClass_)
-    Q_PROPERTY(QSet<QType *> raisedExceptions READ raisedExceptions)
+    Q_PROPERTY(QList<QtMof::QParameter *> ownedParameters READ ownedParameters)
+    Q_PROPERTY(QtMof::QConstraint * bodyCondition READ bodyCondition WRITE setBodyCondition)
+    Q_PROPERTY(QSet<QtMof::QOperation *> redefinedOperations READ redefinedOperations)
+    Q_PROPERTY(QSet<QtMof::QConstraint *> postconditions READ postconditions)
+    Q_PROPERTY(QtMof::QDataType * datatype READ datatype WRITE setDatatype)
+    Q_PROPERTY(QtMof::QType * type READ type STORED false)
+    Q_PROPERTY(QSet<QtMof::QConstraint *> preconditions READ preconditions)
+    Q_PROPERTY(QtMof::QClass * class_ READ class_ WRITE setClass_)
+    Q_PROPERTY(QSet<QtMof::QType *> raisedExceptions READ raisedExceptions)
 
     Q_DISABLE_COPY(QOperation)
     Q_DECLARE_PRIVATE(QOperation)
@@ -135,7 +138,9 @@ protected:
     explicit QOperation(QOperationPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTMOF
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

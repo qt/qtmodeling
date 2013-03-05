@@ -44,7 +44,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QClearVariableActionPrivate::QClearVariableActionPrivate()
 {
@@ -83,7 +86,9 @@ void QClearVariableAction::setPropertyData()
     QVariableAction::setPropertyData();
 }
 
-#include "moc_qclearvariableaction.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qclearvariableaction.cpp"
 

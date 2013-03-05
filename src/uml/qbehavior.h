@@ -54,7 +54,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -72,13 +75,13 @@ class Q_UML_EXPORT QBehavior : public QClass
     Q_OBJECT
 
     Q_PROPERTY(bool isReentrant READ isReentrant WRITE setReentrant RESET unsetReentrant)
-    Q_PROPERTY(QBehavioralFeature * specification READ specification WRITE setSpecification)
-    Q_PROPERTY(QSet<QConstraint *> postconditions READ postconditions)
-    Q_PROPERTY(QSet<QConstraint *> preconditions READ preconditions)
-    Q_PROPERTY(QSet<QBehavior *> redefinedBehaviors READ redefinedBehaviors)
-    Q_PROPERTY(QList<QParameter *> ownedParameters READ ownedParameters)
-    Q_PROPERTY(QSet<QParameterSet *> ownedParameterSets READ ownedParameterSets)
-    Q_PROPERTY(QBehavioredClassifier * context READ context STORED false)
+    Q_PROPERTY(QtUml::QBehavioralFeature * specification READ specification WRITE setSpecification)
+    Q_PROPERTY(QSet<QtUml::QConstraint *> postconditions READ postconditions)
+    Q_PROPERTY(QSet<QtUml::QConstraint *> preconditions READ preconditions)
+    Q_PROPERTY(QSet<QtUml::QBehavior *> redefinedBehaviors READ redefinedBehaviors)
+    Q_PROPERTY(QList<QtUml::QParameter *> ownedParameters READ ownedParameters)
+    Q_PROPERTY(QSet<QtUml::QParameterSet *> ownedParameterSets READ ownedParameterSets)
+    Q_PROPERTY(QtUml::QBehavioredClassifier * context READ context STORED false)
 
     Q_DISABLE_COPY(QBehavior)
     Q_DECLARE_PRIVATE(QBehavior)
@@ -122,7 +125,9 @@ protected:
     explicit QBehavior(QBehaviorPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

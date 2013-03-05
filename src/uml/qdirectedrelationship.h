@@ -51,7 +51,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -64,8 +67,8 @@ class Q_UML_EXPORT QDirectedRelationship : public QRelationship
 {
     Q_OBJECT
 
-    Q_PROPERTY(QSet<QElement *> sources READ sources)
-    Q_PROPERTY(QSet<QElement *> targets READ targets)
+    Q_PROPERTY(QSet<QtUml::QElement *> sources READ sources)
+    Q_PROPERTY(QSet<QtUml::QElement *> targets READ targets)
 
     Q_DISABLE_COPY(QDirectedRelationship)
     Q_DECLARE_PRIVATE(QDirectedRelationship)
@@ -84,7 +87,9 @@ protected:
     explicit QDirectedRelationship(QDirectedRelationshipPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

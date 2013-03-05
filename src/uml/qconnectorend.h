@@ -48,7 +48,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -62,9 +65,9 @@ class Q_UML_EXPORT QConnectorEnd : public QMultiplicityElement
 {
     Q_OBJECT
 
-    Q_PROPERTY(QConnectableElement * role READ role WRITE setRole)
-    Q_PROPERTY(QProperty * partWithPort READ partWithPort WRITE setPartWithPort)
-    Q_PROPERTY(QProperty * definingEnd READ definingEnd STORED false)
+    Q_PROPERTY(QtUml::QConnectableElement * role READ role WRITE setRole)
+    Q_PROPERTY(QtUml::QProperty * partWithPort READ partWithPort WRITE setPartWithPort)
+    Q_PROPERTY(QtUml::QProperty * definingEnd READ definingEnd STORED false)
 
     Q_DISABLE_COPY(QConnectorEnd)
     Q_DECLARE_PRIVATE(QConnectorEnd)
@@ -86,7 +89,9 @@ protected:
     explicit QConnectorEnd(QConnectorEndPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

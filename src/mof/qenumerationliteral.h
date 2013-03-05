@@ -48,7 +48,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTMOF
+QT_BEGIN_NAMESPACE
+
+namespace QtMof
+{
 
 QT_MODULE(QtMof)
 
@@ -61,8 +64,8 @@ class Q_MOF_EXPORT QEnumerationLiteral : public QInstanceSpecification
 {
     Q_OBJECT
 
-    Q_PROPERTY(QEnumeration * classifier READ classifier STORED false)
-    Q_PROPERTY(QEnumeration * enumeration READ enumeration WRITE setEnumeration)
+    Q_PROPERTY(QtMof::QEnumeration * classifier READ classifier STORED false)
+    Q_PROPERTY(QtMof::QEnumeration * enumeration READ enumeration WRITE setEnumeration)
 
     Q_DISABLE_COPY(QEnumerationLiteral)
     Q_DECLARE_PRIVATE(QEnumerationLiteral)
@@ -82,7 +85,9 @@ protected:
     explicit QEnumerationLiteral(QEnumerationLiteralPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTMOF
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

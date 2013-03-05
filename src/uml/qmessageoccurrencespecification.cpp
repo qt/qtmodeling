@@ -44,7 +44,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QMessageOccurrenceSpecificationPrivate::QMessageOccurrenceSpecificationPrivate()
 {
@@ -140,12 +143,12 @@ void QMessageOccurrenceSpecification::setName(QString name)
 /*!
     Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility.
  */
-QtUml::VisibilityKind QMessageOccurrenceSpecification::visibility() const
+QtUmlNS::VisibilityKind QMessageOccurrenceSpecification::visibility() const
 {
     return (qwrappedobject_cast<const QNamedElement *>(this))->visibility();
 }
 
-void QMessageOccurrenceSpecification::setVisibility(QtUml::VisibilityKind visibility)
+void QMessageOccurrenceSpecification::setVisibility(QtUmlNS::VisibilityKind visibility)
 {
     (qwrappedobject_cast<QNamedElement *>(this))->setVisibility(visibility);
 }
@@ -223,7 +226,9 @@ void QMessageOccurrenceSpecification::setPropertyData()
     QWrappedObject::setPropertyData();
 }
 
-#include "moc_qmessageoccurrencespecification.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qmessageoccurrencespecification.cpp"
 

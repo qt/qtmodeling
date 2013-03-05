@@ -44,7 +44,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QFinalNodePrivate::QFinalNodePrivate()
 {
@@ -83,7 +86,9 @@ void QFinalNode::setPropertyData()
     QControlNode::setPropertyData();
 }
 
-#include "moc_qfinalnode.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qfinalnode.cpp"
 

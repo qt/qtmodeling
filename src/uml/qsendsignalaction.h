@@ -48,7 +48,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -62,8 +65,8 @@ class Q_UML_EXPORT QSendSignalAction : public QInvocationAction
 {
     Q_OBJECT
 
-    Q_PROPERTY(QInputPin * target READ target WRITE setTarget)
-    Q_PROPERTY(QSignal * signal READ signal WRITE setSignal)
+    Q_PROPERTY(QtUml::QInputPin * target READ target WRITE setTarget)
+    Q_PROPERTY(QtUml::QSignal * signal READ signal WRITE setSignal)
 
     Q_DISABLE_COPY(QSendSignalAction)
     Q_DECLARE_PRIVATE(QSendSignalAction)
@@ -84,7 +87,9 @@ protected:
     explicit QSendSignalAction(QSendSignalActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

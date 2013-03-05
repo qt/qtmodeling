@@ -48,7 +48,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -62,7 +65,7 @@ class Q_UML_EXPORT QTimeEvent : public QEvent
     Q_OBJECT
 
     Q_PROPERTY(bool isRelative READ isRelative WRITE setRelative RESET unsetRelative)
-    Q_PROPERTY(QTimeExpression * when READ when WRITE setWhen)
+    Q_PROPERTY(QtUml::QTimeExpression * when READ when WRITE setWhen)
 
     Q_DISABLE_COPY(QTimeEvent)
     Q_DECLARE_PRIVATE(QTimeEvent)
@@ -86,7 +89,9 @@ protected:
     explicit QTimeEvent(QTimeEventPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

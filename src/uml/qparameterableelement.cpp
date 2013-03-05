@@ -46,7 +46,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QParameterableElementPrivate::QParameterableElementPrivate() :
     owningTemplateParameter(0),
@@ -165,24 +168,26 @@ bool QParameterableElement::isTemplateParameter() const
 
 void QParameterableElement::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameterableElement")][QString::fromLatin1("owningTemplateParameter")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameterableElement")][QString::fromLatin1("owningTemplateParameter")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameterableElement")][QString::fromLatin1("owningTemplateParameter")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The formal template parameter that owns this element.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameterableElement")][QString::fromLatin1("owningTemplateParameter")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameterableElement")][QString::fromLatin1("owningTemplateParameter")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QParameterableElement::templateParameter QElement::owner");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameterableElement")][QString::fromLatin1("owningTemplateParameter")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QTemplateParameter::ownedParameteredElement");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameterableElement")][QString::fromLatin1("owningTemplateParameter")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameterableElement")][QString::fromLatin1("owningTemplateParameter")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameterableElement")][QString::fromLatin1("owningTemplateParameter")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The formal template parameter that owns this element.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameterableElement")][QString::fromLatin1("owningTemplateParameter")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameterableElement")][QString::fromLatin1("owningTemplateParameter")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QParameterableElement::templateParameter QElement::owner");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameterableElement")][QString::fromLatin1("owningTemplateParameter")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QTemplateParameter::ownedParameteredElement");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameterableElement")][QString::fromLatin1("templateParameter")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameterableElement")][QString::fromLatin1("templateParameter")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameterableElement")][QString::fromLatin1("templateParameter")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The template parameter that exposes this element as a formal parameter.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameterableElement")][QString::fromLatin1("templateParameter")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameterableElement")][QString::fromLatin1("templateParameter")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QParameterableElement")][QString::fromLatin1("templateParameter")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QTemplateParameter::parameteredElement");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameterableElement")][QString::fromLatin1("templateParameter")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameterableElement")][QString::fromLatin1("templateParameter")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameterableElement")][QString::fromLatin1("templateParameter")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The template parameter that exposes this element as a formal parameter.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameterableElement")][QString::fromLatin1("templateParameter")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameterableElement")][QString::fromLatin1("templateParameter")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QParameterableElement")][QString::fromLatin1("templateParameter")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QTemplateParameter::parameteredElement");
 
     QElement::setPropertyData();
 }
 
-#include "moc_qparameterableelement.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qparameterableelement.cpp"
 

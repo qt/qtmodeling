@@ -44,7 +44,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QDevicePrivate::QDevicePrivate()
 {
@@ -83,7 +86,9 @@ void QDevice::setPropertyData()
     QNode::setPropertyData();
 }
 
-#include "moc_qdevice.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qdevice.cpp"
 

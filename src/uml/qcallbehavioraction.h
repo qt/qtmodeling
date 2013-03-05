@@ -48,7 +48,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -61,7 +64,7 @@ class Q_UML_EXPORT QCallBehaviorAction : public QCallAction
 {
     Q_OBJECT
 
-    Q_PROPERTY(QBehavior * behavior READ behavior WRITE setBehavior)
+    Q_PROPERTY(QtUml::QBehavior * behavior READ behavior WRITE setBehavior)
 
     Q_DISABLE_COPY(QCallBehaviorAction)
     Q_DECLARE_PRIVATE(QCallBehaviorAction)
@@ -80,7 +83,9 @@ protected:
     explicit QCallBehaviorAction(QCallBehaviorActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

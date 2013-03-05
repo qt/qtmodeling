@@ -41,15 +41,11 @@
 
 #include "${namespace.split('/').0.lower}namespace.h"
 
-QT_BEGIN_NAMESPACE_${namespace.replace('/', '_').upper}
-
-${namespace.split('/').0}::${namespace.split('/').0}()
-{
-}
+QT_BEGIN_NAMESPACE
 
 [% FOREACH enumeration IN enumerations -%]
 /*!
-    \enum ${namespace.replace('/', '::')}::${namespace.replace('/', '::')}::${enumeration.name}
+    \enum ${namespace.replace('/', '::')}NS::${enumeration.name}
 
     ${enumeration.documentation}
 
@@ -60,7 +56,5 @@ ${namespace.split('/').0}::${namespace.split('/').0}()
  */
 
 [% END -%]
-#include "moc_${namespace.split('/').0.lower}namespace.cpp"
-
-QT_END_NAMESPACE_${namespace.replace('/', '_').upper}
+QT_END_NAMESPACE
 

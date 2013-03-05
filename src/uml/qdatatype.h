@@ -52,7 +52,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -67,8 +70,8 @@ class Q_UML_EXPORT QDataType : public QClassifier
 {
     Q_OBJECT
 
-    Q_PROPERTY(QList<QOperation *> ownedOperations READ ownedOperations)
-    Q_PROPERTY(QList<QProperty *> ownedAttributes READ ownedAttributes)
+    Q_PROPERTY(QList<QtUml::QOperation *> ownedOperations READ ownedOperations)
+    Q_PROPERTY(QList<QtUml::QProperty *> ownedAttributes READ ownedAttributes)
 
     Q_DISABLE_COPY(QDataType)
     Q_DECLARE_PRIVATE(QDataType)
@@ -94,7 +97,9 @@ protected:
     explicit QDataType(QDataTypePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

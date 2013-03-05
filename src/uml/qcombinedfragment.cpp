@@ -47,10 +47,13 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QCombinedFragmentPrivate::QCombinedFragmentPrivate() :
-    interactionOperator(QtUml::InteractionOperatorSeq)
+    interactionOperator(QtUmlNS::InteractionOperatorSeq)
 {
 }
 
@@ -89,7 +92,7 @@ QCombinedFragment::~QCombinedFragment()
 /*!
     Specifies the operation which defines the semantics of this combination of InteractionFragments.
  */
-QtUml::InteractionOperatorKind QCombinedFragment::interactionOperator() const
+QtUmlNS::InteractionOperatorKind QCombinedFragment::interactionOperator() const
 {
     // This is a read-write attribute
 
@@ -97,7 +100,7 @@ QtUml::InteractionOperatorKind QCombinedFragment::interactionOperator() const
     return d->interactionOperator;
 }
 
-void QCombinedFragment::setInteractionOperator(QtUml::InteractionOperatorKind interactionOperator)
+void QCombinedFragment::setInteractionOperator(QtUmlNS::InteractionOperatorKind interactionOperator)
 {
     // This is a read-write attribute
 
@@ -110,7 +113,7 @@ void QCombinedFragment::setInteractionOperator(QtUml::InteractionOperatorKind in
 
 void QCombinedFragment::unsetInteractionOperator()
 {
-    setInteractionOperator(QtUml::InteractionOperatorSeq);
+    setInteractionOperator(QtUmlNS::InteractionOperatorSeq);
     Q_D(QCombinedFragment);
     d->modifiedResettableProperties.removeAll(QString::fromLatin1("interactionOperator"));
 }
@@ -195,31 +198,33 @@ void QCombinedFragment::removeOperand(QInteractionOperand *operand)
 
 void QCombinedFragment::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QCombinedFragment")][QString::fromLatin1("interactionOperator")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QCombinedFragment")][QString::fromLatin1("interactionOperator")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QCombinedFragment")][QString::fromLatin1("interactionOperator")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the operation which defines the semantics of this combination of InteractionFragments.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QCombinedFragment")][QString::fromLatin1("interactionOperator")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QCombinedFragment")][QString::fromLatin1("interactionOperator")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QCombinedFragment")][QString::fromLatin1("interactionOperator")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QCombinedFragment")][QString::fromLatin1("interactionOperator")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QCombinedFragment")][QString::fromLatin1("interactionOperator")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QCombinedFragment")][QString::fromLatin1("interactionOperator")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the operation which defines the semantics of this combination of InteractionFragments.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QCombinedFragment")][QString::fromLatin1("interactionOperator")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QCombinedFragment")][QString::fromLatin1("interactionOperator")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QCombinedFragment")][QString::fromLatin1("interactionOperator")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QCombinedFragment")][QString::fromLatin1("cfragmentGates")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QCombinedFragment")][QString::fromLatin1("cfragmentGates")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QCombinedFragment")][QString::fromLatin1("cfragmentGates")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the gates that form the interface between this CombinedFragment and its surroundings");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QCombinedFragment")][QString::fromLatin1("cfragmentGates")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QCombinedFragment")][QString::fromLatin1("cfragmentGates")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QCombinedFragment")][QString::fromLatin1("cfragmentGates")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QCombinedFragment")][QString::fromLatin1("cfragmentGates")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QCombinedFragment")][QString::fromLatin1("cfragmentGates")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QCombinedFragment")][QString::fromLatin1("cfragmentGates")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the gates that form the interface between this CombinedFragment and its surroundings");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QCombinedFragment")][QString::fromLatin1("cfragmentGates")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QCombinedFragment")][QString::fromLatin1("cfragmentGates")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QCombinedFragment")][QString::fromLatin1("cfragmentGates")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QCombinedFragment")][QString::fromLatin1("operands")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QCombinedFragment")][QString::fromLatin1("operands")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QCombinedFragment")][QString::fromLatin1("operands")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The set of operands of the combined fragment.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QCombinedFragment")][QString::fromLatin1("operands")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QCombinedFragment")][QString::fromLatin1("operands")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QCombinedFragment")][QString::fromLatin1("operands")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QCombinedFragment")][QString::fromLatin1("operands")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QCombinedFragment")][QString::fromLatin1("operands")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QCombinedFragment")][QString::fromLatin1("operands")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The set of operands of the combined fragment.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QCombinedFragment")][QString::fromLatin1("operands")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QCombinedFragment")][QString::fromLatin1("operands")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QElement::ownedElements");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QtUml::QCombinedFragment")][QString::fromLatin1("operands")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QInteractionFragment::setPropertyData();
 }
 
-#include "moc_qcombinedfragment.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qcombinedfragment.cpp"
 

@@ -51,7 +51,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -70,16 +73,16 @@ class Q_UML_EXPORT QActivityEdge : public QRedefinableElement
 {
     Q_OBJECT
 
-    Q_PROPERTY(QActivityNode * source READ source WRITE setSource)
-    Q_PROPERTY(QSet<QActivityEdge *> redefinedEdges READ redefinedEdges)
-    Q_PROPERTY(QSet<QActivityGroup *> inGroup READ inGroup)
-    Q_PROPERTY(QValueSpecification * guard READ guard WRITE setGuard)
-    Q_PROPERTY(QSet<QActivityPartition *> inPartition READ inPartition)
-    Q_PROPERTY(QActivity * activity READ activity WRITE setActivity)
-    Q_PROPERTY(QInterruptibleActivityRegion * interrupts READ interrupts WRITE setInterrupts)
-    Q_PROPERTY(QValueSpecification * weight READ weight WRITE setWeight)
-    Q_PROPERTY(QStructuredActivityNode * inStructuredNode READ inStructuredNode WRITE setInStructuredNode)
-    Q_PROPERTY(QActivityNode * target READ target WRITE setTarget)
+    Q_PROPERTY(QtUml::QActivityNode * source READ source WRITE setSource)
+    Q_PROPERTY(QSet<QtUml::QActivityEdge *> redefinedEdges READ redefinedEdges)
+    Q_PROPERTY(QSet<QtUml::QActivityGroup *> inGroup READ inGroup)
+    Q_PROPERTY(QtUml::QValueSpecification * guard READ guard WRITE setGuard)
+    Q_PROPERTY(QSet<QtUml::QActivityPartition *> inPartition READ inPartition)
+    Q_PROPERTY(QtUml::QActivity * activity READ activity WRITE setActivity)
+    Q_PROPERTY(QtUml::QInterruptibleActivityRegion * interrupts READ interrupts WRITE setInterrupts)
+    Q_PROPERTY(QtUml::QValueSpecification * weight READ weight WRITE setWeight)
+    Q_PROPERTY(QtUml::QStructuredActivityNode * inStructuredNode READ inStructuredNode WRITE setInStructuredNode)
+    Q_PROPERTY(QtUml::QActivityNode * target READ target WRITE setTarget)
 
     Q_DISABLE_COPY(QActivityEdge)
     Q_DECLARE_PRIVATE(QActivityEdge)
@@ -120,7 +123,9 @@ protected:
     explicit QActivityEdge(QActivityEdgePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

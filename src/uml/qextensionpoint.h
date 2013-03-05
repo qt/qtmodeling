@@ -48,7 +48,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -61,7 +64,7 @@ class Q_UML_EXPORT QExtensionPoint : public QRedefinableElement
 {
     Q_OBJECT
 
-    Q_PROPERTY(QUseCase * useCase READ useCase WRITE setUseCase)
+    Q_PROPERTY(QtUml::QUseCase * useCase READ useCase WRITE setUseCase)
 
     Q_DISABLE_COPY(QExtensionPoint)
     Q_DECLARE_PRIVATE(QExtensionPoint)
@@ -80,7 +83,9 @@ protected:
     explicit QExtensionPoint(QExtensionPointPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

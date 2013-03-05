@@ -44,7 +44,10 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QRealizationPrivate::QRealizationPrivate()
 {
@@ -83,7 +86,9 @@ void QRealization::setPropertyData()
     QAbstraction::setPropertyData();
 }
 
-#include "moc_qrealization.cpp"
+}
 
-QT_END_NAMESPACE_QTUML
+QT_END_NAMESPACE
+
+#include "moc_qrealization.cpp"
 

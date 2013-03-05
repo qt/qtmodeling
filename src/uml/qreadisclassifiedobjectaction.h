@@ -48,7 +48,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -64,9 +67,9 @@ class Q_UML_EXPORT QReadIsClassifiedObjectAction : public QAction
     Q_OBJECT
 
     Q_PROPERTY(bool isDirect READ isDirect WRITE setDirect RESET unsetDirect)
-    Q_PROPERTY(QOutputPin * result READ result WRITE setResult)
-    Q_PROPERTY(QInputPin * object READ object WRITE setObject)
-    Q_PROPERTY(QClassifier * classifier READ classifier WRITE setClassifier)
+    Q_PROPERTY(QtUml::QOutputPin * result READ result WRITE setResult)
+    Q_PROPERTY(QtUml::QInputPin * object READ object WRITE setObject)
+    Q_PROPERTY(QtUml::QClassifier * classifier READ classifier WRITE setClassifier)
 
     Q_DISABLE_COPY(QReadIsClassifiedObjectAction)
     Q_DECLARE_PRIVATE(QReadIsClassifiedObjectAction)
@@ -94,7 +97,9 @@ protected:
     explicit QReadIsClassifiedObjectAction(QReadIsClassifiedObjectActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 

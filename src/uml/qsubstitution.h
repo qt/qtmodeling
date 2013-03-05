@@ -50,7 +50,10 @@
 
 QT_BEGIN_HEADER
 
-QT_BEGIN_NAMESPACE_QTUML
+QT_BEGIN_NAMESPACE
+
+namespace QtUml
+{
 
 QT_MODULE(QtUml)
 
@@ -63,8 +66,8 @@ class Q_UML_EXPORT QSubstitution : public QRealization
 {
     Q_OBJECT
 
-    Q_PROPERTY(QClassifier * contract READ contract WRITE setContract)
-    Q_PROPERTY(QClassifier * substitutingClassifier READ substitutingClassifier WRITE setSubstitutingClassifier)
+    Q_PROPERTY(QtUml::QClassifier * contract READ contract WRITE setContract)
+    Q_PROPERTY(QtUml::QClassifier * substitutingClassifier READ substitutingClassifier WRITE setSubstitutingClassifier)
 
     Q_DISABLE_COPY(QSubstitution)
     Q_DECLARE_PRIVATE(QSubstitution)
@@ -91,7 +94,9 @@ protected:
     explicit QSubstitution(QSubstitutionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-QT_END_NAMESPACE_QTUML
+}
+
+QT_END_NAMESPACE
 
 QT_END_HEADER
 
