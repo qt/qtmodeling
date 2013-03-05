@@ -231,7 +231,7 @@ void QWrappedObjectView::removeObjectUse(QWrappedObject *container, QWrappedObje
         if (typeName.endsWith('*') && qvariant_cast<QWrappedObject *>(variant)) {
             QWrappedObject *object = qvariant_cast<QWrappedObject *>(variant);
             if (object == usedObject) {
-                methodSignature = QString::fromLatin1("set%1(%2)").arg(modifiedPropertyName).arg(typeName);
+                methodSignature = QString::fromLatin1("set%1(%2)").arg(modifiedPropertyName).arg(typeName.split(QString::fromLatin1("::")).last());
                 if (!methodSignature.isEmpty() && (metaMethodIndex = container->metaObject()->indexOfMethod(methodSignature.toLatin1())) != -1) {
                     container->metaObject()->method(metaMethodIndex).invoke(container, ::Q_ARG(QObject *, 0));
                 }
@@ -245,7 +245,7 @@ void QWrappedObjectView::removeObjectUse(QWrappedObject *container, QWrappedObje
                 foreach (QWrappedObject *object, elements) {
                     if (object == usedObject) {
                         typeName = typeName.remove(QString::fromLatin1("QSet<")).remove(QString::fromLatin1(">"));
-                        methodSignature = QString::fromLatin1("remove%1(%2)").arg(modifiedPropertyName).arg(typeName);
+                        methodSignature = QString::fromLatin1("remove%1(%2)").arg(modifiedPropertyName).arg(typeName.split(QString::fromLatin1("::")).last());
                         if (!methodSignature.isEmpty() && (metaMethodIndex = container->metaObject()->indexOfMethod(methodSignature.toLatin1())) != -1) {
                             container->metaObject()->method(metaMethodIndex).invoke(container, ::Q_ARG(QObject *, usedObject));
                         }
@@ -260,7 +260,7 @@ void QWrappedObjectView::removeObjectUse(QWrappedObject *container, QWrappedObje
                 foreach (QWrappedObject *object, elements) {
                     if (object == usedObject) {
                         typeName = typeName.remove(QString::fromLatin1("QList<")).remove(QString::fromLatin1(">"));
-                        methodSignature = QString::fromLatin1("remove%1(%2)").arg(modifiedPropertyName).arg(typeName);
+                        methodSignature = QString::fromLatin1("remove%1(%2)").arg(modifiedPropertyName).arg(typeName.split(QString::fromLatin1("::")).last());
                         if (!methodSignature.isEmpty() && (metaMethodIndex = container->metaObject()->indexOfMethod(methodSignature.toLatin1())) != -1) {
                             container->metaObject()->method(metaMethodIndex).invoke(container, ::Q_ARG(QObject *, usedObject));
                         }
