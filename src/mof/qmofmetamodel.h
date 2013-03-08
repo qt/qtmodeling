@@ -47,9 +47,6 @@ QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
-namespace QtMof
-{
-
 QT_MODULE(QtMof)
 
 class Q_MOF_EXPORT QMofMetaModel
@@ -57,8 +54,6 @@ class Q_MOF_EXPORT QMofMetaModel
 public:
     static void init(QScriptEngine *scriptEngine = 0);
 };
-
-}
 
 QT_END_NAMESPACE
 

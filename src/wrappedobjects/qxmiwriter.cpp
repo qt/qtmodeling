@@ -103,12 +103,14 @@ bool QXmiWriter::writeFile(QIODevice *device)
     d->writer.writeStartElement(QString::fromLatin1("xmi:XMI"));
     d->writer.writeNamespace(QString::fromLatin1("http://www.omg.org/spec/XMI/20110701"), QString::fromLatin1("xmi"));
 
-    QStringList metaModelClassName = QString::fromLatin1(d->wrappedObject->metaObject()->className()).split(QString::fromLatin1("::"));
-    metaModelClassName.removeLast();
-    QString metaModelImplementationNamespace = metaModelClassName.join(QString::fromLatin1("::"));
+    QString metaModelClassName = QString::fromLatin1(d->wrappedObject->metaObject()->className());
+    int pos = 2;
+    while (metaModelClassName[pos] == metaModelClassName[pos].toLower()) pos++;
+    QString metaModelImplementationNamespace = metaModelClassName.left(pos);
+    qDebug() << "metaModelImplementationNamespace:" << metaModelImplementationNamespace;
     foreach (QMetaModelPlugin *plugin, d->metaModelPlugins.values()) {
         if (plugin->metaModelNamespace() == metaModelImplementationNamespace) {
-            d->metaModelXmlNamespace = plugin->metaModelNamespace().mid(2).toLower();
+            d->metaModelXmlNamespace = plugin->metaModelNamespace().mid(1).toLower();
             d->writer.writeNamespace(plugin->metaModelNamespaceUri(), d->metaModelXmlNamespace);
             break;
         }
@@ -134,11 +136,10 @@ void QXmiWriter::populateIdMap(QWrappedObject *wrappedObject, int index)
     if (wrappedObject->metaWrappedObject()->indexOfProperty("name") != -1)
         d->idStack << wrappedObject->property("name").toString();
     else
-        d->idStack << QString::fromLatin1(wrappedObject->metaObject()->className()).remove(QRegularExpression(QString::fromLatin1("^Q"))) +
+        d->idStack << QString::fromLatin1(wrappedObject->metaObject()->className()).remove(QRegularExpression(QString::fromLatin1("^QUml"))) +
                       QString::fromLatin1((index != -1) ? ".%1":"").arg(index);
     d->idMap.insert(wrappedObject, d->idStack.join(QString::fromLatin1("-")));
     d->visitedObjects.append(wrappedObject);
-    qDebug() << "Analise do objeto:" << qTopLevelWrapper(wrappedObject)->objectName() << ". #idmap:" << d->idMap.size();
 
     const QMetaWrappedObject *metaWrappedObject = wrappedObject->metaWrappedObject();
     int propertyCount = metaWrappedObject->propertyCount();
@@ -160,7 +161,6 @@ void QXmiWriter::populateIdMap(QWrappedObject *wrappedObject, int index)
                 d->blacklistedOppositeEnds << wrappedObject->propertyData(QString::fromLatin1(metaPropertyInfo.propertyMetaObject->className()),
                                                                           metaProperty,
                                                                           QtWrappedObjects::OppositeEndRole).toString();
-                qDebug() << "Blacklist:" << d->blacklistedOppositeEnds;
             }
 
         if (wrappedObject->propertyData(QString::fromLatin1(metaPropertyInfo.propertyMetaObject->className()),
@@ -168,28 +168,22 @@ void QXmiWriter::populateIdMap(QWrappedObject *wrappedObject, int index)
                                         QtWrappedObjects::AggregationRole).toString() != QString::fromLatin1("composite"))
             continue;
 
-        if (typeName.endsWith('*') && qvariant_cast<QWrappedObject *>(variant)) {
-            qDebug() << "Invocando recursivamente" << qTopLevelWrapper(qvariant_cast<QWrappedObject *>(variant))->objectName() << "devido a propriedade" << metaProperty.name();
+        if (typeName.endsWith('*') && qvariant_cast<QWrappedObject *>(variant))
             populateIdMap(qTopLevelWrapper(qvariant_cast<QWrappedObject *>(variant)), 0);
-        }
         else if (typeName.contains(QString::fromLatin1("QSet")) && variant.isValid()) {
             QSet<QWrappedObject *> elements = *(static_cast<QSet<QWrappedObject *> *>(variant.data()));
             int i = 0;
             foreach (QWrappedObject *objectElement, elements) {
-                if (!d->visitedObjects.contains(qTopLevelWrapper(objectElement))) {
-                    qDebug() << "Invocando recursivamente" << qTopLevelWrapper(objectElement)->objectName() << "devido a propriedade" << metaProperty.name();
+                if (!d->visitedObjects.contains(qTopLevelWrapper(objectElement)))
                     populateIdMap(qTopLevelWrapper(objectElement), i++);
-                }
             }
         }
         else if (typeName.contains(QString::fromLatin1("QList")) && variant.isValid()) {
             QList<QWrappedObject *> elements = *(static_cast<QList<QWrappedObject *> *>(variant.data()));
             int i = 0;
             foreach (QWrappedObject *objectElement, elements) {
-                if (!d->visitedObjects.contains(qTopLevelWrapper(objectElement))) {
-                    qDebug() << "Invocando recursivamente" << qTopLevelWrapper(objectElement)->objectName() << "devido a propriedade" << metaProperty.name();
+                if (!d->visitedObjects.contains(qTopLevelWrapper(objectElement)))
                     populateIdMap(qTopLevelWrapper(objectElement), i++);
-                }
             }
         }
     }
@@ -206,11 +200,11 @@ void QXmiWriter::writeWrappedObject(QWrappedObject *wrappedObject, QString eleme
 
     d->visitedObjects.append(wrappedObject);
 
-    d->writer.writeStartElement(elementName.isEmpty() ? QString::fromLatin1(d->wrappedObject->metaObject()->className()).split(QString::fromLatin1("::")).last().remove(QRegularExpression(QString::fromLatin1("^Q"))).prepend(QString::fromLatin1("%1:").arg(d->metaModelXmlNamespace))
+    d->writer.writeStartElement(elementName.isEmpty() ? QString::fromLatin1(d->wrappedObject->metaObject()->className()).split(QString::fromLatin1("::")).last().remove(QRegularExpression(QString::fromLatin1("^QUml"))).prepend(QString::fromLatin1("%1:").arg(d->metaModelXmlNamespace))
                                                       :
                                                         elementName);
     if (!elementName.isEmpty())
-        d->writer.writeAttribute(QString::fromLatin1("xmi:type"), QString::fromLatin1(wrappedObject->metaObject()->className()).split(QString::fromLatin1("::")).last().remove(QRegularExpression(QString::fromLatin1("^Q"))).prepend(QString::fromLatin1("uml:")));
+        d->writer.writeAttribute(QString::fromLatin1("xmi:type"), QString::fromLatin1(wrappedObject->metaObject()->className()).split(QString::fromLatin1("::")).last().remove(QRegularExpression(QString::fromLatin1("^QUml"))).prepend(QString::fromLatin1("uml:")));
 
     const QMetaWrappedObject *metaWrappedObject = wrappedObject->metaWrappedObject();
     int propertyCount = metaWrappedObject->propertyCount();
@@ -249,7 +243,7 @@ void QXmiWriter::writeWrappedObject(QWrappedObject *wrappedObject, QString eleme
         QMetaPropertyInfo metaPropertyInfo = metaWrappedObject->property(i);
         QMetaProperty metaProperty = metaPropertyInfo.metaProperty;
 
-        qDebug() << "Blacklist contains" << QString::fromLatin1("%1::%2").arg(QString::fromLatin1(metaPropertyInfo.propertyMetaObject->className())).arg(QString::fromLatin1(metaProperty.name()).remove(QRegularExpression(QString::fromLatin1("_$")))) << "?";
+        qDebug() << "blacklist contains" << QString::fromLatin1("%1%2").arg(QString::fromLatin1(metaPropertyInfo.propertyMetaObject->className()).split(QString::fromLatin1("::")).last()).arg(QString::fromLatin1(metaProperty.name()).remove(QRegularExpression(QString::fromLatin1("_$")))) << "?";
         if (d->blacklistedOppositeEnds.contains(QString::fromLatin1("%1::%2").arg(QString::fromLatin1(metaPropertyInfo.propertyMetaObject->className()).split(QString::fromLatin1("::")).last()).arg(QString::fromLatin1(metaProperty.name()).remove(QRegularExpression(QString::fromLatin1("_$"))))))
             continue;
 

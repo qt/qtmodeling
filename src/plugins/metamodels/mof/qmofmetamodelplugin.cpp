@@ -49,7 +49,7 @@ QMofMetaModelPlugin::QMofMetaModelPlugin(QObject *parent)
 
 void QMofMetaModelPlugin::initMetaModel(QScriptEngine *scriptEngine)
 {
-    QtMof::QMofMetaModel::init(scriptEngine);
+    QMofMetaModel::init(scriptEngine);
 }
 
 QString QMofMetaModelPlugin::metaModelNamespaceUri()
@@ -59,6 +59,6 @@ QString QMofMetaModelPlugin::metaModelNamespaceUri()
 
 QString QMofMetaModelPlugin::metaModelNamespace()
 {
-    return QString::fromLatin1("QtMof");
+    return QString::fromLatin1("QMof");
 }
 

@@ -1,7 +1,7 @@
-QT.mof.VERSION = 5.0.0
+QT.mof.VERSION = 5.0.1
 QT.mof.MAJOR_VERSION = 5
 QT.mof.MINOR_VERSION = 0
-QT.mof.PATCH_VERSION = 0
+QT.mof.PATCH_VERSION = 1
 
 QT.mof.name = QtMof
 QT.mof.bins = $$QT_MODULE_BIN_BASE

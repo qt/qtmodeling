@@ -49,7 +49,7 @@ QUmlMetaModelPlugin::QUmlMetaModelPlugin(QObject *parent)
 
 void QUmlMetaModelPlugin::initMetaModel(QScriptEngine *scriptEngine)
 {
-    QtUml::QUmlMetaModel::init(scriptEngine);
+    QUmlMetaModel::init(scriptEngine);
 }
 
 QString QUmlMetaModelPlugin::metaModelNamespaceUri()
@@ -59,6 +59,6 @@ QString QUmlMetaModelPlugin::metaModelNamespaceUri()
 
 QString QUmlMetaModelPlugin::metaModelNamespace()
 {
-    return QString::fromLatin1("QtUml");
+    return QString::fromLatin1("QUml");
 }
 

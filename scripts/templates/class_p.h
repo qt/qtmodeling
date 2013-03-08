@@ -38,8 +38,8 @@
 ** [% GET '$QT_END_LICENSE$' %]
 **
 ****************************************************************************/
-#ifndef ${namespace.replace('/', '_').upper}_${class.name.upper}_P_H
-#define ${namespace.replace('/', '_').upper}_${class.name.upper}_P_H
+#ifndef ${class.name.upper}_P_H
+#define ${class.name.upper}_P_H
 
 // Base class includes
 [%- IF !class.superclass || class.superclass.size > 1 -%]
@@ -70,30 +70,8 @@
 [%- END %]
 
 QT_BEGIN_HEADER
-[%- currentNamespace = '' -%]
-[%- FOREACH forwarddecl IN class.forwarddecl %]
-    [%- IF forwarddecl.namespace != namespace.replace('/', '::') %]
-        [%- IF forwarddecl.namespace != currentNamespace %]
-            [%- IF currentNamespace != '' %]
-QT_END_NAMESPACE_${currentNamespace.replace('::', '_').upper}
-            [%- END -%]
-
-QT_BEGIN_NAMESPACE_${forwarddecl.namespace.replace('::', '_').upper}
-            [%- currentNamespace = forwarddecl.namespace -%]
-        [%- END -%]
-
-class ${forwarddecl.content};
-    [%- END -%]
-[%- END %]
-[%- IF currentNamespace != '' %]
-QT_END_NAMESPACE_${currentNamespace.replace('::', '_').upper}
-
-[%- END %]
 
 QT_BEGIN_NAMESPACE
-
-namespace ${namespace.replace('/', '_')}
-{
 
 QT_MODULE([% namespace.split('/').0 %])
 
@@ -106,7 +84,7 @@ QT_MODULE([% namespace.split('/').0 %])
 // Forward decls for function parameters
 [% found = 'true' -%]
 [%- END -%]
-class ${forwarddecl.content};
+class ${forwarddecl.class};
 
 [%- IF forwarddecl.content == class.name -%]
 [%- foundPublic = 'true' -%]
@@ -171,11 +149,9 @@ public:
 [%- END %]
 };
 
-}
-
 QT_END_NAMESPACE
 
 QT_END_HEADER
 
-#endif // ${namespace.replace('/', '_').upper}_${class.name.upper}_P_H
+#endif // ${class.name.upper}_P_H
 

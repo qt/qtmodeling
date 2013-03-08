@@ -40,11 +40,9 @@
 ****************************************************************************/
 #include <QtTest/QtTest>
 
-#include <QtUml/QModel>
-#include <QtUml/QPackage>
-#include <QtUml/QComment>
-
-using namespace QtUml;
+#include <QtUml/QUmlModel>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlComment>
 
 class TestQtUmlContainment : public QObject
 {
@@ -56,8 +54,8 @@ private Q_SLOTS:
 private:
     void check(QString modelName, QString packageName, int modelSize, int packageSize);
 
-    QWrappedObjectPointer<QModel> _model;
-    QWrappedObjectPointer<QPackage> _package;
+    QWrappedObjectPointer<QUmlModel> _model;
+    QWrappedObjectPointer<QUmlPackage> _package;
 };
 
 void TestQtUmlContainment::check(QString modelName, QString packageName, int modelSize, int packageSize)
@@ -74,10 +72,10 @@ void TestQtUmlContainment::check(QString modelName, QString packageName, int mod
 
 void TestQtUmlContainment::qtumlcontainment()
 {
-    _model = new QModel;
+    _model = new QUmlModel;
     _model->setName("Model");
 
-    _package = new QPackage;
+    _package = new QUmlPackage;
     _package->setName("Package");
 
     check("Model", "Package", 0, 0);
@@ -102,7 +100,7 @@ void TestQtUmlContainment::qtumlcontainment()
     _model->removeNestedPackage(_package);
     check("Model", "Package", 0, 0);
 
-    QWrappedObjectPointer<QComment> comment = new QComment;
+    QWrappedObjectPointer<QUmlComment> comment = new QUmlComment;
     _package->addOwnedComment(comment);
     QCOMPARE(_package->members().size(), 0);
     QCOMPARE(_package->ownedMembers().size(), 0);

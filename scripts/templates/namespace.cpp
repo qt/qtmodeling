@@ -45,7 +45,7 @@ QT_BEGIN_NAMESPACE
 
 [% FOREACH enumeration IN enumerations -%]
 /*!
-    \enum ${namespace.replace('/', '::')}NS::${enumeration.name}
+    \enum ${namespace.replace('/', '::')}::${enumeration.name}
 
     ${enumeration.documentation}
 

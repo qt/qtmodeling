@@ -55,27 +55,6 @@ QT_BEGIN_HEADER
 #    define Q_UML_EXPORT
 #endif
 
-// QtUml macros
-
-#if defined(Q_MOC_RUN)
-
-#define QT_NAMESPACE_QTUML
-#define QT_USE_NAMESPACE_QTUML
-#define QT_PREPEND_NAMESPACE_QTUML(name) ::name
-
-#else
-
-#if defined(QT_NAMESPACE)
-#    define QT_NAMESPACE_QTUML QT_NAMESPACE::QtUml
-#else
-#    define QT_NAMESPACE_QTUML QtUml
-#endif
-
-#define QT_USE_NAMESPACE_QTUML using namespace ::QT_NAMESPACE_QTUML;
-#define QT_PREPEND_NAMESPACE_QTUML(name) ::QT_NAMESPACE_QTUML::name
-
-#endif /* defined(Q_MOC_RUN) */
-
 QT_END_HEADER
 
 #endif // QTUMLGLOBAL_H

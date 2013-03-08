@@ -47,9 +47,6 @@ QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
-namespace QtUml
-{
-
 QT_MODULE(QtUml)
 
 class Q_UML_EXPORT QUmlMetaModel
@@ -57,8 +54,6 @@ class Q_UML_EXPORT QUmlMetaModel
 public:
     static void init(QScriptEngine *scriptEngine = 0);
 };
-
-}
 
 QT_END_NAMESPACE
 
