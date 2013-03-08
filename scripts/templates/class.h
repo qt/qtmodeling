@@ -54,9 +54,9 @@
             [%- found = 'true' -%]
             [%- END -%]
             [%- IF attribute.isReadOnly == 'true' or attribute.accessor.size == 3 %]
-    Q_PROPERTY(${attribute.accessor.0.return.remove('^const ').remove('&$').replace('(Q[^<]+ \*)', "$namespace::\$1")}[%- IF attribute.accessor.0.return.substr(attribute.accessor.0.return.length - 1, 1) == '*' -%] [% END -%]${attribute.accessor.0.name} READ ${attribute.accessor.0.name}[% IF attribute.isDerived == 'true' and attribute.isDerivedUnion == 'false' %] STORED false[% END %])
+    Q_PROPERTY(${attribute.accessor.0.return.remove('^const ').remove('&$')}[%- IF attribute.accessor.0.return.substr(attribute.accessor.0.return.length - 1, 1) == '*' -%] [% END -%]${attribute.accessor.0.name} READ ${attribute.accessor.0.name}[% IF attribute.isDerived == 'true' and attribute.isDerivedUnion == 'false' %] STORED false[% END %])
             [%- ELSE %]
-    Q_PROPERTY(${attribute.accessor.0.return.replace('(Q[^<]+ \*)', "$namespace::\$1")}[%- IF attribute.accessor.0.return.substr(attribute.accessor.0.return.length - 1, 1) == '*' -%] [% END -%]${attribute.accessor.0.name} READ ${attribute.accessor.0.name} WRITE ${attribute.accessor.1.name}[% IF attribute.defaultValue != '' %] RESET unset${attribute.accessor.0.name.ucfirst.replace('^Is', '')}[% END %][% IF attribute.isDerived == 'true' and attribute.isDerivedUnion == 'false' %] STORED false[% END %])
+    Q_PROPERTY(${attribute.accessor.0.return}[%- IF attribute.accessor.0.return.substr(attribute.accessor.0.return.length - 1, 1) == '*' -%] [% END -%]${attribute.accessor.0.name} READ ${attribute.accessor.0.name} WRITE ${attribute.accessor.1.name}[% IF attribute.defaultValue != '' %] RESET unset${attribute.accessor.0.name.ucfirst.replace('^Is', '')}[% END %][% IF attribute.isDerived == 'true' and attribute.isDerivedUnion == 'false' %] STORED false[% END %])
             [%- END -%]
         [%- END -%]
         [%- END -%]
@@ -70,9 +70,9 @@
             [%- found = 'true' -%]
             [%- END -%]
             [%- IF associationend.isReadOnly == 'true' or associationend.accessor.size == 3 %]
-    Q_PROPERTY(${associationend.accessor.0.return.remove('^const ').remove('&$').replace('(Q[^<]+ \*)', "$namespace::\$1")}[%- IF associationend.accessor.0.return.substr(associationend.accessor.0.return.length - 1, 1) == '*' -%] [% END -%]${associationend.accessor.0.name} READ ${associationend.accessor.0.name}[% IF associationend.isDerived == 'true' and associationend.isDerivedUnion == 'false' %] STORED false[% END %])
+    Q_PROPERTY(${associationend.accessor.0.return.remove('^const ').remove('&$')}[%- IF associationend.accessor.0.return.substr(associationend.accessor.0.return.length - 1, 1) == '*' -%] [% END -%]${associationend.accessor.0.name} READ ${associationend.accessor.0.name}[% IF associationend.isDerived == 'true' and associationend.isDerivedUnion == 'false' %] STORED false[% END %])
             [%- ELSE %]
-    Q_PROPERTY(${associationend.accessor.0.return.replace('(Q[^<]+ \*)', "$namespace::\$1")}[%- IF associationend.accessor.0.return.substr(associationend.accessor.0.return.length - 1, 1) == '*' -%] [% END -%]${associationend.accessor.0.name} READ ${associationend.accessor.0.name} WRITE ${associationend.accessor.1.name}[% IF associationend.defaultValue != '' %] RESET unset${associationend.accessor.0.name.ucfirst.replace('^Is', '')}[% END %][% IF associationend.isDerived == 'true' and associationend.isDerivedUnion == 'false' %] STORED false[% END %])
+    Q_PROPERTY(${associationend.accessor.0.return}[%- IF associationend.accessor.0.return.substr(associationend.accessor.0.return.length - 1, 1) == '*' -%] [% END -%]${associationend.accessor.0.name} READ ${associationend.accessor.0.name} WRITE ${associationend.accessor.1.name}[% IF associationend.defaultValue != '' %] RESET unset${associationend.accessor.0.name.ucfirst.replace('^Is', '')}[% END %][% IF associationend.isDerived == 'true' and associationend.isDerivedUnion == 'false' %] STORED false[% END %])
             [%- END -%]
         [%- END -%]
         [%- END %]
@@ -170,8 +170,8 @@
 ** [% GET '$QT_END_LICENSE$' %]
 **
 ****************************************************************************/
-#ifndef ${namespace.replace('/', '_').upper}_${class.name.upper}_H
-#define ${namespace.replace('/', '_').upper}_${class.name.upper}_H
+#ifndef ${class.name.upper}_H
+#define ${class.name.upper}_H
 
 #include <[% namespace.split('/').0 %]/[% namespace.split('/').0 %]Global>
 
@@ -203,10 +203,10 @@
 [%- FOREACH attribute IN class.attribute.values -%]
 [%- IF attribute.isReadOnly == 'false' -%]
 [%- FOREACH subsettedProperty IN attribute.subsettedProperty.split(' ') %]
-[%- IF classes.item(subsettedProperty.split('-').0.replace('^', 'Q')).attribute.item(subsettedProperty) -%]
-    [%- property = classes.item(subsettedProperty.split('-').0.replace('^', 'Q')).attribute.item(subsettedProperty) -%]
+[%- IF classes.item(subsettedProperty.split('-').0.replace('^', namespace.replace('^Qt', 'Q'))).attribute.item(subsettedProperty) -%]
+    [%- property = classes.item(subsettedProperty.split('-').0.replace('^', namespace.replace('^Qt', 'Q'))).attribute.item(subsettedProperty) -%]
 [%- ELSE -%]
-    [%- property = classes.item(subsettedProperty.split('-').0.replace('^', 'Q')).associationend.item(subsettedProperty) -%]
+    [%- property = classes.item(subsettedProperty.split('-').0.replace('^', namespace.replace('^Qt', 'Q'))).associationend.item(subsettedProperty) -%]
 [%- END -%]
 [%- IF property.isReadOnly == 'false' && attribute.accessor.1.parameter.0.type != property.accessor.1.parameter.0.type -%]
 [%- IF found == 'false' -%]
@@ -221,10 +221,10 @@
 [%- FOREACH associationend IN class.associationend.values -%]
 [%- IF associationend.isReadOnly == 'false' -%]
 [%- FOREACH subsettedProperty IN associationend.subsettedProperty.split(' ') %]
-[%- IF classes.item(subsettedProperty.split('-').0.replace('^', 'Q')).attribute.item(subsettedProperty) -%]
-    [%- property = classes.item(subsettedProperty.split('-').0.replace('^', 'Q')).attribute.item(subsettedProperty) -%]
+[%- IF classes.item(subsettedProperty.split('-').0.replace('^', namespace.replace('^Qt', 'Q'))).attribute.item(subsettedProperty) -%]
+    [%- property = classes.item(subsettedProperty.split('-').0.replace('^', namespace.replace('^Qt', 'Q'))).attribute.item(subsettedProperty) -%]
 [%- ELSE -%]
-    [%- property = classes.item(subsettedProperty.split('-').0.replace('^', 'Q')).associationend.item(subsettedProperty) -%]
+    [%- property = classes.item(subsettedProperty.split('-').0.replace('^', namespace.replace('^Qt', 'Q'))).associationend.item(subsettedProperty) -%]
 [%- END -%]
 [%- IF property.isReadOnly == 'false' && associationend.accessor.1.parameter.0.type != property.accessor.1.parameter.0.type -%]
 [%- IF found == 'false' -%]
@@ -241,30 +241,8 @@
 [%- END %]
 
 QT_BEGIN_HEADER
-[%- currentNamespace = '' -%]
-[%- FOREACH forwarddecl IN class.forwarddecl %]
-    [%- IF forwarddecl.namespace != namespace.replace('/', '::') %]
-        [%- IF forwarddecl.namespace != currentNamespace %]
-            [%- IF currentNamespace != '' %]
-QT_END_NAMESPACE_${currentNamespace.replace('::', '_').upper}
-            [%- END -%]
-
-QT_BEGIN_NAMESPACE_${forwarddecl.namespace.replace('::', '_').upper}
-            [%- currentNamespace = forwarddecl.namespace -%]
-        [%- END -%]
-
-class ${forwarddecl.content};
-    [%- END -%]
-[%- END %]
-[%- IF currentNamespace != '' %]
-QT_END_NAMESPACE_${currentNamespace.replace('::', '_').upper}
-
-[%- END %]
 
 QT_BEGIN_NAMESPACE
-
-namespace ${namespace.replace('/', '_')}
-{
 
 QT_MODULE([% namespace.split('/').0 %])
 
@@ -276,7 +254,7 @@ QT_MODULE([% namespace.split('/').0 %])
 // Forward decls for function parameters
 [% found = 'true' -%]
 [%- END -%]
-class ${forwarddecl.content};
+class ${forwarddecl.class};
 
 [%- END %]
 [%- END -%]
@@ -310,10 +288,10 @@ public:
     [%- FOREACH attribute IN class.attribute.values -%]
     [%- IF attribute.isReadOnly == 'false' -%]
     [%- FOREACH subsettedProperty IN attribute.subsettedProperty.split(' ') %]
-    [%- IF classes.item(subsettedProperty.split('-').0.replace('^', 'Q')).attribute.item(subsettedProperty) -%]
-        [%- property = classes.item(subsettedProperty.split('-').0.replace('^', 'Q')).attribute.item(subsettedProperty) -%]
+    [%- IF classes.item(subsettedProperty.split('-').0.replace('^', namespace.replace('^Qt', 'Q'))).attribute.item(subsettedProperty) -%]
+        [%- property = classes.item(subsettedProperty.split('-').0.replace('^', namespace.replace('^Qt', 'Q'))).attribute.item(subsettedProperty) -%]
     [%- ELSE -%]
-        [%- property = classes.item(subsettedProperty.split('-').0.replace('^', 'Q')).associationend.item(subsettedProperty) -%]
+        [%- property = classes.item(subsettedProperty.split('-').0.replace('^', namespace.replace('^Qt', 'Q'))).associationend.item(subsettedProperty) -%]
     [%- END -%]
     [%- IF property.isReadOnly == 'false' && attribute.accessor.1.parameter.0.type != property.accessor.1.parameter.0.type -%]
     [%- IF found == 'false' -%]
@@ -334,10 +312,10 @@ public:
     [%- FOREACH associationend IN class.associationend.values -%]
     [%- IF associationend.isReadOnly == 'false' -%]
     [%- FOREACH subsettedProperty IN associationend.subsettedProperty.split(' ') %]
-    [%- IF classes.item(subsettedProperty.split('-').0.replace('^', 'Q')).attribute.item(subsettedProperty) -%]
-        [%- property = classes.item(subsettedProperty.split('-').0.replace('^', 'Q')).attribute.item(subsettedProperty) -%]
+    [%- IF classes.item(subsettedProperty.split('-').0.replace('^', namespace.replace('^Qt', 'Q'))).attribute.item(subsettedProperty) -%]
+        [%- property = classes.item(subsettedProperty.split('-').0.replace('^', namespace.replace('^Qt', 'Q'))).attribute.item(subsettedProperty) -%]
     [%- ELSE -%]
-        [%- property = classes.item(subsettedProperty.split('-').0.replace('^', 'Q')).associationend.item(subsettedProperty) -%]
+        [%- property = classes.item(subsettedProperty.split('-').0.replace('^', namespace.replace('^Qt', 'Q'))).associationend.item(subsettedProperty) -%]
     [%- END -%]
     [%- IF property.isReadOnly == 'false' && associationend.accessor.1.parameter.0.type != property.accessor.1.parameter.0.type -%]
     [%- IF found == 'false' -%]
@@ -359,7 +337,7 @@ public:
 [%- friendClasses = [] -%]
 [%- FOREACH friendClass IN classes.values -%]
 [%- FOREACH associationend IN friendClass.associationend.values -%]
-[%- IF classes.item(associationend.oppositeEnd.split('-').0.replace('^', 'Q')).name == class.name && class.associationend.item(associationend.oppositeEnd).isReadOnly == 'true' -%]
+[%- IF classes.item(associationend.oppositeEnd.split('-').0.replace('^', namespace.replace('^Qt', 'Q'))).name == class.name && class.associationend.item(associationend.oppositeEnd).isReadOnly == 'true' -%]
 [%- IF associationend.isReadOnly == 'true' -%]
 [%- modifiedFriendClass = friendClass.name.replace('$', 'Private') -%]
 [%- ELSE -%]
@@ -390,11 +368,9 @@ private:
 [%- END %]
 };
 
-}
-
 QT_END_NAMESPACE
 
 QT_END_HEADER
 
-#endif // ${namespace.replace('/', '_').upper}_${class.name.upper}_H
+#endif // ${class.name.upper}_H
 

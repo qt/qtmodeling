@@ -44,7 +44,7 @@
 QT_BEGIN_NAMESPACE
 
 /*!
-    \enum QtUmlNS::AggregationKind
+    \enum QtUml::AggregationKind
 
     AggregationKind is an enumeration type that specifies the literals for defining the kind of aggregation of a property.
 
@@ -57,7 +57,7 @@ QT_BEGIN_NAMESPACE
  */
 
 /*!
-    \enum QtUmlNS::CallConcurrencyKind
+    \enum QtUml::CallConcurrencyKind
 
     CallConcurrencyKind is an enumeration type.
 
@@ -70,7 +70,7 @@ QT_BEGIN_NAMESPACE
  */
 
 /*!
-    \enum QtUmlNS::ConnectorKind
+    \enum QtUml::ConnectorKind
 
     ConnectorKind is an enumeration type.
 
@@ -81,7 +81,7 @@ QT_BEGIN_NAMESPACE
  */
 
 /*!
-    \enum QtUmlNS::ExpansionKind
+    \enum QtUml::ExpansionKind
 
     ExpansionKind is an enumeration type used to specify how multiple executions of an expansion region interact.
 
@@ -94,7 +94,7 @@ QT_BEGIN_NAMESPACE
  */
 
 /*!
-    \enum QtUmlNS::InteractionOperatorKind
+    \enum QtUml::InteractionOperatorKind
 
     InteractionOperatorKind is an enumeration designating the different kinds of operators of combined fragments. The interaction operand defines the type of operator of a combined fragment.
 
@@ -125,7 +125,7 @@ QT_BEGIN_NAMESPACE
  */
 
 /*!
-    \enum QtUmlNS::MessageKind
+    \enum QtUml::MessageKind
 
     This is an enumerated type that identifies the type of message.
 
@@ -140,7 +140,7 @@ QT_BEGIN_NAMESPACE
  */
 
 /*!
-    \enum QtUmlNS::MessageSort
+    \enum QtUml::MessageSort
 
     This is an enumerated type that identifies the type of communication action that was used to generate the message.
 
@@ -159,7 +159,7 @@ QT_BEGIN_NAMESPACE
  */
 
 /*!
-    \enum QtUmlNS::ObjectNodeOrderingKind
+    \enum QtUml::ObjectNodeOrderingKind
 
     ObjectNodeOrderingKind is an enumeration indicating queuing order within a node.
 
@@ -174,7 +174,7 @@ QT_BEGIN_NAMESPACE
  */
 
 /*!
-    \enum QtUmlNS::ParameterDirectionKind
+    \enum QtUml::ParameterDirectionKind
 
     Parameter direction kind is an enumeration type that defines literals used to specify direction of parameters.
 
@@ -189,7 +189,7 @@ QT_BEGIN_NAMESPACE
  */
 
 /*!
-    \enum QtUmlNS::ParameterEffectKind
+    \enum QtUml::ParameterEffectKind
 
     The datatype ParameterEffectKind is an enumeration that indicates the effect of a behavior on values passed in or out of its parameters.
 
@@ -204,7 +204,7 @@ QT_BEGIN_NAMESPACE
  */
 
 /*!
-    \enum QtUmlNS::PseudostateKind
+    \enum QtUml::PseudostateKind
 
     PseudostateKind is an enumeration type.
 
@@ -231,7 +231,7 @@ QT_BEGIN_NAMESPACE
  */
 
 /*!
-    \enum QtUmlNS::TransitionKind
+    \enum QtUml::TransitionKind
 
     TransitionKind is an enumeration type.
 
@@ -244,7 +244,7 @@ QT_BEGIN_NAMESPACE
  */
 
 /*!
-    \enum QtUmlNS::VisibilityKind
+    \enum QtUml::VisibilityKind
 
     VisibilityKind is an enumeration type that defines literals to determine the visibility of elements in a model.
 

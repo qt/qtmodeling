@@ -51,7 +51,7 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtMof)
 
-class Q_MOF_EXPORT QtMofNS : public QObject
+class Q_MOF_EXPORT QtMof : public QObject
 {
     Q_OBJECT
 

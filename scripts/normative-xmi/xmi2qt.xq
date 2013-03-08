@@ -41,10 +41,7 @@ declare function qtxmi:namespaceFromProperty ($properties as node()*) as xs:stri
 declare function qtxmi:unqualifiedTypeFromTypeString ($types as xs:string*) as xs:string* {
     for $type in $types
     let $unqualifiedType := tokenize(tokenize(tokenize($type, "/")[last()], "#")[last()], "-")[last()]
-    return if ($unqualifiedType = "Object") then
-               "MofObject"
-           else
-               $unqualifiedType
+    return $unqualifiedType
 };
 
 declare function qtxmi:unqualifiedTypeFromProperty ($properties as node()*) as xs:string* {
@@ -124,9 +121,9 @@ declare function qtxmi:typeFromNamespacedTypeString ($string as xs:string, $name
                  else
                      $type
     let $type := if ($element/@xmi:type = "uml:Class") then
-                     concat($propertyNamespace, concat("Q", $type))
+                     concat(replace(replace($namespace, "^Qt", "Q"), "::", ""), $type)
                  else if ($element/@xmi:type = "uml:Enumeration") then
-                     concat($propertyNamespace, concat(concat(tokenize($namespace, "::")[1], "NS::"), $type))
+                     concat($namespace, $type)
                  else
                      qtxmi:mappedPrimitiveType($type)
     return $type
@@ -193,7 +190,7 @@ declare function qtxmi:defaultValue ($property as node(), $namespace) as xs:stri
                              else if ($property/defaultValue/@xmi:type = "uml:InstanceValue" and
                                       qtxmi:elementFromTypeString($property/defaultValue/@type)/@xmi:type = "uml:Enumeration") then
                                  if ($property/defaultValue/@instance) then
-                                     concat(replace($namespace, "::", "NS::"),
+                                     concat($namespace,
                                             concat(replace(replace(tokenize($property/defaultValue/@instance, "-")[1], "Kind", ""), "Sort", ""),
                                                    concat(upper-case(substring(tokenize($property/defaultValue/@instance, "-")[2], 1, 1)),
                                                           substring(tokenize($property/defaultValue/@instance, "-")[2], 2))))
@@ -247,7 +244,7 @@ let $namespace := concat(replace(concat(qtxmi:mappedBaseNamespace($xmiFile), $na
 let $superClasses := $class/generalization/@general | $class/generalization/general/@xmi:idref | $class/generalization/general/@href
 let $isAbstract := if ($class/@isAbstract) then $class/@isAbstract else "false"
 return
-    <class name="Q{qtxmi:unqualifiedTypeFromTypeString($class/@xmi:id)}" isAbstract="{$isAbstract}">
+    <class name="{replace(replace($namespace, '^Qt', 'Q'), '::', '')}{qtxmi:unqualifiedTypeFromTypeString($class/@xmi:id)}" isAbstract="{$isAbstract}">
         {
         if ($class/ownedComment/body) then
         <documentation>{$class/ownedComment/body/text()}</documentation>
@@ -262,7 +259,7 @@ return
         {
         for $superClass in $superClasses
         return
-        <superclass include="{tokenize(qtxmi:namespaceFromTypeString($superClass), "::")[1]}/{concat("Q", qtxmi:unqualifiedTypeFromTypeString($superClass))}" name="{qtxmi:typeFromNamespacedTypeString($superClass, $namespace)}"/>
+        <superclass include="{tokenize(qtxmi:namespaceFromTypeString($superClass), "::")[1]}/{replace(replace($namespace, '^Qt', 'Q'), '::', '')}{qtxmi:unqualifiedTypeFromTypeString($superClass)}" name="{qtxmi:typeFromNamespacedTypeString($superClass, $namespace)}"/>
         }
         {
         for $type in distinct-values($class/ownedAttribute/type/@href | $class/ownedOperation/ownedParameter/type/@href)
@@ -298,7 +295,7 @@ return
               and empty(distinct-values($id[.=$superClasses]))
         order by $forwardNamespace
         return
-        <forwarddecl namespace="{$forwardNamespace}">{concat("Q", qtxmi:unqualifiedTypeFromTypeString($id))}</forwarddecl>
+        <forwarddecl namespace="{$forwardNamespace}" class="{replace(replace($namespace, '^Qt', 'Q'), '::', '')}{qtxmi:unqualifiedTypeFromTypeString($id)}"/>
         }
         {
         for $attribute in $class/ownedAttribute

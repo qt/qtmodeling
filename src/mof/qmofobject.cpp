@@ -42,16 +42,13 @@
 #include "qmofobject.h"
 #include "qmofobject_p.h"
 
-#include <QtMof/QArgument>
-#include <QtMof/QOperation>
-#include <QtMof/QProperty>
+#include <QtMof/QMofArgument>
+#include <QtMof/QMofOperation>
+#include <QtMof/QMofProperty>
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
 QT_BEGIN_NAMESPACE
-
-namespace QtMof
-{
 
 QMofObjectPrivate::QMofObjectPrivate()
 {
@@ -78,7 +75,7 @@ QMofObject::~QMofObject()
 {
 }
 
-QMofObject *QMofObject::get(const QProperty *property) const
+QMofObject *QMofObject::get(const QMofProperty *property) const
 {
     qWarning("QMofObject::get: operation to be implemented");
     Q_UNUSED(property);
@@ -94,14 +91,14 @@ bool QMofObject::equals(const QMofObject *element) const
     return bool(); // change here to your derived return
 }
 
-void QMofObject::set(const QProperty *property, const QMofObject *value)
+void QMofObject::set(const QMofProperty *property, const QMofObject *value)
 {
     qWarning("QMofObject::set: operation to be implemented");
     Q_UNUSED(property);
     Q_UNUSED(value);
 }
 
-bool QMofObject::isSet(const QProperty *property) const
+bool QMofObject::isSet(const QMofProperty *property) const
 {
     qWarning("QMofObject::isSet: operation to be implemented");
     Q_UNUSED(property);
@@ -109,13 +106,13 @@ bool QMofObject::isSet(const QProperty *property) const
     return bool(); // change here to your derived return
 }
 
-void QMofObject::unset(const QProperty *property)
+void QMofObject::unset(const QMofProperty *property)
 {
     qWarning("QMofObject::unset: operation to be implemented");
     Q_UNUSED(property);
 }
 
-QMofObject *QMofObject::invoke(const QOperation *op, QSet<QArgument *> arguments)
+QMofObject *QMofObject::invoke(const QMofOperation *op, QSet<QMofArgument *> arguments)
 {
     qWarning("QMofObject::invoke: operation to be implemented");
     Q_UNUSED(op);
@@ -127,8 +124,6 @@ QMofObject *QMofObject::invoke(const QOperation *op, QSet<QArgument *> arguments
 void QMofObject::setPropertyData()
 {
     QWrappedObject::setPropertyData();
-}
-
 }
 
 QT_END_NAMESPACE

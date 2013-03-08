@@ -38,8 +38,8 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QTMOF_QMOFOBJECT_P_H
-#define QTMOF_QMOFOBJECT_P_H
+#ifndef QMOFOBJECT_P_H
+#define QMOFOBJECT_P_H
 
 // Base class includes
 #include "private/qwrappedobject_p.h"
@@ -53,16 +53,14 @@ QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
-namespace QtMof
-{
-
 QT_MODULE(QtMof)
 
 // Forward decls for function parameters
-class QArgument;
-class QOperation;
+class QMofArgument;
+class QMofOperation;
 class QMofObject;
-class QProperty;
+class QMofProperty;
+class QMofObject;
 
 class Q_MOF_EXPORT QMofObjectPrivate : public QWrappedObjectPrivate
 {
@@ -74,11 +72,9 @@ public:
 
 };
 
-}
-
 QT_END_NAMESPACE
 
 QT_END_HEADER
 
-#endif // QTMOF_QMOFOBJECT_P_H
+#endif // QMOFOBJECT_P_H
 

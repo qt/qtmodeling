@@ -40,10 +40,8 @@
 ****************************************************************************/
 #include <QtTest/QtTest>
 
-#include <QtMof/QPackage>
-#include <QtMof/QComment>
-
-using namespace QtMof;
+#include <QtMof/QMofPackage>
+#include <QtMof/QMofComment>
 
 class TestQtMofContainment : public QObject
 {
@@ -55,8 +53,8 @@ private Q_SLOTS:
 private:
     void check(QString package1Name, QString package2Name, int package1Size, int package2Size);
 
-    QWrappedObjectPointer<QPackage> _package1;
-    QWrappedObjectPointer<QPackage> _package2;
+    QWrappedObjectPointer<QMofPackage> _package1;
+    QWrappedObjectPointer<QMofPackage> _package2;
 };
 
 void TestQtMofContainment::check(QString package1Name, QString package2Name, int package1Size, int package2Size)
@@ -73,10 +71,10 @@ void TestQtMofContainment::check(QString package1Name, QString package2Name, int
 
 void TestQtMofContainment::qtmofcontainment()
 {
-    _package1 = new QPackage;
+    _package1 = new QMofPackage;
     _package1->setName("Package1");
 
-    _package2 = new QPackage;
+    _package2 = new QMofPackage;
     _package2->setName("Package2");
 
     check("Package1", "Package2", 0, 0);
@@ -101,7 +99,7 @@ void TestQtMofContainment::qtmofcontainment()
     _package1->removeNestedPackage(_package2);
     check("Package1", "Package2", 0, 0);
 
-    QWrappedObjectPointer<QComment> comment = new QComment;
+    QWrappedObjectPointer<QMofComment> comment = new QMofComment;
     _package1->addOwnedComment(comment);
     QCOMPARE(_package1->members().size(), 0);
     QCOMPARE(_package1->ownedMembers().size(), 0);

@@ -55,27 +55,6 @@ QT_BEGIN_HEADER
 #    define Q_MOF_EXPORT
 #endif
 
-// QtMof macros
-
-#if defined(Q_MOC_RUN)
-
-#define QT_NAMESPACE_QTMOF
-#define QT_USE_NAMESPACE_QTMOF
-#define QT_PREPEND_NAMESPACE_QTMOF(name) ::name
-
-#else
-
-#if defined(QT_NAMESPACE)
-#    define QT_NAMESPACE_QTMOF QT_NAMESPACE::QtMof
-#else
-#    define QT_NAMESPACE_QTMOF QtMof
-#endif
-
-#define QT_USE_NAMESPACE_QTMOF using namespace ::QT_NAMESPACE_QTMOF;
-#define QT_PREPEND_NAMESPACE_QTMOF(name) ::QT_NAMESPACE_QTMOF::name
-
-#endif /* defined(Q_MOC_RUN) */
-
 QT_END_HEADER
 
 #endif // QTMOFGLOBAL_H

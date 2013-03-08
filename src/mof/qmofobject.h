@@ -38,8 +38,8 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QTMOF_QMOFOBJECT_H
-#define QTMOF_QMOFOBJECT_H
+#ifndef QMOFOBJECT_H
+#define QMOFOBJECT_H
 
 #include <QtMof/QtMofGlobal>
 
@@ -53,15 +53,13 @@ QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
-namespace QtMof
-{
-
 QT_MODULE(QtMof)
 
 // Forward decls for function parameters
-class QArgument;
-class QOperation;
-class QProperty;
+class QMofArgument;
+class QMofOperation;
+class QMofObject;
+class QMofProperty;
 
 class QMofObjectPrivate;
 
@@ -77,12 +75,12 @@ public:
     virtual ~QMofObject();
 
     // Operations
-    Q_INVOKABLE QMofObject *get(const QProperty *property) const;
+    Q_INVOKABLE QMofObject *get(const QMofProperty *property) const;
     Q_INVOKABLE bool equals(const QMofObject *element) const;
-    Q_INVOKABLE void set(const QProperty *property, const QMofObject *value);
-    Q_INVOKABLE bool isSet(const QProperty *property) const;
-    Q_INVOKABLE void unset(const QProperty *property);
-    Q_INVOKABLE QMofObject *invoke(const QOperation *op, QSet<QArgument *> arguments);
+    Q_INVOKABLE void set(const QMofProperty *property, const QMofObject *value);
+    Q_INVOKABLE bool isSet(const QMofProperty *property) const;
+    Q_INVOKABLE void unset(const QMofProperty *property);
+    Q_INVOKABLE QMofObject *invoke(const QMofOperation *op, QSet<QMofArgument *> arguments);
 
     virtual void setPropertyData();
 
@@ -90,11 +88,9 @@ protected:
     explicit QMofObject(QMofObjectPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
-}
-
 QT_END_NAMESPACE
 
 QT_END_HEADER
 
-#endif // QTMOF_QMOFOBJECT_H
+#endif // QMOFOBJECT_H
 

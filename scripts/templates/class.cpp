@@ -18,7 +18,7 @@
     [%- IF property.subsettedProperty != '' %]
     [%- found = 'false' -%]
     [%- FOREACH subsettedProperty IN property.subsettedProperty.split(' ') -%]
-        [%- subsettedClass = subsettedProperty.split('-').0.replace('^', 'Q') -%]
+        [%- subsettedClass = subsettedProperty.split('-').0.replace('^', namespace.replace('^Qt', 'Q')) -%]
         [%- IF classes.item(subsettedClass).attribute.item(subsettedProperty) -%]
         [%- subsettedPropertyItem = classes.item(subsettedClass).attribute.item(subsettedProperty) -%]
         [%- ELSE -%]
@@ -74,7 +74,7 @@
     [%- IF property.redefinedProperty != '' %]
     [%- found = 'false' -%]
     [%- FOREACH redefinedProperty IN property.redefinedProperty.split(' ') -%]
-        [%- redefinedClass = redefinedProperty.split('-').0.replace('^', 'Q') -%]
+        [%- redefinedClass = redefinedProperty.split('-').0.replace('^', namespace.replace('^Qt', 'Q')) -%]
         [%- IF classes.item(redefinedClass).attribute.item(redefinedProperty) -%]
         [%- redefinedPropertyItem = classes.item(redefinedClass).attribute.item(redefinedProperty) -%]
         [%- ELSE -%]
@@ -128,7 +128,7 @@
 [%- END -%]
 [%- MACRO HANDLEOPPOSITEEND(property, accessor, operation, singlevalued) BLOCK -%]
 [%- IF property.oppositeEnd != '' -%]
-[%- opposite = classes.item(property.oppositeEnd.split('-').0.replace('^', 'Q')).associationend.item(property.oppositeEnd) %]
+[%- opposite = classes.item(property.oppositeEnd.split('-').0.replace('^', namespace.replace('^Qt', 'Q'))).associationend.item(property.oppositeEnd) %]
         [%- IF singlevalued == 'false' or operation == 1 %]
 
         [%- END %]
@@ -512,7 +512,7 @@ void ${class.name}::unset${associationend.accessor.0.name.ucfirst.replace('^Is',
 
 [% oppositeReadOnlyClasses = [] -%]
 [%- FOREACH associationend IN class.associationend.values -%]
-[%- oppositeClass = associationend.oppositeEnd.split('-').0.replace('^', 'Q') -%]
+[%- oppositeClass = associationend.oppositeEnd.split('-').0.replace('^', namespace.replace('^Qt', 'Q')) -%]
 [%- IF classes.item(oppositeClass).associationend.item(associationend.oppositeEnd).isReadOnly == 'true' and oppositeClass != class.name -%]
 [%- oppositeReadOnlyClasses.push(oppositeClass.lower.replace('$', '_p.h')) -%]
 [%- END -%]
@@ -524,9 +524,9 @@ void ${class.name}::unset${associationend.accessor.0.name.ucfirst.replace('^Is',
 [%- END -%]
 [%- found = 'false' -%]
 [%- FOREACH forwarddecl IN class.forwarddecl -%]
-[%- IF forwarddecl.content != class.name -%]
+[%- IF forwarddecl.class != class.name -%]
 [%- found = 'true' -%]
-#include <${forwarddecl.namespace}/${forwarddecl.content}>
+#include <${forwarddecl.namespace}/${forwarddecl.class}>
 [% END -%]
 [%- END -%]
 [%- IF found == 'true' -%]
@@ -535,9 +535,6 @@ void ${class.name}::unset${associationend.accessor.0.name.ucfirst.replace('^Is',
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
 QT_BEGIN_NAMESPACE
-
-namespace ${namespace.replace('/', '_')}
-{
 
 ${class.name}Private::${class.name}Private()
 [%- found = 'false' -%]
@@ -837,12 +834,12 @@ ${operation.return}${class.name}::${operation.name}([%- FOREACH parameter IN ope
 void ${class.name}::setPropertyData()
 {
 [%- FOREACH attribute IN class.attribute.values %]
-    QWrappedObject::propertyDataHash[QString::fromLatin1("${namespace.replace('/', '_')}::${class.name}")][QString::fromLatin1("${attribute.accessor.0.name}")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("${attribute.aggregation}");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("${namespace.replace('/', '_')}::${class.name}")][QString::fromLatin1("${attribute.accessor.0.name}")][QtWrappedObjects::IsDerivedUnionRole] = [%- IF attribute.isDerivedUnion == 'true' %]true[% ELSE %]false[% END %];
-    QWrappedObject::propertyDataHash[QString::fromLatin1("${namespace.replace('/', '_')}::${class.name}")][QString::fromLatin1("${attribute.accessor.0.name}")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("${attribute.documentation.replace('"', '\"')}");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("${namespace.replace('/', '_')}::${class.name}")][QString::fromLatin1("${attribute.accessor.0.name}")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("
+    QWrappedObject::propertyDataHash[QString::fromLatin1("${class.name}")][QString::fromLatin1("${attribute.accessor.0.name}")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("${attribute.aggregation}");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("${class.name}")][QString::fromLatin1("${attribute.accessor.0.name}")][QtWrappedObjects::IsDerivedUnionRole] = [%- IF attribute.isDerivedUnion == 'true' %]true[% ELSE %]false[% END %];
+    QWrappedObject::propertyDataHash[QString::fromLatin1("${class.name}")][QString::fromLatin1("${attribute.accessor.0.name}")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("${attribute.documentation.replace('"', '\"')}");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("${class.name}")][QString::fromLatin1("${attribute.accessor.0.name}")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("
 [%- FOREACH redefinedProperty IN attribute.redefinedProperty.split(' ') -%]
-[%- redefinedClass = redefinedProperty.split('-').0.replace('^', 'Q') -%]
+[%- redefinedClass = redefinedProperty.split('-').0.replace('^', namespace.replace('^Qt', 'Q')) -%]
 [%- IF classes.item(redefinedClass).attribute.item(redefinedProperty) -%]
 [%- redefinedPropertyItem = classes.item(redefinedClass).attribute.item(redefinedProperty) -%]
 [%- ELSE -%]
@@ -851,9 +848,9 @@ void ${class.name}::setPropertyData()
 [%- IF !loop.first %] [% END %]${redefinedClass}::${redefinedPropertyItem.accessor.0.name.remove('_$')}
 [%- END -%]
 ");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("${namespace.replace('/', '_')}::${class.name}")][QString::fromLatin1("${attribute.accessor.0.name}")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("
+    QWrappedObject::propertyDataHash[QString::fromLatin1("${class.name}")][QString::fromLatin1("${attribute.accessor.0.name}")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("
 [%- FOREACH subsettedProperty IN attribute.subsettedProperty.split(' ') -%]
-[%- subsettedClass = subsettedProperty.split('-').0.replace('^', 'Q') -%]
+[%- subsettedClass = subsettedProperty.split('-').0.replace('^', namespace.replace('^Qt', 'Q')) -%]
 [%- IF classes.item(subsettedClass).attribute.item(subsettedProperty) -%]
 [%- subsettedPropertyItem = classes.item(subsettedClass).attribute.item(subsettedProperty) -%]
 [%- ELSE -%]
@@ -862,16 +859,16 @@ void ${class.name}::setPropertyData()
 [%- IF !loop.first %] [% END %]${subsettedClass}::${subsettedPropertyItem.accessor.0.name.remove('_$')}
 [%- END -%]
 ");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("${namespace.replace('/', '_')}::${class.name}")][QString::fromLatin1("${attribute.accessor.0.name}")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("${attribute.oppositeEnd.replace('^(.)', 'Q$1').replace(' ', ' Q').replace('-','::')}");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("${class.name}")][QString::fromLatin1("${attribute.accessor.0.name}")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("${attribute.oppositeEnd.replace('^(.)', '$1').replace(' ', ' Q').replace('-','::')}");
 
 [%- END -%]
 [%- FOREACH associationend IN class.associationend.values %]
-    QWrappedObject::propertyDataHash[QString::fromLatin1("${namespace.replace('/', '_')}::${class.name}")][QString::fromLatin1("${associationend.accessor.0.name}")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("${associationend.aggregation}");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("${namespace.replace('/', '_')}::${class.name}")][QString::fromLatin1("${associationend.accessor.0.name}")][QtWrappedObjects::IsDerivedUnionRole] = [%- IF associationend.isDerivedUnion == 'true' %]true[% ELSE %]false[% END %];
-    QWrappedObject::propertyDataHash[QString::fromLatin1("${namespace.replace('/', '_')}::${class.name}")][QString::fromLatin1("${associationend.accessor.0.name}")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("${associationend.documentation.replace('"', '\"')}");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("${namespace.replace('/', '_')}::${class.name}")][QString::fromLatin1("${associationend.accessor.0.name}")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("
+    QWrappedObject::propertyDataHash[QString::fromLatin1("${class.name}")][QString::fromLatin1("${associationend.accessor.0.name}")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("${associationend.aggregation}");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("${class.name}")][QString::fromLatin1("${associationend.accessor.0.name}")][QtWrappedObjects::IsDerivedUnionRole] = [%- IF associationend.isDerivedUnion == 'true' %]true[% ELSE %]false[% END %];
+    QWrappedObject::propertyDataHash[QString::fromLatin1("${class.name}")][QString::fromLatin1("${associationend.accessor.0.name}")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("${associationend.documentation.replace('"', '\"')}");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("${class.name}")][QString::fromLatin1("${associationend.accessor.0.name}")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("
 [%- FOREACH redefinedProperty IN associationend.redefinedProperty.split(' ') -%]
-[%- redefinedClass = redefinedProperty.split('-').0.replace('^', 'Q') -%]
+[%- redefinedClass = redefinedProperty.split('-').0.replace('^', namespace.replace('^Qt', 'Q')) -%]
 [%- IF classes.item(redefinedClass).attribute.item(redefinedProperty) -%]
 [%- redefinedPropertyItem = classes.item(redefinedClass).attribute.item(redefinedProperty) -%]
 [%- ELSE -%]
@@ -880,9 +877,9 @@ void ${class.name}::setPropertyData()
 [%- IF !loop.first %] [% END %]${redefinedClass}::${redefinedPropertyItem.accessor.0.name.remove('_$')}
 [%- END -%]
 ");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("${namespace.replace('/', '_')}::${class.name}")][QString::fromLatin1("${associationend.accessor.0.name}")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("
+    QWrappedObject::propertyDataHash[QString::fromLatin1("${class.name}")][QString::fromLatin1("${associationend.accessor.0.name}")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("
 [%- FOREACH subsettedProperty IN associationend.subsettedProperty.split(' ') -%]
-[%- subsettedClass = subsettedProperty.split('-').0.replace('^', 'Q') -%]
+[%- subsettedClass = subsettedProperty.split('-').0.replace('^', namespace.replace('^Qt', 'Q')) -%]
 [%- IF classes.item(subsettedClass).attribute.item(subsettedProperty) -%]
 [%- subsettedPropertyItem = classes.item(subsettedClass).attribute.item(subsettedProperty) -%]
 [%- ELSE -%]
@@ -891,7 +888,7 @@ void ${class.name}::setPropertyData()
 [%- IF !loop.first %] [% END %]${subsettedClass}::${subsettedPropertyItem.accessor.0.name.remove('_$')}
 [%- END -%]
 ");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("${namespace.replace('/', '_')}::${class.name}")][QString::fromLatin1("${associationend.accessor.0.name}")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("${associationend.oppositeEnd.replace('^(.)', 'Q$1').replace(' ', ' Q').replace('-','::')}");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("${class.name}")][QString::fromLatin1("${associationend.accessor.0.name}")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("${associationend.oppositeEnd.replace('^(.)', '$1').replace(' ', ' Q').replace('-','::')}");
 
 [%- END %]
     [% IF class.superclass.size == 1 %]${class.superclass.0.name.split('/').last}[% ELSE %]QWrappedObject[% END %]::setPropertyData();
@@ -902,10 +899,10 @@ void ${class.name}::setPropertyData()
 [%- FOREACH attribute IN class.attribute.values -%]
 [%- IF attribute.isReadOnly == 'false' -%]
 [%- FOREACH subsettedProperty IN attribute.subsettedProperty.split(' ') %]
-[%- IF classes.item(subsettedProperty.split('-').0.replace('^', 'Q')).attribute.item(subsettedProperty) -%]
-    [%- property = classes.item(subsettedProperty.split('-').0.replace('^', 'Q')).attribute.item(subsettedProperty) -%]
+[%- IF classes.item(subsettedProperty.split('-').0.replace('^', namespace.replace('^Qt', 'Q'))).attribute.item(subsettedProperty) -%]
+    [%- property = classes.item(subsettedProperty.split('-').0.replace('^', namespace.replace('^Qt', 'Q'))).attribute.item(subsettedProperty) -%]
 [%- ELSE -%]
-    [%- property = classes.item(subsettedProperty.split('-').0.replace('^', 'Q')).associationend.item(subsettedProperty) -%]
+    [%- property = classes.item(subsettedProperty.split('-').0.replace('^', namespace.replace('^Qt', 'Q'))).associationend.item(subsettedProperty) -%]
 [%- END -%]
 [%- IF property.isReadOnly == 'false' && attribute.accessor.1.parameter.0.type != property.accessor.1.parameter.0.type -%]
 [%- IF found == 'false' -%]
@@ -941,10 +938,10 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN attri
 [%- FOREACH associationend IN class.associationend.values -%]
 [%- IF associationend.isReadOnly == 'false' -%]
 [%- FOREACH subsettedProperty IN associationend.subsettedProperty.split(' ') %]
-[%- IF classes.item(subsettedProperty.split('-').0.replace('^', 'Q')).attribute.item(subsettedProperty) -%]
-    [%- property = classes.item(subsettedProperty.split('-').0.replace('^', 'Q')).attribute.item(subsettedProperty) -%]
+[%- IF classes.item(subsettedProperty.split('-').0.replace('^', namespace.replace('^Qt', 'Q'))).attribute.item(subsettedProperty) -%]
+    [%- property = classes.item(subsettedProperty.split('-').0.replace('^', namespace.replace('^Qt', 'Q'))).attribute.item(subsettedProperty) -%]
 [%- ELSE -%]
-    [%- property = classes.item(subsettedProperty.split('-').0.replace('^', 'Q')).associationend.item(subsettedProperty) -%]
+    [%- property = classes.item(subsettedProperty.split('-').0.replace('^', namespace.replace('^Qt', 'Q'))).associationend.item(subsettedProperty) -%]
     [%- END -%]
 [%- IF property.isReadOnly == 'false' && associationend.accessor.1.parameter.0.type != property.accessor.1.parameter.0.type -%]
 [%- IF found == 'false' -%]
@@ -976,8 +973,6 @@ ${accessor.return}${class.name}::${accessor.name}([%- FOREACH parameter IN assoc
 [%- END -%]
 [%- END -%]
 [%- END %]
-}
-
 QT_END_NAMESPACE
 
 #include "moc_${class.name.lower}.cpp"

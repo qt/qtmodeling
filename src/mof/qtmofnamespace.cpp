@@ -44,7 +44,7 @@
 QT_BEGIN_NAMESPACE
 
 /*!
-    \enum QtMofNS::AggregationKind
+    \enum QtMof::AggregationKind
 
     AggregationKind is an enumeration type that specifies the literals for defining the kind of aggregation of a property.
 
@@ -57,7 +57,7 @@ QT_BEGIN_NAMESPACE
  */
 
 /*!
-    \enum QtMofNS::ParameterDirectionKind
+    \enum QtMof::ParameterDirectionKind
 
     Parameter direction kind is an enumeration type that defines literals used to specify direction of parameters.
 
@@ -71,7 +71,7 @@ QT_BEGIN_NAMESPACE
  */
 
 /*!
-    \enum QtMofNS::VisibilityKind
+    \enum QtMof::VisibilityKind
 
     VisibilityKind is an enumeration type that defines literals to determine the visibility of elements in a model.
 

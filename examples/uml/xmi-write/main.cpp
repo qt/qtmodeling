@@ -3,41 +3,39 @@
 
 #include <QtUml/QtUml>
 
-using namespace QtUml;
-
 int main ()
 {
     QUmlMetaModel::init();
 
-    QWrappedObjectPointer<QPackage> model = new QPackage;
+    QWrappedObjectPointer<QUmlPackage> model = new QUmlPackage;
     model->setName("MyRootPackage");
 
-    QWrappedObjectPointer<QPackage> package = new QPackage;
+    QWrappedObjectPointer<QUmlPackage> package = new QUmlPackage;
     package->setName("Package1");
 
-    QWrappedObjectPointer<QPrimitiveType> primitiveType = new QPrimitiveType;
+    QWrappedObjectPointer<QUmlPrimitiveType> primitiveType = new QUmlPrimitiveType;
     primitiveType->setName("String");
 
-    QWrappedObjectPointer<QEnumeration> enumeration = new QEnumeration;
+    QWrappedObjectPointer<QUmlEnumeration> enumeration = new QUmlEnumeration;
     enumeration->setName("DirectionKind");
-    QWrappedObjectPointer<QEnumerationLiteral> directionIn = new QEnumerationLiteral;
+    QWrappedObjectPointer<QUmlEnumerationLiteral> directionIn = new QUmlEnumerationLiteral;
     directionIn->setName("DirectionIn");
     enumeration->addOwnedLiteral(directionIn);
 
-    QWrappedObjectPointer<QClass> class_ = new QClass;
+    QWrappedObjectPointer<QUmlClass> class_ = new QUmlClass;
     class_->setName("Student");
     class_->setAbstract(false);
     class_->setVisibility(QtUml::QtUml::VisibilityPackage);
 
-    QWrappedObjectPointer<QProperty> property = new QProperty;
+    QWrappedObjectPointer<QUmlProperty> property = new QUmlProperty;
     property->setName("name");
     property->setType(primitiveType);
     class_->addOwnedAttribute(property);
 
-    QWrappedObjectPointer<QClass> class2_ = new QClass;
+    QWrappedObjectPointer<QUmlClass> class2_ = new QUmlClass;
     class2_->setName("InterStudent");
 
-    QWrappedObjectPointer<QGeneralization> generalization = new QGeneralization;
+    QWrappedObjectPointer<QUmlGeneralization> generalization = new QUmlGeneralization;
     generalization->setObjectName("generalization");
     generalization->setGeneral(class_);
     class2_->addGeneralization(generalization);

@@ -1,0 +1,138 @@
+/****************************************************************************
+**
+** Copyright (C) 2012 Sandro S. Andrade <sandroandrade@kde.org>
+** Contact: http://www.qt-project.org/
+**
+** This file is part of the QtUml module of the Qt Toolkit.
+**
+** $QT_BEGIN_LICENSE:LGPL$
+** GNU Lesser General Public License Usage
+** This file may be used under the terms of the GNU Lesser General Public
+** License version 2.1 as published by the Free Software Foundation and
+** appearing in the file LICENSE.LGPL included in the packaging of this
+** file. Please review the following information to ensure the GNU Lesser
+** General Public License version 2.1 requirements will be met:
+** http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
+**
+** In addition, as a special exception, Nokia gives you certain additional
+** rights. These rights are described in the Nokia Qt LGPL Exception
+** version 1.1, included in the file LGPL_EXCEPTION.txt in this package.
+**
+** GNU General Public License Usage
+** Alternatively, this file may be used under the terms of the GNU General
+** Public License version 3.0 as published by the Free Software Foundation
+** and appearing in the file LICENSE.GPL included in the packaging of this
+** file. Please review the following information to ensure the GNU General
+** Public License version 3.0 requirements will be met:
+** http://www.gnu.org/copyleft/gpl.html.
+**
+** Other Usage
+** Alternatively, this file may be used in accordance with the terms and
+** conditions contained in a signed written agreement between you and Nokia.
+**
+**
+**
+**
+**
+**
+** $QT_END_LICENSE$
+**
+****************************************************************************/
+
+#include "qumlliteralreal.h"
+#include "qumlliteralreal_p.h"
+
+#include <QtWrappedObjects/QtWrappedObjectsNamespace>
+
+QT_BEGIN_NAMESPACE
+
+QUmlLiteralRealPrivate::QUmlLiteralRealPrivate()
+{
+}
+
+QUmlLiteralRealPrivate::~QUmlLiteralRealPrivate()
+{
+}
+
+/*!
+    \class QUmlLiteralReal
+
+    \inmodule QtUml
+
+    \brief A literal real is a specification of a real value.
+ */
+
+QUmlLiteralReal::QUmlLiteralReal(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QUmlLiteralSpecification(*new QUmlLiteralRealPrivate, wrapper, parent)
+{
+    setPropertyData();
+}
+
+QUmlLiteralReal::QUmlLiteralReal(QUmlLiteralRealPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QUmlLiteralSpecification(dd, wrapper, parent)
+{
+    setPropertyData();
+}
+
+QUmlLiteralReal::~QUmlLiteralReal()
+{
+}
+
+// ---------------------------------------------------------------
+// ATTRIBUTES FROM QUmlLiteralReal
+// ---------------------------------------------------------------
+
+qreal QUmlLiteralReal::value() const
+{
+    // This is a read-write attribute
+
+    Q_D(const QUmlLiteralReal);
+    return d->value;
+}
+
+void QUmlLiteralReal::setValue(qreal value)
+{
+    // This is a read-write attribute
+
+    Q_D(QUmlLiteralReal);
+    if (d->value != value) {
+        d->value = value;
+    }
+}
+
+/*!
+    The query isComputable() is redefined to be true.
+ */
+bool QUmlLiteralReal::isComputable() const
+{
+    qWarning("QUmlLiteralReal::isComputable: operation to be implemented");
+
+    return bool(); // change here to your derived return
+}
+
+/*!
+    The query realValue() gives the value.
+ */
+qreal QUmlLiteralReal::realValue() const
+{
+    qWarning("QUmlLiteralReal::realValue: operation to be implemented");
+
+    return qreal(); // change here to your derived return
+}
+
+void QUmlLiteralReal::setPropertyData()
+{
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLiteralReal")][QString::fromLatin1("value")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLiteralReal")][QString::fromLatin1("value")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLiteralReal")][QString::fromLatin1("value")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLiteralReal")][QString::fromLatin1("value")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLiteralReal")][QString::fromLatin1("value")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLiteralReal")][QString::fromLatin1("value")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+
+    QUmlLiteralSpecification::setPropertyData();
+}
+
+QT_END_NAMESPACE
+
+#include "moc_qumlliteralreal.cpp"
+

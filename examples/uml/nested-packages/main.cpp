@@ -1,17 +1,15 @@
 #include <QtWrappedObjects>
 
-#include <QtUml/QModel>
-#include <QtUml/QPackage>
-#include <QtUml/QPrimitiveType>
-#include <QtUml/QEnumeration>
-#include <QtUml/QEnumerationLiteral>
-#include <QtUml/QClass>
-#include <QtUml/QComponent>
-#include <QtUml/QComponentRealization>
+#include <QtUml/QUmlModel>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlPrimitiveType>
+#include <QtUml/QUmlEnumeration>
+#include <QtUml/QUmlEnumerationLiteral>
+#include <QtUml/QUmlClass>
+#include <QtUml/QUmlComponent>
+#include <QtUml/QUmlComponentRealization>
 
 #include <QtCore/QDebug>
-
-using namespace QtUml;
 
 void checkProperties(QWrappedObject *wrappedObject)
 {
@@ -24,22 +22,22 @@ void checkProperties(QWrappedObject *wrappedObject)
 
 int main ()
 {
-    QWrappedObjectPointer<QModel> model = new QModel;
+    QWrappedObjectPointer<QUmlModel> model = new QUmlModel;
     model->setName("MyModel");
 
-    QWrappedObjectPointer<QPackage> package = new QPackage;
+    QWrappedObjectPointer<QUmlPackage> package = new QUmlPackage;
     package->setName("Package1");
 
-    QWrappedObjectPointer<QPrimitiveType> primitiveType = new QPrimitiveType;
+    QWrappedObjectPointer<QUmlPrimitiveType> primitiveType = new QUmlPrimitiveType;
     primitiveType->setName("String");
 
-    QWrappedObjectPointer<QEnumeration> enumeration = new QEnumeration;
+    QWrappedObjectPointer<QUmlEnumeration> enumeration = new QUmlEnumeration;
     enumeration->setName("DirectionKind");
-    QWrappedObjectPointer<QEnumerationLiteral> directionIn = new QEnumerationLiteral;
+    QWrappedObjectPointer<QUmlEnumerationLiteral> directionIn = new QUmlEnumerationLiteral;
     directionIn->setName("DirectionIn");
     enumeration->addOwnedLiteral(directionIn);
 
-    QWrappedObjectPointer<QClass> class_ = new QClass;
+    QWrappedObjectPointer<QUmlClass> class_ = new QUmlClass;
     class_->setName("Student");
     class_->setAbstract(false);
 
@@ -93,9 +91,9 @@ int main ()
 
     checkProperties(model);
 
-    QWrappedObjectPointer<QComponent> c1 = new QComponent;
-    QWrappedObjectPointer<QComponent> c2 = new QComponent;
-    QWrappedObjectPointer<QComponentRealization> cr = new QComponentRealization;
+    QWrappedObjectPointer<QUmlComponent> c1 = new QUmlComponent;
+    QWrappedObjectPointer<QUmlComponent> c2 = new QUmlComponent;
+    QWrappedObjectPointer<QUmlComponentRealization> cr = new QUmlComponentRealization;
     cr->setAbstraction(c1);
     qDebug();
     qDebug() << "cr->suppliers().size():" << cr->suppliers().size();

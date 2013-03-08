@@ -50,6 +50,8 @@
 #include <QtCore/QPluginLoader>
 #include <QtCore/QCoreApplication>
 
+#include <QtCore/QDebug>
+
 QT_BEGIN_NAMESPACE
 
 QXmiReaderPrivate::QXmiReaderPrivate()
@@ -120,7 +122,8 @@ QWrappedObject *QXmiReader::readFile(QIODevice *device)
                 xmiType = d->reader.qualifiedName().toString();
             if (xmiType.isEmpty() || d->xmlNamespaceToImplementationNamespace[xmiType.split(':').first()].isEmpty())
                 continue;
-            xmiType = QString::fromLatin1("%1::Q%2 *").arg(d->xmlNamespaceToImplementationNamespace[xmiType.split(':').first()]).arg(xmiType.split(':').last());
+            xmiType = QString::fromLatin1("%1%2 *").arg(d->xmlNamespaceToImplementationNamespace[xmiType.split(':').first()]).arg(xmiType.split(':').last());
+            qDebug() << "xmiType:" << xmiType;
             QString instanceName = d->reader.attributes().value(QString::fromLatin1("name")).toString();
             if (instanceName.isEmpty())
                 instanceName = d->reader.attributes().value(QString::fromLatin1("xmi:id")).toString();

@@ -51,7 +51,7 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QtUmlNS : public QObject
+class Q_UML_EXPORT QtUml : public QObject
 {
     Q_OBJECT
 

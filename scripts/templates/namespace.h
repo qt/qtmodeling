@@ -51,7 +51,7 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE([% namespace.split('/').0 %])
 
-class Q_[% namespace.split('/').0.substr(2).upper %]_EXPORT ${namespace.split('::').0}NS : public QObject
+class Q_[% namespace.split('/').0.substr(2).upper %]_EXPORT ${namespace.split('::').0} : public QObject
 {
     Q_OBJECT
 

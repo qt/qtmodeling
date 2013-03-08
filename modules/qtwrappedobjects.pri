@@ -1,7 +1,7 @@
-QT.wrappedobjects.VERSION = 5.0.0
+QT.wrappedobjects.VERSION = 5.0.1
 QT.wrappedobjects.MAJOR_VERSION = 5
 QT.wrappedobjects.MINOR_VERSION = 0
-QT.wrappedobjects.PATCH_VERSION = 0
+QT.wrappedobjects.PATCH_VERSION = 1
 
 QT.wrappedobjects.name = QtWrappedObjects
 QT.wrappedobjects.bins = $$QT_MODULE_BIN_BASE
