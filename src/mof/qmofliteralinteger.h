@@ -57,6 +57,7 @@ class QMofLiteralIntegerPrivate;
 class Q_MOF_EXPORT QMofLiteralInteger : public QMofLiteralSpecification
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QMof")
 
     Q_PROPERTY(qint32 value READ value WRITE setValue)
 

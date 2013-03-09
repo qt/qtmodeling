@@ -572,42 +572,42 @@ void QUmlRegion::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRegion")][QString::fromLatin1("extendedRegion")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The region of which this region is an extension.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRegion")][QString::fromLatin1("extendedRegion")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRegion")][QString::fromLatin1("extendedRegion")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlRedefinableElement::redefinedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRegion")][QString::fromLatin1("extendedRegion")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRegion")][QString::fromLatin1("extendedRegion")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRegion")][QString::fromLatin1("transitions")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRegion")][QString::fromLatin1("transitions")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRegion")][QString::fromLatin1("transitions")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The set of transitions owned by the region.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRegion")][QString::fromLatin1("transitions")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRegion")][QString::fromLatin1("transitions")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlNamespace::ownedMembers");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRegion")][QString::fromLatin1("transitions")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QTransition::container");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRegion")][QString::fromLatin1("transitions")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlTransition::container");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRegion")][QString::fromLatin1("stateMachine")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRegion")][QString::fromLatin1("stateMachine")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRegion")][QString::fromLatin1("stateMachine")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The StateMachine that owns the Region. If a Region is owned by a StateMachine, then it cannot also be owned by a State.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRegion")][QString::fromLatin1("stateMachine")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRegion")][QString::fromLatin1("stateMachine")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlNamedElement::namespace");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRegion")][QString::fromLatin1("stateMachine")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QStateMachine::region");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRegion")][QString::fromLatin1("stateMachine")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlStateMachine::region");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRegion")][QString::fromLatin1("state")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRegion")][QString::fromLatin1("state")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRegion")][QString::fromLatin1("state")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The State that owns the Region. If a Region is owned by a State, then it cannot also be owned by a StateMachine.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRegion")][QString::fromLatin1("state")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRegion")][QString::fromLatin1("state")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlNamedElement::namespace");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRegion")][QString::fromLatin1("state")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QState::region");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRegion")][QString::fromLatin1("state")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlState::region");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRegion")][QString::fromLatin1("redefinitionContext")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRegion")][QString::fromLatin1("redefinitionContext")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRegion")][QString::fromLatin1("redefinitionContext")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the classifier in which context this element may be redefined.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRegion")][QString::fromLatin1("redefinitionContext")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QUmlRedefinableElement::redefinitionContexts");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRegion")][QString::fromLatin1("redefinitionContext")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRegion")][QString::fromLatin1("redefinitionContext")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRegion")][QString::fromLatin1("redefinitionContext")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRegion")][QString::fromLatin1("subvertices")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRegion")][QString::fromLatin1("subvertices")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRegion")][QString::fromLatin1("subvertices")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The set of vertices that are owned by this region.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRegion")][QString::fromLatin1("subvertices")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRegion")][QString::fromLatin1("subvertices")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlNamespace::ownedMembers");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRegion")][QString::fromLatin1("subvertices")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QVertex::container");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRegion")][QString::fromLatin1("subvertices")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlVertex::container");
 
     QWrappedObject::setPropertyData();
 }

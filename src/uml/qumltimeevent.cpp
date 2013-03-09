@@ -162,7 +162,7 @@ void QUmlTimeEvent::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTimeEvent")][QString::fromLatin1("when")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the corresponding time deadline.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTimeEvent")][QString::fromLatin1("when")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTimeEvent")][QString::fromLatin1("when")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTimeEvent")][QString::fromLatin1("when")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTimeEvent")][QString::fromLatin1("when")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QUmlEvent::setPropertyData();
 }

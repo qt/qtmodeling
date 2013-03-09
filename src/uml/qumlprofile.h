@@ -64,6 +64,7 @@ class QUmlProfilePrivate;
 class Q_UML_EXPORT QUmlProfile : public QUmlPackage
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QSet<QUmlPackageImport *> metamodelReferences READ metamodelReferences)
     Q_PROPERTY(QSet<QUmlElementImport *> metaclassReferences READ metaclassReferences)

@@ -63,6 +63,7 @@ class QUmlSignalPrivate;
 class Q_UML_EXPORT QUmlSignal : public QUmlClassifier
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QList<QUmlProperty *> ownedAttributes READ ownedAttributes)
 

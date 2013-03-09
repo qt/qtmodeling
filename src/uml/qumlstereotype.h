@@ -64,6 +64,7 @@ class QUmlStereotypePrivate;
 class Q_UML_EXPORT QUmlStereotype : public QUmlClass
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QSet<QUmlImage *> icons READ icons)
     Q_PROPERTY(QUmlProfile * profile READ profile STORED false)

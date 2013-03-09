@@ -152,14 +152,14 @@ void QUmlStateInvariant::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStateInvariant")][QString::fromLatin1("invariant")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A Constraint that should hold at runtime for this StateInvariant");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStateInvariant")][QString::fromLatin1("invariant")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStateInvariant")][QString::fromLatin1("invariant")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStateInvariant")][QString::fromLatin1("invariant")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStateInvariant")][QString::fromLatin1("invariant")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStateInvariant")][QString::fromLatin1("covered")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStateInvariant")][QString::fromLatin1("covered")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStateInvariant")][QString::fromLatin1("covered")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Lifeline on which the StateInvariant appears.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStateInvariant")][QString::fromLatin1("covered")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QUmlInteractionFragment::covered");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStateInvariant")][QString::fromLatin1("covered")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStateInvariant")][QString::fromLatin1("covered")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStateInvariant")][QString::fromLatin1("covered")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QUmlInteractionFragment::setPropertyData();
 }

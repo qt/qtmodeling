@@ -57,6 +57,7 @@ class QUmlDevicePrivate;
 class Q_UML_EXPORT QUmlDevice : public QUmlNode
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_DISABLE_COPY(QUmlDevice)
     Q_DECLARE_PRIVATE(QUmlDevice)

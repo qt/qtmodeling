@@ -57,6 +57,7 @@ class QUmlControlFlowPrivate;
 class Q_UML_EXPORT QUmlControlFlow : public QUmlActivityEdge
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_DISABLE_COPY(QUmlControlFlow)
     Q_DECLARE_PRIVATE(QUmlControlFlow)

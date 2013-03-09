@@ -60,6 +60,7 @@ class QUmlTimeConstraintPrivate;
 class Q_UML_EXPORT QUmlTimeConstraint : public QUmlIntervalConstraint
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(bool firstEvent READ firstEvent WRITE setFirstEvent RESET unsetFirstEvent)
     Q_PROPERTY(QUmlTimeInterval * specification READ specification WRITE setSpecification)

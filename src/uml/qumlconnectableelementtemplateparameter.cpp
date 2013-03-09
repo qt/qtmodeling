@@ -121,7 +121,7 @@ void QUmlConnectableElementTemplateParameter::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectableElementTemplateParameter")][QString::fromLatin1("parameteredElement")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The ConnectableElement for this template parameter.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectableElementTemplateParameter")][QString::fromLatin1("parameteredElement")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QUmlTemplateParameter::parameteredElement");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectableElementTemplateParameter")][QString::fromLatin1("parameteredElement")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectableElementTemplateParameter")][QString::fromLatin1("parameteredElement")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QConnectableElement::templateParameter");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectableElementTemplateParameter")][QString::fromLatin1("parameteredElement")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlConnectableElement::templateParameter");
 
     QUmlTemplateParameter::setPropertyData();
 }

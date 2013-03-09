@@ -60,6 +60,7 @@ class QUmlInteractionConstraintPrivate;
 class Q_UML_EXPORT QUmlInteractionConstraint : public QUmlConstraint
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QUmlValueSpecification * maxint READ maxint WRITE setMaxint)
     Q_PROPERTY(QUmlValueSpecification * minint READ minint WRITE setMinint)

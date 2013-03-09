@@ -60,6 +60,7 @@ class QMofRelationshipPrivate;
 class Q_MOF_EXPORT QMofRelationship : public QMofElement
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QMof")
 
     Q_PROPERTY(QSet<QMofElement *> relatedElements READ relatedElements)
 

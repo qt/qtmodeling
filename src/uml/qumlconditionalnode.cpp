@@ -246,14 +246,14 @@ void QUmlConditionalNode::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConditionalNode")][QString::fromLatin1("clauses")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Set of clauses composing the conditional.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConditionalNode")][QString::fromLatin1("clauses")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConditionalNode")][QString::fromLatin1("clauses")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConditionalNode")][QString::fromLatin1("clauses")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConditionalNode")][QString::fromLatin1("clauses")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConditionalNode")][QString::fromLatin1("results")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConditionalNode")][QString::fromLatin1("results")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConditionalNode")][QString::fromLatin1("results")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A list of output pins that constitute the data flow outputs of the conditional.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConditionalNode")][QString::fromLatin1("results")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QUmlStructuredActivityNode::structuredNodeOutputs");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConditionalNode")][QString::fromLatin1("results")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConditionalNode")][QString::fromLatin1("results")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConditionalNode")][QString::fromLatin1("results")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QUmlStructuredActivityNode::setPropertyData();
 }

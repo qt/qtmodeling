@@ -373,14 +373,14 @@ void QUmlMultiplicityElement::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlMultiplicityElement")][QString::fromLatin1("upperValue")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The specification of the upper bound for this multiplicity.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlMultiplicityElement")][QString::fromLatin1("upperValue")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlMultiplicityElement")][QString::fromLatin1("upperValue")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlMultiplicityElement")][QString::fromLatin1("upperValue")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlMultiplicityElement")][QString::fromLatin1("upperValue")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlMultiplicityElement")][QString::fromLatin1("lowerValue")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlMultiplicityElement")][QString::fromLatin1("lowerValue")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlMultiplicityElement")][QString::fromLatin1("lowerValue")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The specification of the lower bound for this multiplicity.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlMultiplicityElement")][QString::fromLatin1("lowerValue")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlMultiplicityElement")][QString::fromLatin1("lowerValue")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlMultiplicityElement")][QString::fromLatin1("lowerValue")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlMultiplicityElement")][QString::fromLatin1("lowerValue")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QUmlElement::setPropertyData();
 }

@@ -60,6 +60,7 @@ class QUmlActivityParameterNodePrivate;
 class Q_UML_EXPORT QUmlActivityParameterNode : public QUmlObjectNode
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QUmlParameter * parameter READ parameter WRITE setParameter)
 

@@ -205,21 +205,21 @@ void QUmlTemplateBinding::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateBinding")][QString::fromLatin1("signature")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The template signature for the template that is the target of the binding.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateBinding")][QString::fromLatin1("signature")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateBinding")][QString::fromLatin1("signature")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlDirectedRelationship::targets");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateBinding")][QString::fromLatin1("signature")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateBinding")][QString::fromLatin1("signature")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateBinding")][QString::fromLatin1("boundElement")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateBinding")][QString::fromLatin1("boundElement")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateBinding")][QString::fromLatin1("boundElement")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The element that is bound by this binding.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateBinding")][QString::fromLatin1("boundElement")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateBinding")][QString::fromLatin1("boundElement")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::owner QUmlDirectedRelationship::sources");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateBinding")][QString::fromLatin1("boundElement")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QTemplateableElement::templateBinding");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateBinding")][QString::fromLatin1("boundElement")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlTemplateableElement::templateBinding");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateBinding")][QString::fromLatin1("parameterSubstitutions")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateBinding")][QString::fromLatin1("parameterSubstitutions")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateBinding")][QString::fromLatin1("parameterSubstitutions")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The parameter substitutions owned by this template binding.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateBinding")][QString::fromLatin1("parameterSubstitutions")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateBinding")][QString::fromLatin1("parameterSubstitutions")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateBinding")][QString::fromLatin1("parameterSubstitutions")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QTemplateParameterSubstitution::templateBinding");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateBinding")][QString::fromLatin1("parameterSubstitutions")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlTemplateParameterSubstitution::templateBinding");
 
     QUmlDirectedRelationship::setPropertyData();
 }

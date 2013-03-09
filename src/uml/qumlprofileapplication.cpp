@@ -202,14 +202,14 @@ void QUmlProfileApplication::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlProfileApplication")][QString::fromLatin1("applyingPackage")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The package that owns the profile application.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlProfileApplication")][QString::fromLatin1("applyingPackage")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlProfileApplication")][QString::fromLatin1("applyingPackage")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::owner QUmlDirectedRelationship::sources");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlProfileApplication")][QString::fromLatin1("applyingPackage")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QPackage::profileApplication");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlProfileApplication")][QString::fromLatin1("applyingPackage")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlPackage::profileApplication");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlProfileApplication")][QString::fromLatin1("appliedProfile")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlProfileApplication")][QString::fromLatin1("appliedProfile")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlProfileApplication")][QString::fromLatin1("appliedProfile")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Profiles that are applied to a Package through this ProfileApplication.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlProfileApplication")][QString::fromLatin1("appliedProfile")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlProfileApplication")][QString::fromLatin1("appliedProfile")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlDirectedRelationship::targets");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlProfileApplication")][QString::fromLatin1("appliedProfile")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlProfileApplication")][QString::fromLatin1("appliedProfile")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QUmlDirectedRelationship::setPropertyData();
 }

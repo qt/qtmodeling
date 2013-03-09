@@ -61,6 +61,7 @@ class QMofMultiplicityElementPrivate;
 class Q_MOF_EXPORT QMofMultiplicityElement : public QMofElement
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QMof")
 
     Q_PROPERTY(qint32 upper READ upper WRITE setUpper RESET unsetUpper STORED false)
     Q_PROPERTY(bool isUnique READ isUnique WRITE setUnique RESET unsetUnique)

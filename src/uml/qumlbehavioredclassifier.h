@@ -66,6 +66,7 @@ class QUmlBehavioredClassifierPrivate;
 class Q_UML_EXPORT QUmlBehavioredClassifier : public QUmlClassifier
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QSet<QUmlBehavior *> ownedBehaviors READ ownedBehaviors)
     Q_PROPERTY(QSet<QUmlInterfaceRealization *> interfaceRealizations READ interfaceRealizations)

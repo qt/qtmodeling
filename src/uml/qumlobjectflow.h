@@ -60,6 +60,7 @@ class QUmlObjectFlowPrivate;
 class Q_UML_EXPORT QUmlObjectFlow : public QUmlActivityEdge
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(bool isMultireceive READ isMultireceive WRITE setMultireceive RESET unsetMultireceive)
     Q_PROPERTY(bool isMulticast READ isMulticast WRITE setMulticast RESET unsetMulticast)

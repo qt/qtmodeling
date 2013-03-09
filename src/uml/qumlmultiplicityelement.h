@@ -61,6 +61,7 @@ class QUmlMultiplicityElementPrivate;
 class Q_UML_EXPORT QUmlMultiplicityElement : public QUmlElement
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(qint32 upper READ upper WRITE setUpper RESET unsetUpper STORED false)
     Q_PROPERTY(bool isUnique READ isUnique WRITE setUnique RESET unsetUnique)

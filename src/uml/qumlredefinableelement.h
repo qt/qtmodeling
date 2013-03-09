@@ -64,6 +64,7 @@ class QUmlRedefinableElementPrivate;
 class Q_UML_EXPORT QUmlRedefinableElement : public QUmlNamedElement
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
     Q_PROPERTY(QSet<QUmlRedefinableElement *> redefinedElements READ redefinedElements)

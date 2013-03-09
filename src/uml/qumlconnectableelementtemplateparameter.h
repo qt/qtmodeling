@@ -60,6 +60,7 @@ class QUmlConnectableElementTemplateParameterPrivate;
 class Q_UML_EXPORT QUmlConnectableElementTemplateParameter : public QUmlTemplateParameter
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QUmlConnectableElement * parameteredElement READ parameteredElement WRITE setParameteredElement)
 

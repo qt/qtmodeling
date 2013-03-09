@@ -60,6 +60,7 @@ class QUmlLiteralStringPrivate;
 class Q_UML_EXPORT QUmlLiteralString : public QUmlLiteralSpecification
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QString value READ value WRITE setValue)
 

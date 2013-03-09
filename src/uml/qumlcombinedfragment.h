@@ -68,6 +68,7 @@ class QUmlCombinedFragmentPrivate;
 class Q_UML_EXPORT QUmlCombinedFragment : public QUmlInteractionFragment
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QtUml::InteractionOperatorKind interactionOperator READ interactionOperator WRITE setInteractionOperator RESET unsetInteractionOperator)
     Q_PROPERTY(QSet<QUmlGate *> cfragmentGates READ cfragmentGates)

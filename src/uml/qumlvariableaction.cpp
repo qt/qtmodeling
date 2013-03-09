@@ -113,7 +113,7 @@ void QUmlVariableAction::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlVariableAction")][QString::fromLatin1("variable")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Variable to be read.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlVariableAction")][QString::fromLatin1("variable")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlVariableAction")][QString::fromLatin1("variable")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlVariableAction")][QString::fromLatin1("variable")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlVariableAction")][QString::fromLatin1("variable")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QUmlAction::setPropertyData();
 }

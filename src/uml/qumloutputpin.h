@@ -57,6 +57,7 @@ class QUmlOutputPinPrivate;
 class Q_UML_EXPORT QUmlOutputPin : public QUmlPin
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_DISABLE_COPY(QUmlOutputPin)
     Q_DECLARE_PRIVATE(QUmlOutputPin)

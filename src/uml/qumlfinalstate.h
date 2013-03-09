@@ -57,6 +57,7 @@ class QUmlFinalStatePrivate;
 class Q_UML_EXPORT QUmlFinalState : public QUmlState
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_DISABLE_COPY(QUmlFinalState)
     Q_DECLARE_PRIVATE(QUmlFinalState)

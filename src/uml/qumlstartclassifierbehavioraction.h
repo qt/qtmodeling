@@ -60,6 +60,7 @@ class QUmlStartClassifierBehaviorActionPrivate;
 class Q_UML_EXPORT QUmlStartClassifierBehaviorAction : public QUmlAction
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QUmlInputPin * object READ object WRITE setObject)
 

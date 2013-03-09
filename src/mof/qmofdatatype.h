@@ -66,6 +66,7 @@ class QMofDataTypePrivate;
 class Q_MOF_EXPORT QMofDataType : public QMofClassifier
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QMof")
 
     Q_PROPERTY(QList<QMofOperation *> ownedOperations READ ownedOperations)
     Q_PROPERTY(QList<QMofProperty *> ownedAttributes READ ownedAttributes)

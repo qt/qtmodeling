@@ -201,28 +201,28 @@ void QUmlTemplateParameterSubstitution::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateParameterSubstitution")][QString::fromLatin1("ownedActual")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The actual parameter that is owned by this substitution.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateParameterSubstitution")][QString::fromLatin1("ownedActual")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateParameterSubstitution")][QString::fromLatin1("ownedActual")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements QUmlTemplateParameterSubstitution::actual");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateParameterSubstitution")][QString::fromLatin1("ownedActual")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateParameterSubstitution")][QString::fromLatin1("ownedActual")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateParameterSubstitution")][QString::fromLatin1("formal")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateParameterSubstitution")][QString::fromLatin1("formal")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateParameterSubstitution")][QString::fromLatin1("formal")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The formal template parameter that is associated with this substitution.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateParameterSubstitution")][QString::fromLatin1("formal")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateParameterSubstitution")][QString::fromLatin1("formal")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateParameterSubstitution")][QString::fromLatin1("formal")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateParameterSubstitution")][QString::fromLatin1("formal")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateParameterSubstitution")][QString::fromLatin1("actual")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateParameterSubstitution")][QString::fromLatin1("actual")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateParameterSubstitution")][QString::fromLatin1("actual")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The element that is the actual parameter for this substitution.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateParameterSubstitution")][QString::fromLatin1("actual")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateParameterSubstitution")][QString::fromLatin1("actual")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateParameterSubstitution")][QString::fromLatin1("actual")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateParameterSubstitution")][QString::fromLatin1("actual")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateParameterSubstitution")][QString::fromLatin1("templateBinding")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateParameterSubstitution")][QString::fromLatin1("templateBinding")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateParameterSubstitution")][QString::fromLatin1("templateBinding")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The optional bindings from this element to templates.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateParameterSubstitution")][QString::fromLatin1("templateBinding")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateParameterSubstitution")][QString::fromLatin1("templateBinding")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::owner");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateParameterSubstitution")][QString::fromLatin1("templateBinding")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QTemplateBinding::parameterSubstitution");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateParameterSubstitution")][QString::fromLatin1("templateBinding")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlTemplateBinding::parameterSubstitution");
 
     QUmlElement::setPropertyData();
 }

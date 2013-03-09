@@ -57,6 +57,7 @@ class QUmlActorPrivate;
 class Q_UML_EXPORT QUmlActor : public QUmlBehavioredClassifier
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_DISABLE_COPY(QUmlActor)
     Q_DECLARE_PRIVATE(QUmlActor)

@@ -57,6 +57,7 @@ class QUmlClearVariableActionPrivate;
 class Q_UML_EXPORT QUmlClearVariableAction : public QUmlVariableAction
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_DISABLE_COPY(QUmlClearVariableAction)
     Q_DECLARE_PRIVATE(QUmlClearVariableAction)

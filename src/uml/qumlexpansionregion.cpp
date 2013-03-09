@@ -206,14 +206,14 @@ void QUmlExpansionRegion::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpansionRegion")][QString::fromLatin1("inputElements")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An object node that holds a separate element of the input collection during each of the multiple executions of the region.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpansionRegion")][QString::fromLatin1("inputElements")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpansionRegion")][QString::fromLatin1("inputElements")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpansionRegion")][QString::fromLatin1("inputElements")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QExpansionNode::regionAsInput");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpansionRegion")][QString::fromLatin1("inputElements")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlExpansionNode::regionAsInput");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpansionRegion")][QString::fromLatin1("outputElements")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpansionRegion")][QString::fromLatin1("outputElements")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpansionRegion")][QString::fromLatin1("outputElements")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An object node that accepts a separate element of the output collection during each of the multiple executions of the region. The values are formed into a collection that is available when the execution of the region is complete.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpansionRegion")][QString::fromLatin1("outputElements")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpansionRegion")][QString::fromLatin1("outputElements")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpansionRegion")][QString::fromLatin1("outputElements")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QExpansionNode::regionAsOutput");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpansionRegion")][QString::fromLatin1("outputElements")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlExpansionNode::regionAsOutput");
 
     QUmlStructuredActivityNode::setPropertyData();
 }

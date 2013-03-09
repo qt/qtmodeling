@@ -65,6 +65,7 @@ class QUmlLinkActionPrivate;
 class Q_UML_EXPORT QUmlLinkAction : public QUmlAction
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QSet<QUmlInputPin *> inputValues READ inputValues)
     Q_PROPERTY(QSet<QUmlLinkEndData *> endData READ endData)

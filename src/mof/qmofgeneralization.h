@@ -60,6 +60,7 @@ class QMofGeneralizationPrivate;
 class Q_MOF_EXPORT QMofGeneralization : public QMofDirectedRelationship
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QMof")
 
     Q_PROPERTY(bool isSubstitutable READ isSubstitutable WRITE setSubstitutable RESET unsetSubstitutable)
     Q_PROPERTY(QMofClassifier * specific READ specific WRITE setSpecific)

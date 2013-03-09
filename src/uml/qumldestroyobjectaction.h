@@ -60,6 +60,7 @@ class QUmlDestroyObjectActionPrivate;
 class Q_UML_EXPORT QUmlDestroyObjectAction : public QUmlAction
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(bool isDestroyLinks READ isDestroyLinks WRITE setDestroyLinks RESET unsetDestroyLinks)
     Q_PROPERTY(bool isDestroyOwnedObjects READ isDestroyOwnedObjects WRITE setDestroyOwnedObjects RESET unsetDestroyOwnedObjects)

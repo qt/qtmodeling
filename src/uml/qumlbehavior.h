@@ -71,6 +71,7 @@ class QUmlBehaviorPrivate;
 class Q_UML_EXPORT QUmlBehavior : public QUmlClass
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(bool isReentrant READ isReentrant WRITE setReentrant RESET unsetReentrant)
     Q_PROPERTY(QUmlBehavioralFeature * specification READ specification WRITE setSpecification)

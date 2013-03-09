@@ -62,6 +62,7 @@ class QUmlTemplateParameterSubstitutionPrivate;
 class Q_UML_EXPORT QUmlTemplateParameterSubstitution : public QUmlElement
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QUmlParameterableElement * ownedActual READ ownedActual WRITE setOwnedActual)
     Q_PROPERTY(QUmlTemplateParameter * formal READ formal WRITE setFormal)

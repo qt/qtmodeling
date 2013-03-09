@@ -60,6 +60,7 @@ class QUmlExpansionNodePrivate;
 class Q_UML_EXPORT QUmlExpansionNode : public QUmlObjectNode
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QUmlExpansionRegion * regionAsOutput READ regionAsOutput WRITE setRegionAsOutput)
     Q_PROPERTY(QUmlExpansionRegion * regionAsInput READ regionAsInput WRITE setRegionAsInput)

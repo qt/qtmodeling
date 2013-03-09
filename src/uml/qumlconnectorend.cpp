@@ -158,21 +158,21 @@ void QUmlConnectorEnd::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectorEnd")][QString::fromLatin1("role")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The connectable element attached at this connector end. When an instance of the containing classifier is created, a link may (depending on the multiplicities) be created to an instance of the classifier that types this connectable element.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectorEnd")][QString::fromLatin1("role")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectorEnd")][QString::fromLatin1("role")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectorEnd")][QString::fromLatin1("role")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QConnectableElement::end");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectorEnd")][QString::fromLatin1("role")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlConnectableElement::end");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectorEnd")][QString::fromLatin1("partWithPort")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectorEnd")][QString::fromLatin1("partWithPort")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectorEnd")][QString::fromLatin1("partWithPort")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Indicates the role of the internal structure of a classifier with the port to which the connector end is attached.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectorEnd")][QString::fromLatin1("partWithPort")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectorEnd")][QString::fromLatin1("partWithPort")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectorEnd")][QString::fromLatin1("partWithPort")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectorEnd")][QString::fromLatin1("partWithPort")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectorEnd")][QString::fromLatin1("definingEnd")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectorEnd")][QString::fromLatin1("definingEnd")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectorEnd")][QString::fromLatin1("definingEnd")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A derived association referencing the corresponding association end on the association which types the connector owing this connector end. This association is derived by selecting the association end at the same place in the ordering of association ends as this connector end.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectorEnd")][QString::fromLatin1("definingEnd")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectorEnd")][QString::fromLatin1("definingEnd")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectorEnd")][QString::fromLatin1("definingEnd")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectorEnd")][QString::fromLatin1("definingEnd")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QUmlMultiplicityElement::setPropertyData();
 }

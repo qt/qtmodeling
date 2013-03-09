@@ -69,6 +69,7 @@ class QUmlActivityNodePrivate;
 class Q_UML_EXPORT QUmlActivityNode : public QUmlRedefinableElement
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QSet<QUmlActivityNode *> redefinedNodes READ redefinedNodes)
     Q_PROPERTY(QSet<QUmlActivityEdge *> incomings READ incomings)

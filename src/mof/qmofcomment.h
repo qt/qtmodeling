@@ -61,6 +61,7 @@ class QMofCommentPrivate;
 class Q_MOF_EXPORT QMofComment : public QMofElement
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QMof")
 
     Q_PROPERTY(QString body READ body WRITE setBody)
     Q_PROPERTY(QSet<QMofElement *> annotatedElements READ annotatedElements)

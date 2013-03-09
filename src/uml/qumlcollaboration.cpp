@@ -808,7 +808,7 @@ void QUmlCollaboration::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCollaboration")][QString::fromLatin1("collaborationRoles")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References connectable elements (possibly owned by other classifiers) which represent roles that instances may play in this collaboration.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCollaboration")][QString::fromLatin1("collaborationRoles")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCollaboration")][QString::fromLatin1("collaborationRoles")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlStructuredClassifier::roles");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCollaboration")][QString::fromLatin1("collaborationRoles")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCollaboration")][QString::fromLatin1("collaborationRoles")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QWrappedObject::setPropertyData();
 }

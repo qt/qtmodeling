@@ -57,6 +57,7 @@ class QMofPrimitiveTypePrivate;
 class Q_MOF_EXPORT QMofPrimitiveType : public QMofDataType
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QMof")
 
     Q_DISABLE_COPY(QMofPrimitiveType)
     Q_DECLARE_PRIVATE(QMofPrimitiveType)

@@ -113,7 +113,7 @@ void QUmlExecutionOccurrenceSpecification::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExecutionOccurrenceSpecification")][QString::fromLatin1("execution")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the execution specification describing the execution that is started or finished at this execution event.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExecutionOccurrenceSpecification")][QString::fromLatin1("execution")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExecutionOccurrenceSpecification")][QString::fromLatin1("execution")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExecutionOccurrenceSpecification")][QString::fromLatin1("execution")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExecutionOccurrenceSpecification")][QString::fromLatin1("execution")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QUmlOccurrenceSpecification::setPropertyData();
 }

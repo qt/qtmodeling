@@ -57,6 +57,7 @@ class QUmlCommunicationPathPrivate;
 class Q_UML_EXPORT QUmlCommunicationPath : public QUmlAssociation
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_DISABLE_COPY(QUmlCommunicationPath)
     Q_DECLARE_PRIVATE(QUmlCommunicationPath)

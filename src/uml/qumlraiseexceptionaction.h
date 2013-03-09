@@ -60,6 +60,7 @@ class QUmlRaiseExceptionActionPrivate;
 class Q_UML_EXPORT QUmlRaiseExceptionAction : public QUmlAction
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QUmlInputPin * exception READ exception WRITE setException)
 

@@ -64,6 +64,7 @@ class QUmlInterruptibleActivityRegionPrivate;
 class Q_UML_EXPORT QUmlInterruptibleActivityRegion : public QUmlActivityGroup
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QSet<QUmlActivityEdge *> interruptingEdges READ interruptingEdges)
     Q_PROPERTY(QSet<QUmlActivityNode *> nodes READ nodes)

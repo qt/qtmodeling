@@ -106,7 +106,7 @@ void QUmlEncapsulatedClassifier::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlEncapsulatedClassifier")][QString::fromLatin1("ownedPorts")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References a set of ports that an encapsulated classifier owns.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlEncapsulatedClassifier")][QString::fromLatin1("ownedPorts")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlEncapsulatedClassifier")][QString::fromLatin1("ownedPorts")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlStructuredClassifier::ownedAttributes");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlEncapsulatedClassifier")][QString::fromLatin1("ownedPorts")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlEncapsulatedClassifier")][QString::fromLatin1("ownedPorts")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QUmlStructuredClassifier::setPropertyData();
 }

@@ -191,14 +191,14 @@ void QUmlTemplateableElement::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateableElement")][QString::fromLatin1("ownedTemplateSignature")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The optional template signature specifying the formal template parameters.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateableElement")][QString::fromLatin1("ownedTemplateSignature")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateableElement")][QString::fromLatin1("ownedTemplateSignature")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateableElement")][QString::fromLatin1("ownedTemplateSignature")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QTemplateSignature::template");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateableElement")][QString::fromLatin1("ownedTemplateSignature")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlTemplateSignature::template");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateableElement")][QString::fromLatin1("templateBindings")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateableElement")][QString::fromLatin1("templateBindings")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateableElement")][QString::fromLatin1("templateBindings")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The optional bindings from this element to templates.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateableElement")][QString::fromLatin1("templateBindings")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateableElement")][QString::fromLatin1("templateBindings")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateableElement")][QString::fromLatin1("templateBindings")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QTemplateBinding::boundElement");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateableElement")][QString::fromLatin1("templateBindings")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlTemplateBinding::boundElement");
 
     QUmlElement::setPropertyData();
 }

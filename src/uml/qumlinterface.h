@@ -70,6 +70,7 @@ class QUmlInterfacePrivate;
 class Q_UML_EXPORT QUmlInterface : public QUmlClassifier
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QUmlProtocolStateMachine * protocol READ protocol WRITE setProtocol)
     Q_PROPERTY(QSet<QUmlInterface *> redefinedInterfaces READ redefinedInterfaces)

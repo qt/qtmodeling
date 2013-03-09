@@ -197,21 +197,21 @@ void QMofInstanceSpecification::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofInstanceSpecification")][QString::fromLatin1("classifiers")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The classifier or classifiers of the represented instance. If multiple classifiers are specified, the instance is classified by all of them.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofInstanceSpecification")][QString::fromLatin1("classifiers")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofInstanceSpecification")][QString::fromLatin1("classifiers")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofInstanceSpecification")][QString::fromLatin1("classifiers")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofInstanceSpecification")][QString::fromLatin1("classifiers")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMof");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofInstanceSpecification")][QString::fromLatin1("specification")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofInstanceSpecification")][QString::fromLatin1("specification")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofInstanceSpecification")][QString::fromLatin1("specification")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A specification of how to compute, derive, or construct the instance.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofInstanceSpecification")][QString::fromLatin1("specification")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofInstanceSpecification")][QString::fromLatin1("specification")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QMofElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofInstanceSpecification")][QString::fromLatin1("specification")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofInstanceSpecification")][QString::fromLatin1("specification")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMof");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofInstanceSpecification")][QString::fromLatin1("slots_")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofInstanceSpecification")][QString::fromLatin1("slots_")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofInstanceSpecification")][QString::fromLatin1("slots_")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A slot giving the value or values of a structural feature of the instance. An instance specification can have one slot per structural feature of its classifiers, including inherited features. It is not necessary to model a slot for each structural feature, in which case the instance specification is a partial description.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofInstanceSpecification")][QString::fromLatin1("slots_")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofInstanceSpecification")][QString::fromLatin1("slots_")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QMofElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofInstanceSpecification")][QString::fromLatin1("slots_")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QSlot::owningInstance");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofInstanceSpecification")][QString::fromLatin1("slots_")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMofSlot::owningInstance");
 
     QMofPackageableElement::setPropertyData();
 }

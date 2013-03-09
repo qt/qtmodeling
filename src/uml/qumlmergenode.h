@@ -57,6 +57,7 @@ class QUmlMergeNodePrivate;
 class Q_UML_EXPORT QUmlMergeNode : public QUmlControlNode
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_DISABLE_COPY(QUmlMergeNode)
     Q_DECLARE_PRIVATE(QUmlMergeNode)

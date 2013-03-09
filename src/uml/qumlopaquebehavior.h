@@ -61,6 +61,7 @@ class QUmlOpaqueBehaviorPrivate;
 class Q_UML_EXPORT QUmlOpaqueBehavior : public QUmlBehavior
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QList<QString> languages READ languages)
     Q_PROPERTY(QList<QString> bodies READ bodies)

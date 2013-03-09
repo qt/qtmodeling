@@ -63,6 +63,7 @@ class QUmlTimeExpressionPrivate;
 class Q_UML_EXPORT QUmlTimeExpression : public QUmlValueSpecification
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QSet<QUmlObservation *> observations READ observations)
     Q_PROPERTY(QUmlValueSpecification * expr READ expr WRITE setExpr)

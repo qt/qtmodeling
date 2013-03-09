@@ -164,7 +164,7 @@ void QUmlExtensionEnd::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExtensionEnd")][QString::fromLatin1("type")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the type of the ExtensionEnd. Note that this association restricts the possible types of an ExtensionEnd to only be Stereotypes.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExtensionEnd")][QString::fromLatin1("type")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QUmlTypedElement::type");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExtensionEnd")][QString::fromLatin1("type")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExtensionEnd")][QString::fromLatin1("type")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExtensionEnd")][QString::fromLatin1("type")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QUmlProperty::setPropertyData();
 }

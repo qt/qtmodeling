@@ -60,6 +60,7 @@ class QMofLiteralStringPrivate;
 class Q_MOF_EXPORT QMofLiteralString : public QMofLiteralSpecification
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QMof")
 
     Q_PROPERTY(QString value READ value WRITE setValue)
 

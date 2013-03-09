@@ -70,6 +70,7 @@ class QMofFactoryPrivate;
 class Q_MOF_EXPORT QMofFactory : public QMofElement
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QMof")
 
     Q_PROPERTY(QMofPackage * package READ package WRITE setPackage)
 

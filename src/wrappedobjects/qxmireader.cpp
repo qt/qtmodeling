@@ -50,8 +50,6 @@
 #include <QtCore/QPluginLoader>
 #include <QtCore/QCoreApplication>
 
-#include <QtCore/QDebug>
-
 QT_BEGIN_NAMESPACE
 
 QXmiReaderPrivate::QXmiReaderPrivate()
@@ -111,7 +109,7 @@ QWrappedObject *QXmiReader::readFile(QIODevice *device)
                 if (metaModelPlugin) {
                     if (d->initMetaModel)
                        metaModelPlugin->initMetaModel(d->scriptEngine);
-                    d->xmlNamespaceToImplementationNamespace.insert(namespaceDeclaration.prefix().toString(), metaModelPlugin->metaModelNamespace());
+                    d->xmlNamespaceToImplementationNamespace.insert(namespaceDeclaration.prefix().toString(), metaModelPlugin->metaModelPrefix());
                 }
                 else {
                     d->errors << QString::fromLatin1("Could not find metamodel for namespace URI '%1'").arg(namespaceDeclaration.namespaceUri().toString());
@@ -123,7 +121,6 @@ QWrappedObject *QXmiReader::readFile(QIODevice *device)
             if (xmiType.isEmpty() || d->xmlNamespaceToImplementationNamespace[xmiType.split(':').first()].isEmpty())
                 continue;
             xmiType = QString::fromLatin1("%1%2 *").arg(d->xmlNamespaceToImplementationNamespace[xmiType.split(':').first()]).arg(xmiType.split(':').last());
-            qDebug() << "xmiType:" << xmiType;
             QString instanceName = d->reader.attributes().value(QString::fromLatin1("name")).toString();
             if (instanceName.isEmpty())
                 instanceName = d->reader.attributes().value(QString::fromLatin1("xmi:id")).toString();

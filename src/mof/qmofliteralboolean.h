@@ -57,6 +57,7 @@ class QMofLiteralBooleanPrivate;
 class Q_MOF_EXPORT QMofLiteralBoolean : public QMofLiteralSpecification
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QMof")
 
     Q_PROPERTY(bool value READ value WRITE setValue RESET unsetValue)
 

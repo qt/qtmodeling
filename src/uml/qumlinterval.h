@@ -57,6 +57,7 @@ class QUmlIntervalPrivate;
 class Q_UML_EXPORT QUmlInterval : public QUmlValueSpecification
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QUmlValueSpecification * min READ min WRITE setMin)
     Q_PROPERTY(QUmlValueSpecification * max READ max WRITE setMax)

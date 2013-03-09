@@ -61,6 +61,7 @@ class QUmlExpressionPrivate;
 class Q_UML_EXPORT QUmlExpression : public QUmlValueSpecification
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QString symbol READ symbol WRITE setSymbol)
     Q_PROPERTY(QList<QUmlValueSpecification *> operands READ operands)

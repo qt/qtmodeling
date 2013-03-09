@@ -60,6 +60,7 @@ class QUmlIntervalConstraintPrivate;
 class Q_UML_EXPORT QUmlIntervalConstraint : public QUmlConstraint
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QUmlInterval * specification READ specification WRITE setSpecification)
 

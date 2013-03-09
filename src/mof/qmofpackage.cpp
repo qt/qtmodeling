@@ -540,35 +540,35 @@ void QMofPackage::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofPackage")][QString::fromLatin1("ownedTypes")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the packaged elements that are Types.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofPackage")][QString::fromLatin1("ownedTypes")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofPackage")][QString::fromLatin1("ownedTypes")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QMofPackage::packagedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofPackage")][QString::fromLatin1("ownedTypes")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QType::package");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofPackage")][QString::fromLatin1("ownedTypes")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMofType::package");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofPackage")][QString::fromLatin1("packagedElements")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofPackage")][QString::fromLatin1("packagedElements")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofPackage")][QString::fromLatin1("packagedElements")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the packageable elements that are owned by this Package.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofPackage")][QString::fromLatin1("packagedElements")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofPackage")][QString::fromLatin1("packagedElements")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QMofNamespace::ownedMembers");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofPackage")][QString::fromLatin1("packagedElements")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofPackage")][QString::fromLatin1("packagedElements")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMof");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofPackage")][QString::fromLatin1("nestingPackage")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofPackage")][QString::fromLatin1("nestingPackage")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofPackage")][QString::fromLatin1("nestingPackage")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Package that owns this Package.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofPackage")][QString::fromLatin1("nestingPackage")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofPackage")][QString::fromLatin1("nestingPackage")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QMofNamedElement::namespace");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofPackage")][QString::fromLatin1("nestingPackage")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QPackage::nestedPackage");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofPackage")][QString::fromLatin1("nestingPackage")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMofPackage::nestedPackage");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofPackage")][QString::fromLatin1("packageMerges")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofPackage")][QString::fromLatin1("packageMerges")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofPackage")][QString::fromLatin1("packageMerges")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the PackageMerges that are owned by this Package.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofPackage")][QString::fromLatin1("packageMerges")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofPackage")][QString::fromLatin1("packageMerges")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QMofElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofPackage")][QString::fromLatin1("packageMerges")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QPackageMerge::receivingPackage");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofPackage")][QString::fromLatin1("packageMerges")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMofPackageMerge::receivingPackage");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofPackage")][QString::fromLatin1("nestedPackages")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofPackage")][QString::fromLatin1("nestedPackages")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofPackage")][QString::fromLatin1("nestedPackages")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the packaged elements that are Packages.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofPackage")][QString::fromLatin1("nestedPackages")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofPackage")][QString::fromLatin1("nestedPackages")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QMofPackage::packagedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofPackage")][QString::fromLatin1("nestedPackages")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QPackage::nestingPackage");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofPackage")][QString::fromLatin1("nestedPackages")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMofPackage::nestingPackage");
 
     QWrappedObject::setPropertyData();
 }

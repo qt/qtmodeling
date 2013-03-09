@@ -315,14 +315,14 @@ void QUmlInclude::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInclude")][QString::fromLatin1("includingCase")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the use case which will include the addition and owns the include relationship.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInclude")][QString::fromLatin1("includingCase")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInclude")][QString::fromLatin1("includingCase")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlDirectedRelationship::sources QUmlNamedElement::namespace");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInclude")][QString::fromLatin1("includingCase")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUseCase::include");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInclude")][QString::fromLatin1("includingCase")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlUseCase::include");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInclude")][QString::fromLatin1("addition")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInclude")][QString::fromLatin1("addition")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInclude")][QString::fromLatin1("addition")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the use case that is to be included.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInclude")][QString::fromLatin1("addition")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInclude")][QString::fromLatin1("addition")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlDirectedRelationship::targets");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInclude")][QString::fromLatin1("addition")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInclude")][QString::fromLatin1("addition")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QWrappedObject::setPropertyData();
 }

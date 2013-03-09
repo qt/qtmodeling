@@ -63,6 +63,7 @@ class QUmlDestroyLinkActionPrivate;
 class Q_UML_EXPORT QUmlDestroyLinkAction : public QUmlWriteLinkAction
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QSet<QUmlLinkEndDestructionData *> endData READ endData)
 

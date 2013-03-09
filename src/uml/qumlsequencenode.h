@@ -63,6 +63,7 @@ class QUmlSequenceNodePrivate;
 class Q_UML_EXPORT QUmlSequenceNode : public QUmlStructuredActivityNode
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QList<QUmlExecutableNode *> executableNodes READ executableNodes)
 

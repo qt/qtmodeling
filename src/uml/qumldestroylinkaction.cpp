@@ -130,7 +130,7 @@ void QUmlDestroyLinkAction::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDestroyLinkAction")][QString::fromLatin1("endData")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies ends of association and inputs.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDestroyLinkAction")][QString::fromLatin1("endData")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QUmlLinkAction::endData");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDestroyLinkAction")][QString::fromLatin1("endData")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDestroyLinkAction")][QString::fromLatin1("endData")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDestroyLinkAction")][QString::fromLatin1("endData")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QUmlWriteLinkAction::setPropertyData();
 }

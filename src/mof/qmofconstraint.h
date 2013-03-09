@@ -65,6 +65,7 @@ class QMofConstraintPrivate;
 class Q_MOF_EXPORT QMofConstraint : public QMofPackageableElement
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QMof")
 
     Q_PROPERTY(QMofNamespace * context READ context WRITE setContext)
     Q_PROPERTY(QMofValueSpecification * specification READ specification WRITE setSpecification)

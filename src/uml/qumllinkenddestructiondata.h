@@ -60,6 +60,7 @@ class QUmlLinkEndDestructionDataPrivate;
 class Q_UML_EXPORT QUmlLinkEndDestructionData : public QUmlLinkEndData
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(bool isDestroyDuplicates READ isDestroyDuplicates WRITE setDestroyDuplicates RESET unsetDestroyDuplicates)
     Q_PROPERTY(QUmlInputPin * destroyAt READ destroyAt WRITE setDestroyAt)

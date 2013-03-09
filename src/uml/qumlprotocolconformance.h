@@ -60,6 +60,7 @@ class QUmlProtocolConformancePrivate;
 class Q_UML_EXPORT QUmlProtocolConformance : public QUmlDirectedRelationship
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QUmlProtocolStateMachine * specificMachine READ specificMachine WRITE setSpecificMachine)
     Q_PROPERTY(QUmlProtocolStateMachine * generalMachine READ generalMachine WRITE setGeneralMachine)

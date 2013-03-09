@@ -61,6 +61,7 @@ class QUmlTypePrivate;
 class Q_UML_EXPORT QUmlType : public QUmlPackageableElement
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QUmlPackage * package READ package WRITE setPackage)
 

@@ -855,28 +855,28 @@ void QUmlAssociation::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAssociation")][QString::fromLatin1("endTypes")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the classifiers that are used as types of the ends of the association.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAssociation")][QString::fromLatin1("endTypes")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAssociation")][QString::fromLatin1("endTypes")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlRelationship::relatedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAssociation")][QString::fromLatin1("endTypes")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAssociation")][QString::fromLatin1("endTypes")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAssociation")][QString::fromLatin1("navigableOwnedEnds")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAssociation")][QString::fromLatin1("navigableOwnedEnds")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAssociation")][QString::fromLatin1("navigableOwnedEnds")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The navigable ends that are owned by the association itself.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAssociation")][QString::fromLatin1("navigableOwnedEnds")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAssociation")][QString::fromLatin1("navigableOwnedEnds")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlAssociation::ownedEnds");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAssociation")][QString::fromLatin1("navigableOwnedEnds")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAssociation")][QString::fromLatin1("navigableOwnedEnds")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAssociation")][QString::fromLatin1("ownedEnds")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAssociation")][QString::fromLatin1("ownedEnds")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAssociation")][QString::fromLatin1("ownedEnds")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The ends that are owned by the association itself.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAssociation")][QString::fromLatin1("ownedEnds")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAssociation")][QString::fromLatin1("ownedEnds")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlAssociation::memberEnds QUmlClassifier::features QUmlNamespace::ownedMembers");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAssociation")][QString::fromLatin1("ownedEnds")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QProperty::owningAssociation");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAssociation")][QString::fromLatin1("ownedEnds")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlProperty::owningAssociation");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAssociation")][QString::fromLatin1("memberEnds")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAssociation")][QString::fromLatin1("memberEnds")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAssociation")][QString::fromLatin1("memberEnds")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Each end represents participation of instances of the classifier connected to the end in links of the association.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAssociation")][QString::fromLatin1("memberEnds")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAssociation")][QString::fromLatin1("memberEnds")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlNamespace::members");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAssociation")][QString::fromLatin1("memberEnds")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QProperty::association");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAssociation")][QString::fromLatin1("memberEnds")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlProperty::association");
 
     QWrappedObject::setPropertyData();
 }

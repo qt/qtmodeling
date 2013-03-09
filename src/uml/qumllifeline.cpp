@@ -240,35 +240,35 @@ void QUmlLifeline::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("represents")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the ConnectableElement within the classifier that contains the enclosing interaction.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("represents")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("represents")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("represents")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("represents")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("decomposedAs")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("decomposedAs")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("decomposedAs")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Interaction that represents the decomposition.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("decomposedAs")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("decomposedAs")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("decomposedAs")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("decomposedAs")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("coveredBy")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("coveredBy")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("coveredBy")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the InteractionFragments in which this Lifeline takes part.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("coveredBy")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("coveredBy")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("coveredBy")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QInteractionFragment::covered");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("coveredBy")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlInteractionFragment::covered");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("interaction")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("interaction")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("interaction")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Interaction enclosing this Lifeline.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("interaction")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("interaction")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlNamedElement::namespace");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("interaction")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QInteraction::lifeline");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("interaction")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlInteraction::lifeline");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("selector")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("selector")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("selector")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("If the referenced ConnectableElement is multivalued, then this specifies the specific individual part within that set.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("selector")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("selector")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("selector")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("selector")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QUmlNamedElement::setPropertyData();
 }

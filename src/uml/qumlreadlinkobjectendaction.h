@@ -62,6 +62,7 @@ class QUmlReadLinkObjectEndActionPrivate;
 class Q_UML_EXPORT QUmlReadLinkObjectEndAction : public QUmlAction
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QUmlProperty * end READ end WRITE setEnd)
     Q_PROPERTY(QUmlInputPin * object READ object WRITE setObject)

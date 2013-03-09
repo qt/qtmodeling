@@ -121,7 +121,7 @@ void QUmlChangeEvent::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlChangeEvent")][QString::fromLatin1("changeExpression")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A Boolean-valued expression that will result in a change event whenever its value changes from false to true.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlChangeEvent")][QString::fromLatin1("changeExpression")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlChangeEvent")][QString::fromLatin1("changeExpression")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlChangeEvent")][QString::fromLatin1("changeExpression")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlChangeEvent")][QString::fromLatin1("changeExpression")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QUmlEvent::setPropertyData();
 }

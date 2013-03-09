@@ -134,7 +134,7 @@ void QUmlExecutableNode::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExecutableNode")][QString::fromLatin1("handlers")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A set of exception handlers that are examined if an uncaught exception propagates to the outer level of the executable node.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExecutableNode")][QString::fromLatin1("handlers")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExecutableNode")][QString::fromLatin1("handlers")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExecutableNode")][QString::fromLatin1("handlers")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QExceptionHandler::protectedNode");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExecutableNode")][QString::fromLatin1("handlers")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlExceptionHandler::protectedNode");
 
     QUmlActivityNode::setPropertyData();
 }

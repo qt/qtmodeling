@@ -61,6 +61,7 @@ class QUmlValueSpecificationActionPrivate;
 class Q_UML_EXPORT QUmlValueSpecificationAction : public QUmlAction
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QUmlValueSpecification * value READ value WRITE setValue)
     Q_PROPERTY(QUmlOutputPin * result READ result WRITE setResult)

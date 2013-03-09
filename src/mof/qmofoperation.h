@@ -70,6 +70,7 @@ class QMofOperationPrivate;
 class Q_MOF_EXPORT QMofOperation : public QMofBehavioralFeature
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QMof")
 
     Q_PROPERTY(qint32 lower READ lower STORED false)
     Q_PROPERTY(bool isQuery READ isQuery WRITE setQuery RESET unsetQuery)

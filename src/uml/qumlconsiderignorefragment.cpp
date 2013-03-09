@@ -122,7 +122,7 @@ void QUmlConsiderIgnoreFragment::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConsiderIgnoreFragment")][QString::fromLatin1("messages")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The set of messages that apply to this fragment");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConsiderIgnoreFragment")][QString::fromLatin1("messages")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConsiderIgnoreFragment")][QString::fromLatin1("messages")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConsiderIgnoreFragment")][QString::fromLatin1("messages")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConsiderIgnoreFragment")][QString::fromLatin1("messages")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QUmlCombinedFragment::setPropertyData();
 }

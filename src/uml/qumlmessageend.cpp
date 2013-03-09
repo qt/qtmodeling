@@ -113,7 +113,7 @@ void QUmlMessageEnd::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlMessageEnd")][QString::fromLatin1("message")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References a Message.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlMessageEnd")][QString::fromLatin1("message")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlMessageEnd")][QString::fromLatin1("message")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlMessageEnd")][QString::fromLatin1("message")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlMessageEnd")][QString::fromLatin1("message")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QUmlNamedElement::setPropertyData();
 }

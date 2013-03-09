@@ -119,7 +119,7 @@ void QUmlIntervalConstraint::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlIntervalConstraint")][QString::fromLatin1("specification")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A condition that must be true when evaluated in order for the constraint to be satisfied.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlIntervalConstraint")][QString::fromLatin1("specification")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QUmlConstraint::specification");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlIntervalConstraint")][QString::fromLatin1("specification")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlIntervalConstraint")][QString::fromLatin1("specification")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlIntervalConstraint")][QString::fromLatin1("specification")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QUmlConstraint::setPropertyData();
 }

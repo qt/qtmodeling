@@ -57,6 +57,7 @@ class QUmlLiteralNullPrivate;
 class Q_UML_EXPORT QUmlLiteralNull : public QUmlLiteralSpecification
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_DISABLE_COPY(QUmlLiteralNull)
     Q_DECLARE_PRIVATE(QUmlLiteralNull)

@@ -63,6 +63,7 @@ class QUmlDurationObservationPrivate;
 class Q_UML_EXPORT QUmlDurationObservation : public QUmlObservation
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QSet<bool> firstEvents READ firstEvents)
     Q_PROPERTY(QSet<QUmlNamedElement *> events READ events)

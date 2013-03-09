@@ -67,6 +67,7 @@ class QMofClassPrivate;
 class Q_MOF_EXPORT QMofClass : public QMofClassifier
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QMof")
 
     Q_PROPERTY(bool isAbstract READ isAbstract WRITE setAbstract RESET unsetAbstract)
     Q_PROPERTY(QList<QMofClassifier *> nestedClassifiers READ nestedClassifiers)

@@ -719,49 +719,49 @@ void QUmlPackage::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackage")][QString::fromLatin1("ownedTypes")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the packaged elements that are Types.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackage")][QString::fromLatin1("ownedTypes")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackage")][QString::fromLatin1("ownedTypes")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlPackage::packagedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackage")][QString::fromLatin1("ownedTypes")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QType::package");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackage")][QString::fromLatin1("ownedTypes")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlType::package");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackage")][QString::fromLatin1("packagedElements")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackage")][QString::fromLatin1("packagedElements")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackage")][QString::fromLatin1("packagedElements")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the packageable elements that are owned by this Package.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackage")][QString::fromLatin1("packagedElements")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackage")][QString::fromLatin1("packagedElements")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlNamespace::ownedMembers");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackage")][QString::fromLatin1("packagedElements")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackage")][QString::fromLatin1("packagedElements")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackage")][QString::fromLatin1("nestingPackage")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackage")][QString::fromLatin1("nestingPackage")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackage")][QString::fromLatin1("nestingPackage")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Package that owns this Package.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackage")][QString::fromLatin1("nestingPackage")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackage")][QString::fromLatin1("nestingPackage")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlNamedElement::namespace");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackage")][QString::fromLatin1("nestingPackage")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QPackage::nestedPackage");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackage")][QString::fromLatin1("nestingPackage")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlPackage::nestedPackage");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackage")][QString::fromLatin1("profileApplications")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackage")][QString::fromLatin1("profileApplications")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackage")][QString::fromLatin1("profileApplications")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the ProfileApplications that indicate which profiles have been applied to the Package.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackage")][QString::fromLatin1("profileApplications")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackage")][QString::fromLatin1("profileApplications")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackage")][QString::fromLatin1("profileApplications")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QProfileApplication::applyingPackage");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackage")][QString::fromLatin1("profileApplications")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlProfileApplication::applyingPackage");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackage")][QString::fromLatin1("ownedStereotypes")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackage")][QString::fromLatin1("ownedStereotypes")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackage")][QString::fromLatin1("ownedStereotypes")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Stereotypes that are owned by the Package");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackage")][QString::fromLatin1("ownedStereotypes")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackage")][QString::fromLatin1("ownedStereotypes")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlPackage::packagedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackage")][QString::fromLatin1("ownedStereotypes")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackage")][QString::fromLatin1("ownedStereotypes")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackage")][QString::fromLatin1("packageMerges")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackage")][QString::fromLatin1("packageMerges")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackage")][QString::fromLatin1("packageMerges")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the PackageMerges that are owned by this Package.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackage")][QString::fromLatin1("packageMerges")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackage")][QString::fromLatin1("packageMerges")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackage")][QString::fromLatin1("packageMerges")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QPackageMerge::receivingPackage");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackage")][QString::fromLatin1("packageMerges")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlPackageMerge::receivingPackage");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackage")][QString::fromLatin1("nestedPackages")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackage")][QString::fromLatin1("nestedPackages")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackage")][QString::fromLatin1("nestedPackages")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the packaged elements that are Packages.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackage")][QString::fromLatin1("nestedPackages")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackage")][QString::fromLatin1("nestedPackages")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlPackage::packagedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackage")][QString::fromLatin1("nestedPackages")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QPackage::nestingPackage");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackage")][QString::fromLatin1("nestedPackages")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlPackage::nestingPackage");
 
     QWrappedObject::setPropertyData();
 }

@@ -60,6 +60,7 @@ class QUmlRemoveStructuralFeatureValueActionPrivate;
 class Q_UML_EXPORT QUmlRemoveStructuralFeatureValueAction : public QUmlWriteStructuralFeatureAction
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(bool isRemoveDuplicates READ isRemoveDuplicates WRITE setRemoveDuplicates RESET unsetRemoveDuplicates)
     Q_PROPERTY(QUmlInputPin * removeAt READ removeAt WRITE setRemoveAt)

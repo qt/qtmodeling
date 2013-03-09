@@ -154,7 +154,7 @@ void QUmlLinkEndDestructionData::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLinkEndDestructionData")][QString::fromLatin1("destroyAt")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the position of an existing link to be destroyed in ordered nonunique association ends. The type of the pin is UnlimitedNatural, but the value cannot be zero or unlimited.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLinkEndDestructionData")][QString::fromLatin1("destroyAt")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLinkEndDestructionData")][QString::fromLatin1("destroyAt")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLinkEndDestructionData")][QString::fromLatin1("destroyAt")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLinkEndDestructionData")][QString::fromLatin1("destroyAt")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QUmlLinkEndData::setPropertyData();
 }

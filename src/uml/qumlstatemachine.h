@@ -68,6 +68,7 @@ class QUmlStateMachinePrivate;
 class Q_UML_EXPORT QUmlStateMachine : public QUmlBehavior
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QSet<QUmlStateMachine *> extendedStateMachines READ extendedStateMachines)
     Q_PROPERTY(QSet<QUmlPseudostate *> connectionPoints READ connectionPoints)

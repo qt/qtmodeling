@@ -66,6 +66,7 @@ class QUmlLoopNodePrivate;
 class Q_UML_EXPORT QUmlLoopNode : public QUmlStructuredActivityNode
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(bool isTestedFirst READ isTestedFirst WRITE setTestedFirst RESET unsetTestedFirst)
     Q_PROPERTY(QList<QUmlInputPin *> loopVariableInputs READ loopVariableInputs)

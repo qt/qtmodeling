@@ -64,6 +64,7 @@ class QUmlElementPrivate;
 class Q_UML_EXPORT QUmlElement : public QWrappedObject
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QSet<QUmlElement *> ownedElements READ ownedElements)
     Q_PROPERTY(QUmlElement * owner READ owner)

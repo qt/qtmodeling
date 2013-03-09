@@ -60,6 +60,7 @@ class QUmlJoinNodePrivate;
 class Q_UML_EXPORT QUmlJoinNode : public QUmlControlNode
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(bool isCombineDuplicate READ isCombineDuplicate WRITE setCombineDuplicate RESET unsetCombineDuplicate)
     Q_PROPERTY(QUmlValueSpecification * joinSpec READ joinSpec WRITE setJoinSpec)

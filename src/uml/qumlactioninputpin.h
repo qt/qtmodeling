@@ -60,6 +60,7 @@ class QUmlActionInputPinPrivate;
 class Q_UML_EXPORT QUmlActionInputPin : public QUmlInputPin
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QUmlAction * fromAction READ fromAction WRITE setFromAction)
 

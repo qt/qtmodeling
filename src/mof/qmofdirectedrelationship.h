@@ -63,6 +63,7 @@ class QMofDirectedRelationshipPrivate;
 class Q_MOF_EXPORT QMofDirectedRelationship : public QMofRelationship
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QMof")
 
     Q_PROPERTY(QSet<QMofElement *> sources READ sources)
     Q_PROPERTY(QSet<QMofElement *> targets READ targets)

@@ -66,6 +66,7 @@ class QUmlComponentPrivate;
 class Q_UML_EXPORT QUmlComponent : public QUmlClass
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(bool isIndirectlyInstantiated READ isIndirectlyInstantiated WRITE setIndirectlyInstantiated RESET unsetIndirectlyInstantiated)
     Q_PROPERTY(QSet<QUmlComponentRealization *> realizations READ realizations)

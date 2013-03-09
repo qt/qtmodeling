@@ -124,7 +124,7 @@ void QUmlExtensionPoint::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExtensionPoint")][QString::fromLatin1("useCase")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the use case that owns this extension point.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExtensionPoint")][QString::fromLatin1("useCase")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExtensionPoint")][QString::fromLatin1("useCase")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlNamedElement::namespace");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExtensionPoint")][QString::fromLatin1("useCase")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUseCase::extensionPoint");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExtensionPoint")][QString::fromLatin1("useCase")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlUseCase::extensionPoint");
 
     QUmlRedefinableElement::setPropertyData();
 }

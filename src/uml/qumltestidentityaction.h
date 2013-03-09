@@ -61,6 +61,7 @@ class QUmlTestIdentityActionPrivate;
 class Q_UML_EXPORT QUmlTestIdentityAction : public QUmlAction
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QUmlInputPin * second READ second WRITE setSecond)
     Q_PROPERTY(QUmlOutputPin * result READ result WRITE setResult)

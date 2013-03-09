@@ -66,6 +66,7 @@ class QUmlDeploymentTargetPrivate;
 class Q_UML_EXPORT QUmlDeploymentTarget : public QUmlNamedElement
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QSet<QUmlPackageableElement *> deployedElements READ deployedElements STORED false)
     Q_PROPERTY(QSet<QUmlDeployment *> deployments READ deployments)

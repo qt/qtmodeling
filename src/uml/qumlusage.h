@@ -57,6 +57,7 @@ class QUmlUsagePrivate;
 class Q_UML_EXPORT QUmlUsage : public QUmlDependency
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_DISABLE_COPY(QUmlUsage)
     Q_DECLARE_PRIVATE(QUmlUsage)

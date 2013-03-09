@@ -63,6 +63,7 @@ class QUmlInterfaceRealizationPrivate;
 class Q_UML_EXPORT QUmlInterfaceRealization : public QUmlRealization
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QUmlBehavioredClassifier * implementingClassifier READ implementingClassifier WRITE setImplementingClassifier)
     Q_PROPERTY(QUmlInterface * contract READ contract WRITE setContract)

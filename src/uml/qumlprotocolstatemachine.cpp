@@ -134,7 +134,7 @@ void QUmlProtocolStateMachine::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlProtocolStateMachine")][QString::fromLatin1("conformance")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Conformance between protocol state machines.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlProtocolStateMachine")][QString::fromLatin1("conformance")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlProtocolStateMachine")][QString::fromLatin1("conformance")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlProtocolStateMachine")][QString::fromLatin1("conformance")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QProtocolConformance::specificMachine");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlProtocolStateMachine")][QString::fromLatin1("conformance")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlProtocolConformance::specificMachine");
 
     QUmlStateMachine::setPropertyData();
 }

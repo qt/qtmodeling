@@ -67,6 +67,7 @@ class QUmlActionPrivate;
 class Q_UML_EXPORT QUmlAction : public QUmlExecutableNode
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(bool isLocallyReentrant READ isLocallyReentrant WRITE setLocallyReentrant RESET unsetLocallyReentrant)
     Q_PROPERTY(QUmlClassifier * context READ context STORED false)

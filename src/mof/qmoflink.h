@@ -62,6 +62,7 @@ class QMofLinkPrivate;
 class Q_MOF_EXPORT QMofLink : public QMofObject
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QMof")
 
     Q_PROPERTY(QMofAssociation * association READ association WRITE setAssociation)
     Q_PROPERTY(QMofElement * secondElement READ secondElement WRITE setSecondElement)

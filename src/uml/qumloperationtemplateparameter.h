@@ -60,6 +60,7 @@ class QUmlOperationTemplateParameterPrivate;
 class Q_UML_EXPORT QUmlOperationTemplateParameter : public QUmlTemplateParameter
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QUmlOperation * parameteredElement READ parameteredElement WRITE setParameteredElement)
 

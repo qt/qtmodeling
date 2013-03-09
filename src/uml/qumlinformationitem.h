@@ -60,6 +60,7 @@ class QUmlInformationItemPrivate;
 class Q_UML_EXPORT QUmlInformationItem : public QUmlClassifier
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QSet<QUmlClassifier *> represented READ represented)
 

@@ -66,6 +66,7 @@ class QUmlDataTypePrivate;
 class Q_UML_EXPORT QUmlDataType : public QUmlClassifier
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QList<QUmlOperation *> ownedOperations READ ownedOperations)
     Q_PROPERTY(QList<QUmlProperty *> ownedAttributes READ ownedAttributes)

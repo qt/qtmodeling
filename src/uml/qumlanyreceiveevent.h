@@ -57,6 +57,7 @@ class QUmlAnyReceiveEventPrivate;
 class Q_UML_EXPORT QUmlAnyReceiveEvent : public QUmlMessageEvent
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_DISABLE_COPY(QUmlAnyReceiveEvent)
     Q_DECLARE_PRIVATE(QUmlAnyReceiveEvent)

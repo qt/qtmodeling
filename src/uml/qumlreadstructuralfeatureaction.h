@@ -60,6 +60,7 @@ class QUmlReadStructuralFeatureActionPrivate;
 class Q_UML_EXPORT QUmlReadStructuralFeatureAction : public QUmlStructuralFeatureAction
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QUmlOutputPin * result READ result WRITE setResult)
 

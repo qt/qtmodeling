@@ -57,6 +57,7 @@ class QUmlLiteralUnlimitedNaturalPrivate;
 class Q_UML_EXPORT QUmlLiteralUnlimitedNatural : public QUmlLiteralSpecification
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(qint32 value READ value WRITE setValue RESET unsetValue)
 

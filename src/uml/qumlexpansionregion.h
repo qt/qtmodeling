@@ -66,6 +66,7 @@ class QUmlExpansionRegionPrivate;
 class Q_UML_EXPORT QUmlExpansionRegion : public QUmlStructuredActivityNode
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QtUml::ExpansionKind mode READ mode WRITE setMode RESET unsetMode)
     Q_PROPERTY(QSet<QUmlExpansionNode *> inputElements READ inputElements)

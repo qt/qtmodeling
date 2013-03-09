@@ -57,6 +57,7 @@ class QMofLiteralNullPrivate;
 class Q_MOF_EXPORT QMofLiteralNull : public QMofLiteralSpecification
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QMof")
 
     Q_DISABLE_COPY(QMofLiteralNull)
     Q_DECLARE_PRIVATE(QMofLiteralNull)

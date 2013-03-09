@@ -657,21 +657,21 @@ void QUmlParameter::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlParameter")][QString::fromLatin1("operation")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Operation owning this parameter.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlParameter")][QString::fromLatin1("operation")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlParameter")][QString::fromLatin1("operation")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlNamedElement::namespace");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlParameter")][QString::fromLatin1("operation")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QOperation::ownedParameter");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlParameter")][QString::fromLatin1("operation")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlOperation::ownedParameter");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlParameter")][QString::fromLatin1("defaultValue")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlParameter")][QString::fromLatin1("defaultValue")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlParameter")][QString::fromLatin1("defaultValue")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies a ValueSpecification that represents a value to be used when no argument is supplied for the Parameter.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlParameter")][QString::fromLatin1("defaultValue")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlParameter")][QString::fromLatin1("defaultValue")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlParameter")][QString::fromLatin1("defaultValue")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlParameter")][QString::fromLatin1("defaultValue")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlParameter")][QString::fromLatin1("parameterSets")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlParameter")][QString::fromLatin1("parameterSets")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlParameter")][QString::fromLatin1("parameterSets")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The parameter sets containing the parameter. See ParameterSet.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlParameter")][QString::fromLatin1("parameterSets")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlParameter")][QString::fromLatin1("parameterSets")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlParameter")][QString::fromLatin1("parameterSets")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QParameterSet::parameter");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlParameter")][QString::fromLatin1("parameterSets")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlParameterSet::parameter");
 
     QWrappedObject::setPropertyData();
 }

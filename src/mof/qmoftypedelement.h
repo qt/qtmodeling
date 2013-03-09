@@ -60,6 +60,7 @@ class QMofTypedElementPrivate;
 class Q_MOF_EXPORT QMofTypedElement : public QMofNamedElement
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QMof")
 
     Q_PROPERTY(QMofType * type READ type WRITE setType)
 

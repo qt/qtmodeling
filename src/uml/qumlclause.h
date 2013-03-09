@@ -66,6 +66,7 @@ class QUmlClausePrivate;
 class Q_UML_EXPORT QUmlClause : public QUmlElement
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QSet<QUmlClause *> successorClauses READ successorClauses)
     Q_PROPERTY(QUmlOutputPin * decider READ decider WRITE setDecider)
