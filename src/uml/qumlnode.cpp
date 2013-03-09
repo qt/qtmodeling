@@ -279,7 +279,7 @@ void QUmlNode::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlNode")][QString::fromLatin1("nestedNodes")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The Nodes that are defined (nested) within the Node.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlNode")][QString::fromLatin1("nestedNodes")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlNode")][QString::fromLatin1("nestedNodes")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlNamespace::ownedMembers");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlNode")][QString::fromLatin1("nestedNodes")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlNode")][QString::fromLatin1("nestedNodes")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QWrappedObject::setPropertyData();
 }

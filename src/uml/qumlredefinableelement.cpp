@@ -212,14 +212,14 @@ void QUmlRedefinableElement::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRedefinableElement")][QString::fromLatin1("redefinedElements")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The redefinable element that is being redefined by this element.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRedefinableElement")][QString::fromLatin1("redefinedElements")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRedefinableElement")][QString::fromLatin1("redefinedElements")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRedefinableElement")][QString::fromLatin1("redefinedElements")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRedefinableElement")][QString::fromLatin1("redefinedElements")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRedefinableElement")][QString::fromLatin1("redefinitionContexts")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRedefinableElement")][QString::fromLatin1("redefinitionContexts")][QtWrappedObjects::IsDerivedUnionRole] = true;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRedefinableElement")][QString::fromLatin1("redefinitionContexts")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the contexts that this element may be redefined from.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRedefinableElement")][QString::fromLatin1("redefinitionContexts")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRedefinableElement")][QString::fromLatin1("redefinitionContexts")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRedefinableElement")][QString::fromLatin1("redefinitionContexts")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRedefinableElement")][QString::fromLatin1("redefinitionContexts")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QUmlNamedElement::setPropertyData();
 }

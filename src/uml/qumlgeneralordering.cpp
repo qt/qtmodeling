@@ -151,14 +151,14 @@ void QUmlGeneralOrdering::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralOrdering")][QString::fromLatin1("before")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The OccurrenceSpecification referenced comes before the OccurrenceSpecification referenced by after.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralOrdering")][QString::fromLatin1("before")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralOrdering")][QString::fromLatin1("before")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralOrdering")][QString::fromLatin1("before")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QOccurrenceSpecification::toAfter");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralOrdering")][QString::fromLatin1("before")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlOccurrenceSpecification::toAfter");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralOrdering")][QString::fromLatin1("after")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralOrdering")][QString::fromLatin1("after")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralOrdering")][QString::fromLatin1("after")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The OccurrenceSpecification referenced comes after the OccurrenceSpecification referenced by before.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralOrdering")][QString::fromLatin1("after")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralOrdering")][QString::fromLatin1("after")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralOrdering")][QString::fromLatin1("after")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QOccurrenceSpecification::toBefore");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralOrdering")][QString::fromLatin1("after")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlOccurrenceSpecification::toBefore");
 
     QUmlNamedElement::setPropertyData();
 }

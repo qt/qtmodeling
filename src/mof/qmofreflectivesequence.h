@@ -60,6 +60,7 @@ class QMofReflectiveSequencePrivate;
 class Q_MOF_EXPORT QMofReflectiveSequence : public QMofReflectiveCollection
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QMof")
 
     Q_DISABLE_COPY(QMofReflectiveSequence)
     Q_DECLARE_PRIVATE(QMofReflectiveSequence)

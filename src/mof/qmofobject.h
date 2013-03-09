@@ -66,6 +66,7 @@ class QMofObjectPrivate;
 class Q_MOF_EXPORT QMofObject : public QWrappedObject
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QMof")
 
     Q_DISABLE_COPY(QMofObject)
     Q_DECLARE_PRIVATE(QMofObject)

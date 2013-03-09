@@ -134,7 +134,7 @@ void QMofEnumeration::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofEnumeration")][QString::fromLatin1("ownedLiterals")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The ordered set of literals for this Enumeration.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofEnumeration")][QString::fromLatin1("ownedLiterals")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofEnumeration")][QString::fromLatin1("ownedLiterals")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QMofNamespace::ownedMembers");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofEnumeration")][QString::fromLatin1("ownedLiterals")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QEnumerationLiteral::enumeration");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofEnumeration")][QString::fromLatin1("ownedLiterals")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMofEnumerationLiteral::enumeration");
 
     QMofDataType::setPropertyData();
 }

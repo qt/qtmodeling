@@ -57,6 +57,7 @@ class QMofLiteralRealPrivate;
 class Q_MOF_EXPORT QMofLiteralReal : public QMofLiteralSpecification
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QMof")
 
     Q_PROPERTY(qreal value READ value WRITE setValue)
 

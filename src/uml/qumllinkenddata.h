@@ -65,6 +65,7 @@ class QUmlLinkEndDataPrivate;
 class Q_UML_EXPORT QUmlLinkEndData : public QUmlElement
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QUmlInputPin * value READ value WRITE setValue)
     Q_PROPERTY(QUmlProperty * end READ end WRITE setEnd)

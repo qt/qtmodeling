@@ -60,6 +60,7 @@ class QMofPackageMergePrivate;
 class Q_MOF_EXPORT QMofPackageMerge : public QMofDirectedRelationship
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QMof")
 
     Q_PROPERTY(QMofPackage * mergedPackage READ mergedPackage WRITE setMergedPackage)
     Q_PROPERTY(QMofPackage * receivingPackage READ receivingPackage WRITE setReceivingPackage)

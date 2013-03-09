@@ -57,6 +57,7 @@ class QUmlDestructionOccurrenceSpecificationPrivate;
 class Q_UML_EXPORT QUmlDestructionOccurrenceSpecification : public QUmlMessageOccurrenceSpecification
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_DISABLE_COPY(QUmlDestructionOccurrenceSpecification)
     Q_DECLARE_PRIVATE(QUmlDestructionOccurrenceSpecification)

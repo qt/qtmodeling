@@ -63,6 +63,7 @@ class QMofURIExtentPrivate;
 class Q_MOF_EXPORT QMofURIExtent : public QMofExtent
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QMof")
 
     Q_DISABLE_COPY(QMofURIExtent)
     Q_DECLARE_PRIVATE(QMofURIExtent)

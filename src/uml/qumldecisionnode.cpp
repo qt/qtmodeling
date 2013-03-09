@@ -136,14 +136,14 @@ void QUmlDecisionNode::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDecisionNode")][QString::fromLatin1("decisionInputFlow")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An additional edge incoming to the decision node that provides a decision input value.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDecisionNode")][QString::fromLatin1("decisionInputFlow")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDecisionNode")][QString::fromLatin1("decisionInputFlow")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDecisionNode")][QString::fromLatin1("decisionInputFlow")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDecisionNode")][QString::fromLatin1("decisionInputFlow")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDecisionNode")][QString::fromLatin1("decisionInput")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDecisionNode")][QString::fromLatin1("decisionInput")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDecisionNode")][QString::fromLatin1("decisionInput")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Provides input to guard specifications on edges outgoing from the decision node.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDecisionNode")][QString::fromLatin1("decisionInput")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDecisionNode")][QString::fromLatin1("decisionInput")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDecisionNode")][QString::fromLatin1("decisionInput")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDecisionNode")][QString::fromLatin1("decisionInput")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QUmlControlNode::setPropertyData();
 }

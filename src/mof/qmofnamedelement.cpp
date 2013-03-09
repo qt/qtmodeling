@@ -257,7 +257,7 @@ void QMofNamedElement::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofNamedElement")][QString::fromLatin1("namespace_")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the namespace that owns the NamedElement.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofNamedElement")][QString::fromLatin1("namespace_")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofNamedElement")][QString::fromLatin1("namespace_")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QMofElement::owner");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofNamedElement")][QString::fromLatin1("namespace_")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QNamespace::ownedMember");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofNamedElement")][QString::fromLatin1("namespace_")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMofNamespace::ownedMember");
 
     QMofElement::setPropertyData();
 }

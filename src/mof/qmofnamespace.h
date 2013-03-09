@@ -67,6 +67,7 @@ class QMofNamespacePrivate;
 class Q_MOF_EXPORT QMofNamespace : public QMofNamedElement
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QMof")
 
     Q_PROPERTY(QSet<QMofPackageImport *> packageImports READ packageImports)
     Q_PROPERTY(QSet<QMofNamedElement *> members READ members)

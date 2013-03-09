@@ -168,14 +168,14 @@ void QUmlComponentRealization::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlComponentRealization")][QString::fromLatin1("abstraction")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The Component that owns this ComponentRealization and which is implemented by its realizing classifiers.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlComponentRealization")][QString::fromLatin1("abstraction")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlComponentRealization")][QString::fromLatin1("abstraction")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlDependency::suppliers QUmlElement::owner");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlComponentRealization")][QString::fromLatin1("abstraction")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QComponent::realization");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlComponentRealization")][QString::fromLatin1("abstraction")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlComponent::realization");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlComponentRealization")][QString::fromLatin1("realizingClassifiers")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlComponentRealization")][QString::fromLatin1("realizingClassifiers")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlComponentRealization")][QString::fromLatin1("realizingClassifiers")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The classifiers that are involved in the implementation of the Component that owns this Realization.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlComponentRealization")][QString::fromLatin1("realizingClassifiers")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlComponentRealization")][QString::fromLatin1("realizingClassifiers")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlDependency::clients");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlComponentRealization")][QString::fromLatin1("realizingClassifiers")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlComponentRealization")][QString::fromLatin1("realizingClassifiers")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QUmlRealization::setPropertyData();
 }

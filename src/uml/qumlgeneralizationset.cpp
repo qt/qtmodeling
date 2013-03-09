@@ -238,14 +238,14 @@ void QUmlGeneralizationSet::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralizationSet")][QString::fromLatin1("powertype")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Designates the Classifier that is defined as the power type for the associated GeneralizationSet.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralizationSet")][QString::fromLatin1("powertype")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralizationSet")][QString::fromLatin1("powertype")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralizationSet")][QString::fromLatin1("powertype")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QClassifier::powertypeExtent");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralizationSet")][QString::fromLatin1("powertype")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlClassifier::powertypeExtent");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralizationSet")][QString::fromLatin1("generalizations")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralizationSet")][QString::fromLatin1("generalizations")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralizationSet")][QString::fromLatin1("generalizations")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Designates the instances of Generalization which are members of a given GeneralizationSet.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralizationSet")][QString::fromLatin1("generalizations")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralizationSet")][QString::fromLatin1("generalizations")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralizationSet")][QString::fromLatin1("generalizations")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QGeneralization::generalizationSet");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralizationSet")][QString::fromLatin1("generalizations")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlGeneralization::generalizationSet");
 
     QUmlPackageableElement::setPropertyData();
 }

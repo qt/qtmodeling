@@ -61,6 +61,7 @@ class QUmlProfileApplicationPrivate;
 class Q_UML_EXPORT QUmlProfileApplication : public QUmlDirectedRelationship
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(bool isStrict READ isStrict WRITE setStrict RESET unsetStrict)
     Q_PROPERTY(QUmlPackage * applyingPackage READ applyingPackage WRITE setApplyingPackage)

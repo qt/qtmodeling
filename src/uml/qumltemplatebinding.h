@@ -65,6 +65,7 @@ class QUmlTemplateBindingPrivate;
 class Q_UML_EXPORT QUmlTemplateBinding : public QUmlDirectedRelationship
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QUmlTemplateSignature * signature READ signature WRITE setSignature)
     Q_PROPERTY(QUmlTemplateableElement * boundElement READ boundElement WRITE setBoundElement)

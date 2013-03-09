@@ -261,28 +261,28 @@ void QUmlComponent::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlComponent")][QString::fromLatin1("realizations")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The set of Realizations owned by the Component. Realizations reference the Classifiers of which the Component is an abstraction; i.e., that realize its behavior.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlComponent")][QString::fromLatin1("realizations")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlComponent")][QString::fromLatin1("realizations")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlComponent")][QString::fromLatin1("realizations")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QComponentRealization::abstraction");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlComponent")][QString::fromLatin1("realizations")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlComponentRealization::abstraction");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlComponent")][QString::fromLatin1("required")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlComponent")][QString::fromLatin1("required")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlComponent")][QString::fromLatin1("required")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The interfaces that the component requires from other components in its environment in order to be able to offer its full set of provided functionality. These interfaces may be used by the Component or any of its realizingClassifiers, or they may be the Interfaces that are required by its public Ports.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlComponent")][QString::fromLatin1("required")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlComponent")][QString::fromLatin1("required")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlComponent")][QString::fromLatin1("required")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlComponent")][QString::fromLatin1("required")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlComponent")][QString::fromLatin1("provided")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlComponent")][QString::fromLatin1("provided")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlComponent")][QString::fromLatin1("provided")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The interfaces that the component exposes to its environment. These interfaces may be Realized by the Component or any of its realizingClassifiers, or they may be the Interfaces that are provided by its public Ports.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlComponent")][QString::fromLatin1("provided")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlComponent")][QString::fromLatin1("provided")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlComponent")][QString::fromLatin1("provided")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlComponent")][QString::fromLatin1("provided")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlComponent")][QString::fromLatin1("packagedElements")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlComponent")][QString::fromLatin1("packagedElements")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlComponent")][QString::fromLatin1("packagedElements")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The set of PackageableElements that a Component owns. In the namespace of a component, all model elements that are involved in or related to its definition may be owned or imported explicitly. These may include e.g. Classes, Interfaces, Components, Packages, Use cases, Dependencies (e.g. mappings), and Artifacts.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlComponent")][QString::fromLatin1("packagedElements")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlComponent")][QString::fromLatin1("packagedElements")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlNamespace::ownedMembers");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlComponent")][QString::fromLatin1("packagedElements")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlComponent")][QString::fromLatin1("packagedElements")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QUmlClass::setPropertyData();
 }

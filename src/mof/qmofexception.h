@@ -63,6 +63,7 @@ class QMofExceptionPrivate;
 class Q_MOF_EXPORT QMofException : public QWrappedObject
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QMof")
 
     Q_PROPERTY(QString description READ description WRITE setDescription)
     Q_PROPERTY(QMofElement * elementInError READ elementInError WRITE setElementInError)

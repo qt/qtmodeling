@@ -184,7 +184,7 @@ void QUmlDeploymentSpecification::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDeploymentSpecification")][QString::fromLatin1("deployment")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The deployment with which the DeploymentSpecification is associated.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDeploymentSpecification")][QString::fromLatin1("deployment")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDeploymentSpecification")][QString::fromLatin1("deployment")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::owner");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDeploymentSpecification")][QString::fromLatin1("deployment")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QDeployment::configuration");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDeploymentSpecification")][QString::fromLatin1("deployment")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlDeployment::configuration");
 
     QUmlArtifact::setPropertyData();
 }

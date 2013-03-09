@@ -65,6 +65,7 @@ class QUmlTemplateableElementPrivate;
 class Q_UML_EXPORT QUmlTemplateableElement : public QUmlElement
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QUmlTemplateSignature * ownedTemplateSignature READ ownedTemplateSignature WRITE setOwnedTemplateSignature)
     Q_PROPERTY(QSet<QUmlTemplateBinding *> templateBindings READ templateBindings)

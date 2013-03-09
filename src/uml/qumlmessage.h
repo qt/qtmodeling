@@ -70,6 +70,7 @@ class QUmlMessagePrivate;
 class Q_UML_EXPORT QUmlMessage : public QUmlNamedElement
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QtUml::MessageSort messageSort READ messageSort WRITE setMessageSort RESET unsetMessageSort)
     Q_PROPERTY(QtUml::MessageKind messageKind READ messageKind STORED false)

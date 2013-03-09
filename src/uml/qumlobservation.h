@@ -57,6 +57,7 @@ class QUmlObservationPrivate;
 class Q_UML_EXPORT QUmlObservation : public QUmlPackageableElement
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_DISABLE_COPY(QUmlObservation)
     Q_DECLARE_PRIVATE(QUmlObservation)

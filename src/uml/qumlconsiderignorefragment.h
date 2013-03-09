@@ -63,6 +63,7 @@ class QUmlConsiderIgnoreFragmentPrivate;
 class Q_UML_EXPORT QUmlConsiderIgnoreFragment : public QUmlCombinedFragment
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QSet<QUmlNamedElement *> messages READ messages)
 

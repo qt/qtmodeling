@@ -64,6 +64,7 @@ class QUmlConnectionPointReferencePrivate;
 class Q_UML_EXPORT QUmlConnectionPointReference : public QUmlVertex
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QSet<QUmlPseudostate *> exits READ exits)
     Q_PROPERTY(QUmlState * state READ state WRITE setState)

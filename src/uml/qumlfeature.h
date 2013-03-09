@@ -63,6 +63,7 @@ class QUmlFeaturePrivate;
 class Q_UML_EXPORT QUmlFeature : public QUmlRedefinableElement
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(bool isStatic READ isStatic WRITE setStatic RESET unsetStatic)
     Q_PROPERTY(QSet<QUmlClassifier *> featuringClassifiers READ featuringClassifiers)

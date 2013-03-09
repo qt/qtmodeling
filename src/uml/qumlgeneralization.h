@@ -64,6 +64,7 @@ class QUmlGeneralizationPrivate;
 class Q_UML_EXPORT QUmlGeneralization : public QUmlDirectedRelationship
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(bool isSubstitutable READ isSubstitutable WRITE setSubstitutable RESET unsetSubstitutable)
     Q_PROPERTY(QUmlClassifier * specific READ specific WRITE setSpecific)

@@ -64,6 +64,7 @@ class QMofRedefinableElementPrivate;
 class Q_MOF_EXPORT QMofRedefinableElement : public QMofNamedElement
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QMof")
 
     Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
     Q_PROPERTY(QSet<QMofRedefinableElement *> redefinedElements READ redefinedElements)

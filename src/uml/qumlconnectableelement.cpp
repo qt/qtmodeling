@@ -322,14 +322,14 @@ void QUmlConnectableElement::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectableElement")][QString::fromLatin1("ends")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Denotes a set of connector ends that attaches to this connectable element.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectableElement")][QString::fromLatin1("ends")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectableElement")][QString::fromLatin1("ends")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectableElement")][QString::fromLatin1("ends")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QConnectorEnd::role");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectableElement")][QString::fromLatin1("ends")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlConnectorEnd::role");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectableElement")][QString::fromLatin1("templateParameter")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectableElement")][QString::fromLatin1("templateParameter")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectableElement")][QString::fromLatin1("templateParameter")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The ConnectableElementTemplateParameter for this ConnectableElement parameter.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectableElement")][QString::fromLatin1("templateParameter")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QUmlParameterableElement::templateParameter");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectableElement")][QString::fromLatin1("templateParameter")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectableElement")][QString::fromLatin1("templateParameter")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QConnectableElementTemplateParameter::parameteredElement");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectableElement")][QString::fromLatin1("templateParameter")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlConnectableElementTemplateParameter::parameteredElement");
 
     QWrappedObject::setPropertyData();
 }

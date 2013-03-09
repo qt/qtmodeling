@@ -113,7 +113,7 @@ void QUmlBroadcastSignalAction::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlBroadcastSignalAction")][QString::fromLatin1("signal")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The specification of signal object transmitted to the target objects.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlBroadcastSignalAction")][QString::fromLatin1("signal")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlBroadcastSignalAction")][QString::fromLatin1("signal")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlBroadcastSignalAction")][QString::fromLatin1("signal")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlBroadcastSignalAction")][QString::fromLatin1("signal")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QUmlInvocationAction::setPropertyData();
 }

@@ -207,14 +207,14 @@ void QUmlAcceptEventAction::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAcceptEventAction")][QString::fromLatin1("triggers")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The type of events accepted by the action, as specified by triggers. For triggers with signal events, a signal of the specified type or any subtype of the specified signal type is accepted.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAcceptEventAction")][QString::fromLatin1("triggers")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAcceptEventAction")][QString::fromLatin1("triggers")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAcceptEventAction")][QString::fromLatin1("triggers")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAcceptEventAction")][QString::fromLatin1("triggers")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAcceptEventAction")][QString::fromLatin1("results")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAcceptEventAction")][QString::fromLatin1("results")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAcceptEventAction")][QString::fromLatin1("results")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Pins holding the received event objects or their attributes. Event objects may be copied in transmission, so identity might not be preserved.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAcceptEventAction")][QString::fromLatin1("results")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAcceptEventAction")][QString::fromLatin1("results")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlAction::outputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAcceptEventAction")][QString::fromLatin1("results")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAcceptEventAction")][QString::fromLatin1("results")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QUmlAction::setPropertyData();
 }

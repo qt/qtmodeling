@@ -57,6 +57,7 @@ class QUmlPartDecompositionPrivate;
 class Q_UML_EXPORT QUmlPartDecomposition : public QUmlInteractionUse
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_DISABLE_COPY(QUmlPartDecomposition)
     Q_DECLARE_PRIVATE(QUmlPartDecomposition)

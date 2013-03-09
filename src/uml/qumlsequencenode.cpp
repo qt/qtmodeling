@@ -130,7 +130,7 @@ void QUmlSequenceNode::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSequenceNode")][QString::fromLatin1("executableNodes")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An ordered set of executable nodes.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSequenceNode")][QString::fromLatin1("executableNodes")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QUmlStructuredActivityNode::nodes");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSequenceNode")][QString::fromLatin1("executableNodes")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSequenceNode")][QString::fromLatin1("executableNodes")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSequenceNode")][QString::fromLatin1("executableNodes")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QUmlStructuredActivityNode::setPropertyData();
 }

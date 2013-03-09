@@ -162,7 +162,7 @@ void QUmlAddVariableValueAction::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAddVariableValueAction")][QString::fromLatin1("insertAt")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Gives the position at which to insert a new value or move an existing value in ordered variables. The types is UnlimitedINatural, but the value cannot be zero. This pin is omitted for unordered variables.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAddVariableValueAction")][QString::fromLatin1("insertAt")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAddVariableValueAction")][QString::fromLatin1("insertAt")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlAction::inputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAddVariableValueAction")][QString::fromLatin1("insertAt")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAddVariableValueAction")][QString::fromLatin1("insertAt")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QUmlWriteVariableAction::setPropertyData();
 }

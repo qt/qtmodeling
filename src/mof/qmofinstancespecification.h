@@ -65,6 +65,7 @@ class QMofInstanceSpecificationPrivate;
 class Q_MOF_EXPORT QMofInstanceSpecification : public QMofPackageableElement
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QMof")
 
     Q_PROPERTY(QSet<QMofClassifier *> classifiers READ classifiers)
     Q_PROPERTY(QMofValueSpecification * specification READ specification WRITE setSpecification)

@@ -66,6 +66,7 @@ class QUmlComponentRealizationPrivate;
 class Q_UML_EXPORT QUmlComponentRealization : public QUmlRealization
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QUmlComponent * abstraction READ abstraction WRITE setAbstraction)
     Q_PROPERTY(QSet<QUmlClassifier *> realizingClassifiers READ realizingClassifiers)

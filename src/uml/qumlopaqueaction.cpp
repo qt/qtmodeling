@@ -246,14 +246,14 @@ void QUmlOpaqueAction::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOpaqueAction")][QString::fromLatin1("inputValues")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Provides input to the action.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOpaqueAction")][QString::fromLatin1("inputValues")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOpaqueAction")][QString::fromLatin1("inputValues")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlAction::inputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOpaqueAction")][QString::fromLatin1("inputValues")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOpaqueAction")][QString::fromLatin1("inputValues")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOpaqueAction")][QString::fromLatin1("outputValues")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOpaqueAction")][QString::fromLatin1("outputValues")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOpaqueAction")][QString::fromLatin1("outputValues")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Takes output from the action.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOpaqueAction")][QString::fromLatin1("outputValues")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOpaqueAction")][QString::fromLatin1("outputValues")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlAction::outputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOpaqueAction")][QString::fromLatin1("outputValues")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOpaqueAction")][QString::fromLatin1("outputValues")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QUmlAction::setPropertyData();
 }

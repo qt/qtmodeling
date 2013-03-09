@@ -60,6 +60,7 @@ class QUmlBroadcastSignalActionPrivate;
 class Q_UML_EXPORT QUmlBroadcastSignalAction : public QUmlInvocationAction
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QUmlSignal * signal READ signal WRITE setSignal)
 

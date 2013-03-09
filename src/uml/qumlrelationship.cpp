@@ -118,7 +118,7 @@ void QUmlRelationship::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRelationship")][QString::fromLatin1("relatedElements")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the elements related by the Relationship.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRelationship")][QString::fromLatin1("relatedElements")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRelationship")][QString::fromLatin1("relatedElements")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRelationship")][QString::fromLatin1("relatedElements")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRelationship")][QString::fromLatin1("relatedElements")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QUmlElement::setPropertyData();
 }

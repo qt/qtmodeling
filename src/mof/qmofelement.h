@@ -65,6 +65,7 @@ class QMofElementPrivate;
 class Q_MOF_EXPORT QMofElement : public QMofObject
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QMof")
 
     Q_PROPERTY(QSet<QMofElement *> ownedElements READ ownedElements)
     Q_PROPERTY(QMofElement * owner READ owner)

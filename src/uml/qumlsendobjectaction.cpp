@@ -154,14 +154,14 @@ void QUmlSendObjectAction::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSendObjectAction")][QString::fromLatin1("request")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The request object, which is transmitted to the target object. The object may be copied in transmission, so identity might not be preserved.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSendObjectAction")][QString::fromLatin1("request")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QUmlInvocationAction::arguments");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSendObjectAction")][QString::fromLatin1("request")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSendObjectAction")][QString::fromLatin1("request")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSendObjectAction")][QString::fromLatin1("request")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSendObjectAction")][QString::fromLatin1("target")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSendObjectAction")][QString::fromLatin1("target")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSendObjectAction")][QString::fromLatin1("target")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The target object to which the object is sent.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSendObjectAction")][QString::fromLatin1("target")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSendObjectAction")][QString::fromLatin1("target")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlAction::inputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSendObjectAction")][QString::fromLatin1("target")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSendObjectAction")][QString::fromLatin1("target")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QUmlInvocationAction::setPropertyData();
 }

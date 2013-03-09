@@ -135,14 +135,14 @@ void QUmlExecutionSpecification::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExecutionSpecification")][QString::fromLatin1("start")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the OccurrenceSpecification that designates the start of the Action or Behavior");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExecutionSpecification")][QString::fromLatin1("start")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExecutionSpecification")][QString::fromLatin1("start")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExecutionSpecification")][QString::fromLatin1("start")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExecutionSpecification")][QString::fromLatin1("start")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExecutionSpecification")][QString::fromLatin1("finish")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExecutionSpecification")][QString::fromLatin1("finish")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExecutionSpecification")][QString::fromLatin1("finish")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the OccurrenceSpecification that designates the finish of the Action or Behavior.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExecutionSpecification")][QString::fromLatin1("finish")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExecutionSpecification")][QString::fromLatin1("finish")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExecutionSpecification")][QString::fromLatin1("finish")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExecutionSpecification")][QString::fromLatin1("finish")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QUmlInteractionFragment::setPropertyData();
 }

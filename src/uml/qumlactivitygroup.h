@@ -66,6 +66,7 @@ class QUmlActivityGroupPrivate;
 class Q_UML_EXPORT QUmlActivityGroup : public QUmlNamedElement
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QUmlActivity * inActivity READ inActivity WRITE setInActivity)
     Q_PROPERTY(QSet<QUmlActivityNode *> containedNodes READ containedNodes)

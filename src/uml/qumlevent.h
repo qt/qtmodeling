@@ -57,6 +57,7 @@ class QUmlEventPrivate;
 class Q_UML_EXPORT QUmlEvent : public QUmlPackageableElement
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_DISABLE_COPY(QUmlEvent)
     Q_DECLARE_PRIVATE(QUmlEvent)

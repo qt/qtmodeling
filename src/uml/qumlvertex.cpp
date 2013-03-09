@@ -222,21 +222,21 @@ void QUmlVertex::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlVertex")][QString::fromLatin1("incomings")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the transitions entering this vertex.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlVertex")][QString::fromLatin1("incomings")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlVertex")][QString::fromLatin1("incomings")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlVertex")][QString::fromLatin1("incomings")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QTransition::target");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlVertex")][QString::fromLatin1("incomings")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlTransition::target");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlVertex")][QString::fromLatin1("container")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlVertex")][QString::fromLatin1("container")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlVertex")][QString::fromLatin1("container")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The region that contains this vertex.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlVertex")][QString::fromLatin1("container")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlVertex")][QString::fromLatin1("container")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlNamedElement::namespace");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlVertex")][QString::fromLatin1("container")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QRegion::subvertex");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlVertex")][QString::fromLatin1("container")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlRegion::subvertex");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlVertex")][QString::fromLatin1("outgoings")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlVertex")][QString::fromLatin1("outgoings")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlVertex")][QString::fromLatin1("outgoings")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the transitions departing from this vertex.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlVertex")][QString::fromLatin1("outgoings")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlVertex")][QString::fromLatin1("outgoings")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlVertex")][QString::fromLatin1("outgoings")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QTransition::source");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlVertex")][QString::fromLatin1("outgoings")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlTransition::source");
 
     QUmlNamedElement::setPropertyData();
 }

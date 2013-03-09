@@ -225,21 +225,21 @@ void QUmlReclassifyObjectAction::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReclassifyObjectAction")][QString::fromLatin1("oldClassifiers")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A set of classifiers to be removed from the classifiers of the object.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReclassifyObjectAction")][QString::fromLatin1("oldClassifiers")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReclassifyObjectAction")][QString::fromLatin1("oldClassifiers")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReclassifyObjectAction")][QString::fromLatin1("oldClassifiers")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReclassifyObjectAction")][QString::fromLatin1("oldClassifiers")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReclassifyObjectAction")][QString::fromLatin1("object")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReclassifyObjectAction")][QString::fromLatin1("object")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReclassifyObjectAction")][QString::fromLatin1("object")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Holds the object to be reclassified.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReclassifyObjectAction")][QString::fromLatin1("object")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReclassifyObjectAction")][QString::fromLatin1("object")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlAction::inputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReclassifyObjectAction")][QString::fromLatin1("object")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReclassifyObjectAction")][QString::fromLatin1("object")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReclassifyObjectAction")][QString::fromLatin1("newClassifiers")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReclassifyObjectAction")][QString::fromLatin1("newClassifiers")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReclassifyObjectAction")][QString::fromLatin1("newClassifiers")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A set of classifiers to be added to the classifiers of the object.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReclassifyObjectAction")][QString::fromLatin1("newClassifiers")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReclassifyObjectAction")][QString::fromLatin1("newClassifiers")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReclassifyObjectAction")][QString::fromLatin1("newClassifiers")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReclassifyObjectAction")][QString::fromLatin1("newClassifiers")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QUmlAction::setPropertyData();
 }

@@ -60,6 +60,7 @@ class QUmlExtensionEndPrivate;
 class Q_UML_EXPORT QUmlExtensionEnd : public QUmlProperty
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(qint32 lower READ lower WRITE setLower STORED false)
     Q_PROPERTY(QUmlStereotype * type READ type WRITE setType)

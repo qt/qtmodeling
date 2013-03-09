@@ -57,6 +57,7 @@ class QUmlForkNodePrivate;
 class Q_UML_EXPORT QUmlForkNode : public QUmlControlNode
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_DISABLE_COPY(QUmlForkNode)
     Q_DECLARE_PRIVATE(QUmlForkNode)

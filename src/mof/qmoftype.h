@@ -62,6 +62,7 @@ class QMofTypePrivate;
 class Q_MOF_EXPORT QMofType : public QMofPackageableElement
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QMof")
 
     Q_PROPERTY(QMofPackage * package READ package WRITE setPackage)
 

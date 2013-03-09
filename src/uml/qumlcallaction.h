@@ -63,6 +63,7 @@ class QUmlCallActionPrivate;
 class Q_UML_EXPORT QUmlCallAction : public QUmlInvocationAction
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(bool isSynchronous READ isSynchronous WRITE setSynchronous RESET unsetSynchronous)
     Q_PROPERTY(QList<QUmlOutputPin *> results READ results)

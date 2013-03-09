@@ -135,7 +135,7 @@ void QUmlType::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlType")][QString::fromLatin1("package")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the owning package of this classifier, if any.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlType")][QString::fromLatin1("package")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlType")][QString::fromLatin1("package")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlNamedElement::namespace");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlType")][QString::fromLatin1("package")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QPackage::ownedType");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlType")][QString::fromLatin1("package")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlPackage::ownedType");
 
     QUmlPackageableElement::setPropertyData();
 }

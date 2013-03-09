@@ -61,6 +61,7 @@ class QUmlStateInvariantPrivate;
 class Q_UML_EXPORT QUmlStateInvariant : public QUmlInteractionFragment
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QUmlConstraint * invariant READ invariant WRITE setInvariant)
     Q_PROPERTY(QUmlLifeline * covered READ covered WRITE setCovered)

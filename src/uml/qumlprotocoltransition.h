@@ -64,6 +64,7 @@ class QUmlProtocolTransitionPrivate;
 class Q_UML_EXPORT QUmlProtocolTransition : public QUmlTransition
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QUmlConstraint * postCondition READ postCondition WRITE setPostCondition)
     Q_PROPERTY(QSet<QUmlOperation *> referred READ referred STORED false)

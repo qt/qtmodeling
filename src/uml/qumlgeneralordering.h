@@ -60,6 +60,7 @@ class QUmlGeneralOrderingPrivate;
 class Q_UML_EXPORT QUmlGeneralOrdering : public QUmlNamedElement
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QUmlOccurrenceSpecification * before READ before WRITE setBefore)
     Q_PROPERTY(QUmlOccurrenceSpecification * after READ after WRITE setAfter)

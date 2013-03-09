@@ -57,6 +57,7 @@ class QUmlFinalNodePrivate;
 class Q_UML_EXPORT QUmlFinalNode : public QUmlControlNode
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_DISABLE_COPY(QUmlFinalNode)
     Q_DECLARE_PRIVATE(QUmlFinalNode)

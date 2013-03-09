@@ -60,6 +60,7 @@ class QUmlAcceptCallActionPrivate;
 class Q_UML_EXPORT QUmlAcceptCallAction : public QUmlAcceptEventAction
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QUmlOutputPin * returnInformation READ returnInformation WRITE setReturnInformation)
 

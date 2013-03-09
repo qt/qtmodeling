@@ -121,7 +121,7 @@ void QUmlStartObjectBehaviorAction::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStartObjectBehaviorAction")][QString::fromLatin1("object")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Holds the object which is either a behavior to be started or has a classifier behavior to be started.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStartObjectBehaviorAction")][QString::fromLatin1("object")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStartObjectBehaviorAction")][QString::fromLatin1("object")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlAction::inputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStartObjectBehaviorAction")][QString::fromLatin1("object")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStartObjectBehaviorAction")][QString::fromLatin1("object")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QUmlCallAction::setPropertyData();
 }

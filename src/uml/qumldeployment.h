@@ -67,6 +67,7 @@ class QUmlDeploymentPrivate;
 class Q_UML_EXPORT QUmlDeployment : public QUmlDependency
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QUmlDeploymentTarget * location READ location WRITE setLocation)
     Q_PROPERTY(QSet<QUmlDeploymentSpecification *> configurations READ configurations)

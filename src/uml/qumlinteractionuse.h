@@ -67,6 +67,7 @@ class QUmlInteractionUsePrivate;
 class Q_UML_EXPORT QUmlInteractionUse : public QUmlInteractionFragment
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QSet<QUmlGate *> actualGates READ actualGates)
     Q_PROPERTY(QUmlValueSpecification * returnValue READ returnValue WRITE setReturnValue)

@@ -61,6 +61,7 @@ class QMofOpaqueExpressionPrivate;
 class Q_MOF_EXPORT QMofOpaqueExpression : public QMofValueSpecification
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QMof")
 
     Q_PROPERTY(QList<QString> bodies READ bodies)
     Q_PROPERTY(QList<QString> languages READ languages)

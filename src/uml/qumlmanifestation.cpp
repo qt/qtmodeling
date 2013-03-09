@@ -121,7 +121,7 @@ void QUmlManifestation::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlManifestation")][QString::fromLatin1("utilizedElement")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The model element that is utilized in the manifestation in an Artifact.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlManifestation")][QString::fromLatin1("utilizedElement")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlManifestation")][QString::fromLatin1("utilizedElement")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlDependency::suppliers");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlManifestation")][QString::fromLatin1("utilizedElement")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlManifestation")][QString::fromLatin1("utilizedElement")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QUmlAbstraction::setPropertyData();
 }

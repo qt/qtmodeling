@@ -65,6 +65,7 @@ class QUmlConstraintPrivate;
 class Q_UML_EXPORT QUmlConstraint : public QUmlPackageableElement
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QUmlNamespace * context READ context WRITE setContext)
     Q_PROPERTY(QUmlValueSpecification * specification READ specification WRITE setSpecification)

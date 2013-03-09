@@ -64,6 +64,7 @@ class QUmlReclassifyObjectActionPrivate;
 class Q_UML_EXPORT QUmlReclassifyObjectAction : public QUmlAction
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(bool isReplaceAll READ isReplaceAll WRITE setReplaceAll RESET unsetReplaceAll)
     Q_PROPERTY(QSet<QUmlClassifier *> oldClassifiers READ oldClassifiers)

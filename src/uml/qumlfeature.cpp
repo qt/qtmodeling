@@ -172,7 +172,7 @@ void QUmlFeature::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlFeature")][QString::fromLatin1("featuringClassifiers")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The Classifiers that have this Feature as a feature.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlFeature")][QString::fromLatin1("featuringClassifiers")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlFeature")][QString::fromLatin1("featuringClassifiers")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlFeature")][QString::fromLatin1("featuringClassifiers")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QClassifier::feature");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlFeature")][QString::fromLatin1("featuringClassifiers")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlClassifier::feature");
 
     QUmlRedefinableElement::setPropertyData();
 }

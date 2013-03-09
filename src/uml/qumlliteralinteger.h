@@ -57,6 +57,7 @@ class QUmlLiteralIntegerPrivate;
 class Q_UML_EXPORT QUmlLiteralInteger : public QUmlLiteralSpecification
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(qint32 value READ value WRITE setValue)
 

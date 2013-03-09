@@ -431,14 +431,14 @@ void QMofParameter::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofParameter")][QString::fromLatin1("operation")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Operation owning this parameter.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofParameter")][QString::fromLatin1("operation")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofParameter")][QString::fromLatin1("operation")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QMofNamedElement::namespace");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofParameter")][QString::fromLatin1("operation")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QOperation::ownedParameter");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofParameter")][QString::fromLatin1("operation")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMofOperation::ownedParameter");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofParameter")][QString::fromLatin1("defaultValue")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofParameter")][QString::fromLatin1("defaultValue")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofParameter")][QString::fromLatin1("defaultValue")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies a ValueSpecification that represents a value to be used when no argument is supplied for the Parameter.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofParameter")][QString::fromLatin1("defaultValue")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofParameter")][QString::fromLatin1("defaultValue")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QMofElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofParameter")][QString::fromLatin1("defaultValue")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofParameter")][QString::fromLatin1("defaultValue")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMof");
 
     QWrappedObject::setPropertyData();
 }

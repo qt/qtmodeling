@@ -57,6 +57,7 @@ class QUmlContinuationPrivate;
 class Q_UML_EXPORT QUmlContinuation : public QUmlInteractionFragment
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(bool setting READ setting WRITE setSetting RESET unsetSetting)
 

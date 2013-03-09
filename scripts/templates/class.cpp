@@ -859,7 +859,7 @@ void ${class.name}::setPropertyData()
 [%- IF !loop.first %] [% END %]${subsettedClass}::${subsettedPropertyItem.accessor.0.name.remove('_$')}
 [%- END -%]
 ");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("${class.name}")][QString::fromLatin1("${attribute.accessor.0.name}")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("${attribute.oppositeEnd.replace('^(.)', '$1').replace(' ', ' Q').replace('-','::')}");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("${class.name}")][QString::fromLatin1("${attribute.accessor.0.name}")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("${attribute.oppositeEnd.replace('^', namespace.replace('^Qt', 'Q')).replace('-','::')}");
 
 [%- END -%]
 [%- FOREACH associationend IN class.associationend.values %]
@@ -888,7 +888,7 @@ void ${class.name}::setPropertyData()
 [%- IF !loop.first %] [% END %]${subsettedClass}::${subsettedPropertyItem.accessor.0.name.remove('_$')}
 [%- END -%]
 ");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("${class.name}")][QString::fromLatin1("${associationend.accessor.0.name}")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("${associationend.oppositeEnd.replace('^(.)', '$1').replace(' ', ' Q').replace('-','::')}");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("${class.name}")][QString::fromLatin1("${associationend.accessor.0.name}")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("${associationend.oppositeEnd.replace('^', namespace.replace('^Qt', 'Q')).replace('-','::')}");
 
 [%- END %]
     [% IF class.superclass.size == 1 %]${class.superclass.0.name.split('/').last}[% ELSE %]QWrappedObject[% END %]::setPropertyData();

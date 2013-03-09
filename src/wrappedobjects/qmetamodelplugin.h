@@ -62,7 +62,7 @@ public:
 
     virtual void initMetaModel(QScriptEngine *scriptEngine = 0) = 0;
     virtual QString metaModelNamespaceUri() = 0;
-    virtual QString metaModelNamespace() = 0;
+    virtual QString metaModelPrefix() = 0;
 };
 
 QT_END_NAMESPACE

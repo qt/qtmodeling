@@ -113,7 +113,7 @@ void QUmlReception::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReception")][QString::fromLatin1("signal")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The signal that this reception handles.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReception")][QString::fromLatin1("signal")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReception")][QString::fromLatin1("signal")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReception")][QString::fromLatin1("signal")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReception")][QString::fromLatin1("signal")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QUmlBehavioralFeature::setPropertyData();
 }

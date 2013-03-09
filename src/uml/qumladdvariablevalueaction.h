@@ -60,6 +60,7 @@ class QUmlAddVariableValueActionPrivate;
 class Q_UML_EXPORT QUmlAddVariableValueAction : public QUmlWriteVariableAction
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(bool isReplaceAll READ isReplaceAll WRITE setReplaceAll RESET unsetReplaceAll)
     Q_PROPERTY(QUmlInputPin * insertAt READ insertAt WRITE setInsertAt)

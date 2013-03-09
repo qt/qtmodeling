@@ -121,7 +121,7 @@ void QUmlOperationTemplateParameter::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOperationTemplateParameter")][QString::fromLatin1("parameteredElement")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The operation for this template parameter.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOperationTemplateParameter")][QString::fromLatin1("parameteredElement")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QUmlTemplateParameter::parameteredElement");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOperationTemplateParameter")][QString::fromLatin1("parameteredElement")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOperationTemplateParameter")][QString::fromLatin1("parameteredElement")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QOperation::templateParameter");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOperationTemplateParameter")][QString::fromLatin1("parameteredElement")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlOperation::templateParameter");
 
     QUmlTemplateParameter::setPropertyData();
 }

@@ -240,14 +240,14 @@ void QUmlElementImport::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlElementImport")][QString::fromLatin1("importedElement")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the PackageableElement whose name is to be added to a Namespace.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlElementImport")][QString::fromLatin1("importedElement")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlElementImport")][QString::fromLatin1("importedElement")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlDirectedRelationship::targets");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlElementImport")][QString::fromLatin1("importedElement")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlElementImport")][QString::fromLatin1("importedElement")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlElementImport")][QString::fromLatin1("importingNamespace")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlElementImport")][QString::fromLatin1("importingNamespace")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlElementImport")][QString::fromLatin1("importingNamespace")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the Namespace that imports a PackageableElement from another Package.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlElementImport")][QString::fromLatin1("importingNamespace")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlElementImport")][QString::fromLatin1("importingNamespace")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::owner QUmlDirectedRelationship::sources");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlElementImport")][QString::fromLatin1("importingNamespace")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QNamespace::elementImport");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlElementImport")][QString::fromLatin1("importingNamespace")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlNamespace::elementImport");
 
     QUmlDirectedRelationship::setPropertyData();
 }

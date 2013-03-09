@@ -173,14 +173,14 @@ void QUmlInterruptibleActivityRegion::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterruptibleActivityRegion")][QString::fromLatin1("interruptingEdges")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The edges leaving the region that will abort other tokens flowing in the region.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterruptibleActivityRegion")][QString::fromLatin1("interruptingEdges")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterruptibleActivityRegion")][QString::fromLatin1("interruptingEdges")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterruptibleActivityRegion")][QString::fromLatin1("interruptingEdges")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QActivityEdge::interrupts");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterruptibleActivityRegion")][QString::fromLatin1("interruptingEdges")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlActivityEdge::interrupts");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterruptibleActivityRegion")][QString::fromLatin1("nodes")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterruptibleActivityRegion")][QString::fromLatin1("nodes")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterruptibleActivityRegion")][QString::fromLatin1("nodes")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Nodes immediately contained in the group.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterruptibleActivityRegion")][QString::fromLatin1("nodes")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterruptibleActivityRegion")][QString::fromLatin1("nodes")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlActivityGroup::containedNodes");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterruptibleActivityRegion")][QString::fromLatin1("nodes")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QActivityNode::inInterruptibleRegion");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterruptibleActivityRegion")][QString::fromLatin1("nodes")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlActivityNode::inInterruptibleRegion");
 
     QUmlActivityGroup::setPropertyData();
 }

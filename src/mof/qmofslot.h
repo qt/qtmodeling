@@ -65,6 +65,7 @@ class QMofSlotPrivate;
 class Q_MOF_EXPORT QMofSlot : public QMofElement
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QMof")
 
     Q_PROPERTY(QList<QMofValueSpecification *> values READ values)
     Q_PROPERTY(QMofStructuralFeature * definingFeature READ definingFeature WRITE setDefiningFeature)

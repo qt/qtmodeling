@@ -63,6 +63,7 @@ class QMofEnumerationPrivate;
 class Q_MOF_EXPORT QMofEnumeration : public QMofDataType
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QMof")
 
     Q_PROPERTY(QList<QMofEnumerationLiteral *> ownedLiterals READ ownedLiterals)
 

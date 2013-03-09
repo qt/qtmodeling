@@ -194,14 +194,14 @@ void QUmlExtension::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExtension")][QString::fromLatin1("metaclass")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Class that is extended through an Extension. The property is derived from the type of the memberEnd that is not the ownedEnd.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExtension")][QString::fromLatin1("metaclass")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExtension")][QString::fromLatin1("metaclass")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExtension")][QString::fromLatin1("metaclass")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QClass::extension");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExtension")][QString::fromLatin1("metaclass")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlClass::extension");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExtension")][QString::fromLatin1("ownedEnd")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExtension")][QString::fromLatin1("ownedEnd")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExtension")][QString::fromLatin1("ownedEnd")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the end of the extension that is typed by a Stereotype.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExtension")][QString::fromLatin1("ownedEnd")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QUmlAssociation::ownedEnds");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExtension")][QString::fromLatin1("ownedEnd")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExtension")][QString::fromLatin1("ownedEnd")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExtension")][QString::fromLatin1("ownedEnd")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QUmlAssociation::setPropertyData();
 }

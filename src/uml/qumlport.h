@@ -67,6 +67,7 @@ class QUmlPortPrivate;
 class Q_UML_EXPORT QUmlPort : public QUmlProperty
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(bool isConjugated READ isConjugated WRITE setConjugated RESET unsetConjugated)
     Q_PROPERTY(bool isBehavior READ isBehavior WRITE setBehavior RESET unsetBehavior)

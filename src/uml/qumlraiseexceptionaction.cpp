@@ -121,7 +121,7 @@ void QUmlRaiseExceptionAction::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRaiseExceptionAction")][QString::fromLatin1("exception")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An input pin whose value becomes an exception object.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRaiseExceptionAction")][QString::fromLatin1("exception")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRaiseExceptionAction")][QString::fromLatin1("exception")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlAction::inputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRaiseExceptionAction")][QString::fromLatin1("exception")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRaiseExceptionAction")][QString::fromLatin1("exception")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QUmlAction::setPropertyData();
 }

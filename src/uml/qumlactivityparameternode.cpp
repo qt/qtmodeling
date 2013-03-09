@@ -113,7 +113,7 @@ void QUmlActivityParameterNode::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivityParameterNode")][QString::fromLatin1("parameter")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The parameter the object node will be accepting or providing values for.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivityParameterNode")][QString::fromLatin1("parameter")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivityParameterNode")][QString::fromLatin1("parameter")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivityParameterNode")][QString::fromLatin1("parameter")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivityParameterNode")][QString::fromLatin1("parameter")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QUmlObjectNode::setPropertyData();
 }

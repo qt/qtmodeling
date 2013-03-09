@@ -65,6 +65,7 @@ class QUmlConditionalNodePrivate;
 class Q_UML_EXPORT QUmlConditionalNode : public QUmlStructuredActivityNode
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(bool isAssured READ isAssured WRITE setAssured RESET unsetAssured)
     Q_PROPERTY(bool isDeterminate READ isDeterminate WRITE setDeterminate RESET unsetDeterminate)

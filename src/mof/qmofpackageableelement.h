@@ -60,6 +60,7 @@ class QMofPackageableElementPrivate;
 class Q_MOF_EXPORT QMofPackageableElement : public QMofNamedElement
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QMof")
 
     Q_PROPERTY(QtMof::VisibilityKind visibility READ visibility WRITE setVisibility RESET unsetVisibility)
 

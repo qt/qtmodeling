@@ -164,7 +164,7 @@ void QUmlDurationObservation::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDurationObservation")][QString::fromLatin1("events")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The observation is determined by the entering or exiting of the event element during execution.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDurationObservation")][QString::fromLatin1("events")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDurationObservation")][QString::fromLatin1("events")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDurationObservation")][QString::fromLatin1("events")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDurationObservation")][QString::fromLatin1("events")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QUmlObservation::setPropertyData();
 }

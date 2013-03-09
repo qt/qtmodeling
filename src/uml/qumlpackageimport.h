@@ -64,6 +64,7 @@ class QUmlPackageImportPrivate;
 class Q_UML_EXPORT QUmlPackageImport : public QUmlDirectedRelationship
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility RESET unsetVisibility)
     Q_PROPERTY(QUmlNamespace * importingNamespace READ importingNamespace WRITE setImportingNamespace)

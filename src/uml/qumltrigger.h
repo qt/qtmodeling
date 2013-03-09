@@ -64,6 +64,7 @@ class QUmlTriggerPrivate;
 class Q_UML_EXPORT QUmlTrigger : public QUmlNamedElement
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QSet<QUmlPort *> ports READ ports)
     Q_PROPERTY(QUmlEvent * event READ event WRITE setEvent)

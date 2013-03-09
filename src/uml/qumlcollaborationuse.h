@@ -64,6 +64,7 @@ class QUmlCollaborationUsePrivate;
 class Q_UML_EXPORT QUmlCollaborationUse : public QUmlNamedElement
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QUmlCollaboration * type READ type WRITE setType)
     Q_PROPERTY(QSet<QUmlDependency *> roleBindings READ roleBindings)

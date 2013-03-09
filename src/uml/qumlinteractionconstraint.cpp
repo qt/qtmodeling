@@ -151,14 +151,14 @@ void QUmlInteractionConstraint::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionConstraint")][QString::fromLatin1("maxint")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The maximum number of iterations of a loop");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionConstraint")][QString::fromLatin1("maxint")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionConstraint")][QString::fromLatin1("maxint")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionConstraint")][QString::fromLatin1("maxint")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionConstraint")][QString::fromLatin1("maxint")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionConstraint")][QString::fromLatin1("minint")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionConstraint")][QString::fromLatin1("minint")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionConstraint")][QString::fromLatin1("minint")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The minimum number of iterations of a loop");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionConstraint")][QString::fromLatin1("minint")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionConstraint")][QString::fromLatin1("minint")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionConstraint")][QString::fromLatin1("minint")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionConstraint")][QString::fromLatin1("minint")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QUmlConstraint::setPropertyData();
 }

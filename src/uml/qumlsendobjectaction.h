@@ -60,6 +60,7 @@ class QUmlSendObjectActionPrivate;
 class Q_UML_EXPORT QUmlSendObjectAction : public QUmlInvocationAction
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QUmlInputPin * request READ request WRITE setRequest)
     Q_PROPERTY(QUmlInputPin * target READ target WRITE setTarget)

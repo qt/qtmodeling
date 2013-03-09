@@ -291,35 +291,35 @@ void QUmlAction::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAction")][QString::fromLatin1("context")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The classifier that owns the behavior of which this action is a part.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAction")][QString::fromLatin1("context")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAction")][QString::fromLatin1("context")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAction")][QString::fromLatin1("context")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAction")][QString::fromLatin1("context")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAction")][QString::fromLatin1("localPostconditions")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAction")][QString::fromLatin1("localPostconditions")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAction")][QString::fromLatin1("localPostconditions")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Constraint that must be satisfied when executed is completed.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAction")][QString::fromLatin1("localPostconditions")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAction")][QString::fromLatin1("localPostconditions")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAction")][QString::fromLatin1("localPostconditions")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAction")][QString::fromLatin1("localPostconditions")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAction")][QString::fromLatin1("localPreconditions")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAction")][QString::fromLatin1("localPreconditions")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAction")][QString::fromLatin1("localPreconditions")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Constraint that must be satisfied when execution is started.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAction")][QString::fromLatin1("localPreconditions")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAction")][QString::fromLatin1("localPreconditions")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAction")][QString::fromLatin1("localPreconditions")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAction")][QString::fromLatin1("localPreconditions")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAction")][QString::fromLatin1("inputs")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAction")][QString::fromLatin1("inputs")][QtWrappedObjects::IsDerivedUnionRole] = true;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAction")][QString::fromLatin1("inputs")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The ordered set of input pins connected to the Action. These are among the total set of inputs.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAction")][QString::fromLatin1("inputs")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAction")][QString::fromLatin1("inputs")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAction")][QString::fromLatin1("inputs")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAction")][QString::fromLatin1("inputs")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAction")][QString::fromLatin1("outputs")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAction")][QString::fromLatin1("outputs")][QtWrappedObjects::IsDerivedUnionRole] = true;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAction")][QString::fromLatin1("outputs")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The ordered set of output pins connected to the Action. The action places its results onto pins in this set.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAction")][QString::fromLatin1("outputs")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAction")][QString::fromLatin1("outputs")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAction")][QString::fromLatin1("outputs")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAction")][QString::fromLatin1("outputs")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QUmlExecutableNode::setPropertyData();
 }

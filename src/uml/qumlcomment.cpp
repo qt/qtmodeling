@@ -152,7 +152,7 @@ void QUmlComment::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlComment")][QString::fromLatin1("annotatedElements")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Element(s) being commented.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlComment")][QString::fromLatin1("annotatedElements")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlComment")][QString::fromLatin1("annotatedElements")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlComment")][QString::fromLatin1("annotatedElements")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlComment")][QString::fromLatin1("annotatedElements")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QUmlElement::setPropertyData();
 }

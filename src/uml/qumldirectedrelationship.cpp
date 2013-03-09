@@ -161,14 +161,14 @@ void QUmlDirectedRelationship::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDirectedRelationship")][QString::fromLatin1("sources")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the sources of the DirectedRelationship.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDirectedRelationship")][QString::fromLatin1("sources")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDirectedRelationship")][QString::fromLatin1("sources")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlRelationship::relatedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDirectedRelationship")][QString::fromLatin1("sources")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDirectedRelationship")][QString::fromLatin1("sources")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDirectedRelationship")][QString::fromLatin1("targets")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDirectedRelationship")][QString::fromLatin1("targets")][QtWrappedObjects::IsDerivedUnionRole] = true;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDirectedRelationship")][QString::fromLatin1("targets")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the targets of the DirectedRelationship.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDirectedRelationship")][QString::fromLatin1("targets")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDirectedRelationship")][QString::fromLatin1("targets")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlRelationship::relatedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDirectedRelationship")][QString::fromLatin1("targets")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDirectedRelationship")][QString::fromLatin1("targets")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QUmlRelationship::setPropertyData();
 }

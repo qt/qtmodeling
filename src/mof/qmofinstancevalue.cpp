@@ -113,7 +113,7 @@ void QMofInstanceValue::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofInstanceValue")][QString::fromLatin1("instance")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The instance that is the specified value.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofInstanceValue")][QString::fromLatin1("instance")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofInstanceValue")][QString::fromLatin1("instance")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofInstanceValue")][QString::fromLatin1("instance")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofInstanceValue")][QString::fromLatin1("instance")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMof");
 
     QMofValueSpecification::setPropertyData();
 }

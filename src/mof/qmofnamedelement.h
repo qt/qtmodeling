@@ -68,6 +68,7 @@ class QMofNamedElementPrivate;
 class Q_MOF_EXPORT QMofNamedElement : public QMofElement
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QMof")
 
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QtMof::VisibilityKind visibility READ visibility WRITE setVisibility)

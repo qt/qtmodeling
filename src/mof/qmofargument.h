@@ -63,6 +63,7 @@ class QMofArgumentPrivate;
 class Q_MOF_EXPORT QMofArgument : public QWrappedObject
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QMof")
 
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QMofObject * value READ value WRITE setValue)

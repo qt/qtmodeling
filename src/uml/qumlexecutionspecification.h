@@ -60,6 +60,7 @@ class QUmlExecutionSpecificationPrivate;
 class Q_UML_EXPORT QUmlExecutionSpecification : public QUmlInteractionFragment
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QUmlOccurrenceSpecification * start READ start WRITE setStart)
     Q_PROPERTY(QUmlOccurrenceSpecification * finish READ finish WRITE setFinish)

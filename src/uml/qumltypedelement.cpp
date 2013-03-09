@@ -113,7 +113,7 @@ void QUmlTypedElement::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTypedElement")][QString::fromLatin1("type")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("This information is derived from the return result for this Operation.The type of the TypedElement.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTypedElement")][QString::fromLatin1("type")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTypedElement")][QString::fromLatin1("type")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTypedElement")][QString::fromLatin1("type")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTypedElement")][QString::fromLatin1("type")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QUmlNamedElement::setPropertyData();
 }

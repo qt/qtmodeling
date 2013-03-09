@@ -65,6 +65,7 @@ class QUmlVertexPrivate;
 class Q_UML_EXPORT QUmlVertex : public QUmlNamedElement
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QSet<QUmlTransition *> incomings READ incomings STORED false)
     Q_PROPERTY(QUmlRegion * container READ container WRITE setContainer)

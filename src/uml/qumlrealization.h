@@ -57,6 +57,7 @@ class QUmlRealizationPrivate;
 class Q_UML_EXPORT QUmlRealization : public QUmlAbstraction
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_DISABLE_COPY(QUmlRealization)
     Q_DECLARE_PRIVATE(QUmlRealization)

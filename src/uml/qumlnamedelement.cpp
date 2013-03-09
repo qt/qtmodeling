@@ -338,21 +338,21 @@ void QUmlNamedElement::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlNamedElement")][QString::fromLatin1("nameExpression")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The string expression used to define the name of this named element.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlNamedElement")][QString::fromLatin1("nameExpression")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlNamedElement")][QString::fromLatin1("nameExpression")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlNamedElement")][QString::fromLatin1("nameExpression")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlNamedElement")][QString::fromLatin1("nameExpression")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlNamedElement")][QString::fromLatin1("namespace_")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlNamedElement")][QString::fromLatin1("namespace_")][QtWrappedObjects::IsDerivedUnionRole] = true;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlNamedElement")][QString::fromLatin1("namespace_")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the namespace that owns the NamedElement.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlNamedElement")][QString::fromLatin1("namespace_")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlNamedElement")][QString::fromLatin1("namespace_")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::owner");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlNamedElement")][QString::fromLatin1("namespace_")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QNamespace::ownedMember");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlNamedElement")][QString::fromLatin1("namespace_")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlNamespace::ownedMember");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlNamedElement")][QString::fromLatin1("clientDependencies")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlNamedElement")][QString::fromLatin1("clientDependencies")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlNamedElement")][QString::fromLatin1("clientDependencies")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Indicates the dependencies that reference the client.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlNamedElement")][QString::fromLatin1("clientDependencies")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlNamedElement")][QString::fromLatin1("clientDependencies")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlNamedElement")][QString::fromLatin1("clientDependencies")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QDependency::client");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlNamedElement")][QString::fromLatin1("clientDependencies")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlDependency::client");
 
     QUmlElement::setPropertyData();
 }

@@ -61,6 +61,7 @@ class QUmlReadExtentActionPrivate;
 class Q_UML_EXPORT QUmlReadExtentAction : public QUmlAction
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QUmlClassifier * classifier READ classifier WRITE setClassifier)
     Q_PROPERTY(QUmlOutputPin * result READ result WRITE setResult)

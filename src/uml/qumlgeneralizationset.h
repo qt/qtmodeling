@@ -64,6 +64,7 @@ class QUmlGeneralizationSetPrivate;
 class Q_UML_EXPORT QUmlGeneralizationSet : public QUmlPackageableElement
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(bool isCovering READ isCovering WRITE setCovering RESET unsetCovering)
     Q_PROPERTY(bool isDisjoint READ isDisjoint WRITE setDisjoint RESET unsetDisjoint)

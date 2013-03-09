@@ -64,6 +64,7 @@ class QUmlAcceptEventActionPrivate;
 class Q_UML_EXPORT QUmlAcceptEventAction : public QUmlAction
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(bool isUnmarshall READ isUnmarshall WRITE setUnmarshall RESET unsetUnmarshall)
     Q_PROPERTY(QSet<QUmlTrigger *> triggers READ triggers)

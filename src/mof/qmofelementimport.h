@@ -67,6 +67,7 @@ class QMofElementImportPrivate;
 class Q_MOF_EXPORT QMofElementImport : public QMofDirectedRelationship
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QMof")
 
     Q_PROPERTY(QString alias READ alias WRITE setAlias)
     Q_PROPERTY(QtMof::VisibilityKind visibility READ visibility WRITE setVisibility RESET unsetVisibility)

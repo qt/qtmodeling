@@ -63,6 +63,7 @@ class QMofFeaturePrivate;
 class Q_MOF_EXPORT QMofFeature : public QMofRedefinableElement
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QMof")
 
     Q_PROPERTY(bool isStatic READ isStatic WRITE setStatic RESET unsetStatic)
     Q_PROPERTY(QSet<QMofClassifier *> featuringClassifiers READ featuringClassifiers)

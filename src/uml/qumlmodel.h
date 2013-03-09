@@ -60,6 +60,7 @@ class QUmlModelPrivate;
 class Q_UML_EXPORT QUmlModel : public QUmlPackage
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QString viewpoint READ viewpoint WRITE setViewpoint)
 

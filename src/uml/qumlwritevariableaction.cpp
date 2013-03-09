@@ -121,7 +121,7 @@ void QUmlWriteVariableAction::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlWriteVariableAction")][QString::fromLatin1("value")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Value to be added or removed from the variable.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlWriteVariableAction")][QString::fromLatin1("value")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlWriteVariableAction")][QString::fromLatin1("value")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlAction::inputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlWriteVariableAction")][QString::fromLatin1("value")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlWriteVariableAction")][QString::fromLatin1("value")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QUmlVariableAction::setPropertyData();
 }

@@ -60,6 +60,7 @@ class QUmlEnumerationLiteralPrivate;
 class Q_UML_EXPORT QUmlEnumerationLiteral : public QUmlInstanceSpecification
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QUmlEnumeration * classifier READ classifier STORED false)
     Q_PROPERTY(QUmlEnumeration * enumeration READ enumeration WRITE setEnumeration)

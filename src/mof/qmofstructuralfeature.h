@@ -60,6 +60,7 @@ class QMofStructuralFeaturePrivate;
 class Q_MOF_EXPORT QMofStructuralFeature : public QWrappedObject
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QMof")
 
     Q_PROPERTY(QSet<QMofElement *> ownedElements READ ownedElements)
     Q_PROPERTY(QMofElement * owner READ owner)

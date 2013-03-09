@@ -63,6 +63,7 @@ class QUmlExecutableNodePrivate;
 class Q_UML_EXPORT QUmlExecutableNode : public QUmlActivityNode
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QSet<QUmlExceptionHandler *> handlers READ handlers)
 

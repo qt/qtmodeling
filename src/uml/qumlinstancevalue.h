@@ -60,6 +60,7 @@ class QUmlInstanceValuePrivate;
 class Q_UML_EXPORT QUmlInstanceValue : public QUmlValueSpecification
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QUmlInstanceSpecification * instance READ instance WRITE setInstance)
 

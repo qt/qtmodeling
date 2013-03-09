@@ -60,6 +60,7 @@ class QMofEnumerationLiteralPrivate;
 class Q_MOF_EXPORT QMofEnumerationLiteral : public QMofInstanceSpecification
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QMof")
 
     Q_PROPERTY(QMofEnumeration * classifier READ classifier STORED false)
     Q_PROPERTY(QMofEnumeration * enumeration READ enumeration WRITE setEnumeration)

@@ -213,14 +213,14 @@ void QUmlObjectFlow::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlObjectFlow")][QString::fromLatin1("selection")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Selects tokens from a source object node.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlObjectFlow")][QString::fromLatin1("selection")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlObjectFlow")][QString::fromLatin1("selection")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlObjectFlow")][QString::fromLatin1("selection")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlObjectFlow")][QString::fromLatin1("selection")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlObjectFlow")][QString::fromLatin1("transformation")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlObjectFlow")][QString::fromLatin1("transformation")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlObjectFlow")][QString::fromLatin1("transformation")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Changes or replaces data tokens flowing along edge.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlObjectFlow")][QString::fromLatin1("transformation")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlObjectFlow")][QString::fromLatin1("transformation")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlObjectFlow")][QString::fromLatin1("transformation")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlObjectFlow")][QString::fromLatin1("transformation")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QUmlActivityEdge::setPropertyData();
 }

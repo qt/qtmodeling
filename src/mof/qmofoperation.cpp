@@ -555,63 +555,63 @@ void QMofOperation::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("ownedParameters")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the parameters owned by this Operation.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("ownedParameters")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QMofBehavioralFeature::ownedParameters");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("ownedParameters")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("ownedParameters")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QParameter::operation");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("ownedParameters")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMofParameter::operation");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("bodyCondition")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("bodyCondition")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("bodyCondition")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An optional Constraint on the result values of an invocation of this Operation.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("bodyCondition")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("bodyCondition")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QMofNamespace::ownedRules");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("bodyCondition")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("bodyCondition")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMof");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("redefinedOperations")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("redefinedOperations")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("redefinedOperations")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Operations that are redefined by this Operation.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("redefinedOperations")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("redefinedOperations")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QMofRedefinableElement::redefinedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("redefinedOperations")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("redefinedOperations")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMof");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("postconditions")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("postconditions")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("postconditions")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An optional set of Constraints specifying the state of the system when the Operation is completed.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("postconditions")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("postconditions")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QMofNamespace::ownedRules");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("postconditions")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("postconditions")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMof");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("datatype")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("datatype")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("datatype")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The DataType that owns this Operation.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("datatype")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("datatype")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QMofNamedElement::namespace QMofFeature::featuringClassifiers QMofRedefinableElement::redefinitionContexts");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("datatype")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QDataType::ownedOperation");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("datatype")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMofDataType::ownedOperation");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("type")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("type")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("type")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the return result of the operation, if present.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("type")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("type")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("type")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("type")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMof");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("preconditions")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("preconditions")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("preconditions")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An optional set of Constraints on the state of the system when the Operation is invoked.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("preconditions")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("preconditions")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QMofNamespace::ownedRules");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("preconditions")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("preconditions")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMof");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("class_")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("class_")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("class_")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The class that owns the operation.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("class_")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("class_")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QMofNamedElement::namespace QMofFeature::featuringClassifiers QMofRedefinableElement::redefinitionContexts");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("class_")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QClass::ownedOperation");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("class_")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMofClass::ownedOperation");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("raisedExceptions")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("raisedExceptions")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("raisedExceptions")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Types representing exceptions that may be raised during an invocation of this operation.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("raisedExceptions")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QMofBehavioralFeature::raisedExceptions");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("raisedExceptions")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("raisedExceptions")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("raisedExceptions")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMof");
 
     QMofBehavioralFeature::setPropertyData();
 }

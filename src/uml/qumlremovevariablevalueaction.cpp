@@ -162,7 +162,7 @@ void QUmlRemoveVariableValueAction::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRemoveVariableValueAction")][QString::fromLatin1("removeAt")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the position of an existing value to remove in ordered nonunique variables. The type of the pin is UnlimitedNatural, but the value cannot be zero or unlimited.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRemoveVariableValueAction")][QString::fromLatin1("removeAt")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRemoveVariableValueAction")][QString::fromLatin1("removeAt")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlAction::inputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRemoveVariableValueAction")][QString::fromLatin1("removeAt")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRemoveVariableValueAction")][QString::fromLatin1("removeAt")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QUmlWriteVariableAction::setPropertyData();
 }

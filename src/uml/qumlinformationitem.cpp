@@ -120,7 +120,7 @@ void QUmlInformationItem::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInformationItem")][QString::fromLatin1("represented")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Determines the classifiers that will specify the structure and nature of the information. An information item represents all its represented classifiers.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInformationItem")][QString::fromLatin1("represented")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInformationItem")][QString::fromLatin1("represented")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInformationItem")][QString::fromLatin1("represented")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInformationItem")][QString::fromLatin1("represented")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QUmlClassifier::setPropertyData();
 }

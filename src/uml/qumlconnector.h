@@ -70,6 +70,7 @@ class QUmlConnectorPrivate;
 class Q_UML_EXPORT QUmlConnector : public QUmlFeature
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QtUml::ConnectorKind kind READ kind STORED false)
     Q_PROPERTY(QSet<QUmlConnector *> redefinedConnectors READ redefinedConnectors)

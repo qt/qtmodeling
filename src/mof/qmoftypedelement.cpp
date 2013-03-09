@@ -113,7 +113,7 @@ void QMofTypedElement::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofTypedElement")][QString::fromLatin1("type")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The type of the TypedElement.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofTypedElement")][QString::fromLatin1("type")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofTypedElement")][QString::fromLatin1("type")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofTypedElement")][QString::fromLatin1("type")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofTypedElement")][QString::fromLatin1("type")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMof");
 
     QMofNamedElement::setPropertyData();
 }

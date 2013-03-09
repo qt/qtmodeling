@@ -160,14 +160,14 @@ void QMofPackageMerge::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofPackageMerge")][QString::fromLatin1("mergedPackage")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Package that is to be merged with the receiving package of the PackageMerge.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofPackageMerge")][QString::fromLatin1("mergedPackage")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofPackageMerge")][QString::fromLatin1("mergedPackage")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QMofDirectedRelationship::targets");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofPackageMerge")][QString::fromLatin1("mergedPackage")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofPackageMerge")][QString::fromLatin1("mergedPackage")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMof");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofPackageMerge")][QString::fromLatin1("receivingPackage")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofPackageMerge")][QString::fromLatin1("receivingPackage")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofPackageMerge")][QString::fromLatin1("receivingPackage")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Package that is being extended with the contents of the merged package of the PackageMerge.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofPackageMerge")][QString::fromLatin1("receivingPackage")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofPackageMerge")][QString::fromLatin1("receivingPackage")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QMofElement::owner QMofDirectedRelationship::sources");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofPackageMerge")][QString::fromLatin1("receivingPackage")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QPackage::packageMerge");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofPackageMerge")][QString::fromLatin1("receivingPackage")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMofPackage::packageMerge");
 
     QMofDirectedRelationship::setPropertyData();
 }

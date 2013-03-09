@@ -64,6 +64,7 @@ class QUmlPseudostatePrivate;
 class Q_UML_EXPORT QUmlPseudostate : public QUmlVertex
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QtUml::PseudostateKind kind READ kind WRITE setKind RESET unsetKind)
     Q_PROPERTY(QUmlState * state READ state WRITE setState)

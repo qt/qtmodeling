@@ -57,6 +57,7 @@ class QUmlWriteLinkActionPrivate;
 class Q_UML_EXPORT QUmlWriteLinkAction : public QUmlLinkAction
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_DISABLE_COPY(QUmlWriteLinkAction)
     Q_DECLARE_PRIVATE(QUmlWriteLinkAction)

@@ -113,7 +113,7 @@ void QUmlCallBehaviorAction::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCallBehaviorAction")][QString::fromLatin1("behavior")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The invoked behavior. It must be capable of accepting and returning control.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCallBehaviorAction")][QString::fromLatin1("behavior")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCallBehaviorAction")][QString::fromLatin1("behavior")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCallBehaviorAction")][QString::fromLatin1("behavior")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCallBehaviorAction")][QString::fromLatin1("behavior")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QUmlCallAction::setPropertyData();
 }

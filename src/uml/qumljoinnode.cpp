@@ -162,7 +162,7 @@ void QUmlJoinNode::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlJoinNode")][QString::fromLatin1("joinSpec")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A specification giving the conditions under which the join with emit a token. Default is \"and\".");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlJoinNode")][QString::fromLatin1("joinSpec")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlJoinNode")][QString::fromLatin1("joinSpec")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlJoinNode")][QString::fromLatin1("joinSpec")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlJoinNode")][QString::fromLatin1("joinSpec")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QUmlControlNode::setPropertyData();
 }

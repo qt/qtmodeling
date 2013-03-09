@@ -158,7 +158,7 @@ void QUmlExpression::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpression")][QString::fromLatin1("operands")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies a sequence of operands.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpression")][QString::fromLatin1("operands")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpression")][QString::fromLatin1("operands")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpression")][QString::fromLatin1("operands")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpression")][QString::fromLatin1("operands")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QUmlValueSpecification::setPropertyData();
 }

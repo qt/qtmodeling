@@ -61,6 +61,7 @@ class QUmlWriteStructuralFeatureActionPrivate;
 class Q_UML_EXPORT QUmlWriteStructuralFeatureAction : public QUmlStructuralFeatureAction
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QUmlOutputPin * result READ result WRITE setResult)
     Q_PROPERTY(QUmlInputPin * value READ value WRITE setValue)

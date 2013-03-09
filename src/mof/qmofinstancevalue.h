@@ -60,6 +60,7 @@ class QMofInstanceValuePrivate;
 class Q_MOF_EXPORT QMofInstanceValue : public QMofValueSpecification
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QMof")
 
     Q_PROPERTY(QMofInstanceSpecification * instance READ instance WRITE setInstance)
 

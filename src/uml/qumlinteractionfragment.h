@@ -66,6 +66,7 @@ class QUmlInteractionFragmentPrivate;
 class Q_UML_EXPORT QUmlInteractionFragment : public QUmlNamedElement
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(QSet<QUmlGeneralOrdering *> generalOrderings READ generalOrderings)
     Q_PROPERTY(QUmlInteraction * enclosingInteraction READ enclosingInteraction WRITE setEnclosingInteraction)

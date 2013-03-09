@@ -149,14 +149,14 @@ void QUmlDeploymentTarget::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDeploymentTarget")][QString::fromLatin1("deployedElements")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The set of elements that are manifested in an Artifact that is involved in Deployment to a DeploymentTarget.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDeploymentTarget")][QString::fromLatin1("deployedElements")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDeploymentTarget")][QString::fromLatin1("deployedElements")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDeploymentTarget")][QString::fromLatin1("deployedElements")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDeploymentTarget")][QString::fromLatin1("deployedElements")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDeploymentTarget")][QString::fromLatin1("deployments")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDeploymentTarget")][QString::fromLatin1("deployments")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDeploymentTarget")][QString::fromLatin1("deployments")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The set of Deployments for a DeploymentTarget.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDeploymentTarget")][QString::fromLatin1("deployments")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDeploymentTarget")][QString::fromLatin1("deployments")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements QUmlNamedElement::clientDependencies");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDeploymentTarget")][QString::fromLatin1("deployments")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QDeployment::location");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDeploymentTarget")][QString::fromLatin1("deployments")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlDeployment::location");
 
     QUmlNamedElement::setPropertyData();
 }

@@ -66,6 +66,7 @@ class QUmlActivityPartitionPrivate;
 class Q_UML_EXPORT QUmlActivityPartition : public QUmlActivityGroup
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QUml")
 
     Q_PROPERTY(bool isDimension READ isDimension WRITE setDimension RESET unsetDimension)
     Q_PROPERTY(bool isExternal READ isExternal WRITE setExternal RESET unsetExternal)

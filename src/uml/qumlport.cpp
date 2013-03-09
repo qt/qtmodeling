@@ -290,28 +290,28 @@ void QUmlPort::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPort")][QString::fromLatin1("protocol")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References an optional protocol state machine which describes valid interactions at this interaction point.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPort")][QString::fromLatin1("protocol")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPort")][QString::fromLatin1("protocol")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPort")][QString::fromLatin1("protocol")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPort")][QString::fromLatin1("protocol")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPort")][QString::fromLatin1("required")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPort")][QString::fromLatin1("required")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPort")][QString::fromLatin1("required")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the interfaces specifying the set of operations and receptions that the classifier expects its environment to handle via this port. This association is derived according to the value of isConjugated. If isConjugated is false, required is derived as the union of the sets of interfaces used by the type of the port and its supertypes. If isConjugated is true, it is derived as the union of the sets of interfaces realized by the type of the port and its supertypes, or directly from the type of the port if the port is typed by an interface.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPort")][QString::fromLatin1("required")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPort")][QString::fromLatin1("required")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPort")][QString::fromLatin1("required")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPort")][QString::fromLatin1("required")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPort")][QString::fromLatin1("provided")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPort")][QString::fromLatin1("provided")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPort")][QString::fromLatin1("provided")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the interfaces specifying the set of operations and receptions that the classifier offers to its environment via this port, and which it will handle either directly or by forwarding it to a part of its internal structure. This association is derived according to the value of isConjugated. If isConjugated is false, provided is derived as the union of the sets of interfaces realized by the type of the port and its supertypes, or directly from the type of the port if the port is typed by an interface. If isConjugated is true, it is derived as the union of the sets of interfaces used by the type of the port and its supertypes.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPort")][QString::fromLatin1("provided")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPort")][QString::fromLatin1("provided")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPort")][QString::fromLatin1("provided")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPort")][QString::fromLatin1("provided")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPort")][QString::fromLatin1("redefinedPorts")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPort")][QString::fromLatin1("redefinedPorts")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPort")][QString::fromLatin1("redefinedPorts")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A port may be redefined when its containing classifier is specialized. The redefining port may have additional interfaces to those that are associated with the redefined port or it may replace an interface by one of its subtypes.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPort")][QString::fromLatin1("redefinedPorts")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPort")][QString::fromLatin1("redefinedPorts")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlProperty::redefinedProperties");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPort")][QString::fromLatin1("redefinedPorts")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPort")][QString::fromLatin1("redefinedPorts")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QUmlProperty::setPropertyData();
 }

@@ -21,13 +21,13 @@ int main ()
             qDebug() << "\t" << error;
     }
 
-//    QFile file2("test-out.xmi");
+    QFile file2("test-out.xmi");
 
-//    if (!file2.open(QFile::WriteOnly | QFile::Text)) {
-//        qDebug() << "Cannot write file !";
-//        return 1;
-//    }
-//    QXmiWriter writer(rootElement);
-//    writer.writeFile(&file2);
+    if (!file2.open(QFile::WriteOnly | QFile::Text)) {
+        qDebug() << "Cannot write file !";
+        return 1;
+    }
+    QXmiWriter writer(rootElement);
+    writer.writeFile(&file2);
 }
 

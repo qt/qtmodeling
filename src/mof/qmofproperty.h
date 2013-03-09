@@ -73,6 +73,7 @@ class QMofPropertyPrivate;
 class Q_MOF_EXPORT QMofProperty : public QMofStructuralFeature
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QMof")
 
     Q_PROPERTY(bool isDerived READ isDerived WRITE setDerived RESET unsetDerived)
     Q_PROPERTY(QString default_ READ default_ WRITE setDefault_ STORED false)

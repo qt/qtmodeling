@@ -167,14 +167,14 @@ void QUmlParameterSet::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlParameterSet")][QString::fromLatin1("parameters")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Parameters in the parameter set.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlParameterSet")][QString::fromLatin1("parameters")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlParameterSet")][QString::fromLatin1("parameters")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlParameterSet")][QString::fromLatin1("parameters")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QParameter::parameterSet");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlParameterSet")][QString::fromLatin1("parameters")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlParameter::parameterSet");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlParameterSet")][QString::fromLatin1("conditions")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlParameterSet")][QString::fromLatin1("conditions")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlParameterSet")][QString::fromLatin1("conditions")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Constraint that should be satisfied for the owner of the parameters in an input parameter set to start execution using the values provided for those parameters, or the owner of the parameters in an output parameter set to end execution providing the values for those parameters, if all preconditions and conditions on input parameter sets were satisfied.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlParameterSet")][QString::fromLatin1("conditions")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlParameterSet")][QString::fromLatin1("conditions")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlParameterSet")][QString::fromLatin1("conditions")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlParameterSet")][QString::fromLatin1("conditions")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QUmlNamedElement::setPropertyData();
 }

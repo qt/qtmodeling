@@ -61,6 +61,7 @@ class QMofTagPrivate;
 class Q_MOF_EXPORT QMofTag : public QMofElement
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QMof")
 
     Q_PROPERTY(QSet<QMofElement *> elements READ elements)
     Q_PROPERTY(QString value READ value WRITE setValue)

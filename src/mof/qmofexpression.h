@@ -61,6 +61,7 @@ class QMofExpressionPrivate;
 class Q_MOF_EXPORT QMofExpression : public QMofValueSpecification
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QMof")
 
     Q_PROPERTY(QString symbol READ symbol WRITE setSymbol)
     Q_PROPERTY(QList<QMofValueSpecification *> operands READ operands)

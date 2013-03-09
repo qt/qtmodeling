@@ -201,14 +201,14 @@ void QMofGeneralization::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofGeneralization")][QString::fromLatin1("specific")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the specializing classifier in the Generalization relationship.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofGeneralization")][QString::fromLatin1("specific")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofGeneralization")][QString::fromLatin1("specific")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QMofElement::owner QMofDirectedRelationship::sources");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofGeneralization")][QString::fromLatin1("specific")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QClassifier::generalization");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofGeneralization")][QString::fromLatin1("specific")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMofClassifier::generalization");
 
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofGeneralization")][QString::fromLatin1("general")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofGeneralization")][QString::fromLatin1("general")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofGeneralization")][QString::fromLatin1("general")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the general classifier in the Generalization relationship.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofGeneralization")][QString::fromLatin1("general")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QMofGeneralization")][QString::fromLatin1("general")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QMofDirectedRelationship::targets");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofGeneralization")][QString::fromLatin1("general")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofGeneralization")][QString::fromLatin1("general")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMof");
 
     QMofDirectedRelationship::setPropertyData();
 }

@@ -264,6 +264,7 @@ class ${class.name}Private;
 class Q_[% namespace.split('/').0.substr(2).upper %]_EXPORT ${class.name} : public [% IF class.superclass.size == 1 %]${class.superclass.0.name.split('/').last}[% ELSE %]QWrappedObject[% END %]
 {
     Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "${namespace.replace('^Qt', 'Q')}")
     [%- GENERATEPROPERTIES(class) %]
 
     Q_DISABLE_COPY(${class.name})

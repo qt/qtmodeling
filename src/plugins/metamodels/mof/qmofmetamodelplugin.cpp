@@ -57,7 +57,7 @@ QString QMofMetaModelPlugin::metaModelNamespaceUri()
     return QString::fromLatin1("http://www.omg.org/spec/MOF/20110701");
 }
 
-QString QMofMetaModelPlugin::metaModelNamespace()
+QString QMofMetaModelPlugin::metaModelPrefix()
 {
     return QString::fromLatin1("QMof");
 }
