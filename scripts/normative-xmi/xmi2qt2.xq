@@ -75,24 +75,51 @@ declare function qtxmi:handleType($attribute as node()+, $basicType as xs:string
     return concat(concat(concat($collectionBegin, $basicType), $pointer), $collectionEnd)
 };
 
+declare function qtxmi:defaultValue($attribute as node()+, $moduleName as xs:string+) as xs:string+
+{
+    if ($attribute/defaultValue) then
+        if ($attribute/defaultValue/@xmi:type = "uml:LiteralBoolean") then
+            if ($attribute/defaultValue/@value) then
+                xs:string($attribute/defaultValue/@value)
+            else "false"
+        else
+        if ($attribute/defaultValue/@xmi:type = "uml:LiteralUnlimitedNatural") then
+            if ($attribute/defaultValue/@value) then
+                replace($attribute/defaultValue/@value, "\*", "-1")
+            else "0"
+        else
+        if ($attribute/defaultValue/@xmi:type = "uml:InstanceValue" and
+            doc($xmiFile)//packagedElement[@xmi:id=$attribute/defaultValue/@type]/@xmi:type
+            = "uml:Enumeration") then
+            if ($attribute/defaultValue/@instance) then
+                concat(concat($moduleName, "::"),
+                concat(replace(replace(tokenize(
+                $attribute/defaultValue/@instance, "-")[1], "Kind", ""), "Sort", ""),
+                concat(upper-case(substring(tokenize($attribute/defaultValue/@instance, "-")[2], 1, 1)),
+                substring(tokenize($attribute/defaultValue/@instance, "-")[2], 2))))
+            else ""
+        else ""
+    else ""
+};
+
 <qtxmi:XMI xmlns:xmi="http://www.omg.org/spec/XMI/20110701"
            xmlns:uml="http://www.omg.org/spec/UML/20110701"
            xmlns:qtxmi="http://www.qt-project.org">
 {
 for $namespace in doc($xmiFile)//(packagedElement[@xmi:type="uml:Package"] | uml:Package)
-let $namespaceName := concat("Q", $namespace/@name)
-let $moduleName    := replace($namespaceName, "^Q", "Qt")
+let $modulePrefix := concat("Q", $namespace/@name)
+let $moduleName    := replace($modulePrefix, "^Q", "Qt")
 return
 for $class in doc($xmiFile)//*[@xmi:id=$namespace/@xmi:id]/packagedElement[@xmi:type="uml:Class"]
 let $isAbstract := if ($class/@isAbstract) then $class/@isAbstract else "false"
 return
-<class name="{$namespaceName}{$class/@name}" isAbstract="{$isAbstract}">
+<class name="{$modulePrefix}{$class/@name}" module="{$moduleName}" isAbstract="{$isAbstract}">
     <documentation>{$class/ownedComment/body/text()}</documentation>
     {
     for $superclass in $class/generalization/@general |
                        $class/generalization/general/@xmi:idref |
                        $class/generalization/general/@href
-    let $superclassName := concat($namespaceName, $superclass)
+    let $superclassName := concat($modulePrefix, $superclass)
     return
     <superclass include="{$moduleName}/{$superclassName}" name="{$superclassName}"/>
     }
@@ -108,45 +135,23 @@ return
                              else "false"
     let $isMultivalued    := if ($attribute/upperValue/@value != "1") then "true"
                              else "false"
-    let $basicType        := if ($attribute/@type) then concat($namespaceName, xs:string($attribute/@type))
+    let $basicType        := if ($attribute/@type) then concat($modulePrefix, xs:string($attribute/@type))
                              else qtxmi:mappedPrimitiveType(tokenize($attribute/type/@href, "#")[last()])
-    let $defaultValue     := if ($attribute/defaultValue) then
-                                 if ($attribute/defaultValue/@xmi:type = "uml:LiteralBoolean") then
-                                     if ($attribute/defaultValue/@value) then
-                                         xs:string($attribute/defaultValue/@value)
-                                     else "false"
-                                 else
-                                 if ($attribute/defaultValue/@xmi:type = "uml:LiteralUnlimitedNatural") then
-                                     if ($attribute/defaultValue/@value) then
-                                         replace($attribute/defaultValue/@value, "\*", "-1")
-                                     else "0"
-                                 else
-                                 if ($attribute/defaultValue/@xmi:type = "uml:InstanceValue" and
-                                     doc($xmiFile)//packagedElement[@xmi:id=$attribute/defaultValue/@type]/@xmi:type = "uml:Enumeration") then
-                                     if ($attribute/defaultValue/@instance) then
-                                         concat(concat($moduleName, "::"),
-                                                concat(replace(replace(tokenize(
-                                                    $attribute/defaultValue/@instance, "-")[1], "Kind", ""), "Sort", ""),
-                                                    concat(upper-case(substring(tokenize($attribute/defaultValue/@instance, "-")[2], 1, 1)),
-                                                          substring(tokenize($attribute/defaultValue/@instance, "-")[2], 2))))
-                                     else ""
-                                 else ""
-                             else ""
     return
     <attribute name="{qtxmi:modifiedFunctionName($attribute)}" type="{qtxmi:handleType($attribute, $basicType)}"
                isMultivalued="{$isMultivalued}" isDerived="{$isDerived}" isDerivedUnion="{$isDerivedUnion}"
-               isReadOnly="{$isReadOnly}" isAssociationEnd="{$isAssociationEnd}" defaultValue="{$defaultValue}">
+               isReadOnly="{$isReadOnly}" isAssociationEnd="{$isAssociationEnd}" defaultValue="{qtxmi:defaultValue($attribute, $moduleName)}">
     {
-        for $subsettedProperty in tokenize($attribute/@subsettedProperty, " ")
-        where doc($xmiFile)//ownedAttribute[@xmi:id=$subsettedProperty]
+        for $subsettedPropertyName in tokenize($attribute/@subsettedProperty, " ")
+        let $subsettedProperty := doc($xmiFile)//ownedAttribute[@xmi:id=$subsettedPropertyName]
         return
-        <subsettedProperty name="{$namespaceName}{tokenize($subsettedProperty, '-')[1]}::{qtxmi:modifiedFunctionName(doc($xmiFile)//ownedAttribute[@xmi:id=$subsettedProperty])}"/>
+        <subsettedProperty name="{$modulePrefix}{tokenize($subsettedPropertyName, '-')[1]}::{qtxmi:modifiedFunctionName($subsettedProperty)}"/>
     }
     {
-        for $redefinedProperty in tokenize($attribute/@redefinedProperty, " ")
-        where doc($xmiFile)//ownedAttribute[@xmi:id=$redefinedProperty]
+        for $redefinedPropertyName in tokenize($attribute/@redefinedProperty, " ")
+        let $redefinedProperty := doc($xmiFile)//ownedAttribute[@xmi:id=$redefinedPropertyName]
         return
-        <redefinedProperty name="{$namespaceName}{tokenize($redefinedProperty, '-')[1]}::{qtxmi:modifiedFunctionName(doc($xmiFile)//ownedAttribute[@xmi:id=$redefinedProperty])}"/>
+        <redefinedProperty name="{$modulePrefix}{tokenize($redefinedPropertyName, '-')[1]}::{qtxmi:modifiedFunctionName($redefinedProperty)}"/>
     }
     </attribute>
     }
