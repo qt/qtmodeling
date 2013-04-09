@@ -1,0 +1,8 @@
+Code-Review-1: Sergio Ahumada <sergio.ahumada@digia.com>
+Sanity-Review+1: Qt Sanity Bot <qt_sanitybot@qt-project.org>
+Code-Review+2: Sandro S. Andrade <sandroandrade@kde.org>
+Submitted-by: Sandro S. Andrade <sandroandrade@kde.org>
+Submitted-at: Tue, 09 Apr 2013 14:28:04 +0200
+Reviewed-on: https://codereview.qt-project.org/53243
+Project: qt/qtmodeling
+Branch: refs/heads/master
