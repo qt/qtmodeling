@@ -30,5 +30,5 @@
 );
 
 %dependencies = (
-    "qtbase" => "refs/heads/master",
+    "qtbase" => "refs/heads/dev",
 );
