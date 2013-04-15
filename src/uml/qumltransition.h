@@ -1,38 +1,38 @@
 /****************************************************************************
 **
-** Copyright (C) 2012 Sandro S. Andrade <sandroandrade@kde.org>
-** Contact: http://www.qt-project.org/
+** Copyright (C) 2013 Sandro S. Andrade <sandroandrade@kde.org>
+** Contact: http://www.qt-project.org/legal
 **
 ** This file is part of the QtUml module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
-** GNU Lesser General Public License Usage
-** This file may be used under the terms of the GNU Lesser General Public
-** License version 2.1 as published by the Free Software Foundation and
-** appearing in the file LICENSE.LGPL included in the packaging of this
-** file. Please review the following information to ensure the GNU Lesser
-** General Public License version 2.1 requirements will be met:
-** http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
+** Commercial License Usage
+** Licensees holding valid commercial Qt licenses may use this file in
+** accordance with the commercial license agreement provided with the
+** Software or, alternatively, in accordance with the terms contained in
+** a written agreement between you and Digia.  For licensing terms and
+** conditions see http://qt.digia.com/licensing.  For further information
+** use the contact form at http://qt.digia.com/contact-us.
 **
-** In addition, as a special exception, Nokia gives you certain additional
-** rights. These rights are described in the Nokia  LGPL Exception
+** GNU Lesser General Public License Usage
+** Alternatively, this file may be used under the terms of the GNU Lesser
+** General Public License version 2.1 as published by the Free Software
+** Foundation and appearing in the file LICENSE.LGPL included in the
+** packaging of this file.  Please review the following information to
+** ensure the GNU Lesser General Public License version 2.1 requirements
+** will be met: http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
+**
+** In addition, as a special exception, Digia gives you certain additional
+** rights.  These rights are described in the Digia Qt LGPL Exception
 ** version 1.1, included in the file LGPL_EXCEPTION.txt in this package.
 **
 ** GNU General Public License Usage
-** Alternatively, this file may be used under the terms of the GNU General
-** Public License version 3.0 as published by the Free Software Foundation
-** and appearing in the file LICENSE.GPL included in the packaging of this
-** file. Please review the following information to ensure the GNU General
-** Public License version 3.0 requirements will be met:
-** http://www.gnu.org/copyleft/gpl.html.
-**
-** Other Usage
-** Alternatively, this file may be used in accordance with the terms and
-** conditions contained in a signed written agreement between you and Nokia.
-**
-**
-**
-**
+** Alternatively, this file may be used under the terms of the GNU
+** General Public License version 3.0 as published by the Free Software
+** Foundation and appearing in the file LICENSE.GPL included in the
+** packaging of this file.  Please review the following information to
+** ensure the GNU General Public License version 3.0 requirements will be
+** met: http://www.gnu.org/copyleft/gpl.html.
 **
 **
 ** $QT_END_LICENSE$
@@ -99,14 +99,14 @@ class Q_UML_EXPORT QUmlTransition : public QWrappedObject
     Q_PROPERTY(QSet<QUmlNamedElement *> ownedMembers READ ownedMembers)
 
     Q_PROPERTY(QtUml::TransitionKind kind READ kind WRITE setKind RESET unsetKind)
-    Q_PROPERTY(QUmlConstraint * guard READ guard WRITE setGuard)
-    Q_PROPERTY(QUmlVertex * target READ target WRITE setTarget)
-    Q_PROPERTY(QUmlBehavior * effect READ effect WRITE setEffect)
     Q_PROPERTY(QUmlRegion * container READ container WRITE setContainer)
     Q_PROPERTY(QUmlClassifier * redefinitionContext READ redefinitionContext STORED false)
+    Q_PROPERTY(QSet<QUmlTrigger *> triggers READ triggers)
+    Q_PROPERTY(QUmlConstraint * guard READ guard WRITE setGuard)
+    Q_PROPERTY(QUmlBehavior * effect READ effect WRITE setEffect)
+    Q_PROPERTY(QUmlVertex * target READ target WRITE setTarget)
     Q_PROPERTY(QUmlTransition * redefinedTransition READ redefinedTransition WRITE setRedefinedTransition)
     Q_PROPERTY(QUmlVertex * source READ source WRITE setSource)
-    Q_PROPERTY(QSet<QUmlTrigger *> triggers READ triggers)
 
     Q_DISABLE_COPY(QUmlTransition)
     Q_DECLARE_PRIVATE(QUmlTransition)
@@ -165,22 +165,22 @@ public:
     Q_INVOKABLE void unsetKind();
 
     // Association ends from QUmlTransition
-    Q_INVOKABLE QUmlConstraint *guard() const;
-    Q_INVOKABLE void setGuard(QUmlConstraint *guard);
-    Q_INVOKABLE QUmlVertex *target() const;
-    Q_INVOKABLE void setTarget(QUmlVertex *target);
-    Q_INVOKABLE QUmlBehavior *effect() const;
-    Q_INVOKABLE void setEffect(QUmlBehavior *effect);
     Q_INVOKABLE QUmlRegion *container() const;
     Q_INVOKABLE void setContainer(QUmlRegion *container);
     Q_INVOKABLE QUmlClassifier *redefinitionContext() const;
+    Q_INVOKABLE QSet<QUmlTrigger *> triggers() const;
+    Q_INVOKABLE void addTrigger(QUmlTrigger *trigger);
+    Q_INVOKABLE void removeTrigger(QUmlTrigger *trigger);
+    Q_INVOKABLE QUmlConstraint *guard() const;
+    Q_INVOKABLE void setGuard(QUmlConstraint *guard);
+    Q_INVOKABLE QUmlBehavior *effect() const;
+    Q_INVOKABLE void setEffect(QUmlBehavior *effect);
+    Q_INVOKABLE QUmlVertex *target() const;
+    Q_INVOKABLE void setTarget(QUmlVertex *target);
     Q_INVOKABLE QUmlTransition *redefinedTransition() const;
     Q_INVOKABLE void setRedefinedTransition(QUmlTransition *redefinedTransition);
     Q_INVOKABLE QUmlVertex *source() const;
     Q_INVOKABLE void setSource(QUmlVertex *source);
-    Q_INVOKABLE QSet<QUmlTrigger *> triggers() const;
-    Q_INVOKABLE void addTrigger(QUmlTrigger *trigger);
-    Q_INVOKABLE void removeTrigger(QUmlTrigger *trigger);
 
     // Operations
     Q_INVOKABLE QUmlStateMachine *containingStateMachine() const;
