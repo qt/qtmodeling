@@ -1,44 +1,43 @@
 /****************************************************************************
 **
-** Copyright (C) 2012 Sandro S. Andrade <sandroandrade@kde.org>
-** Contact: http://www.qt-project.org/
+** Copyright (C) 2013 Sandro S. Andrade <sandroandrade@kde.org>
+** Contact: http://www.qt-project.org/legal
 **
 ** This file is part of the QtUml module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
-** GNU Lesser General Public License Usage
-** This file may be used under the terms of the GNU Lesser General Public
-** License version 2.1 as published by the Free Software Foundation and
-** appearing in the file LICENSE.LGPL included in the packaging of this
-** file. Please review the following information to ensure the GNU Lesser
-** General Public License version 2.1 requirements will be met:
-** http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
+** Commercial License Usage
+** Licensees holding valid commercial Qt licenses may use this file in
+** accordance with the commercial license agreement provided with the
+** Software or, alternatively, in accordance with the terms contained in
+** a written agreement between you and Digia.  For licensing terms and
+** conditions see http://qt.digia.com/licensing.  For further information
+** use the contact form at http://qt.digia.com/contact-us.
 **
-** In addition, as a special exception, Nokia gives you certain additional
-** rights. These rights are described in the Nokia Qt LGPL Exception
+** GNU Lesser General Public License Usage
+** Alternatively, this file may be used under the terms of the GNU Lesser
+** General Public License version 2.1 as published by the Free Software
+** Foundation and appearing in the file LICENSE.LGPL included in the
+** packaging of this file.  Please review the following information to
+** ensure the GNU Lesser General Public License version 2.1 requirements
+** will be met: http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
+**
+** In addition, as a special exception, Digia gives you certain additional
+** rights.  These rights are described in the Digia Qt LGPL Exception
 ** version 1.1, included in the file LGPL_EXCEPTION.txt in this package.
 **
 ** GNU General Public License Usage
-** Alternatively, this file may be used under the terms of the GNU General
-** Public License version 3.0 as published by the Free Software Foundation
-** and appearing in the file LICENSE.GPL included in the packaging of this
-** file. Please review the following information to ensure the GNU General
-** Public License version 3.0 requirements will be met:
-** http://www.gnu.org/copyleft/gpl.html.
-**
-** Other Usage
-** Alternatively, this file may be used in accordance with the terms and
-** conditions contained in a signed written agreement between you and Nokia.
-**
-**
-**
-**
+** Alternatively, this file may be used under the terms of the GNU
+** General Public License version 3.0 as published by the Free Software
+** Foundation and appearing in the file LICENSE.GPL included in the
+** packaging of this file.  Please review the following information to
+** ensure the GNU General Public License version 3.0 requirements will be
+** met: http://www.gnu.org/copyleft/gpl.html.
 **
 **
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-
 #include "qumltransition.h"
 #include "qumltransition_p.h"
 
@@ -58,10 +57,10 @@ QT_BEGIN_NAMESPACE
 
 QUmlTransitionPrivate::QUmlTransitionPrivate() :
     kind(QtUml::TransitionExternal),
-    guard(0),
-    target(0),
-    effect(0),
     container(0),
+    guard(0),
+    effect(0),
+    target(0),
     redefinedTransition(0),
     source(0)
 {
@@ -374,93 +373,6 @@ void QUmlTransition::unsetKind()
 // ---------------------------------------------------------------
 
 /*!
-    A guard is a constraint that provides a fine-grained control over the firing of the transition. The guard is evaluated when an event occurrence is dispatched by the state machine. If the guard is true at that time, the transition may be enabled, otherwise, it is disabled. Guards should be pure expressions without side effects. Guard expressions with side effects are ill formed.
- */
-QUmlConstraint *QUmlTransition::guard() const
-{
-    // This is a read-write association end
-
-    Q_D(const QUmlTransition);
-    return d->guard;
-}
-
-void QUmlTransition::setGuard(QUmlConstraint *guard)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlTransition);
-    if (d->guard != guard) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlNamespace *>(this))->removeOwnedRule(qwrappedobject_cast<QUmlConstraint *>(d->guard));
-
-        d->guard = guard;
-
-        // Adjust subsetted property(ies)
-        if (guard) {
-            (qwrappedobject_cast<QUmlNamespace *>(this))->addOwnedRule(qwrappedobject_cast<QUmlConstraint *>(guard));
-        }
-    }
-}
-
-/*!
-    Designates the target vertex that is reached when the transition is taken.
- */
-QUmlVertex *QUmlTransition::target() const
-{
-    // This is a read-write association end
-
-    Q_D(const QUmlTransition);
-    return d->target;
-}
-
-void QUmlTransition::setTarget(QUmlVertex *target)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlTransition);
-    if (d->target != target) {
-        // Adjust opposite property
-        if (d->target)
-            (qwrappedobject_cast<QUmlVertexPrivate *>(d->target->d_func()))->removeIncoming(this);
-
-        d->target = target;
-
-        // Adjust opposite property
-        if (target)
-            (qwrappedobject_cast<QUmlVertexPrivate *>(target->d_func()))->addIncoming(this);
-    }
-}
-
-/*!
-    Specifies an optional behavior to be performed when the transition fires.
- */
-QUmlBehavior *QUmlTransition::effect() const
-{
-    // This is a read-write association end
-
-    Q_D(const QUmlTransition);
-    return d->effect;
-}
-
-void QUmlTransition::setEffect(QUmlBehavior *effect)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlTransition);
-    if (d->effect != effect) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QUmlElement *>(d->effect));
-
-        d->effect = effect;
-
-        // Adjust subsetted property(ies)
-        if (effect) {
-            (qwrappedobject_cast<QUmlElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QUmlElement *>(effect));
-        }
-    }
-}
-
-/*!
     Designates the region that owns this transition.
  */
 QUmlRegion *QUmlTransition::container() const
@@ -502,6 +414,130 @@ QUmlClassifier *QUmlTransition::redefinitionContext() const
     qWarning("QUmlTransition::redefinitionContext: to be implemented (this is a derived associationend)");
 
     return 0; // change here to your derived return
+}
+
+/*!
+    Specifies the triggers that may fire the transition.
+ */
+QSet<QUmlTrigger *> QUmlTransition::triggers() const
+{
+    // This is a read-write association end
+
+    Q_D(const QUmlTransition);
+    return d->triggers;
+}
+
+void QUmlTransition::addTrigger(QUmlTrigger *trigger)
+{
+    // This is a read-write association end
+
+    Q_D(QUmlTransition);
+    if (!d->triggers.contains(trigger)) {
+        d->triggers.insert(trigger);
+
+        // Adjust subsetted property(ies)
+        (qwrappedobject_cast<QUmlElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QUmlElement *>(trigger));
+    }
+}
+
+void QUmlTransition::removeTrigger(QUmlTrigger *trigger)
+{
+    // This is a read-write association end
+
+    Q_D(QUmlTransition);
+    if (d->triggers.contains(trigger)) {
+        d->triggers.remove(trigger);
+
+        // Adjust subsetted property(ies)
+        (qwrappedobject_cast<QUmlElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QUmlElement *>(trigger));
+    }
+}
+
+/*!
+    A guard is a constraint that provides a fine-grained control over the firing of the transition. The guard is evaluated when an event occurrence is dispatched by the state machine. If the guard is true at that time, the transition may be enabled, otherwise, it is disabled. Guards should be pure expressions without side effects. Guard expressions with side effects are ill formed.
+ */
+QUmlConstraint *QUmlTransition::guard() const
+{
+    // This is a read-write association end
+
+    Q_D(const QUmlTransition);
+    return d->guard;
+}
+
+void QUmlTransition::setGuard(QUmlConstraint *guard)
+{
+    // This is a read-write association end
+
+    Q_D(QUmlTransition);
+    if (d->guard != guard) {
+        // Adjust subsetted property(ies)
+        (qwrappedobject_cast<QUmlNamespace *>(this))->removeOwnedRule(qwrappedobject_cast<QUmlConstraint *>(d->guard));
+
+        d->guard = guard;
+
+        // Adjust subsetted property(ies)
+        if (guard) {
+            (qwrappedobject_cast<QUmlNamespace *>(this))->addOwnedRule(qwrappedobject_cast<QUmlConstraint *>(guard));
+        }
+    }
+}
+
+/*!
+    Specifies an optional behavior to be performed when the transition fires.
+ */
+QUmlBehavior *QUmlTransition::effect() const
+{
+    // This is a read-write association end
+
+    Q_D(const QUmlTransition);
+    return d->effect;
+}
+
+void QUmlTransition::setEffect(QUmlBehavior *effect)
+{
+    // This is a read-write association end
+
+    Q_D(QUmlTransition);
+    if (d->effect != effect) {
+        // Adjust subsetted property(ies)
+        (qwrappedobject_cast<QUmlElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QUmlElement *>(d->effect));
+
+        d->effect = effect;
+
+        // Adjust subsetted property(ies)
+        if (effect) {
+            (qwrappedobject_cast<QUmlElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QUmlElement *>(effect));
+        }
+    }
+}
+
+/*!
+    Designates the target vertex that is reached when the transition is taken.
+ */
+QUmlVertex *QUmlTransition::target() const
+{
+    // This is a read-write association end
+
+    Q_D(const QUmlTransition);
+    return d->target;
+}
+
+void QUmlTransition::setTarget(QUmlVertex *target)
+{
+    // This is a read-write association end
+
+    Q_D(QUmlTransition);
+    if (d->target != target) {
+        // Adjust opposite property
+        if (d->target)
+            (qwrappedobject_cast<QUmlVertexPrivate *>(d->target->d_func()))->removeIncoming(this);
+
+        d->target = target;
+
+        // Adjust opposite property
+        if (target)
+            (qwrappedobject_cast<QUmlVertexPrivate *>(target->d_func()))->addIncoming(this);
+    }
 }
 
 /*!
@@ -563,43 +599,6 @@ void QUmlTransition::setSource(QUmlVertex *source)
 }
 
 /*!
-    Specifies the triggers that may fire the transition.
- */
-QSet<QUmlTrigger *> QUmlTransition::triggers() const
-{
-    // This is a read-write association end
-
-    Q_D(const QUmlTransition);
-    return d->triggers;
-}
-
-void QUmlTransition::addTrigger(QUmlTrigger *trigger)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlTransition);
-    if (!d->triggers.contains(trigger)) {
-        d->triggers.insert(trigger);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QUmlElement *>(trigger));
-    }
-}
-
-void QUmlTransition::removeTrigger(QUmlTrigger *trigger)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlTransition);
-    if (d->triggers.contains(trigger)) {
-        d->triggers.remove(trigger);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QUmlElement *>(trigger));
-    }
-}
-
-/*!
     The query containingStateMachine() returns the state machine that contains the transition either directly or transitively.
  */
 QUmlStateMachine *QUmlTransition::containingStateMachine() const
@@ -629,27 +628,6 @@ void QUmlTransition::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("kind")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("kind")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("guard")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("guard")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("guard")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A guard is a constraint that provides a fine-grained control over the firing of the transition. The guard is evaluated when an event occurrence is dispatched by the state machine. If the guard is true at that time, the transition may be enabled, otherwise, it is disabled. Guards should be pure expressions without side effects. Guard expressions with side effects are ill formed.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("guard")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("guard")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlNamespace::ownedRules");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("guard")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("target")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("target")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("target")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Designates the target vertex that is reached when the transition is taken.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("target")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("target")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("target")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlVertex::incoming");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("effect")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("effect")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("effect")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies an optional behavior to be performed when the transition fires.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("effect")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("effect")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("effect")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("container")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("container")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("container")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Designates the region that owns this transition.");
@@ -664,6 +642,34 @@ void QUmlTransition::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("redefinitionContext")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("redefinitionContext")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("triggers")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("triggers")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("triggers")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the triggers that may fire the transition.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("triggers")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("triggers")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("triggers")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("guard")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("guard")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("guard")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A guard is a constraint that provides a fine-grained control over the firing of the transition. The guard is evaluated when an event occurrence is dispatched by the state machine. If the guard is true at that time, the transition may be enabled, otherwise, it is disabled. Guards should be pure expressions without side effects. Guard expressions with side effects are ill formed.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("guard")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("guard")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlNamespace::ownedRules");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("guard")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("effect")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("effect")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("effect")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies an optional behavior to be performed when the transition fires.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("effect")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("effect")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("effect")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("target")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("target")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("target")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Designates the target vertex that is reached when the transition is taken.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("target")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("target")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("target")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlVertex::incoming");
+
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("redefinedTransition")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("redefinedTransition")][QtWrappedObjects::IsDerivedUnionRole] = false;
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("redefinedTransition")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The transition that is redefined by this transition.");
@@ -677,13 +683,6 @@ void QUmlTransition::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("source")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("source")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("source")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlVertex::outgoing");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("triggers")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("triggers")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("triggers")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the triggers that may fire the transition.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("triggers")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("triggers")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTransition")][QString::fromLatin1("triggers")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
 
     QWrappedObject::setPropertyData();
 }
