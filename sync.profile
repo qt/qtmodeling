@@ -31,4 +31,5 @@
 
 %dependencies = (
     "qtbase" => "refs/heads/stable",
+    "qtscript" => "refs/heads/stable",
 );
