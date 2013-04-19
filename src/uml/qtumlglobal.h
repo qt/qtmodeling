@@ -43,7 +43,7 @@
 
 #include <QtCore/qglobal.h>
 
-QT_BEGIN_HEADER
+QT_BEGIN_NAMESPACE
 
 #ifndef QT_STATIC
 #    if defined(QT_BUILD_UML_LIB)
@@ -55,7 +55,7 @@ QT_BEGIN_HEADER
 #    define Q_UML_EXPORT
 #endif
 
-QT_END_HEADER
+QT_END_NAMESPACE
 
 #endif // QTUMLGLOBAL_H
 

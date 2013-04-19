@@ -137,7 +137,7 @@ QWrappedObject *QXmiReader::readFile(QIODevice *device)
     device->reset();
     d->reader.clear();
     d->reader.setDevice(device);
-    QStack<QPair<QString, QWrappedObject *>> stack;
+    QStack< QPair<QString, QWrappedObject *> > stack;
 
     while (!d->reader.atEnd()) {
         d->reader.readNext();

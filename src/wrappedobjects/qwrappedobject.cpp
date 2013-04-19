@@ -68,7 +68,7 @@ QWrappedObjectPrivate *QWrappedObjectPrivate::get(QWrappedObject *o)
     \brief The QWrappedObject class provides a QObject which can be wrapped by another QWrappedObject.
  */
 
-QHash<QString, QHash<QString, QHash<QtWrappedObjects::MetaPropertyDataRole, QVariant>>> QWrappedObject::propertyDataHash;
+QHash< QString, QHash< QString, QHash<QtWrappedObjects::MetaPropertyDataRole, QVariant> > > QWrappedObject::propertyDataHash;
 
 QWrappedObject::QWrappedObject(QWrappedObject *wrapper, QWrappedObject *parent) :
     QObject(*new QWrappedObjectPrivate, parent)

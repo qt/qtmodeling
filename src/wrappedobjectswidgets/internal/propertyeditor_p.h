@@ -72,6 +72,7 @@ Q_SIGNALS:
 
 private Q_SLOTS:
     void resetClicked();
+    void currentIndexChanged();
 
 private:
     QWidget *_widget;

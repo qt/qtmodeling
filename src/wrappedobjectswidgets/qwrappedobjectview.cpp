@@ -133,18 +133,9 @@ void QWrappedObjectView::setModel(QAbstractItemModel *model)
         disconnect(d->treeView->selectionModel(), 0, this, 0);
     d->treeView->setModel(model);
     if (model) {
-        connect(model, &QAbstractItemModel::modelReset, [=]() {
-            d->treeView->setCurrentIndex(model->index(0, 0));
-            d->treeView->expandAll();
-            d->treeView->resizeColumnToContents(0);
-            d->treeView->resizeColumnToContents(1);
-        });
-        connect(model, &QAbstractItemModel::rowsInserted, [=](const QModelIndex &parent, int first){
-                d->treeView->setCurrentIndex(model->index(first, 0, parent));
-        });
-        connect(d->treeView->selectionModel(), &QItemSelectionModel::selectionChanged, [=](const QItemSelection &selected){
-                emit wrappedObjectChanged(qvariant_cast<QWrappedObject *>(selected.indexes().first().data(Qt::UserRole)));
-        });
+        connect(model, &QAbstractItemModel::modelReset, this, &QWrappedObjectView::modelReset);
+        connect(model, &QAbstractItemModel::rowsInserted, this, &QWrappedObjectView::rowsInserted);
+        connect(d->treeView->selectionModel(), &QItemSelectionModel::selectionChanged, this, &QWrappedObjectView::selectionChanged);
     }
 }
 
@@ -213,6 +204,28 @@ void QWrappedObjectView::deleteObject()
         d->treeView->resizeColumnToContents(1);
         usedObject->deleteLater();
     }
+}
+
+void QWrappedObjectView::modelReset()
+{
+    Q_D(QWrappedObjectView);
+
+    d->treeView->setCurrentIndex(d->treeView->model()->index(0, 0));
+    d->treeView->expandAll();
+    d->treeView->resizeColumnToContents(0);
+    d->treeView->resizeColumnToContents(1);
+}
+
+void QWrappedObjectView::rowsInserted(const QModelIndex &parent, int first)
+{
+    Q_D(QWrappedObjectView);
+
+    d->treeView->setCurrentIndex(d->treeView->model()->index(first, 0, parent));
+}
+
+void QWrappedObjectView::selectionChanged(const QItemSelection &selected)
+{
+    emit wrappedObjectChanged(qvariant_cast<QWrappedObject *>(selected.indexes().first().data(Qt::UserRole)));
 }
 
 void QWrappedObjectView::removeObjectUse(QWrappedObject *container, QWrappedObject *usedObject)

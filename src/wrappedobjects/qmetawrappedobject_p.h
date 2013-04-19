@@ -59,7 +59,7 @@ public:
 
     const QWrappedObject *wrappedObject;
     QList<QMetaPropertyInfo> propertyInfos;
-    QList<QPair<QString, int>> propertyGroupInfos;
+    QList< QPair<QString, int> > propertyGroupInfos;
 
 protected:
     QMetaWrappedObject *q_ptr;

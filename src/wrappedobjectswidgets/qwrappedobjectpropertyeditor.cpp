@@ -88,11 +88,7 @@ QWrappedObjectPropertyEditor::QWrappedObjectPropertyEditor(QWidget *parent, Qt::
 
     connect(d->filter, &FilterWidget::filterChanged,
             d->proxyModel, static_cast<void (QSortFilterProxyModel::*)(const QString &)>(&QSortFilterProxyModel::setFilterRegExp));
-    connect(d->filter, &FilterWidget::filterChanged, [=](){
-        d->treeView->expandAll();
-        d->treeView->resizeColumnToContents(0);
-        d->treeView->resizeColumnToContents(1);
-    });
+    connect(d->filter, &FilterWidget::filterChanged, this, &QWrappedObjectPropertyEditor::filterChanged);
 }
 
 void QWrappedObjectPropertyEditor::setModel(QWrappedObjectPropertyModel *propertyModel)
@@ -104,12 +100,7 @@ void QWrappedObjectPropertyEditor::setModel(QWrappedObjectPropertyModel *propert
     d->propertyModel = propertyModel;
     d->proxyModel->setSourceModel(d->propertyModel);
     if (propertyModel) {
-        connect(propertyModel, &QAbstractItemModel::modelReset, [=]() {
-            d->label->setText(QString::fromLatin1("%1: %2").arg(d->propertyModel->wrappedObject()->objectName()).arg(QString::fromLatin1(d->propertyModel->wrappedObject()->metaObject()->className())));
-            d->treeView->expandAll();
-            d->treeView->resizeColumnToContents(0);
-            d->treeView->resizeColumnToContents(1);
-        });
+        connect(propertyModel, &QAbstractItemModel::modelReset, this, &QWrappedObjectPropertyEditor::modelReset);
     }
 }
 
@@ -118,6 +109,25 @@ QWrappedObjectPropertyModel *QWrappedObjectPropertyEditor::model() const
     Q_D(const QWrappedObjectPropertyEditor);
 
     return d->propertyModel;
+}
+
+void QWrappedObjectPropertyEditor::filterChanged()
+{
+    Q_D(QWrappedObjectPropertyEditor);
+
+    d->treeView->expandAll();
+    d->treeView->resizeColumnToContents(0);
+    d->treeView->resizeColumnToContents(1);
+}
+
+void QWrappedObjectPropertyEditor::modelReset()
+{
+    Q_D(QWrappedObjectPropertyEditor);
+
+    d->label->setText(QString::fromLatin1("%1: %2").arg(d->propertyModel->wrappedObject()->objectName()).arg(QString::fromLatin1(d->propertyModel->wrappedObject()->metaObject()->className())));
+    d->treeView->expandAll();
+    d->treeView->resizeColumnToContents(0);
+    d->treeView->resizeColumnToContents(1);
 }
 
 #include "moc_qwrappedobjectpropertyeditor.cpp"

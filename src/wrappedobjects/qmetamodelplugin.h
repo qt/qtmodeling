@@ -41,7 +41,7 @@
 #ifndef QTWRAPPEDOBJECTS_QMETAMODELPLUGIN_H
 #define QTWRAPPEDOBJECTS_QMETAMODELPLUGIN_H
 
-#include "qtwrappedobjectsglobal.h"
+#include <QtWrappedObjects/QtWrappedObjectsGlobal>
 
 #include <QtCore/QObject>
 

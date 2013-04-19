@@ -66,10 +66,11 @@ PropertyEditor::PropertyEditor(QWidget *widget, QMetaPropertyInfo *metaPropertyI
         layout->addWidget(toolButton);
     }
     setLayout(layout);
+
     if (QComboBox *comboBox = qobject_cast<QComboBox *>(_widget))
-        connect(comboBox, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), [=](){ emit commitData(this); });
+        connect(comboBox, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &PropertyEditor::currentIndexChanged);
     if (QCheckBox *checkBox = qobject_cast<QCheckBox *>(_widget))
-        connect(checkBox, &QCheckBox::stateChanged, [=](){ emit commitData(this); });
+        connect(checkBox, &QCheckBox::stateChanged, this, &PropertyEditor::currentIndexChanged);
 }
 
 int PropertyEditor::value() const
@@ -101,6 +102,11 @@ void PropertyEditor::resetClicked()
 {
     _metaPropertyInfo->metaProperty.reset(_metaPropertyInfo->propertyWrappedObject);
     emit closeEditor(this);
+}
+
+void PropertyEditor::currentIndexChanged()
+{
+    emit commitData(this);
 }
 
 #include "moc_propertyeditor_p.cpp"
