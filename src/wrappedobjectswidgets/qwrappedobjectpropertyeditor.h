@@ -41,7 +41,7 @@
 #ifndef QWRAPPEDOBJECTPROPERTYEDITOR_H
 #define QWRAPPEDOBJECTPROPERTYEDITOR_H
 
-#include <QtWrappedObjectWidgets/QtWrappedObjectWidgetsGlobal>
+#include <QtWrappedObjectsWidgets/QtWrappedObjectsWidgetsGlobal>
 
 #include <QtWidgets/QWidget>
 

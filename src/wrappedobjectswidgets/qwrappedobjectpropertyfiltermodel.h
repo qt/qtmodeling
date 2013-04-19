@@ -41,7 +41,7 @@
 #ifndef QWRAPPEDOBJECTPROPERTYFILTERMODEL_H
 #define QWRAPPEDOBJECTPROPERTYFILTERMODEL_H
 
-#include <QtWrappedObjectWidgets/QtWrappedObjectWidgetsGlobal>
+#include <QtWrappedObjectsWidgets/QtWrappedObjectsWidgetsGlobal>
 
 #include <QtCore/QSortFilterProxyModel>
 

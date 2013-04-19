@@ -41,7 +41,7 @@
 #ifndef QWRAPPEDOBJECTMODEL_H
 #define QWRAPPEDOBJECTMODEL_H
 
-#include <QtWrappedObjectWidgets/QtWrappedObjectWidgetsGlobal>
+#include <QtWrappedObjectsWidgets/QtWrappedObjectsWidgetsGlobal>
 
 #include <QtCore/QAbstractItemModel>
 

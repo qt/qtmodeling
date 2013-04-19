@@ -41,7 +41,7 @@
 #ifndef QWRAPPEDOBJECTVIEW_H
 #define QWRAPPEDOBJECTVIEW_H
 
-#include <QtWrappedObjectWidgets/QtWrappedObjectWidgetsGlobal>
+#include <QtWrappedObjectsWidgets/QtWrappedObjectsWidgetsGlobal>
 
 #include <QtWidgets/QWidget>
 
