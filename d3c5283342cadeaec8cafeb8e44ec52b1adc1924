@@ -1,0 +1,7 @@
+Sanity-Review+1: Qt Sanity Bot <qt_sanitybot@qt-project.org>
+Code-Review+2: Sandro S. Andrade <sandroandrade@kde.org>
+Submitted-by: Sandro S. Andrade <sandroandrade@kde.org>
+Submitted-at: Fri, 19 Apr 2013 22:59:49 +0200
+Reviewed-on: https://codereview.qt-project.org/54363
+Project: qt/qtmodeling
+Branch: refs/heads/master
