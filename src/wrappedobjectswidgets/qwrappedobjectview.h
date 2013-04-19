@@ -52,6 +52,7 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtWrappedObjectsWidgets)
 
 class QAbstractItemModel;
+class QItemSelection;
 class QWrappedObject;
 
 class QWrappedObjectViewPrivate;
@@ -79,6 +80,9 @@ protected:
 private Q_SLOTS:
     void handleAddMethod();
     void deleteObject();
+    void modelReset();
+    void rowsInserted(const QModelIndex &parent, int first);
+    void selectionChanged(const QItemSelection &selected);
 
 private:
     void removeObjectUse(QWrappedObject *container, QWrappedObject *usedObject);

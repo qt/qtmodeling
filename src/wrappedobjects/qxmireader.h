@@ -41,7 +41,7 @@
 #ifndef QTWRAPPEDOBJECTS_QXMIREADER_H
 #define QTWRAPPEDOBJECTS_QXMIREADER_H
 
-#include "qtwrappedobjectsglobal.h"
+#include <QtWrappedObjects/QtWrappedObjectsGlobal>
 
 #include <QtCore/QObject>
 

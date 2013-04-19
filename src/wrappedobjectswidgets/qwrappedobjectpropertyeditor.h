@@ -69,6 +69,10 @@ public:
 
 public Q_SLOTS:
     void setModel(QWrappedObjectPropertyModel *model);
+
+private Q_SLOTS:
+    void filterChanged();
+    void modelReset();
 };
 
 QT_END_NAMESPACE

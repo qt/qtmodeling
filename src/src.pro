@@ -1,4 +1,5 @@
 TEMPLATE = subdirs
 CONFIG  += ordered
 
-SUBDIRS = wrappedobjects wrappedobjectswidgets mof uml plugins
+SUBDIRS = wrappedobjects mof uml plugins
+qtHaveModule(widgets): SUBDIRS += wrappedobjectswidgets

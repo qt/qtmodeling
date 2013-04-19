@@ -41,8 +41,8 @@
 #ifndef QTWRAPPEDOBJECTS_QWRAPPEDOBJECT_H
 #define QTWRAPPEDOBJECTS_QWRAPPEDOBJECT_H
 
-#include "qtwrappedobjectsglobal.h"
-#include "qtwrappedobjectsnamespace.h"
+#include <QtWrappedObjects/QtWrappedObjectsGlobal>
+#include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
 #include <QtCore/QObject>
 
@@ -90,7 +90,7 @@ protected:
     void initialize(QWrappedObject *wrapper);
     virtual void setPropertyData();
 
-    static QHash<QString, QHash<QString, QHash<QtWrappedObjects::MetaPropertyDataRole, QVariant>>> propertyDataHash;
+    static QHash< QString, QHash< QString, QHash<QtWrappedObjects::MetaPropertyDataRole, QVariant> > > propertyDataHash;
 };
 
 QT_END_NAMESPACE
