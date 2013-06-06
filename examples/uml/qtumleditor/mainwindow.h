@@ -87,7 +87,7 @@ private:
     QWrappedObjectModel *_wrappedObjectModel;
 
     QString _currentFileName;
-    QHash<QString, QPair<QMetaModelPlugin *, QJsonObject>> _loadedPlugins;
+    QHash< QString, QPair<QMetaModelPlugin *, QJsonObject> > _loadedPlugins;
     QDialog *_aboutPluginsDialog;
     Ui::AboutPlugins *_aboutPlugins;
 

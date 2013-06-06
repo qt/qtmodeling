@@ -65,7 +65,7 @@ public:
 
     QWrappedObject *wrappedObject;
     QXmlStreamWriter writer;
-    QHash<QString, QMetaModelPlugin *> metaModelPlugins;
+    QHash< QString, QPair<QMetaModelPlugin *, QJsonObject> > metaModelPlugins;
     QList<QWrappedObject *> visitedObjects;
     QHash<QWrappedObject *, QString> idMap;
     QStringList idStack;

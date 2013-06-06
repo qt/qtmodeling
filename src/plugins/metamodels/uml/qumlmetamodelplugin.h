@@ -52,8 +52,6 @@ public:
     QUmlMetaModelPlugin(QObject *parent = 0);
 
     void initMetaModel(QScriptEngine *scriptEngine = 0);
-    QString metaModelNamespaceUri();
-    QString metaModelPrefix();
 };
 
 #endif // QUMLMETAMODELPLUGIN_H

@@ -46,6 +46,7 @@
 
 #include <QtCore/QDir>
 #include <QtCore/QStack>
+#include <QtCore/QJsonObject>
 #include <QtCore/QPluginLoader>
 #include <QtCore/QCoreApplication>
 
@@ -85,7 +86,7 @@ void QXmiReader::loadPlugins()
             QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
             QObject *plugin = loader.instance();
             if (plugin && (metaModelPlugin = qobject_cast<QMetaModelPlugin *>(plugin)))
-                d->metaModelPlugins.insert(metaModelPlugin->metaModelNamespaceUri(), metaModelPlugin);
+                d->metaModelPlugins.insert(loader.metaData().value(QString::fromLatin1("MetaData")).toObject().value(QString::fromLatin1("MetaModelNamespaceUri")).toString(), QPair<QMetaModelPlugin *, QJsonObject>(metaModelPlugin, loader.metaData().value(QString::fromLatin1("MetaData")).toObject()));
         }
     }
 }
@@ -104,11 +105,11 @@ QWrappedObject *QXmiReader::readFile(QIODevice *device)
 
         if (d->reader.isStartElement()) {
             foreach (const QXmlStreamNamespaceDeclaration &namespaceDeclaration, d->reader.namespaceDeclarations()) {
-                QMetaModelPlugin *metaModelPlugin = d->metaModelPlugins.value(namespaceDeclaration.namespaceUri().toString());
+                QMetaModelPlugin *metaModelPlugin = d->metaModelPlugins.value(namespaceDeclaration.namespaceUri().toString()).first;
                 if (metaModelPlugin) {
                     if (d->initMetaModel)
                        metaModelPlugin->initMetaModel(d->scriptEngine);
-                    d->xmlNamespaceToImplementationNamespace.insert(namespaceDeclaration.prefix().toString(), metaModelPlugin->metaModelPrefix());
+                    d->xmlNamespaceToImplementationNamespace.insert(namespaceDeclaration.prefix().toString(), d->metaModelPlugins.value(namespaceDeclaration.namespaceUri().toString()).second.value(QString::fromLatin1("MetaModelPrefix")).toString());
                 }
                 else {
                     d->errors << QString::fromLatin1("Could not find metamodel for namespace URI '%1'").arg(namespaceDeclaration.namespaceUri().toString());

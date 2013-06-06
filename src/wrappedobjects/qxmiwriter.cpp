@@ -46,6 +46,7 @@
 
 #include <QtCore/QSet>
 #include <QtCore/QDir>
+#include <QtCore/QJsonObject>
 #include <QtCore/QPluginLoader>
 #include <QtCore/QCoreApplication>
 #include <QtCore/QRegularExpression>
@@ -86,7 +87,7 @@ void QXmiWriter::loadPlugins()
             QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
             QObject *plugin = loader.instance();
             if (plugin && (metaModelPlugin = qobject_cast<QMetaModelPlugin *>(plugin)))
-                d->metaModelPlugins.insert(metaModelPlugin->metaModelNamespaceUri(), metaModelPlugin);
+                d->metaModelPlugins.insert(loader.metaData().value(QString::fromLatin1("MetaData")).toObject().value(QString::fromLatin1("MetaModelNamespaceUri")).toString(), QPair<QMetaModelPlugin *, QJsonObject>(metaModelPlugin, loader.metaData().value(QString::fromLatin1("MetaData")).toObject()));
         }
     }
 }
@@ -104,10 +105,11 @@ bool QXmiWriter::writeFile(QIODevice *device)
     int pos = 2;
     while (metaModelClassName[pos] == metaModelClassName[pos].toLower()) pos++;
     QString metaModelImplementationNamespace = metaModelClassName.left(pos);
-    foreach (QMetaModelPlugin *plugin, d->metaModelPlugins.values()) {
-        if (plugin->metaModelPrefix() == metaModelImplementationNamespace) {
-            d->metaModelXmlNamespace = plugin->metaModelPrefix().mid(1).toLower();
-            d->writer.writeNamespace(plugin->metaModelNamespaceUri(), d->metaModelXmlNamespace);
+    typedef QPair<QMetaModelPlugin *, QJsonObject> PluginData;
+    foreach (const PluginData &pair, d->metaModelPlugins.values()) {
+        if (pair.second.value(QString::fromLatin1("MetaModelPrefix")).toString() == metaModelImplementationNamespace) {
+            d->metaModelXmlNamespace = pair.second.value(QString::fromLatin1("MetaModelPrefix")).toString().mid(1).toLower();
+            d->writer.writeNamespace(pair.second.value(QString::fromLatin1("MetaModelNamespaceUri")).toString(), d->metaModelXmlNamespace);
             break;
         }
     }

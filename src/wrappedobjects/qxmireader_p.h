@@ -66,7 +66,7 @@ public:
 
     QXmlStreamReader reader;
     QHash<QString, QWrappedObject *> idMap;
-    QHash<QString, QMetaModelPlugin *> metaModelPlugins;
+    QHash< QString, QPair<QMetaModelPlugin *, QJsonObject> > metaModelPlugins;
     QHash<QString, QString> xmlNamespaceToImplementationNamespace;
     QStringList errors;
     QScriptEngine *scriptEngine;

@@ -52,13 +52,3 @@ void QUmlMetaModelPlugin::initMetaModel(QScriptEngine *scriptEngine)
     QUmlMetaModel::init(scriptEngine);
 }
 
-QString QUmlMetaModelPlugin::metaModelNamespaceUri()
-{
-    return QString::fromLatin1("http://www.omg.org/spec/UML/20110701");
-}
-
-QString QUmlMetaModelPlugin::metaModelPrefix()
-{
-    return QString::fromLatin1("QUml");
-}
-

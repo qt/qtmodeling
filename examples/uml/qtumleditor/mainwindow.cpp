@@ -42,9 +42,9 @@
 #include "ui_mainwindow.h"
 #include "ui_aboutplugins.h"
 
+#include <QtCore/QTimer>
 #include <QtCore/QPluginLoader>
 #include <QtCore/QStringListModel>
-#include <QtCore/QTimer>
 #include <QtCore/QStringListModel>
 
 #include <QtScript/QScriptValueIterator>
@@ -59,8 +59,8 @@
 #include <QtWrappedObjects/QXmiWriter>
 #include <QtWrappedObjects/QXmiReader>
 #include <QtWrappedObjects/QWrappedObject>
-#include <QtWrappedObjects/QMetaWrappedObject>
 #include <QtWrappedObjects/QMetaModelPlugin>
+#include <QtWrappedObjects/QMetaWrappedObject>
 #include <QtWrappedObjectsWidgets/QWrappedObjectModel>
 #include <QtWrappedObjectsWidgets/QWrappedObjectPropertyModel>
 
@@ -182,9 +182,9 @@ void MainWindow::on_actionAboutPlugins_triggered()
     int i = 0;
     typedef QPair<QMetaModelPlugin *, QJsonObject> PluginData;
     foreach (const PluginData &pair, _loadedPlugins.values()) {
-        _aboutPlugins->loadedPlugins->setItem(i, 0, new QTableWidgetItem(pair.second.value("className").toString()));
-        _aboutPlugins->loadedPlugins->setItem(i, 1, new QTableWidgetItem(pair.second.value("MetaData").toObject().value("Version").toString()));
-        _aboutPlugins->loadedPlugins->setItem(i, 2, new QTableWidgetItem(pair.second.value("MetaData").toObject().value("Vendor").toString()));
+        _aboutPlugins->loadedPlugins->setItem(i, 0, new QTableWidgetItem(pair.first->metaObject()->className()));
+        _aboutPlugins->loadedPlugins->setItem(i, 1, new QTableWidgetItem(pair.second.value("Version").toString()));
+        _aboutPlugins->loadedPlugins->setItem(i, 2, new QTableWidgetItem(pair.second.value("Vendor").toString()));
         _aboutPlugins->loadedPlugins->setRowHeight(i, 22);
         ++i;
     }
@@ -244,13 +244,14 @@ void MainWindow::loadPlugins()
 {
     QMetaModelPlugin *metaModelPlugin = 0;
     foreach (QString pluginPath, QCoreApplication::libraryPaths()) {
+        qDebug() << "Plugin path:" << pluginPath;
         QDir pluginsDir(pluginPath);
         pluginsDir.cd("metamodels");
         foreach (QString fileName, pluginsDir.entryList(QDir::Files)) {
             QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
             QObject *plugin = loader.instance();
             if (plugin && (metaModelPlugin = qobject_cast<QMetaModelPlugin *>(plugin))) {
-                _loadedPlugins.insert(metaModelPlugin->metaModelNamespaceUri(), QPair<QMetaModelPlugin *, QJsonObject>(metaModelPlugin, loader.metaData()));
+                _loadedPlugins.insert(loader.metaData().value(QString::fromLatin1("MetaData")).toObject().value(QString::fromLatin1("MetaModelNamespaceUri")).toString(), QPair<QMetaModelPlugin *, QJsonObject>(metaModelPlugin, loader.metaData().value(QString::fromLatin1("MetaData")).toObject()));
             }
         }
     }
