@@ -54,6 +54,7 @@ class QListView;
 namespace Ui {
     class MainWindow;
     class AboutPlugins;
+    class NewModel;
 }
 
 class QWrappedObject;
@@ -69,11 +70,14 @@ public:
     ~MainWindow();
 
 private Q_SLOTS:
+    void on_actionFileNew_triggered();
     void on_actionFileOpen_triggered();
     void on_actionFileSaveAs_triggered();
     void on_actionFileSave_triggered();
     void on_actionAboutPlugins_triggered();
     void on_psbJSEvaluate_clicked();
+
+    void metaModelChanged(QString newMetaModel);
 
 protected:
     bool eventFilter(QObject *obj, QEvent *event);
@@ -90,6 +94,8 @@ private:
     QHash< QString, QPair<QMetaModelPlugin *, QJsonObject> > _loadedPlugins;
     QDialog *_aboutPluginsDialog;
     Ui::AboutPlugins *_aboutPlugins;
+    QDialog *_newModelDialog;
+    Ui::NewModel *_newModel;
 
     QScriptEngine _engine;
     QListView *_codeCompletionView;

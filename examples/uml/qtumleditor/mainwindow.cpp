@@ -41,8 +41,10 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "ui_aboutplugins.h"
+#include "ui_newmodel.h"
 
 #include <QtCore/QTimer>
+#include <QtCore/QJsonArray>
 #include <QtCore/QPluginLoader>
 #include <QtCore/QStringListModel>
 #include <QtCore/QStringListModel>
@@ -70,15 +72,19 @@ MainWindow::MainWindow(QWidget *parent) :
     _wrappedObjectModel(new QWrappedObjectModel(this)),
     _aboutPluginsDialog(new QDialog(this)),
     _aboutPlugins(new Ui::AboutPlugins),
+    _newModelDialog(new QDialog(this)),
+    _newModel(new Ui::NewModel),
     _codeCompletionView(new QListView)
 {
     ui->setupUi(this);
     _codeCompletionView->setParent(ui->txeJavaScript);
     _codeCompletionView->hide();
 
-    _aboutPlugins->setupUi(_aboutPluginsDialog);
-
     ui->wrappedObjectView->setModel(_wrappedObjectModel);
+
+    _newModel->setupUi(_newModelDialog);
+    connect(_newModel->cboMetamodel, SIGNAL(currentIndexChanged(QString)), SLOT(metaModelChanged(QString)));
+    _aboutPlugins->setupUi(_aboutPluginsDialog);
 
     QWrappedObjectPropertyModel *propertyModel = new QWrappedObjectPropertyModel(this);
     ui->propertyEditor->setModel(propertyModel);
@@ -111,6 +117,35 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::on_actionFileNew_triggered()
+{
+    _newModel->lneModel->clear();
+    _newModel->cboMetamodel->clear();
+    int i = 0;
+    typedef QPair<QMetaModelPlugin *, QJsonObject> PluginData;
+    foreach (const PluginData &pair, _loadedPlugins.values()) {
+        _newModel->cboMetamodel->addItem(pair.first->metaObject()->className());
+        ++i;
+    }
+    int type;
+    if (_newModelDialog->exec() == QDialog::Accepted) {
+        foreach (const PluginData &pair, _loadedPlugins.values()) {
+            if (pair.first->metaObject()->className() == _newModel->cboMetamodel->currentText())
+                pair.first->initMetaModel(&_engine);
+        }
+        if ((type = QMetaType::type(_newModel->lstTopLevelContainers->currentItem()->text().append("*").toLatin1())) != QMetaType::UnknownType) {
+            const QMetaObject *metaObject = QMetaType::metaObjectForType(type);
+            if (metaObject) {
+                QWrappedObject *topLevelElement = dynamic_cast<QWrappedObject *>(metaObject->newInstance());
+                if (topLevelElement) {
+                    topLevelElement->setObjectName(_newModel->lneModel->text());
+                    _wrappedObjectModel->setWrappedObject(topLevelElement);
+                }
+            }
+        }
+    }
+}
+
 void MainWindow::saveXmi(QWrappedObject *rootElement)
 {
     QFile file(_currentFileName);
@@ -122,8 +157,10 @@ void MainWindow::saveXmi(QWrappedObject *rootElement)
     QXmiWriter writer(rootElement);
     if (!writer.writeFile(&file))
         QMessageBox::critical(this, tr("Save As"), tr("Error when writing XMI file !"));
-    else
+    else {
         statusBar()->showMessage("XMI file successfully saved !", 3000);
+        setWindowTitle(QFileInfo(file).fileName() + " - QtUml Editor");
+    }
 }
 
 QWrappedObject *MainWindow::loadXmi()
@@ -198,6 +235,20 @@ void MainWindow::on_psbJSEvaluate_clicked()
     ui->wrappedObjectView->updateSelected();
 }
 
+void MainWindow::metaModelChanged(QString newMetaModel)
+{
+    _newModel->lstTopLevelContainers->clear();
+    QVariantList list;
+    typedef QPair<QMetaModelPlugin *, QJsonObject> PluginData;
+    foreach (const PluginData &pair, _loadedPlugins.values()) {
+        if (pair.first->metaObject()->className() == newMetaModel)
+            list = pair.second.value("MetaModelTopLevelClasses").toArray().toVariantList();
+    }
+    foreach (QVariant variant, list)
+        _newModel->lstTopLevelContainers->addItem(variant.toString());
+    _newModel->lstTopLevelContainers->setCurrentRow(0);
+}
+
 bool MainWindow::eventFilter(QObject *obj, QEvent *event)
 {
     if (event->type() == QEvent::KeyPress && obj == ui->txeJavaScript) {
@@ -244,15 +295,13 @@ void MainWindow::loadPlugins()
 {
     QMetaModelPlugin *metaModelPlugin = 0;
     foreach (QString pluginPath, QCoreApplication::libraryPaths()) {
-        qDebug() << "Plugin path:" << pluginPath;
         QDir pluginsDir(pluginPath);
         pluginsDir.cd("metamodels");
         foreach (QString fileName, pluginsDir.entryList(QDir::Files)) {
             QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
             QObject *plugin = loader.instance();
-            if (plugin && (metaModelPlugin = qobject_cast<QMetaModelPlugin *>(plugin))) {
+            if (plugin && (metaModelPlugin = qobject_cast<QMetaModelPlugin *>(plugin)))
                 _loadedPlugins.insert(loader.metaData().value(QString::fromLatin1("MetaData")).toObject().value(QString::fromLatin1("MetaModelNamespaceUri")).toString(), QPair<QMetaModelPlugin *, QJsonObject>(metaModelPlugin, loader.metaData().value(QString::fromLatin1("MetaData")).toObject()));
-            }
         }
     }
 }

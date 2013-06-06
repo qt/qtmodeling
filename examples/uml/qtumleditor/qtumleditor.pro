@@ -24,7 +24,8 @@ SOURCES += main.cpp \
 HEADERS  += mainwindow.h \
 
 FORMS    += mainwindow.ui \
-            aboutplugins.ui
+            aboutplugins.ui \
+    newmodel.ui
 
 RESOURCES += \
     qtumleditor.qrc

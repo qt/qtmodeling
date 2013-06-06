@@ -1,6 +1,7 @@
 {
-    "Version": "2.4.1",
+    "Version": "2.4.1.1",
     "Vendor": "Qt Project",
     "MetaModelNamespaceUri": "http://www.omg.org/spec/UML/20110701",
-    "MetaModelPrefix": "QUml"
+    "MetaModelPrefix": "QUml",
+    "MetaModelTopLevelClasses": [ "QUmlModel", "QUmlPackage" ]
 }
