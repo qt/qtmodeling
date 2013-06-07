@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT = wrappedobjectswidgets script
+QT = wrappedobjectswidgets script quick
 
 TARGET = duse-mt
 TEMPLATE = app

@@ -61,6 +61,8 @@
 #include <QtWrappedObjectsWidgets/QWrappedObjectModel>
 #include <QtWrappedObjectsWidgets/QWrappedObjectPropertyModel>
 
+#include <QtQuick/QQuickView>
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
@@ -69,7 +71,8 @@ MainWindow::MainWindow(QWidget *parent) :
     _aboutPlugins(new Ui::AboutPlugins),
     _newModelDialog(new QDialog(this)),
     _newModel(new Ui::NewModel),
-    _codeCompletionView(new QListView)
+    _codeCompletionView(new QListView),
+    _quickView(new QQuickView)
 {
     ui->setupUi(this);
     _codeCompletionView->setParent(ui->txeJavaScript);
@@ -106,6 +109,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->txeJavaScript->installEventFilter(this);
     _codeCompletionView->installEventFilter(this);
+
+    setCentralWidget(QWidget::createWindowContainer(_quickView, this));
 }
 
 MainWindow::~MainWindow()

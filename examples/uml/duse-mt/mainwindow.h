@@ -50,6 +50,7 @@
 
 class QDialog;
 class QListView;
+class QQuickView;
 
 namespace Ui {
     class MainWindow;
@@ -100,6 +101,7 @@ private:
 
     QScriptEngine _engine;
     QListView *_codeCompletionView;
+    QQuickView *_quickView;
 };
 
 #endif // MAINWINDOW_H
