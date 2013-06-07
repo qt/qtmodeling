@@ -159,7 +159,7 @@ void MainWindow::saveXmi(QWrappedObject *rootElement)
         QMessageBox::critical(this, tr("Save As"), tr("Error when writing XMI file !"));
     else {
         statusBar()->showMessage("XMI file successfully saved !", 3000);
-        setWindowTitle(QFileInfo(file).fileName() + " - QtUml Editor");
+        setWindowTitle(QFileInfo(file).fileName() + " - DuSE-MT");
     }
 }
 
@@ -172,7 +172,7 @@ QWrappedObject *MainWindow::loadXmi()
     }
 
     QXmiReader reader(&_engine, true);
-    setWindowTitle(QFileInfo(file).fileName() + " - QtUml Editor");
+    setWindowTitle(QFileInfo(file).fileName() + " - DuSE-MT");
     QWrappedObject *wrappedObject = reader.readFile(&file);
     ui->txeIssues->setModel(new QStringListModel(reader.errorStrings()));
     if (wrappedObject) {

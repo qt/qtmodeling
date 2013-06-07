@@ -6,12 +6,12 @@
 
 QT = wrappedobjectswidgets script
 
-TARGET = qtumleditor
+TARGET = duse-mt
 TEMPLATE = app
 
 target.path = $$[QT_INSTALL_PREFIX]/bin
 
-xmi.path = $$[QT_INSTALL_PREFIX]/share/doc/packages/qtumleditor
+xmi.path = $$[QT_INSTALL_PREFIX]/share/doc/packages/duse-mt
 xmi.files = example.xmi
 
 INSTALLS += target xmi
@@ -28,4 +28,4 @@ FORMS    += mainwindow.ui \
     newmodel.ui
 
 RESOURCES += \
-    qtumleditor.qrc
+    duse-mt.qrc

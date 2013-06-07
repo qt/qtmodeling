@@ -1,4 +1,4 @@
 TEMPLATE = subdirs
 
 SUBDIRS = nested-packages profiles xmi-write xmi-read
-qtHaveModule(widgets): SUBDIRS += qtumleditor
+qtHaveModule(widgets): SUBDIRS += duse-mt

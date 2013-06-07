@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>QtUml Editor</string>
+   <string>DuSE-MT</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout_3"/>
@@ -255,7 +255,7 @@
   </widget>
   <action name="actionFileNew">
    <property name="icon">
-    <iconset theme="document-new" resource="qtumleditor.qrc">
+    <iconset theme="document-new" resource="duse-mt.qrc">
      <normaloff>:/icons/document-new.png</normaloff>:/icons/document-new.png</iconset>
    </property>
    <property name="text">
@@ -270,7 +270,7 @@
   </action>
   <action name="actionFileOpen">
    <property name="icon">
-    <iconset theme="document-open" resource="qtumleditor.qrc">
+    <iconset theme="document-open" resource="duse-mt.qrc">
      <normaloff>:/icons/document-open.png</normaloff>:/icons/document-open.png</iconset>
    </property>
    <property name="text">
@@ -282,7 +282,7 @@
   </action>
   <action name="actionFileSave">
    <property name="icon">
-    <iconset theme="document-save" resource="qtumleditor.qrc">
+    <iconset theme="document-save" resource="duse-mt.qrc">
      <normaloff>:/icons/document-save.png</normaloff>:/icons/document-save.png</iconset>
    </property>
    <property name="text">
@@ -297,7 +297,7 @@
   </action>
   <action name="actionFileSaveAs">
    <property name="icon">
-    <iconset theme="document-save-as" resource="qtumleditor.qrc">
+    <iconset theme="document-save-as" resource="duse-mt.qrc">
      <normaloff>:/icons/document-save-as.png</normaloff>:/icons/document-save-as.png</iconset>
    </property>
    <property name="text">
@@ -306,7 +306,7 @@
   </action>
   <action name="actionFileQuit">
    <property name="icon">
-    <iconset theme="application-exit" resource="qtumleditor.qrc">
+    <iconset theme="application-exit" resource="duse-mt.qrc">
      <normaloff>:/icons/application-exit.png</normaloff>:/icons/application-exit.png</iconset>
    </property>
    <property name="text">
@@ -318,7 +318,7 @@
   </action>
   <action name="actionAboutPlugins">
    <property name="icon">
-    <iconset theme="help-about" resource="qtumleditor.qrc">
+    <iconset theme="help-about" resource="duse-mt.qrc">
      <normaloff>:/icons/help-about.png</normaloff>:/icons/help-about.png</iconset>
    </property>
    <property name="text">
@@ -342,7 +342,7 @@
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="qtumleditor.qrc"/>
+  <include location="duse-mt.qrc"/>
  </resources>
  <connections>
   <connection>
