@@ -56,6 +56,8 @@
    <addaction name="actionFileNew"/>
    <addaction name="actionFileOpen"/>
    <addaction name="actionFileSave"/>
+   <addaction name="separator"/>
+   <addaction name="actionFileQuit"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <widget class="QDockWidget" name="dckInspector">

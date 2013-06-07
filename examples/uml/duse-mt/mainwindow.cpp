@@ -47,14 +47,9 @@
 #include <QtCore/QJsonArray>
 #include <QtCore/QPluginLoader>
 #include <QtCore/QStringListModel>
-#include <QtCore/QStringListModel>
 
-#include <QtScript/QScriptValueIterator>
-
-#include <QtWidgets/QListView>
 #include <QtWidgets/QFileDialog>
 #include <QtWidgets/QMessageBox>
-#include <QtWidgets/QListWidget>
 
 #include <QtGui/QKeyEvent>
 
@@ -91,6 +86,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(ui->wrappedObjectView, &QWrappedObjectView::wrappedObjectChanged,
             propertyModel, &QWrappedObjectPropertyModel::setWrappedObject);
+    connect(ui->wrappedObjectView, SIGNAL(wrappedObjectChanged(QWrappedObject*)), SLOT(wrappedObjectChanged(QWrappedObject*)));
     connect(propertyModel, &QWrappedObjectPropertyModel::indexChanged,
             _wrappedObjectModel, &QWrappedObjectModel::updateIndex);
 
@@ -128,6 +124,7 @@ void MainWindow::on_actionFileNew_triggered()
         ++i;
     }
     int type;
+    _newModel->lneModel->setFocus();
     if (_newModelDialog->exec() == QDialog::Accepted) {
         foreach (const PluginData &pair, _loadedPlugins.values()) {
             if (pair.first->metaObject()->className() == _newModel->cboMetamodel->currentText())
@@ -140,6 +137,9 @@ void MainWindow::on_actionFileNew_triggered()
                 if (topLevelElement) {
                     topLevelElement->setObjectName(_newModel->lneModel->text());
                     _wrappedObjectModel->setWrappedObject(topLevelElement);
+                    setWindowTitle("DuSE-MT");
+                    ui->txeJavaScript->setText("self");
+                    QTimer::singleShot(0, this, SLOT(on_psbJSEvaluate_clicked()));
                 }
             }
         }
@@ -176,9 +176,8 @@ QWrappedObject *MainWindow::loadXmi()
     QWrappedObject *wrappedObject = reader.readFile(&file);
     ui->txeIssues->setModel(new QStringListModel(reader.errorStrings()));
     if (wrappedObject) {
-        _engine.globalObject().setProperty("model", _engine.newQObject(wrappedObject));
         _engine.globalObject().setProperty(wrappedObject->objectName(), _engine.newQObject(wrappedObject));
-        ui->txeJavaScript->setText(wrappedObject->objectName());
+        ui->txeJavaScript->setText("self");
         QTimer::singleShot(0, this, SLOT(on_psbJSEvaluate_clicked()));
     }
 
@@ -247,6 +246,11 @@ void MainWindow::metaModelChanged(QString newMetaModel)
     foreach (QVariant variant, list)
         _newModel->lstTopLevelContainers->addItem(variant.toString());
     _newModel->lstTopLevelContainers->setCurrentRow(0);
+}
+
+void MainWindow::wrappedObjectChanged(QWrappedObject *wrappedObject)
+{
+    _engine.globalObject().setProperty("self", _engine.newQObject(wrappedObject));
 }
 
 bool MainWindow::eventFilter(QObject *obj, QEvent *event)

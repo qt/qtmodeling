@@ -78,6 +78,7 @@ private Q_SLOTS:
     void on_psbJSEvaluate_clicked();
 
     void metaModelChanged(QString newMetaModel);
+    void wrappedObjectChanged(QWrappedObject *wrappedObject);
 
 protected:
     bool eventFilter(QObject *obj, QEvent *event);
