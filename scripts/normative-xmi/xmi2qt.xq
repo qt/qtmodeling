@@ -17,6 +17,7 @@ declare function qtxmi:mappedBaseNamespace($xmiFile as xs:string*) as xs:string*
     else if ($xmiFile = "UML.xmi") then "QtUml"
     else if ($xmiFile = "MOF.xmi") then "QtMof"
     else if ($xmiFile = "MOF-merged.xmi") then "QtMof"
+    else if ($xmiFile = "DuSE.xmi") then "QtDuse"
     else "QtUnknown"
 };
 

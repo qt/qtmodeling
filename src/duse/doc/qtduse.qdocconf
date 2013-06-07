@@ -1,0 +1,41 @@
+include($QT_INSTALL_DOCS/global/qt-module-defaults.qdocconf)
+
+project                 = QtDuse
+description             = Qt DuSE Reference Documentation
+url                     = http://qt-project.org/doc/qtduse
+version                 = 5.0.0
+
+examplesinstallpath     = duse
+
+qhp.projects            = QtDuse
+
+qhp.QtDuse.file            = qtduse.qhp
+qhp.QtDuse.namespace           = org.qt-project.qtduse.500
+qhp.QtDuse.virtualFolder       = qtduse
+qhp.QtDuse.indexTitle          = Qt DuSE
+qhp.QtDuse.indexRoot           =
+
+qhp.QtDuse.filterAttributes    = qtduse 5.0.0 qtrefdoc
+qhp.QtDuse.customFilters.Qt.name = QtDuse 5.0.0
+qhp.QtDuse.customFilters.Qt.filterAttributes = qtduse 5.0.0
+
+qhp.QtDuse.subprojects         = classes
+qhp.QtDuse.subprojects.classes.title = C++ Classes
+qhp.QtDuse.subprojects.classes.indexTitle = Qt DuSE C++ Classes
+qhp.QtDuse.subprojects.classes.selectors = class fake:headerfile
+qhp.QtDuse.subprojects.classes.sortPages = true
+tagfile                 = ../../../doc/qtduse/qtduse.tags
+
+depends                 += qtcore qtxml qtdoc
+
+headerdirs  += ..
+
+sourcedirs  += .. \
+               ../../../examples/duse/doc/src
+
+exampledirs += ../../../examples/duse \
+               ../ \
+               snippets
+
+imagedirs   += images \
+               ../../../examples/duse/doc/images

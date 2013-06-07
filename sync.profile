@@ -3,6 +3,7 @@
     "QtWrappedObjectsWidgets" => "$basedir/src/wrappedobjectswidgets",
     "QtMof" => "$basedir/src/mof",
     "QtUml" => "$basedir/src/uml",
+    "QtDuse" => "$basedir/src/duse",
 );
 
 %moduleheaders = ( # restrict the module headers to those found in relative path
@@ -20,6 +21,9 @@
     "qtumlversion.h" => "QtUmlVersion",
     "qtumlglobal.h"  => "QtUmlGlobal",
     "qtumlnamespace.h"  => "QtUmlNamespace",
+    "qtduseversion.h" => "QtDuseVersion",
+    "qtduseglobal.h"  => "QtDuseGlobal",
+    "qtdusenamespace.h"  => "QtDuseNamespace",
 );
 
 %modulepris = (
@@ -27,6 +31,7 @@
     "QtWrappedObjectsWidgets" => "$basedir/modules/qtwrappedobjectswidgets.pri",
     "QtMof" => "$basedir/modules/qtmof.pri",
     "QtUml" => "$basedir/modules/qtuml.pri",
+    "QtDuse" => "$basedir/modules/qtduse.pri",
 );
 
 %dependencies = (

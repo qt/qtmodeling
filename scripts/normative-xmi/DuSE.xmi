@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.omg.org/spec/UML/20110701">
+  <uml:Package name="DuSE" xmi:id="">
+    <packageImport xmi:type="uml:PackageImport" xmi:id="_packageImport.0">
+      <importedPackage href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#_0"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Class" name="DesignSpace" xmi:id="DesignSpace">
+      <ownedAttribute xmi:type="uml:Property" visibility="public" name="name" xmi:id="DesignSpace-name">
+        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+      </ownedAttribute>
+    </packagedElement>
+  </uml:Package>
+</xmi:XMI>

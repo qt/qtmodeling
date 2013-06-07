@@ -1,0 +1,13 @@
+<qtxmi:XMI xmlns:qtxmi="http://www.qt-project.org" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.omg.org/spec/UML/20110701">
+    <namespace path="QtDuse">
+        <class name="QDuseDesignSpace" isAbstract="false">
+            <qtinclude>QtCore/QString</qtinclude>
+            <attribute isDerived="false" isDerivedUnion="false" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="DesignSpace-name" defaultValue="" aggregation="none" subsettedBy="">
+                <accessor return="QString " name="name" constness=" const"/>
+                <accessor return="void " name="setName" constness="">
+                    <parameter type="QString " name="name"/>
+                </accessor>
+            </attribute>
+        </class>
+    </namespace>
+</qtxmi:XMI>
