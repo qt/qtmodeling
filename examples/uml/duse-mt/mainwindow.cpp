@@ -62,11 +62,10 @@
 #include <QtWrappedObjectsWidgets/QWrappedObjectPropertyModel>
 
 #include <QtQuick/QQuickView>
+#include <QtQuick/QQuickItem>
 #include <QtQml/QQmlEngine>
 #include <QtQml/QQmlContext>
 #include <QtQml/QQmlComponent>
-
-#include <QtUml/QUmlClass>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -116,10 +115,10 @@ MainWindow::MainWindow(QWidget *parent) :
     _codeCompletionView->installEventFilter(this);
 
     setCentralWidget(QWidget::createWindowContainer(_quickView, this));
-    QUmlClass *clazz = new QUmlClass;
-    clazz->setName("MyClass");
-    _quickView->engine()->rootContext()->setContextProperty("MyClass", clazz);
-    _quickView->setSource(QUrl::fromLocalFile("QUmlClass.qml"));
+    QQmlComponent component(_quickView->engine());
+    component.setData("import QtQuick 2.0\nimport QtModeling.QtUml 1.0\n\nRectangle { width: 200; height: 200; UmlClass { name: \"MyClass\" } }", QUrl());
+    QQuickItem *item = qobject_cast<QQuickItem *>(component.create());
+    item->setParentItem(_quickView->contentItem());
     _quickView->setResizeMode(QQuickView::SizeRootObjectToView);
 }
 

@@ -39,35 +39,12 @@
 **
 ****************************************************************************/
 import QtQuick 2.0
+import QtModeling.QtUml 1.0
 
 Rectangle {
-Rectangle {
-    id: rect
-    height: text.height + 10; width: text.width + 20
-    border.width: 1
-    antialiasing: true
-
-    Text {
-        id: text
-        anchors.centerIn:parent
-        font.pointSize: 10
-        text: MyClass.name
+    width: 200
+    height: 200
+    UmlClass {
+        name: "MyClass"
     }
-
-    MouseArea {
-        anchors.fill: parent
-
-        property int startX
-        property int startY
-
-        onPressed: {
-            startX = mouseX + rect.x
-            startY = mouseY + rect.y
-        }
-        onPositionChanged: {
-            rect.x += mouseX - startX
-            rect.y += mouseY - startY
-        }
-    }
-}
 }
