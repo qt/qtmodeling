@@ -41,21 +41,11 @@
 import QtQuick 2.0
 
 Rectangle {
-    property alias name: nameSlot.label
-    height: nameSlot.height + propertiesSlot.height; width: nameSlot.width
-    UmlSlot {
-        id: nameSlot
-    }
-    UmlSlot {
-        anchors.top: nameSlot.bottom
-        anchors.topMargin: -1
-        id: propertiesSlot
-        height: nameSlot.height; width: nameSlot.width
-    }
-    MouseArea {
-        id: dragArea
-        anchors.fill: parent
-
-        drag.target: parent
+    property alias label: label.text
+    border.width: 1
+    height: label.height + 10; width: label.width + 20
+    Text {
+        id: label
+        anchors.centerIn:parent
     }
 }

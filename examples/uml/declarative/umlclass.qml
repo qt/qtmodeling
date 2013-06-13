@@ -39,9 +39,9 @@
 **
 ****************************************************************************/
 import QtQuick 2.0
-import QtModeling.QtUml 1.0
+import QtModeling.Uml 1.0
 
-Rectangle {
+Item {
     width: 200
     height: 200
     UmlClass {

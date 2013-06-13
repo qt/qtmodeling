@@ -116,7 +116,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     setCentralWidget(QWidget::createWindowContainer(_quickView, this));
     QQmlComponent component(_quickView->engine());
-    component.setData("import QtQuick 2.0\nimport QtModeling.QtUml 1.0\n\nRectangle { width: 200; height: 200; UmlClass { name: \"MyClass\" } }", QUrl());
+    component.setData("import QtQuick 2.0\nimport QtModeling.Uml 1.0\n\nRectangle { width: 200; height: 200; UmlClass { name: \"MyClass\" } }", QUrl());
     QQuickItem *item = qobject_cast<QQuickItem *>(component.create());
     item->setParentItem(_quickView->contentItem());
     _quickView->setResizeMode(QQuickView::SizeRootObjectToView);

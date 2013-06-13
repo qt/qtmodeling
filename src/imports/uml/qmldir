@@ -1,2 +1,3 @@
 module QtModeling.Uml
+internal UmlSlot UmlSlot.qml
 UmlClass 1.0 UmlClass.qml
