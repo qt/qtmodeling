@@ -69,6 +69,8 @@
 #include <QtQuick/QQuickItem>
 #include "QtQuick/private/qquickflickable_p.h"
 
+#include <QtUml/QUmlClass>
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
@@ -272,8 +274,9 @@ void MainWindow::wrappedObjectChanged(QWrappedObject *wrappedObject)
 
 void MainWindow::addToView(QWrappedObject *wrappedObject)
 {
+    _quickView->engine()->rootContext()->setContextProperty("element", dynamic_cast<QUmlClass *>(wrappedObject));
     QQmlComponent component(_quickView->engine());
-    component.setData(QString("import QtQuick 2.0\nimport QtModeling.Uml 1.0\n\n%1 { name: \"%2\"}").arg(QString(wrappedObject->metaObject()->className()).remove(QRegularExpression("^Q"))).arg(wrappedObject->objectName()).toLatin1(), QUrl());
+    component.setData(QString("import QtQuick 2.0\nimport QtModeling.Uml 1.0\n\n%1 {}").arg(QString(wrappedObject->metaObject()->className()).remove(QRegularExpression("^Q"))).toLatin1(), QUrl());
     QQuickItem *item = qobject_cast<QQuickItem *>(component.create());
     if (item) {
         item->setParentItem((qobject_cast<QQuickFlickable *>(_quickView->rootObject()))->contentItem());

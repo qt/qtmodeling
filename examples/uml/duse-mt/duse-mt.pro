@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 QT = wrappedobjectswidgets script quick quick-private qml
+QT += uml # remove me
 
 TARGET = duse-mt
 TEMPLATE = app

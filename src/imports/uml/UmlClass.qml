@@ -60,4 +60,9 @@ Rectangle {
         drag.minimumX: 0
         drag.minimumY: 0
     }
+    Component.onCompleted: {
+        if (element) {
+            name = element.visibility + " " + element.objectName;
+        }
+    }
 }
