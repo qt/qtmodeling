@@ -57,5 +57,7 @@ Rectangle {
         anchors.fill: parent
 
         drag.target: parent
+        drag.minimumX: 0
+        drag.minimumY: 0
     }
 }

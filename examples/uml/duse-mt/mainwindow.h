@@ -80,6 +80,7 @@ private Q_SLOTS:
 
     void metaModelChanged(QString newMetaModel);
     void wrappedObjectChanged(QWrappedObject *wrappedObject);
+    void addToView(QWrappedObject *wrappedObject);
 
 protected:
     bool eventFilter(QObject *obj, QEvent *event);

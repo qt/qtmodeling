@@ -61,11 +61,13 @@
 #include <QtWrappedObjectsWidgets/QWrappedObjectModel>
 #include <QtWrappedObjectsWidgets/QWrappedObjectPropertyModel>
 
-#include <QtQuick/QQuickView>
-#include <QtQuick/QQuickItem>
 #include <QtQml/QQmlEngine>
 #include <QtQml/QQmlContext>
 #include <QtQml/QQmlComponent>
+
+#include <QtQuick/QQuickView>
+#include <QtQuick/QQuickItem>
+#include "QtQuick/private/qquickflickable_p.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -93,6 +95,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(ui->wrappedObjectView, &QWrappedObjectView::wrappedObjectChanged,
             propertyModel, &QWrappedObjectPropertyModel::setWrappedObject);
+    connect(ui->wrappedObjectView, &QWrappedObjectView::addToView, this, &MainWindow::addToView);
     connect(ui->wrappedObjectView, SIGNAL(wrappedObjectChanged(QWrappedObject*)), SLOT(wrappedObjectChanged(QWrappedObject*)));
     connect(propertyModel, &QWrappedObjectPropertyModel::indexChanged,
             _wrappedObjectModel, &QWrappedObjectModel::updateIndex);
@@ -114,11 +117,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->txeJavaScript->installEventFilter(this);
     _codeCompletionView->installEventFilter(this);
 
-    setCentralWidget(QWidget::createWindowContainer(_quickView, this));
-    QQmlComponent component(_quickView->engine());
-    component.setData("import QtQuick 2.0\nimport QtModeling.Uml 1.0\n\nRectangle { width: 200; height: 200; UmlClass { name: \"MyClass\" } }", QUrl());
-    QQuickItem *item = qobject_cast<QQuickItem *>(component.create());
-    item->setParentItem(_quickView->contentItem());
+    _quickView->setSource(QUrl("source.qml"));
+    QWidget *centralWidget = QWidget::createWindowContainer(_quickView, this);
+    centralWidget->setAcceptDrops(true);
+    setCentralWidget(centralWidget);
+
     _quickView->setResizeMode(QQuickView::SizeRootObjectToView);
 }
 
@@ -265,6 +268,16 @@ void MainWindow::metaModelChanged(QString newMetaModel)
 void MainWindow::wrappedObjectChanged(QWrappedObject *wrappedObject)
 {
     _engine.globalObject().setProperty("self", _engine.newQObject(wrappedObject));
+}
+
+void MainWindow::addToView(QWrappedObject *wrappedObject)
+{
+    QQmlComponent component(_quickView->engine());
+    component.setData(QString("import QtQuick 2.0\nimport QtModeling.Uml 1.0\n\n%1 { name: \"%2\"}").arg(QString(wrappedObject->metaObject()->className()).remove(QRegularExpression("^Q"))).arg(wrappedObject->objectName()).toLatin1(), QUrl());
+    QQuickItem *item = qobject_cast<QQuickItem *>(component.create());
+    if (item) {
+        item->setParentItem((qobject_cast<QQuickFlickable *>(_quickView->rootObject()))->contentItem());
+    }
 }
 
 bool MainWindow::eventFilter(QObject *obj, QEvent *event)

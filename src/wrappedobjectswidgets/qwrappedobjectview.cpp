@@ -100,6 +100,10 @@ void QWrappedObjectViewPrivate::populateContextMenu(QMenu &menu, QWrappedObject 
         QObject::connect(action, &QAction::triggered, q, &QWrappedObjectView::deleteObject);
         menu.addAction(action);
     }
+    menu.addSeparator();
+    QAction *action = new QAction(QObject::tr("&Add to view"), q);
+    QObject::connect(action, &QAction::triggered, q, &QWrappedObjectView::addElementToView);
+    menu.addAction(action);
 }
 
 QWrappedObjectView::QWrappedObjectView(QWidget *parent, Qt::WindowFlags f) :
@@ -184,6 +188,13 @@ void QWrappedObjectView::handleAddMethod()
     }
     QWrappedObjectModel *wrappedObjectModel = dynamic_cast<QWrappedObjectModel *>(d->treeView->model());
     wrappedObjectModel->updateIndex(QModelIndex());
+}
+
+void QWrappedObjectView::addElementToView()
+{
+    Q_D(QWrappedObjectView);
+
+    emit addToView(qvariant_cast<QWrappedObject *>(d->treeView->selectionModel()->selectedIndexes().first().data(Qt::UserRole)));
 }
 
 void QWrappedObjectView::deleteObject()

@@ -3,7 +3,7 @@
 ** Copyright (C) 2013 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/legal
 **
-** This file is part of the QtWrappedObjectsWidgets module of the Qt Toolkit.
+** This file is part of the QtUml module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** Commercial License Usage
@@ -38,61 +38,17 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QWRAPPEDOBJECTVIEW_H
-#define QWRAPPEDOBJECTVIEW_H
+import QtQuick 2.0
 
-#include <QtWrappedObjectsWidgets/QtWrappedObjectsWidgetsGlobal>
-
-#include <QtWidgets/QWidget>
-
-QT_BEGIN_HEADER
-
-QT_BEGIN_NAMESPACE
-
-QT_MODULE(QtWrappedObjectsWidgets)
-
-class QAbstractItemModel;
-class QItemSelection;
-class QWrappedObject;
-
-class QWrappedObjectViewPrivate;
-
-class Q_WRAPPEDOBJECTSWIDGETS_EXPORT QWrappedObjectView : public QWidget
-{
-    Q_OBJECT
-
-    Q_DISABLE_COPY(QWrappedObjectView)
-    Q_DECLARE_PRIVATE(QWrappedObjectView)
-
-public:
-    explicit QWrappedObjectView(QWidget *parent = 0, Qt::WindowFlags f = 0);
-
-public Q_SLOTS:
-    virtual void setModel(QAbstractItemModel *model);
-    void updateSelected();
-
-Q_SIGNALS:
-    void wrappedObjectChanged(QWrappedObject *selectedWrappedObject);
-    void addToView(QWrappedObject *selectedWrappedObject);
-
-protected:
-     void contextMenuEvent(QContextMenuEvent *event);
-
-private Q_SLOTS:
-    void handleAddMethod();
-    void addElementToView();
-    void deleteObject();
-    void modelReset();
-    void rowsInserted(const QModelIndex &parent, int first);
-    void selectionChanged(const QItemSelection &selected);
-
-private:
-    void removeObjectUse(QWrappedObject *container, QWrappedObject *usedObject);
-};
-
-QT_END_NAMESPACE
-
-QT_END_HEADER
-
-#endif // QWRAPPEDOBJECTVIEW_H
-
+Flickable {
+    id: flickable
+    width: 200; height: 200
+    contentHeight: 2000
+    contentWidth: 2000
+    rightMargin: 0; leftMargin: 0; topMargin: 0; bottomMargin: 0
+    DropArea {
+       anchors.fill: parent
+       onEntered: { console.log("entered"); }
+       onDropped: { console.log(Drag.target); }
+    }
+}
