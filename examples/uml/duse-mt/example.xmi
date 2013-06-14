@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.omg.org/spec/UML/20110701">
   <uml:Package name="MyRootPackage" xmi:id="MyRootPackage">
-    <packagedElement xmi:type="uml:PrimitiveType" name="String" xmi:id="MyRootPackage-String"/>
     <packagedElement xmi:type="uml:Package" name="Package1" xmi:id="MyRootPackage-Package1">
+      <packagedElement xmi:type="uml:Enumeration" name="DirectionKind" xmi:id="MyRootPackage-Package1-DirectionKind">
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" name="DirectionIn" xmi:id="MyRootPackage-Package1-DirectionKind-DirectionIn"/>
+      </packagedElement>
       <packagedElement xmi:type="uml:Class" name="InterStudent" xmi:id="MyRootPackage-Package1-InterStudent"/>
       <packagedElement xmi:type="uml:Class" isAbstract="true" name="Student" xmi:id="MyRootPackage-Package1-Student">
         <ownedAttribute xmi:type="uml:Property" name="name" xmi:id="MyRootPackage-Package1-Student-name">
           <type xmi:idref="MyRootPackage-String"/>
         </ownedAttribute>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Enumeration" name="DirectionKind" xmi:id="MyRootPackage-Package1-DirectionKind">
-        <ownedLiteral xmi:type="uml:EnumerationLiteral" name="DirectionIn" xmi:id="MyRootPackage-Package1-DirectionKind-DirectionIn"/>
+        <ownedAttribute xmi:type="uml:Property" name="age" xmi:id="MyRootPackage-Package1-Student-age"/>
       </packagedElement>
     </packagedElement>
+    <packagedElement xmi:type="uml:PrimitiveType" name="String" xmi:id="MyRootPackage-String"/>
   </uml:Package>
 </xmi:XMI>

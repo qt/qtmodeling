@@ -62,7 +62,23 @@ Rectangle {
     }
     Component.onCompleted: {
         if (element) {
-            name = element.visibility + " " + element.objectName;
+            var visibility;
+            switch (element.visibility) {
+                case 0: visibility = "+"; break;
+                case 1: visibility = "-"; break;
+                case 2: visibility = "#"; break;
+                case 3: visibility = "~"; break;
+            }
+            name = visibility + element.objectName;
+            nameSlot.labelFont.italic = element.isAbstract;
+            console.log("properties: " + typeof properties + ", " + properties);
+            console.log("variantProperties: " + typeof variantProperties + ", " + variantProperties);
+            console.log("variantProperties[0]: " + typeof variantProperties[0] + ", " + variantProperties[0]);
+            console.log("properties[0]: " + typeof properties[0] + ", " + properties[0]);
+            console.log("element: " + typeof element + ", " + element);
+            console.log("element.ownedAttributes:" + typeof element.ownedAttributes + ", " + element.ownedAttributes);
+            console.log("property: " + typeof property + ", " + property);
+            console.log("element.owner: " + typeof element.owner + ", " + element.owner);
         }
     }
 }

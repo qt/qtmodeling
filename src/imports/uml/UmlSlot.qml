@@ -42,6 +42,7 @@ import QtQuick 2.0
 
 Rectangle {
     property alias label: label.text
+    property alias labelFont: label.font
     border.width: 1
     height: label.height + 10; width: label.width + 20
     Text {
