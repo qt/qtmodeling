@@ -43,6 +43,8 @@
 
 #include "qumlextension_p.h"
 
+#include <QtQml/QQmlContext>
+
 #include <QtUml/QUmlReception>
 #include <QtUml/QUmlNamedElement>
 #include <QtUml/QUmlOperation>
@@ -1059,6 +1061,15 @@ QSet<QUmlNamedElement *> QUmlClass::inherit(QSet<QUmlNamedElement *> inhs) const
     Q_UNUSED(inhs);
 
     return QSet<QUmlNamedElement *>(); // change here to your derived return
+}
+
+void QUmlClass::setQmlContextProperties(QQmlContext *qmlContext)
+{
+    qmlContext->setContextProperty(QString::fromLatin1("element"), this);
+    QVariantList varList;
+    foreach (QUmlProperty *property, ownedAttributes())
+        varList << qVariantFromValue(property);
+    qmlContext->setContextProperty(QString::fromLatin1("attributes"), varList);
 }
 
 void QUmlClass::setPropertyData()

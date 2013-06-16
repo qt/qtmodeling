@@ -55,6 +55,7 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtWrappedObjects)
 
+class QQmlContext;
 class QMetaWrappedObject;
 class QWrappedObjectPrivate;
 
@@ -83,6 +84,8 @@ public:
     static QVariant propertyData(QString className, QMetaProperty metaProperty, QtWrappedObjects::MetaPropertyDataRole role);
 
     bool isPropertyModified(QMetaProperty metaProperty) const;
+
+    virtual void setQmlContextProperties(QQmlContext *qmlContext);
 
 protected:
     explicit QWrappedObject(QWrappedObjectPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);

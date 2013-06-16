@@ -291,6 +291,7 @@ public:
     // Operations
     Q_INVOKABLE QSet<QUmlNamedElement *> inherit(QSet<QUmlNamedElement *> inhs) const;
 
+    virtual void setQmlContextProperties(QQmlContext *qmlContext);
     virtual void setPropertyData();
 
     // Classes which access read-only opposite properties should be friend

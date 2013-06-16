@@ -1,7 +1,7 @@
 load(qt_build_config)
 
 TARGET = QtUml
-QT = wrappedobjects-private core-private
+QT = wrappedobjects-private core-private qml
 
 QMAKE_DOCS = $$PWD/doc/qtuml.qdocconf
 

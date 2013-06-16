@@ -69,9 +69,6 @@
 #include <QtQuick/QQuickItem>
 #include "QtQuick/private/qquickflickable_p.h"
 
-#include <QtUml/QUmlClass>
-#include <QtUml/QUmlProperty>
-
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
@@ -275,13 +272,7 @@ void MainWindow::wrappedObjectChanged(QWrappedObject *wrappedObject)
 
 void MainWindow::addToView(QWrappedObject *wrappedObject)
 {
-    _quickView->engine()->rootContext()->setContextProperty("element", dynamic_cast<QUmlClass *>(wrappedObject));
-    QVariantList varList;
-    foreach (QUmlProperty *property, (dynamic_cast<QUmlClass *>(wrappedObject))->ownedAttributes())
-        varList << qVariantFromValue(property);
-    _quickView->engine()->rootContext()->setContextProperty("properties", qVariantFromValue((dynamic_cast<QUmlClass *>(wrappedObject))->ownedAttributes()));
-    _quickView->engine()->rootContext()->setContextProperty("variantProperties", varList);
-    _quickView->engine()->rootContext()->setContextProperty("property", (dynamic_cast<QUmlClass *>(wrappedObject))->ownedAttributes().first());
+    wrappedObject->setQmlContextProperties(_quickView->engine()->rootContext());
     QQmlComponent component(_quickView->engine());
     component.setData(QString("import QtQuick 2.0\nimport QtModeling.Uml 1.0\n\n%1 {}").arg(QString(wrappedObject->metaObject()->className()).remove(QRegularExpression("^Q"))).toLatin1(), QUrl());
     QQuickItem *item = qobject_cast<QQuickItem *>(component.create());

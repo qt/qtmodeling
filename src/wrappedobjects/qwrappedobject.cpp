@@ -177,6 +177,11 @@ bool QWrappedObject::isPropertyModified(QMetaProperty metaProperty) const
     return d->modifiedResettableProperties.contains(QString::fromLatin1(metaProperty.name()));
 }
 
+void QWrappedObject::setQmlContextProperties(QQmlContext *qmlContext)
+{
+    Q_UNUSED(qmlContext);
+}
+
 #include "moc_qwrappedobject.cpp"
 
 QT_END_NAMESPACE

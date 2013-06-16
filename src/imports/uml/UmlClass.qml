@@ -42,15 +42,20 @@ import QtQuick 2.0
 
 Rectangle {
     property alias name: nameSlot.label
-    height: nameSlot.height + propertiesSlot.height; width: nameSlot.width
+    height: nameSlot.height + propertiesSlot.height; width: propertiesColumn.width
     UmlSlot {
+        width: propertiesSlot.width
         id: nameSlot
     }
     UmlSlot {
         anchors.top: nameSlot.bottom
         anchors.topMargin: -1
         id: propertiesSlot
-        height: nameSlot.height; width: nameSlot.width
+        height: propertiesColumn.height + 10; width: propertiesColumn.width + 20
+        Column {
+            id: propertiesColumn
+            anchors.centerIn: parent
+        }
     }
     MouseArea {
         id: dragArea
@@ -62,23 +67,21 @@ Rectangle {
     }
     Component.onCompleted: {
         if (element) {
-            var visibility;
-            switch (element.visibility) {
-                case 0: visibility = "+"; break;
-                case 1: visibility = "-"; break;
-                case 2: visibility = "#"; break;
-                case 3: visibility = "~"; break;
-            }
-            name = visibility + element.objectName;
+            name = element.name;
             nameSlot.labelFont.italic = element.isAbstract;
-            console.log("properties: " + typeof properties + ", " + properties);
-            console.log("variantProperties: " + typeof variantProperties + ", " + variantProperties);
-            console.log("variantProperties[0]: " + typeof variantProperties[0] + ", " + variantProperties[0]);
-            console.log("properties[0]: " + typeof properties[0] + ", " + properties[0]);
-            console.log("element: " + typeof element + ", " + element);
-            console.log("element.ownedAttributes:" + typeof element.ownedAttributes + ", " + element.ownedAttributes);
-            console.log("property: " + typeof property + ", " + property);
-            console.log("element.owner: " + typeof element.owner + ", " + element.owner);
+            for (var i = 0; i < attributes.length; ++i) {
+                var visibility;
+                switch (attributes[i].visibility) {
+                    case 0: visibility = "+"; break;
+                    case 1: visibility = "-"; break;
+                    case 2: visibility = "#"; break;
+                    case 3: visibility = "~"; break;
+                }
+                var attributeString = visibility + attributes[i].name;
+                if (attributes[i].type)
+                    attributeString += ': ' + attributes[i].type.name;
+                Qt.createQmlObject('import QtQuick 2.0; Text {text: "' + attributeString + '"}', propertiesColumn, 'dynamicAttributes');
+            }
         }
     }
 }
