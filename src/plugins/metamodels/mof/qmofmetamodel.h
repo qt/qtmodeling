@@ -3,7 +3,7 @@
 ** Copyright (C) 2013 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/legal
 **
-** This file is part of the QtDuse module of the Qt Toolkit.
+** This file is part of the QtMof module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** Commercial License Usage
@@ -38,18 +38,16 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QDUSEMETAMODEL_H
-#define QDUSEMETAMODEL_H
+#ifndef QMOFMETAMODEL_H
+#define QMOFMETAMODEL_H
 
-#include <QtDuse/QtDuse>
+#include <QtMof/QtMof>
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
-QT_MODULE(QtDuse)
-
-class Q_DUSE_EXPORT QDuseMetaModel
+class QMofMetaModel
 {
 public:
     static void init(QScriptEngine *scriptEngine = 0);
@@ -59,5 +57,5 @@ QT_END_NAMESPACE
 
 QT_END_HEADER
 
-#endif // QDUSEMETAMODEL_H
+#endif // QMOFMETAMODEL_H
 

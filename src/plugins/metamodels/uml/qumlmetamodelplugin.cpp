@@ -40,7 +40,7 @@
 ****************************************************************************/
 #include "qumlmetamodelplugin.h"
 
-#include <QtUml/QUmlMetaModel>
+#include "qumlmetamodel.h"
 
 QUmlMetaModelPlugin::QUmlMetaModelPlugin(QObject *parent)
     : QMetaModelPlugin(parent)

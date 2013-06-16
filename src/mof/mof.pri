@@ -1,7 +1,6 @@
 PUBLIC_HEADERS += \
     qtmofglobal.h \
     qtmofnamespace.h \
-    qmofmetamodel.h \
     qmoftype.h \
     qmofnamespace.h \
     qmofmultiplicityelement.h \
@@ -113,7 +112,6 @@ PRIVATE_HEADERS += \
 
 SOURCES += \
     qtmofnamespace.cpp \
-    qmofmetamodel.cpp \
     qmoftype.cpp \
     qmofnamespace.cpp \
     qmofmultiplicityelement.cpp \

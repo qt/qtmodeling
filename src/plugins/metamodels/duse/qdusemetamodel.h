@@ -3,7 +3,7 @@
 ** Copyright (C) 2013 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/legal
 **
-** This file is part of the QtUml module of the Qt Toolkit.
+** This file is part of the QtDuse module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** Commercial License Usage
@@ -38,18 +38,16 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QUMLMETAMODEL_H
-#define QUMLMETAMODEL_H
+#ifndef QDUSEMETAMODEL_H
+#define QDUSEMETAMODEL_H
 
-#include <QtUml/QtUml>
+#include <QtDuse/QtDuse>
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
-QT_MODULE(QtUml)
-
-class Q_UML_EXPORT QUmlMetaModel
+class QDuseMetaModel
 {
 public:
     static void init(QScriptEngine *scriptEngine = 0);
@@ -59,5 +57,5 @@ QT_END_NAMESPACE
 
 QT_END_HEADER
 
-#endif // QUMLMETAMODEL_H
+#endif // QDUSEMETAMODEL_H
 

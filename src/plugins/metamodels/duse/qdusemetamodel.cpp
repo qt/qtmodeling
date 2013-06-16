@@ -40,6 +40,8 @@
 ****************************************************************************/
 #include "qdusemetamodel.h"
 
+#include <QtQml/QtQml>
+
 QT_BEGIN_NAMESPACE
 
 void QDuseMetaModel::init(QScriptEngine *scriptEngine)

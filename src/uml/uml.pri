@@ -1,7 +1,6 @@
 PUBLIC_HEADERS += \
     qtumlglobal.h \
     qtumlnamespace.h \
-    qumlmetamodel.h \
     qumlprofileapplication.h \
     qumldeployment.h \
     qumlclass.h \
@@ -491,7 +490,6 @@ PRIVATE_HEADERS += \
 
 SOURCES += \
     qtumlnamespace.cpp \
-    qumlmetamodel.cpp \
     qumlprofileapplication.cpp \
     qumldeployment.cpp \
     qumlclass.cpp \

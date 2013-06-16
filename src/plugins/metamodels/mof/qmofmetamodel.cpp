@@ -40,6 +40,8 @@
 ****************************************************************************/
 #include "qmofmetamodel.h"
 
+#include <QtQml/QtQml>
+
 QT_BEGIN_NAMESPACE
 
 void QMofMetaModel::init(QScriptEngine *scriptEngine)
@@ -203,6 +205,60 @@ void QMofMetaModel::init(QScriptEngine *scriptEngine)
     qRegisterMetaType<QMofValueSpecification *>();
     qRegisterMetaType< QList<QMofValueSpecification *> >();
     qRegisterMetaType< QSet<QMofValueSpecification *> >();
+
+    qmlRegisterType<QMofArgument>();
+    qmlRegisterType<QMofAssociation>();
+    qmlRegisterType<QMofBehavioralFeature>();
+    qmlRegisterType<QMofClass>();
+    qmlRegisterType<QMofClassifier>();
+    qmlRegisterType<QMofComment>();
+    qmlRegisterType<QMofConstraint>();
+    qmlRegisterType<QMofDataType>();
+    qmlRegisterType<QMofDirectedRelationship>();
+    qmlRegisterType<QMofElement>();
+    qmlRegisterType<QMofElementImport>();
+    qmlRegisterType<QMofEnumeration>();
+    qmlRegisterType<QMofEnumerationLiteral>();
+    qmlRegisterType<QMofException>();
+    qmlRegisterType<QMofExpression>();
+    qmlRegisterType<QMofExtent>();
+    qmlRegisterType<QMofFactory>();
+    qmlRegisterType<QMofFeature>();
+    qmlRegisterType<QMofGeneralization>();
+    qmlRegisterType<QMofInstanceSpecification>();
+    qmlRegisterType<QMofInstanceValue>();
+    qmlRegisterType<QMofLink>();
+    qmlRegisterType<QMofLiteralBoolean>();
+    qmlRegisterType<QMofLiteralInteger>();
+    qmlRegisterType<QMofLiteralNull>();
+    qmlRegisterType<QMofLiteralReal>();
+    qmlRegisterType<QMofLiteralSpecification>();
+    qmlRegisterType<QMofLiteralString>();
+    qmlRegisterType<QMofLiteralUnlimitedNatural>();
+    qmlRegisterType<QMofObject>();
+    qmlRegisterType<QMofMultiplicityElement>();
+    qmlRegisterType<QMofNamedElement>();
+    qmlRegisterType<QMofNamespace>();
+    qmlRegisterType<QMofOpaqueExpression>();
+    qmlRegisterType<QMofOperation>();
+    qmlRegisterType<QMofPackage>();
+    qmlRegisterType<QMofPackageableElement>();
+    qmlRegisterType<QMofPackageImport>();
+    qmlRegisterType<QMofPackageMerge>();
+    qmlRegisterType<QMofParameter>();
+    qmlRegisterType<QMofPrimitiveType>();
+    qmlRegisterType<QMofProperty>();
+    qmlRegisterType<QMofRedefinableElement>();
+    qmlRegisterType<QMofReflectiveCollection>();
+    qmlRegisterType<QMofReflectiveSequence>();
+    qmlRegisterType<QMofRelationship>();
+    qmlRegisterType<QMofSlot>();
+    qmlRegisterType<QMofStructuralFeature>();
+    qmlRegisterType<QMofTag>();
+    qmlRegisterType<QMofType>();
+    qmlRegisterType<QMofTypedElement>();
+    qmlRegisterType<QMofURIExtent>();
+    qmlRegisterType<QMofValueSpecification>();
 
     if (scriptEngine) {
         qScriptRegisterMetaType(scriptEngine, qSetToScriptValue<QMofArgument>, scriptValueToQSet<QMofArgument>);

@@ -40,7 +40,7 @@
 ****************************************************************************/
 #include "qdusemetamodelplugin.h"
 
-#include <QtDuse/QDuseMetaModel>
+#include "qdusemetamodel.h"
 
 QDuseMetaModelPlugin::QDuseMetaModelPlugin(QObject *parent)
     : QMetaModelPlugin(parent)
