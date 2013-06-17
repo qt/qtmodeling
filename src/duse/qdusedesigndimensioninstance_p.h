@@ -38,66 +38,34 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QDUSEDESIGNSPACE_H
-#define QDUSEDESIGNSPACE_H
-
-#include <QtDuse/QtDuseGlobal>
+#ifndef QDUSEDESIGNDIMENSIONINSTANCE_P_H
+#define QDUSEDESIGNDIMENSIONINSTANCE_P_H
 
 // Base class includes
-#include <QtWrappedObjects/QWrappedObject>
+#include "private/qwrappedobject_p.h"
 
-// Qt includes
-#include <QtCore/QString>
-#include <QtCore/QList>
-#include <QtCore/QSet>
+#include "QtDuse/QDuseDesignDimensionInstance"
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtDuse)
+class QDuseDesignDimensionInstance;
 
-// Forward decls for function parameters
-class QDuseDesignDimension;
-class QDuseQualityMetric;
-
-class QDuseDesignSpacePrivate;
-
-class Q_DUSE_EXPORT QDuseDesignSpace : public QWrappedObject
+class Q_DUSE_EXPORT QDuseDesignDimensionInstancePrivate : public QWrappedObjectPrivate
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QDuse")
-
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QList<QDuseDesignDimension *> designDimensions READ designDimensions)
-    Q_PROPERTY(QSet<QDuseQualityMetric *> qualityMetrics READ qualityMetrics)
-
-    Q_DISABLE_COPY(QDuseDesignSpace)
-    Q_DECLARE_PRIVATE(QDuseDesignSpace)
+    Q_DECLARE_PUBLIC(QDuseDesignDimensionInstance)
 
 public:
-    Q_INVOKABLE explicit QDuseDesignSpace(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QDuseDesignSpace();
+    explicit QDuseDesignDimensionInstancePrivate();
+    virtual ~QDuseDesignDimensionInstancePrivate();
 
-    // Attributes from QDuseDesignSpace
-    Q_INVOKABLE QString name() const;
-    Q_INVOKABLE void setName(QString name);
-    Q_INVOKABLE QList<QDuseDesignDimension *> designDimensions() const;
-    Q_INVOKABLE void addDesignDimension(QDuseDesignDimension *designDimension);
-    Q_INVOKABLE void removeDesignDimension(QDuseDesignDimension *designDimension);
-    Q_INVOKABLE QSet<QDuseQualityMetric *> qualityMetrics() const;
-    Q_INVOKABLE void addQualityMetric(QDuseQualityMetric *qualityMetric);
-    Q_INVOKABLE void removeQualityMetric(QDuseQualityMetric *qualityMetric);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QDuseDesignSpace(QDuseDesignSpacePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE
 
 QT_END_HEADER
 
-#endif // QDUSEDESIGNSPACE_H
+#endif // QDUSEDESIGNDIMENSIONINSTANCE_P_H
 

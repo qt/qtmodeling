@@ -38,8 +38,8 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QDUSEDESIGNSPACE_H
-#define QDUSEDESIGNSPACE_H
+#ifndef QDUSEVARIATIONPOINT_H
+#define QDUSEVARIATIONPOINT_H
 
 #include <QtDuse/QtDuseGlobal>
 
@@ -48,8 +48,6 @@
 
 // Qt includes
 #include <QtCore/QString>
-#include <QtCore/QList>
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -57,47 +55,41 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtDuse)
 
-// Forward decls for function parameters
-class QDuseDesignDimension;
-class QDuseQualityMetric;
+class QDuseVariationPointPrivate;
 
-class QDuseDesignSpacePrivate;
-
-class Q_DUSE_EXPORT QDuseDesignSpace : public QWrappedObject
+class Q_DUSE_EXPORT QDuseVariationPoint : public QWrappedObject
 {
     Q_OBJECT
     Q_CLASSINFO("MetaModelPrefix", "QDuse")
 
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QList<QDuseDesignDimension *> designDimensions READ designDimensions)
-    Q_PROPERTY(QSet<QDuseQualityMetric *> qualityMetrics READ qualityMetrics)
+    Q_PROPERTY(QString rationale READ rationale WRITE setRationale)
+    Q_PROPERTY(QString modelChange READ modelChange WRITE setModelChange)
+    Q_PROPERTY(QString preChangeValidationRule READ preChangeValidationRule WRITE setPreChangeValidationRule)
 
-    Q_DISABLE_COPY(QDuseDesignSpace)
-    Q_DECLARE_PRIVATE(QDuseDesignSpace)
+    Q_DISABLE_COPY(QDuseVariationPoint)
+    Q_DECLARE_PRIVATE(QDuseVariationPoint)
 
 public:
-    Q_INVOKABLE explicit QDuseDesignSpace(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QDuseDesignSpace();
+    Q_INVOKABLE explicit QDuseVariationPoint(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    virtual ~QDuseVariationPoint();
 
-    // Attributes from QDuseDesignSpace
-    Q_INVOKABLE QString name() const;
-    Q_INVOKABLE void setName(QString name);
-    Q_INVOKABLE QList<QDuseDesignDimension *> designDimensions() const;
-    Q_INVOKABLE void addDesignDimension(QDuseDesignDimension *designDimension);
-    Q_INVOKABLE void removeDesignDimension(QDuseDesignDimension *designDimension);
-    Q_INVOKABLE QSet<QDuseQualityMetric *> qualityMetrics() const;
-    Q_INVOKABLE void addQualityMetric(QDuseQualityMetric *qualityMetric);
-    Q_INVOKABLE void removeQualityMetric(QDuseQualityMetric *qualityMetric);
+    // Attributes from QDuseVariationPoint
+    Q_INVOKABLE QString rationale() const;
+    Q_INVOKABLE void setRationale(QString rationale);
+    Q_INVOKABLE QString modelChange() const;
+    Q_INVOKABLE void setModelChange(QString modelChange);
+    Q_INVOKABLE QString preChangeValidationRule() const;
+    Q_INVOKABLE void setPreChangeValidationRule(QString preChangeValidationRule);
 
     virtual void setPropertyData();
 
 protected:
-    explicit QDuseDesignSpace(QDuseDesignSpacePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    explicit QDuseVariationPoint(QDuseVariationPointPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE
 
 QT_END_HEADER
 
-#endif // QDUSEDESIGNSPACE_H
+#endif // QDUSEVARIATIONPOINT_H
 

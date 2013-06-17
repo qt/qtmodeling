@@ -1,12 +1,136 @@
 <qtxmi:XMI xmlns:qtxmi="http://www.qt-project.org" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.omg.org/spec/UML/20110701">
     <namespace path="QtDuse">
         <class name="QDuseDesignSpace" isAbstract="false">
+            <documentation>A design space entails the design dimensions (degrees of freedom) and quality metrics for a particular application domain.</documentation>
             <qtinclude>QtCore/QString</qtinclude>
+            <qtinclude>QtCore/QList</qtinclude>
+            <qtinclude>QtCore/QSet</qtinclude>
+            <forwarddecl namespace="QtDuse" class="QDuseDesignDimension"/>
+            <forwarddecl namespace="QtDuse" class="QDuseQualityMetric"/>
             <attribute isDerived="false" isDerivedUnion="false" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="DesignSpace-name" defaultValue="" aggregation="none" subsettedBy="">
                 <accessor return="QString " name="name" constness=" const"/>
                 <accessor return="void " name="setName" constness="">
                     <parameter type="QString " name="name"/>
                 </accessor>
+                <documentation>The design space's name.</documentation>
+            </attribute>
+            <attribute isDerived="false" isDerivedUnion="false" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="DesignSpace-designDimension" defaultValue="" aggregation="composite" subsettedBy="">
+                <accessor return="QList&lt;QDuseDesignDimension *&gt; " name="designDimensions" constness=" const"/>
+                <accessor return="void " name="addDesignDimension" constness="">
+                    <parameter type="QDuseDesignDimension *" name="designDimension"/>
+                </accessor>
+                <accessor return="void " name="removeDesignDimension" constness="">
+                    <parameter type="QDuseDesignDimension *" name="designDimension"/>
+                </accessor>
+                <documentation>The design dimensions (degrees of freedom) of the design space.</documentation>
+            </attribute>
+            <attribute isDerived="false" isDerivedUnion="false" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="DesignSpace-qualityMetric" defaultValue="" aggregation="composite" subsettedBy="">
+                <accessor return="QSet&lt;QDuseQualityMetric *&gt; " name="qualityMetrics" constness=" const"/>
+                <accessor return="void " name="addQualityMetric" constness="">
+                    <parameter type="QDuseQualityMetric *" name="qualityMetric"/>
+                </accessor>
+                <accessor return="void " name="removeQualityMetric" constness="">
+                    <parameter type="QDuseQualityMetric *" name="qualityMetric"/>
+                </accessor>
+                <documentation>The quality metrics defined for the design space.</documentation>
+            </attribute>
+        </class>
+        <class name="QDuseDesignDimension" isAbstract="false">
+            <documentation>A design dimension captures a specific degree of freedom when designing architectures in the given application domain. A design dimension entails a set of variation points which denote alternative solutions for such degree of freedom. Optionally, a variation point may define validation rules which should return a true value if that variation point is to be considered valid for the corresponding input model. A variation point may also specify a set of other variation points which should be previously evaluated, defining a sort of design dimension dependency.</documentation>
+            <qtinclude>QtCore/QString</qtinclude>
+            <qtinclude>QtCore/QSet</qtinclude>
+            <forwarddecl namespace="QtDuse" class="QDuseDesignDimension"/>
+            <forwarddecl namespace="QtDuse" class="QDuseVariationPoint"/>
+            <forwarddecl namespace="QtDuse" class="QDuseDesignDimensionInstance"/>
+            <attribute isDerived="false" isDerivedUnion="false" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="DesignSpace-name" defaultValue="" aggregation="none" subsettedBy="">
+                <accessor return="QString " name="name" constness=" const"/>
+                <accessor return="void " name="setName" constness="">
+                    <parameter type="QString " name="name"/>
+                </accessor>
+                <documentation>The design dimension's name.</documentation>
+            </attribute>
+            <attribute isDerived="false" isDerivedUnion="false" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="DesignSpace-instanceSelectionRule" defaultValue="" aggregation="none" subsettedBy="">
+                <accessor return="QString " name="instanceSelectionRule" constness=" const"/>
+                <accessor return="void " name="setInstanceSelectionRule" constness="">
+                    <parameter type="QString " name="instanceSelectionRule"/>
+                </accessor>
+                <documentation>The rule for detecting a specific locus of architectural decision related to this design dimension. Such rule relies on the accompanying UML profile for the specific application domain, in order to identify the decision loci.</documentation>
+            </attribute>
+            <attribute isDerived="false" isDerivedUnion="false" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="DesignDimension-requiredPreviousEvaluation" defaultValue="" aggregation="none" subsettedBy="">
+                <accessor return="QSet&lt;QDuseDesignDimension *&gt; " name="requiredPreviousEvaluations" constness=" const"/>
+                <accessor return="void " name="addRequiredPreviousEvaluation" constness="">
+                    <parameter type="QDuseDesignDimension *" name="requiredPreviousEvaluation"/>
+                </accessor>
+                <accessor return="void " name="removeRequiredPreviousEvaluation" constness="">
+                    <parameter type="QDuseDesignDimension *" name="requiredPreviousEvaluation"/>
+                </accessor>
+                <documentation>The design dimensions that must be previously evaluated before this design dimension. Such dependency may be required in order to tackle dependent design dimensions and identify invalid design space locations.</documentation>
+            </attribute>
+            <attribute isDerived="false" isDerivedUnion="false" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="DesignDimension-variationPoint" defaultValue="" aggregation="composite" subsettedBy="">
+                <accessor return="QSet&lt;QDuseVariationPoint *&gt; " name="variationPoints" constness=" const"/>
+                <accessor return="void " name="addVariationPoint" constness="">
+                    <parameter type="QDuseVariationPoint *" name="variationPoint"/>
+                </accessor>
+                <accessor return="void " name="removeVariationPoint" constness="">
+                    <parameter type="QDuseVariationPoint *" name="variationPoint"/>
+                </accessor>
+                <documentation>The design dimension's variation points (alternative solutions for the design dimension's concern).</documentation>
+            </attribute>
+            <attribute isDerived="false" isDerivedUnion="false" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="DesignDimension-designDimensionInstance" defaultValue="" aggregation="composite" subsettedBy="">
+                <accessor return="QSet&lt;QDuseDesignDimensionInstance *&gt; " name="designDimensionInstances" constness=" const"/>
+                <accessor return="void " name="addDesignDimensionInstance" constness="">
+                    <parameter type="QDuseDesignDimensionInstance *" name="designDimensionInstance"/>
+                </accessor>
+                <accessor return="void " name="removeDesignDimensionInstance" constness="">
+                    <parameter type="QDuseDesignDimensionInstance *" name="designDimensionInstance"/>
+                </accessor>
+                <documentation>A specific design dimension instance created for a identified locus of architectural decision.</documentation>
+            </attribute>
+        </class>
+        <class name="QDuseVariationPoint" isAbstract="false">
+            <documentation>A variation point represents a specific solution for a given design dimension. A variation point entails validation rules which check for valid combinations of variation points and a script which defines the architectural changes to be enacted from such solution.</documentation>
+            <qtinclude>QtCore/QString</qtinclude>
+            <attribute isDerived="false" isDerivedUnion="false" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="VariationPoint-rationale" defaultValue="" aggregation="none" subsettedBy="">
+                <accessor return="QString " name="rationale" constness=" const"/>
+                <accessor return="void " name="setRationale" constness="">
+                    <parameter type="QString " name="rationale"/>
+                </accessor>
+                <documentation>The variation point's rationale.</documentation>
+            </attribute>
+            <attribute isDerived="false" isDerivedUnion="false" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="VariationPoint-preChangeValidationRule" defaultValue="" aggregation="none" subsettedBy="">
+                <accessor return="QString " name="preChangeValidationRule" constness=" const"/>
+                <accessor return="void " name="setPreChangeValidationRule" constness="">
+                    <parameter type="QString " name="preChangeValidationRule"/>
+                </accessor>
+                <documentation>A set of rules which should be evaluated as true if design space locations containing such variation point are to be considered as valid ones.</documentation>
+            </attribute>
+            <attribute isDerived="false" isDerivedUnion="false" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="VariationPoint-modelChange" defaultValue="" aggregation="none" subsettedBy="">
+                <accessor return="QString " name="modelChange" constness=" const"/>
+                <accessor return="void " name="setModelChange" constness="">
+                    <parameter type="QString " name="modelChange"/>
+                </accessor>
+                <documentation>The architectural changes to be enacted as contributions arosen from this variation point. The complete set of architectural changes is the merge of architectural contributions from all involved variation points.</documentation>
+            </attribute>
+        </class>
+        <class name="QDuseDesignDimensionInstance" isAbstract="false">
+            <documentation>A specific design dimenstion instance created to tackle a particular locus of architectural decision in the input model.</documentation>
+        </class>
+        <class name="QDuseQualityMetric" isAbstract="false">
+            <documentation>A quality metric defined for the corresponding design space.</documentation>
+            <qtinclude>QtCore/QString</qtinclude>
+            <attribute isDerived="false" isDerivedUnion="false" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="QualityMetric-name" defaultValue="" aggregation="none" subsettedBy="">
+                <accessor return="QString " name="name" constness=" const"/>
+                <accessor return="void " name="setName" constness="">
+                    <parameter type="QString " name="name"/>
+                </accessor>
+                <documentation>The quality metric's name.</documentation>
+            </attribute>
+            <attribute isDerived="false" isDerivedUnion="false" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="QualityMetric-expression" defaultValue="" aggregation="none" subsettedBy="">
+                <accessor return="QString " name="expression" constness=" const"/>
+                <accessor return="void " name="setExpression" constness="">
+                    <parameter type="QString " name="expression"/>
+                </accessor>
+                <documentation>The quality metric's evaluation expression.</documentation>
             </attribute>
         </class>
     </namespace>

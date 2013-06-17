@@ -49,10 +49,36 @@ void QDuseMetaModel::init(QScriptEngine *scriptEngine)
     qRegisterMetaType<QDuseDesignSpace *>();
     qRegisterMetaType< QList<QDuseDesignSpace *> >();
     qRegisterMetaType< QSet<QDuseDesignSpace *> >();
+    qRegisterMetaType<QDuseDesignDimension *>();
+    qRegisterMetaType< QList<QDuseDesignDimension *> >();
+    qRegisterMetaType< QSet<QDuseDesignDimension *> >();
+    qRegisterMetaType<QDuseDesignDimensionInstance *>();
+    qRegisterMetaType< QList<QDuseDesignDimensionInstance *> >();
+    qRegisterMetaType< QSet<QDuseDesignDimensionInstance *> >();
+    qRegisterMetaType<QDuseVariationPoint *>();
+    qRegisterMetaType< QList<QDuseVariationPoint *> >();
+    qRegisterMetaType< QSet<QDuseVariationPoint *> >();
+    qRegisterMetaType<QDuseQualityMetric *>();
+    qRegisterMetaType< QList<QDuseQualityMetric *> >();
+    qRegisterMetaType< QSet<QDuseQualityMetric *> >();
+
+    qmlRegisterType<QDuseDesignSpace>();
+    qmlRegisterType<QDuseDesignDimension>();
+    qmlRegisterType<QDuseDesignDimensionInstance>();
+    qmlRegisterType<QDuseVariationPoint>();
+    qmlRegisterType<QDuseQualityMetric>();
 
     if (scriptEngine) {
         qScriptRegisterMetaType(scriptEngine, qSetToScriptValue<QDuseDesignSpace>, scriptValueToQSet<QDuseDesignSpace>);
         qScriptRegisterMetaType(scriptEngine, qListToScriptValue<QDuseDesignSpace>, scriptValueToQList<QDuseDesignSpace>);
+        qScriptRegisterMetaType(scriptEngine, qSetToScriptValue<QDuseDesignDimension>, scriptValueToQSet<QDuseDesignDimension>);
+        qScriptRegisterMetaType(scriptEngine, qListToScriptValue<QDuseDesignDimension>, scriptValueToQList<QDuseDesignDimension>);
+        qScriptRegisterMetaType(scriptEngine, qSetToScriptValue<QDuseDesignDimensionInstance>, scriptValueToQSet<QDuseDesignDimensionInstance>);
+        qScriptRegisterMetaType(scriptEngine, qListToScriptValue<QDuseDesignDimensionInstance>, scriptValueToQList<QDuseDesignDimensionInstance>);
+        qScriptRegisterMetaType(scriptEngine, qSetToScriptValue<QDuseVariationPoint>, scriptValueToQSet<QDuseVariationPoint>);
+        qScriptRegisterMetaType(scriptEngine, qListToScriptValue<QDuseVariationPoint>, scriptValueToQList<QDuseVariationPoint>);
+        qScriptRegisterMetaType(scriptEngine, qSetToScriptValue<QDuseQualityMetric>, scriptValueToQSet<QDuseQualityMetric>);
+        qScriptRegisterMetaType(scriptEngine, qListToScriptValue<QDuseQualityMetric>, scriptValueToQList<QDuseQualityMetric>);
     }
 }
 

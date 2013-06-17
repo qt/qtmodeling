@@ -38,66 +38,51 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QDUSEDESIGNSPACE_H
-#define QDUSEDESIGNSPACE_H
+#include "qdusedesigndimensioninstance.h"
+#include "qdusedesigndimensioninstance_p.h"
 
-#include <QtDuse/QtDuseGlobal>
-
-// Base class includes
-#include <QtWrappedObjects/QWrappedObject>
-
-// Qt includes
-#include <QtCore/QString>
-#include <QtCore/QList>
-#include <QtCore/QSet>
-
-QT_BEGIN_HEADER
+#include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
 QT_BEGIN_NAMESPACE
 
-QT_MODULE(QtDuse)
-
-// Forward decls for function parameters
-class QDuseDesignDimension;
-class QDuseQualityMetric;
-
-class QDuseDesignSpacePrivate;
-
-class Q_DUSE_EXPORT QDuseDesignSpace : public QWrappedObject
+QDuseDesignDimensionInstancePrivate::QDuseDesignDimensionInstancePrivate()
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QDuse")
+}
 
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QList<QDuseDesignDimension *> designDimensions READ designDimensions)
-    Q_PROPERTY(QSet<QDuseQualityMetric *> qualityMetrics READ qualityMetrics)
+QDuseDesignDimensionInstancePrivate::~QDuseDesignDimensionInstancePrivate()
+{
+}
 
-    Q_DISABLE_COPY(QDuseDesignSpace)
-    Q_DECLARE_PRIVATE(QDuseDesignSpace)
+/*!
+    \class QDuseDesignDimensionInstance
 
-public:
-    Q_INVOKABLE explicit QDuseDesignSpace(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QDuseDesignSpace();
+    \inmodule QtDuse
 
-    // Attributes from QDuseDesignSpace
-    Q_INVOKABLE QString name() const;
-    Q_INVOKABLE void setName(QString name);
-    Q_INVOKABLE QList<QDuseDesignDimension *> designDimensions() const;
-    Q_INVOKABLE void addDesignDimension(QDuseDesignDimension *designDimension);
-    Q_INVOKABLE void removeDesignDimension(QDuseDesignDimension *designDimension);
-    Q_INVOKABLE QSet<QDuseQualityMetric *> qualityMetrics() const;
-    Q_INVOKABLE void addQualityMetric(QDuseQualityMetric *qualityMetric);
-    Q_INVOKABLE void removeQualityMetric(QDuseQualityMetric *qualityMetric);
+    \brief A specific design dimenstion instance created to tackle a particular locus of architectural decision in the input model.
+ */
 
-    virtual void setPropertyData();
+QDuseDesignDimensionInstance::QDuseDesignDimensionInstance(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(*new QDuseDesignDimensionInstancePrivate, wrapper, parent)
+{
+    setPropertyData();
+}
 
-protected:
-    explicit QDuseDesignSpace(QDuseDesignSpacePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-};
+QDuseDesignDimensionInstance::QDuseDesignDimensionInstance(QDuseDesignDimensionInstancePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(dd, wrapper, parent)
+{
+    setPropertyData();
+}
+
+QDuseDesignDimensionInstance::~QDuseDesignDimensionInstance()
+{
+}
+
+void QDuseDesignDimensionInstance::setPropertyData()
+{
+    QWrappedObject::setPropertyData();
+}
 
 QT_END_NAMESPACE
 
-QT_END_HEADER
-
-#endif // QDUSEDESIGNSPACE_H
+#include "moc_qdusedesigndimensioninstance.cpp"
 

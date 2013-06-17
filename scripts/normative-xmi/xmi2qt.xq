@@ -291,7 +291,6 @@ return
                                    | $class/ownedAttribute/type/@xmi:idref | $class/ownedOperation/ownedParameter/type/@xmi:idref
                                    | $class/ownedAttribute/type/@href | $class/ownedOperation/ownedParameter/type/@href)
         let $forwardNamespace := tokenize(qtxmi:namespaceFromTypeString($id), "::")
-        let $forwardNamespace := string-join(remove($forwardNamespace, count($forwardNamespace)), "::")
         where qtxmi:elementFromTypeString($id)/@xmi:type = "uml:Class"
               and empty(distinct-values($id[.=$superClasses]))
         order by $forwardNamespace

@@ -48,12 +48,18 @@
 
 // Qt includes
 #include "QtCore/QString"
+#include "QtCore/QList"
+#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtDuse)
+
+// Forward decls for function parameters
+class QDuseDesignDimension;
+class QDuseQualityMetric;
 class QDuseDesignSpace;
 
 class Q_DUSE_EXPORT QDuseDesignSpacePrivate : public QWrappedObjectPrivate
@@ -65,6 +71,8 @@ public:
     virtual ~QDuseDesignSpacePrivate();
 
     QString name;
+    QList<QDuseDesignDimension *> designDimensions;
+    QSet<QDuseQualityMetric *> qualityMetrics;
 };
 
 QT_END_NAMESPACE

@@ -41,6 +41,9 @@
 #include "qdusedesignspace.h"
 #include "qdusedesignspace_p.h"
 
+#include <QtDuse/QDuseDesignDimension>
+#include <QtDuse/QDuseQualityMetric>
+
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
 QT_BEGIN_NAMESPACE
@@ -53,6 +56,13 @@ QDuseDesignSpacePrivate::~QDuseDesignSpacePrivate()
 {
 }
 
+/*!
+    \class QDuseDesignSpace
+
+    \inmodule QtDuse
+
+    \brief A design space entails the design dimensions (degrees of freedom) and quality metrics for a particular application domain.
+ */
 
 QDuseDesignSpace::QDuseDesignSpace(QWrappedObject *wrapper, QWrappedObject *parent) :
     QWrappedObject(*new QDuseDesignSpacePrivate, wrapper, parent)
@@ -74,6 +84,9 @@ QDuseDesignSpace::~QDuseDesignSpace()
 // ATTRIBUTES FROM QDuseDesignSpace
 // ---------------------------------------------------------------
 
+/*!
+    The design space's name.
+ */
 QString QDuseDesignSpace::name() const
 {
     // This is a read-write attribute
@@ -92,14 +105,94 @@ void QDuseDesignSpace::setName(QString name)
     }
 }
 
+/*!
+    The design dimensions (degrees of freedom) of the design space.
+ */
+QList<QDuseDesignDimension *> QDuseDesignSpace::designDimensions() const
+{
+    // This is a read-write attribute
+
+    Q_D(const QDuseDesignSpace);
+    return d->designDimensions;
+}
+
+void QDuseDesignSpace::addDesignDimension(QDuseDesignDimension *designDimension)
+{
+    // This is a read-write attribute
+
+    Q_D(QDuseDesignSpace);
+    if (!d->designDimensions.contains(designDimension)) {
+        d->designDimensions.append(designDimension);
+        qTopLevelWrapper(designDimension)->setParent(qTopLevelWrapper(this));
+    }
+}
+
+void QDuseDesignSpace::removeDesignDimension(QDuseDesignDimension *designDimension)
+{
+    // This is a read-write attribute
+
+    Q_D(QDuseDesignSpace);
+    if (d->designDimensions.contains(designDimension)) {
+        d->designDimensions.removeAll(designDimension);
+        qTopLevelWrapper(designDimension)->setParent(0);
+    }
+}
+
+/*!
+    The quality metrics defined for the design space.
+ */
+QSet<QDuseQualityMetric *> QDuseDesignSpace::qualityMetrics() const
+{
+    // This is a read-write attribute
+
+    Q_D(const QDuseDesignSpace);
+    return d->qualityMetrics;
+}
+
+void QDuseDesignSpace::addQualityMetric(QDuseQualityMetric *qualityMetric)
+{
+    // This is a read-write attribute
+
+    Q_D(QDuseDesignSpace);
+    if (!d->qualityMetrics.contains(qualityMetric)) {
+        d->qualityMetrics.insert(qualityMetric);
+        qTopLevelWrapper(qualityMetric)->setParent(qTopLevelWrapper(this));
+    }
+}
+
+void QDuseDesignSpace::removeQualityMetric(QDuseQualityMetric *qualityMetric)
+{
+    // This is a read-write attribute
+
+    Q_D(QDuseDesignSpace);
+    if (d->qualityMetrics.contains(qualityMetric)) {
+        d->qualityMetrics.remove(qualityMetric);
+        qTopLevelWrapper(qualityMetric)->setParent(0);
+    }
+}
+
 void QDuseDesignSpace::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseDesignSpace")][QString::fromLatin1("name")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseDesignSpace")][QString::fromLatin1("name")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseDesignSpace")][QString::fromLatin1("name")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseDesignSpace")][QString::fromLatin1("name")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The design space's name.");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseDesignSpace")][QString::fromLatin1("name")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseDesignSpace")][QString::fromLatin1("name")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseDesignSpace")][QString::fromLatin1("name")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseDesignSpace")][QString::fromLatin1("designDimensions")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseDesignSpace")][QString::fromLatin1("designDimensions")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseDesignSpace")][QString::fromLatin1("designDimensions")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The design dimensions (degrees of freedom) of the design space.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseDesignSpace")][QString::fromLatin1("designDimensions")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseDesignSpace")][QString::fromLatin1("designDimensions")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseDesignSpace")][QString::fromLatin1("designDimensions")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseDesignSpace")][QString::fromLatin1("qualityMetrics")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseDesignSpace")][QString::fromLatin1("qualityMetrics")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseDesignSpace")][QString::fromLatin1("qualityMetrics")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The quality metrics defined for the design space.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseDesignSpace")][QString::fromLatin1("qualityMetrics")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseDesignSpace")][QString::fromLatin1("qualityMetrics")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseDesignSpace")][QString::fromLatin1("qualityMetrics")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::setPropertyData();
 }
