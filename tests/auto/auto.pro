@@ -1,4 +1,3 @@
 TEMPLATE=subdirs
-SUBDIRS += \
-    qtmofcontainment \
-    qtumlcontainment
+qtHaveModule(mof): SUBDIRS += qtmofcontainment
+qtHaveModule(uml): SUBDIRS += qtumlcontainment

@@ -1,3 +1,5 @@
 TEMPLATE = subdirs
 
-SUBDIRS = mof uml
+SUBDIRS=
+qtHaveModule(mof): SUBDIRS += mof
+qtHaveModule(uml): SUBDIRS += uml
