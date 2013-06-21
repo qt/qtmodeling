@@ -116,8 +116,6 @@ MainWindow::MainWindow(QWidget *parent) :
     tabifyDockWidget(ui->dckOcl, ui->dckJavaScript);
     ui->dckIssues->raise();
     tabifyDockWidget(ui->dckInspector, ui->dckMetrics);
-    // Next line is needed because of bug in xcb: xcb_conn.c:186: write_vec: Assertion `!c->out.queue_len' failed.
-    connect(ui->dckMetrics, SIGNAL(visibilityChanged(bool)), SLOT(dckMetricsVisibilityChanged(bool)));
     ui->dckInspector->raise();
     ui->gridLayout_10->addWidget(QWidget::createWindowContainer(_metricsQuickView, ui->metricsLayout), 0, 0, 1, 1);
 
@@ -126,10 +124,20 @@ MainWindow::MainWindow(QWidget *parent) :
 
     _centralQuickView->setSource(QUrl("qrc:/qml/centralview.qml"));
     _metricsQuickView->setSource(QUrl("qml/dialcontrol/dialcontrol.qml"));
-    setCentralWidget(QWidget::createWindowContainer(_centralQuickView, this));
+    ui->gridLayout_11->addWidget(QWidget::createWindowContainer(_centralQuickView, ui->modelViewWidget), 0, 0, 1, 1);
 
     _centralQuickView->setResizeMode(QQuickView::SizeRootObjectToView);
     _metricsQuickView->setResizeMode(QQuickView::SizeRootObjectToView);
+
+    foreach (QDockWidget *dockWidget, findChildren<QDockWidget *>())
+        ui->menu_Window->addAction(dockWidget->toggleViewAction());
+    ui->menu_Window->addSeparator();
+    foreach (QToolBar *toolbar, findChildren<QToolBar *>())
+        ui->menu_Window->addAction(toolbar->toggleViewAction());
+
+    // Next line is needed because of bug in xcb: xcb_conn.c:186: write_vec: Assertion `!c->out.queue_len' failed.
+    connect(ui->dckMetrics, SIGNAL(visibilityChanged(bool)), SLOT(dckMetricsVisibilityChanged(bool)));
+
     readSettings();
 }
 
