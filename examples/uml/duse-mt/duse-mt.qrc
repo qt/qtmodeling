@@ -8,5 +8,13 @@
         <file>icons/document-save-as.png</file>
         <file>icons/document-save.png</file>
         <file>icons/cleartext.png</file>
+        <file>icons/duse-mt-16x16.png</file>
+        <file>icons/duse-mt-22x22.png</file>
+        <file>icons/duse-mt-32x32.png</file>
+        <file>icons/duse-mt-48x48.png</file>
+        <file>icons/duse-mt-64x64.png</file>
+        <file>icons/duse-mt-128x128.png</file>
+        <file>qml/centralview.qml</file>
+        <file>qml/grid.png</file>
     </qresource>
 </RCC>

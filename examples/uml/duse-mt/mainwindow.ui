@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>DuSE-MT</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="duse-mt.qrc">
+    <normaloff>:/icons/duse-mt-32x32.png</normaloff>:/icons/duse-mt-32x32.png</iconset>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout_3"/>
   </widget>
@@ -267,6 +271,36 @@
         </widget>
        </item>
       </layout>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QDockWidget" name="dckMetrics">
+   <property name="minimumSize">
+    <size>
+     <width>180</width>
+     <height>42</height>
+    </size>
+   </property>
+   <property name="windowTitle">
+    <string>Quality Metrics</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>1</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_5">
+    <layout class="QGridLayout" name="gridLayout_10">
+     <property name="leftMargin">
+      <number>4</number>
+     </property>
+     <property name="rightMargin">
+      <number>4</number>
+     </property>
+     <property name="bottomMargin">
+      <number>4</number>
+     </property>
+     <item row="0" column="0">
+      <widget class="QWidget" name="metricsLayout" native="true"/>
      </item>
     </layout>
    </widget>

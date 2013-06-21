@@ -39,16 +39,58 @@
 **
 ****************************************************************************/
 import QtQuick 2.0
+import "content"
 
-Flickable {
-    id: flickable
-    width: 200; height: 200
-    contentHeight: 2000
-    contentWidth: 2000
-    rightMargin: 0; leftMargin: 0; topMargin: 0; bottomMargin: 0
-    DropArea {
-       anchors.fill: parent
-       onEntered: { console.log("entered"); }
-       onDropped: { console.log(Drag.target); }
+Rectangle {
+    id: root
+    color: "#545454"
+
+    VisualItemModel {
+        id: itemModel
+        Dial {
+            label: "Metric 1"
+        }
+        Dial {
+            label: "Metric 2"
+        }
+        Dial {
+            label: "Metric 3"
+        }
+    }
+
+    ListView {
+        id: view
+        anchors { fill: parent; bottomMargin: 30 }
+        model: itemModel
+        preferredHighlightBegin: 0; preferredHighlightEnd: 0
+        highlightRangeMode: ListView.StrictlyEnforceRange
+        orientation: ListView.Vertical
+        snapMode: ListView.SnapOneItem;
+    }
+    Rectangle {
+        width: root.width; height: 30
+        anchors { top: view.bottom; bottom: parent.bottom }
+        color: "gray"
+
+        Row {
+            anchors.centerIn: parent
+            spacing: 20
+
+            Repeater {
+                model: itemModel.count
+
+                Rectangle {
+                    width: 5; height: 5
+                    radius: 3
+                    color: view.currentIndex == index ? "blue" : "white"
+
+                    MouseArea {
+                        width: 20; height: 20
+                        anchors.centerIn: parent
+                        onClicked: view.currentIndex = index
+                    }
+                }
+            }
+        }
     }
 }

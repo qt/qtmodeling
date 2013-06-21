@@ -79,7 +79,8 @@ MainWindow::MainWindow(QWidget *parent) :
     _newModelDialog(new QDialog(this)),
     _newModel(new Ui::NewModel),
     _codeCompletionView(new QListView),
-    _quickView(new QQuickView)
+    _centralQuickView(new QQuickView),
+    _metricsQuickView(new QQuickView)
 {
     ui->setupUi(this);
     _codeCompletionView->setParent(ui->txeJavaScript);
@@ -114,16 +115,21 @@ MainWindow::MainWindow(QWidget *parent) :
     tabifyDockWidget(ui->dckXPath, ui->dckOcl);
     tabifyDockWidget(ui->dckOcl, ui->dckJavaScript);
     ui->dckIssues->raise();
+    tabifyDockWidget(ui->dckInspector, ui->dckMetrics);
+    // Next line is needed because of bug in xcb: xcb_conn.c:186: write_vec: Assertion `!c->out.queue_len' failed.
+    connect(ui->dckMetrics, SIGNAL(visibilityChanged(bool)), SLOT(dckMetricsVisibilityChanged(bool)));
+    ui->dckInspector->raise();
+    ui->gridLayout_10->addWidget(QWidget::createWindowContainer(_metricsQuickView, ui->metricsLayout), 0, 0, 1, 1);
 
     ui->txeJavaScript->installEventFilter(this);
     _codeCompletionView->installEventFilter(this);
 
-    _quickView->setSource(QUrl("source.qml"));
-    QWidget *centralWidget = QWidget::createWindowContainer(_quickView, this);
-    centralWidget->setAcceptDrops(true);
-    setCentralWidget(centralWidget);
+    _centralQuickView->setSource(QUrl("qrc:/qml/centralview.qml"));
+    _metricsQuickView->setSource(QUrl("qml/dialcontrol/dialcontrol.qml"));
+    setCentralWidget(QWidget::createWindowContainer(_centralQuickView, this));
 
-    _quickView->setResizeMode(QQuickView::SizeRootObjectToView);
+    _centralQuickView->setResizeMode(QQuickView::SizeRootObjectToView);
+    _metricsQuickView->setResizeMode(QQuickView::SizeRootObjectToView);
     readSettings();
 }
 
@@ -281,12 +287,24 @@ void MainWindow::wrappedObjectChanged(QWrappedObject *wrappedObject)
 
 void MainWindow::addToView(QWrappedObject *wrappedObject)
 {
-    wrappedObject->setQmlContextProperties(_quickView->engine()->rootContext());
-    QQmlComponent component(_quickView->engine());
+    wrappedObject->setQmlContextProperties(_centralQuickView->engine()->rootContext());
+    QQmlComponent component(_centralQuickView->engine());
     component.setData(QString("import QtQuick 2.0\nimport QtModeling.Uml 1.0\n\n%1 {}").arg(QString(wrappedObject->metaObject()->className()).remove(QRegularExpression("^Q"))).toLatin1(), QUrl());
     QQuickItem *item = qobject_cast<QQuickItem *>(component.create());
     if (item) {
-        item->setParentItem((qobject_cast<QQuickFlickable *>(_quickView->rootObject()))->contentItem());
+        item->setParentItem((qobject_cast<QQuickFlickable *>(_centralQuickView->rootObject()))->contentItem());
+    }
+}
+
+void MainWindow::dckMetricsVisibilityChanged(bool visible)
+{
+    if (visible) {
+        ui->dckMetrics->setMaximumSize(ui->dckMetrics->size());
+        ui->dckMetrics->setMinimumSize(ui->dckMetrics->size());
+    }
+    else {
+        ui->dckMetrics->setMaximumSize(QSize(524287, 524287));
+        ui->dckMetrics->setMinimumSize(QSize(180, 42));
     }
 }
 

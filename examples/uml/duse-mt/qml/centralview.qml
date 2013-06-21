@@ -38,77 +38,22 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+import QtQuick 2.0
 
-#include <QtWidgets/QMainWindow>
-
-#include <QtCore/QPair>
-#include <QtCore/QJsonObject>
-
-#include <QtScript/QScriptEngine>
-
-class QDialog;
-class QListView;
-class QQuickView;
-
-namespace Ui {
-    class MainWindow;
-    class AboutPlugins;
-    class NewModel;
+Flickable {
+    id: flickable
+    width: 200; height: 200
+    contentHeight: 2890
+    contentWidth: 1540
+    rightMargin: 0; leftMargin: 0; topMargin: 0; bottomMargin: 0
+    DropArea {
+       anchors.fill: parent
+       onEntered: { console.log("entered"); }
+       onDropped: { console.log(Drag.target); }
+    }
+    Image {
+        anchors.fill: parent
+        fillMode: Image.Tile
+        source: "grid.png"
+    }
 }
-
-class QWrappedObject;
-class QMetaModelPlugin;
-class QWrappedObjectModel;
-
-class MainWindow : public QMainWindow
-{
-    Q_OBJECT
-
-public:
-    explicit MainWindow(QWidget *parent = 0);
-    ~MainWindow();
-
-    void closeEvent(QCloseEvent *event);
-    void readSettings();
-
-private Q_SLOTS:
-    void on_actionFileNew_triggered();
-    void on_actionFileOpen_triggered();
-    void on_actionFileSaveAs_triggered();
-    void on_actionFileSave_triggered();
-    void on_actionAboutPlugins_triggered();
-    void on_psbJSEvaluate_clicked();
-
-    void metaModelChanged(QString newMetaModel);
-    void wrappedObjectChanged(QWrappedObject *wrappedObject);
-    void addToView(QWrappedObject *wrappedObject);
-
-    void dckMetricsVisibilityChanged(bool visible);
-
-protected:
-    bool eventFilter(QObject *obj, QEvent *event);
-
-private:
-    void loadPlugins();
-    void saveXmi(QWrappedObject *rootElement);
-    QWrappedObject *loadXmi();
-
-    Ui::MainWindow *ui;
-    QWrappedObjectModel *_wrappedObjectModel;
-
-    QString _currentFileName;
-    QHash< QString, QPair<QMetaModelPlugin *, QJsonObject> > _loadedPlugins;
-    QDialog *_aboutPluginsDialog;
-    Ui::AboutPlugins *_aboutPlugins;
-    QDialog *_newModelDialog;
-    Ui::NewModel *_newModel;
-
-    QScriptEngine _engine;
-    QListView *_codeCompletionView;
-    QQuickView *_centralQuickView;
-    QQuickView *_metricsQuickView;
-};
-
-#endif // MAINWINDOW_H
