@@ -44,6 +44,7 @@
 #include "ui_newmodel.h"
 
 #include <QtCore/QTimer>
+#include <QtCore/QSettings>
 #include <QtCore/QJsonArray>
 #include <QtCore/QPluginLoader>
 #include <QtCore/QStringListModel>
@@ -123,11 +124,19 @@ MainWindow::MainWindow(QWidget *parent) :
     setCentralWidget(centralWidget);
 
     _quickView->setResizeMode(QQuickView::SizeRootObjectToView);
+    readSettings();
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::readSettings()
+{
+    QSettings settings("LiveBlue", "DuSE-MT");
+    restoreGeometry(settings.value("geometry").toByteArray());
+    restoreState(settings.value("windowState").toByteArray());
 }
 
 void MainWindow::on_actionFileNew_triggered()
@@ -336,4 +345,12 @@ void MainWindow::loadPlugins()
                 _loadedPlugins.insert(loader.metaData().value(QString::fromLatin1("MetaData")).toObject().value(QString::fromLatin1("MetaModelNamespaceUri")).toString(), QPair<QMetaModelPlugin *, QJsonObject>(metaModelPlugin, loader.metaData().value(QString::fromLatin1("MetaData")).toObject()));
         }
     }
+}
+
+void MainWindow::closeEvent(QCloseEvent *event)
+{
+    QSettings settings("LiveBlue", "DuSE-MT");
+    settings.setValue("geometry", saveGeometry());
+    settings.setValue("windowState", saveState());
+    QMainWindow::closeEvent(event);
 }

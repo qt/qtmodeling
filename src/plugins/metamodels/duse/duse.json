@@ -1,6 +1,6 @@
 {
     "Version": "1.0.0",
-    "Vendor": "Live Blue",
+    "Vendor": "LiveBlue",
     "MetaModelNamespaceUri": "http://liveblue.wordpress.com",
     "MetaModelPrefix": "QDuse",
     "MetaModelTopLevelClasses": [ "QDuseDesignSpace" ]

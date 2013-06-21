@@ -70,6 +70,9 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+    void closeEvent(QCloseEvent *event);
+    void readSettings();
+
 private Q_SLOTS:
     void on_actionFileNew_triggered();
     void on_actionFileOpen_triggered();
