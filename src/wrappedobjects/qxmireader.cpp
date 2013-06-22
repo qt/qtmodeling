@@ -45,6 +45,7 @@
 #include "qmetawrappedobject.h"
 
 #include <QtCore/QDir>
+#include <QtCore/QUrl>
 #include <QtCore/QStack>
 #include <QtCore/QJsonObject>
 #include <QtCore/QPluginLoader>
@@ -91,20 +92,43 @@ void QXmiReader::loadPlugins()
     }
 }
 
-QWrappedObject *QXmiReader::readFile(QIODevice *device)
+QList<QWrappedObject *> QXmiReader::readFile(QIODevice *device, QString importedId)
 {
     Q_D(QXmiReader);
 
-    d->errors.clear();
-    d->reader.setDevice(device);
+    if (importedId.isEmpty()) {
+        d->idMap.clear();
+        d->errors.clear();
+        d->xmlNamespaceToImplementationNamespace.clear();
+    }
+    QXmlStreamReader reader;
+    reader.setDevice(device);
+    QList<QWrappedObject *> wrappedObjectList;
     QWrappedObject *rootElement = 0;
+    bool importedIdFound = false;
+    QStack<QString> idStack;
 
-    d->xmlNamespaceToImplementationNamespace.clear();
-    while (!d->reader.atEnd()) {
-        d->reader.readNext();
+    while (!reader.atEnd()) {
+        reader.readNext();
 
-        if (d->reader.isStartElement()) {
-            foreach (const QXmlStreamNamespaceDeclaration &namespaceDeclaration, d->reader.namespaceDeclarations()) {
+        if (!importedId.isEmpty() && !importedIdFound && reader.attributes().value(QString::fromLatin1("xmi:id")).toString() != importedId)
+            continue;
+
+        if (!importedId.isEmpty() && !importedIdFound)
+            importedIdFound = true;
+
+        if (reader.isStartElement()) {
+            idStack.push(reader.name().toString());
+            if (reader.name().toString() == QString::fromLatin1("importedPackage") || reader.name().toString() == QString::fromLatin1("importedElement")) {
+                QFile importFile(reader.attributes().value(QString::fromLatin1("href")).toString().split(QString::fromLatin1("#")).first());
+                if (!importFile.open(QFile::ReadOnly | QFile::Text))
+                    d->errors << QString::fromLatin1("Could not open imported file '%1'").arg(importFile.fileName());
+                QList<QWrappedObject *> importList = readFile(&importFile, reader.attributes().value(QString::fromLatin1("href")).toString().split(QString::fromLatin1("#")).last());
+                foreach (QWrappedObject *importedObject, importList)
+                    wrappedObjectList.append(importedObject);
+            }
+
+            foreach (const QXmlStreamNamespaceDeclaration &namespaceDeclaration, reader.namespaceDeclarations()) {
                 QMetaModelPlugin *metaModelPlugin = d->metaModelPlugins.value(namespaceDeclaration.namespaceUri().toString()).first;
                 if (metaModelPlugin) {
                     if (d->initMetaModel)
@@ -115,40 +139,53 @@ QWrappedObject *QXmiReader::readFile(QIODevice *device)
                     d->errors << QString::fromLatin1("Could not find metamodel for namespace URI '%1'").arg(namespaceDeclaration.namespaceUri().toString());
                 }
             }
-            QString xmiType = d->reader.attributes().value(QString::fromLatin1("xmi:type")).toString();
-            if (xmiType.isEmpty() && d->reader.qualifiedName() != d->reader.name())
-                xmiType = d->reader.qualifiedName().toString();
+            QString xmiType = reader.attributes().value(QString::fromLatin1("xmi:type")).toString();
+            if (xmiType.isEmpty() && reader.qualifiedName() != reader.name())
+                xmiType = reader.qualifiedName().toString();
             if (xmiType.isEmpty() || d->xmlNamespaceToImplementationNamespace[xmiType.split(':').first()].isEmpty())
                 continue;
             xmiType = QString::fromLatin1("%1%2 *").arg(d->xmlNamespaceToImplementationNamespace[xmiType.split(':').first()]).arg(xmiType.split(':').last());
-            QString instanceName = d->reader.attributes().value(QString::fromLatin1("name")).toString();
+            QString instanceName = reader.attributes().value(QString::fromLatin1("name")).toString();
             if (instanceName.isEmpty())
-                instanceName = d->reader.attributes().value(QString::fromLatin1("xmi:id")).toString();
+                instanceName = reader.attributes().value(QString::fromLatin1("xmi:id")).toString();
             QWrappedObject *wrappedObject = createInstance(xmiType, instanceName);
             if (wrappedObject) {
-                d->idMap.insert(d->reader.attributes().value(QString::fromLatin1("xmi:id")).toString(), wrappedObject);
+                d->idMap.insert(reader.attributes().value(QString::fromLatin1("xmi:id")).toString(), wrappedObject);
                 if (!rootElement)
                     rootElement = wrappedObject;
             }
             else
                 d->errors << QString::fromLatin1("Could not create instance with id '%1' and type '%2'. Corresponding metamodel loaded ?").arg(instanceName).arg(xmiType);
         }
+        else if (reader.isEndElement()) {
+            idStack.pop();
+            if (idStack.isEmpty())
+                break;
+        }
     }
 
+    importedIdFound = false;
+
     device->reset();
-    d->reader.clear();
-    d->reader.setDevice(device);
+    reader.clear();
+    reader.setDevice(device);
     QStack< QPair<QString, QWrappedObject *> > stack;
 
-    while (!d->reader.atEnd()) {
-        d->reader.readNext();
+    while (!reader.atEnd()) {
+        reader.readNext();
 
-        if (d->reader.isStartElement()) {
-            QString id = d->reader.attributes().value(QString::fromLatin1("xmi:id")).toString();
+        if (!importedId.isEmpty() && !importedIdFound && reader.attributes().value(QString::fromLatin1("xmi:id")).toString() != importedId)
+            continue;
+
+        if (!importedId.isEmpty() && !importedIdFound)
+            importedIdFound = true;
+
+        if (reader.isStartElement()) {
+            QString id = reader.attributes().value(QString::fromLatin1("xmi:id")).toString();
             if (id.isEmpty())
-                id = d->reader.attributes().value(QString::fromLatin1("xmi:idref")).toString();
+                id = reader.attributes().value(QString::fromLatin1("xmi:idref")).toString();
             if (id.isEmpty())
-                id = d->reader.attributes().value(QString::fromLatin1("href")).toString();
+                id = reader.attributes().value(QString::fromLatin1("href")).toString().split(QString::fromLatin1("#")).last();
             if (id.isEmpty() && !stack.isEmpty())
                 continue;
 
@@ -156,7 +193,7 @@ QWrappedObject *QXmiReader::readFile(QIODevice *device)
 
             if (wrappedObject) {
                 const QMetaWrappedObject *metaWrappedObject = wrappedObject->metaWrappedObject();
-                foreach (QXmlStreamAttribute attribute, d->reader.attributes()) {
+                foreach (QXmlStreamAttribute attribute, reader.attributes()) {
                     int propertyIndex;
                     if ((propertyIndex = metaWrappedObject->indexOfProperty(attribute.name().toString().toLatin1())) != -1) {
                         QMetaPropertyInfo metaPropertyInfo = metaWrappedObject->property(propertyIndex);
@@ -199,7 +236,7 @@ QWrappedObject *QXmiReader::readFile(QIODevice *device)
                 }
                 if (!stack.isEmpty()) {
                     QWrappedObject *containerObject = stack.top().second;
-                    QString elementName = d->reader.name().toString();
+                    QString elementName = reader.name().toString();
                     elementName = elementName.left(1).toUpper() + elementName.mid(1);
                     int methodCount = containerObject->metaObject()->methodCount();
                     int i;
@@ -215,17 +252,20 @@ QWrappedObject *QXmiReader::readFile(QIODevice *device)
                     if (i == methodCount)
                         d->errors << QString::fromLatin1("Metamethod add/set'%1' not found on object '%2'.").arg(elementName).arg(containerObject->objectName());
                 }
-                stack.push(QPair<QString, QWrappedObject *>(d->reader.name().toString(), wrappedObject));
+                stack.push(QPair<QString, QWrappedObject *>(reader.name().toString(), wrappedObject));
             }
             else
-                d->errors << QString::fromLatin1("Could not cross reference instance with id '%1' in element '%2'. Bad formed XMI file ?").arg(id).arg(d->reader.name().toString());
+                d->errors << QString::fromLatin1("Could not cross reference instance with id '%1' in element '%2'. Bad formed XMI file ?").arg(id).arg(reader.name().toString());
         }
-        else if (d->reader.isEndElement() && !stack.isEmpty() && stack.top().first == d->reader.name()) {
+        else if (reader.isEndElement() && !stack.isEmpty() && stack.top().first == reader.name()) {
             stack.pop();
+            if (stack.isEmpty())
+                break;
         }
     }
 
-    return rootElement;
+    wrappedObjectList.insert(0, rootElement);
+    return wrappedObjectList;
 }
 
 QWrappedObject *QXmiReader::createInstance(QString instanceClass, QString instanceName)

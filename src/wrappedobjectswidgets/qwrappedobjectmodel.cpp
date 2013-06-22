@@ -41,12 +41,14 @@
 #include "qwrappedobjectmodel.h"
 #include "qwrappedobjectmodel_p.h"
 
+#include <QtGui/QFont>
+#include <QtWidgets/QApplication>
+
 #include <QtWrappedObjects/QWrappedObject>
 
 QT_BEGIN_NAMESPACE
 
 QWrappedObjectModelPrivate::QWrappedObjectModelPrivate()
-    : wrappedObject(0)
 {
 }
 
@@ -55,33 +57,33 @@ QWrappedObjectModel::QWrappedObjectModel(QObject *parent) :
 {
 }
 
-void QWrappedObjectModel::setWrappedObject(QWrappedObject *wrappedObject)
+void QWrappedObjectModel::addWrappedObject(QWrappedObject *wrappedObject)
 {
     Q_D(QWrappedObjectModel);
 
-    if (wrappedObject && d->wrappedObject != wrappedObject) {
+    if (wrappedObject && !d->wrappedObjects.contains(wrappedObject)) {
         beginResetModel();
-        d->wrappedObject = wrappedObject;
+        d->wrappedObjects.append(wrappedObject);
         endResetModel();
     }
 }
 
-QWrappedObject *QWrappedObjectModel::wrappedObject() const
+QList<QWrappedObject *> QWrappedObjectModel::wrappedObjects() const
 {
     Q_D(const QWrappedObjectModel);
 
-    return d->wrappedObject;
+    return d->wrappedObjects;
 }
 
 QModelIndex QWrappedObjectModel::index(int row, int column, const QModelIndex &parent) const
 {
     Q_D(const QWrappedObjectModel);
 
-    if (!d->wrappedObject || row < 0 || column < 0 || column >= 2 || (parent.isValid() && parent.column() != 0))
+    if (d->wrappedObjects.isEmpty() || row < 0 || column < 0 || column >= 2 || (parent.isValid() && parent.column() != 0))
         return QModelIndex();
 
     if (!parent.isValid())
-        return createIndex(row, column, static_cast<void *>(qTopLevelWrapper(d->wrappedObject)));
+        return createIndex(row, column, static_cast<void *>(qTopLevelWrapper(d->wrappedObjects.at(row))));
 
     QWrappedObject *wrappedObject = static_cast<QWrappedObject *>(parent.internalPointer());
     if (!wrappedObject)
@@ -95,7 +97,7 @@ QModelIndex QWrappedObjectModel::parent(const QModelIndex &child) const
     Q_D(const QWrappedObjectModel);
 
     QWrappedObject *wrappedObject = static_cast<QWrappedObject *>(child.internalPointer());
-    if (!d->wrappedObject || !child.isValid() || !wrappedObject)
+    if (d->wrappedObjects.isEmpty() || !child.isValid() || !wrappedObject)
         return QModelIndex();
 
     QWrappedObject *parentWrappedObject = qTopLevelWrapper(dynamic_cast<QWrappedObject *>(wrappedObject->parent()));
@@ -113,11 +115,11 @@ int QWrappedObjectModel::rowCount(const QModelIndex &parent) const
 {
     Q_D(const QWrappedObjectModel);
 
-    if (!d->wrappedObject || (parent.isValid() && parent.column() != 0))
+    if (d->wrappedObjects.isEmpty() || (parent.isValid() && parent.column() != 0))
         return 0;
 
     if (parent.row() == -1)
-        return 1;
+        return d->wrappedObjects.count();
 
     QWrappedObject *wrappedObject = qTopLevelWrapper(static_cast<QWrappedObject *>(parent.internalPointer()));
     if (!wrappedObject)
@@ -130,20 +132,26 @@ int QWrappedObjectModel::columnCount(const QModelIndex &parent) const
 {
     Q_D(const QWrappedObjectModel);
 
-    return (!d->wrappedObject || (parent.isValid() && parent.column() != 0)) ? 0:2;
+    return (d->wrappedObjects.isEmpty() || (parent.isValid() && parent.column() != 0)) ? 0:2;
 }
 
 QVariant QWrappedObjectModel::data(const QModelIndex &index, int role) const
 {
     Q_D(const QWrappedObjectModel);
 
-    if (!d->wrappedObject || index.column() < 0 || index.column() >= 2)
+    if (d->wrappedObjects.isEmpty() || index.column() < 0 || index.column() >= 2)
         return QVariant();
     switch (role) {
         case Qt::DisplayRole:
         case Qt::EditRole: {
             QWrappedObject *wrappedObject = static_cast<QWrappedObject *>(index.internalPointer());
             return index.column() == 0 ? qTopLevelWrapper(wrappedObject)->objectName():QString::fromLatin1(qTopLevelWrapper(wrappedObject)->metaObject()->className());
+        }
+        case Qt::FontRole: {
+            QFont font = QApplication::font();
+            if (index.row() == 0 and index.parent().row() == -1)
+                font.setBold(true);
+            return font;
         }
         case Qt::UserRole: {
             return qVariantFromValue(static_cast<QWrappedObject *>(index.internalPointer()));
@@ -175,6 +183,15 @@ void QWrappedObjectModel::updateIndex(const QModelIndex &index)
         emit layoutChanged();
     else
         emit dataChanged(index, index, QVector<int>() << Qt::DisplayRole);
+}
+
+void QWrappedObjectModel::clear()
+{
+    Q_D(QWrappedObjectModel);
+
+    foreach (QWrappedObject *object, d->wrappedObjects)
+        delete object;
+    d->wrappedObjects.clear();
 }
 
 #include "moc_qwrappedobjectmodel.cpp"

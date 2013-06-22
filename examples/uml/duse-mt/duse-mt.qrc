@@ -17,5 +17,7 @@
         <file>qml/grid.png</file>
         <file>qml/modelview.qml</file>
         <file>qml/paretofrontview.qml</file>
+        <file>metamodels/PrimitiveTypes.xmi</file>
+        <file>metamodels/UML.xmi</file>
     </qresource>
 </RCC>

@@ -57,7 +57,7 @@ class Q_WRAPPEDOBJECTSWIDGETS_EXPORT QWrappedObjectModelPrivate : public QAbstra
 public:
     explicit QWrappedObjectModelPrivate();
 
-    QWrappedObject *wrappedObject;
+    QList<QWrappedObject *> wrappedObjects;
 };
 
 QT_END_NAMESPACE

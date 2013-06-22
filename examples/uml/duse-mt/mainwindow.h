@@ -95,7 +95,7 @@ protected:
 private:
     void loadPlugins();
     void saveXmi(QWrappedObject *rootElement);
-    QWrappedObject *loadXmi();
+    QList<QWrappedObject *> loadXmi();
 
     Ui::MainWindow *ui;
     QWrappedObjectModel *_wrappedObjectModel;

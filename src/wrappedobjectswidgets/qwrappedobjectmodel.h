@@ -65,7 +65,7 @@ class Q_WRAPPEDOBJECTSWIDGETS_EXPORT QWrappedObjectModel : public QAbstractItemM
 public:
     explicit QWrappedObjectModel(QObject *parent = 0);
 
-    QWrappedObject *wrappedObject() const;
+    QList<QWrappedObject *> wrappedObjects() const;
 
     virtual QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const;
     virtual QModelIndex parent(const QModelIndex &child) const;
@@ -77,8 +77,9 @@ public:
     Qt::ItemFlags flags(const QModelIndex &index) const;
 
 public Q_SLOTS:
-    void setWrappedObject(QWrappedObject *wrappedObject);
+    void addWrappedObject(QWrappedObject *wrappedObjects);
     void updateIndex(const QModelIndex &index);
+    void clear();
 };
 
 QT_END_NAMESPACE

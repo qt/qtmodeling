@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.omg.org/spec/UML/20110701">
   <uml:Package name="MyRootPackage" xmi:id="MyRootPackage">
-    <packagedElement xmi:type="uml:PrimitiveType" name="String" xmi:id="MyRootPackage-String"/>
+    <elementImport xmi:type="uml:ElementImport" xmi:id="_elementImport.0">
+      <importedElement href=":/metamodels/PrimitiveTypes.xmi#String"/>
+    </elementImport>
     <packagedElement xmi:type="uml:Package" name="Package1" xmi:id="MyRootPackage-Package1">
       <packagedElement xmi:type="uml:Class" isAbstract="true" name="Student" xmi:id="MyRootPackage-Package1-Student">
         <ownedAttribute xmi:type="uml:Property" visibility="public" name="name" xmi:id="MyRootPackage-Package1-Student-name">
-          <type xmi:idref="MyRootPackage-String"/>
+          <type href=":/metamodels/PrimitiveTypes.xmi#String"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" visibility="public" name="age" xmi:id="MyRootPackage-Package1-Student-age"/>
       </packagedElement>

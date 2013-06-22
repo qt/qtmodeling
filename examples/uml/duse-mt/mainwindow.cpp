@@ -186,7 +186,8 @@ void MainWindow::on_actionFileNew_triggered()
                 QWrappedObject *topLevelElement = dynamic_cast<QWrappedObject *>(metaObject->newInstance());
                 if (topLevelElement) {
                     topLevelElement->setObjectName(_newModel->lneModel->text());
-                    _wrappedObjectModel->setWrappedObject(topLevelElement);
+                    _wrappedObjectModel->clear();
+                    _wrappedObjectModel->addWrappedObject(topLevelElement);
                     setWindowTitle("DuSE-MT");
                     ui->txeJavaScript->setText("self");
                     QTimer::singleShot(0, this, SLOT(on_psbJSEvaluate_clicked()));
@@ -205,33 +206,35 @@ void MainWindow::saveXmi(QWrappedObject *rootElement)
     }
 
     QXmiWriter writer(rootElement);
+    setCursor(Qt::WaitCursor);
     if (!writer.writeFile(&file))
         QMessageBox::critical(this, tr("Save As"), tr("Error when writing XMI file !"));
     else {
         statusBar()->showMessage("XMI file successfully saved !", 3000);
         setWindowTitle(QFileInfo(file).fileName() + " - DuSE-MT");
     }
+    setCursor(Qt::ArrowCursor);
 }
 
-QWrappedObject *MainWindow::loadXmi()
+QList<QWrappedObject *> MainWindow::loadXmi()
 {
     QFile file(_currentFileName);
     if (!file.open(QFile::ReadOnly | QFile::Text)) {
         QMessageBox::critical(this, tr("Open"), tr("Cannot read file !"));
-        return 0;
+        return QList<QWrappedObject *>();
     }
 
     QXmiReader reader(&_engine, true);
     setWindowTitle(QFileInfo(file).fileName() + " - DuSE-MT");
-    QWrappedObject *wrappedObject = reader.readFile(&file);
+    QList<QWrappedObject *> wrappedObjectList = reader.readFile(&file);
     ui->txeIssues->setModel(new QStringListModel(reader.errorStrings()));
-    if (wrappedObject) {
-        _engine.globalObject().setProperty(wrappedObject->objectName(), _engine.newQObject(wrappedObject));
+    if (!wrappedObjectList.isEmpty()) {
+        _engine.globalObject().setProperty(wrappedObjectList.at(0)->objectName(), _engine.newQObject(wrappedObjectList.at(0)));
         ui->txeJavaScript->setText("self");
         QTimer::singleShot(0, this, SLOT(on_psbJSEvaluate_clicked()));
     }
 
-    return wrappedObject;
+    return wrappedObjectList;
 }
 
 void MainWindow::on_actionFileOpen_triggered()
@@ -239,8 +242,11 @@ void MainWindow::on_actionFileOpen_triggered()
     QString fileName = QFileDialog::getOpenFileName(this, tr("Open"), QDir::currentPath(), "XMI files (*.xmi)");
     if (!fileName.isEmpty()) {
         _currentFileName = fileName;
-        delete _wrappedObjectModel->wrappedObject();
-        _wrappedObjectModel->setWrappedObject(loadXmi());
+        _wrappedObjectModel->clear();
+        setCursor(Qt::WaitCursor);
+        foreach (QWrappedObject *object, loadXmi())
+            _wrappedObjectModel->addWrappedObject(object);
+        setCursor(Qt::ArrowCursor);
     }
 }
 
@@ -249,7 +255,7 @@ void MainWindow::on_actionFileSaveAs_triggered()
     QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"), QDir::currentPath(), "XMI files (*.xmi)");
     if (!fileName.isEmpty()) {
         _currentFileName = fileName;
-        saveXmi(_wrappedObjectModel->wrappedObject());
+        saveXmi(_wrappedObjectModel->wrappedObjects().at(0));
     }
 }
 
@@ -258,7 +264,7 @@ void MainWindow::on_actionFileSave_triggered()
     if (_currentFileName.isEmpty())
         on_actionFileSaveAs_triggered();
     else
-        saveXmi(_wrappedObjectModel->wrappedObject());
+        saveXmi(_wrappedObjectModel->wrappedObjects().at(0));
 }
 
 void MainWindow::on_actionAboutPlugins_triggered()

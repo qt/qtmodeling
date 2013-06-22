@@ -64,7 +64,6 @@ public:
     explicit QXmiReaderPrivate();
     virtual ~QXmiReaderPrivate();
 
-    QXmlStreamReader reader;
     QHash<QString, QWrappedObject *> idMap;
     QHash< QString, QPair<QMetaModelPlugin *, QJsonObject> > metaModelPlugins;
     QHash<QString, QString> xmlNamespaceToImplementationNamespace;

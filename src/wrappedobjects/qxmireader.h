@@ -68,7 +68,7 @@ public:
     explicit QXmiReader(QScriptEngine *scriptEngine = 0, bool initMetaModel = false, QObject *parent = 0);
     virtual ~QXmiReader();
 
-    QWrappedObject *readFile(QIODevice *device);
+    QList<QWrappedObject *> readFile(QIODevice *device, QString importedId = QString::fromLatin1(""));
     QStringList errorStrings() const;
 
 protected:
