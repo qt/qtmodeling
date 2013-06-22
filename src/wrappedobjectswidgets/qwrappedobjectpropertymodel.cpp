@@ -172,7 +172,8 @@ QVariant QWrappedObjectPropertyModel::data(const QModelIndex &index, int role) c
                             if (elements.size() > 0) {
                                 str.append(QString::fromLatin1("["));
                                 foreach (QWrappedObject *object, elements)
-                                    str.append((qTopLevelWrapper(object))->objectName().append(QString::fromLatin1(", ")));
+                                    if (object)
+                                        str.append((qTopLevelWrapper(object))->objectName().append(QString::fromLatin1(", ")));
                                 str.chop(2);
                                 str.append(QString::fromLatin1("]"));
                             }

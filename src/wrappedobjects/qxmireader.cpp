@@ -173,6 +173,26 @@ QWrappedObject *QXmiReader::readFile(QIODevice *device)
                             if (!wrappedObject->setProperty(attribute.name().toString().toLatin1(), attribute.value().toString()))
                                 d->errors << QString::fromLatin1("Error when setting property '%1' of object with id '%2'.").arg(attribute.name().toString()).arg(id);
                         }
+                        else if (metaProperty.type() == QVariant::UserType) {
+                            QWrappedObject *propertyObject = d->idMap.value(attribute.value().toString());
+                            if (propertyObject) {
+                                QString elementName = attribute.name().toString();
+                                elementName = elementName.left(1).toUpper() + elementName.mid(1);
+                                int methodCount = wrappedObject->metaObject()->methodCount();
+                                int i;
+                                for (i = 0; i < methodCount; ++i) {
+                                    QMetaMethod metaMethod = wrappedObject->metaObject()->method(i);
+                                    if (QString::fromLatin1(metaMethod.name()) == QString::fromLatin1("set%1").arg(elementName)) {
+                                        if (!metaMethod.invoke(wrappedObject, ::Q_ARG(QWrappedObject *, propertyObject)))
+                                            d->errors << QString::fromLatin1("Error when invoking metamethod '%1' on object '%2'.").arg(QString::fromLatin1(metaMethod.name())).arg(propertyObject->objectName());
+                                        break;
+                                    }
+                                }
+                                if (i == methodCount)
+                                    d->errors << QString::fromLatin1("Metamethod add/set'%1' not found on object '%2'.").arg(elementName).arg(propertyObject->objectName());
+
+                            }
+                        }
                     }
                     else
                         d->errors << QString::fromLatin1("Property '%1' not found in object of type '%2'. Corresponding metamodel loaded ?").arg(attribute.name().toString()).arg(QString::fromLatin1(wrappedObject->metaObject()->className()));
