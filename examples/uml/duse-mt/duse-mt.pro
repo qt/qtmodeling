@@ -25,7 +25,8 @@ HEADERS  += mainwindow.h \
 
 FORMS    += mainwindow.ui \
             aboutplugins.ui \
-    newmodel.ui
+    newmodel.ui \
+    aboutdusemt.ui
 
 RESOURCES += \
     duse-mt.qrc

@@ -14,7 +14,8 @@
         <file>icons/duse-mt-48x48.png</file>
         <file>icons/duse-mt-64x64.png</file>
         <file>icons/duse-mt-128x128.png</file>
-        <file>qml/centralview.qml</file>
         <file>qml/grid.png</file>
+        <file>qml/modelview.qml</file>
+        <file>qml/paretofrontview.qml</file>
     </qresource>
 </RCC>

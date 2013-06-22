@@ -41,6 +41,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "ui_aboutplugins.h"
+#include "ui_aboutdusemt.h"
 #include "ui_newmodel.h"
 
 #include <QtCore/QTimer>
@@ -76,11 +77,14 @@ MainWindow::MainWindow(QWidget *parent) :
     _wrappedObjectModel(new QWrappedObjectModel(this)),
     _aboutPluginsDialog(new QDialog(this)),
     _aboutPlugins(new Ui::AboutPlugins),
+    _aboutDuSEMTDialog(new QDialog(this)),
+    _aboutDuSEMT(new Ui::AboutDuSEMT),
     _newModelDialog(new QDialog(this)),
     _newModel(new Ui::NewModel),
     _codeCompletionView(new QListView),
-    _centralQuickView(new QQuickView),
-    _metricsQuickView(new QQuickView)
+    _modelQuickView(new QQuickView),
+    _metricsQuickView(new QQuickView),
+    _paretoFrontQuickView(new QQuickView)
 {
     ui->setupUi(this);
     _codeCompletionView->setParent(ui->txeJavaScript);
@@ -91,6 +95,7 @@ MainWindow::MainWindow(QWidget *parent) :
     _newModel->setupUi(_newModelDialog);
     connect(_newModel->cboMetamodel, SIGNAL(currentIndexChanged(QString)), SLOT(metaModelChanged(QString)));
     _aboutPlugins->setupUi(_aboutPluginsDialog);
+    _aboutDuSEMT->setupUi(_aboutDuSEMTDialog);
 
     QWrappedObjectPropertyModel *propertyModel = new QWrappedObjectPropertyModel(this);
     ui->propertyEditor->setModel(propertyModel);
@@ -117,17 +122,22 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->dckIssues->raise();
     tabifyDockWidget(ui->dckInspector, ui->dckMetrics);
     ui->dckInspector->raise();
-    ui->gridLayout_10->addWidget(QWidget::createWindowContainer(_metricsQuickView, ui->metricsLayout), 0, 0, 1, 1);
 
     ui->txeJavaScript->installEventFilter(this);
     _codeCompletionView->installEventFilter(this);
 
-    _centralQuickView->setSource(QUrl("qrc:/qml/centralview.qml"));
-    _metricsQuickView->setSource(QUrl("qml/dialcontrol/dialcontrol.qml"));
-    ui->gridLayout_11->addWidget(QWidget::createWindowContainer(_centralQuickView, ui->modelViewWidget), 0, 0, 1, 1);
+    _modelQuickView->setSource(QUrl("qrc:/qml/modelview.qml"));
+    ui->gridLayout_11->addWidget(QWidget::createWindowContainer(_modelQuickView, ui->modelViewWidget), 0, 0, 1, 1);
 
-    _centralQuickView->setResizeMode(QQuickView::SizeRootObjectToView);
+    _metricsQuickView->setSource(QUrl("qml/dialcontrol/dialcontrol.qml"));
+    ui->gridLayout_10->addWidget(QWidget::createWindowContainer(_metricsQuickView, ui->metricsLayout), 0, 0, 1, 1);
+
+    _paretoFrontQuickView->setSource(QUrl("qrc:/qml/paretofrontview.qml"));
+    ui->gridLayout_12->addWidget(QWidget::createWindowContainer(_paretoFrontQuickView, ui->paretoFrontViewWidget), 0, 0, 1, 1);
+
+    _modelQuickView->setResizeMode(QQuickView::SizeRootObjectToView);
     _metricsQuickView->setResizeMode(QQuickView::SizeRootObjectToView);
+    _paretoFrontQuickView->setResizeMode(QQuickView::SizeRootObjectToView);
 
     foreach (QDockWidget *dockWidget, findChildren<QDockWidget *>())
         ui->menu_Window->addAction(dockWidget->toggleViewAction());
@@ -268,6 +278,11 @@ void MainWindow::on_actionAboutPlugins_triggered()
     _aboutPluginsDialog->exec();
 }
 
+void MainWindow::on_actionAboutDuSEMT_triggered()
+{
+    _aboutDuSEMTDialog->exec();
+}
+
 void MainWindow::on_psbJSEvaluate_clicked()
 {
     ui->txeJavaScriptEvaluation->setText(_engine.evaluate(ui->txeJavaScript->toPlainText()).toString());
@@ -295,12 +310,12 @@ void MainWindow::wrappedObjectChanged(QWrappedObject *wrappedObject)
 
 void MainWindow::addToView(QWrappedObject *wrappedObject)
 {
-    wrappedObject->setQmlContextProperties(_centralQuickView->engine()->rootContext());
-    QQmlComponent component(_centralQuickView->engine());
+    wrappedObject->setQmlContextProperties(_modelQuickView->engine()->rootContext());
+    QQmlComponent component(_modelQuickView->engine());
     component.setData(QString("import QtQuick 2.0\nimport QtModeling.Uml 1.0\n\n%1 {}").arg(QString(wrappedObject->metaObject()->className()).remove(QRegularExpression("^Q"))).toLatin1(), QUrl());
     QQuickItem *item = qobject_cast<QQuickItem *>(component.create());
     if (item) {
-        item->setParentItem((qobject_cast<QQuickFlickable *>(_centralQuickView->rootObject()))->contentItem());
+        item->setParentItem((qobject_cast<QQuickFlickable *>(_modelQuickView->rootObject()))->contentItem());
     }
 }
 

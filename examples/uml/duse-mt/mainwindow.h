@@ -55,6 +55,7 @@ class QQuickView;
 namespace Ui {
     class MainWindow;
     class AboutPlugins;
+    class AboutDuSEMT;
     class NewModel;
 }
 
@@ -79,6 +80,7 @@ private Q_SLOTS:
     void on_actionFileSaveAs_triggered();
     void on_actionFileSave_triggered();
     void on_actionAboutPlugins_triggered();
+    void on_actionAboutDuSEMT_triggered();
     void on_psbJSEvaluate_clicked();
 
     void metaModelChanged(QString newMetaModel);
@@ -102,13 +104,16 @@ private:
     QHash< QString, QPair<QMetaModelPlugin *, QJsonObject> > _loadedPlugins;
     QDialog *_aboutPluginsDialog;
     Ui::AboutPlugins *_aboutPlugins;
+    QDialog *_aboutDuSEMTDialog;
+    Ui::AboutDuSEMT *_aboutDuSEMT;
     QDialog *_newModelDialog;
     Ui::NewModel *_newModel;
 
     QScriptEngine _engine;
     QListView *_codeCompletionView;
-    QQuickView *_centralQuickView;
+    QQuickView *_modelQuickView;
     QQuickView *_metricsQuickView;
+    QQuickView *_paretoFrontQuickView;
 };
 
 #endif // MAINWINDOW_H
