@@ -55,7 +55,7 @@ Item {
         drag.minimumX: 0
         drag.minimumY: 0
 
-        onPressed: parent.focus = true;
+        onPressed: parent.focus = true
     }
 
     // Selection marks (begin)
@@ -88,7 +88,7 @@ Item {
         source: "resize-mark.png"
         anchors.right: parent.right
         anchors.bottom: parent.bottom
-        z: 1;
+        z: 1
         MouseArea {
             id: mouseArea
             enabled: element.focus
@@ -109,8 +109,8 @@ Item {
 
             onPositionChanged: {
                 if (pressed) {
-                    element.width = Math.max(element.width + (mouseX - oldMouseX), 40);
-                    element.height = Math.max(element.height + (mouseY - oldMouseY), 25);
+                    element.width = Math.max(element.width + (mouseX - oldMouseX), 40)
+                    element.height = Math.max(element.height + (mouseY - oldMouseY), 25)
                 }
             }
         }

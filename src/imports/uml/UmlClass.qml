@@ -53,7 +53,7 @@ UmlElement {
         id: attributeSlot
         anchors.top: nameSlot.bottom
         anchors.topMargin: -1
-        anchors.bottom: parent.bottom
+        height: (parent.height - nameSlot.height)/2
         ListView {
             id: attributesView
             anchors.fill: parent
@@ -63,13 +63,25 @@ UmlElement {
             }
         }
     }
-    Component.onCompleted: {
-        if (element) {
-            label.text = element.name;
-            label.font.italic = element.isAbstract;
+    UmlSlot {
+        id: operationSlot
+        anchors.top: attributeSlot.bottom
+        anchors.topMargin: -1
+        anchors.bottom: parent.bottom
+        ListView {
+            id: operationsView
+            anchors.fill: parent
+            anchors.margins: 4
+            delegate: Text {
+                text: visibility(modelData.visibility) + modelData.name
+            }
         }
-        if (attributes)
-            attributesView.model = attributes;
+    }
+    Component.onCompleted: {
+        label.text = element.name
+        label.font.italic = element.isAbstract
+        attributesView.model = attributes
+        operationsView.model = operations
     }
 
     function visibility(visibilityEnum)
@@ -79,6 +91,7 @@ UmlElement {
         case 1: return "-"
         case 2: return "#"
         case 3: return "~"
+        default: return ""
         }
     }
 }

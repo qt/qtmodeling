@@ -1066,10 +1066,14 @@ QSet<QUmlNamedElement *> QUmlClass::inherit(QSet<QUmlNamedElement *> inhs) const
 void QUmlClass::setQmlContextProperties(QQmlContext *qmlContext)
 {
     qmlContext->setContextProperty(QString::fromLatin1("element"), this);
-    QVariantList varList;
+    QVariantList attributeList;
     foreach (QUmlProperty *property, ownedAttributes())
-        varList << qVariantFromValue(property);
-    qmlContext->setContextProperty(QString::fromLatin1("attributes"), varList);
+        attributeList << qVariantFromValue(property);
+    qmlContext->setContextProperty(QString::fromLatin1("attributes"), attributeList);
+    QVariantList operationList;
+    foreach (QUmlOperation *operation, ownedOperations())
+        operationList << qVariantFromValue(operation);
+    qmlContext->setContextProperty(QString::fromLatin1("operations"), operationList);
 }
 
 void QUmlClass::setPropertyData()

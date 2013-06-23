@@ -10,6 +10,7 @@
           <type href=":/metamodels/PrimitiveTypes.xmi#String"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" visibility="public" name="age" xmi:id="MyRootPackage-Package1-Student-age"/>
+        <ownedOperation xmi:type="uml:Operation" name="getName" xmi:id="MyRootPackage-Package1-Student-getName"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Enumeration" name="DirectionKind" xmi:id="MyRootPackage-Package1-DirectionKind">
         <ownedLiteral xmi:type="uml:EnumerationLiteral" name="DirectionIn" xmi:id="MyRootPackage-Package1-DirectionKind-DirectionIn"/>

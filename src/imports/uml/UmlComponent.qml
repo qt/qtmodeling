@@ -56,8 +56,8 @@ Rectangle {
     }
     Component.onCompleted: {
         if (element) {
-            name = element.name;
-            nameSlot.labelFont.italic = element.isAbstract;
+            name = element.name
+            nameSlot.labelFont.italic = element.isAbstract
         }
     }
 }
