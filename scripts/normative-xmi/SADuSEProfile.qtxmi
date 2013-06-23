@@ -1,0 +1,13 @@
+<qtxmi:XMI xmlns:qtxmi="http://www.qt-project.org" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.omg.org/spec/UML/20110701">
+    <namespace path="QtSADuse">
+        <class name="QSADuseProcessComponent" isAbstract="false">
+            <forwarddecl namespace="QtUml" class="QUmlComponent"/>
+            <associationend isDerived="false" isDerivedUnion="false" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="ProcessComponent-base_Component" defaultValue="" aggregation="none" oppositeEnd="" subsettedBy="">
+                <accessor return="QUmlComponent *" name="base_Component" constness=" const"/>
+                <accessor return="void " name="setBase_Component" constness="">
+                    <parameter type="QUmlComponent *" name="base_Component"/>
+                </accessor>
+            </associationend>
+        </class>
+    </namespace>
+</qtxmi:XMI>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.omg.org/spec/UML/20110701">
+  <uml:Profile name="SADuSEProfile" xmi:id="SADuSEProfile" URI="http://liveblue.wordpress.com/SADuSEProfile">
+    <elementImport xmi:type="uml:ElementImport" xmi:id="_elementImport.0">
+      <importedElement href=":/metamodels/UML.xmi#Component"/>
+    </elementImport>
+    <packagedElement xmi:type="uml:Stereotype" name="ProcessComponent" xmi:id="ProcessComponent">
+      <ownedAttribute xmi:type="uml:Property" visibility="public" name="base_Component" xmi:id="ProcessComponent-base_Component" association="A_component_processComponent">
+          <type xmi:type="uml:Class" href=":/metamodels/UML.xmi#Component"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" name="A_component_processComponent" xmi:id="A_component_processComponent" memberEnd="A_component_processComponent-ProcessComponent ProcessComponent-base_Component">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="A_component_processComponent-ProcessComponent" name="extension_ProcessComponent" type="ProcessComponent" aggregation="composite" association="A_component_processComponent"/>
+    </packagedElement>
+  </uml:Profile>
+</xmi:XMI>

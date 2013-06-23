@@ -1,0 +1,7 @@
+{
+    "Version": "1.0.0",
+    "Vendor": "LiveBlue",
+    "MetaModelNamespaceUri": "http://liveblue.wordpress.com/SADuSEProfile",
+    "MetaModelPrefix": "QSADuse",
+    "MetaModelTopLevelClasses": [ ]
+}

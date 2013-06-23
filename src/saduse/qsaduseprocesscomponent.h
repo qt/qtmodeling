@@ -3,7 +3,7 @@
 ** Copyright (C) 2013 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/legal
 **
-** This file is part of the QtDuse module of the Qt Toolkit.
+** This file is part of the QtSADuse module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** Commercial License Usage
@@ -38,9 +38,50 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#include "qtdusenamespace.h"
+#ifndef QSADUSEPROCESSCOMPONENT_H
+#define QSADUSEPROCESSCOMPONENT_H
+
+#include <QtSADuse/QtSADuseGlobal>
+
+// Base class includes
+#include <QtWrappedObjects/QWrappedObject>
+
+QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
+QT_MODULE(QtSADuse)
+
+class QUmlComponent;
+class QSADuseProcessComponentPrivate;
+
+class Q_SADUSE_EXPORT QSADuseProcessComponent : public QWrappedObject
+{
+    Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QSADuse")
+
+    Q_PROPERTY(QUmlComponent * base_Component READ base_Component WRITE setBase_Component)
+
+    Q_DISABLE_COPY(QSADuseProcessComponent)
+    Q_DECLARE_PRIVATE(QSADuseProcessComponent)
+
+public:
+    Q_INVOKABLE explicit QSADuseProcessComponent(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    virtual ~QSADuseProcessComponent();
+
+    // Association ends from QSADuseProcessComponent
+    Q_INVOKABLE QUmlComponent *base_Component() const;
+    Q_INVOKABLE void setBase_Component(QUmlComponent *base_Component);
+
+    virtual void setPropertyData();
+
+protected:
+    explicit QSADuseProcessComponent(QSADuseProcessComponentPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+};
+
 QT_END_NAMESPACE
+
+QT_END_HEADER
+
+#endif // QSADUSEPROCESSCOMPONENT_H
 

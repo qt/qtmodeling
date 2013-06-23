@@ -4,6 +4,7 @@
     "QtMof" => "$basedir/src/mof",
     "QtUml" => "$basedir/src/uml",
     "QtDuse" => "$basedir/src/duse",
+    "QtSADuse" => "$basedir/src/saduse",
 );
 
 %moduleheaders = ( # restrict the module headers to those found in relative path
@@ -24,6 +25,9 @@
     "qtduseversion.h" => "QtDuseVersion",
     "qtduseglobal.h"  => "QtDuseGlobal",
     "qtdusenamespace.h"  => "QtDuseNamespace",
+    "qtsaduseversion.h" => "QtSADuseVersion",
+    "qtsaduseglobal.h"  => "QtSADuseGlobal",
+    "qtsadusenamespace.h"  => "QtSADuseNamespace",
 );
 
 %modulepris = (
@@ -32,6 +36,7 @@
     "QtMof" => "$basedir/modules/qtmof.pri",
     "QtUml" => "$basedir/modules/qtuml.pri",
     "QtDuse" => "$basedir/modules/qtduse.pri",
+    "QtSADuse" => "$basedir/modules/qtsaduse.pri",
 );
 
 %dependencies = (

@@ -19,5 +19,6 @@
         <file>qml/paretofrontview.qml</file>
         <file>metamodels/PrimitiveTypes.xmi</file>
         <file>metamodels/UML.xmi</file>
+        <file>metamodels/SADuSEProfile.xmi</file>
     </qresource>
 </RCC>

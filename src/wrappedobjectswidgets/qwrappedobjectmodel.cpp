@@ -145,11 +145,19 @@ QVariant QWrappedObjectModel::data(const QModelIndex &index, int role) const
         case Qt::DisplayRole:
         case Qt::EditRole: {
             QWrappedObject *wrappedObject = static_cast<QWrappedObject *>(index.internalPointer());
-            return index.column() == 0 ? qTopLevelWrapper(wrappedObject)->objectName():QString::fromLatin1(qTopLevelWrapper(wrappedObject)->metaObject()->className());
+            QString elementRole = QString::fromLatin1("");
+            if (wrappedObject->role() == QWrappedObject::ImportedElementRole)
+                elementRole = QString::fromLatin1(" (imported element)");
+            else if (wrappedObject->role() == QWrappedObject::ImportedPackageRole)
+                elementRole = QString::fromLatin1(" (imported package)");
+            else if (wrappedObject->role() == QWrappedObject::AppliedProfileRole)
+                elementRole = QString::fromLatin1(" (applied profile)");
+            return index.column() == 0 ? qTopLevelWrapper(wrappedObject)->objectName()+elementRole:QString::fromLatin1(qTopLevelWrapper(wrappedObject)->metaObject()->className());
         }
         case Qt::FontRole: {
             QFont font = QApplication::font();
-            if (index.row() == 0 and index.parent().row() == -1)
+            QWrappedObject *wrappedObject = static_cast<QWrappedObject *>(index.internalPointer());
+            if (index.parent().row() == -1 && wrappedObject->role() == QWrappedObject::ModelElementRole)
                 font.setBold(true);
             return font;
         }

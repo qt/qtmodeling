@@ -18,6 +18,7 @@ declare function qtxmi:mappedBaseNamespace($xmiFile as xs:string*) as xs:string*
     else if ($xmiFile = "MOF.xmi") then "QtMof"
     else if ($xmiFile = "MOF-merged.xmi") then "QtMof"
     else if ($xmiFile = "DuSE.xmi") then "QtDuse"
+    else if ($xmiFile = "SADuSEProfile.xmi") then "QtSADuse"
     else "QtUnknown"
 };
 
@@ -236,11 +237,11 @@ declare function qtxmi:subsettedBy($property as node()) as xs:string {
 
 <qtxmi:XMI xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.omg.org/spec/UML/20110701" xmlns:qtxmi="http://www.qt-project.org">
 {
-for $namespace in distinct-values((doc($xmiFile)//packagedElement[@xmi:type="uml:Package"] | doc($xmiFile)//uml:Package)/@xmi:id)
+for $namespace in distinct-values((doc($xmiFile)//packagedElement[@xmi:type="uml:Package" or @xmi:type="uml:Profile"] | doc($xmiFile)//uml:Package | doc($xmiFile)//uml:Profile)/@xmi:id)
 return
 <namespace path="{replace(replace(replace(concat(qtxmi:mappedBaseNamespace($xmiFile), $namespace), "-", "/"), "::", "/"), "/$", "")}">
 {
-for $class in doc($xmiFile)//*[@xmi:id=$namespace]/packagedElement[@xmi:type="uml:Class"]
+for $class in doc($xmiFile)//*[@xmi:id=$namespace]/packagedElement[@xmi:type="uml:Class" or @xmi:type="uml:Stereotype"]
 let $namespace := concat(replace(concat(qtxmi:mappedBaseNamespace($xmiFile), $namespace), "-", "::"), "::")
 let $superClasses := $class/generalization/@general | $class/generalization/general/@xmi:idref | $class/generalization/general/@href
 let $isAbstract := if ($class/@isAbstract) then $class/@isAbstract else "false"

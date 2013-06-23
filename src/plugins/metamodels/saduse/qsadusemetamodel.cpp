@@ -3,7 +3,7 @@
 ** Copyright (C) 2013 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/legal
 **
-** This file is part of the QtWrappedObjects module of the Qt Toolkit.
+** This file is part of the QtSADuse module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** Commercial License Usage
@@ -38,55 +38,25 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QTWRAPPEDOBJECTS_QWRAPPEDOBJECT_P_H
-#define QTWRAPPEDOBJECTS_QWRAPPEDOBJECT_P_H
+#include "qsadusemetamodel.h"
 
-#include "qtwrappedobjectsglobal.h"
-#include "private/qobject_p.h"
-
-#include <QtCore/QStringList>
-
-QT_BEGIN_HEADER
+#include <QtQml/QtQml>
 
 QT_BEGIN_NAMESPACE
 
-QT_MODULE(QtWrappedObjects)
-
-class Q_WRAPPEDOBJECTS_EXPORT QWrappedObjectPrivate : public QObjectPrivate
+void QSADuseMetaModel::init(QScriptEngine *scriptEngine)
 {
-    Q_DECLARE_PUBLIC(QWrappedObject)
+    qRegisterMetaType<QSADuseProcessComponent *>();
+    qRegisterMetaType< QList<QSADuseProcessComponent *> >();
+    qRegisterMetaType< QSet<QSADuseProcessComponent *> >();
 
-public:
-    explicit QWrappedObjectPrivate(int version = QObjectPrivateVersion);
-    virtual ~QWrappedObjectPrivate();
+    qmlRegisterType<QSADuseProcessComponent>();
 
-    static QWrappedObjectPrivate *get(QWrappedObject *o);
-
-    QList<QWrappedObject *> wrappedObjects;
-    QWrappedObject *wrapper;
-    QMetaWrappedObject *metaWrappedObject;
-    QStringList modifiedResettableProperties;
-    QWrappedObject::WrappedObjectRole role;
-};
-
-QT_END_NAMESPACE
-
-template <class T>
-inline T qwrappedobject_cast(QT_PREPEND_NAMESPACE(QWrappedObjectPrivate) *base, bool restoreToWrapper = true)
-{
-    while (restoreToWrapper && base->wrapper)
-        base = base->get(base->wrapper);
-    if (dynamic_cast<T>(base))
-        return dynamic_cast<T>(base);
-    foreach (QT_PREPEND_NAMESPACE(QWrappedObject) *wrappedObject, base->wrappedObjects) {
-        T returnValue = qwrappedobject_cast<T>(base->get(wrappedObject), false);
-        if (returnValue != T())
-            return returnValue;
+    if (scriptEngine) {
+        qScriptRegisterMetaType(scriptEngine, qSetToScriptValue<QSADuseProcessComponent>, scriptValueToQSet<QSADuseProcessComponent>);
+        qScriptRegisterMetaType(scriptEngine, qListToScriptValue<QSADuseProcessComponent>, scriptValueToQList<QSADuseProcessComponent>);
     }
-    return T(); // not found
 }
 
-QT_END_HEADER
-
-#endif // QTWRAPPEDOBJECTS_QWRAPPEDOBJECT_P_H
+QT_END_NAMESPACE
 

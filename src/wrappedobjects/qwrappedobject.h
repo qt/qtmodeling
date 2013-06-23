@@ -72,6 +72,16 @@ public:
 
     void setObjectName(const QString &name);
 
+    enum WrappedObjectRole
+    {
+        ModelElementRole = 0,
+        ImportedElementRole,
+        ImportedPackageRole,
+        AppliedProfileRole
+    };
+    void setRole(WrappedObjectRole role);
+    WrappedObjectRole role() const;
+
     const QList<QWrappedObject *> &wrappedObjects() const;
 
     void setWrapper(QWrappedObject *wrapper);

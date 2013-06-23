@@ -45,7 +45,7 @@
 QT_BEGIN_NAMESPACE
 
 QWrappedObjectPrivate::QWrappedObjectPrivate(int version)
-    : QObjectPrivate(version), wrapper(0), metaWrappedObject(0)
+    : QObjectPrivate(version), wrapper(0), metaWrappedObject(0), role(QWrappedObject::ModelElementRole)
 {
 }
 
@@ -93,6 +93,18 @@ void QWrappedObject::setObjectName(const QString &name)
         topLevelWrapperObject->setProperty("name", name);
 
     QObject::setObjectName(name);
+}
+
+void QWrappedObject::setRole(QWrappedObject::WrappedObjectRole role)
+{
+    Q_D(QWrappedObject);
+    d->role = role;
+}
+
+QWrappedObject::WrappedObjectRole QWrappedObject::role() const
+{
+    Q_D(const QWrappedObject);
+    return d->role;
 }
 
 void QWrappedObject::initialize(QWrappedObject *wrapper)

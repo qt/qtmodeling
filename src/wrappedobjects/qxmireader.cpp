@@ -107,6 +107,7 @@ QList<QWrappedObject *> QXmiReader::readFile(QIODevice *device, QString imported
     QWrappedObject *rootElement = 0;
     bool importedIdFound = false;
     QStack<QString> idStack;
+    int insertPosition = 0;
 
     while (!reader.atEnd()) {
         reader.readNext();
@@ -119,13 +120,21 @@ QList<QWrappedObject *> QXmiReader::readFile(QIODevice *device, QString imported
 
         if (reader.isStartElement()) {
             idStack.push(reader.name().toString());
-            if (reader.name().toString() == QString::fromLatin1("importedPackage") || reader.name().toString() == QString::fromLatin1("importedElement")) {
+            QString elementName = reader.name().toString();
+            if (elementName == QString::fromLatin1("importedPackage") || elementName == QString::fromLatin1("importedElement") || elementName == QString::fromLatin1("appliedProfile")) {
                 QFile importFile(reader.attributes().value(QString::fromLatin1("href")).toString().split(QString::fromLatin1("#")).first());
                 if (!importFile.open(QFile::ReadOnly | QFile::Text))
                     d->errors << QString::fromLatin1("Could not open imported file '%1'").arg(importFile.fileName());
                 QList<QWrappedObject *> importList = readFile(&importFile, reader.attributes().value(QString::fromLatin1("href")).toString().split(QString::fromLatin1("#")).last());
-                foreach (QWrappedObject *importedObject, importList)
+                if (elementName == QString::fromLatin1("importedPackage"))
+                    importList.first()->setRole(QWrappedObject::ImportedPackageRole);
+                else if (elementName == QString::fromLatin1("importedElement"))
+                    importList.first()->setRole(QWrappedObject::ImportedElementRole);
+                else if (elementName == QString::fromLatin1("appliedProfile"))
+                    importList.first()->setRole(QWrappedObject::AppliedProfileRole);
+                foreach (QWrappedObject *importedObject, importList) {
                     wrappedObjectList.append(importedObject);
+                }
             }
 
             foreach (const QXmlStreamNamespaceDeclaration &namespaceDeclaration, reader.namespaceDeclarations()) {
@@ -151,16 +160,22 @@ QList<QWrappedObject *> QXmiReader::readFile(QIODevice *device, QString imported
             QWrappedObject *wrappedObject = createInstance(xmiType, instanceName);
             if (wrappedObject) {
                 d->idMap.insert(reader.attributes().value(QString::fromLatin1("xmi:id")).toString(), wrappedObject);
-                if (!rootElement)
+                if (!rootElement) {
                     rootElement = wrappedObject;
+                    wrappedObjectList.insert(insertPosition, rootElement);
+                }
             }
             else
                 d->errors << QString::fromLatin1("Could not create instance with id '%1' and type '%2'. Corresponding metamodel loaded ?").arg(instanceName).arg(xmiType);
         }
         else if (reader.isEndElement()) {
             idStack.pop();
-            if (idStack.isEmpty())
+            if (idStack.isEmpty() && !importedId.isEmpty())
                 break;
+            if (idStack.count() == 1 && importedId.isEmpty()) {
+                rootElement = 0;
+                ++insertPosition;
+            }
         }
     }
 
@@ -259,12 +274,11 @@ QList<QWrappedObject *> QXmiReader::readFile(QIODevice *device, QString imported
         }
         else if (reader.isEndElement() && !stack.isEmpty() && stack.top().first == reader.name()) {
             stack.pop();
-            if (stack.isEmpty())
+            if (stack.isEmpty() && !importedId.isEmpty())
                 break;
         }
     }
 
-    wrappedObjectList.insert(0, rootElement);
     return wrappedObjectList;
 }
 
