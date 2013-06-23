@@ -41,6 +41,8 @@
 #ifndef QWRAPPEDOBJECTVIEW_H
 #define QWRAPPEDOBJECTVIEW_H
 
+#include <QtCore/QModelIndex>
+
 #include <QtWrappedObjectsWidgets/QtWrappedObjectsWidgetsGlobal>
 
 #include <QtWidgets/QWidget>
@@ -72,7 +74,7 @@ public Q_SLOTS:
     void updateSelected();
 
 Q_SIGNALS:
-    void wrappedObjectChanged(QWrappedObject *selectedWrappedObject);
+    void wrappedObjectChanged(QWrappedObject *selectedWrappedObject, QModelIndex index = QModelIndex());
     void addToView(QWrappedObject *selectedWrappedObject);
 
 protected:

@@ -60,7 +60,7 @@ QWrappedObjectPropertyModel::QWrappedObjectPropertyModel(QObject *parent) :
 {
 }
 
-void QWrappedObjectPropertyModel::setWrappedObject(QWrappedObject *wrappedObject)
+void QWrappedObjectPropertyModel::setWrappedObject(QWrappedObject *wrappedObject, QModelIndex index)
 {
     Q_D(QWrappedObjectPropertyModel);
 
@@ -68,18 +68,9 @@ void QWrappedObjectPropertyModel::setWrappedObject(QWrappedObject *wrappedObject
         beginResetModel();
         d->wrappedObject = wrappedObject;
         d->metaWrappedObject = d->wrappedObject->metaWrappedObject();
-        d->wrappedObjectIndex = QModelIndex();
+        d->wrappedObjectIndex = index;
         endResetModel();
     }
-}
-
-void QWrappedObjectPropertyModel::setWrappedObjectIndex(const QModelIndex &wrappedObjectIndex)
-{
-    Q_D(QWrappedObjectPropertyModel);
-
-    QWrappedObject *wrappedObject = qvariant_cast<QWrappedObject *>(wrappedObjectIndex.data(Qt::UserRole));
-    setWrappedObject(wrappedObject);
-    d->wrappedObjectIndex = wrappedObjectIndex;
 }
 
 QModelIndex QWrappedObjectPropertyModel::index(int row, int column, const QModelIndex &parent) const
@@ -273,6 +264,8 @@ bool QWrappedObjectPropertyModel::setData(const QModelIndex &index, const QVaria
                 emit indexChanged(d->wrappedObjectIndex);
             if (metaProperty.read(propertyWrappedObject) != value)
                 metaProperty.write(propertyWrappedObject, value);
+            if (QString::fromLatin1(metaProperty.typeName()).endsWith('*'))
+                emit indexChanged(QModelIndex());
             return true;
         }
     }

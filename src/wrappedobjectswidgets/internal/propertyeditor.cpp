@@ -82,6 +82,11 @@ int PropertyEditor::value() const
     return -1;
 }
 
+QWidget *PropertyEditor::widget() const
+{
+    return _widget;
+}
+
 void PropertyEditor::setValue(int value)
 {
     if (QComboBox *comboBox = qobject_cast<QComboBox *>(_widget)) {

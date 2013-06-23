@@ -51,6 +51,9 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtWrappedObjectsWidgets)
 
+class QComboBox;
+class QWrappedObject;
+
 class Q_WRAPPEDOBJECTSWIDGETS_EXPORT PropertyEditorItemDelegate : public QStyledItemDelegate
 {
     Q_OBJECT
@@ -63,6 +66,9 @@ public:
     virtual void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const;
     virtual void setModelData(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index) const;
     bool eventFilter(QObject *object, QEvent *event);
+
+private:
+    void populateTypeCombo(QComboBox *comboBox, QWrappedObject *wrappedObject, QString className) const;
 };
 
 QT_END_NAMESPACE

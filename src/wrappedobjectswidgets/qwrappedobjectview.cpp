@@ -236,7 +236,7 @@ void QWrappedObjectView::rowsInserted(const QModelIndex &parent, int first)
 
 void QWrappedObjectView::selectionChanged(const QItemSelection &selected)
 {
-    emit wrappedObjectChanged(qvariant_cast<QWrappedObject *>(selected.indexes().first().data(Qt::UserRole)));
+    emit wrappedObjectChanged(qvariant_cast<QWrappedObject *>(selected.indexes().first().data(Qt::UserRole)), selected.indexes().first());
 }
 
 void QWrappedObjectView::removeObjectUse(QWrappedObject *container, QWrappedObject *usedObject)

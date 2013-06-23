@@ -77,8 +77,7 @@ public:
     QWrappedObject *wrappedObject() const;
 
 public Q_SLOTS:
-    void setWrappedObject(QWrappedObject *wrappedObject);
-    void setWrappedObjectIndex(const QModelIndex &wrappedObjectIndex);
+    void setWrappedObject(QWrappedObject *wrappedObject, QModelIndex index);
 
 Q_SIGNALS:
     void indexChanged(const QModelIndex &wrappedObjectIndex);

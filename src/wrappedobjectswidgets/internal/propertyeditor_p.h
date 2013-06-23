@@ -62,6 +62,7 @@ public:
     explicit PropertyEditor(QWidget *widget, QMetaPropertyInfo *metaPropertyInfo, QWidget *parent = 0);
 
     int value() const;
+    QWidget *widget() const;
 
 public Q_SLOTS:
     void setValue(int value);

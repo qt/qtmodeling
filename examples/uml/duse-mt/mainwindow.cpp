@@ -97,7 +97,7 @@ MainWindow::MainWindow(QWidget *parent) :
     _aboutPlugins->setupUi(_aboutPluginsDialog);
     _aboutDuSEMT->setupUi(_aboutDuSEMTDialog);
 
-    QWrappedObjectPropertyModel *propertyModel = new QWrappedObjectPropertyModel(this);
+    QWrappedObjectPropertyModel *propertyModel = new QWrappedObjectPropertyModel(_wrappedObjectModel);
     ui->propertyEditor->setModel(propertyModel);
 
     connect(ui->wrappedObjectView, &QWrappedObjectView::wrappedObjectChanged,

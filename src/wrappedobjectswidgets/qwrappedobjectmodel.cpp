@@ -187,8 +187,11 @@ Qt::ItemFlags QWrappedObjectModel::flags(const QModelIndex &index) const
 
 void QWrappedObjectModel::updateIndex(const QModelIndex &index)
 {
-    if (!index.isValid())
-        emit layoutChanged();
+    if (!index.isValid()) {
+        beginResetModel();
+        //emit layoutChanged();
+        endResetModel();
+    }
     else
         emit dataChanged(index, index, QVector<int>() << Qt::DisplayRole);
 }
