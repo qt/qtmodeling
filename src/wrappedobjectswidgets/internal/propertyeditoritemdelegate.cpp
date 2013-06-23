@@ -95,7 +95,7 @@ QWidget *PropertyEditorItemDelegate::createEditor(QWidget *parent, const QStyleO
                 QWrappedObjectPropertyModel *propertyModel = editor->model();
                 QWrappedObjectModel *wrappedObjectModel = qobject_cast<QWrappedObjectModel *>((qobject_cast<QObject *>(propertyModel))->parent());
                 foreach (QWrappedObject *wrappedObject, wrappedObjectModel->wrappedObjects()) {
-                    if (wrappedObject->role() == QWrappedObject::ModelElementRole) {
+                    if (wrappedObject->role() != QWrappedObject::AppliedProfileRole) {
                         QString typeName = QString::fromLatin1(metaProperty.typeName());
                         typeName.chop(1);
                         populateTypeCombo(comboBox, wrappedObject, typeName);
@@ -118,19 +118,26 @@ QWidget *PropertyEditorItemDelegate::createEditor(QWidget *parent, const QStyleO
 
 void PropertyEditorItemDelegate::populateTypeCombo(QComboBox *comboBox, QWrappedObject *wrappedObject, QString className) const
 {
-    foreach (QObject *object, wrappedObject->children()) {
-        QWrappedObject *childWrappedObject = qobject_cast<QWrappedObject *>(object);
-        populateTypeCombo(comboBox, childWrappedObject, className);
-    }
-    foreach (QWrappedObject *wrappedWrappedObject, wrappedObject->wrappedObjects())
-        populateTypeCombo(comboBox, wrappedWrappedObject, className);
     const QMetaObject *metaObject = wrappedObject->metaObject();
     while (metaObject) {
         if (QString::fromLatin1(metaObject->className()) == className) {
+            int numberOfItens = comboBox->count();
+            int i;
+            for (i = 0; i < numberOfItens; ++i)
+                if (comboBox->itemText(i) == qTopLevelWrapper(wrappedObject)->objectName())
+                    break;
+            if (i != numberOfItens)
+                break;
             comboBox->addItem(qTopLevelWrapper(wrappedObject)->objectName(), QVariant::fromValue(wrappedObject));
             break;
         }
         metaObject = metaObject->superClass();
+    }
+    foreach (QWrappedObject *wrappedWrappedObject, wrappedObject->wrappedObjects())
+        populateTypeCombo(comboBox, wrappedWrappedObject, className);
+    foreach (QObject *object, wrappedObject->children()) {
+        QWrappedObject *childWrappedObject = qobject_cast<QWrappedObject *>(object);
+        populateTypeCombo(comboBox, childWrappedObject, className);
     }
 }
 
@@ -145,11 +152,14 @@ void PropertyEditorItemDelegate::setEditorData(QWidget *editor, const QModelInde
             propertyEditor->setValue(metaProperty.read(metaPropertyInfo->propertyWrappedObject).toInt());
         else if (QString::fromLatin1(metaProperty.typeName()).endsWith('*')) {
             QComboBox *comboBox = qobject_cast<QComboBox *>(propertyEditor->widget());
-            int numberOfItens = comboBox->count();
-            for (int i = 0; i < numberOfItens; ++i) {
-                if (comboBox->itemText(i) == (metaProperty.read(metaPropertyInfo->propertyWrappedObject).value<QObject *>())->objectName()) {
-                    comboBox->setCurrentIndex(i);
-                    break;
+            QObject *propertyValue = metaProperty.read(metaPropertyInfo->propertyWrappedObject).value<QObject *>();
+            if (comboBox && propertyValue) {
+                int numberOfItens = comboBox->count();
+                for (int i = 0; i < numberOfItens; ++i) {
+                    if (comboBox->itemText(i) == propertyValue->objectName()) {
+                        comboBox->setCurrentIndex(i);
+                        break;
+                    }
                 }
             }
         }
