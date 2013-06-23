@@ -40,45 +40,24 @@
 ****************************************************************************/
 import QtQuick 2.0
 
-UmlElement {
+Rectangle {
+    property alias name: nameSlot.label
+    height: childrenRect.height; width: childrenRect.width
     UmlSlot {
         id: nameSlot
-        anchors.top: parent.top
-        Text {
-            id: label
-            anchors.centerIn: parent
-        }
     }
-    UmlSlot {
-        id: attributeSlot
-        anchors.top: nameSlot.bottom
-        anchors.topMargin: -1
-        anchors.bottom: parent.bottom
-        ListView {
-            id: attributesView
-            anchors.fill: parent
-            anchors.margins: 4
-            delegate: Text {
-                text: visibility(modelData.visibility) + modelData.name + ": " + (modelData.type ? modelData.type.name:"<no type>")
-            }
-        }
+    MouseArea {
+        id: dragArea
+        anchors.fill: parent
+
+        drag.target: parent
+        drag.minimumX: 0
+        drag.minimumY: 0
     }
     Component.onCompleted: {
         if (element) {
-            label.text = element.name;
-            label.font.italic = element.isAbstract;
-        }
-        if (attributes)
-            attributesView.model = attributes;
-    }
-
-    function visibility(visibilityEnum)
-    {
-        switch (visibilityEnum) {
-        case 0: return "+"
-        case 1: return "-"
-        case 2: return "#"
-        case 3: return "~"
+            name = element.name;
+            nameSlot.labelFont.italic = element.isAbstract;
         }
     }
 }

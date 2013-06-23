@@ -1,0 +1,3 @@
+- When clicking in a quickview mainwindow looses focus and, for instance, CTRL+O doesn't work anymore
+- Check wheather RW multi-values properties are erroneously shown as RO in property editor
+- Fix XMI writing of models using imported elements/packages and/or applied profiles

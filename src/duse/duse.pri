@@ -1,7 +1,7 @@
 PUBLIC_HEADERS += \
     qtduseglobal.h \
-    qdusedesigndimension.h \
     qdusedesignspace.h \
+    qdusedesigndimension.h \
     qdusedesigndimensioninstance.h \
     qdusevariationpoint.h \
     qdusequalitymetric.h

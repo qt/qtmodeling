@@ -55,8 +55,6 @@
 
 #include "propertyeditor_p.h"
 
-#include <QtCore/QDebug>
-
 QT_BEGIN_NAMESPACE
 
 PropertyEditorItemDelegate::PropertyEditorItemDelegate(QObject *parent) :

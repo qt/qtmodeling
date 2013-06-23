@@ -40,45 +40,79 @@
 ****************************************************************************/
 import QtQuick 2.0
 
-UmlElement {
-    UmlSlot {
-        id: nameSlot
-        anchors.top: parent.top
-        Text {
-            id: label
-            anchors.centerIn: parent
-        }
-    }
-    UmlSlot {
-        id: attributeSlot
-        anchors.top: nameSlot.bottom
-        anchors.topMargin: -1
-        anchors.bottom: parent.bottom
-        ListView {
-            id: attributesView
-            anchors.fill: parent
-            anchors.margins: 4
-            delegate: Text {
-                text: visibility(modelData.visibility) + modelData.name + ": " + (modelData.type ? modelData.type.name:"<no type>")
-            }
-        }
-    }
-    Component.onCompleted: {
-        if (element) {
-            label.text = element.name;
-            label.font.italic = element.isAbstract;
-        }
-        if (attributes)
-            attributesView.model = attributes;
+Item {
+    id: element
+
+    width: 120
+    height: 80
+
+    // Drag area
+    MouseArea {
+        id: dragArea
+        anchors.fill: parent
+
+        drag.target: parent
+        drag.minimumX: 0
+        drag.minimumY: 0
+
+        onPressed: parent.focus = true;
     }
 
-    function visibility(visibilityEnum)
-    {
-        switch (visibilityEnum) {
-        case 0: return "+"
-        case 1: return "-"
-        case 2: return "#"
-        case 3: return "~"
+    // Selection marks (begin)
+    Rectangle {
+        visible: parent.focus; color: "black"; width: 6; height: 6; z: 2
+        anchors { right: parent.right; top: parent.top }
+        anchors { rightMargin: -2; topMargin: -2 }
+    }
+    Rectangle {
+        visible: parent.focus; color: "black"; width: 6; height: 6; z: 2
+        anchors { right: parent.right; bottom: parent.bottom }
+        anchors { rightMargin: -2; bottomMargin: -2 }
+    }
+    Rectangle {
+        visible: parent.focus; color: "black"; width: 6; height: 6; z: 2
+        anchors { left: parent.left; top: parent.top }
+        anchors { leftMargin: -2; topMargin: -2 }
+    }
+    Rectangle {
+        visible: parent.focus; color: "black"; width: 6; height: 6; z: 2
+        anchors { left: parent.left; bottom: parent.bottom }
+        anchors { leftMargin: -2; bottomMargin: -2 }
+    }
+    // Selection marks (end)
+
+    // Resize mark
+    Image {
+        id: resizeMark
+        visible: parent.focus
+        source: "resize-mark.png"
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        z: 1;
+        MouseArea {
+            id: mouseArea
+            enabled: element.focus
+
+            anchors.fill: parent
+            drag.target: resizeMark
+
+            property int oldMouseX
+            property int oldMouseY
+
+            hoverEnabled: true
+
+            onPressed: {
+                element.focus = true;
+                oldMouseX = mouseX
+                oldMouseY = mouseY
+            }
+
+            onPositionChanged: {
+                if (pressed) {
+                    element.width = Math.max(element.width + (mouseX - oldMouseX), 40);
+                    element.height = Math.max(element.height + (mouseY - oldMouseY), 25);
+                }
+            }
         }
     }
 }

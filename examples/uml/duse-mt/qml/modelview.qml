@@ -46,10 +46,9 @@ Flickable {
     contentHeight: 2890
     contentWidth: 1540
     rightMargin: 0; leftMargin: 0; topMargin: 0; bottomMargin: 0
-    DropArea {
-       anchors.fill: parent
-       onEntered: { console.log("entered"); }
-       onDropped: { console.log(Drag.target); }
+    MouseArea {
+        anchors.fill: parent
+        onPressed: parent.focus = true;
     }
     Image {
         anchors.fill: parent

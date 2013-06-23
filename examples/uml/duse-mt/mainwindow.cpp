@@ -317,12 +317,25 @@ void MainWindow::wrappedObjectChanged(QWrappedObject *wrappedObject)
 void MainWindow::addToView(QWrappedObject *wrappedObject)
 {
     wrappedObject->setQmlContextProperties(_modelQuickView->engine()->rootContext());
-    QQmlComponent component(_modelQuickView->engine());
-    component.setData(QString("import QtQuick 2.0\nimport QtModeling.Uml 1.0\n\n%1 {}").arg(QString(wrappedObject->metaObject()->className()).remove(QRegularExpression("^Q"))).toLatin1(), QUrl());
-    QQuickItem *item = qobject_cast<QQuickItem *>(component.create());
-    if (item) {
-        item->setParentItem((qobject_cast<QQuickFlickable *>(_modelQuickView->rootObject()))->contentItem());
+    _qmlComponent = new QQmlComponent(_modelQuickView->engine());
+    _qmlComponent->setData(QString("import QtQuick 2.0\nimport QtModeling.Uml 1.0\n\n%1 {}").arg(QString(wrappedObject->metaObject()->className()).remove(QRegularExpression("^Q"))).toLatin1(), QUrl());
+    if (_qmlComponent->isLoading())
+        connect(_qmlComponent, SIGNAL(statusChanged(QQmlComponent::Status)), SLOT(continueLoading()));
+    else
+        continueLoading();
+}
+
+void MainWindow::continueLoading()
+{
+    if (_qmlComponent->isError()) {
+        qWarning() << _qmlComponent->errors();
+    } else {
+        QQuickItem *item = qobject_cast<QQuickItem *>(_qmlComponent->create());
+        if (item) {
+            item->setParentItem((qobject_cast<QQuickFlickable *>(_modelQuickView->rootObject()))->contentItem());
+        }
     }
+    _qmlComponent->deleteLater();
 }
 
 void MainWindow::dckMetricsVisibilityChanged(bool visible)

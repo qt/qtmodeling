@@ -41,12 +41,8 @@
 import QtQuick 2.0
 
 Rectangle {
-    property alias label: label.text
-    property alias labelFont: label.font
+    width: parent.width
+    height: childrenRect.height + 10
     border.width: 1
-    height: label.height + 10; width: label.width + 20
-    Text {
-        id: label
-        anchors.centerIn:parent
-    }
+    clip: true
 }

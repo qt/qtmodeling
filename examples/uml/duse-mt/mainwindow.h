@@ -51,6 +51,7 @@
 class QDialog;
 class QListView;
 class QQuickView;
+class QQmlComponent;
 
 namespace Ui {
     class MainWindow;
@@ -88,6 +89,7 @@ private Q_SLOTS:
     void addToView(QWrappedObject *wrappedObject);
 
     void dckMetricsVisibilityChanged(bool visible);
+    void continueLoading();
 
 protected:
     bool eventFilter(QObject *obj, QEvent *event);
@@ -111,6 +113,7 @@ private:
 
     QScriptEngine _engine;
     QListView *_codeCompletionView;
+    QQmlComponent *_qmlComponent;
     QQuickView *_modelQuickView;
     QQuickView *_metricsQuickView;
     QQuickView *_paretoFrontQuickView;
