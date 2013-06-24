@@ -89,6 +89,8 @@ public:
     Q_INVOKABLE void addQualityMetric(QDuseQualityMetric *qualityMetric);
     Q_INVOKABLE void removeQualityMetric(QDuseQualityMetric *qualityMetric);
 
+    virtual void setQmlContextProperties(QQmlContext *qmlContext);
+
     virtual void setPropertyData();
 
 protected:

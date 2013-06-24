@@ -294,6 +294,8 @@ void MainWindow::on_actionFileNewDuseDesign_triggered()
                     return;
                 }
 
+                wrappedObjectList.first()->setQmlContextProperties(_metricsQuickView->engine()->rootContext());
+
                 setCursor(Qt::ArrowCursor);
             }
         }

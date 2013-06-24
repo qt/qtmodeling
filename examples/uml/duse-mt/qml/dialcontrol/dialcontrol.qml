@@ -45,27 +45,17 @@ Rectangle {
     id: root
     color: "#545454"
 
-    VisualItemModel {
-        id: itemModel
-        Dial {
-            label: "Metric 1"
-        }
-        Dial {
-            label: "Metric 2"
-        }
-        Dial {
-            label: "Metric 3"
-        }
-    }
-
     ListView {
         id: view
         anchors { fill: parent; bottomMargin: 30 }
-        model: itemModel
+        model: metrics
         preferredHighlightBegin: 0; preferredHighlightEnd: 0
         highlightRangeMode: ListView.StrictlyEnforceRange
         orientation: ListView.Vertical
         snapMode: ListView.SnapOneItem;
+        delegate: Dial {
+            label: modelData.name;
+        }
     }
     Rectangle {
         width: root.width; height: 30
@@ -77,7 +67,7 @@ Rectangle {
             spacing: 20
 
             Repeater {
-                model: itemModel.count
+                model: metrics ? metrics.length:0
 
                 Rectangle {
                     width: 5; height: 5

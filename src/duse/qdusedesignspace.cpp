@@ -46,6 +46,8 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
+#include <QtQml/QQmlContext>
+
 QT_BEGIN_NAMESPACE
 
 QDuseDesignSpacePrivate::QDuseDesignSpacePrivate()
@@ -169,6 +171,14 @@ void QDuseDesignSpace::removeQualityMetric(QDuseQualityMetric *qualityMetric)
         d->qualityMetrics.remove(qualityMetric);
         qTopLevelWrapper(qualityMetric)->setParent(0);
     }
+}
+
+void QDuseDesignSpace::setQmlContextProperties(QQmlContext *qmlContext)
+{
+    QVariantList metricList;
+    foreach (QDuseQualityMetric *metric, qualityMetrics())
+        metricList << qVariantFromValue(metric);
+    qmlContext->setContextProperty(QString::fromLatin1("metrics"), metricList);
 }
 
 void QDuseDesignSpace::setPropertyData()
