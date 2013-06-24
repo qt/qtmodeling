@@ -50,7 +50,7 @@ UmlElement {
         }
         Rectangle {
             border.width: 1
-            width: 26; height: 18
+            width: 18; height: 18
             anchors { right: parent.right; rightMargin: 6; verticalCenter: parent.verticalCenter }
             Rectangle { border.width: 1; width: 12; height: 5; x: -6; y: 3 }
             Rectangle { border.width: 1; width: 12; height: 5; x: -6; y: 10 }
@@ -58,12 +58,10 @@ UmlElement {
     }
     UmlSlot {
         id: partSlot
-        anchors.top: nameSlot.bottom
-        anchors.topMargin: -1
-        anchors.bottom: parent.bottom
+        anchors { top: nameSlot.bottom; topMargin: -1; bottom: parent.bottom }
     }
     Component.onCompleted: {
         label.text = element.name
-        nameSlot.labelFont.italic = element.isAbstract
+        label.font.italic = element.isAbstract
     }
 }

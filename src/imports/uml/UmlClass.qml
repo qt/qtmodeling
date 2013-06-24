@@ -51,13 +51,11 @@ UmlElement {
     }
     UmlSlot {
         id: attributeSlot
-        anchors.top: nameSlot.bottom
-        anchors.topMargin: -1
+        anchors { top: nameSlot.bottom; topMargin: -1 }
         height: (parent.height - nameSlot.height)/2
         ListView {
             id: attributesView
-            anchors.fill: parent
-            anchors.margins: 4
+            anchors { fill: parent; margins: 4 }
             delegate: Text {
                 text: visibility(modelData.visibility) + modelData.name + ": " + (modelData.type ? modelData.type.name:"<no type>")
             }
@@ -65,13 +63,10 @@ UmlElement {
     }
     UmlSlot {
         id: operationSlot
-        anchors.top: attributeSlot.bottom
-        anchors.topMargin: -1
-        anchors.bottom: parent.bottom
+        anchors { top: attributeSlot.bottom; topMargin: -1; bottom: parent.bottom }
         ListView {
             id: operationsView
-            anchors.fill: parent
-            anchors.margins: 4
+            anchors { fill: parent; margins: 4 }
             delegate: Text {
                 text: visibility(modelData.visibility) + modelData.name
             }

@@ -50,34 +50,26 @@ Rectangle {
     MouseArea {
         id: dragArea
         anchors.fill: parent
-
-        drag.target: parent
-        drag.minimumX: 0
-        drag.minimumY: 0
-
+        drag { target: parent; minimumX: 0; minimumY: 0 }
         onPressed: parent.focus = true
     }
 
     // Selection marks (begin)
     Rectangle {
         visible: parent.focus; color: "black"; width: 6; height: 6; z: 2
-        anchors { right: parent.right; top: parent.top }
-        anchors { rightMargin: -2; topMargin: -2 }
+        anchors { right: parent.right; top: parent.top; rightMargin: -2; topMargin: -2 }
     }
     Rectangle {
         visible: parent.focus; color: "black"; width: 6; height: 6; z: 2
-        anchors { right: parent.right; bottom: parent.bottom }
-        anchors { rightMargin: -2; bottomMargin: -2 }
+        anchors { right: parent.right; bottom: parent.bottom; rightMargin: -2; bottomMargin: -2 }
     }
     Rectangle {
         visible: parent.focus; color: "black"; width: 6; height: 6; z: 2
-        anchors { left: parent.left; top: parent.top }
-        anchors { leftMargin: -2; topMargin: -2 }
+        anchors { left: parent.left; top: parent.top; leftMargin: -2; topMargin: -2 }
     }
     Rectangle {
         visible: parent.focus; color: "black"; width: 6; height: 6; z: 2
-        anchors { left: parent.left; bottom: parent.bottom }
-        anchors { leftMargin: -2; bottomMargin: -2 }
+        anchors { left: parent.left; bottom: parent.bottom; leftMargin: -2; bottomMargin: -2 }
     }
     // Selection marks (end)
 
@@ -86,8 +78,7 @@ Rectangle {
         id: resizeMark
         visible: parent.focus
         source: "resize-mark.png"
-        anchors.right: parent.right
-        anchors.bottom: parent.bottom
+        anchors { right: parent.right; bottom: parent.bottom }
         z: 1
         MouseArea {
             id: mouseArea

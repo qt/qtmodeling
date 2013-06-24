@@ -43,8 +43,7 @@ import QtQuick 2.0
 Rectangle {
     width: parent.width
     height: childrenRect.height + 10
-    border.width: 1
-    border.color: "black"
+    border { width: 1; color: "black" }
     clip: true
     color: "transparent"
 }
