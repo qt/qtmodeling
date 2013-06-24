@@ -44,5 +44,7 @@ Rectangle {
     width: parent.width
     height: childrenRect.height + 10
     border.width: 1
+    border.color: "black"
     clip: true
+    color: "transparent"
 }

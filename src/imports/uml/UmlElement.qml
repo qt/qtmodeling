@@ -40,7 +40,7 @@
 ****************************************************************************/
 import QtQuick 2.0
 
-Item {
+Rectangle {
     id: element
 
     width: 120
@@ -109,10 +109,14 @@ Item {
 
             onPositionChanged: {
                 if (pressed) {
-                    element.width = Math.max(element.width + (mouseX - oldMouseX), 40)
-                    element.height = Math.max(element.height + (mouseY - oldMouseY), 25)
+                    element.width = Math.max(element.width + (mouseX - oldMouseX), 80)
+                    element.height = Math.max(element.height + (mouseY - oldMouseY), 50)
                 }
             }
         }
+    }
+    gradient: Gradient {
+        GradientStop { position: 0.0; color: "#FFFFF5" }
+        GradientStop { position: 1.0; color: "#FFFFE1" }
     }
 }

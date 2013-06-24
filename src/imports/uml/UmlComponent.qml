@@ -40,24 +40,30 @@
 ****************************************************************************/
 import QtQuick 2.0
 
-Rectangle {
-    property alias name: nameSlot.label
-    height: childrenRect.height; width: childrenRect.width
+UmlElement {
     UmlSlot {
         id: nameSlot
+        anchors.top: parent.top
+        Text {
+            id: label
+            anchors.centerIn: parent
+        }
+        Rectangle {
+            border.width: 1
+            width: 26; height: 18
+            anchors { right: parent.right; rightMargin: 6; verticalCenter: parent.verticalCenter }
+            Rectangle { border.width: 1; width: 12; height: 5; x: -6; y: 3 }
+            Rectangle { border.width: 1; width: 12; height: 5; x: -6; y: 10 }
+        }
     }
-    MouseArea {
-        id: dragArea
-        anchors.fill: parent
-
-        drag.target: parent
-        drag.minimumX: 0
-        drag.minimumY: 0
+    UmlSlot {
+        id: partSlot
+        anchors.top: nameSlot.bottom
+        anchors.topMargin: -1
+        anchors.bottom: parent.bottom
     }
     Component.onCompleted: {
-        if (element) {
-            name = element.name
-            nameSlot.labelFont.italic = element.isAbstract
-        }
+        label.text = element.name
+        nameSlot.labelFont.italic = element.isAbstract
     }
 }
