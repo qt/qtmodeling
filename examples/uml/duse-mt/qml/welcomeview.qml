@@ -40,55 +40,21 @@
 ****************************************************************************/
 import QtQuick 2.0
 
-UmlElement {
-    UmlSlot {
-        id: nameSlot
-        anchors.top: parent.top
+Image {
+    fillMode: Image.Stretch
+    source: "welcome-background.jpg"
+    Row {
+        anchors { left: parent.left; right: parent.right; top: parent.top; margins: 20 }
+        spacing: 10
+        Image {
+            id: duseIcon
+            source: "qrc:/icons/duse-mt-64x64.png"
+        }
         Text {
-            id: label
-            anchors.centerIn: parent
-            font { family: "Korolev" }
-        }
-    }
-    UmlSlot {
-        id: attributeSlot
-        anchors { top: nameSlot.bottom; topMargin: -1 }
-        height: (parent.height - nameSlot.height)/2
-        ListView {
-            id: attributesView
-            anchors { fill: parent; margins: 4 }
-            delegate: Text {
-                text: visibility(modelData.visibility) + modelData.name + ": " + (modelData.type ? modelData.type.name:"<no type>")
-                font { family: "Korolev" }
-            }
-        }
-    }
-    UmlSlot {
-        id: operationSlot
-        anchors { top: attributeSlot.bottom; topMargin: -1; bottom: parent.bottom }
-        ListView {
-            id: operationsView
-            anchors { fill: parent; margins: 4 }
-            delegate: Text {
-                text: visibility(modelData.visibility) + modelData.name
-                font { family: "Korolev" }
-            }
-        }
-    }
-    Component.onCompleted: {
-        label.text = element.name
-        label.font.italic = element.isAbstract
-        attributesView.model = attributes
-        operationsView.model = operations
-    }
-
-    function visibility(visibilityEnum)
-    {
-        switch (visibilityEnum) {
-        case 0: return "+"
-        case 1: return "-"
-        case 2: return "#"
-        case 3: return "~"
+            text: "Welcome to DuSE-MT !"
+            font { family: "Korolev"; pointSize: 20 }
+            height: duseIcon.height
+            verticalAlignment: Text.AlignVCenter
         }
     }
 }

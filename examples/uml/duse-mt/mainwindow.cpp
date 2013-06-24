@@ -85,6 +85,7 @@ MainWindow::MainWindow(QWidget *parent) :
     _newModel(new Ui::NewModel),
     _newDuseDesign(new NewDuseDesign(this)),
     _codeCompletionView(new QListView),
+    _welcomeQuickView(new QQuickView),
     _modelQuickView(new QQuickView),
     _metricsQuickView(new QQuickView),
     _paretoFrontQuickView(new QQuickView)
@@ -138,9 +139,13 @@ MainWindow::MainWindow(QWidget *parent) :
     _paretoFrontQuickView->setSource(QUrl("qrc:/qml/paretofrontview.qml"));
     ui->gridLayout_12->addWidget(QWidget::createWindowContainer(_paretoFrontQuickView, ui->paretoFrontViewWidget), 0, 0, 1, 1);
 
+    _welcomeQuickView->setSource(QUrl("qrc:/qml/welcomeview.qml"));
+    ui->gridLayout_13->addWidget(QWidget::createWindowContainer(_welcomeQuickView, ui->welcomeViewWidget), 0, 0, 1, 1);
+
     _modelQuickView->setResizeMode(QQuickView::SizeRootObjectToView);
     _metricsQuickView->setResizeMode(QQuickView::SizeRootObjectToView);
     _paretoFrontQuickView->setResizeMode(QQuickView::SizeRootObjectToView);
+    _welcomeQuickView->setResizeMode(QQuickView::SizeRootObjectToView);
 
     foreach (QDockWidget *dockWidget, findChildren<QDockWidget *>())
         ui->menu_Window->addAction(dockWidget->toggleViewAction());

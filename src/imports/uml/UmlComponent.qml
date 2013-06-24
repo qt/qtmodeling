@@ -47,6 +47,7 @@ UmlElement {
         Text {
             id: label
             anchors.centerIn: parent
+            font { family: "Korolev" }
         }
         Rectangle {
             border.width: 1

@@ -119,6 +119,7 @@ private:
     QScriptEngine _engine;
     QListView *_codeCompletionView;
     QQmlComponent *_qmlComponent;
+    QQuickView *_welcomeQuickView;
     QQuickView *_modelQuickView;
     QQuickView *_metricsQuickView;
     QQuickView *_paretoFrontQuickView;
