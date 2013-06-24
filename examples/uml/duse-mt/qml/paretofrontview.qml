@@ -53,21 +53,21 @@ Rectangle {
         Rectangle {
             width: view.width; height: view.height
             color: "#FFFEF0"
-            Text { text: "Page 1"; font.bold: true; anchors.centerIn: parent }
+            Text { text: "Page 1"; anchors.centerIn: parent; font { family: "Korolev" } }
 
             Component.onDestruction: if (printDestruction) print("destroyed 1")
         }
         Rectangle {
             width: view.width; height: view.height
             color: "#F0FFF7"
-            Text { text: "Page 2"; font.bold: true; anchors.centerIn: parent }
+            Text { text: "Page 2"; anchors.centerIn: parent; font { family: "Korolev" } }
 
             Component.onDestruction: if (printDestruction) print("destroyed 2")
         }
         Rectangle {
             width: view.width; height: view.height
             color: "#F4F0FF"
-            Text { text: "Page 3"; font.bold: true; anchors.centerIn: parent }
+            Text { text: "Page 3"; anchors.centerIn: parent; font { family: "Korolev" } }
 
             Component.onDestruction: if (printDestruction) print("destroyed 3")
         }

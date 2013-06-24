@@ -44,6 +44,12 @@
 
 QT_BEGIN_NAMESPACE
 
+QScriptValue dummyFunction(QScriptContext *context, QScriptEngine *engine)
+{
+    Q_UNUSED(context);
+    Q_UNUSED(engine);
+}
+
 void QSADuseProfileMetaModel::init(QScriptEngine *scriptEngine)
 {
     qRegisterMetaType<QSADuseProfileProcessComponent *>();
@@ -53,10 +59,13 @@ void QSADuseProfileMetaModel::init(QScriptEngine *scriptEngine)
     qmlRegisterType<QSADuseProfileProcessComponent>();
 
     if (scriptEngine) {
-        qScriptRegisterMetaType(scriptEngine, qSetToScriptValue<QSADuseProfileProcessComponent>, scriptValueToQSet<QSADuseProfileProcessComponent>);
-        qScriptRegisterMetaType(scriptEngine, qListToScriptValue<QSADuseProfileProcessComponent>, scriptValueToQList<QSADuseProfileProcessComponent>);
+        QScriptValue prototype = scriptEngine->newQObject(new QSADuseProfileProcessComponent);
+        scriptEngine->setDefaultPrototype(qMetaTypeId<QSADuseProfileProcessComponent *>(), prototype);
+        qScriptRegisterMetaType(scriptEngine, qSetToScriptValue<QSADuseProfileProcessComponent>, scriptValueToQSet<QSADuseProfileProcessComponent>, prototype);
+        qScriptRegisterMetaType(scriptEngine, qListToScriptValue<QSADuseProfileProcessComponent>, scriptValueToQList<QSADuseProfileProcessComponent>, prototype);
+
+        scriptEngine->globalObject().setProperty("QSADuseProfileProcessComponent", scriptEngine->newFunction(dummyFunction, prototype));
     }
 }
 
 QT_END_NAMESPACE
-

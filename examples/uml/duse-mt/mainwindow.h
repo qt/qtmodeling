@@ -102,6 +102,7 @@ private:
     void loadPlugins();
     void saveXmi(QWrappedObject *rootElement);
     QList<QWrappedObject *> loadXmi();
+    void populateDesignSpaceView(QWrappedObject *wrappedObject);
 
     Ui::MainWindow *ui;
     QWrappedObjectModel *_wrappedObjectModel;

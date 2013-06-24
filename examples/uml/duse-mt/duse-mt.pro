@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT = wrappedobjectswidgets script quick quick-private qml
+QT = wrappedobjectswidgets script quick quick-private qml duse
 
 TARGET = duse-mt
 TEMPLATE = app

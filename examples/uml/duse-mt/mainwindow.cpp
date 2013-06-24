@@ -52,6 +52,7 @@
 
 #include <QtWidgets/QFileDialog>
 #include <QtWidgets/QMessageBox>
+#include <QtWidgets/QItemDelegate>
 
 #include <QtGui/QKeyEvent>
 
@@ -70,6 +71,8 @@
 #include <QtQuick/QQuickView>
 #include <QtQuick/QQuickItem>
 #include "QtQuick/private/qquickflickable_p.h"
+
+#include <QtDuse/QtDuse>
 
 #include "newdusedesign.h"
 
@@ -126,6 +129,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->dckIssues->raise();
     tabifyDockWidget(ui->dckInspector, ui->dckMetrics);
     ui->dckInspector->raise();
+    tabifyDockWidget(ui->dckPropertyEditor, ui->dckDesignSpace);
+    ui->dckPropertyEditor->raise();
+    ui->tblDesignSpace->resizeColumnToContents(0);
+    ui->tblDesignSpace->resizeColumnToContents(1);
+    ui->tblDesignSpace->resizeColumnToContents(2);
 
     ui->txeJavaScript->installEventFilter(this);
     _codeCompletionView->installEventFilter(this);
@@ -238,8 +246,12 @@ QList<QWrappedObject *> MainWindow::loadXmi()
     ui->txeIssues->setModel(new QStringListModel(reader.errorStrings()));
     if (!wrappedObjectList.isEmpty()) {
         _engine.globalObject().setProperty(wrappedObjectList.at(0)->objectName(), _engine.newQObject(wrappedObjectList.at(0)));
-        _engine.globalObject().setProperty("root", _engine.newQObject(wrappedObjectList.at(0)));
-        _engine.globalObject().setProperty("input", _engine.newQObject(wrappedObjectList.at(0)));
+
+        QScriptValue array = _engine.newArray();
+        foreach (QWrappedObject *wrappedObject, wrappedObjectList)
+            array.property(QString::fromLatin1("push")).call(array, QScriptValueList() << _engine.newQObject(wrappedObject));
+        _engine.globalObject().setProperty("input", array);
+
         ui->txeJavaScript->setText("self");
         QTimer::singleShot(0, this, SLOT(on_psbJSEvaluate_clicked()));
     }
@@ -291,9 +303,9 @@ void MainWindow::on_actionFileNewDuseDesign_triggered()
 
                 QScriptValue value = _engine.evaluate("function checkProfile() \
                                                        { \
-                                                           var length = self.profileApplications.length; \
+                                                           var length = input[0].profileApplications.length; \
                                                            for (var i = 0; i < length; ++i) \
-                                                               if (self.profileApplications[0].appliedProfile.name == '" + wrappedObjectList.first()->objectName() + "Profile') \
+                                                               if (input[0].profileApplications[0].appliedProfile.name == '" + wrappedObjectList.first()->objectName() + "Profile') \
                                                                    return true; \
                                                            return false; \
                                                        } \
@@ -308,17 +320,19 @@ void MainWindow::on_actionFileNewDuseDesign_triggered()
 
                 _engine.globalObject().setProperty("designspace", _engine.newQObject(wrappedObjectList.at(0)));
                 _engine.evaluate("var dimensionsLength = designspace.designDimensions.length; \
-                                 for (var i=0; i < dimensionsLength; ++i) { \
-                                     if (designspace.designDimensions[i].instanceSelectionRule) { \
-                                         var selected = eval(designspace.designDimensions[i].instanceSelectionRule); \
+                                 for (var dimensionCounter = 0; dimensionCounter < dimensionsLength; ++dimensionCounter) { \
+                                     if (designspace.designDimensions[dimensionCounter].instanceSelectionRule) { \
+                                         var selected = eval(designspace.designDimensions[dimensionCounter].instanceSelectionRule); \
                                          var selectedLength = selected.length; \
-                                         for (var j = 0; j < selectedLength; ++j) { \
+                                         for (var selectedCounter = 0; selectedCounter < selectedLength; ++selectedCounter) { \
                                              var dimensionInstance = new QDuseDesignDimensionInstance(); \
-                                             dimensionInstance.objectName = selected[j].name; \
-                                             designspace.designDimensions[i].addDesignDimensionInstance(dimensionInstance); \
+                                             dimensionInstance.objectName = selected[selectedCounter].name; \
+                                             designspace.designDimensions[dimensionCounter].addDesignDimensionInstance(dimensionInstance); \
                                          } \
                                      } \
                                  }");
+
+                populateDesignSpaceView(wrappedObjectList.at(0));
 
                 setCursor(Qt::ArrowCursor);
             }
@@ -326,6 +340,30 @@ void MainWindow::on_actionFileNewDuseDesign_triggered()
         else
             return;
     } while (_newDuseDesign->_inputModelFileName.isEmpty() || _newDuseDesign->_duseInstanceModelFileName.isEmpty());
+}
+
+void MainWindow::populateDesignSpaceView(QWrappedObject *wrappedObject)
+{
+    QDuseDesignSpace *designSpace = qobject_cast<QDuseDesignSpace *>(wrappedObject);
+    ui->tblDesignSpace->setRowCount(0);
+    int row = 0;
+    foreach (QDuseDesignDimension *dimension, designSpace->designDimensions()) {
+        ui->tblDesignSpace->setRowCount(ui->tblDesignSpace->rowCount() + dimension->designDimensionInstances().count());
+        foreach (QDuseDesignDimensionInstance *instance, dimension->designDimensionInstances()) {
+            ui->tblDesignSpace->setItem(row, 0, new QTableWidgetItem(dimension->name()));
+            ui->tblDesignSpace->setItem(row, 1, new QTableWidgetItem(instance->objectName()));
+            QComboBox *comboBox = new QComboBox;
+            foreach (QDuseVariationPoint *variationPoint, dimension->variationPoints()) {
+                comboBox->addItem(variationPoint->objectName());
+            }
+            QItemDelegate *delegate = qobject_cast<QItemDelegate *>(ui->tblDesignSpace->itemDelegateForColumn(2));
+            if (delegate) {
+
+            }
+            ++row;
+        }
+    }
+    ui->tblDesignSpace->resizeRowsToContents();
 }
 
 void MainWindow::on_actionFileOpenDuseDesign_triggered()

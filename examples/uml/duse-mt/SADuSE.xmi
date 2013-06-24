@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:duse="http://liveblue.wordpress.com">
   <duse:DesignSpace name="SADuSE" xmi:id="SADuSE">
+    <qualityMetric xmi:type="duse:QualityMetric" name="Control Overhead" xmi:id="SADuSE-Control Overhead"/>
+    <qualityMetric xmi:type="duse:QualityMetric" name="Average Maximum Overshoot" xmi:id="SADuSE-Average Maximum Overshoot"/>
     <qualityMetric xmi:type="duse:QualityMetric" name="Average Settling Time" xmi:id="SADuSE-Average Settling Time"/>
     <qualityMetric xmi:type="duse:QualityMetric" name="Control Robustness" xmi:id="SADuSE-Control Robustness"/>
-    <qualityMetric xmi:type="duse:QualityMetric" name="Average Maximum Overshoot" xmi:id="SADuSE-Average Maximum Overshoot"/>
-    <qualityMetric xmi:type="duse:QualityMetric" name="Control Overhead" xmi:id="SADuSE-Control Overhead"/>
-    <designDimension xmi:type="duse:DesignDimension" instanceSelectionRule="root.ownedElements" name="Control Law" xmi:id="SADuSE-Control Law">
+    <designDimension xmi:type="duse:DesignDimension" instanceSelectionRule="var inputLength = input.length; var selected = new Array(); for (var i = 0; i &lt; inputLength; ++i) { if (input[i] instanceof QSADuseProfileProcessComponent) selected.push(input[i].base_Component); } selected;" name="Control Law" xmi:id="SADuSE-Control Law">
       <variationPoint xmi:type="duse:VariationPoint" xmi:id="SADuSE-Control Law-VariationPoint.0"/>
       <variationPoint xmi:type="duse:VariationPoint" xmi:id="SADuSE-Control Law-VariationPoint.1"/>
       <variationPoint xmi:type="duse:VariationPoint" xmi:id="SADuSE-Control Law-VariationPoint.2"/>

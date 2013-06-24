@@ -87,5 +87,6 @@ Item {
         anchors.horizontalCenter: parent.horizontalCenter
         id: label
         color: "white"
+        font { family: "Korolev" }
     }
 }
