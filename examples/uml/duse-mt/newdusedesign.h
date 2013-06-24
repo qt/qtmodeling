@@ -38,90 +38,31 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#ifndef NEWDUSEDESIGN_H
+#define NEWDUSEDESIGN_H
 
-#include <QtWidgets/QMainWindow>
-
-#include <QtCore/QPair>
-#include <QtCore/QJsonObject>
-
-#include <QtScript/QScriptEngine>
-
-class QDialog;
-class QListView;
-class QQuickView;
-class QQmlComponent;
+#include <QDialog>
 
 namespace Ui {
-    class MainWindow;
-    class AboutPlugins;
-    class AboutDuSEMT;
-    class NewModel;
+class NewDuseDesign;
 }
 
-class QWrappedObject;
-class QMetaModelPlugin;
-class QWrappedObjectModel;
-
-class NewDuseDesign;
-
-class MainWindow : public QMainWindow
+class NewDuseDesign : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
-    ~MainWindow();
+    explicit NewDuseDesign(QWidget *parent = 0);
+    ~NewDuseDesign();
 
-    void closeEvent(QCloseEvent *event);
-    void readSettings();
-
+    QString _inputModelFileName;
+    QString _duseInstanceModelFileName;
 private Q_SLOTS:
-    void on_actionFileNewModel_triggered();
-    void on_actionFileOpenModel_triggered();
-    void on_actionFileNewDuseDesign_triggered();
-    void on_actionFileOpenDuseDesign_triggered();
-    void on_actionFileSaveAs_triggered();
-    void on_actionFileSave_triggered();
-    void on_actionHelpAboutPlugins_triggered();
-    void on_actionHelpAboutDuSEMT_triggered();
-    void on_psbJSEvaluate_clicked();
-
-    void metaModelChanged(QString newMetaModel);
-    void wrappedObjectChanged(QWrappedObject *wrappedObject);
-    void addToView(QWrappedObject *wrappedObject);
-
-    void dckMetricsVisibilityChanged(bool visible);
-    void continueLoading();
-
-protected:
-    bool eventFilter(QObject *obj, QEvent *event);
+    void on_tbtInputModel_clicked();
+    void on_tbtDuseInstanceModel_clicked();
 
 private:
-    void loadPlugins();
-    void saveXmi(QWrappedObject *rootElement);
-    QList<QWrappedObject *> loadXmi();
-
-    Ui::MainWindow *ui;
-    QWrappedObjectModel *_wrappedObjectModel;
-
-    QString _currentFileName;
-    QHash< QString, QPair<QMetaModelPlugin *, QJsonObject> > _loadedPlugins;
-    QDialog *_aboutPluginsDialog;
-    Ui::AboutPlugins *_aboutPlugins;
-    QDialog *_aboutDuSEMTDialog;
-    Ui::AboutDuSEMT *_aboutDuSEMT;
-    QDialog *_newModelDialog;
-    Ui::NewModel *_newModel;
-    NewDuseDesign *_newDuseDesign;
-
-    QScriptEngine _engine;
-    QListView *_codeCompletionView;
-    QQmlComponent *_qmlComponent;
-    QQuickView *_modelQuickView;
-    QQuickView *_metricsQuickView;
-    QQuickView *_paretoFrontQuickView;
+    Ui::NewDuseDesign *ui;
 };
 
-#endif // MAINWINDOW_H
+#endif // NEWDUSEDESIGN_H

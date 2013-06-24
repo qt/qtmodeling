@@ -106,8 +106,11 @@
     <property name="title">
      <string>&amp;File</string>
     </property>
-    <addaction name="actionFileNew"/>
-    <addaction name="actionFileOpen"/>
+    <addaction name="actionFileNewModel"/>
+    <addaction name="actionFileOpenModel"/>
+    <addaction name="separator"/>
+    <addaction name="actionFileNewDuseDesign"/>
+    <addaction name="actionFileOpenDuseDesign"/>
     <addaction name="separator"/>
     <addaction name="actionFileSave"/>
     <addaction name="actionFileSaveAs"/>
@@ -118,8 +121,8 @@
     <property name="title">
      <string>&amp;Help</string>
     </property>
-    <addaction name="actionAboutDuSEMT"/>
-    <addaction name="actionAboutPlugins"/>
+    <addaction name="actionHelpAboutDuSEMT"/>
+    <addaction name="actionHelpAboutPlugins"/>
    </widget>
    <widget class="QMenu" name="menu_Edit">
     <property name="title">
@@ -146,8 +149,8 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
-   <addaction name="actionFileNew"/>
-   <addaction name="actionFileOpen"/>
+   <addaction name="actionFileNewModel"/>
+   <addaction name="actionFileOpenModel"/>
    <addaction name="actionFileSave"/>
    <addaction name="separator"/>
    <addaction name="actionFileQuit"/>
@@ -394,13 +397,13 @@
     </layout>
    </widget>
   </widget>
-  <action name="actionFileNew">
+  <action name="actionFileNewModel">
    <property name="icon">
     <iconset theme="document-new" resource="duse-mt.qrc">
      <normaloff>:/icons/document-new.png</normaloff>:/icons/document-new.png</iconset>
    </property>
    <property name="text">
-    <string>&amp;New...</string>
+    <string>&amp;New Model...</string>
    </property>
    <property name="toolTip">
     <string>New</string>
@@ -409,13 +412,13 @@
     <string>Ctrl+N</string>
    </property>
   </action>
-  <action name="actionFileOpen">
+  <action name="actionFileOpenModel">
    <property name="icon">
     <iconset theme="document-open" resource="duse-mt.qrc">
      <normaloff>:/icons/document-open.png</normaloff>:/icons/document-open.png</iconset>
    </property>
    <property name="text">
-    <string>&amp;Open...</string>
+    <string>&amp;Open Model ...</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+O</string>
@@ -457,7 +460,7 @@
     <string>Ctrl+Q</string>
    </property>
   </action>
-  <action name="actionAboutPlugins">
+  <action name="actionHelpAboutPlugins">
    <property name="icon">
     <iconset theme="help-about" resource="duse-mt.qrc">
      <normaloff>:/icons/help-about.png</normaloff>:/icons/help-about.png</iconset>
@@ -466,7 +469,7 @@
     <string>About &amp;Plugins...</string>
    </property>
   </action>
-  <action name="actionAboutDuSEMT">
+  <action name="actionHelpAboutDuSEMT">
    <property name="icon">
     <iconset resource="duse-mt.qrc">
      <normaloff>:/icons/duse-mt-22x22.png</normaloff>:/icons/duse-mt-22x22.png</iconset>
@@ -476,6 +479,32 @@
    </property>
    <property name="toolTip">
     <string>About DuSE-MT</string>
+   </property>
+  </action>
+  <action name="actionFileNewDuseDesign">
+   <property name="icon">
+    <iconset theme="document-new">
+     <normaloff/>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>New &amp;DuSE Design ...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+D</string>
+   </property>
+  </action>
+  <action name="actionFileOpenDuseDesign">
+   <property name="icon">
+    <iconset theme="document-open">
+     <normaloff/>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Open DuSE Design ...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+U</string>
    </property>
   </action>
  </widget>

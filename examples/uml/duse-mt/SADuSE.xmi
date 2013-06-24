@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:duse="http://liveblue.wordpress.com">
+  <duse:DesignSpace name="SADuSE" xmi:id="SADuSE">
+    <qualityMetric xmi:type="duse:QualityMetric" name="Metric1" xmi:id="SADuSE-Metric1"/>
+    <designDimension xmi:type="duse:DesignDimension" instanceSelectionRule="self" name="DesignDimension1" xmi:id="SADuSE-DesignDimension1">
+      <variationPoint xmi:type="duse:VariationPoint" rationale="My rationale for VP1" xmi:id="SADuSE-DesignDimension1-VariationPoint.0"/>
+    </designDimension>
+    <designDimension xmi:type="duse:DesignDimension" name="DesignDimension2" xmi:id="SADuSE-DesignDimension2"/>
+  </duse:DesignSpace>
+</xmi:XMI>

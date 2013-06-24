@@ -19,14 +19,17 @@ INSTALLS += target xmi
 CONFIG += c++11
 
 SOURCES += main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    newdusedesign.cpp
 
 HEADERS  += mainwindow.h \
+    newdusedesign.h
 
 FORMS    += mainwindow.ui \
             aboutplugins.ui \
     newmodel.ui \
-    aboutdusemt.ui
+    aboutdusemt.ui \
+    newdusedesign.ui
 
 RESOURCES += \
     duse-mt.qrc

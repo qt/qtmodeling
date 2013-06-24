@@ -126,12 +126,14 @@ QList<QWrappedObject *> QXmiReader::readFile(QIODevice *device, QString imported
                 if (!importFile.open(QFile::ReadOnly | QFile::Text))
                     d->errors << QString::fromLatin1("Could not open imported file '%1'").arg(importFile.fileName());
                 QList<QWrappedObject *> importList = readFile(&importFile, reader.attributes().value(QString::fromLatin1("href")).toString().split(QString::fromLatin1("#")).last());
-                if (elementName == QString::fromLatin1("importedPackage"))
-                    importList.first()->setRole(QWrappedObject::ImportedPackageRole);
-                else if (elementName == QString::fromLatin1("importedElement"))
-                    importList.first()->setRole(QWrappedObject::ImportedElementRole);
-                else if (elementName == QString::fromLatin1("appliedProfile"))
-                    importList.first()->setRole(QWrappedObject::AppliedProfileRole);
+                if (importList.count() > 0) {
+                    if (elementName == QString::fromLatin1("importedPackage"))
+                        importList.first()->setRole(QWrappedObject::ImportedPackageRole);
+                    else if (elementName == QString::fromLatin1("importedElement"))
+                        importList.first()->setRole(QWrappedObject::ImportedElementRole);
+                    else if (elementName == QString::fromLatin1("appliedProfile"))
+                        importList.first()->setRole(QWrappedObject::AppliedProfileRole);
+                }
                 foreach (QWrappedObject *importedObject, importList) {
                     wrappedObjectList.append(importedObject);
                 }

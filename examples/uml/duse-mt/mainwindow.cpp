@@ -71,6 +71,8 @@
 #include <QtQuick/QQuickItem>
 #include "QtQuick/private/qquickflickable_p.h"
 
+#include "newdusedesign.h"
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
@@ -81,6 +83,7 @@ MainWindow::MainWindow(QWidget *parent) :
     _aboutDuSEMT(new Ui::AboutDuSEMT),
     _newModelDialog(new QDialog(this)),
     _newModel(new Ui::NewModel),
+    _newDuseDesign(new NewDuseDesign(this)),
     _codeCompletionView(new QListView),
     _modelQuickView(new QQuickView),
     _metricsQuickView(new QQuickView),
@@ -163,7 +166,7 @@ void MainWindow::readSettings()
     restoreState(settings.value("windowState").toByteArray());
 }
 
-void MainWindow::on_actionFileNew_triggered()
+void MainWindow::on_actionFileNewModel_triggered()
 {
     _newModel->lneModel->clear();
     _newModel->cboMetamodel->clear();
@@ -237,7 +240,7 @@ QList<QWrappedObject *> MainWindow::loadXmi()
     return wrappedObjectList;
 }
 
-void MainWindow::on_actionFileOpen_triggered()
+void MainWindow::on_actionFileOpenModel_triggered()
 {
     QString fileName = QFileDialog::getOpenFileName(this, tr("Open"), QDir::currentPath(), "XMI files (*.xmi)");
     if (!fileName.isEmpty()) {
@@ -248,6 +251,54 @@ void MainWindow::on_actionFileOpen_triggered()
             _wrappedObjectModel->addWrappedObject(object);
         setCursor(Qt::ArrowCursor);
     }
+}
+
+void MainWindow::on_actionFileNewDuseDesign_triggered()
+{
+    do {
+        if (_newDuseDesign->exec() == QDialog::Accepted) {
+            if (_newDuseDesign->_inputModelFileName.isEmpty() || _newDuseDesign->_duseInstanceModelFileName.isEmpty()) {
+                QMessageBox::critical(this, tr("Create new DuSE design"), tr("You should select an input model and a DuSE instance model !"));
+            }
+            else {
+                setCursor(Qt::WaitCursor);
+
+                QFile file(_newDuseDesign->_duseInstanceModelFileName);
+                if (!file.open(QFile::ReadOnly | QFile::Text)) {
+                    QMessageBox::critical(this, tr("Create new DuSE design"), tr("Cannot read DuSE instance file !"));
+                    setCursor(Qt::ArrowCursor);
+                    return;
+                }
+                QXmiReader reader(&_engine, true);
+                QList<QWrappedObject *> wrappedObjectList = reader.readFile(&file);
+                if (QString::fromLatin1(wrappedObjectList.first()->metaObject()->className()) != QString::fromLatin1("QDuseDesignSpace")) {
+                    QMessageBox::critical(this, tr("Create new DuSE design"), QString::fromLatin1("%1 is not a valid DuSE instance !").arg(QFileInfo(file).fileName()));
+                    setCursor(Qt::ArrowCursor);
+                    return;
+                }
+
+                _currentFileName = _newDuseDesign->_inputModelFileName;
+                _wrappedObjectModel->clear();
+                foreach (QWrappedObject *object, loadXmi())
+                    _wrappedObjectModel->addWrappedObject(object);
+
+                QScriptValue value = _engine.evaluate("function checkProfile() { var length = self.profileApplications.length; for (var i = 0; i < length; ++i) if (self.profileApplications[0].appliedProfile.name == '" + wrappedObjectList.first()->objectName() + "Profile') return true; return false; } checkProfile()");
+                if (!value.toBool()) {
+                    QMessageBox::critical(this, tr("Create new DuSE design"), QString::fromLatin1("Input model does not contain the required %1Profile profile application !").arg(wrappedObjectList.first()->objectName()));
+                    setCursor(Qt::ArrowCursor);
+                    return;
+                }
+
+                setCursor(Qt::ArrowCursor);
+            }
+        }
+        else
+            return;
+    } while (_newDuseDesign->_inputModelFileName.isEmpty() || _newDuseDesign->_duseInstanceModelFileName.isEmpty());
+}
+
+void MainWindow::on_actionFileOpenDuseDesign_triggered()
+{
 }
 
 void MainWindow::on_actionFileSaveAs_triggered()
@@ -267,7 +318,7 @@ void MainWindow::on_actionFileSave_triggered()
         saveXmi(_wrappedObjectModel->wrappedObjects().at(0));
 }
 
-void MainWindow::on_actionAboutPlugins_triggered()
+void MainWindow::on_actionHelpAboutPlugins_triggered()
 {
     _aboutPlugins->loadedPlugins->clearContents();
     _aboutPlugins->loadedPlugins->setRowCount(_loadedPlugins.size());
@@ -284,7 +335,7 @@ void MainWindow::on_actionAboutPlugins_triggered()
     _aboutPluginsDialog->exec();
 }
 
-void MainWindow::on_actionAboutDuSEMT_triggered()
+void MainWindow::on_actionHelpAboutDuSEMT_triggered()
 {
     _aboutDuSEMTDialog->exec();
 }
