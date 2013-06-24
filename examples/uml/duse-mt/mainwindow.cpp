@@ -238,6 +238,8 @@ QList<QWrappedObject *> MainWindow::loadXmi()
     ui->txeIssues->setModel(new QStringListModel(reader.errorStrings()));
     if (!wrappedObjectList.isEmpty()) {
         _engine.globalObject().setProperty(wrappedObjectList.at(0)->objectName(), _engine.newQObject(wrappedObjectList.at(0)));
+        _engine.globalObject().setProperty("root", _engine.newQObject(wrappedObjectList.at(0)));
+        _engine.globalObject().setProperty("input", _engine.newQObject(wrappedObjectList.at(0)));
         ui->txeJavaScript->setText("self");
         QTimer::singleShot(0, this, SLOT(on_psbJSEvaluate_clicked()));
     }
@@ -287,7 +289,15 @@ void MainWindow::on_actionFileNewDuseDesign_triggered()
                 foreach (QWrappedObject *object, loadXmi())
                     _wrappedObjectModel->addWrappedObject(object);
 
-                QScriptValue value = _engine.evaluate("function checkProfile() { var length = self.profileApplications.length; for (var i = 0; i < length; ++i) if (self.profileApplications[0].appliedProfile.name == '" + wrappedObjectList.first()->objectName() + "Profile') return true; return false; } checkProfile()");
+                QScriptValue value = _engine.evaluate("function checkProfile() \
+                                                       { \
+                                                           var length = self.profileApplications.length; \
+                                                           for (var i = 0; i < length; ++i) \
+                                                               if (self.profileApplications[0].appliedProfile.name == '" + wrappedObjectList.first()->objectName() + "Profile') \
+                                                                   return true; \
+                                                           return false; \
+                                                       } \
+                                                       checkProfile();");
                 if (!value.toBool()) {
                     QMessageBox::critical(this, tr("Create new DuSE design"), QString::fromLatin1("Input model does not contain the required %1Profile profile application !").arg(wrappedObjectList.first()->objectName()));
                     setCursor(Qt::ArrowCursor);
@@ -295,6 +305,20 @@ void MainWindow::on_actionFileNewDuseDesign_triggered()
                 }
 
                 wrappedObjectList.first()->setQmlContextProperties(_metricsQuickView->engine()->rootContext());
+
+                _engine.globalObject().setProperty("designspace", _engine.newQObject(wrappedObjectList.at(0)));
+                _engine.evaluate("var dimensionsLength = designspace.designDimensions.length; \
+                                 for (var i=0; i < dimensionsLength; ++i) { \
+                                     if (designspace.designDimensions[i].instanceSelectionRule) { \
+                                         var selected = eval(designspace.designDimensions[i].instanceSelectionRule); \
+                                         var selectedLength = selected.length; \
+                                         for (var j = 0; j < selectedLength; ++j) { \
+                                             var dimensionInstance = new QDuseDesignDimensionInstance(); \
+                                             dimensionInstance.objectName = selected[j].name; \
+                                             designspace.designDimensions[i].addDesignDimensionInstance(dimensionInstance); \
+                                         } \
+                                     } \
+                                 }");
 
                 setCursor(Qt::ArrowCursor);
             }

@@ -3,7 +3,7 @@
 ** Copyright (C) 2013 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/legal
 **
-** This file is part of the QtSADuse module of the Qt Toolkit.
+** This file is part of the QtSADuseProfile module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** Commercial License Usage
@@ -38,8 +38,8 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#include "qsaduseprocesscomponent.h"
-#include "qsaduseprocesscomponent_p.h"
+#include "qsaduseprofileprocesscomponent.h"
+#include "qsaduseprofileprocesscomponent_p.h"
 
 #include <QtUml/QUmlComponent>
 
@@ -47,67 +47,67 @@
 
 QT_BEGIN_NAMESPACE
 
-QSADuseProcessComponentPrivate::QSADuseProcessComponentPrivate() :
+QSADuseProfileProcessComponentPrivate::QSADuseProfileProcessComponentPrivate() :
     base_Component(0)
 {
 }
 
-QSADuseProcessComponentPrivate::~QSADuseProcessComponentPrivate()
+QSADuseProfileProcessComponentPrivate::~QSADuseProfileProcessComponentPrivate()
 {
 }
 
 
-QSADuseProcessComponent::QSADuseProcessComponent(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QWrappedObject(*new QSADuseProcessComponentPrivate, wrapper, parent)
+QSADuseProfileProcessComponent::QSADuseProfileProcessComponent(QWrappedObject *wrapper, QWrappedObject *parent) :
+    QWrappedObject(*new QSADuseProfileProcessComponentPrivate, wrapper, parent)
 {
     setPropertyData();
 }
 
-QSADuseProcessComponent::QSADuseProcessComponent(QSADuseProcessComponentPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
+QSADuseProfileProcessComponent::QSADuseProfileProcessComponent(QSADuseProfileProcessComponentPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
     QWrappedObject(dd, wrapper, parent)
 {
     setPropertyData();
 }
 
-QSADuseProcessComponent::~QSADuseProcessComponent()
+QSADuseProfileProcessComponent::~QSADuseProfileProcessComponent()
 {
 }
 
 // ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QSADuseProcessComponent
+// ASSOCIATION ENDS FROM QSADuseProfileProcessComponent
 // ---------------------------------------------------------------
 
-QUmlComponent *QSADuseProcessComponent::base_Component() const
+QUmlComponent *QSADuseProfileProcessComponent::base_Component() const
 {
     // This is a read-write association end
 
-    Q_D(const QSADuseProcessComponent);
+    Q_D(const QSADuseProfileProcessComponent);
     return d->base_Component;
 }
 
-void QSADuseProcessComponent::setBase_Component(QUmlComponent *base_Component)
+void QSADuseProfileProcessComponent::setBase_Component(QUmlComponent *base_Component)
 {
     // This is a read-write association end
 
-    Q_D(QSADuseProcessComponent);
+    Q_D(QSADuseProfileProcessComponent);
     if (d->base_Component != base_Component) {
         d->base_Component = base_Component;
     }
 }
 
-void QSADuseProcessComponent::setPropertyData()
+void QSADuseProfileProcessComponent::setPropertyData()
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QSADuseProcessComponent")][QString::fromLatin1("base_Component")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QSADuseProcessComponent")][QString::fromLatin1("base_Component")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QSADuseProcessComponent")][QString::fromLatin1("base_Component")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QSADuseProcessComponent")][QString::fromLatin1("base_Component")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QSADuseProcessComponent")][QString::fromLatin1("base_Component")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QSADuseProcessComponent")][QString::fromLatin1("base_Component")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QSADuse");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QSADuseProfileProcessComponent")][QString::fromLatin1("base_Component")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QSADuseProfileProcessComponent")][QString::fromLatin1("base_Component")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QSADuseProfileProcessComponent")][QString::fromLatin1("base_Component")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QSADuseProfileProcessComponent")][QString::fromLatin1("base_Component")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QSADuseProfileProcessComponent")][QString::fromLatin1("base_Component")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QSADuseProfileProcessComponent")][QString::fromLatin1("base_Component")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QSADuseProfile");
 
     QWrappedObject::setPropertyData();
 }
 
 QT_END_NAMESPACE
 
-#include "moc_qsaduseprocesscomponent.cpp"
+#include "moc_qsaduseprofileprocesscomponent.cpp"
 

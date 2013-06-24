@@ -3,7 +3,7 @@
 ** Copyright (C) 2013 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/legal
 **
-** This file is part of the QtSADuse module of the Qt Toolkit.
+** This file is part of the QtSADuseProfile module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** Commercial License Usage
@@ -38,21 +38,21 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QSADUSEMETAMODELPLUGIN_H
-#define QSADUSEMETAMODELPLUGIN_H
+#ifndef QSADUSEPROFILEMETAMODELPLUGIN_H
+#define QSADUSEPROFILEMETAMODELPLUGIN_H
 
 #include <QtWrappedObjects/QMetaModelPlugin>
 
-class QSADuseMetaModelPlugin : public QMetaModelPlugin
+class QSADuseProfileMetaModelPlugin : public QMetaModelPlugin
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QMetaModelPlugin" FILE "saduse.json")
+    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QMetaModelPlugin" FILE "saduseprofile.json")
 
 public:
-    QSADuseMetaModelPlugin(QObject *parent = 0);
+    QSADuseProfileMetaModelPlugin(QObject *parent = 0);
 
     void initMetaModel(QScriptEngine *scriptEngine = 0);
 };
 
-#endif // QSADUSEMETAMODELPLUGIN_H
+#endif // QSADUSEPROFILEMETAMODELPLUGIN_H
 

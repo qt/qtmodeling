@@ -25,42 +25,42 @@
 **
 ****************************************************************************/
 /*!
-    \page qtsaduse-index.html
-    \title Qt SADuSE
-    \brief Implements the SADuSE profile for domain-independent design spaces representation.
+    \page qtsaduseprofile-index.html
+    \title Qt SADuSEProfile
+    \brief Implements the DuSE profile for self-adaptive systems design spaces representation.
 
-    Qt Duse is an add-on module which implements a profile for domain-independent design spaces representation.
+    Qt SADuseProfile is an add-on module which implements a profile for self-adaptive systems design spaces representation.
 
     \section1 Getting Started
-    To enable Qt SADuSE in a project, add this directive into the C++ files:
+    To enable Qt SADuSEProfile in a project, add this directive into the C++ files:
     \code
-    #include <QtDuse>
+    #include <QtSADuseProfile>
     \endcode
-    To link against the Qt SADuSE module, add this line to the project file:
+    To link against the Qt SADuSEProfile module, add this line to the project file:
     \code
-    QT += saduse
+    QT += saduseprofile
     \endcode
 
     \section1 Reference
     These are links to the API reference materials.
     \list
-    \li \l{Qt SADuSE Module C++ Classes}{C++ classes}
+    \li \l{Qt SADuSEProfile Module C++ Classes}{C++ classes}
     \endlist
 */
 
 /*!
-    \module QtDuse
-    \title Qt SADuSE Module C++ Classes
+    \module QtSADuseProfile
+    \title Qt SADuSEProfile Module C++ Classes
     \ingroup modules
-    \brief Implements the SADuSE profile for domain-independent design spaces representation.
+    \brief Implements the DuSE profile for self-adaptive systems design spaces representation.
 
     To include the definitions of the module's classes, use the
     following directive:
 
-    \snippet code/doc_src_qtsaduse.cpp 0
+    \snippet code/doc_src_qtsaduseprofile.cpp 0
 
     To link against the module, add this line to your \l qmake \c
     .pro file:
 
-    \snippet code/doc_src_qtsaduse.pro 0
+    \snippet code/doc_src_qtsaduseprofile.pro 0
 */

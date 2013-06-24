@@ -72,13 +72,16 @@ void QDuseMetaModel::init(QScriptEngine *scriptEngine)
         qScriptRegisterMetaType(scriptEngine, qSetToScriptValue<QDuseDesignSpace>, scriptValueToQSet<QDuseDesignSpace>);
         qScriptRegisterMetaType(scriptEngine, qListToScriptValue<QDuseDesignSpace>, scriptValueToQList<QDuseDesignSpace>);
         qScriptRegisterMetaType(scriptEngine, qSetToScriptValue<QDuseDesignDimension>, scriptValueToQSet<QDuseDesignDimension>);
-        qScriptRegisterMetaType(scriptEngine, qListToScriptValue<QDuseDesignDimension>, scriptValueToQList<QDuseDesignDimension>);
+        qScriptRegisterSequenceMetaType< QList<QDuseDesignDimension *> >(scriptEngine);
         qScriptRegisterMetaType(scriptEngine, qSetToScriptValue<QDuseDesignDimensionInstance>, scriptValueToQSet<QDuseDesignDimensionInstance>);
         qScriptRegisterMetaType(scriptEngine, qListToScriptValue<QDuseDesignDimensionInstance>, scriptValueToQList<QDuseDesignDimensionInstance>);
         qScriptRegisterMetaType(scriptEngine, qSetToScriptValue<QDuseVariationPoint>, scriptValueToQSet<QDuseVariationPoint>);
         qScriptRegisterMetaType(scriptEngine, qListToScriptValue<QDuseVariationPoint>, scriptValueToQList<QDuseVariationPoint>);
         qScriptRegisterMetaType(scriptEngine, qSetToScriptValue<QDuseQualityMetric>, scriptValueToQSet<QDuseQualityMetric>);
         qScriptRegisterMetaType(scriptEngine, qListToScriptValue<QDuseQualityMetric>, scriptValueToQList<QDuseQualityMetric>);
+
+        QScriptValue metaObject = scriptEngine->newQMetaObject(&QDuseDesignDimensionInstance::staticMetaObject);
+        scriptEngine->globalObject().setProperty("QDuseDesignDimensionInstance", metaObject);
     }
 }
 

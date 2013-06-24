@@ -3,7 +3,7 @@
 ** Copyright (C) 2013 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/legal
 **
-** This file is part of the QtSADuse module of the Qt Toolkit.
+** This file is part of the QtSADuseProfile module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** Commercial License Usage
@@ -38,17 +38,35 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#include "qsadusemetamodelplugin.h"
+#ifndef QSADUSEPROFILEPROCESSCOMPONENT_P_H
+#define QSADUSEPROFILEPROCESSCOMPONENT_P_H
 
-#include "qsadusemetamodel.h"
+// Base class includes
+#include "private/qwrappedobject_p.h"
 
-QSADuseMetaModelPlugin::QSADuseMetaModelPlugin(QObject *parent)
-    : QMetaModelPlugin(parent)
+#include "QtSADuseProfile/QSADuseProfileProcessComponent"
+
+QT_BEGIN_HEADER
+
+QT_BEGIN_NAMESPACE
+
+QT_MODULE(QtSADuseProfile)
+class QSADuseProfileProcessComponent;
+
+class Q_SADUSEPROFILE_EXPORT QSADuseProfileProcessComponentPrivate : public QWrappedObjectPrivate
 {
-}
+    Q_DECLARE_PUBLIC(QSADuseProfileProcessComponent)
 
-void QSADuseMetaModelPlugin::initMetaModel(QScriptEngine *scriptEngine)
-{
-    QSADuseMetaModel::init(scriptEngine);
-}
+public:
+    explicit QSADuseProfileProcessComponentPrivate();
+    virtual ~QSADuseProfileProcessComponentPrivate();
+
+    QUmlComponent *base_Component;
+};
+
+QT_END_NAMESPACE
+
+QT_END_HEADER
+
+#endif // QSADUSEPROFILEPROCESSCOMPONENT_P_H
 

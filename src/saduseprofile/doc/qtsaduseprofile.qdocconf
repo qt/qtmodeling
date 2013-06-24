@@ -1,0 +1,41 @@
+include($QT_INSTALL_DOCS/global/qt-module-defaults.qdocconf)
+
+project                 = QtSADuseProfile
+description             = Qt SADuSEProfile Reference Documentation
+url                     = http://qt-project.org/doc/qtsaduseprofile
+version                 = 5.0.0
+
+examplesinstallpath     = saduseprofile
+
+qhp.projects            = QtSADuseProfile
+
+qhp.QtSADuseProfile.file            = qtsaduseprofile.qhp
+qhp.QtSADuseProfile.namespace           = org.qt-project.qtsaduseprofile.500
+qhp.QtSADuseProfile.virtualFolder       = qtsaduseprofile
+qhp.QtSADuseProfile.indexTitle          = Qt SADuSEProfile
+qhp.QtSADuseProfile.indexRoot           =
+
+qhp.QtSADuseProfile.filterAttributes    = qtsaduseprofile 5.0.0 qtrefdoc
+qhp.QtSADuseProfile.customFilters.Qt.name = QtSADuseProfile 5.0.0
+qhp.QtSADuseProfile.customFilters.Qt.filterAttributes = qtsaduseprofile 5.0.0
+
+qhp.QtSADuseProfile.subprojects         = classes
+qhp.QtSADuseProfile.subprojects.classes.title = C++ Classes
+qhp.QtSADuseProfile.subprojects.classes.indexTitle = Qt SADuSEProfile C++ Classes
+qhp.QtSADuseProfile.subprojects.classes.selectors = class fake:headerfile
+qhp.QtSADuseProfile.subprojects.classes.sortPages = true
+tagfile                 = ../../../doc/qtsaduseprofile/qtsaduseprofile.tags
+
+depends                 += qtcore qtxml qtdoc
+
+headerdirs  += ..
+
+sourcedirs  += .. \
+               ../../../examples/saduseprofile/doc/src
+
+exampledirs += ../../../examples/saduseprofile \
+               ../ \
+               snippets
+
+imagedirs   += images \
+               ../../../examples/saduseprofile/doc/images

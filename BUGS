@@ -2,3 +2,4 @@
 - Check wheather RW multi-values properties are erroneously shown as RO in property editor
 - Fix XMI writing of models using imported elements/packages and/or applied profiles
 - Verify why QList<QObject *> cannot be directly passed to QML. Only QVariantList works by now
+- Investigate the use of qScriptRegisterSequenceMetaType also for QSets (see src/plugins/metamodels/duse/qdusemetamodel.cpp)

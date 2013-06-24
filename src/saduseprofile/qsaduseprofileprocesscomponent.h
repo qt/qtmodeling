@@ -3,7 +3,7 @@
 ** Copyright (C) 2013 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/legal
 **
-** This file is part of the QtSADuse module of the Qt Toolkit.
+** This file is part of the QtSADuseProfile module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** Commercial License Usage
@@ -38,25 +38,50 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#include "qsadusemetamodel.h"
+#ifndef QSADUSEPROFILEPROCESSCOMPONENT_H
+#define QSADUSEPROFILEPROCESSCOMPONENT_H
 
-#include <QtQml/QtQml>
+#include <QtSADuseProfile/QtSADuseProfileGlobal>
+
+// Base class includes
+#include <QtWrappedObjects/QWrappedObject>
+
+QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
-void QSADuseMetaModel::init(QScriptEngine *scriptEngine)
+QT_MODULE(QtSADuseProfile)
+
+class QUmlComponent;
+class QSADuseProfileProcessComponentPrivate;
+
+class Q_SADUSEPROFILE_EXPORT QSADuseProfileProcessComponent : public QWrappedObject
 {
-    qRegisterMetaType<QSADuseProcessComponent *>();
-    qRegisterMetaType< QList<QSADuseProcessComponent *> >();
-    qRegisterMetaType< QSet<QSADuseProcessComponent *> >();
+    Q_OBJECT
+    Q_CLASSINFO("MetaModelPrefix", "QSADuseProfile")
 
-    qmlRegisterType<QSADuseProcessComponent>();
+    Q_PROPERTY(QUmlComponent * base_Component READ base_Component WRITE setBase_Component)
 
-    if (scriptEngine) {
-        qScriptRegisterMetaType(scriptEngine, qSetToScriptValue<QSADuseProcessComponent>, scriptValueToQSet<QSADuseProcessComponent>);
-        qScriptRegisterMetaType(scriptEngine, qListToScriptValue<QSADuseProcessComponent>, scriptValueToQList<QSADuseProcessComponent>);
-    }
-}
+    Q_DISABLE_COPY(QSADuseProfileProcessComponent)
+    Q_DECLARE_PRIVATE(QSADuseProfileProcessComponent)
+
+public:
+    Q_INVOKABLE explicit QSADuseProfileProcessComponent(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    virtual ~QSADuseProfileProcessComponent();
+
+    // Association ends from QSADuseProfileProcessComponent
+    Q_INVOKABLE QUmlComponent *base_Component() const;
+    Q_INVOKABLE void setBase_Component(QUmlComponent *base_Component);
+
+    virtual void setPropertyData();
+
+protected:
+    explicit QSADuseProfileProcessComponent(QSADuseProfileProcessComponentPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+};
 
 QT_END_NAMESPACE
+
+QT_END_HEADER
+
+#endif // QSADUSEPROFILEPROCESSCOMPONENT_H
 

@@ -3,7 +3,7 @@
 ** Copyright (C) 2013 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/legal
 **
-** This file is part of the QtSADuse module of the Qt Toolkit.
+** This file is part of the QtSADuseProfile module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** Commercial License Usage
@@ -38,24 +38,6 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QSADUSEMETAMODEL_H
-#define QSADUSEMETAMODEL_H
-
-#include <QtSADuse/QtSADuse>
-
-QT_BEGIN_HEADER
-
-QT_BEGIN_NAMESPACE
-
-class QSADuseMetaModel
-{
-public:
-    static void init(QScriptEngine *scriptEngine = 0);
-};
-
-QT_END_NAMESPACE
-
-QT_END_HEADER
-
-#endif // QSADUSEMETAMODEL_H
-
+//! [0]
+#include <QtSADuseProfile>
+//! [0]

@@ -3,7 +3,7 @@
 ** Copyright (C) 2013 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/legal
 **
-** This file is part of the QtSADuse module of the Qt Toolkit.
+** This file is part of the QtSADuseProfile module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** Commercial License Usage
@@ -38,35 +38,25 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QSADUSEPROCESSCOMPONENT_P_H
-#define QSADUSEPROCESSCOMPONENT_P_H
+#include "qsaduseprofilemetamodel.h"
 
-// Base class includes
-#include "private/qwrappedobject_p.h"
-
-#include "QtSADuse/QSADuseProcessComponent"
-
-QT_BEGIN_HEADER
+#include <QtQml/QtQml>
 
 QT_BEGIN_NAMESPACE
 
-QT_MODULE(QtSADuse)
-class QSADuseProcessComponent;
-
-class Q_SADUSE_EXPORT QSADuseProcessComponentPrivate : public QWrappedObjectPrivate
+void QSADuseProfileMetaModel::init(QScriptEngine *scriptEngine)
 {
-    Q_DECLARE_PUBLIC(QSADuseProcessComponent)
+    qRegisterMetaType<QSADuseProfileProcessComponent *>();
+    qRegisterMetaType< QList<QSADuseProfileProcessComponent *> >();
+    qRegisterMetaType< QSet<QSADuseProfileProcessComponent *> >();
 
-public:
-    explicit QSADuseProcessComponentPrivate();
-    virtual ~QSADuseProcessComponentPrivate();
+    qmlRegisterType<QSADuseProfileProcessComponent>();
 
-    QUmlComponent *base_Component;
-};
+    if (scriptEngine) {
+        qScriptRegisterMetaType(scriptEngine, qSetToScriptValue<QSADuseProfileProcessComponent>, scriptValueToQSet<QSADuseProfileProcessComponent>);
+        qScriptRegisterMetaType(scriptEngine, qListToScriptValue<QSADuseProfileProcessComponent>, scriptValueToQList<QSADuseProfileProcessComponent>);
+    }
+}
 
 QT_END_NAMESPACE
-
-QT_END_HEADER
-
-#endif // QSADUSEPROCESSCOMPONENT_P_H
 

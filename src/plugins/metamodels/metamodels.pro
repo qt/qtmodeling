@@ -1,3 +1,3 @@
 TEMPLATE = subdirs
 
-qtHaveModule(qml): SUBDIRS = mof uml duse saduse
+qtHaveModule(qml): SUBDIRS = mof uml duse saduseprofile

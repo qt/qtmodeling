@@ -1,12 +1,12 @@
 load(qt_build_config)
 
-TARGET = QtSADuse
+TARGET = QtSADuseProfile
 QT = wrappedobjects-private core-private uml
 
-QMAKE_DOCS = $$PWD/doc/qtsaduse.qdocconf
+QMAKE_DOCS = $$PWD/doc/qtsaduseprofile.qdocconf
 
 load(qt_module)
 
-include(saduse.pri)
+include(saduseprofile.pri)
 
 HEADERS += $$PUBLIC_HEADERS $$PRIVATE_HEADERS
