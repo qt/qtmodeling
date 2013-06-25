@@ -48,6 +48,7 @@ QScriptValue dummyFunction(QScriptContext *context, QScriptEngine *engine)
 {
     Q_UNUSED(context);
     Q_UNUSED(engine);
+    return QScriptValue();
 }
 
 void QSADuseProfileMetaModel::init(QScriptEngine *scriptEngine)
