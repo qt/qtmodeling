@@ -77,6 +77,8 @@ public:
     // Association ends from QUmlEncapsulatedClassifier
     Q_INVOKABLE QSet<QUmlPort *> ownedPorts() const;
 
+    virtual void setQmlContextProperties(QQmlContext *qmlContext);
+
     virtual void setPropertyData();
 
 protected:

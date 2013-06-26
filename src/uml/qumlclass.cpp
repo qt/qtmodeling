@@ -1074,6 +1074,8 @@ void QUmlClass::setQmlContextProperties(QQmlContext *qmlContext)
     foreach (QUmlOperation *operation, ownedOperations())
         operationList << qVariantFromValue(operation);
     qmlContext->setContextProperty(QString::fromLatin1("operations"), operationList);
+
+    QWrappedObject::setQmlContextProperties(qmlContext);
 }
 
 void QUmlClass::setPropertyData()

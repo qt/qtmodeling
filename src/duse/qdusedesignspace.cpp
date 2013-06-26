@@ -104,6 +104,11 @@ void QDuseDesignSpace::setName(QString name)
     Q_D(QDuseDesignSpace);
     if (d->name != name) {
         d->name = name;
+
+        QWrappedObject *wrappedObject = this;
+        while (wrappedObject->wrapper())
+            wrappedObject = wrappedObject->wrapper();
+        wrappedObject->setObjectName(name);
     }
 }
 
@@ -179,6 +184,8 @@ void QDuseDesignSpace::setQmlContextProperties(QQmlContext *qmlContext)
     foreach (QDuseQualityMetric *metric, qualityMetrics())
         metricList << qVariantFromValue(metric);
     qmlContext->setContextProperty(QString::fromLatin1("metrics"), metricList);
+
+    QWrappedObject::setQmlContextProperties(qmlContext);
 }
 
 void QDuseDesignSpace::setPropertyData()

@@ -356,10 +356,7 @@ void MainWindow::populateDesignSpaceView(QWrappedObject *wrappedObject)
             foreach (QDuseVariationPoint *variationPoint, dimension->variationPoints()) {
                 comboBox->addItem(variationPoint->objectName());
             }
-            QItemDelegate *delegate = qobject_cast<QItemDelegate *>(ui->tblDesignSpace->itemDelegateForColumn(2));
-            if (delegate) {
-
-            }
+            ui->tblDesignSpace->setCellWidget(row, 2, comboBox);
             ++row;
         }
     }

@@ -191,7 +191,8 @@ bool QWrappedObject::isPropertyModified(QMetaProperty metaProperty) const
 
 void QWrappedObject::setQmlContextProperties(QQmlContext *qmlContext)
 {
-    Q_UNUSED(qmlContext);
+    foreach (QWrappedObject *childWrappedObject, wrappedObjects())
+        childWrappedObject->setQmlContextProperties(qmlContext);
 }
 
 #include "moc_qwrappedobject.cpp"

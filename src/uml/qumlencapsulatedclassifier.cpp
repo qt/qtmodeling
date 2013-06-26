@@ -41,6 +41,8 @@
 #include "qumlencapsulatedclassifier.h"
 #include "qumlencapsulatedclassifier_p.h"
 
+#include <QtQml/QQmlContext>
+
 #include <QtUml/QUmlPort>
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
@@ -96,6 +98,16 @@ QSet<QUmlPort *> QUmlEncapsulatedClassifier::ownedPorts() const
         if (QUmlPort *port = qwrappedobject_cast<QUmlPort *>(property))
             ownedPorts_.insert(port);
     return ownedPorts_;
+}
+
+void QUmlEncapsulatedClassifier::setQmlContextProperties(QQmlContext *qmlContext)
+{
+    QVariantList portList;
+    foreach (QUmlPort *port, ownedPorts())
+        portList << qVariantFromValue(port);
+    qmlContext->setContextProperty(QString::fromLatin1("ports"), portList);
+
+    QUmlStructuredClassifier::setQmlContextProperties(qmlContext);
 }
 
 void QUmlEncapsulatedClassifier::setPropertyData()

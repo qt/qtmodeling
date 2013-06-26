@@ -102,6 +102,11 @@ void QDuseDesignDimension::setName(QString name)
     Q_D(QDuseDesignDimension);
     if (d->name != name) {
         d->name = name;
+
+        QWrappedObject *wrappedObject = this;
+        while (wrappedObject->wrapper())
+            wrappedObject = wrappedObject->wrapper();
+        wrappedObject->setObjectName(name);
     }
 }
 
