@@ -70,11 +70,11 @@ public:
     explicit QDuseDesignDimensionPrivate();
     virtual ~QDuseDesignDimensionPrivate();
 
-    QString name;
     QString instanceSelectionRule;
-    QSet<QDuseDesignDimensionInstance *> designDimensionInstances;
     QSet<QDuseVariationPoint *> variationPoints;
+    QSet<QDuseDesignDimensionInstance *> designDimensionInstances;
     QSet<QDuseDesignDimension *> requiredPreviousEvaluations;
+    QString name;
 };
 
 QT_END_NAMESPACE

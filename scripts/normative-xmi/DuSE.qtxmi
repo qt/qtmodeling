@@ -90,6 +90,13 @@
         <class name="QDuseVariationPoint" isAbstract="false">
             <documentation>A variation point represents a specific solution for a given design dimension. A variation point entails validation rules which check for valid combinations of variation points and a script which defines the architectural changes to be enacted from such solution.</documentation>
             <qtinclude>QtCore/QString</qtinclude>
+            <attribute isDerived="false" isDerivedUnion="false" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="VariationPoint-name" defaultValue="" aggregation="none" subsettedBy="">
+                <accessor return="QString " name="name" constness=" const"/>
+                <accessor return="void " name="setName" constness="">
+                    <parameter type="QString " name="name"/>
+                </accessor>
+                <documentation>The variation point's name.</documentation>
+            </attribute>
             <attribute isDerived="false" isDerivedUnion="false" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="VariationPoint-rationale" defaultValue="" aggregation="none" subsettedBy="">
                 <accessor return="QString " name="rationale" constness=" const"/>
                 <accessor return="void " name="setRationale" constness="">

@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:duse="http://liveblue.wordpress.com">
   <duse:DesignSpace name="SADuSE" xmi:id="SADuSE">
-    <qualityMetric xmi:type="duse:QualityMetric" name="Control Overhead" xmi:id="SADuSE-Control Overhead"/>
+    <qualityMetric xmi:type="duse:QualityMetric" name="Control Robustness" xmi:id="SADuSE-Control Robustness"/>
     <qualityMetric xmi:type="duse:QualityMetric" name="Average Maximum Overshoot" xmi:id="SADuSE-Average Maximum Overshoot"/>
     <qualityMetric xmi:type="duse:QualityMetric" name="Average Settling Time" xmi:id="SADuSE-Average Settling Time"/>
-    <qualityMetric xmi:type="duse:QualityMetric" name="Control Robustness" xmi:id="SADuSE-Control Robustness"/>
-    <designDimension xmi:type="duse:DesignDimension" instanceSelectionRule="var inputLength = input.length; var selected = new Array(); for (var i = 0; i &lt; inputLength; ++i) { if (input[i] instanceof QSADuseProfileProcessComponent) selected.push(input[i].base_Component); } selected;" name="Control Law" xmi:id="SADuSE-Control Law">
-      <variationPoint xmi:type="duse:VariationPoint" xmi:id="SADuSE-Control Law-VariationPoint.0"/>
-      <variationPoint xmi:type="duse:VariationPoint" xmi:id="SADuSE-Control Law-VariationPoint.1"/>
-      <variationPoint xmi:type="duse:VariationPoint" xmi:id="SADuSE-Control Law-VariationPoint.2"/>
-      <variationPoint xmi:type="duse:VariationPoint" xmi:id="SADuSE-Control Law-VariationPoint.3"/>
-      <variationPoint xmi:type="duse:VariationPoint" xmi:id="SADuSE-Control Law-VariationPoint.4"/>
-      <variationPoint xmi:type="duse:VariationPoint" xmi:id="SADuSE-Control Law-VariationPoint.5"/>
+    <qualityMetric xmi:type="duse:QualityMetric" name="Control Overhead" xmi:id="SADuSE-Control Overhead"/>
+    <designDimension xmi:type="duse:DesignDimension" name="Control Law" instanceSelectionRule="var inputLength = input.length; var selected = new Array(); for (var i = 0; i &lt; inputLength; ++i) { if (input[i] instanceof QSADuseProfileProcessComponent) selected.push(input[i].base_Component); } selected;" xmi:id="SADuSE-Control Law">
+      <variationPoint xmi:type="duse:VariationPoint" name="Proportional" xmi:id="SADuSE-Control Law-Proportional"/>
+      <variationPoint xmi:type="duse:VariationPoint" name="Proportional-Integral" xmi:id="SADuSE-Control Law-Proportional-Integral"/>
+      <variationPoint xmi:type="duse:VariationPoint" name="Dynamic State Feedback" xmi:id="SADuSE-Control Law-Dynamic State Feedback"/>
+      <variationPoint xmi:type="duse:VariationPoint" name="Static State Feedback" xmi:id="SADuSE-Control Law-Static State Feedback"/>
+      <variationPoint xmi:type="duse:VariationPoint" name="Proportional-Integral-Derivative" xmi:id="SADuSE-Control Law-Proportional-Integral-Derivative"/>
+      <variationPoint xmi:type="duse:VariationPoint" name="Precompensated Static State Feedback" xmi:id="SADuSE-Control Law-Precompensated Static State Feedback"/>
     </designDimension>
     <designDimension xmi:type="duse:DesignDimension" name="Tuning Approach" xmi:id="SADuSE-Tuning Approach">
-      <variationPoint xmi:type="duse:VariationPoint" xmi:id="SADuSE-Tuning Approach-VariationPoint.0"/>
-      <variationPoint xmi:type="duse:VariationPoint" xmi:id="SADuSE-Tuning Approach-VariationPoint.1"/>
-      <variationPoint xmi:type="duse:VariationPoint" xmi:id="SADuSE-Tuning Approach-VariationPoint.2"/>
-      <variationPoint xmi:type="duse:VariationPoint" xmi:id="SADuSE-Tuning Approach-VariationPoint.3"/>
-      <variationPoint xmi:type="duse:VariationPoint" xmi:id="SADuSE-Tuning Approach-VariationPoint.4"/>
-      <variationPoint xmi:type="duse:VariationPoint" xmi:id="SADuSE-Tuning Approach-VariationPoint.5"/>
-      <variationPoint xmi:type="duse:VariationPoint" xmi:id="SADuSE-Tuning Approach-VariationPoint.6"/>
+      <variationPoint xmi:type="duse:VariationPoint" name="Cohen-Coon" xmi:id="SADuSE-Tuning Approach-Cohen-Coon"/>
+      <variationPoint xmi:type="duse:VariationPoint" name="CHR-20OS-DR" xmi:id="SADuSE-Tuning Approach-CHR-20OS-DR"/>
+      <variationPoint xmi:type="duse:VariationPoint" name="Ziegler-Nichols" xmi:id="SADuSE-Tuning Approach-Ziegler-Nichols"/>
+      <variationPoint xmi:type="duse:VariationPoint" name="CHR-20OS-RT" xmi:id="SADuSE-Tuning Approach-CHR-20OS-RT"/>
+      <variationPoint xmi:type="duse:VariationPoint" name="CHR-0OS-DR" xmi:id="SADuSE-Tuning Approach-CHR-0OS-DR"/>
+      <variationPoint xmi:type="duse:VariationPoint" name="CHR-0OS-RT" xmi:id="SADuSE-Tuning Approach-CHR-0OS-RT"/>
+      <variationPoint xmi:type="duse:VariationPoint" name="Linear Quadratic Regulator" xmi:id="SADuSE-Tuning Approach-Linear Quadratic Regulator"/>
     </designDimension>
     <designDimension xmi:type="duse:DesignDimension" name="Control Adaptation" xmi:id="SADuSE-Control Adaptation">
-      <variationPoint xmi:type="duse:VariationPoint" xmi:id="SADuSE-Control Adaptation-VariationPoint.0"/>
-      <variationPoint xmi:type="duse:VariationPoint" xmi:id="SADuSE-Control Adaptation-VariationPoint.1"/>
-      <variationPoint xmi:type="duse:VariationPoint" xmi:id="SADuSE-Control Adaptation-VariationPoint.2"/>
+      <variationPoint xmi:type="duse:VariationPoint" name="Gain Scheduling" xmi:id="SADuSE-Control Adaptation-Gain Scheduling"/>
+      <variationPoint xmi:type="duse:VariationPoint" name="Model Identification Adaptive Control (MIAC)" xmi:id="SADuSE-Control Adaptation-Model Identification Adaptive Control (MIAC)"/>
+      <variationPoint xmi:type="duse:VariationPoint" name="Fixed Gain (no adaptation)" xmi:id="SADuSE-Control Adaptation-Fixed Gain (no adaptation)"/>
     </designDimension>
     <designDimension xmi:type="duse:DesignDimension" name="MAPE Deployment" xmi:id="SADuSE-MAPE Deployment">
-      <variationPoint xmi:type="duse:VariationPoint" xmi:id="SADuSE-MAPE Deployment-VariationPoint.0"/>
-      <variationPoint xmi:type="duse:VariationPoint" xmi:id="SADuSE-MAPE Deployment-VariationPoint.1"/>
-      <variationPoint xmi:type="duse:VariationPoint" xmi:id="SADuSE-MAPE Deployment-VariationPoint.2"/>
+      <variationPoint xmi:type="duse:VariationPoint" name="Local Control + Shared Reference" xmi:id="SADuSE-MAPE Deployment-Local Control + Shared Reference"/>
+      <variationPoint xmi:type="duse:VariationPoint" name="Local Control + Shared Error" xmi:id="SADuSE-MAPE Deployment-Local Control + Shared Error"/>
+      <variationPoint xmi:type="duse:VariationPoint" name="Global Control" xmi:id="SADuSE-MAPE Deployment-Global Control"/>
     </designDimension>
   </duse:DesignSpace>
 </xmi:XMI>

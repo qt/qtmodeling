@@ -64,9 +64,10 @@ public:
     explicit QDuseVariationPointPrivate();
     virtual ~QDuseVariationPointPrivate();
 
+    QString name;
     QString rationale;
-    QString modelChange;
     QString preChangeValidationRule;
+    QString modelChange;
 };
 
 QT_END_NAMESPACE

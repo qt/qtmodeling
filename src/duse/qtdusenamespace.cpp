@@ -38,46 +38,9 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QDUSEDESIGNSPACE_P_H
-#define QDUSEDESIGNSPACE_P_H
-
-// Base class includes
-#include "private/qwrappedobject_p.h"
-
-#include "QtDuse/QDuseDesignSpace"
-
-// Qt includes
-#include "QtCore/QString"
-#include "QtCore/QList"
-#include "QtCore/QSet"
-
-QT_BEGIN_HEADER
+#include "qtdusenamespace.h"
 
 QT_BEGIN_NAMESPACE
 
-QT_MODULE(QtDuse)
-
-// Forward decls for function parameters
-class QDuseDesignDimension;
-class QDuseQualityMetric;
-class QDuseDesignSpace;
-
-class Q_DUSE_EXPORT QDuseDesignSpacePrivate : public QWrappedObjectPrivate
-{
-    Q_DECLARE_PUBLIC(QDuseDesignSpace)
-
-public:
-    explicit QDuseDesignSpacePrivate();
-    virtual ~QDuseDesignSpacePrivate();
-
-    QList<QDuseDesignDimension *> designDimensions;
-    QString name;
-    QSet<QDuseQualityMetric *> qualityMetrics;
-};
-
 QT_END_NAMESPACE
-
-QT_END_HEADER
-
-#endif // QDUSEDESIGNSPACE_P_H
 

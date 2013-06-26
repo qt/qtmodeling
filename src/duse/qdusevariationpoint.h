@@ -62,9 +62,10 @@ class Q_DUSE_EXPORT QDuseVariationPoint : public QWrappedObject
     Q_OBJECT
     Q_CLASSINFO("MetaModelPrefix", "QDuse")
 
+    Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString rationale READ rationale WRITE setRationale)
-    Q_PROPERTY(QString modelChange READ modelChange WRITE setModelChange)
     Q_PROPERTY(QString preChangeValidationRule READ preChangeValidationRule WRITE setPreChangeValidationRule)
+    Q_PROPERTY(QString modelChange READ modelChange WRITE setModelChange)
 
     Q_DISABLE_COPY(QDuseVariationPoint)
     Q_DECLARE_PRIVATE(QDuseVariationPoint)
@@ -74,12 +75,14 @@ public:
     virtual ~QDuseVariationPoint();
 
     // Attributes from QDuseVariationPoint
+    Q_INVOKABLE QString name() const;
+    Q_INVOKABLE void setName(QString name);
     Q_INVOKABLE QString rationale() const;
     Q_INVOKABLE void setRationale(QString rationale);
-    Q_INVOKABLE QString modelChange() const;
-    Q_INVOKABLE void setModelChange(QString modelChange);
     Q_INVOKABLE QString preChangeValidationRule() const;
     Q_INVOKABLE void setPreChangeValidationRule(QString preChangeValidationRule);
+    Q_INVOKABLE QString modelChange() const;
+    Q_INVOKABLE void setModelChange(QString modelChange);
 
     virtual void setPropertyData();
 

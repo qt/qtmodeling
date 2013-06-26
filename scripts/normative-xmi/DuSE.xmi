@@ -76,9 +76,9 @@
         <body>A design dimension captures a specific degree of freedom when designing architectures in the given application domain. A design dimension entails a set of variation points which denote alternative solutions for such degree of freedom. Optionally, a variation point may define validation rules which should return a true value if that variation point is to be considered valid for the corresponding input model. A variation point may also specify a set of other variation points which should be previously evaluated, defining a sort of design dimension dependency.</body>
       </ownedComment>
       <ownedAttribute xmi:type="uml:Property" visibility="public" name="name" xmi:id="DesignSpace-name">
-      <ownedComment xmi:type="uml:Comment" xmi:id="DesignSpace-name-_ownedComment.0" annotatedElement="DesignSpace-name">
-        <body>The design dimension's name.</body>
-      </ownedComment>
+        <ownedComment xmi:type="uml:Comment" xmi:id="DesignSpace-name-_ownedComment.0" annotatedElement="DesignSpace-name">
+          <body>The design dimension's name.</body>
+        </ownedComment>
         <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="uml:Property" visibility="public" name="instanceSelectionRule" xmi:id="DesignSpace-instanceSelectionRule">
@@ -116,6 +116,12 @@
       <ownedComment xmi:type="uml:Comment" xmi:id="VariationPoint-_ownedComment.0" annotatedElement="VariationPoint">
         <body>A variation point represents a specific solution for a given design dimension. A variation point entails validation rules which check for valid combinations of variation points and a script which defines the architectural changes to be enacted from such solution.</body>
       </ownedComment>
+      <ownedAttribute xmi:type="uml:Property" visibility="public" name="name" xmi:id="VariationPoint-name">
+        <ownedComment xmi:type="uml:Comment" xmi:id="VariationPoint-name-_ownedComment.0" annotatedElement="VariationPoint-name">
+          <body>The variation point's name.</body>
+        </ownedComment>
+        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+      </ownedAttribute>
       <ownedAttribute xmi:type="uml:Property" visibility="public" name="rationale" xmi:id="VariationPoint-rationale">
         <ownedComment xmi:type="uml:Comment" xmi:id="VariationPoint-rationale-_ownedComment.0" annotatedElement="VariationPoint-rationale">
           <body>The variation point's rationale.</body>
