@@ -168,9 +168,12 @@ QSet<QUmlProperty *> QUmlStructuredClassifier::parts() const
 {
     // This is a read-only derived association end
 
-    qWarning("QUmlStructuredClassifier::parts: to be implemented (this is a derived associationend)");
-
-    return QSet<QUmlProperty *>(); // change here to your derived return
+    Q_D(const QUmlStructuredClassifier);
+    QSet<QUmlProperty *> parts_;
+    foreach (QUmlProperty *property, d->ownedAttributes)
+        if (property->isComposite())
+            parts_.insert(property);
+    return parts_;
 }
 
 /*!

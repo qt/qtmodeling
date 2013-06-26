@@ -3,3 +3,4 @@
 - Fix XMI writing of models using imported elements/packages and/or applied profiles
 - Verify why QList<QObject *> cannot be directly passed to QML. Only QVariantList works by now
 - Investigate the use of qScriptRegisterSequenceMetaType also for QSets (see src/plugins/metamodels/duse/qdusemetamodel.cpp)
+- The property visibility, for attributes, when changing isn't presented in boldface in property editor

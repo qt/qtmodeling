@@ -563,20 +563,18 @@ bool QUmlProperty::isComposite() const
 {
     // This is a read-write derived attribute
 
-    qWarning("QUmlProperty::isComposite: to be implemented (this is a derived attribute)");
-
-    return bool(); // change here to your derived return
+    return aggregation() == QtUml::AggregationComposite;
 }
 
 void QUmlProperty::setComposite(bool isComposite)
 {
     // This is a read-write derived attribute
 
-    qWarning("QUmlProperty::setComposite: to be implemented (this is a derived attribute)");
-    Q_UNUSED(isComposite);
-
-    if (false) { // change to your derived change criteria
-        // change to your derived code
+    if (isComposite) {
+        setAggregation(QtUml::AggregationComposite);
+    }
+    else {
+        setAggregation(QtUml::AggregationNone);
     }
 }
 

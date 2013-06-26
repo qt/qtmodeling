@@ -65,4 +65,16 @@ UmlElement {
         label.text = element.name
         label.font.italic = element.isAbstract
     }
+    Row {
+        width: parent.width
+        spacing: (parent.width - 14*ports.length)/(ports.length-1)
+        anchors { bottom: parent.bottom; bottomMargin: -7 }
+        Repeater {
+            model: ports.length
+            Rectangle {
+                border.width: 1
+                width: 14; height: 14
+            }
+        }
+    }
 }

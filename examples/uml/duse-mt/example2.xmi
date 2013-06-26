@@ -6,6 +6,9 @@
     </packageImport>
     <packagedElement xmi:type="uml:Component" name="Component1" xmi:id="MyModel-Component1">
       <ownedAttribute xmi:type="uml:Port" visibility="public" name="port1" xmi:id="MyModel-Component1-port1"/>
+      <ownedAttribute xmi:type="uml:Port" visibility="public" name="port2" xmi:id="MyModel-Component1-port2"/>
+      <ownedAttribute xmi:type="uml:Port" visibility="public" name="port3" xmi:id="MyModel-Component1-port3"/>
+      <ownedAttribute xmi:type="uml:Port" visibility="public" name="port4" xmi:id="MyModel-Component1-port4"/>
       <ownedConnector xmi:type="uml:Connector" visibility="public" name="connector" xmi:id="MyModel-Component1-connector">
         <end xmi:type="uml:ConnectorEnd" xmi:id="MyModel-Component1-connector-ConnectorEnd.0">
           <role xmi:idref="MyModel-Component1-port1"/>
@@ -17,7 +20,7 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Component" name="Component2" xmi:id="MyModel-Component2">
       <ownedAttribute xmi:type="uml:Port" visibility="public" name="port2" xmi:id="MyModel-Component2-port2"/>
-      <ownedAttribute xmi:type="uml:Property" visibility="public" name="name" xmi:id="MyRootPackage-Package1-Student-name">
+      <ownedAttribute xmi:type="uml:Property" visibility="public" name="name" aggregation="composite" xmi:id="MyRootPackage-Package1-Student-name">
         <type href=":/metamodels/PrimitiveTypes.xmi#String"/>
       </ownedAttribute>
     </packagedElement>
