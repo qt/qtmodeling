@@ -46,8 +46,9 @@ UmlElement {
         anchors.top: parent.top
         Text {
             id: label
+            text: element.name
             anchors.centerIn: parent
-            font { family: "Korolev" }
+            font { family: "Korolev"; italic: element.isAbstract }
         }
     }
     UmlSlot {
@@ -56,6 +57,7 @@ UmlElement {
         height: (parent.height - nameSlot.height)/2
         ListView {
             id: attributesView
+            model: attributes
             anchors { fill: parent; margins: 4 }
             delegate: Text {
                 text: visibility(modelData.visibility) + modelData.name + ": " + (modelData.type ? modelData.type.name:"<no type>")
@@ -68,6 +70,7 @@ UmlElement {
         anchors { top: attributeSlot.bottom; topMargin: -1; bottom: parent.bottom }
         ListView {
             id: operationsView
+            model: operations
             anchors { fill: parent; margins: 4 }
             delegate: Text {
                 text: visibility(modelData.visibility) + modelData.name
@@ -75,13 +78,6 @@ UmlElement {
             }
         }
     }
-    Component.onCompleted: {
-        label.text = element.name
-        label.font.italic = element.isAbstract
-        attributesView.model = attributes
-        operationsView.model = operations
-    }
-
     function visibility(visibilityEnum)
     {
         switch (visibilityEnum) {

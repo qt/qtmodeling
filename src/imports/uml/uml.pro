@@ -5,6 +5,7 @@ QML_FILES = \
     UmlElement.qml \
     UmlSlot.qml \
     UmlClass.qml \
-    UmlComponent.qml
+    UmlComponent.qml \
+    UmlProperty.qml
 
 load(qml_module)

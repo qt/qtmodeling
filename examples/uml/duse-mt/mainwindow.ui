@@ -34,7 +34,7 @@
     <item row="0" column="0">
      <widget class="QTabWidget" name="centralWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="tabWelcome">
        <attribute name="title">
@@ -77,6 +77,28 @@
         </property>
         <item row="0" column="0">
          <widget class="QWidget" name="modelViewWidget" native="true"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tabDesignSpaceLocationView">
+       <attribute name="title">
+        <string>Design Space Location View</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_15">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item row="0" column="0">
+         <widget class="QWidget" name="designSpaceLocationViewWidget" native="true"/>
         </item>
        </layout>
       </widget>
@@ -147,8 +169,14 @@
      <string>&amp;Window</string>
     </property>
    </widget>
+   <widget class="QMenu" name="menu_Actions">
+    <property name="title">
+     <string>&amp;Actions</string>
+    </property>
+   </widget>
    <addaction name="menu_File"/>
    <addaction name="menu_Edit"/>
+   <addaction name="menu_Actions"/>
    <addaction name="menu_Window"/>
    <addaction name="menu_Help"/>
   </widget>

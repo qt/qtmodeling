@@ -51,8 +51,6 @@
 #include <QtCore/QPluginLoader>
 #include <QtCore/QCoreApplication>
 
-#include <QtCore/QDebug>
-
 QT_BEGIN_NAMESPACE
 
 QXmiReaderPrivate::QXmiReaderPrivate()
@@ -226,7 +224,6 @@ QList<QWrappedObject *> QXmiReader::readFile(QIODevice *device, QString imported
                             enumName = enumName.left(1).toUpper() + enumName.mid(1);
                             QString propertyName = QString::fromLatin1(metaProperty.name());
                             enumName.prepend(propertyName.left(1).toUpper() + propertyName.mid(1));
-                            qDebug() << "value: " << enumName;
                             if (!wrappedObject->setProperty(attribute.name().toString().toLatin1(), enumName))
                                 d->errors << QString::fromLatin1("Error when setting property '%1' of object with id '%2'.").arg(attribute.name().toString()).arg(id);
                         }

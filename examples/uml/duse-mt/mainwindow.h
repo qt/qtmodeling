@@ -51,6 +51,7 @@
 class QDialog;
 class QListView;
 class QQuickView;
+class QQuickItem;
 class QQmlComponent;
 
 namespace Ui {
@@ -90,10 +91,9 @@ private Q_SLOTS:
 
     void metaModelChanged(QString newMetaModel);
     void wrappedObjectChanged(QWrappedObject *wrappedObject);
-    void addToView(QWrappedObject *wrappedObject);
+    void addToView(QWrappedObject *wrappedObject, QQuickItem *parent = 0);
 
     void dckMetricsVisibilityChanged(bool visible);
-    void continueLoading();
 
 protected:
     bool eventFilter(QObject *obj, QEvent *event);

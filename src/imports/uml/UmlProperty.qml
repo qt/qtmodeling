@@ -3,7 +3,7 @@
 ** Copyright (C) 2013 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/legal
 **
-** This file is part of the QtWrappedObjectsWidgets module of the Qt Toolkit.
+** This file is part of the QtUml module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** Commercial License Usage
@@ -38,64 +38,40 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QWRAPPEDOBJECTVIEW_H
-#define QWRAPPEDOBJECTVIEW_H
+import QtQuick 2.0
 
-#include <QtCore/QModelIndex>
-
-#include <QtWrappedObjectsWidgets/QtWrappedObjectsWidgetsGlobal>
-
-#include <QtWidgets/QWidget>
-
-QT_BEGIN_HEADER
-
-QT_BEGIN_NAMESPACE
-
-QT_MODULE(QtWrappedObjectsWidgets)
-
-class QAbstractItemModel;
-class QItemSelection;
-class QQuickItem;
-class QWrappedObject;
-
-class QWrappedObjectViewPrivate;
-
-class Q_WRAPPEDOBJECTSWIDGETS_EXPORT QWrappedObjectView : public QWidget
-{
-    Q_OBJECT
-
-    Q_DISABLE_COPY(QWrappedObjectView)
-    Q_DECLARE_PRIVATE(QWrappedObjectView)
-
-public:
-    explicit QWrappedObjectView(QWidget *parent = 0, Qt::WindowFlags f = 0);
-
-public Q_SLOTS:
-    virtual void setModel(QAbstractItemModel *model);
-    void updateSelected();
-
-Q_SIGNALS:
-    void wrappedObjectChanged(QWrappedObject *selectedWrappedObject, QModelIndex index = QModelIndex());
-    void addToView(QWrappedObject *selectedWrappedObject, QQuickItem *parent = 0);
-
-protected:
-     void contextMenuEvent(QContextMenuEvent *event);
-
-private Q_SLOTS:
-    void handleAddMethod();
-    void addElementToView();
-    void deleteObject();
-    void modelReset();
-    void rowsInserted(const QModelIndex &parent, int first);
-    void selectionChanged(const QItemSelection &selected);
-
-private:
-    void removeObjectUse(QWrappedObject *container, QWrappedObject *usedObject);
-};
-
-QT_END_NAMESPACE
-
-QT_END_HEADER
-
-#endif // QWRAPPEDOBJECTVIEW_H
-
+UmlElement {
+    UmlSlot {
+        id: nameSlot
+        anchors.top: parent.top
+        Text {
+            id: label
+            text: element.name
+            anchors.centerIn: parent
+            font { family: "Korolev"; font.italic: element.isAbstract }
+        }
+        Rectangle {
+            border.width: 1
+            width: 18; height: 18
+            anchors { right: parent.right; rightMargin: 6; verticalCenter: parent.verticalCenter }
+            Rectangle { border.width: 1; width: 12; height: 5; x: -6; y: 3 }
+            Rectangle { border.width: 1; width: 12; height: 5; x: -6; y: 10 }
+        }
+    }
+    UmlSlot {
+        id: partSlot
+        anchors { top: nameSlot.bottom; topMargin: -1; bottom: parent.bottom }
+    }
+    Row {
+        width: parent.width
+        spacing: (parent.width - 14*ports.length)/(ports.length-1)
+        anchors { bottom: parent.bottom; bottomMargin: -7 }
+        Repeater {
+            model: ports.length
+            Rectangle {
+                border.width: 1
+                width: 14; height: 14
+            }
+        }
+    }
+}
