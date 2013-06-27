@@ -72,7 +72,7 @@ public:
 
     QList<QDuseDesignDimension *> designDimensions;
     QString name;
-    QSet<QDuseQualityMetric *> qualityMetrics;
+    QList<QDuseQualityMetric *> qualityMetrics;
 };
 
 QT_END_NAMESPACE

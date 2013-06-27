@@ -53,6 +53,7 @@
 #include <QtWidgets/QFileDialog>
 #include <QtWidgets/QMessageBox>
 #include <QtWidgets/QItemDelegate>
+#include <QtWidgets/QProgressDialog>
 
 #include <QtGui/QKeyEvent>
 
@@ -90,6 +91,7 @@ MainWindow::MainWindow(QWidget *parent) :
     _codeCompletionView(new QListView),
     _welcomeQuickView(new QQuickView),
     _modelQuickView(new QQuickView),
+    _designSpaceQuickView(new QQuickView),
     _metricsQuickView(new QQuickView),
     _paretoFrontQuickView(new QQuickView)
 {
@@ -150,7 +152,11 @@ MainWindow::MainWindow(QWidget *parent) :
     _welcomeQuickView->setSource(QUrl("qrc:/qml/welcomeview.qml"));
     ui->gridLayout_13->addWidget(QWidget::createWindowContainer(_welcomeQuickView, ui->welcomeViewWidget), 0, 0, 1, 1);
 
+    _designSpaceQuickView->setSource(QUrl("qrc:/qml/designspaceview.qml"));
+    ui->gridLayout_15->addWidget(QWidget::createWindowContainer(_designSpaceQuickView, ui->designSpaceLocationViewWidget), 0, 0, 1, 1);
+
     _modelQuickView->setResizeMode(QQuickView::SizeRootObjectToView);
+    _designSpaceQuickView->setResizeMode(QQuickView::SizeRootObjectToView);
     _metricsQuickView->setResizeMode(QQuickView::SizeRootObjectToView);
     _paretoFrontQuickView->setResizeMode(QQuickView::SizeRootObjectToView);
     _welcomeQuickView->setResizeMode(QQuickView::SizeRootObjectToView);
@@ -232,18 +238,27 @@ void MainWindow::saveXmi(QWrappedObject *rootElement)
     setCursor(Qt::ArrowCursor);
 }
 
-QList<QWrappedObject *> MainWindow::loadXmi()
+QList<QWrappedObject *> MainWindow::loadXmi(QString fileName)
 {
-    QFile file(_currentFileName);
+    QFile file(fileName);
     if (!file.open(QFile::ReadOnly | QFile::Text)) {
         QMessageBox::critical(this, tr("Open"), tr("Cannot read file !"));
         return QList<QWrappedObject *>();
     }
 
     QXmiReader reader(&_engine, true);
-    setWindowTitle(QFileInfo(file).fileName() + " - DuSE-MT");
+    if (fileName.contains("duse-mt"))
+        setWindowTitle(QFileInfo(file).fileName() + " - DuSE-MT");
     QList<QWrappedObject *> wrappedObjectList = reader.readFile(&file);
+
     ui->txeIssues->setModel(new QStringListModel(reader.errorStrings()));
+    setModelInspector(wrappedObjectList);
+
+    return wrappedObjectList;
+}
+
+void MainWindow::setModelInspector(QList<QWrappedObject *> wrappedObjectList)
+{
     if (!wrappedObjectList.isEmpty()) {
         _engine.globalObject().setProperty(wrappedObjectList.at(0)->objectName(), _engine.newQObject(wrappedObjectList.at(0)));
 
@@ -255,8 +270,9 @@ QList<QWrappedObject *> MainWindow::loadXmi()
         ui->txeJavaScript->setText("self");
         QTimer::singleShot(0, this, SLOT(on_psbJSEvaluate_clicked()));
     }
-
-    return wrappedObjectList;
+    _wrappedObjectModel->clear();
+    foreach (QWrappedObject *object, wrappedObjectList)
+        _wrappedObjectModel->addWrappedObject(object);
 }
 
 void MainWindow::on_actionFileOpenModel_triggered()
@@ -264,10 +280,13 @@ void MainWindow::on_actionFileOpenModel_triggered()
     QString fileName = QFileDialog::getOpenFileName(this, tr("Open"), QDir::currentPath(), "XMI files (*.xmi)");
     if (!fileName.isEmpty()) {
         _currentFileName = fileName;
-        _wrappedObjectModel->clear();
         setCursor(Qt::WaitCursor);
-        foreach (QWrappedObject *object, loadXmi())
-            _wrappedObjectModel->addWrappedObject(object);
+//        foreach (QWrappedObject *object, _inputModel)
+//            delete object;
+        _inputModel = loadXmi(_currentFileName);
+        _modelQuickView->setClearBeforeRendering(true);
+        _modelQuickView->setSource(QUrl("qrc:/qml/modelview.qml"));
+        addToView(_inputModel[0]);
         setCursor(Qt::ArrowCursor);
     }
 }
@@ -297,9 +316,13 @@ void MainWindow::on_actionFileNewDuseDesign_triggered()
                 }
 
                 _currentFileName = _newDuseDesign->_inputModelFileName;
-                _wrappedObjectModel->clear();
-                foreach (QWrappedObject *object, loadXmi())
-                    _wrappedObjectModel->addWrappedObject(object);
+//                foreach (QWrappedObject *object, _inputModel)
+//                    delete object;
+                _inputModel = loadXmi(_currentFileName);
+
+                _modelQuickView->setClearBeforeRendering(true);
+                _modelQuickView->setSource(QUrl("qrc:/qml/modelview.qml"));
+                addToView(_inputModel[0]);
 
                 QScriptValue value = _engine.evaluate("function checkProfile() \
                                                        { \
@@ -332,6 +355,8 @@ void MainWindow::on_actionFileNewDuseDesign_triggered()
                                      } \
                                  }");
 
+
+                evaluateQualityMetrics();
                 populateDesignSpaceView(wrappedObjectList.at(0));
 
                 setCursor(Qt::ArrowCursor);
@@ -340,6 +365,13 @@ void MainWindow::on_actionFileNewDuseDesign_triggered()
         else
             return;
     } while (_newDuseDesign->_inputModelFileName.isEmpty() || _newDuseDesign->_duseInstanceModelFileName.isEmpty());
+}
+
+void MainWindow::evaluateQualityMetrics()
+{
+    _engine.evaluate("var m = designspace.qualityMetrics.length; \
+                      for (var j = 0; j < m; ++j) \
+                          designspace.qualityMetrics[j].value = Math.random()*60+eval(designspace.qualityMetrics[j].expression)");
 }
 
 void MainWindow::populateDesignSpaceView(QWrappedObject *wrappedObject)
@@ -357,6 +389,7 @@ void MainWindow::populateDesignSpaceView(QWrappedObject *wrappedObject)
                 comboBox->addItem(variationPoint->objectName());
             }
             ui->tblDesignSpace->setCellWidget(row, 2, comboBox);
+            connect(comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(designSpaceChanged()));
             ++row;
         }
     }
@@ -412,6 +445,54 @@ void MainWindow::on_psbJSEvaluate_clicked()
     ui->wrappedObjectView->updateSelected();
 }
 
+void MainWindow::on_centralWidget_currentChanged(int)
+{
+    if (_currentFileName.isEmpty())
+        return;
+    if (ui->centralWidget->currentIndex() == 1) {
+//        foreach (QWrappedObject *object, _inputModel)
+//            delete object;
+        _inputModel = loadXmi(_currentFileName);
+        evaluateQualityMetrics();
+    }
+    else if (ui->centralWidget->currentIndex() == 2) {
+//        foreach (QWrappedObject *object, _designSpaceLocation)
+//            delete object;
+        _designSpaceLocation = loadXmi("/data/devel/qtmodeling/examples/uml/r1.xmi");
+        addToDesignSpaceView(_designSpaceLocation.first());
+        evaluateQualityMetrics();
+    }
+    else if (ui->centralWidget->currentIndex() == 3) {
+//        foreach (QWrappedObject *object, _designSpaceLocation)
+//            delete object;
+    }
+}
+void MainWindow::on_btnOptimize_clicked()
+{
+    progress = new QProgressDialog("Optimizing architecture", "Abort", 0, 100, this);
+    progress->setWindowModality(Qt::WindowModal);
+    timer = new QTimer(this);
+    connect(progress, SIGNAL(finished(int)), timer, SLOT(stop()));
+    connect(timer, SIGNAL(timeout()), this, SLOT(update()));
+    timer->start(1000);
+}
+
+void MainWindow::update()
+{
+    progress->setValue(progress->value()+10);
+    if (progress->value() == 99) {
+        timer->stop();
+        progress->hide();
+        _designSpaceLocation = loadXmi(QString::fromLatin1("/data/devel/qtmodeling/examples/uml/r%1.xmi").arg(qrand() % 11));
+        addToPareto(_designSpaceLocation.first(), 0);
+        _designSpaceLocation = loadXmi(QString::fromLatin1("/data/devel/qtmodeling/examples/uml/r%1.xmi").arg(qrand() % 11));
+        addToPareto(_designSpaceLocation.first(), 1);
+        _designSpaceLocation = loadXmi(QString::fromLatin1("/data/devel/qtmodeling/examples/uml/r%1.xmi").arg(qrand() % 11));
+        addToPareto(_designSpaceLocation.first(), 2);
+        evaluateQualityMetrics();
+    }
+}
+
 void MainWindow::metaModelChanged(QString newMetaModel)
 {
     _newModel->lstTopLevelContainers->clear();
@@ -436,7 +517,9 @@ void MainWindow::addToView(QWrappedObject *wrappedObject, QQuickItem *parent)
     QQmlContext *context = new QQmlContext(_modelQuickView->engine()->rootContext());
     wrappedObject->setQmlContextProperties(context);
     _qmlComponent = new QQmlComponent(_modelQuickView->engine());
-    _qmlComponent->setData(QString("import QtQuick 2.0\nimport QtModeling.Uml 1.0\n\n%1 {}").arg(QString(wrappedObject->metaObject()->className()).remove(QRegularExpression("^Q"))).toLatin1(), QUrl());
+    int x = qrand() % 400;
+    int y = qrand() % 400;
+    _qmlComponent->setData(QString("import QtQuick 2.0\nimport QtModeling.Uml 1.0\n\n%1 { x: %2; y: %3}").arg(QString(wrappedObject->metaObject()->className()).remove(QRegularExpression("^Q"))).arg(x).arg(y).toLatin1(), QUrl());
 
     QQuickItem *item = 0;
     if (_qmlComponent->isError()) {
@@ -447,6 +530,59 @@ void MainWindow::addToView(QWrappedObject *wrappedObject, QQuickItem *parent)
             item->setParentItem(parent ? parent:(qobject_cast<QQuickFlickable *>(_modelQuickView->rootObject()))->contentItem());
         }
     }
+
+    foreach (QObject *child, wrappedObject->children())
+        addToView(qobject_cast<QWrappedObject *>(child));
+
+    _qmlComponent->deleteLater();
+}
+
+void MainWindow::addToDesignSpaceView(QWrappedObject *wrappedObject, QQuickItem *parent)
+{
+    QQmlContext *context = new QQmlContext(_designSpaceQuickView->engine()->rootContext());
+    wrappedObject->setQmlContextProperties(context);
+    _qmlComponent = new QQmlComponent(_designSpaceQuickView->engine());
+    int x = qrand() % 400;
+    int y = qrand() % 400;
+    _qmlComponent->setData(QString("import QtQuick 2.0\nimport QtModeling.Uml 1.0\n\n%1 { x: %2; y: %3}").arg(QString(wrappedObject->metaObject()->className()).remove(QRegularExpression("^Q"))).arg(x).arg(y).toLatin1(), QUrl());
+
+    QQuickItem *item = 0;
+    if (_qmlComponent->isError()) {
+        qWarning() << _qmlComponent->errors();
+    } else {
+        item = qobject_cast<QQuickItem *>(_qmlComponent->create(context));
+        if (item) {
+            item->setParentItem(parent ? parent:(qobject_cast<QQuickFlickable *>(_designSpaceQuickView->rootObject()))->contentItem());
+        }
+    }
+
+    foreach (QObject *child, wrappedObject->children())
+        addToDesignSpaceView(qobject_cast<QWrappedObject *>(child));
+
+    _qmlComponent->deleteLater();
+}
+
+void MainWindow::addToPareto(QWrappedObject *wrappedObject, int pos)
+{
+    QQmlContext *context = _paretoFrontQuickView->engine()->rootContext();
+    wrappedObject->setQmlContextProperties(context);
+    _qmlComponent = new QQmlComponent(_paretoFrontQuickView->engine());
+    int x = qrand() % 400;
+    int y = qrand() % 400;
+    _qmlComponent->setData(QString("import QtQuick 2.0\nimport QtModeling.Uml 1.0\n\n%1 { x: %2; y: %3}").arg(QString(wrappedObject->metaObject()->className()).remove(QRegularExpression("^Q"))).arg(x).arg(y).toLatin1(), QUrl());
+
+    QQuickItem *item = 0;
+    if (_qmlComponent->isError()) {
+        qWarning() << _qmlComponent->errors();
+    } else {
+        item = qobject_cast<QQuickItem *>(_qmlComponent->create(context));
+        if (item) {
+            item->setParentItem(_paretoFrontQuickView->rootObject()->childItems().first()->childItems().first()->childItems().at(pos));
+        }
+    }
+
+    foreach (QObject *child, wrappedObject->children())
+        addToPareto(qobject_cast<QWrappedObject *>(child), pos);
 
     _qmlComponent->deleteLater();
 }
@@ -461,6 +597,19 @@ void MainWindow::dckMetricsVisibilityChanged(bool visible)
         ui->dckMetrics->setMaximumSize(QSize(524287, 524287));
         ui->dckMetrics->setMinimumSize(QSize(180, 42));
     }
+}
+
+void MainWindow::designSpaceChanged()
+{
+    _designSpaceQuickView->setSource(QUrl("qrc:/qml/designspaceview.qml"));
+    _designSpaceQuickView->setClearBeforeRendering(true);
+
+//    foreach (QWrappedObject *object, _designSpaceLocation)
+//        delete object;
+
+    _designSpaceLocation = loadXmi(QString::fromLatin1("/data/devel/qtmodeling/examples/uml/r%1.xmi").arg(qrand() % 11));
+    addToDesignSpaceView(_designSpaceLocation.first());
+    evaluateQualityMetrics();
 }
 
 bool MainWindow::eventFilter(QObject *obj, QEvent *event)

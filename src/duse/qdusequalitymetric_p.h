@@ -66,6 +66,7 @@ public:
 
     QString expression;
     QString name;
+    qreal value;
 };
 
 QT_END_NAMESPACE

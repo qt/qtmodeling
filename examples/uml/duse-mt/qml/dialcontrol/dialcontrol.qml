@@ -55,6 +55,7 @@ Rectangle {
         snapMode: ListView.SnapOneItem;
         delegate: Dial {
             label: modelData.name;
+            value: modelData.value;
         }
     }
     Rectangle {

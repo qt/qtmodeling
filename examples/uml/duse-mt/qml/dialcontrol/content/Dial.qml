@@ -43,6 +43,7 @@ import QtQuick 2.0
 Item {
     width: view.width; height: 188
     property alias label: label.text
+    property alias value: root.value
     Item {
         id: root
         property real value : 0

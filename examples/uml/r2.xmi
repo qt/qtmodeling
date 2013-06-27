@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.omg.org/spec/UML/20110701" xmlns:mofext="http://www.omg.org/spec/MOF/20110701" xmlns:SADuSEProfile="http://liveblue.wordpress.com/SADuSEProfile">
+  <uml:Model name="MyModel" xmi:id="MyModel">
+    <packageImport xmi:type="uml:PackageImport" xmi:id="_PackageImport.0">
+      <importedPackage href=":/metamodels/PrimitiveTypes.xmi#_0"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Component" name="StaticStateController" xmi:id="MyModel-PIDController">
+      <ownedAttribute xmi:type="uml:Port" visibility="public" name="sensor" xmi:id="MyModel-PIDController-sensor"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Component" name="Actuator" xmi:id="MyModel-Actuator">
+      <ownedAttribute xmi:type="uml:Port" visibility="public" name="parametricActuator" xmi:id="MyModel-Actuator-parametricActuator"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Component" name="Component1" xmi:id="MyModel-Component1">
+      <ownedAttribute xmi:type="uml:Port" visibility="public" name="port4" xmi:id="MyModel-Component1-port4"/>
+      <ownedAttribute xmi:type="uml:Property" aggregation="composite" type="MyModel-Component2" visibility="public" name="c2" xmi:id="MyModel-Component1-c2"/>
+      <ownedAttribute xmi:type="uml:Property" aggregation="composite" type="MyModel-Component2" visibility="public" name="c3" xmi:id="MyModel-Component1-c3"/>
+      <ownedConnector xmi:type="uml:Connector" visibility="public" name="connector" xmi:id="MyModel-Component1-connector">
+        <end xmi:type="uml:ConnectorEnd" xmi:id="MyModel-Component1-connector-ConnectorEnd.0">
+          <role xmi:idref="MyModel-Component1-port1"/>
+        </end>
+        <end xmi:type="uml:ConnectorEnd" xmi:id="MyModel-Component1-connector-ConnectorEnd.1">
+          <role xmi:idref="MyModel-Component2-port2"/>
+        </end>
+      </ownedConnector>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Component" name="Component2" xmi:id="MyModel-Component2">
+      <ownedAttribute xmi:type="uml:Port" visibility="public" name="port2" xmi:id="MyModel-Component2-port2"/>
+      <ownedAttribute xmi:type="uml:Port" visibility="public" name="port2" xmi:id="MyModel-Component2-port2"/>
+      <ownedAttribute xmi:type="uml:Port" visibility="public" name="port2" xmi:id="MyModel-Component2-port2"/>
+      <ownedAttribute xmi:type="uml:Property" visibility="public" name="name" aggregation="composite" xmi:id="MyRootPackage-Package1-Student-name">
+        <type href=":/metamodels/PrimitiveTypes.xmi#String"/>
+      </ownedAttribute>
+    </packagedElement>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:applyingPackage="MyModel" xmi:id="Component2ProfileApplication">
+      <appliedProfile xmi:type="uml:Profile" xmi:applyingPackage="Component2ProfileApplication" href=":/metamodels/SADuSEProfile.xmi#SADuSEProfile"/>
+    </profileApplication>
+  </uml:Model>
+  <SADuSEProfile:ProcessComponent xmi:id="Component2ProcessComponent" base_Component="MyModel-Component2"/>
+</xmi:XMI>

@@ -70,7 +70,7 @@ class Q_DUSE_EXPORT QDuseDesignSpace : public QWrappedObject
 
     Q_PROPERTY(QList<QDuseDesignDimension *> designDimensions READ designDimensions)
     Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QSet<QDuseQualityMetric *> qualityMetrics READ qualityMetrics)
+    Q_PROPERTY(QList<QDuseQualityMetric *> qualityMetrics READ qualityMetrics)
 
     Q_DISABLE_COPY(QDuseDesignSpace)
     Q_DECLARE_PRIVATE(QDuseDesignSpace)
@@ -85,7 +85,7 @@ public:
     Q_INVOKABLE void removeDesignDimension(QDuseDesignDimension *designDimension);
     Q_INVOKABLE QString name() const;
     Q_INVOKABLE void setName(QString name);
-    Q_INVOKABLE QSet<QDuseQualityMetric *> qualityMetrics() const;
+    Q_INVOKABLE QList<QDuseQualityMetric *> qualityMetrics() const;
     Q_INVOKABLE void addQualityMetric(QDuseQualityMetric *qualityMetric);
     Q_INVOKABLE void removeQualityMetric(QDuseQualityMetric *qualityMetric);
 

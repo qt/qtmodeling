@@ -3,7 +3,7 @@
 ** Copyright (C) 2013 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/legal
 **
-** This file is part of the QtDuse module of the Qt Toolkit.
+** This file is part of the QtUml module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** Commercial License Usage
@@ -38,61 +38,21 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QDUSEQUALITYMETRIC_H
-#define QDUSEQUALITYMETRIC_H
+import QtQuick 2.0
 
-#include <QtDuse/QtDuseGlobal>
-
-// Base class includes
-#include <QtWrappedObjects/QWrappedObject>
-
-// Qt includes
-#include <QtCore/QString>
-
-QT_BEGIN_HEADER
-
-QT_BEGIN_NAMESPACE
-
-QT_MODULE(QtDuse)
-
-class QDuseQualityMetricPrivate;
-
-class Q_DUSE_EXPORT QDuseQualityMetric : public QWrappedObject
-{
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QDuse")
-
-    Q_PROPERTY(QString expression READ expression WRITE setExpression)
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(qreal value READ value WRITE setValue NOTIFY valueChanged)
-
-    Q_DISABLE_COPY(QDuseQualityMetric)
-    Q_DECLARE_PRIVATE(QDuseQualityMetric)
-
-public:
-    Q_INVOKABLE explicit QDuseQualityMetric(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QDuseQualityMetric();
-
-    // Attributes from QDuseQualityMetric
-    Q_INVOKABLE QString expression() const;
-    Q_INVOKABLE void setExpression(QString expression);
-    Q_INVOKABLE QString name() const;
-    Q_INVOKABLE void setName(QString name);
-    Q_INVOKABLE qreal value() const;
-    Q_INVOKABLE void setValue(qreal value);
-
-    virtual void setPropertyData();
-
-Q_SIGNALS:
-    void valueChanged(qreal value);
-
-protected:
-    explicit QDuseQualityMetric(QDuseQualityMetricPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-};
-
-QT_END_NAMESPACE
-
-QT_END_HEADER
-
-#endif // QDUSEQUALITYMETRIC_H
-
+Flickable {
+    id: flickable
+    width: 200; height: 200
+    contentHeight: 2890
+    contentWidth: 1540
+    rightMargin: 0; leftMargin: 0; topMargin: 0; bottomMargin: 0
+    MouseArea {
+        anchors.fill: parent
+        onPressed: parent.focus = true;
+    }
+    Image {
+        anchors.fill: parent
+        fillMode: Image.Tile
+        source: "grid.png"
+    }
+}

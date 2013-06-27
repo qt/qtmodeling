@@ -148,7 +148,7 @@ void QDuseDesignSpace::setName(QString name)
 /*!
     The quality metrics defined for the design space.
  */
-QSet<QDuseQualityMetric *> QDuseDesignSpace::qualityMetrics() const
+QList<QDuseQualityMetric *> QDuseDesignSpace::qualityMetrics() const
 {
     // This is a read-write attribute
 
@@ -162,7 +162,7 @@ void QDuseDesignSpace::addQualityMetric(QDuseQualityMetric *qualityMetric)
 
     Q_D(QDuseDesignSpace);
     if (!d->qualityMetrics.contains(qualityMetric)) {
-        d->qualityMetrics.insert(qualityMetric);
+        d->qualityMetrics.append(qualityMetric);
         qTopLevelWrapper(qualityMetric)->setParent(qTopLevelWrapper(this));
     }
 }
@@ -173,7 +173,7 @@ void QDuseDesignSpace::removeQualityMetric(QDuseQualityMetric *qualityMetric)
 
     Q_D(QDuseDesignSpace);
     if (d->qualityMetrics.contains(qualityMetric)) {
-        d->qualityMetrics.remove(qualityMetric);
+        d->qualityMetrics.removeAll(qualityMetric);
         qTopLevelWrapper(qualityMetric)->setParent(0);
     }
 }

@@ -64,6 +64,7 @@ namespace Ui {
 class QWrappedObject;
 class QMetaModelPlugin;
 class QWrappedObjectModel;
+class QProgressDialog;
 
 class NewDuseDesign;
 
@@ -79,6 +80,7 @@ public:
     void readSettings();
 
 private Q_SLOTS:
+    void update();
     void on_actionFileNewModel_triggered();
     void on_actionFileOpenModel_triggered();
     void on_actionFileNewDuseDesign_triggered();
@@ -88,12 +90,19 @@ private Q_SLOTS:
     void on_actionHelpAboutPlugins_triggered();
     void on_actionHelpAboutDuSEMT_triggered();
     void on_psbJSEvaluate_clicked();
+    void on_centralWidget_currentChanged(int);
+    void on_btnOptimize_clicked();
+    void evaluateQualityMetrics();
+    void setModelInspector(QList<QWrappedObject *> wrappedObjectList);
 
     void metaModelChanged(QString newMetaModel);
     void wrappedObjectChanged(QWrappedObject *wrappedObject);
     void addToView(QWrappedObject *wrappedObject, QQuickItem *parent = 0);
+    void addToDesignSpaceView(QWrappedObject *wrappedObject, QQuickItem *parent = 0);
+    void addToPareto(QWrappedObject *wrappedObject, int pos);
 
     void dckMetricsVisibilityChanged(bool visible);
+    void designSpaceChanged();
 
 protected:
     bool eventFilter(QObject *obj, QEvent *event);
@@ -101,11 +110,13 @@ protected:
 private:
     void loadPlugins();
     void saveXmi(QWrappedObject *rootElement);
-    QList<QWrappedObject *> loadXmi();
+    QList<QWrappedObject *> loadXmi(QString fileName = 0);
     void populateDesignSpaceView(QWrappedObject *wrappedObject);
 
     Ui::MainWindow *ui;
     QWrappedObjectModel *_wrappedObjectModel;
+    QList<QWrappedObject *> _inputModel;
+    QList<QWrappedObject *> _designSpaceLocation;
 
     QString _currentFileName;
     QHash< QString, QPair<QMetaModelPlugin *, QJsonObject> > _loadedPlugins;
@@ -122,8 +133,12 @@ private:
     QQmlComponent *_qmlComponent;
     QQuickView *_welcomeQuickView;
     QQuickView *_modelQuickView;
+    QQuickView *_designSpaceQuickView;
     QQuickView *_metricsQuickView;
     QQuickView *_paretoFrontQuickView;
+
+    QProgressDialog *progress;
+    QTimer *timer;
 };
 
 #endif // MAINWINDOW_H

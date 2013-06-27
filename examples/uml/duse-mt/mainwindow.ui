@@ -34,7 +34,7 @@
     <item row="0" column="0">
      <widget class="QTabWidget" name="centralWidget">
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tabWelcome">
        <attribute name="title">
@@ -60,7 +60,7 @@
       </widget>
       <widget class="QWidget" name="tabModelView">
        <attribute name="title">
-        <string>Model View</string>
+        <string>Input Model</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_11">
         <property name="leftMargin">
@@ -82,7 +82,7 @@
       </widget>
       <widget class="QWidget" name="tabDesignSpaceLocationView">
        <attribute name="title">
-        <string>Design Space Location View</string>
+        <string>Current Design Space Location</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_15">
         <property name="leftMargin">
@@ -104,7 +104,7 @@
       </widget>
       <widget class="QWidget" name="tabParetoFront">
        <attribute name="title">
-        <string>Pareto Front View</string>
+        <string>Pareto Front</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_12">
         <property name="leftMargin">
@@ -454,7 +454,10 @@
       <number>4</number>
      </property>
      <property name="bottomMargin">
-      <number>0</number>
+      <number>4</number>
+     </property>
+     <property name="verticalSpacing">
+      <number>4</number>
      </property>
      <item row="0" column="0">
       <widget class="QTableWidget" name="tblDesignSpace">
@@ -482,6 +485,13 @@
          <string>Variation Point</string>
         </property>
        </column>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QPushButton" name="btnOptimize">
+       <property name="text">
+        <string>&amp;Optimize</string>
+       </property>
       </widget>
      </item>
     </layout>

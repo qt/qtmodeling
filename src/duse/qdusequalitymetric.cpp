@@ -45,7 +45,7 @@
 
 QT_BEGIN_NAMESPACE
 
-QDuseQualityMetricPrivate::QDuseQualityMetricPrivate()
+QDuseQualityMetricPrivate::QDuseQualityMetricPrivate() : value(0)
 {
 }
 
@@ -128,6 +128,28 @@ void QDuseQualityMetric::setName(QString name)
     }
 }
 
+/*!
+    The quality metric's value.
+ */
+qreal QDuseQualityMetric::value() const
+{
+    // This is a read-write attribute
+
+    Q_D(const QDuseQualityMetric);
+    return d->value;
+}
+
+void QDuseQualityMetric::setValue(qreal value)
+{
+    // This is a read-write attribute
+
+    Q_D(QDuseQualityMetric);
+    if (d->value != value) {
+        d->value = value;
+        emit valueChanged(value);
+    }
+}
+
 void QDuseQualityMetric::setPropertyData()
 {
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseQualityMetric")][QString::fromLatin1("expression")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
@@ -143,6 +165,13 @@ void QDuseQualityMetric::setPropertyData()
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseQualityMetric")][QString::fromLatin1("name")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseQualityMetric")][QString::fromLatin1("name")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
     QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseQualityMetric")][QString::fromLatin1("name")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseQualityMetric")][QString::fromLatin1("value")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseQualityMetric")][QString::fromLatin1("value")][QtWrappedObjects::IsDerivedUnionRole] = false;
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseQualityMetric")][QString::fromLatin1("value")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The quality metric's value.");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseQualityMetric")][QString::fromLatin1("value")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseQualityMetric")][QString::fromLatin1("value")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
+    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseQualityMetric")][QString::fromLatin1("value")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
 
     QWrappedObject::setPropertyData();
 }

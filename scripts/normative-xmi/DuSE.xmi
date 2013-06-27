@@ -156,6 +156,12 @@
         </ownedComment>
         <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
       </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" visibility="public" name="value" xmi:id="QualityMetric-value">
+        <ownedComment xmi:type="uml:Comment" xmi:id="QualityMetric-value-_ownedComment.0" annotatedElement="QualityMetric-value">
+          <body>The quality metric's value.</body>
+        </ownedComment>
+        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Real"/>
+      </ownedAttribute>
       <ownedAttribute xmi:type="uml:Property" visibility="public" name="expression" xmi:id="QualityMetric-expression">
         <ownedComment xmi:type="uml:Comment" xmi:id="QualityMetric-expression-_ownedComment.0" annotatedElement="QualityMetric-expression">
           <body>The quality metric's evaluation expression.</body>

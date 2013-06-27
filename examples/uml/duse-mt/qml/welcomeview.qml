@@ -41,7 +41,7 @@
 import QtQuick 2.0
 
 Image {
-    fillMode: Image.Stretch
+    fillMode: Image.Pad
     source: "welcome-background.jpg"
     Row {
         anchors { left: parent.left; right: parent.right; top: parent.top; margins: 20 }

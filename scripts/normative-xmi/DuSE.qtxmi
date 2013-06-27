@@ -132,6 +132,13 @@
                 </accessor>
                 <documentation>The quality metric's name.</documentation>
             </attribute>
+            <attribute isDerived="false" isDerivedUnion="false" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="QualityMetric-value" defaultValue="" aggregation="none" subsettedBy="">
+                <accessor return="qreal " name="value" constness=" const"/>
+                <accessor return="void " name="setValue" constness="">
+                    <parameter type="qreal " name="value"/>
+                </accessor>
+                <documentation>The quality metric's value.</documentation>
+            </attribute>
             <attribute isDerived="false" isDerivedUnion="false" isReadOnly="false" subsettedProperty="" redefinedProperty="" id="QualityMetric-expression" defaultValue="" aggregation="none" subsettedBy="">
                 <accessor return="QString " name="expression" constness=" const"/>
                 <accessor return="void " name="setExpression" constness="">
