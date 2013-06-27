@@ -56,7 +56,6 @@ UmlElement {
         anchors { top: nameSlot.bottom; topMargin: -1 }
         height: (parent.height - nameSlot.height)/2
         ListView {
-            id: attributesView
             model: attributes
             anchors { fill: parent; margins: 4 }
             delegate: Text {
@@ -66,10 +65,8 @@ UmlElement {
         }
     }
     UmlSlot {
-        id: operationSlot
         anchors { top: attributeSlot.bottom; topMargin: -1; bottom: parent.bottom }
         ListView {
-            id: operationsView
             model: operations
             anchors { fill: parent; margins: 4 }
             delegate: Text {

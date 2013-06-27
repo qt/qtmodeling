@@ -48,7 +48,6 @@ Rectangle {
 
     // Drag area
     MouseArea {
-        id: dragArea
         anchors.fill: parent
         drag { target: parent; minimumX: 0; minimumY: 0 }
         onPressed: parent.focus = true
@@ -81,7 +80,6 @@ Rectangle {
         anchors { right: parent.right; bottom: parent.bottom }
         z: 1
         MouseArea {
-            id: mouseArea
             enabled: element.focus
 
             anchors.fill: parent

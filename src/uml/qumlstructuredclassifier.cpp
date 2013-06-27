@@ -47,6 +47,8 @@
 
 #include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
+#include <QtQml/QQmlContext>
+
 QT_BEGIN_NAMESPACE
 
 QUmlStructuredClassifierPrivate::QUmlStructuredClassifierPrivate()
@@ -213,6 +215,16 @@ void QUmlStructuredClassifier::removeOwnedConnector(QUmlConnector *ownedConnecto
         (qwrappedobject_cast<QUmlClassifierPrivate *>(d))->removeFeature(qwrappedobject_cast<QUmlFeature *>(ownedConnector));
         (qwrappedobject_cast<QUmlNamespacePrivate *>(d))->removeOwnedMember(qwrappedobject_cast<QUmlNamedElement *>(ownedConnector));
     }
+}
+
+void QUmlStructuredClassifier::setQmlContextProperties(QQmlContext *qmlContext)
+{
+    QVariantList partList;
+    foreach (QUmlProperty *part, parts())
+        partList << qVariantFromValue(part);
+    qmlContext->setContextProperty(QString::fromLatin1("parts"), partList);
+
+    QUmlClassifier::setQmlContextProperties(qmlContext);
 }
 
 void QUmlStructuredClassifier::setPropertyData()

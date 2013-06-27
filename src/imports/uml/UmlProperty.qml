@@ -41,14 +41,16 @@
 import QtQuick 2.0
 
 UmlElement {
+    width: 60
+    height: 40
+    property alias name: label.text
+    property alias portsLength: repeater.model
     UmlSlot {
-        id: nameSlot
-        anchors.top: parent.top
+        anchors { top: parent.top; bottom: parent.bottom }
         Text {
             id: label
-            text: element.name
             anchors.centerIn: parent
-            font { family: "Korolev"; font.italic: element.isAbstract }
+            font { family: "Korolev"; italic: element.isAbstract }
         }
         Rectangle {
             border.width: 1
@@ -58,16 +60,12 @@ UmlElement {
             Rectangle { border.width: 1; width: 12; height: 5; x: -6; y: 10 }
         }
     }
-    UmlSlot {
-        id: partSlot
-        anchors { top: nameSlot.bottom; topMargin: -1; bottom: parent.bottom }
-    }
     Row {
         width: parent.width
         spacing: (parent.width - 14*ports.length)/(ports.length-1)
         anchors { bottom: parent.bottom; bottomMargin: -7 }
         Repeater {
-            model: ports.length
+            id: repeater
             Rectangle {
                 border.width: 1
                 width: 14; height: 14

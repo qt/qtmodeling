@@ -45,7 +45,6 @@ UmlElement {
         id: nameSlot
         anchors.top: parent.top
         Text {
-            id: label
             text: element.name
             anchors.centerIn: parent
             font { family: "Korolev"; italic: element.isAbstract }
@@ -67,11 +66,19 @@ UmlElement {
         spacing: (parent.width - 14*ports.length)/(ports.length-1)
         anchors { bottom: parent.bottom; bottomMargin: -7 }
         Repeater {
-            id: repeater
             model: ports.length
             Rectangle {
                 border.width: 1
                 width: 14; height: 14
+            }
+        }
+    }
+    Component.onCompleted: {
+        var component = Qt.createComponent("UmlProperty.qml")
+        if (component.status == Component.Ready) {
+            var partLength = parts.length
+            for (var i = 0; i < partLength; ++i) {
+                component.createObject(partSlot, { name: parts[i].name + ":" + parts[i].type.name })
             }
         }
     }

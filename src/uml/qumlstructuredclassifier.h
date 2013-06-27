@@ -90,6 +90,8 @@ public:
     Q_INVOKABLE void addOwnedConnector(QUmlConnector *ownedConnector);
     Q_INVOKABLE void removeOwnedConnector(QUmlConnector *ownedConnector);
 
+    virtual void setQmlContextProperties(QQmlContext *qmlContext);
+
     virtual void setPropertyData();
 
 protected:

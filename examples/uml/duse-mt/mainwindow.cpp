@@ -445,8 +445,6 @@ void MainWindow::addToView(QWrappedObject *wrappedObject, QQuickItem *parent)
         item = qobject_cast<QQuickItem *>(_qmlComponent->create(context));
         if (item) {
             item->setParentItem(parent ? parent:(qobject_cast<QQuickFlickable *>(_modelQuickView->rootObject()))->contentItem());
-//            foreach (QObject *child, wrappedObject->children())
-//                addToView(qobject_cast<QWrappedObject *>(child), item);
         }
     }
 
