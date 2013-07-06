@@ -31,4 +31,5 @@
     </profileApplication>
   </uml:Model>
   <SADuSEProfile:ProcessComponent xmi:id="Component2ProcessComponent" base_Component="MyModel-Component2"/>
+  <SADuSEProfile:ProcessComponent xmi:id="Component1ProcessComponent" base_Component="MyModel-Component1"/>
 </xmi:XMI>
