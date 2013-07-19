@@ -52,9 +52,9 @@ int main ()
     }
 
     QXmiReader reader(0, true);
-    QWrappedObject *rootElement = reader.readFile(&file);
-    if (rootElement)
-        qDebug() << "Successfully read object with name" << rootElement->objectName();
+    QList<QWrappedObject *> rootElements = reader.readFile(&file);
+    if (!rootElements.isEmpty())
+        qDebug() << "Successfully read object with name" << rootElements.first()->objectName();
     if (reader.errorStrings().size() > 0) {
         qDebug() << "Errors:";
         foreach (QString error, reader.errorStrings())
@@ -67,7 +67,7 @@ int main ()
         qDebug() << "Cannot write file !";
         return 1;
     }
-    QXmiWriter writer(rootElement);
+    QXmiWriter writer(rootElements.first());
     writer.writeFile(&file2);
 }
 

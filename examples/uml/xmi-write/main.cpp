@@ -45,8 +45,6 @@
 
 int main ()
 {
-    QUmlMetaModel::init();
-
     QWrappedObjectPointer<QUmlPackage> model = new QUmlPackage;
     model->setName("MyRootPackage");
 

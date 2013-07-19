@@ -16,8 +16,6 @@ xmi.files = example.xmi
 
 INSTALLS += target xmi
 
-CONFIG += c++11
-
 SOURCES += main.cpp \
         mainwindow.cpp \
     newdusedesign.cpp
