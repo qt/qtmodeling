@@ -11,3 +11,4 @@ include
 *.pro.user
 *.Debug
 *.Release
+.qmake.cache
