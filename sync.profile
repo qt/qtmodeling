@@ -1,4 +1,5 @@
 %modules = ( # path to module name map
+    "QtModeling" => "$basedir/src/modeling",
     "QtWrappedObjects" => "$basedir/src/wrappedobjects",
     "QtWrappedObjectsWidgets" => "$basedir/src/wrappedobjectswidgets",
     "QtMof" => "$basedir/src/mof",
@@ -11,6 +12,8 @@
 );
 
 %classnames = (
+    "qtmodelingversion.h" => "QtModelingVersion",
+    "qtmodelingglobal.h"  => "QtModelingGlobal",
     "qtwrappedobjectsversion.h" => "QtWrappedObjectsVersion",
     "qtwrappedobjectsglobal.h"  => "QtWrappedObjectsGlobal",
     "qtwrappedobjectsnamespace.h"  => "QtWrappedObjectsNamespace",
@@ -31,6 +34,7 @@
 );
 
 %modulepris = (
+    "QtModeling" => "$basedir/modules/qtmodeling.pri",
     "QtWrappedObjects" => "$basedir/modules/qtwrappedobjects.pri",
     "QtWrappedObjectsWidgets" => "$basedir/modules/qtwrappedobjectswidgets.pri",
     "QtMof" => "$basedir/modules/qtmof.pri",

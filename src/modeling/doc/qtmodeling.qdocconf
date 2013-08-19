@@ -1,0 +1,41 @@
+include($QT_INSTALL_DOCS/global/qt-module-defaults.qdocconf)
+
+project                 = QtModeling
+description             = Qt Modeling Reference Documentation
+url                     = http://qt-project.org/doc/qtmodeling
+version                 = 5.0.0
+
+examplesinstallpath     = modeling
+
+qhp.projects            = QtModeling
+
+qhp.QtModeling.file            = qtmodeling.qhp
+qhp.QtModeling.namespace           = org.qt-project.qtmodeling.500
+qhp.QtModeling.virtualFolder       = qtmodeling
+qhp.QtModeling.indexTitle          = Qt Modeling
+qhp.QtModeling.indexRoot           =
+
+qhp.QtModeling.filterAttributes    = qtmodeling 5.0.0 qtrefdoc
+qhp.QtModeling.customFilters.Qt.name = QtModeling 5.0.0
+qhp.QtModeling.customFilters.Qt.filterAttributes = qtmodeling 5.0.0
+
+qhp.QtModeling.subprojects         = classes
+qhp.QtModeling.subprojects.classes.title = C++ Classes
+qhp.QtModeling.subprojects.classes.indexTitle = Qt Modeling C++ Classes
+qhp.QtModeling.subprojects.classes.selectors = class fake:headerfile
+qhp.QtModeling.subprojects.classes.sortPages = true
+tagfile                 = ../../../doc/qtmodeling/qtmodeling.tags
+
+depends                 += qtcore qtdoc
+
+headerdirs  += ..
+
+sourcedirs  += .. \
+               ../../../examples/modeling/doc/src
+
+exampledirs += ../../../examples/modeling \
+               ../ \
+               snippets
+
+imagedirs   += images \
+               ../../../examples/modeling/doc/images
