@@ -42,11 +42,6 @@
 
 QT_BEGIN_NAMESPACE
 
-QWrappedObjectPrivate::QWrappedObjectPrivate() :
-    wrapper(0)
-{
-}
-
 QWrappedObject::QWrappedObject(QWrappedObject *wrapper, QObject *parent) :
     QObject(*new QWrappedObjectPrivate, parent)
 {
@@ -56,9 +51,7 @@ QWrappedObject::QWrappedObject(QWrappedObject *wrapper, QObject *parent) :
 QWrappedObject::~QWrappedObject()
 {
     Q_D(QWrappedObject);
-    foreach (QWrappedObject *wrappedObject, d->wrappedObjects)
-        if (wrappedObject && !wrappedObject->parent())
-            delete wrappedObject;
+    qDeleteAll(d->wrappedObjects);
 }
 
 QWrappedObject::QWrappedObject(QWrappedObjectPrivate &dd, QWrappedObject *wrapper, QObject *parent) :

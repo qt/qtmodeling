@@ -38,14 +38,67 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#include "qsignalpointer.h"
+#ifndef QSIGNALEDPOINTER_H
+#define QSIGNALEDPOINTER_H
+
+#include <QtModeling/QtModelingGlobal>
+
+#include <QtCore/QObject>
+#include "private/qobject_p.h"
+
+#include <QtModeling/QWrappedObject>
+
+QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
-QAbstractSignalPointer::QAbstractSignalPointer(QObject *parent) :
-    QObject(*new QAbstractSignalPointerPrivate, parent)
+QT_MODULE(QtModeling)
+
+class Q_MODELING_EXPORT QAbstractSignaledPointerPrivate : public QObjectPrivate
 {
-}
+public:
+    QPointer<QWrappedObject> pointer;
+};
+
+class Q_MODELING_EXPORT QAbstractSignaledPointer : public QObject
+{
+    Q_OBJECT
+    Q_DECLARE_PRIVATE(QAbstractSignaledPointer)
+
+public:
+    QWrappedObject *data() const { Q_D(const QAbstractSignaledPointer); return d->pointer.data(); }
+
+public Q_SLOTS:
+    void set(QWrappedObject *p) {
+        Q_D(QAbstractSignaledPointer);
+        if (d->pointer != p) {
+            if (d->pointer)
+                emit pointerAboutToChange(d->pointer);
+            d->pointer = p;
+            emit pointerChanged(p);
+        }
+    }
+
+Q_SIGNALS:
+    void pointerAboutToChange(QWrappedObject *oldWobject);
+    void pointerChanged(QWrappedObject *newWobject);
+
+protected:
+    QAbstractSignaledPointer(QObject *parent = 0) : QObject(*new QAbstractSignaledPointerPrivate, parent) { }
+};
+
+template <class T>
+class Q_MODELING_EXPORT QSignaledPointer : public QAbstractSignaledPointer
+{
+public:
+
+    QSignaledPointer(QObject *parent = 0) : QAbstractSignaledPointer(parent) { }
+    T *data() const { return qobject_cast<T *>(QAbstractSignaledPointer::data()); }
+    void set(T *p) { QAbstractSignaledPointer::set(p); }
+};
 
 QT_END_NAMESPACE
 
+QT_END_HEADER
+
+#endif // QSIGNALEDPOINTER_H

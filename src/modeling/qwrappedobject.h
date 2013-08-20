@@ -79,17 +79,31 @@ class Q_MODELING_EXPORT QWrappedObject : public QObject
 
 public:
     explicit QWrappedObject(QWrappedObject *wrapper, QObject *parent = 0);
+
     virtual ~QWrappedObject();
 
     inline QWrappedObject *wrapper() const;
     inline void setWrapper(QWrappedObject *wrapper);
     inline QList<QPointer<QWrappedObject> > &wrappedObjects();
 
-    template <class T>
-    inline T *as() const;
+    inline void setObjectName(const QString &name)
+    {
+        QObject::setObjectName(name);
+        foreach (QWrappedObject *wrapped, wrappedObjects())
+            wrapped->setObjectName(name);
+    }
+
+//    template <class T>
+//    inline const T *as() const;
 
     template <class T>
-    inline T *privateAs() const;
+    inline T *as();
+
+//    template <class T>
+//    inline const T *privateAs() const;
+
+    template <class T>
+    inline T *privateAs();
 
 protected:
     explicit QWrappedObject(QWrappedObjectPrivate &dd, QWrappedObject *wrapper = 0, QObject *parent = 0);
@@ -122,16 +136,29 @@ inline T qwrappedobject_cast(const QWrappedObject *base, bool restoreToWrapper =
     return qwrappedobject_cast<T>(const_cast<QWrappedObject *>(base), restoreToWrapper);
 }
 
+//template <class T>
+//inline const T *QWrappedObject::QWrappedObject::as() const
+//{
+//    return qwrappedobject_cast<T *>(this);
+//}
+
 template <class T>
-inline T *QWrappedObject::as() const
+inline T *QWrappedObject::QWrappedObject::as()
 {
     return qwrappedobject_cast<T *>(this);
 }
 
+//template <class T>
+//inline const T *QWrappedObject::QWrappedObject::privateAs() const
+//{
+//    Q_D(const QWrappedObject);
+//    return qwrappedobject_cast<T *>(d);
+//}
+
 template <class T>
-inline T *QWrappedObject::privateAs() const
+inline T *QWrappedObject::QWrappedObject::privateAs()
 {
-    Q_D(const QWrappedObject);
+    Q_D(QWrappedObject);
     return qwrappedobject_cast<T *>(d);
 }
 
@@ -149,7 +176,7 @@ class Q_MODELING_EXPORT QWrappedObjectPrivate : public QObjectPrivate
     Q_DECLARE_PUBLIC(QWrappedObject)
 
 public:
-    explicit QWrappedObjectPrivate();
+    explicit QWrappedObjectPrivate() : wrapper(0) { }
 
     inline static QWrappedObjectPrivate *get(QWrappedObject *o)
     {

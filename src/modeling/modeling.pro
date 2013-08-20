@@ -12,12 +12,11 @@ PUBLIC_HEADERS += \
     qwrappedobject.h \
     qguardedlist.h \
     qguardedset.h \
-    qsignalpointer.h
+    qsignaledpointer.h
 
 PRIVATE_HEADERS +=
 
 SOURCES += \
-    qwrappedobject.cpp \
-    qsignalpointer.cpp
+    qwrappedobject.cpp
 
 HEADERS += $$PUBLIC_HEADERS $$PRIVATE_HEADERS
