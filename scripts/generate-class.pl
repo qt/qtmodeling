@@ -49,39 +49,37 @@ use XML::XPath;
 use Template;
 
 my %options=(); 
-getopt("oi",\%options);
+getopt("oic",\%options);
 
 my $tt = Template->new(INTERPOLATE  => 1, INCLUDE_PATH => 'templates/');
 
 my $xmi = XML::XPath->new(filename => $options{i});
 my $namespace = $xmi->findvalue('//uml:Package/@name');
+my $classset = $xmi->findnodes('//packagedElement[@xmi:type=\'uml:Class\' and @name=\'' . $options{c} . '\']');
 
-make_path($options{o}."/".$namespace);
 binmode STDOUT, ':utf8';
 
-my $globalHeader = "qt".lc($namespace)."global.h";
-open STDOUT, '>', $options{o}."/".$namespace."/".$globalHeader;
-if ($tt->process('global.h', {
-    namespace => $namespace,
-}) ne 1) { print $tt->error(); }
-close STDOUT;
-
-open STDOUT, '>', $options{o}."/".$namespace."/".lc($namespace).".pri";
-if ($tt->process('module.pri', {
-    xmi => $options{i},
-    namespace => $namespace,
-}) ne 1) { print $tt->error(); }
-close STDOUT;
-
-open STDOUT, '>', $options{o}."/".$namespace."/".lc($namespace).".pro";
-if ($tt->process('module.pro', {
-    namespace => $namespace,
-}) ne 1) { print $tt->error(); }
-close STDOUT;
-
-my $classset = $xmi->find('//packagedElement[@xmi:type=\'uml:Class\']');
 foreach my $class ($classset->get_nodelist) {
     my $className = $class->findvalue('@name');
-    system("./generate-class.pl -i " . $options{i} . " -o " . $options{o} . " -c " . $className);
+    open STDOUT, '>', $options{o}."/".$namespace."/q".lc($namespace).lc($className).".h";
+    if ($tt->process('class.h', {
+        xmi => $options{i},
+        namespace => $namespace,
+        className => $className
+    }) ne 1) { print $tt->error(); }
+    close STDOUT;
+    open STDOUT, '>', $options{o}."/".$namespace."/q".lc($namespace).lc($className)."_p.h";
+    if ($tt->process('class_p.h', {
+        xmi => $options{i},
+        namespace => $namespace,
+        className => $className
+    }) ne 1) { print $tt->error(); }
+    close STDOUT;
+    open STDOUT, '>', $options{o}."/".$namespace."/q".lc($namespace).lc($className).".cpp";
+    if ($tt->process('class.cpp', {
+        xmi => $options{i},
+        namespace => $namespace,
+        className => $className
+    }) ne 1) { print $tt->error(); }
+    close STDOUT;
 }
-

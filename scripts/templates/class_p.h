@@ -1,9 +1,11 @@
+[% USE xmi = XML.XPath("$xmi") -%]
+[% SET class = xmi.findnodes("//packagedElement[@xmi:type='uml:Class' and @name='$className']") -%]
 /****************************************************************************
 **
 ** Copyright (C) 2013 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/legal
 **
-** This file is part of the [% namespace.split('/').0 %] module of the Qt Toolkit.
+** This file is part of the Qt${namespace} module of the Qt Toolkit.
 **
 ** \$QT_BEGIN_LICENSE:LGPL\$
 ** Commercial License Usage
@@ -38,120 +40,29 @@
 ** \$QT_END_LICENSE\$
 **
 ****************************************************************************/
-#ifndef ${class.name.upper}_P_H
-#define ${class.name.upper}_P_H
+#ifndef Q${namespace.upper}${className.upper}_P_H
+#define Q${namespace.upper}${className.upper}_P_H
 
-// Base class includes
-[%- IF !class.superclass || class.superclass.size > 1 -%]
-
-#include "private/qwrappedobject_p.h"
-[%- END -%]
-[%- FOREACH superclass IN class.superclass -%]
-
-#include "private/${superclass.name.lower}_p.h"
-[%- END %]
-
-#include "${namespace}/${class.name}"
-[%- IF class.item('qtumlinclude') %]
-
-// [% namespace.split('/').0 %] includes
-[%- FOREACH include IN class.qtumlinclude -%]
-
-#include "${include}"
-[%- END -%]
-[%- END -%]
-[%- IF class.item('qtinclude') %]
-
-// Qt includes
-[%- FOREACH include IN class.qtinclude -%]
-
-#include "${include}"
-[%- END -%]
-[%- END %]
+#include "Qt${namespace}/Q${namespace}${className}"
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
-QT_MODULE([% namespace.split('/').0 %])
+QT_MODULE(Qt${namespace})
 
-[%- found = 'false' -%]
-[%- foundPublic = 'false' -%]
-[%- FOREACH forwarddecl IN class.forwarddecl -%]
-[%- IF forwarddecl.namespace == namespace.replace('/', '::') -%]
-[%- IF found == 'false' -%]
-
-// Forward decls for function parameters
-[% found = 'true' -%]
-[%- END -%]
-class ${forwarddecl.class};
-
-[%- IF forwarddecl.content == class.name -%]
-[%- foundPublic = 'true' -%]
-[%- END -%]
-[%- END -%]
-[%- END -%]
-[% IF class.isAbstract == 'false' and foundPublic == 'false' -%]
-class ${class.name};
-
+class Q_${namespace.upper}_EXPORT Q${namespace}${className}Private
+[%- FOREACH superclass = class.findnodes('generalization') -%]
+[%- IF loop.first %] :[% END -%]
+ public Q${namespace}${superclass.findvalue('@general')}Private
+[%- IF !loop.last %],[% END -%]
 [%- END %]
-class Q_[% namespace.split('/').0.substr(2).upper %]_EXPORT ${class.name}Private : [% IF class.superclass.size == 1 %]public ${class.superclass.0.name.split('/').last}Private[% ELSE %]public QWrappedObjectPrivate[% END %]
 {
-    Q_DECLARE_PUBLIC(${class.name})
-
-public:
-    explicit ${class.name}Private();
-    virtual ~${class.name}Private();
-
-[%- FOREACH attribute IN class.attribute.values %]
-[%- IF (attribute.isDerived == 'false' or attribute.isDerivedUnion == 'true') %]
-    ${attribute.accessor.0.return.remove('^const ').remove('&$')}${attribute.accessor.0.name};
-[%- END -%]
-[%- END -%]
-[%- FOREACH associationend IN class.associationend.values %]
-[%- IF (associationend.isDerived == 'false' or associationend.isDerivedUnion == 'true') %]
-    ${associationend.accessor.0.return.remove('^const ').remove('&$')}${associationend.accessor.0.name};
-[%- END -%]
-[%- END -%]
-[%- IF class.item('attribute') -%]
-[%- found = 'false' -%]
-[%- FOREACH attribute IN class.attribute.values -%]
-[%- IF attribute.isReadOnly == 'true' and attribute.subsettedBy != '' -%]
-[%- IF found == 'false' -%]
-[%- found = 'true' %]
-
-    // Internal functions for read-only subsetted attributes
-[%- END -%]
-[%- FOREACH accessor IN attribute.accessor -%]
-[%- NEXT IF loop.first %]
-    ${accessor.return}${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END
- -%])${accessor.constness};
-[%- END -%]
-[%- END -%]
-[%- END -%]
-[%- END %]
-[%- IF class.item('associationend') %]
-[%- found = 'false' -%]
-[%- FOREACH associationend IN class.associationend.values -%]
-[%- IF associationend.isReadOnly == 'true' and (associationend.subsettedBy != '' or associationend.oppositeEnd != '') -%]
-[%- IF found == 'false' -%]
-[%- found = 'true' %]
-
-    // Internal functions for read-only subsetted association ends
-[%- END -%]
-[%- FOREACH accessor IN associationend.accessor -%]
-[%- NEXT IF loop.first %]
-    ${accessor.return}${accessor.name}([%- FOREACH parameter IN accessor.parameter -%]${parameter.type}${parameter.name}[% IF !loop.last %], [% END %][%- END
- -%])${accessor.constness};
-[%- END -%]
-[%- END -%]
-[%- END -%]
-[%- END %]
 };
 
 QT_END_NAMESPACE
 
 QT_END_HEADER
 
-#endif // ${class.name.upper}_P_H
+#endif // Q${namespace.upper}${className.upper}_P_H
 

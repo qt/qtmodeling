@@ -3,7 +3,7 @@
 ** Copyright (C) 2013 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/legal
 **
-** This file is part of the [% namespace.split('/').0 %] module of the Qt Toolkit.
+** This file is part of the Qt${namespace} module of the Qt Toolkit.
 **
 ** \$QT_BEGIN_LICENSE:LGPL\$
 ** Commercial License Usage
@@ -38,22 +38,24 @@
 ** \$QT_END_LICENSE\$
 **
 ****************************************************************************/
-#include "${namespace.split('/').0.lower}namespace.h"
+#ifndef QT${namespace.upper}GLOBAL_H
+#define QT${namespace.upper}GLOBAL_H
+
+#include <QtCore/QtGlobal>
 
 QT_BEGIN_NAMESPACE
 
-[% FOREACH enumeration IN enumerations -%]
-/*!
-    \enum ${namespace.replace('/', '::')}::${enumeration.name}
+#ifndef QT_STATIC
+#    if defined(QT_BUILD_${namespace.upper}_LIB)
+#        define Q_${namespace.upper}_EXPORT Q_DECL_EXPORT
+#    else
+#        define Q_${namespace.upper}_EXPORT Q_DECL_IMPORT
+#    endif
+#else
+#    define Q_${namespace.upper}_EXPORT
+#endif
 
-    ${enumeration.documentation}
-
-    [%- FOREACH literal IN enumeration.literal %]
-    \value ${literal.name}[% IF literal.documentation != '' %]
-    ${literal.documentation}[% END -%]
-    [%- END %]
- */
-
-[% END -%]
 QT_END_NAMESPACE
+
+#endif // QT${namespace.upper}GLOBAL_H
 
