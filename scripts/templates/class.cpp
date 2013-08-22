@@ -64,7 +64,7 @@ ${uml2qt.item(attribute.findnodes("type").findvalue("@href").split("#").last)}
 [%- FOREACH forward = forwards.unique.sort -%]
 [%- IF loop.first %]
 [% END %]
-#include <Qt${namespace}/Q${namespace}${forward}>
+#include <Qt${namespace}/${forward}>
 [%- END %]
 
 QT_BEGIN_NAMESPACE
