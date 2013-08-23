@@ -1,3 +1,4 @@
+[%- PROCESS common.tmpl -%]
 /****************************************************************************
 **
 ** Copyright (C) 2013 Sandro S. Andrade <sandroandrade@kde.org>
@@ -38,28 +39,22 @@
 ** \$QT_END_LICENSE\$
 **
 ****************************************************************************/
-#ifndef QT${namespace.upper}GLOBAL_H
-#define QT${namespace.upper}GLOBAL_H
-
-#include <QtCore/QtGlobal>
-
-#include <QtCore/QList>
-#include <QtCore/QSet>
-#include <QtCore/QString>
+#include "qt${namespace.lower}namespace.h"
 
 QT_BEGIN_NAMESPACE
 
-#ifndef QT_STATIC
-#    if defined(QT_BUILD_${namespace.upper}_LIB)
-#        define Q_${namespace.upper}_EXPORT Q_DECL_EXPORT
-#    else
-#        define Q_${namespace.upper}_EXPORT Q_DECL_IMPORT
-#    endif
-#else
-#    define Q_${namespace.upper}_EXPORT
-#endif
+[%- SET enumerations = xmi.findnodes("//uml:Package/packagedElement[@xmi:type=\"uml:Enumeration\"]") -%]
+[% FOREACH enumeration IN enumerations %]
+[%- SET enumerationName = enumeration.findvalue("@name") %]
+/*!
+    \enum Qt${namespace}::${enumerationName}
 
+    ${enumeration.findvalue("ownedComment/body/text()")}
+
+    [%- FOREACH literal IN enumeration.findnodes("ownedLiteral") %]
+    \value ${enumerationName.remove("Kind$")}${literal.findvalue("@name").ucfirst} ${literal.findvalue("ownedComment/body/text()")}
+[% END -%]
+ */
+[% END -%]
 QT_END_NAMESPACE
-
-#endif // QT${namespace.upper}GLOBAL_H
 

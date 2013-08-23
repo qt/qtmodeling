@@ -1,3 +1,4 @@
+[%- PROCESS common.tmpl -%]
 /****************************************************************************
 **
 ** Copyright (C) 2013 Sandro S. Andrade <sandroandrade@kde.org>
@@ -38,28 +39,42 @@
 ** \$QT_END_LICENSE\$
 **
 ****************************************************************************/
-#ifndef QT${namespace.upper}GLOBAL_H
-#define QT${namespace.upper}GLOBAL_H
+#ifndef QT${namespace.upper}NAMESPACE_H
+#define QT${namespace.upper}NAMESPACE_H
 
-#include <QtCore/QtGlobal>
+#include <Qt${namespace}/Qt${namespace}Global>
 
-#include <QtCore/QList>
-#include <QtCore/QSet>
-#include <QtCore/QString>
+#include <QtCore/QObject>
+
+QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
-#ifndef QT_STATIC
-#    if defined(QT_BUILD_${namespace.upper}_LIB)
-#        define Q_${namespace.upper}_EXPORT Q_DECL_EXPORT
-#    else
-#        define Q_${namespace.upper}_EXPORT Q_DECL_IMPORT
-#    endif
-#else
-#    define Q_${namespace.upper}_EXPORT
-#endif
+QT_MODULE(Qt${namespace})
+
+class Q_${namespace.upper}_EXPORT Qt${namespace} : public QObject
+{
+    Q_OBJECT
+
+[%- SET enumerations = xmi.findnodes("//uml:Package/packagedElement[@xmi:type=\"uml:Enumeration\"]") -%]
+[% FOREACH enumeration IN enumerations -%]
+    Q_ENUMS(${enumeration.findvalue("@name")})
+[% END %]
+public:
+[%- FOREACH enumeration IN enumerations %]
+    [%- SET enumerationName = enumeration.findvalue("@name") %]
+    enum ${enumerationName}
+    {
+        [%- FOREACH literal IN enumeration.findnodes("ownedLiteral") %]
+        ${enumerationName.remove("Kind$")}${literal.findvalue("@name").ucfirst}[%- IF loop.first -%] = 0[%- END -%][%- IF !loop.last -%],[%- END -%]
+        [%- END %]
+    };
+[%- END %]
+};
 
 QT_END_NAMESPACE
 
-#endif // QT${namespace.upper}GLOBAL_H
+QT_END_HEADER
+
+#endif // QT${namespace.upper}NAMESPACE_H
 

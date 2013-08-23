@@ -1,21 +1,4 @@
-[% USE xmi = XML.XPath("$xmi") -%]
-[% SET class = xmi.findnodes("//packagedElement[@xmi:type='uml:Class' and @name='$className']") -%]
-[% SET uml2qt = {
-      "Boolean" = "bool", 
-      "Integer" = "int",
-      "String" = "QString",
-      "Real" = "double"
-   };
--%]
-[%- MACRO QT_TYPE(namespace, attribute) BLOCK -%]
-    [%- IF attribute.findnodes("upperValue").findvalue("@value") == "*" %]QList<[% END -%]
-    [%- IF attribute.findvalue("@type") != "" -%]
-Q${namespace}${attribute.findvalue("@type")} *
-    [%- ELSE -%]
-${uml2qt.item(attribute.findnodes("type").findvalue("@href").split("#").last)} 
-    [%- END -%]
-    [%- IF attribute.findnodes("upperValue").findvalue("@value") == "*" %]> [% END -%]
-[%- END -%]
+[%- PROCESS common.tmpl -%]
 /****************************************************************************
 **
 ** Copyright (C) 2013 Sandro S. Andrade <sandroandrade@kde.org>
@@ -57,9 +40,16 @@ ${uml2qt.item(attribute.findnodes("type").findvalue("@href").split("#").last)}
 **
 ****************************************************************************/
 #include "q${namespace.lower}${className.lower}.h"
+[%- superclasses = [] -%]
+[%- FOREACH superclass = class.findnodes("generalization") -%]
+[%- superclasses.push("Q${namespace}${superclass.findvalue('@general')}") -%]
+[%- END -%]
 [%- forwards = [] -%]
-[%- FOREACH forward = class.findnodes("ownedAttribute[@type]") -%]
-[%- IF forward.findvalue('@type') != className -%][%- forwards.push("Q${namespace}${forward.findvalue('@type')}") -%][%- END -%]
+[%- FOREACH forward = class.findnodes("ownedAttribute[@type] | ownedOperation/ownedParameter[@type]") -%]
+[%- SET forwardName = forward.findvalue('@type') -%]
+[%- IF xmi.findnodes("//packagedElement[@xmi:type='uml:Enumeration' and @name='$forwardName']").findvalue("@name") == "" -%]
+[%- IF forwardName != className && superclasses.grep("^Q${namespace}${forwardName}$").size == 0 -%][%- forwards.push("Q${namespace}${forwardName}") -%][%- END -%]
+[%- END -%]
 [%- END -%]
 [%- FOREACH forward = forwards.unique.sort -%]
 [%- IF loop.first %]
@@ -68,6 +58,14 @@ ${uml2qt.item(attribute.findnodes("type").findvalue("@href").split("#").last)}
 [%- END %]
 
 QT_BEGIN_NAMESPACE
+
+/*!
+    \class Q${namespace}${className}
+
+    \inmodule Qt${namespace}
+
+    \brief ${class.findvalue("ownedComment/body/text()")}
+ */
 
 Q${namespace}${className}::Q${namespace}${className}()
 {
@@ -78,43 +76,69 @@ Q${namespace}${className}::Q${namespace}${className}()
 // Owned attributes
 [%- END %]
 
+/*!
+    ${attribute.findvalue("ownedComment/body/text()")}
+ */
 [% QT_TYPE(namespace, attribute) -%]
-Q${namespace}${className}::${attribute.findvalue("@name")}() const
+Q${namespace}${className}::[% QT_ATTRIBUTE(attribute) %]() const
 {
+    [%- SET qtType = QT_TYPE(namespace, attribute).trim -%]
+    [%- IF qtType.match('\*$') %]
+    return 0;
+    [%- ELSE %]
+    return [% QT_TYPE(namespace, attribute).trim -%]();
+    [%- END %]
 }
+    [%- SET attributeName = attribute.findvalue("@name").ucfirst %]
     [%- IF attribute.findvalue("@isReadOnly") != "true" -%]
         [%- IF attribute.findnodes("upperValue").findvalue("@value") == "*" %]
 
-void Q${namespace}${className}::add${attribute.findvalue("@name").ucfirst}([% QT_TYPE(namespace, attribute) %]${attribute.findvalue("@name")})
+void Q${namespace}${className}::add${attributeName}([% QT_TYPE(namespace, attribute) %][% QT_ATTRIBUTE(attribute) %])
 {
+    Q_UNUSED([% QT_ATTRIBUTE(attribute) %]);
 }
 
-void Q${namespace}${className}::remove${attribute.findvalue("@name").ucfirst}([% QT_TYPE(namespace, attribute) %]${attribute.findvalue("@name")})
+void Q${namespace}${className}::remove${attributeName}([% QT_TYPE(namespace, attribute) %][% QT_ATTRIBUTE(attribute) %])
 {
+    Q_UNUSED([% QT_ATTRIBUTE(attribute) %]);
 }
         [%- ELSE %]
 
-void Q${namespace}${className}::set${attribute.findvalue("@name").ucfirst.remove("^Is")}([% QT_TYPE(namespace, attribute) %]${attribute.findvalue("@name")})
+void Q${namespace}${className}::set${attributeName.remove("^Is")}([% QT_TYPE(namespace, attribute) %][% QT_ATTRIBUTE(attribute) %])
 {
+    Q_UNUSED([% QT_ATTRIBUTE(attribute) %]);
 }
         [%- END %]
     [%- END %]
 [%- END %]
-[%- FOREACH operation = class.findnodes("ownedOperation") %]
+[%- FOREACH operation = class.findnodes("ownedOperation[@name != ../ownedAttribute[@isDerived='true']/@name]") -%]
 [%- IF loop.first %]
 
 // Operations
 [%- END %]
+[%- SET operationName = operation.findvalue("@name") -%]
 
-[% QT_TYPE(namespace, operation.findnodes("ownedParameter[@direction='return']")) -%]
-Q${namespace}${className}::${operation.findvalue("@name")}(
-    [%- FOREACH parameter = operation.findnodes("ownedParameter[@direction!='return']") -%]
+[%- SET returnType = QT_TYPE(namespace, operation.findnodes("ownedParameter[@direction='return']")) %]
+/*!
+    ${operation.findvalue("ownedComment/body/text()")}
+ */
+${returnType}Q${namespace}${className}::${operationName}(
+    [%- SET parameters = operation.findnodes("ownedParameter[@direction!='return']") -%]
+    [%- FOREACH parameter = parameters -%]
         [%- QT_TYPE(namespace, parameter) -%]
 ${parameter.findvalue("@name")}
         [%- IF !loop.last %], [% END -%]
     [%- END -%]
 )[% IF operation.findvalue("@isQuery") == "true" %] const[% END %]
 {
+    [%- FOREACH parameter = parameters %]
+    Q_UNUSED(${parameter.findvalue("@name")});
+    [%- END %]
+    [%- IF returnType.match('\*$') %]
+    return 0;
+    [%- ELSE %]
+    return ${returnType}();
+    [%- END %]
 }
 [%- END %]
 

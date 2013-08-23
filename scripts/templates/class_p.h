@@ -1,5 +1,4 @@
-[% USE xmi = XML.XPath("$xmi") -%]
-[% SET class = xmi.findnodes("//packagedElement[@xmi:type='uml:Class' and @name='$className']") -%]
+[%- PROCESS common.tmpl -%]
 /****************************************************************************
 **
 ** Copyright (C) 2013 Sandro S. Andrade <sandroandrade@kde.org>
@@ -58,6 +57,10 @@ class Q_${namespace.upper}_EXPORT Q${namespace}${className}Private
 [%- IF !loop.last %],[% END -%]
 [%- END %]
 {
+public:
+[%- FOREACH attribute = class.findnodes("ownedAttribute") %]
+    [% QT_TYPE(namespace, attribute) -%][%- QT_ATTRIBUTE(attribute) %];
+[%- END %]
 };
 
 QT_END_NAMESPACE

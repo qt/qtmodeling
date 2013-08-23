@@ -49,7 +49,7 @@ use XML::XPath;
 use Template;
 
 my %options=(); 
-getopt("oi",\%options);
+getopt("oip",\%options);
 
 my $tt = Template->new(INTERPOLATE  => 1, INCLUDE_PATH => 'templates/');
 
@@ -62,6 +62,20 @@ binmode STDOUT, ':utf8';
 my $globalHeader = "qt".lc($namespace)."global.h";
 open STDOUT, '>', $options{o}."/".$namespace."/".$globalHeader;
 if ($tt->process('global.h', {
+    namespace => $namespace,
+}) ne 1) { print $tt->error(); }
+close STDOUT;
+
+open STDOUT, '>', $options{o}."/".$namespace."/qt".lc($namespace)."namespace.h";
+if ($tt->process('modulenamespace.h', {
+    xmi => $options{i},
+    namespace => $namespace,
+}) ne 1) { print $tt->error(); }
+close STDOUT;
+
+open STDOUT, '>', $options{o}."/".$namespace."/qt".lc($namespace)."namespace.cpp";
+if ($tt->process('modulenamespace.cpp', {
+    xmi => $options{i},
     namespace => $namespace,
 }) ne 1) { print $tt->error(); }
 close STDOUT;
@@ -80,8 +94,22 @@ if ($tt->process('module.pro', {
 close STDOUT;
 
 my $classset = $xmi->find('//packagedElement[@xmi:type=\'uml:Class\']');
+my $count = 0;
+my @pids;
 foreach my $class ($classset->get_nodelist) {
     my $className = $class->findvalue('@name');
-    system("./generate-class.pl -i " . $options{i} . " -o " . $options{o} . " -c " . $className);
+    die "could not fork" unless defined(my $pid = fork);
+    unless ($pid) { #child execs
+        exec "./generate-class.pl", "-i", $options{i}, "-o", $options{o}, "-c", $className;
+        die "exec of generate-class.pl failed";
+    }
+    push @pids, $pid;
+    $count = $count + 1;
+    if ($count % $options{p} == 0) {
+        for my $pid (@pids) {
+            waitpid $pid, 0;
+        }
+        @pids=();
+    }
 }
 

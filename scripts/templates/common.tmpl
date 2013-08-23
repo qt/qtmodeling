@@ -1,0 +1,45 @@
+[% USE xmi = XML.XPath("$xmi") -%]
+[% SET class = xmi.findnodes("//packagedElement[@xmi:type='uml:Class' and @name='$className']") -%]
+[% SET uml2qt_type = {
+      "Boolean" = "bool",
+      "Integer" = "int",
+      "UnlimitedNatural" = "int",
+      "String" = "QString",
+      "Real" = "double"
+   };
+-%]
+[%- MACRO QT_TYPE(namespace, attribute) BLOCK -%]
+    [%- SET multiplicity = attribute.findnodes("upperValue").findvalue("@value") -%]
+    [%- SET isUnique = attribute.findvalue("@isUnique") -%]
+    [%- SET isOrdered = attribute.findvalue("@isOrdered") -%]
+    [%- IF multiplicity == "*" %][% IF (isUnique == "true" || isUnique == "") && (isOrdered == "false" || isOrdered == "") %]QSet[% ELSE %]QList[% END %]<[% END -%]
+    [%- attributeType = attribute.findvalue("@type") -%]
+    [%- IF attributeType != "" -%]
+    [%- IF xmi.findnodes("//packagedElement[@xmi:type='uml:Enumeration' and @name='$attributeType']").findvalue("@name") != "" -%]
+Qt${namespace}::${attributeType} 
+    [%- ELSE -%]
+Q${namespace}${attributeType} *
+    [%- END -%]
+    [%- ELSE -%]
+${uml2qt_type.item(attribute.findnodes("type").findvalue("@href").split("#").last)}[%- IF multiplicity != "*" %] [% END -%]
+    [%- END -%]
+    [%- IF multiplicity == "*" %]> [% END -%]
+[%- END -%]
+[% SET uml2qt_attribute = {
+      "namespace" = "namespace_",
+      "interface" = "interface_",
+      "class" = "class_",
+      "default" = "default_",
+      "template" = "template_",
+      "slot" = "slot_",
+      "delete" = "delete_"
+   };
+-%]
+[%- MACRO QT_ATTRIBUTE(attribute) BLOCK -%]
+[%- SET attributeName = attribute.findvalue("@name") -%]
+[%- IF uml2qt_attribute.item(attributeName) != "" -%]
+${uml2qt_attribute.item(attributeName)}
+[%- ELSE -%]
+${attributeName}
+[%- END -%]
+[%- END -%]
