@@ -66,7 +66,7 @@ public:
     enum ${enumerationName}
     {
         [%- FOREACH literal IN enumeration.findnodes("ownedLiteral") %]
-        ${enumerationName.remove("Kind$")}${literal.findvalue("@name").ucfirst}[%- IF loop.first -%] = 0[%- END -%][%- IF !loop.last -%],[%- END -%]
+        ${enumerationName.remove("Kind$").remove("Sort$")}${literal.findvalue("@name").ucfirst}[%- IF loop.first -%] = 0[%- END -%][%- IF !loop.last -%],[%- END -%]
         [%- END %]
     };
 [%- END %]

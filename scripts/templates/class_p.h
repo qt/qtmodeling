@@ -44,6 +44,11 @@
 
 #include "Qt${namespace}/Q${namespace}${className}"
 
+[%- SET superclasses = class.findnodes('generalization') -%]
+[%- FOREACH superclass IN superclasses %]
+#include "private/q${namespace.lower}${superclass.findvalue('@general').lower}_p.h"
+[%- END %]
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -51,13 +56,15 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(Qt${namespace})
 
 class Q_${namespace.upper}_EXPORT Q${namespace}${className}Private
-[%- FOREACH superclass = class.findnodes('generalization') -%]
+[%- FOREACH superclass IN superclasses -%]
 [%- IF loop.first %] :[% END -%]
  public Q${namespace}${superclass.findvalue('@general')}Private
 [%- IF !loop.last %],[% END -%]
 [%- END %]
 {
 public:
+    Q${namespace}${className}Private();
+
 [%- FOREACH attribute = class.findnodes("ownedAttribute") %]
     [% QT_TYPE(namespace, attribute) -%][%- QT_ATTRIBUTE(attribute) %];
 [%- END %]

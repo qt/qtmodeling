@@ -40,6 +40,7 @@
 **
 ****************************************************************************/
 #include "q${namespace.lower}${className.lower}.h"
+#include "q${namespace.lower}${className.lower}_p.h"
 [%- superclasses = [] -%]
 [%- FOREACH superclass = class.findnodes("generalization") -%]
 [%- superclasses.push("Q${namespace}${superclass.findvalue('@general')}") -%]
@@ -58,6 +59,48 @@
 [%- END %]
 
 QT_BEGIN_NAMESPACE
+
+Q${namespace}${className}Private::Q${namespace}${className}Private()
+[%- SET found = "false" -%]
+[%- FOREACH attribute = class.findnodes("ownedAttribute") -%]
+    [%- SET defaultType = attribute.findvalue("defaultValue/@xmi:type") -%]
+    [%- SET type = QT_TYPE(namespace, attribute) -%]
+    [%- IF defaultType == "uml:LiteralBoolean" || defaultType == "uml:InstanceValue" || defaultType == "uml:LiteralInteger" || defaultType == "uml:LiteralUnlimitedNatural" || type.match('\*$') -%]
+        [%- IF found == "false" %] :
+[% SET found = "true" -%]
+        [%- ELSE %],
+[% END -%]
+    [%- END -%]
+    [%- IF defaultType == "uml:LiteralBoolean" -%]
+        [%- SET defaultValue = attribute.findvalue("defaultValue/@value") -%]
+        [%- IF defaultValue != "" -%]
+    [% QT_ATTRIBUTE(attribute) %](${defaultValue})
+        [%- ELSE -%]
+    [% QT_ATTRIBUTE(attribute) %](false)
+        [%- END -%]
+    [%- ELSIF defaultType == "uml:InstanceValue" -%]
+        [%- SET defaultInstance = attribute.findvalue("defaultValue/@instance") -%]
+    [% QT_ATTRIBUTE(attribute) %](Qt${namespace}::${defaultInstance.split("-").0.remove("Kind$").remove("Sort$")}${defaultInstance.split("-").1.ucfirst})
+    [%- ELSIF defaultType == "uml:LiteralInteger" -%]
+        [%- SET defaultValue = attribute.findvalue("defaultValue/@value") -%]
+        [%- IF defaultValue != "" -%]
+    [% QT_ATTRIBUTE(attribute) %](${defaultValue})
+        [%- ELSE -%]
+    [% QT_ATTRIBUTE(attribute) %](0)
+        [%- END -%]
+    [%- ELSIF defaultType == "uml:LiteralUnlimitedNatural" -%]
+        [%- SET defaultValue = attribute.findvalue("defaultValue/@value") -%]
+        [%- IF defaultValue != "" -%]
+    [% QT_ATTRIBUTE(attribute) %](${defaultValue})
+        [%- ELSE -%]
+    [% QT_ATTRIBUTE(attribute) %](0)
+        [%- END -%]
+    [%- ELSIF type.match('\*$') -%]
+    [% QT_ATTRIBUTE(attribute) %](0)
+    [%- END -%]
+[%- END %]
+{
+}
 
 /*!
     \class Q${namespace}${className}
