@@ -43,17 +43,18 @@
 #define Q${namespace.upper}${className.upper}_H
 
 #include <Qt${namespace}/Qt${namespace}Global>
-[%- superclasses = [] -%]
+[% superclasses = [] -%]
 [%- SET generalization = class.findnodes("generalization") -%]
 [% FOREACH superclass IN generalization -%]
-[%- IF loop.first %]
-[% END -%]
 [% SET superclassName = superclass.findvalue("@general") %]
 #include <Qt${namespace}/Q${namespace}${superclassName}>
 [%- superclasses.push("Q${namespace}${superclassName}") -%]
 [%- IF loop.last %]
 [% END -%]
 [%- END -%]
+[%- IF superclasses.size == 0 -%]
+#include <QtModeling/QModelingObject>
+[% END -%]
 
 [%- SET useNamespace = 'false' -%]
 [%- forwards = [] -%]
@@ -81,15 +82,18 @@ class ${forward};
 [% END %]
 [%- END -%]
 
-class Q_${namespace.upper}_EXPORT Q${namespace}${className}
+class Q${namespace}${className}Private;
+class Q_${namespace.upper}_EXPORT Q${namespace}${className} : 
 [%- FOREACH superclass IN generalization -%]
-[%- IF loop.first %] :[% END -%]
- public Q${namespace}${superclass.findvalue("@general")}
-[%- IF !loop.last %],[% END -%]
+public Q${namespace}${superclass.findvalue("@general")}
+[%- IF !loop.last %], [% END -%]
+[%- END %]
+[%- IF superclasses.size == 0 -%]
+public QModelingObject
 [%- END %]
 {
 public:
-    [% IF class.findvalue("@isAbstract") == "true" %]Q_DECL_HIDDEN [% END %]Q${namespace}${className}();
+    [% IF class.findvalue("@isAbstract") == "true" %]Q_DECL_HIDDEN [% END %]Q${namespace}${className}(bool create_d_ptr = true);
 [%- FOREACH attribute = class.findnodes("ownedAttribute") -%]
     [%- IF loop.first %]
 

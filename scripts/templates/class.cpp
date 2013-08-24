@@ -42,7 +42,8 @@
 #include "q${namespace.lower}${className.lower}.h"
 #include "q${namespace.lower}${className.lower}_p.h"
 [%- superclasses = [] -%]
-[%- FOREACH superclass = class.findnodes("generalization") -%]
+[%- SET generalization = class.findnodes("generalization") -%]
+[%- FOREACH superclass IN generalization -%]
 [%- superclasses.push("Q${namespace}${superclass.findvalue('@general')}") -%]
 [%- END -%]
 [%- forwards = [] -%]
@@ -110,8 +111,18 @@ Q${namespace}${className}Private::Q${namespace}${className}Private()
     \brief ${class.findvalue("ownedComment/body/text()")}
  */
 
-Q${namespace}${className}::Q${namespace}${className}()
+Q${namespace}${className}::Q${namespace}${className}(bool create_d_ptr) :
+[%- FOREACH superclass IN generalization %]
+    Q${namespace}${superclass.findvalue("@general")}(false)
+[%- IF !loop.last %],
+[%- END -%]
+[%- END -%]
+[%- IF superclasses.size == 0 %]
+    QModelingObject(false)
+[%- END %]
 {
+    if (create_d_ptr)
+        set_d_ptr(new Q${namespace}${className}Private);
 }
 [%- FOREACH attribute = class.findnodes("ownedAttribute") %]
 [%- IF loop.first %]
@@ -162,6 +173,7 @@ void Q${namespace}${className}::set${attributeName.remove("^Is")}([% QT_TYPE(nam
 [%- SET operationName = operation.findvalue("@name") -%]
 
 [%- SET returnType = QT_TYPE(namespace, operation.findnodes("ownedParameter[@direction='return']")) %]
+
 /*!
     ${operation.findvalue("ownedComment/body/text()")}
  */

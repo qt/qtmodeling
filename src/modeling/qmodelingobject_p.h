@@ -1,12 +1,11 @@
-[%- PROCESS common.tmpl -%]
 /****************************************************************************
 **
 ** Copyright (C) 2013 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/legal
 **
-** This file is part of the Qt${namespace} module of the Qt Toolkit.
+** This file is part of the QtModeling module of the Qt Toolkit.
 **
-** \$QT_BEGIN_LICENSE:LGPL\$
+** $QT_BEGIN_LICENSE:LGPL$
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
 ** accordance with the commercial license agreement provided with the
@@ -36,51 +35,28 @@
 ** met: http://www.gnu.org/copyleft/gpl.html.
 **
 **
-** \$QT_END_LICENSE\$
+** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef Q${namespace.upper}${className.upper}_P_H
-#define Q${namespace.upper}${className.upper}_P_H
+#ifndef QMODELINGOBJECT_P_H
+#define QMODELINGOBJECT_P_H
 
-#include "Qt${namespace}/Q${namespace}${className}"
+#include "QtModeling/QModelingObject"
 
-[%- SET generalization = class.findnodes('generalization') -%]
-[% superclasses = [] -%]
-[%- FOREACH superclass IN generalization %]
-#include "private/q${namespace.lower}${superclass.findvalue('@general').lower}_p.h"
-[%- superclasses.push("Q${namespace}${superclassName}") -%]
-[%- IF loop.last %]
-[% END -%]
-[%- END %]
-[%- IF superclasses.size == 0 %]
-#include "private/qmodelingobject_p.h"
-[% END %]
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
-QT_MODULE(Qt${namespace})
+QT_MODULE(QtUml)
 
-class Q_${namespace.upper}_EXPORT Q${namespace}${className}Private : 
-[%- FOREACH superclass IN generalization -%]
-public Q${namespace}${superclass.findvalue('@general')}Private
-[%- IF !loop.last %], [% END -%]
-[%- END %]
-[%- IF superclasses.size == 0 -%]
-public QModelingObjectPrivate
-[%- END %]
+class Q_MODELING_EXPORT QModelingObjectPrivate
 {
 public:
-    Q${namespace}${className}Private();
-
-[%- FOREACH attribute = class.findnodes("ownedAttribute") %]
-    [% QT_TYPE(namespace, attribute) -%][%- QT_ATTRIBUTE(attribute) %];
-[%- END %]
+    QModelingObject *q_ptr;
 };
 
 QT_END_NAMESPACE
 
 QT_END_HEADER
 
-#endif // Q${namespace.upper}${className.upper}_P_H
-
+#endif // QMODELINGOBJECT_P_H
