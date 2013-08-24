@@ -57,7 +57,9 @@ my $xmi = XML::XPath->new(filename => $options{i});
 my $namespace = $xmi->findvalue('//uml:Package/@name');
 
 make_path($options{o}."/".$namespace);
-binmode STDOUT, ':utf8';
+
+{
+local *STDOUT;
 
 my $globalHeader = "qt".lc($namespace)."global.h";
 open STDOUT, '>', $options{o}."/".$namespace."/".$globalHeader;
@@ -93,9 +95,9 @@ if ($tt->process('module.pro', {
 }) ne 1) { print $tt->error(); }
 close STDOUT;
 
+}
+
 my $classset = $xmi->find('//packagedElement[@xmi:type=\'uml:Class\']');
-my $count = 0;
-my @pids;
 foreach my $class ($classset->get_nodelist) {
     my $className = $class->findvalue('@name');
     die "could not fork" unless defined(my $pid = fork);
@@ -103,13 +105,10 @@ foreach my $class ($classset->get_nodelist) {
         exec "./generate-class.pl", "-i", $options{i}, "-o", $options{o}, "-c", $className;
         die "exec of generate-class.pl failed";
     }
-    push @pids, $pid;
-    $count = $count + 1;
-    if ($count % $options{p} == 0) {
-        for my $pid (@pids) {
-            waitpid $pid, 0;
-        }
-        @pids=();
-    }
+    my $buf;
+    do {
+        sleep(1);
+        $buf = `ps -ef | grep generate-class | grep -v grep | wc -l`;
+    } while ($buf >= $options{p});
 }
 
