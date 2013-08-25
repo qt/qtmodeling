@@ -43,12 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlInteractionFragment>
-
-// Qt includes
-#include <QtCore/QList>
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -56,50 +51,29 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlProperty;
-class QUmlInteraction;
 class QUmlGate;
+class QUmlProperty;
 class QUmlValueSpecification;
 
 class QUmlInteractionUsePrivate;
-
 class Q_UML_EXPORT QUmlInteractionUse : public QUmlInteractionFragment
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QSet<QUmlGate *> actualGates READ actualGates)
-    Q_PROPERTY(QUmlValueSpecification * returnValue READ returnValue WRITE setReturnValue)
-    Q_PROPERTY(QUmlInteraction * refersTo READ refersTo WRITE setRefersTo)
-    Q_PROPERTY(QList<QUmlValueSpecification *> arguments READ arguments)
-    Q_PROPERTY(QUmlProperty * returnValueRecipient READ returnValueRecipient WRITE setReturnValueRecipient)
-
-    Q_DISABLE_COPY(QUmlInteractionUse)
-    Q_DECLARE_PRIVATE(QUmlInteractionUse)
-
 public:
-    Q_INVOKABLE explicit QUmlInteractionUse(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlInteractionUse();
+    QUmlInteractionUse(bool create_d_ptr = true);
 
-    // Association ends from QUmlInteractionUse
-    Q_INVOKABLE QSet<QUmlGate *> actualGates() const;
-    Q_INVOKABLE void addActualGate(QUmlGate *actualGate);
-    Q_INVOKABLE void removeActualGate(QUmlGate *actualGate);
-    Q_INVOKABLE QUmlValueSpecification *returnValue() const;
-    Q_INVOKABLE void setReturnValue(QUmlValueSpecification *returnValue);
-    Q_INVOKABLE QUmlInteraction *refersTo() const;
-    Q_INVOKABLE void setRefersTo(QUmlInteraction *refersTo);
-    Q_INVOKABLE QList<QUmlValueSpecification *> arguments() const;
-    Q_INVOKABLE void addArgument(QUmlValueSpecification *argument);
-    Q_INVOKABLE void removeArgument(QUmlValueSpecification *argument);
-    Q_INVOKABLE QUmlProperty *returnValueRecipient() const;
-    Q_INVOKABLE void setReturnValueRecipient(QUmlProperty *returnValueRecipient);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlInteractionUse(QUmlInteractionUsePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QSet<QUmlGate *> actualGate() const;
+    void addActualGate(QSet<QUmlGate *> actualGate);
+    void removeActualGate(QSet<QUmlGate *> actualGate);
+    QList<QUmlValueSpecification *> argument() const;
+    void addArgument(QList<QUmlValueSpecification *> argument);
+    void removeArgument(QList<QUmlValueSpecification *> argument);
+    QUmlInteraction *refersTo() const;
+    void setRefersTo(QUmlInteraction *refersTo);
+    QUmlValueSpecification *returnValue() const;
+    void setReturnValue(QUmlValueSpecification *returnValue);
+    QUmlProperty *returnValueRecipient() const;
+    void setReturnValueRecipient(QUmlProperty *returnValueRecipient);
 };
 
 QT_END_NAMESPACE

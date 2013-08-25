@@ -41,10 +41,9 @@
 #ifndef QUMLEXECUTIONOCCURRENCESPECIFICATION_P_H
 #define QUMLEXECUTIONOCCURRENCESPECIFICATION_P_H
 
-// Base class includes
-#include "private/qumloccurrencespecification_p.h"
-
 #include "QtUml/QUmlExecutionOccurrenceSpecification"
+
+#include "private/qumloccurrencespecification_p.h"
 
 QT_BEGIN_HEADER
 
@@ -52,17 +51,10 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlExecutionSpecification;
-class QUmlExecutionOccurrenceSpecification;
-
 class Q_UML_EXPORT QUmlExecutionOccurrenceSpecificationPrivate : public QUmlOccurrenceSpecificationPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlExecutionOccurrenceSpecification)
-
 public:
-    explicit QUmlExecutionOccurrenceSpecificationPrivate();
-    virtual ~QUmlExecutionOccurrenceSpecificationPrivate();
+    QUmlExecutionOccurrenceSpecificationPrivate();
 
     QUmlExecutionSpecification *execution;
 };

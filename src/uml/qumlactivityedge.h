@@ -43,11 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlRedefinableElement>
-
-// Qt includes
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -55,71 +51,42 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlActivityEdge;
-class QUmlInterruptibleActivityRegion;
-class QUmlActivityNode;
-class QUmlStructuredActivityNode;
-class QUmlActivityPartition;
 class QUmlActivity;
 class QUmlActivityGroup;
+class QUmlActivityNode;
+class QUmlActivityPartition;
+class QUmlInterruptibleActivityRegion;
+class QUmlStructuredActivityNode;
 class QUmlValueSpecification;
 
 class QUmlActivityEdgePrivate;
-
 class Q_UML_EXPORT QUmlActivityEdge : public QUmlRedefinableElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlActivityNode * source READ source WRITE setSource)
-    Q_PROPERTY(QSet<QUmlActivityEdge *> redefinedEdges READ redefinedEdges)
-    Q_PROPERTY(QSet<QUmlActivityGroup *> inGroup READ inGroup)
-    Q_PROPERTY(QUmlValueSpecification * guard READ guard WRITE setGuard)
-    Q_PROPERTY(QSet<QUmlActivityPartition *> inPartition READ inPartition)
-    Q_PROPERTY(QUmlActivity * activity READ activity WRITE setActivity)
-    Q_PROPERTY(QUmlInterruptibleActivityRegion * interrupts READ interrupts WRITE setInterrupts)
-    Q_PROPERTY(QUmlValueSpecification * weight READ weight WRITE setWeight)
-    Q_PROPERTY(QUmlStructuredActivityNode * inStructuredNode READ inStructuredNode WRITE setInStructuredNode)
-    Q_PROPERTY(QUmlActivityNode * target READ target WRITE setTarget)
-
-    Q_DISABLE_COPY(QUmlActivityEdge)
-    Q_DECLARE_PRIVATE(QUmlActivityEdge)
-
 public:
-    Q_INVOKABLE explicit QUmlActivityEdge(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlActivityEdge();
+    Q_DECL_HIDDEN QUmlActivityEdge(bool create_d_ptr = true);
 
-    // Association ends from QUmlActivityEdge
-    Q_INVOKABLE QUmlActivityNode *source() const;
-    Q_INVOKABLE void setSource(QUmlActivityNode *source);
-    Q_INVOKABLE QSet<QUmlActivityEdge *> redefinedEdges() const;
-    Q_INVOKABLE void addRedefinedEdge(QUmlActivityEdge *redefinedEdge);
-    Q_INVOKABLE void removeRedefinedEdge(QUmlActivityEdge *redefinedEdge);
-    Q_INVOKABLE QSet<QUmlActivityGroup *> inGroup() const;
-    Q_INVOKABLE QUmlValueSpecification *guard() const;
-    Q_INVOKABLE void setGuard(QUmlValueSpecification *guard);
-    Q_INVOKABLE QSet<QUmlActivityPartition *> inPartition() const;
-    Q_INVOKABLE void addInPartition(QUmlActivityPartition *inPartition);
-    Q_INVOKABLE void removeInPartition(QUmlActivityPartition *inPartition);
-    Q_INVOKABLE QUmlActivity *activity() const;
-    Q_INVOKABLE void setActivity(QUmlActivity *activity);
-    Q_INVOKABLE QUmlInterruptibleActivityRegion *interrupts() const;
-    Q_INVOKABLE void setInterrupts(QUmlInterruptibleActivityRegion *interrupts);
-    Q_INVOKABLE QUmlValueSpecification *weight() const;
-    Q_INVOKABLE void setWeight(QUmlValueSpecification *weight);
-    Q_INVOKABLE QUmlStructuredActivityNode *inStructuredNode() const;
-    Q_INVOKABLE void setInStructuredNode(QUmlStructuredActivityNode *inStructuredNode);
-    Q_INVOKABLE QUmlActivityNode *target() const;
-    Q_INVOKABLE void setTarget(QUmlActivityNode *target);
-
-    virtual void setPropertyData();
-
-    // Classes which access read-only opposite properties should be friend
-    friend class QUmlActivityGroupPrivate;
-
-protected:
-    explicit QUmlActivityEdge(QUmlActivityEdgePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlActivity *activity() const;
+    void setActivity(QUmlActivity *activity);
+    QUmlValueSpecification *guard() const;
+    void setGuard(QUmlValueSpecification *guard);
+    QSet<QUmlActivityGroup *> inGroup() const;
+    QSet<QUmlActivityPartition *> inPartition() const;
+    void addInPartition(QSet<QUmlActivityPartition *> inPartition);
+    void removeInPartition(QSet<QUmlActivityPartition *> inPartition);
+    QUmlStructuredActivityNode *inStructuredNode() const;
+    void setInStructuredNode(QUmlStructuredActivityNode *inStructuredNode);
+    QUmlInterruptibleActivityRegion *interrupts() const;
+    void setInterrupts(QUmlInterruptibleActivityRegion *interrupts);
+    QSet<QUmlActivityEdge *> redefinedEdge() const;
+    void addRedefinedEdge(QSet<QUmlActivityEdge *> redefinedEdge);
+    void removeRedefinedEdge(QSet<QUmlActivityEdge *> redefinedEdge);
+    QUmlActivityNode *source() const;
+    void setSource(QUmlActivityNode *source);
+    QUmlActivityNode *target() const;
+    void setTarget(QUmlActivityNode *target);
+    QUmlValueSpecification *weight() const;
+    void setWeight(QUmlValueSpecification *weight);
 };
 
 QT_END_NAMESPACE

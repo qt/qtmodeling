@@ -43,16 +43,10 @@
 
 #include <QtUml/QUmlInterval>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlIntervalConstraintPrivate::QUmlIntervalConstraintPrivate() :
     specification(0)
-{
-}
-
-QUmlIntervalConstraintPrivate::~QUmlIntervalConstraintPrivate()
 {
 }
 
@@ -64,66 +58,27 @@ QUmlIntervalConstraintPrivate::~QUmlIntervalConstraintPrivate()
     \brief An interval constraint is a constraint that refers to an interval.
  */
 
-QUmlIntervalConstraint::QUmlIntervalConstraint(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlConstraint(*new QUmlIntervalConstraintPrivate, wrapper, parent)
+QUmlIntervalConstraint::QUmlIntervalConstraint(bool create_d_ptr) :
+    QUmlConstraint(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlIntervalConstraintPrivate);
 }
 
-QUmlIntervalConstraint::QUmlIntervalConstraint(QUmlIntervalConstraintPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlConstraint(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlIntervalConstraint::~QUmlIntervalConstraint()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlIntervalConstraint
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     A condition that must be true when evaluated in order for the constraint to be satisfied.
  */
 QUmlInterval *QUmlIntervalConstraint::specification() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlIntervalConstraint);
-    return d->specification;
+    return 0;
 }
 
 void QUmlIntervalConstraint::setSpecification(QUmlInterval *specification)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlIntervalConstraint);
-    if (d->specification != specification) {
-        if (d->specification)
-            qTopLevelWrapper(d->specification)->setParent(0);
-        d->specification = specification;
-        qTopLevelWrapper(specification)->setParent(qTopLevelWrapper(this));
-
-        // Adjust redefined property(ies)
-        (qwrappedobject_cast<QUmlConstraint *>(this))->setSpecification(qwrappedobject_cast<QUmlValueSpecification *>(specification));
-    }
-}
-
-void QUmlIntervalConstraint::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlIntervalConstraint")][QString::fromLatin1("specification")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlIntervalConstraint")][QString::fromLatin1("specification")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlIntervalConstraint")][QString::fromLatin1("specification")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A condition that must be true when evaluated in order for the constraint to be satisfied.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlIntervalConstraint")][QString::fromLatin1("specification")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QUmlConstraint::specification");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlIntervalConstraint")][QString::fromLatin1("specification")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlIntervalConstraint")][QString::fromLatin1("specification")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlConstraint::setPropertyData();
+    Q_UNUSED(specification);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlintervalconstraint.cpp"
 

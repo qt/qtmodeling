@@ -41,16 +41,11 @@
 #include "qumlmodel.h"
 #include "qumlmodel_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlModelPrivate::QUmlModelPrivate()
 {
-}
-
-QUmlModelPrivate::~QUmlModelPrivate()
-{
+    viewpoint = "teste";
 }
 
 /*!
@@ -61,60 +56,31 @@ QUmlModelPrivate::~QUmlModelPrivate()
     \brief A model captures a view of a physical system. It is an abstraction of the physical system, with a certain purpose. This purpose determines what is to be included in the model and what is irrelevant. Thus the model completely describes those aspects of the physical system that are relevant to the purpose of the model, at the appropriate level of detail.
  */
 
-QUmlModel::QUmlModel(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlPackage(*new QUmlModelPrivate, wrapper, parent)
+QUmlModel::QUmlModel(bool create_d_ptr) :
+    QUmlElement(false),
+    QUmlNamedElement(false),
+    QUmlPackage(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlModelPrivate);
 }
 
-QUmlModel::QUmlModel(QUmlModelPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlPackage(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlModel::~QUmlModel()
-{
-}
-
-// ---------------------------------------------------------------
-// ATTRIBUTES FROM QUmlModel
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     The name of the viewpoint that is expressed by a model (This name may refer to a profile definition).
  */
 QString QUmlModel::viewpoint() const
 {
-    // This is a read-write attribute
-
-    Q_D(const QUmlModel);
+    QM_D(const QUmlModel);
     return d->viewpoint;
 }
 
 void QUmlModel::setViewpoint(QString viewpoint)
 {
-    // This is a read-write attribute
-
-    Q_D(QUmlModel);
-    if (d->viewpoint != viewpoint) {
-        d->viewpoint = viewpoint;
-    }
-}
-
-void QUmlModel::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlModel")][QString::fromLatin1("viewpoint")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlModel")][QString::fromLatin1("viewpoint")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlModel")][QString::fromLatin1("viewpoint")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The name of the viewpoint that is expressed by a model (This name may refer to a profile definition).");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlModel")][QString::fromLatin1("viewpoint")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlModel")][QString::fromLatin1("viewpoint")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlModel")][QString::fromLatin1("viewpoint")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QUmlPackage::setPropertyData();
+    QM_D(QUmlModel);
+    d->viewpoint = viewpoint;
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlmodel.cpp"
 

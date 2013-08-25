@@ -41,25 +41,20 @@
 #ifndef QUMLDATASTORENODE_P_H
 #define QUMLDATASTORENODE_P_H
 
-// Base class includes
-#include "private/qumlcentralbuffernode_p.h"
-
 #include "QtUml/QUmlDataStoreNode"
+
+#include "private/qumlcentralbuffernode_p.h"
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-class QUmlDataStoreNode;
 
 class Q_UML_EXPORT QUmlDataStoreNodePrivate : public QUmlCentralBufferNodePrivate
 {
-    Q_DECLARE_PUBLIC(QUmlDataStoreNode)
-
 public:
-    explicit QUmlDataStoreNodePrivate();
-    virtual ~QUmlDataStoreNodePrivate();
+    QUmlDataStoreNodePrivate();
 
 };
 

@@ -41,10 +41,9 @@
 #ifndef QUMLDESTROYOBJECTACTION_P_H
 #define QUMLDESTROYOBJECTACTION_P_H
 
-// Base class includes
-#include "private/qumlaction_p.h"
-
 #include "QtUml/QUmlDestroyObjectAction"
+
+#include "private/qumlaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -52,17 +51,10 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlInputPin;
-class QUmlDestroyObjectAction;
-
 class Q_UML_EXPORT QUmlDestroyObjectActionPrivate : public QUmlActionPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlDestroyObjectAction)
-
 public:
-    explicit QUmlDestroyObjectActionPrivate();
-    virtual ~QUmlDestroyObjectActionPrivate();
+    QUmlDestroyObjectActionPrivate();
 
     bool isDestroyLinks;
     bool isDestroyOwnedObjects;

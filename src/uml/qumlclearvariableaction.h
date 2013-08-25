@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlVariableAction>
 
 QT_BEGIN_HEADER
@@ -51,25 +50,11 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-
 class QUmlClearVariableActionPrivate;
-
 class Q_UML_EXPORT QUmlClearVariableAction : public QUmlVariableAction
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_DISABLE_COPY(QUmlClearVariableAction)
-    Q_DECLARE_PRIVATE(QUmlClearVariableAction)
-
 public:
-    Q_INVOKABLE explicit QUmlClearVariableAction(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlClearVariableAction();
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlClearVariableAction(QUmlClearVariableActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    QUmlClearVariableAction(bool create_d_ptr = true);
 };
 
 QT_END_NAMESPACE

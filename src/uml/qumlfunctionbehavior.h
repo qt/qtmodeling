@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlOpaqueBehavior>
 
 QT_BEGIN_HEADER
@@ -51,25 +50,11 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-
 class QUmlFunctionBehaviorPrivate;
-
 class Q_UML_EXPORT QUmlFunctionBehavior : public QUmlOpaqueBehavior
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_DISABLE_COPY(QUmlFunctionBehavior)
-    Q_DECLARE_PRIVATE(QUmlFunctionBehavior)
-
 public:
-    Q_INVOKABLE explicit QUmlFunctionBehavior(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlFunctionBehavior();
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlFunctionBehavior(QUmlFunctionBehaviorPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    QUmlFunctionBehavior(bool create_d_ptr = true);
 };
 
 QT_END_NAMESPACE

@@ -41,13 +41,9 @@
 #ifndef QUMLSTEREOTYPE_P_H
 #define QUMLSTEREOTYPE_P_H
 
-// Base class includes
-#include "private/qumlclass_p.h"
-
 #include "QtUml/QUmlStereotype"
 
-// Qt includes
-#include "QtCore/QSet"
+#include "private/qumlclass_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,20 +51,13 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlImage;
-class QUmlProfile;
-class QUmlStereotype;
-
 class Q_UML_EXPORT QUmlStereotypePrivate : public QUmlClassPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlStereotype)
-
 public:
-    explicit QUmlStereotypePrivate();
-    virtual ~QUmlStereotypePrivate();
+    QUmlStereotypePrivate();
 
-    QSet<QUmlImage *> icons;
+    QSet<QUmlImage *> icon;
+    QUmlProfile *profile;
 };
 
 QT_END_NAMESPACE

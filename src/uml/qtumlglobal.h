@@ -41,7 +41,13 @@
 #ifndef QTUMLGLOBAL_H
 #define QTUMLGLOBAL_H
 
-#include <QtCore/qglobal.h>
+#include <QtCore/QtGlobal>
+
+#include <QtCore/QList>
+#include <QtCore/QSet>
+#include <QtCore/QString>
+
+#include <QtCore/QDebug>
 
 QT_BEGIN_NAMESPACE
 

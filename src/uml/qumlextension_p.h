@@ -41,10 +41,9 @@
 #ifndef QUMLEXTENSION_P_H
 #define QUMLEXTENSION_P_H
 
-// Base class includes
-#include "private/qumlassociation_p.h"
-
 #include "QtUml/QUmlExtension"
+
+#include "private/qumlassociation_p.h"
 
 QT_BEGIN_HEADER
 
@@ -52,24 +51,14 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlClass;
-class QUmlExtensionEnd;
-class QUmlProperty;
-class QUmlExtension;
-
 class Q_UML_EXPORT QUmlExtensionPrivate : public QUmlAssociationPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlExtension)
-
 public:
-    explicit QUmlExtensionPrivate();
-    virtual ~QUmlExtensionPrivate();
+    QUmlExtensionPrivate();
 
+    bool isRequired;
+    QUmlClass *metaclass;
     QUmlExtensionEnd *ownedEnd;
-
-    // Internal functions for read-only subsetted association ends
-    void setMetaclass(QUmlClass *metaclass);
 };
 
 QT_END_NAMESPACE

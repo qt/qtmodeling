@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlAction>
 
 QT_BEGIN_HEADER
@@ -52,37 +51,20 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlAssociation;
 class QUmlInputPin;
 
 class QUmlClearAssociationActionPrivate;
-
 class Q_UML_EXPORT QUmlClearAssociationAction : public QUmlAction
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlInputPin * object READ object WRITE setObject)
-    Q_PROPERTY(QUmlAssociation * association READ association WRITE setAssociation)
-
-    Q_DISABLE_COPY(QUmlClearAssociationAction)
-    Q_DECLARE_PRIVATE(QUmlClearAssociationAction)
-
 public:
-    Q_INVOKABLE explicit QUmlClearAssociationAction(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlClearAssociationAction();
+    QUmlClearAssociationAction(bool create_d_ptr = true);
 
-    // Association ends from QUmlClearAssociationAction
-    Q_INVOKABLE QUmlInputPin *object() const;
-    Q_INVOKABLE void setObject(QUmlInputPin *object);
-    Q_INVOKABLE QUmlAssociation *association() const;
-    Q_INVOKABLE void setAssociation(QUmlAssociation *association);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlClearAssociationAction(QUmlClearAssociationActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlAssociation *association() const;
+    void setAssociation(QUmlAssociation *association);
+    QUmlInputPin *object() const;
+    void setObject(QUmlInputPin *object);
 };
 
 QT_END_NAMESPACE

@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlPackageableElement>
 
 QT_BEGIN_HEADER
@@ -51,25 +50,11 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-
 class QUmlObservationPrivate;
-
 class Q_UML_EXPORT QUmlObservation : public QUmlPackageableElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_DISABLE_COPY(QUmlObservation)
-    Q_DECLARE_PRIVATE(QUmlObservation)
-
 public:
-    Q_INVOKABLE explicit QUmlObservation(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlObservation();
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlObservation(QUmlObservationPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    Q_DECL_HIDDEN QUmlObservation(bool create_d_ptr = true);
 };
 
 QT_END_NAMESPACE

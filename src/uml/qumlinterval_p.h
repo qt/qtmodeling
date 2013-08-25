@@ -41,28 +41,23 @@
 #ifndef QUMLINTERVAL_P_H
 #define QUMLINTERVAL_P_H
 
-// Base class includes
-#include "private/qumlvaluespecification_p.h"
-
 #include "QtUml/QUmlInterval"
+
+#include "private/qumlvaluespecification_p.h"
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-class QUmlInterval;
 
 class Q_UML_EXPORT QUmlIntervalPrivate : public QUmlValueSpecificationPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlInterval)
-
 public:
-    explicit QUmlIntervalPrivate();
-    virtual ~QUmlIntervalPrivate();
+    QUmlIntervalPrivate();
 
-    QUmlValueSpecification *min;
     QUmlValueSpecification *max;
+    QUmlValueSpecification *min;
 };
 
 QT_END_NAMESPACE

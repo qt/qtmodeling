@@ -41,10 +41,9 @@
 #ifndef QUMLLINKENDDESTRUCTIONDATA_P_H
 #define QUMLLINKENDDESTRUCTIONDATA_P_H
 
-// Base class includes
-#include "private/qumllinkenddata_p.h"
-
 #include "QtUml/QUmlLinkEndDestructionData"
+
+#include "private/qumllinkenddata_p.h"
 
 QT_BEGIN_HEADER
 
@@ -52,20 +51,13 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlInputPin;
-class QUmlLinkEndDestructionData;
-
 class Q_UML_EXPORT QUmlLinkEndDestructionDataPrivate : public QUmlLinkEndDataPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlLinkEndDestructionData)
-
 public:
-    explicit QUmlLinkEndDestructionDataPrivate();
-    virtual ~QUmlLinkEndDestructionDataPrivate();
+    QUmlLinkEndDestructionDataPrivate();
 
-    bool isDestroyDuplicates;
     QUmlInputPin *destroyAt;
+    bool isDestroyDuplicates;
 };
 
 QT_END_NAMESPACE

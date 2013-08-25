@@ -41,10 +41,9 @@
 #ifndef QUMLCALLOPERATIONACTION_P_H
 #define QUMLCALLOPERATIONACTION_P_H
 
-// Base class includes
-#include "private/qumlcallaction_p.h"
-
 #include "QtUml/QUmlCallOperationAction"
+
+#include "private/qumlcallaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -52,18 +51,10 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlOperation;
-class QUmlInputPin;
-class QUmlCallOperationAction;
-
 class Q_UML_EXPORT QUmlCallOperationActionPrivate : public QUmlCallActionPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlCallOperationAction)
-
 public:
-    explicit QUmlCallOperationActionPrivate();
-    virtual ~QUmlCallOperationActionPrivate();
+    QUmlCallOperationActionPrivate();
 
     QUmlOperation *operation;
     QUmlInputPin *target;

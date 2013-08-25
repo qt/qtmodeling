@@ -41,15 +41,10 @@
 #ifndef QUMLREDEFINABLETEMPLATESIGNATURE_P_H
 #define QUMLREDEFINABLETEMPLATESIGNATURE_P_H
 
-// Base class includes
-#include "private/qwrappedobject_p.h"
-#include "private/qumltemplatesignature_p.h"
-#include "private/qumlredefinableelement_p.h"
-
 #include "QtUml/QUmlRedefinableTemplateSignature"
 
-// Qt includes
-#include "QtCore/QSet"
+#include "private/qumltemplatesignature_p.h"
+#include "private/qumlredefinableelement_p.h"
 
 QT_BEGIN_HEADER
 
@@ -57,22 +52,14 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlClassifier;
-class QUmlRedefinableTemplateSignature;
-class QUmlTemplateParameter;
-class QUmlRedefinableTemplateSignature;
-
-class Q_UML_EXPORT QUmlRedefinableTemplateSignaturePrivate : public QWrappedObjectPrivate
+class Q_UML_EXPORT QUmlRedefinableTemplateSignaturePrivate : public QUmlTemplateSignaturePrivate, public QUmlRedefinableElementPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlRedefinableTemplateSignature)
-
 public:
-    explicit QUmlRedefinableTemplateSignaturePrivate();
-    virtual ~QUmlRedefinableTemplateSignaturePrivate();
+    QUmlRedefinableTemplateSignaturePrivate();
 
     QUmlClassifier *classifier;
-    QSet<QUmlRedefinableTemplateSignature *> extendedSignatures;
+    QSet<QUmlRedefinableTemplateSignature *> extendedSignature;
+    QSet<QUmlTemplateParameter *> inheritedParameter;
 };
 
 QT_END_NAMESPACE

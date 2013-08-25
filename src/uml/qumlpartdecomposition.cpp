@@ -41,15 +41,9 @@
 #include "qumlpartdecomposition.h"
 #include "qumlpartdecomposition_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlPartDecompositionPrivate::QUmlPartDecompositionPrivate()
-{
-}
-
-QUmlPartDecompositionPrivate::~QUmlPartDecompositionPrivate()
 {
 }
 
@@ -61,28 +55,12 @@ QUmlPartDecompositionPrivate::~QUmlPartDecompositionPrivate()
     \brief A part decomposition is a description of the internal interactions of one lifeline relative to an interaction.
  */
 
-QUmlPartDecomposition::QUmlPartDecomposition(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlInteractionUse(*new QUmlPartDecompositionPrivate, wrapper, parent)
+QUmlPartDecomposition::QUmlPartDecomposition(bool create_d_ptr) :
+    QUmlInteractionUse(false)
 {
-    setPropertyData();
-}
-
-QUmlPartDecomposition::QUmlPartDecomposition(QUmlPartDecompositionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlInteractionUse(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlPartDecomposition::~QUmlPartDecomposition()
-{
-}
-
-void QUmlPartDecomposition::setPropertyData()
-{
-    QUmlInteractionUse::setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlPartDecompositionPrivate);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlpartdecomposition.cpp"
 

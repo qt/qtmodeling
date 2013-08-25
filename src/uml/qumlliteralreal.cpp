@@ -41,15 +41,9 @@
 #include "qumlliteralreal.h"
 #include "qumlliteralreal_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlLiteralRealPrivate::QUmlLiteralRealPrivate()
-{
-}
-
-QUmlLiteralRealPrivate::~QUmlLiteralRealPrivate()
 {
 }
 
@@ -61,77 +55,42 @@ QUmlLiteralRealPrivate::~QUmlLiteralRealPrivate()
     \brief A literal real is a specification of a real value.
  */
 
-QUmlLiteralReal::QUmlLiteralReal(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlLiteralSpecification(*new QUmlLiteralRealPrivate, wrapper, parent)
+QUmlLiteralReal::QUmlLiteralReal(bool create_d_ptr) :
+    QUmlLiteralSpecification(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlLiteralRealPrivate);
 }
 
-QUmlLiteralReal::QUmlLiteralReal(QUmlLiteralRealPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlLiteralSpecification(dd, wrapper, parent)
+// Owned attributes
+
+double QUmlLiteralReal::value() const
 {
-    setPropertyData();
+    return double();
 }
 
-QUmlLiteralReal::~QUmlLiteralReal()
+void QUmlLiteralReal::setValue(double value)
 {
+    Q_UNUSED(value);
 }
 
-// ---------------------------------------------------------------
-// ATTRIBUTES FROM QUmlLiteralReal
-// ---------------------------------------------------------------
-
-qreal QUmlLiteralReal::value() const
-{
-    // This is a read-write attribute
-
-    Q_D(const QUmlLiteralReal);
-    return d->value;
-}
-
-void QUmlLiteralReal::setValue(qreal value)
-{
-    // This is a read-write attribute
-
-    Q_D(QUmlLiteralReal);
-    if (d->value != value) {
-        d->value = value;
-    }
-}
+// Operations
 
 /*!
     The query isComputable() is redefined to be true.
  */
 bool QUmlLiteralReal::isComputable() const
 {
-    qWarning("QUmlLiteralReal::isComputable: operation to be implemented");
-
-    return bool(); // change here to your derived return
+    return bool ();
 }
 
 /*!
     The query realValue() gives the value.
  */
-qreal QUmlLiteralReal::realValue() const
+double QUmlLiteralReal::realValue() const
 {
-    qWarning("QUmlLiteralReal::realValue: operation to be implemented");
-
-    return qreal(); // change here to your derived return
-}
-
-void QUmlLiteralReal::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLiteralReal")][QString::fromLatin1("value")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLiteralReal")][QString::fromLatin1("value")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLiteralReal")][QString::fromLatin1("value")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLiteralReal")][QString::fromLatin1("value")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLiteralReal")][QString::fromLatin1("value")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLiteralReal")][QString::fromLatin1("value")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QUmlLiteralSpecification::setPropertyData();
+    return double ();
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlliteralreal.cpp"
 

@@ -41,15 +41,9 @@
 #include "qumldatastorenode.h"
 #include "qumldatastorenode_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlDataStoreNodePrivate::QUmlDataStoreNodePrivate()
-{
-}
-
-QUmlDataStoreNodePrivate::~QUmlDataStoreNodePrivate()
 {
 }
 
@@ -61,28 +55,12 @@ QUmlDataStoreNodePrivate::~QUmlDataStoreNodePrivate()
     \brief A data store node is a central buffer node for non-transient information.
  */
 
-QUmlDataStoreNode::QUmlDataStoreNode(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlCentralBufferNode(*new QUmlDataStoreNodePrivate, wrapper, parent)
+QUmlDataStoreNode::QUmlDataStoreNode(bool create_d_ptr) :
+    QUmlCentralBufferNode(false)
 {
-    setPropertyData();
-}
-
-QUmlDataStoreNode::QUmlDataStoreNode(QUmlDataStoreNodePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlCentralBufferNode(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlDataStoreNode::~QUmlDataStoreNode()
-{
-}
-
-void QUmlDataStoreNode::setPropertyData()
-{
-    QUmlCentralBufferNode::setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlDataStoreNodePrivate);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumldatastorenode.cpp"
 

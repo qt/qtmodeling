@@ -43,16 +43,10 @@
 
 #include <QtUml/QUmlOutputPin>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlReadVariableActionPrivate::QUmlReadVariableActionPrivate() :
     result(0)
-{
-}
-
-QUmlReadVariableActionPrivate::~QUmlReadVariableActionPrivate()
 {
 }
 
@@ -64,68 +58,27 @@ QUmlReadVariableActionPrivate::~QUmlReadVariableActionPrivate()
     \brief A read variable action is a variable action that retrieves the values of a variable.
  */
 
-QUmlReadVariableAction::QUmlReadVariableAction(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlVariableAction(*new QUmlReadVariableActionPrivate, wrapper, parent)
+QUmlReadVariableAction::QUmlReadVariableAction(bool create_d_ptr) :
+    QUmlVariableAction(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlReadVariableActionPrivate);
 }
 
-QUmlReadVariableAction::QUmlReadVariableAction(QUmlReadVariableActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlVariableAction(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlReadVariableAction::~QUmlReadVariableAction()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlReadVariableAction
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     Gives the output pin on which the result is put.
  */
 QUmlOutputPin *QUmlReadVariableAction::result() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlReadVariableAction);
-    return d->result;
+    return 0;
 }
 
 void QUmlReadVariableAction::setResult(QUmlOutputPin *result)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlReadVariableAction);
-    if (d->result != result) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActionPrivate *>(d))->removeOutput(qwrappedobject_cast<QUmlOutputPin *>(d->result));
-
-        d->result = result;
-
-        // Adjust subsetted property(ies)
-        if (result) {
-            (qwrappedobject_cast<QUmlActionPrivate *>(d))->addOutput(qwrappedobject_cast<QUmlOutputPin *>(result));
-        }
-    }
-}
-
-void QUmlReadVariableAction::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadVariableAction")][QString::fromLatin1("result")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadVariableAction")][QString::fromLatin1("result")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadVariableAction")][QString::fromLatin1("result")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Gives the output pin on which the result is put.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadVariableAction")][QString::fromLatin1("result")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadVariableAction")][QString::fromLatin1("result")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlAction::outputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadVariableAction")][QString::fromLatin1("result")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlVariableAction::setPropertyData();
+    Q_UNUSED(result);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlreadvariableaction.cpp"
 

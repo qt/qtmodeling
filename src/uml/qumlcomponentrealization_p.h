@@ -41,13 +41,9 @@
 #ifndef QUMLCOMPONENTREALIZATION_P_H
 #define QUMLCOMPONENTREALIZATION_P_H
 
-// Base class includes
-#include "private/qumlrealization_p.h"
-
 #include "QtUml/QUmlComponentRealization"
 
-// Qt includes
-#include "QtCore/QSet"
+#include "private/qumlrealization_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,21 +51,13 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlComponent;
-class QUmlClassifier;
-class QUmlComponentRealization;
-
 class Q_UML_EXPORT QUmlComponentRealizationPrivate : public QUmlRealizationPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlComponentRealization)
-
 public:
-    explicit QUmlComponentRealizationPrivate();
-    virtual ~QUmlComponentRealizationPrivate();
+    QUmlComponentRealizationPrivate();
 
     QUmlComponent *abstraction;
-    QSet<QUmlClassifier *> realizingClassifiers;
+    QSet<QUmlClassifier *> realizingClassifier;
 };
 
 QT_END_NAMESPACE

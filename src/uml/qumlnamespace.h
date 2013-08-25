@@ -43,12 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlNamedElement>
-
-// Qt includes
-#include <QtCore/QString>
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -56,60 +51,36 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlPackageImport;
 class QUmlConstraint;
 class QUmlElementImport;
 class QUmlPackageableElement;
+class QUmlPackageImport;
 
 class QUmlNamespacePrivate;
-
-class Q_UML_EXPORT QUmlNamespace : public QUmlNamedElement
+class Q_UML_EXPORT QUmlNamespace : public virtual QUmlNamedElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QSet<QUmlPackageImport *> packageImports READ packageImports)
-    Q_PROPERTY(QSet<QUmlNamedElement *> members READ members)
-    Q_PROPERTY(QSet<QUmlPackageableElement *> importedMembers READ importedMembers STORED false)
-    Q_PROPERTY(QSet<QUmlElementImport *> elementImports READ elementImports)
-    Q_PROPERTY(QSet<QUmlConstraint *> ownedRules READ ownedRules)
-    Q_PROPERTY(QSet<QUmlNamedElement *> ownedMembers READ ownedMembers)
-
-    Q_DISABLE_COPY(QUmlNamespace)
-    Q_DECLARE_PRIVATE(QUmlNamespace)
-
 public:
-    Q_INVOKABLE explicit QUmlNamespace(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlNamespace();
+    Q_DECL_HIDDEN QUmlNamespace(bool create_d_ptr = true);
 
-    // Association ends from QUmlNamespace
-    Q_INVOKABLE QSet<QUmlPackageImport *> packageImports() const;
-    Q_INVOKABLE void addPackageImport(QUmlPackageImport *packageImport);
-    Q_INVOKABLE void removePackageImport(QUmlPackageImport *packageImport);
-    Q_INVOKABLE QSet<QUmlNamedElement *> members() const;
-    Q_INVOKABLE QSet<QUmlPackageableElement *> importedMembers() const;
-    Q_INVOKABLE QSet<QUmlElementImport *> elementImports() const;
-    Q_INVOKABLE void addElementImport(QUmlElementImport *elementImport);
-    Q_INVOKABLE void removeElementImport(QUmlElementImport *elementImport);
-    Q_INVOKABLE QSet<QUmlConstraint *> ownedRules() const;
-    Q_INVOKABLE void addOwnedRule(QUmlConstraint *ownedRule);
-    Q_INVOKABLE void removeOwnedRule(QUmlConstraint *ownedRule);
-    Q_INVOKABLE QSet<QUmlNamedElement *> ownedMembers() const;
+    // Owned attributes
+    QSet<QUmlElementImport *> elementImport() const;
+    void addElementImport(QSet<QUmlElementImport *> elementImport);
+    void removeElementImport(QSet<QUmlElementImport *> elementImport);
+    QSet<QUmlPackageableElement *> importedMember() const;
+    QSet<QUmlNamedElement *> member() const;
+    QSet<QUmlNamedElement *> ownedMember() const;
+    QSet<QUmlConstraint *> ownedRule() const;
+    void addOwnedRule(QSet<QUmlConstraint *> ownedRule);
+    void removeOwnedRule(QSet<QUmlConstraint *> ownedRule);
+    QSet<QUmlPackageImport *> packageImport() const;
+    void addPackageImport(QSet<QUmlPackageImport *> packageImport);
+    void removePackageImport(QSet<QUmlPackageImport *> packageImport);
 
     // Operations
-    Q_INVOKABLE QSet<QUmlPackageableElement *> excludeCollisions(QSet<QUmlPackageableElement *> imps) const;
-    Q_INVOKABLE QSet<QString> getNamesOfMember(const QUmlNamedElement *element) const;
-    Q_INVOKABLE QSet<QUmlPackageableElement *> importMembers(QSet<QUmlPackageableElement *> imps) const;
-    Q_INVOKABLE bool membersAreDistinguishable() const;
-
-    virtual void setPropertyData();
-
-    // Classes which access read-only opposite properties should be friend
-    friend class QUmlNamedElementPrivate;
-
-protected:
-    explicit QUmlNamespace(QUmlNamespacePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    QSet<QUmlPackageableElement *> excludeCollisions(QSet<QUmlPackageableElement *> imps) const;
+    QSet<QString> getNamesOfMember(QUmlNamedElement *element) const;
+    QSet<QUmlPackageableElement *> importMembers(QSet<QUmlPackageableElement *> imps) const;
+    bool membersAreDistinguishable() const;
 };
 
 QT_END_NAMESPACE

@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlAction>
 
 QT_BEGIN_HEADER
@@ -52,41 +51,23 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlProperty;
 class QUmlInputPin;
 class QUmlOutputPin;
+class QUmlProperty;
 
 class QUmlReadLinkObjectEndActionPrivate;
-
 class Q_UML_EXPORT QUmlReadLinkObjectEndAction : public QUmlAction
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlProperty * end READ end WRITE setEnd)
-    Q_PROPERTY(QUmlInputPin * object READ object WRITE setObject)
-    Q_PROPERTY(QUmlOutputPin * result READ result WRITE setResult)
-
-    Q_DISABLE_COPY(QUmlReadLinkObjectEndAction)
-    Q_DECLARE_PRIVATE(QUmlReadLinkObjectEndAction)
-
 public:
-    Q_INVOKABLE explicit QUmlReadLinkObjectEndAction(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlReadLinkObjectEndAction();
+    QUmlReadLinkObjectEndAction(bool create_d_ptr = true);
 
-    // Association ends from QUmlReadLinkObjectEndAction
-    Q_INVOKABLE QUmlProperty *end() const;
-    Q_INVOKABLE void setEnd(QUmlProperty *end);
-    Q_INVOKABLE QUmlInputPin *object() const;
-    Q_INVOKABLE void setObject(QUmlInputPin *object);
-    Q_INVOKABLE QUmlOutputPin *result() const;
-    Q_INVOKABLE void setResult(QUmlOutputPin *result);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlReadLinkObjectEndAction(QUmlReadLinkObjectEndActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlProperty *end() const;
+    void setEnd(QUmlProperty *end);
+    QUmlInputPin *object() const;
+    void setObject(QUmlInputPin *object);
+    QUmlOutputPin *result() const;
+    void setResult(QUmlOutputPin *result);
 };
 
 QT_END_NAMESPACE

@@ -41,15 +41,10 @@
 #ifndef QUMLREGION_P_H
 #define QUMLREGION_P_H
 
-// Base class includes
-#include "private/qwrappedobject_p.h"
-#include "private/qumlredefinableelement_p.h"
-#include "private/qumlnamespace_p.h"
-
 #include "QtUml/QUmlRegion"
 
-// Qt includes
-#include "QtCore/QSet"
+#include "private/qumlredefinableelement_p.h"
+#include "private/qumlnamespace_p.h"
 
 QT_BEGIN_HEADER
 
@@ -57,28 +52,17 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlVertex;
-class QUmlTransition;
-class QUmlStateMachine;
-class QUmlClassifier;
-class QUmlRegion;
-class QUmlState;
-class QUmlRegion;
-
-class Q_UML_EXPORT QUmlRegionPrivate : public QWrappedObjectPrivate
+class Q_UML_EXPORT QUmlRegionPrivate : public QUmlRedefinableElementPrivate, public QUmlNamespacePrivate
 {
-    Q_DECLARE_PUBLIC(QUmlRegion)
-
 public:
-    explicit QUmlRegionPrivate();
-    virtual ~QUmlRegionPrivate();
+    QUmlRegionPrivate();
 
     QUmlRegion *extendedRegion;
-    QSet<QUmlTransition *> transitions;
-    QUmlStateMachine *stateMachine;
+    QUmlClassifier *redefinitionContext;
     QUmlState *state;
-    QSet<QUmlVertex *> subvertices;
+    QUmlStateMachine *stateMachine;
+    QSet<QUmlVertex *> subvertex;
+    QSet<QUmlTransition *> transition;
 };
 
 QT_END_NAMESPACE

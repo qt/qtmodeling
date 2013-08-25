@@ -41,10 +41,9 @@
 #ifndef QUMLRAISEEXCEPTIONACTION_P_H
 #define QUMLRAISEEXCEPTIONACTION_P_H
 
-// Base class includes
-#include "private/qumlaction_p.h"
-
 #include "QtUml/QUmlRaiseExceptionAction"
+
+#include "private/qumlaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -52,17 +51,10 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlInputPin;
-class QUmlRaiseExceptionAction;
-
 class Q_UML_EXPORT QUmlRaiseExceptionActionPrivate : public QUmlActionPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlRaiseExceptionAction)
-
 public:
-    explicit QUmlRaiseExceptionActionPrivate();
-    virtual ~QUmlRaiseExceptionActionPrivate();
+    QUmlRaiseExceptionActionPrivate();
 
     QUmlInputPin *exception;
 };

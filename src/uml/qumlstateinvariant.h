@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlInteractionFragment>
 
 QT_BEGIN_HEADER
@@ -52,37 +51,20 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlLifeline;
 class QUmlConstraint;
+class QUmlLifeline;
 
 class QUmlStateInvariantPrivate;
-
 class Q_UML_EXPORT QUmlStateInvariant : public QUmlInteractionFragment
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlConstraint * invariant READ invariant WRITE setInvariant)
-    Q_PROPERTY(QUmlLifeline * covered READ covered WRITE setCovered)
-
-    Q_DISABLE_COPY(QUmlStateInvariant)
-    Q_DECLARE_PRIVATE(QUmlStateInvariant)
-
 public:
-    Q_INVOKABLE explicit QUmlStateInvariant(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlStateInvariant();
+    QUmlStateInvariant(bool create_d_ptr = true);
 
-    // Association ends from QUmlStateInvariant
-    Q_INVOKABLE QUmlConstraint *invariant() const;
-    Q_INVOKABLE void setInvariant(QUmlConstraint *invariant);
-    Q_INVOKABLE QUmlLifeline *covered() const;
-    Q_INVOKABLE void setCovered(QUmlLifeline *covered);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlStateInvariant(QUmlStateInvariantPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlLifeline *covered() const;
+    void setCovered(QUmlLifeline *covered);
+    QUmlConstraint *invariant() const;
+    void setInvariant(QUmlConstraint *invariant);
 };
 
 QT_END_NAMESPACE

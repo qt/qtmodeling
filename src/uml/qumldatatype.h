@@ -43,12 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlClassifier>
-
-// Qt includes
-#include <QtCore/QList>
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -56,43 +51,26 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlProperty;
-class QUmlOperation;
 class QUmlNamedElement;
+class QUmlOperation;
+class QUmlProperty;
 
 class QUmlDataTypePrivate;
-
 class Q_UML_EXPORT QUmlDataType : public QUmlClassifier
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QList<QUmlOperation *> ownedOperations READ ownedOperations)
-    Q_PROPERTY(QList<QUmlProperty *> ownedAttributes READ ownedAttributes)
-
-    Q_DISABLE_COPY(QUmlDataType)
-    Q_DECLARE_PRIVATE(QUmlDataType)
-
 public:
-    Q_INVOKABLE explicit QUmlDataType(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlDataType();
+    QUmlDataType(bool create_d_ptr = true);
 
-    // Association ends from QUmlDataType
-    Q_INVOKABLE QList<QUmlOperation *> ownedOperations() const;
-    Q_INVOKABLE void addOwnedOperation(QUmlOperation *ownedOperation);
-    Q_INVOKABLE void removeOwnedOperation(QUmlOperation *ownedOperation);
-    Q_INVOKABLE QList<QUmlProperty *> ownedAttributes() const;
-    Q_INVOKABLE void addOwnedAttribute(QUmlProperty *ownedAttribute);
-    Q_INVOKABLE void removeOwnedAttribute(QUmlProperty *ownedAttribute);
+    // Owned attributes
+    QList<QUmlProperty *> ownedAttribute() const;
+    void addOwnedAttribute(QList<QUmlProperty *> ownedAttribute);
+    void removeOwnedAttribute(QList<QUmlProperty *> ownedAttribute);
+    QList<QUmlOperation *> ownedOperation() const;
+    void addOwnedOperation(QList<QUmlOperation *> ownedOperation);
+    void removeOwnedOperation(QList<QUmlOperation *> ownedOperation);
 
     // Operations
-    Q_INVOKABLE QSet<QUmlNamedElement *> inherit(QSet<QUmlNamedElement *> inhs) const;
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlDataType(QUmlDataTypePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    QSet<QUmlNamedElement *> inherit(QSet<QUmlNamedElement *> inhs) const;
 };
 
 QT_END_NAMESPACE

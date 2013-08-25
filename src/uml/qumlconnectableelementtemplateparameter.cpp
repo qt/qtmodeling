@@ -43,16 +43,10 @@
 
 #include <QtUml/QUmlConnectableElement>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlConnectableElementTemplateParameterPrivate::QUmlConnectableElementTemplateParameterPrivate() :
     parameteredElement(0)
-{
-}
-
-QUmlConnectableElementTemplateParameterPrivate::~QUmlConnectableElementTemplateParameterPrivate()
 {
 }
 
@@ -64,68 +58,27 @@ QUmlConnectableElementTemplateParameterPrivate::~QUmlConnectableElementTemplateP
     \brief A connectable element template parameter exposes a connectable element as a formal parameter for a template.
  */
 
-QUmlConnectableElementTemplateParameter::QUmlConnectableElementTemplateParameter(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlTemplateParameter(*new QUmlConnectableElementTemplateParameterPrivate, wrapper, parent)
+QUmlConnectableElementTemplateParameter::QUmlConnectableElementTemplateParameter(bool create_d_ptr) :
+    QUmlTemplateParameter(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlConnectableElementTemplateParameterPrivate);
 }
 
-QUmlConnectableElementTemplateParameter::QUmlConnectableElementTemplateParameter(QUmlConnectableElementTemplateParameterPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlTemplateParameter(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlConnectableElementTemplateParameter::~QUmlConnectableElementTemplateParameter()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlConnectableElementTemplateParameter
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     The ConnectableElement for this template parameter.
  */
 QUmlConnectableElement *QUmlConnectableElementTemplateParameter::parameteredElement() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlConnectableElementTemplateParameter);
-    return d->parameteredElement;
+    return 0;
 }
 
 void QUmlConnectableElementTemplateParameter::setParameteredElement(QUmlConnectableElement *parameteredElement)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlConnectableElementTemplateParameter);
-    if (d->parameteredElement != parameteredElement) {
-        // Adjust opposite property
-
-        d->parameteredElement = parameteredElement;
-
-        // Adjust redefined property(ies)
-        (qwrappedobject_cast<QUmlTemplateParameter *>(this))->setParameteredElement(qwrappedobject_cast<QUmlParameterableElement *>(parameteredElement));
-
-        // Adjust opposite property
-        parameteredElement->setTemplateParameter(this);
-    }
-}
-
-void QUmlConnectableElementTemplateParameter::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectableElementTemplateParameter")][QString::fromLatin1("parameteredElement")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectableElementTemplateParameter")][QString::fromLatin1("parameteredElement")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectableElementTemplateParameter")][QString::fromLatin1("parameteredElement")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The ConnectableElement for this template parameter.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectableElementTemplateParameter")][QString::fromLatin1("parameteredElement")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QUmlTemplateParameter::parameteredElement");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectableElementTemplateParameter")][QString::fromLatin1("parameteredElement")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectableElementTemplateParameter")][QString::fromLatin1("parameteredElement")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlConnectableElement::templateParameter");
-
-    QUmlTemplateParameter::setPropertyData();
+    Q_UNUSED(parameteredElement);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlconnectableelementtemplateparameter.cpp"
 

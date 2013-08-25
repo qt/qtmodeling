@@ -41,13 +41,9 @@
 #ifndef QUMLLINKACTION_P_H
 #define QUMLLINKACTION_P_H
 
-// Base class includes
-#include "private/qumlaction_p.h"
-
 #include "QtUml/QUmlLinkAction"
 
-// Qt includes
-#include "QtCore/QSet"
+#include "private/qumlaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,21 +51,13 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlLinkEndData;
-class QUmlInputPin;
-class QUmlAssociation;
-
 class Q_UML_EXPORT QUmlLinkActionPrivate : public QUmlActionPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlLinkAction)
-
 public:
-    explicit QUmlLinkActionPrivate();
-    virtual ~QUmlLinkActionPrivate();
+    QUmlLinkActionPrivate();
 
-    QSet<QUmlInputPin *> inputValues;
     QSet<QUmlLinkEndData *> endData;
+    QSet<QUmlInputPin *> inputValue;
 };
 
 QT_END_NAMESPACE

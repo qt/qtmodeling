@@ -41,15 +41,9 @@
 #include "qumlliteralnull.h"
 #include "qumlliteralnull_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlLiteralNullPrivate::QUmlLiteralNullPrivate()
-{
-}
-
-QUmlLiteralNullPrivate::~QUmlLiteralNullPrivate()
 {
 }
 
@@ -61,30 +55,21 @@ QUmlLiteralNullPrivate::~QUmlLiteralNullPrivate()
     \brief A literal null specifies the lack of a value.
  */
 
-QUmlLiteralNull::QUmlLiteralNull(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlLiteralSpecification(*new QUmlLiteralNullPrivate, wrapper, parent)
+QUmlLiteralNull::QUmlLiteralNull(bool create_d_ptr) :
+    QUmlLiteralSpecification(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlLiteralNullPrivate);
 }
 
-QUmlLiteralNull::QUmlLiteralNull(QUmlLiteralNullPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlLiteralSpecification(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlLiteralNull::~QUmlLiteralNull()
-{
-}
+// Operations
 
 /*!
     The query isComputable() is redefined to be true.
  */
 bool QUmlLiteralNull::isComputable() const
 {
-    qWarning("QUmlLiteralNull::isComputable: operation to be implemented");
-
-    return bool(); // change here to your derived return
+    return bool ();
 }
 
 /*!
@@ -92,17 +77,8 @@ bool QUmlLiteralNull::isComputable() const
  */
 bool QUmlLiteralNull::isNull() const
 {
-    qWarning("QUmlLiteralNull::isNull: operation to be implemented");
-
-    return bool(); // change here to your derived return
-}
-
-void QUmlLiteralNull::setPropertyData()
-{
-    QUmlLiteralSpecification::setPropertyData();
+    return bool ();
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlliteralnull.cpp"
 

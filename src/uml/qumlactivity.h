@@ -43,13 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlBehavior>
-
-// Qt includes
-#include <QtCore/QSet>
-
-#include <QtWrappedObjects/QWrappedObjectPointer>
 
 QT_BEGIN_HEADER
 
@@ -57,77 +51,42 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
+class QUmlActivityEdge;
+class QUmlActivityGroup;
+class QUmlActivityNode;
+class QUmlActivityPartition;
 class QUmlStructuredActivityNode;
 class QUmlVariable;
-class QUmlActivityPartition;
-class QUmlActivityGroup;
-class QUmlActivityEdge;
-class QUmlActivityNode;
 
 class QUmlActivityPrivate;
-
 class Q_UML_EXPORT QUmlActivity : public QUmlBehavior
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(bool isReadOnly READ isReadOnly WRITE setReadOnly RESET unsetReadOnly)
-    Q_PROPERTY(bool isSingleExecution READ isSingleExecution WRITE setSingleExecution RESET unsetSingleExecution)
-    Q_PROPERTY(QSet<QUmlActivityPartition *> partitions READ partitions)
-    Q_PROPERTY(QSet<QUmlActivityNode *> nodes READ nodes)
-    Q_PROPERTY(QSet<QUmlVariable *> variables READ variables)
-    Q_PROPERTY(QSet<QUmlStructuredActivityNode *> structuredNodes READ structuredNodes)
-    Q_PROPERTY(QSet<QUmlActivityGroup *> groups READ groups)
-    Q_PROPERTY(QSet<QUmlActivityEdge *> edges READ edges)
-
-    Q_DISABLE_COPY(QUmlActivity)
-    Q_DECLARE_PRIVATE(QUmlActivity)
-
 public:
-    Q_INVOKABLE explicit QUmlActivity(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlActivity();
+    QUmlActivity(bool create_d_ptr = true);
 
-    // Attributes from QUmlActivity
-    Q_INVOKABLE bool isReadOnly() const;
-    Q_INVOKABLE void setReadOnly(bool isReadOnly);
-    Q_INVOKABLE void unsetReadOnly();
-    Q_INVOKABLE bool isSingleExecution() const;
-    Q_INVOKABLE void setSingleExecution(bool isSingleExecution);
-    Q_INVOKABLE void unsetSingleExecution();
-
-    // Association ends from QUmlActivity
-    Q_INVOKABLE QSet<QUmlActivityPartition *> partitions() const;
-    Q_INVOKABLE void addPartition(QUmlActivityPartition *partition);
-    Q_INVOKABLE void removePartition(QUmlActivityPartition *partition);
-    Q_INVOKABLE QSet<QUmlActivityNode *> nodes() const;
-    Q_INVOKABLE void addNode(QUmlActivityNode *node);
-    Q_INVOKABLE void removeNode(QUmlActivityNode *node);
-    Q_INVOKABLE QSet<QUmlVariable *> variables() const;
-    Q_INVOKABLE void addVariable(QUmlVariable *variable);
-    Q_INVOKABLE void removeVariable(QUmlVariable *variable);
-    Q_INVOKABLE QSet<QUmlStructuredActivityNode *> structuredNodes() const;
-    Q_INVOKABLE void addStructuredNode(QUmlStructuredActivityNode *structuredNode);
-    Q_INVOKABLE void removeStructuredNode(QUmlStructuredActivityNode *structuredNode);
-    Q_INVOKABLE QSet<QUmlActivityGroup *> groups() const;
-    Q_INVOKABLE void addGroup(QUmlActivityGroup *group);
-    Q_INVOKABLE void removeGroup(QUmlActivityGroup *group);
-    Q_INVOKABLE QSet<QUmlActivityEdge *> edges() const;
-    Q_INVOKABLE void addEdge(QUmlActivityEdge *edge);
-    Q_INVOKABLE void removeEdge(QUmlActivityEdge *edge);
-
-    // Overriden methods for subsetted properties
-    Q_INVOKABLE void addGroup(QWrappedObjectPointer<QUmlActivityPartition> partition);
-    Q_INVOKABLE void removeGroup(QWrappedObjectPointer<QUmlActivityPartition> partition);
-    Q_INVOKABLE void addGroup(QWrappedObjectPointer<QUmlStructuredActivityNode> structuredNode);
-    Q_INVOKABLE void removeGroup(QWrappedObjectPointer<QUmlStructuredActivityNode> structuredNode);
-    Q_INVOKABLE void addNode(QWrappedObjectPointer<QUmlStructuredActivityNode> structuredNode);
-    Q_INVOKABLE void removeNode(QWrappedObjectPointer<QUmlStructuredActivityNode> structuredNode);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlActivity(QUmlActivityPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QSet<QUmlActivityEdge *> edge() const;
+    void addEdge(QSet<QUmlActivityEdge *> edge);
+    void removeEdge(QSet<QUmlActivityEdge *> edge);
+    QSet<QUmlActivityGroup *> group() const;
+    void addGroup(QSet<QUmlActivityGroup *> group);
+    void removeGroup(QSet<QUmlActivityGroup *> group);
+    bool isReadOnly() const;
+    void setReadOnly(bool isReadOnly);
+    bool isSingleExecution() const;
+    void setSingleExecution(bool isSingleExecution);
+    QSet<QUmlActivityNode *> node() const;
+    void addNode(QSet<QUmlActivityNode *> node);
+    void removeNode(QSet<QUmlActivityNode *> node);
+    QSet<QUmlActivityPartition *> partition() const;
+    void addPartition(QSet<QUmlActivityPartition *> partition);
+    void removePartition(QSet<QUmlActivityPartition *> partition);
+    QSet<QUmlStructuredActivityNode *> structuredNode() const;
+    void addStructuredNode(QSet<QUmlStructuredActivityNode *> structuredNode);
+    void removeStructuredNode(QSet<QUmlStructuredActivityNode *> structuredNode);
+    QSet<QUmlVariable *> variable() const;
+    void addVariable(QSet<QUmlVariable *> variable);
+    void removeVariable(QSet<QUmlVariable *> variable);
 };
 
 QT_END_NAMESPACE

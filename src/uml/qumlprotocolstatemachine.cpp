@@ -43,15 +43,9 @@
 
 #include <QtUml/QUmlProtocolConformance>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlProtocolStateMachinePrivate::QUmlProtocolStateMachinePrivate()
-{
-}
-
-QUmlProtocolStateMachinePrivate::~QUmlProtocolStateMachinePrivate()
 {
 }
 
@@ -63,82 +57,32 @@ QUmlProtocolStateMachinePrivate::~QUmlProtocolStateMachinePrivate()
     \brief A protocol state machine is always defined in the context of a classifier. It specifies which operations of the classifier can be called in which state and under which condition, thus specifying the allowed call sequences on the classifier's operations. A protocol state machine presents the possible and permitted transitions on the instances of its context classifier, together with the operations which carry the transitions. In this manner, an instance lifecycle can be created for a classifier, by specifying the order in which the operations can be activated and the states through which an instance progresses during its existence.
  */
 
-QUmlProtocolStateMachine::QUmlProtocolStateMachine(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlStateMachine(*new QUmlProtocolStateMachinePrivate, wrapper, parent)
+QUmlProtocolStateMachine::QUmlProtocolStateMachine(bool create_d_ptr) :
+    QUmlStateMachine(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlProtocolStateMachinePrivate);
 }
 
-QUmlProtocolStateMachine::QUmlProtocolStateMachine(QUmlProtocolStateMachinePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlStateMachine(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlProtocolStateMachine::~QUmlProtocolStateMachine()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlProtocolStateMachine
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     Conformance between protocol state machines.
  */
 QSet<QUmlProtocolConformance *> QUmlProtocolStateMachine::conformance() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlProtocolStateMachine);
-    return d->conformance;
+    return QSet<QUmlProtocolConformance *>();
 }
 
-void QUmlProtocolStateMachine::addConformance(QUmlProtocolConformance *conformance)
+void QUmlProtocolStateMachine::addConformance(QSet<QUmlProtocolConformance *> conformance)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlProtocolStateMachine);
-    if (!d->conformance.contains(conformance)) {
-        d->conformance.insert(conformance);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QUmlElement *>(conformance));
-
-        // Adjust opposite property
-        conformance->setSpecificMachine(this);
-    }
+    Q_UNUSED(conformance);
 }
 
-void QUmlProtocolStateMachine::removeConformance(QUmlProtocolConformance *conformance)
+void QUmlProtocolStateMachine::removeConformance(QSet<QUmlProtocolConformance *> conformance)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlProtocolStateMachine);
-    if (d->conformance.contains(conformance)) {
-        d->conformance.remove(conformance);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QUmlElement *>(conformance));
-
-        // Adjust opposite property
-        conformance->setSpecificMachine(0);
-    }
-}
-
-void QUmlProtocolStateMachine::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlProtocolStateMachine")][QString::fromLatin1("conformance")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlProtocolStateMachine")][QString::fromLatin1("conformance")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlProtocolStateMachine")][QString::fromLatin1("conformance")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Conformance between protocol state machines.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlProtocolStateMachine")][QString::fromLatin1("conformance")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlProtocolStateMachine")][QString::fromLatin1("conformance")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlProtocolStateMachine")][QString::fromLatin1("conformance")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlProtocolConformance::specificMachine");
-
-    QUmlStateMachine::setPropertyData();
+    Q_UNUSED(conformance);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlprotocolstatemachine.cpp"
 

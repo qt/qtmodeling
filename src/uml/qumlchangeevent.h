@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlEvent>
 
 QT_BEGIN_HEADER
@@ -52,33 +51,17 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlValueSpecification;
 
 class QUmlChangeEventPrivate;
-
 class Q_UML_EXPORT QUmlChangeEvent : public QUmlEvent
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlValueSpecification * changeExpression READ changeExpression WRITE setChangeExpression)
-
-    Q_DISABLE_COPY(QUmlChangeEvent)
-    Q_DECLARE_PRIVATE(QUmlChangeEvent)
-
 public:
-    Q_INVOKABLE explicit QUmlChangeEvent(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlChangeEvent();
+    QUmlChangeEvent(bool create_d_ptr = true);
 
-    // Association ends from QUmlChangeEvent
-    Q_INVOKABLE QUmlValueSpecification *changeExpression() const;
-    Q_INVOKABLE void setChangeExpression(QUmlValueSpecification *changeExpression);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlChangeEvent(QUmlChangeEventPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlValueSpecification *changeExpression() const;
+    void setChangeExpression(QUmlValueSpecification *changeExpression);
 };
 
 QT_END_NAMESPACE

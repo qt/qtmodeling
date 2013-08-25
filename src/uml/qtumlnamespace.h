@@ -54,7 +54,6 @@ QT_MODULE(QtUml)
 class Q_UML_EXPORT QtUml : public QObject
 {
     Q_OBJECT
-
     Q_ENUMS(AggregationKind)
     Q_ENUMS(CallConcurrencyKind)
     Q_ENUMS(ConnectorKind)
@@ -171,7 +170,6 @@ public:
         VisibilityProtected,
         VisibilityPackage
     };
-
 };
 
 QT_END_NAMESPACE

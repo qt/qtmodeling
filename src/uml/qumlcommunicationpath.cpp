@@ -41,15 +41,9 @@
 #include "qumlcommunicationpath.h"
 #include "qumlcommunicationpath_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlCommunicationPathPrivate::QUmlCommunicationPathPrivate()
-{
-}
-
-QUmlCommunicationPathPrivate::~QUmlCommunicationPathPrivate()
 {
 }
 
@@ -61,28 +55,12 @@ QUmlCommunicationPathPrivate::~QUmlCommunicationPathPrivate()
     \brief A communication path is an association between two deployment targets, through which they are able to exchange signals and messages.
  */
 
-QUmlCommunicationPath::QUmlCommunicationPath(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlAssociation(*new QUmlCommunicationPathPrivate, wrapper, parent)
+QUmlCommunicationPath::QUmlCommunicationPath(bool create_d_ptr) :
+    QUmlAssociation(false)
 {
-    setPropertyData();
-}
-
-QUmlCommunicationPath::QUmlCommunicationPath(QUmlCommunicationPathPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlAssociation(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlCommunicationPath::~QUmlCommunicationPath()
-{
-}
-
-void QUmlCommunicationPath::setPropertyData()
-{
-    QUmlAssociation::setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlCommunicationPathPrivate);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlcommunicationpath.cpp"
 

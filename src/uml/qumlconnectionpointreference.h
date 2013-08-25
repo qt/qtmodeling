@@ -43,11 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlVertex>
-
-// Qt includes
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -55,42 +51,24 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlPseudostate;
 class QUmlState;
 
 class QUmlConnectionPointReferencePrivate;
-
 class Q_UML_EXPORT QUmlConnectionPointReference : public QUmlVertex
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QSet<QUmlPseudostate *> exits READ exits)
-    Q_PROPERTY(QUmlState * state READ state WRITE setState)
-    Q_PROPERTY(QSet<QUmlPseudostate *> entries READ entries)
-
-    Q_DISABLE_COPY(QUmlConnectionPointReference)
-    Q_DECLARE_PRIVATE(QUmlConnectionPointReference)
-
 public:
-    Q_INVOKABLE explicit QUmlConnectionPointReference(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlConnectionPointReference();
+    QUmlConnectionPointReference(bool create_d_ptr = true);
 
-    // Association ends from QUmlConnectionPointReference
-    Q_INVOKABLE QSet<QUmlPseudostate *> exits() const;
-    Q_INVOKABLE void addExit(QUmlPseudostate *exit);
-    Q_INVOKABLE void removeExit(QUmlPseudostate *exit);
-    Q_INVOKABLE QUmlState *state() const;
-    Q_INVOKABLE void setState(QUmlState *state);
-    Q_INVOKABLE QSet<QUmlPseudostate *> entries() const;
-    Q_INVOKABLE void addEntry(QUmlPseudostate *entry);
-    Q_INVOKABLE void removeEntry(QUmlPseudostate *entry);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlConnectionPointReference(QUmlConnectionPointReferencePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QSet<QUmlPseudostate *> entry() const;
+    void addEntry(QSet<QUmlPseudostate *> entry);
+    void removeEntry(QSet<QUmlPseudostate *> entry);
+    QSet<QUmlPseudostate *> exit() const;
+    void addExit(QSet<QUmlPseudostate *> exit);
+    void removeExit(QSet<QUmlPseudostate *> exit);
+    QUmlState *state() const;
+    void setState(QUmlState *state);
 };
 
 QT_END_NAMESPACE

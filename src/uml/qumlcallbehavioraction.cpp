@@ -43,16 +43,10 @@
 
 #include <QtUml/QUmlBehavior>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlCallBehaviorActionPrivate::QUmlCallBehaviorActionPrivate() :
     behavior(0)
-{
-}
-
-QUmlCallBehaviorActionPrivate::~QUmlCallBehaviorActionPrivate()
 {
 }
 
@@ -64,60 +58,27 @@ QUmlCallBehaviorActionPrivate::~QUmlCallBehaviorActionPrivate()
     \brief A call behavior action is a call action that invokes a behavior directly rather than invoking a behavioral feature that, in turn, results in the invocation of that behavior. The argument values of the action are available to the execution of the invoked behavior. For synchronous calls the execution of the call behavior action waits until the execution of the invoked behavior completes and a result is returned on its output pin. The action completes immediately without a result, if the call is asynchronous. In particular, the invoked behavior may be an activity.
  */
 
-QUmlCallBehaviorAction::QUmlCallBehaviorAction(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlCallAction(*new QUmlCallBehaviorActionPrivate, wrapper, parent)
+QUmlCallBehaviorAction::QUmlCallBehaviorAction(bool create_d_ptr) :
+    QUmlCallAction(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlCallBehaviorActionPrivate);
 }
 
-QUmlCallBehaviorAction::QUmlCallBehaviorAction(QUmlCallBehaviorActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlCallAction(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlCallBehaviorAction::~QUmlCallBehaviorAction()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlCallBehaviorAction
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     The invoked behavior. It must be capable of accepting and returning control.
  */
 QUmlBehavior *QUmlCallBehaviorAction::behavior() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlCallBehaviorAction);
-    return d->behavior;
+    return 0;
 }
 
 void QUmlCallBehaviorAction::setBehavior(QUmlBehavior *behavior)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlCallBehaviorAction);
-    if (d->behavior != behavior) {
-        d->behavior = behavior;
-    }
-}
-
-void QUmlCallBehaviorAction::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCallBehaviorAction")][QString::fromLatin1("behavior")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCallBehaviorAction")][QString::fromLatin1("behavior")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCallBehaviorAction")][QString::fromLatin1("behavior")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The invoked behavior. It must be capable of accepting and returning control.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCallBehaviorAction")][QString::fromLatin1("behavior")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCallBehaviorAction")][QString::fromLatin1("behavior")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCallBehaviorAction")][QString::fromLatin1("behavior")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlCallAction::setPropertyData();
+    Q_UNUSED(behavior);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlcallbehavioraction.cpp"
 

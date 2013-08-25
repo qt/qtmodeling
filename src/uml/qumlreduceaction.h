@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlAction>
 
 QT_BEGIN_HEADER
@@ -52,47 +51,25 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlInputPin;
 class QUmlBehavior;
+class QUmlInputPin;
 class QUmlOutputPin;
 
 class QUmlReduceActionPrivate;
-
 class Q_UML_EXPORT QUmlReduceAction : public QUmlAction
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered RESET unsetOrdered)
-    Q_PROPERTY(QUmlOutputPin * result READ result WRITE setResult)
-    Q_PROPERTY(QUmlInputPin * collection READ collection WRITE setCollection)
-    Q_PROPERTY(QUmlBehavior * reducer READ reducer WRITE setReducer)
-
-    Q_DISABLE_COPY(QUmlReduceAction)
-    Q_DECLARE_PRIVATE(QUmlReduceAction)
-
 public:
-    Q_INVOKABLE explicit QUmlReduceAction(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlReduceAction();
+    QUmlReduceAction(bool create_d_ptr = true);
 
-    // Attributes from QUmlReduceAction
-    Q_INVOKABLE bool isOrdered() const;
-    Q_INVOKABLE void setOrdered(bool isOrdered);
-    Q_INVOKABLE void unsetOrdered();
-
-    // Association ends from QUmlReduceAction
-    Q_INVOKABLE QUmlOutputPin *result() const;
-    Q_INVOKABLE void setResult(QUmlOutputPin *result);
-    Q_INVOKABLE QUmlInputPin *collection() const;
-    Q_INVOKABLE void setCollection(QUmlInputPin *collection);
-    Q_INVOKABLE QUmlBehavior *reducer() const;
-    Q_INVOKABLE void setReducer(QUmlBehavior *reducer);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlReduceAction(QUmlReduceActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlInputPin *collection() const;
+    void setCollection(QUmlInputPin *collection);
+    bool isOrdered() const;
+    void setOrdered(bool isOrdered);
+    QUmlBehavior *reducer() const;
+    void setReducer(QUmlBehavior *reducer);
+    QUmlOutputPin *result() const;
+    void setResult(QUmlOutputPin *result);
 };
 
 QT_END_NAMESPACE

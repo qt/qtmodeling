@@ -43,13 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlRealization>
-
-// Qt includes
-#include <QtCore/QSet>
-
-#include <QtWrappedObjects/QWrappedObjectPointer>
 
 QT_BEGIN_HEADER
 
@@ -57,44 +51,21 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlComponent;
 class QUmlClassifier;
+class QUmlComponent;
 
 class QUmlComponentRealizationPrivate;
-
 class Q_UML_EXPORT QUmlComponentRealization : public QUmlRealization
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlComponent * abstraction READ abstraction WRITE setAbstraction)
-    Q_PROPERTY(QSet<QUmlClassifier *> realizingClassifiers READ realizingClassifiers)
-
-    Q_DISABLE_COPY(QUmlComponentRealization)
-    Q_DECLARE_PRIVATE(QUmlComponentRealization)
-
 public:
-    Q_INVOKABLE explicit QUmlComponentRealization(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlComponentRealization();
+    QUmlComponentRealization(bool create_d_ptr = true);
 
-    // Association ends from QUmlComponentRealization
-    Q_INVOKABLE QUmlComponent *abstraction() const;
-    Q_INVOKABLE void setAbstraction(QUmlComponent *abstraction);
-    Q_INVOKABLE QSet<QUmlClassifier *> realizingClassifiers() const;
-    Q_INVOKABLE void addRealizingClassifier(QUmlClassifier *realizingClassifier);
-    Q_INVOKABLE void removeRealizingClassifier(QUmlClassifier *realizingClassifier);
-
-    // Overriden methods for subsetted properties
-    Q_INVOKABLE void addSupplier(QWrappedObjectPointer<QUmlComponent> abstraction);
-    Q_INVOKABLE void removeSupplier(QWrappedObjectPointer<QUmlComponent> abstraction);
-    Q_INVOKABLE void addClient(QWrappedObjectPointer<QUmlClassifier> realizingClassifier);
-    Q_INVOKABLE void removeClient(QWrappedObjectPointer<QUmlClassifier> realizingClassifier);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlComponentRealization(QUmlComponentRealizationPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlComponent *abstraction() const;
+    void setAbstraction(QUmlComponent *abstraction);
+    QSet<QUmlClassifier *> realizingClassifier() const;
+    void addRealizingClassifier(QSet<QUmlClassifier *> realizingClassifier);
+    void removeRealizingClassifier(QSet<QUmlClassifier *> realizingClassifier);
 };
 
 QT_END_NAMESPACE

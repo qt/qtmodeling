@@ -41,27 +41,22 @@
 #ifndef QUMLLITERALREAL_P_H
 #define QUMLLITERALREAL_P_H
 
-// Base class includes
-#include "private/qumlliteralspecification_p.h"
-
 #include "QtUml/QUmlLiteralReal"
+
+#include "private/qumlliteralspecification_p.h"
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-class QUmlLiteralReal;
 
 class Q_UML_EXPORT QUmlLiteralRealPrivate : public QUmlLiteralSpecificationPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlLiteralReal)
-
 public:
-    explicit QUmlLiteralRealPrivate();
-    virtual ~QUmlLiteralRealPrivate();
+    QUmlLiteralRealPrivate();
 
-    qreal value;
+    double value;
 };
 
 QT_END_NAMESPACE

@@ -43,16 +43,10 @@
 
 #include <QtUml/QUmlAction>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlActionExecutionSpecificationPrivate::QUmlActionExecutionSpecificationPrivate() :
     action(0)
-{
-}
-
-QUmlActionExecutionSpecificationPrivate::~QUmlActionExecutionSpecificationPrivate()
 {
 }
 
@@ -64,60 +58,27 @@ QUmlActionExecutionSpecificationPrivate::~QUmlActionExecutionSpecificationPrivat
     \brief An action execution specification is a kind of execution specification representing the execution of an action.
  */
 
-QUmlActionExecutionSpecification::QUmlActionExecutionSpecification(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlExecutionSpecification(*new QUmlActionExecutionSpecificationPrivate, wrapper, parent)
+QUmlActionExecutionSpecification::QUmlActionExecutionSpecification(bool create_d_ptr) :
+    QUmlExecutionSpecification(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlActionExecutionSpecificationPrivate);
 }
 
-QUmlActionExecutionSpecification::QUmlActionExecutionSpecification(QUmlActionExecutionSpecificationPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlExecutionSpecification(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlActionExecutionSpecification::~QUmlActionExecutionSpecification()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlActionExecutionSpecification
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     Action whose execution is occurring.
  */
 QUmlAction *QUmlActionExecutionSpecification::action() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlActionExecutionSpecification);
-    return d->action;
+    return 0;
 }
 
 void QUmlActionExecutionSpecification::setAction(QUmlAction *action)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlActionExecutionSpecification);
-    if (d->action != action) {
-        d->action = action;
-    }
-}
-
-void QUmlActionExecutionSpecification::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActionExecutionSpecification")][QString::fromLatin1("action")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActionExecutionSpecification")][QString::fromLatin1("action")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActionExecutionSpecification")][QString::fromLatin1("action")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Action whose execution is occurring.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActionExecutionSpecification")][QString::fromLatin1("action")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActionExecutionSpecification")][QString::fromLatin1("action")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActionExecutionSpecification")][QString::fromLatin1("action")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlExecutionSpecification::setPropertyData();
+    Q_UNUSED(action);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlactionexecutionspecification.cpp"
 

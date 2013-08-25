@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlEvent>
 
 QT_BEGIN_HEADER
@@ -52,39 +51,19 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlTimeExpression;
 
 class QUmlTimeEventPrivate;
-
 class Q_UML_EXPORT QUmlTimeEvent : public QUmlEvent
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(bool isRelative READ isRelative WRITE setRelative RESET unsetRelative)
-    Q_PROPERTY(QUmlTimeExpression * when READ when WRITE setWhen)
-
-    Q_DISABLE_COPY(QUmlTimeEvent)
-    Q_DECLARE_PRIVATE(QUmlTimeEvent)
-
 public:
-    Q_INVOKABLE explicit QUmlTimeEvent(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlTimeEvent();
+    QUmlTimeEvent(bool create_d_ptr = true);
 
-    // Attributes from QUmlTimeEvent
-    Q_INVOKABLE bool isRelative() const;
-    Q_INVOKABLE void setRelative(bool isRelative);
-    Q_INVOKABLE void unsetRelative();
-
-    // Association ends from QUmlTimeEvent
-    Q_INVOKABLE QUmlTimeExpression *when() const;
-    Q_INVOKABLE void setWhen(QUmlTimeExpression *when);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlTimeEvent(QUmlTimeEventPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    bool isRelative() const;
+    void setRelative(bool isRelative);
+    QUmlTimeExpression *when() const;
+    void setWhen(QUmlTimeExpression *when);
 };
 
 QT_END_NAMESPACE

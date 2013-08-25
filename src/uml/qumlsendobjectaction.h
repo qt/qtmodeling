@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlInvocationAction>
 
 QT_BEGIN_HEADER
@@ -52,36 +51,19 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlInputPin;
 
 class QUmlSendObjectActionPrivate;
-
 class Q_UML_EXPORT QUmlSendObjectAction : public QUmlInvocationAction
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlInputPin * request READ request WRITE setRequest)
-    Q_PROPERTY(QUmlInputPin * target READ target WRITE setTarget)
-
-    Q_DISABLE_COPY(QUmlSendObjectAction)
-    Q_DECLARE_PRIVATE(QUmlSendObjectAction)
-
 public:
-    Q_INVOKABLE explicit QUmlSendObjectAction(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlSendObjectAction();
+    QUmlSendObjectAction(bool create_d_ptr = true);
 
-    // Association ends from QUmlSendObjectAction
-    Q_INVOKABLE QUmlInputPin *request() const;
-    Q_INVOKABLE void setRequest(QUmlInputPin *request);
-    Q_INVOKABLE QUmlInputPin *target() const;
-    Q_INVOKABLE void setTarget(QUmlInputPin *target);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlSendObjectAction(QUmlSendObjectActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlInputPin *request() const;
+    void setRequest(QUmlInputPin *request);
+    QUmlInputPin *target() const;
+    void setTarget(QUmlInputPin *target);
 };
 
 QT_END_NAMESPACE

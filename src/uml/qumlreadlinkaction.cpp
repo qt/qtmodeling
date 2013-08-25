@@ -43,16 +43,10 @@
 
 #include <QtUml/QUmlOutputPin>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlReadLinkActionPrivate::QUmlReadLinkActionPrivate() :
     result(0)
-{
-}
-
-QUmlReadLinkActionPrivate::~QUmlReadLinkActionPrivate()
 {
 }
 
@@ -64,68 +58,27 @@ QUmlReadLinkActionPrivate::~QUmlReadLinkActionPrivate()
     \brief A read link action is a link action that navigates across associations to retrieve objects on one end.
  */
 
-QUmlReadLinkAction::QUmlReadLinkAction(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlLinkAction(*new QUmlReadLinkActionPrivate, wrapper, parent)
+QUmlReadLinkAction::QUmlReadLinkAction(bool create_d_ptr) :
+    QUmlLinkAction(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlReadLinkActionPrivate);
 }
 
-QUmlReadLinkAction::QUmlReadLinkAction(QUmlReadLinkActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlLinkAction(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlReadLinkAction::~QUmlReadLinkAction()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlReadLinkAction
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     The pin on which are put the objects participating in the association at the end not specified by the inputs.
  */
 QUmlOutputPin *QUmlReadLinkAction::result() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlReadLinkAction);
-    return d->result;
+    return 0;
 }
 
 void QUmlReadLinkAction::setResult(QUmlOutputPin *result)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlReadLinkAction);
-    if (d->result != result) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActionPrivate *>(d))->removeOutput(qwrappedobject_cast<QUmlOutputPin *>(d->result));
-
-        d->result = result;
-
-        // Adjust subsetted property(ies)
-        if (result) {
-            (qwrappedobject_cast<QUmlActionPrivate *>(d))->addOutput(qwrappedobject_cast<QUmlOutputPin *>(result));
-        }
-    }
-}
-
-void QUmlReadLinkAction::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadLinkAction")][QString::fromLatin1("result")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadLinkAction")][QString::fromLatin1("result")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadLinkAction")][QString::fromLatin1("result")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The pin on which are put the objects participating in the association at the end not specified by the inputs.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadLinkAction")][QString::fromLatin1("result")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadLinkAction")][QString::fromLatin1("result")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlAction::outputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadLinkAction")][QString::fromLatin1("result")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlLinkAction::setPropertyData();
+    Q_UNUSED(result);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlreadlinkaction.cpp"
 

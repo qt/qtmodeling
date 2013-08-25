@@ -43,41 +43,21 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlElement>
-
-// Qt includes
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-
 class QUmlRelationshipPrivate;
-
-class Q_UML_EXPORT QUmlRelationship : public QUmlElement
+class Q_UML_EXPORT QUmlRelationship : public virtual QUmlElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QSet<QUmlElement *> relatedElements READ relatedElements)
-
-    Q_DISABLE_COPY(QUmlRelationship)
-    Q_DECLARE_PRIVATE(QUmlRelationship)
-
 public:
-    Q_INVOKABLE explicit QUmlRelationship(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlRelationship();
+    Q_DECL_HIDDEN QUmlRelationship(bool create_d_ptr = true);
 
-    // Association ends from QUmlRelationship
-    Q_INVOKABLE QSet<QUmlElement *> relatedElements() const;
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlRelationship(QUmlRelationshipPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QSet<QUmlElement *> relatedElement() const;
 };
 
 QT_END_NAMESPACE

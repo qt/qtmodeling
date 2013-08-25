@@ -41,15 +41,9 @@
 #include "qumlflowfinalnode.h"
 #include "qumlflowfinalnode_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlFlowFinalNodePrivate::QUmlFlowFinalNodePrivate()
-{
-}
-
-QUmlFlowFinalNodePrivate::~QUmlFlowFinalNodePrivate()
 {
 }
 
@@ -61,28 +55,12 @@ QUmlFlowFinalNodePrivate::~QUmlFlowFinalNodePrivate()
     \brief A flow final node is a final node that terminates a flow.
  */
 
-QUmlFlowFinalNode::QUmlFlowFinalNode(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlFinalNode(*new QUmlFlowFinalNodePrivate, wrapper, parent)
+QUmlFlowFinalNode::QUmlFlowFinalNode(bool create_d_ptr) :
+    QUmlFinalNode(false)
 {
-    setPropertyData();
-}
-
-QUmlFlowFinalNode::QUmlFlowFinalNode(QUmlFlowFinalNodePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlFinalNode(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlFlowFinalNode::~QUmlFlowFinalNode()
-{
-}
-
-void QUmlFlowFinalNode::setPropertyData()
-{
-    QUmlFinalNode::setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlFlowFinalNodePrivate);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlflowfinalnode.cpp"
 

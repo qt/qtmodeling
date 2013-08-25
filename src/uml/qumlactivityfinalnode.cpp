@@ -41,15 +41,9 @@
 #include "qumlactivityfinalnode.h"
 #include "qumlactivityfinalnode_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlActivityFinalNodePrivate::QUmlActivityFinalNodePrivate()
-{
-}
-
-QUmlActivityFinalNodePrivate::~QUmlActivityFinalNodePrivate()
 {
 }
 
@@ -61,28 +55,12 @@ QUmlActivityFinalNodePrivate::~QUmlActivityFinalNodePrivate()
     \brief An activity final node is a final node that stops all flows in an activity.
  */
 
-QUmlActivityFinalNode::QUmlActivityFinalNode(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlFinalNode(*new QUmlActivityFinalNodePrivate, wrapper, parent)
+QUmlActivityFinalNode::QUmlActivityFinalNode(bool create_d_ptr) :
+    QUmlFinalNode(false)
 {
-    setPropertyData();
-}
-
-QUmlActivityFinalNode::QUmlActivityFinalNode(QUmlActivityFinalNodePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlFinalNode(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlActivityFinalNode::~QUmlActivityFinalNode()
-{
-}
-
-void QUmlActivityFinalNode::setPropertyData()
-{
-    QUmlFinalNode::setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlActivityFinalNodePrivate);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlactivityfinalnode.cpp"
 

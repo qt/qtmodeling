@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlLinkAction>
 
 QT_BEGIN_HEADER
@@ -51,25 +50,11 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-
 class QUmlWriteLinkActionPrivate;
-
 class Q_UML_EXPORT QUmlWriteLinkAction : public QUmlLinkAction
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_DISABLE_COPY(QUmlWriteLinkAction)
-    Q_DECLARE_PRIVATE(QUmlWriteLinkAction)
-
 public:
-    Q_INVOKABLE explicit QUmlWriteLinkAction(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlWriteLinkAction();
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlWriteLinkAction(QUmlWriteLinkActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    Q_DECL_HIDDEN QUmlWriteLinkAction(bool create_d_ptr = true);
 };
 
 QT_END_NAMESPACE

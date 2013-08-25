@@ -44,16 +44,10 @@
 #include <QtUml/QUmlBehavior>
 #include <QtUml/QUmlInterfaceRealization>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlBehavioredClassifierPrivate::QUmlBehavioredClassifierPrivate() :
     classifierBehavior(0)
-{
-}
-
-QUmlBehavioredClassifierPrivate::~QUmlBehavioredClassifierPrivate()
 {
 }
 
@@ -65,176 +59,63 @@ QUmlBehavioredClassifierPrivate::~QUmlBehavioredClassifierPrivate()
     \brief A behaviored classifier may have an interface realization.A classifier can have behavior specifications defined in its namespace. One of these may specify the behavior of the classifier itself.
  */
 
-QUmlBehavioredClassifier::QUmlBehavioredClassifier(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlClassifier(*new QUmlBehavioredClassifierPrivate, wrapper, parent)
+QUmlBehavioredClassifier::QUmlBehavioredClassifier(bool create_d_ptr) :
+    QUmlClassifier(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlBehavioredClassifierPrivate);
 }
 
-QUmlBehavioredClassifier::QUmlBehavioredClassifier(QUmlBehavioredClassifierPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlClassifier(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlBehavioredClassifier::~QUmlBehavioredClassifier()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlBehavioredClassifier
-// ---------------------------------------------------------------
-
-/*!
-    References behavior specifications owned by a classifier.
- */
-QSet<QUmlBehavior *> QUmlBehavioredClassifier::ownedBehaviors() const
-{
-    // This is a read-write association end
-
-    Q_D(const QUmlBehavioredClassifier);
-    return d->ownedBehaviors;
-}
-
-void QUmlBehavioredClassifier::addOwnedBehavior(QUmlBehavior *ownedBehavior)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlBehavioredClassifier);
-    if (!d->ownedBehaviors.contains(ownedBehavior)) {
-        d->ownedBehaviors.insert(ownedBehavior);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlNamespacePrivate *>(d))->addOwnedMember(qwrappedobject_cast<QUmlNamedElement *>(ownedBehavior));
-    }
-}
-
-void QUmlBehavioredClassifier::removeOwnedBehavior(QUmlBehavior *ownedBehavior)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlBehavioredClassifier);
-    if (d->ownedBehaviors.contains(ownedBehavior)) {
-        d->ownedBehaviors.remove(ownedBehavior);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlNamespacePrivate *>(d))->removeOwnedMember(qwrappedobject_cast<QUmlNamedElement *>(ownedBehavior));
-    }
-}
-
-/*!
-    The set of InterfaceRealizations owned by the BehavioredClassifier. Interface realizations reference the Interfaces of which the BehavioredClassifier is an implementation.
- */
-QSet<QUmlInterfaceRealization *> QUmlBehavioredClassifier::interfaceRealizations() const
-{
-    // This is a read-write association end
-
-    Q_D(const QUmlBehavioredClassifier);
-    return d->interfaceRealizations;
-}
-
-void QUmlBehavioredClassifier::addInterfaceRealization(QUmlInterfaceRealization *interfaceRealization)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlBehavioredClassifier);
-    if (!d->interfaceRealizations.contains(interfaceRealization)) {
-        d->interfaceRealizations.insert(interfaceRealization);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QUmlElement *>(interfaceRealization));
-        (qwrappedobject_cast<QUmlNamedElement *>(this))->addClientDependency(qwrappedobject_cast<QUmlDependency *>(interfaceRealization));
-
-        // Adjust opposite property
-        interfaceRealization->setImplementingClassifier(this);
-    }
-}
-
-void QUmlBehavioredClassifier::removeInterfaceRealization(QUmlInterfaceRealization *interfaceRealization)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlBehavioredClassifier);
-    if (d->interfaceRealizations.contains(interfaceRealization)) {
-        d->interfaceRealizations.remove(interfaceRealization);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QUmlElement *>(interfaceRealization));
-        (qwrappedobject_cast<QUmlNamedElement *>(this))->removeClientDependency(qwrappedobject_cast<QUmlDependency *>(interfaceRealization));
-
-        // Adjust opposite property
-        interfaceRealization->setImplementingClassifier(0);
-    }
-}
+// Owned attributes
 
 /*!
     A behavior specification that specifies the behavior of the classifier itself.
  */
 QUmlBehavior *QUmlBehavioredClassifier::classifierBehavior() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlBehavioredClassifier);
-    return d->classifierBehavior;
+    return 0;
 }
 
 void QUmlBehavioredClassifier::setClassifierBehavior(QUmlBehavior *classifierBehavior)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlBehavioredClassifier);
-    if (d->classifierBehavior != classifierBehavior) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlBehavioredClassifier *>(this))->removeOwnedBehavior(qwrappedobject_cast<QUmlBehavior *>(d->classifierBehavior));
-
-        d->classifierBehavior = classifierBehavior;
-
-        // Adjust subsetted property(ies)
-        if (classifierBehavior) {
-            (qwrappedobject_cast<QUmlBehavioredClassifier *>(this))->addOwnedBehavior(qwrappedobject_cast<QUmlBehavior *>(classifierBehavior));
-        }
-    }
+    Q_UNUSED(classifierBehavior);
 }
 
-void QUmlBehavioredClassifier::setPropertyData()
+/*!
+    The set of InterfaceRealizations owned by the BehavioredClassifier. Interface realizations reference the Interfaces of which the BehavioredClassifier is an implementation.
+ */
+QSet<QUmlInterfaceRealization *> QUmlBehavioredClassifier::interfaceRealization() const
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlBehavioredClassifier")][QString::fromLatin1("ownedBehaviors")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlBehavioredClassifier")][QString::fromLatin1("ownedBehaviors")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlBehavioredClassifier")][QString::fromLatin1("ownedBehaviors")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References behavior specifications owned by a classifier.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlBehavioredClassifier")][QString::fromLatin1("ownedBehaviors")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlBehavioredClassifier")][QString::fromLatin1("ownedBehaviors")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlNamespace::ownedMembers");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlBehavioredClassifier")][QString::fromLatin1("ownedBehaviors")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlBehavioredClassifier")][QString::fromLatin1("interfaceRealizations")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlBehavioredClassifier")][QString::fromLatin1("interfaceRealizations")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlBehavioredClassifier")][QString::fromLatin1("interfaceRealizations")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The set of InterfaceRealizations owned by the BehavioredClassifier. Interface realizations reference the Interfaces of which the BehavioredClassifier is an implementation.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlBehavioredClassifier")][QString::fromLatin1("interfaceRealizations")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlBehavioredClassifier")][QString::fromLatin1("interfaceRealizations")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements QUmlNamedElement::clientDependencies");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlBehavioredClassifier")][QString::fromLatin1("interfaceRealizations")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlInterfaceRealization::implementingClassifier");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlBehavioredClassifier")][QString::fromLatin1("classifierBehavior")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlBehavioredClassifier")][QString::fromLatin1("classifierBehavior")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlBehavioredClassifier")][QString::fromLatin1("classifierBehavior")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A behavior specification that specifies the behavior of the classifier itself.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlBehavioredClassifier")][QString::fromLatin1("classifierBehavior")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlBehavioredClassifier")][QString::fromLatin1("classifierBehavior")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlBehavioredClassifier::ownedBehaviors");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlBehavioredClassifier")][QString::fromLatin1("classifierBehavior")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlClassifier::setPropertyData();
+    return QSet<QUmlInterfaceRealization *>();
 }
 
-// Overriden methods for subsetted properties
-
-void QUmlBehavioredClassifier::addClientDependency(QWrappedObjectPointer<QUmlInterfaceRealization> interfaceRealization)
+void QUmlBehavioredClassifier::addInterfaceRealization(QSet<QUmlInterfaceRealization *> interfaceRealization)
 {
-    addInterfaceRealization(interfaceRealization);
+    Q_UNUSED(interfaceRealization);
 }
 
-void QUmlBehavioredClassifier::removeClientDependency(QWrappedObjectPointer<QUmlInterfaceRealization> interfaceRealization)
+void QUmlBehavioredClassifier::removeInterfaceRealization(QSet<QUmlInterfaceRealization *> interfaceRealization)
 {
-    removeInterfaceRealization(interfaceRealization);
+    Q_UNUSED(interfaceRealization);
+}
+
+/*!
+    References behavior specifications owned by a classifier.
+ */
+QSet<QUmlBehavior *> QUmlBehavioredClassifier::ownedBehavior() const
+{
+    return QSet<QUmlBehavior *>();
+}
+
+void QUmlBehavioredClassifier::addOwnedBehavior(QSet<QUmlBehavior *> ownedBehavior)
+{
+    Q_UNUSED(ownedBehavior);
+}
+
+void QUmlBehavioredClassifier::removeOwnedBehavior(QSet<QUmlBehavior *> ownedBehavior)
+{
+    Q_UNUSED(ownedBehavior);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlbehavioredclassifier.cpp"
 

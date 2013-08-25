@@ -41,13 +41,9 @@
 #ifndef QUMLSIGNAL_P_H
 #define QUMLSIGNAL_P_H
 
-// Base class includes
-#include "private/qumlclassifier_p.h"
-
 #include "QtUml/QUmlSignal"
 
-// Qt includes
-#include "QtCore/QList"
+#include "private/qumlclassifier_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,19 +51,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlProperty;
-class QUmlSignal;
-
 class Q_UML_EXPORT QUmlSignalPrivate : public QUmlClassifierPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlSignal)
-
 public:
-    explicit QUmlSignalPrivate();
-    virtual ~QUmlSignalPrivate();
+    QUmlSignalPrivate();
 
-    QList<QUmlProperty *> ownedAttributes;
+    QList<QUmlProperty *> ownedAttribute;
 };
 
 QT_END_NAMESPACE

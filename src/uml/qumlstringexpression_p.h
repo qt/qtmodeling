@@ -41,16 +41,10 @@
 #ifndef QUMLSTRINGEXPRESSION_P_H
 #define QUMLSTRINGEXPRESSION_P_H
 
-// Base class includes
-#include "private/qwrappedobject_p.h"
-#include "private/qumlexpression_p.h"
-#include "private/qumltemplateableelement_p.h"
-
 #include "QtUml/QUmlStringExpression"
 
-// Qt includes
-#include "QtCore/QString"
-#include "QtCore/QSet"
+#include "private/qumlexpression_p.h"
+#include "private/qumltemplateableelement_p.h"
 
 QT_BEGIN_HEADER
 
@@ -58,20 +52,13 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlStringExpression;
-class QUmlStringExpression;
-
-class Q_UML_EXPORT QUmlStringExpressionPrivate : public QWrappedObjectPrivate
+class Q_UML_EXPORT QUmlStringExpressionPrivate : public QUmlExpressionPrivate, public QUmlTemplateableElementPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlStringExpression)
-
 public:
-    explicit QUmlStringExpressionPrivate();
-    virtual ~QUmlStringExpressionPrivate();
+    QUmlStringExpressionPrivate();
 
     QUmlStringExpression *owningExpression;
-    QSet<QUmlStringExpression *> subExpressions;
+    QSet<QUmlStringExpression *> subExpression;
 };
 
 QT_END_NAMESPACE

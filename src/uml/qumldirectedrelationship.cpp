@@ -43,64 +43,10 @@
 
 #include <QtUml/QUmlElement>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlDirectedRelationshipPrivate::QUmlDirectedRelationshipPrivate()
 {
-}
-
-QUmlDirectedRelationshipPrivate::~QUmlDirectedRelationshipPrivate()
-{
-}
-
-void QUmlDirectedRelationshipPrivate::addSource(QUmlElement *source)
-{
-    // This is a read-only derived-union association end
-
-    if (!this->sources.contains(source)) {
-        this->sources.insert(source);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlRelationshipPrivate *>(this))->addRelatedElement(qwrappedobject_cast<QUmlElement *>(source));
-    }
-}
-
-void QUmlDirectedRelationshipPrivate::removeSource(QUmlElement *source)
-{
-    // This is a read-only derived-union association end
-
-    if (this->sources.contains(source)) {
-        this->sources.remove(source);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlRelationshipPrivate *>(this))->removeRelatedElement(qwrappedobject_cast<QUmlElement *>(source));
-    }
-}
-
-void QUmlDirectedRelationshipPrivate::addTarget(QUmlElement *target)
-{
-    // This is a read-only derived-union association end
-
-    if (!this->targets.contains(target)) {
-        this->targets.insert(target);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlRelationshipPrivate *>(this))->addRelatedElement(qwrappedobject_cast<QUmlElement *>(target));
-    }
-}
-
-void QUmlDirectedRelationshipPrivate::removeTarget(QUmlElement *target)
-{
-    // This is a read-only derived-union association end
-
-    if (this->targets.contains(target)) {
-        this->targets.remove(target);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlRelationshipPrivate *>(this))->removeRelatedElement(qwrappedobject_cast<QUmlElement *>(target));
-    }
 }
 
 /*!
@@ -111,68 +57,30 @@ void QUmlDirectedRelationshipPrivate::removeTarget(QUmlElement *target)
     \brief A directed relationship represents a relationship between a collection of source model elements and a collection of target model elements.
  */
 
-QUmlDirectedRelationship::QUmlDirectedRelationship(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlRelationship(*new QUmlDirectedRelationshipPrivate, wrapper, parent)
+QUmlDirectedRelationship::QUmlDirectedRelationship(bool create_d_ptr) :
+    QUmlRelationship(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlDirectedRelationshipPrivate);
 }
 
-QUmlDirectedRelationship::QUmlDirectedRelationship(QUmlDirectedRelationshipPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlRelationship(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlDirectedRelationship::~QUmlDirectedRelationship()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlDirectedRelationship
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     Specifies the sources of the DirectedRelationship.
  */
-QSet<QUmlElement *> QUmlDirectedRelationship::sources() const
+QSet<QUmlElement *> QUmlDirectedRelationship::source() const
 {
-    // This is a read-only derived-union association end
-
-    Q_D(const QUmlDirectedRelationship);
-    return d->sources;
+    return QSet<QUmlElement *>();
 }
 
 /*!
     Specifies the targets of the DirectedRelationship.
  */
-QSet<QUmlElement *> QUmlDirectedRelationship::targets() const
+QSet<QUmlElement *> QUmlDirectedRelationship::target() const
 {
-    // This is a read-only derived-union association end
-
-    Q_D(const QUmlDirectedRelationship);
-    return d->targets;
-}
-
-void QUmlDirectedRelationship::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDirectedRelationship")][QString::fromLatin1("sources")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDirectedRelationship")][QString::fromLatin1("sources")][QtWrappedObjects::IsDerivedUnionRole] = true;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDirectedRelationship")][QString::fromLatin1("sources")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the sources of the DirectedRelationship.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDirectedRelationship")][QString::fromLatin1("sources")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDirectedRelationship")][QString::fromLatin1("sources")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlRelationship::relatedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDirectedRelationship")][QString::fromLatin1("sources")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDirectedRelationship")][QString::fromLatin1("targets")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDirectedRelationship")][QString::fromLatin1("targets")][QtWrappedObjects::IsDerivedUnionRole] = true;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDirectedRelationship")][QString::fromLatin1("targets")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the targets of the DirectedRelationship.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDirectedRelationship")][QString::fromLatin1("targets")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDirectedRelationship")][QString::fromLatin1("targets")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlRelationship::relatedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDirectedRelationship")][QString::fromLatin1("targets")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlRelationship::setPropertyData();
+    return QSet<QUmlElement *>();
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumldirectedrelationship.cpp"
 

@@ -44,15 +44,9 @@
 #include <QtUml/QUmlInputPin>
 #include <QtUml/QUmlOutputPin>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlOpaqueActionPrivate::QUmlOpaqueActionPrivate()
-{
-}
-
-QUmlOpaqueActionPrivate::~QUmlOpaqueActionPrivate()
 {
 }
 
@@ -64,200 +58,86 @@ QUmlOpaqueActionPrivate::~QUmlOpaqueActionPrivate()
     \brief An action with implementation-specific semantics.
  */
 
-QUmlOpaqueAction::QUmlOpaqueAction(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlAction(*new QUmlOpaqueActionPrivate, wrapper, parent)
+QUmlOpaqueAction::QUmlOpaqueAction(bool create_d_ptr) :
+    QUmlAction(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlOpaqueActionPrivate);
 }
 
-QUmlOpaqueAction::QUmlOpaqueAction(QUmlOpaqueActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlAction(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlOpaqueAction::~QUmlOpaqueAction()
-{
-}
-
-// ---------------------------------------------------------------
-// ATTRIBUTES FROM QUmlOpaqueAction
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     Specifies the action in one or more languages.
  */
-QList<QString> QUmlOpaqueAction::bodies() const
+QList<QString> QUmlOpaqueAction::body() const
 {
-    // This is a read-write attribute
-
-    Q_D(const QUmlOpaqueAction);
-    return d->bodies;
+    return QList<QString>();
 }
 
-void QUmlOpaqueAction::addBody(QString body)
+void QUmlOpaqueAction::addBody(QList<QString> body)
 {
-    // This is a read-write attribute
-
-    Q_D(QUmlOpaqueAction);
-    if (!d->bodies.contains(body)) {
-        d->bodies.append(body);
-    }
+    Q_UNUSED(body);
 }
 
-void QUmlOpaqueAction::removeBody(QString body)
+void QUmlOpaqueAction::removeBody(QList<QString> body)
 {
-    // This is a read-write attribute
+    Q_UNUSED(body);
+}
 
-    Q_D(QUmlOpaqueAction);
-    if (d->bodies.contains(body)) {
-        d->bodies.removeAll(body);
-    }
+/*!
+    Provides input to the action.
+ */
+QSet<QUmlInputPin *> QUmlOpaqueAction::inputValue() const
+{
+    return QSet<QUmlInputPin *>();
+}
+
+void QUmlOpaqueAction::addInputValue(QSet<QUmlInputPin *> inputValue)
+{
+    Q_UNUSED(inputValue);
+}
+
+void QUmlOpaqueAction::removeInputValue(QSet<QUmlInputPin *> inputValue)
+{
+    Q_UNUSED(inputValue);
 }
 
 /*!
     Languages the body strings use, in the same order as the body strings
  */
-QList<QString> QUmlOpaqueAction::languages() const
+QList<QString> QUmlOpaqueAction::language() const
 {
-    // This is a read-write attribute
-
-    Q_D(const QUmlOpaqueAction);
-    return d->languages;
+    return QList<QString>();
 }
 
-void QUmlOpaqueAction::addLanguage(QString language)
+void QUmlOpaqueAction::addLanguage(QList<QString> language)
 {
-    // This is a read-write attribute
-
-    Q_D(QUmlOpaqueAction);
-    if (!d->languages.contains(language)) {
-        d->languages.append(language);
-    }
+    Q_UNUSED(language);
 }
 
-void QUmlOpaqueAction::removeLanguage(QString language)
+void QUmlOpaqueAction::removeLanguage(QList<QString> language)
 {
-    // This is a read-write attribute
-
-    Q_D(QUmlOpaqueAction);
-    if (d->languages.contains(language)) {
-        d->languages.removeAll(language);
-    }
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlOpaqueAction
-// ---------------------------------------------------------------
-
-/*!
-    Provides input to the action.
- */
-QSet<QUmlInputPin *> QUmlOpaqueAction::inputValues() const
-{
-    // This is a read-write association end
-
-    Q_D(const QUmlOpaqueAction);
-    return d->inputValues;
-}
-
-void QUmlOpaqueAction::addInputValue(QUmlInputPin *inputValue)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlOpaqueAction);
-    if (!d->inputValues.contains(inputValue)) {
-        d->inputValues.insert(inputValue);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActionPrivate *>(d))->addInput(qwrappedobject_cast<QUmlInputPin *>(inputValue));
-    }
-}
-
-void QUmlOpaqueAction::removeInputValue(QUmlInputPin *inputValue)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlOpaqueAction);
-    if (d->inputValues.contains(inputValue)) {
-        d->inputValues.remove(inputValue);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActionPrivate *>(d))->removeInput(qwrappedobject_cast<QUmlInputPin *>(inputValue));
-    }
+    Q_UNUSED(language);
 }
 
 /*!
     Takes output from the action.
  */
-QSet<QUmlOutputPin *> QUmlOpaqueAction::outputValues() const
+QSet<QUmlOutputPin *> QUmlOpaqueAction::outputValue() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlOpaqueAction);
-    return d->outputValues;
+    return QSet<QUmlOutputPin *>();
 }
 
-void QUmlOpaqueAction::addOutputValue(QUmlOutputPin *outputValue)
+void QUmlOpaqueAction::addOutputValue(QSet<QUmlOutputPin *> outputValue)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlOpaqueAction);
-    if (!d->outputValues.contains(outputValue)) {
-        d->outputValues.insert(outputValue);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActionPrivate *>(d))->addOutput(qwrappedobject_cast<QUmlOutputPin *>(outputValue));
-    }
+    Q_UNUSED(outputValue);
 }
 
-void QUmlOpaqueAction::removeOutputValue(QUmlOutputPin *outputValue)
+void QUmlOpaqueAction::removeOutputValue(QSet<QUmlOutputPin *> outputValue)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlOpaqueAction);
-    if (d->outputValues.contains(outputValue)) {
-        d->outputValues.remove(outputValue);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActionPrivate *>(d))->removeOutput(qwrappedobject_cast<QUmlOutputPin *>(outputValue));
-    }
-}
-
-void QUmlOpaqueAction::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOpaqueAction")][QString::fromLatin1("bodies")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOpaqueAction")][QString::fromLatin1("bodies")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOpaqueAction")][QString::fromLatin1("bodies")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the action in one or more languages.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOpaqueAction")][QString::fromLatin1("bodies")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOpaqueAction")][QString::fromLatin1("bodies")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOpaqueAction")][QString::fromLatin1("bodies")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOpaqueAction")][QString::fromLatin1("languages")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOpaqueAction")][QString::fromLatin1("languages")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOpaqueAction")][QString::fromLatin1("languages")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Languages the body strings use, in the same order as the body strings");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOpaqueAction")][QString::fromLatin1("languages")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOpaqueAction")][QString::fromLatin1("languages")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOpaqueAction")][QString::fromLatin1("languages")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOpaqueAction")][QString::fromLatin1("inputValues")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOpaqueAction")][QString::fromLatin1("inputValues")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOpaqueAction")][QString::fromLatin1("inputValues")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Provides input to the action.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOpaqueAction")][QString::fromLatin1("inputValues")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOpaqueAction")][QString::fromLatin1("inputValues")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlAction::inputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOpaqueAction")][QString::fromLatin1("inputValues")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOpaqueAction")][QString::fromLatin1("outputValues")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOpaqueAction")][QString::fromLatin1("outputValues")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOpaqueAction")][QString::fromLatin1("outputValues")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Takes output from the action.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOpaqueAction")][QString::fromLatin1("outputValues")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOpaqueAction")][QString::fromLatin1("outputValues")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlAction::outputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOpaqueAction")][QString::fromLatin1("outputValues")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlAction::setPropertyData();
+    Q_UNUSED(outputValue);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlopaqueaction.cpp"
 

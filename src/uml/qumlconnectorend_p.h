@@ -41,10 +41,9 @@
 #ifndef QUMLCONNECTOREND_P_H
 #define QUMLCONNECTOREND_P_H
 
-// Base class includes
-#include "private/qumlmultiplicityelement_p.h"
-
 #include "QtUml/QUmlConnectorEnd"
+
+#include "private/qumlmultiplicityelement_p.h"
 
 QT_BEGIN_HEADER
 
@@ -52,21 +51,14 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlProperty;
-class QUmlConnectableElement;
-class QUmlConnectorEnd;
-
 class Q_UML_EXPORT QUmlConnectorEndPrivate : public QUmlMultiplicityElementPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlConnectorEnd)
-
 public:
-    explicit QUmlConnectorEndPrivate();
-    virtual ~QUmlConnectorEndPrivate();
+    QUmlConnectorEndPrivate();
 
-    QUmlConnectableElement *role;
+    QUmlProperty *definingEnd;
     QUmlProperty *partWithPort;
+    QUmlConnectableElement *role;
 };
 
 QT_END_NAMESPACE

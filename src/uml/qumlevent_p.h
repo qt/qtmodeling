@@ -41,10 +41,9 @@
 #ifndef QUMLEVENT_P_H
 #define QUMLEVENT_P_H
 
-// Base class includes
-#include "private/qumlpackageableelement_p.h"
-
 #include "QtUml/QUmlEvent"
+
+#include "private/qumlpackageableelement_p.h"
 
 QT_BEGIN_HEADER
 
@@ -54,11 +53,8 @@ QT_MODULE(QtUml)
 
 class Q_UML_EXPORT QUmlEventPrivate : public QUmlPackageableElementPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlEvent)
-
 public:
-    explicit QUmlEventPrivate();
-    virtual ~QUmlEventPrivate();
+    QUmlEventPrivate();
 
 };
 

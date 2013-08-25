@@ -43,11 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlActivityGroup>
-
-// Qt includes
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -55,39 +51,22 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlActivityEdge;
 class QUmlActivityNode;
 
 class QUmlInterruptibleActivityRegionPrivate;
-
 class Q_UML_EXPORT QUmlInterruptibleActivityRegion : public QUmlActivityGroup
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QSet<QUmlActivityEdge *> interruptingEdges READ interruptingEdges)
-    Q_PROPERTY(QSet<QUmlActivityNode *> nodes READ nodes)
-
-    Q_DISABLE_COPY(QUmlInterruptibleActivityRegion)
-    Q_DECLARE_PRIVATE(QUmlInterruptibleActivityRegion)
-
 public:
-    Q_INVOKABLE explicit QUmlInterruptibleActivityRegion(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlInterruptibleActivityRegion();
+    QUmlInterruptibleActivityRegion(bool create_d_ptr = true);
 
-    // Association ends from QUmlInterruptibleActivityRegion
-    Q_INVOKABLE QSet<QUmlActivityEdge *> interruptingEdges() const;
-    Q_INVOKABLE void addInterruptingEdge(QUmlActivityEdge *interruptingEdge);
-    Q_INVOKABLE void removeInterruptingEdge(QUmlActivityEdge *interruptingEdge);
-    Q_INVOKABLE QSet<QUmlActivityNode *> nodes() const;
-    Q_INVOKABLE void addNode(QUmlActivityNode *node);
-    Q_INVOKABLE void removeNode(QUmlActivityNode *node);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlInterruptibleActivityRegion(QUmlInterruptibleActivityRegionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QSet<QUmlActivityEdge *> interruptingEdge() const;
+    void addInterruptingEdge(QSet<QUmlActivityEdge *> interruptingEdge);
+    void removeInterruptingEdge(QSet<QUmlActivityEdge *> interruptingEdge);
+    QSet<QUmlActivityNode *> node() const;
+    void addNode(QSet<QUmlActivityNode *> node);
+    void removeNode(QSet<QUmlActivityNode *> node);
 };
 
 QT_END_NAMESPACE

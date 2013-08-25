@@ -41,13 +41,9 @@
 #ifndef QUMLGENERALIZATIONSET_P_H
 #define QUMLGENERALIZATIONSET_P_H
 
-// Base class includes
-#include "private/qumlpackageableelement_p.h"
-
 #include "QtUml/QUmlGeneralizationSet"
 
-// Qt includes
-#include "QtCore/QSet"
+#include "private/qumlpackageableelement_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,23 +51,15 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlGeneralization;
-class QUmlClassifier;
-class QUmlGeneralizationSet;
-
 class Q_UML_EXPORT QUmlGeneralizationSetPrivate : public QUmlPackageableElementPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlGeneralizationSet)
-
 public:
-    explicit QUmlGeneralizationSetPrivate();
-    virtual ~QUmlGeneralizationSetPrivate();
+    QUmlGeneralizationSetPrivate();
 
+    QSet<QUmlGeneralization *> generalization;
     bool isCovering;
     bool isDisjoint;
     QUmlClassifier *powertype;
-    QSet<QUmlGeneralization *> generalizations;
 };
 
 QT_END_NAMESPACE

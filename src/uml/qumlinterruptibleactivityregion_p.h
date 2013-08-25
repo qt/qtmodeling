@@ -41,13 +41,9 @@
 #ifndef QUMLINTERRUPTIBLEACTIVITYREGION_P_H
 #define QUMLINTERRUPTIBLEACTIVITYREGION_P_H
 
-// Base class includes
-#include "private/qumlactivitygroup_p.h"
-
 #include "QtUml/QUmlInterruptibleActivityRegion"
 
-// Qt includes
-#include "QtCore/QSet"
+#include "private/qumlactivitygroup_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,21 +51,13 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlActivityEdge;
-class QUmlActivityNode;
-class QUmlInterruptibleActivityRegion;
-
 class Q_UML_EXPORT QUmlInterruptibleActivityRegionPrivate : public QUmlActivityGroupPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlInterruptibleActivityRegion)
-
 public:
-    explicit QUmlInterruptibleActivityRegionPrivate();
-    virtual ~QUmlInterruptibleActivityRegionPrivate();
+    QUmlInterruptibleActivityRegionPrivate();
 
-    QSet<QUmlActivityEdge *> interruptingEdges;
-    QSet<QUmlActivityNode *> nodes;
+    QSet<QUmlActivityEdge *> interruptingEdge;
+    QSet<QUmlActivityNode *> node;
 };
 
 QT_END_NAMESPACE

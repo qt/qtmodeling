@@ -42,24 +42,18 @@
 #include "qumllifeline_p.h"
 
 #include <QtUml/QUmlConnectableElement>
-#include <QtUml/QUmlValueSpecification>
 #include <QtUml/QUmlInteraction>
 #include <QtUml/QUmlInteractionFragment>
 #include <QtUml/QUmlPartDecomposition>
-
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
+#include <QtUml/QUmlValueSpecification>
 
 QT_BEGIN_NAMESPACE
 
 QUmlLifelinePrivate::QUmlLifelinePrivate() :
-    represents(0),
     decomposedAs(0),
     interaction(0),
+    represents(0),
     selector(0)
-{
-}
-
-QUmlLifelinePrivate::~QUmlLifelinePrivate()
 {
 }
 
@@ -71,45 +65,31 @@ QUmlLifelinePrivate::~QUmlLifelinePrivate()
     \brief A lifeline represents an individual participant in the interaction. While parts and structural features may have multiplicity greater than 1, lifelines represent only one interacting entity.
  */
 
-QUmlLifeline::QUmlLifeline(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlNamedElement(*new QUmlLifelinePrivate, wrapper, parent)
+QUmlLifeline::QUmlLifeline(bool create_d_ptr) :
+    QUmlNamedElement(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlLifelinePrivate);
 }
 
-QUmlLifeline::QUmlLifeline(QUmlLifelinePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlNamedElement(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlLifeline::~QUmlLifeline()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlLifeline
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
-    References the ConnectableElement within the classifier that contains the enclosing interaction.
+    References the InteractionFragments in which this Lifeline takes part.
  */
-QUmlConnectableElement *QUmlLifeline::represents() const
+QSet<QUmlInteractionFragment *> QUmlLifeline::coveredBy() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlLifeline);
-    return d->represents;
+    return QSet<QUmlInteractionFragment *>();
 }
 
-void QUmlLifeline::setRepresents(QUmlConnectableElement *represents)
+void QUmlLifeline::addCoveredBy(QSet<QUmlInteractionFragment *> coveredBy)
 {
-    // This is a read-write association end
+    Q_UNUSED(coveredBy);
+}
 
-    Q_D(QUmlLifeline);
-    if (d->represents != represents) {
-        d->represents = represents;
-    }
+void QUmlLifeline::removeCoveredBy(QSet<QUmlInteractionFragment *> coveredBy)
+{
+    Q_UNUSED(coveredBy);
 }
 
 /*!
@@ -117,58 +97,12 @@ void QUmlLifeline::setRepresents(QUmlConnectableElement *represents)
  */
 QUmlPartDecomposition *QUmlLifeline::decomposedAs() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlLifeline);
-    return d->decomposedAs;
+    return 0;
 }
 
 void QUmlLifeline::setDecomposedAs(QUmlPartDecomposition *decomposedAs)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlLifeline);
-    if (d->decomposedAs != decomposedAs) {
-        d->decomposedAs = decomposedAs;
-    }
-}
-
-/*!
-    References the InteractionFragments in which this Lifeline takes part.
- */
-QSet<QUmlInteractionFragment *> QUmlLifeline::coveredBy() const
-{
-    // This is a read-write association end
-
-    Q_D(const QUmlLifeline);
-    return d->coveredBy;
-}
-
-void QUmlLifeline::addCoveredBy(QUmlInteractionFragment *coveredBy)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlLifeline);
-    if (!d->coveredBy.contains(coveredBy)) {
-        d->coveredBy.insert(coveredBy);
-
-        // Adjust opposite property
-        coveredBy->addCovered(this);
-    }
-}
-
-void QUmlLifeline::removeCoveredBy(QUmlInteractionFragment *coveredBy)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlLifeline);
-    if (d->coveredBy.contains(coveredBy)) {
-        d->coveredBy.remove(coveredBy);
-
-        // Adjust opposite property
-        if (coveredBy)
-            coveredBy->removeCovered(this);
-    }
+    Q_UNUSED(decomposedAs);
 }
 
 /*!
@@ -176,31 +110,25 @@ void QUmlLifeline::removeCoveredBy(QUmlInteractionFragment *coveredBy)
  */
 QUmlInteraction *QUmlLifeline::interaction() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlLifeline);
-    return d->interaction;
+    return 0;
 }
 
 void QUmlLifeline::setInteraction(QUmlInteraction *interaction)
 {
-    // This is a read-write association end
+    Q_UNUSED(interaction);
+}
 
-    Q_D(QUmlLifeline);
-    if (d->interaction != interaction) {
-        // Adjust opposite property
-        if (d->interaction)
-            d->interaction->removeLifeline(this);
+/*!
+    References the ConnectableElement within the classifier that contains the enclosing interaction.
+ */
+QUmlConnectableElement *QUmlLifeline::represents() const
+{
+    return 0;
+}
 
-        d->interaction = interaction;
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlNamedElementPrivate *>(d))->setNamespace_(qwrappedobject_cast<QUmlNamespace *>(interaction));
-
-        // Adjust opposite property
-        if (interaction)
-            interaction->addLifeline(this);
-    }
+void QUmlLifeline::setRepresents(QUmlConnectableElement *represents)
+{
+    Q_UNUSED(represents);
 }
 
 /*!
@@ -208,71 +136,13 @@ void QUmlLifeline::setInteraction(QUmlInteraction *interaction)
  */
 QUmlValueSpecification *QUmlLifeline::selector() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlLifeline);
-    return d->selector;
+    return 0;
 }
 
 void QUmlLifeline::setSelector(QUmlValueSpecification *selector)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlLifeline);
-    if (d->selector != selector) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QUmlElement *>(d->selector));
-
-        d->selector = selector;
-
-        // Adjust subsetted property(ies)
-        if (selector) {
-            (qwrappedobject_cast<QUmlElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QUmlElement *>(selector));
-        }
-    }
-}
-
-void QUmlLifeline::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("represents")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("represents")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("represents")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the ConnectableElement within the classifier that contains the enclosing interaction.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("represents")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("represents")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("represents")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("decomposedAs")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("decomposedAs")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("decomposedAs")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Interaction that represents the decomposition.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("decomposedAs")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("decomposedAs")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("decomposedAs")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("coveredBy")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("coveredBy")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("coveredBy")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the InteractionFragments in which this Lifeline takes part.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("coveredBy")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("coveredBy")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("coveredBy")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlInteractionFragment::covered");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("interaction")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("interaction")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("interaction")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Interaction enclosing this Lifeline.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("interaction")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("interaction")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlNamedElement::namespace");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("interaction")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlInteraction::lifeline");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("selector")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("selector")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("selector")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("If the referenced ConnectableElement is multivalued, then this specifies the specific individual part within that set.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("selector")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("selector")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLifeline")][QString::fromLatin1("selector")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlNamedElement::setPropertyData();
+    Q_UNUSED(selector);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumllifeline.cpp"
 

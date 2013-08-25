@@ -43,16 +43,10 @@
 
 #include <QtUml/QUmlOutputPin>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlCallActionPrivate::QUmlCallActionPrivate() :
     isSynchronous(true)
-{
-}
-
-QUmlCallActionPrivate::~QUmlCallActionPrivate()
 {
 }
 
@@ -64,116 +58,45 @@ QUmlCallActionPrivate::~QUmlCallActionPrivate()
     \brief CallAction is an abstract class for actions that invoke behavior and receive return values.
  */
 
-QUmlCallAction::QUmlCallAction(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlInvocationAction(*new QUmlCallActionPrivate, wrapper, parent)
+QUmlCallAction::QUmlCallAction(bool create_d_ptr) :
+    QUmlInvocationAction(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlCallActionPrivate);
 }
 
-QUmlCallAction::QUmlCallAction(QUmlCallActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlInvocationAction(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlCallAction::~QUmlCallAction()
-{
-}
-
-// ---------------------------------------------------------------
-// ATTRIBUTES FROM QUmlCallAction
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     If true, the call is synchronous and the caller waits for completion of the invoked behavior. If false, the call is asynchronous and the caller proceeds immediately and does not expect a return values.
  */
 bool QUmlCallAction::isSynchronous() const
 {
-    // This is a read-write attribute
-
-    Q_D(const QUmlCallAction);
-    return d->isSynchronous;
+    return bool();
 }
 
 void QUmlCallAction::setSynchronous(bool isSynchronous)
 {
-    // This is a read-write attribute
-
-    Q_D(QUmlCallAction);
-    if (d->isSynchronous != isSynchronous) {
-        d->isSynchronous = isSynchronous;
-    }
-    d->modifiedResettableProperties << QString::fromLatin1("isSynchronous");
+    Q_UNUSED(isSynchronous);
 }
-
-void QUmlCallAction::unsetSynchronous()
-{
-    setSynchronous(true);
-    Q_D(QUmlCallAction);
-    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isSynchronous"));
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlCallAction
-// ---------------------------------------------------------------
 
 /*!
     A list of output pins where the results of performing the invocation are placed.
  */
-QList<QUmlOutputPin *> QUmlCallAction::results() const
+QList<QUmlOutputPin *> QUmlCallAction::result() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlCallAction);
-    return d->results;
+    return QList<QUmlOutputPin *>();
 }
 
-void QUmlCallAction::addResult(QUmlOutputPin *result)
+void QUmlCallAction::addResult(QList<QUmlOutputPin *> result)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlCallAction);
-    if (!d->results.contains(result)) {
-        d->results.append(result);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActionPrivate *>(d))->addOutput(qwrappedobject_cast<QUmlOutputPin *>(result));
-    }
+    Q_UNUSED(result);
 }
 
-void QUmlCallAction::removeResult(QUmlOutputPin *result)
+void QUmlCallAction::removeResult(QList<QUmlOutputPin *> result)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlCallAction);
-    if (d->results.contains(result)) {
-        d->results.removeAll(result);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActionPrivate *>(d))->removeOutput(qwrappedobject_cast<QUmlOutputPin *>(result));
-    }
-}
-
-void QUmlCallAction::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCallAction")][QString::fromLatin1("isSynchronous")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCallAction")][QString::fromLatin1("isSynchronous")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCallAction")][QString::fromLatin1("isSynchronous")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("If true, the call is synchronous and the caller waits for completion of the invoked behavior. If false, the call is asynchronous and the caller proceeds immediately and does not expect a return values.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCallAction")][QString::fromLatin1("isSynchronous")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCallAction")][QString::fromLatin1("isSynchronous")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCallAction")][QString::fromLatin1("isSynchronous")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCallAction")][QString::fromLatin1("results")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCallAction")][QString::fromLatin1("results")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCallAction")][QString::fromLatin1("results")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A list of output pins where the results of performing the invocation are placed.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCallAction")][QString::fromLatin1("results")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCallAction")][QString::fromLatin1("results")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlAction::outputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCallAction")][QString::fromLatin1("results")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlInvocationAction::setPropertyData();
+    Q_UNUSED(result);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlcallaction.cpp"
 

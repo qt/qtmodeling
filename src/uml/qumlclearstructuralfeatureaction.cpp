@@ -43,16 +43,10 @@
 
 #include <QtUml/QUmlOutputPin>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlClearStructuralFeatureActionPrivate::QUmlClearStructuralFeatureActionPrivate() :
     result(0)
-{
-}
-
-QUmlClearStructuralFeatureActionPrivate::~QUmlClearStructuralFeatureActionPrivate()
 {
 }
 
@@ -64,68 +58,27 @@ QUmlClearStructuralFeatureActionPrivate::~QUmlClearStructuralFeatureActionPrivat
     \brief A clear structural feature action is a structural feature action that removes all values of a structural feature.
  */
 
-QUmlClearStructuralFeatureAction::QUmlClearStructuralFeatureAction(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlStructuralFeatureAction(*new QUmlClearStructuralFeatureActionPrivate, wrapper, parent)
+QUmlClearStructuralFeatureAction::QUmlClearStructuralFeatureAction(bool create_d_ptr) :
+    QUmlStructuralFeatureAction(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlClearStructuralFeatureActionPrivate);
 }
 
-QUmlClearStructuralFeatureAction::QUmlClearStructuralFeatureAction(QUmlClearStructuralFeatureActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlStructuralFeatureAction(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlClearStructuralFeatureAction::~QUmlClearStructuralFeatureAction()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlClearStructuralFeatureAction
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     Gives the output pin on which the result is put.
  */
 QUmlOutputPin *QUmlClearStructuralFeatureAction::result() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlClearStructuralFeatureAction);
-    return d->result;
+    return 0;
 }
 
 void QUmlClearStructuralFeatureAction::setResult(QUmlOutputPin *result)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlClearStructuralFeatureAction);
-    if (d->result != result) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActionPrivate *>(d))->removeOutput(qwrappedobject_cast<QUmlOutputPin *>(d->result));
-
-        d->result = result;
-
-        // Adjust subsetted property(ies)
-        if (result) {
-            (qwrappedobject_cast<QUmlActionPrivate *>(d))->addOutput(qwrappedobject_cast<QUmlOutputPin *>(result));
-        }
-    }
-}
-
-void QUmlClearStructuralFeatureAction::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlClearStructuralFeatureAction")][QString::fromLatin1("result")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlClearStructuralFeatureAction")][QString::fromLatin1("result")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlClearStructuralFeatureAction")][QString::fromLatin1("result")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Gives the output pin on which the result is put.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlClearStructuralFeatureAction")][QString::fromLatin1("result")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlClearStructuralFeatureAction")][QString::fromLatin1("result")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlAction::outputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlClearStructuralFeatureAction")][QString::fromLatin1("result")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlStructuralFeatureAction::setPropertyData();
+    Q_UNUSED(result);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlclearstructuralfeatureaction.cpp"
 

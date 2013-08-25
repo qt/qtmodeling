@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlDependency>
 
 QT_BEGIN_HEADER
@@ -52,33 +51,17 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlOpaqueExpression;
 
 class QUmlAbstractionPrivate;
-
 class Q_UML_EXPORT QUmlAbstraction : public QUmlDependency
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlOpaqueExpression * mapping READ mapping WRITE setMapping)
-
-    Q_DISABLE_COPY(QUmlAbstraction)
-    Q_DECLARE_PRIVATE(QUmlAbstraction)
-
 public:
-    Q_INVOKABLE explicit QUmlAbstraction(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlAbstraction();
+    QUmlAbstraction(bool create_d_ptr = true);
 
-    // Association ends from QUmlAbstraction
-    Q_INVOKABLE QUmlOpaqueExpression *mapping() const;
-    Q_INVOKABLE void setMapping(QUmlOpaqueExpression *mapping);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlAbstraction(QUmlAbstractionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlOpaqueExpression *mapping() const;
+    void setMapping(QUmlOpaqueExpression *mapping);
 };
 
 QT_END_NAMESPACE

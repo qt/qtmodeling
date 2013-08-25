@@ -41,13 +41,9 @@
 #ifndef QUMLACTIVITY_P_H
 #define QUMLACTIVITY_P_H
 
-// Base class includes
-#include "private/qumlbehavior_p.h"
-
 #include "QtUml/QUmlActivity"
 
-// Qt includes
-#include "QtCore/QSet"
+#include "private/qumlbehavior_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,31 +51,19 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlStructuredActivityNode;
-class QUmlVariable;
-class QUmlActivityPartition;
-class QUmlActivityGroup;
-class QUmlActivityEdge;
-class QUmlActivityNode;
-class QUmlActivity;
-
 class Q_UML_EXPORT QUmlActivityPrivate : public QUmlBehaviorPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlActivity)
-
 public:
-    explicit QUmlActivityPrivate();
-    virtual ~QUmlActivityPrivate();
+    QUmlActivityPrivate();
 
+    QSet<QUmlActivityEdge *> edge;
+    QSet<QUmlActivityGroup *> group;
     bool isReadOnly;
     bool isSingleExecution;
-    QSet<QUmlActivityPartition *> partitions;
-    QSet<QUmlActivityNode *> nodes;
-    QSet<QUmlVariable *> variables;
-    QSet<QUmlStructuredActivityNode *> structuredNodes;
-    QSet<QUmlActivityGroup *> groups;
-    QSet<QUmlActivityEdge *> edges;
+    QSet<QUmlActivityNode *> node;
+    QSet<QUmlActivityPartition *> partition;
+    QSet<QUmlStructuredActivityNode *> structuredNode;
+    QSet<QUmlVariable *> variable;
 };
 
 QT_END_NAMESPACE

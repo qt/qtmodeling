@@ -43,17 +43,11 @@
 
 #include <QtUml/QUmlClassifier>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlSubstitutionPrivate::QUmlSubstitutionPrivate() :
     contract(0),
     substitutingClassifier(0)
-{
-}
-
-QUmlSubstitutionPrivate::~QUmlSubstitutionPrivate()
 {
 }
 
@@ -65,53 +59,26 @@ QUmlSubstitutionPrivate::~QUmlSubstitutionPrivate()
     \brief A substitution is a relationship between two classifiers signifies that the substituting classifier complies with the contract specified by the contract classifier. This implies that instances of the substituting classifier are runtime substitutable where instances of the contract classifier are expected.
  */
 
-QUmlSubstitution::QUmlSubstitution(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlRealization(*new QUmlSubstitutionPrivate, wrapper, parent)
+QUmlSubstitution::QUmlSubstitution(bool create_d_ptr) :
+    QUmlRealization(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlSubstitutionPrivate);
 }
 
-QUmlSubstitution::QUmlSubstitution(QUmlSubstitutionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlRealization(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlSubstitution::~QUmlSubstitution()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlSubstitution
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     The contract with which the substituting classifier complies.
  */
 QUmlClassifier *QUmlSubstitution::contract() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlSubstitution);
-    return d->contract;
+    return 0;
 }
 
 void QUmlSubstitution::setContract(QUmlClassifier *contract)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlSubstitution);
-    if (d->contract != contract) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlDependency *>(this))->removeSupplier(qwrappedobject_cast<QUmlNamedElement *>(d->contract));
-
-        d->contract = contract;
-
-        // Adjust subsetted property(ies)
-        if (contract) {
-            (qwrappedobject_cast<QUmlDependency *>(this))->addSupplier(qwrappedobject_cast<QUmlNamedElement *>(contract));
-        }
-    }
+    Q_UNUSED(contract);
 }
 
 /*!
@@ -119,83 +86,13 @@ void QUmlSubstitution::setContract(QUmlClassifier *contract)
  */
 QUmlClassifier *QUmlSubstitution::substitutingClassifier() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlSubstitution);
-    return d->substitutingClassifier;
+    return 0;
 }
 
 void QUmlSubstitution::setSubstitutingClassifier(QUmlClassifier *substitutingClassifier)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlSubstitution);
-    if (d->substitutingClassifier != substitutingClassifier) {
-        // Adjust opposite property
-        if (d->substitutingClassifier)
-            d->substitutingClassifier->removeSubstitution(this);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlDependency *>(this))->removeClient(qwrappedobject_cast<QUmlNamedElement *>(d->substitutingClassifier));
-
-        d->substitutingClassifier = substitutingClassifier;
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->setOwner(qwrappedobject_cast<QUmlElement *>(substitutingClassifier));
-        if (substitutingClassifier) {
-            (qwrappedobject_cast<QUmlDependency *>(this))->addClient(qwrappedobject_cast<QUmlNamedElement *>(substitutingClassifier));
-        }
-
-        // Adjust opposite property
-        if (substitutingClassifier)
-            substitutingClassifier->addSubstitution(this);
-    }
-}
-
-void QUmlSubstitution::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSubstitution")][QString::fromLatin1("contract")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSubstitution")][QString::fromLatin1("contract")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSubstitution")][QString::fromLatin1("contract")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The contract with which the substituting classifier complies.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSubstitution")][QString::fromLatin1("contract")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSubstitution")][QString::fromLatin1("contract")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlDependency::suppliers");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSubstitution")][QString::fromLatin1("contract")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSubstitution")][QString::fromLatin1("substitutingClassifier")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSubstitution")][QString::fromLatin1("substitutingClassifier")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSubstitution")][QString::fromLatin1("substitutingClassifier")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Instances of the substituting classifier are runtime substitutable where instances of the contract classifier are expected.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSubstitution")][QString::fromLatin1("substitutingClassifier")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSubstitution")][QString::fromLatin1("substitutingClassifier")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::owner QUmlDependency::clients");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSubstitution")][QString::fromLatin1("substitutingClassifier")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlClassifier::substitution");
-
-    QUmlRealization::setPropertyData();
-}
-
-// Overriden methods for subsetted properties
-
-void QUmlSubstitution::addSupplier(QWrappedObjectPointer<QUmlClassifier> contract)
-{
-    setContract(contract);
-}
-
-void QUmlSubstitution::removeSupplier(QWrappedObjectPointer<QUmlClassifier> contract)
-{
-    Q_UNUSED(contract);
-    setContract(0);
-}
-
-void QUmlSubstitution::addClient(QWrappedObjectPointer<QUmlClassifier> substitutingClassifier)
-{
-    setSubstitutingClassifier(substitutingClassifier);
-}
-
-void QUmlSubstitution::removeClient(QWrappedObjectPointer<QUmlClassifier> substitutingClassifier)
-{
     Q_UNUSED(substitutingClassifier);
-    setSubstitutingClassifier(0);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlsubstitution.cpp"
 

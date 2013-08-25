@@ -43,11 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlDirectedRelationship>
-
-// Qt includes
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -55,47 +51,25 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlClassifier;
 class QUmlGeneralizationSet;
 
 class QUmlGeneralizationPrivate;
-
 class Q_UML_EXPORT QUmlGeneralization : public QUmlDirectedRelationship
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(bool isSubstitutable READ isSubstitutable WRITE setSubstitutable RESET unsetSubstitutable)
-    Q_PROPERTY(QUmlClassifier * specific READ specific WRITE setSpecific)
-    Q_PROPERTY(QSet<QUmlGeneralizationSet *> generalizationSets READ generalizationSets)
-    Q_PROPERTY(QUmlClassifier * general READ general WRITE setGeneral)
-
-    Q_DISABLE_COPY(QUmlGeneralization)
-    Q_DECLARE_PRIVATE(QUmlGeneralization)
-
 public:
-    Q_INVOKABLE explicit QUmlGeneralization(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlGeneralization();
+    QUmlGeneralization(bool create_d_ptr = true);
 
-    // Attributes from QUmlGeneralization
-    Q_INVOKABLE bool isSubstitutable() const;
-    Q_INVOKABLE void setSubstitutable(bool isSubstitutable);
-    Q_INVOKABLE void unsetSubstitutable();
-
-    // Association ends from QUmlGeneralization
-    Q_INVOKABLE QUmlClassifier *specific() const;
-    Q_INVOKABLE void setSpecific(QUmlClassifier *specific);
-    Q_INVOKABLE QSet<QUmlGeneralizationSet *> generalizationSets() const;
-    Q_INVOKABLE void addGeneralizationSet(QUmlGeneralizationSet *generalizationSet);
-    Q_INVOKABLE void removeGeneralizationSet(QUmlGeneralizationSet *generalizationSet);
-    Q_INVOKABLE QUmlClassifier *general() const;
-    Q_INVOKABLE void setGeneral(QUmlClassifier *general);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlGeneralization(QUmlGeneralizationPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlClassifier *general() const;
+    void setGeneral(QUmlClassifier *general);
+    QSet<QUmlGeneralizationSet *> generalizationSet() const;
+    void addGeneralizationSet(QSet<QUmlGeneralizationSet *> generalizationSet);
+    void removeGeneralizationSet(QSet<QUmlGeneralizationSet *> generalizationSet);
+    bool isSubstitutable() const;
+    void setSubstitutable(bool isSubstitutable);
+    QUmlClassifier *specific() const;
+    void setSpecific(QUmlClassifier *specific);
 };
 
 QT_END_NAMESPACE

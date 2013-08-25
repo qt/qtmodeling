@@ -41,10 +41,9 @@
 #ifndef QUMLTYPEDELEMENT_P_H
 #define QUMLTYPEDELEMENT_P_H
 
-// Base class includes
-#include "private/qumlnamedelement_p.h"
-
 #include "QtUml/QUmlTypedElement"
+
+#include "private/qumlnamedelement_p.h"
 
 QT_BEGIN_HEADER
 
@@ -52,16 +51,10 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlType;
-
-class Q_UML_EXPORT QUmlTypedElementPrivate : public QUmlNamedElementPrivate
+class Q_UML_EXPORT QUmlTypedElementPrivate : public virtual QUmlNamedElementPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlTypedElement)
-
 public:
-    explicit QUmlTypedElementPrivate();
-    virtual ~QUmlTypedElementPrivate();
+    QUmlTypedElementPrivate();
 
     QUmlType *type;
 };

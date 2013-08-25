@@ -41,15 +41,9 @@
 #include "qumlmessageevent.h"
 #include "qumlmessageevent_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlMessageEventPrivate::QUmlMessageEventPrivate()
-{
-}
-
-QUmlMessageEventPrivate::~QUmlMessageEventPrivate()
 {
 }
 
@@ -61,28 +55,12 @@ QUmlMessageEventPrivate::~QUmlMessageEventPrivate()
     \brief A message event specifies the receipt by an object of either a call or a signal.
  */
 
-QUmlMessageEvent::QUmlMessageEvent(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlEvent(*new QUmlMessageEventPrivate, wrapper, parent)
+QUmlMessageEvent::QUmlMessageEvent(bool create_d_ptr) :
+    QUmlEvent(false)
 {
-    setPropertyData();
-}
-
-QUmlMessageEvent::QUmlMessageEvent(QUmlMessageEventPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlEvent(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlMessageEvent::~QUmlMessageEvent()
-{
-}
-
-void QUmlMessageEvent::setPropertyData()
-{
-    QUmlEvent::setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlMessageEventPrivate);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlmessageevent.cpp"
 

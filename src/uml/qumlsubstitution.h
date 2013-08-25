@@ -43,10 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlRealization>
-
-#include <QtWrappedObjects/QWrappedObjectPointer>
 
 QT_BEGIN_HEADER
 
@@ -54,42 +51,19 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlClassifier;
 
 class QUmlSubstitutionPrivate;
-
 class Q_UML_EXPORT QUmlSubstitution : public QUmlRealization
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlClassifier * contract READ contract WRITE setContract)
-    Q_PROPERTY(QUmlClassifier * substitutingClassifier READ substitutingClassifier WRITE setSubstitutingClassifier)
-
-    Q_DISABLE_COPY(QUmlSubstitution)
-    Q_DECLARE_PRIVATE(QUmlSubstitution)
-
 public:
-    Q_INVOKABLE explicit QUmlSubstitution(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlSubstitution();
+    QUmlSubstitution(bool create_d_ptr = true);
 
-    // Association ends from QUmlSubstitution
-    Q_INVOKABLE QUmlClassifier *contract() const;
-    Q_INVOKABLE void setContract(QUmlClassifier *contract);
-    Q_INVOKABLE QUmlClassifier *substitutingClassifier() const;
-    Q_INVOKABLE void setSubstitutingClassifier(QUmlClassifier *substitutingClassifier);
-
-    // Overriden methods for subsetted properties
-    Q_INVOKABLE void addSupplier(QWrappedObjectPointer<QUmlClassifier> contract);
-    Q_INVOKABLE void removeSupplier(QWrappedObjectPointer<QUmlClassifier> contract);
-    Q_INVOKABLE void addClient(QWrappedObjectPointer<QUmlClassifier> substitutingClassifier);
-    Q_INVOKABLE void removeClient(QWrappedObjectPointer<QUmlClassifier> substitutingClassifier);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlSubstitution(QUmlSubstitutionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlClassifier *contract() const;
+    void setContract(QUmlClassifier *contract);
+    QUmlClassifier *substitutingClassifier() const;
+    void setSubstitutingClassifier(QUmlClassifier *substitutingClassifier);
 };
 
 QT_END_NAMESPACE

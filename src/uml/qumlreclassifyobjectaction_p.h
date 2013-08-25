@@ -41,13 +41,9 @@
 #ifndef QUMLRECLASSIFYOBJECTACTION_P_H
 #define QUMLRECLASSIFYOBJECTACTION_P_H
 
-// Base class includes
-#include "private/qumlaction_p.h"
-
 #include "QtUml/QUmlReclassifyObjectAction"
 
-// Qt includes
-#include "QtCore/QSet"
+#include "private/qumlaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,23 +51,15 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlClassifier;
-class QUmlInputPin;
-class QUmlReclassifyObjectAction;
-
 class Q_UML_EXPORT QUmlReclassifyObjectActionPrivate : public QUmlActionPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlReclassifyObjectAction)
-
 public:
-    explicit QUmlReclassifyObjectActionPrivate();
-    virtual ~QUmlReclassifyObjectActionPrivate();
+    QUmlReclassifyObjectActionPrivate();
 
     bool isReplaceAll;
-    QSet<QUmlClassifier *> oldClassifiers;
+    QSet<QUmlClassifier *> newClassifier;
     QUmlInputPin *object;
-    QSet<QUmlClassifier *> newClassifiers;
+    QSet<QUmlClassifier *> oldClassifier;
 };
 
 QT_END_NAMESPACE

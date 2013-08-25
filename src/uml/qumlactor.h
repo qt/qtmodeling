@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlBehavioredClassifier>
 
 QT_BEGIN_HEADER
@@ -51,25 +50,11 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-
 class QUmlActorPrivate;
-
 class Q_UML_EXPORT QUmlActor : public QUmlBehavioredClassifier
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_DISABLE_COPY(QUmlActor)
-    Q_DECLARE_PRIVATE(QUmlActor)
-
 public:
-    Q_INVOKABLE explicit QUmlActor(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlActor();
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlActor(QUmlActorPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    QUmlActor(bool create_d_ptr = true);
 };
 
 QT_END_NAMESPACE

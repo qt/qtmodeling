@@ -43,11 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlAction>
-
-// Qt includes
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -55,42 +51,24 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
+class QUmlClassifier;
 class QUmlInputPin;
 class QUmlOutputPin;
-class QUmlClassifier;
 
 class QUmlUnmarshallActionPrivate;
-
 class Q_UML_EXPORT QUmlUnmarshallAction : public QUmlAction
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlInputPin * object READ object WRITE setObject)
-    Q_PROPERTY(QSet<QUmlOutputPin *> results READ results)
-    Q_PROPERTY(QUmlClassifier * unmarshallType READ unmarshallType WRITE setUnmarshallType)
-
-    Q_DISABLE_COPY(QUmlUnmarshallAction)
-    Q_DECLARE_PRIVATE(QUmlUnmarshallAction)
-
 public:
-    Q_INVOKABLE explicit QUmlUnmarshallAction(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlUnmarshallAction();
+    QUmlUnmarshallAction(bool create_d_ptr = true);
 
-    // Association ends from QUmlUnmarshallAction
-    Q_INVOKABLE QUmlInputPin *object() const;
-    Q_INVOKABLE void setObject(QUmlInputPin *object);
-    Q_INVOKABLE QSet<QUmlOutputPin *> results() const;
-    Q_INVOKABLE void addResult(QUmlOutputPin *result);
-    Q_INVOKABLE void removeResult(QUmlOutputPin *result);
-    Q_INVOKABLE QUmlClassifier *unmarshallType() const;
-    Q_INVOKABLE void setUnmarshallType(QUmlClassifier *unmarshallType);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlUnmarshallAction(QUmlUnmarshallActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlInputPin *object() const;
+    void setObject(QUmlInputPin *object);
+    QSet<QUmlOutputPin *> result() const;
+    void addResult(QSet<QUmlOutputPin *> result);
+    void removeResult(QSet<QUmlOutputPin *> result);
+    QUmlClassifier *unmarshallType() const;
+    void setUnmarshallType(QUmlClassifier *unmarshallType);
 };
 
 QT_END_NAMESPACE

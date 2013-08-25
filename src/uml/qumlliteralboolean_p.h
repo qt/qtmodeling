@@ -41,25 +41,20 @@
 #ifndef QUMLLITERALBOOLEAN_P_H
 #define QUMLLITERALBOOLEAN_P_H
 
-// Base class includes
-#include "private/qumlliteralspecification_p.h"
-
 #include "QtUml/QUmlLiteralBoolean"
+
+#include "private/qumlliteralspecification_p.h"
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-class QUmlLiteralBoolean;
 
 class Q_UML_EXPORT QUmlLiteralBooleanPrivate : public QUmlLiteralSpecificationPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlLiteralBoolean)
-
 public:
-    explicit QUmlLiteralBooleanPrivate();
-    virtual ~QUmlLiteralBooleanPrivate();
+    QUmlLiteralBooleanPrivate();
 
     bool value;
 };

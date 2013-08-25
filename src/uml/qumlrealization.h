@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlAbstraction>
 
 QT_BEGIN_HEADER
@@ -51,25 +50,11 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-
 class QUmlRealizationPrivate;
-
 class Q_UML_EXPORT QUmlRealization : public QUmlAbstraction
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_DISABLE_COPY(QUmlRealization)
-    Q_DECLARE_PRIVATE(QUmlRealization)
-
 public:
-    Q_INVOKABLE explicit QUmlRealization(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlRealization();
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlRealization(QUmlRealizationPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    QUmlRealization(bool create_d_ptr = true);
 };
 
 QT_END_NAMESPACE

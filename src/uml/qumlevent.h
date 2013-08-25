@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlPackageableElement>
 
 QT_BEGIN_HEADER
@@ -51,25 +50,11 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-
 class QUmlEventPrivate;
-
 class Q_UML_EXPORT QUmlEvent : public QUmlPackageableElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_DISABLE_COPY(QUmlEvent)
-    Q_DECLARE_PRIVATE(QUmlEvent)
-
 public:
-    Q_INVOKABLE explicit QUmlEvent(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlEvent();
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlEvent(QUmlEventPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    Q_DECL_HIDDEN QUmlEvent(bool create_d_ptr = true);
 };
 
 QT_END_NAMESPACE

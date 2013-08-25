@@ -44,16 +44,10 @@
 #include <QtUml/QUmlEvent>
 #include <QtUml/QUmlPort>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlTriggerPrivate::QUmlTriggerPrivate() :
     event(0)
-{
-}
-
-QUmlTriggerPrivate::~QUmlTriggerPrivate()
 {
 }
 
@@ -65,98 +59,45 @@ QUmlTriggerPrivate::~QUmlTriggerPrivate()
     \brief A trigger specification may be qualified by the port on which the event occurred.A trigger relates an event to a behavior that may affect an instance of the classifier.
  */
 
-QUmlTrigger::QUmlTrigger(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlNamedElement(*new QUmlTriggerPrivate, wrapper, parent)
+QUmlTrigger::QUmlTrigger(bool create_d_ptr) :
+    QUmlNamedElement(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlTriggerPrivate);
 }
 
-QUmlTrigger::QUmlTrigger(QUmlTriggerPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlNamedElement(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlTrigger::~QUmlTrigger()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlTrigger
-// ---------------------------------------------------------------
-
-/*!
-    A optional port of the receiver object on which the behavioral feature is invoked.
- */
-QSet<QUmlPort *> QUmlTrigger::ports() const
-{
-    // This is a read-write association end
-
-    Q_D(const QUmlTrigger);
-    return d->ports;
-}
-
-void QUmlTrigger::addPort(QUmlPort *port)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlTrigger);
-    if (!d->ports.contains(port)) {
-        d->ports.insert(port);
-    }
-}
-
-void QUmlTrigger::removePort(QUmlPort *port)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlTrigger);
-    if (d->ports.contains(port)) {
-        d->ports.remove(port);
-    }
-}
+// Owned attributes
 
 /*!
     The event that causes the trigger.
  */
 QUmlEvent *QUmlTrigger::event() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlTrigger);
-    return d->event;
+    return 0;
 }
 
 void QUmlTrigger::setEvent(QUmlEvent *event)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlTrigger);
-    if (d->event != event) {
-        d->event = event;
-    }
+    Q_UNUSED(event);
 }
 
-void QUmlTrigger::setPropertyData()
+/*!
+    A optional port of the receiver object on which the behavioral feature is invoked.
+ */
+QSet<QUmlPort *> QUmlTrigger::port() const
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTrigger")][QString::fromLatin1("ports")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTrigger")][QString::fromLatin1("ports")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTrigger")][QString::fromLatin1("ports")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A optional port of the receiver object on which the behavioral feature is invoked.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTrigger")][QString::fromLatin1("ports")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTrigger")][QString::fromLatin1("ports")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTrigger")][QString::fromLatin1("ports")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
+    return QSet<QUmlPort *>();
+}
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTrigger")][QString::fromLatin1("event")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTrigger")][QString::fromLatin1("event")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTrigger")][QString::fromLatin1("event")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The event that causes the trigger.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTrigger")][QString::fromLatin1("event")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTrigger")][QString::fromLatin1("event")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTrigger")][QString::fromLatin1("event")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
+void QUmlTrigger::addPort(QSet<QUmlPort *> port)
+{
+    Q_UNUSED(port);
+}
 
-    QUmlNamedElement::setPropertyData();
+void QUmlTrigger::removePort(QSet<QUmlPort *> port)
+{
+    Q_UNUSED(port);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumltrigger.cpp"
 

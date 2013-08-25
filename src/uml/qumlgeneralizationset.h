@@ -43,11 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlPackageableElement>
-
-// Qt includes
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -55,48 +51,25 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlGeneralization;
 class QUmlClassifier;
+class QUmlGeneralization;
 
 class QUmlGeneralizationSetPrivate;
-
 class Q_UML_EXPORT QUmlGeneralizationSet : public QUmlPackageableElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(bool isCovering READ isCovering WRITE setCovering RESET unsetCovering)
-    Q_PROPERTY(bool isDisjoint READ isDisjoint WRITE setDisjoint RESET unsetDisjoint)
-    Q_PROPERTY(QUmlClassifier * powertype READ powertype WRITE setPowertype)
-    Q_PROPERTY(QSet<QUmlGeneralization *> generalizations READ generalizations)
-
-    Q_DISABLE_COPY(QUmlGeneralizationSet)
-    Q_DECLARE_PRIVATE(QUmlGeneralizationSet)
-
 public:
-    Q_INVOKABLE explicit QUmlGeneralizationSet(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlGeneralizationSet();
+    QUmlGeneralizationSet(bool create_d_ptr = true);
 
-    // Attributes from QUmlGeneralizationSet
-    Q_INVOKABLE bool isCovering() const;
-    Q_INVOKABLE void setCovering(bool isCovering);
-    Q_INVOKABLE void unsetCovering();
-    Q_INVOKABLE bool isDisjoint() const;
-    Q_INVOKABLE void setDisjoint(bool isDisjoint);
-    Q_INVOKABLE void unsetDisjoint();
-
-    // Association ends from QUmlGeneralizationSet
-    Q_INVOKABLE QUmlClassifier *powertype() const;
-    Q_INVOKABLE void setPowertype(QUmlClassifier *powertype);
-    Q_INVOKABLE QSet<QUmlGeneralization *> generalizations() const;
-    Q_INVOKABLE void addGeneralization(QUmlGeneralization *generalization);
-    Q_INVOKABLE void removeGeneralization(QUmlGeneralization *generalization);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlGeneralizationSet(QUmlGeneralizationSetPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QSet<QUmlGeneralization *> generalization() const;
+    void addGeneralization(QSet<QUmlGeneralization *> generalization);
+    void removeGeneralization(QSet<QUmlGeneralization *> generalization);
+    bool isCovering() const;
+    void setCovering(bool isCovering);
+    bool isDisjoint() const;
+    void setDisjoint(bool isDisjoint);
+    QUmlClassifier *powertype() const;
+    void setPowertype(QUmlClassifier *powertype);
 };
 
 QT_END_NAMESPACE

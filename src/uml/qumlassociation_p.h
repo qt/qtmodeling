@@ -41,16 +41,10 @@
 #ifndef QUMLASSOCIATION_P_H
 #define QUMLASSOCIATION_P_H
 
-// Base class includes
-#include "private/qwrappedobject_p.h"
-#include "private/qumlclassifier_p.h"
-#include "private/qumlrelationship_p.h"
-
 #include "QtUml/QUmlAssociation"
 
-// Qt includes
-#include "QtCore/QList"
-#include "QtCore/QSet"
+#include "private/qumlclassifier_p.h"
+#include "private/qumlrelationship_p.h"
 
 QT_BEGIN_HEADER
 
@@ -58,23 +52,16 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlType;
-class QUmlProperty;
-class QUmlAssociation;
-
-class Q_UML_EXPORT QUmlAssociationPrivate : public QWrappedObjectPrivate
+class Q_UML_EXPORT QUmlAssociationPrivate : public QUmlClassifierPrivate, public QUmlRelationshipPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlAssociation)
-
 public:
-    explicit QUmlAssociationPrivate();
-    virtual ~QUmlAssociationPrivate();
+    QUmlAssociationPrivate();
 
+    QList<QUmlType *> endType;
     bool isDerived;
-    QSet<QUmlProperty *> navigableOwnedEnds;
-    QList<QUmlProperty *> ownedEnds;
-    QList<QUmlProperty *> memberEnds;
+    QList<QUmlProperty *> memberEnd;
+    QSet<QUmlProperty *> navigableOwnedEnd;
+    QList<QUmlProperty *> ownedEnd;
 };
 
 QT_END_NAMESPACE

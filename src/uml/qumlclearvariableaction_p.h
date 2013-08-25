@@ -41,25 +41,20 @@
 #ifndef QUMLCLEARVARIABLEACTION_P_H
 #define QUMLCLEARVARIABLEACTION_P_H
 
-// Base class includes
-#include "private/qumlvariableaction_p.h"
-
 #include "QtUml/QUmlClearVariableAction"
+
+#include "private/qumlvariableaction_p.h"
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-class QUmlClearVariableAction;
 
 class Q_UML_EXPORT QUmlClearVariableActionPrivate : public QUmlVariableActionPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlClearVariableAction)
-
 public:
-    explicit QUmlClearVariableActionPrivate();
-    virtual ~QUmlClearVariableActionPrivate();
+    QUmlClearVariableActionPrivate();
 
 };
 

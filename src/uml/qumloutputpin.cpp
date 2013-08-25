@@ -41,15 +41,9 @@
 #include "qumloutputpin.h"
 #include "qumloutputpin_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlOutputPinPrivate::QUmlOutputPinPrivate()
-{
-}
-
-QUmlOutputPinPrivate::~QUmlOutputPinPrivate()
 {
 }
 
@@ -61,28 +55,12 @@ QUmlOutputPinPrivate::~QUmlOutputPinPrivate()
     \brief An output pin is a pin that holds output values produced by an action.
  */
 
-QUmlOutputPin::QUmlOutputPin(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlPin(*new QUmlOutputPinPrivate, wrapper, parent)
+QUmlOutputPin::QUmlOutputPin(bool create_d_ptr) :
+    QUmlPin(false)
 {
-    setPropertyData();
-}
-
-QUmlOutputPin::QUmlOutputPin(QUmlOutputPinPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlPin(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlOutputPin::~QUmlOutputPin()
-{
-}
-
-void QUmlOutputPin::setPropertyData()
-{
-    QUmlPin::setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlOutputPinPrivate);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumloutputpin.cpp"
 

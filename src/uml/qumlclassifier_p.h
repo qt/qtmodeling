@@ -41,17 +41,12 @@
 #ifndef QUMLCLASSIFIER_P_H
 #define QUMLCLASSIFIER_P_H
 
-// Base class includes
-#include "private/qwrappedobject_p.h"
+#include "QtUml/QUmlClassifier"
+
 #include "private/qumlnamespace_p.h"
 #include "private/qumltype_p.h"
 #include "private/qumlredefinableelement_p.h"
 #include "private/qumltemplateableelement_p.h"
-
-#include "QtUml/QUmlClassifier"
-
-// Qt includes
-#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 
@@ -59,47 +54,27 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlRedefinableTemplateSignature;
-class QUmlClassifierTemplateParameter;
-class QUmlUseCase;
-class QUmlSubstitution;
-class QUmlGeneralizationSet;
-class QUmlNamedElement;
-class QUmlProperty;
-class QUmlGeneralization;
-class QUmlCollaborationUse;
-class QUmlClassifier;
-class QUmlFeature;
-
-class Q_UML_EXPORT QUmlClassifierPrivate : public QWrappedObjectPrivate
+class Q_UML_EXPORT QUmlClassifierPrivate : public QUmlNamespacePrivate, public QUmlTypePrivate, public QUmlRedefinableElementPrivate, public QUmlTemplateableElementPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlClassifier)
-
 public:
-    explicit QUmlClassifierPrivate();
-    virtual ~QUmlClassifierPrivate();
+    QUmlClassifierPrivate();
 
+    QSet<QUmlProperty *> attribute;
+    QSet<QUmlCollaborationUse *> collaborationUse;
+    QSet<QUmlFeature *> feature;
+    QSet<QUmlClassifier *> general;
+    QSet<QUmlGeneralization *> generalization;
+    QSet<QUmlNamedElement *> inheritedMember;
     bool isAbstract;
     bool isFinalSpecialization;
-    QSet<QUmlUseCase *> ownedUseCases;
-    QSet<QUmlGeneralizationSet *> powertypeExtents;
-    QSet<QUmlUseCase *> useCases;
-    QUmlClassifierTemplateParameter *templateParameter;
-    QSet<QUmlClassifier *> redefinedClassifiers;
     QUmlRedefinableTemplateSignature *ownedTemplateSignature;
-    QSet<QUmlCollaborationUse *> collaborationUses;
-    QSet<QUmlProperty *> attributes;
-    QSet<QUmlFeature *> features;
+    QSet<QUmlUseCase *> ownedUseCase;
+    QSet<QUmlGeneralizationSet *> powertypeExtent;
+    QSet<QUmlClassifier *> redefinedClassifier;
     QUmlCollaborationUse *representation;
-    QSet<QUmlGeneralization *> generalizations;
-    QSet<QUmlSubstitution *> substitutions;
-
-    // Internal functions for read-only subsetted association ends
-    void addAttribute(QUmlProperty *attribute);
-    void removeAttribute(QUmlProperty *attribute);
-    void addFeature(QUmlFeature *feature);
-    void removeFeature(QUmlFeature *feature);
+    QSet<QUmlSubstitution *> substitution;
+    QUmlClassifierTemplateParameter *templateParameter;
+    QSet<QUmlUseCase *> useCase;
 };
 
 QT_END_NAMESPACE

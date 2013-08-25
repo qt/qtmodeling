@@ -41,13 +41,9 @@
 #ifndef QUMLCONSIDERIGNOREFRAGMENT_P_H
 #define QUMLCONSIDERIGNOREFRAGMENT_P_H
 
-// Base class includes
-#include "private/qumlcombinedfragment_p.h"
-
 #include "QtUml/QUmlConsiderIgnoreFragment"
 
-// Qt includes
-#include "QtCore/QSet"
+#include "private/qumlcombinedfragment_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,19 +51,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlNamedElement;
-class QUmlConsiderIgnoreFragment;
-
 class Q_UML_EXPORT QUmlConsiderIgnoreFragmentPrivate : public QUmlCombinedFragmentPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlConsiderIgnoreFragment)
-
 public:
-    explicit QUmlConsiderIgnoreFragmentPrivate();
-    virtual ~QUmlConsiderIgnoreFragmentPrivate();
+    QUmlConsiderIgnoreFragmentPrivate();
 
-    QSet<QUmlNamedElement *> messages;
+    QSet<QUmlNamedElement *> message;
 };
 
 QT_END_NAMESPACE

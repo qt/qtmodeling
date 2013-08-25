@@ -41,13 +41,9 @@
 #ifndef QUMLPARAMETERSET_P_H
 #define QUMLPARAMETERSET_P_H
 
-// Base class includes
-#include "private/qumlnamedelement_p.h"
-
 #include "QtUml/QUmlParameterSet"
 
-// Qt includes
-#include "QtCore/QSet"
+#include "private/qumlnamedelement_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,21 +51,13 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlConstraint;
-class QUmlParameter;
-class QUmlParameterSet;
-
 class Q_UML_EXPORT QUmlParameterSetPrivate : public QUmlNamedElementPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlParameterSet)
-
 public:
-    explicit QUmlParameterSetPrivate();
-    virtual ~QUmlParameterSetPrivate();
+    QUmlParameterSetPrivate();
 
-    QSet<QUmlParameter *> parameters;
-    QSet<QUmlConstraint *> conditions;
+    QSet<QUmlConstraint *> condition;
+    QSet<QUmlParameter *> parameter;
 };
 
 QT_END_NAMESPACE

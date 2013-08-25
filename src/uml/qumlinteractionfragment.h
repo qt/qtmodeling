@@ -43,11 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlNamedElement>
-
-// Qt includes
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -55,47 +51,28 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlGeneralOrdering;
+class QUmlInteraction;
 class QUmlInteractionOperand;
 class QUmlLifeline;
-class QUmlInteraction;
 
 class QUmlInteractionFragmentPrivate;
-
-class Q_UML_EXPORT QUmlInteractionFragment : public QUmlNamedElement
+class Q_UML_EXPORT QUmlInteractionFragment : public virtual QUmlNamedElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QSet<QUmlGeneralOrdering *> generalOrderings READ generalOrderings)
-    Q_PROPERTY(QUmlInteraction * enclosingInteraction READ enclosingInteraction WRITE setEnclosingInteraction)
-    Q_PROPERTY(QSet<QUmlLifeline *> covered READ covered)
-    Q_PROPERTY(QUmlInteractionOperand * enclosingOperand READ enclosingOperand WRITE setEnclosingOperand)
-
-    Q_DISABLE_COPY(QUmlInteractionFragment)
-    Q_DECLARE_PRIVATE(QUmlInteractionFragment)
-
 public:
-    Q_INVOKABLE explicit QUmlInteractionFragment(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlInteractionFragment();
+    Q_DECL_HIDDEN QUmlInteractionFragment(bool create_d_ptr = true);
 
-    // Association ends from QUmlInteractionFragment
-    Q_INVOKABLE QSet<QUmlGeneralOrdering *> generalOrderings() const;
-    Q_INVOKABLE void addGeneralOrdering(QUmlGeneralOrdering *generalOrdering);
-    Q_INVOKABLE void removeGeneralOrdering(QUmlGeneralOrdering *generalOrdering);
-    Q_INVOKABLE QUmlInteraction *enclosingInteraction() const;
-    Q_INVOKABLE void setEnclosingInteraction(QUmlInteraction *enclosingInteraction);
-    Q_INVOKABLE QSet<QUmlLifeline *> covered() const;
-    Q_INVOKABLE void addCovered(QUmlLifeline *covered);
-    Q_INVOKABLE void removeCovered(QUmlLifeline *covered);
-    Q_INVOKABLE QUmlInteractionOperand *enclosingOperand() const;
-    Q_INVOKABLE void setEnclosingOperand(QUmlInteractionOperand *enclosingOperand);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlInteractionFragment(QUmlInteractionFragmentPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QSet<QUmlLifeline *> covered() const;
+    void addCovered(QSet<QUmlLifeline *> covered);
+    void removeCovered(QSet<QUmlLifeline *> covered);
+    QUmlInteraction *enclosingInteraction() const;
+    void setEnclosingInteraction(QUmlInteraction *enclosingInteraction);
+    QUmlInteractionOperand *enclosingOperand() const;
+    void setEnclosingOperand(QUmlInteractionOperand *enclosingOperand);
+    QSet<QUmlGeneralOrdering *> generalOrdering() const;
+    void addGeneralOrdering(QSet<QUmlGeneralOrdering *> generalOrdering);
+    void removeGeneralOrdering(QSet<QUmlGeneralOrdering *> generalOrdering);
 };
 
 QT_END_NAMESPACE

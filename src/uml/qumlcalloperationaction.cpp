@@ -41,20 +41,14 @@
 #include "qumlcalloperationaction.h"
 #include "qumlcalloperationaction_p.h"
 
-#include <QtUml/QUmlOperation>
 #include <QtUml/QUmlInputPin>
-
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
+#include <QtUml/QUmlOperation>
 
 QT_BEGIN_NAMESPACE
 
 QUmlCallOperationActionPrivate::QUmlCallOperationActionPrivate() :
     operation(0),
     target(0)
-{
-}
-
-QUmlCallOperationActionPrivate::~QUmlCallOperationActionPrivate()
 {
 }
 
@@ -66,45 +60,26 @@ QUmlCallOperationActionPrivate::~QUmlCallOperationActionPrivate()
     \brief A call operation action is an action that transmits an operation call request to the target object, where it may cause the invocation of associated behavior. The argument values of the action are available to the execution of the invoked behavior. If the action is marked synchronous, the execution of the call operation action waits until the execution of the invoked behavior completes and a reply transmission is returned to the caller; otherwise execution of the action is complete when the invocation of the operation is established and the execution of the invoked operation proceeds concurrently with the execution of the calling behavior. Any values returned as part of the reply transmission are put on the result output pins of the call operation action. Upon receipt of the reply transmission, execution of the call operation action is complete.
  */
 
-QUmlCallOperationAction::QUmlCallOperationAction(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlCallAction(*new QUmlCallOperationActionPrivate, wrapper, parent)
+QUmlCallOperationAction::QUmlCallOperationAction(bool create_d_ptr) :
+    QUmlCallAction(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlCallOperationActionPrivate);
 }
 
-QUmlCallOperationAction::QUmlCallOperationAction(QUmlCallOperationActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlCallAction(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlCallOperationAction::~QUmlCallOperationAction()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlCallOperationAction
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     The operation to be invoked by the action execution.
  */
 QUmlOperation *QUmlCallOperationAction::operation() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlCallOperationAction);
-    return d->operation;
+    return 0;
 }
 
 void QUmlCallOperationAction::setOperation(QUmlOperation *operation)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlCallOperationAction);
-    if (d->operation != operation) {
-        d->operation = operation;
-    }
+    Q_UNUSED(operation);
 }
 
 /*!
@@ -112,50 +87,13 @@ void QUmlCallOperationAction::setOperation(QUmlOperation *operation)
  */
 QUmlInputPin *QUmlCallOperationAction::target() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlCallOperationAction);
-    return d->target;
+    return 0;
 }
 
 void QUmlCallOperationAction::setTarget(QUmlInputPin *target)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlCallOperationAction);
-    if (d->target != target) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActionPrivate *>(d))->removeInput(qwrappedobject_cast<QUmlInputPin *>(d->target));
-
-        d->target = target;
-
-        // Adjust subsetted property(ies)
-        if (target) {
-            (qwrappedobject_cast<QUmlActionPrivate *>(d))->addInput(qwrappedobject_cast<QUmlInputPin *>(target));
-        }
-    }
-}
-
-void QUmlCallOperationAction::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCallOperationAction")][QString::fromLatin1("operation")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCallOperationAction")][QString::fromLatin1("operation")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCallOperationAction")][QString::fromLatin1("operation")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The operation to be invoked by the action execution.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCallOperationAction")][QString::fromLatin1("operation")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCallOperationAction")][QString::fromLatin1("operation")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCallOperationAction")][QString::fromLatin1("operation")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCallOperationAction")][QString::fromLatin1("target")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCallOperationAction")][QString::fromLatin1("target")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCallOperationAction")][QString::fromLatin1("target")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The target object to which the request is sent. The classifier of the target object is used to dynamically determine a behavior to invoke. This object constitutes the context of the execution of the operation.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCallOperationAction")][QString::fromLatin1("target")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCallOperationAction")][QString::fromLatin1("target")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlAction::inputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCallOperationAction")][QString::fromLatin1("target")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlCallAction::setPropertyData();
+    Q_UNUSED(target);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlcalloperationaction.cpp"
 

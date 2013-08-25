@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlObservation>
 
 QT_BEGIN_HEADER
@@ -52,39 +51,19 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlNamedElement;
 
 class QUmlTimeObservationPrivate;
-
 class Q_UML_EXPORT QUmlTimeObservation : public QUmlObservation
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(bool firstEvent READ firstEvent WRITE setFirstEvent RESET unsetFirstEvent)
-    Q_PROPERTY(QUmlNamedElement * event READ event WRITE setEvent)
-
-    Q_DISABLE_COPY(QUmlTimeObservation)
-    Q_DECLARE_PRIVATE(QUmlTimeObservation)
-
 public:
-    Q_INVOKABLE explicit QUmlTimeObservation(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlTimeObservation();
+    QUmlTimeObservation(bool create_d_ptr = true);
 
-    // Attributes from QUmlTimeObservation
-    Q_INVOKABLE bool firstEvent() const;
-    Q_INVOKABLE void setFirstEvent(bool firstEvent);
-    Q_INVOKABLE void unsetFirstEvent();
-
-    // Association ends from QUmlTimeObservation
-    Q_INVOKABLE QUmlNamedElement *event() const;
-    Q_INVOKABLE void setEvent(QUmlNamedElement *event);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlTimeObservation(QUmlTimeObservationPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlNamedElement *event() const;
+    void setEvent(QUmlNamedElement *event);
+    bool firstEvent() const;
+    void setFirstEvent(bool firstEvent);
 };
 
 QT_END_NAMESPACE

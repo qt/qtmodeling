@@ -41,28 +41,20 @@
 #ifndef QUMLINFORMATIONITEM_P_H
 #define QUMLINFORMATIONITEM_P_H
 
-// Base class includes
-#include "private/qumlclassifier_p.h"
-
 #include "QtUml/QUmlInformationItem"
 
-// Qt includes
-#include "QtCore/QSet"
+#include "private/qumlclassifier_p.h"
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-class QUmlInformationItem;
 
 class Q_UML_EXPORT QUmlInformationItemPrivate : public QUmlClassifierPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlInformationItem)
-
 public:
-    explicit QUmlInformationItemPrivate();
-    virtual ~QUmlInformationItemPrivate();
+    QUmlInformationItemPrivate();
 
     QSet<QUmlClassifier *> represented;
 };

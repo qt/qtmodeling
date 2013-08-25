@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlAction>
 
 QT_BEGIN_HEADER
@@ -52,33 +51,17 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlVariable;
 
 class QUmlVariableActionPrivate;
-
 class Q_UML_EXPORT QUmlVariableAction : public QUmlAction
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlVariable * variable READ variable WRITE setVariable)
-
-    Q_DISABLE_COPY(QUmlVariableAction)
-    Q_DECLARE_PRIVATE(QUmlVariableAction)
-
 public:
-    Q_INVOKABLE explicit QUmlVariableAction(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlVariableAction();
+    Q_DECL_HIDDEN QUmlVariableAction(bool create_d_ptr = true);
 
-    // Association ends from QUmlVariableAction
-    Q_INVOKABLE QUmlVariable *variable() const;
-    Q_INVOKABLE void setVariable(QUmlVariable *variable);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlVariableAction(QUmlVariableActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlVariable *variable() const;
+    void setVariable(QUmlVariable *variable);
 };
 
 QT_END_NAMESPACE

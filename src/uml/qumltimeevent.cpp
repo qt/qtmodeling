@@ -43,17 +43,11 @@
 
 #include <QtUml/QUmlTimeExpression>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlTimeEventPrivate::QUmlTimeEventPrivate() :
     isRelative(false),
     when(0)
-{
-}
-
-QUmlTimeEventPrivate::~QUmlTimeEventPrivate()
 {
 }
 
@@ -65,108 +59,40 @@ QUmlTimeEventPrivate::~QUmlTimeEventPrivate()
     \brief A time event can be defined relative to entering the current state of the executing state machine.A time event specifies a point in time. At the specified time, the event occurs.
  */
 
-QUmlTimeEvent::QUmlTimeEvent(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlEvent(*new QUmlTimeEventPrivate, wrapper, parent)
+QUmlTimeEvent::QUmlTimeEvent(bool create_d_ptr) :
+    QUmlEvent(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlTimeEventPrivate);
 }
 
-QUmlTimeEvent::QUmlTimeEvent(QUmlTimeEventPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlEvent(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlTimeEvent::~QUmlTimeEvent()
-{
-}
-
-// ---------------------------------------------------------------
-// ATTRIBUTES FROM QUmlTimeEvent
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     Specifies whether it is relative or absolute time.
  */
 bool QUmlTimeEvent::isRelative() const
 {
-    // This is a read-write attribute
-
-    Q_D(const QUmlTimeEvent);
-    return d->isRelative;
+    return bool();
 }
 
 void QUmlTimeEvent::setRelative(bool isRelative)
 {
-    // This is a read-write attribute
-
-    Q_D(QUmlTimeEvent);
-    if (d->isRelative != isRelative) {
-        d->isRelative = isRelative;
-    }
-    d->modifiedResettableProperties << QString::fromLatin1("isRelative");
+    Q_UNUSED(isRelative);
 }
-
-void QUmlTimeEvent::unsetRelative()
-{
-    setRelative(false);
-    Q_D(QUmlTimeEvent);
-    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isRelative"));
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlTimeEvent
-// ---------------------------------------------------------------
 
 /*!
     Specifies the corresponding time deadline.
  */
 QUmlTimeExpression *QUmlTimeEvent::when() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlTimeEvent);
-    return d->when;
+    return 0;
 }
 
 void QUmlTimeEvent::setWhen(QUmlTimeExpression *when)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlTimeEvent);
-    if (d->when != when) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QUmlElement *>(d->when));
-
-        d->when = when;
-
-        // Adjust subsetted property(ies)
-        if (when) {
-            (qwrappedobject_cast<QUmlElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QUmlElement *>(when));
-        }
-    }
-}
-
-void QUmlTimeEvent::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTimeEvent")][QString::fromLatin1("isRelative")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTimeEvent")][QString::fromLatin1("isRelative")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTimeEvent")][QString::fromLatin1("isRelative")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies whether it is relative or absolute time.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTimeEvent")][QString::fromLatin1("isRelative")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTimeEvent")][QString::fromLatin1("isRelative")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTimeEvent")][QString::fromLatin1("isRelative")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTimeEvent")][QString::fromLatin1("when")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTimeEvent")][QString::fromLatin1("when")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTimeEvent")][QString::fromLatin1("when")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the corresponding time deadline.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTimeEvent")][QString::fromLatin1("when")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTimeEvent")][QString::fromLatin1("when")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTimeEvent")][QString::fromLatin1("when")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlEvent::setPropertyData();
+    Q_UNUSED(when);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumltimeevent.cpp"
 

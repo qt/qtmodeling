@@ -41,13 +41,9 @@
 #ifndef QUMLINVOCATIONACTION_P_H
 #define QUMLINVOCATIONACTION_P_H
 
-// Base class includes
-#include "private/qumlaction_p.h"
-
 #include "QtUml/QUmlInvocationAction"
 
-// Qt includes
-#include "QtCore/QList"
+#include "private/qumlaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,19 +51,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlInputPin;
-class QUmlPort;
-
 class Q_UML_EXPORT QUmlInvocationActionPrivate : public QUmlActionPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlInvocationAction)
-
 public:
-    explicit QUmlInvocationActionPrivate();
-    virtual ~QUmlInvocationActionPrivate();
+    QUmlInvocationActionPrivate();
 
-    QList<QUmlInputPin *> arguments;
+    QList<QUmlInputPin *> argument;
     QUmlPort *onPort;
 };
 

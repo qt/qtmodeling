@@ -41,22 +41,15 @@
 #include "qumlconnectorend.h"
 #include "qumlconnectorend_p.h"
 
-#include "qumlconnectableelement_p.h"
-
-#include <QtUml/QUmlProperty>
 #include <QtUml/QUmlConnectableElement>
-
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
+#include <QtUml/QUmlProperty>
 
 QT_BEGIN_NAMESPACE
 
 QUmlConnectorEndPrivate::QUmlConnectorEndPrivate() :
-    role(0),
-    partWithPort(0)
-{
-}
-
-QUmlConnectorEndPrivate::~QUmlConnectorEndPrivate()
+    definingEnd(0),
+    partWithPort(0),
+    role(0)
 {
 }
 
@@ -68,53 +61,21 @@ QUmlConnectorEndPrivate::~QUmlConnectorEndPrivate()
     \brief A connector end is an endpoint of a connector, which attaches the connector to a connectable element. Each connector end is part of one connector.
  */
 
-QUmlConnectorEnd::QUmlConnectorEnd(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlMultiplicityElement(*new QUmlConnectorEndPrivate, wrapper, parent)
+QUmlConnectorEnd::QUmlConnectorEnd(bool create_d_ptr) :
+    QUmlMultiplicityElement(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlConnectorEndPrivate);
 }
 
-QUmlConnectorEnd::QUmlConnectorEnd(QUmlConnectorEndPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlMultiplicityElement(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlConnectorEnd::~QUmlConnectorEnd()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlConnectorEnd
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
-    The connectable element attached at this connector end. When an instance of the containing classifier is created, a link may (depending on the multiplicities) be created to an instance of the classifier that types this connectable element.
+    A derived association referencing the corresponding association end on the association which types the connector owing this connector end. This association is derived by selecting the association end at the same place in the ordering of association ends as this connector end.
  */
-QUmlConnectableElement *QUmlConnectorEnd::role() const
+QUmlProperty *QUmlConnectorEnd::definingEnd() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlConnectorEnd);
-    return d->role;
-}
-
-void QUmlConnectorEnd::setRole(QUmlConnectableElement *role)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlConnectorEnd);
-    if (d->role != role) {
-        // Adjust opposite property
-        if (d->role)
-            (qwrappedobject_cast<QUmlConnectableElementPrivate *>(d->role->d_func()))->removeEnd(this);
-
-        d->role = role;
-
-        // Adjust opposite property
-        if (role)
-            (qwrappedobject_cast<QUmlConnectableElementPrivate *>(role->d_func()))->addEnd(this);
-    }
+    return 0;
 }
 
 /*!
@@ -122,61 +83,26 @@ void QUmlConnectorEnd::setRole(QUmlConnectableElement *role)
  */
 QUmlProperty *QUmlConnectorEnd::partWithPort() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlConnectorEnd);
-    return d->partWithPort;
+    return 0;
 }
 
 void QUmlConnectorEnd::setPartWithPort(QUmlProperty *partWithPort)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlConnectorEnd);
-    if (d->partWithPort != partWithPort) {
-        d->partWithPort = partWithPort;
-    }
+    Q_UNUSED(partWithPort);
 }
 
 /*!
-    A derived association referencing the corresponding association end on the association which types the connector owing this connector end. This association is derived by selecting the association end at the same place in the ordering of association ends as this connector end.
+    The connectable element attached at this connector end. When an instance of the containing classifier is created, a link may (depending on the multiplicities) be created to an instance of the classifier that types this connectable element.
  */
-QUmlProperty *QUmlConnectorEnd::definingEnd() const
+QUmlConnectableElement *QUmlConnectorEnd::role() const
 {
-    // This is a read-only derived association end
-
-    qWarning("QUmlConnectorEnd::definingEnd: to be implemented (this is a derived associationend)");
-
-    return 0; // change here to your derived return
+    return 0;
 }
 
-void QUmlConnectorEnd::setPropertyData()
+void QUmlConnectorEnd::setRole(QUmlConnectableElement *role)
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectorEnd")][QString::fromLatin1("role")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectorEnd")][QString::fromLatin1("role")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectorEnd")][QString::fromLatin1("role")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The connectable element attached at this connector end. When an instance of the containing classifier is created, a link may (depending on the multiplicities) be created to an instance of the classifier that types this connectable element.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectorEnd")][QString::fromLatin1("role")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectorEnd")][QString::fromLatin1("role")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectorEnd")][QString::fromLatin1("role")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlConnectableElement::end");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectorEnd")][QString::fromLatin1("partWithPort")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectorEnd")][QString::fromLatin1("partWithPort")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectorEnd")][QString::fromLatin1("partWithPort")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Indicates the role of the internal structure of a classifier with the port to which the connector end is attached.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectorEnd")][QString::fromLatin1("partWithPort")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectorEnd")][QString::fromLatin1("partWithPort")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectorEnd")][QString::fromLatin1("partWithPort")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectorEnd")][QString::fromLatin1("definingEnd")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectorEnd")][QString::fromLatin1("definingEnd")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectorEnd")][QString::fromLatin1("definingEnd")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A derived association referencing the corresponding association end on the association which types the connector owing this connector end. This association is derived by selecting the association end at the same place in the ordering of association ends as this connector end.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectorEnd")][QString::fromLatin1("definingEnd")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectorEnd")][QString::fromLatin1("definingEnd")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectorEnd")][QString::fromLatin1("definingEnd")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlMultiplicityElement::setPropertyData();
+    Q_UNUSED(role);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlconnectorend.cpp"
 

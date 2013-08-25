@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlStructuralFeatureAction>
 
 QT_BEGIN_HEADER
@@ -52,33 +51,17 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlOutputPin;
 
 class QUmlReadStructuralFeatureActionPrivate;
-
 class Q_UML_EXPORT QUmlReadStructuralFeatureAction : public QUmlStructuralFeatureAction
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlOutputPin * result READ result WRITE setResult)
-
-    Q_DISABLE_COPY(QUmlReadStructuralFeatureAction)
-    Q_DECLARE_PRIVATE(QUmlReadStructuralFeatureAction)
-
 public:
-    Q_INVOKABLE explicit QUmlReadStructuralFeatureAction(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlReadStructuralFeatureAction();
+    QUmlReadStructuralFeatureAction(bool create_d_ptr = true);
 
-    // Association ends from QUmlReadStructuralFeatureAction
-    Q_INVOKABLE QUmlOutputPin *result() const;
-    Q_INVOKABLE void setResult(QUmlOutputPin *result);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlReadStructuralFeatureAction(QUmlReadStructuralFeatureActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlOutputPin *result() const;
+    void setResult(QUmlOutputPin *result);
 };
 
 QT_END_NAMESPACE

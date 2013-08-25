@@ -41,12 +41,10 @@
 #ifndef QUMLPIN_P_H
 #define QUMLPIN_P_H
 
-// Base class includes
-#include "private/qwrappedobject_p.h"
+#include "QtUml/QUmlPin"
+
 #include "private/qumlmultiplicityelement_p.h"
 #include "private/qumlobjectnode_p.h"
-
-#include "QtUml/QUmlPin"
 
 QT_BEGIN_HEADER
 
@@ -54,13 +52,10 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QUmlPinPrivate : public QWrappedObjectPrivate
+class Q_UML_EXPORT QUmlPinPrivate : public QUmlMultiplicityElementPrivate, public QUmlObjectNodePrivate
 {
-    Q_DECLARE_PUBLIC(QUmlPin)
-
 public:
-    explicit QUmlPinPrivate();
-    virtual ~QUmlPinPrivate();
+    QUmlPinPrivate();
 
     bool isControl;
 };

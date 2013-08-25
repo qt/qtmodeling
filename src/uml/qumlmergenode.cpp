@@ -41,15 +41,9 @@
 #include "qumlmergenode.h"
 #include "qumlmergenode_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlMergeNodePrivate::QUmlMergeNodePrivate()
-{
-}
-
-QUmlMergeNodePrivate::~QUmlMergeNodePrivate()
 {
 }
 
@@ -61,28 +55,12 @@ QUmlMergeNodePrivate::~QUmlMergeNodePrivate()
     \brief A merge node is a control node that brings together multiple alternate flows. It is not used to synchronize concurrent flows but to accept one among several alternate flows.
  */
 
-QUmlMergeNode::QUmlMergeNode(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlControlNode(*new QUmlMergeNodePrivate, wrapper, parent)
+QUmlMergeNode::QUmlMergeNode(bool create_d_ptr) :
+    QUmlControlNode(false)
 {
-    setPropertyData();
-}
-
-QUmlMergeNode::QUmlMergeNode(QUmlMergeNodePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlControlNode(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlMergeNode::~QUmlMergeNode()
-{
-}
-
-void QUmlMergeNode::setPropertyData()
-{
-    QUmlControlNode::setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlMergeNodePrivate);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlmergenode.cpp"
 

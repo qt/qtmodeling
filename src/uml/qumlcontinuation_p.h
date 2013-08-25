@@ -41,25 +41,20 @@
 #ifndef QUMLCONTINUATION_P_H
 #define QUMLCONTINUATION_P_H
 
-// Base class includes
-#include "private/qumlinteractionfragment_p.h"
-
 #include "QtUml/QUmlContinuation"
+
+#include "private/qumlinteractionfragment_p.h"
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-class QUmlContinuation;
 
 class Q_UML_EXPORT QUmlContinuationPrivate : public QUmlInteractionFragmentPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlContinuation)
-
 public:
-    explicit QUmlContinuationPrivate();
-    virtual ~QUmlContinuationPrivate();
+    QUmlContinuationPrivate();
 
     bool setting;
 };

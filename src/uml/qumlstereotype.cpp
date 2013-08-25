@@ -44,15 +44,10 @@
 #include <QtUml/QUmlImage>
 #include <QtUml/QUmlProfile>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
-QUmlStereotypePrivate::QUmlStereotypePrivate()
-{
-}
-
-QUmlStereotypePrivate::~QUmlStereotypePrivate()
+QUmlStereotypePrivate::QUmlStereotypePrivate() :
+    profile(0)
 {
 }
 
@@ -64,61 +59,31 @@ QUmlStereotypePrivate::~QUmlStereotypePrivate()
     \brief A stereotype defines how an existing metaclass may be extended, and enables the use of platform or domain specific terminology or notation in place of, or in addition to, the ones used for the extended metaclass.
  */
 
-QUmlStereotype::QUmlStereotype(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlClass(*new QUmlStereotypePrivate, wrapper, parent)
+QUmlStereotype::QUmlStereotype(bool create_d_ptr) :
+    QUmlClass(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlStereotypePrivate);
 }
 
-QUmlStereotype::QUmlStereotype(QUmlStereotypePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlClass(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlStereotype::~QUmlStereotype()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlStereotype
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     Stereotype can change the graphical appearance of the extended model element by using attached icons. When this association is not null, it references the location of the icon content to be displayed within diagrams presenting the extended model elements.
  */
-QSet<QUmlImage *> QUmlStereotype::icons() const
+QSet<QUmlImage *> QUmlStereotype::icon() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlStereotype);
-    return d->icons;
+    return QSet<QUmlImage *>();
 }
 
-void QUmlStereotype::addIcon(QUmlImage *icon)
+void QUmlStereotype::addIcon(QSet<QUmlImage *> icon)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlStereotype);
-    if (!d->icons.contains(icon)) {
-        d->icons.insert(icon);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QUmlElement *>(icon));
-    }
+    Q_UNUSED(icon);
 }
 
-void QUmlStereotype::removeIcon(QUmlImage *icon)
+void QUmlStereotype::removeIcon(QSet<QUmlImage *> icon)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlStereotype);
-    if (d->icons.contains(icon)) {
-        d->icons.remove(icon);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QUmlElement *>(icon));
-    }
+    Q_UNUSED(icon);
 }
 
 /*!
@@ -126,43 +91,18 @@ void QUmlStereotype::removeIcon(QUmlImage *icon)
  */
 QUmlProfile *QUmlStereotype::profile() const
 {
-    // This is a read-only derived association end
-
-    qWarning("QUmlStereotype::profile: to be implemented (this is a derived associationend)");
-
-    return 0; // change here to your derived return
+    return 0;
 }
+
+// Operations
 
 /*!
     The query containingProfile returns the closest profile directly or indirectly containing this stereotype.
  */
 QUmlProfile *QUmlStereotype::containingProfile() const
 {
-    qWarning("QUmlStereotype::containingProfile: operation to be implemented");
-
-    return 0; // change here to your derived return
-}
-
-void QUmlStereotype::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStereotype")][QString::fromLatin1("icons")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStereotype")][QString::fromLatin1("icons")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStereotype")][QString::fromLatin1("icons")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Stereotype can change the graphical appearance of the extended model element by using attached icons. When this association is not null, it references the location of the icon content to be displayed within diagrams presenting the extended model elements.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStereotype")][QString::fromLatin1("icons")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStereotype")][QString::fromLatin1("icons")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStereotype")][QString::fromLatin1("icons")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStereotype")][QString::fromLatin1("profile")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStereotype")][QString::fromLatin1("profile")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStereotype")][QString::fromLatin1("profile")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The profile that directly or indirectly contains this stereotype.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStereotype")][QString::fromLatin1("profile")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStereotype")][QString::fromLatin1("profile")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStereotype")][QString::fromLatin1("profile")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlClass::setPropertyData();
+    return 0;
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlstereotype.cpp"
 

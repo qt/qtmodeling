@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlProperty>
 
 QT_BEGIN_HEADER
@@ -52,41 +51,22 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlStereotype;
 
 class QUmlExtensionEndPrivate;
-
 class Q_UML_EXPORT QUmlExtensionEnd : public QUmlProperty
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(qint32 lower READ lower WRITE setLower STORED false)
-    Q_PROPERTY(QUmlStereotype * type READ type WRITE setType)
-
-    Q_DISABLE_COPY(QUmlExtensionEnd)
-    Q_DECLARE_PRIVATE(QUmlExtensionEnd)
-
 public:
-    Q_INVOKABLE explicit QUmlExtensionEnd(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlExtensionEnd();
+    QUmlExtensionEnd(bool create_d_ptr = true);
 
-    // Attributes from QUmlExtensionEnd
-    Q_INVOKABLE qint32 lower() const;
-    Q_INVOKABLE void setLower(qint32 lower);
-
-    // Association ends from QUmlExtensionEnd
-    Q_INVOKABLE QUmlStereotype *type() const;
-    Q_INVOKABLE void setType(QUmlStereotype *type);
+    // Owned attributes
+    int lower() const;
+    void setLower(int lower);
+    QUmlStereotype *type() const;
+    void setType(QUmlStereotype *type);
 
     // Operations
-    Q_INVOKABLE qint32 lowerBound() const;
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlExtensionEnd(QUmlExtensionEndPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    int lowerBound() const;
 };
 
 QT_END_NAMESPACE

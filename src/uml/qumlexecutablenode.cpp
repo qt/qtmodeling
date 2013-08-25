@@ -43,15 +43,9 @@
 
 #include <QtUml/QUmlExceptionHandler>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlExecutableNodePrivate::QUmlExecutableNodePrivate()
-{
-}
-
-QUmlExecutableNodePrivate::~QUmlExecutableNodePrivate()
 {
 }
 
@@ -60,85 +54,35 @@ QUmlExecutableNodePrivate::~QUmlExecutableNodePrivate()
 
     \inmodule QtUml
 
-    \brief AnÂ executableÂ nodeÂ isÂ anÂ abstractÂ classÂ forÂ activityÂ nodesÂ thatÂ mayÂ beÂ executed.Â ItÂ isÂ usedÂ asÂ anÂ attachmentÂ pointÂ forÂ exceptionÂ handlers.An executable node is an abstract class for activity nodes that may be executed. It is used as an attachment point for exception handlers.
+    \brief An executable node is an abstract class for activity nodes that may be executed. It is used as an attachment point for exception handlers.An executable node is an abstract class for activity nodes that may be executed. It is used as an attachment point for exception handlers.
  */
 
-QUmlExecutableNode::QUmlExecutableNode(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlActivityNode(*new QUmlExecutableNodePrivate, wrapper, parent)
+QUmlExecutableNode::QUmlExecutableNode(bool create_d_ptr) :
+    QUmlActivityNode(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlExecutableNodePrivate);
 }
 
-QUmlExecutableNode::QUmlExecutableNode(QUmlExecutableNodePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlActivityNode(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlExecutableNode::~QUmlExecutableNode()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlExecutableNode
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     A set of exception handlers that are examined if an uncaught exception propagates to the outer level of the executable node.
  */
-QSet<QUmlExceptionHandler *> QUmlExecutableNode::handlers() const
+QSet<QUmlExceptionHandler *> QUmlExecutableNode::handler() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlExecutableNode);
-    return d->handlers;
+    return QSet<QUmlExceptionHandler *>();
 }
 
-void QUmlExecutableNode::addHandler(QUmlExceptionHandler *handler)
+void QUmlExecutableNode::addHandler(QSet<QUmlExceptionHandler *> handler)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlExecutableNode);
-    if (!d->handlers.contains(handler)) {
-        d->handlers.insert(handler);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QUmlElement *>(handler));
-
-        // Adjust opposite property
-        handler->setProtectedNode(this);
-    }
+    Q_UNUSED(handler);
 }
 
-void QUmlExecutableNode::removeHandler(QUmlExceptionHandler *handler)
+void QUmlExecutableNode::removeHandler(QSet<QUmlExceptionHandler *> handler)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlExecutableNode);
-    if (d->handlers.contains(handler)) {
-        d->handlers.remove(handler);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QUmlElement *>(handler));
-
-        // Adjust opposite property
-        handler->setProtectedNode(0);
-    }
-}
-
-void QUmlExecutableNode::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExecutableNode")][QString::fromLatin1("handlers")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExecutableNode")][QString::fromLatin1("handlers")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExecutableNode")][QString::fromLatin1("handlers")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A set of exception handlers that are examined if an uncaught exception propagates to the outer level of the executable node.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExecutableNode")][QString::fromLatin1("handlers")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExecutableNode")][QString::fromLatin1("handlers")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExecutableNode")][QString::fromLatin1("handlers")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlExceptionHandler::protectedNode");
-
-    QUmlActivityNode::setPropertyData();
+    Q_UNUSED(handler);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlexecutablenode.cpp"
 

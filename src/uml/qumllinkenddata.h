@@ -43,11 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlElement>
-
-// Qt includes
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -55,42 +51,24 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
+class QUmlInputPin;
 class QUmlProperty;
 class QUmlQualifierValue;
-class QUmlInputPin;
 
 class QUmlLinkEndDataPrivate;
-
 class Q_UML_EXPORT QUmlLinkEndData : public QUmlElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlInputPin * value READ value WRITE setValue)
-    Q_PROPERTY(QUmlProperty * end READ end WRITE setEnd)
-    Q_PROPERTY(QSet<QUmlQualifierValue *> qualifiers READ qualifiers)
-
-    Q_DISABLE_COPY(QUmlLinkEndData)
-    Q_DECLARE_PRIVATE(QUmlLinkEndData)
-
 public:
-    Q_INVOKABLE explicit QUmlLinkEndData(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlLinkEndData();
+    QUmlLinkEndData(bool create_d_ptr = true);
 
-    // Association ends from QUmlLinkEndData
-    Q_INVOKABLE QUmlInputPin *value() const;
-    Q_INVOKABLE void setValue(QUmlInputPin *value);
-    Q_INVOKABLE QUmlProperty *end() const;
-    Q_INVOKABLE void setEnd(QUmlProperty *end);
-    Q_INVOKABLE QSet<QUmlQualifierValue *> qualifiers() const;
-    Q_INVOKABLE void addQualifier(QUmlQualifierValue *qualifier);
-    Q_INVOKABLE void removeQualifier(QUmlQualifierValue *qualifier);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlLinkEndData(QUmlLinkEndDataPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlProperty *end() const;
+    void setEnd(QUmlProperty *end);
+    QSet<QUmlQualifierValue *> qualifier() const;
+    void addQualifier(QSet<QUmlQualifierValue *> qualifier);
+    void removeQualifier(QSet<QUmlQualifierValue *> qualifier);
+    QUmlInputPin *value() const;
+    void setValue(QUmlInputPin *value);
 };
 
 QT_END_NAMESPACE

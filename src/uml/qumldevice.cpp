@@ -41,15 +41,9 @@
 #include "qumldevice.h"
 #include "qumldevice_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlDevicePrivate::QUmlDevicePrivate()
-{
-}
-
-QUmlDevicePrivate::~QUmlDevicePrivate()
 {
 }
 
@@ -61,28 +55,12 @@ QUmlDevicePrivate::~QUmlDevicePrivate()
     \brief A device is a physical computational resource with processing capability upon which artifacts may be deployed for execution. Devices may be complex (i.e., they may consist of other devices).
  */
 
-QUmlDevice::QUmlDevice(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlNode(*new QUmlDevicePrivate, wrapper, parent)
+QUmlDevice::QUmlDevice(bool create_d_ptr) :
+    QUmlNode(false)
 {
-    setPropertyData();
-}
-
-QUmlDevice::QUmlDevice(QUmlDevicePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlNode(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlDevice::~QUmlDevice()
-{
-}
-
-void QUmlDevice::setPropertyData()
-{
-    QUmlNode::setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlDevicePrivate);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumldevice.cpp"
 

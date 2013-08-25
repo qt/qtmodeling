@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlMultiplicityElement>
 
 QT_BEGIN_HEADER
@@ -52,39 +51,21 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlProperty;
 class QUmlConnectableElement;
+class QUmlProperty;
 
 class QUmlConnectorEndPrivate;
-
 class Q_UML_EXPORT QUmlConnectorEnd : public QUmlMultiplicityElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlConnectableElement * role READ role WRITE setRole)
-    Q_PROPERTY(QUmlProperty * partWithPort READ partWithPort WRITE setPartWithPort)
-    Q_PROPERTY(QUmlProperty * definingEnd READ definingEnd STORED false)
-
-    Q_DISABLE_COPY(QUmlConnectorEnd)
-    Q_DECLARE_PRIVATE(QUmlConnectorEnd)
-
 public:
-    Q_INVOKABLE explicit QUmlConnectorEnd(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlConnectorEnd();
+    QUmlConnectorEnd(bool create_d_ptr = true);
 
-    // Association ends from QUmlConnectorEnd
-    Q_INVOKABLE QUmlConnectableElement *role() const;
-    Q_INVOKABLE void setRole(QUmlConnectableElement *role);
-    Q_INVOKABLE QUmlProperty *partWithPort() const;
-    Q_INVOKABLE void setPartWithPort(QUmlProperty *partWithPort);
-    Q_INVOKABLE QUmlProperty *definingEnd() const;
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlConnectorEnd(QUmlConnectorEndPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlProperty *definingEnd() const;
+    QUmlProperty *partWithPort() const;
+    void setPartWithPort(QUmlProperty *partWithPort);
+    QUmlConnectableElement *role() const;
+    void setRole(QUmlConnectableElement *role);
 };
 
 QT_END_NAMESPACE

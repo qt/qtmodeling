@@ -43,16 +43,10 @@
 
 #include <QtUml/QUmlAction>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlActionInputPinPrivate::QUmlActionInputPinPrivate() :
     fromAction(0)
-{
-}
-
-QUmlActionInputPinPrivate::~QUmlActionInputPinPrivate()
 {
 }
 
@@ -64,68 +58,27 @@ QUmlActionInputPinPrivate::~QUmlActionInputPinPrivate()
     \brief An action input pin is a kind of pin that executes an action to determine the values to input to another.
  */
 
-QUmlActionInputPin::QUmlActionInputPin(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlInputPin(*new QUmlActionInputPinPrivate, wrapper, parent)
+QUmlActionInputPin::QUmlActionInputPin(bool create_d_ptr) :
+    QUmlInputPin(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlActionInputPinPrivate);
 }
 
-QUmlActionInputPin::QUmlActionInputPin(QUmlActionInputPinPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlInputPin(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlActionInputPin::~QUmlActionInputPin()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlActionInputPin
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     The action used to provide values.
  */
 QUmlAction *QUmlActionInputPin::fromAction() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlActionInputPin);
-    return d->fromAction;
+    return 0;
 }
 
 void QUmlActionInputPin::setFromAction(QUmlAction *fromAction)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlActionInputPin);
-    if (d->fromAction != fromAction) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QUmlElement *>(d->fromAction));
-
-        d->fromAction = fromAction;
-
-        // Adjust subsetted property(ies)
-        if (fromAction) {
-            (qwrappedobject_cast<QUmlElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QUmlElement *>(fromAction));
-        }
-    }
-}
-
-void QUmlActionInputPin::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActionInputPin")][QString::fromLatin1("fromAction")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActionInputPin")][QString::fromLatin1("fromAction")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActionInputPin")][QString::fromLatin1("fromAction")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The action used to provide values.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActionInputPin")][QString::fromLatin1("fromAction")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActionInputPin")][QString::fromLatin1("fromAction")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActionInputPin")][QString::fromLatin1("fromAction")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlInputPin::setPropertyData();
+    Q_UNUSED(fromAction);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlactioninputpin.cpp"
 

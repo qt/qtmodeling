@@ -43,12 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlClassifier>
-
-// Qt includes
-#include <QtCore/QList>
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -56,46 +51,25 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlProperty;
-class QUmlConnector;
 class QUmlConnectableElement;
+class QUmlConnector;
+class QUmlProperty;
 
 class QUmlStructuredClassifierPrivate;
-
 class Q_UML_EXPORT QUmlStructuredClassifier : public QUmlClassifier
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QSet<QUmlConnectableElement *> roles READ roles)
-    Q_PROPERTY(QList<QUmlProperty *> ownedAttributes READ ownedAttributes)
-    Q_PROPERTY(QSet<QUmlProperty *> parts READ parts STORED false)
-    Q_PROPERTY(QSet<QUmlConnector *> ownedConnectors READ ownedConnectors)
-
-    Q_DISABLE_COPY(QUmlStructuredClassifier)
-    Q_DECLARE_PRIVATE(QUmlStructuredClassifier)
-
 public:
-    Q_INVOKABLE explicit QUmlStructuredClassifier(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlStructuredClassifier();
+    Q_DECL_HIDDEN QUmlStructuredClassifier(bool create_d_ptr = true);
 
-    // Association ends from QUmlStructuredClassifier
-    Q_INVOKABLE QSet<QUmlConnectableElement *> roles() const;
-    Q_INVOKABLE QList<QUmlProperty *> ownedAttributes() const;
-    Q_INVOKABLE void addOwnedAttribute(QUmlProperty *ownedAttribute);
-    Q_INVOKABLE void removeOwnedAttribute(QUmlProperty *ownedAttribute);
-    Q_INVOKABLE QSet<QUmlProperty *> parts() const;
-    Q_INVOKABLE QSet<QUmlConnector *> ownedConnectors() const;
-    Q_INVOKABLE void addOwnedConnector(QUmlConnector *ownedConnector);
-    Q_INVOKABLE void removeOwnedConnector(QUmlConnector *ownedConnector);
-
-    virtual void setQmlContextProperties(QQmlContext *qmlContext);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlStructuredClassifier(QUmlStructuredClassifierPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QList<QUmlProperty *> ownedAttribute() const;
+    void addOwnedAttribute(QList<QUmlProperty *> ownedAttribute);
+    void removeOwnedAttribute(QList<QUmlProperty *> ownedAttribute);
+    QSet<QUmlConnector *> ownedConnector() const;
+    void addOwnedConnector(QSet<QUmlConnector *> ownedConnector);
+    void removeOwnedConnector(QSet<QUmlConnector *> ownedConnector);
+    QSet<QUmlProperty *> part() const;
+    QSet<QUmlConnectableElement *> role() const;
 };
 
 QT_END_NAMESPACE

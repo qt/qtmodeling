@@ -41,13 +41,9 @@
 #ifndef QUMLGENERALIZATION_P_H
 #define QUMLGENERALIZATION_P_H
 
-// Base class includes
-#include "private/qumldirectedrelationship_p.h"
-
 #include "QtUml/QUmlGeneralization"
 
-// Qt includes
-#include "QtCore/QSet"
+#include "private/qumldirectedrelationship_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,23 +51,15 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlClassifier;
-class QUmlGeneralizationSet;
-class QUmlGeneralization;
-
 class Q_UML_EXPORT QUmlGeneralizationPrivate : public QUmlDirectedRelationshipPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlGeneralization)
-
 public:
-    explicit QUmlGeneralizationPrivate();
-    virtual ~QUmlGeneralizationPrivate();
+    QUmlGeneralizationPrivate();
 
+    QUmlClassifier *general;
+    QSet<QUmlGeneralizationSet *> generalizationSet;
     bool isSubstitutable;
     QUmlClassifier *specific;
-    QSet<QUmlGeneralizationSet *> generalizationSets;
-    QUmlClassifier *general;
 };
 
 QT_END_NAMESPACE

@@ -41,17 +41,9 @@
 #ifndef QUMLCOMBINEDFRAGMENT_P_H
 #define QUMLCOMBINEDFRAGMENT_P_H
 
-// Base class includes
-#include "private/qumlinteractionfragment_p.h"
-
 #include "QtUml/QUmlCombinedFragment"
 
-// QtUml includes
-#include "QtUml/QtUmlNamespace"
-
-// Qt includes
-#include "QtCore/QList"
-#include "QtCore/QSet"
+#include "private/qumlinteractionfragment_p.h"
 
 QT_BEGIN_HEADER
 
@@ -59,22 +51,14 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlGate;
-class QUmlInteractionOperand;
-class QUmlCombinedFragment;
-
 class Q_UML_EXPORT QUmlCombinedFragmentPrivate : public QUmlInteractionFragmentPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlCombinedFragment)
-
 public:
-    explicit QUmlCombinedFragmentPrivate();
-    virtual ~QUmlCombinedFragmentPrivate();
+    QUmlCombinedFragmentPrivate();
 
+    QSet<QUmlGate *> cfragmentGate;
     QtUml::InteractionOperatorKind interactionOperator;
-    QSet<QUmlGate *> cfragmentGates;
-    QList<QUmlInteractionOperand *> operands;
+    QList<QUmlInteractionOperand *> operand;
 };
 
 QT_END_NAMESPACE

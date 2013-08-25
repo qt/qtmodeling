@@ -43,11 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlWriteLinkAction>
-
-// Qt includes
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -55,34 +51,18 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlLinkEndDestructionData;
 
 class QUmlDestroyLinkActionPrivate;
-
 class Q_UML_EXPORT QUmlDestroyLinkAction : public QUmlWriteLinkAction
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QSet<QUmlLinkEndDestructionData *> endData READ endData)
-
-    Q_DISABLE_COPY(QUmlDestroyLinkAction)
-    Q_DECLARE_PRIVATE(QUmlDestroyLinkAction)
-
 public:
-    Q_INVOKABLE explicit QUmlDestroyLinkAction(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlDestroyLinkAction();
+    QUmlDestroyLinkAction(bool create_d_ptr = true);
 
-    // Association ends from QUmlDestroyLinkAction
-    Q_INVOKABLE QSet<QUmlLinkEndDestructionData *> endData() const;
-    Q_INVOKABLE void addEndData(QUmlLinkEndDestructionData *endData);
-    Q_INVOKABLE void removeEndData(QUmlLinkEndDestructionData *endData);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlDestroyLinkAction(QUmlDestroyLinkActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QSet<QUmlLinkEndDestructionData *> endData() const;
+    void addEndData(QSet<QUmlLinkEndDestructionData *> endData);
+    void removeEndData(QSet<QUmlLinkEndDestructionData *> endData);
 };
 
 QT_END_NAMESPACE

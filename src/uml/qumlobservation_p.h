@@ -41,10 +41,9 @@
 #ifndef QUMLOBSERVATION_P_H
 #define QUMLOBSERVATION_P_H
 
-// Base class includes
-#include "private/qumlpackageableelement_p.h"
-
 #include "QtUml/QUmlObservation"
+
+#include "private/qumlpackageableelement_p.h"
 
 QT_BEGIN_HEADER
 
@@ -54,11 +53,8 @@ QT_MODULE(QtUml)
 
 class Q_UML_EXPORT QUmlObservationPrivate : public QUmlPackageableElementPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlObservation)
-
 public:
-    explicit QUmlObservationPrivate();
-    virtual ~QUmlObservationPrivate();
+    QUmlObservationPrivate();
 
 };
 

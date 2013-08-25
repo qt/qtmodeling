@@ -43,16 +43,10 @@
 
 #include <QtUml/QUmlValueSpecification>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlChangeEventPrivate::QUmlChangeEventPrivate() :
     changeExpression(0)
-{
-}
-
-QUmlChangeEventPrivate::~QUmlChangeEventPrivate()
 {
 }
 
@@ -64,68 +58,27 @@ QUmlChangeEventPrivate::~QUmlChangeEventPrivate()
     \brief A change event models a change in the system configuration that makes a condition true.
  */
 
-QUmlChangeEvent::QUmlChangeEvent(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlEvent(*new QUmlChangeEventPrivate, wrapper, parent)
+QUmlChangeEvent::QUmlChangeEvent(bool create_d_ptr) :
+    QUmlEvent(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlChangeEventPrivate);
 }
 
-QUmlChangeEvent::QUmlChangeEvent(QUmlChangeEventPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlEvent(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlChangeEvent::~QUmlChangeEvent()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlChangeEvent
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     A Boolean-valued expression that will result in a change event whenever its value changes from false to true.
  */
 QUmlValueSpecification *QUmlChangeEvent::changeExpression() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlChangeEvent);
-    return d->changeExpression;
+    return 0;
 }
 
 void QUmlChangeEvent::setChangeExpression(QUmlValueSpecification *changeExpression)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlChangeEvent);
-    if (d->changeExpression != changeExpression) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QUmlElement *>(d->changeExpression));
-
-        d->changeExpression = changeExpression;
-
-        // Adjust subsetted property(ies)
-        if (changeExpression) {
-            (qwrappedobject_cast<QUmlElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QUmlElement *>(changeExpression));
-        }
-    }
-}
-
-void QUmlChangeEvent::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlChangeEvent")][QString::fromLatin1("changeExpression")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlChangeEvent")][QString::fromLatin1("changeExpression")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlChangeEvent")][QString::fromLatin1("changeExpression")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A Boolean-valued expression that will result in a change event whenever its value changes from false to true.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlChangeEvent")][QString::fromLatin1("changeExpression")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlChangeEvent")][QString::fromLatin1("changeExpression")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlChangeEvent")][QString::fromLatin1("changeExpression")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlEvent::setPropertyData();
+    Q_UNUSED(changeExpression);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlchangeevent.cpp"
 

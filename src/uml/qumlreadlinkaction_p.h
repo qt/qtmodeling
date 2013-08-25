@@ -41,10 +41,9 @@
 #ifndef QUMLREADLINKACTION_P_H
 #define QUMLREADLINKACTION_P_H
 
-// Base class includes
-#include "private/qumllinkaction_p.h"
-
 #include "QtUml/QUmlReadLinkAction"
+
+#include "private/qumllinkaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -52,17 +51,10 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlOutputPin;
-class QUmlReadLinkAction;
-
 class Q_UML_EXPORT QUmlReadLinkActionPrivate : public QUmlLinkActionPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlReadLinkAction)
-
 public:
-    explicit QUmlReadLinkActionPrivate();
-    virtual ~QUmlReadLinkActionPrivate();
+    QUmlReadLinkActionPrivate();
 
     QUmlOutputPin *result;
 };

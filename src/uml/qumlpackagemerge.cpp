@@ -43,17 +43,11 @@
 
 #include <QtUml/QUmlPackage>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlPackageMergePrivate::QUmlPackageMergePrivate() :
     mergedPackage(0),
     receivingPackage(0)
-{
-}
-
-QUmlPackageMergePrivate::~QUmlPackageMergePrivate()
 {
 }
 
@@ -65,53 +59,26 @@ QUmlPackageMergePrivate::~QUmlPackageMergePrivate()
     \brief A package merge defines how the contents of one package are extended by the contents of another package.
  */
 
-QUmlPackageMerge::QUmlPackageMerge(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlDirectedRelationship(*new QUmlPackageMergePrivate, wrapper, parent)
+QUmlPackageMerge::QUmlPackageMerge(bool create_d_ptr) :
+    QUmlDirectedRelationship(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlPackageMergePrivate);
 }
 
-QUmlPackageMerge::QUmlPackageMerge(QUmlPackageMergePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlDirectedRelationship(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlPackageMerge::~QUmlPackageMerge()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlPackageMerge
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     References the Package that is to be merged with the receiving package of the PackageMerge.
  */
 QUmlPackage *QUmlPackageMerge::mergedPackage() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlPackageMerge);
-    return d->mergedPackage;
+    return 0;
 }
 
 void QUmlPackageMerge::setMergedPackage(QUmlPackage *mergedPackage)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlPackageMerge);
-    if (d->mergedPackage != mergedPackage) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlDirectedRelationshipPrivate *>(d))->removeTarget(qwrappedobject_cast<QUmlElement *>(d->mergedPackage));
-
-        d->mergedPackage = mergedPackage;
-
-        // Adjust subsetted property(ies)
-        if (mergedPackage) {
-            (qwrappedobject_cast<QUmlDirectedRelationshipPrivate *>(d))->addTarget(qwrappedobject_cast<QUmlElement *>(mergedPackage));
-        }
-    }
+    Q_UNUSED(mergedPackage);
 }
 
 /*!
@@ -119,59 +86,13 @@ void QUmlPackageMerge::setMergedPackage(QUmlPackage *mergedPackage)
  */
 QUmlPackage *QUmlPackageMerge::receivingPackage() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlPackageMerge);
-    return d->receivingPackage;
+    return 0;
 }
 
 void QUmlPackageMerge::setReceivingPackage(QUmlPackage *receivingPackage)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlPackageMerge);
-    if (d->receivingPackage != receivingPackage) {
-        // Adjust opposite property
-        if (d->receivingPackage)
-            d->receivingPackage->removePackageMerge(this);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlDirectedRelationshipPrivate *>(d))->removeSource(qwrappedobject_cast<QUmlElement *>(d->receivingPackage));
-
-        d->receivingPackage = receivingPackage;
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->setOwner(qwrappedobject_cast<QUmlElement *>(receivingPackage));
-        if (receivingPackage) {
-            (qwrappedobject_cast<QUmlDirectedRelationshipPrivate *>(d))->addSource(qwrappedobject_cast<QUmlElement *>(receivingPackage));
-        }
-
-        // Adjust opposite property
-        if (receivingPackage)
-            receivingPackage->addPackageMerge(this);
-    }
-}
-
-void QUmlPackageMerge::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackageMerge")][QString::fromLatin1("mergedPackage")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackageMerge")][QString::fromLatin1("mergedPackage")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackageMerge")][QString::fromLatin1("mergedPackage")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Package that is to be merged with the receiving package of the PackageMerge.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackageMerge")][QString::fromLatin1("mergedPackage")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackageMerge")][QString::fromLatin1("mergedPackage")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlDirectedRelationship::targets");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackageMerge")][QString::fromLatin1("mergedPackage")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackageMerge")][QString::fromLatin1("receivingPackage")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackageMerge")][QString::fromLatin1("receivingPackage")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackageMerge")][QString::fromLatin1("receivingPackage")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Package that is being extended with the contents of the merged package of the PackageMerge.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackageMerge")][QString::fromLatin1("receivingPackage")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackageMerge")][QString::fromLatin1("receivingPackage")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::owner QUmlDirectedRelationship::sources");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackageMerge")][QString::fromLatin1("receivingPackage")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlPackage::packageMerge");
-
-    QUmlDirectedRelationship::setPropertyData();
+    Q_UNUSED(receivingPackage);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlpackagemerge.cpp"
 

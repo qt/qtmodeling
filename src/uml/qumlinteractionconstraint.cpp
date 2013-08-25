@@ -43,17 +43,11 @@
 
 #include <QtUml/QUmlValueSpecification>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlInteractionConstraintPrivate::QUmlInteractionConstraintPrivate() :
     maxint(0),
     minint(0)
-{
-}
-
-QUmlInteractionConstraintPrivate::~QUmlInteractionConstraintPrivate()
 {
 }
 
@@ -65,53 +59,26 @@ QUmlInteractionConstraintPrivate::~QUmlInteractionConstraintPrivate()
     \brief An interaction constraint is a Boolean expression that guards an operand in a combined fragment.
  */
 
-QUmlInteractionConstraint::QUmlInteractionConstraint(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlConstraint(*new QUmlInteractionConstraintPrivate, wrapper, parent)
+QUmlInteractionConstraint::QUmlInteractionConstraint(bool create_d_ptr) :
+    QUmlConstraint(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlInteractionConstraintPrivate);
 }
 
-QUmlInteractionConstraint::QUmlInteractionConstraint(QUmlInteractionConstraintPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlConstraint(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlInteractionConstraint::~QUmlInteractionConstraint()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlInteractionConstraint
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     The maximum number of iterations of a loop
  */
 QUmlValueSpecification *QUmlInteractionConstraint::maxint() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlInteractionConstraint);
-    return d->maxint;
+    return 0;
 }
 
 void QUmlInteractionConstraint::setMaxint(QUmlValueSpecification *maxint)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlInteractionConstraint);
-    if (d->maxint != maxint) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QUmlElement *>(d->maxint));
-
-        d->maxint = maxint;
-
-        // Adjust subsetted property(ies)
-        if (maxint) {
-            (qwrappedobject_cast<QUmlElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QUmlElement *>(maxint));
-        }
-    }
+    Q_UNUSED(maxint);
 }
 
 /*!
@@ -119,50 +86,13 @@ void QUmlInteractionConstraint::setMaxint(QUmlValueSpecification *maxint)
  */
 QUmlValueSpecification *QUmlInteractionConstraint::minint() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlInteractionConstraint);
-    return d->minint;
+    return 0;
 }
 
 void QUmlInteractionConstraint::setMinint(QUmlValueSpecification *minint)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlInteractionConstraint);
-    if (d->minint != minint) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QUmlElement *>(d->minint));
-
-        d->minint = minint;
-
-        // Adjust subsetted property(ies)
-        if (minint) {
-            (qwrappedobject_cast<QUmlElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QUmlElement *>(minint));
-        }
-    }
-}
-
-void QUmlInteractionConstraint::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionConstraint")][QString::fromLatin1("maxint")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionConstraint")][QString::fromLatin1("maxint")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionConstraint")][QString::fromLatin1("maxint")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The maximum number of iterations of a loop");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionConstraint")][QString::fromLatin1("maxint")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionConstraint")][QString::fromLatin1("maxint")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionConstraint")][QString::fromLatin1("maxint")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionConstraint")][QString::fromLatin1("minint")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionConstraint")][QString::fromLatin1("minint")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionConstraint")][QString::fromLatin1("minint")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The minimum number of iterations of a loop");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionConstraint")][QString::fromLatin1("minint")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionConstraint")][QString::fromLatin1("minint")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionConstraint")][QString::fromLatin1("minint")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlConstraint::setPropertyData();
+    Q_UNUSED(minint);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlinteractionconstraint.cpp"
 

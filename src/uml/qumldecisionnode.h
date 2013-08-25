@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlControlNode>
 
 QT_BEGIN_HEADER
@@ -52,37 +51,20 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlBehavior;
 class QUmlObjectFlow;
 
 class QUmlDecisionNodePrivate;
-
 class Q_UML_EXPORT QUmlDecisionNode : public QUmlControlNode
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlObjectFlow * decisionInputFlow READ decisionInputFlow WRITE setDecisionInputFlow)
-    Q_PROPERTY(QUmlBehavior * decisionInput READ decisionInput WRITE setDecisionInput)
-
-    Q_DISABLE_COPY(QUmlDecisionNode)
-    Q_DECLARE_PRIVATE(QUmlDecisionNode)
-
 public:
-    Q_INVOKABLE explicit QUmlDecisionNode(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlDecisionNode();
+    QUmlDecisionNode(bool create_d_ptr = true);
 
-    // Association ends from QUmlDecisionNode
-    Q_INVOKABLE QUmlObjectFlow *decisionInputFlow() const;
-    Q_INVOKABLE void setDecisionInputFlow(QUmlObjectFlow *decisionInputFlow);
-    Q_INVOKABLE QUmlBehavior *decisionInput() const;
-    Q_INVOKABLE void setDecisionInput(QUmlBehavior *decisionInput);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlDecisionNode(QUmlDecisionNodePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlBehavior *decisionInput() const;
+    void setDecisionInput(QUmlBehavior *decisionInput);
+    QUmlObjectFlow *decisionInputFlow() const;
+    void setDecisionInputFlow(QUmlObjectFlow *decisionInputFlow);
 };
 
 QT_END_NAMESPACE

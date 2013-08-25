@@ -45,17 +45,11 @@
 #include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlValueSpecification>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlConstraintPrivate::QUmlConstraintPrivate() :
     context(0),
     specification(0)
-{
-}
-
-QUmlConstraintPrivate::~QUmlConstraintPrivate()
 {
 }
 
@@ -67,56 +61,44 @@ QUmlConstraintPrivate::~QUmlConstraintPrivate()
     \brief A constraint is a condition or restriction expressed in natural language text or in a machine readable language for the purpose of declaring some of the semantics of an element.
  */
 
-QUmlConstraint::QUmlConstraint(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlPackageableElement(*new QUmlConstraintPrivate, wrapper, parent)
+QUmlConstraint::QUmlConstraint(bool create_d_ptr) :
+    QUmlPackageableElement(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlConstraintPrivate);
 }
 
-QUmlConstraint::QUmlConstraint(QUmlConstraintPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlPackageableElement(dd, wrapper, parent)
+// Owned attributes
+
+/*!
+    The ordered set of Elements referenced by this Constraint.
+ */
+QList<QUmlElement *> QUmlConstraint::constrainedElement() const
 {
-    setPropertyData();
+    return QList<QUmlElement *>();
 }
 
-QUmlConstraint::~QUmlConstraint()
+void QUmlConstraint::addConstrainedElement(QList<QUmlElement *> constrainedElement)
 {
+    Q_UNUSED(constrainedElement);
 }
 
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlConstraint
-// ---------------------------------------------------------------
+void QUmlConstraint::removeConstrainedElement(QList<QUmlElement *> constrainedElement)
+{
+    Q_UNUSED(constrainedElement);
+}
 
 /*!
     Specifies the namespace that owns the NamedElement.
  */
 QUmlNamespace *QUmlConstraint::context() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlConstraint);
-    return d->context;
+    return 0;
 }
 
 void QUmlConstraint::setContext(QUmlNamespace *context)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlConstraint);
-    if (d->context != context) {
-        // Adjust opposite property
-        if (d->context)
-            d->context->removeOwnedRule(this);
-
-        d->context = context;
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlNamedElementPrivate *>(d))->setNamespace_(qwrappedobject_cast<QUmlNamespace *>(context));
-
-        // Adjust opposite property
-        if (context)
-            context->addOwnedRule(this);
-    }
+    Q_UNUSED(context);
 }
 
 /*!
@@ -124,88 +106,13 @@ void QUmlConstraint::setContext(QUmlNamespace *context)
  */
 QUmlValueSpecification *QUmlConstraint::specification() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlConstraint);
-    return d->specification;
+    return 0;
 }
 
 void QUmlConstraint::setSpecification(QUmlValueSpecification *specification)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlConstraint);
-    if (d->specification != specification) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QUmlElement *>(d->specification));
-
-        d->specification = specification;
-
-        // Adjust subsetted property(ies)
-        if (specification) {
-            (qwrappedobject_cast<QUmlElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QUmlElement *>(specification));
-        }
-    }
-}
-
-/*!
-    The ordered set of Elements referenced by this Constraint.
- */
-QList<QUmlElement *> QUmlConstraint::constrainedElements() const
-{
-    // This is a read-write association end
-
-    Q_D(const QUmlConstraint);
-    return d->constrainedElements;
-}
-
-void QUmlConstraint::addConstrainedElement(QUmlElement *constrainedElement)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlConstraint);
-    if (!d->constrainedElements.contains(constrainedElement)) {
-        d->constrainedElements.append(constrainedElement);
-    }
-}
-
-void QUmlConstraint::removeConstrainedElement(QUmlElement *constrainedElement)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlConstraint);
-    if (d->constrainedElements.contains(constrainedElement)) {
-        d->constrainedElements.removeAll(constrainedElement);
-    }
-}
-
-void QUmlConstraint::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConstraint")][QString::fromLatin1("context")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConstraint")][QString::fromLatin1("context")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConstraint")][QString::fromLatin1("context")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the namespace that owns the NamedElement.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConstraint")][QString::fromLatin1("context")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConstraint")][QString::fromLatin1("context")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlNamedElement::namespace");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConstraint")][QString::fromLatin1("context")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlNamespace::ownedRule");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConstraint")][QString::fromLatin1("specification")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConstraint")][QString::fromLatin1("specification")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConstraint")][QString::fromLatin1("specification")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A condition that must be true when evaluated in order for the constraint to be satisfied.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConstraint")][QString::fromLatin1("specification")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConstraint")][QString::fromLatin1("specification")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConstraint")][QString::fromLatin1("specification")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConstraint")][QString::fromLatin1("constrainedElements")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConstraint")][QString::fromLatin1("constrainedElements")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConstraint")][QString::fromLatin1("constrainedElements")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The ordered set of Elements referenced by this Constraint.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConstraint")][QString::fromLatin1("constrainedElements")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConstraint")][QString::fromLatin1("constrainedElements")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConstraint")][QString::fromLatin1("constrainedElements")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlPackageableElement::setPropertyData();
+    Q_UNUSED(specification);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlconstraint.cpp"
 

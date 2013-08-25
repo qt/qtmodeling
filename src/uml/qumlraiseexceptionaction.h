@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlAction>
 
 QT_BEGIN_HEADER
@@ -52,33 +51,17 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlInputPin;
 
 class QUmlRaiseExceptionActionPrivate;
-
 class Q_UML_EXPORT QUmlRaiseExceptionAction : public QUmlAction
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlInputPin * exception READ exception WRITE setException)
-
-    Q_DISABLE_COPY(QUmlRaiseExceptionAction)
-    Q_DECLARE_PRIVATE(QUmlRaiseExceptionAction)
-
 public:
-    Q_INVOKABLE explicit QUmlRaiseExceptionAction(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlRaiseExceptionAction();
+    QUmlRaiseExceptionAction(bool create_d_ptr = true);
 
-    // Association ends from QUmlRaiseExceptionAction
-    Q_INVOKABLE QUmlInputPin *exception() const;
-    Q_INVOKABLE void setException(QUmlInputPin *exception);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlRaiseExceptionAction(QUmlRaiseExceptionActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlInputPin *exception() const;
+    void setException(QUmlInputPin *exception);
 };
 
 QT_END_NAMESPACE

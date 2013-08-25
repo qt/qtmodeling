@@ -41,11 +41,9 @@
 #include "qumlreadlinkobjectendaction.h"
 #include "qumlreadlinkobjectendaction_p.h"
 
-#include <QtUml/QUmlProperty>
 #include <QtUml/QUmlInputPin>
 #include <QtUml/QUmlOutputPin>
-
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
+#include <QtUml/QUmlProperty>
 
 QT_BEGIN_NAMESPACE
 
@@ -53,10 +51,6 @@ QUmlReadLinkObjectEndActionPrivate::QUmlReadLinkObjectEndActionPrivate() :
     end(0),
     object(0),
     result(0)
-{
-}
-
-QUmlReadLinkObjectEndActionPrivate::~QUmlReadLinkObjectEndActionPrivate()
 {
 }
 
@@ -68,45 +62,26 @@ QUmlReadLinkObjectEndActionPrivate::~QUmlReadLinkObjectEndActionPrivate()
     \brief A read link object end action is an action that retrieves an end object from a link object.
  */
 
-QUmlReadLinkObjectEndAction::QUmlReadLinkObjectEndAction(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlAction(*new QUmlReadLinkObjectEndActionPrivate, wrapper, parent)
+QUmlReadLinkObjectEndAction::QUmlReadLinkObjectEndAction(bool create_d_ptr) :
+    QUmlAction(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlReadLinkObjectEndActionPrivate);
 }
 
-QUmlReadLinkObjectEndAction::QUmlReadLinkObjectEndAction(QUmlReadLinkObjectEndActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlAction(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlReadLinkObjectEndAction::~QUmlReadLinkObjectEndAction()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlReadLinkObjectEndAction
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     Link end to be read.
  */
 QUmlProperty *QUmlReadLinkObjectEndAction::end() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlReadLinkObjectEndAction);
-    return d->end;
+    return 0;
 }
 
 void QUmlReadLinkObjectEndAction::setEnd(QUmlProperty *end)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlReadLinkObjectEndAction);
-    if (d->end != end) {
-        d->end = end;
-    }
+    Q_UNUSED(end);
 }
 
 /*!
@@ -114,28 +89,12 @@ void QUmlReadLinkObjectEndAction::setEnd(QUmlProperty *end)
  */
 QUmlInputPin *QUmlReadLinkObjectEndAction::object() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlReadLinkObjectEndAction);
-    return d->object;
+    return 0;
 }
 
 void QUmlReadLinkObjectEndAction::setObject(QUmlInputPin *object)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlReadLinkObjectEndAction);
-    if (d->object != object) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActionPrivate *>(d))->removeInput(qwrappedobject_cast<QUmlInputPin *>(d->object));
-
-        d->object = object;
-
-        // Adjust subsetted property(ies)
-        if (object) {
-            (qwrappedobject_cast<QUmlActionPrivate *>(d))->addInput(qwrappedobject_cast<QUmlInputPin *>(object));
-        }
-    }
+    Q_UNUSED(object);
 }
 
 /*!
@@ -143,57 +102,13 @@ void QUmlReadLinkObjectEndAction::setObject(QUmlInputPin *object)
  */
 QUmlOutputPin *QUmlReadLinkObjectEndAction::result() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlReadLinkObjectEndAction);
-    return d->result;
+    return 0;
 }
 
 void QUmlReadLinkObjectEndAction::setResult(QUmlOutputPin *result)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlReadLinkObjectEndAction);
-    if (d->result != result) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActionPrivate *>(d))->removeOutput(qwrappedobject_cast<QUmlOutputPin *>(d->result));
-
-        d->result = result;
-
-        // Adjust subsetted property(ies)
-        if (result) {
-            (qwrappedobject_cast<QUmlActionPrivate *>(d))->addOutput(qwrappedobject_cast<QUmlOutputPin *>(result));
-        }
-    }
-}
-
-void QUmlReadLinkObjectEndAction::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadLinkObjectEndAction")][QString::fromLatin1("end")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadLinkObjectEndAction")][QString::fromLatin1("end")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadLinkObjectEndAction")][QString::fromLatin1("end")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Link end to be read.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadLinkObjectEndAction")][QString::fromLatin1("end")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadLinkObjectEndAction")][QString::fromLatin1("end")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadLinkObjectEndAction")][QString::fromLatin1("end")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadLinkObjectEndAction")][QString::fromLatin1("object")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadLinkObjectEndAction")][QString::fromLatin1("object")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadLinkObjectEndAction")][QString::fromLatin1("object")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Gives the input pin from which the link object is obtained.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadLinkObjectEndAction")][QString::fromLatin1("object")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadLinkObjectEndAction")][QString::fromLatin1("object")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlAction::inputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadLinkObjectEndAction")][QString::fromLatin1("object")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadLinkObjectEndAction")][QString::fromLatin1("result")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadLinkObjectEndAction")][QString::fromLatin1("result")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadLinkObjectEndAction")][QString::fromLatin1("result")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Pin where the result value is placed.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadLinkObjectEndAction")][QString::fromLatin1("result")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadLinkObjectEndAction")][QString::fromLatin1("result")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlAction::outputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadLinkObjectEndAction")][QString::fromLatin1("result")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlAction::setPropertyData();
+    Q_UNUSED(result);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlreadlinkobjectendaction.cpp"
 

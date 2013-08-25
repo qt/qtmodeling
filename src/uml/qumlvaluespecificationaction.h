@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlAction>
 
 QT_BEGIN_HEADER
@@ -52,37 +51,20 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlOutputPin;
 class QUmlValueSpecification;
 
 class QUmlValueSpecificationActionPrivate;
-
 class Q_UML_EXPORT QUmlValueSpecificationAction : public QUmlAction
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlValueSpecification * value READ value WRITE setValue)
-    Q_PROPERTY(QUmlOutputPin * result READ result WRITE setResult)
-
-    Q_DISABLE_COPY(QUmlValueSpecificationAction)
-    Q_DECLARE_PRIVATE(QUmlValueSpecificationAction)
-
 public:
-    Q_INVOKABLE explicit QUmlValueSpecificationAction(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlValueSpecificationAction();
+    QUmlValueSpecificationAction(bool create_d_ptr = true);
 
-    // Association ends from QUmlValueSpecificationAction
-    Q_INVOKABLE QUmlValueSpecification *value() const;
-    Q_INVOKABLE void setValue(QUmlValueSpecification *value);
-    Q_INVOKABLE QUmlOutputPin *result() const;
-    Q_INVOKABLE void setResult(QUmlOutputPin *result);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlValueSpecificationAction(QUmlValueSpecificationActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlOutputPin *result() const;
+    void setResult(QUmlOutputPin *result);
+    QUmlValueSpecification *value() const;
+    void setValue(QUmlValueSpecification *value);
 };
 
 QT_END_NAMESPACE

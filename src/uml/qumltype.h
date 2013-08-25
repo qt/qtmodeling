@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlPackageableElement>
 
 QT_BEGIN_HEADER
@@ -51,38 +50,18 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-
-// Forward decls for function parameters
-class QUmlPackage;
-class QUmlType;
-
 class QUmlTypePrivate;
-
 class Q_UML_EXPORT QUmlType : public QUmlPackageableElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlPackage * package READ package WRITE setPackage)
-
-    Q_DISABLE_COPY(QUmlType)
-    Q_DECLARE_PRIVATE(QUmlType)
-
 public:
-    Q_INVOKABLE explicit QUmlType(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlType();
+    Q_DECL_HIDDEN QUmlType(bool create_d_ptr = true);
 
-    // Association ends from QUmlType
-    Q_INVOKABLE QUmlPackage *package() const;
-    Q_INVOKABLE void setPackage(QUmlPackage *package);
+    // Owned attributes
+    QUmlPackage *package() const;
+    void setPackage(QUmlPackage *package);
 
     // Operations
-    Q_INVOKABLE bool conformsTo(const QUmlType *other) const;
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlType(QUmlTypePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    bool conformsTo(QUmlType *other) const;
 };
 
 QT_END_NAMESPACE

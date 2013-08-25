@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlDirectedRelationship>
 
 QT_BEGIN_HEADER
@@ -52,36 +51,19 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlPackage;
 
 class QUmlPackageMergePrivate;
-
 class Q_UML_EXPORT QUmlPackageMerge : public QUmlDirectedRelationship
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlPackage * mergedPackage READ mergedPackage WRITE setMergedPackage)
-    Q_PROPERTY(QUmlPackage * receivingPackage READ receivingPackage WRITE setReceivingPackage)
-
-    Q_DISABLE_COPY(QUmlPackageMerge)
-    Q_DECLARE_PRIVATE(QUmlPackageMerge)
-
 public:
-    Q_INVOKABLE explicit QUmlPackageMerge(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlPackageMerge();
+    QUmlPackageMerge(bool create_d_ptr = true);
 
-    // Association ends from QUmlPackageMerge
-    Q_INVOKABLE QUmlPackage *mergedPackage() const;
-    Q_INVOKABLE void setMergedPackage(QUmlPackage *mergedPackage);
-    Q_INVOKABLE QUmlPackage *receivingPackage() const;
-    Q_INVOKABLE void setReceivingPackage(QUmlPackage *receivingPackage);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlPackageMerge(QUmlPackageMergePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlPackage *mergedPackage() const;
+    void setMergedPackage(QUmlPackage *mergedPackage);
+    QUmlPackage *receivingPackage() const;
+    void setReceivingPackage(QUmlPackage *receivingPackage);
 };
 
 QT_END_NAMESPACE

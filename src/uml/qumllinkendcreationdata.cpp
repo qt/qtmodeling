@@ -43,17 +43,11 @@
 
 #include <QtUml/QUmlInputPin>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlLinkEndCreationDataPrivate::QUmlLinkEndCreationDataPrivate() :
-    isReplaceAll(false),
-    insertAt(0)
-{
-}
-
-QUmlLinkEndCreationDataPrivate::~QUmlLinkEndCreationDataPrivate()
+    insertAt(0),
+    isReplaceAll(false)
 {
 }
 
@@ -65,100 +59,40 @@ QUmlLinkEndCreationDataPrivate::~QUmlLinkEndCreationDataPrivate()
     \brief A link end creation data is not an action. It is an element that identifies links. It identifies one end of a link to be created by a create link action.
  */
 
-QUmlLinkEndCreationData::QUmlLinkEndCreationData(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlLinkEndData(*new QUmlLinkEndCreationDataPrivate, wrapper, parent)
+QUmlLinkEndCreationData::QUmlLinkEndCreationData(bool create_d_ptr) :
+    QUmlLinkEndData(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlLinkEndCreationDataPrivate);
 }
 
-QUmlLinkEndCreationData::QUmlLinkEndCreationData(QUmlLinkEndCreationDataPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlLinkEndData(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlLinkEndCreationData::~QUmlLinkEndCreationData()
-{
-}
-
-// ---------------------------------------------------------------
-// ATTRIBUTES FROM QUmlLinkEndCreationData
-// ---------------------------------------------------------------
-
-/*!
-    Specifies whether the existing links emanating from the object on this end should be destroyed before creating a new link.
- */
-bool QUmlLinkEndCreationData::isReplaceAll() const
-{
-    // This is a read-write attribute
-
-    Q_D(const QUmlLinkEndCreationData);
-    return d->isReplaceAll;
-}
-
-void QUmlLinkEndCreationData::setReplaceAll(bool isReplaceAll)
-{
-    // This is a read-write attribute
-
-    Q_D(QUmlLinkEndCreationData);
-    if (d->isReplaceAll != isReplaceAll) {
-        d->isReplaceAll = isReplaceAll;
-    }
-    d->modifiedResettableProperties << QString::fromLatin1("isReplaceAll");
-}
-
-void QUmlLinkEndCreationData::unsetReplaceAll()
-{
-    setReplaceAll(false);
-    Q_D(QUmlLinkEndCreationData);
-    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isReplaceAll"));
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlLinkEndCreationData
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     Specifies where the new link should be inserted for ordered association ends, or where an existing link should be moved to. The type of the input is UnlimitedNatural, but the input cannot be zero. This pin is omitted for association ends that are not ordered.
  */
 QUmlInputPin *QUmlLinkEndCreationData::insertAt() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlLinkEndCreationData);
-    return d->insertAt;
+    return 0;
 }
 
 void QUmlLinkEndCreationData::setInsertAt(QUmlInputPin *insertAt)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlLinkEndCreationData);
-    if (d->insertAt != insertAt) {
-        d->insertAt = insertAt;
-    }
+    Q_UNUSED(insertAt);
 }
 
-void QUmlLinkEndCreationData::setPropertyData()
+/*!
+    Specifies whether the existing links emanating from the object on this end should be destroyed before creating a new link.
+ */
+bool QUmlLinkEndCreationData::isReplaceAll() const
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLinkEndCreationData")][QString::fromLatin1("isReplaceAll")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLinkEndCreationData")][QString::fromLatin1("isReplaceAll")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLinkEndCreationData")][QString::fromLatin1("isReplaceAll")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies whether the existing links emanating from the object on this end should be destroyed before creating a new link.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLinkEndCreationData")][QString::fromLatin1("isReplaceAll")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLinkEndCreationData")][QString::fromLatin1("isReplaceAll")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLinkEndCreationData")][QString::fromLatin1("isReplaceAll")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    return bool();
+}
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLinkEndCreationData")][QString::fromLatin1("insertAt")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLinkEndCreationData")][QString::fromLatin1("insertAt")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLinkEndCreationData")][QString::fromLatin1("insertAt")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies where the new link should be inserted for ordered association ends, or where an existing link should be moved to. The type of the input is UnlimitedNatural, but the input cannot be zero. This pin is omitted for association ends that are not ordered.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLinkEndCreationData")][QString::fromLatin1("insertAt")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLinkEndCreationData")][QString::fromLatin1("insertAt")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLinkEndCreationData")][QString::fromLatin1("insertAt")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlLinkEndData::setPropertyData();
+void QUmlLinkEndCreationData::setReplaceAll(bool isReplaceAll)
+{
+    Q_UNUSED(isReplaceAll);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumllinkendcreationdata.cpp"
 

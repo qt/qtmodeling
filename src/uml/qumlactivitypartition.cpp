@@ -41,11 +41,9 @@
 #include "qumlactivitypartition.h"
 #include "qumlactivitypartition_p.h"
 
-#include <QtUml/QUmlElement>
 #include <QtUml/QUmlActivityEdge>
 #include <QtUml/QUmlActivityNode>
-
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
+#include <QtUml/QUmlElement>
 
 QT_BEGIN_NAMESPACE
 
@@ -57,10 +55,6 @@ QUmlActivityPartitionPrivate::QUmlActivityPartitionPrivate() :
 {
 }
 
-QUmlActivityPartitionPrivate::~QUmlActivityPartitionPrivate()
-{
-}
-
 /*!
     \class QUmlActivityPartition
 
@@ -69,53 +63,44 @@ QUmlActivityPartitionPrivate::~QUmlActivityPartitionPrivate()
     \brief An activity partition is a kind of activity group for identifying actions that have some characteristic in common.
  */
 
-QUmlActivityPartition::QUmlActivityPartition(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlActivityGroup(*new QUmlActivityPartitionPrivate, wrapper, parent)
+QUmlActivityPartition::QUmlActivityPartition(bool create_d_ptr) :
+    QUmlActivityGroup(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlActivityPartitionPrivate);
 }
 
-QUmlActivityPartition::QUmlActivityPartition(QUmlActivityPartitionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlActivityGroup(dd, wrapper, parent)
+// Owned attributes
+
+/*!
+    Edges immediately contained in the group.
+ */
+QSet<QUmlActivityEdge *> QUmlActivityPartition::edge() const
 {
-    setPropertyData();
+    return QSet<QUmlActivityEdge *>();
 }
 
-QUmlActivityPartition::~QUmlActivityPartition()
+void QUmlActivityPartition::addEdge(QSet<QUmlActivityEdge *> edge)
 {
+    Q_UNUSED(edge);
 }
 
-// ---------------------------------------------------------------
-// ATTRIBUTES FROM QUmlActivityPartition
-// ---------------------------------------------------------------
+void QUmlActivityPartition::removeEdge(QSet<QUmlActivityEdge *> edge)
+{
+    Q_UNUSED(edge);
+}
 
 /*!
     Tells whether the partition groups other partitions along a dimension.
  */
 bool QUmlActivityPartition::isDimension() const
 {
-    // This is a read-write attribute
-
-    Q_D(const QUmlActivityPartition);
-    return d->isDimension;
+    return bool();
 }
 
 void QUmlActivityPartition::setDimension(bool isDimension)
 {
-    // This is a read-write attribute
-
-    Q_D(QUmlActivityPartition);
-    if (d->isDimension != isDimension) {
-        d->isDimension = isDimension;
-    }
-    d->modifiedResettableProperties << QString::fromLatin1("isDimension");
-}
-
-void QUmlActivityPartition::unsetDimension()
-{
-    setDimension(false);
-    Q_D(QUmlActivityPartition);
-    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isDimension"));
+    Q_UNUSED(isDimension);
 }
 
 /*!
@@ -123,96 +108,61 @@ void QUmlActivityPartition::unsetDimension()
  */
 bool QUmlActivityPartition::isExternal() const
 {
-    // This is a read-write attribute
-
-    Q_D(const QUmlActivityPartition);
-    return d->isExternal;
+    return bool();
 }
 
 void QUmlActivityPartition::setExternal(bool isExternal)
 {
-    // This is a read-write attribute
-
-    Q_D(QUmlActivityPartition);
-    if (d->isExternal != isExternal) {
-        d->isExternal = isExternal;
-    }
-    d->modifiedResettableProperties << QString::fromLatin1("isExternal");
+    Q_UNUSED(isExternal);
 }
 
-void QUmlActivityPartition::unsetExternal()
+/*!
+    Nodes immediately contained in the group.
+ */
+QSet<QUmlActivityNode *> QUmlActivityPartition::node() const
 {
-    setExternal(false);
-    Q_D(QUmlActivityPartition);
-    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isExternal"));
+    return QSet<QUmlActivityNode *>();
 }
 
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlActivityPartition
-// ---------------------------------------------------------------
+void QUmlActivityPartition::addNode(QSet<QUmlActivityNode *> node)
+{
+    Q_UNUSED(node);
+}
+
+void QUmlActivityPartition::removeNode(QSet<QUmlActivityNode *> node)
+{
+    Q_UNUSED(node);
+}
 
 /*!
     An element constraining behaviors invoked by nodes in the partition.
  */
 QUmlElement *QUmlActivityPartition::represents() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlActivityPartition);
-    return d->represents;
+    return 0;
 }
 
 void QUmlActivityPartition::setRepresents(QUmlElement *represents)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlActivityPartition);
-    if (d->represents != represents) {
-        d->represents = represents;
-    }
+    Q_UNUSED(represents);
 }
 
 /*!
     Partitions immediately contained in the partition.
  */
-QSet<QUmlActivityPartition *> QUmlActivityPartition::subpartitions() const
+QSet<QUmlActivityPartition *> QUmlActivityPartition::subpartition() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlActivityPartition);
-    return d->subpartitions;
+    return QSet<QUmlActivityPartition *>();
 }
 
-void QUmlActivityPartition::addSubpartition(QUmlActivityPartition *subpartition)
+void QUmlActivityPartition::addSubpartition(QSet<QUmlActivityPartition *> subpartition)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlActivityPartition);
-    if (!d->subpartitions.contains(subpartition)) {
-        d->subpartitions.insert(subpartition);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActivityGroupPrivate *>(d))->addSubgroup(qwrappedobject_cast<QUmlActivityGroup *>(subpartition));
-
-        // Adjust opposite property
-        subpartition->setSuperPartition(this);
-    }
+    Q_UNUSED(subpartition);
 }
 
-void QUmlActivityPartition::removeSubpartition(QUmlActivityPartition *subpartition)
+void QUmlActivityPartition::removeSubpartition(QSet<QUmlActivityPartition *> subpartition)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlActivityPartition);
-    if (d->subpartitions.contains(subpartition)) {
-        d->subpartitions.remove(subpartition);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActivityGroupPrivate *>(d))->removeSubgroup(qwrappedobject_cast<QUmlActivityGroup *>(subpartition));
-
-        // Adjust opposite property
-        subpartition->setSuperPartition(0);
-    }
+    Q_UNUSED(subpartition);
 }
 
 /*!
@@ -220,176 +170,13 @@ void QUmlActivityPartition::removeSubpartition(QUmlActivityPartition *subpartiti
  */
 QUmlActivityPartition *QUmlActivityPartition::superPartition() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlActivityPartition);
-    return d->superPartition;
+    return 0;
 }
 
 void QUmlActivityPartition::setSuperPartition(QUmlActivityPartition *superPartition)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlActivityPartition);
-    if (d->superPartition != superPartition) {
-        // Adjust opposite property
-        if (d->superPartition)
-            d->superPartition->removeSubpartition(this);
-
-        d->superPartition = superPartition;
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActivityGroupPrivate *>(d))->setSuperGroup(qwrappedobject_cast<QUmlActivityGroup *>(superPartition));
-
-        // Adjust opposite property
-        if (superPartition)
-            superPartition->addSubpartition(this);
-    }
-}
-
-/*!
-    Nodes immediately contained in the group.
- */
-QSet<QUmlActivityNode *> QUmlActivityPartition::nodes() const
-{
-    // This is a read-write association end
-
-    Q_D(const QUmlActivityPartition);
-    return d->nodes;
-}
-
-void QUmlActivityPartition::addNode(QUmlActivityNode *node)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlActivityPartition);
-    if (!d->nodes.contains(node)) {
-        d->nodes.insert(node);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActivityGroupPrivate *>(d))->addContainedNode(qwrappedobject_cast<QUmlActivityNode *>(node));
-
-        // Adjust opposite property
-        node->addInPartition(this);
-    }
-}
-
-void QUmlActivityPartition::removeNode(QUmlActivityNode *node)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlActivityPartition);
-    if (d->nodes.contains(node)) {
-        d->nodes.remove(node);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActivityGroupPrivate *>(d))->removeContainedNode(qwrappedobject_cast<QUmlActivityNode *>(node));
-
-        // Adjust opposite property
-        if (node)
-            node->removeInPartition(this);
-    }
-}
-
-/*!
-    Edges immediately contained in the group.
- */
-QSet<QUmlActivityEdge *> QUmlActivityPartition::edges() const
-{
-    // This is a read-write association end
-
-    Q_D(const QUmlActivityPartition);
-    return d->edges;
-}
-
-void QUmlActivityPartition::addEdge(QUmlActivityEdge *edge)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlActivityPartition);
-    if (!d->edges.contains(edge)) {
-        d->edges.insert(edge);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActivityGroupPrivate *>(d))->addContainedEdge(qwrappedobject_cast<QUmlActivityEdge *>(edge));
-
-        // Adjust opposite property
-        edge->addInPartition(this);
-    }
-}
-
-void QUmlActivityPartition::removeEdge(QUmlActivityEdge *edge)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlActivityPartition);
-    if (d->edges.contains(edge)) {
-        d->edges.remove(edge);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActivityGroupPrivate *>(d))->removeContainedEdge(qwrappedobject_cast<QUmlActivityEdge *>(edge));
-
-        // Adjust opposite property
-        if (edge)
-            edge->removeInPartition(this);
-    }
-}
-
-void QUmlActivityPartition::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivityPartition")][QString::fromLatin1("isDimension")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivityPartition")][QString::fromLatin1("isDimension")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivityPartition")][QString::fromLatin1("isDimension")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Tells whether the partition groups other partitions along a dimension.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivityPartition")][QString::fromLatin1("isDimension")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivityPartition")][QString::fromLatin1("isDimension")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivityPartition")][QString::fromLatin1("isDimension")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivityPartition")][QString::fromLatin1("isExternal")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivityPartition")][QString::fromLatin1("isExternal")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivityPartition")][QString::fromLatin1("isExternal")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Tells whether the partition represents an entity to which the partitioning structure does not apply.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivityPartition")][QString::fromLatin1("isExternal")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivityPartition")][QString::fromLatin1("isExternal")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivityPartition")][QString::fromLatin1("isExternal")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivityPartition")][QString::fromLatin1("represents")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivityPartition")][QString::fromLatin1("represents")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivityPartition")][QString::fromLatin1("represents")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An element constraining behaviors invoked by nodes in the partition.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivityPartition")][QString::fromLatin1("represents")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivityPartition")][QString::fromLatin1("represents")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivityPartition")][QString::fromLatin1("represents")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivityPartition")][QString::fromLatin1("subpartitions")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivityPartition")][QString::fromLatin1("subpartitions")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivityPartition")][QString::fromLatin1("subpartitions")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Partitions immediately contained in the partition.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivityPartition")][QString::fromLatin1("subpartitions")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivityPartition")][QString::fromLatin1("subpartitions")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlActivityGroup::subgroups");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivityPartition")][QString::fromLatin1("subpartitions")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlActivityPartition::superPartition");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivityPartition")][QString::fromLatin1("superPartition")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivityPartition")][QString::fromLatin1("superPartition")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivityPartition")][QString::fromLatin1("superPartition")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Partition immediately containing the partition.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivityPartition")][QString::fromLatin1("superPartition")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivityPartition")][QString::fromLatin1("superPartition")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlActivityGroup::superGroup");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivityPartition")][QString::fromLatin1("superPartition")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlActivityPartition::subpartition");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivityPartition")][QString::fromLatin1("nodes")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivityPartition")][QString::fromLatin1("nodes")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivityPartition")][QString::fromLatin1("nodes")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Nodes immediately contained in the group.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivityPartition")][QString::fromLatin1("nodes")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivityPartition")][QString::fromLatin1("nodes")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlActivityGroup::containedNodes");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivityPartition")][QString::fromLatin1("nodes")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlActivityNode::inPartition");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivityPartition")][QString::fromLatin1("edges")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivityPartition")][QString::fromLatin1("edges")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivityPartition")][QString::fromLatin1("edges")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Edges immediately contained in the group.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivityPartition")][QString::fromLatin1("edges")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivityPartition")][QString::fromLatin1("edges")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlActivityGroup::containedEdges");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivityPartition")][QString::fromLatin1("edges")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlActivityEdge::inPartition");
-
-    QUmlActivityGroup::setPropertyData();
+    Q_UNUSED(superPartition);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlactivitypartition.cpp"
 

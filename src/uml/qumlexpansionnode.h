@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlObjectNode>
 
 QT_BEGIN_HEADER
@@ -52,36 +51,19 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlExpansionRegion;
 
 class QUmlExpansionNodePrivate;
-
 class Q_UML_EXPORT QUmlExpansionNode : public QUmlObjectNode
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlExpansionRegion * regionAsOutput READ regionAsOutput WRITE setRegionAsOutput)
-    Q_PROPERTY(QUmlExpansionRegion * regionAsInput READ regionAsInput WRITE setRegionAsInput)
-
-    Q_DISABLE_COPY(QUmlExpansionNode)
-    Q_DECLARE_PRIVATE(QUmlExpansionNode)
-
 public:
-    Q_INVOKABLE explicit QUmlExpansionNode(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlExpansionNode();
+    QUmlExpansionNode(bool create_d_ptr = true);
 
-    // Association ends from QUmlExpansionNode
-    Q_INVOKABLE QUmlExpansionRegion *regionAsOutput() const;
-    Q_INVOKABLE void setRegionAsOutput(QUmlExpansionRegion *regionAsOutput);
-    Q_INVOKABLE QUmlExpansionRegion *regionAsInput() const;
-    Q_INVOKABLE void setRegionAsInput(QUmlExpansionRegion *regionAsInput);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlExpansionNode(QUmlExpansionNodePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlExpansionRegion *regionAsInput() const;
+    void setRegionAsInput(QUmlExpansionRegion *regionAsInput);
+    QUmlExpansionRegion *regionAsOutput() const;
+    void setRegionAsOutput(QUmlExpansionRegion *regionAsOutput);
 };
 
 QT_END_NAMESPACE

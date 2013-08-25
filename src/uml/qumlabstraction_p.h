@@ -41,10 +41,9 @@
 #ifndef QUMLABSTRACTION_P_H
 #define QUMLABSTRACTION_P_H
 
-// Base class includes
-#include "private/qumldependency_p.h"
-
 #include "QtUml/QUmlAbstraction"
+
+#include "private/qumldependency_p.h"
 
 QT_BEGIN_HEADER
 
@@ -52,17 +51,10 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlOpaqueExpression;
-class QUmlAbstraction;
-
 class Q_UML_EXPORT QUmlAbstractionPrivate : public QUmlDependencyPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlAbstraction)
-
 public:
-    explicit QUmlAbstractionPrivate();
-    virtual ~QUmlAbstractionPrivate();
+    QUmlAbstractionPrivate();
 
     QUmlOpaqueExpression *mapping;
 };

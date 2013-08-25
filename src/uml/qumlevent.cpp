@@ -41,15 +41,9 @@
 #include "qumlevent.h"
 #include "qumlevent_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlEventPrivate::QUmlEventPrivate()
-{
-}
-
-QUmlEventPrivate::~QUmlEventPrivate()
 {
 }
 
@@ -61,28 +55,12 @@ QUmlEventPrivate::~QUmlEventPrivate()
     \brief An event is the specification of some occurrence that may potentially trigger effects by an object.
  */
 
-QUmlEvent::QUmlEvent(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlPackageableElement(*new QUmlEventPrivate, wrapper, parent)
+QUmlEvent::QUmlEvent(bool create_d_ptr) :
+    QUmlPackageableElement(false)
 {
-    setPropertyData();
-}
-
-QUmlEvent::QUmlEvent(QUmlEventPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlPackageableElement(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlEvent::~QUmlEvent()
-{
-}
-
-void QUmlEvent::setPropertyData()
-{
-    QUmlPackageableElement::setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlEventPrivate);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlevent.cpp"
 

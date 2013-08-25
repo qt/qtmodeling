@@ -41,10 +41,9 @@
 #ifndef QUMLACTIONEXECUTIONSPECIFICATION_P_H
 #define QUMLACTIONEXECUTIONSPECIFICATION_P_H
 
-// Base class includes
-#include "private/qumlexecutionspecification_p.h"
-
 #include "QtUml/QUmlActionExecutionSpecification"
+
+#include "private/qumlexecutionspecification_p.h"
 
 QT_BEGIN_HEADER
 
@@ -52,17 +51,10 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlAction;
-class QUmlActionExecutionSpecification;
-
 class Q_UML_EXPORT QUmlActionExecutionSpecificationPrivate : public QUmlExecutionSpecificationPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlActionExecutionSpecification)
-
 public:
-    explicit QUmlActionExecutionSpecificationPrivate();
-    virtual ~QUmlActionExecutionSpecificationPrivate();
+    QUmlActionExecutionSpecificationPrivate();
 
     QUmlAction *action;
 };

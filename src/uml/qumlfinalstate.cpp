@@ -41,15 +41,9 @@
 #include "qumlfinalstate.h"
 #include "qumlfinalstate_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlFinalStatePrivate::QUmlFinalStatePrivate()
-{
-}
-
-QUmlFinalStatePrivate::~QUmlFinalStatePrivate()
 {
 }
 
@@ -61,28 +55,12 @@ QUmlFinalStatePrivate::~QUmlFinalStatePrivate()
     \brief A special kind of state signifying that the enclosing region is completed. If the enclosing region is directly contained in a state machine and all other regions in the state machine also are completed, then it means that the entire state machine is completed.
  */
 
-QUmlFinalState::QUmlFinalState(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlState(*new QUmlFinalStatePrivate, wrapper, parent)
+QUmlFinalState::QUmlFinalState(bool create_d_ptr) :
+    QUmlState(false)
 {
-    setPropertyData();
-}
-
-QUmlFinalState::QUmlFinalState(QUmlFinalStatePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlState(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlFinalState::~QUmlFinalState()
-{
-}
-
-void QUmlFinalState::setPropertyData()
-{
-    QUmlState::setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlFinalStatePrivate);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlfinalstate.cpp"
 

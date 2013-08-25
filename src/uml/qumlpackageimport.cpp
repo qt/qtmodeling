@@ -41,21 +41,15 @@
 #include "qumlpackageimport.h"
 #include "qumlpackageimport_p.h"
 
-#include <QtUml/QUmlPackage>
 #include <QtUml/QUmlNamespace>
-
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
+#include <QtUml/QUmlPackage>
 
 QT_BEGIN_NAMESPACE
 
 QUmlPackageImportPrivate::QUmlPackageImportPrivate() :
-    visibility(QtUml::VisibilityPublic),
+    importedPackage(0),
     importingNamespace(0),
-    importedPackage(0)
-{
-}
-
-QUmlPackageImportPrivate::~QUmlPackageImportPrivate()
+    visibility(QtUml::VisibilityPublic)
 {
 }
 
@@ -67,153 +61,53 @@ QUmlPackageImportPrivate::~QUmlPackageImportPrivate()
     \brief A package import is a relationship that allows the use of unqualified names to refer to package members from other namespaces.
  */
 
-QUmlPackageImport::QUmlPackageImport(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlDirectedRelationship(*new QUmlPackageImportPrivate, wrapper, parent)
+QUmlPackageImport::QUmlPackageImport(bool create_d_ptr) :
+    QUmlDirectedRelationship(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlPackageImportPrivate);
 }
 
-QUmlPackageImport::QUmlPackageImport(QUmlPackageImportPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlDirectedRelationship(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlPackageImport::~QUmlPackageImport()
-{
-}
-
-// ---------------------------------------------------------------
-// ATTRIBUTES FROM QUmlPackageImport
-// ---------------------------------------------------------------
-
-/*!
-    Specifies the visibility of the imported PackageableElements within the importing Namespace, i.e., whether imported elements will in turn be visible to other packages that use that importingPackage as an importedPackage. If the PackageImport is public, the imported elements will be visible outside the package, while if it is private they will not.
- */
-QtUml::VisibilityKind QUmlPackageImport::visibility() const
-{
-    // This is a read-write attribute
-
-    Q_D(const QUmlPackageImport);
-    return d->visibility;
-}
-
-void QUmlPackageImport::setVisibility(QtUml::VisibilityKind visibility)
-{
-    // This is a read-write attribute
-
-    Q_D(QUmlPackageImport);
-    if (d->visibility != visibility) {
-        d->visibility = visibility;
-    }
-    d->modifiedResettableProperties << QString::fromLatin1("visibility");
-}
-
-void QUmlPackageImport::unsetVisibility()
-{
-    setVisibility(QtUml::VisibilityPublic);
-    Q_D(QUmlPackageImport);
-    d->modifiedResettableProperties.removeAll(QString::fromLatin1("visibility"));
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlPackageImport
-// ---------------------------------------------------------------
-
-/*!
-    Specifies the Namespace that imports the members from a Package.
- */
-QUmlNamespace *QUmlPackageImport::importingNamespace() const
-{
-    // This is a read-write association end
-
-    Q_D(const QUmlPackageImport);
-    return d->importingNamespace;
-}
-
-void QUmlPackageImport::setImportingNamespace(QUmlNamespace *importingNamespace)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlPackageImport);
-    if (d->importingNamespace != importingNamespace) {
-        // Adjust opposite property
-        if (d->importingNamespace)
-            d->importingNamespace->removePackageImport(this);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlDirectedRelationshipPrivate *>(d))->removeSource(qwrappedobject_cast<QUmlElement *>(d->importingNamespace));
-
-        d->importingNamespace = importingNamespace;
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->setOwner(qwrappedobject_cast<QUmlElement *>(importingNamespace));
-        if (importingNamespace) {
-            (qwrappedobject_cast<QUmlDirectedRelationshipPrivate *>(d))->addSource(qwrappedobject_cast<QUmlElement *>(importingNamespace));
-        }
-
-        // Adjust opposite property
-        if (importingNamespace)
-            importingNamespace->addPackageImport(this);
-    }
-}
+// Owned attributes
 
 /*!
     Specifies the Package whose members are imported into a Namespace.
  */
 QUmlPackage *QUmlPackageImport::importedPackage() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlPackageImport);
-    return d->importedPackage;
+    return 0;
 }
 
 void QUmlPackageImport::setImportedPackage(QUmlPackage *importedPackage)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlPackageImport);
-    if (d->importedPackage != importedPackage) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlDirectedRelationshipPrivate *>(d))->removeTarget(qwrappedobject_cast<QUmlElement *>(d->importedPackage));
-
-        d->importedPackage = importedPackage;
-
-        // Adjust subsetted property(ies)
-        if (importedPackage) {
-            (qwrappedobject_cast<QUmlDirectedRelationshipPrivate *>(d))->addTarget(qwrappedobject_cast<QUmlElement *>(importedPackage));
-        }
-    }
+    Q_UNUSED(importedPackage);
 }
 
-void QUmlPackageImport::setPropertyData()
+/*!
+    Specifies the Namespace that imports the members from a Package.
+ */
+QUmlNamespace *QUmlPackageImport::importingNamespace() const
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackageImport")][QString::fromLatin1("visibility")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackageImport")][QString::fromLatin1("visibility")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackageImport")][QString::fromLatin1("visibility")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the visibility of the imported PackageableElements within the importing Namespace, i.e., whether imported elements will in turn be visible to other packages that use that importingPackage as an importedPackage. If the PackageImport is public, the imported elements will be visible outside the package, while if it is private they will not.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackageImport")][QString::fromLatin1("visibility")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackageImport")][QString::fromLatin1("visibility")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackageImport")][QString::fromLatin1("visibility")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    return 0;
+}
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackageImport")][QString::fromLatin1("importingNamespace")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackageImport")][QString::fromLatin1("importingNamespace")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackageImport")][QString::fromLatin1("importingNamespace")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the Namespace that imports the members from a Package.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackageImport")][QString::fromLatin1("importingNamespace")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackageImport")][QString::fromLatin1("importingNamespace")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::owner QUmlDirectedRelationship::sources");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackageImport")][QString::fromLatin1("importingNamespace")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlNamespace::packageImport");
+void QUmlPackageImport::setImportingNamespace(QUmlNamespace *importingNamespace)
+{
+    Q_UNUSED(importingNamespace);
+}
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackageImport")][QString::fromLatin1("importedPackage")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackageImport")][QString::fromLatin1("importedPackage")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackageImport")][QString::fromLatin1("importedPackage")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the Package whose members are imported into a Namespace.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackageImport")][QString::fromLatin1("importedPackage")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackageImport")][QString::fromLatin1("importedPackage")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlDirectedRelationship::targets");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPackageImport")][QString::fromLatin1("importedPackage")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
+/*!
+    Specifies the visibility of the imported PackageableElements within the importing Namespace, i.e., whether imported elements will in turn be visible to other packages that use that importingPackage as an importedPackage. If the PackageImport is public, the imported elements will be visible outside the package, while if it is private they will not.
+ */
+QtUml::VisibilityKind QUmlPackageImport::visibility() const
+{
+    return QtUml::VisibilityKind();
+}
 
-    QUmlDirectedRelationship::setPropertyData();
+void QUmlPackageImport::setVisibility(QtUml::VisibilityKind visibility)
+{
+    Q_UNUSED(visibility);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlpackageimport.cpp"
 

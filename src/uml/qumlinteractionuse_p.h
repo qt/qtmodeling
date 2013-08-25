@@ -41,14 +41,9 @@
 #ifndef QUMLINTERACTIONUSE_P_H
 #define QUMLINTERACTIONUSE_P_H
 
-// Base class includes
-#include "private/qumlinteractionfragment_p.h"
-
 #include "QtUml/QUmlInteractionUse"
 
-// Qt includes
-#include "QtCore/QList"
-#include "QtCore/QSet"
+#include "private/qumlinteractionfragment_p.h"
 
 QT_BEGIN_HEADER
 
@@ -56,25 +51,15 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlProperty;
-class QUmlInteraction;
-class QUmlGate;
-class QUmlValueSpecification;
-class QUmlInteractionUse;
-
 class Q_UML_EXPORT QUmlInteractionUsePrivate : public QUmlInteractionFragmentPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlInteractionUse)
-
 public:
-    explicit QUmlInteractionUsePrivate();
-    virtual ~QUmlInteractionUsePrivate();
+    QUmlInteractionUsePrivate();
 
-    QSet<QUmlGate *> actualGates;
-    QUmlValueSpecification *returnValue;
+    QSet<QUmlGate *> actualGate;
+    QList<QUmlValueSpecification *> argument;
     QUmlInteraction *refersTo;
-    QList<QUmlValueSpecification *> arguments;
+    QUmlValueSpecification *returnValue;
     QUmlProperty *returnValueRecipient;
 };
 

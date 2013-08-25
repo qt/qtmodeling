@@ -44,18 +44,12 @@
 #include <QtUml/QUmlState>
 #include <QtUml/QUmlStateMachine>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlPseudostatePrivate::QUmlPseudostatePrivate() :
     kind(QtUml::PseudostateInitial),
     state(0),
     stateMachine(0)
-{
-}
-
-QUmlPseudostatePrivate::~QUmlPseudostatePrivate()
 {
 }
 
@@ -67,89 +61,39 @@ QUmlPseudostatePrivate::~QUmlPseudostatePrivate()
     \brief A pseudostate is an abstraction that encompasses different types of transient vertices in the state machine graph.
  */
 
-QUmlPseudostate::QUmlPseudostate(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlVertex(*new QUmlPseudostatePrivate, wrapper, parent)
+QUmlPseudostate::QUmlPseudostate(bool create_d_ptr) :
+    QUmlVertex(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlPseudostatePrivate);
 }
 
-QUmlPseudostate::QUmlPseudostate(QUmlPseudostatePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlVertex(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlPseudostate::~QUmlPseudostate()
-{
-}
-
-// ---------------------------------------------------------------
-// ATTRIBUTES FROM QUmlPseudostate
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     Determines the precise type of the Pseudostate and can be one of: entryPoint, exitPoint, initial, deepHistory, shallowHistory, join, fork, junction, terminate or choice.
  */
 QtUml::PseudostateKind QUmlPseudostate::kind() const
 {
-    // This is a read-write attribute
-
-    Q_D(const QUmlPseudostate);
-    return d->kind;
+    return QtUml::PseudostateKind();
 }
 
 void QUmlPseudostate::setKind(QtUml::PseudostateKind kind)
 {
-    // This is a read-write attribute
-
-    Q_D(QUmlPseudostate);
-    if (d->kind != kind) {
-        d->kind = kind;
-    }
-    d->modifiedResettableProperties << QString::fromLatin1("kind");
+    Q_UNUSED(kind);
 }
-
-void QUmlPseudostate::unsetKind()
-{
-    setKind(QtUml::PseudostateInitial);
-    Q_D(QUmlPseudostate);
-    d->modifiedResettableProperties.removeAll(QString::fromLatin1("kind"));
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlPseudostate
-// ---------------------------------------------------------------
 
 /*!
     The State that owns this pseudostate and in which it appears.
  */
 QUmlState *QUmlPseudostate::state() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlPseudostate);
-    return d->state;
+    return 0;
 }
 
 void QUmlPseudostate::setState(QUmlState *state)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlPseudostate);
-    if (d->state != state) {
-        // Adjust opposite property
-        if (d->state)
-            d->state->removeConnectionPoint(this);
-
-        d->state = state;
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlNamedElementPrivate *>(d))->setNamespace_(qwrappedobject_cast<QUmlNamespace *>(state));
-
-        // Adjust opposite property
-        if (state)
-            state->addConnectionPoint(this);
-    }
+    Q_UNUSED(state);
 }
 
 /*!
@@ -157,60 +101,13 @@ void QUmlPseudostate::setState(QUmlState *state)
  */
 QUmlStateMachine *QUmlPseudostate::stateMachine() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlPseudostate);
-    return d->stateMachine;
+    return 0;
 }
 
 void QUmlPseudostate::setStateMachine(QUmlStateMachine *stateMachine)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlPseudostate);
-    if (d->stateMachine != stateMachine) {
-        // Adjust opposite property
-        if (d->stateMachine)
-            d->stateMachine->removeConnectionPoint(this);
-
-        d->stateMachine = stateMachine;
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlNamedElementPrivate *>(d))->setNamespace_(qwrappedobject_cast<QUmlNamespace *>(stateMachine));
-
-        // Adjust opposite property
-        if (stateMachine)
-            stateMachine->addConnectionPoint(this);
-    }
-}
-
-void QUmlPseudostate::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPseudostate")][QString::fromLatin1("kind")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPseudostate")][QString::fromLatin1("kind")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPseudostate")][QString::fromLatin1("kind")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Determines the precise type of the Pseudostate and can be one of: entryPoint, exitPoint, initial, deepHistory, shallowHistory, join, fork, junction, terminate or choice.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPseudostate")][QString::fromLatin1("kind")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPseudostate")][QString::fromLatin1("kind")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPseudostate")][QString::fromLatin1("kind")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPseudostate")][QString::fromLatin1("state")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPseudostate")][QString::fromLatin1("state")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPseudostate")][QString::fromLatin1("state")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The State that owns this pseudostate and in which it appears.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPseudostate")][QString::fromLatin1("state")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPseudostate")][QString::fromLatin1("state")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlNamedElement::namespace");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPseudostate")][QString::fromLatin1("state")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlState::connectionPoint");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPseudostate")][QString::fromLatin1("stateMachine")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPseudostate")][QString::fromLatin1("stateMachine")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPseudostate")][QString::fromLatin1("stateMachine")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The StateMachine in which this Pseudostate is defined. This only applies to Pseudostates of the kind entryPoint or exitPoint.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPseudostate")][QString::fromLatin1("stateMachine")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPseudostate")][QString::fromLatin1("stateMachine")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlNamedElement::namespace");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlPseudostate")][QString::fromLatin1("stateMachine")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlStateMachine::connectionPoint");
-
-    QUmlVertex::setPropertyData();
+    Q_UNUSED(stateMachine);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlpseudostate.cpp"
 

@@ -44,17 +44,11 @@
 #include <QtUml/QUmlInputPin>
 #include <QtUml/QUmlStructuralFeature>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlStructuralFeatureActionPrivate::QUmlStructuralFeatureActionPrivate() :
     object(0),
     structuralFeature(0)
-{
-}
-
-QUmlStructuralFeatureActionPrivate::~QUmlStructuralFeatureActionPrivate()
 {
 }
 
@@ -66,53 +60,26 @@ QUmlStructuralFeatureActionPrivate::~QUmlStructuralFeatureActionPrivate()
     \brief StructuralFeatureAction is an abstract class for all structural feature actions.
  */
 
-QUmlStructuralFeatureAction::QUmlStructuralFeatureAction(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlAction(*new QUmlStructuralFeatureActionPrivate, wrapper, parent)
+QUmlStructuralFeatureAction::QUmlStructuralFeatureAction(bool create_d_ptr) :
+    QUmlAction(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlStructuralFeatureActionPrivate);
 }
 
-QUmlStructuralFeatureAction::QUmlStructuralFeatureAction(QUmlStructuralFeatureActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlAction(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlStructuralFeatureAction::~QUmlStructuralFeatureAction()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlStructuralFeatureAction
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     Gives the input pin from which the object whose structural feature is to be read or written is obtained.
  */
 QUmlInputPin *QUmlStructuralFeatureAction::object() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlStructuralFeatureAction);
-    return d->object;
+    return 0;
 }
 
 void QUmlStructuralFeatureAction::setObject(QUmlInputPin *object)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlStructuralFeatureAction);
-    if (d->object != object) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActionPrivate *>(d))->removeInput(qwrappedobject_cast<QUmlInputPin *>(d->object));
-
-        d->object = object;
-
-        // Adjust subsetted property(ies)
-        if (object) {
-            (qwrappedobject_cast<QUmlActionPrivate *>(d))->addInput(qwrappedobject_cast<QUmlInputPin *>(object));
-        }
-    }
+    Q_UNUSED(object);
 }
 
 /*!
@@ -120,42 +87,13 @@ void QUmlStructuralFeatureAction::setObject(QUmlInputPin *object)
  */
 QUmlStructuralFeature *QUmlStructuralFeatureAction::structuralFeature() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlStructuralFeatureAction);
-    return d->structuralFeature;
+    return 0;
 }
 
 void QUmlStructuralFeatureAction::setStructuralFeature(QUmlStructuralFeature *structuralFeature)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlStructuralFeatureAction);
-    if (d->structuralFeature != structuralFeature) {
-        d->structuralFeature = structuralFeature;
-    }
-}
-
-void QUmlStructuralFeatureAction::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStructuralFeatureAction")][QString::fromLatin1("object")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStructuralFeatureAction")][QString::fromLatin1("object")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStructuralFeatureAction")][QString::fromLatin1("object")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Gives the input pin from which the object whose structural feature is to be read or written is obtained.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStructuralFeatureAction")][QString::fromLatin1("object")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStructuralFeatureAction")][QString::fromLatin1("object")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlAction::inputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStructuralFeatureAction")][QString::fromLatin1("object")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStructuralFeatureAction")][QString::fromLatin1("structuralFeature")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStructuralFeatureAction")][QString::fromLatin1("structuralFeature")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStructuralFeatureAction")][QString::fromLatin1("structuralFeature")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Structural feature to be read.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStructuralFeatureAction")][QString::fromLatin1("structuralFeature")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStructuralFeatureAction")][QString::fromLatin1("structuralFeature")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStructuralFeatureAction")][QString::fromLatin1("structuralFeature")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlAction::setPropertyData();
+    Q_UNUSED(structuralFeature);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlstructuralfeatureaction.cpp"
 

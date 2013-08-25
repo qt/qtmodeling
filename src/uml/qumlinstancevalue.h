@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlValueSpecification>
 
 QT_BEGIN_HEADER
@@ -52,33 +51,17 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlInstanceSpecification;
 
 class QUmlInstanceValuePrivate;
-
 class Q_UML_EXPORT QUmlInstanceValue : public QUmlValueSpecification
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlInstanceSpecification * instance READ instance WRITE setInstance)
-
-    Q_DISABLE_COPY(QUmlInstanceValue)
-    Q_DECLARE_PRIVATE(QUmlInstanceValue)
-
 public:
-    Q_INVOKABLE explicit QUmlInstanceValue(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlInstanceValue();
+    QUmlInstanceValue(bool create_d_ptr = true);
 
-    // Association ends from QUmlInstanceValue
-    Q_INVOKABLE QUmlInstanceSpecification *instance() const;
-    Q_INVOKABLE void setInstance(QUmlInstanceSpecification *instance);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlInstanceValue(QUmlInstanceValuePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlInstanceSpecification *instance() const;
+    void setInstance(QUmlInstanceSpecification *instance);
 };
 
 QT_END_NAMESPACE

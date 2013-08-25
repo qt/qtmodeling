@@ -41,10 +41,9 @@
 #ifndef QUMLEXTENSIONEND_P_H
 #define QUMLEXTENSIONEND_P_H
 
-// Base class includes
-#include "private/qumlproperty_p.h"
-
 #include "QtUml/QUmlExtensionEnd"
+
+#include "private/qumlproperty_p.h"
 
 QT_BEGIN_HEADER
 
@@ -52,18 +51,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlStereotype;
-class QUmlExtensionEnd;
-
 class Q_UML_EXPORT QUmlExtensionEndPrivate : public QUmlPropertyPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlExtensionEnd)
-
 public:
-    explicit QUmlExtensionEndPrivate();
-    virtual ~QUmlExtensionEndPrivate();
+    QUmlExtensionEndPrivate();
 
+    int lower;
     QUmlStereotype *type;
 };
 

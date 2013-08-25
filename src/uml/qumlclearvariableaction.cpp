@@ -41,15 +41,9 @@
 #include "qumlclearvariableaction.h"
 #include "qumlclearvariableaction_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlClearVariableActionPrivate::QUmlClearVariableActionPrivate()
-{
-}
-
-QUmlClearVariableActionPrivate::~QUmlClearVariableActionPrivate()
 {
 }
 
@@ -61,28 +55,12 @@ QUmlClearVariableActionPrivate::~QUmlClearVariableActionPrivate()
     \brief A clear variable action is a variable action that removes all values of a variable.
  */
 
-QUmlClearVariableAction::QUmlClearVariableAction(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlVariableAction(*new QUmlClearVariableActionPrivate, wrapper, parent)
+QUmlClearVariableAction::QUmlClearVariableAction(bool create_d_ptr) :
+    QUmlVariableAction(false)
 {
-    setPropertyData();
-}
-
-QUmlClearVariableAction::QUmlClearVariableAction(QUmlClearVariableActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlVariableAction(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlClearVariableAction::~QUmlClearVariableAction()
-{
-}
-
-void QUmlClearVariableAction::setPropertyData()
-{
-    QUmlVariableAction::setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlClearVariableActionPrivate);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlclearvariableaction.cpp"
 

@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlConstraint>
 
 QT_BEGIN_HEADER
@@ -52,33 +51,17 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlInterval;
 
 class QUmlIntervalConstraintPrivate;
-
 class Q_UML_EXPORT QUmlIntervalConstraint : public QUmlConstraint
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlInterval * specification READ specification WRITE setSpecification)
-
-    Q_DISABLE_COPY(QUmlIntervalConstraint)
-    Q_DECLARE_PRIVATE(QUmlIntervalConstraint)
-
 public:
-    Q_INVOKABLE explicit QUmlIntervalConstraint(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlIntervalConstraint();
+    QUmlIntervalConstraint(bool create_d_ptr = true);
 
-    // Association ends from QUmlIntervalConstraint
-    Q_INVOKABLE QUmlInterval *specification() const;
-    Q_INVOKABLE void setSpecification(QUmlInterval *specification);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlIntervalConstraint(QUmlIntervalConstraintPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlInterval *specification() const;
+    void setSpecification(QUmlInterval *specification);
 };
 
 QT_END_NAMESPACE

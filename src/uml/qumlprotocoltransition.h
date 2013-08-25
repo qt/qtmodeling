@@ -43,11 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlTransition>
-
-// Qt includes
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -55,39 +51,21 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlConstraint;
 class QUmlOperation;
 
 class QUmlProtocolTransitionPrivate;
-
 class Q_UML_EXPORT QUmlProtocolTransition : public QUmlTransition
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlConstraint * postCondition READ postCondition WRITE setPostCondition)
-    Q_PROPERTY(QSet<QUmlOperation *> referred READ referred STORED false)
-    Q_PROPERTY(QUmlConstraint * preCondition READ preCondition WRITE setPreCondition)
-
-    Q_DISABLE_COPY(QUmlProtocolTransition)
-    Q_DECLARE_PRIVATE(QUmlProtocolTransition)
-
 public:
-    Q_INVOKABLE explicit QUmlProtocolTransition(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlProtocolTransition();
+    QUmlProtocolTransition(bool create_d_ptr = true);
 
-    // Association ends from QUmlProtocolTransition
-    Q_INVOKABLE QUmlConstraint *postCondition() const;
-    Q_INVOKABLE void setPostCondition(QUmlConstraint *postCondition);
-    Q_INVOKABLE QSet<QUmlOperation *> referred() const;
-    Q_INVOKABLE QUmlConstraint *preCondition() const;
-    Q_INVOKABLE void setPreCondition(QUmlConstraint *preCondition);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlProtocolTransition(QUmlProtocolTransitionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlConstraint *postCondition() const;
+    void setPostCondition(QUmlConstraint *postCondition);
+    QUmlConstraint *preCondition() const;
+    void setPreCondition(QUmlConstraint *preCondition);
+    QSet<QUmlOperation *> referred() const;
 };
 
 QT_END_NAMESPACE

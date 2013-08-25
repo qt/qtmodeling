@@ -41,10 +41,9 @@
 #ifndef QUMLOBJECTFLOW_P_H
 #define QUMLOBJECTFLOW_P_H
 
-// Base class includes
-#include "private/qumlactivityedge_p.h"
-
 #include "QtUml/QUmlObjectFlow"
+
+#include "private/qumlactivityedge_p.h"
 
 QT_BEGIN_HEADER
 
@@ -52,20 +51,13 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlBehavior;
-class QUmlObjectFlow;
-
 class Q_UML_EXPORT QUmlObjectFlowPrivate : public QUmlActivityEdgePrivate
 {
-    Q_DECLARE_PUBLIC(QUmlObjectFlow)
-
 public:
-    explicit QUmlObjectFlowPrivate();
-    virtual ~QUmlObjectFlowPrivate();
+    QUmlObjectFlowPrivate();
 
-    bool isMultireceive;
     bool isMulticast;
+    bool isMultireceive;
     QUmlBehavior *selection;
     QUmlBehavior *transformation;
 };

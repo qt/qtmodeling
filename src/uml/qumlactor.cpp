@@ -41,15 +41,9 @@
 #include "qumlactor.h"
 #include "qumlactor_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlActorPrivate::QUmlActorPrivate()
-{
-}
-
-QUmlActorPrivate::~QUmlActorPrivate()
 {
 }
 
@@ -61,28 +55,12 @@ QUmlActorPrivate::~QUmlActorPrivate()
     \brief An actor specifies a role played by a user or any other system that interacts with the subject.
  */
 
-QUmlActor::QUmlActor(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlBehavioredClassifier(*new QUmlActorPrivate, wrapper, parent)
+QUmlActor::QUmlActor(bool create_d_ptr) :
+    QUmlBehavioredClassifier(false)
 {
-    setPropertyData();
-}
-
-QUmlActor::QUmlActor(QUmlActorPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlBehavioredClassifier(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlActor::~QUmlActor()
-{
-}
-
-void QUmlActor::setPropertyData()
-{
-    QUmlBehavioredClassifier::setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlActorPrivate);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlactor.cpp"
 

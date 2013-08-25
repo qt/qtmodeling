@@ -41,10 +41,9 @@
 #ifndef QUMLEXPANSIONNODE_P_H
 #define QUMLEXPANSIONNODE_P_H
 
-// Base class includes
-#include "private/qumlobjectnode_p.h"
-
 #include "QtUml/QUmlExpansionNode"
+
+#include "private/qumlobjectnode_p.h"
 
 QT_BEGIN_HEADER
 
@@ -52,20 +51,13 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlExpansionRegion;
-class QUmlExpansionNode;
-
 class Q_UML_EXPORT QUmlExpansionNodePrivate : public QUmlObjectNodePrivate
 {
-    Q_DECLARE_PUBLIC(QUmlExpansionNode)
-
 public:
-    explicit QUmlExpansionNodePrivate();
-    virtual ~QUmlExpansionNodePrivate();
+    QUmlExpansionNodePrivate();
 
-    QUmlExpansionRegion *regionAsOutput;
     QUmlExpansionRegion *regionAsInput;
+    QUmlExpansionRegion *regionAsOutput;
 };
 
 QT_END_NAMESPACE

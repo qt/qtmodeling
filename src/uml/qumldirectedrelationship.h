@@ -43,11 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlRelationship>
-
-// Qt includes
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -55,34 +51,17 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlElement;
 
 class QUmlDirectedRelationshipPrivate;
-
 class Q_UML_EXPORT QUmlDirectedRelationship : public QUmlRelationship
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QSet<QUmlElement *> sources READ sources)
-    Q_PROPERTY(QSet<QUmlElement *> targets READ targets)
-
-    Q_DISABLE_COPY(QUmlDirectedRelationship)
-    Q_DECLARE_PRIVATE(QUmlDirectedRelationship)
-
 public:
-    Q_INVOKABLE explicit QUmlDirectedRelationship(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlDirectedRelationship();
+    Q_DECL_HIDDEN QUmlDirectedRelationship(bool create_d_ptr = true);
 
-    // Association ends from QUmlDirectedRelationship
-    Q_INVOKABLE QSet<QUmlElement *> sources() const;
-    Q_INVOKABLE QSet<QUmlElement *> targets() const;
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlDirectedRelationship(QUmlDirectedRelationshipPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QSet<QUmlElement *> source() const;
+    QSet<QUmlElement *> target() const;
 };
 
 QT_END_NAMESPACE

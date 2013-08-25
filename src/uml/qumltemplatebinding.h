@@ -43,11 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlDirectedRelationship>
-
-// Qt includes
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -55,42 +51,24 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlTemplateableElement;
 class QUmlTemplateParameterSubstitution;
 class QUmlTemplateSignature;
 
 class QUmlTemplateBindingPrivate;
-
 class Q_UML_EXPORT QUmlTemplateBinding : public QUmlDirectedRelationship
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlTemplateSignature * signature READ signature WRITE setSignature)
-    Q_PROPERTY(QUmlTemplateableElement * boundElement READ boundElement WRITE setBoundElement)
-    Q_PROPERTY(QSet<QUmlTemplateParameterSubstitution *> parameterSubstitutions READ parameterSubstitutions)
-
-    Q_DISABLE_COPY(QUmlTemplateBinding)
-    Q_DECLARE_PRIVATE(QUmlTemplateBinding)
-
 public:
-    Q_INVOKABLE explicit QUmlTemplateBinding(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlTemplateBinding();
+    QUmlTemplateBinding(bool create_d_ptr = true);
 
-    // Association ends from QUmlTemplateBinding
-    Q_INVOKABLE QUmlTemplateSignature *signature() const;
-    Q_INVOKABLE void setSignature(QUmlTemplateSignature *signature);
-    Q_INVOKABLE QUmlTemplateableElement *boundElement() const;
-    Q_INVOKABLE void setBoundElement(QUmlTemplateableElement *boundElement);
-    Q_INVOKABLE QSet<QUmlTemplateParameterSubstitution *> parameterSubstitutions() const;
-    Q_INVOKABLE void addParameterSubstitution(QUmlTemplateParameterSubstitution *parameterSubstitution);
-    Q_INVOKABLE void removeParameterSubstitution(QUmlTemplateParameterSubstitution *parameterSubstitution);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlTemplateBinding(QUmlTemplateBindingPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlTemplateableElement *boundElement() const;
+    void setBoundElement(QUmlTemplateableElement *boundElement);
+    QSet<QUmlTemplateParameterSubstitution *> parameterSubstitution() const;
+    void addParameterSubstitution(QSet<QUmlTemplateParameterSubstitution *> parameterSubstitution);
+    void removeParameterSubstitution(QSet<QUmlTemplateParameterSubstitution *> parameterSubstitution);
+    QUmlTemplateSignature *signature() const;
+    void setSignature(QUmlTemplateSignature *signature);
 };
 
 QT_END_NAMESPACE

@@ -41,10 +41,9 @@
 #ifndef QUMLACCEPTCALLACTION_P_H
 #define QUMLACCEPTCALLACTION_P_H
 
-// Base class includes
-#include "private/qumlaccepteventaction_p.h"
-
 #include "QtUml/QUmlAcceptCallAction"
+
+#include "private/qumlaccepteventaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -52,17 +51,10 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlOutputPin;
-class QUmlAcceptCallAction;
-
 class Q_UML_EXPORT QUmlAcceptCallActionPrivate : public QUmlAcceptEventActionPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlAcceptCallAction)
-
 public:
-    explicit QUmlAcceptCallActionPrivate();
-    virtual ~QUmlAcceptCallActionPrivate();
+    QUmlAcceptCallActionPrivate();
 
     QUmlOutputPin *returnInformation;
 };

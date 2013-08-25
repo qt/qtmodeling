@@ -43,11 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlAction>
-
-// Qt includes
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -55,45 +51,24 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlOutputPin;
 class QUmlTrigger;
 
 class QUmlAcceptEventActionPrivate;
-
 class Q_UML_EXPORT QUmlAcceptEventAction : public QUmlAction
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(bool isUnmarshall READ isUnmarshall WRITE setUnmarshall RESET unsetUnmarshall)
-    Q_PROPERTY(QSet<QUmlTrigger *> triggers READ triggers)
-    Q_PROPERTY(QSet<QUmlOutputPin *> results READ results)
-
-    Q_DISABLE_COPY(QUmlAcceptEventAction)
-    Q_DECLARE_PRIVATE(QUmlAcceptEventAction)
-
 public:
-    Q_INVOKABLE explicit QUmlAcceptEventAction(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlAcceptEventAction();
+    QUmlAcceptEventAction(bool create_d_ptr = true);
 
-    // Attributes from QUmlAcceptEventAction
-    Q_INVOKABLE bool isUnmarshall() const;
-    Q_INVOKABLE void setUnmarshall(bool isUnmarshall);
-    Q_INVOKABLE void unsetUnmarshall();
-
-    // Association ends from QUmlAcceptEventAction
-    Q_INVOKABLE QSet<QUmlTrigger *> triggers() const;
-    Q_INVOKABLE void addTrigger(QUmlTrigger *trigger);
-    Q_INVOKABLE void removeTrigger(QUmlTrigger *trigger);
-    Q_INVOKABLE QSet<QUmlOutputPin *> results() const;
-    Q_INVOKABLE void addResult(QUmlOutputPin *result);
-    Q_INVOKABLE void removeResult(QUmlOutputPin *result);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlAcceptEventAction(QUmlAcceptEventActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    bool isUnmarshall() const;
+    void setUnmarshall(bool isUnmarshall);
+    QSet<QUmlOutputPin *> result() const;
+    void addResult(QSet<QUmlOutputPin *> result);
+    void removeResult(QSet<QUmlOutputPin *> result);
+    QSet<QUmlTrigger *> trigger() const;
+    void addTrigger(QSet<QUmlTrigger *> trigger);
+    void removeTrigger(QSet<QUmlTrigger *> trigger);
 };
 
 QT_END_NAMESPACE

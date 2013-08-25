@@ -41,14 +41,9 @@
 #ifndef QUMLACTION_P_H
 #define QUMLACTION_P_H
 
-// Base class includes
-#include "private/qumlexecutablenode_p.h"
-
 #include "QtUml/QUmlAction"
 
-// Qt includes
-#include "QtCore/QList"
-#include "QtCore/QSet"
+#include "private/qumlexecutablenode_p.h"
 
 QT_BEGIN_HEADER
 
@@ -56,31 +51,17 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlOutputPin;
-class QUmlConstraint;
-class QUmlClassifier;
-class QUmlInputPin;
-
 class Q_UML_EXPORT QUmlActionPrivate : public QUmlExecutableNodePrivate
 {
-    Q_DECLARE_PUBLIC(QUmlAction)
-
 public:
-    explicit QUmlActionPrivate();
-    virtual ~QUmlActionPrivate();
+    QUmlActionPrivate();
 
+    QUmlClassifier *context;
+    QList<QUmlInputPin *> input;
     bool isLocallyReentrant;
-    QSet<QUmlConstraint *> localPostconditions;
-    QSet<QUmlConstraint *> localPreconditions;
-    QList<QUmlInputPin *> inputs;
-    QList<QUmlOutputPin *> outputs;
-
-    // Internal functions for read-only subsetted association ends
-    void addInput(QUmlInputPin *input);
-    void removeInput(QUmlInputPin *input);
-    void addOutput(QUmlOutputPin *output);
-    void removeOutput(QUmlOutputPin *output);
+    QSet<QUmlConstraint *> localPostcondition;
+    QSet<QUmlConstraint *> localPrecondition;
+    QList<QUmlOutputPin *> output;
 };
 
 QT_END_NAMESPACE

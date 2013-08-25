@@ -43,13 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlDependency>
-
-// Qt includes
-#include <QtCore/QSet>
-
-#include <QtWrappedObjects/QWrappedObjectPointer>
 
 QT_BEGIN_HEADER
 
@@ -57,49 +51,25 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlDeploymentSpecification;
 class QUmlDeployedArtifact;
+class QUmlDeploymentSpecification;
 class QUmlDeploymentTarget;
 
 class QUmlDeploymentPrivate;
-
 class Q_UML_EXPORT QUmlDeployment : public QUmlDependency
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlDeploymentTarget * location READ location WRITE setLocation)
-    Q_PROPERTY(QSet<QUmlDeploymentSpecification *> configurations READ configurations)
-    Q_PROPERTY(QSet<QUmlDeployedArtifact *> deployedArtifacts READ deployedArtifacts)
-
-    Q_DISABLE_COPY(QUmlDeployment)
-    Q_DECLARE_PRIVATE(QUmlDeployment)
-
 public:
-    Q_INVOKABLE explicit QUmlDeployment(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlDeployment();
+    QUmlDeployment(bool create_d_ptr = true);
 
-    // Association ends from QUmlDeployment
-    Q_INVOKABLE QUmlDeploymentTarget *location() const;
-    Q_INVOKABLE void setLocation(QUmlDeploymentTarget *location);
-    Q_INVOKABLE QSet<QUmlDeploymentSpecification *> configurations() const;
-    Q_INVOKABLE void addConfiguration(QUmlDeploymentSpecification *configuration);
-    Q_INVOKABLE void removeConfiguration(QUmlDeploymentSpecification *configuration);
-    Q_INVOKABLE QSet<QUmlDeployedArtifact *> deployedArtifacts() const;
-    Q_INVOKABLE void addDeployedArtifact(QUmlDeployedArtifact *deployedArtifact);
-    Q_INVOKABLE void removeDeployedArtifact(QUmlDeployedArtifact *deployedArtifact);
-
-    // Overriden methods for subsetted properties
-    Q_INVOKABLE void addClient(QWrappedObjectPointer<QUmlDeploymentTarget> location);
-    Q_INVOKABLE void removeClient(QWrappedObjectPointer<QUmlDeploymentTarget> location);
-    Q_INVOKABLE void addSupplier(QWrappedObjectPointer<QUmlDeployedArtifact> deployedArtifact);
-    Q_INVOKABLE void removeSupplier(QWrappedObjectPointer<QUmlDeployedArtifact> deployedArtifact);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlDeployment(QUmlDeploymentPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QSet<QUmlDeploymentSpecification *> configuration() const;
+    void addConfiguration(QSet<QUmlDeploymentSpecification *> configuration);
+    void removeConfiguration(QSet<QUmlDeploymentSpecification *> configuration);
+    QSet<QUmlDeployedArtifact *> deployedArtifact() const;
+    void addDeployedArtifact(QSet<QUmlDeployedArtifact *> deployedArtifact);
+    void removeDeployedArtifact(QSet<QUmlDeployedArtifact *> deployedArtifact);
+    QUmlDeploymentTarget *location() const;
+    void setLocation(QUmlDeploymentTarget *location);
 };
 
 QT_END_NAMESPACE

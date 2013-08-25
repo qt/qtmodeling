@@ -43,17 +43,11 @@
 
 #include <QtUml/QUmlOccurrenceSpecification>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlGeneralOrderingPrivate::QUmlGeneralOrderingPrivate() :
-    before(0),
-    after(0)
-{
-}
-
-QUmlGeneralOrderingPrivate::~QUmlGeneralOrderingPrivate()
+    after(0),
+    before(0)
 {
 }
 
@@ -65,104 +59,40 @@ QUmlGeneralOrderingPrivate::~QUmlGeneralOrderingPrivate()
     \brief A general ordering represents a binary relation between two occurrence specifications, to describe that one occurrence specification must occur before the other in a valid trace. This mechanism provides the ability to define partial orders of occurrence cpecifications that may otherwise not have a specified order.
  */
 
-QUmlGeneralOrdering::QUmlGeneralOrdering(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlNamedElement(*new QUmlGeneralOrderingPrivate, wrapper, parent)
+QUmlGeneralOrdering::QUmlGeneralOrdering(bool create_d_ptr) :
+    QUmlNamedElement(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlGeneralOrderingPrivate);
 }
 
-QUmlGeneralOrdering::QUmlGeneralOrdering(QUmlGeneralOrderingPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlNamedElement(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlGeneralOrdering::~QUmlGeneralOrdering()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlGeneralOrdering
-// ---------------------------------------------------------------
-
-/*!
-    The OccurrenceSpecification referenced comes before the OccurrenceSpecification referenced by after.
- */
-QUmlOccurrenceSpecification *QUmlGeneralOrdering::before() const
-{
-    // This is a read-write association end
-
-    Q_D(const QUmlGeneralOrdering);
-    return d->before;
-}
-
-void QUmlGeneralOrdering::setBefore(QUmlOccurrenceSpecification *before)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlGeneralOrdering);
-    if (d->before != before) {
-        // Adjust opposite property
-        if (d->before)
-            d->before->removeToAfter(this);
-
-        d->before = before;
-
-        // Adjust opposite property
-        if (before)
-            before->addToAfter(this);
-    }
-}
+// Owned attributes
 
 /*!
     The OccurrenceSpecification referenced comes after the OccurrenceSpecification referenced by before.
  */
 QUmlOccurrenceSpecification *QUmlGeneralOrdering::after() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlGeneralOrdering);
-    return d->after;
+    return 0;
 }
 
 void QUmlGeneralOrdering::setAfter(QUmlOccurrenceSpecification *after)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlGeneralOrdering);
-    if (d->after != after) {
-        // Adjust opposite property
-        if (d->after)
-            d->after->removeToBefore(this);
-
-        d->after = after;
-
-        // Adjust opposite property
-        if (after)
-            after->addToBefore(this);
-    }
+    Q_UNUSED(after);
 }
 
-void QUmlGeneralOrdering::setPropertyData()
+/*!
+    The OccurrenceSpecification referenced comes before the OccurrenceSpecification referenced by after.
+ */
+QUmlOccurrenceSpecification *QUmlGeneralOrdering::before() const
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralOrdering")][QString::fromLatin1("before")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralOrdering")][QString::fromLatin1("before")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralOrdering")][QString::fromLatin1("before")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The OccurrenceSpecification referenced comes before the OccurrenceSpecification referenced by after.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralOrdering")][QString::fromLatin1("before")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralOrdering")][QString::fromLatin1("before")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralOrdering")][QString::fromLatin1("before")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlOccurrenceSpecification::toAfter");
+    return 0;
+}
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralOrdering")][QString::fromLatin1("after")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralOrdering")][QString::fromLatin1("after")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralOrdering")][QString::fromLatin1("after")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The OccurrenceSpecification referenced comes after the OccurrenceSpecification referenced by before.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralOrdering")][QString::fromLatin1("after")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralOrdering")][QString::fromLatin1("after")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralOrdering")][QString::fromLatin1("after")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlOccurrenceSpecification::toBefore");
-
-    QUmlNamedElement::setPropertyData();
+void QUmlGeneralOrdering::setBefore(QUmlOccurrenceSpecification *before)
+{
+    Q_UNUSED(before);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlgeneralordering.cpp"
 

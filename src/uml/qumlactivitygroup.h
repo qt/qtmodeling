@@ -43,11 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlNamedElement>
-
-// Qt includes
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -55,48 +51,23 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlActivityGroup;
 class QUmlActivity;
 class QUmlActivityEdge;
 class QUmlActivityNode;
 
 class QUmlActivityGroupPrivate;
-
-class Q_UML_EXPORT QUmlActivityGroup : public QUmlNamedElement
+class Q_UML_EXPORT QUmlActivityGroup : public virtual QUmlNamedElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlActivity * inActivity READ inActivity WRITE setInActivity)
-    Q_PROPERTY(QSet<QUmlActivityNode *> containedNodes READ containedNodes)
-    Q_PROPERTY(QSet<QUmlActivityGroup *> subgroups READ subgroups)
-    Q_PROPERTY(QSet<QUmlActivityEdge *> containedEdges READ containedEdges)
-    Q_PROPERTY(QUmlActivityGroup * superGroup READ superGroup)
-
-    Q_DISABLE_COPY(QUmlActivityGroup)
-    Q_DECLARE_PRIVATE(QUmlActivityGroup)
-
 public:
-    Q_INVOKABLE explicit QUmlActivityGroup(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlActivityGroup();
+    Q_DECL_HIDDEN QUmlActivityGroup(bool create_d_ptr = true);
 
-    // Association ends from QUmlActivityGroup
-    Q_INVOKABLE QUmlActivity *inActivity() const;
-    Q_INVOKABLE void setInActivity(QUmlActivity *inActivity);
-    Q_INVOKABLE QSet<QUmlActivityNode *> containedNodes() const;
-    Q_INVOKABLE QSet<QUmlActivityGroup *> subgroups() const;
-    Q_INVOKABLE QSet<QUmlActivityEdge *> containedEdges() const;
-    Q_INVOKABLE QUmlActivityGroup *superGroup() const;
-
-    virtual void setPropertyData();
-
-    // Classes which access read-only opposite properties should be friend
-    friend class QUmlActivityEdgePrivate;
-    friend class QUmlActivityNodePrivate;
-
-protected:
-    explicit QUmlActivityGroup(QUmlActivityGroupPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QSet<QUmlActivityEdge *> containedEdge() const;
+    QSet<QUmlActivityNode *> containedNode() const;
+    QUmlActivity *inActivity() const;
+    void setInActivity(QUmlActivity *inActivity);
+    QSet<QUmlActivityGroup *> subgroup() const;
+    QUmlActivityGroup *superGroup() const;
 };
 
 QT_END_NAMESPACE

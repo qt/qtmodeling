@@ -41,10 +41,9 @@
 #ifndef QUMLSENDOBJECTACTION_P_H
 #define QUMLSENDOBJECTACTION_P_H
 
-// Base class includes
-#include "private/qumlinvocationaction_p.h"
-
 #include "QtUml/QUmlSendObjectAction"
+
+#include "private/qumlinvocationaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -52,17 +51,10 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlInputPin;
-class QUmlSendObjectAction;
-
 class Q_UML_EXPORT QUmlSendObjectActionPrivate : public QUmlInvocationActionPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlSendObjectAction)
-
 public:
-    explicit QUmlSendObjectActionPrivate();
-    virtual ~QUmlSendObjectActionPrivate();
+    QUmlSendObjectActionPrivate();
 
     QUmlInputPin *request;
     QUmlInputPin *target;

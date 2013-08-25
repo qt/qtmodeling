@@ -43,16 +43,10 @@
 
 #include <QtUml/QUmlDeployment>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlDeploymentSpecificationPrivate::QUmlDeploymentSpecificationPrivate() :
     deployment(0)
-{
-}
-
-QUmlDeploymentSpecificationPrivate::~QUmlDeploymentSpecificationPrivate()
 {
 }
 
@@ -64,45 +58,39 @@ QUmlDeploymentSpecificationPrivate::~QUmlDeploymentSpecificationPrivate()
     \brief A deployment specification specifies a set of properties that determine execution parameters of a component artifact that is deployed on a node. A deployment specification can be aimed at a specific type of container. An artifact that reifies or implements deployment specification properties is a deployment descriptor.
  */
 
-QUmlDeploymentSpecification::QUmlDeploymentSpecification(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlArtifact(*new QUmlDeploymentSpecificationPrivate, wrapper, parent)
+QUmlDeploymentSpecification::QUmlDeploymentSpecification(bool create_d_ptr) :
+    QUmlArtifact(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlDeploymentSpecificationPrivate);
 }
 
-QUmlDeploymentSpecification::QUmlDeploymentSpecification(QUmlDeploymentSpecificationPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlArtifact(dd, wrapper, parent)
+// Owned attributes
+
+/*!
+    The deployment with which the DeploymentSpecification is associated.
+ */
+QUmlDeployment *QUmlDeploymentSpecification::deployment() const
 {
-    setPropertyData();
+    return 0;
 }
 
-QUmlDeploymentSpecification::~QUmlDeploymentSpecification()
+void QUmlDeploymentSpecification::setDeployment(QUmlDeployment *deployment)
 {
+    Q_UNUSED(deployment);
 }
-
-// ---------------------------------------------------------------
-// ATTRIBUTES FROM QUmlDeploymentSpecification
-// ---------------------------------------------------------------
 
 /*!
     The location where an Artifact is deployed onto a Node. This is typically a 'directory' or 'memory address'.
  */
 QString QUmlDeploymentSpecification::deploymentLocation() const
 {
-    // This is a read-write attribute
-
-    Q_D(const QUmlDeploymentSpecification);
-    return d->deploymentLocation;
+    return QString();
 }
 
 void QUmlDeploymentSpecification::setDeploymentLocation(QString deploymentLocation)
 {
-    // This is a read-write attribute
-
-    Q_D(QUmlDeploymentSpecification);
-    if (d->deploymentLocation != deploymentLocation) {
-        d->deploymentLocation = deploymentLocation;
-    }
+    Q_UNUSED(deploymentLocation);
 }
 
 /*!
@@ -110,85 +98,13 @@ void QUmlDeploymentSpecification::setDeploymentLocation(QString deploymentLocati
  */
 QString QUmlDeploymentSpecification::executionLocation() const
 {
-    // This is a read-write attribute
-
-    Q_D(const QUmlDeploymentSpecification);
-    return d->executionLocation;
+    return QString();
 }
 
 void QUmlDeploymentSpecification::setExecutionLocation(QString executionLocation)
 {
-    // This is a read-write attribute
-
-    Q_D(QUmlDeploymentSpecification);
-    if (d->executionLocation != executionLocation) {
-        d->executionLocation = executionLocation;
-    }
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlDeploymentSpecification
-// ---------------------------------------------------------------
-
-/*!
-    The deployment with which the DeploymentSpecification is associated.
- */
-QUmlDeployment *QUmlDeploymentSpecification::deployment() const
-{
-    // This is a read-write association end
-
-    Q_D(const QUmlDeploymentSpecification);
-    return d->deployment;
-}
-
-void QUmlDeploymentSpecification::setDeployment(QUmlDeployment *deployment)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlDeploymentSpecification);
-    if (d->deployment != deployment) {
-        // Adjust opposite property
-        if (d->deployment)
-            d->deployment->removeConfiguration(this);
-
-        d->deployment = deployment;
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->setOwner(qwrappedobject_cast<QUmlElement *>(deployment));
-
-        // Adjust opposite property
-        if (deployment)
-            deployment->addConfiguration(this);
-    }
-}
-
-void QUmlDeploymentSpecification::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDeploymentSpecification")][QString::fromLatin1("deploymentLocation")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDeploymentSpecification")][QString::fromLatin1("deploymentLocation")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDeploymentSpecification")][QString::fromLatin1("deploymentLocation")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The location where an Artifact is deployed onto a Node. This is typically a 'directory' or 'memory address'.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDeploymentSpecification")][QString::fromLatin1("deploymentLocation")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDeploymentSpecification")][QString::fromLatin1("deploymentLocation")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDeploymentSpecification")][QString::fromLatin1("deploymentLocation")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDeploymentSpecification")][QString::fromLatin1("executionLocation")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDeploymentSpecification")][QString::fromLatin1("executionLocation")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDeploymentSpecification")][QString::fromLatin1("executionLocation")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The location where a component Artifact executes. This may be a local or remote location.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDeploymentSpecification")][QString::fromLatin1("executionLocation")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDeploymentSpecification")][QString::fromLatin1("executionLocation")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDeploymentSpecification")][QString::fromLatin1("executionLocation")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDeploymentSpecification")][QString::fromLatin1("deployment")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDeploymentSpecification")][QString::fromLatin1("deployment")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDeploymentSpecification")][QString::fromLatin1("deployment")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The deployment with which the DeploymentSpecification is associated.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDeploymentSpecification")][QString::fromLatin1("deployment")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDeploymentSpecification")][QString::fromLatin1("deployment")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::owner");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDeploymentSpecification")][QString::fromLatin1("deployment")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlDeployment::configuration");
-
-    QUmlArtifact::setPropertyData();
+    Q_UNUSED(executionLocation);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumldeploymentspecification.cpp"
 

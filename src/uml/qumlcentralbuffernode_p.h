@@ -41,25 +41,20 @@
 #ifndef QUMLCENTRALBUFFERNODE_P_H
 #define QUMLCENTRALBUFFERNODE_P_H
 
-// Base class includes
-#include "private/qumlobjectnode_p.h"
-
 #include "QtUml/QUmlCentralBufferNode"
+
+#include "private/qumlobjectnode_p.h"
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-class QUmlCentralBufferNode;
 
 class Q_UML_EXPORT QUmlCentralBufferNodePrivate : public QUmlObjectNodePrivate
 {
-    Q_DECLARE_PUBLIC(QUmlCentralBufferNode)
-
 public:
-    explicit QUmlCentralBufferNodePrivate();
-    virtual ~QUmlCentralBufferNodePrivate();
+    QUmlCentralBufferNodePrivate();
 
 };
 

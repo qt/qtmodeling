@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlAssociation>
 
 QT_BEGIN_HEADER
@@ -51,25 +50,11 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-
 class QUmlCommunicationPathPrivate;
-
 class Q_UML_EXPORT QUmlCommunicationPath : public QUmlAssociation
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_DISABLE_COPY(QUmlCommunicationPath)
-    Q_DECLARE_PRIVATE(QUmlCommunicationPath)
-
 public:
-    Q_INVOKABLE explicit QUmlCommunicationPath(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlCommunicationPath();
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlCommunicationPath(QUmlCommunicationPathPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    QUmlCommunicationPath(bool create_d_ptr = true);
 };
 
 QT_END_NAMESPACE

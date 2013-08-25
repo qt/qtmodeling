@@ -41,25 +41,20 @@
 #ifndef QUMLACTIVITYFINALNODE_P_H
 #define QUMLACTIVITYFINALNODE_P_H
 
-// Base class includes
-#include "private/qumlfinalnode_p.h"
-
 #include "QtUml/QUmlActivityFinalNode"
+
+#include "private/qumlfinalnode_p.h"
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-class QUmlActivityFinalNode;
 
 class Q_UML_EXPORT QUmlActivityFinalNodePrivate : public QUmlFinalNodePrivate
 {
-    Q_DECLARE_PUBLIC(QUmlActivityFinalNode)
-
 public:
-    explicit QUmlActivityFinalNodePrivate();
-    virtual ~QUmlActivityFinalNodePrivate();
+    QUmlActivityFinalNodePrivate();
 
 };
 

@@ -43,16 +43,10 @@
 
 #include <QtUml/QUmlType>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlTypedElementPrivate::QUmlTypedElementPrivate() :
     type(0)
-{
-}
-
-QUmlTypedElementPrivate::~QUmlTypedElementPrivate()
 {
 }
 
@@ -64,60 +58,27 @@ QUmlTypedElementPrivate::~QUmlTypedElementPrivate()
     \brief A typed element is a kind of named element that represents an element with a type.A typed element has a type.
  */
 
-QUmlTypedElement::QUmlTypedElement(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlNamedElement(*new QUmlTypedElementPrivate, wrapper, parent)
+QUmlTypedElement::QUmlTypedElement(bool create_d_ptr) :
+    QUmlNamedElement(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlTypedElementPrivate);
 }
 
-QUmlTypedElement::QUmlTypedElement(QUmlTypedElementPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlNamedElement(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlTypedElement::~QUmlTypedElement()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlTypedElement
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     This information is derived from the return result for this Operation.The type of the TypedElement.
  */
 QUmlType *QUmlTypedElement::type() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlTypedElement);
-    return d->type;
+    return 0;
 }
 
 void QUmlTypedElement::setType(QUmlType *type)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlTypedElement);
-    if (d->type != type) {
-        d->type = type;
-    }
-}
-
-void QUmlTypedElement::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTypedElement")][QString::fromLatin1("type")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTypedElement")][QString::fromLatin1("type")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTypedElement")][QString::fromLatin1("type")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("This information is derived from the return result for this Operation.The type of the TypedElement.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTypedElement")][QString::fromLatin1("type")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTypedElement")][QString::fromLatin1("type")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTypedElement")][QString::fromLatin1("type")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlNamedElement::setPropertyData();
+    Q_UNUSED(type);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumltypedelement.cpp"
 

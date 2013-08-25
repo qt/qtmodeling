@@ -41,15 +41,9 @@
 #include "qumlcontrolflow.h"
 #include "qumlcontrolflow_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlControlFlowPrivate::QUmlControlFlowPrivate()
-{
-}
-
-QUmlControlFlowPrivate::~QUmlControlFlowPrivate()
 {
 }
 
@@ -61,28 +55,12 @@ QUmlControlFlowPrivate::~QUmlControlFlowPrivate()
     \brief A control flow is an edge that starts an activity node after the previous one is finished.
  */
 
-QUmlControlFlow::QUmlControlFlow(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlActivityEdge(*new QUmlControlFlowPrivate, wrapper, parent)
+QUmlControlFlow::QUmlControlFlow(bool create_d_ptr) :
+    QUmlActivityEdge(false)
 {
-    setPropertyData();
-}
-
-QUmlControlFlow::QUmlControlFlow(QUmlControlFlowPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlActivityEdge(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlControlFlow::~QUmlControlFlow()
-{
-}
-
-void QUmlControlFlow::setPropertyData()
-{
-    QUmlActivityEdge::setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlControlFlowPrivate);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlcontrolflow.cpp"
 

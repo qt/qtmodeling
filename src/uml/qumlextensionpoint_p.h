@@ -41,10 +41,9 @@
 #ifndef QUMLEXTENSIONPOINT_P_H
 #define QUMLEXTENSIONPOINT_P_H
 
-// Base class includes
-#include "private/qumlredefinableelement_p.h"
-
 #include "QtUml/QUmlExtensionPoint"
+
+#include "private/qumlredefinableelement_p.h"
 
 QT_BEGIN_HEADER
 
@@ -52,17 +51,10 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlUseCase;
-class QUmlExtensionPoint;
-
 class Q_UML_EXPORT QUmlExtensionPointPrivate : public QUmlRedefinableElementPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlExtensionPoint)
-
 public:
-    explicit QUmlExtensionPointPrivate();
-    virtual ~QUmlExtensionPointPrivate();
+    QUmlExtensionPointPrivate();
 
     QUmlUseCase *useCase;
 };

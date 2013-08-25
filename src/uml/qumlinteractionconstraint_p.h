@@ -41,10 +41,9 @@
 #ifndef QUMLINTERACTIONCONSTRAINT_P_H
 #define QUMLINTERACTIONCONSTRAINT_P_H
 
-// Base class includes
-#include "private/qumlconstraint_p.h"
-
 #include "QtUml/QUmlInteractionConstraint"
+
+#include "private/qumlconstraint_p.h"
 
 QT_BEGIN_HEADER
 
@@ -52,17 +51,10 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlValueSpecification;
-class QUmlInteractionConstraint;
-
 class Q_UML_EXPORT QUmlInteractionConstraintPrivate : public QUmlConstraintPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlInteractionConstraint)
-
 public:
-    explicit QUmlInteractionConstraintPrivate();
-    virtual ~QUmlInteractionConstraintPrivate();
+    QUmlInteractionConstraintPrivate();
 
     QUmlValueSpecification *maxint;
     QUmlValueSpecification *minint;

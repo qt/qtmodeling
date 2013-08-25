@@ -41,14 +41,9 @@
 #ifndef QUMLINTERFACE_P_H
 #define QUMLINTERFACE_P_H
 
-// Base class includes
-#include "private/qumlclassifier_p.h"
-
 #include "QtUml/QUmlInterface"
 
-// Qt includes
-#include "QtCore/QList"
-#include "QtCore/QSet"
+#include "private/qumlclassifier_p.h"
 
 QT_BEGIN_HEADER
 
@@ -56,28 +51,17 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlProtocolStateMachine;
-class QUmlInterface;
-class QUmlReception;
-class QUmlProperty;
-class QUmlOperation;
-class QUmlInterface;
-
 class Q_UML_EXPORT QUmlInterfacePrivate : public QUmlClassifierPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlInterface)
-
 public:
-    explicit QUmlInterfacePrivate();
-    virtual ~QUmlInterfacePrivate();
+    QUmlInterfacePrivate();
 
+    QList<QUmlClassifier *> nestedClassifier;
+    QList<QUmlProperty *> ownedAttribute;
+    QList<QUmlOperation *> ownedOperation;
+    QSet<QUmlReception *> ownedReception;
     QUmlProtocolStateMachine *protocol;
-    QSet<QUmlInterface *> redefinedInterfaces;
-    QSet<QUmlReception *> ownedReceptions;
-    QList<QUmlOperation *> ownedOperations;
-    QList<QUmlClassifier *> nestedClassifiers;
-    QList<QUmlProperty *> ownedAttributes;
+    QSet<QUmlInterface *> redefinedInterface;
 };
 
 QT_END_NAMESPACE

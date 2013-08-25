@@ -41,13 +41,9 @@
 #ifndef QUMLSTATEMACHINE_P_H
 #define QUMLSTATEMACHINE_P_H
 
-// Base class includes
-#include "private/qumlbehavior_p.h"
-
 #include "QtUml/QUmlStateMachine"
 
-// Qt includes
-#include "QtCore/QSet"
+#include "private/qumlbehavior_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,27 +51,15 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlNamespace;
-class QUmlRedefinableElement;
-class QUmlState;
-class QUmlStateMachine;
-class QUmlPseudostate;
-class QUmlRegion;
-class QUmlStateMachine;
-
 class Q_UML_EXPORT QUmlStateMachinePrivate : public QUmlBehaviorPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlStateMachine)
-
 public:
-    explicit QUmlStateMachinePrivate();
-    virtual ~QUmlStateMachinePrivate();
+    QUmlStateMachinePrivate();
 
-    QSet<QUmlStateMachine *> extendedStateMachines;
-    QSet<QUmlPseudostate *> connectionPoints;
-    QSet<QUmlState *> submachineStates;
-    QSet<QUmlRegion *> regions;
+    QSet<QUmlPseudostate *> connectionPoint;
+    QSet<QUmlStateMachine *> extendedStateMachine;
+    QSet<QUmlRegion *> region;
+    QSet<QUmlState *> submachineState;
 };
 
 QT_END_NAMESPACE

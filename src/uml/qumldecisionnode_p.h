@@ -41,10 +41,9 @@
 #ifndef QUMLDECISIONNODE_P_H
 #define QUMLDECISIONNODE_P_H
 
-// Base class includes
-#include "private/qumlcontrolnode_p.h"
-
 #include "QtUml/QUmlDecisionNode"
+
+#include "private/qumlcontrolnode_p.h"
 
 QT_BEGIN_HEADER
 
@@ -52,21 +51,13 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlBehavior;
-class QUmlObjectFlow;
-class QUmlDecisionNode;
-
 class Q_UML_EXPORT QUmlDecisionNodePrivate : public QUmlControlNodePrivate
 {
-    Q_DECLARE_PUBLIC(QUmlDecisionNode)
-
 public:
-    explicit QUmlDecisionNodePrivate();
-    virtual ~QUmlDecisionNodePrivate();
+    QUmlDecisionNodePrivate();
 
-    QUmlObjectFlow *decisionInputFlow;
     QUmlBehavior *decisionInput;
+    QUmlObjectFlow *decisionInputFlow;
 };
 
 QT_END_NAMESPACE

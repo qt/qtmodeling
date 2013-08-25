@@ -41,10 +41,9 @@
 #ifndef QUMLOPERATIONTEMPLATEPARAMETER_P_H
 #define QUMLOPERATIONTEMPLATEPARAMETER_P_H
 
-// Base class includes
-#include "private/qumltemplateparameter_p.h"
-
 #include "QtUml/QUmlOperationTemplateParameter"
+
+#include "private/qumltemplateparameter_p.h"
 
 QT_BEGIN_HEADER
 
@@ -52,17 +51,10 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlOperation;
-class QUmlOperationTemplateParameter;
-
 class Q_UML_EXPORT QUmlOperationTemplateParameterPrivate : public QUmlTemplateParameterPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlOperationTemplateParameter)
-
 public:
-    explicit QUmlOperationTemplateParameterPrivate();
-    virtual ~QUmlOperationTemplateParameterPrivate();
+    QUmlOperationTemplateParameterPrivate();
 
     QUmlOperation *parameteredElement;
 };

@@ -41,10 +41,9 @@
 #ifndef QUMLREMOVESTRUCTURALFEATUREVALUEACTION_P_H
 #define QUMLREMOVESTRUCTURALFEATUREVALUEACTION_P_H
 
-// Base class includes
-#include "private/qumlwritestructuralfeatureaction_p.h"
-
 #include "QtUml/QUmlRemoveStructuralFeatureValueAction"
+
+#include "private/qumlwritestructuralfeatureaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -52,17 +51,10 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlInputPin;
-class QUmlRemoveStructuralFeatureValueAction;
-
 class Q_UML_EXPORT QUmlRemoveStructuralFeatureValueActionPrivate : public QUmlWriteStructuralFeatureActionPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlRemoveStructuralFeatureValueAction)
-
 public:
-    explicit QUmlRemoveStructuralFeatureValueActionPrivate();
-    virtual ~QUmlRemoveStructuralFeatureValueActionPrivate();
+    QUmlRemoveStructuralFeatureValueActionPrivate();
 
     bool isRemoveDuplicates;
     QUmlInputPin *removeAt;

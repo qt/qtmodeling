@@ -43,16 +43,10 @@
 
 #include <QtUml/QUmlObservation>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlTimeExpressionPrivate::QUmlTimeExpressionPrivate() :
     expr(0)
-{
-}
-
-QUmlTimeExpressionPrivate::~QUmlTimeExpressionPrivate()
 {
 }
 
@@ -64,106 +58,45 @@ QUmlTimeExpressionPrivate::~QUmlTimeExpressionPrivate()
     \brief A time expression defines a value specification that represents a time value.
  */
 
-QUmlTimeExpression::QUmlTimeExpression(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlValueSpecification(*new QUmlTimeExpressionPrivate, wrapper, parent)
+QUmlTimeExpression::QUmlTimeExpression(bool create_d_ptr) :
+    QUmlValueSpecification(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlTimeExpressionPrivate);
 }
 
-QUmlTimeExpression::QUmlTimeExpression(QUmlTimeExpressionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlValueSpecification(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlTimeExpression::~QUmlTimeExpression()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlTimeExpression
-// ---------------------------------------------------------------
-
-/*!
-    Refers to the time and duration observations that are involved in expr.
- */
-QSet<QUmlObservation *> QUmlTimeExpression::observations() const
-{
-    // This is a read-write association end
-
-    Q_D(const QUmlTimeExpression);
-    return d->observations;
-}
-
-void QUmlTimeExpression::addObservation(QUmlObservation *observation)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlTimeExpression);
-    if (!d->observations.contains(observation)) {
-        d->observations.insert(observation);
-    }
-}
-
-void QUmlTimeExpression::removeObservation(QUmlObservation *observation)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlTimeExpression);
-    if (d->observations.contains(observation)) {
-        d->observations.remove(observation);
-    }
-}
+// Owned attributes
 
 /*!
     The value of the time expression.
  */
 QUmlValueSpecification *QUmlTimeExpression::expr() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlTimeExpression);
-    return d->expr;
+    return 0;
 }
 
 void QUmlTimeExpression::setExpr(QUmlValueSpecification *expr)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlTimeExpression);
-    if (d->expr != expr) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QUmlElement *>(d->expr));
-
-        d->expr = expr;
-
-        // Adjust subsetted property(ies)
-        if (expr) {
-            (qwrappedobject_cast<QUmlElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QUmlElement *>(expr));
-        }
-    }
+    Q_UNUSED(expr);
 }
 
-void QUmlTimeExpression::setPropertyData()
+/*!
+    Refers to the time and duration observations that are involved in expr.
+ */
+QSet<QUmlObservation *> QUmlTimeExpression::observation() const
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTimeExpression")][QString::fromLatin1("observations")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTimeExpression")][QString::fromLatin1("observations")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTimeExpression")][QString::fromLatin1("observations")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Refers to the time and duration observations that are involved in expr.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTimeExpression")][QString::fromLatin1("observations")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTimeExpression")][QString::fromLatin1("observations")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTimeExpression")][QString::fromLatin1("observations")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
+    return QSet<QUmlObservation *>();
+}
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTimeExpression")][QString::fromLatin1("expr")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTimeExpression")][QString::fromLatin1("expr")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTimeExpression")][QString::fromLatin1("expr")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The value of the time expression.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTimeExpression")][QString::fromLatin1("expr")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTimeExpression")][QString::fromLatin1("expr")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTimeExpression")][QString::fromLatin1("expr")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
+void QUmlTimeExpression::addObservation(QSet<QUmlObservation *> observation)
+{
+    Q_UNUSED(observation);
+}
 
-    QUmlValueSpecification::setPropertyData();
+void QUmlTimeExpression::removeObservation(QSet<QUmlObservation *> observation)
+{
+    Q_UNUSED(observation);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumltimeexpression.cpp"
 

@@ -41,27 +41,21 @@
 #ifndef QUMLASSOCIATIONCLASS_P_H
 #define QUMLASSOCIATIONCLASS_P_H
 
-// Base class includes
-#include "private/qwrappedobject_p.h"
+#include "QtUml/QUmlAssociationClass"
+
 #include "private/qumlclass_p.h"
 #include "private/qumlassociation_p.h"
-
-#include "QtUml/QUmlAssociationClass"
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-class QUmlAssociationClass;
 
-class Q_UML_EXPORT QUmlAssociationClassPrivate : public QWrappedObjectPrivate
+class Q_UML_EXPORT QUmlAssociationClassPrivate : public QUmlClassPrivate, public QUmlAssociationPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlAssociationClass)
-
 public:
-    explicit QUmlAssociationClassPrivate();
-    virtual ~QUmlAssociationClassPrivate();
+    QUmlAssociationClassPrivate();
 
 };
 

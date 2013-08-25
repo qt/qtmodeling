@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlTemplateParameter>
 
 QT_BEGIN_HEADER
@@ -52,33 +51,17 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlConnectableElement;
 
 class QUmlConnectableElementTemplateParameterPrivate;
-
 class Q_UML_EXPORT QUmlConnectableElementTemplateParameter : public QUmlTemplateParameter
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlConnectableElement * parameteredElement READ parameteredElement WRITE setParameteredElement)
-
-    Q_DISABLE_COPY(QUmlConnectableElementTemplateParameter)
-    Q_DECLARE_PRIVATE(QUmlConnectableElementTemplateParameter)
-
 public:
-    Q_INVOKABLE explicit QUmlConnectableElementTemplateParameter(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlConnectableElementTemplateParameter();
+    QUmlConnectableElementTemplateParameter(bool create_d_ptr = true);
 
-    // Association ends from QUmlConnectableElementTemplateParameter
-    Q_INVOKABLE QUmlConnectableElement *parameteredElement() const;
-    Q_INVOKABLE void setParameteredElement(QUmlConnectableElement *parameteredElement);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlConnectableElementTemplateParameter(QUmlConnectableElementTemplateParameterPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlConnectableElement *parameteredElement() const;
+    void setParameteredElement(QUmlConnectableElement *parameteredElement);
 };
 
 QT_END_NAMESPACE

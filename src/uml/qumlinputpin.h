@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlPin>
 
 QT_BEGIN_HEADER
@@ -51,25 +50,11 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-
 class QUmlInputPinPrivate;
-
 class Q_UML_EXPORT QUmlInputPin : public QUmlPin
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_DISABLE_COPY(QUmlInputPin)
-    Q_DECLARE_PRIVATE(QUmlInputPin)
-
 public:
-    Q_INVOKABLE explicit QUmlInputPin(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlInputPin();
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlInputPin(QUmlInputPinPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    QUmlInputPin(bool create_d_ptr = true);
 };
 
 QT_END_NAMESPACE

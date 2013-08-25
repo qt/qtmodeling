@@ -43,53 +43,11 @@
 
 #include <QtUml/QUmlClassifier>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlRedefinableElementPrivate::QUmlRedefinableElementPrivate() :
     isLeaf(false)
 {
-}
-
-QUmlRedefinableElementPrivate::~QUmlRedefinableElementPrivate()
-{
-}
-
-void QUmlRedefinableElementPrivate::addRedefinedElement(QUmlRedefinableElement *redefinedElement)
-{
-    // This is a read-only derived-union association end
-
-    if (!this->redefinedElements.contains(redefinedElement)) {
-        this->redefinedElements.insert(redefinedElement);
-    }
-}
-
-void QUmlRedefinableElementPrivate::removeRedefinedElement(QUmlRedefinableElement *redefinedElement)
-{
-    // This is a read-only derived-union association end
-
-    if (this->redefinedElements.contains(redefinedElement)) {
-        this->redefinedElements.remove(redefinedElement);
-    }
-}
-
-void QUmlRedefinableElementPrivate::addRedefinitionContext(QUmlClassifier *redefinitionContext)
-{
-    // This is a read-only derived-union association end
-
-    if (!this->redefinitionContexts.contains(redefinitionContext)) {
-        this->redefinitionContexts.insert(redefinitionContext);
-    }
-}
-
-void QUmlRedefinableElementPrivate::removeRedefinitionContext(QUmlClassifier *redefinitionContext)
-{
-    // This is a read-only derived-union association end
-
-    if (this->redefinitionContexts.contains(redefinitionContext)) {
-        this->redefinitionContexts.remove(redefinitionContext);
-    }
 }
 
 /*!
@@ -100,130 +58,63 @@ void QUmlRedefinableElementPrivate::removeRedefinitionContext(QUmlClassifier *re
     \brief A redefinable element is an element that, when defined in the context of a classifier, can be redefined more specifically or differently in the context of another classifier that specializes (directly or indirectly) the context classifier.
  */
 
-QUmlRedefinableElement::QUmlRedefinableElement(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlNamedElement(*new QUmlRedefinableElementPrivate, wrapper, parent)
+QUmlRedefinableElement::QUmlRedefinableElement(bool create_d_ptr) :
+    QUmlNamedElement(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlRedefinableElementPrivate);
 }
 
-QUmlRedefinableElement::QUmlRedefinableElement(QUmlRedefinableElementPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlNamedElement(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlRedefinableElement::~QUmlRedefinableElement()
-{
-}
-
-// ---------------------------------------------------------------
-// ATTRIBUTES FROM QUmlRedefinableElement
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     Indicates whether it is possible to further redefine a RedefinableElement. If the value is true, then it is not possible to further redefine the RedefinableElement. Note that this property is preserved through package merge operations; that is, the capability to redefine a RedefinableElement (i.e., isLeaf=false) must be preserved in the resulting RedefinableElement of a package merge operation where a RedefinableElement with isLeaf=false is merged with a matching RedefinableElement with isLeaf=true: the resulting RedefinableElement will have isLeaf=false. Default value is false.
  */
 bool QUmlRedefinableElement::isLeaf() const
 {
-    // This is a read-write attribute
-
-    Q_D(const QUmlRedefinableElement);
-    return d->isLeaf;
+    return bool();
 }
 
 void QUmlRedefinableElement::setLeaf(bool isLeaf)
 {
-    // This is a read-write attribute
-
-    Q_D(QUmlRedefinableElement);
-    if (d->isLeaf != isLeaf) {
-        d->isLeaf = isLeaf;
-    }
-    d->modifiedResettableProperties << QString::fromLatin1("isLeaf");
+    Q_UNUSED(isLeaf);
 }
-
-void QUmlRedefinableElement::unsetLeaf()
-{
-    setLeaf(false);
-    Q_D(QUmlRedefinableElement);
-    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isLeaf"));
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlRedefinableElement
-// ---------------------------------------------------------------
 
 /*!
     The redefinable element that is being redefined by this element.
  */
-QSet<QUmlRedefinableElement *> QUmlRedefinableElement::redefinedElements() const
+QSet<QUmlRedefinableElement *> QUmlRedefinableElement::redefinedElement() const
 {
-    // This is a read-only derived-union association end
-
-    Q_D(const QUmlRedefinableElement);
-    return d->redefinedElements;
+    return QSet<QUmlRedefinableElement *>();
 }
 
 /*!
     References the contexts that this element may be redefined from.
  */
-QSet<QUmlClassifier *> QUmlRedefinableElement::redefinitionContexts() const
+QSet<QUmlClassifier *> QUmlRedefinableElement::redefinitionContext() const
 {
-    // This is a read-only derived-union association end
-
-    Q_D(const QUmlRedefinableElement);
-    return d->redefinitionContexts;
+    return QSet<QUmlClassifier *>();
 }
+
+// Operations
 
 /*!
     The query isConsistentWith() specifies, for any two RedefinableElements in a context in which redefinition is possible, whether redefinition would be logically consistent. By default, this is false; this operation must be overridden for subclasses of RedefinableElement to define the consistency conditions.
  */
-bool QUmlRedefinableElement::isConsistentWith(const QUmlRedefinableElement *redefinee) const
+bool QUmlRedefinableElement::isConsistentWith(QUmlRedefinableElement *redefinee) const
 {
-    qWarning("QUmlRedefinableElement::isConsistentWith: operation to be implemented");
     Q_UNUSED(redefinee);
-
-    return bool(); // change here to your derived return
+    return bool ();
 }
 
 /*!
     The query isRedefinitionContextValid() specifies whether the redefinition contexts of this RedefinableElement are properly related to the redefinition contexts of the specified RedefinableElement to allow this element to redefine the other. By default at least one of the redefinition contexts of this element must be a specialization of at least one of the redefinition contexts of the specified element.
  */
-bool QUmlRedefinableElement::isRedefinitionContextValid(const QUmlRedefinableElement *redefined) const
+bool QUmlRedefinableElement::isRedefinitionContextValid(QUmlRedefinableElement *redefined) const
 {
-    qWarning("QUmlRedefinableElement::isRedefinitionContextValid: operation to be implemented");
     Q_UNUSED(redefined);
-
-    return bool(); // change here to your derived return
-}
-
-void QUmlRedefinableElement::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRedefinableElement")][QString::fromLatin1("isLeaf")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRedefinableElement")][QString::fromLatin1("isLeaf")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRedefinableElement")][QString::fromLatin1("isLeaf")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Indicates whether it is possible to further redefine a RedefinableElement. If the value is true, then it is not possible to further redefine the RedefinableElement. Note that this property is preserved through package merge operations; that is, the capability to redefine a RedefinableElement (i.e., isLeaf=false) must be preserved in the resulting RedefinableElement of a package merge operation where a RedefinableElement with isLeaf=false is merged with a matching RedefinableElement with isLeaf=true: the resulting RedefinableElement will have isLeaf=false. Default value is false.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRedefinableElement")][QString::fromLatin1("isLeaf")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRedefinableElement")][QString::fromLatin1("isLeaf")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRedefinableElement")][QString::fromLatin1("isLeaf")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRedefinableElement")][QString::fromLatin1("redefinedElements")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRedefinableElement")][QString::fromLatin1("redefinedElements")][QtWrappedObjects::IsDerivedUnionRole] = true;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRedefinableElement")][QString::fromLatin1("redefinedElements")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The redefinable element that is being redefined by this element.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRedefinableElement")][QString::fromLatin1("redefinedElements")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRedefinableElement")][QString::fromLatin1("redefinedElements")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRedefinableElement")][QString::fromLatin1("redefinedElements")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRedefinableElement")][QString::fromLatin1("redefinitionContexts")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRedefinableElement")][QString::fromLatin1("redefinitionContexts")][QtWrappedObjects::IsDerivedUnionRole] = true;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRedefinableElement")][QString::fromLatin1("redefinitionContexts")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the contexts that this element may be redefined from.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRedefinableElement")][QString::fromLatin1("redefinitionContexts")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRedefinableElement")][QString::fromLatin1("redefinitionContexts")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRedefinableElement")][QString::fromLatin1("redefinitionContexts")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlNamedElement::setPropertyData();
+    return bool ();
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlredefinableelement.cpp"
 

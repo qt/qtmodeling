@@ -41,13 +41,9 @@
 #ifndef QUMLCONNECTIONPOINTREFERENCE_P_H
 #define QUMLCONNECTIONPOINTREFERENCE_P_H
 
-// Base class includes
-#include "private/qumlvertex_p.h"
-
 #include "QtUml/QUmlConnectionPointReference"
 
-// Qt includes
-#include "QtCore/QSet"
+#include "private/qumlvertex_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,22 +51,14 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlPseudostate;
-class QUmlState;
-class QUmlConnectionPointReference;
-
 class Q_UML_EXPORT QUmlConnectionPointReferencePrivate : public QUmlVertexPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlConnectionPointReference)
-
 public:
-    explicit QUmlConnectionPointReferencePrivate();
-    virtual ~QUmlConnectionPointReferencePrivate();
+    QUmlConnectionPointReferencePrivate();
 
-    QSet<QUmlPseudostate *> exits;
+    QSet<QUmlPseudostate *> entry;
+    QSet<QUmlPseudostate *> exit;
     QUmlState *state;
-    QSet<QUmlPseudostate *> entries;
 };
 
 QT_END_NAMESPACE

@@ -43,16 +43,10 @@
 
 #include <QtUml/QUmlSignal>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlSignalEventPrivate::QUmlSignalEventPrivate() :
     signal(0)
-{
-}
-
-QUmlSignalEventPrivate::~QUmlSignalEventPrivate()
 {
 }
 
@@ -64,60 +58,27 @@ QUmlSignalEventPrivate::~QUmlSignalEventPrivate()
     \brief A signal event represents the receipt of an asynchronous signal instance. A signal event may, for example, cause a state machine to trigger a transition.
  */
 
-QUmlSignalEvent::QUmlSignalEvent(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlMessageEvent(*new QUmlSignalEventPrivate, wrapper, parent)
+QUmlSignalEvent::QUmlSignalEvent(bool create_d_ptr) :
+    QUmlMessageEvent(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlSignalEventPrivate);
 }
 
-QUmlSignalEvent::QUmlSignalEvent(QUmlSignalEventPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlMessageEvent(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlSignalEvent::~QUmlSignalEvent()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlSignalEvent
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     The specific signal that is associated with this event.
  */
 QUmlSignal *QUmlSignalEvent::signal() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlSignalEvent);
-    return d->signal;
+    return 0;
 }
 
 void QUmlSignalEvent::setSignal(QUmlSignal *signal)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlSignalEvent);
-    if (d->signal != signal) {
-        d->signal = signal;
-    }
-}
-
-void QUmlSignalEvent::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSignalEvent")][QString::fromLatin1("signal")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSignalEvent")][QString::fromLatin1("signal")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSignalEvent")][QString::fromLatin1("signal")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The specific signal that is associated with this event.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSignalEvent")][QString::fromLatin1("signal")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSignalEvent")][QString::fromLatin1("signal")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSignalEvent")][QString::fromLatin1("signal")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlMessageEvent::setPropertyData();
+    Q_UNUSED(signal);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlsignalevent.cpp"
 

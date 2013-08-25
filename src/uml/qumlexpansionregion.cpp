@@ -43,16 +43,10 @@
 
 #include <QtUml/QUmlExpansionNode>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlExpansionRegionPrivate::QUmlExpansionRegionPrivate() :
     mode(QtUml::ExpansionIterative)
-{
-}
-
-QUmlExpansionRegionPrivate::~QUmlExpansionRegionPrivate()
 {
 }
 
@@ -64,160 +58,63 @@ QUmlExpansionRegionPrivate::~QUmlExpansionRegionPrivate()
     \brief An expansion region is a structured activity region that executes multiple times corresponding to elements of an input collection.
  */
 
-QUmlExpansionRegion::QUmlExpansionRegion(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlStructuredActivityNode(*new QUmlExpansionRegionPrivate, wrapper, parent)
+QUmlExpansionRegion::QUmlExpansionRegion(bool create_d_ptr) :
+    QUmlStructuredActivityNode(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlExpansionRegionPrivate);
 }
 
-QUmlExpansionRegion::QUmlExpansionRegion(QUmlExpansionRegionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlStructuredActivityNode(dd, wrapper, parent)
+// Owned attributes
+
+/*!
+    An object node that holds a separate element of the input collection during each of the multiple executions of the region.
+ */
+QSet<QUmlExpansionNode *> QUmlExpansionRegion::inputElement() const
 {
-    setPropertyData();
+    return QSet<QUmlExpansionNode *>();
 }
 
-QUmlExpansionRegion::~QUmlExpansionRegion()
+void QUmlExpansionRegion::addInputElement(QSet<QUmlExpansionNode *> inputElement)
 {
+    Q_UNUSED(inputElement);
 }
 
-// ---------------------------------------------------------------
-// ATTRIBUTES FROM QUmlExpansionRegion
-// ---------------------------------------------------------------
+void QUmlExpansionRegion::removeInputElement(QSet<QUmlExpansionNode *> inputElement)
+{
+    Q_UNUSED(inputElement);
+}
 
 /*!
     The way in which the executions interact: parallel: all interactions are independent iterative: the interactions occur in order of the elements stream: a stream of values flows into a single execution
  */
 QtUml::ExpansionKind QUmlExpansionRegion::mode() const
 {
-    // This is a read-write attribute
-
-    Q_D(const QUmlExpansionRegion);
-    return d->mode;
+    return QtUml::ExpansionKind();
 }
 
 void QUmlExpansionRegion::setMode(QtUml::ExpansionKind mode)
 {
-    // This is a read-write attribute
-
-    Q_D(QUmlExpansionRegion);
-    if (d->mode != mode) {
-        d->mode = mode;
-    }
-    d->modifiedResettableProperties << QString::fromLatin1("mode");
-}
-
-void QUmlExpansionRegion::unsetMode()
-{
-    setMode(QtUml::ExpansionIterative);
-    Q_D(QUmlExpansionRegion);
-    d->modifiedResettableProperties.removeAll(QString::fromLatin1("mode"));
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlExpansionRegion
-// ---------------------------------------------------------------
-
-/*!
-    An object node that holds a separate element of the input collection during each of the multiple executions of the region.
- */
-QSet<QUmlExpansionNode *> QUmlExpansionRegion::inputElements() const
-{
-    // This is a read-write association end
-
-    Q_D(const QUmlExpansionRegion);
-    return d->inputElements;
-}
-
-void QUmlExpansionRegion::addInputElement(QUmlExpansionNode *inputElement)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlExpansionRegion);
-    if (!d->inputElements.contains(inputElement)) {
-        d->inputElements.insert(inputElement);
-
-        // Adjust opposite property
-        inputElement->setRegionAsInput(this);
-    }
-}
-
-void QUmlExpansionRegion::removeInputElement(QUmlExpansionNode *inputElement)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlExpansionRegion);
-    if (d->inputElements.contains(inputElement)) {
-        d->inputElements.remove(inputElement);
-
-        // Adjust opposite property
-        inputElement->setRegionAsInput(0);
-    }
+    Q_UNUSED(mode);
 }
 
 /*!
     An object node that accepts a separate element of the output collection during each of the multiple executions of the region. The values are formed into a collection that is available when the execution of the region is complete.
  */
-QSet<QUmlExpansionNode *> QUmlExpansionRegion::outputElements() const
+QSet<QUmlExpansionNode *> QUmlExpansionRegion::outputElement() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlExpansionRegion);
-    return d->outputElements;
+    return QSet<QUmlExpansionNode *>();
 }
 
-void QUmlExpansionRegion::addOutputElement(QUmlExpansionNode *outputElement)
+void QUmlExpansionRegion::addOutputElement(QSet<QUmlExpansionNode *> outputElement)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlExpansionRegion);
-    if (!d->outputElements.contains(outputElement)) {
-        d->outputElements.insert(outputElement);
-
-        // Adjust opposite property
-        outputElement->setRegionAsOutput(this);
-    }
+    Q_UNUSED(outputElement);
 }
 
-void QUmlExpansionRegion::removeOutputElement(QUmlExpansionNode *outputElement)
+void QUmlExpansionRegion::removeOutputElement(QSet<QUmlExpansionNode *> outputElement)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlExpansionRegion);
-    if (d->outputElements.contains(outputElement)) {
-        d->outputElements.remove(outputElement);
-
-        // Adjust opposite property
-        outputElement->setRegionAsOutput(0);
-    }
-}
-
-void QUmlExpansionRegion::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpansionRegion")][QString::fromLatin1("mode")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpansionRegion")][QString::fromLatin1("mode")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpansionRegion")][QString::fromLatin1("mode")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The way in which the executions interact: parallel: all interactions are independent iterative: the interactions occur in order of the elements stream: a stream of values flows into a single execution");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpansionRegion")][QString::fromLatin1("mode")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpansionRegion")][QString::fromLatin1("mode")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpansionRegion")][QString::fromLatin1("mode")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpansionRegion")][QString::fromLatin1("inputElements")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpansionRegion")][QString::fromLatin1("inputElements")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpansionRegion")][QString::fromLatin1("inputElements")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An object node that holds a separate element of the input collection during each of the multiple executions of the region.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpansionRegion")][QString::fromLatin1("inputElements")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpansionRegion")][QString::fromLatin1("inputElements")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpansionRegion")][QString::fromLatin1("inputElements")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlExpansionNode::regionAsInput");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpansionRegion")][QString::fromLatin1("outputElements")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpansionRegion")][QString::fromLatin1("outputElements")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpansionRegion")][QString::fromLatin1("outputElements")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An object node that accepts a separate element of the output collection during each of the multiple executions of the region. The values are formed into a collection that is available when the execution of the region is complete.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpansionRegion")][QString::fromLatin1("outputElements")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpansionRegion")][QString::fromLatin1("outputElements")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpansionRegion")][QString::fromLatin1("outputElements")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlExpansionNode::regionAsOutput");
-
-    QUmlStructuredActivityNode::setPropertyData();
+    Q_UNUSED(outputElement);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlexpansionregion.cpp"
 

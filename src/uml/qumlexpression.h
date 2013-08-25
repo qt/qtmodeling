@@ -43,49 +43,25 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlValueSpecification>
-
-// Qt includes
-#include <QtCore/QString>
-#include <QtCore/QList>
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-
 class QUmlExpressionPrivate;
-
 class Q_UML_EXPORT QUmlExpression : public QUmlValueSpecification
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QString symbol READ symbol WRITE setSymbol)
-    Q_PROPERTY(QList<QUmlValueSpecification *> operands READ operands)
-
-    Q_DISABLE_COPY(QUmlExpression)
-    Q_DECLARE_PRIVATE(QUmlExpression)
-
 public:
-    Q_INVOKABLE explicit QUmlExpression(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlExpression();
+    QUmlExpression(bool create_d_ptr = true);
 
-    // Attributes from QUmlExpression
-    Q_INVOKABLE QString symbol() const;
-    Q_INVOKABLE void setSymbol(QString symbol);
-
-    // Association ends from QUmlExpression
-    Q_INVOKABLE QList<QUmlValueSpecification *> operands() const;
-    Q_INVOKABLE void addOperand(QUmlValueSpecification *operand);
-    Q_INVOKABLE void removeOperand(QUmlValueSpecification *operand);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlExpression(QUmlExpressionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QList<QUmlValueSpecification *> operand() const;
+    void addOperand(QList<QUmlValueSpecification *> operand);
+    void removeOperand(QList<QUmlValueSpecification *> operand);
+    QString symbol() const;
+    void setSymbol(QString symbol);
 };
 
 QT_END_NAMESPACE

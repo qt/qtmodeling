@@ -41,25 +41,20 @@
 #ifndef QUMLCOMMUNICATIONPATH_P_H
 #define QUMLCOMMUNICATIONPATH_P_H
 
-// Base class includes
-#include "private/qumlassociation_p.h"
-
 #include "QtUml/QUmlCommunicationPath"
+
+#include "private/qumlassociation_p.h"
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-class QUmlCommunicationPath;
 
 class Q_UML_EXPORT QUmlCommunicationPathPrivate : public QUmlAssociationPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlCommunicationPath)
-
 public:
-    explicit QUmlCommunicationPathPrivate();
-    virtual ~QUmlCommunicationPathPrivate();
+    QUmlCommunicationPathPrivate();
 
 };
 

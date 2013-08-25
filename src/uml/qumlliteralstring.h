@@ -43,46 +43,26 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlLiteralSpecification>
-
-// Qt includes
-#include <QtCore/QString>
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-
 class QUmlLiteralStringPrivate;
-
 class Q_UML_EXPORT QUmlLiteralString : public QUmlLiteralSpecification
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QString value READ value WRITE setValue)
-
-    Q_DISABLE_COPY(QUmlLiteralString)
-    Q_DECLARE_PRIVATE(QUmlLiteralString)
-
 public:
-    Q_INVOKABLE explicit QUmlLiteralString(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlLiteralString();
+    QUmlLiteralString(bool create_d_ptr = true);
 
-    // Attributes from QUmlLiteralString
-    Q_INVOKABLE QString value() const;
-    Q_INVOKABLE void setValue(QString value);
+    // Owned attributes
+    QString value() const;
+    void setValue(QString value);
 
     // Operations
-    Q_INVOKABLE bool isComputable() const;
-    Q_INVOKABLE QString stringValue() const;
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlLiteralString(QUmlLiteralStringPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    bool isComputable() const;
+    QString stringValue() const;
 };
 
 QT_END_NAMESPACE

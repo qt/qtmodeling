@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlInteractionFragment>
 
 QT_BEGIN_HEADER
@@ -51,32 +50,15 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-
 class QUmlContinuationPrivate;
-
 class Q_UML_EXPORT QUmlContinuation : public QUmlInteractionFragment
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(bool setting READ setting WRITE setSetting RESET unsetSetting)
-
-    Q_DISABLE_COPY(QUmlContinuation)
-    Q_DECLARE_PRIVATE(QUmlContinuation)
-
 public:
-    Q_INVOKABLE explicit QUmlContinuation(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlContinuation();
+    QUmlContinuation(bool create_d_ptr = true);
 
-    // Attributes from QUmlContinuation
-    Q_INVOKABLE bool setting() const;
-    Q_INVOKABLE void setSetting(bool setting);
-    Q_INVOKABLE void unsetSetting();
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlContinuation(QUmlContinuationPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    bool setting() const;
+    void setSetting(bool setting);
 };
 
 QT_END_NAMESPACE

@@ -41,15 +41,9 @@
 #include "qumlinitialnode.h"
 #include "qumlinitialnode_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlInitialNodePrivate::QUmlInitialNodePrivate()
-{
-}
-
-QUmlInitialNodePrivate::~QUmlInitialNodePrivate()
 {
 }
 
@@ -61,28 +55,12 @@ QUmlInitialNodePrivate::~QUmlInitialNodePrivate()
     \brief An initial node is a control node at which flow starts when the activity is invoked.
  */
 
-QUmlInitialNode::QUmlInitialNode(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlControlNode(*new QUmlInitialNodePrivate, wrapper, parent)
+QUmlInitialNode::QUmlInitialNode(bool create_d_ptr) :
+    QUmlControlNode(false)
 {
-    setPropertyData();
-}
-
-QUmlInitialNode::QUmlInitialNode(QUmlInitialNodePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlControlNode(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlInitialNode::~QUmlInitialNode()
-{
-}
-
-void QUmlInitialNode::setPropertyData()
-{
-    QUmlControlNode::setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlInitialNodePrivate);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlinitialnode.cpp"
 

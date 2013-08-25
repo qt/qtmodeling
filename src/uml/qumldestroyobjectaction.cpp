@@ -43,18 +43,12 @@
 
 #include <QtUml/QUmlInputPin>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlDestroyObjectActionPrivate::QUmlDestroyObjectActionPrivate() :
     isDestroyLinks(false),
     isDestroyOwnedObjects(false),
     target(0)
-{
-}
-
-QUmlDestroyObjectActionPrivate::~QUmlDestroyObjectActionPrivate()
 {
 }
 
@@ -66,53 +60,26 @@ QUmlDestroyObjectActionPrivate::~QUmlDestroyObjectActionPrivate()
     \brief A destroy object action is an action that destroys objects.
  */
 
-QUmlDestroyObjectAction::QUmlDestroyObjectAction(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlAction(*new QUmlDestroyObjectActionPrivate, wrapper, parent)
+QUmlDestroyObjectAction::QUmlDestroyObjectAction(bool create_d_ptr) :
+    QUmlAction(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlDestroyObjectActionPrivate);
 }
 
-QUmlDestroyObjectAction::QUmlDestroyObjectAction(QUmlDestroyObjectActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlAction(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlDestroyObjectAction::~QUmlDestroyObjectAction()
-{
-}
-
-// ---------------------------------------------------------------
-// ATTRIBUTES FROM QUmlDestroyObjectAction
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     Specifies whether links in which the object participates are destroyed along with the object.
  */
 bool QUmlDestroyObjectAction::isDestroyLinks() const
 {
-    // This is a read-write attribute
-
-    Q_D(const QUmlDestroyObjectAction);
-    return d->isDestroyLinks;
+    return bool();
 }
 
 void QUmlDestroyObjectAction::setDestroyLinks(bool isDestroyLinks)
 {
-    // This is a read-write attribute
-
-    Q_D(QUmlDestroyObjectAction);
-    if (d->isDestroyLinks != isDestroyLinks) {
-        d->isDestroyLinks = isDestroyLinks;
-    }
-    d->modifiedResettableProperties << QString::fromLatin1("isDestroyLinks");
-}
-
-void QUmlDestroyObjectAction::unsetDestroyLinks()
-{
-    setDestroyLinks(false);
-    Q_D(QUmlDestroyObjectAction);
-    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isDestroyLinks"));
+    Q_UNUSED(isDestroyLinks);
 }
 
 /*!
@@ -120,90 +87,26 @@ void QUmlDestroyObjectAction::unsetDestroyLinks()
  */
 bool QUmlDestroyObjectAction::isDestroyOwnedObjects() const
 {
-    // This is a read-write attribute
-
-    Q_D(const QUmlDestroyObjectAction);
-    return d->isDestroyOwnedObjects;
+    return bool();
 }
 
 void QUmlDestroyObjectAction::setDestroyOwnedObjects(bool isDestroyOwnedObjects)
 {
-    // This is a read-write attribute
-
-    Q_D(QUmlDestroyObjectAction);
-    if (d->isDestroyOwnedObjects != isDestroyOwnedObjects) {
-        d->isDestroyOwnedObjects = isDestroyOwnedObjects;
-    }
-    d->modifiedResettableProperties << QString::fromLatin1("isDestroyOwnedObjects");
+    Q_UNUSED(isDestroyOwnedObjects);
 }
-
-void QUmlDestroyObjectAction::unsetDestroyOwnedObjects()
-{
-    setDestroyOwnedObjects(false);
-    Q_D(QUmlDestroyObjectAction);
-    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isDestroyOwnedObjects"));
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlDestroyObjectAction
-// ---------------------------------------------------------------
 
 /*!
     The input pin providing the object to be destroyed.
  */
 QUmlInputPin *QUmlDestroyObjectAction::target() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlDestroyObjectAction);
-    return d->target;
+    return 0;
 }
 
 void QUmlDestroyObjectAction::setTarget(QUmlInputPin *target)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlDestroyObjectAction);
-    if (d->target != target) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActionPrivate *>(d))->removeInput(qwrappedobject_cast<QUmlInputPin *>(d->target));
-
-        d->target = target;
-
-        // Adjust subsetted property(ies)
-        if (target) {
-            (qwrappedobject_cast<QUmlActionPrivate *>(d))->addInput(qwrappedobject_cast<QUmlInputPin *>(target));
-        }
-    }
-}
-
-void QUmlDestroyObjectAction::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDestroyObjectAction")][QString::fromLatin1("isDestroyLinks")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDestroyObjectAction")][QString::fromLatin1("isDestroyLinks")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDestroyObjectAction")][QString::fromLatin1("isDestroyLinks")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies whether links in which the object participates are destroyed along with the object.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDestroyObjectAction")][QString::fromLatin1("isDestroyLinks")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDestroyObjectAction")][QString::fromLatin1("isDestroyLinks")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDestroyObjectAction")][QString::fromLatin1("isDestroyLinks")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDestroyObjectAction")][QString::fromLatin1("isDestroyOwnedObjects")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDestroyObjectAction")][QString::fromLatin1("isDestroyOwnedObjects")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDestroyObjectAction")][QString::fromLatin1("isDestroyOwnedObjects")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies whether objects owned by the object are destroyed along with the object.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDestroyObjectAction")][QString::fromLatin1("isDestroyOwnedObjects")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDestroyObjectAction")][QString::fromLatin1("isDestroyOwnedObjects")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDestroyObjectAction")][QString::fromLatin1("isDestroyOwnedObjects")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDestroyObjectAction")][QString::fromLatin1("target")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDestroyObjectAction")][QString::fromLatin1("target")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDestroyObjectAction")][QString::fromLatin1("target")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The input pin providing the object to be destroyed.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDestroyObjectAction")][QString::fromLatin1("target")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDestroyObjectAction")][QString::fromLatin1("target")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlAction::inputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDestroyObjectAction")][QString::fromLatin1("target")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlAction::setPropertyData();
+    Q_UNUSED(target);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumldestroyobjectaction.cpp"
 

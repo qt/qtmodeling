@@ -41,25 +41,20 @@
 #ifndef QUMLDEVICE_P_H
 #define QUMLDEVICE_P_H
 
-// Base class includes
-#include "private/qumlnode_p.h"
-
 #include "QtUml/QUmlDevice"
+
+#include "private/qumlnode_p.h"
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-class QUmlDevice;
 
 class Q_UML_EXPORT QUmlDevicePrivate : public QUmlNodePrivate
 {
-    Q_DECLARE_PUBLIC(QUmlDevice)
-
 public:
-    explicit QUmlDevicePrivate();
-    virtual ~QUmlDevicePrivate();
+    QUmlDevicePrivate();
 
 };
 

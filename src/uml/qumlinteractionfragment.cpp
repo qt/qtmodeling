@@ -42,21 +42,15 @@
 #include "qumlinteractionfragment_p.h"
 
 #include <QtUml/QUmlGeneralOrdering>
+#include <QtUml/QUmlInteraction>
 #include <QtUml/QUmlInteractionOperand>
 #include <QtUml/QUmlLifeline>
-#include <QtUml/QUmlInteraction>
-
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
 QT_BEGIN_NAMESPACE
 
 QUmlInteractionFragmentPrivate::QUmlInteractionFragmentPrivate() :
     enclosingInteraction(0),
     enclosingOperand(0)
-{
-}
-
-QUmlInteractionFragmentPrivate::~QUmlInteractionFragmentPrivate()
 {
 }
 
@@ -68,61 +62,31 @@ QUmlInteractionFragmentPrivate::~QUmlInteractionFragmentPrivate()
     \brief InteractionFragment is an abstract notion of the most general interaction unit. An interaction fragment is a piece of an interaction. Each interaction fragment is conceptually like an interaction by itself.
  */
 
-QUmlInteractionFragment::QUmlInteractionFragment(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlNamedElement(*new QUmlInteractionFragmentPrivate, wrapper, parent)
+QUmlInteractionFragment::QUmlInteractionFragment(bool create_d_ptr) :
+    QUmlNamedElement(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlInteractionFragmentPrivate);
 }
 
-QUmlInteractionFragment::QUmlInteractionFragment(QUmlInteractionFragmentPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlNamedElement(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlInteractionFragment::~QUmlInteractionFragment()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlInteractionFragment
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
-    The general ordering relationships contained in this fragment.
+    References the Lifelines that the InteractionFragment involves.
  */
-QSet<QUmlGeneralOrdering *> QUmlInteractionFragment::generalOrderings() const
+QSet<QUmlLifeline *> QUmlInteractionFragment::covered() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlInteractionFragment);
-    return d->generalOrderings;
+    return QSet<QUmlLifeline *>();
 }
 
-void QUmlInteractionFragment::addGeneralOrdering(QUmlGeneralOrdering *generalOrdering)
+void QUmlInteractionFragment::addCovered(QSet<QUmlLifeline *> covered)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlInteractionFragment);
-    if (!d->generalOrderings.contains(generalOrdering)) {
-        d->generalOrderings.insert(generalOrdering);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QUmlElement *>(generalOrdering));
-    }
+    Q_UNUSED(covered);
 }
 
-void QUmlInteractionFragment::removeGeneralOrdering(QUmlGeneralOrdering *generalOrdering)
+void QUmlInteractionFragment::removeCovered(QSet<QUmlLifeline *> covered)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlInteractionFragment);
-    if (d->generalOrderings.contains(generalOrdering)) {
-        d->generalOrderings.remove(generalOrdering);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QUmlElement *>(generalOrdering));
-    }
+    Q_UNUSED(covered);
 }
 
 /*!
@@ -130,69 +94,12 @@ void QUmlInteractionFragment::removeGeneralOrdering(QUmlGeneralOrdering *general
  */
 QUmlInteraction *QUmlInteractionFragment::enclosingInteraction() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlInteractionFragment);
-    return d->enclosingInteraction;
+    return 0;
 }
 
 void QUmlInteractionFragment::setEnclosingInteraction(QUmlInteraction *enclosingInteraction)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlInteractionFragment);
-    if (d->enclosingInteraction != enclosingInteraction) {
-        // Adjust opposite property
-        if (d->enclosingInteraction)
-            d->enclosingInteraction->removeFragment(this);
-
-        d->enclosingInteraction = enclosingInteraction;
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlNamedElementPrivate *>(d))->setNamespace_(qwrappedobject_cast<QUmlNamespace *>(enclosingInteraction));
-
-        // Adjust opposite property
-        if (enclosingInteraction)
-            enclosingInteraction->addFragment(this);
-    }
-}
-
-/*!
-    References the Lifelines that the InteractionFragment involves.
- */
-QSet<QUmlLifeline *> QUmlInteractionFragment::covered() const
-{
-    // This is a read-write association end
-
-    Q_D(const QUmlInteractionFragment);
-    return d->covered;
-}
-
-void QUmlInteractionFragment::addCovered(QUmlLifeline *covered)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlInteractionFragment);
-    if (!d->covered.contains(covered)) {
-        d->covered.insert(covered);
-
-        // Adjust opposite property
-        covered->addCoveredBy(this);
-    }
-}
-
-void QUmlInteractionFragment::removeCovered(QUmlLifeline *covered)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlInteractionFragment);
-    if (d->covered.contains(covered)) {
-        d->covered.remove(covered);
-
-        // Adjust opposite property
-        if (covered)
-            covered->removeCoveredBy(this);
-    }
+    Q_UNUSED(enclosingInteraction);
 }
 
 /*!
@@ -200,67 +107,31 @@ void QUmlInteractionFragment::removeCovered(QUmlLifeline *covered)
  */
 QUmlInteractionOperand *QUmlInteractionFragment::enclosingOperand() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlInteractionFragment);
-    return d->enclosingOperand;
+    return 0;
 }
 
 void QUmlInteractionFragment::setEnclosingOperand(QUmlInteractionOperand *enclosingOperand)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlInteractionFragment);
-    if (d->enclosingOperand != enclosingOperand) {
-        // Adjust opposite property
-        if (d->enclosingOperand)
-            d->enclosingOperand->removeFragment(this);
-
-        d->enclosingOperand = enclosingOperand;
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlNamedElementPrivate *>(d))->setNamespace_(qwrappedobject_cast<QUmlNamespace *>(enclosingOperand));
-
-        // Adjust opposite property
-        if (enclosingOperand)
-            enclosingOperand->addFragment(this);
-    }
+    Q_UNUSED(enclosingOperand);
 }
 
-void QUmlInteractionFragment::setPropertyData()
+/*!
+    The general ordering relationships contained in this fragment.
+ */
+QSet<QUmlGeneralOrdering *> QUmlInteractionFragment::generalOrdering() const
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionFragment")][QString::fromLatin1("generalOrderings")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionFragment")][QString::fromLatin1("generalOrderings")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionFragment")][QString::fromLatin1("generalOrderings")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The general ordering relationships contained in this fragment.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionFragment")][QString::fromLatin1("generalOrderings")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionFragment")][QString::fromLatin1("generalOrderings")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionFragment")][QString::fromLatin1("generalOrderings")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
+    return QSet<QUmlGeneralOrdering *>();
+}
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionFragment")][QString::fromLatin1("enclosingInteraction")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionFragment")][QString::fromLatin1("enclosingInteraction")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionFragment")][QString::fromLatin1("enclosingInteraction")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The Interaction enclosing this InteractionFragment.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionFragment")][QString::fromLatin1("enclosingInteraction")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionFragment")][QString::fromLatin1("enclosingInteraction")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlNamedElement::namespace");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionFragment")][QString::fromLatin1("enclosingInteraction")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlInteraction::fragment");
+void QUmlInteractionFragment::addGeneralOrdering(QSet<QUmlGeneralOrdering *> generalOrdering)
+{
+    Q_UNUSED(generalOrdering);
+}
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionFragment")][QString::fromLatin1("covered")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionFragment")][QString::fromLatin1("covered")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionFragment")][QString::fromLatin1("covered")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Lifelines that the InteractionFragment involves.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionFragment")][QString::fromLatin1("covered")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionFragment")][QString::fromLatin1("covered")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionFragment")][QString::fromLatin1("covered")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlLifeline::coveredBy");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionFragment")][QString::fromLatin1("enclosingOperand")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionFragment")][QString::fromLatin1("enclosingOperand")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionFragment")][QString::fromLatin1("enclosingOperand")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The operand enclosing this InteractionFragment (they may nest recursively)");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionFragment")][QString::fromLatin1("enclosingOperand")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionFragment")][QString::fromLatin1("enclosingOperand")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlNamedElement::namespace");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionFragment")][QString::fromLatin1("enclosingOperand")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlInteractionOperand::fragment");
-
-    QUmlNamedElement::setPropertyData();
+void QUmlInteractionFragment::removeGeneralOrdering(QSet<QUmlGeneralOrdering *> generalOrdering)
+{
+    Q_UNUSED(generalOrdering);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlinteractionfragment.cpp"
 

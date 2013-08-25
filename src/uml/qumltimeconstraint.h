@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlIntervalConstraint>
 
 QT_BEGIN_HEADER
@@ -52,39 +51,19 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlTimeInterval;
 
 class QUmlTimeConstraintPrivate;
-
 class Q_UML_EXPORT QUmlTimeConstraint : public QUmlIntervalConstraint
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(bool firstEvent READ firstEvent WRITE setFirstEvent RESET unsetFirstEvent)
-    Q_PROPERTY(QUmlTimeInterval * specification READ specification WRITE setSpecification)
-
-    Q_DISABLE_COPY(QUmlTimeConstraint)
-    Q_DECLARE_PRIVATE(QUmlTimeConstraint)
-
 public:
-    Q_INVOKABLE explicit QUmlTimeConstraint(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlTimeConstraint();
+    QUmlTimeConstraint(bool create_d_ptr = true);
 
-    // Attributes from QUmlTimeConstraint
-    Q_INVOKABLE bool firstEvent() const;
-    Q_INVOKABLE void setFirstEvent(bool firstEvent);
-    Q_INVOKABLE void unsetFirstEvent();
-
-    // Association ends from QUmlTimeConstraint
-    Q_INVOKABLE QUmlTimeInterval *specification() const;
-    Q_INVOKABLE void setSpecification(QUmlTimeInterval *specification);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlTimeConstraint(QUmlTimeConstraintPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    bool firstEvent() const;
+    void setFirstEvent(bool firstEvent);
+    QUmlTimeInterval *specification() const;
+    void setSpecification(QUmlTimeInterval *specification);
 };
 
 QT_END_NAMESPACE

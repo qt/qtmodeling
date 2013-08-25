@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlAction>
 
 QT_BEGIN_HEADER
@@ -52,47 +51,25 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlClassifier;
 class QUmlInputPin;
 class QUmlOutputPin;
 
 class QUmlReadIsClassifiedObjectActionPrivate;
-
 class Q_UML_EXPORT QUmlReadIsClassifiedObjectAction : public QUmlAction
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(bool isDirect READ isDirect WRITE setDirect RESET unsetDirect)
-    Q_PROPERTY(QUmlOutputPin * result READ result WRITE setResult)
-    Q_PROPERTY(QUmlInputPin * object READ object WRITE setObject)
-    Q_PROPERTY(QUmlClassifier * classifier READ classifier WRITE setClassifier)
-
-    Q_DISABLE_COPY(QUmlReadIsClassifiedObjectAction)
-    Q_DECLARE_PRIVATE(QUmlReadIsClassifiedObjectAction)
-
 public:
-    Q_INVOKABLE explicit QUmlReadIsClassifiedObjectAction(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlReadIsClassifiedObjectAction();
+    QUmlReadIsClassifiedObjectAction(bool create_d_ptr = true);
 
-    // Attributes from QUmlReadIsClassifiedObjectAction
-    Q_INVOKABLE bool isDirect() const;
-    Q_INVOKABLE void setDirect(bool isDirect);
-    Q_INVOKABLE void unsetDirect();
-
-    // Association ends from QUmlReadIsClassifiedObjectAction
-    Q_INVOKABLE QUmlOutputPin *result() const;
-    Q_INVOKABLE void setResult(QUmlOutputPin *result);
-    Q_INVOKABLE QUmlInputPin *object() const;
-    Q_INVOKABLE void setObject(QUmlInputPin *object);
-    Q_INVOKABLE QUmlClassifier *classifier() const;
-    Q_INVOKABLE void setClassifier(QUmlClassifier *classifier);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlReadIsClassifiedObjectAction(QUmlReadIsClassifiedObjectActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlClassifier *classifier() const;
+    void setClassifier(QUmlClassifier *classifier);
+    bool isDirect() const;
+    void setDirect(bool isDirect);
+    QUmlInputPin *object() const;
+    void setObject(QUmlInputPin *object);
+    QUmlOutputPin *result() const;
+    void setResult(QUmlOutputPin *result);
 };
 
 QT_END_NAMESPACE

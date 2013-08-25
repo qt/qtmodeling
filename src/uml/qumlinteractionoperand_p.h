@@ -41,15 +41,10 @@
 #ifndef QUMLINTERACTIONOPERAND_P_H
 #define QUMLINTERACTIONOPERAND_P_H
 
-// Base class includes
-#include "private/qwrappedobject_p.h"
-#include "private/qumlinteractionfragment_p.h"
-#include "private/qumlnamespace_p.h"
-
 #include "QtUml/QUmlInteractionOperand"
 
-// Qt includes
-#include "QtCore/QList"
+#include "private/qumlinteractionfragment_p.h"
+#include "private/qumlnamespace_p.h"
 
 QT_BEGIN_HEADER
 
@@ -57,19 +52,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlInteractionConstraint;
-class QUmlInteractionOperand;
-
-class Q_UML_EXPORT QUmlInteractionOperandPrivate : public QWrappedObjectPrivate
+class Q_UML_EXPORT QUmlInteractionOperandPrivate : public QUmlInteractionFragmentPrivate, public QUmlNamespacePrivate
 {
-    Q_DECLARE_PUBLIC(QUmlInteractionOperand)
-
 public:
-    explicit QUmlInteractionOperandPrivate();
-    virtual ~QUmlInteractionOperandPrivate();
+    QUmlInteractionOperandPrivate();
 
-    QList<QUmlInteractionFragment *> fragments;
+    QList<QUmlInteractionFragment *> fragment;
     QUmlInteractionConstraint *guard;
 };
 

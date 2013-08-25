@@ -43,17 +43,11 @@
 
 #include <QtUml/QUmlTimeExpression>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlTimeIntervalPrivate::QUmlTimeIntervalPrivate() :
     max(0),
     min(0)
-{
-}
-
-QUmlTimeIntervalPrivate::~QUmlTimeIntervalPrivate()
 {
 }
 
@@ -65,48 +59,26 @@ QUmlTimeIntervalPrivate::~QUmlTimeIntervalPrivate()
     \brief A time interval defines the range between two time expressions.
  */
 
-QUmlTimeInterval::QUmlTimeInterval(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlInterval(*new QUmlTimeIntervalPrivate, wrapper, parent)
+QUmlTimeInterval::QUmlTimeInterval(bool create_d_ptr) :
+    QUmlInterval(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlTimeIntervalPrivate);
 }
 
-QUmlTimeInterval::QUmlTimeInterval(QUmlTimeIntervalPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlInterval(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlTimeInterval::~QUmlTimeInterval()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlTimeInterval
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     Refers to the TimeExpression denoting the maximum value of the range.
  */
 QUmlTimeExpression *QUmlTimeInterval::max() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlTimeInterval);
-    return d->max;
+    return 0;
 }
 
 void QUmlTimeInterval::setMax(QUmlTimeExpression *max)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlTimeInterval);
-    if (d->max != max) {
-        d->max = max;
-
-        // Adjust redefined property(ies)
-        (qwrappedobject_cast<QUmlInterval *>(this))->setMax(qwrappedobject_cast<QUmlValueSpecification *>(max));
-    }
+    Q_UNUSED(max);
 }
 
 /*!
@@ -114,45 +86,13 @@ void QUmlTimeInterval::setMax(QUmlTimeExpression *max)
  */
 QUmlTimeExpression *QUmlTimeInterval::min() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlTimeInterval);
-    return d->min;
+    return 0;
 }
 
 void QUmlTimeInterval::setMin(QUmlTimeExpression *min)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlTimeInterval);
-    if (d->min != min) {
-        d->min = min;
-
-        // Adjust redefined property(ies)
-        (qwrappedobject_cast<QUmlInterval *>(this))->setMin(qwrappedobject_cast<QUmlValueSpecification *>(min));
-    }
-}
-
-void QUmlTimeInterval::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTimeInterval")][QString::fromLatin1("max")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTimeInterval")][QString::fromLatin1("max")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTimeInterval")][QString::fromLatin1("max")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Refers to the TimeExpression denoting the maximum value of the range.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTimeInterval")][QString::fromLatin1("max")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QUmlInterval::max");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTimeInterval")][QString::fromLatin1("max")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTimeInterval")][QString::fromLatin1("max")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTimeInterval")][QString::fromLatin1("min")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTimeInterval")][QString::fromLatin1("min")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTimeInterval")][QString::fromLatin1("min")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Refers to the TimeExpression denoting the minimum value of the range.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTimeInterval")][QString::fromLatin1("min")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QUmlInterval::min");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTimeInterval")][QString::fromLatin1("min")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTimeInterval")][QString::fromLatin1("min")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlInterval::setPropertyData();
+    Q_UNUSED(min);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumltimeinterval.cpp"
 

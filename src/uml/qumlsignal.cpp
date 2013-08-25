@@ -43,15 +43,9 @@
 
 #include <QtUml/QUmlProperty>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlSignalPrivate::QUmlSignalPrivate()
-{
-}
-
-QUmlSignalPrivate::~QUmlSignalPrivate()
 {
 }
 
@@ -63,78 +57,32 @@ QUmlSignalPrivate::~QUmlSignalPrivate()
     \brief A signal is a specification of send request instances communicated between objects. The receiving object handles the received request instances as specified by its receptions. The data carried by a send request (which was passed to it by the send invocation occurrence that caused that request) are represented as attributes of the signal. A signal is defined independently of the classifiers handling the signal occurrence.
  */
 
-QUmlSignal::QUmlSignal(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlClassifier(*new QUmlSignalPrivate, wrapper, parent)
+QUmlSignal::QUmlSignal(bool create_d_ptr) :
+    QUmlClassifier(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlSignalPrivate);
 }
 
-QUmlSignal::QUmlSignal(QUmlSignalPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlClassifier(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlSignal::~QUmlSignal()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlSignal
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     The attributes owned by the signal.
  */
-QList<QUmlProperty *> QUmlSignal::ownedAttributes() const
+QList<QUmlProperty *> QUmlSignal::ownedAttribute() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlSignal);
-    return d->ownedAttributes;
+    return QList<QUmlProperty *>();
 }
 
-void QUmlSignal::addOwnedAttribute(QUmlProperty *ownedAttribute)
+void QUmlSignal::addOwnedAttribute(QList<QUmlProperty *> ownedAttribute)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlSignal);
-    if (!d->ownedAttributes.contains(ownedAttribute)) {
-        d->ownedAttributes.append(ownedAttribute);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlNamespacePrivate *>(d))->addOwnedMember(qwrappedobject_cast<QUmlNamedElement *>(ownedAttribute));
-        (qwrappedobject_cast<QUmlClassifierPrivate *>(d))->addAttribute(qwrappedobject_cast<QUmlProperty *>(ownedAttribute));
-    }
+    Q_UNUSED(ownedAttribute);
 }
 
-void QUmlSignal::removeOwnedAttribute(QUmlProperty *ownedAttribute)
+void QUmlSignal::removeOwnedAttribute(QList<QUmlProperty *> ownedAttribute)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlSignal);
-    if (d->ownedAttributes.contains(ownedAttribute)) {
-        d->ownedAttributes.removeAll(ownedAttribute);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlNamespacePrivate *>(d))->removeOwnedMember(qwrappedobject_cast<QUmlNamedElement *>(ownedAttribute));
-        (qwrappedobject_cast<QUmlClassifierPrivate *>(d))->removeAttribute(qwrappedobject_cast<QUmlProperty *>(ownedAttribute));
-    }
-}
-
-void QUmlSignal::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSignal")][QString::fromLatin1("ownedAttributes")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSignal")][QString::fromLatin1("ownedAttributes")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSignal")][QString::fromLatin1("ownedAttributes")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The attributes owned by the signal.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSignal")][QString::fromLatin1("ownedAttributes")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSignal")][QString::fromLatin1("ownedAttributes")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlNamespace::ownedMembers QUmlClassifier::attributes");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSignal")][QString::fromLatin1("ownedAttributes")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlClassifier::setPropertyData();
+    Q_UNUSED(ownedAttribute);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlsignal.cpp"
 

@@ -41,10 +41,9 @@
 #ifndef QUMLSTARTCLASSIFIERBEHAVIORACTION_P_H
 #define QUMLSTARTCLASSIFIERBEHAVIORACTION_P_H
 
-// Base class includes
-#include "private/qumlaction_p.h"
-
 #include "QtUml/QUmlStartClassifierBehaviorAction"
+
+#include "private/qumlaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -52,17 +51,10 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlInputPin;
-class QUmlStartClassifierBehaviorAction;
-
 class Q_UML_EXPORT QUmlStartClassifierBehaviorActionPrivate : public QUmlActionPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlStartClassifierBehaviorAction)
-
 public:
-    explicit QUmlStartClassifierBehaviorActionPrivate();
-    virtual ~QUmlStartClassifierBehaviorActionPrivate();
+    QUmlStartClassifierBehaviorActionPrivate();
 
     QUmlInputPin *object;
 };

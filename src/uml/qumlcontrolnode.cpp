@@ -41,15 +41,9 @@
 #include "qumlcontrolnode.h"
 #include "qumlcontrolnode_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlControlNodePrivate::QUmlControlNodePrivate()
-{
-}
-
-QUmlControlNodePrivate::~QUmlControlNodePrivate()
 {
 }
 
@@ -61,28 +55,12 @@ QUmlControlNodePrivate::~QUmlControlNodePrivate()
     \brief A control node is an abstract activity node that coordinates flows in an activity.
  */
 
-QUmlControlNode::QUmlControlNode(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlActivityNode(*new QUmlControlNodePrivate, wrapper, parent)
+QUmlControlNode::QUmlControlNode(bool create_d_ptr) :
+    QUmlActivityNode(false)
 {
-    setPropertyData();
-}
-
-QUmlControlNode::QUmlControlNode(QUmlControlNodePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlActivityNode(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlControlNode::~QUmlControlNode()
-{
-}
-
-void QUmlControlNode::setPropertyData()
-{
-    QUmlActivityNode::setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlControlNodePrivate);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlcontrolnode.cpp"
 

@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlValueSpecification>
 
 QT_BEGIN_HEADER
@@ -51,34 +50,17 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-
 class QUmlIntervalPrivate;
-
 class Q_UML_EXPORT QUmlInterval : public QUmlValueSpecification
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlValueSpecification * min READ min WRITE setMin)
-    Q_PROPERTY(QUmlValueSpecification * max READ max WRITE setMax)
-
-    Q_DISABLE_COPY(QUmlInterval)
-    Q_DECLARE_PRIVATE(QUmlInterval)
-
 public:
-    Q_INVOKABLE explicit QUmlInterval(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlInterval();
+    QUmlInterval(bool create_d_ptr = true);
 
-    // Association ends from QUmlInterval
-    Q_INVOKABLE QUmlValueSpecification *min() const;
-    Q_INVOKABLE void setMin(QUmlValueSpecification *min);
-    Q_INVOKABLE QUmlValueSpecification *max() const;
-    Q_INVOKABLE void setMax(QUmlValueSpecification *max);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlInterval(QUmlIntervalPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlValueSpecification *max() const;
+    void setMax(QUmlValueSpecification *max);
+    QUmlValueSpecification *min() const;
+    void setMin(QUmlValueSpecification *min);
 };
 
 QT_END_NAMESPACE

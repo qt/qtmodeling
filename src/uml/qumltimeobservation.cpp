@@ -43,17 +43,11 @@
 
 #include <QtUml/QUmlNamedElement>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlTimeObservationPrivate::QUmlTimeObservationPrivate() :
-    firstEvent(true),
-    event(0)
-{
-}
-
-QUmlTimeObservationPrivate::~QUmlTimeObservationPrivate()
+    event(0),
+    firstEvent(true)
 {
 }
 
@@ -65,100 +59,40 @@ QUmlTimeObservationPrivate::~QUmlTimeObservationPrivate()
     \brief A time observation is a reference to a time instant during an execution. It points out the element in the model to observe and whether the observation is when this model element is entered or when it is exited.
  */
 
-QUmlTimeObservation::QUmlTimeObservation(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlObservation(*new QUmlTimeObservationPrivate, wrapper, parent)
+QUmlTimeObservation::QUmlTimeObservation(bool create_d_ptr) :
+    QUmlObservation(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlTimeObservationPrivate);
 }
 
-QUmlTimeObservation::QUmlTimeObservation(QUmlTimeObservationPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlObservation(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlTimeObservation::~QUmlTimeObservation()
-{
-}
-
-// ---------------------------------------------------------------
-// ATTRIBUTES FROM QUmlTimeObservation
-// ---------------------------------------------------------------
-
-/*!
-    The value of firstEvent is related to event. If firstEvent is true, then the corresponding observation event is the first time instant the execution enters event. If firstEvent is false, then the corresponding observation event is the time instant the execution exits event.
- */
-bool QUmlTimeObservation::firstEvent() const
-{
-    // This is a read-write attribute
-
-    Q_D(const QUmlTimeObservation);
-    return d->firstEvent;
-}
-
-void QUmlTimeObservation::setFirstEvent(bool firstEvent)
-{
-    // This is a read-write attribute
-
-    Q_D(QUmlTimeObservation);
-    if (d->firstEvent != firstEvent) {
-        d->firstEvent = firstEvent;
-    }
-    d->modifiedResettableProperties << QString::fromLatin1("firstEvent");
-}
-
-void QUmlTimeObservation::unsetFirstEvent()
-{
-    setFirstEvent(true);
-    Q_D(QUmlTimeObservation);
-    d->modifiedResettableProperties.removeAll(QString::fromLatin1("firstEvent"));
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlTimeObservation
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     The observation is determined by the entering or exiting of the event element during execution.
  */
 QUmlNamedElement *QUmlTimeObservation::event() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlTimeObservation);
-    return d->event;
+    return 0;
 }
 
 void QUmlTimeObservation::setEvent(QUmlNamedElement *event)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlTimeObservation);
-    if (d->event != event) {
-        d->event = event;
-    }
+    Q_UNUSED(event);
 }
 
-void QUmlTimeObservation::setPropertyData()
+/*!
+    The value of firstEvent is related to event. If firstEvent is true, then the corresponding observation event is the first time instant the execution enters event. If firstEvent is false, then the corresponding observation event is the time instant the execution exits event.
+ */
+bool QUmlTimeObservation::firstEvent() const
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTimeObservation")][QString::fromLatin1("firstEvent")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTimeObservation")][QString::fromLatin1("firstEvent")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTimeObservation")][QString::fromLatin1("firstEvent")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The value of firstEvent is related to event. If firstEvent is true, then the corresponding observation event is the first time instant the execution enters event. If firstEvent is false, then the corresponding observation event is the time instant the execution exits event.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTimeObservation")][QString::fromLatin1("firstEvent")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTimeObservation")][QString::fromLatin1("firstEvent")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTimeObservation")][QString::fromLatin1("firstEvent")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    return bool();
+}
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTimeObservation")][QString::fromLatin1("event")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTimeObservation")][QString::fromLatin1("event")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTimeObservation")][QString::fromLatin1("event")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The observation is determined by the entering or exiting of the event element during execution.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTimeObservation")][QString::fromLatin1("event")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTimeObservation")][QString::fromLatin1("event")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTimeObservation")][QString::fromLatin1("event")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlObservation::setPropertyData();
+void QUmlTimeObservation::setFirstEvent(bool firstEvent)
+{
+    Q_UNUSED(firstEvent);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumltimeobservation.cpp"
 

@@ -43,48 +43,26 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlElement>
-
-// Qt includes
-#include <QtCore/QString>
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-
 class QUmlImagePrivate;
-
 class Q_UML_EXPORT QUmlImage : public QUmlElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QString format READ format WRITE setFormat)
-    Q_PROPERTY(QString location READ location WRITE setLocation)
-    Q_PROPERTY(QString content READ content WRITE setContent)
-
-    Q_DISABLE_COPY(QUmlImage)
-    Q_DECLARE_PRIVATE(QUmlImage)
-
 public:
-    Q_INVOKABLE explicit QUmlImage(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlImage();
+    QUmlImage(bool create_d_ptr = true);
 
-    // Attributes from QUmlImage
-    Q_INVOKABLE QString format() const;
-    Q_INVOKABLE void setFormat(QString format);
-    Q_INVOKABLE QString location() const;
-    Q_INVOKABLE void setLocation(QString location);
-    Q_INVOKABLE QString content() const;
-    Q_INVOKABLE void setContent(QString content);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlImage(QUmlImagePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QString content() const;
+    void setContent(QString content);
+    QString format() const;
+    void setFormat(QString format);
+    QString location() const;
+    void setLocation(QString location);
 };
 
 QT_END_NAMESPACE

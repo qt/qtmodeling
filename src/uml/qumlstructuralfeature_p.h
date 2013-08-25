@@ -41,13 +41,11 @@
 #ifndef QUMLSTRUCTURALFEATURE_P_H
 #define QUMLSTRUCTURALFEATURE_P_H
 
-// Base class includes
-#include "private/qwrappedobject_p.h"
+#include "QtUml/QUmlStructuralFeature"
+
 #include "private/qumltypedelement_p.h"
 #include "private/qumlmultiplicityelement_p.h"
 #include "private/qumlfeature_p.h"
-
-#include "QtUml/QUmlStructuralFeature"
 
 QT_BEGIN_HEADER
 
@@ -55,13 +53,10 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QUmlStructuralFeaturePrivate : public QWrappedObjectPrivate
+class Q_UML_EXPORT QUmlStructuralFeaturePrivate : public virtual QUmlTypedElementPrivate, public QUmlMultiplicityElementPrivate, public QUmlFeaturePrivate
 {
-    Q_DECLARE_PUBLIC(QUmlStructuralFeature)
-
 public:
-    explicit QUmlStructuralFeaturePrivate();
-    virtual ~QUmlStructuralFeaturePrivate();
+    QUmlStructuralFeaturePrivate();
 
     bool isReadOnly;
 };

@@ -41,13 +41,9 @@
 #ifndef QUMLACTIVITYPARTITION_P_H
 #define QUMLACTIVITYPARTITION_P_H
 
-// Base class includes
-#include "private/qumlactivitygroup_p.h"
-
 #include "QtUml/QUmlActivityPartition"
 
-// Qt includes
-#include "QtCore/QSet"
+#include "private/qumlactivitygroup_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,28 +51,18 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlActivityPartition;
-class QUmlElement;
-class QUmlActivityEdge;
-class QUmlActivityNode;
-class QUmlActivityPartition;
-
 class Q_UML_EXPORT QUmlActivityPartitionPrivate : public QUmlActivityGroupPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlActivityPartition)
-
 public:
-    explicit QUmlActivityPartitionPrivate();
-    virtual ~QUmlActivityPartitionPrivate();
+    QUmlActivityPartitionPrivate();
 
+    QSet<QUmlActivityEdge *> edge;
     bool isDimension;
     bool isExternal;
+    QSet<QUmlActivityNode *> node;
     QUmlElement *represents;
-    QSet<QUmlActivityPartition *> subpartitions;
+    QSet<QUmlActivityPartition *> subpartition;
     QUmlActivityPartition *superPartition;
-    QSet<QUmlActivityNode *> nodes;
-    QSet<QUmlActivityEdge *> edges;
 };
 
 QT_END_NAMESPACE

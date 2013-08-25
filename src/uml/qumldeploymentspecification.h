@@ -43,11 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlArtifact>
-
-// Qt includes
-#include <QtCore/QString>
 
 QT_BEGIN_HEADER
 
@@ -55,41 +51,21 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlDeployment;
 
 class QUmlDeploymentSpecificationPrivate;
-
 class Q_UML_EXPORT QUmlDeploymentSpecification : public QUmlArtifact
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QString deploymentLocation READ deploymentLocation WRITE setDeploymentLocation)
-    Q_PROPERTY(QString executionLocation READ executionLocation WRITE setExecutionLocation)
-    Q_PROPERTY(QUmlDeployment * deployment READ deployment WRITE setDeployment)
-
-    Q_DISABLE_COPY(QUmlDeploymentSpecification)
-    Q_DECLARE_PRIVATE(QUmlDeploymentSpecification)
-
 public:
-    Q_INVOKABLE explicit QUmlDeploymentSpecification(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlDeploymentSpecification();
+    QUmlDeploymentSpecification(bool create_d_ptr = true);
 
-    // Attributes from QUmlDeploymentSpecification
-    Q_INVOKABLE QString deploymentLocation() const;
-    Q_INVOKABLE void setDeploymentLocation(QString deploymentLocation);
-    Q_INVOKABLE QString executionLocation() const;
-    Q_INVOKABLE void setExecutionLocation(QString executionLocation);
-
-    // Association ends from QUmlDeploymentSpecification
-    Q_INVOKABLE QUmlDeployment *deployment() const;
-    Q_INVOKABLE void setDeployment(QUmlDeployment *deployment);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlDeploymentSpecification(QUmlDeploymentSpecificationPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlDeployment *deployment() const;
+    void setDeployment(QUmlDeployment *deployment);
+    QString deploymentLocation() const;
+    void setDeploymentLocation(QString deploymentLocation);
+    QString executionLocation() const;
+    void setExecutionLocation(QString executionLocation);
 };
 
 QT_END_NAMESPACE

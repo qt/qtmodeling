@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlAssociation>
 
 QT_BEGIN_HEADER
@@ -52,47 +51,24 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlClass;
 class QUmlExtensionEnd;
 class QUmlProperty;
 
 class QUmlExtensionPrivate;
-
 class Q_UML_EXPORT QUmlExtension : public QUmlAssociation
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(bool isRequired READ isRequired STORED false)
-    Q_PROPERTY(QUmlClass * metaclass READ metaclass STORED false)
-    Q_PROPERTY(QUmlExtensionEnd * ownedEnd READ ownedEnd WRITE setOwnedEnd)
-
-    Q_DISABLE_COPY(QUmlExtension)
-    Q_DECLARE_PRIVATE(QUmlExtension)
-
 public:
-    Q_INVOKABLE explicit QUmlExtension(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlExtension();
+    QUmlExtension(bool create_d_ptr = true);
 
-    // Attributes from QUmlExtension
-    Q_INVOKABLE bool isRequired() const;
-
-    // Association ends from QUmlExtension
-    Q_INVOKABLE QUmlClass *metaclass() const;
-    Q_INVOKABLE QUmlExtensionEnd *ownedEnd() const;
-    Q_INVOKABLE void setOwnedEnd(QUmlExtensionEnd *ownedEnd);
+    // Owned attributes
+    bool isRequired() const;
+    QUmlClass *metaclass() const;
+    QUmlExtensionEnd *ownedEnd() const;
+    void setOwnedEnd(QUmlExtensionEnd *ownedEnd);
 
     // Operations
-    Q_INVOKABLE QUmlProperty *metaclassEnd() const;
-
-    virtual void setPropertyData();
-
-    // Classes which access read-only opposite properties should be friend
-    friend class QUmlClassPrivate;
-
-protected:
-    explicit QUmlExtension(QUmlExtensionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    QUmlProperty *metaclassEnd() const;
 };
 
 QT_END_NAMESPACE

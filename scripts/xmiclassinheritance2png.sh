@@ -15,7 +15,7 @@ printf "." > /dev/stderr
 }
 
 echo "strict digraph G {";
-echo "graph[ranksep=1.5, rankdir=BT];";
+echo "graph[rankdir=BT];";
 echo "$1;"
 parentsof $1 $2
 echo "}"

@@ -41,25 +41,20 @@
 #ifndef QUMLDESTRUCTIONOCCURRENCESPECIFICATION_P_H
 #define QUMLDESTRUCTIONOCCURRENCESPECIFICATION_P_H
 
-// Base class includes
-#include "private/qumlmessageoccurrencespecification_p.h"
-
 #include "QtUml/QUmlDestructionOccurrenceSpecification"
+
+#include "private/qumlmessageoccurrencespecification_p.h"
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-class QUmlDestructionOccurrenceSpecification;
 
 class Q_UML_EXPORT QUmlDestructionOccurrenceSpecificationPrivate : public QUmlMessageOccurrenceSpecificationPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlDestructionOccurrenceSpecification)
-
 public:
-    explicit QUmlDestructionOccurrenceSpecificationPrivate();
-    virtual ~QUmlDestructionOccurrenceSpecificationPrivate();
+    QUmlDestructionOccurrenceSpecificationPrivate();
 
 };
 

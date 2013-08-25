@@ -41,17 +41,9 @@
 #ifndef QUMLCONNECTOR_P_H
 #define QUMLCONNECTOR_P_H
 
-// Base class includes
-#include "private/qumlfeature_p.h"
-
 #include "QtUml/QUmlConnector"
 
-// QtUml includes
-#include "QtUml/QtUmlNamespace"
-
-// Qt includes
-#include "QtCore/QList"
-#include "QtCore/QSet"
+#include "private/qumlfeature_p.h"
 
 QT_BEGIN_HEADER
 
@@ -59,25 +51,16 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlAssociation;
-class QUmlConnector;
-class QUmlBehavior;
-class QUmlConnectorEnd;
-class QUmlConnector;
-
 class Q_UML_EXPORT QUmlConnectorPrivate : public QUmlFeaturePrivate
 {
-    Q_DECLARE_PUBLIC(QUmlConnector)
-
 public:
-    explicit QUmlConnectorPrivate();
-    virtual ~QUmlConnectorPrivate();
+    QUmlConnectorPrivate();
 
-    QSet<QUmlConnector *> redefinedConnectors;
-    QSet<QUmlBehavior *> contracts;
+    QSet<QUmlBehavior *> contract;
+    QList<QUmlConnectorEnd *> end;
+    QtUml::ConnectorKind kind;
+    QSet<QUmlConnector *> redefinedConnector;
     QUmlAssociation *type;
-    QList<QUmlConnectorEnd *> ends;
 };
 
 QT_END_NAMESPACE

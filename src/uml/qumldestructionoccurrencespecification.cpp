@@ -41,15 +41,9 @@
 #include "qumldestructionoccurrencespecification.h"
 #include "qumldestructionoccurrencespecification_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlDestructionOccurrenceSpecificationPrivate::QUmlDestructionOccurrenceSpecificationPrivate()
-{
-}
-
-QUmlDestructionOccurrenceSpecificationPrivate::~QUmlDestructionOccurrenceSpecificationPrivate()
 {
 }
 
@@ -61,28 +55,12 @@ QUmlDestructionOccurrenceSpecificationPrivate::~QUmlDestructionOccurrenceSpecifi
     \brief A destruction event models the destruction of an object.
  */
 
-QUmlDestructionOccurrenceSpecification::QUmlDestructionOccurrenceSpecification(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlMessageOccurrenceSpecification(*new QUmlDestructionOccurrenceSpecificationPrivate, wrapper, parent)
+QUmlDestructionOccurrenceSpecification::QUmlDestructionOccurrenceSpecification(bool create_d_ptr) :
+    QUmlMessageOccurrenceSpecification(false)
 {
-    setPropertyData();
-}
-
-QUmlDestructionOccurrenceSpecification::QUmlDestructionOccurrenceSpecification(QUmlDestructionOccurrenceSpecificationPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlMessageOccurrenceSpecification(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlDestructionOccurrenceSpecification::~QUmlDestructionOccurrenceSpecification()
-{
-}
-
-void QUmlDestructionOccurrenceSpecification::setPropertyData()
-{
-    QUmlMessageOccurrenceSpecification::setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlDestructionOccurrenceSpecificationPrivate);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumldestructionoccurrencespecification.cpp"
 

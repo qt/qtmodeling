@@ -44,17 +44,11 @@
 #include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlInputPin>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlReclassifyObjectActionPrivate::QUmlReclassifyObjectActionPrivate() :
     isReplaceAll(false),
     object(0)
-{
-}
-
-QUmlReclassifyObjectActionPrivate::~QUmlReclassifyObjectActionPrivate()
 {
 }
 
@@ -66,88 +60,44 @@ QUmlReclassifyObjectActionPrivate::~QUmlReclassifyObjectActionPrivate()
     \brief A reclassify object action is an action that changes which classifiers classify an object.
  */
 
-QUmlReclassifyObjectAction::QUmlReclassifyObjectAction(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlAction(*new QUmlReclassifyObjectActionPrivate, wrapper, parent)
+QUmlReclassifyObjectAction::QUmlReclassifyObjectAction(bool create_d_ptr) :
+    QUmlAction(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlReclassifyObjectActionPrivate);
 }
 
-QUmlReclassifyObjectAction::QUmlReclassifyObjectAction(QUmlReclassifyObjectActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlAction(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlReclassifyObjectAction::~QUmlReclassifyObjectAction()
-{
-}
-
-// ---------------------------------------------------------------
-// ATTRIBUTES FROM QUmlReclassifyObjectAction
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     Specifies whether existing classifiers should be removed before adding the new classifiers.
  */
 bool QUmlReclassifyObjectAction::isReplaceAll() const
 {
-    // This is a read-write attribute
-
-    Q_D(const QUmlReclassifyObjectAction);
-    return d->isReplaceAll;
+    return bool();
 }
 
 void QUmlReclassifyObjectAction::setReplaceAll(bool isReplaceAll)
 {
-    // This is a read-write attribute
-
-    Q_D(QUmlReclassifyObjectAction);
-    if (d->isReplaceAll != isReplaceAll) {
-        d->isReplaceAll = isReplaceAll;
-    }
-    d->modifiedResettableProperties << QString::fromLatin1("isReplaceAll");
+    Q_UNUSED(isReplaceAll);
 }
-
-void QUmlReclassifyObjectAction::unsetReplaceAll()
-{
-    setReplaceAll(false);
-    Q_D(QUmlReclassifyObjectAction);
-    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isReplaceAll"));
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlReclassifyObjectAction
-// ---------------------------------------------------------------
 
 /*!
-    A set of classifiers to be removed from the classifiers of the object.
+    A set of classifiers to be added to the classifiers of the object.
  */
-QSet<QUmlClassifier *> QUmlReclassifyObjectAction::oldClassifiers() const
+QSet<QUmlClassifier *> QUmlReclassifyObjectAction::newClassifier() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlReclassifyObjectAction);
-    return d->oldClassifiers;
+    return QSet<QUmlClassifier *>();
 }
 
-void QUmlReclassifyObjectAction::addOldClassifier(QUmlClassifier *oldClassifier)
+void QUmlReclassifyObjectAction::addNewClassifier(QSet<QUmlClassifier *> newClassifier)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlReclassifyObjectAction);
-    if (!d->oldClassifiers.contains(oldClassifier)) {
-        d->oldClassifiers.insert(oldClassifier);
-    }
+    Q_UNUSED(newClassifier);
 }
 
-void QUmlReclassifyObjectAction::removeOldClassifier(QUmlClassifier *oldClassifier)
+void QUmlReclassifyObjectAction::removeNewClassifier(QSet<QUmlClassifier *> newClassifier)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlReclassifyObjectAction);
-    if (d->oldClassifiers.contains(oldClassifier)) {
-        d->oldClassifiers.remove(oldClassifier);
-    }
+    Q_UNUSED(newClassifier);
 }
 
 /*!
@@ -155,95 +105,31 @@ void QUmlReclassifyObjectAction::removeOldClassifier(QUmlClassifier *oldClassifi
  */
 QUmlInputPin *QUmlReclassifyObjectAction::object() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlReclassifyObjectAction);
-    return d->object;
+    return 0;
 }
 
 void QUmlReclassifyObjectAction::setObject(QUmlInputPin *object)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlReclassifyObjectAction);
-    if (d->object != object) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActionPrivate *>(d))->removeInput(qwrappedobject_cast<QUmlInputPin *>(d->object));
-
-        d->object = object;
-
-        // Adjust subsetted property(ies)
-        if (object) {
-            (qwrappedobject_cast<QUmlActionPrivate *>(d))->addInput(qwrappedobject_cast<QUmlInputPin *>(object));
-        }
-    }
+    Q_UNUSED(object);
 }
 
 /*!
-    A set of classifiers to be added to the classifiers of the object.
+    A set of classifiers to be removed from the classifiers of the object.
  */
-QSet<QUmlClassifier *> QUmlReclassifyObjectAction::newClassifiers() const
+QSet<QUmlClassifier *> QUmlReclassifyObjectAction::oldClassifier() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlReclassifyObjectAction);
-    return d->newClassifiers;
+    return QSet<QUmlClassifier *>();
 }
 
-void QUmlReclassifyObjectAction::addNewClassifier(QUmlClassifier *newClassifier)
+void QUmlReclassifyObjectAction::addOldClassifier(QSet<QUmlClassifier *> oldClassifier)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlReclassifyObjectAction);
-    if (!d->newClassifiers.contains(newClassifier)) {
-        d->newClassifiers.insert(newClassifier);
-    }
+    Q_UNUSED(oldClassifier);
 }
 
-void QUmlReclassifyObjectAction::removeNewClassifier(QUmlClassifier *newClassifier)
+void QUmlReclassifyObjectAction::removeOldClassifier(QSet<QUmlClassifier *> oldClassifier)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlReclassifyObjectAction);
-    if (d->newClassifiers.contains(newClassifier)) {
-        d->newClassifiers.remove(newClassifier);
-    }
-}
-
-void QUmlReclassifyObjectAction::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReclassifyObjectAction")][QString::fromLatin1("isReplaceAll")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReclassifyObjectAction")][QString::fromLatin1("isReplaceAll")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReclassifyObjectAction")][QString::fromLatin1("isReplaceAll")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies whether existing classifiers should be removed before adding the new classifiers.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReclassifyObjectAction")][QString::fromLatin1("isReplaceAll")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReclassifyObjectAction")][QString::fromLatin1("isReplaceAll")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReclassifyObjectAction")][QString::fromLatin1("isReplaceAll")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReclassifyObjectAction")][QString::fromLatin1("oldClassifiers")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReclassifyObjectAction")][QString::fromLatin1("oldClassifiers")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReclassifyObjectAction")][QString::fromLatin1("oldClassifiers")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A set of classifiers to be removed from the classifiers of the object.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReclassifyObjectAction")][QString::fromLatin1("oldClassifiers")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReclassifyObjectAction")][QString::fromLatin1("oldClassifiers")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReclassifyObjectAction")][QString::fromLatin1("oldClassifiers")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReclassifyObjectAction")][QString::fromLatin1("object")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReclassifyObjectAction")][QString::fromLatin1("object")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReclassifyObjectAction")][QString::fromLatin1("object")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Holds the object to be reclassified.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReclassifyObjectAction")][QString::fromLatin1("object")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReclassifyObjectAction")][QString::fromLatin1("object")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlAction::inputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReclassifyObjectAction")][QString::fromLatin1("object")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReclassifyObjectAction")][QString::fromLatin1("newClassifiers")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReclassifyObjectAction")][QString::fromLatin1("newClassifiers")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReclassifyObjectAction")][QString::fromLatin1("newClassifiers")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A set of classifiers to be added to the classifiers of the object.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReclassifyObjectAction")][QString::fromLatin1("newClassifiers")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReclassifyObjectAction")][QString::fromLatin1("newClassifiers")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReclassifyObjectAction")][QString::fromLatin1("newClassifiers")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlAction::setPropertyData();
+    Q_UNUSED(oldClassifier);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlreclassifyobjectaction.cpp"
 

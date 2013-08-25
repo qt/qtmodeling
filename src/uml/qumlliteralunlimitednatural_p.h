@@ -41,27 +41,22 @@
 #ifndef QUMLLITERALUNLIMITEDNATURAL_P_H
 #define QUMLLITERALUNLIMITEDNATURAL_P_H
 
-// Base class includes
-#include "private/qumlliteralspecification_p.h"
-
 #include "QtUml/QUmlLiteralUnlimitedNatural"
+
+#include "private/qumlliteralspecification_p.h"
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-class QUmlLiteralUnlimitedNatural;
 
 class Q_UML_EXPORT QUmlLiteralUnlimitedNaturalPrivate : public QUmlLiteralSpecificationPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlLiteralUnlimitedNatural)
-
 public:
-    explicit QUmlLiteralUnlimitedNaturalPrivate();
-    virtual ~QUmlLiteralUnlimitedNaturalPrivate();
+    QUmlLiteralUnlimitedNaturalPrivate();
 
-    qint32 value;
+    int value;
 };
 
 QT_END_NAMESPACE

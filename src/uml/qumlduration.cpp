@@ -43,16 +43,10 @@
 
 #include <QtUml/QUmlObservation>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlDurationPrivate::QUmlDurationPrivate() :
     expr(0)
-{
-}
-
-QUmlDurationPrivate::~QUmlDurationPrivate()
 {
 }
 
@@ -64,106 +58,45 @@ QUmlDurationPrivate::~QUmlDurationPrivate()
     \brief Duration defines a value specification that specifies the temporal distance between two time instants.
  */
 
-QUmlDuration::QUmlDuration(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlValueSpecification(*new QUmlDurationPrivate, wrapper, parent)
+QUmlDuration::QUmlDuration(bool create_d_ptr) :
+    QUmlValueSpecification(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlDurationPrivate);
 }
 
-QUmlDuration::QUmlDuration(QUmlDurationPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlValueSpecification(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlDuration::~QUmlDuration()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlDuration
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     The value of the Duration.
  */
 QUmlValueSpecification *QUmlDuration::expr() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlDuration);
-    return d->expr;
+    return 0;
 }
 
 void QUmlDuration::setExpr(QUmlValueSpecification *expr)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlDuration);
-    if (d->expr != expr) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QUmlElement *>(d->expr));
-
-        d->expr = expr;
-
-        // Adjust subsetted property(ies)
-        if (expr) {
-            (qwrappedobject_cast<QUmlElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QUmlElement *>(expr));
-        }
-    }
+    Q_UNUSED(expr);
 }
 
 /*!
     Refers to the time and duration observations that are involved in expr.
  */
-QSet<QUmlObservation *> QUmlDuration::observations() const
+QSet<QUmlObservation *> QUmlDuration::observation() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlDuration);
-    return d->observations;
+    return QSet<QUmlObservation *>();
 }
 
-void QUmlDuration::addObservation(QUmlObservation *observation)
+void QUmlDuration::addObservation(QSet<QUmlObservation *> observation)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlDuration);
-    if (!d->observations.contains(observation)) {
-        d->observations.insert(observation);
-    }
+    Q_UNUSED(observation);
 }
 
-void QUmlDuration::removeObservation(QUmlObservation *observation)
+void QUmlDuration::removeObservation(QSet<QUmlObservation *> observation)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlDuration);
-    if (d->observations.contains(observation)) {
-        d->observations.remove(observation);
-    }
-}
-
-void QUmlDuration::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDuration")][QString::fromLatin1("expr")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDuration")][QString::fromLatin1("expr")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDuration")][QString::fromLatin1("expr")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The value of the Duration.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDuration")][QString::fromLatin1("expr")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDuration")][QString::fromLatin1("expr")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDuration")][QString::fromLatin1("expr")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDuration")][QString::fromLatin1("observations")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDuration")][QString::fromLatin1("observations")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDuration")][QString::fromLatin1("observations")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Refers to the time and duration observations that are involved in expr.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDuration")][QString::fromLatin1("observations")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDuration")][QString::fromLatin1("observations")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDuration")][QString::fromLatin1("observations")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlValueSpecification::setPropertyData();
+    Q_UNUSED(observation);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlduration.cpp"
 

@@ -41,10 +41,9 @@
 #ifndef QUMLTIMEEVENT_P_H
 #define QUMLTIMEEVENT_P_H
 
-// Base class includes
-#include "private/qumlevent_p.h"
-
 #include "QtUml/QUmlTimeEvent"
+
+#include "private/qumlevent_p.h"
 
 QT_BEGIN_HEADER
 
@@ -52,17 +51,10 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlTimeExpression;
-class QUmlTimeEvent;
-
 class Q_UML_EXPORT QUmlTimeEventPrivate : public QUmlEventPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlTimeEvent)
-
 public:
-    explicit QUmlTimeEventPrivate();
-    virtual ~QUmlTimeEventPrivate();
+    QUmlTimeEventPrivate();
 
     bool isRelative;
     QUmlTimeExpression *when;

@@ -41,20 +41,14 @@
 #include "qumlreplyaction.h"
 #include "qumlreplyaction_p.h"
 
-#include <QtUml/QUmlTrigger>
 #include <QtUml/QUmlInputPin>
-
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
+#include <QtUml/QUmlTrigger>
 
 QT_BEGIN_NAMESPACE
 
 QUmlReplyActionPrivate::QUmlReplyActionPrivate() :
     replyToCall(0),
     returnInformation(0)
-{
-}
-
-QUmlReplyActionPrivate::~QUmlReplyActionPrivate()
 {
 }
 
@@ -66,45 +60,44 @@ QUmlReplyActionPrivate::~QUmlReplyActionPrivate()
     \brief A reply action is an action that accepts a set of return values and a value containing return information produced by a previous accept call action. The reply action returns the values to the caller of the previous call, completing execution of the call.
  */
 
-QUmlReplyAction::QUmlReplyAction(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlAction(*new QUmlReplyActionPrivate, wrapper, parent)
+QUmlReplyAction::QUmlReplyAction(bool create_d_ptr) :
+    QUmlAction(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlReplyActionPrivate);
 }
 
-QUmlReplyAction::QUmlReplyAction(QUmlReplyActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlAction(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlReplyAction::~QUmlReplyAction()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlReplyAction
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     The trigger specifying the operation whose call is being replied to.
  */
 QUmlTrigger *QUmlReplyAction::replyToCall() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlReplyAction);
-    return d->replyToCall;
+    return 0;
 }
 
 void QUmlReplyAction::setReplyToCall(QUmlTrigger *replyToCall)
 {
-    // This is a read-write association end
+    Q_UNUSED(replyToCall);
+}
 
-    Q_D(QUmlReplyAction);
-    if (d->replyToCall != replyToCall) {
-        d->replyToCall = replyToCall;
-    }
+/*!
+    A list of pins containing the reply values of the operation. These values are returned to the caller.
+ */
+QSet<QUmlInputPin *> QUmlReplyAction::replyValue() const
+{
+    return QSet<QUmlInputPin *>();
+}
+
+void QUmlReplyAction::addReplyValue(QSet<QUmlInputPin *> replyValue)
+{
+    Q_UNUSED(replyValue);
+}
+
+void QUmlReplyAction::removeReplyValue(QSet<QUmlInputPin *> replyValue)
+{
+    Q_UNUSED(replyValue);
 }
 
 /*!
@@ -112,94 +105,13 @@ void QUmlReplyAction::setReplyToCall(QUmlTrigger *replyToCall)
  */
 QUmlInputPin *QUmlReplyAction::returnInformation() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlReplyAction);
-    return d->returnInformation;
+    return 0;
 }
 
 void QUmlReplyAction::setReturnInformation(QUmlInputPin *returnInformation)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlReplyAction);
-    if (d->returnInformation != returnInformation) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActionPrivate *>(d))->removeInput(qwrappedobject_cast<QUmlInputPin *>(d->returnInformation));
-
-        d->returnInformation = returnInformation;
-
-        // Adjust subsetted property(ies)
-        if (returnInformation) {
-            (qwrappedobject_cast<QUmlActionPrivate *>(d))->addInput(qwrappedobject_cast<QUmlInputPin *>(returnInformation));
-        }
-    }
-}
-
-/*!
-    A list of pins containing the reply values of the operation. These values are returned to the caller.
- */
-QSet<QUmlInputPin *> QUmlReplyAction::replyValues() const
-{
-    // This is a read-write association end
-
-    Q_D(const QUmlReplyAction);
-    return d->replyValues;
-}
-
-void QUmlReplyAction::addReplyValue(QUmlInputPin *replyValue)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlReplyAction);
-    if (!d->replyValues.contains(replyValue)) {
-        d->replyValues.insert(replyValue);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActionPrivate *>(d))->addInput(qwrappedobject_cast<QUmlInputPin *>(replyValue));
-    }
-}
-
-void QUmlReplyAction::removeReplyValue(QUmlInputPin *replyValue)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlReplyAction);
-    if (d->replyValues.contains(replyValue)) {
-        d->replyValues.remove(replyValue);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActionPrivate *>(d))->removeInput(qwrappedobject_cast<QUmlInputPin *>(replyValue));
-    }
-}
-
-void QUmlReplyAction::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReplyAction")][QString::fromLatin1("replyToCall")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReplyAction")][QString::fromLatin1("replyToCall")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReplyAction")][QString::fromLatin1("replyToCall")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The trigger specifying the operation whose call is being replied to.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReplyAction")][QString::fromLatin1("replyToCall")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReplyAction")][QString::fromLatin1("replyToCall")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReplyAction")][QString::fromLatin1("replyToCall")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReplyAction")][QString::fromLatin1("returnInformation")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReplyAction")][QString::fromLatin1("returnInformation")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReplyAction")][QString::fromLatin1("returnInformation")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A pin containing the return information value produced by an earlier AcceptCallAction.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReplyAction")][QString::fromLatin1("returnInformation")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReplyAction")][QString::fromLatin1("returnInformation")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlAction::inputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReplyAction")][QString::fromLatin1("returnInformation")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReplyAction")][QString::fromLatin1("replyValues")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReplyAction")][QString::fromLatin1("replyValues")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReplyAction")][QString::fromLatin1("replyValues")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A list of pins containing the reply values of the operation. These values are returned to the caller.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReplyAction")][QString::fromLatin1("replyValues")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReplyAction")][QString::fromLatin1("replyValues")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlAction::inputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReplyAction")][QString::fromLatin1("replyValues")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlAction::setPropertyData();
+    Q_UNUSED(returnInformation);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlreplyaction.cpp"
 

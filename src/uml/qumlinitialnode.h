@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlControlNode>
 
 QT_BEGIN_HEADER
@@ -51,25 +50,11 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-
 class QUmlInitialNodePrivate;
-
 class Q_UML_EXPORT QUmlInitialNode : public QUmlControlNode
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_DISABLE_COPY(QUmlInitialNode)
-    Q_DECLARE_PRIVATE(QUmlInitialNode)
-
 public:
-    Q_INVOKABLE explicit QUmlInitialNode(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlInitialNode();
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlInitialNode(QUmlInitialNodePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    QUmlInitialNode(bool create_d_ptr = true);
 };
 
 QT_END_NAMESPACE

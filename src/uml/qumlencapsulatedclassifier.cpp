@@ -41,19 +41,11 @@
 #include "qumlencapsulatedclassifier.h"
 #include "qumlencapsulatedclassifier_p.h"
 
-#include <QtQml/QQmlContext>
-
 #include <QtUml/QUmlPort>
-
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
 QT_BEGIN_NAMESPACE
 
 QUmlEncapsulatedClassifierPrivate::QUmlEncapsulatedClassifierPrivate()
-{
-}
-
-QUmlEncapsulatedClassifierPrivate::~QUmlEncapsulatedClassifierPrivate()
 {
 }
 
@@ -65,64 +57,22 @@ QUmlEncapsulatedClassifierPrivate::~QUmlEncapsulatedClassifierPrivate()
     \brief A classifier has the ability to own ports as specific and type checked interaction points.
  */
 
-QUmlEncapsulatedClassifier::QUmlEncapsulatedClassifier(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlStructuredClassifier(*new QUmlEncapsulatedClassifierPrivate, wrapper, parent)
+QUmlEncapsulatedClassifier::QUmlEncapsulatedClassifier(bool create_d_ptr) :
+    QUmlStructuredClassifier(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlEncapsulatedClassifierPrivate);
 }
 
-QUmlEncapsulatedClassifier::QUmlEncapsulatedClassifier(QUmlEncapsulatedClassifierPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlStructuredClassifier(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlEncapsulatedClassifier::~QUmlEncapsulatedClassifier()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlEncapsulatedClassifier
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     References a set of ports that an encapsulated classifier owns.
  */
-QSet<QUmlPort *> QUmlEncapsulatedClassifier::ownedPorts() const
+QSet<QUmlPort *> QUmlEncapsulatedClassifier::ownedPort() const
 {
-    // This is a read-only derived association end
-
-    Q_D(const QUmlEncapsulatedClassifier);
-    QSet<QUmlPort *> ownedPorts_;
-    foreach (QUmlProperty *property, d->ownedAttributes)
-        if (QUmlPort *port = qwrappedobject_cast<QUmlPort *>(property))
-            ownedPorts_.insert(port);
-    return ownedPorts_;
-}
-
-void QUmlEncapsulatedClassifier::setQmlContextProperties(QQmlContext *qmlContext)
-{
-    QVariantList portList;
-    foreach (QUmlPort *port, ownedPorts())
-        portList << qVariantFromValue(port);
-    qmlContext->setContextProperty(QString::fromLatin1("ports"), portList);
-
-    QUmlStructuredClassifier::setQmlContextProperties(qmlContext);
-}
-
-void QUmlEncapsulatedClassifier::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlEncapsulatedClassifier")][QString::fromLatin1("ownedPorts")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlEncapsulatedClassifier")][QString::fromLatin1("ownedPorts")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlEncapsulatedClassifier")][QString::fromLatin1("ownedPorts")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References a set of ports that an encapsulated classifier owns.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlEncapsulatedClassifier")][QString::fromLatin1("ownedPorts")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlEncapsulatedClassifier")][QString::fromLatin1("ownedPorts")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlStructuredClassifier::ownedAttributes");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlEncapsulatedClassifier")][QString::fromLatin1("ownedPorts")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlStructuredClassifier::setPropertyData();
+    return QSet<QUmlPort *>();
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlencapsulatedclassifier.cpp"
 

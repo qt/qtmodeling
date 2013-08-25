@@ -43,17 +43,11 @@
 
 #include <QtUml/QUmlProtocolStateMachine>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlProtocolConformancePrivate::QUmlProtocolConformancePrivate() :
-    specificMachine(0),
-    generalMachine(0)
-{
-}
-
-QUmlProtocolConformancePrivate::~QUmlProtocolConformancePrivate()
+    generalMachine(0),
+    specificMachine(0)
 {
 }
 
@@ -65,113 +59,40 @@ QUmlProtocolConformancePrivate::~QUmlProtocolConformancePrivate()
     \brief Protocol state machines can be redefined into more specific protocol state machines, or into behavioral state machines. Protocol conformance declares that the specific protocol state machine specifies a protocol that conforms to the general state machine one, or that the specific behavioral state machine abide by the protocol of the general protocol state machine.
  */
 
-QUmlProtocolConformance::QUmlProtocolConformance(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlDirectedRelationship(*new QUmlProtocolConformancePrivate, wrapper, parent)
+QUmlProtocolConformance::QUmlProtocolConformance(bool create_d_ptr) :
+    QUmlDirectedRelationship(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlProtocolConformancePrivate);
 }
 
-QUmlProtocolConformance::QUmlProtocolConformance(QUmlProtocolConformancePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlDirectedRelationship(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlProtocolConformance::~QUmlProtocolConformance()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlProtocolConformance
-// ---------------------------------------------------------------
-
-/*!
-    Specifies the state machine which conforms to the general state machine.
- */
-QUmlProtocolStateMachine *QUmlProtocolConformance::specificMachine() const
-{
-    // This is a read-write association end
-
-    Q_D(const QUmlProtocolConformance);
-    return d->specificMachine;
-}
-
-void QUmlProtocolConformance::setSpecificMachine(QUmlProtocolStateMachine *specificMachine)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlProtocolConformance);
-    if (d->specificMachine != specificMachine) {
-        // Adjust opposite property
-        if (d->specificMachine)
-            d->specificMachine->removeConformance(this);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlDirectedRelationshipPrivate *>(d))->removeSource(qwrappedobject_cast<QUmlElement *>(d->specificMachine));
-
-        d->specificMachine = specificMachine;
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->setOwner(qwrappedobject_cast<QUmlElement *>(specificMachine));
-        if (specificMachine) {
-            (qwrappedobject_cast<QUmlDirectedRelationshipPrivate *>(d))->addSource(qwrappedobject_cast<QUmlElement *>(specificMachine));
-        }
-
-        // Adjust opposite property
-        if (specificMachine)
-            specificMachine->addConformance(this);
-    }
-}
+// Owned attributes
 
 /*!
     Specifies the protocol state machine to which the specific state machine conforms.
  */
 QUmlProtocolStateMachine *QUmlProtocolConformance::generalMachine() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlProtocolConformance);
-    return d->generalMachine;
+    return 0;
 }
 
 void QUmlProtocolConformance::setGeneralMachine(QUmlProtocolStateMachine *generalMachine)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlProtocolConformance);
-    if (d->generalMachine != generalMachine) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlDirectedRelationshipPrivate *>(d))->removeTarget(qwrappedobject_cast<QUmlElement *>(d->generalMachine));
-
-        d->generalMachine = generalMachine;
-
-        // Adjust subsetted property(ies)
-        if (generalMachine) {
-            (qwrappedobject_cast<QUmlDirectedRelationshipPrivate *>(d))->addTarget(qwrappedobject_cast<QUmlElement *>(generalMachine));
-        }
-    }
+    Q_UNUSED(generalMachine);
 }
 
-void QUmlProtocolConformance::setPropertyData()
+/*!
+    Specifies the state machine which conforms to the general state machine.
+ */
+QUmlProtocolStateMachine *QUmlProtocolConformance::specificMachine() const
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlProtocolConformance")][QString::fromLatin1("specificMachine")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlProtocolConformance")][QString::fromLatin1("specificMachine")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlProtocolConformance")][QString::fromLatin1("specificMachine")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the state machine which conforms to the general state machine.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlProtocolConformance")][QString::fromLatin1("specificMachine")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlProtocolConformance")][QString::fromLatin1("specificMachine")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::owner QUmlDirectedRelationship::sources");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlProtocolConformance")][QString::fromLatin1("specificMachine")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlProtocolStateMachine::conformance");
+    return 0;
+}
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlProtocolConformance")][QString::fromLatin1("generalMachine")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlProtocolConformance")][QString::fromLatin1("generalMachine")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlProtocolConformance")][QString::fromLatin1("generalMachine")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the protocol state machine to which the specific state machine conforms.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlProtocolConformance")][QString::fromLatin1("generalMachine")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlProtocolConformance")][QString::fromLatin1("generalMachine")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlDirectedRelationship::targets");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlProtocolConformance")][QString::fromLatin1("generalMachine")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlDirectedRelationship::setPropertyData();
+void QUmlProtocolConformance::setSpecificMachine(QUmlProtocolStateMachine *specificMachine)
+{
+    Q_UNUSED(specificMachine);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlprotocolconformance.cpp"
 

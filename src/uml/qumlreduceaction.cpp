@@ -41,23 +41,17 @@
 #include "qumlreduceaction.h"
 #include "qumlreduceaction_p.h"
 
-#include <QtUml/QUmlInputPin>
 #include <QtUml/QUmlBehavior>
+#include <QtUml/QUmlInputPin>
 #include <QtUml/QUmlOutputPin>
-
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
 QT_BEGIN_NAMESPACE
 
 QUmlReduceActionPrivate::QUmlReduceActionPrivate() :
-    isOrdered(false),
-    result(0),
     collection(0),
-    reducer(0)
-{
-}
-
-QUmlReduceActionPrivate::~QUmlReduceActionPrivate()
+    isOrdered(false),
+    reducer(0),
+    result(0)
 {
 }
 
@@ -69,115 +63,39 @@ QUmlReduceActionPrivate::~QUmlReduceActionPrivate()
     \brief A reduce action is an action that reduces a collection to a single value by combining the elements of the collection.
  */
 
-QUmlReduceAction::QUmlReduceAction(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlAction(*new QUmlReduceActionPrivate, wrapper, parent)
+QUmlReduceAction::QUmlReduceAction(bool create_d_ptr) :
+    QUmlAction(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlReduceActionPrivate);
 }
 
-QUmlReduceAction::QUmlReduceAction(QUmlReduceActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlAction(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlReduceAction::~QUmlReduceAction()
-{
-}
-
-// ---------------------------------------------------------------
-// ATTRIBUTES FROM QUmlReduceAction
-// ---------------------------------------------------------------
-
-/*!
-    Tells whether the order of the input collection should determine the order in which the behavior is applied to its elements.
- */
-bool QUmlReduceAction::isOrdered() const
-{
-    // This is a read-write attribute
-
-    Q_D(const QUmlReduceAction);
-    return d->isOrdered;
-}
-
-void QUmlReduceAction::setOrdered(bool isOrdered)
-{
-    // This is a read-write attribute
-
-    Q_D(QUmlReduceAction);
-    if (d->isOrdered != isOrdered) {
-        d->isOrdered = isOrdered;
-    }
-    d->modifiedResettableProperties << QString::fromLatin1("isOrdered");
-}
-
-void QUmlReduceAction::unsetOrdered()
-{
-    setOrdered(false);
-    Q_D(QUmlReduceAction);
-    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isOrdered"));
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlReduceAction
-// ---------------------------------------------------------------
-
-/*!
-    Gives the output pin on which the result is put.
- */
-QUmlOutputPin *QUmlReduceAction::result() const
-{
-    // This is a read-write association end
-
-    Q_D(const QUmlReduceAction);
-    return d->result;
-}
-
-void QUmlReduceAction::setResult(QUmlOutputPin *result)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlReduceAction);
-    if (d->result != result) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActionPrivate *>(d))->removeOutput(qwrappedobject_cast<QUmlOutputPin *>(d->result));
-
-        d->result = result;
-
-        // Adjust subsetted property(ies)
-        if (result) {
-            (qwrappedobject_cast<QUmlActionPrivate *>(d))->addOutput(qwrappedobject_cast<QUmlOutputPin *>(result));
-        }
-    }
-}
+// Owned attributes
 
 /*!
     The collection to be reduced.
  */
 QUmlInputPin *QUmlReduceAction::collection() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlReduceAction);
-    return d->collection;
+    return 0;
 }
 
 void QUmlReduceAction::setCollection(QUmlInputPin *collection)
 {
-    // This is a read-write association end
+    Q_UNUSED(collection);
+}
 
-    Q_D(QUmlReduceAction);
-    if (d->collection != collection) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActionPrivate *>(d))->removeInput(qwrappedobject_cast<QUmlInputPin *>(d->collection));
+/*!
+    Tells whether the order of the input collection should determine the order in which the behavior is applied to its elements.
+ */
+bool QUmlReduceAction::isOrdered() const
+{
+    return bool();
+}
 
-        d->collection = collection;
-
-        // Adjust subsetted property(ies)
-        if (collection) {
-            (qwrappedobject_cast<QUmlActionPrivate *>(d))->addInput(qwrappedobject_cast<QUmlInputPin *>(collection));
-        }
-    }
+void QUmlReduceAction::setOrdered(bool isOrdered)
+{
+    Q_UNUSED(isOrdered);
 }
 
 /*!
@@ -185,56 +103,26 @@ void QUmlReduceAction::setCollection(QUmlInputPin *collection)
  */
 QUmlBehavior *QUmlReduceAction::reducer() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlReduceAction);
-    return d->reducer;
+    return 0;
 }
 
 void QUmlReduceAction::setReducer(QUmlBehavior *reducer)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlReduceAction);
-    if (d->reducer != reducer) {
-        d->reducer = reducer;
-    }
+    Q_UNUSED(reducer);
 }
 
-void QUmlReduceAction::setPropertyData()
+/*!
+    Gives the output pin on which the result is put.
+ */
+QUmlOutputPin *QUmlReduceAction::result() const
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReduceAction")][QString::fromLatin1("isOrdered")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReduceAction")][QString::fromLatin1("isOrdered")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReduceAction")][QString::fromLatin1("isOrdered")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Tells whether the order of the input collection should determine the order in which the behavior is applied to its elements.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReduceAction")][QString::fromLatin1("isOrdered")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReduceAction")][QString::fromLatin1("isOrdered")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReduceAction")][QString::fromLatin1("isOrdered")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    return 0;
+}
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReduceAction")][QString::fromLatin1("result")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReduceAction")][QString::fromLatin1("result")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReduceAction")][QString::fromLatin1("result")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Gives the output pin on which the result is put.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReduceAction")][QString::fromLatin1("result")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReduceAction")][QString::fromLatin1("result")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlAction::outputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReduceAction")][QString::fromLatin1("result")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReduceAction")][QString::fromLatin1("collection")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReduceAction")][QString::fromLatin1("collection")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReduceAction")][QString::fromLatin1("collection")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The collection to be reduced.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReduceAction")][QString::fromLatin1("collection")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReduceAction")][QString::fromLatin1("collection")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlAction::inputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReduceAction")][QString::fromLatin1("collection")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReduceAction")][QString::fromLatin1("reducer")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReduceAction")][QString::fromLatin1("reducer")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReduceAction")][QString::fromLatin1("reducer")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Behavior that is applied to two elements of the input collection to produce a value that is the same type as elements of the collection.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReduceAction")][QString::fromLatin1("reducer")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReduceAction")][QString::fromLatin1("reducer")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReduceAction")][QString::fromLatin1("reducer")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlAction::setPropertyData();
+void QUmlReduceAction::setResult(QUmlOutputPin *result)
+{
+    Q_UNUSED(result);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlreduceaction.cpp"
 

@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlCreateLinkAction>
 
 QT_BEGIN_HEADER
@@ -52,33 +51,17 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlOutputPin;
 
 class QUmlCreateLinkObjectActionPrivate;
-
 class Q_UML_EXPORT QUmlCreateLinkObjectAction : public QUmlCreateLinkAction
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlOutputPin * result READ result WRITE setResult)
-
-    Q_DISABLE_COPY(QUmlCreateLinkObjectAction)
-    Q_DECLARE_PRIVATE(QUmlCreateLinkObjectAction)
-
 public:
-    Q_INVOKABLE explicit QUmlCreateLinkObjectAction(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlCreateLinkObjectAction();
+    QUmlCreateLinkObjectAction(bool create_d_ptr = true);
 
-    // Association ends from QUmlCreateLinkObjectAction
-    Q_INVOKABLE QUmlOutputPin *result() const;
-    Q_INVOKABLE void setResult(QUmlOutputPin *result);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlCreateLinkObjectAction(QUmlCreateLinkObjectActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlOutputPin *result() const;
+    void setResult(QUmlOutputPin *result);
 };
 
 QT_END_NAMESPACE

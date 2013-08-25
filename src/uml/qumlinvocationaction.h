@@ -43,11 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlAction>
-
-// Qt includes
-#include <QtCore/QList>
 
 QT_BEGIN_HEADER
 
@@ -55,38 +51,21 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlInputPin;
 class QUmlPort;
 
 class QUmlInvocationActionPrivate;
-
 class Q_UML_EXPORT QUmlInvocationAction : public QUmlAction
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QList<QUmlInputPin *> arguments READ arguments)
-    Q_PROPERTY(QUmlPort * onPort READ onPort WRITE setOnPort)
-
-    Q_DISABLE_COPY(QUmlInvocationAction)
-    Q_DECLARE_PRIVATE(QUmlInvocationAction)
-
 public:
-    Q_INVOKABLE explicit QUmlInvocationAction(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlInvocationAction();
+    Q_DECL_HIDDEN QUmlInvocationAction(bool create_d_ptr = true);
 
-    // Association ends from QUmlInvocationAction
-    Q_INVOKABLE QList<QUmlInputPin *> arguments() const;
-    Q_INVOKABLE void addArgument(QUmlInputPin *argument);
-    Q_INVOKABLE void removeArgument(QUmlInputPin *argument);
-    Q_INVOKABLE QUmlPort *onPort() const;
-    Q_INVOKABLE void setOnPort(QUmlPort *onPort);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlInvocationAction(QUmlInvocationActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QList<QUmlInputPin *> argument() const;
+    void addArgument(QList<QUmlInputPin *> argument);
+    void removeArgument(QList<QUmlInputPin *> argument);
+    QUmlPort *onPort() const;
+    void setOnPort(QUmlPort *onPort);
 };
 
 QT_END_NAMESPACE

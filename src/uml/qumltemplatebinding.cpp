@@ -45,17 +45,11 @@
 #include <QtUml/QUmlTemplateParameterSubstitution>
 #include <QtUml/QUmlTemplateSignature>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlTemplateBindingPrivate::QUmlTemplateBindingPrivate() :
-    signature(0),
-    boundElement(0)
-{
-}
-
-QUmlTemplateBindingPrivate::~QUmlTemplateBindingPrivate()
+    boundElement(0),
+    signature(0)
 {
 }
 
@@ -67,163 +61,58 @@ QUmlTemplateBindingPrivate::~QUmlTemplateBindingPrivate()
     \brief A template binding represents a relationship between a templateable element and a template. A template binding specifies the substitutions of actual parameters for the formal parameters of the template.
  */
 
-QUmlTemplateBinding::QUmlTemplateBinding(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlDirectedRelationship(*new QUmlTemplateBindingPrivate, wrapper, parent)
+QUmlTemplateBinding::QUmlTemplateBinding(bool create_d_ptr) :
+    QUmlDirectedRelationship(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlTemplateBindingPrivate);
 }
 
-QUmlTemplateBinding::QUmlTemplateBinding(QUmlTemplateBindingPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlDirectedRelationship(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlTemplateBinding::~QUmlTemplateBinding()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlTemplateBinding
-// ---------------------------------------------------------------
-
-/*!
-    The template signature for the template that is the target of the binding.
- */
-QUmlTemplateSignature *QUmlTemplateBinding::signature() const
-{
-    // This is a read-write association end
-
-    Q_D(const QUmlTemplateBinding);
-    return d->signature;
-}
-
-void QUmlTemplateBinding::setSignature(QUmlTemplateSignature *signature)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlTemplateBinding);
-    if (d->signature != signature) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlDirectedRelationshipPrivate *>(d))->removeTarget(qwrappedobject_cast<QUmlElement *>(d->signature));
-
-        d->signature = signature;
-
-        // Adjust subsetted property(ies)
-        if (signature) {
-            (qwrappedobject_cast<QUmlDirectedRelationshipPrivate *>(d))->addTarget(qwrappedobject_cast<QUmlElement *>(signature));
-        }
-    }
-}
+// Owned attributes
 
 /*!
     The element that is bound by this binding.
  */
 QUmlTemplateableElement *QUmlTemplateBinding::boundElement() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlTemplateBinding);
-    return d->boundElement;
+    return 0;
 }
 
 void QUmlTemplateBinding::setBoundElement(QUmlTemplateableElement *boundElement)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlTemplateBinding);
-    if (d->boundElement != boundElement) {
-        // Adjust opposite property
-        if (d->boundElement)
-            d->boundElement->removeTemplateBinding(this);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlDirectedRelationshipPrivate *>(d))->removeSource(qwrappedobject_cast<QUmlElement *>(d->boundElement));
-
-        d->boundElement = boundElement;
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->setOwner(qwrappedobject_cast<QUmlElement *>(boundElement));
-        if (boundElement) {
-            (qwrappedobject_cast<QUmlDirectedRelationshipPrivate *>(d))->addSource(qwrappedobject_cast<QUmlElement *>(boundElement));
-        }
-
-        // Adjust opposite property
-        if (boundElement)
-            boundElement->addTemplateBinding(this);
-    }
+    Q_UNUSED(boundElement);
 }
 
 /*!
     The parameter substitutions owned by this template binding.
  */
-QSet<QUmlTemplateParameterSubstitution *> QUmlTemplateBinding::parameterSubstitutions() const
+QSet<QUmlTemplateParameterSubstitution *> QUmlTemplateBinding::parameterSubstitution() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlTemplateBinding);
-    return d->parameterSubstitutions;
+    return QSet<QUmlTemplateParameterSubstitution *>();
 }
 
-void QUmlTemplateBinding::addParameterSubstitution(QUmlTemplateParameterSubstitution *parameterSubstitution)
+void QUmlTemplateBinding::addParameterSubstitution(QSet<QUmlTemplateParameterSubstitution *> parameterSubstitution)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlTemplateBinding);
-    if (!d->parameterSubstitutions.contains(parameterSubstitution)) {
-        d->parameterSubstitutions.insert(parameterSubstitution);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QUmlElement *>(parameterSubstitution));
-
-        // Adjust opposite property
-        parameterSubstitution->setTemplateBinding(this);
-    }
+    Q_UNUSED(parameterSubstitution);
 }
 
-void QUmlTemplateBinding::removeParameterSubstitution(QUmlTemplateParameterSubstitution *parameterSubstitution)
+void QUmlTemplateBinding::removeParameterSubstitution(QSet<QUmlTemplateParameterSubstitution *> parameterSubstitution)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlTemplateBinding);
-    if (d->parameterSubstitutions.contains(parameterSubstitution)) {
-        d->parameterSubstitutions.remove(parameterSubstitution);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QUmlElement *>(parameterSubstitution));
-
-        // Adjust opposite property
-        parameterSubstitution->setTemplateBinding(0);
-    }
+    Q_UNUSED(parameterSubstitution);
 }
 
-void QUmlTemplateBinding::setPropertyData()
+/*!
+    The template signature for the template that is the target of the binding.
+ */
+QUmlTemplateSignature *QUmlTemplateBinding::signature() const
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateBinding")][QString::fromLatin1("signature")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateBinding")][QString::fromLatin1("signature")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateBinding")][QString::fromLatin1("signature")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The template signature for the template that is the target of the binding.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateBinding")][QString::fromLatin1("signature")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateBinding")][QString::fromLatin1("signature")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlDirectedRelationship::targets");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateBinding")][QString::fromLatin1("signature")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
+    return 0;
+}
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateBinding")][QString::fromLatin1("boundElement")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateBinding")][QString::fromLatin1("boundElement")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateBinding")][QString::fromLatin1("boundElement")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The element that is bound by this binding.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateBinding")][QString::fromLatin1("boundElement")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateBinding")][QString::fromLatin1("boundElement")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::owner QUmlDirectedRelationship::sources");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateBinding")][QString::fromLatin1("boundElement")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlTemplateableElement::templateBinding");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateBinding")][QString::fromLatin1("parameterSubstitutions")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateBinding")][QString::fromLatin1("parameterSubstitutions")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateBinding")][QString::fromLatin1("parameterSubstitutions")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The parameter substitutions owned by this template binding.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateBinding")][QString::fromLatin1("parameterSubstitutions")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateBinding")][QString::fromLatin1("parameterSubstitutions")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateBinding")][QString::fromLatin1("parameterSubstitutions")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlTemplateParameterSubstitution::templateBinding");
-
-    QUmlDirectedRelationship::setPropertyData();
+void QUmlTemplateBinding::setSignature(QUmlTemplateSignature *signature)
+{
+    Q_UNUSED(signature);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumltemplatebinding.cpp"
 

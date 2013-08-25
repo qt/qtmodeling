@@ -41,15 +41,9 @@
 #include "qumlexecutionenvironment.h"
 #include "qumlexecutionenvironment_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlExecutionEnvironmentPrivate::QUmlExecutionEnvironmentPrivate()
-{
-}
-
-QUmlExecutionEnvironmentPrivate::~QUmlExecutionEnvironmentPrivate()
 {
 }
 
@@ -61,28 +55,12 @@ QUmlExecutionEnvironmentPrivate::~QUmlExecutionEnvironmentPrivate()
     \brief An execution environment is a node that offers an execution environment for specific types of components that are deployed on it in the form of executable artifacts.
  */
 
-QUmlExecutionEnvironment::QUmlExecutionEnvironment(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlNode(*new QUmlExecutionEnvironmentPrivate, wrapper, parent)
+QUmlExecutionEnvironment::QUmlExecutionEnvironment(bool create_d_ptr) :
+    QUmlNode(false)
 {
-    setPropertyData();
-}
-
-QUmlExecutionEnvironment::QUmlExecutionEnvironment(QUmlExecutionEnvironmentPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlNode(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlExecutionEnvironment::~QUmlExecutionEnvironment()
-{
-}
-
-void QUmlExecutionEnvironment::setPropertyData()
-{
-    QUmlNode::setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlExecutionEnvironmentPrivate);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlexecutionenvironment.cpp"
 

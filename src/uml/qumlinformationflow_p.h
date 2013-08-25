@@ -41,15 +41,10 @@
 #ifndef QUMLINFORMATIONFLOW_P_H
 #define QUMLINFORMATIONFLOW_P_H
 
-// Base class includes
-#include "private/qwrappedobject_p.h"
-#include "private/qumldirectedrelationship_p.h"
-#include "private/qumlpackageableelement_p.h"
-
 #include "QtUml/QUmlInformationFlow"
 
-// Qt includes
-#include "QtCore/QSet"
+#include "private/qumldirectedrelationship_p.h"
+#include "private/qumlpackageableelement_p.h"
 
 QT_BEGIN_HEADER
 
@@ -57,30 +52,18 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlConnector;
-class QUmlMessage;
-class QUmlActivityEdge;
-class QUmlNamedElement;
-class QUmlClassifier;
-class QUmlRelationship;
-class QUmlInformationFlow;
-
-class Q_UML_EXPORT QUmlInformationFlowPrivate : public QWrappedObjectPrivate
+class Q_UML_EXPORT QUmlInformationFlowPrivate : public QUmlDirectedRelationshipPrivate, public QUmlPackageableElementPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlInformationFlow)
-
 public:
-    explicit QUmlInformationFlowPrivate();
-    virtual ~QUmlInformationFlowPrivate();
+    QUmlInformationFlowPrivate();
 
-    QSet<QUmlNamedElement *> informationTargets;
-    QSet<QUmlConnector *> realizingConnectors;
     QSet<QUmlClassifier *> conveyed;
-    QSet<QUmlNamedElement *> informationSources;
-    QSet<QUmlMessage *> realizingMessages;
-    QSet<QUmlActivityEdge *> realizingActivityEdges;
-    QSet<QUmlRelationship *> realizations;
+    QSet<QUmlNamedElement *> informationSource;
+    QSet<QUmlNamedElement *> informationTarget;
+    QSet<QUmlRelationship *> realization;
+    QSet<QUmlActivityEdge *> realizingActivityEdge;
+    QSet<QUmlConnector *> realizingConnector;
+    QSet<QUmlMessage *> realizingMessage;
 };
 
 QT_END_NAMESPACE

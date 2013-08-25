@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlWriteVariableAction>
 
 QT_BEGIN_HEADER
@@ -52,39 +51,19 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlInputPin;
 
 class QUmlRemoveVariableValueActionPrivate;
-
 class Q_UML_EXPORT QUmlRemoveVariableValueAction : public QUmlWriteVariableAction
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(bool isRemoveDuplicates READ isRemoveDuplicates WRITE setRemoveDuplicates RESET unsetRemoveDuplicates)
-    Q_PROPERTY(QUmlInputPin * removeAt READ removeAt WRITE setRemoveAt)
-
-    Q_DISABLE_COPY(QUmlRemoveVariableValueAction)
-    Q_DECLARE_PRIVATE(QUmlRemoveVariableValueAction)
-
 public:
-    Q_INVOKABLE explicit QUmlRemoveVariableValueAction(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlRemoveVariableValueAction();
+    QUmlRemoveVariableValueAction(bool create_d_ptr = true);
 
-    // Attributes from QUmlRemoveVariableValueAction
-    Q_INVOKABLE bool isRemoveDuplicates() const;
-    Q_INVOKABLE void setRemoveDuplicates(bool isRemoveDuplicates);
-    Q_INVOKABLE void unsetRemoveDuplicates();
-
-    // Association ends from QUmlRemoveVariableValueAction
-    Q_INVOKABLE QUmlInputPin *removeAt() const;
-    Q_INVOKABLE void setRemoveAt(QUmlInputPin *removeAt);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlRemoveVariableValueAction(QUmlRemoveVariableValueActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    bool isRemoveDuplicates() const;
+    void setRemoveDuplicates(bool isRemoveDuplicates);
+    QUmlInputPin *removeAt() const;
+    void setRemoveAt(QUmlInputPin *removeAt);
 };
 
 QT_END_NAMESPACE

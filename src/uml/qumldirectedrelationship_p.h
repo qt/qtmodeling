@@ -41,13 +41,9 @@
 #ifndef QUMLDIRECTEDRELATIONSHIP_P_H
 #define QUMLDIRECTEDRELATIONSHIP_P_H
 
-// Base class includes
-#include "private/qumlrelationship_p.h"
-
 #include "QtUml/QUmlDirectedRelationship"
 
-// Qt includes
-#include "QtCore/QSet"
+#include "private/qumlrelationship_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,25 +51,13 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlElement;
-
 class Q_UML_EXPORT QUmlDirectedRelationshipPrivate : public QUmlRelationshipPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlDirectedRelationship)
-
 public:
-    explicit QUmlDirectedRelationshipPrivate();
-    virtual ~QUmlDirectedRelationshipPrivate();
+    QUmlDirectedRelationshipPrivate();
 
-    QSet<QUmlElement *> sources;
-    QSet<QUmlElement *> targets;
-
-    // Internal functions for read-only subsetted association ends
-    void addSource(QUmlElement *source);
-    void removeSource(QUmlElement *source);
-    void addTarget(QUmlElement *target);
-    void removeTarget(QUmlElement *target);
+    QSet<QUmlElement *> source;
+    QSet<QUmlElement *> target;
 };
 
 QT_END_NAMESPACE

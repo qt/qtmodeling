@@ -41,15 +41,9 @@
 #ifndef QUMLOPAQUEACTION_P_H
 #define QUMLOPAQUEACTION_P_H
 
-// Base class includes
-#include "private/qumlaction_p.h"
-
 #include "QtUml/QUmlOpaqueAction"
 
-// Qt includes
-#include "QtCore/QString"
-#include "QtCore/QList"
-#include "QtCore/QSet"
+#include "private/qumlaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -57,23 +51,15 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlInputPin;
-class QUmlOutputPin;
-class QUmlOpaqueAction;
-
 class Q_UML_EXPORT QUmlOpaqueActionPrivate : public QUmlActionPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlOpaqueAction)
-
 public:
-    explicit QUmlOpaqueActionPrivate();
-    virtual ~QUmlOpaqueActionPrivate();
+    QUmlOpaqueActionPrivate();
 
-    QList<QString> bodies;
-    QList<QString> languages;
-    QSet<QUmlInputPin *> inputValues;
-    QSet<QUmlOutputPin *> outputValues;
+    QList<QString> body;
+    QSet<QUmlInputPin *> inputValue;
+    QList<QString> language;
+    QSet<QUmlOutputPin *> outputValue;
 };
 
 QT_END_NAMESPACE

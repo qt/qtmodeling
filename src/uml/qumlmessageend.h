@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlNamedElement>
 
 QT_BEGIN_HEADER
@@ -52,33 +51,17 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlMessage;
 
 class QUmlMessageEndPrivate;
-
-class Q_UML_EXPORT QUmlMessageEnd : public QUmlNamedElement
+class Q_UML_EXPORT QUmlMessageEnd : public virtual QUmlNamedElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlMessage * message READ message WRITE setMessage)
-
-    Q_DISABLE_COPY(QUmlMessageEnd)
-    Q_DECLARE_PRIVATE(QUmlMessageEnd)
-
 public:
-    Q_INVOKABLE explicit QUmlMessageEnd(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlMessageEnd();
+    Q_DECL_HIDDEN QUmlMessageEnd(bool create_d_ptr = true);
 
-    // Association ends from QUmlMessageEnd
-    Q_INVOKABLE QUmlMessage *message() const;
-    Q_INVOKABLE void setMessage(QUmlMessage *message);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlMessageEnd(QUmlMessageEndPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlMessage *message() const;
+    void setMessage(QUmlMessage *message);
 };
 
 QT_END_NAMESPACE

@@ -43,15 +43,9 @@
 
 #include <QtUml/QUmlLinkEndDestructionData>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlDestroyLinkActionPrivate::QUmlDestroyLinkActionPrivate()
-{
-}
-
-QUmlDestroyLinkActionPrivate::~QUmlDestroyLinkActionPrivate()
 {
 }
 
@@ -63,78 +57,32 @@ QUmlDestroyLinkActionPrivate::~QUmlDestroyLinkActionPrivate()
     \brief A destroy link action is a write link action that destroys links and link objects.
  */
 
-QUmlDestroyLinkAction::QUmlDestroyLinkAction(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlWriteLinkAction(*new QUmlDestroyLinkActionPrivate, wrapper, parent)
+QUmlDestroyLinkAction::QUmlDestroyLinkAction(bool create_d_ptr) :
+    QUmlWriteLinkAction(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlDestroyLinkActionPrivate);
 }
 
-QUmlDestroyLinkAction::QUmlDestroyLinkAction(QUmlDestroyLinkActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlWriteLinkAction(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlDestroyLinkAction::~QUmlDestroyLinkAction()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlDestroyLinkAction
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     Specifies ends of association and inputs.
  */
 QSet<QUmlLinkEndDestructionData *> QUmlDestroyLinkAction::endData() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlDestroyLinkAction);
-    return d->endData;
+    return QSet<QUmlLinkEndDestructionData *>();
 }
 
-void QUmlDestroyLinkAction::addEndData(QUmlLinkEndDestructionData *endData)
+void QUmlDestroyLinkAction::addEndData(QSet<QUmlLinkEndDestructionData *> endData)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlDestroyLinkAction);
-    if (!d->endData.contains(endData)) {
-        d->endData.insert(endData);
-        qTopLevelWrapper(endData)->setParent(qTopLevelWrapper(this));
-
-        // Adjust redefined property(ies)
-        (qwrappedobject_cast<QUmlLinkAction *>(this))->addEndData(qwrappedobject_cast<QUmlLinkEndData *>(endData));
-    }
+    Q_UNUSED(endData);
 }
 
-void QUmlDestroyLinkAction::removeEndData(QUmlLinkEndDestructionData *endData)
+void QUmlDestroyLinkAction::removeEndData(QSet<QUmlLinkEndDestructionData *> endData)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlDestroyLinkAction);
-    if (d->endData.contains(endData)) {
-        d->endData.remove(endData);
-        qTopLevelWrapper(endData)->setParent(0);
-
-        // Adjust redefined property(ies)
-        (qwrappedobject_cast<QUmlLinkAction *>(this))->removeEndData(qwrappedobject_cast<QUmlLinkEndData *>(endData));
-    }
-}
-
-void QUmlDestroyLinkAction::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDestroyLinkAction")][QString::fromLatin1("endData")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDestroyLinkAction")][QString::fromLatin1("endData")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDestroyLinkAction")][QString::fromLatin1("endData")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies ends of association and inputs.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDestroyLinkAction")][QString::fromLatin1("endData")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QUmlLinkAction::endData");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDestroyLinkAction")][QString::fromLatin1("endData")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDestroyLinkAction")][QString::fromLatin1("endData")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlWriteLinkAction::setPropertyData();
+    Q_UNUSED(endData);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumldestroylinkaction.cpp"
 

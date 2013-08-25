@@ -41,16 +41,11 @@
 #ifndef QUMLINSTANCESPECIFICATION_P_H
 #define QUMLINSTANCESPECIFICATION_P_H
 
-// Base class includes
-#include "private/qwrappedobject_p.h"
+#include "QtUml/QUmlInstanceSpecification"
+
 #include "private/qumldeployedartifact_p.h"
 #include "private/qumlpackageableelement_p.h"
 #include "private/qumldeploymenttarget_p.h"
-
-#include "QtUml/QUmlInstanceSpecification"
-
-// Qt includes
-#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 
@@ -58,23 +53,14 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlClassifier;
-class QUmlSlot;
-class QUmlValueSpecification;
-class QUmlInstanceSpecification;
-
-class Q_UML_EXPORT QUmlInstanceSpecificationPrivate : public QWrappedObjectPrivate
+class Q_UML_EXPORT QUmlInstanceSpecificationPrivate : public QUmlDeployedArtifactPrivate, public QUmlPackageableElementPrivate, public QUmlDeploymentTargetPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlInstanceSpecification)
-
 public:
-    explicit QUmlInstanceSpecificationPrivate();
-    virtual ~QUmlInstanceSpecificationPrivate();
+    QUmlInstanceSpecificationPrivate();
 
-    QSet<QUmlClassifier *> classifiers;
+    QSet<QUmlClassifier *> classifier;
+    QSet<QUmlSlot *> slot_;
     QUmlValueSpecification *specification;
-    QSet<QUmlSlot *> slots_;
 };
 
 QT_END_NAMESPACE

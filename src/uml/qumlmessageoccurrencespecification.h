@@ -43,8 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
-#include <QtWrappedObjects/QWrappedObject>
 #include <QtUml/QUmlOccurrenceSpecification>
 #include <QtUml/QUmlMessageEnd>
 
@@ -53,68 +51,11 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-
 class QUmlMessageOccurrenceSpecificationPrivate;
-
-class Q_UML_EXPORT QUmlMessageOccurrenceSpecification : public QWrappedObject
+class Q_UML_EXPORT QUmlMessageOccurrenceSpecification : public QUmlOccurrenceSpecification, public QUmlMessageEnd
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QSet<QUmlElement *> ownedElements READ ownedElements)
-    Q_PROPERTY(QUmlElement * owner READ owner)
-    Q_PROPERTY(QSet<QUmlComment *> ownedComments READ ownedComments)
-
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QUmlStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QUmlNamespace * namespace_ READ namespace_)
-    Q_PROPERTY(QSet<QUmlDependency *> clientDependencies READ clientDependencies)
-
-    Q_PROPERTY(QUmlMessage * message READ message WRITE setMessage)
-
-    Q_DISABLE_COPY(QUmlMessageOccurrenceSpecification)
-    Q_DECLARE_PRIVATE(QUmlMessageOccurrenceSpecification)
-
 public:
-    Q_INVOKABLE explicit QUmlMessageOccurrenceSpecification(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlMessageOccurrenceSpecification();
-
-    // Association ends from aggregated QUmlElement
-    Q_INVOKABLE QSet<QUmlElement *> ownedElements() const;
-    Q_INVOKABLE QUmlElement *owner() const;
-    Q_INVOKABLE QSet<QUmlComment *> ownedComments() const;
-    Q_INVOKABLE void addOwnedComment(QUmlComment *ownedComment);
-    Q_INVOKABLE void removeOwnedComment(QUmlComment *ownedComment);
-
-    // Attributes from aggregated QUmlNamedElement
-    Q_INVOKABLE QString name() const;
-    Q_INVOKABLE void setName(QString name);
-    Q_INVOKABLE QtUml::VisibilityKind visibility() const;
-    Q_INVOKABLE void setVisibility(QtUml::VisibilityKind visibility);
-    Q_INVOKABLE QString qualifiedName() const;
-
-    // Association ends from aggregated QUmlNamedElement
-    Q_INVOKABLE QUmlStringExpression *nameExpression() const;
-    Q_INVOKABLE void setNameExpression(QUmlStringExpression *nameExpression);
-    Q_INVOKABLE QUmlNamespace *namespace_() const;
-    Q_INVOKABLE QSet<QUmlDependency *> clientDependencies() const;
-    Q_INVOKABLE void addClientDependency(QUmlDependency *clientDependency);
-    Q_INVOKABLE void removeClientDependency(QUmlDependency *clientDependency);
-
-    // Association ends from aggregated QUmlMessageEnd
-    Q_INVOKABLE QUmlMessage *message() const;
-    Q_INVOKABLE void setMessage(QUmlMessage *message);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlMessageOccurrenceSpecification(QUmlMessageOccurrenceSpecificationPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-
-private:
-    QUmlOccurrenceSpecification *_wrappedUmlOccurrenceSpecification;
-    QUmlMessageEnd *_wrappedUmlMessageEnd;
+    QUmlMessageOccurrenceSpecification(bool create_d_ptr = true);
 };
 
 QT_END_NAMESPACE

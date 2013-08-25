@@ -41,17 +41,9 @@
 #ifndef QUMLMESSAGE_P_H
 #define QUMLMESSAGE_P_H
 
-// Base class includes
-#include "private/qumlnamedelement_p.h"
-
 #include "QtUml/QUmlMessage"
 
-// QtUml includes
-#include "QtUml/QtUmlNamespace"
-#include "QtUml/QtUmlNamespace"
-
-// Qt includes
-#include "QtCore/QList"
+#include "private/qumlnamedelement_p.h"
 
 QT_BEGIN_HEADER
 
@@ -59,28 +51,19 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlMessageEnd;
-class QUmlInteraction;
-class QUmlValueSpecification;
-class QUmlConnector;
-class QUmlMessage;
-
 class Q_UML_EXPORT QUmlMessagePrivate : public QUmlNamedElementPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlMessage)
-
 public:
-    explicit QUmlMessagePrivate();
-    virtual ~QUmlMessagePrivate();
+    QUmlMessagePrivate();
 
-    QtUml::MessageSort messageSort;
-    QUmlNamedElement *signature;
-    QList<QUmlValueSpecification *> arguments;
-    QUmlMessageEnd *receiveEvent;
-    QUmlInteraction *interaction;
-    QUmlMessageEnd *sendEvent;
+    QList<QUmlValueSpecification *> argument;
     QUmlConnector *connector;
+    QUmlInteraction *interaction;
+    QtUml::MessageKind messageKind;
+    QtUml::MessageSort messageSort;
+    QUmlMessageEnd *receiveEvent;
+    QUmlMessageEnd *sendEvent;
+    QUmlNamedElement *signature;
 };
 
 QT_END_NAMESPACE

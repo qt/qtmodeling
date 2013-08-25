@@ -41,16 +41,10 @@
 #ifndef QUMLCLASS_P_H
 #define QUMLCLASS_P_H
 
-// Base class includes
-#include "private/qwrappedobject_p.h"
-#include "private/qumlencapsulatedclassifier_p.h"
-#include "private/qumlbehavioredclassifier_p.h"
-
 #include "QtUml/QUmlClass"
 
-// Qt includes
-#include "QtCore/QList"
-#include "QtCore/QSet"
+#include "private/qumlencapsulatedclassifier_p.h"
+#include "private/qumlbehavioredclassifier_p.h"
 
 QT_BEGIN_HEADER
 
@@ -58,34 +52,19 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlClass;
-class QUmlReception;
-class QUmlNamedElement;
-class QUmlOperation;
-class QUmlClassifier;
-class QUmlExtension;
-class QUmlProperty;
-class QUmlClass;
-
-class Q_UML_EXPORT QUmlClassPrivate : public QWrappedObjectPrivate
+class Q_UML_EXPORT QUmlClassPrivate : public QUmlEncapsulatedClassifierPrivate, public QUmlBehavioredClassifierPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlClass)
-
 public:
-    explicit QUmlClassPrivate();
-    virtual ~QUmlClassPrivate();
+    QUmlClassPrivate();
 
+    QSet<QUmlExtension *> extension;
     bool isAbstract;
     bool isActive;
-    QList<QUmlClassifier *> nestedClassifiers;
-    QSet<QUmlReception *> ownedReceptions;
-    QList<QUmlOperation *> ownedOperations;
-    QList<QUmlProperty *> ownedAttributes;
-
-    // Internal functions for read-only subsetted association ends
-    void addExtension(QUmlExtension *extension);
-    void removeExtension(QUmlExtension *extension);
+    QList<QUmlClassifier *> nestedClassifier;
+    QList<QUmlProperty *> ownedAttribute;
+    QList<QUmlOperation *> ownedOperation;
+    QSet<QUmlReception *> ownedReception;
+    QSet<QUmlClass *> superClass;
 };
 
 QT_END_NAMESPACE

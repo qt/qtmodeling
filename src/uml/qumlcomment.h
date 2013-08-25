@@ -43,49 +43,25 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlElement>
-
-// Qt includes
-#include <QtCore/QString>
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-
 class QUmlCommentPrivate;
-
 class Q_UML_EXPORT QUmlComment : public QUmlElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QString body READ body WRITE setBody)
-    Q_PROPERTY(QSet<QUmlElement *> annotatedElements READ annotatedElements)
-
-    Q_DISABLE_COPY(QUmlComment)
-    Q_DECLARE_PRIVATE(QUmlComment)
-
 public:
-    Q_INVOKABLE explicit QUmlComment(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlComment();
+    QUmlComment(bool create_d_ptr = true);
 
-    // Attributes from QUmlComment
-    Q_INVOKABLE QString body() const;
-    Q_INVOKABLE void setBody(QString body);
-
-    // Association ends from QUmlComment
-    Q_INVOKABLE QSet<QUmlElement *> annotatedElements() const;
-    Q_INVOKABLE void addAnnotatedElement(QUmlElement *annotatedElement);
-    Q_INVOKABLE void removeAnnotatedElement(QUmlElement *annotatedElement);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlComment(QUmlCommentPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QSet<QUmlElement *> annotatedElement() const;
+    void addAnnotatedElement(QSet<QUmlElement *> annotatedElement);
+    void removeAnnotatedElement(QSet<QUmlElement *> annotatedElement);
+    QString body() const;
+    void setBody(QString body);
 };
 
 QT_END_NAMESPACE

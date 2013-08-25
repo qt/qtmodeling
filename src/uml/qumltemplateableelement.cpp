@@ -41,20 +41,14 @@
 #include "qumltemplateableelement.h"
 #include "qumltemplateableelement_p.h"
 
-#include <QtUml/QUmlTemplateSignature>
-#include <QtUml/QUmlTemplateBinding>
 #include <QtUml/QUmlParameterableElement>
-
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
+#include <QtUml/QUmlTemplateBinding>
+#include <QtUml/QUmlTemplateSignature>
 
 QT_BEGIN_NAMESPACE
 
 QUmlTemplateableElementPrivate::QUmlTemplateableElementPrivate() :
     ownedTemplateSignature(0)
-{
-}
-
-QUmlTemplateableElementPrivate::~QUmlTemplateableElementPrivate()
 {
 }
 
@@ -66,111 +60,56 @@ QUmlTemplateableElementPrivate::~QUmlTemplateableElementPrivate()
     \brief A templateable element is an element that can optionally be defined as a template and bound to other templates.
  */
 
-QUmlTemplateableElement::QUmlTemplateableElement(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlElement(*new QUmlTemplateableElementPrivate, wrapper, parent)
+QUmlTemplateableElement::QUmlTemplateableElement(bool create_d_ptr) :
+    QUmlElement(false)
 {
-    setPropertyData();
+    if (create_d_ptr) {
+        qDebug() << "QUmlTemplateableElement::QUmlTemplateableElement criando";
+        set_d_ptr(new QUmlTemplateableElementPrivate);
+    }
 }
 
-QUmlTemplateableElement::QUmlTemplateableElement(QUmlTemplateableElementPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlElement(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlTemplateableElement::~QUmlTemplateableElement()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlTemplateableElement
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     The optional template signature specifying the formal template parameters.
  */
 QUmlTemplateSignature *QUmlTemplateableElement::ownedTemplateSignature() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlTemplateableElement);
-    return d->ownedTemplateSignature;
+    return 0;
 }
 
 void QUmlTemplateableElement::setOwnedTemplateSignature(QUmlTemplateSignature *ownedTemplateSignature)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlTemplateableElement);
-    if (d->ownedTemplateSignature != ownedTemplateSignature) {
-        // Adjust opposite property
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QUmlElement *>(d->ownedTemplateSignature));
-
-        d->ownedTemplateSignature = ownedTemplateSignature;
-
-        // Adjust subsetted property(ies)
-        if (ownedTemplateSignature) {
-            (qwrappedobject_cast<QUmlElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QUmlElement *>(ownedTemplateSignature));
-        }
-
-        // Adjust opposite property
-        ownedTemplateSignature->setTemplate_(this);
-    }
+    Q_UNUSED(ownedTemplateSignature);
 }
 
 /*!
     The optional bindings from this element to templates.
  */
-QSet<QUmlTemplateBinding *> QUmlTemplateableElement::templateBindings() const
+QSet<QUmlTemplateBinding *> QUmlTemplateableElement::templateBinding() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlTemplateableElement);
-    return d->templateBindings;
+    return QSet<QUmlTemplateBinding *>();
 }
 
-void QUmlTemplateableElement::addTemplateBinding(QUmlTemplateBinding *templateBinding)
+void QUmlTemplateableElement::addTemplateBinding(QSet<QUmlTemplateBinding *> templateBinding)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlTemplateableElement);
-    if (!d->templateBindings.contains(templateBinding)) {
-        d->templateBindings.insert(templateBinding);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QUmlElement *>(templateBinding));
-
-        // Adjust opposite property
-        templateBinding->setBoundElement(this);
-    }
+    Q_UNUSED(templateBinding);
 }
 
-void QUmlTemplateableElement::removeTemplateBinding(QUmlTemplateBinding *templateBinding)
+void QUmlTemplateableElement::removeTemplateBinding(QSet<QUmlTemplateBinding *> templateBinding)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlTemplateableElement);
-    if (d->templateBindings.contains(templateBinding)) {
-        d->templateBindings.remove(templateBinding);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QUmlElement *>(templateBinding));
-
-        // Adjust opposite property
-        templateBinding->setBoundElement(0);
-    }
+    Q_UNUSED(templateBinding);
 }
+
+// Operations
 
 /*!
     The query isTemplate() returns whether this templateable element is actually a template.
  */
 bool QUmlTemplateableElement::isTemplate() const
 {
-    qWarning("QUmlTemplateableElement::isTemplate: operation to be implemented");
-
-    return bool(); // change here to your derived return
+    return bool ();
 }
 
 /*!
@@ -178,31 +117,8 @@ bool QUmlTemplateableElement::isTemplate() const
  */
 QSet<QUmlParameterableElement *> QUmlTemplateableElement::parameterableElements() const
 {
-    qWarning("QUmlTemplateableElement::parameterableElements: operation to be implemented");
-
-    return QSet<QUmlParameterableElement *>(); // change here to your derived return
-}
-
-void QUmlTemplateableElement::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateableElement")][QString::fromLatin1("ownedTemplateSignature")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateableElement")][QString::fromLatin1("ownedTemplateSignature")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateableElement")][QString::fromLatin1("ownedTemplateSignature")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The optional template signature specifying the formal template parameters.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateableElement")][QString::fromLatin1("ownedTemplateSignature")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateableElement")][QString::fromLatin1("ownedTemplateSignature")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateableElement")][QString::fromLatin1("ownedTemplateSignature")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlTemplateSignature::template");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateableElement")][QString::fromLatin1("templateBindings")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateableElement")][QString::fromLatin1("templateBindings")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateableElement")][QString::fromLatin1("templateBindings")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The optional bindings from this element to templates.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateableElement")][QString::fromLatin1("templateBindings")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateableElement")][QString::fromLatin1("templateBindings")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateableElement")][QString::fromLatin1("templateBindings")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlTemplateBinding::boundElement");
-
-    QUmlElement::setPropertyData();
+    return QSet<QUmlParameterableElement *> ();
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumltemplateableelement.cpp"
 

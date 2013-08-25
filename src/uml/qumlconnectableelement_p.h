@@ -41,15 +41,10 @@
 #ifndef QUMLCONNECTABLEELEMENT_P_H
 #define QUMLCONNECTABLEELEMENT_P_H
 
-// Base class includes
-#include "private/qwrappedobject_p.h"
-#include "private/qumltypedelement_p.h"
-#include "private/qumlparameterableelement_p.h"
-
 #include "QtUml/QUmlConnectableElement"
 
-// Qt includes
-#include "QtCore/QList"
+#include "private/qumltypedelement_p.h"
+#include "private/qumlparameterableelement_p.h"
 
 QT_BEGIN_HEADER
 
@@ -57,23 +52,13 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlConnectorEnd;
-class QUmlConnectableElementTemplateParameter;
-
-class Q_UML_EXPORT QUmlConnectableElementPrivate : public QWrappedObjectPrivate
+class Q_UML_EXPORT QUmlConnectableElementPrivate : public virtual QUmlTypedElementPrivate, public QUmlParameterableElementPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlConnectableElement)
-
 public:
-    explicit QUmlConnectableElementPrivate();
-    virtual ~QUmlConnectableElementPrivate();
+    QUmlConnectableElementPrivate();
 
+    QList<QUmlConnectorEnd *> end;
     QUmlConnectableElementTemplateParameter *templateParameter;
-
-    // Internal functions for read-only subsetted association ends
-    void addEnd(QUmlConnectorEnd *end);
-    void removeEnd(QUmlConnectorEnd *end);
 };
 
 QT_END_NAMESPACE

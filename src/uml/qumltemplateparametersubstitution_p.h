@@ -41,10 +41,9 @@
 #ifndef QUMLTEMPLATEPARAMETERSUBSTITUTION_P_H
 #define QUMLTEMPLATEPARAMETERSUBSTITUTION_P_H
 
-// Base class includes
-#include "private/qumlelement_p.h"
-
 #include "QtUml/QUmlTemplateParameterSubstitution"
+
+#include "private/qumlelement_p.h"
 
 QT_BEGIN_HEADER
 
@@ -52,23 +51,14 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlParameterableElement;
-class QUmlTemplateParameter;
-class QUmlTemplateBinding;
-class QUmlTemplateParameterSubstitution;
-
 class Q_UML_EXPORT QUmlTemplateParameterSubstitutionPrivate : public QUmlElementPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlTemplateParameterSubstitution)
-
 public:
-    explicit QUmlTemplateParameterSubstitutionPrivate();
-    virtual ~QUmlTemplateParameterSubstitutionPrivate();
+    QUmlTemplateParameterSubstitutionPrivate();
 
-    QUmlParameterableElement *ownedActual;
-    QUmlTemplateParameter *formal;
     QUmlParameterableElement *actual;
+    QUmlTemplateParameter *formal;
+    QUmlParameterableElement *ownedActual;
     QUmlTemplateBinding *templateBinding;
 };
 

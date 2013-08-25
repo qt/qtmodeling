@@ -41,13 +41,9 @@
 #ifndef QUMLUSECASE_P_H
 #define QUMLUSECASE_P_H
 
-// Base class includes
-#include "private/qumlbehavioredclassifier_p.h"
-
 #include "QtUml/QUmlUseCase"
 
-// Qt includes
-#include "QtCore/QSet"
+#include "private/qumlbehavioredclassifier_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,26 +51,15 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlClassifier;
-class QUmlUseCase;
-class QUmlInclude;
-class QUmlExtend;
-class QUmlExtensionPoint;
-class QUmlUseCase;
-
 class Q_UML_EXPORT QUmlUseCasePrivate : public QUmlBehavioredClassifierPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlUseCase)
-
 public:
-    explicit QUmlUseCasePrivate();
-    virtual ~QUmlUseCasePrivate();
+    QUmlUseCasePrivate();
 
-    QSet<QUmlExtensionPoint *> extensionPoints;
-    QSet<QUmlInclude *> includes;
-    QSet<QUmlClassifier *> subjects;
-    QSet<QUmlExtend *> extends;
+    QSet<QUmlExtend *> extend;
+    QSet<QUmlExtensionPoint *> extensionPoint;
+    QSet<QUmlInclude *> include;
+    QSet<QUmlClassifier *> subject;
 };
 
 QT_END_NAMESPACE

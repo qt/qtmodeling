@@ -41,10 +41,9 @@
 #ifndef QUMLDEPLOYEDARTIFACT_P_H
 #define QUMLDEPLOYEDARTIFACT_P_H
 
-// Base class includes
-#include "private/qumlnamedelement_p.h"
-
 #include "QtUml/QUmlDeployedArtifact"
+
+#include "private/qumlnamedelement_p.h"
 
 QT_BEGIN_HEADER
 
@@ -52,13 +51,10 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QUmlDeployedArtifactPrivate : public QUmlNamedElementPrivate
+class Q_UML_EXPORT QUmlDeployedArtifactPrivate : public virtual QUmlNamedElementPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlDeployedArtifact)
-
 public:
-    explicit QUmlDeployedArtifactPrivate();
-    virtual ~QUmlDeployedArtifactPrivate();
+    QUmlDeployedArtifactPrivate();
 
 };
 

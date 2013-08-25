@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlLiteralSpecification>
 
 QT_BEGIN_HEADER
@@ -51,36 +50,19 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-
 class QUmlLiteralBooleanPrivate;
-
 class Q_UML_EXPORT QUmlLiteralBoolean : public QUmlLiteralSpecification
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(bool value READ value WRITE setValue RESET unsetValue)
-
-    Q_DISABLE_COPY(QUmlLiteralBoolean)
-    Q_DECLARE_PRIVATE(QUmlLiteralBoolean)
-
 public:
-    Q_INVOKABLE explicit QUmlLiteralBoolean(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlLiteralBoolean();
+    QUmlLiteralBoolean(bool create_d_ptr = true);
 
-    // Attributes from QUmlLiteralBoolean
-    Q_INVOKABLE bool value() const;
-    Q_INVOKABLE void setValue(bool value);
-    Q_INVOKABLE void unsetValue();
+    // Owned attributes
+    bool value() const;
+    void setValue(bool value);
 
     // Operations
-    Q_INVOKABLE bool booleanValue() const;
-    Q_INVOKABLE bool isComputable() const;
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlLiteralBoolean(QUmlLiteralBooleanPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    bool booleanValue() const;
+    bool isComputable() const;
 };
 
 QT_END_NAMESPACE

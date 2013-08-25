@@ -43,15 +43,9 @@
 
 #include <QtUml/QUmlExecutableNode>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlSequenceNodePrivate::QUmlSequenceNodePrivate()
-{
-}
-
-QUmlSequenceNodePrivate::~QUmlSequenceNodePrivate()
 {
 }
 
@@ -63,78 +57,32 @@ QUmlSequenceNodePrivate::~QUmlSequenceNodePrivate()
     \brief A sequence node is a structured activity node that executes its actions in order.
  */
 
-QUmlSequenceNode::QUmlSequenceNode(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlStructuredActivityNode(*new QUmlSequenceNodePrivate, wrapper, parent)
+QUmlSequenceNode::QUmlSequenceNode(bool create_d_ptr) :
+    QUmlStructuredActivityNode(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlSequenceNodePrivate);
 }
 
-QUmlSequenceNode::QUmlSequenceNode(QUmlSequenceNodePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlStructuredActivityNode(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlSequenceNode::~QUmlSequenceNode()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlSequenceNode
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     An ordered set of executable nodes.
  */
-QList<QUmlExecutableNode *> QUmlSequenceNode::executableNodes() const
+QList<QUmlExecutableNode *> QUmlSequenceNode::executableNode() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlSequenceNode);
-    return d->executableNodes;
+    return QList<QUmlExecutableNode *>();
 }
 
-void QUmlSequenceNode::addExecutableNode(QUmlExecutableNode *executableNode)
+void QUmlSequenceNode::addExecutableNode(QList<QUmlExecutableNode *> executableNode)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlSequenceNode);
-    if (!d->executableNodes.contains(executableNode)) {
-        d->executableNodes.append(executableNode);
-        qTopLevelWrapper(executableNode)->setParent(qTopLevelWrapper(this));
-
-        // Adjust redefined property(ies)
-        (qwrappedobject_cast<QUmlStructuredActivityNode *>(this))->addNode(qwrappedobject_cast<QUmlActivityNode *>(executableNode));
-    }
+    Q_UNUSED(executableNode);
 }
 
-void QUmlSequenceNode::removeExecutableNode(QUmlExecutableNode *executableNode)
+void QUmlSequenceNode::removeExecutableNode(QList<QUmlExecutableNode *> executableNode)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlSequenceNode);
-    if (d->executableNodes.contains(executableNode)) {
-        d->executableNodes.removeAll(executableNode);
-        qTopLevelWrapper(executableNode)->setParent(0);
-
-        // Adjust redefined property(ies)
-        (qwrappedobject_cast<QUmlStructuredActivityNode *>(this))->removeNode(qwrappedobject_cast<QUmlActivityNode *>(executableNode));
-    }
-}
-
-void QUmlSequenceNode::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSequenceNode")][QString::fromLatin1("executableNodes")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSequenceNode")][QString::fromLatin1("executableNodes")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSequenceNode")][QString::fromLatin1("executableNodes")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An ordered set of executable nodes.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSequenceNode")][QString::fromLatin1("executableNodes")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QUmlStructuredActivityNode::nodes");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSequenceNode")][QString::fromLatin1("executableNodes")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSequenceNode")][QString::fromLatin1("executableNodes")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlStructuredActivityNode::setPropertyData();
+    Q_UNUSED(executableNode);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlsequencenode.cpp"
 

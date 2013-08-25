@@ -43,16 +43,10 @@
 
 #include <QtUml/QUmlSignal>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlBroadcastSignalActionPrivate::QUmlBroadcastSignalActionPrivate() :
     signal(0)
-{
-}
-
-QUmlBroadcastSignalActionPrivate::~QUmlBroadcastSignalActionPrivate()
 {
 }
 
@@ -64,60 +58,27 @@ QUmlBroadcastSignalActionPrivate::~QUmlBroadcastSignalActionPrivate()
     \brief A broadcast signal action is an action that transmits a signal instance to all the potential target objects in the system, which may cause the firing of a state machine transitions or the execution of associated activities of a target object. The argument values are available to the execution of associated behaviors. The requestor continues execution immediately after the signals are sent out. It does not wait for receipt. Any reply messages are ignored and are not transmitted to the requestor.
  */
 
-QUmlBroadcastSignalAction::QUmlBroadcastSignalAction(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlInvocationAction(*new QUmlBroadcastSignalActionPrivate, wrapper, parent)
+QUmlBroadcastSignalAction::QUmlBroadcastSignalAction(bool create_d_ptr) :
+    QUmlInvocationAction(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlBroadcastSignalActionPrivate);
 }
 
-QUmlBroadcastSignalAction::QUmlBroadcastSignalAction(QUmlBroadcastSignalActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlInvocationAction(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlBroadcastSignalAction::~QUmlBroadcastSignalAction()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlBroadcastSignalAction
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     The specification of signal object transmitted to the target objects.
  */
 QUmlSignal *QUmlBroadcastSignalAction::signal() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlBroadcastSignalAction);
-    return d->signal;
+    return 0;
 }
 
 void QUmlBroadcastSignalAction::setSignal(QUmlSignal *signal)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlBroadcastSignalAction);
-    if (d->signal != signal) {
-        d->signal = signal;
-    }
-}
-
-void QUmlBroadcastSignalAction::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlBroadcastSignalAction")][QString::fromLatin1("signal")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlBroadcastSignalAction")][QString::fromLatin1("signal")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlBroadcastSignalAction")][QString::fromLatin1("signal")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The specification of signal object transmitted to the target objects.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlBroadcastSignalAction")][QString::fromLatin1("signal")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlBroadcastSignalAction")][QString::fromLatin1("signal")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlBroadcastSignalAction")][QString::fromLatin1("signal")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlInvocationAction::setPropertyData();
+    Q_UNUSED(signal);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlbroadcastsignalaction.cpp"
 

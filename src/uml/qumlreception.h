@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlBehavioralFeature>
 
 QT_BEGIN_HEADER
@@ -52,33 +51,17 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlSignal;
 
 class QUmlReceptionPrivate;
-
 class Q_UML_EXPORT QUmlReception : public QUmlBehavioralFeature
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlSignal * signal READ signal WRITE setSignal)
-
-    Q_DISABLE_COPY(QUmlReception)
-    Q_DECLARE_PRIVATE(QUmlReception)
-
 public:
-    Q_INVOKABLE explicit QUmlReception(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlReception();
+    QUmlReception(bool create_d_ptr = true);
 
-    // Association ends from QUmlReception
-    Q_INVOKABLE QUmlSignal *signal() const;
-    Q_INVOKABLE void setSignal(QUmlSignal *signal);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlReception(QUmlReceptionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlSignal *signal() const;
+    void setSignal(QUmlSignal *signal);
 };
 
 QT_END_NAMESPACE

@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlAction>
 
 QT_BEGIN_HEADER
@@ -52,37 +51,20 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlClassifier;
 class QUmlOutputPin;
 
 class QUmlReadExtentActionPrivate;
-
 class Q_UML_EXPORT QUmlReadExtentAction : public QUmlAction
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlClassifier * classifier READ classifier WRITE setClassifier)
-    Q_PROPERTY(QUmlOutputPin * result READ result WRITE setResult)
-
-    Q_DISABLE_COPY(QUmlReadExtentAction)
-    Q_DECLARE_PRIVATE(QUmlReadExtentAction)
-
 public:
-    Q_INVOKABLE explicit QUmlReadExtentAction(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlReadExtentAction();
+    QUmlReadExtentAction(bool create_d_ptr = true);
 
-    // Association ends from QUmlReadExtentAction
-    Q_INVOKABLE QUmlClassifier *classifier() const;
-    Q_INVOKABLE void setClassifier(QUmlClassifier *classifier);
-    Q_INVOKABLE QUmlOutputPin *result() const;
-    Q_INVOKABLE void setResult(QUmlOutputPin *result);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlReadExtentAction(QUmlReadExtentActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlClassifier *classifier() const;
+    void setClassifier(QUmlClassifier *classifier);
+    QUmlOutputPin *result() const;
+    void setResult(QUmlOutputPin *result);
 };
 
 QT_END_NAMESPACE

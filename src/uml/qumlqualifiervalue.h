@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlElement>
 
 QT_BEGIN_HEADER
@@ -52,37 +51,20 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlProperty;
 class QUmlInputPin;
+class QUmlProperty;
 
 class QUmlQualifierValuePrivate;
-
 class Q_UML_EXPORT QUmlQualifierValue : public QUmlElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlInputPin * value READ value WRITE setValue)
-    Q_PROPERTY(QUmlProperty * qualifier READ qualifier WRITE setQualifier)
-
-    Q_DISABLE_COPY(QUmlQualifierValue)
-    Q_DECLARE_PRIVATE(QUmlQualifierValue)
-
 public:
-    Q_INVOKABLE explicit QUmlQualifierValue(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlQualifierValue();
+    QUmlQualifierValue(bool create_d_ptr = true);
 
-    // Association ends from QUmlQualifierValue
-    Q_INVOKABLE QUmlInputPin *value() const;
-    Q_INVOKABLE void setValue(QUmlInputPin *value);
-    Q_INVOKABLE QUmlProperty *qualifier() const;
-    Q_INVOKABLE void setQualifier(QUmlProperty *qualifier);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlQualifierValue(QUmlQualifierValuePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlProperty *qualifier() const;
+    void setQualifier(QUmlProperty *qualifier);
+    QUmlInputPin *value() const;
+    void setValue(QUmlInputPin *value);
 };
 
 QT_END_NAMESPACE

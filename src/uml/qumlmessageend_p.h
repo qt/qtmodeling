@@ -41,10 +41,9 @@
 #ifndef QUMLMESSAGEEND_P_H
 #define QUMLMESSAGEEND_P_H
 
-// Base class includes
-#include "private/qumlnamedelement_p.h"
-
 #include "QtUml/QUmlMessageEnd"
+
+#include "private/qumlnamedelement_p.h"
 
 QT_BEGIN_HEADER
 
@@ -52,16 +51,10 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlMessage;
-
-class Q_UML_EXPORT QUmlMessageEndPrivate : public QUmlNamedElementPrivate
+class Q_UML_EXPORT QUmlMessageEndPrivate : public virtual QUmlNamedElementPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlMessageEnd)
-
 public:
-    explicit QUmlMessageEndPrivate();
-    virtual ~QUmlMessageEndPrivate();
+    QUmlMessageEndPrivate();
 
     QUmlMessage *message;
 };

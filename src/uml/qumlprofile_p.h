@@ -41,13 +41,9 @@
 #ifndef QUMLPROFILE_P_H
 #define QUMLPROFILE_P_H
 
-// Base class includes
-#include "private/qumlpackage_p.h"
-
 #include "QtUml/QUmlProfile"
 
-// Qt includes
-#include "QtCore/QSet"
+#include "private/qumlpackage_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,21 +51,13 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlElementImport;
-class QUmlPackageImport;
-class QUmlProfile;
-
 class Q_UML_EXPORT QUmlProfilePrivate : public QUmlPackagePrivate
 {
-    Q_DECLARE_PUBLIC(QUmlProfile)
-
 public:
-    explicit QUmlProfilePrivate();
-    virtual ~QUmlProfilePrivate();
+    QUmlProfilePrivate();
 
-    QSet<QUmlPackageImport *> metamodelReferences;
-    QSet<QUmlElementImport *> metaclassReferences;
+    QSet<QUmlElementImport *> metaclassReference;
+    QSet<QUmlPackageImport *> metamodelReference;
 };
 
 QT_END_NAMESPACE

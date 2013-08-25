@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlElement>
 
 QT_BEGIN_HEADER
@@ -52,46 +51,26 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlParameterableElement;
 class QUmlTemplateSignature;
 
 class QUmlTemplateParameterPrivate;
-
 class Q_UML_EXPORT QUmlTemplateParameter : public QUmlElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlParameterableElement * default_ READ default_ WRITE setDefault_)
-    Q_PROPERTY(QUmlParameterableElement * parameteredElement READ parameteredElement WRITE setParameteredElement)
-    Q_PROPERTY(QUmlParameterableElement * ownedParameteredElement READ ownedParameteredElement WRITE setOwnedParameteredElement)
-    Q_PROPERTY(QUmlParameterableElement * ownedDefault READ ownedDefault WRITE setOwnedDefault)
-    Q_PROPERTY(QUmlTemplateSignature * signature READ signature WRITE setSignature)
-
-    Q_DISABLE_COPY(QUmlTemplateParameter)
-    Q_DECLARE_PRIVATE(QUmlTemplateParameter)
-
 public:
-    Q_INVOKABLE explicit QUmlTemplateParameter(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlTemplateParameter();
+    QUmlTemplateParameter(bool create_d_ptr = true);
 
-    // Association ends from QUmlTemplateParameter
-    Q_INVOKABLE QUmlParameterableElement *default_() const;
-    Q_INVOKABLE void setDefault_(QUmlParameterableElement *default_);
-    Q_INVOKABLE QUmlParameterableElement *parameteredElement() const;
-    Q_INVOKABLE void setParameteredElement(QUmlParameterableElement *parameteredElement);
-    Q_INVOKABLE QUmlParameterableElement *ownedParameteredElement() const;
-    Q_INVOKABLE void setOwnedParameteredElement(QUmlParameterableElement *ownedParameteredElement);
-    Q_INVOKABLE QUmlParameterableElement *ownedDefault() const;
-    Q_INVOKABLE void setOwnedDefault(QUmlParameterableElement *ownedDefault);
-    Q_INVOKABLE QUmlTemplateSignature *signature() const;
-    Q_INVOKABLE void setSignature(QUmlTemplateSignature *signature);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlTemplateParameter(QUmlTemplateParameterPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlParameterableElement *default_() const;
+    void setDefault(QUmlParameterableElement *default_);
+    QUmlParameterableElement *ownedDefault() const;
+    void setOwnedDefault(QUmlParameterableElement *ownedDefault);
+    QUmlParameterableElement *ownedParameteredElement() const;
+    void setOwnedParameteredElement(QUmlParameterableElement *ownedParameteredElement);
+    QUmlParameterableElement *parameteredElement() const;
+    void setParameteredElement(QUmlParameterableElement *parameteredElement);
+    QUmlTemplateSignature *signature() const;
+    void setSignature(QUmlTemplateSignature *signature);
 };
 
 QT_END_NAMESPACE

@@ -43,13 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlProperty>
-
-// Qt includes
-#include <QtCore/QSet>
-
-#include <QtWrappedObjects/QWrappedObjectPointer>
 
 QT_BEGIN_HEADER
 
@@ -57,61 +51,29 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlProtocolStateMachine;
 class QUmlInterface;
-class QUmlPort;
+class QUmlProtocolStateMachine;
 
 class QUmlPortPrivate;
-
 class Q_UML_EXPORT QUmlPort : public QUmlProperty
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(bool isConjugated READ isConjugated WRITE setConjugated RESET unsetConjugated)
-    Q_PROPERTY(bool isBehavior READ isBehavior WRITE setBehavior RESET unsetBehavior)
-    Q_PROPERTY(bool isService READ isService WRITE setService RESET unsetService)
-    Q_PROPERTY(QUmlProtocolStateMachine * protocol READ protocol WRITE setProtocol)
-    Q_PROPERTY(QSet<QUmlInterface *> required READ required STORED false)
-    Q_PROPERTY(QSet<QUmlInterface *> provided READ provided STORED false)
-    Q_PROPERTY(QSet<QUmlPort *> redefinedPorts READ redefinedPorts)
-
-    Q_DISABLE_COPY(QUmlPort)
-    Q_DECLARE_PRIVATE(QUmlPort)
-
 public:
-    Q_INVOKABLE explicit QUmlPort(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlPort();
+    QUmlPort(bool create_d_ptr = true);
 
-    // Attributes from QUmlPort
-    Q_INVOKABLE bool isConjugated() const;
-    Q_INVOKABLE void setConjugated(bool isConjugated);
-    Q_INVOKABLE void unsetConjugated();
-    Q_INVOKABLE bool isBehavior() const;
-    Q_INVOKABLE void setBehavior(bool isBehavior);
-    Q_INVOKABLE void unsetBehavior();
-    Q_INVOKABLE bool isService() const;
-    Q_INVOKABLE void setService(bool isService);
-    Q_INVOKABLE void unsetService();
-
-    // Association ends from QUmlPort
-    Q_INVOKABLE QUmlProtocolStateMachine *protocol() const;
-    Q_INVOKABLE void setProtocol(QUmlProtocolStateMachine *protocol);
-    Q_INVOKABLE QSet<QUmlInterface *> required() const;
-    Q_INVOKABLE QSet<QUmlInterface *> provided() const;
-    Q_INVOKABLE QSet<QUmlPort *> redefinedPorts() const;
-    Q_INVOKABLE void addRedefinedPort(QUmlPort *redefinedPort);
-    Q_INVOKABLE void removeRedefinedPort(QUmlPort *redefinedPort);
-
-    // Overriden methods for subsetted properties
-    Q_INVOKABLE void addRedefinedProperty(QWrappedObjectPointer<QUmlPort> redefinedPort);
-    Q_INVOKABLE void removeRedefinedProperty(QWrappedObjectPointer<QUmlPort> redefinedPort);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlPort(QUmlPortPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    bool isBehavior() const;
+    void setBehavior(bool isBehavior);
+    bool isConjugated() const;
+    void setConjugated(bool isConjugated);
+    bool isService() const;
+    void setService(bool isService);
+    QUmlProtocolStateMachine *protocol() const;
+    void setProtocol(QUmlProtocolStateMachine *protocol);
+    QSet<QUmlInterface *> provided() const;
+    QSet<QUmlPort *> redefinedPort() const;
+    void addRedefinedPort(QSet<QUmlPort *> redefinedPort);
+    void removeRedefinedPort(QSet<QUmlPort *> redefinedPort);
+    QSet<QUmlInterface *> required() const;
 };
 
 QT_END_NAMESPACE

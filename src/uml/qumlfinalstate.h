@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlState>
 
 QT_BEGIN_HEADER
@@ -51,25 +50,11 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-
 class QUmlFinalStatePrivate;
-
 class Q_UML_EXPORT QUmlFinalState : public QUmlState
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_DISABLE_COPY(QUmlFinalState)
-    Q_DECLARE_PRIVATE(QUmlFinalState)
-
 public:
-    Q_INVOKABLE explicit QUmlFinalState(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlFinalState();
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlFinalState(QUmlFinalStatePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    QUmlFinalState(bool create_d_ptr = true);
 };
 
 QT_END_NAMESPACE

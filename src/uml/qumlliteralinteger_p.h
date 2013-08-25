@@ -41,27 +41,22 @@
 #ifndef QUMLLITERALINTEGER_P_H
 #define QUMLLITERALINTEGER_P_H
 
-// Base class includes
-#include "private/qumlliteralspecification_p.h"
-
 #include "QtUml/QUmlLiteralInteger"
+
+#include "private/qumlliteralspecification_p.h"
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-class QUmlLiteralInteger;
 
 class Q_UML_EXPORT QUmlLiteralIntegerPrivate : public QUmlLiteralSpecificationPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlLiteralInteger)
-
 public:
-    explicit QUmlLiteralIntegerPrivate();
-    virtual ~QUmlLiteralIntegerPrivate();
+    QUmlLiteralIntegerPrivate();
 
-    qint32 value;
+    int value;
 };
 
 QT_END_NAMESPACE

@@ -43,12 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlElement>
-
-// Qt includes
-#include <QtCore/QList>
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -56,55 +51,33 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlExecutableNode;
 class QUmlOutputPin;
-class QUmlClause;
 
 class QUmlClausePrivate;
-
 class Q_UML_EXPORT QUmlClause : public QUmlElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QSet<QUmlClause *> successorClauses READ successorClauses)
-    Q_PROPERTY(QUmlOutputPin * decider READ decider WRITE setDecider)
-    Q_PROPERTY(QSet<QUmlClause *> predecessorClauses READ predecessorClauses)
-    Q_PROPERTY(QList<QUmlOutputPin *> bodyOutputs READ bodyOutputs)
-    Q_PROPERTY(QSet<QUmlExecutableNode *> bodies READ bodies)
-    Q_PROPERTY(QSet<QUmlExecutableNode *> tests READ tests)
-
-    Q_DISABLE_COPY(QUmlClause)
-    Q_DECLARE_PRIVATE(QUmlClause)
-
 public:
-    Q_INVOKABLE explicit QUmlClause(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlClause();
+    QUmlClause(bool create_d_ptr = true);
 
-    // Association ends from QUmlClause
-    Q_INVOKABLE QSet<QUmlClause *> successorClauses() const;
-    Q_INVOKABLE void addSuccessorClause(QUmlClause *successorClause);
-    Q_INVOKABLE void removeSuccessorClause(QUmlClause *successorClause);
-    Q_INVOKABLE QUmlOutputPin *decider() const;
-    Q_INVOKABLE void setDecider(QUmlOutputPin *decider);
-    Q_INVOKABLE QSet<QUmlClause *> predecessorClauses() const;
-    Q_INVOKABLE void addPredecessorClause(QUmlClause *predecessorClause);
-    Q_INVOKABLE void removePredecessorClause(QUmlClause *predecessorClause);
-    Q_INVOKABLE QList<QUmlOutputPin *> bodyOutputs() const;
-    Q_INVOKABLE void addBodyOutput(QUmlOutputPin *bodyOutput);
-    Q_INVOKABLE void removeBodyOutput(QUmlOutputPin *bodyOutput);
-    Q_INVOKABLE QSet<QUmlExecutableNode *> bodies() const;
-    Q_INVOKABLE void addBody(QUmlExecutableNode *body);
-    Q_INVOKABLE void removeBody(QUmlExecutableNode *body);
-    Q_INVOKABLE QSet<QUmlExecutableNode *> tests() const;
-    Q_INVOKABLE void addTest(QUmlExecutableNode *test);
-    Q_INVOKABLE void removeTest(QUmlExecutableNode *test);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlClause(QUmlClausePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QSet<QUmlExecutableNode *> body() const;
+    void addBody(QSet<QUmlExecutableNode *> body);
+    void removeBody(QSet<QUmlExecutableNode *> body);
+    QList<QUmlOutputPin *> bodyOutput() const;
+    void addBodyOutput(QList<QUmlOutputPin *> bodyOutput);
+    void removeBodyOutput(QList<QUmlOutputPin *> bodyOutput);
+    QUmlOutputPin *decider() const;
+    void setDecider(QUmlOutputPin *decider);
+    QSet<QUmlClause *> predecessorClause() const;
+    void addPredecessorClause(QSet<QUmlClause *> predecessorClause);
+    void removePredecessorClause(QSet<QUmlClause *> predecessorClause);
+    QSet<QUmlClause *> successorClause() const;
+    void addSuccessorClause(QSet<QUmlClause *> successorClause);
+    void removeSuccessorClause(QSet<QUmlClause *> successorClause);
+    QSet<QUmlExecutableNode *> test() const;
+    void addTest(QSet<QUmlExecutableNode *> test);
+    void removeTest(QSet<QUmlExecutableNode *> test);
 };
 
 QT_END_NAMESPACE

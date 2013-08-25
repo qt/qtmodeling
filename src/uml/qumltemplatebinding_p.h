@@ -41,13 +41,9 @@
 #ifndef QUMLTEMPLATEBINDING_P_H
 #define QUMLTEMPLATEBINDING_P_H
 
-// Base class includes
-#include "private/qumldirectedrelationship_p.h"
-
 #include "QtUml/QUmlTemplateBinding"
 
-// Qt includes
-#include "QtCore/QSet"
+#include "private/qumldirectedrelationship_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,23 +51,14 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlTemplateableElement;
-class QUmlTemplateParameterSubstitution;
-class QUmlTemplateSignature;
-class QUmlTemplateBinding;
-
 class Q_UML_EXPORT QUmlTemplateBindingPrivate : public QUmlDirectedRelationshipPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlTemplateBinding)
-
 public:
-    explicit QUmlTemplateBindingPrivate();
-    virtual ~QUmlTemplateBindingPrivate();
+    QUmlTemplateBindingPrivate();
 
-    QUmlTemplateSignature *signature;
     QUmlTemplateableElement *boundElement;
-    QSet<QUmlTemplateParameterSubstitution *> parameterSubstitutions;
+    QSet<QUmlTemplateParameterSubstitution *> parameterSubstitution;
+    QUmlTemplateSignature *signature;
 };
 
 QT_END_NAMESPACE

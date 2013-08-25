@@ -42,12 +42,7 @@
 #define QUMLELEMENT_H
 
 #include <QtUml/QtUmlGlobal>
-
-// Base class includes
-#include <QtWrappedObjects/QWrappedObject>
-
-// Qt includes
-#include <QtCore/QSet>
+#include <QtModeling/QModelingObject>
 
 QT_BEGIN_HEADER
 
@@ -55,46 +50,24 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlComment;
-class QUmlElement;
 
 class QUmlElementPrivate;
-
-class Q_UML_EXPORT QUmlElement : public QWrappedObject
+class Q_UML_EXPORT QUmlElement : public QModelingObject
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QSet<QUmlElement *> ownedElements READ ownedElements)
-    Q_PROPERTY(QUmlElement * owner READ owner)
-    Q_PROPERTY(QSet<QUmlComment *> ownedComments READ ownedComments)
-
-    Q_DISABLE_COPY(QUmlElement)
-    Q_DECLARE_PRIVATE(QUmlElement)
-
 public:
-    Q_INVOKABLE explicit QUmlElement(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlElement();
+    Q_DECL_HIDDEN QUmlElement(bool create_d_ptr = true);
 
-    // Association ends from QUmlElement
-    Q_INVOKABLE QSet<QUmlElement *> ownedElements() const;
-    Q_INVOKABLE QUmlElement *owner() const;
-    Q_INVOKABLE QSet<QUmlComment *> ownedComments() const;
-    Q_INVOKABLE void addOwnedComment(QUmlComment *ownedComment);
-    Q_INVOKABLE void removeOwnedComment(QUmlComment *ownedComment);
+    // Owned attributes
+    QSet<QUmlComment *> ownedComment() const;
+    void addOwnedComment(QSet<QUmlComment *> ownedComment);
+    void removeOwnedComment(QSet<QUmlComment *> ownedComment);
+    QSet<QUmlElement *> ownedElement() const;
+    QUmlElement *owner() const;
 
     // Operations
-    Q_INVOKABLE QSet<QUmlElement *> allOwnedElements() const;
-    Q_INVOKABLE bool mustBeOwned() const;
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlElement(QUmlElementPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-
-private:
-    void allOwnedElements(QSet<QUmlElement *> &allOwnedElements_) const;
+    QSet<QUmlElement *> allOwnedElements() const;
+    bool mustBeOwned() const;
 };
 
 QT_END_NAMESPACE

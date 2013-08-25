@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlDirectedRelationship>
 
 QT_BEGIN_HEADER
@@ -52,36 +51,19 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlProtocolStateMachine;
 
 class QUmlProtocolConformancePrivate;
-
 class Q_UML_EXPORT QUmlProtocolConformance : public QUmlDirectedRelationship
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlProtocolStateMachine * specificMachine READ specificMachine WRITE setSpecificMachine)
-    Q_PROPERTY(QUmlProtocolStateMachine * generalMachine READ generalMachine WRITE setGeneralMachine)
-
-    Q_DISABLE_COPY(QUmlProtocolConformance)
-    Q_DECLARE_PRIVATE(QUmlProtocolConformance)
-
 public:
-    Q_INVOKABLE explicit QUmlProtocolConformance(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlProtocolConformance();
+    QUmlProtocolConformance(bool create_d_ptr = true);
 
-    // Association ends from QUmlProtocolConformance
-    Q_INVOKABLE QUmlProtocolStateMachine *specificMachine() const;
-    Q_INVOKABLE void setSpecificMachine(QUmlProtocolStateMachine *specificMachine);
-    Q_INVOKABLE QUmlProtocolStateMachine *generalMachine() const;
-    Q_INVOKABLE void setGeneralMachine(QUmlProtocolStateMachine *generalMachine);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlProtocolConformance(QUmlProtocolConformancePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlProtocolStateMachine *generalMachine() const;
+    void setGeneralMachine(QUmlProtocolStateMachine *generalMachine);
+    QUmlProtocolStateMachine *specificMachine() const;
+    void setSpecificMachine(QUmlProtocolStateMachine *specificMachine);
 };
 
 QT_END_NAMESPACE

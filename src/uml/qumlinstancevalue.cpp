@@ -43,16 +43,10 @@
 
 #include <QtUml/QUmlInstanceSpecification>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlInstanceValuePrivate::QUmlInstanceValuePrivate() :
     instance(0)
-{
-}
-
-QUmlInstanceValuePrivate::~QUmlInstanceValuePrivate()
 {
 }
 
@@ -64,60 +58,27 @@ QUmlInstanceValuePrivate::~QUmlInstanceValuePrivate()
     \brief An instance value is a value specification that identifies an instance.
  */
 
-QUmlInstanceValue::QUmlInstanceValue(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlValueSpecification(*new QUmlInstanceValuePrivate, wrapper, parent)
+QUmlInstanceValue::QUmlInstanceValue(bool create_d_ptr) :
+    QUmlValueSpecification(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlInstanceValuePrivate);
 }
 
-QUmlInstanceValue::QUmlInstanceValue(QUmlInstanceValuePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlValueSpecification(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlInstanceValue::~QUmlInstanceValue()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlInstanceValue
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     The instance that is the specified value.
  */
 QUmlInstanceSpecification *QUmlInstanceValue::instance() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlInstanceValue);
-    return d->instance;
+    return 0;
 }
 
 void QUmlInstanceValue::setInstance(QUmlInstanceSpecification *instance)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlInstanceValue);
-    if (d->instance != instance) {
-        d->instance = instance;
-    }
-}
-
-void QUmlInstanceValue::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInstanceValue")][QString::fromLatin1("instance")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInstanceValue")][QString::fromLatin1("instance")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInstanceValue")][QString::fromLatin1("instance")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The instance that is the specified value.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInstanceValue")][QString::fromLatin1("instance")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInstanceValue")][QString::fromLatin1("instance")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInstanceValue")][QString::fromLatin1("instance")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlValueSpecification::setPropertyData();
+    Q_UNUSED(instance);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlinstancevalue.cpp"
 

@@ -43,11 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlInvocationAction>
-
-// Qt includes
-#include <QtCore/QList>
 
 QT_BEGIN_HEADER
 
@@ -55,40 +51,20 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlOutputPin;
 
 class QUmlCallActionPrivate;
-
 class Q_UML_EXPORT QUmlCallAction : public QUmlInvocationAction
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(bool isSynchronous READ isSynchronous WRITE setSynchronous RESET unsetSynchronous)
-    Q_PROPERTY(QList<QUmlOutputPin *> results READ results)
-
-    Q_DISABLE_COPY(QUmlCallAction)
-    Q_DECLARE_PRIVATE(QUmlCallAction)
-
 public:
-    Q_INVOKABLE explicit QUmlCallAction(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlCallAction();
+    Q_DECL_HIDDEN QUmlCallAction(bool create_d_ptr = true);
 
-    // Attributes from QUmlCallAction
-    Q_INVOKABLE bool isSynchronous() const;
-    Q_INVOKABLE void setSynchronous(bool isSynchronous);
-    Q_INVOKABLE void unsetSynchronous();
-
-    // Association ends from QUmlCallAction
-    Q_INVOKABLE QList<QUmlOutputPin *> results() const;
-    Q_INVOKABLE void addResult(QUmlOutputPin *result);
-    Q_INVOKABLE void removeResult(QUmlOutputPin *result);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlCallAction(QUmlCallActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    bool isSynchronous() const;
+    void setSynchronous(bool isSynchronous);
+    QList<QUmlOutputPin *> result() const;
+    void addResult(QList<QUmlOutputPin *> result);
+    void removeResult(QList<QUmlOutputPin *> result);
 };
 
 QT_END_NAMESPACE

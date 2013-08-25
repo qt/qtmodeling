@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlMessageEnd>
 
 QT_BEGIN_HEADER
@@ -51,25 +50,11 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-
 class QUmlGatePrivate;
-
 class Q_UML_EXPORT QUmlGate : public QUmlMessageEnd
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_DISABLE_COPY(QUmlGate)
-    Q_DECLARE_PRIVATE(QUmlGate)
-
 public:
-    Q_INVOKABLE explicit QUmlGate(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlGate();
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlGate(QUmlGatePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    QUmlGate(bool create_d_ptr = true);
 };
 
 QT_END_NAMESPACE

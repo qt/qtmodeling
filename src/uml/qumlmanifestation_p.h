@@ -41,10 +41,9 @@
 #ifndef QUMLMANIFESTATION_P_H
 #define QUMLMANIFESTATION_P_H
 
-// Base class includes
-#include "private/qumlabstraction_p.h"
-
 #include "QtUml/QUmlManifestation"
+
+#include "private/qumlabstraction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -52,17 +51,10 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlPackageableElement;
-class QUmlManifestation;
-
 class Q_UML_EXPORT QUmlManifestationPrivate : public QUmlAbstractionPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlManifestation)
-
 public:
-    explicit QUmlManifestationPrivate();
-    virtual ~QUmlManifestationPrivate();
+    QUmlManifestationPrivate();
 
     QUmlPackageableElement *utilizedElement;
 };

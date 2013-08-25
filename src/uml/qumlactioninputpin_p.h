@@ -41,10 +41,9 @@
 #ifndef QUMLACTIONINPUTPIN_P_H
 #define QUMLACTIONINPUTPIN_P_H
 
-// Base class includes
-#include "private/qumlinputpin_p.h"
-
 #include "QtUml/QUmlActionInputPin"
+
+#include "private/qumlinputpin_p.h"
 
 QT_BEGIN_HEADER
 
@@ -52,17 +51,10 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlAction;
-class QUmlActionInputPin;
-
 class Q_UML_EXPORT QUmlActionInputPinPrivate : public QUmlInputPinPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlActionInputPin)
-
 public:
-    explicit QUmlActionInputPinPrivate();
-    virtual ~QUmlActionInputPinPrivate();
+    QUmlActionInputPinPrivate();
 
     QUmlAction *fromAction;
 };

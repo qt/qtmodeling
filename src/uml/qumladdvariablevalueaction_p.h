@@ -41,10 +41,9 @@
 #ifndef QUMLADDVARIABLEVALUEACTION_P_H
 #define QUMLADDVARIABLEVALUEACTION_P_H
 
-// Base class includes
-#include "private/qumlwritevariableaction_p.h"
-
 #include "QtUml/QUmlAddVariableValueAction"
+
+#include "private/qumlwritevariableaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -52,20 +51,13 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlInputPin;
-class QUmlAddVariableValueAction;
-
 class Q_UML_EXPORT QUmlAddVariableValueActionPrivate : public QUmlWriteVariableActionPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlAddVariableValueAction)
-
 public:
-    explicit QUmlAddVariableValueActionPrivate();
-    virtual ~QUmlAddVariableValueActionPrivate();
+    QUmlAddVariableValueActionPrivate();
 
-    bool isReplaceAll;
     QUmlInputPin *insertAt;
+    bool isReplaceAll;
 };
 
 QT_END_NAMESPACE

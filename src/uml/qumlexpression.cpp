@@ -41,15 +41,9 @@
 #include "qumlexpression.h"
 #include "qumlexpression_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlExpressionPrivate::QUmlExpressionPrivate()
-{
-}
-
-QUmlExpressionPrivate::~QUmlExpressionPrivate()
 {
 }
 
@@ -61,108 +55,45 @@ QUmlExpressionPrivate::~QUmlExpressionPrivate()
     \brief An expression is a structured tree of symbols that denotes a (possibly empty) set of values when evaluated in a context.An expression represents a node in an expression tree, which may be non-terminal or terminal. It defines a symbol, and has a possibly empty sequence of operands which are value specifications.
  */
 
-QUmlExpression::QUmlExpression(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlValueSpecification(*new QUmlExpressionPrivate, wrapper, parent)
+QUmlExpression::QUmlExpression(bool create_d_ptr) :
+    QUmlValueSpecification(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlExpressionPrivate);
 }
 
-QUmlExpression::QUmlExpression(QUmlExpressionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlValueSpecification(dd, wrapper, parent)
+// Owned attributes
+
+/*!
+    Specifies a sequence of operands.
+ */
+QList<QUmlValueSpecification *> QUmlExpression::operand() const
 {
-    setPropertyData();
+    return QList<QUmlValueSpecification *>();
 }
 
-QUmlExpression::~QUmlExpression()
+void QUmlExpression::addOperand(QList<QUmlValueSpecification *> operand)
 {
+    Q_UNUSED(operand);
 }
 
-// ---------------------------------------------------------------
-// ATTRIBUTES FROM QUmlExpression
-// ---------------------------------------------------------------
+void QUmlExpression::removeOperand(QList<QUmlValueSpecification *> operand)
+{
+    Q_UNUSED(operand);
+}
 
 /*!
     The symbol associated with the node in the expression tree.
  */
 QString QUmlExpression::symbol() const
 {
-    // This is a read-write attribute
-
-    Q_D(const QUmlExpression);
-    return d->symbol;
+    return QString();
 }
 
 void QUmlExpression::setSymbol(QString symbol)
 {
-    // This is a read-write attribute
-
-    Q_D(QUmlExpression);
-    if (d->symbol != symbol) {
-        d->symbol = symbol;
-    }
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlExpression
-// ---------------------------------------------------------------
-
-/*!
-    Specifies a sequence of operands.
- */
-QList<QUmlValueSpecification *> QUmlExpression::operands() const
-{
-    // This is a read-write association end
-
-    Q_D(const QUmlExpression);
-    return d->operands;
-}
-
-void QUmlExpression::addOperand(QUmlValueSpecification *operand)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlExpression);
-    if (!d->operands.contains(operand)) {
-        d->operands.append(operand);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QUmlElement *>(operand));
-    }
-}
-
-void QUmlExpression::removeOperand(QUmlValueSpecification *operand)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlExpression);
-    if (d->operands.contains(operand)) {
-        d->operands.removeAll(operand);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QUmlElement *>(operand));
-    }
-}
-
-void QUmlExpression::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpression")][QString::fromLatin1("symbol")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpression")][QString::fromLatin1("symbol")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpression")][QString::fromLatin1("symbol")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The symbol associated with the node in the expression tree.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpression")][QString::fromLatin1("symbol")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpression")][QString::fromLatin1("symbol")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpression")][QString::fromLatin1("symbol")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpression")][QString::fromLatin1("operands")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpression")][QString::fromLatin1("operands")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpression")][QString::fromLatin1("operands")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies a sequence of operands.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpression")][QString::fromLatin1("operands")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpression")][QString::fromLatin1("operands")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpression")][QString::fromLatin1("operands")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlValueSpecification::setPropertyData();
+    Q_UNUSED(symbol);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlexpression.cpp"
 

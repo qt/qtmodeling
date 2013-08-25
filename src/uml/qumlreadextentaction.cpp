@@ -44,17 +44,11 @@
 #include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlOutputPin>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlReadExtentActionPrivate::QUmlReadExtentActionPrivate() :
     classifier(0),
     result(0)
-{
-}
-
-QUmlReadExtentActionPrivate::~QUmlReadExtentActionPrivate()
 {
 }
 
@@ -66,45 +60,26 @@ QUmlReadExtentActionPrivate::~QUmlReadExtentActionPrivate()
     \brief A read extent action is an action that retrieves the current instances of a classifier.
  */
 
-QUmlReadExtentAction::QUmlReadExtentAction(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlAction(*new QUmlReadExtentActionPrivate, wrapper, parent)
+QUmlReadExtentAction::QUmlReadExtentAction(bool create_d_ptr) :
+    QUmlAction(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlReadExtentActionPrivate);
 }
 
-QUmlReadExtentAction::QUmlReadExtentAction(QUmlReadExtentActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlAction(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlReadExtentAction::~QUmlReadExtentAction()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlReadExtentAction
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     The classifier whose instances are to be retrieved.
  */
 QUmlClassifier *QUmlReadExtentAction::classifier() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlReadExtentAction);
-    return d->classifier;
+    return 0;
 }
 
 void QUmlReadExtentAction::setClassifier(QUmlClassifier *classifier)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlReadExtentAction);
-    if (d->classifier != classifier) {
-        d->classifier = classifier;
-    }
+    Q_UNUSED(classifier);
 }
 
 /*!
@@ -112,50 +87,13 @@ void QUmlReadExtentAction::setClassifier(QUmlClassifier *classifier)
  */
 QUmlOutputPin *QUmlReadExtentAction::result() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlReadExtentAction);
-    return d->result;
+    return 0;
 }
 
 void QUmlReadExtentAction::setResult(QUmlOutputPin *result)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlReadExtentAction);
-    if (d->result != result) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActionPrivate *>(d))->removeOutput(qwrappedobject_cast<QUmlOutputPin *>(d->result));
-
-        d->result = result;
-
-        // Adjust subsetted property(ies)
-        if (result) {
-            (qwrappedobject_cast<QUmlActionPrivate *>(d))->addOutput(qwrappedobject_cast<QUmlOutputPin *>(result));
-        }
-    }
-}
-
-void QUmlReadExtentAction::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadExtentAction")][QString::fromLatin1("classifier")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadExtentAction")][QString::fromLatin1("classifier")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadExtentAction")][QString::fromLatin1("classifier")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The classifier whose instances are to be retrieved.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadExtentAction")][QString::fromLatin1("classifier")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadExtentAction")][QString::fromLatin1("classifier")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadExtentAction")][QString::fromLatin1("classifier")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadExtentAction")][QString::fromLatin1("result")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadExtentAction")][QString::fromLatin1("result")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadExtentAction")][QString::fromLatin1("result")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The runtime instances of the classifier.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadExtentAction")][QString::fromLatin1("result")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadExtentAction")][QString::fromLatin1("result")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlAction::outputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadExtentAction")][QString::fromLatin1("result")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlAction::setPropertyData();
+    Q_UNUSED(result);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlreadextentaction.cpp"
 

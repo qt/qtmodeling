@@ -41,13 +41,9 @@
 #ifndef QUMLOCCURRENCESPECIFICATION_P_H
 #define QUMLOCCURRENCESPECIFICATION_P_H
 
-// Base class includes
-#include "private/qumlinteractionfragment_p.h"
-
 #include "QtUml/QUmlOccurrenceSpecification"
 
-// Qt includes
-#include "QtCore/QSet"
+#include "private/qumlinteractionfragment_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,18 +51,10 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlLifeline;
-class QUmlGeneralOrdering;
-class QUmlOccurrenceSpecification;
-
 class Q_UML_EXPORT QUmlOccurrenceSpecificationPrivate : public QUmlInteractionFragmentPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlOccurrenceSpecification)
-
 public:
-    explicit QUmlOccurrenceSpecificationPrivate();
-    virtual ~QUmlOccurrenceSpecificationPrivate();
+    QUmlOccurrenceSpecificationPrivate();
 
     QUmlLifeline *covered;
     QSet<QUmlGeneralOrdering *> toAfter;

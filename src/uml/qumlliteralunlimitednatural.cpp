@@ -41,16 +41,10 @@
 #include "qumlliteralunlimitednatural.h"
 #include "qumlliteralunlimitednatural_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlLiteralUnlimitedNaturalPrivate::QUmlLiteralUnlimitedNaturalPrivate() :
     value(0)
-{
-}
-
-QUmlLiteralUnlimitedNaturalPrivate::~QUmlLiteralUnlimitedNaturalPrivate()
 {
 }
 
@@ -62,88 +56,45 @@ QUmlLiteralUnlimitedNaturalPrivate::~QUmlLiteralUnlimitedNaturalPrivate()
     \brief A literal unlimited natural is a specification of an unlimited natural number.
  */
 
-QUmlLiteralUnlimitedNatural::QUmlLiteralUnlimitedNatural(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlLiteralSpecification(*new QUmlLiteralUnlimitedNaturalPrivate, wrapper, parent)
+QUmlLiteralUnlimitedNatural::QUmlLiteralUnlimitedNatural(bool create_d_ptr) :
+    QUmlLiteralSpecification(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlLiteralUnlimitedNaturalPrivate);
 }
 
-QUmlLiteralUnlimitedNatural::QUmlLiteralUnlimitedNatural(QUmlLiteralUnlimitedNaturalPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlLiteralSpecification(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlLiteralUnlimitedNatural::~QUmlLiteralUnlimitedNatural()
-{
-}
-
-// ---------------------------------------------------------------
-// ATTRIBUTES FROM QUmlLiteralUnlimitedNatural
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     The specified UnlimitedNatural value.
  */
-qint32 QUmlLiteralUnlimitedNatural::value() const
+int QUmlLiteralUnlimitedNatural::value() const
 {
-    // This is a read-write attribute
-
-    Q_D(const QUmlLiteralUnlimitedNatural);
-    return d->value;
+    return int();
 }
 
-void QUmlLiteralUnlimitedNatural::setValue(qint32 value)
+void QUmlLiteralUnlimitedNatural::setValue(int value)
 {
-    // This is a read-write attribute
-
-    Q_D(QUmlLiteralUnlimitedNatural);
-    if (d->value != value) {
-        d->value = value;
-    }
-    d->modifiedResettableProperties << QString::fromLatin1("value");
+    Q_UNUSED(value);
 }
 
-void QUmlLiteralUnlimitedNatural::unsetValue()
-{
-    setValue(0);
-    Q_D(QUmlLiteralUnlimitedNatural);
-    d->modifiedResettableProperties.removeAll(QString::fromLatin1("value"));
-}
+// Operations
 
 /*!
     The query isComputable() is redefined to be true.
  */
 bool QUmlLiteralUnlimitedNatural::isComputable() const
 {
-    qWarning("QUmlLiteralUnlimitedNatural::isComputable: operation to be implemented");
-
-    return bool(); // change here to your derived return
+    return bool ();
 }
 
 /*!
     The query unlimitedValue() gives the value.
  */
-qint32 QUmlLiteralUnlimitedNatural::unlimitedValue() const
+int QUmlLiteralUnlimitedNatural::unlimitedValue() const
 {
-    qWarning("QUmlLiteralUnlimitedNatural::unlimitedValue: operation to be implemented");
-
-    return qint32(); // change here to your derived return
-}
-
-void QUmlLiteralUnlimitedNatural::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLiteralUnlimitedNatural")][QString::fromLatin1("value")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLiteralUnlimitedNatural")][QString::fromLatin1("value")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLiteralUnlimitedNatural")][QString::fromLatin1("value")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The specified UnlimitedNatural value.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLiteralUnlimitedNatural")][QString::fromLatin1("value")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLiteralUnlimitedNatural")][QString::fromLatin1("value")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLiteralUnlimitedNatural")][QString::fromLatin1("value")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QUmlLiteralSpecification::setPropertyData();
+    return int ();
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlliteralunlimitednatural.cpp"
 

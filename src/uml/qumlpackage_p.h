@@ -41,17 +41,11 @@
 #ifndef QUMLPACKAGE_P_H
 #define QUMLPACKAGE_P_H
 
-// Base class includes
-#include "private/qwrappedobject_p.h"
+#include "QtUml/QUmlPackage"
+
 #include "private/qumlnamespace_p.h"
 #include "private/qumlpackageableelement_p.h"
 #include "private/qumltemplateableelement_p.h"
-
-#include "QtUml/QUmlPackage"
-
-// Qt includes
-#include "QtCore/QString"
-#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 
@@ -59,29 +53,19 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlProfile;
-class QUmlProfileApplication;
-class QUmlNamedElement;
-class QUmlPackageMerge;
-class QUmlStereotype;
-class QUmlPackage;
-class QUmlType;
-class QUmlPackage;
-
-class Q_UML_EXPORT QUmlPackagePrivate : public QWrappedObjectPrivate
+class Q_UML_EXPORT QUmlPackagePrivate : public QUmlNamespacePrivate, public QUmlPackageableElementPrivate, public QUmlTemplateableElementPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlPackage)
-
 public:
-    explicit QUmlPackagePrivate();
-    virtual ~QUmlPackagePrivate();
+    QUmlPackagePrivate();
 
     QString URI;
-    QSet<QUmlPackageableElement *> packagedElements;
+    QSet<QUmlPackage *> nestedPackage;
     QUmlPackage *nestingPackage;
-    QSet<QUmlProfileApplication *> profileApplications;
-    QSet<QUmlPackageMerge *> packageMerges;
+    QSet<QUmlStereotype *> ownedStereotype;
+    QSet<QUmlType *> ownedType;
+    QSet<QUmlPackageMerge *> packageMerge;
+    QSet<QUmlPackageableElement *> packagedElement;
+    QSet<QUmlProfileApplication *> profileApplication;
 };
 
 QT_END_NAMESPACE

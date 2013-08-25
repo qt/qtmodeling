@@ -41,16 +41,10 @@
 #ifndef QUMLINTERACTION_P_H
 #define QUMLINTERACTION_P_H
 
-// Base class includes
-#include "private/qwrappedobject_p.h"
-#include "private/qumlbehavior_p.h"
-#include "private/qumlinteractionfragment_p.h"
-
 #include "QtUml/QUmlInteraction"
 
-// Qt includes
-#include "QtCore/QList"
-#include "QtCore/QSet"
+#include "private/qumlbehavior_p.h"
+#include "private/qumlinteractionfragment_p.h"
 
 QT_BEGIN_HEADER
 
@@ -58,26 +52,16 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlMessage;
-class QUmlLifeline;
-class QUmlAction;
-class QUmlGate;
-class QUmlInteraction;
-
-class Q_UML_EXPORT QUmlInteractionPrivate : public QWrappedObjectPrivate
+class Q_UML_EXPORT QUmlInteractionPrivate : public QUmlBehaviorPrivate, public QUmlInteractionFragmentPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlInteraction)
-
 public:
-    explicit QUmlInteractionPrivate();
-    virtual ~QUmlInteractionPrivate();
+    QUmlInteractionPrivate();
 
-    QSet<QUmlAction *> actions;
-    QSet<QUmlMessage *> messages;
-    QSet<QUmlGate *> formalGates;
-    QList<QUmlInteractionFragment *> fragments;
-    QSet<QUmlLifeline *> lifelines;
+    QSet<QUmlAction *> action;
+    QSet<QUmlGate *> formalGate;
+    QList<QUmlInteractionFragment *> fragment;
+    QSet<QUmlLifeline *> lifeline;
+    QSet<QUmlMessage *> message;
 };
 
 QT_END_NAMESPACE

@@ -41,18 +41,10 @@
 #ifndef QUMLOBJECTNODE_P_H
 #define QUMLOBJECTNODE_P_H
 
-// Base class includes
-#include "private/qwrappedobject_p.h"
-#include "private/qumlactivitynode_p.h"
-#include "private/qumltypedelement_p.h"
-
 #include "QtUml/QUmlObjectNode"
 
-// QtUml includes
-#include "QtUml/QtUmlNamespace"
-
-// Qt includes
-#include "QtCore/QSet"
+#include "private/qumlactivitynode_p.h"
+#include "private/qumltypedelement_p.h"
 
 QT_BEGIN_HEADER
 
@@ -60,24 +52,16 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlState;
-class QUmlBehavior;
-class QUmlValueSpecification;
-
-class Q_UML_EXPORT QUmlObjectNodePrivate : public QWrappedObjectPrivate
+class Q_UML_EXPORT QUmlObjectNodePrivate : public QUmlActivityNodePrivate, public QUmlTypedElementPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlObjectNode)
-
 public:
-    explicit QUmlObjectNodePrivate();
-    virtual ~QUmlObjectNodePrivate();
+    QUmlObjectNodePrivate();
 
+    QSet<QUmlState *> inState;
     bool isControlType;
     QtUml::ObjectNodeOrderingKind ordering;
-    QUmlValueSpecification *upperBound;
     QUmlBehavior *selection;
-    QSet<QUmlState *> inState;
+    QUmlValueSpecification *upperBound;
 };
 
 QT_END_NAMESPACE

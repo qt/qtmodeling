@@ -41,15 +41,9 @@
 #include "qumlliteralstring.h"
 #include "qumlliteralstring_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlLiteralStringPrivate::QUmlLiteralStringPrivate()
-{
-}
-
-QUmlLiteralStringPrivate::~QUmlLiteralStringPrivate()
 {
 }
 
@@ -61,55 +55,36 @@ QUmlLiteralStringPrivate::~QUmlLiteralStringPrivate()
     \brief A literal string is a specification of a string value.
  */
 
-QUmlLiteralString::QUmlLiteralString(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlLiteralSpecification(*new QUmlLiteralStringPrivate, wrapper, parent)
+QUmlLiteralString::QUmlLiteralString(bool create_d_ptr) :
+    QUmlLiteralSpecification(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlLiteralStringPrivate);
 }
 
-QUmlLiteralString::QUmlLiteralString(QUmlLiteralStringPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlLiteralSpecification(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlLiteralString::~QUmlLiteralString()
-{
-}
-
-// ---------------------------------------------------------------
-// ATTRIBUTES FROM QUmlLiteralString
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     The specified String value.
  */
 QString QUmlLiteralString::value() const
 {
-    // This is a read-write attribute
-
-    Q_D(const QUmlLiteralString);
-    return d->value;
+    return QString();
 }
 
 void QUmlLiteralString::setValue(QString value)
 {
-    // This is a read-write attribute
-
-    Q_D(QUmlLiteralString);
-    if (d->value != value) {
-        d->value = value;
-    }
+    Q_UNUSED(value);
 }
+
+// Operations
 
 /*!
     The query isComputable() is redefined to be true.
  */
 bool QUmlLiteralString::isComputable() const
 {
-    qWarning("QUmlLiteralString::isComputable: operation to be implemented");
-
-    return bool(); // change here to your derived return
+    return bool ();
 }
 
 /*!
@@ -117,24 +92,8 @@ bool QUmlLiteralString::isComputable() const
  */
 QString QUmlLiteralString::stringValue() const
 {
-    qWarning("QUmlLiteralString::stringValue: operation to be implemented");
-
-    return QString(); // change here to your derived return
-}
-
-void QUmlLiteralString::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLiteralString")][QString::fromLatin1("value")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLiteralString")][QString::fromLatin1("value")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLiteralString")][QString::fromLatin1("value")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The specified String value.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLiteralString")][QString::fromLatin1("value")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLiteralString")][QString::fromLatin1("value")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLiteralString")][QString::fromLatin1("value")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QUmlLiteralSpecification::setPropertyData();
+    return QString ();
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlliteralstring.cpp"
 

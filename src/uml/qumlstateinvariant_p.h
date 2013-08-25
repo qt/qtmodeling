@@ -41,10 +41,9 @@
 #ifndef QUMLSTATEINVARIANT_P_H
 #define QUMLSTATEINVARIANT_P_H
 
-// Base class includes
-#include "private/qumlinteractionfragment_p.h"
-
 #include "QtUml/QUmlStateInvariant"
+
+#include "private/qumlinteractionfragment_p.h"
 
 QT_BEGIN_HEADER
 
@@ -52,21 +51,13 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlLifeline;
-class QUmlConstraint;
-class QUmlStateInvariant;
-
 class Q_UML_EXPORT QUmlStateInvariantPrivate : public QUmlInteractionFragmentPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlStateInvariant)
-
 public:
-    explicit QUmlStateInvariantPrivate();
-    virtual ~QUmlStateInvariantPrivate();
+    QUmlStateInvariantPrivate();
 
-    QUmlConstraint *invariant;
     QUmlLifeline *covered;
+    QUmlConstraint *invariant;
 };
 
 QT_END_NAMESPACE

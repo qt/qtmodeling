@@ -41,13 +41,9 @@
 #ifndef QUMLPACKAGEIMPORT_P_H
 #define QUMLPACKAGEIMPORT_P_H
 
-// Base class includes
-#include "private/qumldirectedrelationship_p.h"
-
 #include "QtUml/QUmlPackageImport"
 
-// QtUml includes
-#include "QtUml/QtUmlNamespace"
+#include "private/qumldirectedrelationship_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,22 +51,14 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlPackage;
-class QUmlNamespace;
-class QUmlPackageImport;
-
 class Q_UML_EXPORT QUmlPackageImportPrivate : public QUmlDirectedRelationshipPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlPackageImport)
-
 public:
-    explicit QUmlPackageImportPrivate();
-    virtual ~QUmlPackageImportPrivate();
+    QUmlPackageImportPrivate();
 
-    QtUml::VisibilityKind visibility;
-    QUmlNamespace *importingNamespace;
     QUmlPackage *importedPackage;
+    QUmlNamespace *importingNamespace;
+    QtUml::VisibilityKind visibility;
 };
 
 QT_END_NAMESPACE

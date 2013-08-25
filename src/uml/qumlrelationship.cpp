@@ -41,34 +41,10 @@
 #include "qumlrelationship.h"
 #include "qumlrelationship_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlRelationshipPrivate::QUmlRelationshipPrivate()
 {
-}
-
-QUmlRelationshipPrivate::~QUmlRelationshipPrivate()
-{
-}
-
-void QUmlRelationshipPrivate::addRelatedElement(QUmlElement *relatedElement)
-{
-    // This is a read-only derived-union association end
-
-    if (!this->relatedElements.contains(relatedElement)) {
-        this->relatedElements.insert(relatedElement);
-    }
-}
-
-void QUmlRelationshipPrivate::removeRelatedElement(QUmlElement *relatedElement)
-{
-    // This is a read-only derived-union association end
-
-    if (this->relatedElements.contains(relatedElement)) {
-        this->relatedElements.remove(relatedElement);
-    }
 }
 
 /*!
@@ -79,50 +55,22 @@ void QUmlRelationshipPrivate::removeRelatedElement(QUmlElement *relatedElement)
     \brief Relationship is an abstract concept that specifies some kind of relationship between elements.
  */
 
-QUmlRelationship::QUmlRelationship(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlElement(*new QUmlRelationshipPrivate, wrapper, parent)
+QUmlRelationship::QUmlRelationship(bool create_d_ptr) :
+    QUmlElement(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlRelationshipPrivate);
 }
 
-QUmlRelationship::QUmlRelationship(QUmlRelationshipPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlElement(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlRelationship::~QUmlRelationship()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlRelationship
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     Specifies the elements related by the Relationship.
  */
-QSet<QUmlElement *> QUmlRelationship::relatedElements() const
+QSet<QUmlElement *> QUmlRelationship::relatedElement() const
 {
-    // This is a read-only derived-union association end
-
-    Q_D(const QUmlRelationship);
-    return d->relatedElements;
-}
-
-void QUmlRelationship::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRelationship")][QString::fromLatin1("relatedElements")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRelationship")][QString::fromLatin1("relatedElements")][QtWrappedObjects::IsDerivedUnionRole] = true;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRelationship")][QString::fromLatin1("relatedElements")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the elements related by the Relationship.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRelationship")][QString::fromLatin1("relatedElements")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRelationship")][QString::fromLatin1("relatedElements")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRelationship")][QString::fromLatin1("relatedElements")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlElement::setPropertyData();
+    return QSet<QUmlElement *>();
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlrelationship.cpp"
 

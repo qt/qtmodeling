@@ -43,15 +43,9 @@
 
 #include <QtUml/QUmlLinkEndCreationData>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlCreateLinkActionPrivate::QUmlCreateLinkActionPrivate()
-{
-}
-
-QUmlCreateLinkActionPrivate::~QUmlCreateLinkActionPrivate()
 {
 }
 
@@ -63,78 +57,32 @@ QUmlCreateLinkActionPrivate::~QUmlCreateLinkActionPrivate()
     \brief A create link action is a write link action for creating links.
  */
 
-QUmlCreateLinkAction::QUmlCreateLinkAction(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlWriteLinkAction(*new QUmlCreateLinkActionPrivate, wrapper, parent)
+QUmlCreateLinkAction::QUmlCreateLinkAction(bool create_d_ptr) :
+    QUmlWriteLinkAction(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlCreateLinkActionPrivate);
 }
 
-QUmlCreateLinkAction::QUmlCreateLinkAction(QUmlCreateLinkActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlWriteLinkAction(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlCreateLinkAction::~QUmlCreateLinkAction()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlCreateLinkAction
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     Specifies ends of association and inputs.
  */
 QSet<QUmlLinkEndCreationData *> QUmlCreateLinkAction::endData() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlCreateLinkAction);
-    return d->endData;
+    return QSet<QUmlLinkEndCreationData *>();
 }
 
-void QUmlCreateLinkAction::addEndData(QUmlLinkEndCreationData *endData)
+void QUmlCreateLinkAction::addEndData(QSet<QUmlLinkEndCreationData *> endData)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlCreateLinkAction);
-    if (!d->endData.contains(endData)) {
-        d->endData.insert(endData);
-        qTopLevelWrapper(endData)->setParent(qTopLevelWrapper(this));
-
-        // Adjust redefined property(ies)
-        (qwrappedobject_cast<QUmlLinkAction *>(this))->addEndData(qwrappedobject_cast<QUmlLinkEndData *>(endData));
-    }
+    Q_UNUSED(endData);
 }
 
-void QUmlCreateLinkAction::removeEndData(QUmlLinkEndCreationData *endData)
+void QUmlCreateLinkAction::removeEndData(QSet<QUmlLinkEndCreationData *> endData)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlCreateLinkAction);
-    if (d->endData.contains(endData)) {
-        d->endData.remove(endData);
-        qTopLevelWrapper(endData)->setParent(0);
-
-        // Adjust redefined property(ies)
-        (qwrappedobject_cast<QUmlLinkAction *>(this))->removeEndData(qwrappedobject_cast<QUmlLinkEndData *>(endData));
-    }
-}
-
-void QUmlCreateLinkAction::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCreateLinkAction")][QString::fromLatin1("endData")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCreateLinkAction")][QString::fromLatin1("endData")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCreateLinkAction")][QString::fromLatin1("endData")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies ends of association and inputs.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCreateLinkAction")][QString::fromLatin1("endData")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QUmlLinkAction::endData");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCreateLinkAction")][QString::fromLatin1("endData")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCreateLinkAction")][QString::fromLatin1("endData")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlWriteLinkAction::setPropertyData();
+    Q_UNUSED(endData);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlcreatelinkaction.cpp"
 

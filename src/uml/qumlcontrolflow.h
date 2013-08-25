@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlActivityEdge>
 
 QT_BEGIN_HEADER
@@ -51,25 +50,11 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-
 class QUmlControlFlowPrivate;
-
 class Q_UML_EXPORT QUmlControlFlow : public QUmlActivityEdge
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_DISABLE_COPY(QUmlControlFlow)
-    Q_DECLARE_PRIVATE(QUmlControlFlow)
-
 public:
-    Q_INVOKABLE explicit QUmlControlFlow(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlControlFlow();
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlControlFlow(QUmlControlFlowPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    QUmlControlFlow(bool create_d_ptr = true);
 };
 
 QT_END_NAMESPACE

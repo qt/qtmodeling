@@ -43,11 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlNamedElement>
-
-// Qt includes
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -55,45 +51,24 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlRegion;
-class QUmlTransition;
 class QUmlStateMachine;
+class QUmlTransition;
 
 class QUmlVertexPrivate;
-
-class Q_UML_EXPORT QUmlVertex : public QUmlNamedElement
+class Q_UML_EXPORT QUmlVertex : public virtual QUmlNamedElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QSet<QUmlTransition *> incomings READ incomings STORED false)
-    Q_PROPERTY(QUmlRegion * container READ container WRITE setContainer)
-    Q_PROPERTY(QSet<QUmlTransition *> outgoings READ outgoings STORED false)
-
-    Q_DISABLE_COPY(QUmlVertex)
-    Q_DECLARE_PRIVATE(QUmlVertex)
-
 public:
-    Q_INVOKABLE explicit QUmlVertex(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlVertex();
+    Q_DECL_HIDDEN QUmlVertex(bool create_d_ptr = true);
 
-    // Association ends from QUmlVertex
-    Q_INVOKABLE QSet<QUmlTransition *> incomings() const;
-    Q_INVOKABLE QUmlRegion *container() const;
-    Q_INVOKABLE void setContainer(QUmlRegion *container);
-    Q_INVOKABLE QSet<QUmlTransition *> outgoings() const;
+    // Owned attributes
+    QUmlRegion *container() const;
+    void setContainer(QUmlRegion *container);
+    QSet<QUmlTransition *> incoming() const;
+    QSet<QUmlTransition *> outgoing() const;
 
     // Operations
-    Q_INVOKABLE QUmlStateMachine *containingStateMachine() const;
-
-    virtual void setPropertyData();
-
-    // Classes which access read-only opposite properties should be friend
-    friend class QUmlTransition;
-
-protected:
-    explicit QUmlVertex(QUmlVertexPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    QUmlStateMachine *containingStateMachine() const;
 };
 
 QT_END_NAMESPACE

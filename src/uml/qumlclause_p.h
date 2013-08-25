@@ -41,14 +41,9 @@
 #ifndef QUMLCLAUSE_P_H
 #define QUMLCLAUSE_P_H
 
-// Base class includes
-#include "private/qumlelement_p.h"
-
 #include "QtUml/QUmlClause"
 
-// Qt includes
-#include "QtCore/QList"
-#include "QtCore/QSet"
+#include "private/qumlelement_p.h"
 
 QT_BEGIN_HEADER
 
@@ -56,26 +51,17 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlExecutableNode;
-class QUmlOutputPin;
-class QUmlClause;
-class QUmlClause;
-
 class Q_UML_EXPORT QUmlClausePrivate : public QUmlElementPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlClause)
-
 public:
-    explicit QUmlClausePrivate();
-    virtual ~QUmlClausePrivate();
+    QUmlClausePrivate();
 
-    QSet<QUmlClause *> successorClauses;
+    QSet<QUmlExecutableNode *> body;
+    QList<QUmlOutputPin *> bodyOutput;
     QUmlOutputPin *decider;
-    QSet<QUmlClause *> predecessorClauses;
-    QList<QUmlOutputPin *> bodyOutputs;
-    QSet<QUmlExecutableNode *> bodies;
-    QSet<QUmlExecutableNode *> tests;
+    QSet<QUmlClause *> predecessorClause;
+    QSet<QUmlClause *> successorClause;
+    QSet<QUmlExecutableNode *> test;
 };
 
 QT_END_NAMESPACE

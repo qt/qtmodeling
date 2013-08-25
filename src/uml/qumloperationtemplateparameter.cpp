@@ -43,16 +43,10 @@
 
 #include <QtUml/QUmlOperation>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlOperationTemplateParameterPrivate::QUmlOperationTemplateParameterPrivate() :
     parameteredElement(0)
-{
-}
-
-QUmlOperationTemplateParameterPrivate::~QUmlOperationTemplateParameterPrivate()
 {
 }
 
@@ -64,68 +58,27 @@ QUmlOperationTemplateParameterPrivate::~QUmlOperationTemplateParameterPrivate()
     \brief An operation template parameter exposes an operation as a formal parameter for a template.
  */
 
-QUmlOperationTemplateParameter::QUmlOperationTemplateParameter(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlTemplateParameter(*new QUmlOperationTemplateParameterPrivate, wrapper, parent)
+QUmlOperationTemplateParameter::QUmlOperationTemplateParameter(bool create_d_ptr) :
+    QUmlTemplateParameter(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlOperationTemplateParameterPrivate);
 }
 
-QUmlOperationTemplateParameter::QUmlOperationTemplateParameter(QUmlOperationTemplateParameterPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlTemplateParameter(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlOperationTemplateParameter::~QUmlOperationTemplateParameter()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlOperationTemplateParameter
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     The operation for this template parameter.
  */
 QUmlOperation *QUmlOperationTemplateParameter::parameteredElement() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlOperationTemplateParameter);
-    return d->parameteredElement;
+    return 0;
 }
 
 void QUmlOperationTemplateParameter::setParameteredElement(QUmlOperation *parameteredElement)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlOperationTemplateParameter);
-    if (d->parameteredElement != parameteredElement) {
-        // Adjust opposite property
-
-        d->parameteredElement = parameteredElement;
-
-        // Adjust redefined property(ies)
-        (qwrappedobject_cast<QUmlTemplateParameter *>(this))->setParameteredElement(qwrappedobject_cast<QUmlParameterableElement *>(parameteredElement));
-
-        // Adjust opposite property
-        parameteredElement->setTemplateParameter(this);
-    }
-}
-
-void QUmlOperationTemplateParameter::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOperationTemplateParameter")][QString::fromLatin1("parameteredElement")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOperationTemplateParameter")][QString::fromLatin1("parameteredElement")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOperationTemplateParameter")][QString::fromLatin1("parameteredElement")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The operation for this template parameter.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOperationTemplateParameter")][QString::fromLatin1("parameteredElement")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QUmlTemplateParameter::parameteredElement");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOperationTemplateParameter")][QString::fromLatin1("parameteredElement")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOperationTemplateParameter")][QString::fromLatin1("parameteredElement")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlOperation::templateParameter");
-
-    QUmlTemplateParameter::setPropertyData();
+    Q_UNUSED(parameteredElement);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumloperationtemplateparameter.cpp"
 

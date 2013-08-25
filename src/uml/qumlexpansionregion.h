@@ -43,14 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlStructuredActivityNode>
-
-// QtUml includes
 #include <QtUml/QtUmlNamespace>
-
-// Qt includes
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -58,44 +52,23 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlExpansionNode;
 
 class QUmlExpansionRegionPrivate;
-
 class Q_UML_EXPORT QUmlExpansionRegion : public QUmlStructuredActivityNode
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QtUml::ExpansionKind mode READ mode WRITE setMode RESET unsetMode)
-    Q_PROPERTY(QSet<QUmlExpansionNode *> inputElements READ inputElements)
-    Q_PROPERTY(QSet<QUmlExpansionNode *> outputElements READ outputElements)
-
-    Q_DISABLE_COPY(QUmlExpansionRegion)
-    Q_DECLARE_PRIVATE(QUmlExpansionRegion)
-
 public:
-    Q_INVOKABLE explicit QUmlExpansionRegion(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlExpansionRegion();
+    QUmlExpansionRegion(bool create_d_ptr = true);
 
-    // Attributes from QUmlExpansionRegion
-    Q_INVOKABLE QtUml::ExpansionKind mode() const;
-    Q_INVOKABLE void setMode(QtUml::ExpansionKind mode);
-    Q_INVOKABLE void unsetMode();
-
-    // Association ends from QUmlExpansionRegion
-    Q_INVOKABLE QSet<QUmlExpansionNode *> inputElements() const;
-    Q_INVOKABLE void addInputElement(QUmlExpansionNode *inputElement);
-    Q_INVOKABLE void removeInputElement(QUmlExpansionNode *inputElement);
-    Q_INVOKABLE QSet<QUmlExpansionNode *> outputElements() const;
-    Q_INVOKABLE void addOutputElement(QUmlExpansionNode *outputElement);
-    Q_INVOKABLE void removeOutputElement(QUmlExpansionNode *outputElement);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlExpansionRegion(QUmlExpansionRegionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QSet<QUmlExpansionNode *> inputElement() const;
+    void addInputElement(QSet<QUmlExpansionNode *> inputElement);
+    void removeInputElement(QSet<QUmlExpansionNode *> inputElement);
+    QtUml::ExpansionKind mode() const;
+    void setMode(QtUml::ExpansionKind mode);
+    QSet<QUmlExpansionNode *> outputElement() const;
+    void addOutputElement(QSet<QUmlExpansionNode *> outputElement);
+    void removeOutputElement(QSet<QUmlExpansionNode *> outputElement);
 };
 
 QT_END_NAMESPACE

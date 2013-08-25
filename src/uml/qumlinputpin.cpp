@@ -41,15 +41,9 @@
 #include "qumlinputpin.h"
 #include "qumlinputpin_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlInputPinPrivate::QUmlInputPinPrivate()
-{
-}
-
-QUmlInputPinPrivate::~QUmlInputPinPrivate()
 {
 }
 
@@ -61,28 +55,12 @@ QUmlInputPinPrivate::~QUmlInputPinPrivate()
     \brief An input pin is a pin that holds input values to be consumed by an action.
  */
 
-QUmlInputPin::QUmlInputPin(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlPin(*new QUmlInputPinPrivate, wrapper, parent)
+QUmlInputPin::QUmlInputPin(bool create_d_ptr) :
+    QUmlPin(false)
 {
-    setPropertyData();
-}
-
-QUmlInputPin::QUmlInputPin(QUmlInputPinPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlPin(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlInputPin::~QUmlInputPin()
-{
-}
-
-void QUmlInputPin::setPropertyData()
-{
-    QUmlPin::setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlInputPinPrivate);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlinputpin.cpp"
 

@@ -41,15 +41,10 @@
 #include "qumlliteralinteger.h"
 #include "qumlliteralinteger_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
-QUmlLiteralIntegerPrivate::QUmlLiteralIntegerPrivate()
-{
-}
-
-QUmlLiteralIntegerPrivate::~QUmlLiteralIntegerPrivate()
+QUmlLiteralIntegerPrivate::QUmlLiteralIntegerPrivate() :
+    value(0)
 {
 }
 
@@ -61,55 +56,36 @@ QUmlLiteralIntegerPrivate::~QUmlLiteralIntegerPrivate()
     \brief A literal integer is a specification of an integer value.
  */
 
-QUmlLiteralInteger::QUmlLiteralInteger(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlLiteralSpecification(*new QUmlLiteralIntegerPrivate, wrapper, parent)
+QUmlLiteralInteger::QUmlLiteralInteger(bool create_d_ptr) :
+    QUmlLiteralSpecification(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlLiteralIntegerPrivate);
 }
 
-QUmlLiteralInteger::QUmlLiteralInteger(QUmlLiteralIntegerPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlLiteralSpecification(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlLiteralInteger::~QUmlLiteralInteger()
-{
-}
-
-// ---------------------------------------------------------------
-// ATTRIBUTES FROM QUmlLiteralInteger
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     The specified Integer value.
  */
-qint32 QUmlLiteralInteger::value() const
+int QUmlLiteralInteger::value() const
 {
-    // This is a read-write attribute
-
-    Q_D(const QUmlLiteralInteger);
-    return d->value;
+    return int();
 }
 
-void QUmlLiteralInteger::setValue(qint32 value)
+void QUmlLiteralInteger::setValue(int value)
 {
-    // This is a read-write attribute
-
-    Q_D(QUmlLiteralInteger);
-    if (d->value != value) {
-        d->value = value;
-    }
+    Q_UNUSED(value);
 }
+
+// Operations
 
 /*!
     The query integerValue() gives the value.
  */
-qint32 QUmlLiteralInteger::integerValue() const
+int QUmlLiteralInteger::integerValue() const
 {
-    qWarning("QUmlLiteralInteger::integerValue: operation to be implemented");
-
-    return qint32(); // change here to your derived return
+    return int ();
 }
 
 /*!
@@ -117,24 +93,8 @@ qint32 QUmlLiteralInteger::integerValue() const
  */
 bool QUmlLiteralInteger::isComputable() const
 {
-    qWarning("QUmlLiteralInteger::isComputable: operation to be implemented");
-
-    return bool(); // change here to your derived return
-}
-
-void QUmlLiteralInteger::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLiteralInteger")][QString::fromLatin1("value")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLiteralInteger")][QString::fromLatin1("value")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLiteralInteger")][QString::fromLatin1("value")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The specified Integer value.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLiteralInteger")][QString::fromLatin1("value")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLiteralInteger")][QString::fromLatin1("value")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLiteralInteger")][QString::fromLatin1("value")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QUmlLiteralSpecification::setPropertyData();
+    return bool ();
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlliteralinteger.cpp"
 

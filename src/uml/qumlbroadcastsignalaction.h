@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlInvocationAction>
 
 QT_BEGIN_HEADER
@@ -52,33 +51,17 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlSignal;
 
 class QUmlBroadcastSignalActionPrivate;
-
 class Q_UML_EXPORT QUmlBroadcastSignalAction : public QUmlInvocationAction
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlSignal * signal READ signal WRITE setSignal)
-
-    Q_DISABLE_COPY(QUmlBroadcastSignalAction)
-    Q_DECLARE_PRIVATE(QUmlBroadcastSignalAction)
-
 public:
-    Q_INVOKABLE explicit QUmlBroadcastSignalAction(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlBroadcastSignalAction();
+    QUmlBroadcastSignalAction(bool create_d_ptr = true);
 
-    // Association ends from QUmlBroadcastSignalAction
-    Q_INVOKABLE QUmlSignal *signal() const;
-    Q_INVOKABLE void setSignal(QUmlSignal *signal);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlBroadcastSignalAction(QUmlBroadcastSignalActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlSignal *signal() const;
+    void setSignal(QUmlSignal *signal);
 };
 
 QT_END_NAMESPACE

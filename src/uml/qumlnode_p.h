@@ -41,15 +41,10 @@
 #ifndef QUMLNODE_P_H
 #define QUMLNODE_P_H
 
-// Base class includes
-#include "private/qwrappedobject_p.h"
-#include "private/qumlclass_p.h"
-#include "private/qumldeploymenttarget_p.h"
-
 #include "QtUml/QUmlNode"
 
-// Qt includes
-#include "QtCore/QSet"
+#include "private/qumlclass_p.h"
+#include "private/qumldeploymenttarget_p.h"
 
 QT_BEGIN_HEADER
 
@@ -57,19 +52,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlNode;
-class QUmlNode;
-
-class Q_UML_EXPORT QUmlNodePrivate : public QWrappedObjectPrivate
+class Q_UML_EXPORT QUmlNodePrivate : public QUmlClassPrivate, public QUmlDeploymentTargetPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlNode)
-
 public:
-    explicit QUmlNodePrivate();
-    virtual ~QUmlNodePrivate();
+    QUmlNodePrivate();
 
-    QSet<QUmlNode *> nestedNodes;
+    QSet<QUmlNode *> nestedNode;
 };
 
 QT_END_NAMESPACE

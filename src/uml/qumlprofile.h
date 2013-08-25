@@ -43,11 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlPackage>
-
-// Qt includes
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -55,39 +51,22 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlElementImport;
 class QUmlPackageImport;
 
 class QUmlProfilePrivate;
-
 class Q_UML_EXPORT QUmlProfile : public QUmlPackage
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QSet<QUmlPackageImport *> metamodelReferences READ metamodelReferences)
-    Q_PROPERTY(QSet<QUmlElementImport *> metaclassReferences READ metaclassReferences)
-
-    Q_DISABLE_COPY(QUmlProfile)
-    Q_DECLARE_PRIVATE(QUmlProfile)
-
 public:
-    Q_INVOKABLE explicit QUmlProfile(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlProfile();
+    QUmlProfile(bool create_d_ptr = true);
 
-    // Association ends from QUmlProfile
-    Q_INVOKABLE QSet<QUmlPackageImport *> metamodelReferences() const;
-    Q_INVOKABLE void addMetamodelReference(QUmlPackageImport *metamodelReference);
-    Q_INVOKABLE void removeMetamodelReference(QUmlPackageImport *metamodelReference);
-    Q_INVOKABLE QSet<QUmlElementImport *> metaclassReferences() const;
-    Q_INVOKABLE void addMetaclassReference(QUmlElementImport *metaclassReference);
-    Q_INVOKABLE void removeMetaclassReference(QUmlElementImport *metaclassReference);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlProfile(QUmlProfilePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QSet<QUmlElementImport *> metaclassReference() const;
+    void addMetaclassReference(QSet<QUmlElementImport *> metaclassReference);
+    void removeMetaclassReference(QSet<QUmlElementImport *> metaclassReference);
+    QSet<QUmlPackageImport *> metamodelReference() const;
+    void addMetamodelReference(QSet<QUmlPackageImport *> metamodelReference);
+    void removeMetamodelReference(QSet<QUmlPackageImport *> metamodelReference);
 };
 
 QT_END_NAMESPACE

@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlAction>
 
 QT_BEGIN_HEADER
@@ -52,33 +51,17 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlInputPin;
 
 class QUmlStartClassifierBehaviorActionPrivate;
-
 class Q_UML_EXPORT QUmlStartClassifierBehaviorAction : public QUmlAction
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlInputPin * object READ object WRITE setObject)
-
-    Q_DISABLE_COPY(QUmlStartClassifierBehaviorAction)
-    Q_DECLARE_PRIVATE(QUmlStartClassifierBehaviorAction)
-
 public:
-    Q_INVOKABLE explicit QUmlStartClassifierBehaviorAction(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlStartClassifierBehaviorAction();
+    QUmlStartClassifierBehaviorAction(bool create_d_ptr = true);
 
-    // Association ends from QUmlStartClassifierBehaviorAction
-    Q_INVOKABLE QUmlInputPin *object() const;
-    Q_INVOKABLE void setObject(QUmlInputPin *object);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlStartClassifierBehaviorAction(QUmlStartClassifierBehaviorActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlInputPin *object() const;
+    void setObject(QUmlInputPin *object);
 };
 
 QT_END_NAMESPACE

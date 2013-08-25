@@ -41,25 +41,20 @@
 #ifndef QUMLPRIMITIVETYPE_P_H
 #define QUMLPRIMITIVETYPE_P_H
 
-// Base class includes
-#include "private/qumldatatype_p.h"
-
 #include "QtUml/QUmlPrimitiveType"
+
+#include "private/qumldatatype_p.h"
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-class QUmlPrimitiveType;
 
 class Q_UML_EXPORT QUmlPrimitiveTypePrivate : public QUmlDataTypePrivate
 {
-    Q_DECLARE_PUBLIC(QUmlPrimitiveType)
-
 public:
-    explicit QUmlPrimitiveTypePrivate();
-    virtual ~QUmlPrimitiveTypePrivate();
+    QUmlPrimitiveTypePrivate();
 
 };
 

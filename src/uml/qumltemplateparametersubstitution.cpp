@@ -42,22 +42,16 @@
 #include "qumltemplateparametersubstitution_p.h"
 
 #include <QtUml/QUmlParameterableElement>
-#include <QtUml/QUmlTemplateParameter>
 #include <QtUml/QUmlTemplateBinding>
-
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
+#include <QtUml/QUmlTemplateParameter>
 
 QT_BEGIN_NAMESPACE
 
 QUmlTemplateParameterSubstitutionPrivate::QUmlTemplateParameterSubstitutionPrivate() :
-    ownedActual(0),
-    formal(0),
     actual(0),
+    formal(0),
+    ownedActual(0),
     templateBinding(0)
-{
-}
-
-QUmlTemplateParameterSubstitutionPrivate::~QUmlTemplateParameterSubstitutionPrivate()
 {
 }
 
@@ -69,54 +63,26 @@ QUmlTemplateParameterSubstitutionPrivate::~QUmlTemplateParameterSubstitutionPriv
     \brief A template parameter substitution relates the actual parameter to a formal template parameter as part of a template binding.
  */
 
-QUmlTemplateParameterSubstitution::QUmlTemplateParameterSubstitution(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlElement(*new QUmlTemplateParameterSubstitutionPrivate, wrapper, parent)
+QUmlTemplateParameterSubstitution::QUmlTemplateParameterSubstitution(bool create_d_ptr) :
+    QUmlElement(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlTemplateParameterSubstitutionPrivate);
 }
 
-QUmlTemplateParameterSubstitution::QUmlTemplateParameterSubstitution(QUmlTemplateParameterSubstitutionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlElement(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlTemplateParameterSubstitution::~QUmlTemplateParameterSubstitution()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlTemplateParameterSubstitution
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
-    The actual parameter that is owned by this substitution.
+    The element that is the actual parameter for this substitution.
  */
-QUmlParameterableElement *QUmlTemplateParameterSubstitution::ownedActual() const
+QUmlParameterableElement *QUmlTemplateParameterSubstitution::actual() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlTemplateParameterSubstitution);
-    return d->ownedActual;
+    return 0;
 }
 
-void QUmlTemplateParameterSubstitution::setOwnedActual(QUmlParameterableElement *ownedActual)
+void QUmlTemplateParameterSubstitution::setActual(QUmlParameterableElement *actual)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlTemplateParameterSubstitution);
-    if (d->ownedActual != ownedActual) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QUmlElement *>(d->ownedActual));
-
-        d->ownedActual = ownedActual;
-
-        // Adjust subsetted property(ies)
-        if (ownedActual) {
-            (qwrappedobject_cast<QUmlElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QUmlElement *>(ownedActual));
-        }
-        (qwrappedobject_cast<QUmlTemplateParameterSubstitution *>(this))->setActual(qwrappedobject_cast<QUmlParameterableElement *>(ownedActual));
-    }
+    Q_UNUSED(actual);
 }
 
 /*!
@@ -124,41 +90,25 @@ void QUmlTemplateParameterSubstitution::setOwnedActual(QUmlParameterableElement 
  */
 QUmlTemplateParameter *QUmlTemplateParameterSubstitution::formal() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlTemplateParameterSubstitution);
-    return d->formal;
+    return 0;
 }
 
 void QUmlTemplateParameterSubstitution::setFormal(QUmlTemplateParameter *formal)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlTemplateParameterSubstitution);
-    if (d->formal != formal) {
-        d->formal = formal;
-    }
+    Q_UNUSED(formal);
 }
 
 /*!
-    The element that is the actual parameter for this substitution.
+    The actual parameter that is owned by this substitution.
  */
-QUmlParameterableElement *QUmlTemplateParameterSubstitution::actual() const
+QUmlParameterableElement *QUmlTemplateParameterSubstitution::ownedActual() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlTemplateParameterSubstitution);
-    return d->actual;
+    return 0;
 }
 
-void QUmlTemplateParameterSubstitution::setActual(QUmlParameterableElement *actual)
+void QUmlTemplateParameterSubstitution::setOwnedActual(QUmlParameterableElement *ownedActual)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlTemplateParameterSubstitution);
-    if (d->actual != actual) {
-        d->actual = actual;
-    }
+    Q_UNUSED(ownedActual);
 }
 
 /*!
@@ -166,67 +116,13 @@ void QUmlTemplateParameterSubstitution::setActual(QUmlParameterableElement *actu
  */
 QUmlTemplateBinding *QUmlTemplateParameterSubstitution::templateBinding() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlTemplateParameterSubstitution);
-    return d->templateBinding;
+    return 0;
 }
 
 void QUmlTemplateParameterSubstitution::setTemplateBinding(QUmlTemplateBinding *templateBinding)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlTemplateParameterSubstitution);
-    if (d->templateBinding != templateBinding) {
-        // Adjust opposite property
-        if (d->templateBinding)
-            d->templateBinding->removeParameterSubstitution(this);
-
-        d->templateBinding = templateBinding;
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->setOwner(qwrappedobject_cast<QUmlElement *>(templateBinding));
-
-        // Adjust opposite property
-        if (templateBinding)
-            templateBinding->addParameterSubstitution(this);
-    }
-}
-
-void QUmlTemplateParameterSubstitution::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateParameterSubstitution")][QString::fromLatin1("ownedActual")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateParameterSubstitution")][QString::fromLatin1("ownedActual")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateParameterSubstitution")][QString::fromLatin1("ownedActual")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The actual parameter that is owned by this substitution.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateParameterSubstitution")][QString::fromLatin1("ownedActual")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateParameterSubstitution")][QString::fromLatin1("ownedActual")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements QUmlTemplateParameterSubstitution::actual");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateParameterSubstitution")][QString::fromLatin1("ownedActual")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateParameterSubstitution")][QString::fromLatin1("formal")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateParameterSubstitution")][QString::fromLatin1("formal")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateParameterSubstitution")][QString::fromLatin1("formal")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The formal template parameter that is associated with this substitution.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateParameterSubstitution")][QString::fromLatin1("formal")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateParameterSubstitution")][QString::fromLatin1("formal")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateParameterSubstitution")][QString::fromLatin1("formal")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateParameterSubstitution")][QString::fromLatin1("actual")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateParameterSubstitution")][QString::fromLatin1("actual")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateParameterSubstitution")][QString::fromLatin1("actual")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The element that is the actual parameter for this substitution.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateParameterSubstitution")][QString::fromLatin1("actual")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateParameterSubstitution")][QString::fromLatin1("actual")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateParameterSubstitution")][QString::fromLatin1("actual")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateParameterSubstitution")][QString::fromLatin1("templateBinding")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateParameterSubstitution")][QString::fromLatin1("templateBinding")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateParameterSubstitution")][QString::fromLatin1("templateBinding")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The optional bindings from this element to templates.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateParameterSubstitution")][QString::fromLatin1("templateBinding")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateParameterSubstitution")][QString::fromLatin1("templateBinding")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::owner");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateParameterSubstitution")][QString::fromLatin1("templateBinding")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlTemplateBinding::parameterSubstitution");
-
-    QUmlElement::setPropertyData();
+    Q_UNUSED(templateBinding);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumltemplateparametersubstitution.cpp"
 

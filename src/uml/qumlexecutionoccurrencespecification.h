@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlOccurrenceSpecification>
 
 QT_BEGIN_HEADER
@@ -52,33 +51,17 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlExecutionSpecification;
 
 class QUmlExecutionOccurrenceSpecificationPrivate;
-
 class Q_UML_EXPORT QUmlExecutionOccurrenceSpecification : public QUmlOccurrenceSpecification
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlExecutionSpecification * execution READ execution WRITE setExecution)
-
-    Q_DISABLE_COPY(QUmlExecutionOccurrenceSpecification)
-    Q_DECLARE_PRIVATE(QUmlExecutionOccurrenceSpecification)
-
 public:
-    Q_INVOKABLE explicit QUmlExecutionOccurrenceSpecification(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlExecutionOccurrenceSpecification();
+    QUmlExecutionOccurrenceSpecification(bool create_d_ptr = true);
 
-    // Association ends from QUmlExecutionOccurrenceSpecification
-    Q_INVOKABLE QUmlExecutionSpecification *execution() const;
-    Q_INVOKABLE void setExecution(QUmlExecutionSpecification *execution);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlExecutionOccurrenceSpecification(QUmlExecutionOccurrenceSpecificationPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlExecutionSpecification *execution() const;
+    void setExecution(QUmlExecutionSpecification *execution);
 };
 
 QT_END_NAMESPACE

@@ -41,13 +41,9 @@
 #ifndef QUMLSEQUENCENODE_P_H
 #define QUMLSEQUENCENODE_P_H
 
-// Base class includes
-#include "private/qumlstructuredactivitynode_p.h"
-
 #include "QtUml/QUmlSequenceNode"
 
-// Qt includes
-#include "QtCore/QList"
+#include "private/qumlstructuredactivitynode_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,19 +51,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlExecutableNode;
-class QUmlSequenceNode;
-
 class Q_UML_EXPORT QUmlSequenceNodePrivate : public QUmlStructuredActivityNodePrivate
 {
-    Q_DECLARE_PUBLIC(QUmlSequenceNode)
-
 public:
-    explicit QUmlSequenceNodePrivate();
-    virtual ~QUmlSequenceNodePrivate();
+    QUmlSequenceNodePrivate();
 
-    QList<QUmlExecutableNode *> executableNodes;
+    QList<QUmlExecutableNode *> executableNode;
 };
 
 QT_END_NAMESPACE

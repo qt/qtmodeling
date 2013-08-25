@@ -41,17 +41,11 @@
 #ifndef QUMLOPERATION_P_H
 #define QUMLOPERATION_P_H
 
-// Base class includes
-#include "private/qwrappedobject_p.h"
+#include "QtUml/QUmlOperation"
+
 #include "private/qumltemplateableelement_p.h"
 #include "private/qumlbehavioralfeature_p.h"
 #include "private/qumlparameterableelement_p.h"
-
-#include "QtUml/QUmlOperation"
-
-// Qt includes
-#include "QtCore/QList"
-#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 
@@ -59,37 +53,27 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlRedefinableElement;
-class QUmlType;
-class QUmlOperationTemplateParameter;
-class QUmlOperation;
-class QUmlParameter;
-class QUmlInterface;
-class QUmlConstraint;
-class QUmlDataType;
-class QUmlClass;
-class QUmlOperation;
-
-class Q_UML_EXPORT QUmlOperationPrivate : public QWrappedObjectPrivate
+class Q_UML_EXPORT QUmlOperationPrivate : public QUmlTemplateableElementPrivate, public QUmlBehavioralFeaturePrivate, public QUmlParameterableElementPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlOperation)
-
 public:
-    explicit QUmlOperationPrivate();
-    virtual ~QUmlOperationPrivate();
+    QUmlOperationPrivate();
 
-    bool isQuery;
-    QList<QUmlParameter *> ownedParameters;
     QUmlConstraint *bodyCondition;
-    QSet<QUmlOperation *> redefinedOperations;
-    QSet<QUmlConstraint *> postconditions;
-    QUmlDataType *datatype;
-    QUmlOperationTemplateParameter *templateParameter;
-    QUmlInterface *interface_;
-    QSet<QUmlConstraint *> preconditions;
     QUmlClass *class_;
-    QSet<QUmlType *> raisedExceptions;
+    QUmlDataType *datatype;
+    QUmlInterface *interface_;
+    bool isOrdered;
+    bool isQuery;
+    bool isUnique;
+    int lower;
+    QList<QUmlParameter *> ownedParameter;
+    QSet<QUmlConstraint *> postcondition;
+    QSet<QUmlConstraint *> precondition;
+    QSet<QUmlType *> raisedException;
+    QSet<QUmlOperation *> redefinedOperation;
+    QUmlOperationTemplateParameter *templateParameter;
+    QUmlType *type;
+    int upper;
 };
 
 QT_END_NAMESPACE

@@ -44,17 +44,11 @@
 #include <QtUml/QUmlOutputPin>
 #include <QtUml/QUmlValueSpecification>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlValueSpecificationActionPrivate::QUmlValueSpecificationActionPrivate() :
-    value(0),
-    result(0)
-{
-}
-
-QUmlValueSpecificationActionPrivate::~QUmlValueSpecificationActionPrivate()
+    result(0),
+    value(0)
 {
 }
 
@@ -66,104 +60,40 @@ QUmlValueSpecificationActionPrivate::~QUmlValueSpecificationActionPrivate()
     \brief A value specification action is an action that evaluates a value specification.
  */
 
-QUmlValueSpecificationAction::QUmlValueSpecificationAction(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlAction(*new QUmlValueSpecificationActionPrivate, wrapper, parent)
+QUmlValueSpecificationAction::QUmlValueSpecificationAction(bool create_d_ptr) :
+    QUmlAction(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlValueSpecificationActionPrivate);
 }
 
-QUmlValueSpecificationAction::QUmlValueSpecificationAction(QUmlValueSpecificationActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlAction(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlValueSpecificationAction::~QUmlValueSpecificationAction()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlValueSpecificationAction
-// ---------------------------------------------------------------
-
-/*!
-    Value specification to be evaluated.
- */
-QUmlValueSpecification *QUmlValueSpecificationAction::value() const
-{
-    // This is a read-write association end
-
-    Q_D(const QUmlValueSpecificationAction);
-    return d->value;
-}
-
-void QUmlValueSpecificationAction::setValue(QUmlValueSpecification *value)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlValueSpecificationAction);
-    if (d->value != value) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QUmlElement *>(d->value));
-
-        d->value = value;
-
-        // Adjust subsetted property(ies)
-        if (value) {
-            (qwrappedobject_cast<QUmlElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QUmlElement *>(value));
-        }
-    }
-}
+// Owned attributes
 
 /*!
     Gives the output pin on which the result is put.
  */
 QUmlOutputPin *QUmlValueSpecificationAction::result() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlValueSpecificationAction);
-    return d->result;
+    return 0;
 }
 
 void QUmlValueSpecificationAction::setResult(QUmlOutputPin *result)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlValueSpecificationAction);
-    if (d->result != result) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActionPrivate *>(d))->removeOutput(qwrappedobject_cast<QUmlOutputPin *>(d->result));
-
-        d->result = result;
-
-        // Adjust subsetted property(ies)
-        if (result) {
-            (qwrappedobject_cast<QUmlActionPrivate *>(d))->addOutput(qwrappedobject_cast<QUmlOutputPin *>(result));
-        }
-    }
+    Q_UNUSED(result);
 }
 
-void QUmlValueSpecificationAction::setPropertyData()
+/*!
+    Value specification to be evaluated.
+ */
+QUmlValueSpecification *QUmlValueSpecificationAction::value() const
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlValueSpecificationAction")][QString::fromLatin1("value")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlValueSpecificationAction")][QString::fromLatin1("value")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlValueSpecificationAction")][QString::fromLatin1("value")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Value specification to be evaluated.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlValueSpecificationAction")][QString::fromLatin1("value")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlValueSpecificationAction")][QString::fromLatin1("value")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlValueSpecificationAction")][QString::fromLatin1("value")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
+    return 0;
+}
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlValueSpecificationAction")][QString::fromLatin1("result")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlValueSpecificationAction")][QString::fromLatin1("result")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlValueSpecificationAction")][QString::fromLatin1("result")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Gives the output pin on which the result is put.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlValueSpecificationAction")][QString::fromLatin1("result")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlValueSpecificationAction")][QString::fromLatin1("result")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlAction::outputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlValueSpecificationAction")][QString::fromLatin1("result")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlAction::setPropertyData();
+void QUmlValueSpecificationAction::setValue(QUmlValueSpecification *value)
+{
+    Q_UNUSED(value);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlvaluespecificationaction.cpp"
 

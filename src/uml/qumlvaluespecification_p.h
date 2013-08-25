@@ -41,15 +41,10 @@
 #ifndef QUMLVALUESPECIFICATION_P_H
 #define QUMLVALUESPECIFICATION_P_H
 
-// Base class includes
-#include "private/qwrappedobject_p.h"
-#include "private/qumltypedelement_p.h"
-#include "private/qumlpackageableelement_p.h"
-
 #include "QtUml/QUmlValueSpecification"
 
-// Qt includes
-#include "QtCore/QString"
+#include "private/qumltypedelement_p.h"
+#include "private/qumlpackageableelement_p.h"
 
 QT_BEGIN_HEADER
 
@@ -57,16 +52,10 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlParameterableElement;
-
-class Q_UML_EXPORT QUmlValueSpecificationPrivate : public QWrappedObjectPrivate
+class Q_UML_EXPORT QUmlValueSpecificationPrivate : public QUmlTypedElementPrivate, public QUmlPackageableElementPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlValueSpecification)
-
 public:
-    explicit QUmlValueSpecificationPrivate();
-    virtual ~QUmlValueSpecificationPrivate();
+    QUmlValueSpecificationPrivate();
 
 };
 

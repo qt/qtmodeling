@@ -43,11 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlElement>
-
-// Qt includes
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -55,45 +51,26 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlObjectNode;
 class QUmlClassifier;
 class QUmlExecutableNode;
+class QUmlObjectNode;
 
 class QUmlExceptionHandlerPrivate;
-
 class Q_UML_EXPORT QUmlExceptionHandler : public QUmlElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlExecutableNode * handlerBody READ handlerBody WRITE setHandlerBody)
-    Q_PROPERTY(QSet<QUmlClassifier *> exceptionTypes READ exceptionTypes)
-    Q_PROPERTY(QUmlExecutableNode * protectedNode READ protectedNode WRITE setProtectedNode)
-    Q_PROPERTY(QUmlObjectNode * exceptionInput READ exceptionInput WRITE setExceptionInput)
-
-    Q_DISABLE_COPY(QUmlExceptionHandler)
-    Q_DECLARE_PRIVATE(QUmlExceptionHandler)
-
 public:
-    Q_INVOKABLE explicit QUmlExceptionHandler(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlExceptionHandler();
+    QUmlExceptionHandler(bool create_d_ptr = true);
 
-    // Association ends from QUmlExceptionHandler
-    Q_INVOKABLE QUmlExecutableNode *handlerBody() const;
-    Q_INVOKABLE void setHandlerBody(QUmlExecutableNode *handlerBody);
-    Q_INVOKABLE QSet<QUmlClassifier *> exceptionTypes() const;
-    Q_INVOKABLE void addExceptionType(QUmlClassifier *exceptionType);
-    Q_INVOKABLE void removeExceptionType(QUmlClassifier *exceptionType);
-    Q_INVOKABLE QUmlExecutableNode *protectedNode() const;
-    Q_INVOKABLE void setProtectedNode(QUmlExecutableNode *protectedNode);
-    Q_INVOKABLE QUmlObjectNode *exceptionInput() const;
-    Q_INVOKABLE void setExceptionInput(QUmlObjectNode *exceptionInput);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlExceptionHandler(QUmlExceptionHandlerPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlObjectNode *exceptionInput() const;
+    void setExceptionInput(QUmlObjectNode *exceptionInput);
+    QSet<QUmlClassifier *> exceptionType() const;
+    void addExceptionType(QSet<QUmlClassifier *> exceptionType);
+    void removeExceptionType(QSet<QUmlClassifier *> exceptionType);
+    QUmlExecutableNode *handlerBody() const;
+    void setHandlerBody(QUmlExecutableNode *handlerBody);
+    QUmlExecutableNode *protectedNode() const;
+    void setProtectedNode(QUmlExecutableNode *protectedNode);
 };
 
 QT_END_NAMESPACE

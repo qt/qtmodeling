@@ -43,11 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlNamedElement>
-
-// Qt includes
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -55,39 +51,22 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlConstraint;
 class QUmlParameter;
 
 class QUmlParameterSetPrivate;
-
 class Q_UML_EXPORT QUmlParameterSet : public QUmlNamedElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QSet<QUmlParameter *> parameters READ parameters)
-    Q_PROPERTY(QSet<QUmlConstraint *> conditions READ conditions)
-
-    Q_DISABLE_COPY(QUmlParameterSet)
-    Q_DECLARE_PRIVATE(QUmlParameterSet)
-
 public:
-    Q_INVOKABLE explicit QUmlParameterSet(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlParameterSet();
+    QUmlParameterSet(bool create_d_ptr = true);
 
-    // Association ends from QUmlParameterSet
-    Q_INVOKABLE QSet<QUmlParameter *> parameters() const;
-    Q_INVOKABLE void addParameter(QUmlParameter *parameter);
-    Q_INVOKABLE void removeParameter(QUmlParameter *parameter);
-    Q_INVOKABLE QSet<QUmlConstraint *> conditions() const;
-    Q_INVOKABLE void addCondition(QUmlConstraint *condition);
-    Q_INVOKABLE void removeCondition(QUmlConstraint *condition);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlParameterSet(QUmlParameterSetPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QSet<QUmlConstraint *> condition() const;
+    void addCondition(QSet<QUmlConstraint *> condition);
+    void removeCondition(QSet<QUmlConstraint *> condition);
+    QSet<QUmlParameter *> parameter() const;
+    void addParameter(QSet<QUmlParameter *> parameter);
+    void removeParameter(QSet<QUmlParameter *> parameter);
 };
 
 QT_END_NAMESPACE

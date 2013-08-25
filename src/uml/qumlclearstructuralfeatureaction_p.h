@@ -41,10 +41,9 @@
 #ifndef QUMLCLEARSTRUCTURALFEATUREACTION_P_H
 #define QUMLCLEARSTRUCTURALFEATUREACTION_P_H
 
-// Base class includes
-#include "private/qumlstructuralfeatureaction_p.h"
-
 #include "QtUml/QUmlClearStructuralFeatureAction"
+
+#include "private/qumlstructuralfeatureaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -52,17 +51,10 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlOutputPin;
-class QUmlClearStructuralFeatureAction;
-
 class Q_UML_EXPORT QUmlClearStructuralFeatureActionPrivate : public QUmlStructuralFeatureActionPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlClearStructuralFeatureAction)
-
 public:
-    explicit QUmlClearStructuralFeatureActionPrivate();
-    virtual ~QUmlClearStructuralFeatureActionPrivate();
+    QUmlClearStructuralFeatureActionPrivate();
 
     QUmlOutputPin *result;
 };

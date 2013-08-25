@@ -41,15 +41,10 @@
 #ifndef QUMLEXTEND_P_H
 #define QUMLEXTEND_P_H
 
-// Base class includes
-#include "private/qwrappedobject_p.h"
-#include "private/qumldirectedrelationship_p.h"
-#include "private/qumlnamedelement_p.h"
-
 #include "QtUml/QUmlExtend"
 
-// Qt includes
-#include "QtCore/QList"
+#include "private/qumldirectedrelationship_p.h"
+#include "private/qumlnamedelement_p.h"
 
 QT_BEGIN_HEADER
 
@@ -57,24 +52,15 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlConstraint;
-class QUmlUseCase;
-class QUmlExtensionPoint;
-class QUmlExtend;
-
-class Q_UML_EXPORT QUmlExtendPrivate : public QWrappedObjectPrivate
+class Q_UML_EXPORT QUmlExtendPrivate : public QUmlDirectedRelationshipPrivate, public QUmlNamedElementPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlExtend)
-
 public:
-    explicit QUmlExtendPrivate();
-    virtual ~QUmlExtendPrivate();
+    QUmlExtendPrivate();
 
+    QUmlConstraint *condition;
     QUmlUseCase *extendedCase;
     QUmlUseCase *extension;
-    QList<QUmlExtensionPoint *> extensionLocations;
-    QUmlConstraint *condition;
+    QList<QUmlExtensionPoint *> extensionLocation;
 };
 
 QT_END_NAMESPACE

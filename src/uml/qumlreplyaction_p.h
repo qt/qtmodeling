@@ -41,13 +41,9 @@
 #ifndef QUMLREPLYACTION_P_H
 #define QUMLREPLYACTION_P_H
 
-// Base class includes
-#include "private/qumlaction_p.h"
-
 #include "QtUml/QUmlReplyAction"
 
-// Qt includes
-#include "QtCore/QSet"
+#include "private/qumlaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,22 +51,14 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlTrigger;
-class QUmlInputPin;
-class QUmlReplyAction;
-
 class Q_UML_EXPORT QUmlReplyActionPrivate : public QUmlActionPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlReplyAction)
-
 public:
-    explicit QUmlReplyActionPrivate();
-    virtual ~QUmlReplyActionPrivate();
+    QUmlReplyActionPrivate();
 
     QUmlTrigger *replyToCall;
+    QSet<QUmlInputPin *> replyValue;
     QUmlInputPin *returnInformation;
-    QSet<QUmlInputPin *> replyValues;
 };
 
 QT_END_NAMESPACE

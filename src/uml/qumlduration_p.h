@@ -41,13 +41,9 @@
 #ifndef QUMLDURATION_P_H
 #define QUMLDURATION_P_H
 
-// Base class includes
-#include "private/qumlvaluespecification_p.h"
-
 #include "QtUml/QUmlDuration"
 
-// Qt includes
-#include "QtCore/QSet"
+#include "private/qumlvaluespecification_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,20 +51,13 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlObservation;
-class QUmlDuration;
-
 class Q_UML_EXPORT QUmlDurationPrivate : public QUmlValueSpecificationPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlDuration)
-
 public:
-    explicit QUmlDurationPrivate();
-    virtual ~QUmlDurationPrivate();
+    QUmlDurationPrivate();
 
     QUmlValueSpecification *expr;
-    QSet<QUmlObservation *> observations;
+    QSet<QUmlObservation *> observation;
 };
 
 QT_END_NAMESPACE

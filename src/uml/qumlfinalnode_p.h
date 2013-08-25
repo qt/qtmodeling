@@ -41,10 +41,9 @@
 #ifndef QUMLFINALNODE_P_H
 #define QUMLFINALNODE_P_H
 
-// Base class includes
-#include "private/qumlcontrolnode_p.h"
-
 #include "QtUml/QUmlFinalNode"
+
+#include "private/qumlcontrolnode_p.h"
 
 QT_BEGIN_HEADER
 
@@ -54,11 +53,8 @@ QT_MODULE(QtUml)
 
 class Q_UML_EXPORT QUmlFinalNodePrivate : public QUmlControlNodePrivate
 {
-    Q_DECLARE_PUBLIC(QUmlFinalNode)
-
 public:
-    explicit QUmlFinalNodePrivate();
-    virtual ~QUmlFinalNodePrivate();
+    QUmlFinalNodePrivate();
 
 };
 

@@ -41,25 +41,20 @@
 #ifndef QUMLPARTDECOMPOSITION_P_H
 #define QUMLPARTDECOMPOSITION_P_H
 
-// Base class includes
-#include "private/qumlinteractionuse_p.h"
-
 #include "QtUml/QUmlPartDecomposition"
+
+#include "private/qumlinteractionuse_p.h"
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-class QUmlPartDecomposition;
 
 class Q_UML_EXPORT QUmlPartDecompositionPrivate : public QUmlInteractionUsePrivate
 {
-    Q_DECLARE_PUBLIC(QUmlPartDecomposition)
-
 public:
-    explicit QUmlPartDecompositionPrivate();
-    virtual ~QUmlPartDecompositionPrivate();
+    QUmlPartDecompositionPrivate();
 
 };
 

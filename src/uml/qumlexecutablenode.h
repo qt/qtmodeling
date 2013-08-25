@@ -43,11 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlActivityNode>
-
-// Qt includes
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -55,34 +51,18 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlExceptionHandler;
 
 class QUmlExecutableNodePrivate;
-
 class Q_UML_EXPORT QUmlExecutableNode : public QUmlActivityNode
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QSet<QUmlExceptionHandler *> handlers READ handlers)
-
-    Q_DISABLE_COPY(QUmlExecutableNode)
-    Q_DECLARE_PRIVATE(QUmlExecutableNode)
-
 public:
-    Q_INVOKABLE explicit QUmlExecutableNode(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlExecutableNode();
+    Q_DECL_HIDDEN QUmlExecutableNode(bool create_d_ptr = true);
 
-    // Association ends from QUmlExecutableNode
-    Q_INVOKABLE QSet<QUmlExceptionHandler *> handlers() const;
-    Q_INVOKABLE void addHandler(QUmlExceptionHandler *handler);
-    Q_INVOKABLE void removeHandler(QUmlExceptionHandler *handler);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlExecutableNode(QUmlExecutableNodePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QSet<QUmlExceptionHandler *> handler() const;
+    void addHandler(QSet<QUmlExceptionHandler *> handler);
+    void removeHandler(QSet<QUmlExceptionHandler *> handler);
 };
 
 QT_END_NAMESPACE

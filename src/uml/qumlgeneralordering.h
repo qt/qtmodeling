@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlNamedElement>
 
 QT_BEGIN_HEADER
@@ -52,36 +51,19 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlOccurrenceSpecification;
 
 class QUmlGeneralOrderingPrivate;
-
 class Q_UML_EXPORT QUmlGeneralOrdering : public QUmlNamedElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlOccurrenceSpecification * before READ before WRITE setBefore)
-    Q_PROPERTY(QUmlOccurrenceSpecification * after READ after WRITE setAfter)
-
-    Q_DISABLE_COPY(QUmlGeneralOrdering)
-    Q_DECLARE_PRIVATE(QUmlGeneralOrdering)
-
 public:
-    Q_INVOKABLE explicit QUmlGeneralOrdering(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlGeneralOrdering();
+    QUmlGeneralOrdering(bool create_d_ptr = true);
 
-    // Association ends from QUmlGeneralOrdering
-    Q_INVOKABLE QUmlOccurrenceSpecification *before() const;
-    Q_INVOKABLE void setBefore(QUmlOccurrenceSpecification *before);
-    Q_INVOKABLE QUmlOccurrenceSpecification *after() const;
-    Q_INVOKABLE void setAfter(QUmlOccurrenceSpecification *after);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlGeneralOrdering(QUmlGeneralOrderingPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlOccurrenceSpecification *after() const;
+    void setAfter(QUmlOccurrenceSpecification *after);
+    QUmlOccurrenceSpecification *before() const;
+    void setBefore(QUmlOccurrenceSpecification *before);
 };
 
 QT_END_NAMESPACE

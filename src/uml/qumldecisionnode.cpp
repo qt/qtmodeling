@@ -44,17 +44,11 @@
 #include <QtUml/QUmlBehavior>
 #include <QtUml/QUmlObjectFlow>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlDecisionNodePrivate::QUmlDecisionNodePrivate() :
-    decisionInputFlow(0),
-    decisionInput(0)
-{
-}
-
-QUmlDecisionNodePrivate::~QUmlDecisionNodePrivate()
+    decisionInput(0),
+    decisionInputFlow(0)
 {
 }
 
@@ -66,88 +60,40 @@ QUmlDecisionNodePrivate::~QUmlDecisionNodePrivate()
     \brief A decision node is a control node that chooses between outgoing flows.
  */
 
-QUmlDecisionNode::QUmlDecisionNode(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlControlNode(*new QUmlDecisionNodePrivate, wrapper, parent)
+QUmlDecisionNode::QUmlDecisionNode(bool create_d_ptr) :
+    QUmlControlNode(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlDecisionNodePrivate);
 }
 
-QUmlDecisionNode::QUmlDecisionNode(QUmlDecisionNodePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlControlNode(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlDecisionNode::~QUmlDecisionNode()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlDecisionNode
-// ---------------------------------------------------------------
-
-/*!
-    An additional edge incoming to the decision node that provides a decision input value.
- */
-QUmlObjectFlow *QUmlDecisionNode::decisionInputFlow() const
-{
-    // This is a read-write association end
-
-    Q_D(const QUmlDecisionNode);
-    return d->decisionInputFlow;
-}
-
-void QUmlDecisionNode::setDecisionInputFlow(QUmlObjectFlow *decisionInputFlow)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlDecisionNode);
-    if (d->decisionInputFlow != decisionInputFlow) {
-        d->decisionInputFlow = decisionInputFlow;
-    }
-}
+// Owned attributes
 
 /*!
     Provides input to guard specifications on edges outgoing from the decision node.
  */
 QUmlBehavior *QUmlDecisionNode::decisionInput() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlDecisionNode);
-    return d->decisionInput;
+    return 0;
 }
 
 void QUmlDecisionNode::setDecisionInput(QUmlBehavior *decisionInput)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlDecisionNode);
-    if (d->decisionInput != decisionInput) {
-        d->decisionInput = decisionInput;
-    }
+    Q_UNUSED(decisionInput);
 }
 
-void QUmlDecisionNode::setPropertyData()
+/*!
+    An additional edge incoming to the decision node that provides a decision input value.
+ */
+QUmlObjectFlow *QUmlDecisionNode::decisionInputFlow() const
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDecisionNode")][QString::fromLatin1("decisionInputFlow")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDecisionNode")][QString::fromLatin1("decisionInputFlow")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDecisionNode")][QString::fromLatin1("decisionInputFlow")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An additional edge incoming to the decision node that provides a decision input value.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDecisionNode")][QString::fromLatin1("decisionInputFlow")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDecisionNode")][QString::fromLatin1("decisionInputFlow")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDecisionNode")][QString::fromLatin1("decisionInputFlow")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
+    return 0;
+}
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDecisionNode")][QString::fromLatin1("decisionInput")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDecisionNode")][QString::fromLatin1("decisionInput")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDecisionNode")][QString::fromLatin1("decisionInput")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Provides input to guard specifications on edges outgoing from the decision node.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDecisionNode")][QString::fromLatin1("decisionInput")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDecisionNode")][QString::fromLatin1("decisionInput")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDecisionNode")][QString::fromLatin1("decisionInput")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlControlNode::setPropertyData();
+void QUmlDecisionNode::setDecisionInputFlow(QUmlObjectFlow *decisionInputFlow)
+{
+    Q_UNUSED(decisionInputFlow);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumldecisionnode.cpp"
 

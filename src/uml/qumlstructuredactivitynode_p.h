@@ -41,16 +41,11 @@
 #ifndef QUMLSTRUCTUREDACTIVITYNODE_P_H
 #define QUMLSTRUCTUREDACTIVITYNODE_P_H
 
-// Base class includes
-#include "private/qwrappedobject_p.h"
+#include "QtUml/QUmlStructuredActivityNode"
+
 #include "private/qumlaction_p.h"
 #include "private/qumlnamespace_p.h"
 #include "private/qumlactivitygroup_p.h"
-
-#include "QtUml/QUmlStructuredActivityNode"
-
-// Qt includes
-#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 
@@ -58,30 +53,18 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlOutputPin;
-class QUmlVariable;
-class QUmlInputPin;
-class QUmlActivityEdge;
-class QUmlActivity;
-class QUmlActivityNode;
-class QUmlStructuredActivityNode;
-
-class Q_UML_EXPORT QUmlStructuredActivityNodePrivate : public QWrappedObjectPrivate
+class Q_UML_EXPORT QUmlStructuredActivityNodePrivate : public QUmlActionPrivate, public QUmlNamespacePrivate, public QUmlActivityGroupPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlStructuredActivityNode)
-
 public:
-    explicit QUmlStructuredActivityNodePrivate();
-    virtual ~QUmlStructuredActivityNodePrivate();
+    QUmlStructuredActivityNodePrivate();
 
-    bool mustIsolate;
-    QSet<QUmlInputPin *> structuredNodeInputs;
-    QSet<QUmlActivityNode *> nodes;
-    QSet<QUmlOutputPin *> structuredNodeOutputs;
-    QSet<QUmlActivityEdge *> edges;
-    QSet<QUmlVariable *> variables;
     QUmlActivity *activity;
+    QSet<QUmlActivityEdge *> edge;
+    bool mustIsolate;
+    QSet<QUmlActivityNode *> node;
+    QSet<QUmlInputPin *> structuredNodeInput;
+    QSet<QUmlOutputPin *> structuredNodeOutput;
+    QSet<QUmlVariable *> variable;
 };
 
 QT_END_NAMESPACE

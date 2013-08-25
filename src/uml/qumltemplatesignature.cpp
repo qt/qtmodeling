@@ -41,19 +41,13 @@
 #include "qumltemplatesignature.h"
 #include "qumltemplatesignature_p.h"
 
-#include <QtUml/QUmlTemplateParameter>
 #include <QtUml/QUmlTemplateableElement>
-
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
+#include <QtUml/QUmlTemplateParameter>
 
 QT_BEGIN_NAMESPACE
 
 QUmlTemplateSignaturePrivate::QUmlTemplateSignaturePrivate() :
     template_(0)
-{
-}
-
-QUmlTemplateSignaturePrivate::~QUmlTemplateSignaturePrivate()
 {
 }
 
@@ -65,55 +59,49 @@ QUmlTemplateSignaturePrivate::~QUmlTemplateSignaturePrivate()
     \brief A template signature bundles the set of formal template parameters for a templated element.
  */
 
-QUmlTemplateSignature::QUmlTemplateSignature(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlElement(*new QUmlTemplateSignaturePrivate, wrapper, parent)
+QUmlTemplateSignature::QUmlTemplateSignature(bool create_d_ptr) :
+    QUmlElement(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlTemplateSignaturePrivate);
 }
 
-QUmlTemplateSignature::QUmlTemplateSignature(QUmlTemplateSignaturePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlElement(dd, wrapper, parent)
+// Owned attributes
+
+/*!
+    The formal template parameters that are owned by this template signature.
+ */
+QList<QUmlTemplateParameter *> QUmlTemplateSignature::ownedParameter() const
 {
-    setPropertyData();
+    return QList<QUmlTemplateParameter *>();
 }
 
-QUmlTemplateSignature::~QUmlTemplateSignature()
+void QUmlTemplateSignature::addOwnedParameter(QList<QUmlTemplateParameter *> ownedParameter)
 {
+    Q_UNUSED(ownedParameter);
 }
 
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlTemplateSignature
-// ---------------------------------------------------------------
+void QUmlTemplateSignature::removeOwnedParameter(QList<QUmlTemplateParameter *> ownedParameter)
+{
+    Q_UNUSED(ownedParameter);
+}
 
 /*!
     The ordered set of all formal template parameters for this template signature.
  */
-QList<QUmlTemplateParameter *> QUmlTemplateSignature::parameters() const
+QList<QUmlTemplateParameter *> QUmlTemplateSignature::parameter() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlTemplateSignature);
-    return d->parameters;
+    return QList<QUmlTemplateParameter *>();
 }
 
-void QUmlTemplateSignature::addParameter(QUmlTemplateParameter *parameter)
+void QUmlTemplateSignature::addParameter(QList<QUmlTemplateParameter *> parameter)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlTemplateSignature);
-    if (!d->parameters.contains(parameter)) {
-        d->parameters.append(parameter);
-    }
+    Q_UNUSED(parameter);
 }
 
-void QUmlTemplateSignature::removeParameter(QUmlTemplateParameter *parameter)
+void QUmlTemplateSignature::removeParameter(QList<QUmlTemplateParameter *> parameter)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlTemplateSignature);
-    if (d->parameters.contains(parameter)) {
-        d->parameters.removeAll(parameter);
-    }
+    Q_UNUSED(parameter);
 }
 
 /*!
@@ -121,102 +109,13 @@ void QUmlTemplateSignature::removeParameter(QUmlTemplateParameter *parameter)
  */
 QUmlTemplateableElement *QUmlTemplateSignature::template_() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlTemplateSignature);
-    return d->template_;
+    return 0;
 }
 
-void QUmlTemplateSignature::setTemplate_(QUmlTemplateableElement *template_)
+void QUmlTemplateSignature::setTemplate(QUmlTemplateableElement *template_)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlTemplateSignature);
-    if (d->template_ != template_) {
-        // Adjust opposite property
-
-        d->template_ = template_;
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->setOwner(qwrappedobject_cast<QUmlElement *>(template_));
-
-        // Adjust opposite property
-        template_->setOwnedTemplateSignature(this);
-    }
-}
-
-/*!
-    The formal template parameters that are owned by this template signature.
- */
-QList<QUmlTemplateParameter *> QUmlTemplateSignature::ownedParameters() const
-{
-    // This is a read-write association end
-
-    Q_D(const QUmlTemplateSignature);
-    return d->ownedParameters;
-}
-
-void QUmlTemplateSignature::addOwnedParameter(QUmlTemplateParameter *ownedParameter)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlTemplateSignature);
-    if (!d->ownedParameters.contains(ownedParameter)) {
-        d->ownedParameters.append(ownedParameter);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlTemplateSignature *>(this))->addParameter(qwrappedobject_cast<QUmlTemplateParameter *>(ownedParameter));
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QUmlElement *>(ownedParameter));
-
-        // Adjust opposite property
-        ownedParameter->setSignature(this);
-    }
-}
-
-void QUmlTemplateSignature::removeOwnedParameter(QUmlTemplateParameter *ownedParameter)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlTemplateSignature);
-    if (d->ownedParameters.contains(ownedParameter)) {
-        d->ownedParameters.removeAll(ownedParameter);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlTemplateSignature *>(this))->removeParameter(qwrappedobject_cast<QUmlTemplateParameter *>(ownedParameter));
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QUmlElement *>(ownedParameter));
-
-        // Adjust opposite property
-        ownedParameter->setSignature(0);
-    }
-}
-
-void QUmlTemplateSignature::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateSignature")][QString::fromLatin1("parameters")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateSignature")][QString::fromLatin1("parameters")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateSignature")][QString::fromLatin1("parameters")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The ordered set of all formal template parameters for this template signature.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateSignature")][QString::fromLatin1("parameters")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateSignature")][QString::fromLatin1("parameters")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateSignature")][QString::fromLatin1("parameters")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateSignature")][QString::fromLatin1("template_")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateSignature")][QString::fromLatin1("template_")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateSignature")][QString::fromLatin1("template_")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The element that owns this template signature.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateSignature")][QString::fromLatin1("template_")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateSignature")][QString::fromLatin1("template_")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::owner");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateSignature")][QString::fromLatin1("template_")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlTemplateableElement::ownedTemplateSignature");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateSignature")][QString::fromLatin1("ownedParameters")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateSignature")][QString::fromLatin1("ownedParameters")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateSignature")][QString::fromLatin1("ownedParameters")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The formal template parameters that are owned by this template signature.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateSignature")][QString::fromLatin1("ownedParameters")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateSignature")][QString::fromLatin1("ownedParameters")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlTemplateSignature::parameters QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTemplateSignature")][QString::fromLatin1("ownedParameters")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlTemplateParameter::signature");
-
-    QUmlElement::setPropertyData();
+    Q_UNUSED(template_);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumltemplatesignature.cpp"
 

@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlInvocationAction>
 
 QT_BEGIN_HEADER
@@ -52,37 +51,20 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlSignal;
 class QUmlInputPin;
+class QUmlSignal;
 
 class QUmlSendSignalActionPrivate;
-
 class Q_UML_EXPORT QUmlSendSignalAction : public QUmlInvocationAction
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlInputPin * target READ target WRITE setTarget)
-    Q_PROPERTY(QUmlSignal * signal READ signal WRITE setSignal)
-
-    Q_DISABLE_COPY(QUmlSendSignalAction)
-    Q_DECLARE_PRIVATE(QUmlSendSignalAction)
-
 public:
-    Q_INVOKABLE explicit QUmlSendSignalAction(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlSendSignalAction();
+    QUmlSendSignalAction(bool create_d_ptr = true);
 
-    // Association ends from QUmlSendSignalAction
-    Q_INVOKABLE QUmlInputPin *target() const;
-    Q_INVOKABLE void setTarget(QUmlInputPin *target);
-    Q_INVOKABLE QUmlSignal *signal() const;
-    Q_INVOKABLE void setSignal(QUmlSignal *signal);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlSendSignalAction(QUmlSendSignalActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlSignal *signal() const;
+    void setSignal(QUmlSignal *signal);
+    QUmlInputPin *target() const;
+    void setTarget(QUmlInputPin *target);
 };
 
 QT_END_NAMESPACE

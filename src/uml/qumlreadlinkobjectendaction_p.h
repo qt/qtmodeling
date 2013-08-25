@@ -41,10 +41,9 @@
 #ifndef QUMLREADLINKOBJECTENDACTION_P_H
 #define QUMLREADLINKOBJECTENDACTION_P_H
 
-// Base class includes
-#include "private/qumlaction_p.h"
-
 #include "QtUml/QUmlReadLinkObjectEndAction"
+
+#include "private/qumlaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -52,19 +51,10 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlProperty;
-class QUmlInputPin;
-class QUmlOutputPin;
-class QUmlReadLinkObjectEndAction;
-
 class Q_UML_EXPORT QUmlReadLinkObjectEndActionPrivate : public QUmlActionPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlReadLinkObjectEndAction)
-
 public:
-    explicit QUmlReadLinkObjectEndActionPrivate();
-    virtual ~QUmlReadLinkObjectEndActionPrivate();
+    QUmlReadLinkObjectEndActionPrivate();
 
     QUmlProperty *end;
     QUmlInputPin *object;

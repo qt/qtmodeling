@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlNamedElement>
 
 QT_BEGIN_HEADER
@@ -51,25 +50,11 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-
 class QUmlDeployedArtifactPrivate;
-
-class Q_UML_EXPORT QUmlDeployedArtifact : public QUmlNamedElement
+class Q_UML_EXPORT QUmlDeployedArtifact : public virtual QUmlNamedElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_DISABLE_COPY(QUmlDeployedArtifact)
-    Q_DECLARE_PRIVATE(QUmlDeployedArtifact)
-
 public:
-    Q_INVOKABLE explicit QUmlDeployedArtifact(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlDeployedArtifact();
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlDeployedArtifact(QUmlDeployedArtifactPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    Q_DECL_HIDDEN QUmlDeployedArtifact(bool create_d_ptr = true);
 };
 
 QT_END_NAMESPACE

@@ -41,15 +41,9 @@
 #include "qumlinformationitem.h"
 #include "qumlinformationitem_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlInformationItemPrivate::QUmlInformationItemPrivate()
-{
-}
-
-QUmlInformationItemPrivate::~QUmlInformationItemPrivate()
 {
 }
 
@@ -61,70 +55,32 @@ QUmlInformationItemPrivate::~QUmlInformationItemPrivate()
     \brief An information item is an abstraction of all kinds of information that can be exchanged between objects. It is a kind of classifier intended for representing information in a very abstract way, one which cannot be instantiated.
  */
 
-QUmlInformationItem::QUmlInformationItem(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlClassifier(*new QUmlInformationItemPrivate, wrapper, parent)
+QUmlInformationItem::QUmlInformationItem(bool create_d_ptr) :
+    QUmlClassifier(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlInformationItemPrivate);
 }
 
-QUmlInformationItem::QUmlInformationItem(QUmlInformationItemPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlClassifier(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlInformationItem::~QUmlInformationItem()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlInformationItem
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     Determines the classifiers that will specify the structure and nature of the information. An information item represents all its represented classifiers.
  */
 QSet<QUmlClassifier *> QUmlInformationItem::represented() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlInformationItem);
-    return d->represented;
+    return QSet<QUmlClassifier *>();
 }
 
-void QUmlInformationItem::addRepresented(QUmlClassifier *represented)
+void QUmlInformationItem::addRepresented(QSet<QUmlClassifier *> represented)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlInformationItem);
-    if (!d->represented.contains(represented)) {
-        d->represented.insert(represented);
-    }
+    Q_UNUSED(represented);
 }
 
-void QUmlInformationItem::removeRepresented(QUmlClassifier *represented)
+void QUmlInformationItem::removeRepresented(QSet<QUmlClassifier *> represented)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlInformationItem);
-    if (d->represented.contains(represented)) {
-        d->represented.remove(represented);
-    }
-}
-
-void QUmlInformationItem::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInformationItem")][QString::fromLatin1("represented")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInformationItem")][QString::fromLatin1("represented")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInformationItem")][QString::fromLatin1("represented")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Determines the classifiers that will specify the structure and nature of the information. An information item represents all its represented classifiers.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInformationItem")][QString::fromLatin1("represented")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInformationItem")][QString::fromLatin1("represented")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInformationItem")][QString::fromLatin1("represented")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlClassifier::setPropertyData();
+    Q_UNUSED(represented);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlinformationitem.cpp"
 

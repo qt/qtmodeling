@@ -41,14 +41,9 @@
 #ifndef QUMLNAMESPACE_P_H
 #define QUMLNAMESPACE_P_H
 
-// Base class includes
-#include "private/qumlnamedelement_p.h"
-
 #include "QtUml/QUmlNamespace"
 
-// Qt includes
-#include "QtCore/QString"
-#include "QtCore/QSet"
+#include "private/qumlnamedelement_p.h"
 
 QT_BEGIN_HEADER
 
@@ -56,31 +51,17 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlPackageImport;
-class QUmlConstraint;
-class QUmlElementImport;
-class QUmlPackageableElement;
-
-class Q_UML_EXPORT QUmlNamespacePrivate : public QUmlNamedElementPrivate
+class Q_UML_EXPORT QUmlNamespacePrivate : public virtual QUmlNamedElementPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlNamespace)
-
 public:
-    explicit QUmlNamespacePrivate();
-    virtual ~QUmlNamespacePrivate();
+    QUmlNamespacePrivate();
 
-    QSet<QUmlPackageImport *> packageImports;
-    QSet<QUmlNamedElement *> members;
-    QSet<QUmlElementImport *> elementImports;
-    QSet<QUmlConstraint *> ownedRules;
-    QSet<QUmlNamedElement *> ownedMembers;
-
-    // Internal functions for read-only subsetted association ends
-    void addMember(QUmlNamedElement *member);
-    void removeMember(QUmlNamedElement *member);
-    void addOwnedMember(QUmlNamedElement *ownedMember);
-    void removeOwnedMember(QUmlNamedElement *ownedMember);
+    QSet<QUmlElementImport *> elementImport;
+    QSet<QUmlPackageableElement *> importedMember;
+    QSet<QUmlNamedElement *> member;
+    QSet<QUmlNamedElement *> ownedMember;
+    QSet<QUmlConstraint *> ownedRule;
+    QSet<QUmlPackageImport *> packageImport;
 };
 
 QT_END_NAMESPACE

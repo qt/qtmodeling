@@ -43,11 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlStructuredClassifier>
-
-// Qt includes
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -55,34 +51,16 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlPort;
 
 class QUmlEncapsulatedClassifierPrivate;
-
 class Q_UML_EXPORT QUmlEncapsulatedClassifier : public QUmlStructuredClassifier
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QSet<QUmlPort *> ownedPorts READ ownedPorts STORED false)
-
-    Q_DISABLE_COPY(QUmlEncapsulatedClassifier)
-    Q_DECLARE_PRIVATE(QUmlEncapsulatedClassifier)
-
 public:
-    Q_INVOKABLE explicit QUmlEncapsulatedClassifier(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlEncapsulatedClassifier();
+    Q_DECL_HIDDEN QUmlEncapsulatedClassifier(bool create_d_ptr = true);
 
-    // Association ends from QUmlEncapsulatedClassifier
-    Q_INVOKABLE QSet<QUmlPort *> ownedPorts() const;
-
-    virtual void setQmlContextProperties(QQmlContext *qmlContext);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlEncapsulatedClassifier(QUmlEncapsulatedClassifierPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QSet<QUmlPort *> ownedPort() const;
 };
 
 QT_END_NAMESPACE

@@ -44,15 +44,9 @@
 #include <QtUml/QUmlActivityEdge>
 #include <QtUml/QUmlActivityNode>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlInterruptibleActivityRegionPrivate::QUmlInterruptibleActivityRegionPrivate()
-{
-}
-
-QUmlInterruptibleActivityRegionPrivate::~QUmlInterruptibleActivityRegionPrivate()
 {
 }
 
@@ -64,127 +58,50 @@ QUmlInterruptibleActivityRegionPrivate::~QUmlInterruptibleActivityRegionPrivate(
     \brief An interruptible activity region is an activity group that supports termination of tokens flowing in the portions of an activity.
  */
 
-QUmlInterruptibleActivityRegion::QUmlInterruptibleActivityRegion(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlActivityGroup(*new QUmlInterruptibleActivityRegionPrivate, wrapper, parent)
+QUmlInterruptibleActivityRegion::QUmlInterruptibleActivityRegion(bool create_d_ptr) :
+    QUmlActivityGroup(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlInterruptibleActivityRegionPrivate);
 }
 
-QUmlInterruptibleActivityRegion::QUmlInterruptibleActivityRegion(QUmlInterruptibleActivityRegionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlActivityGroup(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlInterruptibleActivityRegion::~QUmlInterruptibleActivityRegion()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlInterruptibleActivityRegion
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     The edges leaving the region that will abort other tokens flowing in the region.
  */
-QSet<QUmlActivityEdge *> QUmlInterruptibleActivityRegion::interruptingEdges() const
+QSet<QUmlActivityEdge *> QUmlInterruptibleActivityRegion::interruptingEdge() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlInterruptibleActivityRegion);
-    return d->interruptingEdges;
+    return QSet<QUmlActivityEdge *>();
 }
 
-void QUmlInterruptibleActivityRegion::addInterruptingEdge(QUmlActivityEdge *interruptingEdge)
+void QUmlInterruptibleActivityRegion::addInterruptingEdge(QSet<QUmlActivityEdge *> interruptingEdge)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlInterruptibleActivityRegion);
-    if (!d->interruptingEdges.contains(interruptingEdge)) {
-        d->interruptingEdges.insert(interruptingEdge);
-
-        // Adjust opposite property
-        interruptingEdge->setInterrupts(this);
-    }
+    Q_UNUSED(interruptingEdge);
 }
 
-void QUmlInterruptibleActivityRegion::removeInterruptingEdge(QUmlActivityEdge *interruptingEdge)
+void QUmlInterruptibleActivityRegion::removeInterruptingEdge(QSet<QUmlActivityEdge *> interruptingEdge)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlInterruptibleActivityRegion);
-    if (d->interruptingEdges.contains(interruptingEdge)) {
-        d->interruptingEdges.remove(interruptingEdge);
-
-        // Adjust opposite property
-        interruptingEdge->setInterrupts(0);
-    }
+    Q_UNUSED(interruptingEdge);
 }
 
 /*!
     Nodes immediately contained in the group.
  */
-QSet<QUmlActivityNode *> QUmlInterruptibleActivityRegion::nodes() const
+QSet<QUmlActivityNode *> QUmlInterruptibleActivityRegion::node() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlInterruptibleActivityRegion);
-    return d->nodes;
+    return QSet<QUmlActivityNode *>();
 }
 
-void QUmlInterruptibleActivityRegion::addNode(QUmlActivityNode *node)
+void QUmlInterruptibleActivityRegion::addNode(QSet<QUmlActivityNode *> node)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlInterruptibleActivityRegion);
-    if (!d->nodes.contains(node)) {
-        d->nodes.insert(node);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActivityGroupPrivate *>(d))->addContainedNode(qwrappedobject_cast<QUmlActivityNode *>(node));
-
-        // Adjust opposite property
-        node->addInInterruptibleRegion(this);
-    }
+    Q_UNUSED(node);
 }
 
-void QUmlInterruptibleActivityRegion::removeNode(QUmlActivityNode *node)
+void QUmlInterruptibleActivityRegion::removeNode(QSet<QUmlActivityNode *> node)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlInterruptibleActivityRegion);
-    if (d->nodes.contains(node)) {
-        d->nodes.remove(node);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActivityGroupPrivate *>(d))->removeContainedNode(qwrappedobject_cast<QUmlActivityNode *>(node));
-
-        // Adjust opposite property
-        if (node)
-            node->removeInInterruptibleRegion(this);
-    }
-}
-
-void QUmlInterruptibleActivityRegion::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterruptibleActivityRegion")][QString::fromLatin1("interruptingEdges")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterruptibleActivityRegion")][QString::fromLatin1("interruptingEdges")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterruptibleActivityRegion")][QString::fromLatin1("interruptingEdges")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The edges leaving the region that will abort other tokens flowing in the region.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterruptibleActivityRegion")][QString::fromLatin1("interruptingEdges")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterruptibleActivityRegion")][QString::fromLatin1("interruptingEdges")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterruptibleActivityRegion")][QString::fromLatin1("interruptingEdges")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlActivityEdge::interrupts");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterruptibleActivityRegion")][QString::fromLatin1("nodes")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterruptibleActivityRegion")][QString::fromLatin1("nodes")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterruptibleActivityRegion")][QString::fromLatin1("nodes")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Nodes immediately contained in the group.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterruptibleActivityRegion")][QString::fromLatin1("nodes")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterruptibleActivityRegion")][QString::fromLatin1("nodes")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlActivityGroup::containedNodes");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterruptibleActivityRegion")][QString::fromLatin1("nodes")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlActivityNode::inInterruptibleRegion");
-
-    QUmlActivityGroup::setPropertyData();
+    Q_UNUSED(node);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlinterruptibleactivityregion.cpp"
 

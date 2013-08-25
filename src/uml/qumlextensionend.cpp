@@ -43,16 +43,11 @@
 
 #include <QtUml/QUmlStereotype>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlExtensionEndPrivate::QUmlExtensionEndPrivate() :
+    lower(0),
     type(0)
-{
-}
-
-QUmlExtensionEndPrivate::~QUmlExtensionEndPrivate()
 {
 }
 
@@ -64,111 +59,50 @@ QUmlExtensionEndPrivate::~QUmlExtensionEndPrivate()
     \brief An extension end is used to tie an extension to a stereotype when extending a metaclass.The default multiplicity of an extension end is 0..1.
  */
 
-QUmlExtensionEnd::QUmlExtensionEnd(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlProperty(*new QUmlExtensionEndPrivate, wrapper, parent)
+QUmlExtensionEnd::QUmlExtensionEnd(bool create_d_ptr) :
+    QUmlProperty(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlExtensionEndPrivate);
 }
 
-QUmlExtensionEnd::QUmlExtensionEnd(QUmlExtensionEndPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlProperty(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlExtensionEnd::~QUmlExtensionEnd()
-{
-}
-
-// ---------------------------------------------------------------
-// ATTRIBUTES FROM QUmlExtensionEnd
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     This redefinition changes the default multiplicity of association ends, since model elements are usually extended by 0 or 1 instance of the extension stereotype.
  */
-qint32 QUmlExtensionEnd::lower() const
+int QUmlExtensionEnd::lower() const
 {
-    // This is a read-write derived attribute
-
-    qWarning("QUmlExtensionEnd::lower: to be implemented (this is a derived attribute)");
-
-    return qint32(); // change here to your derived return
+    return int();
 }
 
-void QUmlExtensionEnd::setLower(qint32 lower)
+void QUmlExtensionEnd::setLower(int lower)
 {
-    // This is a read-write derived attribute
-
-    qWarning("QUmlExtensionEnd::setLower: to be implemented (this is a derived attribute)");
     Q_UNUSED(lower);
-
-    if (false) { // change to your derived change criteria
-        // change to your derived code
-
-        // Adjust redefined property(ies)
-        (qwrappedobject_cast<QUmlMultiplicityElement *>(this))->setLower(lower);
-    }
 }
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlExtensionEnd
-// ---------------------------------------------------------------
 
 /*!
     References the type of the ExtensionEnd. Note that this association restricts the possible types of an ExtensionEnd to only be Stereotypes.
  */
 QUmlStereotype *QUmlExtensionEnd::type() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlExtensionEnd);
-    return d->type;
+    return 0;
 }
 
 void QUmlExtensionEnd::setType(QUmlStereotype *type)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlExtensionEnd);
-    if (d->type != type) {
-        d->type = type;
-
-        // Adjust redefined property(ies)
-        (qwrappedobject_cast<QUmlTypedElement *>(this))->setType(qwrappedobject_cast<QUmlType *>(type));
-    }
+    Q_UNUSED(type);
 }
+
+// Operations
 
 /*!
     The query lowerBound() returns the lower bound of the multiplicity as an Integer. This is a redefinition of the default lower bound, which normally, for MultiplicityElements, evaluates to 1 if empty.
  */
-qint32 QUmlExtensionEnd::lowerBound() const
+int QUmlExtensionEnd::lowerBound() const
 {
-    qWarning("QUmlExtensionEnd::lowerBound: operation to be implemented");
-
-    return qint32(); // change here to your derived return
-}
-
-void QUmlExtensionEnd::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExtensionEnd")][QString::fromLatin1("lower")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExtensionEnd")][QString::fromLatin1("lower")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExtensionEnd")][QString::fromLatin1("lower")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("This redefinition changes the default multiplicity of association ends, since model elements are usually extended by 0 or 1 instance of the extension stereotype.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExtensionEnd")][QString::fromLatin1("lower")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QUmlMultiplicityElement::lower");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExtensionEnd")][QString::fromLatin1("lower")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExtensionEnd")][QString::fromLatin1("lower")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExtensionEnd")][QString::fromLatin1("type")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExtensionEnd")][QString::fromLatin1("type")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExtensionEnd")][QString::fromLatin1("type")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the type of the ExtensionEnd. Note that this association restricts the possible types of an ExtensionEnd to only be Stereotypes.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExtensionEnd")][QString::fromLatin1("type")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QUmlTypedElement::type");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExtensionEnd")][QString::fromLatin1("type")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExtensionEnd")][QString::fromLatin1("type")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlProperty::setPropertyData();
+    return int ();
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlextensionend.cpp"
 

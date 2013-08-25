@@ -41,13 +41,9 @@
 #ifndef QUMLUNMARSHALLACTION_P_H
 #define QUMLUNMARSHALLACTION_P_H
 
-// Base class includes
-#include "private/qumlaction_p.h"
-
 #include "QtUml/QUmlUnmarshallAction"
 
-// Qt includes
-#include "QtCore/QSet"
+#include "private/qumlaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,22 +51,13 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlInputPin;
-class QUmlOutputPin;
-class QUmlClassifier;
-class QUmlUnmarshallAction;
-
 class Q_UML_EXPORT QUmlUnmarshallActionPrivate : public QUmlActionPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlUnmarshallAction)
-
 public:
-    explicit QUmlUnmarshallActionPrivate();
-    virtual ~QUmlUnmarshallActionPrivate();
+    QUmlUnmarshallActionPrivate();
 
     QUmlInputPin *object;
-    QSet<QUmlOutputPin *> results;
+    QSet<QUmlOutputPin *> result;
     QUmlClassifier *unmarshallType;
 };
 

@@ -43,11 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlNamedElement>
-
-// Qt includes
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -55,38 +51,21 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlDependency;
 class QUmlCollaboration;
+class QUmlDependency;
 
 class QUmlCollaborationUsePrivate;
-
 class Q_UML_EXPORT QUmlCollaborationUse : public QUmlNamedElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlCollaboration * type READ type WRITE setType)
-    Q_PROPERTY(QSet<QUmlDependency *> roleBindings READ roleBindings)
-
-    Q_DISABLE_COPY(QUmlCollaborationUse)
-    Q_DECLARE_PRIVATE(QUmlCollaborationUse)
-
 public:
-    Q_INVOKABLE explicit QUmlCollaborationUse(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlCollaborationUse();
+    QUmlCollaborationUse(bool create_d_ptr = true);
 
-    // Association ends from QUmlCollaborationUse
-    Q_INVOKABLE QUmlCollaboration *type() const;
-    Q_INVOKABLE void setType(QUmlCollaboration *type);
-    Q_INVOKABLE QSet<QUmlDependency *> roleBindings() const;
-    Q_INVOKABLE void addRoleBinding(QUmlDependency *roleBinding);
-    Q_INVOKABLE void removeRoleBinding(QUmlDependency *roleBinding);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlCollaborationUse(QUmlCollaborationUsePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QSet<QUmlDependency *> roleBinding() const;
+    void addRoleBinding(QSet<QUmlDependency *> roleBinding);
+    void removeRoleBinding(QSet<QUmlDependency *> roleBinding);
+    QUmlCollaboration *type() const;
+    void setType(QUmlCollaboration *type);
 };
 
 QT_END_NAMESPACE

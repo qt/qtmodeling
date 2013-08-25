@@ -41,13 +41,9 @@
 #ifndef QUMLTIMEEXPRESSION_P_H
 #define QUMLTIMEEXPRESSION_P_H
 
-// Base class includes
-#include "private/qumlvaluespecification_p.h"
-
 #include "QtUml/QUmlTimeExpression"
 
-// Qt includes
-#include "QtCore/QSet"
+#include "private/qumlvaluespecification_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,20 +51,13 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlObservation;
-class QUmlTimeExpression;
-
 class Q_UML_EXPORT QUmlTimeExpressionPrivate : public QUmlValueSpecificationPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlTimeExpression)
-
 public:
-    explicit QUmlTimeExpressionPrivate();
-    virtual ~QUmlTimeExpressionPrivate();
+    QUmlTimeExpressionPrivate();
 
-    QSet<QUmlObservation *> observations;
     QUmlValueSpecification *expr;
+    QSet<QUmlObservation *> observation;
 };
 
 QT_END_NAMESPACE

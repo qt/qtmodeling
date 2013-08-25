@@ -43,13 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlNamedElement>
-
-// Qt includes
-#include <QtCore/QSet>
-
-#include <QtWrappedObjects/QWrappedObjectPointer>
 
 QT_BEGIN_HEADER
 
@@ -57,41 +51,20 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlPackageableElement;
 class QUmlDeployment;
+class QUmlPackageableElement;
 
 class QUmlDeploymentTargetPrivate;
-
-class Q_UML_EXPORT QUmlDeploymentTarget : public QUmlNamedElement
+class Q_UML_EXPORT QUmlDeploymentTarget : public virtual QUmlNamedElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QSet<QUmlPackageableElement *> deployedElements READ deployedElements STORED false)
-    Q_PROPERTY(QSet<QUmlDeployment *> deployments READ deployments)
-
-    Q_DISABLE_COPY(QUmlDeploymentTarget)
-    Q_DECLARE_PRIVATE(QUmlDeploymentTarget)
-
 public:
-    Q_INVOKABLE explicit QUmlDeploymentTarget(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlDeploymentTarget();
+    Q_DECL_HIDDEN QUmlDeploymentTarget(bool create_d_ptr = true);
 
-    // Association ends from QUmlDeploymentTarget
-    Q_INVOKABLE QSet<QUmlPackageableElement *> deployedElements() const;
-    Q_INVOKABLE QSet<QUmlDeployment *> deployments() const;
-    Q_INVOKABLE void addDeployment(QUmlDeployment *deployment);
-    Q_INVOKABLE void removeDeployment(QUmlDeployment *deployment);
-
-    // Overriden methods for subsetted properties
-    Q_INVOKABLE void addClientDependency(QWrappedObjectPointer<QUmlDeployment> deployment);
-    Q_INVOKABLE void removeClientDependency(QWrappedObjectPointer<QUmlDeployment> deployment);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlDeploymentTarget(QUmlDeploymentTargetPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QSet<QUmlPackageableElement *> deployedElement() const;
+    QSet<QUmlDeployment *> deployment() const;
+    void addDeployment(QSet<QUmlDeployment *> deployment);
+    void removeDeployment(QSet<QUmlDeployment *> deployment);
 };
 
 QT_END_NAMESPACE

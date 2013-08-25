@@ -43,15 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlInteractionFragment>
-
-// QtUml includes
 #include <QtUml/QtUmlNamespace>
-
-// Qt includes
-#include <QtCore/QList>
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -59,45 +52,24 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlGate;
 class QUmlInteractionOperand;
 
 class QUmlCombinedFragmentPrivate;
-
 class Q_UML_EXPORT QUmlCombinedFragment : public QUmlInteractionFragment
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QtUml::InteractionOperatorKind interactionOperator READ interactionOperator WRITE setInteractionOperator RESET unsetInteractionOperator)
-    Q_PROPERTY(QSet<QUmlGate *> cfragmentGates READ cfragmentGates)
-    Q_PROPERTY(QList<QUmlInteractionOperand *> operands READ operands)
-
-    Q_DISABLE_COPY(QUmlCombinedFragment)
-    Q_DECLARE_PRIVATE(QUmlCombinedFragment)
-
 public:
-    Q_INVOKABLE explicit QUmlCombinedFragment(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlCombinedFragment();
+    QUmlCombinedFragment(bool create_d_ptr = true);
 
-    // Attributes from QUmlCombinedFragment
-    Q_INVOKABLE QtUml::InteractionOperatorKind interactionOperator() const;
-    Q_INVOKABLE void setInteractionOperator(QtUml::InteractionOperatorKind interactionOperator);
-    Q_INVOKABLE void unsetInteractionOperator();
-
-    // Association ends from QUmlCombinedFragment
-    Q_INVOKABLE QSet<QUmlGate *> cfragmentGates() const;
-    Q_INVOKABLE void addCfragmentGate(QUmlGate *cfragmentGate);
-    Q_INVOKABLE void removeCfragmentGate(QUmlGate *cfragmentGate);
-    Q_INVOKABLE QList<QUmlInteractionOperand *> operands() const;
-    Q_INVOKABLE void addOperand(QUmlInteractionOperand *operand);
-    Q_INVOKABLE void removeOperand(QUmlInteractionOperand *operand);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlCombinedFragment(QUmlCombinedFragmentPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QSet<QUmlGate *> cfragmentGate() const;
+    void addCfragmentGate(QSet<QUmlGate *> cfragmentGate);
+    void removeCfragmentGate(QSet<QUmlGate *> cfragmentGate);
+    QtUml::InteractionOperatorKind interactionOperator() const;
+    void setInteractionOperator(QtUml::InteractionOperatorKind interactionOperator);
+    QList<QUmlInteractionOperand *> operand() const;
+    void addOperand(QList<QUmlInteractionOperand *> operand);
+    void removeOperand(QList<QUmlInteractionOperand *> operand);
 };
 
 QT_END_NAMESPACE

@@ -43,11 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlBehavioredClassifier>
-
-// Qt includes
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -55,53 +51,33 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlClassifier;
-class QUmlUseCase;
-class QUmlInclude;
 class QUmlExtend;
 class QUmlExtensionPoint;
+class QUmlInclude;
 
 class QUmlUseCasePrivate;
-
 class Q_UML_EXPORT QUmlUseCase : public QUmlBehavioredClassifier
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QSet<QUmlExtensionPoint *> extensionPoints READ extensionPoints)
-    Q_PROPERTY(QSet<QUmlInclude *> includes READ includes)
-    Q_PROPERTY(QSet<QUmlClassifier *> subjects READ subjects)
-    Q_PROPERTY(QSet<QUmlExtend *> extends READ extends)
-
-    Q_DISABLE_COPY(QUmlUseCase)
-    Q_DECLARE_PRIVATE(QUmlUseCase)
-
 public:
-    Q_INVOKABLE explicit QUmlUseCase(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlUseCase();
+    QUmlUseCase(bool create_d_ptr = true);
 
-    // Association ends from QUmlUseCase
-    Q_INVOKABLE QSet<QUmlExtensionPoint *> extensionPoints() const;
-    Q_INVOKABLE void addExtensionPoint(QUmlExtensionPoint *extensionPoint);
-    Q_INVOKABLE void removeExtensionPoint(QUmlExtensionPoint *extensionPoint);
-    Q_INVOKABLE QSet<QUmlInclude *> includes() const;
-    Q_INVOKABLE void addInclude(QUmlInclude *include);
-    Q_INVOKABLE void removeInclude(QUmlInclude *include);
-    Q_INVOKABLE QSet<QUmlClassifier *> subjects() const;
-    Q_INVOKABLE void addSubject(QUmlClassifier *subject);
-    Q_INVOKABLE void removeSubject(QUmlClassifier *subject);
-    Q_INVOKABLE QSet<QUmlExtend *> extends() const;
-    Q_INVOKABLE void addExtend(QUmlExtend *extend);
-    Q_INVOKABLE void removeExtend(QUmlExtend *extend);
+    // Owned attributes
+    QSet<QUmlExtend *> extend() const;
+    void addExtend(QSet<QUmlExtend *> extend);
+    void removeExtend(QSet<QUmlExtend *> extend);
+    QSet<QUmlExtensionPoint *> extensionPoint() const;
+    void addExtensionPoint(QSet<QUmlExtensionPoint *> extensionPoint);
+    void removeExtensionPoint(QSet<QUmlExtensionPoint *> extensionPoint);
+    QSet<QUmlInclude *> include() const;
+    void addInclude(QSet<QUmlInclude *> include);
+    void removeInclude(QSet<QUmlInclude *> include);
+    QSet<QUmlClassifier *> subject() const;
+    void addSubject(QSet<QUmlClassifier *> subject);
+    void removeSubject(QSet<QUmlClassifier *> subject);
 
     // Operations
-    Q_INVOKABLE QSet<QUmlUseCase *> allIncludedUseCases() const;
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlUseCase(QUmlUseCasePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    QSet<QUmlUseCase *> allIncludedUseCases() const;
 };
 
 QT_END_NAMESPACE

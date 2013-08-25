@@ -41,10 +41,9 @@
 #ifndef QUMLWRITELINKACTION_P_H
 #define QUMLWRITELINKACTION_P_H
 
-// Base class includes
-#include "private/qumllinkaction_p.h"
-
 #include "QtUml/QUmlWriteLinkAction"
+
+#include "private/qumllinkaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -54,11 +53,8 @@ QT_MODULE(QtUml)
 
 class Q_UML_EXPORT QUmlWriteLinkActionPrivate : public QUmlLinkActionPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlWriteLinkAction)
-
 public:
-    explicit QUmlWriteLinkActionPrivate();
-    virtual ~QUmlWriteLinkActionPrivate();
+    QUmlWriteLinkActionPrivate();
 
 };
 

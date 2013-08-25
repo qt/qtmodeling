@@ -41,13 +41,9 @@
 #ifndef QUMLREDEFINABLEELEMENT_P_H
 #define QUMLREDEFINABLEELEMENT_P_H
 
-// Base class includes
-#include "private/qumlnamedelement_p.h"
-
 #include "QtUml/QUmlRedefinableElement"
 
-// Qt includes
-#include "QtCore/QSet"
+#include "private/qumlnamedelement_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,27 +51,14 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlRedefinableElement;
-class QUmlClassifier;
-
-class Q_UML_EXPORT QUmlRedefinableElementPrivate : public QUmlNamedElementPrivate
+class Q_UML_EXPORT QUmlRedefinableElementPrivate : public virtual QUmlNamedElementPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlRedefinableElement)
-
 public:
-    explicit QUmlRedefinableElementPrivate();
-    virtual ~QUmlRedefinableElementPrivate();
+    QUmlRedefinableElementPrivate();
 
     bool isLeaf;
-    QSet<QUmlRedefinableElement *> redefinedElements;
-    QSet<QUmlClassifier *> redefinitionContexts;
-
-    // Internal functions for read-only subsetted association ends
-    void addRedefinedElement(QUmlRedefinableElement *redefinedElement);
-    void removeRedefinedElement(QUmlRedefinableElement *redefinedElement);
-    void addRedefinitionContext(QUmlClassifier *redefinitionContext);
-    void removeRedefinitionContext(QUmlClassifier *redefinitionContext);
+    QSet<QUmlRedefinableElement *> redefinedElement;
+    QSet<QUmlClassifier *> redefinitionContext;
 };
 
 QT_END_NAMESPACE

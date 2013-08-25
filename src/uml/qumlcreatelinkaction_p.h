@@ -41,13 +41,9 @@
 #ifndef QUMLCREATELINKACTION_P_H
 #define QUMLCREATELINKACTION_P_H
 
-// Base class includes
-#include "private/qumlwritelinkaction_p.h"
-
 #include "QtUml/QUmlCreateLinkAction"
 
-// Qt includes
-#include "QtCore/QSet"
+#include "private/qumlwritelinkaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,17 +51,10 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlLinkEndCreationData;
-class QUmlCreateLinkAction;
-
 class Q_UML_EXPORT QUmlCreateLinkActionPrivate : public QUmlWriteLinkActionPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlCreateLinkAction)
-
 public:
-    explicit QUmlCreateLinkActionPrivate();
-    virtual ~QUmlCreateLinkActionPrivate();
+    QUmlCreateLinkActionPrivate();
 
     QSet<QUmlLinkEndCreationData *> endData;
 };

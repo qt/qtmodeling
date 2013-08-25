@@ -41,16 +41,9 @@
 #ifndef QUMLEXPANSIONREGION_P_H
 #define QUMLEXPANSIONREGION_P_H
 
-// Base class includes
-#include "private/qumlstructuredactivitynode_p.h"
-
 #include "QtUml/QUmlExpansionRegion"
 
-// QtUml includes
-#include "QtUml/QtUmlNamespace"
-
-// Qt includes
-#include "QtCore/QSet"
+#include "private/qumlstructuredactivitynode_p.h"
 
 QT_BEGIN_HEADER
 
@@ -58,21 +51,14 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlExpansionNode;
-class QUmlExpansionRegion;
-
 class Q_UML_EXPORT QUmlExpansionRegionPrivate : public QUmlStructuredActivityNodePrivate
 {
-    Q_DECLARE_PUBLIC(QUmlExpansionRegion)
-
 public:
-    explicit QUmlExpansionRegionPrivate();
-    virtual ~QUmlExpansionRegionPrivate();
+    QUmlExpansionRegionPrivate();
 
+    QSet<QUmlExpansionNode *> inputElement;
     QtUml::ExpansionKind mode;
-    QSet<QUmlExpansionNode *> inputElements;
-    QSet<QUmlExpansionNode *> outputElements;
+    QSet<QUmlExpansionNode *> outputElement;
 };
 
 QT_END_NAMESPACE

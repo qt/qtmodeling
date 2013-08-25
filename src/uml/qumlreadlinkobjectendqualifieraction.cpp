@@ -42,21 +42,15 @@
 #include "qumlreadlinkobjectendqualifieraction_p.h"
 
 #include <QtUml/QUmlInputPin>
-#include <QtUml/QUmlProperty>
 #include <QtUml/QUmlOutputPin>
-
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
+#include <QtUml/QUmlProperty>
 
 QT_BEGIN_NAMESPACE
 
 QUmlReadLinkObjectEndQualifierActionPrivate::QUmlReadLinkObjectEndQualifierActionPrivate() :
-    result(0),
     object(0),
-    qualifier(0)
-{
-}
-
-QUmlReadLinkObjectEndQualifierActionPrivate::~QUmlReadLinkObjectEndQualifierActionPrivate()
+    qualifier(0),
+    result(0)
 {
 }
 
@@ -68,82 +62,26 @@ QUmlReadLinkObjectEndQualifierActionPrivate::~QUmlReadLinkObjectEndQualifierActi
     \brief A read link object end qualifier action is an action that retrieves a qualifier end value from a link object.
  */
 
-QUmlReadLinkObjectEndQualifierAction::QUmlReadLinkObjectEndQualifierAction(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlAction(*new QUmlReadLinkObjectEndQualifierActionPrivate, wrapper, parent)
+QUmlReadLinkObjectEndQualifierAction::QUmlReadLinkObjectEndQualifierAction(bool create_d_ptr) :
+    QUmlAction(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlReadLinkObjectEndQualifierActionPrivate);
 }
 
-QUmlReadLinkObjectEndQualifierAction::QUmlReadLinkObjectEndQualifierAction(QUmlReadLinkObjectEndQualifierActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlAction(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlReadLinkObjectEndQualifierAction::~QUmlReadLinkObjectEndQualifierAction()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlReadLinkObjectEndQualifierAction
-// ---------------------------------------------------------------
-
-/*!
-    Pin where the result value is placed.
- */
-QUmlOutputPin *QUmlReadLinkObjectEndQualifierAction::result() const
-{
-    // This is a read-write association end
-
-    Q_D(const QUmlReadLinkObjectEndQualifierAction);
-    return d->result;
-}
-
-void QUmlReadLinkObjectEndQualifierAction::setResult(QUmlOutputPin *result)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlReadLinkObjectEndQualifierAction);
-    if (d->result != result) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActionPrivate *>(d))->removeOutput(qwrappedobject_cast<QUmlOutputPin *>(d->result));
-
-        d->result = result;
-
-        // Adjust subsetted property(ies)
-        if (result) {
-            (qwrappedobject_cast<QUmlActionPrivate *>(d))->addOutput(qwrappedobject_cast<QUmlOutputPin *>(result));
-        }
-    }
-}
+// Owned attributes
 
 /*!
     Gives the input pin from which the link object is obtained.
  */
 QUmlInputPin *QUmlReadLinkObjectEndQualifierAction::object() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlReadLinkObjectEndQualifierAction);
-    return d->object;
+    return 0;
 }
 
 void QUmlReadLinkObjectEndQualifierAction::setObject(QUmlInputPin *object)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlReadLinkObjectEndQualifierAction);
-    if (d->object != object) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActionPrivate *>(d))->removeInput(qwrappedobject_cast<QUmlInputPin *>(d->object));
-
-        d->object = object;
-
-        // Adjust subsetted property(ies)
-        if (object) {
-            (qwrappedobject_cast<QUmlActionPrivate *>(d))->addInput(qwrappedobject_cast<QUmlInputPin *>(object));
-        }
-    }
+    Q_UNUSED(object);
 }
 
 /*!
@@ -151,49 +89,26 @@ void QUmlReadLinkObjectEndQualifierAction::setObject(QUmlInputPin *object)
  */
 QUmlProperty *QUmlReadLinkObjectEndQualifierAction::qualifier() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlReadLinkObjectEndQualifierAction);
-    return d->qualifier;
+    return 0;
 }
 
 void QUmlReadLinkObjectEndQualifierAction::setQualifier(QUmlProperty *qualifier)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlReadLinkObjectEndQualifierAction);
-    if (d->qualifier != qualifier) {
-        d->qualifier = qualifier;
-    }
+    Q_UNUSED(qualifier);
 }
 
-void QUmlReadLinkObjectEndQualifierAction::setPropertyData()
+/*!
+    Pin where the result value is placed.
+ */
+QUmlOutputPin *QUmlReadLinkObjectEndQualifierAction::result() const
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadLinkObjectEndQualifierAction")][QString::fromLatin1("result")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadLinkObjectEndQualifierAction")][QString::fromLatin1("result")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadLinkObjectEndQualifierAction")][QString::fromLatin1("result")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Pin where the result value is placed.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadLinkObjectEndQualifierAction")][QString::fromLatin1("result")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadLinkObjectEndQualifierAction")][QString::fromLatin1("result")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlAction::outputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadLinkObjectEndQualifierAction")][QString::fromLatin1("result")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
+    return 0;
+}
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadLinkObjectEndQualifierAction")][QString::fromLatin1("object")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadLinkObjectEndQualifierAction")][QString::fromLatin1("object")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadLinkObjectEndQualifierAction")][QString::fromLatin1("object")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Gives the input pin from which the link object is obtained.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadLinkObjectEndQualifierAction")][QString::fromLatin1("object")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadLinkObjectEndQualifierAction")][QString::fromLatin1("object")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlAction::inputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadLinkObjectEndQualifierAction")][QString::fromLatin1("object")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadLinkObjectEndQualifierAction")][QString::fromLatin1("qualifier")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadLinkObjectEndQualifierAction")][QString::fromLatin1("qualifier")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadLinkObjectEndQualifierAction")][QString::fromLatin1("qualifier")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The attribute representing the qualifier to be read.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadLinkObjectEndQualifierAction")][QString::fromLatin1("qualifier")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadLinkObjectEndQualifierAction")][QString::fromLatin1("qualifier")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadLinkObjectEndQualifierAction")][QString::fromLatin1("qualifier")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlAction::setPropertyData();
+void QUmlReadLinkObjectEndQualifierAction::setResult(QUmlOutputPin *result)
+{
+    Q_UNUSED(result);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlreadlinkobjectendqualifieraction.cpp"
 

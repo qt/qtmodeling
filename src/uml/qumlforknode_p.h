@@ -41,25 +41,20 @@
 #ifndef QUMLFORKNODE_P_H
 #define QUMLFORKNODE_P_H
 
-// Base class includes
-#include "private/qumlcontrolnode_p.h"
-
 #include "QtUml/QUmlForkNode"
+
+#include "private/qumlcontrolnode_p.h"
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-class QUmlForkNode;
 
 class Q_UML_EXPORT QUmlForkNodePrivate : public QUmlControlNodePrivate
 {
-    Q_DECLARE_PUBLIC(QUmlForkNode)
-
 public:
-    explicit QUmlForkNodePrivate();
-    virtual ~QUmlForkNodePrivate();
+    QUmlForkNodePrivate();
 
 };
 

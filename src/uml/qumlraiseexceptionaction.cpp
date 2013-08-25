@@ -43,16 +43,10 @@
 
 #include <QtUml/QUmlInputPin>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlRaiseExceptionActionPrivate::QUmlRaiseExceptionActionPrivate() :
     exception(0)
-{
-}
-
-QUmlRaiseExceptionActionPrivate::~QUmlRaiseExceptionActionPrivate()
 {
 }
 
@@ -64,68 +58,27 @@ QUmlRaiseExceptionActionPrivate::~QUmlRaiseExceptionActionPrivate()
     \brief A raise exception action is an action that causes an exception to occur. The input value becomes the exception object.
  */
 
-QUmlRaiseExceptionAction::QUmlRaiseExceptionAction(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlAction(*new QUmlRaiseExceptionActionPrivate, wrapper, parent)
+QUmlRaiseExceptionAction::QUmlRaiseExceptionAction(bool create_d_ptr) :
+    QUmlAction(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlRaiseExceptionActionPrivate);
 }
 
-QUmlRaiseExceptionAction::QUmlRaiseExceptionAction(QUmlRaiseExceptionActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlAction(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlRaiseExceptionAction::~QUmlRaiseExceptionAction()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlRaiseExceptionAction
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     An input pin whose value becomes an exception object.
  */
 QUmlInputPin *QUmlRaiseExceptionAction::exception() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlRaiseExceptionAction);
-    return d->exception;
+    return 0;
 }
 
 void QUmlRaiseExceptionAction::setException(QUmlInputPin *exception)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlRaiseExceptionAction);
-    if (d->exception != exception) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActionPrivate *>(d))->removeInput(qwrappedobject_cast<QUmlInputPin *>(d->exception));
-
-        d->exception = exception;
-
-        // Adjust subsetted property(ies)
-        if (exception) {
-            (qwrappedobject_cast<QUmlActionPrivate *>(d))->addInput(qwrappedobject_cast<QUmlInputPin *>(exception));
-        }
-    }
-}
-
-void QUmlRaiseExceptionAction::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRaiseExceptionAction")][QString::fromLatin1("exception")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRaiseExceptionAction")][QString::fromLatin1("exception")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRaiseExceptionAction")][QString::fromLatin1("exception")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An input pin whose value becomes an exception object.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRaiseExceptionAction")][QString::fromLatin1("exception")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRaiseExceptionAction")][QString::fromLatin1("exception")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlAction::inputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlRaiseExceptionAction")][QString::fromLatin1("exception")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlAction::setPropertyData();
+    Q_UNUSED(exception);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlraiseexceptionaction.cpp"
 

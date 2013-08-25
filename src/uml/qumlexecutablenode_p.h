@@ -41,13 +41,9 @@
 #ifndef QUMLEXECUTABLENODE_P_H
 #define QUMLEXECUTABLENODE_P_H
 
-// Base class includes
-#include "private/qumlactivitynode_p.h"
-
 #include "QtUml/QUmlExecutableNode"
 
-// Qt includes
-#include "QtCore/QSet"
+#include "private/qumlactivitynode_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,18 +51,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlExceptionHandler;
-
 class Q_UML_EXPORT QUmlExecutableNodePrivate : public QUmlActivityNodePrivate
 {
-    Q_DECLARE_PUBLIC(QUmlExecutableNode)
-
 public:
-    explicit QUmlExecutableNodePrivate();
-    virtual ~QUmlExecutableNodePrivate();
+    QUmlExecutableNodePrivate();
 
-    QSet<QUmlExceptionHandler *> handlers;
+    QSet<QUmlExceptionHandler *> handler;
 };
 
 QT_END_NAMESPACE

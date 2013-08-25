@@ -41,10 +41,9 @@
 #ifndef QUMLCONTROLNODE_P_H
 #define QUMLCONTROLNODE_P_H
 
-// Base class includes
-#include "private/qumlactivitynode_p.h"
-
 #include "QtUml/QUmlControlNode"
+
+#include "private/qumlactivitynode_p.h"
 
 QT_BEGIN_HEADER
 
@@ -54,11 +53,8 @@ QT_MODULE(QtUml)
 
 class Q_UML_EXPORT QUmlControlNodePrivate : public QUmlActivityNodePrivate
 {
-    Q_DECLARE_PUBLIC(QUmlControlNode)
-
 public:
-    explicit QUmlControlNodePrivate();
-    virtual ~QUmlControlNodePrivate();
+    QUmlControlNodePrivate();
 
 };
 

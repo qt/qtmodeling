@@ -41,25 +41,20 @@
 #ifndef QUMLCONTROLFLOW_P_H
 #define QUMLCONTROLFLOW_P_H
 
-// Base class includes
-#include "private/qumlactivityedge_p.h"
-
 #include "QtUml/QUmlControlFlow"
+
+#include "private/qumlactivityedge_p.h"
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-class QUmlControlFlow;
 
 class Q_UML_EXPORT QUmlControlFlowPrivate : public QUmlActivityEdgePrivate
 {
-    Q_DECLARE_PUBLIC(QUmlControlFlow)
-
 public:
-    explicit QUmlControlFlowPrivate();
-    virtual ~QUmlControlFlowPrivate();
+    QUmlControlFlowPrivate();
 
 };
 

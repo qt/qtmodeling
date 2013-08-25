@@ -41,25 +41,20 @@
 #ifndef QUMLGATE_P_H
 #define QUMLGATE_P_H
 
-// Base class includes
-#include "private/qumlmessageend_p.h"
-
 #include "QtUml/QUmlGate"
+
+#include "private/qumlmessageend_p.h"
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-class QUmlGate;
 
 class Q_UML_EXPORT QUmlGatePrivate : public QUmlMessageEndPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlGate)
-
 public:
-    explicit QUmlGatePrivate();
-    virtual ~QUmlGatePrivate();
+    QUmlGatePrivate();
 
 };
 

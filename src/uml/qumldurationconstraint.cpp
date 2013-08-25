@@ -43,16 +43,10 @@
 
 #include <QtUml/QUmlDurationInterval>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlDurationConstraintPrivate::QUmlDurationConstraintPrivate() :
     specification(0)
-{
-}
-
-QUmlDurationConstraintPrivate::~QUmlDurationConstraintPrivate()
 {
 }
 
@@ -64,108 +58,40 @@ QUmlDurationConstraintPrivate::~QUmlDurationConstraintPrivate()
     \brief A duration constraint is a constraint that refers to a duration interval.
  */
 
-QUmlDurationConstraint::QUmlDurationConstraint(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlIntervalConstraint(*new QUmlDurationConstraintPrivate, wrapper, parent)
+QUmlDurationConstraint::QUmlDurationConstraint(bool create_d_ptr) :
+    QUmlIntervalConstraint(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlDurationConstraintPrivate);
 }
 
-QUmlDurationConstraint::QUmlDurationConstraint(QUmlDurationConstraintPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlIntervalConstraint(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlDurationConstraint::~QUmlDurationConstraint()
-{
-}
-
-// ---------------------------------------------------------------
-// ATTRIBUTES FROM QUmlDurationConstraint
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     The value of firstEvent[i] is related to constrainedElement[i] (where i is 1 or 2). If firstEvent[i] is true, then the corresponding observation event is the first time instant the execution enters constrainedElement[i]. If firstEvent[i] is false, then the corresponding observation event is the last time instant the execution is within constrainedElement[i]. Default value is true applied when constrainedElement[i] refers an element that represents only one time instant.
  */
-QSet<bool> QUmlDurationConstraint::firstEvents() const
+bool QUmlDurationConstraint::firstEvent() const
 {
-    // This is a read-write attribute
-
-    Q_D(const QUmlDurationConstraint);
-    return d->firstEvents;
+    return bool();
 }
 
-void QUmlDurationConstraint::addFirstEvent(bool firstEvent)
+void QUmlDurationConstraint::setFirstEvent(bool firstEvent)
 {
-    // This is a read-write attribute
-
-    Q_D(QUmlDurationConstraint);
-    if (!d->firstEvents.contains(firstEvent)) {
-        d->firstEvents.insert(firstEvent);
-    }
+    Q_UNUSED(firstEvent);
 }
-
-void QUmlDurationConstraint::removeFirstEvent(bool firstEvent)
-{
-    // This is a read-write attribute
-
-    Q_D(QUmlDurationConstraint);
-    if (d->firstEvents.contains(firstEvent)) {
-        d->firstEvents.remove(firstEvent);
-    }
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlDurationConstraint
-// ---------------------------------------------------------------
 
 /*!
     The interval constraining the duration.
  */
 QUmlDurationInterval *QUmlDurationConstraint::specification() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlDurationConstraint);
-    return d->specification;
+    return 0;
 }
 
 void QUmlDurationConstraint::setSpecification(QUmlDurationInterval *specification)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlDurationConstraint);
-    if (d->specification != specification) {
-        if (d->specification)
-            qTopLevelWrapper(d->specification)->setParent(0);
-        d->specification = specification;
-        qTopLevelWrapper(specification)->setParent(qTopLevelWrapper(this));
-
-        // Adjust redefined property(ies)
-        (qwrappedobject_cast<QUmlIntervalConstraint *>(this))->setSpecification(qwrappedobject_cast<QUmlInterval *>(specification));
-    }
-}
-
-void QUmlDurationConstraint::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDurationConstraint")][QString::fromLatin1("firstEvents")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDurationConstraint")][QString::fromLatin1("firstEvents")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDurationConstraint")][QString::fromLatin1("firstEvents")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The value of firstEvent[i] is related to constrainedElement[i] (where i is 1 or 2). If firstEvent[i] is true, then the corresponding observation event is the first time instant the execution enters constrainedElement[i]. If firstEvent[i] is false, then the corresponding observation event is the last time instant the execution is within constrainedElement[i]. Default value is true applied when constrainedElement[i] refers an element that represents only one time instant.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDurationConstraint")][QString::fromLatin1("firstEvents")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDurationConstraint")][QString::fromLatin1("firstEvents")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDurationConstraint")][QString::fromLatin1("firstEvents")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDurationConstraint")][QString::fromLatin1("specification")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDurationConstraint")][QString::fromLatin1("specification")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDurationConstraint")][QString::fromLatin1("specification")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The interval constraining the duration.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDurationConstraint")][QString::fromLatin1("specification")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QUmlIntervalConstraint::specification");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDurationConstraint")][QString::fromLatin1("specification")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDurationConstraint")][QString::fromLatin1("specification")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlIntervalConstraint::setPropertyData();
+    Q_UNUSED(specification);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumldurationconstraint.cpp"
 

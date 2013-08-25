@@ -41,13 +41,9 @@
 #ifndef QUMLCLASSIFIERTEMPLATEPARAMETER_P_H
 #define QUMLCLASSIFIERTEMPLATEPARAMETER_P_H
 
-// Base class includes
-#include "private/qumltemplateparameter_p.h"
-
 #include "QtUml/QUmlClassifierTemplateParameter"
 
-// Qt includes
-#include "QtCore/QSet"
+#include "private/qumltemplateparameter_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,21 +51,14 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlClassifier;
-class QUmlClassifierTemplateParameter;
-
 class Q_UML_EXPORT QUmlClassifierTemplateParameterPrivate : public QUmlTemplateParameterPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlClassifierTemplateParameter)
-
 public:
-    explicit QUmlClassifierTemplateParameterPrivate();
-    virtual ~QUmlClassifierTemplateParameterPrivate();
+    QUmlClassifierTemplateParameterPrivate();
 
     bool allowSubstitutable;
+    QSet<QUmlClassifier *> constrainingClassifier;
     QUmlClassifier *parameteredElement;
-    QSet<QUmlClassifier *> constrainingClassifiers;
 };
 
 QT_END_NAMESPACE

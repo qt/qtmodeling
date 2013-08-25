@@ -41,13 +41,9 @@
 #ifndef QUMLSLOT_P_H
 #define QUMLSLOT_P_H
 
-// Base class includes
-#include "private/qumlelement_p.h"
-
 #include "QtUml/QUmlSlot"
 
-// Qt includes
-#include "QtCore/QList"
+#include "private/qumlelement_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,23 +51,14 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlStructuralFeature;
-class QUmlInstanceSpecification;
-class QUmlValueSpecification;
-class QUmlSlot;
-
 class Q_UML_EXPORT QUmlSlotPrivate : public QUmlElementPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlSlot)
-
 public:
-    explicit QUmlSlotPrivate();
-    virtual ~QUmlSlotPrivate();
+    QUmlSlotPrivate();
 
-    QList<QUmlValueSpecification *> values;
     QUmlStructuralFeature *definingFeature;
     QUmlInstanceSpecification *owningInstance;
+    QList<QUmlValueSpecification *> value;
 };
 
 QT_END_NAMESPACE

@@ -41,20 +41,14 @@
 #include "qumlsendsignalaction.h"
 #include "qumlsendsignalaction_p.h"
 
-#include <QtUml/QUmlSignal>
 #include <QtUml/QUmlInputPin>
-
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
+#include <QtUml/QUmlSignal>
 
 QT_BEGIN_NAMESPACE
 
 QUmlSendSignalActionPrivate::QUmlSendSignalActionPrivate() :
-    target(0),
-    signal(0)
-{
-}
-
-QUmlSendSignalActionPrivate::~QUmlSendSignalActionPrivate()
+    signal(0),
+    target(0)
 {
 }
 
@@ -66,96 +60,40 @@ QUmlSendSignalActionPrivate::~QUmlSendSignalActionPrivate()
     \brief A send signal action is an action that creates a signal instance from its inputs, and transmits it to the target object, where it may cause the firing of a state machine transition or the execution of an activity. The argument values are available to the execution of associated behaviors. The requestor continues execution immediately. Any reply message is ignored and is not transmitted to the requestor. If the input is already a signal instance, use a send object action.
  */
 
-QUmlSendSignalAction::QUmlSendSignalAction(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlInvocationAction(*new QUmlSendSignalActionPrivate, wrapper, parent)
+QUmlSendSignalAction::QUmlSendSignalAction(bool create_d_ptr) :
+    QUmlInvocationAction(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlSendSignalActionPrivate);
 }
 
-QUmlSendSignalAction::QUmlSendSignalAction(QUmlSendSignalActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlInvocationAction(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlSendSignalAction::~QUmlSendSignalAction()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlSendSignalAction
-// ---------------------------------------------------------------
-
-/*!
-    The target object to which the signal is sent.
- */
-QUmlInputPin *QUmlSendSignalAction::target() const
-{
-    // This is a read-write association end
-
-    Q_D(const QUmlSendSignalAction);
-    return d->target;
-}
-
-void QUmlSendSignalAction::setTarget(QUmlInputPin *target)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlSendSignalAction);
-    if (d->target != target) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActionPrivate *>(d))->removeInput(qwrappedobject_cast<QUmlInputPin *>(d->target));
-
-        d->target = target;
-
-        // Adjust subsetted property(ies)
-        if (target) {
-            (qwrappedobject_cast<QUmlActionPrivate *>(d))->addInput(qwrappedobject_cast<QUmlInputPin *>(target));
-        }
-    }
-}
+// Owned attributes
 
 /*!
     The type of signal transmitted to the target object.
  */
 QUmlSignal *QUmlSendSignalAction::signal() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlSendSignalAction);
-    return d->signal;
+    return 0;
 }
 
 void QUmlSendSignalAction::setSignal(QUmlSignal *signal)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlSendSignalAction);
-    if (d->signal != signal) {
-        d->signal = signal;
-    }
+    Q_UNUSED(signal);
 }
 
-void QUmlSendSignalAction::setPropertyData()
+/*!
+    The target object to which the signal is sent.
+ */
+QUmlInputPin *QUmlSendSignalAction::target() const
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSendSignalAction")][QString::fromLatin1("target")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSendSignalAction")][QString::fromLatin1("target")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSendSignalAction")][QString::fromLatin1("target")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The target object to which the signal is sent.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSendSignalAction")][QString::fromLatin1("target")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSendSignalAction")][QString::fromLatin1("target")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlAction::inputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSendSignalAction")][QString::fromLatin1("target")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
+    return 0;
+}
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSendSignalAction")][QString::fromLatin1("signal")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSendSignalAction")][QString::fromLatin1("signal")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSendSignalAction")][QString::fromLatin1("signal")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The type of signal transmitted to the target object.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSendSignalAction")][QString::fromLatin1("signal")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSendSignalAction")][QString::fromLatin1("signal")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSendSignalAction")][QString::fromLatin1("signal")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlInvocationAction::setPropertyData();
+void QUmlSendSignalAction::setTarget(QUmlInputPin *target)
+{
+    Q_UNUSED(target);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlsendsignalaction.cpp"
 

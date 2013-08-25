@@ -43,16 +43,10 @@
 
 #include <QtUml/QUmlSignal>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlReceptionPrivate::QUmlReceptionPrivate() :
     signal(0)
-{
-}
-
-QUmlReceptionPrivate::~QUmlReceptionPrivate()
 {
 }
 
@@ -64,60 +58,27 @@ QUmlReceptionPrivate::~QUmlReceptionPrivate()
     \brief A reception is a declaration stating that a classifier is prepared to react to the receipt of a signal. A reception designates a signal and specifies the expected behavioral response. The details of handling a signal are specified by the behavior associated with the reception or the classifier itself.
  */
 
-QUmlReception::QUmlReception(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlBehavioralFeature(*new QUmlReceptionPrivate, wrapper, parent)
+QUmlReception::QUmlReception(bool create_d_ptr) :
+    QUmlBehavioralFeature(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlReceptionPrivate);
 }
 
-QUmlReception::QUmlReception(QUmlReceptionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlBehavioralFeature(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlReception::~QUmlReception()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlReception
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     The signal that this reception handles.
  */
 QUmlSignal *QUmlReception::signal() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlReception);
-    return d->signal;
+    return 0;
 }
 
 void QUmlReception::setSignal(QUmlSignal *signal)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlReception);
-    if (d->signal != signal) {
-        d->signal = signal;
-    }
-}
-
-void QUmlReception::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReception")][QString::fromLatin1("signal")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReception")][QString::fromLatin1("signal")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReception")][QString::fromLatin1("signal")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The signal that this reception handles.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReception")][QString::fromLatin1("signal")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReception")][QString::fromLatin1("signal")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReception")][QString::fromLatin1("signal")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlBehavioralFeature::setPropertyData();
+    Q_UNUSED(signal);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlreception.cpp"
 

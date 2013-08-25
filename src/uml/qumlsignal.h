@@ -43,11 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlClassifier>
-
-// Qt includes
-#include <QtCore/QList>
 
 QT_BEGIN_HEADER
 
@@ -55,34 +51,18 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlProperty;
 
 class QUmlSignalPrivate;
-
 class Q_UML_EXPORT QUmlSignal : public QUmlClassifier
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QList<QUmlProperty *> ownedAttributes READ ownedAttributes)
-
-    Q_DISABLE_COPY(QUmlSignal)
-    Q_DECLARE_PRIVATE(QUmlSignal)
-
 public:
-    Q_INVOKABLE explicit QUmlSignal(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlSignal();
+    QUmlSignal(bool create_d_ptr = true);
 
-    // Association ends from QUmlSignal
-    Q_INVOKABLE QList<QUmlProperty *> ownedAttributes() const;
-    Q_INVOKABLE void addOwnedAttribute(QUmlProperty *ownedAttribute);
-    Q_INVOKABLE void removeOwnedAttribute(QUmlProperty *ownedAttribute);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlSignal(QUmlSignalPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QList<QUmlProperty *> ownedAttribute() const;
+    void addOwnedAttribute(QList<QUmlProperty *> ownedAttribute);
+    void removeOwnedAttribute(QList<QUmlProperty *> ownedAttribute);
 };
 
 QT_END_NAMESPACE

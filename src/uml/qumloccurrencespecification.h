@@ -43,11 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlInteractionFragment>
-
-// Qt includes
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -55,42 +51,24 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlLifeline;
 class QUmlGeneralOrdering;
+class QUmlLifeline;
 
 class QUmlOccurrenceSpecificationPrivate;
-
 class Q_UML_EXPORT QUmlOccurrenceSpecification : public QUmlInteractionFragment
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlLifeline * covered READ covered WRITE setCovered)
-    Q_PROPERTY(QSet<QUmlGeneralOrdering *> toAfter READ toAfter)
-    Q_PROPERTY(QSet<QUmlGeneralOrdering *> toBefore READ toBefore)
-
-    Q_DISABLE_COPY(QUmlOccurrenceSpecification)
-    Q_DECLARE_PRIVATE(QUmlOccurrenceSpecification)
-
 public:
-    Q_INVOKABLE explicit QUmlOccurrenceSpecification(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlOccurrenceSpecification();
+    QUmlOccurrenceSpecification(bool create_d_ptr = true);
 
-    // Association ends from QUmlOccurrenceSpecification
-    Q_INVOKABLE QUmlLifeline *covered() const;
-    Q_INVOKABLE void setCovered(QUmlLifeline *covered);
-    Q_INVOKABLE QSet<QUmlGeneralOrdering *> toAfter() const;
-    Q_INVOKABLE void addToAfter(QUmlGeneralOrdering *toAfter);
-    Q_INVOKABLE void removeToAfter(QUmlGeneralOrdering *toAfter);
-    Q_INVOKABLE QSet<QUmlGeneralOrdering *> toBefore() const;
-    Q_INVOKABLE void addToBefore(QUmlGeneralOrdering *toBefore);
-    Q_INVOKABLE void removeToBefore(QUmlGeneralOrdering *toBefore);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlOccurrenceSpecification(QUmlOccurrenceSpecificationPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlLifeline *covered() const;
+    void setCovered(QUmlLifeline *covered);
+    QSet<QUmlGeneralOrdering *> toAfter() const;
+    void addToAfter(QSet<QUmlGeneralOrdering *> toAfter);
+    void removeToAfter(QSet<QUmlGeneralOrdering *> toAfter);
+    QSet<QUmlGeneralOrdering *> toBefore() const;
+    void addToBefore(QSet<QUmlGeneralOrdering *> toBefore);
+    void removeToBefore(QSet<QUmlGeneralOrdering *> toBefore);
 };
 
 QT_END_NAMESPACE

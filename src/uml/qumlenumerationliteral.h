@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlInstanceSpecification>
 
 QT_BEGIN_HEADER
@@ -52,35 +51,18 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlEnumeration;
 
 class QUmlEnumerationLiteralPrivate;
-
 class Q_UML_EXPORT QUmlEnumerationLiteral : public QUmlInstanceSpecification
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlEnumeration * classifier READ classifier STORED false)
-    Q_PROPERTY(QUmlEnumeration * enumeration READ enumeration WRITE setEnumeration)
-
-    Q_DISABLE_COPY(QUmlEnumerationLiteral)
-    Q_DECLARE_PRIVATE(QUmlEnumerationLiteral)
-
 public:
-    Q_INVOKABLE explicit QUmlEnumerationLiteral(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlEnumerationLiteral();
+    QUmlEnumerationLiteral(bool create_d_ptr = true);
 
-    // Association ends from QUmlEnumerationLiteral
-    Q_INVOKABLE QUmlEnumeration *classifier() const;
-    Q_INVOKABLE QUmlEnumeration *enumeration() const;
-    Q_INVOKABLE void setEnumeration(QUmlEnumeration *enumeration);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlEnumerationLiteral(QUmlEnumerationLiteralPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlEnumeration *classifier() const;
+    QUmlEnumeration *enumeration() const;
+    void setEnumeration(QUmlEnumeration *enumeration);
 };
 
 QT_END_NAMESPACE

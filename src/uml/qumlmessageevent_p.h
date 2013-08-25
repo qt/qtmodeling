@@ -41,10 +41,9 @@
 #ifndef QUMLMESSAGEEVENT_P_H
 #define QUMLMESSAGEEVENT_P_H
 
-// Base class includes
-#include "private/qumlevent_p.h"
-
 #include "QtUml/QUmlMessageEvent"
+
+#include "private/qumlevent_p.h"
 
 QT_BEGIN_HEADER
 
@@ -54,11 +53,8 @@ QT_MODULE(QtUml)
 
 class Q_UML_EXPORT QUmlMessageEventPrivate : public QUmlEventPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlMessageEvent)
-
 public:
-    explicit QUmlMessageEventPrivate();
-    virtual ~QUmlMessageEventPrivate();
+    QUmlMessageEventPrivate();
 
 };
 

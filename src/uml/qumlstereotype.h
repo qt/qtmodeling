@@ -43,11 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlClass>
-
-// Qt includes
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -55,40 +51,23 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlImage;
 class QUmlProfile;
 
 class QUmlStereotypePrivate;
-
 class Q_UML_EXPORT QUmlStereotype : public QUmlClass
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QSet<QUmlImage *> icons READ icons)
-    Q_PROPERTY(QUmlProfile * profile READ profile STORED false)
-
-    Q_DISABLE_COPY(QUmlStereotype)
-    Q_DECLARE_PRIVATE(QUmlStereotype)
-
 public:
-    Q_INVOKABLE explicit QUmlStereotype(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlStereotype();
+    QUmlStereotype(bool create_d_ptr = true);
 
-    // Association ends from QUmlStereotype
-    Q_INVOKABLE QSet<QUmlImage *> icons() const;
-    Q_INVOKABLE void addIcon(QUmlImage *icon);
-    Q_INVOKABLE void removeIcon(QUmlImage *icon);
-    Q_INVOKABLE QUmlProfile *profile() const;
+    // Owned attributes
+    QSet<QUmlImage *> icon() const;
+    void addIcon(QSet<QUmlImage *> icon);
+    void removeIcon(QSet<QUmlImage *> icon);
+    QUmlProfile *profile() const;
 
     // Operations
-    Q_INVOKABLE QUmlProfile *containingProfile() const;
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlStereotype(QUmlStereotypePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    QUmlProfile *containingProfile() const;
 };
 
 QT_END_NAMESPACE

@@ -41,21 +41,15 @@
 #include "qumlunmarshallaction.h"
 #include "qumlunmarshallaction_p.h"
 
+#include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlInputPin>
 #include <QtUml/QUmlOutputPin>
-#include <QtUml/QUmlClassifier>
-
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
 QT_BEGIN_NAMESPACE
 
 QUmlUnmarshallActionPrivate::QUmlUnmarshallActionPrivate() :
     object(0),
     unmarshallType(0)
-{
-}
-
-QUmlUnmarshallActionPrivate::~QUmlUnmarshallActionPrivate()
 {
 }
 
@@ -67,90 +61,44 @@ QUmlUnmarshallActionPrivate::~QUmlUnmarshallActionPrivate()
     \brief An unmarshall action is an action that breaks an object of a known type into outputs each of which is equal to a value from a structural feature of the object.
  */
 
-QUmlUnmarshallAction::QUmlUnmarshallAction(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlAction(*new QUmlUnmarshallActionPrivate, wrapper, parent)
+QUmlUnmarshallAction::QUmlUnmarshallAction(bool create_d_ptr) :
+    QUmlAction(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlUnmarshallActionPrivate);
 }
 
-QUmlUnmarshallAction::QUmlUnmarshallAction(QUmlUnmarshallActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlAction(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlUnmarshallAction::~QUmlUnmarshallAction()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlUnmarshallAction
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     The object to be unmarshalled.
  */
 QUmlInputPin *QUmlUnmarshallAction::object() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlUnmarshallAction);
-    return d->object;
+    return 0;
 }
 
 void QUmlUnmarshallAction::setObject(QUmlInputPin *object)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlUnmarshallAction);
-    if (d->object != object) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActionPrivate *>(d))->removeInput(qwrappedobject_cast<QUmlInputPin *>(d->object));
-
-        d->object = object;
-
-        // Adjust subsetted property(ies)
-        if (object) {
-            (qwrappedobject_cast<QUmlActionPrivate *>(d))->addInput(qwrappedobject_cast<QUmlInputPin *>(object));
-        }
-    }
+    Q_UNUSED(object);
 }
 
 /*!
     The values of the structural features of the input object.
  */
-QSet<QUmlOutputPin *> QUmlUnmarshallAction::results() const
+QSet<QUmlOutputPin *> QUmlUnmarshallAction::result() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlUnmarshallAction);
-    return d->results;
+    return QSet<QUmlOutputPin *>();
 }
 
-void QUmlUnmarshallAction::addResult(QUmlOutputPin *result)
+void QUmlUnmarshallAction::addResult(QSet<QUmlOutputPin *> result)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlUnmarshallAction);
-    if (!d->results.contains(result)) {
-        d->results.insert(result);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActionPrivate *>(d))->addOutput(qwrappedobject_cast<QUmlOutputPin *>(result));
-    }
+    Q_UNUSED(result);
 }
 
-void QUmlUnmarshallAction::removeResult(QUmlOutputPin *result)
+void QUmlUnmarshallAction::removeResult(QSet<QUmlOutputPin *> result)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlUnmarshallAction);
-    if (d->results.contains(result)) {
-        d->results.remove(result);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActionPrivate *>(d))->removeOutput(qwrappedobject_cast<QUmlOutputPin *>(result));
-    }
+    Q_UNUSED(result);
 }
 
 /*!
@@ -158,49 +106,13 @@ void QUmlUnmarshallAction::removeResult(QUmlOutputPin *result)
  */
 QUmlClassifier *QUmlUnmarshallAction::unmarshallType() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlUnmarshallAction);
-    return d->unmarshallType;
+    return 0;
 }
 
 void QUmlUnmarshallAction::setUnmarshallType(QUmlClassifier *unmarshallType)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlUnmarshallAction);
-    if (d->unmarshallType != unmarshallType) {
-        d->unmarshallType = unmarshallType;
-    }
-}
-
-void QUmlUnmarshallAction::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlUnmarshallAction")][QString::fromLatin1("object")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlUnmarshallAction")][QString::fromLatin1("object")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlUnmarshallAction")][QString::fromLatin1("object")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The object to be unmarshalled.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlUnmarshallAction")][QString::fromLatin1("object")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlUnmarshallAction")][QString::fromLatin1("object")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlAction::inputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlUnmarshallAction")][QString::fromLatin1("object")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlUnmarshallAction")][QString::fromLatin1("results")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlUnmarshallAction")][QString::fromLatin1("results")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlUnmarshallAction")][QString::fromLatin1("results")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The values of the structural features of the input object.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlUnmarshallAction")][QString::fromLatin1("results")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlUnmarshallAction")][QString::fromLatin1("results")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlAction::outputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlUnmarshallAction")][QString::fromLatin1("results")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlUnmarshallAction")][QString::fromLatin1("unmarshallType")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlUnmarshallAction")][QString::fromLatin1("unmarshallType")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlUnmarshallAction")][QString::fromLatin1("unmarshallType")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The type of the object to be unmarshalled.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlUnmarshallAction")][QString::fromLatin1("unmarshallType")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlUnmarshallAction")][QString::fromLatin1("unmarshallType")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlUnmarshallAction")][QString::fromLatin1("unmarshallType")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlAction::setPropertyData();
+    Q_UNUSED(unmarshallType);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlunmarshallaction.cpp"
 

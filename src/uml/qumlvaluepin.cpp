@@ -43,16 +43,10 @@
 
 #include <QtUml/QUmlValueSpecification>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlValuePinPrivate::QUmlValuePinPrivate() :
     value(0)
-{
-}
-
-QUmlValuePinPrivate::~QUmlValuePinPrivate()
 {
 }
 
@@ -64,68 +58,27 @@ QUmlValuePinPrivate::~QUmlValuePinPrivate()
     \brief A value pin is an input pin that provides a value by evaluating a value specification.
  */
 
-QUmlValuePin::QUmlValuePin(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlInputPin(*new QUmlValuePinPrivate, wrapper, parent)
+QUmlValuePin::QUmlValuePin(bool create_d_ptr) :
+    QUmlInputPin(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlValuePinPrivate);
 }
 
-QUmlValuePin::QUmlValuePin(QUmlValuePinPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlInputPin(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlValuePin::~QUmlValuePin()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlValuePin
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     Value that the pin will provide.
  */
 QUmlValueSpecification *QUmlValuePin::value() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlValuePin);
-    return d->value;
+    return 0;
 }
 
 void QUmlValuePin::setValue(QUmlValueSpecification *value)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlValuePin);
-    if (d->value != value) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QUmlElement *>(d->value));
-
-        d->value = value;
-
-        // Adjust subsetted property(ies)
-        if (value) {
-            (qwrappedobject_cast<QUmlElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QUmlElement *>(value));
-        }
-    }
-}
-
-void QUmlValuePin::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlValuePin")][QString::fromLatin1("value")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlValuePin")][QString::fromLatin1("value")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlValuePin")][QString::fromLatin1("value")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Value that the pin will provide.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlValuePin")][QString::fromLatin1("value")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlValuePin")][QString::fromLatin1("value")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlValuePin")][QString::fromLatin1("value")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlInputPin::setPropertyData();
+    Q_UNUSED(value);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlvaluepin.cpp"
 

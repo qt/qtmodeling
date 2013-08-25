@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlLinkEndData>
 
 QT_BEGIN_HEADER
@@ -52,39 +51,19 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlInputPin;
 
 class QUmlLinkEndDestructionDataPrivate;
-
 class Q_UML_EXPORT QUmlLinkEndDestructionData : public QUmlLinkEndData
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(bool isDestroyDuplicates READ isDestroyDuplicates WRITE setDestroyDuplicates RESET unsetDestroyDuplicates)
-    Q_PROPERTY(QUmlInputPin * destroyAt READ destroyAt WRITE setDestroyAt)
-
-    Q_DISABLE_COPY(QUmlLinkEndDestructionData)
-    Q_DECLARE_PRIVATE(QUmlLinkEndDestructionData)
-
 public:
-    Q_INVOKABLE explicit QUmlLinkEndDestructionData(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlLinkEndDestructionData();
+    QUmlLinkEndDestructionData(bool create_d_ptr = true);
 
-    // Attributes from QUmlLinkEndDestructionData
-    Q_INVOKABLE bool isDestroyDuplicates() const;
-    Q_INVOKABLE void setDestroyDuplicates(bool isDestroyDuplicates);
-    Q_INVOKABLE void unsetDestroyDuplicates();
-
-    // Association ends from QUmlLinkEndDestructionData
-    Q_INVOKABLE QUmlInputPin *destroyAt() const;
-    Q_INVOKABLE void setDestroyAt(QUmlInputPin *destroyAt);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlLinkEndDestructionData(QUmlLinkEndDestructionDataPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlInputPin *destroyAt() const;
+    void setDestroyAt(QUmlInputPin *destroyAt);
+    bool isDestroyDuplicates() const;
+    void setDestroyDuplicates(bool isDestroyDuplicates);
 };
 
 QT_END_NAMESPACE

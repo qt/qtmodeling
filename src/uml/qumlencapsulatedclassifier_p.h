@@ -41,13 +41,9 @@
 #ifndef QUMLENCAPSULATEDCLASSIFIER_P_H
 #define QUMLENCAPSULATEDCLASSIFIER_P_H
 
-// Base class includes
-#include "private/qumlstructuredclassifier_p.h"
-
 #include "QtUml/QUmlEncapsulatedClassifier"
 
-// Qt includes
-#include "QtCore/QSet"
+#include "private/qumlstructuredclassifier_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,17 +51,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlPort;
-
 class Q_UML_EXPORT QUmlEncapsulatedClassifierPrivate : public QUmlStructuredClassifierPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlEncapsulatedClassifier)
-
 public:
-    explicit QUmlEncapsulatedClassifierPrivate();
-    virtual ~QUmlEncapsulatedClassifierPrivate();
+    QUmlEncapsulatedClassifierPrivate();
 
+    QSet<QUmlPort *> ownedPort;
 };
 
 QT_END_NAMESPACE

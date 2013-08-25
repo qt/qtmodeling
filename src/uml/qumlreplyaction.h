@@ -43,11 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlAction>
-
-// Qt includes
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -55,41 +51,23 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlTrigger;
 class QUmlInputPin;
+class QUmlTrigger;
 
 class QUmlReplyActionPrivate;
-
 class Q_UML_EXPORT QUmlReplyAction : public QUmlAction
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlTrigger * replyToCall READ replyToCall WRITE setReplyToCall)
-    Q_PROPERTY(QUmlInputPin * returnInformation READ returnInformation WRITE setReturnInformation)
-    Q_PROPERTY(QSet<QUmlInputPin *> replyValues READ replyValues)
-
-    Q_DISABLE_COPY(QUmlReplyAction)
-    Q_DECLARE_PRIVATE(QUmlReplyAction)
-
 public:
-    Q_INVOKABLE explicit QUmlReplyAction(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlReplyAction();
+    QUmlReplyAction(bool create_d_ptr = true);
 
-    // Association ends from QUmlReplyAction
-    Q_INVOKABLE QUmlTrigger *replyToCall() const;
-    Q_INVOKABLE void setReplyToCall(QUmlTrigger *replyToCall);
-    Q_INVOKABLE QUmlInputPin *returnInformation() const;
-    Q_INVOKABLE void setReturnInformation(QUmlInputPin *returnInformation);
-    Q_INVOKABLE QSet<QUmlInputPin *> replyValues() const;
-    Q_INVOKABLE void addReplyValue(QUmlInputPin *replyValue);
-    Q_INVOKABLE void removeReplyValue(QUmlInputPin *replyValue);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlReplyAction(QUmlReplyActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlTrigger *replyToCall() const;
+    void setReplyToCall(QUmlTrigger *replyToCall);
+    QSet<QUmlInputPin *> replyValue() const;
+    void addReplyValue(QSet<QUmlInputPin *> replyValue);
+    void removeReplyValue(QSet<QUmlInputPin *> replyValue);
+    QUmlInputPin *returnInformation() const;
+    void setReturnInformation(QUmlInputPin *returnInformation);
 };
 
 QT_END_NAMESPACE

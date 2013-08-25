@@ -41,18 +41,9 @@
 #ifndef QUMLNAMEDELEMENT_P_H
 #define QUMLNAMEDELEMENT_P_H
 
-// Base class includes
-#include "private/qumlelement_p.h"
-
 #include "QtUml/QUmlNamedElement"
 
-// QtUml includes
-#include "QtUml/QtUmlNamespace"
-
-// Qt includes
-#include "QtCore/QString"
-#include "QtCore/QList"
-#include "QtCore/QSet"
+#include "private/qumlelement_p.h"
 
 QT_BEGIN_HEADER
 
@@ -60,29 +51,17 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlPackage;
-class QUmlNamedElement;
-class QUmlNamespace;
-class QUmlDependency;
-class QUmlStringExpression;
-
-class Q_UML_EXPORT QUmlNamedElementPrivate : public QUmlElementPrivate
+class Q_UML_EXPORT QUmlNamedElementPrivate : public virtual QUmlElementPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlNamedElement)
-
 public:
-    explicit QUmlNamedElementPrivate();
-    virtual ~QUmlNamedElementPrivate();
+    QUmlNamedElementPrivate();
 
+    QSet<QUmlDependency *> clientDependency;
     QString name;
-    QtUml::VisibilityKind visibility;
     QUmlStringExpression *nameExpression;
     QUmlNamespace *namespace_;
-    QSet<QUmlDependency *> clientDependencies;
-
-    // Internal functions for read-only subsetted association ends
-    void setNamespace_(QUmlNamespace *namespace_);
+    QString qualifiedName;
+    QtUml::VisibilityKind visibility;
 };
 
 QT_END_NAMESPACE

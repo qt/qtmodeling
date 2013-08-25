@@ -41,14 +41,9 @@
 #ifndef QUMLCONDITIONALNODE_P_H
 #define QUMLCONDITIONALNODE_P_H
 
-// Base class includes
-#include "private/qumlstructuredactivitynode_p.h"
-
 #include "QtUml/QUmlConditionalNode"
 
-// Qt includes
-#include "QtCore/QList"
-#include "QtCore/QSet"
+#include "private/qumlstructuredactivitynode_p.h"
 
 QT_BEGIN_HEADER
 
@@ -56,23 +51,15 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlClause;
-class QUmlOutputPin;
-class QUmlConditionalNode;
-
 class Q_UML_EXPORT QUmlConditionalNodePrivate : public QUmlStructuredActivityNodePrivate
 {
-    Q_DECLARE_PUBLIC(QUmlConditionalNode)
-
 public:
-    explicit QUmlConditionalNodePrivate();
-    virtual ~QUmlConditionalNodePrivate();
+    QUmlConditionalNodePrivate();
 
+    QSet<QUmlClause *> clause;
     bool isAssured;
     bool isDeterminate;
-    QSet<QUmlClause *> clauses;
-    QList<QUmlOutputPin *> results;
+    QList<QUmlOutputPin *> result;
 };
 
 QT_END_NAMESPACE

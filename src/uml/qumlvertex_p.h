@@ -41,13 +41,9 @@
 #ifndef QUMLVERTEX_P_H
 #define QUMLVERTEX_P_H
 
-// Base class includes
-#include "private/qumlnamedelement_p.h"
-
 #include "QtUml/QUmlVertex"
 
-// Qt includes
-#include "QtCore/QSet"
+#include "private/qumlnamedelement_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,26 +51,14 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlRegion;
-class QUmlTransition;
-class QUmlStateMachine;
-
-class Q_UML_EXPORT QUmlVertexPrivate : public QUmlNamedElementPrivate
+class Q_UML_EXPORT QUmlVertexPrivate : public virtual QUmlNamedElementPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlVertex)
-
 public:
-    explicit QUmlVertexPrivate();
-    virtual ~QUmlVertexPrivate();
+    QUmlVertexPrivate();
 
     QUmlRegion *container;
-
-    // Internal functions for read-only subsetted association ends
-    void addIncoming(QUmlTransition *incoming);
-    void removeIncoming(QUmlTransition *incoming);
-    void addOutgoing(QUmlTransition *outgoing);
-    void removeOutgoing(QUmlTransition *outgoing);
+    QSet<QUmlTransition *> incoming;
+    QSet<QUmlTransition *> outgoing;
 };
 
 QT_END_NAMESPACE

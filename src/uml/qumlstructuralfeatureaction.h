@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlAction>
 
 QT_BEGIN_HEADER
@@ -52,37 +51,20 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlInputPin;
 class QUmlStructuralFeature;
 
 class QUmlStructuralFeatureActionPrivate;
-
 class Q_UML_EXPORT QUmlStructuralFeatureAction : public QUmlAction
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlInputPin * object READ object WRITE setObject)
-    Q_PROPERTY(QUmlStructuralFeature * structuralFeature READ structuralFeature WRITE setStructuralFeature)
-
-    Q_DISABLE_COPY(QUmlStructuralFeatureAction)
-    Q_DECLARE_PRIVATE(QUmlStructuralFeatureAction)
-
 public:
-    Q_INVOKABLE explicit QUmlStructuralFeatureAction(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlStructuralFeatureAction();
+    Q_DECL_HIDDEN QUmlStructuralFeatureAction(bool create_d_ptr = true);
 
-    // Association ends from QUmlStructuralFeatureAction
-    Q_INVOKABLE QUmlInputPin *object() const;
-    Q_INVOKABLE void setObject(QUmlInputPin *object);
-    Q_INVOKABLE QUmlStructuralFeature *structuralFeature() const;
-    Q_INVOKABLE void setStructuralFeature(QUmlStructuralFeature *structuralFeature);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlStructuralFeatureAction(QUmlStructuralFeatureActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlInputPin *object() const;
+    void setObject(QUmlInputPin *object);
+    QUmlStructuralFeature *structuralFeature() const;
+    void setStructuralFeature(QUmlStructuralFeature *structuralFeature);
 };
 
 QT_END_NAMESPACE

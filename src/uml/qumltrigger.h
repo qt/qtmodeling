@@ -43,11 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlNamedElement>
-
-// Qt includes
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -55,38 +51,21 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlEvent;
 class QUmlPort;
 
 class QUmlTriggerPrivate;
-
 class Q_UML_EXPORT QUmlTrigger : public QUmlNamedElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QSet<QUmlPort *> ports READ ports)
-    Q_PROPERTY(QUmlEvent * event READ event WRITE setEvent)
-
-    Q_DISABLE_COPY(QUmlTrigger)
-    Q_DECLARE_PRIVATE(QUmlTrigger)
-
 public:
-    Q_INVOKABLE explicit QUmlTrigger(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlTrigger();
+    QUmlTrigger(bool create_d_ptr = true);
 
-    // Association ends from QUmlTrigger
-    Q_INVOKABLE QSet<QUmlPort *> ports() const;
-    Q_INVOKABLE void addPort(QUmlPort *port);
-    Q_INVOKABLE void removePort(QUmlPort *port);
-    Q_INVOKABLE QUmlEvent *event() const;
-    Q_INVOKABLE void setEvent(QUmlEvent *event);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlTrigger(QUmlTriggerPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlEvent *event() const;
+    void setEvent(QUmlEvent *event);
+    QSet<QUmlPort *> port() const;
+    void addPort(QSet<QUmlPort *> port);
+    void removePort(QSet<QUmlPort *> port);
 };
 
 QT_END_NAMESPACE

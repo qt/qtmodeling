@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlMessageEvent>
 
 QT_BEGIN_HEADER
@@ -52,33 +51,17 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlOperation;
 
 class QUmlCallEventPrivate;
-
 class Q_UML_EXPORT QUmlCallEvent : public QUmlMessageEvent
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlOperation * operation READ operation WRITE setOperation)
-
-    Q_DISABLE_COPY(QUmlCallEvent)
-    Q_DECLARE_PRIVATE(QUmlCallEvent)
-
 public:
-    Q_INVOKABLE explicit QUmlCallEvent(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlCallEvent();
+    QUmlCallEvent(bool create_d_ptr = true);
 
-    // Association ends from QUmlCallEvent
-    Q_INVOKABLE QUmlOperation *operation() const;
-    Q_INVOKABLE void setOperation(QUmlOperation *operation);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlCallEvent(QUmlCallEventPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlOperation *operation() const;
+    void setOperation(QUmlOperation *operation);
 };
 
 QT_END_NAMESPACE

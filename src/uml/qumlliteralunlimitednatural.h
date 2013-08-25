@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlLiteralSpecification>
 
 QT_BEGIN_HEADER
@@ -51,36 +50,19 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-
 class QUmlLiteralUnlimitedNaturalPrivate;
-
 class Q_UML_EXPORT QUmlLiteralUnlimitedNatural : public QUmlLiteralSpecification
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(qint32 value READ value WRITE setValue RESET unsetValue)
-
-    Q_DISABLE_COPY(QUmlLiteralUnlimitedNatural)
-    Q_DECLARE_PRIVATE(QUmlLiteralUnlimitedNatural)
-
 public:
-    Q_INVOKABLE explicit QUmlLiteralUnlimitedNatural(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlLiteralUnlimitedNatural();
+    QUmlLiteralUnlimitedNatural(bool create_d_ptr = true);
 
-    // Attributes from QUmlLiteralUnlimitedNatural
-    Q_INVOKABLE qint32 value() const;
-    Q_INVOKABLE void setValue(qint32 value);
-    Q_INVOKABLE void unsetValue();
+    // Owned attributes
+    int value() const;
+    void setValue(int value);
 
     // Operations
-    Q_INVOKABLE bool isComputable() const;
-    Q_INVOKABLE qint32 unlimitedValue() const;
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlLiteralUnlimitedNatural(QUmlLiteralUnlimitedNaturalPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    bool isComputable() const;
+    int unlimitedValue() const;
 };
 
 QT_END_NAMESPACE

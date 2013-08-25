@@ -41,10 +41,9 @@
 #ifndef QUMLRECEPTION_P_H
 #define QUMLRECEPTION_P_H
 
-// Base class includes
-#include "private/qumlbehavioralfeature_p.h"
-
 #include "QtUml/QUmlReception"
+
+#include "private/qumlbehavioralfeature_p.h"
 
 QT_BEGIN_HEADER
 
@@ -52,17 +51,10 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlSignal;
-class QUmlReception;
-
 class Q_UML_EXPORT QUmlReceptionPrivate : public QUmlBehavioralFeaturePrivate
 {
-    Q_DECLARE_PUBLIC(QUmlReception)
-
 public:
-    explicit QUmlReceptionPrivate();
-    virtual ~QUmlReceptionPrivate();
+    QUmlReceptionPrivate();
 
     QUmlSignal *signal;
 };

@@ -41,15 +41,10 @@
 #ifndef QUMLPACKAGEABLEELEMENT_P_H
 #define QUMLPACKAGEABLEELEMENT_P_H
 
-// Base class includes
-#include "private/qwrappedobject_p.h"
-#include "private/qumlparameterableelement_p.h"
-#include "private/qumlnamedelement_p.h"
-
 #include "QtUml/QUmlPackageableElement"
 
-// QtUml includes
-#include "QtUml/QtUmlNamespace"
+#include "private/qumlparameterableelement_p.h"
+#include "private/qumlnamedelement_p.h"
 
 QT_BEGIN_HEADER
 
@@ -57,13 +52,10 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QUmlPackageableElementPrivate : public QWrappedObjectPrivate
+class Q_UML_EXPORT QUmlPackageableElementPrivate : public virtual QUmlNamedElementPrivate, public QUmlParameterableElementPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlPackageableElement)
-
 public:
-    explicit QUmlPackageableElementPrivate();
-    virtual ~QUmlPackageableElementPrivate();
+    QUmlPackageableElementPrivate();
 
     QtUml::VisibilityKind visibility;
 };

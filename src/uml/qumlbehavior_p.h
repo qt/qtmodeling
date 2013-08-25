@@ -41,14 +41,9 @@
 #ifndef QUMLBEHAVIOR_P_H
 #define QUMLBEHAVIOR_P_H
 
-// Base class includes
-#include "private/qumlclass_p.h"
-
 #include "QtUml/QUmlBehavior"
 
-// Qt includes
-#include "QtCore/QList"
-#include "QtCore/QSet"
+#include "private/qumlclass_p.h"
 
 QT_BEGIN_HEADER
 
@@ -56,29 +51,19 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlBehavior;
-class QUmlBehavioralFeature;
-class QUmlConstraint;
-class QUmlParameter;
-class QUmlBehavioredClassifier;
-class QUmlParameterSet;
-
 class Q_UML_EXPORT QUmlBehaviorPrivate : public QUmlClassPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlBehavior)
-
 public:
-    explicit QUmlBehaviorPrivate();
-    virtual ~QUmlBehaviorPrivate();
+    QUmlBehaviorPrivate();
 
+    QUmlBehavioredClassifier *context;
     bool isReentrant;
+    QList<QUmlParameter *> ownedParameter;
+    QSet<QUmlParameterSet *> ownedParameterSet;
+    QSet<QUmlConstraint *> postcondition;
+    QSet<QUmlConstraint *> precondition;
+    QSet<QUmlBehavior *> redefinedBehavior;
     QUmlBehavioralFeature *specification;
-    QSet<QUmlConstraint *> postconditions;
-    QSet<QUmlConstraint *> preconditions;
-    QSet<QUmlBehavior *> redefinedBehaviors;
-    QList<QUmlParameter *> ownedParameters;
-    QSet<QUmlParameterSet *> ownedParameterSets;
 };
 
 QT_END_NAMESPACE

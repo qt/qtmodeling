@@ -41,14 +41,9 @@
 #ifndef QUMLOPAQUEEXPRESSION_P_H
 #define QUMLOPAQUEEXPRESSION_P_H
 
-// Base class includes
-#include "private/qumlvaluespecification_p.h"
-
 #include "QtUml/QUmlOpaqueExpression"
 
-// Qt includes
-#include "QtCore/QString"
-#include "QtCore/QList"
+#include "private/qumlvaluespecification_p.h"
 
 QT_BEGIN_HEADER
 
@@ -56,22 +51,15 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlBehavior;
-class QUmlParameter;
-class QUmlOpaqueExpression;
-
 class Q_UML_EXPORT QUmlOpaqueExpressionPrivate : public QUmlValueSpecificationPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlOpaqueExpression)
-
 public:
-    explicit QUmlOpaqueExpressionPrivate();
-    virtual ~QUmlOpaqueExpressionPrivate();
+    QUmlOpaqueExpressionPrivate();
 
-    QList<QString> bodies;
-    QList<QString> languages;
     QUmlBehavior *behavior;
+    QList<QString> body;
+    QList<QString> language;
+    QUmlParameter *result;
 };
 
 QT_END_NAMESPACE

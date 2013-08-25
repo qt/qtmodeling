@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlElement>
 
 QT_BEGIN_HEADER
@@ -52,44 +51,25 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlParameterableElement;
-class QUmlTemplateParameter;
 class QUmlTemplateBinding;
+class QUmlTemplateParameter;
 
 class QUmlTemplateParameterSubstitutionPrivate;
-
 class Q_UML_EXPORT QUmlTemplateParameterSubstitution : public QUmlElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlParameterableElement * ownedActual READ ownedActual WRITE setOwnedActual)
-    Q_PROPERTY(QUmlTemplateParameter * formal READ formal WRITE setFormal)
-    Q_PROPERTY(QUmlParameterableElement * actual READ actual WRITE setActual)
-    Q_PROPERTY(QUmlTemplateBinding * templateBinding READ templateBinding WRITE setTemplateBinding)
-
-    Q_DISABLE_COPY(QUmlTemplateParameterSubstitution)
-    Q_DECLARE_PRIVATE(QUmlTemplateParameterSubstitution)
-
 public:
-    Q_INVOKABLE explicit QUmlTemplateParameterSubstitution(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlTemplateParameterSubstitution();
+    QUmlTemplateParameterSubstitution(bool create_d_ptr = true);
 
-    // Association ends from QUmlTemplateParameterSubstitution
-    Q_INVOKABLE QUmlParameterableElement *ownedActual() const;
-    Q_INVOKABLE void setOwnedActual(QUmlParameterableElement *ownedActual);
-    Q_INVOKABLE QUmlTemplateParameter *formal() const;
-    Q_INVOKABLE void setFormal(QUmlTemplateParameter *formal);
-    Q_INVOKABLE QUmlParameterableElement *actual() const;
-    Q_INVOKABLE void setActual(QUmlParameterableElement *actual);
-    Q_INVOKABLE QUmlTemplateBinding *templateBinding() const;
-    Q_INVOKABLE void setTemplateBinding(QUmlTemplateBinding *templateBinding);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlTemplateParameterSubstitution(QUmlTemplateParameterSubstitutionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlParameterableElement *actual() const;
+    void setActual(QUmlParameterableElement *actual);
+    QUmlTemplateParameter *formal() const;
+    void setFormal(QUmlTemplateParameter *formal);
+    QUmlParameterableElement *ownedActual() const;
+    void setOwnedActual(QUmlParameterableElement *ownedActual);
+    QUmlTemplateBinding *templateBinding() const;
+    void setTemplateBinding(QUmlTemplateBinding *templateBinding);
 };
 
 QT_END_NAMESPACE

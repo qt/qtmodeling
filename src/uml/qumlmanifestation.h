@@ -43,10 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlAbstraction>
-
-#include <QtWrappedObjects/QWrappedObjectPointer>
 
 QT_BEGIN_HEADER
 
@@ -54,37 +51,17 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlPackageableElement;
 
 class QUmlManifestationPrivate;
-
 class Q_UML_EXPORT QUmlManifestation : public QUmlAbstraction
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlPackageableElement * utilizedElement READ utilizedElement WRITE setUtilizedElement)
-
-    Q_DISABLE_COPY(QUmlManifestation)
-    Q_DECLARE_PRIVATE(QUmlManifestation)
-
 public:
-    Q_INVOKABLE explicit QUmlManifestation(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlManifestation();
+    QUmlManifestation(bool create_d_ptr = true);
 
-    // Association ends from QUmlManifestation
-    Q_INVOKABLE QUmlPackageableElement *utilizedElement() const;
-    Q_INVOKABLE void setUtilizedElement(QUmlPackageableElement *utilizedElement);
-
-    // Overriden methods for subsetted properties
-    Q_INVOKABLE void addSupplier(QWrappedObjectPointer<QUmlPackageableElement> utilizedElement);
-    Q_INVOKABLE void removeSupplier(QWrappedObjectPointer<QUmlPackageableElement> utilizedElement);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlManifestation(QUmlManifestationPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlPackageableElement *utilizedElement() const;
+    void setUtilizedElement(QUmlPackageableElement *utilizedElement);
 };
 
 QT_END_NAMESPACE

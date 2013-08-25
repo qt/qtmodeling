@@ -43,17 +43,11 @@
 
 #include <QtUml/QUmlOccurrenceSpecification>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlExecutionSpecificationPrivate::QUmlExecutionSpecificationPrivate() :
-    start(0),
-    finish(0)
-{
-}
-
-QUmlExecutionSpecificationPrivate::~QUmlExecutionSpecificationPrivate()
+    finish(0),
+    start(0)
 {
 }
 
@@ -65,88 +59,40 @@ QUmlExecutionSpecificationPrivate::~QUmlExecutionSpecificationPrivate()
     \brief An execution specification is a specification of the execution of a unit of behavior or action within the lifeline. The duration of an execution specification is represented by two cccurrence specifications, the start occurrence specification and the finish occurrence specification.
  */
 
-QUmlExecutionSpecification::QUmlExecutionSpecification(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlInteractionFragment(*new QUmlExecutionSpecificationPrivate, wrapper, parent)
+QUmlExecutionSpecification::QUmlExecutionSpecification(bool create_d_ptr) :
+    QUmlInteractionFragment(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlExecutionSpecificationPrivate);
 }
 
-QUmlExecutionSpecification::QUmlExecutionSpecification(QUmlExecutionSpecificationPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlInteractionFragment(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlExecutionSpecification::~QUmlExecutionSpecification()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlExecutionSpecification
-// ---------------------------------------------------------------
-
-/*!
-    References the OccurrenceSpecification that designates the start of the Action or Behavior
- */
-QUmlOccurrenceSpecification *QUmlExecutionSpecification::start() const
-{
-    // This is a read-write association end
-
-    Q_D(const QUmlExecutionSpecification);
-    return d->start;
-}
-
-void QUmlExecutionSpecification::setStart(QUmlOccurrenceSpecification *start)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlExecutionSpecification);
-    if (d->start != start) {
-        d->start = start;
-    }
-}
+// Owned attributes
 
 /*!
     References the OccurrenceSpecification that designates the finish of the Action or Behavior.
  */
 QUmlOccurrenceSpecification *QUmlExecutionSpecification::finish() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlExecutionSpecification);
-    return d->finish;
+    return 0;
 }
 
 void QUmlExecutionSpecification::setFinish(QUmlOccurrenceSpecification *finish)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlExecutionSpecification);
-    if (d->finish != finish) {
-        d->finish = finish;
-    }
+    Q_UNUSED(finish);
 }
 
-void QUmlExecutionSpecification::setPropertyData()
+/*!
+    References the OccurrenceSpecification that designates the start of the Action or Behavior
+ */
+QUmlOccurrenceSpecification *QUmlExecutionSpecification::start() const
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExecutionSpecification")][QString::fromLatin1("start")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExecutionSpecification")][QString::fromLatin1("start")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExecutionSpecification")][QString::fromLatin1("start")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the OccurrenceSpecification that designates the start of the Action or Behavior");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExecutionSpecification")][QString::fromLatin1("start")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExecutionSpecification")][QString::fromLatin1("start")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExecutionSpecification")][QString::fromLatin1("start")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
+    return 0;
+}
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExecutionSpecification")][QString::fromLatin1("finish")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExecutionSpecification")][QString::fromLatin1("finish")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExecutionSpecification")][QString::fromLatin1("finish")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the OccurrenceSpecification that designates the finish of the Action or Behavior.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExecutionSpecification")][QString::fromLatin1("finish")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExecutionSpecification")][QString::fromLatin1("finish")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExecutionSpecification")][QString::fromLatin1("finish")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlInteractionFragment::setPropertyData();
+void QUmlExecutionSpecification::setStart(QUmlOccurrenceSpecification *start)
+{
+    Q_UNUSED(start);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlexecutionspecification.cpp"
 

@@ -41,13 +41,9 @@
 #ifndef QUMLCOLLABORATIONUSE_P_H
 #define QUMLCOLLABORATIONUSE_P_H
 
-// Base class includes
-#include "private/qumlnamedelement_p.h"
-
 #include "QtUml/QUmlCollaborationUse"
 
-// Qt includes
-#include "QtCore/QSet"
+#include "private/qumlnamedelement_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,21 +51,13 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlDependency;
-class QUmlCollaboration;
-class QUmlCollaborationUse;
-
 class Q_UML_EXPORT QUmlCollaborationUsePrivate : public QUmlNamedElementPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlCollaborationUse)
-
 public:
-    explicit QUmlCollaborationUsePrivate();
-    virtual ~QUmlCollaborationUsePrivate();
+    QUmlCollaborationUsePrivate();
 
+    QSet<QUmlDependency *> roleBinding;
     QUmlCollaboration *type;
-    QSet<QUmlDependency *> roleBindings;
 };
 
 QT_END_NAMESPACE

@@ -43,16 +43,10 @@
 
 #include <QtUml/QUmlBehavior>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlBehaviorExecutionSpecificationPrivate::QUmlBehaviorExecutionSpecificationPrivate() :
     behavior(0)
-{
-}
-
-QUmlBehaviorExecutionSpecificationPrivate::~QUmlBehaviorExecutionSpecificationPrivate()
 {
 }
 
@@ -64,60 +58,27 @@ QUmlBehaviorExecutionSpecificationPrivate::~QUmlBehaviorExecutionSpecificationPr
     \brief A behavior execution specification is a kind of execution specification representing the execution of a behavior.
  */
 
-QUmlBehaviorExecutionSpecification::QUmlBehaviorExecutionSpecification(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlExecutionSpecification(*new QUmlBehaviorExecutionSpecificationPrivate, wrapper, parent)
+QUmlBehaviorExecutionSpecification::QUmlBehaviorExecutionSpecification(bool create_d_ptr) :
+    QUmlExecutionSpecification(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlBehaviorExecutionSpecificationPrivate);
 }
 
-QUmlBehaviorExecutionSpecification::QUmlBehaviorExecutionSpecification(QUmlBehaviorExecutionSpecificationPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlExecutionSpecification(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlBehaviorExecutionSpecification::~QUmlBehaviorExecutionSpecification()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlBehaviorExecutionSpecification
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     Behavior whose execution is occurring.
  */
 QUmlBehavior *QUmlBehaviorExecutionSpecification::behavior() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlBehaviorExecutionSpecification);
-    return d->behavior;
+    return 0;
 }
 
 void QUmlBehaviorExecutionSpecification::setBehavior(QUmlBehavior *behavior)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlBehaviorExecutionSpecification);
-    if (d->behavior != behavior) {
-        d->behavior = behavior;
-    }
-}
-
-void QUmlBehaviorExecutionSpecification::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlBehaviorExecutionSpecification")][QString::fromLatin1("behavior")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlBehaviorExecutionSpecification")][QString::fromLatin1("behavior")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlBehaviorExecutionSpecification")][QString::fromLatin1("behavior")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Behavior whose execution is occurring.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlBehaviorExecutionSpecification")][QString::fromLatin1("behavior")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlBehaviorExecutionSpecification")][QString::fromLatin1("behavior")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlBehaviorExecutionSpecification")][QString::fromLatin1("behavior")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlExecutionSpecification::setPropertyData();
+    Q_UNUSED(behavior);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlbehaviorexecutionspecification.cpp"
 

@@ -41,13 +41,9 @@
 #ifndef QUMLCOMPONENT_P_H
 #define QUMLCOMPONENT_P_H
 
-// Base class includes
-#include "private/qumlclass_p.h"
-
 #include "QtUml/QUmlComponent"
 
-// Qt includes
-#include "QtCore/QSet"
+#include "private/qumlclass_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,24 +51,16 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlClassifier;
-class QUmlComponentRealization;
-class QUmlPackageableElement;
-class QUmlInterface;
-class QUmlComponent;
-
 class Q_UML_EXPORT QUmlComponentPrivate : public QUmlClassPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlComponent)
-
 public:
-    explicit QUmlComponentPrivate();
-    virtual ~QUmlComponentPrivate();
+    QUmlComponentPrivate();
 
     bool isIndirectlyInstantiated;
-    QSet<QUmlComponentRealization *> realizations;
-    QSet<QUmlPackageableElement *> packagedElements;
+    QSet<QUmlPackageableElement *> packagedElement;
+    QSet<QUmlInterface *> provided;
+    QSet<QUmlComponentRealization *> realization;
+    QSet<QUmlInterface *> required;
 };
 
 QT_END_NAMESPACE

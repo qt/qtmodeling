@@ -41,20 +41,14 @@
 #include "qumlqualifiervalue.h"
 #include "qumlqualifiervalue_p.h"
 
-#include <QtUml/QUmlProperty>
 #include <QtUml/QUmlInputPin>
-
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
+#include <QtUml/QUmlProperty>
 
 QT_BEGIN_NAMESPACE
 
 QUmlQualifierValuePrivate::QUmlQualifierValuePrivate() :
-    value(0),
-    qualifier(0)
-{
-}
-
-QUmlQualifierValuePrivate::~QUmlQualifierValuePrivate()
+    qualifier(0),
+    value(0)
 {
 }
 
@@ -66,88 +60,40 @@ QUmlQualifierValuePrivate::~QUmlQualifierValuePrivate()
     \brief A qualifier value is not an action. It is an element that identifies links. It gives a single qualifier within a link end data specification.
  */
 
-QUmlQualifierValue::QUmlQualifierValue(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlElement(*new QUmlQualifierValuePrivate, wrapper, parent)
+QUmlQualifierValue::QUmlQualifierValue(bool create_d_ptr) :
+    QUmlElement(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlQualifierValuePrivate);
 }
 
-QUmlQualifierValue::QUmlQualifierValue(QUmlQualifierValuePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlElement(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlQualifierValue::~QUmlQualifierValue()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlQualifierValue
-// ---------------------------------------------------------------
-
-/*!
-    Input pin from which the specified value for the qualifier is taken.
- */
-QUmlInputPin *QUmlQualifierValue::value() const
-{
-    // This is a read-write association end
-
-    Q_D(const QUmlQualifierValue);
-    return d->value;
-}
-
-void QUmlQualifierValue::setValue(QUmlInputPin *value)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlQualifierValue);
-    if (d->value != value) {
-        d->value = value;
-    }
-}
+// Owned attributes
 
 /*!
     Attribute representing the qualifier for which the value is to be specified.
  */
 QUmlProperty *QUmlQualifierValue::qualifier() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlQualifierValue);
-    return d->qualifier;
+    return 0;
 }
 
 void QUmlQualifierValue::setQualifier(QUmlProperty *qualifier)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlQualifierValue);
-    if (d->qualifier != qualifier) {
-        d->qualifier = qualifier;
-    }
+    Q_UNUSED(qualifier);
 }
 
-void QUmlQualifierValue::setPropertyData()
+/*!
+    Input pin from which the specified value for the qualifier is taken.
+ */
+QUmlInputPin *QUmlQualifierValue::value() const
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlQualifierValue")][QString::fromLatin1("value")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlQualifierValue")][QString::fromLatin1("value")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlQualifierValue")][QString::fromLatin1("value")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Input pin from which the specified value for the qualifier is taken.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlQualifierValue")][QString::fromLatin1("value")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlQualifierValue")][QString::fromLatin1("value")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlQualifierValue")][QString::fromLatin1("value")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
+    return 0;
+}
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlQualifierValue")][QString::fromLatin1("qualifier")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlQualifierValue")][QString::fromLatin1("qualifier")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlQualifierValue")][QString::fromLatin1("qualifier")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Attribute representing the qualifier for which the value is to be specified.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlQualifierValue")][QString::fromLatin1("qualifier")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlQualifierValue")][QString::fromLatin1("qualifier")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlQualifierValue")][QString::fromLatin1("qualifier")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlElement::setPropertyData();
+void QUmlQualifierValue::setValue(QUmlInputPin *value)
+{
+    Q_UNUSED(value);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlqualifiervalue.cpp"
 

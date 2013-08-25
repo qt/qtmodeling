@@ -43,17 +43,11 @@
 
 #include <QtUml/QUmlInputPin>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlSendObjectActionPrivate::QUmlSendObjectActionPrivate() :
     request(0),
     target(0)
-{
-}
-
-QUmlSendObjectActionPrivate::~QUmlSendObjectActionPrivate()
 {
 }
 
@@ -65,56 +59,26 @@ QUmlSendObjectActionPrivate::~QUmlSendObjectActionPrivate()
     \brief A send object action is an action that transmits an object to the target object, where it may invoke behavior such as the firing of state machine transitions or the execution of an activity. The value of the object is available to the execution of invoked behaviors. The requestor continues execution immediately. Any reply message is ignored and is not transmitted to the requestor.
  */
 
-QUmlSendObjectAction::QUmlSendObjectAction(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlInvocationAction(*new QUmlSendObjectActionPrivate, wrapper, parent)
+QUmlSendObjectAction::QUmlSendObjectAction(bool create_d_ptr) :
+    QUmlInvocationAction(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlSendObjectActionPrivate);
 }
 
-QUmlSendObjectAction::QUmlSendObjectAction(QUmlSendObjectActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlInvocationAction(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlSendObjectAction::~QUmlSendObjectAction()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlSendObjectAction
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     The request object, which is transmitted to the target object. The object may be copied in transmission, so identity might not be preserved.
  */
 QUmlInputPin *QUmlSendObjectAction::request() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlSendObjectAction);
-    return d->request;
+    return 0;
 }
 
 void QUmlSendObjectAction::setRequest(QUmlInputPin *request)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlSendObjectAction);
-    if (d->request != request) {
-        // Adjust redefined property(ies)
-        (qwrappedobject_cast<QUmlInvocationAction *>(this))->removeArgument(qwrappedobject_cast<QUmlInputPin *>(d->request));
-
-        if (d->request)
-            qTopLevelWrapper(d->request)->setParent(0);
-        d->request = request;
-        qTopLevelWrapper(request)->setParent(qTopLevelWrapper(this));
-
-        // Adjust redefined property(ies)
-        if (request) {
-            (qwrappedobject_cast<QUmlInvocationAction *>(this))->addArgument(qwrappedobject_cast<QUmlInputPin *>(request));
-        }
-    }
+    Q_UNUSED(request);
 }
 
 /*!
@@ -122,50 +86,13 @@ void QUmlSendObjectAction::setRequest(QUmlInputPin *request)
  */
 QUmlInputPin *QUmlSendObjectAction::target() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlSendObjectAction);
-    return d->target;
+    return 0;
 }
 
 void QUmlSendObjectAction::setTarget(QUmlInputPin *target)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlSendObjectAction);
-    if (d->target != target) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActionPrivate *>(d))->removeInput(qwrappedobject_cast<QUmlInputPin *>(d->target));
-
-        d->target = target;
-
-        // Adjust subsetted property(ies)
-        if (target) {
-            (qwrappedobject_cast<QUmlActionPrivate *>(d))->addInput(qwrappedobject_cast<QUmlInputPin *>(target));
-        }
-    }
-}
-
-void QUmlSendObjectAction::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSendObjectAction")][QString::fromLatin1("request")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSendObjectAction")][QString::fromLatin1("request")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSendObjectAction")][QString::fromLatin1("request")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The request object, which is transmitted to the target object. The object may be copied in transmission, so identity might not be preserved.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSendObjectAction")][QString::fromLatin1("request")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QUmlInvocationAction::arguments");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSendObjectAction")][QString::fromLatin1("request")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSendObjectAction")][QString::fromLatin1("request")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSendObjectAction")][QString::fromLatin1("target")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSendObjectAction")][QString::fromLatin1("target")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSendObjectAction")][QString::fromLatin1("target")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The target object to which the object is sent.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSendObjectAction")][QString::fromLatin1("target")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSendObjectAction")][QString::fromLatin1("target")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlAction::inputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlSendObjectAction")][QString::fromLatin1("target")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlInvocationAction::setPropertyData();
+    Q_UNUSED(target);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlsendobjectaction.cpp"
 

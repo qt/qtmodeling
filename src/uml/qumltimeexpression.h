@@ -43,11 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlValueSpecification>
-
-// Qt includes
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -55,37 +51,20 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlObservation;
 
 class QUmlTimeExpressionPrivate;
-
 class Q_UML_EXPORT QUmlTimeExpression : public QUmlValueSpecification
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QSet<QUmlObservation *> observations READ observations)
-    Q_PROPERTY(QUmlValueSpecification * expr READ expr WRITE setExpr)
-
-    Q_DISABLE_COPY(QUmlTimeExpression)
-    Q_DECLARE_PRIVATE(QUmlTimeExpression)
-
 public:
-    Q_INVOKABLE explicit QUmlTimeExpression(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlTimeExpression();
+    QUmlTimeExpression(bool create_d_ptr = true);
 
-    // Association ends from QUmlTimeExpression
-    Q_INVOKABLE QSet<QUmlObservation *> observations() const;
-    Q_INVOKABLE void addObservation(QUmlObservation *observation);
-    Q_INVOKABLE void removeObservation(QUmlObservation *observation);
-    Q_INVOKABLE QUmlValueSpecification *expr() const;
-    Q_INVOKABLE void setExpr(QUmlValueSpecification *expr);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlTimeExpression(QUmlTimeExpressionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlValueSpecification *expr() const;
+    void setExpr(QUmlValueSpecification *expr);
+    QSet<QUmlObservation *> observation() const;
+    void addObservation(QSet<QUmlObservation *> observation);
+    void removeObservation(QSet<QUmlObservation *> observation);
 };
 
 QT_END_NAMESPACE

@@ -44,16 +44,10 @@
 #include <QtUml/QUmlPseudostate>
 #include <QtUml/QUmlState>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlConnectionPointReferencePrivate::QUmlConnectionPointReferencePrivate() :
     state(0)
-{
-}
-
-QUmlConnectionPointReferencePrivate::~QUmlConnectionPointReferencePrivate()
 {
 }
 
@@ -65,55 +59,49 @@ QUmlConnectionPointReferencePrivate::~QUmlConnectionPointReferencePrivate()
     \brief A connection point reference represents a usage (as part of a submachine state) of an entry/exit point defined in the statemachine reference by the submachine state.
  */
 
-QUmlConnectionPointReference::QUmlConnectionPointReference(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlVertex(*new QUmlConnectionPointReferencePrivate, wrapper, parent)
+QUmlConnectionPointReference::QUmlConnectionPointReference(bool create_d_ptr) :
+    QUmlVertex(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlConnectionPointReferencePrivate);
 }
 
-QUmlConnectionPointReference::QUmlConnectionPointReference(QUmlConnectionPointReferencePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlVertex(dd, wrapper, parent)
+// Owned attributes
+
+/*!
+    The entryPoint kind pseudo states corresponding to this connection point.
+ */
+QSet<QUmlPseudostate *> QUmlConnectionPointReference::entry() const
 {
-    setPropertyData();
+    return QSet<QUmlPseudostate *>();
 }
 
-QUmlConnectionPointReference::~QUmlConnectionPointReference()
+void QUmlConnectionPointReference::addEntry(QSet<QUmlPseudostate *> entry)
 {
+    Q_UNUSED(entry);
 }
 
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlConnectionPointReference
-// ---------------------------------------------------------------
+void QUmlConnectionPointReference::removeEntry(QSet<QUmlPseudostate *> entry)
+{
+    Q_UNUSED(entry);
+}
 
 /*!
     The exitPoints kind pseudo states corresponding to this connection point.
  */
-QSet<QUmlPseudostate *> QUmlConnectionPointReference::exits() const
+QSet<QUmlPseudostate *> QUmlConnectionPointReference::exit() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlConnectionPointReference);
-    return d->exits;
+    return QSet<QUmlPseudostate *>();
 }
 
-void QUmlConnectionPointReference::addExit(QUmlPseudostate *exit)
+void QUmlConnectionPointReference::addExit(QSet<QUmlPseudostate *> exit)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlConnectionPointReference);
-    if (!d->exits.contains(exit)) {
-        d->exits.insert(exit);
-    }
+    Q_UNUSED(exit);
 }
 
-void QUmlConnectionPointReference::removeExit(QUmlPseudostate *exit)
+void QUmlConnectionPointReference::removeExit(QSet<QUmlPseudostate *> exit)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlConnectionPointReference);
-    if (d->exits.contains(exit)) {
-        d->exits.remove(exit);
-    }
+    Q_UNUSED(exit);
 }
 
 /*!
@@ -121,91 +109,13 @@ void QUmlConnectionPointReference::removeExit(QUmlPseudostate *exit)
  */
 QUmlState *QUmlConnectionPointReference::state() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlConnectionPointReference);
-    return d->state;
+    return 0;
 }
 
 void QUmlConnectionPointReference::setState(QUmlState *state)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlConnectionPointReference);
-    if (d->state != state) {
-        // Adjust opposite property
-        if (d->state)
-            d->state->removeConnection(this);
-
-        d->state = state;
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlNamedElementPrivate *>(d))->setNamespace_(qwrappedobject_cast<QUmlNamespace *>(state));
-
-        // Adjust opposite property
-        if (state)
-            state->addConnection(this);
-    }
-}
-
-/*!
-    The entryPoint kind pseudo states corresponding to this connection point.
- */
-QSet<QUmlPseudostate *> QUmlConnectionPointReference::entries() const
-{
-    // This is a read-write association end
-
-    Q_D(const QUmlConnectionPointReference);
-    return d->entries;
-}
-
-void QUmlConnectionPointReference::addEntry(QUmlPseudostate *entry)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlConnectionPointReference);
-    if (!d->entries.contains(entry)) {
-        d->entries.insert(entry);
-    }
-}
-
-void QUmlConnectionPointReference::removeEntry(QUmlPseudostate *entry)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlConnectionPointReference);
-    if (d->entries.contains(entry)) {
-        d->entries.remove(entry);
-    }
-}
-
-void QUmlConnectionPointReference::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectionPointReference")][QString::fromLatin1("exits")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectionPointReference")][QString::fromLatin1("exits")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectionPointReference")][QString::fromLatin1("exits")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The exitPoints kind pseudo states corresponding to this connection point.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectionPointReference")][QString::fromLatin1("exits")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectionPointReference")][QString::fromLatin1("exits")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectionPointReference")][QString::fromLatin1("exits")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectionPointReference")][QString::fromLatin1("state")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectionPointReference")][QString::fromLatin1("state")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectionPointReference")][QString::fromLatin1("state")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The State in which the connection point refreshens are defined.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectionPointReference")][QString::fromLatin1("state")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectionPointReference")][QString::fromLatin1("state")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlNamedElement::namespace");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectionPointReference")][QString::fromLatin1("state")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlState::connection");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectionPointReference")][QString::fromLatin1("entries")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectionPointReference")][QString::fromLatin1("entries")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectionPointReference")][QString::fromLatin1("entries")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The entryPoint kind pseudo states corresponding to this connection point.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectionPointReference")][QString::fromLatin1("entries")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectionPointReference")][QString::fromLatin1("entries")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConnectionPointReference")][QString::fromLatin1("entries")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlVertex::setPropertyData();
+    Q_UNUSED(state);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlconnectionpointreference.cpp"
 

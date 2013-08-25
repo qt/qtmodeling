@@ -41,13 +41,9 @@
 #ifndef QUMLTEMPLATEABLEELEMENT_P_H
 #define QUMLTEMPLATEABLEELEMENT_P_H
 
-// Base class includes
-#include "private/qumlelement_p.h"
-
 #include "QtUml/QUmlTemplateableElement"
 
-// Qt includes
-#include "QtCore/QSet"
+#include "private/qumlelement_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,21 +51,13 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlTemplateSignature;
-class QUmlTemplateBinding;
-class QUmlParameterableElement;
-
-class Q_UML_EXPORT QUmlTemplateableElementPrivate : public QUmlElementPrivate
+class Q_UML_EXPORT QUmlTemplateableElementPrivate : public virtual QUmlElementPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlTemplateableElement)
-
 public:
-    explicit QUmlTemplateableElementPrivate();
-    virtual ~QUmlTemplateableElementPrivate();
+    QUmlTemplateableElementPrivate();
 
     QUmlTemplateSignature *ownedTemplateSignature;
-    QSet<QUmlTemplateBinding *> templateBindings;
+    QSet<QUmlTemplateBinding *> templateBinding;
 };
 
 QT_END_NAMESPACE

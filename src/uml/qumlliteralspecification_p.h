@@ -41,10 +41,9 @@
 #ifndef QUMLLITERALSPECIFICATION_P_H
 #define QUMLLITERALSPECIFICATION_P_H
 
-// Base class includes
-#include "private/qumlvaluespecification_p.h"
-
 #include "QtUml/QUmlLiteralSpecification"
+
+#include "private/qumlvaluespecification_p.h"
 
 QT_BEGIN_HEADER
 
@@ -54,11 +53,8 @@ QT_MODULE(QtUml)
 
 class Q_UML_EXPORT QUmlLiteralSpecificationPrivate : public QUmlValueSpecificationPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlLiteralSpecification)
-
 public:
-    explicit QUmlLiteralSpecificationPrivate();
-    virtual ~QUmlLiteralSpecificationPrivate();
+    QUmlLiteralSpecificationPrivate();
 
 };
 

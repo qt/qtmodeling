@@ -41,10 +41,9 @@
 #ifndef QUMLDURATIONINTERVAL_P_H
 #define QUMLDURATIONINTERVAL_P_H
 
-// Base class includes
-#include "private/qumlinterval_p.h"
-
 #include "QtUml/QUmlDurationInterval"
+
+#include "private/qumlinterval_p.h"
 
 QT_BEGIN_HEADER
 
@@ -52,17 +51,10 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlDuration;
-class QUmlDurationInterval;
-
 class Q_UML_EXPORT QUmlDurationIntervalPrivate : public QUmlIntervalPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlDurationInterval)
-
 public:
-    explicit QUmlDurationIntervalPrivate();
-    virtual ~QUmlDurationIntervalPrivate();
+    QUmlDurationIntervalPrivate();
 
     QUmlDuration *max;
     QUmlDuration *min;

@@ -43,15 +43,9 @@
 
 #include <QtUml/QUmlParameterableElement>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlValueSpecificationPrivate::QUmlValueSpecificationPrivate()
-{
-}
-
-QUmlValueSpecificationPrivate::~QUmlValueSpecificationPrivate()
 {
 }
 
@@ -63,232 +57,39 @@ QUmlValueSpecificationPrivate::~QUmlValueSpecificationPrivate()
     \brief ValueSpecification specializes ParameterableElement to specify that a value specification can be exposed as a formal template parameter, and provided as an actual parameter in a binding of a template.A value specification is the specification of a (possibly empty) set of instances, including both objects and data values.
  */
 
-QUmlValueSpecification::QUmlValueSpecification(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QWrappedObject(*new QUmlValueSpecificationPrivate, wrapper, parent),
-    _wrappedUmlTypedElement(new QUmlTypedElement(this)),
-    _wrappedUmlPackageableElement(new QUmlPackageableElement(this))
+QUmlValueSpecification::QUmlValueSpecification(bool create_d_ptr) :
+    QUmlTypedElement(false),
+    QUmlPackageableElement(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlValueSpecificationPrivate);
 }
 
-QUmlValueSpecification::QUmlValueSpecification(QUmlValueSpecificationPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QWrappedObject(dd, wrapper, parent),
-    _wrappedUmlTypedElement(new QUmlTypedElement(this)),
-    _wrappedUmlPackageableElement(new QUmlPackageableElement(this))
-{
-    setPropertyData();
-}
-
-QUmlValueSpecification::~QUmlValueSpecification()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM AGGREGATED QUmlElement
-// ---------------------------------------------------------------
-
-/*!
-    The Elements owned by this element.
- */
-QSet<QUmlElement *> QUmlValueSpecification::ownedElements() const
-{
-    return (qwrappedobject_cast<const QUmlElement *>(this))->ownedElements();
-}
-
-/*!
-    The Element that owns this element.
- */
-QUmlElement *QUmlValueSpecification::owner() const
-{
-    return (qwrappedobject_cast<const QUmlElement *>(this))->owner();
-}
-
-/*!
-    The Comments owned by this element.
- */
-QSet<QUmlComment *> QUmlValueSpecification::ownedComments() const
-{
-    return (qwrappedobject_cast<const QUmlElement *>(this))->ownedComments();
-}
-
-void QUmlValueSpecification::addOwnedComment(QUmlComment *ownedComment)
-{
-    (qwrappedobject_cast<QUmlElement *>(this))->addOwnedComment(ownedComment);
-}
-
-void QUmlValueSpecification::removeOwnedComment(QUmlComment *ownedComment)
-{
-    (qwrappedobject_cast<QUmlElement *>(this))->removeOwnedComment(ownedComment);
-}
-
-// ---------------------------------------------------------------
-// ATTRIBUTES FROM AGGREGATED QUmlNamedElement
-// ---------------------------------------------------------------
-
-/*!
-    The name of the NamedElement.
- */
-QString QUmlValueSpecification::name() const
-{
-    return (qwrappedobject_cast<const QUmlNamedElement *>(this))->name();
-}
-
-void QUmlValueSpecification::setName(QString name)
-{
-    (qwrappedobject_cast<QUmlNamedElement *>(this))->setName(name);
-}
-
-/*!
-    A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself.
- */
-QString QUmlValueSpecification::qualifiedName() const
-{
-    return (qwrappedobject_cast<const QUmlNamedElement *>(this))->qualifiedName();
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM AGGREGATED QUmlNamedElement
-// ---------------------------------------------------------------
-
-/*!
-    The string expression used to define the name of this named element.
- */
-QUmlStringExpression *QUmlValueSpecification::nameExpression() const
-{
-    return (qwrappedobject_cast<const QUmlNamedElement *>(this))->nameExpression();
-}
-
-void QUmlValueSpecification::setNameExpression(QUmlStringExpression *nameExpression)
-{
-    (qwrappedobject_cast<QUmlNamedElement *>(this))->setNameExpression(nameExpression);
-}
-
-/*!
-    Specifies the namespace that owns the NamedElement.
- */
-QUmlNamespace *QUmlValueSpecification::namespace_() const
-{
-    return (qwrappedobject_cast<const QUmlNamedElement *>(this))->namespace_();
-}
-
-/*!
-    Indicates the dependencies that reference the client.
- */
-QSet<QUmlDependency *> QUmlValueSpecification::clientDependencies() const
-{
-    return (qwrappedobject_cast<const QUmlNamedElement *>(this))->clientDependencies();
-}
-
-void QUmlValueSpecification::addClientDependency(QUmlDependency *clientDependency)
-{
-    (qwrappedobject_cast<QUmlNamedElement *>(this))->addClientDependency(clientDependency);
-}
-
-void QUmlValueSpecification::removeClientDependency(QUmlDependency *clientDependency)
-{
-    (qwrappedobject_cast<QUmlNamedElement *>(this))->removeClientDependency(clientDependency);
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM AGGREGATED QUmlTypedElement
-// ---------------------------------------------------------------
-
-/*!
-    This information is derived from the return result for this Operation.The type of the TypedElement.
- */
-QUmlType *QUmlValueSpecification::type() const
-{
-    return (qwrappedobject_cast<const QUmlTypedElement *>(this))->type();
-}
-
-void QUmlValueSpecification::setType(QUmlType *type)
-{
-    (qwrappedobject_cast<QUmlTypedElement *>(this))->setType(type);
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM AGGREGATED QUmlParameterableElement
-// ---------------------------------------------------------------
-
-/*!
-    The formal template parameter that owns this element.
- */
-QUmlTemplateParameter *QUmlValueSpecification::owningTemplateParameter() const
-{
-    return (qwrappedobject_cast<const QUmlParameterableElement *>(this))->owningTemplateParameter();
-}
-
-void QUmlValueSpecification::setOwningTemplateParameter(QUmlTemplateParameter *owningTemplateParameter)
-{
-    (qwrappedobject_cast<QUmlParameterableElement *>(this))->setOwningTemplateParameter(owningTemplateParameter);
-}
-
-/*!
-    The template parameter that exposes this element as a formal parameter.
- */
-QUmlTemplateParameter *QUmlValueSpecification::templateParameter() const
-{
-    return (qwrappedobject_cast<const QUmlParameterableElement *>(this))->templateParameter();
-}
-
-void QUmlValueSpecification::setTemplateParameter(QUmlTemplateParameter *templateParameter)
-{
-    (qwrappedobject_cast<QUmlParameterableElement *>(this))->setTemplateParameter(templateParameter);
-}
-
-// ---------------------------------------------------------------
-// ATTRIBUTES FROM AGGREGATED QUmlPackageableElement
-// ---------------------------------------------------------------
-
-/*!
-    Indicates that packageable elements must always have a visibility, i.e., visibility is not optional.
- */
-QtUml::VisibilityKind QUmlValueSpecification::visibility() const
-{
-    return (qwrappedobject_cast<const QUmlPackageableElement *>(this))->visibility();
-}
-
-void QUmlValueSpecification::setVisibility(QtUml::VisibilityKind visibility)
-{
-    (qwrappedobject_cast<QUmlPackageableElement *>(this))->setVisibility(visibility);
-}
-
-void QUmlValueSpecification::unsetVisibility()
-{
-    setVisibility(QtUml::VisibilityPublic);
-    Q_D(QUmlValueSpecification);
-    d->modifiedResettableProperties.removeAll(QString::fromLatin1("visibility"));
-}
+// Operations
 
 /*!
     The query booleanValue() gives a single Boolean value when one can be computed.
  */
 bool QUmlValueSpecification::booleanValue() const
 {
-    qWarning("QUmlValueSpecification::booleanValue: operation to be implemented");
-
-    return bool(); // change here to your derived return
+    return bool ();
 }
 
 /*!
     The query integerValue() gives a single Integer value when one can be computed.
  */
-qint32 QUmlValueSpecification::integerValue() const
+int QUmlValueSpecification::integerValue() const
 {
-    qWarning("QUmlValueSpecification::integerValue: operation to be implemented");
-
-    return qint32(); // change here to your derived return
+    return int ();
 }
 
 /*!
     The query isCompatibleWith() determines if this parameterable element is compatible with the specified parameterable element. By default parameterable element P is compatible with parameterable element Q if the kind of P is the same or a subtype as the kind of Q. In addition, for ValueSpecification, the type must be conformant with the type of the specified parameterable element.
  */
-bool QUmlValueSpecification::isCompatibleWith(const QUmlParameterableElement *p) const
+bool QUmlValueSpecification::isCompatibleWith(QUmlParameterableElement *p) const
 {
-    qWarning("QUmlValueSpecification::isCompatibleWith: operation to be implemented");
     Q_UNUSED(p);
-
-    return bool(); // change here to your derived return
+    return bool ();
 }
 
 /*!
@@ -296,9 +97,7 @@ bool QUmlValueSpecification::isCompatibleWith(const QUmlParameterableElement *p)
  */
 bool QUmlValueSpecification::isComputable() const
 {
-    qWarning("QUmlValueSpecification::isComputable: operation to be implemented");
-
-    return bool(); // change here to your derived return
+    return bool ();
 }
 
 /*!
@@ -306,19 +105,15 @@ bool QUmlValueSpecification::isComputable() const
  */
 bool QUmlValueSpecification::isNull() const
 {
-    qWarning("QUmlValueSpecification::isNull: operation to be implemented");
-
-    return bool(); // change here to your derived return
+    return bool ();
 }
 
 /*!
     The query realValue() gives a single Real value when one can be computed.
  */
-qreal QUmlValueSpecification::realValue() const
+double QUmlValueSpecification::realValue() const
 {
-    qWarning("QUmlValueSpecification::realValue: operation to be implemented");
-
-    return qreal(); // change here to your derived return
+    return double ();
 }
 
 /*!
@@ -326,27 +121,16 @@ qreal QUmlValueSpecification::realValue() const
  */
 QString QUmlValueSpecification::stringValue() const
 {
-    qWarning("QUmlValueSpecification::stringValue: operation to be implemented");
-
-    return QString(); // change here to your derived return
+    return QString ();
 }
 
 /*!
     The query unlimitedValue() gives a single UnlimitedNatural value when one can be computed.
  */
-qint32 QUmlValueSpecification::unlimitedValue() const
+int QUmlValueSpecification::unlimitedValue() const
 {
-    qWarning("QUmlValueSpecification::unlimitedValue: operation to be implemented");
-
-    return qint32(); // change here to your derived return
-}
-
-void QUmlValueSpecification::setPropertyData()
-{
-    QWrappedObject::setPropertyData();
+    return int ();
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlvaluespecification.cpp"
 

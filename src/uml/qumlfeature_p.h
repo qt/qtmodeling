@@ -41,13 +41,9 @@
 #ifndef QUMLFEATURE_P_H
 #define QUMLFEATURE_P_H
 
-// Base class includes
-#include "private/qumlredefinableelement_p.h"
-
 #include "QtUml/QUmlFeature"
 
-// Qt includes
-#include "QtCore/QSet"
+#include "private/qumlredefinableelement_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,23 +51,13 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlClassifier;
-
 class Q_UML_EXPORT QUmlFeaturePrivate : public QUmlRedefinableElementPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlFeature)
-
 public:
-    explicit QUmlFeaturePrivate();
-    virtual ~QUmlFeaturePrivate();
+    QUmlFeaturePrivate();
 
+    QSet<QUmlClassifier *> featuringClassifier;
     bool isStatic;
-    QSet<QUmlClassifier *> featuringClassifiers;
-
-    // Internal functions for read-only subsetted association ends
-    void addFeaturingClassifier(QUmlClassifier *featuringClassifier);
-    void removeFeaturingClassifier(QUmlClassifier *featuringClassifier);
 };
 
 QT_END_NAMESPACE

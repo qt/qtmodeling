@@ -41,14 +41,9 @@
 #ifndef QUMLLOOPNODE_P_H
 #define QUMLLOOPNODE_P_H
 
-// Base class includes
-#include "private/qumlstructuredactivitynode_p.h"
-
 #include "QtUml/QUmlLoopNode"
 
-// Qt includes
-#include "QtCore/QList"
-#include "QtCore/QSet"
+#include "private/qumlstructuredactivitynode_p.h"
 
 QT_BEGIN_HEADER
 
@@ -56,29 +51,20 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlOutputPin;
-class QUmlExecutableNode;
-class QUmlInputPin;
-class QUmlLoopNode;
-
 class Q_UML_EXPORT QUmlLoopNodePrivate : public QUmlStructuredActivityNodePrivate
 {
-    Q_DECLARE_PUBLIC(QUmlLoopNode)
-
 public:
-    explicit QUmlLoopNodePrivate();
-    virtual ~QUmlLoopNodePrivate();
+    QUmlLoopNodePrivate();
 
-    bool isTestedFirst;
-    QList<QUmlInputPin *> loopVariableInputs;
+    QList<QUmlOutputPin *> bodyOutput;
+    QSet<QUmlExecutableNode *> bodyPart;
     QUmlOutputPin *decider;
-    QList<QUmlOutputPin *> bodyOutputs;
-    QList<QUmlOutputPin *> loopVariables;
-    QList<QUmlOutputPin *> results;
-    QSet<QUmlExecutableNode *> setupParts;
-    QSet<QUmlExecutableNode *> bodyParts;
-    QSet<QUmlExecutableNode *> tests;
+    bool isTestedFirst;
+    QList<QUmlOutputPin *> loopVariable;
+    QList<QUmlInputPin *> loopVariableInput;
+    QList<QUmlOutputPin *> result;
+    QSet<QUmlExecutableNode *> setupPart;
+    QSet<QUmlExecutableNode *> test;
 };
 
 QT_END_NAMESPACE

@@ -41,12 +41,10 @@
 #ifndef QUMLVARIABLE_P_H
 #define QUMLVARIABLE_P_H
 
-// Base class includes
-#include "private/qwrappedobject_p.h"
+#include "QtUml/QUmlVariable"
+
 #include "private/qumlmultiplicityelement_p.h"
 #include "private/qumlconnectableelement_p.h"
-
-#include "QtUml/QUmlVariable"
 
 QT_BEGIN_HEADER
 
@@ -54,22 +52,13 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlActivity;
-class QUmlStructuredActivityNode;
-class QUmlAction;
-class QUmlVariable;
-
-class Q_UML_EXPORT QUmlVariablePrivate : public QWrappedObjectPrivate
+class Q_UML_EXPORT QUmlVariablePrivate : public QUmlMultiplicityElementPrivate, public QUmlConnectableElementPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlVariable)
-
 public:
-    explicit QUmlVariablePrivate();
-    virtual ~QUmlVariablePrivate();
+    QUmlVariablePrivate();
 
-    QUmlStructuredActivityNode *scope;
     QUmlActivity *activityScope;
+    QUmlStructuredActivityNode *scope;
 };
 
 QT_END_NAMESPACE

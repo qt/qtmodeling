@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlNamedElement>
 
 QT_BEGIN_HEADER
@@ -52,33 +51,17 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlType;
 
 class QUmlTypedElementPrivate;
-
-class Q_UML_EXPORT QUmlTypedElement : public QUmlNamedElement
+class Q_UML_EXPORT QUmlTypedElement : public virtual QUmlNamedElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlType * type READ type WRITE setType)
-
-    Q_DISABLE_COPY(QUmlTypedElement)
-    Q_DECLARE_PRIVATE(QUmlTypedElement)
-
 public:
-    Q_INVOKABLE explicit QUmlTypedElement(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlTypedElement();
+    Q_DECL_HIDDEN QUmlTypedElement(bool create_d_ptr = true);
 
-    // Association ends from QUmlTypedElement
-    Q_INVOKABLE QUmlType *type() const;
-    Q_INVOKABLE void setType(QUmlType *type);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlTypedElement(QUmlTypedElementPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlType *type() const;
+    void setType(QUmlType *type);
 };
 
 QT_END_NAMESPACE

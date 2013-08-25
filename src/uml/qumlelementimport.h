@@ -43,14 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlDirectedRelationship>
-
-// QtUml includes
 #include <QtUml/QtUmlNamespace>
-
-// Qt includes
-#include <QtCore/QString>
 
 QT_BEGIN_HEADER
 
@@ -58,49 +52,27 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlPackageableElement;
 class QUmlNamespace;
+class QUmlPackageableElement;
 
 class QUmlElementImportPrivate;
-
 class Q_UML_EXPORT QUmlElementImport : public QUmlDirectedRelationship
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QString alias READ alias WRITE setAlias)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility RESET unsetVisibility)
-    Q_PROPERTY(QUmlPackageableElement * importedElement READ importedElement WRITE setImportedElement)
-    Q_PROPERTY(QUmlNamespace * importingNamespace READ importingNamespace WRITE setImportingNamespace)
-
-    Q_DISABLE_COPY(QUmlElementImport)
-    Q_DECLARE_PRIVATE(QUmlElementImport)
-
 public:
-    Q_INVOKABLE explicit QUmlElementImport(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlElementImport();
+    QUmlElementImport(bool create_d_ptr = true);
 
-    // Attributes from QUmlElementImport
-    Q_INVOKABLE QString alias() const;
-    Q_INVOKABLE void setAlias(QString alias);
-    Q_INVOKABLE QtUml::VisibilityKind visibility() const;
-    Q_INVOKABLE void setVisibility(QtUml::VisibilityKind visibility);
-    Q_INVOKABLE void unsetVisibility();
-
-    // Association ends from QUmlElementImport
-    Q_INVOKABLE QUmlPackageableElement *importedElement() const;
-    Q_INVOKABLE void setImportedElement(QUmlPackageableElement *importedElement);
-    Q_INVOKABLE QUmlNamespace *importingNamespace() const;
-    Q_INVOKABLE void setImportingNamespace(QUmlNamespace *importingNamespace);
+    // Owned attributes
+    QString alias() const;
+    void setAlias(QString alias);
+    QUmlPackageableElement *importedElement() const;
+    void setImportedElement(QUmlPackageableElement *importedElement);
+    QUmlNamespace *importingNamespace() const;
+    void setImportingNamespace(QUmlNamespace *importingNamespace);
+    QtUml::VisibilityKind visibility() const;
+    void setVisibility(QtUml::VisibilityKind visibility);
 
     // Operations
-    Q_INVOKABLE QString getName() const;
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlElementImport(QUmlElementImportPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    QString getName() const;
 };
 
 QT_END_NAMESPACE

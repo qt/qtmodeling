@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlMessageEvent>
 
 QT_BEGIN_HEADER
@@ -51,25 +50,11 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-
 class QUmlAnyReceiveEventPrivate;
-
 class Q_UML_EXPORT QUmlAnyReceiveEvent : public QUmlMessageEvent
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_DISABLE_COPY(QUmlAnyReceiveEvent)
-    Q_DECLARE_PRIVATE(QUmlAnyReceiveEvent)
-
 public:
-    Q_INVOKABLE explicit QUmlAnyReceiveEvent(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlAnyReceiveEvent();
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlAnyReceiveEvent(QUmlAnyReceiveEventPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    QUmlAnyReceiveEvent(bool create_d_ptr = true);
 };
 
 QT_END_NAMESPACE

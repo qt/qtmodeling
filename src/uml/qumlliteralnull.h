@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlLiteralSpecification>
 
 QT_BEGIN_HEADER
@@ -51,29 +50,15 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-
 class QUmlLiteralNullPrivate;
-
 class Q_UML_EXPORT QUmlLiteralNull : public QUmlLiteralSpecification
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_DISABLE_COPY(QUmlLiteralNull)
-    Q_DECLARE_PRIVATE(QUmlLiteralNull)
-
 public:
-    Q_INVOKABLE explicit QUmlLiteralNull(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlLiteralNull();
+    QUmlLiteralNull(bool create_d_ptr = true);
 
     // Operations
-    Q_INVOKABLE bool isComputable() const;
-    Q_INVOKABLE bool isNull() const;
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlLiteralNull(QUmlLiteralNullPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    bool isComputable() const;
+    bool isNull() const;
 };
 
 QT_END_NAMESPACE

@@ -41,10 +41,9 @@
 #ifndef QUMLACTIVITYPARAMETERNODE_P_H
 #define QUMLACTIVITYPARAMETERNODE_P_H
 
-// Base class includes
-#include "private/qumlobjectnode_p.h"
-
 #include "QtUml/QUmlActivityParameterNode"
+
+#include "private/qumlobjectnode_p.h"
 
 QT_BEGIN_HEADER
 
@@ -52,17 +51,10 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlParameter;
-class QUmlActivityParameterNode;
-
 class Q_UML_EXPORT QUmlActivityParameterNodePrivate : public QUmlObjectNodePrivate
 {
-    Q_DECLARE_PUBLIC(QUmlActivityParameterNode)
-
 public:
-    explicit QUmlActivityParameterNodePrivate();
-    virtual ~QUmlActivityParameterNodePrivate();
+    QUmlActivityParameterNodePrivate();
 
     QUmlParameter *parameter;
 };

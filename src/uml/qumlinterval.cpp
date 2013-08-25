@@ -41,17 +41,11 @@
 #include "qumlinterval.h"
 #include "qumlinterval_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlIntervalPrivate::QUmlIntervalPrivate() :
-    min(0),
-    max(0)
-{
-}
-
-QUmlIntervalPrivate::~QUmlIntervalPrivate()
+    max(0),
+    min(0)
 {
 }
 
@@ -63,88 +57,40 @@ QUmlIntervalPrivate::~QUmlIntervalPrivate()
     \brief An interval defines the range between two value specifications.
  */
 
-QUmlInterval::QUmlInterval(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlValueSpecification(*new QUmlIntervalPrivate, wrapper, parent)
+QUmlInterval::QUmlInterval(bool create_d_ptr) :
+    QUmlValueSpecification(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlIntervalPrivate);
 }
 
-QUmlInterval::QUmlInterval(QUmlIntervalPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlValueSpecification(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlInterval::~QUmlInterval()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlInterval
-// ---------------------------------------------------------------
-
-/*!
-    Refers to the ValueSpecification denoting the minimum value of the range.
- */
-QUmlValueSpecification *QUmlInterval::min() const
-{
-    // This is a read-write association end
-
-    Q_D(const QUmlInterval);
-    return d->min;
-}
-
-void QUmlInterval::setMin(QUmlValueSpecification *min)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlInterval);
-    if (d->min != min) {
-        d->min = min;
-    }
-}
+// Owned attributes
 
 /*!
     Refers to the ValueSpecification denoting the maximum value of the range.
  */
 QUmlValueSpecification *QUmlInterval::max() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlInterval);
-    return d->max;
+    return 0;
 }
 
 void QUmlInterval::setMax(QUmlValueSpecification *max)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlInterval);
-    if (d->max != max) {
-        d->max = max;
-    }
+    Q_UNUSED(max);
 }
 
-void QUmlInterval::setPropertyData()
+/*!
+    Refers to the ValueSpecification denoting the minimum value of the range.
+ */
+QUmlValueSpecification *QUmlInterval::min() const
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterval")][QString::fromLatin1("min")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterval")][QString::fromLatin1("min")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterval")][QString::fromLatin1("min")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Refers to the ValueSpecification denoting the minimum value of the range.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterval")][QString::fromLatin1("min")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterval")][QString::fromLatin1("min")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterval")][QString::fromLatin1("min")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
+    return 0;
+}
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterval")][QString::fromLatin1("max")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterval")][QString::fromLatin1("max")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterval")][QString::fromLatin1("max")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Refers to the ValueSpecification denoting the maximum value of the range.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterval")][QString::fromLatin1("max")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterval")][QString::fromLatin1("max")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterval")][QString::fromLatin1("max")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlValueSpecification::setPropertyData();
+void QUmlInterval::setMin(QUmlValueSpecification *min)
+{
+    Q_UNUSED(min);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlinterval.cpp"
 

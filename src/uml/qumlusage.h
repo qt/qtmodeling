@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlDependency>
 
 QT_BEGIN_HEADER
@@ -51,25 +50,11 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-
 class QUmlUsagePrivate;
-
 class Q_UML_EXPORT QUmlUsage : public QUmlDependency
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_DISABLE_COPY(QUmlUsage)
-    Q_DECLARE_PRIVATE(QUmlUsage)
-
 public:
-    Q_INVOKABLE explicit QUmlUsage(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlUsage();
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlUsage(QUmlUsagePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    QUmlUsage(bool create_d_ptr = true);
 };
 
 QT_END_NAMESPACE

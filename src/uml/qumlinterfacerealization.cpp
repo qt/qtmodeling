@@ -41,20 +41,14 @@
 #include "qumlinterfacerealization.h"
 #include "qumlinterfacerealization_p.h"
 
-#include <QtUml/QUmlInterface>
 #include <QtUml/QUmlBehavioredClassifier>
-
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
+#include <QtUml/QUmlInterface>
 
 QT_BEGIN_NAMESPACE
 
 QUmlInterfaceRealizationPrivate::QUmlInterfaceRealizationPrivate() :
-    implementingClassifier(0),
-    contract(0)
-{
-}
-
-QUmlInterfaceRealizationPrivate::~QUmlInterfaceRealizationPrivate()
+    contract(0),
+    implementingClassifier(0)
 {
 }
 
@@ -66,137 +60,40 @@ QUmlInterfaceRealizationPrivate::~QUmlInterfaceRealizationPrivate()
     \brief An interface realization is a specialized realization relationship between a classifier and an interface. This relationship signifies that the realizing classifier conforms to the contract specified by the interface.
  */
 
-QUmlInterfaceRealization::QUmlInterfaceRealization(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlRealization(*new QUmlInterfaceRealizationPrivate, wrapper, parent)
+QUmlInterfaceRealization::QUmlInterfaceRealization(bool create_d_ptr) :
+    QUmlRealization(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlInterfaceRealizationPrivate);
 }
 
-QUmlInterfaceRealization::QUmlInterfaceRealization(QUmlInterfaceRealizationPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlRealization(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlInterfaceRealization::~QUmlInterfaceRealization()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlInterfaceRealization
-// ---------------------------------------------------------------
-
-/*!
-    References the BehavioredClassifier that owns this Interfacerealization (i.e., the classifier that realizes the Interface to which it points).
- */
-QUmlBehavioredClassifier *QUmlInterfaceRealization::implementingClassifier() const
-{
-    // This is a read-write association end
-
-    Q_D(const QUmlInterfaceRealization);
-    return d->implementingClassifier;
-}
-
-void QUmlInterfaceRealization::setImplementingClassifier(QUmlBehavioredClassifier *implementingClassifier)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlInterfaceRealization);
-    if (d->implementingClassifier != implementingClassifier) {
-        // Adjust opposite property
-        if (d->implementingClassifier)
-            d->implementingClassifier->removeInterfaceRealization(this);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlDependency *>(this))->removeClient(qwrappedobject_cast<QUmlNamedElement *>(d->implementingClassifier));
-
-        d->implementingClassifier = implementingClassifier;
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->setOwner(qwrappedobject_cast<QUmlElement *>(implementingClassifier));
-        if (implementingClassifier) {
-            (qwrappedobject_cast<QUmlDependency *>(this))->addClient(qwrappedobject_cast<QUmlNamedElement *>(implementingClassifier));
-        }
-
-        // Adjust opposite property
-        if (implementingClassifier)
-            implementingClassifier->addInterfaceRealization(this);
-    }
-}
+// Owned attributes
 
 /*!
     References the Interface specifying the conformance contract.
  */
 QUmlInterface *QUmlInterfaceRealization::contract() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlInterfaceRealization);
-    return d->contract;
+    return 0;
 }
 
 void QUmlInterfaceRealization::setContract(QUmlInterface *contract)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlInterfaceRealization);
-    if (d->contract != contract) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlDependency *>(this))->removeSupplier(qwrappedobject_cast<QUmlNamedElement *>(d->contract));
-
-        d->contract = contract;
-
-        // Adjust subsetted property(ies)
-        if (contract) {
-            (qwrappedobject_cast<QUmlDependency *>(this))->addSupplier(qwrappedobject_cast<QUmlNamedElement *>(contract));
-        }
-    }
+    Q_UNUSED(contract);
 }
 
-void QUmlInterfaceRealization::setPropertyData()
+/*!
+    References the BehavioredClassifier that owns this Interfacerealization (i.e., the classifier that realizes the Interface to which it points).
+ */
+QUmlBehavioredClassifier *QUmlInterfaceRealization::implementingClassifier() const
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterfaceRealization")][QString::fromLatin1("implementingClassifier")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterfaceRealization")][QString::fromLatin1("implementingClassifier")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterfaceRealization")][QString::fromLatin1("implementingClassifier")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the BehavioredClassifier that owns this Interfacerealization (i.e., the classifier that realizes the Interface to which it points).");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterfaceRealization")][QString::fromLatin1("implementingClassifier")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterfaceRealization")][QString::fromLatin1("implementingClassifier")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::owner QUmlDependency::clients");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterfaceRealization")][QString::fromLatin1("implementingClassifier")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlBehavioredClassifier::interfaceRealization");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterfaceRealization")][QString::fromLatin1("contract")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterfaceRealization")][QString::fromLatin1("contract")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterfaceRealization")][QString::fromLatin1("contract")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Interface specifying the conformance contract.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterfaceRealization")][QString::fromLatin1("contract")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterfaceRealization")][QString::fromLatin1("contract")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlDependency::suppliers");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterfaceRealization")][QString::fromLatin1("contract")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlRealization::setPropertyData();
+    return 0;
 }
 
-// Overriden methods for subsetted properties
-
-void QUmlInterfaceRealization::addClient(QWrappedObjectPointer<QUmlBehavioredClassifier> implementingClassifier)
-{
-    setImplementingClassifier(implementingClassifier);
-}
-
-void QUmlInterfaceRealization::removeClient(QWrappedObjectPointer<QUmlBehavioredClassifier> implementingClassifier)
+void QUmlInterfaceRealization::setImplementingClassifier(QUmlBehavioredClassifier *implementingClassifier)
 {
     Q_UNUSED(implementingClassifier);
-    setImplementingClassifier(0);
-}
-
-void QUmlInterfaceRealization::addSupplier(QWrappedObjectPointer<QUmlInterface> contract)
-{
-    setContract(contract);
-}
-
-void QUmlInterfaceRealization::removeSupplier(QWrappedObjectPointer<QUmlInterface> contract)
-{
-    Q_UNUSED(contract);
-    setContract(0);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlinterfacerealization.cpp"
 

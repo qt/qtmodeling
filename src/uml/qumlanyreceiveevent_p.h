@@ -41,25 +41,20 @@
 #ifndef QUMLANYRECEIVEEVENT_P_H
 #define QUMLANYRECEIVEEVENT_P_H
 
-// Base class includes
-#include "private/qumlmessageevent_p.h"
-
 #include "QtUml/QUmlAnyReceiveEvent"
+
+#include "private/qumlmessageevent_p.h"
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-class QUmlAnyReceiveEvent;
 
 class Q_UML_EXPORT QUmlAnyReceiveEventPrivate : public QUmlMessageEventPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlAnyReceiveEvent)
-
 public:
-    explicit QUmlAnyReceiveEventPrivate();
-    virtual ~QUmlAnyReceiveEventPrivate();
+    QUmlAnyReceiveEventPrivate();
 
 };
 

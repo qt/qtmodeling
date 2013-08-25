@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlDataType>
 
 QT_BEGIN_HEADER
@@ -51,25 +50,11 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-
 class QUmlPrimitiveTypePrivate;
-
 class Q_UML_EXPORT QUmlPrimitiveType : public QUmlDataType
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_DISABLE_COPY(QUmlPrimitiveType)
-    Q_DECLARE_PRIVATE(QUmlPrimitiveType)
-
 public:
-    Q_INVOKABLE explicit QUmlPrimitiveType(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlPrimitiveType();
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlPrimitiveType(QUmlPrimitiveTypePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    QUmlPrimitiveType(bool create_d_ptr = true);
 };
 
 QT_END_NAMESPACE

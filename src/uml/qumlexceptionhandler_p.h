@@ -41,13 +41,9 @@
 #ifndef QUMLEXCEPTIONHANDLER_P_H
 #define QUMLEXCEPTIONHANDLER_P_H
 
-// Base class includes
-#include "private/qumlelement_p.h"
-
 #include "QtUml/QUmlExceptionHandler"
 
-// Qt includes
-#include "QtCore/QSet"
+#include "private/qumlelement_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,24 +51,15 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlObjectNode;
-class QUmlClassifier;
-class QUmlExecutableNode;
-class QUmlExceptionHandler;
-
 class Q_UML_EXPORT QUmlExceptionHandlerPrivate : public QUmlElementPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlExceptionHandler)
-
 public:
-    explicit QUmlExceptionHandlerPrivate();
-    virtual ~QUmlExceptionHandlerPrivate();
+    QUmlExceptionHandlerPrivate();
 
-    QUmlExecutableNode *handlerBody;
-    QSet<QUmlClassifier *> exceptionTypes;
-    QUmlExecutableNode *protectedNode;
     QUmlObjectNode *exceptionInput;
+    QSet<QUmlClassifier *> exceptionType;
+    QUmlExecutableNode *handlerBody;
+    QUmlExecutableNode *protectedNode;
 };
 
 QT_END_NAMESPACE

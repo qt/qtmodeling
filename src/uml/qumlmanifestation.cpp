@@ -43,16 +43,10 @@
 
 #include <QtUml/QUmlPackageableElement>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlManifestationPrivate::QUmlManifestationPrivate() :
     utilizedElement(0)
-{
-}
-
-QUmlManifestationPrivate::~QUmlManifestationPrivate()
 {
 }
 
@@ -64,81 +58,27 @@ QUmlManifestationPrivate::~QUmlManifestationPrivate()
     \brief A manifestation is the concrete physical rendering of one or more model elements by an artifact.
  */
 
-QUmlManifestation::QUmlManifestation(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlAbstraction(*new QUmlManifestationPrivate, wrapper, parent)
+QUmlManifestation::QUmlManifestation(bool create_d_ptr) :
+    QUmlAbstraction(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlManifestationPrivate);
 }
 
-QUmlManifestation::QUmlManifestation(QUmlManifestationPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlAbstraction(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlManifestation::~QUmlManifestation()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlManifestation
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     The model element that is utilized in the manifestation in an Artifact.
  */
 QUmlPackageableElement *QUmlManifestation::utilizedElement() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlManifestation);
-    return d->utilizedElement;
+    return 0;
 }
 
 void QUmlManifestation::setUtilizedElement(QUmlPackageableElement *utilizedElement)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlManifestation);
-    if (d->utilizedElement != utilizedElement) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlDependency *>(this))->removeSupplier(qwrappedobject_cast<QUmlNamedElement *>(d->utilizedElement));
-
-        d->utilizedElement = utilizedElement;
-
-        // Adjust subsetted property(ies)
-        if (utilizedElement) {
-            (qwrappedobject_cast<QUmlDependency *>(this))->addSupplier(qwrappedobject_cast<QUmlNamedElement *>(utilizedElement));
-        }
-    }
-}
-
-void QUmlManifestation::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlManifestation")][QString::fromLatin1("utilizedElement")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlManifestation")][QString::fromLatin1("utilizedElement")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlManifestation")][QString::fromLatin1("utilizedElement")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The model element that is utilized in the manifestation in an Artifact.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlManifestation")][QString::fromLatin1("utilizedElement")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlManifestation")][QString::fromLatin1("utilizedElement")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlDependency::suppliers");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlManifestation")][QString::fromLatin1("utilizedElement")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlAbstraction::setPropertyData();
-}
-
-// Overriden methods for subsetted properties
-
-void QUmlManifestation::addSupplier(QWrappedObjectPointer<QUmlPackageableElement> utilizedElement)
-{
-    setUtilizedElement(utilizedElement);
-}
-
-void QUmlManifestation::removeSupplier(QWrappedObjectPointer<QUmlPackageableElement> utilizedElement)
-{
     Q_UNUSED(utilizedElement);
-    setUtilizedElement(0);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlmanifestation.cpp"
 

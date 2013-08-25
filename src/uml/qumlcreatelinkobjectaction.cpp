@@ -43,16 +43,10 @@
 
 #include <QtUml/QUmlOutputPin>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlCreateLinkObjectActionPrivate::QUmlCreateLinkObjectActionPrivate() :
     result(0)
-{
-}
-
-QUmlCreateLinkObjectActionPrivate::~QUmlCreateLinkObjectActionPrivate()
 {
 }
 
@@ -64,68 +58,27 @@ QUmlCreateLinkObjectActionPrivate::~QUmlCreateLinkObjectActionPrivate()
     \brief A create link object action creates a link object.
  */
 
-QUmlCreateLinkObjectAction::QUmlCreateLinkObjectAction(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlCreateLinkAction(*new QUmlCreateLinkObjectActionPrivate, wrapper, parent)
+QUmlCreateLinkObjectAction::QUmlCreateLinkObjectAction(bool create_d_ptr) :
+    QUmlCreateLinkAction(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlCreateLinkObjectActionPrivate);
 }
 
-QUmlCreateLinkObjectAction::QUmlCreateLinkObjectAction(QUmlCreateLinkObjectActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlCreateLinkAction(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlCreateLinkObjectAction::~QUmlCreateLinkObjectAction()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlCreateLinkObjectAction
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     Gives the output pin on which the result is put.
  */
 QUmlOutputPin *QUmlCreateLinkObjectAction::result() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlCreateLinkObjectAction);
-    return d->result;
+    return 0;
 }
 
 void QUmlCreateLinkObjectAction::setResult(QUmlOutputPin *result)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlCreateLinkObjectAction);
-    if (d->result != result) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActionPrivate *>(d))->removeOutput(qwrappedobject_cast<QUmlOutputPin *>(d->result));
-
-        d->result = result;
-
-        // Adjust subsetted property(ies)
-        if (result) {
-            (qwrappedobject_cast<QUmlActionPrivate *>(d))->addOutput(qwrappedobject_cast<QUmlOutputPin *>(result));
-        }
-    }
-}
-
-void QUmlCreateLinkObjectAction::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCreateLinkObjectAction")][QString::fromLatin1("result")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCreateLinkObjectAction")][QString::fromLatin1("result")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCreateLinkObjectAction")][QString::fromLatin1("result")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Gives the output pin on which the result is put.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCreateLinkObjectAction")][QString::fromLatin1("result")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCreateLinkObjectAction")][QString::fromLatin1("result")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlAction::outputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCreateLinkObjectAction")][QString::fromLatin1("result")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlCreateLinkAction::setPropertyData();
+    Q_UNUSED(result);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlcreatelinkobjectaction.cpp"
 

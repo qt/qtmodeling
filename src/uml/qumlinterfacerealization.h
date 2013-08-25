@@ -43,10 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlRealization>
-
-#include <QtWrappedObjects/QWrappedObjectPointer>
 
 QT_BEGIN_HEADER
 
@@ -54,43 +51,20 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlInterface;
 class QUmlBehavioredClassifier;
+class QUmlInterface;
 
 class QUmlInterfaceRealizationPrivate;
-
 class Q_UML_EXPORT QUmlInterfaceRealization : public QUmlRealization
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlBehavioredClassifier * implementingClassifier READ implementingClassifier WRITE setImplementingClassifier)
-    Q_PROPERTY(QUmlInterface * contract READ contract WRITE setContract)
-
-    Q_DISABLE_COPY(QUmlInterfaceRealization)
-    Q_DECLARE_PRIVATE(QUmlInterfaceRealization)
-
 public:
-    Q_INVOKABLE explicit QUmlInterfaceRealization(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlInterfaceRealization();
+    QUmlInterfaceRealization(bool create_d_ptr = true);
 
-    // Association ends from QUmlInterfaceRealization
-    Q_INVOKABLE QUmlBehavioredClassifier *implementingClassifier() const;
-    Q_INVOKABLE void setImplementingClassifier(QUmlBehavioredClassifier *implementingClassifier);
-    Q_INVOKABLE QUmlInterface *contract() const;
-    Q_INVOKABLE void setContract(QUmlInterface *contract);
-
-    // Overriden methods for subsetted properties
-    Q_INVOKABLE void addClient(QWrappedObjectPointer<QUmlBehavioredClassifier> implementingClassifier);
-    Q_INVOKABLE void removeClient(QWrappedObjectPointer<QUmlBehavioredClassifier> implementingClassifier);
-    Q_INVOKABLE void addSupplier(QWrappedObjectPointer<QUmlInterface> contract);
-    Q_INVOKABLE void removeSupplier(QWrappedObjectPointer<QUmlInterface> contract);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlInterfaceRealization(QUmlInterfaceRealizationPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlInterface *contract() const;
+    void setContract(QUmlInterface *contract);
+    QUmlBehavioredClassifier *implementingClassifier() const;
+    void setImplementingClassifier(QUmlBehavioredClassifier *implementingClassifier);
 };
 
 QT_END_NAMESPACE

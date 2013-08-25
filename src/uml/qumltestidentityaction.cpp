@@ -44,18 +44,12 @@
 #include <QtUml/QUmlInputPin>
 #include <QtUml/QUmlOutputPin>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlTestIdentityActionPrivate::QUmlTestIdentityActionPrivate() :
-    second(0),
+    first(0),
     result(0),
-    first(0)
-{
-}
-
-QUmlTestIdentityActionPrivate::~QUmlTestIdentityActionPrivate()
+    second(0)
 {
 }
 
@@ -67,53 +61,26 @@ QUmlTestIdentityActionPrivate::~QUmlTestIdentityActionPrivate()
     \brief A test identity action is an action that tests if two values are identical objects.
  */
 
-QUmlTestIdentityAction::QUmlTestIdentityAction(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlAction(*new QUmlTestIdentityActionPrivate, wrapper, parent)
+QUmlTestIdentityAction::QUmlTestIdentityAction(bool create_d_ptr) :
+    QUmlAction(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlTestIdentityActionPrivate);
 }
 
-QUmlTestIdentityAction::QUmlTestIdentityAction(QUmlTestIdentityActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlAction(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlTestIdentityAction::~QUmlTestIdentityAction()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlTestIdentityAction
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     Gives the pin on which an object is placed.
  */
-QUmlInputPin *QUmlTestIdentityAction::second() const
+QUmlInputPin *QUmlTestIdentityAction::first() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlTestIdentityAction);
-    return d->second;
+    return 0;
 }
 
-void QUmlTestIdentityAction::setSecond(QUmlInputPin *second)
+void QUmlTestIdentityAction::setFirst(QUmlInputPin *first)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlTestIdentityAction);
-    if (d->second != second) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActionPrivate *>(d))->removeInput(qwrappedobject_cast<QUmlInputPin *>(d->second));
-
-        d->second = second;
-
-        // Adjust subsetted property(ies)
-        if (second) {
-            (qwrappedobject_cast<QUmlActionPrivate *>(d))->addInput(qwrappedobject_cast<QUmlInputPin *>(second));
-        }
-    }
+    Q_UNUSED(first);
 }
 
 /*!
@@ -121,86 +88,26 @@ void QUmlTestIdentityAction::setSecond(QUmlInputPin *second)
  */
 QUmlOutputPin *QUmlTestIdentityAction::result() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlTestIdentityAction);
-    return d->result;
+    return 0;
 }
 
 void QUmlTestIdentityAction::setResult(QUmlOutputPin *result)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlTestIdentityAction);
-    if (d->result != result) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActionPrivate *>(d))->removeOutput(qwrappedobject_cast<QUmlOutputPin *>(d->result));
-
-        d->result = result;
-
-        // Adjust subsetted property(ies)
-        if (result) {
-            (qwrappedobject_cast<QUmlActionPrivate *>(d))->addOutput(qwrappedobject_cast<QUmlOutputPin *>(result));
-        }
-    }
+    Q_UNUSED(result);
 }
 
 /*!
     Gives the pin on which an object is placed.
  */
-QUmlInputPin *QUmlTestIdentityAction::first() const
+QUmlInputPin *QUmlTestIdentityAction::second() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlTestIdentityAction);
-    return d->first;
+    return 0;
 }
 
-void QUmlTestIdentityAction::setFirst(QUmlInputPin *first)
+void QUmlTestIdentityAction::setSecond(QUmlInputPin *second)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlTestIdentityAction);
-    if (d->first != first) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActionPrivate *>(d))->removeInput(qwrappedobject_cast<QUmlInputPin *>(d->first));
-
-        d->first = first;
-
-        // Adjust subsetted property(ies)
-        if (first) {
-            (qwrappedobject_cast<QUmlActionPrivate *>(d))->addInput(qwrappedobject_cast<QUmlInputPin *>(first));
-        }
-    }
-}
-
-void QUmlTestIdentityAction::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTestIdentityAction")][QString::fromLatin1("second")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTestIdentityAction")][QString::fromLatin1("second")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTestIdentityAction")][QString::fromLatin1("second")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Gives the pin on which an object is placed.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTestIdentityAction")][QString::fromLatin1("second")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTestIdentityAction")][QString::fromLatin1("second")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlAction::inputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTestIdentityAction")][QString::fromLatin1("second")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTestIdentityAction")][QString::fromLatin1("result")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTestIdentityAction")][QString::fromLatin1("result")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTestIdentityAction")][QString::fromLatin1("result")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Tells whether the two input objects are identical.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTestIdentityAction")][QString::fromLatin1("result")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTestIdentityAction")][QString::fromLatin1("result")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlAction::outputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTestIdentityAction")][QString::fromLatin1("result")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTestIdentityAction")][QString::fromLatin1("first")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTestIdentityAction")][QString::fromLatin1("first")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTestIdentityAction")][QString::fromLatin1("first")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Gives the pin on which an object is placed.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTestIdentityAction")][QString::fromLatin1("first")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTestIdentityAction")][QString::fromLatin1("first")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlAction::inputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlTestIdentityAction")][QString::fromLatin1("first")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlAction::setPropertyData();
+    Q_UNUSED(second);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumltestidentityaction.cpp"
 

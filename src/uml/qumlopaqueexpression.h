@@ -43,12 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlValueSpecification>
-
-// Qt includes
-#include <QtCore/QString>
-#include <QtCore/QList>
 
 QT_BEGIN_HEADER
 
@@ -56,52 +51,31 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlBehavior;
 class QUmlParameter;
 
 class QUmlOpaqueExpressionPrivate;
-
 class Q_UML_EXPORT QUmlOpaqueExpression : public QUmlValueSpecification
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QList<QString> bodies READ bodies)
-    Q_PROPERTY(QList<QString> languages READ languages)
-    Q_PROPERTY(QUmlBehavior * behavior READ behavior WRITE setBehavior)
-    Q_PROPERTY(QUmlParameter * result READ result STORED false)
-
-    Q_DISABLE_COPY(QUmlOpaqueExpression)
-    Q_DECLARE_PRIVATE(QUmlOpaqueExpression)
-
 public:
-    Q_INVOKABLE explicit QUmlOpaqueExpression(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlOpaqueExpression();
+    QUmlOpaqueExpression(bool create_d_ptr = true);
 
-    // Attributes from QUmlOpaqueExpression
-    Q_INVOKABLE QList<QString> bodies() const;
-    Q_INVOKABLE void addBody(QString body);
-    Q_INVOKABLE void removeBody(QString body);
-    Q_INVOKABLE QList<QString> languages() const;
-    Q_INVOKABLE void addLanguage(QString language);
-    Q_INVOKABLE void removeLanguage(QString language);
-
-    // Association ends from QUmlOpaqueExpression
-    Q_INVOKABLE QUmlBehavior *behavior() const;
-    Q_INVOKABLE void setBehavior(QUmlBehavior *behavior);
-    Q_INVOKABLE QUmlParameter *result() const;
+    // Owned attributes
+    QUmlBehavior *behavior() const;
+    void setBehavior(QUmlBehavior *behavior);
+    QList<QString> body() const;
+    void addBody(QList<QString> body);
+    void removeBody(QList<QString> body);
+    QList<QString> language() const;
+    void addLanguage(QList<QString> language);
+    void removeLanguage(QList<QString> language);
+    QUmlParameter *result() const;
 
     // Operations
-    Q_INVOKABLE bool isIntegral() const;
-    Q_INVOKABLE bool isNonNegative() const;
-    Q_INVOKABLE bool isPositive() const;
-    Q_INVOKABLE qint32 value() const;
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlOpaqueExpression(QUmlOpaqueExpressionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    bool isIntegral() const;
+    bool isNonNegative() const;
+    bool isPositive() const;
+    int value() const;
 };
 
 QT_END_NAMESPACE

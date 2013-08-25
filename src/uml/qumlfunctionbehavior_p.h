@@ -41,25 +41,20 @@
 #ifndef QUMLFUNCTIONBEHAVIOR_P_H
 #define QUMLFUNCTIONBEHAVIOR_P_H
 
-// Base class includes
-#include "private/qumlopaquebehavior_p.h"
-
 #include "QtUml/QUmlFunctionBehavior"
+
+#include "private/qumlopaquebehavior_p.h"
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-class QUmlFunctionBehavior;
 
 class Q_UML_EXPORT QUmlFunctionBehaviorPrivate : public QUmlOpaqueBehaviorPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlFunctionBehavior)
-
 public:
-    explicit QUmlFunctionBehaviorPrivate();
-    virtual ~QUmlFunctionBehaviorPrivate();
+    QUmlFunctionBehaviorPrivate();
 
 };
 

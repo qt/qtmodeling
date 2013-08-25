@@ -41,19 +41,10 @@
 #ifndef QUMLBEHAVIORALFEATURE_P_H
 #define QUMLBEHAVIORALFEATURE_P_H
 
-// Base class includes
-#include "private/qwrappedobject_p.h"
-#include "private/qumlnamespace_p.h"
-#include "private/qumlfeature_p.h"
-
 #include "QtUml/QUmlBehavioralFeature"
 
-// QtUml includes
-#include "QtUml/QtUmlNamespace"
-
-// Qt includes
-#include "QtCore/QList"
-#include "QtCore/QSet"
+#include "private/qumlnamespace_p.h"
+#include "private/qumlfeature_p.h"
 
 QT_BEGIN_HEADER
 
@@ -61,27 +52,17 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlType;
-class QUmlNamedElement;
-class QUmlParameterSet;
-class QUmlBehavior;
-class QUmlParameter;
-
-class Q_UML_EXPORT QUmlBehavioralFeaturePrivate : public QWrappedObjectPrivate
+class Q_UML_EXPORT QUmlBehavioralFeaturePrivate : public QUmlNamespacePrivate, public QUmlFeaturePrivate
 {
-    Q_DECLARE_PUBLIC(QUmlBehavioralFeature)
-
 public:
-    explicit QUmlBehavioralFeaturePrivate();
-    virtual ~QUmlBehavioralFeaturePrivate();
+    QUmlBehavioralFeaturePrivate();
 
     QtUml::CallConcurrencyKind concurrency;
     bool isAbstract;
-    QSet<QUmlType *> raisedExceptions;
-    QList<QUmlParameter *> ownedParameters;
-    QSet<QUmlParameterSet *> ownedParameterSets;
-    QSet<QUmlBehavior *> methods;
+    QSet<QUmlBehavior *> method;
+    QList<QUmlParameter *> ownedParameter;
+    QSet<QUmlParameterSet *> ownedParameterSet;
+    QSet<QUmlType *> raisedException;
 };
 
 QT_END_NAMESPACE

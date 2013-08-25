@@ -41,32 +41,23 @@
 #ifndef QUMLOPAQUEBEHAVIOR_P_H
 #define QUMLOPAQUEBEHAVIOR_P_H
 
-// Base class includes
-#include "private/qumlbehavior_p.h"
-
 #include "QtUml/QUmlOpaqueBehavior"
 
-// Qt includes
-#include "QtCore/QString"
-#include "QtCore/QList"
+#include "private/qumlbehavior_p.h"
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-class QUmlOpaqueBehavior;
 
 class Q_UML_EXPORT QUmlOpaqueBehaviorPrivate : public QUmlBehaviorPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlOpaqueBehavior)
-
 public:
-    explicit QUmlOpaqueBehaviorPrivate();
-    virtual ~QUmlOpaqueBehaviorPrivate();
+    QUmlOpaqueBehaviorPrivate();
 
-    QList<QString> languages;
-    QList<QString> bodies;
+    QList<QString> body;
+    QList<QString> language;
 };
 
 QT_END_NAMESPACE

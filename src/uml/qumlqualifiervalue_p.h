@@ -41,10 +41,9 @@
 #ifndef QUMLQUALIFIERVALUE_P_H
 #define QUMLQUALIFIERVALUE_P_H
 
-// Base class includes
-#include "private/qumlelement_p.h"
-
 #include "QtUml/QUmlQualifierValue"
+
+#include "private/qumlelement_p.h"
 
 QT_BEGIN_HEADER
 
@@ -52,21 +51,13 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlProperty;
-class QUmlInputPin;
-class QUmlQualifierValue;
-
 class Q_UML_EXPORT QUmlQualifierValuePrivate : public QUmlElementPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlQualifierValue)
-
 public:
-    explicit QUmlQualifierValuePrivate();
-    virtual ~QUmlQualifierValuePrivate();
+    QUmlQualifierValuePrivate();
 
-    QUmlInputPin *value;
     QUmlProperty *qualifier;
+    QUmlInputPin *value;
 };
 
 QT_END_NAMESPACE

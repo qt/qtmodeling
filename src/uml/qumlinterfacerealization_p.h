@@ -41,10 +41,9 @@
 #ifndef QUMLINTERFACEREALIZATION_P_H
 #define QUMLINTERFACEREALIZATION_P_H
 
-// Base class includes
-#include "private/qumlrealization_p.h"
-
 #include "QtUml/QUmlInterfaceRealization"
+
+#include "private/qumlrealization_p.h"
 
 QT_BEGIN_HEADER
 
@@ -52,21 +51,13 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlInterface;
-class QUmlBehavioredClassifier;
-class QUmlInterfaceRealization;
-
 class Q_UML_EXPORT QUmlInterfaceRealizationPrivate : public QUmlRealizationPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlInterfaceRealization)
-
 public:
-    explicit QUmlInterfaceRealizationPrivate();
-    virtual ~QUmlInterfaceRealizationPrivate();
+    QUmlInterfaceRealizationPrivate();
 
-    QUmlBehavioredClassifier *implementingClassifier;
     QUmlInterface *contract;
+    QUmlBehavioredClassifier *implementingClassifier;
 };
 
 QT_END_NAMESPACE

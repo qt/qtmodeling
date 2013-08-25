@@ -43,11 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlStructuredActivityNode>
-
-// Qt includes
-#include <QtCore/QList>
 
 QT_BEGIN_HEADER
 
@@ -55,34 +51,18 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlExecutableNode;
 
 class QUmlSequenceNodePrivate;
-
 class Q_UML_EXPORT QUmlSequenceNode : public QUmlStructuredActivityNode
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QList<QUmlExecutableNode *> executableNodes READ executableNodes)
-
-    Q_DISABLE_COPY(QUmlSequenceNode)
-    Q_DECLARE_PRIVATE(QUmlSequenceNode)
-
 public:
-    Q_INVOKABLE explicit QUmlSequenceNode(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlSequenceNode();
+    QUmlSequenceNode(bool create_d_ptr = true);
 
-    // Association ends from QUmlSequenceNode
-    Q_INVOKABLE QList<QUmlExecutableNode *> executableNodes() const;
-    Q_INVOKABLE void addExecutableNode(QUmlExecutableNode *executableNode);
-    Q_INVOKABLE void removeExecutableNode(QUmlExecutableNode *executableNode);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlSequenceNode(QUmlSequenceNodePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QList<QUmlExecutableNode *> executableNode() const;
+    void addExecutableNode(QList<QUmlExecutableNode *> executableNode);
+    void removeExecutableNode(QList<QUmlExecutableNode *> executableNode);
 };
 
 QT_END_NAMESPACE

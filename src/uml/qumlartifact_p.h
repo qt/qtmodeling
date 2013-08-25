@@ -41,17 +41,10 @@
 #ifndef QUMLARTIFACT_P_H
 #define QUMLARTIFACT_P_H
 
-// Base class includes
-#include "private/qwrappedobject_p.h"
-#include "private/qumldeployedartifact_p.h"
-#include "private/qumlclassifier_p.h"
-
 #include "QtUml/QUmlArtifact"
 
-// Qt includes
-#include "QtCore/QString"
-#include "QtCore/QList"
-#include "QtCore/QSet"
+#include "private/qumldeployedartifact_p.h"
+#include "private/qumlclassifier_p.h"
 
 QT_BEGIN_HEADER
 
@@ -59,26 +52,16 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlOperation;
-class QUmlProperty;
-class QUmlManifestation;
-class QUmlArtifact;
-class QUmlArtifact;
-
-class Q_UML_EXPORT QUmlArtifactPrivate : public QWrappedObjectPrivate
+class Q_UML_EXPORT QUmlArtifactPrivate : public QUmlDeployedArtifactPrivate, public QUmlClassifierPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlArtifact)
-
 public:
-    explicit QUmlArtifactPrivate();
-    virtual ~QUmlArtifactPrivate();
+    QUmlArtifactPrivate();
 
     QString fileName;
-    QList<QUmlOperation *> ownedOperations;
-    QList<QUmlProperty *> ownedAttributes;
-    QSet<QUmlManifestation *> manifestations;
-    QSet<QUmlArtifact *> nestedArtifacts;
+    QSet<QUmlManifestation *> manifestation;
+    QSet<QUmlArtifact *> nestedArtifact;
+    QList<QUmlProperty *> ownedAttribute;
+    QList<QUmlOperation *> ownedOperation;
 };
 
 QT_END_NAMESPACE

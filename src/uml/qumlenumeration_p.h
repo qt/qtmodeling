@@ -41,13 +41,9 @@
 #ifndef QUMLENUMERATION_P_H
 #define QUMLENUMERATION_P_H
 
-// Base class includes
-#include "private/qumldatatype_p.h"
-
 #include "QtUml/QUmlEnumeration"
 
-// Qt includes
-#include "QtCore/QList"
+#include "private/qumldatatype_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,19 +51,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlEnumerationLiteral;
-class QUmlEnumeration;
-
 class Q_UML_EXPORT QUmlEnumerationPrivate : public QUmlDataTypePrivate
 {
-    Q_DECLARE_PUBLIC(QUmlEnumeration)
-
 public:
-    explicit QUmlEnumerationPrivate();
-    virtual ~QUmlEnumerationPrivate();
+    QUmlEnumerationPrivate();
 
-    QList<QUmlEnumerationLiteral *> ownedLiterals;
+    QList<QUmlEnumerationLiteral *> ownedLiteral;
 };
 
 QT_END_NAMESPACE

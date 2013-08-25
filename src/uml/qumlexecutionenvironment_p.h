@@ -41,25 +41,20 @@
 #ifndef QUMLEXECUTIONENVIRONMENT_P_H
 #define QUMLEXECUTIONENVIRONMENT_P_H
 
-// Base class includes
-#include "private/qumlnode_p.h"
-
 #include "QtUml/QUmlExecutionEnvironment"
+
+#include "private/qumlnode_p.h"
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-class QUmlExecutionEnvironment;
 
 class Q_UML_EXPORT QUmlExecutionEnvironmentPrivate : public QUmlNodePrivate
 {
-    Q_DECLARE_PUBLIC(QUmlExecutionEnvironment)
-
 public:
-    explicit QUmlExecutionEnvironmentPrivate();
-    virtual ~QUmlExecutionEnvironmentPrivate();
+    QUmlExecutionEnvironmentPrivate();
 
 };
 

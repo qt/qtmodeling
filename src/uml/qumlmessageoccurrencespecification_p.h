@@ -41,27 +41,21 @@
 #ifndef QUMLMESSAGEOCCURRENCESPECIFICATION_P_H
 #define QUMLMESSAGEOCCURRENCESPECIFICATION_P_H
 
-// Base class includes
-#include "private/qwrappedobject_p.h"
+#include "QtUml/QUmlMessageOccurrenceSpecification"
+
 #include "private/qumloccurrencespecification_p.h"
 #include "private/qumlmessageend_p.h"
-
-#include "QtUml/QUmlMessageOccurrenceSpecification"
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-class QUmlMessageOccurrenceSpecification;
 
-class Q_UML_EXPORT QUmlMessageOccurrenceSpecificationPrivate : public QWrappedObjectPrivate
+class Q_UML_EXPORT QUmlMessageOccurrenceSpecificationPrivate : public QUmlOccurrenceSpecificationPrivate, public QUmlMessageEndPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlMessageOccurrenceSpecification)
-
 public:
-    explicit QUmlMessageOccurrenceSpecificationPrivate();
-    virtual ~QUmlMessageOccurrenceSpecificationPrivate();
+    QUmlMessageOccurrenceSpecificationPrivate();
 
 };
 

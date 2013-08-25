@@ -43,16 +43,10 @@
 
 #include <QtUml/QUmlOutputPin>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlReadSelfActionPrivate::QUmlReadSelfActionPrivate() :
     result(0)
-{
-}
-
-QUmlReadSelfActionPrivate::~QUmlReadSelfActionPrivate()
 {
 }
 
@@ -64,68 +58,27 @@ QUmlReadSelfActionPrivate::~QUmlReadSelfActionPrivate()
     \brief A read self action is an action that retrieves the host object of an action.
  */
 
-QUmlReadSelfAction::QUmlReadSelfAction(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlAction(*new QUmlReadSelfActionPrivate, wrapper, parent)
+QUmlReadSelfAction::QUmlReadSelfAction(bool create_d_ptr) :
+    QUmlAction(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlReadSelfActionPrivate);
 }
 
-QUmlReadSelfAction::QUmlReadSelfAction(QUmlReadSelfActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlAction(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlReadSelfAction::~QUmlReadSelfAction()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlReadSelfAction
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     Gives the output pin on which the hosting object is placed.
  */
 QUmlOutputPin *QUmlReadSelfAction::result() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlReadSelfAction);
-    return d->result;
+    return 0;
 }
 
 void QUmlReadSelfAction::setResult(QUmlOutputPin *result)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlReadSelfAction);
-    if (d->result != result) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActionPrivate *>(d))->removeOutput(qwrappedobject_cast<QUmlOutputPin *>(d->result));
-
-        d->result = result;
-
-        // Adjust subsetted property(ies)
-        if (result) {
-            (qwrappedobject_cast<QUmlActionPrivate *>(d))->addOutput(qwrappedobject_cast<QUmlOutputPin *>(result));
-        }
-    }
-}
-
-void QUmlReadSelfAction::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadSelfAction")][QString::fromLatin1("result")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadSelfAction")][QString::fromLatin1("result")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadSelfAction")][QString::fromLatin1("result")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Gives the output pin on which the hosting object is placed.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadSelfAction")][QString::fromLatin1("result")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadSelfAction")][QString::fromLatin1("result")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlAction::outputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadSelfAction")][QString::fromLatin1("result")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlAction::setPropertyData();
+    Q_UNUSED(result);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlreadselfaction.cpp"
 

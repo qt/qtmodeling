@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlElement>
 
 QT_BEGIN_HEADER
@@ -52,41 +51,23 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlTemplateParameter;
-class QUmlParameterableElement;
 
 class QUmlParameterableElementPrivate;
-
-class Q_UML_EXPORT QUmlParameterableElement : public QUmlElement
+class Q_UML_EXPORT QUmlParameterableElement : public virtual QUmlElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlTemplateParameter * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
-    Q_PROPERTY(QUmlTemplateParameter * templateParameter READ templateParameter WRITE setTemplateParameter)
-
-    Q_DISABLE_COPY(QUmlParameterableElement)
-    Q_DECLARE_PRIVATE(QUmlParameterableElement)
-
 public:
-    Q_INVOKABLE explicit QUmlParameterableElement(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlParameterableElement();
+    Q_DECL_HIDDEN QUmlParameterableElement(bool create_d_ptr = true);
 
-    // Association ends from QUmlParameterableElement
-    Q_INVOKABLE QUmlTemplateParameter *owningTemplateParameter() const;
-    Q_INVOKABLE void setOwningTemplateParameter(QUmlTemplateParameter *owningTemplateParameter);
-    Q_INVOKABLE QUmlTemplateParameter *templateParameter() const;
-    Q_INVOKABLE void setTemplateParameter(QUmlTemplateParameter *templateParameter);
+    // Owned attributes
+    QUmlTemplateParameter *owningTemplateParameter() const;
+    void setOwningTemplateParameter(QUmlTemplateParameter *owningTemplateParameter);
+    QUmlTemplateParameter *templateParameter() const;
+    void setTemplateParameter(QUmlTemplateParameter *templateParameter);
 
     // Operations
-    Q_INVOKABLE bool isCompatibleWith(const QUmlParameterableElement *p) const;
-    Q_INVOKABLE bool isTemplateParameter() const;
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlParameterableElement(QUmlParameterableElementPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    bool isCompatibleWith(QUmlParameterableElement *p) const;
+    bool isTemplateParameter() const;
 };
 
 QT_END_NAMESPACE

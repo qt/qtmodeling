@@ -41,10 +41,9 @@
 #ifndef QUMLPACKAGEMERGE_P_H
 #define QUMLPACKAGEMERGE_P_H
 
-// Base class includes
-#include "private/qumldirectedrelationship_p.h"
-
 #include "QtUml/QUmlPackageMerge"
+
+#include "private/qumldirectedrelationship_p.h"
 
 QT_BEGIN_HEADER
 
@@ -52,17 +51,10 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlPackage;
-class QUmlPackageMerge;
-
 class Q_UML_EXPORT QUmlPackageMergePrivate : public QUmlDirectedRelationshipPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlPackageMerge)
-
 public:
-    explicit QUmlPackageMergePrivate();
-    virtual ~QUmlPackageMergePrivate();
+    QUmlPackageMergePrivate();
 
     QUmlPackage *mergedPackage;
     QUmlPackage *receivingPackage;

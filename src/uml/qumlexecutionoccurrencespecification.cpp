@@ -43,16 +43,10 @@
 
 #include <QtUml/QUmlExecutionSpecification>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlExecutionOccurrenceSpecificationPrivate::QUmlExecutionOccurrenceSpecificationPrivate() :
     execution(0)
-{
-}
-
-QUmlExecutionOccurrenceSpecificationPrivate::~QUmlExecutionOccurrenceSpecificationPrivate()
 {
 }
 
@@ -64,60 +58,27 @@ QUmlExecutionOccurrenceSpecificationPrivate::~QUmlExecutionOccurrenceSpecificati
     \brief An execution occurrence specification represents moments in time at which actions or behaviors start or finish.
  */
 
-QUmlExecutionOccurrenceSpecification::QUmlExecutionOccurrenceSpecification(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlOccurrenceSpecification(*new QUmlExecutionOccurrenceSpecificationPrivate, wrapper, parent)
+QUmlExecutionOccurrenceSpecification::QUmlExecutionOccurrenceSpecification(bool create_d_ptr) :
+    QUmlOccurrenceSpecification(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlExecutionOccurrenceSpecificationPrivate);
 }
 
-QUmlExecutionOccurrenceSpecification::QUmlExecutionOccurrenceSpecification(QUmlExecutionOccurrenceSpecificationPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlOccurrenceSpecification(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlExecutionOccurrenceSpecification::~QUmlExecutionOccurrenceSpecification()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlExecutionOccurrenceSpecification
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     References the execution specification describing the execution that is started or finished at this execution event.
  */
 QUmlExecutionSpecification *QUmlExecutionOccurrenceSpecification::execution() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlExecutionOccurrenceSpecification);
-    return d->execution;
+    return 0;
 }
 
 void QUmlExecutionOccurrenceSpecification::setExecution(QUmlExecutionSpecification *execution)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlExecutionOccurrenceSpecification);
-    if (d->execution != execution) {
-        d->execution = execution;
-    }
-}
-
-void QUmlExecutionOccurrenceSpecification::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExecutionOccurrenceSpecification")][QString::fromLatin1("execution")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExecutionOccurrenceSpecification")][QString::fromLatin1("execution")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExecutionOccurrenceSpecification")][QString::fromLatin1("execution")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the execution specification describing the execution that is started or finished at this execution event.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExecutionOccurrenceSpecification")][QString::fromLatin1("execution")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExecutionOccurrenceSpecification")][QString::fromLatin1("execution")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExecutionOccurrenceSpecification")][QString::fromLatin1("execution")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlOccurrenceSpecification::setPropertyData();
+    Q_UNUSED(execution);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlexecutionoccurrencespecification.cpp"
 

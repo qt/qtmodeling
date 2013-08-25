@@ -41,10 +41,9 @@
 #ifndef QUMLCREATEOBJECTACTION_P_H
 #define QUMLCREATEOBJECTACTION_P_H
 
-// Base class includes
-#include "private/qumlaction_p.h"
-
 #include "QtUml/QUmlCreateObjectAction"
+
+#include "private/qumlaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -52,18 +51,10 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlClassifier;
-class QUmlOutputPin;
-class QUmlCreateObjectAction;
-
 class Q_UML_EXPORT QUmlCreateObjectActionPrivate : public QUmlActionPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlCreateObjectAction)
-
 public:
-    explicit QUmlCreateObjectActionPrivate();
-    virtual ~QUmlCreateObjectActionPrivate();
+    QUmlCreateObjectActionPrivate();
 
     QUmlClassifier *classifier;
     QUmlOutputPin *result;

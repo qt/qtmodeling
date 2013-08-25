@@ -41,19 +41,13 @@
 #include "qumloccurrencespecification.h"
 #include "qumloccurrencespecification_p.h"
 
-#include <QtUml/QUmlLifeline>
 #include <QtUml/QUmlGeneralOrdering>
-
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
+#include <QtUml/QUmlLifeline>
 
 QT_BEGIN_NAMESPACE
 
 QUmlOccurrenceSpecificationPrivate::QUmlOccurrenceSpecificationPrivate() :
     covered(0)
-{
-}
-
-QUmlOccurrenceSpecificationPrivate::~QUmlOccurrenceSpecificationPrivate()
 {
 }
 
@@ -65,53 +59,26 @@ QUmlOccurrenceSpecificationPrivate::~QUmlOccurrenceSpecificationPrivate()
     \brief An occurrence specification is the basic semantic unit of interactions. The sequences of occurrences specified by them are the meanings of interactions.
  */
 
-QUmlOccurrenceSpecification::QUmlOccurrenceSpecification(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlInteractionFragment(*new QUmlOccurrenceSpecificationPrivate, wrapper, parent)
+QUmlOccurrenceSpecification::QUmlOccurrenceSpecification(bool create_d_ptr) :
+    QUmlInteractionFragment(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlOccurrenceSpecificationPrivate);
 }
 
-QUmlOccurrenceSpecification::QUmlOccurrenceSpecification(QUmlOccurrenceSpecificationPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlInteractionFragment(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlOccurrenceSpecification::~QUmlOccurrenceSpecification()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlOccurrenceSpecification
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     References the Lifeline on which the OccurrenceSpecification appears.
  */
 QUmlLifeline *QUmlOccurrenceSpecification::covered() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlOccurrenceSpecification);
-    return d->covered;
+    return 0;
 }
 
 void QUmlOccurrenceSpecification::setCovered(QUmlLifeline *covered)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlOccurrenceSpecification);
-    if (d->covered != covered) {
-        // Adjust redefined property(ies)
-        (qwrappedobject_cast<QUmlInteractionFragment *>(this))->removeCovered(qwrappedobject_cast<QUmlLifeline *>(d->covered));
-
-        d->covered = covered;
-
-        // Adjust redefined property(ies)
-        if (covered) {
-            (qwrappedobject_cast<QUmlInteractionFragment *>(this))->addCovered(qwrappedobject_cast<QUmlLifeline *>(covered));
-        }
-    }
+    Q_UNUSED(covered);
 }
 
 /*!
@@ -119,36 +86,17 @@ void QUmlOccurrenceSpecification::setCovered(QUmlLifeline *covered)
  */
 QSet<QUmlGeneralOrdering *> QUmlOccurrenceSpecification::toAfter() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlOccurrenceSpecification);
-    return d->toAfter;
+    return QSet<QUmlGeneralOrdering *>();
 }
 
-void QUmlOccurrenceSpecification::addToAfter(QUmlGeneralOrdering *toAfter)
+void QUmlOccurrenceSpecification::addToAfter(QSet<QUmlGeneralOrdering *> toAfter)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlOccurrenceSpecification);
-    if (!d->toAfter.contains(toAfter)) {
-        d->toAfter.insert(toAfter);
-
-        // Adjust opposite property
-        toAfter->setBefore(this);
-    }
+    Q_UNUSED(toAfter);
 }
 
-void QUmlOccurrenceSpecification::removeToAfter(QUmlGeneralOrdering *toAfter)
+void QUmlOccurrenceSpecification::removeToAfter(QSet<QUmlGeneralOrdering *> toAfter)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlOccurrenceSpecification);
-    if (d->toAfter.contains(toAfter)) {
-        d->toAfter.remove(toAfter);
-
-        // Adjust opposite property
-        toAfter->setBefore(0);
-    }
+    Q_UNUSED(toAfter);
 }
 
 /*!
@@ -156,65 +104,18 @@ void QUmlOccurrenceSpecification::removeToAfter(QUmlGeneralOrdering *toAfter)
  */
 QSet<QUmlGeneralOrdering *> QUmlOccurrenceSpecification::toBefore() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlOccurrenceSpecification);
-    return d->toBefore;
+    return QSet<QUmlGeneralOrdering *>();
 }
 
-void QUmlOccurrenceSpecification::addToBefore(QUmlGeneralOrdering *toBefore)
+void QUmlOccurrenceSpecification::addToBefore(QSet<QUmlGeneralOrdering *> toBefore)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlOccurrenceSpecification);
-    if (!d->toBefore.contains(toBefore)) {
-        d->toBefore.insert(toBefore);
-
-        // Adjust opposite property
-        toBefore->setAfter(this);
-    }
+    Q_UNUSED(toBefore);
 }
 
-void QUmlOccurrenceSpecification::removeToBefore(QUmlGeneralOrdering *toBefore)
+void QUmlOccurrenceSpecification::removeToBefore(QSet<QUmlGeneralOrdering *> toBefore)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlOccurrenceSpecification);
-    if (d->toBefore.contains(toBefore)) {
-        d->toBefore.remove(toBefore);
-
-        // Adjust opposite property
-        toBefore->setAfter(0);
-    }
-}
-
-void QUmlOccurrenceSpecification::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOccurrenceSpecification")][QString::fromLatin1("covered")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOccurrenceSpecification")][QString::fromLatin1("covered")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOccurrenceSpecification")][QString::fromLatin1("covered")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Lifeline on which the OccurrenceSpecification appears.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOccurrenceSpecification")][QString::fromLatin1("covered")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QUmlInteractionFragment::covered");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOccurrenceSpecification")][QString::fromLatin1("covered")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOccurrenceSpecification")][QString::fromLatin1("covered")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOccurrenceSpecification")][QString::fromLatin1("toAfter")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOccurrenceSpecification")][QString::fromLatin1("toAfter")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOccurrenceSpecification")][QString::fromLatin1("toAfter")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the GeneralOrderings that specify EventOcurrences that must occur after this OccurrenceSpecification");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOccurrenceSpecification")][QString::fromLatin1("toAfter")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOccurrenceSpecification")][QString::fromLatin1("toAfter")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOccurrenceSpecification")][QString::fromLatin1("toAfter")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlGeneralOrdering::before");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOccurrenceSpecification")][QString::fromLatin1("toBefore")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOccurrenceSpecification")][QString::fromLatin1("toBefore")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOccurrenceSpecification")][QString::fromLatin1("toBefore")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the GeneralOrderings that specify EventOcurrences that must occur before this OccurrenceSpecification");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOccurrenceSpecification")][QString::fromLatin1("toBefore")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOccurrenceSpecification")][QString::fromLatin1("toBefore")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOccurrenceSpecification")][QString::fromLatin1("toBefore")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlGeneralOrdering::after");
-
-    QUmlInteractionFragment::setPropertyData();
+    Q_UNUSED(toBefore);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumloccurrencespecification.cpp"
 

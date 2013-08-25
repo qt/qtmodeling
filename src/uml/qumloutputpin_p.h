@@ -41,25 +41,20 @@
 #ifndef QUMLOUTPUTPIN_P_H
 #define QUMLOUTPUTPIN_P_H
 
-// Base class includes
-#include "private/qumlpin_p.h"
-
 #include "QtUml/QUmlOutputPin"
+
+#include "private/qumlpin_p.h"
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-class QUmlOutputPin;
 
 class Q_UML_EXPORT QUmlOutputPinPrivate : public QUmlPinPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlOutputPin)
-
 public:
-    explicit QUmlOutputPinPrivate();
-    virtual ~QUmlOutputPinPrivate();
+    QUmlOutputPinPrivate();
 
 };
 

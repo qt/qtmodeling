@@ -41,25 +41,20 @@
 #ifndef QUMLACTOR_P_H
 #define QUMLACTOR_P_H
 
-// Base class includes
-#include "private/qumlbehavioredclassifier_p.h"
-
 #include "QtUml/QUmlActor"
+
+#include "private/qumlbehavioredclassifier_p.h"
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-class QUmlActor;
 
 class Q_UML_EXPORT QUmlActorPrivate : public QUmlBehavioredClassifierPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlActor)
-
 public:
-    explicit QUmlActorPrivate();
-    virtual ~QUmlActorPrivate();
+    QUmlActorPrivate();
 
 };
 

@@ -41,14 +41,9 @@
 #ifndef QUMLDATATYPE_P_H
 #define QUMLDATATYPE_P_H
 
-// Base class includes
-#include "private/qumlclassifier_p.h"
-
 #include "QtUml/QUmlDataType"
 
-// Qt includes
-#include "QtCore/QList"
-#include "QtCore/QSet"
+#include "private/qumlclassifier_p.h"
 
 QT_BEGIN_HEADER
 
@@ -56,22 +51,13 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlProperty;
-class QUmlOperation;
-class QUmlNamedElement;
-class QUmlDataType;
-
 class Q_UML_EXPORT QUmlDataTypePrivate : public QUmlClassifierPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlDataType)
-
 public:
-    explicit QUmlDataTypePrivate();
-    virtual ~QUmlDataTypePrivate();
+    QUmlDataTypePrivate();
 
-    QList<QUmlOperation *> ownedOperations;
-    QList<QUmlProperty *> ownedAttributes;
+    QList<QUmlProperty *> ownedAttribute;
+    QList<QUmlOperation *> ownedOperation;
 };
 
 QT_END_NAMESPACE

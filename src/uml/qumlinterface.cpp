@@ -41,21 +41,15 @@
 #include "qumlinterface.h"
 #include "qumlinterface_p.h"
 
+#include <QtUml/QUmlOperation>
+#include <QtUml/QUmlProperty>
 #include <QtUml/QUmlProtocolStateMachine>
 #include <QtUml/QUmlReception>
-#include <QtUml/QUmlProperty>
-#include <QtUml/QUmlOperation>
-
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
 QT_BEGIN_NAMESPACE
 
 QUmlInterfacePrivate::QUmlInterfacePrivate() :
     protocol(0)
-{
-}
-
-QUmlInterfacePrivate::~QUmlInterfacePrivate()
 {
 }
 
@@ -67,318 +61,117 @@ QUmlInterfacePrivate::~QUmlInterfacePrivate()
     \brief Since an interface specifies conformance characteristics, it does not own detailed behavior specifications. Instead, interfaces may own a protocol state machine that specifies event sequences and pre/post conditions for the operations and receptions described by the interface.Interfaces may include receptions (in addition to operations).An interface is a kind of classifier that represents a declaration of a set of coherent public features and obligations. An interface specifies a contract; any instance of a classifier that realizes the interface must fulfill that contract. The obligations that may be associated with an interface are in the form of various kinds of constraints (such as pre- and post-conditions) or protocol specifications, which may impose ordering restrictions on interactions through the interface.
  */
 
-QUmlInterface::QUmlInterface(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlClassifier(*new QUmlInterfacePrivate, wrapper, parent)
+QUmlInterface::QUmlInterface(bool create_d_ptr) :
+    QUmlClassifier(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlInterfacePrivate);
 }
 
-QUmlInterface::QUmlInterface(QUmlInterfacePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlClassifier(dd, wrapper, parent)
+// Owned attributes
+
+/*!
+    References all the Classifiers that are defined (nested) within the Class.
+ */
+QList<QUmlClassifier *> QUmlInterface::nestedClassifier() const
 {
-    setPropertyData();
+    return QList<QUmlClassifier *>();
 }
 
-QUmlInterface::~QUmlInterface()
+void QUmlInterface::addNestedClassifier(QList<QUmlClassifier *> nestedClassifier)
 {
+    Q_UNUSED(nestedClassifier);
 }
 
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlInterface
-// ---------------------------------------------------------------
+void QUmlInterface::removeNestedClassifier(QList<QUmlClassifier *> nestedClassifier)
+{
+    Q_UNUSED(nestedClassifier);
+}
+
+/*!
+    The attributes (i.e. the properties) owned by the class.
+ */
+QList<QUmlProperty *> QUmlInterface::ownedAttribute() const
+{
+    return QList<QUmlProperty *>();
+}
+
+void QUmlInterface::addOwnedAttribute(QList<QUmlProperty *> ownedAttribute)
+{
+    Q_UNUSED(ownedAttribute);
+}
+
+void QUmlInterface::removeOwnedAttribute(QList<QUmlProperty *> ownedAttribute)
+{
+    Q_UNUSED(ownedAttribute);
+}
+
+/*!
+    The operations owned by the class.
+ */
+QList<QUmlOperation *> QUmlInterface::ownedOperation() const
+{
+    return QList<QUmlOperation *>();
+}
+
+void QUmlInterface::addOwnedOperation(QList<QUmlOperation *> ownedOperation)
+{
+    Q_UNUSED(ownedOperation);
+}
+
+void QUmlInterface::removeOwnedOperation(QList<QUmlOperation *> ownedOperation)
+{
+    Q_UNUSED(ownedOperation);
+}
+
+/*!
+    Receptions that objects providing this interface are willing to accept.
+ */
+QSet<QUmlReception *> QUmlInterface::ownedReception() const
+{
+    return QSet<QUmlReception *>();
+}
+
+void QUmlInterface::addOwnedReception(QSet<QUmlReception *> ownedReception)
+{
+    Q_UNUSED(ownedReception);
+}
+
+void QUmlInterface::removeOwnedReception(QSet<QUmlReception *> ownedReception)
+{
+    Q_UNUSED(ownedReception);
+}
 
 /*!
     References a protocol state machine specifying the legal sequences of the invocation of the behavioral features described in the interface.
  */
 QUmlProtocolStateMachine *QUmlInterface::protocol() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlInterface);
-    return d->protocol;
+    return 0;
 }
 
 void QUmlInterface::setProtocol(QUmlProtocolStateMachine *protocol)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlInterface);
-    if (d->protocol != protocol) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlNamespacePrivate *>(d))->removeOwnedMember(qwrappedobject_cast<QUmlNamedElement *>(d->protocol));
-
-        d->protocol = protocol;
-
-        // Adjust subsetted property(ies)
-        if (protocol) {
-            (qwrappedobject_cast<QUmlNamespacePrivate *>(d))->addOwnedMember(qwrappedobject_cast<QUmlNamedElement *>(protocol));
-        }
-    }
+    Q_UNUSED(protocol);
 }
 
 /*!
     References all the Interfaces redefined by this Interface.
  */
-QSet<QUmlInterface *> QUmlInterface::redefinedInterfaces() const
+QSet<QUmlInterface *> QUmlInterface::redefinedInterface() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlInterface);
-    return d->redefinedInterfaces;
+    return QSet<QUmlInterface *>();
 }
 
-void QUmlInterface::addRedefinedInterface(QUmlInterface *redefinedInterface)
+void QUmlInterface::addRedefinedInterface(QSet<QUmlInterface *> redefinedInterface)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlInterface);
-    if (!d->redefinedInterfaces.contains(redefinedInterface)) {
-        d->redefinedInterfaces.insert(redefinedInterface);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlClassifier *>(this))->addRedefinedClassifier(qwrappedobject_cast<QUmlClassifier *>(redefinedInterface));
-    }
+    Q_UNUSED(redefinedInterface);
 }
 
-void QUmlInterface::removeRedefinedInterface(QUmlInterface *redefinedInterface)
+void QUmlInterface::removeRedefinedInterface(QSet<QUmlInterface *> redefinedInterface)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlInterface);
-    if (d->redefinedInterfaces.contains(redefinedInterface)) {
-        d->redefinedInterfaces.remove(redefinedInterface);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlClassifier *>(this))->removeRedefinedClassifier(qwrappedobject_cast<QUmlClassifier *>(redefinedInterface));
-    }
-}
-
-/*!
-    Receptions that objects providing this interface are willing to accept.
- */
-QSet<QUmlReception *> QUmlInterface::ownedReceptions() const
-{
-    // This is a read-write association end
-
-    Q_D(const QUmlInterface);
-    return d->ownedReceptions;
-}
-
-void QUmlInterface::addOwnedReception(QUmlReception *ownedReception)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlInterface);
-    if (!d->ownedReceptions.contains(ownedReception)) {
-        d->ownedReceptions.insert(ownedReception);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlClassifierPrivate *>(d))->addFeature(qwrappedobject_cast<QUmlFeature *>(ownedReception));
-        (qwrappedobject_cast<QUmlNamespacePrivate *>(d))->addOwnedMember(qwrappedobject_cast<QUmlNamedElement *>(ownedReception));
-    }
-}
-
-void QUmlInterface::removeOwnedReception(QUmlReception *ownedReception)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlInterface);
-    if (d->ownedReceptions.contains(ownedReception)) {
-        d->ownedReceptions.remove(ownedReception);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlClassifierPrivate *>(d))->removeFeature(qwrappedobject_cast<QUmlFeature *>(ownedReception));
-        (qwrappedobject_cast<QUmlNamespacePrivate *>(d))->removeOwnedMember(qwrappedobject_cast<QUmlNamedElement *>(ownedReception));
-    }
-}
-
-/*!
-    The operations owned by the class.
- */
-QList<QUmlOperation *> QUmlInterface::ownedOperations() const
-{
-    // This is a read-write association end
-
-    Q_D(const QUmlInterface);
-    return d->ownedOperations;
-}
-
-void QUmlInterface::addOwnedOperation(QUmlOperation *ownedOperation)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlInterface);
-    if (!d->ownedOperations.contains(ownedOperation)) {
-        d->ownedOperations.append(ownedOperation);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlClassifierPrivate *>(d))->addFeature(qwrappedobject_cast<QUmlFeature *>(ownedOperation));
-        (qwrappedobject_cast<QUmlNamespacePrivate *>(d))->addOwnedMember(qwrappedobject_cast<QUmlNamedElement *>(ownedOperation));
-
-        // Adjust opposite property
-        ownedOperation->setInterface_(this);
-    }
-}
-
-void QUmlInterface::removeOwnedOperation(QUmlOperation *ownedOperation)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlInterface);
-    if (d->ownedOperations.contains(ownedOperation)) {
-        d->ownedOperations.removeAll(ownedOperation);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlClassifierPrivate *>(d))->removeFeature(qwrappedobject_cast<QUmlFeature *>(ownedOperation));
-        (qwrappedobject_cast<QUmlNamespacePrivate *>(d))->removeOwnedMember(qwrappedobject_cast<QUmlNamedElement *>(ownedOperation));
-
-        // Adjust opposite property
-        ownedOperation->setInterface_(0);
-    }
-}
-
-/*!
-    References all the Classifiers that are defined (nested) within the Class.
- */
-QList<QUmlClassifier *> QUmlInterface::nestedClassifiers() const
-{
-    // This is a read-write association end
-
-    Q_D(const QUmlInterface);
-    return d->nestedClassifiers;
-}
-
-void QUmlInterface::addNestedClassifier(QUmlClassifier *nestedClassifier)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlInterface);
-    if (!d->nestedClassifiers.contains(nestedClassifier)) {
-        d->nestedClassifiers.append(nestedClassifier);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlNamespacePrivate *>(d))->addOwnedMember(qwrappedobject_cast<QUmlNamedElement *>(nestedClassifier));
-    }
-}
-
-void QUmlInterface::removeNestedClassifier(QUmlClassifier *nestedClassifier)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlInterface);
-    if (d->nestedClassifiers.contains(nestedClassifier)) {
-        d->nestedClassifiers.removeAll(nestedClassifier);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlNamespacePrivate *>(d))->removeOwnedMember(qwrappedobject_cast<QUmlNamedElement *>(nestedClassifier));
-    }
-}
-
-/*!
-    The attributes (i.e. the properties) owned by the class.
- */
-QList<QUmlProperty *> QUmlInterface::ownedAttributes() const
-{
-    // This is a read-write association end
-
-    Q_D(const QUmlInterface);
-    return d->ownedAttributes;
-}
-
-void QUmlInterface::addOwnedAttribute(QUmlProperty *ownedAttribute)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlInterface);
-    if (!d->ownedAttributes.contains(ownedAttribute)) {
-        d->ownedAttributes.append(ownedAttribute);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlNamespacePrivate *>(d))->addOwnedMember(qwrappedobject_cast<QUmlNamedElement *>(ownedAttribute));
-        (qwrappedobject_cast<QUmlClassifierPrivate *>(d))->addAttribute(qwrappedobject_cast<QUmlProperty *>(ownedAttribute));
-
-        // Adjust opposite property
-        ownedAttribute->setInterface_(this);
-    }
-}
-
-void QUmlInterface::removeOwnedAttribute(QUmlProperty *ownedAttribute)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlInterface);
-    if (d->ownedAttributes.contains(ownedAttribute)) {
-        d->ownedAttributes.removeAll(ownedAttribute);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlNamespacePrivate *>(d))->removeOwnedMember(qwrappedobject_cast<QUmlNamedElement *>(ownedAttribute));
-        (qwrappedobject_cast<QUmlClassifierPrivate *>(d))->removeAttribute(qwrappedobject_cast<QUmlProperty *>(ownedAttribute));
-
-        // Adjust opposite property
-        ownedAttribute->setInterface_(0);
-    }
-}
-
-void QUmlInterface::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterface")][QString::fromLatin1("protocol")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterface")][QString::fromLatin1("protocol")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterface")][QString::fromLatin1("protocol")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References a protocol state machine specifying the legal sequences of the invocation of the behavioral features described in the interface.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterface")][QString::fromLatin1("protocol")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterface")][QString::fromLatin1("protocol")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlNamespace::ownedMembers");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterface")][QString::fromLatin1("protocol")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterface")][QString::fromLatin1("redefinedInterfaces")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterface")][QString::fromLatin1("redefinedInterfaces")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterface")][QString::fromLatin1("redefinedInterfaces")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References all the Interfaces redefined by this Interface.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterface")][QString::fromLatin1("redefinedInterfaces")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterface")][QString::fromLatin1("redefinedInterfaces")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlClassifier::redefinedClassifiers");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterface")][QString::fromLatin1("redefinedInterfaces")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterface")][QString::fromLatin1("ownedReceptions")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterface")][QString::fromLatin1("ownedReceptions")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterface")][QString::fromLatin1("ownedReceptions")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Receptions that objects providing this interface are willing to accept.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterface")][QString::fromLatin1("ownedReceptions")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterface")][QString::fromLatin1("ownedReceptions")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlClassifier::features QUmlNamespace::ownedMembers");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterface")][QString::fromLatin1("ownedReceptions")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterface")][QString::fromLatin1("ownedOperations")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterface")][QString::fromLatin1("ownedOperations")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterface")][QString::fromLatin1("ownedOperations")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The operations owned by the class.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterface")][QString::fromLatin1("ownedOperations")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterface")][QString::fromLatin1("ownedOperations")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlClassifier::features QUmlNamespace::ownedMembers");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterface")][QString::fromLatin1("ownedOperations")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlOperation::interface");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterface")][QString::fromLatin1("nestedClassifiers")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterface")][QString::fromLatin1("nestedClassifiers")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterface")][QString::fromLatin1("nestedClassifiers")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References all the Classifiers that are defined (nested) within the Class.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterface")][QString::fromLatin1("nestedClassifiers")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterface")][QString::fromLatin1("nestedClassifiers")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlNamespace::ownedMembers");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterface")][QString::fromLatin1("nestedClassifiers")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterface")][QString::fromLatin1("ownedAttributes")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterface")][QString::fromLatin1("ownedAttributes")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterface")][QString::fromLatin1("ownedAttributes")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The attributes (i.e. the properties) owned by the class.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterface")][QString::fromLatin1("ownedAttributes")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterface")][QString::fromLatin1("ownedAttributes")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlNamespace::ownedMembers QUmlClassifier::attributes");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInterface")][QString::fromLatin1("ownedAttributes")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlProperty::interface");
-
-    QUmlClassifier::setPropertyData();
-}
-
-// Overriden methods for subsetted properties
-
-void QUmlInterface::addRedefinedClassifier(QWrappedObjectPointer<QUmlInterface> redefinedInterface)
-{
-    addRedefinedInterface(redefinedInterface);
-}
-
-void QUmlInterface::removeRedefinedClassifier(QWrappedObjectPointer<QUmlInterface> redefinedInterface)
-{
-    removeRedefinedInterface(redefinedInterface);
+    Q_UNUSED(redefinedInterface);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlinterface.cpp"
 

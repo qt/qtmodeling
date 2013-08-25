@@ -41,23 +41,16 @@
 #include "qumlinteractionuse.h"
 #include "qumlinteractionuse_p.h"
 
-#include <QtUml/QUmlProperty>
-#include <QtUml/QUmlInteraction>
 #include <QtUml/QUmlGate>
+#include <QtUml/QUmlProperty>
 #include <QtUml/QUmlValueSpecification>
-
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
 QT_BEGIN_NAMESPACE
 
 QUmlInteractionUsePrivate::QUmlInteractionUsePrivate() :
-    returnValue(0),
     refersTo(0),
+    returnValue(0),
     returnValueRecipient(0)
-{
-}
-
-QUmlInteractionUsePrivate::~QUmlInteractionUsePrivate()
 {
 }
 
@@ -69,90 +62,49 @@ QUmlInteractionUsePrivate::~QUmlInteractionUsePrivate()
     \brief An interaction use refers to an interaction. The interaction use is a shorthand for copying the contents of the referenced interaction where the interaction use is. To be accurate the copying must take into account substituting parameters with arguments and connect the formal gates with the actual ones.
  */
 
-QUmlInteractionUse::QUmlInteractionUse(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlInteractionFragment(*new QUmlInteractionUsePrivate, wrapper, parent)
+QUmlInteractionUse::QUmlInteractionUse(bool create_d_ptr) :
+    QUmlInteractionFragment(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlInteractionUsePrivate);
 }
 
-QUmlInteractionUse::QUmlInteractionUse(QUmlInteractionUsePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlInteractionFragment(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlInteractionUse::~QUmlInteractionUse()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlInteractionUse
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     The actual gates of the InteractionUse
  */
-QSet<QUmlGate *> QUmlInteractionUse::actualGates() const
+QSet<QUmlGate *> QUmlInteractionUse::actualGate() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlInteractionUse);
-    return d->actualGates;
+    return QSet<QUmlGate *>();
 }
 
-void QUmlInteractionUse::addActualGate(QUmlGate *actualGate)
+void QUmlInteractionUse::addActualGate(QSet<QUmlGate *> actualGate)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlInteractionUse);
-    if (!d->actualGates.contains(actualGate)) {
-        d->actualGates.insert(actualGate);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QUmlElement *>(actualGate));
-    }
+    Q_UNUSED(actualGate);
 }
 
-void QUmlInteractionUse::removeActualGate(QUmlGate *actualGate)
+void QUmlInteractionUse::removeActualGate(QSet<QUmlGate *> actualGate)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlInteractionUse);
-    if (d->actualGates.contains(actualGate)) {
-        d->actualGates.remove(actualGate);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QUmlElement *>(actualGate));
-    }
+    Q_UNUSED(actualGate);
 }
 
 /*!
-    The value of the executed Interaction.
+    The actual arguments of the Interaction
  */
-QUmlValueSpecification *QUmlInteractionUse::returnValue() const
+QList<QUmlValueSpecification *> QUmlInteractionUse::argument() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlInteractionUse);
-    return d->returnValue;
+    return QList<QUmlValueSpecification *>();
 }
 
-void QUmlInteractionUse::setReturnValue(QUmlValueSpecification *returnValue)
+void QUmlInteractionUse::addArgument(QList<QUmlValueSpecification *> argument)
 {
-    // This is a read-write association end
+    Q_UNUSED(argument);
+}
 
-    Q_D(QUmlInteractionUse);
-    if (d->returnValue != returnValue) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QUmlElement *>(d->returnValue));
-
-        d->returnValue = returnValue;
-
-        // Adjust subsetted property(ies)
-        if (returnValue) {
-            (qwrappedobject_cast<QUmlElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QUmlElement *>(returnValue));
-        }
-    }
+void QUmlInteractionUse::removeArgument(QList<QUmlValueSpecification *> argument)
+{
+    Q_UNUSED(argument);
 }
 
 /*!
@@ -160,57 +112,25 @@ void QUmlInteractionUse::setReturnValue(QUmlValueSpecification *returnValue)
  */
 QUmlInteraction *QUmlInteractionUse::refersTo() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlInteractionUse);
-    return d->refersTo;
+    return 0;
 }
 
 void QUmlInteractionUse::setRefersTo(QUmlInteraction *refersTo)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlInteractionUse);
-    if (d->refersTo != refersTo) {
-        d->refersTo = refersTo;
-    }
+    Q_UNUSED(refersTo);
 }
 
 /*!
-    The actual arguments of the Interaction
+    The value of the executed Interaction.
  */
-QList<QUmlValueSpecification *> QUmlInteractionUse::arguments() const
+QUmlValueSpecification *QUmlInteractionUse::returnValue() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlInteractionUse);
-    return d->arguments;
+    return 0;
 }
 
-void QUmlInteractionUse::addArgument(QUmlValueSpecification *argument)
+void QUmlInteractionUse::setReturnValue(QUmlValueSpecification *returnValue)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlInteractionUse);
-    if (!d->arguments.contains(argument)) {
-        d->arguments.append(argument);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QUmlElement *>(argument));
-    }
-}
-
-void QUmlInteractionUse::removeArgument(QUmlValueSpecification *argument)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlInteractionUse);
-    if (d->arguments.contains(argument)) {
-        d->arguments.removeAll(argument);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QUmlElement *>(argument));
-    }
+    Q_UNUSED(returnValue);
 }
 
 /*!
@@ -218,63 +138,13 @@ void QUmlInteractionUse::removeArgument(QUmlValueSpecification *argument)
  */
 QUmlProperty *QUmlInteractionUse::returnValueRecipient() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlInteractionUse);
-    return d->returnValueRecipient;
+    return 0;
 }
 
 void QUmlInteractionUse::setReturnValueRecipient(QUmlProperty *returnValueRecipient)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlInteractionUse);
-    if (d->returnValueRecipient != returnValueRecipient) {
-        d->returnValueRecipient = returnValueRecipient;
-    }
-}
-
-void QUmlInteractionUse::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionUse")][QString::fromLatin1("actualGates")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionUse")][QString::fromLatin1("actualGates")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionUse")][QString::fromLatin1("actualGates")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The actual gates of the InteractionUse");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionUse")][QString::fromLatin1("actualGates")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionUse")][QString::fromLatin1("actualGates")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionUse")][QString::fromLatin1("actualGates")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionUse")][QString::fromLatin1("returnValue")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionUse")][QString::fromLatin1("returnValue")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionUse")][QString::fromLatin1("returnValue")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The value of the executed Interaction.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionUse")][QString::fromLatin1("returnValue")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionUse")][QString::fromLatin1("returnValue")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionUse")][QString::fromLatin1("returnValue")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionUse")][QString::fromLatin1("refersTo")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionUse")][QString::fromLatin1("refersTo")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionUse")][QString::fromLatin1("refersTo")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Refers to the Interaction that defines its meaning");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionUse")][QString::fromLatin1("refersTo")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionUse")][QString::fromLatin1("refersTo")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionUse")][QString::fromLatin1("refersTo")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionUse")][QString::fromLatin1("arguments")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionUse")][QString::fromLatin1("arguments")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionUse")][QString::fromLatin1("arguments")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The actual arguments of the Interaction");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionUse")][QString::fromLatin1("arguments")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionUse")][QString::fromLatin1("arguments")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionUse")][QString::fromLatin1("arguments")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionUse")][QString::fromLatin1("returnValueRecipient")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionUse")][QString::fromLatin1("returnValueRecipient")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionUse")][QString::fromLatin1("returnValueRecipient")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The recipient of the return value.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionUse")][QString::fromLatin1("returnValueRecipient")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionUse")][QString::fromLatin1("returnValueRecipient")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlInteractionUse")][QString::fromLatin1("returnValueRecipient")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlInteractionFragment::setPropertyData();
+    Q_UNUSED(returnValueRecipient);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlinteractionuse.cpp"
 

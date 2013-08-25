@@ -41,16 +41,11 @@
 #ifndef QUMLSTATE_P_H
 #define QUMLSTATE_P_H
 
-// Base class includes
-#include "private/qwrappedobject_p.h"
+#include "QtUml/QUmlState"
+
 #include "private/qumlnamespace_p.h"
 #include "private/qumlredefinableelement_p.h"
 #include "private/qumlvertex_p.h"
-
-#include "QtUml/QUmlState"
-
-// Qt includes
-#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 
@@ -58,36 +53,26 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlStateMachine;
-class QUmlClassifier;
-class QUmlConstraint;
-class QUmlRegion;
-class QUmlState;
-class QUmlBehavior;
-class QUmlConnectionPointReference;
-class QUmlTrigger;
-class QUmlPseudostate;
-class QUmlState;
-
-class Q_UML_EXPORT QUmlStatePrivate : public QWrappedObjectPrivate
+class Q_UML_EXPORT QUmlStatePrivate : public QUmlNamespacePrivate, public QUmlRedefinableElementPrivate, public QUmlVertexPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlState)
-
 public:
-    explicit QUmlStatePrivate();
-    virtual ~QUmlStatePrivate();
+    QUmlStatePrivate();
 
-    QSet<QUmlRegion *> regions;
-    QUmlBehavior *exit;
-    QSet<QUmlConnectionPointReference *> connections;
-    QUmlState *redefinedState;
-    QSet<QUmlTrigger *> deferrableTriggers;
-    QSet<QUmlPseudostate *> connectionPoints;
-    QUmlBehavior *entry;
+    QSet<QUmlConnectionPointReference *> connection;
+    QSet<QUmlPseudostate *> connectionPoint;
+    QSet<QUmlTrigger *> deferrableTrigger;
     QUmlBehavior *doActivity;
-    QUmlStateMachine *submachine;
+    QUmlBehavior *entry;
+    QUmlBehavior *exit;
+    bool isComposite;
+    bool isOrthogonal;
+    bool isSimple;
+    bool isSubmachineState;
+    QUmlState *redefinedState;
+    QUmlClassifier *redefinitionContext;
+    QSet<QUmlRegion *> region;
     QUmlConstraint *stateInvariant;
+    QUmlStateMachine *submachine;
 };
 
 QT_END_NAMESPACE

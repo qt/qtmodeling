@@ -44,17 +44,11 @@
 #include <QtUml/QUmlAssociation>
 #include <QtUml/QUmlInputPin>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlClearAssociationActionPrivate::QUmlClearAssociationActionPrivate() :
-    object(0),
-    association(0)
-{
-}
-
-QUmlClearAssociationActionPrivate::~QUmlClearAssociationActionPrivate()
+    association(0),
+    object(0)
 {
 }
 
@@ -66,96 +60,40 @@ QUmlClearAssociationActionPrivate::~QUmlClearAssociationActionPrivate()
     \brief A clear association action is an action that destroys all links of an association in which a particular object participates.
  */
 
-QUmlClearAssociationAction::QUmlClearAssociationAction(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlAction(*new QUmlClearAssociationActionPrivate, wrapper, parent)
+QUmlClearAssociationAction::QUmlClearAssociationAction(bool create_d_ptr) :
+    QUmlAction(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlClearAssociationActionPrivate);
 }
 
-QUmlClearAssociationAction::QUmlClearAssociationAction(QUmlClearAssociationActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlAction(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlClearAssociationAction::~QUmlClearAssociationAction()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlClearAssociationAction
-// ---------------------------------------------------------------
-
-/*!
-    Gives the input pin from which is obtained the object whose participation in the association is to be cleared.
- */
-QUmlInputPin *QUmlClearAssociationAction::object() const
-{
-    // This is a read-write association end
-
-    Q_D(const QUmlClearAssociationAction);
-    return d->object;
-}
-
-void QUmlClearAssociationAction::setObject(QUmlInputPin *object)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlClearAssociationAction);
-    if (d->object != object) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActionPrivate *>(d))->removeInput(qwrappedobject_cast<QUmlInputPin *>(d->object));
-
-        d->object = object;
-
-        // Adjust subsetted property(ies)
-        if (object) {
-            (qwrappedobject_cast<QUmlActionPrivate *>(d))->addInput(qwrappedobject_cast<QUmlInputPin *>(object));
-        }
-    }
-}
+// Owned attributes
 
 /*!
     Association to be cleared.
  */
 QUmlAssociation *QUmlClearAssociationAction::association() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlClearAssociationAction);
-    return d->association;
+    return 0;
 }
 
 void QUmlClearAssociationAction::setAssociation(QUmlAssociation *association)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlClearAssociationAction);
-    if (d->association != association) {
-        d->association = association;
-    }
+    Q_UNUSED(association);
 }
 
-void QUmlClearAssociationAction::setPropertyData()
+/*!
+    Gives the input pin from which is obtained the object whose participation in the association is to be cleared.
+ */
+QUmlInputPin *QUmlClearAssociationAction::object() const
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlClearAssociationAction")][QString::fromLatin1("object")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlClearAssociationAction")][QString::fromLatin1("object")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlClearAssociationAction")][QString::fromLatin1("object")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Gives the input pin from which is obtained the object whose participation in the association is to be cleared.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlClearAssociationAction")][QString::fromLatin1("object")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlClearAssociationAction")][QString::fromLatin1("object")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlAction::inputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlClearAssociationAction")][QString::fromLatin1("object")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
+    return 0;
+}
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlClearAssociationAction")][QString::fromLatin1("association")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlClearAssociationAction")][QString::fromLatin1("association")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlClearAssociationAction")][QString::fromLatin1("association")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Association to be cleared.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlClearAssociationAction")][QString::fromLatin1("association")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlClearAssociationAction")][QString::fromLatin1("association")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlClearAssociationAction")][QString::fromLatin1("association")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlAction::setPropertyData();
+void QUmlClearAssociationAction::setObject(QUmlInputPin *object)
+{
+    Q_UNUSED(object);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlclearassociationaction.cpp"
 

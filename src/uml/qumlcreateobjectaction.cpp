@@ -44,17 +44,11 @@
 #include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlOutputPin>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlCreateObjectActionPrivate::QUmlCreateObjectActionPrivate() :
     classifier(0),
     result(0)
-{
-}
-
-QUmlCreateObjectActionPrivate::~QUmlCreateObjectActionPrivate()
 {
 }
 
@@ -66,45 +60,26 @@ QUmlCreateObjectActionPrivate::~QUmlCreateObjectActionPrivate()
     \brief A create object action is an action that creates an object that conforms to a statically specified classifier and puts it on an output pin at runtime.
  */
 
-QUmlCreateObjectAction::QUmlCreateObjectAction(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlAction(*new QUmlCreateObjectActionPrivate, wrapper, parent)
+QUmlCreateObjectAction::QUmlCreateObjectAction(bool create_d_ptr) :
+    QUmlAction(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlCreateObjectActionPrivate);
 }
 
-QUmlCreateObjectAction::QUmlCreateObjectAction(QUmlCreateObjectActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlAction(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlCreateObjectAction::~QUmlCreateObjectAction()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlCreateObjectAction
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     Classifier to be instantiated.
  */
 QUmlClassifier *QUmlCreateObjectAction::classifier() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlCreateObjectAction);
-    return d->classifier;
+    return 0;
 }
 
 void QUmlCreateObjectAction::setClassifier(QUmlClassifier *classifier)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlCreateObjectAction);
-    if (d->classifier != classifier) {
-        d->classifier = classifier;
-    }
+    Q_UNUSED(classifier);
 }
 
 /*!
@@ -112,50 +87,13 @@ void QUmlCreateObjectAction::setClassifier(QUmlClassifier *classifier)
  */
 QUmlOutputPin *QUmlCreateObjectAction::result() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlCreateObjectAction);
-    return d->result;
+    return 0;
 }
 
 void QUmlCreateObjectAction::setResult(QUmlOutputPin *result)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlCreateObjectAction);
-    if (d->result != result) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActionPrivate *>(d))->removeOutput(qwrappedobject_cast<QUmlOutputPin *>(d->result));
-
-        d->result = result;
-
-        // Adjust subsetted property(ies)
-        if (result) {
-            (qwrappedobject_cast<QUmlActionPrivate *>(d))->addOutput(qwrappedobject_cast<QUmlOutputPin *>(result));
-        }
-    }
-}
-
-void QUmlCreateObjectAction::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCreateObjectAction")][QString::fromLatin1("classifier")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCreateObjectAction")][QString::fromLatin1("classifier")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCreateObjectAction")][QString::fromLatin1("classifier")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Classifier to be instantiated.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCreateObjectAction")][QString::fromLatin1("classifier")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCreateObjectAction")][QString::fromLatin1("classifier")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCreateObjectAction")][QString::fromLatin1("classifier")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCreateObjectAction")][QString::fromLatin1("result")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCreateObjectAction")][QString::fromLatin1("result")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCreateObjectAction")][QString::fromLatin1("result")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Gives the output pin on which the result is put.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCreateObjectAction")][QString::fromLatin1("result")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCreateObjectAction")][QString::fromLatin1("result")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlAction::outputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCreateObjectAction")][QString::fromLatin1("result")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlAction::setPropertyData();
+    Q_UNUSED(result);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlcreateobjectaction.cpp"
 

@@ -41,21 +41,15 @@
 #include "qumlprofileapplication.h"
 #include "qumlprofileapplication_p.h"
 
-#include <QtUml/QUmlProfile>
 #include <QtUml/QUmlPackage>
-
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
+#include <QtUml/QUmlProfile>
 
 QT_BEGIN_NAMESPACE
 
 QUmlProfileApplicationPrivate::QUmlProfileApplicationPrivate() :
-    isStrict(false),
+    appliedProfile(0),
     applyingPackage(0),
-    appliedProfile(0)
-{
-}
-
-QUmlProfileApplicationPrivate::~QUmlProfileApplicationPrivate()
+    isStrict(false)
 {
 }
 
@@ -67,153 +61,53 @@ QUmlProfileApplicationPrivate::~QUmlProfileApplicationPrivate()
     \brief A profile application is used to show which profiles have been applied to a package.
  */
 
-QUmlProfileApplication::QUmlProfileApplication(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlDirectedRelationship(*new QUmlProfileApplicationPrivate, wrapper, parent)
+QUmlProfileApplication::QUmlProfileApplication(bool create_d_ptr) :
+    QUmlDirectedRelationship(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlProfileApplicationPrivate);
 }
 
-QUmlProfileApplication::QUmlProfileApplication(QUmlProfileApplicationPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlDirectedRelationship(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlProfileApplication::~QUmlProfileApplication()
-{
-}
-
-// ---------------------------------------------------------------
-// ATTRIBUTES FROM QUmlProfileApplication
-// ---------------------------------------------------------------
-
-/*!
-    Specifies that the Profile filtering rules for the metaclasses of the referenced metamodel shall be strictly applied.
- */
-bool QUmlProfileApplication::isStrict() const
-{
-    // This is a read-write attribute
-
-    Q_D(const QUmlProfileApplication);
-    return d->isStrict;
-}
-
-void QUmlProfileApplication::setStrict(bool isStrict)
-{
-    // This is a read-write attribute
-
-    Q_D(QUmlProfileApplication);
-    if (d->isStrict != isStrict) {
-        d->isStrict = isStrict;
-    }
-    d->modifiedResettableProperties << QString::fromLatin1("isStrict");
-}
-
-void QUmlProfileApplication::unsetStrict()
-{
-    setStrict(false);
-    Q_D(QUmlProfileApplication);
-    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isStrict"));
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlProfileApplication
-// ---------------------------------------------------------------
-
-/*!
-    The package that owns the profile application.
- */
-QUmlPackage *QUmlProfileApplication::applyingPackage() const
-{
-    // This is a read-write association end
-
-    Q_D(const QUmlProfileApplication);
-    return d->applyingPackage;
-}
-
-void QUmlProfileApplication::setApplyingPackage(QUmlPackage *applyingPackage)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlProfileApplication);
-    if (d->applyingPackage != applyingPackage) {
-        // Adjust opposite property
-        if (d->applyingPackage)
-            d->applyingPackage->removeProfileApplication(this);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlDirectedRelationshipPrivate *>(d))->removeSource(qwrappedobject_cast<QUmlElement *>(d->applyingPackage));
-
-        d->applyingPackage = applyingPackage;
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->setOwner(qwrappedobject_cast<QUmlElement *>(applyingPackage));
-        if (applyingPackage) {
-            (qwrappedobject_cast<QUmlDirectedRelationshipPrivate *>(d))->addSource(qwrappedobject_cast<QUmlElement *>(applyingPackage));
-        }
-
-        // Adjust opposite property
-        if (applyingPackage)
-            applyingPackage->addProfileApplication(this);
-    }
-}
+// Owned attributes
 
 /*!
     References the Profiles that are applied to a Package through this ProfileApplication.
  */
 QUmlProfile *QUmlProfileApplication::appliedProfile() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlProfileApplication);
-    return d->appliedProfile;
+    return 0;
 }
 
 void QUmlProfileApplication::setAppliedProfile(QUmlProfile *appliedProfile)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlProfileApplication);
-    if (d->appliedProfile != appliedProfile) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlDirectedRelationshipPrivate *>(d))->removeTarget(qwrappedobject_cast<QUmlElement *>(d->appliedProfile));
-
-        d->appliedProfile = appliedProfile;
-
-        // Adjust subsetted property(ies)
-        if (appliedProfile) {
-            (qwrappedobject_cast<QUmlDirectedRelationshipPrivate *>(d))->addTarget(qwrappedobject_cast<QUmlElement *>(appliedProfile));
-        }
-    }
+    Q_UNUSED(appliedProfile);
 }
 
-void QUmlProfileApplication::setPropertyData()
+/*!
+    The package that owns the profile application.
+ */
+QUmlPackage *QUmlProfileApplication::applyingPackage() const
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlProfileApplication")][QString::fromLatin1("isStrict")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlProfileApplication")][QString::fromLatin1("isStrict")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlProfileApplication")][QString::fromLatin1("isStrict")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies that the Profile filtering rules for the metaclasses of the referenced metamodel shall be strictly applied.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlProfileApplication")][QString::fromLatin1("isStrict")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlProfileApplication")][QString::fromLatin1("isStrict")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlProfileApplication")][QString::fromLatin1("isStrict")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    return 0;
+}
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlProfileApplication")][QString::fromLatin1("applyingPackage")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlProfileApplication")][QString::fromLatin1("applyingPackage")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlProfileApplication")][QString::fromLatin1("applyingPackage")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The package that owns the profile application.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlProfileApplication")][QString::fromLatin1("applyingPackage")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlProfileApplication")][QString::fromLatin1("applyingPackage")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::owner QUmlDirectedRelationship::sources");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlProfileApplication")][QString::fromLatin1("applyingPackage")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlPackage::profileApplication");
+void QUmlProfileApplication::setApplyingPackage(QUmlPackage *applyingPackage)
+{
+    Q_UNUSED(applyingPackage);
+}
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlProfileApplication")][QString::fromLatin1("appliedProfile")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlProfileApplication")][QString::fromLatin1("appliedProfile")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlProfileApplication")][QString::fromLatin1("appliedProfile")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Profiles that are applied to a Package through this ProfileApplication.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlProfileApplication")][QString::fromLatin1("appliedProfile")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlProfileApplication")][QString::fromLatin1("appliedProfile")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlDirectedRelationship::targets");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlProfileApplication")][QString::fromLatin1("appliedProfile")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
+/*!
+    Specifies that the Profile filtering rules for the metaclasses of the referenced metamodel shall be strictly applied.
+ */
+bool QUmlProfileApplication::isStrict() const
+{
+    return bool();
+}
 
-    QUmlDirectedRelationship::setPropertyData();
+void QUmlProfileApplication::setStrict(bool isStrict)
+{
+    Q_UNUSED(isStrict);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlprofileapplication.cpp"
 

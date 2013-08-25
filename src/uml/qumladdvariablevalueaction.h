@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlWriteVariableAction>
 
 QT_BEGIN_HEADER
@@ -52,39 +51,19 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlInputPin;
 
 class QUmlAddVariableValueActionPrivate;
-
 class Q_UML_EXPORT QUmlAddVariableValueAction : public QUmlWriteVariableAction
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(bool isReplaceAll READ isReplaceAll WRITE setReplaceAll RESET unsetReplaceAll)
-    Q_PROPERTY(QUmlInputPin * insertAt READ insertAt WRITE setInsertAt)
-
-    Q_DISABLE_COPY(QUmlAddVariableValueAction)
-    Q_DECLARE_PRIVATE(QUmlAddVariableValueAction)
-
 public:
-    Q_INVOKABLE explicit QUmlAddVariableValueAction(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlAddVariableValueAction();
+    QUmlAddVariableValueAction(bool create_d_ptr = true);
 
-    // Attributes from QUmlAddVariableValueAction
-    Q_INVOKABLE bool isReplaceAll() const;
-    Q_INVOKABLE void setReplaceAll(bool isReplaceAll);
-    Q_INVOKABLE void unsetReplaceAll();
-
-    // Association ends from QUmlAddVariableValueAction
-    Q_INVOKABLE QUmlInputPin *insertAt() const;
-    Q_INVOKABLE void setInsertAt(QUmlInputPin *insertAt);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlAddVariableValueAction(QUmlAddVariableValueActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlInputPin *insertAt() const;
+    void setInsertAt(QUmlInputPin *insertAt);
+    bool isReplaceAll() const;
+    void setReplaceAll(bool isReplaceAll);
 };
 
 QT_END_NAMESPACE

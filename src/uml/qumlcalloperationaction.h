@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlCallAction>
 
 QT_BEGIN_HEADER
@@ -52,37 +51,20 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlOperation;
 class QUmlInputPin;
+class QUmlOperation;
 
 class QUmlCallOperationActionPrivate;
-
 class Q_UML_EXPORT QUmlCallOperationAction : public QUmlCallAction
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlOperation * operation READ operation WRITE setOperation)
-    Q_PROPERTY(QUmlInputPin * target READ target WRITE setTarget)
-
-    Q_DISABLE_COPY(QUmlCallOperationAction)
-    Q_DECLARE_PRIVATE(QUmlCallOperationAction)
-
 public:
-    Q_INVOKABLE explicit QUmlCallOperationAction(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlCallOperationAction();
+    QUmlCallOperationAction(bool create_d_ptr = true);
 
-    // Association ends from QUmlCallOperationAction
-    Q_INVOKABLE QUmlOperation *operation() const;
-    Q_INVOKABLE void setOperation(QUmlOperation *operation);
-    Q_INVOKABLE QUmlInputPin *target() const;
-    Q_INVOKABLE void setTarget(QUmlInputPin *target);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlCallOperationAction(QUmlCallOperationActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlOperation *operation() const;
+    void setOperation(QUmlOperation *operation);
+    QUmlInputPin *target() const;
+    void setTarget(QUmlInputPin *target);
 };
 
 QT_END_NAMESPACE

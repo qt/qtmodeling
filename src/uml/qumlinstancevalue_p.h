@@ -41,10 +41,9 @@
 #ifndef QUMLINSTANCEVALUE_P_H
 #define QUMLINSTANCEVALUE_P_H
 
-// Base class includes
-#include "private/qumlvaluespecification_p.h"
-
 #include "QtUml/QUmlInstanceValue"
+
+#include "private/qumlvaluespecification_p.h"
 
 QT_BEGIN_HEADER
 
@@ -52,17 +51,10 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlInstanceSpecification;
-class QUmlInstanceValue;
-
 class Q_UML_EXPORT QUmlInstanceValuePrivate : public QUmlValueSpecificationPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlInstanceValue)
-
 public:
-    explicit QUmlInstanceValuePrivate();
-    virtual ~QUmlInstanceValuePrivate();
+    QUmlInstanceValuePrivate();
 
     QUmlInstanceSpecification *instance;
 };

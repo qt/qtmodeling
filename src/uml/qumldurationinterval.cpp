@@ -43,17 +43,11 @@
 
 #include <QtUml/QUmlDuration>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlDurationIntervalPrivate::QUmlDurationIntervalPrivate() :
     max(0),
     min(0)
-{
-}
-
-QUmlDurationIntervalPrivate::~QUmlDurationIntervalPrivate()
 {
 }
 
@@ -65,48 +59,26 @@ QUmlDurationIntervalPrivate::~QUmlDurationIntervalPrivate()
     \brief A duration interval defines the range between two durations.
  */
 
-QUmlDurationInterval::QUmlDurationInterval(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlInterval(*new QUmlDurationIntervalPrivate, wrapper, parent)
+QUmlDurationInterval::QUmlDurationInterval(bool create_d_ptr) :
+    QUmlInterval(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlDurationIntervalPrivate);
 }
 
-QUmlDurationInterval::QUmlDurationInterval(QUmlDurationIntervalPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlInterval(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlDurationInterval::~QUmlDurationInterval()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlDurationInterval
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     Refers to the Duration denoting the maximum value of the range.
  */
 QUmlDuration *QUmlDurationInterval::max() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlDurationInterval);
-    return d->max;
+    return 0;
 }
 
 void QUmlDurationInterval::setMax(QUmlDuration *max)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlDurationInterval);
-    if (d->max != max) {
-        d->max = max;
-
-        // Adjust redefined property(ies)
-        (qwrappedobject_cast<QUmlInterval *>(this))->setMax(qwrappedobject_cast<QUmlValueSpecification *>(max));
-    }
+    Q_UNUSED(max);
 }
 
 /*!
@@ -114,45 +86,13 @@ void QUmlDurationInterval::setMax(QUmlDuration *max)
  */
 QUmlDuration *QUmlDurationInterval::min() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlDurationInterval);
-    return d->min;
+    return 0;
 }
 
 void QUmlDurationInterval::setMin(QUmlDuration *min)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlDurationInterval);
-    if (d->min != min) {
-        d->min = min;
-
-        // Adjust redefined property(ies)
-        (qwrappedobject_cast<QUmlInterval *>(this))->setMin(qwrappedobject_cast<QUmlValueSpecification *>(min));
-    }
-}
-
-void QUmlDurationInterval::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDurationInterval")][QString::fromLatin1("max")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDurationInterval")][QString::fromLatin1("max")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDurationInterval")][QString::fromLatin1("max")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Refers to the Duration denoting the maximum value of the range.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDurationInterval")][QString::fromLatin1("max")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QUmlInterval::max");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDurationInterval")][QString::fromLatin1("max")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDurationInterval")][QString::fromLatin1("max")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDurationInterval")][QString::fromLatin1("min")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDurationInterval")][QString::fromLatin1("min")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDurationInterval")][QString::fromLatin1("min")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Refers to the Duration denoting the minimum value of the range.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDurationInterval")][QString::fromLatin1("min")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QUmlInterval::min");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDurationInterval")][QString::fromLatin1("min")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDurationInterval")][QString::fromLatin1("min")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlInterval::setPropertyData();
+    Q_UNUSED(min);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumldurationinterval.cpp"
 

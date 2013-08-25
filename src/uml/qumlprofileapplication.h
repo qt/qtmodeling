@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlDirectedRelationship>
 
 QT_BEGIN_HEADER
@@ -52,43 +51,22 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlProfile;
 class QUmlPackage;
+class QUmlProfile;
 
 class QUmlProfileApplicationPrivate;
-
 class Q_UML_EXPORT QUmlProfileApplication : public QUmlDirectedRelationship
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(bool isStrict READ isStrict WRITE setStrict RESET unsetStrict)
-    Q_PROPERTY(QUmlPackage * applyingPackage READ applyingPackage WRITE setApplyingPackage)
-    Q_PROPERTY(QUmlProfile * appliedProfile READ appliedProfile WRITE setAppliedProfile)
-
-    Q_DISABLE_COPY(QUmlProfileApplication)
-    Q_DECLARE_PRIVATE(QUmlProfileApplication)
-
 public:
-    Q_INVOKABLE explicit QUmlProfileApplication(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlProfileApplication();
+    QUmlProfileApplication(bool create_d_ptr = true);
 
-    // Attributes from QUmlProfileApplication
-    Q_INVOKABLE bool isStrict() const;
-    Q_INVOKABLE void setStrict(bool isStrict);
-    Q_INVOKABLE void unsetStrict();
-
-    // Association ends from QUmlProfileApplication
-    Q_INVOKABLE QUmlPackage *applyingPackage() const;
-    Q_INVOKABLE void setApplyingPackage(QUmlPackage *applyingPackage);
-    Q_INVOKABLE QUmlProfile *appliedProfile() const;
-    Q_INVOKABLE void setAppliedProfile(QUmlProfile *appliedProfile);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlProfileApplication(QUmlProfileApplicationPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlProfile *appliedProfile() const;
+    void setAppliedProfile(QUmlProfile *appliedProfile);
+    QUmlPackage *applyingPackage() const;
+    void setApplyingPackage(QUmlPackage *applyingPackage);
+    bool isStrict() const;
+    void setStrict(bool isStrict);
 };
 
 QT_END_NAMESPACE

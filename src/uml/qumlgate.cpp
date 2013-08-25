@@ -41,15 +41,9 @@
 #include "qumlgate.h"
 #include "qumlgate_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlGatePrivate::QUmlGatePrivate()
-{
-}
-
-QUmlGatePrivate::~QUmlGatePrivate()
 {
 }
 
@@ -61,28 +55,12 @@ QUmlGatePrivate::~QUmlGatePrivate()
     \brief A gate is a connection point for relating a message outside an interaction fragment with a message inside the interaction fragment.
  */
 
-QUmlGate::QUmlGate(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlMessageEnd(*new QUmlGatePrivate, wrapper, parent)
+QUmlGate::QUmlGate(bool create_d_ptr) :
+    QUmlMessageEnd(false)
 {
-    setPropertyData();
-}
-
-QUmlGate::QUmlGate(QUmlGatePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlMessageEnd(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlGate::~QUmlGate()
-{
-}
-
-void QUmlGate::setPropertyData()
-{
-    QUmlMessageEnd::setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlGatePrivate);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlgate.cpp"
 

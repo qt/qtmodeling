@@ -43,16 +43,10 @@
 
 #include <QtUml/QUmlMessage>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlMessageEndPrivate::QUmlMessageEndPrivate() :
     message(0)
-{
-}
-
-QUmlMessageEndPrivate::~QUmlMessageEndPrivate()
 {
 }
 
@@ -64,60 +58,27 @@ QUmlMessageEndPrivate::~QUmlMessageEndPrivate()
     \brief MessageEnd is an abstract specialization of NamedElement that represents what can occur at the end of a message.
  */
 
-QUmlMessageEnd::QUmlMessageEnd(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlNamedElement(*new QUmlMessageEndPrivate, wrapper, parent)
+QUmlMessageEnd::QUmlMessageEnd(bool create_d_ptr) :
+    QUmlNamedElement(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlMessageEndPrivate);
 }
 
-QUmlMessageEnd::QUmlMessageEnd(QUmlMessageEndPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlNamedElement(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlMessageEnd::~QUmlMessageEnd()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlMessageEnd
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     References a Message.
  */
 QUmlMessage *QUmlMessageEnd::message() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlMessageEnd);
-    return d->message;
+    return 0;
 }
 
 void QUmlMessageEnd::setMessage(QUmlMessage *message)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlMessageEnd);
-    if (d->message != message) {
-        d->message = message;
-    }
-}
-
-void QUmlMessageEnd::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlMessageEnd")][QString::fromLatin1("message")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlMessageEnd")][QString::fromLatin1("message")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlMessageEnd")][QString::fromLatin1("message")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References a Message.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlMessageEnd")][QString::fromLatin1("message")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlMessageEnd")][QString::fromLatin1("message")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlMessageEnd")][QString::fromLatin1("message")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlNamedElement::setPropertyData();
+    Q_UNUSED(message);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlmessageend.cpp"
 

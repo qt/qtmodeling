@@ -41,15 +41,9 @@
 #include "qumlusage.h"
 #include "qumlusage_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlUsagePrivate::QUmlUsagePrivate()
-{
-}
-
-QUmlUsagePrivate::~QUmlUsagePrivate()
 {
 }
 
@@ -61,28 +55,12 @@ QUmlUsagePrivate::~QUmlUsagePrivate()
     \brief A usage is a relationship in which one element requires another element (or set of elements) for its full implementation or operation. A usage is a dependency in which the client requires the presence of the supplier.
  */
 
-QUmlUsage::QUmlUsage(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlDependency(*new QUmlUsagePrivate, wrapper, parent)
+QUmlUsage::QUmlUsage(bool create_d_ptr) :
+    QUmlDependency(false)
 {
-    setPropertyData();
-}
-
-QUmlUsage::QUmlUsage(QUmlUsagePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlDependency(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlUsage::~QUmlUsage()
-{
-}
-
-void QUmlUsage::setPropertyData()
-{
-    QUmlDependency::setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlUsagePrivate);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlusage.cpp"
 

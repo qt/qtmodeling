@@ -41,10 +41,9 @@
 #ifndef QUMLVARIABLEACTION_P_H
 #define QUMLVARIABLEACTION_P_H
 
-// Base class includes
-#include "private/qumlaction_p.h"
-
 #include "QtUml/QUmlVariableAction"
+
+#include "private/qumlaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -52,16 +51,10 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlVariable;
-
 class Q_UML_EXPORT QUmlVariableActionPrivate : public QUmlActionPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlVariableAction)
-
 public:
-    explicit QUmlVariableActionPrivate();
-    virtual ~QUmlVariableActionPrivate();
+    QUmlVariableActionPrivate();
 
     QUmlVariable *variable;
 };

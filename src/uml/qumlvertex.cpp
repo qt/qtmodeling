@@ -42,82 +42,14 @@
 #include "qumlvertex_p.h"
 
 #include <QtUml/QUmlRegion>
-#include <QtUml/QUmlTransition>
 #include <QtUml/QUmlStateMachine>
-
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
+#include <QtUml/QUmlTransition>
 
 QT_BEGIN_NAMESPACE
 
 QUmlVertexPrivate::QUmlVertexPrivate() :
     container(0)
 {
-}
-
-QUmlVertexPrivate::~QUmlVertexPrivate()
-{
-}
-
-void QUmlVertexPrivate::addIncoming(QUmlTransition *incoming)
-{
-    // This is a read-only derived association end
-
-    qWarning("QUmlVertex::addIncoming: to be implemented (this is a derived associationend)");
-    Q_UNUSED(incoming);
-
-    if (false /* <derivedinclusion-criteria> */) {
-        // <derived-code>
-
-        // Adjust opposite property
-        Q_Q(QUmlVertex);
-        incoming->setTarget(q);
-    }
-}
-
-void QUmlVertexPrivate::removeIncoming(QUmlTransition *incoming)
-{
-    // This is a read-only derived association end
-
-    qWarning("QUmlVertex::removeIncoming: to be implemented (this is a derived associationend)");
-    Q_UNUSED(incoming);
-
-    if (false /* <derivedexclusion-criteria> */) {
-        // <derived-code>
-
-        // Adjust opposite property
-        incoming->setTarget(0);
-    }
-}
-
-void QUmlVertexPrivate::addOutgoing(QUmlTransition *outgoing)
-{
-    // This is a read-only derived association end
-
-    qWarning("QUmlVertex::addOutgoing: to be implemented (this is a derived associationend)");
-    Q_UNUSED(outgoing);
-
-    if (false /* <derivedinclusion-criteria> */) {
-        // <derived-code>
-
-        // Adjust opposite property
-        Q_Q(QUmlVertex);
-        outgoing->setSource(q);
-    }
-}
-
-void QUmlVertexPrivate::removeOutgoing(QUmlTransition *outgoing)
-{
-    // This is a read-only derived association end
-
-    qWarning("QUmlVertex::removeOutgoing: to be implemented (this is a derived associationend)");
-    Q_UNUSED(outgoing);
-
-    if (false /* <derivedexclusion-criteria> */) {
-        // <derived-code>
-
-        // Adjust opposite property
-        outgoing->setSource(0);
-    }
 }
 
 /*!
@@ -128,119 +60,53 @@ void QUmlVertexPrivate::removeOutgoing(QUmlTransition *outgoing)
     \brief A vertex is an abstraction of a node in a state machine graph. In general, it can be the source or destination of any number of transitions.
  */
 
-QUmlVertex::QUmlVertex(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlNamedElement(*new QUmlVertexPrivate, wrapper, parent)
+QUmlVertex::QUmlVertex(bool create_d_ptr) :
+    QUmlNamedElement(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlVertexPrivate);
 }
 
-QUmlVertex::QUmlVertex(QUmlVertexPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlNamedElement(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlVertex::~QUmlVertex()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlVertex
-// ---------------------------------------------------------------
-
-/*!
-    Specifies the transitions entering this vertex.
- */
-QSet<QUmlTransition *> QUmlVertex::incomings() const
-{
-    // This is a read-only derived association end
-
-    qWarning("QUmlVertex::incomings: to be implemented (this is a derived associationend)");
-
-    return QSet<QUmlTransition *>(); // change here to your derived return
-}
+// Owned attributes
 
 /*!
     The region that contains this vertex.
  */
 QUmlRegion *QUmlVertex::container() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlVertex);
-    return d->container;
+    return 0;
 }
 
 void QUmlVertex::setContainer(QUmlRegion *container)
 {
-    // This is a read-write association end
+    Q_UNUSED(container);
+}
 
-    Q_D(QUmlVertex);
-    if (d->container != container) {
-        // Adjust opposite property
-        if (d->container)
-            d->container->removeSubvertex(this);
-
-        d->container = container;
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlNamedElementPrivate *>(d))->setNamespace_(qwrappedobject_cast<QUmlNamespace *>(container));
-
-        // Adjust opposite property
-        if (container)
-            container->addSubvertex(this);
-    }
+/*!
+    Specifies the transitions entering this vertex.
+ */
+QSet<QUmlTransition *> QUmlVertex::incoming() const
+{
+    return QSet<QUmlTransition *>();
 }
 
 /*!
     Specifies the transitions departing from this vertex.
  */
-QSet<QUmlTransition *> QUmlVertex::outgoings() const
+QSet<QUmlTransition *> QUmlVertex::outgoing() const
 {
-    // This is a read-only derived association end
-
-    qWarning("QUmlVertex::outgoings: to be implemented (this is a derived associationend)");
-
-    return QSet<QUmlTransition *>(); // change here to your derived return
+    return QSet<QUmlTransition *>();
 }
+
+// Operations
 
 /*!
     The operation containingStateMachine() returns the state machine in which this Vertex is defined
  */
 QUmlStateMachine *QUmlVertex::containingStateMachine() const
 {
-    qWarning("QUmlVertex::containingStateMachine: operation to be implemented");
-
-    return 0; // change here to your derived return
-}
-
-void QUmlVertex::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlVertex")][QString::fromLatin1("incomings")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlVertex")][QString::fromLatin1("incomings")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlVertex")][QString::fromLatin1("incomings")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the transitions entering this vertex.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlVertex")][QString::fromLatin1("incomings")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlVertex")][QString::fromLatin1("incomings")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlVertex")][QString::fromLatin1("incomings")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlTransition::target");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlVertex")][QString::fromLatin1("container")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlVertex")][QString::fromLatin1("container")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlVertex")][QString::fromLatin1("container")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The region that contains this vertex.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlVertex")][QString::fromLatin1("container")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlVertex")][QString::fromLatin1("container")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlNamedElement::namespace");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlVertex")][QString::fromLatin1("container")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlRegion::subvertex");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlVertex")][QString::fromLatin1("outgoings")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlVertex")][QString::fromLatin1("outgoings")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlVertex")][QString::fromLatin1("outgoings")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the transitions departing from this vertex.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlVertex")][QString::fromLatin1("outgoings")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlVertex")][QString::fromLatin1("outgoings")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlVertex")][QString::fromLatin1("outgoings")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlTransition::source");
-
-    QUmlNamedElement::setPropertyData();
+    return 0;
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlvertex.cpp"
 

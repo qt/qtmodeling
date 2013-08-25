@@ -41,13 +41,9 @@
 #ifndef QUMLACTIVITYNODE_P_H
 #define QUMLACTIVITYNODE_P_H
 
-// Base class includes
-#include "private/qumlredefinableelement_p.h"
-
 #include "QtUml/QUmlActivityNode"
 
-// Qt includes
-#include "QtCore/QSet"
+#include "private/qumlredefinableelement_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,35 +51,19 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlActivityEdge;
-class QUmlStructuredActivityNode;
-class QUmlActivityNode;
-class QUmlActivityPartition;
-class QUmlActivityGroup;
-class QUmlActivity;
-class QUmlInterruptibleActivityRegion;
-
 class Q_UML_EXPORT QUmlActivityNodePrivate : public QUmlRedefinableElementPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlActivityNode)
-
 public:
-    explicit QUmlActivityNodePrivate();
-    virtual ~QUmlActivityNodePrivate();
+    QUmlActivityNodePrivate();
 
-    QSet<QUmlActivityNode *> redefinedNodes;
-    QSet<QUmlActivityEdge *> incomings;
     QUmlActivity *activity;
     QSet<QUmlActivityGroup *> inGroup;
-    QUmlStructuredActivityNode *inStructuredNode;
-    QSet<QUmlActivityPartition *> inPartition;
     QSet<QUmlInterruptibleActivityRegion *> inInterruptibleRegion;
-    QSet<QUmlActivityEdge *> outgoings;
-
-    // Internal functions for read-only subsetted association ends
-    void addInGroup(QUmlActivityGroup *inGroup);
-    void removeInGroup(QUmlActivityGroup *inGroup);
+    QSet<QUmlActivityPartition *> inPartition;
+    QUmlStructuredActivityNode *inStructuredNode;
+    QSet<QUmlActivityEdge *> incoming;
+    QSet<QUmlActivityEdge *> outgoing;
+    QSet<QUmlActivityNode *> redefinedNode;
 };
 
 QT_END_NAMESPACE

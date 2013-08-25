@@ -41,16 +41,10 @@
 #include "qumlliteralboolean.h"
 #include "qumlliteralboolean_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlLiteralBooleanPrivate::QUmlLiteralBooleanPrivate() :
     value(false)
-{
-}
-
-QUmlLiteralBooleanPrivate::~QUmlLiteralBooleanPrivate()
 {
 }
 
@@ -62,63 +56,36 @@ QUmlLiteralBooleanPrivate::~QUmlLiteralBooleanPrivate()
     \brief A literal Boolean is a specification of a Boolean value.
  */
 
-QUmlLiteralBoolean::QUmlLiteralBoolean(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlLiteralSpecification(*new QUmlLiteralBooleanPrivate, wrapper, parent)
+QUmlLiteralBoolean::QUmlLiteralBoolean(bool create_d_ptr) :
+    QUmlLiteralSpecification(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlLiteralBooleanPrivate);
 }
 
-QUmlLiteralBoolean::QUmlLiteralBoolean(QUmlLiteralBooleanPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlLiteralSpecification(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlLiteralBoolean::~QUmlLiteralBoolean()
-{
-}
-
-// ---------------------------------------------------------------
-// ATTRIBUTES FROM QUmlLiteralBoolean
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     The specified Boolean value.
  */
 bool QUmlLiteralBoolean::value() const
 {
-    // This is a read-write attribute
-
-    Q_D(const QUmlLiteralBoolean);
-    return d->value;
+    return bool();
 }
 
 void QUmlLiteralBoolean::setValue(bool value)
 {
-    // This is a read-write attribute
-
-    Q_D(QUmlLiteralBoolean);
-    if (d->value != value) {
-        d->value = value;
-    }
-    d->modifiedResettableProperties << QString::fromLatin1("value");
+    Q_UNUSED(value);
 }
 
-void QUmlLiteralBoolean::unsetValue()
-{
-    setValue(false);
-    Q_D(QUmlLiteralBoolean);
-    d->modifiedResettableProperties.removeAll(QString::fromLatin1("value"));
-}
+// Operations
 
 /*!
     The query booleanValue() gives the value.
  */
 bool QUmlLiteralBoolean::booleanValue() const
 {
-    qWarning("QUmlLiteralBoolean::booleanValue: operation to be implemented");
-
-    return bool(); // change here to your derived return
+    return bool ();
 }
 
 /*!
@@ -126,24 +93,8 @@ bool QUmlLiteralBoolean::booleanValue() const
  */
 bool QUmlLiteralBoolean::isComputable() const
 {
-    qWarning("QUmlLiteralBoolean::isComputable: operation to be implemented");
-
-    return bool(); // change here to your derived return
-}
-
-void QUmlLiteralBoolean::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLiteralBoolean")][QString::fromLatin1("value")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLiteralBoolean")][QString::fromLatin1("value")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLiteralBoolean")][QString::fromLatin1("value")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The specified Boolean value.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLiteralBoolean")][QString::fromLatin1("value")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLiteralBoolean")][QString::fromLatin1("value")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlLiteralBoolean")][QString::fromLatin1("value")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QUmlLiteralSpecification::setPropertyData();
+    return bool ();
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlliteralboolean.cpp"
 

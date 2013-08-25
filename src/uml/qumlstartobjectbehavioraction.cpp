@@ -43,16 +43,10 @@
 
 #include <QtUml/QUmlInputPin>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlStartObjectBehaviorActionPrivate::QUmlStartObjectBehaviorActionPrivate() :
     object(0)
-{
-}
-
-QUmlStartObjectBehaviorActionPrivate::~QUmlStartObjectBehaviorActionPrivate()
 {
 }
 
@@ -64,68 +58,27 @@ QUmlStartObjectBehaviorActionPrivate::~QUmlStartObjectBehaviorActionPrivate()
     \brief StartObjectBehaviorAction is an action that starts the execution either of a directly instantiated behavior or of the classifier behavior of an object. Argument values may be supplied for the input parameters of the behavior. If the behavior is invoked synchronously, then output values may be obtained for output parameters.
  */
 
-QUmlStartObjectBehaviorAction::QUmlStartObjectBehaviorAction(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlCallAction(*new QUmlStartObjectBehaviorActionPrivate, wrapper, parent)
+QUmlStartObjectBehaviorAction::QUmlStartObjectBehaviorAction(bool create_d_ptr) :
+    QUmlCallAction(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlStartObjectBehaviorActionPrivate);
 }
 
-QUmlStartObjectBehaviorAction::QUmlStartObjectBehaviorAction(QUmlStartObjectBehaviorActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlCallAction(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlStartObjectBehaviorAction::~QUmlStartObjectBehaviorAction()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlStartObjectBehaviorAction
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     Holds the object which is either a behavior to be started or has a classifier behavior to be started.
  */
 QUmlInputPin *QUmlStartObjectBehaviorAction::object() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlStartObjectBehaviorAction);
-    return d->object;
+    return 0;
 }
 
 void QUmlStartObjectBehaviorAction::setObject(QUmlInputPin *object)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlStartObjectBehaviorAction);
-    if (d->object != object) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActionPrivate *>(d))->removeInput(qwrappedobject_cast<QUmlInputPin *>(d->object));
-
-        d->object = object;
-
-        // Adjust subsetted property(ies)
-        if (object) {
-            (qwrappedobject_cast<QUmlActionPrivate *>(d))->addInput(qwrappedobject_cast<QUmlInputPin *>(object));
-        }
-    }
-}
-
-void QUmlStartObjectBehaviorAction::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStartObjectBehaviorAction")][QString::fromLatin1("object")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStartObjectBehaviorAction")][QString::fromLatin1("object")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStartObjectBehaviorAction")][QString::fromLatin1("object")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Holds the object which is either a behavior to be started or has a classifier behavior to be started.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStartObjectBehaviorAction")][QString::fromLatin1("object")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStartObjectBehaviorAction")][QString::fromLatin1("object")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlAction::inputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStartObjectBehaviorAction")][QString::fromLatin1("object")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlCallAction::setPropertyData();
+    Q_UNUSED(object);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlstartobjectbehavioraction.cpp"
 

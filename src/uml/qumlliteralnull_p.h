@@ -41,25 +41,20 @@
 #ifndef QUMLLITERALNULL_P_H
 #define QUMLLITERALNULL_P_H
 
-// Base class includes
-#include "private/qumlliteralspecification_p.h"
-
 #include "QtUml/QUmlLiteralNull"
+
+#include "private/qumlliteralspecification_p.h"
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-class QUmlLiteralNull;
 
 class Q_UML_EXPORT QUmlLiteralNullPrivate : public QUmlLiteralSpecificationPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlLiteralNull)
-
 public:
-    explicit QUmlLiteralNullPrivate();
-    virtual ~QUmlLiteralNullPrivate();
+    QUmlLiteralNullPrivate();
 
 };
 

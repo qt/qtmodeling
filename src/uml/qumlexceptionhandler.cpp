@@ -41,22 +41,16 @@
 #include "qumlexceptionhandler.h"
 #include "qumlexceptionhandler_p.h"
 
-#include <QtUml/QUmlObjectNode>
 #include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlExecutableNode>
-
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
+#include <QtUml/QUmlObjectNode>
 
 QT_BEGIN_NAMESPACE
 
 QUmlExceptionHandlerPrivate::QUmlExceptionHandlerPrivate() :
+    exceptionInput(0),
     handlerBody(0),
-    protectedNode(0),
-    exceptionInput(0)
-{
-}
-
-QUmlExceptionHandlerPrivate::~QUmlExceptionHandlerPrivate()
+    protectedNode(0)
 {
 }
 
@@ -68,76 +62,57 @@ QUmlExceptionHandlerPrivate::~QUmlExceptionHandlerPrivate()
     \brief An exception handler is an element that specifies a body to execute in case the specified exception occurs during the execution of the protected node.
  */
 
-QUmlExceptionHandler::QUmlExceptionHandler(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlElement(*new QUmlExceptionHandlerPrivate, wrapper, parent)
+QUmlExceptionHandler::QUmlExceptionHandler(bool create_d_ptr) :
+    QUmlElement(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlExceptionHandlerPrivate);
 }
 
-QUmlExceptionHandler::QUmlExceptionHandler(QUmlExceptionHandlerPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlElement(dd, wrapper, parent)
+// Owned attributes
+
+/*!
+    An object node within the handler body. When the handler catches an exception, the exception token is placed in this node, causing the body to execute.
+ */
+QUmlObjectNode *QUmlExceptionHandler::exceptionInput() const
 {
-    setPropertyData();
+    return 0;
 }
 
-QUmlExceptionHandler::~QUmlExceptionHandler()
+void QUmlExceptionHandler::setExceptionInput(QUmlObjectNode *exceptionInput)
 {
+    Q_UNUSED(exceptionInput);
 }
 
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlExceptionHandler
-// ---------------------------------------------------------------
+/*!
+    The kind of instances that the handler catches. If an exception occurs whose type is any of the classifiers in the set, the handler catches the exception and executes its body.
+ */
+QSet<QUmlClassifier *> QUmlExceptionHandler::exceptionType() const
+{
+    return QSet<QUmlClassifier *>();
+}
+
+void QUmlExceptionHandler::addExceptionType(QSet<QUmlClassifier *> exceptionType)
+{
+    Q_UNUSED(exceptionType);
+}
+
+void QUmlExceptionHandler::removeExceptionType(QSet<QUmlClassifier *> exceptionType)
+{
+    Q_UNUSED(exceptionType);
+}
 
 /*!
     A node that is executed if the handler satisfies an uncaught exception.
  */
 QUmlExecutableNode *QUmlExceptionHandler::handlerBody() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlExceptionHandler);
-    return d->handlerBody;
+    return 0;
 }
 
 void QUmlExceptionHandler::setHandlerBody(QUmlExecutableNode *handlerBody)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlExceptionHandler);
-    if (d->handlerBody != handlerBody) {
-        d->handlerBody = handlerBody;
-    }
-}
-
-/*!
-    The kind of instances that the handler catches. If an exception occurs whose type is any of the classifiers in the set, the handler catches the exception and executes its body.
- */
-QSet<QUmlClassifier *> QUmlExceptionHandler::exceptionTypes() const
-{
-    // This is a read-write association end
-
-    Q_D(const QUmlExceptionHandler);
-    return d->exceptionTypes;
-}
-
-void QUmlExceptionHandler::addExceptionType(QUmlClassifier *exceptionType)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlExceptionHandler);
-    if (!d->exceptionTypes.contains(exceptionType)) {
-        d->exceptionTypes.insert(exceptionType);
-    }
-}
-
-void QUmlExceptionHandler::removeExceptionType(QUmlClassifier *exceptionType)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlExceptionHandler);
-    if (d->exceptionTypes.contains(exceptionType)) {
-        d->exceptionTypes.remove(exceptionType);
-    }
+    Q_UNUSED(handlerBody);
 }
 
 /*!
@@ -145,88 +120,13 @@ void QUmlExceptionHandler::removeExceptionType(QUmlClassifier *exceptionType)
  */
 QUmlExecutableNode *QUmlExceptionHandler::protectedNode() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlExceptionHandler);
-    return d->protectedNode;
+    return 0;
 }
 
 void QUmlExceptionHandler::setProtectedNode(QUmlExecutableNode *protectedNode)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlExceptionHandler);
-    if (d->protectedNode != protectedNode) {
-        // Adjust opposite property
-        if (d->protectedNode)
-            d->protectedNode->removeHandler(this);
-
-        d->protectedNode = protectedNode;
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->setOwner(qwrappedobject_cast<QUmlElement *>(protectedNode));
-
-        // Adjust opposite property
-        if (protectedNode)
-            protectedNode->addHandler(this);
-    }
-}
-
-/*!
-    An object node within the handler body. When the handler catches an exception, the exception token is placed in this node, causing the body to execute.
- */
-QUmlObjectNode *QUmlExceptionHandler::exceptionInput() const
-{
-    // This is a read-write association end
-
-    Q_D(const QUmlExceptionHandler);
-    return d->exceptionInput;
-}
-
-void QUmlExceptionHandler::setExceptionInput(QUmlObjectNode *exceptionInput)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlExceptionHandler);
-    if (d->exceptionInput != exceptionInput) {
-        d->exceptionInput = exceptionInput;
-    }
-}
-
-void QUmlExceptionHandler::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExceptionHandler")][QString::fromLatin1("handlerBody")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExceptionHandler")][QString::fromLatin1("handlerBody")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExceptionHandler")][QString::fromLatin1("handlerBody")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A node that is executed if the handler satisfies an uncaught exception.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExceptionHandler")][QString::fromLatin1("handlerBody")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExceptionHandler")][QString::fromLatin1("handlerBody")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExceptionHandler")][QString::fromLatin1("handlerBody")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExceptionHandler")][QString::fromLatin1("exceptionTypes")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExceptionHandler")][QString::fromLatin1("exceptionTypes")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExceptionHandler")][QString::fromLatin1("exceptionTypes")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The kind of instances that the handler catches. If an exception occurs whose type is any of the classifiers in the set, the handler catches the exception and executes its body.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExceptionHandler")][QString::fromLatin1("exceptionTypes")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExceptionHandler")][QString::fromLatin1("exceptionTypes")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExceptionHandler")][QString::fromLatin1("exceptionTypes")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExceptionHandler")][QString::fromLatin1("protectedNode")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExceptionHandler")][QString::fromLatin1("protectedNode")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExceptionHandler")][QString::fromLatin1("protectedNode")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The node protected by the handler. The handler is examined if an exception propagates to the outside of the node.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExceptionHandler")][QString::fromLatin1("protectedNode")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExceptionHandler")][QString::fromLatin1("protectedNode")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::owner");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExceptionHandler")][QString::fromLatin1("protectedNode")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlExecutableNode::handler");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExceptionHandler")][QString::fromLatin1("exceptionInput")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExceptionHandler")][QString::fromLatin1("exceptionInput")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExceptionHandler")][QString::fromLatin1("exceptionInput")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An object node within the handler body. When the handler catches an exception, the exception token is placed in this node, causing the body to execute.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExceptionHandler")][QString::fromLatin1("exceptionInput")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExceptionHandler")][QString::fromLatin1("exceptionInput")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExceptionHandler")][QString::fromLatin1("exceptionInput")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlElement::setPropertyData();
+    Q_UNUSED(protectedNode);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlexceptionhandler.cpp"
 

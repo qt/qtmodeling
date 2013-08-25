@@ -43,11 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlClass>
-
-// Qt includes
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -55,55 +51,32 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlClassifier;
 class QUmlComponentRealization;
-class QUmlPackageableElement;
 class QUmlInterface;
+class QUmlPackageableElement;
 
 class QUmlComponentPrivate;
-
 class Q_UML_EXPORT QUmlComponent : public QUmlClass
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(bool isIndirectlyInstantiated READ isIndirectlyInstantiated WRITE setIndirectlyInstantiated RESET unsetIndirectlyInstantiated)
-    Q_PROPERTY(QSet<QUmlComponentRealization *> realizations READ realizations)
-    Q_PROPERTY(QSet<QUmlInterface *> required READ required STORED false)
-    Q_PROPERTY(QSet<QUmlInterface *> provided READ provided STORED false)
-    Q_PROPERTY(QSet<QUmlPackageableElement *> packagedElements READ packagedElements)
-
-    Q_DISABLE_COPY(QUmlComponent)
-    Q_DECLARE_PRIVATE(QUmlComponent)
-
 public:
-    Q_INVOKABLE explicit QUmlComponent(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlComponent();
+    QUmlComponent(bool create_d_ptr = true);
 
-    // Attributes from QUmlComponent
-    Q_INVOKABLE bool isIndirectlyInstantiated() const;
-    Q_INVOKABLE void setIndirectlyInstantiated(bool isIndirectlyInstantiated);
-    Q_INVOKABLE void unsetIndirectlyInstantiated();
-
-    // Association ends from QUmlComponent
-    Q_INVOKABLE QSet<QUmlComponentRealization *> realizations() const;
-    Q_INVOKABLE void addRealization(QUmlComponentRealization *realization);
-    Q_INVOKABLE void removeRealization(QUmlComponentRealization *realization);
-    Q_INVOKABLE QSet<QUmlInterface *> required() const;
-    Q_INVOKABLE QSet<QUmlInterface *> provided() const;
-    Q_INVOKABLE QSet<QUmlPackageableElement *> packagedElements() const;
-    Q_INVOKABLE void addPackagedElement(QUmlPackageableElement *packagedElement);
-    Q_INVOKABLE void removePackagedElement(QUmlPackageableElement *packagedElement);
+    // Owned attributes
+    bool isIndirectlyInstantiated() const;
+    void setIndirectlyInstantiated(bool isIndirectlyInstantiated);
+    QSet<QUmlPackageableElement *> packagedElement() const;
+    void addPackagedElement(QSet<QUmlPackageableElement *> packagedElement);
+    void removePackagedElement(QSet<QUmlPackageableElement *> packagedElement);
+    QSet<QUmlInterface *> provided() const;
+    QSet<QUmlComponentRealization *> realization() const;
+    void addRealization(QSet<QUmlComponentRealization *> realization);
+    void removeRealization(QSet<QUmlComponentRealization *> realization);
+    QSet<QUmlInterface *> required() const;
 
     // Operations
-    Q_INVOKABLE QSet<QUmlInterface *> realizedInterfaces(const QUmlClassifier *classifier) const;
-    Q_INVOKABLE QSet<QUmlInterface *> usedInterfaces(const QUmlClassifier *classifier) const;
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlComponent(QUmlComponentPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    QSet<QUmlInterface *> realizedInterfaces(QUmlClassifier *classifier) const;
+    QSet<QUmlInterface *> usedInterfaces(QUmlClassifier *classifier) const;
 };
 
 QT_END_NAMESPACE

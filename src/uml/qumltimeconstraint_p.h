@@ -41,10 +41,9 @@
 #ifndef QUMLTIMECONSTRAINT_P_H
 #define QUMLTIMECONSTRAINT_P_H
 
-// Base class includes
-#include "private/qumlintervalconstraint_p.h"
-
 #include "QtUml/QUmlTimeConstraint"
+
+#include "private/qumlintervalconstraint_p.h"
 
 QT_BEGIN_HEADER
 
@@ -52,17 +51,10 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlTimeInterval;
-class QUmlTimeConstraint;
-
 class Q_UML_EXPORT QUmlTimeConstraintPrivate : public QUmlIntervalConstraintPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlTimeConstraint)
-
 public:
-    explicit QUmlTimeConstraintPrivate();
-    virtual ~QUmlTimeConstraintPrivate();
+    QUmlTimeConstraintPrivate();
 
     bool firstEvent;
     QUmlTimeInterval *specification;

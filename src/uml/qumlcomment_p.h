@@ -41,32 +41,23 @@
 #ifndef QUMLCOMMENT_P_H
 #define QUMLCOMMENT_P_H
 
-// Base class includes
-#include "private/qumlelement_p.h"
-
 #include "QtUml/QUmlComment"
 
-// Qt includes
-#include "QtCore/QString"
-#include "QtCore/QSet"
+#include "private/qumlelement_p.h"
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-class QUmlComment;
 
 class Q_UML_EXPORT QUmlCommentPrivate : public QUmlElementPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlComment)
-
 public:
-    explicit QUmlCommentPrivate();
-    virtual ~QUmlCommentPrivate();
+    QUmlCommentPrivate();
 
+    QSet<QUmlElement *> annotatedElement;
     QString body;
-    QSet<QUmlElement *> annotatedElements;
 };
 
 QT_END_NAMESPACE

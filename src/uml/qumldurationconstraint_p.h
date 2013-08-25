@@ -41,13 +41,9 @@
 #ifndef QUMLDURATIONCONSTRAINT_P_H
 #define QUMLDURATIONCONSTRAINT_P_H
 
-// Base class includes
-#include "private/qumlintervalconstraint_p.h"
-
 #include "QtUml/QUmlDurationConstraint"
 
-// Qt includes
-#include "QtCore/QSet"
+#include "private/qumlintervalconstraint_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,19 +51,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlDurationInterval;
-class QUmlDurationConstraint;
-
 class Q_UML_EXPORT QUmlDurationConstraintPrivate : public QUmlIntervalConstraintPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlDurationConstraint)
-
 public:
-    explicit QUmlDurationConstraintPrivate();
-    virtual ~QUmlDurationConstraintPrivate();
+    QUmlDurationConstraintPrivate();
 
-    QSet<bool> firstEvents;
+    bool firstEvent;
     QUmlDurationInterval *specification;
 };
 

@@ -41,13 +41,9 @@
 #ifndef QUMLPROTOCOLTRANSITION_P_H
 #define QUMLPROTOCOLTRANSITION_P_H
 
-// Base class includes
-#include "private/qumltransition_p.h"
-
 #include "QtUml/QUmlProtocolTransition"
 
-// Qt includes
-#include "QtCore/QSet"
+#include "private/qumltransition_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,21 +51,14 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlConstraint;
-class QUmlOperation;
-class QUmlProtocolTransition;
-
 class Q_UML_EXPORT QUmlProtocolTransitionPrivate : public QUmlTransitionPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlProtocolTransition)
-
 public:
-    explicit QUmlProtocolTransitionPrivate();
-    virtual ~QUmlProtocolTransitionPrivate();
+    QUmlProtocolTransitionPrivate();
 
     QUmlConstraint *postCondition;
     QUmlConstraint *preCondition;
+    QSet<QUmlOperation *> referred;
 };
 
 QT_END_NAMESPACE

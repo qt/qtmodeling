@@ -41,14 +41,9 @@
 #ifndef QUMLSTRUCTUREDCLASSIFIER_P_H
 #define QUMLSTRUCTUREDCLASSIFIER_P_H
 
-// Base class includes
-#include "private/qumlclassifier_p.h"
-
 #include "QtUml/QUmlStructuredClassifier"
 
-// Qt includes
-#include "QtCore/QList"
-#include "QtCore/QSet"
+#include "private/qumlclassifier_p.h"
 
 QT_BEGIN_HEADER
 
@@ -56,26 +51,15 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlProperty;
-class QUmlConnector;
-class QUmlConnectableElement;
-
 class Q_UML_EXPORT QUmlStructuredClassifierPrivate : public QUmlClassifierPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlStructuredClassifier)
-
 public:
-    explicit QUmlStructuredClassifierPrivate();
-    virtual ~QUmlStructuredClassifierPrivate();
+    QUmlStructuredClassifierPrivate();
 
-    QSet<QUmlConnectableElement *> roles;
-    QList<QUmlProperty *> ownedAttributes;
-    QSet<QUmlConnector *> ownedConnectors;
-
-    // Internal functions for read-only subsetted association ends
-    void addRole(QUmlConnectableElement *role);
-    void removeRole(QUmlConnectableElement *role);
+    QList<QUmlProperty *> ownedAttribute;
+    QSet<QUmlConnector *> ownedConnector;
+    QSet<QUmlProperty *> part;
+    QSet<QUmlConnectableElement *> role;
 };
 
 QT_END_NAMESPACE

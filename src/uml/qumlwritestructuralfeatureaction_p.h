@@ -41,10 +41,9 @@
 #ifndef QUMLWRITESTRUCTURALFEATUREACTION_P_H
 #define QUMLWRITESTRUCTURALFEATUREACTION_P_H
 
-// Base class includes
-#include "private/qumlstructuralfeatureaction_p.h"
-
 #include "QtUml/QUmlWriteStructuralFeatureAction"
+
+#include "private/qumlstructuralfeatureaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -52,17 +51,10 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlOutputPin;
-class QUmlInputPin;
-
 class Q_UML_EXPORT QUmlWriteStructuralFeatureActionPrivate : public QUmlStructuralFeatureActionPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlWriteStructuralFeatureAction)
-
 public:
-    explicit QUmlWriteStructuralFeatureActionPrivate();
-    virtual ~QUmlWriteStructuralFeatureActionPrivate();
+    QUmlWriteStructuralFeatureActionPrivate();
 
     QUmlOutputPin *result;
     QUmlInputPin *value;

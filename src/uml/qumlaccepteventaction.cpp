@@ -44,16 +44,10 @@
 #include <QtUml/QUmlOutputPin>
 #include <QtUml/QUmlTrigger>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlAcceptEventActionPrivate::QUmlAcceptEventActionPrivate() :
     isUnmarshall(false)
-{
-}
-
-QUmlAcceptEventActionPrivate::~QUmlAcceptEventActionPrivate()
 {
 }
 
@@ -65,160 +59,63 @@ QUmlAcceptEventActionPrivate::~QUmlAcceptEventActionPrivate()
     \brief A accept event action is an action that waits for the occurrence of an event meeting specified conditions.
  */
 
-QUmlAcceptEventAction::QUmlAcceptEventAction(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlAction(*new QUmlAcceptEventActionPrivate, wrapper, parent)
+QUmlAcceptEventAction::QUmlAcceptEventAction(bool create_d_ptr) :
+    QUmlAction(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlAcceptEventActionPrivate);
 }
 
-QUmlAcceptEventAction::QUmlAcceptEventAction(QUmlAcceptEventActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlAction(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlAcceptEventAction::~QUmlAcceptEventAction()
-{
-}
-
-// ---------------------------------------------------------------
-// ATTRIBUTES FROM QUmlAcceptEventAction
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     Indicates whether there is a single output pin for the event, or multiple output pins for attributes of the event.
  */
 bool QUmlAcceptEventAction::isUnmarshall() const
 {
-    // This is a read-write attribute
-
-    Q_D(const QUmlAcceptEventAction);
-    return d->isUnmarshall;
+    return bool();
 }
 
 void QUmlAcceptEventAction::setUnmarshall(bool isUnmarshall)
 {
-    // This is a read-write attribute
-
-    Q_D(QUmlAcceptEventAction);
-    if (d->isUnmarshall != isUnmarshall) {
-        d->isUnmarshall = isUnmarshall;
-    }
-    d->modifiedResettableProperties << QString::fromLatin1("isUnmarshall");
-}
-
-void QUmlAcceptEventAction::unsetUnmarshall()
-{
-    setUnmarshall(false);
-    Q_D(QUmlAcceptEventAction);
-    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isUnmarshall"));
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlAcceptEventAction
-// ---------------------------------------------------------------
-
-/*!
-    The type of events accepted by the action, as specified by triggers. For triggers with signal events, a signal of the specified type or any subtype of the specified signal type is accepted.
- */
-QSet<QUmlTrigger *> QUmlAcceptEventAction::triggers() const
-{
-    // This is a read-write association end
-
-    Q_D(const QUmlAcceptEventAction);
-    return d->triggers;
-}
-
-void QUmlAcceptEventAction::addTrigger(QUmlTrigger *trigger)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlAcceptEventAction);
-    if (!d->triggers.contains(trigger)) {
-        d->triggers.insert(trigger);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QUmlElement *>(trigger));
-    }
-}
-
-void QUmlAcceptEventAction::removeTrigger(QUmlTrigger *trigger)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlAcceptEventAction);
-    if (d->triggers.contains(trigger)) {
-        d->triggers.remove(trigger);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QUmlElement *>(trigger));
-    }
+    Q_UNUSED(isUnmarshall);
 }
 
 /*!
     Pins holding the received event objects or their attributes. Event objects may be copied in transmission, so identity might not be preserved.
  */
-QSet<QUmlOutputPin *> QUmlAcceptEventAction::results() const
+QSet<QUmlOutputPin *> QUmlAcceptEventAction::result() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlAcceptEventAction);
-    return d->results;
+    return QSet<QUmlOutputPin *>();
 }
 
-void QUmlAcceptEventAction::addResult(QUmlOutputPin *result)
+void QUmlAcceptEventAction::addResult(QSet<QUmlOutputPin *> result)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlAcceptEventAction);
-    if (!d->results.contains(result)) {
-        d->results.insert(result);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActionPrivate *>(d))->addOutput(qwrappedobject_cast<QUmlOutputPin *>(result));
-    }
+    Q_UNUSED(result);
 }
 
-void QUmlAcceptEventAction::removeResult(QUmlOutputPin *result)
+void QUmlAcceptEventAction::removeResult(QSet<QUmlOutputPin *> result)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlAcceptEventAction);
-    if (d->results.contains(result)) {
-        d->results.remove(result);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActionPrivate *>(d))->removeOutput(qwrappedobject_cast<QUmlOutputPin *>(result));
-    }
+    Q_UNUSED(result);
 }
 
-void QUmlAcceptEventAction::setPropertyData()
+/*!
+    The type of events accepted by the action, as specified by triggers. For triggers with signal events, a signal of the specified type or any subtype of the specified signal type is accepted.
+ */
+QSet<QUmlTrigger *> QUmlAcceptEventAction::trigger() const
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAcceptEventAction")][QString::fromLatin1("isUnmarshall")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAcceptEventAction")][QString::fromLatin1("isUnmarshall")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAcceptEventAction")][QString::fromLatin1("isUnmarshall")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Indicates whether there is a single output pin for the event, or multiple output pins for attributes of the event.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAcceptEventAction")][QString::fromLatin1("isUnmarshall")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAcceptEventAction")][QString::fromLatin1("isUnmarshall")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAcceptEventAction")][QString::fromLatin1("isUnmarshall")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    return QSet<QUmlTrigger *>();
+}
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAcceptEventAction")][QString::fromLatin1("triggers")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAcceptEventAction")][QString::fromLatin1("triggers")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAcceptEventAction")][QString::fromLatin1("triggers")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The type of events accepted by the action, as specified by triggers. For triggers with signal events, a signal of the specified type or any subtype of the specified signal type is accepted.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAcceptEventAction")][QString::fromLatin1("triggers")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAcceptEventAction")][QString::fromLatin1("triggers")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAcceptEventAction")][QString::fromLatin1("triggers")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
+void QUmlAcceptEventAction::addTrigger(QSet<QUmlTrigger *> trigger)
+{
+    Q_UNUSED(trigger);
+}
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAcceptEventAction")][QString::fromLatin1("results")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAcceptEventAction")][QString::fromLatin1("results")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAcceptEventAction")][QString::fromLatin1("results")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Pins holding the received event objects or their attributes. Event objects may be copied in transmission, so identity might not be preserved.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAcceptEventAction")][QString::fromLatin1("results")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAcceptEventAction")][QString::fromLatin1("results")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlAction::outputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAcceptEventAction")][QString::fromLatin1("results")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlAction::setPropertyData();
+void QUmlAcceptEventAction::removeTrigger(QSet<QUmlTrigger *> trigger)
+{
+    Q_UNUSED(trigger);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlaccepteventaction.cpp"
 

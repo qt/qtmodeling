@@ -41,13 +41,9 @@
 #ifndef QUMLDESTROYLINKACTION_P_H
 #define QUMLDESTROYLINKACTION_P_H
 
-// Base class includes
-#include "private/qumlwritelinkaction_p.h"
-
 #include "QtUml/QUmlDestroyLinkAction"
 
-// Qt includes
-#include "QtCore/QSet"
+#include "private/qumlwritelinkaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,17 +51,10 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlLinkEndDestructionData;
-class QUmlDestroyLinkAction;
-
 class Q_UML_EXPORT QUmlDestroyLinkActionPrivate : public QUmlWriteLinkActionPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlDestroyLinkAction)
-
 public:
-    explicit QUmlDestroyLinkActionPrivate();
-    virtual ~QUmlDestroyLinkActionPrivate();
+    QUmlDestroyLinkActionPrivate();
 
     QSet<QUmlLinkEndDestructionData *> endData;
 };

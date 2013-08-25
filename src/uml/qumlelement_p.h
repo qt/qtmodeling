@@ -41,13 +41,9 @@
 #ifndef QUMLELEMENT_P_H
 #define QUMLELEMENT_P_H
 
-// Base class includes
-#include "private/qwrappedobject_p.h"
-
 #include "QtUml/QUmlElement"
 
-// Qt includes
-#include "QtCore/QSet"
+#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,26 +51,14 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlComment;
-class QUmlElement;
-
-class Q_UML_EXPORT QUmlElementPrivate : public QWrappedObjectPrivate
+class Q_UML_EXPORT QUmlElementPrivate : public QModelingObjectPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlElement)
-
 public:
-    explicit QUmlElementPrivate();
-    virtual ~QUmlElementPrivate();
+    QUmlElementPrivate();
 
-    QSet<QUmlElement *> ownedElements;
+    QSet<QUmlComment *> ownedComment;
+    QSet<QUmlElement *> ownedElement;
     QUmlElement *owner;
-    QSet<QUmlComment *> ownedComments;
-
-    // Internal functions for read-only subsetted association ends
-    void addOwnedElement(QUmlElement *ownedElement);
-    void removeOwnedElement(QUmlElement *ownedElement);
-    void setOwner(QUmlElement *owner);
 };
 
 QT_END_NAMESPACE

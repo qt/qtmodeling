@@ -43,16 +43,10 @@
 
 #include <QtUml/QUmlUseCase>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlExtensionPointPrivate::QUmlExtensionPointPrivate() :
     useCase(0)
-{
-}
-
-QUmlExtensionPointPrivate::~QUmlExtensionPointPrivate()
 {
 }
 
@@ -64,71 +58,27 @@ QUmlExtensionPointPrivate::~QUmlExtensionPointPrivate()
     \brief An extension point identifies a point in the behavior of a use case where that behavior can be extended by the behavior of some other (extending) use case, as specified by an extend relationship.
  */
 
-QUmlExtensionPoint::QUmlExtensionPoint(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlRedefinableElement(*new QUmlExtensionPointPrivate, wrapper, parent)
+QUmlExtensionPoint::QUmlExtensionPoint(bool create_d_ptr) :
+    QUmlRedefinableElement(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlExtensionPointPrivate);
 }
 
-QUmlExtensionPoint::QUmlExtensionPoint(QUmlExtensionPointPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlRedefinableElement(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlExtensionPoint::~QUmlExtensionPoint()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlExtensionPoint
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     References the use case that owns this extension point.
  */
 QUmlUseCase *QUmlExtensionPoint::useCase() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlExtensionPoint);
-    return d->useCase;
+    return 0;
 }
 
 void QUmlExtensionPoint::setUseCase(QUmlUseCase *useCase)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlExtensionPoint);
-    if (d->useCase != useCase) {
-        // Adjust opposite property
-        if (d->useCase)
-            d->useCase->removeExtensionPoint(this);
-
-        d->useCase = useCase;
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlNamedElementPrivate *>(d))->setNamespace_(qwrappedobject_cast<QUmlNamespace *>(useCase));
-
-        // Adjust opposite property
-        if (useCase)
-            useCase->addExtensionPoint(this);
-    }
-}
-
-void QUmlExtensionPoint::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExtensionPoint")][QString::fromLatin1("useCase")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExtensionPoint")][QString::fromLatin1("useCase")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExtensionPoint")][QString::fromLatin1("useCase")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the use case that owns this extension point.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExtensionPoint")][QString::fromLatin1("useCase")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExtensionPoint")][QString::fromLatin1("useCase")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlNamedElement::namespace");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExtensionPoint")][QString::fromLatin1("useCase")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlUseCase::extensionPoint");
-
-    QUmlRedefinableElement::setPropertyData();
+    Q_UNUSED(useCase);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlextensionpoint.cpp"
 

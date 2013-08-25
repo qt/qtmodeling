@@ -41,15 +41,9 @@
 #include "qumlliteralspecification.h"
 #include "qumlliteralspecification_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlLiteralSpecificationPrivate::QUmlLiteralSpecificationPrivate()
-{
-}
-
-QUmlLiteralSpecificationPrivate::~QUmlLiteralSpecificationPrivate()
 {
 }
 
@@ -61,28 +55,12 @@ QUmlLiteralSpecificationPrivate::~QUmlLiteralSpecificationPrivate()
     \brief A literal specification identifies a literal constant being modeled.
  */
 
-QUmlLiteralSpecification::QUmlLiteralSpecification(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlValueSpecification(*new QUmlLiteralSpecificationPrivate, wrapper, parent)
+QUmlLiteralSpecification::QUmlLiteralSpecification(bool create_d_ptr) :
+    QUmlValueSpecification(false)
 {
-    setPropertyData();
-}
-
-QUmlLiteralSpecification::QUmlLiteralSpecification(QUmlLiteralSpecificationPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlValueSpecification(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlLiteralSpecification::~QUmlLiteralSpecification()
-{
-}
-
-void QUmlLiteralSpecification::setPropertyData()
-{
-    QUmlValueSpecification::setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlLiteralSpecificationPrivate);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlliteralspecification.cpp"
 

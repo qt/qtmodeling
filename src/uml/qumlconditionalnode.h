@@ -43,12 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlStructuredActivityNode>
-
-// Qt includes
-#include <QtCore/QList>
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -56,49 +51,26 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlClause;
 class QUmlOutputPin;
 
 class QUmlConditionalNodePrivate;
-
 class Q_UML_EXPORT QUmlConditionalNode : public QUmlStructuredActivityNode
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(bool isAssured READ isAssured WRITE setAssured RESET unsetAssured)
-    Q_PROPERTY(bool isDeterminate READ isDeterminate WRITE setDeterminate RESET unsetDeterminate)
-    Q_PROPERTY(QSet<QUmlClause *> clauses READ clauses)
-    Q_PROPERTY(QList<QUmlOutputPin *> results READ results)
-
-    Q_DISABLE_COPY(QUmlConditionalNode)
-    Q_DECLARE_PRIVATE(QUmlConditionalNode)
-
 public:
-    Q_INVOKABLE explicit QUmlConditionalNode(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlConditionalNode();
+    QUmlConditionalNode(bool create_d_ptr = true);
 
-    // Attributes from QUmlConditionalNode
-    Q_INVOKABLE bool isAssured() const;
-    Q_INVOKABLE void setAssured(bool isAssured);
-    Q_INVOKABLE void unsetAssured();
-    Q_INVOKABLE bool isDeterminate() const;
-    Q_INVOKABLE void setDeterminate(bool isDeterminate);
-    Q_INVOKABLE void unsetDeterminate();
-
-    // Association ends from QUmlConditionalNode
-    Q_INVOKABLE QSet<QUmlClause *> clauses() const;
-    Q_INVOKABLE void addClause(QUmlClause *clause);
-    Q_INVOKABLE void removeClause(QUmlClause *clause);
-    Q_INVOKABLE QList<QUmlOutputPin *> results() const;
-    Q_INVOKABLE void addResult(QUmlOutputPin *result);
-    Q_INVOKABLE void removeResult(QUmlOutputPin *result);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlConditionalNode(QUmlConditionalNodePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QSet<QUmlClause *> clause() const;
+    void addClause(QSet<QUmlClause *> clause);
+    void removeClause(QSet<QUmlClause *> clause);
+    bool isAssured() const;
+    void setAssured(bool isAssured);
+    bool isDeterminate() const;
+    void setDeterminate(bool isDeterminate);
+    QList<QUmlOutputPin *> result() const;
+    void addResult(QList<QUmlOutputPin *> result);
+    void removeResult(QList<QUmlOutputPin *> result);
 };
 
 QT_END_NAMESPACE

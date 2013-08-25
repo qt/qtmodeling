@@ -43,11 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlElement>
-
-// Qt includes
-#include <QtCore/QList>
 
 QT_BEGIN_HEADER
 
@@ -55,42 +51,24 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlTemplateParameter;
 class QUmlTemplateableElement;
+class QUmlTemplateParameter;
 
 class QUmlTemplateSignaturePrivate;
-
-class Q_UML_EXPORT QUmlTemplateSignature : public QUmlElement
+class Q_UML_EXPORT QUmlTemplateSignature : public virtual QUmlElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QList<QUmlTemplateParameter *> parameters READ parameters)
-    Q_PROPERTY(QUmlTemplateableElement * template_ READ template_ WRITE setTemplate_)
-    Q_PROPERTY(QList<QUmlTemplateParameter *> ownedParameters READ ownedParameters)
-
-    Q_DISABLE_COPY(QUmlTemplateSignature)
-    Q_DECLARE_PRIVATE(QUmlTemplateSignature)
-
 public:
-    Q_INVOKABLE explicit QUmlTemplateSignature(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlTemplateSignature();
+    QUmlTemplateSignature(bool create_d_ptr = true);
 
-    // Association ends from QUmlTemplateSignature
-    Q_INVOKABLE QList<QUmlTemplateParameter *> parameters() const;
-    Q_INVOKABLE void addParameter(QUmlTemplateParameter *parameter);
-    Q_INVOKABLE void removeParameter(QUmlTemplateParameter *parameter);
-    Q_INVOKABLE QUmlTemplateableElement *template_() const;
-    Q_INVOKABLE void setTemplate_(QUmlTemplateableElement *template_);
-    Q_INVOKABLE QList<QUmlTemplateParameter *> ownedParameters() const;
-    Q_INVOKABLE void addOwnedParameter(QUmlTemplateParameter *ownedParameter);
-    Q_INVOKABLE void removeOwnedParameter(QUmlTemplateParameter *ownedParameter);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlTemplateSignature(QUmlTemplateSignaturePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QList<QUmlTemplateParameter *> ownedParameter() const;
+    void addOwnedParameter(QList<QUmlTemplateParameter *> ownedParameter);
+    void removeOwnedParameter(QList<QUmlTemplateParameter *> ownedParameter);
+    QList<QUmlTemplateParameter *> parameter() const;
+    void addParameter(QList<QUmlTemplateParameter *> parameter);
+    void removeParameter(QList<QUmlTemplateParameter *> parameter);
+    QUmlTemplateableElement *template_() const;
+    void setTemplate(QUmlTemplateableElement *template_);
 };
 
 QT_END_NAMESPACE

@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlRedefinableElement>
 
 QT_BEGIN_HEADER
@@ -52,33 +51,17 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlUseCase;
 
 class QUmlExtensionPointPrivate;
-
 class Q_UML_EXPORT QUmlExtensionPoint : public QUmlRedefinableElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlUseCase * useCase READ useCase WRITE setUseCase)
-
-    Q_DISABLE_COPY(QUmlExtensionPoint)
-    Q_DECLARE_PRIVATE(QUmlExtensionPoint)
-
 public:
-    Q_INVOKABLE explicit QUmlExtensionPoint(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlExtensionPoint();
+    QUmlExtensionPoint(bool create_d_ptr = true);
 
-    // Association ends from QUmlExtensionPoint
-    Q_INVOKABLE QUmlUseCase *useCase() const;
-    Q_INVOKABLE void setUseCase(QUmlUseCase *useCase);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlExtensionPoint(QUmlExtensionPointPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlUseCase *useCase() const;
+    void setUseCase(QUmlUseCase *useCase);
 };
 
 QT_END_NAMESPACE

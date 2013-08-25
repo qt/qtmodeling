@@ -45,19 +45,13 @@
 #include <QtUml/QUmlInputPin>
 #include <QtUml/QUmlOutputPin>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlReadIsClassifiedObjectActionPrivate::QUmlReadIsClassifiedObjectActionPrivate() :
+    classifier(0),
     isDirect(false),
-    result(0),
     object(0),
-    classifier(0)
-{
-}
-
-QUmlReadIsClassifiedObjectActionPrivate::~QUmlReadIsClassifiedObjectActionPrivate()
+    result(0)
 {
 }
 
@@ -69,86 +63,39 @@ QUmlReadIsClassifiedObjectActionPrivate::~QUmlReadIsClassifiedObjectActionPrivat
     \brief A read is classified object action is an action that determines whether a runtime object is classified by a given classifier.
  */
 
-QUmlReadIsClassifiedObjectAction::QUmlReadIsClassifiedObjectAction(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlAction(*new QUmlReadIsClassifiedObjectActionPrivate, wrapper, parent)
+QUmlReadIsClassifiedObjectAction::QUmlReadIsClassifiedObjectAction(bool create_d_ptr) :
+    QUmlAction(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlReadIsClassifiedObjectActionPrivate);
 }
 
-QUmlReadIsClassifiedObjectAction::QUmlReadIsClassifiedObjectAction(QUmlReadIsClassifiedObjectActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlAction(dd, wrapper, parent)
+// Owned attributes
+
+/*!
+    The classifier against which the classification of the input object is tested.
+ */
+QUmlClassifier *QUmlReadIsClassifiedObjectAction::classifier() const
 {
-    setPropertyData();
+    return 0;
 }
 
-QUmlReadIsClassifiedObjectAction::~QUmlReadIsClassifiedObjectAction()
+void QUmlReadIsClassifiedObjectAction::setClassifier(QUmlClassifier *classifier)
 {
+    Q_UNUSED(classifier);
 }
-
-// ---------------------------------------------------------------
-// ATTRIBUTES FROM QUmlReadIsClassifiedObjectAction
-// ---------------------------------------------------------------
 
 /*!
     Indicates whether the classifier must directly classify the input object.
  */
 bool QUmlReadIsClassifiedObjectAction::isDirect() const
 {
-    // This is a read-write attribute
-
-    Q_D(const QUmlReadIsClassifiedObjectAction);
-    return d->isDirect;
+    return bool();
 }
 
 void QUmlReadIsClassifiedObjectAction::setDirect(bool isDirect)
 {
-    // This is a read-write attribute
-
-    Q_D(QUmlReadIsClassifiedObjectAction);
-    if (d->isDirect != isDirect) {
-        d->isDirect = isDirect;
-    }
-    d->modifiedResettableProperties << QString::fromLatin1("isDirect");
-}
-
-void QUmlReadIsClassifiedObjectAction::unsetDirect()
-{
-    setDirect(false);
-    Q_D(QUmlReadIsClassifiedObjectAction);
-    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isDirect"));
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlReadIsClassifiedObjectAction
-// ---------------------------------------------------------------
-
-/*!
-    After termination of the action, will hold the result of the test.
- */
-QUmlOutputPin *QUmlReadIsClassifiedObjectAction::result() const
-{
-    // This is a read-write association end
-
-    Q_D(const QUmlReadIsClassifiedObjectAction);
-    return d->result;
-}
-
-void QUmlReadIsClassifiedObjectAction::setResult(QUmlOutputPin *result)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlReadIsClassifiedObjectAction);
-    if (d->result != result) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActionPrivate *>(d))->removeOutput(qwrappedobject_cast<QUmlOutputPin *>(d->result));
-
-        d->result = result;
-
-        // Adjust subsetted property(ies)
-        if (result) {
-            (qwrappedobject_cast<QUmlActionPrivate *>(d))->addOutput(qwrappedobject_cast<QUmlOutputPin *>(result));
-        }
-    }
+    Q_UNUSED(isDirect);
 }
 
 /*!
@@ -156,85 +103,26 @@ void QUmlReadIsClassifiedObjectAction::setResult(QUmlOutputPin *result)
  */
 QUmlInputPin *QUmlReadIsClassifiedObjectAction::object() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlReadIsClassifiedObjectAction);
-    return d->object;
+    return 0;
 }
 
 void QUmlReadIsClassifiedObjectAction::setObject(QUmlInputPin *object)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlReadIsClassifiedObjectAction);
-    if (d->object != object) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActionPrivate *>(d))->removeInput(qwrappedobject_cast<QUmlInputPin *>(d->object));
-
-        d->object = object;
-
-        // Adjust subsetted property(ies)
-        if (object) {
-            (qwrappedobject_cast<QUmlActionPrivate *>(d))->addInput(qwrappedobject_cast<QUmlInputPin *>(object));
-        }
-    }
+    Q_UNUSED(object);
 }
 
 /*!
-    The classifier against which the classification of the input object is tested.
+    After termination of the action, will hold the result of the test.
  */
-QUmlClassifier *QUmlReadIsClassifiedObjectAction::classifier() const
+QUmlOutputPin *QUmlReadIsClassifiedObjectAction::result() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlReadIsClassifiedObjectAction);
-    return d->classifier;
+    return 0;
 }
 
-void QUmlReadIsClassifiedObjectAction::setClassifier(QUmlClassifier *classifier)
+void QUmlReadIsClassifiedObjectAction::setResult(QUmlOutputPin *result)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlReadIsClassifiedObjectAction);
-    if (d->classifier != classifier) {
-        d->classifier = classifier;
-    }
-}
-
-void QUmlReadIsClassifiedObjectAction::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadIsClassifiedObjectAction")][QString::fromLatin1("isDirect")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadIsClassifiedObjectAction")][QString::fromLatin1("isDirect")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadIsClassifiedObjectAction")][QString::fromLatin1("isDirect")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Indicates whether the classifier must directly classify the input object.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadIsClassifiedObjectAction")][QString::fromLatin1("isDirect")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadIsClassifiedObjectAction")][QString::fromLatin1("isDirect")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadIsClassifiedObjectAction")][QString::fromLatin1("isDirect")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadIsClassifiedObjectAction")][QString::fromLatin1("result")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadIsClassifiedObjectAction")][QString::fromLatin1("result")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadIsClassifiedObjectAction")][QString::fromLatin1("result")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("After termination of the action, will hold the result of the test.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadIsClassifiedObjectAction")][QString::fromLatin1("result")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadIsClassifiedObjectAction")][QString::fromLatin1("result")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlAction::outputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadIsClassifiedObjectAction")][QString::fromLatin1("result")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadIsClassifiedObjectAction")][QString::fromLatin1("object")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadIsClassifiedObjectAction")][QString::fromLatin1("object")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadIsClassifiedObjectAction")][QString::fromLatin1("object")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Holds the object whose classification is to be tested.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadIsClassifiedObjectAction")][QString::fromLatin1("object")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadIsClassifiedObjectAction")][QString::fromLatin1("object")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlAction::inputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadIsClassifiedObjectAction")][QString::fromLatin1("object")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadIsClassifiedObjectAction")][QString::fromLatin1("classifier")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadIsClassifiedObjectAction")][QString::fromLatin1("classifier")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadIsClassifiedObjectAction")][QString::fromLatin1("classifier")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The classifier against which the classification of the input object is tested.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadIsClassifiedObjectAction")][QString::fromLatin1("classifier")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadIsClassifiedObjectAction")][QString::fromLatin1("classifier")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlReadIsClassifiedObjectAction")][QString::fromLatin1("classifier")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlAction::setPropertyData();
+    Q_UNUSED(result);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlreadisclassifiedobjectaction.cpp"
 

@@ -41,13 +41,9 @@
 #ifndef QUMLACCEPTEVENTACTION_P_H
 #define QUMLACCEPTEVENTACTION_P_H
 
-// Base class includes
-#include "private/qumlaction_p.h"
-
 #include "QtUml/QUmlAcceptEventAction"
 
-// Qt includes
-#include "QtCore/QSet"
+#include "private/qumlaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,22 +51,14 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlOutputPin;
-class QUmlTrigger;
-class QUmlAcceptEventAction;
-
 class Q_UML_EXPORT QUmlAcceptEventActionPrivate : public QUmlActionPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlAcceptEventAction)
-
 public:
-    explicit QUmlAcceptEventActionPrivate();
-    virtual ~QUmlAcceptEventActionPrivate();
+    QUmlAcceptEventActionPrivate();
 
     bool isUnmarshall;
-    QSet<QUmlTrigger *> triggers;
-    QSet<QUmlOutputPin *> results;
+    QSet<QUmlOutputPin *> result;
+    QSet<QUmlTrigger *> trigger;
 };
 
 QT_END_NAMESPACE

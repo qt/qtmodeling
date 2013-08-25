@@ -41,25 +41,20 @@
 #ifndef QUMLREALIZATION_P_H
 #define QUMLREALIZATION_P_H
 
-// Base class includes
-#include "private/qumlabstraction_p.h"
-
 #include "QtUml/QUmlRealization"
+
+#include "private/qumlabstraction_p.h"
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-class QUmlRealization;
 
 class Q_UML_EXPORT QUmlRealizationPrivate : public QUmlAbstractionPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlRealization)
-
 public:
-    explicit QUmlRealizationPrivate();
-    virtual ~QUmlRealizationPrivate();
+    QUmlRealizationPrivate();
 
 };
 

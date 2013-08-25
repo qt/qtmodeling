@@ -41,20 +41,14 @@
 #include "qumlwritestructuralfeatureaction.h"
 #include "qumlwritestructuralfeatureaction_p.h"
 
-#include <QtUml/QUmlOutputPin>
 #include <QtUml/QUmlInputPin>
-
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
+#include <QtUml/QUmlOutputPin>
 
 QT_BEGIN_NAMESPACE
 
 QUmlWriteStructuralFeatureActionPrivate::QUmlWriteStructuralFeatureActionPrivate() :
     result(0),
     value(0)
-{
-}
-
-QUmlWriteStructuralFeatureActionPrivate::~QUmlWriteStructuralFeatureActionPrivate()
 {
 }
 
@@ -66,53 +60,26 @@ QUmlWriteStructuralFeatureActionPrivate::~QUmlWriteStructuralFeatureActionPrivat
     \brief WriteStructuralFeatureAction is an abstract class for structural feature actions that change structural feature values.
  */
 
-QUmlWriteStructuralFeatureAction::QUmlWriteStructuralFeatureAction(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlStructuralFeatureAction(*new QUmlWriteStructuralFeatureActionPrivate, wrapper, parent)
+QUmlWriteStructuralFeatureAction::QUmlWriteStructuralFeatureAction(bool create_d_ptr) :
+    QUmlStructuralFeatureAction(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlWriteStructuralFeatureActionPrivate);
 }
 
-QUmlWriteStructuralFeatureAction::QUmlWriteStructuralFeatureAction(QUmlWriteStructuralFeatureActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlStructuralFeatureAction(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlWriteStructuralFeatureAction::~QUmlWriteStructuralFeatureAction()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlWriteStructuralFeatureAction
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     Gives the output pin on which the result is put.
  */
 QUmlOutputPin *QUmlWriteStructuralFeatureAction::result() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlWriteStructuralFeatureAction);
-    return d->result;
+    return 0;
 }
 
 void QUmlWriteStructuralFeatureAction::setResult(QUmlOutputPin *result)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlWriteStructuralFeatureAction);
-    if (d->result != result) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActionPrivate *>(d))->removeOutput(qwrappedobject_cast<QUmlOutputPin *>(d->result));
-
-        d->result = result;
-
-        // Adjust subsetted property(ies)
-        if (result) {
-            (qwrappedobject_cast<QUmlActionPrivate *>(d))->addOutput(qwrappedobject_cast<QUmlOutputPin *>(result));
-        }
-    }
+    Q_UNUSED(result);
 }
 
 /*!
@@ -120,50 +87,13 @@ void QUmlWriteStructuralFeatureAction::setResult(QUmlOutputPin *result)
  */
 QUmlInputPin *QUmlWriteStructuralFeatureAction::value() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlWriteStructuralFeatureAction);
-    return d->value;
+    return 0;
 }
 
 void QUmlWriteStructuralFeatureAction::setValue(QUmlInputPin *value)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlWriteStructuralFeatureAction);
-    if (d->value != value) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActionPrivate *>(d))->removeInput(qwrappedobject_cast<QUmlInputPin *>(d->value));
-
-        d->value = value;
-
-        // Adjust subsetted property(ies)
-        if (value) {
-            (qwrappedobject_cast<QUmlActionPrivate *>(d))->addInput(qwrappedobject_cast<QUmlInputPin *>(value));
-        }
-    }
-}
-
-void QUmlWriteStructuralFeatureAction::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlWriteStructuralFeatureAction")][QString::fromLatin1("result")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlWriteStructuralFeatureAction")][QString::fromLatin1("result")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlWriteStructuralFeatureAction")][QString::fromLatin1("result")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Gives the output pin on which the result is put.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlWriteStructuralFeatureAction")][QString::fromLatin1("result")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlWriteStructuralFeatureAction")][QString::fromLatin1("result")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlAction::outputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlWriteStructuralFeatureAction")][QString::fromLatin1("result")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlWriteStructuralFeatureAction")][QString::fromLatin1("value")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlWriteStructuralFeatureAction")][QString::fromLatin1("value")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlWriteStructuralFeatureAction")][QString::fromLatin1("value")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Value to be added or removed from the structural feature.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlWriteStructuralFeatureAction")][QString::fromLatin1("value")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlWriteStructuralFeatureAction")][QString::fromLatin1("value")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlAction::inputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlWriteStructuralFeatureAction")][QString::fromLatin1("value")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlStructuralFeatureAction::setPropertyData();
+    Q_UNUSED(value);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlwritestructuralfeatureaction.cpp"
 

@@ -43,12 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlExecutableNode>
-
-// Qt includes
-#include <QtCore/QList>
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -56,53 +51,29 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlOutputPin;
-class QUmlConstraint;
 class QUmlClassifier;
+class QUmlConstraint;
 class QUmlInputPin;
+class QUmlOutputPin;
 
 class QUmlActionPrivate;
-
 class Q_UML_EXPORT QUmlAction : public QUmlExecutableNode
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(bool isLocallyReentrant READ isLocallyReentrant WRITE setLocallyReentrant RESET unsetLocallyReentrant)
-    Q_PROPERTY(QUmlClassifier * context READ context STORED false)
-    Q_PROPERTY(QSet<QUmlConstraint *> localPostconditions READ localPostconditions)
-    Q_PROPERTY(QSet<QUmlConstraint *> localPreconditions READ localPreconditions)
-    Q_PROPERTY(QList<QUmlInputPin *> inputs READ inputs)
-    Q_PROPERTY(QList<QUmlOutputPin *> outputs READ outputs)
-
-    Q_DISABLE_COPY(QUmlAction)
-    Q_DECLARE_PRIVATE(QUmlAction)
-
 public:
-    Q_INVOKABLE explicit QUmlAction(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlAction();
+    Q_DECL_HIDDEN QUmlAction(bool create_d_ptr = true);
 
-    // Attributes from QUmlAction
-    Q_INVOKABLE bool isLocallyReentrant() const;
-    Q_INVOKABLE void setLocallyReentrant(bool isLocallyReentrant);
-    Q_INVOKABLE void unsetLocallyReentrant();
-
-    // Association ends from QUmlAction
-    Q_INVOKABLE QUmlClassifier *context() const;
-    Q_INVOKABLE QSet<QUmlConstraint *> localPostconditions() const;
-    Q_INVOKABLE void addLocalPostcondition(QUmlConstraint *localPostcondition);
-    Q_INVOKABLE void removeLocalPostcondition(QUmlConstraint *localPostcondition);
-    Q_INVOKABLE QSet<QUmlConstraint *> localPreconditions() const;
-    Q_INVOKABLE void addLocalPrecondition(QUmlConstraint *localPrecondition);
-    Q_INVOKABLE void removeLocalPrecondition(QUmlConstraint *localPrecondition);
-    Q_INVOKABLE QList<QUmlInputPin *> inputs() const;
-    Q_INVOKABLE QList<QUmlOutputPin *> outputs() const;
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlAction(QUmlActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlClassifier *context() const;
+    QList<QUmlInputPin *> input() const;
+    bool isLocallyReentrant() const;
+    void setLocallyReentrant(bool isLocallyReentrant);
+    QSet<QUmlConstraint *> localPostcondition() const;
+    void addLocalPostcondition(QSet<QUmlConstraint *> localPostcondition);
+    void removeLocalPostcondition(QSet<QUmlConstraint *> localPostcondition);
+    QSet<QUmlConstraint *> localPrecondition() const;
+    void addLocalPrecondition(QSet<QUmlConstraint *> localPrecondition);
+    void removeLocalPrecondition(QSet<QUmlConstraint *> localPrecondition);
+    QList<QUmlOutputPin *> output() const;
 };
 
 QT_END_NAMESPACE

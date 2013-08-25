@@ -41,10 +41,9 @@
 #ifndef QUMLSUBSTITUTION_P_H
 #define QUMLSUBSTITUTION_P_H
 
-// Base class includes
-#include "private/qumlrealization_p.h"
-
 #include "QtUml/QUmlSubstitution"
+
+#include "private/qumlrealization_p.h"
 
 QT_BEGIN_HEADER
 
@@ -52,17 +51,10 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlClassifier;
-class QUmlSubstitution;
-
 class Q_UML_EXPORT QUmlSubstitutionPrivate : public QUmlRealizationPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlSubstitution)
-
 public:
-    explicit QUmlSubstitutionPrivate();
-    virtual ~QUmlSubstitutionPrivate();
+    QUmlSubstitutionPrivate();
 
     QUmlClassifier *contract;
     QUmlClassifier *substitutingClassifier;

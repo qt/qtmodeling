@@ -41,13 +41,9 @@
 #ifndef QUMLRELATIONSHIP_P_H
 #define QUMLRELATIONSHIP_P_H
 
-// Base class includes
-#include "private/qumlelement_p.h"
-
 #include "QtUml/QUmlRelationship"
 
-// Qt includes
-#include "QtCore/QSet"
+#include "private/qumlelement_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,19 +51,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QUmlRelationshipPrivate : public QUmlElementPrivate
+class Q_UML_EXPORT QUmlRelationshipPrivate : public virtual QUmlElementPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlRelationship)
-
 public:
-    explicit QUmlRelationshipPrivate();
-    virtual ~QUmlRelationshipPrivate();
+    QUmlRelationshipPrivate();
 
-    QSet<QUmlElement *> relatedElements;
-
-    // Internal functions for read-only subsetted association ends
-    void addRelatedElement(QUmlElement *relatedElement);
-    void removeRelatedElement(QUmlElement *relatedElement);
+    QSet<QUmlElement *> relatedElement;
 };
 
 QT_END_NAMESPACE

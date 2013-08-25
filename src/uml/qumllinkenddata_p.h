@@ -41,13 +41,9 @@
 #ifndef QUMLLINKENDDATA_P_H
 #define QUMLLINKENDDATA_P_H
 
-// Base class includes
-#include "private/qumlelement_p.h"
-
 #include "QtUml/QUmlLinkEndData"
 
-// Qt includes
-#include "QtCore/QSet"
+#include "private/qumlelement_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,23 +51,14 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlProperty;
-class QUmlQualifierValue;
-class QUmlInputPin;
-class QUmlLinkEndData;
-
 class Q_UML_EXPORT QUmlLinkEndDataPrivate : public QUmlElementPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlLinkEndData)
-
 public:
-    explicit QUmlLinkEndDataPrivate();
-    virtual ~QUmlLinkEndDataPrivate();
+    QUmlLinkEndDataPrivate();
 
-    QUmlInputPin *value;
     QUmlProperty *end;
-    QSet<QUmlQualifierValue *> qualifiers;
+    QSet<QUmlQualifierValue *> qualifier;
+    QUmlInputPin *value;
 };
 
 QT_END_NAMESPACE

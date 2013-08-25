@@ -41,10 +41,9 @@
 #ifndef QUMLLINKENDCREATIONDATA_P_H
 #define QUMLLINKENDCREATIONDATA_P_H
 
-// Base class includes
-#include "private/qumllinkenddata_p.h"
-
 #include "QtUml/QUmlLinkEndCreationData"
+
+#include "private/qumllinkenddata_p.h"
 
 QT_BEGIN_HEADER
 
@@ -52,20 +51,13 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlInputPin;
-class QUmlLinkEndCreationData;
-
 class Q_UML_EXPORT QUmlLinkEndCreationDataPrivate : public QUmlLinkEndDataPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlLinkEndCreationData)
-
 public:
-    explicit QUmlLinkEndCreationDataPrivate();
-    virtual ~QUmlLinkEndCreationDataPrivate();
+    QUmlLinkEndCreationDataPrivate();
 
-    bool isReplaceAll;
     QUmlInputPin *insertAt;
+    bool isReplaceAll;
 };
 
 QT_END_NAMESPACE

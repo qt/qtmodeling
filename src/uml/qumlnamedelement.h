@@ -43,16 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlElement>
-
-// QtUml includes
 #include <QtUml/QtUmlNamespace>
-
-// Qt includes
-#include <QtCore/QString>
-#include <QtCore/QList>
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -60,62 +52,35 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlPackage;
-class QUmlNamedElement;
-class QUmlNamespace;
 class QUmlDependency;
+class QUmlNamespace;
+class QUmlPackage;
 class QUmlStringExpression;
 
 class QUmlNamedElementPrivate;
-
-class Q_UML_EXPORT QUmlNamedElement : public QUmlElement
+class Q_UML_EXPORT QUmlNamedElement : public virtual QUmlElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QUmlStringExpression * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QUmlNamespace * namespace_ READ namespace_)
-    Q_PROPERTY(QSet<QUmlDependency *> clientDependencies READ clientDependencies)
-
-    Q_DISABLE_COPY(QUmlNamedElement)
-    Q_DECLARE_PRIVATE(QUmlNamedElement)
-
 public:
-    Q_INVOKABLE explicit QUmlNamedElement(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlNamedElement();
+    Q_DECL_HIDDEN QUmlNamedElement(bool create_d_ptr = true);
 
-    // Attributes from QUmlNamedElement
-    Q_INVOKABLE QString name() const;
-    Q_INVOKABLE void setName(QString name);
-    Q_INVOKABLE QtUml::VisibilityKind visibility() const;
-    Q_INVOKABLE void setVisibility(QtUml::VisibilityKind visibility);
-    Q_INVOKABLE QString qualifiedName() const;
-
-    // Association ends from QUmlNamedElement
-    Q_INVOKABLE QUmlStringExpression *nameExpression() const;
-    Q_INVOKABLE void setNameExpression(QUmlStringExpression *nameExpression);
-    Q_INVOKABLE QUmlNamespace *namespace_() const;
-    Q_INVOKABLE QSet<QUmlDependency *> clientDependencies() const;
-    Q_INVOKABLE void addClientDependency(QUmlDependency *clientDependency);
-    Q_INVOKABLE void removeClientDependency(QUmlDependency *clientDependency);
+    // Owned attributes
+    QSet<QUmlDependency *> clientDependency() const;
+    void addClientDependency(QSet<QUmlDependency *> clientDependency);
+    void removeClientDependency(QSet<QUmlDependency *> clientDependency);
+    QString name() const;
+    void setName(QString name);
+    QUmlStringExpression *nameExpression() const;
+    void setNameExpression(QUmlStringExpression *nameExpression);
+    QUmlNamespace *namespace_() const;
+    QString qualifiedName() const;
+    QtUml::VisibilityKind visibility() const;
+    void setVisibility(QtUml::VisibilityKind visibility);
 
     // Operations
-    Q_INVOKABLE QList<QUmlNamespace *> allNamespaces() const;
-    Q_INVOKABLE QSet<QUmlPackage *> allOwningPackages() const;
-    Q_INVOKABLE bool isDistinguishableFrom(const QUmlNamedElement *n, const QUmlNamespace *ns) const;
-    Q_INVOKABLE QString separator() const;
-
-    virtual void setPropertyData();
-
-    // Classes which access read-only opposite properties should be friend
-    friend class QUmlNamespacePrivate;
-
-protected:
-    explicit QUmlNamedElement(QUmlNamedElementPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    QList<QUmlNamespace *> allNamespaces() const;
+    QSet<QUmlPackage *> allOwningPackages() const;
+    bool isDistinguishableFrom(QUmlNamedElement *n, QUmlNamespace *ns) const;
+    QString separator() const;
 };
 
 QT_END_NAMESPACE

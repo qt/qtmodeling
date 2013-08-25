@@ -43,11 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlCombinedFragment>
-
-// Qt includes
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -55,34 +51,18 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlNamedElement;
 
 class QUmlConsiderIgnoreFragmentPrivate;
-
 class Q_UML_EXPORT QUmlConsiderIgnoreFragment : public QUmlCombinedFragment
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QSet<QUmlNamedElement *> messages READ messages)
-
-    Q_DISABLE_COPY(QUmlConsiderIgnoreFragment)
-    Q_DECLARE_PRIVATE(QUmlConsiderIgnoreFragment)
-
 public:
-    Q_INVOKABLE explicit QUmlConsiderIgnoreFragment(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlConsiderIgnoreFragment();
+    QUmlConsiderIgnoreFragment(bool create_d_ptr = true);
 
-    // Association ends from QUmlConsiderIgnoreFragment
-    Q_INVOKABLE QSet<QUmlNamedElement *> messages() const;
-    Q_INVOKABLE void addMessage(QUmlNamedElement *message);
-    Q_INVOKABLE void removeMessage(QUmlNamedElement *message);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlConsiderIgnoreFragment(QUmlConsiderIgnoreFragmentPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QSet<QUmlNamedElement *> message() const;
+    void addMessage(QSet<QUmlNamedElement *> message);
+    void removeMessage(QSet<QUmlNamedElement *> message);
 };
 
 QT_END_NAMESPACE

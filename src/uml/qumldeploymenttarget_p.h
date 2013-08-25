@@ -41,13 +41,9 @@
 #ifndef QUMLDEPLOYMENTTARGET_P_H
 #define QUMLDEPLOYMENTTARGET_P_H
 
-// Base class includes
-#include "private/qumlnamedelement_p.h"
-
 #include "QtUml/QUmlDeploymentTarget"
 
-// Qt includes
-#include "QtCore/QSet"
+#include "private/qumlnamedelement_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,19 +51,13 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlPackageableElement;
-class QUmlDeployment;
-
-class Q_UML_EXPORT QUmlDeploymentTargetPrivate : public QUmlNamedElementPrivate
+class Q_UML_EXPORT QUmlDeploymentTargetPrivate : public virtual QUmlNamedElementPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlDeploymentTarget)
-
 public:
-    explicit QUmlDeploymentTargetPrivate();
-    virtual ~QUmlDeploymentTargetPrivate();
+    QUmlDeploymentTargetPrivate();
 
-    QSet<QUmlDeployment *> deployments;
+    QSet<QUmlPackageableElement *> deployedElement;
+    QSet<QUmlDeployment *> deployment;
 };
 
 QT_END_NAMESPACE

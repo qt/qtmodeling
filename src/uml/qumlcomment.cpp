@@ -41,15 +41,9 @@
 #include "qumlcomment.h"
 #include "qumlcomment_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlCommentPrivate::QUmlCommentPrivate()
-{
-}
-
-QUmlCommentPrivate::~QUmlCommentPrivate()
 {
 }
 
@@ -61,102 +55,45 @@ QUmlCommentPrivate::~QUmlCommentPrivate()
     \brief A comment is a textual annotation that can be attached to a set of elements.
  */
 
-QUmlComment::QUmlComment(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlElement(*new QUmlCommentPrivate, wrapper, parent)
+QUmlComment::QUmlComment(bool create_d_ptr) :
+    QUmlElement(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlCommentPrivate);
 }
 
-QUmlComment::QUmlComment(QUmlCommentPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlElement(dd, wrapper, parent)
+// Owned attributes
+
+/*!
+    References the Element(s) being commented.
+ */
+QSet<QUmlElement *> QUmlComment::annotatedElement() const
 {
-    setPropertyData();
+    return QSet<QUmlElement *>();
 }
 
-QUmlComment::~QUmlComment()
+void QUmlComment::addAnnotatedElement(QSet<QUmlElement *> annotatedElement)
 {
+    Q_UNUSED(annotatedElement);
 }
 
-// ---------------------------------------------------------------
-// ATTRIBUTES FROM QUmlComment
-// ---------------------------------------------------------------
+void QUmlComment::removeAnnotatedElement(QSet<QUmlElement *> annotatedElement)
+{
+    Q_UNUSED(annotatedElement);
+}
 
 /*!
     Specifies a string that is the comment.
  */
 QString QUmlComment::body() const
 {
-    // This is a read-write attribute
-
-    Q_D(const QUmlComment);
-    return d->body;
+    return QString();
 }
 
 void QUmlComment::setBody(QString body)
 {
-    // This is a read-write attribute
-
-    Q_D(QUmlComment);
-    if (d->body != body) {
-        d->body = body;
-    }
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlComment
-// ---------------------------------------------------------------
-
-/*!
-    References the Element(s) being commented.
- */
-QSet<QUmlElement *> QUmlComment::annotatedElements() const
-{
-    // This is a read-write association end
-
-    Q_D(const QUmlComment);
-    return d->annotatedElements;
-}
-
-void QUmlComment::addAnnotatedElement(QUmlElement *annotatedElement)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlComment);
-    if (!d->annotatedElements.contains(annotatedElement)) {
-        d->annotatedElements.insert(annotatedElement);
-    }
-}
-
-void QUmlComment::removeAnnotatedElement(QUmlElement *annotatedElement)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlComment);
-    if (d->annotatedElements.contains(annotatedElement)) {
-        d->annotatedElements.remove(annotatedElement);
-    }
-}
-
-void QUmlComment::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlComment")][QString::fromLatin1("body")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlComment")][QString::fromLatin1("body")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlComment")][QString::fromLatin1("body")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies a string that is the comment.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlComment")][QString::fromLatin1("body")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlComment")][QString::fromLatin1("body")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlComment")][QString::fromLatin1("body")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlComment")][QString::fromLatin1("annotatedElements")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlComment")][QString::fromLatin1("annotatedElements")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlComment")][QString::fromLatin1("annotatedElements")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Element(s) being commented.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlComment")][QString::fromLatin1("annotatedElements")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlComment")][QString::fromLatin1("annotatedElements")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlComment")][QString::fromLatin1("annotatedElements")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlElement::setPropertyData();
+    Q_UNUSED(body);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlcomment.cpp"
 

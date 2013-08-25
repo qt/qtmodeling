@@ -41,15 +41,9 @@
 #include "qumlanyreceiveevent.h"
 #include "qumlanyreceiveevent_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlAnyReceiveEventPrivate::QUmlAnyReceiveEventPrivate()
-{
-}
-
-QUmlAnyReceiveEventPrivate::~QUmlAnyReceiveEventPrivate()
 {
 }
 
@@ -61,28 +55,12 @@ QUmlAnyReceiveEventPrivate::~QUmlAnyReceiveEventPrivate()
     \brief A trigger for an AnyReceiveEvent is triggered by the receipt of any message that is not explicitly handled by any related trigger.
  */
 
-QUmlAnyReceiveEvent::QUmlAnyReceiveEvent(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlMessageEvent(*new QUmlAnyReceiveEventPrivate, wrapper, parent)
+QUmlAnyReceiveEvent::QUmlAnyReceiveEvent(bool create_d_ptr) :
+    QUmlMessageEvent(false)
 {
-    setPropertyData();
-}
-
-QUmlAnyReceiveEvent::QUmlAnyReceiveEvent(QUmlAnyReceiveEventPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlMessageEvent(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlAnyReceiveEvent::~QUmlAnyReceiveEvent()
-{
-}
-
-void QUmlAnyReceiveEvent::setPropertyData()
-{
-    QUmlMessageEvent::setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlAnyReceiveEventPrivate);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlanyreceiveevent.cpp"
 

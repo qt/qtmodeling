@@ -41,25 +41,20 @@
 #ifndef QUMLUSAGE_P_H
 #define QUMLUSAGE_P_H
 
-// Base class includes
-#include "private/qumldependency_p.h"
-
 #include "QtUml/QUmlUsage"
+
+#include "private/qumldependency_p.h"
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-class QUmlUsage;
 
 class Q_UML_EXPORT QUmlUsagePrivate : public QUmlDependencyPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlUsage)
-
 public:
-    explicit QUmlUsagePrivate();
-    virtual ~QUmlUsagePrivate();
+    QUmlUsagePrivate();
 
 };
 

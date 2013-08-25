@@ -41,15 +41,9 @@
 #include "qumlassociationclass.h"
 #include "qumlassociationclass_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlAssociationClassPrivate::QUmlAssociationClassPrivate()
-{
-}
-
-QUmlAssociationClassPrivate::~QUmlAssociationClassPrivate()
 {
 }
 
@@ -61,32 +55,13 @@ QUmlAssociationClassPrivate::~QUmlAssociationClassPrivate()
     \brief A model element that has both association and class properties. An AssociationClass can be seen as an association that also has class properties, or as a class that also has association properties. It not only connects a set of classifiers but also defines a set of features that belong to the relationship itself and not to any of the classifiers.
  */
 
-QUmlAssociationClass::QUmlAssociationClass(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QWrappedObject(*new QUmlAssociationClassPrivate, wrapper, parent),
-    _wrappedUmlClass(new QUmlClass(this)),
-    _wrappedUmlAssociation(new QUmlAssociation(this))
+QUmlAssociationClass::QUmlAssociationClass(bool create_d_ptr) :
+    QUmlClass(false),
+    QUmlAssociation(false)
 {
-    setPropertyData();
-}
-
-QUmlAssociationClass::QUmlAssociationClass(QUmlAssociationClassPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QWrappedObject(dd, wrapper, parent),
-    _wrappedUmlClass(new QUmlClass(this)),
-    _wrappedUmlAssociation(new QUmlAssociation(this))
-{
-    setPropertyData();
-}
-
-QUmlAssociationClass::~QUmlAssociationClass()
-{
-}
-
-void QUmlAssociationClass::setPropertyData()
-{
-    QWrappedObject::setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlAssociationClassPrivate);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlassociationclass.cpp"
 

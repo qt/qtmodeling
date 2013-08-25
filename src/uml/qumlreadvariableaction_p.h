@@ -41,10 +41,9 @@
 #ifndef QUMLREADVARIABLEACTION_P_H
 #define QUMLREADVARIABLEACTION_P_H
 
-// Base class includes
-#include "private/qumlvariableaction_p.h"
-
 #include "QtUml/QUmlReadVariableAction"
+
+#include "private/qumlvariableaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -52,17 +51,10 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlOutputPin;
-class QUmlReadVariableAction;
-
 class Q_UML_EXPORT QUmlReadVariableActionPrivate : public QUmlVariableActionPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlReadVariableAction)
-
 public:
-    explicit QUmlReadVariableActionPrivate();
-    virtual ~QUmlReadVariableActionPrivate();
+    QUmlReadVariableActionPrivate();
 
     QUmlOutputPin *result;
 };

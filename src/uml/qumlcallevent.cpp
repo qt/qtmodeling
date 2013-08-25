@@ -43,16 +43,10 @@
 
 #include <QtUml/QUmlOperation>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlCallEventPrivate::QUmlCallEventPrivate() :
     operation(0)
-{
-}
-
-QUmlCallEventPrivate::~QUmlCallEventPrivate()
 {
 }
 
@@ -64,60 +58,27 @@ QUmlCallEventPrivate::~QUmlCallEventPrivate()
     \brief A call event models the receipt by an object of a message invoking a call of an operation.
  */
 
-QUmlCallEvent::QUmlCallEvent(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlMessageEvent(*new QUmlCallEventPrivate, wrapper, parent)
+QUmlCallEvent::QUmlCallEvent(bool create_d_ptr) :
+    QUmlMessageEvent(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlCallEventPrivate);
 }
 
-QUmlCallEvent::QUmlCallEvent(QUmlCallEventPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlMessageEvent(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlCallEvent::~QUmlCallEvent()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlCallEvent
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     Designates the operation whose invocation raised the call event.
  */
 QUmlOperation *QUmlCallEvent::operation() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlCallEvent);
-    return d->operation;
+    return 0;
 }
 
 void QUmlCallEvent::setOperation(QUmlOperation *operation)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlCallEvent);
-    if (d->operation != operation) {
-        d->operation = operation;
-    }
-}
-
-void QUmlCallEvent::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCallEvent")][QString::fromLatin1("operation")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCallEvent")][QString::fromLatin1("operation")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCallEvent")][QString::fromLatin1("operation")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Designates the operation whose invocation raised the call event.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCallEvent")][QString::fromLatin1("operation")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCallEvent")][QString::fromLatin1("operation")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlCallEvent")][QString::fromLatin1("operation")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlMessageEvent::setPropertyData();
+    Q_UNUSED(operation);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlcallevent.cpp"
 

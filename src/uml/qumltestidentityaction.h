@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlAction>
 
 QT_BEGIN_HEADER
@@ -52,40 +51,22 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlInputPin;
 class QUmlOutputPin;
 
 class QUmlTestIdentityActionPrivate;
-
 class Q_UML_EXPORT QUmlTestIdentityAction : public QUmlAction
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlInputPin * second READ second WRITE setSecond)
-    Q_PROPERTY(QUmlOutputPin * result READ result WRITE setResult)
-    Q_PROPERTY(QUmlInputPin * first READ first WRITE setFirst)
-
-    Q_DISABLE_COPY(QUmlTestIdentityAction)
-    Q_DECLARE_PRIVATE(QUmlTestIdentityAction)
-
 public:
-    Q_INVOKABLE explicit QUmlTestIdentityAction(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlTestIdentityAction();
+    QUmlTestIdentityAction(bool create_d_ptr = true);
 
-    // Association ends from QUmlTestIdentityAction
-    Q_INVOKABLE QUmlInputPin *second() const;
-    Q_INVOKABLE void setSecond(QUmlInputPin *second);
-    Q_INVOKABLE QUmlOutputPin *result() const;
-    Q_INVOKABLE void setResult(QUmlOutputPin *result);
-    Q_INVOKABLE QUmlInputPin *first() const;
-    Q_INVOKABLE void setFirst(QUmlInputPin *first);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlTestIdentityAction(QUmlTestIdentityActionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlInputPin *first() const;
+    void setFirst(QUmlInputPin *first);
+    QUmlOutputPin *result() const;
+    void setResult(QUmlOutputPin *result);
+    QUmlInputPin *second() const;
+    void setSecond(QUmlInputPin *second);
 };
 
 QT_END_NAMESPACE

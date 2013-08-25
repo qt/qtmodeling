@@ -41,25 +41,20 @@
 #ifndef QUMLFINALSTATE_P_H
 #define QUMLFINALSTATE_P_H
 
-// Base class includes
-#include "private/qumlstate_p.h"
-
 #include "QtUml/QUmlFinalState"
+
+#include "private/qumlstate_p.h"
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-class QUmlFinalState;
 
 class Q_UML_EXPORT QUmlFinalStatePrivate : public QUmlStatePrivate
 {
-    Q_DECLARE_PUBLIC(QUmlFinalState)
-
 public:
-    explicit QUmlFinalStatePrivate();
-    virtual ~QUmlFinalStatePrivate();
+    QUmlFinalStatePrivate();
 
 };
 

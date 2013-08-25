@@ -41,25 +41,20 @@
 #ifndef QUMLMERGENODE_P_H
 #define QUMLMERGENODE_P_H
 
-// Base class includes
-#include "private/qumlcontrolnode_p.h"
-
 #include "QtUml/QUmlMergeNode"
+
+#include "private/qumlcontrolnode_p.h"
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-class QUmlMergeNode;
 
 class Q_UML_EXPORT QUmlMergeNodePrivate : public QUmlControlNodePrivate
 {
-    Q_DECLARE_PUBLIC(QUmlMergeNode)
-
 public:
-    explicit QUmlMergeNodePrivate();
-    virtual ~QUmlMergeNodePrivate();
+    QUmlMergeNodePrivate();
 
 };
 

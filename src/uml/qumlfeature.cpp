@@ -41,48 +41,13 @@
 #include "qumlfeature.h"
 #include "qumlfeature_p.h"
 
-#include "qumlclassifier_p.h"
-
 #include <QtUml/QUmlClassifier>
-
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
 QT_BEGIN_NAMESPACE
 
 QUmlFeaturePrivate::QUmlFeaturePrivate() :
     isStatic(false)
 {
-}
-
-QUmlFeaturePrivate::~QUmlFeaturePrivate()
-{
-}
-
-void QUmlFeaturePrivate::addFeaturingClassifier(QUmlClassifier *featuringClassifier)
-{
-    // This is a read-only derived-union association end
-
-    if (!this->featuringClassifiers.contains(featuringClassifier)) {
-        this->featuringClassifiers.insert(featuringClassifier);
-
-        // Adjust opposite property
-        Q_Q(QUmlFeature);
-        (qwrappedobject_cast<QUmlClassifierPrivate *>(featuringClassifier->d_func()))->addFeature(q);
-    }
-}
-
-void QUmlFeaturePrivate::removeFeaturingClassifier(QUmlClassifier *featuringClassifier)
-{
-    // This is a read-only derived-union association end
-
-    if (this->featuringClassifiers.contains(featuringClassifier)) {
-        this->featuringClassifiers.remove(featuringClassifier);
-
-        // Adjust opposite property
-        Q_Q(QUmlFeature);
-        if (featuringClassifier)
-            (qwrappedobject_cast<QUmlClassifierPrivate *>(featuringClassifier->d_func()))->removeFeature(q);
-    }
 }
 
 /*!
@@ -93,90 +58,35 @@ void QUmlFeaturePrivate::removeFeaturingClassifier(QUmlClassifier *featuringClas
     \brief A feature declares a behavioral or structural characteristic of instances of classifiers.
  */
 
-QUmlFeature::QUmlFeature(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlRedefinableElement(*new QUmlFeaturePrivate, wrapper, parent)
+QUmlFeature::QUmlFeature(bool create_d_ptr) :
+    QUmlRedefinableElement(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlFeaturePrivate);
 }
 
-QUmlFeature::QUmlFeature(QUmlFeaturePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlRedefinableElement(dd, wrapper, parent)
-{
-    setPropertyData();
-}
+// Owned attributes
 
-QUmlFeature::~QUmlFeature()
+/*!
+    The Classifiers that have this Feature as a feature.
+ */
+QSet<QUmlClassifier *> QUmlFeature::featuringClassifier() const
 {
+    return QSet<QUmlClassifier *>();
 }
-
-// ---------------------------------------------------------------
-// ATTRIBUTES FROM QUmlFeature
-// ---------------------------------------------------------------
 
 /*!
     Specifies whether this feature characterizes individual instances classified by the classifier (false) or the classifier itself (true).
  */
 bool QUmlFeature::isStatic() const
 {
-    // This is a read-write attribute
-
-    Q_D(const QUmlFeature);
-    return d->isStatic;
+    return bool();
 }
 
 void QUmlFeature::setStatic(bool isStatic)
 {
-    // This is a read-write attribute
-
-    Q_D(QUmlFeature);
-    if (d->isStatic != isStatic) {
-        d->isStatic = isStatic;
-    }
-    d->modifiedResettableProperties << QString::fromLatin1("isStatic");
-}
-
-void QUmlFeature::unsetStatic()
-{
-    setStatic(false);
-    Q_D(QUmlFeature);
-    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isStatic"));
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlFeature
-// ---------------------------------------------------------------
-
-/*!
-    The Classifiers that have this Feature as a feature.
- */
-QSet<QUmlClassifier *> QUmlFeature::featuringClassifiers() const
-{
-    // This is a read-only derived-union association end
-
-    Q_D(const QUmlFeature);
-    return d->featuringClassifiers;
-}
-
-void QUmlFeature::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlFeature")][QString::fromLatin1("isStatic")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlFeature")][QString::fromLatin1("isStatic")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlFeature")][QString::fromLatin1("isStatic")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies whether this feature characterizes individual instances classified by the classifier (false) or the classifier itself (true).");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlFeature")][QString::fromLatin1("isStatic")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlFeature")][QString::fromLatin1("isStatic")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlFeature")][QString::fromLatin1("isStatic")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlFeature")][QString::fromLatin1("featuringClassifiers")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlFeature")][QString::fromLatin1("featuringClassifiers")][QtWrappedObjects::IsDerivedUnionRole] = true;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlFeature")][QString::fromLatin1("featuringClassifiers")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The Classifiers that have this Feature as a feature.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlFeature")][QString::fromLatin1("featuringClassifiers")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlFeature")][QString::fromLatin1("featuringClassifiers")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlFeature")][QString::fromLatin1("featuringClassifiers")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlClassifier::feature");
-
-    QUmlRedefinableElement::setPropertyData();
+    Q_UNUSED(isStatic);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlfeature.cpp"
 

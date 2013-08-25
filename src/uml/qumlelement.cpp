@@ -43,62 +43,11 @@
 
 #include <QtUml/QUmlComment>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlElementPrivate::QUmlElementPrivate() :
     owner(0)
 {
-}
-
-QUmlElementPrivate::~QUmlElementPrivate()
-{
-}
-
-void QUmlElementPrivate::addOwnedElement(QUmlElement *ownedElement)
-{
-    // This is a read-only derived-union association end
-
-    if (!this->ownedElements.contains(ownedElement)) {
-        this->ownedElements.insert(ownedElement);
-        Q_Q(QUmlElement);
-        qTopLevelWrapper(ownedElement)->setParent(qTopLevelWrapper(q));
-
-        // Adjust opposite property
-        (qwrappedobject_cast<QUmlElementPrivate *>(ownedElement->d_func()))->setOwner(q);
-    }
-}
-
-void QUmlElementPrivate::removeOwnedElement(QUmlElement *ownedElement)
-{
-    // This is a read-only derived-union association end
-
-    if (this->ownedElements.contains(ownedElement)) {
-        this->ownedElements.remove(ownedElement);
-        qTopLevelWrapper(ownedElement)->setParent(0);
-
-        // Adjust opposite property
-        (qwrappedobject_cast<QUmlElementPrivate *>(ownedElement->d_func()))->setOwner(0);
-    }
-}
-
-void QUmlElementPrivate::setOwner(QUmlElement *owner)
-{
-    // This is a read-only derived-union association end
-
-    if (this->owner != owner) {
-        Q_Q(QUmlElement);
-        // Adjust opposite property
-        if (this->owner)
-            (qwrappedobject_cast<QUmlElementPrivate *>(this->owner->d_func()))->removeOwnedElement(q);
-
-        this->owner = owner;
-
-        // Adjust opposite property
-        if (owner)
-            (qwrappedobject_cast<QUmlElementPrivate *>(owner->d_func()))->addOwnedElement(q);
-    }
 }
 
 /*!
@@ -109,35 +58,39 @@ void QUmlElementPrivate::setOwner(QUmlElement *owner)
     \brief An element is a constituent of a model. As such, it has the capability of owning other elements.
  */
 
-QUmlElement::QUmlElement(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QWrappedObject(*new QUmlElementPrivate, wrapper, parent)
+QUmlElement::QUmlElement(bool create_d_ptr) :
+    QModelingObject(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlElementPrivate);
 }
 
-QUmlElement::QUmlElement(QUmlElementPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QWrappedObject(dd, wrapper, parent)
+// Owned attributes
+
+/*!
+    The Comments owned by this element.
+ */
+QSet<QUmlComment *> QUmlElement::ownedComment() const
 {
-    setPropertyData();
+    return QSet<QUmlComment *>();
 }
 
-QUmlElement::~QUmlElement()
+void QUmlElement::addOwnedComment(QSet<QUmlComment *> ownedComment)
 {
+    Q_UNUSED(ownedComment);
 }
 
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlElement
-// ---------------------------------------------------------------
+void QUmlElement::removeOwnedComment(QSet<QUmlComment *> ownedComment)
+{
+    Q_UNUSED(ownedComment);
+}
 
 /*!
     The Elements owned by this element.
  */
-QSet<QUmlElement *> QUmlElement::ownedElements() const
+QSet<QUmlElement *> QUmlElement::ownedElement() const
 {
-    // This is a read-only derived-union association end
-
-    Q_D(const QUmlElement);
-    return d->ownedElements;
+    return QSet<QUmlElement *>();
 }
 
 /*!
@@ -145,57 +98,17 @@ QSet<QUmlElement *> QUmlElement::ownedElements() const
  */
 QUmlElement *QUmlElement::owner() const
 {
-    // This is a read-only derived-union association end
-
-    Q_D(const QUmlElement);
-    return d->owner;
+    return 0;
 }
 
-/*!
-    The Comments owned by this element.
- */
-QSet<QUmlComment *> QUmlElement::ownedComments() const
-{
-    // This is a read-write association end
-
-    Q_D(const QUmlElement);
-    return d->ownedComments;
-}
-
-void QUmlElement::addOwnedComment(QUmlComment *ownedComment)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlElement);
-    if (!d->ownedComments.contains(ownedComment)) {
-        d->ownedComments.insert(ownedComment);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QUmlElement *>(ownedComment));
-    }
-}
-
-void QUmlElement::removeOwnedComment(QUmlComment *ownedComment)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlElement);
-    if (d->ownedComments.contains(ownedComment)) {
-        d->ownedComments.remove(ownedComment);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QUmlElement *>(ownedComment));
-    }
-}
+// Operations
 
 /*!
     The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
  */
 QSet<QUmlElement *> QUmlElement::allOwnedElements() const
 {
-    QSet<QUmlElement *> allOwnedElements_;
-    allOwnedElements(allOwnedElements_);
-    return allOwnedElements_;
+    return QSet<QUmlElement *> ();
 }
 
 /*!
@@ -203,44 +116,8 @@ QSet<QUmlElement *> QUmlElement::allOwnedElements() const
  */
 bool QUmlElement::mustBeOwned() const
 {
-    return true;
-}
-
-void QUmlElement::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlElement")][QString::fromLatin1("ownedElements")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlElement")][QString::fromLatin1("ownedElements")][QtWrappedObjects::IsDerivedUnionRole] = true;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlElement")][QString::fromLatin1("ownedElements")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The Elements owned by this element.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlElement")][QString::fromLatin1("ownedElements")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlElement")][QString::fromLatin1("ownedElements")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlElement")][QString::fromLatin1("ownedElements")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlElement::owner");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlElement")][QString::fromLatin1("owner")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlElement")][QString::fromLatin1("owner")][QtWrappedObjects::IsDerivedUnionRole] = true;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlElement")][QString::fromLatin1("owner")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The Element that owns this element.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlElement")][QString::fromLatin1("owner")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlElement")][QString::fromLatin1("owner")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlElement")][QString::fromLatin1("owner")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlElement::ownedElement");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlElement")][QString::fromLatin1("ownedComments")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlElement")][QString::fromLatin1("ownedComments")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlElement")][QString::fromLatin1("ownedComments")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The Comments owned by this element.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlElement")][QString::fromLatin1("ownedComments")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlElement")][QString::fromLatin1("ownedComments")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlElement")][QString::fromLatin1("ownedComments")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QWrappedObject::setPropertyData();
-}
-
-void QUmlElement::allOwnedElements(QSet<QUmlElement *> &allOwnedElements_) const
-{
-    Q_D(const QUmlElement);
-    allOwnedElements_.unite(d->ownedElements);
-    foreach (QUmlElement *element, d->ownedElements)
-        element->allOwnedElements(allOwnedElements_);
+    return bool ();
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlelement.cpp"
 

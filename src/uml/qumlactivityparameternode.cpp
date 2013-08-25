@@ -43,16 +43,10 @@
 
 #include <QtUml/QUmlParameter>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlActivityParameterNodePrivate::QUmlActivityParameterNodePrivate() :
     parameter(0)
-{
-}
-
-QUmlActivityParameterNodePrivate::~QUmlActivityParameterNodePrivate()
 {
 }
 
@@ -64,60 +58,27 @@ QUmlActivityParameterNodePrivate::~QUmlActivityParameterNodePrivate()
     \brief An activity parameter node is an object node for inputs and outputs to activities.
  */
 
-QUmlActivityParameterNode::QUmlActivityParameterNode(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlObjectNode(*new QUmlActivityParameterNodePrivate, wrapper, parent)
+QUmlActivityParameterNode::QUmlActivityParameterNode(bool create_d_ptr) :
+    QUmlObjectNode(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlActivityParameterNodePrivate);
 }
 
-QUmlActivityParameterNode::QUmlActivityParameterNode(QUmlActivityParameterNodePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlObjectNode(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlActivityParameterNode::~QUmlActivityParameterNode()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlActivityParameterNode
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     The parameter the object node will be accepting or providing values for.
  */
 QUmlParameter *QUmlActivityParameterNode::parameter() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlActivityParameterNode);
-    return d->parameter;
+    return 0;
 }
 
 void QUmlActivityParameterNode::setParameter(QUmlParameter *parameter)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlActivityParameterNode);
-    if (d->parameter != parameter) {
-        d->parameter = parameter;
-    }
-}
-
-void QUmlActivityParameterNode::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivityParameterNode")][QString::fromLatin1("parameter")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivityParameterNode")][QString::fromLatin1("parameter")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivityParameterNode")][QString::fromLatin1("parameter")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The parameter the object node will be accepting or providing values for.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivityParameterNode")][QString::fromLatin1("parameter")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivityParameterNode")][QString::fromLatin1("parameter")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivityParameterNode")][QString::fromLatin1("parameter")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlObjectNode::setPropertyData();
+    Q_UNUSED(parameter);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlactivityparameternode.cpp"
 

@@ -41,13 +41,9 @@
 #ifndef QUMLPROTOCOLSTATEMACHINE_P_H
 #define QUMLPROTOCOLSTATEMACHINE_P_H
 
-// Base class includes
-#include "private/qumlstatemachine_p.h"
-
 #include "QtUml/QUmlProtocolStateMachine"
 
-// Qt includes
-#include "QtCore/QSet"
+#include "private/qumlstatemachine_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,17 +51,10 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlProtocolConformance;
-class QUmlProtocolStateMachine;
-
 class Q_UML_EXPORT QUmlProtocolStateMachinePrivate : public QUmlStateMachinePrivate
 {
-    Q_DECLARE_PUBLIC(QUmlProtocolStateMachine)
-
 public:
-    explicit QUmlProtocolStateMachinePrivate();
-    virtual ~QUmlProtocolStateMachinePrivate();
+    QUmlProtocolStateMachinePrivate();
 
     QSet<QUmlProtocolConformance *> conformance;
 };

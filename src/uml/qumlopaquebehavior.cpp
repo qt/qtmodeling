@@ -41,15 +41,9 @@
 #include "qumlopaquebehavior.h"
 #include "qumlopaquebehavior_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlOpaqueBehaviorPrivate::QUmlOpaqueBehaviorPrivate()
-{
-}
-
-QUmlOpaqueBehaviorPrivate::~QUmlOpaqueBehaviorPrivate()
 {
 }
 
@@ -61,108 +55,50 @@ QUmlOpaqueBehaviorPrivate::~QUmlOpaqueBehaviorPrivate()
     \brief An behavior with implementation-specific semantics.
  */
 
-QUmlOpaqueBehavior::QUmlOpaqueBehavior(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlBehavior(*new QUmlOpaqueBehaviorPrivate, wrapper, parent)
+QUmlOpaqueBehavior::QUmlOpaqueBehavior(bool create_d_ptr) :
+    QUmlBehavior(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlOpaqueBehaviorPrivate);
 }
 
-QUmlOpaqueBehavior::QUmlOpaqueBehavior(QUmlOpaqueBehaviorPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlBehavior(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlOpaqueBehavior::~QUmlOpaqueBehavior()
-{
-}
-
-// ---------------------------------------------------------------
-// ATTRIBUTES FROM QUmlOpaqueBehavior
-// ---------------------------------------------------------------
-
-/*!
-    Languages the body strings use in the same order as the body strings.
- */
-QList<QString> QUmlOpaqueBehavior::languages() const
-{
-    // This is a read-write attribute
-
-    Q_D(const QUmlOpaqueBehavior);
-    return d->languages;
-}
-
-void QUmlOpaqueBehavior::addLanguage(QString language)
-{
-    // This is a read-write attribute
-
-    Q_D(QUmlOpaqueBehavior);
-    if (!d->languages.contains(language)) {
-        d->languages.append(language);
-    }
-}
-
-void QUmlOpaqueBehavior::removeLanguage(QString language)
-{
-    // This is a read-write attribute
-
-    Q_D(QUmlOpaqueBehavior);
-    if (d->languages.contains(language)) {
-        d->languages.removeAll(language);
-    }
-}
+// Owned attributes
 
 /*!
     Specifies the behavior in one or more languages.
  */
-QList<QString> QUmlOpaqueBehavior::bodies() const
+QList<QString> QUmlOpaqueBehavior::body() const
 {
-    // This is a read-write attribute
-
-    Q_D(const QUmlOpaqueBehavior);
-    return d->bodies;
+    return QList<QString>();
 }
 
-void QUmlOpaqueBehavior::addBody(QString body)
+void QUmlOpaqueBehavior::addBody(QList<QString> body)
 {
-    // This is a read-write attribute
-
-    Q_D(QUmlOpaqueBehavior);
-    if (!d->bodies.contains(body)) {
-        d->bodies.append(body);
-    }
+    Q_UNUSED(body);
 }
 
-void QUmlOpaqueBehavior::removeBody(QString body)
+void QUmlOpaqueBehavior::removeBody(QList<QString> body)
 {
-    // This is a read-write attribute
-
-    Q_D(QUmlOpaqueBehavior);
-    if (d->bodies.contains(body)) {
-        d->bodies.removeAll(body);
-    }
+    Q_UNUSED(body);
 }
 
-void QUmlOpaqueBehavior::setPropertyData()
+/*!
+    Languages the body strings use in the same order as the body strings.
+ */
+QList<QString> QUmlOpaqueBehavior::language() const
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOpaqueBehavior")][QString::fromLatin1("languages")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOpaqueBehavior")][QString::fromLatin1("languages")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOpaqueBehavior")][QString::fromLatin1("languages")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Languages the body strings use in the same order as the body strings.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOpaqueBehavior")][QString::fromLatin1("languages")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOpaqueBehavior")][QString::fromLatin1("languages")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOpaqueBehavior")][QString::fromLatin1("languages")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    return QList<QString>();
+}
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOpaqueBehavior")][QString::fromLatin1("bodies")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOpaqueBehavior")][QString::fromLatin1("bodies")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOpaqueBehavior")][QString::fromLatin1("bodies")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the behavior in one or more languages.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOpaqueBehavior")][QString::fromLatin1("bodies")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOpaqueBehavior")][QString::fromLatin1("bodies")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlOpaqueBehavior")][QString::fromLatin1("bodies")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+void QUmlOpaqueBehavior::addLanguage(QList<QString> language)
+{
+    Q_UNUSED(language);
+}
 
-    QUmlBehavior::setPropertyData();
+void QUmlOpaqueBehavior::removeLanguage(QList<QString> language)
+{
+    Q_UNUSED(language);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlopaquebehavior.cpp"
 

@@ -41,28 +41,20 @@
 #ifndef QUMLLITERALSTRING_P_H
 #define QUMLLITERALSTRING_P_H
 
-// Base class includes
-#include "private/qumlliteralspecification_p.h"
-
 #include "QtUml/QUmlLiteralString"
 
-// Qt includes
-#include "QtCore/QString"
+#include "private/qumlliteralspecification_p.h"
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-class QUmlLiteralString;
 
 class Q_UML_EXPORT QUmlLiteralStringPrivate : public QUmlLiteralSpecificationPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlLiteralString)
-
 public:
-    explicit QUmlLiteralStringPrivate();
-    virtual ~QUmlLiteralStringPrivate();
+    QUmlLiteralStringPrivate();
 
     QString value;
 };

@@ -43,11 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlNamedElement>
-
-// Qt includes
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -55,45 +51,23 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlRedefinableElement;
 class QUmlClassifier;
 
 class QUmlRedefinableElementPrivate;
-
-class Q_UML_EXPORT QUmlRedefinableElement : public QUmlNamedElement
+class Q_UML_EXPORT QUmlRedefinableElement : public virtual QUmlNamedElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
-    Q_PROPERTY(QSet<QUmlRedefinableElement *> redefinedElements READ redefinedElements)
-    Q_PROPERTY(QSet<QUmlClassifier *> redefinitionContexts READ redefinitionContexts)
-
-    Q_DISABLE_COPY(QUmlRedefinableElement)
-    Q_DECLARE_PRIVATE(QUmlRedefinableElement)
-
 public:
-    Q_INVOKABLE explicit QUmlRedefinableElement(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlRedefinableElement();
+    Q_DECL_HIDDEN QUmlRedefinableElement(bool create_d_ptr = true);
 
-    // Attributes from QUmlRedefinableElement
-    Q_INVOKABLE bool isLeaf() const;
-    Q_INVOKABLE void setLeaf(bool isLeaf);
-    Q_INVOKABLE void unsetLeaf();
-
-    // Association ends from QUmlRedefinableElement
-    Q_INVOKABLE QSet<QUmlRedefinableElement *> redefinedElements() const;
-    Q_INVOKABLE QSet<QUmlClassifier *> redefinitionContexts() const;
+    // Owned attributes
+    bool isLeaf() const;
+    void setLeaf(bool isLeaf);
+    QSet<QUmlRedefinableElement *> redefinedElement() const;
+    QSet<QUmlClassifier *> redefinitionContext() const;
 
     // Operations
-    Q_INVOKABLE bool isConsistentWith(const QUmlRedefinableElement *redefinee) const;
-    Q_INVOKABLE bool isRedefinitionContextValid(const QUmlRedefinableElement *redefined) const;
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlRedefinableElement(QUmlRedefinableElementPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    bool isConsistentWith(QUmlRedefinableElement *redefinee) const;
+    bool isRedefinitionContextValid(QUmlRedefinableElement *redefined) const;
 };
 
 QT_END_NAMESPACE

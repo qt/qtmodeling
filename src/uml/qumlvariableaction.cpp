@@ -43,16 +43,10 @@
 
 #include <QtUml/QUmlVariable>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlVariableActionPrivate::QUmlVariableActionPrivate() :
     variable(0)
-{
-}
-
-QUmlVariableActionPrivate::~QUmlVariableActionPrivate()
 {
 }
 
@@ -64,60 +58,27 @@ QUmlVariableActionPrivate::~QUmlVariableActionPrivate()
     \brief VariableAction is an abstract class for actions that operate on a statically specified variable.
  */
 
-QUmlVariableAction::QUmlVariableAction(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlAction(*new QUmlVariableActionPrivate, wrapper, parent)
+QUmlVariableAction::QUmlVariableAction(bool create_d_ptr) :
+    QUmlAction(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlVariableActionPrivate);
 }
 
-QUmlVariableAction::QUmlVariableAction(QUmlVariableActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlAction(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlVariableAction::~QUmlVariableAction()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlVariableAction
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     Variable to be read.
  */
 QUmlVariable *QUmlVariableAction::variable() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlVariableAction);
-    return d->variable;
+    return 0;
 }
 
 void QUmlVariableAction::setVariable(QUmlVariable *variable)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlVariableAction);
-    if (d->variable != variable) {
-        d->variable = variable;
-    }
-}
-
-void QUmlVariableAction::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlVariableAction")][QString::fromLatin1("variable")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlVariableAction")][QString::fromLatin1("variable")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlVariableAction")][QString::fromLatin1("variable")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Variable to be read.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlVariableAction")][QString::fromLatin1("variable")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlVariableAction")][QString::fromLatin1("variable")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlVariableAction")][QString::fromLatin1("variable")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlAction::setPropertyData();
+    Q_UNUSED(variable);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlvariableaction.cpp"
 

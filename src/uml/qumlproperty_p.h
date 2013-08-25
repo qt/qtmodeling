@@ -41,21 +41,11 @@
 #ifndef QUMLPROPERTY_P_H
 #define QUMLPROPERTY_P_H
 
-// Base class includes
-#include "private/qwrappedobject_p.h"
+#include "QtUml/QUmlProperty"
+
 #include "private/qumlstructuralfeature_p.h"
 #include "private/qumlconnectableelement_p.h"
 #include "private/qumldeploymenttarget_p.h"
-
-#include "QtUml/QUmlProperty"
-
-// QtUml includes
-#include "QtUml/QtUmlNamespace"
-
-// Qt includes
-#include "QtCore/QString"
-#include "QtCore/QList"
-#include "QtCore/QSet"
 
 QT_BEGIN_HEADER
 
@@ -63,41 +53,29 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlType;
-class QUmlInterface;
-class QUmlRedefinableElement;
-class QUmlParameterableElement;
-class QUmlValueSpecification;
-class QUmlDataType;
-class QUmlAssociation;
-class QUmlClass;
-class QUmlProperty;
-class QUmlProperty;
-
-class Q_UML_EXPORT QUmlPropertyPrivate : public QWrappedObjectPrivate
+class Q_UML_EXPORT QUmlPropertyPrivate : public QUmlStructuralFeaturePrivate, public QUmlConnectableElementPrivate, public QUmlDeploymentTargetPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlProperty)
-
 public:
-    explicit QUmlPropertyPrivate();
-    virtual ~QUmlPropertyPrivate();
+    QUmlPropertyPrivate();
 
-    bool isDerived;
-    bool isReadOnly;
-    bool isID;
-    bool isDerivedUnion;
     QtUml::AggregationKind aggregation;
-    QSet<QUmlProperty *> subsettedProperties;
-    QUmlAssociation *owningAssociation;
-    QList<QUmlProperty *> qualifiers;
-    QUmlValueSpecification *defaultValue;
-    QUmlClass *class_;
-    QUmlProperty *associationEnd;
-    QUmlDataType *datatype;
-    QSet<QUmlProperty *> redefinedProperties;
     QUmlAssociation *association;
+    QUmlProperty *associationEnd;
+    QUmlClass *class_;
+    QUmlDataType *datatype;
+    QString default_;
+    QUmlValueSpecification *defaultValue;
     QUmlInterface *interface_;
+    bool isComposite;
+    bool isDerived;
+    bool isDerivedUnion;
+    bool isID;
+    bool isReadOnly;
+    QUmlProperty *opposite;
+    QUmlAssociation *owningAssociation;
+    QList<QUmlProperty *> qualifier;
+    QSet<QUmlProperty *> redefinedProperty;
+    QSet<QUmlProperty *> subsettedProperty;
 };
 
 QT_END_NAMESPACE

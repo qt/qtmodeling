@@ -43,17 +43,11 @@
 
 #include <QtUml/QUmlInputPin>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlAddStructuralFeatureValueActionPrivate::QUmlAddStructuralFeatureValueActionPrivate() :
-    isReplaceAll(false),
-    insertAt(0)
-{
-}
-
-QUmlAddStructuralFeatureValueActionPrivate::~QUmlAddStructuralFeatureValueActionPrivate()
+    insertAt(0),
+    isReplaceAll(false)
 {
 }
 
@@ -65,108 +59,40 @@ QUmlAddStructuralFeatureValueActionPrivate::~QUmlAddStructuralFeatureValueAction
     \brief An add structural feature value action is a write structural feature action for adding values to a structural feature.
  */
 
-QUmlAddStructuralFeatureValueAction::QUmlAddStructuralFeatureValueAction(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlWriteStructuralFeatureAction(*new QUmlAddStructuralFeatureValueActionPrivate, wrapper, parent)
+QUmlAddStructuralFeatureValueAction::QUmlAddStructuralFeatureValueAction(bool create_d_ptr) :
+    QUmlWriteStructuralFeatureAction(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlAddStructuralFeatureValueActionPrivate);
 }
 
-QUmlAddStructuralFeatureValueAction::QUmlAddStructuralFeatureValueAction(QUmlAddStructuralFeatureValueActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlWriteStructuralFeatureAction(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlAddStructuralFeatureValueAction::~QUmlAddStructuralFeatureValueAction()
-{
-}
-
-// ---------------------------------------------------------------
-// ATTRIBUTES FROM QUmlAddStructuralFeatureValueAction
-// ---------------------------------------------------------------
-
-/*!
-    Specifies whether existing values of the structural feature of the object should be removed before adding the new value.
- */
-bool QUmlAddStructuralFeatureValueAction::isReplaceAll() const
-{
-    // This is a read-write attribute
-
-    Q_D(const QUmlAddStructuralFeatureValueAction);
-    return d->isReplaceAll;
-}
-
-void QUmlAddStructuralFeatureValueAction::setReplaceAll(bool isReplaceAll)
-{
-    // This is a read-write attribute
-
-    Q_D(QUmlAddStructuralFeatureValueAction);
-    if (d->isReplaceAll != isReplaceAll) {
-        d->isReplaceAll = isReplaceAll;
-    }
-    d->modifiedResettableProperties << QString::fromLatin1("isReplaceAll");
-}
-
-void QUmlAddStructuralFeatureValueAction::unsetReplaceAll()
-{
-    setReplaceAll(false);
-    Q_D(QUmlAddStructuralFeatureValueAction);
-    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isReplaceAll"));
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlAddStructuralFeatureValueAction
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     Gives the position at which to insert a new value or move an existing value in ordered structural features. The type of the pin is UnlimitedNatural, but the value cannot be zero. This pin is omitted for unordered structural features.
  */
 QUmlInputPin *QUmlAddStructuralFeatureValueAction::insertAt() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlAddStructuralFeatureValueAction);
-    return d->insertAt;
+    return 0;
 }
 
 void QUmlAddStructuralFeatureValueAction::setInsertAt(QUmlInputPin *insertAt)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlAddStructuralFeatureValueAction);
-    if (d->insertAt != insertAt) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActionPrivate *>(d))->removeInput(qwrappedobject_cast<QUmlInputPin *>(d->insertAt));
-
-        d->insertAt = insertAt;
-
-        // Adjust subsetted property(ies)
-        if (insertAt) {
-            (qwrappedobject_cast<QUmlActionPrivate *>(d))->addInput(qwrappedobject_cast<QUmlInputPin *>(insertAt));
-        }
-    }
+    Q_UNUSED(insertAt);
 }
 
-void QUmlAddStructuralFeatureValueAction::setPropertyData()
+/*!
+    Specifies whether existing values of the structural feature of the object should be removed before adding the new value.
+ */
+bool QUmlAddStructuralFeatureValueAction::isReplaceAll() const
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAddStructuralFeatureValueAction")][QString::fromLatin1("isReplaceAll")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAddStructuralFeatureValueAction")][QString::fromLatin1("isReplaceAll")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAddStructuralFeatureValueAction")][QString::fromLatin1("isReplaceAll")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies whether existing values of the structural feature of the object should be removed before adding the new value.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAddStructuralFeatureValueAction")][QString::fromLatin1("isReplaceAll")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAddStructuralFeatureValueAction")][QString::fromLatin1("isReplaceAll")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAddStructuralFeatureValueAction")][QString::fromLatin1("isReplaceAll")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    return bool();
+}
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAddStructuralFeatureValueAction")][QString::fromLatin1("insertAt")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAddStructuralFeatureValueAction")][QString::fromLatin1("insertAt")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAddStructuralFeatureValueAction")][QString::fromLatin1("insertAt")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Gives the position at which to insert a new value or move an existing value in ordered structural features. The type of the pin is UnlimitedNatural, but the value cannot be zero. This pin is omitted for unordered structural features.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAddStructuralFeatureValueAction")][QString::fromLatin1("insertAt")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAddStructuralFeatureValueAction")][QString::fromLatin1("insertAt")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlAction::inputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlAddStructuralFeatureValueAction")][QString::fromLatin1("insertAt")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlWriteStructuralFeatureAction::setPropertyData();
+void QUmlAddStructuralFeatureValueAction::setReplaceAll(bool isReplaceAll)
+{
+    Q_UNUSED(isReplaceAll);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumladdstructuralfeaturevalueaction.cpp"
 

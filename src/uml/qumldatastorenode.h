@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlCentralBufferNode>
 
 QT_BEGIN_HEADER
@@ -51,25 +50,11 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-
 class QUmlDataStoreNodePrivate;
-
 class Q_UML_EXPORT QUmlDataStoreNode : public QUmlCentralBufferNode
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_DISABLE_COPY(QUmlDataStoreNode)
-    Q_DECLARE_PRIVATE(QUmlDataStoreNode)
-
 public:
-    Q_INVOKABLE explicit QUmlDataStoreNode(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlDataStoreNode();
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlDataStoreNode(QUmlDataStoreNodePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    QUmlDataStoreNode(bool create_d_ptr = true);
 };
 
 QT_END_NAMESPACE

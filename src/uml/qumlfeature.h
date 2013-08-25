@@ -43,11 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlRedefinableElement>
-
-// Qt includes
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -55,41 +51,18 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlClassifier;
 
 class QUmlFeaturePrivate;
-
 class Q_UML_EXPORT QUmlFeature : public QUmlRedefinableElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(bool isStatic READ isStatic WRITE setStatic RESET unsetStatic)
-    Q_PROPERTY(QSet<QUmlClassifier *> featuringClassifiers READ featuringClassifiers)
-
-    Q_DISABLE_COPY(QUmlFeature)
-    Q_DECLARE_PRIVATE(QUmlFeature)
-
 public:
-    Q_INVOKABLE explicit QUmlFeature(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlFeature();
+    Q_DECL_HIDDEN QUmlFeature(bool create_d_ptr = true);
 
-    // Attributes from QUmlFeature
-    Q_INVOKABLE bool isStatic() const;
-    Q_INVOKABLE void setStatic(bool isStatic);
-    Q_INVOKABLE void unsetStatic();
-
-    // Association ends from QUmlFeature
-    Q_INVOKABLE QSet<QUmlClassifier *> featuringClassifiers() const;
-
-    virtual void setPropertyData();
-
-    // Classes which access read-only opposite properties should be friend
-    friend class QUmlClassifierPrivate;
-
-protected:
-    explicit QUmlFeature(QUmlFeaturePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QSet<QUmlClassifier *> featuringClassifier() const;
+    bool isStatic() const;
+    void setStatic(bool isStatic);
 };
 
 QT_END_NAMESPACE

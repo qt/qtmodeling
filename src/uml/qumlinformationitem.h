@@ -43,43 +43,23 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlClassifier>
-
-// Qt includes
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-
 class QUmlInformationItemPrivate;
-
 class Q_UML_EXPORT QUmlInformationItem : public QUmlClassifier
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QSet<QUmlClassifier *> represented READ represented)
-
-    Q_DISABLE_COPY(QUmlInformationItem)
-    Q_DECLARE_PRIVATE(QUmlInformationItem)
-
 public:
-    Q_INVOKABLE explicit QUmlInformationItem(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlInformationItem();
+    QUmlInformationItem(bool create_d_ptr = true);
 
-    // Association ends from QUmlInformationItem
-    Q_INVOKABLE QSet<QUmlClassifier *> represented() const;
-    Q_INVOKABLE void addRepresented(QUmlClassifier *represented);
-    Q_INVOKABLE void removeRepresented(QUmlClassifier *represented);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlInformationItem(QUmlInformationItemPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QSet<QUmlClassifier *> represented() const;
+    void addRepresented(QSet<QUmlClassifier *> represented);
+    void removeRepresented(QSet<QUmlClassifier *> represented);
 };
 
 QT_END_NAMESPACE

@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlControlNode>
 
 QT_BEGIN_HEADER
@@ -52,39 +51,19 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlValueSpecification;
 
 class QUmlJoinNodePrivate;
-
 class Q_UML_EXPORT QUmlJoinNode : public QUmlControlNode
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(bool isCombineDuplicate READ isCombineDuplicate WRITE setCombineDuplicate RESET unsetCombineDuplicate)
-    Q_PROPERTY(QUmlValueSpecification * joinSpec READ joinSpec WRITE setJoinSpec)
-
-    Q_DISABLE_COPY(QUmlJoinNode)
-    Q_DECLARE_PRIVATE(QUmlJoinNode)
-
 public:
-    Q_INVOKABLE explicit QUmlJoinNode(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlJoinNode();
+    QUmlJoinNode(bool create_d_ptr = true);
 
-    // Attributes from QUmlJoinNode
-    Q_INVOKABLE bool isCombineDuplicate() const;
-    Q_INVOKABLE void setCombineDuplicate(bool isCombineDuplicate);
-    Q_INVOKABLE void unsetCombineDuplicate();
-
-    // Association ends from QUmlJoinNode
-    Q_INVOKABLE QUmlValueSpecification *joinSpec() const;
-    Q_INVOKABLE void setJoinSpec(QUmlValueSpecification *joinSpec);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlJoinNode(QUmlJoinNodePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    bool isCombineDuplicate() const;
+    void setCombineDuplicate(bool isCombineDuplicate);
+    QUmlValueSpecification *joinSpec() const;
+    void setJoinSpec(QUmlValueSpecification *joinSpec);
 };
 
 QT_END_NAMESPACE

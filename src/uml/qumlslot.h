@@ -43,11 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlElement>
-
-// Qt includes
-#include <QtCore/QList>
 
 QT_BEGIN_HEADER
 
@@ -55,42 +51,24 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlStructuralFeature;
 class QUmlInstanceSpecification;
+class QUmlStructuralFeature;
 class QUmlValueSpecification;
 
 class QUmlSlotPrivate;
-
 class Q_UML_EXPORT QUmlSlot : public QUmlElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QList<QUmlValueSpecification *> values READ values)
-    Q_PROPERTY(QUmlStructuralFeature * definingFeature READ definingFeature WRITE setDefiningFeature)
-    Q_PROPERTY(QUmlInstanceSpecification * owningInstance READ owningInstance WRITE setOwningInstance)
-
-    Q_DISABLE_COPY(QUmlSlot)
-    Q_DECLARE_PRIVATE(QUmlSlot)
-
 public:
-    Q_INVOKABLE explicit QUmlSlot(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlSlot();
+    QUmlSlot(bool create_d_ptr = true);
 
-    // Association ends from QUmlSlot
-    Q_INVOKABLE QList<QUmlValueSpecification *> values() const;
-    Q_INVOKABLE void addValue(QUmlValueSpecification *value);
-    Q_INVOKABLE void removeValue(QUmlValueSpecification *value);
-    Q_INVOKABLE QUmlStructuralFeature *definingFeature() const;
-    Q_INVOKABLE void setDefiningFeature(QUmlStructuralFeature *definingFeature);
-    Q_INVOKABLE QUmlInstanceSpecification *owningInstance() const;
-    Q_INVOKABLE void setOwningInstance(QUmlInstanceSpecification *owningInstance);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlSlot(QUmlSlotPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlStructuralFeature *definingFeature() const;
+    void setDefiningFeature(QUmlStructuralFeature *definingFeature);
+    QUmlInstanceSpecification *owningInstance() const;
+    void setOwningInstance(QUmlInstanceSpecification *owningInstance);
+    QList<QUmlValueSpecification *> value() const;
+    void addValue(QList<QUmlValueSpecification *> value);
+    void removeValue(QList<QUmlValueSpecification *> value);
 };
 
 QT_END_NAMESPACE

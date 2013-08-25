@@ -43,11 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlPackageableElement>
-
-// Qt includes
-#include <QtCore/QList>
 
 QT_BEGIN_HEADER
 
@@ -55,42 +51,24 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlElement;
 class QUmlNamespace;
 class QUmlValueSpecification;
 
 class QUmlConstraintPrivate;
-
 class Q_UML_EXPORT QUmlConstraint : public QUmlPackageableElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlNamespace * context READ context WRITE setContext)
-    Q_PROPERTY(QUmlValueSpecification * specification READ specification WRITE setSpecification)
-    Q_PROPERTY(QList<QUmlElement *> constrainedElements READ constrainedElements)
-
-    Q_DISABLE_COPY(QUmlConstraint)
-    Q_DECLARE_PRIVATE(QUmlConstraint)
-
 public:
-    Q_INVOKABLE explicit QUmlConstraint(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlConstraint();
+    QUmlConstraint(bool create_d_ptr = true);
 
-    // Association ends from QUmlConstraint
-    Q_INVOKABLE QUmlNamespace *context() const;
-    Q_INVOKABLE void setContext(QUmlNamespace *context);
-    Q_INVOKABLE QUmlValueSpecification *specification() const;
-    Q_INVOKABLE void setSpecification(QUmlValueSpecification *specification);
-    Q_INVOKABLE QList<QUmlElement *> constrainedElements() const;
-    Q_INVOKABLE void addConstrainedElement(QUmlElement *constrainedElement);
-    Q_INVOKABLE void removeConstrainedElement(QUmlElement *constrainedElement);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlConstraint(QUmlConstraintPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QList<QUmlElement *> constrainedElement() const;
+    void addConstrainedElement(QList<QUmlElement *> constrainedElement);
+    void removeConstrainedElement(QList<QUmlElement *> constrainedElement);
+    QUmlNamespace *context() const;
+    void setContext(QUmlNamespace *context);
+    QUmlValueSpecification *specification() const;
+    void setSpecification(QUmlValueSpecification *specification);
 };
 
 QT_END_NAMESPACE

@@ -41,32 +41,24 @@
 #ifndef QUMLIMAGE_P_H
 #define QUMLIMAGE_P_H
 
-// Base class includes
-#include "private/qumlelement_p.h"
-
 #include "QtUml/QUmlImage"
 
-// Qt includes
-#include "QtCore/QString"
+#include "private/qumlelement_p.h"
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-class QUmlImage;
 
 class Q_UML_EXPORT QUmlImagePrivate : public QUmlElementPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlImage)
-
 public:
-    explicit QUmlImagePrivate();
-    virtual ~QUmlImagePrivate();
+    QUmlImagePrivate();
 
+    QString content;
     QString format;
     QString location;
-    QString content;
 };
 
 QT_END_NAMESPACE

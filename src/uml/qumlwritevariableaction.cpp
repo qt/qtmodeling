@@ -43,16 +43,10 @@
 
 #include <QtUml/QUmlInputPin>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlWriteVariableActionPrivate::QUmlWriteVariableActionPrivate() :
     value(0)
-{
-}
-
-QUmlWriteVariableActionPrivate::~QUmlWriteVariableActionPrivate()
 {
 }
 
@@ -64,68 +58,27 @@ QUmlWriteVariableActionPrivate::~QUmlWriteVariableActionPrivate()
     \brief WriteVariableAction is an abstract class for variable actions that change variable values.
  */
 
-QUmlWriteVariableAction::QUmlWriteVariableAction(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlVariableAction(*new QUmlWriteVariableActionPrivate, wrapper, parent)
+QUmlWriteVariableAction::QUmlWriteVariableAction(bool create_d_ptr) :
+    QUmlVariableAction(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlWriteVariableActionPrivate);
 }
 
-QUmlWriteVariableAction::QUmlWriteVariableAction(QUmlWriteVariableActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlVariableAction(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlWriteVariableAction::~QUmlWriteVariableAction()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlWriteVariableAction
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     Value to be added or removed from the variable.
  */
 QUmlInputPin *QUmlWriteVariableAction::value() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlWriteVariableAction);
-    return d->value;
+    return 0;
 }
 
 void QUmlWriteVariableAction::setValue(QUmlInputPin *value)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlWriteVariableAction);
-    if (d->value != value) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActionPrivate *>(d))->removeInput(qwrappedobject_cast<QUmlInputPin *>(d->value));
-
-        d->value = value;
-
-        // Adjust subsetted property(ies)
-        if (value) {
-            (qwrappedobject_cast<QUmlActionPrivate *>(d))->addInput(qwrappedobject_cast<QUmlInputPin *>(value));
-        }
-    }
-}
-
-void QUmlWriteVariableAction::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlWriteVariableAction")][QString::fromLatin1("value")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlWriteVariableAction")][QString::fromLatin1("value")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlWriteVariableAction")][QString::fromLatin1("value")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Value to be added or removed from the variable.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlWriteVariableAction")][QString::fromLatin1("value")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlWriteVariableAction")][QString::fromLatin1("value")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlAction::inputs");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlWriteVariableAction")][QString::fromLatin1("value")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlVariableAction::setPropertyData();
+    Q_UNUSED(value);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlwritevariableaction.cpp"
 

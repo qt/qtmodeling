@@ -41,28 +41,20 @@
 #ifndef QUMLMODEL_P_H
 #define QUMLMODEL_P_H
 
-// Base class includes
-#include "private/qumlpackage_p.h"
-
 #include "QtUml/QUmlModel"
 
-// Qt includes
-#include "QtCore/QString"
+#include "private/qumlpackage_p.h"
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-class QUmlModel;
 
 class Q_UML_EXPORT QUmlModelPrivate : public QUmlPackagePrivate
 {
-    Q_DECLARE_PUBLIC(QUmlModel)
-
 public:
-    explicit QUmlModelPrivate();
-    virtual ~QUmlModelPrivate();
+    QUmlModelPrivate();
 
     QString viewpoint;
 };

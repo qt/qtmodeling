@@ -41,15 +41,9 @@
 #include "qumlforknode.h"
 #include "qumlforknode_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlForkNodePrivate::QUmlForkNodePrivate()
-{
-}
-
-QUmlForkNodePrivate::~QUmlForkNodePrivate()
 {
 }
 
@@ -61,28 +55,12 @@ QUmlForkNodePrivate::~QUmlForkNodePrivate()
     \brief A fork node is a control node that splits a flow into multiple concurrent flows.
  */
 
-QUmlForkNode::QUmlForkNode(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlControlNode(*new QUmlForkNodePrivate, wrapper, parent)
+QUmlForkNode::QUmlForkNode(bool create_d_ptr) :
+    QUmlControlNode(false)
 {
-    setPropertyData();
-}
-
-QUmlForkNode::QUmlForkNode(QUmlForkNodePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlControlNode(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlForkNode::~QUmlForkNode()
-{
-}
-
-void QUmlForkNode::setPropertyData()
-{
-    QUmlControlNode::setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlForkNodePrivate);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlforknode.cpp"
 

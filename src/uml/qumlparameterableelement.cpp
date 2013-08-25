@@ -43,17 +43,11 @@
 
 #include <QtUml/QUmlTemplateParameter>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlParameterableElementPrivate::QUmlParameterableElementPrivate() :
     owningTemplateParameter(0),
     templateParameter(0)
-{
-}
-
-QUmlParameterableElementPrivate::~QUmlParameterableElementPrivate()
 {
 }
 
@@ -65,54 +59,28 @@ QUmlParameterableElementPrivate::~QUmlParameterableElementPrivate()
     \brief A parameterable element is an element that can be exposed as a formal template parameter for a template, or specified as an actual parameter in a binding of a template.
  */
 
-QUmlParameterableElement::QUmlParameterableElement(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlElement(*new QUmlParameterableElementPrivate, wrapper, parent)
+QUmlParameterableElement::QUmlParameterableElement(bool create_d_ptr) :
+    QUmlElement(false)
 {
-    setPropertyData();
+    if (create_d_ptr) {
+        qDebug() << "QUmlParameterableElement::QUmlParameterableElement criando";
+        set_d_ptr(new QUmlParameterableElementPrivate);
+    }
 }
 
-QUmlParameterableElement::QUmlParameterableElement(QUmlParameterableElementPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlElement(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlParameterableElement::~QUmlParameterableElement()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlParameterableElement
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     The formal template parameter that owns this element.
  */
 QUmlTemplateParameter *QUmlParameterableElement::owningTemplateParameter() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlParameterableElement);
-    return d->owningTemplateParameter;
+    return 0;
 }
 
 void QUmlParameterableElement::setOwningTemplateParameter(QUmlTemplateParameter *owningTemplateParameter)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlParameterableElement);
-    if (d->owningTemplateParameter != owningTemplateParameter) {
-        // Adjust opposite property
-
-        d->owningTemplateParameter = owningTemplateParameter;
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlParameterableElement *>(this))->setTemplateParameter(qwrappedobject_cast<QUmlTemplateParameter *>(owningTemplateParameter));
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->setOwner(qwrappedobject_cast<QUmlElement *>(owningTemplateParameter));
-
-        // Adjust opposite property
-        owningTemplateParameter->setOwnedParameteredElement(this);
-    }
+    Q_UNUSED(owningTemplateParameter);
 }
 
 /*!
@@ -120,36 +88,23 @@ void QUmlParameterableElement::setOwningTemplateParameter(QUmlTemplateParameter 
  */
 QUmlTemplateParameter *QUmlParameterableElement::templateParameter() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlParameterableElement);
-    return d->templateParameter;
+    return 0;
 }
 
 void QUmlParameterableElement::setTemplateParameter(QUmlTemplateParameter *templateParameter)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlParameterableElement);
-    if (d->templateParameter != templateParameter) {
-        // Adjust opposite property
-
-        d->templateParameter = templateParameter;
-
-        // Adjust opposite property
-        templateParameter->setParameteredElement(this);
-    }
+    Q_UNUSED(templateParameter);
 }
+
+// Operations
 
 /*!
     The query isCompatibleWith() determines if this parameterable element is compatible with the specified parameterable element. By default parameterable element P is compatible with parameterable element Q if the kind of P is the same or a subtype as the kind of Q. Subclasses should override this operation to specify different compatibility constraints.
  */
-bool QUmlParameterableElement::isCompatibleWith(const QUmlParameterableElement *p) const
+bool QUmlParameterableElement::isCompatibleWith(QUmlParameterableElement *p) const
 {
-    qWarning("QUmlParameterableElement::isCompatibleWith: operation to be implemented");
     Q_UNUSED(p);
-
-    return bool(); // change here to your derived return
+    return bool ();
 }
 
 /*!
@@ -157,31 +112,8 @@ bool QUmlParameterableElement::isCompatibleWith(const QUmlParameterableElement *
  */
 bool QUmlParameterableElement::isTemplateParameter() const
 {
-    qWarning("QUmlParameterableElement::isTemplateParameter: operation to be implemented");
-
-    return bool(); // change here to your derived return
-}
-
-void QUmlParameterableElement::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlParameterableElement")][QString::fromLatin1("owningTemplateParameter")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlParameterableElement")][QString::fromLatin1("owningTemplateParameter")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlParameterableElement")][QString::fromLatin1("owningTemplateParameter")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The formal template parameter that owns this element.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlParameterableElement")][QString::fromLatin1("owningTemplateParameter")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlParameterableElement")][QString::fromLatin1("owningTemplateParameter")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlParameterableElement::templateParameter QUmlElement::owner");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlParameterableElement")][QString::fromLatin1("owningTemplateParameter")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlTemplateParameter::ownedParameteredElement");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlParameterableElement")][QString::fromLatin1("templateParameter")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlParameterableElement")][QString::fromLatin1("templateParameter")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlParameterableElement")][QString::fromLatin1("templateParameter")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The template parameter that exposes this element as a formal parameter.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlParameterableElement")][QString::fromLatin1("templateParameter")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlParameterableElement")][QString::fromLatin1("templateParameter")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlParameterableElement")][QString::fromLatin1("templateParameter")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlTemplateParameter::parameteredElement");
-
-    QUmlElement::setPropertyData();
+    return bool ();
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlparameterableelement.cpp"
 

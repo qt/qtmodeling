@@ -43,15 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlFeature>
-
-// QtUml includes
 #include <QtUml/QtUmlNamespace>
-
-// Qt includes
-#include <QtCore/QList>
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -59,52 +52,29 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlAssociation;
-class QUmlConnector;
 class QUmlBehavior;
 class QUmlConnectorEnd;
 
 class QUmlConnectorPrivate;
-
 class Q_UML_EXPORT QUmlConnector : public QUmlFeature
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QtUml::ConnectorKind kind READ kind STORED false)
-    Q_PROPERTY(QSet<QUmlConnector *> redefinedConnectors READ redefinedConnectors)
-    Q_PROPERTY(QSet<QUmlBehavior *> contracts READ contracts)
-    Q_PROPERTY(QUmlAssociation * type READ type WRITE setType)
-    Q_PROPERTY(QList<QUmlConnectorEnd *> ends READ ends)
-
-    Q_DISABLE_COPY(QUmlConnector)
-    Q_DECLARE_PRIVATE(QUmlConnector)
-
 public:
-    Q_INVOKABLE explicit QUmlConnector(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlConnector();
+    QUmlConnector(bool create_d_ptr = true);
 
-    // Attributes from QUmlConnector
-    Q_INVOKABLE QtUml::ConnectorKind kind() const;
-
-    // Association ends from QUmlConnector
-    Q_INVOKABLE QSet<QUmlConnector *> redefinedConnectors() const;
-    Q_INVOKABLE void addRedefinedConnector(QUmlConnector *redefinedConnector);
-    Q_INVOKABLE void removeRedefinedConnector(QUmlConnector *redefinedConnector);
-    Q_INVOKABLE QSet<QUmlBehavior *> contracts() const;
-    Q_INVOKABLE void addContract(QUmlBehavior *contract);
-    Q_INVOKABLE void removeContract(QUmlBehavior *contract);
-    Q_INVOKABLE QUmlAssociation *type() const;
-    Q_INVOKABLE void setType(QUmlAssociation *type);
-    Q_INVOKABLE QList<QUmlConnectorEnd *> ends() const;
-    Q_INVOKABLE void addEnd(QUmlConnectorEnd *end);
-    Q_INVOKABLE void removeEnd(QUmlConnectorEnd *end);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlConnector(QUmlConnectorPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QSet<QUmlBehavior *> contract() const;
+    void addContract(QSet<QUmlBehavior *> contract);
+    void removeContract(QSet<QUmlBehavior *> contract);
+    QList<QUmlConnectorEnd *> end() const;
+    void addEnd(QList<QUmlConnectorEnd *> end);
+    void removeEnd(QList<QUmlConnectorEnd *> end);
+    QtUml::ConnectorKind kind() const;
+    QSet<QUmlConnector *> redefinedConnector() const;
+    void addRedefinedConnector(QSet<QUmlConnector *> redefinedConnector);
+    void removeRedefinedConnector(QSet<QUmlConnector *> redefinedConnector);
+    QUmlAssociation *type() const;
+    void setType(QUmlAssociation *type);
 };
 
 QT_END_NAMESPACE

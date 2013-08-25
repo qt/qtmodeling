@@ -41,10 +41,9 @@
 #ifndef QUMLREADISCLASSIFIEDOBJECTACTION_P_H
 #define QUMLREADISCLASSIFIEDOBJECTACTION_P_H
 
-// Base class includes
-#include "private/qumlaction_p.h"
-
 #include "QtUml/QUmlReadIsClassifiedObjectAction"
+
+#include "private/qumlaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -52,24 +51,15 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlClassifier;
-class QUmlInputPin;
-class QUmlOutputPin;
-class QUmlReadIsClassifiedObjectAction;
-
 class Q_UML_EXPORT QUmlReadIsClassifiedObjectActionPrivate : public QUmlActionPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlReadIsClassifiedObjectAction)
-
 public:
-    explicit QUmlReadIsClassifiedObjectActionPrivate();
-    virtual ~QUmlReadIsClassifiedObjectActionPrivate();
+    QUmlReadIsClassifiedObjectActionPrivate();
 
-    bool isDirect;
-    QUmlOutputPin *result;
-    QUmlInputPin *object;
     QUmlClassifier *classifier;
+    bool isDirect;
+    QUmlInputPin *object;
+    QUmlOutputPin *result;
 };
 
 QT_END_NAMESPACE

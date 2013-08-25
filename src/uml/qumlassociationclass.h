@@ -43,8 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
-#include <QtWrappedObjects/QWrappedObject>
 #include <QtUml/QUmlClass>
 #include <QtUml/QUmlAssociation>
 
@@ -53,29 +51,11 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-
 class QUmlAssociationClassPrivate;
-
-class Q_UML_EXPORT QUmlAssociationClass : public QWrappedObject
+class Q_UML_EXPORT QUmlAssociationClass : public QUmlClass, public QUmlAssociation
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_DISABLE_COPY(QUmlAssociationClass)
-    Q_DECLARE_PRIVATE(QUmlAssociationClass)
-
 public:
-    Q_INVOKABLE explicit QUmlAssociationClass(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlAssociationClass();
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlAssociationClass(QUmlAssociationClassPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-
-private:
-    QUmlClass *_wrappedUmlClass;
-    QUmlAssociation *_wrappedUmlAssociation;
+    QUmlAssociationClass(bool create_d_ptr = true);
 };
 
 QT_END_NAMESPACE

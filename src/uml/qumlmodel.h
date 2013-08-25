@@ -43,42 +43,22 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlPackage>
-
-// Qt includes
-#include <QtCore/QString>
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-
 class QUmlModelPrivate;
-
 class Q_UML_EXPORT QUmlModel : public QUmlPackage
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QString viewpoint READ viewpoint WRITE setViewpoint)
-
-    Q_DISABLE_COPY(QUmlModel)
-    Q_DECLARE_PRIVATE(QUmlModel)
-
 public:
-    Q_INVOKABLE explicit QUmlModel(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlModel();
+    QUmlModel(bool create_d_ptr = true);
 
-    // Attributes from QUmlModel
-    Q_INVOKABLE QString viewpoint() const;
-    Q_INVOKABLE void setViewpoint(QString viewpoint);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlModel(QUmlModelPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QString viewpoint() const;
+    void setViewpoint(QString viewpoint);
 };
 
 QT_END_NAMESPACE

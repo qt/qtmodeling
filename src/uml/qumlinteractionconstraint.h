@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlConstraint>
 
 QT_BEGIN_HEADER
@@ -52,36 +51,19 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlValueSpecification;
 
 class QUmlInteractionConstraintPrivate;
-
 class Q_UML_EXPORT QUmlInteractionConstraint : public QUmlConstraint
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlValueSpecification * maxint READ maxint WRITE setMaxint)
-    Q_PROPERTY(QUmlValueSpecification * minint READ minint WRITE setMinint)
-
-    Q_DISABLE_COPY(QUmlInteractionConstraint)
-    Q_DECLARE_PRIVATE(QUmlInteractionConstraint)
-
 public:
-    Q_INVOKABLE explicit QUmlInteractionConstraint(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlInteractionConstraint();
+    QUmlInteractionConstraint(bool create_d_ptr = true);
 
-    // Association ends from QUmlInteractionConstraint
-    Q_INVOKABLE QUmlValueSpecification *maxint() const;
-    Q_INVOKABLE void setMaxint(QUmlValueSpecification *maxint);
-    Q_INVOKABLE QUmlValueSpecification *minint() const;
-    Q_INVOKABLE void setMinint(QUmlValueSpecification *minint);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlInteractionConstraint(QUmlInteractionConstraintPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlValueSpecification *maxint() const;
+    void setMaxint(QUmlValueSpecification *maxint);
+    QUmlValueSpecification *minint() const;
+    void setMinint(QUmlValueSpecification *minint);
 };
 
 QT_END_NAMESPACE

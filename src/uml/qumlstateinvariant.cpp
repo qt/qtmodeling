@@ -41,20 +41,14 @@
 #include "qumlstateinvariant.h"
 #include "qumlstateinvariant_p.h"
 
-#include <QtUml/QUmlLifeline>
 #include <QtUml/QUmlConstraint>
-
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
+#include <QtUml/QUmlLifeline>
 
 QT_BEGIN_NAMESPACE
 
 QUmlStateInvariantPrivate::QUmlStateInvariantPrivate() :
-    invariant(0),
-    covered(0)
-{
-}
-
-QUmlStateInvariantPrivate::~QUmlStateInvariantPrivate()
+    covered(0),
+    invariant(0)
 {
 }
 
@@ -66,104 +60,40 @@ QUmlStateInvariantPrivate::~QUmlStateInvariantPrivate()
     \brief A state invariant is a runtime constraint on the participants of the interaction. It may be used to specify a variety of different kinds of constraints, such as values of attributes or variables, internal or external states, and so on. A state invariant is an interaction fragment and it is placed on a lifeline.
  */
 
-QUmlStateInvariant::QUmlStateInvariant(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlInteractionFragment(*new QUmlStateInvariantPrivate, wrapper, parent)
+QUmlStateInvariant::QUmlStateInvariant(bool create_d_ptr) :
+    QUmlInteractionFragment(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlStateInvariantPrivate);
 }
 
-QUmlStateInvariant::QUmlStateInvariant(QUmlStateInvariantPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlInteractionFragment(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlStateInvariant::~QUmlStateInvariant()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlStateInvariant
-// ---------------------------------------------------------------
-
-/*!
-    A Constraint that should hold at runtime for this StateInvariant
- */
-QUmlConstraint *QUmlStateInvariant::invariant() const
-{
-    // This is a read-write association end
-
-    Q_D(const QUmlStateInvariant);
-    return d->invariant;
-}
-
-void QUmlStateInvariant::setInvariant(QUmlConstraint *invariant)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlStateInvariant);
-    if (d->invariant != invariant) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QUmlElement *>(d->invariant));
-
-        d->invariant = invariant;
-
-        // Adjust subsetted property(ies)
-        if (invariant) {
-            (qwrappedobject_cast<QUmlElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QUmlElement *>(invariant));
-        }
-    }
-}
+// Owned attributes
 
 /*!
     References the Lifeline on which the StateInvariant appears.
  */
 QUmlLifeline *QUmlStateInvariant::covered() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlStateInvariant);
-    return d->covered;
+    return 0;
 }
 
 void QUmlStateInvariant::setCovered(QUmlLifeline *covered)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlStateInvariant);
-    if (d->covered != covered) {
-        // Adjust redefined property(ies)
-        (qwrappedobject_cast<QUmlInteractionFragment *>(this))->removeCovered(qwrappedobject_cast<QUmlLifeline *>(d->covered));
-
-        d->covered = covered;
-
-        // Adjust redefined property(ies)
-        if (covered) {
-            (qwrappedobject_cast<QUmlInteractionFragment *>(this))->addCovered(qwrappedobject_cast<QUmlLifeline *>(covered));
-        }
-    }
+    Q_UNUSED(covered);
 }
 
-void QUmlStateInvariant::setPropertyData()
+/*!
+    A Constraint that should hold at runtime for this StateInvariant
+ */
+QUmlConstraint *QUmlStateInvariant::invariant() const
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStateInvariant")][QString::fromLatin1("invariant")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStateInvariant")][QString::fromLatin1("invariant")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStateInvariant")][QString::fromLatin1("invariant")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A Constraint that should hold at runtime for this StateInvariant");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStateInvariant")][QString::fromLatin1("invariant")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStateInvariant")][QString::fromLatin1("invariant")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStateInvariant")][QString::fromLatin1("invariant")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
+    return 0;
+}
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStateInvariant")][QString::fromLatin1("covered")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStateInvariant")][QString::fromLatin1("covered")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStateInvariant")][QString::fromLatin1("covered")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Lifeline on which the StateInvariant appears.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStateInvariant")][QString::fromLatin1("covered")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QUmlInteractionFragment::covered");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStateInvariant")][QString::fromLatin1("covered")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlStateInvariant")][QString::fromLatin1("covered")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlInteractionFragment::setPropertyData();
+void QUmlStateInvariant::setInvariant(QUmlConstraint *invariant)
+{
+    Q_UNUSED(invariant);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlstateinvariant.cpp"
 

@@ -41,10 +41,9 @@
 #ifndef QUMLREDUCEACTION_P_H
 #define QUMLREDUCEACTION_P_H
 
-// Base class includes
-#include "private/qumlaction_p.h"
-
 #include "QtUml/QUmlReduceAction"
+
+#include "private/qumlaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -52,24 +51,15 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlInputPin;
-class QUmlBehavior;
-class QUmlOutputPin;
-class QUmlReduceAction;
-
 class Q_UML_EXPORT QUmlReduceActionPrivate : public QUmlActionPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlReduceAction)
-
 public:
-    explicit QUmlReduceActionPrivate();
-    virtual ~QUmlReduceActionPrivate();
+    QUmlReduceActionPrivate();
 
-    bool isOrdered;
-    QUmlOutputPin *result;
     QUmlInputPin *collection;
+    bool isOrdered;
     QUmlBehavior *reducer;
+    QUmlOutputPin *result;
 };
 
 QT_END_NAMESPACE

@@ -43,14 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlClassifier>
-
-// Qt includes
-#include <QtCore/QList>
-#include <QtCore/QSet>
-
-#include <QtWrappedObjects/QWrappedObjectPointer>
 
 QT_BEGIN_HEADER
 
@@ -58,61 +51,35 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlProtocolStateMachine;
-class QUmlInterface;
-class QUmlReception;
-class QUmlProperty;
 class QUmlOperation;
+class QUmlProperty;
+class QUmlProtocolStateMachine;
+class QUmlReception;
 
 class QUmlInterfacePrivate;
-
 class Q_UML_EXPORT QUmlInterface : public QUmlClassifier
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlProtocolStateMachine * protocol READ protocol WRITE setProtocol)
-    Q_PROPERTY(QSet<QUmlInterface *> redefinedInterfaces READ redefinedInterfaces)
-    Q_PROPERTY(QSet<QUmlReception *> ownedReceptions READ ownedReceptions)
-    Q_PROPERTY(QList<QUmlOperation *> ownedOperations READ ownedOperations)
-    Q_PROPERTY(QList<QUmlClassifier *> nestedClassifiers READ nestedClassifiers)
-    Q_PROPERTY(QList<QUmlProperty *> ownedAttributes READ ownedAttributes)
-
-    Q_DISABLE_COPY(QUmlInterface)
-    Q_DECLARE_PRIVATE(QUmlInterface)
-
 public:
-    Q_INVOKABLE explicit QUmlInterface(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlInterface();
+    QUmlInterface(bool create_d_ptr = true);
 
-    // Association ends from QUmlInterface
-    Q_INVOKABLE QUmlProtocolStateMachine *protocol() const;
-    Q_INVOKABLE void setProtocol(QUmlProtocolStateMachine *protocol);
-    Q_INVOKABLE QSet<QUmlInterface *> redefinedInterfaces() const;
-    Q_INVOKABLE void addRedefinedInterface(QUmlInterface *redefinedInterface);
-    Q_INVOKABLE void removeRedefinedInterface(QUmlInterface *redefinedInterface);
-    Q_INVOKABLE QSet<QUmlReception *> ownedReceptions() const;
-    Q_INVOKABLE void addOwnedReception(QUmlReception *ownedReception);
-    Q_INVOKABLE void removeOwnedReception(QUmlReception *ownedReception);
-    Q_INVOKABLE QList<QUmlOperation *> ownedOperations() const;
-    Q_INVOKABLE void addOwnedOperation(QUmlOperation *ownedOperation);
-    Q_INVOKABLE void removeOwnedOperation(QUmlOperation *ownedOperation);
-    Q_INVOKABLE QList<QUmlClassifier *> nestedClassifiers() const;
-    Q_INVOKABLE void addNestedClassifier(QUmlClassifier *nestedClassifier);
-    Q_INVOKABLE void removeNestedClassifier(QUmlClassifier *nestedClassifier);
-    Q_INVOKABLE QList<QUmlProperty *> ownedAttributes() const;
-    Q_INVOKABLE void addOwnedAttribute(QUmlProperty *ownedAttribute);
-    Q_INVOKABLE void removeOwnedAttribute(QUmlProperty *ownedAttribute);
-
-    // Overriden methods for subsetted properties
-    Q_INVOKABLE void addRedefinedClassifier(QWrappedObjectPointer<QUmlInterface> redefinedInterface);
-    Q_INVOKABLE void removeRedefinedClassifier(QWrappedObjectPointer<QUmlInterface> redefinedInterface);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlInterface(QUmlInterfacePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QList<QUmlClassifier *> nestedClassifier() const;
+    void addNestedClassifier(QList<QUmlClassifier *> nestedClassifier);
+    void removeNestedClassifier(QList<QUmlClassifier *> nestedClassifier);
+    QList<QUmlProperty *> ownedAttribute() const;
+    void addOwnedAttribute(QList<QUmlProperty *> ownedAttribute);
+    void removeOwnedAttribute(QList<QUmlProperty *> ownedAttribute);
+    QList<QUmlOperation *> ownedOperation() const;
+    void addOwnedOperation(QList<QUmlOperation *> ownedOperation);
+    void removeOwnedOperation(QList<QUmlOperation *> ownedOperation);
+    QSet<QUmlReception *> ownedReception() const;
+    void addOwnedReception(QSet<QUmlReception *> ownedReception);
+    void removeOwnedReception(QSet<QUmlReception *> ownedReception);
+    QUmlProtocolStateMachine *protocol() const;
+    void setProtocol(QUmlProtocolStateMachine *protocol);
+    QSet<QUmlInterface *> redefinedInterface() const;
+    void addRedefinedInterface(QSet<QUmlInterface *> redefinedInterface);
+    void removeRedefinedInterface(QSet<QUmlInterface *> redefinedInterface);
 };
 
 QT_END_NAMESPACE

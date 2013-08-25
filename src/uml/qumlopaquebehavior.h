@@ -43,48 +43,26 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlBehavior>
-
-// Qt includes
-#include <QtCore/QString>
-#include <QtCore/QList>
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-
 class QUmlOpaqueBehaviorPrivate;
-
 class Q_UML_EXPORT QUmlOpaqueBehavior : public QUmlBehavior
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QList<QString> languages READ languages)
-    Q_PROPERTY(QList<QString> bodies READ bodies)
-
-    Q_DISABLE_COPY(QUmlOpaqueBehavior)
-    Q_DECLARE_PRIVATE(QUmlOpaqueBehavior)
-
 public:
-    Q_INVOKABLE explicit QUmlOpaqueBehavior(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlOpaqueBehavior();
+    QUmlOpaqueBehavior(bool create_d_ptr = true);
 
-    // Attributes from QUmlOpaqueBehavior
-    Q_INVOKABLE QList<QString> languages() const;
-    Q_INVOKABLE void addLanguage(QString language);
-    Q_INVOKABLE void removeLanguage(QString language);
-    Q_INVOKABLE QList<QString> bodies() const;
-    Q_INVOKABLE void addBody(QString body);
-    Q_INVOKABLE void removeBody(QString body);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlOpaqueBehavior(QUmlOpaqueBehaviorPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QList<QString> body() const;
+    void addBody(QList<QString> body);
+    void removeBody(QList<QString> body);
+    QList<QString> language() const;
+    void addLanguage(QList<QString> language);
+    void removeLanguage(QList<QString> language);
 };
 
 QT_END_NAMESPACE

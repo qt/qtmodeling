@@ -41,18 +41,10 @@
 #ifndef QUMLTRANSITION_P_H
 #define QUMLTRANSITION_P_H
 
-// Base class includes
-#include "private/qwrappedobject_p.h"
-#include "private/qumlredefinableelement_p.h"
-#include "private/qumlnamespace_p.h"
-
 #include "QtUml/QUmlTransition"
 
-// QtUml includes
-#include "QtUml/QtUmlNamespace"
-
-// Qt includes
-#include "QtCore/QSet"
+#include "private/qumlredefinableelement_p.h"
+#include "private/qumlnamespace_p.h"
 
 QT_BEGIN_HEADER
 
@@ -60,33 +52,20 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlTrigger;
-class QUmlVertex;
-class QUmlStateMachine;
-class QUmlClassifier;
-class QUmlTransition;
-class QUmlRegion;
-class QUmlConstraint;
-class QUmlBehavior;
-class QUmlTransition;
-
-class Q_UML_EXPORT QUmlTransitionPrivate : public QWrappedObjectPrivate
+class Q_UML_EXPORT QUmlTransitionPrivate : public QUmlRedefinableElementPrivate, public QUmlNamespacePrivate
 {
-    Q_DECLARE_PUBLIC(QUmlTransition)
-
 public:
-    explicit QUmlTransitionPrivate();
-    virtual ~QUmlTransitionPrivate();
+    QUmlTransitionPrivate();
 
-    QtUml::TransitionKind kind;
     QUmlRegion *container;
-    QSet<QUmlTrigger *> triggers;
-    QUmlConstraint *guard;
     QUmlBehavior *effect;
-    QUmlVertex *target;
+    QUmlConstraint *guard;
+    QtUml::TransitionKind kind;
     QUmlTransition *redefinedTransition;
+    QUmlClassifier *redefinitionContext;
     QUmlVertex *source;
+    QUmlVertex *target;
+    QSet<QUmlTrigger *> trigger;
 };
 
 QT_END_NAMESPACE

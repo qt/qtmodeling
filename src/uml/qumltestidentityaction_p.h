@@ -41,10 +41,9 @@
 #ifndef QUMLTESTIDENTITYACTION_P_H
 #define QUMLTESTIDENTITYACTION_P_H
 
-// Base class includes
-#include "private/qumlaction_p.h"
-
 #include "QtUml/QUmlTestIdentityAction"
+
+#include "private/qumlaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -52,22 +51,14 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlInputPin;
-class QUmlOutputPin;
-class QUmlTestIdentityAction;
-
 class Q_UML_EXPORT QUmlTestIdentityActionPrivate : public QUmlActionPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlTestIdentityAction)
-
 public:
-    explicit QUmlTestIdentityActionPrivate();
-    virtual ~QUmlTestIdentityActionPrivate();
+    QUmlTestIdentityActionPrivate();
 
-    QUmlInputPin *second;
-    QUmlOutputPin *result;
     QUmlInputPin *first;
+    QUmlOutputPin *result;
+    QUmlInputPin *second;
 };
 
 QT_END_NAMESPACE

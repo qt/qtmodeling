@@ -41,32 +41,23 @@
 #ifndef QUMLEXPRESSION_P_H
 #define QUMLEXPRESSION_P_H
 
-// Base class includes
-#include "private/qumlvaluespecification_p.h"
-
 #include "QtUml/QUmlExpression"
 
-// Qt includes
-#include "QtCore/QString"
-#include "QtCore/QList"
+#include "private/qumlvaluespecification_p.h"
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-class QUmlExpression;
 
 class Q_UML_EXPORT QUmlExpressionPrivate : public QUmlValueSpecificationPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlExpression)
-
 public:
-    explicit QUmlExpressionPrivate();
-    virtual ~QUmlExpressionPrivate();
+    QUmlExpressionPrivate();
 
+    QList<QUmlValueSpecification *> operand;
     QString symbol;
-    QList<QUmlValueSpecification *> operands;
 };
 
 QT_END_NAMESPACE

@@ -41,16 +41,10 @@
 #include "qumlcontinuation.h"
 #include "qumlcontinuation_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlContinuationPrivate::QUmlContinuationPrivate() :
     setting(true)
-{
-}
-
-QUmlContinuationPrivate::~QUmlContinuationPrivate()
 {
 }
 
@@ -62,68 +56,27 @@ QUmlContinuationPrivate::~QUmlContinuationPrivate()
     \brief A continuation is a syntactic way to define continuations of different branches of an alternative combined fragment. Continuations is intuitively similar to labels representing intermediate points in a flow of control.
  */
 
-QUmlContinuation::QUmlContinuation(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlInteractionFragment(*new QUmlContinuationPrivate, wrapper, parent)
+QUmlContinuation::QUmlContinuation(bool create_d_ptr) :
+    QUmlInteractionFragment(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlContinuationPrivate);
 }
 
-QUmlContinuation::QUmlContinuation(QUmlContinuationPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlInteractionFragment(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlContinuation::~QUmlContinuation()
-{
-}
-
-// ---------------------------------------------------------------
-// ATTRIBUTES FROM QUmlContinuation
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     True: when the Continuation is at the end of the enclosing InteractionFragment and False when it is in the beginning.
  */
 bool QUmlContinuation::setting() const
 {
-    // This is a read-write attribute
-
-    Q_D(const QUmlContinuation);
-    return d->setting;
+    return bool();
 }
 
 void QUmlContinuation::setSetting(bool setting)
 {
-    // This is a read-write attribute
-
-    Q_D(QUmlContinuation);
-    if (d->setting != setting) {
-        d->setting = setting;
-    }
-    d->modifiedResettableProperties << QString::fromLatin1("setting");
-}
-
-void QUmlContinuation::unsetSetting()
-{
-    setSetting(true);
-    Q_D(QUmlContinuation);
-    d->modifiedResettableProperties.removeAll(QString::fromLatin1("setting"));
-}
-
-void QUmlContinuation::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlContinuation")][QString::fromLatin1("setting")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlContinuation")][QString::fromLatin1("setting")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlContinuation")][QString::fromLatin1("setting")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("True: when the Continuation is at the end of the enclosing InteractionFragment and False when it is in the beginning.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlContinuation")][QString::fromLatin1("setting")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlContinuation")][QString::fromLatin1("setting")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlContinuation")][QString::fromLatin1("setting")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QUmlInteractionFragment::setPropertyData();
+    Q_UNUSED(setting);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlcontinuation.cpp"
 

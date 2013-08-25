@@ -41,18 +41,12 @@
 #include "qumldeploymenttarget.h"
 #include "qumldeploymenttarget_p.h"
 
-#include <QtUml/QUmlPackageableElement>
 #include <QtUml/QUmlDeployment>
-
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
+#include <QtUml/QUmlPackageableElement>
 
 QT_BEGIN_NAMESPACE
 
 QUmlDeploymentTargetPrivate::QUmlDeploymentTargetPrivate()
-{
-}
-
-QUmlDeploymentTargetPrivate::~QUmlDeploymentTargetPrivate()
 {
 }
 
@@ -64,115 +58,40 @@ QUmlDeploymentTargetPrivate::~QUmlDeploymentTargetPrivate()
     \brief A deployment target is the location for a deployed artifact.
  */
 
-QUmlDeploymentTarget::QUmlDeploymentTarget(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlNamedElement(*new QUmlDeploymentTargetPrivate, wrapper, parent)
+QUmlDeploymentTarget::QUmlDeploymentTarget(bool create_d_ptr) :
+    QUmlNamedElement(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlDeploymentTargetPrivate);
 }
 
-QUmlDeploymentTarget::QUmlDeploymentTarget(QUmlDeploymentTargetPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlNamedElement(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlDeploymentTarget::~QUmlDeploymentTarget()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlDeploymentTarget
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     The set of elements that are manifested in an Artifact that is involved in Deployment to a DeploymentTarget.
  */
-QSet<QUmlPackageableElement *> QUmlDeploymentTarget::deployedElements() const
+QSet<QUmlPackageableElement *> QUmlDeploymentTarget::deployedElement() const
 {
-    // This is a read-only derived association end
-
-    qWarning("QUmlDeploymentTarget::deployedElements: to be implemented (this is a derived associationend)");
-
-    return QSet<QUmlPackageableElement *>(); // change here to your derived return
+    return QSet<QUmlPackageableElement *>();
 }
 
 /*!
     The set of Deployments for a DeploymentTarget.
  */
-QSet<QUmlDeployment *> QUmlDeploymentTarget::deployments() const
+QSet<QUmlDeployment *> QUmlDeploymentTarget::deployment() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlDeploymentTarget);
-    return d->deployments;
+    return QSet<QUmlDeployment *>();
 }
 
-void QUmlDeploymentTarget::addDeployment(QUmlDeployment *deployment)
+void QUmlDeploymentTarget::addDeployment(QSet<QUmlDeployment *> deployment)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlDeploymentTarget);
-    if (!d->deployments.contains(deployment)) {
-        d->deployments.insert(deployment);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QUmlElement *>(deployment));
-        (qwrappedobject_cast<QUmlNamedElement *>(this))->addClientDependency(qwrappedobject_cast<QUmlDependency *>(deployment));
-
-        // Adjust opposite property
-        deployment->setLocation(this);
-    }
+    Q_UNUSED(deployment);
 }
 
-void QUmlDeploymentTarget::removeDeployment(QUmlDeployment *deployment)
+void QUmlDeploymentTarget::removeDeployment(QSet<QUmlDeployment *> deployment)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlDeploymentTarget);
-    if (d->deployments.contains(deployment)) {
-        d->deployments.remove(deployment);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QUmlElement *>(deployment));
-        (qwrappedobject_cast<QUmlNamedElement *>(this))->removeClientDependency(qwrappedobject_cast<QUmlDependency *>(deployment));
-
-        // Adjust opposite property
-        deployment->setLocation(0);
-    }
-}
-
-void QUmlDeploymentTarget::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDeploymentTarget")][QString::fromLatin1("deployedElements")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDeploymentTarget")][QString::fromLatin1("deployedElements")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDeploymentTarget")][QString::fromLatin1("deployedElements")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The set of elements that are manifested in an Artifact that is involved in Deployment to a DeploymentTarget.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDeploymentTarget")][QString::fromLatin1("deployedElements")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDeploymentTarget")][QString::fromLatin1("deployedElements")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDeploymentTarget")][QString::fromLatin1("deployedElements")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDeploymentTarget")][QString::fromLatin1("deployments")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDeploymentTarget")][QString::fromLatin1("deployments")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDeploymentTarget")][QString::fromLatin1("deployments")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The set of Deployments for a DeploymentTarget.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDeploymentTarget")][QString::fromLatin1("deployments")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDeploymentTarget")][QString::fromLatin1("deployments")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements QUmlNamedElement::clientDependencies");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlDeploymentTarget")][QString::fromLatin1("deployments")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlDeployment::location");
-
-    QUmlNamedElement::setPropertyData();
-}
-
-// Overriden methods for subsetted properties
-
-void QUmlDeploymentTarget::addClientDependency(QWrappedObjectPointer<QUmlDeployment> deployment)
-{
-    addDeployment(deployment);
-}
-
-void QUmlDeploymentTarget::removeClientDependency(QWrappedObjectPointer<QUmlDeployment> deployment)
-{
-    removeDeployment(deployment);
+    Q_UNUSED(deployment);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumldeploymenttarget.cpp"
 

@@ -43,13 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlClassifier>
-
-// Qt includes
-#include <QtCore/QSet>
-
-#include <QtWrappedObjects/QWrappedObjectPointer>
 
 QT_BEGIN_HEADER
 
@@ -57,46 +51,24 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlBehavior;
 class QUmlInterfaceRealization;
 
 class QUmlBehavioredClassifierPrivate;
-
 class Q_UML_EXPORT QUmlBehavioredClassifier : public QUmlClassifier
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QSet<QUmlBehavior *> ownedBehaviors READ ownedBehaviors)
-    Q_PROPERTY(QSet<QUmlInterfaceRealization *> interfaceRealizations READ interfaceRealizations)
-    Q_PROPERTY(QUmlBehavior * classifierBehavior READ classifierBehavior WRITE setClassifierBehavior)
-
-    Q_DISABLE_COPY(QUmlBehavioredClassifier)
-    Q_DECLARE_PRIVATE(QUmlBehavioredClassifier)
-
 public:
-    Q_INVOKABLE explicit QUmlBehavioredClassifier(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlBehavioredClassifier();
+    Q_DECL_HIDDEN QUmlBehavioredClassifier(bool create_d_ptr = true);
 
-    // Association ends from QUmlBehavioredClassifier
-    Q_INVOKABLE QSet<QUmlBehavior *> ownedBehaviors() const;
-    Q_INVOKABLE void addOwnedBehavior(QUmlBehavior *ownedBehavior);
-    Q_INVOKABLE void removeOwnedBehavior(QUmlBehavior *ownedBehavior);
-    Q_INVOKABLE QSet<QUmlInterfaceRealization *> interfaceRealizations() const;
-    Q_INVOKABLE void addInterfaceRealization(QUmlInterfaceRealization *interfaceRealization);
-    Q_INVOKABLE void removeInterfaceRealization(QUmlInterfaceRealization *interfaceRealization);
-    Q_INVOKABLE QUmlBehavior *classifierBehavior() const;
-    Q_INVOKABLE void setClassifierBehavior(QUmlBehavior *classifierBehavior);
-
-    // Overriden methods for subsetted properties
-    Q_INVOKABLE void addClientDependency(QWrappedObjectPointer<QUmlInterfaceRealization> interfaceRealization);
-    Q_INVOKABLE void removeClientDependency(QWrappedObjectPointer<QUmlInterfaceRealization> interfaceRealization);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlBehavioredClassifier(QUmlBehavioredClassifierPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlBehavior *classifierBehavior() const;
+    void setClassifierBehavior(QUmlBehavior *classifierBehavior);
+    QSet<QUmlInterfaceRealization *> interfaceRealization() const;
+    void addInterfaceRealization(QSet<QUmlInterfaceRealization *> interfaceRealization);
+    void removeInterfaceRealization(QSet<QUmlInterfaceRealization *> interfaceRealization);
+    QSet<QUmlBehavior *> ownedBehavior() const;
+    void addOwnedBehavior(QSet<QUmlBehavior *> ownedBehavior);
+    void removeOwnedBehavior(QSet<QUmlBehavior *> ownedBehavior);
 };
 
 QT_END_NAMESPACE

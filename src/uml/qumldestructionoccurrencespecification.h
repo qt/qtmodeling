@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlMessageOccurrenceSpecification>
 
 QT_BEGIN_HEADER
@@ -51,25 +50,11 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-
 class QUmlDestructionOccurrenceSpecificationPrivate;
-
 class Q_UML_EXPORT QUmlDestructionOccurrenceSpecification : public QUmlMessageOccurrenceSpecification
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_DISABLE_COPY(QUmlDestructionOccurrenceSpecification)
-    Q_DECLARE_PRIVATE(QUmlDestructionOccurrenceSpecification)
-
 public:
-    Q_INVOKABLE explicit QUmlDestructionOccurrenceSpecification(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlDestructionOccurrenceSpecification();
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlDestructionOccurrenceSpecification(QUmlDestructionOccurrenceSpecificationPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    QUmlDestructionOccurrenceSpecification(bool create_d_ptr = true);
 };
 
 QT_END_NAMESPACE

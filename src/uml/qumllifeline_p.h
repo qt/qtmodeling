@@ -41,13 +41,9 @@
 #ifndef QUMLLIFELINE_P_H
 #define QUMLLIFELINE_P_H
 
-// Base class includes
-#include "private/qumlnamedelement_p.h"
-
 #include "QtUml/QUmlLifeline"
 
-// Qt includes
-#include "QtCore/QSet"
+#include "private/qumlnamedelement_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,26 +51,15 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlConnectableElement;
-class QUmlValueSpecification;
-class QUmlInteraction;
-class QUmlInteractionFragment;
-class QUmlPartDecomposition;
-class QUmlLifeline;
-
 class Q_UML_EXPORT QUmlLifelinePrivate : public QUmlNamedElementPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlLifeline)
-
 public:
-    explicit QUmlLifelinePrivate();
-    virtual ~QUmlLifelinePrivate();
+    QUmlLifelinePrivate();
 
-    QUmlConnectableElement *represents;
-    QUmlPartDecomposition *decomposedAs;
     QSet<QUmlInteractionFragment *> coveredBy;
+    QUmlPartDecomposition *decomposedAs;
     QUmlInteraction *interaction;
+    QUmlConnectableElement *represents;
     QUmlValueSpecification *selector;
 };
 

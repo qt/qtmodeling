@@ -43,15 +43,9 @@
 
 #include <QtUml/QUmlNamedElement>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlConsiderIgnoreFragmentPrivate::QUmlConsiderIgnoreFragmentPrivate()
-{
-}
-
-QUmlConsiderIgnoreFragmentPrivate::~QUmlConsiderIgnoreFragmentPrivate()
 {
 }
 
@@ -63,70 +57,32 @@ QUmlConsiderIgnoreFragmentPrivate::~QUmlConsiderIgnoreFragmentPrivate()
     \brief A consider ignore fragment is a kind of combined fragment that is used for the consider and ignore cases, which require lists of pertinent messages to be specified.
  */
 
-QUmlConsiderIgnoreFragment::QUmlConsiderIgnoreFragment(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlCombinedFragment(*new QUmlConsiderIgnoreFragmentPrivate, wrapper, parent)
+QUmlConsiderIgnoreFragment::QUmlConsiderIgnoreFragment(bool create_d_ptr) :
+    QUmlCombinedFragment(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlConsiderIgnoreFragmentPrivate);
 }
 
-QUmlConsiderIgnoreFragment::QUmlConsiderIgnoreFragment(QUmlConsiderIgnoreFragmentPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlCombinedFragment(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlConsiderIgnoreFragment::~QUmlConsiderIgnoreFragment()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlConsiderIgnoreFragment
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     The set of messages that apply to this fragment
  */
-QSet<QUmlNamedElement *> QUmlConsiderIgnoreFragment::messages() const
+QSet<QUmlNamedElement *> QUmlConsiderIgnoreFragment::message() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlConsiderIgnoreFragment);
-    return d->messages;
+    return QSet<QUmlNamedElement *>();
 }
 
-void QUmlConsiderIgnoreFragment::addMessage(QUmlNamedElement *message)
+void QUmlConsiderIgnoreFragment::addMessage(QSet<QUmlNamedElement *> message)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlConsiderIgnoreFragment);
-    if (!d->messages.contains(message)) {
-        d->messages.insert(message);
-    }
+    Q_UNUSED(message);
 }
 
-void QUmlConsiderIgnoreFragment::removeMessage(QUmlNamedElement *message)
+void QUmlConsiderIgnoreFragment::removeMessage(QSet<QUmlNamedElement *> message)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlConsiderIgnoreFragment);
-    if (d->messages.contains(message)) {
-        d->messages.remove(message);
-    }
-}
-
-void QUmlConsiderIgnoreFragment::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConsiderIgnoreFragment")][QString::fromLatin1("messages")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConsiderIgnoreFragment")][QString::fromLatin1("messages")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConsiderIgnoreFragment")][QString::fromLatin1("messages")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The set of messages that apply to this fragment");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConsiderIgnoreFragment")][QString::fromLatin1("messages")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConsiderIgnoreFragment")][QString::fromLatin1("messages")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlConsiderIgnoreFragment")][QString::fromLatin1("messages")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QUmlCombinedFragment::setPropertyData();
+    Q_UNUSED(message);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlconsiderignorefragment.cpp"
 

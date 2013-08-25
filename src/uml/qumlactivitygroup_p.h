@@ -41,13 +41,9 @@
 #ifndef QUMLACTIVITYGROUP_P_H
 #define QUMLACTIVITYGROUP_P_H
 
-// Base class includes
-#include "private/qumlnamedelement_p.h"
-
 #include "QtUml/QUmlActivityGroup"
 
-// Qt includes
-#include "QtCore/QSet"
+#include "private/qumlnamedelement_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,34 +51,16 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlActivityGroup;
-class QUmlActivity;
-class QUmlActivityEdge;
-class QUmlActivityNode;
-
-class Q_UML_EXPORT QUmlActivityGroupPrivate : public QUmlNamedElementPrivate
+class Q_UML_EXPORT QUmlActivityGroupPrivate : public virtual QUmlNamedElementPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlActivityGroup)
-
 public:
-    explicit QUmlActivityGroupPrivate();
-    virtual ~QUmlActivityGroupPrivate();
+    QUmlActivityGroupPrivate();
 
+    QSet<QUmlActivityEdge *> containedEdge;
+    QSet<QUmlActivityNode *> containedNode;
     QUmlActivity *inActivity;
-    QSet<QUmlActivityNode *> containedNodes;
-    QSet<QUmlActivityGroup *> subgroups;
-    QSet<QUmlActivityEdge *> containedEdges;
+    QSet<QUmlActivityGroup *> subgroup;
     QUmlActivityGroup *superGroup;
-
-    // Internal functions for read-only subsetted association ends
-    void addContainedNode(QUmlActivityNode *containedNode);
-    void removeContainedNode(QUmlActivityNode *containedNode);
-    void addSubgroup(QUmlActivityGroup *subgroup);
-    void removeSubgroup(QUmlActivityGroup *subgroup);
-    void addContainedEdge(QUmlActivityEdge *containedEdge);
-    void removeContainedEdge(QUmlActivityEdge *containedEdge);
-    void setSuperGroup(QUmlActivityGroup *superGroup);
 };
 
 QT_END_NAMESPACE

@@ -43,11 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlElement>
-
-// Qt includes
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -55,43 +51,26 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlTemplateSignature;
-class QUmlTemplateBinding;
 class QUmlParameterableElement;
+class QUmlTemplateBinding;
+class QUmlTemplateSignature;
 
 class QUmlTemplateableElementPrivate;
-
-class Q_UML_EXPORT QUmlTemplateableElement : public QUmlElement
+class Q_UML_EXPORT QUmlTemplateableElement : public virtual QUmlElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlTemplateSignature * ownedTemplateSignature READ ownedTemplateSignature WRITE setOwnedTemplateSignature)
-    Q_PROPERTY(QSet<QUmlTemplateBinding *> templateBindings READ templateBindings)
-
-    Q_DISABLE_COPY(QUmlTemplateableElement)
-    Q_DECLARE_PRIVATE(QUmlTemplateableElement)
-
 public:
-    Q_INVOKABLE explicit QUmlTemplateableElement(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlTemplateableElement();
+    Q_DECL_HIDDEN QUmlTemplateableElement(bool create_d_ptr = true);
 
-    // Association ends from QUmlTemplateableElement
-    Q_INVOKABLE QUmlTemplateSignature *ownedTemplateSignature() const;
-    Q_INVOKABLE void setOwnedTemplateSignature(QUmlTemplateSignature *ownedTemplateSignature);
-    Q_INVOKABLE QSet<QUmlTemplateBinding *> templateBindings() const;
-    Q_INVOKABLE void addTemplateBinding(QUmlTemplateBinding *templateBinding);
-    Q_INVOKABLE void removeTemplateBinding(QUmlTemplateBinding *templateBinding);
+    // Owned attributes
+    QUmlTemplateSignature *ownedTemplateSignature() const;
+    void setOwnedTemplateSignature(QUmlTemplateSignature *ownedTemplateSignature);
+    QSet<QUmlTemplateBinding *> templateBinding() const;
+    void addTemplateBinding(QSet<QUmlTemplateBinding *> templateBinding);
+    void removeTemplateBinding(QSet<QUmlTemplateBinding *> templateBinding);
 
     // Operations
-    Q_INVOKABLE bool isTemplate() const;
-    Q_INVOKABLE QSet<QUmlParameterableElement *> parameterableElements() const;
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlTemplateableElement(QUmlTemplateableElementPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    bool isTemplate() const;
+    QSet<QUmlParameterableElement *> parameterableElements() const;
 };
 
 QT_END_NAMESPACE

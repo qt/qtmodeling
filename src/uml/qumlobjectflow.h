@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlActivityEdge>
 
 QT_BEGIN_HEADER
@@ -52,46 +51,23 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlBehavior;
 
 class QUmlObjectFlowPrivate;
-
 class Q_UML_EXPORT QUmlObjectFlow : public QUmlActivityEdge
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(bool isMultireceive READ isMultireceive WRITE setMultireceive RESET unsetMultireceive)
-    Q_PROPERTY(bool isMulticast READ isMulticast WRITE setMulticast RESET unsetMulticast)
-    Q_PROPERTY(QUmlBehavior * selection READ selection WRITE setSelection)
-    Q_PROPERTY(QUmlBehavior * transformation READ transformation WRITE setTransformation)
-
-    Q_DISABLE_COPY(QUmlObjectFlow)
-    Q_DECLARE_PRIVATE(QUmlObjectFlow)
-
 public:
-    Q_INVOKABLE explicit QUmlObjectFlow(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlObjectFlow();
+    QUmlObjectFlow(bool create_d_ptr = true);
 
-    // Attributes from QUmlObjectFlow
-    Q_INVOKABLE bool isMultireceive() const;
-    Q_INVOKABLE void setMultireceive(bool isMultireceive);
-    Q_INVOKABLE void unsetMultireceive();
-    Q_INVOKABLE bool isMulticast() const;
-    Q_INVOKABLE void setMulticast(bool isMulticast);
-    Q_INVOKABLE void unsetMulticast();
-
-    // Association ends from QUmlObjectFlow
-    Q_INVOKABLE QUmlBehavior *selection() const;
-    Q_INVOKABLE void setSelection(QUmlBehavior *selection);
-    Q_INVOKABLE QUmlBehavior *transformation() const;
-    Q_INVOKABLE void setTransformation(QUmlBehavior *transformation);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlObjectFlow(QUmlObjectFlowPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    bool isMulticast() const;
+    void setMulticast(bool isMulticast);
+    bool isMultireceive() const;
+    void setMultireceive(bool isMultireceive);
+    QUmlBehavior *selection() const;
+    void setSelection(QUmlBehavior *selection);
+    QUmlBehavior *transformation() const;
+    void setTransformation(QUmlBehavior *transformation);
 };
 
 QT_END_NAMESPACE

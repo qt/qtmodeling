@@ -41,10 +41,9 @@
 #ifndef QUMLSENDSIGNALACTION_P_H
 #define QUMLSENDSIGNALACTION_P_H
 
-// Base class includes
-#include "private/qumlinvocationaction_p.h"
-
 #include "QtUml/QUmlSendSignalAction"
+
+#include "private/qumlinvocationaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -52,21 +51,13 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlSignal;
-class QUmlInputPin;
-class QUmlSendSignalAction;
-
 class Q_UML_EXPORT QUmlSendSignalActionPrivate : public QUmlInvocationActionPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlSendSignalAction)
-
 public:
-    explicit QUmlSendSignalActionPrivate();
-    virtual ~QUmlSendSignalActionPrivate();
+    QUmlSendSignalActionPrivate();
 
-    QUmlInputPin *target;
     QUmlSignal *signal;
+    QUmlInputPin *target;
 };
 
 QT_END_NAMESPACE

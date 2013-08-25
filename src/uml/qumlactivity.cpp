@@ -41,24 +41,18 @@
 #include "qumlactivity.h"
 #include "qumlactivity_p.h"
 
+#include <QtUml/QUmlActivityEdge>
+#include <QtUml/QUmlActivityGroup>
+#include <QtUml/QUmlActivityNode>
+#include <QtUml/QUmlActivityPartition>
 #include <QtUml/QUmlStructuredActivityNode>
 #include <QtUml/QUmlVariable>
-#include <QtUml/QUmlActivityPartition>
-#include <QtUml/QUmlActivityGroup>
-#include <QtUml/QUmlActivityEdge>
-#include <QtUml/QUmlActivityNode>
-
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
 
 QT_BEGIN_NAMESPACE
 
 QUmlActivityPrivate::QUmlActivityPrivate() :
     isReadOnly(false),
     isSingleExecution(false)
-{
-}
-
-QUmlActivityPrivate::~QUmlActivityPrivate()
 {
 }
 
@@ -70,53 +64,62 @@ QUmlActivityPrivate::~QUmlActivityPrivate()
     \brief An activity is the specification of parameterized behavior as the coordinated sequencing of subordinate units whose individual elements are actions.
  */
 
-QUmlActivity::QUmlActivity(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlBehavior(*new QUmlActivityPrivate, wrapper, parent)
+QUmlActivity::QUmlActivity(bool create_d_ptr) :
+    QUmlBehavior(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlActivityPrivate);
 }
 
-QUmlActivity::QUmlActivity(QUmlActivityPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlBehavior(dd, wrapper, parent)
+// Owned attributes
+
+/*!
+    Edges expressing flow between nodes of the activity.
+ */
+QSet<QUmlActivityEdge *> QUmlActivity::edge() const
 {
-    setPropertyData();
+    return QSet<QUmlActivityEdge *>();
 }
 
-QUmlActivity::~QUmlActivity()
+void QUmlActivity::addEdge(QSet<QUmlActivityEdge *> edge)
 {
+    Q_UNUSED(edge);
 }
 
-// ---------------------------------------------------------------
-// ATTRIBUTES FROM QUmlActivity
-// ---------------------------------------------------------------
+void QUmlActivity::removeEdge(QSet<QUmlActivityEdge *> edge)
+{
+    Q_UNUSED(edge);
+}
+
+/*!
+    Top-level groups in the activity.
+ */
+QSet<QUmlActivityGroup *> QUmlActivity::group() const
+{
+    return QSet<QUmlActivityGroup *>();
+}
+
+void QUmlActivity::addGroup(QSet<QUmlActivityGroup *> group)
+{
+    Q_UNUSED(group);
+}
+
+void QUmlActivity::removeGroup(QSet<QUmlActivityGroup *> group)
+{
+    Q_UNUSED(group);
+}
 
 /*!
     If true, this activity must not make any changes to variables outside the activity or to objects. (This is an assertion, not an executable property. It may be used by an execution engine to optimize model execution. If the assertion is violated by the action, then the model is ill-formed.) The default is false (an activity may make nonlocal changes).
  */
 bool QUmlActivity::isReadOnly() const
 {
-    // This is a read-write attribute
-
-    Q_D(const QUmlActivity);
-    return d->isReadOnly;
+    return bool();
 }
 
 void QUmlActivity::setReadOnly(bool isReadOnly)
 {
-    // This is a read-write attribute
-
-    Q_D(QUmlActivity);
-    if (d->isReadOnly != isReadOnly) {
-        d->isReadOnly = isReadOnly;
-    }
-    d->modifiedResettableProperties << QString::fromLatin1("isReadOnly");
-}
-
-void QUmlActivity::unsetReadOnly()
-{
-    setReadOnly(false);
-    Q_D(QUmlActivity);
-    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isReadOnly"));
+    Q_UNUSED(isReadOnly);
 }
 
 /*!
@@ -124,382 +127,85 @@ void QUmlActivity::unsetReadOnly()
  */
 bool QUmlActivity::isSingleExecution() const
 {
-    // This is a read-write attribute
-
-    Q_D(const QUmlActivity);
-    return d->isSingleExecution;
+    return bool();
 }
 
 void QUmlActivity::setSingleExecution(bool isSingleExecution)
 {
-    // This is a read-write attribute
-
-    Q_D(QUmlActivity);
-    if (d->isSingleExecution != isSingleExecution) {
-        d->isSingleExecution = isSingleExecution;
-    }
-    d->modifiedResettableProperties << QString::fromLatin1("isSingleExecution");
-}
-
-void QUmlActivity::unsetSingleExecution()
-{
-    setSingleExecution(false);
-    Q_D(QUmlActivity);
-    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isSingleExecution"));
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlActivity
-// ---------------------------------------------------------------
-
-/*!
-    Top-level partitions in the activity.
- */
-QSet<QUmlActivityPartition *> QUmlActivity::partitions() const
-{
-    // This is a read-write association end
-
-    Q_D(const QUmlActivity);
-    return d->partitions;
-}
-
-void QUmlActivity::addPartition(QUmlActivityPartition *partition)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlActivity);
-    if (!d->partitions.contains(partition)) {
-        d->partitions.insert(partition);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActivity *>(this))->addGroup(qwrappedobject_cast<QUmlActivityGroup *>(partition));
-    }
-}
-
-void QUmlActivity::removePartition(QUmlActivityPartition *partition)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlActivity);
-    if (d->partitions.contains(partition)) {
-        d->partitions.remove(partition);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActivity *>(this))->removeGroup(qwrappedobject_cast<QUmlActivityGroup *>(partition));
-    }
+    Q_UNUSED(isSingleExecution);
 }
 
 /*!
     Nodes coordinated by the activity.
  */
-QSet<QUmlActivityNode *> QUmlActivity::nodes() const
+QSet<QUmlActivityNode *> QUmlActivity::node() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlActivity);
-    return d->nodes;
+    return QSet<QUmlActivityNode *>();
 }
 
-void QUmlActivity::addNode(QUmlActivityNode *node)
+void QUmlActivity::addNode(QSet<QUmlActivityNode *> node)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlActivity);
-    if (!d->nodes.contains(node)) {
-        d->nodes.insert(node);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QUmlElement *>(node));
-
-        // Adjust opposite property
-        node->setActivity(this);
-    }
+    Q_UNUSED(node);
 }
 
-void QUmlActivity::removeNode(QUmlActivityNode *node)
+void QUmlActivity::removeNode(QSet<QUmlActivityNode *> node)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlActivity);
-    if (d->nodes.contains(node)) {
-        d->nodes.remove(node);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QUmlElement *>(node));
-
-        // Adjust opposite property
-        node->setActivity(0);
-    }
+    Q_UNUSED(node);
 }
 
 /*!
-    Top-level variables in the activity.
+    Top-level partitions in the activity.
  */
-QSet<QUmlVariable *> QUmlActivity::variables() const
+QSet<QUmlActivityPartition *> QUmlActivity::partition() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlActivity);
-    return d->variables;
+    return QSet<QUmlActivityPartition *>();
 }
 
-void QUmlActivity::addVariable(QUmlVariable *variable)
+void QUmlActivity::addPartition(QSet<QUmlActivityPartition *> partition)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlActivity);
-    if (!d->variables.contains(variable)) {
-        d->variables.insert(variable);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlNamespacePrivate *>(d))->addOwnedMember(qwrappedobject_cast<QUmlNamedElement *>(variable));
-
-        // Adjust opposite property
-        variable->setActivityScope(this);
-    }
+    Q_UNUSED(partition);
 }
 
-void QUmlActivity::removeVariable(QUmlVariable *variable)
+void QUmlActivity::removePartition(QSet<QUmlActivityPartition *> partition)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlActivity);
-    if (d->variables.contains(variable)) {
-        d->variables.remove(variable);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlNamespacePrivate *>(d))->removeOwnedMember(qwrappedobject_cast<QUmlNamedElement *>(variable));
-
-        // Adjust opposite property
-        variable->setActivityScope(0);
-    }
+    Q_UNUSED(partition);
 }
 
 /*!
     Top-level structured nodes in the activity.
  */
-QSet<QUmlStructuredActivityNode *> QUmlActivity::structuredNodes() const
+QSet<QUmlStructuredActivityNode *> QUmlActivity::structuredNode() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlActivity);
-    return d->structuredNodes;
+    return QSet<QUmlStructuredActivityNode *>();
 }
 
-void QUmlActivity::addStructuredNode(QUmlStructuredActivityNode *structuredNode)
+void QUmlActivity::addStructuredNode(QSet<QUmlStructuredActivityNode *> structuredNode)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlActivity);
-    if (!d->structuredNodes.contains(structuredNode)) {
-        d->structuredNodes.insert(structuredNode);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActivity *>(this))->addGroup(qwrappedobject_cast<QUmlActivityGroup *>(structuredNode));
-        (qwrappedobject_cast<QUmlActivity *>(this))->addNode(qwrappedobject_cast<QUmlActivityNode *>(structuredNode));
-
-        // Adjust opposite property
-        structuredNode->setActivity(this);
-    }
+    Q_UNUSED(structuredNode);
 }
 
-void QUmlActivity::removeStructuredNode(QUmlStructuredActivityNode *structuredNode)
+void QUmlActivity::removeStructuredNode(QSet<QUmlStructuredActivityNode *> structuredNode)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlActivity);
-    if (d->structuredNodes.contains(structuredNode)) {
-        d->structuredNodes.remove(structuredNode);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlActivity *>(this))->removeGroup(qwrappedobject_cast<QUmlActivityGroup *>(structuredNode));
-        (qwrappedobject_cast<QUmlActivity *>(this))->removeNode(qwrappedobject_cast<QUmlActivityNode *>(structuredNode));
-
-        // Adjust opposite property
-        structuredNode->setActivity(0);
-    }
+    Q_UNUSED(structuredNode);
 }
 
 /*!
-    Top-level groups in the activity.
+    Top-level variables in the activity.
  */
-QSet<QUmlActivityGroup *> QUmlActivity::groups() const
+QSet<QUmlVariable *> QUmlActivity::variable() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlActivity);
-    return d->groups;
+    return QSet<QUmlVariable *>();
 }
 
-void QUmlActivity::addGroup(QUmlActivityGroup *group)
+void QUmlActivity::addVariable(QSet<QUmlVariable *> variable)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlActivity);
-    if (!d->groups.contains(group)) {
-        d->groups.insert(group);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QUmlElement *>(group));
-
-        // Adjust opposite property
-        group->setInActivity(this);
-    }
+    Q_UNUSED(variable);
 }
 
-void QUmlActivity::removeGroup(QUmlActivityGroup *group)
+void QUmlActivity::removeVariable(QSet<QUmlVariable *> variable)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlActivity);
-    if (d->groups.contains(group)) {
-        d->groups.remove(group);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QUmlElement *>(group));
-
-        // Adjust opposite property
-        group->setInActivity(0);
-    }
-}
-
-/*!
-    Edges expressing flow between nodes of the activity.
- */
-QSet<QUmlActivityEdge *> QUmlActivity::edges() const
-{
-    // This is a read-write association end
-
-    Q_D(const QUmlActivity);
-    return d->edges;
-}
-
-void QUmlActivity::addEdge(QUmlActivityEdge *edge)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlActivity);
-    if (!d->edges.contains(edge)) {
-        d->edges.insert(edge);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QUmlElement *>(edge));
-
-        // Adjust opposite property
-        edge->setActivity(this);
-    }
-}
-
-void QUmlActivity::removeEdge(QUmlActivityEdge *edge)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlActivity);
-    if (d->edges.contains(edge)) {
-        d->edges.remove(edge);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QUmlElement *>(edge));
-
-        // Adjust opposite property
-        edge->setActivity(0);
-    }
-}
-
-void QUmlActivity::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivity")][QString::fromLatin1("isReadOnly")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivity")][QString::fromLatin1("isReadOnly")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivity")][QString::fromLatin1("isReadOnly")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("If true, this activity must not make any changes to variables outside the activity or to objects. (This is an assertion, not an executable property. It may be used by an execution engine to optimize model execution. If the assertion is violated by the action, then the model is ill-formed.) The default is false (an activity may make nonlocal changes).");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivity")][QString::fromLatin1("isReadOnly")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivity")][QString::fromLatin1("isReadOnly")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivity")][QString::fromLatin1("isReadOnly")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivity")][QString::fromLatin1("isSingleExecution")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivity")][QString::fromLatin1("isSingleExecution")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivity")][QString::fromLatin1("isSingleExecution")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("If true, all invocations of the activity are handled by the same execution.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivity")][QString::fromLatin1("isSingleExecution")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivity")][QString::fromLatin1("isSingleExecution")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivity")][QString::fromLatin1("isSingleExecution")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivity")][QString::fromLatin1("partitions")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivity")][QString::fromLatin1("partitions")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivity")][QString::fromLatin1("partitions")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Top-level partitions in the activity.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivity")][QString::fromLatin1("partitions")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivity")][QString::fromLatin1("partitions")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlActivity::groups");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivity")][QString::fromLatin1("partitions")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUml");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivity")][QString::fromLatin1("nodes")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivity")][QString::fromLatin1("nodes")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivity")][QString::fromLatin1("nodes")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Nodes coordinated by the activity.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivity")][QString::fromLatin1("nodes")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivity")][QString::fromLatin1("nodes")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivity")][QString::fromLatin1("nodes")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlActivityNode::activity");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivity")][QString::fromLatin1("variables")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivity")][QString::fromLatin1("variables")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivity")][QString::fromLatin1("variables")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Top-level variables in the activity.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivity")][QString::fromLatin1("variables")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivity")][QString::fromLatin1("variables")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlNamespace::ownedMembers");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivity")][QString::fromLatin1("variables")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlVariable::activityScope");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivity")][QString::fromLatin1("structuredNodes")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivity")][QString::fromLatin1("structuredNodes")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivity")][QString::fromLatin1("structuredNodes")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Top-level structured nodes in the activity.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivity")][QString::fromLatin1("structuredNodes")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivity")][QString::fromLatin1("structuredNodes")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlActivity::groups QUmlActivity::nodes");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivity")][QString::fromLatin1("structuredNodes")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlStructuredActivityNode::activity");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivity")][QString::fromLatin1("groups")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivity")][QString::fromLatin1("groups")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivity")][QString::fromLatin1("groups")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Top-level groups in the activity.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivity")][QString::fromLatin1("groups")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivity")][QString::fromLatin1("groups")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivity")][QString::fromLatin1("groups")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlActivityGroup::inActivity");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivity")][QString::fromLatin1("edges")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivity")][QString::fromLatin1("edges")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivity")][QString::fromLatin1("edges")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Edges expressing flow between nodes of the activity.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivity")][QString::fromLatin1("edges")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivity")][QString::fromLatin1("edges")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlActivity")][QString::fromLatin1("edges")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlActivityEdge::activity");
-
-    QUmlBehavior::setPropertyData();
-}
-
-// Overriden methods for subsetted properties
-
-void QUmlActivity::addGroup(QWrappedObjectPointer<QUmlActivityPartition> partition)
-{
-    addPartition(partition);
-}
-
-void QUmlActivity::removeGroup(QWrappedObjectPointer<QUmlActivityPartition> partition)
-{
-    removePartition(partition);
-}
-
-void QUmlActivity::addGroup(QWrappedObjectPointer<QUmlStructuredActivityNode> structuredNode)
-{
-    addStructuredNode(structuredNode);
-}
-
-void QUmlActivity::removeGroup(QWrappedObjectPointer<QUmlStructuredActivityNode> structuredNode)
-{
-    removeStructuredNode(structuredNode);
-}
-
-void QUmlActivity::addNode(QWrappedObjectPointer<QUmlStructuredActivityNode> structuredNode)
-{
-    addStructuredNode(structuredNode);
-}
-
-void QUmlActivity::removeNode(QWrappedObjectPointer<QUmlStructuredActivityNode> structuredNode)
-{
-    removeStructuredNode(structuredNode);
+    Q_UNUSED(variable);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlactivity.cpp"
 

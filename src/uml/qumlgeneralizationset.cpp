@@ -41,10 +41,8 @@
 #include "qumlgeneralizationset.h"
 #include "qumlgeneralizationset_p.h"
 
-#include <QtUml/QUmlGeneralization>
 #include <QtUml/QUmlClassifier>
-
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
+#include <QtUml/QUmlGeneralization>
 
 QT_BEGIN_NAMESPACE
 
@@ -52,10 +50,6 @@ QUmlGeneralizationSetPrivate::QUmlGeneralizationSetPrivate() :
     isCovering(false),
     isDisjoint(false),
     powertype(0)
-{
-}
-
-QUmlGeneralizationSetPrivate::~QUmlGeneralizationSetPrivate()
 {
 }
 
@@ -67,53 +61,44 @@ QUmlGeneralizationSetPrivate::~QUmlGeneralizationSetPrivate()
     \brief A generalization set is a packageable element whose instances define collections of subsets of generalization relationships.
  */
 
-QUmlGeneralizationSet::QUmlGeneralizationSet(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlPackageableElement(*new QUmlGeneralizationSetPrivate, wrapper, parent)
+QUmlGeneralizationSet::QUmlGeneralizationSet(bool create_d_ptr) :
+    QUmlPackageableElement(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlGeneralizationSetPrivate);
 }
 
-QUmlGeneralizationSet::QUmlGeneralizationSet(QUmlGeneralizationSetPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlPackageableElement(dd, wrapper, parent)
+// Owned attributes
+
+/*!
+    Designates the instances of Generalization which are members of a given GeneralizationSet.
+ */
+QSet<QUmlGeneralization *> QUmlGeneralizationSet::generalization() const
 {
-    setPropertyData();
+    return QSet<QUmlGeneralization *>();
 }
 
-QUmlGeneralizationSet::~QUmlGeneralizationSet()
+void QUmlGeneralizationSet::addGeneralization(QSet<QUmlGeneralization *> generalization)
 {
+    Q_UNUSED(generalization);
 }
 
-// ---------------------------------------------------------------
-// ATTRIBUTES FROM QUmlGeneralizationSet
-// ---------------------------------------------------------------
+void QUmlGeneralizationSet::removeGeneralization(QSet<QUmlGeneralization *> generalization)
+{
+    Q_UNUSED(generalization);
+}
 
 /*!
     Indicates (via the associated Generalizations) whether or not the set of specific Classifiers are covering for a particular general classifier. When isCovering is true, every instance of a particular general Classifier is also an instance of at least one of its specific Classifiers for the GeneralizationSet. When isCovering is false, there are one or more instances of the particular general Classifier that are not instances of at least one of its specific Classifiers defined for the GeneralizationSet.
  */
 bool QUmlGeneralizationSet::isCovering() const
 {
-    // This is a read-write attribute
-
-    Q_D(const QUmlGeneralizationSet);
-    return d->isCovering;
+    return bool();
 }
 
 void QUmlGeneralizationSet::setCovering(bool isCovering)
 {
-    // This is a read-write attribute
-
-    Q_D(QUmlGeneralizationSet);
-    if (d->isCovering != isCovering) {
-        d->isCovering = isCovering;
-    }
-    d->modifiedResettableProperties << QString::fromLatin1("isCovering");
-}
-
-void QUmlGeneralizationSet::unsetCovering()
-{
-    setCovering(false);
-    Q_D(QUmlGeneralizationSet);
-    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isCovering"));
+    Q_UNUSED(isCovering);
 }
 
 /*!
@@ -121,135 +106,26 @@ void QUmlGeneralizationSet::unsetCovering()
  */
 bool QUmlGeneralizationSet::isDisjoint() const
 {
-    // This is a read-write attribute
-
-    Q_D(const QUmlGeneralizationSet);
-    return d->isDisjoint;
+    return bool();
 }
 
 void QUmlGeneralizationSet::setDisjoint(bool isDisjoint)
 {
-    // This is a read-write attribute
-
-    Q_D(QUmlGeneralizationSet);
-    if (d->isDisjoint != isDisjoint) {
-        d->isDisjoint = isDisjoint;
-    }
-    d->modifiedResettableProperties << QString::fromLatin1("isDisjoint");
+    Q_UNUSED(isDisjoint);
 }
-
-void QUmlGeneralizationSet::unsetDisjoint()
-{
-    setDisjoint(false);
-    Q_D(QUmlGeneralizationSet);
-    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isDisjoint"));
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlGeneralizationSet
-// ---------------------------------------------------------------
 
 /*!
     Designates the Classifier that is defined as the power type for the associated GeneralizationSet.
  */
 QUmlClassifier *QUmlGeneralizationSet::powertype() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlGeneralizationSet);
-    return d->powertype;
+    return 0;
 }
 
 void QUmlGeneralizationSet::setPowertype(QUmlClassifier *powertype)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlGeneralizationSet);
-    if (d->powertype != powertype) {
-        // Adjust opposite property
-        if (d->powertype)
-            d->powertype->removePowertypeExtent(this);
-
-        d->powertype = powertype;
-
-        // Adjust opposite property
-        if (powertype)
-            powertype->addPowertypeExtent(this);
-    }
-}
-
-/*!
-    Designates the instances of Generalization which are members of a given GeneralizationSet.
- */
-QSet<QUmlGeneralization *> QUmlGeneralizationSet::generalizations() const
-{
-    // This is a read-write association end
-
-    Q_D(const QUmlGeneralizationSet);
-    return d->generalizations;
-}
-
-void QUmlGeneralizationSet::addGeneralization(QUmlGeneralization *generalization)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlGeneralizationSet);
-    if (!d->generalizations.contains(generalization)) {
-        d->generalizations.insert(generalization);
-
-        // Adjust opposite property
-        generalization->addGeneralizationSet(this);
-    }
-}
-
-void QUmlGeneralizationSet::removeGeneralization(QUmlGeneralization *generalization)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlGeneralizationSet);
-    if (d->generalizations.contains(generalization)) {
-        d->generalizations.remove(generalization);
-
-        // Adjust opposite property
-        if (generalization)
-            generalization->removeGeneralizationSet(this);
-    }
-}
-
-void QUmlGeneralizationSet::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralizationSet")][QString::fromLatin1("isCovering")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralizationSet")][QString::fromLatin1("isCovering")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralizationSet")][QString::fromLatin1("isCovering")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Indicates (via the associated Generalizations) whether or not the set of specific Classifiers are covering for a particular general classifier. When isCovering is true, every instance of a particular general Classifier is also an instance of at least one of its specific Classifiers for the GeneralizationSet. When isCovering is false, there are one or more instances of the particular general Classifier that are not instances of at least one of its specific Classifiers defined for the GeneralizationSet.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralizationSet")][QString::fromLatin1("isCovering")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralizationSet")][QString::fromLatin1("isCovering")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralizationSet")][QString::fromLatin1("isCovering")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralizationSet")][QString::fromLatin1("isDisjoint")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralizationSet")][QString::fromLatin1("isDisjoint")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralizationSet")][QString::fromLatin1("isDisjoint")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Indicates whether or not the set of specific Classifiers in a Generalization relationship have instance in common. If isDisjoint is true, the specific Classifiers for a particular GeneralizationSet have no members in common; that is, their intersection is empty. If isDisjoint is false, the specific Classifiers in a particular GeneralizationSet have one or more members in common; that is, their intersection is not empty. For example, Person could have two Generalization relationships, each with the different specific Classifier: Manager or Staff. This would be disjoint because every instance of Person must either be a Manager or Staff. In contrast, Person could have two Generalization relationships involving two specific (and non-covering) Classifiers: Sales Person and Manager. This GeneralizationSet would not be disjoint because there are instances of Person which can be a Sales Person and a Manager.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralizationSet")][QString::fromLatin1("isDisjoint")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralizationSet")][QString::fromLatin1("isDisjoint")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralizationSet")][QString::fromLatin1("isDisjoint")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralizationSet")][QString::fromLatin1("powertype")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralizationSet")][QString::fromLatin1("powertype")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralizationSet")][QString::fromLatin1("powertype")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Designates the Classifier that is defined as the power type for the associated GeneralizationSet.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralizationSet")][QString::fromLatin1("powertype")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralizationSet")][QString::fromLatin1("powertype")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralizationSet")][QString::fromLatin1("powertype")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlClassifier::powertypeExtent");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralizationSet")][QString::fromLatin1("generalizations")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralizationSet")][QString::fromLatin1("generalizations")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralizationSet")][QString::fromLatin1("generalizations")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Designates the instances of Generalization which are members of a given GeneralizationSet.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralizationSet")][QString::fromLatin1("generalizations")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralizationSet")][QString::fromLatin1("generalizations")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlGeneralizationSet")][QString::fromLatin1("generalizations")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlGeneralization::generalizationSet");
-
-    QUmlPackageableElement::setPropertyData();
+    Q_UNUSED(powertype);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlgeneralizationset.cpp"
 

@@ -41,18 +41,10 @@
 #include "qumltype.h"
 #include "qumltype_p.h"
 
-#include <QtUml/QUmlPackage>
-
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlTypePrivate::QUmlTypePrivate() :
     package(0)
-{
-}
-
-QUmlTypePrivate::~QUmlTypePrivate()
 {
 }
 
@@ -64,82 +56,38 @@ QUmlTypePrivate::~QUmlTypePrivate()
     \brief A type is a named element that is used as the type for a typed element. A type can be contained in a package.A type constrains the values represented by a typed element.
  */
 
-QUmlType::QUmlType(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlPackageableElement(*new QUmlTypePrivate, wrapper, parent)
+QUmlType::QUmlType(bool create_d_ptr) :
+    QUmlPackageableElement(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlTypePrivate);
 }
 
-QUmlType::QUmlType(QUmlTypePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlPackageableElement(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlType::~QUmlType()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlType
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     Specifies the owning package of this classifier, if any.
  */
 QUmlPackage *QUmlType::package() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlType);
-    return d->package;
+    return 0;
 }
 
 void QUmlType::setPackage(QUmlPackage *package)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlType);
-    if (d->package != package) {
-        // Adjust opposite property
-        if (d->package)
-            d->package->removeOwnedType(this);
-
-        d->package = package;
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlNamedElementPrivate *>(d))->setNamespace_(qwrappedobject_cast<QUmlNamespace *>(package));
-
-        // Adjust opposite property
-        if (package)
-            package->addOwnedType(this);
-    }
+    Q_UNUSED(package);
 }
+
+// Operations
 
 /*!
     The query conformsTo() gives true for a type that conforms to another. By default, two types do not conform to each other. This query is intended to be redefined for specific conformance situations.
  */
-bool QUmlType::conformsTo(const QUmlType *other) const
+bool QUmlType::conformsTo(QUmlType *other) const
 {
-    qWarning("QUmlType::conformsTo: operation to be implemented");
     Q_UNUSED(other);
-
-    return bool(); // change here to your derived return
-}
-
-void QUmlType::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlType")][QString::fromLatin1("package")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlType")][QString::fromLatin1("package")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlType")][QString::fromLatin1("package")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the owning package of this classifier, if any.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlType")][QString::fromLatin1("package")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlType")][QString::fromLatin1("package")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlNamedElement::namespace");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlType")][QString::fromLatin1("package")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlPackage::ownedType");
-
-    QUmlPackageableElement::setPropertyData();
+    return bool ();
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumltype.cpp"
 

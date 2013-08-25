@@ -41,15 +41,9 @@
 #include "qumlprimitivetype.h"
 #include "qumlprimitivetype_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlPrimitiveTypePrivate::QUmlPrimitiveTypePrivate()
-{
-}
-
-QUmlPrimitiveTypePrivate::~QUmlPrimitiveTypePrivate()
 {
 }
 
@@ -61,28 +55,12 @@ QUmlPrimitiveTypePrivate::~QUmlPrimitiveTypePrivate()
     \brief A primitive type defines a predefined data type, without any relevant substructure (i.e., it has no parts in the context of UML). A primitive datatype may have an algebra and operations defined outside of UML, for example, mathematically.
  */
 
-QUmlPrimitiveType::QUmlPrimitiveType(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlDataType(*new QUmlPrimitiveTypePrivate, wrapper, parent)
+QUmlPrimitiveType::QUmlPrimitiveType(bool create_d_ptr) :
+    QUmlDataType(false)
 {
-    setPropertyData();
-}
-
-QUmlPrimitiveType::QUmlPrimitiveType(QUmlPrimitiveTypePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlDataType(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlPrimitiveType::~QUmlPrimitiveType()
-{
-}
-
-void QUmlPrimitiveType::setPropertyData()
-{
-    QUmlDataType::setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlPrimitiveTypePrivate);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlprimitivetype.cpp"
 

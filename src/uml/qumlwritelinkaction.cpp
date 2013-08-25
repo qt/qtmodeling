@@ -41,15 +41,9 @@
 #include "qumlwritelinkaction.h"
 #include "qumlwritelinkaction_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlWriteLinkActionPrivate::QUmlWriteLinkActionPrivate()
-{
-}
-
-QUmlWriteLinkActionPrivate::~QUmlWriteLinkActionPrivate()
 {
 }
 
@@ -61,28 +55,12 @@ QUmlWriteLinkActionPrivate::~QUmlWriteLinkActionPrivate()
     \brief WriteLinkAction is an abstract class for link actions that create and destroy links.
  */
 
-QUmlWriteLinkAction::QUmlWriteLinkAction(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlLinkAction(*new QUmlWriteLinkActionPrivate, wrapper, parent)
+QUmlWriteLinkAction::QUmlWriteLinkAction(bool create_d_ptr) :
+    QUmlLinkAction(false)
 {
-    setPropertyData();
-}
-
-QUmlWriteLinkAction::QUmlWriteLinkAction(QUmlWriteLinkActionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlLinkAction(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlWriteLinkAction::~QUmlWriteLinkAction()
-{
-}
-
-void QUmlWriteLinkAction::setPropertyData()
-{
-    QUmlLinkAction::setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlWriteLinkActionPrivate);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlwritelinkaction.cpp"
 

@@ -43,17 +43,11 @@
 
 #include <QtUml/QUmlExpansionRegion>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlExpansionNodePrivate::QUmlExpansionNodePrivate() :
-    regionAsOutput(0),
-    regionAsInput(0)
-{
-}
-
-QUmlExpansionNodePrivate::~QUmlExpansionNodePrivate()
+    regionAsInput(0),
+    regionAsOutput(0)
 {
 }
 
@@ -65,104 +59,40 @@ QUmlExpansionNodePrivate::~QUmlExpansionNodePrivate()
     \brief An expansion node is an object node used to indicate a flow across the boundary of an expansion region. A flow into a region contains a collection that is broken into its individual elements inside the region, which is executed once per element. A flow out of a region combines individual elements into a collection for use outside the region.
  */
 
-QUmlExpansionNode::QUmlExpansionNode(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlObjectNode(*new QUmlExpansionNodePrivate, wrapper, parent)
+QUmlExpansionNode::QUmlExpansionNode(bool create_d_ptr) :
+    QUmlObjectNode(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlExpansionNodePrivate);
 }
 
-QUmlExpansionNode::QUmlExpansionNode(QUmlExpansionNodePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlObjectNode(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlExpansionNode::~QUmlExpansionNode()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlExpansionNode
-// ---------------------------------------------------------------
-
-/*!
-    The expansion region for which the node is an output.
- */
-QUmlExpansionRegion *QUmlExpansionNode::regionAsOutput() const
-{
-    // This is a read-write association end
-
-    Q_D(const QUmlExpansionNode);
-    return d->regionAsOutput;
-}
-
-void QUmlExpansionNode::setRegionAsOutput(QUmlExpansionRegion *regionAsOutput)
-{
-    // This is a read-write association end
-
-    Q_D(QUmlExpansionNode);
-    if (d->regionAsOutput != regionAsOutput) {
-        // Adjust opposite property
-        if (d->regionAsOutput)
-            d->regionAsOutput->removeOutputElement(this);
-
-        d->regionAsOutput = regionAsOutput;
-
-        // Adjust opposite property
-        if (regionAsOutput)
-            regionAsOutput->addOutputElement(this);
-    }
-}
+// Owned attributes
 
 /*!
     The expansion region for which the node is an input.
  */
 QUmlExpansionRegion *QUmlExpansionNode::regionAsInput() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlExpansionNode);
-    return d->regionAsInput;
+    return 0;
 }
 
 void QUmlExpansionNode::setRegionAsInput(QUmlExpansionRegion *regionAsInput)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlExpansionNode);
-    if (d->regionAsInput != regionAsInput) {
-        // Adjust opposite property
-        if (d->regionAsInput)
-            d->regionAsInput->removeInputElement(this);
-
-        d->regionAsInput = regionAsInput;
-
-        // Adjust opposite property
-        if (regionAsInput)
-            regionAsInput->addInputElement(this);
-    }
+    Q_UNUSED(regionAsInput);
 }
 
-void QUmlExpansionNode::setPropertyData()
+/*!
+    The expansion region for which the node is an output.
+ */
+QUmlExpansionRegion *QUmlExpansionNode::regionAsOutput() const
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpansionNode")][QString::fromLatin1("regionAsOutput")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpansionNode")][QString::fromLatin1("regionAsOutput")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpansionNode")][QString::fromLatin1("regionAsOutput")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The expansion region for which the node is an output.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpansionNode")][QString::fromLatin1("regionAsOutput")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpansionNode")][QString::fromLatin1("regionAsOutput")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpansionNode")][QString::fromLatin1("regionAsOutput")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlExpansionRegion::outputElement");
+    return 0;
+}
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpansionNode")][QString::fromLatin1("regionAsInput")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpansionNode")][QString::fromLatin1("regionAsInput")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpansionNode")][QString::fromLatin1("regionAsInput")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The expansion region for which the node is an input.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpansionNode")][QString::fromLatin1("regionAsInput")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpansionNode")][QString::fromLatin1("regionAsInput")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlExpansionNode")][QString::fromLatin1("regionAsInput")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlExpansionRegion::inputElement");
-
-    QUmlObjectNode::setPropertyData();
+void QUmlExpansionNode::setRegionAsOutput(QUmlExpansionRegion *regionAsOutput)
+{
+    Q_UNUSED(regionAsOutput);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlexpansionnode.cpp"
 

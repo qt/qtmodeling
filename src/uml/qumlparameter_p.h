@@ -41,20 +41,10 @@
 #ifndef QUMLPARAMETER_P_H
 #define QUMLPARAMETER_P_H
 
-// Base class includes
-#include "private/qwrappedobject_p.h"
-#include "private/qumlmultiplicityelement_p.h"
-#include "private/qumlconnectableelement_p.h"
-
 #include "QtUml/QUmlParameter"
 
-// QtUml includes
-#include "QtUml/QtUmlNamespace"
-#include "QtUml/QtUmlNamespace"
-
-// Qt includes
-#include "QtCore/QString"
-#include "QtCore/QSet"
+#include "private/qumlmultiplicityelement_p.h"
+#include "private/qumlconnectableelement_p.h"
 
 QT_BEGIN_HEADER
 
@@ -62,27 +52,19 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlValueSpecification;
-class QUmlOperation;
-class QUmlParameterSet;
-class QUmlParameter;
-
-class Q_UML_EXPORT QUmlParameterPrivate : public QWrappedObjectPrivate
+class Q_UML_EXPORT QUmlParameterPrivate : public QUmlMultiplicityElementPrivate, public QUmlConnectableElementPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlParameter)
-
 public:
-    explicit QUmlParameterPrivate();
-    virtual ~QUmlParameterPrivate();
+    QUmlParameterPrivate();
 
-    bool isException;
-    QtUml::ParameterDirectionKind direction;
-    bool isStream;
-    QtUml::ParameterEffectKind effect;
-    QUmlOperation *operation;
+    QString default_;
     QUmlValueSpecification *defaultValue;
-    QSet<QUmlParameterSet *> parameterSets;
+    QtUml::ParameterDirectionKind direction;
+    QtUml::ParameterEffectKind effect;
+    bool isException;
+    bool isStream;
+    QUmlOperation *operation;
+    QSet<QUmlParameterSet *> parameterSet;
 };
 
 QT_END_NAMESPACE

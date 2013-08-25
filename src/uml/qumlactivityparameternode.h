@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlObjectNode>
 
 QT_BEGIN_HEADER
@@ -52,33 +51,17 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlParameter;
 
 class QUmlActivityParameterNodePrivate;
-
 class Q_UML_EXPORT QUmlActivityParameterNode : public QUmlObjectNode
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QUmlParameter * parameter READ parameter WRITE setParameter)
-
-    Q_DISABLE_COPY(QUmlActivityParameterNode)
-    Q_DECLARE_PRIVATE(QUmlActivityParameterNode)
-
 public:
-    Q_INVOKABLE explicit QUmlActivityParameterNode(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlActivityParameterNode();
+    QUmlActivityParameterNode(bool create_d_ptr = true);
 
-    // Association ends from QUmlActivityParameterNode
-    Q_INVOKABLE QUmlParameter *parameter() const;
-    Q_INVOKABLE void setParameter(QUmlParameter *parameter);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlActivityParameterNode(QUmlActivityParameterNodePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QUmlParameter *parameter() const;
+    void setParameter(QUmlParameter *parameter);
 };
 
 QT_END_NAMESPACE

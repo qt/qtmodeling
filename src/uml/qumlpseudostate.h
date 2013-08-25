@@ -43,10 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlVertex>
-
-// QtUml includes
 #include <QtUml/QtUmlNamespace>
 
 QT_BEGIN_HEADER
@@ -55,43 +52,22 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
 class QUmlState;
 class QUmlStateMachine;
 
 class QUmlPseudostatePrivate;
-
 class Q_UML_EXPORT QUmlPseudostate : public QUmlVertex
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_PROPERTY(QtUml::PseudostateKind kind READ kind WRITE setKind RESET unsetKind)
-    Q_PROPERTY(QUmlState * state READ state WRITE setState)
-    Q_PROPERTY(QUmlStateMachine * stateMachine READ stateMachine WRITE setStateMachine)
-
-    Q_DISABLE_COPY(QUmlPseudostate)
-    Q_DECLARE_PRIVATE(QUmlPseudostate)
-
 public:
-    Q_INVOKABLE explicit QUmlPseudostate(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlPseudostate();
+    QUmlPseudostate(bool create_d_ptr = true);
 
-    // Attributes from QUmlPseudostate
-    Q_INVOKABLE QtUml::PseudostateKind kind() const;
-    Q_INVOKABLE void setKind(QtUml::PseudostateKind kind);
-    Q_INVOKABLE void unsetKind();
-
-    // Association ends from QUmlPseudostate
-    Q_INVOKABLE QUmlState *state() const;
-    Q_INVOKABLE void setState(QUmlState *state);
-    Q_INVOKABLE QUmlStateMachine *stateMachine() const;
-    Q_INVOKABLE void setStateMachine(QUmlStateMachine *stateMachine);
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlPseudostate(QUmlPseudostatePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    // Owned attributes
+    QtUml::PseudostateKind kind() const;
+    void setKind(QtUml::PseudostateKind kind);
+    QUmlState *state() const;
+    void setState(QUmlState *state);
+    QUmlStateMachine *stateMachine() const;
+    void setStateMachine(QUmlStateMachine *stateMachine);
 };
 
 QT_END_NAMESPACE

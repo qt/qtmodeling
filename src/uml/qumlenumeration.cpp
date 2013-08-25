@@ -43,15 +43,9 @@
 
 #include <QtUml/QUmlEnumerationLiteral>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
 QUmlEnumerationPrivate::QUmlEnumerationPrivate()
-{
-}
-
-QUmlEnumerationPrivate::~QUmlEnumerationPrivate()
 {
 }
 
@@ -63,82 +57,32 @@ QUmlEnumerationPrivate::~QUmlEnumerationPrivate()
     \brief An enumeration is a data type whose values are enumerated in the model as enumeration literals.
  */
 
-QUmlEnumeration::QUmlEnumeration(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlDataType(*new QUmlEnumerationPrivate, wrapper, parent)
+QUmlEnumeration::QUmlEnumeration(bool create_d_ptr) :
+    QUmlDataType(false)
 {
-    setPropertyData();
+    if (create_d_ptr)
+        set_d_ptr(new QUmlEnumerationPrivate);
 }
 
-QUmlEnumeration::QUmlEnumeration(QUmlEnumerationPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QUmlDataType(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QUmlEnumeration::~QUmlEnumeration()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QUmlEnumeration
-// ---------------------------------------------------------------
+// Owned attributes
 
 /*!
     The ordered set of literals for this Enumeration.
  */
-QList<QUmlEnumerationLiteral *> QUmlEnumeration::ownedLiterals() const
+QList<QUmlEnumerationLiteral *> QUmlEnumeration::ownedLiteral() const
 {
-    // This is a read-write association end
-
-    Q_D(const QUmlEnumeration);
-    return d->ownedLiterals;
+    return QList<QUmlEnumerationLiteral *>();
 }
 
-void QUmlEnumeration::addOwnedLiteral(QUmlEnumerationLiteral *ownedLiteral)
+void QUmlEnumeration::addOwnedLiteral(QList<QUmlEnumerationLiteral *> ownedLiteral)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlEnumeration);
-    if (!d->ownedLiterals.contains(ownedLiteral)) {
-        d->ownedLiterals.append(ownedLiteral);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlNamespacePrivate *>(d))->addOwnedMember(qwrappedobject_cast<QUmlNamedElement *>(ownedLiteral));
-
-        // Adjust opposite property
-        ownedLiteral->setEnumeration(this);
-    }
+    Q_UNUSED(ownedLiteral);
 }
 
-void QUmlEnumeration::removeOwnedLiteral(QUmlEnumerationLiteral *ownedLiteral)
+void QUmlEnumeration::removeOwnedLiteral(QList<QUmlEnumerationLiteral *> ownedLiteral)
 {
-    // This is a read-write association end
-
-    Q_D(QUmlEnumeration);
-    if (d->ownedLiterals.contains(ownedLiteral)) {
-        d->ownedLiterals.removeAll(ownedLiteral);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QUmlNamespacePrivate *>(d))->removeOwnedMember(qwrappedobject_cast<QUmlNamedElement *>(ownedLiteral));
-
-        // Adjust opposite property
-        ownedLiteral->setEnumeration(0);
-    }
-}
-
-void QUmlEnumeration::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlEnumeration")][QString::fromLatin1("ownedLiterals")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlEnumeration")][QString::fromLatin1("ownedLiterals")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlEnumeration")][QString::fromLatin1("ownedLiterals")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The ordered set of literals for this Enumeration.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlEnumeration")][QString::fromLatin1("ownedLiterals")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlEnumeration")][QString::fromLatin1("ownedLiterals")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QUmlNamespace::ownedMembers");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QUmlEnumeration")][QString::fromLatin1("ownedLiterals")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QUmlEnumerationLiteral::enumeration");
-
-    QUmlDataType::setPropertyData();
+    Q_UNUSED(ownedLiteral);
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qumlenumeration.cpp"
 

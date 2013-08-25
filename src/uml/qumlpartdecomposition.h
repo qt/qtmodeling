@@ -43,7 +43,6 @@
 
 #include <QtUml/QtUmlGlobal>
 
-// Base class includes
 #include <QtUml/QUmlInteractionUse>
 
 QT_BEGIN_HEADER
@@ -51,25 +50,11 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
-
 class QUmlPartDecompositionPrivate;
-
 class Q_UML_EXPORT QUmlPartDecomposition : public QUmlInteractionUse
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QUml")
-
-    Q_DISABLE_COPY(QUmlPartDecomposition)
-    Q_DECLARE_PRIVATE(QUmlPartDecomposition)
-
 public:
-    Q_INVOKABLE explicit QUmlPartDecomposition(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QUmlPartDecomposition();
-
-    virtual void setPropertyData();
-
-protected:
-    explicit QUmlPartDecomposition(QUmlPartDecompositionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    QUmlPartDecomposition(bool create_d_ptr = true);
 };
 
 QT_END_NAMESPACE

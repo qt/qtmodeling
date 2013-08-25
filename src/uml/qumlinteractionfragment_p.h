@@ -41,13 +41,9 @@
 #ifndef QUMLINTERACTIONFRAGMENT_P_H
 #define QUMLINTERACTIONFRAGMENT_P_H
 
-// Base class includes
-#include "private/qumlnamedelement_p.h"
-
 #include "QtUml/QUmlInteractionFragment"
 
-// Qt includes
-#include "QtCore/QSet"
+#include "private/qumlnamedelement_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,24 +51,15 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlGeneralOrdering;
-class QUmlInteractionOperand;
-class QUmlLifeline;
-class QUmlInteraction;
-
-class Q_UML_EXPORT QUmlInteractionFragmentPrivate : public QUmlNamedElementPrivate
+class Q_UML_EXPORT QUmlInteractionFragmentPrivate : public virtual QUmlNamedElementPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlInteractionFragment)
-
 public:
-    explicit QUmlInteractionFragmentPrivate();
-    virtual ~QUmlInteractionFragmentPrivate();
+    QUmlInteractionFragmentPrivate();
 
-    QSet<QUmlGeneralOrdering *> generalOrderings;
-    QUmlInteraction *enclosingInteraction;
     QSet<QUmlLifeline *> covered;
+    QUmlInteraction *enclosingInteraction;
     QUmlInteractionOperand *enclosingOperand;
+    QSet<QUmlGeneralOrdering *> generalOrdering;
 };
 
 QT_END_NAMESPACE

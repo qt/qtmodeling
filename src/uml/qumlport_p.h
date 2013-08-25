@@ -41,13 +41,9 @@
 #ifndef QUMLPORT_P_H
 #define QUMLPORT_P_H
 
-// Base class includes
-#include "private/qumlproperty_p.h"
-
 #include "QtUml/QUmlPort"
 
-// Qt includes
-#include "QtCore/QSet"
+#include "private/qumlproperty_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,25 +51,18 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-// Forward decls for function parameters
-class QUmlProtocolStateMachine;
-class QUmlInterface;
-class QUmlPort;
-class QUmlPort;
-
 class Q_UML_EXPORT QUmlPortPrivate : public QUmlPropertyPrivate
 {
-    Q_DECLARE_PUBLIC(QUmlPort)
-
 public:
-    explicit QUmlPortPrivate();
-    virtual ~QUmlPortPrivate();
+    QUmlPortPrivate();
 
-    bool isConjugated;
     bool isBehavior;
+    bool isConjugated;
     bool isService;
     QUmlProtocolStateMachine *protocol;
-    QSet<QUmlPort *> redefinedPorts;
+    QSet<QUmlInterface *> provided;
+    QSet<QUmlPort *> redefinedPort;
+    QSet<QUmlInterface *> required;
 };
 
 QT_END_NAMESPACE
