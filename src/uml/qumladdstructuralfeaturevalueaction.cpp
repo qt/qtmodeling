@@ -66,19 +66,27 @@ QUmlAddStructuralFeatureValueAction::QUmlAddStructuralFeatureValueAction(bool cr
         set_d_ptr(new QUmlAddStructuralFeatureValueActionPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Gives the position at which to insert a new value or move an existing value in ordered structural features. The type of the pin is UnlimitedNatural, but the value cannot be zero. This pin is omitted for unordered structural features.
  */
 QUmlInputPin *QUmlAddStructuralFeatureValueAction::insertAt() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlAddStructuralFeatureValueAction);
+    return d->insertAt;
 }
 
 void QUmlAddStructuralFeatureValueAction::setInsertAt(QUmlInputPin *insertAt)
 {
-    Q_UNUSED(insertAt);
+    // This is a read-write association end
+
+    QM_D(QUmlAddStructuralFeatureValueAction);
+    if (d->insertAt != insertAt) {
+        d->insertAt = insertAt;
+    }
 }
 
 /*!
@@ -86,12 +94,20 @@ void QUmlAddStructuralFeatureValueAction::setInsertAt(QUmlInputPin *insertAt)
  */
 bool QUmlAddStructuralFeatureValueAction::isReplaceAll() const
 {
-    return bool();
+    // This is a read-write property
+
+    QM_D(const QUmlAddStructuralFeatureValueAction);
+    return d->isReplaceAll;
 }
 
 void QUmlAddStructuralFeatureValueAction::setReplaceAll(bool isReplaceAll)
 {
-    Q_UNUSED(isReplaceAll);
+    // This is a read-write property
+
+    QM_D(QUmlAddStructuralFeatureValueAction);
+    if (d->isReplaceAll != isReplaceAll) {
+        d->isReplaceAll = isReplaceAll;
+    }
 }
 
 QT_END_NAMESPACE

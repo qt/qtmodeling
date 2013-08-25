@@ -58,7 +58,6 @@ public:
 
     QUmlConstraint *postCondition;
     QUmlConstraint *preCondition;
-    QSet<QUmlOperation *> referred;
 };
 
 QT_END_NAMESPACE

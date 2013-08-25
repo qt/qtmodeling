@@ -65,19 +65,27 @@ QUmlDeploymentSpecification::QUmlDeploymentSpecification(bool create_d_ptr) :
         set_d_ptr(new QUmlDeploymentSpecificationPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The deployment with which the DeploymentSpecification is associated.
  */
 QUmlDeployment *QUmlDeploymentSpecification::deployment() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlDeploymentSpecification);
+    return d->deployment;
 }
 
 void QUmlDeploymentSpecification::setDeployment(QUmlDeployment *deployment)
 {
-    Q_UNUSED(deployment);
+    // This is a read-write association end
+
+    QM_D(QUmlDeploymentSpecification);
+    if (d->deployment != deployment) {
+        d->deployment = deployment;
+    }
 }
 
 /*!
@@ -85,12 +93,20 @@ void QUmlDeploymentSpecification::setDeployment(QUmlDeployment *deployment)
  */
 QString QUmlDeploymentSpecification::deploymentLocation() const
 {
-    return QString();
+    // This is a read-write property
+
+    QM_D(const QUmlDeploymentSpecification);
+    return d->deploymentLocation;
 }
 
 void QUmlDeploymentSpecification::setDeploymentLocation(QString deploymentLocation)
 {
-    Q_UNUSED(deploymentLocation);
+    // This is a read-write property
+
+    QM_D(QUmlDeploymentSpecification);
+    if (d->deploymentLocation != deploymentLocation) {
+        d->deploymentLocation = deploymentLocation;
+    }
 }
 
 /*!
@@ -98,12 +114,20 @@ void QUmlDeploymentSpecification::setDeploymentLocation(QString deploymentLocati
  */
 QString QUmlDeploymentSpecification::executionLocation() const
 {
-    return QString();
+    // This is a read-write property
+
+    QM_D(const QUmlDeploymentSpecification);
+    return d->executionLocation;
 }
 
 void QUmlDeploymentSpecification::setExecutionLocation(QString executionLocation)
 {
-    Q_UNUSED(executionLocation);
+    // This is a read-write property
+
+    QM_D(QUmlDeploymentSpecification);
+    if (d->executionLocation != executionLocation) {
+        d->executionLocation = executionLocation;
+    }
 }
 
 QT_END_NAMESPACE

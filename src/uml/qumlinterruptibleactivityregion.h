@@ -62,11 +62,11 @@ public:
 
     // Owned attributes
     QSet<QUmlActivityEdge *> interruptingEdge() const;
-    void addInterruptingEdge(QSet<QUmlActivityEdge *> interruptingEdge);
-    void removeInterruptingEdge(QSet<QUmlActivityEdge *> interruptingEdge);
+    void addInterruptingEdge(QUmlActivityEdge *interruptingEdge);
+    void removeInterruptingEdge(QUmlActivityEdge *interruptingEdge);
     QSet<QUmlActivityNode *> node() const;
-    void addNode(QSet<QUmlActivityNode *> node);
-    void removeNode(QSet<QUmlActivityNode *> node);
+    void addNode(QUmlActivityNode *node);
+    void removeNode(QUmlActivityNode *node);
 };
 
 QT_END_NAMESPACE

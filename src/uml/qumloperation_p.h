@@ -62,18 +62,13 @@ public:
     QUmlClass *class_;
     QUmlDataType *datatype;
     QUmlInterface *interface_;
-    bool isOrdered;
     bool isQuery;
-    bool isUnique;
-    int lower;
     QList<QUmlParameter *> ownedParameter;
     QSet<QUmlConstraint *> postcondition;
     QSet<QUmlConstraint *> precondition;
     QSet<QUmlType *> raisedException;
     QSet<QUmlOperation *> redefinedOperation;
     QUmlOperationTemplateParameter *templateParameter;
-    QUmlType *type;
-    int upper;
 };
 
 QT_END_NAMESPACE

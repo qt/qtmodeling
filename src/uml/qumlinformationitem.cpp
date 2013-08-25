@@ -62,24 +62,37 @@ QUmlInformationItem::QUmlInformationItem(bool create_d_ptr) :
         set_d_ptr(new QUmlInformationItemPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Determines the classifiers that will specify the structure and nature of the information. An information item represents all its represented classifiers.
  */
 QSet<QUmlClassifier *> QUmlInformationItem::represented() const
 {
-    return QSet<QUmlClassifier *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlInformationItem);
+    return d->represented;
 }
 
-void QUmlInformationItem::addRepresented(QSet<QUmlClassifier *> represented)
+void QUmlInformationItem::addRepresented(QUmlClassifier *represented)
 {
-    Q_UNUSED(represented);
+    // This is a read-write association end
+
+    QM_D(QUmlInformationItem);
+    if (!d->represented.contains(represented)) {
+        d->represented.insert(represented);
+    }
 }
 
-void QUmlInformationItem::removeRepresented(QSet<QUmlClassifier *> represented)
+void QUmlInformationItem::removeRepresented(QUmlClassifier *represented)
 {
-    Q_UNUSED(represented);
+    // This is a read-write association end
+
+    QM_D(QUmlInformationItem);
+    if (d->represented.contains(represented)) {
+        d->represented.remove(represented);
+    }
 }
 
 QT_END_NAMESPACE

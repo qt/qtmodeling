@@ -60,7 +60,6 @@ public:
     QString name;
     QUmlStringExpression *nameExpression;
     QUmlNamespace *namespace_;
-    QString qualifiedName;
     QtUml::VisibilityKind visibility;
 };
 

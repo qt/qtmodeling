@@ -67,19 +67,27 @@ QUmlDestroyObjectAction::QUmlDestroyObjectAction(bool create_d_ptr) :
         set_d_ptr(new QUmlDestroyObjectActionPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Specifies whether links in which the object participates are destroyed along with the object.
  */
 bool QUmlDestroyObjectAction::isDestroyLinks() const
 {
-    return bool();
+    // This is a read-write property
+
+    QM_D(const QUmlDestroyObjectAction);
+    return d->isDestroyLinks;
 }
 
 void QUmlDestroyObjectAction::setDestroyLinks(bool isDestroyLinks)
 {
-    Q_UNUSED(isDestroyLinks);
+    // This is a read-write property
+
+    QM_D(QUmlDestroyObjectAction);
+    if (d->isDestroyLinks != isDestroyLinks) {
+        d->isDestroyLinks = isDestroyLinks;
+    }
 }
 
 /*!
@@ -87,12 +95,20 @@ void QUmlDestroyObjectAction::setDestroyLinks(bool isDestroyLinks)
  */
 bool QUmlDestroyObjectAction::isDestroyOwnedObjects() const
 {
-    return bool();
+    // This is a read-write property
+
+    QM_D(const QUmlDestroyObjectAction);
+    return d->isDestroyOwnedObjects;
 }
 
 void QUmlDestroyObjectAction::setDestroyOwnedObjects(bool isDestroyOwnedObjects)
 {
-    Q_UNUSED(isDestroyOwnedObjects);
+    // This is a read-write property
+
+    QM_D(QUmlDestroyObjectAction);
+    if (d->isDestroyOwnedObjects != isDestroyOwnedObjects) {
+        d->isDestroyOwnedObjects = isDestroyOwnedObjects;
+    }
 }
 
 /*!
@@ -100,12 +116,20 @@ void QUmlDestroyObjectAction::setDestroyOwnedObjects(bool isDestroyOwnedObjects)
  */
 QUmlInputPin *QUmlDestroyObjectAction::target() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlDestroyObjectAction);
+    return d->target;
 }
 
 void QUmlDestroyObjectAction::setTarget(QUmlInputPin *target)
 {
-    Q_UNUSED(target);
+    // This is a read-write association end
+
+    QM_D(QUmlDestroyObjectAction);
+    if (d->target != target) {
+        d->target = target;
+    }
 }
 
 QT_END_NAMESPACE

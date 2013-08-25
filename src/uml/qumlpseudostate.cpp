@@ -68,19 +68,27 @@ QUmlPseudostate::QUmlPseudostate(bool create_d_ptr) :
         set_d_ptr(new QUmlPseudostatePrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Determines the precise type of the Pseudostate and can be one of: entryPoint, exitPoint, initial, deepHistory, shallowHistory, join, fork, junction, terminate or choice.
  */
 QtUml::PseudostateKind QUmlPseudostate::kind() const
 {
-    return QtUml::PseudostateKind();
+    // This is a read-write property
+
+    QM_D(const QUmlPseudostate);
+    return d->kind;
 }
 
 void QUmlPseudostate::setKind(QtUml::PseudostateKind kind)
 {
-    Q_UNUSED(kind);
+    // This is a read-write property
+
+    QM_D(QUmlPseudostate);
+    if (d->kind != kind) {
+        d->kind = kind;
+    }
 }
 
 /*!
@@ -88,12 +96,20 @@ void QUmlPseudostate::setKind(QtUml::PseudostateKind kind)
  */
 QUmlState *QUmlPseudostate::state() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlPseudostate);
+    return d->state;
 }
 
 void QUmlPseudostate::setState(QUmlState *state)
 {
-    Q_UNUSED(state);
+    // This is a read-write association end
+
+    QM_D(QUmlPseudostate);
+    if (d->state != state) {
+        d->state = state;
+    }
 }
 
 /*!
@@ -101,12 +117,20 @@ void QUmlPseudostate::setState(QUmlState *state)
  */
 QUmlStateMachine *QUmlPseudostate::stateMachine() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlPseudostate);
+    return d->stateMachine;
 }
 
 void QUmlPseudostate::setStateMachine(QUmlStateMachine *stateMachine)
 {
-    Q_UNUSED(stateMachine);
+    // This is a read-write association end
+
+    QM_D(QUmlPseudostate);
+    if (d->stateMachine != stateMachine) {
+        d->stateMachine = stateMachine;
+    }
 }
 
 QT_END_NAMESPACE

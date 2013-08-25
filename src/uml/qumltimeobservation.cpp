@@ -66,19 +66,27 @@ QUmlTimeObservation::QUmlTimeObservation(bool create_d_ptr) :
         set_d_ptr(new QUmlTimeObservationPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The observation is determined by the entering or exiting of the event element during execution.
  */
 QUmlNamedElement *QUmlTimeObservation::event() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlTimeObservation);
+    return d->event;
 }
 
 void QUmlTimeObservation::setEvent(QUmlNamedElement *event)
 {
-    Q_UNUSED(event);
+    // This is a read-write association end
+
+    QM_D(QUmlTimeObservation);
+    if (d->event != event) {
+        d->event = event;
+    }
 }
 
 /*!
@@ -86,12 +94,20 @@ void QUmlTimeObservation::setEvent(QUmlNamedElement *event)
  */
 bool QUmlTimeObservation::firstEvent() const
 {
-    return bool();
+    // This is a read-write property
+
+    QM_D(const QUmlTimeObservation);
+    return d->firstEvent;
 }
 
 void QUmlTimeObservation::setFirstEvent(bool firstEvent)
 {
-    Q_UNUSED(firstEvent);
+    // This is a read-write property
+
+    QM_D(QUmlTimeObservation);
+    if (d->firstEvent != firstEvent) {
+        d->firstEvent = firstEvent;
+    }
 }
 
 QT_END_NAMESPACE

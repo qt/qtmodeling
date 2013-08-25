@@ -62,11 +62,11 @@ public:
 
     // Owned attributes
     QList<QUmlTemplateParameter *> ownedParameter() const;
-    void addOwnedParameter(QList<QUmlTemplateParameter *> ownedParameter);
-    void removeOwnedParameter(QList<QUmlTemplateParameter *> ownedParameter);
+    void addOwnedParameter(QUmlTemplateParameter *ownedParameter);
+    void removeOwnedParameter(QUmlTemplateParameter *ownedParameter);
     QList<QUmlTemplateParameter *> parameter() const;
-    void addParameter(QList<QUmlTemplateParameter *> parameter);
-    void removeParameter(QList<QUmlTemplateParameter *> parameter);
+    void addParameter(QUmlTemplateParameter *parameter);
+    void removeParameter(QUmlTemplateParameter *parameter);
     QUmlTemplateableElement *template_() const;
     void setTemplate(QUmlTemplateableElement *template_);
 };

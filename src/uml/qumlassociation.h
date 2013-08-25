@@ -66,14 +66,14 @@ public:
     bool isDerived() const;
     void setDerived(bool isDerived);
     QList<QUmlProperty *> memberEnd() const;
-    void addMemberEnd(QList<QUmlProperty *> memberEnd);
-    void removeMemberEnd(QList<QUmlProperty *> memberEnd);
+    void addMemberEnd(QUmlProperty *memberEnd);
+    void removeMemberEnd(QUmlProperty *memberEnd);
     QSet<QUmlProperty *> navigableOwnedEnd() const;
-    void addNavigableOwnedEnd(QSet<QUmlProperty *> navigableOwnedEnd);
-    void removeNavigableOwnedEnd(QSet<QUmlProperty *> navigableOwnedEnd);
+    void addNavigableOwnedEnd(QUmlProperty *navigableOwnedEnd);
+    void removeNavigableOwnedEnd(QUmlProperty *navigableOwnedEnd);
     QList<QUmlProperty *> ownedEnd() const;
-    void addOwnedEnd(QList<QUmlProperty *> ownedEnd);
-    void removeOwnedEnd(QList<QUmlProperty *> ownedEnd);
+    void addOwnedEnd(QUmlProperty *ownedEnd);
+    void removeOwnedEnd(QUmlProperty *ownedEnd);
 };
 
 QT_END_NAMESPACE

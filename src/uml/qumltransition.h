@@ -84,8 +84,8 @@ public:
     QUmlVertex *target() const;
     void setTarget(QUmlVertex *target);
     QSet<QUmlTrigger *> trigger() const;
-    void addTrigger(QSet<QUmlTrigger *> trigger);
-    void removeTrigger(QSet<QUmlTrigger *> trigger);
+    void addTrigger(QUmlTrigger *trigger);
+    void removeTrigger(QUmlTrigger *trigger);
 
     // Operations
     QUmlStateMachine *containingStateMachine() const;

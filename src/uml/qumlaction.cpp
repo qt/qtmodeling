@@ -49,7 +49,6 @@
 QT_BEGIN_NAMESPACE
 
 QUmlActionPrivate::QUmlActionPrivate() :
-    context(0),
     isLocallyReentrant(false)
 {
 }
@@ -69,13 +68,17 @@ QUmlAction::QUmlAction(bool create_d_ptr) :
         set_d_ptr(new QUmlActionPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The classifier that owns the behavior of which this action is a part.
  */
 QUmlClassifier *QUmlAction::context() const
 {
+    // This is a read-only derived association end
+
+    qWarning("QUmlAction::context(): to be implemented (this is a derived association end)");
+
     return 0;
 }
 
@@ -84,7 +87,10 @@ QUmlClassifier *QUmlAction::context() const
  */
 QList<QUmlInputPin *> QUmlAction::input() const
 {
-    return QList<QUmlInputPin *>();
+    // This is a read-only derived union association end
+
+    QM_D(const QUmlAction);
+    return d->input;
 }
 
 /*!
@@ -92,12 +98,20 @@ QList<QUmlInputPin *> QUmlAction::input() const
  */
 bool QUmlAction::isLocallyReentrant() const
 {
-    return bool();
+    // This is a read-write property
+
+    QM_D(const QUmlAction);
+    return d->isLocallyReentrant;
 }
 
 void QUmlAction::setLocallyReentrant(bool isLocallyReentrant)
 {
-    Q_UNUSED(isLocallyReentrant);
+    // This is a read-write property
+
+    QM_D(QUmlAction);
+    if (d->isLocallyReentrant != isLocallyReentrant) {
+        d->isLocallyReentrant = isLocallyReentrant;
+    }
 }
 
 /*!
@@ -105,17 +119,30 @@ void QUmlAction::setLocallyReentrant(bool isLocallyReentrant)
  */
 QSet<QUmlConstraint *> QUmlAction::localPostcondition() const
 {
-    return QSet<QUmlConstraint *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlAction);
+    return d->localPostcondition;
 }
 
-void QUmlAction::addLocalPostcondition(QSet<QUmlConstraint *> localPostcondition)
+void QUmlAction::addLocalPostcondition(QUmlConstraint *localPostcondition)
 {
-    Q_UNUSED(localPostcondition);
+    // This is a read-write association end
+
+    QM_D(QUmlAction);
+    if (!d->localPostcondition.contains(localPostcondition)) {
+        d->localPostcondition.insert(localPostcondition);
+    }
 }
 
-void QUmlAction::removeLocalPostcondition(QSet<QUmlConstraint *> localPostcondition)
+void QUmlAction::removeLocalPostcondition(QUmlConstraint *localPostcondition)
 {
-    Q_UNUSED(localPostcondition);
+    // This is a read-write association end
+
+    QM_D(QUmlAction);
+    if (d->localPostcondition.contains(localPostcondition)) {
+        d->localPostcondition.remove(localPostcondition);
+    }
 }
 
 /*!
@@ -123,17 +150,30 @@ void QUmlAction::removeLocalPostcondition(QSet<QUmlConstraint *> localPostcondit
  */
 QSet<QUmlConstraint *> QUmlAction::localPrecondition() const
 {
-    return QSet<QUmlConstraint *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlAction);
+    return d->localPrecondition;
 }
 
-void QUmlAction::addLocalPrecondition(QSet<QUmlConstraint *> localPrecondition)
+void QUmlAction::addLocalPrecondition(QUmlConstraint *localPrecondition)
 {
-    Q_UNUSED(localPrecondition);
+    // This is a read-write association end
+
+    QM_D(QUmlAction);
+    if (!d->localPrecondition.contains(localPrecondition)) {
+        d->localPrecondition.insert(localPrecondition);
+    }
 }
 
-void QUmlAction::removeLocalPrecondition(QSet<QUmlConstraint *> localPrecondition)
+void QUmlAction::removeLocalPrecondition(QUmlConstraint *localPrecondition)
 {
-    Q_UNUSED(localPrecondition);
+    // This is a read-write association end
+
+    QM_D(QUmlAction);
+    if (d->localPrecondition.contains(localPrecondition)) {
+        d->localPrecondition.remove(localPrecondition);
+    }
 }
 
 /*!
@@ -141,7 +181,10 @@ void QUmlAction::removeLocalPrecondition(QSet<QUmlConstraint *> localPreconditio
  */
 QList<QUmlOutputPin *> QUmlAction::output() const
 {
-    return QList<QUmlOutputPin *>();
+    // This is a read-only derived union association end
+
+    QM_D(const QUmlAction);
+    return d->output;
 }
 
 QT_END_NAMESPACE

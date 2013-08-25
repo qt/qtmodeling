@@ -65,24 +65,37 @@ QUmlParameterSet::QUmlParameterSet(bool create_d_ptr) :
         set_d_ptr(new QUmlParameterSetPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Constraint that should be satisfied for the owner of the parameters in an input parameter set to start execution using the values provided for those parameters, or the owner of the parameters in an output parameter set to end execution providing the values for those parameters, if all preconditions and conditions on input parameter sets were satisfied.
  */
 QSet<QUmlConstraint *> QUmlParameterSet::condition() const
 {
-    return QSet<QUmlConstraint *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlParameterSet);
+    return d->condition;
 }
 
-void QUmlParameterSet::addCondition(QSet<QUmlConstraint *> condition)
+void QUmlParameterSet::addCondition(QUmlConstraint *condition)
 {
-    Q_UNUSED(condition);
+    // This is a read-write association end
+
+    QM_D(QUmlParameterSet);
+    if (!d->condition.contains(condition)) {
+        d->condition.insert(condition);
+    }
 }
 
-void QUmlParameterSet::removeCondition(QSet<QUmlConstraint *> condition)
+void QUmlParameterSet::removeCondition(QUmlConstraint *condition)
 {
-    Q_UNUSED(condition);
+    // This is a read-write association end
+
+    QM_D(QUmlParameterSet);
+    if (d->condition.contains(condition)) {
+        d->condition.remove(condition);
+    }
 }
 
 /*!
@@ -90,17 +103,30 @@ void QUmlParameterSet::removeCondition(QSet<QUmlConstraint *> condition)
  */
 QSet<QUmlParameter *> QUmlParameterSet::parameter() const
 {
-    return QSet<QUmlParameter *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlParameterSet);
+    return d->parameter;
 }
 
-void QUmlParameterSet::addParameter(QSet<QUmlParameter *> parameter)
+void QUmlParameterSet::addParameter(QUmlParameter *parameter)
 {
-    Q_UNUSED(parameter);
+    // This is a read-write association end
+
+    QM_D(QUmlParameterSet);
+    if (!d->parameter.contains(parameter)) {
+        d->parameter.insert(parameter);
+    }
 }
 
-void QUmlParameterSet::removeParameter(QSet<QUmlParameter *> parameter)
+void QUmlParameterSet::removeParameter(QUmlParameter *parameter)
 {
-    Q_UNUSED(parameter);
+    // This is a read-write association end
+
+    QM_D(QUmlParameterSet);
+    if (d->parameter.contains(parameter)) {
+        d->parameter.remove(parameter);
+    }
 }
 
 QT_END_NAMESPACE

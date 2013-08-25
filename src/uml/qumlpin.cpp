@@ -64,19 +64,27 @@ QUmlPin::QUmlPin(bool create_d_ptr) :
         set_d_ptr(new QUmlPinPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Tells whether the pins provide data to the actions, or just controls when it executes it.
  */
 bool QUmlPin::isControl() const
 {
-    return bool();
+    // This is a read-write property
+
+    QM_D(const QUmlPin);
+    return d->isControl;
 }
 
 void QUmlPin::setControl(bool isControl)
 {
-    Q_UNUSED(isControl);
+    // This is a read-write property
+
+    QM_D(QUmlPin);
+    if (d->isControl != isControl) {
+        d->isControl = isControl;
+    }
 }
 
 QT_END_NAMESPACE

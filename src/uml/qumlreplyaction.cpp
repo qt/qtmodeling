@@ -67,19 +67,27 @@ QUmlReplyAction::QUmlReplyAction(bool create_d_ptr) :
         set_d_ptr(new QUmlReplyActionPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The trigger specifying the operation whose call is being replied to.
  */
 QUmlTrigger *QUmlReplyAction::replyToCall() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlReplyAction);
+    return d->replyToCall;
 }
 
 void QUmlReplyAction::setReplyToCall(QUmlTrigger *replyToCall)
 {
-    Q_UNUSED(replyToCall);
+    // This is a read-write association end
+
+    QM_D(QUmlReplyAction);
+    if (d->replyToCall != replyToCall) {
+        d->replyToCall = replyToCall;
+    }
 }
 
 /*!
@@ -87,17 +95,30 @@ void QUmlReplyAction::setReplyToCall(QUmlTrigger *replyToCall)
  */
 QSet<QUmlInputPin *> QUmlReplyAction::replyValue() const
 {
-    return QSet<QUmlInputPin *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlReplyAction);
+    return d->replyValue;
 }
 
-void QUmlReplyAction::addReplyValue(QSet<QUmlInputPin *> replyValue)
+void QUmlReplyAction::addReplyValue(QUmlInputPin *replyValue)
 {
-    Q_UNUSED(replyValue);
+    // This is a read-write association end
+
+    QM_D(QUmlReplyAction);
+    if (!d->replyValue.contains(replyValue)) {
+        d->replyValue.insert(replyValue);
+    }
 }
 
-void QUmlReplyAction::removeReplyValue(QSet<QUmlInputPin *> replyValue)
+void QUmlReplyAction::removeReplyValue(QUmlInputPin *replyValue)
 {
-    Q_UNUSED(replyValue);
+    // This is a read-write association end
+
+    QM_D(QUmlReplyAction);
+    if (d->replyValue.contains(replyValue)) {
+        d->replyValue.remove(replyValue);
+    }
 }
 
 /*!
@@ -105,12 +126,20 @@ void QUmlReplyAction::removeReplyValue(QSet<QUmlInputPin *> replyValue)
  */
 QUmlInputPin *QUmlReplyAction::returnInformation() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlReplyAction);
+    return d->returnInformation;
 }
 
 void QUmlReplyAction::setReturnInformation(QUmlInputPin *returnInformation)
 {
-    Q_UNUSED(returnInformation);
+    // This is a read-write association end
+
+    QM_D(QUmlReplyAction);
+    if (d->returnInformation != returnInformation) {
+        d->returnInformation = returnInformation;
+    }
 }
 
 QT_END_NAMESPACE

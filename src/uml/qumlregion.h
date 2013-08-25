@@ -73,11 +73,11 @@ public:
     QUmlStateMachine *stateMachine() const;
     void setStateMachine(QUmlStateMachine *stateMachine);
     QSet<QUmlVertex *> subvertex() const;
-    void addSubvertex(QSet<QUmlVertex *> subvertex);
-    void removeSubvertex(QSet<QUmlVertex *> subvertex);
+    void addSubvertex(QUmlVertex *subvertex);
+    void removeSubvertex(QUmlVertex *subvertex);
     QSet<QUmlTransition *> transition() const;
-    void addTransition(QSet<QUmlTransition *> transition);
-    void removeTransition(QSet<QUmlTransition *> transition);
+    void addTransition(QUmlTransition *transition);
+    void removeTransition(QUmlTransition *transition);
 
     // Operations
     bool belongsToPSM() const;

@@ -50,6 +50,7 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
+
 class QUmlCommentPrivate;
 class Q_UML_EXPORT QUmlComment : public QUmlElement
 {
@@ -58,8 +59,8 @@ public:
 
     // Owned attributes
     QSet<QUmlElement *> annotatedElement() const;
-    void addAnnotatedElement(QSet<QUmlElement *> annotatedElement);
-    void removeAnnotatedElement(QSet<QUmlElement *> annotatedElement);
+    void addAnnotatedElement(QUmlElement *annotatedElement);
+    void removeAnnotatedElement(QUmlElement *annotatedElement);
     QString body() const;
     void setBody(QString body);
 };

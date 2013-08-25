@@ -65,19 +65,27 @@ QUmlCallBehaviorAction::QUmlCallBehaviorAction(bool create_d_ptr) :
         set_d_ptr(new QUmlCallBehaviorActionPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The invoked behavior. It must be capable of accepting and returning control.
  */
 QUmlBehavior *QUmlCallBehaviorAction::behavior() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlCallBehaviorAction);
+    return d->behavior;
 }
 
 void QUmlCallBehaviorAction::setBehavior(QUmlBehavior *behavior)
 {
-    Q_UNUSED(behavior);
+    // This is a read-write association end
+
+    QM_D(QUmlCallBehaviorAction);
+    if (d->behavior != behavior) {
+        d->behavior = behavior;
+    }
 }
 
 QT_END_NAMESPACE

@@ -65,24 +65,37 @@ QUmlElement::QUmlElement(bool create_d_ptr) :
         set_d_ptr(new QUmlElementPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The Comments owned by this element.
  */
 QSet<QUmlComment *> QUmlElement::ownedComment() const
 {
-    return QSet<QUmlComment *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlElement);
+    return d->ownedComment;
 }
 
-void QUmlElement::addOwnedComment(QSet<QUmlComment *> ownedComment)
+void QUmlElement::addOwnedComment(QUmlComment *ownedComment)
 {
-    Q_UNUSED(ownedComment);
+    // This is a read-write association end
+
+    QM_D(QUmlElement);
+    if (!d->ownedComment.contains(ownedComment)) {
+        d->ownedComment.insert(ownedComment);
+    }
 }
 
-void QUmlElement::removeOwnedComment(QSet<QUmlComment *> ownedComment)
+void QUmlElement::removeOwnedComment(QUmlComment *ownedComment)
 {
-    Q_UNUSED(ownedComment);
+    // This is a read-write association end
+
+    QM_D(QUmlElement);
+    if (d->ownedComment.contains(ownedComment)) {
+        d->ownedComment.remove(ownedComment);
+    }
 }
 
 /*!
@@ -90,7 +103,10 @@ void QUmlElement::removeOwnedComment(QSet<QUmlComment *> ownedComment)
  */
 QSet<QUmlElement *> QUmlElement::ownedElement() const
 {
-    return QSet<QUmlElement *>();
+    // This is a read-only derived union association end
+
+    QM_D(const QUmlElement);
+    return d->ownedElement;
 }
 
 /*!
@@ -98,10 +114,13 @@ QSet<QUmlElement *> QUmlElement::ownedElement() const
  */
 QUmlElement *QUmlElement::owner() const
 {
-    return 0;
+    // This is a read-only derived union association end
+
+    QM_D(const QUmlElement);
+    return d->owner;
 }
 
-// Operations
+// OPERATIONS
 
 /*!
     The query allOwnedElements() gives all of the direct and indirect owned elements of an element.

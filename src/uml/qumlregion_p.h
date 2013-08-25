@@ -58,7 +58,6 @@ public:
     QUmlRegionPrivate();
 
     QUmlRegion *extendedRegion;
-    QUmlClassifier *redefinitionContext;
     QUmlState *state;
     QUmlStateMachine *stateMachine;
     QSet<QUmlVertex *> subvertex;

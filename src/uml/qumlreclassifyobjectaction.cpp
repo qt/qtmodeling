@@ -67,19 +67,27 @@ QUmlReclassifyObjectAction::QUmlReclassifyObjectAction(bool create_d_ptr) :
         set_d_ptr(new QUmlReclassifyObjectActionPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Specifies whether existing classifiers should be removed before adding the new classifiers.
  */
 bool QUmlReclassifyObjectAction::isReplaceAll() const
 {
-    return bool();
+    // This is a read-write property
+
+    QM_D(const QUmlReclassifyObjectAction);
+    return d->isReplaceAll;
 }
 
 void QUmlReclassifyObjectAction::setReplaceAll(bool isReplaceAll)
 {
-    Q_UNUSED(isReplaceAll);
+    // This is a read-write property
+
+    QM_D(QUmlReclassifyObjectAction);
+    if (d->isReplaceAll != isReplaceAll) {
+        d->isReplaceAll = isReplaceAll;
+    }
 }
 
 /*!
@@ -87,17 +95,30 @@ void QUmlReclassifyObjectAction::setReplaceAll(bool isReplaceAll)
  */
 QSet<QUmlClassifier *> QUmlReclassifyObjectAction::newClassifier() const
 {
-    return QSet<QUmlClassifier *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlReclassifyObjectAction);
+    return d->newClassifier;
 }
 
-void QUmlReclassifyObjectAction::addNewClassifier(QSet<QUmlClassifier *> newClassifier)
+void QUmlReclassifyObjectAction::addNewClassifier(QUmlClassifier *newClassifier)
 {
-    Q_UNUSED(newClassifier);
+    // This is a read-write association end
+
+    QM_D(QUmlReclassifyObjectAction);
+    if (!d->newClassifier.contains(newClassifier)) {
+        d->newClassifier.insert(newClassifier);
+    }
 }
 
-void QUmlReclassifyObjectAction::removeNewClassifier(QSet<QUmlClassifier *> newClassifier)
+void QUmlReclassifyObjectAction::removeNewClassifier(QUmlClassifier *newClassifier)
 {
-    Q_UNUSED(newClassifier);
+    // This is a read-write association end
+
+    QM_D(QUmlReclassifyObjectAction);
+    if (d->newClassifier.contains(newClassifier)) {
+        d->newClassifier.remove(newClassifier);
+    }
 }
 
 /*!
@@ -105,12 +126,20 @@ void QUmlReclassifyObjectAction::removeNewClassifier(QSet<QUmlClassifier *> newC
  */
 QUmlInputPin *QUmlReclassifyObjectAction::object() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlReclassifyObjectAction);
+    return d->object;
 }
 
 void QUmlReclassifyObjectAction::setObject(QUmlInputPin *object)
 {
-    Q_UNUSED(object);
+    // This is a read-write association end
+
+    QM_D(QUmlReclassifyObjectAction);
+    if (d->object != object) {
+        d->object = object;
+    }
 }
 
 /*!
@@ -118,17 +147,30 @@ void QUmlReclassifyObjectAction::setObject(QUmlInputPin *object)
  */
 QSet<QUmlClassifier *> QUmlReclassifyObjectAction::oldClassifier() const
 {
-    return QSet<QUmlClassifier *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlReclassifyObjectAction);
+    return d->oldClassifier;
 }
 
-void QUmlReclassifyObjectAction::addOldClassifier(QSet<QUmlClassifier *> oldClassifier)
+void QUmlReclassifyObjectAction::addOldClassifier(QUmlClassifier *oldClassifier)
 {
-    Q_UNUSED(oldClassifier);
+    // This is a read-write association end
+
+    QM_D(QUmlReclassifyObjectAction);
+    if (!d->oldClassifier.contains(oldClassifier)) {
+        d->oldClassifier.insert(oldClassifier);
+    }
 }
 
-void QUmlReclassifyObjectAction::removeOldClassifier(QSet<QUmlClassifier *> oldClassifier)
+void QUmlReclassifyObjectAction::removeOldClassifier(QUmlClassifier *oldClassifier)
 {
-    Q_UNUSED(oldClassifier);
+    // This is a read-write association end
+
+    QM_D(QUmlReclassifyObjectAction);
+    if (d->oldClassifier.contains(oldClassifier)) {
+        d->oldClassifier.remove(oldClassifier);
+    }
 }
 
 QT_END_NAMESPACE

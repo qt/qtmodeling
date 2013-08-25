@@ -50,6 +50,7 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
+
 class QUmlClearVariableActionPrivate;
 class Q_UML_EXPORT QUmlClearVariableAction : public QUmlVariableAction
 {

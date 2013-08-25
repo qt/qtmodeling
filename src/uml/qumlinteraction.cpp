@@ -68,24 +68,37 @@ QUmlInteraction::QUmlInteraction(bool create_d_ptr) :
         set_d_ptr(new QUmlInteractionPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Actions owned by the Interaction.
  */
 QSet<QUmlAction *> QUmlInteraction::action() const
 {
-    return QSet<QUmlAction *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlInteraction);
+    return d->action;
 }
 
-void QUmlInteraction::addAction(QSet<QUmlAction *> action)
+void QUmlInteraction::addAction(QUmlAction *action)
 {
-    Q_UNUSED(action);
+    // This is a read-write association end
+
+    QM_D(QUmlInteraction);
+    if (!d->action.contains(action)) {
+        d->action.insert(action);
+    }
 }
 
-void QUmlInteraction::removeAction(QSet<QUmlAction *> action)
+void QUmlInteraction::removeAction(QUmlAction *action)
 {
-    Q_UNUSED(action);
+    // This is a read-write association end
+
+    QM_D(QUmlInteraction);
+    if (d->action.contains(action)) {
+        d->action.remove(action);
+    }
 }
 
 /*!
@@ -93,17 +106,30 @@ void QUmlInteraction::removeAction(QSet<QUmlAction *> action)
  */
 QSet<QUmlGate *> QUmlInteraction::formalGate() const
 {
-    return QSet<QUmlGate *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlInteraction);
+    return d->formalGate;
 }
 
-void QUmlInteraction::addFormalGate(QSet<QUmlGate *> formalGate)
+void QUmlInteraction::addFormalGate(QUmlGate *formalGate)
 {
-    Q_UNUSED(formalGate);
+    // This is a read-write association end
+
+    QM_D(QUmlInteraction);
+    if (!d->formalGate.contains(formalGate)) {
+        d->formalGate.insert(formalGate);
+    }
 }
 
-void QUmlInteraction::removeFormalGate(QSet<QUmlGate *> formalGate)
+void QUmlInteraction::removeFormalGate(QUmlGate *formalGate)
 {
-    Q_UNUSED(formalGate);
+    // This is a read-write association end
+
+    QM_D(QUmlInteraction);
+    if (d->formalGate.contains(formalGate)) {
+        d->formalGate.remove(formalGate);
+    }
 }
 
 /*!
@@ -111,17 +137,30 @@ void QUmlInteraction::removeFormalGate(QSet<QUmlGate *> formalGate)
  */
 QList<QUmlInteractionFragment *> QUmlInteraction::fragment() const
 {
-    return QList<QUmlInteractionFragment *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlInteraction);
+    return d->fragment;
 }
 
-void QUmlInteraction::addFragment(QList<QUmlInteractionFragment *> fragment)
+void QUmlInteraction::addFragment(QUmlInteractionFragment *fragment)
 {
-    Q_UNUSED(fragment);
+    // This is a read-write association end
+
+    QM_D(QUmlInteraction);
+    if (!d->fragment.contains(fragment)) {
+        d->fragment.append(fragment);
+    }
 }
 
-void QUmlInteraction::removeFragment(QList<QUmlInteractionFragment *> fragment)
+void QUmlInteraction::removeFragment(QUmlInteractionFragment *fragment)
 {
-    Q_UNUSED(fragment);
+    // This is a read-write association end
+
+    QM_D(QUmlInteraction);
+    if (d->fragment.contains(fragment)) {
+        d->fragment.removeAll(fragment);
+    }
 }
 
 /*!
@@ -129,17 +168,30 @@ void QUmlInteraction::removeFragment(QList<QUmlInteractionFragment *> fragment)
  */
 QSet<QUmlLifeline *> QUmlInteraction::lifeline() const
 {
-    return QSet<QUmlLifeline *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlInteraction);
+    return d->lifeline;
 }
 
-void QUmlInteraction::addLifeline(QSet<QUmlLifeline *> lifeline)
+void QUmlInteraction::addLifeline(QUmlLifeline *lifeline)
 {
-    Q_UNUSED(lifeline);
+    // This is a read-write association end
+
+    QM_D(QUmlInteraction);
+    if (!d->lifeline.contains(lifeline)) {
+        d->lifeline.insert(lifeline);
+    }
 }
 
-void QUmlInteraction::removeLifeline(QSet<QUmlLifeline *> lifeline)
+void QUmlInteraction::removeLifeline(QUmlLifeline *lifeline)
 {
-    Q_UNUSED(lifeline);
+    // This is a read-write association end
+
+    QM_D(QUmlInteraction);
+    if (d->lifeline.contains(lifeline)) {
+        d->lifeline.remove(lifeline);
+    }
 }
 
 /*!
@@ -147,17 +199,30 @@ void QUmlInteraction::removeLifeline(QSet<QUmlLifeline *> lifeline)
  */
 QSet<QUmlMessage *> QUmlInteraction::message() const
 {
-    return QSet<QUmlMessage *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlInteraction);
+    return d->message;
 }
 
-void QUmlInteraction::addMessage(QSet<QUmlMessage *> message)
+void QUmlInteraction::addMessage(QUmlMessage *message)
 {
-    Q_UNUSED(message);
+    // This is a read-write association end
+
+    QM_D(QUmlInteraction);
+    if (!d->message.contains(message)) {
+        d->message.insert(message);
+    }
 }
 
-void QUmlInteraction::removeMessage(QSet<QUmlMessage *> message)
+void QUmlInteraction::removeMessage(QUmlMessage *message)
 {
-    Q_UNUSED(message);
+    // This is a read-write association end
+
+    QM_D(QUmlInteraction);
+    if (d->message.contains(message)) {
+        d->message.remove(message);
+    }
 }
 
 QT_END_NAMESPACE

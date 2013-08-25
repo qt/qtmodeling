@@ -68,24 +68,37 @@ QUmlGeneralizationSet::QUmlGeneralizationSet(bool create_d_ptr) :
         set_d_ptr(new QUmlGeneralizationSetPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Designates the instances of Generalization which are members of a given GeneralizationSet.
  */
 QSet<QUmlGeneralization *> QUmlGeneralizationSet::generalization() const
 {
-    return QSet<QUmlGeneralization *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlGeneralizationSet);
+    return d->generalization;
 }
 
-void QUmlGeneralizationSet::addGeneralization(QSet<QUmlGeneralization *> generalization)
+void QUmlGeneralizationSet::addGeneralization(QUmlGeneralization *generalization)
 {
-    Q_UNUSED(generalization);
+    // This is a read-write association end
+
+    QM_D(QUmlGeneralizationSet);
+    if (!d->generalization.contains(generalization)) {
+        d->generalization.insert(generalization);
+    }
 }
 
-void QUmlGeneralizationSet::removeGeneralization(QSet<QUmlGeneralization *> generalization)
+void QUmlGeneralizationSet::removeGeneralization(QUmlGeneralization *generalization)
 {
-    Q_UNUSED(generalization);
+    // This is a read-write association end
+
+    QM_D(QUmlGeneralizationSet);
+    if (d->generalization.contains(generalization)) {
+        d->generalization.remove(generalization);
+    }
 }
 
 /*!
@@ -93,12 +106,20 @@ void QUmlGeneralizationSet::removeGeneralization(QSet<QUmlGeneralization *> gene
  */
 bool QUmlGeneralizationSet::isCovering() const
 {
-    return bool();
+    // This is a read-write property
+
+    QM_D(const QUmlGeneralizationSet);
+    return d->isCovering;
 }
 
 void QUmlGeneralizationSet::setCovering(bool isCovering)
 {
-    Q_UNUSED(isCovering);
+    // This is a read-write property
+
+    QM_D(QUmlGeneralizationSet);
+    if (d->isCovering != isCovering) {
+        d->isCovering = isCovering;
+    }
 }
 
 /*!
@@ -106,12 +127,20 @@ void QUmlGeneralizationSet::setCovering(bool isCovering)
  */
 bool QUmlGeneralizationSet::isDisjoint() const
 {
-    return bool();
+    // This is a read-write property
+
+    QM_D(const QUmlGeneralizationSet);
+    return d->isDisjoint;
 }
 
 void QUmlGeneralizationSet::setDisjoint(bool isDisjoint)
 {
-    Q_UNUSED(isDisjoint);
+    // This is a read-write property
+
+    QM_D(QUmlGeneralizationSet);
+    if (d->isDisjoint != isDisjoint) {
+        d->isDisjoint = isDisjoint;
+    }
 }
 
 /*!
@@ -119,12 +148,20 @@ void QUmlGeneralizationSet::setDisjoint(bool isDisjoint)
  */
 QUmlClassifier *QUmlGeneralizationSet::powertype() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlGeneralizationSet);
+    return d->powertype;
 }
 
 void QUmlGeneralizationSet::setPowertype(QUmlClassifier *powertype)
 {
-    Q_UNUSED(powertype);
+    // This is a read-write association end
+
+    QM_D(QUmlGeneralizationSet);
+    if (d->powertype != powertype) {
+        d->powertype = powertype;
+    }
 }
 
 QT_END_NAMESPACE

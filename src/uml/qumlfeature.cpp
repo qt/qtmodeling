@@ -65,14 +65,17 @@ QUmlFeature::QUmlFeature(bool create_d_ptr) :
         set_d_ptr(new QUmlFeaturePrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The Classifiers that have this Feature as a feature.
  */
 QSet<QUmlClassifier *> QUmlFeature::featuringClassifier() const
 {
-    return QSet<QUmlClassifier *>();
+    // This is a read-only derived union association end
+
+    QM_D(const QUmlFeature);
+    return d->featuringClassifier;
 }
 
 /*!
@@ -80,12 +83,20 @@ QSet<QUmlClassifier *> QUmlFeature::featuringClassifier() const
  */
 bool QUmlFeature::isStatic() const
 {
-    return bool();
+    // This is a read-write property
+
+    QM_D(const QUmlFeature);
+    return d->isStatic;
 }
 
 void QUmlFeature::setStatic(bool isStatic)
 {
-    Q_UNUSED(isStatic);
+    // This is a read-write property
+
+    QM_D(QUmlFeature);
+    if (d->isStatic != isStatic) {
+        d->isStatic = isStatic;
+    }
 }
 
 QT_END_NAMESPACE

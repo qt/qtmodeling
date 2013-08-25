@@ -62,19 +62,27 @@ QUmlImage::QUmlImage(bool create_d_ptr) :
         set_d_ptr(new QUmlImagePrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     This contains the serialization of the image according to the format. The value could represent a bitmap, image such as a GIF file, or drawing 'instructions' using a standard such as Scalable Vector Graphic (SVG) (which is XML based).
  */
 QString QUmlImage::content() const
 {
-    return QString();
+    // This is a read-write property
+
+    QM_D(const QUmlImage);
+    return d->content;
 }
 
 void QUmlImage::setContent(QString content)
 {
-    Q_UNUSED(content);
+    // This is a read-write property
+
+    QM_D(QUmlImage);
+    if (d->content != content) {
+        d->content = content;
+    }
 }
 
 /*!
@@ -82,12 +90,20 @@ void QUmlImage::setContent(QString content)
  */
 QString QUmlImage::format() const
 {
-    return QString();
+    // This is a read-write property
+
+    QM_D(const QUmlImage);
+    return d->format;
 }
 
 void QUmlImage::setFormat(QString format)
 {
-    Q_UNUSED(format);
+    // This is a read-write property
+
+    QM_D(QUmlImage);
+    if (d->format != format) {
+        d->format = format;
+    }
 }
 
 /*!
@@ -95,12 +111,20 @@ void QUmlImage::setFormat(QString format)
  */
 QString QUmlImage::location() const
 {
-    return QString();
+    // This is a read-write property
+
+    QM_D(const QUmlImage);
+    return d->location;
 }
 
 void QUmlImage::setLocation(QString location)
 {
-    Q_UNUSED(location);
+    // This is a read-write property
+
+    QM_D(QUmlImage);
+    if (d->location != location) {
+        d->location = location;
+    }
 }
 
 QT_END_NAMESPACE

@@ -67,13 +67,17 @@ QUmlConnectableElement::QUmlConnectableElement(bool create_d_ptr) :
         set_d_ptr(new QUmlConnectableElementPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Denotes a set of connector ends that attaches to this connectable element.
  */
 QList<QUmlConnectorEnd *> QUmlConnectableElement::end() const
 {
+    // This is a read-only derived association end
+
+    qWarning("QUmlConnectableElement::end(): to be implemented (this is a derived association end)");
+
     return QList<QUmlConnectorEnd *>();
 }
 
@@ -82,12 +86,20 @@ QList<QUmlConnectorEnd *> QUmlConnectableElement::end() const
  */
 QUmlConnectableElementTemplateParameter *QUmlConnectableElement::templateParameter() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlConnectableElement);
+    return d->templateParameter;
 }
 
 void QUmlConnectableElement::setTemplateParameter(QUmlConnectableElementTemplateParameter *templateParameter)
 {
-    Q_UNUSED(templateParameter);
+    // This is a read-write association end
+
+    QM_D(QUmlConnectableElement);
+    if (d->templateParameter != templateParameter) {
+        d->templateParameter = templateParameter;
+    }
 }
 
 QT_END_NAMESPACE

@@ -71,8 +71,8 @@ public:
     void setProtocol(QUmlProtocolStateMachine *protocol);
     QSet<QUmlInterface *> provided() const;
     QSet<QUmlPort *> redefinedPort() const;
-    void addRedefinedPort(QSet<QUmlPort *> redefinedPort);
-    void removeRedefinedPort(QSet<QUmlPort *> redefinedPort);
+    void addRedefinedPort(QUmlPort *redefinedPort);
+    void removeRedefinedPort(QUmlPort *redefinedPort);
     QSet<QUmlInterface *> required() const;
 };
 

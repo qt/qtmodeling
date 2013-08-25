@@ -56,7 +56,6 @@ class Q_UML_EXPORT QUmlBehaviorPrivate : public QUmlClassPrivate
 public:
     QUmlBehaviorPrivate();
 
-    QUmlBehavioredClassifier *context;
     bool isReentrant;
     QList<QUmlParameter *> ownedParameter;
     QSet<QUmlParameterSet *> ownedParameterSet;

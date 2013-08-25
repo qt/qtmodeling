@@ -59,7 +59,6 @@ public:
 
     QUmlClassifier *classifier;
     QSet<QUmlRedefinableTemplateSignature *> extendedSignature;
-    QSet<QUmlTemplateParameter *> inheritedParameter;
 };
 
 QT_END_NAMESPACE

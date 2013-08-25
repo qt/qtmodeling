@@ -62,11 +62,11 @@ public:
 
     // Owned attributes
     QSet<QUmlElementImport *> metaclassReference() const;
-    void addMetaclassReference(QSet<QUmlElementImport *> metaclassReference);
-    void removeMetaclassReference(QSet<QUmlElementImport *> metaclassReference);
+    void addMetaclassReference(QUmlElementImport *metaclassReference);
+    void removeMetaclassReference(QUmlElementImport *metaclassReference);
     QSet<QUmlPackageImport *> metamodelReference() const;
-    void addMetamodelReference(QSet<QUmlPackageImport *> metamodelReference);
-    void removeMetamodelReference(QSet<QUmlPackageImport *> metamodelReference);
+    void addMetamodelReference(QUmlPackageImport *metamodelReference);
+    void removeMetamodelReference(QUmlPackageImport *metamodelReference);
 };
 
 QT_END_NAMESPACE

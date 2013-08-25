@@ -63,30 +63,30 @@ public:
 
     // Owned attributes
     QList<QUmlOutputPin *> bodyOutput() const;
-    void addBodyOutput(QList<QUmlOutputPin *> bodyOutput);
-    void removeBodyOutput(QList<QUmlOutputPin *> bodyOutput);
+    void addBodyOutput(QUmlOutputPin *bodyOutput);
+    void removeBodyOutput(QUmlOutputPin *bodyOutput);
     QSet<QUmlExecutableNode *> bodyPart() const;
-    void addBodyPart(QSet<QUmlExecutableNode *> bodyPart);
-    void removeBodyPart(QSet<QUmlExecutableNode *> bodyPart);
+    void addBodyPart(QUmlExecutableNode *bodyPart);
+    void removeBodyPart(QUmlExecutableNode *bodyPart);
     QUmlOutputPin *decider() const;
     void setDecider(QUmlOutputPin *decider);
     bool isTestedFirst() const;
     void setTestedFirst(bool isTestedFirst);
     QList<QUmlOutputPin *> loopVariable() const;
-    void addLoopVariable(QList<QUmlOutputPin *> loopVariable);
-    void removeLoopVariable(QList<QUmlOutputPin *> loopVariable);
+    void addLoopVariable(QUmlOutputPin *loopVariable);
+    void removeLoopVariable(QUmlOutputPin *loopVariable);
     QList<QUmlInputPin *> loopVariableInput() const;
-    void addLoopVariableInput(QList<QUmlInputPin *> loopVariableInput);
-    void removeLoopVariableInput(QList<QUmlInputPin *> loopVariableInput);
+    void addLoopVariableInput(QUmlInputPin *loopVariableInput);
+    void removeLoopVariableInput(QUmlInputPin *loopVariableInput);
     QList<QUmlOutputPin *> result() const;
-    void addResult(QList<QUmlOutputPin *> result);
-    void removeResult(QList<QUmlOutputPin *> result);
+    void addResult(QUmlOutputPin *result);
+    void removeResult(QUmlOutputPin *result);
     QSet<QUmlExecutableNode *> setupPart() const;
-    void addSetupPart(QSet<QUmlExecutableNode *> setupPart);
-    void removeSetupPart(QSet<QUmlExecutableNode *> setupPart);
+    void addSetupPart(QUmlExecutableNode *setupPart);
+    void removeSetupPart(QUmlExecutableNode *setupPart);
     QSet<QUmlExecutableNode *> test() const;
-    void addTest(QSet<QUmlExecutableNode *> test);
-    void removeTest(QSet<QUmlExecutableNode *> test);
+    void addTest(QUmlExecutableNode *test);
+    void removeTest(QUmlExecutableNode *test);
 };
 
 QT_END_NAMESPACE

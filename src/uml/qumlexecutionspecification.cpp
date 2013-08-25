@@ -66,19 +66,27 @@ QUmlExecutionSpecification::QUmlExecutionSpecification(bool create_d_ptr) :
         set_d_ptr(new QUmlExecutionSpecificationPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     References the OccurrenceSpecification that designates the finish of the Action or Behavior.
  */
 QUmlOccurrenceSpecification *QUmlExecutionSpecification::finish() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlExecutionSpecification);
+    return d->finish;
 }
 
 void QUmlExecutionSpecification::setFinish(QUmlOccurrenceSpecification *finish)
 {
-    Q_UNUSED(finish);
+    // This is a read-write association end
+
+    QM_D(QUmlExecutionSpecification);
+    if (d->finish != finish) {
+        d->finish = finish;
+    }
 }
 
 /*!
@@ -86,12 +94,20 @@ void QUmlExecutionSpecification::setFinish(QUmlOccurrenceSpecification *finish)
  */
 QUmlOccurrenceSpecification *QUmlExecutionSpecification::start() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlExecutionSpecification);
+    return d->start;
 }
 
 void QUmlExecutionSpecification::setStart(QUmlOccurrenceSpecification *start)
 {
-    Q_UNUSED(start);
+    // This is a read-write association end
+
+    QM_D(QUmlExecutionSpecification);
+    if (d->start != start) {
+        d->start = start;
+    }
 }
 
 QT_END_NAMESPACE

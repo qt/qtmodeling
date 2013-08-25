@@ -64,11 +64,11 @@ public:
     QUmlLifeline *covered() const;
     void setCovered(QUmlLifeline *covered);
     QSet<QUmlGeneralOrdering *> toAfter() const;
-    void addToAfter(QSet<QUmlGeneralOrdering *> toAfter);
-    void removeToAfter(QSet<QUmlGeneralOrdering *> toAfter);
+    void addToAfter(QUmlGeneralOrdering *toAfter);
+    void removeToAfter(QUmlGeneralOrdering *toAfter);
     QSet<QUmlGeneralOrdering *> toBefore() const;
-    void addToBefore(QSet<QUmlGeneralOrdering *> toBefore);
-    void removeToBefore(QSet<QUmlGeneralOrdering *> toBefore);
+    void addToBefore(QUmlGeneralOrdering *toBefore);
+    void removeToBefore(QUmlGeneralOrdering *toBefore);
 };
 
 QT_END_NAMESPACE

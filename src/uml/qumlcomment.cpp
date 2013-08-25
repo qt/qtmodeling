@@ -62,24 +62,37 @@ QUmlComment::QUmlComment(bool create_d_ptr) :
         set_d_ptr(new QUmlCommentPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     References the Element(s) being commented.
  */
 QSet<QUmlElement *> QUmlComment::annotatedElement() const
 {
-    return QSet<QUmlElement *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlComment);
+    return d->annotatedElement;
 }
 
-void QUmlComment::addAnnotatedElement(QSet<QUmlElement *> annotatedElement)
+void QUmlComment::addAnnotatedElement(QUmlElement *annotatedElement)
 {
-    Q_UNUSED(annotatedElement);
+    // This is a read-write association end
+
+    QM_D(QUmlComment);
+    if (!d->annotatedElement.contains(annotatedElement)) {
+        d->annotatedElement.insert(annotatedElement);
+    }
 }
 
-void QUmlComment::removeAnnotatedElement(QSet<QUmlElement *> annotatedElement)
+void QUmlComment::removeAnnotatedElement(QUmlElement *annotatedElement)
 {
-    Q_UNUSED(annotatedElement);
+    // This is a read-write association end
+
+    QM_D(QUmlComment);
+    if (d->annotatedElement.contains(annotatedElement)) {
+        d->annotatedElement.remove(annotatedElement);
+    }
 }
 
 /*!
@@ -87,12 +100,20 @@ void QUmlComment::removeAnnotatedElement(QSet<QUmlElement *> annotatedElement)
  */
 QString QUmlComment::body() const
 {
-    return QString();
+    // This is a read-write property
+
+    QM_D(const QUmlComment);
+    return d->body;
 }
 
 void QUmlComment::setBody(QString body)
 {
-    Q_UNUSED(body);
+    // This is a read-write property
+
+    QM_D(QUmlComment);
+    if (d->body != body) {
+        d->body = body;
+    }
 }
 
 QT_END_NAMESPACE

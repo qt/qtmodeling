@@ -60,8 +60,8 @@ public:
 
     // Owned attributes
     QSet<QUmlComment *> ownedComment() const;
-    void addOwnedComment(QSet<QUmlComment *> ownedComment);
-    void removeOwnedComment(QSet<QUmlComment *> ownedComment);
+    void addOwnedComment(QUmlComment *ownedComment);
+    void removeOwnedComment(QUmlComment *ownedComment);
     QSet<QUmlElement *> ownedElement() const;
     QUmlElement *owner() const;
 

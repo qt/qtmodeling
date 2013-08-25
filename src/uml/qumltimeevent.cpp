@@ -66,19 +66,27 @@ QUmlTimeEvent::QUmlTimeEvent(bool create_d_ptr) :
         set_d_ptr(new QUmlTimeEventPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Specifies whether it is relative or absolute time.
  */
 bool QUmlTimeEvent::isRelative() const
 {
-    return bool();
+    // This is a read-write property
+
+    QM_D(const QUmlTimeEvent);
+    return d->isRelative;
 }
 
 void QUmlTimeEvent::setRelative(bool isRelative)
 {
-    Q_UNUSED(isRelative);
+    // This is a read-write property
+
+    QM_D(QUmlTimeEvent);
+    if (d->isRelative != isRelative) {
+        d->isRelative = isRelative;
+    }
 }
 
 /*!
@@ -86,12 +94,20 @@ void QUmlTimeEvent::setRelative(bool isRelative)
  */
 QUmlTimeExpression *QUmlTimeEvent::when() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlTimeEvent);
+    return d->when;
 }
 
 void QUmlTimeEvent::setWhen(QUmlTimeExpression *when)
 {
-    Q_UNUSED(when);
+    // This is a read-write association end
+
+    QM_D(QUmlTimeEvent);
+    if (d->when != when) {
+        d->when = when;
+    }
 }
 
 QT_END_NAMESPACE

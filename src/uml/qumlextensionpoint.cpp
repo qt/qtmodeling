@@ -65,19 +65,27 @@ QUmlExtensionPoint::QUmlExtensionPoint(bool create_d_ptr) :
         set_d_ptr(new QUmlExtensionPointPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     References the use case that owns this extension point.
  */
 QUmlUseCase *QUmlExtensionPoint::useCase() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlExtensionPoint);
+    return d->useCase;
 }
 
 void QUmlExtensionPoint::setUseCase(QUmlUseCase *useCase)
 {
-    Q_UNUSED(useCase);
+    // This is a read-write association end
+
+    QM_D(QUmlExtensionPoint);
+    if (d->useCase != useCase) {
+        d->useCase = useCase;
+    }
 }
 
 QT_END_NAMESPACE

@@ -63,8 +63,8 @@ public:
     bool isSynchronous() const;
     void setSynchronous(bool isSynchronous);
     QList<QUmlOutputPin *> result() const;
-    void addResult(QList<QUmlOutputPin *> result);
-    void removeResult(QList<QUmlOutputPin *> result);
+    void addResult(QUmlOutputPin *result);
+    void removeResult(QUmlOutputPin *result);
 };
 
 QT_END_NAMESPACE

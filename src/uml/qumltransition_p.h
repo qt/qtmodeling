@@ -62,7 +62,6 @@ public:
     QUmlConstraint *guard;
     QtUml::TransitionKind kind;
     QUmlTransition *redefinedTransition;
-    QUmlClassifier *redefinitionContext;
     QUmlVertex *source;
     QUmlVertex *target;
     QSet<QUmlTrigger *> trigger;

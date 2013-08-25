@@ -69,22 +69,22 @@ public:
     QUmlActivity *activity() const;
     void setActivity(QUmlActivity *activity);
     QSet<QUmlActivityEdge *> edge() const;
-    void addEdge(QSet<QUmlActivityEdge *> edge);
-    void removeEdge(QSet<QUmlActivityEdge *> edge);
+    void addEdge(QUmlActivityEdge *edge);
+    void removeEdge(QUmlActivityEdge *edge);
     bool mustIsolate() const;
     void setMustIsolate(bool mustIsolate);
     QSet<QUmlActivityNode *> node() const;
-    void addNode(QSet<QUmlActivityNode *> node);
-    void removeNode(QSet<QUmlActivityNode *> node);
+    void addNode(QUmlActivityNode *node);
+    void removeNode(QUmlActivityNode *node);
     QSet<QUmlInputPin *> structuredNodeInput() const;
-    void addStructuredNodeInput(QSet<QUmlInputPin *> structuredNodeInput);
-    void removeStructuredNodeInput(QSet<QUmlInputPin *> structuredNodeInput);
+    void addStructuredNodeInput(QUmlInputPin *structuredNodeInput);
+    void removeStructuredNodeInput(QUmlInputPin *structuredNodeInput);
     QSet<QUmlOutputPin *> structuredNodeOutput() const;
-    void addStructuredNodeOutput(QSet<QUmlOutputPin *> structuredNodeOutput);
-    void removeStructuredNodeOutput(QSet<QUmlOutputPin *> structuredNodeOutput);
+    void addStructuredNodeOutput(QUmlOutputPin *structuredNodeOutput);
+    void removeStructuredNodeOutput(QUmlOutputPin *structuredNodeOutput);
     QSet<QUmlVariable *> variable() const;
-    void addVariable(QSet<QUmlVariable *> variable);
-    void removeVariable(QSet<QUmlVariable *> variable);
+    void addVariable(QUmlVariable *variable);
+    void removeVariable(QUmlVariable *variable);
 };
 
 QT_END_NAMESPACE

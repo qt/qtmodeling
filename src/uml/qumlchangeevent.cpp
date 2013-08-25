@@ -65,19 +65,27 @@ QUmlChangeEvent::QUmlChangeEvent(bool create_d_ptr) :
         set_d_ptr(new QUmlChangeEventPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     A Boolean-valued expression that will result in a change event whenever its value changes from false to true.
  */
 QUmlValueSpecification *QUmlChangeEvent::changeExpression() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlChangeEvent);
+    return d->changeExpression;
 }
 
 void QUmlChangeEvent::setChangeExpression(QUmlValueSpecification *changeExpression)
 {
-    Q_UNUSED(changeExpression);
+    // This is a read-write association end
+
+    QM_D(QUmlChangeEvent);
+    if (d->changeExpression != changeExpression) {
+        d->changeExpression = changeExpression;
+    }
 }
 
 QT_END_NAMESPACE

@@ -50,6 +50,7 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
+
 class QUmlExpressionPrivate;
 class Q_UML_EXPORT QUmlExpression : public QUmlValueSpecification
 {
@@ -58,8 +59,8 @@ public:
 
     // Owned attributes
     QList<QUmlValueSpecification *> operand() const;
-    void addOperand(QList<QUmlValueSpecification *> operand);
-    void removeOperand(QList<QUmlValueSpecification *> operand);
+    void addOperand(QUmlValueSpecification *operand);
+    void removeOperand(QUmlValueSpecification *operand);
     QString symbol() const;
     void setSymbol(QString symbol);
 };

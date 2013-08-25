@@ -65,8 +65,8 @@ public:
     QUmlTemplateSignature *ownedTemplateSignature() const;
     void setOwnedTemplateSignature(QUmlTemplateSignature *ownedTemplateSignature);
     QSet<QUmlTemplateBinding *> templateBinding() const;
-    void addTemplateBinding(QSet<QUmlTemplateBinding *> templateBinding);
-    void removeTemplateBinding(QSet<QUmlTemplateBinding *> templateBinding);
+    void addTemplateBinding(QUmlTemplateBinding *templateBinding);
+    void removeTemplateBinding(QUmlTemplateBinding *templateBinding);
 
     // Operations
     bool isTemplate() const;

@@ -50,6 +50,7 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
+
 class QUmlMergeNodePrivate;
 class Q_UML_EXPORT QUmlMergeNode : public QUmlControlNode
 {

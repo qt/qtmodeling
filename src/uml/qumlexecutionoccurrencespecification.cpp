@@ -65,19 +65,27 @@ QUmlExecutionOccurrenceSpecification::QUmlExecutionOccurrenceSpecification(bool 
         set_d_ptr(new QUmlExecutionOccurrenceSpecificationPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     References the execution specification describing the execution that is started or finished at this execution event.
  */
 QUmlExecutionSpecification *QUmlExecutionOccurrenceSpecification::execution() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlExecutionOccurrenceSpecification);
+    return d->execution;
 }
 
 void QUmlExecutionOccurrenceSpecification::setExecution(QUmlExecutionSpecification *execution)
 {
-    Q_UNUSED(execution);
+    // This is a read-write association end
+
+    QM_D(QUmlExecutionOccurrenceSpecification);
+    if (d->execution != execution) {
+        d->execution = execution;
+    }
 }
 
 QT_END_NAMESPACE

@@ -64,19 +64,27 @@ QUmlStringExpression::QUmlStringExpression(bool create_d_ptr) :
         set_d_ptr(new QUmlStringExpressionPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The string expression of which this expression is a substring.
  */
 QUmlStringExpression *QUmlStringExpression::owningExpression() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlStringExpression);
+    return d->owningExpression;
 }
 
 void QUmlStringExpression::setOwningExpression(QUmlStringExpression *owningExpression)
 {
-    Q_UNUSED(owningExpression);
+    // This is a read-write association end
+
+    QM_D(QUmlStringExpression);
+    if (d->owningExpression != owningExpression) {
+        d->owningExpression = owningExpression;
+    }
 }
 
 /*!
@@ -84,20 +92,33 @@ void QUmlStringExpression::setOwningExpression(QUmlStringExpression *owningExpre
  */
 QSet<QUmlStringExpression *> QUmlStringExpression::subExpression() const
 {
-    return QSet<QUmlStringExpression *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlStringExpression);
+    return d->subExpression;
 }
 
-void QUmlStringExpression::addSubExpression(QSet<QUmlStringExpression *> subExpression)
+void QUmlStringExpression::addSubExpression(QUmlStringExpression *subExpression)
 {
-    Q_UNUSED(subExpression);
+    // This is a read-write association end
+
+    QM_D(QUmlStringExpression);
+    if (!d->subExpression.contains(subExpression)) {
+        d->subExpression.insert(subExpression);
+    }
 }
 
-void QUmlStringExpression::removeSubExpression(QSet<QUmlStringExpression *> subExpression)
+void QUmlStringExpression::removeSubExpression(QUmlStringExpression *subExpression)
 {
-    Q_UNUSED(subExpression);
+    // This is a read-write association end
+
+    QM_D(QUmlStringExpression);
+    if (d->subExpression.contains(subExpression)) {
+        d->subExpression.remove(subExpression);
+    }
 }
 
-// Operations
+// OPERATIONS
 
 /*!
     The query stringValue() returns the string that concatenates, in order, all the component string literals of all the subexpressions that are part of the StringExpression.

@@ -62,13 +62,13 @@ public:
 
     // Owned attributes
     QSet<QUmlExpansionNode *> inputElement() const;
-    void addInputElement(QSet<QUmlExpansionNode *> inputElement);
-    void removeInputElement(QSet<QUmlExpansionNode *> inputElement);
+    void addInputElement(QUmlExpansionNode *inputElement);
+    void removeInputElement(QUmlExpansionNode *inputElement);
     QtUml::ExpansionKind mode() const;
     void setMode(QtUml::ExpansionKind mode);
     QSet<QUmlExpansionNode *> outputElement() const;
-    void addOutputElement(QSet<QUmlExpansionNode *> outputElement);
-    void removeOutputElement(QSet<QUmlExpansionNode *> outputElement);
+    void addOutputElement(QUmlExpansionNode *outputElement);
+    void removeOutputElement(QUmlExpansionNode *outputElement);
 };
 
 QT_END_NAMESPACE

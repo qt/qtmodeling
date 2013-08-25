@@ -63,24 +63,37 @@ QUmlNode::QUmlNode(bool create_d_ptr) :
         set_d_ptr(new QUmlNodePrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The Nodes that are defined (nested) within the Node.
  */
 QSet<QUmlNode *> QUmlNode::nestedNode() const
 {
-    return QSet<QUmlNode *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlNode);
+    return d->nestedNode;
 }
 
-void QUmlNode::addNestedNode(QSet<QUmlNode *> nestedNode)
+void QUmlNode::addNestedNode(QUmlNode *nestedNode)
 {
-    Q_UNUSED(nestedNode);
+    // This is a read-write association end
+
+    QM_D(QUmlNode);
+    if (!d->nestedNode.contains(nestedNode)) {
+        d->nestedNode.insert(nestedNode);
+    }
 }
 
-void QUmlNode::removeNestedNode(QSet<QUmlNode *> nestedNode)
+void QUmlNode::removeNestedNode(QUmlNode *nestedNode)
 {
-    Q_UNUSED(nestedNode);
+    // This is a read-write association end
+
+    QM_D(QUmlNode);
+    if (d->nestedNode.contains(nestedNode)) {
+        d->nestedNode.remove(nestedNode);
+    }
 }
 
 QT_END_NAMESPACE

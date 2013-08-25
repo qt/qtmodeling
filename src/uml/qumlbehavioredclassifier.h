@@ -64,11 +64,11 @@ public:
     QUmlBehavior *classifierBehavior() const;
     void setClassifierBehavior(QUmlBehavior *classifierBehavior);
     QSet<QUmlInterfaceRealization *> interfaceRealization() const;
-    void addInterfaceRealization(QSet<QUmlInterfaceRealization *> interfaceRealization);
-    void removeInterfaceRealization(QSet<QUmlInterfaceRealization *> interfaceRealization);
+    void addInterfaceRealization(QUmlInterfaceRealization *interfaceRealization);
+    void removeInterfaceRealization(QUmlInterfaceRealization *interfaceRealization);
     QSet<QUmlBehavior *> ownedBehavior() const;
-    void addOwnedBehavior(QSet<QUmlBehavior *> ownedBehavior);
-    void removeOwnedBehavior(QSet<QUmlBehavior *> ownedBehavior);
+    void addOwnedBehavior(QUmlBehavior *ownedBehavior);
+    void removeOwnedBehavior(QUmlBehavior *ownedBehavior);
 };
 
 QT_END_NAMESPACE

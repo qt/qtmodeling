@@ -65,8 +65,8 @@ public:
 
     // Owned attributes
     QSet<QUmlInteractionFragment *> coveredBy() const;
-    void addCoveredBy(QSet<QUmlInteractionFragment *> coveredBy);
-    void removeCoveredBy(QSet<QUmlInteractionFragment *> coveredBy);
+    void addCoveredBy(QUmlInteractionFragment *coveredBy);
+    void removeCoveredBy(QUmlInteractionFragment *coveredBy);
     QUmlPartDecomposition *decomposedAs() const;
     void setDecomposedAs(QUmlPartDecomposition *decomposedAs);
     QUmlInteraction *interaction() const;

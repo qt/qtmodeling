@@ -1,21 +1,21 @@
 [% USE xmi = XML.XPath("$xmi") -%]
-PUBLIC_HEADERS +=  \
+PUBLIC_HEADERS += \
     qt${namespace.lower}global.h \
     qt${namespace.lower}namespace.h
 [%- FOREACH class = xmi.findnodes('//packagedElement[@xmi:type=\'uml:Class\']') -%]
-\
-    q${namespace.lower}${class.findvalue('@name').lower}.h 
+ \
+    q${namespace.lower}${class.findvalue('@name').lower}.h
 [%- END %]
 
-PRIVATE_HEADERS += 
+PRIVATE_HEADERS +=
 [%- FOREACH class = xmi.findnodes('//packagedElement[@xmi:type=\'uml:Class\']') -%]
-\
-    q${namespace.lower}${class.findvalue('@name').lower}_p.h 
+ \
+    q${namespace.lower}${class.findvalue('@name').lower}_p.h
 [%- END %]
 
 SOURCES += \
     qt${namespace.lower}namespace.cpp
 [%- FOREACH class = xmi.findnodes('//packagedElement[@xmi:type=\'uml:Class\']') -%]
-\
-    q${namespace.lower}${class.findvalue('@name').lower}.cpp 
+ \
+    q${namespace.lower}${class.findvalue('@name').lower}.cpp
 [%- END %]

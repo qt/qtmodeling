@@ -47,8 +47,6 @@
 #include <QtCore/QSet>
 #include <QtCore/QString>
 
-#include <QtCore/QDebug>
-
 QT_BEGIN_NAMESPACE
 
 #ifndef QT_STATIC

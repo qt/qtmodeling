@@ -64,14 +64,17 @@ QUmlDirectedRelationship::QUmlDirectedRelationship(bool create_d_ptr) :
         set_d_ptr(new QUmlDirectedRelationshipPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Specifies the sources of the DirectedRelationship.
  */
 QSet<QUmlElement *> QUmlDirectedRelationship::source() const
 {
-    return QSet<QUmlElement *>();
+    // This is a read-only derived union association end
+
+    QM_D(const QUmlDirectedRelationship);
+    return d->source;
 }
 
 /*!
@@ -79,7 +82,10 @@ QSet<QUmlElement *> QUmlDirectedRelationship::source() const
  */
 QSet<QUmlElement *> QUmlDirectedRelationship::target() const
 {
-    return QSet<QUmlElement *>();
+    // This is a read-only derived union association end
+
+    QM_D(const QUmlDirectedRelationship);
+    return d->target;
 }
 
 QT_END_NAMESPACE

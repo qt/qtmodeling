@@ -72,24 +72,37 @@ QUmlLifeline::QUmlLifeline(bool create_d_ptr) :
         set_d_ptr(new QUmlLifelinePrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     References the InteractionFragments in which this Lifeline takes part.
  */
 QSet<QUmlInteractionFragment *> QUmlLifeline::coveredBy() const
 {
-    return QSet<QUmlInteractionFragment *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlLifeline);
+    return d->coveredBy;
 }
 
-void QUmlLifeline::addCoveredBy(QSet<QUmlInteractionFragment *> coveredBy)
+void QUmlLifeline::addCoveredBy(QUmlInteractionFragment *coveredBy)
 {
-    Q_UNUSED(coveredBy);
+    // This is a read-write association end
+
+    QM_D(QUmlLifeline);
+    if (!d->coveredBy.contains(coveredBy)) {
+        d->coveredBy.insert(coveredBy);
+    }
 }
 
-void QUmlLifeline::removeCoveredBy(QSet<QUmlInteractionFragment *> coveredBy)
+void QUmlLifeline::removeCoveredBy(QUmlInteractionFragment *coveredBy)
 {
-    Q_UNUSED(coveredBy);
+    // This is a read-write association end
+
+    QM_D(QUmlLifeline);
+    if (d->coveredBy.contains(coveredBy)) {
+        d->coveredBy.remove(coveredBy);
+    }
 }
 
 /*!
@@ -97,12 +110,20 @@ void QUmlLifeline::removeCoveredBy(QSet<QUmlInteractionFragment *> coveredBy)
  */
 QUmlPartDecomposition *QUmlLifeline::decomposedAs() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlLifeline);
+    return d->decomposedAs;
 }
 
 void QUmlLifeline::setDecomposedAs(QUmlPartDecomposition *decomposedAs)
 {
-    Q_UNUSED(decomposedAs);
+    // This is a read-write association end
+
+    QM_D(QUmlLifeline);
+    if (d->decomposedAs != decomposedAs) {
+        d->decomposedAs = decomposedAs;
+    }
 }
 
 /*!
@@ -110,12 +131,20 @@ void QUmlLifeline::setDecomposedAs(QUmlPartDecomposition *decomposedAs)
  */
 QUmlInteraction *QUmlLifeline::interaction() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlLifeline);
+    return d->interaction;
 }
 
 void QUmlLifeline::setInteraction(QUmlInteraction *interaction)
 {
-    Q_UNUSED(interaction);
+    // This is a read-write association end
+
+    QM_D(QUmlLifeline);
+    if (d->interaction != interaction) {
+        d->interaction = interaction;
+    }
 }
 
 /*!
@@ -123,12 +152,20 @@ void QUmlLifeline::setInteraction(QUmlInteraction *interaction)
  */
 QUmlConnectableElement *QUmlLifeline::represents() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlLifeline);
+    return d->represents;
 }
 
 void QUmlLifeline::setRepresents(QUmlConnectableElement *represents)
 {
-    Q_UNUSED(represents);
+    // This is a read-write association end
+
+    QM_D(QUmlLifeline);
+    if (d->represents != represents) {
+        d->represents = represents;
+    }
 }
 
 /*!
@@ -136,12 +173,20 @@ void QUmlLifeline::setRepresents(QUmlConnectableElement *represents)
  */
 QUmlValueSpecification *QUmlLifeline::selector() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlLifeline);
+    return d->selector;
 }
 
 void QUmlLifeline::setSelector(QUmlValueSpecification *selector)
 {
-    Q_UNUSED(selector);
+    // This is a read-write association end
+
+    QM_D(QUmlLifeline);
+    if (d->selector != selector) {
+        d->selector = selector;
+    }
 }
 
 QT_END_NAMESPACE

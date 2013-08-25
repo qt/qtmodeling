@@ -56,13 +56,8 @@ QUmlOperationPrivate::QUmlOperationPrivate() :
     class_(0),
     datatype(0),
     interface_(0),
-    isOrdered(false),
     isQuery(false),
-    isUnique(true),
-    lower(1),
-    templateParameter(0),
-    type(0),
-    upper(1)
+    templateParameter(0)
 {
 }
 
@@ -83,19 +78,27 @@ QUmlOperation::QUmlOperation(bool create_d_ptr) :
         set_d_ptr(new QUmlOperationPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     An optional Constraint on the result values of an invocation of this Operation.
  */
 QUmlConstraint *QUmlOperation::bodyCondition() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlOperation);
+    return d->bodyCondition;
 }
 
 void QUmlOperation::setBodyCondition(QUmlConstraint *bodyCondition)
 {
-    Q_UNUSED(bodyCondition);
+    // This is a read-write association end
+
+    QM_D(QUmlOperation);
+    if (d->bodyCondition != bodyCondition) {
+        d->bodyCondition = bodyCondition;
+    }
 }
 
 /*!
@@ -103,12 +106,20 @@ void QUmlOperation::setBodyCondition(QUmlConstraint *bodyCondition)
  */
 QUmlClass *QUmlOperation::class_() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlOperation);
+    return d->class_;
 }
 
 void QUmlOperation::setClass(QUmlClass *class_)
 {
-    Q_UNUSED(class_);
+    // This is a read-write association end
+
+    QM_D(QUmlOperation);
+    if (d->class_ != class_) {
+        d->class_ = class_;
+    }
 }
 
 /*!
@@ -116,12 +127,20 @@ void QUmlOperation::setClass(QUmlClass *class_)
  */
 QUmlDataType *QUmlOperation::datatype() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlOperation);
+    return d->datatype;
 }
 
 void QUmlOperation::setDatatype(QUmlDataType *datatype)
 {
-    Q_UNUSED(datatype);
+    // This is a read-write association end
+
+    QM_D(QUmlOperation);
+    if (d->datatype != datatype) {
+        d->datatype = datatype;
+    }
 }
 
 /*!
@@ -129,12 +148,20 @@ void QUmlOperation::setDatatype(QUmlDataType *datatype)
  */
 QUmlInterface *QUmlOperation::interface_() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlOperation);
+    return d->interface_;
 }
 
 void QUmlOperation::setInterface(QUmlInterface *interface_)
 {
-    Q_UNUSED(interface_);
+    // This is a read-write association end
+
+    QM_D(QUmlOperation);
+    if (d->interface_ != interface_) {
+        d->interface_ = interface_;
+    }
 }
 
 /*!
@@ -142,6 +169,10 @@ void QUmlOperation::setInterface(QUmlInterface *interface_)
  */
 bool QUmlOperation::isOrdered() const
 {
+    // This is a read-only derived property
+
+    qWarning("QUmlOperation::isOrdered(): to be implemented (this is a derived property)");
+
     return bool();
 }
 
@@ -150,12 +181,20 @@ bool QUmlOperation::isOrdered() const
  */
 bool QUmlOperation::isQuery() const
 {
-    return bool();
+    // This is a read-write property
+
+    QM_D(const QUmlOperation);
+    return d->isQuery;
 }
 
 void QUmlOperation::setQuery(bool isQuery)
 {
-    Q_UNUSED(isQuery);
+    // This is a read-write property
+
+    QM_D(QUmlOperation);
+    if (d->isQuery != isQuery) {
+        d->isQuery = isQuery;
+    }
 }
 
 /*!
@@ -163,6 +202,10 @@ void QUmlOperation::setQuery(bool isQuery)
  */
 bool QUmlOperation::isUnique() const
 {
+    // This is a read-only derived property
+
+    qWarning("QUmlOperation::isUnique(): to be implemented (this is a derived property)");
+
     return bool();
 }
 
@@ -171,6 +214,10 @@ bool QUmlOperation::isUnique() const
  */
 int QUmlOperation::lower() const
 {
+    // This is a read-only derived property
+
+    qWarning("QUmlOperation::lower(): to be implemented (this is a derived property)");
+
     return int();
 }
 
@@ -179,17 +226,30 @@ int QUmlOperation::lower() const
  */
 QList<QUmlParameter *> QUmlOperation::ownedParameter() const
 {
-    return QList<QUmlParameter *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlOperation);
+    return d->ownedParameter;
 }
 
-void QUmlOperation::addOwnedParameter(QList<QUmlParameter *> ownedParameter)
+void QUmlOperation::addOwnedParameter(QUmlParameter *ownedParameter)
 {
-    Q_UNUSED(ownedParameter);
+    // This is a read-write association end
+
+    QM_D(QUmlOperation);
+    if (!d->ownedParameter.contains(ownedParameter)) {
+        d->ownedParameter.append(ownedParameter);
+    }
 }
 
-void QUmlOperation::removeOwnedParameter(QList<QUmlParameter *> ownedParameter)
+void QUmlOperation::removeOwnedParameter(QUmlParameter *ownedParameter)
 {
-    Q_UNUSED(ownedParameter);
+    // This is a read-write association end
+
+    QM_D(QUmlOperation);
+    if (d->ownedParameter.contains(ownedParameter)) {
+        d->ownedParameter.removeAll(ownedParameter);
+    }
 }
 
 /*!
@@ -197,17 +257,30 @@ void QUmlOperation::removeOwnedParameter(QList<QUmlParameter *> ownedParameter)
  */
 QSet<QUmlConstraint *> QUmlOperation::postcondition() const
 {
-    return QSet<QUmlConstraint *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlOperation);
+    return d->postcondition;
 }
 
-void QUmlOperation::addPostcondition(QSet<QUmlConstraint *> postcondition)
+void QUmlOperation::addPostcondition(QUmlConstraint *postcondition)
 {
-    Q_UNUSED(postcondition);
+    // This is a read-write association end
+
+    QM_D(QUmlOperation);
+    if (!d->postcondition.contains(postcondition)) {
+        d->postcondition.insert(postcondition);
+    }
 }
 
-void QUmlOperation::removePostcondition(QSet<QUmlConstraint *> postcondition)
+void QUmlOperation::removePostcondition(QUmlConstraint *postcondition)
 {
-    Q_UNUSED(postcondition);
+    // This is a read-write association end
+
+    QM_D(QUmlOperation);
+    if (d->postcondition.contains(postcondition)) {
+        d->postcondition.remove(postcondition);
+    }
 }
 
 /*!
@@ -215,17 +288,30 @@ void QUmlOperation::removePostcondition(QSet<QUmlConstraint *> postcondition)
  */
 QSet<QUmlConstraint *> QUmlOperation::precondition() const
 {
-    return QSet<QUmlConstraint *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlOperation);
+    return d->precondition;
 }
 
-void QUmlOperation::addPrecondition(QSet<QUmlConstraint *> precondition)
+void QUmlOperation::addPrecondition(QUmlConstraint *precondition)
 {
-    Q_UNUSED(precondition);
+    // This is a read-write association end
+
+    QM_D(QUmlOperation);
+    if (!d->precondition.contains(precondition)) {
+        d->precondition.insert(precondition);
+    }
 }
 
-void QUmlOperation::removePrecondition(QSet<QUmlConstraint *> precondition)
+void QUmlOperation::removePrecondition(QUmlConstraint *precondition)
 {
-    Q_UNUSED(precondition);
+    // This is a read-write association end
+
+    QM_D(QUmlOperation);
+    if (d->precondition.contains(precondition)) {
+        d->precondition.remove(precondition);
+    }
 }
 
 /*!
@@ -233,17 +319,30 @@ void QUmlOperation::removePrecondition(QSet<QUmlConstraint *> precondition)
  */
 QSet<QUmlType *> QUmlOperation::raisedException() const
 {
-    return QSet<QUmlType *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlOperation);
+    return d->raisedException;
 }
 
-void QUmlOperation::addRaisedException(QSet<QUmlType *> raisedException)
+void QUmlOperation::addRaisedException(QUmlType *raisedException)
 {
-    Q_UNUSED(raisedException);
+    // This is a read-write association end
+
+    QM_D(QUmlOperation);
+    if (!d->raisedException.contains(raisedException)) {
+        d->raisedException.insert(raisedException);
+    }
 }
 
-void QUmlOperation::removeRaisedException(QSet<QUmlType *> raisedException)
+void QUmlOperation::removeRaisedException(QUmlType *raisedException)
 {
-    Q_UNUSED(raisedException);
+    // This is a read-write association end
+
+    QM_D(QUmlOperation);
+    if (d->raisedException.contains(raisedException)) {
+        d->raisedException.remove(raisedException);
+    }
 }
 
 /*!
@@ -251,17 +350,30 @@ void QUmlOperation::removeRaisedException(QSet<QUmlType *> raisedException)
  */
 QSet<QUmlOperation *> QUmlOperation::redefinedOperation() const
 {
-    return QSet<QUmlOperation *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlOperation);
+    return d->redefinedOperation;
 }
 
-void QUmlOperation::addRedefinedOperation(QSet<QUmlOperation *> redefinedOperation)
+void QUmlOperation::addRedefinedOperation(QUmlOperation *redefinedOperation)
 {
-    Q_UNUSED(redefinedOperation);
+    // This is a read-write association end
+
+    QM_D(QUmlOperation);
+    if (!d->redefinedOperation.contains(redefinedOperation)) {
+        d->redefinedOperation.insert(redefinedOperation);
+    }
 }
 
-void QUmlOperation::removeRedefinedOperation(QSet<QUmlOperation *> redefinedOperation)
+void QUmlOperation::removeRedefinedOperation(QUmlOperation *redefinedOperation)
 {
-    Q_UNUSED(redefinedOperation);
+    // This is a read-write association end
+
+    QM_D(QUmlOperation);
+    if (d->redefinedOperation.contains(redefinedOperation)) {
+        d->redefinedOperation.remove(redefinedOperation);
+    }
 }
 
 /*!
@@ -269,12 +381,20 @@ void QUmlOperation::removeRedefinedOperation(QSet<QUmlOperation *> redefinedOper
  */
 QUmlOperationTemplateParameter *QUmlOperation::templateParameter() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlOperation);
+    return d->templateParameter;
 }
 
 void QUmlOperation::setTemplateParameter(QUmlOperationTemplateParameter *templateParameter)
 {
-    Q_UNUSED(templateParameter);
+    // This is a read-write association end
+
+    QM_D(QUmlOperation);
+    if (d->templateParameter != templateParameter) {
+        d->templateParameter = templateParameter;
+    }
 }
 
 /*!
@@ -282,6 +402,10 @@ void QUmlOperation::setTemplateParameter(QUmlOperationTemplateParameter *templat
  */
 QUmlType *QUmlOperation::type() const
 {
+    // This is a read-only derived association end
+
+    qWarning("QUmlOperation::type(): to be implemented (this is a derived association end)");
+
     return 0;
 }
 
@@ -290,10 +414,14 @@ QUmlType *QUmlOperation::type() const
  */
 int QUmlOperation::upper() const
 {
+    // This is a read-only derived property
+
+    qWarning("QUmlOperation::upper(): to be implemented (this is a derived property)");
+
     return int();
 }
 
-// Operations
+// OPERATIONS
 
 /*!
     A redefining operation is consistent with a redefined operation if it has the same number of owned parameters, and the type of each owned parameter conforms to the type of the corresponding redefined parameter.The query isConsistentWith() specifies, for any two Operations in a context in which redefinition is possible, whether redefinition would be consistent in the sense of maintaining type covariance. Other senses of consistency may be required, for example to determine consistency in the sense of contravariance. Users may define alternative queries under names different from 'isConsistentWith()', as for example, users may define a query named 'isContravariantWith()'.

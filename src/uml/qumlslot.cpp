@@ -68,19 +68,27 @@ QUmlSlot::QUmlSlot(bool create_d_ptr) :
         set_d_ptr(new QUmlSlotPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The structural feature that specifies the values that may be held by the slot.
  */
 QUmlStructuralFeature *QUmlSlot::definingFeature() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlSlot);
+    return d->definingFeature;
 }
 
 void QUmlSlot::setDefiningFeature(QUmlStructuralFeature *definingFeature)
 {
-    Q_UNUSED(definingFeature);
+    // This is a read-write association end
+
+    QM_D(QUmlSlot);
+    if (d->definingFeature != definingFeature) {
+        d->definingFeature = definingFeature;
+    }
 }
 
 /*!
@@ -88,12 +96,20 @@ void QUmlSlot::setDefiningFeature(QUmlStructuralFeature *definingFeature)
  */
 QUmlInstanceSpecification *QUmlSlot::owningInstance() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlSlot);
+    return d->owningInstance;
 }
 
 void QUmlSlot::setOwningInstance(QUmlInstanceSpecification *owningInstance)
 {
-    Q_UNUSED(owningInstance);
+    // This is a read-write association end
+
+    QM_D(QUmlSlot);
+    if (d->owningInstance != owningInstance) {
+        d->owningInstance = owningInstance;
+    }
 }
 
 /*!
@@ -101,17 +117,30 @@ void QUmlSlot::setOwningInstance(QUmlInstanceSpecification *owningInstance)
  */
 QList<QUmlValueSpecification *> QUmlSlot::value() const
 {
-    return QList<QUmlValueSpecification *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlSlot);
+    return d->value;
 }
 
-void QUmlSlot::addValue(QList<QUmlValueSpecification *> value)
+void QUmlSlot::addValue(QUmlValueSpecification *value)
 {
-    Q_UNUSED(value);
+    // This is a read-write association end
+
+    QM_D(QUmlSlot);
+    if (!d->value.contains(value)) {
+        d->value.append(value);
+    }
 }
 
-void QUmlSlot::removeValue(QList<QUmlValueSpecification *> value)
+void QUmlSlot::removeValue(QUmlValueSpecification *value)
 {
-    Q_UNUSED(value);
+    // This is a read-write association end
+
+    QM_D(QUmlSlot);
+    if (d->value.contains(value)) {
+        d->value.removeAll(value);
+    }
 }
 
 QT_END_NAMESPACE

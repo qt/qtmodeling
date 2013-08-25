@@ -64,24 +64,37 @@ QUmlConsiderIgnoreFragment::QUmlConsiderIgnoreFragment(bool create_d_ptr) :
         set_d_ptr(new QUmlConsiderIgnoreFragmentPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The set of messages that apply to this fragment
  */
 QSet<QUmlNamedElement *> QUmlConsiderIgnoreFragment::message() const
 {
-    return QSet<QUmlNamedElement *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlConsiderIgnoreFragment);
+    return d->message;
 }
 
-void QUmlConsiderIgnoreFragment::addMessage(QSet<QUmlNamedElement *> message)
+void QUmlConsiderIgnoreFragment::addMessage(QUmlNamedElement *message)
 {
-    Q_UNUSED(message);
+    // This is a read-write association end
+
+    QM_D(QUmlConsiderIgnoreFragment);
+    if (!d->message.contains(message)) {
+        d->message.insert(message);
+    }
 }
 
-void QUmlConsiderIgnoreFragment::removeMessage(QSet<QUmlNamedElement *> message)
+void QUmlConsiderIgnoreFragment::removeMessage(QUmlNamedElement *message)
 {
-    Q_UNUSED(message);
+    // This is a read-write association end
+
+    QM_D(QUmlConsiderIgnoreFragment);
+    if (d->message.contains(message)) {
+        d->message.remove(message);
+    }
 }
 
 QT_END_NAMESPACE

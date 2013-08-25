@@ -72,19 +72,27 @@ QUmlStructuredActivityNode::QUmlStructuredActivityNode(bool create_d_ptr) :
         set_d_ptr(new QUmlStructuredActivityNodePrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Activity immediately containing the node.
  */
 QUmlActivity *QUmlStructuredActivityNode::activity() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlStructuredActivityNode);
+    return d->activity;
 }
 
 void QUmlStructuredActivityNode::setActivity(QUmlActivity *activity)
 {
-    Q_UNUSED(activity);
+    // This is a read-write association end
+
+    QM_D(QUmlStructuredActivityNode);
+    if (d->activity != activity) {
+        d->activity = activity;
+    }
 }
 
 /*!
@@ -92,17 +100,30 @@ void QUmlStructuredActivityNode::setActivity(QUmlActivity *activity)
  */
 QSet<QUmlActivityEdge *> QUmlStructuredActivityNode::edge() const
 {
-    return QSet<QUmlActivityEdge *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlStructuredActivityNode);
+    return d->edge;
 }
 
-void QUmlStructuredActivityNode::addEdge(QSet<QUmlActivityEdge *> edge)
+void QUmlStructuredActivityNode::addEdge(QUmlActivityEdge *edge)
 {
-    Q_UNUSED(edge);
+    // This is a read-write association end
+
+    QM_D(QUmlStructuredActivityNode);
+    if (!d->edge.contains(edge)) {
+        d->edge.insert(edge);
+    }
 }
 
-void QUmlStructuredActivityNode::removeEdge(QSet<QUmlActivityEdge *> edge)
+void QUmlStructuredActivityNode::removeEdge(QUmlActivityEdge *edge)
 {
-    Q_UNUSED(edge);
+    // This is a read-write association end
+
+    QM_D(QUmlStructuredActivityNode);
+    if (d->edge.contains(edge)) {
+        d->edge.remove(edge);
+    }
 }
 
 /*!
@@ -110,12 +131,20 @@ void QUmlStructuredActivityNode::removeEdge(QSet<QUmlActivityEdge *> edge)
  */
 bool QUmlStructuredActivityNode::mustIsolate() const
 {
-    return bool();
+    // This is a read-write property
+
+    QM_D(const QUmlStructuredActivityNode);
+    return d->mustIsolate;
 }
 
 void QUmlStructuredActivityNode::setMustIsolate(bool mustIsolate)
 {
-    Q_UNUSED(mustIsolate);
+    // This is a read-write property
+
+    QM_D(QUmlStructuredActivityNode);
+    if (d->mustIsolate != mustIsolate) {
+        d->mustIsolate = mustIsolate;
+    }
 }
 
 /*!
@@ -123,47 +152,86 @@ void QUmlStructuredActivityNode::setMustIsolate(bool mustIsolate)
  */
 QSet<QUmlActivityNode *> QUmlStructuredActivityNode::node() const
 {
-    return QSet<QUmlActivityNode *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlStructuredActivityNode);
+    return d->node;
 }
 
-void QUmlStructuredActivityNode::addNode(QSet<QUmlActivityNode *> node)
+void QUmlStructuredActivityNode::addNode(QUmlActivityNode *node)
 {
-    Q_UNUSED(node);
+    // This is a read-write association end
+
+    QM_D(QUmlStructuredActivityNode);
+    if (!d->node.contains(node)) {
+        d->node.insert(node);
+    }
 }
 
-void QUmlStructuredActivityNode::removeNode(QSet<QUmlActivityNode *> node)
+void QUmlStructuredActivityNode::removeNode(QUmlActivityNode *node)
 {
-    Q_UNUSED(node);
+    // This is a read-write association end
+
+    QM_D(QUmlStructuredActivityNode);
+    if (d->node.contains(node)) {
+        d->node.remove(node);
+    }
 }
 
 QSet<QUmlInputPin *> QUmlStructuredActivityNode::structuredNodeInput() const
 {
-    return QSet<QUmlInputPin *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlStructuredActivityNode);
+    return d->structuredNodeInput;
 }
 
-void QUmlStructuredActivityNode::addStructuredNodeInput(QSet<QUmlInputPin *> structuredNodeInput)
+void QUmlStructuredActivityNode::addStructuredNodeInput(QUmlInputPin *structuredNodeInput)
 {
-    Q_UNUSED(structuredNodeInput);
+    // This is a read-write association end
+
+    QM_D(QUmlStructuredActivityNode);
+    if (!d->structuredNodeInput.contains(structuredNodeInput)) {
+        d->structuredNodeInput.insert(structuredNodeInput);
+    }
 }
 
-void QUmlStructuredActivityNode::removeStructuredNodeInput(QSet<QUmlInputPin *> structuredNodeInput)
+void QUmlStructuredActivityNode::removeStructuredNodeInput(QUmlInputPin *structuredNodeInput)
 {
-    Q_UNUSED(structuredNodeInput);
+    // This is a read-write association end
+
+    QM_D(QUmlStructuredActivityNode);
+    if (d->structuredNodeInput.contains(structuredNodeInput)) {
+        d->structuredNodeInput.remove(structuredNodeInput);
+    }
 }
 
 QSet<QUmlOutputPin *> QUmlStructuredActivityNode::structuredNodeOutput() const
 {
-    return QSet<QUmlOutputPin *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlStructuredActivityNode);
+    return d->structuredNodeOutput;
 }
 
-void QUmlStructuredActivityNode::addStructuredNodeOutput(QSet<QUmlOutputPin *> structuredNodeOutput)
+void QUmlStructuredActivityNode::addStructuredNodeOutput(QUmlOutputPin *structuredNodeOutput)
 {
-    Q_UNUSED(structuredNodeOutput);
+    // This is a read-write association end
+
+    QM_D(QUmlStructuredActivityNode);
+    if (!d->structuredNodeOutput.contains(structuredNodeOutput)) {
+        d->structuredNodeOutput.insert(structuredNodeOutput);
+    }
 }
 
-void QUmlStructuredActivityNode::removeStructuredNodeOutput(QSet<QUmlOutputPin *> structuredNodeOutput)
+void QUmlStructuredActivityNode::removeStructuredNodeOutput(QUmlOutputPin *structuredNodeOutput)
 {
-    Q_UNUSED(structuredNodeOutput);
+    // This is a read-write association end
+
+    QM_D(QUmlStructuredActivityNode);
+    if (d->structuredNodeOutput.contains(structuredNodeOutput)) {
+        d->structuredNodeOutput.remove(structuredNodeOutput);
+    }
 }
 
 /*!
@@ -171,17 +239,30 @@ void QUmlStructuredActivityNode::removeStructuredNodeOutput(QSet<QUmlOutputPin *
  */
 QSet<QUmlVariable *> QUmlStructuredActivityNode::variable() const
 {
-    return QSet<QUmlVariable *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlStructuredActivityNode);
+    return d->variable;
 }
 
-void QUmlStructuredActivityNode::addVariable(QSet<QUmlVariable *> variable)
+void QUmlStructuredActivityNode::addVariable(QUmlVariable *variable)
 {
-    Q_UNUSED(variable);
+    // This is a read-write association end
+
+    QM_D(QUmlStructuredActivityNode);
+    if (!d->variable.contains(variable)) {
+        d->variable.insert(variable);
+    }
 }
 
-void QUmlStructuredActivityNode::removeVariable(QSet<QUmlVariable *> variable)
+void QUmlStructuredActivityNode::removeVariable(QUmlVariable *variable)
 {
-    Q_UNUSED(variable);
+    // This is a read-write association end
+
+    QM_D(QUmlStructuredActivityNode);
+    if (d->variable.contains(variable)) {
+        d->variable.remove(variable);
+    }
 }
 
 QT_END_NAMESPACE

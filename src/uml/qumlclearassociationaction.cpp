@@ -67,19 +67,27 @@ QUmlClearAssociationAction::QUmlClearAssociationAction(bool create_d_ptr) :
         set_d_ptr(new QUmlClearAssociationActionPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Association to be cleared.
  */
 QUmlAssociation *QUmlClearAssociationAction::association() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlClearAssociationAction);
+    return d->association;
 }
 
 void QUmlClearAssociationAction::setAssociation(QUmlAssociation *association)
 {
-    Q_UNUSED(association);
+    // This is a read-write association end
+
+    QM_D(QUmlClearAssociationAction);
+    if (d->association != association) {
+        d->association = association;
+    }
 }
 
 /*!
@@ -87,12 +95,20 @@ void QUmlClearAssociationAction::setAssociation(QUmlAssociation *association)
  */
 QUmlInputPin *QUmlClearAssociationAction::object() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlClearAssociationAction);
+    return d->object;
 }
 
 void QUmlClearAssociationAction::setObject(QUmlInputPin *object)
 {
-    Q_UNUSED(object);
+    // This is a read-write association end
+
+    QM_D(QUmlClearAssociationAction);
+    if (d->object != object) {
+        d->object = object;
+    }
 }
 
 QT_END_NAMESPACE

@@ -56,7 +56,6 @@ class Q_UML_EXPORT QUmlExtensionEndPrivate : public QUmlPropertyPrivate
 public:
     QUmlExtensionEndPrivate();
 
-    int lower;
     QUmlStereotype *type;
 };
 

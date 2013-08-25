@@ -65,24 +65,37 @@ QUmlProfile::QUmlProfile(bool create_d_ptr) :
         set_d_ptr(new QUmlProfilePrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     References a metaclass that may be extended.
  */
 QSet<QUmlElementImport *> QUmlProfile::metaclassReference() const
 {
-    return QSet<QUmlElementImport *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlProfile);
+    return d->metaclassReference;
 }
 
-void QUmlProfile::addMetaclassReference(QSet<QUmlElementImport *> metaclassReference)
+void QUmlProfile::addMetaclassReference(QUmlElementImport *metaclassReference)
 {
-    Q_UNUSED(metaclassReference);
+    // This is a read-write association end
+
+    QM_D(QUmlProfile);
+    if (!d->metaclassReference.contains(metaclassReference)) {
+        d->metaclassReference.insert(metaclassReference);
+    }
 }
 
-void QUmlProfile::removeMetaclassReference(QSet<QUmlElementImport *> metaclassReference)
+void QUmlProfile::removeMetaclassReference(QUmlElementImport *metaclassReference)
 {
-    Q_UNUSED(metaclassReference);
+    // This is a read-write association end
+
+    QM_D(QUmlProfile);
+    if (d->metaclassReference.contains(metaclassReference)) {
+        d->metaclassReference.remove(metaclassReference);
+    }
 }
 
 /*!
@@ -90,17 +103,30 @@ void QUmlProfile::removeMetaclassReference(QSet<QUmlElementImport *> metaclassRe
  */
 QSet<QUmlPackageImport *> QUmlProfile::metamodelReference() const
 {
-    return QSet<QUmlPackageImport *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlProfile);
+    return d->metamodelReference;
 }
 
-void QUmlProfile::addMetamodelReference(QSet<QUmlPackageImport *> metamodelReference)
+void QUmlProfile::addMetamodelReference(QUmlPackageImport *metamodelReference)
 {
-    Q_UNUSED(metamodelReference);
+    // This is a read-write association end
+
+    QM_D(QUmlProfile);
+    if (!d->metamodelReference.contains(metamodelReference)) {
+        d->metamodelReference.insert(metamodelReference);
+    }
 }
 
-void QUmlProfile::removeMetamodelReference(QSet<QUmlPackageImport *> metamodelReference)
+void QUmlProfile::removeMetamodelReference(QUmlPackageImport *metamodelReference)
 {
-    Q_UNUSED(metamodelReference);
+    // This is a read-write association end
+
+    QM_D(QUmlProfile);
+    if (d->metamodelReference.contains(metamodelReference)) {
+        d->metamodelReference.remove(metamodelReference);
+    }
 }
 
 QT_END_NAMESPACE

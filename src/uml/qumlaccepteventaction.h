@@ -64,11 +64,11 @@ public:
     bool isUnmarshall() const;
     void setUnmarshall(bool isUnmarshall);
     QSet<QUmlOutputPin *> result() const;
-    void addResult(QSet<QUmlOutputPin *> result);
-    void removeResult(QSet<QUmlOutputPin *> result);
+    void addResult(QUmlOutputPin *result);
+    void removeResult(QUmlOutputPin *result);
     QSet<QUmlTrigger *> trigger() const;
-    void addTrigger(QSet<QUmlTrigger *> trigger);
-    void removeTrigger(QSet<QUmlTrigger *> trigger);
+    void addTrigger(QUmlTrigger *trigger);
+    void removeTrigger(QUmlTrigger *trigger);
 };
 
 QT_END_NAMESPACE

@@ -63,11 +63,11 @@ public:
 
     // Owned attributes
     QSet<QUmlLinkEndData *> endData() const;
-    void addEndData(QSet<QUmlLinkEndData *> endData);
-    void removeEndData(QSet<QUmlLinkEndData *> endData);
+    void addEndData(QUmlLinkEndData *endData);
+    void removeEndData(QUmlLinkEndData *endData);
     QSet<QUmlInputPin *> inputValue() const;
-    void addInputValue(QSet<QUmlInputPin *> inputValue);
-    void removeInputValue(QSet<QUmlInputPin *> inputValue);
+    void addInputValue(QUmlInputPin *inputValue);
+    void removeInputValue(QUmlInputPin *inputValue);
 
     // Operations
     QUmlAssociation *association() const;

@@ -59,10 +59,7 @@ public:
     QUmlPackagePrivate();
 
     QString URI;
-    QSet<QUmlPackage *> nestedPackage;
     QUmlPackage *nestingPackage;
-    QSet<QUmlStereotype *> ownedStereotype;
-    QSet<QUmlType *> ownedType;
     QSet<QUmlPackageMerge *> packageMerge;
     QSet<QUmlPackageableElement *> packagedElement;
     QSet<QUmlProfileApplication *> profileApplication;

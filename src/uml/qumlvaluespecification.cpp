@@ -65,7 +65,7 @@ QUmlValueSpecification::QUmlValueSpecification(bool create_d_ptr) :
         set_d_ptr(new QUmlValueSpecificationPrivate);
 }
 
-// Operations
+// OPERATIONS
 
 /*!
     The query booleanValue() gives a single Boolean value when one can be computed.

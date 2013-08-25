@@ -64,8 +64,8 @@ public:
     QUmlClassifier *general() const;
     void setGeneral(QUmlClassifier *general);
     QSet<QUmlGeneralizationSet *> generalizationSet() const;
-    void addGeneralizationSet(QSet<QUmlGeneralizationSet *> generalizationSet);
-    void removeGeneralizationSet(QSet<QUmlGeneralizationSet *> generalizationSet);
+    void addGeneralizationSet(QUmlGeneralizationSet *generalizationSet);
+    void removeGeneralizationSet(QUmlGeneralizationSet *generalizationSet);
     bool isSubstitutable() const;
     void setSubstitutable(bool isSubstitutable);
     QUmlClassifier *specific() const;

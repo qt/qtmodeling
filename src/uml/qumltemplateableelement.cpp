@@ -63,25 +63,31 @@ QUmlTemplateableElementPrivate::QUmlTemplateableElementPrivate() :
 QUmlTemplateableElement::QUmlTemplateableElement(bool create_d_ptr) :
     QUmlElement(false)
 {
-    if (create_d_ptr) {
-        qDebug() << "QUmlTemplateableElement::QUmlTemplateableElement criando";
+    if (create_d_ptr)
         set_d_ptr(new QUmlTemplateableElementPrivate);
-    }
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The optional template signature specifying the formal template parameters.
  */
 QUmlTemplateSignature *QUmlTemplateableElement::ownedTemplateSignature() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlTemplateableElement);
+    return d->ownedTemplateSignature;
 }
 
 void QUmlTemplateableElement::setOwnedTemplateSignature(QUmlTemplateSignature *ownedTemplateSignature)
 {
-    Q_UNUSED(ownedTemplateSignature);
+    // This is a read-write association end
+
+    QM_D(QUmlTemplateableElement);
+    if (d->ownedTemplateSignature != ownedTemplateSignature) {
+        d->ownedTemplateSignature = ownedTemplateSignature;
+    }
 }
 
 /*!
@@ -89,20 +95,33 @@ void QUmlTemplateableElement::setOwnedTemplateSignature(QUmlTemplateSignature *o
  */
 QSet<QUmlTemplateBinding *> QUmlTemplateableElement::templateBinding() const
 {
-    return QSet<QUmlTemplateBinding *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlTemplateableElement);
+    return d->templateBinding;
 }
 
-void QUmlTemplateableElement::addTemplateBinding(QSet<QUmlTemplateBinding *> templateBinding)
+void QUmlTemplateableElement::addTemplateBinding(QUmlTemplateBinding *templateBinding)
 {
-    Q_UNUSED(templateBinding);
+    // This is a read-write association end
+
+    QM_D(QUmlTemplateableElement);
+    if (!d->templateBinding.contains(templateBinding)) {
+        d->templateBinding.insert(templateBinding);
+    }
 }
 
-void QUmlTemplateableElement::removeTemplateBinding(QSet<QUmlTemplateBinding *> templateBinding)
+void QUmlTemplateableElement::removeTemplateBinding(QUmlTemplateBinding *templateBinding)
 {
-    Q_UNUSED(templateBinding);
+    // This is a read-write association end
+
+    QM_D(QUmlTemplateableElement);
+    if (d->templateBinding.contains(templateBinding)) {
+        d->templateBinding.remove(templateBinding);
+    }
 }
 
-// Operations
+// OPERATIONS
 
 /*!
     The query isTemplate() returns whether this templateable element is actually a template.

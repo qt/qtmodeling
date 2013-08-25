@@ -62,24 +62,37 @@ QUmlOpaqueBehavior::QUmlOpaqueBehavior(bool create_d_ptr) :
         set_d_ptr(new QUmlOpaqueBehaviorPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Specifies the behavior in one or more languages.
  */
 QList<QString> QUmlOpaqueBehavior::body() const
 {
-    return QList<QString>();
+    // This is a read-write property
+
+    QM_D(const QUmlOpaqueBehavior);
+    return d->body;
 }
 
-void QUmlOpaqueBehavior::addBody(QList<QString> body)
+void QUmlOpaqueBehavior::addBody(QString body)
 {
-    Q_UNUSED(body);
+    // This is a read-write property
+
+    QM_D(QUmlOpaqueBehavior);
+    if (!d->body.contains(body)) {
+        d->body.append(body);
+    }
 }
 
-void QUmlOpaqueBehavior::removeBody(QList<QString> body)
+void QUmlOpaqueBehavior::removeBody(QString body)
 {
-    Q_UNUSED(body);
+    // This is a read-write property
+
+    QM_D(QUmlOpaqueBehavior);
+    if (d->body.contains(body)) {
+        d->body.removeAll(body);
+    }
 }
 
 /*!
@@ -87,17 +100,30 @@ void QUmlOpaqueBehavior::removeBody(QList<QString> body)
  */
 QList<QString> QUmlOpaqueBehavior::language() const
 {
-    return QList<QString>();
+    // This is a read-write property
+
+    QM_D(const QUmlOpaqueBehavior);
+    return d->language;
 }
 
-void QUmlOpaqueBehavior::addLanguage(QList<QString> language)
+void QUmlOpaqueBehavior::addLanguage(QString language)
 {
-    Q_UNUSED(language);
+    // This is a read-write property
+
+    QM_D(QUmlOpaqueBehavior);
+    if (!d->language.contains(language)) {
+        d->language.append(language);
+    }
 }
 
-void QUmlOpaqueBehavior::removeLanguage(QList<QString> language)
+void QUmlOpaqueBehavior::removeLanguage(QString language)
 {
-    Q_UNUSED(language);
+    // This is a read-write property
+
+    QM_D(QUmlOpaqueBehavior);
+    if (d->language.contains(language)) {
+        d->language.removeAll(language);
+    }
 }
 
 QT_END_NAMESPACE

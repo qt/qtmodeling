@@ -67,26 +67,26 @@ public:
 
     // Owned attributes
     QSet<QUmlClassifier *> conveyed() const;
-    void addConveyed(QSet<QUmlClassifier *> conveyed);
-    void removeConveyed(QSet<QUmlClassifier *> conveyed);
+    void addConveyed(QUmlClassifier *conveyed);
+    void removeConveyed(QUmlClassifier *conveyed);
     QSet<QUmlNamedElement *> informationSource() const;
-    void addInformationSource(QSet<QUmlNamedElement *> informationSource);
-    void removeInformationSource(QSet<QUmlNamedElement *> informationSource);
+    void addInformationSource(QUmlNamedElement *informationSource);
+    void removeInformationSource(QUmlNamedElement *informationSource);
     QSet<QUmlNamedElement *> informationTarget() const;
-    void addInformationTarget(QSet<QUmlNamedElement *> informationTarget);
-    void removeInformationTarget(QSet<QUmlNamedElement *> informationTarget);
+    void addInformationTarget(QUmlNamedElement *informationTarget);
+    void removeInformationTarget(QUmlNamedElement *informationTarget);
     QSet<QUmlRelationship *> realization() const;
-    void addRealization(QSet<QUmlRelationship *> realization);
-    void removeRealization(QSet<QUmlRelationship *> realization);
+    void addRealization(QUmlRelationship *realization);
+    void removeRealization(QUmlRelationship *realization);
     QSet<QUmlActivityEdge *> realizingActivityEdge() const;
-    void addRealizingActivityEdge(QSet<QUmlActivityEdge *> realizingActivityEdge);
-    void removeRealizingActivityEdge(QSet<QUmlActivityEdge *> realizingActivityEdge);
+    void addRealizingActivityEdge(QUmlActivityEdge *realizingActivityEdge);
+    void removeRealizingActivityEdge(QUmlActivityEdge *realizingActivityEdge);
     QSet<QUmlConnector *> realizingConnector() const;
-    void addRealizingConnector(QSet<QUmlConnector *> realizingConnector);
-    void removeRealizingConnector(QSet<QUmlConnector *> realizingConnector);
+    void addRealizingConnector(QUmlConnector *realizingConnector);
+    void removeRealizingConnector(QUmlConnector *realizingConnector);
     QSet<QUmlMessage *> realizingMessage() const;
-    void addRealizingMessage(QSet<QUmlMessage *> realizingMessage);
-    void removeRealizingMessage(QSet<QUmlMessage *> realizingMessage);
+    void addRealizingMessage(QUmlMessage *realizingMessage);
+    void removeRealizingMessage(QUmlMessage *realizingMessage);
 };
 
 QT_END_NAMESPACE

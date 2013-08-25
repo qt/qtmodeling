@@ -65,19 +65,27 @@ QUmlCreateLinkObjectAction::QUmlCreateLinkObjectAction(bool create_d_ptr) :
         set_d_ptr(new QUmlCreateLinkObjectActionPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Gives the output pin on which the result is put.
  */
 QUmlOutputPin *QUmlCreateLinkObjectAction::result() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlCreateLinkObjectAction);
+    return d->result;
 }
 
 void QUmlCreateLinkObjectAction::setResult(QUmlOutputPin *result)
 {
-    Q_UNUSED(result);
+    // This is a read-write association end
+
+    QM_D(QUmlCreateLinkObjectAction);
+    if (d->result != result) {
+        d->result = result;
+    }
 }
 
 QT_END_NAMESPACE

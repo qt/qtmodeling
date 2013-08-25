@@ -66,19 +66,27 @@ QUmlSubstitution::QUmlSubstitution(bool create_d_ptr) :
         set_d_ptr(new QUmlSubstitutionPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The contract with which the substituting classifier complies.
  */
 QUmlClassifier *QUmlSubstitution::contract() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlSubstitution);
+    return d->contract;
 }
 
 void QUmlSubstitution::setContract(QUmlClassifier *contract)
 {
-    Q_UNUSED(contract);
+    // This is a read-write association end
+
+    QM_D(QUmlSubstitution);
+    if (d->contract != contract) {
+        d->contract = contract;
+    }
 }
 
 /*!
@@ -86,12 +94,20 @@ void QUmlSubstitution::setContract(QUmlClassifier *contract)
  */
 QUmlClassifier *QUmlSubstitution::substitutingClassifier() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlSubstitution);
+    return d->substitutingClassifier;
 }
 
 void QUmlSubstitution::setSubstitutingClassifier(QUmlClassifier *substitutingClassifier)
 {
-    Q_UNUSED(substitutingClassifier);
+    // This is a read-write association end
+
+    QM_D(QUmlSubstitution);
+    if (d->substitutingClassifier != substitutingClassifier) {
+        d->substitutingClassifier = substitutingClassifier;
+    }
 }
 
 QT_END_NAMESPACE

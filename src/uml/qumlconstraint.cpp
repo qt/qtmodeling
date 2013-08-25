@@ -68,24 +68,37 @@ QUmlConstraint::QUmlConstraint(bool create_d_ptr) :
         set_d_ptr(new QUmlConstraintPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The ordered set of Elements referenced by this Constraint.
  */
 QList<QUmlElement *> QUmlConstraint::constrainedElement() const
 {
-    return QList<QUmlElement *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlConstraint);
+    return d->constrainedElement;
 }
 
-void QUmlConstraint::addConstrainedElement(QList<QUmlElement *> constrainedElement)
+void QUmlConstraint::addConstrainedElement(QUmlElement *constrainedElement)
 {
-    Q_UNUSED(constrainedElement);
+    // This is a read-write association end
+
+    QM_D(QUmlConstraint);
+    if (!d->constrainedElement.contains(constrainedElement)) {
+        d->constrainedElement.append(constrainedElement);
+    }
 }
 
-void QUmlConstraint::removeConstrainedElement(QList<QUmlElement *> constrainedElement)
+void QUmlConstraint::removeConstrainedElement(QUmlElement *constrainedElement)
 {
-    Q_UNUSED(constrainedElement);
+    // This is a read-write association end
+
+    QM_D(QUmlConstraint);
+    if (d->constrainedElement.contains(constrainedElement)) {
+        d->constrainedElement.removeAll(constrainedElement);
+    }
 }
 
 /*!
@@ -93,12 +106,20 @@ void QUmlConstraint::removeConstrainedElement(QList<QUmlElement *> constrainedEl
  */
 QUmlNamespace *QUmlConstraint::context() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlConstraint);
+    return d->context;
 }
 
 void QUmlConstraint::setContext(QUmlNamespace *context)
 {
-    Q_UNUSED(context);
+    // This is a read-write association end
+
+    QM_D(QUmlConstraint);
+    if (d->context != context) {
+        d->context = context;
+    }
 }
 
 /*!
@@ -106,12 +127,20 @@ void QUmlConstraint::setContext(QUmlNamespace *context)
  */
 QUmlValueSpecification *QUmlConstraint::specification() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlConstraint);
+    return d->specification;
 }
 
 void QUmlConstraint::setSpecification(QUmlValueSpecification *specification)
 {
-    Q_UNUSED(specification);
+    // This is a read-write association end
+
+    QM_D(QUmlConstraint);
+    if (d->specification != specification) {
+        d->specification = specification;
+    }
 }
 
 QT_END_NAMESPACE

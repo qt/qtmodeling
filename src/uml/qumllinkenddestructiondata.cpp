@@ -66,19 +66,27 @@ QUmlLinkEndDestructionData::QUmlLinkEndDestructionData(bool create_d_ptr) :
         set_d_ptr(new QUmlLinkEndDestructionDataPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Specifies the position of an existing link to be destroyed in ordered nonunique association ends. The type of the pin is UnlimitedNatural, but the value cannot be zero or unlimited.
  */
 QUmlInputPin *QUmlLinkEndDestructionData::destroyAt() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlLinkEndDestructionData);
+    return d->destroyAt;
 }
 
 void QUmlLinkEndDestructionData::setDestroyAt(QUmlInputPin *destroyAt)
 {
-    Q_UNUSED(destroyAt);
+    // This is a read-write association end
+
+    QM_D(QUmlLinkEndDestructionData);
+    if (d->destroyAt != destroyAt) {
+        d->destroyAt = destroyAt;
+    }
 }
 
 /*!
@@ -86,12 +94,20 @@ void QUmlLinkEndDestructionData::setDestroyAt(QUmlInputPin *destroyAt)
  */
 bool QUmlLinkEndDestructionData::isDestroyDuplicates() const
 {
-    return bool();
+    // This is a read-write property
+
+    QM_D(const QUmlLinkEndDestructionData);
+    return d->isDestroyDuplicates;
 }
 
 void QUmlLinkEndDestructionData::setDestroyDuplicates(bool isDestroyDuplicates)
 {
-    Q_UNUSED(isDestroyDuplicates);
+    // This is a read-write property
+
+    QM_D(QUmlLinkEndDestructionData);
+    if (d->isDestroyDuplicates != isDestroyDuplicates) {
+        d->isDestroyDuplicates = isDestroyDuplicates;
+    }
 }
 
 QT_END_NAMESPACE

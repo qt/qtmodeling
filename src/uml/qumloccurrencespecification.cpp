@@ -66,19 +66,27 @@ QUmlOccurrenceSpecification::QUmlOccurrenceSpecification(bool create_d_ptr) :
         set_d_ptr(new QUmlOccurrenceSpecificationPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     References the Lifeline on which the OccurrenceSpecification appears.
  */
 QUmlLifeline *QUmlOccurrenceSpecification::covered() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlOccurrenceSpecification);
+    return d->covered;
 }
 
 void QUmlOccurrenceSpecification::setCovered(QUmlLifeline *covered)
 {
-    Q_UNUSED(covered);
+    // This is a read-write association end
+
+    QM_D(QUmlOccurrenceSpecification);
+    if (d->covered != covered) {
+        d->covered = covered;
+    }
 }
 
 /*!
@@ -86,17 +94,30 @@ void QUmlOccurrenceSpecification::setCovered(QUmlLifeline *covered)
  */
 QSet<QUmlGeneralOrdering *> QUmlOccurrenceSpecification::toAfter() const
 {
-    return QSet<QUmlGeneralOrdering *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlOccurrenceSpecification);
+    return d->toAfter;
 }
 
-void QUmlOccurrenceSpecification::addToAfter(QSet<QUmlGeneralOrdering *> toAfter)
+void QUmlOccurrenceSpecification::addToAfter(QUmlGeneralOrdering *toAfter)
 {
-    Q_UNUSED(toAfter);
+    // This is a read-write association end
+
+    QM_D(QUmlOccurrenceSpecification);
+    if (!d->toAfter.contains(toAfter)) {
+        d->toAfter.insert(toAfter);
+    }
 }
 
-void QUmlOccurrenceSpecification::removeToAfter(QSet<QUmlGeneralOrdering *> toAfter)
+void QUmlOccurrenceSpecification::removeToAfter(QUmlGeneralOrdering *toAfter)
 {
-    Q_UNUSED(toAfter);
+    // This is a read-write association end
+
+    QM_D(QUmlOccurrenceSpecification);
+    if (d->toAfter.contains(toAfter)) {
+        d->toAfter.remove(toAfter);
+    }
 }
 
 /*!
@@ -104,17 +125,30 @@ void QUmlOccurrenceSpecification::removeToAfter(QSet<QUmlGeneralOrdering *> toAf
  */
 QSet<QUmlGeneralOrdering *> QUmlOccurrenceSpecification::toBefore() const
 {
-    return QSet<QUmlGeneralOrdering *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlOccurrenceSpecification);
+    return d->toBefore;
 }
 
-void QUmlOccurrenceSpecification::addToBefore(QSet<QUmlGeneralOrdering *> toBefore)
+void QUmlOccurrenceSpecification::addToBefore(QUmlGeneralOrdering *toBefore)
 {
-    Q_UNUSED(toBefore);
+    // This is a read-write association end
+
+    QM_D(QUmlOccurrenceSpecification);
+    if (!d->toBefore.contains(toBefore)) {
+        d->toBefore.insert(toBefore);
+    }
 }
 
-void QUmlOccurrenceSpecification::removeToBefore(QSet<QUmlGeneralOrdering *> toBefore)
+void QUmlOccurrenceSpecification::removeToBefore(QUmlGeneralOrdering *toBefore)
 {
-    Q_UNUSED(toBefore);
+    // This is a read-write association end
+
+    QM_D(QUmlOccurrenceSpecification);
+    if (d->toBefore.contains(toBefore)) {
+        d->toBefore.remove(toBefore);
+    }
 }
 
 QT_END_NAMESPACE

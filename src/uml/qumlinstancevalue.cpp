@@ -65,19 +65,27 @@ QUmlInstanceValue::QUmlInstanceValue(bool create_d_ptr) :
         set_d_ptr(new QUmlInstanceValuePrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The instance that is the specified value.
  */
 QUmlInstanceSpecification *QUmlInstanceValue::instance() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlInstanceValue);
+    return d->instance;
 }
 
 void QUmlInstanceValue::setInstance(QUmlInstanceSpecification *instance)
 {
-    Q_UNUSED(instance);
+    // This is a read-write association end
+
+    QM_D(QUmlInstanceValue);
+    if (d->instance != instance) {
+        d->instance = instance;
+    }
 }
 
 QT_END_NAMESPACE

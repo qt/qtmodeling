@@ -59,7 +59,6 @@ public:
     QList<QUmlValueSpecification *> argument;
     QUmlConnector *connector;
     QUmlInteraction *interaction;
-    QtUml::MessageKind messageKind;
     QtUml::MessageSort messageSort;
     QUmlMessageEnd *receiveEvent;
     QUmlMessageEnd *sendEvent;

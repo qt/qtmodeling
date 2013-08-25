@@ -73,7 +73,7 @@ public QModelingObjectPrivate
 public:
     Q${namespace}${className}Private();
 
-[%- FOREACH attribute = class.findnodes("ownedAttribute") %]
+[%- FOREACH attribute = class.findnodes("ownedAttribute[(@isDerived=\"false\" or not(@isDerived)) or (@isDerivedUnion and @isDerivedUnion=\"true\")]") %]
     [% QT_TYPE(namespace, attribute) -%][%- QT_ATTRIBUTE(attribute) %];
 [%- END %]
 };

@@ -64,13 +64,17 @@ QUmlEncapsulatedClassifier::QUmlEncapsulatedClassifier(bool create_d_ptr) :
         set_d_ptr(new QUmlEncapsulatedClassifierPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     References a set of ports that an encapsulated classifier owns.
  */
 QSet<QUmlPort *> QUmlEncapsulatedClassifier::ownedPort() const
 {
+    // This is a read-only derived association end
+
+    qWarning("QUmlEncapsulatedClassifier::ownedPort(): to be implemented (this is a derived association end)");
+
     return QSet<QUmlPort *>();
 }
 

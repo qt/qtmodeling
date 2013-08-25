@@ -57,7 +57,6 @@ public:
     QUmlStereotypePrivate();
 
     QSet<QUmlImage *> icon;
-    QUmlProfile *profile;
 };
 
 QT_END_NAMESPACE

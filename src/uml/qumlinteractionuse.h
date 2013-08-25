@@ -63,11 +63,11 @@ public:
 
     // Owned attributes
     QSet<QUmlGate *> actualGate() const;
-    void addActualGate(QSet<QUmlGate *> actualGate);
-    void removeActualGate(QSet<QUmlGate *> actualGate);
+    void addActualGate(QUmlGate *actualGate);
+    void removeActualGate(QUmlGate *actualGate);
     QList<QUmlValueSpecification *> argument() const;
-    void addArgument(QList<QUmlValueSpecification *> argument);
-    void removeArgument(QList<QUmlValueSpecification *> argument);
+    void addArgument(QUmlValueSpecification *argument);
+    void removeArgument(QUmlValueSpecification *argument);
     QUmlInteraction *refersTo() const;
     void setRefersTo(QUmlInteraction *refersTo);
     QUmlValueSpecification *returnValue() const;

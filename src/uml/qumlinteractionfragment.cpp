@@ -69,24 +69,37 @@ QUmlInteractionFragment::QUmlInteractionFragment(bool create_d_ptr) :
         set_d_ptr(new QUmlInteractionFragmentPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     References the Lifelines that the InteractionFragment involves.
  */
 QSet<QUmlLifeline *> QUmlInteractionFragment::covered() const
 {
-    return QSet<QUmlLifeline *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlInteractionFragment);
+    return d->covered;
 }
 
-void QUmlInteractionFragment::addCovered(QSet<QUmlLifeline *> covered)
+void QUmlInteractionFragment::addCovered(QUmlLifeline *covered)
 {
-    Q_UNUSED(covered);
+    // This is a read-write association end
+
+    QM_D(QUmlInteractionFragment);
+    if (!d->covered.contains(covered)) {
+        d->covered.insert(covered);
+    }
 }
 
-void QUmlInteractionFragment::removeCovered(QSet<QUmlLifeline *> covered)
+void QUmlInteractionFragment::removeCovered(QUmlLifeline *covered)
 {
-    Q_UNUSED(covered);
+    // This is a read-write association end
+
+    QM_D(QUmlInteractionFragment);
+    if (d->covered.contains(covered)) {
+        d->covered.remove(covered);
+    }
 }
 
 /*!
@@ -94,12 +107,20 @@ void QUmlInteractionFragment::removeCovered(QSet<QUmlLifeline *> covered)
  */
 QUmlInteraction *QUmlInteractionFragment::enclosingInteraction() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlInteractionFragment);
+    return d->enclosingInteraction;
 }
 
 void QUmlInteractionFragment::setEnclosingInteraction(QUmlInteraction *enclosingInteraction)
 {
-    Q_UNUSED(enclosingInteraction);
+    // This is a read-write association end
+
+    QM_D(QUmlInteractionFragment);
+    if (d->enclosingInteraction != enclosingInteraction) {
+        d->enclosingInteraction = enclosingInteraction;
+    }
 }
 
 /*!
@@ -107,12 +128,20 @@ void QUmlInteractionFragment::setEnclosingInteraction(QUmlInteraction *enclosing
  */
 QUmlInteractionOperand *QUmlInteractionFragment::enclosingOperand() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlInteractionFragment);
+    return d->enclosingOperand;
 }
 
 void QUmlInteractionFragment::setEnclosingOperand(QUmlInteractionOperand *enclosingOperand)
 {
-    Q_UNUSED(enclosingOperand);
+    // This is a read-write association end
+
+    QM_D(QUmlInteractionFragment);
+    if (d->enclosingOperand != enclosingOperand) {
+        d->enclosingOperand = enclosingOperand;
+    }
 }
 
 /*!
@@ -120,17 +149,30 @@ void QUmlInteractionFragment::setEnclosingOperand(QUmlInteractionOperand *enclos
  */
 QSet<QUmlGeneralOrdering *> QUmlInteractionFragment::generalOrdering() const
 {
-    return QSet<QUmlGeneralOrdering *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlInteractionFragment);
+    return d->generalOrdering;
 }
 
-void QUmlInteractionFragment::addGeneralOrdering(QSet<QUmlGeneralOrdering *> generalOrdering)
+void QUmlInteractionFragment::addGeneralOrdering(QUmlGeneralOrdering *generalOrdering)
 {
-    Q_UNUSED(generalOrdering);
+    // This is a read-write association end
+
+    QM_D(QUmlInteractionFragment);
+    if (!d->generalOrdering.contains(generalOrdering)) {
+        d->generalOrdering.insert(generalOrdering);
+    }
 }
 
-void QUmlInteractionFragment::removeGeneralOrdering(QSet<QUmlGeneralOrdering *> generalOrdering)
+void QUmlInteractionFragment::removeGeneralOrdering(QUmlGeneralOrdering *generalOrdering)
 {
-    Q_UNUSED(generalOrdering);
+    // This is a read-write association end
+
+    QM_D(QUmlInteractionFragment);
+    if (d->generalOrdering.contains(generalOrdering)) {
+        d->generalOrdering.remove(generalOrdering);
+    }
 }
 
 QT_END_NAMESPACE

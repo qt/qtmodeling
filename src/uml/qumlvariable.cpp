@@ -69,19 +69,27 @@ QUmlVariable::QUmlVariable(bool create_d_ptr) :
         set_d_ptr(new QUmlVariablePrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     An activity that owns the variable.
  */
 QUmlActivity *QUmlVariable::activityScope() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlVariable);
+    return d->activityScope;
 }
 
 void QUmlVariable::setActivityScope(QUmlActivity *activityScope)
 {
-    Q_UNUSED(activityScope);
+    // This is a read-write association end
+
+    QM_D(QUmlVariable);
+    if (d->activityScope != activityScope) {
+        d->activityScope = activityScope;
+    }
 }
 
 /*!
@@ -89,15 +97,23 @@ void QUmlVariable::setActivityScope(QUmlActivity *activityScope)
  */
 QUmlStructuredActivityNode *QUmlVariable::scope() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlVariable);
+    return d->scope;
 }
 
 void QUmlVariable::setScope(QUmlStructuredActivityNode *scope)
 {
-    Q_UNUSED(scope);
+    // This is a read-write association end
+
+    QM_D(QUmlVariable);
+    if (d->scope != scope) {
+        d->scope = scope;
+    }
 }
 
-// Operations
+// OPERATIONS
 
 /*!
     The isAccessibleBy() operation is not defined in standard UML. Implementations should define it to specify which actions can access a variable.

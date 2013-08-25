@@ -57,7 +57,6 @@ class Q_UML_EXPORT QUmlAssociationPrivate : public QUmlClassifierPrivate, public
 public:
     QUmlAssociationPrivate();
 
-    QList<QUmlType *> endType;
     bool isDerived;
     QList<QUmlProperty *> memberEnd;
     QSet<QUmlProperty *> navigableOwnedEnd;

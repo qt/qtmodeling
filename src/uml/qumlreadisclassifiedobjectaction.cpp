@@ -70,19 +70,27 @@ QUmlReadIsClassifiedObjectAction::QUmlReadIsClassifiedObjectAction(bool create_d
         set_d_ptr(new QUmlReadIsClassifiedObjectActionPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The classifier against which the classification of the input object is tested.
  */
 QUmlClassifier *QUmlReadIsClassifiedObjectAction::classifier() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlReadIsClassifiedObjectAction);
+    return d->classifier;
 }
 
 void QUmlReadIsClassifiedObjectAction::setClassifier(QUmlClassifier *classifier)
 {
-    Q_UNUSED(classifier);
+    // This is a read-write association end
+
+    QM_D(QUmlReadIsClassifiedObjectAction);
+    if (d->classifier != classifier) {
+        d->classifier = classifier;
+    }
 }
 
 /*!
@@ -90,12 +98,20 @@ void QUmlReadIsClassifiedObjectAction::setClassifier(QUmlClassifier *classifier)
  */
 bool QUmlReadIsClassifiedObjectAction::isDirect() const
 {
-    return bool();
+    // This is a read-write property
+
+    QM_D(const QUmlReadIsClassifiedObjectAction);
+    return d->isDirect;
 }
 
 void QUmlReadIsClassifiedObjectAction::setDirect(bool isDirect)
 {
-    Q_UNUSED(isDirect);
+    // This is a read-write property
+
+    QM_D(QUmlReadIsClassifiedObjectAction);
+    if (d->isDirect != isDirect) {
+        d->isDirect = isDirect;
+    }
 }
 
 /*!
@@ -103,12 +119,20 @@ void QUmlReadIsClassifiedObjectAction::setDirect(bool isDirect)
  */
 QUmlInputPin *QUmlReadIsClassifiedObjectAction::object() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlReadIsClassifiedObjectAction);
+    return d->object;
 }
 
 void QUmlReadIsClassifiedObjectAction::setObject(QUmlInputPin *object)
 {
-    Q_UNUSED(object);
+    // This is a read-write association end
+
+    QM_D(QUmlReadIsClassifiedObjectAction);
+    if (d->object != object) {
+        d->object = object;
+    }
 }
 
 /*!
@@ -116,12 +140,20 @@ void QUmlReadIsClassifiedObjectAction::setObject(QUmlInputPin *object)
  */
 QUmlOutputPin *QUmlReadIsClassifiedObjectAction::result() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlReadIsClassifiedObjectAction);
+    return d->result;
 }
 
 void QUmlReadIsClassifiedObjectAction::setResult(QUmlOutputPin *result)
 {
-    Q_UNUSED(result);
+    // This is a read-write association end
+
+    QM_D(QUmlReadIsClassifiedObjectAction);
+    if (d->result != result) {
+        d->result = result;
+    }
 }
 
 QT_END_NAMESPACE

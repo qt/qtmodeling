@@ -63,22 +63,30 @@ QUmlType::QUmlType(bool create_d_ptr) :
         set_d_ptr(new QUmlTypePrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Specifies the owning package of this classifier, if any.
  */
 QUmlPackage *QUmlType::package() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlType);
+    return d->package;
 }
 
 void QUmlType::setPackage(QUmlPackage *package)
 {
-    Q_UNUSED(package);
+    // This is a read-write association end
+
+    QM_D(QUmlType);
+    if (d->package != package) {
+        d->package = package;
+    }
 }
 
-// Operations
+// OPERATIONS
 
 /*!
     The query conformsTo() gives true for a type that conforms to another. By default, two types do not conform to each other. This query is intended to be redefined for specific conformance situations.

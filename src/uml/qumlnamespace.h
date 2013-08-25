@@ -64,17 +64,17 @@ public:
 
     // Owned attributes
     QSet<QUmlElementImport *> elementImport() const;
-    void addElementImport(QSet<QUmlElementImport *> elementImport);
-    void removeElementImport(QSet<QUmlElementImport *> elementImport);
+    void addElementImport(QUmlElementImport *elementImport);
+    void removeElementImport(QUmlElementImport *elementImport);
     QSet<QUmlPackageableElement *> importedMember() const;
     QSet<QUmlNamedElement *> member() const;
     QSet<QUmlNamedElement *> ownedMember() const;
     QSet<QUmlConstraint *> ownedRule() const;
-    void addOwnedRule(QSet<QUmlConstraint *> ownedRule);
-    void removeOwnedRule(QSet<QUmlConstraint *> ownedRule);
+    void addOwnedRule(QUmlConstraint *ownedRule);
+    void removeOwnedRule(QUmlConstraint *ownedRule);
     QSet<QUmlPackageImport *> packageImport() const;
-    void addPackageImport(QSet<QUmlPackageImport *> packageImport);
-    void removePackageImport(QSet<QUmlPackageImport *> packageImport);
+    void addPackageImport(QUmlPackageImport *packageImport);
+    void removePackageImport(QUmlPackageImport *packageImport);
 
     // Operations
     QSet<QUmlPackageableElement *> excludeCollisions(QSet<QUmlPackageableElement *> imps) const;

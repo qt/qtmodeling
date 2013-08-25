@@ -70,19 +70,27 @@ QUmlReduceAction::QUmlReduceAction(bool create_d_ptr) :
         set_d_ptr(new QUmlReduceActionPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The collection to be reduced.
  */
 QUmlInputPin *QUmlReduceAction::collection() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlReduceAction);
+    return d->collection;
 }
 
 void QUmlReduceAction::setCollection(QUmlInputPin *collection)
 {
-    Q_UNUSED(collection);
+    // This is a read-write association end
+
+    QM_D(QUmlReduceAction);
+    if (d->collection != collection) {
+        d->collection = collection;
+    }
 }
 
 /*!
@@ -90,12 +98,20 @@ void QUmlReduceAction::setCollection(QUmlInputPin *collection)
  */
 bool QUmlReduceAction::isOrdered() const
 {
-    return bool();
+    // This is a read-write property
+
+    QM_D(const QUmlReduceAction);
+    return d->isOrdered;
 }
 
 void QUmlReduceAction::setOrdered(bool isOrdered)
 {
-    Q_UNUSED(isOrdered);
+    // This is a read-write property
+
+    QM_D(QUmlReduceAction);
+    if (d->isOrdered != isOrdered) {
+        d->isOrdered = isOrdered;
+    }
 }
 
 /*!
@@ -103,12 +119,20 @@ void QUmlReduceAction::setOrdered(bool isOrdered)
  */
 QUmlBehavior *QUmlReduceAction::reducer() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlReduceAction);
+    return d->reducer;
 }
 
 void QUmlReduceAction::setReducer(QUmlBehavior *reducer)
 {
-    Q_UNUSED(reducer);
+    // This is a read-write association end
+
+    QM_D(QUmlReduceAction);
+    if (d->reducer != reducer) {
+        d->reducer = reducer;
+    }
 }
 
 /*!
@@ -116,12 +140,20 @@ void QUmlReduceAction::setReducer(QUmlBehavior *reducer)
  */
 QUmlOutputPin *QUmlReduceAction::result() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlReduceAction);
+    return d->result;
 }
 
 void QUmlReduceAction::setResult(QUmlOutputPin *result)
 {
-    Q_UNUSED(result);
+    // This is a read-write association end
+
+    QM_D(QUmlReduceAction);
+    if (d->result != result) {
+        d->result = result;
+    }
 }
 
 QT_END_NAMESPACE

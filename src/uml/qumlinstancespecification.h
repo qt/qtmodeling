@@ -65,11 +65,11 @@ public:
 
     // Owned attributes
     QSet<QUmlClassifier *> classifier() const;
-    void addClassifier(QSet<QUmlClassifier *> classifier);
-    void removeClassifier(QSet<QUmlClassifier *> classifier);
+    void addClassifier(QUmlClassifier *classifier);
+    void removeClassifier(QUmlClassifier *classifier);
     QSet<QUmlSlot *> slot_() const;
-    void addSlot(QSet<QUmlSlot *> slot_);
-    void removeSlot(QSet<QUmlSlot *> slot_);
+    void addSlot(QUmlSlot *slot_);
+    void removeSlot(QUmlSlot *slot_);
     QUmlValueSpecification *specification() const;
     void setSpecification(QUmlValueSpecification *specification);
 };

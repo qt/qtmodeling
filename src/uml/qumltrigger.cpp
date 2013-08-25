@@ -66,19 +66,27 @@ QUmlTrigger::QUmlTrigger(bool create_d_ptr) :
         set_d_ptr(new QUmlTriggerPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The event that causes the trigger.
  */
 QUmlEvent *QUmlTrigger::event() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlTrigger);
+    return d->event;
 }
 
 void QUmlTrigger::setEvent(QUmlEvent *event)
 {
-    Q_UNUSED(event);
+    // This is a read-write association end
+
+    QM_D(QUmlTrigger);
+    if (d->event != event) {
+        d->event = event;
+    }
 }
 
 /*!
@@ -86,17 +94,30 @@ void QUmlTrigger::setEvent(QUmlEvent *event)
  */
 QSet<QUmlPort *> QUmlTrigger::port() const
 {
-    return QSet<QUmlPort *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlTrigger);
+    return d->port;
 }
 
-void QUmlTrigger::addPort(QSet<QUmlPort *> port)
+void QUmlTrigger::addPort(QUmlPort *port)
 {
-    Q_UNUSED(port);
+    // This is a read-write association end
+
+    QM_D(QUmlTrigger);
+    if (!d->port.contains(port)) {
+        d->port.insert(port);
+    }
 }
 
-void QUmlTrigger::removePort(QSet<QUmlPort *> port)
+void QUmlTrigger::removePort(QUmlPort *port)
 {
-    Q_UNUSED(port);
+    // This is a read-write association end
+
+    QM_D(QUmlTrigger);
+    if (d->port.contains(port)) {
+        d->port.remove(port);
+    }
 }
 
 QT_END_NAMESPACE

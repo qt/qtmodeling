@@ -51,6 +51,7 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
+
 class QUmlNodePrivate;
 class Q_UML_EXPORT QUmlNode : public QUmlClass, public QUmlDeploymentTarget
 {
@@ -59,8 +60,8 @@ public:
 
     // Owned attributes
     QSet<QUmlNode *> nestedNode() const;
-    void addNestedNode(QSet<QUmlNode *> nestedNode);
-    void removeNestedNode(QSet<QUmlNode *> nestedNode);
+    void addNestedNode(QUmlNode *nestedNode);
+    void removeNestedNode(QUmlNode *nestedNode);
 };
 
 QT_END_NAMESPACE

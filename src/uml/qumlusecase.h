@@ -64,17 +64,17 @@ public:
 
     // Owned attributes
     QSet<QUmlExtend *> extend() const;
-    void addExtend(QSet<QUmlExtend *> extend);
-    void removeExtend(QSet<QUmlExtend *> extend);
+    void addExtend(QUmlExtend *extend);
+    void removeExtend(QUmlExtend *extend);
     QSet<QUmlExtensionPoint *> extensionPoint() const;
-    void addExtensionPoint(QSet<QUmlExtensionPoint *> extensionPoint);
-    void removeExtensionPoint(QSet<QUmlExtensionPoint *> extensionPoint);
+    void addExtensionPoint(QUmlExtensionPoint *extensionPoint);
+    void removeExtensionPoint(QUmlExtensionPoint *extensionPoint);
     QSet<QUmlInclude *> include() const;
-    void addInclude(QSet<QUmlInclude *> include);
-    void removeInclude(QSet<QUmlInclude *> include);
+    void addInclude(QUmlInclude *include);
+    void removeInclude(QUmlInclude *include);
     QSet<QUmlClassifier *> subject() const;
-    void addSubject(QSet<QUmlClassifier *> subject);
-    void removeSubject(QSet<QUmlClassifier *> subject);
+    void addSubject(QUmlClassifier *subject);
+    void removeSubject(QUmlClassifier *subject);
 
     // Operations
     QSet<QUmlUseCase *> allIncludedUseCases() const;

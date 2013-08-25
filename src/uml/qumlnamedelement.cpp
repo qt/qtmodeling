@@ -65,30 +65,41 @@ QUmlNamedElementPrivate::QUmlNamedElementPrivate() :
 QUmlNamedElement::QUmlNamedElement(bool create_d_ptr) :
     QUmlElement(false)
 {
-    if (create_d_ptr) {
-        qDebug() << "QUmlNamedElement::QUmlNamedElement criando";
+    if (create_d_ptr)
         set_d_ptr(new QUmlNamedElementPrivate);
-    }
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Indicates the dependencies that reference the client.
  */
 QSet<QUmlDependency *> QUmlNamedElement::clientDependency() const
 {
-    return QSet<QUmlDependency *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlNamedElement);
+    return d->clientDependency;
 }
 
-void QUmlNamedElement::addClientDependency(QSet<QUmlDependency *> clientDependency)
+void QUmlNamedElement::addClientDependency(QUmlDependency *clientDependency)
 {
-    Q_UNUSED(clientDependency);
+    // This is a read-write association end
+
+    QM_D(QUmlNamedElement);
+    if (!d->clientDependency.contains(clientDependency)) {
+        d->clientDependency.insert(clientDependency);
+    }
 }
 
-void QUmlNamedElement::removeClientDependency(QSet<QUmlDependency *> clientDependency)
+void QUmlNamedElement::removeClientDependency(QUmlDependency *clientDependency)
 {
-    Q_UNUSED(clientDependency);
+    // This is a read-write association end
+
+    QM_D(QUmlNamedElement);
+    if (d->clientDependency.contains(clientDependency)) {
+        d->clientDependency.remove(clientDependency);
+    }
 }
 
 /*!
@@ -96,12 +107,20 @@ void QUmlNamedElement::removeClientDependency(QSet<QUmlDependency *> clientDepen
  */
 QString QUmlNamedElement::name() const
 {
-    return QString();
+    // This is a read-write property
+
+    QM_D(const QUmlNamedElement);
+    return d->name;
 }
 
 void QUmlNamedElement::setName(QString name)
 {
-    Q_UNUSED(name);
+    // This is a read-write property
+
+    QM_D(QUmlNamedElement);
+    if (d->name != name) {
+        d->name = name;
+    }
 }
 
 /*!
@@ -109,12 +128,20 @@ void QUmlNamedElement::setName(QString name)
  */
 QUmlStringExpression *QUmlNamedElement::nameExpression() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlNamedElement);
+    return d->nameExpression;
 }
 
 void QUmlNamedElement::setNameExpression(QUmlStringExpression *nameExpression)
 {
-    Q_UNUSED(nameExpression);
+    // This is a read-write association end
+
+    QM_D(QUmlNamedElement);
+    if (d->nameExpression != nameExpression) {
+        d->nameExpression = nameExpression;
+    }
 }
 
 /*!
@@ -122,7 +149,10 @@ void QUmlNamedElement::setNameExpression(QUmlStringExpression *nameExpression)
  */
 QUmlNamespace *QUmlNamedElement::namespace_() const
 {
-    return 0;
+    // This is a read-only derived union association end
+
+    QM_D(const QUmlNamedElement);
+    return d->namespace_;
 }
 
 /*!
@@ -130,6 +160,10 @@ QUmlNamespace *QUmlNamedElement::namespace_() const
  */
 QString QUmlNamedElement::qualifiedName() const
 {
+    // This is a read-only derived property
+
+    qWarning("QUmlNamedElement::qualifiedName(): to be implemented (this is a derived property)");
+
     return QString();
 }
 
@@ -138,15 +172,23 @@ QString QUmlNamedElement::qualifiedName() const
  */
 QtUml::VisibilityKind QUmlNamedElement::visibility() const
 {
-    return QtUml::VisibilityKind();
+    // This is a read-write property
+
+    QM_D(const QUmlNamedElement);
+    return d->visibility;
 }
 
 void QUmlNamedElement::setVisibility(QtUml::VisibilityKind visibility)
 {
-    Q_UNUSED(visibility);
+    // This is a read-write property
+
+    QM_D(QUmlNamedElement);
+    if (d->visibility != visibility) {
+        d->visibility = visibility;
+    }
 }
 
-// Operations
+// OPERATIONS
 
 /*!
     The query allNamespaces() gives the sequence of namespaces in which the NamedElement is nested, working outwards.

@@ -50,7 +50,6 @@
 QT_BEGIN_NAMESPACE
 
 QUmlBehaviorPrivate::QUmlBehaviorPrivate() :
-    context(0),
     isReentrant(true),
     specification(0)
 {
@@ -71,13 +70,17 @@ QUmlBehavior::QUmlBehavior(bool create_d_ptr) :
         set_d_ptr(new QUmlBehaviorPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The classifier that is the context for the execution of the behavior. If the behavior is owned by a BehavioredClassifier, that classifier is the context. Otherwise, the context is the first BehavioredClassifier reached by following the chain of owner relationships. For example, following this algorithm, the context of an entry action in a state machine is the classifier that owns the state machine. The features of the context classifier as well as the elements visible to the context classifier are visible to the behavior.
  */
 QUmlBehavioredClassifier *QUmlBehavior::context() const
 {
+    // This is a read-only derived association end
+
+    qWarning("QUmlBehavior::context(): to be implemented (this is a derived association end)");
+
     return 0;
 }
 
@@ -86,12 +89,20 @@ QUmlBehavioredClassifier *QUmlBehavior::context() const
  */
 bool QUmlBehavior::isReentrant() const
 {
-    return bool();
+    // This is a read-write property
+
+    QM_D(const QUmlBehavior);
+    return d->isReentrant;
 }
 
 void QUmlBehavior::setReentrant(bool isReentrant)
 {
-    Q_UNUSED(isReentrant);
+    // This is a read-write property
+
+    QM_D(QUmlBehavior);
+    if (d->isReentrant != isReentrant) {
+        d->isReentrant = isReentrant;
+    }
 }
 
 /*!
@@ -99,17 +110,30 @@ void QUmlBehavior::setReentrant(bool isReentrant)
  */
 QList<QUmlParameter *> QUmlBehavior::ownedParameter() const
 {
-    return QList<QUmlParameter *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlBehavior);
+    return d->ownedParameter;
 }
 
-void QUmlBehavior::addOwnedParameter(QList<QUmlParameter *> ownedParameter)
+void QUmlBehavior::addOwnedParameter(QUmlParameter *ownedParameter)
 {
-    Q_UNUSED(ownedParameter);
+    // This is a read-write association end
+
+    QM_D(QUmlBehavior);
+    if (!d->ownedParameter.contains(ownedParameter)) {
+        d->ownedParameter.append(ownedParameter);
+    }
 }
 
-void QUmlBehavior::removeOwnedParameter(QList<QUmlParameter *> ownedParameter)
+void QUmlBehavior::removeOwnedParameter(QUmlParameter *ownedParameter)
 {
-    Q_UNUSED(ownedParameter);
+    // This is a read-write association end
+
+    QM_D(QUmlBehavior);
+    if (d->ownedParameter.contains(ownedParameter)) {
+        d->ownedParameter.removeAll(ownedParameter);
+    }
 }
 
 /*!
@@ -117,17 +141,30 @@ void QUmlBehavior::removeOwnedParameter(QList<QUmlParameter *> ownedParameter)
  */
 QSet<QUmlParameterSet *> QUmlBehavior::ownedParameterSet() const
 {
-    return QSet<QUmlParameterSet *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlBehavior);
+    return d->ownedParameterSet;
 }
 
-void QUmlBehavior::addOwnedParameterSet(QSet<QUmlParameterSet *> ownedParameterSet)
+void QUmlBehavior::addOwnedParameterSet(QUmlParameterSet *ownedParameterSet)
 {
-    Q_UNUSED(ownedParameterSet);
+    // This is a read-write association end
+
+    QM_D(QUmlBehavior);
+    if (!d->ownedParameterSet.contains(ownedParameterSet)) {
+        d->ownedParameterSet.insert(ownedParameterSet);
+    }
 }
 
-void QUmlBehavior::removeOwnedParameterSet(QSet<QUmlParameterSet *> ownedParameterSet)
+void QUmlBehavior::removeOwnedParameterSet(QUmlParameterSet *ownedParameterSet)
 {
-    Q_UNUSED(ownedParameterSet);
+    // This is a read-write association end
+
+    QM_D(QUmlBehavior);
+    if (d->ownedParameterSet.contains(ownedParameterSet)) {
+        d->ownedParameterSet.remove(ownedParameterSet);
+    }
 }
 
 /*!
@@ -135,17 +172,30 @@ void QUmlBehavior::removeOwnedParameterSet(QSet<QUmlParameterSet *> ownedParamet
  */
 QSet<QUmlConstraint *> QUmlBehavior::postcondition() const
 {
-    return QSet<QUmlConstraint *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlBehavior);
+    return d->postcondition;
 }
 
-void QUmlBehavior::addPostcondition(QSet<QUmlConstraint *> postcondition)
+void QUmlBehavior::addPostcondition(QUmlConstraint *postcondition)
 {
-    Q_UNUSED(postcondition);
+    // This is a read-write association end
+
+    QM_D(QUmlBehavior);
+    if (!d->postcondition.contains(postcondition)) {
+        d->postcondition.insert(postcondition);
+    }
 }
 
-void QUmlBehavior::removePostcondition(QSet<QUmlConstraint *> postcondition)
+void QUmlBehavior::removePostcondition(QUmlConstraint *postcondition)
 {
-    Q_UNUSED(postcondition);
+    // This is a read-write association end
+
+    QM_D(QUmlBehavior);
+    if (d->postcondition.contains(postcondition)) {
+        d->postcondition.remove(postcondition);
+    }
 }
 
 /*!
@@ -153,17 +203,30 @@ void QUmlBehavior::removePostcondition(QSet<QUmlConstraint *> postcondition)
  */
 QSet<QUmlConstraint *> QUmlBehavior::precondition() const
 {
-    return QSet<QUmlConstraint *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlBehavior);
+    return d->precondition;
 }
 
-void QUmlBehavior::addPrecondition(QSet<QUmlConstraint *> precondition)
+void QUmlBehavior::addPrecondition(QUmlConstraint *precondition)
 {
-    Q_UNUSED(precondition);
+    // This is a read-write association end
+
+    QM_D(QUmlBehavior);
+    if (!d->precondition.contains(precondition)) {
+        d->precondition.insert(precondition);
+    }
 }
 
-void QUmlBehavior::removePrecondition(QSet<QUmlConstraint *> precondition)
+void QUmlBehavior::removePrecondition(QUmlConstraint *precondition)
 {
-    Q_UNUSED(precondition);
+    // This is a read-write association end
+
+    QM_D(QUmlBehavior);
+    if (d->precondition.contains(precondition)) {
+        d->precondition.remove(precondition);
+    }
 }
 
 /*!
@@ -171,17 +234,30 @@ void QUmlBehavior::removePrecondition(QSet<QUmlConstraint *> precondition)
  */
 QSet<QUmlBehavior *> QUmlBehavior::redefinedBehavior() const
 {
-    return QSet<QUmlBehavior *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlBehavior);
+    return d->redefinedBehavior;
 }
 
-void QUmlBehavior::addRedefinedBehavior(QSet<QUmlBehavior *> redefinedBehavior)
+void QUmlBehavior::addRedefinedBehavior(QUmlBehavior *redefinedBehavior)
 {
-    Q_UNUSED(redefinedBehavior);
+    // This is a read-write association end
+
+    QM_D(QUmlBehavior);
+    if (!d->redefinedBehavior.contains(redefinedBehavior)) {
+        d->redefinedBehavior.insert(redefinedBehavior);
+    }
 }
 
-void QUmlBehavior::removeRedefinedBehavior(QSet<QUmlBehavior *> redefinedBehavior)
+void QUmlBehavior::removeRedefinedBehavior(QUmlBehavior *redefinedBehavior)
 {
-    Q_UNUSED(redefinedBehavior);
+    // This is a read-write association end
+
+    QM_D(QUmlBehavior);
+    if (d->redefinedBehavior.contains(redefinedBehavior)) {
+        d->redefinedBehavior.remove(redefinedBehavior);
+    }
 }
 
 /*!
@@ -189,12 +265,20 @@ void QUmlBehavior::removeRedefinedBehavior(QSet<QUmlBehavior *> redefinedBehavio
  */
 QUmlBehavioralFeature *QUmlBehavior::specification() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlBehavior);
+    return d->specification;
 }
 
 void QUmlBehavior::setSpecification(QUmlBehavioralFeature *specification)
 {
-    Q_UNUSED(specification);
+    // This is a read-write association end
+
+    QM_D(QUmlBehavior);
+    if (d->specification != specification) {
+        d->specification = specification;
+    }
 }
 
 QT_END_NAMESPACE

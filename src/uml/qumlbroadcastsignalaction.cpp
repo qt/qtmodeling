@@ -65,19 +65,27 @@ QUmlBroadcastSignalAction::QUmlBroadcastSignalAction(bool create_d_ptr) :
         set_d_ptr(new QUmlBroadcastSignalActionPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The specification of signal object transmitted to the target objects.
  */
 QUmlSignal *QUmlBroadcastSignalAction::signal() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlBroadcastSignalAction);
+    return d->signal;
 }
 
 void QUmlBroadcastSignalAction::setSignal(QUmlSignal *signal)
 {
-    Q_UNUSED(signal);
+    // This is a read-write association end
+
+    QM_D(QUmlBroadcastSignalAction);
+    if (d->signal != signal) {
+        d->signal = signal;
+    }
 }
 
 QT_END_NAMESPACE

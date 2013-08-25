@@ -62,11 +62,11 @@ public:
 
     // Owned attributes
     QSet<QUmlNamedElement *> client() const;
-    void addClient(QSet<QUmlNamedElement *> client);
-    void removeClient(QSet<QUmlNamedElement *> client);
+    void addClient(QUmlNamedElement *client);
+    void removeClient(QUmlNamedElement *client);
     QSet<QUmlNamedElement *> supplier() const;
-    void addSupplier(QSet<QUmlNamedElement *> supplier);
-    void removeSupplier(QSet<QUmlNamedElement *> supplier);
+    void addSupplier(QUmlNamedElement *supplier);
+    void removeSupplier(QUmlNamedElement *supplier);
 };
 
 QT_END_NAMESPACE

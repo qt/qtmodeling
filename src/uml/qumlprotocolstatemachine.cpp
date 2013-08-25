@@ -64,24 +64,37 @@ QUmlProtocolStateMachine::QUmlProtocolStateMachine(bool create_d_ptr) :
         set_d_ptr(new QUmlProtocolStateMachinePrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Conformance between protocol state machines.
  */
 QSet<QUmlProtocolConformance *> QUmlProtocolStateMachine::conformance() const
 {
-    return QSet<QUmlProtocolConformance *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlProtocolStateMachine);
+    return d->conformance;
 }
 
-void QUmlProtocolStateMachine::addConformance(QSet<QUmlProtocolConformance *> conformance)
+void QUmlProtocolStateMachine::addConformance(QUmlProtocolConformance *conformance)
 {
-    Q_UNUSED(conformance);
+    // This is a read-write association end
+
+    QM_D(QUmlProtocolStateMachine);
+    if (!d->conformance.contains(conformance)) {
+        d->conformance.insert(conformance);
+    }
 }
 
-void QUmlProtocolStateMachine::removeConformance(QSet<QUmlProtocolConformance *> conformance)
+void QUmlProtocolStateMachine::removeConformance(QUmlProtocolConformance *conformance)
 {
-    Q_UNUSED(conformance);
+    // This is a read-write association end
+
+    QM_D(QUmlProtocolStateMachine);
+    if (d->conformance.contains(conformance)) {
+        d->conformance.remove(conformance);
+    }
 }
 
 QT_END_NAMESPACE

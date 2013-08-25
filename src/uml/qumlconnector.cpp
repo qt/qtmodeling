@@ -67,24 +67,37 @@ QUmlConnector::QUmlConnector(bool create_d_ptr) :
         set_d_ptr(new QUmlConnectorPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The set of Behaviors that specify the valid interaction patterns across the connector.
  */
 QSet<QUmlBehavior *> QUmlConnector::contract() const
 {
-    return QSet<QUmlBehavior *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlConnector);
+    return d->contract;
 }
 
-void QUmlConnector::addContract(QSet<QUmlBehavior *> contract)
+void QUmlConnector::addContract(QUmlBehavior *contract)
 {
-    Q_UNUSED(contract);
+    // This is a read-write association end
+
+    QM_D(QUmlConnector);
+    if (!d->contract.contains(contract)) {
+        d->contract.insert(contract);
+    }
 }
 
-void QUmlConnector::removeContract(QSet<QUmlBehavior *> contract)
+void QUmlConnector::removeContract(QUmlBehavior *contract)
 {
-    Q_UNUSED(contract);
+    // This is a read-write association end
+
+    QM_D(QUmlConnector);
+    if (d->contract.contains(contract)) {
+        d->contract.remove(contract);
+    }
 }
 
 /*!
@@ -92,17 +105,30 @@ void QUmlConnector::removeContract(QSet<QUmlBehavior *> contract)
  */
 QList<QUmlConnectorEnd *> QUmlConnector::end() const
 {
-    return QList<QUmlConnectorEnd *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlConnector);
+    return d->end;
 }
 
-void QUmlConnector::addEnd(QList<QUmlConnectorEnd *> end)
+void QUmlConnector::addEnd(QUmlConnectorEnd *end)
 {
-    Q_UNUSED(end);
+    // This is a read-write association end
+
+    QM_D(QUmlConnector);
+    if (!d->end.contains(end)) {
+        d->end.append(end);
+    }
 }
 
-void QUmlConnector::removeEnd(QList<QUmlConnectorEnd *> end)
+void QUmlConnector::removeEnd(QUmlConnectorEnd *end)
 {
-    Q_UNUSED(end);
+    // This is a read-write association end
+
+    QM_D(QUmlConnector);
+    if (d->end.contains(end)) {
+        d->end.removeAll(end);
+    }
 }
 
 /*!
@@ -110,6 +136,10 @@ void QUmlConnector::removeEnd(QList<QUmlConnectorEnd *> end)
  */
 QtUml::ConnectorKind QUmlConnector::kind() const
 {
+    // This is a read-only derived property
+
+    qWarning("QUmlConnector::kind(): to be implemented (this is a derived property)");
+
     return QtUml::ConnectorKind();
 }
 
@@ -118,17 +148,30 @@ QtUml::ConnectorKind QUmlConnector::kind() const
  */
 QSet<QUmlConnector *> QUmlConnector::redefinedConnector() const
 {
-    return QSet<QUmlConnector *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlConnector);
+    return d->redefinedConnector;
 }
 
-void QUmlConnector::addRedefinedConnector(QSet<QUmlConnector *> redefinedConnector)
+void QUmlConnector::addRedefinedConnector(QUmlConnector *redefinedConnector)
 {
-    Q_UNUSED(redefinedConnector);
+    // This is a read-write association end
+
+    QM_D(QUmlConnector);
+    if (!d->redefinedConnector.contains(redefinedConnector)) {
+        d->redefinedConnector.insert(redefinedConnector);
+    }
 }
 
-void QUmlConnector::removeRedefinedConnector(QSet<QUmlConnector *> redefinedConnector)
+void QUmlConnector::removeRedefinedConnector(QUmlConnector *redefinedConnector)
 {
-    Q_UNUSED(redefinedConnector);
+    // This is a read-write association end
+
+    QM_D(QUmlConnector);
+    if (d->redefinedConnector.contains(redefinedConnector)) {
+        d->redefinedConnector.remove(redefinedConnector);
+    }
 }
 
 /*!
@@ -136,12 +179,20 @@ void QUmlConnector::removeRedefinedConnector(QSet<QUmlConnector *> redefinedConn
  */
 QUmlAssociation *QUmlConnector::type() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlConnector);
+    return d->type;
 }
 
 void QUmlConnector::setType(QUmlAssociation *type)
 {
-    Q_UNUSED(type);
+    // This is a read-write association end
+
+    QM_D(QUmlConnector);
+    if (d->type != type) {
+        d->type = type;
+    }
 }
 
 QT_END_NAMESPACE

@@ -66,19 +66,27 @@ QUmlSendObjectAction::QUmlSendObjectAction(bool create_d_ptr) :
         set_d_ptr(new QUmlSendObjectActionPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The request object, which is transmitted to the target object. The object may be copied in transmission, so identity might not be preserved.
  */
 QUmlInputPin *QUmlSendObjectAction::request() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlSendObjectAction);
+    return d->request;
 }
 
 void QUmlSendObjectAction::setRequest(QUmlInputPin *request)
 {
-    Q_UNUSED(request);
+    // This is a read-write association end
+
+    QM_D(QUmlSendObjectAction);
+    if (d->request != request) {
+        d->request = request;
+    }
 }
 
 /*!
@@ -86,12 +94,20 @@ void QUmlSendObjectAction::setRequest(QUmlInputPin *request)
  */
 QUmlInputPin *QUmlSendObjectAction::target() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlSendObjectAction);
+    return d->target;
 }
 
 void QUmlSendObjectAction::setTarget(QUmlInputPin *target)
 {
-    Q_UNUSED(target);
+    // This is a read-write association end
+
+    QM_D(QUmlSendObjectAction);
+    if (d->target != target) {
+        d->target = target;
+    }
 }
 
 QT_END_NAMESPACE

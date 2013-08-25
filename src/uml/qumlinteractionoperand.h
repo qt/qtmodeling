@@ -62,8 +62,8 @@ public:
 
     // Owned attributes
     QList<QUmlInteractionFragment *> fragment() const;
-    void addFragment(QList<QUmlInteractionFragment *> fragment);
-    void removeFragment(QList<QUmlInteractionFragment *> fragment);
+    void addFragment(QUmlInteractionFragment *fragment);
+    void removeFragment(QUmlInteractionFragment *fragment);
     QUmlInteractionConstraint *guard() const;
     void setGuard(QUmlInteractionConstraint *guard);
 };

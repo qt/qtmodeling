@@ -65,24 +65,37 @@ QUmlDependency::QUmlDependency(bool create_d_ptr) :
         set_d_ptr(new QUmlDependencyPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The element(s) dependent on the supplier element(s). In some cases (such as a Trace Abstraction) the assignment of direction (that is, the designation of the client element) is at the discretion of the modeler, and is a stipulation.
  */
 QSet<QUmlNamedElement *> QUmlDependency::client() const
 {
-    return QSet<QUmlNamedElement *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlDependency);
+    return d->client;
 }
 
-void QUmlDependency::addClient(QSet<QUmlNamedElement *> client)
+void QUmlDependency::addClient(QUmlNamedElement *client)
 {
-    Q_UNUSED(client);
+    // This is a read-write association end
+
+    QM_D(QUmlDependency);
+    if (!d->client.contains(client)) {
+        d->client.insert(client);
+    }
 }
 
-void QUmlDependency::removeClient(QSet<QUmlNamedElement *> client)
+void QUmlDependency::removeClient(QUmlNamedElement *client)
 {
-    Q_UNUSED(client);
+    // This is a read-write association end
+
+    QM_D(QUmlDependency);
+    if (d->client.contains(client)) {
+        d->client.remove(client);
+    }
 }
 
 /*!
@@ -90,17 +103,30 @@ void QUmlDependency::removeClient(QSet<QUmlNamedElement *> client)
  */
 QSet<QUmlNamedElement *> QUmlDependency::supplier() const
 {
-    return QSet<QUmlNamedElement *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlDependency);
+    return d->supplier;
 }
 
-void QUmlDependency::addSupplier(QSet<QUmlNamedElement *> supplier)
+void QUmlDependency::addSupplier(QUmlNamedElement *supplier)
 {
-    Q_UNUSED(supplier);
+    // This is a read-write association end
+
+    QM_D(QUmlDependency);
+    if (!d->supplier.contains(supplier)) {
+        d->supplier.insert(supplier);
+    }
 }
 
-void QUmlDependency::removeSupplier(QSet<QUmlNamedElement *> supplier)
+void QUmlDependency::removeSupplier(QUmlNamedElement *supplier)
 {
-    Q_UNUSED(supplier);
+    // This is a read-write association end
+
+    QM_D(QUmlDependency);
+    if (d->supplier.contains(supplier)) {
+        d->supplier.remove(supplier);
+    }
 }
 
 QT_END_NAMESPACE

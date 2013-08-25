@@ -62,11 +62,11 @@ public:
 
     // Owned attributes
     QSet<QUmlPseudostate *> entry() const;
-    void addEntry(QSet<QUmlPseudostate *> entry);
-    void removeEntry(QSet<QUmlPseudostate *> entry);
+    void addEntry(QUmlPseudostate *entry);
+    void removeEntry(QUmlPseudostate *entry);
     QSet<QUmlPseudostate *> exit() const;
-    void addExit(QSet<QUmlPseudostate *> exit);
-    void removeExit(QSet<QUmlPseudostate *> exit);
+    void addExit(QUmlPseudostate *exit);
+    void removeExit(QUmlPseudostate *exit);
     QUmlState *state() const;
     void setState(QUmlState *state);
 };

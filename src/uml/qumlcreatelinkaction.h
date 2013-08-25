@@ -61,8 +61,8 @@ public:
 
     // Owned attributes
     QSet<QUmlLinkEndCreationData *> endData() const;
-    void addEndData(QSet<QUmlLinkEndCreationData *> endData);
-    void removeEndData(QSet<QUmlLinkEndCreationData *> endData);
+    void addEndData(QUmlLinkEndCreationData *endData);
+    void removeEndData(QUmlLinkEndCreationData *endData);
 };
 
 QT_END_NAMESPACE

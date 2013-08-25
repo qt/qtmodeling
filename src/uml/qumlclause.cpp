@@ -66,24 +66,37 @@ QUmlClause::QUmlClause(bool create_d_ptr) :
         set_d_ptr(new QUmlClausePrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     A nested activity fragment that is executed if the test evaluates to true and the clause is chosen over any concurrent clauses that also evaluate to true.
  */
 QSet<QUmlExecutableNode *> QUmlClause::body() const
 {
-    return QSet<QUmlExecutableNode *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlClause);
+    return d->body;
 }
 
-void QUmlClause::addBody(QSet<QUmlExecutableNode *> body)
+void QUmlClause::addBody(QUmlExecutableNode *body)
 {
-    Q_UNUSED(body);
+    // This is a read-write association end
+
+    QM_D(QUmlClause);
+    if (!d->body.contains(body)) {
+        d->body.insert(body);
+    }
 }
 
-void QUmlClause::removeBody(QSet<QUmlExecutableNode *> body)
+void QUmlClause::removeBody(QUmlExecutableNode *body)
 {
-    Q_UNUSED(body);
+    // This is a read-write association end
+
+    QM_D(QUmlClause);
+    if (d->body.contains(body)) {
+        d->body.remove(body);
+    }
 }
 
 /*!
@@ -91,17 +104,30 @@ void QUmlClause::removeBody(QSet<QUmlExecutableNode *> body)
  */
 QList<QUmlOutputPin *> QUmlClause::bodyOutput() const
 {
-    return QList<QUmlOutputPin *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlClause);
+    return d->bodyOutput;
 }
 
-void QUmlClause::addBodyOutput(QList<QUmlOutputPin *> bodyOutput)
+void QUmlClause::addBodyOutput(QUmlOutputPin *bodyOutput)
 {
-    Q_UNUSED(bodyOutput);
+    // This is a read-write association end
+
+    QM_D(QUmlClause);
+    if (!d->bodyOutput.contains(bodyOutput)) {
+        d->bodyOutput.append(bodyOutput);
+    }
 }
 
-void QUmlClause::removeBodyOutput(QList<QUmlOutputPin *> bodyOutput)
+void QUmlClause::removeBodyOutput(QUmlOutputPin *bodyOutput)
 {
-    Q_UNUSED(bodyOutput);
+    // This is a read-write association end
+
+    QM_D(QUmlClause);
+    if (d->bodyOutput.contains(bodyOutput)) {
+        d->bodyOutput.removeAll(bodyOutput);
+    }
 }
 
 /*!
@@ -109,12 +135,20 @@ void QUmlClause::removeBodyOutput(QList<QUmlOutputPin *> bodyOutput)
  */
 QUmlOutputPin *QUmlClause::decider() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlClause);
+    return d->decider;
 }
 
 void QUmlClause::setDecider(QUmlOutputPin *decider)
 {
-    Q_UNUSED(decider);
+    // This is a read-write association end
+
+    QM_D(QUmlClause);
+    if (d->decider != decider) {
+        d->decider = decider;
+    }
 }
 
 /*!
@@ -122,17 +156,30 @@ void QUmlClause::setDecider(QUmlOutputPin *decider)
  */
 QSet<QUmlClause *> QUmlClause::predecessorClause() const
 {
-    return QSet<QUmlClause *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlClause);
+    return d->predecessorClause;
 }
 
-void QUmlClause::addPredecessorClause(QSet<QUmlClause *> predecessorClause)
+void QUmlClause::addPredecessorClause(QUmlClause *predecessorClause)
 {
-    Q_UNUSED(predecessorClause);
+    // This is a read-write association end
+
+    QM_D(QUmlClause);
+    if (!d->predecessorClause.contains(predecessorClause)) {
+        d->predecessorClause.insert(predecessorClause);
+    }
 }
 
-void QUmlClause::removePredecessorClause(QSet<QUmlClause *> predecessorClause)
+void QUmlClause::removePredecessorClause(QUmlClause *predecessorClause)
 {
-    Q_UNUSED(predecessorClause);
+    // This is a read-write association end
+
+    QM_D(QUmlClause);
+    if (d->predecessorClause.contains(predecessorClause)) {
+        d->predecessorClause.remove(predecessorClause);
+    }
 }
 
 /*!
@@ -140,17 +187,30 @@ void QUmlClause::removePredecessorClause(QSet<QUmlClause *> predecessorClause)
  */
 QSet<QUmlClause *> QUmlClause::successorClause() const
 {
-    return QSet<QUmlClause *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlClause);
+    return d->successorClause;
 }
 
-void QUmlClause::addSuccessorClause(QSet<QUmlClause *> successorClause)
+void QUmlClause::addSuccessorClause(QUmlClause *successorClause)
 {
-    Q_UNUSED(successorClause);
+    // This is a read-write association end
+
+    QM_D(QUmlClause);
+    if (!d->successorClause.contains(successorClause)) {
+        d->successorClause.insert(successorClause);
+    }
 }
 
-void QUmlClause::removeSuccessorClause(QSet<QUmlClause *> successorClause)
+void QUmlClause::removeSuccessorClause(QUmlClause *successorClause)
 {
-    Q_UNUSED(successorClause);
+    // This is a read-write association end
+
+    QM_D(QUmlClause);
+    if (d->successorClause.contains(successorClause)) {
+        d->successorClause.remove(successorClause);
+    }
 }
 
 /*!
@@ -158,17 +218,30 @@ void QUmlClause::removeSuccessorClause(QSet<QUmlClause *> successorClause)
  */
 QSet<QUmlExecutableNode *> QUmlClause::test() const
 {
-    return QSet<QUmlExecutableNode *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlClause);
+    return d->test;
 }
 
-void QUmlClause::addTest(QSet<QUmlExecutableNode *> test)
+void QUmlClause::addTest(QUmlExecutableNode *test)
 {
-    Q_UNUSED(test);
+    // This is a read-write association end
+
+    QM_D(QUmlClause);
+    if (!d->test.contains(test)) {
+        d->test.insert(test);
+    }
 }
 
-void QUmlClause::removeTest(QSet<QUmlExecutableNode *> test)
+void QUmlClause::removeTest(QUmlExecutableNode *test)
 {
-    Q_UNUSED(test);
+    // This is a read-write association end
+
+    QM_D(QUmlClause);
+    if (d->test.contains(test)) {
+        d->test.remove(test);
+    }
 }
 
 QT_END_NAMESPACE

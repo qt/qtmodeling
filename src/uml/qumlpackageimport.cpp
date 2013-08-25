@@ -68,19 +68,27 @@ QUmlPackageImport::QUmlPackageImport(bool create_d_ptr) :
         set_d_ptr(new QUmlPackageImportPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Specifies the Package whose members are imported into a Namespace.
  */
 QUmlPackage *QUmlPackageImport::importedPackage() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlPackageImport);
+    return d->importedPackage;
 }
 
 void QUmlPackageImport::setImportedPackage(QUmlPackage *importedPackage)
 {
-    Q_UNUSED(importedPackage);
+    // This is a read-write association end
+
+    QM_D(QUmlPackageImport);
+    if (d->importedPackage != importedPackage) {
+        d->importedPackage = importedPackage;
+    }
 }
 
 /*!
@@ -88,12 +96,20 @@ void QUmlPackageImport::setImportedPackage(QUmlPackage *importedPackage)
  */
 QUmlNamespace *QUmlPackageImport::importingNamespace() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlPackageImport);
+    return d->importingNamespace;
 }
 
 void QUmlPackageImport::setImportingNamespace(QUmlNamespace *importingNamespace)
 {
-    Q_UNUSED(importingNamespace);
+    // This is a read-write association end
+
+    QM_D(QUmlPackageImport);
+    if (d->importingNamespace != importingNamespace) {
+        d->importingNamespace = importingNamespace;
+    }
 }
 
 /*!
@@ -101,12 +117,20 @@ void QUmlPackageImport::setImportingNamespace(QUmlNamespace *importingNamespace)
  */
 QtUml::VisibilityKind QUmlPackageImport::visibility() const
 {
-    return QtUml::VisibilityKind();
+    // This is a read-write property
+
+    QM_D(const QUmlPackageImport);
+    return d->visibility;
 }
 
 void QUmlPackageImport::setVisibility(QtUml::VisibilityKind visibility)
 {
-    Q_UNUSED(visibility);
+    // This is a read-write property
+
+    QM_D(QUmlPackageImport);
+    if (d->visibility != visibility) {
+        d->visibility = visibility;
+    }
 }
 
 QT_END_NAMESPACE

@@ -62,8 +62,8 @@ public:
 
     // Owned attributes
     QSet<QUmlGeneralization *> generalization() const;
-    void addGeneralization(QSet<QUmlGeneralization *> generalization);
-    void removeGeneralization(QSet<QUmlGeneralization *> generalization);
+    void addGeneralization(QUmlGeneralization *generalization);
+    void removeGeneralization(QUmlGeneralization *generalization);
     bool isCovering() const;
     void setCovering(bool isCovering);
     bool isDisjoint() const;

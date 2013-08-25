@@ -62,9 +62,7 @@ public:
     QSet<QUmlProperty *> attribute;
     QSet<QUmlCollaborationUse *> collaborationUse;
     QSet<QUmlFeature *> feature;
-    QSet<QUmlClassifier *> general;
     QSet<QUmlGeneralization *> generalization;
-    QSet<QUmlNamedElement *> inheritedMember;
     bool isAbstract;
     bool isFinalSpecialization;
     QUmlRedefinableTemplateSignature *ownedTemplateSignature;

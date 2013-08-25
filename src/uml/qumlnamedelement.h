@@ -65,8 +65,8 @@ public:
 
     // Owned attributes
     QSet<QUmlDependency *> clientDependency() const;
-    void addClientDependency(QSet<QUmlDependency *> clientDependency);
-    void removeClientDependency(QSet<QUmlDependency *> clientDependency);
+    void addClientDependency(QUmlDependency *clientDependency);
+    void removeClientDependency(QUmlDependency *clientDependency);
     QString name() const;
     void setName(QString name);
     QUmlStringExpression *nameExpression() const;

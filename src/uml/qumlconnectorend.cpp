@@ -47,7 +47,6 @@
 QT_BEGIN_NAMESPACE
 
 QUmlConnectorEndPrivate::QUmlConnectorEndPrivate() :
-    definingEnd(0),
     partWithPort(0),
     role(0)
 {
@@ -68,13 +67,17 @@ QUmlConnectorEnd::QUmlConnectorEnd(bool create_d_ptr) :
         set_d_ptr(new QUmlConnectorEndPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     A derived association referencing the corresponding association end on the association which types the connector owing this connector end. This association is derived by selecting the association end at the same place in the ordering of association ends as this connector end.
  */
 QUmlProperty *QUmlConnectorEnd::definingEnd() const
 {
+    // This is a read-only derived association end
+
+    qWarning("QUmlConnectorEnd::definingEnd(): to be implemented (this is a derived association end)");
+
     return 0;
 }
 
@@ -83,12 +86,20 @@ QUmlProperty *QUmlConnectorEnd::definingEnd() const
  */
 QUmlProperty *QUmlConnectorEnd::partWithPort() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlConnectorEnd);
+    return d->partWithPort;
 }
 
 void QUmlConnectorEnd::setPartWithPort(QUmlProperty *partWithPort)
 {
-    Q_UNUSED(partWithPort);
+    // This is a read-write association end
+
+    QM_D(QUmlConnectorEnd);
+    if (d->partWithPort != partWithPort) {
+        d->partWithPort = partWithPort;
+    }
 }
 
 /*!
@@ -96,12 +107,20 @@ void QUmlConnectorEnd::setPartWithPort(QUmlProperty *partWithPort)
  */
 QUmlConnectableElement *QUmlConnectorEnd::role() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlConnectorEnd);
+    return d->role;
 }
 
 void QUmlConnectorEnd::setRole(QUmlConnectableElement *role)
 {
-    Q_UNUSED(role);
+    // This is a read-write association end
+
+    QM_D(QUmlConnectorEnd);
+    if (d->role != role) {
+        d->role = role;
+    }
 }
 
 QT_END_NAMESPACE

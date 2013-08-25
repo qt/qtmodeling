@@ -50,6 +50,7 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
+
 class QUmlOpaqueBehaviorPrivate;
 class Q_UML_EXPORT QUmlOpaqueBehavior : public QUmlBehavior
 {
@@ -58,11 +59,11 @@ public:
 
     // Owned attributes
     QList<QString> body() const;
-    void addBody(QList<QString> body);
-    void removeBody(QList<QString> body);
+    void addBody(QString body);
+    void removeBody(QString body);
     QList<QString> language() const;
-    void addLanguage(QList<QString> language);
-    void removeLanguage(QList<QString> language);
+    void addLanguage(QString language);
+    void removeLanguage(QString language);
 };
 
 QT_END_NAMESPACE

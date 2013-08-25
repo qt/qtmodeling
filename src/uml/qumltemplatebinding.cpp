@@ -68,19 +68,27 @@ QUmlTemplateBinding::QUmlTemplateBinding(bool create_d_ptr) :
         set_d_ptr(new QUmlTemplateBindingPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The element that is bound by this binding.
  */
 QUmlTemplateableElement *QUmlTemplateBinding::boundElement() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlTemplateBinding);
+    return d->boundElement;
 }
 
 void QUmlTemplateBinding::setBoundElement(QUmlTemplateableElement *boundElement)
 {
-    Q_UNUSED(boundElement);
+    // This is a read-write association end
+
+    QM_D(QUmlTemplateBinding);
+    if (d->boundElement != boundElement) {
+        d->boundElement = boundElement;
+    }
 }
 
 /*!
@@ -88,17 +96,30 @@ void QUmlTemplateBinding::setBoundElement(QUmlTemplateableElement *boundElement)
  */
 QSet<QUmlTemplateParameterSubstitution *> QUmlTemplateBinding::parameterSubstitution() const
 {
-    return QSet<QUmlTemplateParameterSubstitution *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlTemplateBinding);
+    return d->parameterSubstitution;
 }
 
-void QUmlTemplateBinding::addParameterSubstitution(QSet<QUmlTemplateParameterSubstitution *> parameterSubstitution)
+void QUmlTemplateBinding::addParameterSubstitution(QUmlTemplateParameterSubstitution *parameterSubstitution)
 {
-    Q_UNUSED(parameterSubstitution);
+    // This is a read-write association end
+
+    QM_D(QUmlTemplateBinding);
+    if (!d->parameterSubstitution.contains(parameterSubstitution)) {
+        d->parameterSubstitution.insert(parameterSubstitution);
+    }
 }
 
-void QUmlTemplateBinding::removeParameterSubstitution(QSet<QUmlTemplateParameterSubstitution *> parameterSubstitution)
+void QUmlTemplateBinding::removeParameterSubstitution(QUmlTemplateParameterSubstitution *parameterSubstitution)
 {
-    Q_UNUSED(parameterSubstitution);
+    // This is a read-write association end
+
+    QM_D(QUmlTemplateBinding);
+    if (d->parameterSubstitution.contains(parameterSubstitution)) {
+        d->parameterSubstitution.remove(parameterSubstitution);
+    }
 }
 
 /*!
@@ -106,12 +127,20 @@ void QUmlTemplateBinding::removeParameterSubstitution(QSet<QUmlTemplateParameter
  */
 QUmlTemplateSignature *QUmlTemplateBinding::signature() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlTemplateBinding);
+    return d->signature;
 }
 
 void QUmlTemplateBinding::setSignature(QUmlTemplateSignature *signature)
 {
-    Q_UNUSED(signature);
+    // This is a read-write association end
+
+    QM_D(QUmlTemplateBinding);
+    if (d->signature != signature) {
+        d->signature = signature;
+    }
 }
 
 QT_END_NAMESPACE

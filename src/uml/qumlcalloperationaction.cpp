@@ -67,19 +67,27 @@ QUmlCallOperationAction::QUmlCallOperationAction(bool create_d_ptr) :
         set_d_ptr(new QUmlCallOperationActionPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The operation to be invoked by the action execution.
  */
 QUmlOperation *QUmlCallOperationAction::operation() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlCallOperationAction);
+    return d->operation;
 }
 
 void QUmlCallOperationAction::setOperation(QUmlOperation *operation)
 {
-    Q_UNUSED(operation);
+    // This is a read-write association end
+
+    QM_D(QUmlCallOperationAction);
+    if (d->operation != operation) {
+        d->operation = operation;
+    }
 }
 
 /*!
@@ -87,12 +95,20 @@ void QUmlCallOperationAction::setOperation(QUmlOperation *operation)
  */
 QUmlInputPin *QUmlCallOperationAction::target() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlCallOperationAction);
+    return d->target;
 }
 
 void QUmlCallOperationAction::setTarget(QUmlInputPin *target)
 {
-    Q_UNUSED(target);
+    // This is a read-write association end
+
+    QM_D(QUmlCallOperationAction);
+    if (d->target != target) {
+        d->target = target;
+    }
 }
 
 QT_END_NAMESPACE

@@ -66,19 +66,27 @@ QUmlLinkEndCreationData::QUmlLinkEndCreationData(bool create_d_ptr) :
         set_d_ptr(new QUmlLinkEndCreationDataPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Specifies where the new link should be inserted for ordered association ends, or where an existing link should be moved to. The type of the input is UnlimitedNatural, but the input cannot be zero. This pin is omitted for association ends that are not ordered.
  */
 QUmlInputPin *QUmlLinkEndCreationData::insertAt() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlLinkEndCreationData);
+    return d->insertAt;
 }
 
 void QUmlLinkEndCreationData::setInsertAt(QUmlInputPin *insertAt)
 {
-    Q_UNUSED(insertAt);
+    // This is a read-write association end
+
+    QM_D(QUmlLinkEndCreationData);
+    if (d->insertAt != insertAt) {
+        d->insertAt = insertAt;
+    }
 }
 
 /*!
@@ -86,12 +94,20 @@ void QUmlLinkEndCreationData::setInsertAt(QUmlInputPin *insertAt)
  */
 bool QUmlLinkEndCreationData::isReplaceAll() const
 {
-    return bool();
+    // This is a read-write property
+
+    QM_D(const QUmlLinkEndCreationData);
+    return d->isReplaceAll;
 }
 
 void QUmlLinkEndCreationData::setReplaceAll(bool isReplaceAll)
 {
-    Q_UNUSED(isReplaceAll);
+    // This is a read-write property
+
+    QM_D(QUmlLinkEndCreationData);
+    if (d->isReplaceAll != isReplaceAll) {
+        d->isReplaceAll = isReplaceAll;
+    }
 }
 
 QT_END_NAMESPACE

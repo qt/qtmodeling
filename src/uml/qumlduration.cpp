@@ -65,19 +65,27 @@ QUmlDuration::QUmlDuration(bool create_d_ptr) :
         set_d_ptr(new QUmlDurationPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The value of the Duration.
  */
 QUmlValueSpecification *QUmlDuration::expr() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlDuration);
+    return d->expr;
 }
 
 void QUmlDuration::setExpr(QUmlValueSpecification *expr)
 {
-    Q_UNUSED(expr);
+    // This is a read-write association end
+
+    QM_D(QUmlDuration);
+    if (d->expr != expr) {
+        d->expr = expr;
+    }
 }
 
 /*!
@@ -85,17 +93,30 @@ void QUmlDuration::setExpr(QUmlValueSpecification *expr)
  */
 QSet<QUmlObservation *> QUmlDuration::observation() const
 {
-    return QSet<QUmlObservation *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlDuration);
+    return d->observation;
 }
 
-void QUmlDuration::addObservation(QSet<QUmlObservation *> observation)
+void QUmlDuration::addObservation(QUmlObservation *observation)
 {
-    Q_UNUSED(observation);
+    // This is a read-write association end
+
+    QM_D(QUmlDuration);
+    if (!d->observation.contains(observation)) {
+        d->observation.insert(observation);
+    }
 }
 
-void QUmlDuration::removeObservation(QSet<QUmlObservation *> observation)
+void QUmlDuration::removeObservation(QUmlObservation *observation)
 {
-    Q_UNUSED(observation);
+    // This is a read-write association end
+
+    QM_D(QUmlDuration);
+    if (d->observation.contains(observation)) {
+        d->observation.remove(observation);
+    }
 }
 
 QT_END_NAMESPACE

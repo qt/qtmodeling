@@ -65,19 +65,27 @@ QUmlRaiseExceptionAction::QUmlRaiseExceptionAction(bool create_d_ptr) :
         set_d_ptr(new QUmlRaiseExceptionActionPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     An input pin whose value becomes an exception object.
  */
 QUmlInputPin *QUmlRaiseExceptionAction::exception() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlRaiseExceptionAction);
+    return d->exception;
 }
 
 void QUmlRaiseExceptionAction::setException(QUmlInputPin *exception)
 {
-    Q_UNUSED(exception);
+    // This is a read-write association end
+
+    QM_D(QUmlRaiseExceptionAction);
+    if (d->exception != exception) {
+        d->exception = exception;
+    }
 }
 
 QT_END_NAMESPACE

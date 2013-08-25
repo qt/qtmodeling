@@ -69,19 +69,27 @@ QUmlExceptionHandler::QUmlExceptionHandler(bool create_d_ptr) :
         set_d_ptr(new QUmlExceptionHandlerPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     An object node within the handler body. When the handler catches an exception, the exception token is placed in this node, causing the body to execute.
  */
 QUmlObjectNode *QUmlExceptionHandler::exceptionInput() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlExceptionHandler);
+    return d->exceptionInput;
 }
 
 void QUmlExceptionHandler::setExceptionInput(QUmlObjectNode *exceptionInput)
 {
-    Q_UNUSED(exceptionInput);
+    // This is a read-write association end
+
+    QM_D(QUmlExceptionHandler);
+    if (d->exceptionInput != exceptionInput) {
+        d->exceptionInput = exceptionInput;
+    }
 }
 
 /*!
@@ -89,17 +97,30 @@ void QUmlExceptionHandler::setExceptionInput(QUmlObjectNode *exceptionInput)
  */
 QSet<QUmlClassifier *> QUmlExceptionHandler::exceptionType() const
 {
-    return QSet<QUmlClassifier *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlExceptionHandler);
+    return d->exceptionType;
 }
 
-void QUmlExceptionHandler::addExceptionType(QSet<QUmlClassifier *> exceptionType)
+void QUmlExceptionHandler::addExceptionType(QUmlClassifier *exceptionType)
 {
-    Q_UNUSED(exceptionType);
+    // This is a read-write association end
+
+    QM_D(QUmlExceptionHandler);
+    if (!d->exceptionType.contains(exceptionType)) {
+        d->exceptionType.insert(exceptionType);
+    }
 }
 
-void QUmlExceptionHandler::removeExceptionType(QSet<QUmlClassifier *> exceptionType)
+void QUmlExceptionHandler::removeExceptionType(QUmlClassifier *exceptionType)
 {
-    Q_UNUSED(exceptionType);
+    // This is a read-write association end
+
+    QM_D(QUmlExceptionHandler);
+    if (d->exceptionType.contains(exceptionType)) {
+        d->exceptionType.remove(exceptionType);
+    }
 }
 
 /*!
@@ -107,12 +128,20 @@ void QUmlExceptionHandler::removeExceptionType(QSet<QUmlClassifier *> exceptionT
  */
 QUmlExecutableNode *QUmlExceptionHandler::handlerBody() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlExceptionHandler);
+    return d->handlerBody;
 }
 
 void QUmlExceptionHandler::setHandlerBody(QUmlExecutableNode *handlerBody)
 {
-    Q_UNUSED(handlerBody);
+    // This is a read-write association end
+
+    QM_D(QUmlExceptionHandler);
+    if (d->handlerBody != handlerBody) {
+        d->handlerBody = handlerBody;
+    }
 }
 
 /*!
@@ -120,12 +149,20 @@ void QUmlExceptionHandler::setHandlerBody(QUmlExecutableNode *handlerBody)
  */
 QUmlExecutableNode *QUmlExceptionHandler::protectedNode() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlExceptionHandler);
+    return d->protectedNode;
 }
 
 void QUmlExceptionHandler::setProtectedNode(QUmlExecutableNode *protectedNode)
 {
-    Q_UNUSED(protectedNode);
+    // This is a read-write association end
+
+    QM_D(QUmlExceptionHandler);
+    if (d->protectedNode != protectedNode) {
+        d->protectedNode = protectedNode;
+    }
 }
 
 QT_END_NAMESPACE

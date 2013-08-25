@@ -66,19 +66,27 @@ QUmlBehavioredClassifier::QUmlBehavioredClassifier(bool create_d_ptr) :
         set_d_ptr(new QUmlBehavioredClassifierPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     A behavior specification that specifies the behavior of the classifier itself.
  */
 QUmlBehavior *QUmlBehavioredClassifier::classifierBehavior() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlBehavioredClassifier);
+    return d->classifierBehavior;
 }
 
 void QUmlBehavioredClassifier::setClassifierBehavior(QUmlBehavior *classifierBehavior)
 {
-    Q_UNUSED(classifierBehavior);
+    // This is a read-write association end
+
+    QM_D(QUmlBehavioredClassifier);
+    if (d->classifierBehavior != classifierBehavior) {
+        d->classifierBehavior = classifierBehavior;
+    }
 }
 
 /*!
@@ -86,17 +94,30 @@ void QUmlBehavioredClassifier::setClassifierBehavior(QUmlBehavior *classifierBeh
  */
 QSet<QUmlInterfaceRealization *> QUmlBehavioredClassifier::interfaceRealization() const
 {
-    return QSet<QUmlInterfaceRealization *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlBehavioredClassifier);
+    return d->interfaceRealization;
 }
 
-void QUmlBehavioredClassifier::addInterfaceRealization(QSet<QUmlInterfaceRealization *> interfaceRealization)
+void QUmlBehavioredClassifier::addInterfaceRealization(QUmlInterfaceRealization *interfaceRealization)
 {
-    Q_UNUSED(interfaceRealization);
+    // This is a read-write association end
+
+    QM_D(QUmlBehavioredClassifier);
+    if (!d->interfaceRealization.contains(interfaceRealization)) {
+        d->interfaceRealization.insert(interfaceRealization);
+    }
 }
 
-void QUmlBehavioredClassifier::removeInterfaceRealization(QSet<QUmlInterfaceRealization *> interfaceRealization)
+void QUmlBehavioredClassifier::removeInterfaceRealization(QUmlInterfaceRealization *interfaceRealization)
 {
-    Q_UNUSED(interfaceRealization);
+    // This is a read-write association end
+
+    QM_D(QUmlBehavioredClassifier);
+    if (d->interfaceRealization.contains(interfaceRealization)) {
+        d->interfaceRealization.remove(interfaceRealization);
+    }
 }
 
 /*!
@@ -104,17 +125,30 @@ void QUmlBehavioredClassifier::removeInterfaceRealization(QSet<QUmlInterfaceReal
  */
 QSet<QUmlBehavior *> QUmlBehavioredClassifier::ownedBehavior() const
 {
-    return QSet<QUmlBehavior *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlBehavioredClassifier);
+    return d->ownedBehavior;
 }
 
-void QUmlBehavioredClassifier::addOwnedBehavior(QSet<QUmlBehavior *> ownedBehavior)
+void QUmlBehavioredClassifier::addOwnedBehavior(QUmlBehavior *ownedBehavior)
 {
-    Q_UNUSED(ownedBehavior);
+    // This is a read-write association end
+
+    QM_D(QUmlBehavioredClassifier);
+    if (!d->ownedBehavior.contains(ownedBehavior)) {
+        d->ownedBehavior.insert(ownedBehavior);
+    }
 }
 
-void QUmlBehavioredClassifier::removeOwnedBehavior(QSet<QUmlBehavior *> ownedBehavior)
+void QUmlBehavioredClassifier::removeOwnedBehavior(QUmlBehavior *ownedBehavior)
 {
-    Q_UNUSED(ownedBehavior);
+    // This is a read-write association end
+
+    QM_D(QUmlBehavioredClassifier);
+    if (d->ownedBehavior.contains(ownedBehavior)) {
+        d->ownedBehavior.remove(ownedBehavior);
+    }
 }
 
 QT_END_NAMESPACE

@@ -62,22 +62,30 @@ QUmlLiteralString::QUmlLiteralString(bool create_d_ptr) :
         set_d_ptr(new QUmlLiteralStringPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The specified String value.
  */
 QString QUmlLiteralString::value() const
 {
-    return QString();
+    // This is a read-write property
+
+    QM_D(const QUmlLiteralString);
+    return d->value;
 }
 
 void QUmlLiteralString::setValue(QString value)
 {
-    Q_UNUSED(value);
+    // This is a read-write property
+
+    QM_D(QUmlLiteralString);
+    if (d->value != value) {
+        d->value = value;
+    }
 }
 
-// Operations
+// OPERATIONS
 
 /*!
     The query isComputable() is redefined to be true.

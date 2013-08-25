@@ -70,8 +70,8 @@ public:
     QUmlUseCase *extension() const;
     void setExtension(QUmlUseCase *extension);
     QList<QUmlExtensionPoint *> extensionLocation() const;
-    void addExtensionLocation(QList<QUmlExtensionPoint *> extensionLocation);
-    void removeExtensionLocation(QList<QUmlExtensionPoint *> extensionLocation);
+    void addExtensionLocation(QUmlExtensionPoint *extensionLocation);
+    void removeExtensionLocation(QUmlExtensionPoint *extensionLocation);
 };
 
 QT_END_NAMESPACE

@@ -65,19 +65,27 @@ QUmlActivityParameterNode::QUmlActivityParameterNode(bool create_d_ptr) :
         set_d_ptr(new QUmlActivityParameterNodePrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The parameter the object node will be accepting or providing values for.
  */
 QUmlParameter *QUmlActivityParameterNode::parameter() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlActivityParameterNode);
+    return d->parameter;
 }
 
 void QUmlActivityParameterNode::setParameter(QUmlParameter *parameter)
 {
-    Q_UNUSED(parameter);
+    // This is a read-write association end
+
+    QM_D(QUmlActivityParameterNode);
+    if (d->parameter != parameter) {
+        d->parameter = parameter;
+    }
 }
 
 QT_END_NAMESPACE

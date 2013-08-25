@@ -65,19 +65,27 @@ QUmlOperationTemplateParameter::QUmlOperationTemplateParameter(bool create_d_ptr
         set_d_ptr(new QUmlOperationTemplateParameterPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The operation for this template parameter.
  */
 QUmlOperation *QUmlOperationTemplateParameter::parameteredElement() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlOperationTemplateParameter);
+    return d->parameteredElement;
 }
 
 void QUmlOperationTemplateParameter::setParameteredElement(QUmlOperation *parameteredElement)
 {
-    Q_UNUSED(parameteredElement);
+    // This is a read-write association end
+
+    QM_D(QUmlOperationTemplateParameter);
+    if (d->parameteredElement != parameteredElement) {
+        d->parameteredElement = parameteredElement;
+    }
 }
 
 QT_END_NAMESPACE

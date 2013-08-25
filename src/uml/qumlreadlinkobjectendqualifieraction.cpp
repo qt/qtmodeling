@@ -69,19 +69,27 @@ QUmlReadLinkObjectEndQualifierAction::QUmlReadLinkObjectEndQualifierAction(bool 
         set_d_ptr(new QUmlReadLinkObjectEndQualifierActionPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Gives the input pin from which the link object is obtained.
  */
 QUmlInputPin *QUmlReadLinkObjectEndQualifierAction::object() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlReadLinkObjectEndQualifierAction);
+    return d->object;
 }
 
 void QUmlReadLinkObjectEndQualifierAction::setObject(QUmlInputPin *object)
 {
-    Q_UNUSED(object);
+    // This is a read-write association end
+
+    QM_D(QUmlReadLinkObjectEndQualifierAction);
+    if (d->object != object) {
+        d->object = object;
+    }
 }
 
 /*!
@@ -89,12 +97,20 @@ void QUmlReadLinkObjectEndQualifierAction::setObject(QUmlInputPin *object)
  */
 QUmlProperty *QUmlReadLinkObjectEndQualifierAction::qualifier() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlReadLinkObjectEndQualifierAction);
+    return d->qualifier;
 }
 
 void QUmlReadLinkObjectEndQualifierAction::setQualifier(QUmlProperty *qualifier)
 {
-    Q_UNUSED(qualifier);
+    // This is a read-write association end
+
+    QM_D(QUmlReadLinkObjectEndQualifierAction);
+    if (d->qualifier != qualifier) {
+        d->qualifier = qualifier;
+    }
 }
 
 /*!
@@ -102,12 +118,20 @@ void QUmlReadLinkObjectEndQualifierAction::setQualifier(QUmlProperty *qualifier)
  */
 QUmlOutputPin *QUmlReadLinkObjectEndQualifierAction::result() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlReadLinkObjectEndQualifierAction);
+    return d->result;
 }
 
 void QUmlReadLinkObjectEndQualifierAction::setResult(QUmlOutputPin *result)
 {
-    Q_UNUSED(result);
+    // This is a read-write association end
+
+    QM_D(QUmlReadLinkObjectEndQualifierAction);
+    if (d->result != result) {
+        d->result = result;
+    }
 }
 
 QT_END_NAMESPACE

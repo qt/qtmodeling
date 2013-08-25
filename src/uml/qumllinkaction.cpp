@@ -66,24 +66,37 @@ QUmlLinkAction::QUmlLinkAction(bool create_d_ptr) :
         set_d_ptr(new QUmlLinkActionPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Data identifying one end of a link by the objects on its ends and qualifiers.
  */
 QSet<QUmlLinkEndData *> QUmlLinkAction::endData() const
 {
-    return QSet<QUmlLinkEndData *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlLinkAction);
+    return d->endData;
 }
 
-void QUmlLinkAction::addEndData(QSet<QUmlLinkEndData *> endData)
+void QUmlLinkAction::addEndData(QUmlLinkEndData *endData)
 {
-    Q_UNUSED(endData);
+    // This is a read-write association end
+
+    QM_D(QUmlLinkAction);
+    if (!d->endData.contains(endData)) {
+        d->endData.insert(endData);
+    }
 }
 
-void QUmlLinkAction::removeEndData(QSet<QUmlLinkEndData *> endData)
+void QUmlLinkAction::removeEndData(QUmlLinkEndData *endData)
 {
-    Q_UNUSED(endData);
+    // This is a read-write association end
+
+    QM_D(QUmlLinkAction);
+    if (d->endData.contains(endData)) {
+        d->endData.remove(endData);
+    }
 }
 
 /*!
@@ -91,20 +104,33 @@ void QUmlLinkAction::removeEndData(QSet<QUmlLinkEndData *> endData)
  */
 QSet<QUmlInputPin *> QUmlLinkAction::inputValue() const
 {
-    return QSet<QUmlInputPin *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlLinkAction);
+    return d->inputValue;
 }
 
-void QUmlLinkAction::addInputValue(QSet<QUmlInputPin *> inputValue)
+void QUmlLinkAction::addInputValue(QUmlInputPin *inputValue)
 {
-    Q_UNUSED(inputValue);
+    // This is a read-write association end
+
+    QM_D(QUmlLinkAction);
+    if (!d->inputValue.contains(inputValue)) {
+        d->inputValue.insert(inputValue);
+    }
 }
 
-void QUmlLinkAction::removeInputValue(QSet<QUmlInputPin *> inputValue)
+void QUmlLinkAction::removeInputValue(QUmlInputPin *inputValue)
 {
-    Q_UNUSED(inputValue);
+    // This is a read-write association end
+
+    QM_D(QUmlLinkAction);
+    if (d->inputValue.contains(inputValue)) {
+        d->inputValue.remove(inputValue);
+    }
 }
 
-// Operations
+// OPERATIONS
 
 /*!
     The association operates on LinkAction. It returns the association of the action.

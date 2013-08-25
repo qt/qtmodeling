@@ -65,19 +65,27 @@ QUmlConnectableElementTemplateParameter::QUmlConnectableElementTemplateParameter
         set_d_ptr(new QUmlConnectableElementTemplateParameterPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The ConnectableElement for this template parameter.
  */
 QUmlConnectableElement *QUmlConnectableElementTemplateParameter::parameteredElement() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlConnectableElementTemplateParameter);
+    return d->parameteredElement;
 }
 
 void QUmlConnectableElementTemplateParameter::setParameteredElement(QUmlConnectableElement *parameteredElement)
 {
-    Q_UNUSED(parameteredElement);
+    // This is a read-write association end
+
+    QM_D(QUmlConnectableElementTemplateParameter);
+    if (d->parameteredElement != parameteredElement) {
+        d->parameteredElement = parameteredElement;
+    }
 }
 
 QT_END_NAMESPACE

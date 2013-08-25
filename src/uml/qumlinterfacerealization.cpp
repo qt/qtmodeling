@@ -67,19 +67,27 @@ QUmlInterfaceRealization::QUmlInterfaceRealization(bool create_d_ptr) :
         set_d_ptr(new QUmlInterfaceRealizationPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     References the Interface specifying the conformance contract.
  */
 QUmlInterface *QUmlInterfaceRealization::contract() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlInterfaceRealization);
+    return d->contract;
 }
 
 void QUmlInterfaceRealization::setContract(QUmlInterface *contract)
 {
-    Q_UNUSED(contract);
+    // This is a read-write association end
+
+    QM_D(QUmlInterfaceRealization);
+    if (d->contract != contract) {
+        d->contract = contract;
+    }
 }
 
 /*!
@@ -87,12 +95,20 @@ void QUmlInterfaceRealization::setContract(QUmlInterface *contract)
  */
 QUmlBehavioredClassifier *QUmlInterfaceRealization::implementingClassifier() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlInterfaceRealization);
+    return d->implementingClassifier;
 }
 
 void QUmlInterfaceRealization::setImplementingClassifier(QUmlBehavioredClassifier *implementingClassifier)
 {
-    Q_UNUSED(implementingClassifier);
+    // This is a read-write association end
+
+    QM_D(QUmlInterfaceRealization);
+    if (d->implementingClassifier != implementingClassifier) {
+        d->implementingClassifier = implementingClassifier;
+    }
 }
 
 QT_END_NAMESPACE

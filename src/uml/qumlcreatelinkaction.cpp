@@ -64,24 +64,37 @@ QUmlCreateLinkAction::QUmlCreateLinkAction(bool create_d_ptr) :
         set_d_ptr(new QUmlCreateLinkActionPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Specifies ends of association and inputs.
  */
 QSet<QUmlLinkEndCreationData *> QUmlCreateLinkAction::endData() const
 {
-    return QSet<QUmlLinkEndCreationData *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlCreateLinkAction);
+    return d->endData;
 }
 
-void QUmlCreateLinkAction::addEndData(QSet<QUmlLinkEndCreationData *> endData)
+void QUmlCreateLinkAction::addEndData(QUmlLinkEndCreationData *endData)
 {
-    Q_UNUSED(endData);
+    // This is a read-write association end
+
+    QM_D(QUmlCreateLinkAction);
+    if (!d->endData.contains(endData)) {
+        d->endData.insert(endData);
+    }
 }
 
-void QUmlCreateLinkAction::removeEndData(QSet<QUmlLinkEndCreationData *> endData)
+void QUmlCreateLinkAction::removeEndData(QUmlLinkEndCreationData *endData)
 {
-    Q_UNUSED(endData);
+    // This is a read-write association end
+
+    QM_D(QUmlCreateLinkAction);
+    if (d->endData.contains(endData)) {
+        d->endData.remove(endData);
+    }
 }
 
 QT_END_NAMESPACE

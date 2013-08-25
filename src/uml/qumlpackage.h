@@ -70,23 +70,23 @@ public:
     QString URI() const;
     void setURI(QString URI);
     QSet<QUmlPackage *> nestedPackage() const;
-    void addNestedPackage(QSet<QUmlPackage *> nestedPackage);
-    void removeNestedPackage(QSet<QUmlPackage *> nestedPackage);
+    void addNestedPackage(QUmlPackage *nestedPackage);
+    void removeNestedPackage(QUmlPackage *nestedPackage);
     QUmlPackage *nestingPackage() const;
     void setNestingPackage(QUmlPackage *nestingPackage);
     QSet<QUmlStereotype *> ownedStereotype() const;
     QSet<QUmlType *> ownedType() const;
-    void addOwnedType(QSet<QUmlType *> ownedType);
-    void removeOwnedType(QSet<QUmlType *> ownedType);
+    void addOwnedType(QUmlType *ownedType);
+    void removeOwnedType(QUmlType *ownedType);
     QSet<QUmlPackageMerge *> packageMerge() const;
-    void addPackageMerge(QSet<QUmlPackageMerge *> packageMerge);
-    void removePackageMerge(QSet<QUmlPackageMerge *> packageMerge);
+    void addPackageMerge(QUmlPackageMerge *packageMerge);
+    void removePackageMerge(QUmlPackageMerge *packageMerge);
     QSet<QUmlPackageableElement *> packagedElement() const;
-    void addPackagedElement(QSet<QUmlPackageableElement *> packagedElement);
-    void removePackagedElement(QSet<QUmlPackageableElement *> packagedElement);
+    void addPackagedElement(QUmlPackageableElement *packagedElement);
+    void removePackagedElement(QUmlPackageableElement *packagedElement);
     QSet<QUmlProfileApplication *> profileApplication() const;
-    void addProfileApplication(QSet<QUmlProfileApplication *> profileApplication);
-    void removeProfileApplication(QSet<QUmlProfileApplication *> profileApplication);
+    void addProfileApplication(QUmlProfileApplication *profileApplication);
+    void removeProfileApplication(QUmlProfileApplication *profileApplication);
 
     // Operations
     QSet<QUmlStereotype *> allApplicableStereotypes() const;

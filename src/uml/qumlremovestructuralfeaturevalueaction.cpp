@@ -66,19 +66,27 @@ QUmlRemoveStructuralFeatureValueAction::QUmlRemoveStructuralFeatureValueAction(b
         set_d_ptr(new QUmlRemoveStructuralFeatureValueActionPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Specifies whether to remove duplicates of the value in nonunique structural features.
  */
 bool QUmlRemoveStructuralFeatureValueAction::isRemoveDuplicates() const
 {
-    return bool();
+    // This is a read-write property
+
+    QM_D(const QUmlRemoveStructuralFeatureValueAction);
+    return d->isRemoveDuplicates;
 }
 
 void QUmlRemoveStructuralFeatureValueAction::setRemoveDuplicates(bool isRemoveDuplicates)
 {
-    Q_UNUSED(isRemoveDuplicates);
+    // This is a read-write property
+
+    QM_D(QUmlRemoveStructuralFeatureValueAction);
+    if (d->isRemoveDuplicates != isRemoveDuplicates) {
+        d->isRemoveDuplicates = isRemoveDuplicates;
+    }
 }
 
 /*!
@@ -86,12 +94,20 @@ void QUmlRemoveStructuralFeatureValueAction::setRemoveDuplicates(bool isRemoveDu
  */
 QUmlInputPin *QUmlRemoveStructuralFeatureValueAction::removeAt() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlRemoveStructuralFeatureValueAction);
+    return d->removeAt;
 }
 
 void QUmlRemoveStructuralFeatureValueAction::setRemoveAt(QUmlInputPin *removeAt)
 {
-    Q_UNUSED(removeAt);
+    // This is a read-write association end
+
+    QM_D(QUmlRemoveStructuralFeatureValueAction);
+    if (d->removeAt != removeAt) {
+        d->removeAt = removeAt;
+    }
 }
 
 QT_END_NAMESPACE

@@ -63,11 +63,11 @@ public:
 
     // Owned attributes
     QList<QUmlProperty *> ownedAttribute() const;
-    void addOwnedAttribute(QList<QUmlProperty *> ownedAttribute);
-    void removeOwnedAttribute(QList<QUmlProperty *> ownedAttribute);
+    void addOwnedAttribute(QUmlProperty *ownedAttribute);
+    void removeOwnedAttribute(QUmlProperty *ownedAttribute);
     QList<QUmlOperation *> ownedOperation() const;
-    void addOwnedOperation(QList<QUmlOperation *> ownedOperation);
-    void removeOwnedOperation(QList<QUmlOperation *> ownedOperation);
+    void addOwnedOperation(QUmlOperation *ownedOperation);
+    void removeOwnedOperation(QUmlOperation *ownedOperation);
 
     // Operations
     QSet<QUmlNamedElement *> inherit(QSet<QUmlNamedElement *> inhs) const;

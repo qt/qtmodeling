@@ -66,24 +66,37 @@ QUmlDataType::QUmlDataType(bool create_d_ptr) :
         set_d_ptr(new QUmlDataTypePrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The Attributes owned by the DataType.
  */
 QList<QUmlProperty *> QUmlDataType::ownedAttribute() const
 {
-    return QList<QUmlProperty *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlDataType);
+    return d->ownedAttribute;
 }
 
-void QUmlDataType::addOwnedAttribute(QList<QUmlProperty *> ownedAttribute)
+void QUmlDataType::addOwnedAttribute(QUmlProperty *ownedAttribute)
 {
-    Q_UNUSED(ownedAttribute);
+    // This is a read-write association end
+
+    QM_D(QUmlDataType);
+    if (!d->ownedAttribute.contains(ownedAttribute)) {
+        d->ownedAttribute.append(ownedAttribute);
+    }
 }
 
-void QUmlDataType::removeOwnedAttribute(QList<QUmlProperty *> ownedAttribute)
+void QUmlDataType::removeOwnedAttribute(QUmlProperty *ownedAttribute)
 {
-    Q_UNUSED(ownedAttribute);
+    // This is a read-write association end
+
+    QM_D(QUmlDataType);
+    if (d->ownedAttribute.contains(ownedAttribute)) {
+        d->ownedAttribute.removeAll(ownedAttribute);
+    }
 }
 
 /*!
@@ -91,20 +104,33 @@ void QUmlDataType::removeOwnedAttribute(QList<QUmlProperty *> ownedAttribute)
  */
 QList<QUmlOperation *> QUmlDataType::ownedOperation() const
 {
-    return QList<QUmlOperation *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlDataType);
+    return d->ownedOperation;
 }
 
-void QUmlDataType::addOwnedOperation(QList<QUmlOperation *> ownedOperation)
+void QUmlDataType::addOwnedOperation(QUmlOperation *ownedOperation)
 {
-    Q_UNUSED(ownedOperation);
+    // This is a read-write association end
+
+    QM_D(QUmlDataType);
+    if (!d->ownedOperation.contains(ownedOperation)) {
+        d->ownedOperation.append(ownedOperation);
+    }
 }
 
-void QUmlDataType::removeOwnedOperation(QList<QUmlOperation *> ownedOperation)
+void QUmlDataType::removeOwnedOperation(QUmlOperation *ownedOperation)
 {
-    Q_UNUSED(ownedOperation);
+    // This is a read-write association end
+
+    QM_D(QUmlDataType);
+    if (d->ownedOperation.contains(ownedOperation)) {
+        d->ownedOperation.removeAll(ownedOperation);
+    }
 }
 
-// Operations
+// OPERATIONS
 
 /*!
     The inherit operation is overridden to exclude redefined properties.

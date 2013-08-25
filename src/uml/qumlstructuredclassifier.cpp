@@ -66,24 +66,37 @@ QUmlStructuredClassifier::QUmlStructuredClassifier(bool create_d_ptr) :
         set_d_ptr(new QUmlStructuredClassifierPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     References the properties owned by the classifier.
  */
 QList<QUmlProperty *> QUmlStructuredClassifier::ownedAttribute() const
 {
-    return QList<QUmlProperty *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlStructuredClassifier);
+    return d->ownedAttribute;
 }
 
-void QUmlStructuredClassifier::addOwnedAttribute(QList<QUmlProperty *> ownedAttribute)
+void QUmlStructuredClassifier::addOwnedAttribute(QUmlProperty *ownedAttribute)
 {
-    Q_UNUSED(ownedAttribute);
+    // This is a read-write association end
+
+    QM_D(QUmlStructuredClassifier);
+    if (!d->ownedAttribute.contains(ownedAttribute)) {
+        d->ownedAttribute.append(ownedAttribute);
+    }
 }
 
-void QUmlStructuredClassifier::removeOwnedAttribute(QList<QUmlProperty *> ownedAttribute)
+void QUmlStructuredClassifier::removeOwnedAttribute(QUmlProperty *ownedAttribute)
 {
-    Q_UNUSED(ownedAttribute);
+    // This is a read-write association end
+
+    QM_D(QUmlStructuredClassifier);
+    if (d->ownedAttribute.contains(ownedAttribute)) {
+        d->ownedAttribute.removeAll(ownedAttribute);
+    }
 }
 
 /*!
@@ -91,17 +104,30 @@ void QUmlStructuredClassifier::removeOwnedAttribute(QList<QUmlProperty *> ownedA
  */
 QSet<QUmlConnector *> QUmlStructuredClassifier::ownedConnector() const
 {
-    return QSet<QUmlConnector *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlStructuredClassifier);
+    return d->ownedConnector;
 }
 
-void QUmlStructuredClassifier::addOwnedConnector(QSet<QUmlConnector *> ownedConnector)
+void QUmlStructuredClassifier::addOwnedConnector(QUmlConnector *ownedConnector)
 {
-    Q_UNUSED(ownedConnector);
+    // This is a read-write association end
+
+    QM_D(QUmlStructuredClassifier);
+    if (!d->ownedConnector.contains(ownedConnector)) {
+        d->ownedConnector.insert(ownedConnector);
+    }
 }
 
-void QUmlStructuredClassifier::removeOwnedConnector(QSet<QUmlConnector *> ownedConnector)
+void QUmlStructuredClassifier::removeOwnedConnector(QUmlConnector *ownedConnector)
 {
-    Q_UNUSED(ownedConnector);
+    // This is a read-write association end
+
+    QM_D(QUmlStructuredClassifier);
+    if (d->ownedConnector.contains(ownedConnector)) {
+        d->ownedConnector.remove(ownedConnector);
+    }
 }
 
 /*!
@@ -109,6 +135,10 @@ void QUmlStructuredClassifier::removeOwnedConnector(QSet<QUmlConnector *> ownedC
  */
 QSet<QUmlProperty *> QUmlStructuredClassifier::part() const
 {
+    // This is a read-only derived association end
+
+    qWarning("QUmlStructuredClassifier::part(): to be implemented (this is a derived association end)");
+
     return QSet<QUmlProperty *>();
 }
 
@@ -117,7 +147,10 @@ QSet<QUmlProperty *> QUmlStructuredClassifier::part() const
  */
 QSet<QUmlConnectableElement *> QUmlStructuredClassifier::role() const
 {
-    return QSet<QUmlConnectableElement *>();
+    // This is a read-only derived union association end
+
+    QM_D(const QUmlStructuredClassifier);
+    return d->role;
 }
 
 QT_END_NAMESPACE

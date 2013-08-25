@@ -45,7 +45,6 @@ QT_BEGIN_NAMESPACE
 
 QUmlModelPrivate::QUmlModelPrivate()
 {
-    viewpoint = "teste";
 }
 
 /*!
@@ -65,21 +64,27 @@ QUmlModel::QUmlModel(bool create_d_ptr) :
         set_d_ptr(new QUmlModelPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The name of the viewpoint that is expressed by a model (This name may refer to a profile definition).
  */
 QString QUmlModel::viewpoint() const
 {
+    // This is a read-write property
+
     QM_D(const QUmlModel);
     return d->viewpoint;
 }
 
 void QUmlModel::setViewpoint(QString viewpoint)
 {
+    // This is a read-write property
+
     QM_D(QUmlModel);
-    d->viewpoint = viewpoint;
+    if (d->viewpoint != viewpoint) {
+        d->viewpoint = viewpoint;
+    }
 }
 
 QT_END_NAMESPACE

@@ -64,12 +64,7 @@ public:
     QUmlBehavior *doActivity;
     QUmlBehavior *entry;
     QUmlBehavior *exit;
-    bool isComposite;
-    bool isOrthogonal;
-    bool isSimple;
-    bool isSubmachineState;
     QUmlState *redefinedState;
-    QUmlClassifier *redefinitionContext;
     QSet<QUmlRegion *> region;
     QUmlConstraint *stateInvariant;
     QUmlStateMachine *submachine;

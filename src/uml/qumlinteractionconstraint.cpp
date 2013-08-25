@@ -66,19 +66,27 @@ QUmlInteractionConstraint::QUmlInteractionConstraint(bool create_d_ptr) :
         set_d_ptr(new QUmlInteractionConstraintPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The maximum number of iterations of a loop
  */
 QUmlValueSpecification *QUmlInteractionConstraint::maxint() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlInteractionConstraint);
+    return d->maxint;
 }
 
 void QUmlInteractionConstraint::setMaxint(QUmlValueSpecification *maxint)
 {
-    Q_UNUSED(maxint);
+    // This is a read-write association end
+
+    QM_D(QUmlInteractionConstraint);
+    if (d->maxint != maxint) {
+        d->maxint = maxint;
+    }
 }
 
 /*!
@@ -86,12 +94,20 @@ void QUmlInteractionConstraint::setMaxint(QUmlValueSpecification *maxint)
  */
 QUmlValueSpecification *QUmlInteractionConstraint::minint() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlInteractionConstraint);
+    return d->minint;
 }
 
 void QUmlInteractionConstraint::setMinint(QUmlValueSpecification *minint)
 {
-    Q_UNUSED(minint);
+    // This is a read-write association end
+
+    QM_D(QUmlInteractionConstraint);
+    if (d->minint != minint) {
+        d->minint = minint;
+    }
 }
 
 QT_END_NAMESPACE

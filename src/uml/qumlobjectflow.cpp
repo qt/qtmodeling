@@ -68,19 +68,27 @@ QUmlObjectFlow::QUmlObjectFlow(bool create_d_ptr) :
         set_d_ptr(new QUmlObjectFlowPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Tells whether the objects in the flow are passed by multicasting.
  */
 bool QUmlObjectFlow::isMulticast() const
 {
-    return bool();
+    // This is a read-write property
+
+    QM_D(const QUmlObjectFlow);
+    return d->isMulticast;
 }
 
 void QUmlObjectFlow::setMulticast(bool isMulticast)
 {
-    Q_UNUSED(isMulticast);
+    // This is a read-write property
+
+    QM_D(QUmlObjectFlow);
+    if (d->isMulticast != isMulticast) {
+        d->isMulticast = isMulticast;
+    }
 }
 
 /*!
@@ -88,12 +96,20 @@ void QUmlObjectFlow::setMulticast(bool isMulticast)
  */
 bool QUmlObjectFlow::isMultireceive() const
 {
-    return bool();
+    // This is a read-write property
+
+    QM_D(const QUmlObjectFlow);
+    return d->isMultireceive;
 }
 
 void QUmlObjectFlow::setMultireceive(bool isMultireceive)
 {
-    Q_UNUSED(isMultireceive);
+    // This is a read-write property
+
+    QM_D(QUmlObjectFlow);
+    if (d->isMultireceive != isMultireceive) {
+        d->isMultireceive = isMultireceive;
+    }
 }
 
 /*!
@@ -101,12 +117,20 @@ void QUmlObjectFlow::setMultireceive(bool isMultireceive)
  */
 QUmlBehavior *QUmlObjectFlow::selection() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlObjectFlow);
+    return d->selection;
 }
 
 void QUmlObjectFlow::setSelection(QUmlBehavior *selection)
 {
-    Q_UNUSED(selection);
+    // This is a read-write association end
+
+    QM_D(QUmlObjectFlow);
+    if (d->selection != selection) {
+        d->selection = selection;
+    }
 }
 
 /*!
@@ -114,12 +138,20 @@ void QUmlObjectFlow::setSelection(QUmlBehavior *selection)
  */
 QUmlBehavior *QUmlObjectFlow::transformation() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlObjectFlow);
+    return d->transformation;
 }
 
 void QUmlObjectFlow::setTransformation(QUmlBehavior *transformation)
 {
-    Q_UNUSED(transformation);
+    // This is a read-write association end
+
+    QM_D(QUmlObjectFlow);
+    if (d->transformation != transformation) {
+        d->transformation = transformation;
+    }
 }
 
 QT_END_NAMESPACE

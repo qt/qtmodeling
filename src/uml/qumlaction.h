@@ -68,11 +68,11 @@ public:
     bool isLocallyReentrant() const;
     void setLocallyReentrant(bool isLocallyReentrant);
     QSet<QUmlConstraint *> localPostcondition() const;
-    void addLocalPostcondition(QSet<QUmlConstraint *> localPostcondition);
-    void removeLocalPostcondition(QSet<QUmlConstraint *> localPostcondition);
+    void addLocalPostcondition(QUmlConstraint *localPostcondition);
+    void removeLocalPostcondition(QUmlConstraint *localPostcondition);
     QSet<QUmlConstraint *> localPrecondition() const;
-    void addLocalPrecondition(QSet<QUmlConstraint *> localPrecondition);
-    void removeLocalPrecondition(QSet<QUmlConstraint *> localPrecondition);
+    void addLocalPrecondition(QUmlConstraint *localPrecondition);
+    void removeLocalPrecondition(QUmlConstraint *localPrecondition);
     QList<QUmlOutputPin *> output() const;
 };
 

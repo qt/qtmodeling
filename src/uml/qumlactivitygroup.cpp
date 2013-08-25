@@ -68,14 +68,17 @@ QUmlActivityGroup::QUmlActivityGroup(bool create_d_ptr) :
         set_d_ptr(new QUmlActivityGroupPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Edges immediately contained in the group.
  */
 QSet<QUmlActivityEdge *> QUmlActivityGroup::containedEdge() const
 {
-    return QSet<QUmlActivityEdge *>();
+    // This is a read-only derived union association end
+
+    QM_D(const QUmlActivityGroup);
+    return d->containedEdge;
 }
 
 /*!
@@ -83,7 +86,10 @@ QSet<QUmlActivityEdge *> QUmlActivityGroup::containedEdge() const
  */
 QSet<QUmlActivityNode *> QUmlActivityGroup::containedNode() const
 {
-    return QSet<QUmlActivityNode *>();
+    // This is a read-only derived union association end
+
+    QM_D(const QUmlActivityGroup);
+    return d->containedNode;
 }
 
 /*!
@@ -91,12 +97,20 @@ QSet<QUmlActivityNode *> QUmlActivityGroup::containedNode() const
  */
 QUmlActivity *QUmlActivityGroup::inActivity() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlActivityGroup);
+    return d->inActivity;
 }
 
 void QUmlActivityGroup::setInActivity(QUmlActivity *inActivity)
 {
-    Q_UNUSED(inActivity);
+    // This is a read-write association end
+
+    QM_D(QUmlActivityGroup);
+    if (d->inActivity != inActivity) {
+        d->inActivity = inActivity;
+    }
 }
 
 /*!
@@ -104,7 +118,10 @@ void QUmlActivityGroup::setInActivity(QUmlActivity *inActivity)
  */
 QSet<QUmlActivityGroup *> QUmlActivityGroup::subgroup() const
 {
-    return QSet<QUmlActivityGroup *>();
+    // This is a read-only derived union association end
+
+    QM_D(const QUmlActivityGroup);
+    return d->subgroup;
 }
 
 /*!
@@ -112,7 +129,10 @@ QSet<QUmlActivityGroup *> QUmlActivityGroup::subgroup() const
  */
 QUmlActivityGroup *QUmlActivityGroup::superGroup() const
 {
-    return 0;
+    // This is a read-only derived union association end
+
+    QM_D(const QUmlActivityGroup);
+    return d->superGroup;
 }
 
 QT_END_NAMESPACE

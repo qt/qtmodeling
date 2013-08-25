@@ -64,8 +64,8 @@ public:
     QUmlEvent *event() const;
     void setEvent(QUmlEvent *event);
     QSet<QUmlPort *> port() const;
-    void addPort(QSet<QUmlPort *> port);
-    void removePort(QSet<QUmlPort *> port);
+    void addPort(QUmlPort *port);
+    void removePort(QUmlPort *port);
 };
 
 QT_END_NAMESPACE

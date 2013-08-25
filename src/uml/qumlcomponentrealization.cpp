@@ -66,19 +66,27 @@ QUmlComponentRealization::QUmlComponentRealization(bool create_d_ptr) :
         set_d_ptr(new QUmlComponentRealizationPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The Component that owns this ComponentRealization and which is implemented by its realizing classifiers.
  */
 QUmlComponent *QUmlComponentRealization::abstraction() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlComponentRealization);
+    return d->abstraction;
 }
 
 void QUmlComponentRealization::setAbstraction(QUmlComponent *abstraction)
 {
-    Q_UNUSED(abstraction);
+    // This is a read-write association end
+
+    QM_D(QUmlComponentRealization);
+    if (d->abstraction != abstraction) {
+        d->abstraction = abstraction;
+    }
 }
 
 /*!
@@ -86,17 +94,30 @@ void QUmlComponentRealization::setAbstraction(QUmlComponent *abstraction)
  */
 QSet<QUmlClassifier *> QUmlComponentRealization::realizingClassifier() const
 {
-    return QSet<QUmlClassifier *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlComponentRealization);
+    return d->realizingClassifier;
 }
 
-void QUmlComponentRealization::addRealizingClassifier(QSet<QUmlClassifier *> realizingClassifier)
+void QUmlComponentRealization::addRealizingClassifier(QUmlClassifier *realizingClassifier)
 {
-    Q_UNUSED(realizingClassifier);
+    // This is a read-write association end
+
+    QM_D(QUmlComponentRealization);
+    if (!d->realizingClassifier.contains(realizingClassifier)) {
+        d->realizingClassifier.insert(realizingClassifier);
+    }
 }
 
-void QUmlComponentRealization::removeRealizingClassifier(QSet<QUmlClassifier *> realizingClassifier)
+void QUmlComponentRealization::removeRealizingClassifier(QUmlClassifier *realizingClassifier)
 {
-    Q_UNUSED(realizingClassifier);
+    // This is a read-write association end
+
+    QM_D(QUmlComponentRealization);
+    if (d->realizingClassifier.contains(realizingClassifier)) {
+        d->realizingClassifier.remove(realizingClassifier);
+    }
 }
 
 QT_END_NAMESPACE

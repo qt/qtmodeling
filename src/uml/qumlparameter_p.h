@@ -57,7 +57,6 @@ class Q_UML_EXPORT QUmlParameterPrivate : public QUmlMultiplicityElementPrivate,
 public:
     QUmlParameterPrivate();
 
-    QString default_;
     QUmlValueSpecification *defaultValue;
     QtUml::ParameterDirectionKind direction;
     QtUml::ParameterEffectKind effect;

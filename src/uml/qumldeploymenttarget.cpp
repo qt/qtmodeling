@@ -65,13 +65,17 @@ QUmlDeploymentTarget::QUmlDeploymentTarget(bool create_d_ptr) :
         set_d_ptr(new QUmlDeploymentTargetPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The set of elements that are manifested in an Artifact that is involved in Deployment to a DeploymentTarget.
  */
 QSet<QUmlPackageableElement *> QUmlDeploymentTarget::deployedElement() const
 {
+    // This is a read-only derived association end
+
+    qWarning("QUmlDeploymentTarget::deployedElement(): to be implemented (this is a derived association end)");
+
     return QSet<QUmlPackageableElement *>();
 }
 
@@ -80,17 +84,30 @@ QSet<QUmlPackageableElement *> QUmlDeploymentTarget::deployedElement() const
  */
 QSet<QUmlDeployment *> QUmlDeploymentTarget::deployment() const
 {
-    return QSet<QUmlDeployment *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlDeploymentTarget);
+    return d->deployment;
 }
 
-void QUmlDeploymentTarget::addDeployment(QSet<QUmlDeployment *> deployment)
+void QUmlDeploymentTarget::addDeployment(QUmlDeployment *deployment)
 {
-    Q_UNUSED(deployment);
+    // This is a read-write association end
+
+    QM_D(QUmlDeploymentTarget);
+    if (!d->deployment.contains(deployment)) {
+        d->deployment.insert(deployment);
+    }
 }
 
-void QUmlDeploymentTarget::removeDeployment(QSet<QUmlDeployment *> deployment)
+void QUmlDeploymentTarget::removeDeployment(QUmlDeployment *deployment)
 {
-    Q_UNUSED(deployment);
+    // This is a read-write association end
+
+    QM_D(QUmlDeploymentTarget);
+    if (d->deployment.contains(deployment)) {
+        d->deployment.remove(deployment);
+    }
 }
 
 QT_END_NAMESPACE

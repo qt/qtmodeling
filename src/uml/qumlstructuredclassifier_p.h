@@ -58,7 +58,6 @@ public:
 
     QList<QUmlProperty *> ownedAttribute;
     QSet<QUmlConnector *> ownedConnector;
-    QSet<QUmlProperty *> part;
     QSet<QUmlConnectableElement *> role;
 };
 

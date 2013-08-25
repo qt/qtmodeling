@@ -69,24 +69,37 @@ QUmlInstanceSpecification::QUmlInstanceSpecification(bool create_d_ptr) :
         set_d_ptr(new QUmlInstanceSpecificationPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The classifier or classifiers of the represented instance. If multiple classifiers are specified, the instance is classified by all of them.
  */
 QSet<QUmlClassifier *> QUmlInstanceSpecification::classifier() const
 {
-    return QSet<QUmlClassifier *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlInstanceSpecification);
+    return d->classifier;
 }
 
-void QUmlInstanceSpecification::addClassifier(QSet<QUmlClassifier *> classifier)
+void QUmlInstanceSpecification::addClassifier(QUmlClassifier *classifier)
 {
-    Q_UNUSED(classifier);
+    // This is a read-write association end
+
+    QM_D(QUmlInstanceSpecification);
+    if (!d->classifier.contains(classifier)) {
+        d->classifier.insert(classifier);
+    }
 }
 
-void QUmlInstanceSpecification::removeClassifier(QSet<QUmlClassifier *> classifier)
+void QUmlInstanceSpecification::removeClassifier(QUmlClassifier *classifier)
 {
-    Q_UNUSED(classifier);
+    // This is a read-write association end
+
+    QM_D(QUmlInstanceSpecification);
+    if (d->classifier.contains(classifier)) {
+        d->classifier.remove(classifier);
+    }
 }
 
 /*!
@@ -94,17 +107,30 @@ void QUmlInstanceSpecification::removeClassifier(QSet<QUmlClassifier *> classifi
  */
 QSet<QUmlSlot *> QUmlInstanceSpecification::slot_() const
 {
-    return QSet<QUmlSlot *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlInstanceSpecification);
+    return d->slot_;
 }
 
-void QUmlInstanceSpecification::addSlot(QSet<QUmlSlot *> slot_)
+void QUmlInstanceSpecification::addSlot(QUmlSlot *slot_)
 {
-    Q_UNUSED(slot_);
+    // This is a read-write association end
+
+    QM_D(QUmlInstanceSpecification);
+    if (!d->slot_.contains(slot_)) {
+        d->slot_.insert(slot_);
+    }
 }
 
-void QUmlInstanceSpecification::removeSlot(QSet<QUmlSlot *> slot_)
+void QUmlInstanceSpecification::removeSlot(QUmlSlot *slot_)
 {
-    Q_UNUSED(slot_);
+    // This is a read-write association end
+
+    QM_D(QUmlInstanceSpecification);
+    if (d->slot_.contains(slot_)) {
+        d->slot_.remove(slot_);
+    }
 }
 
 /*!
@@ -112,12 +138,20 @@ void QUmlInstanceSpecification::removeSlot(QSet<QUmlSlot *> slot_)
  */
 QUmlValueSpecification *QUmlInstanceSpecification::specification() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlInstanceSpecification);
+    return d->specification;
 }
 
 void QUmlInstanceSpecification::setSpecification(QUmlValueSpecification *specification)
 {
-    Q_UNUSED(specification);
+    // This is a read-write association end
+
+    QM_D(QUmlInstanceSpecification);
+    if (d->specification != specification) {
+        d->specification = specification;
+    }
 }
 
 QT_END_NAMESPACE

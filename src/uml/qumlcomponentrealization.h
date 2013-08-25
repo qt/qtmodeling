@@ -64,8 +64,8 @@ public:
     QUmlComponent *abstraction() const;
     void setAbstraction(QUmlComponent *abstraction);
     QSet<QUmlClassifier *> realizingClassifier() const;
-    void addRealizingClassifier(QSet<QUmlClassifier *> realizingClassifier);
-    void removeRealizingClassifier(QSet<QUmlClassifier *> realizingClassifier);
+    void addRealizingClassifier(QUmlClassifier *realizingClassifier);
+    void removeRealizingClassifier(QUmlClassifier *realizingClassifier);
 };
 
 QT_END_NAMESPACE

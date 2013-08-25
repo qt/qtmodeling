@@ -65,19 +65,27 @@ QUmlStartObjectBehaviorAction::QUmlStartObjectBehaviorAction(bool create_d_ptr) 
         set_d_ptr(new QUmlStartObjectBehaviorActionPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Holds the object which is either a behavior to be started or has a classifier behavior to be started.
  */
 QUmlInputPin *QUmlStartObjectBehaviorAction::object() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlStartObjectBehaviorAction);
+    return d->object;
 }
 
 void QUmlStartObjectBehaviorAction::setObject(QUmlInputPin *object)
 {
-    Q_UNUSED(object);
+    // This is a read-write association end
+
+    QM_D(QUmlStartObjectBehaviorAction);
+    if (d->object != object) {
+        d->object = object;
+    }
 }
 
 QT_END_NAMESPACE

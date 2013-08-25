@@ -50,6 +50,7 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
+
 class QUmlMessageEventPrivate;
 class Q_UML_EXPORT QUmlMessageEvent : public QUmlEvent
 {

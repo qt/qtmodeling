@@ -65,8 +65,8 @@ public:
     QUmlInputPin *object() const;
     void setObject(QUmlInputPin *object);
     QSet<QUmlOutputPin *> result() const;
-    void addResult(QSet<QUmlOutputPin *> result);
-    void removeResult(QSet<QUmlOutputPin *> result);
+    void addResult(QUmlOutputPin *result);
+    void removeResult(QUmlOutputPin *result);
     QUmlClassifier *unmarshallType() const;
     void setUnmarshallType(QUmlClassifier *unmarshallType);
 };

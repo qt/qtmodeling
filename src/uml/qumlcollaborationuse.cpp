@@ -66,24 +66,37 @@ QUmlCollaborationUse::QUmlCollaborationUse(bool create_d_ptr) :
         set_d_ptr(new QUmlCollaborationUsePrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     A mapping between features of the collaboration type and features of the owning classifier. This mapping indicates which connectable element of the classifier plays which role(s) in the collaboration. A connectable element may be bound to multiple roles in the same collaboration use (that is, it may play multiple roles).
  */
 QSet<QUmlDependency *> QUmlCollaborationUse::roleBinding() const
 {
-    return QSet<QUmlDependency *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlCollaborationUse);
+    return d->roleBinding;
 }
 
-void QUmlCollaborationUse::addRoleBinding(QSet<QUmlDependency *> roleBinding)
+void QUmlCollaborationUse::addRoleBinding(QUmlDependency *roleBinding)
 {
-    Q_UNUSED(roleBinding);
+    // This is a read-write association end
+
+    QM_D(QUmlCollaborationUse);
+    if (!d->roleBinding.contains(roleBinding)) {
+        d->roleBinding.insert(roleBinding);
+    }
 }
 
-void QUmlCollaborationUse::removeRoleBinding(QSet<QUmlDependency *> roleBinding)
+void QUmlCollaborationUse::removeRoleBinding(QUmlDependency *roleBinding)
 {
-    Q_UNUSED(roleBinding);
+    // This is a read-write association end
+
+    QM_D(QUmlCollaborationUse);
+    if (d->roleBinding.contains(roleBinding)) {
+        d->roleBinding.remove(roleBinding);
+    }
 }
 
 /*!
@@ -91,12 +104,20 @@ void QUmlCollaborationUse::removeRoleBinding(QSet<QUmlDependency *> roleBinding)
  */
 QUmlCollaboration *QUmlCollaborationUse::type() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlCollaborationUse);
+    return d->type;
 }
 
 void QUmlCollaborationUse::setType(QUmlCollaboration *type)
 {
-    Q_UNUSED(type);
+    // This is a read-write association end
+
+    QM_D(QUmlCollaborationUse);
+    if (d->type != type) {
+        d->type = type;
+    }
 }
 
 QT_END_NAMESPACE

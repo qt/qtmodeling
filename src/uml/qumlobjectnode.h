@@ -65,8 +65,8 @@ public:
 
     // Owned attributes
     QSet<QUmlState *> inState() const;
-    void addInState(QSet<QUmlState *> inState);
-    void removeInState(QSet<QUmlState *> inState);
+    void addInState(QUmlState *inState);
+    void removeInState(QUmlState *inState);
     bool isControlType() const;
     void setControlType(bool isControlType);
     QtUml::ObjectNodeOrderingKind ordering() const;

@@ -61,8 +61,8 @@ public:
 
     // Owned attributes
     QSet<QUmlExceptionHandler *> handler() const;
-    void addHandler(QSet<QUmlExceptionHandler *> handler);
-    void removeHandler(QSet<QUmlExceptionHandler *> handler);
+    void addHandler(QUmlExceptionHandler *handler);
+    void removeHandler(QUmlExceptionHandler *handler);
 };
 
 QT_END_NAMESPACE

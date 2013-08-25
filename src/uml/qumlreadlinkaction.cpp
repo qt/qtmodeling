@@ -65,19 +65,27 @@ QUmlReadLinkAction::QUmlReadLinkAction(bool create_d_ptr) :
         set_d_ptr(new QUmlReadLinkActionPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The pin on which are put the objects participating in the association at the end not specified by the inputs.
  */
 QUmlOutputPin *QUmlReadLinkAction::result() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlReadLinkAction);
+    return d->result;
 }
 
 void QUmlReadLinkAction::setResult(QUmlOutputPin *result)
 {
-    Q_UNUSED(result);
+    // This is a read-write association end
+
+    QM_D(QUmlReadLinkAction);
+    if (d->result != result) {
+        d->result = result;
+    }
 }
 
 QT_END_NAMESPACE

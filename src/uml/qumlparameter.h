@@ -79,8 +79,8 @@ public:
     QUmlOperation *operation() const;
     void setOperation(QUmlOperation *operation);
     QSet<QUmlParameterSet *> parameterSet() const;
-    void addParameterSet(QSet<QUmlParameterSet *> parameterSet);
-    void removeParameterSet(QSet<QUmlParameterSet *> parameterSet);
+    void addParameterSet(QUmlParameterSet *parameterSet);
+    void removeParameterSet(QUmlParameterSet *parameterSet);
 };
 
 QT_END_NAMESPACE

@@ -65,19 +65,27 @@ QUmlBehaviorExecutionSpecification::QUmlBehaviorExecutionSpecification(bool crea
         set_d_ptr(new QUmlBehaviorExecutionSpecificationPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Behavior whose execution is occurring.
  */
 QUmlBehavior *QUmlBehaviorExecutionSpecification::behavior() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlBehaviorExecutionSpecification);
+    return d->behavior;
 }
 
 void QUmlBehaviorExecutionSpecification::setBehavior(QUmlBehavior *behavior)
 {
-    Q_UNUSED(behavior);
+    // This is a read-write association end
+
+    QM_D(QUmlBehaviorExecutionSpecification);
+    if (d->behavior != behavior) {
+        d->behavior = behavior;
+    }
 }
 
 QT_END_NAMESPACE

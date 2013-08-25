@@ -65,24 +65,37 @@ QUmlExpansionRegion::QUmlExpansionRegion(bool create_d_ptr) :
         set_d_ptr(new QUmlExpansionRegionPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     An object node that holds a separate element of the input collection during each of the multiple executions of the region.
  */
 QSet<QUmlExpansionNode *> QUmlExpansionRegion::inputElement() const
 {
-    return QSet<QUmlExpansionNode *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlExpansionRegion);
+    return d->inputElement;
 }
 
-void QUmlExpansionRegion::addInputElement(QSet<QUmlExpansionNode *> inputElement)
+void QUmlExpansionRegion::addInputElement(QUmlExpansionNode *inputElement)
 {
-    Q_UNUSED(inputElement);
+    // This is a read-write association end
+
+    QM_D(QUmlExpansionRegion);
+    if (!d->inputElement.contains(inputElement)) {
+        d->inputElement.insert(inputElement);
+    }
 }
 
-void QUmlExpansionRegion::removeInputElement(QSet<QUmlExpansionNode *> inputElement)
+void QUmlExpansionRegion::removeInputElement(QUmlExpansionNode *inputElement)
 {
-    Q_UNUSED(inputElement);
+    // This is a read-write association end
+
+    QM_D(QUmlExpansionRegion);
+    if (d->inputElement.contains(inputElement)) {
+        d->inputElement.remove(inputElement);
+    }
 }
 
 /*!
@@ -90,12 +103,20 @@ void QUmlExpansionRegion::removeInputElement(QSet<QUmlExpansionNode *> inputElem
  */
 QtUml::ExpansionKind QUmlExpansionRegion::mode() const
 {
-    return QtUml::ExpansionKind();
+    // This is a read-write property
+
+    QM_D(const QUmlExpansionRegion);
+    return d->mode;
 }
 
 void QUmlExpansionRegion::setMode(QtUml::ExpansionKind mode)
 {
-    Q_UNUSED(mode);
+    // This is a read-write property
+
+    QM_D(QUmlExpansionRegion);
+    if (d->mode != mode) {
+        d->mode = mode;
+    }
 }
 
 /*!
@@ -103,17 +124,30 @@ void QUmlExpansionRegion::setMode(QtUml::ExpansionKind mode)
  */
 QSet<QUmlExpansionNode *> QUmlExpansionRegion::outputElement() const
 {
-    return QSet<QUmlExpansionNode *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlExpansionRegion);
+    return d->outputElement;
 }
 
-void QUmlExpansionRegion::addOutputElement(QSet<QUmlExpansionNode *> outputElement)
+void QUmlExpansionRegion::addOutputElement(QUmlExpansionNode *outputElement)
 {
-    Q_UNUSED(outputElement);
+    // This is a read-write association end
+
+    QM_D(QUmlExpansionRegion);
+    if (!d->outputElement.contains(outputElement)) {
+        d->outputElement.insert(outputElement);
+    }
 }
 
-void QUmlExpansionRegion::removeOutputElement(QSet<QUmlExpansionNode *> outputElement)
+void QUmlExpansionRegion::removeOutputElement(QUmlExpansionNode *outputElement)
 {
-    Q_UNUSED(outputElement);
+    // This is a read-write association end
+
+    QM_D(QUmlExpansionRegion);
+    if (d->outputElement.contains(outputElement)) {
+        d->outputElement.remove(outputElement);
+    }
 }
 
 QT_END_NAMESPACE

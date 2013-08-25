@@ -56,7 +56,6 @@ class Q_UML_EXPORT QUmlEncapsulatedClassifierPrivate : public QUmlStructuredClas
 public:
     QUmlEncapsulatedClassifierPrivate();
 
-    QSet<QUmlPort *> ownedPort;
 };
 
 QT_END_NAMESPACE

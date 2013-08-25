@@ -62,8 +62,8 @@ public:
 
     // Owned attributes
     QSet<QUmlImage *> icon() const;
-    void addIcon(QSet<QUmlImage *> icon);
-    void removeIcon(QSet<QUmlImage *> icon);
+    void addIcon(QUmlImage *icon);
+    void removeIcon(QUmlImage *icon);
     QUmlProfile *profile() const;
 
     // Operations

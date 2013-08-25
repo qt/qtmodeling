@@ -63,19 +63,27 @@ QUmlContinuation::QUmlContinuation(bool create_d_ptr) :
         set_d_ptr(new QUmlContinuationPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     True: when the Continuation is at the end of the enclosing InteractionFragment and False when it is in the beginning.
  */
 bool QUmlContinuation::setting() const
 {
-    return bool();
+    // This is a read-write property
+
+    QM_D(const QUmlContinuation);
+    return d->setting;
 }
 
 void QUmlContinuation::setSetting(bool setting)
 {
-    Q_UNUSED(setting);
+    // This is a read-write property
+
+    QM_D(QUmlContinuation);
+    if (d->setting != setting) {
+        d->setting = setting;
+    }
 }
 
 QT_END_NAMESPACE

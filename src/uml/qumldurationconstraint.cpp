@@ -65,19 +65,27 @@ QUmlDurationConstraint::QUmlDurationConstraint(bool create_d_ptr) :
         set_d_ptr(new QUmlDurationConstraintPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The value of firstEvent[i] is related to constrainedElement[i] (where i is 1 or 2). If firstEvent[i] is true, then the corresponding observation event is the first time instant the execution enters constrainedElement[i]. If firstEvent[i] is false, then the corresponding observation event is the last time instant the execution is within constrainedElement[i]. Default value is true applied when constrainedElement[i] refers an element that represents only one time instant.
  */
 bool QUmlDurationConstraint::firstEvent() const
 {
-    return bool();
+    // This is a read-write property
+
+    QM_D(const QUmlDurationConstraint);
+    return d->firstEvent;
 }
 
 void QUmlDurationConstraint::setFirstEvent(bool firstEvent)
 {
-    Q_UNUSED(firstEvent);
+    // This is a read-write property
+
+    QM_D(QUmlDurationConstraint);
+    if (d->firstEvent != firstEvent) {
+        d->firstEvent = firstEvent;
+    }
 }
 
 /*!
@@ -85,12 +93,20 @@ void QUmlDurationConstraint::setFirstEvent(bool firstEvent)
  */
 QUmlDurationInterval *QUmlDurationConstraint::specification() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlDurationConstraint);
+    return d->specification;
 }
 
 void QUmlDurationConstraint::setSpecification(QUmlDurationInterval *specification)
 {
-    Q_UNUSED(specification);
+    // This is a read-write association end
+
+    QM_D(QUmlDurationConstraint);
+    if (d->specification != specification) {
+        d->specification = specification;
+    }
 }
 
 QT_END_NAMESPACE

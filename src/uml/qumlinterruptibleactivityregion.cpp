@@ -65,24 +65,37 @@ QUmlInterruptibleActivityRegion::QUmlInterruptibleActivityRegion(bool create_d_p
         set_d_ptr(new QUmlInterruptibleActivityRegionPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The edges leaving the region that will abort other tokens flowing in the region.
  */
 QSet<QUmlActivityEdge *> QUmlInterruptibleActivityRegion::interruptingEdge() const
 {
-    return QSet<QUmlActivityEdge *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlInterruptibleActivityRegion);
+    return d->interruptingEdge;
 }
 
-void QUmlInterruptibleActivityRegion::addInterruptingEdge(QSet<QUmlActivityEdge *> interruptingEdge)
+void QUmlInterruptibleActivityRegion::addInterruptingEdge(QUmlActivityEdge *interruptingEdge)
 {
-    Q_UNUSED(interruptingEdge);
+    // This is a read-write association end
+
+    QM_D(QUmlInterruptibleActivityRegion);
+    if (!d->interruptingEdge.contains(interruptingEdge)) {
+        d->interruptingEdge.insert(interruptingEdge);
+    }
 }
 
-void QUmlInterruptibleActivityRegion::removeInterruptingEdge(QSet<QUmlActivityEdge *> interruptingEdge)
+void QUmlInterruptibleActivityRegion::removeInterruptingEdge(QUmlActivityEdge *interruptingEdge)
 {
-    Q_UNUSED(interruptingEdge);
+    // This is a read-write association end
+
+    QM_D(QUmlInterruptibleActivityRegion);
+    if (d->interruptingEdge.contains(interruptingEdge)) {
+        d->interruptingEdge.remove(interruptingEdge);
+    }
 }
 
 /*!
@@ -90,17 +103,30 @@ void QUmlInterruptibleActivityRegion::removeInterruptingEdge(QSet<QUmlActivityEd
  */
 QSet<QUmlActivityNode *> QUmlInterruptibleActivityRegion::node() const
 {
-    return QSet<QUmlActivityNode *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlInterruptibleActivityRegion);
+    return d->node;
 }
 
-void QUmlInterruptibleActivityRegion::addNode(QSet<QUmlActivityNode *> node)
+void QUmlInterruptibleActivityRegion::addNode(QUmlActivityNode *node)
 {
-    Q_UNUSED(node);
+    // This is a read-write association end
+
+    QM_D(QUmlInterruptibleActivityRegion);
+    if (!d->node.contains(node)) {
+        d->node.insert(node);
+    }
 }
 
-void QUmlInterruptibleActivityRegion::removeNode(QSet<QUmlActivityNode *> node)
+void QUmlInterruptibleActivityRegion::removeNode(QUmlActivityNode *node)
 {
-    Q_UNUSED(node);
+    // This is a read-write association end
+
+    QM_D(QUmlInterruptibleActivityRegion);
+    if (d->node.contains(node)) {
+        d->node.remove(node);
+    }
 }
 
 QT_END_NAMESPACE

@@ -61,8 +61,8 @@ public:
 
     // Owned attributes
     QSet<QUmlNamedElement *> message() const;
-    void addMessage(QSet<QUmlNamedElement *> message);
-    void removeMessage(QSet<QUmlNamedElement *> message);
+    void addMessage(QUmlNamedElement *message);
+    void removeMessage(QUmlNamedElement *message);
 };
 
 QT_END_NAMESPACE

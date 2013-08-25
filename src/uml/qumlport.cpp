@@ -69,19 +69,27 @@ QUmlPort::QUmlPort(bool create_d_ptr) :
         set_d_ptr(new QUmlPortPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Specifies whether requests arriving at this port are sent to the classifier behavior of this classifier. Such ports are referred to as behavior port. Any invocation of a behavioral feature targeted at a behavior port will be handled by the instance of the owning classifier itself, rather than by any instances that this classifier may contain.
  */
 bool QUmlPort::isBehavior() const
 {
-    return bool();
+    // This is a read-write property
+
+    QM_D(const QUmlPort);
+    return d->isBehavior;
 }
 
 void QUmlPort::setBehavior(bool isBehavior)
 {
-    Q_UNUSED(isBehavior);
+    // This is a read-write property
+
+    QM_D(QUmlPort);
+    if (d->isBehavior != isBehavior) {
+        d->isBehavior = isBehavior;
+    }
 }
 
 /*!
@@ -89,12 +97,20 @@ void QUmlPort::setBehavior(bool isBehavior)
  */
 bool QUmlPort::isConjugated() const
 {
-    return bool();
+    // This is a read-write property
+
+    QM_D(const QUmlPort);
+    return d->isConjugated;
 }
 
 void QUmlPort::setConjugated(bool isConjugated)
 {
-    Q_UNUSED(isConjugated);
+    // This is a read-write property
+
+    QM_D(QUmlPort);
+    if (d->isConjugated != isConjugated) {
+        d->isConjugated = isConjugated;
+    }
 }
 
 /*!
@@ -102,12 +118,20 @@ void QUmlPort::setConjugated(bool isConjugated)
  */
 bool QUmlPort::isService() const
 {
-    return bool();
+    // This is a read-write property
+
+    QM_D(const QUmlPort);
+    return d->isService;
 }
 
 void QUmlPort::setService(bool isService)
 {
-    Q_UNUSED(isService);
+    // This is a read-write property
+
+    QM_D(QUmlPort);
+    if (d->isService != isService) {
+        d->isService = isService;
+    }
 }
 
 /*!
@@ -115,12 +139,20 @@ void QUmlPort::setService(bool isService)
  */
 QUmlProtocolStateMachine *QUmlPort::protocol() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlPort);
+    return d->protocol;
 }
 
 void QUmlPort::setProtocol(QUmlProtocolStateMachine *protocol)
 {
-    Q_UNUSED(protocol);
+    // This is a read-write association end
+
+    QM_D(QUmlPort);
+    if (d->protocol != protocol) {
+        d->protocol = protocol;
+    }
 }
 
 /*!
@@ -128,6 +160,10 @@ void QUmlPort::setProtocol(QUmlProtocolStateMachine *protocol)
  */
 QSet<QUmlInterface *> QUmlPort::provided() const
 {
+    // This is a read-only derived association end
+
+    qWarning("QUmlPort::provided(): to be implemented (this is a derived association end)");
+
     return QSet<QUmlInterface *>();
 }
 
@@ -136,17 +172,30 @@ QSet<QUmlInterface *> QUmlPort::provided() const
  */
 QSet<QUmlPort *> QUmlPort::redefinedPort() const
 {
-    return QSet<QUmlPort *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlPort);
+    return d->redefinedPort;
 }
 
-void QUmlPort::addRedefinedPort(QSet<QUmlPort *> redefinedPort)
+void QUmlPort::addRedefinedPort(QUmlPort *redefinedPort)
 {
-    Q_UNUSED(redefinedPort);
+    // This is a read-write association end
+
+    QM_D(QUmlPort);
+    if (!d->redefinedPort.contains(redefinedPort)) {
+        d->redefinedPort.insert(redefinedPort);
+    }
 }
 
-void QUmlPort::removeRedefinedPort(QSet<QUmlPort *> redefinedPort)
+void QUmlPort::removeRedefinedPort(QUmlPort *redefinedPort)
 {
-    Q_UNUSED(redefinedPort);
+    // This is a read-write association end
+
+    QM_D(QUmlPort);
+    if (d->redefinedPort.contains(redefinedPort)) {
+        d->redefinedPort.remove(redefinedPort);
+    }
 }
 
 /*!
@@ -154,6 +203,10 @@ void QUmlPort::removeRedefinedPort(QSet<QUmlPort *> redefinedPort)
  */
 QSet<QUmlInterface *> QUmlPort::required() const
 {
+    // This is a read-only derived association end
+
+    qWarning("QUmlPort::required(): to be implemented (this is a derived association end)");
+
     return QSet<QUmlInterface *>();
 }
 

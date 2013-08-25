@@ -66,19 +66,27 @@ QUmlAddVariableValueAction::QUmlAddVariableValueAction(bool create_d_ptr) :
         set_d_ptr(new QUmlAddVariableValueActionPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Gives the position at which to insert a new value or move an existing value in ordered variables. The types is UnlimitedINatural, but the value cannot be zero. This pin is omitted for unordered variables.
  */
 QUmlInputPin *QUmlAddVariableValueAction::insertAt() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlAddVariableValueAction);
+    return d->insertAt;
 }
 
 void QUmlAddVariableValueAction::setInsertAt(QUmlInputPin *insertAt)
 {
-    Q_UNUSED(insertAt);
+    // This is a read-write association end
+
+    QM_D(QUmlAddVariableValueAction);
+    if (d->insertAt != insertAt) {
+        d->insertAt = insertAt;
+    }
 }
 
 /*!
@@ -86,12 +94,20 @@ void QUmlAddVariableValueAction::setInsertAt(QUmlInputPin *insertAt)
  */
 bool QUmlAddVariableValueAction::isReplaceAll() const
 {
-    return bool();
+    // This is a read-write property
+
+    QM_D(const QUmlAddVariableValueAction);
+    return d->isReplaceAll;
 }
 
 void QUmlAddVariableValueAction::setReplaceAll(bool isReplaceAll)
 {
-    Q_UNUSED(isReplaceAll);
+    // This is a read-write property
+
+    QM_D(QUmlAddVariableValueAction);
+    if (d->isReplaceAll != isReplaceAll) {
+        d->isReplaceAll = isReplaceAll;
+    }
 }
 
 QT_END_NAMESPACE

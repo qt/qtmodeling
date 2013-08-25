@@ -65,19 +65,27 @@ QUmlReadSelfAction::QUmlReadSelfAction(bool create_d_ptr) :
         set_d_ptr(new QUmlReadSelfActionPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Gives the output pin on which the hosting object is placed.
  */
 QUmlOutputPin *QUmlReadSelfAction::result() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlReadSelfAction);
+    return d->result;
 }
 
 void QUmlReadSelfAction::setResult(QUmlOutputPin *result)
 {
-    Q_UNUSED(result);
+    // This is a read-write association end
+
+    QM_D(QUmlReadSelfAction);
+    if (d->result != result) {
+        d->result = result;
+    }
 }
 
 QT_END_NAMESPACE

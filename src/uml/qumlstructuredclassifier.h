@@ -63,11 +63,11 @@ public:
 
     // Owned attributes
     QList<QUmlProperty *> ownedAttribute() const;
-    void addOwnedAttribute(QList<QUmlProperty *> ownedAttribute);
-    void removeOwnedAttribute(QList<QUmlProperty *> ownedAttribute);
+    void addOwnedAttribute(QUmlProperty *ownedAttribute);
+    void removeOwnedAttribute(QUmlProperty *ownedAttribute);
     QSet<QUmlConnector *> ownedConnector() const;
-    void addOwnedConnector(QSet<QUmlConnector *> ownedConnector);
-    void removeOwnedConnector(QSet<QUmlConnector *> ownedConnector);
+    void addOwnedConnector(QUmlConnector *ownedConnector);
+    void removeOwnedConnector(QUmlConnector *ownedConnector);
     QSet<QUmlProperty *> part() const;
     QSet<QUmlConnectableElement *> role() const;
 };

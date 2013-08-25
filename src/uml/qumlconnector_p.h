@@ -58,7 +58,6 @@ public:
 
     QSet<QUmlBehavior *> contract;
     QList<QUmlConnectorEnd *> end;
-    QtUml::ConnectorKind kind;
     QSet<QUmlConnector *> redefinedConnector;
     QUmlAssociation *type;
 };

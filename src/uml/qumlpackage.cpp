@@ -64,8 +64,6 @@ QUmlPackagePrivate::QUmlPackagePrivate() :
  */
 
 QUmlPackage::QUmlPackage(bool create_d_ptr) :
-//    QUmlElement(false),
-//    QUmlNamedElement(false),
     QUmlNamespace(false),
     QUmlPackageableElement(false),
     QUmlTemplateableElement(false)
@@ -74,19 +72,27 @@ QUmlPackage::QUmlPackage(bool create_d_ptr) :
         set_d_ptr(new QUmlPackagePrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Provides an identifier for the package that can be used for many purposes. A URI is the universally unique identification of the package following the IETF URI specification, RFC 2396 http://www.ietf.org/rfc/rfc2396.txt and it must comply with those syntax rules.
  */
 QString QUmlPackage::URI() const
 {
-    return QString();
+    // This is a read-write property
+
+    QM_D(const QUmlPackage);
+    return d->URI;
 }
 
 void QUmlPackage::setURI(QString URI)
 {
-    Q_UNUSED(URI);
+    // This is a read-write property
+
+    QM_D(QUmlPackage);
+    if (d->URI != URI) {
+        d->URI = URI;
+    }
 }
 
 /*!
@@ -94,17 +100,35 @@ void QUmlPackage::setURI(QString URI)
  */
 QSet<QUmlPackage *> QUmlPackage::nestedPackage() const
 {
+    // This is a read-write derived association end
+
+    qWarning("QUmlPackage::nestedPackage(): to be implemented (this is a derived association end)");
+
     return QSet<QUmlPackage *>();
 }
 
-void QUmlPackage::addNestedPackage(QSet<QUmlPackage *> nestedPackage)
+void QUmlPackage::addNestedPackage(QUmlPackage *nestedPackage)
 {
+    // This is a read-write derived association end
+
+    qWarning("QUmlPackage::nestedPackage(): to be implemented (this is a derived association end)");
     Q_UNUSED(nestedPackage);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
 }
 
-void QUmlPackage::removeNestedPackage(QSet<QUmlPackage *> nestedPackage)
+void QUmlPackage::removeNestedPackage(QUmlPackage *nestedPackage)
 {
+    // This is a read-write derived association end
+
+    qWarning("QUmlPackage::nestedPackage(): to be implemented (this is a derived association end)");
     Q_UNUSED(nestedPackage);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
 }
 
 /*!
@@ -112,12 +136,20 @@ void QUmlPackage::removeNestedPackage(QSet<QUmlPackage *> nestedPackage)
  */
 QUmlPackage *QUmlPackage::nestingPackage() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlPackage);
+    return d->nestingPackage;
 }
 
 void QUmlPackage::setNestingPackage(QUmlPackage *nestingPackage)
 {
-    Q_UNUSED(nestingPackage);
+    // This is a read-write association end
+
+    QM_D(QUmlPackage);
+    if (d->nestingPackage != nestingPackage) {
+        d->nestingPackage = nestingPackage;
+    }
 }
 
 /*!
@@ -125,6 +157,10 @@ void QUmlPackage::setNestingPackage(QUmlPackage *nestingPackage)
  */
 QSet<QUmlStereotype *> QUmlPackage::ownedStereotype() const
 {
+    // This is a read-only derived association end
+
+    qWarning("QUmlPackage::ownedStereotype(): to be implemented (this is a derived association end)");
+
     return QSet<QUmlStereotype *>();
 }
 
@@ -133,17 +169,35 @@ QSet<QUmlStereotype *> QUmlPackage::ownedStereotype() const
  */
 QSet<QUmlType *> QUmlPackage::ownedType() const
 {
+    // This is a read-write derived association end
+
+    qWarning("QUmlPackage::ownedType(): to be implemented (this is a derived association end)");
+
     return QSet<QUmlType *>();
 }
 
-void QUmlPackage::addOwnedType(QSet<QUmlType *> ownedType)
+void QUmlPackage::addOwnedType(QUmlType *ownedType)
 {
+    // This is a read-write derived association end
+
+    qWarning("QUmlPackage::ownedType(): to be implemented (this is a derived association end)");
     Q_UNUSED(ownedType);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
 }
 
-void QUmlPackage::removeOwnedType(QSet<QUmlType *> ownedType)
+void QUmlPackage::removeOwnedType(QUmlType *ownedType)
 {
+    // This is a read-write derived association end
+
+    qWarning("QUmlPackage::ownedType(): to be implemented (this is a derived association end)");
     Q_UNUSED(ownedType);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
 }
 
 /*!
@@ -151,17 +205,30 @@ void QUmlPackage::removeOwnedType(QSet<QUmlType *> ownedType)
  */
 QSet<QUmlPackageMerge *> QUmlPackage::packageMerge() const
 {
-    return QSet<QUmlPackageMerge *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlPackage);
+    return d->packageMerge;
 }
 
-void QUmlPackage::addPackageMerge(QSet<QUmlPackageMerge *> packageMerge)
+void QUmlPackage::addPackageMerge(QUmlPackageMerge *packageMerge)
 {
-    Q_UNUSED(packageMerge);
+    // This is a read-write association end
+
+    QM_D(QUmlPackage);
+    if (!d->packageMerge.contains(packageMerge)) {
+        d->packageMerge.insert(packageMerge);
+    }
 }
 
-void QUmlPackage::removePackageMerge(QSet<QUmlPackageMerge *> packageMerge)
+void QUmlPackage::removePackageMerge(QUmlPackageMerge *packageMerge)
 {
-    Q_UNUSED(packageMerge);
+    // This is a read-write association end
+
+    QM_D(QUmlPackage);
+    if (d->packageMerge.contains(packageMerge)) {
+        d->packageMerge.remove(packageMerge);
+    }
 }
 
 /*!
@@ -169,17 +236,30 @@ void QUmlPackage::removePackageMerge(QSet<QUmlPackageMerge *> packageMerge)
  */
 QSet<QUmlPackageableElement *> QUmlPackage::packagedElement() const
 {
-    return QSet<QUmlPackageableElement *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlPackage);
+    return d->packagedElement;
 }
 
-void QUmlPackage::addPackagedElement(QSet<QUmlPackageableElement *> packagedElement)
+void QUmlPackage::addPackagedElement(QUmlPackageableElement *packagedElement)
 {
-    Q_UNUSED(packagedElement);
+    // This is a read-write association end
+
+    QM_D(QUmlPackage);
+    if (!d->packagedElement.contains(packagedElement)) {
+        d->packagedElement.insert(packagedElement);
+    }
 }
 
-void QUmlPackage::removePackagedElement(QSet<QUmlPackageableElement *> packagedElement)
+void QUmlPackage::removePackagedElement(QUmlPackageableElement *packagedElement)
 {
-    Q_UNUSED(packagedElement);
+    // This is a read-write association end
+
+    QM_D(QUmlPackage);
+    if (d->packagedElement.contains(packagedElement)) {
+        d->packagedElement.remove(packagedElement);
+    }
 }
 
 /*!
@@ -187,20 +267,33 @@ void QUmlPackage::removePackagedElement(QSet<QUmlPackageableElement *> packagedE
  */
 QSet<QUmlProfileApplication *> QUmlPackage::profileApplication() const
 {
-    return QSet<QUmlProfileApplication *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlPackage);
+    return d->profileApplication;
 }
 
-void QUmlPackage::addProfileApplication(QSet<QUmlProfileApplication *> profileApplication)
+void QUmlPackage::addProfileApplication(QUmlProfileApplication *profileApplication)
 {
-    Q_UNUSED(profileApplication);
+    // This is a read-write association end
+
+    QM_D(QUmlPackage);
+    if (!d->profileApplication.contains(profileApplication)) {
+        d->profileApplication.insert(profileApplication);
+    }
 }
 
-void QUmlPackage::removeProfileApplication(QSet<QUmlProfileApplication *> profileApplication)
+void QUmlPackage::removeProfileApplication(QUmlProfileApplication *profileApplication)
 {
-    Q_UNUSED(profileApplication);
+    // This is a read-write association end
+
+    QM_D(QUmlPackage);
+    if (d->profileApplication.contains(profileApplication)) {
+        d->profileApplication.remove(profileApplication);
+    }
 }
 
-// Operations
+// OPERATIONS
 
 /*!
     The query allApplicableStereotypes() returns all the directly or indirectly owned stereotypes, including stereotypes contained in sub-profiles.

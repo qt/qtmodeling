@@ -65,19 +65,27 @@ QUmlCallEvent::QUmlCallEvent(bool create_d_ptr) :
         set_d_ptr(new QUmlCallEventPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Designates the operation whose invocation raised the call event.
  */
 QUmlOperation *QUmlCallEvent::operation() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlCallEvent);
+    return d->operation;
 }
 
 void QUmlCallEvent::setOperation(QUmlOperation *operation)
 {
-    Q_UNUSED(operation);
+    // This is a read-write association end
+
+    QM_D(QUmlCallEvent);
+    if (d->operation != operation) {
+        d->operation = operation;
+    }
 }
 
 QT_END_NAMESPACE

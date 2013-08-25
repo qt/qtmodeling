@@ -59,7 +59,6 @@ public:
     QUmlBehavior *behavior;
     QList<QString> body;
     QList<QString> language;
-    QUmlParameter *result;
 };
 
 QT_END_NAMESPACE

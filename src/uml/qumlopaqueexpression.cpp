@@ -47,8 +47,7 @@
 QT_BEGIN_NAMESPACE
 
 QUmlOpaqueExpressionPrivate::QUmlOpaqueExpressionPrivate() :
-    behavior(0),
-    result(0)
+    behavior(0)
 {
 }
 
@@ -67,19 +66,27 @@ QUmlOpaqueExpression::QUmlOpaqueExpression(bool create_d_ptr) :
         set_d_ptr(new QUmlOpaqueExpressionPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Specifies the behavior of the opaque expression.
  */
 QUmlBehavior *QUmlOpaqueExpression::behavior() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlOpaqueExpression);
+    return d->behavior;
 }
 
 void QUmlOpaqueExpression::setBehavior(QUmlBehavior *behavior)
 {
-    Q_UNUSED(behavior);
+    // This is a read-write association end
+
+    QM_D(QUmlOpaqueExpression);
+    if (d->behavior != behavior) {
+        d->behavior = behavior;
+    }
 }
 
 /*!
@@ -87,17 +94,30 @@ void QUmlOpaqueExpression::setBehavior(QUmlBehavior *behavior)
  */
 QList<QString> QUmlOpaqueExpression::body() const
 {
-    return QList<QString>();
+    // This is a read-write property
+
+    QM_D(const QUmlOpaqueExpression);
+    return d->body;
 }
 
-void QUmlOpaqueExpression::addBody(QList<QString> body)
+void QUmlOpaqueExpression::addBody(QString body)
 {
-    Q_UNUSED(body);
+    // This is a read-write property
+
+    QM_D(QUmlOpaqueExpression);
+    if (!d->body.contains(body)) {
+        d->body.append(body);
+    }
 }
 
-void QUmlOpaqueExpression::removeBody(QList<QString> body)
+void QUmlOpaqueExpression::removeBody(QString body)
 {
-    Q_UNUSED(body);
+    // This is a read-write property
+
+    QM_D(QUmlOpaqueExpression);
+    if (d->body.contains(body)) {
+        d->body.removeAll(body);
+    }
 }
 
 /*!
@@ -105,17 +125,30 @@ void QUmlOpaqueExpression::removeBody(QList<QString> body)
  */
 QList<QString> QUmlOpaqueExpression::language() const
 {
-    return QList<QString>();
+    // This is a read-write property
+
+    QM_D(const QUmlOpaqueExpression);
+    return d->language;
 }
 
-void QUmlOpaqueExpression::addLanguage(QList<QString> language)
+void QUmlOpaqueExpression::addLanguage(QString language)
 {
-    Q_UNUSED(language);
+    // This is a read-write property
+
+    QM_D(QUmlOpaqueExpression);
+    if (!d->language.contains(language)) {
+        d->language.append(language);
+    }
 }
 
-void QUmlOpaqueExpression::removeLanguage(QList<QString> language)
+void QUmlOpaqueExpression::removeLanguage(QString language)
 {
-    Q_UNUSED(language);
+    // This is a read-write property
+
+    QM_D(QUmlOpaqueExpression);
+    if (d->language.contains(language)) {
+        d->language.removeAll(language);
+    }
 }
 
 /*!
@@ -123,10 +156,14 @@ void QUmlOpaqueExpression::removeLanguage(QList<QString> language)
  */
 QUmlParameter *QUmlOpaqueExpression::result() const
 {
+    // This is a read-only derived association end
+
+    qWarning("QUmlOpaqueExpression::result(): to be implemented (this is a derived association end)");
+
     return 0;
 }
 
-// Operations
+// OPERATIONS
 
 /*!
     The query isIntegral() tells whether an expression is intended to produce an integer.

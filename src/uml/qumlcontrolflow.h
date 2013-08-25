@@ -50,6 +50,7 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
+
 class QUmlControlFlowPrivate;
 class Q_UML_EXPORT QUmlControlFlow : public QUmlActivityEdge
 {

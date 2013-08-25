@@ -60,9 +60,7 @@ public:
     bool isConjugated;
     bool isService;
     QUmlProtocolStateMachine *protocol;
-    QSet<QUmlInterface *> provided;
     QSet<QUmlPort *> redefinedPort;
-    QSet<QUmlInterface *> required;
 };
 
 QT_END_NAMESPACE

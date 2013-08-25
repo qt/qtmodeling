@@ -51,6 +51,7 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
+
 class QUmlPinPrivate;
 class Q_UML_EXPORT QUmlPin : public QUmlMultiplicityElement, public QUmlObjectNode
 {

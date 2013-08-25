@@ -48,9 +48,7 @@ QT_BEGIN_NAMESPACE
 QUmlMultiplicityElementPrivate::QUmlMultiplicityElementPrivate() :
     isOrdered(false),
     isUnique(true),
-    lower(1),
     lowerValue(0),
-    upper(1),
     upperValue(0)
 {
 }
@@ -70,19 +68,27 @@ QUmlMultiplicityElement::QUmlMultiplicityElement(bool create_d_ptr) :
         set_d_ptr(new QUmlMultiplicityElementPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     For a multivalued multiplicity, this attribute specifies whether the values in an instantiation of this element are sequentially ordered.
  */
 bool QUmlMultiplicityElement::isOrdered() const
 {
-    return bool();
+    // This is a read-write property
+
+    QM_D(const QUmlMultiplicityElement);
+    return d->isOrdered;
 }
 
 void QUmlMultiplicityElement::setOrdered(bool isOrdered)
 {
-    Q_UNUSED(isOrdered);
+    // This is a read-write property
+
+    QM_D(QUmlMultiplicityElement);
+    if (d->isOrdered != isOrdered) {
+        d->isOrdered = isOrdered;
+    }
 }
 
 /*!
@@ -90,12 +96,20 @@ void QUmlMultiplicityElement::setOrdered(bool isOrdered)
  */
 bool QUmlMultiplicityElement::isUnique() const
 {
-    return bool();
+    // This is a read-write property
+
+    QM_D(const QUmlMultiplicityElement);
+    return d->isUnique;
 }
 
 void QUmlMultiplicityElement::setUnique(bool isUnique)
 {
-    Q_UNUSED(isUnique);
+    // This is a read-write property
+
+    QM_D(QUmlMultiplicityElement);
+    if (d->isUnique != isUnique) {
+        d->isUnique = isUnique;
+    }
 }
 
 /*!
@@ -103,12 +117,23 @@ void QUmlMultiplicityElement::setUnique(bool isUnique)
  */
 int QUmlMultiplicityElement::lower() const
 {
+    // This is a read-write derived property
+
+    qWarning("QUmlMultiplicityElement::lower(): to be implemented (this is a derived property)");
+
     return int();
 }
 
 void QUmlMultiplicityElement::setLower(int lower)
 {
+    // This is a read-write derived property
+
+    qWarning("QUmlMultiplicityElement::lower(): to be implemented (this is a derived property)");
     Q_UNUSED(lower);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
 }
 
 /*!
@@ -116,12 +141,20 @@ void QUmlMultiplicityElement::setLower(int lower)
  */
 QUmlValueSpecification *QUmlMultiplicityElement::lowerValue() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlMultiplicityElement);
+    return d->lowerValue;
 }
 
 void QUmlMultiplicityElement::setLowerValue(QUmlValueSpecification *lowerValue)
 {
-    Q_UNUSED(lowerValue);
+    // This is a read-write association end
+
+    QM_D(QUmlMultiplicityElement);
+    if (d->lowerValue != lowerValue) {
+        d->lowerValue = lowerValue;
+    }
 }
 
 /*!
@@ -129,12 +162,23 @@ void QUmlMultiplicityElement::setLowerValue(QUmlValueSpecification *lowerValue)
  */
 int QUmlMultiplicityElement::upper() const
 {
+    // This is a read-write derived property
+
+    qWarning("QUmlMultiplicityElement::upper(): to be implemented (this is a derived property)");
+
     return int();
 }
 
 void QUmlMultiplicityElement::setUpper(int upper)
 {
+    // This is a read-write derived property
+
+    qWarning("QUmlMultiplicityElement::upper(): to be implemented (this is a derived property)");
     Q_UNUSED(upper);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
 }
 
 /*!
@@ -142,15 +186,23 @@ void QUmlMultiplicityElement::setUpper(int upper)
  */
 QUmlValueSpecification *QUmlMultiplicityElement::upperValue() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlMultiplicityElement);
+    return d->upperValue;
 }
 
 void QUmlMultiplicityElement::setUpperValue(QUmlValueSpecification *upperValue)
 {
-    Q_UNUSED(upperValue);
+    // This is a read-write association end
+
+    QM_D(QUmlMultiplicityElement);
+    if (d->upperValue != upperValue) {
+        d->upperValue = upperValue;
+    }
 }
 
-// Operations
+// OPERATIONS
 
 /*!
     The operation compatibleWith takes another multiplicity as input. It checks if one multiplicity is compatible with another.

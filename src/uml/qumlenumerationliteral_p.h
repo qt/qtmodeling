@@ -56,7 +56,6 @@ class Q_UML_EXPORT QUmlEnumerationLiteralPrivate : public QUmlInstanceSpecificat
 public:
     QUmlEnumerationLiteralPrivate();
 
-    QUmlEnumeration *classifier;
     QUmlEnumeration *enumeration;
 };
 

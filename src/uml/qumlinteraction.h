@@ -65,20 +65,20 @@ public:
 
     // Owned attributes
     QSet<QUmlAction *> action() const;
-    void addAction(QSet<QUmlAction *> action);
-    void removeAction(QSet<QUmlAction *> action);
+    void addAction(QUmlAction *action);
+    void removeAction(QUmlAction *action);
     QSet<QUmlGate *> formalGate() const;
-    void addFormalGate(QSet<QUmlGate *> formalGate);
-    void removeFormalGate(QSet<QUmlGate *> formalGate);
+    void addFormalGate(QUmlGate *formalGate);
+    void removeFormalGate(QUmlGate *formalGate);
     QList<QUmlInteractionFragment *> fragment() const;
-    void addFragment(QList<QUmlInteractionFragment *> fragment);
-    void removeFragment(QList<QUmlInteractionFragment *> fragment);
+    void addFragment(QUmlInteractionFragment *fragment);
+    void removeFragment(QUmlInteractionFragment *fragment);
     QSet<QUmlLifeline *> lifeline() const;
-    void addLifeline(QSet<QUmlLifeline *> lifeline);
-    void removeLifeline(QSet<QUmlLifeline *> lifeline);
+    void addLifeline(QUmlLifeline *lifeline);
+    void removeLifeline(QUmlLifeline *lifeline);
     QSet<QUmlMessage *> message() const;
-    void addMessage(QSet<QUmlMessage *> message);
-    void removeMessage(QSet<QUmlMessage *> message);
+    void addMessage(QUmlMessage *message);
+    void removeMessage(QUmlMessage *message);
 };
 
 QT_END_NAMESPACE

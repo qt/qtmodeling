@@ -64,8 +64,8 @@ public:
     QUmlTrigger *replyToCall() const;
     void setReplyToCall(QUmlTrigger *replyToCall);
     QSet<QUmlInputPin *> replyValue() const;
-    void addReplyValue(QSet<QUmlInputPin *> replyValue);
-    void removeReplyValue(QSet<QUmlInputPin *> replyValue);
+    void addReplyValue(QUmlInputPin *replyValue);
+    void removeReplyValue(QUmlInputPin *replyValue);
     QUmlInputPin *returnInformation() const;
     void setReturnInformation(QUmlInputPin *returnInformation);
 };

@@ -63,8 +63,8 @@ public:
     QUmlValueSpecification *expr() const;
     void setExpr(QUmlValueSpecification *expr);
     QSet<QUmlObservation *> observation() const;
-    void addObservation(QSet<QUmlObservation *> observation);
-    void removeObservation(QSet<QUmlObservation *> observation);
+    void addObservation(QUmlObservation *observation);
+    void removeObservation(QUmlObservation *observation);
 };
 
 QT_END_NAMESPACE

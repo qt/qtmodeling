@@ -65,8 +65,8 @@ public:
     QUmlObjectNode *exceptionInput() const;
     void setExceptionInput(QUmlObjectNode *exceptionInput);
     QSet<QUmlClassifier *> exceptionType() const;
-    void addExceptionType(QSet<QUmlClassifier *> exceptionType);
-    void removeExceptionType(QSet<QUmlClassifier *> exceptionType);
+    void addExceptionType(QUmlClassifier *exceptionType);
+    void removeExceptionType(QUmlClassifier *exceptionType);
     QUmlExecutableNode *handlerBody() const;
     void setHandlerBody(QUmlExecutableNode *handlerBody);
     QUmlExecutableNode *protectedNode() const;

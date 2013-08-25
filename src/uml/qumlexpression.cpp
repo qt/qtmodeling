@@ -62,24 +62,37 @@ QUmlExpression::QUmlExpression(bool create_d_ptr) :
         set_d_ptr(new QUmlExpressionPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Specifies a sequence of operands.
  */
 QList<QUmlValueSpecification *> QUmlExpression::operand() const
 {
-    return QList<QUmlValueSpecification *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlExpression);
+    return d->operand;
 }
 
-void QUmlExpression::addOperand(QList<QUmlValueSpecification *> operand)
+void QUmlExpression::addOperand(QUmlValueSpecification *operand)
 {
-    Q_UNUSED(operand);
+    // This is a read-write association end
+
+    QM_D(QUmlExpression);
+    if (!d->operand.contains(operand)) {
+        d->operand.append(operand);
+    }
 }
 
-void QUmlExpression::removeOperand(QList<QUmlValueSpecification *> operand)
+void QUmlExpression::removeOperand(QUmlValueSpecification *operand)
 {
-    Q_UNUSED(operand);
+    // This is a read-write association end
+
+    QM_D(QUmlExpression);
+    if (d->operand.contains(operand)) {
+        d->operand.removeAll(operand);
+    }
 }
 
 /*!
@@ -87,12 +100,20 @@ void QUmlExpression::removeOperand(QList<QUmlValueSpecification *> operand)
  */
 QString QUmlExpression::symbol() const
 {
-    return QString();
+    // This is a read-write property
+
+    QM_D(const QUmlExpression);
+    return d->symbol;
 }
 
 void QUmlExpression::setSymbol(QString symbol)
 {
-    Q_UNUSED(symbol);
+    // This is a read-write property
+
+    QM_D(QUmlExpression);
+    if (d->symbol != symbol) {
+        d->symbol = symbol;
+    }
 }
 
 QT_END_NAMESPACE

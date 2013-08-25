@@ -65,19 +65,27 @@ QUmlIntervalConstraint::QUmlIntervalConstraint(bool create_d_ptr) :
         set_d_ptr(new QUmlIntervalConstraintPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     A condition that must be true when evaluated in order for the constraint to be satisfied.
  */
 QUmlInterval *QUmlIntervalConstraint::specification() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlIntervalConstraint);
+    return d->specification;
 }
 
 void QUmlIntervalConstraint::setSpecification(QUmlInterval *specification)
 {
-    Q_UNUSED(specification);
+    // This is a read-write association end
+
+    QM_D(QUmlIntervalConstraint);
+    if (d->specification != specification) {
+        d->specification = specification;
+    }
 }
 
 QT_END_NAMESPACE

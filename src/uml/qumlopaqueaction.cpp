@@ -65,24 +65,37 @@ QUmlOpaqueAction::QUmlOpaqueAction(bool create_d_ptr) :
         set_d_ptr(new QUmlOpaqueActionPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Specifies the action in one or more languages.
  */
 QList<QString> QUmlOpaqueAction::body() const
 {
-    return QList<QString>();
+    // This is a read-write property
+
+    QM_D(const QUmlOpaqueAction);
+    return d->body;
 }
 
-void QUmlOpaqueAction::addBody(QList<QString> body)
+void QUmlOpaqueAction::addBody(QString body)
 {
-    Q_UNUSED(body);
+    // This is a read-write property
+
+    QM_D(QUmlOpaqueAction);
+    if (!d->body.contains(body)) {
+        d->body.append(body);
+    }
 }
 
-void QUmlOpaqueAction::removeBody(QList<QString> body)
+void QUmlOpaqueAction::removeBody(QString body)
 {
-    Q_UNUSED(body);
+    // This is a read-write property
+
+    QM_D(QUmlOpaqueAction);
+    if (d->body.contains(body)) {
+        d->body.removeAll(body);
+    }
 }
 
 /*!
@@ -90,17 +103,30 @@ void QUmlOpaqueAction::removeBody(QList<QString> body)
  */
 QSet<QUmlInputPin *> QUmlOpaqueAction::inputValue() const
 {
-    return QSet<QUmlInputPin *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlOpaqueAction);
+    return d->inputValue;
 }
 
-void QUmlOpaqueAction::addInputValue(QSet<QUmlInputPin *> inputValue)
+void QUmlOpaqueAction::addInputValue(QUmlInputPin *inputValue)
 {
-    Q_UNUSED(inputValue);
+    // This is a read-write association end
+
+    QM_D(QUmlOpaqueAction);
+    if (!d->inputValue.contains(inputValue)) {
+        d->inputValue.insert(inputValue);
+    }
 }
 
-void QUmlOpaqueAction::removeInputValue(QSet<QUmlInputPin *> inputValue)
+void QUmlOpaqueAction::removeInputValue(QUmlInputPin *inputValue)
 {
-    Q_UNUSED(inputValue);
+    // This is a read-write association end
+
+    QM_D(QUmlOpaqueAction);
+    if (d->inputValue.contains(inputValue)) {
+        d->inputValue.remove(inputValue);
+    }
 }
 
 /*!
@@ -108,17 +134,30 @@ void QUmlOpaqueAction::removeInputValue(QSet<QUmlInputPin *> inputValue)
  */
 QList<QString> QUmlOpaqueAction::language() const
 {
-    return QList<QString>();
+    // This is a read-write property
+
+    QM_D(const QUmlOpaqueAction);
+    return d->language;
 }
 
-void QUmlOpaqueAction::addLanguage(QList<QString> language)
+void QUmlOpaqueAction::addLanguage(QString language)
 {
-    Q_UNUSED(language);
+    // This is a read-write property
+
+    QM_D(QUmlOpaqueAction);
+    if (!d->language.contains(language)) {
+        d->language.append(language);
+    }
 }
 
-void QUmlOpaqueAction::removeLanguage(QList<QString> language)
+void QUmlOpaqueAction::removeLanguage(QString language)
 {
-    Q_UNUSED(language);
+    // This is a read-write property
+
+    QM_D(QUmlOpaqueAction);
+    if (d->language.contains(language)) {
+        d->language.removeAll(language);
+    }
 }
 
 /*!
@@ -126,17 +165,30 @@ void QUmlOpaqueAction::removeLanguage(QList<QString> language)
  */
 QSet<QUmlOutputPin *> QUmlOpaqueAction::outputValue() const
 {
-    return QSet<QUmlOutputPin *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlOpaqueAction);
+    return d->outputValue;
 }
 
-void QUmlOpaqueAction::addOutputValue(QSet<QUmlOutputPin *> outputValue)
+void QUmlOpaqueAction::addOutputValue(QUmlOutputPin *outputValue)
 {
-    Q_UNUSED(outputValue);
+    // This is a read-write association end
+
+    QM_D(QUmlOpaqueAction);
+    if (!d->outputValue.contains(outputValue)) {
+        d->outputValue.insert(outputValue);
+    }
 }
 
-void QUmlOpaqueAction::removeOutputValue(QSet<QUmlOutputPin *> outputValue)
+void QUmlOpaqueAction::removeOutputValue(QUmlOutputPin *outputValue)
 {
-    Q_UNUSED(outputValue);
+    // This is a read-write association end
+
+    QM_D(QUmlOpaqueAction);
+    if (d->outputValue.contains(outputValue)) {
+        d->outputValue.remove(outputValue);
+    }
 }
 
 QT_END_NAMESPACE

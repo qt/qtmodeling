@@ -61,8 +61,8 @@ public:
 
     // Owned attributes
     QList<QUmlExecutableNode *> executableNode() const;
-    void addExecutableNode(QList<QUmlExecutableNode *> executableNode);
-    void removeExecutableNode(QList<QUmlExecutableNode *> executableNode);
+    void addExecutableNode(QUmlExecutableNode *executableNode);
+    void removeExecutableNode(QUmlExecutableNode *executableNode);
 };
 
 QT_END_NAMESPACE

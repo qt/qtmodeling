@@ -50,6 +50,7 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
+
 class QUmlDeployedArtifactPrivate;
 class Q_UML_EXPORT QUmlDeployedArtifact : public virtual QUmlNamedElement
 {

@@ -68,19 +68,27 @@ QUmlComponent::QUmlComponent(bool create_d_ptr) :
         set_d_ptr(new QUmlComponentPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     isIndirectlyInstantiated : Boolean {default = true} The kind of instantiation that applies to a Component. If false, the component is instantiated as an addressable object. If true, the Component is defined at design-time, but at run-time (or execution-time) an object specified by the Component does not exist, that is, the component is instantiated indirectly, through the instantiation of its realizing classifiers or parts. Several standard stereotypes use this meta attribute (e.g., «specification», «focus», «subsystem»).
  */
 bool QUmlComponent::isIndirectlyInstantiated() const
 {
-    return bool();
+    // This is a read-write property
+
+    QM_D(const QUmlComponent);
+    return d->isIndirectlyInstantiated;
 }
 
 void QUmlComponent::setIndirectlyInstantiated(bool isIndirectlyInstantiated)
 {
-    Q_UNUSED(isIndirectlyInstantiated);
+    // This is a read-write property
+
+    QM_D(QUmlComponent);
+    if (d->isIndirectlyInstantiated != isIndirectlyInstantiated) {
+        d->isIndirectlyInstantiated = isIndirectlyInstantiated;
+    }
 }
 
 /*!
@@ -88,17 +96,30 @@ void QUmlComponent::setIndirectlyInstantiated(bool isIndirectlyInstantiated)
  */
 QSet<QUmlPackageableElement *> QUmlComponent::packagedElement() const
 {
-    return QSet<QUmlPackageableElement *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlComponent);
+    return d->packagedElement;
 }
 
-void QUmlComponent::addPackagedElement(QSet<QUmlPackageableElement *> packagedElement)
+void QUmlComponent::addPackagedElement(QUmlPackageableElement *packagedElement)
 {
-    Q_UNUSED(packagedElement);
+    // This is a read-write association end
+
+    QM_D(QUmlComponent);
+    if (!d->packagedElement.contains(packagedElement)) {
+        d->packagedElement.insert(packagedElement);
+    }
 }
 
-void QUmlComponent::removePackagedElement(QSet<QUmlPackageableElement *> packagedElement)
+void QUmlComponent::removePackagedElement(QUmlPackageableElement *packagedElement)
 {
-    Q_UNUSED(packagedElement);
+    // This is a read-write association end
+
+    QM_D(QUmlComponent);
+    if (d->packagedElement.contains(packagedElement)) {
+        d->packagedElement.remove(packagedElement);
+    }
 }
 
 /*!
@@ -106,6 +127,10 @@ void QUmlComponent::removePackagedElement(QSet<QUmlPackageableElement *> package
  */
 QSet<QUmlInterface *> QUmlComponent::provided() const
 {
+    // This is a read-only derived association end
+
+    qWarning("QUmlComponent::provided(): to be implemented (this is a derived association end)");
+
     return QSet<QUmlInterface *>();
 }
 
@@ -114,17 +139,30 @@ QSet<QUmlInterface *> QUmlComponent::provided() const
  */
 QSet<QUmlComponentRealization *> QUmlComponent::realization() const
 {
-    return QSet<QUmlComponentRealization *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlComponent);
+    return d->realization;
 }
 
-void QUmlComponent::addRealization(QSet<QUmlComponentRealization *> realization)
+void QUmlComponent::addRealization(QUmlComponentRealization *realization)
 {
-    Q_UNUSED(realization);
+    // This is a read-write association end
+
+    QM_D(QUmlComponent);
+    if (!d->realization.contains(realization)) {
+        d->realization.insert(realization);
+    }
 }
 
-void QUmlComponent::removeRealization(QSet<QUmlComponentRealization *> realization)
+void QUmlComponent::removeRealization(QUmlComponentRealization *realization)
 {
-    Q_UNUSED(realization);
+    // This is a read-write association end
+
+    QM_D(QUmlComponent);
+    if (d->realization.contains(realization)) {
+        d->realization.remove(realization);
+    }
 }
 
 /*!
@@ -132,10 +170,14 @@ void QUmlComponent::removeRealization(QSet<QUmlComponentRealization *> realizati
  */
 QSet<QUmlInterface *> QUmlComponent::required() const
 {
+    // This is a read-only derived association end
+
+    qWarning("QUmlComponent::required(): to be implemented (this is a derived association end)");
+
     return QSet<QUmlInterface *>();
 }
 
-// Operations
+// OPERATIONS
 
 /*!
     Utility returning the set of realized interfaces of a component.

@@ -67,19 +67,27 @@ QUmlQualifierValue::QUmlQualifierValue(bool create_d_ptr) :
         set_d_ptr(new QUmlQualifierValuePrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Attribute representing the qualifier for which the value is to be specified.
  */
 QUmlProperty *QUmlQualifierValue::qualifier() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlQualifierValue);
+    return d->qualifier;
 }
 
 void QUmlQualifierValue::setQualifier(QUmlProperty *qualifier)
 {
-    Q_UNUSED(qualifier);
+    // This is a read-write association end
+
+    QM_D(QUmlQualifierValue);
+    if (d->qualifier != qualifier) {
+        d->qualifier = qualifier;
+    }
 }
 
 /*!
@@ -87,12 +95,20 @@ void QUmlQualifierValue::setQualifier(QUmlProperty *qualifier)
  */
 QUmlInputPin *QUmlQualifierValue::value() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlQualifierValue);
+    return d->value;
 }
 
 void QUmlQualifierValue::setValue(QUmlInputPin *value)
 {
-    Q_UNUSED(value);
+    // This is a read-write association end
+
+    QM_D(QUmlQualifierValue);
+    if (d->value != value) {
+        d->value = value;
+    }
 }
 
 QT_END_NAMESPACE

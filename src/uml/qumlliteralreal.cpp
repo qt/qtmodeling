@@ -62,19 +62,27 @@ QUmlLiteralReal::QUmlLiteralReal(bool create_d_ptr) :
         set_d_ptr(new QUmlLiteralRealPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 double QUmlLiteralReal::value() const
 {
-    return double();
+    // This is a read-write property
+
+    QM_D(const QUmlLiteralReal);
+    return d->value;
 }
 
 void QUmlLiteralReal::setValue(double value)
 {
-    Q_UNUSED(value);
+    // This is a read-write property
+
+    QM_D(QUmlLiteralReal);
+    if (d->value != value) {
+        d->value = value;
+    }
 }
 
-// Operations
+// OPERATIONS
 
 /*!
     The query isComputable() is redefined to be true.

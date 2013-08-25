@@ -67,19 +67,27 @@ QUmlSendSignalAction::QUmlSendSignalAction(bool create_d_ptr) :
         set_d_ptr(new QUmlSendSignalActionPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The type of signal transmitted to the target object.
  */
 QUmlSignal *QUmlSendSignalAction::signal() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlSendSignalAction);
+    return d->signal;
 }
 
 void QUmlSendSignalAction::setSignal(QUmlSignal *signal)
 {
-    Q_UNUSED(signal);
+    // This is a read-write association end
+
+    QM_D(QUmlSendSignalAction);
+    if (d->signal != signal) {
+        d->signal = signal;
+    }
 }
 
 /*!
@@ -87,12 +95,20 @@ void QUmlSendSignalAction::setSignal(QUmlSignal *signal)
  */
 QUmlInputPin *QUmlSendSignalAction::target() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlSendSignalAction);
+    return d->target;
 }
 
 void QUmlSendSignalAction::setTarget(QUmlInputPin *target)
 {
-    Q_UNUSED(target);
+    // This is a read-write association end
+
+    QM_D(QUmlSendSignalAction);
+    if (d->target != target) {
+        d->target = target;
+    }
 }
 
 QT_END_NAMESPACE

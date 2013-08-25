@@ -67,19 +67,27 @@ QUmlStructuralFeatureAction::QUmlStructuralFeatureAction(bool create_d_ptr) :
         set_d_ptr(new QUmlStructuralFeatureActionPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Gives the input pin from which the object whose structural feature is to be read or written is obtained.
  */
 QUmlInputPin *QUmlStructuralFeatureAction::object() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlStructuralFeatureAction);
+    return d->object;
 }
 
 void QUmlStructuralFeatureAction::setObject(QUmlInputPin *object)
 {
-    Q_UNUSED(object);
+    // This is a read-write association end
+
+    QM_D(QUmlStructuralFeatureAction);
+    if (d->object != object) {
+        d->object = object;
+    }
 }
 
 /*!
@@ -87,12 +95,20 @@ void QUmlStructuralFeatureAction::setObject(QUmlInputPin *object)
  */
 QUmlStructuralFeature *QUmlStructuralFeatureAction::structuralFeature() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlStructuralFeatureAction);
+    return d->structuralFeature;
 }
 
 void QUmlStructuralFeatureAction::setStructuralFeature(QUmlStructuralFeature *structuralFeature)
 {
-    Q_UNUSED(structuralFeature);
+    // This is a read-write association end
+
+    QM_D(QUmlStructuralFeatureAction);
+    if (d->structuralFeature != structuralFeature) {
+        d->structuralFeature = structuralFeature;
+    }
 }
 
 QT_END_NAMESPACE

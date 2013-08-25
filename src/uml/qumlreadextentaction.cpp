@@ -67,19 +67,27 @@ QUmlReadExtentAction::QUmlReadExtentAction(bool create_d_ptr) :
         set_d_ptr(new QUmlReadExtentActionPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The classifier whose instances are to be retrieved.
  */
 QUmlClassifier *QUmlReadExtentAction::classifier() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlReadExtentAction);
+    return d->classifier;
 }
 
 void QUmlReadExtentAction::setClassifier(QUmlClassifier *classifier)
 {
-    Q_UNUSED(classifier);
+    // This is a read-write association end
+
+    QM_D(QUmlReadExtentAction);
+    if (d->classifier != classifier) {
+        d->classifier = classifier;
+    }
 }
 
 /*!
@@ -87,12 +95,20 @@ void QUmlReadExtentAction::setClassifier(QUmlClassifier *classifier)
  */
 QUmlOutputPin *QUmlReadExtentAction::result() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlReadExtentAction);
+    return d->result;
 }
 
 void QUmlReadExtentAction::setResult(QUmlOutputPin *result)
 {
-    Q_UNUSED(result);
+    // This is a read-write association end
+
+    QM_D(QUmlReadExtentAction);
+    if (d->result != result) {
+        d->result = result;
+    }
 }
 
 QT_END_NAMESPACE

@@ -57,7 +57,6 @@ public:
     QUmlNamespacePrivate();
 
     QSet<QUmlElementImport *> elementImport;
-    QSet<QUmlPackageableElement *> importedMember;
     QSet<QUmlNamedElement *> member;
     QSet<QUmlNamedElement *> ownedMember;
     QSet<QUmlConstraint *> ownedRule;

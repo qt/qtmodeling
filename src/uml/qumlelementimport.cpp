@@ -68,19 +68,27 @@ QUmlElementImport::QUmlElementImport(bool create_d_ptr) :
         set_d_ptr(new QUmlElementImportPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Specifies the name that should be added to the namespace of the importing package in lieu of the name of the imported packagable element. The aliased name must not clash with any other member name in the importing package. By default, no alias is used.
  */
 QString QUmlElementImport::alias() const
 {
-    return QString();
+    // This is a read-write property
+
+    QM_D(const QUmlElementImport);
+    return d->alias;
 }
 
 void QUmlElementImport::setAlias(QString alias)
 {
-    Q_UNUSED(alias);
+    // This is a read-write property
+
+    QM_D(QUmlElementImport);
+    if (d->alias != alias) {
+        d->alias = alias;
+    }
 }
 
 /*!
@@ -88,12 +96,20 @@ void QUmlElementImport::setAlias(QString alias)
  */
 QUmlPackageableElement *QUmlElementImport::importedElement() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlElementImport);
+    return d->importedElement;
 }
 
 void QUmlElementImport::setImportedElement(QUmlPackageableElement *importedElement)
 {
-    Q_UNUSED(importedElement);
+    // This is a read-write association end
+
+    QM_D(QUmlElementImport);
+    if (d->importedElement != importedElement) {
+        d->importedElement = importedElement;
+    }
 }
 
 /*!
@@ -101,12 +117,20 @@ void QUmlElementImport::setImportedElement(QUmlPackageableElement *importedEleme
  */
 QUmlNamespace *QUmlElementImport::importingNamespace() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlElementImport);
+    return d->importingNamespace;
 }
 
 void QUmlElementImport::setImportingNamespace(QUmlNamespace *importingNamespace)
 {
-    Q_UNUSED(importingNamespace);
+    // This is a read-write association end
+
+    QM_D(QUmlElementImport);
+    if (d->importingNamespace != importingNamespace) {
+        d->importingNamespace = importingNamespace;
+    }
 }
 
 /*!
@@ -114,15 +138,23 @@ void QUmlElementImport::setImportingNamespace(QUmlNamespace *importingNamespace)
  */
 QtUml::VisibilityKind QUmlElementImport::visibility() const
 {
-    return QtUml::VisibilityKind();
+    // This is a read-write property
+
+    QM_D(const QUmlElementImport);
+    return d->visibility;
 }
 
 void QUmlElementImport::setVisibility(QtUml::VisibilityKind visibility)
 {
-    Q_UNUSED(visibility);
+    // This is a read-write property
+
+    QM_D(QUmlElementImport);
+    if (d->visibility != visibility) {
+        d->visibility = visibility;
+    }
 }
 
-// Operations
+// OPERATIONS
 
 /*!
     The query getName() returns the name under which the imported PackageableElement will be known in the importing namespace.

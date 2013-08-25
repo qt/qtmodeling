@@ -62,14 +62,17 @@ QUmlRelationship::QUmlRelationship(bool create_d_ptr) :
         set_d_ptr(new QUmlRelationshipPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Specifies the elements related by the Relationship.
  */
 QSet<QUmlElement *> QUmlRelationship::relatedElement() const
 {
-    return QSet<QUmlElement *>();
+    // This is a read-only derived union association end
+
+    QM_D(const QUmlRelationship);
+    return d->relatedElement;
 }
 
 QT_END_NAMESPACE

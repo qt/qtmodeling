@@ -50,6 +50,7 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
+
 class QUmlInformationItemPrivate;
 class Q_UML_EXPORT QUmlInformationItem : public QUmlClassifier
 {
@@ -58,8 +59,8 @@ public:
 
     // Owned attributes
     QSet<QUmlClassifier *> represented() const;
-    void addRepresented(QSet<QUmlClassifier *> represented);
-    void removeRepresented(QSet<QUmlClassifier *> represented);
+    void addRepresented(QUmlClassifier *represented);
+    void removeRepresented(QUmlClassifier *represented);
 };
 
 QT_END_NAMESPACE

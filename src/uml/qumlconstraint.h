@@ -63,8 +63,8 @@ public:
 
     // Owned attributes
     QList<QUmlElement *> constrainedElement() const;
-    void addConstrainedElement(QList<QUmlElement *> constrainedElement);
-    void removeConstrainedElement(QList<QUmlElement *> constrainedElement);
+    void addConstrainedElement(QUmlElement *constrainedElement);
+    void removeConstrainedElement(QUmlElement *constrainedElement);
     QUmlNamespace *context() const;
     void setContext(QUmlNamespace *context);
     QUmlValueSpecification *specification() const;

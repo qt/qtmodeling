@@ -66,19 +66,27 @@ QUmlProtocolConformance::QUmlProtocolConformance(bool create_d_ptr) :
         set_d_ptr(new QUmlProtocolConformancePrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Specifies the protocol state machine to which the specific state machine conforms.
  */
 QUmlProtocolStateMachine *QUmlProtocolConformance::generalMachine() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlProtocolConformance);
+    return d->generalMachine;
 }
 
 void QUmlProtocolConformance::setGeneralMachine(QUmlProtocolStateMachine *generalMachine)
 {
-    Q_UNUSED(generalMachine);
+    // This is a read-write association end
+
+    QM_D(QUmlProtocolConformance);
+    if (d->generalMachine != generalMachine) {
+        d->generalMachine = generalMachine;
+    }
 }
 
 /*!
@@ -86,12 +94,20 @@ void QUmlProtocolConformance::setGeneralMachine(QUmlProtocolStateMachine *genera
  */
 QUmlProtocolStateMachine *QUmlProtocolConformance::specificMachine() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlProtocolConformance);
+    return d->specificMachine;
 }
 
 void QUmlProtocolConformance::setSpecificMachine(QUmlProtocolStateMachine *specificMachine)
 {
-    Q_UNUSED(specificMachine);
+    // This is a read-write association end
+
+    QM_D(QUmlProtocolConformance);
+    if (d->specificMachine != specificMachine) {
+        d->specificMachine = specificMachine;
+    }
 }
 
 QT_END_NAMESPACE

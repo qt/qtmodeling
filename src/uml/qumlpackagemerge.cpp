@@ -66,19 +66,27 @@ QUmlPackageMerge::QUmlPackageMerge(bool create_d_ptr) :
         set_d_ptr(new QUmlPackageMergePrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     References the Package that is to be merged with the receiving package of the PackageMerge.
  */
 QUmlPackage *QUmlPackageMerge::mergedPackage() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlPackageMerge);
+    return d->mergedPackage;
 }
 
 void QUmlPackageMerge::setMergedPackage(QUmlPackage *mergedPackage)
 {
-    Q_UNUSED(mergedPackage);
+    // This is a read-write association end
+
+    QM_D(QUmlPackageMerge);
+    if (d->mergedPackage != mergedPackage) {
+        d->mergedPackage = mergedPackage;
+    }
 }
 
 /*!
@@ -86,12 +94,20 @@ void QUmlPackageMerge::setMergedPackage(QUmlPackage *mergedPackage)
  */
 QUmlPackage *QUmlPackageMerge::receivingPackage() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlPackageMerge);
+    return d->receivingPackage;
 }
 
 void QUmlPackageMerge::setReceivingPackage(QUmlPackage *receivingPackage)
 {
-    Q_UNUSED(receivingPackage);
+    // This is a read-write association end
+
+    QM_D(QUmlPackageMerge);
+    if (d->receivingPackage != receivingPackage) {
+        d->receivingPackage = receivingPackage;
+    }
 }
 
 QT_END_NAMESPACE

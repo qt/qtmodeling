@@ -63,13 +63,13 @@ public:
 
     // Owned attributes
     QSet<QUmlGate *> cfragmentGate() const;
-    void addCfragmentGate(QSet<QUmlGate *> cfragmentGate);
-    void removeCfragmentGate(QSet<QUmlGate *> cfragmentGate);
+    void addCfragmentGate(QUmlGate *cfragmentGate);
+    void removeCfragmentGate(QUmlGate *cfragmentGate);
     QtUml::InteractionOperatorKind interactionOperator() const;
     void setInteractionOperator(QtUml::InteractionOperatorKind interactionOperator);
     QList<QUmlInteractionOperand *> operand() const;
-    void addOperand(QList<QUmlInteractionOperand *> operand);
-    void removeOperand(QList<QUmlInteractionOperand *> operand);
+    void addOperand(QUmlInteractionOperand *operand);
+    void removeOperand(QUmlInteractionOperand *operand);
 };
 
 QT_END_NAMESPACE

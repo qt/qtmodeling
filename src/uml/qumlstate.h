@@ -70,14 +70,14 @@ public:
 
     // Owned attributes
     QSet<QUmlConnectionPointReference *> connection() const;
-    void addConnection(QSet<QUmlConnectionPointReference *> connection);
-    void removeConnection(QSet<QUmlConnectionPointReference *> connection);
+    void addConnection(QUmlConnectionPointReference *connection);
+    void removeConnection(QUmlConnectionPointReference *connection);
     QSet<QUmlPseudostate *> connectionPoint() const;
-    void addConnectionPoint(QSet<QUmlPseudostate *> connectionPoint);
-    void removeConnectionPoint(QSet<QUmlPseudostate *> connectionPoint);
+    void addConnectionPoint(QUmlPseudostate *connectionPoint);
+    void removeConnectionPoint(QUmlPseudostate *connectionPoint);
     QSet<QUmlTrigger *> deferrableTrigger() const;
-    void addDeferrableTrigger(QSet<QUmlTrigger *> deferrableTrigger);
-    void removeDeferrableTrigger(QSet<QUmlTrigger *> deferrableTrigger);
+    void addDeferrableTrigger(QUmlTrigger *deferrableTrigger);
+    void removeDeferrableTrigger(QUmlTrigger *deferrableTrigger);
     QUmlBehavior *doActivity() const;
     void setDoActivity(QUmlBehavior *doActivity);
     QUmlBehavior *entry() const;
@@ -92,8 +92,8 @@ public:
     void setRedefinedState(QUmlState *redefinedState);
     QUmlClassifier *redefinitionContext() const;
     QSet<QUmlRegion *> region() const;
-    void addRegion(QSet<QUmlRegion *> region);
-    void removeRegion(QSet<QUmlRegion *> region);
+    void addRegion(QUmlRegion *region);
+    void removeRegion(QUmlRegion *region);
     QUmlConstraint *stateInvariant() const;
     void setStateInvariant(QUmlConstraint *stateInvariant);
     QUmlStateMachine *submachine() const;

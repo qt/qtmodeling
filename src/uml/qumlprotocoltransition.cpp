@@ -67,19 +67,27 @@ QUmlProtocolTransition::QUmlProtocolTransition(bool create_d_ptr) :
         set_d_ptr(new QUmlProtocolTransitionPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Specifies the post condition of the transition which is the condition that should be obtained once the transition is triggered. This post condition is part of the post condition of the operation connected to the transition.
  */
 QUmlConstraint *QUmlProtocolTransition::postCondition() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlProtocolTransition);
+    return d->postCondition;
 }
 
 void QUmlProtocolTransition::setPostCondition(QUmlConstraint *postCondition)
 {
-    Q_UNUSED(postCondition);
+    // This is a read-write association end
+
+    QM_D(QUmlProtocolTransition);
+    if (d->postCondition != postCondition) {
+        d->postCondition = postCondition;
+    }
 }
 
 /*!
@@ -87,12 +95,20 @@ void QUmlProtocolTransition::setPostCondition(QUmlConstraint *postCondition)
  */
 QUmlConstraint *QUmlProtocolTransition::preCondition() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlProtocolTransition);
+    return d->preCondition;
 }
 
 void QUmlProtocolTransition::setPreCondition(QUmlConstraint *preCondition)
 {
-    Q_UNUSED(preCondition);
+    // This is a read-write association end
+
+    QM_D(QUmlProtocolTransition);
+    if (d->preCondition != preCondition) {
+        d->preCondition = preCondition;
+    }
 }
 
 /*!
@@ -100,6 +116,10 @@ void QUmlProtocolTransition::setPreCondition(QUmlConstraint *preCondition)
  */
 QSet<QUmlOperation *> QUmlProtocolTransition::referred() const
 {
+    // This is a read-only derived association end
+
+    qWarning("QUmlProtocolTransition::referred(): to be implemented (this is a derived association end)");
+
     return QSet<QUmlOperation *>();
 }
 

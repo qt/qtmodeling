@@ -66,17 +66,17 @@ public:
     QString fileName() const;
     void setFileName(QString fileName);
     QSet<QUmlManifestation *> manifestation() const;
-    void addManifestation(QSet<QUmlManifestation *> manifestation);
-    void removeManifestation(QSet<QUmlManifestation *> manifestation);
+    void addManifestation(QUmlManifestation *manifestation);
+    void removeManifestation(QUmlManifestation *manifestation);
     QSet<QUmlArtifact *> nestedArtifact() const;
-    void addNestedArtifact(QSet<QUmlArtifact *> nestedArtifact);
-    void removeNestedArtifact(QSet<QUmlArtifact *> nestedArtifact);
+    void addNestedArtifact(QUmlArtifact *nestedArtifact);
+    void removeNestedArtifact(QUmlArtifact *nestedArtifact);
     QList<QUmlProperty *> ownedAttribute() const;
-    void addOwnedAttribute(QList<QUmlProperty *> ownedAttribute);
-    void removeOwnedAttribute(QList<QUmlProperty *> ownedAttribute);
+    void addOwnedAttribute(QUmlProperty *ownedAttribute);
+    void removeOwnedAttribute(QUmlProperty *ownedAttribute);
     QList<QUmlOperation *> ownedOperation() const;
-    void addOwnedOperation(QList<QUmlOperation *> ownedOperation);
-    void removeOwnedOperation(QList<QUmlOperation *> ownedOperation);
+    void addOwnedOperation(QUmlOperation *ownedOperation);
+    void removeOwnedOperation(QUmlOperation *ownedOperation);
 };
 
 QT_END_NAMESPACE

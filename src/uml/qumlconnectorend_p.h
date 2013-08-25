@@ -56,7 +56,6 @@ class Q_UML_EXPORT QUmlConnectorEndPrivate : public QUmlMultiplicityElementPriva
 public:
     QUmlConnectorEndPrivate();
 
-    QUmlProperty *definingEnd;
     QUmlProperty *partWithPort;
     QUmlConnectableElement *role;
 };

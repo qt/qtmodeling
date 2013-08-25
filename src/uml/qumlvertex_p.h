@@ -57,8 +57,6 @@ public:
     QUmlVertexPrivate();
 
     QUmlRegion *container;
-    QSet<QUmlTransition *> incoming;
-    QSet<QUmlTransition *> outgoing;
 };
 
 QT_END_NAMESPACE

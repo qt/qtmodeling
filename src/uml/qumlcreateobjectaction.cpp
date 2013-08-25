@@ -67,19 +67,27 @@ QUmlCreateObjectAction::QUmlCreateObjectAction(bool create_d_ptr) :
         set_d_ptr(new QUmlCreateObjectActionPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Classifier to be instantiated.
  */
 QUmlClassifier *QUmlCreateObjectAction::classifier() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlCreateObjectAction);
+    return d->classifier;
 }
 
 void QUmlCreateObjectAction::setClassifier(QUmlClassifier *classifier)
 {
-    Q_UNUSED(classifier);
+    // This is a read-write association end
+
+    QM_D(QUmlCreateObjectAction);
+    if (d->classifier != classifier) {
+        d->classifier = classifier;
+    }
 }
 
 /*!
@@ -87,12 +95,20 @@ void QUmlCreateObjectAction::setClassifier(QUmlClassifier *classifier)
  */
 QUmlOutputPin *QUmlCreateObjectAction::result() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlCreateObjectAction);
+    return d->result;
 }
 
 void QUmlCreateObjectAction::setResult(QUmlOutputPin *result)
 {
-    Q_UNUSED(result);
+    // This is a read-write association end
+
+    QM_D(QUmlCreateObjectAction);
+    if (d->result != result) {
+        d->result = result;
+    }
 }
 
 QT_END_NAMESPACE

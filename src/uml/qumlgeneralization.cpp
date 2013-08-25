@@ -68,19 +68,27 @@ QUmlGeneralization::QUmlGeneralization(bool create_d_ptr) :
         set_d_ptr(new QUmlGeneralizationPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     References the general classifier in the Generalization relationship.
  */
 QUmlClassifier *QUmlGeneralization::general() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlGeneralization);
+    return d->general;
 }
 
 void QUmlGeneralization::setGeneral(QUmlClassifier *general)
 {
-    Q_UNUSED(general);
+    // This is a read-write association end
+
+    QM_D(QUmlGeneralization);
+    if (d->general != general) {
+        d->general = general;
+    }
 }
 
 /*!
@@ -88,17 +96,30 @@ void QUmlGeneralization::setGeneral(QUmlClassifier *general)
  */
 QSet<QUmlGeneralizationSet *> QUmlGeneralization::generalizationSet() const
 {
-    return QSet<QUmlGeneralizationSet *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlGeneralization);
+    return d->generalizationSet;
 }
 
-void QUmlGeneralization::addGeneralizationSet(QSet<QUmlGeneralizationSet *> generalizationSet)
+void QUmlGeneralization::addGeneralizationSet(QUmlGeneralizationSet *generalizationSet)
 {
-    Q_UNUSED(generalizationSet);
+    // This is a read-write association end
+
+    QM_D(QUmlGeneralization);
+    if (!d->generalizationSet.contains(generalizationSet)) {
+        d->generalizationSet.insert(generalizationSet);
+    }
 }
 
-void QUmlGeneralization::removeGeneralizationSet(QSet<QUmlGeneralizationSet *> generalizationSet)
+void QUmlGeneralization::removeGeneralizationSet(QUmlGeneralizationSet *generalizationSet)
 {
-    Q_UNUSED(generalizationSet);
+    // This is a read-write association end
+
+    QM_D(QUmlGeneralization);
+    if (d->generalizationSet.contains(generalizationSet)) {
+        d->generalizationSet.remove(generalizationSet);
+    }
 }
 
 /*!
@@ -106,12 +127,20 @@ void QUmlGeneralization::removeGeneralizationSet(QSet<QUmlGeneralizationSet *> g
  */
 bool QUmlGeneralization::isSubstitutable() const
 {
-    return bool();
+    // This is a read-write property
+
+    QM_D(const QUmlGeneralization);
+    return d->isSubstitutable;
 }
 
 void QUmlGeneralization::setSubstitutable(bool isSubstitutable)
 {
-    Q_UNUSED(isSubstitutable);
+    // This is a read-write property
+
+    QM_D(QUmlGeneralization);
+    if (d->isSubstitutable != isSubstitutable) {
+        d->isSubstitutable = isSubstitutable;
+    }
 }
 
 /*!
@@ -119,12 +148,20 @@ void QUmlGeneralization::setSubstitutable(bool isSubstitutable)
  */
 QUmlClassifier *QUmlGeneralization::specific() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlGeneralization);
+    return d->specific;
 }
 
 void QUmlGeneralization::setSpecific(QUmlClassifier *specific)
 {
-    Q_UNUSED(specific);
+    // This is a read-write association end
+
+    QM_D(QUmlGeneralization);
+    if (d->specific != specific) {
+        d->specific = specific;
+    }
 }
 
 QT_END_NAMESPACE

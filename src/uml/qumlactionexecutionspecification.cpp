@@ -65,19 +65,27 @@ QUmlActionExecutionSpecification::QUmlActionExecutionSpecification(bool create_d
         set_d_ptr(new QUmlActionExecutionSpecificationPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Action whose execution is occurring.
  */
 QUmlAction *QUmlActionExecutionSpecification::action() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlActionExecutionSpecification);
+    return d->action;
 }
 
 void QUmlActionExecutionSpecification::setAction(QUmlAction *action)
 {
-    Q_UNUSED(action);
+    // This is a read-write association end
+
+    QM_D(QUmlActionExecutionSpecification);
+    if (d->action != action) {
+        d->action = action;
+    }
 }
 
 QT_END_NAMESPACE

@@ -66,19 +66,27 @@ QUmlTimeInterval::QUmlTimeInterval(bool create_d_ptr) :
         set_d_ptr(new QUmlTimeIntervalPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Refers to the TimeExpression denoting the maximum value of the range.
  */
 QUmlTimeExpression *QUmlTimeInterval::max() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlTimeInterval);
+    return d->max;
 }
 
 void QUmlTimeInterval::setMax(QUmlTimeExpression *max)
 {
-    Q_UNUSED(max);
+    // This is a read-write association end
+
+    QM_D(QUmlTimeInterval);
+    if (d->max != max) {
+        d->max = max;
+    }
 }
 
 /*!
@@ -86,12 +94,20 @@ void QUmlTimeInterval::setMax(QUmlTimeExpression *max)
  */
 QUmlTimeExpression *QUmlTimeInterval::min() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlTimeInterval);
+    return d->min;
 }
 
 void QUmlTimeInterval::setMin(QUmlTimeExpression *min)
 {
-    Q_UNUSED(min);
+    // This is a read-write association end
+
+    QM_D(QUmlTimeInterval);
+    if (d->min != min) {
+        d->min = min;
+    }
 }
 
 QT_END_NAMESPACE

@@ -68,19 +68,27 @@ QUmlUnmarshallAction::QUmlUnmarshallAction(bool create_d_ptr) :
         set_d_ptr(new QUmlUnmarshallActionPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The object to be unmarshalled.
  */
 QUmlInputPin *QUmlUnmarshallAction::object() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlUnmarshallAction);
+    return d->object;
 }
 
 void QUmlUnmarshallAction::setObject(QUmlInputPin *object)
 {
-    Q_UNUSED(object);
+    // This is a read-write association end
+
+    QM_D(QUmlUnmarshallAction);
+    if (d->object != object) {
+        d->object = object;
+    }
 }
 
 /*!
@@ -88,17 +96,30 @@ void QUmlUnmarshallAction::setObject(QUmlInputPin *object)
  */
 QSet<QUmlOutputPin *> QUmlUnmarshallAction::result() const
 {
-    return QSet<QUmlOutputPin *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlUnmarshallAction);
+    return d->result;
 }
 
-void QUmlUnmarshallAction::addResult(QSet<QUmlOutputPin *> result)
+void QUmlUnmarshallAction::addResult(QUmlOutputPin *result)
 {
-    Q_UNUSED(result);
+    // This is a read-write association end
+
+    QM_D(QUmlUnmarshallAction);
+    if (!d->result.contains(result)) {
+        d->result.insert(result);
+    }
 }
 
-void QUmlUnmarshallAction::removeResult(QSet<QUmlOutputPin *> result)
+void QUmlUnmarshallAction::removeResult(QUmlOutputPin *result)
 {
-    Q_UNUSED(result);
+    // This is a read-write association end
+
+    QM_D(QUmlUnmarshallAction);
+    if (d->result.contains(result)) {
+        d->result.remove(result);
+    }
 }
 
 /*!
@@ -106,12 +127,20 @@ void QUmlUnmarshallAction::removeResult(QSet<QUmlOutputPin *> result)
  */
 QUmlClassifier *QUmlUnmarshallAction::unmarshallType() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlUnmarshallAction);
+    return d->unmarshallType;
 }
 
 void QUmlUnmarshallAction::setUnmarshallType(QUmlClassifier *unmarshallType)
 {
-    Q_UNUSED(unmarshallType);
+    // This is a read-write association end
+
+    QM_D(QUmlUnmarshallAction);
+    if (d->unmarshallType != unmarshallType) {
+        d->unmarshallType = unmarshallType;
+    }
 }
 
 QT_END_NAMESPACE

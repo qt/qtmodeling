@@ -65,19 +65,27 @@ QUmlReception::QUmlReception(bool create_d_ptr) :
         set_d_ptr(new QUmlReceptionPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The signal that this reception handles.
  */
 QUmlSignal *QUmlReception::signal() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlReception);
+    return d->signal;
 }
 
 void QUmlReception::setSignal(QUmlSignal *signal)
 {
-    Q_UNUSED(signal);
+    // This is a read-write association end
+
+    QM_D(QUmlReception);
+    if (d->signal != signal) {
+        d->signal = signal;
+    }
 }
 
 QT_END_NAMESPACE

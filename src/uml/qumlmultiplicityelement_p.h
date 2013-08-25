@@ -58,9 +58,7 @@ public:
 
     bool isOrdered;
     bool isUnique;
-    int lower;
     QUmlValueSpecification *lowerValue;
-    int upper;
     QUmlValueSpecification *upperValue;
 };
 

@@ -66,19 +66,27 @@ QUmlGeneralOrdering::QUmlGeneralOrdering(bool create_d_ptr) :
         set_d_ptr(new QUmlGeneralOrderingPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The OccurrenceSpecification referenced comes after the OccurrenceSpecification referenced by before.
  */
 QUmlOccurrenceSpecification *QUmlGeneralOrdering::after() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlGeneralOrdering);
+    return d->after;
 }
 
 void QUmlGeneralOrdering::setAfter(QUmlOccurrenceSpecification *after)
 {
-    Q_UNUSED(after);
+    // This is a read-write association end
+
+    QM_D(QUmlGeneralOrdering);
+    if (d->after != after) {
+        d->after = after;
+    }
 }
 
 /*!
@@ -86,12 +94,20 @@ void QUmlGeneralOrdering::setAfter(QUmlOccurrenceSpecification *after)
  */
 QUmlOccurrenceSpecification *QUmlGeneralOrdering::before() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlGeneralOrdering);
+    return d->before;
 }
 
 void QUmlGeneralOrdering::setBefore(QUmlOccurrenceSpecification *before)
 {
-    Q_UNUSED(before);
+    // This is a read-write association end
+
+    QM_D(QUmlGeneralOrdering);
+    if (d->before != before) {
+        d->before = before;
+    }
 }
 
 QT_END_NAMESPACE

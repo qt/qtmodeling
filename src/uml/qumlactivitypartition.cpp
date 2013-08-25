@@ -70,24 +70,37 @@ QUmlActivityPartition::QUmlActivityPartition(bool create_d_ptr) :
         set_d_ptr(new QUmlActivityPartitionPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Edges immediately contained in the group.
  */
 QSet<QUmlActivityEdge *> QUmlActivityPartition::edge() const
 {
-    return QSet<QUmlActivityEdge *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlActivityPartition);
+    return d->edge;
 }
 
-void QUmlActivityPartition::addEdge(QSet<QUmlActivityEdge *> edge)
+void QUmlActivityPartition::addEdge(QUmlActivityEdge *edge)
 {
-    Q_UNUSED(edge);
+    // This is a read-write association end
+
+    QM_D(QUmlActivityPartition);
+    if (!d->edge.contains(edge)) {
+        d->edge.insert(edge);
+    }
 }
 
-void QUmlActivityPartition::removeEdge(QSet<QUmlActivityEdge *> edge)
+void QUmlActivityPartition::removeEdge(QUmlActivityEdge *edge)
 {
-    Q_UNUSED(edge);
+    // This is a read-write association end
+
+    QM_D(QUmlActivityPartition);
+    if (d->edge.contains(edge)) {
+        d->edge.remove(edge);
+    }
 }
 
 /*!
@@ -95,12 +108,20 @@ void QUmlActivityPartition::removeEdge(QSet<QUmlActivityEdge *> edge)
  */
 bool QUmlActivityPartition::isDimension() const
 {
-    return bool();
+    // This is a read-write property
+
+    QM_D(const QUmlActivityPartition);
+    return d->isDimension;
 }
 
 void QUmlActivityPartition::setDimension(bool isDimension)
 {
-    Q_UNUSED(isDimension);
+    // This is a read-write property
+
+    QM_D(QUmlActivityPartition);
+    if (d->isDimension != isDimension) {
+        d->isDimension = isDimension;
+    }
 }
 
 /*!
@@ -108,12 +129,20 @@ void QUmlActivityPartition::setDimension(bool isDimension)
  */
 bool QUmlActivityPartition::isExternal() const
 {
-    return bool();
+    // This is a read-write property
+
+    QM_D(const QUmlActivityPartition);
+    return d->isExternal;
 }
 
 void QUmlActivityPartition::setExternal(bool isExternal)
 {
-    Q_UNUSED(isExternal);
+    // This is a read-write property
+
+    QM_D(QUmlActivityPartition);
+    if (d->isExternal != isExternal) {
+        d->isExternal = isExternal;
+    }
 }
 
 /*!
@@ -121,17 +150,30 @@ void QUmlActivityPartition::setExternal(bool isExternal)
  */
 QSet<QUmlActivityNode *> QUmlActivityPartition::node() const
 {
-    return QSet<QUmlActivityNode *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlActivityPartition);
+    return d->node;
 }
 
-void QUmlActivityPartition::addNode(QSet<QUmlActivityNode *> node)
+void QUmlActivityPartition::addNode(QUmlActivityNode *node)
 {
-    Q_UNUSED(node);
+    // This is a read-write association end
+
+    QM_D(QUmlActivityPartition);
+    if (!d->node.contains(node)) {
+        d->node.insert(node);
+    }
 }
 
-void QUmlActivityPartition::removeNode(QSet<QUmlActivityNode *> node)
+void QUmlActivityPartition::removeNode(QUmlActivityNode *node)
 {
-    Q_UNUSED(node);
+    // This is a read-write association end
+
+    QM_D(QUmlActivityPartition);
+    if (d->node.contains(node)) {
+        d->node.remove(node);
+    }
 }
 
 /*!
@@ -139,12 +181,20 @@ void QUmlActivityPartition::removeNode(QSet<QUmlActivityNode *> node)
  */
 QUmlElement *QUmlActivityPartition::represents() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlActivityPartition);
+    return d->represents;
 }
 
 void QUmlActivityPartition::setRepresents(QUmlElement *represents)
 {
-    Q_UNUSED(represents);
+    // This is a read-write association end
+
+    QM_D(QUmlActivityPartition);
+    if (d->represents != represents) {
+        d->represents = represents;
+    }
 }
 
 /*!
@@ -152,17 +202,30 @@ void QUmlActivityPartition::setRepresents(QUmlElement *represents)
  */
 QSet<QUmlActivityPartition *> QUmlActivityPartition::subpartition() const
 {
-    return QSet<QUmlActivityPartition *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlActivityPartition);
+    return d->subpartition;
 }
 
-void QUmlActivityPartition::addSubpartition(QSet<QUmlActivityPartition *> subpartition)
+void QUmlActivityPartition::addSubpartition(QUmlActivityPartition *subpartition)
 {
-    Q_UNUSED(subpartition);
+    // This is a read-write association end
+
+    QM_D(QUmlActivityPartition);
+    if (!d->subpartition.contains(subpartition)) {
+        d->subpartition.insert(subpartition);
+    }
 }
 
-void QUmlActivityPartition::removeSubpartition(QSet<QUmlActivityPartition *> subpartition)
+void QUmlActivityPartition::removeSubpartition(QUmlActivityPartition *subpartition)
 {
-    Q_UNUSED(subpartition);
+    // This is a read-write association end
+
+    QM_D(QUmlActivityPartition);
+    if (d->subpartition.contains(subpartition)) {
+        d->subpartition.remove(subpartition);
+    }
 }
 
 /*!
@@ -170,12 +233,20 @@ void QUmlActivityPartition::removeSubpartition(QSet<QUmlActivityPartition *> sub
  */
 QUmlActivityPartition *QUmlActivityPartition::superPartition() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlActivityPartition);
+    return d->superPartition;
 }
 
 void QUmlActivityPartition::setSuperPartition(QUmlActivityPartition *superPartition)
 {
-    Q_UNUSED(superPartition);
+    // This is a read-write association end
+
+    QM_D(QUmlActivityPartition);
+    if (d->superPartition != superPartition) {
+        d->superPartition = superPartition;
+    }
 }
 
 QT_END_NAMESPACE

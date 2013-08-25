@@ -65,19 +65,27 @@ QUmlMessageEnd::QUmlMessageEnd(bool create_d_ptr) :
         set_d_ptr(new QUmlMessageEndPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     References a Message.
  */
 QUmlMessage *QUmlMessageEnd::message() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlMessageEnd);
+    return d->message;
 }
 
 void QUmlMessageEnd::setMessage(QUmlMessage *message)
 {
-    Q_UNUSED(message);
+    // This is a read-write association end
+
+    QM_D(QUmlMessageEnd);
+    if (d->message != message) {
+        d->message = message;
+    }
 }
 
 QT_END_NAMESPACE

@@ -67,19 +67,27 @@ QUmlRedefinableTemplateSignature::QUmlRedefinableTemplateSignature(bool create_d
         set_d_ptr(new QUmlRedefinableTemplateSignaturePrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The classifier that owns this template signature.
  */
 QUmlClassifier *QUmlRedefinableTemplateSignature::classifier() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlRedefinableTemplateSignature);
+    return d->classifier;
 }
 
 void QUmlRedefinableTemplateSignature::setClassifier(QUmlClassifier *classifier)
 {
-    Q_UNUSED(classifier);
+    // This is a read-write association end
+
+    QM_D(QUmlRedefinableTemplateSignature);
+    if (d->classifier != classifier) {
+        d->classifier = classifier;
+    }
 }
 
 /*!
@@ -87,17 +95,30 @@ void QUmlRedefinableTemplateSignature::setClassifier(QUmlClassifier *classifier)
  */
 QSet<QUmlRedefinableTemplateSignature *> QUmlRedefinableTemplateSignature::extendedSignature() const
 {
-    return QSet<QUmlRedefinableTemplateSignature *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlRedefinableTemplateSignature);
+    return d->extendedSignature;
 }
 
-void QUmlRedefinableTemplateSignature::addExtendedSignature(QSet<QUmlRedefinableTemplateSignature *> extendedSignature)
+void QUmlRedefinableTemplateSignature::addExtendedSignature(QUmlRedefinableTemplateSignature *extendedSignature)
 {
-    Q_UNUSED(extendedSignature);
+    // This is a read-write association end
+
+    QM_D(QUmlRedefinableTemplateSignature);
+    if (!d->extendedSignature.contains(extendedSignature)) {
+        d->extendedSignature.insert(extendedSignature);
+    }
 }
 
-void QUmlRedefinableTemplateSignature::removeExtendedSignature(QSet<QUmlRedefinableTemplateSignature *> extendedSignature)
+void QUmlRedefinableTemplateSignature::removeExtendedSignature(QUmlRedefinableTemplateSignature *extendedSignature)
 {
-    Q_UNUSED(extendedSignature);
+    // This is a read-write association end
+
+    QM_D(QUmlRedefinableTemplateSignature);
+    if (d->extendedSignature.contains(extendedSignature)) {
+        d->extendedSignature.remove(extendedSignature);
+    }
 }
 
 /*!
@@ -105,10 +126,14 @@ void QUmlRedefinableTemplateSignature::removeExtendedSignature(QSet<QUmlRedefina
  */
 QSet<QUmlTemplateParameter *> QUmlRedefinableTemplateSignature::inheritedParameter() const
 {
+    // This is a read-only derived association end
+
+    qWarning("QUmlRedefinableTemplateSignature::inheritedParameter(): to be implemented (this is a derived association end)");
+
     return QSet<QUmlTemplateParameter *>();
 }
 
-// Operations
+// OPERATIONS
 
 /*!
     The query isConsistentWith() specifies, for any two RedefinableTemplateSignatures in a context in which redefinition is possible, whether redefinition would be logically consistent. A redefining template signature is always consistent with a redefined template signature, since redefinition only adds new formal parameters.

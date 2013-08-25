@@ -65,17 +65,17 @@ public:
 
     // Owned attributes
     QSet<QUmlPseudostate *> connectionPoint() const;
-    void addConnectionPoint(QSet<QUmlPseudostate *> connectionPoint);
-    void removeConnectionPoint(QSet<QUmlPseudostate *> connectionPoint);
+    void addConnectionPoint(QUmlPseudostate *connectionPoint);
+    void removeConnectionPoint(QUmlPseudostate *connectionPoint);
     QSet<QUmlStateMachine *> extendedStateMachine() const;
-    void addExtendedStateMachine(QSet<QUmlStateMachine *> extendedStateMachine);
-    void removeExtendedStateMachine(QSet<QUmlStateMachine *> extendedStateMachine);
+    void addExtendedStateMachine(QUmlStateMachine *extendedStateMachine);
+    void removeExtendedStateMachine(QUmlStateMachine *extendedStateMachine);
     QSet<QUmlRegion *> region() const;
-    void addRegion(QSet<QUmlRegion *> region);
-    void removeRegion(QSet<QUmlRegion *> region);
+    void addRegion(QUmlRegion *region);
+    void removeRegion(QUmlRegion *region);
     QSet<QUmlState *> submachineState() const;
-    void addSubmachineState(QSet<QUmlState *> submachineState);
-    void removeSubmachineState(QSet<QUmlState *> submachineState);
+    void addSubmachineState(QUmlState *submachineState);
+    void removeSubmachineState(QUmlState *submachineState);
 
     // Operations
     QUmlNamespace *LCA(QUmlState *s1, QUmlState *s2) const;

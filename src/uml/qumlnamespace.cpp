@@ -63,30 +63,41 @@ QUmlNamespacePrivate::QUmlNamespacePrivate()
 QUmlNamespace::QUmlNamespace(bool create_d_ptr) :
     QUmlNamedElement(false)
 {
-    if (create_d_ptr) {
-        qDebug() << "QUmlNamespace::QUmlNamespace criando";
+    if (create_d_ptr)
         set_d_ptr(new QUmlNamespacePrivate);
-    }
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     References the ElementImports owned by the Namespace.
  */
 QSet<QUmlElementImport *> QUmlNamespace::elementImport() const
 {
-    return QSet<QUmlElementImport *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlNamespace);
+    return d->elementImport;
 }
 
-void QUmlNamespace::addElementImport(QSet<QUmlElementImport *> elementImport)
+void QUmlNamespace::addElementImport(QUmlElementImport *elementImport)
 {
-    Q_UNUSED(elementImport);
+    // This is a read-write association end
+
+    QM_D(QUmlNamespace);
+    if (!d->elementImport.contains(elementImport)) {
+        d->elementImport.insert(elementImport);
+    }
 }
 
-void QUmlNamespace::removeElementImport(QSet<QUmlElementImport *> elementImport)
+void QUmlNamespace::removeElementImport(QUmlElementImport *elementImport)
 {
-    Q_UNUSED(elementImport);
+    // This is a read-write association end
+
+    QM_D(QUmlNamespace);
+    if (d->elementImport.contains(elementImport)) {
+        d->elementImport.remove(elementImport);
+    }
 }
 
 /*!
@@ -94,6 +105,10 @@ void QUmlNamespace::removeElementImport(QSet<QUmlElementImport *> elementImport)
  */
 QSet<QUmlPackageableElement *> QUmlNamespace::importedMember() const
 {
+    // This is a read-only derived association end
+
+    qWarning("QUmlNamespace::importedMember(): to be implemented (this is a derived association end)");
+
     return QSet<QUmlPackageableElement *>();
 }
 
@@ -102,7 +117,10 @@ QSet<QUmlPackageableElement *> QUmlNamespace::importedMember() const
  */
 QSet<QUmlNamedElement *> QUmlNamespace::member() const
 {
-    return QSet<QUmlNamedElement *>();
+    // This is a read-only derived union association end
+
+    QM_D(const QUmlNamespace);
+    return d->member;
 }
 
 /*!
@@ -110,7 +128,10 @@ QSet<QUmlNamedElement *> QUmlNamespace::member() const
  */
 QSet<QUmlNamedElement *> QUmlNamespace::ownedMember() const
 {
-    return QSet<QUmlNamedElement *>();
+    // This is a read-only derived union association end
+
+    QM_D(const QUmlNamespace);
+    return d->ownedMember;
 }
 
 /*!
@@ -118,17 +139,30 @@ QSet<QUmlNamedElement *> QUmlNamespace::ownedMember() const
  */
 QSet<QUmlConstraint *> QUmlNamespace::ownedRule() const
 {
-    return QSet<QUmlConstraint *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlNamespace);
+    return d->ownedRule;
 }
 
-void QUmlNamespace::addOwnedRule(QSet<QUmlConstraint *> ownedRule)
+void QUmlNamespace::addOwnedRule(QUmlConstraint *ownedRule)
 {
-    Q_UNUSED(ownedRule);
+    // This is a read-write association end
+
+    QM_D(QUmlNamespace);
+    if (!d->ownedRule.contains(ownedRule)) {
+        d->ownedRule.insert(ownedRule);
+    }
 }
 
-void QUmlNamespace::removeOwnedRule(QSet<QUmlConstraint *> ownedRule)
+void QUmlNamespace::removeOwnedRule(QUmlConstraint *ownedRule)
 {
-    Q_UNUSED(ownedRule);
+    // This is a read-write association end
+
+    QM_D(QUmlNamespace);
+    if (d->ownedRule.contains(ownedRule)) {
+        d->ownedRule.remove(ownedRule);
+    }
 }
 
 /*!
@@ -136,20 +170,33 @@ void QUmlNamespace::removeOwnedRule(QSet<QUmlConstraint *> ownedRule)
  */
 QSet<QUmlPackageImport *> QUmlNamespace::packageImport() const
 {
-    return QSet<QUmlPackageImport *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlNamespace);
+    return d->packageImport;
 }
 
-void QUmlNamespace::addPackageImport(QSet<QUmlPackageImport *> packageImport)
+void QUmlNamespace::addPackageImport(QUmlPackageImport *packageImport)
 {
-    Q_UNUSED(packageImport);
+    // This is a read-write association end
+
+    QM_D(QUmlNamespace);
+    if (!d->packageImport.contains(packageImport)) {
+        d->packageImport.insert(packageImport);
+    }
 }
 
-void QUmlNamespace::removePackageImport(QSet<QUmlPackageImport *> packageImport)
+void QUmlNamespace::removePackageImport(QUmlPackageImport *packageImport)
 {
-    Q_UNUSED(packageImport);
+    // This is a read-write association end
+
+    QM_D(QUmlNamespace);
+    if (d->packageImport.contains(packageImport)) {
+        d->packageImport.remove(packageImport);
+    }
 }
 
-// Operations
+// OPERATIONS
 
 /*!
     The query excludeCollisions() excludes from a set of PackageableElements any that would not be distinguishable from each other in this namespace.

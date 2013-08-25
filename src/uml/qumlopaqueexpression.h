@@ -64,11 +64,11 @@ public:
     QUmlBehavior *behavior() const;
     void setBehavior(QUmlBehavior *behavior);
     QList<QString> body() const;
-    void addBody(QList<QString> body);
-    void removeBody(QList<QString> body);
+    void addBody(QString body);
+    void removeBody(QString body);
     QList<QString> language() const;
-    void addLanguage(QList<QString> language);
-    void removeLanguage(QList<QString> language);
+    void addLanguage(QString language);
+    void removeLanguage(QString language);
     QUmlParameter *result() const;
 
     // Operations

@@ -67,13 +67,17 @@ QUmlAssociation::QUmlAssociation(bool create_d_ptr) :
         set_d_ptr(new QUmlAssociationPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     References the classifiers that are used as types of the ends of the association.
  */
 QList<QUmlType *> QUmlAssociation::endType() const
 {
+    // This is a read-only derived association end
+
+    qWarning("QUmlAssociation::endType(): to be implemented (this is a derived association end)");
+
     return QList<QUmlType *>();
 }
 
@@ -82,12 +86,20 @@ QList<QUmlType *> QUmlAssociation::endType() const
  */
 bool QUmlAssociation::isDerived() const
 {
-    return bool();
+    // This is a read-write property
+
+    QM_D(const QUmlAssociation);
+    return d->isDerived;
 }
 
 void QUmlAssociation::setDerived(bool isDerived)
 {
-    Q_UNUSED(isDerived);
+    // This is a read-write property
+
+    QM_D(QUmlAssociation);
+    if (d->isDerived != isDerived) {
+        d->isDerived = isDerived;
+    }
 }
 
 /*!
@@ -95,17 +107,30 @@ void QUmlAssociation::setDerived(bool isDerived)
  */
 QList<QUmlProperty *> QUmlAssociation::memberEnd() const
 {
-    return QList<QUmlProperty *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlAssociation);
+    return d->memberEnd;
 }
 
-void QUmlAssociation::addMemberEnd(QList<QUmlProperty *> memberEnd)
+void QUmlAssociation::addMemberEnd(QUmlProperty *memberEnd)
 {
-    Q_UNUSED(memberEnd);
+    // This is a read-write association end
+
+    QM_D(QUmlAssociation);
+    if (!d->memberEnd.contains(memberEnd)) {
+        d->memberEnd.append(memberEnd);
+    }
 }
 
-void QUmlAssociation::removeMemberEnd(QList<QUmlProperty *> memberEnd)
+void QUmlAssociation::removeMemberEnd(QUmlProperty *memberEnd)
 {
-    Q_UNUSED(memberEnd);
+    // This is a read-write association end
+
+    QM_D(QUmlAssociation);
+    if (d->memberEnd.contains(memberEnd)) {
+        d->memberEnd.removeAll(memberEnd);
+    }
 }
 
 /*!
@@ -113,17 +138,30 @@ void QUmlAssociation::removeMemberEnd(QList<QUmlProperty *> memberEnd)
  */
 QSet<QUmlProperty *> QUmlAssociation::navigableOwnedEnd() const
 {
-    return QSet<QUmlProperty *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlAssociation);
+    return d->navigableOwnedEnd;
 }
 
-void QUmlAssociation::addNavigableOwnedEnd(QSet<QUmlProperty *> navigableOwnedEnd)
+void QUmlAssociation::addNavigableOwnedEnd(QUmlProperty *navigableOwnedEnd)
 {
-    Q_UNUSED(navigableOwnedEnd);
+    // This is a read-write association end
+
+    QM_D(QUmlAssociation);
+    if (!d->navigableOwnedEnd.contains(navigableOwnedEnd)) {
+        d->navigableOwnedEnd.insert(navigableOwnedEnd);
+    }
 }
 
-void QUmlAssociation::removeNavigableOwnedEnd(QSet<QUmlProperty *> navigableOwnedEnd)
+void QUmlAssociation::removeNavigableOwnedEnd(QUmlProperty *navigableOwnedEnd)
 {
-    Q_UNUSED(navigableOwnedEnd);
+    // This is a read-write association end
+
+    QM_D(QUmlAssociation);
+    if (d->navigableOwnedEnd.contains(navigableOwnedEnd)) {
+        d->navigableOwnedEnd.remove(navigableOwnedEnd);
+    }
 }
 
 /*!
@@ -131,17 +169,30 @@ void QUmlAssociation::removeNavigableOwnedEnd(QSet<QUmlProperty *> navigableOwne
  */
 QList<QUmlProperty *> QUmlAssociation::ownedEnd() const
 {
-    return QList<QUmlProperty *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlAssociation);
+    return d->ownedEnd;
 }
 
-void QUmlAssociation::addOwnedEnd(QList<QUmlProperty *> ownedEnd)
+void QUmlAssociation::addOwnedEnd(QUmlProperty *ownedEnd)
 {
-    Q_UNUSED(ownedEnd);
+    // This is a read-write association end
+
+    QM_D(QUmlAssociation);
+    if (!d->ownedEnd.contains(ownedEnd)) {
+        d->ownedEnd.append(ownedEnd);
+    }
 }
 
-void QUmlAssociation::removeOwnedEnd(QList<QUmlProperty *> ownedEnd)
+void QUmlAssociation::removeOwnedEnd(QUmlProperty *ownedEnd)
 {
-    Q_UNUSED(ownedEnd);
+    // This is a read-write association end
+
+    QM_D(QUmlAssociation);
+    if (d->ownedEnd.contains(ownedEnd)) {
+        d->ownedEnd.removeAll(ownedEnd);
+    }
 }
 
 QT_END_NAMESPACE

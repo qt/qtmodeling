@@ -63,7 +63,7 @@ QT_BEGIN_NAMESPACE
 
 Q${namespace}${className}Private::Q${namespace}${className}Private()
 [%- SET found = "false" -%]
-[%- FOREACH attribute = class.findnodes("ownedAttribute") -%]
+[%- FOREACH attribute = class.findnodes("ownedAttribute[(@isDerived=\"false\" or not(@isDerived)) or (@isDerivedUnion and @isDerivedUnion=\"true\")]") -%]
     [%- SET defaultType = attribute.findvalue("defaultValue/@xmi:type") -%]
     [%- SET type = QT_TYPE(namespace, attribute) -%]
     [%- IF defaultType == "uml:LiteralBoolean" || defaultType == "uml:InstanceValue" || defaultType == "uml:LiteralInteger" || defaultType == "uml:LiteralUnlimitedNatural" || type.match('\*$') -%]
@@ -127,40 +127,98 @@ Q${namespace}${className}::Q${namespace}${className}(bool create_d_ptr) :
 [%- FOREACH attribute = class.findnodes("ownedAttribute") %]
 [%- IF loop.first %]
 
-// Owned attributes
+// OWNED ATTRIBUTES
 [%- END %]
 
+[%- SET documentation = attribute.findvalue("ownedComment/body/text()") -%]
+[%- IF documentation != "" %]
 /*!
-    ${attribute.findvalue("ownedComment/body/text()")}
+    ${documentation}
  */
+[%- END %]
 [% QT_TYPE(namespace, attribute) -%]
-Q${namespace}${className}::[% QT_ATTRIBUTE(attribute) %]() const
+[%- SET qtAttribute = QT_ATTRIBUTE(attribute) -%]
+[%- SET readOnly = attribute.findvalue("@isReadOnly") -%]
+[%- SET derived = attribute.findvalue("@isDerived") -%]
+[%- SET derivedUnion = attribute.findvalue("@isDerivedUnion") -%]
+[%- SET association = attribute.findvalue("@association") -%]
+Q${namespace}${className}::${qtAttribute}() const
 {
-    [%- SET qtType = QT_TYPE(namespace, attribute).trim -%]
-    [%- IF qtType.match('\*$') %]
+    // This is a [% IF readOnly == "" || readOnly == "false" %]read-write[% ELSE %]read-only[% END %][% IF derived == "true" %] derived[% END %][% IF derivedUnion == "true" %] union[% END %] [% IF association != "" %]association end[% ELSE %]property[% END %]
+
+    [%- IF derived == "true" && (derivedUnion == "false" || derivedUnion == "") %]
+    qWarning("Q${namespace}${className}::${qtAttribute}(): to be implemented (this is a derived [% IF association != "" %]association end[% ELSE %]property[% END %])");
+
+    [%- IF QT_TYPE(namespace, attribute).match('\*$') %]
     return 0;
     [%- ELSE %]
-    return [% QT_TYPE(namespace, attribute).trim -%]();
+    return ${QT_TYPE(namespace, attribute).trim}();
+    [%- END %]
+    [%- ELSE %]
+    QM_D(const Q${namespace}${className});
+    return d->${qtAttribute};
     [%- END %]
 }
     [%- SET attributeName = attribute.findvalue("@name").ucfirst %]
     [%- IF attribute.findvalue("@isReadOnly") != "true" -%]
         [%- IF attribute.findnodes("upperValue").findvalue("@value") == "*" %]
 
-void Q${namespace}${className}::add${attributeName}([% QT_TYPE(namespace, attribute) %][% QT_ATTRIBUTE(attribute) %])
+void Q${namespace}${className}::add${attributeName}(${QT_TYPE(namespace, attribute).remove("QSet<").remove("QList<").replace("> ", " ").replace('\* $', '*')}${qtAttribute})
 {
-    Q_UNUSED([% QT_ATTRIBUTE(attribute) %]);
+    // This is a [% IF readOnly == "" || readOnly == "false" %]read-write[% ELSE %]read-only[% END %][% IF derived == "true" %] derived[% END %][% IF derivedUnion == "true" %] union[% END %] [% IF association != "" %]association end[% ELSE %]property[% END %]
+
+    [%- IF derived == "true" && (derivedUnion == "false" || derivedUnion == "") %]
+    qWarning("Q${namespace}${className}::${qtAttribute}(): to be implemented (this is a derived [% IF association != "" %]association end[% ELSE %]property[% END %])");
+    Q_UNUSED(${qtAttribute});
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
+    [%- ELSE %]
+    QM_D(Q${namespace}${className});
+    if (!d->${qtAttribute}.contains(${qtAttribute})) {
+        d->${qtAttribute}.[% IF QT_TYPE(namespace, attribute).match("QList") %]append[% ELSE %]insert[% END %](${qtAttribute});
+    }
+    [%- END %]
 }
 
-void Q${namespace}${className}::remove${attributeName}([% QT_TYPE(namespace, attribute) %][% QT_ATTRIBUTE(attribute) %])
+void Q${namespace}${className}::remove${attributeName}(${QT_TYPE(namespace, attribute).remove("QSet<").remove("QList<").replace("> ", " ").replace('\* $', '*')}${qtAttribute})
 {
-    Q_UNUSED([% QT_ATTRIBUTE(attribute) %]);
+    // This is a [% IF readOnly == "" || readOnly == "false" %]read-write[% ELSE %]read-only[% END %][% IF derived == "true" %] derived[% END %][% IF derivedUnion == "true" %] union[% END %] [% IF association != "" %]association end[% ELSE %]property[% END %]
+
+    [%- IF derived == "true" && (derivedUnion == "false" || derivedUnion == "") %]
+    qWarning("Q${namespace}${className}::${qtAttribute}(): to be implemented (this is a derived [% IF association != "" %]association end[% ELSE %]property[% END %])");
+    Q_UNUSED(${qtAttribute});
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
+    [%- ELSE %]
+    QM_D(Q${namespace}${className});
+    if (d->${qtAttribute}.contains(${qtAttribute})) {
+        d->${qtAttribute}.[% IF QT_TYPE(namespace, attribute).match("QList") %]removeAll[% ELSE %]remove[% END %](${qtAttribute});
+    }
+    [%- END %]
 }
         [%- ELSE %]
 
-void Q${namespace}${className}::set${attributeName.remove("^Is")}([% QT_TYPE(namespace, attribute) %][% QT_ATTRIBUTE(attribute) %])
+void Q${namespace}${className}::set${attributeName.remove("^Is")}(${QT_TYPE(namespace, attribute)}${qtAttribute})
 {
-    Q_UNUSED([% QT_ATTRIBUTE(attribute) %]);
+    // This is a [% IF readOnly == "" || readOnly == "false" %]read-write[% ELSE %]read-only[% END %][% IF derived == "true" %] derived[% END %][% IF derivedUnion == "true" %] union[% END %] [% IF association != "" %]association end[% ELSE %]property[% END %]
+
+    [%- IF derived == "true" && (derivedUnion == "false" || derivedUnion == "") %]
+    qWarning("Q${namespace}${className}::${qtAttribute}(): to be implemented (this is a derived [% IF association != "" %]association end[% ELSE %]property[% END %])");
+    Q_UNUSED(${qtAttribute});
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
+    [%- ELSE %]
+    QM_D(Q${namespace}${className});
+    if (d->${qtAttribute} != ${qtAttribute}) {
+        d->${qtAttribute} = ${qtAttribute};
+    }
+    [%- END %]
 }
         [%- END %]
     [%- END %]
@@ -168,15 +226,18 @@ void Q${namespace}${className}::set${attributeName.remove("^Is")}([% QT_TYPE(nam
 [%- FOREACH operation = class.findnodes("ownedOperation[@name != ../ownedAttribute[@isDerived='true']/@name]") -%]
 [%- IF loop.first %]
 
-// Operations
+// OPERATIONS
 [%- END %]
 [%- SET operationName = operation.findvalue("@name") -%]
 
 [%- SET returnType = QT_TYPE(namespace, operation.findnodes("ownedParameter[@direction='return']")) %]
 
+[%- SET documentation = operation.findvalue("ownedComment/body/text()") -%]
+[%- IF documentation != "" %]
 /*!
-    ${operation.findvalue("ownedComment/body/text()")}
+    ${documentation}
  */
+[%- END %]
 ${returnType}Q${namespace}${className}::${operationName}(
     [%- SET parameters = operation.findnodes("ownedParameter[@direction!='return']") -%]
     [%- FOREACH parameter = parameters -%]

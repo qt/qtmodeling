@@ -60,12 +60,10 @@ QUmlPropertyPrivate::QUmlPropertyPrivate() :
     datatype(0),
     defaultValue(0),
     interface_(0),
-    isComposite(false),
     isDerived(false),
     isDerivedUnion(false),
     isID(false),
     isReadOnly(false),
-    opposite(0),
     owningAssociation(0)
 {
 }
@@ -87,19 +85,27 @@ QUmlProperty::QUmlProperty(bool create_d_ptr) :
         set_d_ptr(new QUmlPropertyPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Specifies the kind of aggregation that applies to the Property.
  */
 QtUml::AggregationKind QUmlProperty::aggregation() const
 {
-    return QtUml::AggregationKind();
+    // This is a read-write property
+
+    QM_D(const QUmlProperty);
+    return d->aggregation;
 }
 
 void QUmlProperty::setAggregation(QtUml::AggregationKind aggregation)
 {
-    Q_UNUSED(aggregation);
+    // This is a read-write property
+
+    QM_D(QUmlProperty);
+    if (d->aggregation != aggregation) {
+        d->aggregation = aggregation;
+    }
 }
 
 /*!
@@ -107,12 +113,20 @@ void QUmlProperty::setAggregation(QtUml::AggregationKind aggregation)
  */
 QUmlAssociation *QUmlProperty::association() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlProperty);
+    return d->association;
 }
 
 void QUmlProperty::setAssociation(QUmlAssociation *association)
 {
-    Q_UNUSED(association);
+    // This is a read-write association end
+
+    QM_D(QUmlProperty);
+    if (d->association != association) {
+        d->association = association;
+    }
 }
 
 /*!
@@ -120,12 +134,20 @@ void QUmlProperty::setAssociation(QUmlAssociation *association)
  */
 QUmlProperty *QUmlProperty::associationEnd() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlProperty);
+    return d->associationEnd;
 }
 
 void QUmlProperty::setAssociationEnd(QUmlProperty *associationEnd)
 {
-    Q_UNUSED(associationEnd);
+    // This is a read-write association end
+
+    QM_D(QUmlProperty);
+    if (d->associationEnd != associationEnd) {
+        d->associationEnd = associationEnd;
+    }
 }
 
 /*!
@@ -133,12 +155,20 @@ void QUmlProperty::setAssociationEnd(QUmlProperty *associationEnd)
  */
 QUmlClass *QUmlProperty::class_() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlProperty);
+    return d->class_;
 }
 
 void QUmlProperty::setClass(QUmlClass *class_)
 {
-    Q_UNUSED(class_);
+    // This is a read-write association end
+
+    QM_D(QUmlProperty);
+    if (d->class_ != class_) {
+        d->class_ = class_;
+    }
 }
 
 /*!
@@ -146,12 +176,20 @@ void QUmlProperty::setClass(QUmlClass *class_)
  */
 QUmlDataType *QUmlProperty::datatype() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlProperty);
+    return d->datatype;
 }
 
 void QUmlProperty::setDatatype(QUmlDataType *datatype)
 {
-    Q_UNUSED(datatype);
+    // This is a read-write association end
+
+    QM_D(QUmlProperty);
+    if (d->datatype != datatype) {
+        d->datatype = datatype;
+    }
 }
 
 /*!
@@ -159,12 +197,23 @@ void QUmlProperty::setDatatype(QUmlDataType *datatype)
  */
 QString QUmlProperty::default_() const
 {
+    // This is a read-write derived property
+
+    qWarning("QUmlProperty::default_(): to be implemented (this is a derived property)");
+
     return QString();
 }
 
 void QUmlProperty::setDefault(QString default_)
 {
+    // This is a read-write derived property
+
+    qWarning("QUmlProperty::default_(): to be implemented (this is a derived property)");
     Q_UNUSED(default_);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
 }
 
 /*!
@@ -172,12 +221,20 @@ void QUmlProperty::setDefault(QString default_)
  */
 QUmlValueSpecification *QUmlProperty::defaultValue() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlProperty);
+    return d->defaultValue;
 }
 
 void QUmlProperty::setDefaultValue(QUmlValueSpecification *defaultValue)
 {
-    Q_UNUSED(defaultValue);
+    // This is a read-write association end
+
+    QM_D(QUmlProperty);
+    if (d->defaultValue != defaultValue) {
+        d->defaultValue = defaultValue;
+    }
 }
 
 /*!
@@ -185,12 +242,20 @@ void QUmlProperty::setDefaultValue(QUmlValueSpecification *defaultValue)
  */
 QUmlInterface *QUmlProperty::interface_() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlProperty);
+    return d->interface_;
 }
 
 void QUmlProperty::setInterface(QUmlInterface *interface_)
 {
-    Q_UNUSED(interface_);
+    // This is a read-write association end
+
+    QM_D(QUmlProperty);
+    if (d->interface_ != interface_) {
+        d->interface_ = interface_;
+    }
 }
 
 /*!
@@ -198,12 +263,23 @@ void QUmlProperty::setInterface(QUmlInterface *interface_)
  */
 bool QUmlProperty::isComposite() const
 {
+    // This is a read-write derived property
+
+    qWarning("QUmlProperty::isComposite(): to be implemented (this is a derived property)");
+
     return bool();
 }
 
 void QUmlProperty::setComposite(bool isComposite)
 {
+    // This is a read-write derived property
+
+    qWarning("QUmlProperty::isComposite(): to be implemented (this is a derived property)");
     Q_UNUSED(isComposite);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
 }
 
 /*!
@@ -211,12 +287,20 @@ void QUmlProperty::setComposite(bool isComposite)
  */
 bool QUmlProperty::isDerived() const
 {
-    return bool();
+    // This is a read-write property
+
+    QM_D(const QUmlProperty);
+    return d->isDerived;
 }
 
 void QUmlProperty::setDerived(bool isDerived)
 {
-    Q_UNUSED(isDerived);
+    // This is a read-write property
+
+    QM_D(QUmlProperty);
+    if (d->isDerived != isDerived) {
+        d->isDerived = isDerived;
+    }
 }
 
 /*!
@@ -224,12 +308,20 @@ void QUmlProperty::setDerived(bool isDerived)
  */
 bool QUmlProperty::isDerivedUnion() const
 {
-    return bool();
+    // This is a read-write property
+
+    QM_D(const QUmlProperty);
+    return d->isDerivedUnion;
 }
 
 void QUmlProperty::setDerivedUnion(bool isDerivedUnion)
 {
-    Q_UNUSED(isDerivedUnion);
+    // This is a read-write property
+
+    QM_D(QUmlProperty);
+    if (d->isDerivedUnion != isDerivedUnion) {
+        d->isDerivedUnion = isDerivedUnion;
+    }
 }
 
 /*!
@@ -237,12 +329,20 @@ void QUmlProperty::setDerivedUnion(bool isDerivedUnion)
  */
 bool QUmlProperty::isID() const
 {
-    return bool();
+    // This is a read-write property
+
+    QM_D(const QUmlProperty);
+    return d->isID;
 }
 
 void QUmlProperty::setID(bool isID)
 {
-    Q_UNUSED(isID);
+    // This is a read-write property
+
+    QM_D(QUmlProperty);
+    if (d->isID != isID) {
+        d->isID = isID;
+    }
 }
 
 /*!
@@ -250,12 +350,20 @@ void QUmlProperty::setID(bool isID)
  */
 bool QUmlProperty::isReadOnly() const
 {
-    return bool();
+    // This is a read-write property
+
+    QM_D(const QUmlProperty);
+    return d->isReadOnly;
 }
 
 void QUmlProperty::setReadOnly(bool isReadOnly)
 {
-    Q_UNUSED(isReadOnly);
+    // This is a read-write property
+
+    QM_D(QUmlProperty);
+    if (d->isReadOnly != isReadOnly) {
+        d->isReadOnly = isReadOnly;
+    }
 }
 
 /*!
@@ -263,12 +371,23 @@ void QUmlProperty::setReadOnly(bool isReadOnly)
  */
 QUmlProperty *QUmlProperty::opposite() const
 {
+    // This is a read-write derived association end
+
+    qWarning("QUmlProperty::opposite(): to be implemented (this is a derived association end)");
+
     return 0;
 }
 
 void QUmlProperty::setOpposite(QUmlProperty *opposite)
 {
+    // This is a read-write derived association end
+
+    qWarning("QUmlProperty::opposite(): to be implemented (this is a derived association end)");
     Q_UNUSED(opposite);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
 }
 
 /*!
@@ -276,12 +395,20 @@ void QUmlProperty::setOpposite(QUmlProperty *opposite)
  */
 QUmlAssociation *QUmlProperty::owningAssociation() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlProperty);
+    return d->owningAssociation;
 }
 
 void QUmlProperty::setOwningAssociation(QUmlAssociation *owningAssociation)
 {
-    Q_UNUSED(owningAssociation);
+    // This is a read-write association end
+
+    QM_D(QUmlProperty);
+    if (d->owningAssociation != owningAssociation) {
+        d->owningAssociation = owningAssociation;
+    }
 }
 
 /*!
@@ -289,17 +416,30 @@ void QUmlProperty::setOwningAssociation(QUmlAssociation *owningAssociation)
  */
 QList<QUmlProperty *> QUmlProperty::qualifier() const
 {
-    return QList<QUmlProperty *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlProperty);
+    return d->qualifier;
 }
 
-void QUmlProperty::addQualifier(QList<QUmlProperty *> qualifier)
+void QUmlProperty::addQualifier(QUmlProperty *qualifier)
 {
-    Q_UNUSED(qualifier);
+    // This is a read-write association end
+
+    QM_D(QUmlProperty);
+    if (!d->qualifier.contains(qualifier)) {
+        d->qualifier.append(qualifier);
+    }
 }
 
-void QUmlProperty::removeQualifier(QList<QUmlProperty *> qualifier)
+void QUmlProperty::removeQualifier(QUmlProperty *qualifier)
 {
-    Q_UNUSED(qualifier);
+    // This is a read-write association end
+
+    QM_D(QUmlProperty);
+    if (d->qualifier.contains(qualifier)) {
+        d->qualifier.removeAll(qualifier);
+    }
 }
 
 /*!
@@ -307,17 +447,30 @@ void QUmlProperty::removeQualifier(QList<QUmlProperty *> qualifier)
  */
 QSet<QUmlProperty *> QUmlProperty::redefinedProperty() const
 {
-    return QSet<QUmlProperty *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlProperty);
+    return d->redefinedProperty;
 }
 
-void QUmlProperty::addRedefinedProperty(QSet<QUmlProperty *> redefinedProperty)
+void QUmlProperty::addRedefinedProperty(QUmlProperty *redefinedProperty)
 {
-    Q_UNUSED(redefinedProperty);
+    // This is a read-write association end
+
+    QM_D(QUmlProperty);
+    if (!d->redefinedProperty.contains(redefinedProperty)) {
+        d->redefinedProperty.insert(redefinedProperty);
+    }
 }
 
-void QUmlProperty::removeRedefinedProperty(QSet<QUmlProperty *> redefinedProperty)
+void QUmlProperty::removeRedefinedProperty(QUmlProperty *redefinedProperty)
 {
-    Q_UNUSED(redefinedProperty);
+    // This is a read-write association end
+
+    QM_D(QUmlProperty);
+    if (d->redefinedProperty.contains(redefinedProperty)) {
+        d->redefinedProperty.remove(redefinedProperty);
+    }
 }
 
 /*!
@@ -325,20 +478,33 @@ void QUmlProperty::removeRedefinedProperty(QSet<QUmlProperty *> redefinedPropert
  */
 QSet<QUmlProperty *> QUmlProperty::subsettedProperty() const
 {
-    return QSet<QUmlProperty *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlProperty);
+    return d->subsettedProperty;
 }
 
-void QUmlProperty::addSubsettedProperty(QSet<QUmlProperty *> subsettedProperty)
+void QUmlProperty::addSubsettedProperty(QUmlProperty *subsettedProperty)
 {
-    Q_UNUSED(subsettedProperty);
+    // This is a read-write association end
+
+    QM_D(QUmlProperty);
+    if (!d->subsettedProperty.contains(subsettedProperty)) {
+        d->subsettedProperty.insert(subsettedProperty);
+    }
 }
 
-void QUmlProperty::removeSubsettedProperty(QSet<QUmlProperty *> subsettedProperty)
+void QUmlProperty::removeSubsettedProperty(QUmlProperty *subsettedProperty)
 {
-    Q_UNUSED(subsettedProperty);
+    // This is a read-write association end
+
+    QM_D(QUmlProperty);
+    if (d->subsettedProperty.contains(subsettedProperty)) {
+        d->subsettedProperty.remove(subsettedProperty);
+    }
 }
 
-// Operations
+// OPERATIONS
 
 /*!
     The query isAttribute() is true if the Property is defined as an attribute of some classifier.

@@ -57,14 +57,12 @@ class Q_UML_EXPORT QUmlClassPrivate : public QUmlEncapsulatedClassifierPrivate, 
 public:
     QUmlClassPrivate();
 
-    QSet<QUmlExtension *> extension;
     bool isAbstract;
     bool isActive;
     QList<QUmlClassifier *> nestedClassifier;
     QList<QUmlProperty *> ownedAttribute;
     QList<QUmlOperation *> ownedOperation;
     QSet<QUmlReception *> ownedReception;
-    QSet<QUmlClass *> superClass;
 };
 
 QT_END_NAMESPACE

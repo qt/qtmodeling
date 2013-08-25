@@ -67,19 +67,27 @@ QUmlInclude::QUmlInclude(bool create_d_ptr) :
         set_d_ptr(new QUmlIncludePrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     References the use case that is to be included.
  */
 QUmlUseCase *QUmlInclude::addition() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlInclude);
+    return d->addition;
 }
 
 void QUmlInclude::setAddition(QUmlUseCase *addition)
 {
-    Q_UNUSED(addition);
+    // This is a read-write association end
+
+    QM_D(QUmlInclude);
+    if (d->addition != addition) {
+        d->addition = addition;
+    }
 }
 
 /*!
@@ -87,12 +95,20 @@ void QUmlInclude::setAddition(QUmlUseCase *addition)
  */
 QUmlUseCase *QUmlInclude::includingCase() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlInclude);
+    return d->includingCase;
 }
 
 void QUmlInclude::setIncludingCase(QUmlUseCase *includingCase)
 {
-    Q_UNUSED(includingCase);
+    // This is a read-write association end
+
+    QM_D(QUmlInclude);
+    if (d->includingCase != includingCase) {
+        d->includingCase = includingCase;
+    }
 }
 
 QT_END_NAMESPACE

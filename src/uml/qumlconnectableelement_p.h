@@ -57,7 +57,6 @@ class Q_UML_EXPORT QUmlConnectableElementPrivate : public virtual QUmlTypedEleme
 public:
     QUmlConnectableElementPrivate();
 
-    QList<QUmlConnectorEnd *> end;
     QUmlConnectableElementTemplateParameter *templateParameter;
 };
 

@@ -72,19 +72,30 @@ QUmlParameter::QUmlParameter(bool create_d_ptr) :
         set_d_ptr(new QUmlParameterPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Specifies a String that represents a value to be used when no argument is supplied for the Parameter.
  */
 QString QUmlParameter::default_() const
 {
+    // This is a read-write derived property
+
+    qWarning("QUmlParameter::default_(): to be implemented (this is a derived property)");
+
     return QString();
 }
 
 void QUmlParameter::setDefault(QString default_)
 {
+    // This is a read-write derived property
+
+    qWarning("QUmlParameter::default_(): to be implemented (this is a derived property)");
     Q_UNUSED(default_);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
 }
 
 /*!
@@ -92,12 +103,20 @@ void QUmlParameter::setDefault(QString default_)
  */
 QUmlValueSpecification *QUmlParameter::defaultValue() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlParameter);
+    return d->defaultValue;
 }
 
 void QUmlParameter::setDefaultValue(QUmlValueSpecification *defaultValue)
 {
-    Q_UNUSED(defaultValue);
+    // This is a read-write association end
+
+    QM_D(QUmlParameter);
+    if (d->defaultValue != defaultValue) {
+        d->defaultValue = defaultValue;
+    }
 }
 
 /*!
@@ -105,12 +124,20 @@ void QUmlParameter::setDefaultValue(QUmlValueSpecification *defaultValue)
  */
 QtUml::ParameterDirectionKind QUmlParameter::direction() const
 {
-    return QtUml::ParameterDirectionKind();
+    // This is a read-write property
+
+    QM_D(const QUmlParameter);
+    return d->direction;
 }
 
 void QUmlParameter::setDirection(QtUml::ParameterDirectionKind direction)
 {
-    Q_UNUSED(direction);
+    // This is a read-write property
+
+    QM_D(QUmlParameter);
+    if (d->direction != direction) {
+        d->direction = direction;
+    }
 }
 
 /*!
@@ -118,12 +145,20 @@ void QUmlParameter::setDirection(QtUml::ParameterDirectionKind direction)
  */
 QtUml::ParameterEffectKind QUmlParameter::effect() const
 {
-    return QtUml::ParameterEffectKind();
+    // This is a read-write property
+
+    QM_D(const QUmlParameter);
+    return d->effect;
 }
 
 void QUmlParameter::setEffect(QtUml::ParameterEffectKind effect)
 {
-    Q_UNUSED(effect);
+    // This is a read-write property
+
+    QM_D(QUmlParameter);
+    if (d->effect != effect) {
+        d->effect = effect;
+    }
 }
 
 /*!
@@ -131,12 +166,20 @@ void QUmlParameter::setEffect(QtUml::ParameterEffectKind effect)
  */
 bool QUmlParameter::isException() const
 {
-    return bool();
+    // This is a read-write property
+
+    QM_D(const QUmlParameter);
+    return d->isException;
 }
 
 void QUmlParameter::setException(bool isException)
 {
-    Q_UNUSED(isException);
+    // This is a read-write property
+
+    QM_D(QUmlParameter);
+    if (d->isException != isException) {
+        d->isException = isException;
+    }
 }
 
 /*!
@@ -144,12 +187,20 @@ void QUmlParameter::setException(bool isException)
  */
 bool QUmlParameter::isStream() const
 {
-    return bool();
+    // This is a read-write property
+
+    QM_D(const QUmlParameter);
+    return d->isStream;
 }
 
 void QUmlParameter::setStream(bool isStream)
 {
-    Q_UNUSED(isStream);
+    // This is a read-write property
+
+    QM_D(QUmlParameter);
+    if (d->isStream != isStream) {
+        d->isStream = isStream;
+    }
 }
 
 /*!
@@ -157,12 +208,20 @@ void QUmlParameter::setStream(bool isStream)
  */
 QUmlOperation *QUmlParameter::operation() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlParameter);
+    return d->operation;
 }
 
 void QUmlParameter::setOperation(QUmlOperation *operation)
 {
-    Q_UNUSED(operation);
+    // This is a read-write association end
+
+    QM_D(QUmlParameter);
+    if (d->operation != operation) {
+        d->operation = operation;
+    }
 }
 
 /*!
@@ -170,17 +229,30 @@ void QUmlParameter::setOperation(QUmlOperation *operation)
  */
 QSet<QUmlParameterSet *> QUmlParameter::parameterSet() const
 {
-    return QSet<QUmlParameterSet *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlParameter);
+    return d->parameterSet;
 }
 
-void QUmlParameter::addParameterSet(QSet<QUmlParameterSet *> parameterSet)
+void QUmlParameter::addParameterSet(QUmlParameterSet *parameterSet)
 {
-    Q_UNUSED(parameterSet);
+    // This is a read-write association end
+
+    QM_D(QUmlParameter);
+    if (!d->parameterSet.contains(parameterSet)) {
+        d->parameterSet.insert(parameterSet);
+    }
 }
 
-void QUmlParameter::removeParameterSet(QSet<QUmlParameterSet *> parameterSet)
+void QUmlParameter::removeParameterSet(QUmlParameterSet *parameterSet)
 {
-    Q_UNUSED(parameterSet);
+    // This is a read-write association end
+
+    QM_D(QUmlParameter);
+    if (d->parameterSet.contains(parameterSet)) {
+        d->parameterSet.remove(parameterSet);
+    }
 }
 
 QT_END_NAMESPACE

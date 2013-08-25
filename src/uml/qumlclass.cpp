@@ -72,13 +72,17 @@ QUmlClass::QUmlClass(bool create_d_ptr) :
         set_d_ptr(new QUmlClassPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     References the Extensions that specify additional properties of the metaclass. The property is derived from the extensions whose memberEnds are typed by the Class.
  */
 QSet<QUmlExtension *> QUmlClass::extension() const
 {
+    // This is a read-only derived association end
+
+    qWarning("QUmlClass::extension(): to be implemented (this is a derived association end)");
+
     return QSet<QUmlExtension *>();
 }
 
@@ -87,12 +91,20 @@ QSet<QUmlExtension *> QUmlClass::extension() const
  */
 bool QUmlClass::isAbstract() const
 {
-    return bool();
+    // This is a read-write property
+
+    QM_D(const QUmlClass);
+    return d->isAbstract;
 }
 
 void QUmlClass::setAbstract(bool isAbstract)
 {
-    Q_UNUSED(isAbstract);
+    // This is a read-write property
+
+    QM_D(QUmlClass);
+    if (d->isAbstract != isAbstract) {
+        d->isAbstract = isAbstract;
+    }
 }
 
 /*!
@@ -100,12 +112,20 @@ void QUmlClass::setAbstract(bool isAbstract)
  */
 bool QUmlClass::isActive() const
 {
-    return bool();
+    // This is a read-write property
+
+    QM_D(const QUmlClass);
+    return d->isActive;
 }
 
 void QUmlClass::setActive(bool isActive)
 {
-    Q_UNUSED(isActive);
+    // This is a read-write property
+
+    QM_D(QUmlClass);
+    if (d->isActive != isActive) {
+        d->isActive = isActive;
+    }
 }
 
 /*!
@@ -113,17 +133,30 @@ void QUmlClass::setActive(bool isActive)
  */
 QList<QUmlClassifier *> QUmlClass::nestedClassifier() const
 {
-    return QList<QUmlClassifier *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlClass);
+    return d->nestedClassifier;
 }
 
-void QUmlClass::addNestedClassifier(QList<QUmlClassifier *> nestedClassifier)
+void QUmlClass::addNestedClassifier(QUmlClassifier *nestedClassifier)
 {
-    Q_UNUSED(nestedClassifier);
+    // This is a read-write association end
+
+    QM_D(QUmlClass);
+    if (!d->nestedClassifier.contains(nestedClassifier)) {
+        d->nestedClassifier.append(nestedClassifier);
+    }
 }
 
-void QUmlClass::removeNestedClassifier(QList<QUmlClassifier *> nestedClassifier)
+void QUmlClass::removeNestedClassifier(QUmlClassifier *nestedClassifier)
 {
-    Q_UNUSED(nestedClassifier);
+    // This is a read-write association end
+
+    QM_D(QUmlClass);
+    if (d->nestedClassifier.contains(nestedClassifier)) {
+        d->nestedClassifier.removeAll(nestedClassifier);
+    }
 }
 
 /*!
@@ -131,17 +164,30 @@ void QUmlClass::removeNestedClassifier(QList<QUmlClassifier *> nestedClassifier)
  */
 QList<QUmlProperty *> QUmlClass::ownedAttribute() const
 {
-    return QList<QUmlProperty *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlClass);
+    return d->ownedAttribute;
 }
 
-void QUmlClass::addOwnedAttribute(QList<QUmlProperty *> ownedAttribute)
+void QUmlClass::addOwnedAttribute(QUmlProperty *ownedAttribute)
 {
-    Q_UNUSED(ownedAttribute);
+    // This is a read-write association end
+
+    QM_D(QUmlClass);
+    if (!d->ownedAttribute.contains(ownedAttribute)) {
+        d->ownedAttribute.append(ownedAttribute);
+    }
 }
 
-void QUmlClass::removeOwnedAttribute(QList<QUmlProperty *> ownedAttribute)
+void QUmlClass::removeOwnedAttribute(QUmlProperty *ownedAttribute)
 {
-    Q_UNUSED(ownedAttribute);
+    // This is a read-write association end
+
+    QM_D(QUmlClass);
+    if (d->ownedAttribute.contains(ownedAttribute)) {
+        d->ownedAttribute.removeAll(ownedAttribute);
+    }
 }
 
 /*!
@@ -149,17 +195,30 @@ void QUmlClass::removeOwnedAttribute(QList<QUmlProperty *> ownedAttribute)
  */
 QList<QUmlOperation *> QUmlClass::ownedOperation() const
 {
-    return QList<QUmlOperation *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlClass);
+    return d->ownedOperation;
 }
 
-void QUmlClass::addOwnedOperation(QList<QUmlOperation *> ownedOperation)
+void QUmlClass::addOwnedOperation(QUmlOperation *ownedOperation)
 {
-    Q_UNUSED(ownedOperation);
+    // This is a read-write association end
+
+    QM_D(QUmlClass);
+    if (!d->ownedOperation.contains(ownedOperation)) {
+        d->ownedOperation.append(ownedOperation);
+    }
 }
 
-void QUmlClass::removeOwnedOperation(QList<QUmlOperation *> ownedOperation)
+void QUmlClass::removeOwnedOperation(QUmlOperation *ownedOperation)
 {
-    Q_UNUSED(ownedOperation);
+    // This is a read-write association end
+
+    QM_D(QUmlClass);
+    if (d->ownedOperation.contains(ownedOperation)) {
+        d->ownedOperation.removeAll(ownedOperation);
+    }
 }
 
 /*!
@@ -167,17 +226,30 @@ void QUmlClass::removeOwnedOperation(QList<QUmlOperation *> ownedOperation)
  */
 QSet<QUmlReception *> QUmlClass::ownedReception() const
 {
-    return QSet<QUmlReception *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlClass);
+    return d->ownedReception;
 }
 
-void QUmlClass::addOwnedReception(QSet<QUmlReception *> ownedReception)
+void QUmlClass::addOwnedReception(QUmlReception *ownedReception)
 {
-    Q_UNUSED(ownedReception);
+    // This is a read-write association end
+
+    QM_D(QUmlClass);
+    if (!d->ownedReception.contains(ownedReception)) {
+        d->ownedReception.insert(ownedReception);
+    }
 }
 
-void QUmlClass::removeOwnedReception(QSet<QUmlReception *> ownedReception)
+void QUmlClass::removeOwnedReception(QUmlReception *ownedReception)
 {
-    Q_UNUSED(ownedReception);
+    // This is a read-write association end
+
+    QM_D(QUmlClass);
+    if (d->ownedReception.contains(ownedReception)) {
+        d->ownedReception.remove(ownedReception);
+    }
 }
 
 /*!
@@ -185,20 +257,38 @@ void QUmlClass::removeOwnedReception(QSet<QUmlReception *> ownedReception)
  */
 QSet<QUmlClass *> QUmlClass::superClass() const
 {
+    // This is a read-write derived association end
+
+    qWarning("QUmlClass::superClass(): to be implemented (this is a derived association end)");
+
     return QSet<QUmlClass *>();
 }
 
-void QUmlClass::addSuperClass(QSet<QUmlClass *> superClass)
+void QUmlClass::addSuperClass(QUmlClass *superClass)
 {
+    // This is a read-write derived association end
+
+    qWarning("QUmlClass::superClass(): to be implemented (this is a derived association end)");
     Q_UNUSED(superClass);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
 }
 
-void QUmlClass::removeSuperClass(QSet<QUmlClass *> superClass)
+void QUmlClass::removeSuperClass(QUmlClass *superClass)
 {
+    // This is a read-write derived association end
+
+    qWarning("QUmlClass::superClass(): to be implemented (this is a derived association end)");
     Q_UNUSED(superClass);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
 }
 
-// Operations
+// OPERATIONS
 
 /*!
     The inherit operation is overridden to exclude redefined properties.

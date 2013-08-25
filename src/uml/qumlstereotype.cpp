@@ -46,8 +46,7 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlStereotypePrivate::QUmlStereotypePrivate() :
-    profile(0)
+QUmlStereotypePrivate::QUmlStereotypePrivate()
 {
 }
 
@@ -66,24 +65,37 @@ QUmlStereotype::QUmlStereotype(bool create_d_ptr) :
         set_d_ptr(new QUmlStereotypePrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Stereotype can change the graphical appearance of the extended model element by using attached icons. When this association is not null, it references the location of the icon content to be displayed within diagrams presenting the extended model elements.
  */
 QSet<QUmlImage *> QUmlStereotype::icon() const
 {
-    return QSet<QUmlImage *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlStereotype);
+    return d->icon;
 }
 
-void QUmlStereotype::addIcon(QSet<QUmlImage *> icon)
+void QUmlStereotype::addIcon(QUmlImage *icon)
 {
-    Q_UNUSED(icon);
+    // This is a read-write association end
+
+    QM_D(QUmlStereotype);
+    if (!d->icon.contains(icon)) {
+        d->icon.insert(icon);
+    }
 }
 
-void QUmlStereotype::removeIcon(QSet<QUmlImage *> icon)
+void QUmlStereotype::removeIcon(QUmlImage *icon)
 {
-    Q_UNUSED(icon);
+    // This is a read-write association end
+
+    QM_D(QUmlStereotype);
+    if (d->icon.contains(icon)) {
+        d->icon.remove(icon);
+    }
 }
 
 /*!
@@ -91,10 +103,14 @@ void QUmlStereotype::removeIcon(QSet<QUmlImage *> icon)
  */
 QUmlProfile *QUmlStereotype::profile() const
 {
+    // This is a read-only derived association end
+
+    qWarning("QUmlStereotype::profile(): to be implemented (this is a derived association end)");
+
     return 0;
 }
 
-// Operations
+// OPERATIONS
 
 /*!
     The query containingProfile returns the closest profile directly or indirectly containing this stereotype.

@@ -62,15 +62,15 @@ public:
 
     // Owned attributes
     QSet<QUmlClause *> clause() const;
-    void addClause(QSet<QUmlClause *> clause);
-    void removeClause(QSet<QUmlClause *> clause);
+    void addClause(QUmlClause *clause);
+    void removeClause(QUmlClause *clause);
     bool isAssured() const;
     void setAssured(bool isAssured);
     bool isDeterminate() const;
     void setDeterminate(bool isDeterminate);
     QList<QUmlOutputPin *> result() const;
-    void addResult(QList<QUmlOutputPin *> result);
-    void removeResult(QList<QUmlOutputPin *> result);
+    void addResult(QUmlOutputPin *result);
+    void removeResult(QUmlOutputPin *result);
 };
 
 QT_END_NAMESPACE

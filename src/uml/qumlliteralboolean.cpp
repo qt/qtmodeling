@@ -63,22 +63,30 @@ QUmlLiteralBoolean::QUmlLiteralBoolean(bool create_d_ptr) :
         set_d_ptr(new QUmlLiteralBooleanPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The specified Boolean value.
  */
 bool QUmlLiteralBoolean::value() const
 {
-    return bool();
+    // This is a read-write property
+
+    QM_D(const QUmlLiteralBoolean);
+    return d->value;
 }
 
 void QUmlLiteralBoolean::setValue(bool value)
 {
-    Q_UNUSED(value);
+    // This is a read-write property
+
+    QM_D(QUmlLiteralBoolean);
+    if (d->value != value) {
+        d->value = value;
+    }
 }
 
-// Operations
+// OPERATIONS
 
 /*!
     The query booleanValue() gives the value.

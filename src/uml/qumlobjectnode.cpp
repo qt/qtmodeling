@@ -71,24 +71,37 @@ QUmlObjectNode::QUmlObjectNode(bool create_d_ptr) :
         set_d_ptr(new QUmlObjectNodePrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The required states of the object available at this point in the activity.
  */
 QSet<QUmlState *> QUmlObjectNode::inState() const
 {
-    return QSet<QUmlState *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlObjectNode);
+    return d->inState;
 }
 
-void QUmlObjectNode::addInState(QSet<QUmlState *> inState)
+void QUmlObjectNode::addInState(QUmlState *inState)
 {
-    Q_UNUSED(inState);
+    // This is a read-write association end
+
+    QM_D(QUmlObjectNode);
+    if (!d->inState.contains(inState)) {
+        d->inState.insert(inState);
+    }
 }
 
-void QUmlObjectNode::removeInState(QSet<QUmlState *> inState)
+void QUmlObjectNode::removeInState(QUmlState *inState)
 {
-    Q_UNUSED(inState);
+    // This is a read-write association end
+
+    QM_D(QUmlObjectNode);
+    if (d->inState.contains(inState)) {
+        d->inState.remove(inState);
+    }
 }
 
 /*!
@@ -96,12 +109,20 @@ void QUmlObjectNode::removeInState(QSet<QUmlState *> inState)
  */
 bool QUmlObjectNode::isControlType() const
 {
-    return bool();
+    // This is a read-write property
+
+    QM_D(const QUmlObjectNode);
+    return d->isControlType;
 }
 
 void QUmlObjectNode::setControlType(bool isControlType)
 {
-    Q_UNUSED(isControlType);
+    // This is a read-write property
+
+    QM_D(QUmlObjectNode);
+    if (d->isControlType != isControlType) {
+        d->isControlType = isControlType;
+    }
 }
 
 /*!
@@ -109,12 +130,20 @@ void QUmlObjectNode::setControlType(bool isControlType)
  */
 QtUml::ObjectNodeOrderingKind QUmlObjectNode::ordering() const
 {
-    return QtUml::ObjectNodeOrderingKind();
+    // This is a read-write property
+
+    QM_D(const QUmlObjectNode);
+    return d->ordering;
 }
 
 void QUmlObjectNode::setOrdering(QtUml::ObjectNodeOrderingKind ordering)
 {
-    Q_UNUSED(ordering);
+    // This is a read-write property
+
+    QM_D(QUmlObjectNode);
+    if (d->ordering != ordering) {
+        d->ordering = ordering;
+    }
 }
 
 /*!
@@ -122,12 +151,20 @@ void QUmlObjectNode::setOrdering(QtUml::ObjectNodeOrderingKind ordering)
  */
 QUmlBehavior *QUmlObjectNode::selection() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlObjectNode);
+    return d->selection;
 }
 
 void QUmlObjectNode::setSelection(QUmlBehavior *selection)
 {
-    Q_UNUSED(selection);
+    // This is a read-write association end
+
+    QM_D(QUmlObjectNode);
+    if (d->selection != selection) {
+        d->selection = selection;
+    }
 }
 
 /*!
@@ -135,12 +172,20 @@ void QUmlObjectNode::setSelection(QUmlBehavior *selection)
  */
 QUmlValueSpecification *QUmlObjectNode::upperBound() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlObjectNode);
+    return d->upperBound;
 }
 
 void QUmlObjectNode::setUpperBound(QUmlValueSpecification *upperBound)
 {
-    Q_UNUSED(upperBound);
+    // This is a read-write association end
+
+    QM_D(QUmlObjectNode);
+    if (d->upperBound != upperBound) {
+        d->upperBound = upperBound;
+    }
 }
 
 QT_END_NAMESPACE

@@ -56,12 +56,7 @@ QUmlStatePrivate::QUmlStatePrivate() :
     doActivity(0),
     entry(0),
     exit(0),
-    isComposite(false),
-    isOrthogonal(false),
-    isSimple(true),
-    isSubmachineState(false),
     redefinedState(0),
-    redefinitionContext(0),
     stateInvariant(0),
     submachine(0)
 {
@@ -84,24 +79,37 @@ QUmlState::QUmlState(bool create_d_ptr) :
         set_d_ptr(new QUmlStatePrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The entry and exit connection points used in conjunction with this (submachine) state, i.e. as targets and sources, respectively, in the region with the submachine state. A connection point reference references the corresponding definition of a connection point pseudostate in the statemachine referenced by the submachinestate.
  */
 QSet<QUmlConnectionPointReference *> QUmlState::connection() const
 {
-    return QSet<QUmlConnectionPointReference *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlState);
+    return d->connection;
 }
 
-void QUmlState::addConnection(QSet<QUmlConnectionPointReference *> connection)
+void QUmlState::addConnection(QUmlConnectionPointReference *connection)
 {
-    Q_UNUSED(connection);
+    // This is a read-write association end
+
+    QM_D(QUmlState);
+    if (!d->connection.contains(connection)) {
+        d->connection.insert(connection);
+    }
 }
 
-void QUmlState::removeConnection(QSet<QUmlConnectionPointReference *> connection)
+void QUmlState::removeConnection(QUmlConnectionPointReference *connection)
 {
-    Q_UNUSED(connection);
+    // This is a read-write association end
+
+    QM_D(QUmlState);
+    if (d->connection.contains(connection)) {
+        d->connection.remove(connection);
+    }
 }
 
 /*!
@@ -109,17 +117,30 @@ void QUmlState::removeConnection(QSet<QUmlConnectionPointReference *> connection
  */
 QSet<QUmlPseudostate *> QUmlState::connectionPoint() const
 {
-    return QSet<QUmlPseudostate *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlState);
+    return d->connectionPoint;
 }
 
-void QUmlState::addConnectionPoint(QSet<QUmlPseudostate *> connectionPoint)
+void QUmlState::addConnectionPoint(QUmlPseudostate *connectionPoint)
 {
-    Q_UNUSED(connectionPoint);
+    // This is a read-write association end
+
+    QM_D(QUmlState);
+    if (!d->connectionPoint.contains(connectionPoint)) {
+        d->connectionPoint.insert(connectionPoint);
+    }
 }
 
-void QUmlState::removeConnectionPoint(QSet<QUmlPseudostate *> connectionPoint)
+void QUmlState::removeConnectionPoint(QUmlPseudostate *connectionPoint)
 {
-    Q_UNUSED(connectionPoint);
+    // This is a read-write association end
+
+    QM_D(QUmlState);
+    if (d->connectionPoint.contains(connectionPoint)) {
+        d->connectionPoint.remove(connectionPoint);
+    }
 }
 
 /*!
@@ -127,17 +148,30 @@ void QUmlState::removeConnectionPoint(QSet<QUmlPseudostate *> connectionPoint)
  */
 QSet<QUmlTrigger *> QUmlState::deferrableTrigger() const
 {
-    return QSet<QUmlTrigger *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlState);
+    return d->deferrableTrigger;
 }
 
-void QUmlState::addDeferrableTrigger(QSet<QUmlTrigger *> deferrableTrigger)
+void QUmlState::addDeferrableTrigger(QUmlTrigger *deferrableTrigger)
 {
-    Q_UNUSED(deferrableTrigger);
+    // This is a read-write association end
+
+    QM_D(QUmlState);
+    if (!d->deferrableTrigger.contains(deferrableTrigger)) {
+        d->deferrableTrigger.insert(deferrableTrigger);
+    }
 }
 
-void QUmlState::removeDeferrableTrigger(QSet<QUmlTrigger *> deferrableTrigger)
+void QUmlState::removeDeferrableTrigger(QUmlTrigger *deferrableTrigger)
 {
-    Q_UNUSED(deferrableTrigger);
+    // This is a read-write association end
+
+    QM_D(QUmlState);
+    if (d->deferrableTrigger.contains(deferrableTrigger)) {
+        d->deferrableTrigger.remove(deferrableTrigger);
+    }
 }
 
 /*!
@@ -145,12 +179,20 @@ void QUmlState::removeDeferrableTrigger(QSet<QUmlTrigger *> deferrableTrigger)
  */
 QUmlBehavior *QUmlState::doActivity() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlState);
+    return d->doActivity;
 }
 
 void QUmlState::setDoActivity(QUmlBehavior *doActivity)
 {
-    Q_UNUSED(doActivity);
+    // This is a read-write association end
+
+    QM_D(QUmlState);
+    if (d->doActivity != doActivity) {
+        d->doActivity = doActivity;
+    }
 }
 
 /*!
@@ -158,12 +200,20 @@ void QUmlState::setDoActivity(QUmlBehavior *doActivity)
  */
 QUmlBehavior *QUmlState::entry() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlState);
+    return d->entry;
 }
 
 void QUmlState::setEntry(QUmlBehavior *entry)
 {
-    Q_UNUSED(entry);
+    // This is a read-write association end
+
+    QM_D(QUmlState);
+    if (d->entry != entry) {
+        d->entry = entry;
+    }
 }
 
 /*!
@@ -171,12 +221,20 @@ void QUmlState::setEntry(QUmlBehavior *entry)
  */
 QUmlBehavior *QUmlState::exit() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlState);
+    return d->exit;
 }
 
 void QUmlState::setExit(QUmlBehavior *exit)
 {
-    Q_UNUSED(exit);
+    // This is a read-write association end
+
+    QM_D(QUmlState);
+    if (d->exit != exit) {
+        d->exit = exit;
+    }
 }
 
 /*!
@@ -184,6 +242,10 @@ void QUmlState::setExit(QUmlBehavior *exit)
  */
 bool QUmlState::isComposite() const
 {
+    // This is a read-only derived property
+
+    qWarning("QUmlState::isComposite(): to be implemented (this is a derived property)");
+
     return bool();
 }
 
@@ -192,6 +254,10 @@ bool QUmlState::isComposite() const
  */
 bool QUmlState::isOrthogonal() const
 {
+    // This is a read-only derived property
+
+    qWarning("QUmlState::isOrthogonal(): to be implemented (this is a derived property)");
+
     return bool();
 }
 
@@ -200,6 +266,10 @@ bool QUmlState::isOrthogonal() const
  */
 bool QUmlState::isSimple() const
 {
+    // This is a read-only derived property
+
+    qWarning("QUmlState::isSimple(): to be implemented (this is a derived property)");
+
     return bool();
 }
 
@@ -208,6 +278,10 @@ bool QUmlState::isSimple() const
  */
 bool QUmlState::isSubmachineState() const
 {
+    // This is a read-only derived property
+
+    qWarning("QUmlState::isSubmachineState(): to be implemented (this is a derived property)");
+
     return bool();
 }
 
@@ -216,12 +290,20 @@ bool QUmlState::isSubmachineState() const
  */
 QUmlState *QUmlState::redefinedState() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlState);
+    return d->redefinedState;
 }
 
 void QUmlState::setRedefinedState(QUmlState *redefinedState)
 {
-    Q_UNUSED(redefinedState);
+    // This is a read-write association end
+
+    QM_D(QUmlState);
+    if (d->redefinedState != redefinedState) {
+        d->redefinedState = redefinedState;
+    }
 }
 
 /*!
@@ -229,6 +311,10 @@ void QUmlState::setRedefinedState(QUmlState *redefinedState)
  */
 QUmlClassifier *QUmlState::redefinitionContext() const
 {
+    // This is a read-only derived association end
+
+    qWarning("QUmlState::redefinitionContext(): to be implemented (this is a derived association end)");
+
     return 0;
 }
 
@@ -237,17 +323,30 @@ QUmlClassifier *QUmlState::redefinitionContext() const
  */
 QSet<QUmlRegion *> QUmlState::region() const
 {
-    return QSet<QUmlRegion *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlState);
+    return d->region;
 }
 
-void QUmlState::addRegion(QSet<QUmlRegion *> region)
+void QUmlState::addRegion(QUmlRegion *region)
 {
-    Q_UNUSED(region);
+    // This is a read-write association end
+
+    QM_D(QUmlState);
+    if (!d->region.contains(region)) {
+        d->region.insert(region);
+    }
 }
 
-void QUmlState::removeRegion(QSet<QUmlRegion *> region)
+void QUmlState::removeRegion(QUmlRegion *region)
 {
-    Q_UNUSED(region);
+    // This is a read-write association end
+
+    QM_D(QUmlState);
+    if (d->region.contains(region)) {
+        d->region.remove(region);
+    }
 }
 
 /*!
@@ -255,12 +354,20 @@ void QUmlState::removeRegion(QSet<QUmlRegion *> region)
  */
 QUmlConstraint *QUmlState::stateInvariant() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlState);
+    return d->stateInvariant;
 }
 
 void QUmlState::setStateInvariant(QUmlConstraint *stateInvariant)
 {
-    Q_UNUSED(stateInvariant);
+    // This is a read-write association end
+
+    QM_D(QUmlState);
+    if (d->stateInvariant != stateInvariant) {
+        d->stateInvariant = stateInvariant;
+    }
 }
 
 /*!
@@ -268,15 +375,23 @@ void QUmlState::setStateInvariant(QUmlConstraint *stateInvariant)
  */
 QUmlStateMachine *QUmlState::submachine() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlState);
+    return d->submachine;
 }
 
 void QUmlState::setSubmachine(QUmlStateMachine *submachine)
 {
-    Q_UNUSED(submachine);
+    // This is a read-write association end
+
+    QM_D(QUmlState);
+    if (d->submachine != submachine) {
+        d->submachine = submachine;
+    }
 }
 
-// Operations
+// OPERATIONS
 
 /*!
     The query containingStateMachine() returns the state machine that contains the state either directly or transitively.

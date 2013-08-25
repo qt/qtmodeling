@@ -62,8 +62,8 @@ public:
 
     // Owned attributes
     QSet<QUmlConnectableElement *> collaborationRole() const;
-    void addCollaborationRole(QSet<QUmlConnectableElement *> collaborationRole);
-    void removeCollaborationRole(QSet<QUmlConnectableElement *> collaborationRole);
+    void addCollaborationRole(QUmlConnectableElement *collaborationRole);
+    void removeCollaborationRole(QUmlConnectableElement *collaborationRole);
 };
 
 QT_END_NAMESPACE

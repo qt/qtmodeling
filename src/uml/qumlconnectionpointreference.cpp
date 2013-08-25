@@ -66,24 +66,37 @@ QUmlConnectionPointReference::QUmlConnectionPointReference(bool create_d_ptr) :
         set_d_ptr(new QUmlConnectionPointReferencePrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The entryPoint kind pseudo states corresponding to this connection point.
  */
 QSet<QUmlPseudostate *> QUmlConnectionPointReference::entry() const
 {
-    return QSet<QUmlPseudostate *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlConnectionPointReference);
+    return d->entry;
 }
 
-void QUmlConnectionPointReference::addEntry(QSet<QUmlPseudostate *> entry)
+void QUmlConnectionPointReference::addEntry(QUmlPseudostate *entry)
 {
-    Q_UNUSED(entry);
+    // This is a read-write association end
+
+    QM_D(QUmlConnectionPointReference);
+    if (!d->entry.contains(entry)) {
+        d->entry.insert(entry);
+    }
 }
 
-void QUmlConnectionPointReference::removeEntry(QSet<QUmlPseudostate *> entry)
+void QUmlConnectionPointReference::removeEntry(QUmlPseudostate *entry)
 {
-    Q_UNUSED(entry);
+    // This is a read-write association end
+
+    QM_D(QUmlConnectionPointReference);
+    if (d->entry.contains(entry)) {
+        d->entry.remove(entry);
+    }
 }
 
 /*!
@@ -91,17 +104,30 @@ void QUmlConnectionPointReference::removeEntry(QSet<QUmlPseudostate *> entry)
  */
 QSet<QUmlPseudostate *> QUmlConnectionPointReference::exit() const
 {
-    return QSet<QUmlPseudostate *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlConnectionPointReference);
+    return d->exit;
 }
 
-void QUmlConnectionPointReference::addExit(QSet<QUmlPseudostate *> exit)
+void QUmlConnectionPointReference::addExit(QUmlPseudostate *exit)
 {
-    Q_UNUSED(exit);
+    // This is a read-write association end
+
+    QM_D(QUmlConnectionPointReference);
+    if (!d->exit.contains(exit)) {
+        d->exit.insert(exit);
+    }
 }
 
-void QUmlConnectionPointReference::removeExit(QSet<QUmlPseudostate *> exit)
+void QUmlConnectionPointReference::removeExit(QUmlPseudostate *exit)
 {
-    Q_UNUSED(exit);
+    // This is a read-write association end
+
+    QM_D(QUmlConnectionPointReference);
+    if (d->exit.contains(exit)) {
+        d->exit.remove(exit);
+    }
 }
 
 /*!
@@ -109,12 +135,20 @@ void QUmlConnectionPointReference::removeExit(QSet<QUmlPseudostate *> exit)
  */
 QUmlState *QUmlConnectionPointReference::state() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlConnectionPointReference);
+    return d->state;
 }
 
 void QUmlConnectionPointReference::setState(QUmlState *state)
 {
-    Q_UNUSED(state);
+    // This is a read-write association end
+
+    QM_D(QUmlConnectionPointReference);
+    if (d->state != state) {
+        d->state = state;
+    }
 }
 
 QT_END_NAMESPACE

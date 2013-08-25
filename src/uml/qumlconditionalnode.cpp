@@ -67,24 +67,37 @@ QUmlConditionalNode::QUmlConditionalNode(bool create_d_ptr) :
         set_d_ptr(new QUmlConditionalNodePrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Set of clauses composing the conditional.
  */
 QSet<QUmlClause *> QUmlConditionalNode::clause() const
 {
-    return QSet<QUmlClause *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlConditionalNode);
+    return d->clause;
 }
 
-void QUmlConditionalNode::addClause(QSet<QUmlClause *> clause)
+void QUmlConditionalNode::addClause(QUmlClause *clause)
 {
-    Q_UNUSED(clause);
+    // This is a read-write association end
+
+    QM_D(QUmlConditionalNode);
+    if (!d->clause.contains(clause)) {
+        d->clause.insert(clause);
+    }
 }
 
-void QUmlConditionalNode::removeClause(QSet<QUmlClause *> clause)
+void QUmlConditionalNode::removeClause(QUmlClause *clause)
 {
-    Q_UNUSED(clause);
+    // This is a read-write association end
+
+    QM_D(QUmlConditionalNode);
+    if (d->clause.contains(clause)) {
+        d->clause.remove(clause);
+    }
 }
 
 /*!
@@ -92,12 +105,20 @@ void QUmlConditionalNode::removeClause(QSet<QUmlClause *> clause)
  */
 bool QUmlConditionalNode::isAssured() const
 {
-    return bool();
+    // This is a read-write property
+
+    QM_D(const QUmlConditionalNode);
+    return d->isAssured;
 }
 
 void QUmlConditionalNode::setAssured(bool isAssured)
 {
-    Q_UNUSED(isAssured);
+    // This is a read-write property
+
+    QM_D(QUmlConditionalNode);
+    if (d->isAssured != isAssured) {
+        d->isAssured = isAssured;
+    }
 }
 
 /*!
@@ -105,12 +126,20 @@ void QUmlConditionalNode::setAssured(bool isAssured)
  */
 bool QUmlConditionalNode::isDeterminate() const
 {
-    return bool();
+    // This is a read-write property
+
+    QM_D(const QUmlConditionalNode);
+    return d->isDeterminate;
 }
 
 void QUmlConditionalNode::setDeterminate(bool isDeterminate)
 {
-    Q_UNUSED(isDeterminate);
+    // This is a read-write property
+
+    QM_D(QUmlConditionalNode);
+    if (d->isDeterminate != isDeterminate) {
+        d->isDeterminate = isDeterminate;
+    }
 }
 
 /*!
@@ -118,17 +147,30 @@ void QUmlConditionalNode::setDeterminate(bool isDeterminate)
  */
 QList<QUmlOutputPin *> QUmlConditionalNode::result() const
 {
-    return QList<QUmlOutputPin *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlConditionalNode);
+    return d->result;
 }
 
-void QUmlConditionalNode::addResult(QList<QUmlOutputPin *> result)
+void QUmlConditionalNode::addResult(QUmlOutputPin *result)
 {
-    Q_UNUSED(result);
+    // This is a read-write association end
+
+    QM_D(QUmlConditionalNode);
+    if (!d->result.contains(result)) {
+        d->result.append(result);
+    }
 }
 
-void QUmlConditionalNode::removeResult(QList<QUmlOutputPin *> result)
+void QUmlConditionalNode::removeResult(QUmlOutputPin *result)
 {
-    Q_UNUSED(result);
+    // This is a read-write association end
+
+    QM_D(QUmlConditionalNode);
+    if (d->result.contains(result)) {
+        d->result.removeAll(result);
+    }
 }
 
 QT_END_NAMESPACE

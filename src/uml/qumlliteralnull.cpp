@@ -62,7 +62,7 @@ QUmlLiteralNull::QUmlLiteralNull(bool create_d_ptr) :
         set_d_ptr(new QUmlLiteralNullPrivate);
 }
 
-// Operations
+// OPERATIONS
 
 /*!
     The query isComputable() is redefined to be true.

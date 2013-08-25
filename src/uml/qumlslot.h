@@ -67,8 +67,8 @@ public:
     QUmlInstanceSpecification *owningInstance() const;
     void setOwningInstance(QUmlInstanceSpecification *owningInstance);
     QList<QUmlValueSpecification *> value() const;
-    void addValue(QList<QUmlValueSpecification *> value);
-    void removeValue(QList<QUmlValueSpecification *> value);
+    void addValue(QUmlValueSpecification *value);
+    void removeValue(QUmlValueSpecification *value);
 };
 
 QT_END_NAMESPACE

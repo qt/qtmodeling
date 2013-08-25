@@ -63,8 +63,8 @@ public:
     bool allowSubstitutable() const;
     void setAllowSubstitutable(bool allowSubstitutable);
     QSet<QUmlClassifier *> constrainingClassifier() const;
-    void addConstrainingClassifier(QSet<QUmlClassifier *> constrainingClassifier);
-    void removeConstrainingClassifier(QSet<QUmlClassifier *> constrainingClassifier);
+    void addConstrainingClassifier(QUmlClassifier *constrainingClassifier);
+    void removeConstrainingClassifier(QUmlClassifier *constrainingClassifier);
     QUmlClassifier *parameteredElement() const;
     void setParameteredElement(QUmlClassifier *parameteredElement);
 };

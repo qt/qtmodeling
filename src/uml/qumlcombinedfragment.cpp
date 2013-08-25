@@ -66,24 +66,37 @@ QUmlCombinedFragment::QUmlCombinedFragment(bool create_d_ptr) :
         set_d_ptr(new QUmlCombinedFragmentPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Specifies the gates that form the interface between this CombinedFragment and its surroundings
  */
 QSet<QUmlGate *> QUmlCombinedFragment::cfragmentGate() const
 {
-    return QSet<QUmlGate *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlCombinedFragment);
+    return d->cfragmentGate;
 }
 
-void QUmlCombinedFragment::addCfragmentGate(QSet<QUmlGate *> cfragmentGate)
+void QUmlCombinedFragment::addCfragmentGate(QUmlGate *cfragmentGate)
 {
-    Q_UNUSED(cfragmentGate);
+    // This is a read-write association end
+
+    QM_D(QUmlCombinedFragment);
+    if (!d->cfragmentGate.contains(cfragmentGate)) {
+        d->cfragmentGate.insert(cfragmentGate);
+    }
 }
 
-void QUmlCombinedFragment::removeCfragmentGate(QSet<QUmlGate *> cfragmentGate)
+void QUmlCombinedFragment::removeCfragmentGate(QUmlGate *cfragmentGate)
 {
-    Q_UNUSED(cfragmentGate);
+    // This is a read-write association end
+
+    QM_D(QUmlCombinedFragment);
+    if (d->cfragmentGate.contains(cfragmentGate)) {
+        d->cfragmentGate.remove(cfragmentGate);
+    }
 }
 
 /*!
@@ -91,12 +104,20 @@ void QUmlCombinedFragment::removeCfragmentGate(QSet<QUmlGate *> cfragmentGate)
  */
 QtUml::InteractionOperatorKind QUmlCombinedFragment::interactionOperator() const
 {
-    return QtUml::InteractionOperatorKind();
+    // This is a read-write property
+
+    QM_D(const QUmlCombinedFragment);
+    return d->interactionOperator;
 }
 
 void QUmlCombinedFragment::setInteractionOperator(QtUml::InteractionOperatorKind interactionOperator)
 {
-    Q_UNUSED(interactionOperator);
+    // This is a read-write property
+
+    QM_D(QUmlCombinedFragment);
+    if (d->interactionOperator != interactionOperator) {
+        d->interactionOperator = interactionOperator;
+    }
 }
 
 /*!
@@ -104,17 +125,30 @@ void QUmlCombinedFragment::setInteractionOperator(QtUml::InteractionOperatorKind
  */
 QList<QUmlInteractionOperand *> QUmlCombinedFragment::operand() const
 {
-    return QList<QUmlInteractionOperand *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlCombinedFragment);
+    return d->operand;
 }
 
-void QUmlCombinedFragment::addOperand(QList<QUmlInteractionOperand *> operand)
+void QUmlCombinedFragment::addOperand(QUmlInteractionOperand *operand)
 {
-    Q_UNUSED(operand);
+    // This is a read-write association end
+
+    QM_D(QUmlCombinedFragment);
+    if (!d->operand.contains(operand)) {
+        d->operand.append(operand);
+    }
 }
 
-void QUmlCombinedFragment::removeOperand(QList<QUmlInteractionOperand *> operand)
+void QUmlCombinedFragment::removeOperand(QUmlInteractionOperand *operand)
 {
-    Q_UNUSED(operand);
+    // This is a read-write association end
+
+    QM_D(QUmlCombinedFragment);
+    if (d->operand.contains(operand)) {
+        d->operand.removeAll(operand);
+    }
 }
 
 QT_END_NAMESPACE

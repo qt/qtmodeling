@@ -64,24 +64,37 @@ QUmlSignal::QUmlSignal(bool create_d_ptr) :
         set_d_ptr(new QUmlSignalPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The attributes owned by the signal.
  */
 QList<QUmlProperty *> QUmlSignal::ownedAttribute() const
 {
-    return QList<QUmlProperty *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlSignal);
+    return d->ownedAttribute;
 }
 
-void QUmlSignal::addOwnedAttribute(QList<QUmlProperty *> ownedAttribute)
+void QUmlSignal::addOwnedAttribute(QUmlProperty *ownedAttribute)
 {
-    Q_UNUSED(ownedAttribute);
+    // This is a read-write association end
+
+    QM_D(QUmlSignal);
+    if (!d->ownedAttribute.contains(ownedAttribute)) {
+        d->ownedAttribute.append(ownedAttribute);
+    }
 }
 
-void QUmlSignal::removeOwnedAttribute(QList<QUmlProperty *> ownedAttribute)
+void QUmlSignal::removeOwnedAttribute(QUmlProperty *ownedAttribute)
 {
-    Q_UNUSED(ownedAttribute);
+    // This is a read-write association end
+
+    QM_D(QUmlSignal);
+    if (d->ownedAttribute.contains(ownedAttribute)) {
+        d->ownedAttribute.removeAll(ownedAttribute);
+    }
 }
 
 QT_END_NAMESPACE

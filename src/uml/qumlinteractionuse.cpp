@@ -69,24 +69,37 @@ QUmlInteractionUse::QUmlInteractionUse(bool create_d_ptr) :
         set_d_ptr(new QUmlInteractionUsePrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The actual gates of the InteractionUse
  */
 QSet<QUmlGate *> QUmlInteractionUse::actualGate() const
 {
-    return QSet<QUmlGate *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlInteractionUse);
+    return d->actualGate;
 }
 
-void QUmlInteractionUse::addActualGate(QSet<QUmlGate *> actualGate)
+void QUmlInteractionUse::addActualGate(QUmlGate *actualGate)
 {
-    Q_UNUSED(actualGate);
+    // This is a read-write association end
+
+    QM_D(QUmlInteractionUse);
+    if (!d->actualGate.contains(actualGate)) {
+        d->actualGate.insert(actualGate);
+    }
 }
 
-void QUmlInteractionUse::removeActualGate(QSet<QUmlGate *> actualGate)
+void QUmlInteractionUse::removeActualGate(QUmlGate *actualGate)
 {
-    Q_UNUSED(actualGate);
+    // This is a read-write association end
+
+    QM_D(QUmlInteractionUse);
+    if (d->actualGate.contains(actualGate)) {
+        d->actualGate.remove(actualGate);
+    }
 }
 
 /*!
@@ -94,17 +107,30 @@ void QUmlInteractionUse::removeActualGate(QSet<QUmlGate *> actualGate)
  */
 QList<QUmlValueSpecification *> QUmlInteractionUse::argument() const
 {
-    return QList<QUmlValueSpecification *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlInteractionUse);
+    return d->argument;
 }
 
-void QUmlInteractionUse::addArgument(QList<QUmlValueSpecification *> argument)
+void QUmlInteractionUse::addArgument(QUmlValueSpecification *argument)
 {
-    Q_UNUSED(argument);
+    // This is a read-write association end
+
+    QM_D(QUmlInteractionUse);
+    if (!d->argument.contains(argument)) {
+        d->argument.append(argument);
+    }
 }
 
-void QUmlInteractionUse::removeArgument(QList<QUmlValueSpecification *> argument)
+void QUmlInteractionUse::removeArgument(QUmlValueSpecification *argument)
 {
-    Q_UNUSED(argument);
+    // This is a read-write association end
+
+    QM_D(QUmlInteractionUse);
+    if (d->argument.contains(argument)) {
+        d->argument.removeAll(argument);
+    }
 }
 
 /*!
@@ -112,12 +138,20 @@ void QUmlInteractionUse::removeArgument(QList<QUmlValueSpecification *> argument
  */
 QUmlInteraction *QUmlInteractionUse::refersTo() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlInteractionUse);
+    return d->refersTo;
 }
 
 void QUmlInteractionUse::setRefersTo(QUmlInteraction *refersTo)
 {
-    Q_UNUSED(refersTo);
+    // This is a read-write association end
+
+    QM_D(QUmlInteractionUse);
+    if (d->refersTo != refersTo) {
+        d->refersTo = refersTo;
+    }
 }
 
 /*!
@@ -125,12 +159,20 @@ void QUmlInteractionUse::setRefersTo(QUmlInteraction *refersTo)
  */
 QUmlValueSpecification *QUmlInteractionUse::returnValue() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlInteractionUse);
+    return d->returnValue;
 }
 
 void QUmlInteractionUse::setReturnValue(QUmlValueSpecification *returnValue)
 {
-    Q_UNUSED(returnValue);
+    // This is a read-write association end
+
+    QM_D(QUmlInteractionUse);
+    if (d->returnValue != returnValue) {
+        d->returnValue = returnValue;
+    }
 }
 
 /*!
@@ -138,12 +180,20 @@ void QUmlInteractionUse::setReturnValue(QUmlValueSpecification *returnValue)
  */
 QUmlProperty *QUmlInteractionUse::returnValueRecipient() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlInteractionUse);
+    return d->returnValueRecipient;
 }
 
 void QUmlInteractionUse::setReturnValueRecipient(QUmlProperty *returnValueRecipient)
 {
-    Q_UNUSED(returnValueRecipient);
+    // This is a read-write association end
+
+    QM_D(QUmlInteractionUse);
+    if (d->returnValueRecipient != returnValueRecipient) {
+        d->returnValueRecipient = returnValueRecipient;
+    }
 }
 
 QT_END_NAMESPACE

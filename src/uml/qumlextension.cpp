@@ -48,8 +48,6 @@
 QT_BEGIN_NAMESPACE
 
 QUmlExtensionPrivate::QUmlExtensionPrivate() :
-    isRequired(false),
-    metaclass(0),
     ownedEnd(0)
 {
 }
@@ -69,13 +67,17 @@ QUmlExtension::QUmlExtension(bool create_d_ptr) :
         set_d_ptr(new QUmlExtensionPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Indicates whether an instance of the extending stereotype must be created when an instance of the extended class is created. The attribute value is derived from the value of the lower property of the ExtensionEnd referenced by Extension::ownedEnd; a lower value of 1 means that isRequired is true, but otherwise it is false. Since the default value of ExtensionEnd::lower is 0, the default value of isRequired is false.
  */
 bool QUmlExtension::isRequired() const
 {
+    // This is a read-only derived property
+
+    qWarning("QUmlExtension::isRequired(): to be implemented (this is a derived property)");
+
     return bool();
 }
 
@@ -84,6 +86,10 @@ bool QUmlExtension::isRequired() const
  */
 QUmlClass *QUmlExtension::metaclass() const
 {
+    // This is a read-only derived association end
+
+    qWarning("QUmlExtension::metaclass(): to be implemented (this is a derived association end)");
+
     return 0;
 }
 
@@ -92,15 +98,23 @@ QUmlClass *QUmlExtension::metaclass() const
  */
 QUmlExtensionEnd *QUmlExtension::ownedEnd() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlExtension);
+    return d->ownedEnd;
 }
 
 void QUmlExtension::setOwnedEnd(QUmlExtensionEnd *ownedEnd)
 {
-    Q_UNUSED(ownedEnd);
+    // This is a read-write association end
+
+    QM_D(QUmlExtension);
+    if (d->ownedEnd != ownedEnd) {
+        d->ownedEnd = ownedEnd;
+    }
 }
 
-// Operations
+// OPERATIONS
 
 /*!
     The query metaclassEnd() returns the Property that is typed by a metaclass (as opposed to a stereotype).

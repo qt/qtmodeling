@@ -67,19 +67,27 @@ QUmlDecisionNode::QUmlDecisionNode(bool create_d_ptr) :
         set_d_ptr(new QUmlDecisionNodePrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Provides input to guard specifications on edges outgoing from the decision node.
  */
 QUmlBehavior *QUmlDecisionNode::decisionInput() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlDecisionNode);
+    return d->decisionInput;
 }
 
 void QUmlDecisionNode::setDecisionInput(QUmlBehavior *decisionInput)
 {
-    Q_UNUSED(decisionInput);
+    // This is a read-write association end
+
+    QM_D(QUmlDecisionNode);
+    if (d->decisionInput != decisionInput) {
+        d->decisionInput = decisionInput;
+    }
 }
 
 /*!
@@ -87,12 +95,20 @@ void QUmlDecisionNode::setDecisionInput(QUmlBehavior *decisionInput)
  */
 QUmlObjectFlow *QUmlDecisionNode::decisionInputFlow() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlDecisionNode);
+    return d->decisionInputFlow;
 }
 
 void QUmlDecisionNode::setDecisionInputFlow(QUmlObjectFlow *decisionInputFlow)
 {
-    Q_UNUSED(decisionInputFlow);
+    // This is a read-write association end
+
+    QM_D(QUmlDecisionNode);
+    if (d->decisionInputFlow != decisionInputFlow) {
+        d->decisionInputFlow = decisionInputFlow;
+    }
 }
 
 QT_END_NAMESPACE

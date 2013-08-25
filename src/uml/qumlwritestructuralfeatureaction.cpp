@@ -67,19 +67,27 @@ QUmlWriteStructuralFeatureAction::QUmlWriteStructuralFeatureAction(bool create_d
         set_d_ptr(new QUmlWriteStructuralFeatureActionPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Gives the output pin on which the result is put.
  */
 QUmlOutputPin *QUmlWriteStructuralFeatureAction::result() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlWriteStructuralFeatureAction);
+    return d->result;
 }
 
 void QUmlWriteStructuralFeatureAction::setResult(QUmlOutputPin *result)
 {
-    Q_UNUSED(result);
+    // This is a read-write association end
+
+    QM_D(QUmlWriteStructuralFeatureAction);
+    if (d->result != result) {
+        d->result = result;
+    }
 }
 
 /*!
@@ -87,12 +95,20 @@ void QUmlWriteStructuralFeatureAction::setResult(QUmlOutputPin *result)
  */
 QUmlInputPin *QUmlWriteStructuralFeatureAction::value() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlWriteStructuralFeatureAction);
+    return d->value;
 }
 
 void QUmlWriteStructuralFeatureAction::setValue(QUmlInputPin *value)
 {
-    Q_UNUSED(value);
+    // This is a read-write association end
+
+    QM_D(QUmlWriteStructuralFeatureAction);
+    if (d->value != value) {
+        d->value = value;
+    }
 }
 
 QT_END_NAMESPACE

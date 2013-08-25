@@ -65,8 +65,8 @@ public:
     QUmlTemplateableElement *boundElement() const;
     void setBoundElement(QUmlTemplateableElement *boundElement);
     QSet<QUmlTemplateParameterSubstitution *> parameterSubstitution() const;
-    void addParameterSubstitution(QSet<QUmlTemplateParameterSubstitution *> parameterSubstitution);
-    void removeParameterSubstitution(QSet<QUmlTemplateParameterSubstitution *> parameterSubstitution);
+    void addParameterSubstitution(QUmlTemplateParameterSubstitution *parameterSubstitution);
+    void removeParameterSubstitution(QUmlTemplateParameterSubstitution *parameterSubstitution);
     QUmlTemplateSignature *signature() const;
     void setSignature(QUmlTemplateSignature *signature);
 };

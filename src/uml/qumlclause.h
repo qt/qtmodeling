@@ -62,22 +62,22 @@ public:
 
     // Owned attributes
     QSet<QUmlExecutableNode *> body() const;
-    void addBody(QSet<QUmlExecutableNode *> body);
-    void removeBody(QSet<QUmlExecutableNode *> body);
+    void addBody(QUmlExecutableNode *body);
+    void removeBody(QUmlExecutableNode *body);
     QList<QUmlOutputPin *> bodyOutput() const;
-    void addBodyOutput(QList<QUmlOutputPin *> bodyOutput);
-    void removeBodyOutput(QList<QUmlOutputPin *> bodyOutput);
+    void addBodyOutput(QUmlOutputPin *bodyOutput);
+    void removeBodyOutput(QUmlOutputPin *bodyOutput);
     QUmlOutputPin *decider() const;
     void setDecider(QUmlOutputPin *decider);
     QSet<QUmlClause *> predecessorClause() const;
-    void addPredecessorClause(QSet<QUmlClause *> predecessorClause);
-    void removePredecessorClause(QSet<QUmlClause *> predecessorClause);
+    void addPredecessorClause(QUmlClause *predecessorClause);
+    void removePredecessorClause(QUmlClause *predecessorClause);
     QSet<QUmlClause *> successorClause() const;
-    void addSuccessorClause(QSet<QUmlClause *> successorClause);
-    void removeSuccessorClause(QSet<QUmlClause *> successorClause);
+    void addSuccessorClause(QUmlClause *successorClause);
+    void removeSuccessorClause(QUmlClause *successorClause);
     QSet<QUmlExecutableNode *> test() const;
-    void addTest(QSet<QUmlExecutableNode *> test);
-    void removeTest(QSet<QUmlExecutableNode *> test);
+    void addTest(QUmlExecutableNode *test);
+    void removeTest(QUmlExecutableNode *test);
 };
 
 QT_END_NAMESPACE

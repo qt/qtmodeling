@@ -68,19 +68,27 @@ QUmlProfileApplication::QUmlProfileApplication(bool create_d_ptr) :
         set_d_ptr(new QUmlProfileApplicationPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     References the Profiles that are applied to a Package through this ProfileApplication.
  */
 QUmlProfile *QUmlProfileApplication::appliedProfile() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlProfileApplication);
+    return d->appliedProfile;
 }
 
 void QUmlProfileApplication::setAppliedProfile(QUmlProfile *appliedProfile)
 {
-    Q_UNUSED(appliedProfile);
+    // This is a read-write association end
+
+    QM_D(QUmlProfileApplication);
+    if (d->appliedProfile != appliedProfile) {
+        d->appliedProfile = appliedProfile;
+    }
 }
 
 /*!
@@ -88,12 +96,20 @@ void QUmlProfileApplication::setAppliedProfile(QUmlProfile *appliedProfile)
  */
 QUmlPackage *QUmlProfileApplication::applyingPackage() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlProfileApplication);
+    return d->applyingPackage;
 }
 
 void QUmlProfileApplication::setApplyingPackage(QUmlPackage *applyingPackage)
 {
-    Q_UNUSED(applyingPackage);
+    // This is a read-write association end
+
+    QM_D(QUmlProfileApplication);
+    if (d->applyingPackage != applyingPackage) {
+        d->applyingPackage = applyingPackage;
+    }
 }
 
 /*!
@@ -101,12 +117,20 @@ void QUmlProfileApplication::setApplyingPackage(QUmlPackage *applyingPackage)
  */
 bool QUmlProfileApplication::isStrict() const
 {
-    return bool();
+    // This is a read-write property
+
+    QM_D(const QUmlProfileApplication);
+    return d->isStrict;
 }
 
 void QUmlProfileApplication::setStrict(bool isStrict)
 {
-    Q_UNUSED(isStrict);
+    // This is a read-write property
+
+    QM_D(QUmlProfileApplication);
+    if (d->isStrict != isStrict) {
+        d->isStrict = isStrict;
+    }
 }
 
 QT_END_NAMESPACE

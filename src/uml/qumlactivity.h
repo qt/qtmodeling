@@ -66,27 +66,27 @@ public:
 
     // Owned attributes
     QSet<QUmlActivityEdge *> edge() const;
-    void addEdge(QSet<QUmlActivityEdge *> edge);
-    void removeEdge(QSet<QUmlActivityEdge *> edge);
+    void addEdge(QUmlActivityEdge *edge);
+    void removeEdge(QUmlActivityEdge *edge);
     QSet<QUmlActivityGroup *> group() const;
-    void addGroup(QSet<QUmlActivityGroup *> group);
-    void removeGroup(QSet<QUmlActivityGroup *> group);
+    void addGroup(QUmlActivityGroup *group);
+    void removeGroup(QUmlActivityGroup *group);
     bool isReadOnly() const;
     void setReadOnly(bool isReadOnly);
     bool isSingleExecution() const;
     void setSingleExecution(bool isSingleExecution);
     QSet<QUmlActivityNode *> node() const;
-    void addNode(QSet<QUmlActivityNode *> node);
-    void removeNode(QSet<QUmlActivityNode *> node);
+    void addNode(QUmlActivityNode *node);
+    void removeNode(QUmlActivityNode *node);
     QSet<QUmlActivityPartition *> partition() const;
-    void addPartition(QSet<QUmlActivityPartition *> partition);
-    void removePartition(QSet<QUmlActivityPartition *> partition);
+    void addPartition(QUmlActivityPartition *partition);
+    void removePartition(QUmlActivityPartition *partition);
     QSet<QUmlStructuredActivityNode *> structuredNode() const;
-    void addStructuredNode(QSet<QUmlStructuredActivityNode *> structuredNode);
-    void removeStructuredNode(QSet<QUmlStructuredActivityNode *> structuredNode);
+    void addStructuredNode(QUmlStructuredActivityNode *structuredNode);
+    void removeStructuredNode(QUmlStructuredActivityNode *structuredNode);
     QSet<QUmlVariable *> variable() const;
-    void addVariable(QSet<QUmlVariable *> variable);
-    void removeVariable(QSet<QUmlVariable *> variable);
+    void addVariable(QUmlVariable *variable);
+    void removeVariable(QUmlVariable *variable);
 };
 
 QT_END_NAMESPACE

@@ -1,6 +1,6 @@
-PUBLIC_HEADERS +=  \
+PUBLIC_HEADERS += \
     qtumlglobal.h \
-    qtumlnamespace.h\
+    qtumlnamespace.h \
     qumlabstraction.h \
     qumlacceptcallaction.h \
     qumlaccepteventaction.h \
@@ -489,7 +489,7 @@ PRIVATE_HEADERS += \
     qumlwritevariableaction_p.h
 
 SOURCES += \
-    qtumlnamespace.cpp\
+    qtumlnamespace.cpp \
     qumlabstraction.cpp \
     qumlacceptcallaction.cpp \
     qumlaccepteventaction.cpp \

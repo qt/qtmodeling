@@ -46,7 +46,6 @@
 QT_BEGIN_NAMESPACE
 
 QUmlEnumerationLiteralPrivate::QUmlEnumerationLiteralPrivate() :
-    classifier(0),
     enumeration(0)
 {
 }
@@ -66,13 +65,17 @@ QUmlEnumerationLiteral::QUmlEnumerationLiteral(bool create_d_ptr) :
         set_d_ptr(new QUmlEnumerationLiteralPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The classifier of this EnumerationLiteral derived to be equal to its enumeration.
  */
 QUmlEnumeration *QUmlEnumerationLiteral::classifier() const
 {
+    // This is a read-only derived association end
+
+    qWarning("QUmlEnumerationLiteral::classifier(): to be implemented (this is a derived association end)");
+
     return 0;
 }
 
@@ -81,12 +84,20 @@ QUmlEnumeration *QUmlEnumerationLiteral::classifier() const
  */
 QUmlEnumeration *QUmlEnumerationLiteral::enumeration() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlEnumerationLiteral);
+    return d->enumeration;
 }
 
 void QUmlEnumerationLiteral::setEnumeration(QUmlEnumeration *enumeration)
 {
-    Q_UNUSED(enumeration);
+    // This is a read-write association end
+
+    QM_D(QUmlEnumerationLiteral);
+    if (d->enumeration != enumeration) {
+        d->enumeration = enumeration;
+    }
 }
 
 QT_END_NAMESPACE

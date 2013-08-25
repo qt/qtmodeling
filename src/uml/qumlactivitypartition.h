@@ -63,20 +63,20 @@ public:
 
     // Owned attributes
     QSet<QUmlActivityEdge *> edge() const;
-    void addEdge(QSet<QUmlActivityEdge *> edge);
-    void removeEdge(QSet<QUmlActivityEdge *> edge);
+    void addEdge(QUmlActivityEdge *edge);
+    void removeEdge(QUmlActivityEdge *edge);
     bool isDimension() const;
     void setDimension(bool isDimension);
     bool isExternal() const;
     void setExternal(bool isExternal);
     QSet<QUmlActivityNode *> node() const;
-    void addNode(QSet<QUmlActivityNode *> node);
-    void removeNode(QSet<QUmlActivityNode *> node);
+    void addNode(QUmlActivityNode *node);
+    void removeNode(QUmlActivityNode *node);
     QUmlElement *represents() const;
     void setRepresents(QUmlElement *represents);
     QSet<QUmlActivityPartition *> subpartition() const;
-    void addSubpartition(QSet<QUmlActivityPartition *> subpartition);
-    void removeSubpartition(QSet<QUmlActivityPartition *> subpartition);
+    void addSubpartition(QUmlActivityPartition *subpartition);
+    void removeSubpartition(QUmlActivityPartition *subpartition);
     QUmlActivityPartition *superPartition() const;
     void setSuperPartition(QUmlActivityPartition *superPartition);
 };

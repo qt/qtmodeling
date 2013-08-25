@@ -65,8 +65,8 @@ public:
     QUmlProperty *end() const;
     void setEnd(QUmlProperty *end);
     QSet<QUmlQualifierValue *> qualifier() const;
-    void addQualifier(QSet<QUmlQualifierValue *> qualifier);
-    void removeQualifier(QSet<QUmlQualifierValue *> qualifier);
+    void addQualifier(QUmlQualifierValue *qualifier);
+    void removeQualifier(QUmlQualifierValue *qualifier);
     QUmlInputPin *value() const;
     void setValue(QUmlInputPin *value);
 };

@@ -66,19 +66,27 @@ QUmlExpansionNode::QUmlExpansionNode(bool create_d_ptr) :
         set_d_ptr(new QUmlExpansionNodePrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The expansion region for which the node is an input.
  */
 QUmlExpansionRegion *QUmlExpansionNode::regionAsInput() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlExpansionNode);
+    return d->regionAsInput;
 }
 
 void QUmlExpansionNode::setRegionAsInput(QUmlExpansionRegion *regionAsInput)
 {
-    Q_UNUSED(regionAsInput);
+    // This is a read-write association end
+
+    QM_D(QUmlExpansionNode);
+    if (d->regionAsInput != regionAsInput) {
+        d->regionAsInput = regionAsInput;
+    }
 }
 
 /*!
@@ -86,12 +94,20 @@ void QUmlExpansionNode::setRegionAsInput(QUmlExpansionRegion *regionAsInput)
  */
 QUmlExpansionRegion *QUmlExpansionNode::regionAsOutput() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlExpansionNode);
+    return d->regionAsOutput;
 }
 
 void QUmlExpansionNode::setRegionAsOutput(QUmlExpansionRegion *regionAsOutput)
 {
-    Q_UNUSED(regionAsOutput);
+    // This is a read-write association end
+
+    QM_D(QUmlExpansionNode);
+    if (d->regionAsOutput != regionAsOutput) {
+        d->regionAsOutput = regionAsOutput;
+    }
 }
 
 QT_END_NAMESPACE

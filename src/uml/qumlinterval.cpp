@@ -64,19 +64,27 @@ QUmlInterval::QUmlInterval(bool create_d_ptr) :
         set_d_ptr(new QUmlIntervalPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Refers to the ValueSpecification denoting the maximum value of the range.
  */
 QUmlValueSpecification *QUmlInterval::max() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlInterval);
+    return d->max;
 }
 
 void QUmlInterval::setMax(QUmlValueSpecification *max)
 {
-    Q_UNUSED(max);
+    // This is a read-write association end
+
+    QM_D(QUmlInterval);
+    if (d->max != max) {
+        d->max = max;
+    }
 }
 
 /*!
@@ -84,12 +92,20 @@ void QUmlInterval::setMax(QUmlValueSpecification *max)
  */
 QUmlValueSpecification *QUmlInterval::min() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlInterval);
+    return d->min;
 }
 
 void QUmlInterval::setMin(QUmlValueSpecification *min)
 {
-    Q_UNUSED(min);
+    // This is a read-write association end
+
+    QM_D(QUmlInterval);
+    if (d->min != min) {
+        d->min = min;
+    }
 }
 
 QT_END_NAMESPACE

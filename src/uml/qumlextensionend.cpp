@@ -46,7 +46,6 @@
 QT_BEGIN_NAMESPACE
 
 QUmlExtensionEndPrivate::QUmlExtensionEndPrivate() :
-    lower(0),
     type(0)
 {
 }
@@ -66,19 +65,30 @@ QUmlExtensionEnd::QUmlExtensionEnd(bool create_d_ptr) :
         set_d_ptr(new QUmlExtensionEndPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     This redefinition changes the default multiplicity of association ends, since model elements are usually extended by 0 or 1 instance of the extension stereotype.
  */
 int QUmlExtensionEnd::lower() const
 {
+    // This is a read-write derived property
+
+    qWarning("QUmlExtensionEnd::lower(): to be implemented (this is a derived property)");
+
     return int();
 }
 
 void QUmlExtensionEnd::setLower(int lower)
 {
+    // This is a read-write derived property
+
+    qWarning("QUmlExtensionEnd::lower(): to be implemented (this is a derived property)");
     Q_UNUSED(lower);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
 }
 
 /*!
@@ -86,15 +96,23 @@ void QUmlExtensionEnd::setLower(int lower)
  */
 QUmlStereotype *QUmlExtensionEnd::type() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlExtensionEnd);
+    return d->type;
 }
 
 void QUmlExtensionEnd::setType(QUmlStereotype *type)
 {
-    Q_UNUSED(type);
+    // This is a read-write association end
+
+    QM_D(QUmlExtensionEnd);
+    if (d->type != type) {
+        d->type = type;
+    }
 }
 
-// Operations
+// OPERATIONS
 
 /*!
     The query lowerBound() returns the lower bound of the multiplicity as an Integer. This is a redefinition of the default lower bound, which normally, for MultiplicityElements, evaluates to 1 if empty.

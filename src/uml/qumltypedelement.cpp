@@ -65,19 +65,27 @@ QUmlTypedElement::QUmlTypedElement(bool create_d_ptr) :
         set_d_ptr(new QUmlTypedElementPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     This information is derived from the return result for this Operation.The type of the TypedElement.
  */
 QUmlType *QUmlTypedElement::type() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlTypedElement);
+    return d->type;
 }
 
 void QUmlTypedElement::setType(QUmlType *type)
 {
-    Q_UNUSED(type);
+    // This is a read-write association end
+
+    QM_D(QUmlTypedElement);
+    if (d->type != type) {
+        d->type = type;
+    }
 }
 
 QT_END_NAMESPACE

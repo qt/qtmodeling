@@ -65,19 +65,27 @@ QUmlAcceptCallAction::QUmlAcceptCallAction(bool create_d_ptr) :
         set_d_ptr(new QUmlAcceptCallActionPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Pin where a value is placed containing sufficient information to perform a subsequent reply and return control to the caller. The contents of this value are opaque. It can be passed and copied but it cannot be manipulated by the model.
  */
 QUmlOutputPin *QUmlAcceptCallAction::returnInformation() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlAcceptCallAction);
+    return d->returnInformation;
 }
 
 void QUmlAcceptCallAction::setReturnInformation(QUmlOutputPin *returnInformation)
 {
-    Q_UNUSED(returnInformation);
+    // This is a read-write association end
+
+    QM_D(QUmlAcceptCallAction);
+    if (d->returnInformation != returnInformation) {
+        d->returnInformation = returnInformation;
+    }
 }
 
 QT_END_NAMESPACE

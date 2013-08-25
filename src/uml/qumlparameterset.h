@@ -62,11 +62,11 @@ public:
 
     // Owned attributes
     QSet<QUmlConstraint *> condition() const;
-    void addCondition(QSet<QUmlConstraint *> condition);
-    void removeCondition(QSet<QUmlConstraint *> condition);
+    void addCondition(QUmlConstraint *condition);
+    void removeCondition(QUmlConstraint *condition);
     QSet<QUmlParameter *> parameter() const;
-    void addParameter(QSet<QUmlParameter *> parameter);
-    void removeParameter(QSet<QUmlParameter *> parameter);
+    void addParameter(QUmlParameter *parameter);
+    void removeParameter(QUmlParameter *parameter);
 };
 
 QT_END_NAMESPACE

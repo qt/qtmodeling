@@ -65,19 +65,27 @@ QUmlAbstraction::QUmlAbstraction(bool create_d_ptr) :
         set_d_ptr(new QUmlAbstractionPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     An composition of an Expression that states the abstraction relationship between the supplier and the client. In some cases, such as Derivation, it is usually formal and unidirectional; in other cases, such as Trace, it is usually informal and bidirectional. The mapping expression is optional and may be omitted if the precise relationship between the elements is not specified.
  */
 QUmlOpaqueExpression *QUmlAbstraction::mapping() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlAbstraction);
+    return d->mapping;
 }
 
 void QUmlAbstraction::setMapping(QUmlOpaqueExpression *mapping)
 {
-    Q_UNUSED(mapping);
+    // This is a read-write association end
+
+    QM_D(QUmlAbstraction);
+    if (d->mapping != mapping) {
+        d->mapping = mapping;
+    }
 }
 
 QT_END_NAMESPACE

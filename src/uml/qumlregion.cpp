@@ -51,7 +51,6 @@ QT_BEGIN_NAMESPACE
 
 QUmlRegionPrivate::QUmlRegionPrivate() :
     extendedRegion(0),
-    redefinitionContext(0),
     state(0),
     stateMachine(0)
 {
@@ -73,19 +72,27 @@ QUmlRegion::QUmlRegion(bool create_d_ptr) :
         set_d_ptr(new QUmlRegionPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The region of which this region is an extension.
  */
 QUmlRegion *QUmlRegion::extendedRegion() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlRegion);
+    return d->extendedRegion;
 }
 
 void QUmlRegion::setExtendedRegion(QUmlRegion *extendedRegion)
 {
-    Q_UNUSED(extendedRegion);
+    // This is a read-write association end
+
+    QM_D(QUmlRegion);
+    if (d->extendedRegion != extendedRegion) {
+        d->extendedRegion = extendedRegion;
+    }
 }
 
 /*!
@@ -93,6 +100,10 @@ void QUmlRegion::setExtendedRegion(QUmlRegion *extendedRegion)
  */
 QUmlClassifier *QUmlRegion::redefinitionContext() const
 {
+    // This is a read-only derived association end
+
+    qWarning("QUmlRegion::redefinitionContext(): to be implemented (this is a derived association end)");
+
     return 0;
 }
 
@@ -101,12 +112,20 @@ QUmlClassifier *QUmlRegion::redefinitionContext() const
  */
 QUmlState *QUmlRegion::state() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlRegion);
+    return d->state;
 }
 
 void QUmlRegion::setState(QUmlState *state)
 {
-    Q_UNUSED(state);
+    // This is a read-write association end
+
+    QM_D(QUmlRegion);
+    if (d->state != state) {
+        d->state = state;
+    }
 }
 
 /*!
@@ -114,12 +133,20 @@ void QUmlRegion::setState(QUmlState *state)
  */
 QUmlStateMachine *QUmlRegion::stateMachine() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlRegion);
+    return d->stateMachine;
 }
 
 void QUmlRegion::setStateMachine(QUmlStateMachine *stateMachine)
 {
-    Q_UNUSED(stateMachine);
+    // This is a read-write association end
+
+    QM_D(QUmlRegion);
+    if (d->stateMachine != stateMachine) {
+        d->stateMachine = stateMachine;
+    }
 }
 
 /*!
@@ -127,17 +154,30 @@ void QUmlRegion::setStateMachine(QUmlStateMachine *stateMachine)
  */
 QSet<QUmlVertex *> QUmlRegion::subvertex() const
 {
-    return QSet<QUmlVertex *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlRegion);
+    return d->subvertex;
 }
 
-void QUmlRegion::addSubvertex(QSet<QUmlVertex *> subvertex)
+void QUmlRegion::addSubvertex(QUmlVertex *subvertex)
 {
-    Q_UNUSED(subvertex);
+    // This is a read-write association end
+
+    QM_D(QUmlRegion);
+    if (!d->subvertex.contains(subvertex)) {
+        d->subvertex.insert(subvertex);
+    }
 }
 
-void QUmlRegion::removeSubvertex(QSet<QUmlVertex *> subvertex)
+void QUmlRegion::removeSubvertex(QUmlVertex *subvertex)
 {
-    Q_UNUSED(subvertex);
+    // This is a read-write association end
+
+    QM_D(QUmlRegion);
+    if (d->subvertex.contains(subvertex)) {
+        d->subvertex.remove(subvertex);
+    }
 }
 
 /*!
@@ -145,20 +185,33 @@ void QUmlRegion::removeSubvertex(QSet<QUmlVertex *> subvertex)
  */
 QSet<QUmlTransition *> QUmlRegion::transition() const
 {
-    return QSet<QUmlTransition *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlRegion);
+    return d->transition;
 }
 
-void QUmlRegion::addTransition(QSet<QUmlTransition *> transition)
+void QUmlRegion::addTransition(QUmlTransition *transition)
 {
-    Q_UNUSED(transition);
+    // This is a read-write association end
+
+    QM_D(QUmlRegion);
+    if (!d->transition.contains(transition)) {
+        d->transition.insert(transition);
+    }
 }
 
-void QUmlRegion::removeTransition(QSet<QUmlTransition *> transition)
+void QUmlRegion::removeTransition(QUmlTransition *transition)
 {
-    Q_UNUSED(transition);
+    // This is a read-write association end
+
+    QM_D(QUmlRegion);
+    if (d->transition.contains(transition)) {
+        d->transition.remove(transition);
+    }
 }
 
-// Operations
+// OPERATIONS
 
 /*!
     The operation belongsToPSM () checks if the region belongs to a protocol state machine

@@ -65,19 +65,27 @@ QUmlActionInputPin::QUmlActionInputPin(bool create_d_ptr) :
         set_d_ptr(new QUmlActionInputPinPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The action used to provide values.
  */
 QUmlAction *QUmlActionInputPin::fromAction() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlActionInputPin);
+    return d->fromAction;
 }
 
 void QUmlActionInputPin::setFromAction(QUmlAction *fromAction)
 {
-    Q_UNUSED(fromAction);
+    // This is a read-write association end
+
+    QM_D(QUmlActionInputPin);
+    if (d->fromAction != fromAction) {
+        d->fromAction = fromAction;
+    }
 }
 
 QT_END_NAMESPACE

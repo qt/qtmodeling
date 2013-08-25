@@ -71,17 +71,17 @@ public:
     bool isAbstract() const;
     void setAbstract(bool isAbstract);
     QSet<QUmlBehavior *> method() const;
-    void addMethod(QSet<QUmlBehavior *> method);
-    void removeMethod(QSet<QUmlBehavior *> method);
+    void addMethod(QUmlBehavior *method);
+    void removeMethod(QUmlBehavior *method);
     QList<QUmlParameter *> ownedParameter() const;
-    void addOwnedParameter(QList<QUmlParameter *> ownedParameter);
-    void removeOwnedParameter(QList<QUmlParameter *> ownedParameter);
+    void addOwnedParameter(QUmlParameter *ownedParameter);
+    void removeOwnedParameter(QUmlParameter *ownedParameter);
     QSet<QUmlParameterSet *> ownedParameterSet() const;
-    void addOwnedParameterSet(QSet<QUmlParameterSet *> ownedParameterSet);
-    void removeOwnedParameterSet(QSet<QUmlParameterSet *> ownedParameterSet);
+    void addOwnedParameterSet(QUmlParameterSet *ownedParameterSet);
+    void removeOwnedParameterSet(QUmlParameterSet *ownedParameterSet);
     QSet<QUmlType *> raisedException() const;
-    void addRaisedException(QSet<QUmlType *> raisedException);
-    void removeRaisedException(QSet<QUmlType *> raisedException);
+    void addRaisedException(QUmlType *raisedException);
+    void removeRaisedException(QUmlType *raisedException);
 
     // Operations
     bool isDistinguishableFrom(QUmlNamedElement *n, QUmlNamespace *ns) const;

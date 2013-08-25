@@ -66,12 +66,12 @@ public:
     bool isIndirectlyInstantiated() const;
     void setIndirectlyInstantiated(bool isIndirectlyInstantiated);
     QSet<QUmlPackageableElement *> packagedElement() const;
-    void addPackagedElement(QSet<QUmlPackageableElement *> packagedElement);
-    void removePackagedElement(QSet<QUmlPackageableElement *> packagedElement);
+    void addPackagedElement(QUmlPackageableElement *packagedElement);
+    void removePackagedElement(QUmlPackageableElement *packagedElement);
     QSet<QUmlInterface *> provided() const;
     QSet<QUmlComponentRealization *> realization() const;
-    void addRealization(QSet<QUmlComponentRealization *> realization);
-    void removeRealization(QSet<QUmlComponentRealization *> realization);
+    void addRealization(QUmlComponentRealization *realization);
+    void removeRealization(QUmlComponentRealization *realization);
     QSet<QUmlInterface *> required() const;
 
     // Operations

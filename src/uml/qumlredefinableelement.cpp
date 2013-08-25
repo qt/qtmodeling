@@ -65,19 +65,27 @@ QUmlRedefinableElement::QUmlRedefinableElement(bool create_d_ptr) :
         set_d_ptr(new QUmlRedefinableElementPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Indicates whether it is possible to further redefine a RedefinableElement. If the value is true, then it is not possible to further redefine the RedefinableElement. Note that this property is preserved through package merge operations; that is, the capability to redefine a RedefinableElement (i.e., isLeaf=false) must be preserved in the resulting RedefinableElement of a package merge operation where a RedefinableElement with isLeaf=false is merged with a matching RedefinableElement with isLeaf=true: the resulting RedefinableElement will have isLeaf=false. Default value is false.
  */
 bool QUmlRedefinableElement::isLeaf() const
 {
-    return bool();
+    // This is a read-write property
+
+    QM_D(const QUmlRedefinableElement);
+    return d->isLeaf;
 }
 
 void QUmlRedefinableElement::setLeaf(bool isLeaf)
 {
-    Q_UNUSED(isLeaf);
+    // This is a read-write property
+
+    QM_D(QUmlRedefinableElement);
+    if (d->isLeaf != isLeaf) {
+        d->isLeaf = isLeaf;
+    }
 }
 
 /*!
@@ -85,7 +93,10 @@ void QUmlRedefinableElement::setLeaf(bool isLeaf)
  */
 QSet<QUmlRedefinableElement *> QUmlRedefinableElement::redefinedElement() const
 {
-    return QSet<QUmlRedefinableElement *>();
+    // This is a read-only derived union association end
+
+    QM_D(const QUmlRedefinableElement);
+    return d->redefinedElement;
 }
 
 /*!
@@ -93,10 +104,13 @@ QSet<QUmlRedefinableElement *> QUmlRedefinableElement::redefinedElement() const
  */
 QSet<QUmlClassifier *> QUmlRedefinableElement::redefinitionContext() const
 {
-    return QSet<QUmlClassifier *>();
+    // This is a read-only derived union association end
+
+    QM_D(const QUmlRedefinableElement);
+    return d->redefinitionContext;
 }
 
-// Operations
+// OPERATIONS
 
 /*!
     The query isConsistentWith() specifies, for any two RedefinableElements in a context in which redefinition is possible, whether redefinition would be logically consistent. By default, this is false; this operation must be overridden for subclasses of RedefinableElement to define the consistency conditions.

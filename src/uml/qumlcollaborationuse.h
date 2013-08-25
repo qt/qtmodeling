@@ -62,8 +62,8 @@ public:
 
     // Owned attributes
     QSet<QUmlDependency *> roleBinding() const;
-    void addRoleBinding(QSet<QUmlDependency *> roleBinding);
-    void removeRoleBinding(QSet<QUmlDependency *> roleBinding);
+    void addRoleBinding(QUmlDependency *roleBinding);
+    void removeRoleBinding(QUmlDependency *roleBinding);
     QUmlCollaboration *type() const;
     void setType(QUmlCollaboration *type);
 };

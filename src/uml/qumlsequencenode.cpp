@@ -64,24 +64,37 @@ QUmlSequenceNode::QUmlSequenceNode(bool create_d_ptr) :
         set_d_ptr(new QUmlSequenceNodePrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     An ordered set of executable nodes.
  */
 QList<QUmlExecutableNode *> QUmlSequenceNode::executableNode() const
 {
-    return QList<QUmlExecutableNode *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlSequenceNode);
+    return d->executableNode;
 }
 
-void QUmlSequenceNode::addExecutableNode(QList<QUmlExecutableNode *> executableNode)
+void QUmlSequenceNode::addExecutableNode(QUmlExecutableNode *executableNode)
 {
-    Q_UNUSED(executableNode);
+    // This is a read-write association end
+
+    QM_D(QUmlSequenceNode);
+    if (!d->executableNode.contains(executableNode)) {
+        d->executableNode.append(executableNode);
+    }
 }
 
-void QUmlSequenceNode::removeExecutableNode(QList<QUmlExecutableNode *> executableNode)
+void QUmlSequenceNode::removeExecutableNode(QUmlExecutableNode *executableNode)
 {
-    Q_UNUSED(executableNode);
+    // This is a read-write association end
+
+    QM_D(QUmlSequenceNode);
+    if (d->executableNode.contains(executableNode)) {
+        d->executableNode.removeAll(executableNode);
+    }
 }
 
 QT_END_NAMESPACE

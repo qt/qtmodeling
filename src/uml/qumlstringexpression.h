@@ -51,6 +51,7 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
+
 class QUmlStringExpressionPrivate;
 class Q_UML_EXPORT QUmlStringExpression : public QUmlExpression, public QUmlTemplateableElement
 {
@@ -61,8 +62,8 @@ public:
     QUmlStringExpression *owningExpression() const;
     void setOwningExpression(QUmlStringExpression *owningExpression);
     QSet<QUmlStringExpression *> subExpression() const;
-    void addSubExpression(QSet<QUmlStringExpression *> subExpression);
-    void removeSubExpression(QSet<QUmlStringExpression *> subExpression);
+    void addSubExpression(QUmlStringExpression *subExpression);
+    void removeSubExpression(QUmlStringExpression *subExpression);
 
     // Operations
     QString stringValue() const;

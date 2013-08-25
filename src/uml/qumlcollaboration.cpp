@@ -65,24 +65,37 @@ QUmlCollaboration::QUmlCollaboration(bool create_d_ptr) :
         set_d_ptr(new QUmlCollaborationPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     References connectable elements (possibly owned by other classifiers) which represent roles that instances may play in this collaboration.
  */
 QSet<QUmlConnectableElement *> QUmlCollaboration::collaborationRole() const
 {
-    return QSet<QUmlConnectableElement *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlCollaboration);
+    return d->collaborationRole;
 }
 
-void QUmlCollaboration::addCollaborationRole(QSet<QUmlConnectableElement *> collaborationRole)
+void QUmlCollaboration::addCollaborationRole(QUmlConnectableElement *collaborationRole)
 {
-    Q_UNUSED(collaborationRole);
+    // This is a read-write association end
+
+    QM_D(QUmlCollaboration);
+    if (!d->collaborationRole.contains(collaborationRole)) {
+        d->collaborationRole.insert(collaborationRole);
+    }
 }
 
-void QUmlCollaboration::removeCollaborationRole(QSet<QUmlConnectableElement *> collaborationRole)
+void QUmlCollaboration::removeCollaborationRole(QUmlConnectableElement *collaborationRole)
 {
-    Q_UNUSED(collaborationRole);
+    // This is a read-write association end
+
+    QM_D(QUmlCollaboration);
+    if (d->collaborationRole.contains(collaborationRole)) {
+        d->collaborationRole.remove(collaborationRole);
+    }
 }
 
 QT_END_NAMESPACE

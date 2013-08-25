@@ -58,9 +58,7 @@ public:
 
     bool isIndirectlyInstantiated;
     QSet<QUmlPackageableElement *> packagedElement;
-    QSet<QUmlInterface *> provided;
     QSet<QUmlComponentRealization *> realization;
-    QSet<QUmlInterface *> required;
 };
 
 QT_END_NAMESPACE

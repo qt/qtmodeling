@@ -74,9 +74,7 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(Qt${namespace})
-[%- FOREACH forward = forwards.unique.sort -%]
-[%- IF loop.first %]
-[% END %]
+[% FOREACH forward = forwards.unique.sort %]
 class ${forward};
 [%- IF loop.last %]
 [% END %]
@@ -104,8 +102,8 @@ public:
     [%- SET attributeName = attribute.findvalue("@name").ucfirst -%]
     [%- IF attribute.findvalue("@isReadOnly") != "true" -%]
         [%- IF attribute.findnodes("upperValue").findvalue("@value") == "*" %]
-    void add${attributeName}([% QT_TYPE(namespace, attribute) %][% QT_ATTRIBUTE(attribute) %]);
-    void remove${attributeName}([% QT_TYPE(namespace, attribute) %][% QT_ATTRIBUTE(attribute) %]);
+    void add${attributeName}([% QT_TYPE(namespace, attribute).remove("QSet<").remove("QList<").replace("> ", " ").replace('\* $', '*') %][% QT_ATTRIBUTE(attribute) %]);
+    void remove${attributeName}([% QT_TYPE(namespace, attribute).remove("QSet<").remove("QList<").replace("> ", " ").replace('\* $', '*') %][% QT_ATTRIBUTE(attribute) %]);
         [%- ELSE %]
     void set${attributeName.remove("^Is")}([% QT_TYPE(namespace, attribute) %][% QT_ATTRIBUTE(attribute) %]);
         [%- END %]

@@ -65,19 +65,27 @@ QUmlWriteVariableAction::QUmlWriteVariableAction(bool create_d_ptr) :
         set_d_ptr(new QUmlWriteVariableActionPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Value to be added or removed from the variable.
  */
 QUmlInputPin *QUmlWriteVariableAction::value() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlWriteVariableAction);
+    return d->value;
 }
 
 void QUmlWriteVariableAction::setValue(QUmlInputPin *value)
 {
-    Q_UNUSED(value);
+    // This is a read-write association end
+
+    QM_D(QUmlWriteVariableAction);
+    if (d->value != value) {
+        d->value = value;
+    }
 }
 
 QT_END_NAMESPACE

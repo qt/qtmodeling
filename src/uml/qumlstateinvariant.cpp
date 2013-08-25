@@ -67,19 +67,27 @@ QUmlStateInvariant::QUmlStateInvariant(bool create_d_ptr) :
         set_d_ptr(new QUmlStateInvariantPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     References the Lifeline on which the StateInvariant appears.
  */
 QUmlLifeline *QUmlStateInvariant::covered() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlStateInvariant);
+    return d->covered;
 }
 
 void QUmlStateInvariant::setCovered(QUmlLifeline *covered)
 {
-    Q_UNUSED(covered);
+    // This is a read-write association end
+
+    QM_D(QUmlStateInvariant);
+    if (d->covered != covered) {
+        d->covered = covered;
+    }
 }
 
 /*!
@@ -87,12 +95,20 @@ void QUmlStateInvariant::setCovered(QUmlLifeline *covered)
  */
 QUmlConstraint *QUmlStateInvariant::invariant() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlStateInvariant);
+    return d->invariant;
 }
 
 void QUmlStateInvariant::setInvariant(QUmlConstraint *invariant)
 {
-    Q_UNUSED(invariant);
+    // This is a read-write association end
+
+    QM_D(QUmlStateInvariant);
+    if (d->invariant != invariant) {
+        d->invariant = invariant;
+    }
 }
 
 QT_END_NAMESPACE

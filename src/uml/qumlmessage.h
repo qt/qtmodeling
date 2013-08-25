@@ -65,8 +65,8 @@ public:
 
     // Owned attributes
     QList<QUmlValueSpecification *> argument() const;
-    void addArgument(QList<QUmlValueSpecification *> argument);
-    void removeArgument(QList<QUmlValueSpecification *> argument);
+    void addArgument(QUmlValueSpecification *argument);
+    void removeArgument(QUmlValueSpecification *argument);
     QUmlConnector *connector() const;
     void setConnector(QUmlConnector *connector);
     QUmlInteraction *interaction() const;

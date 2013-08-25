@@ -67,19 +67,27 @@ QUmlValueSpecificationAction::QUmlValueSpecificationAction(bool create_d_ptr) :
         set_d_ptr(new QUmlValueSpecificationActionPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Gives the output pin on which the result is put.
  */
 QUmlOutputPin *QUmlValueSpecificationAction::result() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlValueSpecificationAction);
+    return d->result;
 }
 
 void QUmlValueSpecificationAction::setResult(QUmlOutputPin *result)
 {
-    Q_UNUSED(result);
+    // This is a read-write association end
+
+    QM_D(QUmlValueSpecificationAction);
+    if (d->result != result) {
+        d->result = result;
+    }
 }
 
 /*!
@@ -87,12 +95,20 @@ void QUmlValueSpecificationAction::setResult(QUmlOutputPin *result)
  */
 QUmlValueSpecification *QUmlValueSpecificationAction::value() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlValueSpecificationAction);
+    return d->value;
 }
 
 void QUmlValueSpecificationAction::setValue(QUmlValueSpecification *value)
 {
-    Q_UNUSED(value);
+    // This is a read-write association end
+
+    QM_D(QUmlValueSpecificationAction);
+    if (d->value != value) {
+        d->value = value;
+    }
 }
 
 QT_END_NAMESPACE

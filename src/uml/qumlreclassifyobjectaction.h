@@ -64,13 +64,13 @@ public:
     bool isReplaceAll() const;
     void setReplaceAll(bool isReplaceAll);
     QSet<QUmlClassifier *> newClassifier() const;
-    void addNewClassifier(QSet<QUmlClassifier *> newClassifier);
-    void removeNewClassifier(QSet<QUmlClassifier *> newClassifier);
+    void addNewClassifier(QUmlClassifier *newClassifier);
+    void removeNewClassifier(QUmlClassifier *newClassifier);
     QUmlInputPin *object() const;
     void setObject(QUmlInputPin *object);
     QSet<QUmlClassifier *> oldClassifier() const;
-    void addOldClassifier(QSet<QUmlClassifier *> oldClassifier);
-    void removeOldClassifier(QSet<QUmlClassifier *> oldClassifier);
+    void addOldClassifier(QUmlClassifier *oldClassifier);
+    void removeOldClassifier(QUmlClassifier *oldClassifier);
 };
 
 QT_END_NAMESPACE

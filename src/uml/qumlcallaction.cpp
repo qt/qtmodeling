@@ -65,19 +65,27 @@ QUmlCallAction::QUmlCallAction(bool create_d_ptr) :
         set_d_ptr(new QUmlCallActionPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     If true, the call is synchronous and the caller waits for completion of the invoked behavior. If false, the call is asynchronous and the caller proceeds immediately and does not expect a return values.
  */
 bool QUmlCallAction::isSynchronous() const
 {
-    return bool();
+    // This is a read-write property
+
+    QM_D(const QUmlCallAction);
+    return d->isSynchronous;
 }
 
 void QUmlCallAction::setSynchronous(bool isSynchronous)
 {
-    Q_UNUSED(isSynchronous);
+    // This is a read-write property
+
+    QM_D(QUmlCallAction);
+    if (d->isSynchronous != isSynchronous) {
+        d->isSynchronous = isSynchronous;
+    }
 }
 
 /*!
@@ -85,17 +93,30 @@ void QUmlCallAction::setSynchronous(bool isSynchronous)
  */
 QList<QUmlOutputPin *> QUmlCallAction::result() const
 {
-    return QList<QUmlOutputPin *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlCallAction);
+    return d->result;
 }
 
-void QUmlCallAction::addResult(QList<QUmlOutputPin *> result)
+void QUmlCallAction::addResult(QUmlOutputPin *result)
 {
-    Q_UNUSED(result);
+    // This is a read-write association end
+
+    QM_D(QUmlCallAction);
+    if (!d->result.contains(result)) {
+        d->result.append(result);
+    }
 }
 
-void QUmlCallAction::removeResult(QList<QUmlOutputPin *> result)
+void QUmlCallAction::removeResult(QUmlOutputPin *result)
 {
-    Q_UNUSED(result);
+    // This is a read-write association end
+
+    QM_D(QUmlCallAction);
+    if (d->result.contains(result)) {
+        d->result.removeAll(result);
+    }
 }
 
 QT_END_NAMESPACE

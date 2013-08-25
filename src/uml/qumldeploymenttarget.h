@@ -63,8 +63,8 @@ public:
     // Owned attributes
     QSet<QUmlPackageableElement *> deployedElement() const;
     QSet<QUmlDeployment *> deployment() const;
-    void addDeployment(QSet<QUmlDeployment *> deployment);
-    void removeDeployment(QSet<QUmlDeployment *> deployment);
+    void addDeployment(QUmlDeployment *deployment);
+    void removeDeployment(QUmlDeployment *deployment);
 };
 
 QT_END_NAMESPACE

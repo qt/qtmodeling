@@ -56,7 +56,6 @@ class Q_UML_EXPORT QUmlDeploymentTargetPrivate : public virtual QUmlNamedElement
 public:
     QUmlDeploymentTargetPrivate();
 
-    QSet<QUmlPackageableElement *> deployedElement;
     QSet<QUmlDeployment *> deployment;
 };
 

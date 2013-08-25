@@ -65,19 +65,27 @@ QUmlStructuralFeature::QUmlStructuralFeature(bool create_d_ptr) :
         set_d_ptr(new QUmlStructuralFeaturePrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     States whether the feature's value may be modified by a client.
  */
 bool QUmlStructuralFeature::isReadOnly() const
 {
-    return bool();
+    // This is a read-write property
+
+    QM_D(const QUmlStructuralFeature);
+    return d->isReadOnly;
 }
 
 void QUmlStructuralFeature::setReadOnly(bool isReadOnly)
 {
-    Q_UNUSED(isReadOnly);
+    // This is a read-write property
+
+    QM_D(QUmlStructuralFeature);
+    if (d->isReadOnly != isReadOnly) {
+        d->isReadOnly = isReadOnly;
+    }
 }
 
 QT_END_NAMESPACE

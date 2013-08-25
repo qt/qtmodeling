@@ -72,20 +72,20 @@ public:
     bool isActive() const;
     void setActive(bool isActive);
     QList<QUmlClassifier *> nestedClassifier() const;
-    void addNestedClassifier(QList<QUmlClassifier *> nestedClassifier);
-    void removeNestedClassifier(QList<QUmlClassifier *> nestedClassifier);
+    void addNestedClassifier(QUmlClassifier *nestedClassifier);
+    void removeNestedClassifier(QUmlClassifier *nestedClassifier);
     QList<QUmlProperty *> ownedAttribute() const;
-    void addOwnedAttribute(QList<QUmlProperty *> ownedAttribute);
-    void removeOwnedAttribute(QList<QUmlProperty *> ownedAttribute);
+    void addOwnedAttribute(QUmlProperty *ownedAttribute);
+    void removeOwnedAttribute(QUmlProperty *ownedAttribute);
     QList<QUmlOperation *> ownedOperation() const;
-    void addOwnedOperation(QList<QUmlOperation *> ownedOperation);
-    void removeOwnedOperation(QList<QUmlOperation *> ownedOperation);
+    void addOwnedOperation(QUmlOperation *ownedOperation);
+    void removeOwnedOperation(QUmlOperation *ownedOperation);
     QSet<QUmlReception *> ownedReception() const;
-    void addOwnedReception(QSet<QUmlReception *> ownedReception);
-    void removeOwnedReception(QSet<QUmlReception *> ownedReception);
+    void addOwnedReception(QUmlReception *ownedReception);
+    void removeOwnedReception(QUmlReception *ownedReception);
     QSet<QUmlClass *> superClass() const;
-    void addSuperClass(QSet<QUmlClass *> superClass);
-    void removeSuperClass(QSet<QUmlClass *> superClass);
+    void addSuperClass(QUmlClass *superClass);
+    void removeSuperClass(QUmlClass *superClass);
 
     // Operations
     QSet<QUmlNamedElement *> inherit(QSet<QUmlNamedElement *> inhs) const;

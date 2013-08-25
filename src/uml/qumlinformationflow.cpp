@@ -70,24 +70,37 @@ QUmlInformationFlow::QUmlInformationFlow(bool create_d_ptr) :
         set_d_ptr(new QUmlInformationFlowPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Specifies the information items that may circulate on this information flow.
  */
 QSet<QUmlClassifier *> QUmlInformationFlow::conveyed() const
 {
-    return QSet<QUmlClassifier *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlInformationFlow);
+    return d->conveyed;
 }
 
-void QUmlInformationFlow::addConveyed(QSet<QUmlClassifier *> conveyed)
+void QUmlInformationFlow::addConveyed(QUmlClassifier *conveyed)
 {
-    Q_UNUSED(conveyed);
+    // This is a read-write association end
+
+    QM_D(QUmlInformationFlow);
+    if (!d->conveyed.contains(conveyed)) {
+        d->conveyed.insert(conveyed);
+    }
 }
 
-void QUmlInformationFlow::removeConveyed(QSet<QUmlClassifier *> conveyed)
+void QUmlInformationFlow::removeConveyed(QUmlClassifier *conveyed)
 {
-    Q_UNUSED(conveyed);
+    // This is a read-write association end
+
+    QM_D(QUmlInformationFlow);
+    if (d->conveyed.contains(conveyed)) {
+        d->conveyed.remove(conveyed);
+    }
 }
 
 /*!
@@ -95,17 +108,30 @@ void QUmlInformationFlow::removeConveyed(QSet<QUmlClassifier *> conveyed)
  */
 QSet<QUmlNamedElement *> QUmlInformationFlow::informationSource() const
 {
-    return QSet<QUmlNamedElement *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlInformationFlow);
+    return d->informationSource;
 }
 
-void QUmlInformationFlow::addInformationSource(QSet<QUmlNamedElement *> informationSource)
+void QUmlInformationFlow::addInformationSource(QUmlNamedElement *informationSource)
 {
-    Q_UNUSED(informationSource);
+    // This is a read-write association end
+
+    QM_D(QUmlInformationFlow);
+    if (!d->informationSource.contains(informationSource)) {
+        d->informationSource.insert(informationSource);
+    }
 }
 
-void QUmlInformationFlow::removeInformationSource(QSet<QUmlNamedElement *> informationSource)
+void QUmlInformationFlow::removeInformationSource(QUmlNamedElement *informationSource)
 {
-    Q_UNUSED(informationSource);
+    // This is a read-write association end
+
+    QM_D(QUmlInformationFlow);
+    if (d->informationSource.contains(informationSource)) {
+        d->informationSource.remove(informationSource);
+    }
 }
 
 /*!
@@ -113,17 +139,30 @@ void QUmlInformationFlow::removeInformationSource(QSet<QUmlNamedElement *> infor
  */
 QSet<QUmlNamedElement *> QUmlInformationFlow::informationTarget() const
 {
-    return QSet<QUmlNamedElement *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlInformationFlow);
+    return d->informationTarget;
 }
 
-void QUmlInformationFlow::addInformationTarget(QSet<QUmlNamedElement *> informationTarget)
+void QUmlInformationFlow::addInformationTarget(QUmlNamedElement *informationTarget)
 {
-    Q_UNUSED(informationTarget);
+    // This is a read-write association end
+
+    QM_D(QUmlInformationFlow);
+    if (!d->informationTarget.contains(informationTarget)) {
+        d->informationTarget.insert(informationTarget);
+    }
 }
 
-void QUmlInformationFlow::removeInformationTarget(QSet<QUmlNamedElement *> informationTarget)
+void QUmlInformationFlow::removeInformationTarget(QUmlNamedElement *informationTarget)
 {
-    Q_UNUSED(informationTarget);
+    // This is a read-write association end
+
+    QM_D(QUmlInformationFlow);
+    if (d->informationTarget.contains(informationTarget)) {
+        d->informationTarget.remove(informationTarget);
+    }
 }
 
 /*!
@@ -131,17 +170,30 @@ void QUmlInformationFlow::removeInformationTarget(QSet<QUmlNamedElement *> infor
  */
 QSet<QUmlRelationship *> QUmlInformationFlow::realization() const
 {
-    return QSet<QUmlRelationship *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlInformationFlow);
+    return d->realization;
 }
 
-void QUmlInformationFlow::addRealization(QSet<QUmlRelationship *> realization)
+void QUmlInformationFlow::addRealization(QUmlRelationship *realization)
 {
-    Q_UNUSED(realization);
+    // This is a read-write association end
+
+    QM_D(QUmlInformationFlow);
+    if (!d->realization.contains(realization)) {
+        d->realization.insert(realization);
+    }
 }
 
-void QUmlInformationFlow::removeRealization(QSet<QUmlRelationship *> realization)
+void QUmlInformationFlow::removeRealization(QUmlRelationship *realization)
 {
-    Q_UNUSED(realization);
+    // This is a read-write association end
+
+    QM_D(QUmlInformationFlow);
+    if (d->realization.contains(realization)) {
+        d->realization.remove(realization);
+    }
 }
 
 /*!
@@ -149,17 +201,30 @@ void QUmlInformationFlow::removeRealization(QSet<QUmlRelationship *> realization
  */
 QSet<QUmlActivityEdge *> QUmlInformationFlow::realizingActivityEdge() const
 {
-    return QSet<QUmlActivityEdge *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlInformationFlow);
+    return d->realizingActivityEdge;
 }
 
-void QUmlInformationFlow::addRealizingActivityEdge(QSet<QUmlActivityEdge *> realizingActivityEdge)
+void QUmlInformationFlow::addRealizingActivityEdge(QUmlActivityEdge *realizingActivityEdge)
 {
-    Q_UNUSED(realizingActivityEdge);
+    // This is a read-write association end
+
+    QM_D(QUmlInformationFlow);
+    if (!d->realizingActivityEdge.contains(realizingActivityEdge)) {
+        d->realizingActivityEdge.insert(realizingActivityEdge);
+    }
 }
 
-void QUmlInformationFlow::removeRealizingActivityEdge(QSet<QUmlActivityEdge *> realizingActivityEdge)
+void QUmlInformationFlow::removeRealizingActivityEdge(QUmlActivityEdge *realizingActivityEdge)
 {
-    Q_UNUSED(realizingActivityEdge);
+    // This is a read-write association end
+
+    QM_D(QUmlInformationFlow);
+    if (d->realizingActivityEdge.contains(realizingActivityEdge)) {
+        d->realizingActivityEdge.remove(realizingActivityEdge);
+    }
 }
 
 /*!
@@ -167,17 +232,30 @@ void QUmlInformationFlow::removeRealizingActivityEdge(QSet<QUmlActivityEdge *> r
  */
 QSet<QUmlConnector *> QUmlInformationFlow::realizingConnector() const
 {
-    return QSet<QUmlConnector *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlInformationFlow);
+    return d->realizingConnector;
 }
 
-void QUmlInformationFlow::addRealizingConnector(QSet<QUmlConnector *> realizingConnector)
+void QUmlInformationFlow::addRealizingConnector(QUmlConnector *realizingConnector)
 {
-    Q_UNUSED(realizingConnector);
+    // This is a read-write association end
+
+    QM_D(QUmlInformationFlow);
+    if (!d->realizingConnector.contains(realizingConnector)) {
+        d->realizingConnector.insert(realizingConnector);
+    }
 }
 
-void QUmlInformationFlow::removeRealizingConnector(QSet<QUmlConnector *> realizingConnector)
+void QUmlInformationFlow::removeRealizingConnector(QUmlConnector *realizingConnector)
 {
-    Q_UNUSED(realizingConnector);
+    // This is a read-write association end
+
+    QM_D(QUmlInformationFlow);
+    if (d->realizingConnector.contains(realizingConnector)) {
+        d->realizingConnector.remove(realizingConnector);
+    }
 }
 
 /*!
@@ -185,17 +263,30 @@ void QUmlInformationFlow::removeRealizingConnector(QSet<QUmlConnector *> realizi
  */
 QSet<QUmlMessage *> QUmlInformationFlow::realizingMessage() const
 {
-    return QSet<QUmlMessage *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlInformationFlow);
+    return d->realizingMessage;
 }
 
-void QUmlInformationFlow::addRealizingMessage(QSet<QUmlMessage *> realizingMessage)
+void QUmlInformationFlow::addRealizingMessage(QUmlMessage *realizingMessage)
 {
-    Q_UNUSED(realizingMessage);
+    // This is a read-write association end
+
+    QM_D(QUmlInformationFlow);
+    if (!d->realizingMessage.contains(realizingMessage)) {
+        d->realizingMessage.insert(realizingMessage);
+    }
 }
 
-void QUmlInformationFlow::removeRealizingMessage(QSet<QUmlMessage *> realizingMessage)
+void QUmlInformationFlow::removeRealizingMessage(QUmlMessage *realizingMessage)
 {
-    Q_UNUSED(realizingMessage);
+    // This is a read-write association end
+
+    QM_D(QUmlInformationFlow);
+    if (d->realizingMessage.contains(realizingMessage)) {
+        d->realizingMessage.remove(realizingMessage);
+    }
 }
 
 QT_END_NAMESPACE

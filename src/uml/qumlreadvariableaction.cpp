@@ -65,19 +65,27 @@ QUmlReadVariableAction::QUmlReadVariableAction(bool create_d_ptr) :
         set_d_ptr(new QUmlReadVariableActionPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Gives the output pin on which the result is put.
  */
 QUmlOutputPin *QUmlReadVariableAction::result() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlReadVariableAction);
+    return d->result;
 }
 
 void QUmlReadVariableAction::setResult(QUmlOutputPin *result)
 {
-    Q_UNUSED(result);
+    // This is a read-write association end
+
+    QM_D(QUmlReadVariableAction);
+    if (d->result != result) {
+        d->result = result;
+    }
 }
 
 QT_END_NAMESPACE

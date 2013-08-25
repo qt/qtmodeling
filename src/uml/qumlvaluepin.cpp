@@ -65,19 +65,27 @@ QUmlValuePin::QUmlValuePin(bool create_d_ptr) :
         set_d_ptr(new QUmlValuePinPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Value that the pin will provide.
  */
 QUmlValueSpecification *QUmlValuePin::value() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlValuePin);
+    return d->value;
 }
 
 void QUmlValuePin::setValue(QUmlValueSpecification *value)
 {
-    Q_UNUSED(value);
+    // This is a read-write association end
+
+    QM_D(QUmlValuePin);
+    if (d->value != value) {
+        d->value = value;
+    }
 }
 
 QT_END_NAMESPACE

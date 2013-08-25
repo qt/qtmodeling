@@ -67,24 +67,37 @@ QUmlDeployment::QUmlDeployment(bool create_d_ptr) :
         set_d_ptr(new QUmlDeploymentPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The specification of properties that parameterize the deployment and execution of one or more Artifacts.
  */
 QSet<QUmlDeploymentSpecification *> QUmlDeployment::configuration() const
 {
-    return QSet<QUmlDeploymentSpecification *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlDeployment);
+    return d->configuration;
 }
 
-void QUmlDeployment::addConfiguration(QSet<QUmlDeploymentSpecification *> configuration)
+void QUmlDeployment::addConfiguration(QUmlDeploymentSpecification *configuration)
 {
-    Q_UNUSED(configuration);
+    // This is a read-write association end
+
+    QM_D(QUmlDeployment);
+    if (!d->configuration.contains(configuration)) {
+        d->configuration.insert(configuration);
+    }
 }
 
-void QUmlDeployment::removeConfiguration(QSet<QUmlDeploymentSpecification *> configuration)
+void QUmlDeployment::removeConfiguration(QUmlDeploymentSpecification *configuration)
 {
-    Q_UNUSED(configuration);
+    // This is a read-write association end
+
+    QM_D(QUmlDeployment);
+    if (d->configuration.contains(configuration)) {
+        d->configuration.remove(configuration);
+    }
 }
 
 /*!
@@ -92,17 +105,30 @@ void QUmlDeployment::removeConfiguration(QSet<QUmlDeploymentSpecification *> con
  */
 QSet<QUmlDeployedArtifact *> QUmlDeployment::deployedArtifact() const
 {
-    return QSet<QUmlDeployedArtifact *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlDeployment);
+    return d->deployedArtifact;
 }
 
-void QUmlDeployment::addDeployedArtifact(QSet<QUmlDeployedArtifact *> deployedArtifact)
+void QUmlDeployment::addDeployedArtifact(QUmlDeployedArtifact *deployedArtifact)
 {
-    Q_UNUSED(deployedArtifact);
+    // This is a read-write association end
+
+    QM_D(QUmlDeployment);
+    if (!d->deployedArtifact.contains(deployedArtifact)) {
+        d->deployedArtifact.insert(deployedArtifact);
+    }
 }
 
-void QUmlDeployment::removeDeployedArtifact(QSet<QUmlDeployedArtifact *> deployedArtifact)
+void QUmlDeployment::removeDeployedArtifact(QUmlDeployedArtifact *deployedArtifact)
 {
-    Q_UNUSED(deployedArtifact);
+    // This is a read-write association end
+
+    QM_D(QUmlDeployment);
+    if (d->deployedArtifact.contains(deployedArtifact)) {
+        d->deployedArtifact.remove(deployedArtifact);
+    }
 }
 
 /*!
@@ -110,12 +136,20 @@ void QUmlDeployment::removeDeployedArtifact(QSet<QUmlDeployedArtifact *> deploye
  */
 QUmlDeploymentTarget *QUmlDeployment::location() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlDeployment);
+    return d->location;
 }
 
 void QUmlDeployment::setLocation(QUmlDeploymentTarget *location)
 {
-    Q_UNUSED(location);
+    // This is a read-write association end
+
+    QM_D(QUmlDeployment);
+    if (d->location != location) {
+        d->location = location;
+    }
 }
 
 QT_END_NAMESPACE

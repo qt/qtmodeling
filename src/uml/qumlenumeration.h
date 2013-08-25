@@ -61,8 +61,8 @@ public:
 
     // Owned attributes
     QList<QUmlEnumerationLiteral *> ownedLiteral() const;
-    void addOwnedLiteral(QList<QUmlEnumerationLiteral *> ownedLiteral);
-    void removeOwnedLiteral(QList<QUmlEnumerationLiteral *> ownedLiteral);
+    void addOwnedLiteral(QUmlEnumerationLiteral *ownedLiteral);
+    void removeOwnedLiteral(QUmlEnumerationLiteral *ownedLiteral);
 };
 
 QT_END_NAMESPACE

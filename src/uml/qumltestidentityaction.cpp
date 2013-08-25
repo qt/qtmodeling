@@ -68,19 +68,27 @@ QUmlTestIdentityAction::QUmlTestIdentityAction(bool create_d_ptr) :
         set_d_ptr(new QUmlTestIdentityActionPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Gives the pin on which an object is placed.
  */
 QUmlInputPin *QUmlTestIdentityAction::first() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlTestIdentityAction);
+    return d->first;
 }
 
 void QUmlTestIdentityAction::setFirst(QUmlInputPin *first)
 {
-    Q_UNUSED(first);
+    // This is a read-write association end
+
+    QM_D(QUmlTestIdentityAction);
+    if (d->first != first) {
+        d->first = first;
+    }
 }
 
 /*!
@@ -88,12 +96,20 @@ void QUmlTestIdentityAction::setFirst(QUmlInputPin *first)
  */
 QUmlOutputPin *QUmlTestIdentityAction::result() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlTestIdentityAction);
+    return d->result;
 }
 
 void QUmlTestIdentityAction::setResult(QUmlOutputPin *result)
 {
-    Q_UNUSED(result);
+    // This is a read-write association end
+
+    QM_D(QUmlTestIdentityAction);
+    if (d->result != result) {
+        d->result = result;
+    }
 }
 
 /*!
@@ -101,12 +117,20 @@ void QUmlTestIdentityAction::setResult(QUmlOutputPin *result)
  */
 QUmlInputPin *QUmlTestIdentityAction::second() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlTestIdentityAction);
+    return d->second;
 }
 
 void QUmlTestIdentityAction::setSecond(QUmlInputPin *second)
 {
-    Q_UNUSED(second);
+    // This is a read-write association end
+
+    QM_D(QUmlTestIdentityAction);
+    if (d->second != second) {
+        d->second = second;
+    }
 }
 
 QT_END_NAMESPACE

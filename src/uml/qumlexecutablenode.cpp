@@ -64,24 +64,37 @@ QUmlExecutableNode::QUmlExecutableNode(bool create_d_ptr) :
         set_d_ptr(new QUmlExecutableNodePrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     A set of exception handlers that are examined if an uncaught exception propagates to the outer level of the executable node.
  */
 QSet<QUmlExceptionHandler *> QUmlExecutableNode::handler() const
 {
-    return QSet<QUmlExceptionHandler *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlExecutableNode);
+    return d->handler;
 }
 
-void QUmlExecutableNode::addHandler(QSet<QUmlExceptionHandler *> handler)
+void QUmlExecutableNode::addHandler(QUmlExceptionHandler *handler)
 {
-    Q_UNUSED(handler);
+    // This is a read-write association end
+
+    QM_D(QUmlExecutableNode);
+    if (!d->handler.contains(handler)) {
+        d->handler.insert(handler);
+    }
 }
 
-void QUmlExecutableNode::removeHandler(QSet<QUmlExceptionHandler *> handler)
+void QUmlExecutableNode::removeHandler(QUmlExceptionHandler *handler)
 {
-    Q_UNUSED(handler);
+    // This is a read-write association end
+
+    QM_D(QUmlExecutableNode);
+    if (d->handler.contains(handler)) {
+        d->handler.remove(handler);
+    }
 }
 
 QT_END_NAMESPACE

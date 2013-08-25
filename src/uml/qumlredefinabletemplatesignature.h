@@ -65,8 +65,8 @@ public:
     QUmlClassifier *classifier() const;
     void setClassifier(QUmlClassifier *classifier);
     QSet<QUmlRedefinableTemplateSignature *> extendedSignature() const;
-    void addExtendedSignature(QSet<QUmlRedefinableTemplateSignature *> extendedSignature);
-    void removeExtendedSignature(QSet<QUmlRedefinableTemplateSignature *> extendedSignature);
+    void addExtendedSignature(QUmlRedefinableTemplateSignature *extendedSignature);
+    void removeExtendedSignature(QUmlRedefinableTemplateSignature *extendedSignature);
     QSet<QUmlTemplateParameter *> inheritedParameter() const;
 
     // Operations

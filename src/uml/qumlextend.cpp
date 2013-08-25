@@ -70,19 +70,27 @@ QUmlExtend::QUmlExtend(bool create_d_ptr) :
         set_d_ptr(new QUmlExtendPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     References the condition that must hold when the first extension point is reached for the extension to take place. If no constraint is associated with the extend relationship, the extension is unconditional.
  */
 QUmlConstraint *QUmlExtend::condition() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlExtend);
+    return d->condition;
 }
 
 void QUmlExtend::setCondition(QUmlConstraint *condition)
 {
-    Q_UNUSED(condition);
+    // This is a read-write association end
+
+    QM_D(QUmlExtend);
+    if (d->condition != condition) {
+        d->condition = condition;
+    }
 }
 
 /*!
@@ -90,12 +98,20 @@ void QUmlExtend::setCondition(QUmlConstraint *condition)
  */
 QUmlUseCase *QUmlExtend::extendedCase() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlExtend);
+    return d->extendedCase;
 }
 
 void QUmlExtend::setExtendedCase(QUmlUseCase *extendedCase)
 {
-    Q_UNUSED(extendedCase);
+    // This is a read-write association end
+
+    QM_D(QUmlExtend);
+    if (d->extendedCase != extendedCase) {
+        d->extendedCase = extendedCase;
+    }
 }
 
 /*!
@@ -103,12 +119,20 @@ void QUmlExtend::setExtendedCase(QUmlUseCase *extendedCase)
  */
 QUmlUseCase *QUmlExtend::extension() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlExtend);
+    return d->extension;
 }
 
 void QUmlExtend::setExtension(QUmlUseCase *extension)
 {
-    Q_UNUSED(extension);
+    // This is a read-write association end
+
+    QM_D(QUmlExtend);
+    if (d->extension != extension) {
+        d->extension = extension;
+    }
 }
 
 /*!
@@ -116,17 +140,30 @@ void QUmlExtend::setExtension(QUmlUseCase *extension)
  */
 QList<QUmlExtensionPoint *> QUmlExtend::extensionLocation() const
 {
-    return QList<QUmlExtensionPoint *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlExtend);
+    return d->extensionLocation;
 }
 
-void QUmlExtend::addExtensionLocation(QList<QUmlExtensionPoint *> extensionLocation)
+void QUmlExtend::addExtensionLocation(QUmlExtensionPoint *extensionLocation)
 {
-    Q_UNUSED(extensionLocation);
+    // This is a read-write association end
+
+    QM_D(QUmlExtend);
+    if (!d->extensionLocation.contains(extensionLocation)) {
+        d->extensionLocation.append(extensionLocation);
+    }
 }
 
-void QUmlExtend::removeExtensionLocation(QList<QUmlExtensionPoint *> extensionLocation)
+void QUmlExtend::removeExtensionLocation(QUmlExtensionPoint *extensionLocation)
 {
-    Q_UNUSED(extensionLocation);
+    // This is a read-write association end
+
+    QM_D(QUmlExtend);
+    if (d->extensionLocation.contains(extensionLocation)) {
+        d->extensionLocation.removeAll(extensionLocation);
+    }
 }
 
 QT_END_NAMESPACE

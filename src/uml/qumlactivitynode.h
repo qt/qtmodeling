@@ -69,22 +69,22 @@ public:
     void setActivity(QUmlActivity *activity);
     QSet<QUmlActivityGroup *> inGroup() const;
     QSet<QUmlInterruptibleActivityRegion *> inInterruptibleRegion() const;
-    void addInInterruptibleRegion(QSet<QUmlInterruptibleActivityRegion *> inInterruptibleRegion);
-    void removeInInterruptibleRegion(QSet<QUmlInterruptibleActivityRegion *> inInterruptibleRegion);
+    void addInInterruptibleRegion(QUmlInterruptibleActivityRegion *inInterruptibleRegion);
+    void removeInInterruptibleRegion(QUmlInterruptibleActivityRegion *inInterruptibleRegion);
     QSet<QUmlActivityPartition *> inPartition() const;
-    void addInPartition(QSet<QUmlActivityPartition *> inPartition);
-    void removeInPartition(QSet<QUmlActivityPartition *> inPartition);
+    void addInPartition(QUmlActivityPartition *inPartition);
+    void removeInPartition(QUmlActivityPartition *inPartition);
     QUmlStructuredActivityNode *inStructuredNode() const;
     void setInStructuredNode(QUmlStructuredActivityNode *inStructuredNode);
     QSet<QUmlActivityEdge *> incoming() const;
-    void addIncoming(QSet<QUmlActivityEdge *> incoming);
-    void removeIncoming(QSet<QUmlActivityEdge *> incoming);
+    void addIncoming(QUmlActivityEdge *incoming);
+    void removeIncoming(QUmlActivityEdge *incoming);
     QSet<QUmlActivityEdge *> outgoing() const;
-    void addOutgoing(QSet<QUmlActivityEdge *> outgoing);
-    void removeOutgoing(QSet<QUmlActivityEdge *> outgoing);
+    void addOutgoing(QUmlActivityEdge *outgoing);
+    void removeOutgoing(QUmlActivityEdge *outgoing);
     QSet<QUmlActivityNode *> redefinedNode() const;
-    void addRedefinedNode(QSet<QUmlActivityNode *> redefinedNode);
-    void removeRedefinedNode(QSet<QUmlActivityNode *> redefinedNode);
+    void addRedefinedNode(QUmlActivityNode *redefinedNode);
+    void removeRedefinedNode(QUmlActivityNode *redefinedNode);
 };
 
 QT_END_NAMESPACE

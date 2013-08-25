@@ -63,22 +63,30 @@ QUmlLiteralUnlimitedNatural::QUmlLiteralUnlimitedNatural(bool create_d_ptr) :
         set_d_ptr(new QUmlLiteralUnlimitedNaturalPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The specified UnlimitedNatural value.
  */
 int QUmlLiteralUnlimitedNatural::value() const
 {
-    return int();
+    // This is a read-write property
+
+    QM_D(const QUmlLiteralUnlimitedNatural);
+    return d->value;
 }
 
 void QUmlLiteralUnlimitedNatural::setValue(int value)
 {
-    Q_UNUSED(value);
+    // This is a read-write property
+
+    QM_D(QUmlLiteralUnlimitedNatural);
+    if (d->value != value) {
+        d->value = value;
+    }
 }
 
-// Operations
+// OPERATIONS
 
 /*!
     The query isComputable() is redefined to be true.

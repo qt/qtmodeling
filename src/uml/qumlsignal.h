@@ -61,8 +61,8 @@ public:
 
     // Owned attributes
     QList<QUmlProperty *> ownedAttribute() const;
-    void addOwnedAttribute(QList<QUmlProperty *> ownedAttribute);
-    void removeOwnedAttribute(QList<QUmlProperty *> ownedAttribute);
+    void addOwnedAttribute(QUmlProperty *ownedAttribute);
+    void removeOwnedAttribute(QUmlProperty *ownedAttribute);
 };
 
 QT_END_NAMESPACE

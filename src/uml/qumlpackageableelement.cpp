@@ -57,29 +57,34 @@ QUmlPackageableElementPrivate::QUmlPackageableElementPrivate() :
  */
 
 QUmlPackageableElement::QUmlPackageableElement(bool create_d_ptr) :
-//    QUmlElement(false),
     QUmlNamedElement(false),
     QUmlParameterableElement(false)
 {
-    if (create_d_ptr) {
-        qDebug() << "QUmlPackageableElement::QUmlPackageableElement criando";
+    if (create_d_ptr)
         set_d_ptr(new QUmlPackageableElementPrivate);
-    }
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Indicates that packageable elements must always have a visibility, i.e., visibility is not optional.
  */
 QtUml::VisibilityKind QUmlPackageableElement::visibility() const
 {
-    return QtUml::VisibilityKind();
+    // This is a read-write property
+
+    QM_D(const QUmlPackageableElement);
+    return d->visibility;
 }
 
 void QUmlPackageableElement::setVisibility(QtUml::VisibilityKind visibility)
 {
-    Q_UNUSED(visibility);
+    // This is a read-write property
+
+    QM_D(QUmlPackageableElement);
+    if (d->visibility != visibility) {
+        d->visibility = visibility;
+    }
 }
 
 QT_END_NAMESPACE

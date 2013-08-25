@@ -65,19 +65,27 @@ QUmlVariableAction::QUmlVariableAction(bool create_d_ptr) :
         set_d_ptr(new QUmlVariableActionPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Variable to be read.
  */
 QUmlVariable *QUmlVariableAction::variable() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlVariableAction);
+    return d->variable;
 }
 
 void QUmlVariableAction::setVariable(QUmlVariable *variable)
 {
-    Q_UNUSED(variable);
+    // This is a read-write association end
+
+    QM_D(QUmlVariableAction);
+    if (d->variable != variable) {
+        d->variable = variable;
+    }
 }
 
 QT_END_NAMESPACE

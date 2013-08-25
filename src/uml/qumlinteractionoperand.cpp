@@ -66,24 +66,37 @@ QUmlInteractionOperand::QUmlInteractionOperand(bool create_d_ptr) :
         set_d_ptr(new QUmlInteractionOperandPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The fragments of the operand.
  */
 QList<QUmlInteractionFragment *> QUmlInteractionOperand::fragment() const
 {
-    return QList<QUmlInteractionFragment *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlInteractionOperand);
+    return d->fragment;
 }
 
-void QUmlInteractionOperand::addFragment(QList<QUmlInteractionFragment *> fragment)
+void QUmlInteractionOperand::addFragment(QUmlInteractionFragment *fragment)
 {
-    Q_UNUSED(fragment);
+    // This is a read-write association end
+
+    QM_D(QUmlInteractionOperand);
+    if (!d->fragment.contains(fragment)) {
+        d->fragment.append(fragment);
+    }
 }
 
-void QUmlInteractionOperand::removeFragment(QList<QUmlInteractionFragment *> fragment)
+void QUmlInteractionOperand::removeFragment(QUmlInteractionFragment *fragment)
 {
-    Q_UNUSED(fragment);
+    // This is a read-write association end
+
+    QM_D(QUmlInteractionOperand);
+    if (d->fragment.contains(fragment)) {
+        d->fragment.removeAll(fragment);
+    }
 }
 
 /*!
@@ -91,12 +104,20 @@ void QUmlInteractionOperand::removeFragment(QList<QUmlInteractionFragment *> fra
  */
 QUmlInteractionConstraint *QUmlInteractionOperand::guard() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlInteractionOperand);
+    return d->guard;
 }
 
 void QUmlInteractionOperand::setGuard(QUmlInteractionConstraint *guard)
 {
-    Q_UNUSED(guard);
+    // This is a read-write association end
+
+    QM_D(QUmlInteractionOperand);
+    if (d->guard != guard) {
+        d->guard = guard;
+    }
 }
 
 QT_END_NAMESPACE

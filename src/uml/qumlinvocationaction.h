@@ -62,8 +62,8 @@ public:
 
     // Owned attributes
     QList<QUmlInputPin *> argument() const;
-    void addArgument(QList<QUmlInputPin *> argument);
-    void removeArgument(QList<QUmlInputPin *> argument);
+    void addArgument(QUmlInputPin *argument);
+    void removeArgument(QUmlInputPin *argument);
     QUmlPort *onPort() const;
     void setOnPort(QUmlPort *onPort);
 };

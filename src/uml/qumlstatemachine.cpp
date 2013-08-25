@@ -68,24 +68,37 @@ QUmlStateMachine::QUmlStateMachine(bool create_d_ptr) :
         set_d_ptr(new QUmlStateMachinePrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The connection points defined for this state machine. They represent the interface of the state machine when used as part of submachine state.
  */
 QSet<QUmlPseudostate *> QUmlStateMachine::connectionPoint() const
 {
-    return QSet<QUmlPseudostate *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlStateMachine);
+    return d->connectionPoint;
 }
 
-void QUmlStateMachine::addConnectionPoint(QSet<QUmlPseudostate *> connectionPoint)
+void QUmlStateMachine::addConnectionPoint(QUmlPseudostate *connectionPoint)
 {
-    Q_UNUSED(connectionPoint);
+    // This is a read-write association end
+
+    QM_D(QUmlStateMachine);
+    if (!d->connectionPoint.contains(connectionPoint)) {
+        d->connectionPoint.insert(connectionPoint);
+    }
 }
 
-void QUmlStateMachine::removeConnectionPoint(QSet<QUmlPseudostate *> connectionPoint)
+void QUmlStateMachine::removeConnectionPoint(QUmlPseudostate *connectionPoint)
 {
-    Q_UNUSED(connectionPoint);
+    // This is a read-write association end
+
+    QM_D(QUmlStateMachine);
+    if (d->connectionPoint.contains(connectionPoint)) {
+        d->connectionPoint.remove(connectionPoint);
+    }
 }
 
 /*!
@@ -93,17 +106,30 @@ void QUmlStateMachine::removeConnectionPoint(QSet<QUmlPseudostate *> connectionP
  */
 QSet<QUmlStateMachine *> QUmlStateMachine::extendedStateMachine() const
 {
-    return QSet<QUmlStateMachine *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlStateMachine);
+    return d->extendedStateMachine;
 }
 
-void QUmlStateMachine::addExtendedStateMachine(QSet<QUmlStateMachine *> extendedStateMachine)
+void QUmlStateMachine::addExtendedStateMachine(QUmlStateMachine *extendedStateMachine)
 {
-    Q_UNUSED(extendedStateMachine);
+    // This is a read-write association end
+
+    QM_D(QUmlStateMachine);
+    if (!d->extendedStateMachine.contains(extendedStateMachine)) {
+        d->extendedStateMachine.insert(extendedStateMachine);
+    }
 }
 
-void QUmlStateMachine::removeExtendedStateMachine(QSet<QUmlStateMachine *> extendedStateMachine)
+void QUmlStateMachine::removeExtendedStateMachine(QUmlStateMachine *extendedStateMachine)
 {
-    Q_UNUSED(extendedStateMachine);
+    // This is a read-write association end
+
+    QM_D(QUmlStateMachine);
+    if (d->extendedStateMachine.contains(extendedStateMachine)) {
+        d->extendedStateMachine.remove(extendedStateMachine);
+    }
 }
 
 /*!
@@ -111,17 +137,30 @@ void QUmlStateMachine::removeExtendedStateMachine(QSet<QUmlStateMachine *> exten
  */
 QSet<QUmlRegion *> QUmlStateMachine::region() const
 {
-    return QSet<QUmlRegion *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlStateMachine);
+    return d->region;
 }
 
-void QUmlStateMachine::addRegion(QSet<QUmlRegion *> region)
+void QUmlStateMachine::addRegion(QUmlRegion *region)
 {
-    Q_UNUSED(region);
+    // This is a read-write association end
+
+    QM_D(QUmlStateMachine);
+    if (!d->region.contains(region)) {
+        d->region.insert(region);
+    }
 }
 
-void QUmlStateMachine::removeRegion(QSet<QUmlRegion *> region)
+void QUmlStateMachine::removeRegion(QUmlRegion *region)
 {
-    Q_UNUSED(region);
+    // This is a read-write association end
+
+    QM_D(QUmlStateMachine);
+    if (d->region.contains(region)) {
+        d->region.remove(region);
+    }
 }
 
 /*!
@@ -129,20 +168,33 @@ void QUmlStateMachine::removeRegion(QSet<QUmlRegion *> region)
  */
 QSet<QUmlState *> QUmlStateMachine::submachineState() const
 {
-    return QSet<QUmlState *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlStateMachine);
+    return d->submachineState;
 }
 
-void QUmlStateMachine::addSubmachineState(QSet<QUmlState *> submachineState)
+void QUmlStateMachine::addSubmachineState(QUmlState *submachineState)
 {
-    Q_UNUSED(submachineState);
+    // This is a read-write association end
+
+    QM_D(QUmlStateMachine);
+    if (!d->submachineState.contains(submachineState)) {
+        d->submachineState.insert(submachineState);
+    }
 }
 
-void QUmlStateMachine::removeSubmachineState(QSet<QUmlState *> submachineState)
+void QUmlStateMachine::removeSubmachineState(QUmlState *submachineState)
 {
-    Q_UNUSED(submachineState);
+    // This is a read-write association end
+
+    QM_D(QUmlStateMachine);
+    if (d->submachineState.contains(submachineState)) {
+        d->submachineState.remove(submachineState);
+    }
 }
 
-// Operations
+// OPERATIONS
 
 /*!
     The operation LCA(s1,s2) returns an orthogonal state or region which is the least common ancestor of states s1 and s2, based on the statemachine containment hierarchy.

@@ -71,19 +71,27 @@ QUmlBehavioralFeature::QUmlBehavioralFeature(bool create_d_ptr) :
         set_d_ptr(new QUmlBehavioralFeaturePrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Specifies the semantics of concurrent calls to the same passive instance (i.e., an instance originating from a class with isActive being false). Active instances control access to their own behavioral features.
  */
 QtUml::CallConcurrencyKind QUmlBehavioralFeature::concurrency() const
 {
-    return QtUml::CallConcurrencyKind();
+    // This is a read-write property
+
+    QM_D(const QUmlBehavioralFeature);
+    return d->concurrency;
 }
 
 void QUmlBehavioralFeature::setConcurrency(QtUml::CallConcurrencyKind concurrency)
 {
-    Q_UNUSED(concurrency);
+    // This is a read-write property
+
+    QM_D(QUmlBehavioralFeature);
+    if (d->concurrency != concurrency) {
+        d->concurrency = concurrency;
+    }
 }
 
 /*!
@@ -91,12 +99,20 @@ void QUmlBehavioralFeature::setConcurrency(QtUml::CallConcurrencyKind concurrenc
  */
 bool QUmlBehavioralFeature::isAbstract() const
 {
-    return bool();
+    // This is a read-write property
+
+    QM_D(const QUmlBehavioralFeature);
+    return d->isAbstract;
 }
 
 void QUmlBehavioralFeature::setAbstract(bool isAbstract)
 {
-    Q_UNUSED(isAbstract);
+    // This is a read-write property
+
+    QM_D(QUmlBehavioralFeature);
+    if (d->isAbstract != isAbstract) {
+        d->isAbstract = isAbstract;
+    }
 }
 
 /*!
@@ -104,17 +120,30 @@ void QUmlBehavioralFeature::setAbstract(bool isAbstract)
  */
 QSet<QUmlBehavior *> QUmlBehavioralFeature::method() const
 {
-    return QSet<QUmlBehavior *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlBehavioralFeature);
+    return d->method;
 }
 
-void QUmlBehavioralFeature::addMethod(QSet<QUmlBehavior *> method)
+void QUmlBehavioralFeature::addMethod(QUmlBehavior *method)
 {
-    Q_UNUSED(method);
+    // This is a read-write association end
+
+    QM_D(QUmlBehavioralFeature);
+    if (!d->method.contains(method)) {
+        d->method.insert(method);
+    }
 }
 
-void QUmlBehavioralFeature::removeMethod(QSet<QUmlBehavior *> method)
+void QUmlBehavioralFeature::removeMethod(QUmlBehavior *method)
 {
-    Q_UNUSED(method);
+    // This is a read-write association end
+
+    QM_D(QUmlBehavioralFeature);
+    if (d->method.contains(method)) {
+        d->method.remove(method);
+    }
 }
 
 /*!
@@ -122,17 +151,30 @@ void QUmlBehavioralFeature::removeMethod(QSet<QUmlBehavior *> method)
  */
 QList<QUmlParameter *> QUmlBehavioralFeature::ownedParameter() const
 {
-    return QList<QUmlParameter *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlBehavioralFeature);
+    return d->ownedParameter;
 }
 
-void QUmlBehavioralFeature::addOwnedParameter(QList<QUmlParameter *> ownedParameter)
+void QUmlBehavioralFeature::addOwnedParameter(QUmlParameter *ownedParameter)
 {
-    Q_UNUSED(ownedParameter);
+    // This is a read-write association end
+
+    QM_D(QUmlBehavioralFeature);
+    if (!d->ownedParameter.contains(ownedParameter)) {
+        d->ownedParameter.append(ownedParameter);
+    }
 }
 
-void QUmlBehavioralFeature::removeOwnedParameter(QList<QUmlParameter *> ownedParameter)
+void QUmlBehavioralFeature::removeOwnedParameter(QUmlParameter *ownedParameter)
 {
-    Q_UNUSED(ownedParameter);
+    // This is a read-write association end
+
+    QM_D(QUmlBehavioralFeature);
+    if (d->ownedParameter.contains(ownedParameter)) {
+        d->ownedParameter.removeAll(ownedParameter);
+    }
 }
 
 /*!
@@ -140,17 +182,30 @@ void QUmlBehavioralFeature::removeOwnedParameter(QList<QUmlParameter *> ownedPar
  */
 QSet<QUmlParameterSet *> QUmlBehavioralFeature::ownedParameterSet() const
 {
-    return QSet<QUmlParameterSet *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlBehavioralFeature);
+    return d->ownedParameterSet;
 }
 
-void QUmlBehavioralFeature::addOwnedParameterSet(QSet<QUmlParameterSet *> ownedParameterSet)
+void QUmlBehavioralFeature::addOwnedParameterSet(QUmlParameterSet *ownedParameterSet)
 {
-    Q_UNUSED(ownedParameterSet);
+    // This is a read-write association end
+
+    QM_D(QUmlBehavioralFeature);
+    if (!d->ownedParameterSet.contains(ownedParameterSet)) {
+        d->ownedParameterSet.insert(ownedParameterSet);
+    }
 }
 
-void QUmlBehavioralFeature::removeOwnedParameterSet(QSet<QUmlParameterSet *> ownedParameterSet)
+void QUmlBehavioralFeature::removeOwnedParameterSet(QUmlParameterSet *ownedParameterSet)
 {
-    Q_UNUSED(ownedParameterSet);
+    // This is a read-write association end
+
+    QM_D(QUmlBehavioralFeature);
+    if (d->ownedParameterSet.contains(ownedParameterSet)) {
+        d->ownedParameterSet.remove(ownedParameterSet);
+    }
 }
 
 /*!
@@ -158,20 +213,33 @@ void QUmlBehavioralFeature::removeOwnedParameterSet(QSet<QUmlParameterSet *> own
  */
 QSet<QUmlType *> QUmlBehavioralFeature::raisedException() const
 {
-    return QSet<QUmlType *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlBehavioralFeature);
+    return d->raisedException;
 }
 
-void QUmlBehavioralFeature::addRaisedException(QSet<QUmlType *> raisedException)
+void QUmlBehavioralFeature::addRaisedException(QUmlType *raisedException)
 {
-    Q_UNUSED(raisedException);
+    // This is a read-write association end
+
+    QM_D(QUmlBehavioralFeature);
+    if (!d->raisedException.contains(raisedException)) {
+        d->raisedException.insert(raisedException);
+    }
 }
 
-void QUmlBehavioralFeature::removeRaisedException(QSet<QUmlType *> raisedException)
+void QUmlBehavioralFeature::removeRaisedException(QUmlType *raisedException)
 {
-    Q_UNUSED(raisedException);
+    // This is a read-write association end
+
+    QM_D(QUmlBehavioralFeature);
+    if (d->raisedException.contains(raisedException)) {
+        d->raisedException.remove(raisedException);
+    }
 }
 
-// Operations
+// OPERATIONS
 
 /*!
     The query isDistinguishableFrom() determines whether two BehavioralFeatures may coexist in the same Namespace. It specifies that they have to have different signatures.

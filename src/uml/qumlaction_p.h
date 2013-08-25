@@ -56,7 +56,6 @@ class Q_UML_EXPORT QUmlActionPrivate : public QUmlExecutableNodePrivate
 public:
     QUmlActionPrivate();
 
-    QUmlClassifier *context;
     QList<QUmlInputPin *> input;
     bool isLocallyReentrant;
     QSet<QUmlConstraint *> localPostcondition;

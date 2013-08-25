@@ -62,25 +62,31 @@ QUmlParameterableElementPrivate::QUmlParameterableElementPrivate() :
 QUmlParameterableElement::QUmlParameterableElement(bool create_d_ptr) :
     QUmlElement(false)
 {
-    if (create_d_ptr) {
-        qDebug() << "QUmlParameterableElement::QUmlParameterableElement criando";
+    if (create_d_ptr)
         set_d_ptr(new QUmlParameterableElementPrivate);
-    }
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The formal template parameter that owns this element.
  */
 QUmlTemplateParameter *QUmlParameterableElement::owningTemplateParameter() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlParameterableElement);
+    return d->owningTemplateParameter;
 }
 
 void QUmlParameterableElement::setOwningTemplateParameter(QUmlTemplateParameter *owningTemplateParameter)
 {
-    Q_UNUSED(owningTemplateParameter);
+    // This is a read-write association end
+
+    QM_D(QUmlParameterableElement);
+    if (d->owningTemplateParameter != owningTemplateParameter) {
+        d->owningTemplateParameter = owningTemplateParameter;
+    }
 }
 
 /*!
@@ -88,15 +94,23 @@ void QUmlParameterableElement::setOwningTemplateParameter(QUmlTemplateParameter 
  */
 QUmlTemplateParameter *QUmlParameterableElement::templateParameter() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlParameterableElement);
+    return d->templateParameter;
 }
 
 void QUmlParameterableElement::setTemplateParameter(QUmlTemplateParameter *templateParameter)
 {
-    Q_UNUSED(templateParameter);
+    // This is a read-write association end
+
+    QM_D(QUmlParameterableElement);
+    if (d->templateParameter != templateParameter) {
+        d->templateParameter = templateParameter;
+    }
 }
 
-// Operations
+// OPERATIONS
 
 /*!
     The query isCompatibleWith() determines if this parameterable element is compatible with the specified parameterable element. By default parameterable element P is compatible with parameterable element Q if the kind of P is the same or a subtype as the kind of Q. Subclasses should override this operation to specify different compatibility constraints.

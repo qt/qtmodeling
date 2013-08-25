@@ -66,24 +66,37 @@ QUmlInvocationAction::QUmlInvocationAction(bool create_d_ptr) :
         set_d_ptr(new QUmlInvocationActionPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Specification of the ordered set of argument values that appears during execution.
  */
 QList<QUmlInputPin *> QUmlInvocationAction::argument() const
 {
-    return QList<QUmlInputPin *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlInvocationAction);
+    return d->argument;
 }
 
-void QUmlInvocationAction::addArgument(QList<QUmlInputPin *> argument)
+void QUmlInvocationAction::addArgument(QUmlInputPin *argument)
 {
-    Q_UNUSED(argument);
+    // This is a read-write association end
+
+    QM_D(QUmlInvocationAction);
+    if (!d->argument.contains(argument)) {
+        d->argument.append(argument);
+    }
 }
 
-void QUmlInvocationAction::removeArgument(QList<QUmlInputPin *> argument)
+void QUmlInvocationAction::removeArgument(QUmlInputPin *argument)
 {
-    Q_UNUSED(argument);
+    // This is a read-write association end
+
+    QM_D(QUmlInvocationAction);
+    if (d->argument.contains(argument)) {
+        d->argument.removeAll(argument);
+    }
 }
 
 /*!
@@ -91,12 +104,20 @@ void QUmlInvocationAction::removeArgument(QList<QUmlInputPin *> argument)
  */
 QUmlPort *QUmlInvocationAction::onPort() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlInvocationAction);
+    return d->onPort;
 }
 
 void QUmlInvocationAction::setOnPort(QUmlPort *onPort)
 {
-    Q_UNUSED(onPort);
+    // This is a read-write association end
+
+    QM_D(QUmlInvocationAction);
+    if (d->onPort != onPort) {
+        d->onPort = onPort;
+    }
 }
 
 QT_END_NAMESPACE

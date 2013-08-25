@@ -62,17 +62,17 @@ public:
 
     // Owned attributes
     QList<QString> body() const;
-    void addBody(QList<QString> body);
-    void removeBody(QList<QString> body);
+    void addBody(QString body);
+    void removeBody(QString body);
     QSet<QUmlInputPin *> inputValue() const;
-    void addInputValue(QSet<QUmlInputPin *> inputValue);
-    void removeInputValue(QSet<QUmlInputPin *> inputValue);
+    void addInputValue(QUmlInputPin *inputValue);
+    void removeInputValue(QUmlInputPin *inputValue);
     QList<QString> language() const;
-    void addLanguage(QList<QString> language);
-    void removeLanguage(QList<QString> language);
+    void addLanguage(QString language);
+    void removeLanguage(QString language);
     QSet<QUmlOutputPin *> outputValue() const;
-    void addOutputValue(QSet<QUmlOutputPin *> outputValue);
-    void removeOutputValue(QSet<QUmlOutputPin *> outputValue);
+    void addOutputValue(QUmlOutputPin *outputValue);
+    void removeOutputValue(QUmlOutputPin *outputValue);
 };
 
 QT_END_NAMESPACE

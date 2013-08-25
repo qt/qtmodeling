@@ -66,19 +66,27 @@ QUmlJoinNode::QUmlJoinNode(bool create_d_ptr) :
         set_d_ptr(new QUmlJoinNodePrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Tells whether tokens having objects with the same identity are combined into one by the join.
  */
 bool QUmlJoinNode::isCombineDuplicate() const
 {
-    return bool();
+    // This is a read-write property
+
+    QM_D(const QUmlJoinNode);
+    return d->isCombineDuplicate;
 }
 
 void QUmlJoinNode::setCombineDuplicate(bool isCombineDuplicate)
 {
-    Q_UNUSED(isCombineDuplicate);
+    // This is a read-write property
+
+    QM_D(QUmlJoinNode);
+    if (d->isCombineDuplicate != isCombineDuplicate) {
+        d->isCombineDuplicate = isCombineDuplicate;
+    }
 }
 
 /*!
@@ -86,12 +94,20 @@ void QUmlJoinNode::setCombineDuplicate(bool isCombineDuplicate)
  */
 QUmlValueSpecification *QUmlJoinNode::joinSpec() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlJoinNode);
+    return d->joinSpec;
 }
 
 void QUmlJoinNode::setJoinSpec(QUmlValueSpecification *joinSpec)
 {
-    Q_UNUSED(joinSpec);
+    // This is a read-write association end
+
+    QM_D(QUmlJoinNode);
+    if (d->joinSpec != joinSpec) {
+        d->joinSpec = joinSpec;
+    }
 }
 
 QT_END_NAMESPACE

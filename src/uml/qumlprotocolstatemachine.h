@@ -61,8 +61,8 @@ public:
 
     // Owned attributes
     QSet<QUmlProtocolConformance *> conformance() const;
-    void addConformance(QSet<QUmlProtocolConformance *> conformance);
-    void removeConformance(QSet<QUmlProtocolConformance *> conformance);
+    void addConformance(QUmlProtocolConformance *conformance);
+    void removeConformance(QUmlProtocolConformance *conformance);
 };
 
 QT_END_NAMESPACE

@@ -67,19 +67,27 @@ QUmlArtifact::QUmlArtifact(bool create_d_ptr) :
         set_d_ptr(new QUmlArtifactPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     A concrete name that is used to refer to the Artifact in a physical context. Example: file system name, universal resource locator.
  */
 QString QUmlArtifact::fileName() const
 {
-    return QString();
+    // This is a read-write property
+
+    QM_D(const QUmlArtifact);
+    return d->fileName;
 }
 
 void QUmlArtifact::setFileName(QString fileName)
 {
-    Q_UNUSED(fileName);
+    // This is a read-write property
+
+    QM_D(QUmlArtifact);
+    if (d->fileName != fileName) {
+        d->fileName = fileName;
+    }
 }
 
 /*!
@@ -87,17 +95,30 @@ void QUmlArtifact::setFileName(QString fileName)
  */
 QSet<QUmlManifestation *> QUmlArtifact::manifestation() const
 {
-    return QSet<QUmlManifestation *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlArtifact);
+    return d->manifestation;
 }
 
-void QUmlArtifact::addManifestation(QSet<QUmlManifestation *> manifestation)
+void QUmlArtifact::addManifestation(QUmlManifestation *manifestation)
 {
-    Q_UNUSED(manifestation);
+    // This is a read-write association end
+
+    QM_D(QUmlArtifact);
+    if (!d->manifestation.contains(manifestation)) {
+        d->manifestation.insert(manifestation);
+    }
 }
 
-void QUmlArtifact::removeManifestation(QSet<QUmlManifestation *> manifestation)
+void QUmlArtifact::removeManifestation(QUmlManifestation *manifestation)
 {
-    Q_UNUSED(manifestation);
+    // This is a read-write association end
+
+    QM_D(QUmlArtifact);
+    if (d->manifestation.contains(manifestation)) {
+        d->manifestation.remove(manifestation);
+    }
 }
 
 /*!
@@ -105,17 +126,30 @@ void QUmlArtifact::removeManifestation(QSet<QUmlManifestation *> manifestation)
  */
 QSet<QUmlArtifact *> QUmlArtifact::nestedArtifact() const
 {
-    return QSet<QUmlArtifact *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlArtifact);
+    return d->nestedArtifact;
 }
 
-void QUmlArtifact::addNestedArtifact(QSet<QUmlArtifact *> nestedArtifact)
+void QUmlArtifact::addNestedArtifact(QUmlArtifact *nestedArtifact)
 {
-    Q_UNUSED(nestedArtifact);
+    // This is a read-write association end
+
+    QM_D(QUmlArtifact);
+    if (!d->nestedArtifact.contains(nestedArtifact)) {
+        d->nestedArtifact.insert(nestedArtifact);
+    }
 }
 
-void QUmlArtifact::removeNestedArtifact(QSet<QUmlArtifact *> nestedArtifact)
+void QUmlArtifact::removeNestedArtifact(QUmlArtifact *nestedArtifact)
 {
-    Q_UNUSED(nestedArtifact);
+    // This is a read-write association end
+
+    QM_D(QUmlArtifact);
+    if (d->nestedArtifact.contains(nestedArtifact)) {
+        d->nestedArtifact.remove(nestedArtifact);
+    }
 }
 
 /*!
@@ -123,17 +157,30 @@ void QUmlArtifact::removeNestedArtifact(QSet<QUmlArtifact *> nestedArtifact)
  */
 QList<QUmlProperty *> QUmlArtifact::ownedAttribute() const
 {
-    return QList<QUmlProperty *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlArtifact);
+    return d->ownedAttribute;
 }
 
-void QUmlArtifact::addOwnedAttribute(QList<QUmlProperty *> ownedAttribute)
+void QUmlArtifact::addOwnedAttribute(QUmlProperty *ownedAttribute)
 {
-    Q_UNUSED(ownedAttribute);
+    // This is a read-write association end
+
+    QM_D(QUmlArtifact);
+    if (!d->ownedAttribute.contains(ownedAttribute)) {
+        d->ownedAttribute.append(ownedAttribute);
+    }
 }
 
-void QUmlArtifact::removeOwnedAttribute(QList<QUmlProperty *> ownedAttribute)
+void QUmlArtifact::removeOwnedAttribute(QUmlProperty *ownedAttribute)
 {
-    Q_UNUSED(ownedAttribute);
+    // This is a read-write association end
+
+    QM_D(QUmlArtifact);
+    if (d->ownedAttribute.contains(ownedAttribute)) {
+        d->ownedAttribute.removeAll(ownedAttribute);
+    }
 }
 
 /*!
@@ -141,17 +188,30 @@ void QUmlArtifact::removeOwnedAttribute(QList<QUmlProperty *> ownedAttribute)
  */
 QList<QUmlOperation *> QUmlArtifact::ownedOperation() const
 {
-    return QList<QUmlOperation *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlArtifact);
+    return d->ownedOperation;
 }
 
-void QUmlArtifact::addOwnedOperation(QList<QUmlOperation *> ownedOperation)
+void QUmlArtifact::addOwnedOperation(QUmlOperation *ownedOperation)
 {
-    Q_UNUSED(ownedOperation);
+    // This is a read-write association end
+
+    QM_D(QUmlArtifact);
+    if (!d->ownedOperation.contains(ownedOperation)) {
+        d->ownedOperation.append(ownedOperation);
+    }
 }
 
-void QUmlArtifact::removeOwnedOperation(QList<QUmlOperation *> ownedOperation)
+void QUmlArtifact::removeOwnedOperation(QUmlOperation *ownedOperation)
 {
-    Q_UNUSED(ownedOperation);
+    // This is a read-write association end
+
+    QM_D(QUmlArtifact);
+    if (d->ownedOperation.contains(ownedOperation)) {
+        d->ownedOperation.removeAll(ownedOperation);
+    }
 }
 
 QT_END_NAMESPACE

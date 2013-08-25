@@ -68,19 +68,27 @@ QUmlLinkEndData::QUmlLinkEndData(bool create_d_ptr) :
         set_d_ptr(new QUmlLinkEndDataPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Association end for which this link-end data specifies values.
  */
 QUmlProperty *QUmlLinkEndData::end() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlLinkEndData);
+    return d->end;
 }
 
 void QUmlLinkEndData::setEnd(QUmlProperty *end)
 {
-    Q_UNUSED(end);
+    // This is a read-write association end
+
+    QM_D(QUmlLinkEndData);
+    if (d->end != end) {
+        d->end = end;
+    }
 }
 
 /*!
@@ -88,17 +96,30 @@ void QUmlLinkEndData::setEnd(QUmlProperty *end)
  */
 QSet<QUmlQualifierValue *> QUmlLinkEndData::qualifier() const
 {
-    return QSet<QUmlQualifierValue *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlLinkEndData);
+    return d->qualifier;
 }
 
-void QUmlLinkEndData::addQualifier(QSet<QUmlQualifierValue *> qualifier)
+void QUmlLinkEndData::addQualifier(QUmlQualifierValue *qualifier)
 {
-    Q_UNUSED(qualifier);
+    // This is a read-write association end
+
+    QM_D(QUmlLinkEndData);
+    if (!d->qualifier.contains(qualifier)) {
+        d->qualifier.insert(qualifier);
+    }
 }
 
-void QUmlLinkEndData::removeQualifier(QSet<QUmlQualifierValue *> qualifier)
+void QUmlLinkEndData::removeQualifier(QUmlQualifierValue *qualifier)
 {
-    Q_UNUSED(qualifier);
+    // This is a read-write association end
+
+    QM_D(QUmlLinkEndData);
+    if (d->qualifier.contains(qualifier)) {
+        d->qualifier.remove(qualifier);
+    }
 }
 
 /*!
@@ -106,12 +127,20 @@ void QUmlLinkEndData::removeQualifier(QSet<QUmlQualifierValue *> qualifier)
  */
 QUmlInputPin *QUmlLinkEndData::value() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlLinkEndData);
+    return d->value;
 }
 
 void QUmlLinkEndData::setValue(QUmlInputPin *value)
 {
-    Q_UNUSED(value);
+    // This is a read-write association end
+
+    QM_D(QUmlLinkEndData);
+    if (d->value != value) {
+        d->value = value;
+    }
 }
 
 QT_END_NAMESPACE

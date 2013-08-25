@@ -63,15 +63,12 @@ public:
     QUmlProperty *associationEnd;
     QUmlClass *class_;
     QUmlDataType *datatype;
-    QString default_;
     QUmlValueSpecification *defaultValue;
     QUmlInterface *interface_;
-    bool isComposite;
     bool isDerived;
     bool isDerivedUnion;
     bool isID;
     bool isReadOnly;
-    QUmlProperty *opposite;
     QUmlAssociation *owningAssociation;
     QList<QUmlProperty *> qualifier;
     QSet<QUmlProperty *> redefinedProperty;

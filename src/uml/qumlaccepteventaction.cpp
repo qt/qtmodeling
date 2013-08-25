@@ -66,19 +66,27 @@ QUmlAcceptEventAction::QUmlAcceptEventAction(bool create_d_ptr) :
         set_d_ptr(new QUmlAcceptEventActionPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Indicates whether there is a single output pin for the event, or multiple output pins for attributes of the event.
  */
 bool QUmlAcceptEventAction::isUnmarshall() const
 {
-    return bool();
+    // This is a read-write property
+
+    QM_D(const QUmlAcceptEventAction);
+    return d->isUnmarshall;
 }
 
 void QUmlAcceptEventAction::setUnmarshall(bool isUnmarshall)
 {
-    Q_UNUSED(isUnmarshall);
+    // This is a read-write property
+
+    QM_D(QUmlAcceptEventAction);
+    if (d->isUnmarshall != isUnmarshall) {
+        d->isUnmarshall = isUnmarshall;
+    }
 }
 
 /*!
@@ -86,17 +94,30 @@ void QUmlAcceptEventAction::setUnmarshall(bool isUnmarshall)
  */
 QSet<QUmlOutputPin *> QUmlAcceptEventAction::result() const
 {
-    return QSet<QUmlOutputPin *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlAcceptEventAction);
+    return d->result;
 }
 
-void QUmlAcceptEventAction::addResult(QSet<QUmlOutputPin *> result)
+void QUmlAcceptEventAction::addResult(QUmlOutputPin *result)
 {
-    Q_UNUSED(result);
+    // This is a read-write association end
+
+    QM_D(QUmlAcceptEventAction);
+    if (!d->result.contains(result)) {
+        d->result.insert(result);
+    }
 }
 
-void QUmlAcceptEventAction::removeResult(QSet<QUmlOutputPin *> result)
+void QUmlAcceptEventAction::removeResult(QUmlOutputPin *result)
 {
-    Q_UNUSED(result);
+    // This is a read-write association end
+
+    QM_D(QUmlAcceptEventAction);
+    if (d->result.contains(result)) {
+        d->result.remove(result);
+    }
 }
 
 /*!
@@ -104,17 +125,30 @@ void QUmlAcceptEventAction::removeResult(QSet<QUmlOutputPin *> result)
  */
 QSet<QUmlTrigger *> QUmlAcceptEventAction::trigger() const
 {
-    return QSet<QUmlTrigger *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlAcceptEventAction);
+    return d->trigger;
 }
 
-void QUmlAcceptEventAction::addTrigger(QSet<QUmlTrigger *> trigger)
+void QUmlAcceptEventAction::addTrigger(QUmlTrigger *trigger)
 {
-    Q_UNUSED(trigger);
+    // This is a read-write association end
+
+    QM_D(QUmlAcceptEventAction);
+    if (!d->trigger.contains(trigger)) {
+        d->trigger.insert(trigger);
+    }
 }
 
-void QUmlAcceptEventAction::removeTrigger(QSet<QUmlTrigger *> trigger)
+void QUmlAcceptEventAction::removeTrigger(QUmlTrigger *trigger)
 {
-    Q_UNUSED(trigger);
+    // This is a read-write association end
+
+    QM_D(QUmlAcceptEventAction);
+    if (d->trigger.contains(trigger)) {
+        d->trigger.remove(trigger);
+    }
 }
 
 QT_END_NAMESPACE

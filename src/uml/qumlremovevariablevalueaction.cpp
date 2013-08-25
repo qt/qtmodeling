@@ -66,19 +66,27 @@ QUmlRemoveVariableValueAction::QUmlRemoveVariableValueAction(bool create_d_ptr) 
         set_d_ptr(new QUmlRemoveVariableValueActionPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     Specifies whether to remove duplicates of the value in nonunique variables.
  */
 bool QUmlRemoveVariableValueAction::isRemoveDuplicates() const
 {
-    return bool();
+    // This is a read-write property
+
+    QM_D(const QUmlRemoveVariableValueAction);
+    return d->isRemoveDuplicates;
 }
 
 void QUmlRemoveVariableValueAction::setRemoveDuplicates(bool isRemoveDuplicates)
 {
-    Q_UNUSED(isRemoveDuplicates);
+    // This is a read-write property
+
+    QM_D(QUmlRemoveVariableValueAction);
+    if (d->isRemoveDuplicates != isRemoveDuplicates) {
+        d->isRemoveDuplicates = isRemoveDuplicates;
+    }
 }
 
 /*!
@@ -86,12 +94,20 @@ void QUmlRemoveVariableValueAction::setRemoveDuplicates(bool isRemoveDuplicates)
  */
 QUmlInputPin *QUmlRemoveVariableValueAction::removeAt() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlRemoveVariableValueAction);
+    return d->removeAt;
 }
 
 void QUmlRemoveVariableValueAction::setRemoveAt(QUmlInputPin *removeAt)
 {
-    Q_UNUSED(removeAt);
+    // This is a read-write association end
+
+    QM_D(QUmlRemoveVariableValueAction);
+    if (d->removeAt != removeAt) {
+        d->removeAt = removeAt;
+    }
 }
 
 QT_END_NAMESPACE

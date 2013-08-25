@@ -68,24 +68,37 @@ QUmlInterface::QUmlInterface(bool create_d_ptr) :
         set_d_ptr(new QUmlInterfacePrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     References all the Classifiers that are defined (nested) within the Class.
  */
 QList<QUmlClassifier *> QUmlInterface::nestedClassifier() const
 {
-    return QList<QUmlClassifier *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlInterface);
+    return d->nestedClassifier;
 }
 
-void QUmlInterface::addNestedClassifier(QList<QUmlClassifier *> nestedClassifier)
+void QUmlInterface::addNestedClassifier(QUmlClassifier *nestedClassifier)
 {
-    Q_UNUSED(nestedClassifier);
+    // This is a read-write association end
+
+    QM_D(QUmlInterface);
+    if (!d->nestedClassifier.contains(nestedClassifier)) {
+        d->nestedClassifier.append(nestedClassifier);
+    }
 }
 
-void QUmlInterface::removeNestedClassifier(QList<QUmlClassifier *> nestedClassifier)
+void QUmlInterface::removeNestedClassifier(QUmlClassifier *nestedClassifier)
 {
-    Q_UNUSED(nestedClassifier);
+    // This is a read-write association end
+
+    QM_D(QUmlInterface);
+    if (d->nestedClassifier.contains(nestedClassifier)) {
+        d->nestedClassifier.removeAll(nestedClassifier);
+    }
 }
 
 /*!
@@ -93,17 +106,30 @@ void QUmlInterface::removeNestedClassifier(QList<QUmlClassifier *> nestedClassif
  */
 QList<QUmlProperty *> QUmlInterface::ownedAttribute() const
 {
-    return QList<QUmlProperty *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlInterface);
+    return d->ownedAttribute;
 }
 
-void QUmlInterface::addOwnedAttribute(QList<QUmlProperty *> ownedAttribute)
+void QUmlInterface::addOwnedAttribute(QUmlProperty *ownedAttribute)
 {
-    Q_UNUSED(ownedAttribute);
+    // This is a read-write association end
+
+    QM_D(QUmlInterface);
+    if (!d->ownedAttribute.contains(ownedAttribute)) {
+        d->ownedAttribute.append(ownedAttribute);
+    }
 }
 
-void QUmlInterface::removeOwnedAttribute(QList<QUmlProperty *> ownedAttribute)
+void QUmlInterface::removeOwnedAttribute(QUmlProperty *ownedAttribute)
 {
-    Q_UNUSED(ownedAttribute);
+    // This is a read-write association end
+
+    QM_D(QUmlInterface);
+    if (d->ownedAttribute.contains(ownedAttribute)) {
+        d->ownedAttribute.removeAll(ownedAttribute);
+    }
 }
 
 /*!
@@ -111,17 +137,30 @@ void QUmlInterface::removeOwnedAttribute(QList<QUmlProperty *> ownedAttribute)
  */
 QList<QUmlOperation *> QUmlInterface::ownedOperation() const
 {
-    return QList<QUmlOperation *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlInterface);
+    return d->ownedOperation;
 }
 
-void QUmlInterface::addOwnedOperation(QList<QUmlOperation *> ownedOperation)
+void QUmlInterface::addOwnedOperation(QUmlOperation *ownedOperation)
 {
-    Q_UNUSED(ownedOperation);
+    // This is a read-write association end
+
+    QM_D(QUmlInterface);
+    if (!d->ownedOperation.contains(ownedOperation)) {
+        d->ownedOperation.append(ownedOperation);
+    }
 }
 
-void QUmlInterface::removeOwnedOperation(QList<QUmlOperation *> ownedOperation)
+void QUmlInterface::removeOwnedOperation(QUmlOperation *ownedOperation)
 {
-    Q_UNUSED(ownedOperation);
+    // This is a read-write association end
+
+    QM_D(QUmlInterface);
+    if (d->ownedOperation.contains(ownedOperation)) {
+        d->ownedOperation.removeAll(ownedOperation);
+    }
 }
 
 /*!
@@ -129,17 +168,30 @@ void QUmlInterface::removeOwnedOperation(QList<QUmlOperation *> ownedOperation)
  */
 QSet<QUmlReception *> QUmlInterface::ownedReception() const
 {
-    return QSet<QUmlReception *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlInterface);
+    return d->ownedReception;
 }
 
-void QUmlInterface::addOwnedReception(QSet<QUmlReception *> ownedReception)
+void QUmlInterface::addOwnedReception(QUmlReception *ownedReception)
 {
-    Q_UNUSED(ownedReception);
+    // This is a read-write association end
+
+    QM_D(QUmlInterface);
+    if (!d->ownedReception.contains(ownedReception)) {
+        d->ownedReception.insert(ownedReception);
+    }
 }
 
-void QUmlInterface::removeOwnedReception(QSet<QUmlReception *> ownedReception)
+void QUmlInterface::removeOwnedReception(QUmlReception *ownedReception)
 {
-    Q_UNUSED(ownedReception);
+    // This is a read-write association end
+
+    QM_D(QUmlInterface);
+    if (d->ownedReception.contains(ownedReception)) {
+        d->ownedReception.remove(ownedReception);
+    }
 }
 
 /*!
@@ -147,12 +199,20 @@ void QUmlInterface::removeOwnedReception(QSet<QUmlReception *> ownedReception)
  */
 QUmlProtocolStateMachine *QUmlInterface::protocol() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlInterface);
+    return d->protocol;
 }
 
 void QUmlInterface::setProtocol(QUmlProtocolStateMachine *protocol)
 {
-    Q_UNUSED(protocol);
+    // This is a read-write association end
+
+    QM_D(QUmlInterface);
+    if (d->protocol != protocol) {
+        d->protocol = protocol;
+    }
 }
 
 /*!
@@ -160,17 +220,30 @@ void QUmlInterface::setProtocol(QUmlProtocolStateMachine *protocol)
  */
 QSet<QUmlInterface *> QUmlInterface::redefinedInterface() const
 {
-    return QSet<QUmlInterface *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlInterface);
+    return d->redefinedInterface;
 }
 
-void QUmlInterface::addRedefinedInterface(QSet<QUmlInterface *> redefinedInterface)
+void QUmlInterface::addRedefinedInterface(QUmlInterface *redefinedInterface)
 {
-    Q_UNUSED(redefinedInterface);
+    // This is a read-write association end
+
+    QM_D(QUmlInterface);
+    if (!d->redefinedInterface.contains(redefinedInterface)) {
+        d->redefinedInterface.insert(redefinedInterface);
+    }
 }
 
-void QUmlInterface::removeRedefinedInterface(QSet<QUmlInterface *> redefinedInterface)
+void QUmlInterface::removeRedefinedInterface(QUmlInterface *redefinedInterface)
 {
-    Q_UNUSED(redefinedInterface);
+    // This is a read-write association end
+
+    QM_D(QUmlInterface);
+    if (d->redefinedInterface.contains(redefinedInterface)) {
+        d->redefinedInterface.remove(redefinedInterface);
+    }
 }
 
 QT_END_NAMESPACE

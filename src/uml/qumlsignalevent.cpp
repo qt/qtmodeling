@@ -65,19 +65,27 @@ QUmlSignalEvent::QUmlSignalEvent(bool create_d_ptr) :
         set_d_ptr(new QUmlSignalEventPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The specific signal that is associated with this event.
  */
 QUmlSignal *QUmlSignalEvent::signal() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlSignalEvent);
+    return d->signal;
 }
 
 void QUmlSignalEvent::setSignal(QUmlSignal *signal)
 {
-    Q_UNUSED(signal);
+    // This is a read-write association end
+
+    QM_D(QUmlSignalEvent);
+    if (d->signal != signal) {
+        d->signal = signal;
+    }
 }
 
 QT_END_NAMESPACE

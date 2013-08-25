@@ -67,19 +67,27 @@ QUmlVertex::QUmlVertex(bool create_d_ptr) :
         set_d_ptr(new QUmlVertexPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The region that contains this vertex.
  */
 QUmlRegion *QUmlVertex::container() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlVertex);
+    return d->container;
 }
 
 void QUmlVertex::setContainer(QUmlRegion *container)
 {
-    Q_UNUSED(container);
+    // This is a read-write association end
+
+    QM_D(QUmlVertex);
+    if (d->container != container) {
+        d->container = container;
+    }
 }
 
 /*!
@@ -87,6 +95,10 @@ void QUmlVertex::setContainer(QUmlRegion *container)
  */
 QSet<QUmlTransition *> QUmlVertex::incoming() const
 {
+    // This is a read-only derived association end
+
+    qWarning("QUmlVertex::incoming(): to be implemented (this is a derived association end)");
+
     return QSet<QUmlTransition *>();
 }
 
@@ -95,10 +107,14 @@ QSet<QUmlTransition *> QUmlVertex::incoming() const
  */
 QSet<QUmlTransition *> QUmlVertex::outgoing() const
 {
+    // This is a read-only derived association end
+
+    qWarning("QUmlVertex::outgoing(): to be implemented (this is a derived association end)");
+
     return QSet<QUmlTransition *>();
 }
 
-// Operations
+// OPERATIONS
 
 /*!
     The operation containingStateMachine() returns the state machine in which this Vertex is defined

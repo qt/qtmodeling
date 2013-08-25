@@ -56,8 +56,6 @@ class Q_UML_EXPORT QUmlExtensionPrivate : public QUmlAssociationPrivate
 public:
     QUmlExtensionPrivate();
 
-    bool isRequired;
-    QUmlClass *metaclass;
     QUmlExtensionEnd *ownedEnd;
 };
 

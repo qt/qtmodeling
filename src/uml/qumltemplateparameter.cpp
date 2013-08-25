@@ -70,19 +70,27 @@ QUmlTemplateParameter::QUmlTemplateParameter(bool create_d_ptr) :
         set_d_ptr(new QUmlTemplateParameterPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The element that is the default for this formal template parameter.
  */
 QUmlParameterableElement *QUmlTemplateParameter::default_() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlTemplateParameter);
+    return d->default_;
 }
 
 void QUmlTemplateParameter::setDefault(QUmlParameterableElement *default_)
 {
-    Q_UNUSED(default_);
+    // This is a read-write association end
+
+    QM_D(QUmlTemplateParameter);
+    if (d->default_ != default_) {
+        d->default_ = default_;
+    }
 }
 
 /*!
@@ -90,12 +98,20 @@ void QUmlTemplateParameter::setDefault(QUmlParameterableElement *default_)
  */
 QUmlParameterableElement *QUmlTemplateParameter::ownedDefault() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlTemplateParameter);
+    return d->ownedDefault;
 }
 
 void QUmlTemplateParameter::setOwnedDefault(QUmlParameterableElement *ownedDefault)
 {
-    Q_UNUSED(ownedDefault);
+    // This is a read-write association end
+
+    QM_D(QUmlTemplateParameter);
+    if (d->ownedDefault != ownedDefault) {
+        d->ownedDefault = ownedDefault;
+    }
 }
 
 /*!
@@ -103,12 +119,20 @@ void QUmlTemplateParameter::setOwnedDefault(QUmlParameterableElement *ownedDefau
  */
 QUmlParameterableElement *QUmlTemplateParameter::ownedParameteredElement() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlTemplateParameter);
+    return d->ownedParameteredElement;
 }
 
 void QUmlTemplateParameter::setOwnedParameteredElement(QUmlParameterableElement *ownedParameteredElement)
 {
-    Q_UNUSED(ownedParameteredElement);
+    // This is a read-write association end
+
+    QM_D(QUmlTemplateParameter);
+    if (d->ownedParameteredElement != ownedParameteredElement) {
+        d->ownedParameteredElement = ownedParameteredElement;
+    }
 }
 
 /*!
@@ -116,12 +140,20 @@ void QUmlTemplateParameter::setOwnedParameteredElement(QUmlParameterableElement 
  */
 QUmlParameterableElement *QUmlTemplateParameter::parameteredElement() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlTemplateParameter);
+    return d->parameteredElement;
 }
 
 void QUmlTemplateParameter::setParameteredElement(QUmlParameterableElement *parameteredElement)
 {
-    Q_UNUSED(parameteredElement);
+    // This is a read-write association end
+
+    QM_D(QUmlTemplateParameter);
+    if (d->parameteredElement != parameteredElement) {
+        d->parameteredElement = parameteredElement;
+    }
 }
 
 /*!
@@ -129,12 +161,20 @@ void QUmlTemplateParameter::setParameteredElement(QUmlParameterableElement *para
  */
 QUmlTemplateSignature *QUmlTemplateParameter::signature() const
 {
-    return 0;
+    // This is a read-write association end
+
+    QM_D(const QUmlTemplateParameter);
+    return d->signature;
 }
 
 void QUmlTemplateParameter::setSignature(QUmlTemplateSignature *signature)
 {
-    Q_UNUSED(signature);
+    // This is a read-write association end
+
+    QM_D(QUmlTemplateParameter);
+    if (d->signature != signature) {
+        d->signature = signature;
+    }
 }
 
 QT_END_NAMESPACE

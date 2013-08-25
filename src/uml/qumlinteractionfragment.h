@@ -64,15 +64,15 @@ public:
 
     // Owned attributes
     QSet<QUmlLifeline *> covered() const;
-    void addCovered(QSet<QUmlLifeline *> covered);
-    void removeCovered(QSet<QUmlLifeline *> covered);
+    void addCovered(QUmlLifeline *covered);
+    void removeCovered(QUmlLifeline *covered);
     QUmlInteraction *enclosingInteraction() const;
     void setEnclosingInteraction(QUmlInteraction *enclosingInteraction);
     QUmlInteractionOperand *enclosingOperand() const;
     void setEnclosingOperand(QUmlInteractionOperand *enclosingOperand);
     QSet<QUmlGeneralOrdering *> generalOrdering() const;
-    void addGeneralOrdering(QSet<QUmlGeneralOrdering *> generalOrdering);
-    void removeGeneralOrdering(QSet<QUmlGeneralOrdering *> generalOrdering);
+    void addGeneralOrdering(QUmlGeneralOrdering *generalOrdering);
+    void removeGeneralOrdering(QUmlGeneralOrdering *generalOrdering);
 };
 
 QT_END_NAMESPACE

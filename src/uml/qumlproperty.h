@@ -101,14 +101,14 @@ public:
     QUmlAssociation *owningAssociation() const;
     void setOwningAssociation(QUmlAssociation *owningAssociation);
     QList<QUmlProperty *> qualifier() const;
-    void addQualifier(QList<QUmlProperty *> qualifier);
-    void removeQualifier(QList<QUmlProperty *> qualifier);
+    void addQualifier(QUmlProperty *qualifier);
+    void removeQualifier(QUmlProperty *qualifier);
     QSet<QUmlProperty *> redefinedProperty() const;
-    void addRedefinedProperty(QSet<QUmlProperty *> redefinedProperty);
-    void removeRedefinedProperty(QSet<QUmlProperty *> redefinedProperty);
+    void addRedefinedProperty(QUmlProperty *redefinedProperty);
+    void removeRedefinedProperty(QUmlProperty *redefinedProperty);
     QSet<QUmlProperty *> subsettedProperty() const;
-    void addSubsettedProperty(QSet<QUmlProperty *> subsettedProperty);
-    void removeSubsettedProperty(QSet<QUmlProperty *> subsettedProperty);
+    void addSubsettedProperty(QUmlProperty *subsettedProperty);
+    void removeSubsettedProperty(QUmlProperty *subsettedProperty);
 
     // Operations
     bool isAttribute(QUmlProperty *p) const;

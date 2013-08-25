@@ -64,24 +64,37 @@ QUmlEnumeration::QUmlEnumeration(bool create_d_ptr) :
         set_d_ptr(new QUmlEnumerationPrivate);
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES
 
 /*!
     The ordered set of literals for this Enumeration.
  */
 QList<QUmlEnumerationLiteral *> QUmlEnumeration::ownedLiteral() const
 {
-    return QList<QUmlEnumerationLiteral *>();
+    // This is a read-write association end
+
+    QM_D(const QUmlEnumeration);
+    return d->ownedLiteral;
 }
 
-void QUmlEnumeration::addOwnedLiteral(QList<QUmlEnumerationLiteral *> ownedLiteral)
+void QUmlEnumeration::addOwnedLiteral(QUmlEnumerationLiteral *ownedLiteral)
 {
-    Q_UNUSED(ownedLiteral);
+    // This is a read-write association end
+
+    QM_D(QUmlEnumeration);
+    if (!d->ownedLiteral.contains(ownedLiteral)) {
+        d->ownedLiteral.append(ownedLiteral);
+    }
 }
 
-void QUmlEnumeration::removeOwnedLiteral(QList<QUmlEnumerationLiteral *> ownedLiteral)
+void QUmlEnumeration::removeOwnedLiteral(QUmlEnumerationLiteral *ownedLiteral)
 {
-    Q_UNUSED(ownedLiteral);
+    // This is a read-write association end
+
+    QM_D(QUmlEnumeration);
+    if (d->ownedLiteral.contains(ownedLiteral)) {
+        d->ownedLiteral.removeAll(ownedLiteral);
+    }
 }
 
 QT_END_NAMESPACE
