@@ -52,6 +52,8 @@ QT_MODULE(QtUml)
 class Q_MODELING_EXPORT QModelingObjectPrivate
 {
 public:
+    virtual ~QModelingObjectPrivate();
+
     QModelingObject *q_ptr;
 };
 

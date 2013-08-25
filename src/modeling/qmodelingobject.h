@@ -49,16 +49,18 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtModeling)
 
+#define QM_D(Class) Class##Private *d = dynamic_cast<Class##Private *>(d_ptr);
+#define QM_Q(Class) Class *q = dynamic_cast<Class *>(q_ptr);
+
 class QModelingObjectPrivate;
 class Q_MODELING_EXPORT QModelingObject
 {
 public:
     QModelingObject(bool create_d_ptr = true);
+    virtual ~QModelingObject();
 
 protected:
     void set_d_ptr(QModelingObjectPrivate *d_ptr);
-
-private:
     QModelingObjectPrivate *d_ptr;
 };
 
