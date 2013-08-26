@@ -76,6 +76,18 @@ QUmlBehavioredClassifier *QUmlBehavior::context() const
     return 0;
 }
 
+void QUmlBehavior::setContext(QUmlBehavioredClassifier *context)
+{
+    // This is a read-only derived association end
+
+    qWarning("QUmlBehavior::context(): to be implemented (this is a derived association end)");
+    Q_UNUSED(context);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
+}
+
 /*!
     Tells whether the behavior can be invoked while it is still executing from a previous invocation.
  */

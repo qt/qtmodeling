@@ -72,7 +72,12 @@ void QUmlStringExpression::setOwningExpression(QUmlStringExpression *owningExpre
     // This is a read-write association end
 
     if (_owningExpression != owningExpression) {
+        // Adjust subsetted properties
+
         _owningExpression = owningExpression;
+
+        // Adjust subsetted properties
+        setOwner(owningExpression);
     }
 }
 

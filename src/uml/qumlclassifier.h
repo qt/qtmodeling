@@ -72,10 +72,14 @@ public:
 
     // Owned attributes
     QSet<QUmlProperty *> attribute() const;
+    Q_DECL_HIDDEN void addAttribute(QUmlProperty *attribute);
+    Q_DECL_HIDDEN void removeAttribute(QUmlProperty *attribute);
     QSet<QUmlCollaborationUse *> collaborationUse() const;
     void addCollaborationUse(QUmlCollaborationUse *collaborationUse);
     void removeCollaborationUse(QUmlCollaborationUse *collaborationUse);
     QSet<QUmlFeature *> feature() const;
+    Q_DECL_HIDDEN void addFeature(QUmlFeature *feature);
+    Q_DECL_HIDDEN void removeFeature(QUmlFeature *feature);
     QSet<QUmlClassifier *> general() const;
     void addGeneral(QUmlClassifier *general);
     void removeGeneral(QUmlClassifier *general);
@@ -83,6 +87,8 @@ public:
     void addGeneralization(QUmlGeneralization *generalization);
     void removeGeneralization(QUmlGeneralization *generalization);
     QSet<QUmlNamedElement *> inheritedMember() const;
+    Q_DECL_HIDDEN void addInheritedMember(QUmlNamedElement *inheritedMember);
+    Q_DECL_HIDDEN void removeInheritedMember(QUmlNamedElement *inheritedMember);
     bool isAbstract() const;
     void setAbstract(bool isAbstract);
     bool isFinalSpecialization() const;

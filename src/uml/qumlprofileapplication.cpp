@@ -77,7 +77,15 @@ void QUmlProfileApplication::setAppliedProfile(QUmlProfile *appliedProfile)
     // This is a read-write association end
 
     if (_appliedProfile != appliedProfile) {
+        // Adjust subsetted properties
+        removeTarget(_appliedProfile);
+
         _appliedProfile = appliedProfile;
+
+        // Adjust subsetted properties
+        if (appliedProfile) {
+            addTarget(appliedProfile);
+        }
     }
 }
 
@@ -96,7 +104,16 @@ void QUmlProfileApplication::setApplyingPackage(QUmlPackage *applyingPackage)
     // This is a read-write association end
 
     if (_applyingPackage != applyingPackage) {
+        // Adjust subsetted properties
+        removeSource(_applyingPackage);
+
         _applyingPackage = applyingPackage;
+
+        // Adjust subsetted properties
+        setOwner(applyingPackage);
+        if (applyingPackage) {
+            addSource(applyingPackage);
+        }
     }
 }
 

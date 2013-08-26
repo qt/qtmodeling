@@ -68,6 +68,24 @@ QSet<QUmlElement *> QUmlDirectedRelationship::source() const
     return _source;
 }
 
+void QUmlDirectedRelationship::addSource(QUmlElement *source)
+{
+    // This is a read-only derived union association end
+
+    if (!_source.contains(source)) {
+        _source.insert(source);
+    }
+}
+
+void QUmlDirectedRelationship::removeSource(QUmlElement *source)
+{
+    // This is a read-only derived union association end
+
+    if (_source.contains(source)) {
+        _source.remove(source);
+    }
+}
+
 /*!
     Specifies the targets of the DirectedRelationship.
  */
@@ -76,6 +94,24 @@ QSet<QUmlElement *> QUmlDirectedRelationship::target() const
     // This is a read-only derived union association end
 
     return _target;
+}
+
+void QUmlDirectedRelationship::addTarget(QUmlElement *target)
+{
+    // This is a read-only derived union association end
+
+    if (!_target.contains(target)) {
+        _target.insert(target);
+    }
+}
+
+void QUmlDirectedRelationship::removeTarget(QUmlElement *target)
+{
+    // This is a read-only derived union association end
+
+    if (_target.contains(target)) {
+        _target.remove(target);
+    }
 }
 
 QT_END_NAMESPACE

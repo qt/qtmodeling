@@ -51,7 +51,7 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QUmlDeployedArtifact : public virtual QUmlNamedElement
+class Q_UML_EXPORT QUmlDeployedArtifact : virtual public QUmlNamedElement
 {
 public:
     Q_DECL_HIDDEN QUmlDeployedArtifact();

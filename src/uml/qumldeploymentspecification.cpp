@@ -74,7 +74,12 @@ void QUmlDeploymentSpecification::setDeployment(QUmlDeployment *deployment)
     // This is a read-write association end
 
     if (_deployment != deployment) {
+        // Adjust subsetted properties
+
         _deployment = deployment;
+
+        // Adjust subsetted properties
+        setOwner(deployment);
     }
 }
 

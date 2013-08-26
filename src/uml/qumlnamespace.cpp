@@ -101,6 +101,30 @@ QSet<QUmlPackageableElement *> QUmlNamespace::importedMember() const
     return QSet<QUmlPackageableElement *>();
 }
 
+void QUmlNamespace::addImportedMember(QUmlPackageableElement *importedMember)
+{
+    // This is a read-only derived association end
+
+    qWarning("QUmlNamespace::importedMember(): to be implemented (this is a derived association end)");
+    Q_UNUSED(importedMember);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
+}
+
+void QUmlNamespace::removeImportedMember(QUmlPackageableElement *importedMember)
+{
+    // This is a read-only derived association end
+
+    qWarning("QUmlNamespace::importedMember(): to be implemented (this is a derived association end)");
+    Q_UNUSED(importedMember);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
+}
+
 /*!
     A collection of NamedElements identifiable within the Namespace, either by being owned or by being introduced by importing or inheritance.
  */
@@ -111,6 +135,24 @@ QSet<QUmlNamedElement *> QUmlNamespace::member() const
     return _member;
 }
 
+void QUmlNamespace::addMember(QUmlNamedElement *member)
+{
+    // This is a read-only derived union association end
+
+    if (!_member.contains(member)) {
+        _member.insert(member);
+    }
+}
+
+void QUmlNamespace::removeMember(QUmlNamedElement *member)
+{
+    // This is a read-only derived union association end
+
+    if (_member.contains(member)) {
+        _member.remove(member);
+    }
+}
+
 /*!
     A collection of NamedElements owned by the Namespace.
  */
@@ -119,6 +161,24 @@ QSet<QUmlNamedElement *> QUmlNamespace::ownedMember() const
     // This is a read-only derived union association end
 
     return _ownedMember;
+}
+
+void QUmlNamespace::addOwnedMember(QUmlNamedElement *ownedMember)
+{
+    // This is a read-only derived union association end
+
+    if (!_ownedMember.contains(ownedMember)) {
+        _ownedMember.insert(ownedMember);
+    }
+}
+
+void QUmlNamespace::removeOwnedMember(QUmlNamedElement *ownedMember)
+{
+    // This is a read-only derived union association end
+
+    if (_ownedMember.contains(ownedMember)) {
+        _ownedMember.remove(ownedMember);
+    }
 }
 
 /*!

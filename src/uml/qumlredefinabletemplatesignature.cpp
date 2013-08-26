@@ -75,7 +75,15 @@ void QUmlRedefinableTemplateSignature::setClassifier(QUmlClassifier *classifier)
     // This is a read-write association end
 
     if (_classifier != classifier) {
+        // Adjust subsetted properties
+        removeRedefinitionContext(_classifier);
+
         _classifier = classifier;
+
+        // Adjust subsetted properties
+        if (classifier) {
+            addRedefinitionContext(classifier);
+        }
     }
 }
 
@@ -117,6 +125,30 @@ QSet<QUmlTemplateParameter *> QUmlRedefinableTemplateSignature::inheritedParamet
     qWarning("QUmlRedefinableTemplateSignature::inheritedParameter(): to be implemented (this is a derived association end)");
 
     return QSet<QUmlTemplateParameter *>();
+}
+
+void QUmlRedefinableTemplateSignature::addInheritedParameter(QUmlTemplateParameter *inheritedParameter)
+{
+    // This is a read-only derived association end
+
+    qWarning("QUmlRedefinableTemplateSignature::inheritedParameter(): to be implemented (this is a derived association end)");
+    Q_UNUSED(inheritedParameter);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
+}
+
+void QUmlRedefinableTemplateSignature::removeInheritedParameter(QUmlTemplateParameter *inheritedParameter)
+{
+    // This is a read-only derived association end
+
+    qWarning("QUmlRedefinableTemplateSignature::inheritedParameter(): to be implemented (this is a derived association end)");
+    Q_UNUSED(inheritedParameter);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
 }
 
 // OPERATIONS

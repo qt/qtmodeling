@@ -86,7 +86,12 @@ void QUmlActivityEdge::setActivity(QUmlActivity *activity)
     // This is a read-write association end
 
     if (_activity != activity) {
+        // Adjust subsetted properties
+
         _activity = activity;
+
+        // Adjust subsetted properties
+        setOwner(activity);
     }
 }
 
@@ -105,7 +110,15 @@ void QUmlActivityEdge::setGuard(QUmlValueSpecification *guard)
     // This is a read-write association end
 
     if (_guard != guard) {
+        // Adjust subsetted properties
+        removeOwnedElement(_guard);
+
         _guard = guard;
+
+        // Adjust subsetted properties
+        if (guard) {
+            addOwnedElement(guard);
+        }
     }
 }
 
@@ -117,6 +130,24 @@ QSet<QUmlActivityGroup *> QUmlActivityEdge::inGroup() const
     // This is a read-only derived union association end
 
     return _inGroup;
+}
+
+void QUmlActivityEdge::addInGroup(QUmlActivityGroup *inGroup)
+{
+    // This is a read-only derived union association end
+
+    if (!_inGroup.contains(inGroup)) {
+        _inGroup.insert(inGroup);
+    }
+}
+
+void QUmlActivityEdge::removeInGroup(QUmlActivityGroup *inGroup)
+{
+    // This is a read-only derived union association end
+
+    if (_inGroup.contains(inGroup)) {
+        _inGroup.remove(inGroup);
+    }
 }
 
 /*!
@@ -162,7 +193,16 @@ void QUmlActivityEdge::setInStructuredNode(QUmlStructuredActivityNode *inStructu
     // This is a read-write association end
 
     if (_inStructuredNode != inStructuredNode) {
+        // Adjust subsetted properties
+        removeInGroup(_inStructuredNode);
+
         _inStructuredNode = inStructuredNode;
+
+        // Adjust subsetted properties
+        if (inStructuredNode) {
+            addInGroup(inStructuredNode);
+        }
+        setOwner(inStructuredNode);
     }
 }
 
@@ -266,7 +306,15 @@ void QUmlActivityEdge::setWeight(QUmlValueSpecification *weight)
     // This is a read-write association end
 
     if (_weight != weight) {
+        // Adjust subsetted properties
+        removeOwnedElement(_weight);
+
         _weight = weight;
+
+        // Adjust subsetted properties
+        if (weight) {
+            addOwnedElement(weight);
+        }
     }
 }
 

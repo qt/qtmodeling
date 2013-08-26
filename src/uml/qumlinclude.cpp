@@ -75,7 +75,15 @@ void QUmlInclude::setAddition(QUmlUseCase *addition)
     // This is a read-write association end
 
     if (_addition != addition) {
+        // Adjust subsetted properties
+        removeTarget(_addition);
+
         _addition = addition;
+
+        // Adjust subsetted properties
+        if (addition) {
+            addTarget(addition);
+        }
     }
 }
 
@@ -94,7 +102,16 @@ void QUmlInclude::setIncludingCase(QUmlUseCase *includingCase)
     // This is a read-write association end
 
     if (_includingCase != includingCase) {
+        // Adjust subsetted properties
+        removeSource(_includingCase);
+
         _includingCase = includingCase;
+
+        // Adjust subsetted properties
+        if (includingCase) {
+            addSource(includingCase);
+        }
+        setNamespace(includingCase);
     }
 }
 

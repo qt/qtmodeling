@@ -95,7 +95,15 @@ void QUmlStateInvariant::setInvariant(QUmlConstraint *invariant)
     // This is a read-write association end
 
     if (_invariant != invariant) {
+        // Adjust subsetted properties
+        removeOwnedElement(_invariant);
+
         _invariant = invariant;
+
+        // Adjust subsetted properties
+        if (invariant) {
+            addOwnedElement(invariant);
+        }
     }
 }
 

@@ -74,7 +74,15 @@ void QUmlReadSelfAction::setResult(QUmlOutputPin *result)
     // This is a read-write association end
 
     if (_result != result) {
+        // Adjust subsetted properties
+        removeOutput(_result);
+
         _result = result;
+
+        // Adjust subsetted properties
+        if (result) {
+            addOutput(result);
+        }
     }
 }
 

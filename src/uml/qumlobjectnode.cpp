@@ -164,7 +164,15 @@ void QUmlObjectNode::setUpperBound(QUmlValueSpecification *upperBound)
     // This is a read-write association end
 
     if (_upperBound != upperBound) {
+        // Adjust subsetted properties
+        removeOwnedElement(_upperBound);
+
         _upperBound = upperBound;
+
+        // Adjust subsetted properties
+        if (upperBound) {
+            addOwnedElement(upperBound);
+        }
     }
 }
 

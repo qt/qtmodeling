@@ -61,6 +61,7 @@ public:
 
     // Owned attributes
     QUmlProperty *definingEnd() const;
+    Q_DECL_HIDDEN void setDefiningEnd(QUmlProperty *definingEnd);
     QUmlProperty *partWithPort() const;
     void setPartWithPort(QUmlProperty *partWithPort);
     QUmlConnectableElement *role() const;

@@ -98,7 +98,16 @@ void QUmlTemplateParameter::setOwnedDefault(QUmlParameterableElement *ownedDefau
     // This is a read-write association end
 
     if (_ownedDefault != ownedDefault) {
+        // Adjust subsetted properties
+        removeOwnedElement(_ownedDefault);
+
         _ownedDefault = ownedDefault;
+
+        // Adjust subsetted properties
+        if (ownedDefault) {
+            addOwnedElement(ownedDefault);
+        }
+        setDefault(ownedDefault);
     }
 }
 
@@ -117,7 +126,16 @@ void QUmlTemplateParameter::setOwnedParameteredElement(QUmlParameterableElement 
     // This is a read-write association end
 
     if (_ownedParameteredElement != ownedParameteredElement) {
+        // Adjust subsetted properties
+        removeOwnedElement(_ownedParameteredElement);
+
         _ownedParameteredElement = ownedParameteredElement;
+
+        // Adjust subsetted properties
+        setParameteredElement(ownedParameteredElement);
+        if (ownedParameteredElement) {
+            addOwnedElement(ownedParameteredElement);
+        }
     }
 }
 
@@ -155,7 +173,12 @@ void QUmlTemplateParameter::setSignature(QUmlTemplateSignature *signature)
     // This is a read-write association end
 
     if (_signature != signature) {
+        // Adjust subsetted properties
+
         _signature = signature;
+
+        // Adjust subsetted properties
+        setOwner(signature);
     }
 }
 

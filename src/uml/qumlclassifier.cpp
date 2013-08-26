@@ -82,6 +82,24 @@ QSet<QUmlProperty *> QUmlClassifier::attribute() const
     return _attribute;
 }
 
+void QUmlClassifier::addAttribute(QUmlProperty *attribute)
+{
+    // This is a read-only derived union association end
+
+    if (!_attribute.contains(attribute)) {
+        _attribute.insert(attribute);
+    }
+}
+
+void QUmlClassifier::removeAttribute(QUmlProperty *attribute)
+{
+    // This is a read-only derived union association end
+
+    if (_attribute.contains(attribute)) {
+        _attribute.remove(attribute);
+    }
+}
+
 /*!
     References the collaboration uses owned by the classifier.
  */
@@ -118,6 +136,24 @@ QSet<QUmlFeature *> QUmlClassifier::feature() const
     // This is a read-only derived union association end
 
     return _feature;
+}
+
+void QUmlClassifier::addFeature(QUmlFeature *feature)
+{
+    // This is a read-only derived union association end
+
+    if (!_feature.contains(feature)) {
+        _feature.insert(feature);
+    }
+}
+
+void QUmlClassifier::removeFeature(QUmlFeature *feature)
+{
+    // This is a read-only derived union association end
+
+    if (_feature.contains(feature)) {
+        _feature.remove(feature);
+    }
 }
 
 /*!
@@ -194,6 +230,30 @@ QSet<QUmlNamedElement *> QUmlClassifier::inheritedMember() const
     qWarning("QUmlClassifier::inheritedMember(): to be implemented (this is a derived association end)");
 
     return QSet<QUmlNamedElement *>();
+}
+
+void QUmlClassifier::addInheritedMember(QUmlNamedElement *inheritedMember)
+{
+    // This is a read-only derived association end
+
+    qWarning("QUmlClassifier::inheritedMember(): to be implemented (this is a derived association end)");
+    Q_UNUSED(inheritedMember);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
+}
+
+void QUmlClassifier::removeInheritedMember(QUmlNamedElement *inheritedMember)
+{
+    // This is a read-only derived association end
+
+    qWarning("QUmlClassifier::inheritedMember(): to be implemented (this is a derived association end)");
+    Q_UNUSED(inheritedMember);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
 }
 
 /*!
@@ -352,7 +412,15 @@ void QUmlClassifier::setRepresentation(QUmlCollaborationUse *representation)
     // This is a read-write association end
 
     if (_representation != representation) {
+        // Adjust subsetted properties
+        removeCollaborationUse(_representation);
+
         _representation = representation;
+
+        // Adjust subsetted properties
+        if (representation) {
+            addCollaborationUse(representation);
+        }
     }
 }
 

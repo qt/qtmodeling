@@ -74,7 +74,15 @@ void QUmlActionInputPin::setFromAction(QUmlAction *fromAction)
     // This is a read-write association end
 
     if (_fromAction != fromAction) {
+        // Adjust subsetted properties
+        removeOwnedElement(_fromAction);
+
         _fromAction = fromAction;
+
+        // Adjust subsetted properties
+        if (fromAction) {
+            addOwnedElement(fromAction);
+        }
     }
 }
 

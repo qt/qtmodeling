@@ -144,7 +144,12 @@ void QUmlExceptionHandler::setProtectedNode(QUmlExecutableNode *protectedNode)
     // This is a read-write association end
 
     if (_protectedNode != protectedNode) {
+        // Adjust subsetted properties
+
         _protectedNode = protectedNode;
+
+        // Adjust subsetted properties
+        setOwner(protectedNode);
     }
 }
 

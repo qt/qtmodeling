@@ -88,6 +88,24 @@ QSet<QUmlRedefinableElement *> QUmlRedefinableElement::redefinedElement() const
     return _redefinedElement;
 }
 
+void QUmlRedefinableElement::addRedefinedElement(QUmlRedefinableElement *redefinedElement)
+{
+    // This is a read-only derived union association end
+
+    if (!_redefinedElement.contains(redefinedElement)) {
+        _redefinedElement.insert(redefinedElement);
+    }
+}
+
+void QUmlRedefinableElement::removeRedefinedElement(QUmlRedefinableElement *redefinedElement)
+{
+    // This is a read-only derived union association end
+
+    if (_redefinedElement.contains(redefinedElement)) {
+        _redefinedElement.remove(redefinedElement);
+    }
+}
+
 /*!
     References the contexts that this element may be redefined from.
  */
@@ -96,6 +114,24 @@ QSet<QUmlClassifier *> QUmlRedefinableElement::redefinitionContext() const
     // This is a read-only derived union association end
 
     return _redefinitionContext;
+}
+
+void QUmlRedefinableElement::addRedefinitionContext(QUmlClassifier *redefinitionContext)
+{
+    // This is a read-only derived union association end
+
+    if (!_redefinitionContext.contains(redefinitionContext)) {
+        _redefinitionContext.insert(redefinitionContext);
+    }
+}
+
+void QUmlRedefinableElement::removeRedefinitionContext(QUmlClassifier *redefinitionContext)
+{
+    // This is a read-only derived union association end
+
+    if (_redefinitionContext.contains(redefinitionContext)) {
+        _redefinitionContext.remove(redefinitionContext);
+    }
 }
 
 // OPERATIONS

@@ -104,7 +104,15 @@ void QUmlParameter::setDefaultValue(QUmlValueSpecification *defaultValue)
     // This is a read-write association end
 
     if (_defaultValue != defaultValue) {
+        // Adjust subsetted properties
+        removeOwnedElement(_defaultValue);
+
         _defaultValue = defaultValue;
+
+        // Adjust subsetted properties
+        if (defaultValue) {
+            addOwnedElement(defaultValue);
+        }
     }
 }
 

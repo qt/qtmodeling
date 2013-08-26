@@ -62,7 +62,10 @@ public:
     void addOwnedComment(QUmlComment *ownedComment);
     void removeOwnedComment(QUmlComment *ownedComment);
     QSet<QUmlElement *> ownedElement() const;
+    Q_DECL_HIDDEN void addOwnedElement(QUmlElement *ownedElement);
+    Q_DECL_HIDDEN void removeOwnedElement(QUmlElement *ownedElement);
     QUmlElement *owner() const;
+    Q_DECL_HIDDEN void setOwner(QUmlElement *owner);
 
     // Operations
     QSet<QUmlElement *> allOwnedElements() const;

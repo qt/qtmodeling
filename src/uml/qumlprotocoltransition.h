@@ -65,6 +65,8 @@ public:
     QUmlConstraint *preCondition() const;
     void setPreCondition(QUmlConstraint *preCondition);
     QSet<QUmlOperation *> referred() const;
+    Q_DECL_HIDDEN void addReferred(QUmlOperation *referred);
+    Q_DECL_HIDDEN void removeReferred(QUmlOperation *referred);
 
 protected:
     QUmlConstraint *_postCondition;

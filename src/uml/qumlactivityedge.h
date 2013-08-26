@@ -70,6 +70,8 @@ public:
     QUmlValueSpecification *guard() const;
     void setGuard(QUmlValueSpecification *guard);
     QSet<QUmlActivityGroup *> inGroup() const;
+    Q_DECL_HIDDEN void addInGroup(QUmlActivityGroup *inGroup);
+    Q_DECL_HIDDEN void removeInGroup(QUmlActivityGroup *inGroup);
     QSet<QUmlActivityPartition *> inPartition() const;
     void addInPartition(QUmlActivityPartition *inPartition);
     void removeInPartition(QUmlActivityPartition *inPartition);

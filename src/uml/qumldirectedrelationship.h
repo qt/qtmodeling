@@ -60,7 +60,11 @@ public:
 
     // Owned attributes
     QSet<QUmlElement *> source() const;
+    Q_DECL_HIDDEN void addSource(QUmlElement *source);
+    Q_DECL_HIDDEN void removeSource(QUmlElement *source);
     QSet<QUmlElement *> target() const;
+    Q_DECL_HIDDEN void addTarget(QUmlElement *target);
+    Q_DECL_HIDDEN void removeTarget(QUmlElement *target);
 
 protected:
     QSet<QUmlElement *> _source;

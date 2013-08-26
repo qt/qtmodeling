@@ -144,7 +144,6 @@ Q${namespace}${className}::${qtAttribute}() const
     [%- END %]
 }
     [%- SET attributeName = attribute.findvalue("@name").ucfirst %]
-    [%- IF attribute.findvalue("@isReadOnly") != "true" -%]
         [%- IF attribute.findnodes("upperValue").findvalue("@value") == "*" %]
 
 void Q${namespace}${className}::add${attributeName}(${QT_TYPE(namespace, attribute).remove("QSet<").remove("QList<").replace("> ", " ").replace('\* $', '*')}${qtAttribute})
@@ -197,11 +196,43 @@ void Q${namespace}${className}::set${attributeName.remove("^Is")}(${QT_TYPE(name
     }
     [%- ELSE %]
     if (_${qtAttribute} != ${qtAttribute}) {
-        _${qtAttribute} = ${qtAttribute};
-    }
-    [%- END %]
-}
+        [%- found = "false" -%]
+        [%- FOREACH subsettedPropertyName = attribute.findvalue("@subsettedProperty").split(" ") -%]
+            [%- SET subsettedProperty = xmi.findnodes("//packagedElement[@xmi:type=\"uml:Class\" and @name=\"${subsettedPropertyName.split('-').0}\"]/ownedAttribute[@name=\"${subsettedPropertyName.split('-').1}\"]") -%]
+            [%- IF subsettedProperty.findvalue("@name") != "" -%]
+                [%- IF found == "false" %]
+        // Adjust subsetted properties
+                    [%- found = "true" -%]
+                [%- END -%]
+                    [%- IF subsettedProperty.findvalue("upperValue/@value") == "*" %]
+        remove${subsettedPropertyName.split('-').1.ucfirst}(_${qtAttribute});
+                    [%- END -%]
+            [%- END %]
         [%- END %]
+[%- IF found == "true" %]
+[% END %]
+        _${qtAttribute} = ${qtAttribute};
+        [%- found = "false" -%]
+        [%- FOREACH subsettedPropertyName = attribute.findvalue("@subsettedProperty").split(" ") -%]
+            [%- SET subsettedProperty = xmi.findnodes("//packagedElement[@xmi:type=\"uml:Class\" and @name=\"${subsettedPropertyName.split('-').0}\"]/ownedAttribute[@name=\"${subsettedPropertyName.split('-').1}\"]") -%]
+            [%- IF subsettedProperty.findvalue("@name") != "" -%]
+                [%- IF found == "false" %]
+
+        // Adjust subsetted properties
+                    [%- found = "true" -%]
+                [%- END -%]
+                    [%- IF subsettedProperty.findvalue("upperValue/@value") == "*" %]
+        if (${qtAttribute}) {
+            add${subsettedPropertyName.split('-').1.ucfirst}(${qtAttribute});
+        }
+                    [%- ELSE %]
+        set${subsettedPropertyName.split('-').1.ucfirst}(${qtAttribute});
+                    [%- END -%]
+            [%- END %]
+        [%- END %]
+    }
+        [%- END %]
+}
     [%- END %]
 [%- END %]
 [%- FOREACH operation = class.findnodes("ownedOperation[@name != ../ownedAttribute[@isDerived='true']/@name]") -%]

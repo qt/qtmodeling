@@ -56,7 +56,7 @@ class QUmlInteraction;
 class QUmlInteractionOperand;
 class QUmlLifeline;
 
-class Q_UML_EXPORT QUmlInteractionFragment : public virtual QUmlNamedElement
+class Q_UML_EXPORT QUmlInteractionFragment : virtual public QUmlNamedElement
 {
 public:
     Q_DECL_HIDDEN QUmlInteractionFragment();

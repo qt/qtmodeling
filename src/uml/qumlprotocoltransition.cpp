@@ -76,7 +76,15 @@ void QUmlProtocolTransition::setPostCondition(QUmlConstraint *postCondition)
     // This is a read-write association end
 
     if (_postCondition != postCondition) {
+        // Adjust subsetted properties
+        removeOwnedRule(_postCondition);
+
         _postCondition = postCondition;
+
+        // Adjust subsetted properties
+        if (postCondition) {
+            addOwnedRule(postCondition);
+        }
     }
 }
 
@@ -95,7 +103,12 @@ void QUmlProtocolTransition::setPreCondition(QUmlConstraint *preCondition)
     // This is a read-write association end
 
     if (_preCondition != preCondition) {
+        // Adjust subsetted properties
+
         _preCondition = preCondition;
+
+        // Adjust subsetted properties
+        setGuard(preCondition);
     }
 }
 
@@ -109,6 +122,30 @@ QSet<QUmlOperation *> QUmlProtocolTransition::referred() const
     qWarning("QUmlProtocolTransition::referred(): to be implemented (this is a derived association end)");
 
     return QSet<QUmlOperation *>();
+}
+
+void QUmlProtocolTransition::addReferred(QUmlOperation *referred)
+{
+    // This is a read-only derived association end
+
+    qWarning("QUmlProtocolTransition::referred(): to be implemented (this is a derived association end)");
+    Q_UNUSED(referred);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
+}
+
+void QUmlProtocolTransition::removeReferred(QUmlOperation *referred)
+{
+    // This is a read-only derived association end
+
+    qWarning("QUmlProtocolTransition::referred(): to be implemented (this is a derived association end)");
+    Q_UNUSED(referred);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
 }
 
 QT_END_NAMESPACE

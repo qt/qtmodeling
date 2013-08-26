@@ -94,7 +94,15 @@ void QUmlJoinNode::setJoinSpec(QUmlValueSpecification *joinSpec)
     // This is a read-write association end
 
     if (_joinSpec != joinSpec) {
+        // Adjust subsetted properties
+        removeOwnedElement(_joinSpec);
+
         _joinSpec = joinSpec;
+
+        // Adjust subsetted properties
+        if (joinSpec) {
+            addOwnedElement(joinSpec);
+        }
     }
 }
 

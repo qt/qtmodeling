@@ -80,7 +80,15 @@ void QUmlRegion::setExtendedRegion(QUmlRegion *extendedRegion)
     // This is a read-write association end
 
     if (_extendedRegion != extendedRegion) {
+        // Adjust subsetted properties
+        removeRedefinedElement(_extendedRegion);
+
         _extendedRegion = extendedRegion;
+
+        // Adjust subsetted properties
+        if (extendedRegion) {
+            addRedefinedElement(extendedRegion);
+        }
     }
 }
 
@@ -94,6 +102,18 @@ QUmlClassifier *QUmlRegion::redefinitionContext() const
     qWarning("QUmlRegion::redefinitionContext(): to be implemented (this is a derived association end)");
 
     return 0;
+}
+
+void QUmlRegion::setRedefinitionContext(QUmlClassifier *redefinitionContext)
+{
+    // This is a read-only derived association end
+
+    qWarning("QUmlRegion::redefinitionContext(): to be implemented (this is a derived association end)");
+    Q_UNUSED(redefinitionContext);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
 }
 
 /*!
@@ -111,7 +131,12 @@ void QUmlRegion::setState(QUmlState *state)
     // This is a read-write association end
 
     if (_state != state) {
+        // Adjust subsetted properties
+
         _state = state;
+
+        // Adjust subsetted properties
+        setNamespace(state);
     }
 }
 
@@ -130,7 +155,12 @@ void QUmlRegion::setStateMachine(QUmlStateMachine *stateMachine)
     // This is a read-write association end
 
     if (_stateMachine != stateMachine) {
+        // Adjust subsetted properties
+
         _stateMachine = stateMachine;
+
+        // Adjust subsetted properties
+        setNamespace(stateMachine);
     }
 }
 

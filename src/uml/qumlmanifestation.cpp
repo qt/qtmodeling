@@ -74,7 +74,15 @@ void QUmlManifestation::setUtilizedElement(QUmlPackageableElement *utilizedEleme
     // This is a read-write association end
 
     if (_utilizedElement != utilizedElement) {
+        // Adjust subsetted properties
+        removeSupplier(_utilizedElement);
+
         _utilizedElement = utilizedElement;
+
+        // Adjust subsetted properties
+        if (utilizedElement) {
+            addSupplier(utilizedElement);
+        }
     }
 }
 

@@ -62,7 +62,9 @@ public:
 
     // Owned attributes
     bool isRequired() const;
+    Q_DECL_HIDDEN void setRequired(bool isRequired);
     QUmlClass *metaclass() const;
+    Q_DECL_HIDDEN void setMetaclass(QUmlClass *metaclass);
     QUmlExtensionEnd *ownedEnd() const;
     void setOwnedEnd(QUmlExtensionEnd *ownedEnd);
 

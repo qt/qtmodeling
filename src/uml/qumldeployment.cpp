@@ -132,7 +132,16 @@ void QUmlDeployment::setLocation(QUmlDeploymentTarget *location)
     // This is a read-write association end
 
     if (_location != location) {
+        // Adjust subsetted properties
+        removeClient(_location);
+
         _location = location;
+
+        // Adjust subsetted properties
+        setOwner(location);
+        if (location) {
+            addClient(location);
+        }
     }
 }
 

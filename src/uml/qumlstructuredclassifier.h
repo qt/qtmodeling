@@ -55,7 +55,7 @@ class QUmlConnectableElement;
 class QUmlConnector;
 class QUmlProperty;
 
-class Q_UML_EXPORT QUmlStructuredClassifier : public QUmlClassifier
+class Q_UML_EXPORT QUmlStructuredClassifier : virtual public QUmlClassifier
 {
 public:
     Q_DECL_HIDDEN QUmlStructuredClassifier();
@@ -68,7 +68,11 @@ public:
     void addOwnedConnector(QUmlConnector *ownedConnector);
     void removeOwnedConnector(QUmlConnector *ownedConnector);
     QSet<QUmlProperty *> part() const;
+    Q_DECL_HIDDEN void addPart(QUmlProperty *part);
+    Q_DECL_HIDDEN void removePart(QUmlProperty *part);
     QSet<QUmlConnectableElement *> role() const;
+    Q_DECL_HIDDEN void addRole(QUmlConnectableElement *role);
+    Q_DECL_HIDDEN void removeRole(QUmlConnectableElement *role);
 
 protected:
     QList<QUmlProperty *> _ownedAttribute;

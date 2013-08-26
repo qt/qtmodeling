@@ -53,7 +53,7 @@ QT_MODULE(QtUml)
 
 class QUmlClassifier;
 
-class Q_UML_EXPORT QUmlRedefinableElement : public virtual QUmlNamedElement
+class Q_UML_EXPORT QUmlRedefinableElement : virtual public QUmlNamedElement
 {
 public:
     Q_DECL_HIDDEN QUmlRedefinableElement();
@@ -62,7 +62,11 @@ public:
     bool isLeaf() const;
     void setLeaf(bool isLeaf);
     QSet<QUmlRedefinableElement *> redefinedElement() const;
+    Q_DECL_HIDDEN void addRedefinedElement(QUmlRedefinableElement *redefinedElement);
+    Q_DECL_HIDDEN void removeRedefinedElement(QUmlRedefinableElement *redefinedElement);
     QSet<QUmlClassifier *> redefinitionContext() const;
+    Q_DECL_HIDDEN void addRedefinitionContext(QUmlClassifier *redefinitionContext);
+    Q_DECL_HIDDEN void removeRedefinitionContext(QUmlClassifier *redefinitionContext);
 
     // Operations
     bool isConsistentWith(QUmlRedefinableElement *redefinee) const;

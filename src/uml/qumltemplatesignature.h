@@ -54,7 +54,7 @@ QT_MODULE(QtUml)
 class QUmlTemplateableElement;
 class QUmlTemplateParameter;
 
-class Q_UML_EXPORT QUmlTemplateSignature : public virtual QUmlElement
+class Q_UML_EXPORT QUmlTemplateSignature : virtual public QUmlElement
 {
 public:
     QUmlTemplateSignature();

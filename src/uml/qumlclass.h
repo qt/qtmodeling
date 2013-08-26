@@ -66,6 +66,8 @@ public:
 
     // Owned attributes
     QSet<QUmlExtension *> extension() const;
+    Q_DECL_HIDDEN void addExtension(QUmlExtension *extension);
+    Q_DECL_HIDDEN void removeExtension(QUmlExtension *extension);
     bool isAbstract() const;
     void setAbstract(bool isAbstract);
     bool isActive() const;

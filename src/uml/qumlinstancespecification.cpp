@@ -132,7 +132,15 @@ void QUmlInstanceSpecification::setSpecification(QUmlValueSpecification *specifi
     // This is a read-write association end
 
     if (_specification != specification) {
+        // Adjust subsetted properties
+        removeOwnedElement(_specification);
+
         _specification = specification;
+
+        // Adjust subsetted properties
+        if (specification) {
+            addOwnedElement(specification);
+        }
     }
 }
 

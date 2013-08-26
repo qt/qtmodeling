@@ -74,7 +74,15 @@ void QUmlRaiseExceptionAction::setException(QUmlInputPin *exception)
     // This is a read-write association end
 
     if (_exception != exception) {
+        // Adjust subsetted properties
+        removeInput(_exception);
+
         _exception = exception;
+
+        // Adjust subsetted properties
+        if (exception) {
+            addInput(exception);
+        }
     }
 }
 

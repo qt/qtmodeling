@@ -74,7 +74,15 @@ void QUmlWriteVariableAction::setValue(QUmlInputPin *value)
     // This is a read-write association end
 
     if (_value != value) {
+        // Adjust subsetted properties
+        removeInput(_value);
+
         _value = value;
+
+        // Adjust subsetted properties
+        if (value) {
+            addInput(value);
+        }
     }
 }
 

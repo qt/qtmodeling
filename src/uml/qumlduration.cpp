@@ -74,7 +74,15 @@ void QUmlDuration::setExpr(QUmlValueSpecification *expr)
     // This is a read-write association end
 
     if (_expr != expr) {
+        // Adjust subsetted properties
+        removeOwnedElement(_expr);
+
         _expr = expr;
+
+        // Adjust subsetted properties
+        if (expr) {
+            addOwnedElement(expr);
+        }
     }
 }
 

@@ -60,6 +60,7 @@ public:
 
     // Owned attributes
     QUmlEnumeration *classifier() const;
+    Q_DECL_HIDDEN void setClassifier(QUmlEnumeration *classifier);
     QUmlEnumeration *enumeration() const;
     void setEnumeration(QUmlEnumeration *enumeration);
 

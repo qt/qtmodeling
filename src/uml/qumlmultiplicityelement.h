@@ -53,7 +53,7 @@ QT_MODULE(QtUml)
 
 class QUmlValueSpecification;
 
-class Q_UML_EXPORT QUmlMultiplicityElement : public virtual QUmlElement
+class Q_UML_EXPORT QUmlMultiplicityElement : virtual public QUmlElement
 {
 public:
     Q_DECL_HIDDEN QUmlMultiplicityElement();

@@ -139,7 +139,15 @@ void QUmlMultiplicityElement::setLowerValue(QUmlValueSpecification *lowerValue)
     // This is a read-write association end
 
     if (_lowerValue != lowerValue) {
+        // Adjust subsetted properties
+        removeOwnedElement(_lowerValue);
+
         _lowerValue = lowerValue;
+
+        // Adjust subsetted properties
+        if (lowerValue) {
+            addOwnedElement(lowerValue);
+        }
     }
 }
 
@@ -182,7 +190,15 @@ void QUmlMultiplicityElement::setUpperValue(QUmlValueSpecification *upperValue)
     // This is a read-write association end
 
     if (_upperValue != upperValue) {
+        // Adjust subsetted properties
+        removeOwnedElement(_upperValue);
+
         _upperValue = upperValue;
+
+        // Adjust subsetted properties
+        if (upperValue) {
+            addOwnedElement(upperValue);
+        }
     }
 }
 

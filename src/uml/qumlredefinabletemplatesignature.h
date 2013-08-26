@@ -67,6 +67,8 @@ public:
     void addExtendedSignature(QUmlRedefinableTemplateSignature *extendedSignature);
     void removeExtendedSignature(QUmlRedefinableTemplateSignature *extendedSignature);
     QSet<QUmlTemplateParameter *> inheritedParameter() const;
+    Q_DECL_HIDDEN void addInheritedParameter(QUmlTemplateParameter *inheritedParameter);
+    Q_DECL_HIDDEN void removeInheritedParameter(QUmlTemplateParameter *inheritedParameter);
 
     // Operations
     bool isConsistentWith(QUmlRedefinableElement *redefinee) const;

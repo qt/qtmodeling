@@ -117,7 +117,16 @@ void QUmlTemplateParameterSubstitution::setOwnedActual(QUmlParameterableElement 
     // This is a read-write association end
 
     if (_ownedActual != ownedActual) {
+        // Adjust subsetted properties
+        removeOwnedElement(_ownedActual);
+
         _ownedActual = ownedActual;
+
+        // Adjust subsetted properties
+        if (ownedActual) {
+            addOwnedElement(ownedActual);
+        }
+        setActual(ownedActual);
     }
 }
 
@@ -136,7 +145,12 @@ void QUmlTemplateParameterSubstitution::setTemplateBinding(QUmlTemplateBinding *
     // This is a read-write association end
 
     if (_templateBinding != templateBinding) {
+        // Adjust subsetted properties
+
         _templateBinding = templateBinding;
+
+        // Adjust subsetted properties
+        setOwner(templateBinding);
     }
 }
 

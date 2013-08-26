@@ -76,7 +76,15 @@ void QUmlInterfaceRealization::setContract(QUmlInterface *contract)
     // This is a read-write association end
 
     if (_contract != contract) {
+        // Adjust subsetted properties
+        removeSupplier(_contract);
+
         _contract = contract;
+
+        // Adjust subsetted properties
+        if (contract) {
+            addSupplier(contract);
+        }
     }
 }
 
@@ -95,7 +103,16 @@ void QUmlInterfaceRealization::setImplementingClassifier(QUmlBehavioredClassifie
     // This is a read-write association end
 
     if (_implementingClassifier != implementingClassifier) {
+        // Adjust subsetted properties
+        removeClient(_implementingClassifier);
+
         _implementingClassifier = implementingClassifier;
+
+        // Adjust subsetted properties
+        setOwner(implementingClassifier);
+        if (implementingClassifier) {
+            addClient(implementingClassifier);
+        }
     }
 }
 

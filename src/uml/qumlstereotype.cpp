@@ -99,6 +99,18 @@ QUmlProfile *QUmlStereotype::profile() const
     return 0;
 }
 
+void QUmlStereotype::setProfile(QUmlProfile *profile)
+{
+    // This is a read-only derived association end
+
+    qWarning("QUmlStereotype::profile(): to be implemented (this is a derived association end)");
+    Q_UNUSED(profile);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
+}
+
 // OPERATIONS
 
 /*!

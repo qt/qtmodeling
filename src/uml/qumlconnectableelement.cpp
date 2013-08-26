@@ -72,6 +72,30 @@ QList<QUmlConnectorEnd *> QUmlConnectableElement::end() const
     return QList<QUmlConnectorEnd *>();
 }
 
+void QUmlConnectableElement::addEnd(QUmlConnectorEnd *end)
+{
+    // This is a read-only derived association end
+
+    qWarning("QUmlConnectableElement::end(): to be implemented (this is a derived association end)");
+    Q_UNUSED(end);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
+}
+
+void QUmlConnectableElement::removeEnd(QUmlConnectorEnd *end)
+{
+    // This is a read-only derived association end
+
+    qWarning("QUmlConnectableElement::end(): to be implemented (this is a derived association end)");
+    Q_UNUSED(end);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
+}
+
 /*!
     The ConnectableElementTemplateParameter for this ConnectableElement parameter.
  */

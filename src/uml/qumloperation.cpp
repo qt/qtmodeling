@@ -85,7 +85,15 @@ void QUmlOperation::setBodyCondition(QUmlConstraint *bodyCondition)
     // This is a read-write association end
 
     if (_bodyCondition != bodyCondition) {
+        // Adjust subsetted properties
+        removeOwnedRule(_bodyCondition);
+
         _bodyCondition = bodyCondition;
+
+        // Adjust subsetted properties
+        if (bodyCondition) {
+            addOwnedRule(bodyCondition);
+        }
     }
 }
 
@@ -104,7 +112,20 @@ void QUmlOperation::setClass(QUmlClass *class_)
     // This is a read-write association end
 
     if (_class_ != class_) {
+        // Adjust subsetted properties
+        removeFeaturingClassifier(_class_);
+        removeRedefinitionContext(_class_);
+
         _class_ = class_;
+
+        // Adjust subsetted properties
+        if (class_) {
+            addFeaturingClassifier(class_);
+        }
+        if (class_) {
+            addRedefinitionContext(class_);
+        }
+        setNamespace(class_);
     }
 }
 
@@ -123,7 +144,20 @@ void QUmlOperation::setDatatype(QUmlDataType *datatype)
     // This is a read-write association end
 
     if (_datatype != datatype) {
+        // Adjust subsetted properties
+        removeFeaturingClassifier(_datatype);
+        removeRedefinitionContext(_datatype);
+
         _datatype = datatype;
+
+        // Adjust subsetted properties
+        if (datatype) {
+            addFeaturingClassifier(datatype);
+        }
+        if (datatype) {
+            addRedefinitionContext(datatype);
+        }
+        setNamespace(datatype);
     }
 }
 
@@ -142,7 +176,20 @@ void QUmlOperation::setInterface(QUmlInterface *interface_)
     // This is a read-write association end
 
     if (_interface_ != interface_) {
+        // Adjust subsetted properties
+        removeFeaturingClassifier(_interface_);
+        removeRedefinitionContext(_interface_);
+
         _interface_ = interface_;
+
+        // Adjust subsetted properties
+        if (interface_) {
+            addFeaturingClassifier(interface_);
+        }
+        if (interface_) {
+            addRedefinitionContext(interface_);
+        }
+        setNamespace(interface_);
     }
 }
 
@@ -156,6 +203,18 @@ bool QUmlOperation::isOrdered() const
     qWarning("QUmlOperation::isOrdered(): to be implemented (this is a derived property)");
 
     return bool();
+}
+
+void QUmlOperation::setOrdered(bool isOrdered)
+{
+    // This is a read-only derived property
+
+    qWarning("QUmlOperation::isOrdered(): to be implemented (this is a derived property)");
+    Q_UNUSED(isOrdered);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
 }
 
 /*!
@@ -189,6 +248,18 @@ bool QUmlOperation::isUnique() const
     return bool();
 }
 
+void QUmlOperation::setUnique(bool isUnique)
+{
+    // This is a read-only derived property
+
+    qWarning("QUmlOperation::isUnique(): to be implemented (this is a derived property)");
+    Q_UNUSED(isUnique);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
+}
+
 /*!
     This information is derived from the return result for this Operation.Specifies the lower multiplicity of the return parameter, if present.
  */
@@ -199,6 +270,18 @@ int QUmlOperation::lower() const
     qWarning("QUmlOperation::lower(): to be implemented (this is a derived property)");
 
     return int();
+}
+
+void QUmlOperation::setLower(int lower)
+{
+    // This is a read-only derived property
+
+    qWarning("QUmlOperation::lower(): to be implemented (this is a derived property)");
+    Q_UNUSED(lower);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
 }
 
 /*!
@@ -372,6 +455,18 @@ QUmlType *QUmlOperation::type() const
     return 0;
 }
 
+void QUmlOperation::setType(QUmlType *type)
+{
+    // This is a read-only derived association end
+
+    qWarning("QUmlOperation::type(): to be implemented (this is a derived association end)");
+    Q_UNUSED(type);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
+}
+
 /*!
     This information is derived from the return result for this Operation.Specifies the upper multiplicity of the return parameter, if present.
  */
@@ -382,6 +477,18 @@ int QUmlOperation::upper() const
     qWarning("QUmlOperation::upper(): to be implemented (this is a derived property)");
 
     return int();
+}
+
+void QUmlOperation::setUpper(int upper)
+{
+    // This is a read-only derived property
+
+    qWarning("QUmlOperation::upper(): to be implemented (this is a derived property)");
+    Q_UNUSED(upper);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
 }
 
 // OPERATIONS

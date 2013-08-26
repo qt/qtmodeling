@@ -105,7 +105,12 @@ void QUmlConstraint::setContext(QUmlNamespace *context)
     // This is a read-write association end
 
     if (_context != context) {
+        // Adjust subsetted properties
+
         _context = context;
+
+        // Adjust subsetted properties
+        setNamespace(context);
     }
 }
 
@@ -124,7 +129,15 @@ void QUmlConstraint::setSpecification(QUmlValueSpecification *specification)
     // This is a read-write association end
 
     if (_specification != specification) {
+        // Adjust subsetted properties
+        removeOwnedElement(_specification);
+
         _specification = specification;
+
+        // Adjust subsetted properties
+        if (specification) {
+            addOwnedElement(specification);
+        }
     }
 }
 

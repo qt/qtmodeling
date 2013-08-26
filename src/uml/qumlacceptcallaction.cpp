@@ -74,7 +74,15 @@ void QUmlAcceptCallAction::setReturnInformation(QUmlOutputPin *returnInformation
     // This is a read-write association end
 
     if (_returnInformation != returnInformation) {
+        // Adjust subsetted properties
+        removeOutput(_returnInformation);
+
         _returnInformation = returnInformation;
+
+        // Adjust subsetted properties
+        if (returnInformation) {
+            addOutput(returnInformation);
+        }
     }
 }
 

@@ -68,10 +68,14 @@ public:
     void addPackagedElement(QUmlPackageableElement *packagedElement);
     void removePackagedElement(QUmlPackageableElement *packagedElement);
     QSet<QUmlInterface *> provided() const;
+    Q_DECL_HIDDEN void addProvided(QUmlInterface *provided);
+    Q_DECL_HIDDEN void removeProvided(QUmlInterface *provided);
     QSet<QUmlComponentRealization *> realization() const;
     void addRealization(QUmlComponentRealization *realization);
     void removeRealization(QUmlComponentRealization *realization);
     QSet<QUmlInterface *> required() const;
+    Q_DECL_HIDDEN void addRequired(QUmlInterface *required);
+    Q_DECL_HIDDEN void removeRequired(QUmlInterface *required);
 
     // Operations
     QSet<QUmlInterface *> realizedInterfaces(QUmlClassifier *classifier) const;

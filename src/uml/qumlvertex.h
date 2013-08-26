@@ -55,7 +55,7 @@ class QUmlRegion;
 class QUmlStateMachine;
 class QUmlTransition;
 
-class Q_UML_EXPORT QUmlVertex : public virtual QUmlNamedElement
+class Q_UML_EXPORT QUmlVertex : virtual public QUmlNamedElement
 {
 public:
     Q_DECL_HIDDEN QUmlVertex();
@@ -64,7 +64,11 @@ public:
     QUmlRegion *container() const;
     void setContainer(QUmlRegion *container);
     QSet<QUmlTransition *> incoming() const;
+    Q_DECL_HIDDEN void addIncoming(QUmlTransition *incoming);
+    Q_DECL_HIDDEN void removeIncoming(QUmlTransition *incoming);
     QSet<QUmlTransition *> outgoing() const;
+    Q_DECL_HIDDEN void addOutgoing(QUmlTransition *outgoing);
+    Q_DECL_HIDDEN void removeOutgoing(QUmlTransition *outgoing);
 
     // Operations
     QUmlStateMachine *containingStateMachine() const;

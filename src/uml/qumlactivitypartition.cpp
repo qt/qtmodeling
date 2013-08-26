@@ -220,7 +220,12 @@ void QUmlActivityPartition::setSuperPartition(QUmlActivityPartition *superPartit
     // This is a read-write association end
 
     if (_superPartition != superPartition) {
+        // Adjust subsetted properties
+
         _superPartition = superPartition;
+
+        // Adjust subsetted properties
+        setSuperGroup(superPartition);
     }
 }
 

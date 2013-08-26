@@ -74,7 +74,15 @@ void QUmlChangeEvent::setChangeExpression(QUmlValueSpecification *changeExpressi
     // This is a read-write association end
 
     if (_changeExpression != changeExpression) {
+        // Adjust subsetted properties
+        removeOwnedElement(_changeExpression);
+
         _changeExpression = changeExpression;
+
+        // Adjust subsetted properties
+        if (changeExpression) {
+            addOwnedElement(changeExpression);
+        }
     }
 }
 

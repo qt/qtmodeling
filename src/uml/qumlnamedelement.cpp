@@ -125,7 +125,15 @@ void QUmlNamedElement::setNameExpression(QUmlStringExpression *nameExpression)
     // This is a read-write association end
 
     if (_nameExpression != nameExpression) {
+        // Adjust subsetted properties
+        removeOwnedElement(_nameExpression);
+
         _nameExpression = nameExpression;
+
+        // Adjust subsetted properties
+        if (nameExpression) {
+            addOwnedElement(nameExpression);
+        }
     }
 }
 
@@ -139,6 +147,20 @@ QUmlNamespace *QUmlNamedElement::namespace_() const
     return _namespace_;
 }
 
+void QUmlNamedElement::setNamespace(QUmlNamespace *namespace_)
+{
+    // This is a read-only derived union association end
+
+    if (_namespace_ != namespace_) {
+        // Adjust subsetted properties
+
+        _namespace_ = namespace_;
+
+        // Adjust subsetted properties
+        setOwner(namespace_);
+    }
+}
+
 /*!
     A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself.
  */
@@ -149,6 +171,18 @@ QString QUmlNamedElement::qualifiedName() const
     qWarning("QUmlNamedElement::qualifiedName(): to be implemented (this is a derived property)");
 
     return QString();
+}
+
+void QUmlNamedElement::setQualifiedName(QString qualifiedName)
+{
+    // This is a read-only derived property
+
+    qWarning("QUmlNamedElement::qualifiedName(): to be implemented (this is a derived property)");
+    Q_UNUSED(qualifiedName);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
 }
 
 /*!

@@ -114,7 +114,15 @@ void QUmlDestroyObjectAction::setTarget(QUmlInputPin *target)
     // This is a read-write association end
 
     if (_target != target) {
+        // Adjust subsetted properties
+        removeInput(_target);
+
         _target = target;
+
+        // Adjust subsetted properties
+        if (target) {
+            addInput(target);
+        }
     }
 }
 

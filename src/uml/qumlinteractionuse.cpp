@@ -153,7 +153,15 @@ void QUmlInteractionUse::setReturnValue(QUmlValueSpecification *returnValue)
     // This is a read-write association end
 
     if (_returnValue != returnValue) {
+        // Adjust subsetted properties
+        removeOwnedElement(_returnValue);
+
         _returnValue = returnValue;
+
+        // Adjust subsetted properties
+        if (returnValue) {
+            addOwnedElement(returnValue);
+        }
     }
 }
 

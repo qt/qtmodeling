@@ -76,7 +76,15 @@ void QUmlTemplateableElement::setOwnedTemplateSignature(QUmlTemplateSignature *o
     // This is a read-write association end
 
     if (_ownedTemplateSignature != ownedTemplateSignature) {
+        // Adjust subsetted properties
+        removeOwnedElement(_ownedTemplateSignature);
+
         _ownedTemplateSignature = ownedTemplateSignature;
+
+        // Adjust subsetted properties
+        if (ownedTemplateSignature) {
+            addOwnedElement(ownedTemplateSignature);
+        }
     }
 }
 

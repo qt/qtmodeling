@@ -75,7 +75,15 @@ void QUmlBehavioredClassifier::setClassifierBehavior(QUmlBehavior *classifierBeh
     // This is a read-write association end
 
     if (_classifierBehavior != classifierBehavior) {
+        // Adjust subsetted properties
+        removeOwnedBehavior(_classifierBehavior);
+
         _classifierBehavior = classifierBehavior;
+
+        // Adjust subsetted properties
+        if (classifierBehavior) {
+            addOwnedBehavior(classifierBehavior);
+        }
     }
 }
 

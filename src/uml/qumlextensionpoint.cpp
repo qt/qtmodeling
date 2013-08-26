@@ -74,7 +74,12 @@ void QUmlExtensionPoint::setUseCase(QUmlUseCase *useCase)
     // This is a read-write association end
 
     if (_useCase != useCase) {
+        // Adjust subsetted properties
+
         _useCase = useCase;
+
+        // Adjust subsetted properties
+        setNamespace(useCase);
     }
 }
 

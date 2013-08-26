@@ -189,7 +189,15 @@ void QUmlInterface::setProtocol(QUmlProtocolStateMachine *protocol)
     // This is a read-write association end
 
     if (_protocol != protocol) {
+        // Adjust subsetted properties
+        removeOwnedMember(_protocol);
+
         _protocol = protocol;
+
+        // Adjust subsetted properties
+        if (protocol) {
+            addOwnedMember(protocol);
+        }
     }
 }
 

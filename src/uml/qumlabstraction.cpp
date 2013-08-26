@@ -74,7 +74,15 @@ void QUmlAbstraction::setMapping(QUmlOpaqueExpression *mapping)
     // This is a read-write association end
 
     if (_mapping != mapping) {
+        // Adjust subsetted properties
+        removeOwnedElement(_mapping);
+
         _mapping = mapping;
+
+        // Adjust subsetted properties
+        if (mapping) {
+            addOwnedElement(mapping);
+        }
     }
 }
 

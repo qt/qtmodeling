@@ -78,7 +78,15 @@ void QUmlExtend::setCondition(QUmlConstraint *condition)
     // This is a read-write association end
 
     if (_condition != condition) {
+        // Adjust subsetted properties
+        removeOwnedElement(_condition);
+
         _condition = condition;
+
+        // Adjust subsetted properties
+        if (condition) {
+            addOwnedElement(condition);
+        }
     }
 }
 
@@ -97,7 +105,15 @@ void QUmlExtend::setExtendedCase(QUmlUseCase *extendedCase)
     // This is a read-write association end
 
     if (_extendedCase != extendedCase) {
+        // Adjust subsetted properties
+        removeTarget(_extendedCase);
+
         _extendedCase = extendedCase;
+
+        // Adjust subsetted properties
+        if (extendedCase) {
+            addTarget(extendedCase);
+        }
     }
 }
 
@@ -116,7 +132,16 @@ void QUmlExtend::setExtension(QUmlUseCase *extension)
     // This is a read-write association end
 
     if (_extension != extension) {
+        // Adjust subsetted properties
+        removeSource(_extension);
+
         _extension = extension;
+
+        // Adjust subsetted properties
+        if (extension) {
+            addSource(extension);
+        }
+        setNamespace(extension);
     }
 }
 

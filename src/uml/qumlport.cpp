@@ -151,6 +151,30 @@ QSet<QUmlInterface *> QUmlPort::provided() const
     return QSet<QUmlInterface *>();
 }
 
+void QUmlPort::addProvided(QUmlInterface *provided)
+{
+    // This is a read-only derived association end
+
+    qWarning("QUmlPort::provided(): to be implemented (this is a derived association end)");
+    Q_UNUSED(provided);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
+}
+
+void QUmlPort::removeProvided(QUmlInterface *provided)
+{
+    // This is a read-only derived association end
+
+    qWarning("QUmlPort::provided(): to be implemented (this is a derived association end)");
+    Q_UNUSED(provided);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
+}
+
 /*!
     A port may be redefined when its containing classifier is specialized. The redefining port may have additional interfaces to those that are associated with the redefined port or it may replace an interface by one of its subtypes.
  */
@@ -189,6 +213,30 @@ QSet<QUmlInterface *> QUmlPort::required() const
     qWarning("QUmlPort::required(): to be implemented (this is a derived association end)");
 
     return QSet<QUmlInterface *>();
+}
+
+void QUmlPort::addRequired(QUmlInterface *required)
+{
+    // This is a read-only derived association end
+
+    qWarning("QUmlPort::required(): to be implemented (this is a derived association end)");
+    Q_UNUSED(required);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
+}
+
+void QUmlPort::removeRequired(QUmlInterface *required)
+{
+    // This is a read-only derived association end
+
+    qWarning("QUmlPort::required(): to be implemented (this is a derived association end)");
+    Q_UNUSED(required);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
 }
 
 QT_END_NAMESPACE

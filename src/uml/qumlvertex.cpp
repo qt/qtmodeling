@@ -76,7 +76,12 @@ void QUmlVertex::setContainer(QUmlRegion *container)
     // This is a read-write association end
 
     if (_container != container) {
+        // Adjust subsetted properties
+
         _container = container;
+
+        // Adjust subsetted properties
+        setNamespace(container);
     }
 }
 
@@ -92,6 +97,30 @@ QSet<QUmlTransition *> QUmlVertex::incoming() const
     return QSet<QUmlTransition *>();
 }
 
+void QUmlVertex::addIncoming(QUmlTransition *incoming)
+{
+    // This is a read-only derived association end
+
+    qWarning("QUmlVertex::incoming(): to be implemented (this is a derived association end)");
+    Q_UNUSED(incoming);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
+}
+
+void QUmlVertex::removeIncoming(QUmlTransition *incoming)
+{
+    // This is a read-only derived association end
+
+    qWarning("QUmlVertex::incoming(): to be implemented (this is a derived association end)");
+    Q_UNUSED(incoming);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
+}
+
 /*!
     Specifies the transitions departing from this vertex.
  */
@@ -102,6 +131,30 @@ QSet<QUmlTransition *> QUmlVertex::outgoing() const
     qWarning("QUmlVertex::outgoing(): to be implemented (this is a derived association end)");
 
     return QSet<QUmlTransition *>();
+}
+
+void QUmlVertex::addOutgoing(QUmlTransition *outgoing)
+{
+    // This is a read-only derived association end
+
+    qWarning("QUmlVertex::outgoing(): to be implemented (this is a derived association end)");
+    Q_UNUSED(outgoing);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
+}
+
+void QUmlVertex::removeOutgoing(QUmlTransition *outgoing)
+{
+    // This is a read-only derived association end
+
+    qWarning("QUmlVertex::outgoing(): to be implemented (this is a derived association end)");
+    Q_UNUSED(outgoing);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
 }
 
 // OPERATIONS

@@ -131,7 +131,12 @@ void QUmlTemplateSignature::setTemplate(QUmlTemplateableElement *template_)
     // This is a read-write association end
 
     if (_template_ != template_) {
+        // Adjust subsetted properties
+
         _template_ = template_;
+
+        // Adjust subsetted properties
+        setOwner(template_);
     }
 }
 

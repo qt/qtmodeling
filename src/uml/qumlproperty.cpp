@@ -130,7 +130,12 @@ void QUmlProperty::setAssociationEnd(QUmlProperty *associationEnd)
     // This is a read-write association end
 
     if (_associationEnd != associationEnd) {
+        // Adjust subsetted properties
+
         _associationEnd = associationEnd;
+
+        // Adjust subsetted properties
+        setOwner(associationEnd);
     }
 }
 
@@ -149,7 +154,12 @@ void QUmlProperty::setClass(QUmlClass *class_)
     // This is a read-write association end
 
     if (_class_ != class_) {
+        // Adjust subsetted properties
+
         _class_ = class_;
+
+        // Adjust subsetted properties
+        setNamespace(class_);
     }
 }
 
@@ -168,7 +178,12 @@ void QUmlProperty::setDatatype(QUmlDataType *datatype)
     // This is a read-write association end
 
     if (_datatype != datatype) {
+        // Adjust subsetted properties
+
         _datatype = datatype;
+
+        // Adjust subsetted properties
+        setNamespace(datatype);
     }
 }
 
@@ -211,7 +226,15 @@ void QUmlProperty::setDefaultValue(QUmlValueSpecification *defaultValue)
     // This is a read-write association end
 
     if (_defaultValue != defaultValue) {
+        // Adjust subsetted properties
+        removeOwnedElement(_defaultValue);
+
         _defaultValue = defaultValue;
+
+        // Adjust subsetted properties
+        if (defaultValue) {
+            addOwnedElement(defaultValue);
+        }
     }
 }
 
@@ -230,7 +253,12 @@ void QUmlProperty::setInterface(QUmlInterface *interface_)
     // This is a read-write association end
 
     if (_interface_ != interface_) {
+        // Adjust subsetted properties
+
         _interface_ = interface_;
+
+        // Adjust subsetted properties
+        setNamespace(interface_);
     }
 }
 
@@ -373,7 +401,21 @@ void QUmlProperty::setOwningAssociation(QUmlAssociation *owningAssociation)
     // This is a read-write association end
 
     if (_owningAssociation != owningAssociation) {
+        // Adjust subsetted properties
+        removeFeaturingClassifier(_owningAssociation);
+        removeRedefinitionContext(_owningAssociation);
+
         _owningAssociation = owningAssociation;
+
+        // Adjust subsetted properties
+        if (owningAssociation) {
+            addFeaturingClassifier(owningAssociation);
+        }
+        if (owningAssociation) {
+            addRedefinitionContext(owningAssociation);
+        }
+        setNamespace(owningAssociation);
+        setAssociation(owningAssociation);
     }
 }
 

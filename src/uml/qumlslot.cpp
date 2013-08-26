@@ -96,7 +96,12 @@ void QUmlSlot::setOwningInstance(QUmlInstanceSpecification *owningInstance)
     // This is a read-write association end
 
     if (_owningInstance != owningInstance) {
+        // Adjust subsetted properties
+
         _owningInstance = owningInstance;
+
+        // Adjust subsetted properties
+        setOwner(owningInstance);
     }
 }
 

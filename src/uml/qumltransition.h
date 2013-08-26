@@ -78,6 +78,7 @@ public:
     QUmlTransition *redefinedTransition() const;
     void setRedefinedTransition(QUmlTransition *redefinedTransition);
     QUmlClassifier *redefinitionContext() const;
+    Q_DECL_HIDDEN void setRedefinitionContext(QUmlClassifier *redefinitionContext);
     QUmlVertex *source() const;
     void setSource(QUmlVertex *source);
     QUmlVertex *target() const;

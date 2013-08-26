@@ -77,7 +77,15 @@ void QUmlGeneralization::setGeneral(QUmlClassifier *general)
     // This is a read-write association end
 
     if (_general != general) {
+        // Adjust subsetted properties
+        removeTarget(_general);
+
         _general = general;
+
+        // Adjust subsetted properties
+        if (general) {
+            addTarget(general);
+        }
     }
 }
 
@@ -143,7 +151,16 @@ void QUmlGeneralization::setSpecific(QUmlClassifier *specific)
     // This is a read-write association end
 
     if (_specific != specific) {
+        // Adjust subsetted properties
+        removeSource(_specific);
+
         _specific = specific;
+
+        // Adjust subsetted properties
+        setOwner(specific);
+        if (specific) {
+            addSource(specific);
+        }
     }
 }
 

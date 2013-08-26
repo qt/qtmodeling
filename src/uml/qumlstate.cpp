@@ -170,7 +170,15 @@ void QUmlState::setDoActivity(QUmlBehavior *doActivity)
     // This is a read-write association end
 
     if (_doActivity != doActivity) {
+        // Adjust subsetted properties
+        removeOwnedElement(_doActivity);
+
         _doActivity = doActivity;
+
+        // Adjust subsetted properties
+        if (doActivity) {
+            addOwnedElement(doActivity);
+        }
     }
 }
 
@@ -189,7 +197,15 @@ void QUmlState::setEntry(QUmlBehavior *entry)
     // This is a read-write association end
 
     if (_entry != entry) {
+        // Adjust subsetted properties
+        removeOwnedElement(_entry);
+
         _entry = entry;
+
+        // Adjust subsetted properties
+        if (entry) {
+            addOwnedElement(entry);
+        }
     }
 }
 
@@ -208,7 +224,15 @@ void QUmlState::setExit(QUmlBehavior *exit)
     // This is a read-write association end
 
     if (_exit != exit) {
+        // Adjust subsetted properties
+        removeOwnedElement(_exit);
+
         _exit = exit;
+
+        // Adjust subsetted properties
+        if (exit) {
+            addOwnedElement(exit);
+        }
     }
 }
 
@@ -224,6 +248,18 @@ bool QUmlState::isComposite() const
     return bool();
 }
 
+void QUmlState::setComposite(bool isComposite)
+{
+    // This is a read-only derived property
+
+    qWarning("QUmlState::isComposite(): to be implemented (this is a derived property)");
+    Q_UNUSED(isComposite);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
+}
+
 /*!
     A state with isOrthogonal=true is said to be an orthogonal composite state. An orthogonal composite state contains two or more regions.
  */
@@ -234,6 +270,18 @@ bool QUmlState::isOrthogonal() const
     qWarning("QUmlState::isOrthogonal(): to be implemented (this is a derived property)");
 
     return bool();
+}
+
+void QUmlState::setOrthogonal(bool isOrthogonal)
+{
+    // This is a read-only derived property
+
+    qWarning("QUmlState::isOrthogonal(): to be implemented (this is a derived property)");
+    Q_UNUSED(isOrthogonal);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
 }
 
 /*!
@@ -248,6 +296,18 @@ bool QUmlState::isSimple() const
     return bool();
 }
 
+void QUmlState::setSimple(bool isSimple)
+{
+    // This is a read-only derived property
+
+    qWarning("QUmlState::isSimple(): to be implemented (this is a derived property)");
+    Q_UNUSED(isSimple);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
+}
+
 /*!
     A state with isSubmachineState=true is said to be a submachine state. Such a state refers to a state machine (submachine).
  */
@@ -258,6 +318,18 @@ bool QUmlState::isSubmachineState() const
     qWarning("QUmlState::isSubmachineState(): to be implemented (this is a derived property)");
 
     return bool();
+}
+
+void QUmlState::setSubmachineState(bool isSubmachineState)
+{
+    // This is a read-only derived property
+
+    qWarning("QUmlState::isSubmachineState(): to be implemented (this is a derived property)");
+    Q_UNUSED(isSubmachineState);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
 }
 
 /*!
@@ -275,7 +347,15 @@ void QUmlState::setRedefinedState(QUmlState *redefinedState)
     // This is a read-write association end
 
     if (_redefinedState != redefinedState) {
+        // Adjust subsetted properties
+        removeRedefinedElement(_redefinedState);
+
         _redefinedState = redefinedState;
+
+        // Adjust subsetted properties
+        if (redefinedState) {
+            addRedefinedElement(redefinedState);
+        }
     }
 }
 
@@ -289,6 +369,18 @@ QUmlClassifier *QUmlState::redefinitionContext() const
     qWarning("QUmlState::redefinitionContext(): to be implemented (this is a derived association end)");
 
     return 0;
+}
+
+void QUmlState::setRedefinitionContext(QUmlClassifier *redefinitionContext)
+{
+    // This is a read-only derived association end
+
+    qWarning("QUmlState::redefinitionContext(): to be implemented (this is a derived association end)");
+    Q_UNUSED(redefinitionContext);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
 }
 
 /*!
@@ -334,7 +426,15 @@ void QUmlState::setStateInvariant(QUmlConstraint *stateInvariant)
     // This is a read-write association end
 
     if (_stateInvariant != stateInvariant) {
+        // Adjust subsetted properties
+        removeOwnedRule(_stateInvariant);
+
         _stateInvariant = stateInvariant;
+
+        // Adjust subsetted properties
+        if (stateInvariant) {
+            addOwnedRule(stateInvariant);
+        }
     }
 }
 

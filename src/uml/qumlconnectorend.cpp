@@ -73,6 +73,18 @@ QUmlProperty *QUmlConnectorEnd::definingEnd() const
     return 0;
 }
 
+void QUmlConnectorEnd::setDefiningEnd(QUmlProperty *definingEnd)
+{
+    // This is a read-only derived association end
+
+    qWarning("QUmlConnectorEnd::definingEnd(): to be implemented (this is a derived association end)");
+    Q_UNUSED(definingEnd);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
+}
+
 /*!
     Indicates the role of the internal structure of a classifier with the port to which the connector end is attached.
  */

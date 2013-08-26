@@ -75,7 +75,15 @@ void QUmlPackageMerge::setMergedPackage(QUmlPackage *mergedPackage)
     // This is a read-write association end
 
     if (_mergedPackage != mergedPackage) {
+        // Adjust subsetted properties
+        removeTarget(_mergedPackage);
+
         _mergedPackage = mergedPackage;
+
+        // Adjust subsetted properties
+        if (mergedPackage) {
+            addTarget(mergedPackage);
+        }
     }
 }
 
@@ -94,7 +102,16 @@ void QUmlPackageMerge::setReceivingPackage(QUmlPackage *receivingPackage)
     // This is a read-write association end
 
     if (_receivingPackage != receivingPackage) {
+        // Adjust subsetted properties
+        removeSource(_receivingPackage);
+
         _receivingPackage = receivingPackage;
+
+        // Adjust subsetted properties
+        setOwner(receivingPackage);
+        if (receivingPackage) {
+            addSource(receivingPackage);
+        }
     }
 }
 

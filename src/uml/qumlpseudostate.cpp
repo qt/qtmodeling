@@ -96,7 +96,12 @@ void QUmlPseudostate::setState(QUmlState *state)
     // This is a read-write association end
 
     if (_state != state) {
+        // Adjust subsetted properties
+
         _state = state;
+
+        // Adjust subsetted properties
+        setNamespace(state);
     }
 }
 
@@ -115,7 +120,12 @@ void QUmlPseudostate::setStateMachine(QUmlStateMachine *stateMachine)
     // This is a read-write association end
 
     if (_stateMachine != stateMachine) {
+        // Adjust subsetted properties
+
         _stateMachine = stateMachine;
+
+        // Adjust subsetted properties
+        setNamespace(stateMachine);
     }
 }
 

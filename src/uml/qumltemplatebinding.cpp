@@ -77,7 +77,16 @@ void QUmlTemplateBinding::setBoundElement(QUmlTemplateableElement *boundElement)
     // This is a read-write association end
 
     if (_boundElement != boundElement) {
+        // Adjust subsetted properties
+        removeSource(_boundElement);
+
         _boundElement = boundElement;
+
+        // Adjust subsetted properties
+        setOwner(boundElement);
+        if (boundElement) {
+            addSource(boundElement);
+        }
     }
 }
 
@@ -124,7 +133,15 @@ void QUmlTemplateBinding::setSignature(QUmlTemplateSignature *signature)
     // This is a read-write association end
 
     if (_signature != signature) {
+        // Adjust subsetted properties
+        removeTarget(_signature);
+
         _signature = signature;
+
+        // Adjust subsetted properties
+        if (signature) {
+            addTarget(signature);
+        }
     }
 }
 

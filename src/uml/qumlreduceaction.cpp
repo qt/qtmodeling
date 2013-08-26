@@ -79,7 +79,15 @@ void QUmlReduceAction::setCollection(QUmlInputPin *collection)
     // This is a read-write association end
 
     if (_collection != collection) {
+        // Adjust subsetted properties
+        removeInput(_collection);
+
         _collection = collection;
+
+        // Adjust subsetted properties
+        if (collection) {
+            addInput(collection);
+        }
     }
 }
 
@@ -136,7 +144,15 @@ void QUmlReduceAction::setResult(QUmlOutputPin *result)
     // This is a read-write association end
 
     if (_result != result) {
+        // Adjust subsetted properties
+        removeOutput(_result);
+
         _result = result;
+
+        // Adjust subsetted properties
+        if (result) {
+            addOutput(result);
+        }
     }
 }
 

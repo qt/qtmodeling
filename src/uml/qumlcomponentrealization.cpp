@@ -75,7 +75,16 @@ void QUmlComponentRealization::setAbstraction(QUmlComponent *abstraction)
     // This is a read-write association end
 
     if (_abstraction != abstraction) {
+        // Adjust subsetted properties
+        removeSupplier(_abstraction);
+
         _abstraction = abstraction;
+
+        // Adjust subsetted properties
+        if (abstraction) {
+            addSupplier(abstraction);
+        }
+        setOwner(abstraction);
     }
 }
 

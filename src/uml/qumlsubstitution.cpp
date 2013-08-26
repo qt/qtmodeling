@@ -75,7 +75,15 @@ void QUmlSubstitution::setContract(QUmlClassifier *contract)
     // This is a read-write association end
 
     if (_contract != contract) {
+        // Adjust subsetted properties
+        removeSupplier(_contract);
+
         _contract = contract;
+
+        // Adjust subsetted properties
+        if (contract) {
+            addSupplier(contract);
+        }
     }
 }
 
@@ -94,7 +102,16 @@ void QUmlSubstitution::setSubstitutingClassifier(QUmlClassifier *substitutingCla
     // This is a read-write association end
 
     if (_substitutingClassifier != substitutingClassifier) {
+        // Adjust subsetted properties
+        removeClient(_substitutingClassifier);
+
         _substitutingClassifier = substitutingClassifier;
+
+        // Adjust subsetted properties
+        setOwner(substitutingClassifier);
+        if (substitutingClassifier) {
+            addClient(substitutingClassifier);
+        }
     }
 }
 

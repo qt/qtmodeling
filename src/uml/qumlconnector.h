@@ -69,6 +69,7 @@ public:
     void addEnd(QUmlConnectorEnd *end);
     void removeEnd(QUmlConnectorEnd *end);
     QtUml::ConnectorKind kind() const;
+    Q_DECL_HIDDEN void setKind(QtUml::ConnectorKind kind);
     QSet<QUmlConnector *> redefinedConnector() const;
     void addRedefinedConnector(QUmlConnector *redefinedConnector);
     void removeRedefinedConnector(QUmlConnector *redefinedConnector);

@@ -76,7 +76,15 @@ void QUmlWriteStructuralFeatureAction::setResult(QUmlOutputPin *result)
     // This is a read-write association end
 
     if (_result != result) {
+        // Adjust subsetted properties
+        removeOutput(_result);
+
         _result = result;
+
+        // Adjust subsetted properties
+        if (result) {
+            addOutput(result);
+        }
     }
 }
 
@@ -95,7 +103,15 @@ void QUmlWriteStructuralFeatureAction::setValue(QUmlInputPin *value)
     // This is a read-write association end
 
     if (_value != value) {
+        // Adjust subsetted properties
+        removeInput(_value);
+
         _value = value;
+
+        // Adjust subsetted properties
+        if (value) {
+            addInput(value);
+        }
     }
 }
 

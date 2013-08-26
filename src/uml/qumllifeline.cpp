@@ -128,7 +128,12 @@ void QUmlLifeline::setInteraction(QUmlInteraction *interaction)
     // This is a read-write association end
 
     if (_interaction != interaction) {
+        // Adjust subsetted properties
+
         _interaction = interaction;
+
+        // Adjust subsetted properties
+        setNamespace(interaction);
     }
 }
 
@@ -166,7 +171,15 @@ void QUmlLifeline::setSelector(QUmlValueSpecification *selector)
     // This is a read-write association end
 
     if (_selector != selector) {
+        // Adjust subsetted properties
+        removeOwnedElement(_selector);
+
         _selector = selector;
+
+        // Adjust subsetted properties
+        if (selector) {
+            addOwnedElement(selector);
+        }
     }
 }
 

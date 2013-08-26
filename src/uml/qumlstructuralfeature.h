@@ -53,7 +53,7 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QUmlStructuralFeature : public virtual QUmlTypedElement, public QUmlMultiplicityElement, public QUmlFeature
+class Q_UML_EXPORT QUmlStructuralFeature : virtual public QUmlTypedElement, public QUmlMultiplicityElement, public QUmlFeature
 {
 public:
     Q_DECL_HIDDEN QUmlStructuralFeature();

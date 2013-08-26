@@ -70,5 +70,29 @@ QSet<QUmlPort *> QUmlEncapsulatedClassifier::ownedPort() const
     return QSet<QUmlPort *>();
 }
 
+void QUmlEncapsulatedClassifier::addOwnedPort(QUmlPort *ownedPort)
+{
+    // This is a read-only derived association end
+
+    qWarning("QUmlEncapsulatedClassifier::ownedPort(): to be implemented (this is a derived association end)");
+    Q_UNUSED(ownedPort);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
+}
+
+void QUmlEncapsulatedClassifier::removeOwnedPort(QUmlPort *ownedPort)
+{
+    // This is a read-only derived association end
+
+    qWarning("QUmlEncapsulatedClassifier::ownedPort(): to be implemented (this is a derived association end)");
+    Q_UNUSED(ownedPort);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
+}
+
 QT_END_NAMESPACE
 

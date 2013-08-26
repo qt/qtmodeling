@@ -72,6 +72,24 @@ QSet<QUmlActivityEdge *> QUmlActivityGroup::containedEdge() const
     return _containedEdge;
 }
 
+void QUmlActivityGroup::addContainedEdge(QUmlActivityEdge *containedEdge)
+{
+    // This is a read-only derived union association end
+
+    if (!_containedEdge.contains(containedEdge)) {
+        _containedEdge.insert(containedEdge);
+    }
+}
+
+void QUmlActivityGroup::removeContainedEdge(QUmlActivityEdge *containedEdge)
+{
+    // This is a read-only derived union association end
+
+    if (_containedEdge.contains(containedEdge)) {
+        _containedEdge.remove(containedEdge);
+    }
+}
+
 /*!
     Nodes immediately contained in the group.
  */
@@ -80,6 +98,24 @@ QSet<QUmlActivityNode *> QUmlActivityGroup::containedNode() const
     // This is a read-only derived union association end
 
     return _containedNode;
+}
+
+void QUmlActivityGroup::addContainedNode(QUmlActivityNode *containedNode)
+{
+    // This is a read-only derived union association end
+
+    if (!_containedNode.contains(containedNode)) {
+        _containedNode.insert(containedNode);
+    }
+}
+
+void QUmlActivityGroup::removeContainedNode(QUmlActivityNode *containedNode)
+{
+    // This is a read-only derived union association end
+
+    if (_containedNode.contains(containedNode)) {
+        _containedNode.remove(containedNode);
+    }
 }
 
 /*!
@@ -97,7 +133,12 @@ void QUmlActivityGroup::setInActivity(QUmlActivity *inActivity)
     // This is a read-write association end
 
     if (_inActivity != inActivity) {
+        // Adjust subsetted properties
+
         _inActivity = inActivity;
+
+        // Adjust subsetted properties
+        setOwner(inActivity);
     }
 }
 
@@ -111,6 +152,24 @@ QSet<QUmlActivityGroup *> QUmlActivityGroup::subgroup() const
     return _subgroup;
 }
 
+void QUmlActivityGroup::addSubgroup(QUmlActivityGroup *subgroup)
+{
+    // This is a read-only derived union association end
+
+    if (!_subgroup.contains(subgroup)) {
+        _subgroup.insert(subgroup);
+    }
+}
+
+void QUmlActivityGroup::removeSubgroup(QUmlActivityGroup *subgroup)
+{
+    // This is a read-only derived union association end
+
+    if (_subgroup.contains(subgroup)) {
+        _subgroup.remove(subgroup);
+    }
+}
+
 /*!
     Group immediately containing the group.
  */
@@ -119,6 +178,20 @@ QUmlActivityGroup *QUmlActivityGroup::superGroup() const
     // This is a read-only derived union association end
 
     return _superGroup;
+}
+
+void QUmlActivityGroup::setSuperGroup(QUmlActivityGroup *superGroup)
+{
+    // This is a read-only derived union association end
+
+    if (_superGroup != superGroup) {
+        // Adjust subsetted properties
+
+        _superGroup = superGroup;
+
+        // Adjust subsetted properties
+        setOwner(superGroup);
+    }
 }
 
 QT_END_NAMESPACE

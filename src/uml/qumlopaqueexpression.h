@@ -69,6 +69,7 @@ public:
     void addLanguage(QString language);
     void removeLanguage(QString language);
     QUmlParameter *result() const;
+    Q_DECL_HIDDEN void setResult(QUmlParameter *result);
 
     // Operations
     bool isIntegral() const;

@@ -72,6 +72,30 @@ QList<QUmlType *> QUmlAssociation::endType() const
     return QList<QUmlType *>();
 }
 
+void QUmlAssociation::addEndType(QUmlType *endType)
+{
+    // This is a read-only derived association end
+
+    qWarning("QUmlAssociation::endType(): to be implemented (this is a derived association end)");
+    Q_UNUSED(endType);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
+}
+
+void QUmlAssociation::removeEndType(QUmlType *endType)
+{
+    // This is a read-only derived association end
+
+    qWarning("QUmlAssociation::endType(): to be implemented (this is a derived association end)");
+    Q_UNUSED(endType);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
+}
+
 /*!
     Specifies whether the association is derived from other model elements such as other associations or constraints.
  */

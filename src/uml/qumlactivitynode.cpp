@@ -80,7 +80,12 @@ void QUmlActivityNode::setActivity(QUmlActivity *activity)
     // This is a read-write association end
 
     if (_activity != activity) {
+        // Adjust subsetted properties
+
         _activity = activity;
+
+        // Adjust subsetted properties
+        setOwner(activity);
     }
 }
 
@@ -92,6 +97,24 @@ QSet<QUmlActivityGroup *> QUmlActivityNode::inGroup() const
     // This is a read-only derived union association end
 
     return _inGroup;
+}
+
+void QUmlActivityNode::addInGroup(QUmlActivityGroup *inGroup)
+{
+    // This is a read-only derived union association end
+
+    if (!_inGroup.contains(inGroup)) {
+        _inGroup.insert(inGroup);
+    }
+}
+
+void QUmlActivityNode::removeInGroup(QUmlActivityGroup *inGroup)
+{
+    // This is a read-only derived union association end
+
+    if (_inGroup.contains(inGroup)) {
+        _inGroup.remove(inGroup);
+    }
 }
 
 /*!
@@ -165,7 +188,16 @@ void QUmlActivityNode::setInStructuredNode(QUmlStructuredActivityNode *inStructu
     // This is a read-write association end
 
     if (_inStructuredNode != inStructuredNode) {
+        // Adjust subsetted properties
+        removeInGroup(_inStructuredNode);
+
         _inStructuredNode = inStructuredNode;
+
+        // Adjust subsetted properties
+        if (inStructuredNode) {
+            addInGroup(inStructuredNode);
+        }
+        setOwner(inStructuredNode);
     }
 }
 

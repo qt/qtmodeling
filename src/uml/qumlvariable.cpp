@@ -77,7 +77,12 @@ void QUmlVariable::setActivityScope(QUmlActivity *activityScope)
     // This is a read-write association end
 
     if (_activityScope != activityScope) {
+        // Adjust subsetted properties
+
         _activityScope = activityScope;
+
+        // Adjust subsetted properties
+        setNamespace(activityScope);
     }
 }
 
@@ -96,7 +101,12 @@ void QUmlVariable::setScope(QUmlStructuredActivityNode *scope)
     // This is a read-write association end
 
     if (_scope != scope) {
+        // Adjust subsetted properties
+
         _scope = scope;
+
+        // Adjust subsetted properties
+        setNamespace(scope);
     }
 }
 

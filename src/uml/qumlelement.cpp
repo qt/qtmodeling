@@ -97,6 +97,24 @@ QSet<QUmlElement *> QUmlElement::ownedElement() const
     return _ownedElement;
 }
 
+void QUmlElement::addOwnedElement(QUmlElement *ownedElement)
+{
+    // This is a read-only derived union association end
+
+    if (!_ownedElement.contains(ownedElement)) {
+        _ownedElement.insert(ownedElement);
+    }
+}
+
+void QUmlElement::removeOwnedElement(QUmlElement *ownedElement)
+{
+    // This is a read-only derived union association end
+
+    if (_ownedElement.contains(ownedElement)) {
+        _ownedElement.remove(ownedElement);
+    }
+}
+
 /*!
     The Element that owns this element.
  */
@@ -105,6 +123,15 @@ QUmlElement *QUmlElement::owner() const
     // This is a read-only derived union association end
 
     return _owner;
+}
+
+void QUmlElement::setOwner(QUmlElement *owner)
+{
+    // This is a read-only derived union association end
+
+    if (_owner != owner) {
+        _owner = owner;
+    }
 }
 
 // OPERATIONS

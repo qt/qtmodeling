@@ -86,7 +86,12 @@ void QUmlTransition::setContainer(QUmlRegion *container)
     // This is a read-write association end
 
     if (_container != container) {
+        // Adjust subsetted properties
+
         _container = container;
+
+        // Adjust subsetted properties
+        setNamespace(container);
     }
 }
 
@@ -105,7 +110,15 @@ void QUmlTransition::setEffect(QUmlBehavior *effect)
     // This is a read-write association end
 
     if (_effect != effect) {
+        // Adjust subsetted properties
+        removeOwnedElement(_effect);
+
         _effect = effect;
+
+        // Adjust subsetted properties
+        if (effect) {
+            addOwnedElement(effect);
+        }
     }
 }
 
@@ -124,7 +137,15 @@ void QUmlTransition::setGuard(QUmlConstraint *guard)
     // This is a read-write association end
 
     if (_guard != guard) {
+        // Adjust subsetted properties
+        removeOwnedRule(_guard);
+
         _guard = guard;
+
+        // Adjust subsetted properties
+        if (guard) {
+            addOwnedRule(guard);
+        }
     }
 }
 
@@ -162,7 +183,15 @@ void QUmlTransition::setRedefinedTransition(QUmlTransition *redefinedTransition)
     // This is a read-write association end
 
     if (_redefinedTransition != redefinedTransition) {
+        // Adjust subsetted properties
+        removeRedefinedElement(_redefinedTransition);
+
         _redefinedTransition = redefinedTransition;
+
+        // Adjust subsetted properties
+        if (redefinedTransition) {
+            addRedefinedElement(redefinedTransition);
+        }
     }
 }
 
@@ -176,6 +205,18 @@ QUmlClassifier *QUmlTransition::redefinitionContext() const
     qWarning("QUmlTransition::redefinitionContext(): to be implemented (this is a derived association end)");
 
     return 0;
+}
+
+void QUmlTransition::setRedefinitionContext(QUmlClassifier *redefinitionContext)
+{
+    // This is a read-only derived association end
+
+    qWarning("QUmlTransition::redefinitionContext(): to be implemented (this is a derived association end)");
+    Q_UNUSED(redefinitionContext);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
 }
 
 /*!

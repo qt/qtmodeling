@@ -121,6 +121,30 @@ QSet<QUmlInterface *> QUmlComponent::provided() const
     return QSet<QUmlInterface *>();
 }
 
+void QUmlComponent::addProvided(QUmlInterface *provided)
+{
+    // This is a read-only derived association end
+
+    qWarning("QUmlComponent::provided(): to be implemented (this is a derived association end)");
+    Q_UNUSED(provided);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
+}
+
+void QUmlComponent::removeProvided(QUmlInterface *provided)
+{
+    // This is a read-only derived association end
+
+    qWarning("QUmlComponent::provided(): to be implemented (this is a derived association end)");
+    Q_UNUSED(provided);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
+}
+
 /*!
     The set of Realizations owned by the Component. Realizations reference the Classifiers of which the Component is an abstraction; i.e., that realize its behavior.
  */
@@ -159,6 +183,30 @@ QSet<QUmlInterface *> QUmlComponent::required() const
     qWarning("QUmlComponent::required(): to be implemented (this is a derived association end)");
 
     return QSet<QUmlInterface *>();
+}
+
+void QUmlComponent::addRequired(QUmlInterface *required)
+{
+    // This is a read-only derived association end
+
+    qWarning("QUmlComponent::required(): to be implemented (this is a derived association end)");
+    Q_UNUSED(required);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
+}
+
+void QUmlComponent::removeRequired(QUmlInterface *required)
+{
+    // This is a read-only derived association end
+
+    qWarning("QUmlComponent::required(): to be implemented (this is a derived association end)");
+    Q_UNUSED(required);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
 }
 
 // OPERATIONS

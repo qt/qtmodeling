@@ -147,6 +147,18 @@ QUmlParameter *QUmlOpaqueExpression::result() const
     return 0;
 }
 
+void QUmlOpaqueExpression::setResult(QUmlParameter *result)
+{
+    // This is a read-only derived association end
+
+    qWarning("QUmlOpaqueExpression::result(): to be implemented (this is a derived association end)");
+    Q_UNUSED(result);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
+}
+
 // OPERATIONS
 
 /*!

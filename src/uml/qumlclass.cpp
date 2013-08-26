@@ -77,6 +77,30 @@ QSet<QUmlExtension *> QUmlClass::extension() const
     return QSet<QUmlExtension *>();
 }
 
+void QUmlClass::addExtension(QUmlExtension *extension)
+{
+    // This is a read-only derived association end
+
+    qWarning("QUmlClass::extension(): to be implemented (this is a derived association end)");
+    Q_UNUSED(extension);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
+}
+
+void QUmlClass::removeExtension(QUmlExtension *extension)
+{
+    // This is a read-only derived association end
+
+    qWarning("QUmlClass::extension(): to be implemented (this is a derived association end)");
+    Q_UNUSED(extension);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
+}
+
 /*!
     If true, the Classifier does not provide a complete declaration and can typically not be instantiated. An abstract classifier is intended to be used by other classifiers e.g. as the target of general metarelationships or generalization relationships.True when a class is abstract.
  */

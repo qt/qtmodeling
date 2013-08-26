@@ -94,7 +94,15 @@ void QUmlRemoveVariableValueAction::setRemoveAt(QUmlInputPin *removeAt)
     // This is a read-write association end
 
     if (_removeAt != removeAt) {
+        // Adjust subsetted properties
+        removeInput(_removeAt);
+
         _removeAt = removeAt;
+
+        // Adjust subsetted properties
+        if (removeAt) {
+            addInput(removeAt);
+        }
     }
 }
 

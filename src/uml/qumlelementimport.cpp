@@ -96,7 +96,15 @@ void QUmlElementImport::setImportedElement(QUmlPackageableElement *importedEleme
     // This is a read-write association end
 
     if (_importedElement != importedElement) {
+        // Adjust subsetted properties
+        removeTarget(_importedElement);
+
         _importedElement = importedElement;
+
+        // Adjust subsetted properties
+        if (importedElement) {
+            addTarget(importedElement);
+        }
     }
 }
 
@@ -115,7 +123,16 @@ void QUmlElementImport::setImportingNamespace(QUmlNamespace *importingNamespace)
     // This is a read-write association end
 
     if (_importingNamespace != importingNamespace) {
+        // Adjust subsetted properties
+        removeSource(_importingNamespace);
+
         _importingNamespace = importingNamespace;
+
+        // Adjust subsetted properties
+        setOwner(importingNamespace);
+        if (importingNamespace) {
+            addSource(importingNamespace);
+        }
     }
 }
 

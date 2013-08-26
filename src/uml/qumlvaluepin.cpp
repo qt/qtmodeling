@@ -74,7 +74,15 @@ void QUmlValuePin::setValue(QUmlValueSpecification *value)
     // This is a read-write association end
 
     if (_value != value) {
+        // Adjust subsetted properties
+        removeOwnedElement(_value);
+
         _value = value;
+
+        // Adjust subsetted properties
+        if (value) {
+            addOwnedElement(value);
+        }
     }
 }
 

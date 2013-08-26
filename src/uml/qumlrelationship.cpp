@@ -66,5 +66,23 @@ QSet<QUmlElement *> QUmlRelationship::relatedElement() const
     return _relatedElement;
 }
 
+void QUmlRelationship::addRelatedElement(QUmlElement *relatedElement)
+{
+    // This is a read-only derived union association end
+
+    if (!_relatedElement.contains(relatedElement)) {
+        _relatedElement.insert(relatedElement);
+    }
+}
+
+void QUmlRelationship::removeRelatedElement(QUmlElement *relatedElement)
+{
+    // This is a read-only derived union association end
+
+    if (_relatedElement.contains(relatedElement)) {
+        _relatedElement.remove(relatedElement);
+    }
+}
+
 QT_END_NAMESPACE
 

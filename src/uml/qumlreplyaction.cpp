@@ -123,7 +123,15 @@ void QUmlReplyAction::setReturnInformation(QUmlInputPin *returnInformation)
     // This is a read-write association end
 
     if (_returnInformation != returnInformation) {
+        // Adjust subsetted properties
+        removeInput(_returnInformation);
+
         _returnInformation = returnInformation;
+
+        // Adjust subsetted properties
+        if (returnInformation) {
+            addInput(returnInformation);
+        }
     }
 }
 

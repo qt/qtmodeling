@@ -64,6 +64,7 @@ public:
     void addIcon(QUmlImage *icon);
     void removeIcon(QUmlImage *icon);
     QUmlProfile *profile() const;
+    Q_DECL_HIDDEN void setProfile(QUmlProfile *profile);
 
     // Operations
     QUmlProfile *containingProfile() const;

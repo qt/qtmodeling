@@ -129,7 +129,12 @@ void QUmlMessage::setInteraction(QUmlInteraction *interaction)
     // This is a read-write association end
 
     if (_interaction != interaction) {
+        // Adjust subsetted properties
+
         _interaction = interaction;
+
+        // Adjust subsetted properties
+        setNamespace(interaction);
     }
 }
 
@@ -143,6 +148,18 @@ QtUml::MessageKind QUmlMessage::messageKind() const
     qWarning("QUmlMessage::messageKind(): to be implemented (this is a derived property)");
 
     return QtUml::MessageKind();
+}
+
+void QUmlMessage::setMessageKind(QtUml::MessageKind messageKind)
+{
+    // This is a read-only derived property
+
+    qWarning("QUmlMessage::messageKind(): to be implemented (this is a derived property)");
+    Q_UNUSED(messageKind);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
 }
 
 /*!

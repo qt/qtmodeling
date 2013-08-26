@@ -64,6 +64,7 @@ public:
 
     // Owned attributes
     QUmlBehavioredClassifier *context() const;
+    Q_DECL_HIDDEN void setContext(QUmlBehavioredClassifier *context);
     bool isReentrant() const;
     void setReentrant(bool isReentrant);
     QList<QUmlParameter *> ownedParameter() const;

@@ -74,6 +74,18 @@ QUmlClassifier *QUmlAction::context() const
     return 0;
 }
 
+void QUmlAction::setContext(QUmlClassifier *context)
+{
+    // This is a read-only derived association end
+
+    qWarning("QUmlAction::context(): to be implemented (this is a derived association end)");
+    Q_UNUSED(context);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
+}
+
 /*!
     The ordered set of input pins connected to the Action. These are among the total set of inputs.
  */
@@ -82,6 +94,24 @@ QList<QUmlInputPin *> QUmlAction::input() const
     // This is a read-only derived union association end
 
     return _input;
+}
+
+void QUmlAction::addInput(QUmlInputPin *input)
+{
+    // This is a read-only derived union association end
+
+    if (!_input.contains(input)) {
+        _input.append(input);
+    }
+}
+
+void QUmlAction::removeInput(QUmlInputPin *input)
+{
+    // This is a read-only derived union association end
+
+    if (_input.contains(input)) {
+        _input.removeAll(input);
+    }
 }
 
 /*!
@@ -167,6 +197,24 @@ QList<QUmlOutputPin *> QUmlAction::output() const
     // This is a read-only derived union association end
 
     return _output;
+}
+
+void QUmlAction::addOutput(QUmlOutputPin *output)
+{
+    // This is a read-only derived union association end
+
+    if (!_output.contains(output)) {
+        _output.append(output);
+    }
+}
+
+void QUmlAction::removeOutput(QUmlOutputPin *output)
+{
+    // This is a read-only derived union association end
+
+    if (_output.contains(output)) {
+        _output.removeAll(output);
+    }
 }
 
 QT_END_NAMESPACE

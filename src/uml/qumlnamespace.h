@@ -56,7 +56,7 @@ class QUmlElementImport;
 class QUmlPackageableElement;
 class QUmlPackageImport;
 
-class Q_UML_EXPORT QUmlNamespace : public virtual QUmlNamedElement
+class Q_UML_EXPORT QUmlNamespace : virtual public QUmlNamedElement
 {
 public:
     Q_DECL_HIDDEN QUmlNamespace();
@@ -66,8 +66,14 @@ public:
     void addElementImport(QUmlElementImport *elementImport);
     void removeElementImport(QUmlElementImport *elementImport);
     QSet<QUmlPackageableElement *> importedMember() const;
+    Q_DECL_HIDDEN void addImportedMember(QUmlPackageableElement *importedMember);
+    Q_DECL_HIDDEN void removeImportedMember(QUmlPackageableElement *importedMember);
     QSet<QUmlNamedElement *> member() const;
+    Q_DECL_HIDDEN void addMember(QUmlNamedElement *member);
+    Q_DECL_HIDDEN void removeMember(QUmlNamedElement *member);
     QSet<QUmlNamedElement *> ownedMember() const;
+    Q_DECL_HIDDEN void addOwnedMember(QUmlNamedElement *ownedMember);
+    Q_DECL_HIDDEN void removeOwnedMember(QUmlNamedElement *ownedMember);
     QSet<QUmlConstraint *> ownedRule() const;
     void addOwnedRule(QUmlConstraint *ownedRule);
     void removeOwnedRule(QUmlConstraint *ownedRule);

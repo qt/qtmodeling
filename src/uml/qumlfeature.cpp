@@ -69,6 +69,24 @@ QSet<QUmlClassifier *> QUmlFeature::featuringClassifier() const
     return _featuringClassifier;
 }
 
+void QUmlFeature::addFeaturingClassifier(QUmlClassifier *featuringClassifier)
+{
+    // This is a read-only derived union association end
+
+    if (!_featuringClassifier.contains(featuringClassifier)) {
+        _featuringClassifier.insert(featuringClassifier);
+    }
+}
+
+void QUmlFeature::removeFeaturingClassifier(QUmlClassifier *featuringClassifier)
+{
+    // This is a read-only derived union association end
+
+    if (_featuringClassifier.contains(featuringClassifier)) {
+        _featuringClassifier.remove(featuringClassifier);
+    }
+}
+
 /*!
     Specifies whether this feature characterizes individual instances classified by the classifier (false) or the classifier itself (true).
  */

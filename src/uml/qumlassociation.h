@@ -55,13 +55,15 @@ QT_MODULE(QtUml)
 class QUmlProperty;
 class QUmlType;
 
-class Q_UML_EXPORT QUmlAssociation : public QUmlClassifier, public QUmlRelationship
+class Q_UML_EXPORT QUmlAssociation : virtual public QUmlClassifier, public QUmlRelationship
 {
 public:
     QUmlAssociation();
 
     // Owned attributes
     QList<QUmlType *> endType() const;
+    Q_DECL_HIDDEN void addEndType(QUmlType *endType);
+    Q_DECL_HIDDEN void removeEndType(QUmlType *endType);
     bool isDerived() const;
     void setDerived(bool isDerived);
     QList<QUmlProperty *> memberEnd() const;

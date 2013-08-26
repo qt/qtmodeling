@@ -77,7 +77,15 @@ void QUmlTestIdentityAction::setFirst(QUmlInputPin *first)
     // This is a read-write association end
 
     if (_first != first) {
+        // Adjust subsetted properties
+        removeInput(_first);
+
         _first = first;
+
+        // Adjust subsetted properties
+        if (first) {
+            addInput(first);
+        }
     }
 }
 
@@ -96,7 +104,15 @@ void QUmlTestIdentityAction::setResult(QUmlOutputPin *result)
     // This is a read-write association end
 
     if (_result != result) {
+        // Adjust subsetted properties
+        removeOutput(_result);
+
         _result = result;
+
+        // Adjust subsetted properties
+        if (result) {
+            addOutput(result);
+        }
     }
 }
 
@@ -115,7 +131,15 @@ void QUmlTestIdentityAction::setSecond(QUmlInputPin *second)
     // This is a read-write association end
 
     if (_second != second) {
+        // Adjust subsetted properties
+        removeInput(_second);
+
         _second = second;
+
+        // Adjust subsetted properties
+        if (second) {
+            addInput(second);
+        }
     }
 }
 

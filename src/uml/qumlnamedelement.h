@@ -57,7 +57,7 @@ class QUmlNamespace;
 class QUmlPackage;
 class QUmlStringExpression;
 
-class Q_UML_EXPORT QUmlNamedElement : public virtual QUmlElement
+class Q_UML_EXPORT QUmlNamedElement : virtual public QUmlElement
 {
 public:
     Q_DECL_HIDDEN QUmlNamedElement();
@@ -71,7 +71,9 @@ public:
     QUmlStringExpression *nameExpression() const;
     void setNameExpression(QUmlStringExpression *nameExpression);
     QUmlNamespace *namespace_() const;
+    Q_DECL_HIDDEN void setNamespace(QUmlNamespace *namespace_);
     QString qualifiedName() const;
+    Q_DECL_HIDDEN void setQualifiedName(QString qualifiedName);
     QtUml::VisibilityKind visibility() const;
     void setVisibility(QtUml::VisibilityKind visibility);
 

@@ -131,7 +131,12 @@ void QUmlConnectionPointReference::setState(QUmlState *state)
     // This is a read-write association end
 
     if (_state != state) {
+        // Adjust subsetted properties
+
         _state = state;
+
+        // Adjust subsetted properties
+        setNamespace(state);
     }
 }
 

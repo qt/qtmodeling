@@ -129,6 +129,18 @@ QtUml::ConnectorKind QUmlConnector::kind() const
     return QtUml::ConnectorKind();
 }
 
+void QUmlConnector::setKind(QtUml::ConnectorKind kind)
+{
+    // This is a read-only derived property
+
+    qWarning("QUmlConnector::kind(): to be implemented (this is a derived property)");
+    Q_UNUSED(kind);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
+}
+
 /*!
     A connector may be redefined when its containing classifier is specialized. The redefining connector may have a type that specializes the type of the redefined connector. The types of the connector ends of the redefining connector may specialize the types of the connector ends of the redefined connector. The properties of the connector ends of the redefining connector may be replaced.
  */

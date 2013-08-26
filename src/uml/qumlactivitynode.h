@@ -67,6 +67,8 @@ public:
     QUmlActivity *activity() const;
     void setActivity(QUmlActivity *activity);
     QSet<QUmlActivityGroup *> inGroup() const;
+    Q_DECL_HIDDEN void addInGroup(QUmlActivityGroup *inGroup);
+    Q_DECL_HIDDEN void removeInGroup(QUmlActivityGroup *inGroup);
     QSet<QUmlInterruptibleActivityRegion *> inInterruptibleRegion() const;
     void addInInterruptibleRegion(QUmlInterruptibleActivityRegion *inInterruptibleRegion);
     void removeInInterruptibleRegion(QUmlInterruptibleActivityRegion *inInterruptibleRegion);

@@ -60,6 +60,8 @@ public:
 
     // Owned attributes
     QSet<QUmlClassifier *> featuringClassifier() const;
+    Q_DECL_HIDDEN void addFeaturingClassifier(QUmlClassifier *featuringClassifier);
+    Q_DECL_HIDDEN void removeFeaturingClassifier(QUmlClassifier *featuringClassifier);
     bool isStatic() const;
     void setStatic(bool isStatic);
 

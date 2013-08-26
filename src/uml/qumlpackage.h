@@ -74,6 +74,8 @@ public:
     QUmlPackage *nestingPackage() const;
     void setNestingPackage(QUmlPackage *nestingPackage);
     QSet<QUmlStereotype *> ownedStereotype() const;
+    Q_DECL_HIDDEN void addOwnedStereotype(QUmlStereotype *ownedStereotype);
+    Q_DECL_HIDDEN void removeOwnedStereotype(QUmlStereotype *ownedStereotype);
     QSet<QUmlType *> ownedType() const;
     void addOwnedType(QUmlType *ownedType);
     void removeOwnedType(QUmlType *ownedType);

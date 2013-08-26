@@ -150,6 +150,30 @@ QSet<QUmlStereotype *> QUmlPackage::ownedStereotype() const
     return QSet<QUmlStereotype *>();
 }
 
+void QUmlPackage::addOwnedStereotype(QUmlStereotype *ownedStereotype)
+{
+    // This is a read-only derived association end
+
+    qWarning("QUmlPackage::ownedStereotype(): to be implemented (this is a derived association end)");
+    Q_UNUSED(ownedStereotype);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
+}
+
+void QUmlPackage::removeOwnedStereotype(QUmlStereotype *ownedStereotype)
+{
+    // This is a read-only derived association end
+
+    qWarning("QUmlPackage::ownedStereotype(): to be implemented (this is a derived association end)");
+    Q_UNUSED(ownedStereotype);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
+}
+
 /*!
     References the packaged elements that are Types.
  */

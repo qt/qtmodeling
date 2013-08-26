@@ -73,6 +73,18 @@ bool QUmlExtension::isRequired() const
     return bool();
 }
 
+void QUmlExtension::setRequired(bool isRequired)
+{
+    // This is a read-only derived property
+
+    qWarning("QUmlExtension::isRequired(): to be implemented (this is a derived property)");
+    Q_UNUSED(isRequired);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
+}
+
 /*!
     References the Class that is extended through an Extension. The property is derived from the type of the memberEnd that is not the ownedEnd.
  */
@@ -83,6 +95,18 @@ QUmlClass *QUmlExtension::metaclass() const
     qWarning("QUmlExtension::metaclass(): to be implemented (this is a derived association end)");
 
     return 0;
+}
+
+void QUmlExtension::setMetaclass(QUmlClass *metaclass)
+{
+    // This is a read-only derived association end
+
+    qWarning("QUmlExtension::metaclass(): to be implemented (this is a derived association end)");
+    Q_UNUSED(metaclass);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
 }
 
 /*!

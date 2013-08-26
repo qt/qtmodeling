@@ -75,7 +75,15 @@ void QUmlInteractionConstraint::setMaxint(QUmlValueSpecification *maxint)
     // This is a read-write association end
 
     if (_maxint != maxint) {
+        // Adjust subsetted properties
+        removeOwnedElement(_maxint);
+
         _maxint = maxint;
+
+        // Adjust subsetted properties
+        if (maxint) {
+            addOwnedElement(maxint);
+        }
     }
 }
 
@@ -94,7 +102,15 @@ void QUmlInteractionConstraint::setMinint(QUmlValueSpecification *minint)
     // This is a read-write association end
 
     if (_minint != minint) {
+        // Adjust subsetted properties
+        removeOwnedElement(_minint);
+
         _minint = minint;
+
+        // Adjust subsetted properties
+        if (minint) {
+            addOwnedElement(minint);
+        }
     }
 }
 

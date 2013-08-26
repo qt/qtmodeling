@@ -106,7 +106,12 @@ void QUmlInteractionFragment::setEnclosingInteraction(QUmlInteraction *enclosing
     // This is a read-write association end
 
     if (_enclosingInteraction != enclosingInteraction) {
+        // Adjust subsetted properties
+
         _enclosingInteraction = enclosingInteraction;
+
+        // Adjust subsetted properties
+        setNamespace(enclosingInteraction);
     }
 }
 
@@ -125,7 +130,12 @@ void QUmlInteractionFragment::setEnclosingOperand(QUmlInteractionOperand *enclos
     // This is a read-write association end
 
     if (_enclosingOperand != enclosingOperand) {
+        // Adjust subsetted properties
+
         _enclosingOperand = enclosingOperand;
+
+        // Adjust subsetted properties
+        setNamespace(enclosingOperand);
     }
 }
 

@@ -76,10 +76,13 @@ public:
     QUmlInterface *interface_() const;
     void setInterface(QUmlInterface *interface_);
     bool isOrdered() const;
+    Q_DECL_HIDDEN void setOrdered(bool isOrdered);
     bool isQuery() const;
     void setQuery(bool isQuery);
     bool isUnique() const;
+    Q_DECL_HIDDEN void setUnique(bool isUnique);
     int lower() const;
+    Q_DECL_HIDDEN void setLower(int lower);
     QList<QUmlParameter *> ownedParameter() const;
     void addOwnedParameter(QUmlParameter *ownedParameter);
     void removeOwnedParameter(QUmlParameter *ownedParameter);
@@ -98,7 +101,9 @@ public:
     QUmlOperationTemplateParameter *templateParameter() const;
     void setTemplateParameter(QUmlOperationTemplateParameter *templateParameter);
     QUmlType *type() const;
+    Q_DECL_HIDDEN void setType(QUmlType *type);
     int upper() const;
+    Q_DECL_HIDDEN void setUpper(int upper);
 
     // Operations
     bool isConsistentWith(QUmlRedefinableElement *redefinee) const;

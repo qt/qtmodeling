@@ -75,7 +75,15 @@ void QUmlProtocolConformance::setGeneralMachine(QUmlProtocolStateMachine *genera
     // This is a read-write association end
 
     if (_generalMachine != generalMachine) {
+        // Adjust subsetted properties
+        removeTarget(_generalMachine);
+
         _generalMachine = generalMachine;
+
+        // Adjust subsetted properties
+        if (generalMachine) {
+            addTarget(generalMachine);
+        }
     }
 }
 
@@ -94,7 +102,16 @@ void QUmlProtocolConformance::setSpecificMachine(QUmlProtocolStateMachine *speci
     // This is a read-write association end
 
     if (_specificMachine != specificMachine) {
+        // Adjust subsetted properties
+        removeSource(_specificMachine);
+
         _specificMachine = specificMachine;
+
+        // Adjust subsetted properties
+        setOwner(specificMachine);
+        if (specificMachine) {
+            addSource(specificMachine);
+        }
     }
 }
 

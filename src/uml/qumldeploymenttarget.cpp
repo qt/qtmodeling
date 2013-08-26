@@ -71,6 +71,30 @@ QSet<QUmlPackageableElement *> QUmlDeploymentTarget::deployedElement() const
     return QSet<QUmlPackageableElement *>();
 }
 
+void QUmlDeploymentTarget::addDeployedElement(QUmlPackageableElement *deployedElement)
+{
+    // This is a read-only derived association end
+
+    qWarning("QUmlDeploymentTarget::deployedElement(): to be implemented (this is a derived association end)");
+    Q_UNUSED(deployedElement);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
+}
+
+void QUmlDeploymentTarget::removeDeployedElement(QUmlPackageableElement *deployedElement)
+{
+    // This is a read-only derived association end
+
+    qWarning("QUmlDeploymentTarget::deployedElement(): to be implemented (this is a derived association end)");
+    Q_UNUSED(deployedElement);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
+}
+
 /*!
     The set of Deployments for a DeploymentTarget.
  */

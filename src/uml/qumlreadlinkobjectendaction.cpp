@@ -97,7 +97,15 @@ void QUmlReadLinkObjectEndAction::setObject(QUmlInputPin *object)
     // This is a read-write association end
 
     if (_object != object) {
+        // Adjust subsetted properties
+        removeInput(_object);
+
         _object = object;
+
+        // Adjust subsetted properties
+        if (object) {
+            addInput(object);
+        }
     }
 }
 
@@ -116,7 +124,15 @@ void QUmlReadLinkObjectEndAction::setResult(QUmlOutputPin *result)
     // This is a read-write association end
 
     if (_result != result) {
+        // Adjust subsetted properties
+        removeOutput(_result);
+
         _result = result;
+
+        // Adjust subsetted properties
+        if (result) {
+            addOutput(result);
+        }
     }
 }
 

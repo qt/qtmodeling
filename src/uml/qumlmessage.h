@@ -71,6 +71,7 @@ public:
     QUmlInteraction *interaction() const;
     void setInteraction(QUmlInteraction *interaction);
     QtUml::MessageKind messageKind() const;
+    Q_DECL_HIDDEN void setMessageKind(QtUml::MessageKind messageKind);
     QtUml::MessageSort messageSort() const;
     void setMessageSort(QtUml::MessageSort messageSort);
     QUmlMessageEnd *receiveEvent() const;

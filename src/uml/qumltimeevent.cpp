@@ -94,7 +94,15 @@ void QUmlTimeEvent::setWhen(QUmlTimeExpression *when)
     // This is a read-write association end
 
     if (_when != when) {
+        // Adjust subsetted properties
+        removeOwnedElement(_when);
+
         _when = when;
+
+        // Adjust subsetted properties
+        if (when) {
+            addOwnedElement(when);
+        }
     }
 }
 

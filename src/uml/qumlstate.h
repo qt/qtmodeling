@@ -84,12 +84,17 @@ public:
     QUmlBehavior *exit() const;
     void setExit(QUmlBehavior *exit);
     bool isComposite() const;
+    Q_DECL_HIDDEN void setComposite(bool isComposite);
     bool isOrthogonal() const;
+    Q_DECL_HIDDEN void setOrthogonal(bool isOrthogonal);
     bool isSimple() const;
+    Q_DECL_HIDDEN void setSimple(bool isSimple);
     bool isSubmachineState() const;
+    Q_DECL_HIDDEN void setSubmachineState(bool isSubmachineState);
     QUmlState *redefinedState() const;
     void setRedefinedState(QUmlState *redefinedState);
     QUmlClassifier *redefinitionContext() const;
+    Q_DECL_HIDDEN void setRedefinitionContext(QUmlClassifier *redefinitionContext);
     QSet<QUmlRegion *> region() const;
     void addRegion(QUmlRegion *region);
     void removeRegion(QUmlRegion *region);

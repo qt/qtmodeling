@@ -75,7 +75,15 @@ void QUmlAddStructuralFeatureValueAction::setInsertAt(QUmlInputPin *insertAt)
     // This is a read-write association end
 
     if (_insertAt != insertAt) {
+        // Adjust subsetted properties
+        removeInput(_insertAt);
+
         _insertAt = insertAt;
+
+        // Adjust subsetted properties
+        if (insertAt) {
+            addInput(insertAt);
+        }
     }
 }
 

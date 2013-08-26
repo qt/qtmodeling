@@ -75,7 +75,13 @@ void QUmlParameterableElement::setOwningTemplateParameter(QUmlTemplateParameter 
     // This is a read-write association end
 
     if (_owningTemplateParameter != owningTemplateParameter) {
+        // Adjust subsetted properties
+
         _owningTemplateParameter = owningTemplateParameter;
+
+        // Adjust subsetted properties
+        setTemplateParameter(owningTemplateParameter);
+        setOwner(owningTemplateParameter);
     }
 }
 

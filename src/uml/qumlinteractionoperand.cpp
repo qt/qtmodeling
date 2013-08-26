@@ -102,7 +102,15 @@ void QUmlInteractionOperand::setGuard(QUmlInteractionConstraint *guard)
     // This is a read-write association end
 
     if (_guard != guard) {
+        // Adjust subsetted properties
+        removeOwnedElement(_guard);
+
         _guard = guard;
+
+        // Adjust subsetted properties
+        if (guard) {
+            addOwnedElement(guard);
+        }
     }
 }
 

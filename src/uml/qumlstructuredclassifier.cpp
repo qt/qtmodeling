@@ -128,6 +128,30 @@ QSet<QUmlProperty *> QUmlStructuredClassifier::part() const
     return QSet<QUmlProperty *>();
 }
 
+void QUmlStructuredClassifier::addPart(QUmlProperty *part)
+{
+    // This is a read-only derived association end
+
+    qWarning("QUmlStructuredClassifier::part(): to be implemented (this is a derived association end)");
+    Q_UNUSED(part);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
+}
+
+void QUmlStructuredClassifier::removePart(QUmlProperty *part)
+{
+    // This is a read-only derived association end
+
+    qWarning("QUmlStructuredClassifier::part(): to be implemented (this is a derived association end)");
+    Q_UNUSED(part);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
+}
+
 /*!
     References the roles that instances may play in this classifier.
  */
@@ -136,6 +160,24 @@ QSet<QUmlConnectableElement *> QUmlStructuredClassifier::role() const
     // This is a read-only derived union association end
 
     return _role;
+}
+
+void QUmlStructuredClassifier::addRole(QUmlConnectableElement *role)
+{
+    // This is a read-only derived union association end
+
+    if (!_role.contains(role)) {
+        _role.insert(role);
+    }
+}
+
+void QUmlStructuredClassifier::removeRole(QUmlConnectableElement *role)
+{
+    // This is a read-only derived union association end
+
+    if (_role.contains(role)) {
+        _role.remove(role);
+    }
 }
 
 QT_END_NAMESPACE

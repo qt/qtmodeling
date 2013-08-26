@@ -71,6 +71,18 @@ QUmlEnumeration *QUmlEnumerationLiteral::classifier() const
     return 0;
 }
 
+void QUmlEnumerationLiteral::setClassifier(QUmlEnumeration *classifier)
+{
+    // This is a read-only derived association end
+
+    qWarning("QUmlEnumerationLiteral::classifier(): to be implemented (this is a derived association end)");
+    Q_UNUSED(classifier);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
+}
+
 /*!
     The Enumeration that this EnumerationLiteral is a member of.
  */
@@ -86,7 +98,12 @@ void QUmlEnumerationLiteral::setEnumeration(QUmlEnumeration *enumeration)
     // This is a read-write association end
 
     if (_enumeration != enumeration) {
+        // Adjust subsetted properties
+
         _enumeration = enumeration;
+
+        // Adjust subsetted properties
+        setNamespace(enumeration);
     }
 }
 

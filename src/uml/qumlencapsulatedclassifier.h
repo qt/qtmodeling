@@ -60,6 +60,8 @@ public:
 
     // Owned attributes
     QSet<QUmlPort *> ownedPort() const;
+    Q_DECL_HIDDEN void addOwnedPort(QUmlPort *ownedPort);
+    Q_DECL_HIDDEN void removeOwnedPort(QUmlPort *ownedPort);
 
 protected:
 };

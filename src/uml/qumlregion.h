@@ -67,6 +67,7 @@ public:
     QUmlRegion *extendedRegion() const;
     void setExtendedRegion(QUmlRegion *extendedRegion);
     QUmlClassifier *redefinitionContext() const;
+    Q_DECL_HIDDEN void setRedefinitionContext(QUmlClassifier *redefinitionContext);
     QUmlState *state() const;
     void setState(QUmlState *state);
     QUmlStateMachine *stateMachine() const;
