@@ -54,7 +54,7 @@ QT_MODULE(QtUml)
 class QUmlBehavior;
 class QUmlInterfaceRealization;
 
-class Q_UML_EXPORT QUmlBehavioredClassifier : virtual public QUmlClassifier
+class Q_UML_EXPORT QUmlBehavioredClassifier : public virtual QUmlClassifier
 {
 public:
     Q_DECL_HIDDEN QUmlBehavioredClassifier();

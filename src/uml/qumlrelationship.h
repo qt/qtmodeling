@@ -51,7 +51,7 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QUmlRelationship : virtual public QUmlElement
+class Q_UML_EXPORT QUmlRelationship : public virtual QUmlElement
 {
 public:
     Q_DECL_HIDDEN QUmlRelationship();

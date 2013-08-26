@@ -53,7 +53,7 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QUmlPackageableElement : public QUmlParameterableElement, virtual public QUmlNamedElement
+class Q_UML_EXPORT QUmlPackageableElement : public QUmlParameterableElement, public virtual QUmlNamedElement
 {
 public:
     Q_DECL_HIDDEN QUmlPackageableElement();

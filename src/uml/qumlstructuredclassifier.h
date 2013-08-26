@@ -55,7 +55,7 @@ class QUmlConnectableElement;
 class QUmlConnector;
 class QUmlProperty;
 
-class Q_UML_EXPORT QUmlStructuredClassifier : virtual public QUmlClassifier
+class Q_UML_EXPORT QUmlStructuredClassifier : public virtual QUmlClassifier
 {
 public:
     Q_DECL_HIDDEN QUmlStructuredClassifier();

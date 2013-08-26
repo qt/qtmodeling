@@ -55,7 +55,7 @@ QT_MODULE(QtUml)
 class QUmlConnectableElementTemplateParameter;
 class QUmlConnectorEnd;
 
-class Q_UML_EXPORT QUmlConnectableElement : virtual public QUmlTypedElement, public QUmlParameterableElement
+class Q_UML_EXPORT QUmlConnectableElement : public virtual QUmlTypedElement, public QUmlParameterableElement
 {
 public:
     Q_DECL_HIDDEN QUmlConnectableElement();

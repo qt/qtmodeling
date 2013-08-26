@@ -55,7 +55,7 @@ class QUmlActivity;
 class QUmlActivityEdge;
 class QUmlActivityNode;
 
-class Q_UML_EXPORT QUmlActivityGroup : virtual public QUmlNamedElement
+class Q_UML_EXPORT QUmlActivityGroup : public virtual QUmlNamedElement
 {
 public:
     Q_DECL_HIDDEN QUmlActivityGroup();

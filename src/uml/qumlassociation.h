@@ -55,7 +55,7 @@ QT_MODULE(QtUml)
 class QUmlProperty;
 class QUmlType;
 
-class Q_UML_EXPORT QUmlAssociation : virtual public QUmlClassifier, public QUmlRelationship
+class Q_UML_EXPORT QUmlAssociation : public virtual QUmlClassifier, public QUmlRelationship
 {
 public:
     QUmlAssociation();

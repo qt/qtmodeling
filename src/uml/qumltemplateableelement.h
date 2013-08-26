@@ -55,7 +55,7 @@ class QUmlParameterableElement;
 class QUmlTemplateBinding;
 class QUmlTemplateSignature;
 
-class Q_UML_EXPORT QUmlTemplateableElement : virtual public QUmlElement
+class Q_UML_EXPORT QUmlTemplateableElement : public virtual QUmlElement
 {
 public:
     Q_DECL_HIDDEN QUmlTemplateableElement();

@@ -54,7 +54,7 @@ QT_MODULE(QtUml)
 class QUmlDeployment;
 class QUmlPackageableElement;
 
-class Q_UML_EXPORT QUmlDeploymentTarget : virtual public QUmlNamedElement
+class Q_UML_EXPORT QUmlDeploymentTarget : public virtual QUmlNamedElement
 {
 public:
     Q_DECL_HIDDEN QUmlDeploymentTarget();

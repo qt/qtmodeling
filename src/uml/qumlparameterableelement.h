@@ -53,7 +53,7 @@ QT_MODULE(QtUml)
 
 class QUmlTemplateParameter;
 
-class Q_UML_EXPORT QUmlParameterableElement : virtual public QUmlElement
+class Q_UML_EXPORT QUmlParameterableElement : public virtual QUmlElement
 {
 public:
     Q_DECL_HIDDEN QUmlParameterableElement();

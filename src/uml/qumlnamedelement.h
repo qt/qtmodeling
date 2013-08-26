@@ -57,7 +57,7 @@ class QUmlNamespace;
 class QUmlPackage;
 class QUmlStringExpression;
 
-class Q_UML_EXPORT QUmlNamedElement : virtual public QUmlElement
+class Q_UML_EXPORT QUmlNamedElement : public virtual QUmlElement
 {
 public:
     Q_DECL_HIDDEN QUmlNamedElement();

@@ -53,7 +53,7 @@ QT_MODULE(QtUml)
 
 class QUmlMessage;
 
-class Q_UML_EXPORT QUmlMessageEnd : virtual public QUmlNamedElement
+class Q_UML_EXPORT QUmlMessageEnd : public virtual QUmlNamedElement
 {
 public:
     Q_DECL_HIDDEN QUmlMessageEnd();

@@ -53,7 +53,7 @@ QT_MODULE(QtUml)
 
 class QUmlClassifier;
 
-class Q_UML_EXPORT QUmlRedefinableElement : virtual public QUmlNamedElement
+class Q_UML_EXPORT QUmlRedefinableElement : public virtual QUmlNamedElement
 {
 public:
     Q_DECL_HIDDEN QUmlRedefinableElement();

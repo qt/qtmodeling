@@ -56,7 +56,7 @@ class QUmlElementImport;
 class QUmlPackageableElement;
 class QUmlPackageImport;
 
-class Q_UML_EXPORT QUmlNamespace : virtual public QUmlNamedElement
+class Q_UML_EXPORT QUmlNamespace : public virtual QUmlNamedElement
 {
 public:
     Q_DECL_HIDDEN QUmlNamespace();

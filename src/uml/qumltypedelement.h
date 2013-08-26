@@ -53,7 +53,7 @@ QT_MODULE(QtUml)
 
 class QUmlType;
 
-class Q_UML_EXPORT QUmlTypedElement : virtual public QUmlNamedElement
+class Q_UML_EXPORT QUmlTypedElement : public virtual QUmlNamedElement
 {
 public:
     Q_DECL_HIDDEN QUmlTypedElement();

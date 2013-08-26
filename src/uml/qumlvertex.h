@@ -55,7 +55,7 @@ class QUmlRegion;
 class QUmlStateMachine;
 class QUmlTransition;
 
-class Q_UML_EXPORT QUmlVertex : virtual public QUmlNamedElement
+class Q_UML_EXPORT QUmlVertex : public virtual QUmlNamedElement
 {
 public:
     Q_DECL_HIDDEN QUmlVertex();
