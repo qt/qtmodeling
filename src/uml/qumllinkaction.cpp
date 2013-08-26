@@ -133,8 +133,11 @@ void QUmlLinkAction::removeInputValue(QUmlInputPin *inputValue)
 /*!
     The association operates on LinkAction. It returns the association of the action.
  */
-QUmlAssociation *QUmlLinkAction::association() const
+QUmlAssociation *QUmlLinkAction::association(
+    ) const
 {
+    qWarning("QUmlLinkAction::association(): to be implemented (operation)");
+
     return 0;
 }
 

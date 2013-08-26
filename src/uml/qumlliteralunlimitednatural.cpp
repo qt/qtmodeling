@@ -81,16 +81,22 @@ void QUmlLiteralUnlimitedNatural::setValue(int value)
 /*!
     The query isComputable() is redefined to be true.
  */
-bool QUmlLiteralUnlimitedNatural::isComputable() const
+bool QUmlLiteralUnlimitedNatural::isComputable(
+    ) const
 {
+    qWarning("QUmlLiteralUnlimitedNatural::isComputable(): to be implemented (operation)");
+
     return bool ();
 }
 
 /*!
     The query unlimitedValue() gives the value.
  */
-int QUmlLiteralUnlimitedNatural::unlimitedValue() const
+int QUmlLiteralUnlimitedNatural::unlimitedValue(
+    ) const
 {
+    qWarning("QUmlLiteralUnlimitedNatural::unlimitedValue(): to be implemented (operation)");
+
     return int ();
 }
 

@@ -604,24 +604,33 @@ void QUmlClassifier::removeUseCase(QUmlUseCase *useCase)
 /*!
     The query allFeatures() gives all of the features in the namespace of the classifier. In general, through mechanisms such as inheritance, this will be a larger set than feature.
  */
-QSet<QUmlFeature *> QUmlClassifier::allFeatures() const
+QSet<QUmlFeature *> QUmlClassifier::allFeatures(
+    ) const
 {
+    qWarning("QUmlClassifier::allFeatures(): to be implemented (operation)");
+
     return QSet<QUmlFeature *> ();
 }
 
 /*!
     The query allParents() gives all of the direct and indirect ancestors of a generalized Classifier.
  */
-QSet<QUmlClassifier *> QUmlClassifier::allParents() const
+QSet<QUmlClassifier *> QUmlClassifier::allParents(
+    ) const
 {
+    qWarning("QUmlClassifier::allParents(): to be implemented (operation)");
+
     return QSet<QUmlClassifier *> ();
 }
 
 /*!
     The query conformsTo() gives true for a classifier that defines a type that conforms to another. This is used, for example, in the specification of signature conformance for operations.
  */
-bool QUmlClassifier::conformsTo(QUmlClassifier *other) const
+bool QUmlClassifier::conformsTo(
+    QUmlClassifier *other) const
 {
+    qWarning("QUmlClassifier::conformsTo(): to be implemented (operation)");
+
     Q_UNUSED(other);
     return bool ();
 }
@@ -629,8 +638,11 @@ bool QUmlClassifier::conformsTo(QUmlClassifier *other) const
 /*!
     The query hasVisibilityOf() determines whether a named element is visible in the classifier. By default all are visible. It is only called when the argument is something owned by a parent.
  */
-bool QUmlClassifier::hasVisibilityOf(QUmlNamedElement *n) const
+bool QUmlClassifier::hasVisibilityOf(
+    QUmlNamedElement *n) const
 {
+    qWarning("QUmlClassifier::hasVisibilityOf(): to be implemented (operation)");
+
     Q_UNUSED(n);
     return bool ();
 }
@@ -638,8 +650,11 @@ bool QUmlClassifier::hasVisibilityOf(QUmlNamedElement *n) const
 /*!
     The inherit operation is overridden to exclude redefined properties.The query inherit() defines how to inherit a set of elements. Here the operation is defined to inherit them all. It is intended to be redefined in circumstances where inheritance is affected by redefinition.
  */
-QSet<QUmlNamedElement *> QUmlClassifier::inherit(QSet<QUmlNamedElement *> inhs) const
+QSet<QUmlNamedElement *> QUmlClassifier::inherit(
+    QSet<QUmlNamedElement *> inhs) const
 {
+    qWarning("QUmlClassifier::inherit(): to be implemented (operation)");
+
     Q_UNUSED(inhs);
     return QSet<QUmlNamedElement *> ();
 }
@@ -647,8 +662,11 @@ QSet<QUmlNamedElement *> QUmlClassifier::inherit(QSet<QUmlNamedElement *> inhs) 
 /*!
     The query inheritableMembers() gives all of the members of a classifier that may be inherited in one of its descendants, subject to whatever visibility restrictions apply.
  */
-QSet<QUmlNamedElement *> QUmlClassifier::inheritableMembers(QUmlClassifier *c) const
+QSet<QUmlNamedElement *> QUmlClassifier::inheritableMembers(
+    QUmlClassifier *c) const
 {
+    qWarning("QUmlClassifier::inheritableMembers(): to be implemented (operation)");
+
     Q_UNUSED(c);
     return QSet<QUmlNamedElement *> ();
 }
@@ -656,16 +674,22 @@ QSet<QUmlNamedElement *> QUmlClassifier::inheritableMembers(QUmlClassifier *c) c
 /*!
     The query isTemplate() returns whether this templateable element is actually a template.
  */
-bool QUmlClassifier::isTemplate() const
+bool QUmlClassifier::isTemplate(
+    ) const
 {
+    qWarning("QUmlClassifier::isTemplate(): to be implemented (operation)");
+
     return bool ();
 }
 
 /*!
     The query maySpecializeType() determines whether this classifier may have a generalization relationship to classifiers of the specified type. By default a classifier may specialize classifiers of the same or a more general type. It is intended to be redefined by classifiers that have different specialization constraints.
  */
-bool QUmlClassifier::maySpecializeType(QUmlClassifier *c) const
+bool QUmlClassifier::maySpecializeType(
+    QUmlClassifier *c) const
 {
+    qWarning("QUmlClassifier::maySpecializeType(): to be implemented (operation)");
+
     Q_UNUSED(c);
     return bool ();
 }
@@ -673,8 +697,11 @@ bool QUmlClassifier::maySpecializeType(QUmlClassifier *c) const
 /*!
     The query parents() gives all of the immediate ancestors of a generalized Classifier.
  */
-QSet<QUmlClassifier *> QUmlClassifier::parents() const
+QSet<QUmlClassifier *> QUmlClassifier::parents(
+    ) const
 {
+    qWarning("QUmlClassifier::parents(): to be implemented (operation)");
+
     return QSet<QUmlClassifier *> ();
 }
 

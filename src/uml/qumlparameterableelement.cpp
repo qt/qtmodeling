@@ -109,8 +109,11 @@ void QUmlParameterableElement::setTemplateParameter(QUmlTemplateParameter *templ
 /*!
     The query isCompatibleWith() determines if this parameterable element is compatible with the specified parameterable element. By default parameterable element P is compatible with parameterable element Q if the kind of P is the same or a subtype as the kind of Q. Subclasses should override this operation to specify different compatibility constraints.
  */
-bool QUmlParameterableElement::isCompatibleWith(QUmlParameterableElement *p) const
+bool QUmlParameterableElement::isCompatibleWith(
+    QUmlParameterableElement *p) const
 {
+    qWarning("QUmlParameterableElement::isCompatibleWith(): to be implemented (operation)");
+
     Q_UNUSED(p);
     return bool ();
 }
@@ -118,8 +121,11 @@ bool QUmlParameterableElement::isCompatibleWith(QUmlParameterableElement *p) con
 /*!
     The query isTemplateParameter() determines if this parameterable element is exposed as a formal template parameter.
  */
-bool QUmlParameterableElement::isTemplateParameter() const
+bool QUmlParameterableElement::isTemplateParameter(
+    ) const
 {
+    qWarning("QUmlParameterableElement::isTemplateParameter(): to be implemented (operation)");
+
     return bool ();
 }
 

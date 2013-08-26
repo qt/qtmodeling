@@ -81,16 +81,22 @@ void QUmlLiteralBoolean::setValue(bool value)
 /*!
     The query booleanValue() gives the value.
  */
-bool QUmlLiteralBoolean::booleanValue() const
+bool QUmlLiteralBoolean::booleanValue(
+    ) const
 {
+    qWarning("QUmlLiteralBoolean::booleanValue(): to be implemented (operation)");
+
     return bool ();
 }
 
 /*!
     The query isComputable() is redefined to be true.
  */
-bool QUmlLiteralBoolean::isComputable() const
+bool QUmlLiteralBoolean::isComputable(
+    ) const
 {
+    qWarning("QUmlLiteralBoolean::isComputable(): to be implemented (operation)");
+
     return bool ();
 }
 

@@ -40,6 +40,8 @@
 ****************************************************************************/
 #include "qumltype.h"
 
+#include <QtUml/QUmlPackage>
+
 QT_BEGIN_NAMESPACE
 
 /*!
@@ -81,8 +83,11 @@ void QUmlType::setPackage(QUmlPackage *package)
 /*!
     The query conformsTo() gives true for a type that conforms to another. By default, two types do not conform to each other. This query is intended to be redefined for specific conformance situations.
  */
-bool QUmlType::conformsTo(QUmlType *other) const
+bool QUmlType::conformsTo(
+    QUmlType *other) const
 {
+    qWarning("QUmlType::conformsTo(): to be implemented (operation)");
+
     Q_UNUSED(other);
     return bool ();
 }

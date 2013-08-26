@@ -81,16 +81,22 @@ void QUmlLiteralInteger::setValue(int value)
 /*!
     The query integerValue() gives the value.
  */
-int QUmlLiteralInteger::integerValue() const
+int QUmlLiteralInteger::integerValue(
+    ) const
 {
+    qWarning("QUmlLiteralInteger::integerValue(): to be implemented (operation)");
+
     return int ();
 }
 
 /*!
     The query isComputable() is redefined to be true.
  */
-bool QUmlLiteralInteger::isComputable() const
+bool QUmlLiteralInteger::isComputable(
+    ) const
 {
+    qWarning("QUmlLiteralInteger::isComputable(): to be implemented (operation)");
+
     return bool ();
 }
 

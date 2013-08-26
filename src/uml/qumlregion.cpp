@@ -257,24 +257,33 @@ void QUmlRegion::removeTransition(QUmlTransition *transition)
 /*!
     The operation belongsToPSM () checks if the region belongs to a protocol state machine
  */
-bool QUmlRegion::belongsToPSM() const
+bool QUmlRegion::belongsToPSM(
+    ) const
 {
+    qWarning("QUmlRegion::belongsToPSM(): to be implemented (operation)");
+
     return bool ();
 }
 
 /*!
     The operation containingStateMachine() returns the sate machine in which this Region is defined
  */
-QUmlStateMachine *QUmlRegion::containingStateMachine() const
+QUmlStateMachine *QUmlRegion::containingStateMachine(
+    ) const
 {
+    qWarning("QUmlRegion::containingStateMachine(): to be implemented (operation)");
+
     return 0;
 }
 
 /*!
     The query isConsistentWith() specifies that a redefining region is consistent with a redefined region provided that the redefining region is an extension of the redefined region, i.e. it adds vertices and transitions and it redefines states and transitions of the redefined region.
  */
-bool QUmlRegion::isConsistentWith(QUmlRedefinableElement *redefinee) const
+bool QUmlRegion::isConsistentWith(
+    QUmlRedefinableElement *redefinee) const
 {
+    qWarning("QUmlRegion::isConsistentWith(): to be implemented (operation)");
+
     Q_UNUSED(redefinee);
     return bool ();
 }
@@ -282,8 +291,11 @@ bool QUmlRegion::isConsistentWith(QUmlRedefinableElement *redefinee) const
 /*!
     The query isRedefinitionContextValid() specifies whether the redefinition contexts of a region are properly related to the redefinition contexts of the specified region to allow this element to redefine the other. The containing statemachine/state of a redefining region must redefine the containing statemachine/state of the redefined region.
  */
-bool QUmlRegion::isRedefinitionContextValid(QUmlRegion *redefined) const
+bool QUmlRegion::isRedefinitionContextValid(
+    QUmlRegion *redefined) const
 {
+    qWarning("QUmlRegion::isRedefinitionContextValid(): to be implemented (operation)");
+
     Q_UNUSED(redefined);
     return bool ();
 }

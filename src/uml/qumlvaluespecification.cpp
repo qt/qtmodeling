@@ -61,24 +61,33 @@ QUmlValueSpecification::QUmlValueSpecification()
 /*!
     The query booleanValue() gives a single Boolean value when one can be computed.
  */
-bool QUmlValueSpecification::booleanValue() const
+bool QUmlValueSpecification::booleanValue(
+    ) const
 {
+    qWarning("QUmlValueSpecification::booleanValue(): to be implemented (operation)");
+
     return bool ();
 }
 
 /*!
     The query integerValue() gives a single Integer value when one can be computed.
  */
-int QUmlValueSpecification::integerValue() const
+int QUmlValueSpecification::integerValue(
+    ) const
 {
+    qWarning("QUmlValueSpecification::integerValue(): to be implemented (operation)");
+
     return int ();
 }
 
 /*!
     The query isCompatibleWith() determines if this parameterable element is compatible with the specified parameterable element. By default parameterable element P is compatible with parameterable element Q if the kind of P is the same or a subtype as the kind of Q. In addition, for ValueSpecification, the type must be conformant with the type of the specified parameterable element.
  */
-bool QUmlValueSpecification::isCompatibleWith(QUmlParameterableElement *p) const
+bool QUmlValueSpecification::isCompatibleWith(
+    QUmlParameterableElement *p) const
 {
+    qWarning("QUmlValueSpecification::isCompatibleWith(): to be implemented (operation)");
+
     Q_UNUSED(p);
     return bool ();
 }
@@ -86,40 +95,55 @@ bool QUmlValueSpecification::isCompatibleWith(QUmlParameterableElement *p) const
 /*!
     The query isComputable() determines whether a value specification can be computed in a model. This operation cannot be fully defined in OCL. A conforming implementation is expected to deliver true for this operation for all value specifications that it can compute, and to compute all of those for which the operation is true. A conforming implementation is expected to be able to compute the value of all literals.
  */
-bool QUmlValueSpecification::isComputable() const
+bool QUmlValueSpecification::isComputable(
+    ) const
 {
+    qWarning("QUmlValueSpecification::isComputable(): to be implemented (operation)");
+
     return bool ();
 }
 
 /*!
     The query isNull() returns true when it can be computed that the value is null.
  */
-bool QUmlValueSpecification::isNull() const
+bool QUmlValueSpecification::isNull(
+    ) const
 {
+    qWarning("QUmlValueSpecification::isNull(): to be implemented (operation)");
+
     return bool ();
 }
 
 /*!
     The query realValue() gives a single Real value when one can be computed.
  */
-double QUmlValueSpecification::realValue() const
+double QUmlValueSpecification::realValue(
+    ) const
 {
+    qWarning("QUmlValueSpecification::realValue(): to be implemented (operation)");
+
     return double ();
 }
 
 /*!
     The query stringValue() gives a single String value when one can be computed.
  */
-QString QUmlValueSpecification::stringValue() const
+QString QUmlValueSpecification::stringValue(
+    ) const
 {
+    qWarning("QUmlValueSpecification::stringValue(): to be implemented (operation)");
+
     return QString ();
 }
 
 /*!
     The query unlimitedValue() gives a single UnlimitedNatural value when one can be computed.
  */
-int QUmlValueSpecification::unlimitedValue() const
+int QUmlValueSpecification::unlimitedValue(
+    ) const
 {
+    qWarning("QUmlValueSpecification::unlimitedValue(): to be implemented (operation)");
+
     return int ();
 }
 

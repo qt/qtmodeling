@@ -516,16 +516,22 @@ void QUmlState::setSubmachine(QUmlStateMachine *submachine)
 /*!
     The query containingStateMachine() returns the state machine that contains the state either directly or transitively.
  */
-QUmlStateMachine *QUmlState::containingStateMachine() const
+QUmlStateMachine *QUmlState::containingStateMachine(
+    ) const
 {
+    qWarning("QUmlState::containingStateMachine(): to be implemented (operation)");
+
     return 0;
 }
 
 /*!
     The query isConsistentWith() specifies that a redefining state is consistent with a redefined state provided that the redefining state is an extension of the redefined state: A simple state can be redefined (extended) to become a composite state (by adding a region) and a composite state can be redefined (extended) by adding regions and by adding vertices, states, and transitions to inherited regions. All states may add or replace entry, exit, and 'doActivity' actions.
  */
-bool QUmlState::isConsistentWith(QUmlRedefinableElement *redefinee) const
+bool QUmlState::isConsistentWith(
+    QUmlRedefinableElement *redefinee) const
 {
+    qWarning("QUmlState::isConsistentWith(): to be implemented (operation)");
+
     Q_UNUSED(redefinee);
     return bool ();
 }
@@ -533,8 +539,11 @@ bool QUmlState::isConsistentWith(QUmlRedefinableElement *redefinee) const
 /*!
     The query isRedefinitionContextValid() specifies whether the redefinition contexts of a state are properly related to the redefinition contexts of the specified state to allow this element to redefine the other. The containing region of a redefining state must redefine the containing region of the redefined state.
  */
-bool QUmlState::isRedefinitionContextValid(QUmlState *redefined) const
+bool QUmlState::isRedefinitionContextValid(
+    QUmlState *redefined) const
 {
+    qWarning("QUmlState::isRedefinitionContextValid(): to be implemented (operation)");
+
     Q_UNUSED(redefined);
     return bool ();
 }

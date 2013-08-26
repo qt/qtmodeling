@@ -137,16 +137,22 @@ void QUmlTemplateableElement::removeTemplateBinding(QUmlTemplateBinding *templat
 /*!
     The query isTemplate() returns whether this templateable element is actually a template.
  */
-bool QUmlTemplateableElement::isTemplate() const
+bool QUmlTemplateableElement::isTemplate(
+    ) const
 {
+    qWarning("QUmlTemplateableElement::isTemplate(): to be implemented (operation)");
+
     return bool ();
 }
 
 /*!
     The query parameterableElements() returns the set of elements that may be used as the parametered elements for a template parameter of this templateable element. By default, this set includes all the owned elements. Subclasses may override this operation if they choose to restrict the set of parameterable elements.
  */
-QSet<QUmlParameterableElement *> QUmlTemplateableElement::parameterableElements() const
+QSet<QUmlParameterableElement *> QUmlTemplateableElement::parameterableElements(
+    ) const
 {
+    qWarning("QUmlTemplateableElement::parameterableElements(): to be implemented (operation)");
+
     return QSet<QUmlParameterableElement *> ();
 }
 

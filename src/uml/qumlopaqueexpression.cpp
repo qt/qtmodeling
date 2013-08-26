@@ -164,32 +164,44 @@ void QUmlOpaqueExpression::setResult(QUmlParameter *result)
 /*!
     The query isIntegral() tells whether an expression is intended to produce an integer.
  */
-bool QUmlOpaqueExpression::isIntegral() const
+bool QUmlOpaqueExpression::isIntegral(
+    ) const
 {
+    qWarning("QUmlOpaqueExpression::isIntegral(): to be implemented (operation)");
+
     return bool ();
 }
 
 /*!
     The query isNonNegative() tells whether an integer expression has a non-negative value.
  */
-bool QUmlOpaqueExpression::isNonNegative() const
+bool QUmlOpaqueExpression::isNonNegative(
+    ) const
 {
+    qWarning("QUmlOpaqueExpression::isNonNegative(): to be implemented (operation)");
+
     return bool ();
 }
 
 /*!
     The query isPositive() tells whether an integer expression has a positive value.
  */
-bool QUmlOpaqueExpression::isPositive() const
+bool QUmlOpaqueExpression::isPositive(
+    ) const
 {
+    qWarning("QUmlOpaqueExpression::isPositive(): to be implemented (operation)");
+
     return bool ();
 }
 
 /*!
     The query value() gives an integer value for an expression intended to produce one.
  */
-int QUmlOpaqueExpression::value() const
+int QUmlOpaqueExpression::value(
+    ) const
 {
+    qWarning("QUmlOpaqueExpression::value(): to be implemented (operation)");
+
     return int ();
 }
 

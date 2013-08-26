@@ -520,8 +520,11 @@ void QUmlProperty::removeSubsettedProperty(QUmlProperty *subsettedProperty)
 /*!
     The query isAttribute() is true if the Property is defined as an attribute of some classifier.
  */
-bool QUmlProperty::isAttribute(QUmlProperty *p) const
+bool QUmlProperty::isAttribute(
+    QUmlProperty *p) const
 {
+    qWarning("QUmlProperty::isAttribute(): to be implemented (operation)");
+
     Q_UNUSED(p);
     return bool ();
 }
@@ -529,8 +532,11 @@ bool QUmlProperty::isAttribute(QUmlProperty *p) const
 /*!
     The query isCompatibleWith() determines if this parameterable element is compatible with the specified parameterable element. By default parameterable element P is compatible with parameterable element Q if the kind of P is the same or a subtype as the kind of Q. In addition, for properties, the type must be conformant with the type of the specified parameterable element.
  */
-bool QUmlProperty::isCompatibleWith(QUmlParameterableElement *p) const
+bool QUmlProperty::isCompatibleWith(
+    QUmlParameterableElement *p) const
 {
+    qWarning("QUmlProperty::isCompatibleWith(): to be implemented (operation)");
+
     Q_UNUSED(p);
     return bool ();
 }
@@ -538,8 +544,11 @@ bool QUmlProperty::isCompatibleWith(QUmlParameterableElement *p) const
 /*!
     The query isConsistentWith() specifies, for any two Properties in a context in which redefinition is possible, whether redefinition would be logically consistent. A redefining property is consistent with a redefined property if the type of the redefining property conforms to the type of the redefined property, the multiplicity of the redefining property (if specified) is contained in the multiplicity of the redefined property.The query isConsistentWith() specifies, for any two Properties in a context in which redefinition is possible, whether redefinition would be logically consistent. A redefining property is consistent with a redefined property if the type of the redefining property conforms to the type of the redefined property, and the multiplicity of the redefining property (if specified) is contained in the multiplicity of the redefined property.
  */
-bool QUmlProperty::isConsistentWith(QUmlRedefinableElement *redefinee) const
+bool QUmlProperty::isConsistentWith(
+    QUmlRedefinableElement *redefinee) const
 {
+    qWarning("QUmlProperty::isConsistentWith(): to be implemented (operation)");
+
     Q_UNUSED(redefinee);
     return bool ();
 }
@@ -547,16 +556,22 @@ bool QUmlProperty::isConsistentWith(QUmlRedefinableElement *redefinee) const
 /*!
     The query isNavigable() indicates whether it is possible to navigate across the property.
  */
-bool QUmlProperty::isNavigable() const
+bool QUmlProperty::isNavigable(
+    ) const
 {
+    qWarning("QUmlProperty::isNavigable(): to be implemented (operation)");
+
     return bool ();
 }
 
 /*!
     The query subsettingContext() gives the context for subsetting a property. It consists, in the case of an attribute, of the corresponding classifier, and in the case of an association end, all of the classifiers at the other ends.
  */
-QSet<QUmlType *> QUmlProperty::subsettingContext() const
+QSet<QUmlType *> QUmlProperty::subsettingContext(
+    ) const
 {
+    qWarning("QUmlProperty::subsettingContext(): to be implemented (operation)");
+
     return QSet<QUmlType *> ();
 }
 

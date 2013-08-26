@@ -77,16 +77,22 @@ void QUmlLiteralReal::setValue(double value)
 /*!
     The query isComputable() is redefined to be true.
  */
-bool QUmlLiteralReal::isComputable() const
+bool QUmlLiteralReal::isComputable(
+    ) const
 {
+    qWarning("QUmlLiteralReal::isComputable(): to be implemented (operation)");
+
     return bool ();
 }
 
 /*!
     The query realValue() gives the value.
  */
-double QUmlLiteralReal::realValue() const
+double QUmlLiteralReal::realValue(
+    ) const
 {
+    qWarning("QUmlLiteralReal::realValue(): to be implemented (operation)");
+
     return double ();
 }
 

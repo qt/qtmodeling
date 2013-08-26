@@ -80,16 +80,22 @@ void QUmlLiteralString::setValue(QString value)
 /*!
     The query isComputable() is redefined to be true.
  */
-bool QUmlLiteralString::isComputable() const
+bool QUmlLiteralString::isComputable(
+    ) const
 {
+    qWarning("QUmlLiteralString::isComputable(): to be implemented (operation)");
+
     return bool ();
 }
 
 /*!
     The query stringValue() gives the value.
  */
-QString QUmlLiteralString::stringValue() const
+QString QUmlLiteralString::stringValue(
+    ) const
 {
+    qWarning("QUmlLiteralString::stringValue(): to be implemented (operation)");
+
     return QString ();
 }
 

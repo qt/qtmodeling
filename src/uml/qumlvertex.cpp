@@ -182,8 +182,11 @@ void QUmlVertex::removeOutgoing(QUmlTransition *outgoing)
 /*!
     The operation containingStateMachine() returns the state machine in which this Vertex is defined
  */
-QUmlStateMachine *QUmlVertex::containingStateMachine() const
+QUmlStateMachine *QUmlVertex::containingStateMachine(
+    ) const
 {
+    qWarning("QUmlVertex::containingStateMachine(): to be implemented (operation)");
+
     return 0;
 }
 

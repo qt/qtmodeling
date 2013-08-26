@@ -107,8 +107,11 @@ void QUmlExtensionEnd::setType(QUmlStereotype *type)
 /*!
     The query lowerBound() returns the lower bound of the multiplicity as an Integer. This is a redefinition of the default lower bound, which normally, for MultiplicityElements, evaluates to 1 if empty.
  */
-int QUmlExtensionEnd::lowerBound() const
+int QUmlExtensionEnd::lowerBound(
+    ) const
 {
+    qWarning("QUmlExtensionEnd::lowerBound(): to be implemented (operation)");
+
     return int ();
 }
 

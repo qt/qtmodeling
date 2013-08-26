@@ -168,8 +168,11 @@ void QUmlRedefinableTemplateSignature::removeInheritedParameter(QUmlTemplatePara
 /*!
     The query isConsistentWith() specifies, for any two RedefinableTemplateSignatures in a context in which redefinition is possible, whether redefinition would be logically consistent. A redefining template signature is always consistent with a redefined template signature, since redefinition only adds new formal parameters.
  */
-bool QUmlRedefinableTemplateSignature::isConsistentWith(QUmlRedefinableElement *redefinee) const
+bool QUmlRedefinableTemplateSignature::isConsistentWith(
+    QUmlRedefinableElement *redefinee) const
 {
+    qWarning("QUmlRedefinableTemplateSignature::isConsistentWith(): to be implemented (operation)");
+
     Q_UNUSED(redefinee);
     return bool ();
 }

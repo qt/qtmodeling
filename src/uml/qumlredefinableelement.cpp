@@ -139,8 +139,11 @@ void QUmlRedefinableElement::removeRedefinitionContext(QUmlClassifier *redefinit
 /*!
     The query isConsistentWith() specifies, for any two RedefinableElements in a context in which redefinition is possible, whether redefinition would be logically consistent. By default, this is false; this operation must be overridden for subclasses of RedefinableElement to define the consistency conditions.
  */
-bool QUmlRedefinableElement::isConsistentWith(QUmlRedefinableElement *redefinee) const
+bool QUmlRedefinableElement::isConsistentWith(
+    QUmlRedefinableElement *redefinee) const
 {
+    qWarning("QUmlRedefinableElement::isConsistentWith(): to be implemented (operation)");
+
     Q_UNUSED(redefinee);
     return bool ();
 }
@@ -148,8 +151,11 @@ bool QUmlRedefinableElement::isConsistentWith(QUmlRedefinableElement *redefinee)
 /*!
     The query isRedefinitionContextValid() specifies whether the redefinition contexts of this RedefinableElement are properly related to the redefinition contexts of the specified RedefinableElement to allow this element to redefine the other. By default at least one of the redefinition contexts of this element must be a specialization of at least one of the redefinition contexts of the specified element.
  */
-bool QUmlRedefinableElement::isRedefinitionContextValid(QUmlRedefinableElement *redefined) const
+bool QUmlRedefinableElement::isRedefinitionContextValid(
+    QUmlRedefinableElement *redefined) const
 {
+    qWarning("QUmlRedefinableElement::isRedefinitionContextValid(): to be implemented (operation)");
+
     Q_UNUSED(redefined);
     return bool ();
 }

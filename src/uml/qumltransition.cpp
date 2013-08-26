@@ -296,16 +296,22 @@ void QUmlTransition::removeTrigger(QUmlTrigger *trigger)
 /*!
     The query containingStateMachine() returns the state machine that contains the transition either directly or transitively.
  */
-QUmlStateMachine *QUmlTransition::containingStateMachine() const
+QUmlStateMachine *QUmlTransition::containingStateMachine(
+    ) const
 {
+    qWarning("QUmlTransition::containingStateMachine(): to be implemented (operation)");
+
     return 0;
 }
 
 /*!
     The query isConsistentWith() specifies that a redefining transition is consistent with a redefined transition provided that the redefining transition has the following relation to the redefined transition: A redefining transition redefines all properties of the corresponding redefined transition, except the source state and the trigger.
  */
-bool QUmlTransition::isConsistentWith(QUmlRedefinableElement *redefinee) const
+bool QUmlTransition::isConsistentWith(
+    QUmlRedefinableElement *redefinee) const
 {
+    qWarning("QUmlTransition::isConsistentWith(): to be implemented (operation)");
+
     Q_UNUSED(redefinee);
     return bool ();
 }

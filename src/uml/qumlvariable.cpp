@@ -115,8 +115,11 @@ void QUmlVariable::setScope(QUmlStructuredActivityNode *scope)
 /*!
     The isAccessibleBy() operation is not defined in standard UML. Implementations should define it to specify which actions can access a variable.
  */
-bool QUmlVariable::isAccessibleBy(QUmlAction *a) const
+bool QUmlVariable::isAccessibleBy(
+    QUmlAction *a) const
 {
+    qWarning("QUmlVariable::isAccessibleBy(): to be implemented (operation)");
+
     Q_UNUSED(a);
     return bool ();
 }

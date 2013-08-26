@@ -59,16 +59,22 @@ QUmlLiteralNull::QUmlLiteralNull()
 /*!
     The query isComputable() is redefined to be true.
  */
-bool QUmlLiteralNull::isComputable() const
+bool QUmlLiteralNull::isComputable(
+    ) const
 {
+    qWarning("QUmlLiteralNull::isComputable(): to be implemented (operation)");
+
     return bool ();
 }
 
 /*!
     The query isNull() returns true.
  */
-bool QUmlLiteralNull::isNull() const
+bool QUmlLiteralNull::isNull(
+    ) const
 {
+    qWarning("QUmlLiteralNull::isNull(): to be implemented (operation)");
+
     return bool ();
 }
 

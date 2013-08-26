@@ -365,24 +365,33 @@ void QUmlPackage::removeProfileApplication(QUmlProfileApplication *profileApplic
 /*!
     The query allApplicableStereotypes() returns all the directly or indirectly owned stereotypes, including stereotypes contained in sub-profiles.
  */
-QSet<QUmlStereotype *> QUmlPackage::allApplicableStereotypes() const
+QSet<QUmlStereotype *> QUmlPackage::allApplicableStereotypes(
+    ) const
 {
+    qWarning("QUmlPackage::allApplicableStereotypes(): to be implemented (operation)");
+
     return QSet<QUmlStereotype *> ();
 }
 
 /*!
     The query containingProfile() returns the closest profile directly or indirectly containing this package (or this package itself, if it is a profile).
  */
-QUmlProfile *QUmlPackage::containingProfile() const
+QUmlProfile *QUmlPackage::containingProfile(
+    ) const
 {
+    qWarning("QUmlPackage::containingProfile(): to be implemented (operation)");
+
     return 0;
 }
 
 /*!
     The query makesVisible() defines whether a Package makes an element visible outside itself. Elements with no visibility and elements with public visibility are made visible.
  */
-bool QUmlPackage::makesVisible(QUmlNamedElement *el) const
+bool QUmlPackage::makesVisible(
+    QUmlNamedElement *el) const
 {
+    qWarning("QUmlPackage::makesVisible(): to be implemented (operation)");
+
     Q_UNUSED(el);
     return bool ();
 }
@@ -390,16 +399,22 @@ bool QUmlPackage::makesVisible(QUmlNamedElement *el) const
 /*!
     The query mustBeOwned() indicates whether elements of this type must have an owner.
  */
-bool QUmlPackage::mustBeOwned() const
+bool QUmlPackage::mustBeOwned(
+    ) const
 {
+    qWarning("QUmlPackage::mustBeOwned(): to be implemented (operation)");
+
     return bool ();
 }
 
 /*!
     The query visibleMembers() defines which members of a Package can be accessed outside it.
  */
-QSet<QUmlPackageableElement *> QUmlPackage::visibleMembers() const
+QSet<QUmlPackageableElement *> QUmlPackage::visibleMembers(
+    ) const
 {
+    qWarning("QUmlPackage::visibleMembers(): to be implemented (operation)");
+
     return QSet<QUmlPackageableElement *> ();
 }
 

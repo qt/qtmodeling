@@ -525,8 +525,11 @@ void QUmlOperation::setUpper(int upper)
 /*!
     A redefining operation is consistent with a redefined operation if it has the same number of owned parameters, and the type of each owned parameter conforms to the type of the corresponding redefined parameter.The query isConsistentWith() specifies, for any two Operations in a context in which redefinition is possible, whether redefinition would be consistent in the sense of maintaining type covariance. Other senses of consistency may be required, for example to determine consistency in the sense of contravariance. Users may define alternative queries under names different from 'isConsistentWith()', as for example, users may define a query named 'isContravariantWith()'.
  */
-bool QUmlOperation::isConsistentWith(QUmlRedefinableElement *redefinee) const
+bool QUmlOperation::isConsistentWith(
+    QUmlRedefinableElement *redefinee) const
 {
+    qWarning("QUmlOperation::isConsistentWith(): to be implemented (operation)");
+
     Q_UNUSED(redefinee);
     return bool ();
 }
@@ -534,8 +537,11 @@ bool QUmlOperation::isConsistentWith(QUmlRedefinableElement *redefinee) const
 /*!
     The query returnResult() returns the set containing the return parameter of the Operation if one exists, otherwise, it returns an empty set
  */
-QSet<QUmlParameter *> QUmlOperation::returnResult() const
+QSet<QUmlParameter *> QUmlOperation::returnResult(
+    ) const
 {
+    qWarning("QUmlOperation::returnResult(): to be implemented (operation)");
+
     return QSet<QUmlParameter *> ();
 }
 

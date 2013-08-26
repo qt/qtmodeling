@@ -236,8 +236,11 @@ void QUmlComponent::removeRequired(QUmlInterface *required)
 /*!
     Utility returning the set of realized interfaces of a component.
  */
-QSet<QUmlInterface *> QUmlComponent::realizedInterfaces(QUmlClassifier *classifier) const
+QSet<QUmlInterface *> QUmlComponent::realizedInterfaces(
+    QUmlClassifier *classifier) const
 {
+    qWarning("QUmlComponent::realizedInterfaces(): to be implemented (operation)");
+
     Q_UNUSED(classifier);
     return QSet<QUmlInterface *> ();
 }
@@ -245,8 +248,11 @@ QSet<QUmlInterface *> QUmlComponent::realizedInterfaces(QUmlClassifier *classifi
 /*!
     Utility returning the set of used interfaces of a component.
  */
-QSet<QUmlInterface *> QUmlComponent::usedInterfaces(QUmlClassifier *classifier) const
+QSet<QUmlInterface *> QUmlComponent::usedInterfaces(
+    QUmlClassifier *classifier) const
 {
+    qWarning("QUmlComponent::usedInterfaces(): to be implemented (operation)");
+
     Q_UNUSED(classifier);
     return QSet<QUmlInterface *> ();
 }

@@ -145,16 +145,22 @@ void QUmlElement::setOwner(QUmlElement *owner)
 /*!
     The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
  */
-QSet<QUmlElement *> QUmlElement::allOwnedElements() const
+QSet<QUmlElement *> QUmlElement::allOwnedElements(
+    ) const
 {
+    qWarning("QUmlElement::allOwnedElements(): to be implemented (operation)");
+
     return QSet<QUmlElement *> ();
 }
 
 /*!
     The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
  */
-bool QUmlElement::mustBeOwned() const
+bool QUmlElement::mustBeOwned(
+    ) const
 {
+    qWarning("QUmlElement::mustBeOwned(): to be implemented (operation)");
+
     return bool ();
 }
 

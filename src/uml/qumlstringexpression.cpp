@@ -120,8 +120,11 @@ void QUmlStringExpression::removeSubExpression(QUmlStringExpression *subExpressi
 /*!
     The query stringValue() returns the string that concatenates, in order, all the component string literals of all the subexpressions that are part of the StringExpression.
  */
-QString QUmlStringExpression::stringValue() const
+QString QUmlStringExpression::stringValue(
+    ) const
 {
+    qWarning("QUmlStringExpression::stringValue(): to be implemented (operation)");
+
     return QString ();
 }
 

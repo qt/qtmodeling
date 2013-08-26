@@ -157,8 +157,11 @@ void QUmlDataType::removeOwnedOperation(QUmlOperation *ownedOperation)
 /*!
     The inherit operation is overridden to exclude redefined properties.
  */
-QSet<QUmlNamedElement *> QUmlDataType::inherit(QSet<QUmlNamedElement *> inhs) const
+QSet<QUmlNamedElement *> QUmlDataType::inherit(
+    QSet<QUmlNamedElement *> inhs) const
 {
+    qWarning("QUmlDataType::inherit(): to be implemented (operation)");
+
     Q_UNUSED(inhs);
     return QSet<QUmlNamedElement *> ();
 }

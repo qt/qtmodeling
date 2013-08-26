@@ -221,8 +221,11 @@ void QUmlStateMachine::removeSubmachineState(QUmlState *submachineState)
 /*!
     The operation LCA(s1,s2) returns an orthogonal state or region which is the least common ancestor of states s1 and s2, based on the statemachine containment hierarchy.
  */
-QUmlNamespace *QUmlStateMachine::LCA(QUmlState *s1, QUmlState *s2) const
+QUmlNamespace *QUmlStateMachine::LCA(
+    QUmlState *s1, QUmlState *s2) const
 {
+    qWarning("QUmlStateMachine::LCA(): to be implemented (operation)");
+
     Q_UNUSED(s1);
     Q_UNUSED(s2);
     return 0;
@@ -231,8 +234,11 @@ QUmlNamespace *QUmlStateMachine::LCA(QUmlState *s1, QUmlState *s2) const
 /*!
     The query ancestor(s1, s2) checks whether s1 is an ancestor state of state s2.
  */
-bool QUmlStateMachine::ancestor(QUmlState *s1, QUmlState *s2) const
+bool QUmlStateMachine::ancestor(
+    QUmlState *s1, QUmlState *s2) const
 {
+    qWarning("QUmlStateMachine::ancestor(): to be implemented (operation)");
+
     Q_UNUSED(s1);
     Q_UNUSED(s2);
     return bool ();
@@ -241,8 +247,11 @@ bool QUmlStateMachine::ancestor(QUmlState *s1, QUmlState *s2) const
 /*!
     The query isConsistentWith() specifies that a redefining state machine is consistent with a redefined state machine provided that the redefining state machine is an extension of the redefined state machine: Regions are inherited and regions can be added, inherited regions can be redefined. In case of multiple redefining state machines, extension implies that the redefining state machine gets orthogonal regions for each of the redefined state machines.
  */
-bool QUmlStateMachine::isConsistentWith(QUmlRedefinableElement *redefinee) const
+bool QUmlStateMachine::isConsistentWith(
+    QUmlRedefinableElement *redefinee) const
 {
+    qWarning("QUmlStateMachine::isConsistentWith(): to be implemented (operation)");
+
     Q_UNUSED(redefinee);
     return bool ();
 }
@@ -250,8 +259,11 @@ bool QUmlStateMachine::isConsistentWith(QUmlRedefinableElement *redefinee) const
 /*!
     The query isRedefinitionContextValid() specifies whether the redefinition contexts of a statemachine are properly related to the redefinition contexts of the specified statemachine to allow this element to redefine the other. The containing classifier of a redefining statemachine must redefine the containing classifier of the redefined statemachine.
  */
-bool QUmlStateMachine::isRedefinitionContextValid(QUmlStateMachine *redefined) const
+bool QUmlStateMachine::isRedefinitionContextValid(
+    QUmlStateMachine *redefined) const
 {
+    qWarning("QUmlStateMachine::isRedefinitionContextValid(): to be implemented (operation)");
+
     Q_UNUSED(redefined);
     return bool ();
 }

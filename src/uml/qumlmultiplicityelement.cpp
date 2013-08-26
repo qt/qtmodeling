@@ -207,8 +207,11 @@ void QUmlMultiplicityElement::setUpperValue(QUmlValueSpecification *upperValue)
 /*!
     The operation compatibleWith takes another multiplicity as input. It checks if one multiplicity is compatible with another.
  */
-bool QUmlMultiplicityElement::compatibleWith(QUmlMultiplicityElement *other) const
+bool QUmlMultiplicityElement::compatibleWith(
+    QUmlMultiplicityElement *other) const
 {
+    qWarning("QUmlMultiplicityElement::compatibleWith(): to be implemented (operation)");
+
     Q_UNUSED(other);
     return bool ();
 }
@@ -216,8 +219,11 @@ bool QUmlMultiplicityElement::compatibleWith(QUmlMultiplicityElement *other) con
 /*!
     The query includesCardinality() checks whether the specified cardinality is valid for this multiplicity.
  */
-bool QUmlMultiplicityElement::includesCardinality(int C) const
+bool QUmlMultiplicityElement::includesCardinality(
+    int C) const
 {
+    qWarning("QUmlMultiplicityElement::includesCardinality(): to be implemented (operation)");
+
     Q_UNUSED(C);
     return bool ();
 }
@@ -225,8 +231,11 @@ bool QUmlMultiplicityElement::includesCardinality(int C) const
 /*!
     The query includesMultiplicity() checks whether this multiplicity includes all the cardinalities allowed by the specified multiplicity.
  */
-bool QUmlMultiplicityElement::includesMultiplicity(QUmlMultiplicityElement *M) const
+bool QUmlMultiplicityElement::includesMultiplicity(
+    QUmlMultiplicityElement *M) const
 {
+    qWarning("QUmlMultiplicityElement::includesMultiplicity(): to be implemented (operation)");
+
     Q_UNUSED(M);
     return bool ();
 }
@@ -234,8 +243,11 @@ bool QUmlMultiplicityElement::includesMultiplicity(QUmlMultiplicityElement *M) c
 /*!
     The operation is determines if the upper and lower bound of the ranges are the ones given.
  */
-bool QUmlMultiplicityElement::is(int lowerbound, int upperbound) const
+bool QUmlMultiplicityElement::is(
+    int lowerbound, int upperbound) const
 {
+    qWarning("QUmlMultiplicityElement::is(): to be implemented (operation)");
+
     Q_UNUSED(lowerbound);
     Q_UNUSED(upperbound);
     return bool ();
@@ -244,24 +256,33 @@ bool QUmlMultiplicityElement::is(int lowerbound, int upperbound) const
 /*!
     The query isMultivalued() checks whether this multiplicity has an upper bound greater than one.
  */
-bool QUmlMultiplicityElement::isMultivalued() const
+bool QUmlMultiplicityElement::isMultivalued(
+    ) const
 {
+    qWarning("QUmlMultiplicityElement::isMultivalued(): to be implemented (operation)");
+
     return bool ();
 }
 
 /*!
     The query lowerBound() returns the lower bound of the multiplicity as an integer.
  */
-int QUmlMultiplicityElement::lowerBound() const
+int QUmlMultiplicityElement::lowerBound(
+    ) const
 {
+    qWarning("QUmlMultiplicityElement::lowerBound(): to be implemented (operation)");
+
     return int ();
 }
 
 /*!
     The query upperBound() returns the upper bound of the multiplicity for a bounded multiplicity as an unlimited natural.
  */
-int QUmlMultiplicityElement::upperBound() const
+int QUmlMultiplicityElement::upperBound(
+    ) const
 {
+    qWarning("QUmlMultiplicityElement::upperBound(): to be implemented (operation)");
+
     return int ();
 }
 

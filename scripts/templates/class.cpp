@@ -325,7 +325,7 @@ void Q${namespace}${className}::set${attributeName.remove("^Is")}(${QT_TYPE(name
  */
 [%- END %]
 ${returnType}Q${namespace}${className}::${operationName}(
-    [%- SET parameters = operation.findnodes("ownedParameter[@direction!='return']") -%]
+    [% SET parameters = operation.findnodes("ownedParameter[@direction!='return']") -%]
     [%- FOREACH parameter = parameters -%]
         [%- QT_TYPE(namespace, parameter) -%]
 ${parameter.findvalue("@name")}
@@ -333,6 +333,8 @@ ${parameter.findvalue("@name")}
     [%- END -%]
 )[% IF operation.findvalue("@isQuery") == "true" %] const[% END %]
 {
+    qWarning("Q${namespace}${className}::${operationName}(): to be implemented (operation)");
+
     [%- FOREACH parameter = parameters %]
     Q_UNUSED(${parameter.findvalue("@name")});
     [%- END %]

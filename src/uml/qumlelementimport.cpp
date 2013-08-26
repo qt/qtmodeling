@@ -160,8 +160,11 @@ void QUmlElementImport::setVisibility(QtUml::VisibilityKind visibility)
 /*!
     The query getName() returns the name under which the imported PackageableElement will be known in the importing namespace.
  */
-QString QUmlElementImport::getName() const
+QString QUmlElementImport::getName(
+    ) const
 {
+    qWarning("QUmlElementImport::getName(): to be implemented (operation)");
+
     return QString ();
 }
 

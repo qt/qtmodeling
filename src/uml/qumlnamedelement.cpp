@@ -219,24 +219,33 @@ void QUmlNamedElement::setVisibility(QtUml::VisibilityKind visibility)
 /*!
     The query allNamespaces() gives the sequence of namespaces in which the NamedElement is nested, working outwards.
  */
-QList<QUmlNamespace *> QUmlNamedElement::allNamespaces() const
+QList<QUmlNamespace *> QUmlNamedElement::allNamespaces(
+    ) const
 {
+    qWarning("QUmlNamedElement::allNamespaces(): to be implemented (operation)");
+
     return QList<QUmlNamespace *> ();
 }
 
 /*!
     The query allOwningPackages() returns all the directly or indirectly owning packages.
  */
-QSet<QUmlPackage *> QUmlNamedElement::allOwningPackages() const
+QSet<QUmlPackage *> QUmlNamedElement::allOwningPackages(
+    ) const
 {
+    qWarning("QUmlNamedElement::allOwningPackages(): to be implemented (operation)");
+
     return QSet<QUmlPackage *> ();
 }
 
 /*!
     The query isDistinguishableFrom() determines whether two NamedElements may logically co-exist within a Namespace. By default, two named elements are distinguishable if (a) they have unrelated types or (b) they have related types but different names.
  */
-bool QUmlNamedElement::isDistinguishableFrom(QUmlNamedElement *n, QUmlNamespace *ns) const
+bool QUmlNamedElement::isDistinguishableFrom(
+    QUmlNamedElement *n, QUmlNamespace *ns) const
 {
+    qWarning("QUmlNamedElement::isDistinguishableFrom(): to be implemented (operation)");
+
     Q_UNUSED(n);
     Q_UNUSED(ns);
     return bool ();
@@ -245,8 +254,11 @@ bool QUmlNamedElement::isDistinguishableFrom(QUmlNamedElement *n, QUmlNamespace 
 /*!
     The query separator() gives the string that is used to separate names when constructing a qualified name.
  */
-QString QUmlNamedElement::separator() const
+QString QUmlNamedElement::separator(
+    ) const
 {
+    qWarning("QUmlNamedElement::separator(): to be implemented (operation)");
+
     return QString ();
 }
 

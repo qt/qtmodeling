@@ -133,8 +133,11 @@ void QUmlExtension::setOwnedEnd(QUmlExtensionEnd *ownedEnd)
 /*!
     The query metaclassEnd() returns the Property that is typed by a metaclass (as opposed to a stereotype).
  */
-QUmlProperty *QUmlExtension::metaclassEnd() const
+QUmlProperty *QUmlExtension::metaclassEnd(
+    ) const
 {
+    qWarning("QUmlExtension::metaclassEnd(): to be implemented (operation)");
+
     return 0;
 }
 

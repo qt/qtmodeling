@@ -122,8 +122,11 @@ void QUmlStereotype::setProfile(QUmlProfile *profile)
 /*!
     The query containingProfile returns the closest profile directly or indirectly containing this stereotype.
  */
-QUmlProfile *QUmlStereotype::containingProfile() const
+QUmlProfile *QUmlStereotype::containingProfile(
+    ) const
 {
+    qWarning("QUmlStereotype::containingProfile(): to be implemented (operation)");
+
     return 0;
 }
 

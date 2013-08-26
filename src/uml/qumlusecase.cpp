@@ -236,8 +236,11 @@ void QUmlUseCase::removeSubject(QUmlClassifier *subject)
 /*!
     The query allIncludedUseCases() returns the transitive closure of all use cases (directly or indirectly) included by this use case.
  */
-QSet<QUmlUseCase *> QUmlUseCase::allIncludedUseCases() const
+QSet<QUmlUseCase *> QUmlUseCase::allIncludedUseCases(
+    ) const
 {
+    qWarning("QUmlUseCase::allIncludedUseCases(): to be implemented (operation)");
+
     return QSet<QUmlUseCase *> ();
 }
 

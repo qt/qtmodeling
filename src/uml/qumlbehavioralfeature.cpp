@@ -241,8 +241,11 @@ void QUmlBehavioralFeature::removeRaisedException(QUmlType *raisedException)
 /*!
     The query isDistinguishableFrom() determines whether two BehavioralFeatures may coexist in the same Namespace. It specifies that they have to have different signatures.
  */
-bool QUmlBehavioralFeature::isDistinguishableFrom(QUmlNamedElement *n, QUmlNamespace *ns) const
+bool QUmlBehavioralFeature::isDistinguishableFrom(
+    QUmlNamedElement *n, QUmlNamespace *ns) const
 {
+    qWarning("QUmlBehavioralFeature::isDistinguishableFrom(): to be implemented (operation)");
+
     Q_UNUSED(n);
     Q_UNUSED(ns);
     return bool ();

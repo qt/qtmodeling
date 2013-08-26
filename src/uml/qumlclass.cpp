@@ -352,8 +352,11 @@ void QUmlClass::removeSuperClass(QUmlClass *superClass)
 /*!
     The inherit operation is overridden to exclude redefined properties.
  */
-QSet<QUmlNamedElement *> QUmlClass::inherit(QSet<QUmlNamedElement *> inhs) const
+QSet<QUmlNamedElement *> QUmlClass::inherit(
+    QSet<QUmlNamedElement *> inhs) const
 {
+    qWarning("QUmlClass::inherit(): to be implemented (operation)");
+
     Q_UNUSED(inhs);
     return QSet<QUmlNamedElement *> ();
 }

@@ -40,6 +40,7 @@
 ****************************************************************************/
 #include "qumlstructuredactivitynode.h"
 
+#include <QtUml/QUmlActivity>
 #include <QtUml/QUmlActivityEdge>
 #include <QtUml/QUmlActivityNode>
 #include <QtUml/QUmlInputPin>

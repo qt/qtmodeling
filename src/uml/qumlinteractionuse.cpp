@@ -41,6 +41,7 @@
 #include "qumlinteractionuse.h"
 
 #include <QtUml/QUmlGate>
+#include <QtUml/QUmlInteraction>
 #include <QtUml/QUmlProperty>
 #include <QtUml/QUmlValueSpecification>
 
