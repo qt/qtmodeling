@@ -56,11 +56,10 @@ class QUmlConstraint;
 class QUmlInputPin;
 class QUmlOutputPin;
 
-class QUmlActionPrivate;
 class Q_UML_EXPORT QUmlAction : public QUmlExecutableNode
 {
 public:
-    Q_DECL_HIDDEN QUmlAction(bool create_d_ptr = true);
+    Q_DECL_HIDDEN QUmlAction();
 
     // Owned attributes
     QUmlClassifier *context() const;
@@ -74,6 +73,13 @@ public:
     void addLocalPrecondition(QUmlConstraint *localPrecondition);
     void removeLocalPrecondition(QUmlConstraint *localPrecondition);
     QList<QUmlOutputPin *> output() const;
+
+protected:
+    QList<QUmlInputPin *> _input;
+    bool _isLocallyReentrant;
+    QSet<QUmlConstraint *> _localPostcondition;
+    QSet<QUmlConstraint *> _localPrecondition;
+    QList<QUmlOutputPin *> _output;
 };
 
 QT_END_NAMESPACE

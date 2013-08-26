@@ -54,11 +54,10 @@ QT_MODULE(QtUml)
 
 class QUmlNamedElement;
 
-class QUmlDependencyPrivate;
 class Q_UML_EXPORT QUmlDependency : public QUmlPackageableElement, public QUmlDirectedRelationship
 {
 public:
-    QUmlDependency(bool create_d_ptr = true);
+    QUmlDependency();
 
     // Owned attributes
     QSet<QUmlNamedElement *> client() const;
@@ -67,6 +66,10 @@ public:
     QSet<QUmlNamedElement *> supplier() const;
     void addSupplier(QUmlNamedElement *supplier);
     void removeSupplier(QUmlNamedElement *supplier);
+
+protected:
+    QSet<QUmlNamedElement *> _client;
+    QSet<QUmlNamedElement *> _supplier;
 };
 
 QT_END_NAMESPACE

@@ -39,17 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlparameterableelement.h"
-#include "qumlparameterableelement_p.h"
 
 #include <QtUml/QUmlTemplateParameter>
 
 QT_BEGIN_NAMESPACE
-
-QUmlParameterableElementPrivate::QUmlParameterableElementPrivate() :
-    owningTemplateParameter(0),
-    templateParameter(0)
-{
-}
 
 /*!
     \class QUmlParameterableElement
@@ -59,11 +52,10 @@ QUmlParameterableElementPrivate::QUmlParameterableElementPrivate() :
     \brief A parameterable element is an element that can be exposed as a formal template parameter for a template, or specified as an actual parameter in a binding of a template.
  */
 
-QUmlParameterableElement::QUmlParameterableElement(bool create_d_ptr) :
-    QUmlElement(false)
+QUmlParameterableElement::QUmlParameterableElement() :
+    _owningTemplateParameter(0),
+    _templateParameter(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlParameterableElementPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -75,17 +67,15 @@ QUmlTemplateParameter *QUmlParameterableElement::owningTemplateParameter() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlParameterableElement);
-    return d->owningTemplateParameter;
+    return _owningTemplateParameter;
 }
 
 void QUmlParameterableElement::setOwningTemplateParameter(QUmlTemplateParameter *owningTemplateParameter)
 {
     // This is a read-write association end
 
-    QM_D(QUmlParameterableElement);
-    if (d->owningTemplateParameter != owningTemplateParameter) {
-        d->owningTemplateParameter = owningTemplateParameter;
+    if (_owningTemplateParameter != owningTemplateParameter) {
+        _owningTemplateParameter = owningTemplateParameter;
     }
 }
 
@@ -96,17 +86,15 @@ QUmlTemplateParameter *QUmlParameterableElement::templateParameter() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlParameterableElement);
-    return d->templateParameter;
+    return _templateParameter;
 }
 
 void QUmlParameterableElement::setTemplateParameter(QUmlTemplateParameter *templateParameter)
 {
     // This is a read-write association end
 
-    QM_D(QUmlParameterableElement);
-    if (d->templateParameter != templateParameter) {
-        d->templateParameter = templateParameter;
+    if (_templateParameter != templateParameter) {
+        _templateParameter = templateParameter;
     }
 }
 

@@ -54,11 +54,10 @@ QT_MODULE(QtUml)
 class QUmlConstraint;
 class QUmlParameter;
 
-class QUmlParameterSetPrivate;
 class Q_UML_EXPORT QUmlParameterSet : public QUmlNamedElement
 {
 public:
-    QUmlParameterSet(bool create_d_ptr = true);
+    QUmlParameterSet();
 
     // Owned attributes
     QSet<QUmlConstraint *> condition() const;
@@ -67,6 +66,10 @@ public:
     QSet<QUmlParameter *> parameter() const;
     void addParameter(QUmlParameter *parameter);
     void removeParameter(QUmlParameter *parameter);
+
+protected:
+    QSet<QUmlConstraint *> _condition;
+    QSet<QUmlParameter *> _parameter;
 };
 
 QT_END_NAMESPACE

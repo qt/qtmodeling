@@ -54,11 +54,10 @@ QT_MODULE(QtUml)
 class QUmlInputPin;
 class QUmlPort;
 
-class QUmlInvocationActionPrivate;
 class Q_UML_EXPORT QUmlInvocationAction : public QUmlAction
 {
 public:
-    Q_DECL_HIDDEN QUmlInvocationAction(bool create_d_ptr = true);
+    Q_DECL_HIDDEN QUmlInvocationAction();
 
     // Owned attributes
     QList<QUmlInputPin *> argument() const;
@@ -66,6 +65,10 @@ public:
     void removeArgument(QUmlInputPin *argument);
     QUmlPort *onPort() const;
     void setOnPort(QUmlPort *onPort);
+
+protected:
+    QList<QUmlInputPin *> _argument;
+    QUmlPort *_onPort;
 };
 
 QT_END_NAMESPACE

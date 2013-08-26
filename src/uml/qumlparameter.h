@@ -57,11 +57,10 @@ class QUmlOperation;
 class QUmlParameterSet;
 class QUmlValueSpecification;
 
-class QUmlParameterPrivate;
 class Q_UML_EXPORT QUmlParameter : public QUmlMultiplicityElement, public QUmlConnectableElement
 {
 public:
-    QUmlParameter(bool create_d_ptr = true);
+    QUmlParameter();
 
     // Owned attributes
     QString default_() const;
@@ -81,6 +80,15 @@ public:
     QSet<QUmlParameterSet *> parameterSet() const;
     void addParameterSet(QUmlParameterSet *parameterSet);
     void removeParameterSet(QUmlParameterSet *parameterSet);
+
+protected:
+    QUmlValueSpecification *_defaultValue;
+    QtUml::ParameterDirectionKind _direction;
+    QtUml::ParameterEffectKind _effect;
+    bool _isException;
+    bool _isStream;
+    QUmlOperation *_operation;
+    QSet<QUmlParameterSet *> _parameterSet;
 };
 
 QT_END_NAMESPACE

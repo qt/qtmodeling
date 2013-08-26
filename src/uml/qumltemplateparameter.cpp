@@ -39,21 +39,11 @@
 **
 ****************************************************************************/
 #include "qumltemplateparameter.h"
-#include "qumltemplateparameter_p.h"
 
 #include <QtUml/QUmlParameterableElement>
 #include <QtUml/QUmlTemplateSignature>
 
 QT_BEGIN_NAMESPACE
-
-QUmlTemplateParameterPrivate::QUmlTemplateParameterPrivate() :
-    default_(0),
-    ownedDefault(0),
-    ownedParameteredElement(0),
-    parameteredElement(0),
-    signature(0)
-{
-}
 
 /*!
     \class QUmlTemplateParameter
@@ -63,11 +53,13 @@ QUmlTemplateParameterPrivate::QUmlTemplateParameterPrivate() :
     \brief A template parameter exposes a parameterable element as a formal template parameter of a template.
  */
 
-QUmlTemplateParameter::QUmlTemplateParameter(bool create_d_ptr) :
-    QUmlElement(false)
+QUmlTemplateParameter::QUmlTemplateParameter() :
+    _default_(0),
+    _ownedDefault(0),
+    _ownedParameteredElement(0),
+    _parameteredElement(0),
+    _signature(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlTemplateParameterPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -79,17 +71,15 @@ QUmlParameterableElement *QUmlTemplateParameter::default_() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlTemplateParameter);
-    return d->default_;
+    return _default_;
 }
 
 void QUmlTemplateParameter::setDefault(QUmlParameterableElement *default_)
 {
     // This is a read-write association end
 
-    QM_D(QUmlTemplateParameter);
-    if (d->default_ != default_) {
-        d->default_ = default_;
+    if (_default_ != default_) {
+        _default_ = default_;
     }
 }
 
@@ -100,17 +90,15 @@ QUmlParameterableElement *QUmlTemplateParameter::ownedDefault() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlTemplateParameter);
-    return d->ownedDefault;
+    return _ownedDefault;
 }
 
 void QUmlTemplateParameter::setOwnedDefault(QUmlParameterableElement *ownedDefault)
 {
     // This is a read-write association end
 
-    QM_D(QUmlTemplateParameter);
-    if (d->ownedDefault != ownedDefault) {
-        d->ownedDefault = ownedDefault;
+    if (_ownedDefault != ownedDefault) {
+        _ownedDefault = ownedDefault;
     }
 }
 
@@ -121,17 +109,15 @@ QUmlParameterableElement *QUmlTemplateParameter::ownedParameteredElement() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlTemplateParameter);
-    return d->ownedParameteredElement;
+    return _ownedParameteredElement;
 }
 
 void QUmlTemplateParameter::setOwnedParameteredElement(QUmlParameterableElement *ownedParameteredElement)
 {
     // This is a read-write association end
 
-    QM_D(QUmlTemplateParameter);
-    if (d->ownedParameteredElement != ownedParameteredElement) {
-        d->ownedParameteredElement = ownedParameteredElement;
+    if (_ownedParameteredElement != ownedParameteredElement) {
+        _ownedParameteredElement = ownedParameteredElement;
     }
 }
 
@@ -142,17 +128,15 @@ QUmlParameterableElement *QUmlTemplateParameter::parameteredElement() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlTemplateParameter);
-    return d->parameteredElement;
+    return _parameteredElement;
 }
 
 void QUmlTemplateParameter::setParameteredElement(QUmlParameterableElement *parameteredElement)
 {
     // This is a read-write association end
 
-    QM_D(QUmlTemplateParameter);
-    if (d->parameteredElement != parameteredElement) {
-        d->parameteredElement = parameteredElement;
+    if (_parameteredElement != parameteredElement) {
+        _parameteredElement = parameteredElement;
     }
 }
 
@@ -163,17 +147,15 @@ QUmlTemplateSignature *QUmlTemplateParameter::signature() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlTemplateParameter);
-    return d->signature;
+    return _signature;
 }
 
 void QUmlTemplateParameter::setSignature(QUmlTemplateSignature *signature)
 {
     // This is a read-write association end
 
-    QM_D(QUmlTemplateParameter);
-    if (d->signature != signature) {
-        d->signature = signature;
+    if (_signature != signature) {
+        _signature = signature;
     }
 }
 

@@ -53,16 +53,18 @@ QT_MODULE(QtUml)
 
 class QUmlExceptionHandler;
 
-class QUmlExecutableNodePrivate;
 class Q_UML_EXPORT QUmlExecutableNode : public QUmlActivityNode
 {
 public:
-    Q_DECL_HIDDEN QUmlExecutableNode(bool create_d_ptr = true);
+    Q_DECL_HIDDEN QUmlExecutableNode();
 
     // Owned attributes
     QSet<QUmlExceptionHandler *> handler() const;
     void addHandler(QUmlExceptionHandler *handler);
     void removeHandler(QUmlExceptionHandler *handler);
+
+protected:
+    QSet<QUmlExceptionHandler *> _handler;
 };
 
 QT_END_NAMESPACE

@@ -53,15 +53,17 @@ QT_MODULE(QtUml)
 
 class QUmlSignal;
 
-class QUmlReceptionPrivate;
 class Q_UML_EXPORT QUmlReception : public QUmlBehavioralFeature
 {
 public:
-    QUmlReception(bool create_d_ptr = true);
+    QUmlReception();
 
     // Owned attributes
     QUmlSignal *signal() const;
     void setSignal(QUmlSignal *signal);
+
+protected:
+    QUmlSignal *_signal;
 };
 
 QT_END_NAMESPACE

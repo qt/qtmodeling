@@ -39,16 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlprofile.h"
-#include "qumlprofile_p.h"
 
 #include <QtUml/QUmlElementImport>
 #include <QtUml/QUmlPackageImport>
 
 QT_BEGIN_NAMESPACE
-
-QUmlProfilePrivate::QUmlProfilePrivate()
-{
-}
 
 /*!
     \class QUmlProfile
@@ -58,11 +53,8 @@ QUmlProfilePrivate::QUmlProfilePrivate()
     \brief A profile defines limited extensions to a reference metamodel with the purpose of adapting the metamodel to a specific platform or domain.
  */
 
-QUmlProfile::QUmlProfile(bool create_d_ptr) :
-    QUmlPackage(false)
+QUmlProfile::QUmlProfile()
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlProfilePrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -74,17 +66,15 @@ QSet<QUmlElementImport *> QUmlProfile::metaclassReference() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlProfile);
-    return d->metaclassReference;
+    return _metaclassReference;
 }
 
 void QUmlProfile::addMetaclassReference(QUmlElementImport *metaclassReference)
 {
     // This is a read-write association end
 
-    QM_D(QUmlProfile);
-    if (!d->metaclassReference.contains(metaclassReference)) {
-        d->metaclassReference.insert(metaclassReference);
+    if (!_metaclassReference.contains(metaclassReference)) {
+        _metaclassReference.insert(metaclassReference);
     }
 }
 
@@ -92,9 +82,8 @@ void QUmlProfile::removeMetaclassReference(QUmlElementImport *metaclassReference
 {
     // This is a read-write association end
 
-    QM_D(QUmlProfile);
-    if (d->metaclassReference.contains(metaclassReference)) {
-        d->metaclassReference.remove(metaclassReference);
+    if (_metaclassReference.contains(metaclassReference)) {
+        _metaclassReference.remove(metaclassReference);
     }
 }
 
@@ -105,17 +94,15 @@ QSet<QUmlPackageImport *> QUmlProfile::metamodelReference() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlProfile);
-    return d->metamodelReference;
+    return _metamodelReference;
 }
 
 void QUmlProfile::addMetamodelReference(QUmlPackageImport *metamodelReference)
 {
     // This is a read-write association end
 
-    QM_D(QUmlProfile);
-    if (!d->metamodelReference.contains(metamodelReference)) {
-        d->metamodelReference.insert(metamodelReference);
+    if (!_metamodelReference.contains(metamodelReference)) {
+        _metamodelReference.insert(metamodelReference);
     }
 }
 
@@ -123,9 +110,8 @@ void QUmlProfile::removeMetamodelReference(QUmlPackageImport *metamodelReference
 {
     // This is a read-write association end
 
-    QM_D(QUmlProfile);
-    if (d->metamodelReference.contains(metamodelReference)) {
-        d->metamodelReference.remove(metamodelReference);
+    if (_metamodelReference.contains(metamodelReference)) {
+        _metamodelReference.remove(metamodelReference);
     }
 }
 

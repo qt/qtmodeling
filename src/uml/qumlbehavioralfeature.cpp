@@ -39,7 +39,6 @@
 **
 ****************************************************************************/
 #include "qumlbehavioralfeature.h"
-#include "qumlbehavioralfeature_p.h"
 
 #include <QtUml/QUmlBehavior>
 #include <QtUml/QUmlNamedElement>
@@ -49,12 +48,6 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlBehavioralFeaturePrivate::QUmlBehavioralFeaturePrivate() :
-    concurrency(QtUml::CallConcurrencySequential),
-    isAbstract(false)
-{
-}
-
 /*!
     \class QUmlBehavioralFeature
 
@@ -63,12 +56,10 @@ QUmlBehavioralFeaturePrivate::QUmlBehavioralFeaturePrivate() :
     \brief A behavioral feature is a feature of a classifier that specifies an aspect of the behavior of its instances.A behavioral feature is implemented (realized) by a behavior. A behavioral feature specifies that a classifier will respond to a designated request by invoking its implementing method.A behavioral feature owns zero or more parameter sets.
  */
 
-QUmlBehavioralFeature::QUmlBehavioralFeature(bool create_d_ptr) :
-    QUmlNamespace(false),
-    QUmlFeature(false)
+QUmlBehavioralFeature::QUmlBehavioralFeature() :
+    _concurrency(QtUml::CallConcurrencySequential),
+    _isAbstract(false)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlBehavioralFeaturePrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -80,17 +71,15 @@ QtUml::CallConcurrencyKind QUmlBehavioralFeature::concurrency() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlBehavioralFeature);
-    return d->concurrency;
+    return _concurrency;
 }
 
 void QUmlBehavioralFeature::setConcurrency(QtUml::CallConcurrencyKind concurrency)
 {
     // This is a read-write property
 
-    QM_D(QUmlBehavioralFeature);
-    if (d->concurrency != concurrency) {
-        d->concurrency = concurrency;
+    if (_concurrency != concurrency) {
+        _concurrency = concurrency;
     }
 }
 
@@ -101,17 +90,15 @@ bool QUmlBehavioralFeature::isAbstract() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlBehavioralFeature);
-    return d->isAbstract;
+    return _isAbstract;
 }
 
 void QUmlBehavioralFeature::setAbstract(bool isAbstract)
 {
     // This is a read-write property
 
-    QM_D(QUmlBehavioralFeature);
-    if (d->isAbstract != isAbstract) {
-        d->isAbstract = isAbstract;
+    if (_isAbstract != isAbstract) {
+        _isAbstract = isAbstract;
     }
 }
 
@@ -122,17 +109,15 @@ QSet<QUmlBehavior *> QUmlBehavioralFeature::method() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlBehavioralFeature);
-    return d->method;
+    return _method;
 }
 
 void QUmlBehavioralFeature::addMethod(QUmlBehavior *method)
 {
     // This is a read-write association end
 
-    QM_D(QUmlBehavioralFeature);
-    if (!d->method.contains(method)) {
-        d->method.insert(method);
+    if (!_method.contains(method)) {
+        _method.insert(method);
     }
 }
 
@@ -140,9 +125,8 @@ void QUmlBehavioralFeature::removeMethod(QUmlBehavior *method)
 {
     // This is a read-write association end
 
-    QM_D(QUmlBehavioralFeature);
-    if (d->method.contains(method)) {
-        d->method.remove(method);
+    if (_method.contains(method)) {
+        _method.remove(method);
     }
 }
 
@@ -153,17 +137,15 @@ QList<QUmlParameter *> QUmlBehavioralFeature::ownedParameter() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlBehavioralFeature);
-    return d->ownedParameter;
+    return _ownedParameter;
 }
 
 void QUmlBehavioralFeature::addOwnedParameter(QUmlParameter *ownedParameter)
 {
     // This is a read-write association end
 
-    QM_D(QUmlBehavioralFeature);
-    if (!d->ownedParameter.contains(ownedParameter)) {
-        d->ownedParameter.append(ownedParameter);
+    if (!_ownedParameter.contains(ownedParameter)) {
+        _ownedParameter.append(ownedParameter);
     }
 }
 
@@ -171,9 +153,8 @@ void QUmlBehavioralFeature::removeOwnedParameter(QUmlParameter *ownedParameter)
 {
     // This is a read-write association end
 
-    QM_D(QUmlBehavioralFeature);
-    if (d->ownedParameter.contains(ownedParameter)) {
-        d->ownedParameter.removeAll(ownedParameter);
+    if (_ownedParameter.contains(ownedParameter)) {
+        _ownedParameter.removeAll(ownedParameter);
     }
 }
 
@@ -184,17 +165,15 @@ QSet<QUmlParameterSet *> QUmlBehavioralFeature::ownedParameterSet() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlBehavioralFeature);
-    return d->ownedParameterSet;
+    return _ownedParameterSet;
 }
 
 void QUmlBehavioralFeature::addOwnedParameterSet(QUmlParameterSet *ownedParameterSet)
 {
     // This is a read-write association end
 
-    QM_D(QUmlBehavioralFeature);
-    if (!d->ownedParameterSet.contains(ownedParameterSet)) {
-        d->ownedParameterSet.insert(ownedParameterSet);
+    if (!_ownedParameterSet.contains(ownedParameterSet)) {
+        _ownedParameterSet.insert(ownedParameterSet);
     }
 }
 
@@ -202,9 +181,8 @@ void QUmlBehavioralFeature::removeOwnedParameterSet(QUmlParameterSet *ownedParam
 {
     // This is a read-write association end
 
-    QM_D(QUmlBehavioralFeature);
-    if (d->ownedParameterSet.contains(ownedParameterSet)) {
-        d->ownedParameterSet.remove(ownedParameterSet);
+    if (_ownedParameterSet.contains(ownedParameterSet)) {
+        _ownedParameterSet.remove(ownedParameterSet);
     }
 }
 
@@ -215,17 +193,15 @@ QSet<QUmlType *> QUmlBehavioralFeature::raisedException() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlBehavioralFeature);
-    return d->raisedException;
+    return _raisedException;
 }
 
 void QUmlBehavioralFeature::addRaisedException(QUmlType *raisedException)
 {
     // This is a read-write association end
 
-    QM_D(QUmlBehavioralFeature);
-    if (!d->raisedException.contains(raisedException)) {
-        d->raisedException.insert(raisedException);
+    if (!_raisedException.contains(raisedException)) {
+        _raisedException.insert(raisedException);
     }
 }
 
@@ -233,9 +209,8 @@ void QUmlBehavioralFeature::removeRaisedException(QUmlType *raisedException)
 {
     // This is a read-write association end
 
-    QM_D(QUmlBehavioralFeature);
-    if (d->raisedException.contains(raisedException)) {
-        d->raisedException.remove(raisedException);
+    if (_raisedException.contains(raisedException)) {
+        _raisedException.remove(raisedException);
     }
 }
 

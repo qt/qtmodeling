@@ -51,15 +51,16 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlLiteralNullPrivate;
 class Q_UML_EXPORT QUmlLiteralNull : public QUmlLiteralSpecification
 {
 public:
-    QUmlLiteralNull(bool create_d_ptr = true);
+    QUmlLiteralNull();
 
     // Operations
     bool isComputable() const;
     bool isNull() const;
+
+protected:
 };
 
 QT_END_NAMESPACE

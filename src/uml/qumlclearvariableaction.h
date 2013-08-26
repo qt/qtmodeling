@@ -51,11 +51,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlClearVariableActionPrivate;
 class Q_UML_EXPORT QUmlClearVariableAction : public QUmlVariableAction
 {
 public:
-    QUmlClearVariableAction(bool create_d_ptr = true);
+    QUmlClearVariableAction();
+
+protected:
 };
 
 QT_END_NAMESPACE

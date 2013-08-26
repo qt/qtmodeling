@@ -53,17 +53,20 @@ QT_MODULE(QtUml)
 
 class QUmlOccurrenceSpecification;
 
-class QUmlExecutionSpecificationPrivate;
 class Q_UML_EXPORT QUmlExecutionSpecification : public QUmlInteractionFragment
 {
 public:
-    Q_DECL_HIDDEN QUmlExecutionSpecification(bool create_d_ptr = true);
+    Q_DECL_HIDDEN QUmlExecutionSpecification();
 
     // Owned attributes
     QUmlOccurrenceSpecification *finish() const;
     void setFinish(QUmlOccurrenceSpecification *finish);
     QUmlOccurrenceSpecification *start() const;
     void setStart(QUmlOccurrenceSpecification *start);
+
+protected:
+    QUmlOccurrenceSpecification *_finish;
+    QUmlOccurrenceSpecification *_start;
 };
 
 QT_END_NAMESPACE

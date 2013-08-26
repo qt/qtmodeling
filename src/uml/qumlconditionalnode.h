@@ -54,11 +54,10 @@ QT_MODULE(QtUml)
 class QUmlClause;
 class QUmlOutputPin;
 
-class QUmlConditionalNodePrivate;
 class Q_UML_EXPORT QUmlConditionalNode : public QUmlStructuredActivityNode
 {
 public:
-    QUmlConditionalNode(bool create_d_ptr = true);
+    QUmlConditionalNode();
 
     // Owned attributes
     QSet<QUmlClause *> clause() const;
@@ -71,6 +70,12 @@ public:
     QList<QUmlOutputPin *> result() const;
     void addResult(QUmlOutputPin *result);
     void removeResult(QUmlOutputPin *result);
+
+protected:
+    QSet<QUmlClause *> _clause;
+    bool _isAssured;
+    bool _isDeterminate;
+    QList<QUmlOutputPin *> _result;
 };
 
 QT_END_NAMESPACE

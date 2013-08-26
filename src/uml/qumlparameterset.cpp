@@ -39,16 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlparameterset.h"
-#include "qumlparameterset_p.h"
 
 #include <QtUml/QUmlConstraint>
 #include <QtUml/QUmlParameter>
 
 QT_BEGIN_NAMESPACE
-
-QUmlParameterSetPrivate::QUmlParameterSetPrivate()
-{
-}
 
 /*!
     \class QUmlParameterSet
@@ -58,11 +53,8 @@ QUmlParameterSetPrivate::QUmlParameterSetPrivate()
     \brief A parameter set is an element that provides alternative sets of inputs or outputs that a behavior may use.
  */
 
-QUmlParameterSet::QUmlParameterSet(bool create_d_ptr) :
-    QUmlNamedElement(false)
+QUmlParameterSet::QUmlParameterSet()
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlParameterSetPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -74,17 +66,15 @@ QSet<QUmlConstraint *> QUmlParameterSet::condition() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlParameterSet);
-    return d->condition;
+    return _condition;
 }
 
 void QUmlParameterSet::addCondition(QUmlConstraint *condition)
 {
     // This is a read-write association end
 
-    QM_D(QUmlParameterSet);
-    if (!d->condition.contains(condition)) {
-        d->condition.insert(condition);
+    if (!_condition.contains(condition)) {
+        _condition.insert(condition);
     }
 }
 
@@ -92,9 +82,8 @@ void QUmlParameterSet::removeCondition(QUmlConstraint *condition)
 {
     // This is a read-write association end
 
-    QM_D(QUmlParameterSet);
-    if (d->condition.contains(condition)) {
-        d->condition.remove(condition);
+    if (_condition.contains(condition)) {
+        _condition.remove(condition);
     }
 }
 
@@ -105,17 +94,15 @@ QSet<QUmlParameter *> QUmlParameterSet::parameter() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlParameterSet);
-    return d->parameter;
+    return _parameter;
 }
 
 void QUmlParameterSet::addParameter(QUmlParameter *parameter)
 {
     // This is a read-write association end
 
-    QM_D(QUmlParameterSet);
-    if (!d->parameter.contains(parameter)) {
-        d->parameter.insert(parameter);
+    if (!_parameter.contains(parameter)) {
+        _parameter.insert(parameter);
     }
 }
 
@@ -123,9 +110,8 @@ void QUmlParameterSet::removeParameter(QUmlParameter *parameter)
 {
     // This is a read-write association end
 
-    QM_D(QUmlParameterSet);
-    if (d->parameter.contains(parameter)) {
-        d->parameter.remove(parameter);
+    if (_parameter.contains(parameter)) {
+        _parameter.remove(parameter);
     }
 }
 

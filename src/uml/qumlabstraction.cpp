@@ -39,16 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlabstraction.h"
-#include "qumlabstraction_p.h"
 
 #include <QtUml/QUmlOpaqueExpression>
 
 QT_BEGIN_NAMESPACE
-
-QUmlAbstractionPrivate::QUmlAbstractionPrivate() :
-    mapping(0)
-{
-}
 
 /*!
     \class QUmlAbstraction
@@ -58,11 +52,9 @@ QUmlAbstractionPrivate::QUmlAbstractionPrivate() :
     \brief An abstraction is a relationship that relates two elements or sets of elements that represent the same concept at different levels of abstraction or from different viewpoints.
  */
 
-QUmlAbstraction::QUmlAbstraction(bool create_d_ptr) :
-    QUmlDependency(false)
+QUmlAbstraction::QUmlAbstraction() :
+    _mapping(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlAbstractionPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -74,17 +66,15 @@ QUmlOpaqueExpression *QUmlAbstraction::mapping() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlAbstraction);
-    return d->mapping;
+    return _mapping;
 }
 
 void QUmlAbstraction::setMapping(QUmlOpaqueExpression *mapping)
 {
     // This is a read-write association end
 
-    QM_D(QUmlAbstraction);
-    if (d->mapping != mapping) {
-        d->mapping = mapping;
+    if (_mapping != mapping) {
+        _mapping = mapping;
     }
 }
 

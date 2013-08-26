@@ -39,13 +39,8 @@
 **
 ****************************************************************************/
 #include "qumlliteralreal.h"
-#include "qumlliteralreal_p.h"
 
 QT_BEGIN_NAMESPACE
-
-QUmlLiteralRealPrivate::QUmlLiteralRealPrivate()
-{
-}
 
 /*!
     \class QUmlLiteralReal
@@ -55,11 +50,8 @@ QUmlLiteralRealPrivate::QUmlLiteralRealPrivate()
     \brief A literal real is a specification of a real value.
  */
 
-QUmlLiteralReal::QUmlLiteralReal(bool create_d_ptr) :
-    QUmlLiteralSpecification(false)
+QUmlLiteralReal::QUmlLiteralReal()
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlLiteralRealPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -68,17 +60,15 @@ double QUmlLiteralReal::value() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlLiteralReal);
-    return d->value;
+    return _value;
 }
 
 void QUmlLiteralReal::setValue(double value)
 {
     // This is a read-write property
 
-    QM_D(QUmlLiteralReal);
-    if (d->value != value) {
-        d->value = value;
+    if (_value != value) {
+        _value = value;
     }
 }
 

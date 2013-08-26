@@ -39,21 +39,12 @@
 **
 ****************************************************************************/
 #include "qumlreduceaction.h"
-#include "qumlreduceaction_p.h"
 
 #include <QtUml/QUmlBehavior>
 #include <QtUml/QUmlInputPin>
 #include <QtUml/QUmlOutputPin>
 
 QT_BEGIN_NAMESPACE
-
-QUmlReduceActionPrivate::QUmlReduceActionPrivate() :
-    collection(0),
-    isOrdered(false),
-    reducer(0),
-    result(0)
-{
-}
 
 /*!
     \class QUmlReduceAction
@@ -63,11 +54,12 @@ QUmlReduceActionPrivate::QUmlReduceActionPrivate() :
     \brief A reduce action is an action that reduces a collection to a single value by combining the elements of the collection.
  */
 
-QUmlReduceAction::QUmlReduceAction(bool create_d_ptr) :
-    QUmlAction(false)
+QUmlReduceAction::QUmlReduceAction() :
+    _collection(0),
+    _isOrdered(false),
+    _reducer(0),
+    _result(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlReduceActionPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -79,17 +71,15 @@ QUmlInputPin *QUmlReduceAction::collection() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlReduceAction);
-    return d->collection;
+    return _collection;
 }
 
 void QUmlReduceAction::setCollection(QUmlInputPin *collection)
 {
     // This is a read-write association end
 
-    QM_D(QUmlReduceAction);
-    if (d->collection != collection) {
-        d->collection = collection;
+    if (_collection != collection) {
+        _collection = collection;
     }
 }
 
@@ -100,17 +90,15 @@ bool QUmlReduceAction::isOrdered() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlReduceAction);
-    return d->isOrdered;
+    return _isOrdered;
 }
 
 void QUmlReduceAction::setOrdered(bool isOrdered)
 {
     // This is a read-write property
 
-    QM_D(QUmlReduceAction);
-    if (d->isOrdered != isOrdered) {
-        d->isOrdered = isOrdered;
+    if (_isOrdered != isOrdered) {
+        _isOrdered = isOrdered;
     }
 }
 
@@ -121,17 +109,15 @@ QUmlBehavior *QUmlReduceAction::reducer() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlReduceAction);
-    return d->reducer;
+    return _reducer;
 }
 
 void QUmlReduceAction::setReducer(QUmlBehavior *reducer)
 {
     // This is a read-write association end
 
-    QM_D(QUmlReduceAction);
-    if (d->reducer != reducer) {
-        d->reducer = reducer;
+    if (_reducer != reducer) {
+        _reducer = reducer;
     }
 }
 
@@ -142,17 +128,15 @@ QUmlOutputPin *QUmlReduceAction::result() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlReduceAction);
-    return d->result;
+    return _result;
 }
 
 void QUmlReduceAction::setResult(QUmlOutputPin *result)
 {
     // This is a read-write association end
 
-    QM_D(QUmlReduceAction);
-    if (d->result != result) {
-        d->result = result;
+    if (_result != result) {
+        _result = result;
     }
 }
 

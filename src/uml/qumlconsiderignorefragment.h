@@ -53,16 +53,18 @@ QT_MODULE(QtUml)
 
 class QUmlNamedElement;
 
-class QUmlConsiderIgnoreFragmentPrivate;
 class Q_UML_EXPORT QUmlConsiderIgnoreFragment : public QUmlCombinedFragment
 {
 public:
-    QUmlConsiderIgnoreFragment(bool create_d_ptr = true);
+    QUmlConsiderIgnoreFragment();
 
     // Owned attributes
     QSet<QUmlNamedElement *> message() const;
     void addMessage(QUmlNamedElement *message);
     void removeMessage(QUmlNamedElement *message);
+
+protected:
+    QSet<QUmlNamedElement *> _message;
 };
 
 QT_END_NAMESPACE

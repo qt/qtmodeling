@@ -53,16 +53,18 @@ QT_MODULE(QtUml)
 
 class QUmlExecutableNode;
 
-class QUmlSequenceNodePrivate;
 class Q_UML_EXPORT QUmlSequenceNode : public QUmlStructuredActivityNode
 {
 public:
-    QUmlSequenceNode(bool create_d_ptr = true);
+    QUmlSequenceNode();
 
     // Owned attributes
     QList<QUmlExecutableNode *> executableNode() const;
     void addExecutableNode(QUmlExecutableNode *executableNode);
     void removeExecutableNode(QUmlExecutableNode *executableNode);
+
+protected:
+    QList<QUmlExecutableNode *> _executableNode;
 };
 
 QT_END_NAMESPACE

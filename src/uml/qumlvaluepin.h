@@ -53,15 +53,17 @@ QT_MODULE(QtUml)
 
 class QUmlValueSpecification;
 
-class QUmlValuePinPrivate;
 class Q_UML_EXPORT QUmlValuePin : public QUmlInputPin
 {
 public:
-    QUmlValuePin(bool create_d_ptr = true);
+    QUmlValuePin();
 
     // Owned attributes
     QUmlValueSpecification *value() const;
     void setValue(QUmlValueSpecification *value);
+
+protected:
+    QUmlValueSpecification *_value;
 };
 
 QT_END_NAMESPACE

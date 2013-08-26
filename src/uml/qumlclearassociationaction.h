@@ -54,17 +54,20 @@ QT_MODULE(QtUml)
 class QUmlAssociation;
 class QUmlInputPin;
 
-class QUmlClearAssociationActionPrivate;
 class Q_UML_EXPORT QUmlClearAssociationAction : public QUmlAction
 {
 public:
-    QUmlClearAssociationAction(bool create_d_ptr = true);
+    QUmlClearAssociationAction();
 
     // Owned attributes
     QUmlAssociation *association() const;
     void setAssociation(QUmlAssociation *association);
     QUmlInputPin *object() const;
     void setObject(QUmlInputPin *object);
+
+protected:
+    QUmlAssociation *_association;
+    QUmlInputPin *_object;
 };
 
 QT_END_NAMESPACE

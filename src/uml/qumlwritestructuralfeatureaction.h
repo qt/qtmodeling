@@ -54,17 +54,20 @@ QT_MODULE(QtUml)
 class QUmlInputPin;
 class QUmlOutputPin;
 
-class QUmlWriteStructuralFeatureActionPrivate;
 class Q_UML_EXPORT QUmlWriteStructuralFeatureAction : public QUmlStructuralFeatureAction
 {
 public:
-    Q_DECL_HIDDEN QUmlWriteStructuralFeatureAction(bool create_d_ptr = true);
+    Q_DECL_HIDDEN QUmlWriteStructuralFeatureAction();
 
     // Owned attributes
     QUmlOutputPin *result() const;
     void setResult(QUmlOutputPin *result);
     QUmlInputPin *value() const;
     void setValue(QUmlInputPin *value);
+
+protected:
+    QUmlOutputPin *_result;
+    QUmlInputPin *_value;
 };
 
 QT_END_NAMESPACE

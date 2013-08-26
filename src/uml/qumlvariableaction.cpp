@@ -39,16 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlvariableaction.h"
-#include "qumlvariableaction_p.h"
 
 #include <QtUml/QUmlVariable>
 
 QT_BEGIN_NAMESPACE
-
-QUmlVariableActionPrivate::QUmlVariableActionPrivate() :
-    variable(0)
-{
-}
 
 /*!
     \class QUmlVariableAction
@@ -58,11 +52,9 @@ QUmlVariableActionPrivate::QUmlVariableActionPrivate() :
     \brief VariableAction is an abstract class for actions that operate on a statically specified variable.
  */
 
-QUmlVariableAction::QUmlVariableAction(bool create_d_ptr) :
-    QUmlAction(false)
+QUmlVariableAction::QUmlVariableAction() :
+    _variable(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlVariableActionPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -74,17 +66,15 @@ QUmlVariable *QUmlVariableAction::variable() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlVariableAction);
-    return d->variable;
+    return _variable;
 }
 
 void QUmlVariableAction::setVariable(QUmlVariable *variable)
 {
     // This is a read-write association end
 
-    QM_D(QUmlVariableAction);
-    if (d->variable != variable) {
-        d->variable = variable;
+    if (_variable != variable) {
+        _variable = variable;
     }
 }
 

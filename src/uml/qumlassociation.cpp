@@ -39,17 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlassociation.h"
-#include "qumlassociation_p.h"
 
 #include <QtUml/QUmlProperty>
 #include <QtUml/QUmlType>
 
 QT_BEGIN_NAMESPACE
-
-QUmlAssociationPrivate::QUmlAssociationPrivate() :
-    isDerived(false)
-{
-}
 
 /*!
     \class QUmlAssociation
@@ -59,12 +53,9 @@ QUmlAssociationPrivate::QUmlAssociationPrivate() :
     \brief An association describes a set of tuples whose values refer to typed instances. An instance of an association is called a link.A link is a tuple with one value for each end of the association, where each value is an instance of the type of the end.An association describes a set of tuples whose values refer to typed instances. An instance of an association is called a link. A link is a tuple with one value for each end of the association, where each value is an instance of the type of the end.
  */
 
-QUmlAssociation::QUmlAssociation(bool create_d_ptr) :
-    QUmlClassifier(false),
-    QUmlRelationship(false)
+QUmlAssociation::QUmlAssociation() :
+    _isDerived(false)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlAssociationPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -88,17 +79,15 @@ bool QUmlAssociation::isDerived() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlAssociation);
-    return d->isDerived;
+    return _isDerived;
 }
 
 void QUmlAssociation::setDerived(bool isDerived)
 {
     // This is a read-write property
 
-    QM_D(QUmlAssociation);
-    if (d->isDerived != isDerived) {
-        d->isDerived = isDerived;
+    if (_isDerived != isDerived) {
+        _isDerived = isDerived;
     }
 }
 
@@ -109,17 +98,15 @@ QList<QUmlProperty *> QUmlAssociation::memberEnd() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlAssociation);
-    return d->memberEnd;
+    return _memberEnd;
 }
 
 void QUmlAssociation::addMemberEnd(QUmlProperty *memberEnd)
 {
     // This is a read-write association end
 
-    QM_D(QUmlAssociation);
-    if (!d->memberEnd.contains(memberEnd)) {
-        d->memberEnd.append(memberEnd);
+    if (!_memberEnd.contains(memberEnd)) {
+        _memberEnd.append(memberEnd);
     }
 }
 
@@ -127,9 +114,8 @@ void QUmlAssociation::removeMemberEnd(QUmlProperty *memberEnd)
 {
     // This is a read-write association end
 
-    QM_D(QUmlAssociation);
-    if (d->memberEnd.contains(memberEnd)) {
-        d->memberEnd.removeAll(memberEnd);
+    if (_memberEnd.contains(memberEnd)) {
+        _memberEnd.removeAll(memberEnd);
     }
 }
 
@@ -140,17 +126,15 @@ QSet<QUmlProperty *> QUmlAssociation::navigableOwnedEnd() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlAssociation);
-    return d->navigableOwnedEnd;
+    return _navigableOwnedEnd;
 }
 
 void QUmlAssociation::addNavigableOwnedEnd(QUmlProperty *navigableOwnedEnd)
 {
     // This is a read-write association end
 
-    QM_D(QUmlAssociation);
-    if (!d->navigableOwnedEnd.contains(navigableOwnedEnd)) {
-        d->navigableOwnedEnd.insert(navigableOwnedEnd);
+    if (!_navigableOwnedEnd.contains(navigableOwnedEnd)) {
+        _navigableOwnedEnd.insert(navigableOwnedEnd);
     }
 }
 
@@ -158,9 +142,8 @@ void QUmlAssociation::removeNavigableOwnedEnd(QUmlProperty *navigableOwnedEnd)
 {
     // This is a read-write association end
 
-    QM_D(QUmlAssociation);
-    if (d->navigableOwnedEnd.contains(navigableOwnedEnd)) {
-        d->navigableOwnedEnd.remove(navigableOwnedEnd);
+    if (_navigableOwnedEnd.contains(navigableOwnedEnd)) {
+        _navigableOwnedEnd.remove(navigableOwnedEnd);
     }
 }
 
@@ -171,17 +154,15 @@ QList<QUmlProperty *> QUmlAssociation::ownedEnd() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlAssociation);
-    return d->ownedEnd;
+    return _ownedEnd;
 }
 
 void QUmlAssociation::addOwnedEnd(QUmlProperty *ownedEnd)
 {
     // This is a read-write association end
 
-    QM_D(QUmlAssociation);
-    if (!d->ownedEnd.contains(ownedEnd)) {
-        d->ownedEnd.append(ownedEnd);
+    if (!_ownedEnd.contains(ownedEnd)) {
+        _ownedEnd.append(ownedEnd);
     }
 }
 
@@ -189,9 +170,8 @@ void QUmlAssociation::removeOwnedEnd(QUmlProperty *ownedEnd)
 {
     // This is a read-write association end
 
-    QM_D(QUmlAssociation);
-    if (d->ownedEnd.contains(ownedEnd)) {
-        d->ownedEnd.removeAll(ownedEnd);
+    if (_ownedEnd.contains(ownedEnd)) {
+        _ownedEnd.removeAll(ownedEnd);
     }
 }
 

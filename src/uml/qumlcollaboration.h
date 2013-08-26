@@ -54,16 +54,18 @@ QT_MODULE(QtUml)
 
 class QUmlConnectableElement;
 
-class QUmlCollaborationPrivate;
 class Q_UML_EXPORT QUmlCollaboration : public QUmlStructuredClassifier, public QUmlBehavioredClassifier
 {
 public:
-    QUmlCollaboration(bool create_d_ptr = true);
+    QUmlCollaboration();
 
     // Owned attributes
     QSet<QUmlConnectableElement *> collaborationRole() const;
     void addCollaborationRole(QUmlConnectableElement *collaborationRole);
     void removeCollaborationRole(QUmlConnectableElement *collaborationRole);
+
+protected:
+    QSet<QUmlConnectableElement *> _collaborationRole;
 };
 
 QT_END_NAMESPACE

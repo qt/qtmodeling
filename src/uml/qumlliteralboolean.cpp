@@ -39,14 +39,8 @@
 **
 ****************************************************************************/
 #include "qumlliteralboolean.h"
-#include "qumlliteralboolean_p.h"
 
 QT_BEGIN_NAMESPACE
-
-QUmlLiteralBooleanPrivate::QUmlLiteralBooleanPrivate() :
-    value(false)
-{
-}
 
 /*!
     \class QUmlLiteralBoolean
@@ -56,11 +50,9 @@ QUmlLiteralBooleanPrivate::QUmlLiteralBooleanPrivate() :
     \brief A literal Boolean is a specification of a Boolean value.
  */
 
-QUmlLiteralBoolean::QUmlLiteralBoolean(bool create_d_ptr) :
-    QUmlLiteralSpecification(false)
+QUmlLiteralBoolean::QUmlLiteralBoolean() :
+    _value(false)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlLiteralBooleanPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -72,17 +64,15 @@ bool QUmlLiteralBoolean::value() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlLiteralBoolean);
-    return d->value;
+    return _value;
 }
 
 void QUmlLiteralBoolean::setValue(bool value)
 {
     // This is a read-write property
 
-    QM_D(QUmlLiteralBoolean);
-    if (d->value != value) {
-        d->value = value;
+    if (_value != value) {
+        _value = value;
     }
 }
 

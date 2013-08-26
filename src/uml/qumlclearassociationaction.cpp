@@ -39,18 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlclearassociationaction.h"
-#include "qumlclearassociationaction_p.h"
 
 #include <QtUml/QUmlAssociation>
 #include <QtUml/QUmlInputPin>
 
 QT_BEGIN_NAMESPACE
-
-QUmlClearAssociationActionPrivate::QUmlClearAssociationActionPrivate() :
-    association(0),
-    object(0)
-{
-}
 
 /*!
     \class QUmlClearAssociationAction
@@ -60,11 +53,10 @@ QUmlClearAssociationActionPrivate::QUmlClearAssociationActionPrivate() :
     \brief A clear association action is an action that destroys all links of an association in which a particular object participates.
  */
 
-QUmlClearAssociationAction::QUmlClearAssociationAction(bool create_d_ptr) :
-    QUmlAction(false)
+QUmlClearAssociationAction::QUmlClearAssociationAction() :
+    _association(0),
+    _object(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlClearAssociationActionPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -76,17 +68,15 @@ QUmlAssociation *QUmlClearAssociationAction::association() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlClearAssociationAction);
-    return d->association;
+    return _association;
 }
 
 void QUmlClearAssociationAction::setAssociation(QUmlAssociation *association)
 {
     // This is a read-write association end
 
-    QM_D(QUmlClearAssociationAction);
-    if (d->association != association) {
-        d->association = association;
+    if (_association != association) {
+        _association = association;
     }
 }
 
@@ -97,17 +87,15 @@ QUmlInputPin *QUmlClearAssociationAction::object() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlClearAssociationAction);
-    return d->object;
+    return _object;
 }
 
 void QUmlClearAssociationAction::setObject(QUmlInputPin *object)
 {
     // This is a read-write association end
 
-    QM_D(QUmlClearAssociationAction);
-    if (d->object != object) {
-        d->object = object;
+    if (_object != object) {
+        _object = object;
     }
 }
 

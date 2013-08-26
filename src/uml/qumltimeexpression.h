@@ -53,11 +53,10 @@ QT_MODULE(QtUml)
 
 class QUmlObservation;
 
-class QUmlTimeExpressionPrivate;
 class Q_UML_EXPORT QUmlTimeExpression : public QUmlValueSpecification
 {
 public:
-    QUmlTimeExpression(bool create_d_ptr = true);
+    QUmlTimeExpression();
 
     // Owned attributes
     QUmlValueSpecification *expr() const;
@@ -65,6 +64,10 @@ public:
     QSet<QUmlObservation *> observation() const;
     void addObservation(QUmlObservation *observation);
     void removeObservation(QUmlObservation *observation);
+
+protected:
+    QUmlValueSpecification *_expr;
+    QSet<QUmlObservation *> _observation;
 };
 
 QT_END_NAMESPACE

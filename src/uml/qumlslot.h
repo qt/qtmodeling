@@ -55,11 +55,10 @@ class QUmlInstanceSpecification;
 class QUmlStructuralFeature;
 class QUmlValueSpecification;
 
-class QUmlSlotPrivate;
 class Q_UML_EXPORT QUmlSlot : public QUmlElement
 {
 public:
-    QUmlSlot(bool create_d_ptr = true);
+    QUmlSlot();
 
     // Owned attributes
     QUmlStructuralFeature *definingFeature() const;
@@ -69,6 +68,11 @@ public:
     QList<QUmlValueSpecification *> value() const;
     void addValue(QUmlValueSpecification *value);
     void removeValue(QUmlValueSpecification *value);
+
+protected:
+    QUmlStructuralFeature *_definingFeature;
+    QUmlInstanceSpecification *_owningInstance;
+    QList<QUmlValueSpecification *> _value;
 };
 
 QT_END_NAMESPACE

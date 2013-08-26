@@ -39,18 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlconditionalnode.h"
-#include "qumlconditionalnode_p.h"
 
 #include <QtUml/QUmlClause>
 #include <QtUml/QUmlOutputPin>
 
 QT_BEGIN_NAMESPACE
-
-QUmlConditionalNodePrivate::QUmlConditionalNodePrivate() :
-    isAssured(false),
-    isDeterminate(false)
-{
-}
 
 /*!
     \class QUmlConditionalNode
@@ -60,11 +53,10 @@ QUmlConditionalNodePrivate::QUmlConditionalNodePrivate() :
     \brief A conditional node is a structured activity node that represents an exclusive choice among some number of alternatives.
  */
 
-QUmlConditionalNode::QUmlConditionalNode(bool create_d_ptr) :
-    QUmlStructuredActivityNode(false)
+QUmlConditionalNode::QUmlConditionalNode() :
+    _isAssured(false),
+    _isDeterminate(false)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlConditionalNodePrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -76,17 +68,15 @@ QSet<QUmlClause *> QUmlConditionalNode::clause() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlConditionalNode);
-    return d->clause;
+    return _clause;
 }
 
 void QUmlConditionalNode::addClause(QUmlClause *clause)
 {
     // This is a read-write association end
 
-    QM_D(QUmlConditionalNode);
-    if (!d->clause.contains(clause)) {
-        d->clause.insert(clause);
+    if (!_clause.contains(clause)) {
+        _clause.insert(clause);
     }
 }
 
@@ -94,9 +84,8 @@ void QUmlConditionalNode::removeClause(QUmlClause *clause)
 {
     // This is a read-write association end
 
-    QM_D(QUmlConditionalNode);
-    if (d->clause.contains(clause)) {
-        d->clause.remove(clause);
+    if (_clause.contains(clause)) {
+        _clause.remove(clause);
     }
 }
 
@@ -107,17 +96,15 @@ bool QUmlConditionalNode::isAssured() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlConditionalNode);
-    return d->isAssured;
+    return _isAssured;
 }
 
 void QUmlConditionalNode::setAssured(bool isAssured)
 {
     // This is a read-write property
 
-    QM_D(QUmlConditionalNode);
-    if (d->isAssured != isAssured) {
-        d->isAssured = isAssured;
+    if (_isAssured != isAssured) {
+        _isAssured = isAssured;
     }
 }
 
@@ -128,17 +115,15 @@ bool QUmlConditionalNode::isDeterminate() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlConditionalNode);
-    return d->isDeterminate;
+    return _isDeterminate;
 }
 
 void QUmlConditionalNode::setDeterminate(bool isDeterminate)
 {
     // This is a read-write property
 
-    QM_D(QUmlConditionalNode);
-    if (d->isDeterminate != isDeterminate) {
-        d->isDeterminate = isDeterminate;
+    if (_isDeterminate != isDeterminate) {
+        _isDeterminate = isDeterminate;
     }
 }
 
@@ -149,17 +134,15 @@ QList<QUmlOutputPin *> QUmlConditionalNode::result() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlConditionalNode);
-    return d->result;
+    return _result;
 }
 
 void QUmlConditionalNode::addResult(QUmlOutputPin *result)
 {
     // This is a read-write association end
 
-    QM_D(QUmlConditionalNode);
-    if (!d->result.contains(result)) {
-        d->result.append(result);
+    if (!_result.contains(result)) {
+        _result.append(result);
     }
 }
 
@@ -167,9 +150,8 @@ void QUmlConditionalNode::removeResult(QUmlOutputPin *result)
 {
     // This is a read-write association end
 
-    QM_D(QUmlConditionalNode);
-    if (d->result.contains(result)) {
-        d->result.removeAll(result);
+    if (_result.contains(result)) {
+        _result.removeAll(result);
     }
 }
 

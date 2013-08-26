@@ -39,18 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlprotocoltransition.h"
-#include "qumlprotocoltransition_p.h"
 
 #include <QtUml/QUmlConstraint>
 #include <QtUml/QUmlOperation>
 
 QT_BEGIN_NAMESPACE
-
-QUmlProtocolTransitionPrivate::QUmlProtocolTransitionPrivate() :
-    postCondition(0),
-    preCondition(0)
-{
-}
 
 /*!
     \class QUmlProtocolTransition
@@ -60,11 +53,10 @@ QUmlProtocolTransitionPrivate::QUmlProtocolTransitionPrivate() :
     \brief A protocol transition specifies a legal transition for an operation. Transitions of protocol state machines have the following information: a pre condition (guard), on trigger, and a post condition. Every protocol transition is associated to zero or one operation (referred BehavioralFeature) that belongs to the context classifier of the protocol state machine.
  */
 
-QUmlProtocolTransition::QUmlProtocolTransition(bool create_d_ptr) :
-    QUmlTransition(false)
+QUmlProtocolTransition::QUmlProtocolTransition() :
+    _postCondition(0),
+    _preCondition(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlProtocolTransitionPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -76,17 +68,15 @@ QUmlConstraint *QUmlProtocolTransition::postCondition() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlProtocolTransition);
-    return d->postCondition;
+    return _postCondition;
 }
 
 void QUmlProtocolTransition::setPostCondition(QUmlConstraint *postCondition)
 {
     // This is a read-write association end
 
-    QM_D(QUmlProtocolTransition);
-    if (d->postCondition != postCondition) {
-        d->postCondition = postCondition;
+    if (_postCondition != postCondition) {
+        _postCondition = postCondition;
     }
 }
 
@@ -97,17 +87,15 @@ QUmlConstraint *QUmlProtocolTransition::preCondition() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlProtocolTransition);
-    return d->preCondition;
+    return _preCondition;
 }
 
 void QUmlProtocolTransition::setPreCondition(QUmlConstraint *preCondition)
 {
     // This is a read-write association end
 
-    QM_D(QUmlProtocolTransition);
-    if (d->preCondition != preCondition) {
-        d->preCondition = preCondition;
+    if (_preCondition != preCondition) {
+        _preCondition = preCondition;
     }
 }
 

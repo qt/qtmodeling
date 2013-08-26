@@ -54,17 +54,20 @@ QT_MODULE(QtUml)
 class QUmlClassifier;
 class QUmlOutputPin;
 
-class QUmlCreateObjectActionPrivate;
 class Q_UML_EXPORT QUmlCreateObjectAction : public QUmlAction
 {
 public:
-    QUmlCreateObjectAction(bool create_d_ptr = true);
+    QUmlCreateObjectAction();
 
     // Owned attributes
     QUmlClassifier *classifier() const;
     void setClassifier(QUmlClassifier *classifier);
     QUmlOutputPin *result() const;
     void setResult(QUmlOutputPin *result);
+
+protected:
+    QUmlClassifier *_classifier;
+    QUmlOutputPin *_result;
 };
 
 QT_END_NAMESPACE

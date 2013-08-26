@@ -54,11 +54,10 @@ QT_MODULE(QtUml)
 class QUmlClassifier;
 class QUmlGeneralization;
 
-class QUmlGeneralizationSetPrivate;
 class Q_UML_EXPORT QUmlGeneralizationSet : public QUmlPackageableElement
 {
 public:
-    QUmlGeneralizationSet(bool create_d_ptr = true);
+    QUmlGeneralizationSet();
 
     // Owned attributes
     QSet<QUmlGeneralization *> generalization() const;
@@ -70,6 +69,12 @@ public:
     void setDisjoint(bool isDisjoint);
     QUmlClassifier *powertype() const;
     void setPowertype(QUmlClassifier *powertype);
+
+protected:
+    QSet<QUmlGeneralization *> _generalization;
+    bool _isCovering;
+    bool _isDisjoint;
+    QUmlClassifier *_powertype;
 };
 
 QT_END_NAMESPACE

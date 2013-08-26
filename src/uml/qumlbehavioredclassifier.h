@@ -54,11 +54,10 @@ QT_MODULE(QtUml)
 class QUmlBehavior;
 class QUmlInterfaceRealization;
 
-class QUmlBehavioredClassifierPrivate;
 class Q_UML_EXPORT QUmlBehavioredClassifier : public QUmlClassifier
 {
 public:
-    Q_DECL_HIDDEN QUmlBehavioredClassifier(bool create_d_ptr = true);
+    Q_DECL_HIDDEN QUmlBehavioredClassifier();
 
     // Owned attributes
     QUmlBehavior *classifierBehavior() const;
@@ -69,6 +68,11 @@ public:
     QSet<QUmlBehavior *> ownedBehavior() const;
     void addOwnedBehavior(QUmlBehavior *ownedBehavior);
     void removeOwnedBehavior(QUmlBehavior *ownedBehavior);
+
+protected:
+    QUmlBehavior *_classifierBehavior;
+    QSet<QUmlInterfaceRealization *> _interfaceRealization;
+    QSet<QUmlBehavior *> _ownedBehavior;
 };
 
 QT_END_NAMESPACE

@@ -39,13 +39,8 @@
 **
 ****************************************************************************/
 #include "qumlmessageevent.h"
-#include "qumlmessageevent_p.h"
 
 QT_BEGIN_NAMESPACE
-
-QUmlMessageEventPrivate::QUmlMessageEventPrivate()
-{
-}
 
 /*!
     \class QUmlMessageEvent
@@ -55,11 +50,8 @@ QUmlMessageEventPrivate::QUmlMessageEventPrivate()
     \brief A message event specifies the receipt by an object of either a call or a signal.
  */
 
-QUmlMessageEvent::QUmlMessageEvent(bool create_d_ptr) :
-    QUmlEvent(false)
+QUmlMessageEvent::QUmlMessageEvent()
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlMessageEventPrivate);
 }
 
 QT_END_NAMESPACE

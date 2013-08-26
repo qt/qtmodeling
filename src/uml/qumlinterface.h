@@ -56,11 +56,10 @@ class QUmlProperty;
 class QUmlProtocolStateMachine;
 class QUmlReception;
 
-class QUmlInterfacePrivate;
 class Q_UML_EXPORT QUmlInterface : public QUmlClassifier
 {
 public:
-    QUmlInterface(bool create_d_ptr = true);
+    QUmlInterface();
 
     // Owned attributes
     QList<QUmlClassifier *> nestedClassifier() const;
@@ -80,6 +79,14 @@ public:
     QSet<QUmlInterface *> redefinedInterface() const;
     void addRedefinedInterface(QUmlInterface *redefinedInterface);
     void removeRedefinedInterface(QUmlInterface *redefinedInterface);
+
+protected:
+    QList<QUmlClassifier *> _nestedClassifier;
+    QList<QUmlProperty *> _ownedAttribute;
+    QList<QUmlOperation *> _ownedOperation;
+    QSet<QUmlReception *> _ownedReception;
+    QUmlProtocolStateMachine *_protocol;
+    QSet<QUmlInterface *> _redefinedInterface;
 };
 
 QT_END_NAMESPACE

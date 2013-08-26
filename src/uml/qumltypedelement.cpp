@@ -39,16 +39,10 @@
 **
 ****************************************************************************/
 #include "qumltypedelement.h"
-#include "qumltypedelement_p.h"
 
 #include <QtUml/QUmlType>
 
 QT_BEGIN_NAMESPACE
-
-QUmlTypedElementPrivate::QUmlTypedElementPrivate() :
-    type(0)
-{
-}
 
 /*!
     \class QUmlTypedElement
@@ -58,11 +52,9 @@ QUmlTypedElementPrivate::QUmlTypedElementPrivate() :
     \brief A typed element is a kind of named element that represents an element with a type.A typed element has a type.
  */
 
-QUmlTypedElement::QUmlTypedElement(bool create_d_ptr) :
-    QUmlNamedElement(false)
+QUmlTypedElement::QUmlTypedElement() :
+    _type(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlTypedElementPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -74,17 +66,15 @@ QUmlType *QUmlTypedElement::type() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlTypedElement);
-    return d->type;
+    return _type;
 }
 
 void QUmlTypedElement::setType(QUmlType *type)
 {
     // This is a read-write association end
 
-    QM_D(QUmlTypedElement);
-    if (d->type != type) {
-        d->type = type;
+    if (_type != type) {
+        _type = type;
     }
 }
 

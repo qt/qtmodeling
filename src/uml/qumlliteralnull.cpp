@@ -39,13 +39,8 @@
 **
 ****************************************************************************/
 #include "qumlliteralnull.h"
-#include "qumlliteralnull_p.h"
 
 QT_BEGIN_NAMESPACE
-
-QUmlLiteralNullPrivate::QUmlLiteralNullPrivate()
-{
-}
 
 /*!
     \class QUmlLiteralNull
@@ -55,11 +50,8 @@ QUmlLiteralNullPrivate::QUmlLiteralNullPrivate()
     \brief A literal null specifies the lack of a value.
  */
 
-QUmlLiteralNull::QUmlLiteralNull(bool create_d_ptr) :
-    QUmlLiteralSpecification(false)
+QUmlLiteralNull::QUmlLiteralNull()
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlLiteralNullPrivate);
 }
 
 // OPERATIONS

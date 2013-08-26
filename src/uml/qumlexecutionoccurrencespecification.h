@@ -53,15 +53,17 @@ QT_MODULE(QtUml)
 
 class QUmlExecutionSpecification;
 
-class QUmlExecutionOccurrenceSpecificationPrivate;
 class Q_UML_EXPORT QUmlExecutionOccurrenceSpecification : public QUmlOccurrenceSpecification
 {
 public:
-    QUmlExecutionOccurrenceSpecification(bool create_d_ptr = true);
+    QUmlExecutionOccurrenceSpecification();
 
     // Owned attributes
     QUmlExecutionSpecification *execution() const;
     void setExecution(QUmlExecutionSpecification *execution);
+
+protected:
+    QUmlExecutionSpecification *_execution;
 };
 
 QT_END_NAMESPACE

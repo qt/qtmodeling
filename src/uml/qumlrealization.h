@@ -51,11 +51,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlRealizationPrivate;
 class Q_UML_EXPORT QUmlRealization : public QUmlAbstraction
 {
 public:
-    QUmlRealization(bool create_d_ptr = true);
+    QUmlRealization();
+
+protected:
 };
 
 QT_END_NAMESPACE

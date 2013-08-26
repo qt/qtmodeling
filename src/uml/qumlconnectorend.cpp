@@ -39,18 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlconnectorend.h"
-#include "qumlconnectorend_p.h"
 
 #include <QtUml/QUmlConnectableElement>
 #include <QtUml/QUmlProperty>
 
 QT_BEGIN_NAMESPACE
-
-QUmlConnectorEndPrivate::QUmlConnectorEndPrivate() :
-    partWithPort(0),
-    role(0)
-{
-}
 
 /*!
     \class QUmlConnectorEnd
@@ -60,11 +53,10 @@ QUmlConnectorEndPrivate::QUmlConnectorEndPrivate() :
     \brief A connector end is an endpoint of a connector, which attaches the connector to a connectable element. Each connector end is part of one connector.
  */
 
-QUmlConnectorEnd::QUmlConnectorEnd(bool create_d_ptr) :
-    QUmlMultiplicityElement(false)
+QUmlConnectorEnd::QUmlConnectorEnd() :
+    _partWithPort(0),
+    _role(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlConnectorEndPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -88,17 +80,15 @@ QUmlProperty *QUmlConnectorEnd::partWithPort() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlConnectorEnd);
-    return d->partWithPort;
+    return _partWithPort;
 }
 
 void QUmlConnectorEnd::setPartWithPort(QUmlProperty *partWithPort)
 {
     // This is a read-write association end
 
-    QM_D(QUmlConnectorEnd);
-    if (d->partWithPort != partWithPort) {
-        d->partWithPort = partWithPort;
+    if (_partWithPort != partWithPort) {
+        _partWithPort = partWithPort;
     }
 }
 
@@ -109,17 +99,15 @@ QUmlConnectableElement *QUmlConnectorEnd::role() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlConnectorEnd);
-    return d->role;
+    return _role;
 }
 
 void QUmlConnectorEnd::setRole(QUmlConnectableElement *role)
 {
     // This is a read-write association end
 
-    QM_D(QUmlConnectorEnd);
-    if (d->role != role) {
-        d->role = role;
+    if (_role != role) {
+        _role = role;
     }
 }
 

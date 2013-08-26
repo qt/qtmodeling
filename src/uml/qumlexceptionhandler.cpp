@@ -39,20 +39,12 @@
 **
 ****************************************************************************/
 #include "qumlexceptionhandler.h"
-#include "qumlexceptionhandler_p.h"
 
 #include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlExecutableNode>
 #include <QtUml/QUmlObjectNode>
 
 QT_BEGIN_NAMESPACE
-
-QUmlExceptionHandlerPrivate::QUmlExceptionHandlerPrivate() :
-    exceptionInput(0),
-    handlerBody(0),
-    protectedNode(0)
-{
-}
 
 /*!
     \class QUmlExceptionHandler
@@ -62,11 +54,11 @@ QUmlExceptionHandlerPrivate::QUmlExceptionHandlerPrivate() :
     \brief An exception handler is an element that specifies a body to execute in case the specified exception occurs during the execution of the protected node.
  */
 
-QUmlExceptionHandler::QUmlExceptionHandler(bool create_d_ptr) :
-    QUmlElement(false)
+QUmlExceptionHandler::QUmlExceptionHandler() :
+    _exceptionInput(0),
+    _handlerBody(0),
+    _protectedNode(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlExceptionHandlerPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -78,17 +70,15 @@ QUmlObjectNode *QUmlExceptionHandler::exceptionInput() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlExceptionHandler);
-    return d->exceptionInput;
+    return _exceptionInput;
 }
 
 void QUmlExceptionHandler::setExceptionInput(QUmlObjectNode *exceptionInput)
 {
     // This is a read-write association end
 
-    QM_D(QUmlExceptionHandler);
-    if (d->exceptionInput != exceptionInput) {
-        d->exceptionInput = exceptionInput;
+    if (_exceptionInput != exceptionInput) {
+        _exceptionInput = exceptionInput;
     }
 }
 
@@ -99,17 +89,15 @@ QSet<QUmlClassifier *> QUmlExceptionHandler::exceptionType() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlExceptionHandler);
-    return d->exceptionType;
+    return _exceptionType;
 }
 
 void QUmlExceptionHandler::addExceptionType(QUmlClassifier *exceptionType)
 {
     // This is a read-write association end
 
-    QM_D(QUmlExceptionHandler);
-    if (!d->exceptionType.contains(exceptionType)) {
-        d->exceptionType.insert(exceptionType);
+    if (!_exceptionType.contains(exceptionType)) {
+        _exceptionType.insert(exceptionType);
     }
 }
 
@@ -117,9 +105,8 @@ void QUmlExceptionHandler::removeExceptionType(QUmlClassifier *exceptionType)
 {
     // This is a read-write association end
 
-    QM_D(QUmlExceptionHandler);
-    if (d->exceptionType.contains(exceptionType)) {
-        d->exceptionType.remove(exceptionType);
+    if (_exceptionType.contains(exceptionType)) {
+        _exceptionType.remove(exceptionType);
     }
 }
 
@@ -130,17 +117,15 @@ QUmlExecutableNode *QUmlExceptionHandler::handlerBody() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlExceptionHandler);
-    return d->handlerBody;
+    return _handlerBody;
 }
 
 void QUmlExceptionHandler::setHandlerBody(QUmlExecutableNode *handlerBody)
 {
     // This is a read-write association end
 
-    QM_D(QUmlExceptionHandler);
-    if (d->handlerBody != handlerBody) {
-        d->handlerBody = handlerBody;
+    if (_handlerBody != handlerBody) {
+        _handlerBody = handlerBody;
     }
 }
 
@@ -151,17 +136,15 @@ QUmlExecutableNode *QUmlExceptionHandler::protectedNode() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlExceptionHandler);
-    return d->protectedNode;
+    return _protectedNode;
 }
 
 void QUmlExceptionHandler::setProtectedNode(QUmlExecutableNode *protectedNode)
 {
     // This is a read-write association end
 
-    QM_D(QUmlExceptionHandler);
-    if (d->protectedNode != protectedNode) {
-        d->protectedNode = protectedNode;
+    if (_protectedNode != protectedNode) {
+        _protectedNode = protectedNode;
     }
 }
 

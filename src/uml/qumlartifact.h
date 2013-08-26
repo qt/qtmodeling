@@ -56,11 +56,10 @@ class QUmlManifestation;
 class QUmlOperation;
 class QUmlProperty;
 
-class QUmlArtifactPrivate;
 class Q_UML_EXPORT QUmlArtifact : public QUmlDeployedArtifact, public QUmlClassifier
 {
 public:
-    QUmlArtifact(bool create_d_ptr = true);
+    QUmlArtifact();
 
     // Owned attributes
     QString fileName() const;
@@ -77,6 +76,13 @@ public:
     QList<QUmlOperation *> ownedOperation() const;
     void addOwnedOperation(QUmlOperation *ownedOperation);
     void removeOwnedOperation(QUmlOperation *ownedOperation);
+
+protected:
+    QString _fileName;
+    QSet<QUmlManifestation *> _manifestation;
+    QSet<QUmlArtifact *> _nestedArtifact;
+    QList<QUmlProperty *> _ownedAttribute;
+    QList<QUmlOperation *> _ownedOperation;
 };
 
 QT_END_NAMESPACE

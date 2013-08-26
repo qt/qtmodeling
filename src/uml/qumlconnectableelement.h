@@ -55,16 +55,18 @@ QT_MODULE(QtUml)
 class QUmlConnectableElementTemplateParameter;
 class QUmlConnectorEnd;
 
-class QUmlConnectableElementPrivate;
 class Q_UML_EXPORT QUmlConnectableElement : public virtual QUmlTypedElement, public QUmlParameterableElement
 {
 public:
-    Q_DECL_HIDDEN QUmlConnectableElement(bool create_d_ptr = true);
+    Q_DECL_HIDDEN QUmlConnectableElement();
 
     // Owned attributes
     QList<QUmlConnectorEnd *> end() const;
     QUmlConnectableElementTemplateParameter *templateParameter() const;
     void setTemplateParameter(QUmlConnectableElementTemplateParameter *templateParameter);
+
+protected:
+    QUmlConnectableElementTemplateParameter *_templateParameter;
 };
 
 QT_END_NAMESPACE

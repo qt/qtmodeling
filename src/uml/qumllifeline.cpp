@@ -39,7 +39,6 @@
 **
 ****************************************************************************/
 #include "qumllifeline.h"
-#include "qumllifeline_p.h"
 
 #include <QtUml/QUmlConnectableElement>
 #include <QtUml/QUmlInteraction>
@@ -49,14 +48,6 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlLifelinePrivate::QUmlLifelinePrivate() :
-    decomposedAs(0),
-    interaction(0),
-    represents(0),
-    selector(0)
-{
-}
-
 /*!
     \class QUmlLifeline
 
@@ -65,11 +56,12 @@ QUmlLifelinePrivate::QUmlLifelinePrivate() :
     \brief A lifeline represents an individual participant in the interaction. While parts and structural features may have multiplicity greater than 1, lifelines represent only one interacting entity.
  */
 
-QUmlLifeline::QUmlLifeline(bool create_d_ptr) :
-    QUmlNamedElement(false)
+QUmlLifeline::QUmlLifeline() :
+    _decomposedAs(0),
+    _interaction(0),
+    _represents(0),
+    _selector(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlLifelinePrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -81,17 +73,15 @@ QSet<QUmlInteractionFragment *> QUmlLifeline::coveredBy() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlLifeline);
-    return d->coveredBy;
+    return _coveredBy;
 }
 
 void QUmlLifeline::addCoveredBy(QUmlInteractionFragment *coveredBy)
 {
     // This is a read-write association end
 
-    QM_D(QUmlLifeline);
-    if (!d->coveredBy.contains(coveredBy)) {
-        d->coveredBy.insert(coveredBy);
+    if (!_coveredBy.contains(coveredBy)) {
+        _coveredBy.insert(coveredBy);
     }
 }
 
@@ -99,9 +89,8 @@ void QUmlLifeline::removeCoveredBy(QUmlInteractionFragment *coveredBy)
 {
     // This is a read-write association end
 
-    QM_D(QUmlLifeline);
-    if (d->coveredBy.contains(coveredBy)) {
-        d->coveredBy.remove(coveredBy);
+    if (_coveredBy.contains(coveredBy)) {
+        _coveredBy.remove(coveredBy);
     }
 }
 
@@ -112,17 +101,15 @@ QUmlPartDecomposition *QUmlLifeline::decomposedAs() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlLifeline);
-    return d->decomposedAs;
+    return _decomposedAs;
 }
 
 void QUmlLifeline::setDecomposedAs(QUmlPartDecomposition *decomposedAs)
 {
     // This is a read-write association end
 
-    QM_D(QUmlLifeline);
-    if (d->decomposedAs != decomposedAs) {
-        d->decomposedAs = decomposedAs;
+    if (_decomposedAs != decomposedAs) {
+        _decomposedAs = decomposedAs;
     }
 }
 
@@ -133,17 +120,15 @@ QUmlInteraction *QUmlLifeline::interaction() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlLifeline);
-    return d->interaction;
+    return _interaction;
 }
 
 void QUmlLifeline::setInteraction(QUmlInteraction *interaction)
 {
     // This is a read-write association end
 
-    QM_D(QUmlLifeline);
-    if (d->interaction != interaction) {
-        d->interaction = interaction;
+    if (_interaction != interaction) {
+        _interaction = interaction;
     }
 }
 
@@ -154,17 +139,15 @@ QUmlConnectableElement *QUmlLifeline::represents() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlLifeline);
-    return d->represents;
+    return _represents;
 }
 
 void QUmlLifeline::setRepresents(QUmlConnectableElement *represents)
 {
     // This is a read-write association end
 
-    QM_D(QUmlLifeline);
-    if (d->represents != represents) {
-        d->represents = represents;
+    if (_represents != represents) {
+        _represents = represents;
     }
 }
 
@@ -175,17 +158,15 @@ QUmlValueSpecification *QUmlLifeline::selector() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlLifeline);
-    return d->selector;
+    return _selector;
 }
 
 void QUmlLifeline::setSelector(QUmlValueSpecification *selector)
 {
     // This is a read-write association end
 
-    QM_D(QUmlLifeline);
-    if (d->selector != selector) {
-        d->selector = selector;
+    if (_selector != selector) {
+        _selector = selector;
     }
 }
 

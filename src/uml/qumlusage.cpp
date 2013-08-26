@@ -39,13 +39,8 @@
 **
 ****************************************************************************/
 #include "qumlusage.h"
-#include "qumlusage_p.h"
 
 QT_BEGIN_NAMESPACE
-
-QUmlUsagePrivate::QUmlUsagePrivate()
-{
-}
 
 /*!
     \class QUmlUsage
@@ -55,11 +50,8 @@ QUmlUsagePrivate::QUmlUsagePrivate()
     \brief A usage is a relationship in which one element requires another element (or set of elements) for its full implementation or operation. A usage is a dependency in which the client requires the presence of the supplier.
  */
 
-QUmlUsage::QUmlUsage(bool create_d_ptr) :
-    QUmlDependency(false)
+QUmlUsage::QUmlUsage()
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlUsagePrivate);
 }
 
 QT_END_NAMESPACE

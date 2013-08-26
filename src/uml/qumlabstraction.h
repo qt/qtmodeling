@@ -53,15 +53,17 @@ QT_MODULE(QtUml)
 
 class QUmlOpaqueExpression;
 
-class QUmlAbstractionPrivate;
 class Q_UML_EXPORT QUmlAbstraction : public QUmlDependency
 {
 public:
-    QUmlAbstraction(bool create_d_ptr = true);
+    QUmlAbstraction();
 
     // Owned attributes
     QUmlOpaqueExpression *mapping() const;
     void setMapping(QUmlOpaqueExpression *mapping);
+
+protected:
+    QUmlOpaqueExpression *_mapping;
 };
 
 QT_END_NAMESPACE

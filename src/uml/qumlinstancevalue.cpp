@@ -39,16 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlinstancevalue.h"
-#include "qumlinstancevalue_p.h"
 
 #include <QtUml/QUmlInstanceSpecification>
 
 QT_BEGIN_NAMESPACE
-
-QUmlInstanceValuePrivate::QUmlInstanceValuePrivate() :
-    instance(0)
-{
-}
 
 /*!
     \class QUmlInstanceValue
@@ -58,11 +52,9 @@ QUmlInstanceValuePrivate::QUmlInstanceValuePrivate() :
     \brief An instance value is a value specification that identifies an instance.
  */
 
-QUmlInstanceValue::QUmlInstanceValue(bool create_d_ptr) :
-    QUmlValueSpecification(false)
+QUmlInstanceValue::QUmlInstanceValue() :
+    _instance(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlInstanceValuePrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -74,17 +66,15 @@ QUmlInstanceSpecification *QUmlInstanceValue::instance() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlInstanceValue);
-    return d->instance;
+    return _instance;
 }
 
 void QUmlInstanceValue::setInstance(QUmlInstanceSpecification *instance)
 {
     // This is a read-write association end
 
-    QM_D(QUmlInstanceValue);
-    if (d->instance != instance) {
-        d->instance = instance;
+    if (_instance != instance) {
+        _instance = instance;
     }
 }
 

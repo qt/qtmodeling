@@ -39,16 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlacceptcallaction.h"
-#include "qumlacceptcallaction_p.h"
 
 #include <QtUml/QUmlOutputPin>
 
 QT_BEGIN_NAMESPACE
-
-QUmlAcceptCallActionPrivate::QUmlAcceptCallActionPrivate() :
-    returnInformation(0)
-{
-}
 
 /*!
     \class QUmlAcceptCallAction
@@ -58,11 +52,9 @@ QUmlAcceptCallActionPrivate::QUmlAcceptCallActionPrivate() :
     \brief An accept call action is an accept event action representing the receipt of a synchronous call request. In addition to the normal operation parameters, the action produces an output that is needed later to supply the information to the reply action necessary to return control to the caller. This action is for synchronous calls. If it is used to handle an asynchronous call, execution of the subsequent reply action will complete immediately with no effects.
  */
 
-QUmlAcceptCallAction::QUmlAcceptCallAction(bool create_d_ptr) :
-    QUmlAcceptEventAction(false)
+QUmlAcceptCallAction::QUmlAcceptCallAction() :
+    _returnInformation(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlAcceptCallActionPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -74,17 +66,15 @@ QUmlOutputPin *QUmlAcceptCallAction::returnInformation() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlAcceptCallAction);
-    return d->returnInformation;
+    return _returnInformation;
 }
 
 void QUmlAcceptCallAction::setReturnInformation(QUmlOutputPin *returnInformation)
 {
     // This is a read-write association end
 
-    QM_D(QUmlAcceptCallAction);
-    if (d->returnInformation != returnInformation) {
-        d->returnInformation = returnInformation;
+    if (_returnInformation != returnInformation) {
+        _returnInformation = returnInformation;
     }
 }
 

@@ -54,11 +54,10 @@ QT_MODULE(QtUml)
 class QUmlConnectableElement;
 class QUmlProperty;
 
-class QUmlConnectorEndPrivate;
 class Q_UML_EXPORT QUmlConnectorEnd : public QUmlMultiplicityElement
 {
 public:
-    QUmlConnectorEnd(bool create_d_ptr = true);
+    QUmlConnectorEnd();
 
     // Owned attributes
     QUmlProperty *definingEnd() const;
@@ -66,6 +65,10 @@ public:
     void setPartWithPort(QUmlProperty *partWithPort);
     QUmlConnectableElement *role() const;
     void setRole(QUmlConnectableElement *role);
+
+protected:
+    QUmlProperty *_partWithPort;
+    QUmlConnectableElement *_role;
 };
 
 QT_END_NAMESPACE

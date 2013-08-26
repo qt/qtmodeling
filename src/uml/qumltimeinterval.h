@@ -53,17 +53,20 @@ QT_MODULE(QtUml)
 
 class QUmlTimeExpression;
 
-class QUmlTimeIntervalPrivate;
 class Q_UML_EXPORT QUmlTimeInterval : public QUmlInterval
 {
 public:
-    QUmlTimeInterval(bool create_d_ptr = true);
+    QUmlTimeInterval();
 
     // Owned attributes
     QUmlTimeExpression *max() const;
     void setMax(QUmlTimeExpression *max);
     QUmlTimeExpression *min() const;
     void setMin(QUmlTimeExpression *min);
+
+protected:
+    QUmlTimeExpression *_max;
+    QUmlTimeExpression *_min;
 };
 
 QT_END_NAMESPACE

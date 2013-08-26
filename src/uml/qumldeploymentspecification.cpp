@@ -39,16 +39,10 @@
 **
 ****************************************************************************/
 #include "qumldeploymentspecification.h"
-#include "qumldeploymentspecification_p.h"
 
 #include <QtUml/QUmlDeployment>
 
 QT_BEGIN_NAMESPACE
-
-QUmlDeploymentSpecificationPrivate::QUmlDeploymentSpecificationPrivate() :
-    deployment(0)
-{
-}
 
 /*!
     \class QUmlDeploymentSpecification
@@ -58,11 +52,9 @@ QUmlDeploymentSpecificationPrivate::QUmlDeploymentSpecificationPrivate() :
     \brief A deployment specification specifies a set of properties that determine execution parameters of a component artifact that is deployed on a node. A deployment specification can be aimed at a specific type of container. An artifact that reifies or implements deployment specification properties is a deployment descriptor.
  */
 
-QUmlDeploymentSpecification::QUmlDeploymentSpecification(bool create_d_ptr) :
-    QUmlArtifact(false)
+QUmlDeploymentSpecification::QUmlDeploymentSpecification() :
+    _deployment(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlDeploymentSpecificationPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -74,17 +66,15 @@ QUmlDeployment *QUmlDeploymentSpecification::deployment() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlDeploymentSpecification);
-    return d->deployment;
+    return _deployment;
 }
 
 void QUmlDeploymentSpecification::setDeployment(QUmlDeployment *deployment)
 {
     // This is a read-write association end
 
-    QM_D(QUmlDeploymentSpecification);
-    if (d->deployment != deployment) {
-        d->deployment = deployment;
+    if (_deployment != deployment) {
+        _deployment = deployment;
     }
 }
 
@@ -95,17 +85,15 @@ QString QUmlDeploymentSpecification::deploymentLocation() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlDeploymentSpecification);
-    return d->deploymentLocation;
+    return _deploymentLocation;
 }
 
 void QUmlDeploymentSpecification::setDeploymentLocation(QString deploymentLocation)
 {
     // This is a read-write property
 
-    QM_D(QUmlDeploymentSpecification);
-    if (d->deploymentLocation != deploymentLocation) {
-        d->deploymentLocation = deploymentLocation;
+    if (_deploymentLocation != deploymentLocation) {
+        _deploymentLocation = deploymentLocation;
     }
 }
 
@@ -116,17 +104,15 @@ QString QUmlDeploymentSpecification::executionLocation() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlDeploymentSpecification);
-    return d->executionLocation;
+    return _executionLocation;
 }
 
 void QUmlDeploymentSpecification::setExecutionLocation(QString executionLocation)
 {
     // This is a read-write property
 
-    QM_D(QUmlDeploymentSpecification);
-    if (d->executionLocation != executionLocation) {
-        d->executionLocation = executionLocation;
+    if (_executionLocation != executionLocation) {
+        _executionLocation = executionLocation;
     }
 }
 

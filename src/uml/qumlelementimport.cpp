@@ -39,19 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlelementimport.h"
-#include "qumlelementimport_p.h"
 
 #include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlPackageableElement>
 
 QT_BEGIN_NAMESPACE
-
-QUmlElementImportPrivate::QUmlElementImportPrivate() :
-    importedElement(0),
-    importingNamespace(0),
-    visibility(QtUml::VisibilityPublic)
-{
-}
 
 /*!
     \class QUmlElementImport
@@ -61,11 +53,11 @@ QUmlElementImportPrivate::QUmlElementImportPrivate() :
     \brief An element import identifies an element in another package, and allows the element to be referenced using its name without a qualifier.
  */
 
-QUmlElementImport::QUmlElementImport(bool create_d_ptr) :
-    QUmlDirectedRelationship(false)
+QUmlElementImport::QUmlElementImport() :
+    _importedElement(0),
+    _importingNamespace(0),
+    _visibility(QtUml::VisibilityPublic)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlElementImportPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -77,17 +69,15 @@ QString QUmlElementImport::alias() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlElementImport);
-    return d->alias;
+    return _alias;
 }
 
 void QUmlElementImport::setAlias(QString alias)
 {
     // This is a read-write property
 
-    QM_D(QUmlElementImport);
-    if (d->alias != alias) {
-        d->alias = alias;
+    if (_alias != alias) {
+        _alias = alias;
     }
 }
 
@@ -98,17 +88,15 @@ QUmlPackageableElement *QUmlElementImport::importedElement() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlElementImport);
-    return d->importedElement;
+    return _importedElement;
 }
 
 void QUmlElementImport::setImportedElement(QUmlPackageableElement *importedElement)
 {
     // This is a read-write association end
 
-    QM_D(QUmlElementImport);
-    if (d->importedElement != importedElement) {
-        d->importedElement = importedElement;
+    if (_importedElement != importedElement) {
+        _importedElement = importedElement;
     }
 }
 
@@ -119,17 +107,15 @@ QUmlNamespace *QUmlElementImport::importingNamespace() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlElementImport);
-    return d->importingNamespace;
+    return _importingNamespace;
 }
 
 void QUmlElementImport::setImportingNamespace(QUmlNamespace *importingNamespace)
 {
     // This is a read-write association end
 
-    QM_D(QUmlElementImport);
-    if (d->importingNamespace != importingNamespace) {
-        d->importingNamespace = importingNamespace;
+    if (_importingNamespace != importingNamespace) {
+        _importingNamespace = importingNamespace;
     }
 }
 
@@ -140,17 +126,15 @@ QtUml::VisibilityKind QUmlElementImport::visibility() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlElementImport);
-    return d->visibility;
+    return _visibility;
 }
 
 void QUmlElementImport::setVisibility(QtUml::VisibilityKind visibility)
 {
     // This is a read-write property
 
-    QM_D(QUmlElementImport);
-    if (d->visibility != visibility) {
-        d->visibility = visibility;
+    if (_visibility != visibility) {
+        _visibility = visibility;
     }
 }
 

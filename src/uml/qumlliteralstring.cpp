@@ -39,13 +39,8 @@
 **
 ****************************************************************************/
 #include "qumlliteralstring.h"
-#include "qumlliteralstring_p.h"
 
 QT_BEGIN_NAMESPACE
-
-QUmlLiteralStringPrivate::QUmlLiteralStringPrivate()
-{
-}
 
 /*!
     \class QUmlLiteralString
@@ -55,11 +50,8 @@ QUmlLiteralStringPrivate::QUmlLiteralStringPrivate()
     \brief A literal string is a specification of a string value.
  */
 
-QUmlLiteralString::QUmlLiteralString(bool create_d_ptr) :
-    QUmlLiteralSpecification(false)
+QUmlLiteralString::QUmlLiteralString()
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlLiteralStringPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -71,17 +63,15 @@ QString QUmlLiteralString::value() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlLiteralString);
-    return d->value;
+    return _value;
 }
 
 void QUmlLiteralString::setValue(QString value)
 {
     // This is a read-write property
 
-    QM_D(QUmlLiteralString);
-    if (d->value != value) {
-        d->value = value;
+    if (_value != value) {
+        _value = value;
     }
 }
 

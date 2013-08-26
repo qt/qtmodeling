@@ -39,16 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlstereotype.h"
-#include "qumlstereotype_p.h"
 
 #include <QtUml/QUmlImage>
 #include <QtUml/QUmlProfile>
 
 QT_BEGIN_NAMESPACE
-
-QUmlStereotypePrivate::QUmlStereotypePrivate()
-{
-}
 
 /*!
     \class QUmlStereotype
@@ -58,11 +53,8 @@ QUmlStereotypePrivate::QUmlStereotypePrivate()
     \brief A stereotype defines how an existing metaclass may be extended, and enables the use of platform or domain specific terminology or notation in place of, or in addition to, the ones used for the extended metaclass.
  */
 
-QUmlStereotype::QUmlStereotype(bool create_d_ptr) :
-    QUmlClass(false)
+QUmlStereotype::QUmlStereotype()
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlStereotypePrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -74,17 +66,15 @@ QSet<QUmlImage *> QUmlStereotype::icon() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlStereotype);
-    return d->icon;
+    return _icon;
 }
 
 void QUmlStereotype::addIcon(QUmlImage *icon)
 {
     // This is a read-write association end
 
-    QM_D(QUmlStereotype);
-    if (!d->icon.contains(icon)) {
-        d->icon.insert(icon);
+    if (!_icon.contains(icon)) {
+        _icon.insert(icon);
     }
 }
 
@@ -92,9 +82,8 @@ void QUmlStereotype::removeIcon(QUmlImage *icon)
 {
     // This is a read-write association end
 
-    QM_D(QUmlStereotype);
-    if (d->icon.contains(icon)) {
-        d->icon.remove(icon);
+    if (_icon.contains(icon)) {
+        _icon.remove(icon);
     }
 }
 

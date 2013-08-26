@@ -39,7 +39,6 @@
 **
 ****************************************************************************/
 #include "qumlregion.h"
-#include "qumlregion_p.h"
 
 #include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlState>
@@ -49,13 +48,6 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlRegionPrivate::QUmlRegionPrivate() :
-    extendedRegion(0),
-    state(0),
-    stateMachine(0)
-{
-}
-
 /*!
     \class QUmlRegion
 
@@ -64,12 +56,11 @@ QUmlRegionPrivate::QUmlRegionPrivate() :
     \brief A region is an orthogonal part of either a composite state or a state machine. It contains states and transitions.
  */
 
-QUmlRegion::QUmlRegion(bool create_d_ptr) :
-    QUmlRedefinableElement(false),
-    QUmlNamespace(false)
+QUmlRegion::QUmlRegion() :
+    _extendedRegion(0),
+    _state(0),
+    _stateMachine(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlRegionPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -81,17 +72,15 @@ QUmlRegion *QUmlRegion::extendedRegion() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlRegion);
-    return d->extendedRegion;
+    return _extendedRegion;
 }
 
 void QUmlRegion::setExtendedRegion(QUmlRegion *extendedRegion)
 {
     // This is a read-write association end
 
-    QM_D(QUmlRegion);
-    if (d->extendedRegion != extendedRegion) {
-        d->extendedRegion = extendedRegion;
+    if (_extendedRegion != extendedRegion) {
+        _extendedRegion = extendedRegion;
     }
 }
 
@@ -114,17 +103,15 @@ QUmlState *QUmlRegion::state() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlRegion);
-    return d->state;
+    return _state;
 }
 
 void QUmlRegion::setState(QUmlState *state)
 {
     // This is a read-write association end
 
-    QM_D(QUmlRegion);
-    if (d->state != state) {
-        d->state = state;
+    if (_state != state) {
+        _state = state;
     }
 }
 
@@ -135,17 +122,15 @@ QUmlStateMachine *QUmlRegion::stateMachine() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlRegion);
-    return d->stateMachine;
+    return _stateMachine;
 }
 
 void QUmlRegion::setStateMachine(QUmlStateMachine *stateMachine)
 {
     // This is a read-write association end
 
-    QM_D(QUmlRegion);
-    if (d->stateMachine != stateMachine) {
-        d->stateMachine = stateMachine;
+    if (_stateMachine != stateMachine) {
+        _stateMachine = stateMachine;
     }
 }
 
@@ -156,17 +141,15 @@ QSet<QUmlVertex *> QUmlRegion::subvertex() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlRegion);
-    return d->subvertex;
+    return _subvertex;
 }
 
 void QUmlRegion::addSubvertex(QUmlVertex *subvertex)
 {
     // This is a read-write association end
 
-    QM_D(QUmlRegion);
-    if (!d->subvertex.contains(subvertex)) {
-        d->subvertex.insert(subvertex);
+    if (!_subvertex.contains(subvertex)) {
+        _subvertex.insert(subvertex);
     }
 }
 
@@ -174,9 +157,8 @@ void QUmlRegion::removeSubvertex(QUmlVertex *subvertex)
 {
     // This is a read-write association end
 
-    QM_D(QUmlRegion);
-    if (d->subvertex.contains(subvertex)) {
-        d->subvertex.remove(subvertex);
+    if (_subvertex.contains(subvertex)) {
+        _subvertex.remove(subvertex);
     }
 }
 
@@ -187,17 +169,15 @@ QSet<QUmlTransition *> QUmlRegion::transition() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlRegion);
-    return d->transition;
+    return _transition;
 }
 
 void QUmlRegion::addTransition(QUmlTransition *transition)
 {
     // This is a read-write association end
 
-    QM_D(QUmlRegion);
-    if (!d->transition.contains(transition)) {
-        d->transition.insert(transition);
+    if (!_transition.contains(transition)) {
+        _transition.insert(transition);
     }
 }
 
@@ -205,9 +185,8 @@ void QUmlRegion::removeTransition(QUmlTransition *transition)
 {
     // This is a read-write association end
 
-    QM_D(QUmlRegion);
-    if (d->transition.contains(transition)) {
-        d->transition.remove(transition);
+    if (_transition.contains(transition)) {
+        _transition.remove(transition);
     }
 }
 

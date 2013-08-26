@@ -54,11 +54,10 @@ QT_MODULE(QtUml)
 class QUmlOutputPin;
 class QUmlTrigger;
 
-class QUmlAcceptEventActionPrivate;
 class Q_UML_EXPORT QUmlAcceptEventAction : public QUmlAction
 {
 public:
-    QUmlAcceptEventAction(bool create_d_ptr = true);
+    QUmlAcceptEventAction();
 
     // Owned attributes
     bool isUnmarshall() const;
@@ -69,6 +68,11 @@ public:
     QSet<QUmlTrigger *> trigger() const;
     void addTrigger(QUmlTrigger *trigger);
     void removeTrigger(QUmlTrigger *trigger);
+
+protected:
+    bool _isUnmarshall;
+    QSet<QUmlOutputPin *> _result;
+    QSet<QUmlTrigger *> _trigger;
 };
 
 QT_END_NAMESPACE

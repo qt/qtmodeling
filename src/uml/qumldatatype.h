@@ -55,11 +55,10 @@ class QUmlNamedElement;
 class QUmlOperation;
 class QUmlProperty;
 
-class QUmlDataTypePrivate;
 class Q_UML_EXPORT QUmlDataType : public QUmlClassifier
 {
 public:
-    QUmlDataType(bool create_d_ptr = true);
+    QUmlDataType();
 
     // Owned attributes
     QList<QUmlProperty *> ownedAttribute() const;
@@ -71,6 +70,10 @@ public:
 
     // Operations
     QSet<QUmlNamedElement *> inherit(QSet<QUmlNamedElement *> inhs) const;
+
+protected:
+    QList<QUmlProperty *> _ownedAttribute;
+    QList<QUmlOperation *> _ownedOperation;
 };
 
 QT_END_NAMESPACE

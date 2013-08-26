@@ -51,11 +51,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlGatePrivate;
 class Q_UML_EXPORT QUmlGate : public QUmlMessageEnd
 {
 public:
-    QUmlGate(bool create_d_ptr = true);
+    QUmlGate();
+
+protected:
 };
 
 QT_END_NAMESPACE

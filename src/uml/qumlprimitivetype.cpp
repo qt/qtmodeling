@@ -39,13 +39,8 @@
 **
 ****************************************************************************/
 #include "qumlprimitivetype.h"
-#include "qumlprimitivetype_p.h"
 
 QT_BEGIN_NAMESPACE
-
-QUmlPrimitiveTypePrivate::QUmlPrimitiveTypePrivate()
-{
-}
 
 /*!
     \class QUmlPrimitiveType
@@ -55,11 +50,8 @@ QUmlPrimitiveTypePrivate::QUmlPrimitiveTypePrivate()
     \brief A primitive type defines a predefined data type, without any relevant substructure (i.e., it has no parts in the context of UML). A primitive datatype may have an algebra and operations defined outside of UML, for example, mathematically.
  */
 
-QUmlPrimitiveType::QUmlPrimitiveType(bool create_d_ptr) :
-    QUmlDataType(false)
+QUmlPrimitiveType::QUmlPrimitiveType()
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlPrimitiveTypePrivate);
 }
 
 QT_END_NAMESPACE

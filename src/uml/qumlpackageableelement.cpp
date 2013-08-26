@@ -39,14 +39,8 @@
 **
 ****************************************************************************/
 #include "qumlpackageableelement.h"
-#include "qumlpackageableelement_p.h"
 
 QT_BEGIN_NAMESPACE
-
-QUmlPackageableElementPrivate::QUmlPackageableElementPrivate() :
-    visibility(QtUml::VisibilityPublic)
-{
-}
 
 /*!
     \class QUmlPackageableElement
@@ -56,12 +50,9 @@ QUmlPackageableElementPrivate::QUmlPackageableElementPrivate() :
     \brief Packageable elements are able to serve as a template parameter.A packageable element indicates a named element that may be owned directly by a package.
  */
 
-QUmlPackageableElement::QUmlPackageableElement(bool create_d_ptr) :
-    QUmlNamedElement(false),
-    QUmlParameterableElement(false)
+QUmlPackageableElement::QUmlPackageableElement() :
+    _visibility(QtUml::VisibilityPublic)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlPackageableElementPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -73,17 +64,15 @@ QtUml::VisibilityKind QUmlPackageableElement::visibility() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlPackageableElement);
-    return d->visibility;
+    return _visibility;
 }
 
 void QUmlPackageableElement::setVisibility(QtUml::VisibilityKind visibility)
 {
     // This is a read-write property
 
-    QM_D(QUmlPackageableElement);
-    if (d->visibility != visibility) {
-        d->visibility = visibility;
+    if (_visibility != visibility) {
+        _visibility = visibility;
     }
 }
 

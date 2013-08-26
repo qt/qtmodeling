@@ -39,16 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlreadstructuralfeatureaction.h"
-#include "qumlreadstructuralfeatureaction_p.h"
 
 #include <QtUml/QUmlOutputPin>
 
 QT_BEGIN_NAMESPACE
-
-QUmlReadStructuralFeatureActionPrivate::QUmlReadStructuralFeatureActionPrivate() :
-    result(0)
-{
-}
 
 /*!
     \class QUmlReadStructuralFeatureAction
@@ -58,11 +52,9 @@ QUmlReadStructuralFeatureActionPrivate::QUmlReadStructuralFeatureActionPrivate()
     \brief A read structural feature action is a structural feature action that retrieves the values of a structural feature.
  */
 
-QUmlReadStructuralFeatureAction::QUmlReadStructuralFeatureAction(bool create_d_ptr) :
-    QUmlStructuralFeatureAction(false)
+QUmlReadStructuralFeatureAction::QUmlReadStructuralFeatureAction() :
+    _result(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlReadStructuralFeatureActionPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -74,17 +66,15 @@ QUmlOutputPin *QUmlReadStructuralFeatureAction::result() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlReadStructuralFeatureAction);
-    return d->result;
+    return _result;
 }
 
 void QUmlReadStructuralFeatureAction::setResult(QUmlOutputPin *result)
 {
     // This is a read-write association end
 
-    QM_D(QUmlReadStructuralFeatureAction);
-    if (d->result != result) {
-        d->result = result;
+    if (_result != result) {
+        _result = result;
     }
 }
 

@@ -39,14 +39,8 @@
 **
 ****************************************************************************/
 #include "qumlstructuralfeature.h"
-#include "qumlstructuralfeature_p.h"
 
 QT_BEGIN_NAMESPACE
-
-QUmlStructuralFeaturePrivate::QUmlStructuralFeaturePrivate() :
-    isReadOnly(false)
-{
-}
 
 /*!
     \class QUmlStructuralFeature
@@ -56,13 +50,9 @@ QUmlStructuralFeaturePrivate::QUmlStructuralFeaturePrivate() :
     \brief A structural feature is a typed feature of a classifier that specifies the structure of instances of the classifier.By specializing multiplicity element, it supports a multiplicity that specifies valid cardinalities for the collection of values associated with an instantiation of the structural feature.
  */
 
-QUmlStructuralFeature::QUmlStructuralFeature(bool create_d_ptr) :
-    QUmlTypedElement(false),
-    QUmlMultiplicityElement(false),
-    QUmlFeature(false)
+QUmlStructuralFeature::QUmlStructuralFeature() :
+    _isReadOnly(false)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlStructuralFeaturePrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -74,17 +64,15 @@ bool QUmlStructuralFeature::isReadOnly() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlStructuralFeature);
-    return d->isReadOnly;
+    return _isReadOnly;
 }
 
 void QUmlStructuralFeature::setReadOnly(bool isReadOnly)
 {
     // This is a read-write property
 
-    QM_D(QUmlStructuralFeature);
-    if (d->isReadOnly != isReadOnly) {
-        d->isReadOnly = isReadOnly;
+    if (_isReadOnly != isReadOnly) {
+        _isReadOnly = isReadOnly;
     }
 }
 

@@ -54,11 +54,10 @@ QT_MODULE(QtUml)
 class QUmlCollaboration;
 class QUmlDependency;
 
-class QUmlCollaborationUsePrivate;
 class Q_UML_EXPORT QUmlCollaborationUse : public QUmlNamedElement
 {
 public:
-    QUmlCollaborationUse(bool create_d_ptr = true);
+    QUmlCollaborationUse();
 
     // Owned attributes
     QSet<QUmlDependency *> roleBinding() const;
@@ -66,6 +65,10 @@ public:
     void removeRoleBinding(QUmlDependency *roleBinding);
     QUmlCollaboration *type() const;
     void setType(QUmlCollaboration *type);
+
+protected:
+    QSet<QUmlDependency *> _roleBinding;
+    QUmlCollaboration *_type;
 };
 
 QT_END_NAMESPACE

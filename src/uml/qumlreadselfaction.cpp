@@ -39,16 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlreadselfaction.h"
-#include "qumlreadselfaction_p.h"
 
 #include <QtUml/QUmlOutputPin>
 
 QT_BEGIN_NAMESPACE
-
-QUmlReadSelfActionPrivate::QUmlReadSelfActionPrivate() :
-    result(0)
-{
-}
 
 /*!
     \class QUmlReadSelfAction
@@ -58,11 +52,9 @@ QUmlReadSelfActionPrivate::QUmlReadSelfActionPrivate() :
     \brief A read self action is an action that retrieves the host object of an action.
  */
 
-QUmlReadSelfAction::QUmlReadSelfAction(bool create_d_ptr) :
-    QUmlAction(false)
+QUmlReadSelfAction::QUmlReadSelfAction() :
+    _result(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlReadSelfActionPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -74,17 +66,15 @@ QUmlOutputPin *QUmlReadSelfAction::result() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlReadSelfAction);
-    return d->result;
+    return _result;
 }
 
 void QUmlReadSelfAction::setResult(QUmlOutputPin *result)
 {
     // This is a read-write association end
 
-    QM_D(QUmlReadSelfAction);
-    if (d->result != result) {
-        d->result = result;
+    if (_result != result) {
+        _result = result;
     }
 }
 

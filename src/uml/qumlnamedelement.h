@@ -57,11 +57,10 @@ class QUmlNamespace;
 class QUmlPackage;
 class QUmlStringExpression;
 
-class QUmlNamedElementPrivate;
 class Q_UML_EXPORT QUmlNamedElement : public virtual QUmlElement
 {
 public:
-    Q_DECL_HIDDEN QUmlNamedElement(bool create_d_ptr = true);
+    Q_DECL_HIDDEN QUmlNamedElement();
 
     // Owned attributes
     QSet<QUmlDependency *> clientDependency() const;
@@ -81,6 +80,13 @@ public:
     QSet<QUmlPackage *> allOwningPackages() const;
     bool isDistinguishableFrom(QUmlNamedElement *n, QUmlNamespace *ns) const;
     QString separator() const;
+
+protected:
+    QSet<QUmlDependency *> _clientDependency;
+    QString _name;
+    QUmlStringExpression *_nameExpression;
+    QUmlNamespace *_namespace_;
+    QtUml::VisibilityKind _visibility;
 };
 
 QT_END_NAMESPACE

@@ -51,17 +51,20 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlIntervalPrivate;
 class Q_UML_EXPORT QUmlInterval : public QUmlValueSpecification
 {
 public:
-    QUmlInterval(bool create_d_ptr = true);
+    QUmlInterval();
 
     // Owned attributes
     QUmlValueSpecification *max() const;
     void setMax(QUmlValueSpecification *max);
     QUmlValueSpecification *min() const;
     void setMin(QUmlValueSpecification *min);
+
+protected:
+    QUmlValueSpecification *_max;
+    QUmlValueSpecification *_min;
 };
 
 QT_END_NAMESPACE

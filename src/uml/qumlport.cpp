@@ -39,20 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlport.h"
-#include "qumlport_p.h"
 
 #include <QtUml/QUmlInterface>
 #include <QtUml/QUmlProtocolStateMachine>
 
 QT_BEGIN_NAMESPACE
-
-QUmlPortPrivate::QUmlPortPrivate() :
-    isBehavior(false),
-    isConjugated(false),
-    isService(true),
-    protocol(0)
-{
-}
 
 /*!
     \class QUmlPort
@@ -62,11 +53,12 @@ QUmlPortPrivate::QUmlPortPrivate() :
     \brief A port has an associated protocol state machine.A port is a property of a classifier that specifies a distinct interaction point between that classifier and its environment or between the (behavior of the) classifier and its internal parts. Ports are connected to properties of the classifier by connectors through which requests can be made to invoke the behavioral features of a classifier. A Port may specify the services a classifier provides (offers) to its environment as well as the services that a classifier expects (requires) of its environment.
  */
 
-QUmlPort::QUmlPort(bool create_d_ptr) :
-    QUmlProperty(false)
+QUmlPort::QUmlPort() :
+    _isBehavior(false),
+    _isConjugated(false),
+    _isService(true),
+    _protocol(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlPortPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -78,17 +70,15 @@ bool QUmlPort::isBehavior() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlPort);
-    return d->isBehavior;
+    return _isBehavior;
 }
 
 void QUmlPort::setBehavior(bool isBehavior)
 {
     // This is a read-write property
 
-    QM_D(QUmlPort);
-    if (d->isBehavior != isBehavior) {
-        d->isBehavior = isBehavior;
+    if (_isBehavior != isBehavior) {
+        _isBehavior = isBehavior;
     }
 }
 
@@ -99,17 +89,15 @@ bool QUmlPort::isConjugated() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlPort);
-    return d->isConjugated;
+    return _isConjugated;
 }
 
 void QUmlPort::setConjugated(bool isConjugated)
 {
     // This is a read-write property
 
-    QM_D(QUmlPort);
-    if (d->isConjugated != isConjugated) {
-        d->isConjugated = isConjugated;
+    if (_isConjugated != isConjugated) {
+        _isConjugated = isConjugated;
     }
 }
 
@@ -120,17 +108,15 @@ bool QUmlPort::isService() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlPort);
-    return d->isService;
+    return _isService;
 }
 
 void QUmlPort::setService(bool isService)
 {
     // This is a read-write property
 
-    QM_D(QUmlPort);
-    if (d->isService != isService) {
-        d->isService = isService;
+    if (_isService != isService) {
+        _isService = isService;
     }
 }
 
@@ -141,17 +127,15 @@ QUmlProtocolStateMachine *QUmlPort::protocol() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlPort);
-    return d->protocol;
+    return _protocol;
 }
 
 void QUmlPort::setProtocol(QUmlProtocolStateMachine *protocol)
 {
     // This is a read-write association end
 
-    QM_D(QUmlPort);
-    if (d->protocol != protocol) {
-        d->protocol = protocol;
+    if (_protocol != protocol) {
+        _protocol = protocol;
     }
 }
 
@@ -174,17 +158,15 @@ QSet<QUmlPort *> QUmlPort::redefinedPort() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlPort);
-    return d->redefinedPort;
+    return _redefinedPort;
 }
 
 void QUmlPort::addRedefinedPort(QUmlPort *redefinedPort)
 {
     // This is a read-write association end
 
-    QM_D(QUmlPort);
-    if (!d->redefinedPort.contains(redefinedPort)) {
-        d->redefinedPort.insert(redefinedPort);
+    if (!_redefinedPort.contains(redefinedPort)) {
+        _redefinedPort.insert(redefinedPort);
     }
 }
 
@@ -192,9 +174,8 @@ void QUmlPort::removeRedefinedPort(QUmlPort *redefinedPort)
 {
     // This is a read-write association end
 
-    QM_D(QUmlPort);
-    if (d->redefinedPort.contains(redefinedPort)) {
-        d->redefinedPort.remove(redefinedPort);
+    if (_redefinedPort.contains(redefinedPort)) {
+        _redefinedPort.remove(redefinedPort);
     }
 }
 

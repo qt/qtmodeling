@@ -39,13 +39,8 @@
 **
 ****************************************************************************/
 #include "qumlrealization.h"
-#include "qumlrealization_p.h"
 
 QT_BEGIN_NAMESPACE
-
-QUmlRealizationPrivate::QUmlRealizationPrivate()
-{
-}
 
 /*!
     \class QUmlRealization
@@ -55,11 +50,8 @@ QUmlRealizationPrivate::QUmlRealizationPrivate()
     \brief Realization is a specialized abstraction relationship between two sets of model elements, one representing a specification (the supplier) and the other represents an implementation of the latter (the client). Realization can be used to model stepwise refinement, optimizations, transformations, templates, model synthesis, framework composition, etc.
  */
 
-QUmlRealization::QUmlRealization(bool create_d_ptr) :
-    QUmlAbstraction(false)
+QUmlRealization::QUmlRealization()
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlRealizationPrivate);
 }
 
 QT_END_NAMESPACE

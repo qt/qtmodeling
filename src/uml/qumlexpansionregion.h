@@ -54,11 +54,10 @@ QT_MODULE(QtUml)
 
 class QUmlExpansionNode;
 
-class QUmlExpansionRegionPrivate;
 class Q_UML_EXPORT QUmlExpansionRegion : public QUmlStructuredActivityNode
 {
 public:
-    QUmlExpansionRegion(bool create_d_ptr = true);
+    QUmlExpansionRegion();
 
     // Owned attributes
     QSet<QUmlExpansionNode *> inputElement() const;
@@ -69,6 +68,11 @@ public:
     QSet<QUmlExpansionNode *> outputElement() const;
     void addOutputElement(QUmlExpansionNode *outputElement);
     void removeOutputElement(QUmlExpansionNode *outputElement);
+
+protected:
+    QSet<QUmlExpansionNode *> _inputElement;
+    QtUml::ExpansionKind _mode;
+    QSet<QUmlExpansionNode *> _outputElement;
 };
 
 QT_END_NAMESPACE

@@ -39,16 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlbehaviorexecutionspecification.h"
-#include "qumlbehaviorexecutionspecification_p.h"
 
 #include <QtUml/QUmlBehavior>
 
 QT_BEGIN_NAMESPACE
-
-QUmlBehaviorExecutionSpecificationPrivate::QUmlBehaviorExecutionSpecificationPrivate() :
-    behavior(0)
-{
-}
 
 /*!
     \class QUmlBehaviorExecutionSpecification
@@ -58,11 +52,9 @@ QUmlBehaviorExecutionSpecificationPrivate::QUmlBehaviorExecutionSpecificationPri
     \brief A behavior execution specification is a kind of execution specification representing the execution of a behavior.
  */
 
-QUmlBehaviorExecutionSpecification::QUmlBehaviorExecutionSpecification(bool create_d_ptr) :
-    QUmlExecutionSpecification(false)
+QUmlBehaviorExecutionSpecification::QUmlBehaviorExecutionSpecification() :
+    _behavior(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlBehaviorExecutionSpecificationPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -74,17 +66,15 @@ QUmlBehavior *QUmlBehaviorExecutionSpecification::behavior() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlBehaviorExecutionSpecification);
-    return d->behavior;
+    return _behavior;
 }
 
 void QUmlBehaviorExecutionSpecification::setBehavior(QUmlBehavior *behavior)
 {
     // This is a read-write association end
 
-    QM_D(QUmlBehaviorExecutionSpecification);
-    if (d->behavior != behavior) {
-        d->behavior = behavior;
+    if (_behavior != behavior) {
+        _behavior = behavior;
     }
 }
 

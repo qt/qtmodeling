@@ -39,13 +39,8 @@
 **
 ****************************************************************************/
 #include "qumlopaquebehavior.h"
-#include "qumlopaquebehavior_p.h"
 
 QT_BEGIN_NAMESPACE
-
-QUmlOpaqueBehaviorPrivate::QUmlOpaqueBehaviorPrivate()
-{
-}
 
 /*!
     \class QUmlOpaqueBehavior
@@ -55,11 +50,8 @@ QUmlOpaqueBehaviorPrivate::QUmlOpaqueBehaviorPrivate()
     \brief An behavior with implementation-specific semantics.
  */
 
-QUmlOpaqueBehavior::QUmlOpaqueBehavior(bool create_d_ptr) :
-    QUmlBehavior(false)
+QUmlOpaqueBehavior::QUmlOpaqueBehavior()
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlOpaqueBehaviorPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -71,17 +63,15 @@ QList<QString> QUmlOpaqueBehavior::body() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlOpaqueBehavior);
-    return d->body;
+    return _body;
 }
 
 void QUmlOpaqueBehavior::addBody(QString body)
 {
     // This is a read-write property
 
-    QM_D(QUmlOpaqueBehavior);
-    if (!d->body.contains(body)) {
-        d->body.append(body);
+    if (!_body.contains(body)) {
+        _body.append(body);
     }
 }
 
@@ -89,9 +79,8 @@ void QUmlOpaqueBehavior::removeBody(QString body)
 {
     // This is a read-write property
 
-    QM_D(QUmlOpaqueBehavior);
-    if (d->body.contains(body)) {
-        d->body.removeAll(body);
+    if (_body.contains(body)) {
+        _body.removeAll(body);
     }
 }
 
@@ -102,17 +91,15 @@ QList<QString> QUmlOpaqueBehavior::language() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlOpaqueBehavior);
-    return d->language;
+    return _language;
 }
 
 void QUmlOpaqueBehavior::addLanguage(QString language)
 {
     // This is a read-write property
 
-    QM_D(QUmlOpaqueBehavior);
-    if (!d->language.contains(language)) {
-        d->language.append(language);
+    if (!_language.contains(language)) {
+        _language.append(language);
     }
 }
 
@@ -120,9 +107,8 @@ void QUmlOpaqueBehavior::removeLanguage(QString language)
 {
     // This is a read-write property
 
-    QM_D(QUmlOpaqueBehavior);
-    if (d->language.contains(language)) {
-        d->language.removeAll(language);
+    if (_language.contains(language)) {
+        _language.removeAll(language);
     }
 }
 

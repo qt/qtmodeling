@@ -39,17 +39,10 @@
 **
 ****************************************************************************/
 #include "qumldurationinterval.h"
-#include "qumldurationinterval_p.h"
 
 #include <QtUml/QUmlDuration>
 
 QT_BEGIN_NAMESPACE
-
-QUmlDurationIntervalPrivate::QUmlDurationIntervalPrivate() :
-    max(0),
-    min(0)
-{
-}
 
 /*!
     \class QUmlDurationInterval
@@ -59,11 +52,10 @@ QUmlDurationIntervalPrivate::QUmlDurationIntervalPrivate() :
     \brief A duration interval defines the range between two durations.
  */
 
-QUmlDurationInterval::QUmlDurationInterval(bool create_d_ptr) :
-    QUmlInterval(false)
+QUmlDurationInterval::QUmlDurationInterval() :
+    _max(0),
+    _min(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlDurationIntervalPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -75,17 +67,15 @@ QUmlDuration *QUmlDurationInterval::max() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlDurationInterval);
-    return d->max;
+    return _max;
 }
 
 void QUmlDurationInterval::setMax(QUmlDuration *max)
 {
     // This is a read-write association end
 
-    QM_D(QUmlDurationInterval);
-    if (d->max != max) {
-        d->max = max;
+    if (_max != max) {
+        _max = max;
     }
 }
 
@@ -96,17 +86,15 @@ QUmlDuration *QUmlDurationInterval::min() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlDurationInterval);
-    return d->min;
+    return _min;
 }
 
 void QUmlDurationInterval::setMin(QUmlDuration *min)
 {
     // This is a read-write association end
 
-    QM_D(QUmlDurationInterval);
-    if (d->min != min) {
-        d->min = min;
+    if (_min != min) {
+        _min = min;
     }
 }
 

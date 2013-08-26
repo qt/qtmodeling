@@ -53,17 +53,20 @@ QT_MODULE(QtUml)
 
 class QUmlExpansionRegion;
 
-class QUmlExpansionNodePrivate;
 class Q_UML_EXPORT QUmlExpansionNode : public QUmlObjectNode
 {
 public:
-    QUmlExpansionNode(bool create_d_ptr = true);
+    QUmlExpansionNode();
 
     // Owned attributes
     QUmlExpansionRegion *regionAsInput() const;
     void setRegionAsInput(QUmlExpansionRegion *regionAsInput);
     QUmlExpansionRegion *regionAsOutput() const;
     void setRegionAsOutput(QUmlExpansionRegion *regionAsOutput);
+
+protected:
+    QUmlExpansionRegion *_regionAsInput;
+    QUmlExpansionRegion *_regionAsOutput;
 };
 
 QT_END_NAMESPACE

@@ -39,16 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlwritevariableaction.h"
-#include "qumlwritevariableaction_p.h"
 
 #include <QtUml/QUmlInputPin>
 
 QT_BEGIN_NAMESPACE
-
-QUmlWriteVariableActionPrivate::QUmlWriteVariableActionPrivate() :
-    value(0)
-{
-}
 
 /*!
     \class QUmlWriteVariableAction
@@ -58,11 +52,9 @@ QUmlWriteVariableActionPrivate::QUmlWriteVariableActionPrivate() :
     \brief WriteVariableAction is an abstract class for variable actions that change variable values.
  */
 
-QUmlWriteVariableAction::QUmlWriteVariableAction(bool create_d_ptr) :
-    QUmlVariableAction(false)
+QUmlWriteVariableAction::QUmlWriteVariableAction() :
+    _value(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlWriteVariableActionPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -74,17 +66,15 @@ QUmlInputPin *QUmlWriteVariableAction::value() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlWriteVariableAction);
-    return d->value;
+    return _value;
 }
 
 void QUmlWriteVariableAction::setValue(QUmlInputPin *value)
 {
     // This is a read-write association end
 
-    QM_D(QUmlWriteVariableAction);
-    if (d->value != value) {
-        d->value = value;
+    if (_value != value) {
+        _value = value;
     }
 }
 

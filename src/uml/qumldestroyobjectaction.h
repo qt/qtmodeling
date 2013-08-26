@@ -53,11 +53,10 @@ QT_MODULE(QtUml)
 
 class QUmlInputPin;
 
-class QUmlDestroyObjectActionPrivate;
 class Q_UML_EXPORT QUmlDestroyObjectAction : public QUmlAction
 {
 public:
-    QUmlDestroyObjectAction(bool create_d_ptr = true);
+    QUmlDestroyObjectAction();
 
     // Owned attributes
     bool isDestroyLinks() const;
@@ -66,6 +65,11 @@ public:
     void setDestroyOwnedObjects(bool isDestroyOwnedObjects);
     QUmlInputPin *target() const;
     void setTarget(QUmlInputPin *target);
+
+protected:
+    bool _isDestroyLinks;
+    bool _isDestroyOwnedObjects;
+    QUmlInputPin *_target;
 };
 
 QT_END_NAMESPACE

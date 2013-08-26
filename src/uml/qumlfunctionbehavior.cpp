@@ -39,13 +39,8 @@
 **
 ****************************************************************************/
 #include "qumlfunctionbehavior.h"
-#include "qumlfunctionbehavior_p.h"
 
 QT_BEGIN_NAMESPACE
-
-QUmlFunctionBehaviorPrivate::QUmlFunctionBehaviorPrivate()
-{
-}
 
 /*!
     \class QUmlFunctionBehavior
@@ -55,11 +50,8 @@ QUmlFunctionBehaviorPrivate::QUmlFunctionBehaviorPrivate()
     \brief A function behavior is an opaque behavior that does not access or modify any objects or other external data.
  */
 
-QUmlFunctionBehavior::QUmlFunctionBehavior(bool create_d_ptr) :
-    QUmlOpaqueBehavior(false)
+QUmlFunctionBehavior::QUmlFunctionBehavior()
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlFunctionBehaviorPrivate);
 }
 
 QT_END_NAMESPACE

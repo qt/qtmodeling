@@ -55,11 +55,10 @@ class QUmlElement;
 class QUmlNamespace;
 class QUmlValueSpecification;
 
-class QUmlConstraintPrivate;
 class Q_UML_EXPORT QUmlConstraint : public QUmlPackageableElement
 {
 public:
-    QUmlConstraint(bool create_d_ptr = true);
+    QUmlConstraint();
 
     // Owned attributes
     QList<QUmlElement *> constrainedElement() const;
@@ -69,6 +68,11 @@ public:
     void setContext(QUmlNamespace *context);
     QUmlValueSpecification *specification() const;
     void setSpecification(QUmlValueSpecification *specification);
+
+protected:
+    QList<QUmlElement *> _constrainedElement;
+    QUmlNamespace *_context;
+    QUmlValueSpecification *_specification;
 };
 
 QT_END_NAMESPACE

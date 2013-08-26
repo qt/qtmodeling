@@ -56,11 +56,10 @@ class QUmlComponentRealization;
 class QUmlInterface;
 class QUmlPackageableElement;
 
-class QUmlComponentPrivate;
 class Q_UML_EXPORT QUmlComponent : public QUmlClass
 {
 public:
-    QUmlComponent(bool create_d_ptr = true);
+    QUmlComponent();
 
     // Owned attributes
     bool isIndirectlyInstantiated() const;
@@ -77,6 +76,11 @@ public:
     // Operations
     QSet<QUmlInterface *> realizedInterfaces(QUmlClassifier *classifier) const;
     QSet<QUmlInterface *> usedInterfaces(QUmlClassifier *classifier) const;
+
+protected:
+    bool _isIndirectlyInstantiated;
+    QSet<QUmlPackageableElement *> _packagedElement;
+    QSet<QUmlComponentRealization *> _realization;
 };
 
 QT_END_NAMESPACE

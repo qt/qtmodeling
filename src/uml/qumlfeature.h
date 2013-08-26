@@ -53,16 +53,19 @@ QT_MODULE(QtUml)
 
 class QUmlClassifier;
 
-class QUmlFeaturePrivate;
 class Q_UML_EXPORT QUmlFeature : public QUmlRedefinableElement
 {
 public:
-    Q_DECL_HIDDEN QUmlFeature(bool create_d_ptr = true);
+    Q_DECL_HIDDEN QUmlFeature();
 
     // Owned attributes
     QSet<QUmlClassifier *> featuringClassifier() const;
     bool isStatic() const;
     void setStatic(bool isStatic);
+
+protected:
+    QSet<QUmlClassifier *> _featuringClassifier;
+    bool _isStatic;
 };
 
 QT_END_NAMESPACE

@@ -39,17 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlsendobjectaction.h"
-#include "qumlsendobjectaction_p.h"
 
 #include <QtUml/QUmlInputPin>
 
 QT_BEGIN_NAMESPACE
-
-QUmlSendObjectActionPrivate::QUmlSendObjectActionPrivate() :
-    request(0),
-    target(0)
-{
-}
 
 /*!
     \class QUmlSendObjectAction
@@ -59,11 +52,10 @@ QUmlSendObjectActionPrivate::QUmlSendObjectActionPrivate() :
     \brief A send object action is an action that transmits an object to the target object, where it may invoke behavior such as the firing of state machine transitions or the execution of an activity. The value of the object is available to the execution of invoked behaviors. The requestor continues execution immediately. Any reply message is ignored and is not transmitted to the requestor.
  */
 
-QUmlSendObjectAction::QUmlSendObjectAction(bool create_d_ptr) :
-    QUmlInvocationAction(false)
+QUmlSendObjectAction::QUmlSendObjectAction() :
+    _request(0),
+    _target(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlSendObjectActionPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -75,17 +67,15 @@ QUmlInputPin *QUmlSendObjectAction::request() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlSendObjectAction);
-    return d->request;
+    return _request;
 }
 
 void QUmlSendObjectAction::setRequest(QUmlInputPin *request)
 {
     // This is a read-write association end
 
-    QM_D(QUmlSendObjectAction);
-    if (d->request != request) {
-        d->request = request;
+    if (_request != request) {
+        _request = request;
     }
 }
 
@@ -96,17 +86,15 @@ QUmlInputPin *QUmlSendObjectAction::target() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlSendObjectAction);
-    return d->target;
+    return _target;
 }
 
 void QUmlSendObjectAction::setTarget(QUmlInputPin *target)
 {
     // This is a read-write association end
 
-    QM_D(QUmlSendObjectAction);
-    if (d->target != target) {
-        d->target = target;
+    if (_target != target) {
+        _target = target;
     }
 }
 

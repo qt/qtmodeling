@@ -53,16 +53,18 @@ QT_MODULE(QtUml)
 
 class QUmlProtocolConformance;
 
-class QUmlProtocolStateMachinePrivate;
 class Q_UML_EXPORT QUmlProtocolStateMachine : public QUmlStateMachine
 {
 public:
-    QUmlProtocolStateMachine(bool create_d_ptr = true);
+    QUmlProtocolStateMachine();
 
     // Owned attributes
     QSet<QUmlProtocolConformance *> conformance() const;
     void addConformance(QUmlProtocolConformance *conformance);
     void removeConformance(QUmlProtocolConformance *conformance);
+
+protected:
+    QSet<QUmlProtocolConformance *> _conformance;
 };
 
 QT_END_NAMESPACE

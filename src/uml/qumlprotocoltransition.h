@@ -54,11 +54,10 @@ QT_MODULE(QtUml)
 class QUmlConstraint;
 class QUmlOperation;
 
-class QUmlProtocolTransitionPrivate;
 class Q_UML_EXPORT QUmlProtocolTransition : public QUmlTransition
 {
 public:
-    QUmlProtocolTransition(bool create_d_ptr = true);
+    QUmlProtocolTransition();
 
     // Owned attributes
     QUmlConstraint *postCondition() const;
@@ -66,6 +65,10 @@ public:
     QUmlConstraint *preCondition() const;
     void setPreCondition(QUmlConstraint *preCondition);
     QSet<QUmlOperation *> referred() const;
+
+protected:
+    QUmlConstraint *_postCondition;
+    QUmlConstraint *_preCondition;
 };
 
 QT_END_NAMESPACE

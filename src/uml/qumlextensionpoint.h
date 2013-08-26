@@ -53,15 +53,17 @@ QT_MODULE(QtUml)
 
 class QUmlUseCase;
 
-class QUmlExtensionPointPrivate;
 class Q_UML_EXPORT QUmlExtensionPoint : public QUmlRedefinableElement
 {
 public:
-    QUmlExtensionPoint(bool create_d_ptr = true);
+    QUmlExtensionPoint();
 
     // Owned attributes
     QUmlUseCase *useCase() const;
     void setUseCase(QUmlUseCase *useCase);
+
+protected:
+    QUmlUseCase *_useCase;
 };
 
 QT_END_NAMESPACE

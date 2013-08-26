@@ -57,11 +57,10 @@ class QUmlInteractionFragment;
 class QUmlPartDecomposition;
 class QUmlValueSpecification;
 
-class QUmlLifelinePrivate;
 class Q_UML_EXPORT QUmlLifeline : public QUmlNamedElement
 {
 public:
-    QUmlLifeline(bool create_d_ptr = true);
+    QUmlLifeline();
 
     // Owned attributes
     QSet<QUmlInteractionFragment *> coveredBy() const;
@@ -75,6 +74,13 @@ public:
     void setRepresents(QUmlConnectableElement *represents);
     QUmlValueSpecification *selector() const;
     void setSelector(QUmlValueSpecification *selector);
+
+protected:
+    QSet<QUmlInteractionFragment *> _coveredBy;
+    QUmlPartDecomposition *_decomposedAs;
+    QUmlInteraction *_interaction;
+    QUmlConnectableElement *_represents;
+    QUmlValueSpecification *_selector;
 };
 
 QT_END_NAMESPACE

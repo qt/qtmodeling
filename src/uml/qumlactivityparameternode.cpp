@@ -39,16 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlactivityparameternode.h"
-#include "qumlactivityparameternode_p.h"
 
 #include <QtUml/QUmlParameter>
 
 QT_BEGIN_NAMESPACE
-
-QUmlActivityParameterNodePrivate::QUmlActivityParameterNodePrivate() :
-    parameter(0)
-{
-}
 
 /*!
     \class QUmlActivityParameterNode
@@ -58,11 +52,9 @@ QUmlActivityParameterNodePrivate::QUmlActivityParameterNodePrivate() :
     \brief An activity parameter node is an object node for inputs and outputs to activities.
  */
 
-QUmlActivityParameterNode::QUmlActivityParameterNode(bool create_d_ptr) :
-    QUmlObjectNode(false)
+QUmlActivityParameterNode::QUmlActivityParameterNode() :
+    _parameter(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlActivityParameterNodePrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -74,17 +66,15 @@ QUmlParameter *QUmlActivityParameterNode::parameter() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlActivityParameterNode);
-    return d->parameter;
+    return _parameter;
 }
 
 void QUmlActivityParameterNode::setParameter(QUmlParameter *parameter)
 {
     // This is a read-write association end
 
-    QM_D(QUmlActivityParameterNode);
-    if (d->parameter != parameter) {
-        d->parameter = parameter;
+    if (_parameter != parameter) {
+        _parameter = parameter;
     }
 }
 

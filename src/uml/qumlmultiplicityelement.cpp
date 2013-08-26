@@ -39,19 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlmultiplicityelement.h"
-#include "qumlmultiplicityelement_p.h"
 
 #include <QtUml/QUmlValueSpecification>
 
 QT_BEGIN_NAMESPACE
-
-QUmlMultiplicityElementPrivate::QUmlMultiplicityElementPrivate() :
-    isOrdered(false),
-    isUnique(true),
-    lowerValue(0),
-    upperValue(0)
-{
-}
 
 /*!
     \class QUmlMultiplicityElement
@@ -61,11 +52,12 @@ QUmlMultiplicityElementPrivate::QUmlMultiplicityElementPrivate() :
     \brief A multiplicity is a definition of an inclusive interval of non-negative integers beginning with a lower bound and ending with a (possibly infinite) upper bound. A multiplicity element embeds this information to specify the allowable cardinalities for an instantiation of this element.
  */
 
-QUmlMultiplicityElement::QUmlMultiplicityElement(bool create_d_ptr) :
-    QUmlElement(false)
+QUmlMultiplicityElement::QUmlMultiplicityElement() :
+    _isOrdered(false),
+    _isUnique(true),
+    _lowerValue(0),
+    _upperValue(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlMultiplicityElementPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -77,17 +69,15 @@ bool QUmlMultiplicityElement::isOrdered() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlMultiplicityElement);
-    return d->isOrdered;
+    return _isOrdered;
 }
 
 void QUmlMultiplicityElement::setOrdered(bool isOrdered)
 {
     // This is a read-write property
 
-    QM_D(QUmlMultiplicityElement);
-    if (d->isOrdered != isOrdered) {
-        d->isOrdered = isOrdered;
+    if (_isOrdered != isOrdered) {
+        _isOrdered = isOrdered;
     }
 }
 
@@ -98,17 +88,15 @@ bool QUmlMultiplicityElement::isUnique() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlMultiplicityElement);
-    return d->isUnique;
+    return _isUnique;
 }
 
 void QUmlMultiplicityElement::setUnique(bool isUnique)
 {
     // This is a read-write property
 
-    QM_D(QUmlMultiplicityElement);
-    if (d->isUnique != isUnique) {
-        d->isUnique = isUnique;
+    if (_isUnique != isUnique) {
+        _isUnique = isUnique;
     }
 }
 
@@ -143,17 +131,15 @@ QUmlValueSpecification *QUmlMultiplicityElement::lowerValue() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlMultiplicityElement);
-    return d->lowerValue;
+    return _lowerValue;
 }
 
 void QUmlMultiplicityElement::setLowerValue(QUmlValueSpecification *lowerValue)
 {
     // This is a read-write association end
 
-    QM_D(QUmlMultiplicityElement);
-    if (d->lowerValue != lowerValue) {
-        d->lowerValue = lowerValue;
+    if (_lowerValue != lowerValue) {
+        _lowerValue = lowerValue;
     }
 }
 
@@ -188,17 +174,15 @@ QUmlValueSpecification *QUmlMultiplicityElement::upperValue() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlMultiplicityElement);
-    return d->upperValue;
+    return _upperValue;
 }
 
 void QUmlMultiplicityElement::setUpperValue(QUmlValueSpecification *upperValue)
 {
     // This is a read-write association end
 
-    QM_D(QUmlMultiplicityElement);
-    if (d->upperValue != upperValue) {
-        d->upperValue = upperValue;
+    if (_upperValue != upperValue) {
+        _upperValue = upperValue;
     }
 }
 

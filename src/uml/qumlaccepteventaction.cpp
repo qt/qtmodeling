@@ -39,17 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlaccepteventaction.h"
-#include "qumlaccepteventaction_p.h"
 
 #include <QtUml/QUmlOutputPin>
 #include <QtUml/QUmlTrigger>
 
 QT_BEGIN_NAMESPACE
-
-QUmlAcceptEventActionPrivate::QUmlAcceptEventActionPrivate() :
-    isUnmarshall(false)
-{
-}
 
 /*!
     \class QUmlAcceptEventAction
@@ -59,11 +53,9 @@ QUmlAcceptEventActionPrivate::QUmlAcceptEventActionPrivate() :
     \brief A accept event action is an action that waits for the occurrence of an event meeting specified conditions.
  */
 
-QUmlAcceptEventAction::QUmlAcceptEventAction(bool create_d_ptr) :
-    QUmlAction(false)
+QUmlAcceptEventAction::QUmlAcceptEventAction() :
+    _isUnmarshall(false)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlAcceptEventActionPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -75,17 +67,15 @@ bool QUmlAcceptEventAction::isUnmarshall() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlAcceptEventAction);
-    return d->isUnmarshall;
+    return _isUnmarshall;
 }
 
 void QUmlAcceptEventAction::setUnmarshall(bool isUnmarshall)
 {
     // This is a read-write property
 
-    QM_D(QUmlAcceptEventAction);
-    if (d->isUnmarshall != isUnmarshall) {
-        d->isUnmarshall = isUnmarshall;
+    if (_isUnmarshall != isUnmarshall) {
+        _isUnmarshall = isUnmarshall;
     }
 }
 
@@ -96,17 +86,15 @@ QSet<QUmlOutputPin *> QUmlAcceptEventAction::result() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlAcceptEventAction);
-    return d->result;
+    return _result;
 }
 
 void QUmlAcceptEventAction::addResult(QUmlOutputPin *result)
 {
     // This is a read-write association end
 
-    QM_D(QUmlAcceptEventAction);
-    if (!d->result.contains(result)) {
-        d->result.insert(result);
+    if (!_result.contains(result)) {
+        _result.insert(result);
     }
 }
 
@@ -114,9 +102,8 @@ void QUmlAcceptEventAction::removeResult(QUmlOutputPin *result)
 {
     // This is a read-write association end
 
-    QM_D(QUmlAcceptEventAction);
-    if (d->result.contains(result)) {
-        d->result.remove(result);
+    if (_result.contains(result)) {
+        _result.remove(result);
     }
 }
 
@@ -127,17 +114,15 @@ QSet<QUmlTrigger *> QUmlAcceptEventAction::trigger() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlAcceptEventAction);
-    return d->trigger;
+    return _trigger;
 }
 
 void QUmlAcceptEventAction::addTrigger(QUmlTrigger *trigger)
 {
     // This is a read-write association end
 
-    QM_D(QUmlAcceptEventAction);
-    if (!d->trigger.contains(trigger)) {
-        d->trigger.insert(trigger);
+    if (!_trigger.contains(trigger)) {
+        _trigger.insert(trigger);
     }
 }
 
@@ -145,9 +130,8 @@ void QUmlAcceptEventAction::removeTrigger(QUmlTrigger *trigger)
 {
     // This is a read-write association end
 
-    QM_D(QUmlAcceptEventAction);
-    if (d->trigger.contains(trigger)) {
-        d->trigger.remove(trigger);
+    if (_trigger.contains(trigger)) {
+        _trigger.remove(trigger);
     }
 }
 

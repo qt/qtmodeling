@@ -51,11 +51,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlExecutionEnvironmentPrivate;
 class Q_UML_EXPORT QUmlExecutionEnvironment : public QUmlNode
 {
 public:
-    QUmlExecutionEnvironment(bool create_d_ptr = true);
+    QUmlExecutionEnvironment();
+
+protected:
 };
 
 QT_END_NAMESPACE

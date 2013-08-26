@@ -39,13 +39,8 @@
 **
 ****************************************************************************/
 #include "qumlcomment.h"
-#include "qumlcomment_p.h"
 
 QT_BEGIN_NAMESPACE
-
-QUmlCommentPrivate::QUmlCommentPrivate()
-{
-}
 
 /*!
     \class QUmlComment
@@ -55,11 +50,8 @@ QUmlCommentPrivate::QUmlCommentPrivate()
     \brief A comment is a textual annotation that can be attached to a set of elements.
  */
 
-QUmlComment::QUmlComment(bool create_d_ptr) :
-    QUmlElement(false)
+QUmlComment::QUmlComment()
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlCommentPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -71,17 +63,15 @@ QSet<QUmlElement *> QUmlComment::annotatedElement() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlComment);
-    return d->annotatedElement;
+    return _annotatedElement;
 }
 
 void QUmlComment::addAnnotatedElement(QUmlElement *annotatedElement)
 {
     // This is a read-write association end
 
-    QM_D(QUmlComment);
-    if (!d->annotatedElement.contains(annotatedElement)) {
-        d->annotatedElement.insert(annotatedElement);
+    if (!_annotatedElement.contains(annotatedElement)) {
+        _annotatedElement.insert(annotatedElement);
     }
 }
 
@@ -89,9 +79,8 @@ void QUmlComment::removeAnnotatedElement(QUmlElement *annotatedElement)
 {
     // This is a read-write association end
 
-    QM_D(QUmlComment);
-    if (d->annotatedElement.contains(annotatedElement)) {
-        d->annotatedElement.remove(annotatedElement);
+    if (_annotatedElement.contains(annotatedElement)) {
+        _annotatedElement.remove(annotatedElement);
     }
 }
 
@@ -102,17 +91,15 @@ QString QUmlComment::body() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlComment);
-    return d->body;
+    return _body;
 }
 
 void QUmlComment::setBody(QString body)
 {
     // This is a read-write property
 
-    QM_D(QUmlComment);
-    if (d->body != body) {
-        d->body = body;
+    if (_body != body) {
+        _body = body;
     }
 }
 

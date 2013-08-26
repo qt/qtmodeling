@@ -39,18 +39,12 @@
 **
 ****************************************************************************/
 #include "qumlinstancespecification.h"
-#include "qumlinstancespecification_p.h"
 
 #include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlSlot>
 #include <QtUml/QUmlValueSpecification>
 
 QT_BEGIN_NAMESPACE
-
-QUmlInstanceSpecificationPrivate::QUmlInstanceSpecificationPrivate() :
-    specification(0)
-{
-}
 
 /*!
     \class QUmlInstanceSpecification
@@ -60,13 +54,9 @@ QUmlInstanceSpecificationPrivate::QUmlInstanceSpecificationPrivate() :
     \brief An instance specification has the capability of being a deployment target in a deployment relationship, in the case that it is an instance of a node. It is also has the capability of being a deployed artifact, if it is an instance of an artifact.An instance specification is a model element that represents an instance in a modeled system.
  */
 
-QUmlInstanceSpecification::QUmlInstanceSpecification(bool create_d_ptr) :
-    QUmlDeployedArtifact(false),
-    QUmlPackageableElement(false),
-    QUmlDeploymentTarget(false)
+QUmlInstanceSpecification::QUmlInstanceSpecification() :
+    _specification(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlInstanceSpecificationPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -78,17 +68,15 @@ QSet<QUmlClassifier *> QUmlInstanceSpecification::classifier() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlInstanceSpecification);
-    return d->classifier;
+    return _classifier;
 }
 
 void QUmlInstanceSpecification::addClassifier(QUmlClassifier *classifier)
 {
     // This is a read-write association end
 
-    QM_D(QUmlInstanceSpecification);
-    if (!d->classifier.contains(classifier)) {
-        d->classifier.insert(classifier);
+    if (!_classifier.contains(classifier)) {
+        _classifier.insert(classifier);
     }
 }
 
@@ -96,9 +84,8 @@ void QUmlInstanceSpecification::removeClassifier(QUmlClassifier *classifier)
 {
     // This is a read-write association end
 
-    QM_D(QUmlInstanceSpecification);
-    if (d->classifier.contains(classifier)) {
-        d->classifier.remove(classifier);
+    if (_classifier.contains(classifier)) {
+        _classifier.remove(classifier);
     }
 }
 
@@ -109,17 +96,15 @@ QSet<QUmlSlot *> QUmlInstanceSpecification::slot_() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlInstanceSpecification);
-    return d->slot_;
+    return _slot_;
 }
 
 void QUmlInstanceSpecification::addSlot(QUmlSlot *slot_)
 {
     // This is a read-write association end
 
-    QM_D(QUmlInstanceSpecification);
-    if (!d->slot_.contains(slot_)) {
-        d->slot_.insert(slot_);
+    if (!_slot_.contains(slot_)) {
+        _slot_.insert(slot_);
     }
 }
 
@@ -127,9 +112,8 @@ void QUmlInstanceSpecification::removeSlot(QUmlSlot *slot_)
 {
     // This is a read-write association end
 
-    QM_D(QUmlInstanceSpecification);
-    if (d->slot_.contains(slot_)) {
-        d->slot_.remove(slot_);
+    if (_slot_.contains(slot_)) {
+        _slot_.remove(slot_);
     }
 }
 
@@ -140,17 +124,15 @@ QUmlValueSpecification *QUmlInstanceSpecification::specification() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlInstanceSpecification);
-    return d->specification;
+    return _specification;
 }
 
 void QUmlInstanceSpecification::setSpecification(QUmlValueSpecification *specification)
 {
     // This is a read-write association end
 
-    QM_D(QUmlInstanceSpecification);
-    if (d->specification != specification) {
-        d->specification = specification;
+    if (_specification != specification) {
+        _specification = specification;
     }
 }
 

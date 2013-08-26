@@ -39,16 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlclearstructuralfeatureaction.h"
-#include "qumlclearstructuralfeatureaction_p.h"
 
 #include <QtUml/QUmlOutputPin>
 
 QT_BEGIN_NAMESPACE
-
-QUmlClearStructuralFeatureActionPrivate::QUmlClearStructuralFeatureActionPrivate() :
-    result(0)
-{
-}
 
 /*!
     \class QUmlClearStructuralFeatureAction
@@ -58,11 +52,9 @@ QUmlClearStructuralFeatureActionPrivate::QUmlClearStructuralFeatureActionPrivate
     \brief A clear structural feature action is a structural feature action that removes all values of a structural feature.
  */
 
-QUmlClearStructuralFeatureAction::QUmlClearStructuralFeatureAction(bool create_d_ptr) :
-    QUmlStructuralFeatureAction(false)
+QUmlClearStructuralFeatureAction::QUmlClearStructuralFeatureAction() :
+    _result(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlClearStructuralFeatureActionPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -74,17 +66,15 @@ QUmlOutputPin *QUmlClearStructuralFeatureAction::result() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlClearStructuralFeatureAction);
-    return d->result;
+    return _result;
 }
 
 void QUmlClearStructuralFeatureAction::setResult(QUmlOutputPin *result)
 {
     // This is a read-write association end
 
-    QM_D(QUmlClearStructuralFeatureAction);
-    if (d->result != result) {
-        d->result = result;
+    if (_result != result) {
+        _result = result;
     }
 }
 

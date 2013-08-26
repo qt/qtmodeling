@@ -53,17 +53,20 @@ QT_MODULE(QtUml)
 
 class QUmlInputPin;
 
-class QUmlAddVariableValueActionPrivate;
 class Q_UML_EXPORT QUmlAddVariableValueAction : public QUmlWriteVariableAction
 {
 public:
-    QUmlAddVariableValueAction(bool create_d_ptr = true);
+    QUmlAddVariableValueAction();
 
     // Owned attributes
     QUmlInputPin *insertAt() const;
     void setInsertAt(QUmlInputPin *insertAt);
     bool isReplaceAll() const;
     void setReplaceAll(bool isReplaceAll);
+
+protected:
+    QUmlInputPin *_insertAt;
+    bool _isReplaceAll;
 };
 
 QT_END_NAMESPACE

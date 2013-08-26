@@ -51,11 +51,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlPartDecompositionPrivate;
 class Q_UML_EXPORT QUmlPartDecomposition : public QUmlInteractionUse
 {
 public:
-    QUmlPartDecomposition(bool create_d_ptr = true);
+    QUmlPartDecomposition();
+
+protected:
 };
 
 QT_END_NAMESPACE

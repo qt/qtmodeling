@@ -39,16 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlintervalconstraint.h"
-#include "qumlintervalconstraint_p.h"
 
 #include <QtUml/QUmlInterval>
 
 QT_BEGIN_NAMESPACE
-
-QUmlIntervalConstraintPrivate::QUmlIntervalConstraintPrivate() :
-    specification(0)
-{
-}
 
 /*!
     \class QUmlIntervalConstraint
@@ -58,11 +52,9 @@ QUmlIntervalConstraintPrivate::QUmlIntervalConstraintPrivate() :
     \brief An interval constraint is a constraint that refers to an interval.
  */
 
-QUmlIntervalConstraint::QUmlIntervalConstraint(bool create_d_ptr) :
-    QUmlConstraint(false)
+QUmlIntervalConstraint::QUmlIntervalConstraint() :
+    _specification(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlIntervalConstraintPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -74,17 +66,15 @@ QUmlInterval *QUmlIntervalConstraint::specification() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlIntervalConstraint);
-    return d->specification;
+    return _specification;
 }
 
 void QUmlIntervalConstraint::setSpecification(QUmlInterval *specification)
 {
     // This is a read-write association end
 
-    QM_D(QUmlIntervalConstraint);
-    if (d->specification != specification) {
-        d->specification = specification;
+    if (_specification != specification) {
+        _specification = specification;
     }
 }
 

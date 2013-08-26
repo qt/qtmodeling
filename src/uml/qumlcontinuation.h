@@ -51,15 +51,17 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlContinuationPrivate;
 class Q_UML_EXPORT QUmlContinuation : public QUmlInteractionFragment
 {
 public:
-    QUmlContinuation(bool create_d_ptr = true);
+    QUmlContinuation();
 
     // Owned attributes
     bool setting() const;
     void setSetting(bool setting);
+
+protected:
+    bool _setting;
 };
 
 QT_END_NAMESPACE

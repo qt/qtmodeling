@@ -39,16 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlstartclassifierbehavioraction.h"
-#include "qumlstartclassifierbehavioraction_p.h"
 
 #include <QtUml/QUmlInputPin>
 
 QT_BEGIN_NAMESPACE
-
-QUmlStartClassifierBehaviorActionPrivate::QUmlStartClassifierBehaviorActionPrivate() :
-    object(0)
-{
-}
 
 /*!
     \class QUmlStartClassifierBehaviorAction
@@ -58,11 +52,9 @@ QUmlStartClassifierBehaviorActionPrivate::QUmlStartClassifierBehaviorActionPriva
     \brief A start classifier behavior action is an action that starts the classifier behavior of the input.
  */
 
-QUmlStartClassifierBehaviorAction::QUmlStartClassifierBehaviorAction(bool create_d_ptr) :
-    QUmlAction(false)
+QUmlStartClassifierBehaviorAction::QUmlStartClassifierBehaviorAction() :
+    _object(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlStartClassifierBehaviorActionPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -74,17 +66,15 @@ QUmlInputPin *QUmlStartClassifierBehaviorAction::object() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlStartClassifierBehaviorAction);
-    return d->object;
+    return _object;
 }
 
 void QUmlStartClassifierBehaviorAction::setObject(QUmlInputPin *object)
 {
     // This is a read-write association end
 
-    QM_D(QUmlStartClassifierBehaviorAction);
-    if (d->object != object) {
-        d->object = object;
+    if (_object != object) {
+        _object = object;
     }
 }
 

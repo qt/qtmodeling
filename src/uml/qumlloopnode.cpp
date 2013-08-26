@@ -39,19 +39,12 @@
 **
 ****************************************************************************/
 #include "qumlloopnode.h"
-#include "qumlloopnode_p.h"
 
 #include <QtUml/QUmlExecutableNode>
 #include <QtUml/QUmlInputPin>
 #include <QtUml/QUmlOutputPin>
 
 QT_BEGIN_NAMESPACE
-
-QUmlLoopNodePrivate::QUmlLoopNodePrivate() :
-    decider(0),
-    isTestedFirst(false)
-{
-}
 
 /*!
     \class QUmlLoopNode
@@ -61,11 +54,10 @@ QUmlLoopNodePrivate::QUmlLoopNodePrivate() :
     \brief A loop node is a structured activity node that represents a loop with setup, test, and body sections.
  */
 
-QUmlLoopNode::QUmlLoopNode(bool create_d_ptr) :
-    QUmlStructuredActivityNode(false)
+QUmlLoopNode::QUmlLoopNode() :
+    _decider(0),
+    _isTestedFirst(false)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlLoopNodePrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -77,17 +69,15 @@ QList<QUmlOutputPin *> QUmlLoopNode::bodyOutput() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlLoopNode);
-    return d->bodyOutput;
+    return _bodyOutput;
 }
 
 void QUmlLoopNode::addBodyOutput(QUmlOutputPin *bodyOutput)
 {
     // This is a read-write association end
 
-    QM_D(QUmlLoopNode);
-    if (!d->bodyOutput.contains(bodyOutput)) {
-        d->bodyOutput.append(bodyOutput);
+    if (!_bodyOutput.contains(bodyOutput)) {
+        _bodyOutput.append(bodyOutput);
     }
 }
 
@@ -95,9 +85,8 @@ void QUmlLoopNode::removeBodyOutput(QUmlOutputPin *bodyOutput)
 {
     // This is a read-write association end
 
-    QM_D(QUmlLoopNode);
-    if (d->bodyOutput.contains(bodyOutput)) {
-        d->bodyOutput.removeAll(bodyOutput);
+    if (_bodyOutput.contains(bodyOutput)) {
+        _bodyOutput.removeAll(bodyOutput);
     }
 }
 
@@ -108,17 +97,15 @@ QSet<QUmlExecutableNode *> QUmlLoopNode::bodyPart() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlLoopNode);
-    return d->bodyPart;
+    return _bodyPart;
 }
 
 void QUmlLoopNode::addBodyPart(QUmlExecutableNode *bodyPart)
 {
     // This is a read-write association end
 
-    QM_D(QUmlLoopNode);
-    if (!d->bodyPart.contains(bodyPart)) {
-        d->bodyPart.insert(bodyPart);
+    if (!_bodyPart.contains(bodyPart)) {
+        _bodyPart.insert(bodyPart);
     }
 }
 
@@ -126,9 +113,8 @@ void QUmlLoopNode::removeBodyPart(QUmlExecutableNode *bodyPart)
 {
     // This is a read-write association end
 
-    QM_D(QUmlLoopNode);
-    if (d->bodyPart.contains(bodyPart)) {
-        d->bodyPart.remove(bodyPart);
+    if (_bodyPart.contains(bodyPart)) {
+        _bodyPart.remove(bodyPart);
     }
 }
 
@@ -139,17 +125,15 @@ QUmlOutputPin *QUmlLoopNode::decider() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlLoopNode);
-    return d->decider;
+    return _decider;
 }
 
 void QUmlLoopNode::setDecider(QUmlOutputPin *decider)
 {
     // This is a read-write association end
 
-    QM_D(QUmlLoopNode);
-    if (d->decider != decider) {
-        d->decider = decider;
+    if (_decider != decider) {
+        _decider = decider;
     }
 }
 
@@ -160,17 +144,15 @@ bool QUmlLoopNode::isTestedFirst() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlLoopNode);
-    return d->isTestedFirst;
+    return _isTestedFirst;
 }
 
 void QUmlLoopNode::setTestedFirst(bool isTestedFirst)
 {
     // This is a read-write property
 
-    QM_D(QUmlLoopNode);
-    if (d->isTestedFirst != isTestedFirst) {
-        d->isTestedFirst = isTestedFirst;
+    if (_isTestedFirst != isTestedFirst) {
+        _isTestedFirst = isTestedFirst;
     }
 }
 
@@ -181,17 +163,15 @@ QList<QUmlOutputPin *> QUmlLoopNode::loopVariable() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlLoopNode);
-    return d->loopVariable;
+    return _loopVariable;
 }
 
 void QUmlLoopNode::addLoopVariable(QUmlOutputPin *loopVariable)
 {
     // This is a read-write association end
 
-    QM_D(QUmlLoopNode);
-    if (!d->loopVariable.contains(loopVariable)) {
-        d->loopVariable.append(loopVariable);
+    if (!_loopVariable.contains(loopVariable)) {
+        _loopVariable.append(loopVariable);
     }
 }
 
@@ -199,9 +179,8 @@ void QUmlLoopNode::removeLoopVariable(QUmlOutputPin *loopVariable)
 {
     // This is a read-write association end
 
-    QM_D(QUmlLoopNode);
-    if (d->loopVariable.contains(loopVariable)) {
-        d->loopVariable.removeAll(loopVariable);
+    if (_loopVariable.contains(loopVariable)) {
+        _loopVariable.removeAll(loopVariable);
     }
 }
 
@@ -212,17 +191,15 @@ QList<QUmlInputPin *> QUmlLoopNode::loopVariableInput() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlLoopNode);
-    return d->loopVariableInput;
+    return _loopVariableInput;
 }
 
 void QUmlLoopNode::addLoopVariableInput(QUmlInputPin *loopVariableInput)
 {
     // This is a read-write association end
 
-    QM_D(QUmlLoopNode);
-    if (!d->loopVariableInput.contains(loopVariableInput)) {
-        d->loopVariableInput.append(loopVariableInput);
+    if (!_loopVariableInput.contains(loopVariableInput)) {
+        _loopVariableInput.append(loopVariableInput);
     }
 }
 
@@ -230,9 +207,8 @@ void QUmlLoopNode::removeLoopVariableInput(QUmlInputPin *loopVariableInput)
 {
     // This is a read-write association end
 
-    QM_D(QUmlLoopNode);
-    if (d->loopVariableInput.contains(loopVariableInput)) {
-        d->loopVariableInput.removeAll(loopVariableInput);
+    if (_loopVariableInput.contains(loopVariableInput)) {
+        _loopVariableInput.removeAll(loopVariableInput);
     }
 }
 
@@ -243,17 +219,15 @@ QList<QUmlOutputPin *> QUmlLoopNode::result() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlLoopNode);
-    return d->result;
+    return _result;
 }
 
 void QUmlLoopNode::addResult(QUmlOutputPin *result)
 {
     // This is a read-write association end
 
-    QM_D(QUmlLoopNode);
-    if (!d->result.contains(result)) {
-        d->result.append(result);
+    if (!_result.contains(result)) {
+        _result.append(result);
     }
 }
 
@@ -261,9 +235,8 @@ void QUmlLoopNode::removeResult(QUmlOutputPin *result)
 {
     // This is a read-write association end
 
-    QM_D(QUmlLoopNode);
-    if (d->result.contains(result)) {
-        d->result.removeAll(result);
+    if (_result.contains(result)) {
+        _result.removeAll(result);
     }
 }
 
@@ -274,17 +247,15 @@ QSet<QUmlExecutableNode *> QUmlLoopNode::setupPart() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlLoopNode);
-    return d->setupPart;
+    return _setupPart;
 }
 
 void QUmlLoopNode::addSetupPart(QUmlExecutableNode *setupPart)
 {
     // This is a read-write association end
 
-    QM_D(QUmlLoopNode);
-    if (!d->setupPart.contains(setupPart)) {
-        d->setupPart.insert(setupPart);
+    if (!_setupPart.contains(setupPart)) {
+        _setupPart.insert(setupPart);
     }
 }
 
@@ -292,9 +263,8 @@ void QUmlLoopNode::removeSetupPart(QUmlExecutableNode *setupPart)
 {
     // This is a read-write association end
 
-    QM_D(QUmlLoopNode);
-    if (d->setupPart.contains(setupPart)) {
-        d->setupPart.remove(setupPart);
+    if (_setupPart.contains(setupPart)) {
+        _setupPart.remove(setupPart);
     }
 }
 
@@ -305,17 +275,15 @@ QSet<QUmlExecutableNode *> QUmlLoopNode::test() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlLoopNode);
-    return d->test;
+    return _test;
 }
 
 void QUmlLoopNode::addTest(QUmlExecutableNode *test)
 {
     // This is a read-write association end
 
-    QM_D(QUmlLoopNode);
-    if (!d->test.contains(test)) {
-        d->test.insert(test);
+    if (!_test.contains(test)) {
+        _test.insert(test);
     }
 }
 
@@ -323,9 +291,8 @@ void QUmlLoopNode::removeTest(QUmlExecutableNode *test)
 {
     // This is a read-write association end
 
-    QM_D(QUmlLoopNode);
-    if (d->test.contains(test)) {
-        d->test.remove(test);
+    if (_test.contains(test)) {
+        _test.remove(test);
     }
 }
 

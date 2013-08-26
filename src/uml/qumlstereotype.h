@@ -54,11 +54,10 @@ QT_MODULE(QtUml)
 class QUmlImage;
 class QUmlProfile;
 
-class QUmlStereotypePrivate;
 class Q_UML_EXPORT QUmlStereotype : public QUmlClass
 {
 public:
-    QUmlStereotype(bool create_d_ptr = true);
+    QUmlStereotype();
 
     // Owned attributes
     QSet<QUmlImage *> icon() const;
@@ -68,6 +67,9 @@ public:
 
     // Operations
     QUmlProfile *containingProfile() const;
+
+protected:
+    QSet<QUmlImage *> _icon;
 };
 
 QT_END_NAMESPACE

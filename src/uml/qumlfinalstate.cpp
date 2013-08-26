@@ -39,13 +39,8 @@
 **
 ****************************************************************************/
 #include "qumlfinalstate.h"
-#include "qumlfinalstate_p.h"
 
 QT_BEGIN_NAMESPACE
-
-QUmlFinalStatePrivate::QUmlFinalStatePrivate()
-{
-}
 
 /*!
     \class QUmlFinalState
@@ -55,11 +50,8 @@ QUmlFinalStatePrivate::QUmlFinalStatePrivate()
     \brief A special kind of state signifying that the enclosing region is completed. If the enclosing region is directly contained in a state machine and all other regions in the state machine also are completed, then it means that the entire state machine is completed.
  */
 
-QUmlFinalState::QUmlFinalState(bool create_d_ptr) :
-    QUmlState(false)
+QUmlFinalState::QUmlFinalState()
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlFinalStatePrivate);
 }
 
 QT_END_NAMESPACE

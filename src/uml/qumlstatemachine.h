@@ -57,11 +57,10 @@ class QUmlRedefinableElement;
 class QUmlRegion;
 class QUmlState;
 
-class QUmlStateMachinePrivate;
 class Q_UML_EXPORT QUmlStateMachine : public QUmlBehavior
 {
 public:
-    QUmlStateMachine(bool create_d_ptr = true);
+    QUmlStateMachine();
 
     // Owned attributes
     QSet<QUmlPseudostate *> connectionPoint() const;
@@ -82,6 +81,12 @@ public:
     bool ancestor(QUmlState *s1, QUmlState *s2) const;
     bool isConsistentWith(QUmlRedefinableElement *redefinee) const;
     bool isRedefinitionContextValid(QUmlStateMachine *redefined) const;
+
+protected:
+    QSet<QUmlPseudostate *> _connectionPoint;
+    QSet<QUmlStateMachine *> _extendedStateMachine;
+    QSet<QUmlRegion *> _region;
+    QSet<QUmlState *> _submachineState;
 };
 
 QT_END_NAMESPACE

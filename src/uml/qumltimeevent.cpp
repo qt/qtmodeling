@@ -39,17 +39,10 @@
 **
 ****************************************************************************/
 #include "qumltimeevent.h"
-#include "qumltimeevent_p.h"
 
 #include <QtUml/QUmlTimeExpression>
 
 QT_BEGIN_NAMESPACE
-
-QUmlTimeEventPrivate::QUmlTimeEventPrivate() :
-    isRelative(false),
-    when(0)
-{
-}
 
 /*!
     \class QUmlTimeEvent
@@ -59,11 +52,10 @@ QUmlTimeEventPrivate::QUmlTimeEventPrivate() :
     \brief A time event can be defined relative to entering the current state of the executing state machine.A time event specifies a point in time. At the specified time, the event occurs.
  */
 
-QUmlTimeEvent::QUmlTimeEvent(bool create_d_ptr) :
-    QUmlEvent(false)
+QUmlTimeEvent::QUmlTimeEvent() :
+    _isRelative(false),
+    _when(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlTimeEventPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -75,17 +67,15 @@ bool QUmlTimeEvent::isRelative() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlTimeEvent);
-    return d->isRelative;
+    return _isRelative;
 }
 
 void QUmlTimeEvent::setRelative(bool isRelative)
 {
     // This is a read-write property
 
-    QM_D(QUmlTimeEvent);
-    if (d->isRelative != isRelative) {
-        d->isRelative = isRelative;
+    if (_isRelative != isRelative) {
+        _isRelative = isRelative;
     }
 }
 
@@ -96,17 +86,15 @@ QUmlTimeExpression *QUmlTimeEvent::when() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlTimeEvent);
-    return d->when;
+    return _when;
 }
 
 void QUmlTimeEvent::setWhen(QUmlTimeExpression *when)
 {
     // This is a read-write association end
 
-    QM_D(QUmlTimeEvent);
-    if (d->when != when) {
-        d->when = when;
+    if (_when != when) {
+        _when = when;
     }
 }
 

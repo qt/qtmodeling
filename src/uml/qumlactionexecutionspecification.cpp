@@ -39,16 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlactionexecutionspecification.h"
-#include "qumlactionexecutionspecification_p.h"
 
 #include <QtUml/QUmlAction>
 
 QT_BEGIN_NAMESPACE
-
-QUmlActionExecutionSpecificationPrivate::QUmlActionExecutionSpecificationPrivate() :
-    action(0)
-{
-}
 
 /*!
     \class QUmlActionExecutionSpecification
@@ -58,11 +52,9 @@ QUmlActionExecutionSpecificationPrivate::QUmlActionExecutionSpecificationPrivate
     \brief An action execution specification is a kind of execution specification representing the execution of an action.
  */
 
-QUmlActionExecutionSpecification::QUmlActionExecutionSpecification(bool create_d_ptr) :
-    QUmlExecutionSpecification(false)
+QUmlActionExecutionSpecification::QUmlActionExecutionSpecification() :
+    _action(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlActionExecutionSpecificationPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -74,17 +66,15 @@ QUmlAction *QUmlActionExecutionSpecification::action() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlActionExecutionSpecification);
-    return d->action;
+    return _action;
 }
 
 void QUmlActionExecutionSpecification::setAction(QUmlAction *action)
 {
     // This is a read-write association end
 
-    QM_D(QUmlActionExecutionSpecification);
-    if (d->action != action) {
-        d->action = action;
+    if (_action != action) {
+        _action = action;
     }
 }
 

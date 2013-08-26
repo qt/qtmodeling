@@ -39,19 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlpackageimport.h"
-#include "qumlpackageimport_p.h"
 
 #include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlPackage>
 
 QT_BEGIN_NAMESPACE
-
-QUmlPackageImportPrivate::QUmlPackageImportPrivate() :
-    importedPackage(0),
-    importingNamespace(0),
-    visibility(QtUml::VisibilityPublic)
-{
-}
 
 /*!
     \class QUmlPackageImport
@@ -61,11 +53,11 @@ QUmlPackageImportPrivate::QUmlPackageImportPrivate() :
     \brief A package import is a relationship that allows the use of unqualified names to refer to package members from other namespaces.
  */
 
-QUmlPackageImport::QUmlPackageImport(bool create_d_ptr) :
-    QUmlDirectedRelationship(false)
+QUmlPackageImport::QUmlPackageImport() :
+    _importedPackage(0),
+    _importingNamespace(0),
+    _visibility(QtUml::VisibilityPublic)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlPackageImportPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -77,17 +69,15 @@ QUmlPackage *QUmlPackageImport::importedPackage() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlPackageImport);
-    return d->importedPackage;
+    return _importedPackage;
 }
 
 void QUmlPackageImport::setImportedPackage(QUmlPackage *importedPackage)
 {
     // This is a read-write association end
 
-    QM_D(QUmlPackageImport);
-    if (d->importedPackage != importedPackage) {
-        d->importedPackage = importedPackage;
+    if (_importedPackage != importedPackage) {
+        _importedPackage = importedPackage;
     }
 }
 
@@ -98,17 +88,15 @@ QUmlNamespace *QUmlPackageImport::importingNamespace() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlPackageImport);
-    return d->importingNamespace;
+    return _importingNamespace;
 }
 
 void QUmlPackageImport::setImportingNamespace(QUmlNamespace *importingNamespace)
 {
     // This is a read-write association end
 
-    QM_D(QUmlPackageImport);
-    if (d->importingNamespace != importingNamespace) {
-        d->importingNamespace = importingNamespace;
+    if (_importingNamespace != importingNamespace) {
+        _importingNamespace = importingNamespace;
     }
 }
 
@@ -119,17 +107,15 @@ QtUml::VisibilityKind QUmlPackageImport::visibility() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlPackageImport);
-    return d->visibility;
+    return _visibility;
 }
 
 void QUmlPackageImport::setVisibility(QtUml::VisibilityKind visibility)
 {
     // This is a read-write property
 
-    QM_D(QUmlPackageImport);
-    if (d->visibility != visibility) {
-        d->visibility = visibility;
+    if (_visibility != visibility) {
+        _visibility = visibility;
     }
 }
 

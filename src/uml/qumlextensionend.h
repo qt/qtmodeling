@@ -53,11 +53,10 @@ QT_MODULE(QtUml)
 
 class QUmlStereotype;
 
-class QUmlExtensionEndPrivate;
 class Q_UML_EXPORT QUmlExtensionEnd : public QUmlProperty
 {
 public:
-    QUmlExtensionEnd(bool create_d_ptr = true);
+    QUmlExtensionEnd();
 
     // Owned attributes
     int lower() const;
@@ -67,6 +66,9 @@ public:
 
     // Operations
     int lowerBound() const;
+
+protected:
+    QUmlStereotype *_type;
 };
 
 QT_END_NAMESPACE

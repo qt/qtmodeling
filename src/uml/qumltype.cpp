@@ -39,14 +39,8 @@
 **
 ****************************************************************************/
 #include "qumltype.h"
-#include "qumltype_p.h"
 
 QT_BEGIN_NAMESPACE
-
-QUmlTypePrivate::QUmlTypePrivate() :
-    package(0)
-{
-}
 
 /*!
     \class QUmlType
@@ -56,11 +50,9 @@ QUmlTypePrivate::QUmlTypePrivate() :
     \brief A type is a named element that is used as the type for a typed element. A type can be contained in a package.A type constrains the values represented by a typed element.
  */
 
-QUmlType::QUmlType(bool create_d_ptr) :
-    QUmlPackageableElement(false)
+QUmlType::QUmlType() :
+    _package(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlTypePrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -72,17 +64,15 @@ QUmlPackage *QUmlType::package() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlType);
-    return d->package;
+    return _package;
 }
 
 void QUmlType::setPackage(QUmlPackage *package)
 {
     // This is a read-write association end
 
-    QM_D(QUmlType);
-    if (d->package != package) {
-        d->package = package;
+    if (_package != package) {
+        _package = package;
     }
 }
 

@@ -39,7 +39,6 @@
 **
 ****************************************************************************/
 #include "qumlusecase.h"
-#include "qumlusecase_p.h"
 
 #include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlExtend>
@@ -47,10 +46,6 @@
 #include <QtUml/QUmlInclude>
 
 QT_BEGIN_NAMESPACE
-
-QUmlUseCasePrivate::QUmlUseCasePrivate()
-{
-}
 
 /*!
     \class QUmlUseCase
@@ -60,11 +55,8 @@ QUmlUseCasePrivate::QUmlUseCasePrivate()
     \brief A use case is the specification of a set of actions performed by a system, which yields an observable result that is, typically, of value for one or more actors or other stakeholders of the system.
  */
 
-QUmlUseCase::QUmlUseCase(bool create_d_ptr) :
-    QUmlBehavioredClassifier(false)
+QUmlUseCase::QUmlUseCase()
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlUseCasePrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -76,17 +68,15 @@ QSet<QUmlExtend *> QUmlUseCase::extend() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlUseCase);
-    return d->extend;
+    return _extend;
 }
 
 void QUmlUseCase::addExtend(QUmlExtend *extend)
 {
     // This is a read-write association end
 
-    QM_D(QUmlUseCase);
-    if (!d->extend.contains(extend)) {
-        d->extend.insert(extend);
+    if (!_extend.contains(extend)) {
+        _extend.insert(extend);
     }
 }
 
@@ -94,9 +84,8 @@ void QUmlUseCase::removeExtend(QUmlExtend *extend)
 {
     // This is a read-write association end
 
-    QM_D(QUmlUseCase);
-    if (d->extend.contains(extend)) {
-        d->extend.remove(extend);
+    if (_extend.contains(extend)) {
+        _extend.remove(extend);
     }
 }
 
@@ -107,17 +96,15 @@ QSet<QUmlExtensionPoint *> QUmlUseCase::extensionPoint() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlUseCase);
-    return d->extensionPoint;
+    return _extensionPoint;
 }
 
 void QUmlUseCase::addExtensionPoint(QUmlExtensionPoint *extensionPoint)
 {
     // This is a read-write association end
 
-    QM_D(QUmlUseCase);
-    if (!d->extensionPoint.contains(extensionPoint)) {
-        d->extensionPoint.insert(extensionPoint);
+    if (!_extensionPoint.contains(extensionPoint)) {
+        _extensionPoint.insert(extensionPoint);
     }
 }
 
@@ -125,9 +112,8 @@ void QUmlUseCase::removeExtensionPoint(QUmlExtensionPoint *extensionPoint)
 {
     // This is a read-write association end
 
-    QM_D(QUmlUseCase);
-    if (d->extensionPoint.contains(extensionPoint)) {
-        d->extensionPoint.remove(extensionPoint);
+    if (_extensionPoint.contains(extensionPoint)) {
+        _extensionPoint.remove(extensionPoint);
     }
 }
 
@@ -138,17 +124,15 @@ QSet<QUmlInclude *> QUmlUseCase::include() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlUseCase);
-    return d->include;
+    return _include;
 }
 
 void QUmlUseCase::addInclude(QUmlInclude *include)
 {
     // This is a read-write association end
 
-    QM_D(QUmlUseCase);
-    if (!d->include.contains(include)) {
-        d->include.insert(include);
+    if (!_include.contains(include)) {
+        _include.insert(include);
     }
 }
 
@@ -156,9 +140,8 @@ void QUmlUseCase::removeInclude(QUmlInclude *include)
 {
     // This is a read-write association end
 
-    QM_D(QUmlUseCase);
-    if (d->include.contains(include)) {
-        d->include.remove(include);
+    if (_include.contains(include)) {
+        _include.remove(include);
     }
 }
 
@@ -169,17 +152,15 @@ QSet<QUmlClassifier *> QUmlUseCase::subject() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlUseCase);
-    return d->subject;
+    return _subject;
 }
 
 void QUmlUseCase::addSubject(QUmlClassifier *subject)
 {
     // This is a read-write association end
 
-    QM_D(QUmlUseCase);
-    if (!d->subject.contains(subject)) {
-        d->subject.insert(subject);
+    if (!_subject.contains(subject)) {
+        _subject.insert(subject);
     }
 }
 
@@ -187,9 +168,8 @@ void QUmlUseCase::removeSubject(QUmlClassifier *subject)
 {
     // This is a read-write association end
 
-    QM_D(QUmlUseCase);
-    if (d->subject.contains(subject)) {
-        d->subject.remove(subject);
+    if (_subject.contains(subject)) {
+        _subject.remove(subject);
     }
 }
 

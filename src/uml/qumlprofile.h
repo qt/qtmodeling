@@ -54,11 +54,10 @@ QT_MODULE(QtUml)
 class QUmlElementImport;
 class QUmlPackageImport;
 
-class QUmlProfilePrivate;
 class Q_UML_EXPORT QUmlProfile : public QUmlPackage
 {
 public:
-    QUmlProfile(bool create_d_ptr = true);
+    QUmlProfile();
 
     // Owned attributes
     QSet<QUmlElementImport *> metaclassReference() const;
@@ -67,6 +66,10 @@ public:
     QSet<QUmlPackageImport *> metamodelReference() const;
     void addMetamodelReference(QUmlPackageImport *metamodelReference);
     void removeMetamodelReference(QUmlPackageImport *metamodelReference);
+
+protected:
+    QSet<QUmlElementImport *> _metaclassReference;
+    QSet<QUmlPackageImport *> _metamodelReference;
 };
 
 QT_END_NAMESPACE

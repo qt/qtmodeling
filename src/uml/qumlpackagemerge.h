@@ -53,17 +53,20 @@ QT_MODULE(QtUml)
 
 class QUmlPackage;
 
-class QUmlPackageMergePrivate;
 class Q_UML_EXPORT QUmlPackageMerge : public QUmlDirectedRelationship
 {
 public:
-    QUmlPackageMerge(bool create_d_ptr = true);
+    QUmlPackageMerge();
 
     // Owned attributes
     QUmlPackage *mergedPackage() const;
     void setMergedPackage(QUmlPackage *mergedPackage);
     QUmlPackage *receivingPackage() const;
     void setReceivingPackage(QUmlPackage *receivingPackage);
+
+protected:
+    QUmlPackage *_mergedPackage;
+    QUmlPackage *_receivingPackage;
 };
 
 QT_END_NAMESPACE

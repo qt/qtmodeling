@@ -51,11 +51,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlLiteralSpecificationPrivate;
 class Q_UML_EXPORT QUmlLiteralSpecification : public QUmlValueSpecification
 {
 public:
-    Q_DECL_HIDDEN QUmlLiteralSpecification(bool create_d_ptr = true);
+    Q_DECL_HIDDEN QUmlLiteralSpecification();
+
+protected:
 };
 
 QT_END_NAMESPACE

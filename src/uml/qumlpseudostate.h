@@ -55,11 +55,10 @@ QT_MODULE(QtUml)
 class QUmlState;
 class QUmlStateMachine;
 
-class QUmlPseudostatePrivate;
 class Q_UML_EXPORT QUmlPseudostate : public QUmlVertex
 {
 public:
-    QUmlPseudostate(bool create_d_ptr = true);
+    QUmlPseudostate();
 
     // Owned attributes
     QtUml::PseudostateKind kind() const;
@@ -68,6 +67,11 @@ public:
     void setState(QUmlState *state);
     QUmlStateMachine *stateMachine() const;
     void setStateMachine(QUmlStateMachine *stateMachine);
+
+protected:
+    QtUml::PseudostateKind _kind;
+    QUmlState *_state;
+    QUmlStateMachine *_stateMachine;
 };
 
 QT_END_NAMESPACE

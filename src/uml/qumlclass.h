@@ -59,11 +59,10 @@ class QUmlOperation;
 class QUmlProperty;
 class QUmlReception;
 
-class QUmlClassPrivate;
 class Q_UML_EXPORT QUmlClass : public QUmlEncapsulatedClassifier, public QUmlBehavioredClassifier
 {
 public:
-    QUmlClass(bool create_d_ptr = true);
+    QUmlClass();
 
     // Owned attributes
     QSet<QUmlExtension *> extension() const;
@@ -89,6 +88,14 @@ public:
 
     // Operations
     QSet<QUmlNamedElement *> inherit(QSet<QUmlNamedElement *> inhs) const;
+
+protected:
+    bool _isAbstract;
+    bool _isActive;
+    QList<QUmlClassifier *> _nestedClassifier;
+    QList<QUmlProperty *> _ownedAttribute;
+    QList<QUmlOperation *> _ownedOperation;
+    QSet<QUmlReception *> _ownedReception;
 };
 
 QT_END_NAMESPACE

@@ -53,15 +53,17 @@ QT_MODULE(QtUml)
 
 class QUmlInstanceSpecification;
 
-class QUmlInstanceValuePrivate;
 class Q_UML_EXPORT QUmlInstanceValue : public QUmlValueSpecification
 {
 public:
-    QUmlInstanceValue(bool create_d_ptr = true);
+    QUmlInstanceValue();
 
     // Owned attributes
     QUmlInstanceSpecification *instance() const;
     void setInstance(QUmlInstanceSpecification *instance);
+
+protected:
+    QUmlInstanceSpecification *_instance;
 };
 
 QT_END_NAMESPACE

@@ -53,15 +53,17 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlStructuralFeaturePrivate;
 class Q_UML_EXPORT QUmlStructuralFeature : public virtual QUmlTypedElement, public QUmlMultiplicityElement, public QUmlFeature
 {
 public:
-    Q_DECL_HIDDEN QUmlStructuralFeature(bool create_d_ptr = true);
+    Q_DECL_HIDDEN QUmlStructuralFeature();
 
     // Owned attributes
     bool isReadOnly() const;
     void setReadOnly(bool isReadOnly);
+
+protected:
+    bool _isReadOnly;
 };
 
 QT_END_NAMESPACE

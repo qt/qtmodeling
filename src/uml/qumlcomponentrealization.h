@@ -54,11 +54,10 @@ QT_MODULE(QtUml)
 class QUmlClassifier;
 class QUmlComponent;
 
-class QUmlComponentRealizationPrivate;
 class Q_UML_EXPORT QUmlComponentRealization : public QUmlRealization
 {
 public:
-    QUmlComponentRealization(bool create_d_ptr = true);
+    QUmlComponentRealization();
 
     // Owned attributes
     QUmlComponent *abstraction() const;
@@ -66,6 +65,10 @@ public:
     QSet<QUmlClassifier *> realizingClassifier() const;
     void addRealizingClassifier(QUmlClassifier *realizingClassifier);
     void removeRealizingClassifier(QUmlClassifier *realizingClassifier);
+
+protected:
+    QUmlComponent *_abstraction;
+    QSet<QUmlClassifier *> _realizingClassifier;
 };
 
 QT_END_NAMESPACE

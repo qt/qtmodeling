@@ -39,17 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlgeneralordering.h"
-#include "qumlgeneralordering_p.h"
 
 #include <QtUml/QUmlOccurrenceSpecification>
 
 QT_BEGIN_NAMESPACE
-
-QUmlGeneralOrderingPrivate::QUmlGeneralOrderingPrivate() :
-    after(0),
-    before(0)
-{
-}
 
 /*!
     \class QUmlGeneralOrdering
@@ -59,11 +52,10 @@ QUmlGeneralOrderingPrivate::QUmlGeneralOrderingPrivate() :
     \brief A general ordering represents a binary relation between two occurrence specifications, to describe that one occurrence specification must occur before the other in a valid trace. This mechanism provides the ability to define partial orders of occurrence cpecifications that may otherwise not have a specified order.
  */
 
-QUmlGeneralOrdering::QUmlGeneralOrdering(bool create_d_ptr) :
-    QUmlNamedElement(false)
+QUmlGeneralOrdering::QUmlGeneralOrdering() :
+    _after(0),
+    _before(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlGeneralOrderingPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -75,17 +67,15 @@ QUmlOccurrenceSpecification *QUmlGeneralOrdering::after() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlGeneralOrdering);
-    return d->after;
+    return _after;
 }
 
 void QUmlGeneralOrdering::setAfter(QUmlOccurrenceSpecification *after)
 {
     // This is a read-write association end
 
-    QM_D(QUmlGeneralOrdering);
-    if (d->after != after) {
-        d->after = after;
+    if (_after != after) {
+        _after = after;
     }
 }
 
@@ -96,17 +86,15 @@ QUmlOccurrenceSpecification *QUmlGeneralOrdering::before() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlGeneralOrdering);
-    return d->before;
+    return _before;
 }
 
 void QUmlGeneralOrdering::setBefore(QUmlOccurrenceSpecification *before)
 {
     // This is a read-write association end
 
-    QM_D(QUmlGeneralOrdering);
-    if (d->before != before) {
-        d->before = before;
+    if (_before != before) {
+        _before = before;
     }
 }
 

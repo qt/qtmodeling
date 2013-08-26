@@ -39,16 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlsignalevent.h"
-#include "qumlsignalevent_p.h"
 
 #include <QtUml/QUmlSignal>
 
 QT_BEGIN_NAMESPACE
-
-QUmlSignalEventPrivate::QUmlSignalEventPrivate() :
-    signal(0)
-{
-}
 
 /*!
     \class QUmlSignalEvent
@@ -58,11 +52,9 @@ QUmlSignalEventPrivate::QUmlSignalEventPrivate() :
     \brief A signal event represents the receipt of an asynchronous signal instance. A signal event may, for example, cause a state machine to trigger a transition.
  */
 
-QUmlSignalEvent::QUmlSignalEvent(bool create_d_ptr) :
-    QUmlMessageEvent(false)
+QUmlSignalEvent::QUmlSignalEvent() :
+    _signal(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlSignalEventPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -74,17 +66,15 @@ QUmlSignal *QUmlSignalEvent::signal() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlSignalEvent);
-    return d->signal;
+    return _signal;
 }
 
 void QUmlSignalEvent::setSignal(QUmlSignal *signal)
 {
     // This is a read-write association end
 
-    QM_D(QUmlSignalEvent);
-    if (d->signal != signal) {
-        d->signal = signal;
+    if (_signal != signal) {
+        _signal = signal;
     }
 }
 

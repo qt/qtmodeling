@@ -39,13 +39,8 @@
 **
 ****************************************************************************/
 #include "qumlactor.h"
-#include "qumlactor_p.h"
 
 QT_BEGIN_NAMESPACE
-
-QUmlActorPrivate::QUmlActorPrivate()
-{
-}
 
 /*!
     \class QUmlActor
@@ -55,11 +50,8 @@ QUmlActorPrivate::QUmlActorPrivate()
     \brief An actor specifies a role played by a user or any other system that interacts with the subject.
  */
 
-QUmlActor::QUmlActor(bool create_d_ptr) :
-    QUmlBehavioredClassifier(false)
+QUmlActor::QUmlActor()
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlActorPrivate);
 }
 
 QT_END_NAMESPACE

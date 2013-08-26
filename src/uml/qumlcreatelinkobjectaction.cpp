@@ -39,16 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlcreatelinkobjectaction.h"
-#include "qumlcreatelinkobjectaction_p.h"
 
 #include <QtUml/QUmlOutputPin>
 
 QT_BEGIN_NAMESPACE
-
-QUmlCreateLinkObjectActionPrivate::QUmlCreateLinkObjectActionPrivate() :
-    result(0)
-{
-}
 
 /*!
     \class QUmlCreateLinkObjectAction
@@ -58,11 +52,9 @@ QUmlCreateLinkObjectActionPrivate::QUmlCreateLinkObjectActionPrivate() :
     \brief A create link object action creates a link object.
  */
 
-QUmlCreateLinkObjectAction::QUmlCreateLinkObjectAction(bool create_d_ptr) :
-    QUmlCreateLinkAction(false)
+QUmlCreateLinkObjectAction::QUmlCreateLinkObjectAction() :
+    _result(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlCreateLinkObjectActionPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -74,17 +66,15 @@ QUmlOutputPin *QUmlCreateLinkObjectAction::result() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlCreateLinkObjectAction);
-    return d->result;
+    return _result;
 }
 
 void QUmlCreateLinkObjectAction::setResult(QUmlOutputPin *result)
 {
     // This is a read-write association end
 
-    QM_D(QUmlCreateLinkObjectAction);
-    if (d->result != result) {
-        d->result = result;
+    if (_result != result) {
+        _result = result;
     }
 }
 

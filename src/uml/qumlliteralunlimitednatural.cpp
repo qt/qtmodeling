@@ -39,14 +39,8 @@
 **
 ****************************************************************************/
 #include "qumlliteralunlimitednatural.h"
-#include "qumlliteralunlimitednatural_p.h"
 
 QT_BEGIN_NAMESPACE
-
-QUmlLiteralUnlimitedNaturalPrivate::QUmlLiteralUnlimitedNaturalPrivate() :
-    value(0)
-{
-}
 
 /*!
     \class QUmlLiteralUnlimitedNatural
@@ -56,11 +50,9 @@ QUmlLiteralUnlimitedNaturalPrivate::QUmlLiteralUnlimitedNaturalPrivate() :
     \brief A literal unlimited natural is a specification of an unlimited natural number.
  */
 
-QUmlLiteralUnlimitedNatural::QUmlLiteralUnlimitedNatural(bool create_d_ptr) :
-    QUmlLiteralSpecification(false)
+QUmlLiteralUnlimitedNatural::QUmlLiteralUnlimitedNatural() :
+    _value(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlLiteralUnlimitedNaturalPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -72,17 +64,15 @@ int QUmlLiteralUnlimitedNatural::value() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlLiteralUnlimitedNatural);
-    return d->value;
+    return _value;
 }
 
 void QUmlLiteralUnlimitedNatural::setValue(int value)
 {
     // This is a read-write property
 
-    QM_D(QUmlLiteralUnlimitedNatural);
-    if (d->value != value) {
-        d->value = value;
+    if (_value != value) {
+        _value = value;
     }
 }
 

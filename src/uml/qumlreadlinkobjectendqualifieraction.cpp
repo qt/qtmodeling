@@ -39,20 +39,12 @@
 **
 ****************************************************************************/
 #include "qumlreadlinkobjectendqualifieraction.h"
-#include "qumlreadlinkobjectendqualifieraction_p.h"
 
 #include <QtUml/QUmlInputPin>
 #include <QtUml/QUmlOutputPin>
 #include <QtUml/QUmlProperty>
 
 QT_BEGIN_NAMESPACE
-
-QUmlReadLinkObjectEndQualifierActionPrivate::QUmlReadLinkObjectEndQualifierActionPrivate() :
-    object(0),
-    qualifier(0),
-    result(0)
-{
-}
 
 /*!
     \class QUmlReadLinkObjectEndQualifierAction
@@ -62,11 +54,11 @@ QUmlReadLinkObjectEndQualifierActionPrivate::QUmlReadLinkObjectEndQualifierActio
     \brief A read link object end qualifier action is an action that retrieves a qualifier end value from a link object.
  */
 
-QUmlReadLinkObjectEndQualifierAction::QUmlReadLinkObjectEndQualifierAction(bool create_d_ptr) :
-    QUmlAction(false)
+QUmlReadLinkObjectEndQualifierAction::QUmlReadLinkObjectEndQualifierAction() :
+    _object(0),
+    _qualifier(0),
+    _result(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlReadLinkObjectEndQualifierActionPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -78,17 +70,15 @@ QUmlInputPin *QUmlReadLinkObjectEndQualifierAction::object() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlReadLinkObjectEndQualifierAction);
-    return d->object;
+    return _object;
 }
 
 void QUmlReadLinkObjectEndQualifierAction::setObject(QUmlInputPin *object)
 {
     // This is a read-write association end
 
-    QM_D(QUmlReadLinkObjectEndQualifierAction);
-    if (d->object != object) {
-        d->object = object;
+    if (_object != object) {
+        _object = object;
     }
 }
 
@@ -99,17 +89,15 @@ QUmlProperty *QUmlReadLinkObjectEndQualifierAction::qualifier() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlReadLinkObjectEndQualifierAction);
-    return d->qualifier;
+    return _qualifier;
 }
 
 void QUmlReadLinkObjectEndQualifierAction::setQualifier(QUmlProperty *qualifier)
 {
     // This is a read-write association end
 
-    QM_D(QUmlReadLinkObjectEndQualifierAction);
-    if (d->qualifier != qualifier) {
-        d->qualifier = qualifier;
+    if (_qualifier != qualifier) {
+        _qualifier = qualifier;
     }
 }
 
@@ -120,17 +108,15 @@ QUmlOutputPin *QUmlReadLinkObjectEndQualifierAction::result() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlReadLinkObjectEndQualifierAction);
-    return d->result;
+    return _result;
 }
 
 void QUmlReadLinkObjectEndQualifierAction::setResult(QUmlOutputPin *result)
 {
     // This is a read-write association end
 
-    QM_D(QUmlReadLinkObjectEndQualifierAction);
-    if (d->result != result) {
-        d->result = result;
+    if (_result != result) {
+        _result = result;
     }
 }
 

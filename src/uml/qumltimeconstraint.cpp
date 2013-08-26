@@ -39,17 +39,10 @@
 **
 ****************************************************************************/
 #include "qumltimeconstraint.h"
-#include "qumltimeconstraint_p.h"
 
 #include <QtUml/QUmlTimeInterval>
 
 QT_BEGIN_NAMESPACE
-
-QUmlTimeConstraintPrivate::QUmlTimeConstraintPrivate() :
-    firstEvent(true),
-    specification(0)
-{
-}
 
 /*!
     \class QUmlTimeConstraint
@@ -59,11 +52,10 @@ QUmlTimeConstraintPrivate::QUmlTimeConstraintPrivate() :
     \brief A time constraint is a constraint that refers to a time interval.
  */
 
-QUmlTimeConstraint::QUmlTimeConstraint(bool create_d_ptr) :
-    QUmlIntervalConstraint(false)
+QUmlTimeConstraint::QUmlTimeConstraint() :
+    _firstEvent(true),
+    _specification(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlTimeConstraintPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -75,17 +67,15 @@ bool QUmlTimeConstraint::firstEvent() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlTimeConstraint);
-    return d->firstEvent;
+    return _firstEvent;
 }
 
 void QUmlTimeConstraint::setFirstEvent(bool firstEvent)
 {
     // This is a read-write property
 
-    QM_D(QUmlTimeConstraint);
-    if (d->firstEvent != firstEvent) {
-        d->firstEvent = firstEvent;
+    if (_firstEvent != firstEvent) {
+        _firstEvent = firstEvent;
     }
 }
 
@@ -96,17 +86,15 @@ QUmlTimeInterval *QUmlTimeConstraint::specification() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlTimeConstraint);
-    return d->specification;
+    return _specification;
 }
 
 void QUmlTimeConstraint::setSpecification(QUmlTimeInterval *specification)
 {
     // This is a read-write association end
 
-    QM_D(QUmlTimeConstraint);
-    if (d->specification != specification) {
-        d->specification = specification;
+    if (_specification != specification) {
+        _specification = specification;
     }
 }
 

@@ -55,11 +55,10 @@ class QUmlDeployedArtifact;
 class QUmlDeploymentSpecification;
 class QUmlDeploymentTarget;
 
-class QUmlDeploymentPrivate;
 class Q_UML_EXPORT QUmlDeployment : public QUmlDependency
 {
 public:
-    QUmlDeployment(bool create_d_ptr = true);
+    QUmlDeployment();
 
     // Owned attributes
     QSet<QUmlDeploymentSpecification *> configuration() const;
@@ -70,6 +69,11 @@ public:
     void removeDeployedArtifact(QUmlDeployedArtifact *deployedArtifact);
     QUmlDeploymentTarget *location() const;
     void setLocation(QUmlDeploymentTarget *location);
+
+protected:
+    QSet<QUmlDeploymentSpecification *> _configuration;
+    QSet<QUmlDeployedArtifact *> _deployedArtifact;
+    QUmlDeploymentTarget *_location;
 };
 
 QT_END_NAMESPACE

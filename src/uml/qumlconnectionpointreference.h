@@ -54,11 +54,10 @@ QT_MODULE(QtUml)
 class QUmlPseudostate;
 class QUmlState;
 
-class QUmlConnectionPointReferencePrivate;
 class Q_UML_EXPORT QUmlConnectionPointReference : public QUmlVertex
 {
 public:
-    QUmlConnectionPointReference(bool create_d_ptr = true);
+    QUmlConnectionPointReference();
 
     // Owned attributes
     QSet<QUmlPseudostate *> entry() const;
@@ -69,6 +68,11 @@ public:
     void removeExit(QUmlPseudostate *exit);
     QUmlState *state() const;
     void setState(QUmlState *state);
+
+protected:
+    QSet<QUmlPseudostate *> _entry;
+    QSet<QUmlPseudostate *> _exit;
+    QUmlState *_state;
 };
 
 QT_END_NAMESPACE

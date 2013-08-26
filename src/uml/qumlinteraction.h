@@ -57,11 +57,10 @@ class QUmlGate;
 class QUmlLifeline;
 class QUmlMessage;
 
-class QUmlInteractionPrivate;
 class Q_UML_EXPORT QUmlInteraction : public QUmlBehavior, public QUmlInteractionFragment
 {
 public:
-    QUmlInteraction(bool create_d_ptr = true);
+    QUmlInteraction();
 
     // Owned attributes
     QSet<QUmlAction *> action() const;
@@ -79,6 +78,13 @@ public:
     QSet<QUmlMessage *> message() const;
     void addMessage(QUmlMessage *message);
     void removeMessage(QUmlMessage *message);
+
+protected:
+    QSet<QUmlAction *> _action;
+    QSet<QUmlGate *> _formalGate;
+    QList<QUmlInteractionFragment *> _fragment;
+    QSet<QUmlLifeline *> _lifeline;
+    QSet<QUmlMessage *> _message;
 };
 
 QT_END_NAMESPACE

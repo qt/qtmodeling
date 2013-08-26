@@ -58,11 +58,10 @@ class QUmlActivityPartition;
 class QUmlStructuredActivityNode;
 class QUmlVariable;
 
-class QUmlActivityPrivate;
 class Q_UML_EXPORT QUmlActivity : public QUmlBehavior
 {
 public:
-    QUmlActivity(bool create_d_ptr = true);
+    QUmlActivity();
 
     // Owned attributes
     QSet<QUmlActivityEdge *> edge() const;
@@ -87,6 +86,16 @@ public:
     QSet<QUmlVariable *> variable() const;
     void addVariable(QUmlVariable *variable);
     void removeVariable(QUmlVariable *variable);
+
+protected:
+    QSet<QUmlActivityEdge *> _edge;
+    QSet<QUmlActivityGroup *> _group;
+    bool _isReadOnly;
+    bool _isSingleExecution;
+    QSet<QUmlActivityNode *> _node;
+    QSet<QUmlActivityPartition *> _partition;
+    QSet<QUmlStructuredActivityNode *> _structuredNode;
+    QSet<QUmlVariable *> _variable;
 };
 
 QT_END_NAMESPACE

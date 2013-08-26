@@ -39,17 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlopaqueexpression.h"
-#include "qumlopaqueexpression_p.h"
 
 #include <QtUml/QUmlBehavior>
 #include <QtUml/QUmlParameter>
 
 QT_BEGIN_NAMESPACE
-
-QUmlOpaqueExpressionPrivate::QUmlOpaqueExpressionPrivate() :
-    behavior(0)
-{
-}
 
 /*!
     \class QUmlOpaqueExpression
@@ -59,11 +53,9 @@ QUmlOpaqueExpressionPrivate::QUmlOpaqueExpressionPrivate() :
     \brief An opaque expression is an uninterpreted textual statement that denotes a (possibly empty) set of values when evaluated in a context.Provides a mechanism for precisely defining the behavior of an opaque expression. An opaque expression is defined by a behavior restricted to return one result.
  */
 
-QUmlOpaqueExpression::QUmlOpaqueExpression(bool create_d_ptr) :
-    QUmlValueSpecification(false)
+QUmlOpaqueExpression::QUmlOpaqueExpression() :
+    _behavior(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlOpaqueExpressionPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -75,17 +67,15 @@ QUmlBehavior *QUmlOpaqueExpression::behavior() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlOpaqueExpression);
-    return d->behavior;
+    return _behavior;
 }
 
 void QUmlOpaqueExpression::setBehavior(QUmlBehavior *behavior)
 {
     // This is a read-write association end
 
-    QM_D(QUmlOpaqueExpression);
-    if (d->behavior != behavior) {
-        d->behavior = behavior;
+    if (_behavior != behavior) {
+        _behavior = behavior;
     }
 }
 
@@ -96,17 +86,15 @@ QList<QString> QUmlOpaqueExpression::body() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlOpaqueExpression);
-    return d->body;
+    return _body;
 }
 
 void QUmlOpaqueExpression::addBody(QString body)
 {
     // This is a read-write property
 
-    QM_D(QUmlOpaqueExpression);
-    if (!d->body.contains(body)) {
-        d->body.append(body);
+    if (!_body.contains(body)) {
+        _body.append(body);
     }
 }
 
@@ -114,9 +102,8 @@ void QUmlOpaqueExpression::removeBody(QString body)
 {
     // This is a read-write property
 
-    QM_D(QUmlOpaqueExpression);
-    if (d->body.contains(body)) {
-        d->body.removeAll(body);
+    if (_body.contains(body)) {
+        _body.removeAll(body);
     }
 }
 
@@ -127,17 +114,15 @@ QList<QString> QUmlOpaqueExpression::language() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlOpaqueExpression);
-    return d->language;
+    return _language;
 }
 
 void QUmlOpaqueExpression::addLanguage(QString language)
 {
     // This is a read-write property
 
-    QM_D(QUmlOpaqueExpression);
-    if (!d->language.contains(language)) {
-        d->language.append(language);
+    if (!_language.contains(language)) {
+        _language.append(language);
     }
 }
 
@@ -145,9 +130,8 @@ void QUmlOpaqueExpression::removeLanguage(QString language)
 {
     // This is a read-write property
 
-    QM_D(QUmlOpaqueExpression);
-    if (d->language.contains(language)) {
-        d->language.removeAll(language);
+    if (_language.contains(language)) {
+        _language.removeAll(language);
     }
 }
 

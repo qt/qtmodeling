@@ -53,16 +53,18 @@ QT_MODULE(QtUml)
 
 class QUmlLinkEndDestructionData;
 
-class QUmlDestroyLinkActionPrivate;
 class Q_UML_EXPORT QUmlDestroyLinkAction : public QUmlWriteLinkAction
 {
 public:
-    QUmlDestroyLinkAction(bool create_d_ptr = true);
+    QUmlDestroyLinkAction();
 
     // Owned attributes
     QSet<QUmlLinkEndDestructionData *> endData() const;
     void addEndData(QUmlLinkEndDestructionData *endData);
     void removeEndData(QUmlLinkEndDestructionData *endData);
+
+protected:
+    QSet<QUmlLinkEndDestructionData *> _endData;
 };
 
 QT_END_NAMESPACE

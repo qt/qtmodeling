@@ -39,16 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlcallevent.h"
-#include "qumlcallevent_p.h"
 
 #include <QtUml/QUmlOperation>
 
 QT_BEGIN_NAMESPACE
-
-QUmlCallEventPrivate::QUmlCallEventPrivate() :
-    operation(0)
-{
-}
 
 /*!
     \class QUmlCallEvent
@@ -58,11 +52,9 @@ QUmlCallEventPrivate::QUmlCallEventPrivate() :
     \brief A call event models the receipt by an object of a message invoking a call of an operation.
  */
 
-QUmlCallEvent::QUmlCallEvent(bool create_d_ptr) :
-    QUmlMessageEvent(false)
+QUmlCallEvent::QUmlCallEvent() :
+    _operation(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlCallEventPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -74,17 +66,15 @@ QUmlOperation *QUmlCallEvent::operation() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlCallEvent);
-    return d->operation;
+    return _operation;
 }
 
 void QUmlCallEvent::setOperation(QUmlOperation *operation)
 {
     // This is a read-write association end
 
-    QM_D(QUmlCallEvent);
-    if (d->operation != operation) {
-        d->operation = operation;
+    if (_operation != operation) {
+        _operation = operation;
     }
 }
 

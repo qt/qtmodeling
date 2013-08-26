@@ -39,18 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlstateinvariant.h"
-#include "qumlstateinvariant_p.h"
 
 #include <QtUml/QUmlConstraint>
 #include <QtUml/QUmlLifeline>
 
 QT_BEGIN_NAMESPACE
-
-QUmlStateInvariantPrivate::QUmlStateInvariantPrivate() :
-    covered(0),
-    invariant(0)
-{
-}
 
 /*!
     \class QUmlStateInvariant
@@ -60,11 +53,10 @@ QUmlStateInvariantPrivate::QUmlStateInvariantPrivate() :
     \brief A state invariant is a runtime constraint on the participants of the interaction. It may be used to specify a variety of different kinds of constraints, such as values of attributes or variables, internal or external states, and so on. A state invariant is an interaction fragment and it is placed on a lifeline.
  */
 
-QUmlStateInvariant::QUmlStateInvariant(bool create_d_ptr) :
-    QUmlInteractionFragment(false)
+QUmlStateInvariant::QUmlStateInvariant() :
+    _covered(0),
+    _invariant(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlStateInvariantPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -76,17 +68,15 @@ QUmlLifeline *QUmlStateInvariant::covered() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlStateInvariant);
-    return d->covered;
+    return _covered;
 }
 
 void QUmlStateInvariant::setCovered(QUmlLifeline *covered)
 {
     // This is a read-write association end
 
-    QM_D(QUmlStateInvariant);
-    if (d->covered != covered) {
-        d->covered = covered;
+    if (_covered != covered) {
+        _covered = covered;
     }
 }
 
@@ -97,17 +87,15 @@ QUmlConstraint *QUmlStateInvariant::invariant() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlStateInvariant);
-    return d->invariant;
+    return _invariant;
 }
 
 void QUmlStateInvariant::setInvariant(QUmlConstraint *invariant)
 {
     // This is a read-write association end
 
-    QM_D(QUmlStateInvariant);
-    if (d->invariant != invariant) {
-        d->invariant = invariant;
+    if (_invariant != invariant) {
+        _invariant = invariant;
     }
 }
 

@@ -53,15 +53,17 @@ QT_MODULE(QtUml)
 
 class QUmlInputPin;
 
-class QUmlWriteVariableActionPrivate;
 class Q_UML_EXPORT QUmlWriteVariableAction : public QUmlVariableAction
 {
 public:
-    Q_DECL_HIDDEN QUmlWriteVariableAction(bool create_d_ptr = true);
+    Q_DECL_HIDDEN QUmlWriteVariableAction();
 
     // Owned attributes
     QUmlInputPin *value() const;
     void setValue(QUmlInputPin *value);
+
+protected:
+    QUmlInputPin *_value;
 };
 
 QT_END_NAMESPACE

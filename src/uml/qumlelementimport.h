@@ -55,11 +55,10 @@ QT_MODULE(QtUml)
 class QUmlNamespace;
 class QUmlPackageableElement;
 
-class QUmlElementImportPrivate;
 class Q_UML_EXPORT QUmlElementImport : public QUmlDirectedRelationship
 {
 public:
-    QUmlElementImport(bool create_d_ptr = true);
+    QUmlElementImport();
 
     // Owned attributes
     QString alias() const;
@@ -73,6 +72,12 @@ public:
 
     // Operations
     QString getName() const;
+
+protected:
+    QString _alias;
+    QUmlPackageableElement *_importedElement;
+    QUmlNamespace *_importingNamespace;
+    QtUml::VisibilityKind _visibility;
 };
 
 QT_END_NAMESPACE

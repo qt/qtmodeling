@@ -39,19 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlgeneralization.h"
-#include "qumlgeneralization_p.h"
 
 #include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlGeneralizationSet>
 
 QT_BEGIN_NAMESPACE
-
-QUmlGeneralizationPrivate::QUmlGeneralizationPrivate() :
-    general(0),
-    isSubstitutable(true),
-    specific(0)
-{
-}
 
 /*!
     \class QUmlGeneralization
@@ -61,11 +53,11 @@ QUmlGeneralizationPrivate::QUmlGeneralizationPrivate() :
     \brief A generalization is a taxonomic relationship between a more general classifier and a more specific classifier. Each instance of the specific classifier is also an indirect instance of the general classifier. Thus, the specific classifier inherits the features of the more general classifier.A generalization relates a specific classifier to a more general classifier, and is owned by the specific classifier.
  */
 
-QUmlGeneralization::QUmlGeneralization(bool create_d_ptr) :
-    QUmlDirectedRelationship(false)
+QUmlGeneralization::QUmlGeneralization() :
+    _general(0),
+    _isSubstitutable(true),
+    _specific(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlGeneralizationPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -77,17 +69,15 @@ QUmlClassifier *QUmlGeneralization::general() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlGeneralization);
-    return d->general;
+    return _general;
 }
 
 void QUmlGeneralization::setGeneral(QUmlClassifier *general)
 {
     // This is a read-write association end
 
-    QM_D(QUmlGeneralization);
-    if (d->general != general) {
-        d->general = general;
+    if (_general != general) {
+        _general = general;
     }
 }
 
@@ -98,17 +88,15 @@ QSet<QUmlGeneralizationSet *> QUmlGeneralization::generalizationSet() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlGeneralization);
-    return d->generalizationSet;
+    return _generalizationSet;
 }
 
 void QUmlGeneralization::addGeneralizationSet(QUmlGeneralizationSet *generalizationSet)
 {
     // This is a read-write association end
 
-    QM_D(QUmlGeneralization);
-    if (!d->generalizationSet.contains(generalizationSet)) {
-        d->generalizationSet.insert(generalizationSet);
+    if (!_generalizationSet.contains(generalizationSet)) {
+        _generalizationSet.insert(generalizationSet);
     }
 }
 
@@ -116,9 +104,8 @@ void QUmlGeneralization::removeGeneralizationSet(QUmlGeneralizationSet *generali
 {
     // This is a read-write association end
 
-    QM_D(QUmlGeneralization);
-    if (d->generalizationSet.contains(generalizationSet)) {
-        d->generalizationSet.remove(generalizationSet);
+    if (_generalizationSet.contains(generalizationSet)) {
+        _generalizationSet.remove(generalizationSet);
     }
 }
 
@@ -129,17 +116,15 @@ bool QUmlGeneralization::isSubstitutable() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlGeneralization);
-    return d->isSubstitutable;
+    return _isSubstitutable;
 }
 
 void QUmlGeneralization::setSubstitutable(bool isSubstitutable)
 {
     // This is a read-write property
 
-    QM_D(QUmlGeneralization);
-    if (d->isSubstitutable != isSubstitutable) {
-        d->isSubstitutable = isSubstitutable;
+    if (_isSubstitutable != isSubstitutable) {
+        _isSubstitutable = isSubstitutable;
     }
 }
 
@@ -150,17 +135,15 @@ QUmlClassifier *QUmlGeneralization::specific() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlGeneralization);
-    return d->specific;
+    return _specific;
 }
 
 void QUmlGeneralization::setSpecific(QUmlClassifier *specific)
 {
     // This is a read-write association end
 
-    QM_D(QUmlGeneralization);
-    if (d->specific != specific) {
-        d->specific = specific;
+    if (_specific != specific) {
+        _specific = specific;
     }
 }
 

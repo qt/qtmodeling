@@ -55,11 +55,10 @@ class QUmlConnectableElement;
 class QUmlConnector;
 class QUmlProperty;
 
-class QUmlStructuredClassifierPrivate;
 class Q_UML_EXPORT QUmlStructuredClassifier : public QUmlClassifier
 {
 public:
-    Q_DECL_HIDDEN QUmlStructuredClassifier(bool create_d_ptr = true);
+    Q_DECL_HIDDEN QUmlStructuredClassifier();
 
     // Owned attributes
     QList<QUmlProperty *> ownedAttribute() const;
@@ -70,6 +69,11 @@ public:
     void removeOwnedConnector(QUmlConnector *ownedConnector);
     QSet<QUmlProperty *> part() const;
     QSet<QUmlConnectableElement *> role() const;
+
+protected:
+    QList<QUmlProperty *> _ownedAttribute;
+    QSet<QUmlConnector *> _ownedConnector;
+    QSet<QUmlConnectableElement *> _role;
 };
 
 QT_END_NAMESPACE

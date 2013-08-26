@@ -53,15 +53,17 @@ QT_MODULE(QtUml)
 
 class QUmlType;
 
-class QUmlTypedElementPrivate;
 class Q_UML_EXPORT QUmlTypedElement : public virtual QUmlNamedElement
 {
 public:
-    Q_DECL_HIDDEN QUmlTypedElement(bool create_d_ptr = true);
+    Q_DECL_HIDDEN QUmlTypedElement();
 
     // Owned attributes
     QUmlType *type() const;
     void setType(QUmlType *type);
+
+protected:
+    QUmlType *_type;
 };
 
 QT_END_NAMESPACE

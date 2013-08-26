@@ -39,19 +39,12 @@
 **
 ****************************************************************************/
 #include "qumlactivitygroup.h"
-#include "qumlactivitygroup_p.h"
 
 #include <QtUml/QUmlActivity>
 #include <QtUml/QUmlActivityEdge>
 #include <QtUml/QUmlActivityNode>
 
 QT_BEGIN_NAMESPACE
-
-QUmlActivityGroupPrivate::QUmlActivityGroupPrivate() :
-    inActivity(0),
-    superGroup(0)
-{
-}
 
 /*!
     \class QUmlActivityGroup
@@ -61,11 +54,10 @@ QUmlActivityGroupPrivate::QUmlActivityGroupPrivate() :
     \brief ActivityGroup is an abstract class for defining sets of nodes and edges in an activity.
  */
 
-QUmlActivityGroup::QUmlActivityGroup(bool create_d_ptr) :
-    QUmlNamedElement(false)
+QUmlActivityGroup::QUmlActivityGroup() :
+    _inActivity(0),
+    _superGroup(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlActivityGroupPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -77,8 +69,7 @@ QSet<QUmlActivityEdge *> QUmlActivityGroup::containedEdge() const
 {
     // This is a read-only derived union association end
 
-    QM_D(const QUmlActivityGroup);
-    return d->containedEdge;
+    return _containedEdge;
 }
 
 /*!
@@ -88,8 +79,7 @@ QSet<QUmlActivityNode *> QUmlActivityGroup::containedNode() const
 {
     // This is a read-only derived union association end
 
-    QM_D(const QUmlActivityGroup);
-    return d->containedNode;
+    return _containedNode;
 }
 
 /*!
@@ -99,17 +89,15 @@ QUmlActivity *QUmlActivityGroup::inActivity() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlActivityGroup);
-    return d->inActivity;
+    return _inActivity;
 }
 
 void QUmlActivityGroup::setInActivity(QUmlActivity *inActivity)
 {
     // This is a read-write association end
 
-    QM_D(QUmlActivityGroup);
-    if (d->inActivity != inActivity) {
-        d->inActivity = inActivity;
+    if (_inActivity != inActivity) {
+        _inActivity = inActivity;
     }
 }
 
@@ -120,8 +108,7 @@ QSet<QUmlActivityGroup *> QUmlActivityGroup::subgroup() const
 {
     // This is a read-only derived union association end
 
-    QM_D(const QUmlActivityGroup);
-    return d->subgroup;
+    return _subgroup;
 }
 
 /*!
@@ -131,8 +118,7 @@ QUmlActivityGroup *QUmlActivityGroup::superGroup() const
 {
     // This is a read-only derived union association end
 
-    QM_D(const QUmlActivityGroup);
-    return d->superGroup;
+    return _superGroup;
 }
 
 QT_END_NAMESPACE

@@ -39,17 +39,12 @@
 **
 ****************************************************************************/
 #include "qumlstructuredclassifier.h"
-#include "qumlstructuredclassifier_p.h"
 
 #include <QtUml/QUmlConnectableElement>
 #include <QtUml/QUmlConnector>
 #include <QtUml/QUmlProperty>
 
 QT_BEGIN_NAMESPACE
-
-QUmlStructuredClassifierPrivate::QUmlStructuredClassifierPrivate()
-{
-}
 
 /*!
     \class QUmlStructuredClassifier
@@ -59,11 +54,8 @@ QUmlStructuredClassifierPrivate::QUmlStructuredClassifierPrivate()
     \brief A structured classifier is an abstract metaclass that represents any classifier whose behavior can be fully or partly described by the collaboration of owned or referenced instances.
  */
 
-QUmlStructuredClassifier::QUmlStructuredClassifier(bool create_d_ptr) :
-    QUmlClassifier(false)
+QUmlStructuredClassifier::QUmlStructuredClassifier()
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlStructuredClassifierPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -75,17 +67,15 @@ QList<QUmlProperty *> QUmlStructuredClassifier::ownedAttribute() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlStructuredClassifier);
-    return d->ownedAttribute;
+    return _ownedAttribute;
 }
 
 void QUmlStructuredClassifier::addOwnedAttribute(QUmlProperty *ownedAttribute)
 {
     // This is a read-write association end
 
-    QM_D(QUmlStructuredClassifier);
-    if (!d->ownedAttribute.contains(ownedAttribute)) {
-        d->ownedAttribute.append(ownedAttribute);
+    if (!_ownedAttribute.contains(ownedAttribute)) {
+        _ownedAttribute.append(ownedAttribute);
     }
 }
 
@@ -93,9 +83,8 @@ void QUmlStructuredClassifier::removeOwnedAttribute(QUmlProperty *ownedAttribute
 {
     // This is a read-write association end
 
-    QM_D(QUmlStructuredClassifier);
-    if (d->ownedAttribute.contains(ownedAttribute)) {
-        d->ownedAttribute.removeAll(ownedAttribute);
+    if (_ownedAttribute.contains(ownedAttribute)) {
+        _ownedAttribute.removeAll(ownedAttribute);
     }
 }
 
@@ -106,17 +95,15 @@ QSet<QUmlConnector *> QUmlStructuredClassifier::ownedConnector() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlStructuredClassifier);
-    return d->ownedConnector;
+    return _ownedConnector;
 }
 
 void QUmlStructuredClassifier::addOwnedConnector(QUmlConnector *ownedConnector)
 {
     // This is a read-write association end
 
-    QM_D(QUmlStructuredClassifier);
-    if (!d->ownedConnector.contains(ownedConnector)) {
-        d->ownedConnector.insert(ownedConnector);
+    if (!_ownedConnector.contains(ownedConnector)) {
+        _ownedConnector.insert(ownedConnector);
     }
 }
 
@@ -124,9 +111,8 @@ void QUmlStructuredClassifier::removeOwnedConnector(QUmlConnector *ownedConnecto
 {
     // This is a read-write association end
 
-    QM_D(QUmlStructuredClassifier);
-    if (d->ownedConnector.contains(ownedConnector)) {
-        d->ownedConnector.remove(ownedConnector);
+    if (_ownedConnector.contains(ownedConnector)) {
+        _ownedConnector.remove(ownedConnector);
     }
 }
 
@@ -149,8 +135,7 @@ QSet<QUmlConnectableElement *> QUmlStructuredClassifier::role() const
 {
     // This is a read-only derived union association end
 
-    QM_D(const QUmlStructuredClassifier);
-    return d->role;
+    return _role;
 }
 
 QT_END_NAMESPACE

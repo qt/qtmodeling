@@ -39,19 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlprofileapplication.h"
-#include "qumlprofileapplication_p.h"
 
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlProfile>
 
 QT_BEGIN_NAMESPACE
-
-QUmlProfileApplicationPrivate::QUmlProfileApplicationPrivate() :
-    appliedProfile(0),
-    applyingPackage(0),
-    isStrict(false)
-{
-}
 
 /*!
     \class QUmlProfileApplication
@@ -61,11 +53,11 @@ QUmlProfileApplicationPrivate::QUmlProfileApplicationPrivate() :
     \brief A profile application is used to show which profiles have been applied to a package.
  */
 
-QUmlProfileApplication::QUmlProfileApplication(bool create_d_ptr) :
-    QUmlDirectedRelationship(false)
+QUmlProfileApplication::QUmlProfileApplication() :
+    _appliedProfile(0),
+    _applyingPackage(0),
+    _isStrict(false)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlProfileApplicationPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -77,17 +69,15 @@ QUmlProfile *QUmlProfileApplication::appliedProfile() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlProfileApplication);
-    return d->appliedProfile;
+    return _appliedProfile;
 }
 
 void QUmlProfileApplication::setAppliedProfile(QUmlProfile *appliedProfile)
 {
     // This is a read-write association end
 
-    QM_D(QUmlProfileApplication);
-    if (d->appliedProfile != appliedProfile) {
-        d->appliedProfile = appliedProfile;
+    if (_appliedProfile != appliedProfile) {
+        _appliedProfile = appliedProfile;
     }
 }
 
@@ -98,17 +88,15 @@ QUmlPackage *QUmlProfileApplication::applyingPackage() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlProfileApplication);
-    return d->applyingPackage;
+    return _applyingPackage;
 }
 
 void QUmlProfileApplication::setApplyingPackage(QUmlPackage *applyingPackage)
 {
     // This is a read-write association end
 
-    QM_D(QUmlProfileApplication);
-    if (d->applyingPackage != applyingPackage) {
-        d->applyingPackage = applyingPackage;
+    if (_applyingPackage != applyingPackage) {
+        _applyingPackage = applyingPackage;
     }
 }
 
@@ -119,17 +107,15 @@ bool QUmlProfileApplication::isStrict() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlProfileApplication);
-    return d->isStrict;
+    return _isStrict;
 }
 
 void QUmlProfileApplication::setStrict(bool isStrict)
 {
     // This is a read-write property
 
-    QM_D(QUmlProfileApplication);
-    if (d->isStrict != isStrict) {
-        d->isStrict = isStrict;
+    if (_isStrict != isStrict) {
+        _isStrict = isStrict;
     }
 }
 

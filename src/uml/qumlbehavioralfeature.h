@@ -59,11 +59,10 @@ class QUmlParameter;
 class QUmlParameterSet;
 class QUmlType;
 
-class QUmlBehavioralFeaturePrivate;
 class Q_UML_EXPORT QUmlBehavioralFeature : public QUmlNamespace, public QUmlFeature
 {
 public:
-    Q_DECL_HIDDEN QUmlBehavioralFeature(bool create_d_ptr = true);
+    Q_DECL_HIDDEN QUmlBehavioralFeature();
 
     // Owned attributes
     QtUml::CallConcurrencyKind concurrency() const;
@@ -85,6 +84,14 @@ public:
 
     // Operations
     bool isDistinguishableFrom(QUmlNamedElement *n, QUmlNamespace *ns) const;
+
+protected:
+    QtUml::CallConcurrencyKind _concurrency;
+    bool _isAbstract;
+    QSet<QUmlBehavior *> _method;
+    QList<QUmlParameter *> _ownedParameter;
+    QSet<QUmlParameterSet *> _ownedParameterSet;
+    QSet<QUmlType *> _raisedException;
 };
 
 QT_END_NAMESPACE

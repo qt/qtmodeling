@@ -39,20 +39,12 @@
 **
 ****************************************************************************/
 #include "qumlreadlinkobjectendaction.h"
-#include "qumlreadlinkobjectendaction_p.h"
 
 #include <QtUml/QUmlInputPin>
 #include <QtUml/QUmlOutputPin>
 #include <QtUml/QUmlProperty>
 
 QT_BEGIN_NAMESPACE
-
-QUmlReadLinkObjectEndActionPrivate::QUmlReadLinkObjectEndActionPrivate() :
-    end(0),
-    object(0),
-    result(0)
-{
-}
 
 /*!
     \class QUmlReadLinkObjectEndAction
@@ -62,11 +54,11 @@ QUmlReadLinkObjectEndActionPrivate::QUmlReadLinkObjectEndActionPrivate() :
     \brief A read link object end action is an action that retrieves an end object from a link object.
  */
 
-QUmlReadLinkObjectEndAction::QUmlReadLinkObjectEndAction(bool create_d_ptr) :
-    QUmlAction(false)
+QUmlReadLinkObjectEndAction::QUmlReadLinkObjectEndAction() :
+    _end(0),
+    _object(0),
+    _result(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlReadLinkObjectEndActionPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -78,17 +70,15 @@ QUmlProperty *QUmlReadLinkObjectEndAction::end() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlReadLinkObjectEndAction);
-    return d->end;
+    return _end;
 }
 
 void QUmlReadLinkObjectEndAction::setEnd(QUmlProperty *end)
 {
     // This is a read-write association end
 
-    QM_D(QUmlReadLinkObjectEndAction);
-    if (d->end != end) {
-        d->end = end;
+    if (_end != end) {
+        _end = end;
     }
 }
 
@@ -99,17 +89,15 @@ QUmlInputPin *QUmlReadLinkObjectEndAction::object() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlReadLinkObjectEndAction);
-    return d->object;
+    return _object;
 }
 
 void QUmlReadLinkObjectEndAction::setObject(QUmlInputPin *object)
 {
     // This is a read-write association end
 
-    QM_D(QUmlReadLinkObjectEndAction);
-    if (d->object != object) {
-        d->object = object;
+    if (_object != object) {
+        _object = object;
     }
 }
 
@@ -120,17 +108,15 @@ QUmlOutputPin *QUmlReadLinkObjectEndAction::result() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlReadLinkObjectEndAction);
-    return d->result;
+    return _result;
 }
 
 void QUmlReadLinkObjectEndAction::setResult(QUmlOutputPin *result)
 {
     // This is a read-write association end
 
-    QM_D(QUmlReadLinkObjectEndAction);
-    if (d->result != result) {
-        d->result = result;
+    if (_result != result) {
+        _result = result;
     }
 }
 

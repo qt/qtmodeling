@@ -51,11 +51,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlUsagePrivate;
 class Q_UML_EXPORT QUmlUsage : public QUmlDependency
 {
 public:
-    QUmlUsage(bool create_d_ptr = true);
+    QUmlUsage();
+
+protected:
 };
 
 QT_END_NAMESPACE

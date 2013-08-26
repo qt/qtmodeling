@@ -56,11 +56,10 @@ class QUmlElementImport;
 class QUmlPackageableElement;
 class QUmlPackageImport;
 
-class QUmlNamespacePrivate;
 class Q_UML_EXPORT QUmlNamespace : public virtual QUmlNamedElement
 {
 public:
-    Q_DECL_HIDDEN QUmlNamespace(bool create_d_ptr = true);
+    Q_DECL_HIDDEN QUmlNamespace();
 
     // Owned attributes
     QSet<QUmlElementImport *> elementImport() const;
@@ -81,6 +80,13 @@ public:
     QSet<QString> getNamesOfMember(QUmlNamedElement *element) const;
     QSet<QUmlPackageableElement *> importMembers(QSet<QUmlPackageableElement *> imps) const;
     bool membersAreDistinguishable() const;
+
+protected:
+    QSet<QUmlElementImport *> _elementImport;
+    QSet<QUmlNamedElement *> _member;
+    QSet<QUmlNamedElement *> _ownedMember;
+    QSet<QUmlConstraint *> _ownedRule;
+    QSet<QUmlPackageImport *> _packageImport;
 };
 
 QT_END_NAMESPACE

@@ -61,11 +61,10 @@ class QUmlOperationTemplateParameter;
 class QUmlRedefinableElement;
 class QUmlType;
 
-class QUmlOperationPrivate;
 class Q_UML_EXPORT QUmlOperation : public QUmlTemplateableElement, public QUmlBehavioralFeature, public QUmlParameterableElement
 {
 public:
-    QUmlOperation(bool create_d_ptr = true);
+    QUmlOperation();
 
     // Owned attributes
     QUmlConstraint *bodyCondition() const;
@@ -104,6 +103,19 @@ public:
     // Operations
     bool isConsistentWith(QUmlRedefinableElement *redefinee) const;
     QSet<QUmlParameter *> returnResult() const;
+
+protected:
+    QUmlConstraint *_bodyCondition;
+    QUmlClass *_class_;
+    QUmlDataType *_datatype;
+    QUmlInterface *_interface_;
+    bool _isQuery;
+    QList<QUmlParameter *> _ownedParameter;
+    QSet<QUmlConstraint *> _postcondition;
+    QSet<QUmlConstraint *> _precondition;
+    QSet<QUmlType *> _raisedException;
+    QSet<QUmlOperation *> _redefinedOperation;
+    QUmlOperationTemplateParameter *_templateParameter;
 };
 
 QT_END_NAMESPACE

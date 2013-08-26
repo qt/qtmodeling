@@ -51,11 +51,10 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlTypePrivate;
 class Q_UML_EXPORT QUmlType : public QUmlPackageableElement
 {
 public:
-    Q_DECL_HIDDEN QUmlType(bool create_d_ptr = true);
+    Q_DECL_HIDDEN QUmlType();
 
     // Owned attributes
     QUmlPackage *package() const;
@@ -63,6 +62,9 @@ public:
 
     // Operations
     bool conformsTo(QUmlType *other) const;
+
+protected:
+    QUmlPackage *_package;
 };
 
 QT_END_NAMESPACE

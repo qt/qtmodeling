@@ -39,16 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlreadvariableaction.h"
-#include "qumlreadvariableaction_p.h"
 
 #include <QtUml/QUmlOutputPin>
 
 QT_BEGIN_NAMESPACE
-
-QUmlReadVariableActionPrivate::QUmlReadVariableActionPrivate() :
-    result(0)
-{
-}
 
 /*!
     \class QUmlReadVariableAction
@@ -58,11 +52,9 @@ QUmlReadVariableActionPrivate::QUmlReadVariableActionPrivate() :
     \brief A read variable action is a variable action that retrieves the values of a variable.
  */
 
-QUmlReadVariableAction::QUmlReadVariableAction(bool create_d_ptr) :
-    QUmlVariableAction(false)
+QUmlReadVariableAction::QUmlReadVariableAction() :
+    _result(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlReadVariableActionPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -74,17 +66,15 @@ QUmlOutputPin *QUmlReadVariableAction::result() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlReadVariableAction);
-    return d->result;
+    return _result;
 }
 
 void QUmlReadVariableAction::setResult(QUmlOutputPin *result)
 {
     // This is a read-write association end
 
-    QM_D(QUmlReadVariableAction);
-    if (d->result != result) {
-        d->result = result;
+    if (_result != result) {
+        _result = result;
     }
 }
 

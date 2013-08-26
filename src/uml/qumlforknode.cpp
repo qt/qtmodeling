@@ -39,13 +39,8 @@
 **
 ****************************************************************************/
 #include "qumlforknode.h"
-#include "qumlforknode_p.h"
 
 QT_BEGIN_NAMESPACE
-
-QUmlForkNodePrivate::QUmlForkNodePrivate()
-{
-}
 
 /*!
     \class QUmlForkNode
@@ -55,11 +50,8 @@ QUmlForkNodePrivate::QUmlForkNodePrivate()
     \brief A fork node is a control node that splits a flow into multiple concurrent flows.
  */
 
-QUmlForkNode::QUmlForkNode(bool create_d_ptr) :
-    QUmlControlNode(false)
+QUmlForkNode::QUmlForkNode()
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlForkNodePrivate);
 }
 
 QT_END_NAMESPACE

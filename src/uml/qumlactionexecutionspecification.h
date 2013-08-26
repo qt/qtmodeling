@@ -53,15 +53,17 @@ QT_MODULE(QtUml)
 
 class QUmlAction;
 
-class QUmlActionExecutionSpecificationPrivate;
 class Q_UML_EXPORT QUmlActionExecutionSpecification : public QUmlExecutionSpecification
 {
 public:
-    QUmlActionExecutionSpecification(bool create_d_ptr = true);
+    QUmlActionExecutionSpecification();
 
     // Owned attributes
     QUmlAction *action() const;
     void setAction(QUmlAction *action);
+
+protected:
+    QUmlAction *_action;
 };
 
 QT_END_NAMESPACE

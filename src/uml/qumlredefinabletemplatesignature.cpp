@@ -39,17 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlredefinabletemplatesignature.h"
-#include "qumlredefinabletemplatesignature_p.h"
 
 #include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlTemplateParameter>
 
 QT_BEGIN_NAMESPACE
-
-QUmlRedefinableTemplateSignaturePrivate::QUmlRedefinableTemplateSignaturePrivate() :
-    classifier(0)
-{
-}
 
 /*!
     \class QUmlRedefinableTemplateSignature
@@ -59,12 +53,9 @@ QUmlRedefinableTemplateSignaturePrivate::QUmlRedefinableTemplateSignaturePrivate
     \brief A redefinable template signature supports the addition of formal template parameters in a specialization of a template classifier.
  */
 
-QUmlRedefinableTemplateSignature::QUmlRedefinableTemplateSignature(bool create_d_ptr) :
-    QUmlTemplateSignature(false),
-    QUmlRedefinableElement(false)
+QUmlRedefinableTemplateSignature::QUmlRedefinableTemplateSignature() :
+    _classifier(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlRedefinableTemplateSignaturePrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -76,17 +67,15 @@ QUmlClassifier *QUmlRedefinableTemplateSignature::classifier() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlRedefinableTemplateSignature);
-    return d->classifier;
+    return _classifier;
 }
 
 void QUmlRedefinableTemplateSignature::setClassifier(QUmlClassifier *classifier)
 {
     // This is a read-write association end
 
-    QM_D(QUmlRedefinableTemplateSignature);
-    if (d->classifier != classifier) {
-        d->classifier = classifier;
+    if (_classifier != classifier) {
+        _classifier = classifier;
     }
 }
 
@@ -97,17 +86,15 @@ QSet<QUmlRedefinableTemplateSignature *> QUmlRedefinableTemplateSignature::exten
 {
     // This is a read-write association end
 
-    QM_D(const QUmlRedefinableTemplateSignature);
-    return d->extendedSignature;
+    return _extendedSignature;
 }
 
 void QUmlRedefinableTemplateSignature::addExtendedSignature(QUmlRedefinableTemplateSignature *extendedSignature)
 {
     // This is a read-write association end
 
-    QM_D(QUmlRedefinableTemplateSignature);
-    if (!d->extendedSignature.contains(extendedSignature)) {
-        d->extendedSignature.insert(extendedSignature);
+    if (!_extendedSignature.contains(extendedSignature)) {
+        _extendedSignature.insert(extendedSignature);
     }
 }
 
@@ -115,9 +102,8 @@ void QUmlRedefinableTemplateSignature::removeExtendedSignature(QUmlRedefinableTe
 {
     // This is a read-write association end
 
-    QM_D(QUmlRedefinableTemplateSignature);
-    if (d->extendedSignature.contains(extendedSignature)) {
-        d->extendedSignature.remove(extendedSignature);
+    if (_extendedSignature.contains(extendedSignature)) {
+        _extendedSignature.remove(extendedSignature);
     }
 }
 

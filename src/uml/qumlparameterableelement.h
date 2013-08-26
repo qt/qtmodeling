@@ -53,11 +53,10 @@ QT_MODULE(QtUml)
 
 class QUmlTemplateParameter;
 
-class QUmlParameterableElementPrivate;
 class Q_UML_EXPORT QUmlParameterableElement : public virtual QUmlElement
 {
 public:
-    Q_DECL_HIDDEN QUmlParameterableElement(bool create_d_ptr = true);
+    Q_DECL_HIDDEN QUmlParameterableElement();
 
     // Owned attributes
     QUmlTemplateParameter *owningTemplateParameter() const;
@@ -68,6 +67,10 @@ public:
     // Operations
     bool isCompatibleWith(QUmlParameterableElement *p) const;
     bool isTemplateParameter() const;
+
+protected:
+    QUmlTemplateParameter *_owningTemplateParameter;
+    QUmlTemplateParameter *_templateParameter;
 };
 
 QT_END_NAMESPACE

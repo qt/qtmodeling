@@ -39,17 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlexecutionspecification.h"
-#include "qumlexecutionspecification_p.h"
 
 #include <QtUml/QUmlOccurrenceSpecification>
 
 QT_BEGIN_NAMESPACE
-
-QUmlExecutionSpecificationPrivate::QUmlExecutionSpecificationPrivate() :
-    finish(0),
-    start(0)
-{
-}
 
 /*!
     \class QUmlExecutionSpecification
@@ -59,11 +52,10 @@ QUmlExecutionSpecificationPrivate::QUmlExecutionSpecificationPrivate() :
     \brief An execution specification is a specification of the execution of a unit of behavior or action within the lifeline. The duration of an execution specification is represented by two cccurrence specifications, the start occurrence specification and the finish occurrence specification.
  */
 
-QUmlExecutionSpecification::QUmlExecutionSpecification(bool create_d_ptr) :
-    QUmlInteractionFragment(false)
+QUmlExecutionSpecification::QUmlExecutionSpecification() :
+    _finish(0),
+    _start(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlExecutionSpecificationPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -75,17 +67,15 @@ QUmlOccurrenceSpecification *QUmlExecutionSpecification::finish() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlExecutionSpecification);
-    return d->finish;
+    return _finish;
 }
 
 void QUmlExecutionSpecification::setFinish(QUmlOccurrenceSpecification *finish)
 {
     // This is a read-write association end
 
-    QM_D(QUmlExecutionSpecification);
-    if (d->finish != finish) {
-        d->finish = finish;
+    if (_finish != finish) {
+        _finish = finish;
     }
 }
 
@@ -96,17 +86,15 @@ QUmlOccurrenceSpecification *QUmlExecutionSpecification::start() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlExecutionSpecification);
-    return d->start;
+    return _start;
 }
 
 void QUmlExecutionSpecification::setStart(QUmlOccurrenceSpecification *start)
 {
     // This is a read-write association end
 
-    QM_D(QUmlExecutionSpecification);
-    if (d->start != start) {
-        d->start = start;
+    if (_start != start) {
+        _start = start;
     }
 }
 

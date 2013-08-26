@@ -39,14 +39,8 @@
 **
 ****************************************************************************/
 #include "qumlpin.h"
-#include "qumlpin_p.h"
 
 QT_BEGIN_NAMESPACE
-
-QUmlPinPrivate::QUmlPinPrivate() :
-    isControl(false)
-{
-}
 
 /*!
     \class QUmlPin
@@ -56,12 +50,9 @@ QUmlPinPrivate::QUmlPinPrivate() :
     \brief A pin is a typed element and multiplicity element that provides values to actions and accept result values from them.A pin is an object node for inputs and outputs to actions.
  */
 
-QUmlPin::QUmlPin(bool create_d_ptr) :
-    QUmlMultiplicityElement(false),
-    QUmlObjectNode(false)
+QUmlPin::QUmlPin() :
+    _isControl(false)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlPinPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -73,17 +64,15 @@ bool QUmlPin::isControl() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlPin);
-    return d->isControl;
+    return _isControl;
 }
 
 void QUmlPin::setControl(bool isControl)
 {
     // This is a read-write property
 
-    QM_D(QUmlPin);
-    if (d->isControl != isControl) {
-        d->isControl = isControl;
+    if (_isControl != isControl) {
+        _isControl = isControl;
     }
 }
 

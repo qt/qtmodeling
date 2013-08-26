@@ -53,11 +53,10 @@ QT_MODULE(QtUml)
 
 class QUmlOutputPin;
 
-class QUmlCallActionPrivate;
 class Q_UML_EXPORT QUmlCallAction : public QUmlInvocationAction
 {
 public:
-    Q_DECL_HIDDEN QUmlCallAction(bool create_d_ptr = true);
+    Q_DECL_HIDDEN QUmlCallAction();
 
     // Owned attributes
     bool isSynchronous() const;
@@ -65,6 +64,10 @@ public:
     QList<QUmlOutputPin *> result() const;
     void addResult(QUmlOutputPin *result);
     void removeResult(QUmlOutputPin *result);
+
+protected:
+    bool _isSynchronous;
+    QList<QUmlOutputPin *> _result;
 };
 
 QT_END_NAMESPACE

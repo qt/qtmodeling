@@ -39,16 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlexecutionoccurrencespecification.h"
-#include "qumlexecutionoccurrencespecification_p.h"
 
 #include <QtUml/QUmlExecutionSpecification>
 
 QT_BEGIN_NAMESPACE
-
-QUmlExecutionOccurrenceSpecificationPrivate::QUmlExecutionOccurrenceSpecificationPrivate() :
-    execution(0)
-{
-}
 
 /*!
     \class QUmlExecutionOccurrenceSpecification
@@ -58,11 +52,9 @@ QUmlExecutionOccurrenceSpecificationPrivate::QUmlExecutionOccurrenceSpecificatio
     \brief An execution occurrence specification represents moments in time at which actions or behaviors start or finish.
  */
 
-QUmlExecutionOccurrenceSpecification::QUmlExecutionOccurrenceSpecification(bool create_d_ptr) :
-    QUmlOccurrenceSpecification(false)
+QUmlExecutionOccurrenceSpecification::QUmlExecutionOccurrenceSpecification() :
+    _execution(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlExecutionOccurrenceSpecificationPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -74,17 +66,15 @@ QUmlExecutionSpecification *QUmlExecutionOccurrenceSpecification::execution() co
 {
     // This is a read-write association end
 
-    QM_D(const QUmlExecutionOccurrenceSpecification);
-    return d->execution;
+    return _execution;
 }
 
 void QUmlExecutionOccurrenceSpecification::setExecution(QUmlExecutionSpecification *execution)
 {
     // This is a read-write association end
 
-    QM_D(QUmlExecutionOccurrenceSpecification);
-    if (d->execution != execution) {
-        d->execution = execution;
+    if (_execution != execution) {
+        _execution = execution;
     }
 }
 

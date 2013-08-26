@@ -39,15 +39,8 @@
 **
 ****************************************************************************/
 #include "qumlinterval.h"
-#include "qumlinterval_p.h"
 
 QT_BEGIN_NAMESPACE
-
-QUmlIntervalPrivate::QUmlIntervalPrivate() :
-    max(0),
-    min(0)
-{
-}
 
 /*!
     \class QUmlInterval
@@ -57,11 +50,10 @@ QUmlIntervalPrivate::QUmlIntervalPrivate() :
     \brief An interval defines the range between two value specifications.
  */
 
-QUmlInterval::QUmlInterval(bool create_d_ptr) :
-    QUmlValueSpecification(false)
+QUmlInterval::QUmlInterval() :
+    _max(0),
+    _min(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlIntervalPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -73,17 +65,15 @@ QUmlValueSpecification *QUmlInterval::max() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlInterval);
-    return d->max;
+    return _max;
 }
 
 void QUmlInterval::setMax(QUmlValueSpecification *max)
 {
     // This is a read-write association end
 
-    QM_D(QUmlInterval);
-    if (d->max != max) {
-        d->max = max;
+    if (_max != max) {
+        _max = max;
     }
 }
 
@@ -94,17 +84,15 @@ QUmlValueSpecification *QUmlInterval::min() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlInterval);
-    return d->min;
+    return _min;
 }
 
 void QUmlInterval::setMin(QUmlValueSpecification *min)
 {
     // This is a read-write association end
 
-    QM_D(QUmlInterval);
-    if (d->min != min) {
-        d->min = min;
+    if (_min != min) {
+        _min = min;
     }
 }
 

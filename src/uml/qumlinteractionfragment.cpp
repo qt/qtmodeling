@@ -39,7 +39,6 @@
 **
 ****************************************************************************/
 #include "qumlinteractionfragment.h"
-#include "qumlinteractionfragment_p.h"
 
 #include <QtUml/QUmlGeneralOrdering>
 #include <QtUml/QUmlInteraction>
@@ -47,12 +46,6 @@
 #include <QtUml/QUmlLifeline>
 
 QT_BEGIN_NAMESPACE
-
-QUmlInteractionFragmentPrivate::QUmlInteractionFragmentPrivate() :
-    enclosingInteraction(0),
-    enclosingOperand(0)
-{
-}
 
 /*!
     \class QUmlInteractionFragment
@@ -62,11 +55,10 @@ QUmlInteractionFragmentPrivate::QUmlInteractionFragmentPrivate() :
     \brief InteractionFragment is an abstract notion of the most general interaction unit. An interaction fragment is a piece of an interaction. Each interaction fragment is conceptually like an interaction by itself.
  */
 
-QUmlInteractionFragment::QUmlInteractionFragment(bool create_d_ptr) :
-    QUmlNamedElement(false)
+QUmlInteractionFragment::QUmlInteractionFragment() :
+    _enclosingInteraction(0),
+    _enclosingOperand(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlInteractionFragmentPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -78,17 +70,15 @@ QSet<QUmlLifeline *> QUmlInteractionFragment::covered() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlInteractionFragment);
-    return d->covered;
+    return _covered;
 }
 
 void QUmlInteractionFragment::addCovered(QUmlLifeline *covered)
 {
     // This is a read-write association end
 
-    QM_D(QUmlInteractionFragment);
-    if (!d->covered.contains(covered)) {
-        d->covered.insert(covered);
+    if (!_covered.contains(covered)) {
+        _covered.insert(covered);
     }
 }
 
@@ -96,9 +86,8 @@ void QUmlInteractionFragment::removeCovered(QUmlLifeline *covered)
 {
     // This is a read-write association end
 
-    QM_D(QUmlInteractionFragment);
-    if (d->covered.contains(covered)) {
-        d->covered.remove(covered);
+    if (_covered.contains(covered)) {
+        _covered.remove(covered);
     }
 }
 
@@ -109,17 +98,15 @@ QUmlInteraction *QUmlInteractionFragment::enclosingInteraction() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlInteractionFragment);
-    return d->enclosingInteraction;
+    return _enclosingInteraction;
 }
 
 void QUmlInteractionFragment::setEnclosingInteraction(QUmlInteraction *enclosingInteraction)
 {
     // This is a read-write association end
 
-    QM_D(QUmlInteractionFragment);
-    if (d->enclosingInteraction != enclosingInteraction) {
-        d->enclosingInteraction = enclosingInteraction;
+    if (_enclosingInteraction != enclosingInteraction) {
+        _enclosingInteraction = enclosingInteraction;
     }
 }
 
@@ -130,17 +117,15 @@ QUmlInteractionOperand *QUmlInteractionFragment::enclosingOperand() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlInteractionFragment);
-    return d->enclosingOperand;
+    return _enclosingOperand;
 }
 
 void QUmlInteractionFragment::setEnclosingOperand(QUmlInteractionOperand *enclosingOperand)
 {
     // This is a read-write association end
 
-    QM_D(QUmlInteractionFragment);
-    if (d->enclosingOperand != enclosingOperand) {
-        d->enclosingOperand = enclosingOperand;
+    if (_enclosingOperand != enclosingOperand) {
+        _enclosingOperand = enclosingOperand;
     }
 }
 
@@ -151,17 +136,15 @@ QSet<QUmlGeneralOrdering *> QUmlInteractionFragment::generalOrdering() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlInteractionFragment);
-    return d->generalOrdering;
+    return _generalOrdering;
 }
 
 void QUmlInteractionFragment::addGeneralOrdering(QUmlGeneralOrdering *generalOrdering)
 {
     // This is a read-write association end
 
-    QM_D(QUmlInteractionFragment);
-    if (!d->generalOrdering.contains(generalOrdering)) {
-        d->generalOrdering.insert(generalOrdering);
+    if (!_generalOrdering.contains(generalOrdering)) {
+        _generalOrdering.insert(generalOrdering);
     }
 }
 
@@ -169,9 +152,8 @@ void QUmlInteractionFragment::removeGeneralOrdering(QUmlGeneralOrdering *general
 {
     // This is a read-write association end
 
-    QM_D(QUmlInteractionFragment);
-    if (d->generalOrdering.contains(generalOrdering)) {
-        d->generalOrdering.remove(generalOrdering);
+    if (_generalOrdering.contains(generalOrdering)) {
+        _generalOrdering.remove(generalOrdering);
     }
 }
 

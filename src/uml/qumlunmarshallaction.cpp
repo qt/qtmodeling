@@ -39,19 +39,12 @@
 **
 ****************************************************************************/
 #include "qumlunmarshallaction.h"
-#include "qumlunmarshallaction_p.h"
 
 #include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlInputPin>
 #include <QtUml/QUmlOutputPin>
 
 QT_BEGIN_NAMESPACE
-
-QUmlUnmarshallActionPrivate::QUmlUnmarshallActionPrivate() :
-    object(0),
-    unmarshallType(0)
-{
-}
 
 /*!
     \class QUmlUnmarshallAction
@@ -61,11 +54,10 @@ QUmlUnmarshallActionPrivate::QUmlUnmarshallActionPrivate() :
     \brief An unmarshall action is an action that breaks an object of a known type into outputs each of which is equal to a value from a structural feature of the object.
  */
 
-QUmlUnmarshallAction::QUmlUnmarshallAction(bool create_d_ptr) :
-    QUmlAction(false)
+QUmlUnmarshallAction::QUmlUnmarshallAction() :
+    _object(0),
+    _unmarshallType(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlUnmarshallActionPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -77,17 +69,15 @@ QUmlInputPin *QUmlUnmarshallAction::object() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlUnmarshallAction);
-    return d->object;
+    return _object;
 }
 
 void QUmlUnmarshallAction::setObject(QUmlInputPin *object)
 {
     // This is a read-write association end
 
-    QM_D(QUmlUnmarshallAction);
-    if (d->object != object) {
-        d->object = object;
+    if (_object != object) {
+        _object = object;
     }
 }
 
@@ -98,17 +88,15 @@ QSet<QUmlOutputPin *> QUmlUnmarshallAction::result() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlUnmarshallAction);
-    return d->result;
+    return _result;
 }
 
 void QUmlUnmarshallAction::addResult(QUmlOutputPin *result)
 {
     // This is a read-write association end
 
-    QM_D(QUmlUnmarshallAction);
-    if (!d->result.contains(result)) {
-        d->result.insert(result);
+    if (!_result.contains(result)) {
+        _result.insert(result);
     }
 }
 
@@ -116,9 +104,8 @@ void QUmlUnmarshallAction::removeResult(QUmlOutputPin *result)
 {
     // This is a read-write association end
 
-    QM_D(QUmlUnmarshallAction);
-    if (d->result.contains(result)) {
-        d->result.remove(result);
+    if (_result.contains(result)) {
+        _result.remove(result);
     }
 }
 
@@ -129,17 +116,15 @@ QUmlClassifier *QUmlUnmarshallAction::unmarshallType() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlUnmarshallAction);
-    return d->unmarshallType;
+    return _unmarshallType;
 }
 
 void QUmlUnmarshallAction::setUnmarshallType(QUmlClassifier *unmarshallType)
 {
     // This is a read-write association end
 
-    QM_D(QUmlUnmarshallAction);
-    if (d->unmarshallType != unmarshallType) {
-        d->unmarshallType = unmarshallType;
+    if (_unmarshallType != unmarshallType) {
+        _unmarshallType = unmarshallType;
     }
 }
 

@@ -39,18 +39,10 @@
 **
 ****************************************************************************/
 #include "qumldestroyobjectaction.h"
-#include "qumldestroyobjectaction_p.h"
 
 #include <QtUml/QUmlInputPin>
 
 QT_BEGIN_NAMESPACE
-
-QUmlDestroyObjectActionPrivate::QUmlDestroyObjectActionPrivate() :
-    isDestroyLinks(false),
-    isDestroyOwnedObjects(false),
-    target(0)
-{
-}
 
 /*!
     \class QUmlDestroyObjectAction
@@ -60,11 +52,11 @@ QUmlDestroyObjectActionPrivate::QUmlDestroyObjectActionPrivate() :
     \brief A destroy object action is an action that destroys objects.
  */
 
-QUmlDestroyObjectAction::QUmlDestroyObjectAction(bool create_d_ptr) :
-    QUmlAction(false)
+QUmlDestroyObjectAction::QUmlDestroyObjectAction() :
+    _isDestroyLinks(false),
+    _isDestroyOwnedObjects(false),
+    _target(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlDestroyObjectActionPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -76,17 +68,15 @@ bool QUmlDestroyObjectAction::isDestroyLinks() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlDestroyObjectAction);
-    return d->isDestroyLinks;
+    return _isDestroyLinks;
 }
 
 void QUmlDestroyObjectAction::setDestroyLinks(bool isDestroyLinks)
 {
     // This is a read-write property
 
-    QM_D(QUmlDestroyObjectAction);
-    if (d->isDestroyLinks != isDestroyLinks) {
-        d->isDestroyLinks = isDestroyLinks;
+    if (_isDestroyLinks != isDestroyLinks) {
+        _isDestroyLinks = isDestroyLinks;
     }
 }
 
@@ -97,17 +87,15 @@ bool QUmlDestroyObjectAction::isDestroyOwnedObjects() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlDestroyObjectAction);
-    return d->isDestroyOwnedObjects;
+    return _isDestroyOwnedObjects;
 }
 
 void QUmlDestroyObjectAction::setDestroyOwnedObjects(bool isDestroyOwnedObjects)
 {
     // This is a read-write property
 
-    QM_D(QUmlDestroyObjectAction);
-    if (d->isDestroyOwnedObjects != isDestroyOwnedObjects) {
-        d->isDestroyOwnedObjects = isDestroyOwnedObjects;
+    if (_isDestroyOwnedObjects != isDestroyOwnedObjects) {
+        _isDestroyOwnedObjects = isDestroyOwnedObjects;
     }
 }
 
@@ -118,17 +106,15 @@ QUmlInputPin *QUmlDestroyObjectAction::target() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlDestroyObjectAction);
-    return d->target;
+    return _target;
 }
 
 void QUmlDestroyObjectAction::setTarget(QUmlInputPin *target)
 {
     // This is a read-write association end
 
-    QM_D(QUmlDestroyObjectAction);
-    if (d->target != target) {
-        d->target = target;
+    if (_target != target) {
+        _target = target;
     }
 }
 

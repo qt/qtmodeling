@@ -53,15 +53,17 @@ QT_MODULE(QtUml)
 
 class QUmlOperation;
 
-class QUmlOperationTemplateParameterPrivate;
 class Q_UML_EXPORT QUmlOperationTemplateParameter : public QUmlTemplateParameter
 {
 public:
-    QUmlOperationTemplateParameter(bool create_d_ptr = true);
+    QUmlOperationTemplateParameter();
 
     // Owned attributes
     QUmlOperation *parameteredElement() const;
     void setParameteredElement(QUmlOperation *parameteredElement);
+
+protected:
+    QUmlOperation *_parameteredElement;
 };
 
 QT_END_NAMESPACE

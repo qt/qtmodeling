@@ -39,18 +39,12 @@
 **
 ****************************************************************************/
 #include "qumldeployment.h"
-#include "qumldeployment_p.h"
 
 #include <QtUml/QUmlDeployedArtifact>
 #include <QtUml/QUmlDeploymentSpecification>
 #include <QtUml/QUmlDeploymentTarget>
 
 QT_BEGIN_NAMESPACE
-
-QUmlDeploymentPrivate::QUmlDeploymentPrivate() :
-    location(0)
-{
-}
 
 /*!
     \class QUmlDeployment
@@ -60,11 +54,9 @@ QUmlDeploymentPrivate::QUmlDeploymentPrivate() :
     \brief A deployment is the allocation of an artifact or artifact instance to a deployment target.A component deployment is the deployment of one or more artifacts or artifact instances to a deployment target, optionally parameterized by a deployment specification. Examples are executables and configuration files.
  */
 
-QUmlDeployment::QUmlDeployment(bool create_d_ptr) :
-    QUmlDependency(false)
+QUmlDeployment::QUmlDeployment() :
+    _location(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlDeploymentPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -76,17 +68,15 @@ QSet<QUmlDeploymentSpecification *> QUmlDeployment::configuration() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlDeployment);
-    return d->configuration;
+    return _configuration;
 }
 
 void QUmlDeployment::addConfiguration(QUmlDeploymentSpecification *configuration)
 {
     // This is a read-write association end
 
-    QM_D(QUmlDeployment);
-    if (!d->configuration.contains(configuration)) {
-        d->configuration.insert(configuration);
+    if (!_configuration.contains(configuration)) {
+        _configuration.insert(configuration);
     }
 }
 
@@ -94,9 +84,8 @@ void QUmlDeployment::removeConfiguration(QUmlDeploymentSpecification *configurat
 {
     // This is a read-write association end
 
-    QM_D(QUmlDeployment);
-    if (d->configuration.contains(configuration)) {
-        d->configuration.remove(configuration);
+    if (_configuration.contains(configuration)) {
+        _configuration.remove(configuration);
     }
 }
 
@@ -107,17 +96,15 @@ QSet<QUmlDeployedArtifact *> QUmlDeployment::deployedArtifact() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlDeployment);
-    return d->deployedArtifact;
+    return _deployedArtifact;
 }
 
 void QUmlDeployment::addDeployedArtifact(QUmlDeployedArtifact *deployedArtifact)
 {
     // This is a read-write association end
 
-    QM_D(QUmlDeployment);
-    if (!d->deployedArtifact.contains(deployedArtifact)) {
-        d->deployedArtifact.insert(deployedArtifact);
+    if (!_deployedArtifact.contains(deployedArtifact)) {
+        _deployedArtifact.insert(deployedArtifact);
     }
 }
 
@@ -125,9 +112,8 @@ void QUmlDeployment::removeDeployedArtifact(QUmlDeployedArtifact *deployedArtifa
 {
     // This is a read-write association end
 
-    QM_D(QUmlDeployment);
-    if (d->deployedArtifact.contains(deployedArtifact)) {
-        d->deployedArtifact.remove(deployedArtifact);
+    if (_deployedArtifact.contains(deployedArtifact)) {
+        _deployedArtifact.remove(deployedArtifact);
     }
 }
 
@@ -138,17 +124,15 @@ QUmlDeploymentTarget *QUmlDeployment::location() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlDeployment);
-    return d->location;
+    return _location;
 }
 
 void QUmlDeployment::setLocation(QUmlDeploymentTarget *location)
 {
     // This is a read-write association end
 
-    QM_D(QUmlDeployment);
-    if (d->location != location) {
-        d->location = location;
+    if (_location != location) {
+        _location = location;
     }
 }
 

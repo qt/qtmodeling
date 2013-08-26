@@ -51,11 +51,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlMessageEventPrivate;
 class Q_UML_EXPORT QUmlMessageEvent : public QUmlEvent
 {
 public:
-    Q_DECL_HIDDEN QUmlMessageEvent(bool create_d_ptr = true);
+    Q_DECL_HIDDEN QUmlMessageEvent();
+
+protected:
 };
 
 QT_END_NAMESPACE

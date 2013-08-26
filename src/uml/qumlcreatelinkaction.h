@@ -53,16 +53,18 @@ QT_MODULE(QtUml)
 
 class QUmlLinkEndCreationData;
 
-class QUmlCreateLinkActionPrivate;
 class Q_UML_EXPORT QUmlCreateLinkAction : public QUmlWriteLinkAction
 {
 public:
-    QUmlCreateLinkAction(bool create_d_ptr = true);
+    QUmlCreateLinkAction();
 
     // Owned attributes
     QSet<QUmlLinkEndCreationData *> endData() const;
     void addEndData(QUmlLinkEndCreationData *endData);
     void removeEndData(QUmlLinkEndCreationData *endData);
+
+protected:
+    QSet<QUmlLinkEndCreationData *> _endData;
 };
 
 QT_END_NAMESPACE

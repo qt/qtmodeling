@@ -39,16 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlvaluepin.h"
-#include "qumlvaluepin_p.h"
 
 #include <QtUml/QUmlValueSpecification>
 
 QT_BEGIN_NAMESPACE
-
-QUmlValuePinPrivate::QUmlValuePinPrivate() :
-    value(0)
-{
-}
 
 /*!
     \class QUmlValuePin
@@ -58,11 +52,9 @@ QUmlValuePinPrivate::QUmlValuePinPrivate() :
     \brief A value pin is an input pin that provides a value by evaluating a value specification.
  */
 
-QUmlValuePin::QUmlValuePin(bool create_d_ptr) :
-    QUmlInputPin(false)
+QUmlValuePin::QUmlValuePin() :
+    _value(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlValuePinPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -74,17 +66,15 @@ QUmlValueSpecification *QUmlValuePin::value() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlValuePin);
-    return d->value;
+    return _value;
 }
 
 void QUmlValuePin::setValue(QUmlValueSpecification *value)
 {
     // This is a read-write association end
 
-    QM_D(QUmlValuePin);
-    if (d->value != value) {
-        d->value = value;
+    if (_value != value) {
+        _value = value;
     }
 }
 

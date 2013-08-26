@@ -54,17 +54,20 @@ QT_MODULE(QtUml)
 class QUmlInputPin;
 class QUmlSignal;
 
-class QUmlSendSignalActionPrivate;
 class Q_UML_EXPORT QUmlSendSignalAction : public QUmlInvocationAction
 {
 public:
-    QUmlSendSignalAction(bool create_d_ptr = true);
+    QUmlSendSignalAction();
 
     // Owned attributes
     QUmlSignal *signal() const;
     void setSignal(QUmlSignal *signal);
     QUmlInputPin *target() const;
     void setTarget(QUmlInputPin *target);
+
+protected:
+    QUmlSignal *_signal;
+    QUmlInputPin *_target;
 };
 
 QT_END_NAMESPACE

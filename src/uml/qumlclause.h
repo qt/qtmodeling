@@ -54,11 +54,10 @@ QT_MODULE(QtUml)
 class QUmlExecutableNode;
 class QUmlOutputPin;
 
-class QUmlClausePrivate;
 class Q_UML_EXPORT QUmlClause : public QUmlElement
 {
 public:
-    QUmlClause(bool create_d_ptr = true);
+    QUmlClause();
 
     // Owned attributes
     QSet<QUmlExecutableNode *> body() const;
@@ -78,6 +77,14 @@ public:
     QSet<QUmlExecutableNode *> test() const;
     void addTest(QUmlExecutableNode *test);
     void removeTest(QUmlExecutableNode *test);
+
+protected:
+    QSet<QUmlExecutableNode *> _body;
+    QList<QUmlOutputPin *> _bodyOutput;
+    QUmlOutputPin *_decider;
+    QSet<QUmlClause *> _predecessorClause;
+    QSet<QUmlClause *> _successorClause;
+    QSet<QUmlExecutableNode *> _test;
 };
 
 QT_END_NAMESPACE

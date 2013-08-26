@@ -60,11 +60,10 @@ class QUmlProfileApplication;
 class QUmlStereotype;
 class QUmlType;
 
-class QUmlPackagePrivate;
 class Q_UML_EXPORT QUmlPackage : public QUmlNamespace, public QUmlPackageableElement, public QUmlTemplateableElement
 {
 public:
-    QUmlPackage(bool create_d_ptr = true);
+    QUmlPackage();
 
     // Owned attributes
     QString URI() const;
@@ -94,6 +93,13 @@ public:
     bool makesVisible(QUmlNamedElement *el) const;
     bool mustBeOwned() const;
     QSet<QUmlPackageableElement *> visibleMembers() const;
+
+protected:
+    QString _URI;
+    QUmlPackage *_nestingPackage;
+    QSet<QUmlPackageMerge *> _packageMerge;
+    QSet<QUmlPackageableElement *> _packagedElement;
+    QSet<QUmlProfileApplication *> _profileApplication;
 };
 
 QT_END_NAMESPACE

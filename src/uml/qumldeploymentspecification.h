@@ -53,11 +53,10 @@ QT_MODULE(QtUml)
 
 class QUmlDeployment;
 
-class QUmlDeploymentSpecificationPrivate;
 class Q_UML_EXPORT QUmlDeploymentSpecification : public QUmlArtifact
 {
 public:
-    QUmlDeploymentSpecification(bool create_d_ptr = true);
+    QUmlDeploymentSpecification();
 
     // Owned attributes
     QUmlDeployment *deployment() const;
@@ -66,6 +65,11 @@ public:
     void setDeploymentLocation(QString deploymentLocation);
     QString executionLocation() const;
     void setExecutionLocation(QString executionLocation);
+
+protected:
+    QUmlDeployment *_deployment;
+    QString _deploymentLocation;
+    QString _executionLocation;
 };
 
 QT_END_NAMESPACE

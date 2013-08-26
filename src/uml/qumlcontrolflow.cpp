@@ -39,13 +39,8 @@
 **
 ****************************************************************************/
 #include "qumlcontrolflow.h"
-#include "qumlcontrolflow_p.h"
 
 QT_BEGIN_NAMESPACE
-
-QUmlControlFlowPrivate::QUmlControlFlowPrivate()
-{
-}
 
 /*!
     \class QUmlControlFlow
@@ -55,11 +50,8 @@ QUmlControlFlowPrivate::QUmlControlFlowPrivate()
     \brief A control flow is an edge that starts an activity node after the previous one is finished.
  */
 
-QUmlControlFlow::QUmlControlFlow(bool create_d_ptr) :
-    QUmlActivityEdge(false)
+QUmlControlFlow::QUmlControlFlow()
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlControlFlowPrivate);
 }
 
 QT_END_NAMESPACE

@@ -39,18 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlcreateobjectaction.h"
-#include "qumlcreateobjectaction_p.h"
 
 #include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlOutputPin>
 
 QT_BEGIN_NAMESPACE
-
-QUmlCreateObjectActionPrivate::QUmlCreateObjectActionPrivate() :
-    classifier(0),
-    result(0)
-{
-}
 
 /*!
     \class QUmlCreateObjectAction
@@ -60,11 +53,10 @@ QUmlCreateObjectActionPrivate::QUmlCreateObjectActionPrivate() :
     \brief A create object action is an action that creates an object that conforms to a statically specified classifier and puts it on an output pin at runtime.
  */
 
-QUmlCreateObjectAction::QUmlCreateObjectAction(bool create_d_ptr) :
-    QUmlAction(false)
+QUmlCreateObjectAction::QUmlCreateObjectAction() :
+    _classifier(0),
+    _result(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlCreateObjectActionPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -76,17 +68,15 @@ QUmlClassifier *QUmlCreateObjectAction::classifier() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlCreateObjectAction);
-    return d->classifier;
+    return _classifier;
 }
 
 void QUmlCreateObjectAction::setClassifier(QUmlClassifier *classifier)
 {
     // This is a read-write association end
 
-    QM_D(QUmlCreateObjectAction);
-    if (d->classifier != classifier) {
-        d->classifier = classifier;
+    if (_classifier != classifier) {
+        _classifier = classifier;
     }
 }
 
@@ -97,17 +87,15 @@ QUmlOutputPin *QUmlCreateObjectAction::result() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlCreateObjectAction);
-    return d->result;
+    return _result;
 }
 
 void QUmlCreateObjectAction::setResult(QUmlOutputPin *result)
 {
     // This is a read-write association end
 
-    QM_D(QUmlCreateObjectAction);
-    if (d->result != result) {
-        d->result = result;
+    if (_result != result) {
+        _result = result;
     }
 }
 

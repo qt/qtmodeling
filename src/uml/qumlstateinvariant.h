@@ -54,17 +54,20 @@ QT_MODULE(QtUml)
 class QUmlConstraint;
 class QUmlLifeline;
 
-class QUmlStateInvariantPrivate;
 class Q_UML_EXPORT QUmlStateInvariant : public QUmlInteractionFragment
 {
 public:
-    QUmlStateInvariant(bool create_d_ptr = true);
+    QUmlStateInvariant();
 
     // Owned attributes
     QUmlLifeline *covered() const;
     void setCovered(QUmlLifeline *covered);
     QUmlConstraint *invariant() const;
     void setInvariant(QUmlConstraint *invariant);
+
+protected:
+    QUmlLifeline *_covered;
+    QUmlConstraint *_invariant;
 };
 
 QT_END_NAMESPACE

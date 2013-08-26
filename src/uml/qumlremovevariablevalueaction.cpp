@@ -39,17 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlremovevariablevalueaction.h"
-#include "qumlremovevariablevalueaction_p.h"
 
 #include <QtUml/QUmlInputPin>
 
 QT_BEGIN_NAMESPACE
-
-QUmlRemoveVariableValueActionPrivate::QUmlRemoveVariableValueActionPrivate() :
-    isRemoveDuplicates(false),
-    removeAt(0)
-{
-}
 
 /*!
     \class QUmlRemoveVariableValueAction
@@ -59,11 +52,10 @@ QUmlRemoveVariableValueActionPrivate::QUmlRemoveVariableValueActionPrivate() :
     \brief A remove variable value action is a write variable action that removes values from variables.
  */
 
-QUmlRemoveVariableValueAction::QUmlRemoveVariableValueAction(bool create_d_ptr) :
-    QUmlWriteVariableAction(false)
+QUmlRemoveVariableValueAction::QUmlRemoveVariableValueAction() :
+    _isRemoveDuplicates(false),
+    _removeAt(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlRemoveVariableValueActionPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -75,17 +67,15 @@ bool QUmlRemoveVariableValueAction::isRemoveDuplicates() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlRemoveVariableValueAction);
-    return d->isRemoveDuplicates;
+    return _isRemoveDuplicates;
 }
 
 void QUmlRemoveVariableValueAction::setRemoveDuplicates(bool isRemoveDuplicates)
 {
     // This is a read-write property
 
-    QM_D(QUmlRemoveVariableValueAction);
-    if (d->isRemoveDuplicates != isRemoveDuplicates) {
-        d->isRemoveDuplicates = isRemoveDuplicates;
+    if (_isRemoveDuplicates != isRemoveDuplicates) {
+        _isRemoveDuplicates = isRemoveDuplicates;
     }
 }
 
@@ -96,17 +86,15 @@ QUmlInputPin *QUmlRemoveVariableValueAction::removeAt() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlRemoveVariableValueAction);
-    return d->removeAt;
+    return _removeAt;
 }
 
 void QUmlRemoveVariableValueAction::setRemoveAt(QUmlInputPin *removeAt)
 {
     // This is a read-write association end
 
-    QM_D(QUmlRemoveVariableValueAction);
-    if (d->removeAt != removeAt) {
-        d->removeAt = removeAt;
+    if (_removeAt != removeAt) {
+        _removeAt = removeAt;
     }
 }
 

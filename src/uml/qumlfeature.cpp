@@ -39,16 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlfeature.h"
-#include "qumlfeature_p.h"
 
 #include <QtUml/QUmlClassifier>
 
 QT_BEGIN_NAMESPACE
-
-QUmlFeaturePrivate::QUmlFeaturePrivate() :
-    isStatic(false)
-{
-}
 
 /*!
     \class QUmlFeature
@@ -58,11 +52,9 @@ QUmlFeaturePrivate::QUmlFeaturePrivate() :
     \brief A feature declares a behavioral or structural characteristic of instances of classifiers.
  */
 
-QUmlFeature::QUmlFeature(bool create_d_ptr) :
-    QUmlRedefinableElement(false)
+QUmlFeature::QUmlFeature() :
+    _isStatic(false)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlFeaturePrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -74,8 +66,7 @@ QSet<QUmlClassifier *> QUmlFeature::featuringClassifier() const
 {
     // This is a read-only derived union association end
 
-    QM_D(const QUmlFeature);
-    return d->featuringClassifier;
+    return _featuringClassifier;
 }
 
 /*!
@@ -85,17 +76,15 @@ bool QUmlFeature::isStatic() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlFeature);
-    return d->isStatic;
+    return _isStatic;
 }
 
 void QUmlFeature::setStatic(bool isStatic)
 {
     // This is a read-write property
 
-    QM_D(QUmlFeature);
-    if (d->isStatic != isStatic) {
-        d->isStatic = isStatic;
+    if (_isStatic != isStatic) {
+        _isStatic = isStatic;
     }
 }
 

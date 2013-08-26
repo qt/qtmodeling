@@ -55,11 +55,10 @@ class QUmlClassifier;
 class QUmlInputPin;
 class QUmlOutputPin;
 
-class QUmlReadIsClassifiedObjectActionPrivate;
 class Q_UML_EXPORT QUmlReadIsClassifiedObjectAction : public QUmlAction
 {
 public:
-    QUmlReadIsClassifiedObjectAction(bool create_d_ptr = true);
+    QUmlReadIsClassifiedObjectAction();
 
     // Owned attributes
     QUmlClassifier *classifier() const;
@@ -70,6 +69,12 @@ public:
     void setObject(QUmlInputPin *object);
     QUmlOutputPin *result() const;
     void setResult(QUmlOutputPin *result);
+
+protected:
+    QUmlClassifier *_classifier;
+    bool _isDirect;
+    QUmlInputPin *_object;
+    QUmlOutputPin *_result;
 };
 
 QT_END_NAMESPACE

@@ -39,17 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlcomponentrealization.h"
-#include "qumlcomponentrealization_p.h"
 
 #include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlComponent>
 
 QT_BEGIN_NAMESPACE
-
-QUmlComponentRealizationPrivate::QUmlComponentRealizationPrivate() :
-    abstraction(0)
-{
-}
 
 /*!
     \class QUmlComponentRealization
@@ -59,11 +53,9 @@ QUmlComponentRealizationPrivate::QUmlComponentRealizationPrivate() :
     \brief The realization concept is specialized to (optionally) define the classifiers that realize the contract offered by a component in terms of its provided and required interfaces. The component forms an abstraction from these various classifiers.
  */
 
-QUmlComponentRealization::QUmlComponentRealization(bool create_d_ptr) :
-    QUmlRealization(false)
+QUmlComponentRealization::QUmlComponentRealization() :
+    _abstraction(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlComponentRealizationPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -75,17 +67,15 @@ QUmlComponent *QUmlComponentRealization::abstraction() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlComponentRealization);
-    return d->abstraction;
+    return _abstraction;
 }
 
 void QUmlComponentRealization::setAbstraction(QUmlComponent *abstraction)
 {
     // This is a read-write association end
 
-    QM_D(QUmlComponentRealization);
-    if (d->abstraction != abstraction) {
-        d->abstraction = abstraction;
+    if (_abstraction != abstraction) {
+        _abstraction = abstraction;
     }
 }
 
@@ -96,17 +86,15 @@ QSet<QUmlClassifier *> QUmlComponentRealization::realizingClassifier() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlComponentRealization);
-    return d->realizingClassifier;
+    return _realizingClassifier;
 }
 
 void QUmlComponentRealization::addRealizingClassifier(QUmlClassifier *realizingClassifier)
 {
     // This is a read-write association end
 
-    QM_D(QUmlComponentRealization);
-    if (!d->realizingClassifier.contains(realizingClassifier)) {
-        d->realizingClassifier.insert(realizingClassifier);
+    if (!_realizingClassifier.contains(realizingClassifier)) {
+        _realizingClassifier.insert(realizingClassifier);
     }
 }
 
@@ -114,9 +102,8 @@ void QUmlComponentRealization::removeRealizingClassifier(QUmlClassifier *realizi
 {
     // This is a read-write association end
 
-    QM_D(QUmlComponentRealization);
-    if (d->realizingClassifier.contains(realizingClassifier)) {
-        d->realizingClassifier.remove(realizingClassifier);
+    if (_realizingClassifier.contains(realizingClassifier)) {
+        _realizingClassifier.remove(realizingClassifier);
     }
 }
 

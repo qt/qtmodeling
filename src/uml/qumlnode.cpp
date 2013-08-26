@@ -39,13 +39,8 @@
 **
 ****************************************************************************/
 #include "qumlnode.h"
-#include "qumlnode_p.h"
 
 QT_BEGIN_NAMESPACE
-
-QUmlNodePrivate::QUmlNodePrivate()
-{
-}
 
 /*!
     \class QUmlNode
@@ -55,12 +50,8 @@ QUmlNodePrivate::QUmlNodePrivate()
     \brief A node is computational resource upon which artifacts may be deployed for execution. Nodes can be interconnected through communication paths to define network structures.
  */
 
-QUmlNode::QUmlNode(bool create_d_ptr) :
-    QUmlClass(false),
-    QUmlDeploymentTarget(false)
+QUmlNode::QUmlNode()
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlNodePrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -72,17 +63,15 @@ QSet<QUmlNode *> QUmlNode::nestedNode() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlNode);
-    return d->nestedNode;
+    return _nestedNode;
 }
 
 void QUmlNode::addNestedNode(QUmlNode *nestedNode)
 {
     // This is a read-write association end
 
-    QM_D(QUmlNode);
-    if (!d->nestedNode.contains(nestedNode)) {
-        d->nestedNode.insert(nestedNode);
+    if (!_nestedNode.contains(nestedNode)) {
+        _nestedNode.insert(nestedNode);
     }
 }
 
@@ -90,9 +79,8 @@ void QUmlNode::removeNestedNode(QUmlNode *nestedNode)
 {
     // This is a read-write association end
 
-    QM_D(QUmlNode);
-    if (d->nestedNode.contains(nestedNode)) {
-        d->nestedNode.remove(nestedNode);
+    if (_nestedNode.contains(nestedNode)) {
+        _nestedNode.remove(nestedNode);
     }
 }
 

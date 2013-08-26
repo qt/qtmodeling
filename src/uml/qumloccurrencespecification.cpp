@@ -39,17 +39,11 @@
 **
 ****************************************************************************/
 #include "qumloccurrencespecification.h"
-#include "qumloccurrencespecification_p.h"
 
 #include <QtUml/QUmlGeneralOrdering>
 #include <QtUml/QUmlLifeline>
 
 QT_BEGIN_NAMESPACE
-
-QUmlOccurrenceSpecificationPrivate::QUmlOccurrenceSpecificationPrivate() :
-    covered(0)
-{
-}
 
 /*!
     \class QUmlOccurrenceSpecification
@@ -59,11 +53,9 @@ QUmlOccurrenceSpecificationPrivate::QUmlOccurrenceSpecificationPrivate() :
     \brief An occurrence specification is the basic semantic unit of interactions. The sequences of occurrences specified by them are the meanings of interactions.
  */
 
-QUmlOccurrenceSpecification::QUmlOccurrenceSpecification(bool create_d_ptr) :
-    QUmlInteractionFragment(false)
+QUmlOccurrenceSpecification::QUmlOccurrenceSpecification() :
+    _covered(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlOccurrenceSpecificationPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -75,17 +67,15 @@ QUmlLifeline *QUmlOccurrenceSpecification::covered() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlOccurrenceSpecification);
-    return d->covered;
+    return _covered;
 }
 
 void QUmlOccurrenceSpecification::setCovered(QUmlLifeline *covered)
 {
     // This is a read-write association end
 
-    QM_D(QUmlOccurrenceSpecification);
-    if (d->covered != covered) {
-        d->covered = covered;
+    if (_covered != covered) {
+        _covered = covered;
     }
 }
 
@@ -96,17 +86,15 @@ QSet<QUmlGeneralOrdering *> QUmlOccurrenceSpecification::toAfter() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlOccurrenceSpecification);
-    return d->toAfter;
+    return _toAfter;
 }
 
 void QUmlOccurrenceSpecification::addToAfter(QUmlGeneralOrdering *toAfter)
 {
     // This is a read-write association end
 
-    QM_D(QUmlOccurrenceSpecification);
-    if (!d->toAfter.contains(toAfter)) {
-        d->toAfter.insert(toAfter);
+    if (!_toAfter.contains(toAfter)) {
+        _toAfter.insert(toAfter);
     }
 }
 
@@ -114,9 +102,8 @@ void QUmlOccurrenceSpecification::removeToAfter(QUmlGeneralOrdering *toAfter)
 {
     // This is a read-write association end
 
-    QM_D(QUmlOccurrenceSpecification);
-    if (d->toAfter.contains(toAfter)) {
-        d->toAfter.remove(toAfter);
+    if (_toAfter.contains(toAfter)) {
+        _toAfter.remove(toAfter);
     }
 }
 
@@ -127,17 +114,15 @@ QSet<QUmlGeneralOrdering *> QUmlOccurrenceSpecification::toBefore() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlOccurrenceSpecification);
-    return d->toBefore;
+    return _toBefore;
 }
 
 void QUmlOccurrenceSpecification::addToBefore(QUmlGeneralOrdering *toBefore)
 {
     // This is a read-write association end
 
-    QM_D(QUmlOccurrenceSpecification);
-    if (!d->toBefore.contains(toBefore)) {
-        d->toBefore.insert(toBefore);
+    if (!_toBefore.contains(toBefore)) {
+        _toBefore.insert(toBefore);
     }
 }
 
@@ -145,9 +130,8 @@ void QUmlOccurrenceSpecification::removeToBefore(QUmlGeneralOrdering *toBefore)
 {
     // This is a read-write association end
 
-    QM_D(QUmlOccurrenceSpecification);
-    if (d->toBefore.contains(toBefore)) {
-        d->toBefore.remove(toBefore);
+    if (_toBefore.contains(toBefore)) {
+        _toBefore.remove(toBefore);
     }
 }
 

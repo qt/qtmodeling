@@ -53,15 +53,17 @@ QT_MODULE(QtUml)
 
 class QUmlInterval;
 
-class QUmlIntervalConstraintPrivate;
 class Q_UML_EXPORT QUmlIntervalConstraint : public QUmlConstraint
 {
 public:
-    QUmlIntervalConstraint(bool create_d_ptr = true);
+    QUmlIntervalConstraint();
 
     // Owned attributes
     QUmlInterval *specification() const;
     void setSpecification(QUmlInterval *specification);
+
+protected:
+    QUmlInterval *_specification;
 };
 
 QT_END_NAMESPACE

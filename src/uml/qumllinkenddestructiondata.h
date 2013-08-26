@@ -53,17 +53,20 @@ QT_MODULE(QtUml)
 
 class QUmlInputPin;
 
-class QUmlLinkEndDestructionDataPrivate;
 class Q_UML_EXPORT QUmlLinkEndDestructionData : public QUmlLinkEndData
 {
 public:
-    QUmlLinkEndDestructionData(bool create_d_ptr = true);
+    QUmlLinkEndDestructionData();
 
     // Owned attributes
     QUmlInputPin *destroyAt() const;
     void setDestroyAt(QUmlInputPin *destroyAt);
     bool isDestroyDuplicates() const;
     void setDestroyDuplicates(bool isDestroyDuplicates);
+
+protected:
+    QUmlInputPin *_destroyAt;
+    bool _isDestroyDuplicates;
 };
 
 QT_END_NAMESPACE

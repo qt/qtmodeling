@@ -53,17 +53,20 @@ QT_MODULE(QtUml)
 
 class QUmlInputPin;
 
-class QUmlLinkEndCreationDataPrivate;
 class Q_UML_EXPORT QUmlLinkEndCreationData : public QUmlLinkEndData
 {
 public:
-    QUmlLinkEndCreationData(bool create_d_ptr = true);
+    QUmlLinkEndCreationData();
 
     // Owned attributes
     QUmlInputPin *insertAt() const;
     void setInsertAt(QUmlInputPin *insertAt);
     bool isReplaceAll() const;
     void setReplaceAll(bool isReplaceAll);
+
+protected:
+    QUmlInputPin *_insertAt;
+    bool _isReplaceAll;
 };
 
 QT_END_NAMESPACE

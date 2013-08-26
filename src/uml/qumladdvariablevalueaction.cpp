@@ -39,17 +39,10 @@
 **
 ****************************************************************************/
 #include "qumladdvariablevalueaction.h"
-#include "qumladdvariablevalueaction_p.h"
 
 #include <QtUml/QUmlInputPin>
 
 QT_BEGIN_NAMESPACE
-
-QUmlAddVariableValueActionPrivate::QUmlAddVariableValueActionPrivate() :
-    insertAt(0),
-    isReplaceAll(false)
-{
-}
 
 /*!
     \class QUmlAddVariableValueAction
@@ -59,11 +52,10 @@ QUmlAddVariableValueActionPrivate::QUmlAddVariableValueActionPrivate() :
     \brief An add variable value action is a write variable action for adding values to a variable.
  */
 
-QUmlAddVariableValueAction::QUmlAddVariableValueAction(bool create_d_ptr) :
-    QUmlWriteVariableAction(false)
+QUmlAddVariableValueAction::QUmlAddVariableValueAction() :
+    _insertAt(0),
+    _isReplaceAll(false)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlAddVariableValueActionPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -75,17 +67,15 @@ QUmlInputPin *QUmlAddVariableValueAction::insertAt() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlAddVariableValueAction);
-    return d->insertAt;
+    return _insertAt;
 }
 
 void QUmlAddVariableValueAction::setInsertAt(QUmlInputPin *insertAt)
 {
     // This is a read-write association end
 
-    QM_D(QUmlAddVariableValueAction);
-    if (d->insertAt != insertAt) {
-        d->insertAt = insertAt;
+    if (_insertAt != insertAt) {
+        _insertAt = insertAt;
     }
 }
 
@@ -96,17 +86,15 @@ bool QUmlAddVariableValueAction::isReplaceAll() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlAddVariableValueAction);
-    return d->isReplaceAll;
+    return _isReplaceAll;
 }
 
 void QUmlAddVariableValueAction::setReplaceAll(bool isReplaceAll)
 {
     // This is a read-write property
 
-    QM_D(QUmlAddVariableValueAction);
-    if (d->isReplaceAll != isReplaceAll) {
-        d->isReplaceAll = isReplaceAll;
+    if (_isReplaceAll != isReplaceAll) {
+        _isReplaceAll = isReplaceAll;
     }
 }
 

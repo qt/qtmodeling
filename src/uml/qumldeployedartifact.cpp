@@ -39,13 +39,8 @@
 **
 ****************************************************************************/
 #include "qumldeployedartifact.h"
-#include "qumldeployedartifact_p.h"
 
 QT_BEGIN_NAMESPACE
-
-QUmlDeployedArtifactPrivate::QUmlDeployedArtifactPrivate()
-{
-}
 
 /*!
     \class QUmlDeployedArtifact
@@ -55,11 +50,8 @@ QUmlDeployedArtifactPrivate::QUmlDeployedArtifactPrivate()
     \brief A deployed artifact is an artifact or artifact instance that has been deployed to a deployment target.
  */
 
-QUmlDeployedArtifact::QUmlDeployedArtifact(bool create_d_ptr) :
-    QUmlNamedElement(false)
+QUmlDeployedArtifact::QUmlDeployedArtifact()
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlDeployedArtifactPrivate);
 }
 
 QT_END_NAMESPACE

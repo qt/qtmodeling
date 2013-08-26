@@ -39,17 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlclassifiertemplateparameter.h"
-#include "qumlclassifiertemplateparameter_p.h"
 
 #include <QtUml/QUmlClassifier>
 
 QT_BEGIN_NAMESPACE
-
-QUmlClassifierTemplateParameterPrivate::QUmlClassifierTemplateParameterPrivate() :
-    allowSubstitutable(true),
-    parameteredElement(0)
-{
-}
 
 /*!
     \class QUmlClassifierTemplateParameter
@@ -59,11 +52,10 @@ QUmlClassifierTemplateParameterPrivate::QUmlClassifierTemplateParameterPrivate()
     \brief A classifier template parameter exposes a classifier as a formal template parameter.
  */
 
-QUmlClassifierTemplateParameter::QUmlClassifierTemplateParameter(bool create_d_ptr) :
-    QUmlTemplateParameter(false)
+QUmlClassifierTemplateParameter::QUmlClassifierTemplateParameter() :
+    _allowSubstitutable(true),
+    _parameteredElement(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlClassifierTemplateParameterPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -75,17 +67,15 @@ bool QUmlClassifierTemplateParameter::allowSubstitutable() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlClassifierTemplateParameter);
-    return d->allowSubstitutable;
+    return _allowSubstitutable;
 }
 
 void QUmlClassifierTemplateParameter::setAllowSubstitutable(bool allowSubstitutable)
 {
     // This is a read-write property
 
-    QM_D(QUmlClassifierTemplateParameter);
-    if (d->allowSubstitutable != allowSubstitutable) {
-        d->allowSubstitutable = allowSubstitutable;
+    if (_allowSubstitutable != allowSubstitutable) {
+        _allowSubstitutable = allowSubstitutable;
     }
 }
 
@@ -96,17 +86,15 @@ QSet<QUmlClassifier *> QUmlClassifierTemplateParameter::constrainingClassifier()
 {
     // This is a read-write association end
 
-    QM_D(const QUmlClassifierTemplateParameter);
-    return d->constrainingClassifier;
+    return _constrainingClassifier;
 }
 
 void QUmlClassifierTemplateParameter::addConstrainingClassifier(QUmlClassifier *constrainingClassifier)
 {
     // This is a read-write association end
 
-    QM_D(QUmlClassifierTemplateParameter);
-    if (!d->constrainingClassifier.contains(constrainingClassifier)) {
-        d->constrainingClassifier.insert(constrainingClassifier);
+    if (!_constrainingClassifier.contains(constrainingClassifier)) {
+        _constrainingClassifier.insert(constrainingClassifier);
     }
 }
 
@@ -114,9 +102,8 @@ void QUmlClassifierTemplateParameter::removeConstrainingClassifier(QUmlClassifie
 {
     // This is a read-write association end
 
-    QM_D(QUmlClassifierTemplateParameter);
-    if (d->constrainingClassifier.contains(constrainingClassifier)) {
-        d->constrainingClassifier.remove(constrainingClassifier);
+    if (_constrainingClassifier.contains(constrainingClassifier)) {
+        _constrainingClassifier.remove(constrainingClassifier);
     }
 }
 
@@ -127,17 +114,15 @@ QUmlClassifier *QUmlClassifierTemplateParameter::parameteredElement() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlClassifierTemplateParameter);
-    return d->parameteredElement;
+    return _parameteredElement;
 }
 
 void QUmlClassifierTemplateParameter::setParameteredElement(QUmlClassifier *parameteredElement)
 {
     // This is a read-write association end
 
-    QM_D(QUmlClassifierTemplateParameter);
-    if (d->parameteredElement != parameteredElement) {
-        d->parameteredElement = parameteredElement;
+    if (_parameteredElement != parameteredElement) {
+        _parameteredElement = parameteredElement;
     }
 }
 

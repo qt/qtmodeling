@@ -39,13 +39,8 @@
 **
 ****************************************************************************/
 #include "qumlpartdecomposition.h"
-#include "qumlpartdecomposition_p.h"
 
 QT_BEGIN_NAMESPACE
-
-QUmlPartDecompositionPrivate::QUmlPartDecompositionPrivate()
-{
-}
 
 /*!
     \class QUmlPartDecomposition
@@ -55,11 +50,8 @@ QUmlPartDecompositionPrivate::QUmlPartDecompositionPrivate()
     \brief A part decomposition is a description of the internal interactions of one lifeline relative to an interaction.
  */
 
-QUmlPartDecomposition::QUmlPartDecomposition(bool create_d_ptr) :
-    QUmlInteractionUse(false)
+QUmlPartDecomposition::QUmlPartDecomposition()
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlPartDecompositionPrivate);
 }
 
 QT_END_NAMESPACE

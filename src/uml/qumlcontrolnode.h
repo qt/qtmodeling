@@ -51,11 +51,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlControlNodePrivate;
 class Q_UML_EXPORT QUmlControlNode : public QUmlActivityNode
 {
 public:
-    Q_DECL_HIDDEN QUmlControlNode(bool create_d_ptr = true);
+    Q_DECL_HIDDEN QUmlControlNode();
+
+protected:
 };
 
 QT_END_NAMESPACE

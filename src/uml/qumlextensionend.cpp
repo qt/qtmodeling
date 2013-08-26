@@ -39,16 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlextensionend.h"
-#include "qumlextensionend_p.h"
 
 #include <QtUml/QUmlStereotype>
 
 QT_BEGIN_NAMESPACE
-
-QUmlExtensionEndPrivate::QUmlExtensionEndPrivate() :
-    type(0)
-{
-}
 
 /*!
     \class QUmlExtensionEnd
@@ -58,11 +52,9 @@ QUmlExtensionEndPrivate::QUmlExtensionEndPrivate() :
     \brief An extension end is used to tie an extension to a stereotype when extending a metaclass.The default multiplicity of an extension end is 0..1.
  */
 
-QUmlExtensionEnd::QUmlExtensionEnd(bool create_d_ptr) :
-    QUmlProperty(false)
+QUmlExtensionEnd::QUmlExtensionEnd() :
+    _type(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlExtensionEndPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -98,17 +90,15 @@ QUmlStereotype *QUmlExtensionEnd::type() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlExtensionEnd);
-    return d->type;
+    return _type;
 }
 
 void QUmlExtensionEnd::setType(QUmlStereotype *type)
 {
     // This is a read-write association end
 
-    QM_D(QUmlExtensionEnd);
-    if (d->type != type) {
-        d->type = type;
+    if (_type != type) {
+        _type = type;
     }
 }
 

@@ -52,11 +52,10 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlStringExpressionPrivate;
 class Q_UML_EXPORT QUmlStringExpression : public QUmlExpression, public QUmlTemplateableElement
 {
 public:
-    QUmlStringExpression(bool create_d_ptr = true);
+    QUmlStringExpression();
 
     // Owned attributes
     QUmlStringExpression *owningExpression() const;
@@ -67,6 +66,10 @@ public:
 
     // Operations
     QString stringValue() const;
+
+protected:
+    QUmlStringExpression *_owningExpression;
+    QSet<QUmlStringExpression *> _subExpression;
 };
 
 QT_END_NAMESPACE

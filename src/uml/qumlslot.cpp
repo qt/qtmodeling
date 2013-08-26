@@ -39,19 +39,12 @@
 **
 ****************************************************************************/
 #include "qumlslot.h"
-#include "qumlslot_p.h"
 
 #include <QtUml/QUmlInstanceSpecification>
 #include <QtUml/QUmlStructuralFeature>
 #include <QtUml/QUmlValueSpecification>
 
 QT_BEGIN_NAMESPACE
-
-QUmlSlotPrivate::QUmlSlotPrivate() :
-    definingFeature(0),
-    owningInstance(0)
-{
-}
 
 /*!
     \class QUmlSlot
@@ -61,11 +54,10 @@ QUmlSlotPrivate::QUmlSlotPrivate() :
     \brief A slot specifies that an entity modeled by an instance specification has a value or values for a specific structural feature.
  */
 
-QUmlSlot::QUmlSlot(bool create_d_ptr) :
-    QUmlElement(false)
+QUmlSlot::QUmlSlot() :
+    _definingFeature(0),
+    _owningInstance(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlSlotPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -77,17 +69,15 @@ QUmlStructuralFeature *QUmlSlot::definingFeature() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlSlot);
-    return d->definingFeature;
+    return _definingFeature;
 }
 
 void QUmlSlot::setDefiningFeature(QUmlStructuralFeature *definingFeature)
 {
     // This is a read-write association end
 
-    QM_D(QUmlSlot);
-    if (d->definingFeature != definingFeature) {
-        d->definingFeature = definingFeature;
+    if (_definingFeature != definingFeature) {
+        _definingFeature = definingFeature;
     }
 }
 
@@ -98,17 +88,15 @@ QUmlInstanceSpecification *QUmlSlot::owningInstance() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlSlot);
-    return d->owningInstance;
+    return _owningInstance;
 }
 
 void QUmlSlot::setOwningInstance(QUmlInstanceSpecification *owningInstance)
 {
     // This is a read-write association end
 
-    QM_D(QUmlSlot);
-    if (d->owningInstance != owningInstance) {
-        d->owningInstance = owningInstance;
+    if (_owningInstance != owningInstance) {
+        _owningInstance = owningInstance;
     }
 }
 
@@ -119,17 +107,15 @@ QList<QUmlValueSpecification *> QUmlSlot::value() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlSlot);
-    return d->value;
+    return _value;
 }
 
 void QUmlSlot::addValue(QUmlValueSpecification *value)
 {
     // This is a read-write association end
 
-    QM_D(QUmlSlot);
-    if (!d->value.contains(value)) {
-        d->value.append(value);
+    if (!_value.contains(value)) {
+        _value.append(value);
     }
 }
 
@@ -137,9 +123,8 @@ void QUmlSlot::removeValue(QUmlValueSpecification *value)
 {
     // This is a read-write association end
 
-    QM_D(QUmlSlot);
-    if (d->value.contains(value)) {
-        d->value.removeAll(value);
+    if (_value.contains(value)) {
+        _value.removeAll(value);
     }
 }
 

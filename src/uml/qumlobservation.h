@@ -51,11 +51,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlObservationPrivate;
 class Q_UML_EXPORT QUmlObservation : public QUmlPackageableElement
 {
 public:
-    Q_DECL_HIDDEN QUmlObservation(bool create_d_ptr = true);
+    Q_DECL_HIDDEN QUmlObservation();
+
+protected:
 };
 
 QT_END_NAMESPACE

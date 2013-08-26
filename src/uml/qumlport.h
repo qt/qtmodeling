@@ -54,11 +54,10 @@ QT_MODULE(QtUml)
 class QUmlInterface;
 class QUmlProtocolStateMachine;
 
-class QUmlPortPrivate;
 class Q_UML_EXPORT QUmlPort : public QUmlProperty
 {
 public:
-    QUmlPort(bool create_d_ptr = true);
+    QUmlPort();
 
     // Owned attributes
     bool isBehavior() const;
@@ -74,6 +73,13 @@ public:
     void addRedefinedPort(QUmlPort *redefinedPort);
     void removeRedefinedPort(QUmlPort *redefinedPort);
     QSet<QUmlInterface *> required() const;
+
+protected:
+    bool _isBehavior;
+    bool _isConjugated;
+    bool _isService;
+    QUmlProtocolStateMachine *_protocol;
+    QSet<QUmlPort *> _redefinedPort;
 };
 
 QT_END_NAMESPACE

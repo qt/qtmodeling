@@ -40,7 +40,6 @@
 **
 ****************************************************************************/
 #include "q${namespace.lower}${className.lower}.h"
-#include "q${namespace.lower}${className.lower}_p.h"
 [%- superclasses = [] -%]
 [%- SET generalization = class.findnodes("generalization") -%]
 [%- FOREACH superclass IN generalization -%]
@@ -61,7 +60,15 @@
 
 QT_BEGIN_NAMESPACE
 
-Q${namespace}${className}Private::Q${namespace}${className}Private()
+/*!
+    \class Q${namespace}${className}
+
+    \inmodule Qt${namespace}
+
+    \brief ${class.findvalue("ownedComment/body/text()")}
+ */
+
+Q${namespace}${className}::Q${namespace}${className}()
 [%- SET found = "false" -%]
 [%- FOREACH attribute = class.findnodes("ownedAttribute[(@isDerived=\"false\" or not(@isDerived)) or (@isDerivedUnion and @isDerivedUnion=\"true\")]") -%]
     [%- SET defaultType = attribute.findvalue("defaultValue/@xmi:type") -%]
@@ -71,58 +78,36 @@ Q${namespace}${className}Private::Q${namespace}${className}Private()
 [% SET found = "true" -%]
         [%- ELSE %],
 [% END -%]
-    [%- END -%]
     [%- IF defaultType == "uml:LiteralBoolean" -%]
         [%- SET defaultValue = attribute.findvalue("defaultValue/@value") -%]
         [%- IF defaultValue != "" -%]
-    [% QT_ATTRIBUTE(attribute) %](${defaultValue})
+    _[% QT_ATTRIBUTE(attribute) %](${defaultValue})
         [%- ELSE -%]
-    [% QT_ATTRIBUTE(attribute) %](false)
+    _[% QT_ATTRIBUTE(attribute) %](false)
         [%- END -%]
     [%- ELSIF defaultType == "uml:InstanceValue" -%]
         [%- SET defaultInstance = attribute.findvalue("defaultValue/@instance") -%]
-    [% QT_ATTRIBUTE(attribute) %](Qt${namespace}::${defaultInstance.split("-").0.remove("Kind$").remove("Sort$")}${defaultInstance.split("-").1.ucfirst})
+    _[% QT_ATTRIBUTE(attribute) %](Qt${namespace}::${defaultInstance.split("-").0.remove("Kind$").remove("Sort$")}${defaultInstance.split("-").1.ucfirst})
     [%- ELSIF defaultType == "uml:LiteralInteger" -%]
         [%- SET defaultValue = attribute.findvalue("defaultValue/@value") -%]
         [%- IF defaultValue != "" -%]
-    [% QT_ATTRIBUTE(attribute) %](${defaultValue})
+    _[% QT_ATTRIBUTE(attribute) %](${defaultValue})
         [%- ELSE -%]
-    [% QT_ATTRIBUTE(attribute) %](0)
+    _[% QT_ATTRIBUTE(attribute) %](0)
         [%- END -%]
     [%- ELSIF defaultType == "uml:LiteralUnlimitedNatural" -%]
         [%- SET defaultValue = attribute.findvalue("defaultValue/@value") -%]
         [%- IF defaultValue != "" -%]
-    [% QT_ATTRIBUTE(attribute) %](${defaultValue})
+    _[% QT_ATTRIBUTE(attribute) %](${defaultValue})
         [%- ELSE -%]
-    [% QT_ATTRIBUTE(attribute) %](0)
+    _[% QT_ATTRIBUTE(attribute) %](0)
         [%- END -%]
     [%- ELSIF type.match('\*$') -%]
-    [% QT_ATTRIBUTE(attribute) %](0)
+    _[% QT_ATTRIBUTE(attribute) %](0)
+    [%- END -%]
     [%- END -%]
 [%- END %]
 {
-}
-
-/*!
-    \class Q${namespace}${className}
-
-    \inmodule Qt${namespace}
-
-    \brief ${class.findvalue("ownedComment/body/text()")}
- */
-
-Q${namespace}${className}::Q${namespace}${className}(bool create_d_ptr) :
-[%- FOREACH superclass IN generalization %]
-    Q${namespace}${superclass.findvalue("@general")}(false)
-[%- IF !loop.last %],
-[%- END -%]
-[%- END -%]
-[%- IF superclasses.size == 0 %]
-    QModelingObject(false)
-[%- END %]
-{
-    if (create_d_ptr)
-        set_d_ptr(new Q${namespace}${className}Private);
 }
 [%- FOREACH attribute = class.findnodes("ownedAttribute") %]
 [%- IF loop.first %]
@@ -155,8 +140,7 @@ Q${namespace}${className}::${qtAttribute}() const
     return ${QT_TYPE(namespace, attribute).trim}();
     [%- END %]
     [%- ELSE %]
-    QM_D(const Q${namespace}${className});
-    return d->${qtAttribute};
+    return _${qtAttribute};
     [%- END %]
 }
     [%- SET attributeName = attribute.findvalue("@name").ucfirst %]
@@ -175,9 +159,8 @@ void Q${namespace}${className}::add${attributeName}(${QT_TYPE(namespace, attribu
         // <derived-code>
     }
     [%- ELSE %]
-    QM_D(Q${namespace}${className});
-    if (!d->${qtAttribute}.contains(${qtAttribute})) {
-        d->${qtAttribute}.[% IF QT_TYPE(namespace, attribute).match("QList") %]append[% ELSE %]insert[% END %](${qtAttribute});
+    if (!_${qtAttribute}.contains(${qtAttribute})) {
+        _${qtAttribute}.[% IF QT_TYPE(namespace, attribute).match("QList") %]append[% ELSE %]insert[% END %](${qtAttribute});
     }
     [%- END %]
 }
@@ -194,9 +177,8 @@ void Q${namespace}${className}::remove${attributeName}(${QT_TYPE(namespace, attr
         // <derived-code>
     }
     [%- ELSE %]
-    QM_D(Q${namespace}${className});
-    if (d->${qtAttribute}.contains(${qtAttribute})) {
-        d->${qtAttribute}.[% IF QT_TYPE(namespace, attribute).match("QList") %]removeAll[% ELSE %]remove[% END %](${qtAttribute});
+    if (_${qtAttribute}.contains(${qtAttribute})) {
+        _${qtAttribute}.[% IF QT_TYPE(namespace, attribute).match("QList") %]removeAll[% ELSE %]remove[% END %](${qtAttribute});
     }
     [%- END %]
 }
@@ -214,9 +196,8 @@ void Q${namespace}${className}::set${attributeName.remove("^Is")}(${QT_TYPE(name
         // <derived-code>
     }
     [%- ELSE %]
-    QM_D(Q${namespace}${className});
-    if (d->${qtAttribute} != ${qtAttribute}) {
-        d->${qtAttribute} = ${qtAttribute};
+    if (_${qtAttribute} != ${qtAttribute}) {
+        _${qtAttribute} = ${qtAttribute};
     }
     [%- END %]
 }

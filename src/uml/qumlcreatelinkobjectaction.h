@@ -53,15 +53,17 @@ QT_MODULE(QtUml)
 
 class QUmlOutputPin;
 
-class QUmlCreateLinkObjectActionPrivate;
 class Q_UML_EXPORT QUmlCreateLinkObjectAction : public QUmlCreateLinkAction
 {
 public:
-    QUmlCreateLinkObjectAction(bool create_d_ptr = true);
+    QUmlCreateLinkObjectAction();
 
     // Owned attributes
     QUmlOutputPin *result() const;
     void setResult(QUmlOutputPin *result);
+
+protected:
+    QUmlOutputPin *_result;
 };
 
 QT_END_NAMESPACE

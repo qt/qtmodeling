@@ -62,11 +62,10 @@ class QUmlRegion;
 class QUmlStateMachine;
 class QUmlTrigger;
 
-class QUmlStatePrivate;
 class Q_UML_EXPORT QUmlState : public QUmlNamespace, public QUmlRedefinableElement, public QUmlVertex
 {
 public:
-    QUmlState(bool create_d_ptr = true);
+    QUmlState();
 
     // Owned attributes
     QSet<QUmlConnectionPointReference *> connection() const;
@@ -103,6 +102,18 @@ public:
     QUmlStateMachine *containingStateMachine() const;
     bool isConsistentWith(QUmlRedefinableElement *redefinee) const;
     bool isRedefinitionContextValid(QUmlState *redefined) const;
+
+protected:
+    QSet<QUmlConnectionPointReference *> _connection;
+    QSet<QUmlPseudostate *> _connectionPoint;
+    QSet<QUmlTrigger *> _deferrableTrigger;
+    QUmlBehavior *_doActivity;
+    QUmlBehavior *_entry;
+    QUmlBehavior *_exit;
+    QUmlState *_redefinedState;
+    QSet<QUmlRegion *> _region;
+    QUmlConstraint *_stateInvariant;
+    QUmlStateMachine *_submachine;
 };
 
 QT_END_NAMESPACE

@@ -39,7 +39,6 @@
 **
 ****************************************************************************/
 #include "qumltransition.h"
-#include "qumltransition_p.h"
 
 #include <QtUml/QUmlBehavior>
 #include <QtUml/QUmlClassifier>
@@ -51,17 +50,6 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlTransitionPrivate::QUmlTransitionPrivate() :
-    container(0),
-    effect(0),
-    guard(0),
-    kind(QtUml::TransitionExternal),
-    redefinedTransition(0),
-    source(0),
-    target(0)
-{
-}
-
 /*!
     \class QUmlTransition
 
@@ -70,12 +58,15 @@ QUmlTransitionPrivate::QUmlTransitionPrivate() :
     \brief A transition is a directed relationship between a source vertex and a target vertex. It may be part of a compound transition, which takes the state machine from one state configuration to another, representing the complete response of the state machine to an occurrence of an event of a particular type.
  */
 
-QUmlTransition::QUmlTransition(bool create_d_ptr) :
-    QUmlRedefinableElement(false),
-    QUmlNamespace(false)
+QUmlTransition::QUmlTransition() :
+    _container(0),
+    _effect(0),
+    _guard(0),
+    _kind(QtUml::TransitionExternal),
+    _redefinedTransition(0),
+    _source(0),
+    _target(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlTransitionPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -87,17 +78,15 @@ QUmlRegion *QUmlTransition::container() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlTransition);
-    return d->container;
+    return _container;
 }
 
 void QUmlTransition::setContainer(QUmlRegion *container)
 {
     // This is a read-write association end
 
-    QM_D(QUmlTransition);
-    if (d->container != container) {
-        d->container = container;
+    if (_container != container) {
+        _container = container;
     }
 }
 
@@ -108,17 +97,15 @@ QUmlBehavior *QUmlTransition::effect() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlTransition);
-    return d->effect;
+    return _effect;
 }
 
 void QUmlTransition::setEffect(QUmlBehavior *effect)
 {
     // This is a read-write association end
 
-    QM_D(QUmlTransition);
-    if (d->effect != effect) {
-        d->effect = effect;
+    if (_effect != effect) {
+        _effect = effect;
     }
 }
 
@@ -129,17 +116,15 @@ QUmlConstraint *QUmlTransition::guard() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlTransition);
-    return d->guard;
+    return _guard;
 }
 
 void QUmlTransition::setGuard(QUmlConstraint *guard)
 {
     // This is a read-write association end
 
-    QM_D(QUmlTransition);
-    if (d->guard != guard) {
-        d->guard = guard;
+    if (_guard != guard) {
+        _guard = guard;
     }
 }
 
@@ -150,17 +135,15 @@ QtUml::TransitionKind QUmlTransition::kind() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlTransition);
-    return d->kind;
+    return _kind;
 }
 
 void QUmlTransition::setKind(QtUml::TransitionKind kind)
 {
     // This is a read-write property
 
-    QM_D(QUmlTransition);
-    if (d->kind != kind) {
-        d->kind = kind;
+    if (_kind != kind) {
+        _kind = kind;
     }
 }
 
@@ -171,17 +154,15 @@ QUmlTransition *QUmlTransition::redefinedTransition() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlTransition);
-    return d->redefinedTransition;
+    return _redefinedTransition;
 }
 
 void QUmlTransition::setRedefinedTransition(QUmlTransition *redefinedTransition)
 {
     // This is a read-write association end
 
-    QM_D(QUmlTransition);
-    if (d->redefinedTransition != redefinedTransition) {
-        d->redefinedTransition = redefinedTransition;
+    if (_redefinedTransition != redefinedTransition) {
+        _redefinedTransition = redefinedTransition;
     }
 }
 
@@ -204,17 +185,15 @@ QUmlVertex *QUmlTransition::source() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlTransition);
-    return d->source;
+    return _source;
 }
 
 void QUmlTransition::setSource(QUmlVertex *source)
 {
     // This is a read-write association end
 
-    QM_D(QUmlTransition);
-    if (d->source != source) {
-        d->source = source;
+    if (_source != source) {
+        _source = source;
     }
 }
 
@@ -225,17 +204,15 @@ QUmlVertex *QUmlTransition::target() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlTransition);
-    return d->target;
+    return _target;
 }
 
 void QUmlTransition::setTarget(QUmlVertex *target)
 {
     // This is a read-write association end
 
-    QM_D(QUmlTransition);
-    if (d->target != target) {
-        d->target = target;
+    if (_target != target) {
+        _target = target;
     }
 }
 
@@ -246,17 +223,15 @@ QSet<QUmlTrigger *> QUmlTransition::trigger() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlTransition);
-    return d->trigger;
+    return _trigger;
 }
 
 void QUmlTransition::addTrigger(QUmlTrigger *trigger)
 {
     // This is a read-write association end
 
-    QM_D(QUmlTransition);
-    if (!d->trigger.contains(trigger)) {
-        d->trigger.insert(trigger);
+    if (!_trigger.contains(trigger)) {
+        _trigger.insert(trigger);
     }
 }
 
@@ -264,9 +239,8 @@ void QUmlTransition::removeTrigger(QUmlTrigger *trigger)
 {
     // This is a read-write association end
 
-    QM_D(QUmlTransition);
-    if (d->trigger.contains(trigger)) {
-        d->trigger.remove(trigger);
+    if (_trigger.contains(trigger)) {
+        _trigger.remove(trigger);
     }
 }
 

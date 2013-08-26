@@ -51,11 +51,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlWriteLinkActionPrivate;
 class Q_UML_EXPORT QUmlWriteLinkAction : public QUmlLinkAction
 {
 public:
-    Q_DECL_HIDDEN QUmlWriteLinkAction(bool create_d_ptr = true);
+    Q_DECL_HIDDEN QUmlWriteLinkAction();
+
+protected:
 };
 
 QT_END_NAMESPACE

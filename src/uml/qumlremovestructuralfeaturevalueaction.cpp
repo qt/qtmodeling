@@ -39,17 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlremovestructuralfeaturevalueaction.h"
-#include "qumlremovestructuralfeaturevalueaction_p.h"
 
 #include <QtUml/QUmlInputPin>
 
 QT_BEGIN_NAMESPACE
-
-QUmlRemoveStructuralFeatureValueActionPrivate::QUmlRemoveStructuralFeatureValueActionPrivate() :
-    isRemoveDuplicates(false),
-    removeAt(0)
-{
-}
 
 /*!
     \class QUmlRemoveStructuralFeatureValueAction
@@ -59,11 +52,10 @@ QUmlRemoveStructuralFeatureValueActionPrivate::QUmlRemoveStructuralFeatureValueA
     \brief A remove structural feature value action is a write structural feature action that removes values from structural features.
  */
 
-QUmlRemoveStructuralFeatureValueAction::QUmlRemoveStructuralFeatureValueAction(bool create_d_ptr) :
-    QUmlWriteStructuralFeatureAction(false)
+QUmlRemoveStructuralFeatureValueAction::QUmlRemoveStructuralFeatureValueAction() :
+    _isRemoveDuplicates(false),
+    _removeAt(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlRemoveStructuralFeatureValueActionPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -75,17 +67,15 @@ bool QUmlRemoveStructuralFeatureValueAction::isRemoveDuplicates() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlRemoveStructuralFeatureValueAction);
-    return d->isRemoveDuplicates;
+    return _isRemoveDuplicates;
 }
 
 void QUmlRemoveStructuralFeatureValueAction::setRemoveDuplicates(bool isRemoveDuplicates)
 {
     // This is a read-write property
 
-    QM_D(QUmlRemoveStructuralFeatureValueAction);
-    if (d->isRemoveDuplicates != isRemoveDuplicates) {
-        d->isRemoveDuplicates = isRemoveDuplicates;
+    if (_isRemoveDuplicates != isRemoveDuplicates) {
+        _isRemoveDuplicates = isRemoveDuplicates;
     }
 }
 
@@ -96,17 +86,15 @@ QUmlInputPin *QUmlRemoveStructuralFeatureValueAction::removeAt() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlRemoveStructuralFeatureValueAction);
-    return d->removeAt;
+    return _removeAt;
 }
 
 void QUmlRemoveStructuralFeatureValueAction::setRemoveAt(QUmlInputPin *removeAt)
 {
     // This is a read-write association end
 
-    QM_D(QUmlRemoveStructuralFeatureValueAction);
-    if (d->removeAt != removeAt) {
-        d->removeAt = removeAt;
+    if (_removeAt != removeAt) {
+        _removeAt = removeAt;
     }
 }
 

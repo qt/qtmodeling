@@ -39,17 +39,12 @@
 **
 ****************************************************************************/
 #include "qumlartifact.h"
-#include "qumlartifact_p.h"
 
 #include <QtUml/QUmlManifestation>
 #include <QtUml/QUmlOperation>
 #include <QtUml/QUmlProperty>
 
 QT_BEGIN_NAMESPACE
-
-QUmlArtifactPrivate::QUmlArtifactPrivate()
-{
-}
 
 /*!
     \class QUmlArtifact
@@ -59,12 +54,8 @@ QUmlArtifactPrivate::QUmlArtifactPrivate()
     \brief An artifact is the source of a deployment to a node.An artifact is the specification of a physical piece of information that is used or produced by a software development process, or by deployment and operation of a system. Examples of artifacts include model files, source files, scripts, and binary executable files, a table in a database system, a development deliverable, or a word-processing document, a mail message.
  */
 
-QUmlArtifact::QUmlArtifact(bool create_d_ptr) :
-    QUmlDeployedArtifact(false),
-    QUmlClassifier(false)
+QUmlArtifact::QUmlArtifact()
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlArtifactPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -76,17 +67,15 @@ QString QUmlArtifact::fileName() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlArtifact);
-    return d->fileName;
+    return _fileName;
 }
 
 void QUmlArtifact::setFileName(QString fileName)
 {
     // This is a read-write property
 
-    QM_D(QUmlArtifact);
-    if (d->fileName != fileName) {
-        d->fileName = fileName;
+    if (_fileName != fileName) {
+        _fileName = fileName;
     }
 }
 
@@ -97,17 +86,15 @@ QSet<QUmlManifestation *> QUmlArtifact::manifestation() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlArtifact);
-    return d->manifestation;
+    return _manifestation;
 }
 
 void QUmlArtifact::addManifestation(QUmlManifestation *manifestation)
 {
     // This is a read-write association end
 
-    QM_D(QUmlArtifact);
-    if (!d->manifestation.contains(manifestation)) {
-        d->manifestation.insert(manifestation);
+    if (!_manifestation.contains(manifestation)) {
+        _manifestation.insert(manifestation);
     }
 }
 
@@ -115,9 +102,8 @@ void QUmlArtifact::removeManifestation(QUmlManifestation *manifestation)
 {
     // This is a read-write association end
 
-    QM_D(QUmlArtifact);
-    if (d->manifestation.contains(manifestation)) {
-        d->manifestation.remove(manifestation);
+    if (_manifestation.contains(manifestation)) {
+        _manifestation.remove(manifestation);
     }
 }
 
@@ -128,17 +114,15 @@ QSet<QUmlArtifact *> QUmlArtifact::nestedArtifact() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlArtifact);
-    return d->nestedArtifact;
+    return _nestedArtifact;
 }
 
 void QUmlArtifact::addNestedArtifact(QUmlArtifact *nestedArtifact)
 {
     // This is a read-write association end
 
-    QM_D(QUmlArtifact);
-    if (!d->nestedArtifact.contains(nestedArtifact)) {
-        d->nestedArtifact.insert(nestedArtifact);
+    if (!_nestedArtifact.contains(nestedArtifact)) {
+        _nestedArtifact.insert(nestedArtifact);
     }
 }
 
@@ -146,9 +130,8 @@ void QUmlArtifact::removeNestedArtifact(QUmlArtifact *nestedArtifact)
 {
     // This is a read-write association end
 
-    QM_D(QUmlArtifact);
-    if (d->nestedArtifact.contains(nestedArtifact)) {
-        d->nestedArtifact.remove(nestedArtifact);
+    if (_nestedArtifact.contains(nestedArtifact)) {
+        _nestedArtifact.remove(nestedArtifact);
     }
 }
 
@@ -159,17 +142,15 @@ QList<QUmlProperty *> QUmlArtifact::ownedAttribute() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlArtifact);
-    return d->ownedAttribute;
+    return _ownedAttribute;
 }
 
 void QUmlArtifact::addOwnedAttribute(QUmlProperty *ownedAttribute)
 {
     // This is a read-write association end
 
-    QM_D(QUmlArtifact);
-    if (!d->ownedAttribute.contains(ownedAttribute)) {
-        d->ownedAttribute.append(ownedAttribute);
+    if (!_ownedAttribute.contains(ownedAttribute)) {
+        _ownedAttribute.append(ownedAttribute);
     }
 }
 
@@ -177,9 +158,8 @@ void QUmlArtifact::removeOwnedAttribute(QUmlProperty *ownedAttribute)
 {
     // This is a read-write association end
 
-    QM_D(QUmlArtifact);
-    if (d->ownedAttribute.contains(ownedAttribute)) {
-        d->ownedAttribute.removeAll(ownedAttribute);
+    if (_ownedAttribute.contains(ownedAttribute)) {
+        _ownedAttribute.removeAll(ownedAttribute);
     }
 }
 
@@ -190,17 +170,15 @@ QList<QUmlOperation *> QUmlArtifact::ownedOperation() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlArtifact);
-    return d->ownedOperation;
+    return _ownedOperation;
 }
 
 void QUmlArtifact::addOwnedOperation(QUmlOperation *ownedOperation)
 {
     // This is a read-write association end
 
-    QM_D(QUmlArtifact);
-    if (!d->ownedOperation.contains(ownedOperation)) {
-        d->ownedOperation.append(ownedOperation);
+    if (!_ownedOperation.contains(ownedOperation)) {
+        _ownedOperation.append(ownedOperation);
     }
 }
 
@@ -208,9 +186,8 @@ void QUmlArtifact::removeOwnedOperation(QUmlOperation *ownedOperation)
 {
     // This is a read-write association end
 
-    QM_D(QUmlArtifact);
-    if (d->ownedOperation.contains(ownedOperation)) {
-        d->ownedOperation.removeAll(ownedOperation);
+    if (_ownedOperation.contains(ownedOperation)) {
+        _ownedOperation.removeAll(ownedOperation);
     }
 }
 

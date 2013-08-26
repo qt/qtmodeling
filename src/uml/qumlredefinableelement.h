@@ -53,11 +53,10 @@ QT_MODULE(QtUml)
 
 class QUmlClassifier;
 
-class QUmlRedefinableElementPrivate;
 class Q_UML_EXPORT QUmlRedefinableElement : public virtual QUmlNamedElement
 {
 public:
-    Q_DECL_HIDDEN QUmlRedefinableElement(bool create_d_ptr = true);
+    Q_DECL_HIDDEN QUmlRedefinableElement();
 
     // Owned attributes
     bool isLeaf() const;
@@ -68,6 +67,11 @@ public:
     // Operations
     bool isConsistentWith(QUmlRedefinableElement *redefinee) const;
     bool isRedefinitionContextValid(QUmlRedefinableElement *redefined) const;
+
+protected:
+    bool _isLeaf;
+    QSet<QUmlRedefinableElement *> _redefinedElement;
+    QSet<QUmlClassifier *> _redefinitionContext;
 };
 
 QT_END_NAMESPACE

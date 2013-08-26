@@ -53,14 +53,15 @@ QT_MODULE(QtUml)
 
 class QUmlPort;
 
-class QUmlEncapsulatedClassifierPrivate;
 class Q_UML_EXPORT QUmlEncapsulatedClassifier : public QUmlStructuredClassifier
 {
 public:
-    Q_DECL_HIDDEN QUmlEncapsulatedClassifier(bool create_d_ptr = true);
+    Q_DECL_HIDDEN QUmlEncapsulatedClassifier();
 
     // Owned attributes
     QSet<QUmlPort *> ownedPort() const;
+
+protected:
 };
 
 QT_END_NAMESPACE

@@ -39,21 +39,12 @@
 **
 ****************************************************************************/
 #include "qumlobjectnode.h"
-#include "qumlobjectnode_p.h"
 
 #include <QtUml/QUmlBehavior>
 #include <QtUml/QUmlState>
 #include <QtUml/QUmlValueSpecification>
 
 QT_BEGIN_NAMESPACE
-
-QUmlObjectNodePrivate::QUmlObjectNodePrivate() :
-    isControlType(false),
-    ordering(QtUml::ObjectNodeOrderingFIFO),
-    selection(0),
-    upperBound(0)
-{
-}
 
 /*!
     \class QUmlObjectNode
@@ -63,12 +54,12 @@ QUmlObjectNodePrivate::QUmlObjectNodePrivate() :
     \brief An object node is an abstract activity node that is part of defining object flow in an activity.Object nodes have support for token selection, limitation on the number of tokens, specifying the state required for tokens, and carrying control values.
  */
 
-QUmlObjectNode::QUmlObjectNode(bool create_d_ptr) :
-    QUmlActivityNode(false),
-    QUmlTypedElement(false)
+QUmlObjectNode::QUmlObjectNode() :
+    _isControlType(false),
+    _ordering(QtUml::ObjectNodeOrderingFIFO),
+    _selection(0),
+    _upperBound(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlObjectNodePrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -80,17 +71,15 @@ QSet<QUmlState *> QUmlObjectNode::inState() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlObjectNode);
-    return d->inState;
+    return _inState;
 }
 
 void QUmlObjectNode::addInState(QUmlState *inState)
 {
     // This is a read-write association end
 
-    QM_D(QUmlObjectNode);
-    if (!d->inState.contains(inState)) {
-        d->inState.insert(inState);
+    if (!_inState.contains(inState)) {
+        _inState.insert(inState);
     }
 }
 
@@ -98,9 +87,8 @@ void QUmlObjectNode::removeInState(QUmlState *inState)
 {
     // This is a read-write association end
 
-    QM_D(QUmlObjectNode);
-    if (d->inState.contains(inState)) {
-        d->inState.remove(inState);
+    if (_inState.contains(inState)) {
+        _inState.remove(inState);
     }
 }
 
@@ -111,17 +99,15 @@ bool QUmlObjectNode::isControlType() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlObjectNode);
-    return d->isControlType;
+    return _isControlType;
 }
 
 void QUmlObjectNode::setControlType(bool isControlType)
 {
     // This is a read-write property
 
-    QM_D(QUmlObjectNode);
-    if (d->isControlType != isControlType) {
-        d->isControlType = isControlType;
+    if (_isControlType != isControlType) {
+        _isControlType = isControlType;
     }
 }
 
@@ -132,17 +118,15 @@ QtUml::ObjectNodeOrderingKind QUmlObjectNode::ordering() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlObjectNode);
-    return d->ordering;
+    return _ordering;
 }
 
 void QUmlObjectNode::setOrdering(QtUml::ObjectNodeOrderingKind ordering)
 {
     // This is a read-write property
 
-    QM_D(QUmlObjectNode);
-    if (d->ordering != ordering) {
-        d->ordering = ordering;
+    if (_ordering != ordering) {
+        _ordering = ordering;
     }
 }
 
@@ -153,17 +137,15 @@ QUmlBehavior *QUmlObjectNode::selection() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlObjectNode);
-    return d->selection;
+    return _selection;
 }
 
 void QUmlObjectNode::setSelection(QUmlBehavior *selection)
 {
     // This is a read-write association end
 
-    QM_D(QUmlObjectNode);
-    if (d->selection != selection) {
-        d->selection = selection;
+    if (_selection != selection) {
+        _selection = selection;
     }
 }
 
@@ -174,17 +156,15 @@ QUmlValueSpecification *QUmlObjectNode::upperBound() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlObjectNode);
-    return d->upperBound;
+    return _upperBound;
 }
 
 void QUmlObjectNode::setUpperBound(QUmlValueSpecification *upperBound)
 {
     // This is a read-write association end
 
-    QM_D(QUmlObjectNode);
-    if (d->upperBound != upperBound) {
-        d->upperBound = upperBound;
+    if (_upperBound != upperBound) {
+        _upperBound = upperBound;
     }
 }
 

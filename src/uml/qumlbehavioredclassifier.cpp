@@ -39,17 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlbehavioredclassifier.h"
-#include "qumlbehavioredclassifier_p.h"
 
 #include <QtUml/QUmlBehavior>
 #include <QtUml/QUmlInterfaceRealization>
 
 QT_BEGIN_NAMESPACE
-
-QUmlBehavioredClassifierPrivate::QUmlBehavioredClassifierPrivate() :
-    classifierBehavior(0)
-{
-}
 
 /*!
     \class QUmlBehavioredClassifier
@@ -59,11 +53,9 @@ QUmlBehavioredClassifierPrivate::QUmlBehavioredClassifierPrivate() :
     \brief A behaviored classifier may have an interface realization.A classifier can have behavior specifications defined in its namespace. One of these may specify the behavior of the classifier itself.
  */
 
-QUmlBehavioredClassifier::QUmlBehavioredClassifier(bool create_d_ptr) :
-    QUmlClassifier(false)
+QUmlBehavioredClassifier::QUmlBehavioredClassifier() :
+    _classifierBehavior(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlBehavioredClassifierPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -75,17 +67,15 @@ QUmlBehavior *QUmlBehavioredClassifier::classifierBehavior() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlBehavioredClassifier);
-    return d->classifierBehavior;
+    return _classifierBehavior;
 }
 
 void QUmlBehavioredClassifier::setClassifierBehavior(QUmlBehavior *classifierBehavior)
 {
     // This is a read-write association end
 
-    QM_D(QUmlBehavioredClassifier);
-    if (d->classifierBehavior != classifierBehavior) {
-        d->classifierBehavior = classifierBehavior;
+    if (_classifierBehavior != classifierBehavior) {
+        _classifierBehavior = classifierBehavior;
     }
 }
 
@@ -96,17 +86,15 @@ QSet<QUmlInterfaceRealization *> QUmlBehavioredClassifier::interfaceRealization(
 {
     // This is a read-write association end
 
-    QM_D(const QUmlBehavioredClassifier);
-    return d->interfaceRealization;
+    return _interfaceRealization;
 }
 
 void QUmlBehavioredClassifier::addInterfaceRealization(QUmlInterfaceRealization *interfaceRealization)
 {
     // This is a read-write association end
 
-    QM_D(QUmlBehavioredClassifier);
-    if (!d->interfaceRealization.contains(interfaceRealization)) {
-        d->interfaceRealization.insert(interfaceRealization);
+    if (!_interfaceRealization.contains(interfaceRealization)) {
+        _interfaceRealization.insert(interfaceRealization);
     }
 }
 
@@ -114,9 +102,8 @@ void QUmlBehavioredClassifier::removeInterfaceRealization(QUmlInterfaceRealizati
 {
     // This is a read-write association end
 
-    QM_D(QUmlBehavioredClassifier);
-    if (d->interfaceRealization.contains(interfaceRealization)) {
-        d->interfaceRealization.remove(interfaceRealization);
+    if (_interfaceRealization.contains(interfaceRealization)) {
+        _interfaceRealization.remove(interfaceRealization);
     }
 }
 
@@ -127,17 +114,15 @@ QSet<QUmlBehavior *> QUmlBehavioredClassifier::ownedBehavior() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlBehavioredClassifier);
-    return d->ownedBehavior;
+    return _ownedBehavior;
 }
 
 void QUmlBehavioredClassifier::addOwnedBehavior(QUmlBehavior *ownedBehavior)
 {
     // This is a read-write association end
 
-    QM_D(QUmlBehavioredClassifier);
-    if (!d->ownedBehavior.contains(ownedBehavior)) {
-        d->ownedBehavior.insert(ownedBehavior);
+    if (!_ownedBehavior.contains(ownedBehavior)) {
+        _ownedBehavior.insert(ownedBehavior);
     }
 }
 
@@ -145,9 +130,8 @@ void QUmlBehavioredClassifier::removeOwnedBehavior(QUmlBehavior *ownedBehavior)
 {
     // This is a read-write association end
 
-    QM_D(QUmlBehavioredClassifier);
-    if (d->ownedBehavior.contains(ownedBehavior)) {
-        d->ownedBehavior.remove(ownedBehavior);
+    if (_ownedBehavior.contains(ownedBehavior)) {
+        _ownedBehavior.remove(ownedBehavior);
     }
 }
 

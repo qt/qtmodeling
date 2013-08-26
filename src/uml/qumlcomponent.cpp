@@ -39,7 +39,6 @@
 **
 ****************************************************************************/
 #include "qumlcomponent.h"
-#include "qumlcomponent_p.h"
 
 #include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlComponentRealization>
@@ -47,11 +46,6 @@
 #include <QtUml/QUmlPackageableElement>
 
 QT_BEGIN_NAMESPACE
-
-QUmlComponentPrivate::QUmlComponentPrivate() :
-    isIndirectlyInstantiated(true)
-{
-}
 
 /*!
     \class QUmlComponent
@@ -61,11 +55,9 @@ QUmlComponentPrivate::QUmlComponentPrivate() :
     \brief In the namespace of a component, all model elements that are involved in or related to its definition are either owned or imported explicitly. This may include, for example, use cases and dependencies (e.g. mappings), packages, components, and artifacts.A component represents a modular part of a system that encapsulates its contents and whose manifestation is replaceable within its environment.
  */
 
-QUmlComponent::QUmlComponent(bool create_d_ptr) :
-    QUmlClass(false)
+QUmlComponent::QUmlComponent() :
+    _isIndirectlyInstantiated(true)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlComponentPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -77,17 +69,15 @@ bool QUmlComponent::isIndirectlyInstantiated() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlComponent);
-    return d->isIndirectlyInstantiated;
+    return _isIndirectlyInstantiated;
 }
 
 void QUmlComponent::setIndirectlyInstantiated(bool isIndirectlyInstantiated)
 {
     // This is a read-write property
 
-    QM_D(QUmlComponent);
-    if (d->isIndirectlyInstantiated != isIndirectlyInstantiated) {
-        d->isIndirectlyInstantiated = isIndirectlyInstantiated;
+    if (_isIndirectlyInstantiated != isIndirectlyInstantiated) {
+        _isIndirectlyInstantiated = isIndirectlyInstantiated;
     }
 }
 
@@ -98,17 +88,15 @@ QSet<QUmlPackageableElement *> QUmlComponent::packagedElement() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlComponent);
-    return d->packagedElement;
+    return _packagedElement;
 }
 
 void QUmlComponent::addPackagedElement(QUmlPackageableElement *packagedElement)
 {
     // This is a read-write association end
 
-    QM_D(QUmlComponent);
-    if (!d->packagedElement.contains(packagedElement)) {
-        d->packagedElement.insert(packagedElement);
+    if (!_packagedElement.contains(packagedElement)) {
+        _packagedElement.insert(packagedElement);
     }
 }
 
@@ -116,9 +104,8 @@ void QUmlComponent::removePackagedElement(QUmlPackageableElement *packagedElemen
 {
     // This is a read-write association end
 
-    QM_D(QUmlComponent);
-    if (d->packagedElement.contains(packagedElement)) {
-        d->packagedElement.remove(packagedElement);
+    if (_packagedElement.contains(packagedElement)) {
+        _packagedElement.remove(packagedElement);
     }
 }
 
@@ -141,17 +128,15 @@ QSet<QUmlComponentRealization *> QUmlComponent::realization() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlComponent);
-    return d->realization;
+    return _realization;
 }
 
 void QUmlComponent::addRealization(QUmlComponentRealization *realization)
 {
     // This is a read-write association end
 
-    QM_D(QUmlComponent);
-    if (!d->realization.contains(realization)) {
-        d->realization.insert(realization);
+    if (!_realization.contains(realization)) {
+        _realization.insert(realization);
     }
 }
 
@@ -159,9 +144,8 @@ void QUmlComponent::removeRealization(QUmlComponentRealization *realization)
 {
     // This is a read-write association end
 
-    QM_D(QUmlComponent);
-    if (d->realization.contains(realization)) {
-        d->realization.remove(realization);
+    if (_realization.contains(realization)) {
+        _realization.remove(realization);
     }
 }
 

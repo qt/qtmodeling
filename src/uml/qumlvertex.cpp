@@ -39,18 +39,12 @@
 **
 ****************************************************************************/
 #include "qumlvertex.h"
-#include "qumlvertex_p.h"
 
 #include <QtUml/QUmlRegion>
 #include <QtUml/QUmlStateMachine>
 #include <QtUml/QUmlTransition>
 
 QT_BEGIN_NAMESPACE
-
-QUmlVertexPrivate::QUmlVertexPrivate() :
-    container(0)
-{
-}
 
 /*!
     \class QUmlVertex
@@ -60,11 +54,9 @@ QUmlVertexPrivate::QUmlVertexPrivate() :
     \brief A vertex is an abstraction of a node in a state machine graph. In general, it can be the source or destination of any number of transitions.
  */
 
-QUmlVertex::QUmlVertex(bool create_d_ptr) :
-    QUmlNamedElement(false)
+QUmlVertex::QUmlVertex() :
+    _container(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlVertexPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -76,17 +68,15 @@ QUmlRegion *QUmlVertex::container() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlVertex);
-    return d->container;
+    return _container;
 }
 
 void QUmlVertex::setContainer(QUmlRegion *container)
 {
     // This is a read-write association end
 
-    QM_D(QUmlVertex);
-    if (d->container != container) {
-        d->container = container;
+    if (_container != container) {
+        _container = container;
     }
 }
 

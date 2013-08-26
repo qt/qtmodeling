@@ -53,15 +53,17 @@ QT_MODULE(QtUml)
 
 class QUmlOperation;
 
-class QUmlCallEventPrivate;
 class Q_UML_EXPORT QUmlCallEvent : public QUmlMessageEvent
 {
 public:
-    QUmlCallEvent(bool create_d_ptr = true);
+    QUmlCallEvent();
 
     // Owned attributes
     QUmlOperation *operation() const;
     void setOperation(QUmlOperation *operation);
+
+protected:
+    QUmlOperation *_operation;
 };
 
 QT_END_NAMESPACE

@@ -39,17 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlclause.h"
-#include "qumlclause_p.h"
 
 #include <QtUml/QUmlExecutableNode>
 #include <QtUml/QUmlOutputPin>
 
 QT_BEGIN_NAMESPACE
-
-QUmlClausePrivate::QUmlClausePrivate() :
-    decider(0)
-{
-}
 
 /*!
     \class QUmlClause
@@ -59,11 +53,9 @@ QUmlClausePrivate::QUmlClausePrivate() :
     \brief A clause is an element that represents a single branch of a conditional construct, including a test and a body section. The body section is executed only if (but not necessarily if) the test section evaluates true.
  */
 
-QUmlClause::QUmlClause(bool create_d_ptr) :
-    QUmlElement(false)
+QUmlClause::QUmlClause() :
+    _decider(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlClausePrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -75,17 +67,15 @@ QSet<QUmlExecutableNode *> QUmlClause::body() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlClause);
-    return d->body;
+    return _body;
 }
 
 void QUmlClause::addBody(QUmlExecutableNode *body)
 {
     // This is a read-write association end
 
-    QM_D(QUmlClause);
-    if (!d->body.contains(body)) {
-        d->body.insert(body);
+    if (!_body.contains(body)) {
+        _body.insert(body);
     }
 }
 
@@ -93,9 +83,8 @@ void QUmlClause::removeBody(QUmlExecutableNode *body)
 {
     // This is a read-write association end
 
-    QM_D(QUmlClause);
-    if (d->body.contains(body)) {
-        d->body.remove(body);
+    if (_body.contains(body)) {
+        _body.remove(body);
     }
 }
 
@@ -106,17 +95,15 @@ QList<QUmlOutputPin *> QUmlClause::bodyOutput() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlClause);
-    return d->bodyOutput;
+    return _bodyOutput;
 }
 
 void QUmlClause::addBodyOutput(QUmlOutputPin *bodyOutput)
 {
     // This is a read-write association end
 
-    QM_D(QUmlClause);
-    if (!d->bodyOutput.contains(bodyOutput)) {
-        d->bodyOutput.append(bodyOutput);
+    if (!_bodyOutput.contains(bodyOutput)) {
+        _bodyOutput.append(bodyOutput);
     }
 }
 
@@ -124,9 +111,8 @@ void QUmlClause::removeBodyOutput(QUmlOutputPin *bodyOutput)
 {
     // This is a read-write association end
 
-    QM_D(QUmlClause);
-    if (d->bodyOutput.contains(bodyOutput)) {
-        d->bodyOutput.removeAll(bodyOutput);
+    if (_bodyOutput.contains(bodyOutput)) {
+        _bodyOutput.removeAll(bodyOutput);
     }
 }
 
@@ -137,17 +123,15 @@ QUmlOutputPin *QUmlClause::decider() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlClause);
-    return d->decider;
+    return _decider;
 }
 
 void QUmlClause::setDecider(QUmlOutputPin *decider)
 {
     // This is a read-write association end
 
-    QM_D(QUmlClause);
-    if (d->decider != decider) {
-        d->decider = decider;
+    if (_decider != decider) {
+        _decider = decider;
     }
 }
 
@@ -158,17 +142,15 @@ QSet<QUmlClause *> QUmlClause::predecessorClause() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlClause);
-    return d->predecessorClause;
+    return _predecessorClause;
 }
 
 void QUmlClause::addPredecessorClause(QUmlClause *predecessorClause)
 {
     // This is a read-write association end
 
-    QM_D(QUmlClause);
-    if (!d->predecessorClause.contains(predecessorClause)) {
-        d->predecessorClause.insert(predecessorClause);
+    if (!_predecessorClause.contains(predecessorClause)) {
+        _predecessorClause.insert(predecessorClause);
     }
 }
 
@@ -176,9 +158,8 @@ void QUmlClause::removePredecessorClause(QUmlClause *predecessorClause)
 {
     // This is a read-write association end
 
-    QM_D(QUmlClause);
-    if (d->predecessorClause.contains(predecessorClause)) {
-        d->predecessorClause.remove(predecessorClause);
+    if (_predecessorClause.contains(predecessorClause)) {
+        _predecessorClause.remove(predecessorClause);
     }
 }
 
@@ -189,17 +170,15 @@ QSet<QUmlClause *> QUmlClause::successorClause() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlClause);
-    return d->successorClause;
+    return _successorClause;
 }
 
 void QUmlClause::addSuccessorClause(QUmlClause *successorClause)
 {
     // This is a read-write association end
 
-    QM_D(QUmlClause);
-    if (!d->successorClause.contains(successorClause)) {
-        d->successorClause.insert(successorClause);
+    if (!_successorClause.contains(successorClause)) {
+        _successorClause.insert(successorClause);
     }
 }
 
@@ -207,9 +186,8 @@ void QUmlClause::removeSuccessorClause(QUmlClause *successorClause)
 {
     // This is a read-write association end
 
-    QM_D(QUmlClause);
-    if (d->successorClause.contains(successorClause)) {
-        d->successorClause.remove(successorClause);
+    if (_successorClause.contains(successorClause)) {
+        _successorClause.remove(successorClause);
     }
 }
 
@@ -220,17 +198,15 @@ QSet<QUmlExecutableNode *> QUmlClause::test() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlClause);
-    return d->test;
+    return _test;
 }
 
 void QUmlClause::addTest(QUmlExecutableNode *test)
 {
     // This is a read-write association end
 
-    QM_D(QUmlClause);
-    if (!d->test.contains(test)) {
-        d->test.insert(test);
+    if (!_test.contains(test)) {
+        _test.insert(test);
     }
 }
 
@@ -238,9 +214,8 @@ void QUmlClause::removeTest(QUmlExecutableNode *test)
 {
     // This is a read-write association end
 
-    QM_D(QUmlClause);
-    if (d->test.contains(test)) {
-        d->test.remove(test);
+    if (_test.contains(test)) {
+        _test.remove(test);
     }
 }
 

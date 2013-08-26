@@ -39,7 +39,6 @@
 **
 ****************************************************************************/
 #include "qumlpackage.h"
-#include "qumlpackage_p.h"
 
 #include <QtUml/QUmlNamedElement>
 #include <QtUml/QUmlPackageMerge>
@@ -50,11 +49,6 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlPackagePrivate::QUmlPackagePrivate() :
-    nestingPackage(0)
-{
-}
-
 /*!
     \class QUmlPackage
 
@@ -63,13 +57,9 @@ QUmlPackagePrivate::QUmlPackagePrivate() :
     \brief A package can have one or more profile applications to indicate which profiles have been applied. Because a profile is a package, it is possible to apply a profile not only to packages, but also to profiles.Package specializes TemplateableElement and PackageableElement specializes ParameterableElement to specify that a package can be used as a template and a PackageableElement as a template parameter.A package is used to group elements, and provides a namespace for the grouped elements.
  */
 
-QUmlPackage::QUmlPackage(bool create_d_ptr) :
-    QUmlNamespace(false),
-    QUmlPackageableElement(false),
-    QUmlTemplateableElement(false)
+QUmlPackage::QUmlPackage() :
+    _nestingPackage(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlPackagePrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -81,17 +71,15 @@ QString QUmlPackage::URI() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlPackage);
-    return d->URI;
+    return _URI;
 }
 
 void QUmlPackage::setURI(QString URI)
 {
     // This is a read-write property
 
-    QM_D(QUmlPackage);
-    if (d->URI != URI) {
-        d->URI = URI;
+    if (_URI != URI) {
+        _URI = URI;
     }
 }
 
@@ -138,17 +126,15 @@ QUmlPackage *QUmlPackage::nestingPackage() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlPackage);
-    return d->nestingPackage;
+    return _nestingPackage;
 }
 
 void QUmlPackage::setNestingPackage(QUmlPackage *nestingPackage)
 {
     // This is a read-write association end
 
-    QM_D(QUmlPackage);
-    if (d->nestingPackage != nestingPackage) {
-        d->nestingPackage = nestingPackage;
+    if (_nestingPackage != nestingPackage) {
+        _nestingPackage = nestingPackage;
     }
 }
 
@@ -207,17 +193,15 @@ QSet<QUmlPackageMerge *> QUmlPackage::packageMerge() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlPackage);
-    return d->packageMerge;
+    return _packageMerge;
 }
 
 void QUmlPackage::addPackageMerge(QUmlPackageMerge *packageMerge)
 {
     // This is a read-write association end
 
-    QM_D(QUmlPackage);
-    if (!d->packageMerge.contains(packageMerge)) {
-        d->packageMerge.insert(packageMerge);
+    if (!_packageMerge.contains(packageMerge)) {
+        _packageMerge.insert(packageMerge);
     }
 }
 
@@ -225,9 +209,8 @@ void QUmlPackage::removePackageMerge(QUmlPackageMerge *packageMerge)
 {
     // This is a read-write association end
 
-    QM_D(QUmlPackage);
-    if (d->packageMerge.contains(packageMerge)) {
-        d->packageMerge.remove(packageMerge);
+    if (_packageMerge.contains(packageMerge)) {
+        _packageMerge.remove(packageMerge);
     }
 }
 
@@ -238,17 +221,15 @@ QSet<QUmlPackageableElement *> QUmlPackage::packagedElement() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlPackage);
-    return d->packagedElement;
+    return _packagedElement;
 }
 
 void QUmlPackage::addPackagedElement(QUmlPackageableElement *packagedElement)
 {
     // This is a read-write association end
 
-    QM_D(QUmlPackage);
-    if (!d->packagedElement.contains(packagedElement)) {
-        d->packagedElement.insert(packagedElement);
+    if (!_packagedElement.contains(packagedElement)) {
+        _packagedElement.insert(packagedElement);
     }
 }
 
@@ -256,9 +237,8 @@ void QUmlPackage::removePackagedElement(QUmlPackageableElement *packagedElement)
 {
     // This is a read-write association end
 
-    QM_D(QUmlPackage);
-    if (d->packagedElement.contains(packagedElement)) {
-        d->packagedElement.remove(packagedElement);
+    if (_packagedElement.contains(packagedElement)) {
+        _packagedElement.remove(packagedElement);
     }
 }
 
@@ -269,17 +249,15 @@ QSet<QUmlProfileApplication *> QUmlPackage::profileApplication() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlPackage);
-    return d->profileApplication;
+    return _profileApplication;
 }
 
 void QUmlPackage::addProfileApplication(QUmlProfileApplication *profileApplication)
 {
     // This is a read-write association end
 
-    QM_D(QUmlPackage);
-    if (!d->profileApplication.contains(profileApplication)) {
-        d->profileApplication.insert(profileApplication);
+    if (!_profileApplication.contains(profileApplication)) {
+        _profileApplication.insert(profileApplication);
     }
 }
 
@@ -287,9 +265,8 @@ void QUmlPackage::removeProfileApplication(QUmlProfileApplication *profileApplic
 {
     // This is a read-write association end
 
-    QM_D(QUmlPackage);
-    if (d->profileApplication.contains(profileApplication)) {
-        d->profileApplication.remove(profileApplication);
+    if (_profileApplication.contains(profileApplication)) {
+        _profileApplication.remove(profileApplication);
     }
 }
 

@@ -53,17 +53,20 @@ QT_MODULE(QtUml)
 
 class QUmlTimeExpression;
 
-class QUmlTimeEventPrivate;
 class Q_UML_EXPORT QUmlTimeEvent : public QUmlEvent
 {
 public:
-    QUmlTimeEvent(bool create_d_ptr = true);
+    QUmlTimeEvent();
 
     // Owned attributes
     bool isRelative() const;
     void setRelative(bool isRelative);
     QUmlTimeExpression *when() const;
     void setWhen(QUmlTimeExpression *when);
+
+protected:
+    bool _isRelative;
+    QUmlTimeExpression *_when;
 };
 
 QT_END_NAMESPACE

@@ -53,16 +53,18 @@ QT_MODULE(QtUml)
 
 class QUmlProperty;
 
-class QUmlSignalPrivate;
 class Q_UML_EXPORT QUmlSignal : public QUmlClassifier
 {
 public:
-    QUmlSignal(bool create_d_ptr = true);
+    QUmlSignal();
 
     // Owned attributes
     QList<QUmlProperty *> ownedAttribute() const;
     void addOwnedAttribute(QUmlProperty *ownedAttribute);
     void removeOwnedAttribute(QUmlProperty *ownedAttribute);
+
+protected:
+    QList<QUmlProperty *> _ownedAttribute;
 };
 
 QT_END_NAMESPACE

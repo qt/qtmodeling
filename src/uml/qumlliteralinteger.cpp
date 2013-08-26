@@ -39,14 +39,8 @@
 **
 ****************************************************************************/
 #include "qumlliteralinteger.h"
-#include "qumlliteralinteger_p.h"
 
 QT_BEGIN_NAMESPACE
-
-QUmlLiteralIntegerPrivate::QUmlLiteralIntegerPrivate() :
-    value(0)
-{
-}
 
 /*!
     \class QUmlLiteralInteger
@@ -56,11 +50,9 @@ QUmlLiteralIntegerPrivate::QUmlLiteralIntegerPrivate() :
     \brief A literal integer is a specification of an integer value.
  */
 
-QUmlLiteralInteger::QUmlLiteralInteger(bool create_d_ptr) :
-    QUmlLiteralSpecification(false)
+QUmlLiteralInteger::QUmlLiteralInteger() :
+    _value(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlLiteralIntegerPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -72,17 +64,15 @@ int QUmlLiteralInteger::value() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlLiteralInteger);
-    return d->value;
+    return _value;
 }
 
 void QUmlLiteralInteger::setValue(int value)
 {
     // This is a read-write property
 
-    QM_D(QUmlLiteralInteger);
-    if (d->value != value) {
-        d->value = value;
+    if (_value != value) {
+        _value = value;
     }
 }
 

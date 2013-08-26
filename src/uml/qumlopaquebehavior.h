@@ -51,11 +51,10 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlOpaqueBehaviorPrivate;
 class Q_UML_EXPORT QUmlOpaqueBehavior : public QUmlBehavior
 {
 public:
-    QUmlOpaqueBehavior(bool create_d_ptr = true);
+    QUmlOpaqueBehavior();
 
     // Owned attributes
     QList<QString> body() const;
@@ -64,6 +63,10 @@ public:
     QList<QString> language() const;
     void addLanguage(QString language);
     void removeLanguage(QString language);
+
+protected:
+    QList<QString> _body;
+    QList<QString> _language;
 };
 
 QT_END_NAMESPACE

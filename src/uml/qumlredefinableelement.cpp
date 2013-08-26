@@ -39,16 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlredefinableelement.h"
-#include "qumlredefinableelement_p.h"
 
 #include <QtUml/QUmlClassifier>
 
 QT_BEGIN_NAMESPACE
-
-QUmlRedefinableElementPrivate::QUmlRedefinableElementPrivate() :
-    isLeaf(false)
-{
-}
 
 /*!
     \class QUmlRedefinableElement
@@ -58,11 +52,9 @@ QUmlRedefinableElementPrivate::QUmlRedefinableElementPrivate() :
     \brief A redefinable element is an element that, when defined in the context of a classifier, can be redefined more specifically or differently in the context of another classifier that specializes (directly or indirectly) the context classifier.
  */
 
-QUmlRedefinableElement::QUmlRedefinableElement(bool create_d_ptr) :
-    QUmlNamedElement(false)
+QUmlRedefinableElement::QUmlRedefinableElement() :
+    _isLeaf(false)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlRedefinableElementPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -74,17 +66,15 @@ bool QUmlRedefinableElement::isLeaf() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlRedefinableElement);
-    return d->isLeaf;
+    return _isLeaf;
 }
 
 void QUmlRedefinableElement::setLeaf(bool isLeaf)
 {
     // This is a read-write property
 
-    QM_D(QUmlRedefinableElement);
-    if (d->isLeaf != isLeaf) {
-        d->isLeaf = isLeaf;
+    if (_isLeaf != isLeaf) {
+        _isLeaf = isLeaf;
     }
 }
 
@@ -95,8 +85,7 @@ QSet<QUmlRedefinableElement *> QUmlRedefinableElement::redefinedElement() const
 {
     // This is a read-only derived union association end
 
-    QM_D(const QUmlRedefinableElement);
-    return d->redefinedElement;
+    return _redefinedElement;
 }
 
 /*!
@@ -106,8 +95,7 @@ QSet<QUmlClassifier *> QUmlRedefinableElement::redefinitionContext() const
 {
     // This is a read-only derived union association end
 
-    QM_D(const QUmlRedefinableElement);
-    return d->redefinitionContext;
+    return _redefinitionContext;
 }
 
 // OPERATIONS

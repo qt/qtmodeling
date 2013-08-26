@@ -55,11 +55,10 @@ class QUmlClassifier;
 class QUmlInputPin;
 class QUmlOutputPin;
 
-class QUmlUnmarshallActionPrivate;
 class Q_UML_EXPORT QUmlUnmarshallAction : public QUmlAction
 {
 public:
-    QUmlUnmarshallAction(bool create_d_ptr = true);
+    QUmlUnmarshallAction();
 
     // Owned attributes
     QUmlInputPin *object() const;
@@ -69,6 +68,11 @@ public:
     void removeResult(QUmlOutputPin *result);
     QUmlClassifier *unmarshallType() const;
     void setUnmarshallType(QUmlClassifier *unmarshallType);
+
+protected:
+    QUmlInputPin *_object;
+    QSet<QUmlOutputPin *> _result;
+    QUmlClassifier *_unmarshallType;
 };
 
 QT_END_NAMESPACE

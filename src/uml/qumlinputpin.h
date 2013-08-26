@@ -51,11 +51,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlInputPinPrivate;
 class Q_UML_EXPORT QUmlInputPin : public QUmlPin
 {
 public:
-    QUmlInputPin(bool create_d_ptr = true);
+    QUmlInputPin();
+
+protected:
 };
 
 QT_END_NAMESPACE

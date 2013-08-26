@@ -39,18 +39,12 @@
 **
 ****************************************************************************/
 #include "qumltemplateableelement.h"
-#include "qumltemplateableelement_p.h"
 
 #include <QtUml/QUmlParameterableElement>
 #include <QtUml/QUmlTemplateBinding>
 #include <QtUml/QUmlTemplateSignature>
 
 QT_BEGIN_NAMESPACE
-
-QUmlTemplateableElementPrivate::QUmlTemplateableElementPrivate() :
-    ownedTemplateSignature(0)
-{
-}
 
 /*!
     \class QUmlTemplateableElement
@@ -60,11 +54,9 @@ QUmlTemplateableElementPrivate::QUmlTemplateableElementPrivate() :
     \brief A templateable element is an element that can optionally be defined as a template and bound to other templates.
  */
 
-QUmlTemplateableElement::QUmlTemplateableElement(bool create_d_ptr) :
-    QUmlElement(false)
+QUmlTemplateableElement::QUmlTemplateableElement() :
+    _ownedTemplateSignature(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlTemplateableElementPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -76,17 +68,15 @@ QUmlTemplateSignature *QUmlTemplateableElement::ownedTemplateSignature() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlTemplateableElement);
-    return d->ownedTemplateSignature;
+    return _ownedTemplateSignature;
 }
 
 void QUmlTemplateableElement::setOwnedTemplateSignature(QUmlTemplateSignature *ownedTemplateSignature)
 {
     // This is a read-write association end
 
-    QM_D(QUmlTemplateableElement);
-    if (d->ownedTemplateSignature != ownedTemplateSignature) {
-        d->ownedTemplateSignature = ownedTemplateSignature;
+    if (_ownedTemplateSignature != ownedTemplateSignature) {
+        _ownedTemplateSignature = ownedTemplateSignature;
     }
 }
 
@@ -97,17 +87,15 @@ QSet<QUmlTemplateBinding *> QUmlTemplateableElement::templateBinding() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlTemplateableElement);
-    return d->templateBinding;
+    return _templateBinding;
 }
 
 void QUmlTemplateableElement::addTemplateBinding(QUmlTemplateBinding *templateBinding)
 {
     // This is a read-write association end
 
-    QM_D(QUmlTemplateableElement);
-    if (!d->templateBinding.contains(templateBinding)) {
-        d->templateBinding.insert(templateBinding);
+    if (!_templateBinding.contains(templateBinding)) {
+        _templateBinding.insert(templateBinding);
     }
 }
 
@@ -115,9 +103,8 @@ void QUmlTemplateableElement::removeTemplateBinding(QUmlTemplateBinding *templat
 {
     // This is a read-write association end
 
-    QM_D(QUmlTemplateableElement);
-    if (d->templateBinding.contains(templateBinding)) {
-        d->templateBinding.remove(templateBinding);
+    if (_templateBinding.contains(templateBinding)) {
+        _templateBinding.remove(templateBinding);
     }
 }
 

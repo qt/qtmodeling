@@ -53,17 +53,20 @@ QT_MODULE(QtUml)
 
 class QUmlInputPin;
 
-class QUmlRemoveVariableValueActionPrivate;
 class Q_UML_EXPORT QUmlRemoveVariableValueAction : public QUmlWriteVariableAction
 {
 public:
-    QUmlRemoveVariableValueAction(bool create_d_ptr = true);
+    QUmlRemoveVariableValueAction();
 
     // Owned attributes
     bool isRemoveDuplicates() const;
     void setRemoveDuplicates(bool isRemoveDuplicates);
     QUmlInputPin *removeAt() const;
     void setRemoveAt(QUmlInputPin *removeAt);
+
+protected:
+    bool _isRemoveDuplicates;
+    QUmlInputPin *_removeAt;
 };
 
 QT_END_NAMESPACE

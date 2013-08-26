@@ -53,15 +53,17 @@ QT_MODULE(QtUml)
 
 class QUmlAction;
 
-class QUmlActionInputPinPrivate;
 class Q_UML_EXPORT QUmlActionInputPin : public QUmlInputPin
 {
 public:
-    QUmlActionInputPin(bool create_d_ptr = true);
+    QUmlActionInputPin();
 
     // Owned attributes
     QUmlAction *fromAction() const;
     void setFromAction(QUmlAction *fromAction);
+
+protected:
+    QUmlAction *_fromAction;
 };
 
 QT_END_NAMESPACE

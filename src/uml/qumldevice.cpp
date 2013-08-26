@@ -39,13 +39,8 @@
 **
 ****************************************************************************/
 #include "qumldevice.h"
-#include "qumldevice_p.h"
 
 QT_BEGIN_NAMESPACE
-
-QUmlDevicePrivate::QUmlDevicePrivate()
-{
-}
 
 /*!
     \class QUmlDevice
@@ -55,11 +50,8 @@ QUmlDevicePrivate::QUmlDevicePrivate()
     \brief A device is a physical computational resource with processing capability upon which artifacts may be deployed for execution. Devices may be complex (i.e., they may consist of other devices).
  */
 
-QUmlDevice::QUmlDevice(bool create_d_ptr) :
-    QUmlNode(false)
+QUmlDevice::QUmlDevice()
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlDevicePrivate);
 }
 
 QT_END_NAMESPACE

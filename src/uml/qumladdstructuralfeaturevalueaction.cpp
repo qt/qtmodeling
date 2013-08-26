@@ -39,17 +39,10 @@
 **
 ****************************************************************************/
 #include "qumladdstructuralfeaturevalueaction.h"
-#include "qumladdstructuralfeaturevalueaction_p.h"
 
 #include <QtUml/QUmlInputPin>
 
 QT_BEGIN_NAMESPACE
-
-QUmlAddStructuralFeatureValueActionPrivate::QUmlAddStructuralFeatureValueActionPrivate() :
-    insertAt(0),
-    isReplaceAll(false)
-{
-}
 
 /*!
     \class QUmlAddStructuralFeatureValueAction
@@ -59,11 +52,10 @@ QUmlAddStructuralFeatureValueActionPrivate::QUmlAddStructuralFeatureValueActionP
     \brief An add structural feature value action is a write structural feature action for adding values to a structural feature.
  */
 
-QUmlAddStructuralFeatureValueAction::QUmlAddStructuralFeatureValueAction(bool create_d_ptr) :
-    QUmlWriteStructuralFeatureAction(false)
+QUmlAddStructuralFeatureValueAction::QUmlAddStructuralFeatureValueAction() :
+    _insertAt(0),
+    _isReplaceAll(false)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlAddStructuralFeatureValueActionPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -75,17 +67,15 @@ QUmlInputPin *QUmlAddStructuralFeatureValueAction::insertAt() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlAddStructuralFeatureValueAction);
-    return d->insertAt;
+    return _insertAt;
 }
 
 void QUmlAddStructuralFeatureValueAction::setInsertAt(QUmlInputPin *insertAt)
 {
     // This is a read-write association end
 
-    QM_D(QUmlAddStructuralFeatureValueAction);
-    if (d->insertAt != insertAt) {
-        d->insertAt = insertAt;
+    if (_insertAt != insertAt) {
+        _insertAt = insertAt;
     }
 }
 
@@ -96,17 +86,15 @@ bool QUmlAddStructuralFeatureValueAction::isReplaceAll() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlAddStructuralFeatureValueAction);
-    return d->isReplaceAll;
+    return _isReplaceAll;
 }
 
 void QUmlAddStructuralFeatureValueAction::setReplaceAll(bool isReplaceAll)
 {
     // This is a read-write property
 
-    QM_D(QUmlAddStructuralFeatureValueAction);
-    if (d->isReplaceAll != isReplaceAll) {
-        d->isReplaceAll = isReplaceAll;
+    if (_isReplaceAll != isReplaceAll) {
+        _isReplaceAll = isReplaceAll;
     }
 }
 

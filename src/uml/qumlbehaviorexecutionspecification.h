@@ -53,15 +53,17 @@ QT_MODULE(QtUml)
 
 class QUmlBehavior;
 
-class QUmlBehaviorExecutionSpecificationPrivate;
 class Q_UML_EXPORT QUmlBehaviorExecutionSpecification : public QUmlExecutionSpecification
 {
 public:
-    QUmlBehaviorExecutionSpecification(bool create_d_ptr = true);
+    QUmlBehaviorExecutionSpecification();
 
     // Owned attributes
     QUmlBehavior *behavior() const;
     void setBehavior(QUmlBehavior *behavior);
+
+protected:
+    QUmlBehavior *_behavior;
 };
 
 QT_END_NAMESPACE

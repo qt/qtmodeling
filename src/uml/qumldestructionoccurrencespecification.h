@@ -51,11 +51,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlDestructionOccurrenceSpecificationPrivate;
 class Q_UML_EXPORT QUmlDestructionOccurrenceSpecification : public QUmlMessageOccurrenceSpecification
 {
 public:
-    QUmlDestructionOccurrenceSpecification(bool create_d_ptr = true);
+    QUmlDestructionOccurrenceSpecification();
+
+protected:
 };
 
 QT_END_NAMESPACE

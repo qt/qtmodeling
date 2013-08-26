@@ -59,11 +59,10 @@ class QUmlInputPin;
 class QUmlOutputPin;
 class QUmlVariable;
 
-class QUmlStructuredActivityNodePrivate;
 class Q_UML_EXPORT QUmlStructuredActivityNode : public QUmlAction, public QUmlNamespace, public QUmlActivityGroup
 {
 public:
-    QUmlStructuredActivityNode(bool create_d_ptr = true);
+    QUmlStructuredActivityNode();
 
     // Owned attributes
     QUmlActivity *activity() const;
@@ -85,6 +84,15 @@ public:
     QSet<QUmlVariable *> variable() const;
     void addVariable(QUmlVariable *variable);
     void removeVariable(QUmlVariable *variable);
+
+protected:
+    QUmlActivity *_activity;
+    QSet<QUmlActivityEdge *> _edge;
+    bool _mustIsolate;
+    QSet<QUmlActivityNode *> _node;
+    QSet<QUmlInputPin *> _structuredNodeInput;
+    QSet<QUmlOutputPin *> _structuredNodeOutput;
+    QSet<QUmlVariable *> _variable;
 };
 
 QT_END_NAMESPACE

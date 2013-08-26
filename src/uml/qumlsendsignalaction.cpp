@@ -39,18 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlsendsignalaction.h"
-#include "qumlsendsignalaction_p.h"
 
 #include <QtUml/QUmlInputPin>
 #include <QtUml/QUmlSignal>
 
 QT_BEGIN_NAMESPACE
-
-QUmlSendSignalActionPrivate::QUmlSendSignalActionPrivate() :
-    signal(0),
-    target(0)
-{
-}
 
 /*!
     \class QUmlSendSignalAction
@@ -60,11 +53,10 @@ QUmlSendSignalActionPrivate::QUmlSendSignalActionPrivate() :
     \brief A send signal action is an action that creates a signal instance from its inputs, and transmits it to the target object, where it may cause the firing of a state machine transition or the execution of an activity. The argument values are available to the execution of associated behaviors. The requestor continues execution immediately. Any reply message is ignored and is not transmitted to the requestor. If the input is already a signal instance, use a send object action.
  */
 
-QUmlSendSignalAction::QUmlSendSignalAction(bool create_d_ptr) :
-    QUmlInvocationAction(false)
+QUmlSendSignalAction::QUmlSendSignalAction() :
+    _signal(0),
+    _target(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlSendSignalActionPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -76,17 +68,15 @@ QUmlSignal *QUmlSendSignalAction::signal() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlSendSignalAction);
-    return d->signal;
+    return _signal;
 }
 
 void QUmlSendSignalAction::setSignal(QUmlSignal *signal)
 {
     // This is a read-write association end
 
-    QM_D(QUmlSendSignalAction);
-    if (d->signal != signal) {
-        d->signal = signal;
+    if (_signal != signal) {
+        _signal = signal;
     }
 }
 
@@ -97,17 +87,15 @@ QUmlInputPin *QUmlSendSignalAction::target() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlSendSignalAction);
-    return d->target;
+    return _target;
 }
 
 void QUmlSendSignalAction::setTarget(QUmlInputPin *target)
 {
     // This is a read-write association end
 
-    QM_D(QUmlSendSignalAction);
-    if (d->target != target) {
-        d->target = target;
+    if (_target != target) {
+        _target = target;
     }
 }
 

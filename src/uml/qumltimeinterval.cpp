@@ -39,17 +39,10 @@
 **
 ****************************************************************************/
 #include "qumltimeinterval.h"
-#include "qumltimeinterval_p.h"
 
 #include <QtUml/QUmlTimeExpression>
 
 QT_BEGIN_NAMESPACE
-
-QUmlTimeIntervalPrivate::QUmlTimeIntervalPrivate() :
-    max(0),
-    min(0)
-{
-}
 
 /*!
     \class QUmlTimeInterval
@@ -59,11 +52,10 @@ QUmlTimeIntervalPrivate::QUmlTimeIntervalPrivate() :
     \brief A time interval defines the range between two time expressions.
  */
 
-QUmlTimeInterval::QUmlTimeInterval(bool create_d_ptr) :
-    QUmlInterval(false)
+QUmlTimeInterval::QUmlTimeInterval() :
+    _max(0),
+    _min(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlTimeIntervalPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -75,17 +67,15 @@ QUmlTimeExpression *QUmlTimeInterval::max() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlTimeInterval);
-    return d->max;
+    return _max;
 }
 
 void QUmlTimeInterval::setMax(QUmlTimeExpression *max)
 {
     // This is a read-write association end
 
-    QM_D(QUmlTimeInterval);
-    if (d->max != max) {
-        d->max = max;
+    if (_max != max) {
+        _max = max;
     }
 }
 
@@ -96,17 +86,15 @@ QUmlTimeExpression *QUmlTimeInterval::min() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlTimeInterval);
-    return d->min;
+    return _min;
 }
 
 void QUmlTimeInterval::setMin(QUmlTimeExpression *min)
 {
     // This is a read-write association end
 
-    QM_D(QUmlTimeInterval);
-    if (d->min != min) {
-        d->min = min;
+    if (_min != min) {
+        _min = min;
     }
 }
 

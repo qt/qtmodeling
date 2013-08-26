@@ -55,11 +55,10 @@ class QUmlInputPin;
 class QUmlProperty;
 class QUmlQualifierValue;
 
-class QUmlLinkEndDataPrivate;
 class Q_UML_EXPORT QUmlLinkEndData : public QUmlElement
 {
 public:
-    QUmlLinkEndData(bool create_d_ptr = true);
+    QUmlLinkEndData();
 
     // Owned attributes
     QUmlProperty *end() const;
@@ -69,6 +68,11 @@ public:
     void removeQualifier(QUmlQualifierValue *qualifier);
     QUmlInputPin *value() const;
     void setValue(QUmlInputPin *value);
+
+protected:
+    QUmlProperty *_end;
+    QSet<QUmlQualifierValue *> _qualifier;
+    QUmlInputPin *_value;
 };
 
 QT_END_NAMESPACE

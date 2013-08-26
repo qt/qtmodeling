@@ -53,17 +53,20 @@ QT_MODULE(QtUml)
 
 class QUmlTimeInterval;
 
-class QUmlTimeConstraintPrivate;
 class Q_UML_EXPORT QUmlTimeConstraint : public QUmlIntervalConstraint
 {
 public:
-    QUmlTimeConstraint(bool create_d_ptr = true);
+    QUmlTimeConstraint();
 
     // Owned attributes
     bool firstEvent() const;
     void setFirstEvent(bool firstEvent);
     QUmlTimeInterval *specification() const;
     void setSpecification(QUmlTimeInterval *specification);
+
+protected:
+    bool _firstEvent;
+    QUmlTimeInterval *_specification;
 };
 
 QT_END_NAMESPACE

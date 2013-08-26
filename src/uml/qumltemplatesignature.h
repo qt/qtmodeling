@@ -54,11 +54,10 @@ QT_MODULE(QtUml)
 class QUmlTemplateableElement;
 class QUmlTemplateParameter;
 
-class QUmlTemplateSignaturePrivate;
 class Q_UML_EXPORT QUmlTemplateSignature : public virtual QUmlElement
 {
 public:
-    QUmlTemplateSignature(bool create_d_ptr = true);
+    QUmlTemplateSignature();
 
     // Owned attributes
     QList<QUmlTemplateParameter *> ownedParameter() const;
@@ -69,6 +68,11 @@ public:
     void removeParameter(QUmlTemplateParameter *parameter);
     QUmlTemplateableElement *template_() const;
     void setTemplate(QUmlTemplateableElement *template_);
+
+protected:
+    QList<QUmlTemplateParameter *> _ownedParameter;
+    QList<QUmlTemplateParameter *> _parameter;
+    QUmlTemplateableElement *_template_;
 };
 
 QT_END_NAMESPACE

@@ -56,11 +56,10 @@ class QUmlInteraction;
 class QUmlInteractionOperand;
 class QUmlLifeline;
 
-class QUmlInteractionFragmentPrivate;
 class Q_UML_EXPORT QUmlInteractionFragment : public virtual QUmlNamedElement
 {
 public:
-    Q_DECL_HIDDEN QUmlInteractionFragment(bool create_d_ptr = true);
+    Q_DECL_HIDDEN QUmlInteractionFragment();
 
     // Owned attributes
     QSet<QUmlLifeline *> covered() const;
@@ -73,6 +72,12 @@ public:
     QSet<QUmlGeneralOrdering *> generalOrdering() const;
     void addGeneralOrdering(QUmlGeneralOrdering *generalOrdering);
     void removeGeneralOrdering(QUmlGeneralOrdering *generalOrdering);
+
+protected:
+    QSet<QUmlLifeline *> _covered;
+    QUmlInteraction *_enclosingInteraction;
+    QUmlInteractionOperand *_enclosingOperand;
+    QSet<QUmlGeneralOrdering *> _generalOrdering;
 };
 
 QT_END_NAMESPACE

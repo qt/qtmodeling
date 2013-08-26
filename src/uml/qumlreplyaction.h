@@ -54,11 +54,10 @@ QT_MODULE(QtUml)
 class QUmlInputPin;
 class QUmlTrigger;
 
-class QUmlReplyActionPrivate;
 class Q_UML_EXPORT QUmlReplyAction : public QUmlAction
 {
 public:
-    QUmlReplyAction(bool create_d_ptr = true);
+    QUmlReplyAction();
 
     // Owned attributes
     QUmlTrigger *replyToCall() const;
@@ -68,6 +67,11 @@ public:
     void removeReplyValue(QUmlInputPin *replyValue);
     QUmlInputPin *returnInformation() const;
     void setReturnInformation(QUmlInputPin *returnInformation);
+
+protected:
+    QUmlTrigger *_replyToCall;
+    QSet<QUmlInputPin *> _replyValue;
+    QUmlInputPin *_returnInformation;
 };
 
 QT_END_NAMESPACE

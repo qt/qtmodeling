@@ -54,11 +54,10 @@ QT_MODULE(QtUml)
 class QUmlGeneralOrdering;
 class QUmlLifeline;
 
-class QUmlOccurrenceSpecificationPrivate;
 class Q_UML_EXPORT QUmlOccurrenceSpecification : public QUmlInteractionFragment
 {
 public:
-    QUmlOccurrenceSpecification(bool create_d_ptr = true);
+    QUmlOccurrenceSpecification();
 
     // Owned attributes
     QUmlLifeline *covered() const;
@@ -69,6 +68,11 @@ public:
     QSet<QUmlGeneralOrdering *> toBefore() const;
     void addToBefore(QUmlGeneralOrdering *toBefore);
     void removeToBefore(QUmlGeneralOrdering *toBefore);
+
+protected:
+    QUmlLifeline *_covered;
+    QSet<QUmlGeneralOrdering *> _toAfter;
+    QSet<QUmlGeneralOrdering *> _toBefore;
 };
 
 QT_END_NAMESPACE

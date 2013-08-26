@@ -39,17 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlpackagemerge.h"
-#include "qumlpackagemerge_p.h"
 
 #include <QtUml/QUmlPackage>
 
 QT_BEGIN_NAMESPACE
-
-QUmlPackageMergePrivate::QUmlPackageMergePrivate() :
-    mergedPackage(0),
-    receivingPackage(0)
-{
-}
 
 /*!
     \class QUmlPackageMerge
@@ -59,11 +52,10 @@ QUmlPackageMergePrivate::QUmlPackageMergePrivate() :
     \brief A package merge defines how the contents of one package are extended by the contents of another package.
  */
 
-QUmlPackageMerge::QUmlPackageMerge(bool create_d_ptr) :
-    QUmlDirectedRelationship(false)
+QUmlPackageMerge::QUmlPackageMerge() :
+    _mergedPackage(0),
+    _receivingPackage(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlPackageMergePrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -75,17 +67,15 @@ QUmlPackage *QUmlPackageMerge::mergedPackage() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlPackageMerge);
-    return d->mergedPackage;
+    return _mergedPackage;
 }
 
 void QUmlPackageMerge::setMergedPackage(QUmlPackage *mergedPackage)
 {
     // This is a read-write association end
 
-    QM_D(QUmlPackageMerge);
-    if (d->mergedPackage != mergedPackage) {
-        d->mergedPackage = mergedPackage;
+    if (_mergedPackage != mergedPackage) {
+        _mergedPackage = mergedPackage;
     }
 }
 
@@ -96,17 +86,15 @@ QUmlPackage *QUmlPackageMerge::receivingPackage() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlPackageMerge);
-    return d->receivingPackage;
+    return _receivingPackage;
 }
 
 void QUmlPackageMerge::setReceivingPackage(QUmlPackage *receivingPackage)
 {
     // This is a read-write association end
 
-    QM_D(QUmlPackageMerge);
-    if (d->receivingPackage != receivingPackage) {
-        d->receivingPackage = receivingPackage;
+    if (_receivingPackage != receivingPackage) {
+        _receivingPackage = receivingPackage;
     }
 }
 

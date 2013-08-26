@@ -39,21 +39,12 @@
 **
 ****************************************************************************/
 #include "qumlactivitypartition.h"
-#include "qumlactivitypartition_p.h"
 
 #include <QtUml/QUmlActivityEdge>
 #include <QtUml/QUmlActivityNode>
 #include <QtUml/QUmlElement>
 
 QT_BEGIN_NAMESPACE
-
-QUmlActivityPartitionPrivate::QUmlActivityPartitionPrivate() :
-    isDimension(false),
-    isExternal(false),
-    represents(0),
-    superPartition(0)
-{
-}
 
 /*!
     \class QUmlActivityPartition
@@ -63,11 +54,12 @@ QUmlActivityPartitionPrivate::QUmlActivityPartitionPrivate() :
     \brief An activity partition is a kind of activity group for identifying actions that have some characteristic in common.
  */
 
-QUmlActivityPartition::QUmlActivityPartition(bool create_d_ptr) :
-    QUmlActivityGroup(false)
+QUmlActivityPartition::QUmlActivityPartition() :
+    _isDimension(false),
+    _isExternal(false),
+    _represents(0),
+    _superPartition(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlActivityPartitionPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -79,17 +71,15 @@ QSet<QUmlActivityEdge *> QUmlActivityPartition::edge() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlActivityPartition);
-    return d->edge;
+    return _edge;
 }
 
 void QUmlActivityPartition::addEdge(QUmlActivityEdge *edge)
 {
     // This is a read-write association end
 
-    QM_D(QUmlActivityPartition);
-    if (!d->edge.contains(edge)) {
-        d->edge.insert(edge);
+    if (!_edge.contains(edge)) {
+        _edge.insert(edge);
     }
 }
 
@@ -97,9 +87,8 @@ void QUmlActivityPartition::removeEdge(QUmlActivityEdge *edge)
 {
     // This is a read-write association end
 
-    QM_D(QUmlActivityPartition);
-    if (d->edge.contains(edge)) {
-        d->edge.remove(edge);
+    if (_edge.contains(edge)) {
+        _edge.remove(edge);
     }
 }
 
@@ -110,17 +99,15 @@ bool QUmlActivityPartition::isDimension() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlActivityPartition);
-    return d->isDimension;
+    return _isDimension;
 }
 
 void QUmlActivityPartition::setDimension(bool isDimension)
 {
     // This is a read-write property
 
-    QM_D(QUmlActivityPartition);
-    if (d->isDimension != isDimension) {
-        d->isDimension = isDimension;
+    if (_isDimension != isDimension) {
+        _isDimension = isDimension;
     }
 }
 
@@ -131,17 +118,15 @@ bool QUmlActivityPartition::isExternal() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlActivityPartition);
-    return d->isExternal;
+    return _isExternal;
 }
 
 void QUmlActivityPartition::setExternal(bool isExternal)
 {
     // This is a read-write property
 
-    QM_D(QUmlActivityPartition);
-    if (d->isExternal != isExternal) {
-        d->isExternal = isExternal;
+    if (_isExternal != isExternal) {
+        _isExternal = isExternal;
     }
 }
 
@@ -152,17 +137,15 @@ QSet<QUmlActivityNode *> QUmlActivityPartition::node() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlActivityPartition);
-    return d->node;
+    return _node;
 }
 
 void QUmlActivityPartition::addNode(QUmlActivityNode *node)
 {
     // This is a read-write association end
 
-    QM_D(QUmlActivityPartition);
-    if (!d->node.contains(node)) {
-        d->node.insert(node);
+    if (!_node.contains(node)) {
+        _node.insert(node);
     }
 }
 
@@ -170,9 +153,8 @@ void QUmlActivityPartition::removeNode(QUmlActivityNode *node)
 {
     // This is a read-write association end
 
-    QM_D(QUmlActivityPartition);
-    if (d->node.contains(node)) {
-        d->node.remove(node);
+    if (_node.contains(node)) {
+        _node.remove(node);
     }
 }
 
@@ -183,17 +165,15 @@ QUmlElement *QUmlActivityPartition::represents() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlActivityPartition);
-    return d->represents;
+    return _represents;
 }
 
 void QUmlActivityPartition::setRepresents(QUmlElement *represents)
 {
     // This is a read-write association end
 
-    QM_D(QUmlActivityPartition);
-    if (d->represents != represents) {
-        d->represents = represents;
+    if (_represents != represents) {
+        _represents = represents;
     }
 }
 
@@ -204,17 +184,15 @@ QSet<QUmlActivityPartition *> QUmlActivityPartition::subpartition() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlActivityPartition);
-    return d->subpartition;
+    return _subpartition;
 }
 
 void QUmlActivityPartition::addSubpartition(QUmlActivityPartition *subpartition)
 {
     // This is a read-write association end
 
-    QM_D(QUmlActivityPartition);
-    if (!d->subpartition.contains(subpartition)) {
-        d->subpartition.insert(subpartition);
+    if (!_subpartition.contains(subpartition)) {
+        _subpartition.insert(subpartition);
     }
 }
 
@@ -222,9 +200,8 @@ void QUmlActivityPartition::removeSubpartition(QUmlActivityPartition *subpartiti
 {
     // This is a read-write association end
 
-    QM_D(QUmlActivityPartition);
-    if (d->subpartition.contains(subpartition)) {
-        d->subpartition.remove(subpartition);
+    if (_subpartition.contains(subpartition)) {
+        _subpartition.remove(subpartition);
     }
 }
 
@@ -235,17 +212,15 @@ QUmlActivityPartition *QUmlActivityPartition::superPartition() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlActivityPartition);
-    return d->superPartition;
+    return _superPartition;
 }
 
 void QUmlActivityPartition::setSuperPartition(QUmlActivityPartition *superPartition)
 {
     // This is a read-write association end
 
-    QM_D(QUmlActivityPartition);
-    if (d->superPartition != superPartition) {
-        d->superPartition = superPartition;
+    if (_superPartition != superPartition) {
+        _superPartition = superPartition;
     }
 }
 

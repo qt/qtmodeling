@@ -55,11 +55,10 @@ QT_MODULE(QtUml)
 class QUmlClassifier;
 class QUmlTemplateParameter;
 
-class QUmlRedefinableTemplateSignaturePrivate;
 class Q_UML_EXPORT QUmlRedefinableTemplateSignature : public QUmlTemplateSignature, public QUmlRedefinableElement
 {
 public:
-    QUmlRedefinableTemplateSignature(bool create_d_ptr = true);
+    QUmlRedefinableTemplateSignature();
 
     // Owned attributes
     QUmlClassifier *classifier() const;
@@ -71,6 +70,10 @@ public:
 
     // Operations
     bool isConsistentWith(QUmlRedefinableElement *redefinee) const;
+
+protected:
+    QUmlClassifier *_classifier;
+    QSet<QUmlRedefinableTemplateSignature *> _extendedSignature;
 };
 
 QT_END_NAMESPACE

@@ -54,11 +54,10 @@ QT_MODULE(QtUml)
 class QUmlInputPin;
 class QUmlOutputPin;
 
-class QUmlOpaqueActionPrivate;
 class Q_UML_EXPORT QUmlOpaqueAction : public QUmlAction
 {
 public:
-    QUmlOpaqueAction(bool create_d_ptr = true);
+    QUmlOpaqueAction();
 
     // Owned attributes
     QList<QString> body() const;
@@ -73,6 +72,12 @@ public:
     QSet<QUmlOutputPin *> outputValue() const;
     void addOutputValue(QUmlOutputPin *outputValue);
     void removeOutputValue(QUmlOutputPin *outputValue);
+
+protected:
+    QList<QString> _body;
+    QSet<QUmlInputPin *> _inputValue;
+    QList<QString> _language;
+    QSet<QUmlOutputPin *> _outputValue;
 };
 
 QT_END_NAMESPACE

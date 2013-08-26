@@ -39,17 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlcollaborationuse.h"
-#include "qumlcollaborationuse_p.h"
 
 #include <QtUml/QUmlCollaboration>
 #include <QtUml/QUmlDependency>
 
 QT_BEGIN_NAMESPACE
-
-QUmlCollaborationUsePrivate::QUmlCollaborationUsePrivate() :
-    type(0)
-{
-}
 
 /*!
     \class QUmlCollaborationUse
@@ -59,11 +53,9 @@ QUmlCollaborationUsePrivate::QUmlCollaborationUsePrivate() :
     \brief A collaboration use represents one particular use of a collaboration to explain the relationships between the properties of a classifier. A collaboration use shows how the pattern described by a collaboration is applied in a given context, by binding specific entities from that context to the roles of the collaboration. Depending on the context, these entities could be structural features of a classifier, instance specifications, or even roles in some containing collaboration. There may be multiple occurrences of a given collaboration within a classifier, each involving a different set of roles and connectors. A given role or connector may be involved in multiple occurrences of the same or different collaborations. Associated dependencies map features of the collaboration type to features in the classifier. These dependencies indicate which role in the classifier plays which role in the collaboration.
  */
 
-QUmlCollaborationUse::QUmlCollaborationUse(bool create_d_ptr) :
-    QUmlNamedElement(false)
+QUmlCollaborationUse::QUmlCollaborationUse() :
+    _type(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlCollaborationUsePrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -75,17 +67,15 @@ QSet<QUmlDependency *> QUmlCollaborationUse::roleBinding() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlCollaborationUse);
-    return d->roleBinding;
+    return _roleBinding;
 }
 
 void QUmlCollaborationUse::addRoleBinding(QUmlDependency *roleBinding)
 {
     // This is a read-write association end
 
-    QM_D(QUmlCollaborationUse);
-    if (!d->roleBinding.contains(roleBinding)) {
-        d->roleBinding.insert(roleBinding);
+    if (!_roleBinding.contains(roleBinding)) {
+        _roleBinding.insert(roleBinding);
     }
 }
 
@@ -93,9 +83,8 @@ void QUmlCollaborationUse::removeRoleBinding(QUmlDependency *roleBinding)
 {
     // This is a read-write association end
 
-    QM_D(QUmlCollaborationUse);
-    if (d->roleBinding.contains(roleBinding)) {
-        d->roleBinding.remove(roleBinding);
+    if (_roleBinding.contains(roleBinding)) {
+        _roleBinding.remove(roleBinding);
     }
 }
 
@@ -106,17 +95,15 @@ QUmlCollaboration *QUmlCollaborationUse::type() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlCollaborationUse);
-    return d->type;
+    return _type;
 }
 
 void QUmlCollaborationUse::setType(QUmlCollaboration *type)
 {
     // This is a read-write association end
 
-    QM_D(QUmlCollaborationUse);
-    if (d->type != type) {
-        d->type = type;
+    if (_type != type) {
+        _type = type;
     }
 }
 

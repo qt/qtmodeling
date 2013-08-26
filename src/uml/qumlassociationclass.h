@@ -52,11 +52,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlAssociationClassPrivate;
 class Q_UML_EXPORT QUmlAssociationClass : public QUmlClass, public QUmlAssociation
 {
 public:
-    QUmlAssociationClass(bool create_d_ptr = true);
+    QUmlAssociationClass();
+
+protected:
 };
 
 QT_END_NAMESPACE

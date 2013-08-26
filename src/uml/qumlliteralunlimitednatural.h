@@ -51,11 +51,10 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlLiteralUnlimitedNaturalPrivate;
 class Q_UML_EXPORT QUmlLiteralUnlimitedNatural : public QUmlLiteralSpecification
 {
 public:
-    QUmlLiteralUnlimitedNatural(bool create_d_ptr = true);
+    QUmlLiteralUnlimitedNatural();
 
     // Owned attributes
     int value() const;
@@ -64,6 +63,9 @@ public:
     // Operations
     bool isComputable() const;
     int unlimitedValue() const;
+
+protected:
+    int _value;
 };
 
 QT_END_NAMESPACE

@@ -52,11 +52,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlMessageOccurrenceSpecificationPrivate;
 class Q_UML_EXPORT QUmlMessageOccurrenceSpecification : public QUmlOccurrenceSpecification, public QUmlMessageEnd
 {
 public:
-    QUmlMessageOccurrenceSpecification(bool create_d_ptr = true);
+    QUmlMessageOccurrenceSpecification();
+
+protected:
 };
 
 QT_END_NAMESPACE

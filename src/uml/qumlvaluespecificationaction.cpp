@@ -39,18 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlvaluespecificationaction.h"
-#include "qumlvaluespecificationaction_p.h"
 
 #include <QtUml/QUmlOutputPin>
 #include <QtUml/QUmlValueSpecification>
 
 QT_BEGIN_NAMESPACE
-
-QUmlValueSpecificationActionPrivate::QUmlValueSpecificationActionPrivate() :
-    result(0),
-    value(0)
-{
-}
 
 /*!
     \class QUmlValueSpecificationAction
@@ -60,11 +53,10 @@ QUmlValueSpecificationActionPrivate::QUmlValueSpecificationActionPrivate() :
     \brief A value specification action is an action that evaluates a value specification.
  */
 
-QUmlValueSpecificationAction::QUmlValueSpecificationAction(bool create_d_ptr) :
-    QUmlAction(false)
+QUmlValueSpecificationAction::QUmlValueSpecificationAction() :
+    _result(0),
+    _value(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlValueSpecificationActionPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -76,17 +68,15 @@ QUmlOutputPin *QUmlValueSpecificationAction::result() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlValueSpecificationAction);
-    return d->result;
+    return _result;
 }
 
 void QUmlValueSpecificationAction::setResult(QUmlOutputPin *result)
 {
     // This is a read-write association end
 
-    QM_D(QUmlValueSpecificationAction);
-    if (d->result != result) {
-        d->result = result;
+    if (_result != result) {
+        _result = result;
     }
 }
 
@@ -97,17 +87,15 @@ QUmlValueSpecification *QUmlValueSpecificationAction::value() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlValueSpecificationAction);
-    return d->value;
+    return _value;
 }
 
 void QUmlValueSpecificationAction::setValue(QUmlValueSpecification *value)
 {
     // This is a read-write association end
 
-    QM_D(QUmlValueSpecificationAction);
-    if (d->value != value) {
-        d->value = value;
+    if (_value != value) {
+        _value = value;
     }
 }
 

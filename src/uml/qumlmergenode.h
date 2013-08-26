@@ -51,11 +51,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlMergeNodePrivate;
 class Q_UML_EXPORT QUmlMergeNode : public QUmlControlNode
 {
 public:
-    QUmlMergeNode(bool create_d_ptr = true);
+    QUmlMergeNode();
+
+protected:
 };
 
 QT_END_NAMESPACE

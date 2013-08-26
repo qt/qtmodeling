@@ -51,11 +51,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlCentralBufferNodePrivate;
 class Q_UML_EXPORT QUmlCentralBufferNode : public QUmlObjectNode
 {
 public:
-    QUmlCentralBufferNode(bool create_d_ptr = true);
+    QUmlCentralBufferNode();
+
+protected:
 };
 
 QT_END_NAMESPACE

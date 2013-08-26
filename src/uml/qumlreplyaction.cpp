@@ -39,18 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlreplyaction.h"
-#include "qumlreplyaction_p.h"
 
 #include <QtUml/QUmlInputPin>
 #include <QtUml/QUmlTrigger>
 
 QT_BEGIN_NAMESPACE
-
-QUmlReplyActionPrivate::QUmlReplyActionPrivate() :
-    replyToCall(0),
-    returnInformation(0)
-{
-}
 
 /*!
     \class QUmlReplyAction
@@ -60,11 +53,10 @@ QUmlReplyActionPrivate::QUmlReplyActionPrivate() :
     \brief A reply action is an action that accepts a set of return values and a value containing return information produced by a previous accept call action. The reply action returns the values to the caller of the previous call, completing execution of the call.
  */
 
-QUmlReplyAction::QUmlReplyAction(bool create_d_ptr) :
-    QUmlAction(false)
+QUmlReplyAction::QUmlReplyAction() :
+    _replyToCall(0),
+    _returnInformation(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlReplyActionPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -76,17 +68,15 @@ QUmlTrigger *QUmlReplyAction::replyToCall() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlReplyAction);
-    return d->replyToCall;
+    return _replyToCall;
 }
 
 void QUmlReplyAction::setReplyToCall(QUmlTrigger *replyToCall)
 {
     // This is a read-write association end
 
-    QM_D(QUmlReplyAction);
-    if (d->replyToCall != replyToCall) {
-        d->replyToCall = replyToCall;
+    if (_replyToCall != replyToCall) {
+        _replyToCall = replyToCall;
     }
 }
 
@@ -97,17 +87,15 @@ QSet<QUmlInputPin *> QUmlReplyAction::replyValue() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlReplyAction);
-    return d->replyValue;
+    return _replyValue;
 }
 
 void QUmlReplyAction::addReplyValue(QUmlInputPin *replyValue)
 {
     // This is a read-write association end
 
-    QM_D(QUmlReplyAction);
-    if (!d->replyValue.contains(replyValue)) {
-        d->replyValue.insert(replyValue);
+    if (!_replyValue.contains(replyValue)) {
+        _replyValue.insert(replyValue);
     }
 }
 
@@ -115,9 +103,8 @@ void QUmlReplyAction::removeReplyValue(QUmlInputPin *replyValue)
 {
     // This is a read-write association end
 
-    QM_D(QUmlReplyAction);
-    if (d->replyValue.contains(replyValue)) {
-        d->replyValue.remove(replyValue);
+    if (_replyValue.contains(replyValue)) {
+        _replyValue.remove(replyValue);
     }
 }
 
@@ -128,17 +115,15 @@ QUmlInputPin *QUmlReplyAction::returnInformation() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlReplyAction);
-    return d->returnInformation;
+    return _returnInformation;
 }
 
 void QUmlReplyAction::setReturnInformation(QUmlInputPin *returnInformation)
 {
     // This is a read-write association end
 
-    QM_D(QUmlReplyAction);
-    if (d->returnInformation != returnInformation) {
-        d->returnInformation = returnInformation;
+    if (_returnInformation != returnInformation) {
+        _returnInformation = returnInformation;
     }
 }
 

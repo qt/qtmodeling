@@ -53,15 +53,17 @@ QT_MODULE(QtUml)
 
 class QUmlPackageableElement;
 
-class QUmlManifestationPrivate;
 class Q_UML_EXPORT QUmlManifestation : public QUmlAbstraction
 {
 public:
-    QUmlManifestation(bool create_d_ptr = true);
+    QUmlManifestation();
 
     // Owned attributes
     QUmlPackageableElement *utilizedElement() const;
     void setUtilizedElement(QUmlPackageableElement *utilizedElement);
+
+protected:
+    QUmlPackageableElement *_utilizedElement;
 };
 
 QT_END_NAMESPACE

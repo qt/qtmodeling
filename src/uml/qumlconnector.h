@@ -56,11 +56,10 @@ class QUmlAssociation;
 class QUmlBehavior;
 class QUmlConnectorEnd;
 
-class QUmlConnectorPrivate;
 class Q_UML_EXPORT QUmlConnector : public QUmlFeature
 {
 public:
-    QUmlConnector(bool create_d_ptr = true);
+    QUmlConnector();
 
     // Owned attributes
     QSet<QUmlBehavior *> contract() const;
@@ -75,6 +74,12 @@ public:
     void removeRedefinedConnector(QUmlConnector *redefinedConnector);
     QUmlAssociation *type() const;
     void setType(QUmlAssociation *type);
+
+protected:
+    QSet<QUmlBehavior *> _contract;
+    QList<QUmlConnectorEnd *> _end;
+    QSet<QUmlConnector *> _redefinedConnector;
+    QUmlAssociation *_type;
 };
 
 QT_END_NAMESPACE

@@ -51,11 +51,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlCommunicationPathPrivate;
 class Q_UML_EXPORT QUmlCommunicationPath : public QUmlAssociation
 {
 public:
-    QUmlCommunicationPath(bool create_d_ptr = true);
+    QUmlCommunicationPath();
+
+protected:
 };
 
 QT_END_NAMESPACE

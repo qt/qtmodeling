@@ -39,13 +39,8 @@
 **
 ****************************************************************************/
 #include "qumlmodel.h"
-#include "qumlmodel_p.h"
 
 QT_BEGIN_NAMESPACE
-
-QUmlModelPrivate::QUmlModelPrivate()
-{
-}
 
 /*!
     \class QUmlModel
@@ -55,13 +50,8 @@ QUmlModelPrivate::QUmlModelPrivate()
     \brief A model captures a view of a physical system. It is an abstraction of the physical system, with a certain purpose. This purpose determines what is to be included in the model and what is irrelevant. Thus the model completely describes those aspects of the physical system that are relevant to the purpose of the model, at the appropriate level of detail.
  */
 
-QUmlModel::QUmlModel(bool create_d_ptr) :
-    QUmlElement(false),
-    QUmlNamedElement(false),
-    QUmlPackage(false)
+QUmlModel::QUmlModel()
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlModelPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -73,17 +63,15 @@ QString QUmlModel::viewpoint() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlModel);
-    return d->viewpoint;
+    return _viewpoint;
 }
 
 void QUmlModel::setViewpoint(QString viewpoint)
 {
     // This is a read-write property
 
-    QM_D(QUmlModel);
-    if (d->viewpoint != viewpoint) {
-        d->viewpoint = viewpoint;
+    if (_viewpoint != viewpoint) {
+        _viewpoint = viewpoint;
     }
 }
 

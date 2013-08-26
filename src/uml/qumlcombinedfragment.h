@@ -55,11 +55,10 @@ QT_MODULE(QtUml)
 class QUmlGate;
 class QUmlInteractionOperand;
 
-class QUmlCombinedFragmentPrivate;
 class Q_UML_EXPORT QUmlCombinedFragment : public QUmlInteractionFragment
 {
 public:
-    QUmlCombinedFragment(bool create_d_ptr = true);
+    QUmlCombinedFragment();
 
     // Owned attributes
     QSet<QUmlGate *> cfragmentGate() const;
@@ -70,6 +69,11 @@ public:
     QList<QUmlInteractionOperand *> operand() const;
     void addOperand(QUmlInteractionOperand *operand);
     void removeOperand(QUmlInteractionOperand *operand);
+
+protected:
+    QSet<QUmlGate *> _cfragmentGate;
+    QtUml::InteractionOperatorKind _interactionOperator;
+    QList<QUmlInteractionOperand *> _operand;
 };
 
 QT_END_NAMESPACE

@@ -54,11 +54,10 @@ QT_MODULE(QtUml)
 class QUmlInputPin;
 class QUmlOutputPin;
 
-class QUmlTestIdentityActionPrivate;
 class Q_UML_EXPORT QUmlTestIdentityAction : public QUmlAction
 {
 public:
-    QUmlTestIdentityAction(bool create_d_ptr = true);
+    QUmlTestIdentityAction();
 
     // Owned attributes
     QUmlInputPin *first() const;
@@ -67,6 +66,11 @@ public:
     void setResult(QUmlOutputPin *result);
     QUmlInputPin *second() const;
     void setSecond(QUmlInputPin *second);
+
+protected:
+    QUmlInputPin *_first;
+    QUmlOutputPin *_result;
+    QUmlInputPin *_second;
 };
 
 QT_END_NAMESPACE

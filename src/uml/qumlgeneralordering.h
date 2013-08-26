@@ -53,17 +53,20 @@ QT_MODULE(QtUml)
 
 class QUmlOccurrenceSpecification;
 
-class QUmlGeneralOrderingPrivate;
 class Q_UML_EXPORT QUmlGeneralOrdering : public QUmlNamedElement
 {
 public:
-    QUmlGeneralOrdering(bool create_d_ptr = true);
+    QUmlGeneralOrdering();
 
     // Owned attributes
     QUmlOccurrenceSpecification *after() const;
     void setAfter(QUmlOccurrenceSpecification *after);
     QUmlOccurrenceSpecification *before() const;
     void setBefore(QUmlOccurrenceSpecification *before);
+
+protected:
+    QUmlOccurrenceSpecification *_after;
+    QUmlOccurrenceSpecification *_before;
 };
 
 QT_END_NAMESPACE

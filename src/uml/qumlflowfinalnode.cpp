@@ -39,13 +39,8 @@
 **
 ****************************************************************************/
 #include "qumlflowfinalnode.h"
-#include "qumlflowfinalnode_p.h"
 
 QT_BEGIN_NAMESPACE
-
-QUmlFlowFinalNodePrivate::QUmlFlowFinalNodePrivate()
-{
-}
 
 /*!
     \class QUmlFlowFinalNode
@@ -55,11 +50,8 @@ QUmlFlowFinalNodePrivate::QUmlFlowFinalNodePrivate()
     \brief A flow final node is a final node that terminates a flow.
  */
 
-QUmlFlowFinalNode::QUmlFlowFinalNode(bool create_d_ptr) :
-    QUmlFinalNode(false)
+QUmlFlowFinalNode::QUmlFlowFinalNode()
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlFlowFinalNodePrivate);
 }
 
 QT_END_NAMESPACE

@@ -39,17 +39,11 @@
 **
 ****************************************************************************/
 #include "qumltrigger.h"
-#include "qumltrigger_p.h"
 
 #include <QtUml/QUmlEvent>
 #include <QtUml/QUmlPort>
 
 QT_BEGIN_NAMESPACE
-
-QUmlTriggerPrivate::QUmlTriggerPrivate() :
-    event(0)
-{
-}
 
 /*!
     \class QUmlTrigger
@@ -59,11 +53,9 @@ QUmlTriggerPrivate::QUmlTriggerPrivate() :
     \brief A trigger specification may be qualified by the port on which the event occurred.A trigger relates an event to a behavior that may affect an instance of the classifier.
  */
 
-QUmlTrigger::QUmlTrigger(bool create_d_ptr) :
-    QUmlNamedElement(false)
+QUmlTrigger::QUmlTrigger() :
+    _event(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlTriggerPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -75,17 +67,15 @@ QUmlEvent *QUmlTrigger::event() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlTrigger);
-    return d->event;
+    return _event;
 }
 
 void QUmlTrigger::setEvent(QUmlEvent *event)
 {
     // This is a read-write association end
 
-    QM_D(QUmlTrigger);
-    if (d->event != event) {
-        d->event = event;
+    if (_event != event) {
+        _event = event;
     }
 }
 
@@ -96,17 +86,15 @@ QSet<QUmlPort *> QUmlTrigger::port() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlTrigger);
-    return d->port;
+    return _port;
 }
 
 void QUmlTrigger::addPort(QUmlPort *port)
 {
     // This is a read-write association end
 
-    QM_D(QUmlTrigger);
-    if (!d->port.contains(port)) {
-        d->port.insert(port);
+    if (!_port.contains(port)) {
+        _port.insert(port);
     }
 }
 
@@ -114,9 +102,8 @@ void QUmlTrigger::removePort(QUmlPort *port)
 {
     // This is a read-write association end
 
-    QM_D(QUmlTrigger);
-    if (d->port.contains(port)) {
-        d->port.remove(port);
+    if (_port.contains(port)) {
+        _port.remove(port);
     }
 }
 

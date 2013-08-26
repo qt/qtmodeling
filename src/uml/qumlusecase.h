@@ -56,11 +56,10 @@ class QUmlExtend;
 class QUmlExtensionPoint;
 class QUmlInclude;
 
-class QUmlUseCasePrivate;
 class Q_UML_EXPORT QUmlUseCase : public QUmlBehavioredClassifier
 {
 public:
-    QUmlUseCase(bool create_d_ptr = true);
+    QUmlUseCase();
 
     // Owned attributes
     QSet<QUmlExtend *> extend() const;
@@ -78,6 +77,12 @@ public:
 
     // Operations
     QSet<QUmlUseCase *> allIncludedUseCases() const;
+
+protected:
+    QSet<QUmlExtend *> _extend;
+    QSet<QUmlExtensionPoint *> _extensionPoint;
+    QSet<QUmlInclude *> _include;
+    QSet<QUmlClassifier *> _subject;
 };
 
 QT_END_NAMESPACE

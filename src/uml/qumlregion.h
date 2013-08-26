@@ -58,11 +58,10 @@ class QUmlStateMachine;
 class QUmlTransition;
 class QUmlVertex;
 
-class QUmlRegionPrivate;
 class Q_UML_EXPORT QUmlRegion : public QUmlRedefinableElement, public QUmlNamespace
 {
 public:
-    QUmlRegion(bool create_d_ptr = true);
+    QUmlRegion();
 
     // Owned attributes
     QUmlRegion *extendedRegion() const;
@@ -84,6 +83,13 @@ public:
     QUmlStateMachine *containingStateMachine() const;
     bool isConsistentWith(QUmlRedefinableElement *redefinee) const;
     bool isRedefinitionContextValid(QUmlRegion *redefined) const;
+
+protected:
+    QUmlRegion *_extendedRegion;
+    QUmlState *_state;
+    QUmlStateMachine *_stateMachine;
+    QSet<QUmlVertex *> _subvertex;
+    QSet<QUmlTransition *> _transition;
 };
 
 QT_END_NAMESPACE

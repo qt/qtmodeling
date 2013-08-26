@@ -39,18 +39,11 @@
 **
 ****************************************************************************/
 #include "qumldecisionnode.h"
-#include "qumldecisionnode_p.h"
 
 #include <QtUml/QUmlBehavior>
 #include <QtUml/QUmlObjectFlow>
 
 QT_BEGIN_NAMESPACE
-
-QUmlDecisionNodePrivate::QUmlDecisionNodePrivate() :
-    decisionInput(0),
-    decisionInputFlow(0)
-{
-}
 
 /*!
     \class QUmlDecisionNode
@@ -60,11 +53,10 @@ QUmlDecisionNodePrivate::QUmlDecisionNodePrivate() :
     \brief A decision node is a control node that chooses between outgoing flows.
  */
 
-QUmlDecisionNode::QUmlDecisionNode(bool create_d_ptr) :
-    QUmlControlNode(false)
+QUmlDecisionNode::QUmlDecisionNode() :
+    _decisionInput(0),
+    _decisionInputFlow(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlDecisionNodePrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -76,17 +68,15 @@ QUmlBehavior *QUmlDecisionNode::decisionInput() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlDecisionNode);
-    return d->decisionInput;
+    return _decisionInput;
 }
 
 void QUmlDecisionNode::setDecisionInput(QUmlBehavior *decisionInput)
 {
     // This is a read-write association end
 
-    QM_D(QUmlDecisionNode);
-    if (d->decisionInput != decisionInput) {
-        d->decisionInput = decisionInput;
+    if (_decisionInput != decisionInput) {
+        _decisionInput = decisionInput;
     }
 }
 
@@ -97,17 +87,15 @@ QUmlObjectFlow *QUmlDecisionNode::decisionInputFlow() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlDecisionNode);
-    return d->decisionInputFlow;
+    return _decisionInputFlow;
 }
 
 void QUmlDecisionNode::setDecisionInputFlow(QUmlObjectFlow *decisionInputFlow)
 {
     // This is a read-write association end
 
-    QM_D(QUmlDecisionNode);
-    if (d->decisionInputFlow != decisionInputFlow) {
-        d->decisionInputFlow = decisionInputFlow;
+    if (_decisionInputFlow != decisionInputFlow) {
+        _decisionInputFlow = decisionInputFlow;
     }
 }
 

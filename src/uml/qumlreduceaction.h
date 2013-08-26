@@ -55,11 +55,10 @@ class QUmlBehavior;
 class QUmlInputPin;
 class QUmlOutputPin;
 
-class QUmlReduceActionPrivate;
 class Q_UML_EXPORT QUmlReduceAction : public QUmlAction
 {
 public:
-    QUmlReduceAction(bool create_d_ptr = true);
+    QUmlReduceAction();
 
     // Owned attributes
     QUmlInputPin *collection() const;
@@ -70,6 +69,12 @@ public:
     void setReducer(QUmlBehavior *reducer);
     QUmlOutputPin *result() const;
     void setResult(QUmlOutputPin *result);
+
+protected:
+    QUmlInputPin *_collection;
+    bool _isOrdered;
+    QUmlBehavior *_reducer;
+    QUmlOutputPin *_result;
 };
 
 QT_END_NAMESPACE

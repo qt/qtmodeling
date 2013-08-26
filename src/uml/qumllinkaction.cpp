@@ -39,17 +39,12 @@
 **
 ****************************************************************************/
 #include "qumllinkaction.h"
-#include "qumllinkaction_p.h"
 
 #include <QtUml/QUmlAssociation>
 #include <QtUml/QUmlInputPin>
 #include <QtUml/QUmlLinkEndData>
 
 QT_BEGIN_NAMESPACE
-
-QUmlLinkActionPrivate::QUmlLinkActionPrivate()
-{
-}
 
 /*!
     \class QUmlLinkAction
@@ -59,11 +54,8 @@ QUmlLinkActionPrivate::QUmlLinkActionPrivate()
     \brief LinkAction is an abstract class for all link actions that identify their links by the objects at the ends of the links and by the qualifiers at ends of the links.
  */
 
-QUmlLinkAction::QUmlLinkAction(bool create_d_ptr) :
-    QUmlAction(false)
+QUmlLinkAction::QUmlLinkAction()
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlLinkActionPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -75,17 +67,15 @@ QSet<QUmlLinkEndData *> QUmlLinkAction::endData() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlLinkAction);
-    return d->endData;
+    return _endData;
 }
 
 void QUmlLinkAction::addEndData(QUmlLinkEndData *endData)
 {
     // This is a read-write association end
 
-    QM_D(QUmlLinkAction);
-    if (!d->endData.contains(endData)) {
-        d->endData.insert(endData);
+    if (!_endData.contains(endData)) {
+        _endData.insert(endData);
     }
 }
 
@@ -93,9 +83,8 @@ void QUmlLinkAction::removeEndData(QUmlLinkEndData *endData)
 {
     // This is a read-write association end
 
-    QM_D(QUmlLinkAction);
-    if (d->endData.contains(endData)) {
-        d->endData.remove(endData);
+    if (_endData.contains(endData)) {
+        _endData.remove(endData);
     }
 }
 
@@ -106,17 +95,15 @@ QSet<QUmlInputPin *> QUmlLinkAction::inputValue() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlLinkAction);
-    return d->inputValue;
+    return _inputValue;
 }
 
 void QUmlLinkAction::addInputValue(QUmlInputPin *inputValue)
 {
     // This is a read-write association end
 
-    QM_D(QUmlLinkAction);
-    if (!d->inputValue.contains(inputValue)) {
-        d->inputValue.insert(inputValue);
+    if (!_inputValue.contains(inputValue)) {
+        _inputValue.insert(inputValue);
     }
 }
 
@@ -124,9 +111,8 @@ void QUmlLinkAction::removeInputValue(QUmlInputPin *inputValue)
 {
     // This is a read-write association end
 
-    QM_D(QUmlLinkAction);
-    if (d->inputValue.contains(inputValue)) {
-        d->inputValue.remove(inputValue);
+    if (_inputValue.contains(inputValue)) {
+        _inputValue.remove(inputValue);
     }
 }
 

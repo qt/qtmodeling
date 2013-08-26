@@ -55,11 +55,10 @@ class QUmlParameterableElement;
 class QUmlTemplateBinding;
 class QUmlTemplateParameter;
 
-class QUmlTemplateParameterSubstitutionPrivate;
 class Q_UML_EXPORT QUmlTemplateParameterSubstitution : public QUmlElement
 {
 public:
-    QUmlTemplateParameterSubstitution(bool create_d_ptr = true);
+    QUmlTemplateParameterSubstitution();
 
     // Owned attributes
     QUmlParameterableElement *actual() const;
@@ -70,6 +69,12 @@ public:
     void setOwnedActual(QUmlParameterableElement *ownedActual);
     QUmlTemplateBinding *templateBinding() const;
     void setTemplateBinding(QUmlTemplateBinding *templateBinding);
+
+protected:
+    QUmlParameterableElement *_actual;
+    QUmlTemplateParameter *_formal;
+    QUmlParameterableElement *_ownedActual;
+    QUmlTemplateBinding *_templateBinding;
 };
 
 QT_END_NAMESPACE

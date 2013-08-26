@@ -53,15 +53,17 @@ QT_MODULE(QtUml)
 
 class QUmlValueSpecification;
 
-class QUmlChangeEventPrivate;
 class Q_UML_EXPORT QUmlChangeEvent : public QUmlEvent
 {
 public:
-    QUmlChangeEvent(bool create_d_ptr = true);
+    QUmlChangeEvent();
 
     // Owned attributes
     QUmlValueSpecification *changeExpression() const;
     void setChangeExpression(QUmlValueSpecification *changeExpression);
+
+protected:
+    QUmlValueSpecification *_changeExpression;
 };
 
 QT_END_NAMESPACE

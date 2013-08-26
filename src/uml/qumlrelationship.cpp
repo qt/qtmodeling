@@ -39,13 +39,8 @@
 **
 ****************************************************************************/
 #include "qumlrelationship.h"
-#include "qumlrelationship_p.h"
 
 QT_BEGIN_NAMESPACE
-
-QUmlRelationshipPrivate::QUmlRelationshipPrivate()
-{
-}
 
 /*!
     \class QUmlRelationship
@@ -55,11 +50,8 @@ QUmlRelationshipPrivate::QUmlRelationshipPrivate()
     \brief Relationship is an abstract concept that specifies some kind of relationship between elements.
  */
 
-QUmlRelationship::QUmlRelationship(bool create_d_ptr) :
-    QUmlElement(false)
+QUmlRelationship::QUmlRelationship()
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlRelationshipPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -71,8 +63,7 @@ QSet<QUmlElement *> QUmlRelationship::relatedElement() const
 {
     // This is a read-only derived union association end
 
-    QM_D(const QUmlRelationship);
-    return d->relatedElement;
+    return _relatedElement;
 }
 
 QT_END_NAMESPACE

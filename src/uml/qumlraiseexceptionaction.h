@@ -53,15 +53,17 @@ QT_MODULE(QtUml)
 
 class QUmlInputPin;
 
-class QUmlRaiseExceptionActionPrivate;
 class Q_UML_EXPORT QUmlRaiseExceptionAction : public QUmlAction
 {
 public:
-    QUmlRaiseExceptionAction(bool create_d_ptr = true);
+    QUmlRaiseExceptionAction();
 
     // Owned attributes
     QUmlInputPin *exception() const;
     void setException(QUmlInputPin *exception);
+
+protected:
+    QUmlInputPin *_exception;
 };
 
 QT_END_NAMESPACE

@@ -53,17 +53,20 @@ QT_MODULE(QtUml)
 
 class QUmlInputPin;
 
-class QUmlRemoveStructuralFeatureValueActionPrivate;
 class Q_UML_EXPORT QUmlRemoveStructuralFeatureValueAction : public QUmlWriteStructuralFeatureAction
 {
 public:
-    QUmlRemoveStructuralFeatureValueAction(bool create_d_ptr = true);
+    QUmlRemoveStructuralFeatureValueAction();
 
     // Owned attributes
     bool isRemoveDuplicates() const;
     void setRemoveDuplicates(bool isRemoveDuplicates);
     QUmlInputPin *removeAt() const;
     void setRemoveAt(QUmlInputPin *removeAt);
+
+protected:
+    bool _isRemoveDuplicates;
+    QUmlInputPin *_removeAt;
 };
 
 QT_END_NAMESPACE

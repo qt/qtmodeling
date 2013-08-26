@@ -39,13 +39,8 @@
 **
 ****************************************************************************/
 #include "qumlevent.h"
-#include "qumlevent_p.h"
 
 QT_BEGIN_NAMESPACE
-
-QUmlEventPrivate::QUmlEventPrivate()
-{
-}
 
 /*!
     \class QUmlEvent
@@ -55,11 +50,8 @@ QUmlEventPrivate::QUmlEventPrivate()
     \brief An event is the specification of some occurrence that may potentially trigger effects by an object.
  */
 
-QUmlEvent::QUmlEvent(bool create_d_ptr) :
-    QUmlPackageableElement(false)
+QUmlEvent::QUmlEvent()
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlEventPrivate);
 }
 
 QT_END_NAMESPACE

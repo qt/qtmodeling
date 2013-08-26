@@ -39,21 +39,12 @@
 **
 ****************************************************************************/
 #include "qumltemplateparametersubstitution.h"
-#include "qumltemplateparametersubstitution_p.h"
 
 #include <QtUml/QUmlParameterableElement>
 #include <QtUml/QUmlTemplateBinding>
 #include <QtUml/QUmlTemplateParameter>
 
 QT_BEGIN_NAMESPACE
-
-QUmlTemplateParameterSubstitutionPrivate::QUmlTemplateParameterSubstitutionPrivate() :
-    actual(0),
-    formal(0),
-    ownedActual(0),
-    templateBinding(0)
-{
-}
 
 /*!
     \class QUmlTemplateParameterSubstitution
@@ -63,11 +54,12 @@ QUmlTemplateParameterSubstitutionPrivate::QUmlTemplateParameterSubstitutionPriva
     \brief A template parameter substitution relates the actual parameter to a formal template parameter as part of a template binding.
  */
 
-QUmlTemplateParameterSubstitution::QUmlTemplateParameterSubstitution(bool create_d_ptr) :
-    QUmlElement(false)
+QUmlTemplateParameterSubstitution::QUmlTemplateParameterSubstitution() :
+    _actual(0),
+    _formal(0),
+    _ownedActual(0),
+    _templateBinding(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlTemplateParameterSubstitutionPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -79,17 +71,15 @@ QUmlParameterableElement *QUmlTemplateParameterSubstitution::actual() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlTemplateParameterSubstitution);
-    return d->actual;
+    return _actual;
 }
 
 void QUmlTemplateParameterSubstitution::setActual(QUmlParameterableElement *actual)
 {
     // This is a read-write association end
 
-    QM_D(QUmlTemplateParameterSubstitution);
-    if (d->actual != actual) {
-        d->actual = actual;
+    if (_actual != actual) {
+        _actual = actual;
     }
 }
 
@@ -100,17 +90,15 @@ QUmlTemplateParameter *QUmlTemplateParameterSubstitution::formal() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlTemplateParameterSubstitution);
-    return d->formal;
+    return _formal;
 }
 
 void QUmlTemplateParameterSubstitution::setFormal(QUmlTemplateParameter *formal)
 {
     // This is a read-write association end
 
-    QM_D(QUmlTemplateParameterSubstitution);
-    if (d->formal != formal) {
-        d->formal = formal;
+    if (_formal != formal) {
+        _formal = formal;
     }
 }
 
@@ -121,17 +109,15 @@ QUmlParameterableElement *QUmlTemplateParameterSubstitution::ownedActual() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlTemplateParameterSubstitution);
-    return d->ownedActual;
+    return _ownedActual;
 }
 
 void QUmlTemplateParameterSubstitution::setOwnedActual(QUmlParameterableElement *ownedActual)
 {
     // This is a read-write association end
 
-    QM_D(QUmlTemplateParameterSubstitution);
-    if (d->ownedActual != ownedActual) {
-        d->ownedActual = ownedActual;
+    if (_ownedActual != ownedActual) {
+        _ownedActual = ownedActual;
     }
 }
 
@@ -142,17 +128,15 @@ QUmlTemplateBinding *QUmlTemplateParameterSubstitution::templateBinding() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlTemplateParameterSubstitution);
-    return d->templateBinding;
+    return _templateBinding;
 }
 
 void QUmlTemplateParameterSubstitution::setTemplateBinding(QUmlTemplateBinding *templateBinding)
 {
     // This is a read-write association end
 
-    QM_D(QUmlTemplateParameterSubstitution);
-    if (d->templateBinding != templateBinding) {
-        d->templateBinding = templateBinding;
+    if (_templateBinding != templateBinding) {
+        _templateBinding = templateBinding;
     }
 }
 

@@ -39,7 +39,6 @@
 **
 ****************************************************************************/
 #include "qumlstatemachine.h"
-#include "qumlstatemachine_p.h"
 
 #include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlPseudostate>
@@ -49,10 +48,6 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlStateMachinePrivate::QUmlStateMachinePrivate()
-{
-}
-
 /*!
     \class QUmlStateMachine
 
@@ -61,11 +56,8 @@ QUmlStateMachinePrivate::QUmlStateMachinePrivate()
     \brief State machines can be used to express the behavior of part of a system. Behavior is modeled as a traversal of a graph of state nodes interconnected by one or more joined transition arcs that are triggered by the dispatching of series of (event) occurrences. During this traversal, the state machine executes a series of activities associated with various elements of the state machine.
  */
 
-QUmlStateMachine::QUmlStateMachine(bool create_d_ptr) :
-    QUmlBehavior(false)
+QUmlStateMachine::QUmlStateMachine()
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlStateMachinePrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -77,17 +69,15 @@ QSet<QUmlPseudostate *> QUmlStateMachine::connectionPoint() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlStateMachine);
-    return d->connectionPoint;
+    return _connectionPoint;
 }
 
 void QUmlStateMachine::addConnectionPoint(QUmlPseudostate *connectionPoint)
 {
     // This is a read-write association end
 
-    QM_D(QUmlStateMachine);
-    if (!d->connectionPoint.contains(connectionPoint)) {
-        d->connectionPoint.insert(connectionPoint);
+    if (!_connectionPoint.contains(connectionPoint)) {
+        _connectionPoint.insert(connectionPoint);
     }
 }
 
@@ -95,9 +85,8 @@ void QUmlStateMachine::removeConnectionPoint(QUmlPseudostate *connectionPoint)
 {
     // This is a read-write association end
 
-    QM_D(QUmlStateMachine);
-    if (d->connectionPoint.contains(connectionPoint)) {
-        d->connectionPoint.remove(connectionPoint);
+    if (_connectionPoint.contains(connectionPoint)) {
+        _connectionPoint.remove(connectionPoint);
     }
 }
 
@@ -108,17 +97,15 @@ QSet<QUmlStateMachine *> QUmlStateMachine::extendedStateMachine() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlStateMachine);
-    return d->extendedStateMachine;
+    return _extendedStateMachine;
 }
 
 void QUmlStateMachine::addExtendedStateMachine(QUmlStateMachine *extendedStateMachine)
 {
     // This is a read-write association end
 
-    QM_D(QUmlStateMachine);
-    if (!d->extendedStateMachine.contains(extendedStateMachine)) {
-        d->extendedStateMachine.insert(extendedStateMachine);
+    if (!_extendedStateMachine.contains(extendedStateMachine)) {
+        _extendedStateMachine.insert(extendedStateMachine);
     }
 }
 
@@ -126,9 +113,8 @@ void QUmlStateMachine::removeExtendedStateMachine(QUmlStateMachine *extendedStat
 {
     // This is a read-write association end
 
-    QM_D(QUmlStateMachine);
-    if (d->extendedStateMachine.contains(extendedStateMachine)) {
-        d->extendedStateMachine.remove(extendedStateMachine);
+    if (_extendedStateMachine.contains(extendedStateMachine)) {
+        _extendedStateMachine.remove(extendedStateMachine);
     }
 }
 
@@ -139,17 +125,15 @@ QSet<QUmlRegion *> QUmlStateMachine::region() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlStateMachine);
-    return d->region;
+    return _region;
 }
 
 void QUmlStateMachine::addRegion(QUmlRegion *region)
 {
     // This is a read-write association end
 
-    QM_D(QUmlStateMachine);
-    if (!d->region.contains(region)) {
-        d->region.insert(region);
+    if (!_region.contains(region)) {
+        _region.insert(region);
     }
 }
 
@@ -157,9 +141,8 @@ void QUmlStateMachine::removeRegion(QUmlRegion *region)
 {
     // This is a read-write association end
 
-    QM_D(QUmlStateMachine);
-    if (d->region.contains(region)) {
-        d->region.remove(region);
+    if (_region.contains(region)) {
+        _region.remove(region);
     }
 }
 
@@ -170,17 +153,15 @@ QSet<QUmlState *> QUmlStateMachine::submachineState() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlStateMachine);
-    return d->submachineState;
+    return _submachineState;
 }
 
 void QUmlStateMachine::addSubmachineState(QUmlState *submachineState)
 {
     // This is a read-write association end
 
-    QM_D(QUmlStateMachine);
-    if (!d->submachineState.contains(submachineState)) {
-        d->submachineState.insert(submachineState);
+    if (!_submachineState.contains(submachineState)) {
+        _submachineState.insert(submachineState);
     }
 }
 
@@ -188,9 +169,8 @@ void QUmlStateMachine::removeSubmachineState(QUmlState *submachineState)
 {
     // This is a read-write association end
 
-    QM_D(QUmlStateMachine);
-    if (d->submachineState.contains(submachineState)) {
-        d->submachineState.remove(submachineState);
+    if (_submachineState.contains(submachineState)) {
+        _submachineState.remove(submachineState);
     }
 }
 

@@ -54,11 +54,10 @@ QT_MODULE(QtUml)
 
 class QUmlParameterableElement;
 
-class QUmlValueSpecificationPrivate;
 class Q_UML_EXPORT QUmlValueSpecification : public QUmlTypedElement, public QUmlPackageableElement
 {
 public:
-    Q_DECL_HIDDEN QUmlValueSpecification(bool create_d_ptr = true);
+    Q_DECL_HIDDEN QUmlValueSpecification();
 
     // Operations
     bool booleanValue() const;
@@ -69,6 +68,8 @@ public:
     double realValue() const;
     QString stringValue() const;
     int unlimitedValue() const;
+
+protected:
 };
 
 QT_END_NAMESPACE

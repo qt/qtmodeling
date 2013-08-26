@@ -39,17 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlsubstitution.h"
-#include "qumlsubstitution_p.h"
 
 #include <QtUml/QUmlClassifier>
 
 QT_BEGIN_NAMESPACE
-
-QUmlSubstitutionPrivate::QUmlSubstitutionPrivate() :
-    contract(0),
-    substitutingClassifier(0)
-{
-}
 
 /*!
     \class QUmlSubstitution
@@ -59,11 +52,10 @@ QUmlSubstitutionPrivate::QUmlSubstitutionPrivate() :
     \brief A substitution is a relationship between two classifiers signifies that the substituting classifier complies with the contract specified by the contract classifier. This implies that instances of the substituting classifier are runtime substitutable where instances of the contract classifier are expected.
  */
 
-QUmlSubstitution::QUmlSubstitution(bool create_d_ptr) :
-    QUmlRealization(false)
+QUmlSubstitution::QUmlSubstitution() :
+    _contract(0),
+    _substitutingClassifier(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlSubstitutionPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -75,17 +67,15 @@ QUmlClassifier *QUmlSubstitution::contract() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlSubstitution);
-    return d->contract;
+    return _contract;
 }
 
 void QUmlSubstitution::setContract(QUmlClassifier *contract)
 {
     // This is a read-write association end
 
-    QM_D(QUmlSubstitution);
-    if (d->contract != contract) {
-        d->contract = contract;
+    if (_contract != contract) {
+        _contract = contract;
     }
 }
 
@@ -96,17 +86,15 @@ QUmlClassifier *QUmlSubstitution::substitutingClassifier() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlSubstitution);
-    return d->substitutingClassifier;
+    return _substitutingClassifier;
 }
 
 void QUmlSubstitution::setSubstitutingClassifier(QUmlClassifier *substitutingClassifier)
 {
     // This is a read-write association end
 
-    QM_D(QUmlSubstitution);
-    if (d->substitutingClassifier != substitutingClassifier) {
-        d->substitutingClassifier = substitutingClassifier;
+    if (_substitutingClassifier != substitutingClassifier) {
+        _substitutingClassifier = substitutingClassifier;
     }
 }
 

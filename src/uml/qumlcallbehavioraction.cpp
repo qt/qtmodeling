@@ -39,16 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlcallbehavioraction.h"
-#include "qumlcallbehavioraction_p.h"
 
 #include <QtUml/QUmlBehavior>
 
 QT_BEGIN_NAMESPACE
-
-QUmlCallBehaviorActionPrivate::QUmlCallBehaviorActionPrivate() :
-    behavior(0)
-{
-}
 
 /*!
     \class QUmlCallBehaviorAction
@@ -58,11 +52,9 @@ QUmlCallBehaviorActionPrivate::QUmlCallBehaviorActionPrivate() :
     \brief A call behavior action is a call action that invokes a behavior directly rather than invoking a behavioral feature that, in turn, results in the invocation of that behavior. The argument values of the action are available to the execution of the invoked behavior. For synchronous calls the execution of the call behavior action waits until the execution of the invoked behavior completes and a result is returned on its output pin. The action completes immediately without a result, if the call is asynchronous. In particular, the invoked behavior may be an activity.
  */
 
-QUmlCallBehaviorAction::QUmlCallBehaviorAction(bool create_d_ptr) :
-    QUmlCallAction(false)
+QUmlCallBehaviorAction::QUmlCallBehaviorAction() :
+    _behavior(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlCallBehaviorActionPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -74,17 +66,15 @@ QUmlBehavior *QUmlCallBehaviorAction::behavior() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlCallBehaviorAction);
-    return d->behavior;
+    return _behavior;
 }
 
 void QUmlCallBehaviorAction::setBehavior(QUmlBehavior *behavior)
 {
     // This is a read-write association end
 
-    QM_D(QUmlCallBehaviorAction);
-    if (d->behavior != behavior) {
-        d->behavior = behavior;
+    if (_behavior != behavior) {
+        _behavior = behavior;
     }
 }
 

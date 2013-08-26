@@ -57,11 +57,10 @@ class QUmlInteraction;
 class QUmlMessageEnd;
 class QUmlValueSpecification;
 
-class QUmlMessagePrivate;
 class Q_UML_EXPORT QUmlMessage : public QUmlNamedElement
 {
 public:
-    QUmlMessage(bool create_d_ptr = true);
+    QUmlMessage();
 
     // Owned attributes
     QList<QUmlValueSpecification *> argument() const;
@@ -80,6 +79,15 @@ public:
     void setSendEvent(QUmlMessageEnd *sendEvent);
     QUmlNamedElement *signature() const;
     void setSignature(QUmlNamedElement *signature);
+
+protected:
+    QList<QUmlValueSpecification *> _argument;
+    QUmlConnector *_connector;
+    QUmlInteraction *_interaction;
+    QtUml::MessageSort _messageSort;
+    QUmlMessageEnd *_receiveEvent;
+    QUmlMessageEnd *_sendEvent;
+    QUmlNamedElement *_signature;
 };
 
 QT_END_NAMESPACE

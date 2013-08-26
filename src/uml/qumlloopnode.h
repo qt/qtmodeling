@@ -55,11 +55,10 @@ class QUmlExecutableNode;
 class QUmlInputPin;
 class QUmlOutputPin;
 
-class QUmlLoopNodePrivate;
 class Q_UML_EXPORT QUmlLoopNode : public QUmlStructuredActivityNode
 {
 public:
-    QUmlLoopNode(bool create_d_ptr = true);
+    QUmlLoopNode();
 
     // Owned attributes
     QList<QUmlOutputPin *> bodyOutput() const;
@@ -87,6 +86,17 @@ public:
     QSet<QUmlExecutableNode *> test() const;
     void addTest(QUmlExecutableNode *test);
     void removeTest(QUmlExecutableNode *test);
+
+protected:
+    QList<QUmlOutputPin *> _bodyOutput;
+    QSet<QUmlExecutableNode *> _bodyPart;
+    QUmlOutputPin *_decider;
+    bool _isTestedFirst;
+    QList<QUmlOutputPin *> _loopVariable;
+    QList<QUmlInputPin *> _loopVariableInput;
+    QList<QUmlOutputPin *> _result;
+    QSet<QUmlExecutableNode *> _setupPart;
+    QSet<QUmlExecutableNode *> _test;
 };
 
 QT_END_NAMESPACE

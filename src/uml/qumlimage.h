@@ -51,11 +51,10 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlImagePrivate;
 class Q_UML_EXPORT QUmlImage : public QUmlElement
 {
 public:
-    QUmlImage(bool create_d_ptr = true);
+    QUmlImage();
 
     // Owned attributes
     QString content() const;
@@ -64,6 +63,11 @@ public:
     void setFormat(QString format);
     QString location() const;
     void setLocation(QString location);
+
+protected:
+    QString _content;
+    QString _format;
+    QString _location;
 };
 
 QT_END_NAMESPACE

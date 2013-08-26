@@ -53,15 +53,17 @@ QT_MODULE(QtUml)
 
 class QUmlInputPin;
 
-class QUmlStartClassifierBehaviorActionPrivate;
 class Q_UML_EXPORT QUmlStartClassifierBehaviorAction : public QUmlAction
 {
 public:
-    QUmlStartClassifierBehaviorAction(bool create_d_ptr = true);
+    QUmlStartClassifierBehaviorAction();
 
     // Owned attributes
     QUmlInputPin *object() const;
     void setObject(QUmlInputPin *object);
+
+protected:
+    QUmlInputPin *_object;
 };
 
 QT_END_NAMESPACE

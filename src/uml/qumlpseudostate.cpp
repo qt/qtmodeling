@@ -39,19 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlpseudostate.h"
-#include "qumlpseudostate_p.h"
 
 #include <QtUml/QUmlState>
 #include <QtUml/QUmlStateMachine>
 
 QT_BEGIN_NAMESPACE
-
-QUmlPseudostatePrivate::QUmlPseudostatePrivate() :
-    kind(QtUml::PseudostateInitial),
-    state(0),
-    stateMachine(0)
-{
-}
 
 /*!
     \class QUmlPseudostate
@@ -61,11 +53,11 @@ QUmlPseudostatePrivate::QUmlPseudostatePrivate() :
     \brief A pseudostate is an abstraction that encompasses different types of transient vertices in the state machine graph.
  */
 
-QUmlPseudostate::QUmlPseudostate(bool create_d_ptr) :
-    QUmlVertex(false)
+QUmlPseudostate::QUmlPseudostate() :
+    _kind(QtUml::PseudostateInitial),
+    _state(0),
+    _stateMachine(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlPseudostatePrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -77,17 +69,15 @@ QtUml::PseudostateKind QUmlPseudostate::kind() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlPseudostate);
-    return d->kind;
+    return _kind;
 }
 
 void QUmlPseudostate::setKind(QtUml::PseudostateKind kind)
 {
     // This is a read-write property
 
-    QM_D(QUmlPseudostate);
-    if (d->kind != kind) {
-        d->kind = kind;
+    if (_kind != kind) {
+        _kind = kind;
     }
 }
 
@@ -98,17 +88,15 @@ QUmlState *QUmlPseudostate::state() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlPseudostate);
-    return d->state;
+    return _state;
 }
 
 void QUmlPseudostate::setState(QUmlState *state)
 {
     // This is a read-write association end
 
-    QM_D(QUmlPseudostate);
-    if (d->state != state) {
-        d->state = state;
+    if (_state != state) {
+        _state = state;
     }
 }
 
@@ -119,17 +107,15 @@ QUmlStateMachine *QUmlPseudostate::stateMachine() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlPseudostate);
-    return d->stateMachine;
+    return _stateMachine;
 }
 
 void QUmlPseudostate::setStateMachine(QUmlStateMachine *stateMachine)
 {
     // This is a read-write association end
 
-    QM_D(QUmlPseudostate);
-    if (d->stateMachine != stateMachine) {
-        d->stateMachine = stateMachine;
+    if (_stateMachine != stateMachine) {
+        _stateMachine = stateMachine;
     }
 }
 

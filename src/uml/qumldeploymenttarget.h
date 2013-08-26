@@ -54,17 +54,19 @@ QT_MODULE(QtUml)
 class QUmlDeployment;
 class QUmlPackageableElement;
 
-class QUmlDeploymentTargetPrivate;
 class Q_UML_EXPORT QUmlDeploymentTarget : public virtual QUmlNamedElement
 {
 public:
-    Q_DECL_HIDDEN QUmlDeploymentTarget(bool create_d_ptr = true);
+    Q_DECL_HIDDEN QUmlDeploymentTarget();
 
     // Owned attributes
     QSet<QUmlPackageableElement *> deployedElement() const;
     QSet<QUmlDeployment *> deployment() const;
     void addDeployment(QUmlDeployment *deployment);
     void removeDeployment(QUmlDeployment *deployment);
+
+protected:
+    QSet<QUmlDeployment *> _deployment;
 };
 
 QT_END_NAMESPACE

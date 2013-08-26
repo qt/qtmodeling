@@ -54,11 +54,10 @@ QT_MODULE(QtUml)
 class QUmlClassifier;
 class QUmlGeneralizationSet;
 
-class QUmlGeneralizationPrivate;
 class Q_UML_EXPORT QUmlGeneralization : public QUmlDirectedRelationship
 {
 public:
-    QUmlGeneralization(bool create_d_ptr = true);
+    QUmlGeneralization();
 
     // Owned attributes
     QUmlClassifier *general() const;
@@ -70,6 +69,12 @@ public:
     void setSubstitutable(bool isSubstitutable);
     QUmlClassifier *specific() const;
     void setSpecific(QUmlClassifier *specific);
+
+protected:
+    QUmlClassifier *_general;
+    QSet<QUmlGeneralizationSet *> _generalizationSet;
+    bool _isSubstitutable;
+    QUmlClassifier *_specific;
 };
 
 QT_END_NAMESPACE

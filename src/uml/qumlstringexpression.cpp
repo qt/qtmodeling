@@ -39,14 +39,8 @@
 **
 ****************************************************************************/
 #include "qumlstringexpression.h"
-#include "qumlstringexpression_p.h"
 
 QT_BEGIN_NAMESPACE
-
-QUmlStringExpressionPrivate::QUmlStringExpressionPrivate() :
-    owningExpression(0)
-{
-}
 
 /*!
     \class QUmlStringExpression
@@ -56,12 +50,9 @@ QUmlStringExpressionPrivate::QUmlStringExpressionPrivate() :
     \brief An expression that specifies a string value that is derived by concatenating a set of sub string expressions, some of which might be template parameters.
  */
 
-QUmlStringExpression::QUmlStringExpression(bool create_d_ptr) :
-    QUmlExpression(false),
-    QUmlTemplateableElement(false)
+QUmlStringExpression::QUmlStringExpression() :
+    _owningExpression(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlStringExpressionPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -73,17 +64,15 @@ QUmlStringExpression *QUmlStringExpression::owningExpression() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlStringExpression);
-    return d->owningExpression;
+    return _owningExpression;
 }
 
 void QUmlStringExpression::setOwningExpression(QUmlStringExpression *owningExpression)
 {
     // This is a read-write association end
 
-    QM_D(QUmlStringExpression);
-    if (d->owningExpression != owningExpression) {
-        d->owningExpression = owningExpression;
+    if (_owningExpression != owningExpression) {
+        _owningExpression = owningExpression;
     }
 }
 
@@ -94,17 +83,15 @@ QSet<QUmlStringExpression *> QUmlStringExpression::subExpression() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlStringExpression);
-    return d->subExpression;
+    return _subExpression;
 }
 
 void QUmlStringExpression::addSubExpression(QUmlStringExpression *subExpression)
 {
     // This is a read-write association end
 
-    QM_D(QUmlStringExpression);
-    if (!d->subExpression.contains(subExpression)) {
-        d->subExpression.insert(subExpression);
+    if (!_subExpression.contains(subExpression)) {
+        _subExpression.insert(subExpression);
     }
 }
 
@@ -112,9 +99,8 @@ void QUmlStringExpression::removeSubExpression(QUmlStringExpression *subExpressi
 {
     // This is a read-write association end
 
-    QM_D(QUmlStringExpression);
-    if (d->subExpression.contains(subExpression)) {
-        d->subExpression.remove(subExpression);
+    if (_subExpression.contains(subExpression)) {
+        _subExpression.remove(subExpression);
     }
 }
 

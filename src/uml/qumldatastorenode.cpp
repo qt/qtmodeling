@@ -39,13 +39,8 @@
 **
 ****************************************************************************/
 #include "qumldatastorenode.h"
-#include "qumldatastorenode_p.h"
 
 QT_BEGIN_NAMESPACE
-
-QUmlDataStoreNodePrivate::QUmlDataStoreNodePrivate()
-{
-}
 
 /*!
     \class QUmlDataStoreNode
@@ -55,11 +50,8 @@ QUmlDataStoreNodePrivate::QUmlDataStoreNodePrivate()
     \brief A data store node is a central buffer node for non-transient information.
  */
 
-QUmlDataStoreNode::QUmlDataStoreNode(bool create_d_ptr) :
-    QUmlCentralBufferNode(false)
+QUmlDataStoreNode::QUmlDataStoreNode()
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlDataStoreNodePrivate);
 }
 
 QT_END_NAMESPACE

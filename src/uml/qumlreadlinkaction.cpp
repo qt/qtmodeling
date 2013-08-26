@@ -39,16 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlreadlinkaction.h"
-#include "qumlreadlinkaction_p.h"
 
 #include <QtUml/QUmlOutputPin>
 
 QT_BEGIN_NAMESPACE
-
-QUmlReadLinkActionPrivate::QUmlReadLinkActionPrivate() :
-    result(0)
-{
-}
 
 /*!
     \class QUmlReadLinkAction
@@ -58,11 +52,9 @@ QUmlReadLinkActionPrivate::QUmlReadLinkActionPrivate() :
     \brief A read link action is a link action that navigates across associations to retrieve objects on one end.
  */
 
-QUmlReadLinkAction::QUmlReadLinkAction(bool create_d_ptr) :
-    QUmlLinkAction(false)
+QUmlReadLinkAction::QUmlReadLinkAction() :
+    _result(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlReadLinkActionPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -74,17 +66,15 @@ QUmlOutputPin *QUmlReadLinkAction::result() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlReadLinkAction);
-    return d->result;
+    return _result;
 }
 
 void QUmlReadLinkAction::setResult(QUmlOutputPin *result)
 {
     // This is a read-write association end
 
-    QM_D(QUmlReadLinkAction);
-    if (d->result != result) {
-        d->result = result;
+    if (_result != result) {
+        _result = result;
     }
 }
 

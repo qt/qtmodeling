@@ -39,17 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlinvocationaction.h"
-#include "qumlinvocationaction_p.h"
 
 #include <QtUml/QUmlInputPin>
 #include <QtUml/QUmlPort>
 
 QT_BEGIN_NAMESPACE
-
-QUmlInvocationActionPrivate::QUmlInvocationActionPrivate() :
-    onPort(0)
-{
-}
 
 /*!
     \class QUmlInvocationAction
@@ -59,11 +53,9 @@ QUmlInvocationActionPrivate::QUmlInvocationActionPrivate() :
     \brief InvocationAction is an abstract class for the various actions that invoke behavior.In addition to targeting an object, invocation actions can also invoke behavioral features on ports from where the invocation requests are routed onwards on links deriving from attached connectors. Invocation actions may also be sent to a target via a given port, either on the sending object or on another object.
  */
 
-QUmlInvocationAction::QUmlInvocationAction(bool create_d_ptr) :
-    QUmlAction(false)
+QUmlInvocationAction::QUmlInvocationAction() :
+    _onPort(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlInvocationActionPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -75,17 +67,15 @@ QList<QUmlInputPin *> QUmlInvocationAction::argument() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlInvocationAction);
-    return d->argument;
+    return _argument;
 }
 
 void QUmlInvocationAction::addArgument(QUmlInputPin *argument)
 {
     // This is a read-write association end
 
-    QM_D(QUmlInvocationAction);
-    if (!d->argument.contains(argument)) {
-        d->argument.append(argument);
+    if (!_argument.contains(argument)) {
+        _argument.append(argument);
     }
 }
 
@@ -93,9 +83,8 @@ void QUmlInvocationAction::removeArgument(QUmlInputPin *argument)
 {
     // This is a read-write association end
 
-    QM_D(QUmlInvocationAction);
-    if (d->argument.contains(argument)) {
-        d->argument.removeAll(argument);
+    if (_argument.contains(argument)) {
+        _argument.removeAll(argument);
     }
 }
 
@@ -106,17 +95,15 @@ QUmlPort *QUmlInvocationAction::onPort() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlInvocationAction);
-    return d->onPort;
+    return _onPort;
 }
 
 void QUmlInvocationAction::setOnPort(QUmlPort *onPort)
 {
     // This is a read-write association end
 
-    QM_D(QUmlInvocationAction);
-    if (d->onPort != onPort) {
-        d->onPort = onPort;
+    if (_onPort != onPort) {
+        _onPort = onPort;
     }
 }
 

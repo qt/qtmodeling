@@ -51,11 +51,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlPrimitiveTypePrivate;
 class Q_UML_EXPORT QUmlPrimitiveType : public QUmlDataType
 {
 public:
-    QUmlPrimitiveType(bool create_d_ptr = true);
+    QUmlPrimitiveType();
+
+protected:
 };
 
 QT_END_NAMESPACE

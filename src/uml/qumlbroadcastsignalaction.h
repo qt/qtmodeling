@@ -53,15 +53,17 @@ QT_MODULE(QtUml)
 
 class QUmlSignal;
 
-class QUmlBroadcastSignalActionPrivate;
 class Q_UML_EXPORT QUmlBroadcastSignalAction : public QUmlInvocationAction
 {
 public:
-    QUmlBroadcastSignalAction(bool create_d_ptr = true);
+    QUmlBroadcastSignalAction();
 
     // Owned attributes
     QUmlSignal *signal() const;
     void setSignal(QUmlSignal *signal);
+
+protected:
+    QUmlSignal *_signal;
 };
 
 QT_END_NAMESPACE

@@ -51,11 +51,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlActivityFinalNodePrivate;
 class Q_UML_EXPORT QUmlActivityFinalNode : public QUmlFinalNode
 {
 public:
-    QUmlActivityFinalNode(bool create_d_ptr = true);
+    QUmlActivityFinalNode();
+
+protected:
 };
 
 QT_END_NAMESPACE

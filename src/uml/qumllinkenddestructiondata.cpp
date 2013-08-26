@@ -39,17 +39,10 @@
 **
 ****************************************************************************/
 #include "qumllinkenddestructiondata.h"
-#include "qumllinkenddestructiondata_p.h"
 
 #include <QtUml/QUmlInputPin>
 
 QT_BEGIN_NAMESPACE
-
-QUmlLinkEndDestructionDataPrivate::QUmlLinkEndDestructionDataPrivate() :
-    destroyAt(0),
-    isDestroyDuplicates(false)
-{
-}
 
 /*!
     \class QUmlLinkEndDestructionData
@@ -59,11 +52,10 @@ QUmlLinkEndDestructionDataPrivate::QUmlLinkEndDestructionDataPrivate() :
     \brief A link end destruction data is not an action. It is an element that identifies links. It identifies one end of a link to be destroyed by destroy link action.
  */
 
-QUmlLinkEndDestructionData::QUmlLinkEndDestructionData(bool create_d_ptr) :
-    QUmlLinkEndData(false)
+QUmlLinkEndDestructionData::QUmlLinkEndDestructionData() :
+    _destroyAt(0),
+    _isDestroyDuplicates(false)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlLinkEndDestructionDataPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -75,17 +67,15 @@ QUmlInputPin *QUmlLinkEndDestructionData::destroyAt() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlLinkEndDestructionData);
-    return d->destroyAt;
+    return _destroyAt;
 }
 
 void QUmlLinkEndDestructionData::setDestroyAt(QUmlInputPin *destroyAt)
 {
     // This is a read-write association end
 
-    QM_D(QUmlLinkEndDestructionData);
-    if (d->destroyAt != destroyAt) {
-        d->destroyAt = destroyAt;
+    if (_destroyAt != destroyAt) {
+        _destroyAt = destroyAt;
     }
 }
 
@@ -96,17 +86,15 @@ bool QUmlLinkEndDestructionData::isDestroyDuplicates() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlLinkEndDestructionData);
-    return d->isDestroyDuplicates;
+    return _isDestroyDuplicates;
 }
 
 void QUmlLinkEndDestructionData::setDestroyDuplicates(bool isDestroyDuplicates)
 {
     // This is a read-write property
 
-    QM_D(QUmlLinkEndDestructionData);
-    if (d->isDestroyDuplicates != isDestroyDuplicates) {
-        d->isDestroyDuplicates = isDestroyDuplicates;
+    if (_isDestroyDuplicates != isDestroyDuplicates) {
+        _isDestroyDuplicates = isDestroyDuplicates;
     }
 }
 

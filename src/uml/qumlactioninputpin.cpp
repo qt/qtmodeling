@@ -39,16 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlactioninputpin.h"
-#include "qumlactioninputpin_p.h"
 
 #include <QtUml/QUmlAction>
 
 QT_BEGIN_NAMESPACE
-
-QUmlActionInputPinPrivate::QUmlActionInputPinPrivate() :
-    fromAction(0)
-{
-}
 
 /*!
     \class QUmlActionInputPin
@@ -58,11 +52,9 @@ QUmlActionInputPinPrivate::QUmlActionInputPinPrivate() :
     \brief An action input pin is a kind of pin that executes an action to determine the values to input to another.
  */
 
-QUmlActionInputPin::QUmlActionInputPin(bool create_d_ptr) :
-    QUmlInputPin(false)
+QUmlActionInputPin::QUmlActionInputPin() :
+    _fromAction(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlActionInputPinPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -74,17 +66,15 @@ QUmlAction *QUmlActionInputPin::fromAction() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlActionInputPin);
-    return d->fromAction;
+    return _fromAction;
 }
 
 void QUmlActionInputPin::setFromAction(QUmlAction *fromAction)
 {
     // This is a read-write association end
 
-    QM_D(QUmlActionInputPin);
-    if (d->fromAction != fromAction) {
-        d->fromAction = fromAction;
+    if (_fromAction != fromAction) {
+        _fromAction = fromAction;
     }
 }
 

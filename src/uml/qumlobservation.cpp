@@ -39,13 +39,8 @@
 **
 ****************************************************************************/
 #include "qumlobservation.h"
-#include "qumlobservation_p.h"
 
 QT_BEGIN_NAMESPACE
-
-QUmlObservationPrivate::QUmlObservationPrivate()
-{
-}
 
 /*!
     \class QUmlObservation
@@ -55,11 +50,8 @@ QUmlObservationPrivate::QUmlObservationPrivate()
     \brief Observation is a superclass of TimeObservation and DurationObservation in order for TimeExpression and Duration to refer to either in a simple way.
  */
 
-QUmlObservation::QUmlObservation(bool create_d_ptr) :
-    QUmlPackageableElement(false)
+QUmlObservation::QUmlObservation()
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlObservationPrivate);
 }
 
 QT_END_NAMESPACE

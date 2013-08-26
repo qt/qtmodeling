@@ -39,7 +39,6 @@
 **
 ****************************************************************************/
 #include "qumlaction.h"
-#include "qumlaction_p.h"
 
 #include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlConstraint>
@@ -47,11 +46,6 @@
 #include <QtUml/QUmlOutputPin>
 
 QT_BEGIN_NAMESPACE
-
-QUmlActionPrivate::QUmlActionPrivate() :
-    isLocallyReentrant(false)
-{
-}
 
 /*!
     \class QUmlAction
@@ -61,11 +55,9 @@ QUmlActionPrivate::QUmlActionPrivate() :
     \brief An action has pre- and post-conditions.An action represents a single step within an activity, that is, one that is not further decomposed within the activity.An action is a named element that is the fundamental unit of executable functionality. The execution of an action represents some transformation or processing in the modeled system, be it a computer system or otherwise.
  */
 
-QUmlAction::QUmlAction(bool create_d_ptr) :
-    QUmlExecutableNode(false)
+QUmlAction::QUmlAction() :
+    _isLocallyReentrant(false)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlActionPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -89,8 +81,7 @@ QList<QUmlInputPin *> QUmlAction::input() const
 {
     // This is a read-only derived union association end
 
-    QM_D(const QUmlAction);
-    return d->input;
+    return _input;
 }
 
 /*!
@@ -100,17 +91,15 @@ bool QUmlAction::isLocallyReentrant() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlAction);
-    return d->isLocallyReentrant;
+    return _isLocallyReentrant;
 }
 
 void QUmlAction::setLocallyReentrant(bool isLocallyReentrant)
 {
     // This is a read-write property
 
-    QM_D(QUmlAction);
-    if (d->isLocallyReentrant != isLocallyReentrant) {
-        d->isLocallyReentrant = isLocallyReentrant;
+    if (_isLocallyReentrant != isLocallyReentrant) {
+        _isLocallyReentrant = isLocallyReentrant;
     }
 }
 
@@ -121,17 +110,15 @@ QSet<QUmlConstraint *> QUmlAction::localPostcondition() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlAction);
-    return d->localPostcondition;
+    return _localPostcondition;
 }
 
 void QUmlAction::addLocalPostcondition(QUmlConstraint *localPostcondition)
 {
     // This is a read-write association end
 
-    QM_D(QUmlAction);
-    if (!d->localPostcondition.contains(localPostcondition)) {
-        d->localPostcondition.insert(localPostcondition);
+    if (!_localPostcondition.contains(localPostcondition)) {
+        _localPostcondition.insert(localPostcondition);
     }
 }
 
@@ -139,9 +126,8 @@ void QUmlAction::removeLocalPostcondition(QUmlConstraint *localPostcondition)
 {
     // This is a read-write association end
 
-    QM_D(QUmlAction);
-    if (d->localPostcondition.contains(localPostcondition)) {
-        d->localPostcondition.remove(localPostcondition);
+    if (_localPostcondition.contains(localPostcondition)) {
+        _localPostcondition.remove(localPostcondition);
     }
 }
 
@@ -152,17 +138,15 @@ QSet<QUmlConstraint *> QUmlAction::localPrecondition() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlAction);
-    return d->localPrecondition;
+    return _localPrecondition;
 }
 
 void QUmlAction::addLocalPrecondition(QUmlConstraint *localPrecondition)
 {
     // This is a read-write association end
 
-    QM_D(QUmlAction);
-    if (!d->localPrecondition.contains(localPrecondition)) {
-        d->localPrecondition.insert(localPrecondition);
+    if (!_localPrecondition.contains(localPrecondition)) {
+        _localPrecondition.insert(localPrecondition);
     }
 }
 
@@ -170,9 +154,8 @@ void QUmlAction::removeLocalPrecondition(QUmlConstraint *localPrecondition)
 {
     // This is a read-write association end
 
-    QM_D(QUmlAction);
-    if (d->localPrecondition.contains(localPrecondition)) {
-        d->localPrecondition.remove(localPrecondition);
+    if (_localPrecondition.contains(localPrecondition)) {
+        _localPrecondition.remove(localPrecondition);
     }
 }
 
@@ -183,8 +166,7 @@ QList<QUmlOutputPin *> QUmlAction::output() const
 {
     // This is a read-only derived union association end
 
-    QM_D(const QUmlAction);
-    return d->output;
+    return _output;
 }
 
 QT_END_NAMESPACE

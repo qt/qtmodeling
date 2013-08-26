@@ -39,15 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlcollaboration.h"
-#include "qumlcollaboration_p.h"
 
 #include <QtUml/QUmlConnectableElement>
 
 QT_BEGIN_NAMESPACE
-
-QUmlCollaborationPrivate::QUmlCollaborationPrivate()
-{
-}
 
 /*!
     \class QUmlCollaboration
@@ -57,12 +52,8 @@ QUmlCollaborationPrivate::QUmlCollaborationPrivate()
     \brief A collaboration use represents the application of the pattern described by a collaboration to a specific situation involving specific classes or instances playing the roles of the collaboration.
  */
 
-QUmlCollaboration::QUmlCollaboration(bool create_d_ptr) :
-    QUmlStructuredClassifier(false),
-    QUmlBehavioredClassifier(false)
+QUmlCollaboration::QUmlCollaboration()
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlCollaborationPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -74,17 +65,15 @@ QSet<QUmlConnectableElement *> QUmlCollaboration::collaborationRole() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlCollaboration);
-    return d->collaborationRole;
+    return _collaborationRole;
 }
 
 void QUmlCollaboration::addCollaborationRole(QUmlConnectableElement *collaborationRole)
 {
     // This is a read-write association end
 
-    QM_D(QUmlCollaboration);
-    if (!d->collaborationRole.contains(collaborationRole)) {
-        d->collaborationRole.insert(collaborationRole);
+    if (!_collaborationRole.contains(collaborationRole)) {
+        _collaborationRole.insert(collaborationRole);
     }
 }
 
@@ -92,9 +81,8 @@ void QUmlCollaboration::removeCollaborationRole(QUmlConnectableElement *collabor
 {
     // This is a read-write association end
 
-    QM_D(QUmlCollaboration);
-    if (d->collaborationRole.contains(collaborationRole)) {
-        d->collaborationRole.remove(collaborationRole);
+    if (_collaborationRole.contains(collaborationRole)) {
+        _collaborationRole.remove(collaborationRole);
     }
 }
 

@@ -39,16 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlenumerationliteral.h"
-#include "qumlenumerationliteral_p.h"
 
 #include <QtUml/QUmlEnumeration>
 
 QT_BEGIN_NAMESPACE
-
-QUmlEnumerationLiteralPrivate::QUmlEnumerationLiteralPrivate() :
-    enumeration(0)
-{
-}
 
 /*!
     \class QUmlEnumerationLiteral
@@ -58,11 +52,9 @@ QUmlEnumerationLiteralPrivate::QUmlEnumerationLiteralPrivate() :
     \brief An enumeration literal is a user-defined data value for an enumeration.
  */
 
-QUmlEnumerationLiteral::QUmlEnumerationLiteral(bool create_d_ptr) :
-    QUmlInstanceSpecification(false)
+QUmlEnumerationLiteral::QUmlEnumerationLiteral() :
+    _enumeration(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlEnumerationLiteralPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -86,17 +78,15 @@ QUmlEnumeration *QUmlEnumerationLiteral::enumeration() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlEnumerationLiteral);
-    return d->enumeration;
+    return _enumeration;
 }
 
 void QUmlEnumerationLiteral::setEnumeration(QUmlEnumeration *enumeration)
 {
     // This is a read-write association end
 
-    QM_D(QUmlEnumerationLiteral);
-    if (d->enumeration != enumeration) {
-        d->enumeration = enumeration;
+    if (_enumeration != enumeration) {
+        _enumeration = enumeration;
     }
 }
 

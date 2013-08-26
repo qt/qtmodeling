@@ -51,11 +51,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlForkNodePrivate;
 class Q_UML_EXPORT QUmlForkNode : public QUmlControlNode
 {
 public:
-    QUmlForkNode(bool create_d_ptr = true);
+    QUmlForkNode();
+
+protected:
 };
 
 QT_END_NAMESPACE

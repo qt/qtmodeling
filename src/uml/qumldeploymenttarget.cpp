@@ -39,16 +39,11 @@
 **
 ****************************************************************************/
 #include "qumldeploymenttarget.h"
-#include "qumldeploymenttarget_p.h"
 
 #include <QtUml/QUmlDeployment>
 #include <QtUml/QUmlPackageableElement>
 
 QT_BEGIN_NAMESPACE
-
-QUmlDeploymentTargetPrivate::QUmlDeploymentTargetPrivate()
-{
-}
 
 /*!
     \class QUmlDeploymentTarget
@@ -58,11 +53,8 @@ QUmlDeploymentTargetPrivate::QUmlDeploymentTargetPrivate()
     \brief A deployment target is the location for a deployed artifact.
  */
 
-QUmlDeploymentTarget::QUmlDeploymentTarget(bool create_d_ptr) :
-    QUmlNamedElement(false)
+QUmlDeploymentTarget::QUmlDeploymentTarget()
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlDeploymentTargetPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -86,17 +78,15 @@ QSet<QUmlDeployment *> QUmlDeploymentTarget::deployment() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlDeploymentTarget);
-    return d->deployment;
+    return _deployment;
 }
 
 void QUmlDeploymentTarget::addDeployment(QUmlDeployment *deployment)
 {
     // This is a read-write association end
 
-    QM_D(QUmlDeploymentTarget);
-    if (!d->deployment.contains(deployment)) {
-        d->deployment.insert(deployment);
+    if (!_deployment.contains(deployment)) {
+        _deployment.insert(deployment);
     }
 }
 
@@ -104,9 +94,8 @@ void QUmlDeploymentTarget::removeDeployment(QUmlDeployment *deployment)
 {
     // This is a read-write association end
 
-    QM_D(QUmlDeploymentTarget);
-    if (d->deployment.contains(deployment)) {
-        d->deployment.remove(deployment);
+    if (_deployment.contains(deployment)) {
+        _deployment.remove(deployment);
     }
 }
 

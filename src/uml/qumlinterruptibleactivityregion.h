@@ -54,11 +54,10 @@ QT_MODULE(QtUml)
 class QUmlActivityEdge;
 class QUmlActivityNode;
 
-class QUmlInterruptibleActivityRegionPrivate;
 class Q_UML_EXPORT QUmlInterruptibleActivityRegion : public QUmlActivityGroup
 {
 public:
-    QUmlInterruptibleActivityRegion(bool create_d_ptr = true);
+    QUmlInterruptibleActivityRegion();
 
     // Owned attributes
     QSet<QUmlActivityEdge *> interruptingEdge() const;
@@ -67,6 +66,10 @@ public:
     QSet<QUmlActivityNode *> node() const;
     void addNode(QUmlActivityNode *node);
     void removeNode(QUmlActivityNode *node);
+
+protected:
+    QSet<QUmlActivityEdge *> _interruptingEdge;
+    QSet<QUmlActivityNode *> _node;
 };
 
 QT_END_NAMESPACE

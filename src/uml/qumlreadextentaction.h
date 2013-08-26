@@ -54,17 +54,20 @@ QT_MODULE(QtUml)
 class QUmlClassifier;
 class QUmlOutputPin;
 
-class QUmlReadExtentActionPrivate;
 class Q_UML_EXPORT QUmlReadExtentAction : public QUmlAction
 {
 public:
-    QUmlReadExtentAction(bool create_d_ptr = true);
+    QUmlReadExtentAction();
 
     // Owned attributes
     QUmlClassifier *classifier() const;
     void setClassifier(QUmlClassifier *classifier);
     QUmlOutputPin *result() const;
     void setResult(QUmlOutputPin *result);
+
+protected:
+    QUmlClassifier *_classifier;
+    QUmlOutputPin *_result;
 };
 
 QT_END_NAMESPACE

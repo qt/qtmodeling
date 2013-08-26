@@ -39,16 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlinteractionoperand.h"
-#include "qumlinteractionoperand_p.h"
 
 #include <QtUml/QUmlInteractionConstraint>
 
 QT_BEGIN_NAMESPACE
-
-QUmlInteractionOperandPrivate::QUmlInteractionOperandPrivate() :
-    guard(0)
-{
-}
 
 /*!
     \class QUmlInteractionOperand
@@ -58,12 +52,9 @@ QUmlInteractionOperandPrivate::QUmlInteractionOperandPrivate() :
     \brief An interaction operand is contained in a combined fragment. An interaction operand represents one operand of the expression given by the enclosing combined fragment.
  */
 
-QUmlInteractionOperand::QUmlInteractionOperand(bool create_d_ptr) :
-    QUmlInteractionFragment(false),
-    QUmlNamespace(false)
+QUmlInteractionOperand::QUmlInteractionOperand() :
+    _guard(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlInteractionOperandPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -75,17 +66,15 @@ QList<QUmlInteractionFragment *> QUmlInteractionOperand::fragment() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlInteractionOperand);
-    return d->fragment;
+    return _fragment;
 }
 
 void QUmlInteractionOperand::addFragment(QUmlInteractionFragment *fragment)
 {
     // This is a read-write association end
 
-    QM_D(QUmlInteractionOperand);
-    if (!d->fragment.contains(fragment)) {
-        d->fragment.append(fragment);
+    if (!_fragment.contains(fragment)) {
+        _fragment.append(fragment);
     }
 }
 
@@ -93,9 +82,8 @@ void QUmlInteractionOperand::removeFragment(QUmlInteractionFragment *fragment)
 {
     // This is a read-write association end
 
-    QM_D(QUmlInteractionOperand);
-    if (d->fragment.contains(fragment)) {
-        d->fragment.removeAll(fragment);
+    if (_fragment.contains(fragment)) {
+        _fragment.removeAll(fragment);
     }
 }
 
@@ -106,17 +94,15 @@ QUmlInteractionConstraint *QUmlInteractionOperand::guard() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlInteractionOperand);
-    return d->guard;
+    return _guard;
 }
 
 void QUmlInteractionOperand::setGuard(QUmlInteractionConstraint *guard)
 {
     // This is a read-write association end
 
-    QM_D(QUmlInteractionOperand);
-    if (d->guard != guard) {
-        d->guard = guard;
+    if (_guard != guard) {
+        _guard = guard;
     }
 }
 

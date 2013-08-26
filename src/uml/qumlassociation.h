@@ -55,11 +55,10 @@ QT_MODULE(QtUml)
 class QUmlProperty;
 class QUmlType;
 
-class QUmlAssociationPrivate;
 class Q_UML_EXPORT QUmlAssociation : public QUmlClassifier, public QUmlRelationship
 {
 public:
-    QUmlAssociation(bool create_d_ptr = true);
+    QUmlAssociation();
 
     // Owned attributes
     QList<QUmlType *> endType() const;
@@ -74,6 +73,12 @@ public:
     QList<QUmlProperty *> ownedEnd() const;
     void addOwnedEnd(QUmlProperty *ownedEnd);
     void removeOwnedEnd(QUmlProperty *ownedEnd);
+
+protected:
+    bool _isDerived;
+    QList<QUmlProperty *> _memberEnd;
+    QSet<QUmlProperty *> _navigableOwnedEnd;
+    QList<QUmlProperty *> _ownedEnd;
 };
 
 QT_END_NAMESPACE

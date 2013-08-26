@@ -39,18 +39,12 @@
 **
 ****************************************************************************/
 #include "qumlextension.h"
-#include "qumlextension_p.h"
 
 #include <QtUml/QUmlClass>
 #include <QtUml/QUmlExtensionEnd>
 #include <QtUml/QUmlProperty>
 
 QT_BEGIN_NAMESPACE
-
-QUmlExtensionPrivate::QUmlExtensionPrivate() :
-    ownedEnd(0)
-{
-}
 
 /*!
     \class QUmlExtension
@@ -60,11 +54,9 @@ QUmlExtensionPrivate::QUmlExtensionPrivate() :
     \brief An extension is used to indicate that the properties of a metaclass are extended through a stereotype, and gives the ability to flexibly add (and later remove) stereotypes to classes.
  */
 
-QUmlExtension::QUmlExtension(bool create_d_ptr) :
-    QUmlAssociation(false)
+QUmlExtension::QUmlExtension() :
+    _ownedEnd(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlExtensionPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -100,17 +92,15 @@ QUmlExtensionEnd *QUmlExtension::ownedEnd() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlExtension);
-    return d->ownedEnd;
+    return _ownedEnd;
 }
 
 void QUmlExtension::setOwnedEnd(QUmlExtensionEnd *ownedEnd)
 {
     // This is a read-write association end
 
-    QM_D(QUmlExtension);
-    if (d->ownedEnd != ownedEnd) {
-        d->ownedEnd = ownedEnd;
+    if (_ownedEnd != ownedEnd) {
+        _ownedEnd = ownedEnd;
     }
 }
 

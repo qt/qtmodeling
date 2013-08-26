@@ -39,7 +39,6 @@
 **
 ****************************************************************************/
 #include "qumlclass.h"
-#include "qumlclass_p.h"
 
 #include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlExtension>
@@ -50,12 +49,6 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlClassPrivate::QUmlClassPrivate() :
-    isAbstract(false),
-    isActive(false)
-{
-}
-
 /*!
     \class QUmlClass
 
@@ -64,12 +57,10 @@ QUmlClassPrivate::QUmlClassPrivate() :
     \brief A class may be designated as active (i.e., each of its instances having its own thread of control) or passive (i.e., each of its instances executing within the context of some other object). A class may also specify which signals the instances of this class handle.A class describes a set of objects that share the same specifications of features, constraints, and semantics.A class has the capability to have an internal structure and ports.Class has derived association that indicates how it may be extended through one or more stereotypes. Stereotype is the only kind of metaclass that cannot be extended by stereotypes.
  */
 
-QUmlClass::QUmlClass(bool create_d_ptr) :
-    QUmlEncapsulatedClassifier(false),
-    QUmlBehavioredClassifier(false)
+QUmlClass::QUmlClass() :
+    _isAbstract(false),
+    _isActive(false)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlClassPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -93,17 +84,15 @@ bool QUmlClass::isAbstract() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlClass);
-    return d->isAbstract;
+    return _isAbstract;
 }
 
 void QUmlClass::setAbstract(bool isAbstract)
 {
     // This is a read-write property
 
-    QM_D(QUmlClass);
-    if (d->isAbstract != isAbstract) {
-        d->isAbstract = isAbstract;
+    if (_isAbstract != isAbstract) {
+        _isAbstract = isAbstract;
     }
 }
 
@@ -114,17 +103,15 @@ bool QUmlClass::isActive() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlClass);
-    return d->isActive;
+    return _isActive;
 }
 
 void QUmlClass::setActive(bool isActive)
 {
     // This is a read-write property
 
-    QM_D(QUmlClass);
-    if (d->isActive != isActive) {
-        d->isActive = isActive;
+    if (_isActive != isActive) {
+        _isActive = isActive;
     }
 }
 
@@ -135,17 +122,15 @@ QList<QUmlClassifier *> QUmlClass::nestedClassifier() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlClass);
-    return d->nestedClassifier;
+    return _nestedClassifier;
 }
 
 void QUmlClass::addNestedClassifier(QUmlClassifier *nestedClassifier)
 {
     // This is a read-write association end
 
-    QM_D(QUmlClass);
-    if (!d->nestedClassifier.contains(nestedClassifier)) {
-        d->nestedClassifier.append(nestedClassifier);
+    if (!_nestedClassifier.contains(nestedClassifier)) {
+        _nestedClassifier.append(nestedClassifier);
     }
 }
 
@@ -153,9 +138,8 @@ void QUmlClass::removeNestedClassifier(QUmlClassifier *nestedClassifier)
 {
     // This is a read-write association end
 
-    QM_D(QUmlClass);
-    if (d->nestedClassifier.contains(nestedClassifier)) {
-        d->nestedClassifier.removeAll(nestedClassifier);
+    if (_nestedClassifier.contains(nestedClassifier)) {
+        _nestedClassifier.removeAll(nestedClassifier);
     }
 }
 
@@ -166,17 +150,15 @@ QList<QUmlProperty *> QUmlClass::ownedAttribute() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlClass);
-    return d->ownedAttribute;
+    return _ownedAttribute;
 }
 
 void QUmlClass::addOwnedAttribute(QUmlProperty *ownedAttribute)
 {
     // This is a read-write association end
 
-    QM_D(QUmlClass);
-    if (!d->ownedAttribute.contains(ownedAttribute)) {
-        d->ownedAttribute.append(ownedAttribute);
+    if (!_ownedAttribute.contains(ownedAttribute)) {
+        _ownedAttribute.append(ownedAttribute);
     }
 }
 
@@ -184,9 +166,8 @@ void QUmlClass::removeOwnedAttribute(QUmlProperty *ownedAttribute)
 {
     // This is a read-write association end
 
-    QM_D(QUmlClass);
-    if (d->ownedAttribute.contains(ownedAttribute)) {
-        d->ownedAttribute.removeAll(ownedAttribute);
+    if (_ownedAttribute.contains(ownedAttribute)) {
+        _ownedAttribute.removeAll(ownedAttribute);
     }
 }
 
@@ -197,17 +178,15 @@ QList<QUmlOperation *> QUmlClass::ownedOperation() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlClass);
-    return d->ownedOperation;
+    return _ownedOperation;
 }
 
 void QUmlClass::addOwnedOperation(QUmlOperation *ownedOperation)
 {
     // This is a read-write association end
 
-    QM_D(QUmlClass);
-    if (!d->ownedOperation.contains(ownedOperation)) {
-        d->ownedOperation.append(ownedOperation);
+    if (!_ownedOperation.contains(ownedOperation)) {
+        _ownedOperation.append(ownedOperation);
     }
 }
 
@@ -215,9 +194,8 @@ void QUmlClass::removeOwnedOperation(QUmlOperation *ownedOperation)
 {
     // This is a read-write association end
 
-    QM_D(QUmlClass);
-    if (d->ownedOperation.contains(ownedOperation)) {
-        d->ownedOperation.removeAll(ownedOperation);
+    if (_ownedOperation.contains(ownedOperation)) {
+        _ownedOperation.removeAll(ownedOperation);
     }
 }
 
@@ -228,17 +206,15 @@ QSet<QUmlReception *> QUmlClass::ownedReception() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlClass);
-    return d->ownedReception;
+    return _ownedReception;
 }
 
 void QUmlClass::addOwnedReception(QUmlReception *ownedReception)
 {
     // This is a read-write association end
 
-    QM_D(QUmlClass);
-    if (!d->ownedReception.contains(ownedReception)) {
-        d->ownedReception.insert(ownedReception);
+    if (!_ownedReception.contains(ownedReception)) {
+        _ownedReception.insert(ownedReception);
     }
 }
 
@@ -246,9 +222,8 @@ void QUmlClass::removeOwnedReception(QUmlReception *ownedReception)
 {
     // This is a read-write association end
 
-    QM_D(QUmlClass);
-    if (d->ownedReception.contains(ownedReception)) {
-        d->ownedReception.remove(ownedReception);
+    if (_ownedReception.contains(ownedReception)) {
+        _ownedReception.remove(ownedReception);
     }
 }
 

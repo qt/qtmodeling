@@ -39,16 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlexpansionregion.h"
-#include "qumlexpansionregion_p.h"
 
 #include <QtUml/QUmlExpansionNode>
 
 QT_BEGIN_NAMESPACE
-
-QUmlExpansionRegionPrivate::QUmlExpansionRegionPrivate() :
-    mode(QtUml::ExpansionIterative)
-{
-}
 
 /*!
     \class QUmlExpansionRegion
@@ -58,11 +52,9 @@ QUmlExpansionRegionPrivate::QUmlExpansionRegionPrivate() :
     \brief An expansion region is a structured activity region that executes multiple times corresponding to elements of an input collection.
  */
 
-QUmlExpansionRegion::QUmlExpansionRegion(bool create_d_ptr) :
-    QUmlStructuredActivityNode(false)
+QUmlExpansionRegion::QUmlExpansionRegion() :
+    _mode(QtUml::ExpansionIterative)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlExpansionRegionPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -74,17 +66,15 @@ QSet<QUmlExpansionNode *> QUmlExpansionRegion::inputElement() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlExpansionRegion);
-    return d->inputElement;
+    return _inputElement;
 }
 
 void QUmlExpansionRegion::addInputElement(QUmlExpansionNode *inputElement)
 {
     // This is a read-write association end
 
-    QM_D(QUmlExpansionRegion);
-    if (!d->inputElement.contains(inputElement)) {
-        d->inputElement.insert(inputElement);
+    if (!_inputElement.contains(inputElement)) {
+        _inputElement.insert(inputElement);
     }
 }
 
@@ -92,9 +82,8 @@ void QUmlExpansionRegion::removeInputElement(QUmlExpansionNode *inputElement)
 {
     // This is a read-write association end
 
-    QM_D(QUmlExpansionRegion);
-    if (d->inputElement.contains(inputElement)) {
-        d->inputElement.remove(inputElement);
+    if (_inputElement.contains(inputElement)) {
+        _inputElement.remove(inputElement);
     }
 }
 
@@ -105,17 +94,15 @@ QtUml::ExpansionKind QUmlExpansionRegion::mode() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlExpansionRegion);
-    return d->mode;
+    return _mode;
 }
 
 void QUmlExpansionRegion::setMode(QtUml::ExpansionKind mode)
 {
     // This is a read-write property
 
-    QM_D(QUmlExpansionRegion);
-    if (d->mode != mode) {
-        d->mode = mode;
+    if (_mode != mode) {
+        _mode = mode;
     }
 }
 
@@ -126,17 +113,15 @@ QSet<QUmlExpansionNode *> QUmlExpansionRegion::outputElement() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlExpansionRegion);
-    return d->outputElement;
+    return _outputElement;
 }
 
 void QUmlExpansionRegion::addOutputElement(QUmlExpansionNode *outputElement)
 {
     // This is a read-write association end
 
-    QM_D(QUmlExpansionRegion);
-    if (!d->outputElement.contains(outputElement)) {
-        d->outputElement.insert(outputElement);
+    if (!_outputElement.contains(outputElement)) {
+        _outputElement.insert(outputElement);
     }
 }
 
@@ -144,9 +129,8 @@ void QUmlExpansionRegion::removeOutputElement(QUmlExpansionNode *outputElement)
 {
     // This is a read-write association end
 
-    QM_D(QUmlExpansionRegion);
-    if (d->outputElement.contains(outputElement)) {
-        d->outputElement.remove(outputElement);
+    if (_outputElement.contains(outputElement)) {
+        _outputElement.remove(outputElement);
     }
 }
 

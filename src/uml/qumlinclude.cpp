@@ -39,17 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlinclude.h"
-#include "qumlinclude_p.h"
 
 #include <QtUml/QUmlUseCase>
 
 QT_BEGIN_NAMESPACE
-
-QUmlIncludePrivate::QUmlIncludePrivate() :
-    addition(0),
-    includingCase(0)
-{
-}
 
 /*!
     \class QUmlInclude
@@ -59,12 +52,10 @@ QUmlIncludePrivate::QUmlIncludePrivate() :
     \brief An include relationship defines that a use case contains the behavior defined in another use case.
  */
 
-QUmlInclude::QUmlInclude(bool create_d_ptr) :
-    QUmlDirectedRelationship(false),
-    QUmlNamedElement(false)
+QUmlInclude::QUmlInclude() :
+    _addition(0),
+    _includingCase(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlIncludePrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -76,17 +67,15 @@ QUmlUseCase *QUmlInclude::addition() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlInclude);
-    return d->addition;
+    return _addition;
 }
 
 void QUmlInclude::setAddition(QUmlUseCase *addition)
 {
     // This is a read-write association end
 
-    QM_D(QUmlInclude);
-    if (d->addition != addition) {
-        d->addition = addition;
+    if (_addition != addition) {
+        _addition = addition;
     }
 }
 
@@ -97,17 +86,15 @@ QUmlUseCase *QUmlInclude::includingCase() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlInclude);
-    return d->includingCase;
+    return _includingCase;
 }
 
 void QUmlInclude::setIncludingCase(QUmlUseCase *includingCase)
 {
     // This is a read-write association end
 
-    QM_D(QUmlInclude);
-    if (d->includingCase != includingCase) {
-        d->includingCase = includingCase;
+    if (_includingCase != includingCase) {
+        _includingCase = includingCase;
     }
 }
 

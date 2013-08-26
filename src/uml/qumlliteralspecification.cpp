@@ -39,13 +39,8 @@
 **
 ****************************************************************************/
 #include "qumlliteralspecification.h"
-#include "qumlliteralspecification_p.h"
 
 QT_BEGIN_NAMESPACE
-
-QUmlLiteralSpecificationPrivate::QUmlLiteralSpecificationPrivate()
-{
-}
 
 /*!
     \class QUmlLiteralSpecification
@@ -55,11 +50,8 @@ QUmlLiteralSpecificationPrivate::QUmlLiteralSpecificationPrivate()
     \brief A literal specification identifies a literal constant being modeled.
  */
 
-QUmlLiteralSpecification::QUmlLiteralSpecification(bool create_d_ptr) :
-    QUmlValueSpecification(false)
+QUmlLiteralSpecification::QUmlLiteralSpecification()
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlLiteralSpecificationPrivate);
 }
 
 QT_END_NAMESPACE

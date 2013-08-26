@@ -65,11 +65,10 @@ class QUmlRedefinableTemplateSignature;
 class QUmlSubstitution;
 class QUmlUseCase;
 
-class QUmlClassifierPrivate;
 class Q_UML_EXPORT QUmlClassifier : public QUmlNamespace, public QUmlType, public QUmlRedefinableElement, public QUmlTemplateableElement
 {
 public:
-    Q_DECL_HIDDEN QUmlClassifier(bool create_d_ptr = true);
+    Q_DECL_HIDDEN QUmlClassifier();
 
     // Owned attributes
     QSet<QUmlProperty *> attribute() const;
@@ -120,6 +119,22 @@ public:
     bool isTemplate() const;
     bool maySpecializeType(QUmlClassifier *c) const;
     QSet<QUmlClassifier *> parents() const;
+
+protected:
+    QSet<QUmlProperty *> _attribute;
+    QSet<QUmlCollaborationUse *> _collaborationUse;
+    QSet<QUmlFeature *> _feature;
+    QSet<QUmlGeneralization *> _generalization;
+    bool _isAbstract;
+    bool _isFinalSpecialization;
+    QUmlRedefinableTemplateSignature *_ownedTemplateSignature;
+    QSet<QUmlUseCase *> _ownedUseCase;
+    QSet<QUmlGeneralizationSet *> _powertypeExtent;
+    QSet<QUmlClassifier *> _redefinedClassifier;
+    QUmlCollaborationUse *_representation;
+    QSet<QUmlSubstitution *> _substitution;
+    QUmlClassifierTemplateParameter *_templateParameter;
+    QSet<QUmlUseCase *> _useCase;
 };
 
 QT_END_NAMESPACE

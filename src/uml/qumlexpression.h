@@ -51,11 +51,10 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlExpressionPrivate;
 class Q_UML_EXPORT QUmlExpression : public QUmlValueSpecification
 {
 public:
-    QUmlExpression(bool create_d_ptr = true);
+    QUmlExpression();
 
     // Owned attributes
     QList<QUmlValueSpecification *> operand() const;
@@ -63,6 +62,10 @@ public:
     void removeOperand(QUmlValueSpecification *operand);
     QString symbol() const;
     void setSymbol(QString symbol);
+
+protected:
+    QList<QUmlValueSpecification *> _operand;
+    QString _symbol;
 };
 
 QT_END_NAMESPACE

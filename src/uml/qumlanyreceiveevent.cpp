@@ -39,13 +39,8 @@
 **
 ****************************************************************************/
 #include "qumlanyreceiveevent.h"
-#include "qumlanyreceiveevent_p.h"
 
 QT_BEGIN_NAMESPACE
-
-QUmlAnyReceiveEventPrivate::QUmlAnyReceiveEventPrivate()
-{
-}
 
 /*!
     \class QUmlAnyReceiveEvent
@@ -55,11 +50,8 @@ QUmlAnyReceiveEventPrivate::QUmlAnyReceiveEventPrivate()
     \brief A trigger for an AnyReceiveEvent is triggered by the receipt of any message that is not explicitly handled by any related trigger.
  */
 
-QUmlAnyReceiveEvent::QUmlAnyReceiveEvent(bool create_d_ptr) :
-    QUmlMessageEvent(false)
+QUmlAnyReceiveEvent::QUmlAnyReceiveEvent()
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlAnyReceiveEventPrivate);
 }
 
 QT_END_NAMESPACE

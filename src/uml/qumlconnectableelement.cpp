@@ -39,17 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlconnectableelement.h"
-#include "qumlconnectableelement_p.h"
 
 #include <QtUml/QUmlConnectableElementTemplateParameter>
 #include <QtUml/QUmlConnectorEnd>
 
 QT_BEGIN_NAMESPACE
-
-QUmlConnectableElementPrivate::QUmlConnectableElementPrivate() :
-    templateParameter(0)
-{
-}
 
 /*!
     \class QUmlConnectableElement
@@ -59,12 +53,9 @@ QUmlConnectableElementPrivate::QUmlConnectableElementPrivate() :
     \brief ConnectableElement is an abstract metaclass representing a set of instances that play roles of a classifier. Connectable elements may be joined by attached connectors and specify configurations of linked instances to be created within an instance of the containing classifier.A connectable element may be exposed as a connectable element template parameter.
  */
 
-QUmlConnectableElement::QUmlConnectableElement(bool create_d_ptr) :
-    QUmlTypedElement(false),
-    QUmlParameterableElement(false)
+QUmlConnectableElement::QUmlConnectableElement() :
+    _templateParameter(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlConnectableElementPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -88,17 +79,15 @@ QUmlConnectableElementTemplateParameter *QUmlConnectableElement::templateParamet
 {
     // This is a read-write association end
 
-    QM_D(const QUmlConnectableElement);
-    return d->templateParameter;
+    return _templateParameter;
 }
 
 void QUmlConnectableElement::setTemplateParameter(QUmlConnectableElementTemplateParameter *templateParameter)
 {
     // This is a read-write association end
 
-    QM_D(QUmlConnectableElement);
-    if (d->templateParameter != templateParameter) {
-        d->templateParameter = templateParameter;
+    if (_templateParameter != templateParameter) {
+        _templateParameter = templateParameter;
     }
 }
 

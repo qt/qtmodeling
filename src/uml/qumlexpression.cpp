@@ -39,13 +39,8 @@
 **
 ****************************************************************************/
 #include "qumlexpression.h"
-#include "qumlexpression_p.h"
 
 QT_BEGIN_NAMESPACE
-
-QUmlExpressionPrivate::QUmlExpressionPrivate()
-{
-}
 
 /*!
     \class QUmlExpression
@@ -55,11 +50,8 @@ QUmlExpressionPrivate::QUmlExpressionPrivate()
     \brief An expression is a structured tree of symbols that denotes a (possibly empty) set of values when evaluated in a context.An expression represents a node in an expression tree, which may be non-terminal or terminal. It defines a symbol, and has a possibly empty sequence of operands which are value specifications.
  */
 
-QUmlExpression::QUmlExpression(bool create_d_ptr) :
-    QUmlValueSpecification(false)
+QUmlExpression::QUmlExpression()
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlExpressionPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -71,17 +63,15 @@ QList<QUmlValueSpecification *> QUmlExpression::operand() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlExpression);
-    return d->operand;
+    return _operand;
 }
 
 void QUmlExpression::addOperand(QUmlValueSpecification *operand)
 {
     // This is a read-write association end
 
-    QM_D(QUmlExpression);
-    if (!d->operand.contains(operand)) {
-        d->operand.append(operand);
+    if (!_operand.contains(operand)) {
+        _operand.append(operand);
     }
 }
 
@@ -89,9 +79,8 @@ void QUmlExpression::removeOperand(QUmlValueSpecification *operand)
 {
     // This is a read-write association end
 
-    QM_D(QUmlExpression);
-    if (d->operand.contains(operand)) {
-        d->operand.removeAll(operand);
+    if (_operand.contains(operand)) {
+        _operand.removeAll(operand);
     }
 }
 
@@ -102,17 +91,15 @@ QString QUmlExpression::symbol() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlExpression);
-    return d->symbol;
+    return _symbol;
 }
 
 void QUmlExpression::setSymbol(QString symbol)
 {
     // This is a read-write property
 
-    QM_D(QUmlExpression);
-    if (d->symbol != symbol) {
-        d->symbol = symbol;
+    if (_symbol != symbol) {
+        _symbol = symbol;
     }
 }
 

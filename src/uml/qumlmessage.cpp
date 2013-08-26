@@ -39,7 +39,6 @@
 **
 ****************************************************************************/
 #include "qumlmessage.h"
-#include "qumlmessage_p.h"
 
 #include <QtUml/QUmlConnector>
 #include <QtUml/QUmlInteraction>
@@ -47,16 +46,6 @@
 #include <QtUml/QUmlValueSpecification>
 
 QT_BEGIN_NAMESPACE
-
-QUmlMessagePrivate::QUmlMessagePrivate() :
-    connector(0),
-    interaction(0),
-    messageSort(QtUml::MessageSynchCall),
-    receiveEvent(0),
-    sendEvent(0),
-    signature(0)
-{
-}
 
 /*!
     \class QUmlMessage
@@ -66,11 +55,14 @@ QUmlMessagePrivate::QUmlMessagePrivate() :
     \brief A message defines a particular communication between lifelines of an interaction.
  */
 
-QUmlMessage::QUmlMessage(bool create_d_ptr) :
-    QUmlNamedElement(false)
+QUmlMessage::QUmlMessage() :
+    _connector(0),
+    _interaction(0),
+    _messageSort(QtUml::MessageSynchCall),
+    _receiveEvent(0),
+    _sendEvent(0),
+    _signature(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlMessagePrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -82,17 +74,15 @@ QList<QUmlValueSpecification *> QUmlMessage::argument() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlMessage);
-    return d->argument;
+    return _argument;
 }
 
 void QUmlMessage::addArgument(QUmlValueSpecification *argument)
 {
     // This is a read-write association end
 
-    QM_D(QUmlMessage);
-    if (!d->argument.contains(argument)) {
-        d->argument.append(argument);
+    if (!_argument.contains(argument)) {
+        _argument.append(argument);
     }
 }
 
@@ -100,9 +90,8 @@ void QUmlMessage::removeArgument(QUmlValueSpecification *argument)
 {
     // This is a read-write association end
 
-    QM_D(QUmlMessage);
-    if (d->argument.contains(argument)) {
-        d->argument.removeAll(argument);
+    if (_argument.contains(argument)) {
+        _argument.removeAll(argument);
     }
 }
 
@@ -113,17 +102,15 @@ QUmlConnector *QUmlMessage::connector() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlMessage);
-    return d->connector;
+    return _connector;
 }
 
 void QUmlMessage::setConnector(QUmlConnector *connector)
 {
     // This is a read-write association end
 
-    QM_D(QUmlMessage);
-    if (d->connector != connector) {
-        d->connector = connector;
+    if (_connector != connector) {
+        _connector = connector;
     }
 }
 
@@ -134,17 +121,15 @@ QUmlInteraction *QUmlMessage::interaction() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlMessage);
-    return d->interaction;
+    return _interaction;
 }
 
 void QUmlMessage::setInteraction(QUmlInteraction *interaction)
 {
     // This is a read-write association end
 
-    QM_D(QUmlMessage);
-    if (d->interaction != interaction) {
-        d->interaction = interaction;
+    if (_interaction != interaction) {
+        _interaction = interaction;
     }
 }
 
@@ -167,17 +152,15 @@ QtUml::MessageSort QUmlMessage::messageSort() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlMessage);
-    return d->messageSort;
+    return _messageSort;
 }
 
 void QUmlMessage::setMessageSort(QtUml::MessageSort messageSort)
 {
     // This is a read-write property
 
-    QM_D(QUmlMessage);
-    if (d->messageSort != messageSort) {
-        d->messageSort = messageSort;
+    if (_messageSort != messageSort) {
+        _messageSort = messageSort;
     }
 }
 
@@ -188,17 +171,15 @@ QUmlMessageEnd *QUmlMessage::receiveEvent() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlMessage);
-    return d->receiveEvent;
+    return _receiveEvent;
 }
 
 void QUmlMessage::setReceiveEvent(QUmlMessageEnd *receiveEvent)
 {
     // This is a read-write association end
 
-    QM_D(QUmlMessage);
-    if (d->receiveEvent != receiveEvent) {
-        d->receiveEvent = receiveEvent;
+    if (_receiveEvent != receiveEvent) {
+        _receiveEvent = receiveEvent;
     }
 }
 
@@ -209,17 +190,15 @@ QUmlMessageEnd *QUmlMessage::sendEvent() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlMessage);
-    return d->sendEvent;
+    return _sendEvent;
 }
 
 void QUmlMessage::setSendEvent(QUmlMessageEnd *sendEvent)
 {
     // This is a read-write association end
 
-    QM_D(QUmlMessage);
-    if (d->sendEvent != sendEvent) {
-        d->sendEvent = sendEvent;
+    if (_sendEvent != sendEvent) {
+        _sendEvent = sendEvent;
     }
 }
 
@@ -230,17 +209,15 @@ QUmlNamedElement *QUmlMessage::signature() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlMessage);
-    return d->signature;
+    return _signature;
 }
 
 void QUmlMessage::setSignature(QUmlNamedElement *signature)
 {
     // This is a read-write association end
 
-    QM_D(QUmlMessage);
-    if (d->signature != signature) {
-        d->signature = signature;
+    if (_signature != signature) {
+        _signature = signature;
     }
 }
 

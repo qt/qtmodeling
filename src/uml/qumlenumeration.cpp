@@ -39,15 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlenumeration.h"
-#include "qumlenumeration_p.h"
 
 #include <QtUml/QUmlEnumerationLiteral>
 
 QT_BEGIN_NAMESPACE
-
-QUmlEnumerationPrivate::QUmlEnumerationPrivate()
-{
-}
 
 /*!
     \class QUmlEnumeration
@@ -57,11 +52,8 @@ QUmlEnumerationPrivate::QUmlEnumerationPrivate()
     \brief An enumeration is a data type whose values are enumerated in the model as enumeration literals.
  */
 
-QUmlEnumeration::QUmlEnumeration(bool create_d_ptr) :
-    QUmlDataType(false)
+QUmlEnumeration::QUmlEnumeration()
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlEnumerationPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -73,17 +65,15 @@ QList<QUmlEnumerationLiteral *> QUmlEnumeration::ownedLiteral() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlEnumeration);
-    return d->ownedLiteral;
+    return _ownedLiteral;
 }
 
 void QUmlEnumeration::addOwnedLiteral(QUmlEnumerationLiteral *ownedLiteral)
 {
     // This is a read-write association end
 
-    QM_D(QUmlEnumeration);
-    if (!d->ownedLiteral.contains(ownedLiteral)) {
-        d->ownedLiteral.append(ownedLiteral);
+    if (!_ownedLiteral.contains(ownedLiteral)) {
+        _ownedLiteral.append(ownedLiteral);
     }
 }
 
@@ -91,9 +81,8 @@ void QUmlEnumeration::removeOwnedLiteral(QUmlEnumerationLiteral *ownedLiteral)
 {
     // This is a read-write association end
 
-    QM_D(QUmlEnumeration);
-    if (d->ownedLiteral.contains(ownedLiteral)) {
-        d->ownedLiteral.removeAll(ownedLiteral);
+    if (_ownedLiteral.contains(ownedLiteral)) {
+        _ownedLiteral.removeAll(ownedLiteral);
     }
 }
 

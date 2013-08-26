@@ -51,11 +51,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlFunctionBehaviorPrivate;
 class Q_UML_EXPORT QUmlFunctionBehavior : public QUmlOpaqueBehavior
 {
 public:
-    QUmlFunctionBehavior(bool create_d_ptr = true);
+    QUmlFunctionBehavior();
+
+protected:
 };
 
 QT_END_NAMESPACE

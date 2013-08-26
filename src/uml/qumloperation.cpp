@@ -39,7 +39,6 @@
 **
 ****************************************************************************/
 #include "qumloperation.h"
-#include "qumloperation_p.h"
 
 #include <QtUml/QUmlClass>
 #include <QtUml/QUmlConstraint>
@@ -51,16 +50,6 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlOperationPrivate::QUmlOperationPrivate() :
-    bodyCondition(0),
-    class_(0),
-    datatype(0),
-    interface_(0),
-    isQuery(false),
-    templateParameter(0)
-{
-}
-
 /*!
     \class QUmlOperation
 
@@ -69,13 +58,14 @@ QUmlOperationPrivate::QUmlOperationPrivate() :
     \brief An operation is a behavioral feature of a classifier that specifies the name, type, parameters, and constraints for invoking an associated behavior.An operation may invoke both the execution of method behaviors as well as other behavioral responses.Operation specializes TemplateableElement in order to support specification of template operations and bound operations. Operation specializes ParameterableElement to specify that an operation can be exposed as a formal template parameter, and provided as an actual parameter in a binding of a template.
  */
 
-QUmlOperation::QUmlOperation(bool create_d_ptr) :
-    QUmlTemplateableElement(false),
-    QUmlBehavioralFeature(false),
-    QUmlParameterableElement(false)
+QUmlOperation::QUmlOperation() :
+    _bodyCondition(0),
+    _class_(0),
+    _datatype(0),
+    _interface_(0),
+    _isQuery(false),
+    _templateParameter(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlOperationPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -87,17 +77,15 @@ QUmlConstraint *QUmlOperation::bodyCondition() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlOperation);
-    return d->bodyCondition;
+    return _bodyCondition;
 }
 
 void QUmlOperation::setBodyCondition(QUmlConstraint *bodyCondition)
 {
     // This is a read-write association end
 
-    QM_D(QUmlOperation);
-    if (d->bodyCondition != bodyCondition) {
-        d->bodyCondition = bodyCondition;
+    if (_bodyCondition != bodyCondition) {
+        _bodyCondition = bodyCondition;
     }
 }
 
@@ -108,17 +96,15 @@ QUmlClass *QUmlOperation::class_() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlOperation);
-    return d->class_;
+    return _class_;
 }
 
 void QUmlOperation::setClass(QUmlClass *class_)
 {
     // This is a read-write association end
 
-    QM_D(QUmlOperation);
-    if (d->class_ != class_) {
-        d->class_ = class_;
+    if (_class_ != class_) {
+        _class_ = class_;
     }
 }
 
@@ -129,17 +115,15 @@ QUmlDataType *QUmlOperation::datatype() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlOperation);
-    return d->datatype;
+    return _datatype;
 }
 
 void QUmlOperation::setDatatype(QUmlDataType *datatype)
 {
     // This is a read-write association end
 
-    QM_D(QUmlOperation);
-    if (d->datatype != datatype) {
-        d->datatype = datatype;
+    if (_datatype != datatype) {
+        _datatype = datatype;
     }
 }
 
@@ -150,17 +134,15 @@ QUmlInterface *QUmlOperation::interface_() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlOperation);
-    return d->interface_;
+    return _interface_;
 }
 
 void QUmlOperation::setInterface(QUmlInterface *interface_)
 {
     // This is a read-write association end
 
-    QM_D(QUmlOperation);
-    if (d->interface_ != interface_) {
-        d->interface_ = interface_;
+    if (_interface_ != interface_) {
+        _interface_ = interface_;
     }
 }
 
@@ -183,17 +165,15 @@ bool QUmlOperation::isQuery() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlOperation);
-    return d->isQuery;
+    return _isQuery;
 }
 
 void QUmlOperation::setQuery(bool isQuery)
 {
     // This is a read-write property
 
-    QM_D(QUmlOperation);
-    if (d->isQuery != isQuery) {
-        d->isQuery = isQuery;
+    if (_isQuery != isQuery) {
+        _isQuery = isQuery;
     }
 }
 
@@ -228,17 +208,15 @@ QList<QUmlParameter *> QUmlOperation::ownedParameter() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlOperation);
-    return d->ownedParameter;
+    return _ownedParameter;
 }
 
 void QUmlOperation::addOwnedParameter(QUmlParameter *ownedParameter)
 {
     // This is a read-write association end
 
-    QM_D(QUmlOperation);
-    if (!d->ownedParameter.contains(ownedParameter)) {
-        d->ownedParameter.append(ownedParameter);
+    if (!_ownedParameter.contains(ownedParameter)) {
+        _ownedParameter.append(ownedParameter);
     }
 }
 
@@ -246,9 +224,8 @@ void QUmlOperation::removeOwnedParameter(QUmlParameter *ownedParameter)
 {
     // This is a read-write association end
 
-    QM_D(QUmlOperation);
-    if (d->ownedParameter.contains(ownedParameter)) {
-        d->ownedParameter.removeAll(ownedParameter);
+    if (_ownedParameter.contains(ownedParameter)) {
+        _ownedParameter.removeAll(ownedParameter);
     }
 }
 
@@ -259,17 +236,15 @@ QSet<QUmlConstraint *> QUmlOperation::postcondition() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlOperation);
-    return d->postcondition;
+    return _postcondition;
 }
 
 void QUmlOperation::addPostcondition(QUmlConstraint *postcondition)
 {
     // This is a read-write association end
 
-    QM_D(QUmlOperation);
-    if (!d->postcondition.contains(postcondition)) {
-        d->postcondition.insert(postcondition);
+    if (!_postcondition.contains(postcondition)) {
+        _postcondition.insert(postcondition);
     }
 }
 
@@ -277,9 +252,8 @@ void QUmlOperation::removePostcondition(QUmlConstraint *postcondition)
 {
     // This is a read-write association end
 
-    QM_D(QUmlOperation);
-    if (d->postcondition.contains(postcondition)) {
-        d->postcondition.remove(postcondition);
+    if (_postcondition.contains(postcondition)) {
+        _postcondition.remove(postcondition);
     }
 }
 
@@ -290,17 +264,15 @@ QSet<QUmlConstraint *> QUmlOperation::precondition() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlOperation);
-    return d->precondition;
+    return _precondition;
 }
 
 void QUmlOperation::addPrecondition(QUmlConstraint *precondition)
 {
     // This is a read-write association end
 
-    QM_D(QUmlOperation);
-    if (!d->precondition.contains(precondition)) {
-        d->precondition.insert(precondition);
+    if (!_precondition.contains(precondition)) {
+        _precondition.insert(precondition);
     }
 }
 
@@ -308,9 +280,8 @@ void QUmlOperation::removePrecondition(QUmlConstraint *precondition)
 {
     // This is a read-write association end
 
-    QM_D(QUmlOperation);
-    if (d->precondition.contains(precondition)) {
-        d->precondition.remove(precondition);
+    if (_precondition.contains(precondition)) {
+        _precondition.remove(precondition);
     }
 }
 
@@ -321,17 +292,15 @@ QSet<QUmlType *> QUmlOperation::raisedException() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlOperation);
-    return d->raisedException;
+    return _raisedException;
 }
 
 void QUmlOperation::addRaisedException(QUmlType *raisedException)
 {
     // This is a read-write association end
 
-    QM_D(QUmlOperation);
-    if (!d->raisedException.contains(raisedException)) {
-        d->raisedException.insert(raisedException);
+    if (!_raisedException.contains(raisedException)) {
+        _raisedException.insert(raisedException);
     }
 }
 
@@ -339,9 +308,8 @@ void QUmlOperation::removeRaisedException(QUmlType *raisedException)
 {
     // This is a read-write association end
 
-    QM_D(QUmlOperation);
-    if (d->raisedException.contains(raisedException)) {
-        d->raisedException.remove(raisedException);
+    if (_raisedException.contains(raisedException)) {
+        _raisedException.remove(raisedException);
     }
 }
 
@@ -352,17 +320,15 @@ QSet<QUmlOperation *> QUmlOperation::redefinedOperation() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlOperation);
-    return d->redefinedOperation;
+    return _redefinedOperation;
 }
 
 void QUmlOperation::addRedefinedOperation(QUmlOperation *redefinedOperation)
 {
     // This is a read-write association end
 
-    QM_D(QUmlOperation);
-    if (!d->redefinedOperation.contains(redefinedOperation)) {
-        d->redefinedOperation.insert(redefinedOperation);
+    if (!_redefinedOperation.contains(redefinedOperation)) {
+        _redefinedOperation.insert(redefinedOperation);
     }
 }
 
@@ -370,9 +336,8 @@ void QUmlOperation::removeRedefinedOperation(QUmlOperation *redefinedOperation)
 {
     // This is a read-write association end
 
-    QM_D(QUmlOperation);
-    if (d->redefinedOperation.contains(redefinedOperation)) {
-        d->redefinedOperation.remove(redefinedOperation);
+    if (_redefinedOperation.contains(redefinedOperation)) {
+        _redefinedOperation.remove(redefinedOperation);
     }
 }
 
@@ -383,17 +348,15 @@ QUmlOperationTemplateParameter *QUmlOperation::templateParameter() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlOperation);
-    return d->templateParameter;
+    return _templateParameter;
 }
 
 void QUmlOperation::setTemplateParameter(QUmlOperationTemplateParameter *templateParameter)
 {
     // This is a read-write association end
 
-    QM_D(QUmlOperation);
-    if (d->templateParameter != templateParameter) {
-        d->templateParameter = templateParameter;
+    if (_templateParameter != templateParameter) {
+        _templateParameter = templateParameter;
     }
 }
 

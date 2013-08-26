@@ -39,19 +39,12 @@
 **
 ****************************************************************************/
 #include "qumlvariable.h"
-#include "qumlvariable_p.h"
 
 #include <QtUml/QUmlAction>
 #include <QtUml/QUmlActivity>
 #include <QtUml/QUmlStructuredActivityNode>
 
 QT_BEGIN_NAMESPACE
-
-QUmlVariablePrivate::QUmlVariablePrivate() :
-    activityScope(0),
-    scope(0)
-{
-}
 
 /*!
     \class QUmlVariable
@@ -61,12 +54,10 @@ QUmlVariablePrivate::QUmlVariablePrivate() :
     \brief A variable is considered a connectable element.Variables are elements for passing data between actions indirectly. A local variable stores values shared by the actions within a structured activity group but not accessible outside it. The output of an action may be written to a variable and read for the input to a subsequent action, which is effectively an indirect data flow path. Because there is no predefined relationship between actions that read and write variables, these actions must be sequenced by control flows to prevent race conditions that may occur between actions that read or write the same variable.
  */
 
-QUmlVariable::QUmlVariable(bool create_d_ptr) :
-    QUmlMultiplicityElement(false),
-    QUmlConnectableElement(false)
+QUmlVariable::QUmlVariable() :
+    _activityScope(0),
+    _scope(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlVariablePrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -78,17 +69,15 @@ QUmlActivity *QUmlVariable::activityScope() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlVariable);
-    return d->activityScope;
+    return _activityScope;
 }
 
 void QUmlVariable::setActivityScope(QUmlActivity *activityScope)
 {
     // This is a read-write association end
 
-    QM_D(QUmlVariable);
-    if (d->activityScope != activityScope) {
-        d->activityScope = activityScope;
+    if (_activityScope != activityScope) {
+        _activityScope = activityScope;
     }
 }
 
@@ -99,17 +88,15 @@ QUmlStructuredActivityNode *QUmlVariable::scope() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlVariable);
-    return d->scope;
+    return _scope;
 }
 
 void QUmlVariable::setScope(QUmlStructuredActivityNode *scope)
 {
     // This is a read-write association end
 
-    QM_D(QUmlVariable);
-    if (d->scope != scope) {
-        d->scope = scope;
+    if (_scope != scope) {
+        _scope = scope;
     }
 }
 

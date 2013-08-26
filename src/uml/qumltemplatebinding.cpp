@@ -39,19 +39,12 @@
 **
 ****************************************************************************/
 #include "qumltemplatebinding.h"
-#include "qumltemplatebinding_p.h"
 
 #include <QtUml/QUmlTemplateableElement>
 #include <QtUml/QUmlTemplateParameterSubstitution>
 #include <QtUml/QUmlTemplateSignature>
 
 QT_BEGIN_NAMESPACE
-
-QUmlTemplateBindingPrivate::QUmlTemplateBindingPrivate() :
-    boundElement(0),
-    signature(0)
-{
-}
 
 /*!
     \class QUmlTemplateBinding
@@ -61,11 +54,10 @@ QUmlTemplateBindingPrivate::QUmlTemplateBindingPrivate() :
     \brief A template binding represents a relationship between a templateable element and a template. A template binding specifies the substitutions of actual parameters for the formal parameters of the template.
  */
 
-QUmlTemplateBinding::QUmlTemplateBinding(bool create_d_ptr) :
-    QUmlDirectedRelationship(false)
+QUmlTemplateBinding::QUmlTemplateBinding() :
+    _boundElement(0),
+    _signature(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlTemplateBindingPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -77,17 +69,15 @@ QUmlTemplateableElement *QUmlTemplateBinding::boundElement() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlTemplateBinding);
-    return d->boundElement;
+    return _boundElement;
 }
 
 void QUmlTemplateBinding::setBoundElement(QUmlTemplateableElement *boundElement)
 {
     // This is a read-write association end
 
-    QM_D(QUmlTemplateBinding);
-    if (d->boundElement != boundElement) {
-        d->boundElement = boundElement;
+    if (_boundElement != boundElement) {
+        _boundElement = boundElement;
     }
 }
 
@@ -98,17 +88,15 @@ QSet<QUmlTemplateParameterSubstitution *> QUmlTemplateBinding::parameterSubstitu
 {
     // This is a read-write association end
 
-    QM_D(const QUmlTemplateBinding);
-    return d->parameterSubstitution;
+    return _parameterSubstitution;
 }
 
 void QUmlTemplateBinding::addParameterSubstitution(QUmlTemplateParameterSubstitution *parameterSubstitution)
 {
     // This is a read-write association end
 
-    QM_D(QUmlTemplateBinding);
-    if (!d->parameterSubstitution.contains(parameterSubstitution)) {
-        d->parameterSubstitution.insert(parameterSubstitution);
+    if (!_parameterSubstitution.contains(parameterSubstitution)) {
+        _parameterSubstitution.insert(parameterSubstitution);
     }
 }
 
@@ -116,9 +104,8 @@ void QUmlTemplateBinding::removeParameterSubstitution(QUmlTemplateParameterSubst
 {
     // This is a read-write association end
 
-    QM_D(QUmlTemplateBinding);
-    if (d->parameterSubstitution.contains(parameterSubstitution)) {
-        d->parameterSubstitution.remove(parameterSubstitution);
+    if (_parameterSubstitution.contains(parameterSubstitution)) {
+        _parameterSubstitution.remove(parameterSubstitution);
     }
 }
 
@@ -129,17 +116,15 @@ QUmlTemplateSignature *QUmlTemplateBinding::signature() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlTemplateBinding);
-    return d->signature;
+    return _signature;
 }
 
 void QUmlTemplateBinding::setSignature(QUmlTemplateSignature *signature)
 {
     // This is a read-write association end
 
-    QM_D(QUmlTemplateBinding);
-    if (d->signature != signature) {
-        d->signature = signature;
+    if (_signature != signature) {
+        _signature = signature;
     }
 }
 

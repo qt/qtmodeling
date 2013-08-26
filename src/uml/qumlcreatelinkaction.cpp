@@ -39,15 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlcreatelinkaction.h"
-#include "qumlcreatelinkaction_p.h"
 
 #include <QtUml/QUmlLinkEndCreationData>
 
 QT_BEGIN_NAMESPACE
-
-QUmlCreateLinkActionPrivate::QUmlCreateLinkActionPrivate()
-{
-}
 
 /*!
     \class QUmlCreateLinkAction
@@ -57,11 +52,8 @@ QUmlCreateLinkActionPrivate::QUmlCreateLinkActionPrivate()
     \brief A create link action is a write link action for creating links.
  */
 
-QUmlCreateLinkAction::QUmlCreateLinkAction(bool create_d_ptr) :
-    QUmlWriteLinkAction(false)
+QUmlCreateLinkAction::QUmlCreateLinkAction()
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlCreateLinkActionPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -73,17 +65,15 @@ QSet<QUmlLinkEndCreationData *> QUmlCreateLinkAction::endData() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlCreateLinkAction);
-    return d->endData;
+    return _endData;
 }
 
 void QUmlCreateLinkAction::addEndData(QUmlLinkEndCreationData *endData)
 {
     // This is a read-write association end
 
-    QM_D(QUmlCreateLinkAction);
-    if (!d->endData.contains(endData)) {
-        d->endData.insert(endData);
+    if (!_endData.contains(endData)) {
+        _endData.insert(endData);
     }
 }
 
@@ -91,9 +81,8 @@ void QUmlCreateLinkAction::removeEndData(QUmlLinkEndCreationData *endData)
 {
     // This is a read-write association end
 
-    QM_D(QUmlCreateLinkAction);
-    if (d->endData.contains(endData)) {
-        d->endData.remove(endData);
+    if (_endData.contains(endData)) {
+        _endData.remove(endData);
     }
 }
 

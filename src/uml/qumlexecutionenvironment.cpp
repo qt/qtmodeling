@@ -39,13 +39,8 @@
 **
 ****************************************************************************/
 #include "qumlexecutionenvironment.h"
-#include "qumlexecutionenvironment_p.h"
 
 QT_BEGIN_NAMESPACE
-
-QUmlExecutionEnvironmentPrivate::QUmlExecutionEnvironmentPrivate()
-{
-}
 
 /*!
     \class QUmlExecutionEnvironment
@@ -55,11 +50,8 @@ QUmlExecutionEnvironmentPrivate::QUmlExecutionEnvironmentPrivate()
     \brief An execution environment is a node that offers an execution environment for specific types of components that are deployed on it in the form of executable artifacts.
  */
 
-QUmlExecutionEnvironment::QUmlExecutionEnvironment(bool create_d_ptr) :
-    QUmlNode(false)
+QUmlExecutionEnvironment::QUmlExecutionEnvironment()
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlExecutionEnvironmentPrivate);
 }
 
 QT_END_NAMESPACE

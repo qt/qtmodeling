@@ -39,16 +39,10 @@
 **
 ****************************************************************************/
 #include "qumldurationobservation.h"
-#include "qumldurationobservation_p.h"
 
 #include <QtUml/QUmlNamedElement>
 
 QT_BEGIN_NAMESPACE
-
-QUmlDurationObservationPrivate::QUmlDurationObservationPrivate() :
-    event(0)
-{
-}
 
 /*!
     \class QUmlDurationObservation
@@ -58,11 +52,9 @@ QUmlDurationObservationPrivate::QUmlDurationObservationPrivate() :
     \brief A duration observation is a reference to a duration during an execution. It points out the element(s) in the model to observe and whether the observations are when this model element is entered or when it is exited.
  */
 
-QUmlDurationObservation::QUmlDurationObservation(bool create_d_ptr) :
-    QUmlObservation(false)
+QUmlDurationObservation::QUmlDurationObservation() :
+    _event(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlDurationObservationPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -74,17 +66,15 @@ QUmlNamedElement *QUmlDurationObservation::event() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlDurationObservation);
-    return d->event;
+    return _event;
 }
 
 void QUmlDurationObservation::setEvent(QUmlNamedElement *event)
 {
     // This is a read-write association end
 
-    QM_D(QUmlDurationObservation);
-    if (d->event != event) {
-        d->event = event;
+    if (_event != event) {
+        _event = event;
     }
 }
 
@@ -95,17 +85,15 @@ bool QUmlDurationObservation::firstEvent() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlDurationObservation);
-    return d->firstEvent;
+    return _firstEvent;
 }
 
 void QUmlDurationObservation::setFirstEvent(bool firstEvent)
 {
     // This is a read-write property
 
-    QM_D(QUmlDurationObservation);
-    if (d->firstEvent != firstEvent) {
-        d->firstEvent = firstEvent;
+    if (_firstEvent != firstEvent) {
+        _firstEvent = firstEvent;
     }
 }
 

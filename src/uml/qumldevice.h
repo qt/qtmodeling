@@ -51,11 +51,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlDevicePrivate;
 class Q_UML_EXPORT QUmlDevice : public QUmlNode
 {
 public:
-    QUmlDevice(bool create_d_ptr = true);
+    QUmlDevice();
+
+protected:
 };
 
 QT_END_NAMESPACE

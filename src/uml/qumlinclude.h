@@ -54,17 +54,20 @@ QT_MODULE(QtUml)
 
 class QUmlUseCase;
 
-class QUmlIncludePrivate;
 class Q_UML_EXPORT QUmlInclude : public QUmlDirectedRelationship, public QUmlNamedElement
 {
 public:
-    QUmlInclude(bool create_d_ptr = true);
+    QUmlInclude();
 
     // Owned attributes
     QUmlUseCase *addition() const;
     void setAddition(QUmlUseCase *addition);
     QUmlUseCase *includingCase() const;
     void setIncludingCase(QUmlUseCase *includingCase);
+
+protected:
+    QUmlUseCase *_addition;
+    QUmlUseCase *_includingCase;
 };
 
 QT_END_NAMESPACE

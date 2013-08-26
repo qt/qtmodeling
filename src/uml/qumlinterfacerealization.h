@@ -54,17 +54,20 @@ QT_MODULE(QtUml)
 class QUmlBehavioredClassifier;
 class QUmlInterface;
 
-class QUmlInterfaceRealizationPrivate;
 class Q_UML_EXPORT QUmlInterfaceRealization : public QUmlRealization
 {
 public:
-    QUmlInterfaceRealization(bool create_d_ptr = true);
+    QUmlInterfaceRealization();
 
     // Owned attributes
     QUmlInterface *contract() const;
     void setContract(QUmlInterface *contract);
     QUmlBehavioredClassifier *implementingClassifier() const;
     void setImplementingClassifier(QUmlBehavioredClassifier *implementingClassifier);
+
+protected:
+    QUmlInterface *_contract;
+    QUmlBehavioredClassifier *_implementingClassifier;
 };
 
 QT_END_NAMESPACE

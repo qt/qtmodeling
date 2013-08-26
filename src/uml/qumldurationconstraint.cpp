@@ -39,16 +39,10 @@
 **
 ****************************************************************************/
 #include "qumldurationconstraint.h"
-#include "qumldurationconstraint_p.h"
 
 #include <QtUml/QUmlDurationInterval>
 
 QT_BEGIN_NAMESPACE
-
-QUmlDurationConstraintPrivate::QUmlDurationConstraintPrivate() :
-    specification(0)
-{
-}
 
 /*!
     \class QUmlDurationConstraint
@@ -58,11 +52,9 @@ QUmlDurationConstraintPrivate::QUmlDurationConstraintPrivate() :
     \brief A duration constraint is a constraint that refers to a duration interval.
  */
 
-QUmlDurationConstraint::QUmlDurationConstraint(bool create_d_ptr) :
-    QUmlIntervalConstraint(false)
+QUmlDurationConstraint::QUmlDurationConstraint() :
+    _specification(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlDurationConstraintPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -74,17 +66,15 @@ bool QUmlDurationConstraint::firstEvent() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlDurationConstraint);
-    return d->firstEvent;
+    return _firstEvent;
 }
 
 void QUmlDurationConstraint::setFirstEvent(bool firstEvent)
 {
     // This is a read-write property
 
-    QM_D(QUmlDurationConstraint);
-    if (d->firstEvent != firstEvent) {
-        d->firstEvent = firstEvent;
+    if (_firstEvent != firstEvent) {
+        _firstEvent = firstEvent;
     }
 }
 
@@ -95,17 +85,15 @@ QUmlDurationInterval *QUmlDurationConstraint::specification() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlDurationConstraint);
-    return d->specification;
+    return _specification;
 }
 
 void QUmlDurationConstraint::setSpecification(QUmlDurationInterval *specification)
 {
     // This is a read-write association end
 
-    QM_D(QUmlDurationConstraint);
-    if (d->specification != specification) {
-        d->specification = specification;
+    if (_specification != specification) {
+        _specification = specification;
     }
 }
 

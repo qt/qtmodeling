@@ -53,17 +53,20 @@ QT_MODULE(QtUml)
 
 class QUmlValueSpecification;
 
-class QUmlInteractionConstraintPrivate;
 class Q_UML_EXPORT QUmlInteractionConstraint : public QUmlConstraint
 {
 public:
-    QUmlInteractionConstraint(bool create_d_ptr = true);
+    QUmlInteractionConstraint();
 
     // Owned attributes
     QUmlValueSpecification *maxint() const;
     void setMaxint(QUmlValueSpecification *maxint);
     QUmlValueSpecification *minint() const;
     void setMinint(QUmlValueSpecification *minint);
+
+protected:
+    QUmlValueSpecification *_maxint;
+    QUmlValueSpecification *_minint;
 };
 
 QT_END_NAMESPACE

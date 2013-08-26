@@ -39,7 +39,6 @@
 **
 ****************************************************************************/
 #include "qumlactivityedge.h"
-#include "qumlactivityedge_p.h"
 
 #include <QtUml/QUmlActivity>
 #include <QtUml/QUmlActivityGroup>
@@ -51,17 +50,6 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlActivityEdgePrivate::QUmlActivityEdgePrivate() :
-    activity(0),
-    guard(0),
-    inStructuredNode(0),
-    interrupts(0),
-    source(0),
-    target(0),
-    weight(0)
-{
-}
-
 /*!
     \class QUmlActivityEdge
 
@@ -70,11 +58,15 @@ QUmlActivityEdgePrivate::QUmlActivityEdgePrivate() :
     \brief Activity edges can be contained in interruptible regions.An activity edge is an abstract class for directed connections between two activity nodes.
  */
 
-QUmlActivityEdge::QUmlActivityEdge(bool create_d_ptr) :
-    QUmlRedefinableElement(false)
+QUmlActivityEdge::QUmlActivityEdge() :
+    _activity(0),
+    _guard(0),
+    _inStructuredNode(0),
+    _interrupts(0),
+    _source(0),
+    _target(0),
+    _weight(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlActivityEdgePrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -86,17 +78,15 @@ QUmlActivity *QUmlActivityEdge::activity() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlActivityEdge);
-    return d->activity;
+    return _activity;
 }
 
 void QUmlActivityEdge::setActivity(QUmlActivity *activity)
 {
     // This is a read-write association end
 
-    QM_D(QUmlActivityEdge);
-    if (d->activity != activity) {
-        d->activity = activity;
+    if (_activity != activity) {
+        _activity = activity;
     }
 }
 
@@ -107,17 +97,15 @@ QUmlValueSpecification *QUmlActivityEdge::guard() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlActivityEdge);
-    return d->guard;
+    return _guard;
 }
 
 void QUmlActivityEdge::setGuard(QUmlValueSpecification *guard)
 {
     // This is a read-write association end
 
-    QM_D(QUmlActivityEdge);
-    if (d->guard != guard) {
-        d->guard = guard;
+    if (_guard != guard) {
+        _guard = guard;
     }
 }
 
@@ -128,8 +116,7 @@ QSet<QUmlActivityGroup *> QUmlActivityEdge::inGroup() const
 {
     // This is a read-only derived union association end
 
-    QM_D(const QUmlActivityEdge);
-    return d->inGroup;
+    return _inGroup;
 }
 
 /*!
@@ -139,17 +126,15 @@ QSet<QUmlActivityPartition *> QUmlActivityEdge::inPartition() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlActivityEdge);
-    return d->inPartition;
+    return _inPartition;
 }
 
 void QUmlActivityEdge::addInPartition(QUmlActivityPartition *inPartition)
 {
     // This is a read-write association end
 
-    QM_D(QUmlActivityEdge);
-    if (!d->inPartition.contains(inPartition)) {
-        d->inPartition.insert(inPartition);
+    if (!_inPartition.contains(inPartition)) {
+        _inPartition.insert(inPartition);
     }
 }
 
@@ -157,9 +142,8 @@ void QUmlActivityEdge::removeInPartition(QUmlActivityPartition *inPartition)
 {
     // This is a read-write association end
 
-    QM_D(QUmlActivityEdge);
-    if (d->inPartition.contains(inPartition)) {
-        d->inPartition.remove(inPartition);
+    if (_inPartition.contains(inPartition)) {
+        _inPartition.remove(inPartition);
     }
 }
 
@@ -170,17 +154,15 @@ QUmlStructuredActivityNode *QUmlActivityEdge::inStructuredNode() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlActivityEdge);
-    return d->inStructuredNode;
+    return _inStructuredNode;
 }
 
 void QUmlActivityEdge::setInStructuredNode(QUmlStructuredActivityNode *inStructuredNode)
 {
     // This is a read-write association end
 
-    QM_D(QUmlActivityEdge);
-    if (d->inStructuredNode != inStructuredNode) {
-        d->inStructuredNode = inStructuredNode;
+    if (_inStructuredNode != inStructuredNode) {
+        _inStructuredNode = inStructuredNode;
     }
 }
 
@@ -191,17 +173,15 @@ QUmlInterruptibleActivityRegion *QUmlActivityEdge::interrupts() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlActivityEdge);
-    return d->interrupts;
+    return _interrupts;
 }
 
 void QUmlActivityEdge::setInterrupts(QUmlInterruptibleActivityRegion *interrupts)
 {
     // This is a read-write association end
 
-    QM_D(QUmlActivityEdge);
-    if (d->interrupts != interrupts) {
-        d->interrupts = interrupts;
+    if (_interrupts != interrupts) {
+        _interrupts = interrupts;
     }
 }
 
@@ -212,17 +192,15 @@ QSet<QUmlActivityEdge *> QUmlActivityEdge::redefinedEdge() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlActivityEdge);
-    return d->redefinedEdge;
+    return _redefinedEdge;
 }
 
 void QUmlActivityEdge::addRedefinedEdge(QUmlActivityEdge *redefinedEdge)
 {
     // This is a read-write association end
 
-    QM_D(QUmlActivityEdge);
-    if (!d->redefinedEdge.contains(redefinedEdge)) {
-        d->redefinedEdge.insert(redefinedEdge);
+    if (!_redefinedEdge.contains(redefinedEdge)) {
+        _redefinedEdge.insert(redefinedEdge);
     }
 }
 
@@ -230,9 +208,8 @@ void QUmlActivityEdge::removeRedefinedEdge(QUmlActivityEdge *redefinedEdge)
 {
     // This is a read-write association end
 
-    QM_D(QUmlActivityEdge);
-    if (d->redefinedEdge.contains(redefinedEdge)) {
-        d->redefinedEdge.remove(redefinedEdge);
+    if (_redefinedEdge.contains(redefinedEdge)) {
+        _redefinedEdge.remove(redefinedEdge);
     }
 }
 
@@ -243,17 +220,15 @@ QUmlActivityNode *QUmlActivityEdge::source() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlActivityEdge);
-    return d->source;
+    return _source;
 }
 
 void QUmlActivityEdge::setSource(QUmlActivityNode *source)
 {
     // This is a read-write association end
 
-    QM_D(QUmlActivityEdge);
-    if (d->source != source) {
-        d->source = source;
+    if (_source != source) {
+        _source = source;
     }
 }
 
@@ -264,17 +239,15 @@ QUmlActivityNode *QUmlActivityEdge::target() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlActivityEdge);
-    return d->target;
+    return _target;
 }
 
 void QUmlActivityEdge::setTarget(QUmlActivityNode *target)
 {
     // This is a read-write association end
 
-    QM_D(QUmlActivityEdge);
-    if (d->target != target) {
-        d->target = target;
+    if (_target != target) {
+        _target = target;
     }
 }
 
@@ -285,17 +258,15 @@ QUmlValueSpecification *QUmlActivityEdge::weight() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlActivityEdge);
-    return d->weight;
+    return _weight;
 }
 
 void QUmlActivityEdge::setWeight(QUmlValueSpecification *weight)
 {
     // This is a read-write association end
 
-    QM_D(QUmlActivityEdge);
-    if (d->weight != weight) {
-        d->weight = weight;
+    if (_weight != weight) {
+        _weight = weight;
     }
 }
 

@@ -54,11 +54,10 @@ QT_MODULE(QtUml)
 
 class QUmlInteractionConstraint;
 
-class QUmlInteractionOperandPrivate;
 class Q_UML_EXPORT QUmlInteractionOperand : public QUmlInteractionFragment, public QUmlNamespace
 {
 public:
-    QUmlInteractionOperand(bool create_d_ptr = true);
+    QUmlInteractionOperand();
 
     // Owned attributes
     QList<QUmlInteractionFragment *> fragment() const;
@@ -66,6 +65,10 @@ public:
     void removeFragment(QUmlInteractionFragment *fragment);
     QUmlInteractionConstraint *guard() const;
     void setGuard(QUmlInteractionConstraint *guard);
+
+protected:
+    QList<QUmlInteractionFragment *> _fragment;
+    QUmlInteractionConstraint *_guard;
 };
 
 QT_END_NAMESPACE

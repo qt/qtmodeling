@@ -55,11 +55,10 @@ class QUmlRegion;
 class QUmlStateMachine;
 class QUmlTransition;
 
-class QUmlVertexPrivate;
 class Q_UML_EXPORT QUmlVertex : public virtual QUmlNamedElement
 {
 public:
-    Q_DECL_HIDDEN QUmlVertex(bool create_d_ptr = true);
+    Q_DECL_HIDDEN QUmlVertex();
 
     // Owned attributes
     QUmlRegion *container() const;
@@ -69,6 +68,9 @@ public:
 
     // Operations
     QUmlStateMachine *containingStateMachine() const;
+
+protected:
+    QUmlRegion *_container;
 };
 
 QT_END_NAMESPACE

@@ -53,15 +53,17 @@ QT_MODULE(QtUml)
 
 class QUmlOutputPin;
 
-class QUmlReadSelfActionPrivate;
 class Q_UML_EXPORT QUmlReadSelfAction : public QUmlAction
 {
 public:
-    QUmlReadSelfAction(bool create_d_ptr = true);
+    QUmlReadSelfAction();
 
     // Owned attributes
     QUmlOutputPin *result() const;
     void setResult(QUmlOutputPin *result);
+
+protected:
+    QUmlOutputPin *_result;
 };
 
 QT_END_NAMESPACE

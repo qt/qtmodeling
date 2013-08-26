@@ -53,15 +53,17 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlPackageableElementPrivate;
 class Q_UML_EXPORT QUmlPackageableElement : public virtual QUmlNamedElement, public QUmlParameterableElement
 {
 public:
-    Q_DECL_HIDDEN QUmlPackageableElement(bool create_d_ptr = true);
+    Q_DECL_HIDDEN QUmlPackageableElement();
 
     // Owned attributes
     QtUml::VisibilityKind visibility() const;
     void setVisibility(QtUml::VisibilityKind visibility);
+
+protected:
+    QtUml::VisibilityKind _visibility;
 };
 
 QT_END_NAMESPACE

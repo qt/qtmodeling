@@ -39,16 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlelement.h"
-#include "qumlelement_p.h"
 
 #include <QtUml/QUmlComment>
 
 QT_BEGIN_NAMESPACE
-
-QUmlElementPrivate::QUmlElementPrivate() :
-    owner(0)
-{
-}
 
 /*!
     \class QUmlElement
@@ -58,11 +52,9 @@ QUmlElementPrivate::QUmlElementPrivate() :
     \brief An element is a constituent of a model. As such, it has the capability of owning other elements.
  */
 
-QUmlElement::QUmlElement(bool create_d_ptr) :
-    QModelingObject(false)
+QUmlElement::QUmlElement() :
+    _owner(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlElementPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -74,17 +66,15 @@ QSet<QUmlComment *> QUmlElement::ownedComment() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlElement);
-    return d->ownedComment;
+    return _ownedComment;
 }
 
 void QUmlElement::addOwnedComment(QUmlComment *ownedComment)
 {
     // This is a read-write association end
 
-    QM_D(QUmlElement);
-    if (!d->ownedComment.contains(ownedComment)) {
-        d->ownedComment.insert(ownedComment);
+    if (!_ownedComment.contains(ownedComment)) {
+        _ownedComment.insert(ownedComment);
     }
 }
 
@@ -92,9 +82,8 @@ void QUmlElement::removeOwnedComment(QUmlComment *ownedComment)
 {
     // This is a read-write association end
 
-    QM_D(QUmlElement);
-    if (d->ownedComment.contains(ownedComment)) {
-        d->ownedComment.remove(ownedComment);
+    if (_ownedComment.contains(ownedComment)) {
+        _ownedComment.remove(ownedComment);
     }
 }
 
@@ -105,8 +94,7 @@ QSet<QUmlElement *> QUmlElement::ownedElement() const
 {
     // This is a read-only derived union association end
 
-    QM_D(const QUmlElement);
-    return d->ownedElement;
+    return _ownedElement;
 }
 
 /*!
@@ -116,8 +104,7 @@ QUmlElement *QUmlElement::owner() const
 {
     // This is a read-only derived union association end
 
-    QM_D(const QUmlElement);
-    return d->owner;
+    return _owner;
 }
 
 // OPERATIONS

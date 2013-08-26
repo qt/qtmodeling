@@ -39,17 +39,10 @@
 **
 ****************************************************************************/
 #include "qumljoinnode.h"
-#include "qumljoinnode_p.h"
 
 #include <QtUml/QUmlValueSpecification>
 
 QT_BEGIN_NAMESPACE
-
-QUmlJoinNodePrivate::QUmlJoinNodePrivate() :
-    isCombineDuplicate(true),
-    joinSpec(0)
-{
-}
 
 /*!
     \class QUmlJoinNode
@@ -59,11 +52,10 @@ QUmlJoinNodePrivate::QUmlJoinNodePrivate() :
     \brief A join node is a control node that synchronizes multiple flows.Join nodes have a Boolean value specification using the names of the incoming edges to specify the conditions under which the join will emit a token.
  */
 
-QUmlJoinNode::QUmlJoinNode(bool create_d_ptr) :
-    QUmlControlNode(false)
+QUmlJoinNode::QUmlJoinNode() :
+    _isCombineDuplicate(true),
+    _joinSpec(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlJoinNodePrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -75,17 +67,15 @@ bool QUmlJoinNode::isCombineDuplicate() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlJoinNode);
-    return d->isCombineDuplicate;
+    return _isCombineDuplicate;
 }
 
 void QUmlJoinNode::setCombineDuplicate(bool isCombineDuplicate)
 {
     // This is a read-write property
 
-    QM_D(QUmlJoinNode);
-    if (d->isCombineDuplicate != isCombineDuplicate) {
-        d->isCombineDuplicate = isCombineDuplicate;
+    if (_isCombineDuplicate != isCombineDuplicate) {
+        _isCombineDuplicate = isCombineDuplicate;
     }
 }
 
@@ -96,17 +86,15 @@ QUmlValueSpecification *QUmlJoinNode::joinSpec() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlJoinNode);
-    return d->joinSpec;
+    return _joinSpec;
 }
 
 void QUmlJoinNode::setJoinSpec(QUmlValueSpecification *joinSpec)
 {
     // This is a read-write association end
 
-    QM_D(QUmlJoinNode);
-    if (d->joinSpec != joinSpec) {
-        d->joinSpec = joinSpec;
+    if (_joinSpec != joinSpec) {
+        _joinSpec = joinSpec;
     }
 }
 

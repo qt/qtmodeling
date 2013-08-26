@@ -55,11 +55,10 @@ class QUmlTemplateableElement;
 class QUmlTemplateParameterSubstitution;
 class QUmlTemplateSignature;
 
-class QUmlTemplateBindingPrivate;
 class Q_UML_EXPORT QUmlTemplateBinding : public QUmlDirectedRelationship
 {
 public:
-    QUmlTemplateBinding(bool create_d_ptr = true);
+    QUmlTemplateBinding();
 
     // Owned attributes
     QUmlTemplateableElement *boundElement() const;
@@ -69,6 +68,11 @@ public:
     void removeParameterSubstitution(QUmlTemplateParameterSubstitution *parameterSubstitution);
     QUmlTemplateSignature *signature() const;
     void setSignature(QUmlTemplateSignature *signature);
+
+protected:
+    QUmlTemplateableElement *_boundElement;
+    QSet<QUmlTemplateParameterSubstitution *> _parameterSubstitution;
+    QUmlTemplateSignature *_signature;
 };
 
 QT_END_NAMESPACE

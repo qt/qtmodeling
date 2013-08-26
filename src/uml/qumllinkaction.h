@@ -55,11 +55,10 @@ class QUmlAssociation;
 class QUmlInputPin;
 class QUmlLinkEndData;
 
-class QUmlLinkActionPrivate;
 class Q_UML_EXPORT QUmlLinkAction : public QUmlAction
 {
 public:
-    Q_DECL_HIDDEN QUmlLinkAction(bool create_d_ptr = true);
+    Q_DECL_HIDDEN QUmlLinkAction();
 
     // Owned attributes
     QSet<QUmlLinkEndData *> endData() const;
@@ -71,6 +70,10 @@ public:
 
     // Operations
     QUmlAssociation *association() const;
+
+protected:
+    QSet<QUmlLinkEndData *> _endData;
+    QSet<QUmlInputPin *> _inputValue;
 };
 
 QT_END_NAMESPACE

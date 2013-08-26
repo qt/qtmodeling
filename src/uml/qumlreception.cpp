@@ -39,16 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlreception.h"
-#include "qumlreception_p.h"
 
 #include <QtUml/QUmlSignal>
 
 QT_BEGIN_NAMESPACE
-
-QUmlReceptionPrivate::QUmlReceptionPrivate() :
-    signal(0)
-{
-}
 
 /*!
     \class QUmlReception
@@ -58,11 +52,9 @@ QUmlReceptionPrivate::QUmlReceptionPrivate() :
     \brief A reception is a declaration stating that a classifier is prepared to react to the receipt of a signal. A reception designates a signal and specifies the expected behavioral response. The details of handling a signal are specified by the behavior associated with the reception or the classifier itself.
  */
 
-QUmlReception::QUmlReception(bool create_d_ptr) :
-    QUmlBehavioralFeature(false)
+QUmlReception::QUmlReception() :
+    _signal(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlReceptionPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -74,17 +66,15 @@ QUmlSignal *QUmlReception::signal() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlReception);
-    return d->signal;
+    return _signal;
 }
 
 void QUmlReception::setSignal(QUmlSignal *signal)
 {
     // This is a read-write association end
 
-    QM_D(QUmlReception);
-    if (d->signal != signal) {
-        d->signal = signal;
+    if (_signal != signal) {
+        _signal = signal;
     }
 }
 

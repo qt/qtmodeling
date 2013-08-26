@@ -54,17 +54,20 @@ QT_MODULE(QtUml)
 class QUmlBehavior;
 class QUmlObjectFlow;
 
-class QUmlDecisionNodePrivate;
 class Q_UML_EXPORT QUmlDecisionNode : public QUmlControlNode
 {
 public:
-    QUmlDecisionNode(bool create_d_ptr = true);
+    QUmlDecisionNode();
 
     // Owned attributes
     QUmlBehavior *decisionInput() const;
     void setDecisionInput(QUmlBehavior *decisionInput);
     QUmlObjectFlow *decisionInputFlow() const;
     void setDecisionInputFlow(QUmlObjectFlow *decisionInputFlow);
+
+protected:
+    QUmlBehavior *_decisionInput;
+    QUmlObjectFlow *_decisionInputFlow;
 };
 
 QT_END_NAMESPACE

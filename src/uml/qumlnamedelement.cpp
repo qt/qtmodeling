@@ -39,7 +39,6 @@
 **
 ****************************************************************************/
 #include "qumlnamedelement.h"
-#include "qumlnamedelement_p.h"
 
 #include <QtUml/QUmlDependency>
 #include <QtUml/QUmlNamespace>
@@ -47,12 +46,6 @@
 #include <QtUml/QUmlStringExpression>
 
 QT_BEGIN_NAMESPACE
-
-QUmlNamedElementPrivate::QUmlNamedElementPrivate() :
-    nameExpression(0),
-    namespace_(0)
-{
-}
 
 /*!
     \class QUmlNamedElement
@@ -62,11 +55,10 @@ QUmlNamedElementPrivate::QUmlNamedElementPrivate() :
     \brief A named element supports using a string expression to specify its name. This allows names of model elements to involve template parameters. The actual name is evaluated from the string expression only when it is sensible to do so (e.g., when a template is bound).A named element is an element in a model that may have a name.
  */
 
-QUmlNamedElement::QUmlNamedElement(bool create_d_ptr) :
-    QUmlElement(false)
+QUmlNamedElement::QUmlNamedElement() :
+    _nameExpression(0),
+    _namespace_(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlNamedElementPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -78,17 +70,15 @@ QSet<QUmlDependency *> QUmlNamedElement::clientDependency() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlNamedElement);
-    return d->clientDependency;
+    return _clientDependency;
 }
 
 void QUmlNamedElement::addClientDependency(QUmlDependency *clientDependency)
 {
     // This is a read-write association end
 
-    QM_D(QUmlNamedElement);
-    if (!d->clientDependency.contains(clientDependency)) {
-        d->clientDependency.insert(clientDependency);
+    if (!_clientDependency.contains(clientDependency)) {
+        _clientDependency.insert(clientDependency);
     }
 }
 
@@ -96,9 +86,8 @@ void QUmlNamedElement::removeClientDependency(QUmlDependency *clientDependency)
 {
     // This is a read-write association end
 
-    QM_D(QUmlNamedElement);
-    if (d->clientDependency.contains(clientDependency)) {
-        d->clientDependency.remove(clientDependency);
+    if (_clientDependency.contains(clientDependency)) {
+        _clientDependency.remove(clientDependency);
     }
 }
 
@@ -109,17 +98,15 @@ QString QUmlNamedElement::name() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlNamedElement);
-    return d->name;
+    return _name;
 }
 
 void QUmlNamedElement::setName(QString name)
 {
     // This is a read-write property
 
-    QM_D(QUmlNamedElement);
-    if (d->name != name) {
-        d->name = name;
+    if (_name != name) {
+        _name = name;
     }
 }
 
@@ -130,17 +117,15 @@ QUmlStringExpression *QUmlNamedElement::nameExpression() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlNamedElement);
-    return d->nameExpression;
+    return _nameExpression;
 }
 
 void QUmlNamedElement::setNameExpression(QUmlStringExpression *nameExpression)
 {
     // This is a read-write association end
 
-    QM_D(QUmlNamedElement);
-    if (d->nameExpression != nameExpression) {
-        d->nameExpression = nameExpression;
+    if (_nameExpression != nameExpression) {
+        _nameExpression = nameExpression;
     }
 }
 
@@ -151,8 +136,7 @@ QUmlNamespace *QUmlNamedElement::namespace_() const
 {
     // This is a read-only derived union association end
 
-    QM_D(const QUmlNamedElement);
-    return d->namespace_;
+    return _namespace_;
 }
 
 /*!
@@ -174,17 +158,15 @@ QtUml::VisibilityKind QUmlNamedElement::visibility() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlNamedElement);
-    return d->visibility;
+    return _visibility;
 }
 
 void QUmlNamedElement::setVisibility(QtUml::VisibilityKind visibility)
 {
     // This is a read-write property
 
-    QM_D(QUmlNamedElement);
-    if (d->visibility != visibility) {
-        d->visibility = visibility;
+    if (_visibility != visibility) {
+        _visibility = visibility;
     }
 }
 

@@ -39,19 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlobjectflow.h"
-#include "qumlobjectflow_p.h"
 
 #include <QtUml/QUmlBehavior>
 
 QT_BEGIN_NAMESPACE
-
-QUmlObjectFlowPrivate::QUmlObjectFlowPrivate() :
-    isMulticast(false),
-    isMultireceive(false),
-    selection(0),
-    transformation(0)
-{
-}
 
 /*!
     \class QUmlObjectFlow
@@ -61,11 +52,12 @@ QUmlObjectFlowPrivate::QUmlObjectFlowPrivate() :
     \brief An object flow is an activity edge that can have objects or data passing along it.Object flows have support for multicast/receive, token selection from object nodes, and transformation of tokens.
  */
 
-QUmlObjectFlow::QUmlObjectFlow(bool create_d_ptr) :
-    QUmlActivityEdge(false)
+QUmlObjectFlow::QUmlObjectFlow() :
+    _isMulticast(false),
+    _isMultireceive(false),
+    _selection(0),
+    _transformation(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlObjectFlowPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -77,17 +69,15 @@ bool QUmlObjectFlow::isMulticast() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlObjectFlow);
-    return d->isMulticast;
+    return _isMulticast;
 }
 
 void QUmlObjectFlow::setMulticast(bool isMulticast)
 {
     // This is a read-write property
 
-    QM_D(QUmlObjectFlow);
-    if (d->isMulticast != isMulticast) {
-        d->isMulticast = isMulticast;
+    if (_isMulticast != isMulticast) {
+        _isMulticast = isMulticast;
     }
 }
 
@@ -98,17 +88,15 @@ bool QUmlObjectFlow::isMultireceive() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlObjectFlow);
-    return d->isMultireceive;
+    return _isMultireceive;
 }
 
 void QUmlObjectFlow::setMultireceive(bool isMultireceive)
 {
     // This is a read-write property
 
-    QM_D(QUmlObjectFlow);
-    if (d->isMultireceive != isMultireceive) {
-        d->isMultireceive = isMultireceive;
+    if (_isMultireceive != isMultireceive) {
+        _isMultireceive = isMultireceive;
     }
 }
 
@@ -119,17 +107,15 @@ QUmlBehavior *QUmlObjectFlow::selection() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlObjectFlow);
-    return d->selection;
+    return _selection;
 }
 
 void QUmlObjectFlow::setSelection(QUmlBehavior *selection)
 {
     // This is a read-write association end
 
-    QM_D(QUmlObjectFlow);
-    if (d->selection != selection) {
-        d->selection = selection;
+    if (_selection != selection) {
+        _selection = selection;
     }
 }
 
@@ -140,17 +126,15 @@ QUmlBehavior *QUmlObjectFlow::transformation() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlObjectFlow);
-    return d->transformation;
+    return _transformation;
 }
 
 void QUmlObjectFlow::setTransformation(QUmlBehavior *transformation)
 {
     // This is a read-write association end
 
-    QM_D(QUmlObjectFlow);
-    if (d->transformation != transformation) {
-        d->transformation = transformation;
+    if (_transformation != transformation) {
+        _transformation = transformation;
     }
 }
 

@@ -39,7 +39,6 @@
 **
 ****************************************************************************/
 #include "qumlactivity.h"
-#include "qumlactivity_p.h"
 
 #include <QtUml/QUmlActivityEdge>
 #include <QtUml/QUmlActivityGroup>
@@ -50,12 +49,6 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlActivityPrivate::QUmlActivityPrivate() :
-    isReadOnly(false),
-    isSingleExecution(false)
-{
-}
-
 /*!
     \class QUmlActivity
 
@@ -64,11 +57,10 @@ QUmlActivityPrivate::QUmlActivityPrivate() :
     \brief An activity is the specification of parameterized behavior as the coordinated sequencing of subordinate units whose individual elements are actions.
  */
 
-QUmlActivity::QUmlActivity(bool create_d_ptr) :
-    QUmlBehavior(false)
+QUmlActivity::QUmlActivity() :
+    _isReadOnly(false),
+    _isSingleExecution(false)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlActivityPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -80,17 +72,15 @@ QSet<QUmlActivityEdge *> QUmlActivity::edge() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlActivity);
-    return d->edge;
+    return _edge;
 }
 
 void QUmlActivity::addEdge(QUmlActivityEdge *edge)
 {
     // This is a read-write association end
 
-    QM_D(QUmlActivity);
-    if (!d->edge.contains(edge)) {
-        d->edge.insert(edge);
+    if (!_edge.contains(edge)) {
+        _edge.insert(edge);
     }
 }
 
@@ -98,9 +88,8 @@ void QUmlActivity::removeEdge(QUmlActivityEdge *edge)
 {
     // This is a read-write association end
 
-    QM_D(QUmlActivity);
-    if (d->edge.contains(edge)) {
-        d->edge.remove(edge);
+    if (_edge.contains(edge)) {
+        _edge.remove(edge);
     }
 }
 
@@ -111,17 +100,15 @@ QSet<QUmlActivityGroup *> QUmlActivity::group() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlActivity);
-    return d->group;
+    return _group;
 }
 
 void QUmlActivity::addGroup(QUmlActivityGroup *group)
 {
     // This is a read-write association end
 
-    QM_D(QUmlActivity);
-    if (!d->group.contains(group)) {
-        d->group.insert(group);
+    if (!_group.contains(group)) {
+        _group.insert(group);
     }
 }
 
@@ -129,9 +116,8 @@ void QUmlActivity::removeGroup(QUmlActivityGroup *group)
 {
     // This is a read-write association end
 
-    QM_D(QUmlActivity);
-    if (d->group.contains(group)) {
-        d->group.remove(group);
+    if (_group.contains(group)) {
+        _group.remove(group);
     }
 }
 
@@ -142,17 +128,15 @@ bool QUmlActivity::isReadOnly() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlActivity);
-    return d->isReadOnly;
+    return _isReadOnly;
 }
 
 void QUmlActivity::setReadOnly(bool isReadOnly)
 {
     // This is a read-write property
 
-    QM_D(QUmlActivity);
-    if (d->isReadOnly != isReadOnly) {
-        d->isReadOnly = isReadOnly;
+    if (_isReadOnly != isReadOnly) {
+        _isReadOnly = isReadOnly;
     }
 }
 
@@ -163,17 +147,15 @@ bool QUmlActivity::isSingleExecution() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlActivity);
-    return d->isSingleExecution;
+    return _isSingleExecution;
 }
 
 void QUmlActivity::setSingleExecution(bool isSingleExecution)
 {
     // This is a read-write property
 
-    QM_D(QUmlActivity);
-    if (d->isSingleExecution != isSingleExecution) {
-        d->isSingleExecution = isSingleExecution;
+    if (_isSingleExecution != isSingleExecution) {
+        _isSingleExecution = isSingleExecution;
     }
 }
 
@@ -184,17 +166,15 @@ QSet<QUmlActivityNode *> QUmlActivity::node() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlActivity);
-    return d->node;
+    return _node;
 }
 
 void QUmlActivity::addNode(QUmlActivityNode *node)
 {
     // This is a read-write association end
 
-    QM_D(QUmlActivity);
-    if (!d->node.contains(node)) {
-        d->node.insert(node);
+    if (!_node.contains(node)) {
+        _node.insert(node);
     }
 }
 
@@ -202,9 +182,8 @@ void QUmlActivity::removeNode(QUmlActivityNode *node)
 {
     // This is a read-write association end
 
-    QM_D(QUmlActivity);
-    if (d->node.contains(node)) {
-        d->node.remove(node);
+    if (_node.contains(node)) {
+        _node.remove(node);
     }
 }
 
@@ -215,17 +194,15 @@ QSet<QUmlActivityPartition *> QUmlActivity::partition() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlActivity);
-    return d->partition;
+    return _partition;
 }
 
 void QUmlActivity::addPartition(QUmlActivityPartition *partition)
 {
     // This is a read-write association end
 
-    QM_D(QUmlActivity);
-    if (!d->partition.contains(partition)) {
-        d->partition.insert(partition);
+    if (!_partition.contains(partition)) {
+        _partition.insert(partition);
     }
 }
 
@@ -233,9 +210,8 @@ void QUmlActivity::removePartition(QUmlActivityPartition *partition)
 {
     // This is a read-write association end
 
-    QM_D(QUmlActivity);
-    if (d->partition.contains(partition)) {
-        d->partition.remove(partition);
+    if (_partition.contains(partition)) {
+        _partition.remove(partition);
     }
 }
 
@@ -246,17 +222,15 @@ QSet<QUmlStructuredActivityNode *> QUmlActivity::structuredNode() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlActivity);
-    return d->structuredNode;
+    return _structuredNode;
 }
 
 void QUmlActivity::addStructuredNode(QUmlStructuredActivityNode *structuredNode)
 {
     // This is a read-write association end
 
-    QM_D(QUmlActivity);
-    if (!d->structuredNode.contains(structuredNode)) {
-        d->structuredNode.insert(structuredNode);
+    if (!_structuredNode.contains(structuredNode)) {
+        _structuredNode.insert(structuredNode);
     }
 }
 
@@ -264,9 +238,8 @@ void QUmlActivity::removeStructuredNode(QUmlStructuredActivityNode *structuredNo
 {
     // This is a read-write association end
 
-    QM_D(QUmlActivity);
-    if (d->structuredNode.contains(structuredNode)) {
-        d->structuredNode.remove(structuredNode);
+    if (_structuredNode.contains(structuredNode)) {
+        _structuredNode.remove(structuredNode);
     }
 }
 
@@ -277,17 +250,15 @@ QSet<QUmlVariable *> QUmlActivity::variable() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlActivity);
-    return d->variable;
+    return _variable;
 }
 
 void QUmlActivity::addVariable(QUmlVariable *variable)
 {
     // This is a read-write association end
 
-    QM_D(QUmlActivity);
-    if (!d->variable.contains(variable)) {
-        d->variable.insert(variable);
+    if (!_variable.contains(variable)) {
+        _variable.insert(variable);
     }
 }
 
@@ -295,9 +266,8 @@ void QUmlActivity::removeVariable(QUmlVariable *variable)
 {
     // This is a read-write association end
 
-    QM_D(QUmlActivity);
-    if (d->variable.contains(variable)) {
-        d->variable.remove(variable);
+    if (_variable.contains(variable)) {
+        _variable.remove(variable);
     }
 }
 

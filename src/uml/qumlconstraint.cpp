@@ -39,19 +39,12 @@
 **
 ****************************************************************************/
 #include "qumlconstraint.h"
-#include "qumlconstraint_p.h"
 
 #include <QtUml/QUmlElement>
 #include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlValueSpecification>
 
 QT_BEGIN_NAMESPACE
-
-QUmlConstraintPrivate::QUmlConstraintPrivate() :
-    context(0),
-    specification(0)
-{
-}
 
 /*!
     \class QUmlConstraint
@@ -61,11 +54,10 @@ QUmlConstraintPrivate::QUmlConstraintPrivate() :
     \brief A constraint is a condition or restriction expressed in natural language text or in a machine readable language for the purpose of declaring some of the semantics of an element.
  */
 
-QUmlConstraint::QUmlConstraint(bool create_d_ptr) :
-    QUmlPackageableElement(false)
+QUmlConstraint::QUmlConstraint() :
+    _context(0),
+    _specification(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlConstraintPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -77,17 +69,15 @@ QList<QUmlElement *> QUmlConstraint::constrainedElement() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlConstraint);
-    return d->constrainedElement;
+    return _constrainedElement;
 }
 
 void QUmlConstraint::addConstrainedElement(QUmlElement *constrainedElement)
 {
     // This is a read-write association end
 
-    QM_D(QUmlConstraint);
-    if (!d->constrainedElement.contains(constrainedElement)) {
-        d->constrainedElement.append(constrainedElement);
+    if (!_constrainedElement.contains(constrainedElement)) {
+        _constrainedElement.append(constrainedElement);
     }
 }
 
@@ -95,9 +85,8 @@ void QUmlConstraint::removeConstrainedElement(QUmlElement *constrainedElement)
 {
     // This is a read-write association end
 
-    QM_D(QUmlConstraint);
-    if (d->constrainedElement.contains(constrainedElement)) {
-        d->constrainedElement.removeAll(constrainedElement);
+    if (_constrainedElement.contains(constrainedElement)) {
+        _constrainedElement.removeAll(constrainedElement);
     }
 }
 
@@ -108,17 +97,15 @@ QUmlNamespace *QUmlConstraint::context() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlConstraint);
-    return d->context;
+    return _context;
 }
 
 void QUmlConstraint::setContext(QUmlNamespace *context)
 {
     // This is a read-write association end
 
-    QM_D(QUmlConstraint);
-    if (d->context != context) {
-        d->context = context;
+    if (_context != context) {
+        _context = context;
     }
 }
 
@@ -129,17 +116,15 @@ QUmlValueSpecification *QUmlConstraint::specification() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlConstraint);
-    return d->specification;
+    return _specification;
 }
 
 void QUmlConstraint::setSpecification(QUmlValueSpecification *specification)
 {
     // This is a read-write association end
 
-    QM_D(QUmlConstraint);
-    if (d->specification != specification) {
-        d->specification = specification;
+    if (_specification != specification) {
+        _specification = specification;
     }
 }
 

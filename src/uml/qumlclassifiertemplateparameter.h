@@ -53,11 +53,10 @@ QT_MODULE(QtUml)
 
 class QUmlClassifier;
 
-class QUmlClassifierTemplateParameterPrivate;
 class Q_UML_EXPORT QUmlClassifierTemplateParameter : public QUmlTemplateParameter
 {
 public:
-    QUmlClassifierTemplateParameter(bool create_d_ptr = true);
+    QUmlClassifierTemplateParameter();
 
     // Owned attributes
     bool allowSubstitutable() const;
@@ -67,6 +66,11 @@ public:
     void removeConstrainingClassifier(QUmlClassifier *constrainingClassifier);
     QUmlClassifier *parameteredElement() const;
     void setParameteredElement(QUmlClassifier *parameteredElement);
+
+protected:
+    bool _allowSubstitutable;
+    QSet<QUmlClassifier *> _constrainingClassifier;
+    QUmlClassifier *_parameteredElement;
 };
 
 QT_END_NAMESPACE

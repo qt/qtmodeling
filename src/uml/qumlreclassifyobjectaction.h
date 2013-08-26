@@ -54,11 +54,10 @@ QT_MODULE(QtUml)
 class QUmlClassifier;
 class QUmlInputPin;
 
-class QUmlReclassifyObjectActionPrivate;
 class Q_UML_EXPORT QUmlReclassifyObjectAction : public QUmlAction
 {
 public:
-    QUmlReclassifyObjectAction(bool create_d_ptr = true);
+    QUmlReclassifyObjectAction();
 
     // Owned attributes
     bool isReplaceAll() const;
@@ -71,6 +70,12 @@ public:
     QSet<QUmlClassifier *> oldClassifier() const;
     void addOldClassifier(QUmlClassifier *oldClassifier);
     void removeOldClassifier(QUmlClassifier *oldClassifier);
+
+protected:
+    bool _isReplaceAll;
+    QSet<QUmlClassifier *> _newClassifier;
+    QUmlInputPin *_object;
+    QSet<QUmlClassifier *> _oldClassifier;
 };
 
 QT_END_NAMESPACE

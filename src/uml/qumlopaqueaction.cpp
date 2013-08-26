@@ -39,16 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlopaqueaction.h"
-#include "qumlopaqueaction_p.h"
 
 #include <QtUml/QUmlInputPin>
 #include <QtUml/QUmlOutputPin>
 
 QT_BEGIN_NAMESPACE
-
-QUmlOpaqueActionPrivate::QUmlOpaqueActionPrivate()
-{
-}
 
 /*!
     \class QUmlOpaqueAction
@@ -58,11 +53,8 @@ QUmlOpaqueActionPrivate::QUmlOpaqueActionPrivate()
     \brief An action with implementation-specific semantics.
  */
 
-QUmlOpaqueAction::QUmlOpaqueAction(bool create_d_ptr) :
-    QUmlAction(false)
+QUmlOpaqueAction::QUmlOpaqueAction()
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlOpaqueActionPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -74,17 +66,15 @@ QList<QString> QUmlOpaqueAction::body() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlOpaqueAction);
-    return d->body;
+    return _body;
 }
 
 void QUmlOpaqueAction::addBody(QString body)
 {
     // This is a read-write property
 
-    QM_D(QUmlOpaqueAction);
-    if (!d->body.contains(body)) {
-        d->body.append(body);
+    if (!_body.contains(body)) {
+        _body.append(body);
     }
 }
 
@@ -92,9 +82,8 @@ void QUmlOpaqueAction::removeBody(QString body)
 {
     // This is a read-write property
 
-    QM_D(QUmlOpaqueAction);
-    if (d->body.contains(body)) {
-        d->body.removeAll(body);
+    if (_body.contains(body)) {
+        _body.removeAll(body);
     }
 }
 
@@ -105,17 +94,15 @@ QSet<QUmlInputPin *> QUmlOpaqueAction::inputValue() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlOpaqueAction);
-    return d->inputValue;
+    return _inputValue;
 }
 
 void QUmlOpaqueAction::addInputValue(QUmlInputPin *inputValue)
 {
     // This is a read-write association end
 
-    QM_D(QUmlOpaqueAction);
-    if (!d->inputValue.contains(inputValue)) {
-        d->inputValue.insert(inputValue);
+    if (!_inputValue.contains(inputValue)) {
+        _inputValue.insert(inputValue);
     }
 }
 
@@ -123,9 +110,8 @@ void QUmlOpaqueAction::removeInputValue(QUmlInputPin *inputValue)
 {
     // This is a read-write association end
 
-    QM_D(QUmlOpaqueAction);
-    if (d->inputValue.contains(inputValue)) {
-        d->inputValue.remove(inputValue);
+    if (_inputValue.contains(inputValue)) {
+        _inputValue.remove(inputValue);
     }
 }
 
@@ -136,17 +122,15 @@ QList<QString> QUmlOpaqueAction::language() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlOpaqueAction);
-    return d->language;
+    return _language;
 }
 
 void QUmlOpaqueAction::addLanguage(QString language)
 {
     // This is a read-write property
 
-    QM_D(QUmlOpaqueAction);
-    if (!d->language.contains(language)) {
-        d->language.append(language);
+    if (!_language.contains(language)) {
+        _language.append(language);
     }
 }
 
@@ -154,9 +138,8 @@ void QUmlOpaqueAction::removeLanguage(QString language)
 {
     // This is a read-write property
 
-    QM_D(QUmlOpaqueAction);
-    if (d->language.contains(language)) {
-        d->language.removeAll(language);
+    if (_language.contains(language)) {
+        _language.removeAll(language);
     }
 }
 
@@ -167,17 +150,15 @@ QSet<QUmlOutputPin *> QUmlOpaqueAction::outputValue() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlOpaqueAction);
-    return d->outputValue;
+    return _outputValue;
 }
 
 void QUmlOpaqueAction::addOutputValue(QUmlOutputPin *outputValue)
 {
     // This is a read-write association end
 
-    QM_D(QUmlOpaqueAction);
-    if (!d->outputValue.contains(outputValue)) {
-        d->outputValue.insert(outputValue);
+    if (!_outputValue.contains(outputValue)) {
+        _outputValue.insert(outputValue);
     }
 }
 
@@ -185,9 +166,8 @@ void QUmlOpaqueAction::removeOutputValue(QUmlOutputPin *outputValue)
 {
     // This is a read-write association end
 
-    QM_D(QUmlOpaqueAction);
-    if (d->outputValue.contains(outputValue)) {
-        d->outputValue.remove(outputValue);
+    if (_outputValue.contains(outputValue)) {
+        _outputValue.remove(outputValue);
     }
 }
 

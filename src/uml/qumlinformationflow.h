@@ -59,11 +59,10 @@ class QUmlMessage;
 class QUmlNamedElement;
 class QUmlRelationship;
 
-class QUmlInformationFlowPrivate;
 class Q_UML_EXPORT QUmlInformationFlow : public QUmlDirectedRelationship, public QUmlPackageableElement
 {
 public:
-    QUmlInformationFlow(bool create_d_ptr = true);
+    QUmlInformationFlow();
 
     // Owned attributes
     QSet<QUmlClassifier *> conveyed() const;
@@ -87,6 +86,15 @@ public:
     QSet<QUmlMessage *> realizingMessage() const;
     void addRealizingMessage(QUmlMessage *realizingMessage);
     void removeRealizingMessage(QUmlMessage *realizingMessage);
+
+protected:
+    QSet<QUmlClassifier *> _conveyed;
+    QSet<QUmlNamedElement *> _informationSource;
+    QSet<QUmlNamedElement *> _informationTarget;
+    QSet<QUmlRelationship *> _realization;
+    QSet<QUmlActivityEdge *> _realizingActivityEdge;
+    QSet<QUmlConnector *> _realizingConnector;
+    QSet<QUmlMessage *> _realizingMessage;
 };
 
 QT_END_NAMESPACE

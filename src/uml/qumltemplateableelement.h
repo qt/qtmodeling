@@ -55,11 +55,10 @@ class QUmlParameterableElement;
 class QUmlTemplateBinding;
 class QUmlTemplateSignature;
 
-class QUmlTemplateableElementPrivate;
 class Q_UML_EXPORT QUmlTemplateableElement : public virtual QUmlElement
 {
 public:
-    Q_DECL_HIDDEN QUmlTemplateableElement(bool create_d_ptr = true);
+    Q_DECL_HIDDEN QUmlTemplateableElement();
 
     // Owned attributes
     QUmlTemplateSignature *ownedTemplateSignature() const;
@@ -71,6 +70,10 @@ public:
     // Operations
     bool isTemplate() const;
     QSet<QUmlParameterableElement *> parameterableElements() const;
+
+protected:
+    QUmlTemplateSignature *_ownedTemplateSignature;
+    QSet<QUmlTemplateBinding *> _templateBinding;
 };
 
 QT_END_NAMESPACE

@@ -39,13 +39,8 @@
 **
 ****************************************************************************/
 #include "qumlinputpin.h"
-#include "qumlinputpin_p.h"
 
 QT_BEGIN_NAMESPACE
-
-QUmlInputPinPrivate::QUmlInputPinPrivate()
-{
-}
 
 /*!
     \class QUmlInputPin
@@ -55,11 +50,8 @@ QUmlInputPinPrivate::QUmlInputPinPrivate()
     \brief An input pin is a pin that holds input values to be consumed by an action.
  */
 
-QUmlInputPin::QUmlInputPin(bool create_d_ptr) :
-    QUmlPin(false)
+QUmlInputPin::QUmlInputPin()
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlInputPinPrivate);
 }
 
 QT_END_NAMESPACE

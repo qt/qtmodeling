@@ -55,11 +55,10 @@ class QUmlInputPin;
 class QUmlOutputPin;
 class QUmlProperty;
 
-class QUmlReadLinkObjectEndQualifierActionPrivate;
 class Q_UML_EXPORT QUmlReadLinkObjectEndQualifierAction : public QUmlAction
 {
 public:
-    QUmlReadLinkObjectEndQualifierAction(bool create_d_ptr = true);
+    QUmlReadLinkObjectEndQualifierAction();
 
     // Owned attributes
     QUmlInputPin *object() const;
@@ -68,6 +67,11 @@ public:
     void setQualifier(QUmlProperty *qualifier);
     QUmlOutputPin *result() const;
     void setResult(QUmlOutputPin *result);
+
+protected:
+    QUmlInputPin *_object;
+    QUmlProperty *_qualifier;
+    QUmlOutputPin *_result;
 };
 
 QT_END_NAMESPACE

@@ -39,22 +39,12 @@
 **
 ****************************************************************************/
 #include "qumlparameter.h"
-#include "qumlparameter_p.h"
 
 #include <QtUml/QUmlOperation>
 #include <QtUml/QUmlParameterSet>
 #include <QtUml/QUmlValueSpecification>
 
 QT_BEGIN_NAMESPACE
-
-QUmlParameterPrivate::QUmlParameterPrivate() :
-    defaultValue(0),
-    direction(QtUml::ParameterDirectionIn),
-    isException(false),
-    isStream(false),
-    operation(0)
-{
-}
 
 /*!
     \class QUmlParameter
@@ -64,12 +54,13 @@ QUmlParameterPrivate::QUmlParameterPrivate() :
     \brief Parameters are allowed to be treated as connectable elements.A parameter is a specification of an argument used to pass information into or out of an invocation of a behavioral feature.Parameters have support for streaming, exceptions, and parameter sets.
  */
 
-QUmlParameter::QUmlParameter(bool create_d_ptr) :
-    QUmlMultiplicityElement(false),
-    QUmlConnectableElement(false)
+QUmlParameter::QUmlParameter() :
+    _defaultValue(0),
+    _direction(QtUml::ParameterDirectionIn),
+    _isException(false),
+    _isStream(false),
+    _operation(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlParameterPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -105,17 +96,15 @@ QUmlValueSpecification *QUmlParameter::defaultValue() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlParameter);
-    return d->defaultValue;
+    return _defaultValue;
 }
 
 void QUmlParameter::setDefaultValue(QUmlValueSpecification *defaultValue)
 {
     // This is a read-write association end
 
-    QM_D(QUmlParameter);
-    if (d->defaultValue != defaultValue) {
-        d->defaultValue = defaultValue;
+    if (_defaultValue != defaultValue) {
+        _defaultValue = defaultValue;
     }
 }
 
@@ -126,17 +115,15 @@ QtUml::ParameterDirectionKind QUmlParameter::direction() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlParameter);
-    return d->direction;
+    return _direction;
 }
 
 void QUmlParameter::setDirection(QtUml::ParameterDirectionKind direction)
 {
     // This is a read-write property
 
-    QM_D(QUmlParameter);
-    if (d->direction != direction) {
-        d->direction = direction;
+    if (_direction != direction) {
+        _direction = direction;
     }
 }
 
@@ -147,17 +134,15 @@ QtUml::ParameterEffectKind QUmlParameter::effect() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlParameter);
-    return d->effect;
+    return _effect;
 }
 
 void QUmlParameter::setEffect(QtUml::ParameterEffectKind effect)
 {
     // This is a read-write property
 
-    QM_D(QUmlParameter);
-    if (d->effect != effect) {
-        d->effect = effect;
+    if (_effect != effect) {
+        _effect = effect;
     }
 }
 
@@ -168,17 +153,15 @@ bool QUmlParameter::isException() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlParameter);
-    return d->isException;
+    return _isException;
 }
 
 void QUmlParameter::setException(bool isException)
 {
     // This is a read-write property
 
-    QM_D(QUmlParameter);
-    if (d->isException != isException) {
-        d->isException = isException;
+    if (_isException != isException) {
+        _isException = isException;
     }
 }
 
@@ -189,17 +172,15 @@ bool QUmlParameter::isStream() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlParameter);
-    return d->isStream;
+    return _isStream;
 }
 
 void QUmlParameter::setStream(bool isStream)
 {
     // This is a read-write property
 
-    QM_D(QUmlParameter);
-    if (d->isStream != isStream) {
-        d->isStream = isStream;
+    if (_isStream != isStream) {
+        _isStream = isStream;
     }
 }
 
@@ -210,17 +191,15 @@ QUmlOperation *QUmlParameter::operation() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlParameter);
-    return d->operation;
+    return _operation;
 }
 
 void QUmlParameter::setOperation(QUmlOperation *operation)
 {
     // This is a read-write association end
 
-    QM_D(QUmlParameter);
-    if (d->operation != operation) {
-        d->operation = operation;
+    if (_operation != operation) {
+        _operation = operation;
     }
 }
 
@@ -231,17 +210,15 @@ QSet<QUmlParameterSet *> QUmlParameter::parameterSet() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlParameter);
-    return d->parameterSet;
+    return _parameterSet;
 }
 
 void QUmlParameter::addParameterSet(QUmlParameterSet *parameterSet)
 {
     // This is a read-write association end
 
-    QM_D(QUmlParameter);
-    if (!d->parameterSet.contains(parameterSet)) {
-        d->parameterSet.insert(parameterSet);
+    if (!_parameterSet.contains(parameterSet)) {
+        _parameterSet.insert(parameterSet);
     }
 }
 
@@ -249,9 +226,8 @@ void QUmlParameter::removeParameterSet(QUmlParameterSet *parameterSet)
 {
     // This is a read-write association end
 
-    QM_D(QUmlParameter);
-    if (d->parameterSet.contains(parameterSet)) {
-        d->parameterSet.remove(parameterSet);
+    if (_parameterSet.contains(parameterSet)) {
+        _parameterSet.remove(parameterSet);
     }
 }
 

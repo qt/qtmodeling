@@ -57,11 +57,10 @@ class QUmlConstraint;
 class QUmlParameter;
 class QUmlParameterSet;
 
-class QUmlBehaviorPrivate;
 class Q_UML_EXPORT QUmlBehavior : public QUmlClass
 {
 public:
-    Q_DECL_HIDDEN QUmlBehavior(bool create_d_ptr = true);
+    Q_DECL_HIDDEN QUmlBehavior();
 
     // Owned attributes
     QUmlBehavioredClassifier *context() const;
@@ -84,6 +83,15 @@ public:
     void removeRedefinedBehavior(QUmlBehavior *redefinedBehavior);
     QUmlBehavioralFeature *specification() const;
     void setSpecification(QUmlBehavioralFeature *specification);
+
+protected:
+    bool _isReentrant;
+    QList<QUmlParameter *> _ownedParameter;
+    QSet<QUmlParameterSet *> _ownedParameterSet;
+    QSet<QUmlConstraint *> _postcondition;
+    QSet<QUmlConstraint *> _precondition;
+    QSet<QUmlBehavior *> _redefinedBehavior;
+    QUmlBehavioralFeature *_specification;
 };
 
 QT_END_NAMESPACE

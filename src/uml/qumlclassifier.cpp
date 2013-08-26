@@ -39,7 +39,6 @@
 **
 ****************************************************************************/
 #include "qumlclassifier.h"
-#include "qumlclassifier_p.h"
 
 #include <QtUml/QUmlClassifierTemplateParameter>
 #include <QtUml/QUmlCollaborationUse>
@@ -54,15 +53,6 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlClassifierPrivate::QUmlClassifierPrivate() :
-    isAbstract(false),
-    isFinalSpecialization(false),
-    ownedTemplateSignature(0),
-    representation(0),
-    templateParameter(0)
-{
-}
-
 /*!
     \class QUmlClassifier
 
@@ -71,14 +61,13 @@ QUmlClassifierPrivate::QUmlClassifierPrivate() :
     \brief A classifier is a classification of instances - it describes a set of instances that have features in common. A classifier can specify a generalization hierarchy by referencing its general classifiers.A classifier has the capability to own use cases. Although the owning classifier typically represents the subject to which the owned use cases apply, this is not necessarily the case. In principle, the same use case can be applied to multiple subjects, as identified by the subject association role of a use case.Classifier is defined to be a kind of templateable element so that a classifier can be parameterized. It is also defined to be a kind of parameterable element so that a classifier can be a formal template parameter.A classifier has the capability to own collaboration uses. These collaboration uses link a collaboration with the classifier to give a description of the workings of the classifier.
  */
 
-QUmlClassifier::QUmlClassifier(bool create_d_ptr) :
-    QUmlNamespace(false),
-    QUmlType(false),
-    QUmlRedefinableElement(false),
-    QUmlTemplateableElement(false)
+QUmlClassifier::QUmlClassifier() :
+    _isAbstract(false),
+    _isFinalSpecialization(false),
+    _ownedTemplateSignature(0),
+    _representation(0),
+    _templateParameter(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlClassifierPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -90,8 +79,7 @@ QSet<QUmlProperty *> QUmlClassifier::attribute() const
 {
     // This is a read-only derived union association end
 
-    QM_D(const QUmlClassifier);
-    return d->attribute;
+    return _attribute;
 }
 
 /*!
@@ -101,17 +89,15 @@ QSet<QUmlCollaborationUse *> QUmlClassifier::collaborationUse() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlClassifier);
-    return d->collaborationUse;
+    return _collaborationUse;
 }
 
 void QUmlClassifier::addCollaborationUse(QUmlCollaborationUse *collaborationUse)
 {
     // This is a read-write association end
 
-    QM_D(QUmlClassifier);
-    if (!d->collaborationUse.contains(collaborationUse)) {
-        d->collaborationUse.insert(collaborationUse);
+    if (!_collaborationUse.contains(collaborationUse)) {
+        _collaborationUse.insert(collaborationUse);
     }
 }
 
@@ -119,9 +105,8 @@ void QUmlClassifier::removeCollaborationUse(QUmlCollaborationUse *collaborationU
 {
     // This is a read-write association end
 
-    QM_D(QUmlClassifier);
-    if (d->collaborationUse.contains(collaborationUse)) {
-        d->collaborationUse.remove(collaborationUse);
+    if (_collaborationUse.contains(collaborationUse)) {
+        _collaborationUse.remove(collaborationUse);
     }
 }
 
@@ -132,8 +117,7 @@ QSet<QUmlFeature *> QUmlClassifier::feature() const
 {
     // This is a read-only derived union association end
 
-    QM_D(const QUmlClassifier);
-    return d->feature;
+    return _feature;
 }
 
 /*!
@@ -179,17 +163,15 @@ QSet<QUmlGeneralization *> QUmlClassifier::generalization() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlClassifier);
-    return d->generalization;
+    return _generalization;
 }
 
 void QUmlClassifier::addGeneralization(QUmlGeneralization *generalization)
 {
     // This is a read-write association end
 
-    QM_D(QUmlClassifier);
-    if (!d->generalization.contains(generalization)) {
-        d->generalization.insert(generalization);
+    if (!_generalization.contains(generalization)) {
+        _generalization.insert(generalization);
     }
 }
 
@@ -197,9 +179,8 @@ void QUmlClassifier::removeGeneralization(QUmlGeneralization *generalization)
 {
     // This is a read-write association end
 
-    QM_D(QUmlClassifier);
-    if (d->generalization.contains(generalization)) {
-        d->generalization.remove(generalization);
+    if (_generalization.contains(generalization)) {
+        _generalization.remove(generalization);
     }
 }
 
@@ -222,17 +203,15 @@ bool QUmlClassifier::isAbstract() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlClassifier);
-    return d->isAbstract;
+    return _isAbstract;
 }
 
 void QUmlClassifier::setAbstract(bool isAbstract)
 {
     // This is a read-write property
 
-    QM_D(QUmlClassifier);
-    if (d->isAbstract != isAbstract) {
-        d->isAbstract = isAbstract;
+    if (_isAbstract != isAbstract) {
+        _isAbstract = isAbstract;
     }
 }
 
@@ -243,17 +222,15 @@ bool QUmlClassifier::isFinalSpecialization() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlClassifier);
-    return d->isFinalSpecialization;
+    return _isFinalSpecialization;
 }
 
 void QUmlClassifier::setFinalSpecialization(bool isFinalSpecialization)
 {
     // This is a read-write property
 
-    QM_D(QUmlClassifier);
-    if (d->isFinalSpecialization != isFinalSpecialization) {
-        d->isFinalSpecialization = isFinalSpecialization;
+    if (_isFinalSpecialization != isFinalSpecialization) {
+        _isFinalSpecialization = isFinalSpecialization;
     }
 }
 
@@ -264,17 +241,15 @@ QUmlRedefinableTemplateSignature *QUmlClassifier::ownedTemplateSignature() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlClassifier);
-    return d->ownedTemplateSignature;
+    return _ownedTemplateSignature;
 }
 
 void QUmlClassifier::setOwnedTemplateSignature(QUmlRedefinableTemplateSignature *ownedTemplateSignature)
 {
     // This is a read-write association end
 
-    QM_D(QUmlClassifier);
-    if (d->ownedTemplateSignature != ownedTemplateSignature) {
-        d->ownedTemplateSignature = ownedTemplateSignature;
+    if (_ownedTemplateSignature != ownedTemplateSignature) {
+        _ownedTemplateSignature = ownedTemplateSignature;
     }
 }
 
@@ -285,17 +260,15 @@ QSet<QUmlUseCase *> QUmlClassifier::ownedUseCase() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlClassifier);
-    return d->ownedUseCase;
+    return _ownedUseCase;
 }
 
 void QUmlClassifier::addOwnedUseCase(QUmlUseCase *ownedUseCase)
 {
     // This is a read-write association end
 
-    QM_D(QUmlClassifier);
-    if (!d->ownedUseCase.contains(ownedUseCase)) {
-        d->ownedUseCase.insert(ownedUseCase);
+    if (!_ownedUseCase.contains(ownedUseCase)) {
+        _ownedUseCase.insert(ownedUseCase);
     }
 }
 
@@ -303,9 +276,8 @@ void QUmlClassifier::removeOwnedUseCase(QUmlUseCase *ownedUseCase)
 {
     // This is a read-write association end
 
-    QM_D(QUmlClassifier);
-    if (d->ownedUseCase.contains(ownedUseCase)) {
-        d->ownedUseCase.remove(ownedUseCase);
+    if (_ownedUseCase.contains(ownedUseCase)) {
+        _ownedUseCase.remove(ownedUseCase);
     }
 }
 
@@ -316,17 +288,15 @@ QSet<QUmlGeneralizationSet *> QUmlClassifier::powertypeExtent() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlClassifier);
-    return d->powertypeExtent;
+    return _powertypeExtent;
 }
 
 void QUmlClassifier::addPowertypeExtent(QUmlGeneralizationSet *powertypeExtent)
 {
     // This is a read-write association end
 
-    QM_D(QUmlClassifier);
-    if (!d->powertypeExtent.contains(powertypeExtent)) {
-        d->powertypeExtent.insert(powertypeExtent);
+    if (!_powertypeExtent.contains(powertypeExtent)) {
+        _powertypeExtent.insert(powertypeExtent);
     }
 }
 
@@ -334,9 +304,8 @@ void QUmlClassifier::removePowertypeExtent(QUmlGeneralizationSet *powertypeExten
 {
     // This is a read-write association end
 
-    QM_D(QUmlClassifier);
-    if (d->powertypeExtent.contains(powertypeExtent)) {
-        d->powertypeExtent.remove(powertypeExtent);
+    if (_powertypeExtent.contains(powertypeExtent)) {
+        _powertypeExtent.remove(powertypeExtent);
     }
 }
 
@@ -347,17 +316,15 @@ QSet<QUmlClassifier *> QUmlClassifier::redefinedClassifier() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlClassifier);
-    return d->redefinedClassifier;
+    return _redefinedClassifier;
 }
 
 void QUmlClassifier::addRedefinedClassifier(QUmlClassifier *redefinedClassifier)
 {
     // This is a read-write association end
 
-    QM_D(QUmlClassifier);
-    if (!d->redefinedClassifier.contains(redefinedClassifier)) {
-        d->redefinedClassifier.insert(redefinedClassifier);
+    if (!_redefinedClassifier.contains(redefinedClassifier)) {
+        _redefinedClassifier.insert(redefinedClassifier);
     }
 }
 
@@ -365,9 +332,8 @@ void QUmlClassifier::removeRedefinedClassifier(QUmlClassifier *redefinedClassifi
 {
     // This is a read-write association end
 
-    QM_D(QUmlClassifier);
-    if (d->redefinedClassifier.contains(redefinedClassifier)) {
-        d->redefinedClassifier.remove(redefinedClassifier);
+    if (_redefinedClassifier.contains(redefinedClassifier)) {
+        _redefinedClassifier.remove(redefinedClassifier);
     }
 }
 
@@ -378,17 +344,15 @@ QUmlCollaborationUse *QUmlClassifier::representation() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlClassifier);
-    return d->representation;
+    return _representation;
 }
 
 void QUmlClassifier::setRepresentation(QUmlCollaborationUse *representation)
 {
     // This is a read-write association end
 
-    QM_D(QUmlClassifier);
-    if (d->representation != representation) {
-        d->representation = representation;
+    if (_representation != representation) {
+        _representation = representation;
     }
 }
 
@@ -399,17 +363,15 @@ QSet<QUmlSubstitution *> QUmlClassifier::substitution() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlClassifier);
-    return d->substitution;
+    return _substitution;
 }
 
 void QUmlClassifier::addSubstitution(QUmlSubstitution *substitution)
 {
     // This is a read-write association end
 
-    QM_D(QUmlClassifier);
-    if (!d->substitution.contains(substitution)) {
-        d->substitution.insert(substitution);
+    if (!_substitution.contains(substitution)) {
+        _substitution.insert(substitution);
     }
 }
 
@@ -417,9 +379,8 @@ void QUmlClassifier::removeSubstitution(QUmlSubstitution *substitution)
 {
     // This is a read-write association end
 
-    QM_D(QUmlClassifier);
-    if (d->substitution.contains(substitution)) {
-        d->substitution.remove(substitution);
+    if (_substitution.contains(substitution)) {
+        _substitution.remove(substitution);
     }
 }
 
@@ -430,17 +391,15 @@ QUmlClassifierTemplateParameter *QUmlClassifier::templateParameter() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlClassifier);
-    return d->templateParameter;
+    return _templateParameter;
 }
 
 void QUmlClassifier::setTemplateParameter(QUmlClassifierTemplateParameter *templateParameter)
 {
     // This is a read-write association end
 
-    QM_D(QUmlClassifier);
-    if (d->templateParameter != templateParameter) {
-        d->templateParameter = templateParameter;
+    if (_templateParameter != templateParameter) {
+        _templateParameter = templateParameter;
     }
 }
 
@@ -451,17 +410,15 @@ QSet<QUmlUseCase *> QUmlClassifier::useCase() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlClassifier);
-    return d->useCase;
+    return _useCase;
 }
 
 void QUmlClassifier::addUseCase(QUmlUseCase *useCase)
 {
     // This is a read-write association end
 
-    QM_D(QUmlClassifier);
-    if (!d->useCase.contains(useCase)) {
-        d->useCase.insert(useCase);
+    if (!_useCase.contains(useCase)) {
+        _useCase.insert(useCase);
     }
 }
 
@@ -469,9 +426,8 @@ void QUmlClassifier::removeUseCase(QUmlUseCase *useCase)
 {
     // This is a read-write association end
 
-    QM_D(QUmlClassifier);
-    if (d->useCase.contains(useCase)) {
-        d->useCase.remove(useCase);
+    if (_useCase.contains(useCase)) {
+        _useCase.remove(useCase);
     }
 }
 

@@ -39,13 +39,8 @@
 **
 ****************************************************************************/
 #include "qumlwritelinkaction.h"
-#include "qumlwritelinkaction_p.h"
 
 QT_BEGIN_NAMESPACE
-
-QUmlWriteLinkActionPrivate::QUmlWriteLinkActionPrivate()
-{
-}
 
 /*!
     \class QUmlWriteLinkAction
@@ -55,11 +50,8 @@ QUmlWriteLinkActionPrivate::QUmlWriteLinkActionPrivate()
     \brief WriteLinkAction is an abstract class for link actions that create and destroy links.
  */
 
-QUmlWriteLinkAction::QUmlWriteLinkAction(bool create_d_ptr) :
-    QUmlLinkAction(false)
+QUmlWriteLinkAction::QUmlWriteLinkAction()
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlWriteLinkActionPrivate);
 }
 
 QT_END_NAMESPACE

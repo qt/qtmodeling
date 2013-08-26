@@ -53,16 +53,18 @@ QT_MODULE(QtUml)
 
 class QUmlEnumeration;
 
-class QUmlEnumerationLiteralPrivate;
 class Q_UML_EXPORT QUmlEnumerationLiteral : public QUmlInstanceSpecification
 {
 public:
-    QUmlEnumerationLiteral(bool create_d_ptr = true);
+    QUmlEnumerationLiteral();
 
     // Owned attributes
     QUmlEnumeration *classifier() const;
     QUmlEnumeration *enumeration() const;
     void setEnumeration(QUmlEnumeration *enumeration);
+
+protected:
+    QUmlEnumeration *_enumeration;
 };
 
 QT_END_NAMESPACE

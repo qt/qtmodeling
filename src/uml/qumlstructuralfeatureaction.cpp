@@ -39,18 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlstructuralfeatureaction.h"
-#include "qumlstructuralfeatureaction_p.h"
 
 #include <QtUml/QUmlInputPin>
 #include <QtUml/QUmlStructuralFeature>
 
 QT_BEGIN_NAMESPACE
-
-QUmlStructuralFeatureActionPrivate::QUmlStructuralFeatureActionPrivate() :
-    object(0),
-    structuralFeature(0)
-{
-}
 
 /*!
     \class QUmlStructuralFeatureAction
@@ -60,11 +53,10 @@ QUmlStructuralFeatureActionPrivate::QUmlStructuralFeatureActionPrivate() :
     \brief StructuralFeatureAction is an abstract class for all structural feature actions.
  */
 
-QUmlStructuralFeatureAction::QUmlStructuralFeatureAction(bool create_d_ptr) :
-    QUmlAction(false)
+QUmlStructuralFeatureAction::QUmlStructuralFeatureAction() :
+    _object(0),
+    _structuralFeature(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlStructuralFeatureActionPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -76,17 +68,15 @@ QUmlInputPin *QUmlStructuralFeatureAction::object() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlStructuralFeatureAction);
-    return d->object;
+    return _object;
 }
 
 void QUmlStructuralFeatureAction::setObject(QUmlInputPin *object)
 {
     // This is a read-write association end
 
-    QM_D(QUmlStructuralFeatureAction);
-    if (d->object != object) {
-        d->object = object;
+    if (_object != object) {
+        _object = object;
     }
 }
 
@@ -97,17 +87,15 @@ QUmlStructuralFeature *QUmlStructuralFeatureAction::structuralFeature() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlStructuralFeatureAction);
-    return d->structuralFeature;
+    return _structuralFeature;
 }
 
 void QUmlStructuralFeatureAction::setStructuralFeature(QUmlStructuralFeature *structuralFeature)
 {
     // This is a read-write association end
 
-    QM_D(QUmlStructuralFeatureAction);
-    if (d->structuralFeature != structuralFeature) {
-        d->structuralFeature = structuralFeature;
+    if (_structuralFeature != structuralFeature) {
+        _structuralFeature = structuralFeature;
     }
 }
 

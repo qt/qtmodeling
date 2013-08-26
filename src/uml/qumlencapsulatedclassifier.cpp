@@ -39,15 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlencapsulatedclassifier.h"
-#include "qumlencapsulatedclassifier_p.h"
 
 #include <QtUml/QUmlPort>
 
 QT_BEGIN_NAMESPACE
-
-QUmlEncapsulatedClassifierPrivate::QUmlEncapsulatedClassifierPrivate()
-{
-}
 
 /*!
     \class QUmlEncapsulatedClassifier
@@ -57,11 +52,8 @@ QUmlEncapsulatedClassifierPrivate::QUmlEncapsulatedClassifierPrivate()
     \brief A classifier has the ability to own ports as specific and type checked interaction points.
  */
 
-QUmlEncapsulatedClassifier::QUmlEncapsulatedClassifier(bool create_d_ptr) :
-    QUmlStructuredClassifier(false)
+QUmlEncapsulatedClassifier::QUmlEncapsulatedClassifier()
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlEncapsulatedClassifierPrivate);
 }
 
 // OWNED ATTRIBUTES

@@ -39,17 +39,11 @@
 **
 ****************************************************************************/
 #include "qumltemplatesignature.h"
-#include "qumltemplatesignature_p.h"
 
 #include <QtUml/QUmlTemplateableElement>
 #include <QtUml/QUmlTemplateParameter>
 
 QT_BEGIN_NAMESPACE
-
-QUmlTemplateSignaturePrivate::QUmlTemplateSignaturePrivate() :
-    template_(0)
-{
-}
 
 /*!
     \class QUmlTemplateSignature
@@ -59,11 +53,9 @@ QUmlTemplateSignaturePrivate::QUmlTemplateSignaturePrivate() :
     \brief A template signature bundles the set of formal template parameters for a templated element.
  */
 
-QUmlTemplateSignature::QUmlTemplateSignature(bool create_d_ptr) :
-    QUmlElement(false)
+QUmlTemplateSignature::QUmlTemplateSignature() :
+    _template_(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlTemplateSignaturePrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -75,17 +67,15 @@ QList<QUmlTemplateParameter *> QUmlTemplateSignature::ownedParameter() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlTemplateSignature);
-    return d->ownedParameter;
+    return _ownedParameter;
 }
 
 void QUmlTemplateSignature::addOwnedParameter(QUmlTemplateParameter *ownedParameter)
 {
     // This is a read-write association end
 
-    QM_D(QUmlTemplateSignature);
-    if (!d->ownedParameter.contains(ownedParameter)) {
-        d->ownedParameter.append(ownedParameter);
+    if (!_ownedParameter.contains(ownedParameter)) {
+        _ownedParameter.append(ownedParameter);
     }
 }
 
@@ -93,9 +83,8 @@ void QUmlTemplateSignature::removeOwnedParameter(QUmlTemplateParameter *ownedPar
 {
     // This is a read-write association end
 
-    QM_D(QUmlTemplateSignature);
-    if (d->ownedParameter.contains(ownedParameter)) {
-        d->ownedParameter.removeAll(ownedParameter);
+    if (_ownedParameter.contains(ownedParameter)) {
+        _ownedParameter.removeAll(ownedParameter);
     }
 }
 
@@ -106,17 +95,15 @@ QList<QUmlTemplateParameter *> QUmlTemplateSignature::parameter() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlTemplateSignature);
-    return d->parameter;
+    return _parameter;
 }
 
 void QUmlTemplateSignature::addParameter(QUmlTemplateParameter *parameter)
 {
     // This is a read-write association end
 
-    QM_D(QUmlTemplateSignature);
-    if (!d->parameter.contains(parameter)) {
-        d->parameter.append(parameter);
+    if (!_parameter.contains(parameter)) {
+        _parameter.append(parameter);
     }
 }
 
@@ -124,9 +111,8 @@ void QUmlTemplateSignature::removeParameter(QUmlTemplateParameter *parameter)
 {
     // This is a read-write association end
 
-    QM_D(QUmlTemplateSignature);
-    if (d->parameter.contains(parameter)) {
-        d->parameter.removeAll(parameter);
+    if (_parameter.contains(parameter)) {
+        _parameter.removeAll(parameter);
     }
 }
 
@@ -137,17 +123,15 @@ QUmlTemplateableElement *QUmlTemplateSignature::template_() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlTemplateSignature);
-    return d->template_;
+    return _template_;
 }
 
 void QUmlTemplateSignature::setTemplate(QUmlTemplateableElement *template_)
 {
     // This is a read-write association end
 
-    QM_D(QUmlTemplateSignature);
-    if (d->template_ != template_) {
-        d->template_ = template_;
+    if (_template_ != template_) {
+        _template_ = template_;
     }
 }
 

@@ -59,11 +59,10 @@ class QUmlInterruptibleActivityRegion;
 class QUmlStructuredActivityNode;
 class QUmlValueSpecification;
 
-class QUmlActivityEdgePrivate;
 class Q_UML_EXPORT QUmlActivityEdge : public QUmlRedefinableElement
 {
 public:
-    Q_DECL_HIDDEN QUmlActivityEdge(bool create_d_ptr = true);
+    Q_DECL_HIDDEN QUmlActivityEdge();
 
     // Owned attributes
     QUmlActivity *activity() const;
@@ -87,6 +86,18 @@ public:
     void setTarget(QUmlActivityNode *target);
     QUmlValueSpecification *weight() const;
     void setWeight(QUmlValueSpecification *weight);
+
+protected:
+    QUmlActivity *_activity;
+    QUmlValueSpecification *_guard;
+    QSet<QUmlActivityGroup *> _inGroup;
+    QSet<QUmlActivityPartition *> _inPartition;
+    QUmlStructuredActivityNode *_inStructuredNode;
+    QUmlInterruptibleActivityRegion *_interrupts;
+    QSet<QUmlActivityEdge *> _redefinedEdge;
+    QUmlActivityNode *_source;
+    QUmlActivityNode *_target;
+    QUmlValueSpecification *_weight;
 };
 
 QT_END_NAMESPACE

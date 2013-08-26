@@ -54,11 +54,10 @@ QT_MODULE(QtUml)
 class QUmlPackage;
 class QUmlProfile;
 
-class QUmlProfileApplicationPrivate;
 class Q_UML_EXPORT QUmlProfileApplication : public QUmlDirectedRelationship
 {
 public:
-    QUmlProfileApplication(bool create_d_ptr = true);
+    QUmlProfileApplication();
 
     // Owned attributes
     QUmlProfile *appliedProfile() const;
@@ -67,6 +66,11 @@ public:
     void setApplyingPackage(QUmlPackage *applyingPackage);
     bool isStrict() const;
     void setStrict(bool isStrict);
+
+protected:
+    QUmlProfile *_appliedProfile;
+    QUmlPackage *_applyingPackage;
+    bool _isStrict;
 };
 
 QT_END_NAMESPACE

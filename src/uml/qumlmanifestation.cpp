@@ -39,16 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlmanifestation.h"
-#include "qumlmanifestation_p.h"
 
 #include <QtUml/QUmlPackageableElement>
 
 QT_BEGIN_NAMESPACE
-
-QUmlManifestationPrivate::QUmlManifestationPrivate() :
-    utilizedElement(0)
-{
-}
 
 /*!
     \class QUmlManifestation
@@ -58,11 +52,9 @@ QUmlManifestationPrivate::QUmlManifestationPrivate() :
     \brief A manifestation is the concrete physical rendering of one or more model elements by an artifact.
  */
 
-QUmlManifestation::QUmlManifestation(bool create_d_ptr) :
-    QUmlAbstraction(false)
+QUmlManifestation::QUmlManifestation() :
+    _utilizedElement(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlManifestationPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -74,17 +66,15 @@ QUmlPackageableElement *QUmlManifestation::utilizedElement() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlManifestation);
-    return d->utilizedElement;
+    return _utilizedElement;
 }
 
 void QUmlManifestation::setUtilizedElement(QUmlPackageableElement *utilizedElement)
 {
     // This is a read-write association end
 
-    QM_D(QUmlManifestation);
-    if (d->utilizedElement != utilizedElement) {
-        d->utilizedElement = utilizedElement;
+    if (_utilizedElement != utilizedElement) {
+        _utilizedElement = utilizedElement;
     }
 }
 

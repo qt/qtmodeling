@@ -39,14 +39,8 @@
 **
 ****************************************************************************/
 #include "qumlcontinuation.h"
-#include "qumlcontinuation_p.h"
 
 QT_BEGIN_NAMESPACE
-
-QUmlContinuationPrivate::QUmlContinuationPrivate() :
-    setting(true)
-{
-}
 
 /*!
     \class QUmlContinuation
@@ -56,11 +50,9 @@ QUmlContinuationPrivate::QUmlContinuationPrivate() :
     \brief A continuation is a syntactic way to define continuations of different branches of an alternative combined fragment. Continuations is intuitively similar to labels representing intermediate points in a flow of control.
  */
 
-QUmlContinuation::QUmlContinuation(bool create_d_ptr) :
-    QUmlInteractionFragment(false)
+QUmlContinuation::QUmlContinuation() :
+    _setting(true)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlContinuationPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -72,17 +64,15 @@ bool QUmlContinuation::setting() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlContinuation);
-    return d->setting;
+    return _setting;
 }
 
 void QUmlContinuation::setSetting(bool setting)
 {
     // This is a read-write property
 
-    QM_D(QUmlContinuation);
-    if (d->setting != setting) {
-        d->setting = setting;
+    if (_setting != setting) {
+        _setting = setting;
     }
 }
 

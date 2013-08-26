@@ -39,20 +39,12 @@
 **
 ****************************************************************************/
 #include "qumlinteractionuse.h"
-#include "qumlinteractionuse_p.h"
 
 #include <QtUml/QUmlGate>
 #include <QtUml/QUmlProperty>
 #include <QtUml/QUmlValueSpecification>
 
 QT_BEGIN_NAMESPACE
-
-QUmlInteractionUsePrivate::QUmlInteractionUsePrivate() :
-    refersTo(0),
-    returnValue(0),
-    returnValueRecipient(0)
-{
-}
 
 /*!
     \class QUmlInteractionUse
@@ -62,11 +54,11 @@ QUmlInteractionUsePrivate::QUmlInteractionUsePrivate() :
     \brief An interaction use refers to an interaction. The interaction use is a shorthand for copying the contents of the referenced interaction where the interaction use is. To be accurate the copying must take into account substituting parameters with arguments and connect the formal gates with the actual ones.
  */
 
-QUmlInteractionUse::QUmlInteractionUse(bool create_d_ptr) :
-    QUmlInteractionFragment(false)
+QUmlInteractionUse::QUmlInteractionUse() :
+    _refersTo(0),
+    _returnValue(0),
+    _returnValueRecipient(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlInteractionUsePrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -78,17 +70,15 @@ QSet<QUmlGate *> QUmlInteractionUse::actualGate() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlInteractionUse);
-    return d->actualGate;
+    return _actualGate;
 }
 
 void QUmlInteractionUse::addActualGate(QUmlGate *actualGate)
 {
     // This is a read-write association end
 
-    QM_D(QUmlInteractionUse);
-    if (!d->actualGate.contains(actualGate)) {
-        d->actualGate.insert(actualGate);
+    if (!_actualGate.contains(actualGate)) {
+        _actualGate.insert(actualGate);
     }
 }
 
@@ -96,9 +86,8 @@ void QUmlInteractionUse::removeActualGate(QUmlGate *actualGate)
 {
     // This is a read-write association end
 
-    QM_D(QUmlInteractionUse);
-    if (d->actualGate.contains(actualGate)) {
-        d->actualGate.remove(actualGate);
+    if (_actualGate.contains(actualGate)) {
+        _actualGate.remove(actualGate);
     }
 }
 
@@ -109,17 +98,15 @@ QList<QUmlValueSpecification *> QUmlInteractionUse::argument() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlInteractionUse);
-    return d->argument;
+    return _argument;
 }
 
 void QUmlInteractionUse::addArgument(QUmlValueSpecification *argument)
 {
     // This is a read-write association end
 
-    QM_D(QUmlInteractionUse);
-    if (!d->argument.contains(argument)) {
-        d->argument.append(argument);
+    if (!_argument.contains(argument)) {
+        _argument.append(argument);
     }
 }
 
@@ -127,9 +114,8 @@ void QUmlInteractionUse::removeArgument(QUmlValueSpecification *argument)
 {
     // This is a read-write association end
 
-    QM_D(QUmlInteractionUse);
-    if (d->argument.contains(argument)) {
-        d->argument.removeAll(argument);
+    if (_argument.contains(argument)) {
+        _argument.removeAll(argument);
     }
 }
 
@@ -140,17 +126,15 @@ QUmlInteraction *QUmlInteractionUse::refersTo() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlInteractionUse);
-    return d->refersTo;
+    return _refersTo;
 }
 
 void QUmlInteractionUse::setRefersTo(QUmlInteraction *refersTo)
 {
     // This is a read-write association end
 
-    QM_D(QUmlInteractionUse);
-    if (d->refersTo != refersTo) {
-        d->refersTo = refersTo;
+    if (_refersTo != refersTo) {
+        _refersTo = refersTo;
     }
 }
 
@@ -161,17 +145,15 @@ QUmlValueSpecification *QUmlInteractionUse::returnValue() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlInteractionUse);
-    return d->returnValue;
+    return _returnValue;
 }
 
 void QUmlInteractionUse::setReturnValue(QUmlValueSpecification *returnValue)
 {
     // This is a read-write association end
 
-    QM_D(QUmlInteractionUse);
-    if (d->returnValue != returnValue) {
-        d->returnValue = returnValue;
+    if (_returnValue != returnValue) {
+        _returnValue = returnValue;
     }
 }
 
@@ -182,17 +164,15 @@ QUmlProperty *QUmlInteractionUse::returnValueRecipient() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlInteractionUse);
-    return d->returnValueRecipient;
+    return _returnValueRecipient;
 }
 
 void QUmlInteractionUse::setReturnValueRecipient(QUmlProperty *returnValueRecipient)
 {
     // This is a read-write association end
 
-    QM_D(QUmlInteractionUse);
-    if (d->returnValueRecipient != returnValueRecipient) {
-        d->returnValueRecipient = returnValueRecipient;
+    if (_returnValueRecipient != returnValueRecipient) {
+        _returnValueRecipient = returnValueRecipient;
     }
 }
 

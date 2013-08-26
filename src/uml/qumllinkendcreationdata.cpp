@@ -39,17 +39,10 @@
 **
 ****************************************************************************/
 #include "qumllinkendcreationdata.h"
-#include "qumllinkendcreationdata_p.h"
 
 #include <QtUml/QUmlInputPin>
 
 QT_BEGIN_NAMESPACE
-
-QUmlLinkEndCreationDataPrivate::QUmlLinkEndCreationDataPrivate() :
-    insertAt(0),
-    isReplaceAll(false)
-{
-}
 
 /*!
     \class QUmlLinkEndCreationData
@@ -59,11 +52,10 @@ QUmlLinkEndCreationDataPrivate::QUmlLinkEndCreationDataPrivate() :
     \brief A link end creation data is not an action. It is an element that identifies links. It identifies one end of a link to be created by a create link action.
  */
 
-QUmlLinkEndCreationData::QUmlLinkEndCreationData(bool create_d_ptr) :
-    QUmlLinkEndData(false)
+QUmlLinkEndCreationData::QUmlLinkEndCreationData() :
+    _insertAt(0),
+    _isReplaceAll(false)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlLinkEndCreationDataPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -75,17 +67,15 @@ QUmlInputPin *QUmlLinkEndCreationData::insertAt() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlLinkEndCreationData);
-    return d->insertAt;
+    return _insertAt;
 }
 
 void QUmlLinkEndCreationData::setInsertAt(QUmlInputPin *insertAt)
 {
     // This is a read-write association end
 
-    QM_D(QUmlLinkEndCreationData);
-    if (d->insertAt != insertAt) {
-        d->insertAt = insertAt;
+    if (_insertAt != insertAt) {
+        _insertAt = insertAt;
     }
 }
 
@@ -96,17 +86,15 @@ bool QUmlLinkEndCreationData::isReplaceAll() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlLinkEndCreationData);
-    return d->isReplaceAll;
+    return _isReplaceAll;
 }
 
 void QUmlLinkEndCreationData::setReplaceAll(bool isReplaceAll)
 {
     // This is a read-write property
 
-    QM_D(QUmlLinkEndCreationData);
-    if (d->isReplaceAll != isReplaceAll) {
-        d->isReplaceAll = isReplaceAll;
+    if (_isReplaceAll != isReplaceAll) {
+        _isReplaceAll = isReplaceAll;
     }
 }
 

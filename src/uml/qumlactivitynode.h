@@ -58,11 +58,10 @@ class QUmlActivityPartition;
 class QUmlInterruptibleActivityRegion;
 class QUmlStructuredActivityNode;
 
-class QUmlActivityNodePrivate;
 class Q_UML_EXPORT QUmlActivityNode : public QUmlRedefinableElement
 {
 public:
-    Q_DECL_HIDDEN QUmlActivityNode(bool create_d_ptr = true);
+    Q_DECL_HIDDEN QUmlActivityNode();
 
     // Owned attributes
     QUmlActivity *activity() const;
@@ -85,6 +84,16 @@ public:
     QSet<QUmlActivityNode *> redefinedNode() const;
     void addRedefinedNode(QUmlActivityNode *redefinedNode);
     void removeRedefinedNode(QUmlActivityNode *redefinedNode);
+
+protected:
+    QUmlActivity *_activity;
+    QSet<QUmlActivityGroup *> _inGroup;
+    QSet<QUmlInterruptibleActivityRegion *> _inInterruptibleRegion;
+    QSet<QUmlActivityPartition *> _inPartition;
+    QUmlStructuredActivityNode *_inStructuredNode;
+    QSet<QUmlActivityEdge *> _incoming;
+    QSet<QUmlActivityEdge *> _outgoing;
+    QSet<QUmlActivityNode *> _redefinedNode;
 };
 
 QT_END_NAMESPACE

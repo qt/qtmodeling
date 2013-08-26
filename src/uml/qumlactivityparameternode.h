@@ -53,15 +53,17 @@ QT_MODULE(QtUml)
 
 class QUmlParameter;
 
-class QUmlActivityParameterNodePrivate;
 class Q_UML_EXPORT QUmlActivityParameterNode : public QUmlObjectNode
 {
 public:
-    QUmlActivityParameterNode(bool create_d_ptr = true);
+    QUmlActivityParameterNode();
 
     // Owned attributes
     QUmlParameter *parameter() const;
     void setParameter(QUmlParameter *parameter);
+
+protected:
+    QUmlParameter *_parameter;
 };
 
 QT_END_NAMESPACE

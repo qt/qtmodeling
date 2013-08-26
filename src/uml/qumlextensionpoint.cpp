@@ -39,16 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlextensionpoint.h"
-#include "qumlextensionpoint_p.h"
 
 #include <QtUml/QUmlUseCase>
 
 QT_BEGIN_NAMESPACE
-
-QUmlExtensionPointPrivate::QUmlExtensionPointPrivate() :
-    useCase(0)
-{
-}
 
 /*!
     \class QUmlExtensionPoint
@@ -58,11 +52,9 @@ QUmlExtensionPointPrivate::QUmlExtensionPointPrivate() :
     \brief An extension point identifies a point in the behavior of a use case where that behavior can be extended by the behavior of some other (extending) use case, as specified by an extend relationship.
  */
 
-QUmlExtensionPoint::QUmlExtensionPoint(bool create_d_ptr) :
-    QUmlRedefinableElement(false)
+QUmlExtensionPoint::QUmlExtensionPoint() :
+    _useCase(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlExtensionPointPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -74,17 +66,15 @@ QUmlUseCase *QUmlExtensionPoint::useCase() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlExtensionPoint);
-    return d->useCase;
+    return _useCase;
 }
 
 void QUmlExtensionPoint::setUseCase(QUmlUseCase *useCase)
 {
     // This is a read-write association end
 
-    QM_D(QUmlExtensionPoint);
-    if (d->useCase != useCase) {
-        d->useCase = useCase;
+    if (_useCase != useCase) {
+        _useCase = useCase;
     }
 }
 

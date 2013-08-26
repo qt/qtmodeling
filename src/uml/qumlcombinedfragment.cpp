@@ -39,17 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlcombinedfragment.h"
-#include "qumlcombinedfragment_p.h"
 
 #include <QtUml/QUmlGate>
 #include <QtUml/QUmlInteractionOperand>
 
 QT_BEGIN_NAMESPACE
-
-QUmlCombinedFragmentPrivate::QUmlCombinedFragmentPrivate() :
-    interactionOperator(QtUml::InteractionOperatorSeq)
-{
-}
 
 /*!
     \class QUmlCombinedFragment
@@ -59,11 +53,9 @@ QUmlCombinedFragmentPrivate::QUmlCombinedFragmentPrivate() :
     \brief A combined fragment defines an expression of interaction fragments. A combined fragment is defined by an interaction operator and corresponding interaction operands. Through the use of combined fragments the user will be able to describe a number of traces in a compact and concise manner.
  */
 
-QUmlCombinedFragment::QUmlCombinedFragment(bool create_d_ptr) :
-    QUmlInteractionFragment(false)
+QUmlCombinedFragment::QUmlCombinedFragment() :
+    _interactionOperator(QtUml::InteractionOperatorSeq)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlCombinedFragmentPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -75,17 +67,15 @@ QSet<QUmlGate *> QUmlCombinedFragment::cfragmentGate() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlCombinedFragment);
-    return d->cfragmentGate;
+    return _cfragmentGate;
 }
 
 void QUmlCombinedFragment::addCfragmentGate(QUmlGate *cfragmentGate)
 {
     // This is a read-write association end
 
-    QM_D(QUmlCombinedFragment);
-    if (!d->cfragmentGate.contains(cfragmentGate)) {
-        d->cfragmentGate.insert(cfragmentGate);
+    if (!_cfragmentGate.contains(cfragmentGate)) {
+        _cfragmentGate.insert(cfragmentGate);
     }
 }
 
@@ -93,9 +83,8 @@ void QUmlCombinedFragment::removeCfragmentGate(QUmlGate *cfragmentGate)
 {
     // This is a read-write association end
 
-    QM_D(QUmlCombinedFragment);
-    if (d->cfragmentGate.contains(cfragmentGate)) {
-        d->cfragmentGate.remove(cfragmentGate);
+    if (_cfragmentGate.contains(cfragmentGate)) {
+        _cfragmentGate.remove(cfragmentGate);
     }
 }
 
@@ -106,17 +95,15 @@ QtUml::InteractionOperatorKind QUmlCombinedFragment::interactionOperator() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlCombinedFragment);
-    return d->interactionOperator;
+    return _interactionOperator;
 }
 
 void QUmlCombinedFragment::setInteractionOperator(QtUml::InteractionOperatorKind interactionOperator)
 {
     // This is a read-write property
 
-    QM_D(QUmlCombinedFragment);
-    if (d->interactionOperator != interactionOperator) {
-        d->interactionOperator = interactionOperator;
+    if (_interactionOperator != interactionOperator) {
+        _interactionOperator = interactionOperator;
     }
 }
 
@@ -127,17 +114,15 @@ QList<QUmlInteractionOperand *> QUmlCombinedFragment::operand() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlCombinedFragment);
-    return d->operand;
+    return _operand;
 }
 
 void QUmlCombinedFragment::addOperand(QUmlInteractionOperand *operand)
 {
     // This is a read-write association end
 
-    QM_D(QUmlCombinedFragment);
-    if (!d->operand.contains(operand)) {
-        d->operand.append(operand);
+    if (!_operand.contains(operand)) {
+        _operand.append(operand);
     }
 }
 
@@ -145,9 +130,8 @@ void QUmlCombinedFragment::removeOperand(QUmlInteractionOperand *operand)
 {
     // This is a read-write association end
 
-    QM_D(QUmlCombinedFragment);
-    if (d->operand.contains(operand)) {
-        d->operand.removeAll(operand);
+    if (_operand.contains(operand)) {
+        _operand.removeAll(operand);
     }
 }
 

@@ -53,17 +53,20 @@ QT_MODULE(QtUml)
 
 class QUmlProtocolStateMachine;
 
-class QUmlProtocolConformancePrivate;
 class Q_UML_EXPORT QUmlProtocolConformance : public QUmlDirectedRelationship
 {
 public:
-    QUmlProtocolConformance(bool create_d_ptr = true);
+    QUmlProtocolConformance();
 
     // Owned attributes
     QUmlProtocolStateMachine *generalMachine() const;
     void setGeneralMachine(QUmlProtocolStateMachine *generalMachine);
     QUmlProtocolStateMachine *specificMachine() const;
     void setSpecificMachine(QUmlProtocolStateMachine *specificMachine);
+
+protected:
+    QUmlProtocolStateMachine *_generalMachine;
+    QUmlProtocolStateMachine *_specificMachine;
 };
 
 QT_END_NAMESPACE

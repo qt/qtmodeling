@@ -39,19 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlgeneralizationset.h"
-#include "qumlgeneralizationset_p.h"
 
 #include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlGeneralization>
 
 QT_BEGIN_NAMESPACE
-
-QUmlGeneralizationSetPrivate::QUmlGeneralizationSetPrivate() :
-    isCovering(false),
-    isDisjoint(false),
-    powertype(0)
-{
-}
 
 /*!
     \class QUmlGeneralizationSet
@@ -61,11 +53,11 @@ QUmlGeneralizationSetPrivate::QUmlGeneralizationSetPrivate() :
     \brief A generalization set is a packageable element whose instances define collections of subsets of generalization relationships.
  */
 
-QUmlGeneralizationSet::QUmlGeneralizationSet(bool create_d_ptr) :
-    QUmlPackageableElement(false)
+QUmlGeneralizationSet::QUmlGeneralizationSet() :
+    _isCovering(false),
+    _isDisjoint(false),
+    _powertype(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlGeneralizationSetPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -77,17 +69,15 @@ QSet<QUmlGeneralization *> QUmlGeneralizationSet::generalization() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlGeneralizationSet);
-    return d->generalization;
+    return _generalization;
 }
 
 void QUmlGeneralizationSet::addGeneralization(QUmlGeneralization *generalization)
 {
     // This is a read-write association end
 
-    QM_D(QUmlGeneralizationSet);
-    if (!d->generalization.contains(generalization)) {
-        d->generalization.insert(generalization);
+    if (!_generalization.contains(generalization)) {
+        _generalization.insert(generalization);
     }
 }
 
@@ -95,9 +85,8 @@ void QUmlGeneralizationSet::removeGeneralization(QUmlGeneralization *generalizat
 {
     // This is a read-write association end
 
-    QM_D(QUmlGeneralizationSet);
-    if (d->generalization.contains(generalization)) {
-        d->generalization.remove(generalization);
+    if (_generalization.contains(generalization)) {
+        _generalization.remove(generalization);
     }
 }
 
@@ -108,17 +97,15 @@ bool QUmlGeneralizationSet::isCovering() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlGeneralizationSet);
-    return d->isCovering;
+    return _isCovering;
 }
 
 void QUmlGeneralizationSet::setCovering(bool isCovering)
 {
     // This is a read-write property
 
-    QM_D(QUmlGeneralizationSet);
-    if (d->isCovering != isCovering) {
-        d->isCovering = isCovering;
+    if (_isCovering != isCovering) {
+        _isCovering = isCovering;
     }
 }
 
@@ -129,17 +116,15 @@ bool QUmlGeneralizationSet::isDisjoint() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlGeneralizationSet);
-    return d->isDisjoint;
+    return _isDisjoint;
 }
 
 void QUmlGeneralizationSet::setDisjoint(bool isDisjoint)
 {
     // This is a read-write property
 
-    QM_D(QUmlGeneralizationSet);
-    if (d->isDisjoint != isDisjoint) {
-        d->isDisjoint = isDisjoint;
+    if (_isDisjoint != isDisjoint) {
+        _isDisjoint = isDisjoint;
     }
 }
 
@@ -150,17 +135,15 @@ QUmlClassifier *QUmlGeneralizationSet::powertype() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlGeneralizationSet);
-    return d->powertype;
+    return _powertype;
 }
 
 void QUmlGeneralizationSet::setPowertype(QUmlClassifier *powertype)
 {
     // This is a read-write association end
 
-    QM_D(QUmlGeneralizationSet);
-    if (d->powertype != powertype) {
-        d->powertype = powertype;
+    if (_powertype != powertype) {
+        _powertype = powertype;
     }
 }
 

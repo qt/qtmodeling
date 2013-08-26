@@ -39,16 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlcallaction.h"
-#include "qumlcallaction_p.h"
 
 #include <QtUml/QUmlOutputPin>
 
 QT_BEGIN_NAMESPACE
-
-QUmlCallActionPrivate::QUmlCallActionPrivate() :
-    isSynchronous(true)
-{
-}
 
 /*!
     \class QUmlCallAction
@@ -58,11 +52,9 @@ QUmlCallActionPrivate::QUmlCallActionPrivate() :
     \brief CallAction is an abstract class for actions that invoke behavior and receive return values.
  */
 
-QUmlCallAction::QUmlCallAction(bool create_d_ptr) :
-    QUmlInvocationAction(false)
+QUmlCallAction::QUmlCallAction() :
+    _isSynchronous(true)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlCallActionPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -74,17 +66,15 @@ bool QUmlCallAction::isSynchronous() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlCallAction);
-    return d->isSynchronous;
+    return _isSynchronous;
 }
 
 void QUmlCallAction::setSynchronous(bool isSynchronous)
 {
     // This is a read-write property
 
-    QM_D(QUmlCallAction);
-    if (d->isSynchronous != isSynchronous) {
-        d->isSynchronous = isSynchronous;
+    if (_isSynchronous != isSynchronous) {
+        _isSynchronous = isSynchronous;
     }
 }
 
@@ -95,17 +85,15 @@ QList<QUmlOutputPin *> QUmlCallAction::result() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlCallAction);
-    return d->result;
+    return _result;
 }
 
 void QUmlCallAction::addResult(QUmlOutputPin *result)
 {
     // This is a read-write association end
 
-    QM_D(QUmlCallAction);
-    if (!d->result.contains(result)) {
-        d->result.append(result);
+    if (!_result.contains(result)) {
+        _result.append(result);
     }
 }
 
@@ -113,9 +101,8 @@ void QUmlCallAction::removeResult(QUmlOutputPin *result)
 {
     // This is a read-write association end
 
-    QM_D(QUmlCallAction);
-    if (d->result.contains(result)) {
-        d->result.removeAll(result);
+    if (_result.contains(result)) {
+        _result.removeAll(result);
     }
 }
 

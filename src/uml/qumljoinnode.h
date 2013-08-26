@@ -53,17 +53,20 @@ QT_MODULE(QtUml)
 
 class QUmlValueSpecification;
 
-class QUmlJoinNodePrivate;
 class Q_UML_EXPORT QUmlJoinNode : public QUmlControlNode
 {
 public:
-    QUmlJoinNode(bool create_d_ptr = true);
+    QUmlJoinNode();
 
     // Owned attributes
     bool isCombineDuplicate() const;
     void setCombineDuplicate(bool isCombineDuplicate);
     QUmlValueSpecification *joinSpec() const;
     void setJoinSpec(QUmlValueSpecification *joinSpec);
+
+protected:
+    bool _isCombineDuplicate;
+    QUmlValueSpecification *_joinSpec;
 };
 
 QT_END_NAMESPACE

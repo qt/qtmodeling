@@ -53,11 +53,10 @@ QT_MODULE(QtUml)
 
 class QUmlBehavior;
 
-class QUmlObjectFlowPrivate;
 class Q_UML_EXPORT QUmlObjectFlow : public QUmlActivityEdge
 {
 public:
-    QUmlObjectFlow(bool create_d_ptr = true);
+    QUmlObjectFlow();
 
     // Owned attributes
     bool isMulticast() const;
@@ -68,6 +67,12 @@ public:
     void setSelection(QUmlBehavior *selection);
     QUmlBehavior *transformation() const;
     void setTransformation(QUmlBehavior *transformation);
+
+protected:
+    bool _isMulticast;
+    bool _isMultireceive;
+    QUmlBehavior *_selection;
+    QUmlBehavior *_transformation;
 };
 
 QT_END_NAMESPACE

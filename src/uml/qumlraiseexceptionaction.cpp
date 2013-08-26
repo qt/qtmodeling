@@ -39,16 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlraiseexceptionaction.h"
-#include "qumlraiseexceptionaction_p.h"
 
 #include <QtUml/QUmlInputPin>
 
 QT_BEGIN_NAMESPACE
-
-QUmlRaiseExceptionActionPrivate::QUmlRaiseExceptionActionPrivate() :
-    exception(0)
-{
-}
 
 /*!
     \class QUmlRaiseExceptionAction
@@ -58,11 +52,9 @@ QUmlRaiseExceptionActionPrivate::QUmlRaiseExceptionActionPrivate() :
     \brief A raise exception action is an action that causes an exception to occur. The input value becomes the exception object.
  */
 
-QUmlRaiseExceptionAction::QUmlRaiseExceptionAction(bool create_d_ptr) :
-    QUmlAction(false)
+QUmlRaiseExceptionAction::QUmlRaiseExceptionAction() :
+    _exception(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlRaiseExceptionActionPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -74,17 +66,15 @@ QUmlInputPin *QUmlRaiseExceptionAction::exception() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlRaiseExceptionAction);
-    return d->exception;
+    return _exception;
 }
 
 void QUmlRaiseExceptionAction::setException(QUmlInputPin *exception)
 {
     // This is a read-write association end
 
-    QM_D(QUmlRaiseExceptionAction);
-    if (d->exception != exception) {
-        d->exception = exception;
+    if (_exception != exception) {
+        _exception = exception;
     }
 }
 

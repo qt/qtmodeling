@@ -39,16 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlduration.h"
-#include "qumlduration_p.h"
 
 #include <QtUml/QUmlObservation>
 
 QT_BEGIN_NAMESPACE
-
-QUmlDurationPrivate::QUmlDurationPrivate() :
-    expr(0)
-{
-}
 
 /*!
     \class QUmlDuration
@@ -58,11 +52,9 @@ QUmlDurationPrivate::QUmlDurationPrivate() :
     \brief Duration defines a value specification that specifies the temporal distance between two time instants.
  */
 
-QUmlDuration::QUmlDuration(bool create_d_ptr) :
-    QUmlValueSpecification(false)
+QUmlDuration::QUmlDuration() :
+    _expr(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlDurationPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -74,17 +66,15 @@ QUmlValueSpecification *QUmlDuration::expr() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlDuration);
-    return d->expr;
+    return _expr;
 }
 
 void QUmlDuration::setExpr(QUmlValueSpecification *expr)
 {
     // This is a read-write association end
 
-    QM_D(QUmlDuration);
-    if (d->expr != expr) {
-        d->expr = expr;
+    if (_expr != expr) {
+        _expr = expr;
     }
 }
 
@@ -95,17 +85,15 @@ QSet<QUmlObservation *> QUmlDuration::observation() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlDuration);
-    return d->observation;
+    return _observation;
 }
 
 void QUmlDuration::addObservation(QUmlObservation *observation)
 {
     // This is a read-write association end
 
-    QM_D(QUmlDuration);
-    if (!d->observation.contains(observation)) {
-        d->observation.insert(observation);
+    if (!_observation.contains(observation)) {
+        _observation.insert(observation);
     }
 }
 
@@ -113,9 +101,8 @@ void QUmlDuration::removeObservation(QUmlObservation *observation)
 {
     // This is a read-write association end
 
-    QM_D(QUmlDuration);
-    if (d->observation.contains(observation)) {
-        d->observation.remove(observation);
+    if (_observation.contains(observation)) {
+        _observation.remove(observation);
     }
 }
 

@@ -39,13 +39,8 @@
 **
 ****************************************************************************/
 #include "qumloutputpin.h"
-#include "qumloutputpin_p.h"
 
 QT_BEGIN_NAMESPACE
-
-QUmlOutputPinPrivate::QUmlOutputPinPrivate()
-{
-}
 
 /*!
     \class QUmlOutputPin
@@ -55,11 +50,8 @@ QUmlOutputPinPrivate::QUmlOutputPinPrivate()
     \brief An output pin is a pin that holds output values produced by an action.
  */
 
-QUmlOutputPin::QUmlOutputPin(bool create_d_ptr) :
-    QUmlPin(false)
+QUmlOutputPin::QUmlOutputPin()
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlOutputPinPrivate);
 }
 
 QT_END_NAMESPACE

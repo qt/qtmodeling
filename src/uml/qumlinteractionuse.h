@@ -55,11 +55,10 @@ class QUmlGate;
 class QUmlProperty;
 class QUmlValueSpecification;
 
-class QUmlInteractionUsePrivate;
 class Q_UML_EXPORT QUmlInteractionUse : public QUmlInteractionFragment
 {
 public:
-    QUmlInteractionUse(bool create_d_ptr = true);
+    QUmlInteractionUse();
 
     // Owned attributes
     QSet<QUmlGate *> actualGate() const;
@@ -74,6 +73,13 @@ public:
     void setReturnValue(QUmlValueSpecification *returnValue);
     QUmlProperty *returnValueRecipient() const;
     void setReturnValueRecipient(QUmlProperty *returnValueRecipient);
+
+protected:
+    QSet<QUmlGate *> _actualGate;
+    QList<QUmlValueSpecification *> _argument;
+    QUmlInteraction *_refersTo;
+    QUmlValueSpecification *_returnValue;
+    QUmlProperty *_returnValueRecipient;
 };
 
 QT_END_NAMESPACE

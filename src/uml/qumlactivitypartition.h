@@ -55,11 +55,10 @@ class QUmlActivityEdge;
 class QUmlActivityNode;
 class QUmlElement;
 
-class QUmlActivityPartitionPrivate;
 class Q_UML_EXPORT QUmlActivityPartition : public QUmlActivityGroup
 {
 public:
-    QUmlActivityPartition(bool create_d_ptr = true);
+    QUmlActivityPartition();
 
     // Owned attributes
     QSet<QUmlActivityEdge *> edge() const;
@@ -79,6 +78,15 @@ public:
     void removeSubpartition(QUmlActivityPartition *subpartition);
     QUmlActivityPartition *superPartition() const;
     void setSuperPartition(QUmlActivityPartition *superPartition);
+
+protected:
+    QSet<QUmlActivityEdge *> _edge;
+    bool _isDimension;
+    bool _isExternal;
+    QSet<QUmlActivityNode *> _node;
+    QUmlElement *_represents;
+    QSet<QUmlActivityPartition *> _subpartition;
+    QUmlActivityPartition *_superPartition;
 };
 
 QT_END_NAMESPACE

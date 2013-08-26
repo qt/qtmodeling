@@ -57,11 +57,10 @@ class QUmlClassifier;
 class QUmlSlot;
 class QUmlValueSpecification;
 
-class QUmlInstanceSpecificationPrivate;
 class Q_UML_EXPORT QUmlInstanceSpecification : public QUmlDeployedArtifact, public QUmlPackageableElement, public QUmlDeploymentTarget
 {
 public:
-    QUmlInstanceSpecification(bool create_d_ptr = true);
+    QUmlInstanceSpecification();
 
     // Owned attributes
     QSet<QUmlClassifier *> classifier() const;
@@ -72,6 +71,11 @@ public:
     void removeSlot(QUmlSlot *slot_);
     QUmlValueSpecification *specification() const;
     void setSpecification(QUmlValueSpecification *specification);
+
+protected:
+    QSet<QUmlClassifier *> _classifier;
+    QSet<QUmlSlot *> _slot_;
+    QUmlValueSpecification *_specification;
 };
 
 QT_END_NAMESPACE

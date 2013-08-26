@@ -39,18 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlinterfacerealization.h"
-#include "qumlinterfacerealization_p.h"
 
 #include <QtUml/QUmlBehavioredClassifier>
 #include <QtUml/QUmlInterface>
 
 QT_BEGIN_NAMESPACE
-
-QUmlInterfaceRealizationPrivate::QUmlInterfaceRealizationPrivate() :
-    contract(0),
-    implementingClassifier(0)
-{
-}
 
 /*!
     \class QUmlInterfaceRealization
@@ -60,11 +53,10 @@ QUmlInterfaceRealizationPrivate::QUmlInterfaceRealizationPrivate() :
     \brief An interface realization is a specialized realization relationship between a classifier and an interface. This relationship signifies that the realizing classifier conforms to the contract specified by the interface.
  */
 
-QUmlInterfaceRealization::QUmlInterfaceRealization(bool create_d_ptr) :
-    QUmlRealization(false)
+QUmlInterfaceRealization::QUmlInterfaceRealization() :
+    _contract(0),
+    _implementingClassifier(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlInterfaceRealizationPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -76,17 +68,15 @@ QUmlInterface *QUmlInterfaceRealization::contract() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlInterfaceRealization);
-    return d->contract;
+    return _contract;
 }
 
 void QUmlInterfaceRealization::setContract(QUmlInterface *contract)
 {
     // This is a read-write association end
 
-    QM_D(QUmlInterfaceRealization);
-    if (d->contract != contract) {
-        d->contract = contract;
+    if (_contract != contract) {
+        _contract = contract;
     }
 }
 
@@ -97,17 +87,15 @@ QUmlBehavioredClassifier *QUmlInterfaceRealization::implementingClassifier() con
 {
     // This is a read-write association end
 
-    QM_D(const QUmlInterfaceRealization);
-    return d->implementingClassifier;
+    return _implementingClassifier;
 }
 
 void QUmlInterfaceRealization::setImplementingClassifier(QUmlBehavioredClassifier *implementingClassifier)
 {
     // This is a read-write association end
 
-    QM_D(QUmlInterfaceRealization);
-    if (d->implementingClassifier != implementingClassifier) {
-        d->implementingClassifier = implementingClassifier;
+    if (_implementingClassifier != implementingClassifier) {
+        _implementingClassifier = implementingClassifier;
     }
 }
 

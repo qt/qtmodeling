@@ -39,16 +39,10 @@
 **
 ****************************************************************************/
 #include "qumltimeexpression.h"
-#include "qumltimeexpression_p.h"
 
 #include <QtUml/QUmlObservation>
 
 QT_BEGIN_NAMESPACE
-
-QUmlTimeExpressionPrivate::QUmlTimeExpressionPrivate() :
-    expr(0)
-{
-}
 
 /*!
     \class QUmlTimeExpression
@@ -58,11 +52,9 @@ QUmlTimeExpressionPrivate::QUmlTimeExpressionPrivate() :
     \brief A time expression defines a value specification that represents a time value.
  */
 
-QUmlTimeExpression::QUmlTimeExpression(bool create_d_ptr) :
-    QUmlValueSpecification(false)
+QUmlTimeExpression::QUmlTimeExpression() :
+    _expr(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlTimeExpressionPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -74,17 +66,15 @@ QUmlValueSpecification *QUmlTimeExpression::expr() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlTimeExpression);
-    return d->expr;
+    return _expr;
 }
 
 void QUmlTimeExpression::setExpr(QUmlValueSpecification *expr)
 {
     // This is a read-write association end
 
-    QM_D(QUmlTimeExpression);
-    if (d->expr != expr) {
-        d->expr = expr;
+    if (_expr != expr) {
+        _expr = expr;
     }
 }
 
@@ -95,17 +85,15 @@ QSet<QUmlObservation *> QUmlTimeExpression::observation() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlTimeExpression);
-    return d->observation;
+    return _observation;
 }
 
 void QUmlTimeExpression::addObservation(QUmlObservation *observation)
 {
     // This is a read-write association end
 
-    QM_D(QUmlTimeExpression);
-    if (!d->observation.contains(observation)) {
-        d->observation.insert(observation);
+    if (!_observation.contains(observation)) {
+        _observation.insert(observation);
     }
 }
 
@@ -113,9 +101,8 @@ void QUmlTimeExpression::removeObservation(QUmlObservation *observation)
 {
     // This is a read-write association end
 
-    QM_D(QUmlTimeExpression);
-    if (d->observation.contains(observation)) {
-        d->observation.remove(observation);
+    if (_observation.contains(observation)) {
+        _observation.remove(observation);
     }
 }
 

@@ -54,11 +54,10 @@ QT_MODULE(QtUml)
 class QUmlEvent;
 class QUmlPort;
 
-class QUmlTriggerPrivate;
 class Q_UML_EXPORT QUmlTrigger : public QUmlNamedElement
 {
 public:
-    QUmlTrigger(bool create_d_ptr = true);
+    QUmlTrigger();
 
     // Owned attributes
     QUmlEvent *event() const;
@@ -66,6 +65,10 @@ public:
     QSet<QUmlPort *> port() const;
     void addPort(QUmlPort *port);
     void removePort(QUmlPort *port);
+
+protected:
+    QUmlEvent *_event;
+    QSet<QUmlPort *> _port;
 };
 
 QT_END_NAMESPACE

@@ -39,20 +39,12 @@
 **
 ****************************************************************************/
 #include "qumlextend.h"
-#include "qumlextend_p.h"
 
 #include <QtUml/QUmlConstraint>
 #include <QtUml/QUmlExtensionPoint>
 #include <QtUml/QUmlUseCase>
 
 QT_BEGIN_NAMESPACE
-
-QUmlExtendPrivate::QUmlExtendPrivate() :
-    condition(0),
-    extendedCase(0),
-    extension(0)
-{
-}
 
 /*!
     \class QUmlExtend
@@ -62,12 +54,11 @@ QUmlExtendPrivate::QUmlExtendPrivate() :
     \brief A relationship from an extending use case to an extended use case that specifies how and when the behavior defined in the extending use case can be inserted into the behavior defined in the extended use case.
  */
 
-QUmlExtend::QUmlExtend(bool create_d_ptr) :
-    QUmlDirectedRelationship(false),
-    QUmlNamedElement(false)
+QUmlExtend::QUmlExtend() :
+    _condition(0),
+    _extendedCase(0),
+    _extension(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlExtendPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -79,17 +70,15 @@ QUmlConstraint *QUmlExtend::condition() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlExtend);
-    return d->condition;
+    return _condition;
 }
 
 void QUmlExtend::setCondition(QUmlConstraint *condition)
 {
     // This is a read-write association end
 
-    QM_D(QUmlExtend);
-    if (d->condition != condition) {
-        d->condition = condition;
+    if (_condition != condition) {
+        _condition = condition;
     }
 }
 
@@ -100,17 +89,15 @@ QUmlUseCase *QUmlExtend::extendedCase() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlExtend);
-    return d->extendedCase;
+    return _extendedCase;
 }
 
 void QUmlExtend::setExtendedCase(QUmlUseCase *extendedCase)
 {
     // This is a read-write association end
 
-    QM_D(QUmlExtend);
-    if (d->extendedCase != extendedCase) {
-        d->extendedCase = extendedCase;
+    if (_extendedCase != extendedCase) {
+        _extendedCase = extendedCase;
     }
 }
 
@@ -121,17 +108,15 @@ QUmlUseCase *QUmlExtend::extension() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlExtend);
-    return d->extension;
+    return _extension;
 }
 
 void QUmlExtend::setExtension(QUmlUseCase *extension)
 {
     // This is a read-write association end
 
-    QM_D(QUmlExtend);
-    if (d->extension != extension) {
-        d->extension = extension;
+    if (_extension != extension) {
+        _extension = extension;
     }
 }
 
@@ -142,17 +127,15 @@ QList<QUmlExtensionPoint *> QUmlExtend::extensionLocation() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlExtend);
-    return d->extensionLocation;
+    return _extensionLocation;
 }
 
 void QUmlExtend::addExtensionLocation(QUmlExtensionPoint *extensionLocation)
 {
     // This is a read-write association end
 
-    QM_D(QUmlExtend);
-    if (!d->extensionLocation.contains(extensionLocation)) {
-        d->extensionLocation.append(extensionLocation);
+    if (!_extensionLocation.contains(extensionLocation)) {
+        _extensionLocation.append(extensionLocation);
     }
 }
 
@@ -160,9 +143,8 @@ void QUmlExtend::removeExtensionLocation(QUmlExtensionPoint *extensionLocation)
 {
     // This is a read-write association end
 
-    QM_D(QUmlExtend);
-    if (d->extensionLocation.contains(extensionLocation)) {
-        d->extensionLocation.removeAll(extensionLocation);
+    if (_extensionLocation.contains(extensionLocation)) {
+        _extensionLocation.removeAll(extensionLocation);
     }
 }
 

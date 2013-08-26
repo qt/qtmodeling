@@ -39,16 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlmessageend.h"
-#include "qumlmessageend_p.h"
 
 #include <QtUml/QUmlMessage>
 
 QT_BEGIN_NAMESPACE
-
-QUmlMessageEndPrivate::QUmlMessageEndPrivate() :
-    message(0)
-{
-}
 
 /*!
     \class QUmlMessageEnd
@@ -58,11 +52,9 @@ QUmlMessageEndPrivate::QUmlMessageEndPrivate() :
     \brief MessageEnd is an abstract specialization of NamedElement that represents what can occur at the end of a message.
  */
 
-QUmlMessageEnd::QUmlMessageEnd(bool create_d_ptr) :
-    QUmlNamedElement(false)
+QUmlMessageEnd::QUmlMessageEnd() :
+    _message(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlMessageEndPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -74,17 +66,15 @@ QUmlMessage *QUmlMessageEnd::message() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlMessageEnd);
-    return d->message;
+    return _message;
 }
 
 void QUmlMessageEnd::setMessage(QUmlMessage *message)
 {
     // This is a read-write association end
 
-    QM_D(QUmlMessageEnd);
-    if (d->message != message) {
-        d->message = message;
+    if (_message != message) {
+        _message = message;
     }
 }
 

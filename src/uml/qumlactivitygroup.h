@@ -55,11 +55,10 @@ class QUmlActivity;
 class QUmlActivityEdge;
 class QUmlActivityNode;
 
-class QUmlActivityGroupPrivate;
 class Q_UML_EXPORT QUmlActivityGroup : public virtual QUmlNamedElement
 {
 public:
-    Q_DECL_HIDDEN QUmlActivityGroup(bool create_d_ptr = true);
+    Q_DECL_HIDDEN QUmlActivityGroup();
 
     // Owned attributes
     QSet<QUmlActivityEdge *> containedEdge() const;
@@ -68,6 +67,13 @@ public:
     void setInActivity(QUmlActivity *inActivity);
     QSet<QUmlActivityGroup *> subgroup() const;
     QUmlActivityGroup *superGroup() const;
+
+protected:
+    QSet<QUmlActivityEdge *> _containedEdge;
+    QSet<QUmlActivityNode *> _containedNode;
+    QUmlActivity *_inActivity;
+    QSet<QUmlActivityGroup *> _subgroup;
+    QUmlActivityGroup *_superGroup;
 };
 
 QT_END_NAMESPACE

@@ -57,11 +57,10 @@ class QUmlBehavior;
 class QUmlState;
 class QUmlValueSpecification;
 
-class QUmlObjectNodePrivate;
 class Q_UML_EXPORT QUmlObjectNode : public QUmlActivityNode, public QUmlTypedElement
 {
 public:
-    Q_DECL_HIDDEN QUmlObjectNode(bool create_d_ptr = true);
+    Q_DECL_HIDDEN QUmlObjectNode();
 
     // Owned attributes
     QSet<QUmlState *> inState() const;
@@ -75,6 +74,13 @@ public:
     void setSelection(QUmlBehavior *selection);
     QUmlValueSpecification *upperBound() const;
     void setUpperBound(QUmlValueSpecification *upperBound);
+
+protected:
+    QSet<QUmlState *> _inState;
+    bool _isControlType;
+    QtUml::ObjectNodeOrderingKind _ordering;
+    QUmlBehavior *_selection;
+    QUmlValueSpecification *_upperBound;
 };
 
 QT_END_NAMESPACE

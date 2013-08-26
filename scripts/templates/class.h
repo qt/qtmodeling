@@ -80,7 +80,6 @@ class ${forward};
 [% END %]
 [%- END -%]
 
-class Q${namespace}${className}Private;
 class Q_${namespace.upper}_EXPORT Q${namespace}${className} : 
 [%- FOREACH superclass IN generalization -%]
 public Q${namespace}${superclass.findvalue("@general")}
@@ -91,7 +90,7 @@ public QModelingObject
 [%- END %]
 {
 public:
-    [% IF class.findvalue("@isAbstract") == "true" %]Q_DECL_HIDDEN [% END %]Q${namespace}${className}(bool create_d_ptr = true);
+    [% IF class.findvalue("@isAbstract") == "true" %]Q_DECL_HIDDEN [% END %]Q${namespace}${className}();
 [%- FOREACH attribute = class.findnodes("ownedAttribute") -%]
     [%- IF loop.first %]
 
@@ -125,6 +124,11 @@ ${parameter.findvalue("@name")}
         [%- IF !loop.last %], [% END -%]
     [%- END -%]
 )[% IF operation.findvalue("@isQuery") == "true" %] const[% END %];
+[%- END %]
+
+protected:
+[%- FOREACH attribute = class.findnodes("ownedAttribute[(@isDerived=\"false\" or not(@isDerived)) or (@isDerivedUnion and @isDerivedUnion=\"true\")]") %]
+    [% QT_TYPE(namespace, attribute) -%]_[%- QT_ATTRIBUTE(attribute) %];
 [%- END %]
 };
 

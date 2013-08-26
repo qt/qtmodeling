@@ -53,15 +53,17 @@ QT_MODULE(QtUml)
 
 class QUmlMessage;
 
-class QUmlMessageEndPrivate;
 class Q_UML_EXPORT QUmlMessageEnd : public virtual QUmlNamedElement
 {
 public:
-    Q_DECL_HIDDEN QUmlMessageEnd(bool create_d_ptr = true);
+    Q_DECL_HIDDEN QUmlMessageEnd();
 
     // Owned attributes
     QUmlMessage *message() const;
     void setMessage(QUmlMessage *message);
+
+protected:
+    QUmlMessage *_message;
 };
 
 QT_END_NAMESPACE

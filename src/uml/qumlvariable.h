@@ -56,11 +56,10 @@ class QUmlAction;
 class QUmlActivity;
 class QUmlStructuredActivityNode;
 
-class QUmlVariablePrivate;
 class Q_UML_EXPORT QUmlVariable : public QUmlMultiplicityElement, public QUmlConnectableElement
 {
 public:
-    QUmlVariable(bool create_d_ptr = true);
+    QUmlVariable();
 
     // Owned attributes
     QUmlActivity *activityScope() const;
@@ -70,6 +69,10 @@ public:
 
     // Operations
     bool isAccessibleBy(QUmlAction *a) const;
+
+protected:
+    QUmlActivity *_activityScope;
+    QUmlStructuredActivityNode *_scope;
 };
 
 QT_END_NAMESPACE

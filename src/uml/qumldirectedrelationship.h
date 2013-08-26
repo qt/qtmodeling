@@ -53,15 +53,18 @@ QT_MODULE(QtUml)
 
 class QUmlElement;
 
-class QUmlDirectedRelationshipPrivate;
 class Q_UML_EXPORT QUmlDirectedRelationship : public QUmlRelationship
 {
 public:
-    Q_DECL_HIDDEN QUmlDirectedRelationship(bool create_d_ptr = true);
+    Q_DECL_HIDDEN QUmlDirectedRelationship();
 
     // Owned attributes
     QSet<QUmlElement *> source() const;
     QSet<QUmlElement *> target() const;
+
+protected:
+    QSet<QUmlElement *> _source;
+    QSet<QUmlElement *> _target;
 };
 
 QT_END_NAMESPACE

@@ -53,11 +53,10 @@ QT_MODULE(QtUml)
 
 class QUmlValueSpecification;
 
-class QUmlMultiplicityElementPrivate;
 class Q_UML_EXPORT QUmlMultiplicityElement : public virtual QUmlElement
 {
 public:
-    Q_DECL_HIDDEN QUmlMultiplicityElement(bool create_d_ptr = true);
+    Q_DECL_HIDDEN QUmlMultiplicityElement();
 
     // Owned attributes
     bool isOrdered() const;
@@ -81,6 +80,12 @@ public:
     bool isMultivalued() const;
     int lowerBound() const;
     int upperBound() const;
+
+protected:
+    bool _isOrdered;
+    bool _isUnique;
+    QUmlValueSpecification *_lowerValue;
+    QUmlValueSpecification *_upperValue;
 };
 
 QT_END_NAMESPACE

@@ -39,18 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlwritestructuralfeatureaction.h"
-#include "qumlwritestructuralfeatureaction_p.h"
 
 #include <QtUml/QUmlInputPin>
 #include <QtUml/QUmlOutputPin>
 
 QT_BEGIN_NAMESPACE
-
-QUmlWriteStructuralFeatureActionPrivate::QUmlWriteStructuralFeatureActionPrivate() :
-    result(0),
-    value(0)
-{
-}
 
 /*!
     \class QUmlWriteStructuralFeatureAction
@@ -60,11 +53,10 @@ QUmlWriteStructuralFeatureActionPrivate::QUmlWriteStructuralFeatureActionPrivate
     \brief WriteStructuralFeatureAction is an abstract class for structural feature actions that change structural feature values.
  */
 
-QUmlWriteStructuralFeatureAction::QUmlWriteStructuralFeatureAction(bool create_d_ptr) :
-    QUmlStructuralFeatureAction(false)
+QUmlWriteStructuralFeatureAction::QUmlWriteStructuralFeatureAction() :
+    _result(0),
+    _value(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlWriteStructuralFeatureActionPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -76,17 +68,15 @@ QUmlOutputPin *QUmlWriteStructuralFeatureAction::result() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlWriteStructuralFeatureAction);
-    return d->result;
+    return _result;
 }
 
 void QUmlWriteStructuralFeatureAction::setResult(QUmlOutputPin *result)
 {
     // This is a read-write association end
 
-    QM_D(QUmlWriteStructuralFeatureAction);
-    if (d->result != result) {
-        d->result = result;
+    if (_result != result) {
+        _result = result;
     }
 }
 
@@ -97,17 +87,15 @@ QUmlInputPin *QUmlWriteStructuralFeatureAction::value() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlWriteStructuralFeatureAction);
-    return d->value;
+    return _value;
 }
 
 void QUmlWriteStructuralFeatureAction::setValue(QUmlInputPin *value)
 {
     // This is a read-write association end
 
-    QM_D(QUmlWriteStructuralFeatureAction);
-    if (d->value != value) {
-        d->value = value;
+    if (_value != value) {
+        _value = value;
     }
 }
 

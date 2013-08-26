@@ -39,21 +39,12 @@
 **
 ****************************************************************************/
 #include "qumlreadisclassifiedobjectaction.h"
-#include "qumlreadisclassifiedobjectaction_p.h"
 
 #include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlInputPin>
 #include <QtUml/QUmlOutputPin>
 
 QT_BEGIN_NAMESPACE
-
-QUmlReadIsClassifiedObjectActionPrivate::QUmlReadIsClassifiedObjectActionPrivate() :
-    classifier(0),
-    isDirect(false),
-    object(0),
-    result(0)
-{
-}
 
 /*!
     \class QUmlReadIsClassifiedObjectAction
@@ -63,11 +54,12 @@ QUmlReadIsClassifiedObjectActionPrivate::QUmlReadIsClassifiedObjectActionPrivate
     \brief A read is classified object action is an action that determines whether a runtime object is classified by a given classifier.
  */
 
-QUmlReadIsClassifiedObjectAction::QUmlReadIsClassifiedObjectAction(bool create_d_ptr) :
-    QUmlAction(false)
+QUmlReadIsClassifiedObjectAction::QUmlReadIsClassifiedObjectAction() :
+    _classifier(0),
+    _isDirect(false),
+    _object(0),
+    _result(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlReadIsClassifiedObjectActionPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -79,17 +71,15 @@ QUmlClassifier *QUmlReadIsClassifiedObjectAction::classifier() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlReadIsClassifiedObjectAction);
-    return d->classifier;
+    return _classifier;
 }
 
 void QUmlReadIsClassifiedObjectAction::setClassifier(QUmlClassifier *classifier)
 {
     // This is a read-write association end
 
-    QM_D(QUmlReadIsClassifiedObjectAction);
-    if (d->classifier != classifier) {
-        d->classifier = classifier;
+    if (_classifier != classifier) {
+        _classifier = classifier;
     }
 }
 
@@ -100,17 +90,15 @@ bool QUmlReadIsClassifiedObjectAction::isDirect() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlReadIsClassifiedObjectAction);
-    return d->isDirect;
+    return _isDirect;
 }
 
 void QUmlReadIsClassifiedObjectAction::setDirect(bool isDirect)
 {
     // This is a read-write property
 
-    QM_D(QUmlReadIsClassifiedObjectAction);
-    if (d->isDirect != isDirect) {
-        d->isDirect = isDirect;
+    if (_isDirect != isDirect) {
+        _isDirect = isDirect;
     }
 }
 
@@ -121,17 +109,15 @@ QUmlInputPin *QUmlReadIsClassifiedObjectAction::object() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlReadIsClassifiedObjectAction);
-    return d->object;
+    return _object;
 }
 
 void QUmlReadIsClassifiedObjectAction::setObject(QUmlInputPin *object)
 {
     // This is a read-write association end
 
-    QM_D(QUmlReadIsClassifiedObjectAction);
-    if (d->object != object) {
-        d->object = object;
+    if (_object != object) {
+        _object = object;
     }
 }
 
@@ -142,17 +128,15 @@ QUmlOutputPin *QUmlReadIsClassifiedObjectAction::result() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlReadIsClassifiedObjectAction);
-    return d->result;
+    return _result;
 }
 
 void QUmlReadIsClassifiedObjectAction::setResult(QUmlOutputPin *result)
 {
     // This is a read-write association end
 
-    QM_D(QUmlReadIsClassifiedObjectAction);
-    if (d->result != result) {
-        d->result = result;
+    if (_result != result) {
+        _result = result;
     }
 }
 

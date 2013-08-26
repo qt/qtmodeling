@@ -39,13 +39,8 @@
 **
 ****************************************************************************/
 #include "qumlgate.h"
-#include "qumlgate_p.h"
 
 QT_BEGIN_NAMESPACE
-
-QUmlGatePrivate::QUmlGatePrivate()
-{
-}
 
 /*!
     \class QUmlGate
@@ -55,11 +50,8 @@ QUmlGatePrivate::QUmlGatePrivate()
     \brief A gate is a connection point for relating a message outside an interaction fragment with a message inside the interaction fragment.
  */
 
-QUmlGate::QUmlGate(bool create_d_ptr) :
-    QUmlMessageEnd(false)
+QUmlGate::QUmlGate()
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlGatePrivate);
 }
 
 QT_END_NAMESPACE

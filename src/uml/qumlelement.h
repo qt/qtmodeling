@@ -52,11 +52,10 @@ QT_MODULE(QtUml)
 
 class QUmlComment;
 
-class QUmlElementPrivate;
 class Q_UML_EXPORT QUmlElement : public QModelingObject
 {
 public:
-    Q_DECL_HIDDEN QUmlElement(bool create_d_ptr = true);
+    Q_DECL_HIDDEN QUmlElement();
 
     // Owned attributes
     QSet<QUmlComment *> ownedComment() const;
@@ -68,6 +67,11 @@ public:
     // Operations
     QSet<QUmlElement *> allOwnedElements() const;
     bool mustBeOwned() const;
+
+protected:
+    QSet<QUmlComment *> _ownedComment;
+    QSet<QUmlElement *> _ownedElement;
+    QUmlElement *_owner;
 };
 
 QT_END_NAMESPACE

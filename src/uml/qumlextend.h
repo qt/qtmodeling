@@ -56,11 +56,10 @@ class QUmlConstraint;
 class QUmlExtensionPoint;
 class QUmlUseCase;
 
-class QUmlExtendPrivate;
 class Q_UML_EXPORT QUmlExtend : public QUmlDirectedRelationship, public QUmlNamedElement
 {
 public:
-    QUmlExtend(bool create_d_ptr = true);
+    QUmlExtend();
 
     // Owned attributes
     QUmlConstraint *condition() const;
@@ -72,6 +71,12 @@ public:
     QList<QUmlExtensionPoint *> extensionLocation() const;
     void addExtensionLocation(QUmlExtensionPoint *extensionLocation);
     void removeExtensionLocation(QUmlExtensionPoint *extensionLocation);
+
+protected:
+    QUmlConstraint *_condition;
+    QUmlUseCase *_extendedCase;
+    QUmlUseCase *_extension;
+    QList<QUmlExtensionPoint *> _extensionLocation;
 };
 
 QT_END_NAMESPACE

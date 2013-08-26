@@ -55,11 +55,10 @@ class QUmlClassifier;
 class QUmlExecutableNode;
 class QUmlObjectNode;
 
-class QUmlExceptionHandlerPrivate;
 class Q_UML_EXPORT QUmlExceptionHandler : public QUmlElement
 {
 public:
-    QUmlExceptionHandler(bool create_d_ptr = true);
+    QUmlExceptionHandler();
 
     // Owned attributes
     QUmlObjectNode *exceptionInput() const;
@@ -71,6 +70,12 @@ public:
     void setHandlerBody(QUmlExecutableNode *handlerBody);
     QUmlExecutableNode *protectedNode() const;
     void setProtectedNode(QUmlExecutableNode *protectedNode);
+
+protected:
+    QUmlObjectNode *_exceptionInput;
+    QSet<QUmlClassifier *> _exceptionType;
+    QUmlExecutableNode *_handlerBody;
+    QUmlExecutableNode *_protectedNode;
 };
 
 QT_END_NAMESPACE

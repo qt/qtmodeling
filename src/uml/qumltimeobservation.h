@@ -53,17 +53,20 @@ QT_MODULE(QtUml)
 
 class QUmlNamedElement;
 
-class QUmlTimeObservationPrivate;
 class Q_UML_EXPORT QUmlTimeObservation : public QUmlObservation
 {
 public:
-    QUmlTimeObservation(bool create_d_ptr = true);
+    QUmlTimeObservation();
 
     // Owned attributes
     QUmlNamedElement *event() const;
     void setEvent(QUmlNamedElement *event);
     bool firstEvent() const;
     void setFirstEvent(bool firstEvent);
+
+protected:
+    QUmlNamedElement *_event;
+    bool _firstEvent;
 };
 
 QT_END_NAMESPACE

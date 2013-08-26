@@ -39,18 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlreclassifyobjectaction.h"
-#include "qumlreclassifyobjectaction_p.h"
 
 #include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlInputPin>
 
 QT_BEGIN_NAMESPACE
-
-QUmlReclassifyObjectActionPrivate::QUmlReclassifyObjectActionPrivate() :
-    isReplaceAll(false),
-    object(0)
-{
-}
 
 /*!
     \class QUmlReclassifyObjectAction
@@ -60,11 +53,10 @@ QUmlReclassifyObjectActionPrivate::QUmlReclassifyObjectActionPrivate() :
     \brief A reclassify object action is an action that changes which classifiers classify an object.
  */
 
-QUmlReclassifyObjectAction::QUmlReclassifyObjectAction(bool create_d_ptr) :
-    QUmlAction(false)
+QUmlReclassifyObjectAction::QUmlReclassifyObjectAction() :
+    _isReplaceAll(false),
+    _object(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlReclassifyObjectActionPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -76,17 +68,15 @@ bool QUmlReclassifyObjectAction::isReplaceAll() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlReclassifyObjectAction);
-    return d->isReplaceAll;
+    return _isReplaceAll;
 }
 
 void QUmlReclassifyObjectAction::setReplaceAll(bool isReplaceAll)
 {
     // This is a read-write property
 
-    QM_D(QUmlReclassifyObjectAction);
-    if (d->isReplaceAll != isReplaceAll) {
-        d->isReplaceAll = isReplaceAll;
+    if (_isReplaceAll != isReplaceAll) {
+        _isReplaceAll = isReplaceAll;
     }
 }
 
@@ -97,17 +87,15 @@ QSet<QUmlClassifier *> QUmlReclassifyObjectAction::newClassifier() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlReclassifyObjectAction);
-    return d->newClassifier;
+    return _newClassifier;
 }
 
 void QUmlReclassifyObjectAction::addNewClassifier(QUmlClassifier *newClassifier)
 {
     // This is a read-write association end
 
-    QM_D(QUmlReclassifyObjectAction);
-    if (!d->newClassifier.contains(newClassifier)) {
-        d->newClassifier.insert(newClassifier);
+    if (!_newClassifier.contains(newClassifier)) {
+        _newClassifier.insert(newClassifier);
     }
 }
 
@@ -115,9 +103,8 @@ void QUmlReclassifyObjectAction::removeNewClassifier(QUmlClassifier *newClassifi
 {
     // This is a read-write association end
 
-    QM_D(QUmlReclassifyObjectAction);
-    if (d->newClassifier.contains(newClassifier)) {
-        d->newClassifier.remove(newClassifier);
+    if (_newClassifier.contains(newClassifier)) {
+        _newClassifier.remove(newClassifier);
     }
 }
 
@@ -128,17 +115,15 @@ QUmlInputPin *QUmlReclassifyObjectAction::object() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlReclassifyObjectAction);
-    return d->object;
+    return _object;
 }
 
 void QUmlReclassifyObjectAction::setObject(QUmlInputPin *object)
 {
     // This is a read-write association end
 
-    QM_D(QUmlReclassifyObjectAction);
-    if (d->object != object) {
-        d->object = object;
+    if (_object != object) {
+        _object = object;
     }
 }
 
@@ -149,17 +134,15 @@ QSet<QUmlClassifier *> QUmlReclassifyObjectAction::oldClassifier() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlReclassifyObjectAction);
-    return d->oldClassifier;
+    return _oldClassifier;
 }
 
 void QUmlReclassifyObjectAction::addOldClassifier(QUmlClassifier *oldClassifier)
 {
     // This is a read-write association end
 
-    QM_D(QUmlReclassifyObjectAction);
-    if (!d->oldClassifier.contains(oldClassifier)) {
-        d->oldClassifier.insert(oldClassifier);
+    if (!_oldClassifier.contains(oldClassifier)) {
+        _oldClassifier.insert(oldClassifier);
     }
 }
 
@@ -167,9 +150,8 @@ void QUmlReclassifyObjectAction::removeOldClassifier(QUmlClassifier *oldClassifi
 {
     // This is a read-write association end
 
-    QM_D(QUmlReclassifyObjectAction);
-    if (d->oldClassifier.contains(oldClassifier)) {
-        d->oldClassifier.remove(oldClassifier);
+    if (_oldClassifier.contains(oldClassifier)) {
+        _oldClassifier.remove(oldClassifier);
     }
 }
 

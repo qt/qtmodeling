@@ -39,13 +39,8 @@
 **
 ****************************************************************************/
 #include "qumldestructionoccurrencespecification.h"
-#include "qumldestructionoccurrencespecification_p.h"
 
 QT_BEGIN_NAMESPACE
-
-QUmlDestructionOccurrenceSpecificationPrivate::QUmlDestructionOccurrenceSpecificationPrivate()
-{
-}
 
 /*!
     \class QUmlDestructionOccurrenceSpecification
@@ -55,11 +50,8 @@ QUmlDestructionOccurrenceSpecificationPrivate::QUmlDestructionOccurrenceSpecific
     \brief A destruction event models the destruction of an object.
  */
 
-QUmlDestructionOccurrenceSpecification::QUmlDestructionOccurrenceSpecification(bool create_d_ptr) :
-    QUmlMessageOccurrenceSpecification(false)
+QUmlDestructionOccurrenceSpecification::QUmlDestructionOccurrenceSpecification()
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlDestructionOccurrenceSpecificationPrivate);
 }
 
 QT_END_NAMESPACE

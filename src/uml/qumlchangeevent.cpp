@@ -39,16 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlchangeevent.h"
-#include "qumlchangeevent_p.h"
 
 #include <QtUml/QUmlValueSpecification>
 
 QT_BEGIN_NAMESPACE
-
-QUmlChangeEventPrivate::QUmlChangeEventPrivate() :
-    changeExpression(0)
-{
-}
 
 /*!
     \class QUmlChangeEvent
@@ -58,11 +52,9 @@ QUmlChangeEventPrivate::QUmlChangeEventPrivate() :
     \brief A change event models a change in the system configuration that makes a condition true.
  */
 
-QUmlChangeEvent::QUmlChangeEvent(bool create_d_ptr) :
-    QUmlEvent(false)
+QUmlChangeEvent::QUmlChangeEvent() :
+    _changeExpression(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlChangeEventPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -74,17 +66,15 @@ QUmlValueSpecification *QUmlChangeEvent::changeExpression() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlChangeEvent);
-    return d->changeExpression;
+    return _changeExpression;
 }
 
 void QUmlChangeEvent::setChangeExpression(QUmlValueSpecification *changeExpression)
 {
     // This is a read-write association end
 
-    QM_D(QUmlChangeEvent);
-    if (d->changeExpression != changeExpression) {
-        d->changeExpression = changeExpression;
+    if (_changeExpression != changeExpression) {
+        _changeExpression = changeExpression;
     }
 }
 

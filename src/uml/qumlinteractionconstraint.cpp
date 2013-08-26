@@ -39,17 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlinteractionconstraint.h"
-#include "qumlinteractionconstraint_p.h"
 
 #include <QtUml/QUmlValueSpecification>
 
 QT_BEGIN_NAMESPACE
-
-QUmlInteractionConstraintPrivate::QUmlInteractionConstraintPrivate() :
-    maxint(0),
-    minint(0)
-{
-}
 
 /*!
     \class QUmlInteractionConstraint
@@ -59,11 +52,10 @@ QUmlInteractionConstraintPrivate::QUmlInteractionConstraintPrivate() :
     \brief An interaction constraint is a Boolean expression that guards an operand in a combined fragment.
  */
 
-QUmlInteractionConstraint::QUmlInteractionConstraint(bool create_d_ptr) :
-    QUmlConstraint(false)
+QUmlInteractionConstraint::QUmlInteractionConstraint() :
+    _maxint(0),
+    _minint(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlInteractionConstraintPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -75,17 +67,15 @@ QUmlValueSpecification *QUmlInteractionConstraint::maxint() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlInteractionConstraint);
-    return d->maxint;
+    return _maxint;
 }
 
 void QUmlInteractionConstraint::setMaxint(QUmlValueSpecification *maxint)
 {
     // This is a read-write association end
 
-    QM_D(QUmlInteractionConstraint);
-    if (d->maxint != maxint) {
-        d->maxint = maxint;
+    if (_maxint != maxint) {
+        _maxint = maxint;
     }
 }
 
@@ -96,17 +86,15 @@ QUmlValueSpecification *QUmlInteractionConstraint::minint() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlInteractionConstraint);
-    return d->minint;
+    return _minint;
 }
 
 void QUmlInteractionConstraint::setMinint(QUmlValueSpecification *minint)
 {
     // This is a read-write association end
 
-    QM_D(QUmlInteractionConstraint);
-    if (d->minint != minint) {
-        d->minint = minint;
+    if (_minint != minint) {
+        _minint = minint;
     }
 }
 

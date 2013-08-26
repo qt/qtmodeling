@@ -39,17 +39,12 @@
 **
 ****************************************************************************/
 #include "qumldatatype.h"
-#include "qumldatatype_p.h"
 
 #include <QtUml/QUmlNamedElement>
 #include <QtUml/QUmlOperation>
 #include <QtUml/QUmlProperty>
 
 QT_BEGIN_NAMESPACE
-
-QUmlDataTypePrivate::QUmlDataTypePrivate()
-{
-}
 
 /*!
     \class QUmlDataType
@@ -59,11 +54,8 @@ QUmlDataTypePrivate::QUmlDataTypePrivate()
     \brief A data type is a type whose instances are identified only by their value. A data type may contain attributes to support the modeling of structured data types.
  */
 
-QUmlDataType::QUmlDataType(bool create_d_ptr) :
-    QUmlClassifier(false)
+QUmlDataType::QUmlDataType()
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlDataTypePrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -75,17 +67,15 @@ QList<QUmlProperty *> QUmlDataType::ownedAttribute() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlDataType);
-    return d->ownedAttribute;
+    return _ownedAttribute;
 }
 
 void QUmlDataType::addOwnedAttribute(QUmlProperty *ownedAttribute)
 {
     // This is a read-write association end
 
-    QM_D(QUmlDataType);
-    if (!d->ownedAttribute.contains(ownedAttribute)) {
-        d->ownedAttribute.append(ownedAttribute);
+    if (!_ownedAttribute.contains(ownedAttribute)) {
+        _ownedAttribute.append(ownedAttribute);
     }
 }
 
@@ -93,9 +83,8 @@ void QUmlDataType::removeOwnedAttribute(QUmlProperty *ownedAttribute)
 {
     // This is a read-write association end
 
-    QM_D(QUmlDataType);
-    if (d->ownedAttribute.contains(ownedAttribute)) {
-        d->ownedAttribute.removeAll(ownedAttribute);
+    if (_ownedAttribute.contains(ownedAttribute)) {
+        _ownedAttribute.removeAll(ownedAttribute);
     }
 }
 
@@ -106,17 +95,15 @@ QList<QUmlOperation *> QUmlDataType::ownedOperation() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlDataType);
-    return d->ownedOperation;
+    return _ownedOperation;
 }
 
 void QUmlDataType::addOwnedOperation(QUmlOperation *ownedOperation)
 {
     // This is a read-write association end
 
-    QM_D(QUmlDataType);
-    if (!d->ownedOperation.contains(ownedOperation)) {
-        d->ownedOperation.append(ownedOperation);
+    if (!_ownedOperation.contains(ownedOperation)) {
+        _ownedOperation.append(ownedOperation);
     }
 }
 
@@ -124,9 +111,8 @@ void QUmlDataType::removeOwnedOperation(QUmlOperation *ownedOperation)
 {
     // This is a read-write association end
 
-    QM_D(QUmlDataType);
-    if (d->ownedOperation.contains(ownedOperation)) {
-        d->ownedOperation.removeAll(ownedOperation);
+    if (_ownedOperation.contains(ownedOperation)) {
+        _ownedOperation.removeAll(ownedOperation);
     }
 }
 

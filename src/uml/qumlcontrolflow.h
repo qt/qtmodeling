@@ -51,11 +51,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlControlFlowPrivate;
 class Q_UML_EXPORT QUmlControlFlow : public QUmlActivityEdge
 {
 public:
-    QUmlControlFlow(bool create_d_ptr = true);
+    QUmlControlFlow();
+
+protected:
 };
 
 QT_END_NAMESPACE

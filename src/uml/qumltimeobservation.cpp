@@ -39,17 +39,10 @@
 **
 ****************************************************************************/
 #include "qumltimeobservation.h"
-#include "qumltimeobservation_p.h"
 
 #include <QtUml/QUmlNamedElement>
 
 QT_BEGIN_NAMESPACE
-
-QUmlTimeObservationPrivate::QUmlTimeObservationPrivate() :
-    event(0),
-    firstEvent(true)
-{
-}
 
 /*!
     \class QUmlTimeObservation
@@ -59,11 +52,10 @@ QUmlTimeObservationPrivate::QUmlTimeObservationPrivate() :
     \brief A time observation is a reference to a time instant during an execution. It points out the element in the model to observe and whether the observation is when this model element is entered or when it is exited.
  */
 
-QUmlTimeObservation::QUmlTimeObservation(bool create_d_ptr) :
-    QUmlObservation(false)
+QUmlTimeObservation::QUmlTimeObservation() :
+    _event(0),
+    _firstEvent(true)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlTimeObservationPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -75,17 +67,15 @@ QUmlNamedElement *QUmlTimeObservation::event() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlTimeObservation);
-    return d->event;
+    return _event;
 }
 
 void QUmlTimeObservation::setEvent(QUmlNamedElement *event)
 {
     // This is a read-write association end
 
-    QM_D(QUmlTimeObservation);
-    if (d->event != event) {
-        d->event = event;
+    if (_event != event) {
+        _event = event;
     }
 }
 
@@ -96,17 +86,15 @@ bool QUmlTimeObservation::firstEvent() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlTimeObservation);
-    return d->firstEvent;
+    return _firstEvent;
 }
 
 void QUmlTimeObservation::setFirstEvent(bool firstEvent)
 {
     // This is a read-write property
 
-    QM_D(QUmlTimeObservation);
-    if (d->firstEvent != firstEvent) {
-        d->firstEvent = firstEvent;
+    if (_firstEvent != firstEvent) {
+        _firstEvent = firstEvent;
     }
 }
 

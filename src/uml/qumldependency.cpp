@@ -39,15 +39,10 @@
 **
 ****************************************************************************/
 #include "qumldependency.h"
-#include "qumldependency_p.h"
 
 #include <QtUml/QUmlNamedElement>
 
 QT_BEGIN_NAMESPACE
-
-QUmlDependencyPrivate::QUmlDependencyPrivate()
-{
-}
 
 /*!
     \class QUmlDependency
@@ -57,12 +52,8 @@ QUmlDependencyPrivate::QUmlDependencyPrivate()
     \brief A dependency is a relationship that signifies that a single or a set of model elements requires other model elements for their specification or implementation. This means that the complete semantics of the depending elements is either semantically or structurally dependent on the definition of the supplier element(s).
  */
 
-QUmlDependency::QUmlDependency(bool create_d_ptr) :
-    QUmlPackageableElement(false),
-    QUmlDirectedRelationship(false)
+QUmlDependency::QUmlDependency()
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlDependencyPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -74,17 +65,15 @@ QSet<QUmlNamedElement *> QUmlDependency::client() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlDependency);
-    return d->client;
+    return _client;
 }
 
 void QUmlDependency::addClient(QUmlNamedElement *client)
 {
     // This is a read-write association end
 
-    QM_D(QUmlDependency);
-    if (!d->client.contains(client)) {
-        d->client.insert(client);
+    if (!_client.contains(client)) {
+        _client.insert(client);
     }
 }
 
@@ -92,9 +81,8 @@ void QUmlDependency::removeClient(QUmlNamedElement *client)
 {
     // This is a read-write association end
 
-    QM_D(QUmlDependency);
-    if (d->client.contains(client)) {
-        d->client.remove(client);
+    if (_client.contains(client)) {
+        _client.remove(client);
     }
 }
 
@@ -105,17 +93,15 @@ QSet<QUmlNamedElement *> QUmlDependency::supplier() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlDependency);
-    return d->supplier;
+    return _supplier;
 }
 
 void QUmlDependency::addSupplier(QUmlNamedElement *supplier)
 {
     // This is a read-write association end
 
-    QM_D(QUmlDependency);
-    if (!d->supplier.contains(supplier)) {
-        d->supplier.insert(supplier);
+    if (!_supplier.contains(supplier)) {
+        _supplier.insert(supplier);
     }
 }
 
@@ -123,9 +109,8 @@ void QUmlDependency::removeSupplier(QUmlNamedElement *supplier)
 {
     // This is a read-write association end
 
-    QM_D(QUmlDependency);
-    if (d->supplier.contains(supplier)) {
-        d->supplier.remove(supplier);
+    if (_supplier.contains(supplier)) {
+        _supplier.remove(supplier);
     }
 }
 

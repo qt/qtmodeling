@@ -39,18 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlcalloperationaction.h"
-#include "qumlcalloperationaction_p.h"
 
 #include <QtUml/QUmlInputPin>
 #include <QtUml/QUmlOperation>
 
 QT_BEGIN_NAMESPACE
-
-QUmlCallOperationActionPrivate::QUmlCallOperationActionPrivate() :
-    operation(0),
-    target(0)
-{
-}
 
 /*!
     \class QUmlCallOperationAction
@@ -60,11 +53,10 @@ QUmlCallOperationActionPrivate::QUmlCallOperationActionPrivate() :
     \brief A call operation action is an action that transmits an operation call request to the target object, where it may cause the invocation of associated behavior. The argument values of the action are available to the execution of the invoked behavior. If the action is marked synchronous, the execution of the call operation action waits until the execution of the invoked behavior completes and a reply transmission is returned to the caller; otherwise execution of the action is complete when the invocation of the operation is established and the execution of the invoked operation proceeds concurrently with the execution of the calling behavior. Any values returned as part of the reply transmission are put on the result output pins of the call operation action. Upon receipt of the reply transmission, execution of the call operation action is complete.
  */
 
-QUmlCallOperationAction::QUmlCallOperationAction(bool create_d_ptr) :
-    QUmlCallAction(false)
+QUmlCallOperationAction::QUmlCallOperationAction() :
+    _operation(0),
+    _target(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlCallOperationActionPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -76,17 +68,15 @@ QUmlOperation *QUmlCallOperationAction::operation() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlCallOperationAction);
-    return d->operation;
+    return _operation;
 }
 
 void QUmlCallOperationAction::setOperation(QUmlOperation *operation)
 {
     // This is a read-write association end
 
-    QM_D(QUmlCallOperationAction);
-    if (d->operation != operation) {
-        d->operation = operation;
+    if (_operation != operation) {
+        _operation = operation;
     }
 }
 
@@ -97,17 +87,15 @@ QUmlInputPin *QUmlCallOperationAction::target() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlCallOperationAction);
-    return d->target;
+    return _target;
 }
 
 void QUmlCallOperationAction::setTarget(QUmlInputPin *target)
 {
     // This is a read-write association end
 
-    QM_D(QUmlCallOperationAction);
-    if (d->target != target) {
-        d->target = target;
+    if (_target != target) {
+        _target = target;
     }
 }
 

@@ -39,17 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlexpansionnode.h"
-#include "qumlexpansionnode_p.h"
 
 #include <QtUml/QUmlExpansionRegion>
 
 QT_BEGIN_NAMESPACE
-
-QUmlExpansionNodePrivate::QUmlExpansionNodePrivate() :
-    regionAsInput(0),
-    regionAsOutput(0)
-{
-}
 
 /*!
     \class QUmlExpansionNode
@@ -59,11 +52,10 @@ QUmlExpansionNodePrivate::QUmlExpansionNodePrivate() :
     \brief An expansion node is an object node used to indicate a flow across the boundary of an expansion region. A flow into a region contains a collection that is broken into its individual elements inside the region, which is executed once per element. A flow out of a region combines individual elements into a collection for use outside the region.
  */
 
-QUmlExpansionNode::QUmlExpansionNode(bool create_d_ptr) :
-    QUmlObjectNode(false)
+QUmlExpansionNode::QUmlExpansionNode() :
+    _regionAsInput(0),
+    _regionAsOutput(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlExpansionNodePrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -75,17 +67,15 @@ QUmlExpansionRegion *QUmlExpansionNode::regionAsInput() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlExpansionNode);
-    return d->regionAsInput;
+    return _regionAsInput;
 }
 
 void QUmlExpansionNode::setRegionAsInput(QUmlExpansionRegion *regionAsInput)
 {
     // This is a read-write association end
 
-    QM_D(QUmlExpansionNode);
-    if (d->regionAsInput != regionAsInput) {
-        d->regionAsInput = regionAsInput;
+    if (_regionAsInput != regionAsInput) {
+        _regionAsInput = regionAsInput;
     }
 }
 
@@ -96,17 +86,15 @@ QUmlExpansionRegion *QUmlExpansionNode::regionAsOutput() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlExpansionNode);
-    return d->regionAsOutput;
+    return _regionAsOutput;
 }
 
 void QUmlExpansionNode::setRegionAsOutput(QUmlExpansionRegion *regionAsOutput)
 {
     // This is a read-write association end
 
-    QM_D(QUmlExpansionNode);
-    if (d->regionAsOutput != regionAsOutput) {
-        d->regionAsOutput = regionAsOutput;
+    if (_regionAsOutput != regionAsOutput) {
+        _regionAsOutput = regionAsOutput;
     }
 }
 

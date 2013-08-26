@@ -55,11 +55,10 @@ class QUmlClass;
 class QUmlExtensionEnd;
 class QUmlProperty;
 
-class QUmlExtensionPrivate;
 class Q_UML_EXPORT QUmlExtension : public QUmlAssociation
 {
 public:
-    QUmlExtension(bool create_d_ptr = true);
+    QUmlExtension();
 
     // Owned attributes
     bool isRequired() const;
@@ -69,6 +68,9 @@ public:
 
     // Operations
     QUmlProperty *metaclassEnd() const;
+
+protected:
+    QUmlExtensionEnd *_ownedEnd;
 };
 
 QT_END_NAMESPACE

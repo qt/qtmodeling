@@ -39,15 +39,10 @@
 **
 ****************************************************************************/
 #include "qumldirectedrelationship.h"
-#include "qumldirectedrelationship_p.h"
 
 #include <QtUml/QUmlElement>
 
 QT_BEGIN_NAMESPACE
-
-QUmlDirectedRelationshipPrivate::QUmlDirectedRelationshipPrivate()
-{
-}
 
 /*!
     \class QUmlDirectedRelationship
@@ -57,11 +52,8 @@ QUmlDirectedRelationshipPrivate::QUmlDirectedRelationshipPrivate()
     \brief A directed relationship represents a relationship between a collection of source model elements and a collection of target model elements.
  */
 
-QUmlDirectedRelationship::QUmlDirectedRelationship(bool create_d_ptr) :
-    QUmlRelationship(false)
+QUmlDirectedRelationship::QUmlDirectedRelationship()
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlDirectedRelationshipPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -73,8 +65,7 @@ QSet<QUmlElement *> QUmlDirectedRelationship::source() const
 {
     // This is a read-only derived union association end
 
-    QM_D(const QUmlDirectedRelationship);
-    return d->source;
+    return _source;
 }
 
 /*!
@@ -84,8 +75,7 @@ QSet<QUmlElement *> QUmlDirectedRelationship::target() const
 {
     // This is a read-only derived union association end
 
-    QM_D(const QUmlDirectedRelationship);
-    return d->target;
+    return _target;
 }
 
 QT_END_NAMESPACE

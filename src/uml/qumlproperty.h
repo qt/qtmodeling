@@ -63,11 +63,10 @@ class QUmlRedefinableElement;
 class QUmlType;
 class QUmlValueSpecification;
 
-class QUmlPropertyPrivate;
 class Q_UML_EXPORT QUmlProperty : public QUmlStructuralFeature, public QUmlConnectableElement, public QUmlDeploymentTarget
 {
 public:
-    QUmlProperty(bool create_d_ptr = true);
+    QUmlProperty();
 
     // Owned attributes
     QtUml::AggregationKind aggregation() const;
@@ -116,6 +115,23 @@ public:
     bool isConsistentWith(QUmlRedefinableElement *redefinee) const;
     bool isNavigable() const;
     QSet<QUmlType *> subsettingContext() const;
+
+protected:
+    QtUml::AggregationKind _aggregation;
+    QUmlAssociation *_association;
+    QUmlProperty *_associationEnd;
+    QUmlClass *_class_;
+    QUmlDataType *_datatype;
+    QUmlValueSpecification *_defaultValue;
+    QUmlInterface *_interface_;
+    bool _isDerived;
+    bool _isDerivedUnion;
+    bool _isID;
+    bool _isReadOnly;
+    QUmlAssociation *_owningAssociation;
+    QList<QUmlProperty *> _qualifier;
+    QSet<QUmlProperty *> _redefinedProperty;
+    QSet<QUmlProperty *> _subsettedProperty;
 };
 
 QT_END_NAMESPACE

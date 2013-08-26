@@ -39,13 +39,8 @@
 **
 ****************************************************************************/
 #include "qumlcentralbuffernode.h"
-#include "qumlcentralbuffernode_p.h"
 
 QT_BEGIN_NAMESPACE
-
-QUmlCentralBufferNodePrivate::QUmlCentralBufferNodePrivate()
-{
-}
 
 /*!
     \class QUmlCentralBufferNode
@@ -55,11 +50,8 @@ QUmlCentralBufferNodePrivate::QUmlCentralBufferNodePrivate()
     \brief A central buffer node is an object node for managing flows from multiple sources and destinations.
  */
 
-QUmlCentralBufferNode::QUmlCentralBufferNode(bool create_d_ptr) :
-    QUmlObjectNode(false)
+QUmlCentralBufferNode::QUmlCentralBufferNode()
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlCentralBufferNodePrivate);
 }
 
 QT_END_NAMESPACE

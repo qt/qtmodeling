@@ -51,11 +51,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlActorPrivate;
 class Q_UML_EXPORT QUmlActor : public QUmlBehavioredClassifier
 {
 public:
-    QUmlActor(bool create_d_ptr = true);
+    QUmlActor();
+
+protected:
 };
 
 QT_END_NAMESPACE

@@ -61,11 +61,10 @@ class QUmlStateMachine;
 class QUmlTrigger;
 class QUmlVertex;
 
-class QUmlTransitionPrivate;
 class Q_UML_EXPORT QUmlTransition : public QUmlRedefinableElement, public QUmlNamespace
 {
 public:
-    QUmlTransition(bool create_d_ptr = true);
+    QUmlTransition();
 
     // Owned attributes
     QUmlRegion *container() const;
@@ -90,6 +89,16 @@ public:
     // Operations
     QUmlStateMachine *containingStateMachine() const;
     bool isConsistentWith(QUmlRedefinableElement *redefinee) const;
+
+protected:
+    QUmlRegion *_container;
+    QUmlBehavior *_effect;
+    QUmlConstraint *_guard;
+    QtUml::TransitionKind _kind;
+    QUmlTransition *_redefinedTransition;
+    QUmlVertex *_source;
+    QUmlVertex *_target;
+    QSet<QUmlTrigger *> _trigger;
 };
 
 QT_END_NAMESPACE

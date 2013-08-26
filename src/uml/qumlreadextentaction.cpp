@@ -39,18 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlreadextentaction.h"
-#include "qumlreadextentaction_p.h"
 
 #include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlOutputPin>
 
 QT_BEGIN_NAMESPACE
-
-QUmlReadExtentActionPrivate::QUmlReadExtentActionPrivate() :
-    classifier(0),
-    result(0)
-{
-}
 
 /*!
     \class QUmlReadExtentAction
@@ -60,11 +53,10 @@ QUmlReadExtentActionPrivate::QUmlReadExtentActionPrivate() :
     \brief A read extent action is an action that retrieves the current instances of a classifier.
  */
 
-QUmlReadExtentAction::QUmlReadExtentAction(bool create_d_ptr) :
-    QUmlAction(false)
+QUmlReadExtentAction::QUmlReadExtentAction() :
+    _classifier(0),
+    _result(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlReadExtentActionPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -76,17 +68,15 @@ QUmlClassifier *QUmlReadExtentAction::classifier() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlReadExtentAction);
-    return d->classifier;
+    return _classifier;
 }
 
 void QUmlReadExtentAction::setClassifier(QUmlClassifier *classifier)
 {
     // This is a read-write association end
 
-    QM_D(QUmlReadExtentAction);
-    if (d->classifier != classifier) {
-        d->classifier = classifier;
+    if (_classifier != classifier) {
+        _classifier = classifier;
     }
 }
 
@@ -97,17 +87,15 @@ QUmlOutputPin *QUmlReadExtentAction::result() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlReadExtentAction);
-    return d->result;
+    return _result;
 }
 
 void QUmlReadExtentAction::setResult(QUmlOutputPin *result)
 {
     // This is a read-write association end
 
-    QM_D(QUmlReadExtentAction);
-    if (d->result != result) {
-        d->result = result;
+    if (_result != result) {
+        _result = result;
     }
 }
 

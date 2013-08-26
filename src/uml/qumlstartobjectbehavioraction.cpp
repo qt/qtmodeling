@@ -39,16 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlstartobjectbehavioraction.h"
-#include "qumlstartobjectbehavioraction_p.h"
 
 #include <QtUml/QUmlInputPin>
 
 QT_BEGIN_NAMESPACE
-
-QUmlStartObjectBehaviorActionPrivate::QUmlStartObjectBehaviorActionPrivate() :
-    object(0)
-{
-}
 
 /*!
     \class QUmlStartObjectBehaviorAction
@@ -58,11 +52,9 @@ QUmlStartObjectBehaviorActionPrivate::QUmlStartObjectBehaviorActionPrivate() :
     \brief StartObjectBehaviorAction is an action that starts the execution either of a directly instantiated behavior or of the classifier behavior of an object. Argument values may be supplied for the input parameters of the behavior. If the behavior is invoked synchronously, then output values may be obtained for output parameters.
  */
 
-QUmlStartObjectBehaviorAction::QUmlStartObjectBehaviorAction(bool create_d_ptr) :
-    QUmlCallAction(false)
+QUmlStartObjectBehaviorAction::QUmlStartObjectBehaviorAction() :
+    _object(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlStartObjectBehaviorActionPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -74,17 +66,15 @@ QUmlInputPin *QUmlStartObjectBehaviorAction::object() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlStartObjectBehaviorAction);
-    return d->object;
+    return _object;
 }
 
 void QUmlStartObjectBehaviorAction::setObject(QUmlInputPin *object)
 {
     // This is a read-write association end
 
-    QM_D(QUmlStartObjectBehaviorAction);
-    if (d->object != object) {
-        d->object = object;
+    if (_object != object) {
+        _object = object;
     }
 }
 

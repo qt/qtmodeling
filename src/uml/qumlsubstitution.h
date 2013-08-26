@@ -53,17 +53,20 @@ QT_MODULE(QtUml)
 
 class QUmlClassifier;
 
-class QUmlSubstitutionPrivate;
 class Q_UML_EXPORT QUmlSubstitution : public QUmlRealization
 {
 public:
-    QUmlSubstitution(bool create_d_ptr = true);
+    QUmlSubstitution();
 
     // Owned attributes
     QUmlClassifier *contract() const;
     void setContract(QUmlClassifier *contract);
     QUmlClassifier *substitutingClassifier() const;
     void setSubstitutingClassifier(QUmlClassifier *substitutingClassifier);
+
+protected:
+    QUmlClassifier *_contract;
+    QUmlClassifier *_substitutingClassifier;
 };
 
 QT_END_NAMESPACE

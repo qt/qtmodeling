@@ -39,15 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlprotocolstatemachine.h"
-#include "qumlprotocolstatemachine_p.h"
 
 #include <QtUml/QUmlProtocolConformance>
 
 QT_BEGIN_NAMESPACE
-
-QUmlProtocolStateMachinePrivate::QUmlProtocolStateMachinePrivate()
-{
-}
 
 /*!
     \class QUmlProtocolStateMachine
@@ -57,11 +52,8 @@ QUmlProtocolStateMachinePrivate::QUmlProtocolStateMachinePrivate()
     \brief A protocol state machine is always defined in the context of a classifier. It specifies which operations of the classifier can be called in which state and under which condition, thus specifying the allowed call sequences on the classifier's operations. A protocol state machine presents the possible and permitted transitions on the instances of its context classifier, together with the operations which carry the transitions. In this manner, an instance lifecycle can be created for a classifier, by specifying the order in which the operations can be activated and the states through which an instance progresses during its existence.
  */
 
-QUmlProtocolStateMachine::QUmlProtocolStateMachine(bool create_d_ptr) :
-    QUmlStateMachine(false)
+QUmlProtocolStateMachine::QUmlProtocolStateMachine()
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlProtocolStateMachinePrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -73,17 +65,15 @@ QSet<QUmlProtocolConformance *> QUmlProtocolStateMachine::conformance() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlProtocolStateMachine);
-    return d->conformance;
+    return _conformance;
 }
 
 void QUmlProtocolStateMachine::addConformance(QUmlProtocolConformance *conformance)
 {
     // This is a read-write association end
 
-    QM_D(QUmlProtocolStateMachine);
-    if (!d->conformance.contains(conformance)) {
-        d->conformance.insert(conformance);
+    if (!_conformance.contains(conformance)) {
+        _conformance.insert(conformance);
     }
 }
 
@@ -91,9 +81,8 @@ void QUmlProtocolStateMachine::removeConformance(QUmlProtocolConformance *confor
 {
     // This is a read-write association end
 
-    QM_D(QUmlProtocolStateMachine);
-    if (d->conformance.contains(conformance)) {
-        d->conformance.remove(conformance);
+    if (_conformance.contains(conformance)) {
+        _conformance.remove(conformance);
     }
 }
 

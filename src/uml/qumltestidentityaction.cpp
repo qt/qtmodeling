@@ -39,19 +39,11 @@
 **
 ****************************************************************************/
 #include "qumltestidentityaction.h"
-#include "qumltestidentityaction_p.h"
 
 #include <QtUml/QUmlInputPin>
 #include <QtUml/QUmlOutputPin>
 
 QT_BEGIN_NAMESPACE
-
-QUmlTestIdentityActionPrivate::QUmlTestIdentityActionPrivate() :
-    first(0),
-    result(0),
-    second(0)
-{
-}
 
 /*!
     \class QUmlTestIdentityAction
@@ -61,11 +53,11 @@ QUmlTestIdentityActionPrivate::QUmlTestIdentityActionPrivate() :
     \brief A test identity action is an action that tests if two values are identical objects.
  */
 
-QUmlTestIdentityAction::QUmlTestIdentityAction(bool create_d_ptr) :
-    QUmlAction(false)
+QUmlTestIdentityAction::QUmlTestIdentityAction() :
+    _first(0),
+    _result(0),
+    _second(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlTestIdentityActionPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -77,17 +69,15 @@ QUmlInputPin *QUmlTestIdentityAction::first() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlTestIdentityAction);
-    return d->first;
+    return _first;
 }
 
 void QUmlTestIdentityAction::setFirst(QUmlInputPin *first)
 {
     // This is a read-write association end
 
-    QM_D(QUmlTestIdentityAction);
-    if (d->first != first) {
-        d->first = first;
+    if (_first != first) {
+        _first = first;
     }
 }
 
@@ -98,17 +88,15 @@ QUmlOutputPin *QUmlTestIdentityAction::result() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlTestIdentityAction);
-    return d->result;
+    return _result;
 }
 
 void QUmlTestIdentityAction::setResult(QUmlOutputPin *result)
 {
     // This is a read-write association end
 
-    QM_D(QUmlTestIdentityAction);
-    if (d->result != result) {
-        d->result = result;
+    if (_result != result) {
+        _result = result;
     }
 }
 
@@ -119,17 +107,15 @@ QUmlInputPin *QUmlTestIdentityAction::second() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlTestIdentityAction);
-    return d->second;
+    return _second;
 }
 
 void QUmlTestIdentityAction::setSecond(QUmlInputPin *second)
 {
     // This is a read-write association end
 
-    QM_D(QUmlTestIdentityAction);
-    if (d->second != second) {
-        d->second = second;
+    if (_second != second) {
+        _second = second;
     }
 }
 

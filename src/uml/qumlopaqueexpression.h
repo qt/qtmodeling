@@ -54,11 +54,10 @@ QT_MODULE(QtUml)
 class QUmlBehavior;
 class QUmlParameter;
 
-class QUmlOpaqueExpressionPrivate;
 class Q_UML_EXPORT QUmlOpaqueExpression : public QUmlValueSpecification
 {
 public:
-    QUmlOpaqueExpression(bool create_d_ptr = true);
+    QUmlOpaqueExpression();
 
     // Owned attributes
     QUmlBehavior *behavior() const;
@@ -76,6 +75,11 @@ public:
     bool isNonNegative() const;
     bool isPositive() const;
     int value() const;
+
+protected:
+    QUmlBehavior *_behavior;
+    QList<QString> _body;
+    QList<QString> _language;
 };
 
 QT_END_NAMESPACE

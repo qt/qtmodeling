@@ -39,15 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlsignal.h"
-#include "qumlsignal_p.h"
 
 #include <QtUml/QUmlProperty>
 
 QT_BEGIN_NAMESPACE
-
-QUmlSignalPrivate::QUmlSignalPrivate()
-{
-}
 
 /*!
     \class QUmlSignal
@@ -57,11 +52,8 @@ QUmlSignalPrivate::QUmlSignalPrivate()
     \brief A signal is a specification of send request instances communicated between objects. The receiving object handles the received request instances as specified by its receptions. The data carried by a send request (which was passed to it by the send invocation occurrence that caused that request) are represented as attributes of the signal. A signal is defined independently of the classifiers handling the signal occurrence.
  */
 
-QUmlSignal::QUmlSignal(bool create_d_ptr) :
-    QUmlClassifier(false)
+QUmlSignal::QUmlSignal()
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlSignalPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -73,17 +65,15 @@ QList<QUmlProperty *> QUmlSignal::ownedAttribute() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlSignal);
-    return d->ownedAttribute;
+    return _ownedAttribute;
 }
 
 void QUmlSignal::addOwnedAttribute(QUmlProperty *ownedAttribute)
 {
     // This is a read-write association end
 
-    QM_D(QUmlSignal);
-    if (!d->ownedAttribute.contains(ownedAttribute)) {
-        d->ownedAttribute.append(ownedAttribute);
+    if (!_ownedAttribute.contains(ownedAttribute)) {
+        _ownedAttribute.append(ownedAttribute);
     }
 }
 
@@ -91,9 +81,8 @@ void QUmlSignal::removeOwnedAttribute(QUmlProperty *ownedAttribute)
 {
     // This is a read-write association end
 
-    QM_D(QUmlSignal);
-    if (d->ownedAttribute.contains(ownedAttribute)) {
-        d->ownedAttribute.removeAll(ownedAttribute);
+    if (_ownedAttribute.contains(ownedAttribute)) {
+        _ownedAttribute.removeAll(ownedAttribute);
     }
 }
 

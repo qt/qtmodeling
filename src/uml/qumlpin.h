@@ -52,15 +52,17 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlPinPrivate;
 class Q_UML_EXPORT QUmlPin : public QUmlMultiplicityElement, public QUmlObjectNode
 {
 public:
-    Q_DECL_HIDDEN QUmlPin(bool create_d_ptr = true);
+    Q_DECL_HIDDEN QUmlPin();
 
     // Owned attributes
     bool isControl() const;
     void setControl(bool isControl);
+
+protected:
+    bool _isControl;
 };
 
 QT_END_NAMESPACE

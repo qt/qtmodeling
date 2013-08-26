@@ -39,13 +39,8 @@
 **
 ****************************************************************************/
 #include "qumlimage.h"
-#include "qumlimage_p.h"
 
 QT_BEGIN_NAMESPACE
-
-QUmlImagePrivate::QUmlImagePrivate()
-{
-}
 
 /*!
     \class QUmlImage
@@ -55,11 +50,8 @@ QUmlImagePrivate::QUmlImagePrivate()
     \brief Physical definition of a graphical image.
  */
 
-QUmlImage::QUmlImage(bool create_d_ptr) :
-    QUmlElement(false)
+QUmlImage::QUmlImage()
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlImagePrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -71,17 +63,15 @@ QString QUmlImage::content() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlImage);
-    return d->content;
+    return _content;
 }
 
 void QUmlImage::setContent(QString content)
 {
     // This is a read-write property
 
-    QM_D(QUmlImage);
-    if (d->content != content) {
-        d->content = content;
+    if (_content != content) {
+        _content = content;
     }
 }
 
@@ -92,17 +82,15 @@ QString QUmlImage::format() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlImage);
-    return d->format;
+    return _format;
 }
 
 void QUmlImage::setFormat(QString format)
 {
     // This is a read-write property
 
-    QM_D(QUmlImage);
-    if (d->format != format) {
-        d->format = format;
+    if (_format != format) {
+        _format = format;
     }
 }
 
@@ -113,17 +101,15 @@ QString QUmlImage::location() const
 {
     // This is a read-write property
 
-    QM_D(const QUmlImage);
-    return d->location;
+    return _location;
 }
 
 void QUmlImage::setLocation(QString location)
 {
     // This is a read-write property
 
-    QM_D(QUmlImage);
-    if (d->location != location) {
-        d->location = location;
+    if (_location != location) {
+        _location = location;
     }
 }
 

@@ -39,19 +39,12 @@
 **
 ****************************************************************************/
 #include "qumllinkenddata.h"
-#include "qumllinkenddata_p.h"
 
 #include <QtUml/QUmlInputPin>
 #include <QtUml/QUmlProperty>
 #include <QtUml/QUmlQualifierValue>
 
 QT_BEGIN_NAMESPACE
-
-QUmlLinkEndDataPrivate::QUmlLinkEndDataPrivate() :
-    end(0),
-    value(0)
-{
-}
 
 /*!
     \class QUmlLinkEndData
@@ -61,11 +54,10 @@ QUmlLinkEndDataPrivate::QUmlLinkEndDataPrivate() :
     \brief A link end data is not an action. It is an element that identifies links. It identifies one end of a link to be read or written by the children of a link action. A link cannot be passed as a runtime value to or from an action. Instead, a link is identified by its end objects and qualifier values, if any. This requires more than one piece of data, namely, the statically-specified end in the user model, the object on the end, and the qualifier values for that end, if any. These pieces are brought together around a link end data. Each association end is identified separately with an instance of the LinkEndData class.
  */
 
-QUmlLinkEndData::QUmlLinkEndData(bool create_d_ptr) :
-    QUmlElement(false)
+QUmlLinkEndData::QUmlLinkEndData() :
+    _end(0),
+    _value(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlLinkEndDataPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -77,17 +69,15 @@ QUmlProperty *QUmlLinkEndData::end() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlLinkEndData);
-    return d->end;
+    return _end;
 }
 
 void QUmlLinkEndData::setEnd(QUmlProperty *end)
 {
     // This is a read-write association end
 
-    QM_D(QUmlLinkEndData);
-    if (d->end != end) {
-        d->end = end;
+    if (_end != end) {
+        _end = end;
     }
 }
 
@@ -98,17 +88,15 @@ QSet<QUmlQualifierValue *> QUmlLinkEndData::qualifier() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlLinkEndData);
-    return d->qualifier;
+    return _qualifier;
 }
 
 void QUmlLinkEndData::addQualifier(QUmlQualifierValue *qualifier)
 {
     // This is a read-write association end
 
-    QM_D(QUmlLinkEndData);
-    if (!d->qualifier.contains(qualifier)) {
-        d->qualifier.insert(qualifier);
+    if (!_qualifier.contains(qualifier)) {
+        _qualifier.insert(qualifier);
     }
 }
 
@@ -116,9 +104,8 @@ void QUmlLinkEndData::removeQualifier(QUmlQualifierValue *qualifier)
 {
     // This is a read-write association end
 
-    QM_D(QUmlLinkEndData);
-    if (d->qualifier.contains(qualifier)) {
-        d->qualifier.remove(qualifier);
+    if (_qualifier.contains(qualifier)) {
+        _qualifier.remove(qualifier);
     }
 }
 
@@ -129,17 +116,15 @@ QUmlInputPin *QUmlLinkEndData::value() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlLinkEndData);
-    return d->value;
+    return _value;
 }
 
 void QUmlLinkEndData::setValue(QUmlInputPin *value)
 {
     // This is a read-write association end
 
-    QM_D(QUmlLinkEndData);
-    if (d->value != value) {
-        d->value = value;
+    if (_value != value) {
+        _value = value;
     }
 }
 

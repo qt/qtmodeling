@@ -39,13 +39,8 @@
 **
 ****************************************************************************/
 #include "qumlinformationitem.h"
-#include "qumlinformationitem_p.h"
 
 QT_BEGIN_NAMESPACE
-
-QUmlInformationItemPrivate::QUmlInformationItemPrivate()
-{
-}
 
 /*!
     \class QUmlInformationItem
@@ -55,11 +50,8 @@ QUmlInformationItemPrivate::QUmlInformationItemPrivate()
     \brief An information item is an abstraction of all kinds of information that can be exchanged between objects. It is a kind of classifier intended for representing information in a very abstract way, one which cannot be instantiated.
  */
 
-QUmlInformationItem::QUmlInformationItem(bool create_d_ptr) :
-    QUmlClassifier(false)
+QUmlInformationItem::QUmlInformationItem()
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlInformationItemPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -71,17 +63,15 @@ QSet<QUmlClassifier *> QUmlInformationItem::represented() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlInformationItem);
-    return d->represented;
+    return _represented;
 }
 
 void QUmlInformationItem::addRepresented(QUmlClassifier *represented)
 {
     // This is a read-write association end
 
-    QM_D(QUmlInformationItem);
-    if (!d->represented.contains(represented)) {
-        d->represented.insert(represented);
+    if (!_represented.contains(represented)) {
+        _represented.insert(represented);
     }
 }
 
@@ -89,9 +79,8 @@ void QUmlInformationItem::removeRepresented(QUmlClassifier *represented)
 {
     // This is a read-write association end
 
-    QM_D(QUmlInformationItem);
-    if (d->represented.contains(represented)) {
-        d->represented.remove(represented);
+    if (_represented.contains(represented)) {
+        _represented.remove(represented);
     }
 }
 

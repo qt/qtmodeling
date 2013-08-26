@@ -39,16 +39,10 @@
 **
 ****************************************************************************/
 #include "qumloperationtemplateparameter.h"
-#include "qumloperationtemplateparameter_p.h"
 
 #include <QtUml/QUmlOperation>
 
 QT_BEGIN_NAMESPACE
-
-QUmlOperationTemplateParameterPrivate::QUmlOperationTemplateParameterPrivate() :
-    parameteredElement(0)
-{
-}
 
 /*!
     \class QUmlOperationTemplateParameter
@@ -58,11 +52,9 @@ QUmlOperationTemplateParameterPrivate::QUmlOperationTemplateParameterPrivate() :
     \brief An operation template parameter exposes an operation as a formal parameter for a template.
  */
 
-QUmlOperationTemplateParameter::QUmlOperationTemplateParameter(bool create_d_ptr) :
-    QUmlTemplateParameter(false)
+QUmlOperationTemplateParameter::QUmlOperationTemplateParameter() :
+    _parameteredElement(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlOperationTemplateParameterPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -74,17 +66,15 @@ QUmlOperation *QUmlOperationTemplateParameter::parameteredElement() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlOperationTemplateParameter);
-    return d->parameteredElement;
+    return _parameteredElement;
 }
 
 void QUmlOperationTemplateParameter::setParameteredElement(QUmlOperation *parameteredElement)
 {
     // This is a read-write association end
 
-    QM_D(QUmlOperationTemplateParameter);
-    if (d->parameteredElement != parameteredElement) {
-        d->parameteredElement = parameteredElement;
+    if (_parameteredElement != parameteredElement) {
+        _parameteredElement = parameteredElement;
     }
 }
 

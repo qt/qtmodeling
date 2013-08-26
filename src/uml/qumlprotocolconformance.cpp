@@ -39,17 +39,10 @@
 **
 ****************************************************************************/
 #include "qumlprotocolconformance.h"
-#include "qumlprotocolconformance_p.h"
 
 #include <QtUml/QUmlProtocolStateMachine>
 
 QT_BEGIN_NAMESPACE
-
-QUmlProtocolConformancePrivate::QUmlProtocolConformancePrivate() :
-    generalMachine(0),
-    specificMachine(0)
-{
-}
 
 /*!
     \class QUmlProtocolConformance
@@ -59,11 +52,10 @@ QUmlProtocolConformancePrivate::QUmlProtocolConformancePrivate() :
     \brief Protocol state machines can be redefined into more specific protocol state machines, or into behavioral state machines. Protocol conformance declares that the specific protocol state machine specifies a protocol that conforms to the general state machine one, or that the specific behavioral state machine abide by the protocol of the general protocol state machine.
  */
 
-QUmlProtocolConformance::QUmlProtocolConformance(bool create_d_ptr) :
-    QUmlDirectedRelationship(false)
+QUmlProtocolConformance::QUmlProtocolConformance() :
+    _generalMachine(0),
+    _specificMachine(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlProtocolConformancePrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -75,17 +67,15 @@ QUmlProtocolStateMachine *QUmlProtocolConformance::generalMachine() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlProtocolConformance);
-    return d->generalMachine;
+    return _generalMachine;
 }
 
 void QUmlProtocolConformance::setGeneralMachine(QUmlProtocolStateMachine *generalMachine)
 {
     // This is a read-write association end
 
-    QM_D(QUmlProtocolConformance);
-    if (d->generalMachine != generalMachine) {
-        d->generalMachine = generalMachine;
+    if (_generalMachine != generalMachine) {
+        _generalMachine = generalMachine;
     }
 }
 
@@ -96,17 +86,15 @@ QUmlProtocolStateMachine *QUmlProtocolConformance::specificMachine() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlProtocolConformance);
-    return d->specificMachine;
+    return _specificMachine;
 }
 
 void QUmlProtocolConformance::setSpecificMachine(QUmlProtocolStateMachine *specificMachine)
 {
     // This is a read-write association end
 
-    QM_D(QUmlProtocolConformance);
-    if (d->specificMachine != specificMachine) {
-        d->specificMachine = specificMachine;
+    if (_specificMachine != specificMachine) {
+        _specificMachine = specificMachine;
     }
 }
 

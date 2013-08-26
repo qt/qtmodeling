@@ -39,18 +39,12 @@
 **
 ****************************************************************************/
 #include "qumlconnector.h"
-#include "qumlconnector_p.h"
 
 #include <QtUml/QUmlAssociation>
 #include <QtUml/QUmlBehavior>
 #include <QtUml/QUmlConnectorEnd>
 
 QT_BEGIN_NAMESPACE
-
-QUmlConnectorPrivate::QUmlConnectorPrivate() :
-    type(0)
-{
-}
 
 /*!
     \class QUmlConnector
@@ -60,11 +54,9 @@ QUmlConnectorPrivate::QUmlConnectorPrivate() :
     \brief A delegation connector is a connector that links the external contract of a component (as specified by its ports) to the realization of that behavior. It represents the forwarding of events (operation requests and events): a signal that arrives at a port that has a delegation connector to one or more parts or ports on parts will be passed on to those targets for handling. An assembly connector is a connector between two or more parts or ports on parts that defines that one or more parts provide the services that other parts use.Specifies a link that enables communication between two or more instances. This link may be an instance of an association, or it may represent the possibility of the instances being able to communicate because their identities are known by virtue of being passed in as parameters, held in variables or slots, or because the communicating instances are the same instance. The link may be realized by something as simple as a pointer or by something as complex as a network connection. In contrast to associations, which specify links between any instance of the associated classifiers, connectors specify links between instances playing the connected parts only.
  */
 
-QUmlConnector::QUmlConnector(bool create_d_ptr) :
-    QUmlFeature(false)
+QUmlConnector::QUmlConnector() :
+    _type(0)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QUmlConnectorPrivate);
 }
 
 // OWNED ATTRIBUTES
@@ -76,17 +68,15 @@ QSet<QUmlBehavior *> QUmlConnector::contract() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlConnector);
-    return d->contract;
+    return _contract;
 }
 
 void QUmlConnector::addContract(QUmlBehavior *contract)
 {
     // This is a read-write association end
 
-    QM_D(QUmlConnector);
-    if (!d->contract.contains(contract)) {
-        d->contract.insert(contract);
+    if (!_contract.contains(contract)) {
+        _contract.insert(contract);
     }
 }
 
@@ -94,9 +84,8 @@ void QUmlConnector::removeContract(QUmlBehavior *contract)
 {
     // This is a read-write association end
 
-    QM_D(QUmlConnector);
-    if (d->contract.contains(contract)) {
-        d->contract.remove(contract);
+    if (_contract.contains(contract)) {
+        _contract.remove(contract);
     }
 }
 
@@ -107,17 +96,15 @@ QList<QUmlConnectorEnd *> QUmlConnector::end() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlConnector);
-    return d->end;
+    return _end;
 }
 
 void QUmlConnector::addEnd(QUmlConnectorEnd *end)
 {
     // This is a read-write association end
 
-    QM_D(QUmlConnector);
-    if (!d->end.contains(end)) {
-        d->end.append(end);
+    if (!_end.contains(end)) {
+        _end.append(end);
     }
 }
 
@@ -125,9 +112,8 @@ void QUmlConnector::removeEnd(QUmlConnectorEnd *end)
 {
     // This is a read-write association end
 
-    QM_D(QUmlConnector);
-    if (d->end.contains(end)) {
-        d->end.removeAll(end);
+    if (_end.contains(end)) {
+        _end.removeAll(end);
     }
 }
 
@@ -150,17 +136,15 @@ QSet<QUmlConnector *> QUmlConnector::redefinedConnector() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlConnector);
-    return d->redefinedConnector;
+    return _redefinedConnector;
 }
 
 void QUmlConnector::addRedefinedConnector(QUmlConnector *redefinedConnector)
 {
     // This is a read-write association end
 
-    QM_D(QUmlConnector);
-    if (!d->redefinedConnector.contains(redefinedConnector)) {
-        d->redefinedConnector.insert(redefinedConnector);
+    if (!_redefinedConnector.contains(redefinedConnector)) {
+        _redefinedConnector.insert(redefinedConnector);
     }
 }
 
@@ -168,9 +152,8 @@ void QUmlConnector::removeRedefinedConnector(QUmlConnector *redefinedConnector)
 {
     // This is a read-write association end
 
-    QM_D(QUmlConnector);
-    if (d->redefinedConnector.contains(redefinedConnector)) {
-        d->redefinedConnector.remove(redefinedConnector);
+    if (_redefinedConnector.contains(redefinedConnector)) {
+        _redefinedConnector.remove(redefinedConnector);
     }
 }
 
@@ -181,17 +164,15 @@ QUmlAssociation *QUmlConnector::type() const
 {
     // This is a read-write association end
 
-    QM_D(const QUmlConnector);
-    return d->type;
+    return _type;
 }
 
 void QUmlConnector::setType(QUmlAssociation *type)
 {
     // This is a read-write association end
 
-    QM_D(QUmlConnector);
-    if (d->type != type) {
-        d->type = type;
+    if (_type != type) {
+        _type = type;
     }
 }
 

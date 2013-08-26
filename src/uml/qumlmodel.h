@@ -51,15 +51,17 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlModelPrivate;
 class Q_UML_EXPORT QUmlModel : public QUmlPackage
 {
 public:
-    QUmlModel(bool create_d_ptr = true);
+    QUmlModel();
 
     // Owned attributes
     QString viewpoint() const;
     void setViewpoint(QString viewpoint);
+
+protected:
+    QString _viewpoint;
 };
 
 QT_END_NAMESPACE

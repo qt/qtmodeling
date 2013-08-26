@@ -53,15 +53,17 @@ QT_MODULE(QtUml)
 
 class QUmlVariable;
 
-class QUmlVariableActionPrivate;
 class Q_UML_EXPORT QUmlVariableAction : public QUmlAction
 {
 public:
-    Q_DECL_HIDDEN QUmlVariableAction(bool create_d_ptr = true);
+    Q_DECL_HIDDEN QUmlVariableAction();
 
     // Owned attributes
     QUmlVariable *variable() const;
     void setVariable(QUmlVariable *variable);
+
+protected:
+    QUmlVariable *_variable;
 };
 
 QT_END_NAMESPACE
