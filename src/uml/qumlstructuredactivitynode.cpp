@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlstructuredactivitynode.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlActivity>
 #include <QtUml/QUmlActivityEdge>
@@ -61,6 +62,13 @@ QUmlStructuredActivityNode::QUmlStructuredActivityNode() :
     _activity(0),
     _mustIsolate(false)
 {
+    d_ptr->object.setProperty("activity", QVariant::fromValue((QUmlActivity *)(0)));
+    d_ptr->object.setProperty("edge", QVariant::fromValue(&_edge));
+    d_ptr->object.setProperty("mustIsolate", QVariant::fromValue(false));
+    d_ptr->object.setProperty("node", QVariant::fromValue(&_node));
+    d_ptr->object.setProperty("structuredNodeInput", QVariant::fromValue(&_structuredNodeInput));
+    d_ptr->object.setProperty("structuredNodeOutput", QVariant::fromValue(&_structuredNodeOutput));
+    d_ptr->object.setProperty("variable", QVariant::fromValue(&_variable));
 }
 
 // OWNED ATTRIBUTES

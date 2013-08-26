@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlinterfacerealization.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlBehavioredClassifier>
 #include <QtUml/QUmlInterface>
@@ -57,6 +58,8 @@ QUmlInterfaceRealization::QUmlInterfaceRealization() :
     _contract(0),
     _implementingClassifier(0)
 {
+    d_ptr->object.setProperty("contract", QVariant::fromValue((QUmlInterface *)(0)));
+    d_ptr->object.setProperty("implementingClassifier", QVariant::fromValue((QUmlBehavioredClassifier *)(0)));
 }
 
 // OWNED ATTRIBUTES

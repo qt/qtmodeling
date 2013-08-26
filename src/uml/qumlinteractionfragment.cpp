@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlinteractionfragment.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlGeneralOrdering>
 #include <QtUml/QUmlInteraction>
@@ -59,6 +60,10 @@ QUmlInteractionFragment::QUmlInteractionFragment() :
     _enclosingInteraction(0),
     _enclosingOperand(0)
 {
+    d_ptr->object.setProperty("covered", QVariant::fromValue(&_covered));
+    d_ptr->object.setProperty("enclosingInteraction", QVariant::fromValue((QUmlInteraction *)(0)));
+    d_ptr->object.setProperty("enclosingOperand", QVariant::fromValue((QUmlInteractionOperand *)(0)));
+    d_ptr->object.setProperty("generalOrdering", QVariant::fromValue(&_generalOrdering));
 }
 
 // OWNED ATTRIBUTES

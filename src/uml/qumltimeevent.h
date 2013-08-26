@@ -71,6 +71,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlTimeEvent *)
+Q_DECLARE_METATYPE(QList<QUmlTimeEvent *> *)
+Q_DECLARE_METATYPE(QSet<QUmlTimeEvent *> *)
+
 QT_END_HEADER
 
 #endif // QUMLTIMEEVENT_H

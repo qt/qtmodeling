@@ -61,6 +61,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlGate *)
+Q_DECLARE_METATYPE(QList<QUmlGate *> *)
+Q_DECLARE_METATYPE(QSet<QUmlGate *> *)
+
 QT_END_HEADER
 
 #endif // QUMLGATE_H

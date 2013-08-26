@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlsendsignalaction.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlInputPin>
 #include <QtUml/QUmlSignal>
@@ -57,6 +58,8 @@ QUmlSendSignalAction::QUmlSendSignalAction() :
     _signal(0),
     _target(0)
 {
+    d_ptr->object.setProperty("signal", QVariant::fromValue((QUmlSignal *)(0)));
+    d_ptr->object.setProperty("target", QVariant::fromValue((QUmlInputPin *)(0)));
 }
 
 // OWNED ATTRIBUTES

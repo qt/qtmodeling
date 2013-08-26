@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlartifact.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlManifestation>
 #include <QtUml/QUmlOperation>
@@ -56,6 +57,11 @@ QT_BEGIN_NAMESPACE
 
 QUmlArtifact::QUmlArtifact()
 {
+    d_ptr->object.setProperty("fileName", QVariant::fromValue(QString()));
+    d_ptr->object.setProperty("manifestation", QVariant::fromValue(&_manifestation));
+    d_ptr->object.setProperty("nestedArtifact", QVariant::fromValue(&_nestedArtifact));
+    d_ptr->object.setProperty("ownedAttribute", QVariant::fromValue(&_ownedAttribute));
+    d_ptr->object.setProperty("ownedOperation", QVariant::fromValue(&_ownedOperation));
 }
 
 // OWNED ATTRIBUTES

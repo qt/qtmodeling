@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlconnectableelement.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlConnectableElementTemplateParameter>
 #include <QtUml/QUmlConnectorEnd>
@@ -56,6 +57,8 @@ QT_BEGIN_NAMESPACE
 QUmlConnectableElement::QUmlConnectableElement() :
     _templateParameter(0)
 {
+    d_ptr->object.setProperty("end", QVariant::fromValue(QList<QUmlConnectorEnd *>()));
+    d_ptr->object.setProperty("templateParameter", QVariant::fromValue((QUmlConnectableElementTemplateParameter *)(0)));
 }
 
 // OWNED ATTRIBUTES

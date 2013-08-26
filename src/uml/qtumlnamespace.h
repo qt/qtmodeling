@@ -71,108 +71,134 @@ class Q_UML_EXPORT QtUml : public QObject
 public:
     enum AggregationKind
     {
-        AggregationNone = 0,
-        AggregationShared,
-        AggregationComposite
+        AggregationKindNone = 0,
+        AggregationKindShared,
+        AggregationKindComposite
     };
     enum CallConcurrencyKind
     {
-        CallConcurrencySequential = 0,
-        CallConcurrencyGuarded,
-        CallConcurrencyConcurrent
+        CallConcurrencyKindNone = 0,
+        CallConcurrencyKindSequential,
+        CallConcurrencyKindGuarded,
+        CallConcurrencyKindConcurrent
     };
     enum ConnectorKind
     {
-        ConnectorAssembly = 0,
-        ConnectorDelegation
+        ConnectorKindNone = 0,
+        ConnectorKindAssembly,
+        ConnectorKindDelegation
     };
     enum ExpansionKind
     {
-        ExpansionParallel = 0,
-        ExpansionIterative,
-        ExpansionStream
+        ExpansionKindNone = 0,
+        ExpansionKindParallel,
+        ExpansionKindIterative,
+        ExpansionKindStream
     };
     enum InteractionOperatorKind
     {
-        InteractionOperatorSeq = 0,
-        InteractionOperatorAlt,
-        InteractionOperatorOpt,
-        InteractionOperatorBreak,
-        InteractionOperatorPar,
-        InteractionOperatorStrict,
-        InteractionOperatorLoop,
-        InteractionOperatorCritical,
-        InteractionOperatorNeg,
-        InteractionOperatorAssert,
-        InteractionOperatorIgnore,
-        InteractionOperatorConsider
+        InteractionOperatorKindNone = 0,
+        InteractionOperatorKindSeq,
+        InteractionOperatorKindAlt,
+        InteractionOperatorKindOpt,
+        InteractionOperatorKindBreak,
+        InteractionOperatorKindPar,
+        InteractionOperatorKindStrict,
+        InteractionOperatorKindLoop,
+        InteractionOperatorKindCritical,
+        InteractionOperatorKindNeg,
+        InteractionOperatorKindAssert,
+        InteractionOperatorKindIgnore,
+        InteractionOperatorKindConsider
     };
     enum MessageKind
     {
-        MessageComplete = 0,
-        MessageLost,
-        MessageFound,
-        MessageUnknown
+        MessageKindNone = 0,
+        MessageKindComplete,
+        MessageKindLost,
+        MessageKindFound,
+        MessageKindUnknown
     };
     enum MessageSort
     {
-        MessageSynchCall = 0,
-        MessageAsynchCall,
-        MessageAsynchSignal,
-        MessageCreateMessage,
-        MessageDeleteMessage,
-        MessageReply
+        MessageSortNone = 0,
+        MessageSortSynchCall,
+        MessageSortAsynchCall,
+        MessageSortAsynchSignal,
+        MessageSortCreateMessage,
+        MessageSortDeleteMessage,
+        MessageSortReply
     };
     enum ObjectNodeOrderingKind
     {
-        ObjectNodeOrderingUnordered = 0,
-        ObjectNodeOrderingOrdered,
-        ObjectNodeOrderingLIFO,
-        ObjectNodeOrderingFIFO
+        ObjectNodeOrderingKindNone = 0,
+        ObjectNodeOrderingKindUnordered,
+        ObjectNodeOrderingKindOrdered,
+        ObjectNodeOrderingKindLIFO,
+        ObjectNodeOrderingKindFIFO
     };
     enum ParameterDirectionKind
     {
-        ParameterDirectionIn = 0,
-        ParameterDirectionInout,
-        ParameterDirectionOut,
-        ParameterDirectionReturn
+        ParameterDirectionKindNone = 0,
+        ParameterDirectionKindIn,
+        ParameterDirectionKindInout,
+        ParameterDirectionKindOut,
+        ParameterDirectionKindReturn
     };
     enum ParameterEffectKind
     {
-        ParameterEffectCreate = 0,
-        ParameterEffectRead,
-        ParameterEffectUpdate,
-        ParameterEffectDelete
+        ParameterEffectKindNone = 0,
+        ParameterEffectKindCreate,
+        ParameterEffectKindRead,
+        ParameterEffectKindUpdate,
+        ParameterEffectKindDelete
     };
     enum PseudostateKind
     {
-        PseudostateInitial = 0,
-        PseudostateDeepHistory,
-        PseudostateShallowHistory,
-        PseudostateJoin,
-        PseudostateFork,
-        PseudostateJunction,
-        PseudostateChoice,
-        PseudostateEntryPoint,
-        PseudostateExitPoint,
-        PseudostateTerminate
+        PseudostateKindNone = 0,
+        PseudostateKindInitial,
+        PseudostateKindDeepHistory,
+        PseudostateKindShallowHistory,
+        PseudostateKindJoin,
+        PseudostateKindFork,
+        PseudostateKindJunction,
+        PseudostateKindChoice,
+        PseudostateKindEntryPoint,
+        PseudostateKindExitPoint,
+        PseudostateKindTerminate
     };
     enum TransitionKind
     {
-        TransitionInternal = 0,
-        TransitionLocal,
-        TransitionExternal
+        TransitionKindNone = 0,
+        TransitionKindInternal,
+        TransitionKindLocal,
+        TransitionKindExternal
     };
     enum VisibilityKind
     {
-        VisibilityPublic = 0,
-        VisibilityPrivate,
-        VisibilityProtected,
-        VisibilityPackage
+        VisibilityKindNone = 0,
+        VisibilityKindPublic,
+        VisibilityKindPrivate,
+        VisibilityKindProtected,
+        VisibilityKindPackage
     };
 };
 
 QT_END_NAMESPACE
+
+Q_DECLARE_METATYPE(QtUml::AggregationKind)
+Q_DECLARE_METATYPE(QtUml::CallConcurrencyKind)
+Q_DECLARE_METATYPE(QtUml::ConnectorKind)
+Q_DECLARE_METATYPE(QtUml::ExpansionKind)
+Q_DECLARE_METATYPE(QtUml::InteractionOperatorKind)
+Q_DECLARE_METATYPE(QtUml::MessageKind)
+Q_DECLARE_METATYPE(QtUml::MessageSort)
+Q_DECLARE_METATYPE(QtUml::ObjectNodeOrderingKind)
+Q_DECLARE_METATYPE(QtUml::ParameterDirectionKind)
+Q_DECLARE_METATYPE(QtUml::ParameterEffectKind)
+Q_DECLARE_METATYPE(QtUml::PseudostateKind)
+Q_DECLARE_METATYPE(QtUml::TransitionKind)
+Q_DECLARE_METATYPE(QtUml::VisibilityKind)
 
 QT_END_HEADER
 

@@ -77,6 +77,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlVariable *)
+Q_DECLARE_METATYPE(QList<QUmlVariable *> *)
+Q_DECLARE_METATYPE(QSet<QUmlVariable *> *)
+
 QT_END_HEADER
 
 #endif // QUMLVARIABLE_H

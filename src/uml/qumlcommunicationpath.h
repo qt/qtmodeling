@@ -61,6 +61,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlCommunicationPath *)
+Q_DECLARE_METATYPE(QList<QUmlCommunicationPath *> *)
+Q_DECLARE_METATYPE(QSet<QUmlCommunicationPath *> *)
+
 QT_END_HEADER
 
 #endif // QUMLCOMMUNICATIONPATH_H

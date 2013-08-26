@@ -75,6 +75,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlParameterableElement *)
+Q_DECLARE_METATYPE(QList<QUmlParameterableElement *> *)
+Q_DECLARE_METATYPE(QSet<QUmlParameterableElement *> *)
+
 QT_END_HEADER
 
 #endif // QUMLPARAMETERABLEELEMENT_H

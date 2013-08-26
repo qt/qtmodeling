@@ -74,6 +74,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlDestroyObjectAction *)
+Q_DECLARE_METATYPE(QList<QUmlDestroyObjectAction *> *)
+Q_DECLARE_METATYPE(QSet<QUmlDestroyObjectAction *> *)
+
 QT_END_HEADER
 
 #endif // QUMLDESTROYOBJECTACTION_H

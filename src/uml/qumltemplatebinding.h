@@ -77,6 +77,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlTemplateBinding *)
+Q_DECLARE_METATYPE(QList<QUmlTemplateBinding *> *)
+Q_DECLARE_METATYPE(QSet<QUmlTemplateBinding *> *)
+
 QT_END_HEADER
 
 #endif // QUMLTEMPLATEBINDING_H

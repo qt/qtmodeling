@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlinclude.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlUseCase>
 
@@ -56,6 +57,8 @@ QUmlInclude::QUmlInclude() :
     _addition(0),
     _includingCase(0)
 {
+    d_ptr->object.setProperty("addition", QVariant::fromValue((QUmlUseCase *)(0)));
+    d_ptr->object.setProperty("includingCase", QVariant::fromValue((QUmlUseCase *)(0)));
 }
 
 // OWNED ATTRIBUTES

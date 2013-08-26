@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlactivitynode.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlActivity>
 #include <QtUml/QUmlActivityEdge>
@@ -61,6 +62,14 @@ QUmlActivityNode::QUmlActivityNode() :
     _activity(0),
     _inStructuredNode(0)
 {
+    d_ptr->object.setProperty("activity", QVariant::fromValue((QUmlActivity *)(0)));
+    d_ptr->object.setProperty("inGroup", QVariant::fromValue(&_inGroup));
+    d_ptr->object.setProperty("inInterruptibleRegion", QVariant::fromValue(&_inInterruptibleRegion));
+    d_ptr->object.setProperty("inPartition", QVariant::fromValue(&_inPartition));
+    d_ptr->object.setProperty("inStructuredNode", QVariant::fromValue((QUmlStructuredActivityNode *)(0)));
+    d_ptr->object.setProperty("incoming", QVariant::fromValue(&_incoming));
+    d_ptr->object.setProperty("outgoing", QVariant::fromValue(&_outgoing));
+    d_ptr->object.setProperty("redefinedNode", QVariant::fromValue(&_redefinedNode));
 }
 
 // OWNED ATTRIBUTES

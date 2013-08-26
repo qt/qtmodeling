@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlacceptcallaction.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlOutputPin>
 
@@ -55,6 +56,7 @@ QT_BEGIN_NAMESPACE
 QUmlAcceptCallAction::QUmlAcceptCallAction() :
     _returnInformation(0)
 {
+    d_ptr->object.setProperty("returnInformation", QVariant::fromValue((QUmlOutputPin *)(0)));
 }
 
 // OWNED ATTRIBUTES

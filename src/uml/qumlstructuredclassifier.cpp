@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlstructuredclassifier.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlConnectableElement>
 #include <QtUml/QUmlConnector>
@@ -56,6 +57,10 @@ QT_BEGIN_NAMESPACE
 
 QUmlStructuredClassifier::QUmlStructuredClassifier()
 {
+    d_ptr->object.setProperty("ownedAttribute", QVariant::fromValue(&_ownedAttribute));
+    d_ptr->object.setProperty("ownedConnector", QVariant::fromValue(&_ownedConnector));
+    d_ptr->object.setProperty("part", QVariant::fromValue(QSet<QUmlProperty *>()));
+    d_ptr->object.setProperty("role", QVariant::fromValue(&_role));
 }
 
 // OWNED ATTRIBUTES

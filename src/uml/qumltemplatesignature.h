@@ -77,6 +77,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlTemplateSignature *)
+Q_DECLARE_METATYPE(QList<QUmlTemplateSignature *> *)
+Q_DECLARE_METATYPE(QSet<QUmlTemplateSignature *> *)
+
 QT_END_HEADER
 
 #endif // QUMLTEMPLATESIGNATURE_H

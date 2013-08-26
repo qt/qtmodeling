@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumldecisionnode.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlBehavior>
 #include <QtUml/QUmlObjectFlow>
@@ -57,6 +58,8 @@ QUmlDecisionNode::QUmlDecisionNode() :
     _decisionInput(0),
     _decisionInputFlow(0)
 {
+    d_ptr->object.setProperty("decisionInput", QVariant::fromValue((QUmlBehavior *)(0)));
+    d_ptr->object.setProperty("decisionInputFlow", QVariant::fromValue((QUmlObjectFlow *)(0)));
 }
 
 // OWNED ATTRIBUTES

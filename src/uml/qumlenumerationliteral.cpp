@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlenumerationliteral.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlEnumeration>
 
@@ -55,6 +56,8 @@ QT_BEGIN_NAMESPACE
 QUmlEnumerationLiteral::QUmlEnumerationLiteral() :
     _enumeration(0)
 {
+    d_ptr->object.setProperty("classifier", QVariant::fromValue((QUmlEnumeration *)(0)));
+    d_ptr->object.setProperty("enumeration", QVariant::fromValue((QUmlEnumeration *)(0)));
 }
 
 // OWNED ATTRIBUTES

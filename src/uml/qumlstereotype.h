@@ -75,6 +75,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlStereotype *)
+Q_DECLARE_METATYPE(QList<QUmlStereotype *> *)
+Q_DECLARE_METATYPE(QSet<QUmlStereotype *> *)
+
 QT_END_HEADER
 
 #endif // QUMLSTEREOTYPE_H

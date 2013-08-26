@@ -80,6 +80,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlRedefinableElement *)
+Q_DECLARE_METATYPE(QList<QUmlRedefinableElement *> *)
+Q_DECLARE_METATYPE(QSet<QUmlRedefinableElement *> *)
+
 QT_END_HEADER
 
 #endif // QUMLREDEFINABLEELEMENT_H

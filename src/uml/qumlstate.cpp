@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlstate.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlBehavior>
 #include <QtUml/QUmlClassifier>
@@ -67,6 +68,21 @@ QUmlState::QUmlState() :
     _stateInvariant(0),
     _submachine(0)
 {
+    d_ptr->object.setProperty("connection", QVariant::fromValue(&_connection));
+    d_ptr->object.setProperty("connectionPoint", QVariant::fromValue(&_connectionPoint));
+    d_ptr->object.setProperty("deferrableTrigger", QVariant::fromValue(&_deferrableTrigger));
+    d_ptr->object.setProperty("doActivity", QVariant::fromValue((QUmlBehavior *)(0)));
+    d_ptr->object.setProperty("entry", QVariant::fromValue((QUmlBehavior *)(0)));
+    d_ptr->object.setProperty("exit", QVariant::fromValue((QUmlBehavior *)(0)));
+    d_ptr->object.setProperty("isComposite", QVariant::fromValue(false));
+    d_ptr->object.setProperty("isOrthogonal", QVariant::fromValue(false));
+    d_ptr->object.setProperty("isSimple", QVariant::fromValue(false));
+    d_ptr->object.setProperty("isSubmachineState", QVariant::fromValue(false));
+    d_ptr->object.setProperty("redefinedState", QVariant::fromValue((QUmlState *)(0)));
+    d_ptr->object.setProperty("redefinitionContext", QVariant::fromValue((QUmlClassifier *)(0)));
+    d_ptr->object.setProperty("region", QVariant::fromValue(&_region));
+    d_ptr->object.setProperty("stateInvariant", QVariant::fromValue((QUmlConstraint *)(0)));
+    d_ptr->object.setProperty("submachine", QVariant::fromValue((QUmlStateMachine *)(0)));
 }
 
 // OWNED ATTRIBUTES

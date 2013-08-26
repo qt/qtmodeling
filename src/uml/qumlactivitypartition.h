@@ -91,6 +91,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlActivityPartition *)
+Q_DECLARE_METATYPE(QList<QUmlActivityPartition *> *)
+Q_DECLARE_METATYPE(QSet<QUmlActivityPartition *> *)
+
 QT_END_HEADER
 
 #endif // QUMLACTIVITYPARTITION_H

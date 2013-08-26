@@ -80,6 +80,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlExceptionHandler *)
+Q_DECLARE_METATYPE(QList<QUmlExceptionHandler *> *)
+Q_DECLARE_METATYPE(QSet<QUmlExceptionHandler *> *)
+
 QT_END_HEADER
 
 #endif // QUMLEXCEPTIONHANDLER_H

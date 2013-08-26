@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlparameterableelement.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlTemplateParameter>
 
@@ -56,6 +57,8 @@ QUmlParameterableElement::QUmlParameterableElement() :
     _owningTemplateParameter(0),
     _templateParameter(0)
 {
+    d_ptr->object.setProperty("owningTemplateParameter", QVariant::fromValue((QUmlTemplateParameter *)(0)));
+    d_ptr->object.setProperty("templateParameter", QVariant::fromValue((QUmlTemplateParameter *)(0)));
 }
 
 // OWNED ATTRIBUTES

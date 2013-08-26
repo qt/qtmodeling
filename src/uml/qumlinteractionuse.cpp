@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlinteractionuse.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlGate>
 #include <QtUml/QUmlInteraction>
@@ -60,6 +61,11 @@ QUmlInteractionUse::QUmlInteractionUse() :
     _returnValue(0),
     _returnValueRecipient(0)
 {
+    d_ptr->object.setProperty("actualGate", QVariant::fromValue(&_actualGate));
+    d_ptr->object.setProperty("argument", QVariant::fromValue(&_argument));
+    d_ptr->object.setProperty("refersTo", QVariant::fromValue((QUmlInteraction *)(0)));
+    d_ptr->object.setProperty("returnValue", QVariant::fromValue((QUmlValueSpecification *)(0)));
+    d_ptr->object.setProperty("returnValueRecipient", QVariant::fromValue((QUmlProperty *)(0)));
 }
 
 // OWNED ATTRIBUTES

@@ -79,6 +79,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlReadIsClassifiedObjectAction *)
+Q_DECLARE_METATYPE(QList<QUmlReadIsClassifiedObjectAction *> *)
+Q_DECLARE_METATYPE(QSet<QUmlReadIsClassifiedObjectAction *> *)
+
 QT_END_HEADER
 
 #endif // QUMLREADISCLASSIFIEDOBJECTACTION_H

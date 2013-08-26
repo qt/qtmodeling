@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlclearstructuralfeatureaction.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlOutputPin>
 
@@ -55,6 +56,7 @@ QT_BEGIN_NAMESPACE
 QUmlClearStructuralFeatureAction::QUmlClearStructuralFeatureAction() :
     _result(0)
 {
+    d_ptr->object.setProperty("result", QVariant::fromValue((QUmlOutputPin *)(0)));
 }
 
 // OWNED ATTRIBUTES

@@ -68,6 +68,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlStartObjectBehaviorAction *)
+Q_DECLARE_METATYPE(QList<QUmlStartObjectBehaviorAction *> *)
+Q_DECLARE_METATYPE(QSet<QUmlStartObjectBehaviorAction *> *)
+
 QT_END_HEADER
 
 #endif // QUMLSTARTOBJECTBEHAVIORACTION_H

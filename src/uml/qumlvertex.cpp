@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlvertex.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlRegion>
 #include <QtUml/QUmlStateMachine>
@@ -57,6 +58,9 @@ QT_BEGIN_NAMESPACE
 QUmlVertex::QUmlVertex() :
     _container(0)
 {
+    d_ptr->object.setProperty("container", QVariant::fromValue((QUmlRegion *)(0)));
+    d_ptr->object.setProperty("incoming", QVariant::fromValue(QSet<QUmlTransition *>()));
+    d_ptr->object.setProperty("outgoing", QVariant::fromValue(QSet<QUmlTransition *>()));
 }
 
 // OWNED ATTRIBUTES

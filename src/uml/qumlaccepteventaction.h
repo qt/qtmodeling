@@ -77,6 +77,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlAcceptEventAction *)
+Q_DECLARE_METATYPE(QList<QUmlAcceptEventAction *> *)
+Q_DECLARE_METATYPE(QSet<QUmlAcceptEventAction *> *)
+
 QT_END_HEADER
 
 #endif // QUMLACCEPTEVENTACTION_H

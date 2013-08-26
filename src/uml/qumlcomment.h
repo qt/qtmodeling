@@ -70,6 +70,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlComment *)
+Q_DECLARE_METATYPE(QList<QUmlComment *> *)
+Q_DECLARE_METATYPE(QSet<QUmlComment *> *)
+
 QT_END_HEADER
 
 #endif // QUMLCOMMENT_H

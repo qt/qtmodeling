@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlreadlinkobjectendaction.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlInputPin>
 #include <QtUml/QUmlOutputPin>
@@ -59,6 +60,9 @@ QUmlReadLinkObjectEndAction::QUmlReadLinkObjectEndAction() :
     _object(0),
     _result(0)
 {
+    d_ptr->object.setProperty("end", QVariant::fromValue((QUmlProperty *)(0)));
+    d_ptr->object.setProperty("object", QVariant::fromValue((QUmlInputPin *)(0)));
+    d_ptr->object.setProperty("result", QVariant::fromValue((QUmlOutputPin *)(0)));
 }
 
 // OWNED ATTRIBUTES

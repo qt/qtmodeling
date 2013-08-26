@@ -61,6 +61,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlInitialNode *)
+Q_DECLARE_METATYPE(QList<QUmlInitialNode *> *)
+Q_DECLARE_METATYPE(QSet<QUmlInitialNode *> *)
+
 QT_END_HEADER
 
 #endif // QUMLINITIALNODE_H

@@ -70,6 +70,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlLiteralReal *)
+Q_DECLARE_METATYPE(QList<QUmlLiteralReal *> *)
+Q_DECLARE_METATYPE(QSet<QUmlLiteralReal *> *)
+
 QT_END_HEADER
 
 #endif // QUMLLITERALREAL_H

@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlinterruptibleactivityregion.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlActivityEdge>
 #include <QtUml/QUmlActivityNode>
@@ -55,6 +56,8 @@ QT_BEGIN_NAMESPACE
 
 QUmlInterruptibleActivityRegion::QUmlInterruptibleActivityRegion()
 {
+    d_ptr->object.setProperty("interruptingEdge", QVariant::fromValue(&_interruptingEdge));
+    d_ptr->object.setProperty("node", QVariant::fromValue(&_node));
 }
 
 // OWNED ATTRIBUTES

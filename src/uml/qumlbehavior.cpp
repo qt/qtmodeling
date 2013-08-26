@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlbehavior.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlBehavioralFeature>
 #include <QtUml/QUmlBehavioredClassifier>
@@ -60,6 +61,14 @@ QUmlBehavior::QUmlBehavior() :
     _isReentrant(true),
     _specification(0)
 {
+    d_ptr->object.setProperty("context", QVariant::fromValue((QUmlBehavioredClassifier *)(0)));
+    d_ptr->object.setProperty("isReentrant", QVariant::fromValue(false));
+    d_ptr->object.setProperty("ownedParameter", QVariant::fromValue(&_ownedParameter));
+    d_ptr->object.setProperty("ownedParameterSet", QVariant::fromValue(&_ownedParameterSet));
+    d_ptr->object.setProperty("postcondition", QVariant::fromValue(&_postcondition));
+    d_ptr->object.setProperty("precondition", QVariant::fromValue(&_precondition));
+    d_ptr->object.setProperty("redefinedBehavior", QVariant::fromValue(&_redefinedBehavior));
+    d_ptr->object.setProperty("specification", QVariant::fromValue((QUmlBehavioralFeature *)(0)));
 }
 
 // OWNED ATTRIBUTES

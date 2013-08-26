@@ -71,6 +71,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlDurationConstraint *)
+Q_DECLARE_METATYPE(QList<QUmlDurationConstraint *> *)
+Q_DECLARE_METATYPE(QSet<QUmlDurationConstraint *> *)
+
 QT_END_HEADER
 
 #endif // QUMLDURATIONCONSTRAINT_H

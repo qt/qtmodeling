@@ -61,6 +61,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlDevice *)
+Q_DECLARE_METATYPE(QList<QUmlDevice *> *)
+Q_DECLARE_METATYPE(QSet<QUmlDevice *> *)
+
 QT_END_HEADER
 
 #endif // QUMLDEVICE_H

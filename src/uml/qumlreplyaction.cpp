@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlreplyaction.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlInputPin>
 #include <QtUml/QUmlTrigger>
@@ -57,6 +58,9 @@ QUmlReplyAction::QUmlReplyAction() :
     _replyToCall(0),
     _returnInformation(0)
 {
+    d_ptr->object.setProperty("replyToCall", QVariant::fromValue((QUmlTrigger *)(0)));
+    d_ptr->object.setProperty("replyValue", QVariant::fromValue(&_replyValue));
+    d_ptr->object.setProperty("returnInformation", QVariant::fromValue((QUmlInputPin *)(0)));
 }
 
 // OWNED ATTRIBUTES

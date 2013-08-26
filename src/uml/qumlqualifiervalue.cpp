@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlqualifiervalue.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlInputPin>
 #include <QtUml/QUmlProperty>
@@ -57,6 +58,8 @@ QUmlQualifierValue::QUmlQualifierValue() :
     _qualifier(0),
     _value(0)
 {
+    d_ptr->object.setProperty("qualifier", QVariant::fromValue((QUmlProperty *)(0)));
+    d_ptr->object.setProperty("value", QVariant::fromValue((QUmlInputPin *)(0)));
 }
 
 // OWNED ATTRIBUTES

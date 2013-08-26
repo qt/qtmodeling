@@ -69,6 +69,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlEnumeration *)
+Q_DECLARE_METATYPE(QList<QUmlEnumeration *> *)
+Q_DECLARE_METATYPE(QSet<QUmlEnumeration *> *)
+
 QT_END_HEADER
 
 #endif // QUMLENUMERATION_H

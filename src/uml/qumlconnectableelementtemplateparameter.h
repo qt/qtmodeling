@@ -68,6 +68,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlConnectableElementTemplateParameter *)
+Q_DECLARE_METATYPE(QList<QUmlConnectableElementTemplateParameter *> *)
+Q_DECLARE_METATYPE(QSet<QUmlConnectableElementTemplateParameter *> *)
+
 QT_END_HEADER
 
 #endif // QUMLCONNECTABLEELEMENTTEMPLATEPARAMETER_H

@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlredefinableelement.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlClassifier>
 
@@ -55,6 +56,9 @@ QT_BEGIN_NAMESPACE
 QUmlRedefinableElement::QUmlRedefinableElement() :
     _isLeaf(false)
 {
+    d_ptr->object.setProperty("isLeaf", QVariant::fromValue(false));
+    d_ptr->object.setProperty("redefinedElement", QVariant::fromValue(&_redefinedElement));
+    d_ptr->object.setProperty("redefinitionContext", QVariant::fromValue(&_redefinitionContext));
 }
 
 // OWNED ATTRIBUTES

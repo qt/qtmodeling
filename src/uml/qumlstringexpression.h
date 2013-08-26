@@ -74,6 +74,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlStringExpression *)
+Q_DECLARE_METATYPE(QList<QUmlStringExpression *> *)
+Q_DECLARE_METATYPE(QSet<QUmlStringExpression *> *)
+
 QT_END_HEADER
 
 #endif // QUMLSTRINGEXPRESSION_H

@@ -69,6 +69,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlConsiderIgnoreFragment *)
+Q_DECLARE_METATYPE(QList<QUmlConsiderIgnoreFragment *> *)
+Q_DECLARE_METATYPE(QSet<QUmlConsiderIgnoreFragment *> *)
+
 QT_END_HEADER
 
 #endif // QUMLCONSIDERIGNOREFRAGMENT_H

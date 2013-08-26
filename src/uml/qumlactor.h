@@ -61,6 +61,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlActor *)
+Q_DECLARE_METATYPE(QList<QUmlActor *> *)
+Q_DECLARE_METATYPE(QSet<QUmlActor *> *)
+
 QT_END_HEADER
 
 #endif // QUMLACTOR_H

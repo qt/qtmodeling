@@ -72,6 +72,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlStateInvariant *)
+Q_DECLARE_METATYPE(QList<QUmlStateInvariant *> *)
+Q_DECLARE_METATYPE(QSet<QUmlStateInvariant *> *)
+
 QT_END_HEADER
 
 #endif // QUMLSTATEINVARIANT_H

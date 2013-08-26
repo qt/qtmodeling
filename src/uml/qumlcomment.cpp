@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlcomment.h"
+#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -52,6 +53,8 @@ QT_BEGIN_NAMESPACE
 
 QUmlComment::QUmlComment()
 {
+    d_ptr->object.setProperty("annotatedElement", QVariant::fromValue(&_annotatedElement));
+    d_ptr->object.setProperty("body", QVariant::fromValue(QString()));
 }
 
 // OWNED ATTRIBUTES

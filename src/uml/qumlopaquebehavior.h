@@ -71,6 +71,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlOpaqueBehavior *)
+Q_DECLARE_METATYPE(QList<QUmlOpaqueBehavior *> *)
+Q_DECLARE_METATYPE(QSet<QUmlOpaqueBehavior *> *)
+
 QT_END_HEADER
 
 #endif // QUMLOPAQUEBEHAVIOR_H

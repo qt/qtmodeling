@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlinteractionconstraint.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlValueSpecification>
 
@@ -56,6 +57,8 @@ QUmlInteractionConstraint::QUmlInteractionConstraint() :
     _maxint(0),
     _minint(0)
 {
+    d_ptr->object.setProperty("maxint", QVariant::fromValue((QUmlValueSpecification *)(0)));
+    d_ptr->object.setProperty("minint", QVariant::fromValue((QUmlValueSpecification *)(0)));
 }
 
 // OWNED ATTRIBUTES

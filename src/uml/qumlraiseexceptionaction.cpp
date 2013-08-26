@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlraiseexceptionaction.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlInputPin>
 
@@ -55,6 +56,7 @@ QT_BEGIN_NAMESPACE
 QUmlRaiseExceptionAction::QUmlRaiseExceptionAction() :
     _exception(0)
 {
+    d_ptr->object.setProperty("exception", QVariant::fromValue((QUmlInputPin *)(0)));
 }
 
 // OWNED ATTRIBUTES

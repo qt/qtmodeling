@@ -78,6 +78,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlLinkAction *)
+Q_DECLARE_METATYPE(QList<QUmlLinkAction *> *)
+Q_DECLARE_METATYPE(QSet<QUmlLinkAction *> *)
+
 QT_END_HEADER
 
 #endif // QUMLLINKACTION_H

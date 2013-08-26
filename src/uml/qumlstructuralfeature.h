@@ -68,6 +68,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlStructuralFeature *)
+Q_DECLARE_METATYPE(QList<QUmlStructuralFeature *> *)
+Q_DECLARE_METATYPE(QSet<QUmlStructuralFeature *> *)
+
 QT_END_HEADER
 
 #endif // QUMLSTRUCTURALFEATURE_H

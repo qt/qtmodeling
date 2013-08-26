@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumltype.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlPackage>
 
@@ -55,6 +56,7 @@ QT_BEGIN_NAMESPACE
 QUmlType::QUmlType() :
     _package(0)
 {
+    d_ptr->object.setProperty("package", QVariant::fromValue((QUmlPackage *)(0)));
 }
 
 // OWNED ATTRIBUTES

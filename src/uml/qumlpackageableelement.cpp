@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlpackageableelement.h"
+#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -51,8 +52,9 @@ QT_BEGIN_NAMESPACE
  */
 
 QUmlPackageableElement::QUmlPackageableElement() :
-    _visibility(QtUml::VisibilityPublic)
+    _visibility(QtUml::VisibilityKindPublic)
 {
+    d_ptr->object.setProperty("visibility", QVariant::fromValue(QtUml::VisibilityKindNone));
 }
 
 // OWNED ATTRIBUTES

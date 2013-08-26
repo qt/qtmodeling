@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlextension.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlClass>
 #include <QtUml/QUmlExtensionEnd>
@@ -57,6 +58,9 @@ QT_BEGIN_NAMESPACE
 QUmlExtension::QUmlExtension() :
     _ownedEnd(0)
 {
+    d_ptr->object.setProperty("isRequired", QVariant::fromValue(false));
+    d_ptr->object.setProperty("metaclass", QVariant::fromValue((QUmlClass *)(0)));
+    d_ptr->object.setProperty("ownedEnd", QVariant::fromValue((QUmlExtensionEnd *)(0)));
 }
 
 // OWNED ATTRIBUTES

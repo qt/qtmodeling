@@ -61,6 +61,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlDeployedArtifact *)
+Q_DECLARE_METATYPE(QList<QUmlDeployedArtifact *> *)
+Q_DECLARE_METATYPE(QSet<QUmlDeployedArtifact *> *)
+
 QT_END_HEADER
 
 #endif // QUMLDEPLOYEDARTIFACT_H

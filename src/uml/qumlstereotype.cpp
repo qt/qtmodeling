@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlstereotype.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlImage>
 #include <QtUml/QUmlProfile>
@@ -55,6 +56,8 @@ QT_BEGIN_NAMESPACE
 
 QUmlStereotype::QUmlStereotype()
 {
+    d_ptr->object.setProperty("icon", QVariant::fromValue(&_icon));
+    d_ptr->object.setProperty("profile", QVariant::fromValue((QUmlProfile *)(0)));
 }
 
 // OWNED ATTRIBUTES

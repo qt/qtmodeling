@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlopaquebehavior.h"
+#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -52,6 +53,8 @@ QT_BEGIN_NAMESPACE
 
 QUmlOpaqueBehavior::QUmlOpaqueBehavior()
 {
+    d_ptr->object.setProperty("body", QVariant::fromValue(&_body));
+    d_ptr->object.setProperty("language", QVariant::fromValue(&_language));
 }
 
 // OWNED ATTRIBUTES

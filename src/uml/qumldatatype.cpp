@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumldatatype.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlNamedElement>
 #include <QtUml/QUmlOperation>
@@ -56,6 +57,8 @@ QT_BEGIN_NAMESPACE
 
 QUmlDataType::QUmlDataType()
 {
+    d_ptr->object.setProperty("ownedAttribute", QVariant::fromValue(&_ownedAttribute));
+    d_ptr->object.setProperty("ownedOperation", QVariant::fromValue(&_ownedOperation));
 }
 
 // OWNED ATTRIBUTES

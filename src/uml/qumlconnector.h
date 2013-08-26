@@ -85,6 +85,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlConnector *)
+Q_DECLARE_METATYPE(QList<QUmlConnector *> *)
+Q_DECLARE_METATYPE(QSet<QUmlConnector *> *)
+
 QT_END_HEADER
 
 #endif // QUMLCONNECTOR_H

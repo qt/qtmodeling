@@ -70,6 +70,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlEnumerationLiteral *)
+Q_DECLARE_METATYPE(QList<QUmlEnumerationLiteral *> *)
+Q_DECLARE_METATYPE(QSet<QUmlEnumerationLiteral *> *)
+
 QT_END_HEADER
 
 #endif // QUMLENUMERATIONLITERAL_H

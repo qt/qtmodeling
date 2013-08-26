@@ -123,6 +123,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlState *)
+Q_DECLARE_METATYPE(QList<QUmlState *> *)
+Q_DECLARE_METATYPE(QSet<QUmlState *> *)
+
 QT_END_HEADER
 
 #endif // QUMLSTATE_H

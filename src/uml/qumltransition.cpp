@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumltransition.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlBehavior>
 #include <QtUml/QUmlClassifier>
@@ -62,11 +63,20 @@ QUmlTransition::QUmlTransition() :
     _container(0),
     _effect(0),
     _guard(0),
-    _kind(QtUml::TransitionExternal),
+    _kind(QtUml::TransitionKindExternal),
     _redefinedTransition(0),
     _source(0),
     _target(0)
 {
+    d_ptr->object.setProperty("container", QVariant::fromValue((QUmlRegion *)(0)));
+    d_ptr->object.setProperty("effect", QVariant::fromValue((QUmlBehavior *)(0)));
+    d_ptr->object.setProperty("guard", QVariant::fromValue((QUmlConstraint *)(0)));
+    d_ptr->object.setProperty("kind", QVariant::fromValue(QtUml::TransitionKindNone));
+    d_ptr->object.setProperty("redefinedTransition", QVariant::fromValue((QUmlTransition *)(0)));
+    d_ptr->object.setProperty("redefinitionContext", QVariant::fromValue((QUmlClassifier *)(0)));
+    d_ptr->object.setProperty("source", QVariant::fromValue((QUmlVertex *)(0)));
+    d_ptr->object.setProperty("target", QVariant::fromValue((QUmlVertex *)(0)));
+    d_ptr->object.setProperty("trigger", QVariant::fromValue(&_trigger));
 }
 
 // OWNED ATTRIBUTES

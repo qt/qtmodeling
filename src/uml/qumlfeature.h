@@ -72,6 +72,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlFeature *)
+Q_DECLARE_METATYPE(QList<QUmlFeature *> *)
+Q_DECLARE_METATYPE(QSet<QUmlFeature *> *)
+
 QT_END_HEADER
 
 #endif // QUMLFEATURE_H

@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlopaqueaction.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlInputPin>
 #include <QtUml/QUmlOutputPin>
@@ -55,6 +56,10 @@ QT_BEGIN_NAMESPACE
 
 QUmlOpaqueAction::QUmlOpaqueAction()
 {
+    d_ptr->object.setProperty("body", QVariant::fromValue(&_body));
+    d_ptr->object.setProperty("inputValue", QVariant::fromValue(&_inputValue));
+    d_ptr->object.setProperty("language", QVariant::fromValue(&_language));
+    d_ptr->object.setProperty("outputValue", QVariant::fromValue(&_outputValue));
 }
 
 // OWNED ATTRIBUTES

@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumldeploymenttarget.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlDeployment>
 #include <QtUml/QUmlPackageableElement>
@@ -55,6 +56,8 @@ QT_BEGIN_NAMESPACE
 
 QUmlDeploymentTarget::QUmlDeploymentTarget()
 {
+    d_ptr->object.setProperty("deployedElement", QVariant::fromValue(QSet<QUmlPackageableElement *>()));
+    d_ptr->object.setProperty("deployment", QVariant::fromValue(&_deployment));
 }
 
 // OWNED ATTRIBUTES

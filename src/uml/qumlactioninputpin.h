@@ -68,6 +68,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlActionInputPin *)
+Q_DECLARE_METATYPE(QList<QUmlActionInputPin *> *)
+Q_DECLARE_METATYPE(QSet<QUmlActionInputPin *> *)
+
 QT_END_HEADER
 
 #endif // QUMLACTIONINPUTPIN_H

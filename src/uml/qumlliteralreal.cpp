@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlliteralreal.h"
+#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -52,6 +53,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlLiteralReal::QUmlLiteralReal()
 {
+    d_ptr->object.setProperty("value", QVariant::fromValue((double)(0.0)));
 }
 
 // OWNED ATTRIBUTES

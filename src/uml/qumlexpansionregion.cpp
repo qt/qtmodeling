@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlexpansionregion.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlExpansionNode>
 
@@ -53,8 +54,11 @@ QT_BEGIN_NAMESPACE
  */
 
 QUmlExpansionRegion::QUmlExpansionRegion() :
-    _mode(QtUml::ExpansionIterative)
+    _mode(QtUml::ExpansionKindIterative)
 {
+    d_ptr->object.setProperty("inputElement", QVariant::fromValue(&_inputElement));
+    d_ptr->object.setProperty("mode", QVariant::fromValue(QtUml::ExpansionKindNone));
+    d_ptr->object.setProperty("outputElement", QVariant::fromValue(&_outputElement));
 }
 
 // OWNED ATTRIBUTES

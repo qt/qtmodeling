@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlinterface.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlOperation>
 #include <QtUml/QUmlProperty>
@@ -58,6 +59,12 @@ QT_BEGIN_NAMESPACE
 QUmlInterface::QUmlInterface() :
     _protocol(0)
 {
+    d_ptr->object.setProperty("nestedClassifier", QVariant::fromValue(&_nestedClassifier));
+    d_ptr->object.setProperty("ownedAttribute", QVariant::fromValue(&_ownedAttribute));
+    d_ptr->object.setProperty("ownedOperation", QVariant::fromValue(&_ownedOperation));
+    d_ptr->object.setProperty("ownedReception", QVariant::fromValue(&_ownedReception));
+    d_ptr->object.setProperty("protocol", QVariant::fromValue((QUmlProtocolStateMachine *)(0)));
+    d_ptr->object.setProperty("redefinedInterface", QVariant::fromValue(&_redefinedInterface));
 }
 
 // OWNED ATTRIBUTES

@@ -40,6 +40,7 @@
 **
 ****************************************************************************/
 #include "q${namespace.lower}${className.lower}.h"
+#include "private/qmodelingobject_p.h"
 [%- superclasses = [] -%]
 [%- SET generalization = class.findnodes("generalization") -%]
 [%- FOREACH superclass IN generalization -%]
@@ -87,7 +88,7 @@ Q${namespace}${className}::Q${namespace}${className}()
         [%- END -%]
     [%- ELSIF defaultType == "uml:InstanceValue" -%]
         [%- SET defaultInstance = attribute.findvalue("defaultValue/@instance") -%]
-    _[% QT_ATTRIBUTE(attribute) %](Qt${namespace}::${defaultInstance.split("-").0.remove("Kind$").remove("Sort$")}${defaultInstance.split("-").1.ucfirst})
+    _[% QT_ATTRIBUTE(attribute) %](Qt${namespace}::${defaultInstance.split("-").0}${defaultInstance.split("-").1.ucfirst})
     [%- ELSIF defaultType == "uml:LiteralInteger" -%]
         [%- SET defaultValue = attribute.findvalue("defaultValue/@value") -%]
         [%- IF defaultValue != "" -%]
@@ -108,6 +109,21 @@ Q${namespace}${className}::Q${namespace}${className}()
     [%- END -%]
 [%- END %]
 {
+[%- FOREACH attribute = class.findnodes("ownedAttribute") -%]
+    [%- SET type = QT_TYPE(namespace, attribute) -%]
+    [%- SET derived = attribute.findvalue("@isDerived") -%]
+    [%- SET derivedUnion = attribute.findvalue("@isDerivedUnion") %]
+    d_ptr->object.setProperty("${attribute.findvalue("@name").remove("^Is").lcfirst}", QVariant::fromValue(
+[%- IF type.match("QList|QSet") -%][% IF derived == "true" && (derivedUnion == "" || derivedUnion == "false") %]${type.trim}()[% ELSE %]&_[% QT_ATTRIBUTE(attribute) %][% END %]
+[%- ELSIF type.match('\*$') -%](${type})(0)
+[%- ELSIF type == "QString " -%]QString()
+[%- ELSIF type.match("::") -%]${type.trim}None
+[%- ELSIF type.match("int") -%](int)(0)
+[%- ELSIF type.match("double") -%](double)(0.0)
+[%- ELSIF type.match("bool") -%]false
+[%- END -%]
+));
+[%- END %]
 }
 [%- FOREACH attribute = class.findnodes("ownedAttribute") %]
 [%- IF loop.first %]

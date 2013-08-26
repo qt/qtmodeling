@@ -62,6 +62,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlMessageOccurrenceSpecification *)
+Q_DECLARE_METATYPE(QList<QUmlMessageOccurrenceSpecification *> *)
+Q_DECLARE_METATYPE(QSet<QUmlMessageOccurrenceSpecification *> *)
+
 QT_END_HEADER
 
 #endif // QUMLMESSAGEOCCURRENCESPECIFICATION_H

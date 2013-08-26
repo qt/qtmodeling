@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlbehavioralfeature.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlBehavior>
 #include <QtUml/QUmlNamedElement>
@@ -57,9 +58,15 @@ QT_BEGIN_NAMESPACE
  */
 
 QUmlBehavioralFeature::QUmlBehavioralFeature() :
-    _concurrency(QtUml::CallConcurrencySequential),
+    _concurrency(QtUml::CallConcurrencyKindSequential),
     _isAbstract(false)
 {
+    d_ptr->object.setProperty("concurrency", QVariant::fromValue(QtUml::CallConcurrencyKindNone));
+    d_ptr->object.setProperty("isAbstract", QVariant::fromValue(false));
+    d_ptr->object.setProperty("method", QVariant::fromValue(&_method));
+    d_ptr->object.setProperty("ownedParameter", QVariant::fromValue(&_ownedParameter));
+    d_ptr->object.setProperty("ownedParameterSet", QVariant::fromValue(&_ownedParameterSet));
+    d_ptr->object.setProperty("raisedException", QVariant::fromValue(&_raisedException));
 }
 
 // OWNED ATTRIBUTES

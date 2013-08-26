@@ -65,14 +65,22 @@ public:
     [%- SET enumerationName = enumeration.findvalue("@name") %]
     enum ${enumerationName}
     {
-        [%- FOREACH literal IN enumeration.findnodes("ownedLiteral") %]
-        ${enumerationName.remove("Kind$").remove("Sort$")}${literal.findvalue("@name").ucfirst}[%- IF loop.first -%] = 0[%- END -%][%- IF !loop.last -%],[%- END -%]
+        ${enumerationName}None = 0,
+        [%- FOREACH literal IN enumeration.findnodes("ownedLiteral") -%]
+        [%- SET literalName = literal.findvalue("@name") -%]
+        [%- IF literalName != "none" %]
+        ${enumerationName}${literalName.ucfirst}[%- IF !loop.last -%],[%- END -%]
+        [%- END -%]
         [%- END %]
     };
 [%- END %]
 };
 
 QT_END_NAMESPACE
+
+[%- FOREACH enumeration IN enumerations %]
+Q_DECLARE_METATYPE(Qt${namespace}::${enumeration.findvalue("@name")})
+[%- END %]
 
 QT_END_HEADER
 

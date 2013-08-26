@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumllinkenddestructiondata.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlInputPin>
 
@@ -56,6 +57,8 @@ QUmlLinkEndDestructionData::QUmlLinkEndDestructionData() :
     _destroyAt(0),
     _isDestroyDuplicates(false)
 {
+    d_ptr->object.setProperty("destroyAt", QVariant::fromValue((QUmlInputPin *)(0)));
+    d_ptr->object.setProperty("isDestroyDuplicates", QVariant::fromValue(false));
 }
 
 // OWNED ATTRIBUTES

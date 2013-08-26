@@ -68,6 +68,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlWriteVariableAction *)
+Q_DECLARE_METATYPE(QList<QUmlWriteVariableAction *> *)
+Q_DECLARE_METATYPE(QSet<QUmlWriteVariableAction *> *)
+
 QT_END_HEADER
 
 #endif // QUMLWRITEVARIABLEACTION_H

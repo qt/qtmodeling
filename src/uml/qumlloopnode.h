@@ -101,6 +101,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlLoopNode *)
+Q_DECLARE_METATYPE(QList<QUmlLoopNode *> *)
+Q_DECLARE_METATYPE(QSet<QUmlLoopNode *> *)
+
 QT_END_HEADER
 
 #endif // QUMLLOOPNODE_H

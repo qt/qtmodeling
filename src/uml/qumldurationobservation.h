@@ -71,6 +71,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlDurationObservation *)
+Q_DECLARE_METATYPE(QList<QUmlDurationObservation *> *)
+Q_DECLARE_METATYPE(QSet<QUmlDurationObservation *> *)
+
 QT_END_HEADER
 
 #endif // QUMLDURATIONOBSERVATION_H

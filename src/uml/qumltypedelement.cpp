@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumltypedelement.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlType>
 
@@ -55,6 +56,7 @@ QT_BEGIN_NAMESPACE
 QUmlTypedElement::QUmlTypedElement() :
     _type(0)
 {
+    d_ptr->object.setProperty("type", QVariant::fromValue((QUmlType *)(0)));
 }
 
 // OWNED ATTRIBUTES

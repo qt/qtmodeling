@@ -72,6 +72,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlDecisionNode *)
+Q_DECLARE_METATYPE(QList<QUmlDecisionNode *> *)
+Q_DECLARE_METATYPE(QSet<QUmlDecisionNode *> *)
+
 QT_END_HEADER
 
 #endif // QUMLDECISIONNODE_H

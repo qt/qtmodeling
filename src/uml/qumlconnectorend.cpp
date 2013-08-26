@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlconnectorend.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlConnectableElement>
 #include <QtUml/QUmlProperty>
@@ -57,6 +58,9 @@ QUmlConnectorEnd::QUmlConnectorEnd() :
     _partWithPort(0),
     _role(0)
 {
+    d_ptr->object.setProperty("definingEnd", QVariant::fromValue((QUmlProperty *)(0)));
+    d_ptr->object.setProperty("partWithPort", QVariant::fromValue((QUmlProperty *)(0)));
+    d_ptr->object.setProperty("role", QVariant::fromValue((QUmlConnectableElement *)(0)));
 }
 
 // OWNED ATTRIBUTES

@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlexecutablenode.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlExceptionHandler>
 
@@ -54,6 +55,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlExecutableNode::QUmlExecutableNode()
 {
+    d_ptr->object.setProperty("handler", QVariant::fromValue(&_handler));
 }
 
 // OWNED ATTRIBUTES

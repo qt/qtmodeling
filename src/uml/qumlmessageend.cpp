@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlmessageend.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlMessage>
 
@@ -55,6 +56,7 @@ QT_BEGIN_NAMESPACE
 QUmlMessageEnd::QUmlMessageEnd() :
     _message(0)
 {
+    d_ptr->object.setProperty("message", QVariant::fromValue((QUmlMessage *)(0)));
 }
 
 // OWNED ATTRIBUTES

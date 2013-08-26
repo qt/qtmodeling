@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlstringexpression.h"
+#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -53,6 +54,8 @@ QT_BEGIN_NAMESPACE
 QUmlStringExpression::QUmlStringExpression() :
     _owningExpression(0)
 {
+    d_ptr->object.setProperty("owningExpression", QVariant::fromValue((QUmlStringExpression *)(0)));
+    d_ptr->object.setProperty("subExpression", QVariant::fromValue(&_subExpression));
 }
 
 // OWNED ATTRIBUTES

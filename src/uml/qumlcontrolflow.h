@@ -61,6 +61,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlControlFlow *)
+Q_DECLARE_METATYPE(QList<QUmlControlFlow *> *)
+Q_DECLARE_METATYPE(QSet<QUmlControlFlow *> *)
+
 QT_END_HEADER
 
 #endif // QUMLCONTROLFLOW_H

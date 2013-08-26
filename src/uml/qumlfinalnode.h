@@ -61,6 +61,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlFinalNode *)
+Q_DECLARE_METATYPE(QList<QUmlFinalNode *> *)
+Q_DECLARE_METATYPE(QSet<QUmlFinalNode *> *)
+
 QT_END_HEADER
 
 #endif // QUMLFINALNODE_H

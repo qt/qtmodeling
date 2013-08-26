@@ -71,6 +71,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlLinkEndDestructionData *)
+Q_DECLARE_METATYPE(QList<QUmlLinkEndDestructionData *> *)
+Q_DECLARE_METATYPE(QSet<QUmlLinkEndDestructionData *> *)
+
 QT_END_HEADER
 
 #endif // QUMLLINKENDDESTRUCTIONDATA_H

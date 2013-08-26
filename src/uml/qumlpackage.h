@@ -106,6 +106,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlPackage *)
+Q_DECLARE_METATYPE(QList<QUmlPackage *> *)
+Q_DECLARE_METATYPE(QSet<QUmlPackage *> *)
+
 QT_END_HEADER
 
 #endif // QUMLPACKAGE_H

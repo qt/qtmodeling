@@ -85,6 +85,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlAssociation *)
+Q_DECLARE_METATYPE(QList<QUmlAssociation *> *)
+Q_DECLARE_METATYPE(QSet<QUmlAssociation *> *)
+
 QT_END_HEADER
 
 #endif // QUMLASSOCIATION_H

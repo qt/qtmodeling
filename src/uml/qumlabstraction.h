@@ -68,6 +68,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlAbstraction *)
+Q_DECLARE_METATYPE(QList<QUmlAbstraction *> *)
+Q_DECLARE_METATYPE(QSet<QUmlAbstraction *> *)
+
 QT_END_HEADER
 
 #endif // QUMLABSTRACTION_H

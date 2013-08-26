@@ -73,6 +73,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlCollaborationUse *)
+Q_DECLARE_METATYPE(QList<QUmlCollaborationUse *> *)
+Q_DECLARE_METATYPE(QSet<QUmlCollaborationUse *> *)
+
 QT_END_HEADER
 
 #endif // QUMLCOLLABORATIONUSE_H

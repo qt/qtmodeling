@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlloopnode.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlExecutableNode>
 #include <QtUml/QUmlInputPin>
@@ -58,6 +59,15 @@ QUmlLoopNode::QUmlLoopNode() :
     _decider(0),
     _isTestedFirst(false)
 {
+    d_ptr->object.setProperty("bodyOutput", QVariant::fromValue(&_bodyOutput));
+    d_ptr->object.setProperty("bodyPart", QVariant::fromValue(&_bodyPart));
+    d_ptr->object.setProperty("decider", QVariant::fromValue((QUmlOutputPin *)(0)));
+    d_ptr->object.setProperty("isTestedFirst", QVariant::fromValue(false));
+    d_ptr->object.setProperty("loopVariable", QVariant::fromValue(&_loopVariable));
+    d_ptr->object.setProperty("loopVariableInput", QVariant::fromValue(&_loopVariableInput));
+    d_ptr->object.setProperty("result", QVariant::fromValue(&_result));
+    d_ptr->object.setProperty("setupPart", QVariant::fromValue(&_setupPart));
+    d_ptr->object.setProperty("test", QVariant::fromValue(&_test));
 }
 
 // OWNED ATTRIBUTES

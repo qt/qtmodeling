@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumldeployment.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlDeployedArtifact>
 #include <QtUml/QUmlDeploymentSpecification>
@@ -57,6 +58,9 @@ QT_BEGIN_NAMESPACE
 QUmlDeployment::QUmlDeployment() :
     _location(0)
 {
+    d_ptr->object.setProperty("configuration", QVariant::fromValue(&_configuration));
+    d_ptr->object.setProperty("deployedArtifact", QVariant::fromValue(&_deployedArtifact));
+    d_ptr->object.setProperty("location", QVariant::fromValue((QUmlDeploymentTarget *)(0)));
 }
 
 // OWNED ATTRIBUTES

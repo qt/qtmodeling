@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlextensionpoint.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlUseCase>
 
@@ -55,6 +56,7 @@ QT_BEGIN_NAMESPACE
 QUmlExtensionPoint::QUmlExtensionPoint() :
     _useCase(0)
 {
+    d_ptr->object.setProperty("useCase", QVariant::fromValue((QUmlUseCase *)(0)));
 }
 
 // OWNED ATTRIBUTES

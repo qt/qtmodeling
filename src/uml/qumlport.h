@@ -88,6 +88,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlPort *)
+Q_DECLARE_METATYPE(QList<QUmlPort *> *)
+Q_DECLARE_METATYPE(QSet<QUmlPort *> *)
+
 QT_END_HEADER
 
 #endif // QUMLPORT_H

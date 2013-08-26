@@ -68,6 +68,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlReadStructuralFeatureAction *)
+Q_DECLARE_METATYPE(QList<QUmlReadStructuralFeatureAction *> *)
+Q_DECLARE_METATYPE(QSet<QUmlReadStructuralFeatureAction *> *)
+
 QT_END_HEADER
 
 #endif // QUMLREADSTRUCTURALFEATUREACTION_H

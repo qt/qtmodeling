@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumllinkaction.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlAssociation>
 #include <QtUml/QUmlInputPin>
@@ -56,6 +57,8 @@ QT_BEGIN_NAMESPACE
 
 QUmlLinkAction::QUmlLinkAction()
 {
+    d_ptr->object.setProperty("endData", QVariant::fromValue(&_endData));
+    d_ptr->object.setProperty("inputValue", QVariant::fromValue(&_inputValue));
 }
 
 // OWNED ATTRIBUTES

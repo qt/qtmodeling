@@ -70,6 +70,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlLiteralBoolean *)
+Q_DECLARE_METATYPE(QList<QUmlLiteralBoolean *> *)
+Q_DECLARE_METATYPE(QSet<QUmlLiteralBoolean *> *)
+
 QT_END_HEADER
 
 #endif // QUMLLITERALBOOLEAN_H

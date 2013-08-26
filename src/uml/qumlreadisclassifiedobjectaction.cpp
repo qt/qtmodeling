@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlreadisclassifiedobjectaction.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlInputPin>
@@ -60,6 +61,10 @@ QUmlReadIsClassifiedObjectAction::QUmlReadIsClassifiedObjectAction() :
     _object(0),
     _result(0)
 {
+    d_ptr->object.setProperty("classifier", QVariant::fromValue((QUmlClassifier *)(0)));
+    d_ptr->object.setProperty("isDirect", QVariant::fromValue(false));
+    d_ptr->object.setProperty("object", QVariant::fromValue((QUmlInputPin *)(0)));
+    d_ptr->object.setProperty("result", QVariant::fromValue((QUmlOutputPin *)(0)));
 }
 
 // OWNED ATTRIBUTES

@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlinstancevalue.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlInstanceSpecification>
 
@@ -55,6 +56,7 @@ QT_BEGIN_NAMESPACE
 QUmlInstanceValue::QUmlInstanceValue() :
     _instance(0)
 {
+    d_ptr->object.setProperty("instance", QVariant::fromValue((QUmlInstanceSpecification *)(0)));
 }
 
 // OWNED ATTRIBUTES

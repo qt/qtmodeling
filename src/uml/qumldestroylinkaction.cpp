@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumldestroylinkaction.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlLinkEndDestructionData>
 
@@ -54,6 +55,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlDestroyLinkAction::QUmlDestroyLinkAction()
 {
+    d_ptr->object.setProperty("endData", QVariant::fromValue(&_endData));
 }
 
 // OWNED ATTRIBUTES

@@ -69,6 +69,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlExecutableNode *)
+Q_DECLARE_METATYPE(QList<QUmlExecutableNode *> *)
+Q_DECLARE_METATYPE(QSet<QUmlExecutableNode *> *)
+
 QT_END_HEADER
 
 #endif // QUMLEXECUTABLENODE_H

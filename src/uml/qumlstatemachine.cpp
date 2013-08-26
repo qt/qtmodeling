@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlstatemachine.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlPseudostate>
@@ -58,6 +59,10 @@ QT_BEGIN_NAMESPACE
 
 QUmlStateMachine::QUmlStateMachine()
 {
+    d_ptr->object.setProperty("connectionPoint", QVariant::fromValue(&_connectionPoint));
+    d_ptr->object.setProperty("extendedStateMachine", QVariant::fromValue(&_extendedStateMachine));
+    d_ptr->object.setProperty("region", QVariant::fromValue(&_region));
+    d_ptr->object.setProperty("submachineState", QVariant::fromValue(&_submachineState));
 }
 
 // OWNED ATTRIBUTES

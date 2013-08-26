@@ -145,6 +145,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlClassifier *)
+Q_DECLARE_METATYPE(QList<QUmlClassifier *> *)
+Q_DECLARE_METATYPE(QSet<QUmlClassifier *> *)
+
 QT_END_HEADER
 
 #endif // QUMLCLASSIFIER_H

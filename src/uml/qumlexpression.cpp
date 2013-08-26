@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlexpression.h"
+#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -52,6 +53,8 @@ QT_BEGIN_NAMESPACE
 
 QUmlExpression::QUmlExpression()
 {
+    d_ptr->object.setProperty("operand", QVariant::fromValue(&_operand));
+    d_ptr->object.setProperty("symbol", QVariant::fromValue(QString()));
 }
 
 // OWNED ATTRIBUTES

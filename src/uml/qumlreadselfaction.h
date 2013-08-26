@@ -68,6 +68,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlReadSelfAction *)
+Q_DECLARE_METATYPE(QList<QUmlReadSelfAction *> *)
+Q_DECLARE_METATYPE(QSet<QUmlReadSelfAction *> *)
+
 QT_END_HEADER
 
 #endif // QUMLREADSELFACTION_H

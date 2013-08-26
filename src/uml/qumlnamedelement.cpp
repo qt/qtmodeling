@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlnamedelement.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlDependency>
 #include <QtUml/QUmlNamespace>
@@ -59,6 +60,12 @@ QUmlNamedElement::QUmlNamedElement() :
     _nameExpression(0),
     _namespace_(0)
 {
+    d_ptr->object.setProperty("clientDependency", QVariant::fromValue(&_clientDependency));
+    d_ptr->object.setProperty("name", QVariant::fromValue(QString()));
+    d_ptr->object.setProperty("nameExpression", QVariant::fromValue((QUmlStringExpression *)(0)));
+    d_ptr->object.setProperty("namespace", QVariant::fromValue((QUmlNamespace *)(0)));
+    d_ptr->object.setProperty("qualifiedName", QVariant::fromValue(QString()));
+    d_ptr->object.setProperty("visibility", QVariant::fromValue(QtUml::VisibilityKindNone));
 }
 
 // OWNED ATTRIBUTES

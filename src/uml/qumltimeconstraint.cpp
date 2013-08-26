@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumltimeconstraint.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlTimeInterval>
 
@@ -56,6 +57,8 @@ QUmlTimeConstraint::QUmlTimeConstraint() :
     _firstEvent(true),
     _specification(0)
 {
+    d_ptr->object.setProperty("firstEvent", QVariant::fromValue(false));
+    d_ptr->object.setProperty("specification", QVariant::fromValue((QUmlTimeInterval *)(0)));
 }
 
 // OWNED ATTRIBUTES

@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlcombinedfragment.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlGate>
 #include <QtUml/QUmlInteractionOperand>
@@ -54,8 +55,11 @@ QT_BEGIN_NAMESPACE
  */
 
 QUmlCombinedFragment::QUmlCombinedFragment() :
-    _interactionOperator(QtUml::InteractionOperatorSeq)
+    _interactionOperator(QtUml::InteractionOperatorKindSeq)
 {
+    d_ptr->object.setProperty("cfragmentGate", QVariant::fromValue(&_cfragmentGate));
+    d_ptr->object.setProperty("interactionOperator", QVariant::fromValue(QtUml::InteractionOperatorKindNone));
+    d_ptr->object.setProperty("operand", QVariant::fromValue(&_operand));
 }
 
 // OWNED ATTRIBUTES

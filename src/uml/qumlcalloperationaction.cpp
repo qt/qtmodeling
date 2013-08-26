@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlcalloperationaction.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlInputPin>
 #include <QtUml/QUmlOperation>
@@ -57,6 +58,8 @@ QUmlCallOperationAction::QUmlCallOperationAction() :
     _operation(0),
     _target(0)
 {
+    d_ptr->object.setProperty("operation", QVariant::fromValue((QUmlOperation *)(0)));
+    d_ptr->object.setProperty("target", QVariant::fromValue((QUmlInputPin *)(0)));
 }
 
 // OWNED ATTRIBUTES

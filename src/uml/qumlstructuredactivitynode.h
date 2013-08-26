@@ -53,6 +53,7 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
+class QUmlActivity;
 class QUmlActivityEdge;
 class QUmlActivityNode;
 class QUmlInputPin;
@@ -96,6 +97,10 @@ protected:
 };
 
 QT_END_NAMESPACE
+
+Q_DECLARE_METATYPE(QUmlStructuredActivityNode *)
+Q_DECLARE_METATYPE(QList<QUmlStructuredActivityNode *> *)
+Q_DECLARE_METATYPE(QSet<QUmlStructuredActivityNode *> *)
 
 QT_END_HEADER
 

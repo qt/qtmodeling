@@ -79,6 +79,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlGeneralization *)
+Q_DECLARE_METATYPE(QList<QUmlGeneralization *> *)
+Q_DECLARE_METATYPE(QSet<QUmlGeneralization *> *)
+
 QT_END_HEADER
 
 #endif // QUMLGENERALIZATION_H

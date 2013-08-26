@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumltimeinterval.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlTimeExpression>
 
@@ -56,6 +57,8 @@ QUmlTimeInterval::QUmlTimeInterval() :
     _max(0),
     _min(0)
 {
+    d_ptr->object.setProperty("max", QVariant::fromValue((QUmlTimeExpression *)(0)));
+    d_ptr->object.setProperty("min", QVariant::fromValue((QUmlTimeExpression *)(0)));
 }
 
 // OWNED ATTRIBUTES

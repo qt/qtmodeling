@@ -71,6 +71,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlGeneralOrdering *)
+Q_DECLARE_METATYPE(QList<QUmlGeneralOrdering *> *)
+Q_DECLARE_METATYPE(QSet<QUmlGeneralOrdering *> *)
+
 QT_END_HEADER
 
 #endif // QUMLGENERALORDERING_H

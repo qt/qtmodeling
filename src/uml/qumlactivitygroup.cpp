@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlactivitygroup.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlActivity>
 #include <QtUml/QUmlActivityEdge>
@@ -58,6 +59,11 @@ QUmlActivityGroup::QUmlActivityGroup() :
     _inActivity(0),
     _superGroup(0)
 {
+    d_ptr->object.setProperty("containedEdge", QVariant::fromValue(&_containedEdge));
+    d_ptr->object.setProperty("containedNode", QVariant::fromValue(&_containedNode));
+    d_ptr->object.setProperty("inActivity", QVariant::fromValue((QUmlActivity *)(0)));
+    d_ptr->object.setProperty("subgroup", QVariant::fromValue(&_subgroup));
+    d_ptr->object.setProperty("superGroup", QVariant::fromValue((QUmlActivityGroup *)(0)));
 }
 
 // OWNED ATTRIBUTES

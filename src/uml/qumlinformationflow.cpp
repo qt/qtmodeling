@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlinformationflow.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlActivityEdge>
 #include <QtUml/QUmlClassifier>
@@ -59,6 +60,13 @@ QT_BEGIN_NAMESPACE
 
 QUmlInformationFlow::QUmlInformationFlow()
 {
+    d_ptr->object.setProperty("conveyed", QVariant::fromValue(&_conveyed));
+    d_ptr->object.setProperty("informationSource", QVariant::fromValue(&_informationSource));
+    d_ptr->object.setProperty("informationTarget", QVariant::fromValue(&_informationTarget));
+    d_ptr->object.setProperty("realization", QVariant::fromValue(&_realization));
+    d_ptr->object.setProperty("realizingActivityEdge", QVariant::fromValue(&_realizingActivityEdge));
+    d_ptr->object.setProperty("realizingConnector", QVariant::fromValue(&_realizingConnector));
+    d_ptr->object.setProperty("realizingMessage", QVariant::fromValue(&_realizingMessage));
 }
 
 // OWNED ATTRIBUTES

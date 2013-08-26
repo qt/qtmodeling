@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlcallaction.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlOutputPin>
 
@@ -55,6 +56,8 @@ QT_BEGIN_NAMESPACE
 QUmlCallAction::QUmlCallAction() :
     _isSynchronous(true)
 {
+    d_ptr->object.setProperty("isSynchronous", QVariant::fromValue(false));
+    d_ptr->object.setProperty("result", QVariant::fromValue(&_result));
 }
 
 // OWNED ATTRIBUTES

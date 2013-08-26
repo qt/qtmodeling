@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlfeature.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlClassifier>
 
@@ -55,6 +56,8 @@ QT_BEGIN_NAMESPACE
 QUmlFeature::QUmlFeature() :
     _isStatic(false)
 {
+    d_ptr->object.setProperty("featuringClassifier", QVariant::fromValue(&_featuringClassifier));
+    d_ptr->object.setProperty("isStatic", QVariant::fromValue(false));
 }
 
 // OWNED ATTRIBUTES

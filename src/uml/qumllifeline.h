@@ -85,6 +85,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlLifeline *)
+Q_DECLARE_METATYPE(QList<QUmlLifeline *> *)
+Q_DECLARE_METATYPE(QSet<QUmlLifeline *> *)
+
 QT_END_HEADER
 
 #endif // QUMLLIFELINE_H

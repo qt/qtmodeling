@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumljoinnode.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlValueSpecification>
 
@@ -56,6 +57,8 @@ QUmlJoinNode::QUmlJoinNode() :
     _isCombineDuplicate(true),
     _joinSpec(0)
 {
+    d_ptr->object.setProperty("isCombineDuplicate", QVariant::fromValue(false));
+    d_ptr->object.setProperty("joinSpec", QVariant::fromValue((QUmlValueSpecification *)(0)));
 }
 
 // OWNED ATTRIBUTES

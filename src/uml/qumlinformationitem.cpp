@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlinformationitem.h"
+#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -52,6 +53,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlInformationItem::QUmlInformationItem()
 {
+    d_ptr->object.setProperty("represented", QVariant::fromValue(&_represented));
 }
 
 // OWNED ATTRIBUTES

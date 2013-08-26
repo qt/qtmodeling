@@ -71,6 +71,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlProtocolConformance *)
+Q_DECLARE_METATYPE(QList<QUmlProtocolConformance *> *)
+Q_DECLARE_METATYPE(QSet<QUmlProtocolConformance *> *)
+
 QT_END_HEADER
 
 #endif // QUMLPROTOCOLCONFORMANCE_H

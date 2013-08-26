@@ -61,6 +61,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlDestructionOccurrenceSpecification *)
+Q_DECLARE_METATYPE(QList<QUmlDestructionOccurrenceSpecification *> *)
+Q_DECLARE_METATYPE(QSet<QUmlDestructionOccurrenceSpecification *> *)
+
 QT_END_HEADER
 
 #endif // QUMLDESTRUCTIONOCCURRENCESPECIFICATION_H

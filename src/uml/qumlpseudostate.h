@@ -76,6 +76,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlPseudostate *)
+Q_DECLARE_METATYPE(QList<QUmlPseudostate *> *)
+Q_DECLARE_METATYPE(QSet<QUmlPseudostate *> *)
+
 QT_END_HEADER
 
 #endif // QUMLPSEUDOSTATE_H

@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumloperation.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlClass>
 #include <QtUml/QUmlConstraint>
@@ -67,6 +68,22 @@ QUmlOperation::QUmlOperation() :
     _isQuery(false),
     _templateParameter(0)
 {
+    d_ptr->object.setProperty("bodyCondition", QVariant::fromValue((QUmlConstraint *)(0)));
+    d_ptr->object.setProperty("class", QVariant::fromValue((QUmlClass *)(0)));
+    d_ptr->object.setProperty("datatype", QVariant::fromValue((QUmlDataType *)(0)));
+    d_ptr->object.setProperty("interface", QVariant::fromValue((QUmlInterface *)(0)));
+    d_ptr->object.setProperty("isOrdered", QVariant::fromValue(false));
+    d_ptr->object.setProperty("isQuery", QVariant::fromValue(false));
+    d_ptr->object.setProperty("isUnique", QVariant::fromValue(false));
+    d_ptr->object.setProperty("lower", QVariant::fromValue((int)(0)));
+    d_ptr->object.setProperty("ownedParameter", QVariant::fromValue(&_ownedParameter));
+    d_ptr->object.setProperty("postcondition", QVariant::fromValue(&_postcondition));
+    d_ptr->object.setProperty("precondition", QVariant::fromValue(&_precondition));
+    d_ptr->object.setProperty("raisedException", QVariant::fromValue(&_raisedException));
+    d_ptr->object.setProperty("redefinedOperation", QVariant::fromValue(&_redefinedOperation));
+    d_ptr->object.setProperty("templateParameter", QVariant::fromValue((QUmlOperationTemplateParameter *)(0)));
+    d_ptr->object.setProperty("type", QVariant::fromValue((QUmlType *)(0)));
+    d_ptr->object.setProperty("upper", QVariant::fromValue((int)(0)));
 }
 
 // OWNED ATTRIBUTES

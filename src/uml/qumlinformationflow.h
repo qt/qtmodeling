@@ -99,6 +99,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlInformationFlow *)
+Q_DECLARE_METATYPE(QList<QUmlInformationFlow *> *)
+Q_DECLARE_METATYPE(QSet<QUmlInformationFlow *> *)
+
 QT_END_HEADER
 
 #endif // QUMLINFORMATIONFLOW_H

@@ -5,11 +5,9 @@ QModelingObjectPrivate::~QModelingObjectPrivate()
 {
 }
 
-QModelingObject::QModelingObject(bool create_d_ptr) :
-    d_ptr(0)
+QModelingObject::QModelingObject() :
+    d_ptr(new QModelingObjectPrivate)
 {
-    if (create_d_ptr)
-        set_d_ptr(new QModelingObjectPrivate);
 }
 
 QModelingObject::~QModelingObject()
@@ -17,9 +15,12 @@ QModelingObject::~QModelingObject()
     delete d_ptr;
 }
 
-void QModelingObject::set_d_ptr(QModelingObjectPrivate *d_ptr)
+QObject *QModelingObject::asQObject() const
 {
-    Q_ASSERT_X(!this->d_ptr, "QModelingObject::set_d_ptr", "d_ptr already set !");
-    this->d_ptr = d_ptr;
-    d_ptr->q_ptr = this;
+    return &d_ptr->object;
+}
+
+QModelingObject::QModelingObject(QModelingObjectPrivate *dd) :
+    d_ptr(dd)
+{
 }

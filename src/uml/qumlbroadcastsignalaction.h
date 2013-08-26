@@ -68,6 +68,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlBroadcastSignalAction *)
+Q_DECLARE_METATYPE(QList<QUmlBroadcastSignalAction *> *)
+Q_DECLARE_METATYPE(QSet<QUmlBroadcastSignalAction *> *)
+
 QT_END_HEADER
 
 #endif // QUMLBROADCASTSIGNALACTION_H

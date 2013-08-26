@@ -61,6 +61,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlForkNode *)
+Q_DECLARE_METATYPE(QList<QUmlForkNode *> *)
+Q_DECLARE_METATYPE(QSet<QUmlForkNode *> *)
+
 QT_END_HEADER
 
 #endif // QUMLFORKNODE_H

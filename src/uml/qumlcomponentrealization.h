@@ -73,6 +73,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlComponentRealization *)
+Q_DECLARE_METATYPE(QList<QUmlComponentRealization *> *)
+Q_DECLARE_METATYPE(QSet<QUmlComponentRealization *> *)
+
 QT_END_HEADER
 
 #endif // QUMLCOMPONENTREALIZATION_H

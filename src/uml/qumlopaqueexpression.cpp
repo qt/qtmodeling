@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlopaqueexpression.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlBehavior>
 #include <QtUml/QUmlParameter>
@@ -56,6 +57,10 @@ QT_BEGIN_NAMESPACE
 QUmlOpaqueExpression::QUmlOpaqueExpression() :
     _behavior(0)
 {
+    d_ptr->object.setProperty("behavior", QVariant::fromValue((QUmlBehavior *)(0)));
+    d_ptr->object.setProperty("body", QVariant::fromValue(&_body));
+    d_ptr->object.setProperty("language", QVariant::fromValue(&_language));
+    d_ptr->object.setProperty("result", QVariant::fromValue((QUmlParameter *)(0)));
 }
 
 // OWNED ATTRIBUTES

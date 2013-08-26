@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlactivity.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlActivityEdge>
 #include <QtUml/QUmlActivityGroup>
@@ -61,6 +62,14 @@ QUmlActivity::QUmlActivity() :
     _isReadOnly(false),
     _isSingleExecution(false)
 {
+    d_ptr->object.setProperty("edge", QVariant::fromValue(&_edge));
+    d_ptr->object.setProperty("group", QVariant::fromValue(&_group));
+    d_ptr->object.setProperty("isReadOnly", QVariant::fromValue(false));
+    d_ptr->object.setProperty("isSingleExecution", QVariant::fromValue(false));
+    d_ptr->object.setProperty("node", QVariant::fromValue(&_node));
+    d_ptr->object.setProperty("partition", QVariant::fromValue(&_partition));
+    d_ptr->object.setProperty("structuredNode", QVariant::fromValue(&_structuredNode));
+    d_ptr->object.setProperty("variable", QVariant::fromValue(&_variable));
 }
 
 // OWNED ATTRIBUTES

@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlclass.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlExtension>
@@ -61,6 +62,14 @@ QUmlClass::QUmlClass() :
     _isAbstract(false),
     _isActive(false)
 {
+    d_ptr->object.setProperty("extension", QVariant::fromValue(QSet<QUmlExtension *>()));
+    d_ptr->object.setProperty("isAbstract", QVariant::fromValue(false));
+    d_ptr->object.setProperty("isActive", QVariant::fromValue(false));
+    d_ptr->object.setProperty("nestedClassifier", QVariant::fromValue(&_nestedClassifier));
+    d_ptr->object.setProperty("ownedAttribute", QVariant::fromValue(&_ownedAttribute));
+    d_ptr->object.setProperty("ownedOperation", QVariant::fromValue(&_ownedOperation));
+    d_ptr->object.setProperty("ownedReception", QVariant::fromValue(&_ownedReception));
+    d_ptr->object.setProperty("superClass", QVariant::fromValue(QSet<QUmlClass *>()));
 }
 
 // OWNED ATTRIBUTES

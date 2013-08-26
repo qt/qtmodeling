@@ -71,6 +71,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlJoinNode *)
+Q_DECLARE_METATYPE(QList<QUmlJoinNode *> *)
+Q_DECLARE_METATYPE(QSet<QUmlJoinNode *> *)
+
 QT_END_HEADER
 
 #endif // QUMLJOINNODE_H

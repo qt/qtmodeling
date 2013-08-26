@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumllifeline.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlConnectableElement>
 #include <QtUml/QUmlInteraction>
@@ -62,6 +63,11 @@ QUmlLifeline::QUmlLifeline() :
     _represents(0),
     _selector(0)
 {
+    d_ptr->object.setProperty("coveredBy", QVariant::fromValue(&_coveredBy));
+    d_ptr->object.setProperty("decomposedAs", QVariant::fromValue((QUmlPartDecomposition *)(0)));
+    d_ptr->object.setProperty("interaction", QVariant::fromValue((QUmlInteraction *)(0)));
+    d_ptr->object.setProperty("represents", QVariant::fromValue((QUmlConnectableElement *)(0)));
+    d_ptr->object.setProperty("selector", QVariant::fromValue((QUmlValueSpecification *)(0)));
 }
 
 // OWNED ATTRIBUTES

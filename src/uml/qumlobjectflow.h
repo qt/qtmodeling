@@ -77,6 +77,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlObjectFlow *)
+Q_DECLARE_METATYPE(QList<QUmlObjectFlow *> *)
+Q_DECLARE_METATYPE(QSet<QUmlObjectFlow *> *)
+
 QT_END_HEADER
 
 #endif // QUMLOBJECTFLOW_H

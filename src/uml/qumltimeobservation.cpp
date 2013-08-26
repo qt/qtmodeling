@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumltimeobservation.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlNamedElement>
 
@@ -56,6 +57,8 @@ QUmlTimeObservation::QUmlTimeObservation() :
     _event(0),
     _firstEvent(true)
 {
+    d_ptr->object.setProperty("event", QVariant::fromValue((QUmlNamedElement *)(0)));
+    d_ptr->object.setProperty("firstEvent", QVariant::fromValue(false));
 }
 
 // OWNED ATTRIBUTES

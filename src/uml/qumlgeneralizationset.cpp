@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlgeneralizationset.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlGeneralization>
@@ -58,6 +59,10 @@ QUmlGeneralizationSet::QUmlGeneralizationSet() :
     _isDisjoint(false),
     _powertype(0)
 {
+    d_ptr->object.setProperty("generalization", QVariant::fromValue(&_generalization));
+    d_ptr->object.setProperty("isCovering", QVariant::fromValue(false));
+    d_ptr->object.setProperty("isDisjoint", QVariant::fromValue(false));
+    d_ptr->object.setProperty("powertype", QVariant::fromValue((QUmlClassifier *)(0)));
 }
 
 // OWNED ATTRIBUTES

@@ -79,6 +79,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlVertex *)
+Q_DECLARE_METATYPE(QList<QUmlVertex *> *)
+Q_DECLARE_METATYPE(QSet<QUmlVertex *> *)
+
 QT_END_HEADER
 
 #endif // QUMLVERTEX_H

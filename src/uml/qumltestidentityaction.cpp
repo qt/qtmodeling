@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumltestidentityaction.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlInputPin>
 #include <QtUml/QUmlOutputPin>
@@ -58,6 +59,9 @@ QUmlTestIdentityAction::QUmlTestIdentityAction() :
     _result(0),
     _second(0)
 {
+    d_ptr->object.setProperty("first", QVariant::fromValue((QUmlInputPin *)(0)));
+    d_ptr->object.setProperty("result", QVariant::fromValue((QUmlOutputPin *)(0)));
+    d_ptr->object.setProperty("second", QVariant::fromValue((QUmlInputPin *)(0)));
 }
 
 // OWNED ATTRIBUTES

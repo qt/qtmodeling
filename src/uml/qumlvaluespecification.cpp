@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlvaluespecification.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlParameterableElement>
 

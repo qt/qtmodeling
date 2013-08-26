@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlcreatelinkaction.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlLinkEndCreationData>
 
@@ -54,6 +55,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlCreateLinkAction::QUmlCreateLinkAction()
 {
+    d_ptr->object.setProperty("endData", QVariant::fromValue(&_endData));
 }
 
 // OWNED ATTRIBUTES

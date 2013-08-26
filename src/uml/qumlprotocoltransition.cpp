@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlprotocoltransition.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlConstraint>
 #include <QtUml/QUmlOperation>
@@ -57,6 +58,9 @@ QUmlProtocolTransition::QUmlProtocolTransition() :
     _postCondition(0),
     _preCondition(0)
 {
+    d_ptr->object.setProperty("postCondition", QVariant::fromValue((QUmlConstraint *)(0)));
+    d_ptr->object.setProperty("preCondition", QVariant::fromValue((QUmlConstraint *)(0)));
+    d_ptr->object.setProperty("referred", QVariant::fromValue(QSet<QUmlOperation *>()));
 }
 
 // OWNED ATTRIBUTES

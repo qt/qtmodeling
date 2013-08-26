@@ -87,6 +87,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlArtifact *)
+Q_DECLARE_METATYPE(QList<QUmlArtifact *> *)
+Q_DECLARE_METATYPE(QSet<QUmlArtifact *> *)
+
 QT_END_HEADER
 
 #endif // QUMLARTIFACT_H

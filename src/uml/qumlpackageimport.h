@@ -76,6 +76,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlPackageImport *)
+Q_DECLARE_METATYPE(QList<QUmlPackageImport *> *)
+Q_DECLARE_METATYPE(QSet<QUmlPackageImport *> *)
+
 QT_END_HEADER
 
 #endif // QUMLPACKAGEIMPORT_H

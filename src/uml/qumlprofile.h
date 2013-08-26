@@ -74,6 +74,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlProfile *)
+Q_DECLARE_METATYPE(QList<QUmlProfile *> *)
+Q_DECLARE_METATYPE(QSet<QUmlProfile *> *)
+
 QT_END_HEADER
 
 #endif // QUMLPROFILE_H

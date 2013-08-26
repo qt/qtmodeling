@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumllinkendcreationdata.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlInputPin>
 
@@ -56,6 +57,8 @@ QUmlLinkEndCreationData::QUmlLinkEndCreationData() :
     _insertAt(0),
     _isReplaceAll(false)
 {
+    d_ptr->object.setProperty("insertAt", QVariant::fromValue((QUmlInputPin *)(0)));
+    d_ptr->object.setProperty("isReplaceAll", QVariant::fromValue(false));
 }
 
 // OWNED ATTRIBUTES

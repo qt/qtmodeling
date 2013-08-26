@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlcomponent.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlComponentRealization>
@@ -58,6 +59,11 @@ QT_BEGIN_NAMESPACE
 QUmlComponent::QUmlComponent() :
     _isIndirectlyInstantiated(true)
 {
+    d_ptr->object.setProperty("isIndirectlyInstantiated", QVariant::fromValue(false));
+    d_ptr->object.setProperty("packagedElement", QVariant::fromValue(&_packagedElement));
+    d_ptr->object.setProperty("provided", QVariant::fromValue(QSet<QUmlInterface *>()));
+    d_ptr->object.setProperty("realization", QVariant::fromValue(&_realization));
+    d_ptr->object.setProperty("required", QVariant::fromValue(QSet<QUmlInterface *>()));
 }
 
 // OWNED ATTRIBUTES

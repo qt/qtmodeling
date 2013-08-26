@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlinstancespecification.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlSlot>
@@ -57,6 +58,9 @@ QT_BEGIN_NAMESPACE
 QUmlInstanceSpecification::QUmlInstanceSpecification() :
     _specification(0)
 {
+    d_ptr->object.setProperty("classifier", QVariant::fromValue(&_classifier));
+    d_ptr->object.setProperty("slot", QVariant::fromValue(&_slot_));
+    d_ptr->object.setProperty("specification", QVariant::fromValue((QUmlValueSpecification *)(0)));
 }
 
 // OWNED ATTRIBUTES

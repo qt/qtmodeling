@@ -136,6 +136,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlProperty *)
+Q_DECLARE_METATYPE(QList<QUmlProperty *> *)
+Q_DECLARE_METATYPE(QSet<QUmlProperty *> *)
+
 QT_END_HEADER
 
 #endif // QUMLPROPERTY_H

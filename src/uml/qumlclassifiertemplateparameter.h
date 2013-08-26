@@ -75,6 +75,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlClassifierTemplateParameter *)
+Q_DECLARE_METATYPE(QList<QUmlClassifierTemplateParameter *> *)
+Q_DECLARE_METATYPE(QSet<QUmlClassifierTemplateParameter *> *)
+
 QT_END_HEADER
 
 #endif // QUMLCLASSIFIERTEMPLATEPARAMETER_H

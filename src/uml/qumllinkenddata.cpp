@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumllinkenddata.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlInputPin>
 #include <QtUml/QUmlProperty>
@@ -58,6 +59,9 @@ QUmlLinkEndData::QUmlLinkEndData() :
     _end(0),
     _value(0)
 {
+    d_ptr->object.setProperty("end", QVariant::fromValue((QUmlProperty *)(0)));
+    d_ptr->object.setProperty("qualifier", QVariant::fromValue(&_qualifier));
+    d_ptr->object.setProperty("value", QVariant::fromValue((QUmlInputPin *)(0)));
 }
 
 // OWNED ATTRIBUTES

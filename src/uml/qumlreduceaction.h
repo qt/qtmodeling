@@ -79,6 +79,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlReduceAction *)
+Q_DECLARE_METATYPE(QList<QUmlReduceAction *> *)
+Q_DECLARE_METATYPE(QSet<QUmlReduceAction *> *)
+
 QT_END_HEADER
 
 #endif // QUMLREDUCEACTION_H

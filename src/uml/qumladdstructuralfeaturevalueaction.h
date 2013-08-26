@@ -71,6 +71,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlAddStructuralFeatureValueAction *)
+Q_DECLARE_METATYPE(QList<QUmlAddStructuralFeatureValueAction *> *)
+Q_DECLARE_METATYPE(QSet<QUmlAddStructuralFeatureValueAction *> *)
+
 QT_END_HEADER
 
 #endif // QUMLADDSTRUCTURALFEATUREVALUEACTION_H

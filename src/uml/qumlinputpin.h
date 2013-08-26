@@ -61,6 +61,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlInputPin *)
+Q_DECLARE_METATYPE(QList<QUmlInputPin *> *)
+Q_DECLARE_METATYPE(QSet<QUmlInputPin *> *)
+
 QT_END_HEADER
 
 #endif // QUMLINPUTPIN_H

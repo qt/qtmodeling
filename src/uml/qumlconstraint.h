@@ -77,6 +77,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlConstraint *)
+Q_DECLARE_METATYPE(QList<QUmlConstraint *> *)
+Q_DECLARE_METATYPE(QSet<QUmlConstraint *> *)
+
 QT_END_HEADER
 
 #endif // QUMLCONSTRAINT_H

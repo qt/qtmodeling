@@ -61,6 +61,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlFunctionBehavior *)
+Q_DECLARE_METATYPE(QList<QUmlFunctionBehavior *> *)
+Q_DECLARE_METATYPE(QSet<QUmlFunctionBehavior *> *)
+
 QT_END_HEADER
 
 #endif // QUMLFUNCTIONBEHAVIOR_H

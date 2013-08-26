@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlstateinvariant.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlConstraint>
 #include <QtUml/QUmlLifeline>
@@ -57,6 +58,8 @@ QUmlStateInvariant::QUmlStateInvariant() :
     _covered(0),
     _invariant(0)
 {
+    d_ptr->object.setProperty("covered", QVariant::fromValue((QUmlLifeline *)(0)));
+    d_ptr->object.setProperty("invariant", QVariant::fromValue((QUmlConstraint *)(0)));
 }
 
 // OWNED ATTRIBUTES

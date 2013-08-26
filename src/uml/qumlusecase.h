@@ -87,6 +87,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlUseCase *)
+Q_DECLARE_METATYPE(QList<QUmlUseCase *> *)
+Q_DECLARE_METATYPE(QSet<QUmlUseCase *> *)
+
 QT_END_HEADER
 
 #endif // QUMLUSECASE_H

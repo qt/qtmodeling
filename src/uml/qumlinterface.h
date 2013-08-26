@@ -91,6 +91,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlInterface *)
+Q_DECLARE_METATYPE(QList<QUmlInterface *> *)
+Q_DECLARE_METATYPE(QSet<QUmlInterface *> *)
+
 QT_END_HEADER
 
 #endif // QUMLINTERFACE_H

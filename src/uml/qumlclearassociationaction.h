@@ -72,6 +72,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlClearAssociationAction *)
+Q_DECLARE_METATYPE(QList<QUmlClearAssociationAction *> *)
+Q_DECLARE_METATYPE(QSet<QUmlClearAssociationAction *> *)
+
 QT_END_HEADER
 
 #endif // QUMLCLEARASSOCIATIONACTION_H

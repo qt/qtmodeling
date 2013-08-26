@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlabstraction.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlOpaqueExpression>
 
@@ -55,6 +56,7 @@ QT_BEGIN_NAMESPACE
 QUmlAbstraction::QUmlAbstraction() :
     _mapping(0)
 {
+    d_ptr->object.setProperty("mapping", QVariant::fromValue((QUmlOpaqueExpression *)(0)));
 }
 
 // OWNED ATTRIBUTES

@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlrelationship.h"
+#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -52,6 +53,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlRelationship::QUmlRelationship()
 {
+    d_ptr->object.setProperty("relatedElement", QVariant::fromValue(&_relatedElement));
 }
 
 // OWNED ATTRIBUTES

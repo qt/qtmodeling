@@ -82,6 +82,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlStructuredClassifier *)
+Q_DECLARE_METATYPE(QList<QUmlStructuredClassifier *> *)
+Q_DECLARE_METATYPE(QSet<QUmlStructuredClassifier *> *)
+
 QT_END_HEADER
 
 #endif // QUMLSTRUCTUREDCLASSIFIER_H

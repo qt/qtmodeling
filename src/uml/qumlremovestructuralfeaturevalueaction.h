@@ -71,6 +71,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlRemoveStructuralFeatureValueAction *)
+Q_DECLARE_METATYPE(QList<QUmlRemoveStructuralFeatureValueAction *> *)
+Q_DECLARE_METATYPE(QSet<QUmlRemoveStructuralFeatureValueAction *> *)
+
 QT_END_HEADER
 
 #endif // QUMLREMOVESTRUCTURALFEATUREVALUEACTION_H

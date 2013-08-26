@@ -78,6 +78,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlTemplateableElement *)
+Q_DECLARE_METATYPE(QList<QUmlTemplateableElement *> *)
+Q_DECLARE_METATYPE(QSet<QUmlTemplateableElement *> *)
+
 QT_END_HEADER
 
 #endif // QUMLTEMPLATEABLEELEMENT_H

@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumldependency.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlNamedElement>
 
@@ -54,6 +55,8 @@ QT_BEGIN_NAMESPACE
 
 QUmlDependency::QUmlDependency()
 {
+    d_ptr->object.setProperty("client", QVariant::fromValue(&_client));
+    d_ptr->object.setProperty("supplier", QVariant::fromValue(&_supplier));
 }
 
 // OWNED ATTRIBUTES

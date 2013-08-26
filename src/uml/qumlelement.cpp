@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlelement.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlComment>
 
@@ -55,6 +56,9 @@ QT_BEGIN_NAMESPACE
 QUmlElement::QUmlElement() :
     _owner(0)
 {
+    d_ptr->object.setProperty("ownedComment", QVariant::fromValue(&_ownedComment));
+    d_ptr->object.setProperty("ownedElement", QVariant::fromValue(&_ownedElement));
+    d_ptr->object.setProperty("owner", QVariant::fromValue((QUmlElement *)(0)));
 }
 
 // OWNED ATTRIBUTES

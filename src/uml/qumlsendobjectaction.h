@@ -71,6 +71,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlSendObjectAction *)
+Q_DECLARE_METATYPE(QList<QUmlSendObjectAction *> *)
+Q_DECLARE_METATYPE(QSet<QUmlSendObjectAction *> *)
+
 QT_END_HEADER
 
 #endif // QUMLSENDOBJECTACTION_H

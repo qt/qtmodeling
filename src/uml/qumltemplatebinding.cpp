@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumltemplatebinding.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlTemplateableElement>
 #include <QtUml/QUmlTemplateParameterSubstitution>
@@ -58,6 +59,9 @@ QUmlTemplateBinding::QUmlTemplateBinding() :
     _boundElement(0),
     _signature(0)
 {
+    d_ptr->object.setProperty("boundElement", QVariant::fromValue((QUmlTemplateableElement *)(0)));
+    d_ptr->object.setProperty("parameterSubstitution", QVariant::fromValue(&_parameterSubstitution));
+    d_ptr->object.setProperty("signature", QVariant::fromValue((QUmlTemplateSignature *)(0)));
 }
 
 // OWNED ATTRIBUTES

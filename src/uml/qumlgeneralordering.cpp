@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlgeneralordering.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlOccurrenceSpecification>
 
@@ -56,6 +57,8 @@ QUmlGeneralOrdering::QUmlGeneralOrdering() :
     _after(0),
     _before(0)
 {
+    d_ptr->object.setProperty("after", QVariant::fromValue((QUmlOccurrenceSpecification *)(0)));
+    d_ptr->object.setProperty("before", QVariant::fromValue((QUmlOccurrenceSpecification *)(0)));
 }
 
 // OWNED ATTRIBUTES

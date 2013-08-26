@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlexecutionoccurrencespecification.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlExecutionSpecification>
 
@@ -55,6 +56,7 @@ QT_BEGIN_NAMESPACE
 QUmlExecutionOccurrenceSpecification::QUmlExecutionOccurrenceSpecification() :
     _execution(0)
 {
+    d_ptr->object.setProperty("execution", QVariant::fromValue((QUmlExecutionSpecification *)(0)));
 }
 
 // OWNED ATTRIBUTES

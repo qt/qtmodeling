@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlcollaboration.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlConnectableElement>
 
@@ -54,6 +55,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlCollaboration::QUmlCollaboration()
 {
+    d_ptr->object.setProperty("collaborationRole", QVariant::fromValue(&_collaborationRole));
 }
 
 // OWNED ATTRIBUTES

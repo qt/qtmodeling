@@ -69,6 +69,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlInterval *)
+Q_DECLARE_METATYPE(QList<QUmlInterval *> *)
+Q_DECLARE_METATYPE(QSet<QUmlInterval *> *)
+
 QT_END_HEADER
 
 #endif // QUMLINTERVAL_H

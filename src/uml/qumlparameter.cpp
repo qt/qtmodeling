@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlparameter.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlOperation>
 #include <QtUml/QUmlParameterSet>
@@ -56,11 +57,19 @@ QT_BEGIN_NAMESPACE
 
 QUmlParameter::QUmlParameter() :
     _defaultValue(0),
-    _direction(QtUml::ParameterDirectionIn),
+    _direction(QtUml::ParameterDirectionKindIn),
     _isException(false),
     _isStream(false),
     _operation(0)
 {
+    d_ptr->object.setProperty("default", QVariant::fromValue(QString()));
+    d_ptr->object.setProperty("defaultValue", QVariant::fromValue((QUmlValueSpecification *)(0)));
+    d_ptr->object.setProperty("direction", QVariant::fromValue(QtUml::ParameterDirectionKindNone));
+    d_ptr->object.setProperty("effect", QVariant::fromValue(QtUml::ParameterEffectKindNone));
+    d_ptr->object.setProperty("isException", QVariant::fromValue(false));
+    d_ptr->object.setProperty("isStream", QVariant::fromValue(false));
+    d_ptr->object.setProperty("operation", QVariant::fromValue((QUmlOperation *)(0)));
+    d_ptr->object.setProperty("parameterSet", QVariant::fromValue(&_parameterSet));
 }
 
 // OWNED ATTRIBUTES

@@ -61,6 +61,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlPartDecomposition *)
+Q_DECLARE_METATYPE(QList<QUmlPartDecomposition *> *)
+Q_DECLARE_METATYPE(QSet<QUmlPartDecomposition *> *)
+
 QT_END_HEADER
 
 #endif // QUMLPARTDECOMPOSITION_H

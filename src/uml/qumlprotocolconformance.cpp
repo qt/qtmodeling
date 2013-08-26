@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlprotocolconformance.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlProtocolStateMachine>
 
@@ -56,6 +57,8 @@ QUmlProtocolConformance::QUmlProtocolConformance() :
     _generalMachine(0),
     _specificMachine(0)
 {
+    d_ptr->object.setProperty("generalMachine", QVariant::fromValue((QUmlProtocolStateMachine *)(0)));
+    d_ptr->object.setProperty("specificMachine", QVariant::fromValue((QUmlProtocolStateMachine *)(0)));
 }
 
 // OWNED ATTRIBUTES

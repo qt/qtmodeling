@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlunmarshallaction.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlInputPin>
@@ -58,6 +59,9 @@ QUmlUnmarshallAction::QUmlUnmarshallAction() :
     _object(0),
     _unmarshallType(0)
 {
+    d_ptr->object.setProperty("object", QVariant::fromValue((QUmlInputPin *)(0)));
+    d_ptr->object.setProperty("result", QVariant::fromValue(&_result));
+    d_ptr->object.setProperty("unmarshallType", QVariant::fromValue((QUmlClassifier *)(0)));
 }
 
 // OWNED ATTRIBUTES

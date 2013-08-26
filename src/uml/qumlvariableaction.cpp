@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlvariableaction.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlVariable>
 
@@ -55,6 +56,7 @@ QT_BEGIN_NAMESPACE
 QUmlVariableAction::QUmlVariableAction() :
     _variable(0)
 {
+    d_ptr->object.setProperty("variable", QVariant::fromValue((QUmlVariable *)(0)));
 }
 
 // OWNED ATTRIBUTES

@@ -61,6 +61,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlCentralBufferNode *)
+Q_DECLARE_METATYPE(QList<QUmlCentralBufferNode *> *)
+Q_DECLARE_METATYPE(QSet<QUmlCentralBufferNode *> *)
+
 QT_END_HEADER
 
 #endif // QUMLCENTRALBUFFERNODE_H

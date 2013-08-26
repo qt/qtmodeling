@@ -68,6 +68,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlExecutionOccurrenceSpecification *)
+Q_DECLARE_METATYPE(QList<QUmlExecutionOccurrenceSpecification *> *)
+Q_DECLARE_METATYPE(QSet<QUmlExecutionOccurrenceSpecification *> *)
+
 QT_END_HEADER
 
 #endif // QUMLEXECUTIONOCCURRENCESPECIFICATION_H

@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumldurationconstraint.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlDurationInterval>
 
@@ -55,6 +56,8 @@ QT_BEGIN_NAMESPACE
 QUmlDurationConstraint::QUmlDurationConstraint() :
     _specification(0)
 {
+    d_ptr->object.setProperty("firstEvent", QVariant::fromValue(false));
+    d_ptr->object.setProperty("specification", QVariant::fromValue((QUmlDurationInterval *)(0)));
 }
 
 // OWNED ATTRIBUTES

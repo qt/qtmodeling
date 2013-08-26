@@ -85,6 +85,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlOpaqueExpression *)
+Q_DECLARE_METATYPE(QList<QUmlOpaqueExpression *> *)
+Q_DECLARE_METATYPE(QSet<QUmlOpaqueExpression *> *)
+
 QT_END_HEADER
 
 #endif // QUMLOPAQUEEXPRESSION_H

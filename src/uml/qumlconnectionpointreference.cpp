@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlconnectionpointreference.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlPseudostate>
 #include <QtUml/QUmlState>
@@ -56,6 +57,9 @@ QT_BEGIN_NAMESPACE
 QUmlConnectionPointReference::QUmlConnectionPointReference() :
     _state(0)
 {
+    d_ptr->object.setProperty("entry", QVariant::fromValue(&_entry));
+    d_ptr->object.setProperty("exit", QVariant::fromValue(&_exit));
+    d_ptr->object.setProperty("state", QVariant::fromValue((QUmlState *)(0)));
 }
 
 // OWNED ATTRIBUTES

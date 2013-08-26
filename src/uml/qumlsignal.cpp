@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlsignal.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlProperty>
 
@@ -54,6 +55,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlSignal::QUmlSignal()
 {
+    d_ptr->object.setProperty("ownedAttribute", QVariant::fromValue(&_ownedAttribute));
 }
 
 // OWNED ATTRIBUTES

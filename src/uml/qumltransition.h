@@ -104,6 +104,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlTransition *)
+Q_DECLARE_METATYPE(QList<QUmlTransition *> *)
+Q_DECLARE_METATYPE(QSet<QUmlTransition *> *)
+
 QT_END_HEADER
 
 #endif // QUMLTRANSITION_H

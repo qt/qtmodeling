@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlpseudostate.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlState>
 #include <QtUml/QUmlStateMachine>
@@ -54,10 +55,13 @@ QT_BEGIN_NAMESPACE
  */
 
 QUmlPseudostate::QUmlPseudostate() :
-    _kind(QtUml::PseudostateInitial),
+    _kind(QtUml::PseudostateKindInitial),
     _state(0),
     _stateMachine(0)
 {
+    d_ptr->object.setProperty("kind", QVariant::fromValue(QtUml::PseudostateKindNone));
+    d_ptr->object.setProperty("state", QVariant::fromValue((QUmlState *)(0)));
+    d_ptr->object.setProperty("stateMachine", QVariant::fromValue((QUmlStateMachine *)(0)));
 }
 
 // OWNED ATTRIBUTES

@@ -72,6 +72,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlCreateObjectAction *)
+Q_DECLARE_METATYPE(QList<QUmlCreateObjectAction *> *)
+Q_DECLARE_METATYPE(QSet<QUmlCreateObjectAction *> *)
+
 QT_END_HEADER
 
 #endif // QUMLCREATEOBJECTACTION_H

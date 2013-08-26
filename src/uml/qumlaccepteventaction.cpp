@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlaccepteventaction.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlOutputPin>
 #include <QtUml/QUmlTrigger>
@@ -56,6 +57,9 @@ QT_BEGIN_NAMESPACE
 QUmlAcceptEventAction::QUmlAcceptEventAction() :
     _isUnmarshall(false)
 {
+    d_ptr->object.setProperty("isUnmarshall", QVariant::fromValue(false));
+    d_ptr->object.setProperty("result", QVariant::fromValue(&_result));
+    d_ptr->object.setProperty("trigger", QVariant::fromValue(&_trigger));
 }
 
 // OWNED ATTRIBUTES

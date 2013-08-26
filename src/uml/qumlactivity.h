@@ -100,6 +100,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlActivity *)
+Q_DECLARE_METATYPE(QList<QUmlActivity *> *)
+Q_DECLARE_METATYPE(QSet<QUmlActivity *> *)
+
 QT_END_HEADER
 
 #endif // QUMLACTIVITY_H

@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlelementimport.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlPackageableElement>
@@ -56,8 +57,12 @@ QT_BEGIN_NAMESPACE
 QUmlElementImport::QUmlElementImport() :
     _importedElement(0),
     _importingNamespace(0),
-    _visibility(QtUml::VisibilityPublic)
+    _visibility(QtUml::VisibilityKindPublic)
 {
+    d_ptr->object.setProperty("alias", QVariant::fromValue(QString()));
+    d_ptr->object.setProperty("importedElement", QVariant::fromValue((QUmlPackageableElement *)(0)));
+    d_ptr->object.setProperty("importingNamespace", QVariant::fromValue((QUmlNamespace *)(0)));
+    d_ptr->object.setProperty("visibility", QVariant::fromValue(QtUml::VisibilityKindNone));
 }
 
 // OWNED ATTRIBUTES

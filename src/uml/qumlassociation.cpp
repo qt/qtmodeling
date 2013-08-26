@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlassociation.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlProperty>
 #include <QtUml/QUmlType>
@@ -56,6 +57,11 @@ QT_BEGIN_NAMESPACE
 QUmlAssociation::QUmlAssociation() :
     _isDerived(false)
 {
+    d_ptr->object.setProperty("endType", QVariant::fromValue(QList<QUmlType *>()));
+    d_ptr->object.setProperty("isDerived", QVariant::fromValue(false));
+    d_ptr->object.setProperty("memberEnd", QVariant::fromValue(&_memberEnd));
+    d_ptr->object.setProperty("navigableOwnedEnd", QVariant::fromValue(&_navigableOwnedEnd));
+    d_ptr->object.setProperty("ownedEnd", QVariant::fromValue(&_ownedEnd));
 }
 
 // OWNED ATTRIBUTES

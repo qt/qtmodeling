@@ -73,6 +73,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlDirectedRelationship *)
+Q_DECLARE_METATYPE(QList<QUmlDirectedRelationship *> *)
+Q_DECLARE_METATYPE(QSet<QUmlDirectedRelationship *> *)
+
 QT_END_HEADER
 
 #endif // QUMLDIRECTEDRELATIONSHIP_H

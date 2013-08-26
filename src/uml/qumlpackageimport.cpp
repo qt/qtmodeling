@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlpackageimport.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlPackage>
@@ -56,8 +57,11 @@ QT_BEGIN_NAMESPACE
 QUmlPackageImport::QUmlPackageImport() :
     _importedPackage(0),
     _importingNamespace(0),
-    _visibility(QtUml::VisibilityPublic)
+    _visibility(QtUml::VisibilityKindPublic)
 {
+    d_ptr->object.setProperty("importedPackage", QVariant::fromValue((QUmlPackage *)(0)));
+    d_ptr->object.setProperty("importingNamespace", QVariant::fromValue((QUmlNamespace *)(0)));
+    d_ptr->object.setProperty("visibility", QVariant::fromValue(QtUml::VisibilityKindNone));
 }
 
 // OWNED ATTRIBUTES

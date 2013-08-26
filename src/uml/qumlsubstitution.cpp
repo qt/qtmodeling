@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlsubstitution.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlClassifier>
 
@@ -56,6 +57,8 @@ QUmlSubstitution::QUmlSubstitution() :
     _contract(0),
     _substitutingClassifier(0)
 {
+    d_ptr->object.setProperty("contract", QVariant::fromValue((QUmlClassifier *)(0)));
+    d_ptr->object.setProperty("substitutingClassifier", QVariant::fromValue((QUmlClassifier *)(0)));
 }
 
 // OWNED ATTRIBUTES

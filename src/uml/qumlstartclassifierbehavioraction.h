@@ -68,6 +68,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlStartClassifierBehaviorAction *)
+Q_DECLARE_METATYPE(QList<QUmlStartClassifierBehaviorAction *> *)
+Q_DECLARE_METATYPE(QSet<QUmlStartClassifierBehaviorAction *> *)
+
 QT_END_HEADER
 
 #endif // QUMLSTARTCLASSIFIERBEHAVIORACTION_H

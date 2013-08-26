@@ -77,6 +77,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlUnmarshallAction *)
+Q_DECLARE_METATYPE(QList<QUmlUnmarshallAction *> *)
+Q_DECLARE_METATYPE(QSet<QUmlUnmarshallAction *> *)
+
 QT_END_HEADER
 
 #endif // QUMLUNMARSHALLACTION_H

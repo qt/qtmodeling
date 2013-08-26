@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumldurationinterval.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlDuration>
 
@@ -56,6 +57,8 @@ QUmlDurationInterval::QUmlDurationInterval() :
     _max(0),
     _min(0)
 {
+    d_ptr->object.setProperty("max", QVariant::fromValue((QUmlDuration *)(0)));
+    d_ptr->object.setProperty("min", QVariant::fromValue((QUmlDuration *)(0)));
 }
 
 // OWNED ATTRIBUTES

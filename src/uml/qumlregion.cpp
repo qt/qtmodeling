@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlregion.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlState>
@@ -61,6 +62,12 @@ QUmlRegion::QUmlRegion() :
     _state(0),
     _stateMachine(0)
 {
+    d_ptr->object.setProperty("extendedRegion", QVariant::fromValue((QUmlRegion *)(0)));
+    d_ptr->object.setProperty("redefinitionContext", QVariant::fromValue((QUmlClassifier *)(0)));
+    d_ptr->object.setProperty("state", QVariant::fromValue((QUmlState *)(0)));
+    d_ptr->object.setProperty("stateMachine", QVariant::fromValue((QUmlStateMachine *)(0)));
+    d_ptr->object.setProperty("subvertex", QVariant::fromValue(&_subvertex));
+    d_ptr->object.setProperty("transition", QVariant::fromValue(&_transition));
 }
 
 // OWNED ATTRIBUTES

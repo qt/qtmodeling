@@ -61,6 +61,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlPrimitiveType *)
+Q_DECLARE_METATYPE(QList<QUmlPrimitiveType *> *)
+Q_DECLARE_METATYPE(QSet<QUmlPrimitiveType *> *)
+
 QT_END_HEADER
 
 #endif // QUMLPRIMITIVETYPE_H

@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlstructuralfeatureaction.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlInputPin>
 #include <QtUml/QUmlStructuralFeature>
@@ -57,6 +58,8 @@ QUmlStructuralFeatureAction::QUmlStructuralFeatureAction() :
     _object(0),
     _structuralFeature(0)
 {
+    d_ptr->object.setProperty("object", QVariant::fromValue((QUmlInputPin *)(0)));
+    d_ptr->object.setProperty("structuralFeature", QVariant::fromValue((QUmlStructuralFeature *)(0)));
 }
 
 // OWNED ATTRIBUTES

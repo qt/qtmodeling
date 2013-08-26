@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlencapsulatedclassifier.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlPort>
 
@@ -54,6 +55,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlEncapsulatedClassifier::QUmlEncapsulatedClassifier()
 {
+    d_ptr->object.setProperty("ownedPort", QVariant::fromValue(QSet<QUmlPort *>()));
 }
 
 // OWNED ATTRIBUTES

@@ -91,6 +91,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlStateMachine *)
+Q_DECLARE_METATYPE(QList<QUmlStateMachine *> *)
+Q_DECLARE_METATYPE(QSet<QUmlStateMachine *> *)
+
 QT_END_HEADER
 
 #endif // QUMLSTATEMACHINE_H

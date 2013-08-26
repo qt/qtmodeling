@@ -68,6 +68,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlReadVariableAction *)
+Q_DECLARE_METATYPE(QList<QUmlReadVariableAction *> *)
+Q_DECLARE_METATYPE(QSet<QUmlReadVariableAction *> *)
+
 QT_END_HEADER
 
 #endif // QUMLREADVARIABLEACTION_H

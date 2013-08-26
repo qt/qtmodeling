@@ -72,6 +72,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlImage *)
+Q_DECLARE_METATYPE(QList<QUmlImage *> *)
+Q_DECLARE_METATYPE(QSet<QUmlImage *> *)
+
 QT_END_HEADER
 
 #endif // QUMLIMAGE_H

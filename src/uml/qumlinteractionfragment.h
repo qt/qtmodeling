@@ -82,6 +82,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlInteractionFragment *)
+Q_DECLARE_METATYPE(QList<QUmlInteractionFragment *> *)
+Q_DECLARE_METATYPE(QSet<QUmlInteractionFragment *> *)
+
 QT_END_HEADER
 
 #endif // QUMLINTERACTIONFRAGMENT_H

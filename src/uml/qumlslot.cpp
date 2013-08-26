@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlslot.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlInstanceSpecification>
 #include <QtUml/QUmlStructuralFeature>
@@ -58,6 +59,9 @@ QUmlSlot::QUmlSlot() :
     _definingFeature(0),
     _owningInstance(0)
 {
+    d_ptr->object.setProperty("definingFeature", QVariant::fromValue((QUmlStructuralFeature *)(0)));
+    d_ptr->object.setProperty("owningInstance", QVariant::fromValue((QUmlInstanceSpecification *)(0)));
+    d_ptr->object.setProperty("value", QVariant::fromValue(&_value));
 }
 
 // OWNED ATTRIBUTES

@@ -68,6 +68,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlExtensionPoint *)
+Q_DECLARE_METATYPE(QList<QUmlExtensionPoint *> *)
+Q_DECLARE_METATYPE(QSet<QUmlExtensionPoint *> *)
+
 QT_END_HEADER
 
 #endif // QUMLEXTENSIONPOINT_H

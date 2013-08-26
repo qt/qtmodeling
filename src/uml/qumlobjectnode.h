@@ -85,6 +85,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlObjectNode *)
+Q_DECLARE_METATYPE(QList<QUmlObjectNode *> *)
+Q_DECLARE_METATYPE(QSet<QUmlObjectNode *> *)
+
 QT_END_HEADER
 
 #endif // QUMLOBJECTNODE_H

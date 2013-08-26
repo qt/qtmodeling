@@ -77,6 +77,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlBehavioredClassifier *)
+Q_DECLARE_METATYPE(QList<QUmlBehavioredClassifier *> *)
+Q_DECLARE_METATYPE(QSet<QUmlBehavioredClassifier *> *)
+
 QT_END_HEADER
 
 #endif // QUMLBEHAVIOREDCLASSIFIER_H

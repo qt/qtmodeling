@@ -61,6 +61,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlMergeNode *)
+Q_DECLARE_METATYPE(QList<QUmlMergeNode *> *)
+Q_DECLARE_METATYPE(QSet<QUmlMergeNode *> *)
+
 QT_END_HEADER
 
 #endif // QUMLMERGENODE_H

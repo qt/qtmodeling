@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlextensionend.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlStereotype>
 
@@ -55,6 +56,8 @@ QT_BEGIN_NAMESPACE
 QUmlExtensionEnd::QUmlExtensionEnd() :
     _type(0)
 {
+    d_ptr->object.setProperty("lower", QVariant::fromValue((int)(0)));
+    d_ptr->object.setProperty("type", QVariant::fromValue((QUmlStereotype *)(0)));
 }
 
 // OWNED ATTRIBUTES

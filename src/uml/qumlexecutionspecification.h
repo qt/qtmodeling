@@ -71,6 +71,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlExecutionSpecification *)
+Q_DECLARE_METATYPE(QList<QUmlExecutionSpecification *> *)
+Q_DECLARE_METATYPE(QSet<QUmlExecutionSpecification *> *)
+
 QT_END_HEADER
 
 #endif // QUMLEXECUTIONSPECIFICATION_H

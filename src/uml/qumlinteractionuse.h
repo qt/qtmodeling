@@ -52,6 +52,7 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlGate;
+class QUmlInteraction;
 class QUmlProperty;
 class QUmlValueSpecification;
 
@@ -83,6 +84,10 @@ protected:
 };
 
 QT_END_NAMESPACE
+
+Q_DECLARE_METATYPE(QUmlInteractionUse *)
+Q_DECLARE_METATYPE(QList<QUmlInteractionUse *> *)
+Q_DECLARE_METATYPE(QSet<QUmlInteractionUse *> *)
 
 QT_END_HEADER
 

@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlexpansionnode.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlExpansionRegion>
 
@@ -56,6 +57,8 @@ QUmlExpansionNode::QUmlExpansionNode() :
     _regionAsInput(0),
     _regionAsOutput(0)
 {
+    d_ptr->object.setProperty("regionAsInput", QVariant::fromValue((QUmlExpansionRegion *)(0)));
+    d_ptr->object.setProperty("regionAsOutput", QVariant::fromValue((QUmlExpansionRegion *)(0)));
 }
 
 // OWNED ATTRIBUTES

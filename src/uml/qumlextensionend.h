@@ -73,6 +73,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlExtensionEnd *)
+Q_DECLARE_METATYPE(QList<QUmlExtensionEnd *> *)
+Q_DECLARE_METATYPE(QSet<QUmlExtensionEnd *> *)
+
 QT_END_HEADER
 
 #endif // QUMLEXTENSIONEND_H

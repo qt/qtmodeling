@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumltemplatesignature.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlTemplateableElement>
 #include <QtUml/QUmlTemplateParameter>
@@ -56,6 +57,9 @@ QT_BEGIN_NAMESPACE
 QUmlTemplateSignature::QUmlTemplateSignature() :
     _template_(0)
 {
+    d_ptr->object.setProperty("ownedParameter", QVariant::fromValue(&_ownedParameter));
+    d_ptr->object.setProperty("parameter", QVariant::fromValue(&_parameter));
+    d_ptr->object.setProperty("template", QVariant::fromValue((QUmlTemplateableElement *)(0)));
 }
 
 // OWNED ATTRIBUTES

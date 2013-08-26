@@ -82,6 +82,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlElementImport *)
+Q_DECLARE_METATYPE(QList<QUmlElementImport *> *)
+Q_DECLARE_METATYPE(QSet<QUmlElementImport *> *)
+
 QT_END_HEADER
 
 #endif // QUMLELEMENTIMPORT_H

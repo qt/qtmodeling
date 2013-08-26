@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlobjectnode.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlBehavior>
 #include <QtUml/QUmlState>
@@ -56,10 +57,15 @@ QT_BEGIN_NAMESPACE
 
 QUmlObjectNode::QUmlObjectNode() :
     _isControlType(false),
-    _ordering(QtUml::ObjectNodeOrderingFIFO),
+    _ordering(QtUml::ObjectNodeOrderingKindFIFO),
     _selection(0),
     _upperBound(0)
 {
+    d_ptr->object.setProperty("inState", QVariant::fromValue(&_inState));
+    d_ptr->object.setProperty("isControlType", QVariant::fromValue(false));
+    d_ptr->object.setProperty("ordering", QVariant::fromValue(QtUml::ObjectNodeOrderingKindNone));
+    d_ptr->object.setProperty("selection", QVariant::fromValue((QUmlBehavior *)(0)));
+    d_ptr->object.setProperty("upperBound", QVariant::fromValue((QUmlValueSpecification *)(0)));
 }
 
 // OWNED ATTRIBUTES

@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlliteralinteger.h"
+#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -53,6 +54,7 @@ QT_BEGIN_NAMESPACE
 QUmlLiteralInteger::QUmlLiteralInteger() :
     _value(0)
 {
+    d_ptr->object.setProperty("value", QVariant::fromValue((int)(0)));
 }
 
 // OWNED ATTRIBUTES

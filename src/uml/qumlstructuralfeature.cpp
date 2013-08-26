@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlstructuralfeature.h"
+#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -53,6 +54,7 @@ QT_BEGIN_NAMESPACE
 QUmlStructuralFeature::QUmlStructuralFeature() :
     _isReadOnly(false)
 {
+    d_ptr->object.setProperty("isReadOnly", QVariant::fromValue(false));
 }
 
 // OWNED ATTRIBUTES

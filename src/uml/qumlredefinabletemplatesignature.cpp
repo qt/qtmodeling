@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlredefinabletemplatesignature.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlTemplateParameter>
@@ -56,6 +57,9 @@ QT_BEGIN_NAMESPACE
 QUmlRedefinableTemplateSignature::QUmlRedefinableTemplateSignature() :
     _classifier(0)
 {
+    d_ptr->object.setProperty("classifier", QVariant::fromValue((QUmlClassifier *)(0)));
+    d_ptr->object.setProperty("extendedSignature", QVariant::fromValue(&_extendedSignature));
+    d_ptr->object.setProperty("inheritedParameter", QVariant::fromValue(QSet<QUmlTemplateParameter *>()));
 }
 
 // OWNED ATTRIBUTES

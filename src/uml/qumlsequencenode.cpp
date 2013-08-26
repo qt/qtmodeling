@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlsequencenode.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlExecutableNode>
 
@@ -54,6 +55,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlSequenceNode::QUmlSequenceNode()
 {
+    d_ptr->object.setProperty("executableNode", QVariant::fromValue(&_executableNode));
 }
 
 // OWNED ATTRIBUTES

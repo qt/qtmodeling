@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlgeneralization.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlGeneralizationSet>
@@ -58,6 +59,10 @@ QUmlGeneralization::QUmlGeneralization() :
     _isSubstitutable(true),
     _specific(0)
 {
+    d_ptr->object.setProperty("general", QVariant::fromValue((QUmlClassifier *)(0)));
+    d_ptr->object.setProperty("generalizationSet", QVariant::fromValue(&_generalizationSet));
+    d_ptr->object.setProperty("isSubstitutable", QVariant::fromValue(false));
+    d_ptr->object.setProperty("specific", QVariant::fromValue((QUmlClassifier *)(0)));
 }
 
 // OWNED ATTRIBUTES

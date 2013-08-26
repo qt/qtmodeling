@@ -71,6 +71,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlExpansionNode *)
+Q_DECLARE_METATYPE(QList<QUmlExpansionNode *> *)
+Q_DECLARE_METATYPE(QSet<QUmlExpansionNode *> *)
+
 QT_END_HEADER
 
 #endif // QUMLEXPANSIONNODE_H

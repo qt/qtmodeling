@@ -74,6 +74,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlInterruptibleActivityRegion *)
+Q_DECLARE_METATYPE(QList<QUmlInterruptibleActivityRegion *> *)
+Q_DECLARE_METATYPE(QSet<QUmlInterruptibleActivityRegion *> *)
+
 QT_END_HEADER
 
 #endif // QUMLINTERRUPTIBLEACTIVITYREGION_H

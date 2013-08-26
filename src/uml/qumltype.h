@@ -51,6 +51,8 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
+class QUmlPackage;
+
 class Q_UML_EXPORT QUmlType : public QUmlPackageableElement
 {
 public:
@@ -68,6 +70,10 @@ protected:
 };
 
 QT_END_NAMESPACE
+
+Q_DECLARE_METATYPE(QUmlType *)
+Q_DECLARE_METATYPE(QList<QUmlType *> *)
+Q_DECLARE_METATYPE(QSet<QUmlType *> *)
 
 QT_END_HEADER
 

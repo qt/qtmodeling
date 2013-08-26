@@ -79,6 +79,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlElement *)
+Q_DECLARE_METATYPE(QList<QUmlElement *> *)
+Q_DECLARE_METATYPE(QSet<QUmlElement *> *)
+
 QT_END_HEADER
 
 #endif // QUMLELEMENT_H

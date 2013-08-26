@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlinvocationaction.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlInputPin>
 #include <QtUml/QUmlPort>
@@ -56,6 +57,8 @@ QT_BEGIN_NAMESPACE
 QUmlInvocationAction::QUmlInvocationAction() :
     _onPort(0)
 {
+    d_ptr->object.setProperty("argument", QVariant::fromValue(&_argument));
+    d_ptr->object.setProperty("onPort", QVariant::fromValue((QUmlPort *)(0)));
 }
 
 // OWNED ATTRIBUTES

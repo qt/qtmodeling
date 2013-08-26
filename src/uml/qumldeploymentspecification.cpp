@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumldeploymentspecification.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlDeployment>
 
@@ -55,6 +56,9 @@ QT_BEGIN_NAMESPACE
 QUmlDeploymentSpecification::QUmlDeploymentSpecification() :
     _deployment(0)
 {
+    d_ptr->object.setProperty("deployment", QVariant::fromValue((QUmlDeployment *)(0)));
+    d_ptr->object.setProperty("deploymentLocation", QVariant::fromValue(QString()));
+    d_ptr->object.setProperty("executionLocation", QVariant::fromValue(QString()));
 }
 
 // OWNED ATTRIBUTES

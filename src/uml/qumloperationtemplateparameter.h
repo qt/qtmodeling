@@ -68,6 +68,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlOperationTemplateParameter *)
+Q_DECLARE_METATYPE(QList<QUmlOperationTemplateParameter *> *)
+Q_DECLARE_METATYPE(QSet<QUmlOperationTemplateParameter *> *)
+
 QT_END_HEADER
 
 #endif // QUMLOPERATIONTEMPLATEPARAMETER_H

@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlmessage.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlConnector>
 #include <QtUml/QUmlInteraction>
@@ -58,11 +59,19 @@ QT_BEGIN_NAMESPACE
 QUmlMessage::QUmlMessage() :
     _connector(0),
     _interaction(0),
-    _messageSort(QtUml::MessageSynchCall),
+    _messageSort(QtUml::MessageSortSynchCall),
     _receiveEvent(0),
     _sendEvent(0),
     _signature(0)
 {
+    d_ptr->object.setProperty("argument", QVariant::fromValue(&_argument));
+    d_ptr->object.setProperty("connector", QVariant::fromValue((QUmlConnector *)(0)));
+    d_ptr->object.setProperty("interaction", QVariant::fromValue((QUmlInteraction *)(0)));
+    d_ptr->object.setProperty("messageKind", QVariant::fromValue(QtUml::MessageKindNone));
+    d_ptr->object.setProperty("messageSort", QVariant::fromValue(QtUml::MessageSortNone));
+    d_ptr->object.setProperty("receiveEvent", QVariant::fromValue((QUmlMessageEnd *)(0)));
+    d_ptr->object.setProperty("sendEvent", QVariant::fromValue((QUmlMessageEnd *)(0)));
+    d_ptr->object.setProperty("signature", QVariant::fromValue((QUmlNamedElement *)(0)));
 }
 
 // OWNED ATTRIBUTES

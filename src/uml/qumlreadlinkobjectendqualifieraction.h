@@ -76,6 +76,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlReadLinkObjectEndQualifierAction *)
+Q_DECLARE_METATYPE(QList<QUmlReadLinkObjectEndQualifierAction *> *)
+Q_DECLARE_METATYPE(QSet<QUmlReadLinkObjectEndQualifierAction *> *)
+
 QT_END_HEADER
 
 #endif // QUMLREADLINKOBJECTENDQUALIFIERACTION_H

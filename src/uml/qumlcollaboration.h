@@ -70,6 +70,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlCollaboration *)
+Q_DECLARE_METATYPE(QList<QUmlCollaboration *> *)
+Q_DECLARE_METATYPE(QSet<QUmlCollaboration *> *)
+
 QT_END_HEADER
 
 #endif // QUMLCOLLABORATION_H

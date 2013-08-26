@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlusecase.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlExtend>
@@ -57,6 +58,10 @@ QT_BEGIN_NAMESPACE
 
 QUmlUseCase::QUmlUseCase()
 {
+    d_ptr->object.setProperty("extend", QVariant::fromValue(&_extend));
+    d_ptr->object.setProperty("extensionPoint", QVariant::fromValue(&_extensionPoint));
+    d_ptr->object.setProperty("include", QVariant::fromValue(&_include));
+    d_ptr->object.setProperty("subject", QVariant::fromValue(&_subject));
 }
 
 // OWNED ATTRIBUTES

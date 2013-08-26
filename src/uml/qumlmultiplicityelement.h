@@ -90,6 +90,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlMultiplicityElement *)
+Q_DECLARE_METATYPE(QList<QUmlMultiplicityElement *> *)
+Q_DECLARE_METATYPE(QSet<QUmlMultiplicityElement *> *)
+
 QT_END_HEADER
 
 #endif // QUMLMULTIPLICITYELEMENT_H

@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlpackage.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlNamedElement>
 #include <QtUml/QUmlPackageMerge>
@@ -60,6 +61,14 @@ QT_BEGIN_NAMESPACE
 QUmlPackage::QUmlPackage() :
     _nestingPackage(0)
 {
+    d_ptr->object.setProperty("uRI", QVariant::fromValue(QString()));
+    d_ptr->object.setProperty("nestedPackage", QVariant::fromValue(QSet<QUmlPackage *>()));
+    d_ptr->object.setProperty("nestingPackage", QVariant::fromValue((QUmlPackage *)(0)));
+    d_ptr->object.setProperty("ownedStereotype", QVariant::fromValue(QSet<QUmlStereotype *>()));
+    d_ptr->object.setProperty("ownedType", QVariant::fromValue(QSet<QUmlType *>()));
+    d_ptr->object.setProperty("packageMerge", QVariant::fromValue(&_packageMerge));
+    d_ptr->object.setProperty("packagedElement", QVariant::fromValue(&_packagedElement));
+    d_ptr->object.setProperty("profileApplication", QVariant::fromValue(&_profileApplication));
 }
 
 // OWNED ATTRIBUTES

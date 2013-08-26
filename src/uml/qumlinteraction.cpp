@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlinteraction.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlAction>
 #include <QtUml/QUmlGate>
@@ -57,6 +58,11 @@ QT_BEGIN_NAMESPACE
 
 QUmlInteraction::QUmlInteraction()
 {
+    d_ptr->object.setProperty("action", QVariant::fromValue(&_action));
+    d_ptr->object.setProperty("formalGate", QVariant::fromValue(&_formalGate));
+    d_ptr->object.setProperty("fragment", QVariant::fromValue(&_fragment));
+    d_ptr->object.setProperty("lifeline", QVariant::fromValue(&_lifeline));
+    d_ptr->object.setProperty("message", QVariant::fromValue(&_message));
 }
 
 // OWNED ATTRIBUTES

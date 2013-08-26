@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlactioninputpin.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlAction>
 
@@ -55,6 +56,7 @@ QT_BEGIN_NAMESPACE
 QUmlActionInputPin::QUmlActionInputPin() :
     _fromAction(0)
 {
+    d_ptr->object.setProperty("fromAction", QVariant::fromValue((QUmlAction *)(0)));
 }
 
 // OWNED ATTRIBUTES

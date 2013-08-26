@@ -79,6 +79,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlTemplateParameterSubstitution *)
+Q_DECLARE_METATYPE(QList<QUmlTemplateParameterSubstitution *> *)
+Q_DECLARE_METATYPE(QSet<QUmlTemplateParameterSubstitution *> *)
+
 QT_END_HEADER
 
 #endif // QUMLTEMPLATEPARAMETERSUBSTITUTION_H

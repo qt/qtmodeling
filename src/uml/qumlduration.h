@@ -72,6 +72,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlDuration *)
+Q_DECLARE_METATYPE(QList<QUmlDuration *> *)
+Q_DECLARE_METATYPE(QSet<QUmlDuration *> *)
+
 QT_END_HEADER
 
 #endif // QUMLDURATION_H

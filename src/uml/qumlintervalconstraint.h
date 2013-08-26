@@ -68,6 +68,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlIntervalConstraint *)
+Q_DECLARE_METATYPE(QList<QUmlIntervalConstraint *> *)
+Q_DECLARE_METATYPE(QSet<QUmlIntervalConstraint *> *)
+
 QT_END_HEADER
 
 #endif // QUMLINTERVALCONSTRAINT_H

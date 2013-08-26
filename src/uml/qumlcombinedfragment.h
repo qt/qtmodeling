@@ -78,6 +78,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlCombinedFragment *)
+Q_DECLARE_METATYPE(QList<QUmlCombinedFragment *> *)
+Q_DECLARE_METATYPE(QSet<QUmlCombinedFragment *> *)
+
 QT_END_HEADER
 
 #endif // QUMLCOMBINEDFRAGMENT_H

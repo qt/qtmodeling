@@ -72,6 +72,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlTimeExpression *)
+Q_DECLARE_METATYPE(QList<QUmlTimeExpression *> *)
+Q_DECLARE_METATYPE(QSet<QUmlTimeExpression *> *)
+
 QT_END_HEADER
 
 #endif // QUMLTIMEEXPRESSION_H

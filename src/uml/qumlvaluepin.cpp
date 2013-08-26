@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlvaluepin.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlValueSpecification>
 
@@ -55,6 +56,7 @@ QT_BEGIN_NAMESPACE
 QUmlValuePin::QUmlValuePin() :
     _value(0)
 {
+    d_ptr->object.setProperty("value", QVariant::fromValue((QUmlValueSpecification *)(0)));
 }
 
 // OWNED ATTRIBUTES

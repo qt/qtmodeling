@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlchangeevent.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlValueSpecification>
 
@@ -55,6 +56,7 @@ QT_BEGIN_NAMESPACE
 QUmlChangeEvent::QUmlChangeEvent() :
     _changeExpression(0)
 {
+    d_ptr->object.setProperty("changeExpression", QVariant::fromValue((QUmlValueSpecification *)(0)));
 }
 
 // OWNED ATTRIBUTES

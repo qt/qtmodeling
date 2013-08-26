@@ -67,6 +67,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlInformationItem *)
+Q_DECLARE_METATYPE(QList<QUmlInformationItem *> *)
+Q_DECLARE_METATYPE(QSet<QUmlInformationItem *> *)
+
 QT_END_HEADER
 
 #endif // QUMLINFORMATIONITEM_H

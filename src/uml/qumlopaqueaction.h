@@ -82,6 +82,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlOpaqueAction *)
+Q_DECLARE_METATYPE(QList<QUmlOpaqueAction *> *)
+Q_DECLARE_METATYPE(QSet<QUmlOpaqueAction *> *)
+
 QT_END_HEADER
 
 #endif // QUMLOPAQUEACTION_H

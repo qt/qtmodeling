@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlbehaviorexecutionspecification.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlBehavior>
 
@@ -55,6 +56,7 @@ QT_BEGIN_NAMESPACE
 QUmlBehaviorExecutionSpecification::QUmlBehaviorExecutionSpecification() :
     _behavior(0)
 {
+    d_ptr->object.setProperty("behavior", QVariant::fromValue((QUmlBehavior *)(0)));
 }
 
 // OWNED ATTRIBUTES

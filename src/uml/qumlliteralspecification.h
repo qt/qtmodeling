@@ -61,6 +61,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlLiteralSpecification *)
+Q_DECLARE_METATYPE(QList<QUmlLiteralSpecification *> *)
+Q_DECLARE_METATYPE(QSet<QUmlLiteralSpecification *> *)
+
 QT_END_HEADER
 
 #endif // QUMLLITERALSPECIFICATION_H

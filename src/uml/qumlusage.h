@@ -61,6 +61,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlUsage *)
+Q_DECLARE_METATYPE(QList<QUmlUsage *> *)
+Q_DECLARE_METATYPE(QSet<QUmlUsage *> *)
+
 QT_END_HEADER
 
 #endif // QUMLUSAGE_H

@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlextend.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlConstraint>
 #include <QtUml/QUmlExtensionPoint>
@@ -59,6 +60,10 @@ QUmlExtend::QUmlExtend() :
     _extendedCase(0),
     _extension(0)
 {
+    d_ptr->object.setProperty("condition", QVariant::fromValue((QUmlConstraint *)(0)));
+    d_ptr->object.setProperty("extendedCase", QVariant::fromValue((QUmlUseCase *)(0)));
+    d_ptr->object.setProperty("extension", QVariant::fromValue((QUmlUseCase *)(0)));
+    d_ptr->object.setProperty("extensionLocation", QVariant::fromValue(&_extensionLocation));
 }
 
 // OWNED ATTRIBUTES

@@ -61,6 +61,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlClearVariableAction *)
+Q_DECLARE_METATYPE(QList<QUmlClearVariableAction *> *)
+Q_DECLARE_METATYPE(QSet<QUmlClearVariableAction *> *)
+
 QT_END_HEADER
 
 #endif // QUMLCLEARVARIABLEACTION_H

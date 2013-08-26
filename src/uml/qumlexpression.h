@@ -70,6 +70,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlExpression *)
+Q_DECLARE_METATYPE(QList<QUmlExpression *> *)
+Q_DECLARE_METATYPE(QSet<QUmlExpression *> *)
+
 QT_END_HEADER
 
 #endif // QUMLEXPRESSION_H

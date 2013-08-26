@@ -61,6 +61,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlAnyReceiveEvent *)
+Q_DECLARE_METATYPE(QList<QUmlAnyReceiveEvent *> *)
+Q_DECLARE_METATYPE(QSet<QUmlAnyReceiveEvent *> *)
+
 QT_END_HEADER
 
 #endif // QUMLANYRECEIVEEVENT_H

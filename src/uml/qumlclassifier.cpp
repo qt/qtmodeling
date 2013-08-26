@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlclassifier.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlClassifierTemplateParameter>
 #include <QtUml/QUmlCollaborationUse>
@@ -68,6 +69,22 @@ QUmlClassifier::QUmlClassifier() :
     _representation(0),
     _templateParameter(0)
 {
+    d_ptr->object.setProperty("attribute", QVariant::fromValue(&_attribute));
+    d_ptr->object.setProperty("collaborationUse", QVariant::fromValue(&_collaborationUse));
+    d_ptr->object.setProperty("feature", QVariant::fromValue(&_feature));
+    d_ptr->object.setProperty("general", QVariant::fromValue(QSet<QUmlClassifier *>()));
+    d_ptr->object.setProperty("generalization", QVariant::fromValue(&_generalization));
+    d_ptr->object.setProperty("inheritedMember", QVariant::fromValue(QSet<QUmlNamedElement *>()));
+    d_ptr->object.setProperty("isAbstract", QVariant::fromValue(false));
+    d_ptr->object.setProperty("isFinalSpecialization", QVariant::fromValue(false));
+    d_ptr->object.setProperty("ownedTemplateSignature", QVariant::fromValue((QUmlRedefinableTemplateSignature *)(0)));
+    d_ptr->object.setProperty("ownedUseCase", QVariant::fromValue(&_ownedUseCase));
+    d_ptr->object.setProperty("powertypeExtent", QVariant::fromValue(&_powertypeExtent));
+    d_ptr->object.setProperty("redefinedClassifier", QVariant::fromValue(&_redefinedClassifier));
+    d_ptr->object.setProperty("representation", QVariant::fromValue((QUmlCollaborationUse *)(0)));
+    d_ptr->object.setProperty("substitution", QVariant::fromValue(&_substitution));
+    d_ptr->object.setProperty("templateParameter", QVariant::fromValue((QUmlClassifierTemplateParameter *)(0)));
+    d_ptr->object.setProperty("useCase", QVariant::fromValue(&_useCase));
 }
 
 // OWNED ATTRIBUTES

@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlactor.h"
+#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 

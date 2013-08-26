@@ -80,6 +80,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlConditionalNode *)
+Q_DECLARE_METATYPE(QList<QUmlConditionalNode *> *)
+Q_DECLARE_METATYPE(QSet<QUmlConditionalNode *> *)
+
 QT_END_HEADER
 
 #endif // QUMLCONDITIONALNODE_H

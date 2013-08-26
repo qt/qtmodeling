@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlconnector.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlAssociation>
 #include <QtUml/QUmlBehavior>
@@ -57,6 +58,11 @@ QT_BEGIN_NAMESPACE
 QUmlConnector::QUmlConnector() :
     _type(0)
 {
+    d_ptr->object.setProperty("contract", QVariant::fromValue(&_contract));
+    d_ptr->object.setProperty("end", QVariant::fromValue(&_end));
+    d_ptr->object.setProperty("kind", QVariant::fromValue(QtUml::ConnectorKindNone));
+    d_ptr->object.setProperty("redefinedConnector", QVariant::fromValue(&_redefinedConnector));
+    d_ptr->object.setProperty("type", QVariant::fromValue((QUmlAssociation *)(0)));
 }
 
 // OWNED ATTRIBUTES

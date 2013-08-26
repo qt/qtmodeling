@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlaction.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlConstraint>
@@ -58,6 +59,12 @@ QT_BEGIN_NAMESPACE
 QUmlAction::QUmlAction() :
     _isLocallyReentrant(false)
 {
+    d_ptr->object.setProperty("context", QVariant::fromValue((QUmlClassifier *)(0)));
+    d_ptr->object.setProperty("input", QVariant::fromValue(&_input));
+    d_ptr->object.setProperty("isLocallyReentrant", QVariant::fromValue(false));
+    d_ptr->object.setProperty("localPostcondition", QVariant::fromValue(&_localPostcondition));
+    d_ptr->object.setProperty("localPrecondition", QVariant::fromValue(&_localPrecondition));
+    d_ptr->object.setProperty("output", QVariant::fromValue(&_output));
 }
 
 // OWNED ATTRIBUTES

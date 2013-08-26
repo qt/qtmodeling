@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlreadvariableaction.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlOutputPin>
 
@@ -55,6 +56,7 @@ QT_BEGIN_NAMESPACE
 QUmlReadVariableAction::QUmlReadVariableAction() :
     _result(0)
 {
+    d_ptr->object.setProperty("result", QVariant::fromValue((QUmlOutputPin *)(0)));
 }
 
 // OWNED ATTRIBUTES

@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlprotocolstatemachine.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlProtocolConformance>
 
@@ -54,6 +55,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlProtocolStateMachine::QUmlProtocolStateMachine()
 {
+    d_ptr->object.setProperty("conformance", QVariant::fromValue(&_conformance));
 }
 
 // OWNED ATTRIBUTES

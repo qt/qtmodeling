@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlinteractionoperand.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlInteractionConstraint>
 
@@ -55,6 +56,8 @@ QT_BEGIN_NAMESPACE
 QUmlInteractionOperand::QUmlInteractionOperand() :
     _guard(0)
 {
+    d_ptr->object.setProperty("fragment", QVariant::fromValue(&_fragment));
+    d_ptr->object.setProperty("guard", QVariant::fromValue((QUmlInteractionConstraint *)(0)));
 }
 
 // OWNED ATTRIBUTES

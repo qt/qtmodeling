@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlconditionalnode.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlClause>
 #include <QtUml/QUmlOutputPin>
@@ -57,6 +58,10 @@ QUmlConditionalNode::QUmlConditionalNode() :
     _isAssured(false),
     _isDeterminate(false)
 {
+    d_ptr->object.setProperty("clause", QVariant::fromValue(&_clause));
+    d_ptr->object.setProperty("isAssured", QVariant::fromValue(false));
+    d_ptr->object.setProperty("isDeterminate", QVariant::fromValue(false));
+    d_ptr->object.setProperty("result", QVariant::fromValue(&_result));
 }
 
 // OWNED ATTRIBUTES

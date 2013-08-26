@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumloccurrencespecification.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlGeneralOrdering>
 #include <QtUml/QUmlLifeline>
@@ -56,6 +57,9 @@ QT_BEGIN_NAMESPACE
 QUmlOccurrenceSpecification::QUmlOccurrenceSpecification() :
     _covered(0)
 {
+    d_ptr->object.setProperty("covered", QVariant::fromValue((QUmlLifeline *)(0)));
+    d_ptr->object.setProperty("toAfter", QVariant::fromValue(&_toAfter));
+    d_ptr->object.setProperty("toBefore", QVariant::fromValue(&_toBefore));
 }
 
 // OWNED ATTRIBUTES

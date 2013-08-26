@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlcontinuation.h"
+#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -53,6 +54,7 @@ QT_BEGIN_NAMESPACE
 QUmlContinuation::QUmlContinuation() :
     _setting(true)
 {
+    d_ptr->object.setProperty("setting", QVariant::fromValue(false));
 }
 
 // OWNED ATTRIBUTES

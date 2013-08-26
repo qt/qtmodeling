@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumltemplateparametersubstitution.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlParameterableElement>
 #include <QtUml/QUmlTemplateBinding>
@@ -60,6 +61,10 @@ QUmlTemplateParameterSubstitution::QUmlTemplateParameterSubstitution() :
     _ownedActual(0),
     _templateBinding(0)
 {
+    d_ptr->object.setProperty("actual", QVariant::fromValue((QUmlParameterableElement *)(0)));
+    d_ptr->object.setProperty("formal", QVariant::fromValue((QUmlTemplateParameter *)(0)));
+    d_ptr->object.setProperty("ownedActual", QVariant::fromValue((QUmlParameterableElement *)(0)));
+    d_ptr->object.setProperty("templateBinding", QVariant::fromValue((QUmlTemplateBinding *)(0)));
 }
 
 // OWNED ATTRIBUTES

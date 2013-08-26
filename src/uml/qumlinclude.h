@@ -72,6 +72,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlInclude *)
+Q_DECLARE_METATYPE(QList<QUmlInclude *> *)
+Q_DECLARE_METATYPE(QSet<QUmlInclude *> *)
+
 QT_END_HEADER
 
 #endif // QUMLINCLUDE_H

@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlduration.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlObservation>
 
@@ -55,6 +56,8 @@ QT_BEGIN_NAMESPACE
 QUmlDuration::QUmlDuration() :
     _expr(0)
 {
+    d_ptr->object.setProperty("expr", QVariant::fromValue((QUmlValueSpecification *)(0)));
+    d_ptr->object.setProperty("observation", QVariant::fromValue(&_observation));
 }
 
 // OWNED ATTRIBUTES

@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlproperty.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlAssociation>
 #include <QtUml/QUmlClass>
@@ -60,7 +61,7 @@ QT_BEGIN_NAMESPACE
  */
 
 QUmlProperty::QUmlProperty() :
-    _aggregation(QtUml::AggregationNone),
+    _aggregation(QtUml::AggregationKindNone),
     _association(0),
     _associationEnd(0),
     _class_(0),
@@ -73,6 +74,24 @@ QUmlProperty::QUmlProperty() :
     _isReadOnly(false),
     _owningAssociation(0)
 {
+    d_ptr->object.setProperty("aggregation", QVariant::fromValue(QtUml::AggregationKindNone));
+    d_ptr->object.setProperty("association", QVariant::fromValue((QUmlAssociation *)(0)));
+    d_ptr->object.setProperty("associationEnd", QVariant::fromValue((QUmlProperty *)(0)));
+    d_ptr->object.setProperty("class", QVariant::fromValue((QUmlClass *)(0)));
+    d_ptr->object.setProperty("datatype", QVariant::fromValue((QUmlDataType *)(0)));
+    d_ptr->object.setProperty("default", QVariant::fromValue(QString()));
+    d_ptr->object.setProperty("defaultValue", QVariant::fromValue((QUmlValueSpecification *)(0)));
+    d_ptr->object.setProperty("interface", QVariant::fromValue((QUmlInterface *)(0)));
+    d_ptr->object.setProperty("isComposite", QVariant::fromValue(false));
+    d_ptr->object.setProperty("isDerived", QVariant::fromValue(false));
+    d_ptr->object.setProperty("isDerivedUnion", QVariant::fromValue(false));
+    d_ptr->object.setProperty("isID", QVariant::fromValue(false));
+    d_ptr->object.setProperty("isReadOnly", QVariant::fromValue(false));
+    d_ptr->object.setProperty("opposite", QVariant::fromValue((QUmlProperty *)(0)));
+    d_ptr->object.setProperty("owningAssociation", QVariant::fromValue((QUmlAssociation *)(0)));
+    d_ptr->object.setProperty("qualifier", QVariant::fromValue(&_qualifier));
+    d_ptr->object.setProperty("redefinedProperty", QVariant::fromValue(&_redefinedProperty));
+    d_ptr->object.setProperty("subsettedProperty", QVariant::fromValue(&_subsettedProperty));
 }
 
 // OWNED ATTRIBUTES

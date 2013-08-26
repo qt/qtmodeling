@@ -104,6 +104,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlActivityEdge *)
+Q_DECLARE_METATYPE(QList<QUmlActivityEdge *> *)
+Q_DECLARE_METATYPE(QSet<QUmlActivityEdge *> *)
+
 QT_END_HEADER
 
 #endif // QUMLACTIVITYEDGE_H

@@ -71,6 +71,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlPackageMerge *)
+Q_DECLARE_METATYPE(QList<QUmlPackageMerge *> *)
+Q_DECLARE_METATYPE(QSet<QUmlPackageMerge *> *)
+
 QT_END_HEADER
 
 #endif // QUMLPACKAGEMERGE_H

@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumltimeevent.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlTimeExpression>
 
@@ -56,6 +57,8 @@ QUmlTimeEvent::QUmlTimeEvent() :
     _isRelative(false),
     _when(0)
 {
+    d_ptr->object.setProperty("isRelative", QVariant::fromValue(false));
+    d_ptr->object.setProperty("when", QVariant::fromValue((QUmlTimeExpression *)(0)));
 }
 
 // OWNED ATTRIBUTES

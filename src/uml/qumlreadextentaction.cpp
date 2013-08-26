@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlreadextentaction.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlOutputPin>
@@ -57,6 +58,8 @@ QUmlReadExtentAction::QUmlReadExtentAction() :
     _classifier(0),
     _result(0)
 {
+    d_ptr->object.setProperty("classifier", QVariant::fromValue((QUmlClassifier *)(0)));
+    d_ptr->object.setProperty("result", QVariant::fromValue((QUmlOutputPin *)(0)));
 }
 
 // OWNED ATTRIBUTES

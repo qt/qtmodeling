@@ -68,6 +68,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlEncapsulatedClassifier *)
+Q_DECLARE_METATYPE(QList<QUmlEncapsulatedClassifier *> *)
+Q_DECLARE_METATYPE(QSet<QUmlEncapsulatedClassifier *> *)
+
 QT_END_HEADER
 
 #endif // QUMLENCAPSULATEDCLASSIFIER_H

@@ -67,6 +67,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlRelationship *)
+Q_DECLARE_METATYPE(QList<QUmlRelationship *> *)
+Q_DECLARE_METATYPE(QSet<QUmlRelationship *> *)
+
 QT_END_HEADER
 
 #endif // QUMLRELATIONSHIP_H

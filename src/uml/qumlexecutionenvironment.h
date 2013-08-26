@@ -61,6 +61,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlExecutionEnvironment *)
+Q_DECLARE_METATYPE(QList<QUmlExecutionEnvironment *> *)
+Q_DECLARE_METATYPE(QSet<QUmlExecutionEnvironment *> *)
+
 QT_END_HEADER
 
 #endif // QUMLEXECUTIONENVIRONMENT_H

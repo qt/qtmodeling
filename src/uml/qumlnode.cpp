@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlnode.h"
+#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -52,6 +53,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlNode::QUmlNode()
 {
+    d_ptr->object.setProperty("nestedNode", QVariant::fromValue(&_nestedNode));
 }
 
 // OWNED ATTRIBUTES

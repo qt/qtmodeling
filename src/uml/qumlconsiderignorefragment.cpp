@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlconsiderignorefragment.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlNamedElement>
 
@@ -54,6 +55,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlConsiderIgnoreFragment::QUmlConsiderIgnoreFragment()
 {
+    d_ptr->object.setProperty("message", QVariant::fromValue(&_message));
 }
 
 // OWNED ATTRIBUTES

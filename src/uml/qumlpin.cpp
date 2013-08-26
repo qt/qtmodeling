@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlpin.h"
+#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -53,6 +54,7 @@ QT_BEGIN_NAMESPACE
 QUmlPin::QUmlPin() :
     _isControl(false)
 {
+    d_ptr->object.setProperty("isControl", QVariant::fromValue(false));
 }
 
 // OWNED ATTRIBUTES

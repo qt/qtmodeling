@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlbehavioredclassifier.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlBehavior>
 #include <QtUml/QUmlInterfaceRealization>
@@ -56,6 +57,9 @@ QT_BEGIN_NAMESPACE
 QUmlBehavioredClassifier::QUmlBehavioredClassifier() :
     _classifierBehavior(0)
 {
+    d_ptr->object.setProperty("classifierBehavior", QVariant::fromValue((QUmlBehavior *)(0)));
+    d_ptr->object.setProperty("interfaceRealization", QVariant::fromValue(&_interfaceRealization));
+    d_ptr->object.setProperty("ownedBehavior", QVariant::fromValue(&_ownedBehavior));
 }
 
 // OWNED ATTRIBUTES

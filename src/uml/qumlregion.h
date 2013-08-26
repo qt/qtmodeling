@@ -95,6 +95,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlRegion *)
+Q_DECLARE_METATYPE(QList<QUmlRegion *> *)
+Q_DECLARE_METATYPE(QSet<QUmlRegion *> *)
+
 QT_END_HEADER
 
 #endif // QUMLREGION_H

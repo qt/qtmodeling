@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlactivitypartition.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlActivityEdge>
 #include <QtUml/QUmlActivityNode>
@@ -60,6 +61,13 @@ QUmlActivityPartition::QUmlActivityPartition() :
     _represents(0),
     _superPartition(0)
 {
+    d_ptr->object.setProperty("edge", QVariant::fromValue(&_edge));
+    d_ptr->object.setProperty("isDimension", QVariant::fromValue(false));
+    d_ptr->object.setProperty("isExternal", QVariant::fromValue(false));
+    d_ptr->object.setProperty("node", QVariant::fromValue(&_node));
+    d_ptr->object.setProperty("represents", QVariant::fromValue((QUmlElement *)(0)));
+    d_ptr->object.setProperty("subpartition", QVariant::fromValue(&_subpartition));
+    d_ptr->object.setProperty("superPartition", QVariant::fromValue((QUmlActivityPartition *)(0)));
 }
 
 // OWNED ATTRIBUTES

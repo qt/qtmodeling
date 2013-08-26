@@ -132,6 +132,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(Q${namespace}${className} *)
+Q_DECLARE_METATYPE(QList<Q${namespace}${className} *> *)
+Q_DECLARE_METATYPE(QSet<Q${namespace}${className} *> *)
+
 QT_END_HEADER
 
 #endif // Q${namespace.upper}${className.upper}_H

@@ -77,6 +77,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlConnectionPointReference *)
+Q_DECLARE_METATYPE(QList<QUmlConnectionPointReference *> *)
+Q_DECLARE_METATYPE(QSet<QUmlConnectionPointReference *> *)
+
 QT_END_HEADER
 
 #endif // QUMLCONNECTIONPOINTREFERENCE_H

@@ -68,6 +68,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlManifestation *)
+Q_DECLARE_METATYPE(QList<QUmlManifestation *> *)
+Q_DECLARE_METATYPE(QSet<QUmlManifestation *> *)
+
 QT_END_HEADER
 
 #endif // QUMLMANIFESTATION_H

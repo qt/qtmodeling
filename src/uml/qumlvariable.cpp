@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlvariable.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlAction>
 #include <QtUml/QUmlActivity>
@@ -58,6 +59,8 @@ QUmlVariable::QUmlVariable() :
     _activityScope(0),
     _scope(0)
 {
+    d_ptr->object.setProperty("activityScope", QVariant::fromValue((QUmlActivity *)(0)));
+    d_ptr->object.setProperty("scope", QVariant::fromValue((QUmlStructuredActivityNode *)(0)));
 }
 
 // OWNED ATTRIBUTES

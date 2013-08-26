@@ -75,6 +75,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlTestIdentityAction *)
+Q_DECLARE_METATYPE(QList<QUmlTestIdentityAction *> *)
+Q_DECLARE_METATYPE(QSet<QUmlTestIdentityAction *> *)
+
 QT_END_HEADER
 
 #endif // QUMLTESTIDENTITYACTION_H

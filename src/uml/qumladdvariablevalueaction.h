@@ -71,6 +71,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlAddVariableValueAction *)
+Q_DECLARE_METATYPE(QList<QUmlAddVariableValueAction *> *)
+Q_DECLARE_METATYPE(QSet<QUmlAddVariableValueAction *> *)
+
 QT_END_HEADER
 
 #endif // QUMLADDVARIABLEVALUEACTION_H

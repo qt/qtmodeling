@@ -65,6 +65,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlLiteralNull *)
+Q_DECLARE_METATYPE(QList<QUmlLiteralNull *> *)
+Q_DECLARE_METATYPE(QSet<QUmlLiteralNull *> *)
+
 QT_END_HEADER
 
 #endif // QUMLLITERALNULL_H

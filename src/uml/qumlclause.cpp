@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlclause.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlExecutableNode>
 #include <QtUml/QUmlOutputPin>
@@ -56,6 +57,12 @@ QT_BEGIN_NAMESPACE
 QUmlClause::QUmlClause() :
     _decider(0)
 {
+    d_ptr->object.setProperty("body", QVariant::fromValue(&_body));
+    d_ptr->object.setProperty("bodyOutput", QVariant::fromValue(&_bodyOutput));
+    d_ptr->object.setProperty("decider", QVariant::fromValue((QUmlOutputPin *)(0)));
+    d_ptr->object.setProperty("predecessorClause", QVariant::fromValue(&_predecessorClause));
+    d_ptr->object.setProperty("successorClause", QVariant::fromValue(&_successorClause));
+    d_ptr->object.setProperty("test", QVariant::fromValue(&_test));
 }
 
 // OWNED ATTRIBUTES

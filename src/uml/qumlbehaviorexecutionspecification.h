@@ -68,6 +68,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlBehaviorExecutionSpecification *)
+Q_DECLARE_METATYPE(QList<QUmlBehaviorExecutionSpecification *> *)
+Q_DECLARE_METATYPE(QSet<QUmlBehaviorExecutionSpecification *> *)
+
 QT_END_HEADER
 
 #endif // QUMLBEHAVIOREXECUTIONSPECIFICATION_H

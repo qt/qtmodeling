@@ -71,6 +71,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlSubstitution *)
+Q_DECLARE_METATYPE(QList<QUmlSubstitution *> *)
+Q_DECLARE_METATYPE(QSet<QUmlSubstitution *> *)
+
 QT_END_HEADER
 
 #endif // QUMLSUBSTITUTION_H

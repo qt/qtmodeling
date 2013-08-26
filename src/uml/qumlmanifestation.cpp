@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlmanifestation.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlPackageableElement>
 
@@ -55,6 +56,7 @@ QT_BEGIN_NAMESPACE
 QUmlManifestation::QUmlManifestation() :
     _utilizedElement(0)
 {
+    d_ptr->object.setProperty("utilizedElement", QVariant::fromValue((QUmlPackageableElement *)(0)));
 }
 
 // OWNED ATTRIBUTES

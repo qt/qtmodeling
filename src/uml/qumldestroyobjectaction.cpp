@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumldestroyobjectaction.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlInputPin>
 
@@ -57,6 +58,9 @@ QUmlDestroyObjectAction::QUmlDestroyObjectAction() :
     _isDestroyOwnedObjects(false),
     _target(0)
 {
+    d_ptr->object.setProperty("isDestroyLinks", QVariant::fromValue(false));
+    d_ptr->object.setProperty("isDestroyOwnedObjects", QVariant::fromValue(false));
+    d_ptr->object.setProperty("target", QVariant::fromValue((QUmlInputPin *)(0)));
 }
 
 // OWNED ATTRIBUTES

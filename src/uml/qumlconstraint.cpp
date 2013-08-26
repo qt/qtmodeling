@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlconstraint.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlElement>
 #include <QtUml/QUmlNamespace>
@@ -58,6 +59,9 @@ QUmlConstraint::QUmlConstraint() :
     _context(0),
     _specification(0)
 {
+    d_ptr->object.setProperty("constrainedElement", QVariant::fromValue(&_constrainedElement));
+    d_ptr->object.setProperty("context", QVariant::fromValue((QUmlNamespace *)(0)));
+    d_ptr->object.setProperty("specification", QVariant::fromValue((QUmlValueSpecification *)(0)));
 }
 
 // OWNED ATTRIBUTES

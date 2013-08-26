@@ -80,6 +80,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlRedefinableTemplateSignature *)
+Q_DECLARE_METATYPE(QList<QUmlRedefinableTemplateSignature *> *)
+Q_DECLARE_METATYPE(QSet<QUmlRedefinableTemplateSignature *> *)
+
 QT_END_HEADER
 
 #endif // QUMLREDEFINABLETEMPLATESIGNATURE_H

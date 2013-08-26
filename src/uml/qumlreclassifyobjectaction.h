@@ -80,6 +80,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlReclassifyObjectAction *)
+Q_DECLARE_METATYPE(QList<QUmlReclassifyObjectAction *> *)
+Q_DECLARE_METATYPE(QSet<QUmlReclassifyObjectAction *> *)
+
 QT_END_HEADER
 
 #endif // QUMLRECLASSIFYOBJECTACTION_H

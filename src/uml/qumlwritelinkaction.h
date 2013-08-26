@@ -61,6 +61,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlWriteLinkAction *)
+Q_DECLARE_METATYPE(QList<QUmlWriteLinkAction *> *)
+Q_DECLARE_METATYPE(QSet<QUmlWriteLinkAction *> *)
+
 QT_END_HEADER
 
 #endif // QUMLWRITELINKACTION_H

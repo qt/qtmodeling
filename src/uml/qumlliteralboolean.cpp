@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlliteralboolean.h"
+#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -53,6 +54,7 @@ QT_BEGIN_NAMESPACE
 QUmlLiteralBoolean::QUmlLiteralBoolean() :
     _value(false)
 {
+    d_ptr->object.setProperty("value", QVariant::fromValue(false));
 }
 
 // OWNED ATTRIBUTES

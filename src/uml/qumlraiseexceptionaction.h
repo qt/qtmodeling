@@ -68,6 +68,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlRaiseExceptionAction *)
+Q_DECLARE_METATYPE(QList<QUmlRaiseExceptionAction *> *)
+Q_DECLARE_METATYPE(QSet<QUmlRaiseExceptionAction *> *)
+
 QT_END_HEADER
 
 #endif // QUMLRAISEEXCEPTIONACTION_H

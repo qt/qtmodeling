@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlexceptionhandler.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlExecutableNode>
@@ -59,6 +60,10 @@ QUmlExceptionHandler::QUmlExceptionHandler() :
     _handlerBody(0),
     _protectedNode(0)
 {
+    d_ptr->object.setProperty("exceptionInput", QVariant::fromValue((QUmlObjectNode *)(0)));
+    d_ptr->object.setProperty("exceptionType", QVariant::fromValue(&_exceptionType));
+    d_ptr->object.setProperty("handlerBody", QVariant::fromValue((QUmlExecutableNode *)(0)));
+    d_ptr->object.setProperty("protectedNode", QVariant::fromValue((QUmlExecutableNode *)(0)));
 }
 
 // OWNED ATTRIBUTES

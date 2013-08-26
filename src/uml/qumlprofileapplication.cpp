@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlprofileapplication.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlProfile>
@@ -58,6 +59,9 @@ QUmlProfileApplication::QUmlProfileApplication() :
     _applyingPackage(0),
     _isStrict(false)
 {
+    d_ptr->object.setProperty("appliedProfile", QVariant::fromValue((QUmlProfile *)(0)));
+    d_ptr->object.setProperty("applyingPackage", QVariant::fromValue((QUmlPackage *)(0)));
+    d_ptr->object.setProperty("isStrict", QVariant::fromValue(false));
 }
 
 // OWNED ATTRIBUTES

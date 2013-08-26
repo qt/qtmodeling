@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlintervalconstraint.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlInterval>
 
@@ -55,6 +56,7 @@ QT_BEGIN_NAMESPACE
 QUmlIntervalConstraint::QUmlIntervalConstraint() :
     _specification(0)
 {
+    d_ptr->object.setProperty("specification", QVariant::fromValue((QUmlInterval *)(0)));
 }
 
 // OWNED ATTRIBUTES

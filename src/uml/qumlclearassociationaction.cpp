@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlclearassociationaction.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlAssociation>
 #include <QtUml/QUmlInputPin>
@@ -57,6 +58,8 @@ QUmlClearAssociationAction::QUmlClearAssociationAction() :
     _association(0),
     _object(0)
 {
+    d_ptr->object.setProperty("association", QVariant::fromValue((QUmlAssociation *)(0)));
+    d_ptr->object.setProperty("object", QVariant::fromValue((QUmlInputPin *)(0)));
 }
 
 // OWNED ATTRIBUTES

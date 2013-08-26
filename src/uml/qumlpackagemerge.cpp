@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlpackagemerge.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlPackage>
 
@@ -56,6 +57,8 @@ QUmlPackageMerge::QUmlPackageMerge() :
     _mergedPackage(0),
     _receivingPackage(0)
 {
+    d_ptr->object.setProperty("mergedPackage", QVariant::fromValue((QUmlPackage *)(0)));
+    d_ptr->object.setProperty("receivingPackage", QVariant::fromValue((QUmlPackage *)(0)));
 }
 
 // OWNED ATTRIBUTES

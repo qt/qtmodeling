@@ -78,6 +78,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlDataType *)
+Q_DECLARE_METATYPE(QList<QUmlDataType *> *)
+Q_DECLARE_METATYPE(QSet<QUmlDataType *> *)
+
 QT_END_HEADER
 
 #endif // QUMLDATATYPE_H

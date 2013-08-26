@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlactivityparameternode.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlParameter>
 
@@ -55,6 +56,7 @@ QT_BEGIN_NAMESPACE
 QUmlActivityParameterNode::QUmlActivityParameterNode() :
     _parameter(0)
 {
+    d_ptr->object.setProperty("parameter", QVariant::fromValue((QUmlParameter *)(0)));
 }
 
 // OWNED ATTRIBUTES

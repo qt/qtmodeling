@@ -68,6 +68,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlReception *)
+Q_DECLARE_METATYPE(QList<QUmlReception *> *)
+Q_DECLARE_METATYPE(QSet<QUmlReception *> *)
+
 QT_END_HEADER
 
 #endif // QUMLRECEPTION_H

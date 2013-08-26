@@ -68,6 +68,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlSignalEvent *)
+Q_DECLARE_METATYPE(QList<QUmlSignalEvent *> *)
+Q_DECLARE_METATYPE(QSet<QUmlSignalEvent *> *)
+
 QT_END_HEADER
 
 #endif // QUMLSIGNALEVENT_H

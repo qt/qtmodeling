@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlinterval.h"
+#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -54,6 +55,8 @@ QUmlInterval::QUmlInterval() :
     _max(0),
     _min(0)
 {
+    d_ptr->object.setProperty("max", QVariant::fromValue((QUmlValueSpecification *)(0)));
+    d_ptr->object.setProperty("min", QVariant::fromValue((QUmlValueSpecification *)(0)));
 }
 
 // OWNED ATTRIBUTES

@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumldirectedrelationship.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlElement>
 
@@ -54,6 +55,8 @@ QT_BEGIN_NAMESPACE
 
 QUmlDirectedRelationship::QUmlDirectedRelationship()
 {
+    d_ptr->object.setProperty("source", QVariant::fromValue(&_source));
+    d_ptr->object.setProperty("target", QVariant::fromValue(&_target));
 }
 
 // OWNED ATTRIBUTES

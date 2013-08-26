@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlactivityedge.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlActivity>
 #include <QtUml/QUmlActivityGroup>
@@ -67,6 +68,16 @@ QUmlActivityEdge::QUmlActivityEdge() :
     _target(0),
     _weight(0)
 {
+    d_ptr->object.setProperty("activity", QVariant::fromValue((QUmlActivity *)(0)));
+    d_ptr->object.setProperty("guard", QVariant::fromValue((QUmlValueSpecification *)(0)));
+    d_ptr->object.setProperty("inGroup", QVariant::fromValue(&_inGroup));
+    d_ptr->object.setProperty("inPartition", QVariant::fromValue(&_inPartition));
+    d_ptr->object.setProperty("inStructuredNode", QVariant::fromValue((QUmlStructuredActivityNode *)(0)));
+    d_ptr->object.setProperty("interrupts", QVariant::fromValue((QUmlInterruptibleActivityRegion *)(0)));
+    d_ptr->object.setProperty("redefinedEdge", QVariant::fromValue(&_redefinedEdge));
+    d_ptr->object.setProperty("source", QVariant::fromValue((QUmlActivityNode *)(0)));
+    d_ptr->object.setProperty("target", QVariant::fromValue((QUmlActivityNode *)(0)));
+    d_ptr->object.setProperty("weight", QVariant::fromValue((QUmlValueSpecification *)(0)));
 }
 
 // OWNED ATTRIBUTES

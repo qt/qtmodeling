@@ -68,6 +68,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlCreateLinkObjectAction *)
+Q_DECLARE_METATYPE(QList<QUmlCreateLinkObjectAction *> *)
+Q_DECLARE_METATYPE(QSet<QUmlCreateLinkObjectAction *> *)
+
 QT_END_HEADER
 
 #endif // QUMLCREATELINKOBJECTACTION_H

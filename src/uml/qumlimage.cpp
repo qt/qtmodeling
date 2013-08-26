@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlimage.h"
+#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -52,6 +53,9 @@ QT_BEGIN_NAMESPACE
 
 QUmlImage::QUmlImage()
 {
+    d_ptr->object.setProperty("content", QVariant::fromValue(QString()));
+    d_ptr->object.setProperty("format", QVariant::fromValue(QString()));
+    d_ptr->object.setProperty("location", QVariant::fromValue(QString()));
 }
 
 // OWNED ATTRIBUTES

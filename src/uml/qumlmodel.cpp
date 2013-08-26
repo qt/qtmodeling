@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlmodel.h"
+#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -52,6 +53,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlModel::QUmlModel()
 {
+    d_ptr->object.setProperty("viewpoint", QVariant::fromValue(QString()));
 }
 
 // OWNED ATTRIBUTES

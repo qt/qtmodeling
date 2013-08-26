@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlactionexecutionspecification.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlAction>
 
@@ -55,6 +56,7 @@ QT_BEGIN_NAMESPACE
 QUmlActionExecutionSpecification::QUmlActionExecutionSpecification() :
     _action(0)
 {
+    d_ptr->object.setProperty("action", QVariant::fromValue((QUmlAction *)(0)));
 }
 
 // OWNED ATTRIBUTES

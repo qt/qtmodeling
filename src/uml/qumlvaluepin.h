@@ -68,6 +68,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlValuePin *)
+Q_DECLARE_METATYPE(QList<QUmlValuePin *> *)
+Q_DECLARE_METATYPE(QSet<QUmlValuePin *> *)
+
 QT_END_HEADER
 
 #endif // QUMLVALUEPIN_H

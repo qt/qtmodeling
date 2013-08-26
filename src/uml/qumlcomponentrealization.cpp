@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlcomponentrealization.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlComponent>
@@ -56,6 +57,8 @@ QT_BEGIN_NAMESPACE
 QUmlComponentRealization::QUmlComponentRealization() :
     _abstraction(0)
 {
+    d_ptr->object.setProperty("abstraction", QVariant::fromValue((QUmlComponent *)(0)));
+    d_ptr->object.setProperty("realizingClassifier", QVariant::fromValue(&_realizingClassifier));
 }
 
 // OWNED ATTRIBUTES

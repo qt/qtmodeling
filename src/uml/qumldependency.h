@@ -74,6 +74,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlDependency *)
+Q_DECLARE_METATYPE(QList<QUmlDependency *> *)
+Q_DECLARE_METATYPE(QSet<QUmlDependency *> *)
+
 QT_END_HEADER
 
 #endif // QUMLDEPENDENCY_H

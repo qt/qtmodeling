@@ -66,6 +66,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlContinuation *)
+Q_DECLARE_METATYPE(QList<QUmlContinuation *> *)
+Q_DECLARE_METATYPE(QSet<QUmlContinuation *> *)
+
 QT_END_HEADER
 
 #endif // QUMLCONTINUATION_H

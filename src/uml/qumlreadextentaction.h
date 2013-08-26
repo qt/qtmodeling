@@ -72,6 +72,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlReadExtentAction *)
+Q_DECLARE_METATYPE(QList<QUmlReadExtentAction *> *)
+Q_DECLARE_METATYPE(QSet<QUmlReadExtentAction *> *)
+
 QT_END_HEADER
 
 #endif // QUMLREADEXTENTACTION_H

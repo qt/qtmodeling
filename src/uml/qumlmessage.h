@@ -93,6 +93,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlMessage *)
+Q_DECLARE_METATYPE(QList<QUmlMessage *> *)
+Q_DECLARE_METATYPE(QSet<QUmlMessage *> *)
+
 QT_END_HEADER
 
 #endif // QUMLMESSAGE_H

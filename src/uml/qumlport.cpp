@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlport.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlInterface>
 #include <QtUml/QUmlProtocolStateMachine>
@@ -59,6 +60,13 @@ QUmlPort::QUmlPort() :
     _isService(true),
     _protocol(0)
 {
+    d_ptr->object.setProperty("isBehavior", QVariant::fromValue(false));
+    d_ptr->object.setProperty("isConjugated", QVariant::fromValue(false));
+    d_ptr->object.setProperty("isService", QVariant::fromValue(false));
+    d_ptr->object.setProperty("protocol", QVariant::fromValue((QUmlProtocolStateMachine *)(0)));
+    d_ptr->object.setProperty("provided", QVariant::fromValue(QSet<QUmlInterface *>()));
+    d_ptr->object.setProperty("redefinedPort", QVariant::fromValue(&_redefinedPort));
+    d_ptr->object.setProperty("required", QVariant::fromValue(QSet<QUmlInterface *>()));
 }
 
 // OWNED ATTRIBUTES

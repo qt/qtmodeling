@@ -71,6 +71,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlRemoveVariableValueAction *)
+Q_DECLARE_METATYPE(QList<QUmlRemoveVariableValueAction *> *)
+Q_DECLARE_METATYPE(QSet<QUmlRemoveVariableValueAction *> *)
+
 QT_END_HEADER
 
 #endif // QUMLREMOVEVARIABLEVALUEACTION_H

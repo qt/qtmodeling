@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlnamespace.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlConstraint>
 #include <QtUml/QUmlElementImport>
@@ -57,6 +58,12 @@ QT_BEGIN_NAMESPACE
 
 QUmlNamespace::QUmlNamespace()
 {
+    d_ptr->object.setProperty("elementImport", QVariant::fromValue(&_elementImport));
+    d_ptr->object.setProperty("importedMember", QVariant::fromValue(QSet<QUmlPackageableElement *>()));
+    d_ptr->object.setProperty("member", QVariant::fromValue(&_member));
+    d_ptr->object.setProperty("ownedMember", QVariant::fromValue(&_ownedMember));
+    d_ptr->object.setProperty("ownedRule", QVariant::fromValue(&_ownedRule));
+    d_ptr->object.setProperty("packageImport", QVariant::fromValue(&_packageImport));
 }
 
 // OWNED ATTRIBUTES

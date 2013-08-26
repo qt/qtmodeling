@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlreclassifyobjectaction.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlInputPin>
@@ -57,6 +58,10 @@ QUmlReclassifyObjectAction::QUmlReclassifyObjectAction() :
     _isReplaceAll(false),
     _object(0)
 {
+    d_ptr->object.setProperty("isReplaceAll", QVariant::fromValue(false));
+    d_ptr->object.setProperty("newClassifier", QVariant::fromValue(&_newClassifier));
+    d_ptr->object.setProperty("object", QVariant::fromValue((QUmlInputPin *)(0)));
+    d_ptr->object.setProperty("oldClassifier", QVariant::fromValue(&_oldClassifier));
 }
 
 // OWNED ATTRIBUTES

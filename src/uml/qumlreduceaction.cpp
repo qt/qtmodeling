@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlreduceaction.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlBehavior>
 #include <QtUml/QUmlInputPin>
@@ -60,6 +61,10 @@ QUmlReduceAction::QUmlReduceAction() :
     _reducer(0),
     _result(0)
 {
+    d_ptr->object.setProperty("collection", QVariant::fromValue((QUmlInputPin *)(0)));
+    d_ptr->object.setProperty("isOrdered", QVariant::fromValue(false));
+    d_ptr->object.setProperty("reducer", QVariant::fromValue((QUmlBehavior *)(0)));
+    d_ptr->object.setProperty("result", QVariant::fromValue((QUmlOutputPin *)(0)));
 }
 
 // OWNED ATTRIBUTES

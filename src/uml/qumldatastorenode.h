@@ -61,6 +61,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlDataStoreNode *)
+Q_DECLARE_METATYPE(QList<QUmlDataStoreNode *> *)
+Q_DECLARE_METATYPE(QSet<QUmlDataStoreNode *> *)
+
 QT_END_HEADER
 
 #endif // QUMLDATASTORENODE_H

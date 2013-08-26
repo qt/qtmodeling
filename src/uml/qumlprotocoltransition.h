@@ -75,6 +75,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlProtocolTransition *)
+Q_DECLARE_METATYPE(QList<QUmlProtocolTransition *> *)
+Q_DECLARE_METATYPE(QSet<QUmlProtocolTransition *> *)
+
 QT_END_HEADER
 
 #endif // QUMLPROTOCOLTRANSITION_H

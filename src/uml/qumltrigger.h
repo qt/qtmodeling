@@ -73,6 +73,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlTrigger *)
+Q_DECLARE_METATYPE(QList<QUmlTrigger *> *)
+Q_DECLARE_METATYPE(QSet<QUmlTrigger *> *)
+
 QT_END_HEADER
 
 #endif // QUMLTRIGGER_H

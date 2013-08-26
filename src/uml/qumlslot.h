@@ -77,6 +77,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlSlot *)
+Q_DECLARE_METATYPE(QList<QUmlSlot *> *)
+Q_DECLARE_METATYPE(QSet<QUmlSlot *> *)
+
 QT_END_HEADER
 
 #endif // QUMLSLOT_H

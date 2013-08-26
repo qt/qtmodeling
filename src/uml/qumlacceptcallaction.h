@@ -68,6 +68,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlAcceptCallAction *)
+Q_DECLARE_METATYPE(QList<QUmlAcceptCallAction *> *)
+Q_DECLARE_METATYPE(QSet<QUmlAcceptCallAction *> *)
+
 QT_END_HEADER
 
 #endif // QUMLACCEPTCALLACTION_H

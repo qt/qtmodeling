@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlcollaborationuse.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlCollaboration>
 #include <QtUml/QUmlDependency>
@@ -56,6 +57,8 @@ QT_BEGIN_NAMESPACE
 QUmlCollaborationUse::QUmlCollaborationUse() :
     _type(0)
 {
+    d_ptr->object.setProperty("roleBinding", QVariant::fromValue(&_roleBinding));
+    d_ptr->object.setProperty("type", QVariant::fromValue((QUmlCollaboration *)(0)));
 }
 
 // OWNED ATTRIBUTES

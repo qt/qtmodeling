@@ -43,9 +43,12 @@
 
 #include <QtCore/QtGlobal>
 
+#include <QtCore/QMetaType>
 #include <QtCore/QList>
 #include <QtCore/QSet>
 #include <QtCore/QString>
+
+Q_DECLARE_METATYPE(QList<QString> *)
 
 QT_BEGIN_NAMESPACE
 

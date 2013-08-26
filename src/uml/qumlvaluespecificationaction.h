@@ -72,6 +72,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlValueSpecificationAction *)
+Q_DECLARE_METATYPE(QList<QUmlValueSpecificationAction *> *)
+Q_DECLARE_METATYPE(QSet<QUmlValueSpecificationAction *> *)
+
 QT_END_HEADER
 
 #endif // QUMLVALUESPECIFICATIONACTION_H

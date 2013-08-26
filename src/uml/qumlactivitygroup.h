@@ -85,6 +85,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlActivityGroup *)
+Q_DECLARE_METATYPE(QList<QUmlActivityGroup *> *)
+Q_DECLARE_METATYPE(QSet<QUmlActivityGroup *> *)
+
 QT_END_HEADER
 
 #endif // QUMLACTIVITYGROUP_H

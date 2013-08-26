@@ -126,6 +126,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlOperation *)
+Q_DECLARE_METATYPE(QList<QUmlOperation *> *)
+Q_DECLARE_METATYPE(QSet<QUmlOperation *> *)
+
 QT_END_HEADER
 
 #endif // QUMLOPERATION_H

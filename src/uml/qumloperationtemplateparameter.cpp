@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumloperationtemplateparameter.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlOperation>
 
@@ -55,6 +56,7 @@ QT_BEGIN_NAMESPACE
 QUmlOperationTemplateParameter::QUmlOperationTemplateParameter() :
     _parameteredElement(0)
 {
+    d_ptr->object.setProperty("parameteredElement", QVariant::fromValue((QUmlOperation *)(0)));
 }
 
 // OWNED ATTRIBUTES

@@ -69,6 +69,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlProtocolStateMachine *)
+Q_DECLARE_METATYPE(QList<QUmlProtocolStateMachine *> *)
+Q_DECLARE_METATYPE(QSet<QUmlProtocolStateMachine *> *)
+
 QT_END_HEADER
 
 #endif // QUMLPROTOCOLSTATEMACHINE_H

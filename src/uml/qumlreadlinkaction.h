@@ -68,6 +68,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlReadLinkAction *)
+Q_DECLARE_METATYPE(QList<QUmlReadLinkAction *> *)
+Q_DECLARE_METATYPE(QSet<QUmlReadLinkAction *> *)
+
 QT_END_HEADER
 
 #endif // QUMLREADLINKACTION_H

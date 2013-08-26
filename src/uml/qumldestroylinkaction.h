@@ -69,6 +69,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlDestroyLinkAction *)
+Q_DECLARE_METATYPE(QList<QUmlDestroyLinkAction *> *)
+Q_DECLARE_METATYPE(QSet<QUmlDestroyLinkAction *> *)
+
 QT_END_HEADER
 
 #endif // QUMLDESTROYLINKACTION_H

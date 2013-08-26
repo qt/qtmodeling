@@ -43,6 +43,8 @@
 
 #include "QtModeling/QModelingObject"
 
+#include <QtCore/QObject>
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -55,6 +57,7 @@ public:
     virtual ~QModelingObjectPrivate();
 
     QModelingObject *q_ptr;
+    QObject object;
 };
 
 QT_END_NAMESPACE

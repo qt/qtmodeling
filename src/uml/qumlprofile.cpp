@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlprofile.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlElementImport>
 #include <QtUml/QUmlPackageImport>
@@ -55,6 +56,8 @@ QT_BEGIN_NAMESPACE
 
 QUmlProfile::QUmlProfile()
 {
+    d_ptr->object.setProperty("metaclassReference", QVariant::fromValue(&_metaclassReference));
+    d_ptr->object.setProperty("metamodelReference", QVariant::fromValue(&_metamodelReference));
 }
 
 // OWNED ATTRIBUTES

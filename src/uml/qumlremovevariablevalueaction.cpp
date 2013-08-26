@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlremovevariablevalueaction.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlInputPin>
 
@@ -56,6 +57,8 @@ QUmlRemoveVariableValueAction::QUmlRemoveVariableValueAction() :
     _isRemoveDuplicates(false),
     _removeAt(0)
 {
+    d_ptr->object.setProperty("isRemoveDuplicates", QVariant::fromValue(false));
+    d_ptr->object.setProperty("removeAt", QVariant::fromValue((QUmlInputPin *)(0)));
 }
 
 // OWNED ATTRIBUTES

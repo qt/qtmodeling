@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlparameterset.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlConstraint>
 #include <QtUml/QUmlParameter>
@@ -55,6 +56,8 @@ QT_BEGIN_NAMESPACE
 
 QUmlParameterSet::QUmlParameterSet()
 {
+    d_ptr->object.setProperty("condition", QVariant::fromValue(&_condition));
+    d_ptr->object.setProperty("parameter", QVariant::fromValue(&_parameter));
 }
 
 // OWNED ATTRIBUTES

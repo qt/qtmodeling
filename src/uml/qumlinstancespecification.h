@@ -80,6 +80,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlInstanceSpecification *)
+Q_DECLARE_METATYPE(QList<QUmlInstanceSpecification *> *)
+Q_DECLARE_METATYPE(QSet<QUmlInstanceSpecification *> *)
+
 QT_END_HEADER
 
 #endif // QUMLINSTANCESPECIFICATION_H

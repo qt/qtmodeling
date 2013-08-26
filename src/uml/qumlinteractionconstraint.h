@@ -71,6 +71,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlInteractionConstraint *)
+Q_DECLARE_METATYPE(QList<QUmlInteractionConstraint *> *)
+Q_DECLARE_METATYPE(QSet<QUmlInteractionConstraint *> *)
+
 QT_END_HEADER
 
 #endif // QUMLINTERACTIONCONSTRAINT_H

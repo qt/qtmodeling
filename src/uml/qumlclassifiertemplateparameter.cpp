@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlclassifiertemplateparameter.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlClassifier>
 
@@ -56,6 +57,9 @@ QUmlClassifierTemplateParameter::QUmlClassifierTemplateParameter() :
     _allowSubstitutable(true),
     _parameteredElement(0)
 {
+    d_ptr->object.setProperty("allowSubstitutable", QVariant::fromValue(false));
+    d_ptr->object.setProperty("constrainingClassifier", QVariant::fromValue(&_constrainingClassifier));
+    d_ptr->object.setProperty("parameteredElement", QVariant::fromValue((QUmlClassifier *)(0)));
 }
 
 // OWNED ATTRIBUTES

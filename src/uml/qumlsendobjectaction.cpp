@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlsendobjectaction.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlInputPin>
 
@@ -56,6 +57,8 @@ QUmlSendObjectAction::QUmlSendObjectAction() :
     _request(0),
     _target(0)
 {
+    d_ptr->object.setProperty("request", QVariant::fromValue((QUmlInputPin *)(0)));
+    d_ptr->object.setProperty("target", QVariant::fromValue((QUmlInputPin *)(0)));
 }
 
 // OWNED ATTRIBUTES

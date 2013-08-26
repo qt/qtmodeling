@@ -68,6 +68,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlChangeEvent *)
+Q_DECLARE_METATYPE(QList<QUmlChangeEvent *> *)
+Q_DECLARE_METATYPE(QSet<QUmlChangeEvent *> *)
+
 QT_END_HEADER
 
 #endif // QUMLCHANGEEVENT_H

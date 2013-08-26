@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlobjectflow.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlBehavior>
 
@@ -58,6 +59,10 @@ QUmlObjectFlow::QUmlObjectFlow() :
     _selection(0),
     _transformation(0)
 {
+    d_ptr->object.setProperty("isMulticast", QVariant::fromValue(false));
+    d_ptr->object.setProperty("isMultireceive", QVariant::fromValue(false));
+    d_ptr->object.setProperty("selection", QVariant::fromValue((QUmlBehavior *)(0)));
+    d_ptr->object.setProperty("transformation", QVariant::fromValue((QUmlBehavior *)(0)));
 }
 
 // OWNED ATTRIBUTES

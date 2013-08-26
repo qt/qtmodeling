@@ -77,6 +77,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlExpansionRegion *)
+Q_DECLARE_METATYPE(QList<QUmlExpansionRegion *> *)
+Q_DECLARE_METATYPE(QSet<QUmlExpansionRegion *> *)
+
 QT_END_HEADER
 
 #endif // QUMLEXPANSIONREGION_H

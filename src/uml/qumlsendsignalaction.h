@@ -72,6 +72,10 @@ protected:
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QUmlSendSignalAction *)
+Q_DECLARE_METATYPE(QList<QUmlSendSignalAction *> *)
+Q_DECLARE_METATYPE(QSet<QUmlSendSignalAction *> *)
+
 QT_END_HEADER
 
 #endif // QUMLSENDSIGNALACTION_H

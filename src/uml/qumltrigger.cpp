@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumltrigger.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlEvent>
 #include <QtUml/QUmlPort>
@@ -56,6 +57,8 @@ QT_BEGIN_NAMESPACE
 QUmlTrigger::QUmlTrigger() :
     _event(0)
 {
+    d_ptr->object.setProperty("event", QVariant::fromValue((QUmlEvent *)(0)));
+    d_ptr->object.setProperty("port", QVariant::fromValue(&_port));
 }
 
 // OWNED ATTRIBUTES

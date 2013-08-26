@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlexecutionspecification.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlOccurrenceSpecification>
 
@@ -56,6 +57,8 @@ QUmlExecutionSpecification::QUmlExecutionSpecification() :
     _finish(0),
     _start(0)
 {
+    d_ptr->object.setProperty("finish", QVariant::fromValue((QUmlOccurrenceSpecification *)(0)));
+    d_ptr->object.setProperty("start", QVariant::fromValue((QUmlOccurrenceSpecification *)(0)));
 }
 
 // OWNED ATTRIBUTES

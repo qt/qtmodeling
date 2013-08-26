@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlmultiplicityelement.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlValueSpecification>
 
@@ -58,6 +59,12 @@ QUmlMultiplicityElement::QUmlMultiplicityElement() :
     _lowerValue(0),
     _upperValue(0)
 {
+    d_ptr->object.setProperty("isOrdered", QVariant::fromValue(false));
+    d_ptr->object.setProperty("isUnique", QVariant::fromValue(false));
+    d_ptr->object.setProperty("lower", QVariant::fromValue((int)(0)));
+    d_ptr->object.setProperty("lowerValue", QVariant::fromValue((QUmlValueSpecification *)(0)));
+    d_ptr->object.setProperty("upper", QVariant::fromValue((int)(0)));
+    d_ptr->object.setProperty("upperValue", QVariant::fromValue((QUmlValueSpecification *)(0)));
 }
 
 // OWNED ATTRIBUTES
