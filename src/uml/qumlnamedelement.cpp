@@ -79,6 +79,11 @@ void QUmlNamedElement::addClientDependency(QUmlDependency *clientDependency)
 
     if (!_clientDependency.contains(clientDependency)) {
         _clientDependency.insert(clientDependency);
+
+        // Adjust opposite properties
+        if (clientDependency) {
+            clientDependency->addClient(this);
+        }
     }
 }
 
@@ -88,6 +93,11 @@ void QUmlNamedElement::removeClientDependency(QUmlDependency *clientDependency)
 
     if (_clientDependency.contains(clientDependency)) {
         _clientDependency.remove(clientDependency);
+
+        // Adjust opposite properties
+        if (clientDependency) {
+            clientDependency->removeClient(this);
+        }
     }
 }
 

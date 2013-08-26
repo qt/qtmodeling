@@ -94,6 +94,9 @@ void QUmlCallAction::addResult(QUmlOutputPin *result)
 
     if (!_result.contains(result)) {
         _result.append(result);
+
+        // Adjust subsetted properties
+        addOutput(result);
     }
 }
 
@@ -103,6 +106,9 @@ void QUmlCallAction::removeResult(QUmlOutputPin *result)
 
     if (_result.contains(result)) {
         _result.removeAll(result);
+
+        // Adjust subsetted properties
+        removeOutput(result);
     }
 }
 

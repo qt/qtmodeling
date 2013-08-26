@@ -106,6 +106,14 @@ void QUmlTemplateBinding::addParameterSubstitution(QUmlTemplateParameterSubstitu
 
     if (!_parameterSubstitution.contains(parameterSubstitution)) {
         _parameterSubstitution.insert(parameterSubstitution);
+
+        // Adjust subsetted properties
+        addOwnedElement(parameterSubstitution);
+
+        // Adjust opposite properties
+        if (parameterSubstitution) {
+            parameterSubstitution->setTemplateBinding(this);
+        }
     }
 }
 
@@ -115,6 +123,14 @@ void QUmlTemplateBinding::removeParameterSubstitution(QUmlTemplateParameterSubst
 
     if (_parameterSubstitution.contains(parameterSubstitution)) {
         _parameterSubstitution.remove(parameterSubstitution);
+
+        // Adjust subsetted properties
+        removeOwnedElement(parameterSubstitution);
+
+        // Adjust opposite properties
+        if (parameterSubstitution) {
+            parameterSubstitution->setTemplateBinding(0);
+        }
     }
 }
 

@@ -81,6 +81,9 @@ void QUmlAssociation::addEndType(QUmlType *endType)
 
     if (false /* <derivedexclusion-criteria> */) {
         // <derived-code>
+
+        // Adjust subsetted properties
+        addRelatedElement(endType);
     }
 }
 
@@ -93,6 +96,9 @@ void QUmlAssociation::removeEndType(QUmlType *endType)
 
     if (false /* <derivedexclusion-criteria> */) {
         // <derived-code>
+
+        // Adjust subsetted properties
+        removeRelatedElement(endType);
     }
 }
 
@@ -131,6 +137,14 @@ void QUmlAssociation::addMemberEnd(QUmlProperty *memberEnd)
 
     if (!_memberEnd.contains(memberEnd)) {
         _memberEnd.append(memberEnd);
+
+        // Adjust subsetted properties
+        addMember(memberEnd);
+
+        // Adjust opposite properties
+        if (memberEnd) {
+            memberEnd->setAssociation(this);
+        }
     }
 }
 
@@ -140,6 +154,14 @@ void QUmlAssociation::removeMemberEnd(QUmlProperty *memberEnd)
 
     if (_memberEnd.contains(memberEnd)) {
         _memberEnd.removeAll(memberEnd);
+
+        // Adjust subsetted properties
+        removeMember(memberEnd);
+
+        // Adjust opposite properties
+        if (memberEnd) {
+            memberEnd->setAssociation(0);
+        }
     }
 }
 
@@ -159,6 +181,9 @@ void QUmlAssociation::addNavigableOwnedEnd(QUmlProperty *navigableOwnedEnd)
 
     if (!_navigableOwnedEnd.contains(navigableOwnedEnd)) {
         _navigableOwnedEnd.insert(navigableOwnedEnd);
+
+        // Adjust subsetted properties
+        addOwnedEnd(navigableOwnedEnd);
     }
 }
 
@@ -168,6 +193,9 @@ void QUmlAssociation::removeNavigableOwnedEnd(QUmlProperty *navigableOwnedEnd)
 
     if (_navigableOwnedEnd.contains(navigableOwnedEnd)) {
         _navigableOwnedEnd.remove(navigableOwnedEnd);
+
+        // Adjust subsetted properties
+        removeOwnedEnd(navigableOwnedEnd);
     }
 }
 
@@ -187,6 +215,16 @@ void QUmlAssociation::addOwnedEnd(QUmlProperty *ownedEnd)
 
     if (!_ownedEnd.contains(ownedEnd)) {
         _ownedEnd.append(ownedEnd);
+
+        // Adjust subsetted properties
+        addMemberEnd(ownedEnd);
+        addFeature(ownedEnd);
+        addOwnedMember(ownedEnd);
+
+        // Adjust opposite properties
+        if (ownedEnd) {
+            ownedEnd->setOwningAssociation(this);
+        }
     }
 }
 
@@ -196,6 +234,16 @@ void QUmlAssociation::removeOwnedEnd(QUmlProperty *ownedEnd)
 
     if (_ownedEnd.contains(ownedEnd)) {
         _ownedEnd.removeAll(ownedEnd);
+
+        // Adjust subsetted properties
+        removeMemberEnd(ownedEnd);
+        removeFeature(ownedEnd);
+        removeOwnedMember(ownedEnd);
+
+        // Adjust opposite properties
+        if (ownedEnd) {
+            ownedEnd->setOwningAssociation(0);
+        }
     }
 }
 

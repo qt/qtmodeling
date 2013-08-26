@@ -74,6 +74,14 @@ void QUmlProtocolStateMachine::addConformance(QUmlProtocolConformance *conforman
 
     if (!_conformance.contains(conformance)) {
         _conformance.insert(conformance);
+
+        // Adjust subsetted properties
+        addOwnedElement(conformance);
+
+        // Adjust opposite properties
+        if (conformance) {
+            conformance->setSpecificMachine(this);
+        }
     }
 }
 
@@ -83,6 +91,14 @@ void QUmlProtocolStateMachine::removeConformance(QUmlProtocolConformance *confor
 
     if (_conformance.contains(conformance)) {
         _conformance.remove(conformance);
+
+        // Adjust subsetted properties
+        removeOwnedElement(conformance);
+
+        // Adjust opposite properties
+        if (conformance) {
+            conformance->setSpecificMachine(0);
+        }
     }
 }
 

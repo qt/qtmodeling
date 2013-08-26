@@ -75,6 +75,9 @@ void QUmlStereotype::addIcon(QUmlImage *icon)
 
     if (!_icon.contains(icon)) {
         _icon.insert(icon);
+
+        // Adjust subsetted properties
+        addOwnedElement(icon);
     }
 }
 
@@ -84,6 +87,9 @@ void QUmlStereotype::removeIcon(QUmlImage *icon)
 
     if (_icon.contains(icon)) {
         _icon.remove(icon);
+
+        // Adjust subsetted properties
+        removeOwnedElement(icon);
     }
 }
 

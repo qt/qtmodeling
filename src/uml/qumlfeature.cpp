@@ -75,6 +75,11 @@ void QUmlFeature::addFeaturingClassifier(QUmlClassifier *featuringClassifier)
 
     if (!_featuringClassifier.contains(featuringClassifier)) {
         _featuringClassifier.insert(featuringClassifier);
+
+        // Adjust opposite properties
+        if (featuringClassifier) {
+            featuringClassifier->addFeature(this);
+        }
     }
 }
 
@@ -84,6 +89,11 @@ void QUmlFeature::removeFeaturingClassifier(QUmlClassifier *featuringClassifier)
 
     if (_featuringClassifier.contains(featuringClassifier)) {
         _featuringClassifier.remove(featuringClassifier);
+
+        // Adjust opposite properties
+        if (featuringClassifier) {
+            featuringClassifier->removeFeature(this);
+        }
     }
 }
 

@@ -105,6 +105,9 @@ void QUmlConnector::addEnd(QUmlConnectorEnd *end)
 
     if (!_end.contains(end)) {
         _end.append(end);
+
+        // Adjust subsetted properties
+        addOwnedElement(end);
     }
 }
 
@@ -114,6 +117,9 @@ void QUmlConnector::removeEnd(QUmlConnectorEnd *end)
 
     if (_end.contains(end)) {
         _end.removeAll(end);
+
+        // Adjust subsetted properties
+        removeOwnedElement(end);
     }
 }
 
@@ -157,6 +163,9 @@ void QUmlConnector::addRedefinedConnector(QUmlConnector *redefinedConnector)
 
     if (!_redefinedConnector.contains(redefinedConnector)) {
         _redefinedConnector.insert(redefinedConnector);
+
+        // Adjust subsetted properties
+        addRedefinedElement(redefinedConnector);
     }
 }
 
@@ -166,6 +175,9 @@ void QUmlConnector::removeRedefinedConnector(QUmlConnector *redefinedConnector)
 
     if (_redefinedConnector.contains(redefinedConnector)) {
         _redefinedConnector.remove(redefinedConnector);
+
+        // Adjust subsetted properties
+        removeRedefinedElement(redefinedConnector);
     }
 }
 

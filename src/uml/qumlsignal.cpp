@@ -74,6 +74,10 @@ void QUmlSignal::addOwnedAttribute(QUmlProperty *ownedAttribute)
 
     if (!_ownedAttribute.contains(ownedAttribute)) {
         _ownedAttribute.append(ownedAttribute);
+
+        // Adjust subsetted properties
+        addOwnedMember(ownedAttribute);
+        addAttribute(ownedAttribute);
     }
 }
 
@@ -83,6 +87,10 @@ void QUmlSignal::removeOwnedAttribute(QUmlProperty *ownedAttribute)
 
     if (_ownedAttribute.contains(ownedAttribute)) {
         _ownedAttribute.removeAll(ownedAttribute);
+
+        // Adjust subsetted properties
+        removeOwnedMember(ownedAttribute);
+        removeAttribute(ownedAttribute);
     }
 }
 

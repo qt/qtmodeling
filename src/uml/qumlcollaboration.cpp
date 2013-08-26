@@ -74,6 +74,9 @@ void QUmlCollaboration::addCollaborationRole(QUmlConnectableElement *collaborati
 
     if (!_collaborationRole.contains(collaborationRole)) {
         _collaborationRole.insert(collaborationRole);
+
+        // Adjust subsetted properties
+        addRole(collaborationRole);
     }
 }
 
@@ -83,6 +86,9 @@ void QUmlCollaboration::removeCollaborationRole(QUmlConnectableElement *collabor
 
     if (_collaborationRole.contains(collaborationRole)) {
         _collaborationRole.remove(collaborationRole);
+
+        // Adjust subsetted properties
+        removeRole(collaborationRole);
     }
 }
 

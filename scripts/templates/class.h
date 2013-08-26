@@ -63,7 +63,7 @@
 [%- IF xmi.findnodes("//packagedElement[@xmi:type='uml:Enumeration' and @name='$forwardName']").findvalue("@name") != "" -%]
     [%- SET useNamespace = 'true' -%]
 [%- ELSE -%]
-[%- IF forwardName != className && superclasses.grep("^Q${namespace}${forwardName}$").size == 0 -%][%- forwards.push("Q${namespace}${forwardName}") -%][%- END -%]
+[%- IF forwardName != className && superclasses.grep("^Q${namespace}${forwardName}\$").size == 0 -%][%- forwards.push("Q${namespace}${forwardName}") -%][%- END -%]
 [%- END -%]
 [%- END -%]
 [%- IF useNamespace == 'true' -%]

@@ -118,6 +118,11 @@ void QUmlBehavioralFeature::addMethod(QUmlBehavior *method)
 
     if (!_method.contains(method)) {
         _method.insert(method);
+
+        // Adjust opposite properties
+        if (method) {
+            method->setSpecification(this);
+        }
     }
 }
 
@@ -127,6 +132,11 @@ void QUmlBehavioralFeature::removeMethod(QUmlBehavior *method)
 
     if (_method.contains(method)) {
         _method.remove(method);
+
+        // Adjust opposite properties
+        if (method) {
+            method->setSpecification(0);
+        }
     }
 }
 
@@ -146,6 +156,9 @@ void QUmlBehavioralFeature::addOwnedParameter(QUmlParameter *ownedParameter)
 
     if (!_ownedParameter.contains(ownedParameter)) {
         _ownedParameter.append(ownedParameter);
+
+        // Adjust subsetted properties
+        addOwnedMember(ownedParameter);
     }
 }
 
@@ -155,6 +168,9 @@ void QUmlBehavioralFeature::removeOwnedParameter(QUmlParameter *ownedParameter)
 
     if (_ownedParameter.contains(ownedParameter)) {
         _ownedParameter.removeAll(ownedParameter);
+
+        // Adjust subsetted properties
+        removeOwnedMember(ownedParameter);
     }
 }
 
@@ -174,6 +190,9 @@ void QUmlBehavioralFeature::addOwnedParameterSet(QUmlParameterSet *ownedParamete
 
     if (!_ownedParameterSet.contains(ownedParameterSet)) {
         _ownedParameterSet.insert(ownedParameterSet);
+
+        // Adjust subsetted properties
+        addOwnedMember(ownedParameterSet);
     }
 }
 
@@ -183,6 +202,9 @@ void QUmlBehavioralFeature::removeOwnedParameterSet(QUmlParameterSet *ownedParam
 
     if (_ownedParameterSet.contains(ownedParameterSet)) {
         _ownedParameterSet.remove(ownedParameterSet);
+
+        // Adjust subsetted properties
+        removeOwnedMember(ownedParameterSet);
     }
 }
 

@@ -103,6 +103,9 @@ void QUmlOpaqueAction::addInputValue(QUmlInputPin *inputValue)
 
     if (!_inputValue.contains(inputValue)) {
         _inputValue.insert(inputValue);
+
+        // Adjust subsetted properties
+        addInput(inputValue);
     }
 }
 
@@ -112,6 +115,9 @@ void QUmlOpaqueAction::removeInputValue(QUmlInputPin *inputValue)
 
     if (_inputValue.contains(inputValue)) {
         _inputValue.remove(inputValue);
+
+        // Adjust subsetted properties
+        removeInput(inputValue);
     }
 }
 
@@ -159,6 +165,9 @@ void QUmlOpaqueAction::addOutputValue(QUmlOutputPin *outputValue)
 
     if (!_outputValue.contains(outputValue)) {
         _outputValue.insert(outputValue);
+
+        // Adjust subsetted properties
+        addOutput(outputValue);
     }
 }
 
@@ -168,6 +177,9 @@ void QUmlOpaqueAction::removeOutputValue(QUmlOutputPin *outputValue)
 
     if (_outputValue.contains(outputValue)) {
         _outputValue.remove(outputValue);
+
+        // Adjust subsetted properties
+        removeOutput(outputValue);
     }
 }
 

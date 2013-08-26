@@ -104,6 +104,9 @@ void QUmlPackage::addNestedPackage(QUmlPackage *nestedPackage)
 
     if (false /* <derivedexclusion-criteria> */) {
         // <derived-code>
+
+        // Adjust subsetted properties
+        addPackagedElement(nestedPackage);
     }
 }
 
@@ -116,6 +119,9 @@ void QUmlPackage::removeNestedPackage(QUmlPackage *nestedPackage)
 
     if (false /* <derivedexclusion-criteria> */) {
         // <derived-code>
+
+        // Adjust subsetted properties
+        removePackagedElement(nestedPackage);
     }
 }
 
@@ -159,6 +165,9 @@ void QUmlPackage::addOwnedStereotype(QUmlStereotype *ownedStereotype)
 
     if (false /* <derivedexclusion-criteria> */) {
         // <derived-code>
+
+        // Adjust subsetted properties
+        addPackagedElement(ownedStereotype);
     }
 }
 
@@ -171,6 +180,9 @@ void QUmlPackage::removeOwnedStereotype(QUmlStereotype *ownedStereotype)
 
     if (false /* <derivedexclusion-criteria> */) {
         // <derived-code>
+
+        // Adjust subsetted properties
+        removePackagedElement(ownedStereotype);
     }
 }
 
@@ -195,6 +207,14 @@ void QUmlPackage::addOwnedType(QUmlType *ownedType)
 
     if (false /* <derivedexclusion-criteria> */) {
         // <derived-code>
+
+        // Adjust subsetted properties
+        addPackagedElement(ownedType);
+
+        // Adjust opposite properties
+        if (ownedType) {
+            ownedType->setPackage(this);
+        }
     }
 }
 
@@ -207,6 +227,14 @@ void QUmlPackage::removeOwnedType(QUmlType *ownedType)
 
     if (false /* <derivedexclusion-criteria> */) {
         // <derived-code>
+
+        // Adjust subsetted properties
+        removePackagedElement(ownedType);
+
+        // Adjust opposite properties
+        if (ownedType) {
+            ownedType->setPackage(0);
+        }
     }
 }
 
@@ -226,6 +254,14 @@ void QUmlPackage::addPackageMerge(QUmlPackageMerge *packageMerge)
 
     if (!_packageMerge.contains(packageMerge)) {
         _packageMerge.insert(packageMerge);
+
+        // Adjust subsetted properties
+        addOwnedElement(packageMerge);
+
+        // Adjust opposite properties
+        if (packageMerge) {
+            packageMerge->setReceivingPackage(this);
+        }
     }
 }
 
@@ -235,6 +271,14 @@ void QUmlPackage::removePackageMerge(QUmlPackageMerge *packageMerge)
 
     if (_packageMerge.contains(packageMerge)) {
         _packageMerge.remove(packageMerge);
+
+        // Adjust subsetted properties
+        removeOwnedElement(packageMerge);
+
+        // Adjust opposite properties
+        if (packageMerge) {
+            packageMerge->setReceivingPackage(0);
+        }
     }
 }
 
@@ -254,6 +298,9 @@ void QUmlPackage::addPackagedElement(QUmlPackageableElement *packagedElement)
 
     if (!_packagedElement.contains(packagedElement)) {
         _packagedElement.insert(packagedElement);
+
+        // Adjust subsetted properties
+        addOwnedMember(packagedElement);
     }
 }
 
@@ -263,6 +310,9 @@ void QUmlPackage::removePackagedElement(QUmlPackageableElement *packagedElement)
 
     if (_packagedElement.contains(packagedElement)) {
         _packagedElement.remove(packagedElement);
+
+        // Adjust subsetted properties
+        removeOwnedMember(packagedElement);
     }
 }
 
@@ -282,6 +332,14 @@ void QUmlPackage::addProfileApplication(QUmlProfileApplication *profileApplicati
 
     if (!_profileApplication.contains(profileApplication)) {
         _profileApplication.insert(profileApplication);
+
+        // Adjust subsetted properties
+        addOwnedElement(profileApplication);
+
+        // Adjust opposite properties
+        if (profileApplication) {
+            profileApplication->setApplyingPackage(this);
+        }
     }
 }
 
@@ -291,6 +349,14 @@ void QUmlPackage::removeProfileApplication(QUmlProfileApplication *profileApplic
 
     if (_profileApplication.contains(profileApplication)) {
         _profileApplication.remove(profileApplication);
+
+        // Adjust subsetted properties
+        removeOwnedElement(profileApplication);
+
+        // Adjust opposite properties
+        if (profileApplication) {
+            profileApplication->setApplyingPackage(0);
+        }
     }
 }
 

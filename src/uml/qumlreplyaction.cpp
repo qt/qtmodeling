@@ -96,6 +96,9 @@ void QUmlReplyAction::addReplyValue(QUmlInputPin *replyValue)
 
     if (!_replyValue.contains(replyValue)) {
         _replyValue.insert(replyValue);
+
+        // Adjust subsetted properties
+        addInput(replyValue);
     }
 }
 
@@ -105,6 +108,9 @@ void QUmlReplyAction::removeReplyValue(QUmlInputPin *replyValue)
 
     if (_replyValue.contains(replyValue)) {
         _replyValue.remove(replyValue);
+
+        // Adjust subsetted properties
+        removeInput(replyValue);
     }
 }
 

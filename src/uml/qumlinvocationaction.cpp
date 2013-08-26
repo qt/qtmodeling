@@ -76,6 +76,9 @@ void QUmlInvocationAction::addArgument(QUmlInputPin *argument)
 
     if (!_argument.contains(argument)) {
         _argument.append(argument);
+
+        // Adjust subsetted properties
+        addInput(argument);
     }
 }
 
@@ -85,6 +88,9 @@ void QUmlInvocationAction::removeArgument(QUmlInputPin *argument)
 
     if (_argument.contains(argument)) {
         _argument.removeAll(argument);
+
+        // Adjust subsetted properties
+        removeInput(argument);
     }
 }
 

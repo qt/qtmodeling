@@ -72,6 +72,9 @@ void QUmlExpression::addOperand(QUmlValueSpecification *operand)
 
     if (!_operand.contains(operand)) {
         _operand.append(operand);
+
+        // Adjust subsetted properties
+        addOwnedElement(operand);
     }
 }
 
@@ -81,6 +84,9 @@ void QUmlExpression::removeOperand(QUmlValueSpecification *operand)
 
     if (_operand.contains(operand)) {
         _operand.removeAll(operand);
+
+        // Adjust subsetted properties
+        removeOwnedElement(operand);
     }
 }
 

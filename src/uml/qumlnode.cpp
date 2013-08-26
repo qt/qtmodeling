@@ -72,6 +72,9 @@ void QUmlNode::addNestedNode(QUmlNode *nestedNode)
 
     if (!_nestedNode.contains(nestedNode)) {
         _nestedNode.insert(nestedNode);
+
+        // Adjust subsetted properties
+        addOwnedMember(nestedNode);
     }
 }
 
@@ -81,6 +84,9 @@ void QUmlNode::removeNestedNode(QUmlNode *nestedNode)
 
     if (_nestedNode.contains(nestedNode)) {
         _nestedNode.remove(nestedNode);
+
+        // Adjust subsetted properties
+        removeOwnedMember(nestedNode);
     }
 }
 

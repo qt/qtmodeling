@@ -77,6 +77,14 @@ void QUmlDeployment::addConfiguration(QUmlDeploymentSpecification *configuration
 
     if (!_configuration.contains(configuration)) {
         _configuration.insert(configuration);
+
+        // Adjust subsetted properties
+        addOwnedElement(configuration);
+
+        // Adjust opposite properties
+        if (configuration) {
+            configuration->setDeployment(this);
+        }
     }
 }
 
@@ -86,6 +94,14 @@ void QUmlDeployment::removeConfiguration(QUmlDeploymentSpecification *configurat
 
     if (_configuration.contains(configuration)) {
         _configuration.remove(configuration);
+
+        // Adjust subsetted properties
+        removeOwnedElement(configuration);
+
+        // Adjust opposite properties
+        if (configuration) {
+            configuration->setDeployment(0);
+        }
     }
 }
 
@@ -105,6 +121,9 @@ void QUmlDeployment::addDeployedArtifact(QUmlDeployedArtifact *deployedArtifact)
 
     if (!_deployedArtifact.contains(deployedArtifact)) {
         _deployedArtifact.insert(deployedArtifact);
+
+        // Adjust subsetted properties
+        addSupplier(deployedArtifact);
     }
 }
 
@@ -114,6 +133,9 @@ void QUmlDeployment::removeDeployedArtifact(QUmlDeployedArtifact *deployedArtifa
 
     if (_deployedArtifact.contains(deployedArtifact)) {
         _deployedArtifact.remove(deployedArtifact);
+
+        // Adjust subsetted properties
+        removeSupplier(deployedArtifact);
     }
 }
 

@@ -80,6 +80,14 @@ void QUmlActivityPartition::addEdge(QUmlActivityEdge *edge)
 
     if (!_edge.contains(edge)) {
         _edge.insert(edge);
+
+        // Adjust subsetted properties
+        addContainedEdge(edge);
+
+        // Adjust opposite properties
+        if (edge) {
+            edge->addInPartition(this);
+        }
     }
 }
 
@@ -89,6 +97,14 @@ void QUmlActivityPartition::removeEdge(QUmlActivityEdge *edge)
 
     if (_edge.contains(edge)) {
         _edge.remove(edge);
+
+        // Adjust subsetted properties
+        removeContainedEdge(edge);
+
+        // Adjust opposite properties
+        if (edge) {
+            edge->removeInPartition(this);
+        }
     }
 }
 
@@ -146,6 +162,14 @@ void QUmlActivityPartition::addNode(QUmlActivityNode *node)
 
     if (!_node.contains(node)) {
         _node.insert(node);
+
+        // Adjust subsetted properties
+        addContainedNode(node);
+
+        // Adjust opposite properties
+        if (node) {
+            node->addInPartition(this);
+        }
     }
 }
 
@@ -155,6 +179,14 @@ void QUmlActivityPartition::removeNode(QUmlActivityNode *node)
 
     if (_node.contains(node)) {
         _node.remove(node);
+
+        // Adjust subsetted properties
+        removeContainedNode(node);
+
+        // Adjust opposite properties
+        if (node) {
+            node->removeInPartition(this);
+        }
     }
 }
 
@@ -193,6 +225,9 @@ void QUmlActivityPartition::addSubpartition(QUmlActivityPartition *subpartition)
 
     if (!_subpartition.contains(subpartition)) {
         _subpartition.insert(subpartition);
+
+        // Adjust subsetted properties
+        addSubgroup(subpartition);
     }
 }
 
@@ -202,6 +237,9 @@ void QUmlActivityPartition::removeSubpartition(QUmlActivityPartition *subpartiti
 
     if (_subpartition.contains(subpartition)) {
         _subpartition.remove(subpartition);
+
+        // Adjust subsetted properties
+        removeSubgroup(subpartition);
     }
 }
 

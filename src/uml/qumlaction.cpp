@@ -102,6 +102,9 @@ void QUmlAction::addInput(QUmlInputPin *input)
 
     if (!_input.contains(input)) {
         _input.append(input);
+
+        // Adjust subsetted properties
+        addOwnedElement(input);
     }
 }
 
@@ -111,6 +114,9 @@ void QUmlAction::removeInput(QUmlInputPin *input)
 
     if (_input.contains(input)) {
         _input.removeAll(input);
+
+        // Adjust subsetted properties
+        removeOwnedElement(input);
     }
 }
 
@@ -149,6 +155,9 @@ void QUmlAction::addLocalPostcondition(QUmlConstraint *localPostcondition)
 
     if (!_localPostcondition.contains(localPostcondition)) {
         _localPostcondition.insert(localPostcondition);
+
+        // Adjust subsetted properties
+        addOwnedElement(localPostcondition);
     }
 }
 
@@ -158,6 +167,9 @@ void QUmlAction::removeLocalPostcondition(QUmlConstraint *localPostcondition)
 
     if (_localPostcondition.contains(localPostcondition)) {
         _localPostcondition.remove(localPostcondition);
+
+        // Adjust subsetted properties
+        removeOwnedElement(localPostcondition);
     }
 }
 
@@ -177,6 +189,9 @@ void QUmlAction::addLocalPrecondition(QUmlConstraint *localPrecondition)
 
     if (!_localPrecondition.contains(localPrecondition)) {
         _localPrecondition.insert(localPrecondition);
+
+        // Adjust subsetted properties
+        addOwnedElement(localPrecondition);
     }
 }
 
@@ -186,6 +201,9 @@ void QUmlAction::removeLocalPrecondition(QUmlConstraint *localPrecondition)
 
     if (_localPrecondition.contains(localPrecondition)) {
         _localPrecondition.remove(localPrecondition);
+
+        // Adjust subsetted properties
+        removeOwnedElement(localPrecondition);
     }
 }
 
@@ -205,6 +223,9 @@ void QUmlAction::addOutput(QUmlOutputPin *output)
 
     if (!_output.contains(output)) {
         _output.append(output);
+
+        // Adjust subsetted properties
+        addOwnedElement(output);
     }
 }
 
@@ -214,6 +235,9 @@ void QUmlAction::removeOutput(QUmlOutputPin *output)
 
     if (_output.contains(output)) {
         _output.removeAll(output);
+
+        // Adjust subsetted properties
+        removeOwnedElement(output);
     }
 }
 

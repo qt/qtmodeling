@@ -76,6 +76,9 @@ void QUmlLinkAction::addEndData(QUmlLinkEndData *endData)
 
     if (!_endData.contains(endData)) {
         _endData.insert(endData);
+
+        // Adjust subsetted properties
+        addOwnedElement(endData);
     }
 }
 
@@ -85,6 +88,9 @@ void QUmlLinkAction::removeEndData(QUmlLinkEndData *endData)
 
     if (_endData.contains(endData)) {
         _endData.remove(endData);
+
+        // Adjust subsetted properties
+        removeOwnedElement(endData);
     }
 }
 
@@ -104,6 +110,9 @@ void QUmlLinkAction::addInputValue(QUmlInputPin *inputValue)
 
     if (!_inputValue.contains(inputValue)) {
         _inputValue.insert(inputValue);
+
+        // Adjust subsetted properties
+        addInput(inputValue);
     }
 }
 
@@ -113,6 +122,9 @@ void QUmlLinkAction::removeInputValue(QUmlInputPin *inputValue)
 
     if (_inputValue.contains(inputValue)) {
         _inputValue.remove(inputValue);
+
+        // Adjust subsetted properties
+        removeInput(inputValue);
     }
 }
 

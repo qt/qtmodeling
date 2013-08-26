@@ -227,6 +227,11 @@ void QUmlParameter::addParameterSet(QUmlParameterSet *parameterSet)
 
     if (!_parameterSet.contains(parameterSet)) {
         _parameterSet.insert(parameterSet);
+
+        // Adjust opposite properties
+        if (parameterSet) {
+            parameterSet->addParameter(this);
+        }
     }
 }
 
@@ -236,6 +241,11 @@ void QUmlParameter::removeParameterSet(QUmlParameterSet *parameterSet)
 
     if (_parameterSet.contains(parameterSet)) {
         _parameterSet.remove(parameterSet);
+
+        // Adjust opposite properties
+        if (parameterSet) {
+            parameterSet->removeParameter(this);
+        }
     }
 }
 

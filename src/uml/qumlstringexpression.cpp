@@ -97,6 +97,9 @@ void QUmlStringExpression::addSubExpression(QUmlStringExpression *subExpression)
 
     if (!_subExpression.contains(subExpression)) {
         _subExpression.insert(subExpression);
+
+        // Adjust subsetted properties
+        addOwnedElement(subExpression);
     }
 }
 
@@ -106,6 +109,9 @@ void QUmlStringExpression::removeSubExpression(QUmlStringExpression *subExpressi
 
     if (_subExpression.contains(subExpression)) {
         _subExpression.remove(subExpression);
+
+        // Adjust subsetted properties
+        removeOwnedElement(subExpression);
     }
 }
 

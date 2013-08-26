@@ -75,6 +75,9 @@ void QUmlElement::addOwnedComment(QUmlComment *ownedComment)
 
     if (!_ownedComment.contains(ownedComment)) {
         _ownedComment.insert(ownedComment);
+
+        // Adjust subsetted properties
+        addOwnedElement(ownedComment);
     }
 }
 
@@ -84,6 +87,9 @@ void QUmlElement::removeOwnedComment(QUmlComment *ownedComment)
 
     if (_ownedComment.contains(ownedComment)) {
         _ownedComment.remove(ownedComment);
+
+        // Adjust subsetted properties
+        removeOwnedElement(ownedComment);
     }
 }
 

@@ -105,6 +105,11 @@ void QUmlActivityNode::addInGroup(QUmlActivityGroup *inGroup)
 
     if (!_inGroup.contains(inGroup)) {
         _inGroup.insert(inGroup);
+
+        // Adjust opposite properties
+        if (inGroup) {
+            inGroup->addContainedNode(this);
+        }
     }
 }
 
@@ -114,6 +119,11 @@ void QUmlActivityNode::removeInGroup(QUmlActivityGroup *inGroup)
 
     if (_inGroup.contains(inGroup)) {
         _inGroup.remove(inGroup);
+
+        // Adjust opposite properties
+        if (inGroup) {
+            inGroup->removeContainedNode(this);
+        }
     }
 }
 
@@ -133,6 +143,14 @@ void QUmlActivityNode::addInInterruptibleRegion(QUmlInterruptibleActivityRegion 
 
     if (!_inInterruptibleRegion.contains(inInterruptibleRegion)) {
         _inInterruptibleRegion.insert(inInterruptibleRegion);
+
+        // Adjust subsetted properties
+        addInGroup(inInterruptibleRegion);
+
+        // Adjust opposite properties
+        if (inInterruptibleRegion) {
+            inInterruptibleRegion->addNode(this);
+        }
     }
 }
 
@@ -142,6 +160,14 @@ void QUmlActivityNode::removeInInterruptibleRegion(QUmlInterruptibleActivityRegi
 
     if (_inInterruptibleRegion.contains(inInterruptibleRegion)) {
         _inInterruptibleRegion.remove(inInterruptibleRegion);
+
+        // Adjust subsetted properties
+        removeInGroup(inInterruptibleRegion);
+
+        // Adjust opposite properties
+        if (inInterruptibleRegion) {
+            inInterruptibleRegion->removeNode(this);
+        }
     }
 }
 
@@ -161,6 +187,14 @@ void QUmlActivityNode::addInPartition(QUmlActivityPartition *inPartition)
 
     if (!_inPartition.contains(inPartition)) {
         _inPartition.insert(inPartition);
+
+        // Adjust subsetted properties
+        addInGroup(inPartition);
+
+        // Adjust opposite properties
+        if (inPartition) {
+            inPartition->addNode(this);
+        }
     }
 }
 
@@ -170,6 +204,14 @@ void QUmlActivityNode::removeInPartition(QUmlActivityPartition *inPartition)
 
     if (_inPartition.contains(inPartition)) {
         _inPartition.remove(inPartition);
+
+        // Adjust subsetted properties
+        removeInGroup(inPartition);
+
+        // Adjust opposite properties
+        if (inPartition) {
+            inPartition->removeNode(this);
+        }
     }
 }
 
@@ -217,6 +259,11 @@ void QUmlActivityNode::addIncoming(QUmlActivityEdge *incoming)
 
     if (!_incoming.contains(incoming)) {
         _incoming.insert(incoming);
+
+        // Adjust opposite properties
+        if (incoming) {
+            incoming->setTarget(this);
+        }
     }
 }
 
@@ -226,6 +273,11 @@ void QUmlActivityNode::removeIncoming(QUmlActivityEdge *incoming)
 
     if (_incoming.contains(incoming)) {
         _incoming.remove(incoming);
+
+        // Adjust opposite properties
+        if (incoming) {
+            incoming->setTarget(0);
+        }
     }
 }
 
@@ -245,6 +297,11 @@ void QUmlActivityNode::addOutgoing(QUmlActivityEdge *outgoing)
 
     if (!_outgoing.contains(outgoing)) {
         _outgoing.insert(outgoing);
+
+        // Adjust opposite properties
+        if (outgoing) {
+            outgoing->setSource(this);
+        }
     }
 }
 
@@ -254,6 +311,11 @@ void QUmlActivityNode::removeOutgoing(QUmlActivityEdge *outgoing)
 
     if (_outgoing.contains(outgoing)) {
         _outgoing.remove(outgoing);
+
+        // Adjust opposite properties
+        if (outgoing) {
+            outgoing->setSource(0);
+        }
     }
 }
 
@@ -273,6 +335,9 @@ void QUmlActivityNode::addRedefinedNode(QUmlActivityNode *redefinedNode)
 
     if (!_redefinedNode.contains(redefinedNode)) {
         _redefinedNode.insert(redefinedNode);
+
+        // Adjust subsetted properties
+        addRedefinedElement(redefinedNode);
     }
 }
 
@@ -282,6 +347,9 @@ void QUmlActivityNode::removeRedefinedNode(QUmlActivityNode *redefinedNode)
 
     if (_redefinedNode.contains(redefinedNode)) {
         _redefinedNode.remove(redefinedNode);
+
+        // Adjust subsetted properties
+        removeRedefinedElement(redefinedNode);
     }
 }
 

@@ -77,6 +77,9 @@ void QUmlInteraction::addAction(QUmlAction *action)
 
     if (!_action.contains(action)) {
         _action.insert(action);
+
+        // Adjust subsetted properties
+        addOwnedElement(action);
     }
 }
 
@@ -86,6 +89,9 @@ void QUmlInteraction::removeAction(QUmlAction *action)
 
     if (_action.contains(action)) {
         _action.remove(action);
+
+        // Adjust subsetted properties
+        removeOwnedElement(action);
     }
 }
 
@@ -105,6 +111,9 @@ void QUmlInteraction::addFormalGate(QUmlGate *formalGate)
 
     if (!_formalGate.contains(formalGate)) {
         _formalGate.insert(formalGate);
+
+        // Adjust subsetted properties
+        addOwnedMember(formalGate);
     }
 }
 
@@ -114,6 +123,9 @@ void QUmlInteraction::removeFormalGate(QUmlGate *formalGate)
 
     if (_formalGate.contains(formalGate)) {
         _formalGate.remove(formalGate);
+
+        // Adjust subsetted properties
+        removeOwnedMember(formalGate);
     }
 }
 
@@ -133,6 +145,14 @@ void QUmlInteraction::addFragment(QUmlInteractionFragment *fragment)
 
     if (!_fragment.contains(fragment)) {
         _fragment.append(fragment);
+
+        // Adjust subsetted properties
+        addOwnedMember(fragment);
+
+        // Adjust opposite properties
+        if (fragment) {
+            fragment->setEnclosingInteraction(this);
+        }
     }
 }
 
@@ -142,6 +162,14 @@ void QUmlInteraction::removeFragment(QUmlInteractionFragment *fragment)
 
     if (_fragment.contains(fragment)) {
         _fragment.removeAll(fragment);
+
+        // Adjust subsetted properties
+        removeOwnedMember(fragment);
+
+        // Adjust opposite properties
+        if (fragment) {
+            fragment->setEnclosingInteraction(0);
+        }
     }
 }
 
@@ -161,6 +189,14 @@ void QUmlInteraction::addLifeline(QUmlLifeline *lifeline)
 
     if (!_lifeline.contains(lifeline)) {
         _lifeline.insert(lifeline);
+
+        // Adjust subsetted properties
+        addOwnedMember(lifeline);
+
+        // Adjust opposite properties
+        if (lifeline) {
+            lifeline->setInteraction(this);
+        }
     }
 }
 
@@ -170,6 +206,14 @@ void QUmlInteraction::removeLifeline(QUmlLifeline *lifeline)
 
     if (_lifeline.contains(lifeline)) {
         _lifeline.remove(lifeline);
+
+        // Adjust subsetted properties
+        removeOwnedMember(lifeline);
+
+        // Adjust opposite properties
+        if (lifeline) {
+            lifeline->setInteraction(0);
+        }
     }
 }
 
@@ -189,6 +233,14 @@ void QUmlInteraction::addMessage(QUmlMessage *message)
 
     if (!_message.contains(message)) {
         _message.insert(message);
+
+        // Adjust subsetted properties
+        addOwnedMember(message);
+
+        // Adjust opposite properties
+        if (message) {
+            message->setInteraction(this);
+        }
     }
 }
 
@@ -198,6 +250,14 @@ void QUmlInteraction::removeMessage(QUmlMessage *message)
 
     if (_message.contains(message)) {
         _message.remove(message);
+
+        // Adjust subsetted properties
+        removeOwnedMember(message);
+
+        // Adjust opposite properties
+        if (message) {
+            message->setInteraction(0);
+        }
     }
 }
 

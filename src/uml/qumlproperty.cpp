@@ -435,6 +435,9 @@ void QUmlProperty::addQualifier(QUmlProperty *qualifier)
 
     if (!_qualifier.contains(qualifier)) {
         _qualifier.append(qualifier);
+
+        // Adjust subsetted properties
+        addOwnedElement(qualifier);
     }
 }
 
@@ -444,6 +447,9 @@ void QUmlProperty::removeQualifier(QUmlProperty *qualifier)
 
     if (_qualifier.contains(qualifier)) {
         _qualifier.removeAll(qualifier);
+
+        // Adjust subsetted properties
+        removeOwnedElement(qualifier);
     }
 }
 
@@ -463,6 +469,9 @@ void QUmlProperty::addRedefinedProperty(QUmlProperty *redefinedProperty)
 
     if (!_redefinedProperty.contains(redefinedProperty)) {
         _redefinedProperty.insert(redefinedProperty);
+
+        // Adjust subsetted properties
+        addRedefinedElement(redefinedProperty);
     }
 }
 
@@ -472,6 +481,9 @@ void QUmlProperty::removeRedefinedProperty(QUmlProperty *redefinedProperty)
 
     if (_redefinedProperty.contains(redefinedProperty)) {
         _redefinedProperty.remove(redefinedProperty);
+
+        // Adjust subsetted properties
+        removeRedefinedElement(redefinedProperty);
     }
 }
 

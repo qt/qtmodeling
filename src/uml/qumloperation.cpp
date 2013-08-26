@@ -45,6 +45,7 @@
 #include <QtUml/QUmlDataType>
 #include <QtUml/QUmlInterface>
 #include <QtUml/QUmlOperationTemplateParameter>
+#include <QtUml/QUmlParameter>
 #include <QtUml/QUmlRedefinableElement>
 #include <QtUml/QUmlType>
 
@@ -300,6 +301,11 @@ void QUmlOperation::addOwnedParameter(QUmlParameter *ownedParameter)
 
     if (!_ownedParameter.contains(ownedParameter)) {
         _ownedParameter.append(ownedParameter);
+
+        // Adjust opposite properties
+        if (ownedParameter) {
+            ownedParameter->setOperation(this);
+        }
     }
 }
 
@@ -309,6 +315,11 @@ void QUmlOperation::removeOwnedParameter(QUmlParameter *ownedParameter)
 
     if (_ownedParameter.contains(ownedParameter)) {
         _ownedParameter.removeAll(ownedParameter);
+
+        // Adjust opposite properties
+        if (ownedParameter) {
+            ownedParameter->setOperation(0);
+        }
     }
 }
 
@@ -328,6 +339,9 @@ void QUmlOperation::addPostcondition(QUmlConstraint *postcondition)
 
     if (!_postcondition.contains(postcondition)) {
         _postcondition.insert(postcondition);
+
+        // Adjust subsetted properties
+        addOwnedRule(postcondition);
     }
 }
 
@@ -337,6 +351,9 @@ void QUmlOperation::removePostcondition(QUmlConstraint *postcondition)
 
     if (_postcondition.contains(postcondition)) {
         _postcondition.remove(postcondition);
+
+        // Adjust subsetted properties
+        removeOwnedRule(postcondition);
     }
 }
 
@@ -356,6 +373,9 @@ void QUmlOperation::addPrecondition(QUmlConstraint *precondition)
 
     if (!_precondition.contains(precondition)) {
         _precondition.insert(precondition);
+
+        // Adjust subsetted properties
+        addOwnedRule(precondition);
     }
 }
 
@@ -365,6 +385,9 @@ void QUmlOperation::removePrecondition(QUmlConstraint *precondition)
 
     if (_precondition.contains(precondition)) {
         _precondition.remove(precondition);
+
+        // Adjust subsetted properties
+        removeOwnedRule(precondition);
     }
 }
 
@@ -412,6 +435,9 @@ void QUmlOperation::addRedefinedOperation(QUmlOperation *redefinedOperation)
 
     if (!_redefinedOperation.contains(redefinedOperation)) {
         _redefinedOperation.insert(redefinedOperation);
+
+        // Adjust subsetted properties
+        addRedefinedElement(redefinedOperation);
     }
 }
 
@@ -421,6 +447,9 @@ void QUmlOperation::removeRedefinedOperation(QUmlOperation *redefinedOperation)
 
     if (_redefinedOperation.contains(redefinedOperation)) {
         _redefinedOperation.remove(redefinedOperation);
+
+        // Adjust subsetted properties
+        removeRedefinedElement(redefinedOperation);
     }
 }
 

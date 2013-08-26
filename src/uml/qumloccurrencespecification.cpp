@@ -95,6 +95,11 @@ void QUmlOccurrenceSpecification::addToAfter(QUmlGeneralOrdering *toAfter)
 
     if (!_toAfter.contains(toAfter)) {
         _toAfter.insert(toAfter);
+
+        // Adjust opposite properties
+        if (toAfter) {
+            toAfter->setBefore(this);
+        }
     }
 }
 
@@ -104,6 +109,11 @@ void QUmlOccurrenceSpecification::removeToAfter(QUmlGeneralOrdering *toAfter)
 
     if (_toAfter.contains(toAfter)) {
         _toAfter.remove(toAfter);
+
+        // Adjust opposite properties
+        if (toAfter) {
+            toAfter->setBefore(0);
+        }
     }
 }
 
@@ -123,6 +133,11 @@ void QUmlOccurrenceSpecification::addToBefore(QUmlGeneralOrdering *toBefore)
 
     if (!_toBefore.contains(toBefore)) {
         _toBefore.insert(toBefore);
+
+        // Adjust opposite properties
+        if (toBefore) {
+            toBefore->setAfter(this);
+        }
     }
 }
 
@@ -132,6 +147,11 @@ void QUmlOccurrenceSpecification::removeToBefore(QUmlGeneralOrdering *toBefore)
 
     if (_toBefore.contains(toBefore)) {
         _toBefore.remove(toBefore);
+
+        // Adjust opposite properties
+        if (toBefore) {
+            toBefore->setAfter(0);
+        }
     }
 }
 

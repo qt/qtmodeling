@@ -74,6 +74,14 @@ void QUmlEnumeration::addOwnedLiteral(QUmlEnumerationLiteral *ownedLiteral)
 
     if (!_ownedLiteral.contains(ownedLiteral)) {
         _ownedLiteral.append(ownedLiteral);
+
+        // Adjust subsetted properties
+        addOwnedMember(ownedLiteral);
+
+        // Adjust opposite properties
+        if (ownedLiteral) {
+            ownedLiteral->setEnumeration(this);
+        }
     }
 }
 
@@ -83,6 +91,14 @@ void QUmlEnumeration::removeOwnedLiteral(QUmlEnumerationLiteral *ownedLiteral)
 
     if (_ownedLiteral.contains(ownedLiteral)) {
         _ownedLiteral.removeAll(ownedLiteral);
+
+        // Adjust subsetted properties
+        removeOwnedMember(ownedLiteral);
+
+        // Adjust opposite properties
+        if (ownedLiteral) {
+            ownedLiteral->setEnumeration(0);
+        }
     }
 }
 

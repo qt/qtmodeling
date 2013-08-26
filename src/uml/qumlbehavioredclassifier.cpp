@@ -103,6 +103,15 @@ void QUmlBehavioredClassifier::addInterfaceRealization(QUmlInterfaceRealization 
 
     if (!_interfaceRealization.contains(interfaceRealization)) {
         _interfaceRealization.insert(interfaceRealization);
+
+        // Adjust subsetted properties
+        addOwnedElement(interfaceRealization);
+        addClientDependency(interfaceRealization);
+
+        // Adjust opposite properties
+        if (interfaceRealization) {
+            interfaceRealization->setImplementingClassifier(this);
+        }
     }
 }
 
@@ -112,6 +121,15 @@ void QUmlBehavioredClassifier::removeInterfaceRealization(QUmlInterfaceRealizati
 
     if (_interfaceRealization.contains(interfaceRealization)) {
         _interfaceRealization.remove(interfaceRealization);
+
+        // Adjust subsetted properties
+        removeOwnedElement(interfaceRealization);
+        removeClientDependency(interfaceRealization);
+
+        // Adjust opposite properties
+        if (interfaceRealization) {
+            interfaceRealization->setImplementingClassifier(0);
+        }
     }
 }
 
@@ -131,6 +149,9 @@ void QUmlBehavioredClassifier::addOwnedBehavior(QUmlBehavior *ownedBehavior)
 
     if (!_ownedBehavior.contains(ownedBehavior)) {
         _ownedBehavior.insert(ownedBehavior);
+
+        // Adjust subsetted properties
+        addOwnedMember(ownedBehavior);
     }
 }
 
@@ -140,6 +161,9 @@ void QUmlBehavioredClassifier::removeOwnedBehavior(QUmlBehavior *ownedBehavior)
 
     if (_ownedBehavior.contains(ownedBehavior)) {
         _ownedBehavior.remove(ownedBehavior);
+
+        // Adjust subsetted properties
+        removeOwnedMember(ownedBehavior);
     }
 }
 

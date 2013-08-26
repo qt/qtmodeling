@@ -88,6 +88,9 @@ void QUmlClassifier::addAttribute(QUmlProperty *attribute)
 
     if (!_attribute.contains(attribute)) {
         _attribute.insert(attribute);
+
+        // Adjust subsetted properties
+        addFeature(attribute);
     }
 }
 
@@ -97,6 +100,9 @@ void QUmlClassifier::removeAttribute(QUmlProperty *attribute)
 
     if (_attribute.contains(attribute)) {
         _attribute.remove(attribute);
+
+        // Adjust subsetted properties
+        removeFeature(attribute);
     }
 }
 
@@ -116,6 +122,9 @@ void QUmlClassifier::addCollaborationUse(QUmlCollaborationUse *collaborationUse)
 
     if (!_collaborationUse.contains(collaborationUse)) {
         _collaborationUse.insert(collaborationUse);
+
+        // Adjust subsetted properties
+        addOwnedElement(collaborationUse);
     }
 }
 
@@ -125,6 +134,9 @@ void QUmlClassifier::removeCollaborationUse(QUmlCollaborationUse *collaborationU
 
     if (_collaborationUse.contains(collaborationUse)) {
         _collaborationUse.remove(collaborationUse);
+
+        // Adjust subsetted properties
+        removeOwnedElement(collaborationUse);
     }
 }
 
@@ -144,6 +156,14 @@ void QUmlClassifier::addFeature(QUmlFeature *feature)
 
     if (!_feature.contains(feature)) {
         _feature.insert(feature);
+
+        // Adjust subsetted properties
+        addMember(feature);
+
+        // Adjust opposite properties
+        if (feature) {
+            feature->addFeaturingClassifier(this);
+        }
     }
 }
 
@@ -153,6 +173,14 @@ void QUmlClassifier::removeFeature(QUmlFeature *feature)
 
     if (_feature.contains(feature)) {
         _feature.remove(feature);
+
+        // Adjust subsetted properties
+        removeMember(feature);
+
+        // Adjust opposite properties
+        if (feature) {
+            feature->removeFeaturingClassifier(this);
+        }
     }
 }
 
@@ -208,6 +236,14 @@ void QUmlClassifier::addGeneralization(QUmlGeneralization *generalization)
 
     if (!_generalization.contains(generalization)) {
         _generalization.insert(generalization);
+
+        // Adjust subsetted properties
+        addOwnedElement(generalization);
+
+        // Adjust opposite properties
+        if (generalization) {
+            generalization->setSpecific(this);
+        }
     }
 }
 
@@ -217,6 +253,14 @@ void QUmlClassifier::removeGeneralization(QUmlGeneralization *generalization)
 
     if (_generalization.contains(generalization)) {
         _generalization.remove(generalization);
+
+        // Adjust subsetted properties
+        removeOwnedElement(generalization);
+
+        // Adjust opposite properties
+        if (generalization) {
+            generalization->setSpecific(0);
+        }
     }
 }
 
@@ -241,6 +285,9 @@ void QUmlClassifier::addInheritedMember(QUmlNamedElement *inheritedMember)
 
     if (false /* <derivedexclusion-criteria> */) {
         // <derived-code>
+
+        // Adjust subsetted properties
+        addMember(inheritedMember);
     }
 }
 
@@ -253,6 +300,9 @@ void QUmlClassifier::removeInheritedMember(QUmlNamedElement *inheritedMember)
 
     if (false /* <derivedexclusion-criteria> */) {
         // <derived-code>
+
+        // Adjust subsetted properties
+        removeMember(inheritedMember);
     }
 }
 
@@ -329,6 +379,9 @@ void QUmlClassifier::addOwnedUseCase(QUmlUseCase *ownedUseCase)
 
     if (!_ownedUseCase.contains(ownedUseCase)) {
         _ownedUseCase.insert(ownedUseCase);
+
+        // Adjust subsetted properties
+        addOwnedMember(ownedUseCase);
     }
 }
 
@@ -338,6 +391,9 @@ void QUmlClassifier::removeOwnedUseCase(QUmlUseCase *ownedUseCase)
 
     if (_ownedUseCase.contains(ownedUseCase)) {
         _ownedUseCase.remove(ownedUseCase);
+
+        // Adjust subsetted properties
+        removeOwnedMember(ownedUseCase);
     }
 }
 
@@ -357,6 +413,11 @@ void QUmlClassifier::addPowertypeExtent(QUmlGeneralizationSet *powertypeExtent)
 
     if (!_powertypeExtent.contains(powertypeExtent)) {
         _powertypeExtent.insert(powertypeExtent);
+
+        // Adjust opposite properties
+        if (powertypeExtent) {
+            powertypeExtent->setPowertype(this);
+        }
     }
 }
 
@@ -366,6 +427,11 @@ void QUmlClassifier::removePowertypeExtent(QUmlGeneralizationSet *powertypeExten
 
     if (_powertypeExtent.contains(powertypeExtent)) {
         _powertypeExtent.remove(powertypeExtent);
+
+        // Adjust opposite properties
+        if (powertypeExtent) {
+            powertypeExtent->setPowertype(0);
+        }
     }
 }
 
@@ -385,6 +451,9 @@ void QUmlClassifier::addRedefinedClassifier(QUmlClassifier *redefinedClassifier)
 
     if (!_redefinedClassifier.contains(redefinedClassifier)) {
         _redefinedClassifier.insert(redefinedClassifier);
+
+        // Adjust subsetted properties
+        addRedefinedElement(redefinedClassifier);
     }
 }
 
@@ -394,6 +463,9 @@ void QUmlClassifier::removeRedefinedClassifier(QUmlClassifier *redefinedClassifi
 
     if (_redefinedClassifier.contains(redefinedClassifier)) {
         _redefinedClassifier.remove(redefinedClassifier);
+
+        // Adjust subsetted properties
+        removeRedefinedElement(redefinedClassifier);
     }
 }
 
@@ -440,6 +512,15 @@ void QUmlClassifier::addSubstitution(QUmlSubstitution *substitution)
 
     if (!_substitution.contains(substitution)) {
         _substitution.insert(substitution);
+
+        // Adjust subsetted properties
+        addOwnedElement(substitution);
+        addClientDependency(substitution);
+
+        // Adjust opposite properties
+        if (substitution) {
+            substitution->setSubstitutingClassifier(this);
+        }
     }
 }
 
@@ -449,6 +530,15 @@ void QUmlClassifier::removeSubstitution(QUmlSubstitution *substitution)
 
     if (_substitution.contains(substitution)) {
         _substitution.remove(substitution);
+
+        // Adjust subsetted properties
+        removeOwnedElement(substitution);
+        removeClientDependency(substitution);
+
+        // Adjust opposite properties
+        if (substitution) {
+            substitution->setSubstitutingClassifier(0);
+        }
     }
 }
 
@@ -487,6 +577,11 @@ void QUmlClassifier::addUseCase(QUmlUseCase *useCase)
 
     if (!_useCase.contains(useCase)) {
         _useCase.insert(useCase);
+
+        // Adjust opposite properties
+        if (useCase) {
+            useCase->addSubject(this);
+        }
     }
 }
 
@@ -496,6 +591,11 @@ void QUmlClassifier::removeUseCase(QUmlUseCase *useCase)
 
     if (_useCase.contains(useCase)) {
         _useCase.remove(useCase);
+
+        // Adjust opposite properties
+        if (useCase) {
+            useCase->removeSubject(this);
+        }
     }
 }
 

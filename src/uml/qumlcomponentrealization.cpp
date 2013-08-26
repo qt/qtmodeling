@@ -104,6 +104,9 @@ void QUmlComponentRealization::addRealizingClassifier(QUmlClassifier *realizingC
 
     if (!_realizingClassifier.contains(realizingClassifier)) {
         _realizingClassifier.insert(realizingClassifier);
+
+        // Adjust subsetted properties
+        addClient(realizingClassifier);
     }
 }
 
@@ -113,6 +116,9 @@ void QUmlComponentRealization::removeRealizingClassifier(QUmlClassifier *realizi
 
     if (_realizingClassifier.contains(realizingClassifier)) {
         _realizingClassifier.remove(realizingClassifier);
+
+        // Adjust subsetted properties
+        removeClient(realizingClassifier);
     }
 }
 

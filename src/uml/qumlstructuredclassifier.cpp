@@ -76,6 +76,11 @@ void QUmlStructuredClassifier::addOwnedAttribute(QUmlProperty *ownedAttribute)
 
     if (!_ownedAttribute.contains(ownedAttribute)) {
         _ownedAttribute.append(ownedAttribute);
+
+        // Adjust subsetted properties
+        addAttribute(ownedAttribute);
+        addOwnedMember(ownedAttribute);
+        addRole(ownedAttribute);
     }
 }
 
@@ -85,6 +90,11 @@ void QUmlStructuredClassifier::removeOwnedAttribute(QUmlProperty *ownedAttribute
 
     if (_ownedAttribute.contains(ownedAttribute)) {
         _ownedAttribute.removeAll(ownedAttribute);
+
+        // Adjust subsetted properties
+        removeAttribute(ownedAttribute);
+        removeOwnedMember(ownedAttribute);
+        removeRole(ownedAttribute);
     }
 }
 
@@ -104,6 +114,10 @@ void QUmlStructuredClassifier::addOwnedConnector(QUmlConnector *ownedConnector)
 
     if (!_ownedConnector.contains(ownedConnector)) {
         _ownedConnector.insert(ownedConnector);
+
+        // Adjust subsetted properties
+        addFeature(ownedConnector);
+        addOwnedMember(ownedConnector);
     }
 }
 
@@ -113,6 +127,10 @@ void QUmlStructuredClassifier::removeOwnedConnector(QUmlConnector *ownedConnecto
 
     if (_ownedConnector.contains(ownedConnector)) {
         _ownedConnector.remove(ownedConnector);
+
+        // Adjust subsetted properties
+        removeFeature(ownedConnector);
+        removeOwnedMember(ownedConnector);
     }
 }
 
@@ -168,6 +186,9 @@ void QUmlStructuredClassifier::addRole(QUmlConnectableElement *role)
 
     if (!_role.contains(role)) {
         _role.insert(role);
+
+        // Adjust subsetted properties
+        addMember(role);
     }
 }
 
@@ -177,6 +198,9 @@ void QUmlStructuredClassifier::removeRole(QUmlConnectableElement *role)
 
     if (_role.contains(role)) {
         _role.remove(role);
+
+        // Adjust subsetted properties
+        removeMember(role);
     }
 }
 

@@ -74,6 +74,14 @@ void QUmlExecutableNode::addHandler(QUmlExceptionHandler *handler)
 
     if (!_handler.contains(handler)) {
         _handler.insert(handler);
+
+        // Adjust subsetted properties
+        addOwnedElement(handler);
+
+        // Adjust opposite properties
+        if (handler) {
+            handler->setProtectedNode(this);
+        }
     }
 }
 
@@ -83,6 +91,14 @@ void QUmlExecutableNode::removeHandler(QUmlExceptionHandler *handler)
 
     if (_handler.contains(handler)) {
         _handler.remove(handler);
+
+        // Adjust subsetted properties
+        removeOwnedElement(handler);
+
+        // Adjust opposite properties
+        if (handler) {
+            handler->setProtectedNode(0);
+        }
     }
 }
 

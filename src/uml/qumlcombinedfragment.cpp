@@ -76,6 +76,9 @@ void QUmlCombinedFragment::addCfragmentGate(QUmlGate *cfragmentGate)
 
     if (!_cfragmentGate.contains(cfragmentGate)) {
         _cfragmentGate.insert(cfragmentGate);
+
+        // Adjust subsetted properties
+        addOwnedElement(cfragmentGate);
     }
 }
 
@@ -85,6 +88,9 @@ void QUmlCombinedFragment::removeCfragmentGate(QUmlGate *cfragmentGate)
 
     if (_cfragmentGate.contains(cfragmentGate)) {
         _cfragmentGate.remove(cfragmentGate);
+
+        // Adjust subsetted properties
+        removeOwnedElement(cfragmentGate);
     }
 }
 
@@ -123,6 +129,9 @@ void QUmlCombinedFragment::addOperand(QUmlInteractionOperand *operand)
 
     if (!_operand.contains(operand)) {
         _operand.append(operand);
+
+        // Adjust subsetted properties
+        addOwnedElement(operand);
     }
 }
 
@@ -132,6 +141,9 @@ void QUmlCombinedFragment::removeOperand(QUmlInteractionOperand *operand)
 
     if (_operand.contains(operand)) {
         _operand.removeAll(operand);
+
+        // Adjust subsetted properties
+        removeOwnedElement(operand);
     }
 }
 

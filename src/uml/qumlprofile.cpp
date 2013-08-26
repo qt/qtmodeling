@@ -75,6 +75,9 @@ void QUmlProfile::addMetaclassReference(QUmlElementImport *metaclassReference)
 
     if (!_metaclassReference.contains(metaclassReference)) {
         _metaclassReference.insert(metaclassReference);
+
+        // Adjust subsetted properties
+        addElementImport(metaclassReference);
     }
 }
 
@@ -84,6 +87,9 @@ void QUmlProfile::removeMetaclassReference(QUmlElementImport *metaclassReference
 
     if (_metaclassReference.contains(metaclassReference)) {
         _metaclassReference.remove(metaclassReference);
+
+        // Adjust subsetted properties
+        removeElementImport(metaclassReference);
     }
 }
 
@@ -103,6 +109,9 @@ void QUmlProfile::addMetamodelReference(QUmlPackageImport *metamodelReference)
 
     if (!_metamodelReference.contains(metamodelReference)) {
         _metamodelReference.insert(metamodelReference);
+
+        // Adjust subsetted properties
+        addPackageImport(metamodelReference);
     }
 }
 
@@ -112,6 +121,9 @@ void QUmlProfile::removeMetamodelReference(QUmlPackageImport *metamodelReference
 
     if (_metamodelReference.contains(metamodelReference)) {
         _metamodelReference.remove(metamodelReference);
+
+        // Adjust subsetted properties
+        removePackageImport(metamodelReference);
     }
 }
 

@@ -76,6 +76,15 @@ void QUmlDataType::addOwnedAttribute(QUmlProperty *ownedAttribute)
 
     if (!_ownedAttribute.contains(ownedAttribute)) {
         _ownedAttribute.append(ownedAttribute);
+
+        // Adjust subsetted properties
+        addOwnedMember(ownedAttribute);
+        addAttribute(ownedAttribute);
+
+        // Adjust opposite properties
+        if (ownedAttribute) {
+            ownedAttribute->setDatatype(this);
+        }
     }
 }
 
@@ -85,6 +94,15 @@ void QUmlDataType::removeOwnedAttribute(QUmlProperty *ownedAttribute)
 
     if (_ownedAttribute.contains(ownedAttribute)) {
         _ownedAttribute.removeAll(ownedAttribute);
+
+        // Adjust subsetted properties
+        removeOwnedMember(ownedAttribute);
+        removeAttribute(ownedAttribute);
+
+        // Adjust opposite properties
+        if (ownedAttribute) {
+            ownedAttribute->setDatatype(0);
+        }
     }
 }
 
@@ -104,6 +122,15 @@ void QUmlDataType::addOwnedOperation(QUmlOperation *ownedOperation)
 
     if (!_ownedOperation.contains(ownedOperation)) {
         _ownedOperation.append(ownedOperation);
+
+        // Adjust subsetted properties
+        addFeature(ownedOperation);
+        addOwnedMember(ownedOperation);
+
+        // Adjust opposite properties
+        if (ownedOperation) {
+            ownedOperation->setDatatype(this);
+        }
     }
 }
 
@@ -113,6 +140,15 @@ void QUmlDataType::removeOwnedOperation(QUmlOperation *ownedOperation)
 
     if (_ownedOperation.contains(ownedOperation)) {
         _ownedOperation.removeAll(ownedOperation);
+
+        // Adjust subsetted properties
+        removeFeature(ownedOperation);
+        removeOwnedMember(ownedOperation);
+
+        // Adjust opposite properties
+        if (ownedOperation) {
+            ownedOperation->setDatatype(0);
+        }
     }
 }
 

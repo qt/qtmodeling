@@ -106,6 +106,11 @@ void QUmlVertex::addIncoming(QUmlTransition *incoming)
 
     if (false /* <derivedexclusion-criteria> */) {
         // <derived-code>
+
+        // Adjust opposite properties
+        if (incoming) {
+            incoming->setTarget(this);
+        }
     }
 }
 
@@ -118,6 +123,11 @@ void QUmlVertex::removeIncoming(QUmlTransition *incoming)
 
     if (false /* <derivedexclusion-criteria> */) {
         // <derived-code>
+
+        // Adjust opposite properties
+        if (incoming) {
+            incoming->setTarget(0);
+        }
     }
 }
 
@@ -142,6 +152,11 @@ void QUmlVertex::addOutgoing(QUmlTransition *outgoing)
 
     if (false /* <derivedexclusion-criteria> */) {
         // <derived-code>
+
+        // Adjust opposite properties
+        if (outgoing) {
+            outgoing->setSource(this);
+        }
     }
 }
 
@@ -154,6 +169,11 @@ void QUmlVertex::removeOutgoing(QUmlTransition *outgoing)
 
     if (false /* <derivedexclusion-criteria> */) {
         // <derived-code>
+
+        // Adjust opposite properties
+        if (outgoing) {
+            outgoing->setSource(0);
+        }
     }
 }
 

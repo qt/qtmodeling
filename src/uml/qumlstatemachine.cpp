@@ -78,6 +78,14 @@ void QUmlStateMachine::addConnectionPoint(QUmlPseudostate *connectionPoint)
 
     if (!_connectionPoint.contains(connectionPoint)) {
         _connectionPoint.insert(connectionPoint);
+
+        // Adjust subsetted properties
+        addOwnedMember(connectionPoint);
+
+        // Adjust opposite properties
+        if (connectionPoint) {
+            connectionPoint->setStateMachine(this);
+        }
     }
 }
 
@@ -87,6 +95,14 @@ void QUmlStateMachine::removeConnectionPoint(QUmlPseudostate *connectionPoint)
 
     if (_connectionPoint.contains(connectionPoint)) {
         _connectionPoint.remove(connectionPoint);
+
+        // Adjust subsetted properties
+        removeOwnedMember(connectionPoint);
+
+        // Adjust opposite properties
+        if (connectionPoint) {
+            connectionPoint->setStateMachine(0);
+        }
     }
 }
 
@@ -134,6 +150,14 @@ void QUmlStateMachine::addRegion(QUmlRegion *region)
 
     if (!_region.contains(region)) {
         _region.insert(region);
+
+        // Adjust subsetted properties
+        addOwnedMember(region);
+
+        // Adjust opposite properties
+        if (region) {
+            region->setStateMachine(this);
+        }
     }
 }
 
@@ -143,6 +167,14 @@ void QUmlStateMachine::removeRegion(QUmlRegion *region)
 
     if (_region.contains(region)) {
         _region.remove(region);
+
+        // Adjust subsetted properties
+        removeOwnedMember(region);
+
+        // Adjust opposite properties
+        if (region) {
+            region->setStateMachine(0);
+        }
     }
 }
 
@@ -162,6 +194,11 @@ void QUmlStateMachine::addSubmachineState(QUmlState *submachineState)
 
     if (!_submachineState.contains(submachineState)) {
         _submachineState.insert(submachineState);
+
+        // Adjust opposite properties
+        if (submachineState) {
+            submachineState->setSubmachine(this);
+        }
     }
 }
 
@@ -171,6 +208,11 @@ void QUmlStateMachine::removeSubmachineState(QUmlState *submachineState)
 
     if (_submachineState.contains(submachineState)) {
         _submachineState.remove(submachineState);
+
+        // Adjust opposite properties
+        if (submachineState) {
+            submachineState->setSubmachine(0);
+        }
     }
 }
 

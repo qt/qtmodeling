@@ -273,6 +273,9 @@ void QUmlTransition::addTrigger(QUmlTrigger *trigger)
 
     if (!_trigger.contains(trigger)) {
         _trigger.insert(trigger);
+
+        // Adjust subsetted properties
+        addOwnedElement(trigger);
     }
 }
 
@@ -282,6 +285,9 @@ void QUmlTransition::removeTrigger(QUmlTrigger *trigger)
 
     if (_trigger.contains(trigger)) {
         _trigger.remove(trigger);
+
+        // Adjust subsetted properties
+        removeOwnedElement(trigger);
     }
 }
 

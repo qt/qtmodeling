@@ -104,6 +104,14 @@ void QUmlTemplateableElement::addTemplateBinding(QUmlTemplateBinding *templateBi
 
     if (!_templateBinding.contains(templateBinding)) {
         _templateBinding.insert(templateBinding);
+
+        // Adjust subsetted properties
+        addOwnedElement(templateBinding);
+
+        // Adjust opposite properties
+        if (templateBinding) {
+            templateBinding->setBoundElement(this);
+        }
     }
 }
 
@@ -113,6 +121,14 @@ void QUmlTemplateableElement::removeTemplateBinding(QUmlTemplateBinding *templat
 
     if (_templateBinding.contains(templateBinding)) {
         _templateBinding.remove(templateBinding);
+
+        // Adjust subsetted properties
+        removeOwnedElement(templateBinding);
+
+        // Adjust opposite properties
+        if (templateBinding) {
+            templateBinding->setBoundElement(0);
+        }
     }
 }
 

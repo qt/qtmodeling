@@ -191,6 +191,9 @@ void QUmlPort::addRedefinedPort(QUmlPort *redefinedPort)
 
     if (!_redefinedPort.contains(redefinedPort)) {
         _redefinedPort.insert(redefinedPort);
+
+        // Adjust subsetted properties
+        addRedefinedProperty(redefinedPort);
     }
 }
 
@@ -200,6 +203,9 @@ void QUmlPort::removeRedefinedPort(QUmlPort *redefinedPort)
 
     if (_redefinedPort.contains(redefinedPort)) {
         _redefinedPort.remove(redefinedPort);
+
+        // Adjust subsetted properties
+        removeRedefinedProperty(redefinedPort);
     }
 }
 

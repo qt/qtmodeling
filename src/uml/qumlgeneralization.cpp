@@ -105,6 +105,11 @@ void QUmlGeneralization::addGeneralizationSet(QUmlGeneralizationSet *generalizat
 
     if (!_generalizationSet.contains(generalizationSet)) {
         _generalizationSet.insert(generalizationSet);
+
+        // Adjust opposite properties
+        if (generalizationSet) {
+            generalizationSet->addGeneralization(this);
+        }
     }
 }
 
@@ -114,6 +119,11 @@ void QUmlGeneralization::removeGeneralizationSet(QUmlGeneralizationSet *generali
 
     if (_generalizationSet.contains(generalizationSet)) {
         _generalizationSet.remove(generalizationSet);
+
+        // Adjust opposite properties
+        if (generalizationSet) {
+            generalizationSet->removeGeneralization(this);
+        }
     }
 }
 

@@ -75,6 +75,11 @@ void QUmlInterruptibleActivityRegion::addInterruptingEdge(QUmlActivityEdge *inte
 
     if (!_interruptingEdge.contains(interruptingEdge)) {
         _interruptingEdge.insert(interruptingEdge);
+
+        // Adjust opposite properties
+        if (interruptingEdge) {
+            interruptingEdge->setInterrupts(this);
+        }
     }
 }
 
@@ -84,6 +89,11 @@ void QUmlInterruptibleActivityRegion::removeInterruptingEdge(QUmlActivityEdge *i
 
     if (_interruptingEdge.contains(interruptingEdge)) {
         _interruptingEdge.remove(interruptingEdge);
+
+        // Adjust opposite properties
+        if (interruptingEdge) {
+            interruptingEdge->setInterrupts(0);
+        }
     }
 }
 
@@ -103,6 +113,14 @@ void QUmlInterruptibleActivityRegion::addNode(QUmlActivityNode *node)
 
     if (!_node.contains(node)) {
         _node.insert(node);
+
+        // Adjust subsetted properties
+        addContainedNode(node);
+
+        // Adjust opposite properties
+        if (node) {
+            node->addInInterruptibleRegion(this);
+        }
     }
 }
 
@@ -112,6 +130,14 @@ void QUmlInterruptibleActivityRegion::removeNode(QUmlActivityNode *node)
 
     if (_node.contains(node)) {
         _node.remove(node);
+
+        // Adjust subsetted properties
+        removeContainedNode(node);
+
+        // Adjust opposite properties
+        if (node) {
+            node->removeInInterruptibleRegion(this);
+        }
     }
 }
 

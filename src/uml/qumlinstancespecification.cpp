@@ -105,6 +105,14 @@ void QUmlInstanceSpecification::addSlot(QUmlSlot *slot_)
 
     if (!_slot_.contains(slot_)) {
         _slot_.insert(slot_);
+
+        // Adjust subsetted properties
+        addOwnedElement(slot_);
+
+        // Adjust opposite properties
+        if (slot_) {
+            slot_->setOwningInstance(this);
+        }
     }
 }
 
@@ -114,6 +122,14 @@ void QUmlInstanceSpecification::removeSlot(QUmlSlot *slot_)
 
     if (_slot_.contains(slot_)) {
         _slot_.remove(slot_);
+
+        // Adjust subsetted properties
+        removeOwnedElement(slot_);
+
+        // Adjust opposite properties
+        if (slot_) {
+            slot_->setOwningInstance(0);
+        }
     }
 }
 

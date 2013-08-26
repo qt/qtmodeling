@@ -75,6 +75,9 @@ void QUmlParameterSet::addCondition(QUmlConstraint *condition)
 
     if (!_condition.contains(condition)) {
         _condition.insert(condition);
+
+        // Adjust subsetted properties
+        addOwnedElement(condition);
     }
 }
 
@@ -84,6 +87,9 @@ void QUmlParameterSet::removeCondition(QUmlConstraint *condition)
 
     if (_condition.contains(condition)) {
         _condition.remove(condition);
+
+        // Adjust subsetted properties
+        removeOwnedElement(condition);
     }
 }
 
@@ -103,6 +109,11 @@ void QUmlParameterSet::addParameter(QUmlParameter *parameter)
 
     if (!_parameter.contains(parameter)) {
         _parameter.insert(parameter);
+
+        // Adjust opposite properties
+        if (parameter) {
+            parameter->addParameterSet(this);
+        }
     }
 }
 
@@ -112,6 +123,11 @@ void QUmlParameterSet::removeParameter(QUmlParameter *parameter)
 
     if (_parameter.contains(parameter)) {
         _parameter.remove(parameter);
+
+        // Adjust opposite properties
+        if (parameter) {
+            parameter->removeParameterSet(this);
+        }
     }
 }
 

@@ -81,6 +81,11 @@ void QUmlConnectableElement::addEnd(QUmlConnectorEnd *end)
 
     if (false /* <derivedexclusion-criteria> */) {
         // <derived-code>
+
+        // Adjust opposite properties
+        if (end) {
+            end->setRole(this);
+        }
     }
 }
 
@@ -93,6 +98,11 @@ void QUmlConnectableElement::removeEnd(QUmlConnectorEnd *end)
 
     if (false /* <derivedexclusion-criteria> */) {
         // <derived-code>
+
+        // Adjust opposite properties
+        if (end) {
+            end->setRole(0);
+        }
     }
 }
 

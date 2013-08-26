@@ -97,6 +97,9 @@ void QUmlComponent::addPackagedElement(QUmlPackageableElement *packagedElement)
 
     if (!_packagedElement.contains(packagedElement)) {
         _packagedElement.insert(packagedElement);
+
+        // Adjust subsetted properties
+        addOwnedMember(packagedElement);
     }
 }
 
@@ -106,6 +109,9 @@ void QUmlComponent::removePackagedElement(QUmlPackageableElement *packagedElemen
 
     if (_packagedElement.contains(packagedElement)) {
         _packagedElement.remove(packagedElement);
+
+        // Adjust subsetted properties
+        removeOwnedMember(packagedElement);
     }
 }
 
@@ -161,6 +167,14 @@ void QUmlComponent::addRealization(QUmlComponentRealization *realization)
 
     if (!_realization.contains(realization)) {
         _realization.insert(realization);
+
+        // Adjust subsetted properties
+        addOwnedElement(realization);
+
+        // Adjust opposite properties
+        if (realization) {
+            realization->setAbstraction(this);
+        }
     }
 }
 
@@ -170,6 +184,14 @@ void QUmlComponent::removeRealization(QUmlComponentRealization *realization)
 
     if (_realization.contains(realization)) {
         _realization.remove(realization);
+
+        // Adjust subsetted properties
+        removeOwnedElement(realization);
+
+        // Adjust opposite properties
+        if (realization) {
+            realization->setAbstraction(0);
+        }
     }
 }
 

@@ -81,6 +81,14 @@ void QUmlActivity::addEdge(QUmlActivityEdge *edge)
 
     if (!_edge.contains(edge)) {
         _edge.insert(edge);
+
+        // Adjust subsetted properties
+        addOwnedElement(edge);
+
+        // Adjust opposite properties
+        if (edge) {
+            edge->setActivity(this);
+        }
     }
 }
 
@@ -90,6 +98,14 @@ void QUmlActivity::removeEdge(QUmlActivityEdge *edge)
 
     if (_edge.contains(edge)) {
         _edge.remove(edge);
+
+        // Adjust subsetted properties
+        removeOwnedElement(edge);
+
+        // Adjust opposite properties
+        if (edge) {
+            edge->setActivity(0);
+        }
     }
 }
 
@@ -109,6 +125,14 @@ void QUmlActivity::addGroup(QUmlActivityGroup *group)
 
     if (!_group.contains(group)) {
         _group.insert(group);
+
+        // Adjust subsetted properties
+        addOwnedElement(group);
+
+        // Adjust opposite properties
+        if (group) {
+            group->setInActivity(this);
+        }
     }
 }
 
@@ -118,6 +142,14 @@ void QUmlActivity::removeGroup(QUmlActivityGroup *group)
 
     if (_group.contains(group)) {
         _group.remove(group);
+
+        // Adjust subsetted properties
+        removeOwnedElement(group);
+
+        // Adjust opposite properties
+        if (group) {
+            group->setInActivity(0);
+        }
     }
 }
 
@@ -175,6 +207,14 @@ void QUmlActivity::addNode(QUmlActivityNode *node)
 
     if (!_node.contains(node)) {
         _node.insert(node);
+
+        // Adjust subsetted properties
+        addOwnedElement(node);
+
+        // Adjust opposite properties
+        if (node) {
+            node->setActivity(this);
+        }
     }
 }
 
@@ -184,6 +224,14 @@ void QUmlActivity::removeNode(QUmlActivityNode *node)
 
     if (_node.contains(node)) {
         _node.remove(node);
+
+        // Adjust subsetted properties
+        removeOwnedElement(node);
+
+        // Adjust opposite properties
+        if (node) {
+            node->setActivity(0);
+        }
     }
 }
 
@@ -203,6 +251,9 @@ void QUmlActivity::addPartition(QUmlActivityPartition *partition)
 
     if (!_partition.contains(partition)) {
         _partition.insert(partition);
+
+        // Adjust subsetted properties
+        addGroup(partition);
     }
 }
 
@@ -212,6 +263,9 @@ void QUmlActivity::removePartition(QUmlActivityPartition *partition)
 
     if (_partition.contains(partition)) {
         _partition.remove(partition);
+
+        // Adjust subsetted properties
+        removeGroup(partition);
     }
 }
 
@@ -231,6 +285,15 @@ void QUmlActivity::addStructuredNode(QUmlStructuredActivityNode *structuredNode)
 
     if (!_structuredNode.contains(structuredNode)) {
         _structuredNode.insert(structuredNode);
+
+        // Adjust subsetted properties
+        addGroup(structuredNode);
+        addNode(structuredNode);
+
+        // Adjust opposite properties
+        if (structuredNode) {
+            structuredNode->setActivity(this);
+        }
     }
 }
 
@@ -240,6 +303,15 @@ void QUmlActivity::removeStructuredNode(QUmlStructuredActivityNode *structuredNo
 
     if (_structuredNode.contains(structuredNode)) {
         _structuredNode.remove(structuredNode);
+
+        // Adjust subsetted properties
+        removeGroup(structuredNode);
+        removeNode(structuredNode);
+
+        // Adjust opposite properties
+        if (structuredNode) {
+            structuredNode->setActivity(0);
+        }
     }
 }
 
@@ -259,6 +331,14 @@ void QUmlActivity::addVariable(QUmlVariable *variable)
 
     if (!_variable.contains(variable)) {
         _variable.insert(variable);
+
+        // Adjust subsetted properties
+        addOwnedMember(variable);
+
+        // Adjust opposite properties
+        if (variable) {
+            variable->setActivityScope(this);
+        }
     }
 }
 
@@ -268,6 +348,14 @@ void QUmlActivity::removeVariable(QUmlVariable *variable)
 
     if (_variable.contains(variable)) {
         _variable.remove(variable);
+
+        // Adjust subsetted properties
+        removeOwnedMember(variable);
+
+        // Adjust opposite properties
+        if (variable) {
+            variable->setActivityScope(0);
+        }
     }
 }
 

@@ -111,6 +111,15 @@ void QUmlDeploymentTarget::addDeployment(QUmlDeployment *deployment)
 
     if (!_deployment.contains(deployment)) {
         _deployment.insert(deployment);
+
+        // Adjust subsetted properties
+        addOwnedElement(deployment);
+        addClientDependency(deployment);
+
+        // Adjust opposite properties
+        if (deployment) {
+            deployment->setLocation(this);
+        }
     }
 }
 
@@ -120,6 +129,15 @@ void QUmlDeploymentTarget::removeDeployment(QUmlDeployment *deployment)
 
     if (_deployment.contains(deployment)) {
         _deployment.remove(deployment);
+
+        // Adjust subsetted properties
+        removeOwnedElement(deployment);
+        removeClientDependency(deployment);
+
+        // Adjust opposite properties
+        if (deployment) {
+            deployment->setLocation(0);
+        }
     }
 }
 

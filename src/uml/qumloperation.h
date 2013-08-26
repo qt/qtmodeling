@@ -58,6 +58,7 @@ class QUmlConstraint;
 class QUmlDataType;
 class QUmlInterface;
 class QUmlOperationTemplateParameter;
+class QUmlParameter;
 class QUmlRedefinableElement;
 class QUmlType;
 

@@ -107,6 +107,9 @@ void QUmlInformationFlow::addInformationSource(QUmlNamedElement *informationSour
 
     if (!_informationSource.contains(informationSource)) {
         _informationSource.insert(informationSource);
+
+        // Adjust subsetted properties
+        addSource(informationSource);
     }
 }
 
@@ -116,6 +119,9 @@ void QUmlInformationFlow::removeInformationSource(QUmlNamedElement *informationS
 
     if (_informationSource.contains(informationSource)) {
         _informationSource.remove(informationSource);
+
+        // Adjust subsetted properties
+        removeSource(informationSource);
     }
 }
 
@@ -135,6 +141,9 @@ void QUmlInformationFlow::addInformationTarget(QUmlNamedElement *informationTarg
 
     if (!_informationTarget.contains(informationTarget)) {
         _informationTarget.insert(informationTarget);
+
+        // Adjust subsetted properties
+        addTarget(informationTarget);
     }
 }
 
@@ -144,6 +153,9 @@ void QUmlInformationFlow::removeInformationTarget(QUmlNamedElement *informationT
 
     if (_informationTarget.contains(informationTarget)) {
         _informationTarget.remove(informationTarget);
+
+        // Adjust subsetted properties
+        removeTarget(informationTarget);
     }
 }
 

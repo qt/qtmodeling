@@ -79,6 +79,9 @@ void QUmlEncapsulatedClassifier::addOwnedPort(QUmlPort *ownedPort)
 
     if (false /* <derivedexclusion-criteria> */) {
         // <derived-code>
+
+        // Adjust subsetted properties
+        addOwnedAttribute(ownedPort);
     }
 }
 
@@ -91,6 +94,9 @@ void QUmlEncapsulatedClassifier::removeOwnedPort(QUmlPort *ownedPort)
 
     if (false /* <derivedexclusion-criteria> */) {
         // <derived-code>
+
+        // Adjust subsetted properties
+        removeOwnedAttribute(ownedPort);
     }
 }
 

@@ -77,6 +77,14 @@ void QUmlUseCase::addExtend(QUmlExtend *extend)
 
     if (!_extend.contains(extend)) {
         _extend.insert(extend);
+
+        // Adjust subsetted properties
+        addOwnedMember(extend);
+
+        // Adjust opposite properties
+        if (extend) {
+            extend->setExtension(this);
+        }
     }
 }
 
@@ -86,6 +94,14 @@ void QUmlUseCase::removeExtend(QUmlExtend *extend)
 
     if (_extend.contains(extend)) {
         _extend.remove(extend);
+
+        // Adjust subsetted properties
+        removeOwnedMember(extend);
+
+        // Adjust opposite properties
+        if (extend) {
+            extend->setExtension(0);
+        }
     }
 }
 
@@ -105,6 +121,14 @@ void QUmlUseCase::addExtensionPoint(QUmlExtensionPoint *extensionPoint)
 
     if (!_extensionPoint.contains(extensionPoint)) {
         _extensionPoint.insert(extensionPoint);
+
+        // Adjust subsetted properties
+        addOwnedMember(extensionPoint);
+
+        // Adjust opposite properties
+        if (extensionPoint) {
+            extensionPoint->setUseCase(this);
+        }
     }
 }
 
@@ -114,6 +138,14 @@ void QUmlUseCase::removeExtensionPoint(QUmlExtensionPoint *extensionPoint)
 
     if (_extensionPoint.contains(extensionPoint)) {
         _extensionPoint.remove(extensionPoint);
+
+        // Adjust subsetted properties
+        removeOwnedMember(extensionPoint);
+
+        // Adjust opposite properties
+        if (extensionPoint) {
+            extensionPoint->setUseCase(0);
+        }
     }
 }
 
@@ -133,6 +165,14 @@ void QUmlUseCase::addInclude(QUmlInclude *include)
 
     if (!_include.contains(include)) {
         _include.insert(include);
+
+        // Adjust subsetted properties
+        addOwnedMember(include);
+
+        // Adjust opposite properties
+        if (include) {
+            include->setIncludingCase(this);
+        }
     }
 }
 
@@ -142,6 +182,14 @@ void QUmlUseCase::removeInclude(QUmlInclude *include)
 
     if (_include.contains(include)) {
         _include.remove(include);
+
+        // Adjust subsetted properties
+        removeOwnedMember(include);
+
+        // Adjust opposite properties
+        if (include) {
+            include->setIncludingCase(0);
+        }
     }
 }
 
@@ -161,6 +209,11 @@ void QUmlUseCase::addSubject(QUmlClassifier *subject)
 
     if (!_subject.contains(subject)) {
         _subject.insert(subject);
+
+        // Adjust opposite properties
+        if (subject) {
+            subject->addUseCase(this);
+        }
     }
 }
 
@@ -170,6 +223,11 @@ void QUmlUseCase::removeSubject(QUmlClassifier *subject)
 
     if (_subject.contains(subject)) {
         _subject.remove(subject);
+
+        // Adjust opposite properties
+        if (subject) {
+            subject->removeUseCase(this);
+        }
     }
 }
 

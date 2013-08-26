@@ -74,6 +74,14 @@ void QUmlDependency::addClient(QUmlNamedElement *client)
 
     if (!_client.contains(client)) {
         _client.insert(client);
+
+        // Adjust subsetted properties
+        addSource(client);
+
+        // Adjust opposite properties
+        if (client) {
+            client->addClientDependency(this);
+        }
     }
 }
 
@@ -83,6 +91,14 @@ void QUmlDependency::removeClient(QUmlNamedElement *client)
 
     if (_client.contains(client)) {
         _client.remove(client);
+
+        // Adjust subsetted properties
+        removeSource(client);
+
+        // Adjust opposite properties
+        if (client) {
+            client->removeClientDependency(this);
+        }
     }
 }
 
@@ -102,6 +118,9 @@ void QUmlDependency::addSupplier(QUmlNamedElement *supplier)
 
     if (!_supplier.contains(supplier)) {
         _supplier.insert(supplier);
+
+        // Adjust subsetted properties
+        addTarget(supplier);
     }
 }
 
@@ -111,6 +130,9 @@ void QUmlDependency::removeSupplier(QUmlNamedElement *supplier)
 
     if (_supplier.contains(supplier)) {
         _supplier.remove(supplier);
+
+        // Adjust subsetted properties
+        removeTarget(supplier);
     }
 }
 

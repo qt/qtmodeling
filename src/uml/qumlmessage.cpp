@@ -83,6 +83,9 @@ void QUmlMessage::addArgument(QUmlValueSpecification *argument)
 
     if (!_argument.contains(argument)) {
         _argument.append(argument);
+
+        // Adjust subsetted properties
+        addOwnedElement(argument);
     }
 }
 
@@ -92,6 +95,9 @@ void QUmlMessage::removeArgument(QUmlValueSpecification *argument)
 
     if (_argument.contains(argument)) {
         _argument.removeAll(argument);
+
+        // Adjust subsetted properties
+        removeOwnedElement(argument);
     }
 }
 

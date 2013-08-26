@@ -77,6 +77,9 @@ void QUmlConditionalNode::addClause(QUmlClause *clause)
 
     if (!_clause.contains(clause)) {
         _clause.insert(clause);
+
+        // Adjust subsetted properties
+        addOwnedElement(clause);
     }
 }
 
@@ -86,6 +89,9 @@ void QUmlConditionalNode::removeClause(QUmlClause *clause)
 
     if (_clause.contains(clause)) {
         _clause.remove(clause);
+
+        // Adjust subsetted properties
+        removeOwnedElement(clause);
     }
 }
 

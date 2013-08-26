@@ -87,6 +87,14 @@ void QUmlState::addConnection(QUmlConnectionPointReference *connection)
 
     if (!_connection.contains(connection)) {
         _connection.insert(connection);
+
+        // Adjust subsetted properties
+        addOwnedMember(connection);
+
+        // Adjust opposite properties
+        if (connection) {
+            connection->setState(this);
+        }
     }
 }
 
@@ -96,6 +104,14 @@ void QUmlState::removeConnection(QUmlConnectionPointReference *connection)
 
     if (_connection.contains(connection)) {
         _connection.remove(connection);
+
+        // Adjust subsetted properties
+        removeOwnedMember(connection);
+
+        // Adjust opposite properties
+        if (connection) {
+            connection->setState(0);
+        }
     }
 }
 
@@ -115,6 +131,14 @@ void QUmlState::addConnectionPoint(QUmlPseudostate *connectionPoint)
 
     if (!_connectionPoint.contains(connectionPoint)) {
         _connectionPoint.insert(connectionPoint);
+
+        // Adjust subsetted properties
+        addOwnedMember(connectionPoint);
+
+        // Adjust opposite properties
+        if (connectionPoint) {
+            connectionPoint->setState(this);
+        }
     }
 }
 
@@ -124,6 +148,14 @@ void QUmlState::removeConnectionPoint(QUmlPseudostate *connectionPoint)
 
     if (_connectionPoint.contains(connectionPoint)) {
         _connectionPoint.remove(connectionPoint);
+
+        // Adjust subsetted properties
+        removeOwnedMember(connectionPoint);
+
+        // Adjust opposite properties
+        if (connectionPoint) {
+            connectionPoint->setState(0);
+        }
     }
 }
 
@@ -143,6 +175,9 @@ void QUmlState::addDeferrableTrigger(QUmlTrigger *deferrableTrigger)
 
     if (!_deferrableTrigger.contains(deferrableTrigger)) {
         _deferrableTrigger.insert(deferrableTrigger);
+
+        // Adjust subsetted properties
+        addOwnedElement(deferrableTrigger);
     }
 }
 
@@ -152,6 +187,9 @@ void QUmlState::removeDeferrableTrigger(QUmlTrigger *deferrableTrigger)
 
     if (_deferrableTrigger.contains(deferrableTrigger)) {
         _deferrableTrigger.remove(deferrableTrigger);
+
+        // Adjust subsetted properties
+        removeOwnedElement(deferrableTrigger);
     }
 }
 
@@ -399,6 +437,14 @@ void QUmlState::addRegion(QUmlRegion *region)
 
     if (!_region.contains(region)) {
         _region.insert(region);
+
+        // Adjust subsetted properties
+        addOwnedMember(region);
+
+        // Adjust opposite properties
+        if (region) {
+            region->setState(this);
+        }
     }
 }
 
@@ -408,6 +454,14 @@ void QUmlState::removeRegion(QUmlRegion *region)
 
     if (_region.contains(region)) {
         _region.remove(region);
+
+        // Adjust subsetted properties
+        removeOwnedMember(region);
+
+        // Adjust opposite properties
+        if (region) {
+            region->setState(0);
+        }
     }
 }
 

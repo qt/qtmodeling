@@ -77,6 +77,14 @@ void QUmlNamespace::addElementImport(QUmlElementImport *elementImport)
 
     if (!_elementImport.contains(elementImport)) {
         _elementImport.insert(elementImport);
+
+        // Adjust subsetted properties
+        addOwnedElement(elementImport);
+
+        // Adjust opposite properties
+        if (elementImport) {
+            elementImport->setImportingNamespace(this);
+        }
     }
 }
 
@@ -86,6 +94,14 @@ void QUmlNamespace::removeElementImport(QUmlElementImport *elementImport)
 
     if (_elementImport.contains(elementImport)) {
         _elementImport.remove(elementImport);
+
+        // Adjust subsetted properties
+        removeOwnedElement(elementImport);
+
+        // Adjust opposite properties
+        if (elementImport) {
+            elementImport->setImportingNamespace(0);
+        }
     }
 }
 
@@ -110,6 +126,9 @@ void QUmlNamespace::addImportedMember(QUmlPackageableElement *importedMember)
 
     if (false /* <derivedexclusion-criteria> */) {
         // <derived-code>
+
+        // Adjust subsetted properties
+        addMember(importedMember);
     }
 }
 
@@ -122,6 +141,9 @@ void QUmlNamespace::removeImportedMember(QUmlPackageableElement *importedMember)
 
     if (false /* <derivedexclusion-criteria> */) {
         // <derived-code>
+
+        // Adjust subsetted properties
+        removeMember(importedMember);
     }
 }
 
@@ -169,6 +191,15 @@ void QUmlNamespace::addOwnedMember(QUmlNamedElement *ownedMember)
 
     if (!_ownedMember.contains(ownedMember)) {
         _ownedMember.insert(ownedMember);
+
+        // Adjust subsetted properties
+        addMember(ownedMember);
+        addOwnedElement(ownedMember);
+
+        // Adjust opposite properties
+        if (ownedMember) {
+            ownedMember->setNamespace(this);
+        }
     }
 }
 
@@ -178,6 +209,15 @@ void QUmlNamespace::removeOwnedMember(QUmlNamedElement *ownedMember)
 
     if (_ownedMember.contains(ownedMember)) {
         _ownedMember.remove(ownedMember);
+
+        // Adjust subsetted properties
+        removeMember(ownedMember);
+        removeOwnedElement(ownedMember);
+
+        // Adjust opposite properties
+        if (ownedMember) {
+            ownedMember->setNamespace(0);
+        }
     }
 }
 
@@ -197,6 +237,14 @@ void QUmlNamespace::addOwnedRule(QUmlConstraint *ownedRule)
 
     if (!_ownedRule.contains(ownedRule)) {
         _ownedRule.insert(ownedRule);
+
+        // Adjust subsetted properties
+        addOwnedMember(ownedRule);
+
+        // Adjust opposite properties
+        if (ownedRule) {
+            ownedRule->setContext(this);
+        }
     }
 }
 
@@ -206,6 +254,14 @@ void QUmlNamespace::removeOwnedRule(QUmlConstraint *ownedRule)
 
     if (_ownedRule.contains(ownedRule)) {
         _ownedRule.remove(ownedRule);
+
+        // Adjust subsetted properties
+        removeOwnedMember(ownedRule);
+
+        // Adjust opposite properties
+        if (ownedRule) {
+            ownedRule->setContext(0);
+        }
     }
 }
 
@@ -225,6 +281,14 @@ void QUmlNamespace::addPackageImport(QUmlPackageImport *packageImport)
 
     if (!_packageImport.contains(packageImport)) {
         _packageImport.insert(packageImport);
+
+        // Adjust subsetted properties
+        addOwnedElement(packageImport);
+
+        // Adjust opposite properties
+        if (packageImport) {
+            packageImport->setImportingNamespace(this);
+        }
     }
 }
 
@@ -234,6 +298,14 @@ void QUmlNamespace::removePackageImport(QUmlPackageImport *packageImport)
 
     if (_packageImport.contains(packageImport)) {
         _packageImport.remove(packageImport);
+
+        // Adjust subsetted properties
+        removeOwnedElement(packageImport);
+
+        // Adjust opposite properties
+        if (packageImport) {
+            packageImport->setImportingNamespace(0);
+        }
     }
 }
 

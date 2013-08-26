@@ -180,6 +180,14 @@ void QUmlRegion::addSubvertex(QUmlVertex *subvertex)
 
     if (!_subvertex.contains(subvertex)) {
         _subvertex.insert(subvertex);
+
+        // Adjust subsetted properties
+        addOwnedMember(subvertex);
+
+        // Adjust opposite properties
+        if (subvertex) {
+            subvertex->setContainer(this);
+        }
     }
 }
 
@@ -189,6 +197,14 @@ void QUmlRegion::removeSubvertex(QUmlVertex *subvertex)
 
     if (_subvertex.contains(subvertex)) {
         _subvertex.remove(subvertex);
+
+        // Adjust subsetted properties
+        removeOwnedMember(subvertex);
+
+        // Adjust opposite properties
+        if (subvertex) {
+            subvertex->setContainer(0);
+        }
     }
 }
 
@@ -208,6 +224,14 @@ void QUmlRegion::addTransition(QUmlTransition *transition)
 
     if (!_transition.contains(transition)) {
         _transition.insert(transition);
+
+        // Adjust subsetted properties
+        addOwnedMember(transition);
+
+        // Adjust opposite properties
+        if (transition) {
+            transition->setContainer(this);
+        }
     }
 }
 
@@ -217,6 +241,14 @@ void QUmlRegion::removeTransition(QUmlTransition *transition)
 
     if (_transition.contains(transition)) {
         _transition.remove(transition);
+
+        // Adjust subsetted properties
+        removeOwnedMember(transition);
+
+        // Adjust opposite properties
+        if (transition) {
+            transition->setContainer(0);
+        }
     }
 }
 

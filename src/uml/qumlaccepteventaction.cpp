@@ -95,6 +95,9 @@ void QUmlAcceptEventAction::addResult(QUmlOutputPin *result)
 
     if (!_result.contains(result)) {
         _result.insert(result);
+
+        // Adjust subsetted properties
+        addOutput(result);
     }
 }
 
@@ -104,6 +107,9 @@ void QUmlAcceptEventAction::removeResult(QUmlOutputPin *result)
 
     if (_result.contains(result)) {
         _result.remove(result);
+
+        // Adjust subsetted properties
+        removeOutput(result);
     }
 }
 
@@ -123,6 +129,9 @@ void QUmlAcceptEventAction::addTrigger(QUmlTrigger *trigger)
 
     if (!_trigger.contains(trigger)) {
         _trigger.insert(trigger);
+
+        // Adjust subsetted properties
+        addOwnedElement(trigger);
     }
 }
 
@@ -132,6 +141,9 @@ void QUmlAcceptEventAction::removeTrigger(QUmlTrigger *trigger)
 
     if (_trigger.contains(trigger)) {
         _trigger.remove(trigger);
+
+        // Adjust subsetted properties
+        removeOwnedElement(trigger);
     }
 }
 

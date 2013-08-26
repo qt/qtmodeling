@@ -75,6 +75,11 @@ void QUmlExpansionRegion::addInputElement(QUmlExpansionNode *inputElement)
 
     if (!_inputElement.contains(inputElement)) {
         _inputElement.insert(inputElement);
+
+        // Adjust opposite properties
+        if (inputElement) {
+            inputElement->setRegionAsInput(this);
+        }
     }
 }
 
@@ -84,6 +89,11 @@ void QUmlExpansionRegion::removeInputElement(QUmlExpansionNode *inputElement)
 
     if (_inputElement.contains(inputElement)) {
         _inputElement.remove(inputElement);
+
+        // Adjust opposite properties
+        if (inputElement) {
+            inputElement->setRegionAsInput(0);
+        }
     }
 }
 
@@ -122,6 +132,11 @@ void QUmlExpansionRegion::addOutputElement(QUmlExpansionNode *outputElement)
 
     if (!_outputElement.contains(outputElement)) {
         _outputElement.insert(outputElement);
+
+        // Adjust opposite properties
+        if (outputElement) {
+            outputElement->setRegionAsOutput(this);
+        }
     }
 }
 
@@ -131,6 +146,11 @@ void QUmlExpansionRegion::removeOutputElement(QUmlExpansionNode *outputElement)
 
     if (_outputElement.contains(outputElement)) {
         _outputElement.remove(outputElement);
+
+        // Adjust opposite properties
+        if (outputElement) {
+            outputElement->setRegionAsOutput(0);
+        }
     }
 }
 

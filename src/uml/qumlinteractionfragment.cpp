@@ -79,6 +79,11 @@ void QUmlInteractionFragment::addCovered(QUmlLifeline *covered)
 
     if (!_covered.contains(covered)) {
         _covered.insert(covered);
+
+        // Adjust opposite properties
+        if (covered) {
+            covered->addCoveredBy(this);
+        }
     }
 }
 
@@ -88,6 +93,11 @@ void QUmlInteractionFragment::removeCovered(QUmlLifeline *covered)
 
     if (_covered.contains(covered)) {
         _covered.remove(covered);
+
+        // Adjust opposite properties
+        if (covered) {
+            covered->removeCoveredBy(this);
+        }
     }
 }
 
@@ -155,6 +165,9 @@ void QUmlInteractionFragment::addGeneralOrdering(QUmlGeneralOrdering *generalOrd
 
     if (!_generalOrdering.contains(generalOrdering)) {
         _generalOrdering.insert(generalOrdering);
+
+        // Adjust subsetted properties
+        addOwnedElement(generalOrdering);
     }
 }
 
@@ -164,6 +177,9 @@ void QUmlInteractionFragment::removeGeneralOrdering(QUmlGeneralOrdering *general
 
     if (_generalOrdering.contains(generalOrdering)) {
         _generalOrdering.remove(generalOrdering);
+
+        // Adjust subsetted properties
+        removeOwnedElement(generalOrdering);
     }
 }
 

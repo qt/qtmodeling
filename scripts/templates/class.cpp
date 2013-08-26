@@ -49,7 +49,7 @@
 [%- FOREACH forward = class.findnodes("ownedAttribute[@type] | ownedOperation/ownedParameter[@type]") -%]
 [%- SET forwardName = forward.findvalue('@type') -%]
 [%- IF xmi.findnodes("//packagedElement[@xmi:type='uml:Enumeration' and @name='$forwardName']").findvalue("@name") == "" -%]
-[%- IF forwardName != className && superclasses.grep("^Q${namespace}${forwardName}$").size == 0 -%][%- forwards.push("Q${namespace}${forwardName}") -%][%- END -%]
+[%- IF forwardName != className && superclasses.grep("^Q${namespace}${forwardName}\$").size == 0 -%][%- forwards.push("Q${namespace}${forwardName}") -%][%- END -%]
 [%- END -%]
 [%- END -%]
 [%- FOREACH forward = forwards.unique.sort -%]
@@ -156,12 +156,48 @@ void Q${namespace}${className}::add${attributeName}(${QT_TYPE(namespace, attribu
 
     if (false /* <derivedexclusion-criteria> */) {
         // <derived-code>
-    }
     [%- ELSE %]
     if (!_${qtAttribute}.contains(${qtAttribute})) {
         _${qtAttribute}.[% IF QT_TYPE(namespace, attribute).match("QList") %]append[% ELSE %]insert[% END %](${qtAttribute});
-    }
     [%- END %]
+        [%- found = "false" -%]
+        [%- FOREACH subsettedPropertyName = attribute.findvalue("@subsettedProperty").split(" ") -%]
+            [%- SET subsettedProperty = xmi.findnodes("//packagedElement[@xmi:type=\"uml:Class\" and @name=\"${subsettedPropertyName.split('-').0}\"]/ownedAttribute[@name=\"${subsettedPropertyName.split('-').1}\"]") -%]
+            [%- IF subsettedProperty.findvalue("@name") != "" -%]
+                [%- IF found == "false" %]
+
+        // Adjust subsetted properties
+                    [%- found = "true" -%]
+                [%- END -%]
+                    [%- IF subsettedProperty.findvalue("upperValue/@value") == "*" %]
+        add${subsettedPropertyName.split('-').1.ucfirst}(${qtAttribute});
+                    [%- ELSE %]
+        set${subsettedPropertyName.split('-').1.ucfirst}(${qtAttribute});
+                    [%- END -%]
+            [%- END %]
+        [%- END %]
+        [%- IF association != "" -%]
+        [%- found = "false" -%]
+        [%- FOREACH memberEnd = xmi.findvalue("//packagedElement[@xmi:type=\"uml:Association\" and @name=\"${association}\"]/@memberEnd").split(' ') -%]
+            [%- NEXT IF memberEnd.split('-').0 == className -%]
+            [%- SET oppositeProperty = xmi.findnodes("//packagedElement[@xmi:type=\"uml:Class\" and @name=\"${memberEnd.split('-').0}\"]/ownedAttribute[@name=\"${memberEnd.split('-').1}\"]") -%]
+            [%- IF oppositeProperty.findvalue("@name") != "" -%]
+                [%- IF found == "false" %]
+
+        // Adjust opposite properties
+                    [%- found = "true" -%]
+                [%- END %]
+        if (${qtAttribute}) {
+                    [%- IF oppositeProperty.findvalue("upperValue/@value") == "*" %]
+            ${qtAttribute}->add${memberEnd.split('-').1.ucfirst}(this);
+                    [%- ELSE %]
+            ${qtAttribute}->set${memberEnd.split('-').1.ucfirst}(this);
+                    [%- END %]
+        }
+            [%- END %]
+        [%- END %]
+        [%- END %]
+    }
 }
 
 void Q${namespace}${className}::remove${attributeName}(${QT_TYPE(namespace, attribute).remove("QSet<").remove("QList<").replace("> ", " ").replace('\* $', '*')}${qtAttribute})
@@ -174,12 +210,48 @@ void Q${namespace}${className}::remove${attributeName}(${QT_TYPE(namespace, attr
 
     if (false /* <derivedexclusion-criteria> */) {
         // <derived-code>
-    }
     [%- ELSE %]
     if (_${qtAttribute}.contains(${qtAttribute})) {
         _${qtAttribute}.[% IF QT_TYPE(namespace, attribute).match("QList") %]removeAll[% ELSE %]remove[% END %](${qtAttribute});
-    }
     [%- END %]
+        [%- found = "false" -%]
+        [%- FOREACH subsettedPropertyName = attribute.findvalue("@subsettedProperty").split(" ") -%]
+            [%- SET subsettedProperty = xmi.findnodes("//packagedElement[@xmi:type=\"uml:Class\" and @name=\"${subsettedPropertyName.split('-').0}\"]/ownedAttribute[@name=\"${subsettedPropertyName.split('-').1}\"]") -%]
+            [%- IF subsettedProperty.findvalue("@name") != "" -%]
+                [%- IF found == "false" %]
+
+        // Adjust subsetted properties
+                    [%- found = "true" -%]
+                [%- END -%]
+                    [%- IF subsettedProperty.findvalue("upperValue/@value") == "*" %]
+        remove${subsettedPropertyName.split('-').1.ucfirst}(${qtAttribute});
+                    [%- ELSE %]
+        set${subsettedPropertyName.split('-').1.ucfirst}(${qtAttribute});
+                    [%- END -%]
+            [%- END %]
+        [%- END %]
+        [%- IF association != "" -%]
+        [%- found = "false" -%]
+        [%- FOREACH memberEnd = xmi.findvalue("//packagedElement[@xmi:type=\"uml:Association\" and @name=\"${association}\"]/@memberEnd").split(' ') -%]
+            [%- NEXT IF memberEnd.split('-').0 == className -%]
+            [%- SET oppositeProperty = xmi.findnodes("//packagedElement[@xmi:type=\"uml:Class\" and @name=\"${memberEnd.split('-').0}\"]/ownedAttribute[@name=\"${memberEnd.split('-').1}\"]") -%]
+            [%- IF oppositeProperty.findvalue("@name") != "" -%]
+                [%- IF found == "false" %]
+
+        // Adjust opposite properties
+                    [%- found = "true" -%]
+                [%- END %]
+        if (${qtAttribute}) {
+                    [%- IF oppositeProperty.findvalue("upperValue/@value") == "*" %]
+            ${qtAttribute}->remove${memberEnd.split('-').1.ucfirst}(this);
+                    [%- ELSE %]
+            ${qtAttribute}->set${memberEnd.split('-').1.ucfirst}(0);
+                    [%- END %]
+        }
+            [%- END %]
+        [%- END %]
+        [%- END %]
+    }
 }
         [%- ELSE %]
 
@@ -192,10 +264,9 @@ void Q${namespace}${className}::set${attributeName.remove("^Is")}(${QT_TYPE(name
     Q_UNUSED(${qtAttribute});
 
     if (false /* <derivedexclusion-criteria> */) {
-        // <derived-code>
-    }
     [%- ELSE %]
     if (_${qtAttribute} != ${qtAttribute}) {
+    [%- END %]
         [%- found = "false" -%]
         [%- FOREACH subsettedPropertyName = attribute.findvalue("@subsettedProperty").split(" ") -%]
             [%- SET subsettedProperty = xmi.findnodes("//packagedElement[@xmi:type=\"uml:Class\" and @name=\"${subsettedPropertyName.split('-').0}\"]/ownedAttribute[@name=\"${subsettedPropertyName.split('-').1}\"]") -%]
@@ -205,13 +276,17 @@ void Q${namespace}${className}::set${attributeName.remove("^Is")}(${QT_TYPE(name
                     [%- found = "true" -%]
                 [%- END -%]
                     [%- IF subsettedProperty.findvalue("upperValue/@value") == "*" %]
-        remove${subsettedPropertyName.split('-').1.ucfirst}(_${qtAttribute});
+        [% IF derived == "true" && (derivedUnion == "false" || derivedUnion == "") %]// [% END %]remove${subsettedPropertyName.split('-').1.ucfirst}([%- IF derived == "true" && (derivedUnion == "false" || derivedUnion == "") %]/* <derived-code> */[% ELSE %]_${qtAttribute}[% END %]);
                     [%- END -%]
             [%- END %]
         [%- END %]
 [%- IF found == "true" %]
 [% END %]
+        [%- IF derived == "true" && (derivedUnion == "false" || derivedUnion == "") %]
+        // <derived-code>
+        [%- ELSE %]
         _${qtAttribute} = ${qtAttribute};
+        [%- END %]
         [%- found = "false" -%]
         [%- FOREACH subsettedPropertyName = attribute.findvalue("@subsettedProperty").split(" ") -%]
             [%- SET subsettedProperty = xmi.findnodes("//packagedElement[@xmi:type=\"uml:Class\" and @name=\"${subsettedPropertyName.split('-').0}\"]/ownedAttribute[@name=\"${subsettedPropertyName.split('-').1}\"]") -%]
@@ -231,7 +306,6 @@ void Q${namespace}${className}::set${attributeName.remove("^Is")}(${QT_TYPE(name
             [%- END %]
         [%- END %]
     }
-        [%- END %]
 }
     [%- END %]
 [%- END %]

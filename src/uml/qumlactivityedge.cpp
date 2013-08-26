@@ -138,6 +138,11 @@ void QUmlActivityEdge::addInGroup(QUmlActivityGroup *inGroup)
 
     if (!_inGroup.contains(inGroup)) {
         _inGroup.insert(inGroup);
+
+        // Adjust opposite properties
+        if (inGroup) {
+            inGroup->addContainedEdge(this);
+        }
     }
 }
 
@@ -147,6 +152,11 @@ void QUmlActivityEdge::removeInGroup(QUmlActivityGroup *inGroup)
 
     if (_inGroup.contains(inGroup)) {
         _inGroup.remove(inGroup);
+
+        // Adjust opposite properties
+        if (inGroup) {
+            inGroup->removeContainedEdge(this);
+        }
     }
 }
 
@@ -166,6 +176,14 @@ void QUmlActivityEdge::addInPartition(QUmlActivityPartition *inPartition)
 
     if (!_inPartition.contains(inPartition)) {
         _inPartition.insert(inPartition);
+
+        // Adjust subsetted properties
+        addInGroup(inPartition);
+
+        // Adjust opposite properties
+        if (inPartition) {
+            inPartition->addEdge(this);
+        }
     }
 }
 
@@ -175,6 +193,14 @@ void QUmlActivityEdge::removeInPartition(QUmlActivityPartition *inPartition)
 
     if (_inPartition.contains(inPartition)) {
         _inPartition.remove(inPartition);
+
+        // Adjust subsetted properties
+        removeInGroup(inPartition);
+
+        // Adjust opposite properties
+        if (inPartition) {
+            inPartition->removeEdge(this);
+        }
     }
 }
 
@@ -241,6 +267,9 @@ void QUmlActivityEdge::addRedefinedEdge(QUmlActivityEdge *redefinedEdge)
 
     if (!_redefinedEdge.contains(redefinedEdge)) {
         _redefinedEdge.insert(redefinedEdge);
+
+        // Adjust subsetted properties
+        addRedefinedElement(redefinedEdge);
     }
 }
 
@@ -250,6 +279,9 @@ void QUmlActivityEdge::removeRedefinedEdge(QUmlActivityEdge *redefinedEdge)
 
     if (_redefinedEdge.contains(redefinedEdge)) {
         _redefinedEdge.remove(redefinedEdge);
+
+        // Adjust subsetted properties
+        removeRedefinedElement(redefinedEdge);
     }
 }
 

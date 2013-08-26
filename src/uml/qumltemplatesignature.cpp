@@ -76,6 +76,15 @@ void QUmlTemplateSignature::addOwnedParameter(QUmlTemplateParameter *ownedParame
 
     if (!_ownedParameter.contains(ownedParameter)) {
         _ownedParameter.append(ownedParameter);
+
+        // Adjust subsetted properties
+        addParameter(ownedParameter);
+        addOwnedElement(ownedParameter);
+
+        // Adjust opposite properties
+        if (ownedParameter) {
+            ownedParameter->setSignature(this);
+        }
     }
 }
 
@@ -85,6 +94,15 @@ void QUmlTemplateSignature::removeOwnedParameter(QUmlTemplateParameter *ownedPar
 
     if (_ownedParameter.contains(ownedParameter)) {
         _ownedParameter.removeAll(ownedParameter);
+
+        // Adjust subsetted properties
+        removeParameter(ownedParameter);
+        removeOwnedElement(ownedParameter);
+
+        // Adjust opposite properties
+        if (ownedParameter) {
+            ownedParameter->setSignature(0);
+        }
     }
 }
 

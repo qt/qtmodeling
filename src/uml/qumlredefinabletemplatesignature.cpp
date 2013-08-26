@@ -103,6 +103,9 @@ void QUmlRedefinableTemplateSignature::addExtendedSignature(QUmlRedefinableTempl
 
     if (!_extendedSignature.contains(extendedSignature)) {
         _extendedSignature.insert(extendedSignature);
+
+        // Adjust subsetted properties
+        addRedefinedElement(extendedSignature);
     }
 }
 
@@ -112,6 +115,9 @@ void QUmlRedefinableTemplateSignature::removeExtendedSignature(QUmlRedefinableTe
 
     if (_extendedSignature.contains(extendedSignature)) {
         _extendedSignature.remove(extendedSignature);
+
+        // Adjust subsetted properties
+        removeRedefinedElement(extendedSignature);
     }
 }
 
@@ -136,6 +142,9 @@ void QUmlRedefinableTemplateSignature::addInheritedParameter(QUmlTemplateParamet
 
     if (false /* <derivedexclusion-criteria> */) {
         // <derived-code>
+
+        // Adjust subsetted properties
+        addParameter(inheritedParameter);
     }
 }
 
@@ -148,6 +157,9 @@ void QUmlRedefinableTemplateSignature::removeInheritedParameter(QUmlTemplatePara
 
     if (false /* <derivedexclusion-criteria> */) {
         // <derived-code>
+
+        // Adjust subsetted properties
+        removeParameter(inheritedParameter);
     }
 }
 

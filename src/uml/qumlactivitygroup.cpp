@@ -78,6 +78,11 @@ void QUmlActivityGroup::addContainedEdge(QUmlActivityEdge *containedEdge)
 
     if (!_containedEdge.contains(containedEdge)) {
         _containedEdge.insert(containedEdge);
+
+        // Adjust opposite properties
+        if (containedEdge) {
+            containedEdge->addInGroup(this);
+        }
     }
 }
 
@@ -87,6 +92,11 @@ void QUmlActivityGroup::removeContainedEdge(QUmlActivityEdge *containedEdge)
 
     if (_containedEdge.contains(containedEdge)) {
         _containedEdge.remove(containedEdge);
+
+        // Adjust opposite properties
+        if (containedEdge) {
+            containedEdge->removeInGroup(this);
+        }
     }
 }
 
@@ -106,6 +116,11 @@ void QUmlActivityGroup::addContainedNode(QUmlActivityNode *containedNode)
 
     if (!_containedNode.contains(containedNode)) {
         _containedNode.insert(containedNode);
+
+        // Adjust opposite properties
+        if (containedNode) {
+            containedNode->addInGroup(this);
+        }
     }
 }
 
@@ -115,6 +130,11 @@ void QUmlActivityGroup::removeContainedNode(QUmlActivityNode *containedNode)
 
     if (_containedNode.contains(containedNode)) {
         _containedNode.remove(containedNode);
+
+        // Adjust opposite properties
+        if (containedNode) {
+            containedNode->removeInGroup(this);
+        }
     }
 }
 
@@ -158,6 +178,9 @@ void QUmlActivityGroup::addSubgroup(QUmlActivityGroup *subgroup)
 
     if (!_subgroup.contains(subgroup)) {
         _subgroup.insert(subgroup);
+
+        // Adjust subsetted properties
+        addOwnedElement(subgroup);
     }
 }
 
@@ -167,6 +190,9 @@ void QUmlActivityGroup::removeSubgroup(QUmlActivityGroup *subgroup)
 
     if (_subgroup.contains(subgroup)) {
         _subgroup.remove(subgroup);
+
+        // Adjust subsetted properties
+        removeOwnedElement(subgroup);
     }
 }
 

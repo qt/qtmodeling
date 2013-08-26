@@ -76,6 +76,9 @@ void QUmlCollaborationUse::addRoleBinding(QUmlDependency *roleBinding)
 
     if (!_roleBinding.contains(roleBinding)) {
         _roleBinding.insert(roleBinding);
+
+        // Adjust subsetted properties
+        addOwnedElement(roleBinding);
     }
 }
 
@@ -85,6 +88,9 @@ void QUmlCollaborationUse::removeRoleBinding(QUmlDependency *roleBinding)
 
     if (_roleBinding.contains(roleBinding)) {
         _roleBinding.remove(roleBinding);
+
+        // Adjust subsetted properties
+        removeOwnedElement(roleBinding);
     }
 }
 

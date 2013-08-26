@@ -121,6 +121,9 @@ void QUmlSlot::addValue(QUmlValueSpecification *value)
 
     if (!_value.contains(value)) {
         _value.append(value);
+
+        // Adjust subsetted properties
+        addOwnedElement(value);
     }
 }
 
@@ -130,6 +133,9 @@ void QUmlSlot::removeValue(QUmlValueSpecification *value)
 
     if (_value.contains(value)) {
         _value.removeAll(value);
+
+        // Adjust subsetted properties
+        removeOwnedElement(value);
     }
 }
 

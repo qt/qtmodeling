@@ -95,6 +95,10 @@ void QUmlArtifact::addManifestation(QUmlManifestation *manifestation)
 
     if (!_manifestation.contains(manifestation)) {
         _manifestation.insert(manifestation);
+
+        // Adjust subsetted properties
+        addOwnedElement(manifestation);
+        addClientDependency(manifestation);
     }
 }
 
@@ -104,6 +108,10 @@ void QUmlArtifact::removeManifestation(QUmlManifestation *manifestation)
 
     if (_manifestation.contains(manifestation)) {
         _manifestation.remove(manifestation);
+
+        // Adjust subsetted properties
+        removeOwnedElement(manifestation);
+        removeClientDependency(manifestation);
     }
 }
 
@@ -123,6 +131,9 @@ void QUmlArtifact::addNestedArtifact(QUmlArtifact *nestedArtifact)
 
     if (!_nestedArtifact.contains(nestedArtifact)) {
         _nestedArtifact.insert(nestedArtifact);
+
+        // Adjust subsetted properties
+        addOwnedMember(nestedArtifact);
     }
 }
 
@@ -132,6 +143,9 @@ void QUmlArtifact::removeNestedArtifact(QUmlArtifact *nestedArtifact)
 
     if (_nestedArtifact.contains(nestedArtifact)) {
         _nestedArtifact.remove(nestedArtifact);
+
+        // Adjust subsetted properties
+        removeOwnedMember(nestedArtifact);
     }
 }
 
@@ -151,6 +165,10 @@ void QUmlArtifact::addOwnedAttribute(QUmlProperty *ownedAttribute)
 
     if (!_ownedAttribute.contains(ownedAttribute)) {
         _ownedAttribute.append(ownedAttribute);
+
+        // Adjust subsetted properties
+        addOwnedMember(ownedAttribute);
+        addAttribute(ownedAttribute);
     }
 }
 
@@ -160,6 +178,10 @@ void QUmlArtifact::removeOwnedAttribute(QUmlProperty *ownedAttribute)
 
     if (_ownedAttribute.contains(ownedAttribute)) {
         _ownedAttribute.removeAll(ownedAttribute);
+
+        // Adjust subsetted properties
+        removeOwnedMember(ownedAttribute);
+        removeAttribute(ownedAttribute);
     }
 }
 
@@ -179,6 +201,10 @@ void QUmlArtifact::addOwnedOperation(QUmlOperation *ownedOperation)
 
     if (!_ownedOperation.contains(ownedOperation)) {
         _ownedOperation.append(ownedOperation);
+
+        // Adjust subsetted properties
+        addFeature(ownedOperation);
+        addOwnedMember(ownedOperation);
     }
 }
 
@@ -188,6 +214,10 @@ void QUmlArtifact::removeOwnedOperation(QUmlOperation *ownedOperation)
 
     if (_ownedOperation.contains(ownedOperation)) {
         _ownedOperation.removeAll(ownedOperation);
+
+        // Adjust subsetted properties
+        removeFeature(ownedOperation);
+        removeOwnedMember(ownedOperation);
     }
 }
 

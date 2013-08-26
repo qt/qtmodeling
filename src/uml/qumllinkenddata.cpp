@@ -97,6 +97,9 @@ void QUmlLinkEndData::addQualifier(QUmlQualifierValue *qualifier)
 
     if (!_qualifier.contains(qualifier)) {
         _qualifier.insert(qualifier);
+
+        // Adjust subsetted properties
+        addOwnedElement(qualifier);
     }
 }
 
@@ -106,6 +109,9 @@ void QUmlLinkEndData::removeQualifier(QUmlQualifierValue *qualifier)
 
     if (_qualifier.contains(qualifier)) {
         _qualifier.remove(qualifier);
+
+        // Adjust subsetted properties
+        removeOwnedElement(qualifier);
     }
 }
 

@@ -75,6 +75,14 @@ void QUmlInteractionOperand::addFragment(QUmlInteractionFragment *fragment)
 
     if (!_fragment.contains(fragment)) {
         _fragment.append(fragment);
+
+        // Adjust subsetted properties
+        addOwnedMember(fragment);
+
+        // Adjust opposite properties
+        if (fragment) {
+            fragment->setEnclosingOperand(this);
+        }
     }
 }
 
@@ -84,6 +92,14 @@ void QUmlInteractionOperand::removeFragment(QUmlInteractionFragment *fragment)
 
     if (_fragment.contains(fragment)) {
         _fragment.removeAll(fragment);
+
+        // Adjust subsetted properties
+        removeOwnedMember(fragment);
+
+        // Adjust opposite properties
+        if (fragment) {
+            fragment->setEnclosingOperand(0);
+        }
     }
 }
 

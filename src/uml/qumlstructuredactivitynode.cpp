@@ -99,6 +99,15 @@ void QUmlStructuredActivityNode::addEdge(QUmlActivityEdge *edge)
 
     if (!_edge.contains(edge)) {
         _edge.insert(edge);
+
+        // Adjust subsetted properties
+        addContainedEdge(edge);
+        addOwnedElement(edge);
+
+        // Adjust opposite properties
+        if (edge) {
+            edge->setInStructuredNode(this);
+        }
     }
 }
 
@@ -108,6 +117,15 @@ void QUmlStructuredActivityNode::removeEdge(QUmlActivityEdge *edge)
 
     if (_edge.contains(edge)) {
         _edge.remove(edge);
+
+        // Adjust subsetted properties
+        removeContainedEdge(edge);
+        removeOwnedElement(edge);
+
+        // Adjust opposite properties
+        if (edge) {
+            edge->setInStructuredNode(0);
+        }
     }
 }
 
@@ -146,6 +164,15 @@ void QUmlStructuredActivityNode::addNode(QUmlActivityNode *node)
 
     if (!_node.contains(node)) {
         _node.insert(node);
+
+        // Adjust subsetted properties
+        addContainedNode(node);
+        addOwnedElement(node);
+
+        // Adjust opposite properties
+        if (node) {
+            node->setInStructuredNode(this);
+        }
     }
 }
 
@@ -155,6 +182,15 @@ void QUmlStructuredActivityNode::removeNode(QUmlActivityNode *node)
 
     if (_node.contains(node)) {
         _node.remove(node);
+
+        // Adjust subsetted properties
+        removeContainedNode(node);
+        removeOwnedElement(node);
+
+        // Adjust opposite properties
+        if (node) {
+            node->setInStructuredNode(0);
+        }
     }
 }
 
@@ -171,6 +207,9 @@ void QUmlStructuredActivityNode::addStructuredNodeInput(QUmlInputPin *structured
 
     if (!_structuredNodeInput.contains(structuredNodeInput)) {
         _structuredNodeInput.insert(structuredNodeInput);
+
+        // Adjust subsetted properties
+        addInput(structuredNodeInput);
     }
 }
 
@@ -180,6 +219,9 @@ void QUmlStructuredActivityNode::removeStructuredNodeInput(QUmlInputPin *structu
 
     if (_structuredNodeInput.contains(structuredNodeInput)) {
         _structuredNodeInput.remove(structuredNodeInput);
+
+        // Adjust subsetted properties
+        removeInput(structuredNodeInput);
     }
 }
 
@@ -196,6 +238,9 @@ void QUmlStructuredActivityNode::addStructuredNodeOutput(QUmlOutputPin *structur
 
     if (!_structuredNodeOutput.contains(structuredNodeOutput)) {
         _structuredNodeOutput.insert(structuredNodeOutput);
+
+        // Adjust subsetted properties
+        addOutput(structuredNodeOutput);
     }
 }
 
@@ -205,6 +250,9 @@ void QUmlStructuredActivityNode::removeStructuredNodeOutput(QUmlOutputPin *struc
 
     if (_structuredNodeOutput.contains(structuredNodeOutput)) {
         _structuredNodeOutput.remove(structuredNodeOutput);
+
+        // Adjust subsetted properties
+        removeOutput(structuredNodeOutput);
     }
 }
 
@@ -224,6 +272,14 @@ void QUmlStructuredActivityNode::addVariable(QUmlVariable *variable)
 
     if (!_variable.contains(variable)) {
         _variable.insert(variable);
+
+        // Adjust subsetted properties
+        addOwnedMember(variable);
+
+        // Adjust opposite properties
+        if (variable) {
+            variable->setScope(this);
+        }
     }
 }
 
@@ -233,6 +289,14 @@ void QUmlStructuredActivityNode::removeVariable(QUmlVariable *variable)
 
     if (_variable.contains(variable)) {
         _variable.remove(variable);
+
+        // Adjust subsetted properties
+        removeOwnedMember(variable);
+
+        // Adjust opposite properties
+        if (variable) {
+            variable->setScope(0);
+        }
     }
 }
 

@@ -74,6 +74,9 @@ void QUmlDirectedRelationship::addSource(QUmlElement *source)
 
     if (!_source.contains(source)) {
         _source.insert(source);
+
+        // Adjust subsetted properties
+        addRelatedElement(source);
     }
 }
 
@@ -83,6 +86,9 @@ void QUmlDirectedRelationship::removeSource(QUmlElement *source)
 
     if (_source.contains(source)) {
         _source.remove(source);
+
+        // Adjust subsetted properties
+        removeRelatedElement(source);
     }
 }
 
@@ -102,6 +108,9 @@ void QUmlDirectedRelationship::addTarget(QUmlElement *target)
 
     if (!_target.contains(target)) {
         _target.insert(target);
+
+        // Adjust subsetted properties
+        addRelatedElement(target);
     }
 }
 
@@ -111,6 +120,9 @@ void QUmlDirectedRelationship::removeTarget(QUmlElement *target)
 
     if (_target.contains(target)) {
         _target.remove(target);
+
+        // Adjust subsetted properties
+        removeRelatedElement(target);
     }
 }
 

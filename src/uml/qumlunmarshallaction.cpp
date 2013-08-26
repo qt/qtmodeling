@@ -105,6 +105,9 @@ void QUmlUnmarshallAction::addResult(QUmlOutputPin *result)
 
     if (!_result.contains(result)) {
         _result.insert(result);
+
+        // Adjust subsetted properties
+        addOutput(result);
     }
 }
 
@@ -114,6 +117,9 @@ void QUmlUnmarshallAction::removeResult(QUmlOutputPin *result)
 
     if (_result.contains(result)) {
         _result.remove(result);
+
+        // Adjust subsetted properties
+        removeOutput(result);
     }
 }
 

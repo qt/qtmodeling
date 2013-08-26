@@ -84,7 +84,15 @@ void QUmlBehavior::setContext(QUmlBehavioredClassifier *context)
     Q_UNUSED(context);
 
     if (false /* <derivedexclusion-criteria> */) {
+        // Adjust subsetted properties
+        // removeRedefinitionContext(/* <derived-code> */);
+
         // <derived-code>
+
+        // Adjust subsetted properties
+        if (context) {
+            addRedefinitionContext(context);
+        }
     }
 }
 
@@ -123,6 +131,9 @@ void QUmlBehavior::addOwnedParameter(QUmlParameter *ownedParameter)
 
     if (!_ownedParameter.contains(ownedParameter)) {
         _ownedParameter.append(ownedParameter);
+
+        // Adjust subsetted properties
+        addOwnedMember(ownedParameter);
     }
 }
 
@@ -132,6 +143,9 @@ void QUmlBehavior::removeOwnedParameter(QUmlParameter *ownedParameter)
 
     if (_ownedParameter.contains(ownedParameter)) {
         _ownedParameter.removeAll(ownedParameter);
+
+        // Adjust subsetted properties
+        removeOwnedMember(ownedParameter);
     }
 }
 
@@ -151,6 +165,9 @@ void QUmlBehavior::addOwnedParameterSet(QUmlParameterSet *ownedParameterSet)
 
     if (!_ownedParameterSet.contains(ownedParameterSet)) {
         _ownedParameterSet.insert(ownedParameterSet);
+
+        // Adjust subsetted properties
+        addOwnedMember(ownedParameterSet);
     }
 }
 
@@ -160,6 +177,9 @@ void QUmlBehavior::removeOwnedParameterSet(QUmlParameterSet *ownedParameterSet)
 
     if (_ownedParameterSet.contains(ownedParameterSet)) {
         _ownedParameterSet.remove(ownedParameterSet);
+
+        // Adjust subsetted properties
+        removeOwnedMember(ownedParameterSet);
     }
 }
 
@@ -179,6 +199,9 @@ void QUmlBehavior::addPostcondition(QUmlConstraint *postcondition)
 
     if (!_postcondition.contains(postcondition)) {
         _postcondition.insert(postcondition);
+
+        // Adjust subsetted properties
+        addOwnedRule(postcondition);
     }
 }
 
@@ -188,6 +211,9 @@ void QUmlBehavior::removePostcondition(QUmlConstraint *postcondition)
 
     if (_postcondition.contains(postcondition)) {
         _postcondition.remove(postcondition);
+
+        // Adjust subsetted properties
+        removeOwnedRule(postcondition);
     }
 }
 
@@ -207,6 +233,9 @@ void QUmlBehavior::addPrecondition(QUmlConstraint *precondition)
 
     if (!_precondition.contains(precondition)) {
         _precondition.insert(precondition);
+
+        // Adjust subsetted properties
+        addOwnedRule(precondition);
     }
 }
 
@@ -216,6 +245,9 @@ void QUmlBehavior::removePrecondition(QUmlConstraint *precondition)
 
     if (_precondition.contains(precondition)) {
         _precondition.remove(precondition);
+
+        // Adjust subsetted properties
+        removeOwnedRule(precondition);
     }
 }
 
@@ -235,6 +267,9 @@ void QUmlBehavior::addRedefinedBehavior(QUmlBehavior *redefinedBehavior)
 
     if (!_redefinedBehavior.contains(redefinedBehavior)) {
         _redefinedBehavior.insert(redefinedBehavior);
+
+        // Adjust subsetted properties
+        addRedefinedClassifier(redefinedBehavior);
     }
 }
 
@@ -244,6 +279,9 @@ void QUmlBehavior::removeRedefinedBehavior(QUmlBehavior *redefinedBehavior)
 
     if (_redefinedBehavior.contains(redefinedBehavior)) {
         _redefinedBehavior.remove(redefinedBehavior);
+
+        // Adjust subsetted properties
+        removeRedefinedClassifier(redefinedBehavior);
     }
 }
 

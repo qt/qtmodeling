@@ -82,6 +82,11 @@ void QUmlLifeline::addCoveredBy(QUmlInteractionFragment *coveredBy)
 
     if (!_coveredBy.contains(coveredBy)) {
         _coveredBy.insert(coveredBy);
+
+        // Adjust opposite properties
+        if (coveredBy) {
+            coveredBy->addCovered(this);
+        }
     }
 }
 
@@ -91,6 +96,11 @@ void QUmlLifeline::removeCoveredBy(QUmlInteractionFragment *coveredBy)
 
     if (_coveredBy.contains(coveredBy)) {
         _coveredBy.remove(coveredBy);
+
+        // Adjust opposite properties
+        if (coveredBy) {
+            coveredBy->removeCovered(this);
+        }
     }
 }
 

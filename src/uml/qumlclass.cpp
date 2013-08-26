@@ -86,6 +86,11 @@ void QUmlClass::addExtension(QUmlExtension *extension)
 
     if (false /* <derivedexclusion-criteria> */) {
         // <derived-code>
+
+        // Adjust opposite properties
+        if (extension) {
+            extension->setMetaclass(this);
+        }
     }
 }
 
@@ -98,6 +103,11 @@ void QUmlClass::removeExtension(QUmlExtension *extension)
 
     if (false /* <derivedexclusion-criteria> */) {
         // <derived-code>
+
+        // Adjust opposite properties
+        if (extension) {
+            extension->setMetaclass(0);
+        }
     }
 }
 
@@ -155,6 +165,9 @@ void QUmlClass::addNestedClassifier(QUmlClassifier *nestedClassifier)
 
     if (!_nestedClassifier.contains(nestedClassifier)) {
         _nestedClassifier.append(nestedClassifier);
+
+        // Adjust subsetted properties
+        addOwnedMember(nestedClassifier);
     }
 }
 
@@ -164,6 +177,9 @@ void QUmlClass::removeNestedClassifier(QUmlClassifier *nestedClassifier)
 
     if (_nestedClassifier.contains(nestedClassifier)) {
         _nestedClassifier.removeAll(nestedClassifier);
+
+        // Adjust subsetted properties
+        removeOwnedMember(nestedClassifier);
     }
 }
 
@@ -183,6 +199,15 @@ void QUmlClass::addOwnedAttribute(QUmlProperty *ownedAttribute)
 
     if (!_ownedAttribute.contains(ownedAttribute)) {
         _ownedAttribute.append(ownedAttribute);
+
+        // Adjust subsetted properties
+        addOwnedMember(ownedAttribute);
+        addAttribute(ownedAttribute);
+
+        // Adjust opposite properties
+        if (ownedAttribute) {
+            ownedAttribute->setClass(this);
+        }
     }
 }
 
@@ -192,6 +217,15 @@ void QUmlClass::removeOwnedAttribute(QUmlProperty *ownedAttribute)
 
     if (_ownedAttribute.contains(ownedAttribute)) {
         _ownedAttribute.removeAll(ownedAttribute);
+
+        // Adjust subsetted properties
+        removeOwnedMember(ownedAttribute);
+        removeAttribute(ownedAttribute);
+
+        // Adjust opposite properties
+        if (ownedAttribute) {
+            ownedAttribute->setClass(0);
+        }
     }
 }
 
@@ -211,6 +245,15 @@ void QUmlClass::addOwnedOperation(QUmlOperation *ownedOperation)
 
     if (!_ownedOperation.contains(ownedOperation)) {
         _ownedOperation.append(ownedOperation);
+
+        // Adjust subsetted properties
+        addFeature(ownedOperation);
+        addOwnedMember(ownedOperation);
+
+        // Adjust opposite properties
+        if (ownedOperation) {
+            ownedOperation->setClass(this);
+        }
     }
 }
 
@@ -220,6 +263,15 @@ void QUmlClass::removeOwnedOperation(QUmlOperation *ownedOperation)
 
     if (_ownedOperation.contains(ownedOperation)) {
         _ownedOperation.removeAll(ownedOperation);
+
+        // Adjust subsetted properties
+        removeFeature(ownedOperation);
+        removeOwnedMember(ownedOperation);
+
+        // Adjust opposite properties
+        if (ownedOperation) {
+            ownedOperation->setClass(0);
+        }
     }
 }
 
@@ -239,6 +291,10 @@ void QUmlClass::addOwnedReception(QUmlReception *ownedReception)
 
     if (!_ownedReception.contains(ownedReception)) {
         _ownedReception.insert(ownedReception);
+
+        // Adjust subsetted properties
+        addFeature(ownedReception);
+        addOwnedMember(ownedReception);
     }
 }
 
@@ -248,6 +304,10 @@ void QUmlClass::removeOwnedReception(QUmlReception *ownedReception)
 
     if (_ownedReception.contains(ownedReception)) {
         _ownedReception.remove(ownedReception);
+
+        // Adjust subsetted properties
+        removeFeature(ownedReception);
+        removeOwnedMember(ownedReception);
     }
 }
 

@@ -79,6 +79,9 @@ void QUmlInteractionUse::addActualGate(QUmlGate *actualGate)
 
     if (!_actualGate.contains(actualGate)) {
         _actualGate.insert(actualGate);
+
+        // Adjust subsetted properties
+        addOwnedElement(actualGate);
     }
 }
 
@@ -88,6 +91,9 @@ void QUmlInteractionUse::removeActualGate(QUmlGate *actualGate)
 
     if (_actualGate.contains(actualGate)) {
         _actualGate.remove(actualGate);
+
+        // Adjust subsetted properties
+        removeOwnedElement(actualGate);
     }
 }
 
@@ -107,6 +113,9 @@ void QUmlInteractionUse::addArgument(QUmlValueSpecification *argument)
 
     if (!_argument.contains(argument)) {
         _argument.append(argument);
+
+        // Adjust subsetted properties
+        addOwnedElement(argument);
     }
 }
 
@@ -116,6 +125,9 @@ void QUmlInteractionUse::removeArgument(QUmlValueSpecification *argument)
 
     if (_argument.contains(argument)) {
         _argument.removeAll(argument);
+
+        // Adjust subsetted properties
+        removeOwnedElement(argument);
     }
 }
 
