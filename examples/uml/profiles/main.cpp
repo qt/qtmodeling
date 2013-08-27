@@ -38,8 +38,6 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#include <QtWrappedObjects/QWrappedObjectPointer>
-
 #include <QtUml/QUmlPrimitiveType>
 #include <QtUml/QUmlProfile>
 #include <QtUml/QUmlProperty>
@@ -58,37 +56,37 @@ typedef const QSet<QUmlPackageableElement *> QUmlPackageableElementList;
 int main ()
 {
     // Create a "dymmy" UML meta-model
-    QWrappedObjectPointer<QUmlModel> umlModel = new QUmlModel;
+    QUmlModel *umlModel = new QUmlModel;
     umlModel->setName("UML Meta-Model");
-    QWrappedObjectPointer<QUmlClass> class_ = new QUmlClass;
+    QUmlClass *class_ = new QUmlClass;
     class_->setName("Class");
     umlModel->addOwnedType(class_);
 
     // Create a profile
-    QWrappedObjectPointer<QUmlProfile> profile = new QUmlProfile;
+    QUmlProfile *profile = new QUmlProfile;
     profile->setName("MyProfile");
 
     // Add a stereotype to profile
-    QWrappedObjectPointer<QUmlStereotype> stereotype = new QUmlStereotype;
+    QUmlStereotype *stereotype = new QUmlStereotype;
     stereotype->setName("MyStereotype");
     profile->addPackagedElement(stereotype);
 
     // Show profile's owned stereotypes
     qDebug() << "Owned stereotypes:";
-    foreach (QUmlStereotype *ownedStereotype, profile->ownedStereotypes())
+    foreach (QUmlStereotype *ownedStereotype, profile->ownedStereotype())
         qDebug() << "    " << ownedStereotype->name();
 
     // Adding attribute to stereotype
-    QWrappedObjectPointer<QUmlPrimitiveType> booleanPrimitiveType = new QUmlPrimitiveType;
+    QUmlPrimitiveType *booleanPrimitiveType = new QUmlPrimitiveType;
     booleanPrimitiveType->setName("boolean");
-    QWrappedObjectPointer<QUmlProperty> property = new QUmlProperty;
+    QUmlProperty *property = new QUmlProperty;
     property->setName("isTransient");
     property->setType(booleanPrimitiveType);
     stereotype->addOwnedAttribute(property);
 
     // Create UML meta-model element import
-    QWrappedObjectPointer<QUmlElementImport> elementImport = new QUmlElementImport;
-    elementImport->setImportedElement(umlModel->packagedElements().toList().first());
+    QUmlElementImport *elementImport = new QUmlElementImport;
+    elementImport->setImportedElement(umlModel->packagedElement().toList().first());
 
     // Add meta-class reference to profile
     profile->addMetaclassReference(elementImport);
@@ -96,24 +94,24 @@ int main ()
 
     // Show profile's data
     qDebug() << "Profile members:";
-    foreach (QUmlNamedElement *namedElement, profile->members())
+    foreach (QUmlNamedElement *namedElement, profile->member())
         qDebug() << "    " << namedElement->name();
     qDebug() << "Profile owned members:";
-    foreach (QUmlNamedElement *namedElement, profile->ownedMembers())
+    foreach (QUmlNamedElement *namedElement, profile->ownedMember())
         qDebug() << "    " << namedElement->name();
     qDebug() << "Profile imported members:";
-    foreach (QUmlPackageableElement *importedMember, profile->importedMembers())
+    foreach (QUmlPackageableElement *importedMember, profile->importedMember())
         qDebug() << "    " << importedMember->name();
 
     // Create extension
-    QWrappedObjectPointer<QUmlExtension> extension = new QUmlExtension;
+    QUmlExtension *extension = new QUmlExtension;
     extension->setName("class_stereotype");
 
-    QWrappedObjectPointer<QUmlProperty> stereotypeProperty = new QUmlProperty;
+    QUmlProperty *stereotypeProperty = new QUmlProperty;
     stereotypeProperty->setName("base_class");
     stereotypeProperty->setType(class_);
 
-    QWrappedObjectPointer<QUmlExtensionEnd> extensionEnd = new QUmlExtensionEnd;
+    QUmlExtensionEnd *extensionEnd = new QUmlExtensionEnd;
     extensionEnd->setName("extension_stereotype");
     extensionEnd->setType(stereotype);
 
@@ -123,8 +121,8 @@ int main ()
 
     stereotype->addOwnedAttribute(stereotypeProperty);
 
-    delete profile.data(); // That will delete all owned elements
-    delete umlModel.data(); // That will delete all owned elements
-    delete extension.data(); // That will delete all owned elements
+    delete profile; // That will delete all owned elements
+    delete umlModel; // That will delete all owned elements
+    delete extension; // That will delete all owned elements
 }
 

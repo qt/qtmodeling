@@ -54,20 +54,20 @@ private Q_SLOTS:
 private:
     void check(QString modelName, QString packageName, int modelSize, int packageSize);
 
-    QWrappedObjectPointer<QUmlModel> _model;
-    QWrappedObjectPointer<QUmlPackage> _package;
+    QUmlModel *_model;
+    QUmlPackage *_package;
 };
 
 void TestQtUmlContainment::check(QString modelName, QString packageName, int modelSize, int packageSize)
 {
     QCOMPARE(_model->qualifiedName(), modelName);
     QCOMPARE(_package->qualifiedName(), packageName);
-    QCOMPARE(_model->members().size(), modelSize);
-    QCOMPARE(_model->ownedMembers().size(), modelSize);
-    QCOMPARE(_model->ownedElements().size(), modelSize);
-    QCOMPARE(_package->members().size(), packageSize);
-    QCOMPARE(_package->ownedMembers().size(), packageSize);
-    QCOMPARE(_package->ownedElements().size(), packageSize);
+    QCOMPARE(_model->member().size(), modelSize);
+    QCOMPARE(_model->ownedMember().size(), modelSize);
+    QCOMPARE(_model->ownedElement().size(), modelSize);
+    QCOMPARE(_package->member().size(), packageSize);
+    QCOMPARE(_package->ownedMember().size(), packageSize);
+    QCOMPARE(_package->ownedElement().size(), packageSize);
 }
 
 void TestQtUmlContainment::qtumlcontainment()
@@ -100,15 +100,15 @@ void TestQtUmlContainment::qtumlcontainment()
     _model->removeNestedPackage(_package);
     check("Model", "Package", 0, 0);
 
-    QWrappedObjectPointer<QUmlComment> comment = new QUmlComment;
+    QUmlComment *comment = new QUmlComment;
     _package->addOwnedComment(comment);
-    QCOMPARE(_package->members().size(), 0);
-    QCOMPARE(_package->ownedMembers().size(), 0);
-    QCOMPARE(_package->ownedElements().size(), 1);
-    QCOMPARE(_package->ownedComments().size(), 1);
+    QCOMPARE(_package->member().size(), 0);
+    QCOMPARE(_package->ownedMember().size(), 0);
+    QCOMPARE(_package->ownedElement().size(), 1);
+    QCOMPARE(_package->ownedComment().size(), 1);
 
-    delete _model.data();
-    delete _package.data();
+    delete _model;
+    delete _package;
 }
 
 QTEST_MAIN(TestQtUmlContainment)
