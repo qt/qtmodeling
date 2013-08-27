@@ -60,12 +60,12 @@ public:
     QUmlExpansionRegion();
 
     // Owned attributes
-    QSet<QUmlExpansionNode *> inputElement() const;
+    const QSet<QUmlExpansionNode *> inputElement() const;
     void addInputElement(QUmlExpansionNode *inputElement);
     void removeInputElement(QUmlExpansionNode *inputElement);
     QtUml::ExpansionKind mode() const;
     void setMode(QtUml::ExpansionKind mode);
-    QSet<QUmlExpansionNode *> outputElement() const;
+    const QSet<QUmlExpansionNode *> outputElement() const;
     void addOutputElement(QUmlExpansionNode *outputElement);
     void removeOutputElement(QUmlExpansionNode *outputElement);
 

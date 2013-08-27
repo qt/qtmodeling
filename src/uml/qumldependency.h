@@ -60,10 +60,10 @@ public:
     QUmlDependency();
 
     // Owned attributes
-    QSet<QUmlNamedElement *> client() const;
+    const QSet<QUmlNamedElement *> client() const;
     void addClient(QUmlNamedElement *client);
     void removeClient(QUmlNamedElement *client);
-    QSet<QUmlNamedElement *> supplier() const;
+    const QSet<QUmlNamedElement *> supplier() const;
     void addSupplier(QUmlNamedElement *supplier);
     void removeSupplier(QUmlNamedElement *supplier);
 

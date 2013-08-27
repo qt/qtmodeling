@@ -60,21 +60,21 @@ public:
     QUmlClause();
 
     // Owned attributes
-    QSet<QUmlExecutableNode *> body() const;
+    const QSet<QUmlExecutableNode *> body() const;
     void addBody(QUmlExecutableNode *body);
     void removeBody(QUmlExecutableNode *body);
-    QList<QUmlOutputPin *> bodyOutput() const;
+    const QList<QUmlOutputPin *> bodyOutput() const;
     void addBodyOutput(QUmlOutputPin *bodyOutput);
     void removeBodyOutput(QUmlOutputPin *bodyOutput);
     QUmlOutputPin *decider() const;
     void setDecider(QUmlOutputPin *decider);
-    QSet<QUmlClause *> predecessorClause() const;
+    const QSet<QUmlClause *> predecessorClause() const;
     void addPredecessorClause(QUmlClause *predecessorClause);
     void removePredecessorClause(QUmlClause *predecessorClause);
-    QSet<QUmlClause *> successorClause() const;
+    const QSet<QUmlClause *> successorClause() const;
     void addSuccessorClause(QUmlClause *successorClause);
     void removeSuccessorClause(QUmlClause *successorClause);
-    QSet<QUmlExecutableNode *> test() const;
+    const QSet<QUmlExecutableNode *> test() const;
     void addTest(QUmlExecutableNode *test);
     void removeTest(QUmlExecutableNode *test);
 

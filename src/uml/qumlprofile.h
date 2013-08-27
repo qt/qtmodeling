@@ -60,10 +60,10 @@ public:
     QUmlProfile();
 
     // Owned attributes
-    QSet<QUmlElementImport *> metaclassReference() const;
+    const QSet<QUmlElementImport *> metaclassReference() const;
     void addMetaclassReference(QUmlElementImport *metaclassReference);
     void removeMetaclassReference(QUmlElementImport *metaclassReference);
-    QSet<QUmlPackageImport *> metamodelReference() const;
+    const QSet<QUmlPackageImport *> metamodelReference() const;
     void addMetamodelReference(QUmlPackageImport *metamodelReference);
     void removeMetamodelReference(QUmlPackageImport *metamodelReference);
 

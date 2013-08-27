@@ -62,7 +62,7 @@ QUmlBehavior::QUmlBehavior() :
     _specification(0)
 {
     d_ptr->object.setProperty("context", QVariant::fromValue((QUmlBehavioredClassifier *)(0)));
-    d_ptr->object.setProperty("isReentrant", QVariant::fromValue(false));
+    d_ptr->object.setProperty("isReentrant", QVariant::fromValue(true));
     d_ptr->object.setProperty("ownedParameter", QVariant::fromValue(&_ownedParameter));
     d_ptr->object.setProperty("ownedParameterSet", QVariant::fromValue(&_ownedParameterSet));
     d_ptr->object.setProperty("postcondition", QVariant::fromValue(&_postcondition));
@@ -127,7 +127,7 @@ void QUmlBehavior::setReentrant(bool isReentrant)
 /*!
     References a list of parameters to the behavior which describes the order and type of arguments that can be given when the behavior is invoked and of the values which will be returned when the behavior completes its execution.
  */
-QList<QUmlParameter *> QUmlBehavior::ownedParameter() const
+const QList<QUmlParameter *> QUmlBehavior::ownedParameter() const
 {
     // This is a read-write association end
 
@@ -161,7 +161,7 @@ void QUmlBehavior::removeOwnedParameter(QUmlParameter *ownedParameter)
 /*!
     The ParameterSets owned by this Behavior.
  */
-QSet<QUmlParameterSet *> QUmlBehavior::ownedParameterSet() const
+const QSet<QUmlParameterSet *> QUmlBehavior::ownedParameterSet() const
 {
     // This is a read-write association end
 
@@ -195,7 +195,7 @@ void QUmlBehavior::removeOwnedParameterSet(QUmlParameterSet *ownedParameterSet)
 /*!
     An optional set of Constraints specifying what is fulfilled after the execution of the behavior is completed, if its precondition was fulfilled before its invocation.
  */
-QSet<QUmlConstraint *> QUmlBehavior::postcondition() const
+const QSet<QUmlConstraint *> QUmlBehavior::postcondition() const
 {
     // This is a read-write association end
 
@@ -229,7 +229,7 @@ void QUmlBehavior::removePostcondition(QUmlConstraint *postcondition)
 /*!
     An optional set of Constraints specifying what must be fulfilled when the behavior is invoked.
  */
-QSet<QUmlConstraint *> QUmlBehavior::precondition() const
+const QSet<QUmlConstraint *> QUmlBehavior::precondition() const
 {
     // This is a read-write association end
 
@@ -263,7 +263,7 @@ void QUmlBehavior::removePrecondition(QUmlConstraint *precondition)
 /*!
     References a behavior that this behavior redefines. A subtype of Behavior may redefine any other subtype of Behavior. If the behavior implements a behavioral feature, it replaces the redefined behavior. If the behavior is a classifier behavior, it extends the redefined behavior.
  */
-QSet<QUmlBehavior *> QUmlBehavior::redefinedBehavior() const
+const QSet<QUmlBehavior *> QUmlBehavior::redefinedBehavior() const
 {
     // This is a read-write association end
 

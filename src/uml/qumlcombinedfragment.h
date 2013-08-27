@@ -61,12 +61,12 @@ public:
     QUmlCombinedFragment();
 
     // Owned attributes
-    QSet<QUmlGate *> cfragmentGate() const;
+    const QSet<QUmlGate *> cfragmentGate() const;
     void addCfragmentGate(QUmlGate *cfragmentGate);
     void removeCfragmentGate(QUmlGate *cfragmentGate);
     QtUml::InteractionOperatorKind interactionOperator() const;
     void setInteractionOperator(QtUml::InteractionOperatorKind interactionOperator);
-    QList<QUmlInteractionOperand *> operand() const;
+    const QList<QUmlInteractionOperand *> operand() const;
     void addOperand(QUmlInteractionOperand *operand);
     void removeOperand(QUmlInteractionOperand *operand);
 

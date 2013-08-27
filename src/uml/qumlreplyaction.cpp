@@ -87,7 +87,7 @@ void QUmlReplyAction::setReplyToCall(QUmlTrigger *replyToCall)
 /*!
     A list of pins containing the reply values of the operation. These values are returned to the caller.
  */
-QSet<QUmlInputPin *> QUmlReplyAction::replyValue() const
+const QSet<QUmlInputPin *> QUmlReplyAction::replyValue() const
 {
     // This is a read-write association end
 

@@ -83,7 +83,7 @@ public:
     void setSource(QUmlVertex *source);
     QUmlVertex *target() const;
     void setTarget(QUmlVertex *target);
-    QSet<QUmlTrigger *> trigger() const;
+    const QSet<QUmlTrigger *> trigger() const;
     void addTrigger(QUmlTrigger *trigger);
     void removeTrigger(QUmlTrigger *trigger);
 

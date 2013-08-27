@@ -67,8 +67,8 @@ QUmlMessage::QUmlMessage() :
     d_ptr->object.setProperty("argument", QVariant::fromValue(&_argument));
     d_ptr->object.setProperty("connector", QVariant::fromValue((QUmlConnector *)(0)));
     d_ptr->object.setProperty("interaction", QVariant::fromValue((QUmlInteraction *)(0)));
-    d_ptr->object.setProperty("messageKind", QVariant::fromValue(QtUml::MessageKindNone));
-    d_ptr->object.setProperty("messageSort", QVariant::fromValue(QtUml::MessageSortNone));
+    d_ptr->object.setProperty("messageKind", QVariant::fromValue(QtUml::MessageKindUnknown));
+    d_ptr->object.setProperty("messageSort", QVariant::fromValue(QtUml::MessageSortSynchCall));
     d_ptr->object.setProperty("receiveEvent", QVariant::fromValue((QUmlMessageEnd *)(0)));
     d_ptr->object.setProperty("sendEvent", QVariant::fromValue((QUmlMessageEnd *)(0)));
     d_ptr->object.setProperty("signature", QVariant::fromValue((QUmlNamedElement *)(0)));
@@ -79,7 +79,7 @@ QUmlMessage::QUmlMessage() :
 /*!
     The arguments of the Message
  */
-QList<QUmlValueSpecification *> QUmlMessage::argument() const
+const QList<QUmlValueSpecification *> QUmlMessage::argument() const
 {
     // This is a read-write association end
 

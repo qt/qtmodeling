@@ -61,7 +61,7 @@ QUmlBehavioralFeature::QUmlBehavioralFeature() :
     _concurrency(QtUml::CallConcurrencyKindSequential),
     _isAbstract(false)
 {
-    d_ptr->object.setProperty("concurrency", QVariant::fromValue(QtUml::CallConcurrencyKindNone));
+    d_ptr->object.setProperty("concurrency", QVariant::fromValue(QtUml::CallConcurrencyKindSequential));
     d_ptr->object.setProperty("isAbstract", QVariant::fromValue(false));
     d_ptr->object.setProperty("method", QVariant::fromValue(&_method));
     d_ptr->object.setProperty("ownedParameter", QVariant::fromValue(&_ownedParameter));
@@ -112,7 +112,7 @@ void QUmlBehavioralFeature::setAbstract(bool isAbstract)
 /*!
     A behavioral description that implements the behavioral feature. There may be at most one behavior for a particular pairing of a classifier (as owner of the behavior) and a behavioral feature (as specification of the behavior).
  */
-QSet<QUmlBehavior *> QUmlBehavioralFeature::method() const
+const QSet<QUmlBehavior *> QUmlBehavioralFeature::method() const
 {
     // This is a read-write association end
 
@@ -150,7 +150,7 @@ void QUmlBehavioralFeature::removeMethod(QUmlBehavior *method)
 /*!
     Specifies the ordered set of formal parameters of this BehavioralFeature.
  */
-QList<QUmlParameter *> QUmlBehavioralFeature::ownedParameter() const
+const QList<QUmlParameter *> QUmlBehavioralFeature::ownedParameter() const
 {
     // This is a read-write association end
 
@@ -184,7 +184,7 @@ void QUmlBehavioralFeature::removeOwnedParameter(QUmlParameter *ownedParameter)
 /*!
     The ParameterSets owned by this BehavioralFeature.
  */
-QSet<QUmlParameterSet *> QUmlBehavioralFeature::ownedParameterSet() const
+const QSet<QUmlParameterSet *> QUmlBehavioralFeature::ownedParameterSet() const
 {
     // This is a read-write association end
 
@@ -218,7 +218,7 @@ void QUmlBehavioralFeature::removeOwnedParameterSet(QUmlParameterSet *ownedParam
 /*!
     References the Types representing exceptions that may be raised during an invocation of this feature.
  */
-QSet<QUmlType *> QUmlBehavioralFeature::raisedException() const
+const QSet<QUmlType *> QUmlBehavioralFeature::raisedException() const
 {
     // This is a read-write association end
 

@@ -73,7 +73,7 @@ QUmlInteractionUse::QUmlInteractionUse() :
 /*!
     The actual gates of the InteractionUse
  */
-QSet<QUmlGate *> QUmlInteractionUse::actualGate() const
+const QSet<QUmlGate *> QUmlInteractionUse::actualGate() const
 {
     // This is a read-write association end
 
@@ -107,7 +107,7 @@ void QUmlInteractionUse::removeActualGate(QUmlGate *actualGate)
 /*!
     The actual arguments of the Interaction
  */
-QList<QUmlValueSpecification *> QUmlInteractionUse::argument() const
+const QList<QUmlValueSpecification *> QUmlInteractionUse::argument() const
 {
     // This is a read-write association end
 

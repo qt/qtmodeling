@@ -61,7 +61,7 @@ public:
     // Owned attributes
     bool isSynchronous() const;
     void setSynchronous(bool isSynchronous);
-    QList<QUmlOutputPin *> result() const;
+    const QList<QUmlOutputPin *> result() const;
     void addResult(QUmlOutputPin *result);
     void removeResult(QUmlOutputPin *result);
 

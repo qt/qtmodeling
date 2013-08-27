@@ -63,7 +63,7 @@ public:
     Q_DECL_HIDDEN QUmlObjectNode();
 
     // Owned attributes
-    QSet<QUmlState *> inState() const;
+    const QSet<QUmlState *> inState() const;
     void addInState(QUmlState *inState);
     void removeInState(QUmlState *inState);
     bool isControlType() const;

@@ -94,7 +94,7 @@ void QUmlRedefinableTemplateSignature::setClassifier(QUmlClassifier *classifier)
 /*!
     The template signature that is extended by this template signature.
  */
-QSet<QUmlRedefinableTemplateSignature *> QUmlRedefinableTemplateSignature::extendedSignature() const
+const QSet<QUmlRedefinableTemplateSignature *> QUmlRedefinableTemplateSignature::extendedSignature() const
 {
     // This is a read-write association end
 
@@ -128,7 +128,7 @@ void QUmlRedefinableTemplateSignature::removeExtendedSignature(QUmlRedefinableTe
 /*!
     The formal template parameters of the extendedSignature.
  */
-QSet<QUmlTemplateParameter *> QUmlRedefinableTemplateSignature::inheritedParameter() const
+const QSet<QUmlTemplateParameter *> QUmlRedefinableTemplateSignature::inheritedParameter() const
 {
     // This is a read-only derived association end
 

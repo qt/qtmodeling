@@ -59,7 +59,7 @@ public:
     QUmlSignal();
 
     // Owned attributes
-    QList<QUmlProperty *> ownedAttribute() const;
+    const QList<QUmlProperty *> ownedAttribute() const;
     void addOwnedAttribute(QUmlProperty *ownedAttribute);
     void removeOwnedAttribute(QUmlProperty *ownedAttribute);
 

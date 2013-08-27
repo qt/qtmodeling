@@ -63,7 +63,7 @@ QUmlObjectNode::QUmlObjectNode() :
 {
     d_ptr->object.setProperty("inState", QVariant::fromValue(&_inState));
     d_ptr->object.setProperty("isControlType", QVariant::fromValue(false));
-    d_ptr->object.setProperty("ordering", QVariant::fromValue(QtUml::ObjectNodeOrderingKindNone));
+    d_ptr->object.setProperty("ordering", QVariant::fromValue(QtUml::ObjectNodeOrderingKindFIFO));
     d_ptr->object.setProperty("selection", QVariant::fromValue((QUmlBehavior *)(0)));
     d_ptr->object.setProperty("upperBound", QVariant::fromValue((QUmlValueSpecification *)(0)));
 }
@@ -73,7 +73,7 @@ QUmlObjectNode::QUmlObjectNode() :
 /*!
     The required states of the object available at this point in the activity.
  */
-QSet<QUmlState *> QUmlObjectNode::inState() const
+const QSet<QUmlState *> QUmlObjectNode::inState() const
 {
     // This is a read-write association end
 

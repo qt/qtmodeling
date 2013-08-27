@@ -59,7 +59,7 @@ public:
     QUmlCreateLinkAction();
 
     // Owned attributes
-    QSet<QUmlLinkEndCreationData *> endData() const;
+    const QSet<QUmlLinkEndCreationData *> endData() const;
     void addEndData(QUmlLinkEndCreationData *endData);
     void removeEndData(QUmlLinkEndCreationData *endData);
 

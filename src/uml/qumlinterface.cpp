@@ -72,7 +72,7 @@ QUmlInterface::QUmlInterface() :
 /*!
     References all the Classifiers that are defined (nested) within the Class.
  */
-QList<QUmlClassifier *> QUmlInterface::nestedClassifier() const
+const QList<QUmlClassifier *> QUmlInterface::nestedClassifier() const
 {
     // This is a read-write association end
 
@@ -106,7 +106,7 @@ void QUmlInterface::removeNestedClassifier(QUmlClassifier *nestedClassifier)
 /*!
     The attributes (i.e. the properties) owned by the class.
  */
-QList<QUmlProperty *> QUmlInterface::ownedAttribute() const
+const QList<QUmlProperty *> QUmlInterface::ownedAttribute() const
 {
     // This is a read-write association end
 
@@ -152,7 +152,7 @@ void QUmlInterface::removeOwnedAttribute(QUmlProperty *ownedAttribute)
 /*!
     The operations owned by the class.
  */
-QList<QUmlOperation *> QUmlInterface::ownedOperation() const
+const QList<QUmlOperation *> QUmlInterface::ownedOperation() const
 {
     // This is a read-write association end
 
@@ -198,7 +198,7 @@ void QUmlInterface::removeOwnedOperation(QUmlOperation *ownedOperation)
 /*!
     Receptions that objects providing this interface are willing to accept.
  */
-QSet<QUmlReception *> QUmlInterface::ownedReception() const
+const QSet<QUmlReception *> QUmlInterface::ownedReception() const
 {
     // This is a read-write association end
 
@@ -261,7 +261,7 @@ void QUmlInterface::setProtocol(QUmlProtocolStateMachine *protocol)
 /*!
     References all the Interfaces redefined by this Interface.
  */
-QSet<QUmlInterface *> QUmlInterface::redefinedInterface() const
+const QSet<QUmlInterface *> QUmlInterface::redefinedInterface() const
 {
     // This is a read-write association end
 

@@ -92,7 +92,7 @@ void QUmlVertex::setContainer(QUmlRegion *container)
 /*!
     Specifies the transitions entering this vertex.
  */
-QSet<QUmlTransition *> QUmlVertex::incoming() const
+const QSet<QUmlTransition *> QUmlVertex::incoming() const
 {
     // This is a read-only derived association end
 
@@ -138,7 +138,7 @@ void QUmlVertex::removeIncoming(QUmlTransition *incoming)
 /*!
     Specifies the transitions departing from this vertex.
  */
-QSet<QUmlTransition *> QUmlVertex::outgoing() const
+const QSet<QUmlTransition *> QUmlVertex::outgoing() const
 {
     // This is a read-only derived association end
 

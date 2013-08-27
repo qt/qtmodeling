@@ -62,7 +62,7 @@ public:
     // Owned attributes
     QUmlEvent *event() const;
     void setEvent(QUmlEvent *event);
-    QSet<QUmlPort *> port() const;
+    const QSet<QUmlPort *> port() const;
     void addPort(QUmlPort *port);
     void removePort(QUmlPort *port);
 

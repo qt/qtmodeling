@@ -63,7 +63,7 @@ public:
     QUmlLifeline();
 
     // Owned attributes
-    QSet<QUmlInteractionFragment *> coveredBy() const;
+    const QSet<QUmlInteractionFragment *> coveredBy() const;
     void addCoveredBy(QUmlInteractionFragment *coveredBy);
     void removeCoveredBy(QUmlInteractionFragment *coveredBy);
     QUmlPartDecomposition *decomposedAs() const;

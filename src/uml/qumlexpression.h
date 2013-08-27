@@ -57,7 +57,7 @@ public:
     QUmlExpression();
 
     // Owned attributes
-    QList<QUmlValueSpecification *> operand() const;
+    const QList<QUmlValueSpecification *> operand() const;
     void addOperand(QUmlValueSpecification *operand);
     void removeOperand(QUmlValueSpecification *operand);
     QString symbol() const;

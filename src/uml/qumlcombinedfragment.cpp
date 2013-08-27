@@ -58,7 +58,7 @@ QUmlCombinedFragment::QUmlCombinedFragment() :
     _interactionOperator(QtUml::InteractionOperatorKindSeq)
 {
     d_ptr->object.setProperty("cfragmentGate", QVariant::fromValue(&_cfragmentGate));
-    d_ptr->object.setProperty("interactionOperator", QVariant::fromValue(QtUml::InteractionOperatorKindNone));
+    d_ptr->object.setProperty("interactionOperator", QVariant::fromValue(QtUml::InteractionOperatorKindSeq));
     d_ptr->object.setProperty("operand", QVariant::fromValue(&_operand));
 }
 
@@ -67,7 +67,7 @@ QUmlCombinedFragment::QUmlCombinedFragment() :
 /*!
     Specifies the gates that form the interface between this CombinedFragment and its surroundings
  */
-QSet<QUmlGate *> QUmlCombinedFragment::cfragmentGate() const
+const QSet<QUmlGate *> QUmlCombinedFragment::cfragmentGate() const
 {
     // This is a read-write association end
 
@@ -120,7 +120,7 @@ void QUmlCombinedFragment::setInteractionOperator(QtUml::InteractionOperatorKind
 /*!
     The set of operands of the combined fragment.
  */
-QList<QUmlInteractionOperand *> QUmlCombinedFragment::operand() const
+const QList<QUmlInteractionOperand *> QUmlCombinedFragment::operand() const
 {
     // This is a read-write association end
 

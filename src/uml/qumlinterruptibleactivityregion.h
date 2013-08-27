@@ -60,10 +60,10 @@ public:
     QUmlInterruptibleActivityRegion();
 
     // Owned attributes
-    QSet<QUmlActivityEdge *> interruptingEdge() const;
+    const QSet<QUmlActivityEdge *> interruptingEdge() const;
     void addInterruptingEdge(QUmlActivityEdge *interruptingEdge);
     void removeInterruptingEdge(QUmlActivityEdge *interruptingEdge);
-    QSet<QUmlActivityNode *> node() const;
+    const QSet<QUmlActivityNode *> node() const;
     void addNode(QUmlActivityNode *node);
     void removeNode(QUmlActivityNode *node);
 

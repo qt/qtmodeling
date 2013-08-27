@@ -62,7 +62,7 @@ QUmlPort::QUmlPort() :
 {
     d_ptr->object.setProperty("isBehavior", QVariant::fromValue(false));
     d_ptr->object.setProperty("isConjugated", QVariant::fromValue(false));
-    d_ptr->object.setProperty("isService", QVariant::fromValue(false));
+    d_ptr->object.setProperty("isService", QVariant::fromValue(true));
     d_ptr->object.setProperty("protocol", QVariant::fromValue((QUmlProtocolStateMachine *)(0)));
     d_ptr->object.setProperty("provided", QVariant::fromValue(QSet<QUmlInterface *>()));
     d_ptr->object.setProperty("redefinedPort", QVariant::fromValue(&_redefinedPort));
@@ -150,7 +150,7 @@ void QUmlPort::setProtocol(QUmlProtocolStateMachine *protocol)
 /*!
     References the interfaces specifying the set of operations and receptions that the classifier offers to its environment via this port, and which it will handle either directly or by forwarding it to a part of its internal structure. This association is derived according to the value of isConjugated. If isConjugated is false, provided is derived as the union of the sets of interfaces realized by the type of the port and its supertypes, or directly from the type of the port if the port is typed by an interface. If isConjugated is true, it is derived as the union of the sets of interfaces used by the type of the port and its supertypes.
  */
-QSet<QUmlInterface *> QUmlPort::provided() const
+const QSet<QUmlInterface *> QUmlPort::provided() const
 {
     // This is a read-only derived association end
 
@@ -186,7 +186,7 @@ void QUmlPort::removeProvided(QUmlInterface *provided)
 /*!
     A port may be redefined when its containing classifier is specialized. The redefining port may have additional interfaces to those that are associated with the redefined port or it may replace an interface by one of its subtypes.
  */
-QSet<QUmlPort *> QUmlPort::redefinedPort() const
+const QSet<QUmlPort *> QUmlPort::redefinedPort() const
 {
     // This is a read-write association end
 
@@ -220,7 +220,7 @@ void QUmlPort::removeRedefinedPort(QUmlPort *redefinedPort)
 /*!
     References the interfaces specifying the set of operations and receptions that the classifier expects its environment to handle via this port. This association is derived according to the value of isConjugated. If isConjugated is false, required is derived as the union of the sets of interfaces used by the type of the port and its supertypes. If isConjugated is true, it is derived as the union of the sets of interfaces realized by the type of the port and its supertypes, or directly from the type of the port if the port is typed by an interface.
  */
-QSet<QUmlInterface *> QUmlPort::required() const
+const QSet<QUmlInterface *> QUmlPort::required() const
 {
     // This is a read-only derived association end
 

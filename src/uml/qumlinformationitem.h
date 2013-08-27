@@ -57,7 +57,7 @@ public:
     QUmlInformationItem();
 
     // Owned attributes
-    QSet<QUmlClassifier *> represented() const;
+    const QSet<QUmlClassifier *> represented() const;
     void addRepresented(QUmlClassifier *represented);
     void removeRepresented(QUmlClassifier *represented);
 

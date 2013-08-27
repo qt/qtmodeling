@@ -71,7 +71,7 @@ QUmlTransition::QUmlTransition() :
     d_ptr->object.setProperty("container", QVariant::fromValue((QUmlRegion *)(0)));
     d_ptr->object.setProperty("effect", QVariant::fromValue((QUmlBehavior *)(0)));
     d_ptr->object.setProperty("guard", QVariant::fromValue((QUmlConstraint *)(0)));
-    d_ptr->object.setProperty("kind", QVariant::fromValue(QtUml::TransitionKindNone));
+    d_ptr->object.setProperty("kind", QVariant::fromValue(QtUml::TransitionKindExternal));
     d_ptr->object.setProperty("redefinedTransition", QVariant::fromValue((QUmlTransition *)(0)));
     d_ptr->object.setProperty("redefinitionContext", QVariant::fromValue((QUmlClassifier *)(0)));
     d_ptr->object.setProperty("source", QVariant::fromValue((QUmlVertex *)(0)));
@@ -270,7 +270,7 @@ void QUmlTransition::setTarget(QUmlVertex *target)
 /*!
     Specifies the triggers that may fire the transition.
  */
-QSet<QUmlTrigger *> QUmlTransition::trigger() const
+const QSet<QUmlTrigger *> QUmlTransition::trigger() const
 {
     // This is a read-write association end
 

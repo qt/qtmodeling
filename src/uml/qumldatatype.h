@@ -61,10 +61,10 @@ public:
     QUmlDataType();
 
     // Owned attributes
-    QList<QUmlProperty *> ownedAttribute() const;
+    const QList<QUmlProperty *> ownedAttribute() const;
     void addOwnedAttribute(QUmlProperty *ownedAttribute);
     void removeOwnedAttribute(QUmlProperty *ownedAttribute);
-    QList<QUmlOperation *> ownedOperation() const;
+    const QList<QUmlOperation *> ownedOperation() const;
     void addOwnedOperation(QUmlOperation *ownedOperation);
     void removeOwnedOperation(QUmlOperation *ownedOperation);
 

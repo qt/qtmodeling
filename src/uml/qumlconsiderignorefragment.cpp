@@ -63,7 +63,7 @@ QUmlConsiderIgnoreFragment::QUmlConsiderIgnoreFragment()
 /*!
     The set of messages that apply to this fragment
  */
-QSet<QUmlNamedElement *> QUmlConsiderIgnoreFragment::message() const
+const QSet<QUmlNamedElement *> QUmlConsiderIgnoreFragment::message() const
 {
     // This is a read-write association end
 

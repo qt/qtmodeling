@@ -63,19 +63,19 @@ public:
     QUmlInteraction();
 
     // Owned attributes
-    QSet<QUmlAction *> action() const;
+    const QSet<QUmlAction *> action() const;
     void addAction(QUmlAction *action);
     void removeAction(QUmlAction *action);
-    QSet<QUmlGate *> formalGate() const;
+    const QSet<QUmlGate *> formalGate() const;
     void addFormalGate(QUmlGate *formalGate);
     void removeFormalGate(QUmlGate *formalGate);
-    QList<QUmlInteractionFragment *> fragment() const;
+    const QList<QUmlInteractionFragment *> fragment() const;
     void addFragment(QUmlInteractionFragment *fragment);
     void removeFragment(QUmlInteractionFragment *fragment);
-    QSet<QUmlLifeline *> lifeline() const;
+    const QSet<QUmlLifeline *> lifeline() const;
     void addLifeline(QUmlLifeline *lifeline);
     void removeLifeline(QUmlLifeline *lifeline);
-    QSet<QUmlMessage *> message() const;
+    const QSet<QUmlMessage *> message() const;
     void addMessage(QUmlMessage *message);
     void removeMessage(QUmlMessage *message);
 

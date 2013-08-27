@@ -88,7 +88,7 @@ void QUmlLinkEndData::setEnd(QUmlProperty *end)
 /*!
     List of qualifier values
  */
-QSet<QUmlQualifierValue *> QUmlLinkEndData::qualifier() const
+const QSet<QUmlQualifierValue *> QUmlLinkEndData::qualifier() const
 {
     // This is a read-write association end
 

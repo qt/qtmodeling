@@ -59,7 +59,7 @@ public:
     QUmlProtocolStateMachine();
 
     // Owned attributes
-    QSet<QUmlProtocolConformance *> conformance() const;
+    const QSet<QUmlProtocolConformance *> conformance() const;
     void addConformance(QUmlProtocolConformance *conformance);
     void removeConformance(QUmlProtocolConformance *conformance);
 

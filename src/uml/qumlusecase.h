@@ -62,16 +62,16 @@ public:
     QUmlUseCase();
 
     // Owned attributes
-    QSet<QUmlExtend *> extend() const;
+    const QSet<QUmlExtend *> extend() const;
     void addExtend(QUmlExtend *extend);
     void removeExtend(QUmlExtend *extend);
-    QSet<QUmlExtensionPoint *> extensionPoint() const;
+    const QSet<QUmlExtensionPoint *> extensionPoint() const;
     void addExtensionPoint(QUmlExtensionPoint *extensionPoint);
     void removeExtensionPoint(QUmlExtensionPoint *extensionPoint);
-    QSet<QUmlInclude *> include() const;
+    const QSet<QUmlInclude *> include() const;
     void addInclude(QUmlInclude *include);
     void removeInclude(QUmlInclude *include);
-    QSet<QUmlClassifier *> subject() const;
+    const QSet<QUmlClassifier *> subject() const;
     void addSubject(QUmlClassifier *subject);
     void removeSubject(QUmlClassifier *subject);
 

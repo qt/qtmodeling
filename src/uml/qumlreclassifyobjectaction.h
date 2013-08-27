@@ -62,12 +62,12 @@ public:
     // Owned attributes
     bool isReplaceAll() const;
     void setReplaceAll(bool isReplaceAll);
-    QSet<QUmlClassifier *> newClassifier() const;
+    const QSet<QUmlClassifier *> newClassifier() const;
     void addNewClassifier(QUmlClassifier *newClassifier);
     void removeNewClassifier(QUmlClassifier *newClassifier);
     QUmlInputPin *object() const;
     void setObject(QUmlInputPin *object);
-    QSet<QUmlClassifier *> oldClassifier() const;
+    const QSet<QUmlClassifier *> oldClassifier() const;
     void addOldClassifier(QUmlClassifier *oldClassifier);
     void removeOldClassifier(QUmlClassifier *oldClassifier);
 

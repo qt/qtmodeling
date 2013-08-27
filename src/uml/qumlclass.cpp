@@ -77,7 +77,7 @@ QUmlClass::QUmlClass() :
 /*!
     References the Extensions that specify additional properties of the metaclass. The property is derived from the extensions whose memberEnds are typed by the Class.
  */
-QSet<QUmlExtension *> QUmlClass::extension() const
+const QSet<QUmlExtension *> QUmlClass::extension() const
 {
     // This is a read-only derived association end
 
@@ -161,7 +161,7 @@ void QUmlClass::setActive(bool isActive)
 /*!
     References all the Classifiers that are defined (nested) within the Class.
  */
-QList<QUmlClassifier *> QUmlClass::nestedClassifier() const
+const QList<QUmlClassifier *> QUmlClass::nestedClassifier() const
 {
     // This is a read-write association end
 
@@ -195,7 +195,7 @@ void QUmlClass::removeNestedClassifier(QUmlClassifier *nestedClassifier)
 /*!
     The attributes (i.e. the properties) owned by the class.
  */
-QList<QUmlProperty *> QUmlClass::ownedAttribute() const
+const QList<QUmlProperty *> QUmlClass::ownedAttribute() const
 {
     // This is a read-write association end
 
@@ -241,7 +241,7 @@ void QUmlClass::removeOwnedAttribute(QUmlProperty *ownedAttribute)
 /*!
     The operations owned by the class.
  */
-QList<QUmlOperation *> QUmlClass::ownedOperation() const
+const QList<QUmlOperation *> QUmlClass::ownedOperation() const
 {
     // This is a read-write association end
 
@@ -287,7 +287,7 @@ void QUmlClass::removeOwnedOperation(QUmlOperation *ownedOperation)
 /*!
     Receptions that objects of this class are willing to accept.
  */
-QSet<QUmlReception *> QUmlClass::ownedReception() const
+const QSet<QUmlReception *> QUmlClass::ownedReception() const
 {
     // This is a read-write association end
 
@@ -323,7 +323,7 @@ void QUmlClass::removeOwnedReception(QUmlReception *ownedReception)
 /*!
     This gives the superclasses of a class.
  */
-QSet<QUmlClass *> QUmlClass::superClass() const
+const QSet<QUmlClass *> QUmlClass::superClass() const
 {
     // This is a read-write derived association end
 

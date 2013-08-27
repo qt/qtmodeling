@@ -67,7 +67,7 @@ QUmlConnectionPointReference::QUmlConnectionPointReference() :
 /*!
     The entryPoint kind pseudo states corresponding to this connection point.
  */
-QSet<QUmlPseudostate *> QUmlConnectionPointReference::entry() const
+const QSet<QUmlPseudostate *> QUmlConnectionPointReference::entry() const
 {
     // This is a read-write association end
 
@@ -95,7 +95,7 @@ void QUmlConnectionPointReference::removeEntry(QUmlPseudostate *entry)
 /*!
     The exitPoints kind pseudo states corresponding to this connection point.
  */
-QSet<QUmlPseudostate *> QUmlConnectionPointReference::exit() const
+const QSet<QUmlPseudostate *> QUmlConnectionPointReference::exit() const
 {
     // This is a read-write association end
 

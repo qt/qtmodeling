@@ -63,7 +63,7 @@ public:
     QUmlMessage();
 
     // Owned attributes
-    QList<QUmlValueSpecification *> argument() const;
+    const QList<QUmlValueSpecification *> argument() const;
     void addArgument(QUmlValueSpecification *argument);
     void removeArgument(QUmlValueSpecification *argument);
     QUmlConnector *connector() const;

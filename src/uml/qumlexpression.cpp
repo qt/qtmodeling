@@ -62,7 +62,7 @@ QUmlExpression::QUmlExpression()
 /*!
     Specifies a sequence of operands.
  */
-QList<QUmlValueSpecification *> QUmlExpression::operand() const
+const QList<QUmlValueSpecification *> QUmlExpression::operand() const
 {
     // This is a read-write association end
 

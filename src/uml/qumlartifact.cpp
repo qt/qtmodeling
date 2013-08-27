@@ -88,7 +88,7 @@ void QUmlArtifact::setFileName(QString fileName)
 /*!
     The set of model elements that are manifested in the Artifact. That is, these model elements are utilized in the construction (or generation) of the artifact.
  */
-QSet<QUmlManifestation *> QUmlArtifact::manifestation() const
+const QSet<QUmlManifestation *> QUmlArtifact::manifestation() const
 {
     // This is a read-write association end
 
@@ -124,7 +124,7 @@ void QUmlArtifact::removeManifestation(QUmlManifestation *manifestation)
 /*!
     The Artifacts that are defined (nested) within the Artifact. The association is a specialization of the ownedMember association from Namespace to NamedElement.
  */
-QSet<QUmlArtifact *> QUmlArtifact::nestedArtifact() const
+const QSet<QUmlArtifact *> QUmlArtifact::nestedArtifact() const
 {
     // This is a read-write association end
 
@@ -158,7 +158,7 @@ void QUmlArtifact::removeNestedArtifact(QUmlArtifact *nestedArtifact)
 /*!
     The attributes or association ends defined for the Artifact. The association is a specialization of the ownedMember association.
  */
-QList<QUmlProperty *> QUmlArtifact::ownedAttribute() const
+const QList<QUmlProperty *> QUmlArtifact::ownedAttribute() const
 {
     // This is a read-write association end
 
@@ -194,7 +194,7 @@ void QUmlArtifact::removeOwnedAttribute(QUmlProperty *ownedAttribute)
 /*!
     The Operations defined for the Artifact. The association is a specialization of the ownedMember association.
  */
-QList<QUmlOperation *> QUmlArtifact::ownedOperation() const
+const QList<QUmlOperation *> QUmlArtifact::ownedOperation() const
 {
     // This is a read-write association end
 

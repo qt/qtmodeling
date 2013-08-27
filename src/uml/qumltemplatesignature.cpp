@@ -67,7 +67,7 @@ QUmlTemplateSignature::QUmlTemplateSignature() :
 /*!
     The formal template parameters that are owned by this template signature.
  */
-QList<QUmlTemplateParameter *> QUmlTemplateSignature::ownedParameter() const
+const QList<QUmlTemplateParameter *> QUmlTemplateSignature::ownedParameter() const
 {
     // This is a read-write association end
 
@@ -113,7 +113,7 @@ void QUmlTemplateSignature::removeOwnedParameter(QUmlTemplateParameter *ownedPar
 /*!
     The ordered set of all formal template parameters for this template signature.
  */
-QList<QUmlTemplateParameter *> QUmlTemplateSignature::parameter() const
+const QList<QUmlTemplateParameter *> QUmlTemplateSignature::parameter() const
 {
     // This is a read-write association end
 

@@ -65,7 +65,7 @@ public:
     void setDefiningFeature(QUmlStructuralFeature *definingFeature);
     QUmlInstanceSpecification *owningInstance() const;
     void setOwningInstance(QUmlInstanceSpecification *owningInstance);
-    QList<QUmlValueSpecification *> value() const;
+    const QList<QUmlValueSpecification *> value() const;
     void addValue(QUmlValueSpecification *value);
     void removeValue(QUmlValueSpecification *value);
 

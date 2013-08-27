@@ -61,7 +61,7 @@ QUmlGeneralization::QUmlGeneralization() :
 {
     d_ptr->object.setProperty("general", QVariant::fromValue((QUmlClassifier *)(0)));
     d_ptr->object.setProperty("generalizationSet", QVariant::fromValue(&_generalizationSet));
-    d_ptr->object.setProperty("isSubstitutable", QVariant::fromValue(false));
+    d_ptr->object.setProperty("isSubstitutable", QVariant::fromValue(true));
     d_ptr->object.setProperty("specific", QVariant::fromValue((QUmlClassifier *)(0)));
 }
 
@@ -97,7 +97,7 @@ void QUmlGeneralization::setGeneral(QUmlClassifier *general)
 /*!
     Designates a set in which instances of Generalization is considered members.
  */
-QSet<QUmlGeneralizationSet *> QUmlGeneralization::generalizationSet() const
+const QSet<QUmlGeneralizationSet *> QUmlGeneralization::generalizationSet() const
 {
     // This is a read-write association end
 

@@ -60,10 +60,10 @@ public:
     QUmlConnectionPointReference();
 
     // Owned attributes
-    QSet<QUmlPseudostate *> entry() const;
+    const QSet<QUmlPseudostate *> entry() const;
     void addEntry(QUmlPseudostate *entry);
     void removeEntry(QUmlPseudostate *entry);
-    QSet<QUmlPseudostate *> exit() const;
+    const QSet<QUmlPseudostate *> exit() const;
     void addExit(QUmlPseudostate *exit);
     void removeExit(QUmlPseudostate *exit);
     QUmlState *state() const;

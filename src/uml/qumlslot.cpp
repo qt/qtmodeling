@@ -112,7 +112,7 @@ void QUmlSlot::setOwningInstance(QUmlInstanceSpecification *owningInstance)
 /*!
     The value or values corresponding to the defining feature for the owning instance specification.
  */
-QList<QUmlValueSpecification *> QUmlSlot::value() const
+const QList<QUmlValueSpecification *> QUmlSlot::value() const
 {
     // This is a read-write association end
 

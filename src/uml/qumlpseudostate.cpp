@@ -59,7 +59,7 @@ QUmlPseudostate::QUmlPseudostate() :
     _state(0),
     _stateMachine(0)
 {
-    d_ptr->object.setProperty("kind", QVariant::fromValue(QtUml::PseudostateKindNone));
+    d_ptr->object.setProperty("kind", QVariant::fromValue(QtUml::PseudostateKindInitial));
     d_ptr->object.setProperty("state", QVariant::fromValue((QUmlState *)(0)));
     d_ptr->object.setProperty("stateMachine", QVariant::fromValue((QUmlStateMachine *)(0)));
 }

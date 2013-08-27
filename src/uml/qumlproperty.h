@@ -99,13 +99,13 @@ public:
     void setOpposite(QUmlProperty *opposite);
     QUmlAssociation *owningAssociation() const;
     void setOwningAssociation(QUmlAssociation *owningAssociation);
-    QList<QUmlProperty *> qualifier() const;
+    const QList<QUmlProperty *> qualifier() const;
     void addQualifier(QUmlProperty *qualifier);
     void removeQualifier(QUmlProperty *qualifier);
-    QSet<QUmlProperty *> redefinedProperty() const;
+    const QSet<QUmlProperty *> redefinedProperty() const;
     void addRedefinedProperty(QUmlProperty *redefinedProperty);
     void removeRedefinedProperty(QUmlProperty *redefinedProperty);
-    QSet<QUmlProperty *> subsettedProperty() const;
+    const QSet<QUmlProperty *> subsettedProperty() const;
     void addSubsettedProperty(QUmlProperty *subsettedProperty);
     void removeSubsettedProperty(QUmlProperty *subsettedProperty);
 

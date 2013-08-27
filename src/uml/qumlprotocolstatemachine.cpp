@@ -63,7 +63,7 @@ QUmlProtocolStateMachine::QUmlProtocolStateMachine()
 /*!
     Conformance between protocol state machines.
  */
-QSet<QUmlProtocolConformance *> QUmlProtocolStateMachine::conformance() const
+const QSet<QUmlProtocolConformance *> QUmlProtocolStateMachine::conformance() const
 {
     // This is a read-write association end
 

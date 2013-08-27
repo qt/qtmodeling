@@ -90,7 +90,7 @@ void QUmlExceptionHandler::setExceptionInput(QUmlObjectNode *exceptionInput)
 /*!
     The kind of instances that the handler catches. If an exception occurs whose type is any of the classifiers in the set, the handler catches the exception and executes its body.
  */
-QSet<QUmlClassifier *> QUmlExceptionHandler::exceptionType() const
+const QSet<QUmlClassifier *> QUmlExceptionHandler::exceptionType() const
 {
     // This is a read-write association end
 

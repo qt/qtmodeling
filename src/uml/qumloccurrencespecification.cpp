@@ -86,7 +86,7 @@ void QUmlOccurrenceSpecification::setCovered(QUmlLifeline *covered)
 /*!
     References the GeneralOrderings that specify EventOcurrences that must occur after this OccurrenceSpecification
  */
-QSet<QUmlGeneralOrdering *> QUmlOccurrenceSpecification::toAfter() const
+const QSet<QUmlGeneralOrdering *> QUmlOccurrenceSpecification::toAfter() const
 {
     // This is a read-write association end
 
@@ -124,7 +124,7 @@ void QUmlOccurrenceSpecification::removeToAfter(QUmlGeneralOrdering *toAfter)
 /*!
     References the GeneralOrderings that specify EventOcurrences that must occur before this OccurrenceSpecification
  */
-QSet<QUmlGeneralOrdering *> QUmlOccurrenceSpecification::toBefore() const
+const QSet<QUmlGeneralOrdering *> QUmlOccurrenceSpecification::toBefore() const
 {
     // This is a read-write association end
 

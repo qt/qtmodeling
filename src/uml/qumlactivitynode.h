@@ -66,24 +66,24 @@ public:
     // Owned attributes
     QUmlActivity *activity() const;
     void setActivity(QUmlActivity *activity);
-    QSet<QUmlActivityGroup *> inGroup() const;
+    const QSet<QUmlActivityGroup *> inGroup() const;
     Q_DECL_HIDDEN void addInGroup(QUmlActivityGroup *inGroup);
     Q_DECL_HIDDEN void removeInGroup(QUmlActivityGroup *inGroup);
-    QSet<QUmlInterruptibleActivityRegion *> inInterruptibleRegion() const;
+    const QSet<QUmlInterruptibleActivityRegion *> inInterruptibleRegion() const;
     void addInInterruptibleRegion(QUmlInterruptibleActivityRegion *inInterruptibleRegion);
     void removeInInterruptibleRegion(QUmlInterruptibleActivityRegion *inInterruptibleRegion);
-    QSet<QUmlActivityPartition *> inPartition() const;
+    const QSet<QUmlActivityPartition *> inPartition() const;
     void addInPartition(QUmlActivityPartition *inPartition);
     void removeInPartition(QUmlActivityPartition *inPartition);
     QUmlStructuredActivityNode *inStructuredNode() const;
     void setInStructuredNode(QUmlStructuredActivityNode *inStructuredNode);
-    QSet<QUmlActivityEdge *> incoming() const;
+    const QSet<QUmlActivityEdge *> incoming() const;
     void addIncoming(QUmlActivityEdge *incoming);
     void removeIncoming(QUmlActivityEdge *incoming);
-    QSet<QUmlActivityEdge *> outgoing() const;
+    const QSet<QUmlActivityEdge *> outgoing() const;
     void addOutgoing(QUmlActivityEdge *outgoing);
     void removeOutgoing(QUmlActivityEdge *outgoing);
-    QSet<QUmlActivityNode *> redefinedNode() const;
+    const QSet<QUmlActivityNode *> redefinedNode() const;
     void addRedefinedNode(QUmlActivityNode *redefinedNode);
     void removeRedefinedNode(QUmlActivityNode *redefinedNode);
 

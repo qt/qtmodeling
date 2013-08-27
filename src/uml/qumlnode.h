@@ -58,7 +58,7 @@ public:
     QUmlNode();
 
     // Owned attributes
-    QSet<QUmlNode *> nestedNode() const;
+    const QSet<QUmlNode *> nestedNode() const;
     void addNestedNode(QUmlNode *nestedNode);
     void removeNestedNode(QUmlNode *nestedNode);
 

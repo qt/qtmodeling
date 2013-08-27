@@ -136,7 +136,7 @@ void QUmlActivityEdge::setGuard(QUmlValueSpecification *guard)
 /*!
     Groups containing the edge.
  */
-QSet<QUmlActivityGroup *> QUmlActivityEdge::inGroup() const
+const QSet<QUmlActivityGroup *> QUmlActivityEdge::inGroup() const
 {
     // This is a read-only derived union association end
 
@@ -174,7 +174,7 @@ void QUmlActivityEdge::removeInGroup(QUmlActivityGroup *inGroup)
 /*!
     Partitions containing the edge.
  */
-QSet<QUmlActivityPartition *> QUmlActivityEdge::inPartition() const
+const QSet<QUmlActivityPartition *> QUmlActivityEdge::inPartition() const
 {
     // This is a read-write association end
 
@@ -265,7 +265,7 @@ void QUmlActivityEdge::setInterrupts(QUmlInterruptibleActivityRegion *interrupts
 /*!
     Inherited edges replaced by this edge in a specialization of the activity.
  */
-QSet<QUmlActivityEdge *> QUmlActivityEdge::redefinedEdge() const
+const QSet<QUmlActivityEdge *> QUmlActivityEdge::redefinedEdge() const
 {
     // This is a read-write association end
 

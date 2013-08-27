@@ -64,16 +64,16 @@ public:
     // Owned attributes
     QString fileName() const;
     void setFileName(QString fileName);
-    QSet<QUmlManifestation *> manifestation() const;
+    const QSet<QUmlManifestation *> manifestation() const;
     void addManifestation(QUmlManifestation *manifestation);
     void removeManifestation(QUmlManifestation *manifestation);
-    QSet<QUmlArtifact *> nestedArtifact() const;
+    const QSet<QUmlArtifact *> nestedArtifact() const;
     void addNestedArtifact(QUmlArtifact *nestedArtifact);
     void removeNestedArtifact(QUmlArtifact *nestedArtifact);
-    QList<QUmlProperty *> ownedAttribute() const;
+    const QList<QUmlProperty *> ownedAttribute() const;
     void addOwnedAttribute(QUmlProperty *ownedAttribute);
     void removeOwnedAttribute(QUmlProperty *ownedAttribute);
-    QList<QUmlOperation *> ownedOperation() const;
+    const QList<QUmlOperation *> ownedOperation() const;
     void addOwnedOperation(QUmlOperation *ownedOperation);
     void removeOwnedOperation(QUmlOperation *ownedOperation);
 

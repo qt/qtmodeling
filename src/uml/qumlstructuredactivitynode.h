@@ -68,21 +68,21 @@ public:
     // Owned attributes
     QUmlActivity *activity() const;
     void setActivity(QUmlActivity *activity);
-    QSet<QUmlActivityEdge *> edge() const;
+    const QSet<QUmlActivityEdge *> edge() const;
     void addEdge(QUmlActivityEdge *edge);
     void removeEdge(QUmlActivityEdge *edge);
     bool mustIsolate() const;
     void setMustIsolate(bool mustIsolate);
-    QSet<QUmlActivityNode *> node() const;
+    const QSet<QUmlActivityNode *> node() const;
     void addNode(QUmlActivityNode *node);
     void removeNode(QUmlActivityNode *node);
-    QSet<QUmlInputPin *> structuredNodeInput() const;
+    const QSet<QUmlInputPin *> structuredNodeInput() const;
     void addStructuredNodeInput(QUmlInputPin *structuredNodeInput);
     void removeStructuredNodeInput(QUmlInputPin *structuredNodeInput);
-    QSet<QUmlOutputPin *> structuredNodeOutput() const;
+    const QSet<QUmlOutputPin *> structuredNodeOutput() const;
     void addStructuredNodeOutput(QUmlOutputPin *structuredNodeOutput);
     void removeStructuredNodeOutput(QUmlOutputPin *structuredNodeOutput);
-    QSet<QUmlVariable *> variable() const;
+    const QSet<QUmlVariable *> variable() const;
     void addVariable(QUmlVariable *variable);
     void removeVariable(QUmlVariable *variable);
 

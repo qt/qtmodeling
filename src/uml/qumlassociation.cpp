@@ -69,7 +69,7 @@ QUmlAssociation::QUmlAssociation() :
 /*!
     References the classifiers that are used as types of the ends of the association.
  */
-QList<QUmlType *> QUmlAssociation::endType() const
+const QList<QUmlType *> QUmlAssociation::endType() const
 {
     // This is a read-only derived association end
 
@@ -130,7 +130,7 @@ void QUmlAssociation::setDerived(bool isDerived)
 /*!
     Each end represents participation of instances of the classifier connected to the end in links of the association.
  */
-QList<QUmlProperty *> QUmlAssociation::memberEnd() const
+const QList<QUmlProperty *> QUmlAssociation::memberEnd() const
 {
     // This is a read-write association end
 
@@ -174,7 +174,7 @@ void QUmlAssociation::removeMemberEnd(QUmlProperty *memberEnd)
 /*!
     The navigable ends that are owned by the association itself.
  */
-QSet<QUmlProperty *> QUmlAssociation::navigableOwnedEnd() const
+const QSet<QUmlProperty *> QUmlAssociation::navigableOwnedEnd() const
 {
     // This is a read-write association end
 
@@ -208,7 +208,7 @@ void QUmlAssociation::removeNavigableOwnedEnd(QUmlProperty *navigableOwnedEnd)
 /*!
     The ends that are owned by the association itself.
  */
-QList<QUmlProperty *> QUmlAssociation::ownedEnd() const
+const QList<QUmlProperty *> QUmlAssociation::ownedEnd() const
 {
     // This is a read-write association end
 

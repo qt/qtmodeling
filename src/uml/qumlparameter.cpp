@@ -64,7 +64,7 @@ QUmlParameter::QUmlParameter() :
 {
     d_ptr->object.setProperty("default", QVariant::fromValue(QString()));
     d_ptr->object.setProperty("defaultValue", QVariant::fromValue((QUmlValueSpecification *)(0)));
-    d_ptr->object.setProperty("direction", QVariant::fromValue(QtUml::ParameterDirectionKindNone));
+    d_ptr->object.setProperty("direction", QVariant::fromValue(QtUml::ParameterDirectionKindIn));
     d_ptr->object.setProperty("effect", QVariant::fromValue(QtUml::ParameterEffectKindNone));
     d_ptr->object.setProperty("isException", QVariant::fromValue(false));
     d_ptr->object.setProperty("isStream", QVariant::fromValue(false));
@@ -223,7 +223,7 @@ void QUmlParameter::setOperation(QUmlOperation *operation)
 /*!
     The parameter sets containing the parameter. See ParameterSet.
  */
-QSet<QUmlParameterSet *> QUmlParameter::parameterSet() const
+const QSet<QUmlParameterSet *> QUmlParameter::parameterSet() const
 {
     // This is a read-write association end
 

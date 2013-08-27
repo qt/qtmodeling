@@ -77,7 +77,7 @@ public:
     void setStream(bool isStream);
     QUmlOperation *operation() const;
     void setOperation(QUmlOperation *operation);
-    QSet<QUmlParameterSet *> parameterSet() const;
+    const QSet<QUmlParameterSet *> parameterSet() const;
     void addParameterSet(QUmlParameterSet *parameterSet);
     void removeParameterSet(QUmlParameterSet *parameterSet);
 

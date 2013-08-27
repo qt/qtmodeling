@@ -61,7 +61,7 @@ QUmlInformationItem::QUmlInformationItem()
 /*!
     Determines the classifiers that will specify the structure and nature of the information. An information item represents all its represented classifiers.
  */
-QSet<QUmlClassifier *> QUmlInformationItem::represented() const
+const QSet<QUmlClassifier *> QUmlInformationItem::represented() const
 {
     // This is a read-write association end
 

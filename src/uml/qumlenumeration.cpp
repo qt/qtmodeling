@@ -63,7 +63,7 @@ QUmlEnumeration::QUmlEnumeration()
 /*!
     The ordered set of literals for this Enumeration.
  */
-QList<QUmlEnumerationLiteral *> QUmlEnumeration::ownedLiteral() const
+const QList<QUmlEnumerationLiteral *> QUmlEnumeration::ownedLiteral() const
 {
     // This is a read-write association end
 

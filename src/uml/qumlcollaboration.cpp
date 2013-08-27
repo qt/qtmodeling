@@ -63,7 +63,7 @@ QUmlCollaboration::QUmlCollaboration()
 /*!
     References connectable elements (possibly owned by other classifiers) which represent roles that instances may play in this collaboration.
  */
-QSet<QUmlConnectableElement *> QUmlCollaboration::collaborationRole() const
+const QSet<QUmlConnectableElement *> QUmlCollaboration::collaborationRole() const
 {
     // This is a read-write association end
 

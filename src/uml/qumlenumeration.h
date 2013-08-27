@@ -59,7 +59,7 @@ public:
     QUmlEnumeration();
 
     // Owned attributes
-    QList<QUmlEnumerationLiteral *> ownedLiteral() const;
+    const QList<QUmlEnumerationLiteral *> ownedLiteral() const;
     void addOwnedLiteral(QUmlEnumerationLiteral *ownedLiteral);
     void removeOwnedLiteral(QUmlEnumerationLiteral *ownedLiteral);
 

@@ -95,7 +95,7 @@ void QUmlStructuredActivityNode::setActivity(QUmlActivity *activity)
 /*!
     Edges immediately contained in the structured node.
  */
-QSet<QUmlActivityEdge *> QUmlStructuredActivityNode::edge() const
+const QSet<QUmlActivityEdge *> QUmlStructuredActivityNode::edge() const
 {
     // This is a read-write association end
 
@@ -160,7 +160,7 @@ void QUmlStructuredActivityNode::setMustIsolate(bool mustIsolate)
 /*!
     Nodes immediately contained in the group.
  */
-QSet<QUmlActivityNode *> QUmlStructuredActivityNode::node() const
+const QSet<QUmlActivityNode *> QUmlStructuredActivityNode::node() const
 {
     // This is a read-write association end
 
@@ -203,7 +203,7 @@ void QUmlStructuredActivityNode::removeNode(QUmlActivityNode *node)
     }
 }
 
-QSet<QUmlInputPin *> QUmlStructuredActivityNode::structuredNodeInput() const
+const QSet<QUmlInputPin *> QUmlStructuredActivityNode::structuredNodeInput() const
 {
     // This is a read-write association end
 
@@ -234,7 +234,7 @@ void QUmlStructuredActivityNode::removeStructuredNodeInput(QUmlInputPin *structu
     }
 }
 
-QSet<QUmlOutputPin *> QUmlStructuredActivityNode::structuredNodeOutput() const
+const QSet<QUmlOutputPin *> QUmlStructuredActivityNode::structuredNodeOutput() const
 {
     // This is a read-write association end
 
@@ -268,7 +268,7 @@ void QUmlStructuredActivityNode::removeStructuredNodeOutput(QUmlOutputPin *struc
 /*!
     A variable defined in the scope of the structured activity node. It has no value and may not be accessed
  */
-QSet<QUmlVariable *> QUmlStructuredActivityNode::variable() const
+const QSet<QUmlVariable *> QUmlStructuredActivityNode::variable() const
 {
     // This is a read-write association end
 

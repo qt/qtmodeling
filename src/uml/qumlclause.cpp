@@ -70,7 +70,7 @@ QUmlClause::QUmlClause() :
 /*!
     A nested activity fragment that is executed if the test evaluates to true and the clause is chosen over any concurrent clauses that also evaluate to true.
  */
-QSet<QUmlExecutableNode *> QUmlClause::body() const
+const QSet<QUmlExecutableNode *> QUmlClause::body() const
 {
     // This is a read-write association end
 
@@ -98,7 +98,7 @@ void QUmlClause::removeBody(QUmlExecutableNode *body)
 /*!
     A list of output pins within the body fragment whose values are moved to the result pins of the containing conditional node after execution of the clause body.
  */
-QList<QUmlOutputPin *> QUmlClause::bodyOutput() const
+const QList<QUmlOutputPin *> QUmlClause::bodyOutput() const
 {
     // This is a read-write association end
 
@@ -145,7 +145,7 @@ void QUmlClause::setDecider(QUmlOutputPin *decider)
 /*!
     A set of clauses whose tests must all evaluate false before the current clause can be tested.
  */
-QSet<QUmlClause *> QUmlClause::predecessorClause() const
+const QSet<QUmlClause *> QUmlClause::predecessorClause() const
 {
     // This is a read-write association end
 
@@ -173,7 +173,7 @@ void QUmlClause::removePredecessorClause(QUmlClause *predecessorClause)
 /*!
     A set of clauses which may not be tested unless the current clause tests false.
  */
-QSet<QUmlClause *> QUmlClause::successorClause() const
+const QSet<QUmlClause *> QUmlClause::successorClause() const
 {
     // This is a read-write association end
 
@@ -201,7 +201,7 @@ void QUmlClause::removeSuccessorClause(QUmlClause *successorClause)
 /*!
     A nested activity fragment with a designated output pin that specifies the result of the test.
  */
-QSet<QUmlExecutableNode *> QUmlClause::test() const
+const QSet<QUmlExecutableNode *> QUmlClause::test() const
 {
     // This is a read-write association end
 

@@ -63,7 +63,7 @@ QUmlCreateLinkAction::QUmlCreateLinkAction()
 /*!
     Specifies ends of association and inputs.
  */
-QSet<QUmlLinkEndCreationData *> QUmlCreateLinkAction::endData() const
+const QSet<QUmlLinkEndCreationData *> QUmlCreateLinkAction::endData() const
 {
     // This is a read-write association end
 

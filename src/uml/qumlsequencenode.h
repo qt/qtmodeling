@@ -59,7 +59,7 @@ public:
     QUmlSequenceNode();
 
     // Owned attributes
-    QList<QUmlExecutableNode *> executableNode() const;
+    const QList<QUmlExecutableNode *> executableNode() const;
     void addExecutableNode(QUmlExecutableNode *executableNode);
     void removeExecutableNode(QUmlExecutableNode *executableNode);
 

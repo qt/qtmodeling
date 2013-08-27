@@ -62,15 +62,15 @@ public:
     QUmlConnector();
 
     // Owned attributes
-    QSet<QUmlBehavior *> contract() const;
+    const QSet<QUmlBehavior *> contract() const;
     void addContract(QUmlBehavior *contract);
     void removeContract(QUmlBehavior *contract);
-    QList<QUmlConnectorEnd *> end() const;
+    const QList<QUmlConnectorEnd *> end() const;
     void addEnd(QUmlConnectorEnd *end);
     void removeEnd(QUmlConnectorEnd *end);
     QtUml::ConnectorKind kind() const;
     Q_DECL_HIDDEN void setKind(QtUml::ConnectorKind kind);
-    QSet<QUmlConnector *> redefinedConnector() const;
+    const QSet<QUmlConnector *> redefinedConnector() const;
     void addRedefinedConnector(QUmlConnector *redefinedConnector);
     void removeRedefinedConnector(QUmlConnector *redefinedConnector);
     QUmlAssociation *type() const;

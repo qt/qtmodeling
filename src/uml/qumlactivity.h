@@ -64,26 +64,26 @@ public:
     QUmlActivity();
 
     // Owned attributes
-    QSet<QUmlActivityEdge *> edge() const;
+    const QSet<QUmlActivityEdge *> edge() const;
     void addEdge(QUmlActivityEdge *edge);
     void removeEdge(QUmlActivityEdge *edge);
-    QSet<QUmlActivityGroup *> group() const;
+    const QSet<QUmlActivityGroup *> group() const;
     void addGroup(QUmlActivityGroup *group);
     void removeGroup(QUmlActivityGroup *group);
     bool isReadOnly() const;
     void setReadOnly(bool isReadOnly);
     bool isSingleExecution() const;
     void setSingleExecution(bool isSingleExecution);
-    QSet<QUmlActivityNode *> node() const;
+    const QSet<QUmlActivityNode *> node() const;
     void addNode(QUmlActivityNode *node);
     void removeNode(QUmlActivityNode *node);
-    QSet<QUmlActivityPartition *> partition() const;
+    const QSet<QUmlActivityPartition *> partition() const;
     void addPartition(QUmlActivityPartition *partition);
     void removePartition(QUmlActivityPartition *partition);
-    QSet<QUmlStructuredActivityNode *> structuredNode() const;
+    const QSet<QUmlStructuredActivityNode *> structuredNode() const;
     void addStructuredNode(QUmlStructuredActivityNode *structuredNode);
     void removeStructuredNode(QUmlStructuredActivityNode *structuredNode);
-    QSet<QUmlVariable *> variable() const;
+    const QSet<QUmlVariable *> variable() const;
     void addVariable(QUmlVariable *variable);
     void removeVariable(QUmlVariable *variable);
 

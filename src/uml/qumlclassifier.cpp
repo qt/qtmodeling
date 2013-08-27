@@ -92,7 +92,7 @@ QUmlClassifier::QUmlClassifier() :
 /*!
     Refers to all of the Properties that are direct (i.e. not inherited or imported) attributes of the classifier.
  */
-QSet<QUmlProperty *> QUmlClassifier::attribute() const
+const QSet<QUmlProperty *> QUmlClassifier::attribute() const
 {
     // This is a read-only derived union association end
 
@@ -126,7 +126,7 @@ void QUmlClassifier::removeAttribute(QUmlProperty *attribute)
 /*!
     References the collaboration uses owned by the classifier.
  */
-QSet<QUmlCollaborationUse *> QUmlClassifier::collaborationUse() const
+const QSet<QUmlCollaborationUse *> QUmlClassifier::collaborationUse() const
 {
     // This is a read-write association end
 
@@ -160,7 +160,7 @@ void QUmlClassifier::removeCollaborationUse(QUmlCollaborationUse *collaborationU
 /*!
     Specifies each feature defined in the classifier.Note that there may be members of the Classifier that are of the type Feature but are not included in this association, e.g. inherited features.
  */
-QSet<QUmlFeature *> QUmlClassifier::feature() const
+const QSet<QUmlFeature *> QUmlClassifier::feature() const
 {
     // This is a read-only derived union association end
 
@@ -204,7 +204,7 @@ void QUmlClassifier::removeFeature(QUmlFeature *feature)
 /*!
     Specifies the general Classifiers for this Classifier.References the general classifier in the Generalization relationship.
  */
-QSet<QUmlClassifier *> QUmlClassifier::general() const
+const QSet<QUmlClassifier *> QUmlClassifier::general() const
 {
     // This is a read-write derived association end
 
@@ -240,7 +240,7 @@ void QUmlClassifier::removeGeneral(QUmlClassifier *general)
 /*!
     Specifies the Generalization relationships for this Classifier. These Generalizations navigaten to more general classifiers in the generalization hierarchy.
  */
-QSet<QUmlGeneralization *> QUmlClassifier::generalization() const
+const QSet<QUmlGeneralization *> QUmlClassifier::generalization() const
 {
     // This is a read-write association end
 
@@ -284,7 +284,7 @@ void QUmlClassifier::removeGeneralization(QUmlGeneralization *generalization)
 /*!
     Specifies all elements inherited by this classifier from the general classifiers.
  */
-QSet<QUmlNamedElement *> QUmlClassifier::inheritedMember() const
+const QSet<QUmlNamedElement *> QUmlClassifier::inheritedMember() const
 {
     // This is a read-only derived association end
 
@@ -383,7 +383,7 @@ void QUmlClassifier::setOwnedTemplateSignature(QUmlRedefinableTemplateSignature 
 /*!
     References the use cases owned by this classifier.
  */
-QSet<QUmlUseCase *> QUmlClassifier::ownedUseCase() const
+const QSet<QUmlUseCase *> QUmlClassifier::ownedUseCase() const
 {
     // This is a read-write association end
 
@@ -417,7 +417,7 @@ void QUmlClassifier::removeOwnedUseCase(QUmlUseCase *ownedUseCase)
 /*!
     Designates the GeneralizationSet of which the associated Classifier is a power type.
  */
-QSet<QUmlGeneralizationSet *> QUmlClassifier::powertypeExtent() const
+const QSet<QUmlGeneralizationSet *> QUmlClassifier::powertypeExtent() const
 {
     // This is a read-write association end
 
@@ -455,7 +455,7 @@ void QUmlClassifier::removePowertypeExtent(QUmlGeneralizationSet *powertypeExten
 /*!
     References the Classifiers that are redefined by this Classifier.
  */
-QSet<QUmlClassifier *> QUmlClassifier::redefinedClassifier() const
+const QSet<QUmlClassifier *> QUmlClassifier::redefinedClassifier() const
 {
     // This is a read-write association end
 
@@ -516,7 +516,7 @@ void QUmlClassifier::setRepresentation(QUmlCollaborationUse *representation)
 /*!
     References the substitutions that are owned by this Classifier.
  */
-QSet<QUmlSubstitution *> QUmlClassifier::substitution() const
+const QSet<QUmlSubstitution *> QUmlClassifier::substitution() const
 {
     // This is a read-write association end
 
@@ -581,7 +581,7 @@ void QUmlClassifier::setTemplateParameter(QUmlClassifierTemplateParameter *templ
 /*!
     The set of use cases for which this Classifier is the subject.
  */
-QSet<QUmlUseCase *> QUmlClassifier::useCase() const
+const QSet<QUmlUseCase *> QUmlClassifier::useCase() const
 {
     // This is a read-write association end
 

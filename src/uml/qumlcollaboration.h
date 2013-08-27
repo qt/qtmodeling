@@ -60,7 +60,7 @@ public:
     QUmlCollaboration();
 
     // Owned attributes
-    QSet<QUmlConnectableElement *> collaborationRole() const;
+    const QSet<QUmlConnectableElement *> collaborationRole() const;
     void addCollaborationRole(QUmlConnectableElement *collaborationRole);
     void removeCollaborationRole(QUmlConnectableElement *collaborationRole);
 

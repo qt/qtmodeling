@@ -60,16 +60,16 @@ public:
     QUmlOpaqueAction();
 
     // Owned attributes
-    QList<QString> body() const;
+    const QList<QString> body() const;
     void addBody(QString body);
     void removeBody(QString body);
-    QSet<QUmlInputPin *> inputValue() const;
+    const QSet<QUmlInputPin *> inputValue() const;
     void addInputValue(QUmlInputPin *inputValue);
     void removeInputValue(QUmlInputPin *inputValue);
-    QList<QString> language() const;
+    const QList<QString> language() const;
     void addLanguage(QString language);
     void removeLanguage(QString language);
-    QSet<QUmlOutputPin *> outputValue() const;
+    const QSet<QUmlOutputPin *> outputValue() const;
     void addOutputValue(QUmlOutputPin *outputValue);
     void removeOutputValue(QUmlOutputPin *outputValue);
 

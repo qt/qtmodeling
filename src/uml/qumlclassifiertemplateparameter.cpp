@@ -57,7 +57,7 @@ QUmlClassifierTemplateParameter::QUmlClassifierTemplateParameter() :
     _allowSubstitutable(true),
     _parameteredElement(0)
 {
-    d_ptr->object.setProperty("allowSubstitutable", QVariant::fromValue(false));
+    d_ptr->object.setProperty("allowSubstitutable", QVariant::fromValue(true));
     d_ptr->object.setProperty("constrainingClassifier", QVariant::fromValue(&_constrainingClassifier));
     d_ptr->object.setProperty("parameteredElement", QVariant::fromValue((QUmlClassifier *)(0)));
 }
@@ -86,7 +86,7 @@ void QUmlClassifierTemplateParameter::setAllowSubstitutable(bool allowSubstituta
 /*!
     The classifiers that constrain the argument that can be used for the parameter. If the allowSubstitutable attribute is true, then any classifier that is compatible with this constraining classifier can be substituted; otherwise, it must be either this classifier or one of its subclasses. If this property is empty, there are no constraints on the classifier that can be used as an argument.
  */
-QSet<QUmlClassifier *> QUmlClassifierTemplateParameter::constrainingClassifier() const
+const QSet<QUmlClassifier *> QUmlClassifierTemplateParameter::constrainingClassifier() const
 {
     // This is a read-write association end
 

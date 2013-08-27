@@ -63,7 +63,7 @@ QUmlExecutableNode::QUmlExecutableNode()
 /*!
     A set of exception handlers that are examined if an uncaught exception propagates to the outer level of the executable node.
  */
-QSet<QUmlExceptionHandler *> QUmlExecutableNode::handler() const
+const QSet<QUmlExceptionHandler *> QUmlExecutableNode::handler() const
 {
     // This is a read-write association end
 

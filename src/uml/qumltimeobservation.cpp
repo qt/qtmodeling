@@ -58,7 +58,7 @@ QUmlTimeObservation::QUmlTimeObservation() :
     _firstEvent(true)
 {
     d_ptr->object.setProperty("event", QVariant::fromValue((QUmlNamedElement *)(0)));
-    d_ptr->object.setProperty("firstEvent", QVariant::fromValue(false));
+    d_ptr->object.setProperty("firstEvent", QVariant::fromValue(true));
 }
 
 // OWNED ATTRIBUTES

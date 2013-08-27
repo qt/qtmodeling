@@ -88,7 +88,7 @@ void QUmlReclassifyObjectAction::setReplaceAll(bool isReplaceAll)
 /*!
     A set of classifiers to be added to the classifiers of the object.
  */
-QSet<QUmlClassifier *> QUmlReclassifyObjectAction::newClassifier() const
+const QSet<QUmlClassifier *> QUmlReclassifyObjectAction::newClassifier() const
 {
     // This is a read-write association end
 
@@ -143,7 +143,7 @@ void QUmlReclassifyObjectAction::setObject(QUmlInputPin *object)
 /*!
     A set of classifiers to be removed from the classifiers of the object.
  */
-QSet<QUmlClassifier *> QUmlReclassifyObjectAction::oldClassifier() const
+const QSet<QUmlClassifier *> QUmlReclassifyObjectAction::oldClassifier() const
 {
     // This is a read-write association end
 

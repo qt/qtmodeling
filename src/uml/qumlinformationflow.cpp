@@ -74,7 +74,7 @@ QUmlInformationFlow::QUmlInformationFlow()
 /*!
     Specifies the information items that may circulate on this information flow.
  */
-QSet<QUmlClassifier *> QUmlInformationFlow::conveyed() const
+const QSet<QUmlClassifier *> QUmlInformationFlow::conveyed() const
 {
     // This is a read-write association end
 
@@ -102,7 +102,7 @@ void QUmlInformationFlow::removeConveyed(QUmlClassifier *conveyed)
 /*!
     Defines from which source the conveyed InformationItems are initiated.
  */
-QSet<QUmlNamedElement *> QUmlInformationFlow::informationSource() const
+const QSet<QUmlNamedElement *> QUmlInformationFlow::informationSource() const
 {
     // This is a read-write association end
 
@@ -136,7 +136,7 @@ void QUmlInformationFlow::removeInformationSource(QUmlNamedElement *informationS
 /*!
     Defines to which target the conveyed InformationItems are directed.
  */
-QSet<QUmlNamedElement *> QUmlInformationFlow::informationTarget() const
+const QSet<QUmlNamedElement *> QUmlInformationFlow::informationTarget() const
 {
     // This is a read-write association end
 
@@ -170,7 +170,7 @@ void QUmlInformationFlow::removeInformationTarget(QUmlNamedElement *informationT
 /*!
     Determines which Relationship will realize the specified flow
  */
-QSet<QUmlRelationship *> QUmlInformationFlow::realization() const
+const QSet<QUmlRelationship *> QUmlInformationFlow::realization() const
 {
     // This is a read-write association end
 
@@ -198,7 +198,7 @@ void QUmlInformationFlow::removeRealization(QUmlRelationship *realization)
 /*!
     Determines which ActivityEdges will realize the specified flow.
  */
-QSet<QUmlActivityEdge *> QUmlInformationFlow::realizingActivityEdge() const
+const QSet<QUmlActivityEdge *> QUmlInformationFlow::realizingActivityEdge() const
 {
     // This is a read-write association end
 
@@ -226,7 +226,7 @@ void QUmlInformationFlow::removeRealizingActivityEdge(QUmlActivityEdge *realizin
 /*!
     Determines which Connectors will realize the specified flow.
  */
-QSet<QUmlConnector *> QUmlInformationFlow::realizingConnector() const
+const QSet<QUmlConnector *> QUmlInformationFlow::realizingConnector() const
 {
     // This is a read-write association end
 
@@ -254,7 +254,7 @@ void QUmlInformationFlow::removeRealizingConnector(QUmlConnector *realizingConne
 /*!
     Determines which Messages will realize the specified flow.
  */
-QSet<QUmlMessage *> QUmlInformationFlow::realizingMessage() const
+const QSet<QUmlMessage *> QUmlInformationFlow::realizingMessage() const
 {
     // This is a read-write association end
 

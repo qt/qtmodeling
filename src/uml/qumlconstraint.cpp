@@ -69,7 +69,7 @@ QUmlConstraint::QUmlConstraint() :
 /*!
     The ordered set of Elements referenced by this Constraint.
  */
-QList<QUmlElement *> QUmlConstraint::constrainedElement() const
+const QList<QUmlElement *> QUmlConstraint::constrainedElement() const
 {
     // This is a read-write association end
 

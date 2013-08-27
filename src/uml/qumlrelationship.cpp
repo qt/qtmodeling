@@ -61,7 +61,7 @@ QUmlRelationship::QUmlRelationship()
 /*!
     Specifies the elements related by the Relationship.
  */
-QSet<QUmlElement *> QUmlRelationship::relatedElement() const
+const QSet<QUmlElement *> QUmlRelationship::relatedElement() const
 {
     // This is a read-only derived union association end
 

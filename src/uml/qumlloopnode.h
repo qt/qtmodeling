@@ -61,29 +61,29 @@ public:
     QUmlLoopNode();
 
     // Owned attributes
-    QList<QUmlOutputPin *> bodyOutput() const;
+    const QList<QUmlOutputPin *> bodyOutput() const;
     void addBodyOutput(QUmlOutputPin *bodyOutput);
     void removeBodyOutput(QUmlOutputPin *bodyOutput);
-    QSet<QUmlExecutableNode *> bodyPart() const;
+    const QSet<QUmlExecutableNode *> bodyPart() const;
     void addBodyPart(QUmlExecutableNode *bodyPart);
     void removeBodyPart(QUmlExecutableNode *bodyPart);
     QUmlOutputPin *decider() const;
     void setDecider(QUmlOutputPin *decider);
     bool isTestedFirst() const;
     void setTestedFirst(bool isTestedFirst);
-    QList<QUmlOutputPin *> loopVariable() const;
+    const QList<QUmlOutputPin *> loopVariable() const;
     void addLoopVariable(QUmlOutputPin *loopVariable);
     void removeLoopVariable(QUmlOutputPin *loopVariable);
-    QList<QUmlInputPin *> loopVariableInput() const;
+    const QList<QUmlInputPin *> loopVariableInput() const;
     void addLoopVariableInput(QUmlInputPin *loopVariableInput);
     void removeLoopVariableInput(QUmlInputPin *loopVariableInput);
-    QList<QUmlOutputPin *> result() const;
+    const QList<QUmlOutputPin *> result() const;
     void addResult(QUmlOutputPin *result);
     void removeResult(QUmlOutputPin *result);
-    QSet<QUmlExecutableNode *> setupPart() const;
+    const QSet<QUmlExecutableNode *> setupPart() const;
     void addSetupPart(QUmlExecutableNode *setupPart);
     void removeSetupPart(QUmlExecutableNode *setupPart);
-    QSet<QUmlExecutableNode *> test() const;
+    const QSet<QUmlExecutableNode *> test() const;
     void addTest(QUmlExecutableNode *test);
     void removeTest(QUmlExecutableNode *test);
 

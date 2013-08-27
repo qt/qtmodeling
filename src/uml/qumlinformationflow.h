@@ -65,25 +65,25 @@ public:
     QUmlInformationFlow();
 
     // Owned attributes
-    QSet<QUmlClassifier *> conveyed() const;
+    const QSet<QUmlClassifier *> conveyed() const;
     void addConveyed(QUmlClassifier *conveyed);
     void removeConveyed(QUmlClassifier *conveyed);
-    QSet<QUmlNamedElement *> informationSource() const;
+    const QSet<QUmlNamedElement *> informationSource() const;
     void addInformationSource(QUmlNamedElement *informationSource);
     void removeInformationSource(QUmlNamedElement *informationSource);
-    QSet<QUmlNamedElement *> informationTarget() const;
+    const QSet<QUmlNamedElement *> informationTarget() const;
     void addInformationTarget(QUmlNamedElement *informationTarget);
     void removeInformationTarget(QUmlNamedElement *informationTarget);
-    QSet<QUmlRelationship *> realization() const;
+    const QSet<QUmlRelationship *> realization() const;
     void addRealization(QUmlRelationship *realization);
     void removeRealization(QUmlRelationship *realization);
-    QSet<QUmlActivityEdge *> realizingActivityEdge() const;
+    const QSet<QUmlActivityEdge *> realizingActivityEdge() const;
     void addRealizingActivityEdge(QUmlActivityEdge *realizingActivityEdge);
     void removeRealizingActivityEdge(QUmlActivityEdge *realizingActivityEdge);
-    QSet<QUmlConnector *> realizingConnector() const;
+    const QSet<QUmlConnector *> realizingConnector() const;
     void addRealizingConnector(QUmlConnector *realizingConnector);
     void removeRealizingConnector(QUmlConnector *realizingConnector);
-    QSet<QUmlMessage *> realizingMessage() const;
+    const QSet<QUmlMessage *> realizingMessage() const;
     void addRealizingMessage(QUmlMessage *realizingMessage);
     void removeRealizingMessage(QUmlMessage *realizingMessage);
 

@@ -75,7 +75,7 @@ QUmlLoopNode::QUmlLoopNode() :
 /*!
     A list of output pins within the body fragment the values of which are moved to the loop variable pins after completion of execution of the body, before the next iteration of the loop begins or before the loop exits.
  */
-QList<QUmlOutputPin *> QUmlLoopNode::bodyOutput() const
+const QList<QUmlOutputPin *> QUmlLoopNode::bodyOutput() const
 {
     // This is a read-write association end
 
@@ -103,7 +103,7 @@ void QUmlLoopNode::removeBodyOutput(QUmlOutputPin *bodyOutput)
 /*!
     The set of nodes and edges that perform the repetitive computations of the loop. The body section is executed as long as the test section produces a true value.
  */
-QSet<QUmlExecutableNode *> QUmlLoopNode::bodyPart() const
+const QSet<QUmlExecutableNode *> QUmlLoopNode::bodyPart() const
 {
     // This is a read-write association end
 
@@ -169,7 +169,7 @@ void QUmlLoopNode::setTestedFirst(bool isTestedFirst)
 /*!
     A list of output pins that hold the values of the loop variables during an execution of the loop. When the test fails, the values are movied to the result pins of the loop.
  */
-QList<QUmlOutputPin *> QUmlLoopNode::loopVariable() const
+const QList<QUmlOutputPin *> QUmlLoopNode::loopVariable() const
 {
     // This is a read-write association end
 
@@ -197,7 +197,7 @@ void QUmlLoopNode::removeLoopVariable(QUmlOutputPin *loopVariable)
 /*!
     A list of values that are moved into the loop variable pins before the first iteration of the loop.
  */
-QList<QUmlInputPin *> QUmlLoopNode::loopVariableInput() const
+const QList<QUmlInputPin *> QUmlLoopNode::loopVariableInput() const
 {
     // This is a read-write association end
 
@@ -225,7 +225,7 @@ void QUmlLoopNode::removeLoopVariableInput(QUmlInputPin *loopVariableInput)
 /*!
     A list of output pins that constitute the data flow output of the entire loop.
  */
-QList<QUmlOutputPin *> QUmlLoopNode::result() const
+const QList<QUmlOutputPin *> QUmlLoopNode::result() const
 {
     // This is a read-write association end
 
@@ -253,7 +253,7 @@ void QUmlLoopNode::removeResult(QUmlOutputPin *result)
 /*!
     The set of nodes and edges that initialize values or perform other setup computations for the loop.
  */
-QSet<QUmlExecutableNode *> QUmlLoopNode::setupPart() const
+const QSet<QUmlExecutableNode *> QUmlLoopNode::setupPart() const
 {
     // This is a read-write association end
 
@@ -281,7 +281,7 @@ void QUmlLoopNode::removeSetupPart(QUmlExecutableNode *setupPart)
 /*!
     The set of nodes, edges, and designated value that compute a Boolean value to determine if another execution of the body will be performed.
  */
-QSet<QUmlExecutableNode *> QUmlLoopNode::test() const
+const QSet<QUmlExecutableNode *> QUmlLoopNode::test() const
 {
     // This is a read-write association end
 

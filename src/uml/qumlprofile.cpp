@@ -65,7 +65,7 @@ QUmlProfile::QUmlProfile()
 /*!
     References a metaclass that may be extended.
  */
-QSet<QUmlElementImport *> QUmlProfile::metaclassReference() const
+const QSet<QUmlElementImport *> QUmlProfile::metaclassReference() const
 {
     // This is a read-write association end
 
@@ -99,7 +99,7 @@ void QUmlProfile::removeMetaclassReference(QUmlElementImport *metaclassReference
 /*!
     References a package containing (directly or indirectly) metaclasses that may be extended.
  */
-QSet<QUmlPackageImport *> QUmlProfile::metamodelReference() const
+const QSet<QUmlPackageImport *> QUmlProfile::metamodelReference() const
 {
     // This is a read-write association end
 

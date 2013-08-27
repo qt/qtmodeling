@@ -94,7 +94,7 @@ void QUmlBehavioredClassifier::setClassifierBehavior(QUmlBehavior *classifierBeh
 /*!
     The set of InterfaceRealizations owned by the BehavioredClassifier. Interface realizations reference the Interfaces of which the BehavioredClassifier is an implementation.
  */
-QSet<QUmlInterfaceRealization *> QUmlBehavioredClassifier::interfaceRealization() const
+const QSet<QUmlInterfaceRealization *> QUmlBehavioredClassifier::interfaceRealization() const
 {
     // This is a read-write association end
 
@@ -140,7 +140,7 @@ void QUmlBehavioredClassifier::removeInterfaceRealization(QUmlInterfaceRealizati
 /*!
     References behavior specifications owned by a classifier.
  */
-QSet<QUmlBehavior *> QUmlBehavioredClassifier::ownedBehavior() const
+const QSet<QUmlBehavior *> QUmlBehavioredClassifier::ownedBehavior() const
 {
     // This is a read-write association end
 

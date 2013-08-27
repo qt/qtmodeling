@@ -94,7 +94,7 @@ void QUmlTemplateableElement::setOwnedTemplateSignature(QUmlTemplateSignature *o
 /*!
     The optional bindings from this element to templates.
  */
-QSet<QUmlTemplateBinding *> QUmlTemplateableElement::templateBinding() const
+const QSet<QUmlTemplateBinding *> QUmlTemplateableElement::templateBinding() const
 {
     // This is a read-write association end
 

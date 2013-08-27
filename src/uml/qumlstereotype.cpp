@@ -65,7 +65,7 @@ QUmlStereotype::QUmlStereotype()
 /*!
     Stereotype can change the graphical appearance of the extended model element by using attached icons. When this association is not null, it references the location of the icon content to be displayed within diagrams presenting the extended model elements.
  */
-QSet<QUmlImage *> QUmlStereotype::icon() const
+const QSet<QUmlImage *> QUmlStereotype::icon() const
 {
     // This is a read-write association end
 

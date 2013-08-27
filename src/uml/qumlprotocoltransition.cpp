@@ -119,7 +119,7 @@ void QUmlProtocolTransition::setPreCondition(QUmlConstraint *preCondition)
 /*!
     This association refers to the associated operation. It is derived from the operation of the call trigger when applicable.
  */
-QSet<QUmlOperation *> QUmlProtocolTransition::referred() const
+const QSet<QUmlOperation *> QUmlProtocolTransition::referred() const
 {
     // This is a read-only derived association end
 

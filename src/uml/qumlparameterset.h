@@ -60,10 +60,10 @@ public:
     QUmlParameterSet();
 
     // Owned attributes
-    QSet<QUmlConstraint *> condition() const;
+    const QSet<QUmlConstraint *> condition() const;
     void addCondition(QUmlConstraint *condition);
     void removeCondition(QUmlConstraint *condition);
-    QSet<QUmlParameter *> parameter() const;
+    const QSet<QUmlParameter *> parameter() const;
     void addParameter(QUmlParameter *parameter);
     void removeParameter(QUmlParameter *parameter);
 

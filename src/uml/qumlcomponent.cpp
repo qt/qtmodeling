@@ -59,7 +59,7 @@ QT_BEGIN_NAMESPACE
 QUmlComponent::QUmlComponent() :
     _isIndirectlyInstantiated(true)
 {
-    d_ptr->object.setProperty("isIndirectlyInstantiated", QVariant::fromValue(false));
+    d_ptr->object.setProperty("isIndirectlyInstantiated", QVariant::fromValue(true));
     d_ptr->object.setProperty("packagedElement", QVariant::fromValue(&_packagedElement));
     d_ptr->object.setProperty("provided", QVariant::fromValue(QSet<QUmlInterface *>()));
     d_ptr->object.setProperty("realization", QVariant::fromValue(&_realization));
@@ -90,7 +90,7 @@ void QUmlComponent::setIndirectlyInstantiated(bool isIndirectlyInstantiated)
 /*!
     The set of PackageableElements that a Component owns. In the namespace of a component, all model elements that are involved in or related to its definition may be owned or imported explicitly. These may include e.g. Classes, Interfaces, Components, Packages, Use cases, Dependencies (e.g. mappings), and Artifacts.
  */
-QSet<QUmlPackageableElement *> QUmlComponent::packagedElement() const
+const QSet<QUmlPackageableElement *> QUmlComponent::packagedElement() const
 {
     // This is a read-write association end
 
@@ -124,7 +124,7 @@ void QUmlComponent::removePackagedElement(QUmlPackageableElement *packagedElemen
 /*!
     The interfaces that the component exposes to its environment. These interfaces may be Realized by the Component or any of its realizingClassifiers, or they may be the Interfaces that are provided by its public Ports.
  */
-QSet<QUmlInterface *> QUmlComponent::provided() const
+const QSet<QUmlInterface *> QUmlComponent::provided() const
 {
     // This is a read-only derived association end
 
@@ -160,7 +160,7 @@ void QUmlComponent::removeProvided(QUmlInterface *provided)
 /*!
     The set of Realizations owned by the Component. Realizations reference the Classifiers of which the Component is an abstraction; i.e., that realize its behavior.
  */
-QSet<QUmlComponentRealization *> QUmlComponent::realization() const
+const QSet<QUmlComponentRealization *> QUmlComponent::realization() const
 {
     // This is a read-write association end
 
@@ -204,7 +204,7 @@ void QUmlComponent::removeRealization(QUmlComponentRealization *realization)
 /*!
     The interfaces that the component requires from other components in its environment in order to be able to offer its full set of provided functionality. These interfaces may be used by the Component or any of its realizingClassifiers, or they may be the Interfaces that are required by its public Ports.
  */
-QSet<QUmlInterface *> QUmlComponent::required() const
+const QSet<QUmlInterface *> QUmlComponent::required() const
 {
     // This is a read-only derived association end
 

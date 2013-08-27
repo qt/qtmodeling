@@ -57,7 +57,7 @@ public:
     QUmlComment();
 
     // Owned attributes
-    QSet<QUmlElement *> annotatedElement() const;
+    const QSet<QUmlElement *> annotatedElement() const;
     void addAnnotatedElement(QUmlElement *annotatedElement);
     void removeAnnotatedElement(QUmlElement *annotatedElement);
     QString body() const;

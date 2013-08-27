@@ -60,10 +60,10 @@ QUmlMultiplicityElement::QUmlMultiplicityElement() :
     _upperValue(0)
 {
     d_ptr->object.setProperty("isOrdered", QVariant::fromValue(false));
-    d_ptr->object.setProperty("isUnique", QVariant::fromValue(false));
-    d_ptr->object.setProperty("lower", QVariant::fromValue((int)(0)));
+    d_ptr->object.setProperty("isUnique", QVariant::fromValue(true));
+    d_ptr->object.setProperty("lower", QVariant::fromValue((int)(1)));
     d_ptr->object.setProperty("lowerValue", QVariant::fromValue((QUmlValueSpecification *)(0)));
-    d_ptr->object.setProperty("upper", QVariant::fromValue((int)(0)));
+    d_ptr->object.setProperty("upper", QVariant::fromValue((int)(1)));
     d_ptr->object.setProperty("upperValue", QVariant::fromValue((QUmlValueSpecification *)(0)));
 }
 

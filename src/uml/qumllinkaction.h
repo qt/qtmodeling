@@ -61,10 +61,10 @@ public:
     Q_DECL_HIDDEN QUmlLinkAction();
 
     // Owned attributes
-    QSet<QUmlLinkEndData *> endData() const;
+    const QSet<QUmlLinkEndData *> endData() const;
     void addEndData(QUmlLinkEndData *endData);
     void removeEndData(QUmlLinkEndData *endData);
-    QSet<QUmlInputPin *> inputValue() const;
+    const QSet<QUmlInputPin *> inputValue() const;
     void addInputValue(QUmlInputPin *inputValue);
     void removeInputValue(QUmlInputPin *inputValue);
 

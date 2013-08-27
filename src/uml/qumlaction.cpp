@@ -96,7 +96,7 @@ void QUmlAction::setContext(QUmlClassifier *context)
 /*!
     The ordered set of input pins connected to the Action. These are among the total set of inputs.
  */
-QList<QUmlInputPin *> QUmlAction::input() const
+const QList<QUmlInputPin *> QUmlAction::input() const
 {
     // This is a read-only derived union association end
 
@@ -149,7 +149,7 @@ void QUmlAction::setLocallyReentrant(bool isLocallyReentrant)
 /*!
     Constraint that must be satisfied when executed is completed.
  */
-QSet<QUmlConstraint *> QUmlAction::localPostcondition() const
+const QSet<QUmlConstraint *> QUmlAction::localPostcondition() const
 {
     // This is a read-write association end
 
@@ -183,7 +183,7 @@ void QUmlAction::removeLocalPostcondition(QUmlConstraint *localPostcondition)
 /*!
     Constraint that must be satisfied when execution is started.
  */
-QSet<QUmlConstraint *> QUmlAction::localPrecondition() const
+const QSet<QUmlConstraint *> QUmlAction::localPrecondition() const
 {
     // This is a read-write association end
 
@@ -217,7 +217,7 @@ void QUmlAction::removeLocalPrecondition(QUmlConstraint *localPrecondition)
 /*!
     The ordered set of output pins connected to the Action. The action places its results onto pins in this set.
  */
-QList<QUmlOutputPin *> QUmlAction::output() const
+const QList<QUmlOutputPin *> QUmlAction::output() const
 {
     // This is a read-only derived union association end
 

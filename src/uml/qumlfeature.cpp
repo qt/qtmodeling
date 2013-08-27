@@ -65,7 +65,7 @@ QUmlFeature::QUmlFeature() :
 /*!
     The Classifiers that have this Feature as a feature.
  */
-QSet<QUmlClassifier *> QUmlFeature::featuringClassifier() const
+const QSet<QUmlClassifier *> QUmlFeature::featuringClassifier() const
 {
     // This is a read-only derived union association end
 

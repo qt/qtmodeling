@@ -60,7 +60,7 @@ public:
     QUmlStereotype();
 
     // Owned attributes
-    QSet<QUmlImage *> icon() const;
+    const QSet<QUmlImage *> icon() const;
     void addIcon(QUmlImage *icon);
     void removeIcon(QUmlImage *icon);
     QUmlProfile *profile() const;

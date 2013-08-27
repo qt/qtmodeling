@@ -70,7 +70,7 @@ QUmlGeneralizationSet::QUmlGeneralizationSet() :
 /*!
     Designates the instances of Generalization which are members of a given GeneralizationSet.
  */
-QSet<QUmlGeneralization *> QUmlGeneralizationSet::generalization() const
+const QSet<QUmlGeneralization *> QUmlGeneralizationSet::generalization() const
 {
     // This is a read-write association end
 

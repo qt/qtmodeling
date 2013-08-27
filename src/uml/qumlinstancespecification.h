@@ -63,10 +63,10 @@ public:
     QUmlInstanceSpecification();
 
     // Owned attributes
-    QSet<QUmlClassifier *> classifier() const;
+    const QSet<QUmlClassifier *> classifier() const;
     void addClassifier(QUmlClassifier *classifier);
     void removeClassifier(QUmlClassifier *classifier);
-    QSet<QUmlSlot *> slot_() const;
+    const QSet<QUmlSlot *> slot_() const;
     void addSlot(QUmlSlot *slot_);
     void removeSlot(QUmlSlot *slot_);
     QUmlValueSpecification *specification() const;

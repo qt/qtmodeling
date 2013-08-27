@@ -60,10 +60,10 @@ public:
     Q_DECL_HIDDEN QUmlDeploymentTarget();
 
     // Owned attributes
-    QSet<QUmlPackageableElement *> deployedElement() const;
+    const QSet<QUmlPackageableElement *> deployedElement() const;
     Q_DECL_HIDDEN void addDeployedElement(QUmlPackageableElement *deployedElement);
     Q_DECL_HIDDEN void removeDeployedElement(QUmlPackageableElement *deployedElement);
-    QSet<QUmlDeployment *> deployment() const;
+    const QSet<QUmlDeployment *> deployment() const;
     void addDeployment(QUmlDeployment *deployment);
     void removeDeployment(QUmlDeployment *deployment);
 

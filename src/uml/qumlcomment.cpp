@@ -62,7 +62,7 @@ QUmlComment::QUmlComment()
 /*!
     References the Element(s) being commented.
  */
-QSet<QUmlElement *> QUmlComment::annotatedElement() const
+const QSet<QUmlElement *> QUmlComment::annotatedElement() const
 {
     // This is a read-write association end
 

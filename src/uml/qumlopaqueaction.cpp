@@ -67,7 +67,7 @@ QUmlOpaqueAction::QUmlOpaqueAction()
 /*!
     Specifies the action in one or more languages.
  */
-QList<QString> QUmlOpaqueAction::body() const
+const QList<QString> QUmlOpaqueAction::body() const
 {
     // This is a read-write property
 
@@ -95,7 +95,7 @@ void QUmlOpaqueAction::removeBody(QString body)
 /*!
     Provides input to the action.
  */
-QSet<QUmlInputPin *> QUmlOpaqueAction::inputValue() const
+const QSet<QUmlInputPin *> QUmlOpaqueAction::inputValue() const
 {
     // This is a read-write association end
 
@@ -129,7 +129,7 @@ void QUmlOpaqueAction::removeInputValue(QUmlInputPin *inputValue)
 /*!
     Languages the body strings use, in the same order as the body strings
  */
-QList<QString> QUmlOpaqueAction::language() const
+const QList<QString> QUmlOpaqueAction::language() const
 {
     // This is a read-write property
 
@@ -157,7 +157,7 @@ void QUmlOpaqueAction::removeLanguage(QString language)
 /*!
     Takes output from the action.
  */
-QSet<QUmlOutputPin *> QUmlOpaqueAction::outputValue() const
+const QSet<QUmlOutputPin *> QUmlOpaqueAction::outputValue() const
 {
     // This is a read-write association end
 

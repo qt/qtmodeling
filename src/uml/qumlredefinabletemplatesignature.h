@@ -63,10 +63,10 @@ public:
     // Owned attributes
     QUmlClassifier *classifier() const;
     void setClassifier(QUmlClassifier *classifier);
-    QSet<QUmlRedefinableTemplateSignature *> extendedSignature() const;
+    const QSet<QUmlRedefinableTemplateSignature *> extendedSignature() const;
     void addExtendedSignature(QUmlRedefinableTemplateSignature *extendedSignature);
     void removeExtendedSignature(QUmlRedefinableTemplateSignature *extendedSignature);
-    QSet<QUmlTemplateParameter *> inheritedParameter() const;
+    const QSet<QUmlTemplateParameter *> inheritedParameter() const;
     Q_DECL_HIDDEN void addInheritedParameter(QUmlTemplateParameter *inheritedParameter);
     Q_DECL_HIDDEN void removeInheritedParameter(QUmlTemplateParameter *inheritedParameter);
 

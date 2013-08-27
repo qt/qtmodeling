@@ -60,7 +60,7 @@ public:
     QUmlInteractionOperand();
 
     // Owned attributes
-    QList<QUmlInteractionFragment *> fragment() const;
+    const QList<QUmlInteractionFragment *> fragment() const;
     void addFragment(QUmlInteractionFragment *fragment);
     void removeFragment(QUmlInteractionFragment *fragment);
     QUmlInteractionConstraint *guard() const;

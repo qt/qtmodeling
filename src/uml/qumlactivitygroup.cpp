@@ -71,7 +71,7 @@ QUmlActivityGroup::QUmlActivityGroup() :
 /*!
     Edges immediately contained in the group.
  */
-QSet<QUmlActivityEdge *> QUmlActivityGroup::containedEdge() const
+const QSet<QUmlActivityEdge *> QUmlActivityGroup::containedEdge() const
 {
     // This is a read-only derived union association end
 
@@ -109,7 +109,7 @@ void QUmlActivityGroup::removeContainedEdge(QUmlActivityEdge *containedEdge)
 /*!
     Nodes immediately contained in the group.
  */
-QSet<QUmlActivityNode *> QUmlActivityGroup::containedNode() const
+const QSet<QUmlActivityNode *> QUmlActivityGroup::containedNode() const
 {
     // This is a read-only derived union association end
 
@@ -171,7 +171,7 @@ void QUmlActivityGroup::setInActivity(QUmlActivity *inActivity)
 /*!
     Groups immediately contained in the group.
  */
-QSet<QUmlActivityGroup *> QUmlActivityGroup::subgroup() const
+const QSet<QUmlActivityGroup *> QUmlActivityGroup::subgroup() const
 {
     // This is a read-only derived union association end
 

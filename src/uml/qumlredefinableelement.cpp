@@ -85,7 +85,7 @@ void QUmlRedefinableElement::setLeaf(bool isLeaf)
 /*!
     The redefinable element that is being redefined by this element.
  */
-QSet<QUmlRedefinableElement *> QUmlRedefinableElement::redefinedElement() const
+const QSet<QUmlRedefinableElement *> QUmlRedefinableElement::redefinedElement() const
 {
     // This is a read-only derived union association end
 
@@ -113,7 +113,7 @@ void QUmlRedefinableElement::removeRedefinedElement(QUmlRedefinableElement *rede
 /*!
     References the contexts that this element may be redefined from.
  */
-QSet<QUmlClassifier *> QUmlRedefinableElement::redefinitionContext() const
+const QSet<QUmlClassifier *> QUmlRedefinableElement::redefinitionContext() const
 {
     // This is a read-only derived union association end
 

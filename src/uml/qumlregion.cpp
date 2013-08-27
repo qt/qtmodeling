@@ -174,7 +174,7 @@ void QUmlRegion::setStateMachine(QUmlStateMachine *stateMachine)
 /*!
     The set of vertices that are owned by this region.
  */
-QSet<QUmlVertex *> QUmlRegion::subvertex() const
+const QSet<QUmlVertex *> QUmlRegion::subvertex() const
 {
     // This is a read-write association end
 
@@ -218,7 +218,7 @@ void QUmlRegion::removeSubvertex(QUmlVertex *subvertex)
 /*!
     The set of transitions owned by the region.
  */
-QSet<QUmlTransition *> QUmlRegion::transition() const
+const QSet<QUmlTransition *> QUmlRegion::transition() const
 {
     // This is a read-write association end
 

@@ -94,7 +94,7 @@ void QUmlComponentRealization::setAbstraction(QUmlComponent *abstraction)
 /*!
     The classifiers that are involved in the implementation of the Component that owns this Realization.
  */
-QSet<QUmlClassifier *> QUmlComponentRealization::realizingClassifier() const
+const QSet<QUmlClassifier *> QUmlComponentRealization::realizingClassifier() const
 {
     // This is a read-write association end
 

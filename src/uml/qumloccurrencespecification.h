@@ -62,10 +62,10 @@ public:
     // Owned attributes
     QUmlLifeline *covered() const;
     void setCovered(QUmlLifeline *covered);
-    QSet<QUmlGeneralOrdering *> toAfter() const;
+    const QSet<QUmlGeneralOrdering *> toAfter() const;
     void addToAfter(QUmlGeneralOrdering *toAfter);
     void removeToAfter(QUmlGeneralOrdering *toAfter);
-    QSet<QUmlGeneralOrdering *> toBefore() const;
+    const QSet<QUmlGeneralOrdering *> toBefore() const;
     void addToBefore(QUmlGeneralOrdering *toBefore);
     void removeToBefore(QUmlGeneralOrdering *toBefore);
 

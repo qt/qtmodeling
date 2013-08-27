@@ -63,7 +63,7 @@ public:
     Q_DECL_HIDDEN QUmlNamedElement();
 
     // Owned attributes
-    QSet<QUmlDependency *> clientDependency() const;
+    const QSet<QUmlDependency *> clientDependency() const;
     void addClientDependency(QUmlDependency *clientDependency);
     void removeClientDependency(QUmlDependency *clientDependency);
     QString name() const;

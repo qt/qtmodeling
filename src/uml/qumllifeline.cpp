@@ -75,7 +75,7 @@ QUmlLifeline::QUmlLifeline() :
 /*!
     References the InteractionFragments in which this Lifeline takes part.
  */
-QSet<QUmlInteractionFragment *> QUmlLifeline::coveredBy() const
+const QSet<QUmlInteractionFragment *> QUmlLifeline::coveredBy() const
 {
     // This is a read-write association end
 

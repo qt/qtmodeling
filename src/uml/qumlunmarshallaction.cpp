@@ -96,7 +96,7 @@ void QUmlUnmarshallAction::setObject(QUmlInputPin *object)
 /*!
     The values of the structural features of the input object.
  */
-QSet<QUmlOutputPin *> QUmlUnmarshallAction::result() const
+const QSet<QUmlOutputPin *> QUmlUnmarshallAction::result() const
 {
     // This is a read-write association end
 

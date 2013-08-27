@@ -61,10 +61,10 @@ public:
     QUmlDeployment();
 
     // Owned attributes
-    QSet<QUmlDeploymentSpecification *> configuration() const;
+    const QSet<QUmlDeploymentSpecification *> configuration() const;
     void addConfiguration(QUmlDeploymentSpecification *configuration);
     void removeConfiguration(QUmlDeploymentSpecification *configuration);
-    QSet<QUmlDeployedArtifact *> deployedArtifact() const;
+    const QSet<QUmlDeployedArtifact *> deployedArtifact() const;
     void addDeployedArtifact(QUmlDeployedArtifact *deployedArtifact);
     void removeDeployedArtifact(QUmlDeployedArtifact *deployedArtifact);
     QUmlDeploymentTarget *location() const;

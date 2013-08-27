@@ -85,7 +85,7 @@ void QUmlTrigger::setEvent(QUmlEvent *event)
 /*!
     A optional port of the receiver object on which the behavioral feature is invoked.
  */
-QSet<QUmlPort *> QUmlTrigger::port() const
+const QSet<QUmlPort *> QUmlTrigger::port() const
 {
     // This is a read-write association end
 

@@ -95,7 +95,7 @@ void QUmlPackage::setURI(QString URI)
 /*!
     References the packaged elements that are Packages.
  */
-QSet<QUmlPackage *> QUmlPackage::nestedPackage() const
+const QSet<QUmlPackage *> QUmlPackage::nestedPackage() const
 {
     // This is a read-write derived association end
 
@@ -156,7 +156,7 @@ void QUmlPackage::setNestingPackage(QUmlPackage *nestingPackage)
 /*!
     References the Stereotypes that are owned by the Package
  */
-QSet<QUmlStereotype *> QUmlPackage::ownedStereotype() const
+const QSet<QUmlStereotype *> QUmlPackage::ownedStereotype() const
 {
     // This is a read-only derived association end
 
@@ -198,7 +198,7 @@ void QUmlPackage::removeOwnedStereotype(QUmlStereotype *ownedStereotype)
 /*!
     References the packaged elements that are Types.
  */
-QSet<QUmlType *> QUmlPackage::ownedType() const
+const QSet<QUmlType *> QUmlPackage::ownedType() const
 {
     // This is a read-write derived association end
 
@@ -250,7 +250,7 @@ void QUmlPackage::removeOwnedType(QUmlType *ownedType)
 /*!
     References the PackageMerges that are owned by this Package.
  */
-QSet<QUmlPackageMerge *> QUmlPackage::packageMerge() const
+const QSet<QUmlPackageMerge *> QUmlPackage::packageMerge() const
 {
     // This is a read-write association end
 
@@ -294,7 +294,7 @@ void QUmlPackage::removePackageMerge(QUmlPackageMerge *packageMerge)
 /*!
     Specifies the packageable elements that are owned by this Package.
  */
-QSet<QUmlPackageableElement *> QUmlPackage::packagedElement() const
+const QSet<QUmlPackageableElement *> QUmlPackage::packagedElement() const
 {
     // This is a read-write association end
 
@@ -328,7 +328,7 @@ void QUmlPackage::removePackagedElement(QUmlPackageableElement *packagedElement)
 /*!
     References the ProfileApplications that indicate which profiles have been applied to the Package.
  */
-QSet<QUmlProfileApplication *> QUmlPackage::profileApplication() const
+const QSet<QUmlProfileApplication *> QUmlPackage::profileApplication() const
 {
     // This is a read-write association end
 

@@ -56,7 +56,7 @@ QT_BEGIN_NAMESPACE
 QUmlCallAction::QUmlCallAction() :
     _isSynchronous(true)
 {
-    d_ptr->object.setProperty("isSynchronous", QVariant::fromValue(false));
+    d_ptr->object.setProperty("isSynchronous", QVariant::fromValue(true));
     d_ptr->object.setProperty("result", QVariant::fromValue(&_result));
 }
 
@@ -84,7 +84,7 @@ void QUmlCallAction::setSynchronous(bool isSynchronous)
 /*!
     A list of output pins where the results of performing the invocation are placed.
  */
-QList<QUmlOutputPin *> QUmlCallAction::result() const
+const QList<QUmlOutputPin *> QUmlCallAction::result() const
 {
     // This is a read-write association end
 

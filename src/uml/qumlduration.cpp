@@ -92,7 +92,7 @@ void QUmlDuration::setExpr(QUmlValueSpecification *expr)
 /*!
     Refers to the time and duration observations that are involved in expr.
  */
-QSet<QUmlObservation *> QUmlDuration::observation() const
+const QSet<QUmlObservation *> QUmlDuration::observation() const
 {
     // This is a read-write association end
 

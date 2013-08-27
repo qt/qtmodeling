@@ -66,7 +66,7 @@ QUmlConnectableElement::QUmlConnectableElement() :
 /*!
     Denotes a set of connector ends that attaches to this connectable element.
  */
-QList<QUmlConnectorEnd *> QUmlConnectableElement::end() const
+const QList<QUmlConnectorEnd *> QUmlConnectableElement::end() const
 {
     // This is a read-only derived association end
 

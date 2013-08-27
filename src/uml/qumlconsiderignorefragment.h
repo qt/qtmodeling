@@ -59,7 +59,7 @@ public:
     QUmlConsiderIgnoreFragment();
 
     // Owned attributes
-    QSet<QUmlNamedElement *> message() const;
+    const QSet<QUmlNamedElement *> message() const;
     void addMessage(QUmlNamedElement *message);
     void removeMessage(QUmlNamedElement *message);
 

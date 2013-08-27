@@ -63,7 +63,7 @@ public:
     // Owned attributes
     QUmlInputPin *object() const;
     void setObject(QUmlInputPin *object);
-    QSet<QUmlOutputPin *> result() const;
+    const QSet<QUmlOutputPin *> result() const;
     void addResult(QUmlOutputPin *result);
     void removeResult(QUmlOutputPin *result);
     QUmlClassifier *unmarshallType() const;

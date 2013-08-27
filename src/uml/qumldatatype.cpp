@@ -66,7 +66,7 @@ QUmlDataType::QUmlDataType()
 /*!
     The Attributes owned by the DataType.
  */
-QList<QUmlProperty *> QUmlDataType::ownedAttribute() const
+const QList<QUmlProperty *> QUmlDataType::ownedAttribute() const
 {
     // This is a read-write association end
 
@@ -112,7 +112,7 @@ void QUmlDataType::removeOwnedAttribute(QUmlProperty *ownedAttribute)
 /*!
     The Operations owned by the DataType.
  */
-QList<QUmlOperation *> QUmlDataType::ownedOperation() const
+const QList<QUmlOperation *> QUmlDataType::ownedOperation() const
 {
     // This is a read-write association end
 

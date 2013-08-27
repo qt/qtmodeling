@@ -62,22 +62,22 @@ public:
     Q_DECL_HIDDEN QUmlNamespace();
 
     // Owned attributes
-    QSet<QUmlElementImport *> elementImport() const;
+    const QSet<QUmlElementImport *> elementImport() const;
     void addElementImport(QUmlElementImport *elementImport);
     void removeElementImport(QUmlElementImport *elementImport);
-    QSet<QUmlPackageableElement *> importedMember() const;
+    const QSet<QUmlPackageableElement *> importedMember() const;
     Q_DECL_HIDDEN void addImportedMember(QUmlPackageableElement *importedMember);
     Q_DECL_HIDDEN void removeImportedMember(QUmlPackageableElement *importedMember);
-    QSet<QUmlNamedElement *> member() const;
+    const QSet<QUmlNamedElement *> member() const;
     Q_DECL_HIDDEN void addMember(QUmlNamedElement *member);
     Q_DECL_HIDDEN void removeMember(QUmlNamedElement *member);
-    QSet<QUmlNamedElement *> ownedMember() const;
+    const QSet<QUmlNamedElement *> ownedMember() const;
     Q_DECL_HIDDEN void addOwnedMember(QUmlNamedElement *ownedMember);
     Q_DECL_HIDDEN void removeOwnedMember(QUmlNamedElement *ownedMember);
-    QSet<QUmlConstraint *> ownedRule() const;
+    const QSet<QUmlConstraint *> ownedRule() const;
     void addOwnedRule(QUmlConstraint *ownedRule);
     void removeOwnedRule(QUmlConstraint *ownedRule);
-    QSet<QUmlPackageImport *> packageImport() const;
+    const QSet<QUmlPackageImport *> packageImport() const;
     void addPackageImport(QUmlPackageImport *packageImport);
     void removePackageImport(QUmlPackageImport *packageImport);
 

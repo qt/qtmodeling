@@ -60,10 +60,10 @@ public:
     QUmlTemplateSignature();
 
     // Owned attributes
-    QList<QUmlTemplateParameter *> ownedParameter() const;
+    const QList<QUmlTemplateParameter *> ownedParameter() const;
     void addOwnedParameter(QUmlTemplateParameter *ownedParameter);
     void removeOwnedParameter(QUmlTemplateParameter *ownedParameter);
-    QList<QUmlTemplateParameter *> parameter() const;
+    const QList<QUmlTemplateParameter *> parameter() const;
     void addParameter(QUmlTemplateParameter *parameter);
     void removeParameter(QUmlTemplateParameter *parameter);
     QUmlTemplateableElement *template_() const;

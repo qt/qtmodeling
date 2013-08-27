@@ -62,21 +62,21 @@ public:
     QUmlInterface();
 
     // Owned attributes
-    QList<QUmlClassifier *> nestedClassifier() const;
+    const QList<QUmlClassifier *> nestedClassifier() const;
     void addNestedClassifier(QUmlClassifier *nestedClassifier);
     void removeNestedClassifier(QUmlClassifier *nestedClassifier);
-    QList<QUmlProperty *> ownedAttribute() const;
+    const QList<QUmlProperty *> ownedAttribute() const;
     void addOwnedAttribute(QUmlProperty *ownedAttribute);
     void removeOwnedAttribute(QUmlProperty *ownedAttribute);
-    QList<QUmlOperation *> ownedOperation() const;
+    const QList<QUmlOperation *> ownedOperation() const;
     void addOwnedOperation(QUmlOperation *ownedOperation);
     void removeOwnedOperation(QUmlOperation *ownedOperation);
-    QSet<QUmlReception *> ownedReception() const;
+    const QSet<QUmlReception *> ownedReception() const;
     void addOwnedReception(QUmlReception *ownedReception);
     void removeOwnedReception(QUmlReception *ownedReception);
     QUmlProtocolStateMachine *protocol() const;
     void setProtocol(QUmlProtocolStateMachine *protocol);
-    QSet<QUmlInterface *> redefinedInterface() const;
+    const QSet<QUmlInterface *> redefinedInterface() const;
     void addRedefinedInterface(QUmlInterface *redefinedInterface);
     void removeRedefinedInterface(QUmlInterface *redefinedInterface);
 

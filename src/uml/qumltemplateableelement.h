@@ -63,7 +63,7 @@ public:
     // Owned attributes
     QUmlTemplateSignature *ownedTemplateSignature() const;
     void setOwnedTemplateSignature(QUmlTemplateSignature *ownedTemplateSignature);
-    QSet<QUmlTemplateBinding *> templateBinding() const;
+    const QSet<QUmlTemplateBinding *> templateBinding() const;
     void addTemplateBinding(QUmlTemplateBinding *templateBinding);
     void removeTemplateBinding(QUmlTemplateBinding *templateBinding);
 

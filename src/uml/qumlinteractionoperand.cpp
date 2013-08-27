@@ -65,7 +65,7 @@ QUmlInteractionOperand::QUmlInteractionOperand() :
 /*!
     The fragments of the operand.
  */
-QList<QUmlInteractionFragment *> QUmlInteractionOperand::fragment() const
+const QList<QUmlInteractionFragment *> QUmlInteractionOperand::fragment() const
 {
     // This is a read-write association end
 

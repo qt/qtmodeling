@@ -71,7 +71,7 @@ QUmlInteractionFragment::QUmlInteractionFragment() :
 /*!
     References the Lifelines that the InteractionFragment involves.
  */
-QSet<QUmlLifeline *> QUmlInteractionFragment::covered() const
+const QSet<QUmlLifeline *> QUmlInteractionFragment::covered() const
 {
     // This is a read-write association end
 
@@ -157,7 +157,7 @@ void QUmlInteractionFragment::setEnclosingOperand(QUmlInteractionOperand *enclos
 /*!
     The general ordering relationships contained in this fragment.
  */
-QSet<QUmlGeneralOrdering *> QUmlInteractionFragment::generalOrdering() const
+const QSet<QUmlGeneralOrdering *> QUmlInteractionFragment::generalOrdering() const
 {
     // This is a read-write association end
 

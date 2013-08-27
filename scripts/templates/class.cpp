@@ -110,6 +110,8 @@ Q${namespace}${className}::Q${namespace}${className}()
 [%- END %]
 {
 [%- FOREACH attribute = class.findnodes("ownedAttribute") -%]
+    [%- SET defaultValue = attribute.findvalue("defaultValue/@value") -%]
+    [%- SET defaultInstance = attribute.findvalue("defaultValue/@instance") -%]
     [%- SET type = QT_TYPE(namespace, attribute) -%]
     [%- SET derived = attribute.findvalue("@isDerived") -%]
     [%- SET derivedUnion = attribute.findvalue("@isDerivedUnion") %]
@@ -117,10 +119,10 @@ Q${namespace}${className}::Q${namespace}${className}()
 [%- IF type.match("QList|QSet") -%][% IF derived == "true" && (derivedUnion == "" || derivedUnion == "false") %]${type.trim}()[% ELSE %]&_[% QT_ATTRIBUTE(attribute) %][% END %]
 [%- ELSIF type.match('\*$') -%](${type})(0)
 [%- ELSIF type == "QString " -%]QString()
-[%- ELSIF type.match("::") -%]${type.trim}None
-[%- ELSIF type.match("int") -%](int)(0)
+[%- ELSIF type.match("::") -%][% IF defaultInstance != "" %]Qt${namespace}::${defaultInstance.split("-").0}${defaultInstance.split("-").1.ucfirst}[% ELSE %]${type.trim}None[% END -%]
+[%- ELSIF type.match("int") -%](int)([% IF defaultValue != "" %]${defaultValue}[% ELSE %]0[% END %])
 [%- ELSIF type.match("double") -%](double)(0.0)
-[%- ELSIF type.match("bool") -%]false
+[%- ELSIF type.match("bool") -%][% IF defaultValue != "" %]${defaultValue}[% ELSE %]false[% END -%]
 [%- END -%]
 ));
 [%- END %]
@@ -136,13 +138,14 @@ Q${namespace}${className}::Q${namespace}${className}()
 /*!
     ${documentation}
  */
-[%- END %]
-[% QT_TYPE(namespace, attribute) -%]
+[%- END -%]
 [%- SET qtAttribute = QT_ATTRIBUTE(attribute) -%]
+[%- SET qtType = QT_TYPE(namespace, attribute) -%]
 [%- SET readOnly = attribute.findvalue("@isReadOnly") -%]
 [%- SET derived = attribute.findvalue("@isDerived") -%]
 [%- SET derivedUnion = attribute.findvalue("@isDerivedUnion") -%]
-[%- SET association = attribute.findvalue("@association") -%]
+[%- SET association = attribute.findvalue("@association") %]
+[% IF qtType.match("QList|QSet") %]const [% END %][% QT_TYPE(namespace, attribute) -%]
 Q${namespace}${className}::${qtAttribute}() const
 {
     // This is a [% IF readOnly == "" || readOnly == "false" %]read-write[% ELSE %]read-only[% END %][% IF derived == "true" %] derived[% END %][% IF derivedUnion == "true" %] union[% END %] [% IF association != "" %]association end[% ELSE %]property[% END %]
@@ -150,10 +153,10 @@ Q${namespace}${className}::${qtAttribute}() const
     [%- IF derived == "true" && (derivedUnion == "false" || derivedUnion == "") %]
     qWarning("Q${namespace}${className}::${qtAttribute}(): to be implemented (this is a derived [% IF association != "" %]association end[% ELSE %]property[% END %])");
 
-    [%- IF QT_TYPE(namespace, attribute).match('\*$') %]
+    [%- IF qtType.match('\*$') %]
     return 0;
     [%- ELSE %]
-    return ${QT_TYPE(namespace, attribute).trim}();
+    return ${qtType.trim}();
     [%- END %]
     [%- ELSE %]
     return _${qtAttribute};

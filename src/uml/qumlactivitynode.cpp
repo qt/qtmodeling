@@ -101,7 +101,7 @@ void QUmlActivityNode::setActivity(QUmlActivity *activity)
 /*!
     Groups containing the node.
  */
-QSet<QUmlActivityGroup *> QUmlActivityNode::inGroup() const
+const QSet<QUmlActivityGroup *> QUmlActivityNode::inGroup() const
 {
     // This is a read-only derived union association end
 
@@ -139,7 +139,7 @@ void QUmlActivityNode::removeInGroup(QUmlActivityGroup *inGroup)
 /*!
     Interruptible regions containing the node.
  */
-QSet<QUmlInterruptibleActivityRegion *> QUmlActivityNode::inInterruptibleRegion() const
+const QSet<QUmlInterruptibleActivityRegion *> QUmlActivityNode::inInterruptibleRegion() const
 {
     // This is a read-write association end
 
@@ -183,7 +183,7 @@ void QUmlActivityNode::removeInInterruptibleRegion(QUmlInterruptibleActivityRegi
 /*!
     Partitions containing the node.
  */
-QSet<QUmlActivityPartition *> QUmlActivityNode::inPartition() const
+const QSet<QUmlActivityPartition *> QUmlActivityNode::inPartition() const
 {
     // This is a read-write association end
 
@@ -255,7 +255,7 @@ void QUmlActivityNode::setInStructuredNode(QUmlStructuredActivityNode *inStructu
 /*!
     Edges that have the node as target.
  */
-QSet<QUmlActivityEdge *> QUmlActivityNode::incoming() const
+const QSet<QUmlActivityEdge *> QUmlActivityNode::incoming() const
 {
     // This is a read-write association end
 
@@ -293,7 +293,7 @@ void QUmlActivityNode::removeIncoming(QUmlActivityEdge *incoming)
 /*!
     Edges that have the node as source.
  */
-QSet<QUmlActivityEdge *> QUmlActivityNode::outgoing() const
+const QSet<QUmlActivityEdge *> QUmlActivityNode::outgoing() const
 {
     // This is a read-write association end
 
@@ -331,7 +331,7 @@ void QUmlActivityNode::removeOutgoing(QUmlActivityEdge *outgoing)
 /*!
     Inherited nodes replaced by this node in a specialization of the activity.
  */
-QSet<QUmlActivityNode *> QUmlActivityNode::redefinedNode() const
+const QSet<QUmlActivityNode *> QUmlActivityNode::redefinedNode() const
 {
     // This is a read-write association end
 

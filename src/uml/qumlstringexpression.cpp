@@ -87,7 +87,7 @@ void QUmlStringExpression::setOwningExpression(QUmlStringExpression *owningExpre
 /*!
     The StringExpressions that constitute this StringExpression.
  */
-QSet<QUmlStringExpression *> QUmlStringExpression::subExpression() const
+const QSet<QUmlStringExpression *> QUmlStringExpression::subExpression() const
 {
     // This is a read-write association end
 

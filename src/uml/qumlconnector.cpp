@@ -70,7 +70,7 @@ QUmlConnector::QUmlConnector() :
 /*!
     The set of Behaviors that specify the valid interaction patterns across the connector.
  */
-QSet<QUmlBehavior *> QUmlConnector::contract() const
+const QSet<QUmlBehavior *> QUmlConnector::contract() const
 {
     // This is a read-write association end
 
@@ -98,7 +98,7 @@ void QUmlConnector::removeContract(QUmlBehavior *contract)
 /*!
     A connector consists of at least two connector ends, each representing the participation of instances of the classifiers typing the connectable elements attached to this end. The set of connector ends is ordered.
  */
-QList<QUmlConnectorEnd *> QUmlConnector::end() const
+const QList<QUmlConnectorEnd *> QUmlConnector::end() const
 {
     // This is a read-write association end
 
@@ -156,7 +156,7 @@ void QUmlConnector::setKind(QtUml::ConnectorKind kind)
 /*!
     A connector may be redefined when its containing classifier is specialized. The redefining connector may have a type that specializes the type of the redefined connector. The types of the connector ends of the redefining connector may specialize the types of the connector ends of the redefined connector. The properties of the connector ends of the redefining connector may be replaced.
  */
-QSet<QUmlConnector *> QUmlConnector::redefinedConnector() const
+const QSet<QUmlConnector *> QUmlConnector::redefinedConnector() const
 {
     // This is a read-write association end
 

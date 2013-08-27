@@ -62,10 +62,10 @@ public:
     // Owned attributes
     bool isUnmarshall() const;
     void setUnmarshall(bool isUnmarshall);
-    QSet<QUmlOutputPin *> result() const;
+    const QSet<QUmlOutputPin *> result() const;
     void addResult(QUmlOutputPin *result);
     void removeResult(QUmlOutputPin *result);
-    QSet<QUmlTrigger *> trigger() const;
+    const QSet<QUmlTrigger *> trigger() const;
     void addTrigger(QUmlTrigger *trigger);
     void removeTrigger(QUmlTrigger *trigger);
 

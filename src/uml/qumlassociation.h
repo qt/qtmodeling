@@ -61,18 +61,18 @@ public:
     QUmlAssociation();
 
     // Owned attributes
-    QList<QUmlType *> endType() const;
+    const QList<QUmlType *> endType() const;
     Q_DECL_HIDDEN void addEndType(QUmlType *endType);
     Q_DECL_HIDDEN void removeEndType(QUmlType *endType);
     bool isDerived() const;
     void setDerived(bool isDerived);
-    QList<QUmlProperty *> memberEnd() const;
+    const QList<QUmlProperty *> memberEnd() const;
     void addMemberEnd(QUmlProperty *memberEnd);
     void removeMemberEnd(QUmlProperty *memberEnd);
-    QSet<QUmlProperty *> navigableOwnedEnd() const;
+    const QSet<QUmlProperty *> navigableOwnedEnd() const;
     void addNavigableOwnedEnd(QUmlProperty *navigableOwnedEnd);
     void removeNavigableOwnedEnd(QUmlProperty *navigableOwnedEnd);
-    QList<QUmlProperty *> ownedEnd() const;
+    const QList<QUmlProperty *> ownedEnd() const;
     void addOwnedEnd(QUmlProperty *ownedEnd);
     void removeOwnedEnd(QUmlProperty *ownedEnd);
 

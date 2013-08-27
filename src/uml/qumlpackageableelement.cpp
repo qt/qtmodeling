@@ -54,7 +54,7 @@ QT_BEGIN_NAMESPACE
 QUmlPackageableElement::QUmlPackageableElement() :
     _visibility(QtUml::VisibilityKindPublic)
 {
-    d_ptr->object.setProperty("visibility", QVariant::fromValue(QtUml::VisibilityKindNone));
+    d_ptr->object.setProperty("visibility", QVariant::fromValue(QtUml::VisibilityKindPublic));
 }
 
 // OWNED ATTRIBUTES

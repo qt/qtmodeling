@@ -95,15 +95,16 @@ public:
     [%- IF loop.first %]
 
     // Owned attributes
-    [%- END %]
-    [% QT_TYPE(namespace, attribute) -%]
-    [%- QT_ATTRIBUTE(attribute) -%]() const;
+    [%- END -%]
+    [%- SET qtAttribute = QT_ATTRIBUTE(attribute) -%]
+    [%- SET qtType = QT_TYPE(namespace, attribute) %]
+    [% IF qtType.match("QList|QSet") %]const [% END %]${qtType}${qtAttribute}() const;
     [%- SET attributeName = attribute.findvalue("@name").ucfirst -%]
     [%- IF attribute.findnodes("upperValue").findvalue("@value") == "*" %]
-    [% IF attribute.findvalue("@isReadOnly") == "true" -%]Q_DECL_HIDDEN [% END %]void add${attributeName}([% QT_TYPE(namespace, attribute).remove("QSet<").remove("QList<").replace("> ", " ").replace('\* $', '*') %][% QT_ATTRIBUTE(attribute) %]);
-    [% IF attribute.findvalue("@isReadOnly") == "true" -%]Q_DECL_HIDDEN [% END %]void remove${attributeName}([% QT_TYPE(namespace, attribute).remove("QSet<").remove("QList<").replace("> ", " ").replace('\* $', '*') %][% QT_ATTRIBUTE(attribute) %]);
+    [% IF attribute.findvalue("@isReadOnly") == "true" -%]Q_DECL_HIDDEN [% END %]void add${attributeName}([% qtType.remove("QSet<").remove("QList<").replace("> ", " ").replace('\* $', '*') %]${qtAttribute});
+    [% IF attribute.findvalue("@isReadOnly") == "true" -%]Q_DECL_HIDDEN [% END %]void remove${attributeName}([% qtType.remove("QSet<").remove("QList<").replace("> ", " ").replace('\* $', '*') %]${qtAttribute});
     [%- ELSE %]
-    [% IF attribute.findvalue("@isReadOnly") == "true" -%]Q_DECL_HIDDEN [% END %]void set${attributeName.remove("^Is")}([% QT_TYPE(namespace, attribute) %][% QT_ATTRIBUTE(attribute) %]);
+    [% IF attribute.findvalue("@isReadOnly") == "true" -%]Q_DECL_HIDDEN [% END %]void set${attributeName.remove("^Is")}(${qtType}${qtAttribute});
     [%- END %]
     [%- IF loop.last %]
     [%- END %]

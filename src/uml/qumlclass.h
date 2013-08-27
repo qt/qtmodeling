@@ -65,26 +65,26 @@ public:
     QUmlClass();
 
     // Owned attributes
-    QSet<QUmlExtension *> extension() const;
+    const QSet<QUmlExtension *> extension() const;
     Q_DECL_HIDDEN void addExtension(QUmlExtension *extension);
     Q_DECL_HIDDEN void removeExtension(QUmlExtension *extension);
     bool isAbstract() const;
     void setAbstract(bool isAbstract);
     bool isActive() const;
     void setActive(bool isActive);
-    QList<QUmlClassifier *> nestedClassifier() const;
+    const QList<QUmlClassifier *> nestedClassifier() const;
     void addNestedClassifier(QUmlClassifier *nestedClassifier);
     void removeNestedClassifier(QUmlClassifier *nestedClassifier);
-    QList<QUmlProperty *> ownedAttribute() const;
+    const QList<QUmlProperty *> ownedAttribute() const;
     void addOwnedAttribute(QUmlProperty *ownedAttribute);
     void removeOwnedAttribute(QUmlProperty *ownedAttribute);
-    QList<QUmlOperation *> ownedOperation() const;
+    const QList<QUmlOperation *> ownedOperation() const;
     void addOwnedOperation(QUmlOperation *ownedOperation);
     void removeOwnedOperation(QUmlOperation *ownedOperation);
-    QSet<QUmlReception *> ownedReception() const;
+    const QSet<QUmlReception *> ownedReception() const;
     void addOwnedReception(QUmlReception *ownedReception);
     void removeOwnedReception(QUmlReception *ownedReception);
-    QSet<QUmlClass *> superClass() const;
+    const QSet<QUmlClass *> superClass() const;
     void addSuperClass(QUmlClass *superClass);
     void removeSuperClass(QUmlClass *superClass);
 

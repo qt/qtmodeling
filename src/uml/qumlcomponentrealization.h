@@ -62,7 +62,7 @@ public:
     // Owned attributes
     QUmlComponent *abstraction() const;
     void setAbstraction(QUmlComponent *abstraction);
-    QSet<QUmlClassifier *> realizingClassifier() const;
+    const QSet<QUmlClassifier *> realizingClassifier() const;
     void addRealizingClassifier(QUmlClassifier *realizingClassifier);
     void removeRealizingClassifier(QUmlClassifier *realizingClassifier);
 

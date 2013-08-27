@@ -62,7 +62,7 @@ public:
     // Owned attributes
     QUmlTrigger *replyToCall() const;
     void setReplyToCall(QUmlTrigger *replyToCall);
-    QSet<QUmlInputPin *> replyValue() const;
+    const QSet<QUmlInputPin *> replyValue() const;
     void addReplyValue(QUmlInputPin *replyValue);
     void removeReplyValue(QUmlInputPin *replyValue);
     QUmlInputPin *returnInformation() const;

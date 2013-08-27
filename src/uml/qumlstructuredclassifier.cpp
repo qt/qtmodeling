@@ -68,7 +68,7 @@ QUmlStructuredClassifier::QUmlStructuredClassifier()
 /*!
     References the properties owned by the classifier.
  */
-QList<QUmlProperty *> QUmlStructuredClassifier::ownedAttribute() const
+const QList<QUmlProperty *> QUmlStructuredClassifier::ownedAttribute() const
 {
     // This is a read-write association end
 
@@ -106,7 +106,7 @@ void QUmlStructuredClassifier::removeOwnedAttribute(QUmlProperty *ownedAttribute
 /*!
     References the connectors owned by the classifier.
  */
-QSet<QUmlConnector *> QUmlStructuredClassifier::ownedConnector() const
+const QSet<QUmlConnector *> QUmlStructuredClassifier::ownedConnector() const
 {
     // This is a read-write association end
 
@@ -142,7 +142,7 @@ void QUmlStructuredClassifier::removeOwnedConnector(QUmlConnector *ownedConnecto
 /*!
     References the properties specifying instances that the classifier owns by composition. This association is derived, selecting those owned properties where isComposite is true.
  */
-QSet<QUmlProperty *> QUmlStructuredClassifier::part() const
+const QSet<QUmlProperty *> QUmlStructuredClassifier::part() const
 {
     // This is a read-only derived association end
 
@@ -178,7 +178,7 @@ void QUmlStructuredClassifier::removePart(QUmlProperty *part)
 /*!
     References the roles that instances may play in this classifier.
  */
-QSet<QUmlConnectableElement *> QUmlStructuredClassifier::role() const
+const QSet<QUmlConnectableElement *> QUmlStructuredClassifier::role() const
 {
     // This is a read-only derived union association end
 

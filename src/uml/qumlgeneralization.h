@@ -62,7 +62,7 @@ public:
     // Owned attributes
     QUmlClassifier *general() const;
     void setGeneral(QUmlClassifier *general);
-    QSet<QUmlGeneralizationSet *> generalizationSet() const;
+    const QSet<QUmlGeneralizationSet *> generalizationSet() const;
     void addGeneralizationSet(QUmlGeneralizationSet *generalizationSet);
     void removeGeneralizationSet(QUmlGeneralizationSet *generalizationSet);
     bool isSubstitutable() const;

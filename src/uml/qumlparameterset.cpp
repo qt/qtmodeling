@@ -65,7 +65,7 @@ QUmlParameterSet::QUmlParameterSet()
 /*!
     Constraint that should be satisfied for the owner of the parameters in an input parameter set to start execution using the values provided for those parameters, or the owner of the parameters in an output parameter set to end execution providing the values for those parameters, if all preconditions and conditions on input parameter sets were satisfied.
  */
-QSet<QUmlConstraint *> QUmlParameterSet::condition() const
+const QSet<QUmlConstraint *> QUmlParameterSet::condition() const
 {
     // This is a read-write association end
 
@@ -99,7 +99,7 @@ void QUmlParameterSet::removeCondition(QUmlConstraint *condition)
 /*!
     Parameters in the parameter set.
  */
-QSet<QUmlParameter *> QUmlParameterSet::parameter() const
+const QSet<QUmlParameter *> QUmlParameterSet::parameter() const
 {
     // This is a read-write association end
 

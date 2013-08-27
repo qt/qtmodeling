@@ -61,7 +61,7 @@ public:
     Q_DECL_HIDDEN QUmlConnectableElement();
 
     // Owned attributes
-    QList<QUmlConnectorEnd *> end() const;
+    const QList<QUmlConnectorEnd *> end() const;
     Q_DECL_HIDDEN void addEnd(QUmlConnectorEnd *end);
     Q_DECL_HIDDEN void removeEnd(QUmlConnectorEnd *end);
     QUmlConnectableElementTemplateParameter *templateParameter() const;

@@ -69,7 +69,7 @@ QUmlConditionalNode::QUmlConditionalNode() :
 /*!
     Set of clauses composing the conditional.
  */
-QSet<QUmlClause *> QUmlConditionalNode::clause() const
+const QSet<QUmlClause *> QUmlConditionalNode::clause() const
 {
     // This is a read-write association end
 
@@ -141,7 +141,7 @@ void QUmlConditionalNode::setDeterminate(bool isDeterminate)
 /*!
     A list of output pins that constitute the data flow outputs of the conditional.
  */
-QList<QUmlOutputPin *> QUmlConditionalNode::result() const
+const QList<QUmlOutputPin *> QUmlConditionalNode::result() const
 {
     // This is a read-write association end
 

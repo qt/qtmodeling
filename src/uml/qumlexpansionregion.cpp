@@ -57,7 +57,7 @@ QUmlExpansionRegion::QUmlExpansionRegion() :
     _mode(QtUml::ExpansionKindIterative)
 {
     d_ptr->object.setProperty("inputElement", QVariant::fromValue(&_inputElement));
-    d_ptr->object.setProperty("mode", QVariant::fromValue(QtUml::ExpansionKindNone));
+    d_ptr->object.setProperty("mode", QVariant::fromValue(QtUml::ExpansionKindIterative));
     d_ptr->object.setProperty("outputElement", QVariant::fromValue(&_outputElement));
 }
 
@@ -66,7 +66,7 @@ QUmlExpansionRegion::QUmlExpansionRegion() :
 /*!
     An object node that holds a separate element of the input collection during each of the multiple executions of the region.
  */
-QSet<QUmlExpansionNode *> QUmlExpansionRegion::inputElement() const
+const QSet<QUmlExpansionNode *> QUmlExpansionRegion::inputElement() const
 {
     // This is a read-write association end
 
@@ -123,7 +123,7 @@ void QUmlExpansionRegion::setMode(QtUml::ExpansionKind mode)
 /*!
     An object node that accepts a separate element of the output collection during each of the multiple executions of the region. The values are formed into a collection that is available when the execution of the region is complete.
  */
-QSet<QUmlExpansionNode *> QUmlExpansionRegion::outputElement() const
+const QSet<QUmlExpansionNode *> QUmlExpansionRegion::outputElement() const
 {
     // This is a read-write association end
 

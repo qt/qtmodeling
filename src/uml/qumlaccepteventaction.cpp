@@ -86,7 +86,7 @@ void QUmlAcceptEventAction::setUnmarshall(bool isUnmarshall)
 /*!
     Pins holding the received event objects or their attributes. Event objects may be copied in transmission, so identity might not be preserved.
  */
-QSet<QUmlOutputPin *> QUmlAcceptEventAction::result() const
+const QSet<QUmlOutputPin *> QUmlAcceptEventAction::result() const
 {
     // This is a read-write association end
 
@@ -120,7 +120,7 @@ void QUmlAcceptEventAction::removeResult(QUmlOutputPin *result)
 /*!
     The type of events accepted by the action, as specified by triggers. For triggers with signal events, a signal of the specified type or any subtype of the specified signal type is accepted.
  */
-QSet<QUmlTrigger *> QUmlAcceptEventAction::trigger() const
+const QSet<QUmlTrigger *> QUmlAcceptEventAction::trigger() const
 {
     // This is a read-write association end
 

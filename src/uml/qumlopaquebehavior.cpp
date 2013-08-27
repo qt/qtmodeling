@@ -62,7 +62,7 @@ QUmlOpaqueBehavior::QUmlOpaqueBehavior()
 /*!
     Specifies the behavior in one or more languages.
  */
-QList<QString> QUmlOpaqueBehavior::body() const
+const QList<QString> QUmlOpaqueBehavior::body() const
 {
     // This is a read-write property
 
@@ -90,7 +90,7 @@ void QUmlOpaqueBehavior::removeBody(QString body)
 /*!
     Languages the body strings use in the same order as the body strings.
  */
-QList<QString> QUmlOpaqueBehavior::language() const
+const QList<QString> QUmlOpaqueBehavior::language() const
 {
     // This is a read-write property
 

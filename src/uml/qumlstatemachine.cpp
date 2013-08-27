@@ -70,7 +70,7 @@ QUmlStateMachine::QUmlStateMachine()
 /*!
     The connection points defined for this state machine. They represent the interface of the state machine when used as part of submachine state.
  */
-QSet<QUmlPseudostate *> QUmlStateMachine::connectionPoint() const
+const QSet<QUmlPseudostate *> QUmlStateMachine::connectionPoint() const
 {
     // This is a read-write association end
 
@@ -114,7 +114,7 @@ void QUmlStateMachine::removeConnectionPoint(QUmlPseudostate *connectionPoint)
 /*!
     The state machines of which this is an extension.
  */
-QSet<QUmlStateMachine *> QUmlStateMachine::extendedStateMachine() const
+const QSet<QUmlStateMachine *> QUmlStateMachine::extendedStateMachine() const
 {
     // This is a read-write association end
 
@@ -142,7 +142,7 @@ void QUmlStateMachine::removeExtendedStateMachine(QUmlStateMachine *extendedStat
 /*!
     The regions owned directly by the state machine.
  */
-QSet<QUmlRegion *> QUmlStateMachine::region() const
+const QSet<QUmlRegion *> QUmlStateMachine::region() const
 {
     // This is a read-write association end
 
@@ -186,7 +186,7 @@ void QUmlStateMachine::removeRegion(QUmlRegion *region)
 /*!
     References the submachine(s) in case of a submachine state. Multiple machines are referenced in case of a concurrent state.
  */
-QSet<QUmlState *> QUmlStateMachine::submachineState() const
+const QSet<QUmlState *> QUmlStateMachine::submachineState() const
 {
     // This is a read-write association end
 

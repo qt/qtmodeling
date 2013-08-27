@@ -71,7 +71,7 @@ QUmlNamespace::QUmlNamespace()
 /*!
     References the ElementImports owned by the Namespace.
  */
-QSet<QUmlElementImport *> QUmlNamespace::elementImport() const
+const QSet<QUmlElementImport *> QUmlNamespace::elementImport() const
 {
     // This is a read-write association end
 
@@ -115,7 +115,7 @@ void QUmlNamespace::removeElementImport(QUmlElementImport *elementImport)
 /*!
     References the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports.
  */
-QSet<QUmlPackageableElement *> QUmlNamespace::importedMember() const
+const QSet<QUmlPackageableElement *> QUmlNamespace::importedMember() const
 {
     // This is a read-only derived association end
 
@@ -157,7 +157,7 @@ void QUmlNamespace::removeImportedMember(QUmlPackageableElement *importedMember)
 /*!
     A collection of NamedElements identifiable within the Namespace, either by being owned or by being introduced by importing or inheritance.
  */
-QSet<QUmlNamedElement *> QUmlNamespace::member() const
+const QSet<QUmlNamedElement *> QUmlNamespace::member() const
 {
     // This is a read-only derived union association end
 
@@ -185,7 +185,7 @@ void QUmlNamespace::removeMember(QUmlNamedElement *member)
 /*!
     A collection of NamedElements owned by the Namespace.
  */
-QSet<QUmlNamedElement *> QUmlNamespace::ownedMember() const
+const QSet<QUmlNamedElement *> QUmlNamespace::ownedMember() const
 {
     // This is a read-only derived union association end
 
@@ -231,7 +231,7 @@ void QUmlNamespace::removeOwnedMember(QUmlNamedElement *ownedMember)
 /*!
     Specifies a set of Constraints owned by this Namespace.
  */
-QSet<QUmlConstraint *> QUmlNamespace::ownedRule() const
+const QSet<QUmlConstraint *> QUmlNamespace::ownedRule() const
 {
     // This is a read-write association end
 
@@ -275,7 +275,7 @@ void QUmlNamespace::removeOwnedRule(QUmlConstraint *ownedRule)
 /*!
     References the PackageImports owned by the Namespace.
  */
-QSet<QUmlPackageImport *> QUmlNamespace::packageImport() const
+const QSet<QUmlPackageImport *> QUmlNamespace::packageImport() const
 {
     // This is a read-write association end
 

@@ -63,7 +63,7 @@ QUmlSignal::QUmlSignal()
 /*!
     The attributes owned by the signal.
  */
-QList<QUmlProperty *> QUmlSignal::ownedAttribute() const
+const QList<QUmlProperty *> QUmlSignal::ownedAttribute() const
 {
     // This is a read-write association end
 

@@ -63,7 +63,7 @@ QUmlSequenceNode::QUmlSequenceNode()
 /*!
     An ordered set of executable nodes.
  */
-QList<QUmlExecutableNode *> QUmlSequenceNode::executableNode() const
+const QList<QUmlExecutableNode *> QUmlSequenceNode::executableNode() const
 {
     // This is a read-write association end
 

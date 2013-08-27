@@ -58,10 +58,10 @@ public:
     Q_DECL_HIDDEN QUmlElement();
 
     // Owned attributes
-    QSet<QUmlComment *> ownedComment() const;
+    const QSet<QUmlComment *> ownedComment() const;
     void addOwnedComment(QUmlComment *ownedComment);
     void removeOwnedComment(QUmlComment *ownedComment);
-    QSet<QUmlElement *> ownedElement() const;
+    const QSet<QUmlElement *> ownedElement() const;
     Q_DECL_HIDDEN void addOwnedElement(QUmlElement *ownedElement);
     Q_DECL_HIDDEN void removeOwnedElement(QUmlElement *ownedElement);
     QUmlElement *owner() const;

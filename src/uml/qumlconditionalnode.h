@@ -60,14 +60,14 @@ public:
     QUmlConditionalNode();
 
     // Owned attributes
-    QSet<QUmlClause *> clause() const;
+    const QSet<QUmlClause *> clause() const;
     void addClause(QUmlClause *clause);
     void removeClause(QUmlClause *clause);
     bool isAssured() const;
     void setAssured(bool isAssured);
     bool isDeterminate() const;
     void setDeterminate(bool isDeterminate);
-    QList<QUmlOutputPin *> result() const;
+    const QList<QUmlOutputPin *> result() const;
     void addResult(QUmlOutputPin *result);
     void removeResult(QUmlOutputPin *result);
 

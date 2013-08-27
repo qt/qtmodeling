@@ -59,10 +59,10 @@ public:
     Q_DECL_HIDDEN QUmlDirectedRelationship();
 
     // Owned attributes
-    QSet<QUmlElement *> source() const;
+    const QSet<QUmlElement *> source() const;
     Q_DECL_HIDDEN void addSource(QUmlElement *source);
     Q_DECL_HIDDEN void removeSource(QUmlElement *source);
-    QSet<QUmlElement *> target() const;
+    const QSet<QUmlElement *> target() const;
     Q_DECL_HIDDEN void addTarget(QUmlElement *target);
     Q_DECL_HIDDEN void removeTarget(QUmlElement *target);
 

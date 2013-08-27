@@ -63,7 +63,7 @@ QUmlDestroyLinkAction::QUmlDestroyLinkAction()
 /*!
     Specifies ends of association and inputs.
  */
-QSet<QUmlLinkEndDestructionData *> QUmlDestroyLinkAction::endData() const
+const QSet<QUmlLinkEndDestructionData *> QUmlDestroyLinkAction::endData() const
 {
     // This is a read-write association end
 

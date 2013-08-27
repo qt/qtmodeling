@@ -66,7 +66,7 @@ QUmlLinkAction::QUmlLinkAction()
 /*!
     Data identifying one end of a link by the objects on its ends and qualifiers.
  */
-QSet<QUmlLinkEndData *> QUmlLinkAction::endData() const
+const QSet<QUmlLinkEndData *> QUmlLinkAction::endData() const
 {
     // This is a read-write association end
 
@@ -100,7 +100,7 @@ void QUmlLinkAction::removeEndData(QUmlLinkEndData *endData)
 /*!
     Pins taking end objects and qualifier values as input.
  */
-QSet<QUmlInputPin *> QUmlLinkAction::inputValue() const
+const QSet<QUmlInputPin *> QUmlLinkAction::inputValue() const
 {
     // This is a read-write association end
 

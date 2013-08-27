@@ -76,7 +76,7 @@ QUmlState::QUmlState() :
     d_ptr->object.setProperty("exit", QVariant::fromValue((QUmlBehavior *)(0)));
     d_ptr->object.setProperty("isComposite", QVariant::fromValue(false));
     d_ptr->object.setProperty("isOrthogonal", QVariant::fromValue(false));
-    d_ptr->object.setProperty("isSimple", QVariant::fromValue(false));
+    d_ptr->object.setProperty("isSimple", QVariant::fromValue(true));
     d_ptr->object.setProperty("isSubmachineState", QVariant::fromValue(false));
     d_ptr->object.setProperty("redefinedState", QVariant::fromValue((QUmlState *)(0)));
     d_ptr->object.setProperty("redefinitionContext", QVariant::fromValue((QUmlClassifier *)(0)));
@@ -90,7 +90,7 @@ QUmlState::QUmlState() :
 /*!
     The entry and exit connection points used in conjunction with this (submachine) state, i.e. as targets and sources, respectively, in the region with the submachine state. A connection point reference references the corresponding definition of a connection point pseudostate in the statemachine referenced by the submachinestate.
  */
-QSet<QUmlConnectionPointReference *> QUmlState::connection() const
+const QSet<QUmlConnectionPointReference *> QUmlState::connection() const
 {
     // This is a read-write association end
 
@@ -134,7 +134,7 @@ void QUmlState::removeConnection(QUmlConnectionPointReference *connection)
 /*!
     The entry and exit pseudostates of a composite state. These can only be entry or exit Pseudostates, and they must have different names. They can only be defined for composite states.
  */
-QSet<QUmlPseudostate *> QUmlState::connectionPoint() const
+const QSet<QUmlPseudostate *> QUmlState::connectionPoint() const
 {
     // This is a read-write association end
 
@@ -178,7 +178,7 @@ void QUmlState::removeConnectionPoint(QUmlPseudostate *connectionPoint)
 /*!
     A list of triggers that are candidates to be retained by the state machine if they trigger no transitions out of the state (not consumed). A deferred trigger is retained until the state machine reaches a state configuration where it is no longer deferred.
  */
-QSet<QUmlTrigger *> QUmlState::deferrableTrigger() const
+const QSet<QUmlTrigger *> QUmlState::deferrableTrigger() const
 {
     // This is a read-write association end
 
@@ -440,7 +440,7 @@ void QUmlState::setRedefinitionContext(QUmlClassifier *redefinitionContext)
 /*!
     The regions owned directly by the state.
  */
-QSet<QUmlRegion *> QUmlState::region() const
+const QSet<QUmlRegion *> QUmlState::region() const
 {
     // This is a read-write association end
 

@@ -69,16 +69,16 @@ public:
     void setConcurrency(QtUml::CallConcurrencyKind concurrency);
     bool isAbstract() const;
     void setAbstract(bool isAbstract);
-    QSet<QUmlBehavior *> method() const;
+    const QSet<QUmlBehavior *> method() const;
     void addMethod(QUmlBehavior *method);
     void removeMethod(QUmlBehavior *method);
-    QList<QUmlParameter *> ownedParameter() const;
+    const QList<QUmlParameter *> ownedParameter() const;
     void addOwnedParameter(QUmlParameter *ownedParameter);
     void removeOwnedParameter(QUmlParameter *ownedParameter);
-    QSet<QUmlParameterSet *> ownedParameterSet() const;
+    const QSet<QUmlParameterSet *> ownedParameterSet() const;
     void addOwnedParameterSet(QUmlParameterSet *ownedParameterSet);
     void removeOwnedParameterSet(QUmlParameterSet *ownedParameterSet);
-    QSet<QUmlType *> raisedException() const;
+    const QSet<QUmlType *> raisedException() const;
     void addRaisedException(QUmlType *raisedException);
     void removeRaisedException(QUmlType *raisedException);
 

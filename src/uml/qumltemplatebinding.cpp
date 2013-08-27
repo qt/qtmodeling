@@ -97,7 +97,7 @@ void QUmlTemplateBinding::setBoundElement(QUmlTemplateableElement *boundElement)
 /*!
     The parameter substitutions owned by this template binding.
  */
-QSet<QUmlTemplateParameterSubstitution *> QUmlTemplateBinding::parameterSubstitution() const
+const QSet<QUmlTemplateParameterSubstitution *> QUmlTemplateBinding::parameterSubstitution() const
 {
     // This is a read-write association end
 

@@ -73,7 +73,7 @@ QUmlNamedElement::QUmlNamedElement() :
 /*!
     Indicates the dependencies that reference the client.
  */
-QSet<QUmlDependency *> QUmlNamedElement::clientDependency() const
+const QSet<QUmlDependency *> QUmlNamedElement::clientDependency() const
 {
     // This is a read-write association end
 

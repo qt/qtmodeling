@@ -60,7 +60,7 @@ public:
     Q_DECL_HIDDEN QUmlInvocationAction();
 
     // Owned attributes
-    QList<QUmlInputPin *> argument() const;
+    const QList<QUmlInputPin *> argument() const;
     void addArgument(QUmlInputPin *argument);
     void removeArgument(QUmlInputPin *argument);
     QUmlPort *onPort() const;

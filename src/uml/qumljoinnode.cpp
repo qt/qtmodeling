@@ -57,7 +57,7 @@ QUmlJoinNode::QUmlJoinNode() :
     _isCombineDuplicate(true),
     _joinSpec(0)
 {
-    d_ptr->object.setProperty("isCombineDuplicate", QVariant::fromValue(false));
+    d_ptr->object.setProperty("isCombineDuplicate", QVariant::fromValue(true));
     d_ptr->object.setProperty("joinSpec", QVariant::fromValue((QUmlValueSpecification *)(0)));
 }
 

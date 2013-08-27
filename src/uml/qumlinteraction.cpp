@@ -70,7 +70,7 @@ QUmlInteraction::QUmlInteraction()
 /*!
     Actions owned by the Interaction.
  */
-QSet<QUmlAction *> QUmlInteraction::action() const
+const QSet<QUmlAction *> QUmlInteraction::action() const
 {
     // This is a read-write association end
 
@@ -104,7 +104,7 @@ void QUmlInteraction::removeAction(QUmlAction *action)
 /*!
     Specifies the gates that form the message interface between this Interaction and any InteractionUses which reference it.
  */
-QSet<QUmlGate *> QUmlInteraction::formalGate() const
+const QSet<QUmlGate *> QUmlInteraction::formalGate() const
 {
     // This is a read-write association end
 
@@ -138,7 +138,7 @@ void QUmlInteraction::removeFormalGate(QUmlGate *formalGate)
 /*!
     The ordered set of fragments in the Interaction.
  */
-QList<QUmlInteractionFragment *> QUmlInteraction::fragment() const
+const QList<QUmlInteractionFragment *> QUmlInteraction::fragment() const
 {
     // This is a read-write association end
 
@@ -182,7 +182,7 @@ void QUmlInteraction::removeFragment(QUmlInteractionFragment *fragment)
 /*!
     Specifies the participants in this Interaction.
  */
-QSet<QUmlLifeline *> QUmlInteraction::lifeline() const
+const QSet<QUmlLifeline *> QUmlInteraction::lifeline() const
 {
     // This is a read-write association end
 
@@ -226,7 +226,7 @@ void QUmlInteraction::removeLifeline(QUmlLifeline *lifeline)
 /*!
     The Messages contained in this Interaction.
  */
-QSet<QUmlMessage *> QUmlInteraction::message() const
+const QSet<QUmlMessage *> QUmlInteraction::message() const
 {
     // This is a read-write association end
 

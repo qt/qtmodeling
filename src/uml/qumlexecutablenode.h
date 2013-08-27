@@ -59,7 +59,7 @@ public:
     Q_DECL_HIDDEN QUmlExecutableNode();
 
     // Owned attributes
-    QSet<QUmlExceptionHandler *> handler() const;
+    const QSet<QUmlExceptionHandler *> handler() const;
     void addHandler(QUmlExceptionHandler *handler);
     void removeHandler(QUmlExceptionHandler *handler);
 

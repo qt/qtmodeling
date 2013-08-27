@@ -66,7 +66,7 @@ QUmlInvocationAction::QUmlInvocationAction() :
 /*!
     Specification of the ordered set of argument values that appears during execution.
  */
-QList<QUmlInputPin *> QUmlInvocationAction::argument() const
+const QList<QUmlInputPin *> QUmlInvocationAction::argument() const
 {
     // This is a read-write association end
 

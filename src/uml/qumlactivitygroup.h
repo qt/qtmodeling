@@ -61,15 +61,15 @@ public:
     Q_DECL_HIDDEN QUmlActivityGroup();
 
     // Owned attributes
-    QSet<QUmlActivityEdge *> containedEdge() const;
+    const QSet<QUmlActivityEdge *> containedEdge() const;
     Q_DECL_HIDDEN void addContainedEdge(QUmlActivityEdge *containedEdge);
     Q_DECL_HIDDEN void removeContainedEdge(QUmlActivityEdge *containedEdge);
-    QSet<QUmlActivityNode *> containedNode() const;
+    const QSet<QUmlActivityNode *> containedNode() const;
     Q_DECL_HIDDEN void addContainedNode(QUmlActivityNode *containedNode);
     Q_DECL_HIDDEN void removeContainedNode(QUmlActivityNode *containedNode);
     QUmlActivity *inActivity() const;
     void setInActivity(QUmlActivity *inActivity);
-    QSet<QUmlActivityGroup *> subgroup() const;
+    const QSet<QUmlActivityGroup *> subgroup() const;
     Q_DECL_HIDDEN void addSubgroup(QUmlActivityGroup *subgroup);
     Q_DECL_HIDDEN void removeSubgroup(QUmlActivityGroup *subgroup);
     QUmlActivityGroup *superGroup() const;

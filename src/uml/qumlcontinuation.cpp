@@ -54,7 +54,7 @@ QT_BEGIN_NAMESPACE
 QUmlContinuation::QUmlContinuation() :
     _setting(true)
 {
-    d_ptr->object.setProperty("setting", QVariant::fromValue(false));
+    d_ptr->object.setProperty("setting", QVariant::fromValue(true));
 }
 
 // OWNED ATTRIBUTES

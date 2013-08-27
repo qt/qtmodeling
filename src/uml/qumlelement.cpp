@@ -66,7 +66,7 @@ QUmlElement::QUmlElement() :
 /*!
     The Comments owned by this element.
  */
-QSet<QUmlComment *> QUmlElement::ownedComment() const
+const QSet<QUmlComment *> QUmlElement::ownedComment() const
 {
     // This is a read-write association end
 
@@ -100,7 +100,7 @@ void QUmlElement::removeOwnedComment(QUmlComment *ownedComment)
 /*!
     The Elements owned by this element.
  */
-QSet<QUmlElement *> QUmlElement::ownedElement() const
+const QSet<QUmlElement *> QUmlElement::ownedElement() const
 {
     // This is a read-only derived union association end
 

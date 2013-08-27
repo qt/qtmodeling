@@ -65,7 +65,7 @@ QUmlInterruptibleActivityRegion::QUmlInterruptibleActivityRegion()
 /*!
     The edges leaving the region that will abort other tokens flowing in the region.
  */
-QSet<QUmlActivityEdge *> QUmlInterruptibleActivityRegion::interruptingEdge() const
+const QSet<QUmlActivityEdge *> QUmlInterruptibleActivityRegion::interruptingEdge() const
 {
     // This is a read-write association end
 
@@ -103,7 +103,7 @@ void QUmlInterruptibleActivityRegion::removeInterruptingEdge(QUmlActivityEdge *i
 /*!
     Nodes immediately contained in the group.
  */
-QSet<QUmlActivityNode *> QUmlInterruptibleActivityRegion::node() const
+const QSet<QUmlActivityNode *> QUmlInterruptibleActivityRegion::node() const
 {
     // This is a read-write association end
 

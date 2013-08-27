@@ -64,18 +64,18 @@ public:
     // Owned attributes
     QUmlClassifier *context() const;
     Q_DECL_HIDDEN void setContext(QUmlClassifier *context);
-    QList<QUmlInputPin *> input() const;
+    const QList<QUmlInputPin *> input() const;
     Q_DECL_HIDDEN void addInput(QUmlInputPin *input);
     Q_DECL_HIDDEN void removeInput(QUmlInputPin *input);
     bool isLocallyReentrant() const;
     void setLocallyReentrant(bool isLocallyReentrant);
-    QSet<QUmlConstraint *> localPostcondition() const;
+    const QSet<QUmlConstraint *> localPostcondition() const;
     void addLocalPostcondition(QUmlConstraint *localPostcondition);
     void removeLocalPostcondition(QUmlConstraint *localPostcondition);
-    QSet<QUmlConstraint *> localPrecondition() const;
+    const QSet<QUmlConstraint *> localPrecondition() const;
     void addLocalPrecondition(QUmlConstraint *localPrecondition);
     void removeLocalPrecondition(QUmlConstraint *localPrecondition);
-    QList<QUmlOutputPin *> output() const;
+    const QList<QUmlOutputPin *> output() const;
     Q_DECL_HIDDEN void addOutput(QUmlOutputPin *output);
     Q_DECL_HIDDEN void removeOutput(QUmlOutputPin *output);
 

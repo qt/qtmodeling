@@ -87,7 +87,7 @@ void QUmlOpaqueExpression::setBehavior(QUmlBehavior *behavior)
 /*!
     The text of the expression, possibly in multiple languages.
  */
-QList<QString> QUmlOpaqueExpression::body() const
+const QList<QString> QUmlOpaqueExpression::body() const
 {
     // This is a read-write property
 
@@ -115,7 +115,7 @@ void QUmlOpaqueExpression::removeBody(QString body)
 /*!
     Specifies the languages in which the expression is stated. The interpretation of the expression body depends on the languages. If the languages are unspecified, they might be implicit from the expression body or the context. Languages are matched to body strings by order.
  */
-QList<QString> QUmlOpaqueExpression::language() const
+const QList<QString> QUmlOpaqueExpression::language() const
 {
     // This is a read-write property
 

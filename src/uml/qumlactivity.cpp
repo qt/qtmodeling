@@ -77,7 +77,7 @@ QUmlActivity::QUmlActivity() :
 /*!
     Edges expressing flow between nodes of the activity.
  */
-QSet<QUmlActivityEdge *> QUmlActivity::edge() const
+const QSet<QUmlActivityEdge *> QUmlActivity::edge() const
 {
     // This is a read-write association end
 
@@ -121,7 +121,7 @@ void QUmlActivity::removeEdge(QUmlActivityEdge *edge)
 /*!
     Top-level groups in the activity.
  */
-QSet<QUmlActivityGroup *> QUmlActivity::group() const
+const QSet<QUmlActivityGroup *> QUmlActivity::group() const
 {
     // This is a read-write association end
 
@@ -203,7 +203,7 @@ void QUmlActivity::setSingleExecution(bool isSingleExecution)
 /*!
     Nodes coordinated by the activity.
  */
-QSet<QUmlActivityNode *> QUmlActivity::node() const
+const QSet<QUmlActivityNode *> QUmlActivity::node() const
 {
     // This is a read-write association end
 
@@ -247,7 +247,7 @@ void QUmlActivity::removeNode(QUmlActivityNode *node)
 /*!
     Top-level partitions in the activity.
  */
-QSet<QUmlActivityPartition *> QUmlActivity::partition() const
+const QSet<QUmlActivityPartition *> QUmlActivity::partition() const
 {
     // This is a read-write association end
 
@@ -281,7 +281,7 @@ void QUmlActivity::removePartition(QUmlActivityPartition *partition)
 /*!
     Top-level structured nodes in the activity.
  */
-QSet<QUmlStructuredActivityNode *> QUmlActivity::structuredNode() const
+const QSet<QUmlStructuredActivityNode *> QUmlActivity::structuredNode() const
 {
     // This is a read-write association end
 
@@ -327,7 +327,7 @@ void QUmlActivity::removeStructuredNode(QUmlStructuredActivityNode *structuredNo
 /*!
     Top-level variables in the activity.
  */
-QSet<QUmlVariable *> QUmlActivity::variable() const
+const QSet<QUmlVariable *> QUmlActivity::variable() const
 {
     // This is a read-write association end
 

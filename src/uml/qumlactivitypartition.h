@@ -61,19 +61,19 @@ public:
     QUmlActivityPartition();
 
     // Owned attributes
-    QSet<QUmlActivityEdge *> edge() const;
+    const QSet<QUmlActivityEdge *> edge() const;
     void addEdge(QUmlActivityEdge *edge);
     void removeEdge(QUmlActivityEdge *edge);
     bool isDimension() const;
     void setDimension(bool isDimension);
     bool isExternal() const;
     void setExternal(bool isExternal);
-    QSet<QUmlActivityNode *> node() const;
+    const QSet<QUmlActivityNode *> node() const;
     void addNode(QUmlActivityNode *node);
     void removeNode(QUmlActivityNode *node);
     QUmlElement *represents() const;
     void setRepresents(QUmlElement *represents);
-    QSet<QUmlActivityPartition *> subpartition() const;
+    const QSet<QUmlActivityPartition *> subpartition() const;
     void addSubpartition(QUmlActivityPartition *subpartition);
     void removeSubpartition(QUmlActivityPartition *subpartition);
     QUmlActivityPartition *superPartition() const;

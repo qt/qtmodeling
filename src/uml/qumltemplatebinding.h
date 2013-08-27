@@ -63,7 +63,7 @@ public:
     // Owned attributes
     QUmlTemplateableElement *boundElement() const;
     void setBoundElement(QUmlTemplateableElement *boundElement);
-    QSet<QUmlTemplateParameterSubstitution *> parameterSubstitution() const;
+    const QSet<QUmlTemplateParameterSubstitution *> parameterSubstitution() const;
     void addParameterSubstitution(QUmlTemplateParameterSubstitution *parameterSubstitution);
     void removeParameterSubstitution(QUmlTemplateParameterSubstitution *parameterSubstitution);
     QUmlTemplateSignature *signature() const;

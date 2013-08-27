@@ -59,7 +59,7 @@ public:
     Q_DECL_HIDDEN QUmlFeature();
 
     // Owned attributes
-    QSet<QUmlClassifier *> featuringClassifier() const;
+    const QSet<QUmlClassifier *> featuringClassifier() const;
     Q_DECL_HIDDEN void addFeaturingClassifier(QUmlClassifier *featuringClassifier);
     Q_DECL_HIDDEN void removeFeaturingClassifier(QUmlClassifier *featuringClassifier);
     bool isStatic() const;

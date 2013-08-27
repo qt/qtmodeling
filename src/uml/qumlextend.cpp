@@ -153,7 +153,7 @@ void QUmlExtend::setExtension(QUmlUseCase *extension)
 /*!
     An ordered list of extension points belonging to the extended use case, specifying where the respective behavioral fragments of the extending use case are to be inserted. The first fragment in the extending use case is associated with the first extension point in the list, the second fragment with the second point, and so on. (Note that, in most practical cases, the extending use case has just a single behavior fragment, so that the list of extension points is trivial.)
  */
-QList<QUmlExtensionPoint *> QUmlExtend::extensionLocation() const
+const QList<QUmlExtensionPoint *> QUmlExtend::extensionLocation() const
 {
     // This is a read-write association end
 

@@ -64,16 +64,16 @@ public:
     // Owned attributes
     bool isIndirectlyInstantiated() const;
     void setIndirectlyInstantiated(bool isIndirectlyInstantiated);
-    QSet<QUmlPackageableElement *> packagedElement() const;
+    const QSet<QUmlPackageableElement *> packagedElement() const;
     void addPackagedElement(QUmlPackageableElement *packagedElement);
     void removePackagedElement(QUmlPackageableElement *packagedElement);
-    QSet<QUmlInterface *> provided() const;
+    const QSet<QUmlInterface *> provided() const;
     Q_DECL_HIDDEN void addProvided(QUmlInterface *provided);
     Q_DECL_HIDDEN void removeProvided(QUmlInterface *provided);
-    QSet<QUmlComponentRealization *> realization() const;
+    const QSet<QUmlComponentRealization *> realization() const;
     void addRealization(QUmlComponentRealization *realization);
     void removeRealization(QUmlComponentRealization *realization);
-    QSet<QUmlInterface *> required() const;
+    const QSet<QUmlInterface *> required() const;
     Q_DECL_HIDDEN void addRequired(QUmlInterface *required);
     Q_DECL_HIDDEN void removeRequired(QUmlInterface *required);
 

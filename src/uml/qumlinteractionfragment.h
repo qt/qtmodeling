@@ -62,14 +62,14 @@ public:
     Q_DECL_HIDDEN QUmlInteractionFragment();
 
     // Owned attributes
-    QSet<QUmlLifeline *> covered() const;
+    const QSet<QUmlLifeline *> covered() const;
     void addCovered(QUmlLifeline *covered);
     void removeCovered(QUmlLifeline *covered);
     QUmlInteraction *enclosingInteraction() const;
     void setEnclosingInteraction(QUmlInteraction *enclosingInteraction);
     QUmlInteractionOperand *enclosingOperand() const;
     void setEnclosingOperand(QUmlInteractionOperand *enclosingOperand);
-    QSet<QUmlGeneralOrdering *> generalOrdering() const;
+    const QSet<QUmlGeneralOrdering *> generalOrdering() const;
     void addGeneralOrdering(QUmlGeneralOrdering *generalOrdering);
     void removeGeneralOrdering(QUmlGeneralOrdering *generalOrdering);
 

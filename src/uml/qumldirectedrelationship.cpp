@@ -64,7 +64,7 @@ QUmlDirectedRelationship::QUmlDirectedRelationship()
 /*!
     Specifies the sources of the DirectedRelationship.
  */
-QSet<QUmlElement *> QUmlDirectedRelationship::source() const
+const QSet<QUmlElement *> QUmlDirectedRelationship::source() const
 {
     // This is a read-only derived union association end
 
@@ -98,7 +98,7 @@ void QUmlDirectedRelationship::removeSource(QUmlElement *source)
 /*!
     Specifies the targets of the DirectedRelationship.
  */
-QSet<QUmlElement *> QUmlDirectedRelationship::target() const
+const QSet<QUmlElement *> QUmlDirectedRelationship::target() const
 {
     // This is a read-only derived union association end
 

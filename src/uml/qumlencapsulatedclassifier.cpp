@@ -63,7 +63,7 @@ QUmlEncapsulatedClassifier::QUmlEncapsulatedClassifier()
 /*!
     References a set of ports that an encapsulated classifier owns.
  */
-QSet<QUmlPort *> QUmlEncapsulatedClassifier::ownedPort() const
+const QSet<QUmlPort *> QUmlEncapsulatedClassifier::ownedPort() const
 {
     // This is a read-only derived association end
 

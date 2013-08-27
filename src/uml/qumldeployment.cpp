@@ -68,7 +68,7 @@ QUmlDeployment::QUmlDeployment() :
 /*!
     The specification of properties that parameterize the deployment and execution of one or more Artifacts.
  */
-QSet<QUmlDeploymentSpecification *> QUmlDeployment::configuration() const
+const QSet<QUmlDeploymentSpecification *> QUmlDeployment::configuration() const
 {
     // This is a read-write association end
 
@@ -112,7 +112,7 @@ void QUmlDeployment::removeConfiguration(QUmlDeploymentSpecification *configurat
 /*!
     The Artifacts that are deployed onto a Node. This association specializes the supplier association.
  */
-QSet<QUmlDeployedArtifact *> QUmlDeployment::deployedArtifact() const
+const QSet<QUmlDeployedArtifact *> QUmlDeployment::deployedArtifact() const
 {
     // This is a read-write association end
 

@@ -75,7 +75,7 @@ QUmlActivityPartition::QUmlActivityPartition() :
 /*!
     Edges immediately contained in the group.
  */
-QSet<QUmlActivityEdge *> QUmlActivityPartition::edge() const
+const QSet<QUmlActivityEdge *> QUmlActivityPartition::edge() const
 {
     // This is a read-write association end
 
@@ -157,7 +157,7 @@ void QUmlActivityPartition::setExternal(bool isExternal)
 /*!
     Nodes immediately contained in the group.
  */
-QSet<QUmlActivityNode *> QUmlActivityPartition::node() const
+const QSet<QUmlActivityNode *> QUmlActivityPartition::node() const
 {
     // This is a read-write association end
 
@@ -220,7 +220,7 @@ void QUmlActivityPartition::setRepresents(QUmlElement *represents)
 /*!
     Partitions immediately contained in the partition.
  */
-QSet<QUmlActivityPartition *> QUmlActivityPartition::subpartition() const
+const QSet<QUmlActivityPartition *> QUmlActivityPartition::subpartition() const
 {
     // This is a read-write association end
 

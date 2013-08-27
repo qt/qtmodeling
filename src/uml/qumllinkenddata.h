@@ -63,7 +63,7 @@ public:
     // Owned attributes
     QUmlProperty *end() const;
     void setEnd(QUmlProperty *end);
-    QSet<QUmlQualifierValue *> qualifier() const;
+    const QSet<QUmlQualifierValue *> qualifier() const;
     void addQualifier(QUmlQualifierValue *qualifier);
     void removeQualifier(QUmlQualifierValue *qualifier);
     QUmlInputPin *value() const;

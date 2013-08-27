@@ -57,7 +57,7 @@ QUmlTimeConstraint::QUmlTimeConstraint() :
     _firstEvent(true),
     _specification(0)
 {
-    d_ptr->object.setProperty("firstEvent", QVariant::fromValue(false));
+    d_ptr->object.setProperty("firstEvent", QVariant::fromValue(true));
     d_ptr->object.setProperty("specification", QVariant::fromValue((QUmlTimeInterval *)(0)));
 }
 

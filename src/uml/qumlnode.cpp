@@ -61,7 +61,7 @@ QUmlNode::QUmlNode()
 /*!
     The Nodes that are defined (nested) within the Node.
  */
-QSet<QUmlNode *> QUmlNode::nestedNode() const
+const QSet<QUmlNode *> QUmlNode::nestedNode() const
 {
     // This is a read-write association end
 

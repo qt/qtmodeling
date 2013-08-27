@@ -66,7 +66,7 @@ QUmlCollaborationUse::QUmlCollaborationUse() :
 /*!
     A mapping between features of the collaboration type and features of the owning classifier. This mapping indicates which connectable element of the classifier plays which role(s) in the collaboration. A connectable element may be bound to multiple roles in the same collaboration use (that is, it may play multiple roles).
  */
-QSet<QUmlDependency *> QUmlCollaborationUse::roleBinding() const
+const QSet<QUmlDependency *> QUmlCollaborationUse::roleBinding() const
 {
     // This is a read-write association end
 

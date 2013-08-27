@@ -68,13 +68,13 @@ public:
     void setService(bool isService);
     QUmlProtocolStateMachine *protocol() const;
     void setProtocol(QUmlProtocolStateMachine *protocol);
-    QSet<QUmlInterface *> provided() const;
+    const QSet<QUmlInterface *> provided() const;
     Q_DECL_HIDDEN void addProvided(QUmlInterface *provided);
     Q_DECL_HIDDEN void removeProvided(QUmlInterface *provided);
-    QSet<QUmlPort *> redefinedPort() const;
+    const QSet<QUmlPort *> redefinedPort() const;
     void addRedefinedPort(QUmlPort *redefinedPort);
     void removeRedefinedPort(QUmlPort *redefinedPort);
-    QSet<QUmlInterface *> required() const;
+    const QSet<QUmlInterface *> required() const;
     Q_DECL_HIDDEN void addRequired(QUmlInterface *required);
     Q_DECL_HIDDEN void removeRequired(QUmlInterface *required);
 

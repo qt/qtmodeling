@@ -74,8 +74,8 @@ QUmlOperation::QUmlOperation() :
     d_ptr->object.setProperty("interface", QVariant::fromValue((QUmlInterface *)(0)));
     d_ptr->object.setProperty("isOrdered", QVariant::fromValue(false));
     d_ptr->object.setProperty("isQuery", QVariant::fromValue(false));
-    d_ptr->object.setProperty("isUnique", QVariant::fromValue(false));
-    d_ptr->object.setProperty("lower", QVariant::fromValue((int)(0)));
+    d_ptr->object.setProperty("isUnique", QVariant::fromValue(true));
+    d_ptr->object.setProperty("lower", QVariant::fromValue((int)(1)));
     d_ptr->object.setProperty("ownedParameter", QVariant::fromValue(&_ownedParameter));
     d_ptr->object.setProperty("postcondition", QVariant::fromValue(&_postcondition));
     d_ptr->object.setProperty("precondition", QVariant::fromValue(&_precondition));
@@ -83,7 +83,7 @@ QUmlOperation::QUmlOperation() :
     d_ptr->object.setProperty("redefinedOperation", QVariant::fromValue(&_redefinedOperation));
     d_ptr->object.setProperty("templateParameter", QVariant::fromValue((QUmlOperationTemplateParameter *)(0)));
     d_ptr->object.setProperty("type", QVariant::fromValue((QUmlType *)(0)));
-    d_ptr->object.setProperty("upper", QVariant::fromValue((int)(0)));
+    d_ptr->object.setProperty("upper", QVariant::fromValue((int)(1)));
 }
 
 // OWNED ATTRIBUTES
@@ -305,7 +305,7 @@ void QUmlOperation::setLower(int lower)
 /*!
     Specifies the ordered set of formal parameters of this BehavioralFeature.Specifies the parameters owned by this Operation.
  */
-QList<QUmlParameter *> QUmlOperation::ownedParameter() const
+const QList<QUmlParameter *> QUmlOperation::ownedParameter() const
 {
     // This is a read-write association end
 
@@ -343,7 +343,7 @@ void QUmlOperation::removeOwnedParameter(QUmlParameter *ownedParameter)
 /*!
     An optional set of Constraints specifying the state of the system when the Operation is completed.
  */
-QSet<QUmlConstraint *> QUmlOperation::postcondition() const
+const QSet<QUmlConstraint *> QUmlOperation::postcondition() const
 {
     // This is a read-write association end
 
@@ -377,7 +377,7 @@ void QUmlOperation::removePostcondition(QUmlConstraint *postcondition)
 /*!
     An optional set of Constraints on the state of the system when the Operation is invoked.
  */
-QSet<QUmlConstraint *> QUmlOperation::precondition() const
+const QSet<QUmlConstraint *> QUmlOperation::precondition() const
 {
     // This is a read-write association end
 
@@ -411,7 +411,7 @@ void QUmlOperation::removePrecondition(QUmlConstraint *precondition)
 /*!
     References the Types representing exceptions that may be raised during an invocation of this operation.
  */
-QSet<QUmlType *> QUmlOperation::raisedException() const
+const QSet<QUmlType *> QUmlOperation::raisedException() const
 {
     // This is a read-write association end
 
@@ -439,7 +439,7 @@ void QUmlOperation::removeRaisedException(QUmlType *raisedException)
 /*!
     References the Operations that are redefined by this Operation.
  */
-QSet<QUmlOperation *> QUmlOperation::redefinedOperation() const
+const QSet<QUmlOperation *> QUmlOperation::redefinedOperation() const
 {
     // This is a read-write association end
 

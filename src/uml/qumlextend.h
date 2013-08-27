@@ -68,7 +68,7 @@ public:
     void setExtendedCase(QUmlUseCase *extendedCase);
     QUmlUseCase *extension() const;
     void setExtension(QUmlUseCase *extension);
-    QList<QUmlExtensionPoint *> extensionLocation() const;
+    const QList<QUmlExtensionPoint *> extensionLocation() const;
     void addExtensionLocation(QUmlExtensionPoint *extensionLocation);
     void removeExtensionLocation(QUmlExtensionPoint *extensionLocation);
 

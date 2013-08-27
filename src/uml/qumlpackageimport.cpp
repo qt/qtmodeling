@@ -61,7 +61,7 @@ QUmlPackageImport::QUmlPackageImport() :
 {
     d_ptr->object.setProperty("importedPackage", QVariant::fromValue((QUmlPackage *)(0)));
     d_ptr->object.setProperty("importingNamespace", QVariant::fromValue((QUmlNamespace *)(0)));
-    d_ptr->object.setProperty("visibility", QVariant::fromValue(QtUml::VisibilityKindNone));
+    d_ptr->object.setProperty("visibility", QVariant::fromValue(QtUml::VisibilityKindPublic));
 }
 
 // OWNED ATTRIBUTES

@@ -72,10 +72,10 @@ public:
     void setState(QUmlState *state);
     QUmlStateMachine *stateMachine() const;
     void setStateMachine(QUmlStateMachine *stateMachine);
-    QSet<QUmlVertex *> subvertex() const;
+    const QSet<QUmlVertex *> subvertex() const;
     void addSubvertex(QUmlVertex *subvertex);
     void removeSubvertex(QUmlVertex *subvertex);
-    QSet<QUmlTransition *> transition() const;
+    const QSet<QUmlTransition *> transition() const;
     void addTransition(QUmlTransition *transition);
     void removeTransition(QUmlTransition *transition);
 

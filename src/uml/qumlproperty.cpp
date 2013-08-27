@@ -441,7 +441,7 @@ void QUmlProperty::setOwningAssociation(QUmlAssociation *owningAssociation)
 /*!
     An optional list of ordered qualifier attributes for the end. If the list is empty, then the Association is not qualified.
  */
-QList<QUmlProperty *> QUmlProperty::qualifier() const
+const QList<QUmlProperty *> QUmlProperty::qualifier() const
 {
     // This is a read-write association end
 
@@ -475,7 +475,7 @@ void QUmlProperty::removeQualifier(QUmlProperty *qualifier)
 /*!
     References the properties that are redefined by this property.
  */
-QSet<QUmlProperty *> QUmlProperty::redefinedProperty() const
+const QSet<QUmlProperty *> QUmlProperty::redefinedProperty() const
 {
     // This is a read-write association end
 
@@ -509,7 +509,7 @@ void QUmlProperty::removeRedefinedProperty(QUmlProperty *redefinedProperty)
 /*!
     References the properties of which this property is constrained to be a subset.
  */
-QSet<QUmlProperty *> QUmlProperty::subsettedProperty() const
+const QSet<QUmlProperty *> QUmlProperty::subsettedProperty() const
 {
     // This is a read-write association end
 

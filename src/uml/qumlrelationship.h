@@ -57,7 +57,7 @@ public:
     Q_DECL_HIDDEN QUmlRelationship();
 
     // Owned attributes
-    QSet<QUmlElement *> relatedElement() const;
+    const QSet<QUmlElement *> relatedElement() const;
     Q_DECL_HIDDEN void addRelatedElement(QUmlElement *relatedElement);
     Q_DECL_HIDDEN void removeRelatedElement(QUmlElement *relatedElement);
 

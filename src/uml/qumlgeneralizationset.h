@@ -60,7 +60,7 @@ public:
     QUmlGeneralizationSet();
 
     // Owned attributes
-    QSet<QUmlGeneralization *> generalization() const;
+    const QSet<QUmlGeneralization *> generalization() const;
     void addGeneralization(QUmlGeneralization *generalization);
     void removeGeneralization(QUmlGeneralization *generalization);
     bool isCovering() const;
