@@ -41,14 +41,22 @@
 ****************************************************************************/
 #include "q${namespace.lower}${className.lower}.h"
 
-[% FOREACH forward = forwards.unique.sort %]
+[% forwards = [] -%]
+[%- FOREACH forward = class.findnodes("ownedAttribute[@type] | ownedOperation/ownedParameter[@type]") -%]
+[%- SET forwardName = forward.findvalue('@type') -%]
+[%- IF xmi.findnodes("//packagedElement[@xmi:type='uml:Enumeration' and @name='$forwardName']").findvalue("@name") == "" -%]
+[%- IF forwardName != className -%][%- forwards.push("Q${namespace}${forwardName}") -%][%- END -%]
+[%- END -%]
+[%- END -%]
+[%- FOREACH forward = forwards.unique.sort -%]
 #include <Qt${namespace}/${forward}>
-[%- IF loop.last %]
-[% END %]
+[% IF loop.last %]
+[% END -%]
 [%- END -%]
 QT_BEGIN_NAMESPACE
 
-Q${namespace}${className}::Q${namespace}${className}()
+Q${namespace}${className}::Q${namespace}${className}(QObject *parent) :
+    QObject(parent)
 {
 }
 
@@ -59,10 +67,10 @@ Q${namespace}${className}::Q${namespace}${className}()
     [%- SET qtAttribute = QT_ATTRIBUTE(attribute) -%]
     [%- SET qtType = QT_TYPE(namespace, attribute, "false") -%]
     [%- SET derived = attribute.findvalue("@isDerived") -%]
-    [%- SET derivedUnion = attribute.findvalue("@isDerivedUnion") -%]
-    [%- IF qtType.match("QList|QSet") %]
-const ${qtType}Q${namespace}${className}::${qtAttribute}() const
+    [%- SET derivedUnion = attribute.findvalue("@isDerivedUnion") %]
+[% IF qtType.match("QList|QSet") %]const [% END %]${qtType}Q${namespace}${className}::${qtAttribute}() const
 {
+    [%- IF qtType.match("QList|QSet") %]
     [%- IF derived == "true" && (derivedUnion == "" || derivedUnion == "false") %]
     ${qtType}r;
     foreach (${qtType.remove("QList<").remove("QSet<").remove(">").trim.remove("^Q")}element, ${namespace}${className}::${qtAttribute}())
@@ -70,29 +78,36 @@ const ${qtType}Q${namespace}${className}::${qtAttribute}() const
     return r;
     [%- ELSE %]
     return *(reinterpret_cast<const ${qtType.trim.remove(' \*$')} *>(&_${qtAttribute}));
+    [%- END -%]
+    [% ELSIF qtType.match('\*$') %]
+    [%- IF derived == "true" && (derivedUnion == "" || derivedUnion == "false") %]
+    return reinterpret_cast<${qtType.trim}>(${namespace}${className}::${qtAttribute}());
+    [%- ELSE %]
+    return reinterpret_cast<${qtType.trim}>(_${qtAttribute});
+    [%- END -%]
+    [% ELSE %]
+    return _${qtAttribute};
     [%- END %]
 }
-    [% ELSIF qtType.match('\*$') %]
-${qtType}Q${namespace}${className}::${qtAttribute}() const
-{
-    return reinterpret_cast<${qtType.trim}>(_${qtAttribute});
-}
-    [% ELSE %]
-${qtType}Q${namespace}${className}::${qtAttribute}() const
-{
-    return _${qtAttribute};
-}
-    [% END %]
+
     [%- SET readOnly = attribute.findvalue("@isReadOnly") %]
     [%- IF readOnly == "false" || readOnly == "" -%]
     [%- SET attributeName = attribute.findvalue("@name").ucfirst -%]
-    [%- IF attribute.findnodes("upperValue").findvalue("@value") == "*" %]
+    [%- IF attribute.findnodes("upperValue").findvalue("@value") == "*" -%]
+    [%- IF qtType.remove("QSet<").remove("QList<").match('\*') %]
 void Q${namespace}${className}::add${attributeName}([% qtType.remove("QSet<").remove("QList<").replace(">", "").replace('\* $', '*').remove('^Q') %]${qtAttribute})
+    [%- ELSE %]
+void Q${namespace}${className}::add${attributeName}(${qtType.remove("QSet<").remove("QList<").replace(">", "")} ${qtAttribute})
+    [%- END %]
 {
     ${namespace}${className}::add${attributeName}(${qtAttribute});
 }
 
+    [%- IF qtType.remove("QSet<").remove("QList<").match('\*') %]
 void Q${namespace}${className}::remove${attributeName}([% qtType.remove("QSet<").remove("QList<").replace(">", "").replace('\* $', '*').remove('^Q') %]${qtAttribute})
+    [%- ELSE %]
+void Q${namespace}${className}::remove${attributeName}(${qtType.remove("QSet<").remove("QList<").replace(">", "")} ${qtAttribute})
+    [%- END %]
 {
     ${namespace}${className}::remove${attributeName}(${qtAttribute});
 }
@@ -113,14 +128,14 @@ void Q${namespace}${className}::set${attributeName.remove("^Is")}(${qtType}${qtA
 {
     ${namespace}${className}::set${attributeName.remove("^Is")}(${qtAttribute});
 }
-    [%- END -%]
+[% END -%]
     [%- END -%]
     [%- END %]
     [%- IF loop.last %]
     [%- END %]
-[%- END -%]
-[%- FOREACH operation = class.findnodes("ownedOperation[@name != ../ownedAttribute[@isDerived='true']/@name]") -%]
-[%- IF loop.first %]
+[%- END %]
+[% FOREACH operation = class.findnodes("ownedOperation[@name != ../ownedAttribute[@isDerived='true']/@name]") -%]
+[%- IF loop.first -%]
 // Operations
 [% END %]
 [% SET operationName = operation.findvalue("@name") -%]
@@ -144,13 +159,21 @@ ${parameter.findvalue("@name")}
     ${return}r;
     foreach (${return.remove("QList<").remove("QSet<").remove(">").trim.remove("^Q")}element, ${namespace}${className}::${operationName}(
     [%- FOREACH parameter = operation.findnodes("ownedParameter[@direction!='return']") -%]
+[%- qtType = QT_TYPE(namespace, parameter, "false") -%]
+[%- IF qtType.match("QList|QSet") -%]
+*(reinterpret_cast<${qtType.replace("<Q", "<")}*>(&${parameter.findvalue("@name")}))
+[%- ELSE -%]
 ${parameter.findvalue("@name")}
+[%- END -%]
         [%- IF !loop.last %], [% END -%]
     [%- END -%]))
         r.[% IF return.match("QList") %]append[% ELSE %]insert[% END %](reinterpret_cast<${return.remove("QList<").remove("QSet<").remove(">").trim}>(element));
     return r;
     [%- END %]
 }
-[% END %]
+
+[%- IF loop.last %]
+[% END -%]
+[% END -%]
 QT_END_NAMESPACE
 

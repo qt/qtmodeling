@@ -85,7 +85,7 @@ class Q_${namespace.upper}_EXPORT Q${namespace}${className} : public QObject, pu
 [%- END %]
 
 public:
-    [% IF class.findvalue("@isAbstract") == "true" %]Q_DECL_HIDDEN [% ELSE %]Q_INVOKABLE [% END %]explicit Q${namespace}${className}();
+    [% IF class.findvalue("@isAbstract") == "true" %]Q_DECL_HIDDEN [% ELSE %]Q_INVOKABLE [% END %]explicit Q${namespace}${className}(QObject *parent = 0);
 [%- FOREACH attribute IN attributes -%]
     [%- IF loop.first %]
 
@@ -103,9 +103,14 @@ public:
     [%- SET readOnly = attribute.findvalue("@isReadOnly") %]
     [%- IF readOnly == "false" || readOnly == "" -%]
     [%- SET attributeName = attribute.findvalue("@name").ucfirst -%]
-    [%- IF attribute.findnodes("upperValue").findvalue("@value") == "*" %]
+    [%- IF attribute.findnodes("upperValue").findvalue("@value") == "*" -%]
+    [%- IF qtType.remove("QSet<").remove("QList<").match('\*') %]
     Q_INVOKABLE void add${attributeName}([% qtType.remove("QSet<").remove("QList<").replace(">", "").replace('\* $', '*').remove('^Q') %]${qtAttribute});
     Q_INVOKABLE void remove${attributeName}([% qtType.remove("QSet<").remove("QList<").replace(">", "").replace('\* $', '*').remove('^Q') %]${qtAttribute});
+    [%- ELSE %]
+    Q_INVOKABLE void add${attributeName}(${qtType.remove("QSet<").remove("QList<").replace(">", "")}${qtAttribute});
+    Q_INVOKABLE void remove${attributeName}(${qtType.remove("QSet<").remove("QList<").replace(">", "")}${qtAttribute});
+    [%- END -%]
     [%- ELSE -%]
     [%- IF qtType.match('QList|QSet') %]
     Q_INVOKABLE void set${attributeName.remove("^Is")}(${qtType.remove('^Q')}${qtAttribute});
