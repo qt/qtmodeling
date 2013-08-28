@@ -56,7 +56,7 @@ my $tt = Template->new(INTERPOLATE  => 1, INCLUDE_PATH => 'templates/');
 my $xmi = XML::XPath->new(filename => $options{i});
 my $namespace = $xmi->findvalue('//uml:Package/@name');
 
-make_path($options{o}."/".$namespace);
+make_path($options{o}."/".$namespace."/"."internal");
 
 {
 local *STDOUT;

@@ -1,7 +1,7 @@
 load(qt_build_config)
 
 TARGET = Qt${namespace}
-QT = core modeling-private
+QT = core
 
 QMAKE_DOCS = [%- GET '$$PWD' -%]/doc/qt${namespace.lower}.qdocconf
 

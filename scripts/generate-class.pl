@@ -62,13 +62,26 @@ binmode STDOUT, ':utf8';
 foreach my $class ($classset->get_nodelist) {
     my $className = $class->findvalue('@name');
     open STDOUT, '>', $options{o}."/".$namespace."/q".lc($namespace).lc($className).".h";
-    if ($tt->process('class.h', {
+    if ($tt->process('qclass.h', {
         xmi => $options{i},
         namespace => $namespace,
         className => $className
     }) ne 1) { print $tt->error(); }
     close STDOUT;
     open STDOUT, '>', $options{o}."/".$namespace."/q".lc($namespace).lc($className).".cpp";
+    if ($tt->process('qclass.cpp', {
+        xmi => $options{i},
+        namespace => $namespace,
+        className => $className
+    }) ne 1) { print $tt->error(); }
+    open STDOUT, '>', $options{o}."/".$namespace."/internal/".lc($namespace).lc($className)."_p.h";
+    if ($tt->process('class_p.h', {
+        xmi => $options{i},
+        namespace => $namespace,
+        className => $className
+    }) ne 1) { print $tt->error(); }
+    close STDOUT;
+    open STDOUT, '>', $options{o}."/".$namespace."/internal/".lc($namespace).lc($className).".cpp";
     if ($tt->process('class.cpp', {
         xmi => $options{i},
         namespace => $namespace,

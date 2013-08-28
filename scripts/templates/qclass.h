@@ -43,18 +43,9 @@
 #define Q${namespace.upper}${className.upper}_H
 
 #include <Qt${namespace}/Qt${namespace}Global>
-[% superclasses = [] -%]
-[%- SET generalization = class.findnodes("generalization") -%]
-[% FOREACH superclass IN generalization -%]
-[% SET superclassName = superclass.findvalue("@general") %]
-#include <Qt${namespace}/Q${namespace}${superclassName}>
-[%- superclasses.push("Q${namespace}${superclassName}") -%]
-[%- IF loop.last %]
-[% END -%]
-[%- END -%]
-[%- IF superclasses.size == 0 -%]
-#include <QtModeling/QModelingObject>
-[% END -%]
+
+#include <QtCore/QObject>
+#include "private/${namespace.lower}${className.lower}_p.h"
 
 [%- SET useNamespace = 'false' -%]
 [%- forwards = [] -%]
@@ -63,7 +54,7 @@
 [%- IF xmi.findnodes("//packagedElement[@xmi:type='uml:Enumeration' and @name='$forwardName']").findvalue("@name") != "" -%]
     [%- SET useNamespace = 'true' -%]
 [%- ELSE -%]
-[%- IF forwardName != className && superclasses.grep("^Q${namespace}${forwardName}\$").size == 0 -%][%- forwards.push("Q${namespace}${forwardName}") -%][%- END -%]
+[%- IF forwardName != className -%][%- forwards.push("Q${namespace}${forwardName}") -%][%- END -%]
 [%- END -%]
 [%- END -%]
 [%- IF useNamespace == 'true' -%]
@@ -80,31 +71,50 @@ class ${forward};
 [% END %]
 [%- END -%]
 
-class Q_${namespace.upper}_EXPORT Q${namespace}${className} : 
-[%- FOREACH superclass IN generalization -%]
-public Q${namespace}${superclass.findvalue("@general")}
-[%- IF !loop.last %], [% END -%]
-[%- END %]
-[%- IF superclasses.size == 0 -%]
-public QModelingObject
-[%- END %]
+class Q_${namespace.upper}_EXPORT Q${namespace}${className} : public QObject, public ${namespace}${className}
 {
+    Q_OBJECT
+[%- SET attributes = class.findnodes("ownedAttribute") -%]
+[%- FOREACH attribute IN attributes -%]
+    [%- SET qtAttribute = QT_ATTRIBUTE(attribute) -%]
+    [%- SET qtType = QT_TYPE(namespace, attribute, "false") %]
+    [%- SET readOnly = attribute.findvalue("@isReadOnly") %]
+    [%- SET upperValue = attribute.findvalue("upperValue/@value") -%]
+    [%- SET attributeName = attribute.findvalue("@name").ucfirst %]
+    Q_PROPERTY(${qtType.trim} ${qtAttribute} READ ${qtAttribute})
+[%- END %]
+
 public:
-    [% IF class.findvalue("@isAbstract") == "true" %]Q_DECL_HIDDEN [% END %]Q${namespace}${className}();
-[%- FOREACH attribute = class.findnodes("ownedAttribute") -%]
+    [% IF class.findvalue("@isAbstract") == "true" %]Q_DECL_HIDDEN [% ELSE %]Q_INVOKABLE [% END %]explicit Q${namespace}${className}();
+[%- FOREACH attribute IN attributes -%]
     [%- IF loop.first %]
 
     // Owned attributes
     [%- END -%]
     [%- SET qtAttribute = QT_ATTRIBUTE(attribute) -%]
-    [%- SET qtType = QT_TYPE(namespace, attribute) %]
-    [% IF qtType.match("QList|QSet") %]const [% END %]${qtType}${qtAttribute}() const;
+    [%- SET qtType = QT_TYPE(namespace, attribute, "false") -%]
+    [%- IF qtType.match("QList|QSet") %]
+    Q_INVOKABLE const ${qtType}${qtAttribute}() const;
+    [%- ELSIF qtType.match('\*$') %]
+    Q_INVOKABLE ${qtType}${qtAttribute}() const;
+    [%- ELSE %]
+    Q_INVOKABLE ${qtType}${qtAttribute}() const;
+    [%- END %]
+    [%- SET readOnly = attribute.findvalue("@isReadOnly") %]
+    [%- IF readOnly == "false" || readOnly == "" -%]
     [%- SET attributeName = attribute.findvalue("@name").ucfirst -%]
     [%- IF attribute.findnodes("upperValue").findvalue("@value") == "*" %]
-    [% IF attribute.findvalue("@isReadOnly") == "true" -%]Q_DECL_HIDDEN [% END %]void add${attributeName}([% qtType.remove("QSet<").remove("QList<").replace("> ", " ").replace('\* $', '*') %]${qtAttribute});
-    [% IF attribute.findvalue("@isReadOnly") == "true" -%]Q_DECL_HIDDEN [% END %]void remove${attributeName}([% qtType.remove("QSet<").remove("QList<").replace("> ", " ").replace('\* $', '*') %]${qtAttribute});
+    Q_INVOKABLE void add${attributeName}([% qtType.remove("QSet<").remove("QList<").replace(">", "").replace('\* $', '*').remove('^Q') %]${qtAttribute});
+    Q_INVOKABLE void remove${attributeName}([% qtType.remove("QSet<").remove("QList<").replace(">", "").replace('\* $', '*').remove('^Q') %]${qtAttribute});
+    [%- ELSE -%]
+    [%- IF qtType.match('QList|QSet') %]
+    Q_INVOKABLE void set${attributeName.remove("^Is")}(${qtType.remove('^Q')}${qtAttribute});
+    [%- ELSIF qtType.match('\*$') %]
+    Q_INVOKABLE void set${attributeName.remove("^Is")}(${qtType}${qtAttribute});
     [%- ELSE %]
-    [% IF attribute.findvalue("@isReadOnly") == "true" -%]Q_DECL_HIDDEN [% END %]void set${attributeName.remove("^Is")}(${qtType}${qtAttribute});
+    Q_INVOKABLE void set${attributeName.remove("^Is")}(${qtType}${qtAttribute});
+    [%- END -%]
+    [%- END -%]
     [%- END %]
     [%- IF loop.last %]
     [%- END %]
@@ -115,19 +125,14 @@ public:
     // Operations
 [%- END %]
 [% SET operationName = operation.findvalue("@name") -%]
-    [% QT_TYPE(namespace, operation.findnodes("ownedParameter[@direction='return']")) -%]
+    Q_INVOKABLE [% QT_TYPE(namespace, operation.findnodes("ownedParameter[@direction='return']"), "false") -%]
 ${operationName}(
     [%- FOREACH parameter = operation.findnodes("ownedParameter[@direction!='return']") -%]
-        [%- QT_TYPE(namespace, parameter) -%]
+        [%- QT_TYPE(namespace, parameter, "false") -%]
 ${parameter.findvalue("@name")}
         [%- IF !loop.last %], [% END -%]
     [%- END -%]
 )[% IF operation.findvalue("@isQuery") == "true" %] const[% END %];
-[%- END %]
-
-protected:
-[%- FOREACH attribute = class.findnodes("ownedAttribute[(@isDerived=\"false\" or not(@isDerived)) or (@isDerivedUnion and @isDerivedUnion=\"true\")]") %]
-    [% QT_TYPE(namespace, attribute) -%]_[%- QT_ATTRIBUTE(attribute) %];
 [%- END %]
 };
 

@@ -8,7 +8,7 @@
       "Real" = "double"
    };
 -%]
-[%- MACRO QT_TYPE(namespace, attribute) BLOCK -%]
+[%- MACRO QT_TYPE(namespace, attribute, internal) BLOCK -%]
     [%- SET multiplicity = attribute.findnodes("upperValue").findvalue("@value") -%]
     [%- SET isUnique = attribute.findvalue("@isUnique") -%]
     [%- SET isOrdered = attribute.findvalue("@isOrdered") -%]
@@ -18,7 +18,7 @@
     [%- IF xmi.findnodes("//packagedElement[@xmi:type='uml:Enumeration' and @name='$attributeType']").findvalue("@name") != "" -%]
 Qt${namespace}::${attributeType} 
     [%- ELSE -%]
-Q${namespace}${attributeType} *
+[% IF internal == "false" %]Q[% END %]${namespace}${attributeType} *
     [%- END -%]
     [%- ELSE -%]
 ${uml2qt_type.item(attribute.findnodes("type").findvalue("@href").split("#").last)}[%- IF multiplicity != "*" %] [% END -%]
