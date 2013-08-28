@@ -86,7 +86,11 @@ Q${namespace}${className}::Q${namespace}${className}(QObject *parent) :
     return reinterpret_cast<${qtType.trim}>(_${qtAttribute});
     [%- END -%]
     [% ELSE %]
+    [%- IF derived == "true" && (derivedUnion == "" || derivedUnion == "false") %]
+    return ${namespace}${className}::${qtAttribute}();
+    [%- ELSE %]
     return _${qtAttribute};
+    [%- END -%]
     [%- END %]
 }
 
