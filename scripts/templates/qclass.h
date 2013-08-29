@@ -122,7 +122,7 @@ ${parameter.findvalue("@name")}
     [%- IF loop.first %]
 
 public Q_SLOTS:
-    // Owned attributes
+    // Slots for owned attributes
     [%- END -%]
     [%- SET qtAttribute = QT_ATTRIBUTE(attribute) -%]
     [%- SET qtType = QT_TYPE(namespace, attribute, "false") -%]

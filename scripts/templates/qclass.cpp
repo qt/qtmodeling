@@ -55,6 +55,14 @@
 [%- END -%]
 QT_BEGIN_NAMESPACE
 
+/*!
+    \class ${namespace}${className}
+
+    \inmodule Qt${namespace}
+
+    \brief ${class.findvalue("ownedComment/body/text()")}
+ */
+
 Q${namespace}${className}::Q${namespace}${className}(QObject *parent) :
     QObject(parent)
 {
@@ -62,8 +70,14 @@ Q${namespace}${className}::Q${namespace}${className}(QObject *parent) :
 
 [% FOREACH attribute = class.findnodes("ownedAttribute") -%]
     [%- IF loop.first -%]
-// Owned attributes
+// OWNED ATTRIBUTES
 [% END -%]
+[%- SET documentation = attribute.findvalue("ownedComment/body/text()") -%]
+[%- IF documentation != "" %]
+/*!
+    ${documentation}
+ */
+[%- END -%]
     [%- SET qtAttribute = QT_ATTRIBUTE(attribute) -%]
     [%- SET qtType = QT_TYPE(namespace, attribute, "false") -%]
     [%- SET derived = attribute.findvalue("@isDerived") -%]
@@ -99,10 +113,16 @@ Q${namespace}${className}::Q${namespace}${className}(QObject *parent) :
 [%- END -%]
 [% FOREACH operation = class.findnodes("ownedOperation[@name != ../ownedAttribute[@isDerived='true']/@name]") -%]
 [%- IF loop.first -%]
-// Operations
+// OPERATIONS
 [% END -%]
 [% SET operationName = operation.findvalue("@name") -%]
 [%- SET return = QT_TYPE(namespace, operation.findnodes("ownedParameter[@direction='return']"), "false") %]
+[%- SET documentation = operation.findvalue("ownedComment/body/text()") -%]
+[%- IF documentation != "" %]
+/*!
+    ${documentation}
+ */
+[%- END %]
 [% return -%]
 Q${namespace}${className}::${operationName}(
     [%- FOREACH parameter = operation.findnodes("ownedParameter[@direction!='return']") -%]
@@ -146,7 +166,7 @@ ${parameter.findvalue("@name")}
 [%- END -%]
 [% FOREACH attribute = class.findnodes("ownedAttribute") -%]
     [%- IF loop.first -%]
-// Slots for owned attributes
+// SLOTS FOR OWNED ATTRIBUTES
 [% END -%]
     [%- SET readOnly = attribute.findvalue("@isReadOnly") %]
     [%- IF readOnly == "false" || readOnly == "" -%]

@@ -58,14 +58,6 @@
 #include "private/${forward.lower}_p.h"
 [%- END %]
 
-/*!
-    \class ${namespace}${className}
-
-    \inmodule Qt${namespace}
-
-    \brief ${class.findvalue("ownedComment/body/text()")}
- */
-
 ${namespace}${className}::${namespace}${className}()
 [%- SET found = "false" -%]
 [%- FOREACH attribute = class.findnodes("ownedAttribute[(@isDerived=\"false\" or not(@isDerived)) or (@isDerivedUnion and @isDerivedUnion=\"true\")]") -%]
@@ -113,12 +105,6 @@ ${namespace}${className}::${namespace}${className}()
 // OWNED ATTRIBUTES
 [%- END %]
 
-[%- SET documentation = attribute.findvalue("ownedComment/body/text()") -%]
-[%- IF documentation != "" %]
-/*!
-    ${documentation}
- */
-[%- END -%]
 [%- SET qtAttribute = QT_ATTRIBUTE(attribute) -%]
 [%- SET qtType = QT_TYPE(namespace, attribute) -%]
 [%- SET readOnly = attribute.findvalue("@isReadOnly") -%]
@@ -317,12 +303,6 @@ void ${namespace}${className}::set${attributeName.remove("^Is")}(${QT_TYPE(names
 
 [%- SET returnType = QT_TYPE(namespace, operation.findnodes("ownedParameter[@direction='return']")) %]
 
-[%- SET documentation = operation.findvalue("ownedComment/body/text()") -%]
-[%- IF documentation != "" %]
-/*!
-    ${documentation}
- */
-[%- END %]
 ${returnType}${namespace}${className}::${operationName}(
     [% SET parameters = operation.findnodes("ownedParameter[@direction!='return']") -%]
     [%- FOREACH parameter = parameters -%]
